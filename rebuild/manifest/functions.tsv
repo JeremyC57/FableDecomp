@@ -34195,7 +34195,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009c0020	SetExclusiveMode	CDisplayManager	__thiscall	ECreateDeviceSuccess	2	CDisplayManager *,bool	1	yes	accepted									
 009c00c0	ProcessLostDevice	CDisplayManager	__thiscall	bool	1	CDisplayManager *	1	yes	accepted									
 009c0190	AddDeviceResetCallback	CDisplayManager	unknown	undefined	0		0	yes	accepted									
-009c01c0	~CInputManagerDX	CInputManagerDX	__thiscall	void	1	CInputManagerDX *	1	yes	accepted									
+009c01c0	~CDisplayManager	CDisplayManager	__thiscall	void	1	CInputManagerDX *	1	yes	accepted									
 009c02d0	BuildVideoCapabilityTree	_global	unknown	undefined	0		0	yes	accepted									
 009c05c0	CGuiControlTreePane_RebuildTreeFromArray	_global	unknown	undefined	0		0	yes	accepted									
 009c0880	NHeroInformationScreens_CBase_Initialise	_global	unknown	undefined	0		0	yes	accepted									
@@ -34491,7 +34491,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009cda70	InternalWriteEntryList	CBankFile	__thiscall	ulong	2	CBankFile *,CDataOutputStream *	1	yes	accepted									
 009cdf50	WriteRecoveryFile	CBankFile	__thiscall	void	4	CBankFile *,ulong,ulong,ulong	1	yes	accepted									
 009ce050	InitEntry	CBankFile	unknown	undefined	0		0	yes	accepted									
-009ce180	NHeroInformationScreens::CBase::~CBase	NHeroInformationScreens::CBase	unknown	undefined	0		0	yes	accepted									
+009ce180	~CBankFile	CBankFile	unknown	undefined	0		0	yes	accepted									
 009ce360	CBankFile::Close	CBankFile	__thiscall	void	1	CBankFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9c\CBankFile_Close_009ce360.cpp
 009ce370	WriteFileInformation	CBankFile	__thiscall	void	2	CBankFile *,bool	1	yes	accepted									
 009ce5e0	AddEntryMultipleFiles	CBankFile	__thiscall	void	5	CBankFile *,CCharString *,ulong,CArray<CCharString> *,CCountedPointer<CBankStateBlock>	1	yes	accepted									
@@ -47884,7 +47884,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ca0ba0	Environment_GetThemeIndex	_global	unknown	undefined	0		0	yes	accepted									
 00ca0df0	Class_AllocateFromPool	_global	unknown	undefined	0		0	yes	accepted									
 00ca1000	sub_00ca1000	_gapscan	unknown	undefined	0		0			discovered	gapscan							
-00ca1060	Environment_AccumulateVertexData	_global	unknown	undefined	0		0	yes	accepted									
+00ca1060	res1_forward	libvorbis	unknown	undefined	0		0	yes	accepted									
 00ca1250	sub_00ca1250	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00ca12b0	sub_00ca12b0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00ca1310	Geometry_ProcessNonzeroElements	_global	unknown	undefined	0		0	yes	accepted									
@@ -51644,7 +51644,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00df0b70	PrisonEscape	CQ_SecretPassageScript	__thiscall	void	1	CQ_SecretPassageScript *	1	yes	accepted									
 00df1080	sub_00df1080	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00df10b0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\df\CLandscapeBackgroundPatch_vectordeletingdestructor_00df10b0.cpp
-00df10d0	CParticleEmitter::~CParticleEmitter	CParticleEmitter	unknown	undefined	0		0	yes	accepted									
+00df10d0	~CQ_SecretPassageScript	NScript::CQ_SecretPassageScript	unknown	undefined	0		0	yes	accepted									
 00df11f0	CQ_SummoningTheShipScript	NScript::CQ_SummoningTheShipScript	__thiscall	undefined	3	CV_AmbushScamScript *,CScriptDataBase *,CGameScriptInterfaceBase *	0	yes	accepted									
 00df1230	Init	CV_LostTraderScript	__thiscall	void	1	CV_LostTraderScript *	1	yes	accepted									
 00df12e0	RegisterMain	NScript::CQ_SummoningTheShipScript	__thiscall	void	1	CGlobal_WatchForHeroDeathScript *	1	yes	accepted									
@@ -52712,7 +52712,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e579e0	Transfer	CConversation	unknown	undefined	0		0			discovered	gapscan							
 00e57a50	sub_00e57a50	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00e57a80	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e5\CLandscapeBackgroundPatch_vectordeletingdestructor_00e57a80.cpp
-00e57aa0	CParticleEmitter::~CParticleEmitter_MeshFree	CParticleEmitter	unknown	undefined	0		0	yes	accepted									
+00e57aa0	~CV_BookCollectingScript	NScript::CV_BookCollectingScript	unknown	undefined	0		0	yes	accepted									
 00e57bb0	CV_BeggarAndChildScript	NScript::CV_BeggarAndChildScript	__thiscall	undefined	3	CV_ArcheryCompetitionScript *,CScriptDataBase *,CGameScriptInterfaceBase *	0	yes	accepted									
 00e57c00	Init	NScript::CV_BeggarAndChildScript	unknown	undefined	0		0			discovered	gapscan							
 00e57c60	RegisterMain	NScript::CV_BeggarAndChildScript	__thiscall	void	1	CGlobal_WatchForHeroDeathScript *	1	yes	accepted									

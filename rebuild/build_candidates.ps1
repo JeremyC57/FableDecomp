@@ -373504,6 +373504,70 @@ $catalog = @(
         TestSource = '00/ac/QuadricOptimiserInternalsCOptimisedPrimitive_UpdateCost_00ac8a60_test.cpp'
         PassPattern = '00ac8a60_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0074ee90'
+        Module = 'CTCContainerRewardHero'
+        Source = '00/74/CTCContainerRewardHero_RewardHeroWithItems_0074ee90.cpp'
+        TestSource = '00/74/CTCContainerRewardHero_RewardHeroWithItems_0074ee90_test.cpp'
+        PassPattern = '0074ee90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075aec0'
+        Module = 'CTCPhysicsRigidBody'
+        Source = '00/75/CTCPhysicsRigidBody_Move_0075aec0.cpp'
+        TestSource = '00/75/CTCPhysicsRigidBody_Move_0075aec0_test.cpp'
+        PassPattern = '0075aec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0077a180'
+        Module = 'CTCDExperienceOrb'
+        Source = '00/77/CTCDExperienceOrb_OnCollected_0077a180.cpp'
+        TestSource = '00/77/CTCDExperienceOrb_OnCollected_0077a180_test.cpp'
+        PassPattern = '0077a180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c01c0'
+        Module = 'CDisplayManager'
+        Source = '00/9c/CDisplayManager_CDisplayManager_009c01c0.cpp'
+        TestSource = '00/9c/CDisplayManager_CDisplayManager_009c01c0_test.cpp'
+        PassPattern = '009c01c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ce180'
+        Module = 'CBankFile'
+        Source = '00/9c/CBankFile_CBankFile_009ce180.cpp'
+        TestSource = '00/9c/CBankFile_CBankFile_009ce180_test.cpp'
+        PassPattern = '009ce180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a996d0'
+        Module = 'C3DAnimFileLoader'
+        Source = '00/a9/C3DAnimFileLoader_C3DAnimFileLoader_00a996d0.cpp'
+        TestSource = '00/a9/C3DAnimFileLoader_C3DAnimFileLoader_00a996d0_test.cpp'
+        PassPattern = '00a996d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca1060'
+        Module = 'libvorbis'
+        Source = '00/ca/libvorbis_res1forward_00ca1060.cpp'
+        TestSource = '00/ca/libvorbis_res1forward_00ca1060_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00ca1060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df10d0'
+        Module = 'NScript::CQ_SecretPassageScript'
+        Source = '00/df/NScriptCQSecretPassageScript_CQSecretPassageScript_00df10d0.cpp'
+        TestSource = '00/df/NScriptCQSecretPassageScript_CQSecretPassageScript_00df10d0_test.cpp'
+        PassPattern = '00df10d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e57aa0'
+        Module = 'NScript::CV_BookCollectingScript'
+        Source = '00/e5/NScriptCVBookCollectingScript_CVBookCollectingScript_00e57aa0.cpp'
+        TestSource = '00/e5/NScriptCVBookCollectingScript_CVBookCollectingScript_00e57aa0_test.cpp'
+        PassPattern = '00e57aa0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

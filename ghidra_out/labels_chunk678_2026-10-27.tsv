@@ -1,0 +1,10 @@
+address	name	evidence
+0074ee90	CTCContainerRewardHero::RewardHeroWithItems	Ego_r name set, proven per batch 2026-10-27_linux_hand678 NOTES.md (chunk 678)
+0075aec0	CTCPhysicsRigidBody::Move	Ego_r name set, proven per batch 2026-10-27_linux_hand678 NOTES.md (chunk 678)
+0077a180	CTCDExperienceOrb::OnCollected	Ego_r name set, proven per batch 2026-10-27_linux_hand678 NOTES.md (chunk 678)
+009ce180	CBankFile::~CBankFile	vtable 0x0129B54C, ??_G 0x009D47A0; label NHeroInformationScreens::CBase wrong (chunk 678)
+009c01c0	CDisplayManager::~CDisplayManager	stores vtable 0x0129B3F8 (RTTI CDisplayManager, ??_G 0x009C30B0); label CInputManagerDX wrong (chunk 678)
+00a996d0	C3DAnimFileLoader::~C3DAnimFileLoader	Ego_r name set, proven per batch 2026-10-27_linux_hand678 NOTES.md (chunk 678)
+00ca1060	libvorbis::res1_forward	libvorbis 1.0.1 res1_forward, slot 6 of residue1_exportbundle 0x013ABDE4; label Environment_AccumulateVertexData wrong (chunk 678)
+00df10d0	NScript::CQ_SecretPassageScript::~CQ_SecretPassageScript	??_G 0x00DF10B0 slot 0 of vtable 0x012DDC30, ctor 0x00DEC7F0, Alloc 0x00DF1080 registered "Q_SecretPassage"; label ~CParticleEmitter wrong (chunk 678)
+00e57aa0	NScript::CV_BookCollectingScript::~CV_BookCollectingScript	??_G 0x00E57A80 slot 0 of vtable 0x012E5EFC, ctor 0x00E54310, Alloc 0x00E57A50 "V_BookCollecting"; label ~CParticleEmitter_MeshFree wrong (chunk 678)

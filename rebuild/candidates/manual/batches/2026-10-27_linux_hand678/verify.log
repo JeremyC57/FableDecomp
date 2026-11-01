@@ -1,0 +1,52 @@
+addr       parity           behav  name
+0074ee90   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0074ee90   WARN SHARED_HEADER_AVAILABLE CPlayer
+0074ee90   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+0074ee90   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+0074ee90   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0074ee90   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+0074ee90   WARN SHARED_HEADER_AVAILABLE CTCBase
+0074ee90   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0074ee90   RELOCATION_MATCH PASS   RewardHeroWithItems
+0075aec0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0075aec0   RELOCATION_MATCH PASS   Move
+0077a180   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0077a180   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience
+0077a180   RELOCATION_MATCH PASS   OnCollected
+009c01c0   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009c01c0   WARN RELOC_NAME: ??1CBusyResourceManager@@QAE@XZ -> 00a61b10 labelled 'CDirectInputDeviceLists_00a61b10::~CDirectInputDeviceLists_00a61b10'
+009c01c0   WARN RELOC_NAME: ??1?$_List_base@PAVCDeviceResetCallback@@V?$allocator@PAVCDeviceResetCallback@@@std@@@std@@QAE@XZ -> 009c2220 labelled '_global::StdList_Clear_009c2220'
+009c01c0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+009c01c0   RELOCATION_MATCH PASS   ~CDisplayManager
+009ce180   WARN RELOC_NAME: ?CloseEntries@CBankFile@@AAEXXZ -> 009cd850 labelled 'CBankFile::InternalClose'
+009ce180   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@K@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@K@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@K@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@K@std@@@2@@Z -> 00579435 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+009ce180   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+009ce180   RELOCATION_MATCH PASS   ~CBankFile
+00a996d0   WARN RELOC_NAME: ??1CChunkedFileLoader@@UAE@XZ -> 00aa7540 labelled 'CChunkedFileLoader::CChunkedFileLoader'
+00a996d0   RELOCATION_MATCH PASS   ~C3DAnimFileLoader
+00ca1060   WARN RELOC_NAME: __01forward@24 -> 00ca0ba0 labelled 'Environment_GetThemeIndex'
+00ca1060   RELOCATION_MATCH PASS   res1_forward
+00df10d0   RELOCATION_MATCH PASS   ~CQ_SecretPassageScript
+00e57aa0   RELOCATION_MATCH PASS   ~CV_BookCollectingScript
+
+WINS: 9
+  0074ee90 RELOCATION_MATCH CTCContainerRewardHero::?RewardHeroWithItems@CTCContainerRewardHero@@QAE_NXZ
+  0075aec0 RELOCATION_MATCH CTCPhysicsRigidBody::?Move@CTCPhysicsRigidBody@@UAEXXZ
+  0077a180 RELOCATION_MATCH CTCDExperienceOrb::?OnCollected@CTCDExperienceOrb@@QAEXAAVCThing@@@Z
+  009c01c0 RELOCATION_MATCH CDisplayManager::??1CDisplayManager@@UAE@XZ
+  009ce180 RELOCATION_MATCH CBankFile::??1CBankFile@@UAE@XZ
+  00a996d0 RELOCATION_MATCH C3DAnimFileLoader::??1C3DAnimFileLoader@@UAE@XZ
+  00ca1060 RELOCATION_MATCH libvorbis::@res1_forward@28
+  00df10d0 RELOCATION_MATCH NScript::CQ_SecretPassageScript::??1CQ_SecretPassageScript@NScript@@UAE@XZ
+  00e57aa0 RELOCATION_MATCH NScript::CV_BookCollectingScript::??1CV_BookCollectingScript@NScript@@UAE@XZ
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  CTCContainerRewardHero_RewardHeroWithItems_0074ee90
+  CTCPhysicsRigidBody_Move_0075aec0
+  CTCDExperienceOrb_OnCollected_0077a180
+  CDisplayManager_CDisplayManager_009c01c0
+  CBankFile_CBankFile_009ce180
+  C3DAnimFileLoader_C3DAnimFileLoader_00a996d0
+  libvorbis_res1forward_00ca1060
+  NScriptCQSecretPassageScript_CQSecretPassageScript_00df10d0
+  NScriptCVBookCollectingScript_CVBookCollectingScript_00e57aa0

@@ -1,0 +1,4 @@
+1	first shape: CRightHandedSet(GetRowZ, GetRowY), by-value GetPositionMatrixFromRHSet, inline operator*	DIFFER(340v306)
+2	user C3DVector copy ctor + user CMatrix3x4 default ctor (non-POD hidden result in ecx)	DIFFER(294v306)
+3	operator* terms reordered + named copy of Body.CMPosition	DIFFER(286v306)
+4	in-place CMatrix3x4::TransformVector(C3DVector&) (Ego_r QBE) on the named copy	RELOCATION_MATCH

@@ -1,0 +1,8 @@
+p1 base model (const PeekTC, non-const inline GetTC, ternary) | DIFFER(472v455) nonreloc=117
+p2 map-pointer lookup + count-first LowerBound + SoundMap long-aligned | DIFFER(460v455) nonreloc=52
+p3 implicit CCharString conversion in GetPSoundPair arg | DIFFER(464v455) nonreloc=45 (string ctor now before soundDef load)
+p4 key passed as a direct cast temp (no named key local) | DIFFER(464v455) nonreloc=45 (no change: key still in a frame slot)
+p5 PeekTC takes const ETCInterfaceType& (caller-side temp) | DIFFER(467v455) nonreloc=49 (worse: key reloaded for the compare)
+p6 loop re-reads GetDef().Pickup...begin()/end() (no map reference local) | DIFFER(464v455) nonreloc=38 (loop head now matches)
+p7 engine/CSubDefClassBase.h + same-TU CDefClassBase::GetSubDef<T> body (as landed 0x008C6DB0 g6) + explicit CCharString(...,-1) | DIFFER(451v455) nonreloc=9 (soundDef tracked in esi, key in arg slot; ctor's eax reused as the arg)
+p8 local CCharString with the PDB default length -1 so PICKUP_SOUND converts implicitly (lea re-taken for the arg) | RELOCATION_MATCH

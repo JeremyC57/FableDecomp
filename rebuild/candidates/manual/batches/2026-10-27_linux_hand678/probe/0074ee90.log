@@ -1,0 +1,23 @@
+p1 base model (CDefPointer copy temp, declared-only ~vector/LowerBound, peek-or-unset stats) | DIFFER(521v484) nonreloc=149
+p2 same-TU CDefClassBase::GetSubDef<T> body | DIFFER(498v484) nonreloc=135
+p3 'gold <= 0 && items.empty()' message block first, then gold, then items (block order now retail's) | DIFFER(502v484) nonreloc=99
+p4 early 'return false' guard instead of the enclosing if | DIFFER(510v484) nonreloc=116 (worse: pushes sunk)
+p5 stats as 'HasTC ? GetTC : 0' ternary | DIFFER(495v484) nonreloc=90 (miss becomes 0, retail reads the dead slot; extra entry store traced to the chestDef CDefPointer)
+p6 GetSubDef result in a named bool 'found' (temp released before the test) | DIFFER(486v484) nonreloc=83 (entry store gone)
+p7 items + gold declared before the receiver lookup | DIFFER(487v484) nonreloc=58 (ebx=0 now, but the zero stores land before the lookup)
+p8 receiver through an out-param GetInterface(&receiver, 0xCB) in the guard | DIFFER(486v484) nonreloc=83 (same as p6: receiver still promoted to ebx)
+p9 'long gold = 0' at function top | DIFFER(490v484) nonreloc=82 (gold store hoisted to entry; no ebx zero web)
+p10 gold declared before items (inside the guard) | DIFFER(486v484) nonreloc=83 (store order gold-first now retail's)
+p11 hero typed CThing* | DIFFER(486v484) nonreloc=83 (no change)
+p12 single 'rewarded' result flag with if/else arms | DIFFER(514v484) nonreloc=112 (worse)
+p13 same-TU out-of-line CVectorMap::LowerBound body under auto_inline(off) (callee register facts) | DIFFER(489v484) nonreloc=29 (ebx zero web + receiver spill now retail's)
+p14 shared engine/CCountedPointer.h for PTextBank / PCutSceneMainFont | DIFFER(489v484) nonreloc=29 (no change; dead 'add eax,1614Ch' remains)
+p15 font passed as *PCutSceneMainFont.Data (no inline operator*) | DIFFER(484v484) nonreloc=50 (PeekComponent call sinks below the pushes; reverted)
+p16 Ego_r inline CMainGameComponent::GetTextBank() / PeekCutSceneMainFont() accessors | DIFFER(484v484) nonreloc=28 (size matches; frame slots remain)
+p17 receiver through out-param GetInterface (declared before the guard) | DIFFER(484v484) nonreloc=28 (same slots)
+p18 named key local inside GetTC | DIFFER(484v484) nonreloc=28 (same slots)
+p19 stats through an out-param GetInterfaceV (result ignored) | DIFFER(484v484) nonreloc=28 (same slots)
+p20 receiver declared before the guard, assigned inside | DIFFER(484v484) nonreloc=28
+p21 stats declared at block scope after GetRewardItems | DIFFER(484v484) nonreloc=28
+p22 same-TU auto_inline(off) GetRewardItems stand-in {gold = 0;} | DIFFER(469v484) nonreloc=22 (slots move to retail's, but the empty() tests fold away)
+p23 stand-in also erases the vector first (0x0074FB20, as the real body's first call) | RELOCATION_MATCH

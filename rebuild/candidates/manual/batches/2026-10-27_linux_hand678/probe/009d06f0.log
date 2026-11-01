@@ -1,0 +1,16 @@
+1	p1: first shape (OpenFlags then ReadOnly; two early returns; engine CCountedPointer; inline GetDiskFile)	DIFFER(385v385) nonreloc 10: store order + fail-block placement
+2	p2: ReadOnly before OpenFlags + `!Find || version !=` merged condition	DIFFER(393v385)
+3	V4: nested ifs (Find { version == { success } }) return false	DIFFER(393v385)
+4	V5: `Find && version ==` { success } return false	DIFFER(393v385)
+5	V6: named bool found, `!found || version !=`	DIFFER(393v385)
+6	p3: ReadOnly before OpenFlags + two separate early returns	DIFFER(385v385) nonreloc 8: only the find-fail block sits after the version check
+7	V7: version compare operands swapped	DIFFER(385v385) nonreloc 8
+8	V8: version in a named local	DIFFER(385v385) nonreloc 8
+9	V9: empty then / else return false	DIFFER(393v385)
+10	V10: `if (!Find) return false; if (version ==) {success} return false`	DIFFER(393v385) nonreloc 14
+11	V11: `if (Find) { if (version !=) return false; success } return false`	DIFFER(393v385) nonreloc 14
+12	V12: if / else if / else chain	DIFFER(385v385) nonreloc 8
+13	V13: bool ok result local	DIFFER(412v385) nonreloc 26
+14	flags /Ob1 /Os /EHsc /Oy- on p3	best /Ob1 = same nonreloc 8; others worse
+15	V14: both checks 'goto failed' to one label after the success block	DIFFER(385v385) nonreloc 8
+16	V15: fail label inside the first if's block, version check 'goto failed' (fail block first in source)	DIFFER(385v385) nonreloc 8 (VC still merges into the second position)

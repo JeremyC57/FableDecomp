@@ -1,0 +1,1 @@
+1	first shape: user dtor (shader uninit, scoped_ptr reset, surface uninit, device release) + STLport list/vector + boost scoped_ptr	RELOCATION_MATCH

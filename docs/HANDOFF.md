@@ -12,7 +12,7 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
   5/5 proof + lib_verify MATCH). **Nothing is running** (chunk 651 landed 3/10 under the increased-attempts brief). The owner gives the `Fable.exe` link in a new
   container; it is never written into the repo.
 - Coverage (`rebuild/COVERAGE.md`; `tools/landed_metrics.py` → `write_decomp_dashboard.py` → `update_readme_progress.py`,
-  never hand-edit): 53,062 of 57,613 known functions (92.1%), 45,645 of the original 49,568 (92.1%); 174 `retail_asm`,
+  never hand-edit): 53,071 of 57,613 known functions (92.1%), 45,654 of the original 49,568 (92.1%); 174 `retail_asm`,
   441 `toolchain_library`, 13 asm_bake oracles.
 - Retail compiler cl 13.10.3077 RTM (lane default `$S/wine/vc71rtm`); `--qfe` 13.10.4035 (`$S/wine/vc71`). Lane-only
   downloads (never committed): VS 2003 `Vc7/lib` (`libsig/fetch_vs2003_libs.sh` → `$S/wine/vs2003lib`,

@@ -1,0 +1,2 @@
+1	first shape: user dtor { Close(); } with same-TU Close -> CloseEntries, STLport trees/vectors, out-of-line member dtors	DIFFER(473v473) ChecksumCache at +0xF5 (byte-array model alignment)
+2	CChecksumCacheFile body as dwords (4-byte alignment)	RELOCATION_MATCH

@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+0x00DF10D0	RELOCATION_MATCH	285v285	PASS	??1CQ_SecretPassageScript@NScript@@UAE@XZ (implicit quest-script dtor; label ~CParticleEmitter wrong)
+0x00E57AA0	RELOCATION_MATCH	265v265	PASS	??1CV_BookCollectingScript@NScript@@UAE@XZ (implicit quest-script dtor; label ~CParticleEmitter_MeshFree wrong)
+0x009C01C0	RELOCATION_MATCH	268v268	PASS	??1CDisplayManager@@UAE@XZ (label CInputManagerDX wrong)
+0x0075AEC0	RELOCATION_MATCH	306v306	PASS	?Move@CTCPhysicsRigidBody@@UAEXXZ slot 87
+0x00A996D0	RELOCATION_MATCH	357v357	PASS	??1C3DAnimFileLoader@@UAE@XZ (label right)
+0x009CE180	RELOCATION_MATCH	473v473	PASS	??1CBankFile@@UAE@XZ (label NHeroInformationScreens::CBase wrong)
+0x00CA1060	RELOCATION_MATCH	490v490	PASS	libvorbis 1.0.1 res1_forward @res1_forward@28 (label Environment_AccumulateVertexData wrong)
+0x0077A180	RELOCATION_MATCH	455v455	PASS	?OnCollected@CTCDExperienceOrb@@QAEXAAVCThing@@@Z (8 probes)
+0x0074EE90	RELOCATION_MATCH	484v484	PASS	?RewardHeroWithItems@CTCContainerRewardHero@@QAE_NXZ (23 probes; same-TU LowerBound body + GetRewardItems stand-in)
+0x009D06F0	DIFFER	385v385	-	?OpenReadOnly@CBankFile@@UAE_NABVCCharString@@K@Z parked: find-fail exit block placement only (16 probes)
