@@ -1,0 +1,1 @@
+1	engine/CBaseClassNonCopyable.h + engine/CCountedPointer.h, STLport 4.6 vector text inside CVectorMap<long,CSoundBankRecord>, user-declared empty virtual dtor	RELOCATION_MATCH

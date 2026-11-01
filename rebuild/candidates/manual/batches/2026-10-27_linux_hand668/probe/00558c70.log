@@ -1,0 +1,2 @@
+1	qualified base ChangeState then switch {1,5: AddObserver + ObserveEvent(0x19) unless accept; 0,6: RemoveObserver}; jump table checked by hand	RELOCATION_MATCH
+2	src: EEvent without invented enumerators, (EEvent)0x19	RELOCATION_MATCH

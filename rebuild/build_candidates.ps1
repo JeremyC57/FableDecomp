@@ -372420,6 +372420,76 @@ $catalog = @(
         TestSource = '00/a5/CCachedFile_SetLength_00a5b190_test.cpp'
         PassPattern = '00a5b190_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00558c70'
+        Module = 'NUISystem::CNavButton'
+        Source = '00/55/NUISystemCNavButton_ChangeState_00558c70.cpp'
+        TestSource = '00/55/NUISystemCNavButton_ChangeState_00558c70_test.cpp'
+        PassPattern = '00558c70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d7a90'
+        Module = 'NCreatureMode::CModeGuildmasterPowerUpShield'
+        Source = '00/8d/NCreatureModeCModeGuildmasterPowerUpShield_OnDeactivate_008d7a90.cpp'
+        TestSource = '00/8d/NCreatureModeCModeGuildmasterPowerUpShield_OnDeactivate_008d7a90_test.cpp'
+        PassPattern = '008d7a90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d7b20'
+        Module = 'NCreatureMode::CModeGuildmasterPowerUpSpeed'
+        Source = '00/8d/NCreatureModeCModeGuildmasterPowerUpSpeed_OnDeactivate_008d7b20.cpp'
+        TestSource = '00/8d/NCreatureModeCModeGuildmasterPowerUpSpeed_OnDeactivate_008d7b20_test.cpp'
+        PassPattern = '008d7b20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00991880'
+        Module = 'CASoundManager'
+        Source = '00/99/CASoundManager_CASoundManager_00991880.cpp'
+        TestSource = '00/99/CASoundManager_CASoundManager_00991880_test.cpp'
+        PassPattern = '00991880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c2fd0'
+        Module = 'CRenderManager2D'
+        Source = '00/9c/CRenderManager2D_CRenderManager2D_009c2fd0.cpp'
+        TestSource = '00/9c/CRenderManager2D_CRenderManager2D_009c2fd0_test.cpp'
+        PassPattern = '009c2fd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a3bd00'
+        Module = 'CBaseVideoRenderer'
+        Source = '00/a3/CBaseVideoRenderer_QueryInterface_00a3bd00.cpp'
+        TestSource = '00/a3/CBaseVideoRenderer_QueryInterface_00a3bd00_test.cpp'
+        PassPattern = '00a3bd00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a75e30'
+        Module = 'CNavQuadTreeNode'
+        Source = '00/a7/CNavQuadTreeNode_SetUpNeighbours_00a75e30.cpp'
+        TestSource = '00/a7/CNavQuadTreeNode_SetUpNeighbours_00a75e30_test.cpp'
+        PassPattern = '00a75e30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b42a90'
+        Module = 'CEngineMap'
+        Source = '00/b4/CEngineMap_CEngineMap_00b42a90.cpp'
+        TestSource = '00/b4/CEngineMap_CEngineMap_00b42a90_test.cpp'
+        PassPattern = '00b42a90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b52870'
+        Module = 'CEngineWeatherRenderer'
+        Source = '00/b5/CEngineWeatherRenderer_FadeRainToTarget_00b52870.cpp'
+        TestSource = '00/b5/CEngineWeatherRenderer_FadeRainToTarget_00b52870_test.cpp'
+        PassPattern = '00b52870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b52900'
+        Module = 'CEngineWeatherRenderer'
+        Source = '00/b5/CEngineWeatherRenderer_FadeSnowToTarget_00b52900.cpp'
+        TestSource = '00/b5/CEngineWeatherRenderer_FadeSnowToTarget_00b52900_test.cpp'
+        PassPattern = '00b52900_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

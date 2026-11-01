@@ -35697,3 +35697,8 @@ _static_l_desc	0139c8b0	00c051c0
 ?IsToCreateCombatParticleEffects@NCombatActionHelpers@@YI_NABVCThing@@PBV2@@Z	008f7860	008553c0
 ?GetTotalTimeWorldFrames@CCreatureActionBase@@QBEJXZ	006925b0	008c3f20
 ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@2@@Z	009aa780	009ac7c0
+??1?$vector@VCQuickDrawTriInfo@@V?$allocator@VCQuickDrawTriInfo@@@std@@@std@@QAE@XZ	009c2f50	009c2fd0
+??1CRenderManagerCore@@UAE@XZ	00a0b060	009c2fd0
+??1CShaderDataBank@@UAE@XZ	00a620d0	009c2fd0
+??1CEngineStaticMapFileBlockManager@@QAE@XZ	00b443b0	00b42a90
+?Reset@CEngineStaticMapFileBlockManager@@QAEXXZ	00be05d0	00b42a90

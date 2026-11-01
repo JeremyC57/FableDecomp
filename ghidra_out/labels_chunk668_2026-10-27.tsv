@@ -1,0 +1,19 @@
+address	name	evidence
+00b42a90	CEngineMap::~CEngineMap	chunk 668 RELOCATION_MATCH: callees CloseStaticMap / CEngineLandscapeRenderer::DeleteMap / CEngineLocalDetailGenerator::DeleteMap, Ego_r members (StaticMapName +0x1C, AsyncFileEntry +0x3C); sole caller ??_GCEngineMap 0x00B44420
+00991880	CASoundManager::~CASoundManager	chunk 668 RELOCATION_MATCH: stores vtable 0x0129A574 (RTTI CASoundManager); callers ??_GCASoundManager 0x009937B0 (slot 0) and the CSoundManagerLH dtor tail
+008d7a90	NCreatureMode::CModeGuildmasterPowerUpShield::OnDeactivate	chunk 668 RELOCATION_MATCH: slot 6 of vtable 0x012685F0 (RTTI), Ego_r donor 0x00818E40
+008d7b20	NCreatureMode::CModeGuildmasterPowerUpSpeed::OnDeactivate	chunk 668 RELOCATION_MATCH: slot 6 of vtable 0x01268624 (RTTI), Ego_r donor 0x00818ED0
+00b52870	CEngineWeatherRenderer::FadeRainToTarget	chunk 668 RELOCATION_MATCH: Ego_r private AAEXM (donor 0x009F3770); tail-jumps StartRaining 0x00B51EA0; WorldFrameUpdate rain block caller
+00b52900	CEngineWeatherRenderer::FadeSnowToTarget	chunk 668 RELOCATION_MATCH: Ego_r private AAEXM (donor 0x009F3810); tail-jumps StartSnowing 0x00B51F00; snow block caller (retail reads rain strength +0x5C8: copy-paste kept)
+00558c70	NUISystem::CNavButton::ChangeState	chunk 668 RELOCATION_MATCH: slot 48 of vtable 0x0124B04C (RTTI NUISystem::CNavButton), the UI ChangeState slot; calls CChangingStateComponent::ChangeState 0x0052CF40
+00558c10	NUISystem::CNavButton::IsAcceptButton	chunk 668 respell: Ego_r + FableWin mangle const (QBE_NXZ); called by ChangeState 0x00558C70
+00a3bd00	CBaseVideoRenderer::QueryInterface	chunk 668 MATCH: slot 0 of IUnknown vtables 0x0129D04C / 0x012BF598, DECLARE_IUNKNOWN forwarder; adjustor thunks 0x00A3BD30 (-4) etc.
+009c2fd0	CRenderManager2D::~CRenderManager2D	chunk 668 RELOCATION_MATCH: called by ??_GCRenderManager2D 0x009E16E0 (vtable 0x0129B9EC) and ??_GCRenderManager 0x009C3100; tail ~CRenderManagerCore 0x00A0B060
+009c2f50	std::vector<CQuickDrawTriInfo>::~vector	chunk 668: three callers in ~CRenderManager2D on QuickDraw2DTriInfo/QuickDrawAlphaTriInfo/QuickDrawTriInfo (Ego_r vector<CQuickDrawTriInfo>)
+00a620d0	CShaderDataBank::~CShaderDataBank	chunk 668: stores vtable 0x0129D644 (RTTI CShaderDataBank); called by ~CRenderManager2D on VertexShaderBank; Ego_r + FableWin
+00a75e30	CNavQuadTreeNode::SetUpNeighbours	chunk 668 RELOCATION_MATCH: slot 17 of vtable 0x0129DCD4 (RTTI CNavQuadTreeNode); calls slot 16 SetUpNeighboursWithLeaf 0x00A75F10 and itself on children; Ego_r donor
+00b44420	CEngineMap::`scalar deleting destructor'	chunk 668: calls ~CEngineMap 0x00B42A90 then operator delete; FableWin ??_GCEngineMap@@QAEPAXI@Z
+009937b0	CASoundManager::`scalar deleting destructor'	chunk 668: slot 0 of vtable 0x0129A574, calls ??1CASoundManager 0x00991880
+009e16e0	CRenderManager2D::`scalar deleting destructor'	chunk 668: slot 0 of vtable 0x0129B9EC, calls ??1CRenderManager2D 0x009C2FD0
+009c3100	CRenderManager::`scalar deleting destructor'	chunk 668: slot 0 of vtable 0x0129B400; implicit ~CRenderManager inlines to the call of ??1CRenderManager2D
+00b59840	CEngineLocalDetailGenerator::DeleteMap	chunk 668: Ego_r + FableWin ?DeleteMap@CEngineLocalDetailGenerator@@QAEXPAVCEngineMap@@@Z; callers ~CEngineMap 0x00B42A90 and CEngineWorldMap::DeleteMap 0x00B42B10

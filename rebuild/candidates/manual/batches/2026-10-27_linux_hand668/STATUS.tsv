@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00b42a90	RELOCATION_MATCH	121v121	PASS	CEngineMap::~CEngineMap (catalog ~CBankFileEntryUpdateData wrong); 2 probes
+00991880	RELOCATION_MATCH	104v104	PASS	CASoundManager::~CASoundManager (catalog ~CBankFileEntryUpdateData wrong); 1 probe
+008d7a90	RELOCATION_MATCH	135v135	PASS	NCreatureMode::CModeGuildmasterPowerUpShield::OnDeactivate (slot 6); 3 probes
+008d7b20	RELOCATION_MATCH	135v135	PASS	NCreatureMode::CModeGuildmasterPowerUpSpeed::OnDeactivate (slot 6); 1 probe
+00b52870	RELOCATION_MATCH	132v132	PASS	CEngineWeatherRenderer::FadeRainToTarget (private AAE); 3 probes
+00b52900	RELOCATION_MATCH	132v132	PASS	CEngineWeatherRenderer::FadeSnowToTarget (catalog FadeRainToTarget wrong; reads +0x5C8 as retail); 1 probe
+00558c70	RELOCATION_MATCH	151v151	PASS	NUISystem::CNavButton::ChangeState (slot 48); code + jump/index tables; 2 probes
+00a3bd00	MATCH	15v15	PASS	CBaseVideoRenderer::QueryInterface (DECLARE_IUNKNOWN; not a deleting dtor); 2 probes
+009c2fd0	RELOCATION_MATCH	217v217	PASS	CRenderManager2D::~CRenderManager2D implicit (catalog ~CEnginePrimitiveManagerOcclusionBase wrong); 2 probes
+00a75e30	RELOCATION_MATCH	224v224	PASS	CNavQuadTreeNode::SetUpNeighbours (slot 17, protected MAE); 1 probe

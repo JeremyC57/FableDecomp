@@ -1,0 +1,38 @@
+addr       parity           behav  name
+00558c70   WARN RELOC_UNCHECKED: no object block of the retail length (multi-block TU)
+00558c70   RELOCATION_MATCH PASS   ChangeState
+008d7a90   RELOCATION_MATCH PASS   OnDeactivate
+008d7b20   RELOCATION_MATCH PASS   OnDeactivate
+00991880   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00991880   RELOCATION_MATCH PASS   ~CASoundManager
+009c2fd0   RELOCATION_MATCH PASS   ~CRenderManager2D
+00a3bd00   MATCH            PASS   QueryInterface
+00a75e30   RELOCATION_MATCH PASS   SetUpNeighbours
+00b42a90   WARN RELOC_NAME: ?DeleteMap@CEngineLocalDetailGenerator@@QAEXPAVCEngineMap@@@Z -> 00b59840 labelled 'CEngineResourceManager::DestroyMapStrip_00b59840'
+00b42a90   RELOCATION_MATCH PASS   ~CEngineMap
+00b52870   RELOCATION_MATCH PASS   FadeRainToTarget
+00b52900   RELOCATION_MATCH PASS   FadeSnowToTarget
+
+WINS: 10
+  00558c70 RELOCATION_MATCH NUISystem::CNavButton::?ChangeState@CNavButton@NUISystem@@UAEXK@Z
+  008d7a90 RELOCATION_MATCH NCreatureMode::CModeGuildmasterPowerUpShield::?OnDeactivate@CModeGuildmasterPowerUpShield@NCreatureMode@@UAEXXZ
+  008d7b20 RELOCATION_MATCH NCreatureMode::CModeGuildmasterPowerUpSpeed::?OnDeactivate@CModeGuildmasterPowerUpSpeed@NCreatureMode@@UAEXXZ
+  00991880 RELOCATION_MATCH CASoundManager::??1CASoundManager@@UAE@XZ
+  009c2fd0 RELOCATION_MATCH CRenderManager2D::??1CRenderManager2D@@UAE@XZ
+  00a3bd00 MATCH CBaseVideoRenderer::?QueryInterface@CBaseVideoRenderer@@UAGJABU_GUID@@PAPAX@Z
+  00a75e30 RELOCATION_MATCH CNavQuadTreeNode::?SetUpNeighbours@CNavQuadTreeNode@@MAEXW4ENavQuadTreeNeighbours@@PAVCANavQuadTreeNode@@@Z
+  00b42a90 RELOCATION_MATCH CEngineMap::??1CEngineMap@@QAE@XZ
+  00b52870 RELOCATION_MATCH CEngineWeatherRenderer::?FadeRainToTarget@CEngineWeatherRenderer@@AAEXM@Z
+  00b52900 RELOCATION_MATCH CEngineWeatherRenderer::?FadeSnowToTarget@CEngineWeatherRenderer@@AAEXM@Z
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  NUISystemCNavButton_ChangeState_00558c70
+  NCreatureModeCModeGuildmasterPowerUpShield_OnDeactivate_008d7a90
+  NCreatureModeCModeGuildmasterPowerUpSpeed_OnDeactivate_008d7b20
+  CASoundManager_CASoundManager_00991880
+  CRenderManager2D_CRenderManager2D_009c2fd0
+  CBaseVideoRenderer_QueryInterface_00a3bd00
+  CNavQuadTreeNode_SetUpNeighbours_00a75e30
+  CEngineMap_CEngineMap_00b42a90
+  CEngineWeatherRenderer_FadeRainToTarget_00b52870
+  CEngineWeatherRenderer_FadeSnowToTarget_00b52900

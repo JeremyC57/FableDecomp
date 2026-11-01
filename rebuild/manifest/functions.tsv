@@ -9959,8 +9959,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00558b30	`vector_deleting_destructor'	CRedefinerList	__thiscall	void *	2	CRedefinerList *,uint	1	yes	accepted									
 00558b90	CComponentContainer	CComponentContainer	__thiscall	undefined	2	CComponentContainer *,long	0	yes	accepted									
 00558bc0	CNavButton	NUISystem::CNavButton	unknown	undefined	0		0			discovered	gapscan							
-00558c10	IsAcceptButton	CNavButton	__thiscall	bool	1	CNavButton *	1	yes	accepted									
-00558c70	NUISystem::CNavButton::vfunc_48	NUISystem::CNavButton	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00558c10	IsAcceptButton	NUISystem::CNavButton	__thiscall	bool	1	CNavButton *	1	yes	accepted									
+00558c70	ChangeState	NUISystem::CNavButton	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00558d30	`scalar deleting destructor'	NUISystem::CNavButton	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted									
 00558d80	NUISystem::CDraggableInto::vfunc_43	NUISystem::CDraggableInto	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00558d90	NUISystem::CDraggableInto::vfunc_1	NUISystem::CDraggableInto	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -29168,8 +29168,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008d7930	OnDeactivate	CModeScorpionKingTailPlunge	__thiscall	void	1	CModeScorpionKingTailPlunge *	1	yes	accepted									
 008d79a0	OnDeactivate	CModeScreamerSuperAttack	__thiscall	void	1	CModeScreamerSuperAttack *	1	yes	accepted									
 008d79f0	OnDeactivate	CModeSummonerLightningOrb	__thiscall	void	1	CModeSummonerLightningOrb *	1	yes	accepted									
-008d7a90	NCreatureMode::CModeGuildmasterPowerUpShield::vfunc_6	NCreatureMode::CModeGuildmasterPowerUpShield	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-008d7b20	NCreatureMode::CModeGuildmasterPowerUpSpeed::vfunc_6	NCreatureMode::CModeGuildmasterPowerUpSpeed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008d7a90	OnDeactivate	NCreatureMode::CModeGuildmasterPowerUpShield	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+008d7b20	OnDeactivate	NCreatureMode::CModeGuildmasterPowerUpSpeed	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008d7bb0	EndHeadEffects	CTCKraken	__thiscall	void	1	CTCKraken *	1	yes	accepted									
 008d7c20	CTCCreatureNavigation::CTCCreatureNavigation	CTCCreatureNavigation	unknown	undefined	0		0	yes	accepted									
 008d7ca0	CModeSitBase	NCreatureMode::CModeSitBase	__thiscall	undefined	2	CModeSitBase *,CThing *	0	yes	accepted									
@@ -33197,7 +33197,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00991750	OnDie	CThing	__thiscall	void	1	CThing *	1	yes	accepted									
 009917e0	FindFirstSymbolWithVal	CSymbolMap	__thiscall	CSymbolInfo *	2	CSymbolMap *,long	1	yes	accepted									
 00991840	MessageMap::FindMessageByID	MessageMap	unknown	undefined	0		0	yes	accepted									
-00991880	~CBankFileEntryUpdateData	CBankFileEntryUpdateData	__thiscall	void	1	CBankFileEntryUpdateData *	1	yes	accepted									
+00991880	~CASoundManager	CASoundManager	__thiscall	void	1	CBankFileEntryUpdateData *	1	yes	accepted									
 009918f0	Unwind@00fbdab0	_global	unknown	undefined	0		0	yes	accepted									
 00991910	CASoundManager	CASoundManager	unknown	undefined	0		0	yes	accepted									
 009919c0	RegisterSoundBanks	_global	unknown	undefined	0		0	yes	accepted									
@@ -33244,7 +33244,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009936c0	CASoundManager::vfunc_53	CASoundManager	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 009936e0	NScript_CIsThingAlive_Vector_PushBack	_global	unknown	undefined	0		0	yes	accepted									
 00993730	make_heap<std::pair<unsigned_long,CSoundPair>*,CKeyPairCompareLess<unsigned_long,CSoundPair>_>	make_heap<std	__fastcall	void	3	pair<unsigned_long,CSoundPair> *,pair<unsigned_long,CSoundPair> *,CKeyPairCompareLess<unsigned_long,CSoundPair>	1	yes	accepted									
-009937b0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CLandscapeBackgroundPatch_vectordeletingdestructor_009937b0.cpp
+009937b0	`scalar deleting destructor'	CASoundManager	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CLandscapeBackgroundPatch_vectordeletingdestructor_009937b0.cpp
 009937d0	NScript_CIsThingAlive_Vector_Insert	_global	unknown	undefined	0		0	yes	accepted									
 00993860	Heap_Sift_Down_Recursive	_global	unknown	undefined	0		0	yes	accepted									
 009939b0	std::make_heap_Sift_4	std	unknown	undefined	0		0	yes	accepted									
@@ -34240,10 +34240,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009c2c10	~CUnprovenContainer_009c1e00	CUnprovenContainer_009c1e00	unknown	undefined	0		0	yes	accepted									
 009c2ca0	_M_insert_overflow	std::vector<ESurfaceMultisampleType, std::allocator<ESurfaceMultisampleType>>	unknown	undefined	0		0	yes	accepted									
 009c2e30	_M_insert_overflow	std::vector<CPixelFormat, std::allocator<CPixelFormat>>	unknown	undefined	0		0	yes	accepted									
-009c2f50	ResetRings	CCombatWheel	__thiscall	void	1	CCombatWheel *	1	yes	accepted									
-009c2fd0	~CEnginePrimitiveManagerOcclusionBase	CEnginePrimitiveManagerOcclusionBase	__thiscall	void	1	CEnginePrimitiveManagerOcclusionBase *	1	yes	accepted									
+009c2f50	~vector	std::vector<CQuickDrawTriInfo>	__thiscall	void	1	CCombatWheel *	1	yes	accepted									
+009c2fd0	~CRenderManager2D	CRenderManager2D	__thiscall	void	1	CEnginePrimitiveManagerOcclusionBase *	1	yes	accepted									
 009c30b0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9c\CLandscapeBackgroundPatch_vectordeletingdestructor_009c30b0.cpp
-009c3100	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9c\CLandscapeBackgroundPatch_vectordeletingdestructor_009c3100.cpp
+009c3100	`scalar deleting destructor'	CRenderManager	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9c\CLandscapeBackgroundPatch_vectordeletingdestructor_009c3100.cpp
 009c3130	CScreenFilterSThingByPass	CScreenFilterSThingByPass	__thiscall	undefined	3	CScreenFilterSThingByPass *,CScriptThing *,bool	0	yes	accepted									
 009c31e0	Pause	CFileInstaller	__thiscall	void	1	CFileInstaller *	1	yes	accepted									
 009c3250	Unpause	CFileInstaller	__thiscall	void	1	CFileInstaller *	1	yes	accepted									
@@ -34757,7 +34757,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009e1650	_M_clear	std::vector<CQuickDrawTriInfo, std::allocator<CQuickDrawTriInfo>>	__thiscall	void	1	CCombatWheel *	1	yes	accepted									
 009e1690	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 009e16b0	CVertexShaderConstantLayoutEmpty::PeekName	CVertexShaderConstantLayoutEmpty	__thiscall	CCharString	1	CVertexShaderConstantLayoutEmpty *	1	yes	accepted									
-009e16e0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9e\CLandscapeBackgroundPatch_vectordeletingdestructor_009e16e0.cpp
+009e16e0	`scalar deleting destructor'	CRenderManager2D	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9e\CLandscapeBackgroundPatch_vectordeletingdestructor_009e16e0.cpp
 009e1750	CCombatWheel_ReallocTriArray	_global	unknown	undefined	0		0	yes	accepted									
 009e1850	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9e\CLandscapeBackgroundPatch_vectordeletingdestructor_009e1850.cpp
 009e1870	CCombatWheel::AppendTriangleInfo	CCombatWheel	unknown	undefined	0		0	yes	accepted									
@@ -36755,7 +36755,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a3bcd0	CTextureRenderer::vfunc_8	CTextureRenderer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00a3bce0	CTextureRenderer::vfunc_13	CTextureRenderer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00a3bcf0	CTextureRenderer::vfunc_20	CTextureRenderer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00a3bd00	CTextureRenderer::vfunc_0	CTextureRenderer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00a3bd00	QueryInterface	CBaseVideoRenderer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00a3bdc0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\CLandscapeBackgroundPatch_vectordeletingdestructor_00a3bdc0.cpp
 00a3bde0	OnReadFinished	CActiveFile	__thiscall	void	1	CActiveFile *	1	yes	accepted									
 00a3be10	C3DAnimationState::Validate	C3DAnimationState	__thiscall	void	1	C3DAnimationState *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\C3DAnimationState_Validate_00a3be10.cpp
@@ -37482,7 +37482,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a62000	?PrepareDataForInclusion@CShaderDataBank@@MAEXKABV?$CArray@VCCharString@@@@KV?$CCountedPointer@VCBankStateBlock@@@@AAVCDataOutputStream@@2@Z	CShaderDataBank	__thiscall	void	3	CWorldMap *,long,CCountedPointer<CAFile>	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a6\CShaderDataBank_PrepareDataForInclusionCShaderDataBankMAEXKABVCA_00a62000.cpp
 00a62020	CBedDef	CBedDef	__thiscall	undefined	1	CBedDef *	0	yes	accepted									
 00a62050	FreeDeviceSpecificResources	CMeshDataBank	__thiscall	void	1	CMeshDataBank *	1	yes	accepted									
-00a620d0	~CParticleEffect	CParticleEffect	__thiscall	void	1	CParticleEffect *	1	yes	accepted									
+00a620d0	~CShaderDataBank	CShaderDataBank	__thiscall	void	1	CParticleEffect *	1	yes	accepted									
 00a62110	?Close@CShaderDataBank@@UAEXXZ	CShaderDataBank	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a6\CShaderDataBank_CloseCShaderDataBankUAEXXZ_00a62110.cpp
 00a62120	CShaderBankEntry	CShaderBankEntry	__thiscall	undefined	4	CShaderBankEntry *,ulong,ulong,CShaderDataBank *	0	yes	accepted									
 00a623d0	?NotifyEntryAdded@CShaderDataBank@@MAEXKKABV?$CArray@D@@@Z	CShaderDataBank	__thiscall	void	4	CShaderDataBank *,ulong,ulong,CArray<char> *	1	yes	accepted									
@@ -37970,7 +37970,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a75d60	SetBRNode	CNavQuadTreeNode	__thiscall	void	2	CNavQuadTreeNode *,CANavQuadTreeNode *	1	yes	accepted									
 00a75da0	CalculateChildrenNeighbours	CNavQuadTreeNode	__thiscall	void	1	CNavQuadTreeNode *	1	yes	accepted									
 00a75e00	?RemoveNeighbours@CNavQuadTreeNode@@MAEXXZ	CNavQuadTreeNode	__thiscall	void	1	CNavQuadTreeNode *	1	yes	accepted									
-00a75e30	CNavQuadTreeNode::SetUpNeighbours	CNavQuadTreeNode	__thiscall	void	3	CNavQuadTreeNode *,ENavQuadTreeNeighbours,CANavQuadTreeNode *	1	yes	accepted									
+00a75e30	SetUpNeighbours	CNavQuadTreeNode	__thiscall	void	3	CNavQuadTreeNode *,ENavQuadTreeNeighbours,CANavQuadTreeNode *	1	yes	accepted									
 00a75f10	CNavQuadTreeNode::SetUpNeighboursWithLeaf	CNavQuadTreeNode	__thiscall	void	3	CNavQuadTreeNode *,ENavQuadTreeNeighbours,CANavQuadTreeNode *	1	yes	accepted									
 00a75fc0	MakeRegion	CNavQuadTreeNode	__thiscall	bool	3	CNavQuadTreeNode *,CNavRegion *,list<CANavQuadTreeNode*,std::allocator<CANavQuadTreeNode*>_> *	1	yes	accepted									
 00a76010	AddNavigableNodeNeighbouringSwitchableNodeToRegion	CNavQuadTreeNode	__thiscall	bool	3	CNavQuadTreeNode *,CNavRegion *,list<CANavQuadTreeNode*,std::allocator<CANavQuadTreeNode*>_> *	1	yes	accepted									
@@ -41364,7 +41364,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b42750	OpenStaticMaps	CEngineWorldMap	__thiscall	void	2	CEngineWorldMap *,STATIC_MAP_OPEN_STATE	1	yes	accepted									
 00b428e0	CEngineWorldMap::SetStaticMapFileForUse	CEngineWorldMap	unknown	undefined	0		0	unmeasured	accepted									
 00b429e0	CEngineMap	CEngineMap	__thiscall	undefined	9	CEngineMap *,CIDrawMap *,long,long,long,long,long,CCharString,bool	0	yes	accepted									
-00b42a90	~CBankFileEntryUpdateData	CBankFileEntryUpdateData	__thiscall	void	1	CBankFileEntryUpdateData *	1	yes	accepted									
+00b42a90	~CEngineMap	CEngineMap	__thiscall	void	1	CBankFileEntryUpdateData *	1	yes	accepted									
 00b42b10	DeleteMap	CEngineWorldMap	__thiscall	void	2	CEngineWorldMap *,long	1	yes	accepted									
 00b42c70	DeleteMap	CEngineWorldMap	__thiscall	void	1	CEngineWorldMap *	1	yes	accepted									
 00b42d10	AddMap	CEngineWorldMap	__thiscall	void	3	CEngineWorldMap *,long,long	1	yes	accepted									
@@ -41404,7 +41404,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b44320	RefCountedTreeNode_Destructor_Alt	_global	unknown	undefined	0		0	yes	accepted									
 00b44370	CEngineStaticMapFileBlockManager	CEngineStaticMapFileBlockManager	unknown	undefined	0		0	yes	accepted									
 00b443b0	~CEngineStaticMapFileBlockManager	CEngineStaticMapFileBlockManager	__thiscall	void	1	CBankFileEntryUpdateData *	1	yes	accepted									
-00b44420	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b4\CLandscapeBackgroundPatch_vectordeletingdestructor_00b44420.cpp
+00b44420	`scalar deleting destructor'	CEngineMap	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b4\CLandscapeBackgroundPatch_vectordeletingdestructor_00b44420.cpp
 00b44440	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b4\CLandscapeBackgroundPatch_vectordeletingdestructor_00b44440.cpp
 00b444d0	CEngineInternalPrimitiveLight::GetRenderLayerMask	CEngineInternalPrimitiveLight	__thiscall	ulong	1	CEngineInternalPrimitiveLight *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b4\CEngineInternalPrimitiveLight_GetRenderLayerMask_00b444d0.cpp
 00b444e0	CEngineInternalPrimitiveShadowedSpotLight::GetRenderLayerMask	CEngineInternalPrimitiveShadowedSpotLight	__thiscall	ulong	1	CEngineInternalPrimitiveShadowedSpotLight *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b4\CEngineInternalPrimitiveShadowedSpotLight_GetRenderLayerMask_00b444e0.cpp
@@ -41574,7 +41574,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b52160	SetCommonParticleShaderConstants	CEngineWeatherRenderer	__thiscall	void	2	CEngineWeatherRenderer *,long *	1	yes	accepted									
 00b52250	CEnginePrimitiveManagerParticleLineGroup	CEnginePrimitiveManagerParticleLineGroup	__thiscall	undefined	2	CEnginePrimitiveManagerParticleLineGroup *,CArray<CEngineScene*> *	0	yes	accepted									
 00b52870	FadeRainToTarget	CEngineWeatherRenderer	__thiscall	void	2	CEngineWeatherRenderer *,float	1	yes	accepted									
-00b52900	FadeRainToTarget	CEngineWeatherRenderer	__thiscall	void	2	CEngineWeatherRenderer *,float	1	yes	accepted									
+00b52900	FadeSnowToTarget	CEngineWeatherRenderer	__thiscall	void	2	CEngineWeatherRenderer *,float	1	yes	accepted									
 00b52990	UpdateBoxPositions	CEngineWeatherRenderer	__thiscall	void	1	CEngineWeatherRenderer *	1	yes	accepted									
 00b52b30	?WorldFrameUpdate@CEngineWeatherRenderer@@UAEX_N@Z	CEngineWeatherRenderer	__thiscall	void	2	CEngineWeatherRenderer *,bool	1	yes	accepted									
 00b52dd0	ClipBoxToLandscape	CEngineWeatherRenderer	__thiscall	EWeatherBoxVisible	2	CEngineWeatherRenderer *,C3DVector *	1	yes	accepted									
@@ -41607,7 +41607,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b59780	`scalar_deleting_destructor'	CEngineComponent	__thiscall	void *	2	CEngineComponent *,uint	1	yes	accepted									
 00b597e0	ModifyFadeDistanceForVideoOptions	CEngineLocalDetailGenerator	__thiscall	float	3	CEngineLocalDetailGenerator *,ulong,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b5\CEngineLocalDetailGenerator_ModifyFadeDistanceForVideoOptions_00b597e0.cpp
 00b59800	CreateMap	CEngineLocalDetailGenerator	__thiscall	void	2	CEngineLocalDetailGenerator *,CEngineMap *	1	yes	accepted									
-00b59840	WorldFrameUpdate	CEngineResourceManager	__thiscall	void	2	CEngineResourceManager *,bool	1	yes	accepted									
+00b59840	DeleteMap	CEngineLocalDetailGenerator	__thiscall	void	2	CEngineResourceManager *,bool	1	yes	accepted									
 00b59870	UpdateLoadingDistanceVideoOptions	CEngineLocalDetailGenerator	__thiscall	void	2	CEngineLocalDetailGenerator *,CEngineVideoOptionsDef *	1	yes	accepted									
 00b599c0	CEngineLocalDetailGenerator::LoadNewScene	CEngineLocalDetailGenerator	__thiscall	bool	2	CEngineLocalDetailGenerator *,CEngineComponentLoadNewSceneParams const &	1	yes	accepted									
 00b59a30	?FrameStart@CEngineLocalDetailGenerator@@UAEXABVCEngineComponentParams@@@Z	CEngineLocalDetailGenerator	__thiscall	void	2	CEngineLocalDetailGenerator *,CEngineComponentParams *	1	yes	accepted									

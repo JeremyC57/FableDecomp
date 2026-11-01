@@ -1,0 +1,2 @@
+1	faithful strmbase model (DX9 combase/amfilter/renbase), DECLARE_IUNKNOWN inline in CBaseVideoRenderer, vtable emitted by the CTextureRenderer ctor	MATCH
+2	src: ctor passes __uuidof(CLSID_TextureRenderer) + L"Texture Renderer" as retail 0x00A3B510 (graded leaf unchanged)	MATCH

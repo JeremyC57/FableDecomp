@@ -1,0 +1,3 @@
+1	local mode chain, signed long count loop, IS_THING_ALIVE __fastcall template, STLport vector operator[]	DIFFER(135v135) dead-bit test at +0x94 (CThing pad started at 0x11 but CClass is 0x14)
+2	CThing pad from +0x14	RELOCATION_MATCH
+3	Shield + Speed bodies in one TU (retail order)	RELOCATION_MATCH

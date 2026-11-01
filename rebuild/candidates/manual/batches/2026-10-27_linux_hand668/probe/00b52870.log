@@ -1,0 +1,3 @@
+1	if/else-if chain on a float local, plain fabs	DIFFER(132v132) fcomp qword (double compare) vs retail fcomp dword
+2	(float)fabs(...) as the landed WorldFrameUpdate	RELOCATION_MATCH
+3	src: both Fade bodies in one TU (retail TU), leaf FadeRainToTarget	RELOCATION_MATCH

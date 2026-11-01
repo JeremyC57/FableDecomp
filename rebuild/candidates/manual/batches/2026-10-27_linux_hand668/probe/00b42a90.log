@@ -1,0 +1,2 @@
+1	user dtor body (CloseStaticMap, two conditional DeleteMap, FileBlockManager.Reset) + engine/CCountedPointer.h member + declared-only implicit manager dtor	RELOCATION_MATCH
+2	src: Ego_r members through +0x64, nested STATIC_MAP_OPEN_STATE	RELOCATION_MATCH

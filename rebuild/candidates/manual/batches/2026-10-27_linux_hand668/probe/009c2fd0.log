@@ -1,0 +1,2 @@
+1	implicit dtor emitted by the CRenderManager2D ctor; real STLport vector text; CVertexShader dtor reading Data directly	DIFFER(232v217) release re-read Data and double null test around the virtual delete
+2	local copy of Data in ~CVertexShader (landed ??_GCVertexShader 0x009C1AE0 body)	RELOCATION_MATCH
