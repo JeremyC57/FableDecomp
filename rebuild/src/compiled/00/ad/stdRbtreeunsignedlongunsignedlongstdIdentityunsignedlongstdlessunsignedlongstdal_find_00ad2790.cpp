@@ -1,18 +1,16 @@
-// std::_Rb_tree<CUnprovenKey_006c4f80, CUnprovenValue_006c4f80, CUnprovenKeyOfValue_006c4f80, std::less<CUnprovenKey_006c4f80>, std::allocator<CUnprovenValue_006c4f80>>::_M_erase(std::_Rb_tree_node<CUnprovenValue_006c4f80> *) -- STLport 4.6 _M_erase(_Link_type): erase without rebalancing -- recurse right, destroy the value, free the node, continue left
-// Retail: Fable.exe (TLC, VC7.1) @ 0x006C4F80, 51 bytes.
-// Types: unproven -- no retail evidence names this instantiation's key/value, so they are the per-instantiation
-//   placeholders CUnprovenKey/Value/KeyOfValue_006c4f80 (key signed (jl/jge) or unobserved, node 0x18); every row of the instantiation shares them.
+// std::_Rb_tree<unsigned long, unsigned long, std::_Identity<unsigned long >, std::less<unsigned long>, std::allocator<unsigned long> >::find(unsigned long const &) -- STLport 4.6 find(const key_type&): _M_find inlined -- lower-bound walk from the root, end() unless the found key is not greater; iterator returned through the hidden pointer
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00AD2790, 71 bytes.
+// Identity (proven, chunk c677): std::set<unsigned long> find (QuadricOptimiserInternals::CIndexList) -- called from
+//   CIndexList::HasIndex 0x00AC7F90 (Ego_r ?HasIndex@CIndexList@QuadricOptimiserInternals@@QBE_NK@Z, const: so the const overload,
+//   returning const_iterator) and IsIllegal 0x00AC8360; unsigned key (jb/jae).
+// Naming wave 17: the per-instantiation placeholders CUnprovenKey/Value/KeyOfValue_00ad2790 replaced by the proven types (name-only).
 // Model: STLport 4.6 stl/_tree.h + stl/_tree.c text in namespace std (speed TU); explicit instantiation emits the member as
-//   its own COMDAT, as retail kept every used inline member (no /OPT:REF). Replaces the invented stand-in (was _unattributed::FreeTree_CTreeOwner_006c4f80).
-// Leaf: ?_M_erase@?$_Rb_tree@UCUnprovenKey_006c4f80@@UCUnprovenValue_006c4f80@@UCUnprovenKeyOfValue_006c4f80@@U?$less@UCUnprovenKey_006c4f80@@@std@@V?$allocator@UCUnprovenValue_006c4f80@@@5@@std@@AAEXPAU?$_Rb_tree_node@UCUnprovenValue_006c4f80@@@2@@Z
+//   its own COMDAT, as retail kept every used inline member (no /OPT:REF). Replaces the invented stand-in (was CRetailTree_ulongkey::find).
+// Leaf: ?find@?$_Rb_tree@KKU?$_Identity@K@std@@U?$less@K@2@V?$allocator@K@2@@std@@QBE?AU?$_Rb_tree_iterator@KU?$_Const_traits@K@std@@@2@ABK@Z
 extern "C" void* __cdecl malloc(unsigned int __size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* __p);                 // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* __p) { return __p; }
 inline void __cdecl operator delete(void*, void*) { }
-struct CUnprovenKey_006c4f80 { long _M_unproven; };
-inline bool operator<(const CUnprovenKey_006c4f80& __x, const CUnprovenKey_006c4f80& __y) { return __x._M_unproven < __y._M_unproven; }
-struct CUnprovenValue_006c4f80 { CUnprovenKey_006c4f80 _M_key; unsigned char _M_unproven[4]; };
-struct CUnprovenKeyOfValue_006c4f80 { const CUnprovenKey_006c4f80& operator()(const CUnprovenValue_006c4f80& __v) const { return __v._M_key; } };
 namespace std {
 template <class _Tp> class allocator {
 public:
@@ -341,17 +339,5 @@ public:
     const_iterator upper_bound(const key_type& __x) const { return const_iterator(_M_upper_bound(__x)); }
     pair<iterator, iterator> equal_range(const key_type& __x) { return pair<iterator, iterator>(lower_bound(__x), upper_bound(__x)); }
 };
-template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
-void _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_erase(_Rb_tree_node<_Value>* __x)
-{
-    // erase without rebalancing
-    while (__x != 0) {
-        _M_erase(_S_right(__x));
-        _Link_type __y = _S_left(__x);
-        _Destroy(&__x->_M_value_field);
-        this->_M_header.deallocate(__x, 1);
-        __x = __y;
-    }
-}
-template void _Rb_tree<CUnprovenKey_006c4f80, CUnprovenValue_006c4f80, CUnprovenKeyOfValue_006c4f80, less<CUnprovenKey_006c4f80 >, allocator<CUnprovenValue_006c4f80 > >::_M_erase(_Rb_tree_node<CUnprovenValue_006c4f80 >*);
+template _Rb_tree<unsigned long, unsigned long, std::_Identity<unsigned long >, less<unsigned long >, allocator<unsigned long > >::const_iterator _Rb_tree<unsigned long, unsigned long, std::_Identity<unsigned long >, less<unsigned long >, allocator<unsigned long > >::find(const unsigned long&) const;
 }

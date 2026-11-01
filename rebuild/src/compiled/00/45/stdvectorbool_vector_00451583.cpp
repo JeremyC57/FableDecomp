@@ -1,5 +1,6 @@
 // std::vector<bool>::vector(unsigned int n, const bool& value, const allocator<bool>& a) -- STLport fill constructor: _Vector_base(n, a) allocates n bytes, then uninitialized_fill_n writes value into each, finish = start + n
-// Leaf: ??0?$vector
+// Leaf: ??0?$vector@_NV?$allocator@_N@std@@@std@@QAE@IAB_NABV?$allocator@_N@1@@Z
+// Naming wave 17: STLport 4.6 declares allocator as a class (mangled V?$allocator), as c675 proved for 0x00451583 / 0x00450CCC.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00451583, length 49 bytes, `ret 0Ch` (thiscall: n, const bool&, const allocator&).
 // Callees: std::_Vector_base<bool>::_Vector_base(unsigned int, const allocator<bool>&) @ 0x00450CCC (out of line, this chunk).
 // Label: the catalog "VertexListInsertVertices" is behavioural. Callers include CPlayerInventoryDef::CPlayerInventoryDef
@@ -12,7 +13,8 @@
 #pragma optimize("s", on)
 
 namespace std {
-template <class T> struct allocator {
+template <class T> class allocator {
+public:
     allocator() { }
 };
 

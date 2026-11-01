@@ -1,27 +1,16 @@
-// CUnprovenContainer_009aa780::~CUnprovenContainer_009aa780() -- STLport 4.6 container destructor (implicit): the member _Rb_tree's destructor inlined -- clear(), then free the header node
-// Retail: Fable.exe (TLC, VC7.1) @ 0x009AC130, 66 bytes.
-// Types: unproven -- no retail evidence names this instantiation's key/value, so they are the per-instantiation
-//   placeholders CUnprovenKey/Value/KeyOfValue_009aa780; only the value members the erase bodies destroy are proven
-//   (lea ecx,[node+0x10+off]; call ~T): CCharString @+0x0, value 0x18 bytes (node 0x28).
-// Identity: container destructor (~container).
+// std::_Rb_tree<long, std::pair<const long, COpinionDeed* >, std::_Select1st<std::pair<const long, COpinionDeed* > >, std::less<long>, std::allocator<std::pair<const long, COpinionDeed* > >>::erase(std::_Rb_tree_iterator<std::pair<const long, COpinionDeed* >, std::_Nonconst_traits<std::pair<const long, COpinionDeed* > >>, std::_Rb_tree_iterator<std::pair<const long, COpinionDeed* >, std::_Nonconst_traits<std::pair<const long, COpinionDeed* > >>) -- STLport 4.6 erase(first, last): clear() when [begin, end), else erase(first++) up to last
+// Retail: Fable.exe (TLC, VC7.1) @ 0x006C7DE0, 189 bytes.
+// Identity (proven, chunk c676): ~CTCHeroOpinionDeedLog 0x006C5E5B calls _M_erase on OpinionDeedMap (+0xC), Ego_r.pdb
+//   std::map<long, COpinionDeed*> (the class member type); node 0x18 = 0x10 header + pair<const long, COpinionDeed*> (signed key: jl/jge).
+// Naming wave 17: the per-instantiation placeholders CUnprovenKey/Value/KeyOfValue_006c4f80 replaced by the proven types (name-only).
 // Model: STLport 4.6 stl/_tree.h + stl/_tree.c text in namespace std (speed TU); explicit instantiation emits the member as
-//   its own COMDAT, as retail kept every used inline member (no /OPT:REF). Replaces the invented stand-in (was CRetailTree_erase009aa780::~CRetailTree_erase009aa780).
-// Leaf: ??1CUnprovenContainer_009aa780@@QAE@XZ
+//   its own COMDAT, as retail kept every used inline member (no /OPT:REF). Replaces the invented stand-in (was _unattributed::EraseRange_CRetailTree_006c7de0).
+// Leaf: ?erase@?$_Rb_tree@JU?$pair@$$CBJPAVCOpinionDeed@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@@std@@QAEXU?$_Rb_tree_iterator@U?$pair@$$CBJPAVCOpinionDeed@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@@2@0@Z
 extern "C" void* __cdecl malloc(unsigned int __size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* __p);                 // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* __p) { return __p; }
 inline void __cdecl operator delete(void*, void*) { }
-class CCharStringData;
-class CCharString {
-public:
-    CCharString();
-    CCharString(const CCharString&);
-    ~CCharString();
-    CCharStringData* PStringData;
-};
-struct CUnprovenKey_009aa780 { CCharString _M_unproven; };
-struct CUnprovenValue_009aa780 { CUnprovenKey_009aa780 _M_key; unsigned char _M_unproven4[20]; };
-struct CUnprovenKeyOfValue_009aa780 { const CUnprovenKey_009aa780& operator()(const CUnprovenValue_009aa780& __v) const { return __v._M_key; } };
+class COpinionDeed;
 namespace std {
 template <class _Tp> class allocator {
 public:
@@ -350,12 +339,5 @@ public:
     const_iterator upper_bound(const key_type& __x) const { return const_iterator(_M_upper_bound(__x)); }
     pair<iterator, iterator> equal_range(const key_type& __x) { return pair<iterator, iterator>(lower_bound(__x), upper_bound(__x)); }
 };
+template void _Rb_tree<long, std::pair<const long, COpinionDeed* >, std::_Select1st<std::pair<const long, COpinionDeed* > >, less<long >, allocator<std::pair<const long, COpinionDeed* > > >::erase(_Rb_tree<long, std::pair<const long, COpinionDeed* >, std::_Select1st<std::pair<const long, COpinionDeed* > >, less<long >, allocator<std::pair<const long, COpinionDeed* > > >::iterator, _Rb_tree<long, std::pair<const long, COpinionDeed* >, std::_Select1st<std::pair<const long, COpinionDeed* > >, less<long >, allocator<std::pair<const long, COpinionDeed* > > >::iterator);
 }
-class CUnprovenContainer_009aa780 {
-public:
-    typedef std::_Rb_tree<CUnprovenKey_009aa780, CUnprovenValue_009aa780, CUnprovenKeyOfValue_009aa780, std::less<CUnprovenKey_009aa780 >, std::allocator<CUnprovenValue_009aa780 > > _Rep_type;
-    _Rep_type _M_t;
-    CUnprovenContainer_009aa780();
-    ~CUnprovenContainer_009aa780();
-};
-CUnprovenContainer_009aa780::~CUnprovenContainer_009aa780() { }

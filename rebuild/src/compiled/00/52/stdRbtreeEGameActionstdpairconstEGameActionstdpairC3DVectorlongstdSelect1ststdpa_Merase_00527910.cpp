@@ -1,27 +1,27 @@
-// std::_Rb_tree<CUnprovenKey_009aa780, CUnprovenValue_009aa780, CUnprovenKeyOfValue_009aa780, std::less<CUnprovenKey_009aa780>, std::allocator<CUnprovenValue_009aa780>>::~_Rb_tree() -- STLport 4.6 tree destructor: clear() (out-of-line _M_erase from the root, header relinked, count zeroed), then _Rb_tree_base frees the header node
-// Retail: Fable.exe (TLC, VC7.1) @ 0x009AB6B0, 66 bytes.
-// Types: unproven -- no retail evidence names this instantiation's key/value, so they are the per-instantiation
-//   placeholders CUnprovenKey/Value/KeyOfValue_009aa780; only the value members the erase bodies destroy are proven
-//   (lea ecx,[node+0x10+off]; call ~T): CCharString @+0x0, value 0x18 bytes (node 0x28).
-// Identity: ~_Rb_tree (~_Rb_tree(elim)).
+// std::_Rb_tree<EGameAction, std::pair<const EGameAction, std::pair<C3DVector, long> >, std::_Select1st<...>, std::less<EGameAction>,
+//   std::allocator<...> >::_M_erase(_Rb_tree_node<...>*) -- STLport 4.6 _M_erase(_Link_type): erase without rebalancing -- recurse right,
+//   free the node, continue left
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00527910, 51 bytes.
+// Identity (proven, chunk c676): UpdateWalkingControlForces 0x006AD260 clears the +0x1A8 std::map<EGameAction, std::pair<C3DVector,long> >
+//   (Ego_r CThingPlayerCreature member type) and vland binds this symbol of that RELOCATION_MATCH TU to 0x00527910; the value is
+//   trivially destroyed (no destructor call).
+// Naming wave 17: landed as the invented CTreeOwner_00527910::FreeTree_CTreeOwner_00527910(SNode*) (child +0xC = _M_right,
+//   sibling +0x8 = _M_left); re-authored on the real STLport text (name-only: bytes unchanged).
 // Model: STLport 4.6 stl/_tree.h + stl/_tree.c text in namespace std (speed TU); explicit instantiation emits the member as
-//   its own COMDAT, as retail kept every used inline member (no /OPT:REF). Replaces the invented stand-in (was CRetailTree_erase009aa780::~CRetailTree_erase009aa780).
-// Leaf: ??1?$_Rb_tree@UCUnprovenKey_009aa780@@UCUnprovenValue_009aa780@@UCUnprovenKeyOfValue_009aa780@@U?$less@UCUnprovenKey_009aa780@@@std@@V?$allocator@UCUnprovenValue_009aa780@@@5@@std@@QAE@XZ
+//   its own COMDAT, as retail kept every used inline member (no /OPT:REF). Replaces the invented stand-in (was _unattributed::FreeTree_CTreeOwner_00527910).
+// Leaf: ?_M_erase@?$_Rb_tree@W4EGameAction@@U?$pair@$$CBW4EGameAction@@U?$pair@VC3DVector@@J@std@@@std@@U?$_Select1st@U?$pair@$$CBW4EGameAction@@U?$pair@VC3DVector@@J@std@@@std@@@3@U?$less@W4EGameAction@@@3@V?$allocator@U?$pair@$$CBW4EGameAction@@U?$pair@VC3DVector@@J@std@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EGameAction@@U?$pair@VC3DVector@@J@std@@@std@@@2@@Z
+// Leaf: ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@2@@Z
 extern "C" void* __cdecl malloc(unsigned int __size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* __p);                 // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* __p) { return __p; }
 inline void __cdecl operator delete(void*, void*) { }
-class CCharStringData;
-class CCharString {
+enum EGameAction { };   // Ego_r.pdb enum (enumerators not needed by this body)
+class C3DVector {
 public:
-    CCharString();
-    CCharString(const CCharString&);
-    ~CCharString();
-    CCharStringData* PStringData;
+    float X;
+    float Y;
+    float Z;
 };
-struct CUnprovenKey_009aa780 { CCharString _M_unproven; };
-struct CUnprovenValue_009aa780 { CUnprovenKey_009aa780 _M_key; unsigned char _M_unproven4[20]; };
-struct CUnprovenKeyOfValue_009aa780 { const CUnprovenKey_009aa780& operator()(const CUnprovenValue_009aa780& __v) const { return __v._M_key; } };
 namespace std {
 template <class _Tp> class allocator {
 public:
@@ -307,7 +307,19 @@ public:
     iterator find(const key_type& __x) { return iterator(_M_find(__x)); }
     const_iterator find(const key_type& __x) const { return const_iterator(_M_find(__x)); }
 private:
-    _Rb_tree_node<_Value>* _M_find(const key_type& __k) const;
+    _Rb_tree_node<_Value>* _M_find(const key_type& __k) const
+    {
+        _Link_type __y = this->_M_header._M_data;
+        _Link_type __x = _M_root();
+        while (__x != 0)
+            if (!_M_key_compare(_S_key(__x), __k))
+                __y = __x, __x = _S_left(__x);
+            else
+                __x = _S_right(__x);
+        if (__y == this->_M_header._M_data || _M_key_compare(__k, _S_key(__y)))
+            __y = this->_M_header._M_data;
+        return __y;
+    }
     _Link_type _M_lower_bound(const key_type& __k) const
     {
         _Link_type __y = this->_M_header._M_data;
@@ -338,5 +350,19 @@ public:
     const_iterator upper_bound(const key_type& __x) const { return const_iterator(_M_upper_bound(__x)); }
     pair<iterator, iterator> equal_range(const key_type& __x) { return pair<iterator, iterator>(lower_bound(__x), upper_bound(__x)); }
 };
-template _Rb_tree<CUnprovenKey_009aa780, CUnprovenValue_009aa780, CUnprovenKeyOfValue_009aa780, less<CUnprovenKey_009aa780 >, allocator<CUnprovenValue_009aa780 > >::~_Rb_tree();
+template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
+void _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_erase(_Rb_tree_node<_Value>* __x)
+{
+    // erase without rebalancing
+    while (__x != 0) {
+        _M_erase(_S_right(__x));
+        _Link_type __y = _S_left(__x);
+        _Destroy(&__x->_M_value_field);
+        this->_M_header.deallocate(__x, 1);
+        __x = __y;
+    }
+}
+typedef pair<C3DVector, long> _AccelerationPair;
+typedef pair<const EGameAction, _AccelerationPair> _GameActionAccelerationPair;
+template void _Rb_tree<EGameAction, _GameActionAccelerationPair, _Select1st<_GameActionAccelerationPair>, less<EGameAction>, allocator<_GameActionAccelerationPair> >::_M_erase(_Rb_tree_node<_GameActionAccelerationPair>*);
 }

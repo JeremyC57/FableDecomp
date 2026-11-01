@@ -1,19 +1,34 @@
-// CUnprovenContainer_006c4f80::~CUnprovenContainer_006c4f80() -- STLport 4.6 container destructor (implicit): the member _Rb_tree's destructor inlined -- clear(), then free the header node
-// Retail: Fable.exe (TLC, VC7.1) @ 0x006C8270, 66 bytes.
-// Types: unproven -- no retail evidence names this instantiation's key/value, so they are the per-instantiation
-//   placeholders CUnprovenKey/Value/KeyOfValue_006c4f80 (key signed (jl/jge) or unobserved, node 0x18); every row of the instantiation shares them.
-// Identity: container destructor (~container).
+// std::map<CCharString, NBankFileManager::CContainedBank >::map() -- STLport 4.6 container default constructor: the member _Rb_tree built with _Compare() and allocator_type() (header node allocated, red, self-linked)
+// Retail: Fable.exe (TLC, VC7.1) @ 0x009AC0F0, 54 bytes.
+// Identity (proven, chunk c667): ~CRetailBank 0x009AC7C0 calls _M_erase 0x009AA780 on ContainedBanks +0x18, Ego_r.pdb
+//   std::map<CCharString, NBankFileManager::CContainedBank> (the class's only tree); node 0x28 = 0x10 header + pair<const CCharString,
+//   CContainedBank> (4 + 0x14); CContainedBank as the landed ~CRetailBank 0x009AC7C0 row models it.
+// Naming wave 17: the per-instantiation placeholders CUnprovenKey/Value/KeyOfValue_009aa780 replaced by the proven types (name-only).
 // Model: STLport 4.6 stl/_tree.h + stl/_tree.c text in namespace std (speed TU); explicit instantiation emits the member as
-//   its own COMDAT, as retail kept every used inline member (no /OPT:REF). Replaces the invented stand-in (was CRetailTree_erase006c4f80::~CRetailTree_erase006c4f80).
-// Leaf: ??1CUnprovenContainer_006c4f80@@QAE@XZ
+//   its own COMDAT, as retail kept every used inline member (no /OPT:REF). Replaces the invented stand-in (was std::_Rb_tree<T_node0x28_009ac0f0>::_Rb_tree).
+// Leaf: ??0?$map@VCCharString@@VCContainedBank@NBankFileManager@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@5@@std@@QAE@XZ
 extern "C" void* __cdecl malloc(unsigned int __size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* __p);                 // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* __p) { return __p; }
 inline void __cdecl operator delete(void*, void*) { }
-struct CUnprovenKey_006c4f80 { long _M_unproven; };
-inline bool operator<(const CUnprovenKey_006c4f80& __x, const CUnprovenKey_006c4f80& __y) { return __x._M_unproven < __y._M_unproven; }
-struct CUnprovenValue_006c4f80 { CUnprovenKey_006c4f80 _M_key; unsigned char _M_unproven[4]; };
-struct CUnprovenKeyOfValue_006c4f80 { const CUnprovenKey_006c4f80& operator()(const CUnprovenValue_006c4f80& __v) const { return __v._M_key; } };
+class CCharStringData;
+class CCharString {
+public:
+    CCharString();
+    CCharString(const CCharString&);
+    ~CCharString();
+    CCharStringData* PStringData;
+};
+namespace NBankFileManager {
+class CContainedBank {
+public:
+    unsigned long DataVersion;                          // +0x00
+    unsigned long EntryCount;                           // +0x04
+    unsigned long InfoOffset;                           // +0x08
+    unsigned long InfoSize;                             // +0x0C
+    unsigned long Alignment;                            // +0x10
+};
+} // namespace NBankFileManager
 namespace std {
 template <class _Tp> class allocator {
 public:
@@ -342,12 +357,19 @@ public:
     const_iterator upper_bound(const key_type& __x) const { return const_iterator(_M_upper_bound(__x)); }
     pair<iterator, iterator> equal_range(const key_type& __x) { return pair<iterator, iterator>(lower_bound(__x), upper_bound(__x)); }
 };
-}
-class CUnprovenContainer_006c4f80 {
+template <class _Key, class _Tp, class _Compare = less<_Key>, class _Alloc = allocator<pair<const _Key, _Tp> > >
+class map {
 public:
-    typedef std::_Rb_tree<CUnprovenKey_006c4f80, CUnprovenValue_006c4f80, CUnprovenKeyOfValue_006c4f80, std::less<CUnprovenKey_006c4f80 >, std::allocator<CUnprovenValue_006c4f80 > > _Rep_type;
+    typedef _Key key_type;
+    typedef _Tp data_type;
+    typedef _Tp mapped_type;
+    typedef pair<const _Key, _Tp> value_type;
+    typedef _Compare key_compare;
+    typedef _Rb_tree<key_type, value_type, _Select1st<value_type>, key_compare, _Alloc> _Rep_type;
+    typedef typename _Rep_type::allocator_type allocator_type;
     _Rep_type _M_t;
-    CUnprovenContainer_006c4f80();
-    ~CUnprovenContainer_006c4f80();
+    map() : _M_t(_Compare(), allocator_type()) { }
+    explicit map(const _Compare& __comp, const allocator_type& __a = allocator_type()) : _M_t(__comp, __a) { }
 };
-CUnprovenContainer_006c4f80::~CUnprovenContainer_006c4f80() { }
+template map<CCharString, NBankFileManager::CContainedBank >::map();
+}

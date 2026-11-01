@@ -1,18 +1,18 @@
-// std::_Rb_tree<CUnprovenKey_006c4f80, CUnprovenValue_006c4f80, CUnprovenKeyOfValue_006c4f80, std::less<CUnprovenKey_006c4f80>, std::allocator<CUnprovenValue_006c4f80>>::clear() -- STLport 4.6 clear(): when non-empty, _M_erase from the root, header leftmost/rightmost back to the header, root 0, count 0
-// Retail: Fable.exe (TLC, VC7.1) @ 0x006C75A0, 51 bytes.
-// Types: unproven -- no retail evidence names this instantiation's key/value, so they are the per-instantiation
-//   placeholders CUnprovenKey/Value/KeyOfValue_006c4f80 (key signed (jl/jge) or unobserved, node 0x18); every row of the instantiation shares them.
+// std::_Rb_tree<unsigned long, unsigned long, std::_Identity<unsigned long>, std::less<unsigned long>, std::allocator<unsigned long> >::_M_erase(_Rb_tree_node<unsigned long>*)
+//   -- STLport 4.6 _M_erase(_Link_type) of std::set<unsigned long>: erase without rebalancing -- recurse right, free the node, continue left
+// Retail: Fable.exe (TLC, VC7.1) @ 0x004CF810, 51 bytes.
+// Identity (proven, chunk c675): the CIndexList (std::set<unsigned long>) temporary's destructor in
+//   GetRemainingVertices 0x00AC8840 calls it; node 0x14 = 0x10 header + unsigned long (trivially destroyed: no destructor call).
+// Naming wave 17: landed as the invented CTreeOwner_004cf810::FreeTree_CTreeOwner_004cf810(SNode*) (child +0xC = _M_right,
+//   sibling +0x8 = _M_left); re-authored on the real STLport text (name-only: bytes unchanged).
 // Model: STLport 4.6 stl/_tree.h + stl/_tree.c text in namespace std (speed TU); explicit instantiation emits the member as
-//   its own COMDAT, as retail kept every used inline member (no /OPT:REF). Replaces the invented stand-in (was _global::RbTree_Clear_006c75a0).
-// Leaf: ?clear@?$_Rb_tree@UCUnprovenKey_006c4f80@@UCUnprovenValue_006c4f80@@UCUnprovenKeyOfValue_006c4f80@@U?$less@UCUnprovenKey_006c4f80@@@std@@V?$allocator@UCUnprovenValue_006c4f80@@@5@@std@@QAEXXZ
+//   its own COMDAT, as retail kept every used inline member (no /OPT:REF). Replaces the invented stand-in (was _unattributed::FreeTree_CTreeOwner_004cf810).
+// Leaf: ?_M_erase@?$_Rb_tree@KKU?$_Identity@K@std@@U?$less@K@2@V?$allocator@K@2@@std@@AAEXPAU?$_Rb_tree_node@K@2@@Z
+// Leaf: ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@2@@Z
 extern "C" void* __cdecl malloc(unsigned int __size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* __p);                 // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* __p) { return __p; }
 inline void __cdecl operator delete(void*, void*) { }
-struct CUnprovenKey_006c4f80 { long _M_unproven; };
-inline bool operator<(const CUnprovenKey_006c4f80& __x, const CUnprovenKey_006c4f80& __y) { return __x._M_unproven < __y._M_unproven; }
-struct CUnprovenValue_006c4f80 { CUnprovenKey_006c4f80 _M_key; unsigned char _M_unproven[4]; };
-struct CUnprovenKeyOfValue_006c4f80 { const CUnprovenKey_006c4f80& operator()(const CUnprovenValue_006c4f80& __v) const { return __v._M_key; } };
 namespace std {
 template <class _Tp> class allocator {
 public:
@@ -341,5 +341,17 @@ public:
     const_iterator upper_bound(const key_type& __x) const { return const_iterator(_M_upper_bound(__x)); }
     pair<iterator, iterator> equal_range(const key_type& __x) { return pair<iterator, iterator>(lower_bound(__x), upper_bound(__x)); }
 };
-template void _Rb_tree<CUnprovenKey_006c4f80, CUnprovenValue_006c4f80, CUnprovenKeyOfValue_006c4f80, less<CUnprovenKey_006c4f80 >, allocator<CUnprovenValue_006c4f80 > >::clear();
+template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
+void _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_erase(_Rb_tree_node<_Value>* __x)
+{
+    // erase without rebalancing
+    while (__x != 0) {
+        _M_erase(_S_right(__x));
+        _Link_type __y = _S_left(__x);
+        _Destroy(&__x->_M_value_field);
+        this->_M_header.deallocate(__x, 1);
+        __x = __y;
+    }
+}
+template void _Rb_tree<unsigned long, unsigned long, _Identity<unsigned long>, less<unsigned long>, allocator<unsigned long> >::_M_erase(_Rb_tree_node<unsigned long>*);
 }

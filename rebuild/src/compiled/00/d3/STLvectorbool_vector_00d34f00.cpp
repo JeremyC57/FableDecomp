@@ -1,5 +1,7 @@
 // std::vector<bool>::vector(const vector<bool>& x) -- STLport vector copy constructor for a 1-byte element: allocate x.size() bytes, then copy the elements trivially
-// Leaf: ??0?$vector@
+// Leaf: ??0?$vector@_NV?$allocator@_N@std@@@std@@QAE@ABV01@@Z
+// Naming wave 17: the _Vector_base / vector models take STLport's _Alloc parameter (the callee is c675's
+//   ??0?$_Vector_base@_NV?$allocator@_N@std@@@std@@QAE@IABV?$allocator@_N@1@@Z).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D34F00, 59 bytes, `__fastcall`, one stack argument (`ret 4`), returns this.
 //   Callers: the CFireHeartPatternDef element construct @ 0x00D34EC0 (PadActive +0x28, Ego_r.pdb
 //   CFireHeartPatternDef::PadActive is vector<bool>) and two copies in 0x00F33Fxx / 0x00F342xx.
@@ -18,19 +20,19 @@ template <class T> class allocator {
 public:
     allocator() { }
 };
-template <class T> class _Vector_base {
+template <class T, class A> class _Vector_base {
 public:
     T* _M_start;                                        // +0
     T* _M_finish;                                       // +4
     T* _M_end_of_storage;                               // +8 (alloc proxy over the empty allocator)
-    _Vector_base(unsigned int n, const allocator<T>& a);    // 0x00450CCC
+    _Vector_base(unsigned int n, const A& a);           // 0x00450CCC
 };
 template <class T> T* __fastcall __uninitialized_copy(const T* first, const T* last, T* result, const __true_type&);   // 0x00D34F40
-template <class T> class vector : public _Vector_base<T> {
+template <class T, class A = allocator<T> > class vector : public _Vector_base<T, A> {
 public:
     unsigned int size() const { return (unsigned int)(this->_M_finish - this->_M_start); }
     allocator<T> get_allocator() const { return allocator<T>(); }
-    vector(const vector& x) : _Vector_base<T>(x.size(), x.get_allocator())
+    vector(const vector& x) : _Vector_base<T, A>(x.size(), x.get_allocator())
     {
         this->_M_finish = __uninitialized_copy((const T*)x._M_start, (const T*)x._M_finish, this->_M_start, __true_type());
     }

@@ -19,7 +19,8 @@
 extern "C" void* __cdecl malloc(unsigned int);
 
 namespace std {
-template <class T> struct allocator {
+template <class T> class allocator {             // STLport 4.6: a class (V?$allocator; naming wave 17)
+public:
     allocator() { }
 };
 

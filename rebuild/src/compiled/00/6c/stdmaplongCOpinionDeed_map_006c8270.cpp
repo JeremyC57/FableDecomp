@@ -1,26 +1,17 @@
-// std::_Rb_tree<CUnprovenKey_009aa780, CUnprovenValue_009aa780, CUnprovenKeyOfValue_009aa780, std::less<CUnprovenKey_009aa780>, std::allocator<CUnprovenValue_009aa780>>::clear() -- STLport 4.6 clear(): when non-empty, _M_erase from the root, header leftmost/rightmost back to the header, root 0, count 0
-// Retail: Fable.exe (TLC, VC7.1) @ 0x009AACA0, 51 bytes.
-// Types: unproven -- no retail evidence names this instantiation's key/value, so they are the per-instantiation
-//   placeholders CUnprovenKey/Value/KeyOfValue_009aa780; only the value members the erase bodies destroy are proven
-//   (lea ecx,[node+0x10+off]; call ~T): CCharString @+0x0, value 0x18 bytes (node 0x28).
+// std::map<long, COpinionDeed* >::~map() -- STLport 4.6 container destructor (implicit): the member _Rb_tree's destructor inlined -- clear(), then free the header node
+// Retail: Fable.exe (TLC, VC7.1) @ 0x006C8270, 66 bytes.
+// Identity (proven, chunk c676): ~CTCHeroOpinionDeedLog 0x006C5E5B calls _M_erase on OpinionDeedMap (+0xC), Ego_r.pdb
+//   std::map<long, COpinionDeed*> (the class member type); node 0x18 = 0x10 header + pair<const long, COpinionDeed*> (signed key: jl/jge).
+// Naming wave 17: the per-instantiation placeholders CUnprovenKey/Value/KeyOfValue_006c4f80 replaced by the proven types (name-only).
+// Identity: container destructor (~container).
 // Model: STLport 4.6 stl/_tree.h + stl/_tree.c text in namespace std (speed TU); explicit instantiation emits the member as
-//   its own COMDAT, as retail kept every used inline member (no /OPT:REF). Replaces the invented stand-in (was _global::RbTree_Clear_009aaca0).
-// Leaf: ?clear@?$_Rb_tree@UCUnprovenKey_009aa780@@UCUnprovenValue_009aa780@@UCUnprovenKeyOfValue_009aa780@@U?$less@UCUnprovenKey_009aa780@@@std@@V?$allocator@UCUnprovenValue_009aa780@@@5@@std@@QAEXXZ
+//   its own COMDAT, as retail kept every used inline member (no /OPT:REF). Replaces the invented stand-in (was CRetailTree_erase006c4f80::~CRetailTree_erase006c4f80).
+// Leaf: ??1?$map@JPAVCOpinionDeed@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@3@@std@@QAE@XZ
 extern "C" void* __cdecl malloc(unsigned int __size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* __p);                 // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* __p) { return __p; }
 inline void __cdecl operator delete(void*, void*) { }
-class CCharStringData;
-class CCharString {
-public:
-    CCharString();
-    CCharString(const CCharString&);
-    ~CCharString();
-    CCharStringData* PStringData;
-};
-struct CUnprovenKey_009aa780 { CCharString _M_unproven; };
-struct CUnprovenValue_009aa780 { CUnprovenKey_009aa780 _M_key; unsigned char _M_unproven4[20]; };
-struct CUnprovenKeyOfValue_009aa780 { const CUnprovenKey_009aa780& operator()(const CUnprovenValue_009aa780& __v) const { return __v._M_key; } };
+class COpinionDeed;
 namespace std {
 template <class _Tp> class allocator {
 public:
@@ -349,5 +340,26 @@ public:
     const_iterator upper_bound(const key_type& __x) const { return const_iterator(_M_upper_bound(__x)); }
     pair<iterator, iterator> equal_range(const key_type& __x) { return pair<iterator, iterator>(lower_bound(__x), upper_bound(__x)); }
 };
-template void _Rb_tree<CUnprovenKey_009aa780, CUnprovenValue_009aa780, CUnprovenKeyOfValue_009aa780, less<CUnprovenKey_009aa780 >, allocator<CUnprovenValue_009aa780 > >::clear();
+template <class _Key, class _Tp, class _Compare = less<_Key>, class _Alloc = allocator<pair<const _Key, _Tp> > >
+class map {
+public:
+    typedef _Key key_type;
+    typedef _Tp data_type;
+    typedef _Tp mapped_type;
+    typedef pair<const _Key, _Tp> value_type;
+    typedef _Compare key_compare;
+    typedef _Rb_tree<key_type, value_type, _Select1st<value_type>, key_compare, _Alloc> _Rep_type;
+    typedef typename _Rep_type::allocator_type allocator_type;
+    _Rep_type _M_t;
+    map() : _M_t(_Compare(), allocator_type()) { }
+    explicit map(const _Compare& __comp, const allocator_type& __a = allocator_type()) : _M_t(__comp, __a) { }
+};
 }
+
+// The implicit ~map (STLport declares none) inlines ~_Rb_tree: clear(), then free the header node. Retail emitted it out of
+//   line; these emitters (not part of the graded body) make the TU emit that COMDAT: Use_ first generates the implicit
+//   destructor at full inlining (its body), Kill_ then calls it with inlining off (the out-of-line reference).
+void Use_006c8270(std::map<long, COpinionDeed* >* m) { m->~map(); }
+#pragma inline_depth(0)
+void Kill_006c8270(std::map<long, COpinionDeed* >* m) { m->~map(); }
+#pragma inline_depth()

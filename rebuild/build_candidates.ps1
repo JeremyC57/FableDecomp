@@ -61380,9 +61380,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006c75a0'
-        Module = 'std::_Rb_tree<CUnprovenKey_006c4f80,CUnprovenValue_006c4f80,CUnprovenKeyOfValue_006c4f80,std::less<CUnprovenKey_006c4f80>,std::allocator<CUnprovenValue_006c4f80> >'
-        Source = '00/6c/stdRbtreeCUnprovenKey006c4f80CUnprovenValue006c4f80CUnprovenKeyOfValue006c4f80st_clear_006c75a0.cpp'
-        TestSource = '00/6c/stdRbtreeCUnprovenKey006c4f80CUnprovenValue006c4f80CUnprovenKeyOfValue006c4f80st_clear_006c75a0_test.cpp'
+        Module = 'std::_Rb_tree<long,std::pair<const long,COpinionDeed*>,std::_Select1st<std::pair<const long,COpinionDeed*> >,std::less<long>,std::allocator<std::pair<const long,COpinionDeed*> > >'
+        Source = '00/6c/stdRbtreelongstdpairconstlongCOpinionDeedstdSelect1ststdpairconstlongCOpinionDee_clear_006c75a0.cpp'
+        TestSource = '00/6c/stdRbtreelongstdpairconstlongCOpinionDeedstdSelect1ststdpairconstlongCOpinionDee_clear_006c75a0_test.cpp'
         PassPattern = '006c75a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -61639,9 +61639,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009aaca0'
-        Module = 'std::_Rb_tree<CUnprovenKey_009aa780,CUnprovenValue_009aa780,CUnprovenKeyOfValue_009aa780,std::less<CUnprovenKey_009aa780>,std::allocator<CUnprovenValue_009aa780> >'
-        Source = '00/9a/stdRbtreeCUnprovenKey009aa780CUnprovenValue009aa780CUnprovenKeyOfValue009aa780st_clear_009aaca0.cpp'
-        TestSource = '00/9a/stdRbtreeCUnprovenKey009aa780CUnprovenValue009aa780CUnprovenKeyOfValue009aa780st_clear_009aaca0_test.cpp'
+        Module = 'std::_Rb_tree<CCharString,std::pair<const CCharString,NBankFileManager::CContainedBank>,std::_Select1st<std::pair<const CCharString,NBankFileManager::CContainedBank> >,std::less<CCharString>,std::allocator<std::pair<const CCharString,NBankFileManager::CContainedBank> > >'
+        Source = '00/9a/stdRbtreeCCharStringstdpairconstCCharStringNBankFileManagerCContainedBankstdSele_clear_009aaca0.cpp'
+        TestSource = '00/9a/stdRbtreeCCharStringstdpairconstCCharStringNBankFileManagerCContainedBankstdSele_clear_009aaca0_test.cpp'
         PassPattern = '009aaca0_TEST PASS'
     }
     [pscustomobject]@{
@@ -138424,9 +138424,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006c8230'
-        Module = 'CUnprovenContainer_006c4f80'
-        Source = '00/6c/CUnprovenContainer006c4f80_CUnprovenContainer006c4f80_006c8230.cpp'
-        TestSource = '00/6c/CUnprovenContainer006c4f80_CUnprovenContainer006c4f80_006c8230_test.cpp'
+        Module = 'std::map<long,COpinionDeed*>'
+        Source = '00/6c/stdmaplongCOpinionDeed_map_006c8230.cpp'
+        TestSource = '00/6c/stdmaplongCOpinionDeed_map_006c8230_test.cpp'
         PassPattern = '006c8230_TEST PASS'
     }
     [pscustomobject]@{
@@ -138655,9 +138655,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009ac0f0'
-        Module = 'CUnprovenContainer_009aa780'
-        Source = '00/9a/CUnprovenContainer009aa780_CUnprovenContainer009aa780_009ac0f0.cpp'
-        TestSource = '00/9a/CUnprovenContainer009aa780_CUnprovenContainer009aa780_009ac0f0_test.cpp'
+        Module = 'std::map<CCharString,NBankFileManager::CContainedBank>'
+        Source = '00/9a/stdmapCCharStringNBankFileManagerCContainedBank_map_009ac0f0.cpp'
+        TestSource = '00/9a/stdmapCCharStringNBankFileManagerCContainedBank_map_009ac0f0_test.cpp'
         PassPattern = '009ac0f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -140496,9 +140496,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006c7d30'
-        Module = 'std::_Rb_tree<CUnprovenKey_006c4f80,CUnprovenValue_006c4f80,CUnprovenKeyOfValue_006c4f80,std::less<CUnprovenKey_006c4f80>,std::allocator<CUnprovenValue_006c4f80> >'
-        Source = '00/6c/stdRbtreeCUnprovenKey006c4f80CUnprovenValue006c4f80CUnprovenKeyOfValue006c4f80st_Rbtree_006c7d30.cpp'
-        TestSource = '00/6c/stdRbtreeCUnprovenKey006c4f80CUnprovenValue006c4f80CUnprovenKeyOfValue006c4f80st_Rbtree_006c7d30_test.cpp'
+        Module = 'std::_Rb_tree<long,std::pair<const long,COpinionDeed*>,std::_Select1st<std::pair<const long,COpinionDeed*> >,std::less<long>,std::allocator<std::pair<const long,COpinionDeed*> > >'
+        Source = '00/6c/stdRbtreelongstdpairconstlongCOpinionDeedstdSelect1ststdpairconstlongCOpinionDee_Rbtree_006c7d30.cpp'
+        TestSource = '00/6c/stdRbtreelongstdpairconstlongCOpinionDeedstdSelect1ststdpairconstlongCOpinionDee_Rbtree_006c7d30_test.cpp'
         PassPattern = '006c7d30_TEST PASS'
     }
     [pscustomobject]@{
@@ -150870,16 +150870,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006c7d70'
-        Module = 'std::_Rb_tree<CUnprovenKey_006c4f80,CUnprovenValue_006c4f80,CUnprovenKeyOfValue_006c4f80,std::less<CUnprovenKey_006c4f80>,std::allocator<CUnprovenValue_006c4f80> >'
-        Source = '00/6c/stdRbtreeCUnprovenKey006c4f80CUnprovenValue006c4f80CUnprovenKeyOfValue006c4f80st_Rbtree_006c7d70.cpp'
-        TestSource = '00/6c/stdRbtreeCUnprovenKey006c4f80CUnprovenValue006c4f80CUnprovenKeyOfValue006c4f80st_Rbtree_006c7d70_test.cpp'
+        Module = 'std::_Rb_tree<long,std::pair<const long,COpinionDeed*>,std::_Select1st<std::pair<const long,COpinionDeed*> >,std::less<long>,std::allocator<std::pair<const long,COpinionDeed*> > >'
+        Source = '00/6c/stdRbtreelongstdpairconstlongCOpinionDeedstdSelect1ststdpairconstlongCOpinionDee_Rbtree_006c7d70.cpp'
+        TestSource = '00/6c/stdRbtreelongstdpairconstlongCOpinionDeedstdSelect1ststdpairconstlongCOpinionDee_Rbtree_006c7d70_test.cpp'
         PassPattern = '006c7d70_TEST PASS'
     }
     [pscustomobject]@{
         Address = '006c8270'
-        Module = 'CUnprovenContainer_006c4f80'
-        Source = '00/6c/CUnprovenContainer006c4f80_CUnprovenContainer006c4f80_006c8270.cpp'
-        TestSource = '00/6c/CUnprovenContainer006c4f80_CUnprovenContainer006c4f80_006c8270_test.cpp'
+        Module = 'std::map<long,COpinionDeed*>'
+        Source = '00/6c/stdmaplongCOpinionDeed_map_006c8270.cpp'
+        TestSource = '00/6c/stdmaplongCOpinionDeed_map_006c8270_test.cpp'
         PassPattern = '006c8270_TEST PASS'
     }
     [pscustomobject]@{
@@ -151115,9 +151115,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009ab6b0'
-        Module = 'std::_Rb_tree<CUnprovenKey_009aa780,CUnprovenValue_009aa780,CUnprovenKeyOfValue_009aa780,std::less<CUnprovenKey_009aa780>,std::allocator<CUnprovenValue_009aa780> >'
-        Source = '00/9a/stdRbtreeCUnprovenKey009aa780CUnprovenValue009aa780CUnprovenKeyOfValue009aa780st_Rbtree_009ab6b0.cpp'
-        TestSource = '00/9a/stdRbtreeCUnprovenKey009aa780CUnprovenValue009aa780CUnprovenKeyOfValue009aa780st_Rbtree_009ab6b0_test.cpp'
+        Module = 'std::_Rb_tree<CCharString,std::pair<const CCharString,NBankFileManager::CContainedBank>,std::_Select1st<std::pair<const CCharString,NBankFileManager::CContainedBank> >,std::less<CCharString>,std::allocator<std::pair<const CCharString,NBankFileManager::CContainedBank> > >'
+        Source = '00/9a/stdRbtreeCCharStringstdpairconstCCharStringNBankFileManagerCContainedBankstdSele_Rbtree_009ab6b0.cpp'
+        TestSource = '00/9a/stdRbtreeCCharStringstdpairconstCCharStringNBankFileManagerCContainedBankstdSele_Rbtree_009ab6b0_test.cpp'
         PassPattern = '009ab6b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -151829,9 +151829,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009ac130'
-        Module = 'CUnprovenContainer_009aa780'
-        Source = '00/9a/CUnprovenContainer009aa780_CUnprovenContainer009aa780_009ac130.cpp'
-        TestSource = '00/9a/CUnprovenContainer009aa780_CUnprovenContainer009aa780_009ac130_test.cpp'
+        Module = 'std::map<CCharString,NBankFileManager::CContainedBank>'
+        Source = '00/9a/stdmapCCharStringNBankFileManagerCContainedBank_map_009ac130.cpp'
+        TestSource = '00/9a/stdmapCCharStringNBankFileManagerCContainedBank_map_009ac130_test.cpp'
         PassPattern = '009ac130_TEST PASS'
     }
     [pscustomobject]@{
@@ -166554,9 +166554,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00527910'
-        Module = '_unattributed'
-        Source = '00/52/unattributed_FreeTreeCTreeOwner00527910_00527910.cpp'
-        TestSource = '00/52/unattributed_FreeTreeCTreeOwner00527910_00527910_test.cpp'
+        Module = 'std::_Rb_tree<EGameAction,std::pair<const EGameAction,std::pair<C3DVector,long> >,std::_Select1st<std::pair<const EGameAction,std::pair<C3DVector,long> > >,std::less<EGameAction>,std::allocator<std::pair<const EGameAction,std::pair<C3DVector,long> > > >'
+        Source = '00/52/stdRbtreeEGameActionstdpairconstEGameActionstdpairC3DVectorlongstdSelect1ststdpa_Merase_00527910.cpp'
+        TestSource = '00/52/stdRbtreeEGameActionstdpairconstEGameActionstdpairC3DVectorlongstdSelect1ststdpa_Merase_00527910_test.cpp'
         PassPattern = '00527910_TEST PASS'
     }
     [pscustomobject]@{
@@ -166617,9 +166617,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006c4f80'
-        Module = 'std::_Rb_tree<CUnprovenKey_006c4f80,CUnprovenValue_006c4f80,CUnprovenKeyOfValue_006c4f80,std::less<CUnprovenKey_006c4f80>,std::allocator<CUnprovenValue_006c4f80> >'
-        Source = '00/6c/stdRbtreeCUnprovenKey006c4f80CUnprovenValue006c4f80CUnprovenKeyOfValue006c4f80st_Merase_006c4f80.cpp'
-        TestSource = '00/6c/stdRbtreeCUnprovenKey006c4f80CUnprovenValue006c4f80CUnprovenKeyOfValue006c4f80st_Merase_006c4f80_test.cpp'
+        Module = 'std::_Rb_tree<long,std::pair<const long,COpinionDeed*>,std::_Select1st<std::pair<const long,COpinionDeed*> >,std::less<long>,std::allocator<std::pair<const long,COpinionDeed*> > >'
+        Source = '00/6c/stdRbtreelongstdpairconstlongCOpinionDeedstdSelect1ststdpairconstlongCOpinionDee_Merase_006c4f80.cpp'
+        TestSource = '00/6c/stdRbtreelongstdpairconstlongCOpinionDeedstdSelect1ststdpairconstlongCOpinionDee_Merase_006c4f80_test.cpp'
         PassPattern = '006c4f80_TEST PASS'
     }
     [pscustomobject]@{
@@ -166659,9 +166659,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00882bc0'
-        Module = '_unattributed'
-        Source = '00/88/unattributed_FreeTreeCTreeOwner00882bc0_00882bc0.cpp'
-        TestSource = '00/88/unattributed_FreeTreeCTreeOwner00882bc0_00882bc0_test.cpp'
+        Module = 'std::_Rb_tree<NScreenEffect::CScreenEffectPriorityStack::CStackEntry*,NScreenEffect::CScreenEffectPriorityStack::CStackEntry*,std::_Identity<NScreenEffect::CScreenEffectPriorityStack::CStackEntry*>,std::less<NScreenEffect::CScreenEffectPriorityStack::CStackEntry*>,std::allocator<NScreenEffect::CScreenEffectPriorityStack::CStackEntry*> >'
+        Source = '00/88/stdRbtreeNScreenEffectCScreenEffectPriorityStackCStackEntryNScreenEffectCScreenE_Merase_00882bc0.cpp'
+        TestSource = '00/88/stdRbtreeNScreenEffectCScreenEffectPriorityStackCStackEntryNScreenEffectCScreenE_Merase_00882bc0_test.cpp'
         PassPattern = '00882bc0_TEST PASS'
     }
     [pscustomobject]@{
@@ -166701,9 +166701,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004cf810'
-        Module = '_unattributed'
-        Source = '00/4c/unattributed_FreeTreeCTreeOwner004cf810_004cf810.cpp'
-        TestSource = '00/4c/unattributed_FreeTreeCTreeOwner004cf810_004cf810_test.cpp'
+        Module = 'std::_Rb_tree<unsigned long,unsigned long,std::_Identity<unsigned long>,std::less<unsigned long>,std::allocator<unsigned long> >'
+        Source = '00/4c/stdRbtreeunsignedlongunsignedlongstdIdentityunsignedlongstdlessunsignedlongstdal_Merase_004cf810.cpp'
+        TestSource = '00/4c/stdRbtreeunsignedlongunsignedlongstdIdentityunsignedlongstdlessunsignedlongstdal_Merase_004cf810_test.cpp'
         PassPattern = '004cf810_TEST PASS'
     }
     [pscustomobject]@{
@@ -171523,9 +171523,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ad2790'
-        Module = 'std::_Rb_tree<CUnprovenKey_00ad2790,CUnprovenValue_00ad2790,CUnprovenKeyOfValue_00ad2790,std::less<CUnprovenKey_00ad2790>,std::allocator<CUnprovenValue_00ad2790> >'
-        Source = '00/ad/stdRbtreeCUnprovenKey00ad2790CUnprovenValue00ad2790CUnprovenKeyOfValue00ad2790st_find_00ad2790.cpp'
-        TestSource = '00/ad/stdRbtreeCUnprovenKey00ad2790CUnprovenValue00ad2790CUnprovenKeyOfValue00ad2790st_find_00ad2790_test.cpp'
+        Module = 'std::_Rb_tree<unsigned long,unsigned long,std::_Identity<unsigned long>,std::less<unsigned long>,std::allocator<unsigned long> >'
+        Source = '00/ad/stdRbtreeunsignedlongunsignedlongstdIdentityunsignedlongstdlessunsignedlongstdal_find_00ad2790.cpp'
+        TestSource = '00/ad/stdRbtreeunsignedlongunsignedlongstdIdentityunsignedlongstdlessunsignedlongstdal_find_00ad2790_test.cpp'
         PassPattern = '00ad2790_TEST PASS'
     }
     [pscustomobject]@{
@@ -175856,9 +175856,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006c7de0'
-        Module = 'std::_Rb_tree<CUnprovenKey_006c4f80,CUnprovenValue_006c4f80,CUnprovenKeyOfValue_006c4f80,std::less<CUnprovenKey_006c4f80>,std::allocator<CUnprovenValue_006c4f80> >'
-        Source = '00/6c/stdRbtreeCUnprovenKey006c4f80CUnprovenValue006c4f80CUnprovenKeyOfValue006c4f80st_erase_006c7de0.cpp'
-        TestSource = '00/6c/stdRbtreeCUnprovenKey006c4f80CUnprovenValue006c4f80CUnprovenKeyOfValue006c4f80st_erase_006c7de0_test.cpp'
+        Module = 'std::_Rb_tree<long,std::pair<const long,COpinionDeed*>,std::_Select1st<std::pair<const long,COpinionDeed*> >,std::less<long>,std::allocator<std::pair<const long,COpinionDeed*> > >'
+        Source = '00/6c/stdRbtreelongstdpairconstlongCOpinionDeedstdSelect1ststdpairconstlongCOpinionDee_erase_006c7de0.cpp'
+        TestSource = '00/6c/stdRbtreelongstdpairconstlongCOpinionDeedstdSelect1ststdpairconstlongCOpinionDee_erase_006c7de0_test.cpp'
         PassPattern = '006c7de0_TEST PASS'
     }
     [pscustomobject]@{
@@ -334434,9 +334434,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004427d0'
-        Module = 'std::deque<CUnprovenElement_004427d0>'
-        Source = '00/44/stddequeCUnprovenElement004427d0_deque_004427d0.cpp'
-        TestSource = '00/44/stddequeCUnprovenElement004427d0_deque_004427d0_test.cpp'
+        Module = 'std::deque<CSubtitleRenderer::CSetTextInfo>'
+        Source = '00/44/stddequeCSubtitleRendererCSetTextInfo_deque_004427d0.cpp'
+        TestSource = '00/44/stddequeCSubtitleRendererCSetTextInfo_deque_004427d0_test.cpp'
         PassPattern = '004427d0_TEST PASS'
     }
     [pscustomobject]@{

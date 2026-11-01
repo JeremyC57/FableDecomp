@@ -1,5 +1,6 @@
 // std::_Vector_base<bool>::_Vector_base(unsigned int n, const allocator<bool>& a) -- STLport vector<bool> storage (1-byte elements): null the three pointers, malloc n bytes (none for zero), finish = start, end-of-storage = start + n
-// Leaf: ??0?$_Vector_base
+// Leaf: ??0?$_Vector_base@_NV?$allocator@_N@std@@@std@@QAE@IABV?$allocator@_N@1@@Z
+// Naming wave 17: STLport 4.6 declares allocator as a class (mangled V?$allocator), as c675 proved for 0x00451583 / 0x00450CCC.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00450CCC, length 46 bytes, `ret 8` (thiscall: n, const allocator&).
 // Callees: malloc @ 0x00BFEA0E (`__cdecl`, the STLport allocator<T>::allocate body).
 // Label: the catalog "Buffer_InitializeWithSize" is behavioural. Callers: 0x00451583 (vector<bool>(n, value, a),
@@ -14,7 +15,8 @@
 extern "C" void* __cdecl malloc(size_t size);   // 0x00BFEA0E
 
 namespace std {
-template <class T> struct allocator {           // STLport allocator<T>: empty
+template <class T> class allocator {            // STLport allocator<T>: empty
+public:
     __forceinline allocator() { }
     __forceinline T* allocate(unsigned int count) { return count != 0 ? static_cast<T*>(malloc(count * sizeof(T))) : 0; }
 };

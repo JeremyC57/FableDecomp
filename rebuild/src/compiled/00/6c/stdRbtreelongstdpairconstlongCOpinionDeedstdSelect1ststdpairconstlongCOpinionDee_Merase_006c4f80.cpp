@@ -1,18 +1,16 @@
-// std::_Rb_tree<CUnprovenKey_00ad2790, CUnprovenValue_00ad2790, CUnprovenKeyOfValue_00ad2790, std::less<CUnprovenKey_00ad2790>, std::allocator<CUnprovenValue_00ad2790>>::find(CUnprovenKey_00ad2790 const &) -- STLport 4.6 find(const key_type&): _M_find inlined -- lower-bound walk from the root, end() unless the found key is not greater; iterator returned through the hidden pointer
-// Retail: Fable.exe (TLC, VC7.1) @ 0x00AD2790, 71 bytes.
-// Types: unproven -- no retail evidence names this instantiation's key/value, so they are the per-instantiation
-//   placeholders CUnprovenKey/Value/KeyOfValue_00ad2790 (key unsigned (jb/jae)); every row of the instantiation shares them.
+// std::_Rb_tree<long, std::pair<const long, COpinionDeed* >, std::_Select1st<std::pair<const long, COpinionDeed* > >, std::less<long>, std::allocator<std::pair<const long, COpinionDeed* > >>::_M_erase(std::_Rb_tree_node<std::pair<const long, COpinionDeed* > > *) -- STLport 4.6 _M_erase(_Link_type): erase without rebalancing -- recurse right, destroy the value, free the node, continue left
+// Retail: Fable.exe (TLC, VC7.1) @ 0x006C4F80, 51 bytes.
+// Identity (proven, chunk c676): ~CTCHeroOpinionDeedLog 0x006C5E5B calls _M_erase on OpinionDeedMap (+0xC), Ego_r.pdb
+//   std::map<long, COpinionDeed*> (the class member type); node 0x18 = 0x10 header + pair<const long, COpinionDeed*> (signed key: jl/jge).
+// Naming wave 17: the per-instantiation placeholders CUnprovenKey/Value/KeyOfValue_006c4f80 replaced by the proven types (name-only).
 // Model: STLport 4.6 stl/_tree.h + stl/_tree.c text in namespace std (speed TU); explicit instantiation emits the member as
-//   its own COMDAT, as retail kept every used inline member (no /OPT:REF). Replaces the invented stand-in (was CRetailTree_ulongkey::find).
-// Leaf: ?find@?$_Rb_tree@UCUnprovenKey_00ad2790@@UCUnprovenValue_00ad2790@@UCUnprovenKeyOfValue_00ad2790@@U?$less@UCUnprovenKey_00ad2790@@@std@@V?$allocator@UCUnprovenValue_00ad2790@@@5@@std@@QAE?AU?$_Rb_tree_iterator@UCUnprovenValue_00ad2790@@U?$_Nonconst_traits@UCUnprovenValue_00ad2790@@@std@@@2@ABUCUnprovenKey_00ad2790@@@Z
+//   its own COMDAT, as retail kept every used inline member (no /OPT:REF). Replaces the invented stand-in (was _unattributed::FreeTree_CTreeOwner_006c4f80).
+// Leaf: ?_M_erase@?$_Rb_tree@JU?$pair@$$CBJPAVCOpinionDeed@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@@Z
 extern "C" void* __cdecl malloc(unsigned int __size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* __p);                 // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* __p) { return __p; }
 inline void __cdecl operator delete(void*, void*) { }
-struct CUnprovenKey_00ad2790 { unsigned long _M_unproven; };
-inline bool operator<(const CUnprovenKey_00ad2790& __x, const CUnprovenKey_00ad2790& __y) { return __x._M_unproven < __y._M_unproven; }
-struct CUnprovenValue_00ad2790 { CUnprovenKey_00ad2790 _M_key; };
-struct CUnprovenKeyOfValue_00ad2790 { const CUnprovenKey_00ad2790& operator()(const CUnprovenValue_00ad2790& __v) const { return __v._M_key; } };
+class COpinionDeed;
 namespace std {
 template <class _Tp> class allocator {
 public:
@@ -341,5 +339,17 @@ public:
     const_iterator upper_bound(const key_type& __x) const { return const_iterator(_M_upper_bound(__x)); }
     pair<iterator, iterator> equal_range(const key_type& __x) { return pair<iterator, iterator>(lower_bound(__x), upper_bound(__x)); }
 };
-template _Rb_tree<CUnprovenKey_00ad2790, CUnprovenValue_00ad2790, CUnprovenKeyOfValue_00ad2790, less<CUnprovenKey_00ad2790 >, allocator<CUnprovenValue_00ad2790 > >::iterator _Rb_tree<CUnprovenKey_00ad2790, CUnprovenValue_00ad2790, CUnprovenKeyOfValue_00ad2790, less<CUnprovenKey_00ad2790 >, allocator<CUnprovenValue_00ad2790 > >::find(const CUnprovenKey_00ad2790&);
+template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
+void _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_erase(_Rb_tree_node<_Value>* __x)
+{
+    // erase without rebalancing
+    while (__x != 0) {
+        _M_erase(_S_right(__x));
+        _Link_type __y = _S_left(__x);
+        _Destroy(&__x->_M_value_field);
+        this->_M_header.deallocate(__x, 1);
+        __x = __y;
+    }
+}
+template void _Rb_tree<long, std::pair<const long, COpinionDeed* >, std::_Select1st<std::pair<const long, COpinionDeed* > >, less<long >, allocator<std::pair<const long, COpinionDeed* > > >::_M_erase(_Rb_tree_node<std::pair<const long, COpinionDeed* > >*);
 }

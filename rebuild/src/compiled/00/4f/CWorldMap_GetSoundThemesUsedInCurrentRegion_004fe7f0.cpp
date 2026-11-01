@@ -82,11 +82,12 @@ struct _Rb_tree_base_iterator {
     bool operator==(const _Rb_tree_base_iterator& __y) const { return _M_node == __y._M_node; }
     bool operator!=(const _Rb_tree_base_iterator& __y) const { return _M_node != __y._M_node; }
 };
-template <class _Value> struct _Rb_tree_iterator : public _Rb_tree_base_iterator {
-    typedef _Rb_tree_iterator<_Value> _Self;
+template <class _Tp> struct _Nonconst_traits { };   // STLport 4.6 iterator traits tag (naming wave 17: c675 insert_unique result type)
+template <class _Value, class _Traits> struct _Rb_tree_iterator : public _Rb_tree_base_iterator {
+    typedef _Rb_tree_iterator<_Value, _Traits> _Self;
     _Rb_tree_iterator() { _M_node = 0; }
     _Rb_tree_iterator(_Rb_tree_node_base* __x) { _M_node = __x; }
-    _Rb_tree_iterator(const _Self& __it) { _M_node = __it._M_node; }
+    _Rb_tree_iterator(const _Rb_tree_iterator<_Value, _Nonconst_traits<_Value> >& __it) { _M_node = __it._M_node; }
     const _Value& operator*() const { return ((_Rb_tree_node<_Value>*)_M_node)->_M_value_field; }
     _Self& operator++() { _M_node = _Rb_global_inst::_M_increment(_M_node); return *this; }
 };
@@ -105,7 +106,7 @@ public:
     typedef _Rb_tree_node_base* _Base_ptr;
     typedef _Rb_tree_node<_Value> _Node;
     typedef _Node* _Link_type;
-    typedef _Rb_tree_iterator<_Value> iterator;
+    typedef _Rb_tree_iterator<_Value, _Nonconst_traits<_Value> > iterator;
     unsigned int _M_node_count;
     _Compare _M_key_compare;
 

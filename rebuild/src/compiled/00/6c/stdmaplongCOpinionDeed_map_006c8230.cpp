@@ -1,18 +1,16 @@
-// std::_Rb_tree<CUnprovenKey_006c4f80, CUnprovenValue_006c4f80, CUnprovenKeyOfValue_006c4f80, std::less<CUnprovenKey_006c4f80>, std::allocator<CUnprovenValue_006c4f80>>::erase(std::_Rb_tree_iterator<CUnprovenValue_006c4f80, std::_Nonconst_traits<CUnprovenValue_006c4f80>>, std::_Rb_tree_iterator<CUnprovenValue_006c4f80, std::_Nonconst_traits<CUnprovenValue_006c4f80>>) -- STLport 4.6 erase(first, last): clear() when [begin, end), else erase(first++) up to last
-// Retail: Fable.exe (TLC, VC7.1) @ 0x006C7DE0, 189 bytes.
-// Types: unproven -- no retail evidence names this instantiation's key/value, so they are the per-instantiation
-//   placeholders CUnprovenKey/Value/KeyOfValue_006c4f80 (key signed (jl/jge) or unobserved, node 0x18); every row of the instantiation shares them.
+// std::map<long, COpinionDeed* >::map() -- STLport 4.6 container default constructor: the member _Rb_tree built with _Compare() and allocator_type() (header node allocated, red, self-linked)
+// Retail: Fable.exe (TLC, VC7.1) @ 0x006C8230, 54 bytes.
+// Identity (proven, chunk c676): ~CTCHeroOpinionDeedLog 0x006C5E5B calls _M_erase on OpinionDeedMap (+0xC), Ego_r.pdb
+//   std::map<long, COpinionDeed*> (the class member type); node 0x18 = 0x10 header + pair<const long, COpinionDeed*> (signed key: jl/jge).
+// Naming wave 17: the per-instantiation placeholders CUnprovenKey/Value/KeyOfValue_006c4f80 replaced by the proven types (name-only).
 // Model: STLport 4.6 stl/_tree.h + stl/_tree.c text in namespace std (speed TU); explicit instantiation emits the member as
-//   its own COMDAT, as retail kept every used inline member (no /OPT:REF). Replaces the invented stand-in (was _unattributed::EraseRange_CRetailTree_006c7de0).
-// Leaf: ?erase@?$_Rb_tree@UCUnprovenKey_006c4f80@@UCUnprovenValue_006c4f80@@UCUnprovenKeyOfValue_006c4f80@@U?$less@UCUnprovenKey_006c4f80@@@std@@V?$allocator@UCUnprovenValue_006c4f80@@@5@@std@@QAEXU?$_Rb_tree_iterator@UCUnprovenValue_006c4f80@@U?$_Nonconst_traits@UCUnprovenValue_006c4f80@@@std@@@2@0@Z
+//   its own COMDAT, as retail kept every used inline member (no /OPT:REF). Replaces the invented stand-in (was std::_Rb_tree<T_node0x18_006c8230>::_Rb_tree).
+// Leaf: ??0?$map@JPAVCOpinionDeed@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@3@@std@@QAE@XZ
 extern "C" void* __cdecl malloc(unsigned int __size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* __p);                 // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* __p) { return __p; }
 inline void __cdecl operator delete(void*, void*) { }
-struct CUnprovenKey_006c4f80 { long _M_unproven; };
-inline bool operator<(const CUnprovenKey_006c4f80& __x, const CUnprovenKey_006c4f80& __y) { return __x._M_unproven < __y._M_unproven; }
-struct CUnprovenValue_006c4f80 { CUnprovenKey_006c4f80 _M_key; unsigned char _M_unproven[4]; };
-struct CUnprovenKeyOfValue_006c4f80 { const CUnprovenKey_006c4f80& operator()(const CUnprovenValue_006c4f80& __v) const { return __v._M_key; } };
+class COpinionDeed;
 namespace std {
 template <class _Tp> class allocator {
 public:
@@ -341,5 +339,19 @@ public:
     const_iterator upper_bound(const key_type& __x) const { return const_iterator(_M_upper_bound(__x)); }
     pair<iterator, iterator> equal_range(const key_type& __x) { return pair<iterator, iterator>(lower_bound(__x), upper_bound(__x)); }
 };
-template void _Rb_tree<CUnprovenKey_006c4f80, CUnprovenValue_006c4f80, CUnprovenKeyOfValue_006c4f80, less<CUnprovenKey_006c4f80 >, allocator<CUnprovenValue_006c4f80 > >::erase(_Rb_tree<CUnprovenKey_006c4f80, CUnprovenValue_006c4f80, CUnprovenKeyOfValue_006c4f80, less<CUnprovenKey_006c4f80 >, allocator<CUnprovenValue_006c4f80 > >::iterator, _Rb_tree<CUnprovenKey_006c4f80, CUnprovenValue_006c4f80, CUnprovenKeyOfValue_006c4f80, less<CUnprovenKey_006c4f80 >, allocator<CUnprovenValue_006c4f80 > >::iterator);
+template <class _Key, class _Tp, class _Compare = less<_Key>, class _Alloc = allocator<pair<const _Key, _Tp> > >
+class map {
+public:
+    typedef _Key key_type;
+    typedef _Tp data_type;
+    typedef _Tp mapped_type;
+    typedef pair<const _Key, _Tp> value_type;
+    typedef _Compare key_compare;
+    typedef _Rb_tree<key_type, value_type, _Select1st<value_type>, key_compare, _Alloc> _Rep_type;
+    typedef typename _Rep_type::allocator_type allocator_type;
+    _Rep_type _M_t;
+    map() : _M_t(_Compare(), allocator_type()) { }
+    explicit map(const _Compare& __comp, const allocator_type& __a = allocator_type()) : _M_t(__comp, __a) { }
+};
+template map<long, COpinionDeed* >::map();
 }

@@ -1,19 +1,35 @@
-// std::_Rb_tree<CUnprovenKey_006c4f80, CUnprovenValue_006c4f80, CUnprovenKeyOfValue_006c4f80, std::less<CUnprovenKey_006c4f80>, std::allocator<CUnprovenValue_006c4f80>>::~_Rb_tree() -- STLport 4.6 tree destructor: clear() (out-of-line _M_erase from the root, header relinked, count zeroed), then _Rb_tree_base frees the header node
-// Retail: Fable.exe (TLC, VC7.1) @ 0x006C7D70, 66 bytes.
-// Types: unproven -- no retail evidence names this instantiation's key/value, so they are the per-instantiation
-//   placeholders CUnprovenKey/Value/KeyOfValue_006c4f80 (key signed (jl/jge) or unobserved, node 0x18); every row of the instantiation shares them.
-// Identity: ~_Rb_tree (~_Rb_tree).
+// std::_Rb_tree<CCharString, std::pair<const CCharString, NBankFileManager::CContainedBank >, std::_Select1st<std::pair<const CCharString, NBankFileManager::CContainedBank > >, std::less<CCharString>, std::allocator<std::pair<const CCharString, NBankFileManager::CContainedBank > >>::~_Rb_tree() -- STLport 4.6 tree destructor: clear() (out-of-line _M_erase from the root, header relinked, count zeroed), then _Rb_tree_base frees the header node
+// Retail: Fable.exe (TLC, VC7.1) @ 0x009AB6B0, 66 bytes.
+// Identity (proven, chunk c667): ~CRetailBank 0x009AC7C0 calls _M_erase 0x009AA780 on ContainedBanks +0x18, Ego_r.pdb
+//   std::map<CCharString, NBankFileManager::CContainedBank> (the class's only tree); node 0x28 = 0x10 header + pair<const CCharString,
+//   CContainedBank> (4 + 0x14); CContainedBank as the landed ~CRetailBank 0x009AC7C0 row models it.
+// Naming wave 17: the per-instantiation placeholders CUnprovenKey/Value/KeyOfValue_009aa780 replaced by the proven types (name-only).
+// Identity: ~_Rb_tree (~_Rb_tree(elim)).
 // Model: STLport 4.6 stl/_tree.h + stl/_tree.c text in namespace std (speed TU); explicit instantiation emits the member as
-//   its own COMDAT, as retail kept every used inline member (no /OPT:REF). Replaces the invented stand-in (was CRetailTree_erase006c4f80::~CRetailTree_erase006c4f80).
-// Leaf: ??1?$_Rb_tree@UCUnprovenKey_006c4f80@@UCUnprovenValue_006c4f80@@UCUnprovenKeyOfValue_006c4f80@@U?$less@UCUnprovenKey_006c4f80@@@std@@V?$allocator@UCUnprovenValue_006c4f80@@@5@@std@@QAE@XZ
+//   its own COMDAT, as retail kept every used inline member (no /OPT:REF). Replaces the invented stand-in (was CRetailTree_erase009aa780::~CRetailTree_erase009aa780).
+// Leaf: ??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@3@@std@@QAE@XZ
 extern "C" void* __cdecl malloc(unsigned int __size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* __p);                 // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* __p) { return __p; }
 inline void __cdecl operator delete(void*, void*) { }
-struct CUnprovenKey_006c4f80 { long _M_unproven; };
-inline bool operator<(const CUnprovenKey_006c4f80& __x, const CUnprovenKey_006c4f80& __y) { return __x._M_unproven < __y._M_unproven; }
-struct CUnprovenValue_006c4f80 { CUnprovenKey_006c4f80 _M_key; unsigned char _M_unproven[4]; };
-struct CUnprovenKeyOfValue_006c4f80 { const CUnprovenKey_006c4f80& operator()(const CUnprovenValue_006c4f80& __v) const { return __v._M_key; } };
+class CCharStringData;
+class CCharString {
+public:
+    CCharString();
+    CCharString(const CCharString&);
+    ~CCharString();
+    CCharStringData* PStringData;
+};
+namespace NBankFileManager {
+class CContainedBank {
+public:
+    unsigned long DataVersion;                          // +0x00
+    unsigned long EntryCount;                           // +0x04
+    unsigned long InfoOffset;                           // +0x08
+    unsigned long InfoSize;                             // +0x0C
+    unsigned long Alignment;                            // +0x10
+};
+} // namespace NBankFileManager
 namespace std {
 template <class _Tp> class allocator {
 public:
@@ -330,5 +346,5 @@ public:
     const_iterator upper_bound(const key_type& __x) const { return const_iterator(_M_upper_bound(__x)); }
     pair<iterator, iterator> equal_range(const key_type& __x) { return pair<iterator, iterator>(lower_bound(__x), upper_bound(__x)); }
 };
-template _Rb_tree<CUnprovenKey_006c4f80, CUnprovenValue_006c4f80, CUnprovenKeyOfValue_006c4f80, less<CUnprovenKey_006c4f80 >, allocator<CUnprovenValue_006c4f80 > >::~_Rb_tree();
+template _Rb_tree<CCharString, std::pair<const CCharString, NBankFileManager::CContainedBank >, std::_Select1st<std::pair<const CCharString, NBankFileManager::CContainedBank > >, less<CCharString >, allocator<std::pair<const CCharString, NBankFileManager::CContainedBank > > >::~_Rb_tree();
 }

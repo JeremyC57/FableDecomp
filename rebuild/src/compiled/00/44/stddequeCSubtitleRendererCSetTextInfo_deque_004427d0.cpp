@@ -1,15 +1,33 @@
-// std::deque<CUnprovenElement_004427d0>::~deque() -- STLport deque destructor: destroy every element, then free the node buffers and the map
-// Leaf: ??1?$deque@VCUnprovenElement_004427d0@@
+// std::deque<CSubtitleRenderer::CSetTextInfo>::~deque() -- STLport deque destructor: destroy every element, then free the node buffers and the map
+// Leaf: ??1?$deque@VCSetTextInfo@CSubtitleRenderer@@V?$allocator@VCSetTextInfo@CSubtitleRenderer@@@std@@@std@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004427D0, 150 bytes, thiscall, plain `ret`.
-// Identity (descriptive): callers a texture-cache destructor 0x00443E20 and a tail jump from 0x00443350; the 0x1C-byte element (four CWideStrings from +0x0C) is not named.
+// Identity (proven, chunk c675): ~CSubtitleRenderer 0x00443E20 calls it on the +0x34 queue<CSetTextInfo> (Ego_r.pdb member
+//   TextInfoQueue: queue<CSubtitleRenderer::CSetTextInfo, deque<...> >); a tail jump from 0x00443350 also reaches it.
+// Naming wave 17: the placeholder element CUnprovenElement_004427d0 replaced by the proven CSubtitleRenderer::CSetTextInfo
+//   (name-only: the bytes are unchanged; catalog CBankFileAsyncData::FreeBuffer was wrong).
 // Callees: __destroy_aux(first, last, const __false_type&) 0x00440B40 (__fastcall: the two 16-byte iterators by value, the tag
 //   in ecx), _Deque_base::_M_destroy_nodes 0x0043F510, free 0x00BFEA14.
 // Shape (family K007, representative 0x004427D0): STLport 4.6 `~deque() { _Destroy(_M_start, _M_finish); }` with the inline
 //   ~_Deque_base (the landed 0x0048CAF0 body).
 extern "C" void __cdecl free(void* block);                 // 0x00BFEA14
-class CUnprovenElement_004427d0 {                       // 0x1C bytes: its destroy loop runs four ~CWideString at +0x0C..+0x18
+class CWideStringData;
+class CWideString {
 public:
-    unsigned char _data[0x1C];
+    CWideStringData* PStringData;
+};
+class CSubtitleRenderer {
+public:
+    class CSetTextInfo {                                // Ego_r.pdb, 0x1C bytes
+    public:
+        CWideString Text;                               // +0x00
+        CWideString Button1Text;                        // +0x04
+        CWideString Button2Text;                        // +0x08
+        CWideString Button3Text;                        // +0x0C
+        unsigned long DisplayFlags;                     // +0x10
+        float DisplayTime;                              // +0x14
+        bool UpdateWhilePaused;                         // +0x18
+        bool ChangePlayerMode;                          // +0x19
+    };
 };
 namespace std {
 template <class _Tp> class allocator {
@@ -73,5 +91,5 @@ template <class _Tp, class _Alloc = allocator<_Tp> > class deque : protected _De
 public:
     ~deque() { _Destroy_range(this->_M_start, this->_M_finish, (_Tp*)0); }
 };
-template deque<CUnprovenElement_004427d0 >::~deque();
+template deque<CSubtitleRenderer::CSetTextInfo >::~deque();
 }

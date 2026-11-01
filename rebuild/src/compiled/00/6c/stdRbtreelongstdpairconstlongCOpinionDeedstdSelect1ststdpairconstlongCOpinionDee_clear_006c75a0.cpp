@@ -1,18 +1,16 @@
-// std::_Rb_tree<CUnprovenKey_006c4f80, CUnprovenValue_006c4f80, CUnprovenKeyOfValue_006c4f80, std::less<CUnprovenKey_006c4f80>, std::allocator<CUnprovenValue_006c4f80>>::_Rb_tree(std::less<CUnprovenKey_006c4f80> const &, std::allocator<CUnprovenValue_006c4f80> const &) -- STLport 4.6 tree constructor _Rb_tree(const _Compare&, const allocator_type&): allocate the header node, colour it red, root 0, leftmost/rightmost = header
-// Retail: Fable.exe (TLC, VC7.1) @ 0x006C7D30, 56 bytes.
-// Types: unproven -- no retail evidence names this instantiation's key/value, so they are the per-instantiation
-//   placeholders CUnprovenKey/Value/KeyOfValue_006c4f80 (key signed (jl/jge) or unobserved, node 0x18); every row of the instantiation shares them.
+// std::_Rb_tree<long, std::pair<const long, COpinionDeed* >, std::_Select1st<std::pair<const long, COpinionDeed* > >, std::less<long>, std::allocator<std::pair<const long, COpinionDeed* > >>::clear() -- STLport 4.6 clear(): when non-empty, _M_erase from the root, header leftmost/rightmost back to the header, root 0, count 0
+// Retail: Fable.exe (TLC, VC7.1) @ 0x006C75A0, 51 bytes.
+// Identity (proven, chunk c676): ~CTCHeroOpinionDeedLog 0x006C5E5B calls _M_erase on OpinionDeedMap (+0xC), Ego_r.pdb
+//   std::map<long, COpinionDeed*> (the class member type); node 0x18 = 0x10 header + pair<const long, COpinionDeed*> (signed key: jl/jge).
+// Naming wave 17: the per-instantiation placeholders CUnprovenKey/Value/KeyOfValue_006c4f80 replaced by the proven types (name-only).
 // Model: STLport 4.6 stl/_tree.h + stl/_tree.c text in namespace std (speed TU); explicit instantiation emits the member as
-//   its own COMDAT, as retail kept every used inline member (no /OPT:REF). Replaces the invented stand-in (was std::_Rb_tree<T_node0x18_006c7d30>::_Rb_tree).
-// Leaf: ??0?$_Rb_tree@UCUnprovenKey_006c4f80@@UCUnprovenValue_006c4f80@@UCUnprovenKeyOfValue_006c4f80@@U?$less@UCUnprovenKey_006c4f80@@@std@@V?$allocator@UCUnprovenValue_006c4f80@@@5@@std@@QAE@ABU?$less@UCUnprovenKey_006c4f80@@@1@ABV?$allocator@UCUnprovenValue_006c4f80@@@1@@Z
+//   its own COMDAT, as retail kept every used inline member (no /OPT:REF). Replaces the invented stand-in (was _global::RbTree_Clear_006c75a0).
+// Leaf: ?clear@?$_Rb_tree@JU?$pair@$$CBJPAVCOpinionDeed@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@@std@@QAEXXZ
 extern "C" void* __cdecl malloc(unsigned int __size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* __p);                 // 0x00BFEA14
 inline void* __cdecl operator new(unsigned int, void* __p) { return __p; }
 inline void __cdecl operator delete(void*, void*) { }
-struct CUnprovenKey_006c4f80 { long _M_unproven; };
-inline bool operator<(const CUnprovenKey_006c4f80& __x, const CUnprovenKey_006c4f80& __y) { return __x._M_unproven < __y._M_unproven; }
-struct CUnprovenValue_006c4f80 { CUnprovenKey_006c4f80 _M_key; unsigned char _M_unproven[4]; };
-struct CUnprovenKeyOfValue_006c4f80 { const CUnprovenKey_006c4f80& operator()(const CUnprovenValue_006c4f80& __v) const { return __v._M_key; } };
+class COpinionDeed;
 namespace std {
 template <class _Tp> class allocator {
 public:
@@ -341,5 +339,5 @@ public:
     const_iterator upper_bound(const key_type& __x) const { return const_iterator(_M_upper_bound(__x)); }
     pair<iterator, iterator> equal_range(const key_type& __x) { return pair<iterator, iterator>(lower_bound(__x), upper_bound(__x)); }
 };
-template _Rb_tree<CUnprovenKey_006c4f80, CUnprovenValue_006c4f80, CUnprovenKeyOfValue_006c4f80, less<CUnprovenKey_006c4f80 >, allocator<CUnprovenValue_006c4f80 > >::_Rb_tree(const less<CUnprovenKey_006c4f80 >&, const allocator<CUnprovenValue_006c4f80 >&);
+template void _Rb_tree<long, std::pair<const long, COpinionDeed* >, std::_Select1st<std::pair<const long, COpinionDeed* > >, less<long >, allocator<std::pair<const long, COpinionDeed* > > >::clear();
 }
