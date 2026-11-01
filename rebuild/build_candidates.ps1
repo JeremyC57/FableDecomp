@@ -1622,8 +1622,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00744580'
         Module = 'CTCPerceiveThing'
-        Source = '00/74/CTCPerceiveThing_GetExtendedSightRadius_00744580.cpp'
-        TestSource = '00/74/CTCPerceiveThing_GetExtendedSightRadius_00744580_test.cpp'
+        Source = '00/74/CTCPerceiveThing_GetTimeBasedVisibilityMultiplier_00744580.cpp'
+        TestSource = '00/74/CTCPerceiveThing_GetTimeBasedVisibilityMultiplier_00744580_test.cpp'
         PassPattern = 'CTCPerceiveThing_00744580_TEST PASS'
     }
     [pscustomobject]@{
