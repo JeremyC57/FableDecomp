@@ -1,0 +1,157 @@
+addr       parity           behav  name
+004128a0   RELOCATION_MATCH PASS   std::vector<CWideString,std::allocator<CWideString> >::push_back
+004ff080   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+004ff080   WARN SHARED_HEADER_AVAILABLE CASuspendableProcess
+004ff080   WARN SHARED_HEADER_AVAILABLE CWorld
+004ff080   WARN SHARED_HEADER_AVAILABLE CWorldMap
+004ff080   RELOCATION_MATCH PASS   CWorldMap::LoadTopologyFromFile
+00584a73   WARN RELOC_NAME: ?IsActive@CTCQuickAccessMenu@@QBE_NXZ -> 00625930 labelled '_global::GetMember_byte0xc_00625930'
+00584a73   WARN RELOC_NAME: ?IsClosing@CTCQuickAccessMenu@@QBE_NXZ -> 00625940 labelled '_global::GetMember_byte0x1c_00625940'
+00584a73   WARN RELOC_NAME: ?RequestClose@CTCQuickAccessMenu@@QAEXXZ -> 00625920 labelled 'CTCCreditsUI::Deactivate'
+00584a73   RELOCATION_MATCH PASS   CTCInventory::AddCloseInventoryEvent
+005955ab   WARN SHARED_HEADER_AVAILABLE CFrontEndManager
+005955ab   WARN RELOC_NAME: ?ScanNextFile@CAFile@@SI_NABVCWideString@@AAVCFileScanInfo@1@PAG@Z -> 00999850 labelled 'CAFile::FindNextFileSequential'
+005955ab   RELOCATION_MATCH PASS   NUISystem::CFrontEndManager::GetProfileNames
+005fc620   WARN SHARED_HEADER_AVAILABLE CRegion
+005fc620   WARN SHARED_HEADER_AVAILABLE CWorldMap
+005fc620   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+005fc620   WARN SHARED_HEADER_AVAILABLE CTCBase
+005fc620   WARN RELOC_NAME: ?GetAllThings@CThingSearchTools@@QAEXABUCFilter_Bind2@@AAU?$list@PAVCThing@@@@@Z -> 00617780 labelled 'CThingSearchTools::GetAllLeafThings<CThingMarker, std::list<CThingMarker const *, std::allocator<CThingMarker const *>>, CFilter_Bind2<CThingFilter_HasTC, CThingFilter_InMap>>'
+005fc620   RELOCATION_MATCH PASS   CTCInventoryMap::FindTeleports
+006116e0   WARN SHARED_HEADER_AVAILABLE CManager
+006116e0   WARN SHARED_HEADER_AVAILABLE CManager
+006116e0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+006116e0   WARN SHARED_HEADER_AVAILABLE CDisplayEngine
+006116e0   WARN RELOC_NAME: ?ResetOpenState@CTCInventoryBase@@QAEXXZ -> 005bc6ed labelled 'CTCInventoryBase::ScreenHook_5bc6ed'
+006116e0   WARN RELOC_NAME: ?SetCurrentScreenType@CManager@NHeroInformationScreens@@QAEXJ@Z -> 0066e799 labelled '_global::SetMember_dword0x28_0066e799'
+006116e0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+006116e0   WARN RELOC_NAME: ?_M_insert_overflow@?$CRetailVector@PAVCComponent@NUISystem@@@@QAEXPAPAVCComponent@NUISystem@@ABQAV23@ABU__true_type@@K_N@Z -> 00485dbc labelled '_global::Std_Vector_Insert_Range_Fill'
+006116e0   RELOCATION_MATCH PASS   CTCInventoryMap::OpenInventory
+007196b0   RELOCATION_MATCH PASS   std::_List_base<CCountedPointer<CTCScriptedControl::CActionBase>,std::allocator<CCountedPointer<CTCScriptedControl::CActionBase> > >::~_List_base
+0071ce80   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0071ce80   RELOCATION_MATCH PASS   CTCHeroMorph::GetTattooNames
+00774100   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+00774100   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00774100   RELOCATION_MATCH PASS   CTCShop::GetWantedItemsList
+007fecb0   WARN SHARED_HEADER_AVAILABLE CWorld
+007fecb0   RELOCATION_MATCH PASS   CTCUserActionPointBase::UpdateBlockedActionPoints
+007fede0   WARN SHARED_HEADER_AVAILABLE CWorld
+007fede0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007fede0   RELOCATION_MATCH PASS   CTCUserActionPointBase::GetFreeActionPoint
+008544c0   RELOCATION_MATCH PASS   CScriptModuleFOVZoomStayRelative_CompositeScalarDeletingDestructor
+008865c0   WARN RELOC_NAME: ?GetColour@CEnvironmentLookupTexture@@QBE?AVCRGBFloatColour@@JJ@Z -> 008860d0 labelled 'CEnvironmentLookupTexture::LookupFloatColour'
+008865c0   RELOCATION_MATCH PASS   NEnvironmentInternal::CBlendedEnvironmentTheme::BuildFromSource
+0098a9a0   RELOCATION_MATCH PASS   CShaderRenderManager::CreatePixelShader
+00994400   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00994400   RELOCATION_MATCH PASS   CFileDataOutputStream::CFileDataOutputStream
+00994480   MATCH            PASS   CFileDataOutputStream::Write
+00996f30   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00996f30   RELOCATION_MATCH PASS   CFileDataOutputStream::`scalar_deleting_destructor'
+009a7720   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+009a7720   RELOCATION_MATCH PASS   CBankFileManager::CreateRetailBank
+009a7d40   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+009a7d40   WARN RELOC_ALIAS: __CxxThrowException@8 -> 00bfeb84 is the import thunk 'MSVCR71.DLL::_CxxThrowException'
+009a7d40   RELOCATION_MATCH PASS   CBankFileManager::GetRetailBankFilePath
+009ade90   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+009ade90   RELOCATION_MATCH PASS   CDefinitionManager::ParseStringForSymbols
+009ae5f0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+009ae5f0   RELOCATION_MATCH PASS   CDefinitionManager::RemoveUnusedMemory
+009aef60   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+009aef60   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+009aef60   WARN RELOC_NAME: ?ScanFirstFile@@YI_NABVCWideString@@AAUCFileScanState@@AAV1@@Z -> 00999c50 labelled 'CAFile::StartFileScan'
+009aef60   RELOCATION_MATCH PASS   CDefinitionManager::CreateSymbolsFromPathList
+009af480   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+009af480   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+009af480   WARN RELOC_NAME: ?ScanFirstFile@@YI_NABVCWideString@@AAUCFileScanState@@AAV1@@Z -> 00999c50 labelled 'CAFile::StartFileScan'
+009af480   RELOCATION_MATCH PASS   CDefinitionManager::DoCompilePathList
+009b0470   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+009b0470   WARN SHARED_HEADER_AVAILABLE CResourceList
+009b0470   RELOCATION_MATCH PASS   CDefinitionManager::CDefinitionManager
+009cc530   WARN SHARED_HEADER_AVAILABLE CBankFile
+009cc530   RELOCATION_MATCH PASS   CBankFile::CreateSymbolMap
+009cdf50   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+009cdf50   WARN SHARED_HEADER_AVAILABLE CBankFile
+009cdf50   RELOCATION_MATCH PASS   CBankFile::WriteRecoveryFile
+00a0d410   RELOCATION_MATCH PASS   CAInputProcess::`scalar deleting destructor'
+00a5d620   WARN SHARED_HEADER_AVAILABLE CBankFile
+00a5d620   WARN RELOC_NAME: ?GetShaderData@CShaderDataBank@@QAEPAUCPixelShaderData@@K@Z -> 00a61fb0 labelled 'CShaderRenderManager::LookupShaderData'
+00a5d620   RELOCATION_MATCH PASS   CPixelShader::~CPixelShader
+00a5ecb0   RELOCATION_MATCH PASS   CPixelShader::CPixelShader
+00a60aa0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00a60aa0   RELOCATION_MATCH PASS   CChecksumCacheFile::Save
+00a60c30   RELOCATION_MATCH PASS   CChecksumCacheFile::Close
+00a86e20   RELOCATION_MATCH PASS   CPhysicsFacesSegmentLeaf::GetPossibleCollisionSet
+00ae85f0   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+00ae85f0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00ae85f0   RELOCATION_MATCH PASS   CParticleEmitterDatabase::CreateSymbolMap
+00aebaf0   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+00aebaf0   WARN RELOC_NAME: ?FindString_004b8e40@@YIPAVCCharString@@PAV1@0ABV1@ABUSRandomAccessIteratorTag@@@Z -> 004b8e40 labelled 'std::__find<CCharString*, CCharString>'
+00aebaf0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z -> 00433530 labelled 'std::vector::std::vector::Reallocate'
+00aebaf0   RELOCATION_MATCH PASS   NParticleEngine::CParticleEmitterManager::GetActiveEmitterNames
+00d3a1a0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00d3a1a0   RELOCATION_MATCH PASS   NScript::CQ_FireHeartScript::CDF_Fireheart::Main
+00d9f270   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00d9f270   RELOCATION_MATCH PASS   NScript::CQ_MinionCampScript::CMC_Minion::Main
+00e0e2e0   RELOCATION_MATCH PASS   NScript::CQ_UndeadRisingScript::CUndeadRisingZombieAttackerBoss::Main
+00e8b020   WARN RELOC_NAME: ??0CAndPredicate@@QAE@ABVCIsThingAlive@NScript@@ABUCIsFlagFalse@@@Z -> 00e7e020 labelled 'NScript::CPredicate_And<NScript::CIsThingAlive, NScript::CIsVariableFalse>::CPredicate_And'
+00e8b020   WARN RELOC_NAME: ??0CCutsceneCastMap@@QAE@XZ -> 00cdbf70 labelled 'std::_Rb_tree<T_node0x24_00cdbf70>::_Rb_tree'
+00e8b020   WARN RELOC_NAME: ??1CCutsceneCastMap@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00e8b020   RELOCATION_MATCH PASS   NScript::CV_FisticuffsClubScript::CRingFighter::Main
+00ee76f0   WARN RELOC_NAME: ??0CCutsceneCastMap@@QAE@XZ -> 00cdbf70 labelled 'std::_Rb_tree<T_node0x24_00cdbf70>::_Rb_tree'
+00ee76f0   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00ee76f0   WARN RELOC_NAME: ??1CCutsceneCastMap@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00ee76f0   RELOCATION_MATCH PASS   NScript::CV_TrophyDealerScript::CTrophyDealerInCave::Main
+00ef29e0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00ef29e0   WARN RELOC_NAME: ??0ScriptThingCopy@@QAE@ABVCScriptThing@@@Z -> 004abe90 labelled 'CScriptThing::CScriptThing'
+00ef29e0   RELOCATION_MATCH PASS   NScript::CPersonalScript_EmptyScript::CGoalChest::Main
+00ef3000   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00ef3000   WARN RELOC_NAME: ??0ScriptThingCopy@@QAE@ABVCScriptThing@@@Z -> 004abe90 labelled 'CScriptThing::CScriptThing'
+00ef3000   RELOCATION_MATCH PASS   NScript::CPersonalScript_EmptyScript::CDoor::Main
+00f372b0   RELOCATION_MATCH PASS   CGPUScratchBufferTextureManager::AllocResourceEntry
+00f3f5a0   WARN RELOC_NAME: ?GenerateStrips@CTriangleStripifier2@@QAEXABV?$CArray@G@@AAV2@AAV?$CArray@J@@@Z -> 00f3ea50 labelled 'GenerateTriangleListAndStrip'
+00f3f5a0   RELOCATION_MATCH PASS   CTriangleStripifier2::ReorderTriangleListInPlace
+
+WINS: 43
+  004128a0 RELOCATION_MATCH std::vector<CWideString,std::allocator<CWideString> >::?push_back@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEXABVCWideString@@@Z
+  004ff080 RELOCATION_MATCH CWorldMap::?LoadTopologyFromFile@CWorldMap@@UAEXJV?$CCountedPointer@VCAFile@@@@AAVCASuspendableProcess@@@Z
+  00584a73 RELOCATION_MATCH CTCInventory::?AddCloseInventoryEvent@CTCInventory@@UAEXXZ
+  005955ab RELOCATION_MATCH NUISystem::CFrontEndManager::?GetProfileNames@CFrontEndManager@NUISystem@@IAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
+  005fc620 RELOCATION_MATCH CTCInventoryMap::?FindTeleports@CTCInventoryMap@@AAEXXZ
+  006116e0 RELOCATION_MATCH CTCInventoryMap::OpenInventory@CTCInventoryMap
+  007196b0 RELOCATION_MATCH std::_List_base<CCountedPointer<CTCScriptedControl::CActionBase>,std::allocator<CCountedPointer<CTCScriptedControl::CActionBase> > >::??1?$_List_base@V?$CCountedPointer@VCActionBase@CTCScriptedControl@@@@V?$allocator@V?$CCountedPointer@VCActionBase@CTCScriptedControl@@@@@std@@@std@@QAE@XZ
+  0071ce80 RELOCATION_MATCH CTCHeroMorph::?GetTattooNames@CTCHeroMorph@@QAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
+  00774100 RELOCATION_MATCH CTCShop::?GetWantedItemsList@CTCShop@@QBE?AV?$vector@JV?$allocator@J@std@@@std@@XZ
+  007fecb0 RELOCATION_MATCH CTCUserActionPointBase::?UpdateBlockedActionPoints@CTCUserActionPointBase@@IAEXXZ
+  007fede0 RELOCATION_MATCH CTCUserActionPointBase::GetFreeActionPoint
+  008544c0 RELOCATION_MATCH NCameraModes::CScriptModuleFOVZoomStayRelative::?CScriptModuleFOVZoomStayRelative_CompositeScalarDeletingDestructor@@YIPAXPAXHI@Z
+  008865c0 RELOCATION_MATCH NEnvironmentInternal::CBlendedEnvironmentTheme::BuildFromSource
+  0098a9a0 RELOCATION_MATCH CShaderRenderManager::?CreatePixelShader@CShaderRenderManager@@AAE?AVCPixelShader@@ABV?$CArray@K@@ABV?$CArray@VCCharString@@@@ABVCCharString@@@Z
+  00994400 RELOCATION_MATCH CFileDataOutputStream::??0CFileDataOutputStream@@QAE@AAVCAFile@@@Z
+  00994480 MATCH CFileDataOutputStream::?Write@CFileDataOutputStream@@UAEXPBXJ@Z
+  00996f30 RELOCATION_MATCH CFileDataOutputStream::??_GCFileDataOutputStream
+  009a7720 RELOCATION_MATCH CBankFileManager::?CreateRetailBank@CBankFileManager@@AAEXABVCWideString@@@Z
+  009a7d40 RELOCATION_MATCH CBankFileManager::?GetRetailBankFilePath@CBankFileManager@@
+  009ade90 RELOCATION_MATCH CDefinitionManager::?ParseStringForSymbols@CDefinitionManager@@IAEXPBD_N@Z
+  009ae5f0 RELOCATION_MATCH CDefinitionManager::?RemoveUnusedMemory@CDefinitionManager@@IAEXXZ
+  009aef60 RELOCATION_MATCH CDefinitionManager::?CreateSymbolsFromPathList@CDefinitionManager@@IAEXABV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@_N@Z
+  009af480 RELOCATION_MATCH CDefinitionManager::?DoCompilePathList@CDefinitionManager@@IAEXABV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@ABVCCharString@@@Z
+  009b0470 RELOCATION_MATCH CDefinitionManager::CDefinitionManager
+  009cc530 RELOCATION_MATCH CBankFile::CreateSymbolMap
+  009cdf50 RELOCATION_MATCH CBankFile::?WriteRecoveryFile@CBankFile@@AAEXKKK@Z
+  00a0d410 RELOCATION_MATCH CAInputProcess::??_GCAInputProcess@@UAEPAXI@Z
+  00a5d620 RELOCATION_MATCH CPixelShader::GetPixelShader
+  00a5ecb0 RELOCATION_MATCH CPixelShader::??0CPixelShader@@AAE@PAUIDirect3DPixelShader9@@ABV?$CArray@J@@ABVCCharString@@@Z
+  00a60aa0 RELOCATION_MATCH CChecksumCacheFile::?Save@CChecksumCacheFile@@AAEXXZ
+  00a60c30 RELOCATION_MATCH CChecksumCacheFile::?Close@CChecksumCacheFile@@QAEXXZ
+  00a86e20 RELOCATION_MATCH CPhysicsFacesSegmentLeaf::?GetPossibleCollisionSet@CPhysicsFacesSegmentLeaf@@MBEXMABVC3DVector@@0AAV?$vector@JV?$allocator@J@std@@@std@@@Z
+  00ae85f0 RELOCATION_MATCH CParticleEmitterDatabase::CreateSymbolMap
+  00aebaf0 RELOCATION_MATCH NParticleEngine::CParticleEmitterManager::?GetActiveEmitterNames@CParticleEmitterManager@NParticleEngine@@QBEJAAV?$CArray@VCCharString@@@@@Z
+  00d3a1a0 RELOCATION_MATCH NScript::CQ_FireHeartScript::CDF_Fireheart::?Main@CDF_Fireheart@CQ_FireHeartScript@NScript@@EAEXXZ
+  00d9f270 RELOCATION_MATCH NScript::CQ_MinionCampScript::CMC_Minion::?Main@CMC_Minion@CQ_MinionCampScript@NScript@@EAEXXZ
+  00e0e2e0 RELOCATION_MATCH NScript::CQ_UndeadRisingScript::CUndeadRisingZombieAttackerBoss::?Main@CUndeadRisingZombieAttackerBoss@CQ_UndeadRisingScript@NScript@@EAEXXZ
+  00e8b020 RELOCATION_MATCH NScript::CV_FisticuffsClubScript::CRingFighter::?Main@CRingFighter@CV_FisticuffsClubScript@NScript@@EAEXXZ
+  00ee76f0 RELOCATION_MATCH NScript::CV_TrophyDealerScript::CTrophyDealerInCave::?Main@CTrophyDealerInCave@CV_TrophyDealerScript@NScript@@EAEXXZ
+  00ef29e0 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CGoalChest::?Main@CGoalChest@CPersonalScript_EmptyScript@NScript@@EAEXXZ
+  00ef3000 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CDoor::?Main@CDoor@CPersonalScript_EmptyScript@NScript@@EAEXXZ
+  00f372b0 RELOCATION_MATCH CGPUScratchBufferTextureManager::AllocResourceEntry
+  00f3f5a0 RELOCATION_MATCH CTriangleStripifier2::ReorderTriangleListInPlace

@@ -1,0 +1,31 @@
+Counter({'RETIRE': 32, 'ADD': 16, 'KEEP': 10}) removed lines 32 added 16
+NEWDEF 004128a0 ??$_Construct@VCWideString@@V1@@std@@YAXPAVCWideString@@ABV1@@Z ??0__false_type@std@@QAE@XZ ??2@YAPAXIPAX@Z ?push_back@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEXABVCWideString@@@Z
+NEWDEF 004ff080 ?LoadTopologyFromFile@CWorldMap@@UAEXJV?$CCountedPointer@VCAFile@@@@AAVCASuspendableProcess@@@Z
+NEWDEF 00584a73 ?AddCloseInventoryEvent@CTCInventory@@UAEXXZ
+NEWDEF 005955ab ?GetProfileNames@CFrontEndManager@NUISystem@@IAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z ?begin@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@XZ ?clear@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEXXZ ?end@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@QAEPAVCWideString@@XZ
+NEWDEF 005fc620 ?FindTeleports@CTCInventoryMap@@AAEXXZ
+NEWDEF 007196b0 ??1?$_List_base@V?$CCountedPointer@VCActionBase@CTCScriptedControl@@@@V?$allocator@V?$CCountedPointer@VCActionBase@CTCScriptedControl@@@@@std@@@std@@QAE@XZ ?deallocate@?$allocator@U?$_List_node@V?$CCountedPointer@VCActionBase@CTCScriptedControl@@@@@std@@@std@@QAEXPAU?$_List_node@V?$CCountedPointer@VCActionBase@CTCScriptedControl@@@@@2@I@Z
+NEWDEF 0071ce80 ?GetTattooNames@CTCHeroMorph@@QAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
+NEWDEF 00774100 ??0?$_STLP_alloc_proxy@PAJJV?$allocator@J@std@@@std@@QAE@ABV?$allocator@J@1@PAJ@Z ??0?$_Vector_base@JV?$allocator@J@std@@@std@@QAE@ABV?$allocator@J@1@@Z ??0?$allocator@J@std@@QAE@XZ ??0?$vector@JV?$allocator@J@std@@@std@@QAE@ABV01@@Z ??0?$vector@JV?$allocator@J@std@@@std@@QAE@XZ ??0__true_type@std@@QAE@XZ ??1?$vector@JV?$allocator@J@std@@@std@@QAE@XZ ?GetWantedItemsList@CTCShop@@QBE?AV?$vector@JV?
+NEWDEF 007fecb0 ?UpdateBlockedActionPoints@CTCUserActionPointBase@@IAEXXZ
+NEWDEF 008865c0 ?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@std@@IAEXPAJABJABU__true_type@2@I_N@Z ?_M_insert_overflow@?$vector@MV?$allocator@M@std@@@std@@IAEXPAMABMABU__true_type@2@I_N@Z ?push_back@?$vector@JV?$allocator@J@std@@@std@@QAEXABJ@Z ?push_back@?$vector@MV?$allocator@M@std@@@std@@QAEXABM@Z
+NEWDEF 0098a9a0 ?CreatePixelShader@CShaderRenderManager@@AAE?AVCPixelShader@@ABV?$CArray@K@@ABV?$CArray@VCCharString@@@@ABVCCharString@@@Z
+NEWDEF 00994480 ?Write@CFileDataOutputStream@@UAEXPBXJ@Z
+NEWDEF 009a7720 ?CreateRetailBank@CBankFileManager@@AAEXABVCWideString@@@Z
+NEWDEF 009ade90 ?ParseStringForSymbols@CDefinitionManager@@IAEXPBD_N@Z
+NEWDEF 009ae5f0 ?RemoveUnusedMemory@CDefinitionManager@@IAEXXZ
+NEWDEF 009aef60 ?CreateSymbolsFromPathList@CDefinitionManager@@IAEXABV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@_N@Z
+NEWDEF 009af480 ?DoCompilePathList@CDefinitionManager@@IAEXABV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@ABVCCharString@@@Z
+NEWDEF 00a5ecb0 ??0CPixelShader@@AAE@PAUIDirect3DPixelShader9@@ABV?$CArray@J@@ABVCCharString@@@Z
+NEWDEF 00a60aa0 ?Save@CChecksumCacheFile@@AAEXXZ
+NEWDEF 00a86e20 ?GetPossibleCollisionSet@CPhysicsFacesSegmentLeaf@@MBEXMABVC3DVector@@0AAV?$vector@JV?$allocator@J@std@@@std@@@Z
+NEWDEF 00aebaf0 ??0__false_type@std@@QAE@XZ ??A?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEAAVCCharString@@K@Z ?GetActiveEmitterNames@CParticleEmitterManager@NParticleEngine@@QBEJAAV?$CArray@VCCharString@@@@@Z ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z ?begin@?$vector@JV?$allocator@J@std@@@std@@QAEPAJXZ ?b
+NEWDEF 00d3a1a0 ?Main@CDF_Fireheart@CQ_FireHeartScript@NScript@@EAEXXZ
+NEWDEF 00d9f270 ?Main@CMC_Minion@CQ_MinionCampScript@NScript@@EAEXXZ
+NEWDEF 00e0e2e0 ??0CSpawnedFunc1@@QAE@ABVCCharString@@KP8CQ_UndeadRisingScript@NScript@@AEXVCScriptThing@@@ZPAV23@1@Z ?Main@CUndeadRisingZombieAttackerBoss@CQ_UndeadRisingScript@NScript@@EAEXXZ
+NEWDEF 00e8b020 ?Main@CRingFighter@CV_FisticuffsClubScript@NScript@@EAEXXZ
+NEWDEF 00ee76f0 ?Main@CTrophyDealerInCave@CV_TrophyDealerScript@NScript@@EAEXXZ
+NEWDEF 00ef29e0 ?Main@CGoalChest@CPersonalScript_EmptyScript@NScript@@EAEXXZ
+NEWDEF 00ef3000 ?Main@CDoor@CPersonalScript_EmptyScript@NScript@@EAEXXZ
+NEWDEF 00f372b0 ??0__true_type@std@@QAE@XZ ??A?$vector@JV?$allocator@J@std@@@std@@QAEAAJK@Z ??A?$vector@UCResourceEntry@CGPUScratchBufferTextureManager@@V?$allocator@UCResourceEntry@CGPUScratchBufferTextureManager@@@std@@@std@@QAEAAUCResourceEntry@CGPUScratchBufferTextureManager@@K@Z ??A?$vector@UCResourcePage@CGPUScratchBufferTextureManager@@V?$allocator@UCResourcePage@CGPUScratchBufferTextureManager@@@std@@@std
+NEWDEF 00f3f5a0 ??0?$vector@GV?$allocator@G@std@@@std@@QAE@XZ ??0?$vector@JV?$allocator@J@std@@@std@@QAE@XZ ??0__true_type@std@@QAE@XZ ??1?$vector@GV?$allocator@G@std@@@std@@QAE@XZ ??1?$vector@JV?$allocator@J@std@@@std@@QAE@XZ ??A?$vector@GV?$allocator@G@std@@@std@@QBEAAGK@Z ?_M_insert_overflow@?$vector@GV?$allocator@G@std@@@std@@IAEXPAGABGABU__true_type@2@I_N@Z ?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@
