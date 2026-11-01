@@ -1,5 +1,6 @@
 // CTCUserActionPointBase::GetFreeActionPoint(CThing& thing, C3DVector& position, CRightHandedSet& rh, long& index) -- hand the thing a free action point: refresh the blocked list, remember the thing, then keep drawing random free points (taking each off the free list); one not known to be blocked and not blocked now is returned, a newly blocked one goes on the blocked list; false when the free list runs dry
 // Leaf: GetFreeActionPoint
+// Naming wave 27 (family acc, DECISIONS_W26 D5): the callee UpdateBlockedActionPoints 0x007FECB0 is protected in both PDBs (IAE).
 // Naming wave 26 (family vlong): the vector is STLport 4.6 std::vector<long, allocator<long> >; its grow-insert 0x00440990 is the
 //   protected ?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@std@@IAEXPAJABJABU__true_type@2@I_N@Z (size_type unsigned int; the
 //   own row's spelling, c689 queue). Was CLongVector::_M_insert_overflow(..., const __true_type&, unsigned long, bool).
@@ -183,7 +184,9 @@ struct CTCUserActionPointBase : public CTCBase {
     long          NumberOfActionPoints;                      // +0x24
     long          FrameOfNextCheck;                          // +0x28
     CIntelligentPointer<CThing> PThing;                              // +0x2c
-    void UpdateBlockedActionPoints();                        // 0x007FECB0
+protected:
+    void UpdateBlockedActionPoints();                        // 0x007FECB0 (protected: Ego_r.pdb / FableWin.pdb IAE)
+public:
     bool GetFreeActionPoint(CThing& thing, C3DVector& position, CRightHandedSet& rh, long& index);
 };
 

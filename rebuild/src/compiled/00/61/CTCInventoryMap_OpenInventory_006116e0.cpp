@@ -1,5 +1,6 @@
 // CTCInventoryMap::OpenInventory() -- opens the world-map screen: remembers the previous hero-info screen, opens the base inventory, fades the sound channels, builds the map menu and the mouse pointer and keeps both components
 // Leaf: OpenInventory@CTCInventoryMap
+// Naming wave 27 (family acc, DECISIONS_W26 D5): the callee FindTeleports 0x005FC620 is private in both PDBs (AAE).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
@@ -160,7 +161,9 @@ class CTCInventoryMap : public CTCInventoryBase, public NHeroInformationScreens:
     bool          TeleportsFound;                       // +0x234
     unsigned char _pad235[0x244 - 0x235];
     long          PreviousScreenType;                   // +0x244
-    void FindTeleports();                               // 0x005FC620
+private:
+    void FindTeleports();                               // 0x005FC620 (private: Ego_r.pdb / FableWin.pdb AAE)
+public:
     NUISystem::CComponent* BuildMapMenu(long a, long b);   // 0x0060EEB0
     void OpenInventory();
 };

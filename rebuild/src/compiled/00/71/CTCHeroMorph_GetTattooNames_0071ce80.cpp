@@ -1,5 +1,6 @@
 // CTCHeroMorph::GetTattooNames(std::vector<CWideString>&) const -- appends the display name (inventory-item description text) of every tattoo the hero wears
-// Leaf: GetTattooNames
+// Leaf: ?GetTattooNames@CTCHeroMorph@@QAEXAAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
+// Naming wave 27 (family acc, DECISIONS_W26 D5): GetTattooNames is non-const in both PDBs (QAE). Was const (QBE).
 // Naming wave 26 (family vws): the vector is STLport 4.6 std::vector<CWideString, allocator<CWideString> >; its grow-insert 0x00412330
 //   is the protected ?_M_insert_overflow@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@IAEXPAVCWideString@@ABV3@ABU__false_type@2@I_N@Z
 //   (size_type unsigned int; c691 queue). Was CWideStringVector::_M_insert_overflow(..., const __false_type&, unsigned long, bool).
@@ -184,10 +185,10 @@ class CTCHeroMorph { public:
     void*         __vftable;                         // +0x00
     unsigned char _pad_0x04[0x18];
     CTattooVector Tattoos;                           // +0x1C (PDB +0x2C)
-    void GetTattooNames(std::vector<CWideString>& names) const;
+    void GetTattooNames(std::vector<CWideString>& names);   // non-const (Ego_r.pdb / FableWin.pdb QAE)
 };
 
-void CTCHeroMorph::GetTattooNames(std::vector<CWideString>& names) const
+void CTCHeroMorph::GetTattooNames(std::vector<CWideString>& names)
 {
     for (unsigned long i = 0; i < Tattoos.size(); ++i) {
         CItemDefPointer item;

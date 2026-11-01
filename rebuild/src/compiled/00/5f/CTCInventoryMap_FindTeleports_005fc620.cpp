@@ -1,4 +1,6 @@
 // CTCInventoryMap::FindTeleports() -- rebuilds the list of regions that hold a teleport: for every region (1..count), every map linked to the region is searched for teleporter things (TC 0xDD) and the region index is recorded once when an enabled teleporter is found
+// Leaf: ?FindTeleports@CTCInventoryMap@@AAEXXZ
+// Naming wave 27 (family acc, DECISIONS_W26 D5): FindTeleports is private in both PDBs (AAE). Was public (QAE).
 // Naming wave 26 (family vlong): the vector is STLport 4.6 std::vector<long, allocator<long> >; its grow-insert 0x00440990 is the
 //   protected ?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@std@@IAEXPAJABJABU__true_type@2@I_N@Z (size_type unsigned int; the
 //   own row's spelling, c689 queue). Was CLongVector::_M_insert_overflow(..., const __false_type&, unsigned long, bool).
@@ -195,7 +197,8 @@ class CTCInventoryMap : public CTCBase { public:
     std::vector<long>   TeleportRegions;                    // +0x208
     unsigned char _pad214[0x23c - 0x214];
     long          NumberOfRegions;                    // +0x23c
-    void FindTeleports();
+private:
+    void FindTeleports();                             // private (Ego_r.pdb / FableWin.pdb AAE)
 };
 void CTCInventoryMap::FindTeleports()
 {

@@ -1,5 +1,6 @@
 // CTCUserActionPointBase::UpdateBlockedActionPoints() -- at most every 10 frames, re-tests every blocked action point: those still blocked (for a live owner) stay blocked, the rest go back to the free list
-// Leaf: UpdateBlockedActionPoints
+// Leaf: ?UpdateBlockedActionPoints@CTCUserActionPointBase@@IAEXXZ
+// Naming wave 27 (family acc, DECISIONS_W26 D5): UpdateBlockedActionPoints is protected in both PDBs (IAE). Was public (QAE).
 // Naming wave 26 (family vlong): the vector is STLport 4.6 std::vector<long, allocator<long> >; its grow-insert 0x00440990 is the
 //   protected ?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@std@@IAEXPAJABJABU__true_type@2@I_N@Z (size_type unsigned int; the
 //   own row's spelling, c689 queue). Was CLongVector::_M_insert_overflow(..., const __true_type&, unsigned long, bool).
@@ -157,7 +158,8 @@ struct CTCUserActionPointBase {
     long          NumberOfActionPoints;         // +0x24
     long          FrameOfNextCheck;             // +0x28
     CIntelligentPointer<CThing> PThing;             // +0x2c
-    void UpdateBlockedActionPoints();
+protected:
+    void UpdateBlockedActionPoints();               // protected (Ego_r.pdb / FableWin.pdb IAE)
 };
 
 void CTCUserActionPointBase::UpdateBlockedActionPoints()
