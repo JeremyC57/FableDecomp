@@ -1,0 +1,2 @@
+# naming wave 25: recheck_final.log covered 76 rows; 0x009F31C0 was then withdrawn (deferred, DECISIONS_W25 D7) and its source left on HEAD.
+# The other 75 overlay files are byte-identical to the rechecked ones (runs/prev/ovfinal.md5 vs runs/ovfinal.md5), so the 75 RELOCATION_MATCH + PASS results stand.

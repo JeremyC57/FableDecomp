@@ -1,0 +1,23 @@
+addr       parity           behav  name
+0042db40   RELOCATION_MATCH PASS   CXMVPlayerBuffers::CXMVPlayerBuffers
+0055d070   RELOCATION_MATCH PASS   CTCPhotojournalCapture::GetDescription
+00778ae0   RELOCATION_MATCH PASS   CTCFamilyMember::CTCFamilyMember
+0077b9b0   RELOCATION_MATCH PASS   NGraphicAppearance::CTCGraphicAppearanceStaticMesh::CTCGraphicAppearanceStaticMesh
+
+WINS: 4
+  0042db40 RELOCATION_MATCH CXMVPlayerBuffers::??0CXMVPlayerBuffers@@QAE@XZ
+  0055d070 RELOCATION_MATCH CTCPhotojournalCapture::?GetDescription@CTCPhotojournalCapture@@
+  00778ae0 RELOCATION_MATCH CTCFamilyMember::??0CTCFamilyMember@@QAE@AAVCThing@@@Z
+  0077b9b0 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearanceStaticMesh::??0CTCGraphicAppearanceStaticMesh@NGraphicAppearance@@QAE@AAVCThing@@@Z
+addr       parity           behav  name
+00523540   WARN SHARED_HEADER_AVAILABLE CWorld
+00523540   RELOCATION_MATCH PASS   CThingManager::CThingManager
+00770e50   RELOCATION_MATCH PASS   CTCSolidToThing::CTCSolidToThing
+0077b250   RELOCATION_MATCH PASS   NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh::CTCGraphicAppearanceAnimatedMesh
+0077be40   RELOCATION_MATCH PASS   NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity::CTCGraphicAppearanceStaticMeshFadeOutOnProximity
+
+WINS: 4
+  00523540 RELOCATION_MATCH CThingManager::??0CThingManager@@
+  00770e50 RELOCATION_MATCH CTCSolidToThing::??0CTCSolidToThing@@QAE@AAVCThing@@@Z
+  0077b250 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh::??0CTCGraphicAppearanceAnimatedMesh@NGraphicAppearance@@QAE@AAVCThing@@@Z
+  0077be40 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity::??0CTCGraphicAppearanceStaticMeshFadeOutOnProximity@NGraphicAppearance@@QAE@AAVCThing@@@Z

@@ -1,0 +1,286 @@
+addr       parity           behav  name
+00416c8a   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+00416c8a   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00416c8a   WARN RELOC_NAME: ??0CGraphicDataBankInit@@QAE@XZ -> 00415b80 labelled 'SNavigationLayerDefaults_00415b80::SNavigationLayerDefaults_00415b80'
+00416c8a   WARN RELOC_NAME: ?GetBestCompressedNonAlphaTextureFormat@CDisplayManager@@QAE_NKPAVCPixelFormat@@@Z -> 009be830 labelled 'CDisplayManager::GetBestCompressedOpaqueTextureFormat'
+00416c8a   WARN RELOC_NAME: ?CreateAndInitialize@CGraphicDataBankManager@@QAE?AV?$CCountedPointer@VCGraphicDataBank@@@@ABVCCharString@@ABVCGraphicDataBankInit@@_N2@Z -> 009f83d0 labelled 'CGraphicBankManager::OpenGraphicBank'
+00416c8a   WARN RELOC_NAME: ??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ -> 00419108 labelled 'CCountedPointer<CGraphicDataBank>::Release'
+00416c8a   RELOCATION_MATCH PASS   CMainGameComponent::InitGraphics
+0055d070   RELOCATION_MATCH PASS   CTCPhotojournalCapture::GetDescription
+006af630   WARN SHARED_HEADER_AVAILABLE CWorld
+006af630   WARN SHARED_HEADER_AVAILABLE CTCBase
+006af630   RELOCATION_MATCH PASS   _unattributed::DisplayEnginePredicate13_006af630
+00770e50   RELOCATION_MATCH PASS   CTCSolidToThing::CTCSolidToThing
+0077be40   RELOCATION_MATCH PASS   NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity::CTCGraphicAppearanceStaticMeshFadeOutOnProximity
+009be590   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009be590   RELOCATION_MATCH PASS   CDisplayManager::GetBestSignedTextureFormat
+009bebb0   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+  WARN leaf '?GetClosestDepthBufferFormat@CDisplayManager@@ABE?AVCPixelFormat@@ABU_D3DDISPLAYMODE@@J@Z' matches no symbol in 009bebb0.obj; graded the largest function
+  WARN leaf '?GetClosestDepthBufferFormat@CDisplayManager@@ABE?AVCPixelFormat@@ABU_D3DDISPLAYMODE@@J@Z' matches no symbol in 009bebb0.obj; graded the largest function
+009bebb0   RELOCATION_MATCH PASS   CDisplayManager::GetClosestDepthBufferFormat
+009f2f60   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009f2f60   RELOCATION_MATCH PASS   CSurface::GetPixelFormat
+009f3470   RELOCATION_MATCH PASS   CSurface::CopyFromMemoryAutoSwizzle
+009f3ff0   RELOCATION_MATCH PASS   CSurface::Clear
+009f9e80   RELOCATION_MATCH PASS   CTexture::GetLevelByteLength
+00a67480   RELOCATION_MATCH PASS   CVolume::GetPixelFormat
+00a67a20   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+00a67a20   RELOCATION_MATCH PASS   CVolume::ClearArea
+00b27ee0   WARN SHARED_HEADER_AVAILABLE CEngine
+00b27ee0   RELOCATION_MATCH PASS   CEngine::GetScratchZBufferD24S8
+00b5ece0   RELOCATION_MATCH PASS   InitialiseTextures
+00b86a70   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+00b86a70   RELOCATION_MATCH PASS   CEngineScreenEffectDisplacementRenderer::InitialiseTextures
+00cdf620   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00cdf620   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00cdf620   RELOCATION_MATCH PASS   NScript::CPersonalScript_GlobalThingsScript::CHERO_GUILD_TELEPORT_MARKER::Main
+00e76920   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00e76920   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e76920   RELOCATION_MATCH PASS   CEM_FlashLightPoint::Main
+00efe8d0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00efe8d0   WARN SHARED_HEADER_AVAILABLE CIsThingAlive
+00efe8d0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00efe8d0   WARN RELOC_NAME: ?RegisterFilter@CFader@CBenTestScriptsScript@NScript@@QAEXAAUCIsThingAlive@N_00ef7ab0@@@Z -> 00f35b10 labelled 'CEntityScriptBase::SetPredicate'
+00efe8d0   WARN RELOC_NAME: ??1CIsThingAlive@N_00ef7ab0@@QAE@XZ -> 00ef7ab0 labelled 'CScriptThingFunctor_00ef7ab0::~CScriptThingFunctor_00ef7ab0'
+00efe8d0   RELOCATION_MATCH PASS   NScript::CBenTestScriptsScript::CFader::Main
+
+WINS: 19
+  00416c8a RELOCATION_MATCH CMainGameComponent::?InitGraphics@CMainGameComponent@@QAE_NXZ
+  0055d070 RELOCATION_MATCH CTCPhotojournalCapture::?GetDescription@CTCPhotojournalCapture@@
+  006af630 RELOCATION_MATCH _unattributed::?DisplayEnginePredicate13_006af630@_unattributed@@
+  00770e50 RELOCATION_MATCH CTCSolidToThing::??0CTCSolidToThing@@QAE@AAVCThing@@@Z
+  0077be40 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity::??0CTCGraphicAppearanceStaticMeshFadeOutOnProximity@NGraphicAppearance@@QAE@AAVCThing@@@Z
+  009be590 RELOCATION_MATCH CDisplayManager::?GetBestSignedTextureFormat@CDisplayManager@@QAE_NJAAVCPixelFormat@@@Z
+  009bebb0 RELOCATION_MATCH CDisplayManager::?GetClosestDepthBufferFormat@CDisplayManager@@ABE?AVCPixelFormat@@ABU_D3DDISPLAYMODE@@J@Z
+  009f2f60 RELOCATION_MATCH CSurface::?GetPixelFormat@CSurface_Methods@@QBE?AVCPixelFormat@@XZ
+  009f3470 RELOCATION_MATCH CSurface::CopyFromMemoryAutoSwizzle
+  009f3ff0 RELOCATION_MATCH CSurface::Clear
+  009f9e80 RELOCATION_MATCH CTexture::?GetLevelByteLength@CTexture@@QBEKK@Z
+  00a67480 RELOCATION_MATCH CVolume::?GetPixelFormat@CVolume@@QBE?AVCPixelFormat@@XZ
+  00a67a20 RELOCATION_MATCH CVolume::ClearArea
+  00b27ee0 RELOCATION_MATCH CEngine::?GetScratchZBufferD24S8@CEngine@@QAEPAUCSurfaceNative@@K@Z
+  00b5ece0 RELOCATION_MATCH CGlowRendererMethods::?InitialiseTextures@CGlowRendererMethods@@QAEHXZ
+  00b86a70 RELOCATION_MATCH CEngineScreenEffectDisplacementRenderer::?InitialiseTextures@CEngineScreenEffectDisplacementRenderer_Init@@QAE_NXZ
+  00cdf620 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::CHERO_GUILD_TELEPORT_MARKER::Main
+  00e76920 RELOCATION_MATCH CEM_FlashLightPoint::Main
+  00efe8d0 RELOCATION_MATCH NScript::CBenTestScriptsScript::CFader::Main
+addr       parity           behav  name
+0042db40   RELOCATION_MATCH PASS   CXMVPlayerBuffers::CXMVPlayerBuffers
+00681940   WARN SHARED_HEADER_AVAILABLE CWorld
+00681940   WARN SHARED_HEADER_AVAILABLE CTCBase
+00681940   RELOCATION_MATCH PASS   CTCCreatureOpinionOfHero::GetToleranceToBeingHitRemaining
+006afd40   WARN SHARED_HEADER_AVAILABLE CTCBase
+006afd40   RELOCATION_MATCH PASS   CTCBase::PeekThingSearchTools
+00778ae0   RELOCATION_MATCH PASS   CTCFamilyMember::CTCFamilyMember
+0077db90   WARN SHARED_HEADER_AVAILABLE CWorld
+0077db90   WARN SHARED_HEADER_AVAILABLE CTCBase
+0077db90   RELOCATION_MATCH PASS   CTCHeroCentre::OnHeroWalkedThroughDoor
+009be610   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009be610   RELOCATION_MATCH PASS   CDisplayManager::GetBestOpaqueTextureFormat
+009bed10   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009bed10   RELOCATION_MATCH PASS   CDisplayManager::GetCurrentWindowedSettings
+009f2fc0   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009f2fc0   RELOCATION_MATCH PASS   CSurface::GetByteLength
+009f3520   RELOCATION_MATCH PASS   CSurface::CopyToMemoryAutoUnswizzle
+009f4120   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009f4120   RELOCATION_MATCH PASS   CSurface::SetPixel
+009fa340   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009fa340   WARN SHARED_HEADER_AVAILABLE CTexture
+009fa340   WARN RELOC_NAME: ??BCWideString@N_0099af00@@QBEPBGXZ -> 0099af00 labelled 'CWideString::operator unsigned short const *'
+009fa340   WARN RELOC_ALIAS: _D3DXCreateTextureFromFileExW@56 -> 00bfefd4 is the import thunk 'D3DX9_25.DLL::D3DXCreateTextureFromFileExW'
+009fa340   RELOCATION_MATCH PASS   CTexture::LoadFromBitmapFile
+00a674e0   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+00a674e0   RELOCATION_MATCH PASS   CVolume::GetByteLength
+00a681f0   RELOCATION_MATCH PASS   CVolumeTexture::GetLevelByteLength
+00b3b4f0   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+00b3b4f0   WARN SHARED_HEADER_AVAILABLE CTextureManager
+00b3b4f0   WARN SHARED_HEADER_AVAILABLE CEngineSurfaceCompositionManager
+00b3b4f0   WARN RELOC_NAME: ?SetLevel@CGraphicDataBank@@QAEXJ@Z -> 009fd100 labelled 'CLandscapeBackgroundSubNodeSplitBranch::OnPostParentRelocation'
+00b3b4f0   WARN RELOC_NAME: ?ResizePoolByFormat@CTextureManager@@QAE_NJJ@Z -> 00a6abe0 labelled 'CTextureManager::ResizePoolTextureCount'
+00b3b4f0   RELOCATION_MATCH PASS   CEngineResourceManager::ResizeHiresTextureMemory
+00b6d480   WARN SHARED_HEADER_AVAILABLE CIndexBuffer
+00b6d480   WARN SHARED_HEADER_AVAILABLE CVertexBufferWin32
+00b6d480   WARN SHARED_HEADER_AVAILABLE CEngineWaterRenderer
+00b6d480   RELOCATION_MATCH PASS   CEngineWaterRenderer::ReleaseSeaBuffers
+00babb50   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+00babb50   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00babb50   WARN SHARED_HEADER_AVAILABLE CIndexBuffer
+00babb50   WARN RELOC_NAME: ?RegisterEnable@CEnginePrimitiveManagerOcclusionBase@@QAEXABVCCharString@@@Z -> 00bacd80 labelled '_global::Nop_ret4_00bacd80'
+00babb50   RELOCATION_MATCH PASS   CEnginePrimitiveManagerRepeatedZSprites::CEnginePrimitiveManagerRepeatedZSprites
+00d864b0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d864b0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d864b0   WARN RELOC_NAME: ??0ScriptThingCopy@@QAE@ABVCScriptThing@@@Z -> 004abe90 labelled 'CScriptThing::CScriptThing'
+00d864b0   WARN RELOC_NAME: ??1ScriptThingCopy@@QAE@XZ -> 004aa840 labelled 'CScriptThing::~CScriptThing'
+00d864b0   RELOCATION_MATCH PASS   CGuardInWoods::Main
+00ee8100   RELOCATION_MATCH PASS   NScript::CCS_OakValeRevisitedScript::CCS_OakValeRevisitedScript
+0122ab10   RELOCATION_MATCH PASS   CTCInventoryItem::ClearCachedDefs
+
+WINS: 19
+  0042db40 RELOCATION_MATCH CXMVPlayerBuffers::??0CXMVPlayerBuffers@@QAE@XZ
+  00681940 RELOCATION_MATCH CTCCreatureOpinionOfHero::?GetToleranceToBeingHit@CTCCreatureOpinionOfHero@@QBEMXZ
+  006afd40 RELOCATION_MATCH CTCBase::?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ
+  00778ae0 RELOCATION_MATCH CTCFamilyMember::??0CTCFamilyMember@@QAE@AAVCThing@@@Z
+  0077db90 RELOCATION_MATCH CTCHeroCentre::?OnHeroWalkedThroughDoor@CTCHeroCentre@@QAEXW4EHeroCentreDoorType@@@Z
+  009be610 RELOCATION_MATCH CDisplayManager::GetBestOpaqueTextureFormat
+  009bed10 RELOCATION_MATCH CDisplayManager::?GetCurrentWindowedSettings@CDisplayManager@@QAEXPAUHWND__@@AAVC2DExtentsI@@AAK@Z
+  009f2fc0 RELOCATION_MATCH CSurface::?GetByteLength@CSurface_Methods@@QBEKXZ
+  009f3520 RELOCATION_MATCH CSurface::CopyToMemoryAutoUnswizzle
+  009f4120 RELOCATION_MATCH CSurface::?SetPixel@CSurface@@QAEXJJABVCRGBColour@@@Z
+  009fa340 RELOCATION_MATCH CTexture::?LoadFromBitmapFile@CTexture
+  00a674e0 RELOCATION_MATCH CVolume::GetByteLength
+  00a681f0 RELOCATION_MATCH CVolumeTexture::?GetLevelByteLength@CVolumeTexture@@QBEJJ@Z
+  00b3b4f0 RELOCATION_MATCH CEngineResourceManager::?ResizeHiresTextureMemory@CEngineResourceManager@@QAE_NJ@Z
+  00b6d480 RELOCATION_MATCH CEngineWaterRenderer::ReleaseSeaBuffers
+  00babb50 RELOCATION_MATCH CEnginePrimitiveManagerRepeatedZSprites::??0CEnginePrimitiveManagerRepeatedZSprites
+  00d864b0 RELOCATION_MATCH NScript::CQ_HeroSoulsGuildmasterScript::CGuardInWoods::?Main@CGuardInWoods@@QAEXXZ
+  00ee8100 RELOCATION_MATCH CCS_OakValeRevisitedScript::??0CCS_OakValeRevisitedScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  0122ab10 RELOCATION_MATCH _global::_$E2
+addr       parity           behav  name
+0042ddb3   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+0042ddb3   WARN SHARED_HEADER_AVAILABLE CFontBank
+0042ddb3   WARN RELOC_NAME: ??1?$CCountedPointer_0042fe34@UCFont@@@@QAE@XZ -> 004057a0 labelled 'CCountedPointer<CFontBank>::Release'
+0042ddb3   WARN RELOC_NAME: ??0CGraphicDataBankInit@@QAE@XZ -> 00415b80 labelled 'SNavigationLayerDefaults_00415b80::SNavigationLayerDefaults_00415b80'
+0042ddb3   WARN RELOC_NAME: ?GetBestCompressedNonAlphaTextureFormat@CDisplayManager@@QAE_NKPAVCPixelFormat@@@Z -> 009be830 labelled 'CDisplayManager::GetBestCompressedOpaqueTextureFormat'
+0042ddb3   WARN RELOC_NAME: ?CreateAndInitialize@CGraphicDataBankManager@@QAE?AV?$CCountedPointer_0042fe34@VCGraphicDataBank@@@@ABVCCharString@@ABVCGraphicDataBankInit@@_N2@Z -> 009f83d0 labelled 'CGraphicBankManager::OpenGraphicBank'
+0042ddb3   WARN RELOC_NAME: ??1?$CCountedPointer_0042fe34@VCGraphicDataBank@@@@QAE@XZ -> 00419108 labelled 'CCountedPointer<CGraphicDataBank>::Release'
+0042ddb3   RELOCATION_MATCH PASS   CNewFrontendGameComponent::InitialiseGraphics
+00681980   WARN SHARED_HEADER_AVAILABLE CWorld
+00681980   WARN SHARED_HEADER_AVAILABLE CTCBase
+00681980   RELOCATION_MATCH PASS   CViewBase::CalculateDisplayDistance
+0071d3b0   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+0071d3b0   WARN SHARED_HEADER_AVAILABLE CTexture
+0071d3b0   WARN SHARED_HEADER_AVAILABLE CTextureManager
+0071d3b0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0071d3b0   WARN RELOC_NAME: ?GetSaveDir_0041a650@NResourceDirectoryNames@@YI?AVCWideString@@XZ -> 0041a650 labelled 'NResourceDirectoryNames::GetTattooUserDir'
+0071d3b0   WARN RELOC_NAME: ?GetCustomTattooDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ -> 0041a6a0 labelled 'NResourceDirectoryNames::GetTattooDataDir'
+0071d3b0   RELOCATION_MATCH PASS   CTCHeroMorph::UpdateTattoos
+0077b250   RELOCATION_MATCH PASS   NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh::CTCGraphicAppearanceAnimatedMesh
+007e00d0   WARN SHARED_HEADER_AVAILABLE CPlayer
+007e00d0   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+007e00d0   WARN SHARED_HEADER_AVAILABLE CWorldMap
+007e00d0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+007e00d0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007e00d0   WARN RELOC_NAME: ?GetPlayerManager2@CTCTeleporter@@QAEPAVCPlayerManager@@XZ -> 00686d50 labelled 'CTCBase::PeekPlayerManager'
+007e00d0   WARN RELOC_NAME: ?GetPlayer_00449960@CPlayerManager@@QAEPAVCPlayer@@XZ -> 00449960 labelled 'CPlayerManager::GetMainPlayer'
+007e00d0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+007e00d0   WARN RELOC_NAME: ?GetRegionManager@CTCTeleporter@@QAEPAUCRegionManager@@XZ -> 00686d20 labelled 'CTCBase::PeekWorldMap'
+007e00d0   RELOCATION_MATCH PASS   CTCTeleporter::FrameUpdate
+009be6c0   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009be6c0   RELOCATION_MATCH PASS   CDisplayManager::GetBestAlphaTextureFormat
+009bf600   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009bf600   RELOCATION_MATCH PASS   CDisplayManager::GetClosestMode
+009f31c0   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009f31c0   WARN RELOC_NAME: ?WriteColour@CPixelFormat@@QBEXVCRGBColour@@PAE@Z -> 009e3f60 labelled 'CPixelFormat::ConvertRGBToPFDData'
+009f31c0   RELOCATION_MATCH PASS   CSurface::SetPixel
+009f35d0   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009f35d0   RELOCATION_MATCH PASS   CSurface::CanDoProperSignedConversion
+009f4190   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009f4190   RELOCATION_MATCH PASS   CSurface::ClearArea
+009fbbd0   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009fbbd0   WARN SHARED_HEADER_AVAILABLE CTexture
+009fbbd0   RELOCATION_MATCH PASS   CTexture::CalcAlphaHistogram
+00a67860   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+00a67860   RELOCATION_MATCH PASS   CVolume::CopyFromMemoryAutoSwizzle
+00aa7540   RELOCATION_MATCH PASS   CChunkedFileLoader::~CChunkedFileLoader
+00b3b8e0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00b3b8e0   WARN SHARED_HEADER_AVAILABLE CTexture
+00b3b8e0   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout
+00b3b8e0   WARN SHARED_HEADER_AVAILABLE CEngineComponent
+00b3b8e0   RELOCATION_MATCH PASS   CEngineResourceManager::~CEngineResourceManager
+00b6d510   RELOCATION_MATCH PASS   CEngineWaterRenderer::InitialiseDynamicTextures
+00bc5420   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00bc5420   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00bc5420   RELOCATION_MATCH PASS   ~CEnginePrimitiveManagerParticleLineGroup
+00d9c2b0   WARN SHARED_HEADER_AVAILABLE CBaseClass
+00d9c2b0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d9c2b0   WARN RELOC_NAME: ?IsWithinDistance@@YI_NABUScriptMethods@@ABVCScriptThing@@M@Z -> 00cbe2ff labelled '_global::IsDistanceBetweenThingsUnder'
+00d9c2b0   RELOCATION_MATCH PASS   CVtable_012d6b2c::vfunc_1
+00ee8c10   RELOCATION_MATCH PASS   NScript::CCS_OakValeRevisitedScript::`scalar deleting destructor'
+0122ab30   RELOCATION_MATCH PASS   CTCInventoryItem::ClearCachedDefs
+
+WINS: 19
+  0042ddb3 RELOCATION_MATCH CNewFrontendGameComponent::?InitialiseGraphics@CNewFrontendGameComponent@@QAE_NXZ
+  00681980 RELOCATION_MATCH CViewBase::?GetToleranceToBeingHitRemaining@CTCCreatureOpinionOfHero@@QBEMXZ
+  0071d3b0 RELOCATION_MATCH CTCHeroMorph::?UpdateTattoos@CTCHeroMorph
+  0077b250 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh::??0CTCGraphicAppearanceAnimatedMesh@NGraphicAppearance@@QAE@AAVCThing@@@Z
+  007e00d0 RELOCATION_MATCH CTCTeleporter::?FrameUpdate@CTCTeleporter
+  009be6c0 RELOCATION_MATCH CDisplayManager::?GetBestAlphaTextureFormat@CDisplayManager@@QAE_NJAAVCPixelFormat@@@Z
+  009bf600 RELOCATION_MATCH CDisplayManager::GetClosestMode
+  009f31c0 RELOCATION_MATCH CSurface::?SetPixel@CSurface_Methods@@QBEXJJVCRGBColour@@ABVCSurfaceLockedRect@@@Z
+  009f35d0 RELOCATION_MATCH CSurface::CanDoProperSignedConversion
+  009f4190 RELOCATION_MATCH CSurface::ClearArea
+  009fbbd0 RELOCATION_MATCH CTexture::?CalcAlphaHistogram@CTexture
+  00a67860 RELOCATION_MATCH CVolume::CopyFromMemoryAutoSwizzle
+  00aa7540 RELOCATION_MATCH CChunkedFileLoader::??1CChunkedFileLoader@@UAE@XZ
+  00b3b8e0 RELOCATION_MATCH CEngineResourceManager::??1CEngineResourceManager@@UAE@XZ
+  00b6d510 RELOCATION_MATCH CEngineWaterRenderer::?InitialiseDynamicTextures@CWaterDynamicTextures@@QAEXXZ
+  00bc5420 RELOCATION_MATCH CEnginePrimitiveManagerParticleLineGroup::??1CEnginePrimitiveManagerParticleLineGroup@@UAE@XZ
+  00d9c2b0 RELOCATION_MATCH CVtable_012d6b2c::Main
+  00ee8c10 RELOCATION_MATCH CVtable_012f53c0::??_GCCS_OakValeRevisitedScript@NScript@@UAEPAXI@Z
+  0122ab30 RELOCATION_MATCH _global::_$E2
+addr       parity           behav  name
+00523540   WARN SHARED_HEADER_AVAILABLE CWorld
+00523540   RELOCATION_MATCH PASS   CThingManager::CThingManager
+006819d0   WARN SHARED_HEADER_AVAILABLE CWorld
+006819d0   WARN SHARED_HEADER_AVAILABLE CTCBase
+006819d0   RELOCATION_MATCH PASS   CTCCreatureOpinionOfHero::UpdateHitTolerance
+0076c810   WARN SHARED_HEADER_AVAILABLE CTCBase
+0076c810   RELOCATION_MATCH PASS   CTCEnemy::SetFaction
+0077b9b0   RELOCATION_MATCH PASS   NGraphicAppearance::CTCGraphicAppearanceStaticMesh::CTCGraphicAppearanceStaticMesh
+00987f10   RELOCATION_MATCH PASS   _global::Dtor_CBaseBase_00987f10
+009be750   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009be750   RELOCATION_MATCH PASS   CDisplayManager::GetBestBooleanAlphaTextureFormat
+009bfb30   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009bfb30   WARN SHARED_HEADER_AVAILABLE CSurface
+009bfb30   WARN SHARED_HEADER_AVAILABLE CTexture
+009bfb30   WARN RELOC_NAME: ?GetDepthBufferFormat@CDisplayManager@@QAE?AVCPixelFormat@@ABU_D3DDISPLAYMODE@@J@Z -> 009bebb0 labelled 'CDisplayManager::GetClosestDepthBufferFormat'
+009bfb30   WARN RELOC_ALIAS: __CxxThrowException@8 -> 00bfeb84 is the import thunk 'MSVCR71.DLL::_CxxThrowException'
+009bfb30   RELOCATION_MATCH PASS   CDisplayManager::ResetDevice
+009f3390   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009f3390   RELOCATION_MATCH PASS   CSurface::GetPitch
+009f37e0   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009f37e0   WARN RELOC_ALIAS: _D3DXLoadSurfaceFromSurface@32 -> 00bfefc2 is the import thunk 'D3DX9_25.DLL::D3DXLoadSurfaceFromSurface'
+009f37e0   RELOCATION_MATCH PASS   CSurface::CopyFromSurface
+009f9d80   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+009f9d80   RELOCATION_MATCH PASS   CTexture::GetPixelFormat
+009fcef0   RELOCATION_MATCH PASS   CGraphicBankStateBlock::GetDefault
+00a67950   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+00a67950   RELOCATION_MATCH PASS   CVolume::Clear
+00ac2070   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00ac2070   RELOCATION_MATCH PASS   CIndexBuffer::`scalar deleting destructor'
+00b5bf10   RELOCATION_MATCH PASS   CEngineScreenEffectRadialBlurRenderer::InitialiseTextures
+00b6db80   RELOCATION_MATCH PASS   CEngineWaterRenderer::CloseStaticMap
+00c09920   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c09920   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<(long)'
+00c09920   RELOCATION_MATCH PASS   PKCAutoDelete<CUnprovenPKObject_00c099f0>::GetChecked
+00e05360   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e05360   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00e05360   RELOCATION_MATCH PASS   NScript::CQ_TraderEscortScript::CTraderComment::Main
+00efb8c0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00efb8c0   WARN SHARED_HEADER_AVAILABLE CIsThingAlive
+00efb8c0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00efb8c0   WARN RELOC_NAME: ?RegisterFilter@CHitSwitch@CHitSwitchTestScript@NScript@@QAEXAAUCIsThingAlive@N_00ef7ab0@@@Z -> 00f35b10 labelled 'CEntityScriptBase::SetPredicate'
+00efb8c0   WARN RELOC_NAME: ??1CIsThingAlive@N_00ef7ab0@@QAE@XZ -> 00ef7ab0 labelled 'CScriptThingFunctor_00ef7ab0::~CScriptThingFunctor_00ef7ab0'
+00efb8c0   RELOCATION_MATCH PASS   NScript::CHitSwitchTestScript::CHitSwitch::Main
+0122ab50   RELOCATION_MATCH PASS   CTCInventoryItem::ClearCachedDefs
+
+WINS: 19
+  00523540 RELOCATION_MATCH CThingManager::??0CThingManager@@
+  006819d0 RELOCATION_MATCH CTCCreatureOpinionOfHero::?OnHit@CTCCreatureOpinionOfHero@@QAE_N_N@Z
+  0076c810 RELOCATION_MATCH CTCEnemy::?SetFaction@CTCEnemy@@QAEXABVCCharString@@@Z
+  0077b9b0 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearanceStaticMesh::??0CTCGraphicAppearanceStaticMesh@NGraphicAppearance@@QAE@AAVCThing@@@Z
+  00987f10 RELOCATION_MATCH _global::??1CSimpleMemoryPool@@UAE@XZ
+  009be750 RELOCATION_MATCH CDisplayManager::GetBestBooleanAlphaTextureFormat
+  009bfb30 RELOCATION_MATCH CDisplayManager::ResetDevice
+  009f3390 RELOCATION_MATCH CSurface::?GetPitch@CSurface_Methods@@QBEKXZ
+  009f37e0 RELOCATION_MATCH CSurface::CopyFromSurface
+  009f9d80 RELOCATION_MATCH CTexture::?GetPixelFormat@CTexture_Methods@@QAE?AVCPixelFormat@@XZ
+  009fcef0 RELOCATION_MATCH CGraphicBankStateBlock::GetDefault
+  00a67950 RELOCATION_MATCH CVolume::Clear
+  00ac2070 RELOCATION_MATCH CIndexBuffer::??_GCIndexBuffer@@UAEPAXI@Z
+  00b5bf10 RELOCATION_MATCH CEngineScreenEffectRadialBlurRenderer::?InitialiseTextures@RadialBlurMethods@@QAEJXZ
+  00b6db80 RELOCATION_MATCH CEngineWaterRenderer::?CloseStaticMap@CEngineWaterRenderer@@QAEXXZ
+  00c09920 RELOCATION_MATCH CAutoDeletePointer::?GetChecked@?$PKCAutoDelete@VCUnprovenPKObject_00c099f0@@@@QAEPAVCUnprovenPKObject_00c099f0@@XZ
+  00e05360 RELOCATION_MATCH NScript::CQ_TraderEscortScript::CTraderComment::?Main@CTraderComment@CQ_TraderEscortScript@NScript@@
+  00efb8c0 RELOCATION_MATCH NScript::CHitSwitchTestScript::CHitSwitch::Main
+  0122ab50 RELOCATION_MATCH _global::_$E2

@@ -1,0 +1,56 @@
+action	symbol	target	by_row	note
+RETIRE	?GFGetHeroCreature@@YAPAUCHeroCreatureCalls@@XZ	00686a80	0077db90	no row names it after wave 25 (was: 0077db90; bound by 0077db90); the target is now ?PeekWorld@CTCBase@@IBEABVCWorld@@XZ
+RETIRE	?GetDisplayEngine@CViewBase@@QAEPAVCDisplayEngine@@XZ	00686a80	00681980	no row names it after wave 25 (was: 00681980,006af630; bound by 00681980); the target is now ?PeekWorld@CTCBase@@IBEABVCWorld@@XZ
+RETIRE	?GetWorld@CTCTeleporter@@QAEPAVCWorld@@XZ	00686a80	007e00d0	no row names it after wave 25 (was: 007e00d0; bound by 007e00d0); the target is now ?PeekWorld@CTCBase@@IBEABVCWorld@@XZ
+RETIRE	?helper_686a80@@YIPAUHelperResult@@PAVCThingCreatureBase@@@Z	00686a80	006afd40	no row names it after wave 25 (was: 006afd40; bound by 006afd40); the target is now ?PeekWorld@CTCBase@@IBEABVCWorld@@XZ
+RETIRE	@Enemy_GetObj@4	00686a80	0076c810	no row names it after wave 25 (was: 0076c810; bound by 0076c810); the target is now ?PeekWorld@CTCBase@@IBEABVCWorld@@XZ
+RETIRE	?resolve@Sub@@QAEHPAVCCharString@@@Z	006b93d0	0076c810	no row names it after wave 25 (was: 0076c810; bound by 0076c810); the target is now ?GetPFaction@CFactionManager@@QBEPAVCFaction@@ABVCCharString@@@Z
+RETIRE	?GetToleranceToBeingHit@COpinionReactionManager@@QAEMPAVCThing@@@Z	00701940	00681980	no row names it after wave 25 (was: 00681980; bound by 00681980); the target is now ?GetToleranceToBeingHit@COpinionReactionManager@@QBEMPBVCThing@@@Z
+RETIRE	?OnHeroEnteredGuildDoor@CTCHeroCentre_Methods@@QAEXXZ	0077d4b0	0077db90	no row names it after wave 25 (was: 0077db90; bound by 0077db90); the target is now ?OpenTrainingScreen@CTCHeroCentre@@QAEXXZ
+KEEP	??1CBaseClass@@UAE@XZ	0099a2e0	00a69590	still named by 2 edited row(s)
+KEEP	??1CBaseClassNonCopyable@@UAE@XZ	0099a300	00b3b8e0	still named by 14 unedited row(s) (index)
+RETIRE	?Second_0099a300@AutoTinyFieldMethodsTarget@@QAEXXZ	0099a300	0122ab10	no row names it after wave 25 (was: 0122ab10,0122ab30,0122ab50; bound by 0122ab10); the target is now ??1CBaseClassNonCopyable@@MAE@XZ
+RETIRE	@base_dtor_99A300@4	0099a300	00987f10	no row names it after wave 25 (was: 00987f10; bound by 00987f10); the target is now ??1CBaseClassNonCopyable@@MAE@XZ
+RETIRE	?Initialise@PixelFormat@@QAEXJJJJ_N@Z	009e3790	009fcef0	no row names it after wave 25 (was: 009fcef0; bound by 009fcef0); the target is now ?Initialise@CPixelFormat@@QAEXJJJJ_N@Z
+RETIRE	??0CPixelFormat@@QAE@J@Z	009e3830	009bebb0	no row names it after wave 25 (was: 0071d3b0,009bebb0,009f4120,009fbbd0; bound by 009bebb0); the target is now ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z
+RETIRE	??0CPixelFormat@@QAE@K@Z	009e3830	00b86a70	no row names it after wave 25 (was: 009f2fc0,009f3390,009f35d0,009f37e0,009f4190,009f9e80,00a681f0,00b86a70,00babb50; bound by 00b86a70); the target is now ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z
+KEEP	??0CPixelFormatFromD3D@@QAE@K@Z	009e3830	009f2f60	still named by 1 unedited row(s) (index)
+RETIRE	??0CPixelFormatNative@@QAE@J@Z	009e3830	00b27ee0	no row names it after wave 25 (was: 00b27ee0; bound by 00b27ee0); the target is now ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z
+RETIRE	?Initialise@CGlowPixelFormat@@QAEXI@Z	009e3830	00b5ece0	no row names it after wave 25 (was: 00b5ece0; bound by 00b5ece0); the target is now ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z
+RETIRE	?Initialise@CPixelFormat@@QAEXJ@Z	009e3830	009be590	no row names it after wave 25 (was: 00416c8a,0042ddb3,0071d3b0,009be590,009be610,009be6c0,009be750,009f4120,009fa340,009fbbd0,00a674e0; bound by 009be590); the target is now ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z
+RETIRE	?Initialise@CPixelFormat@@QAEXK@Z	009e3830	009bed10	no row names it after wave 25 (was: 009bed10,009bf600,009bfb30,009f37e0,009f4190,00a67860,00a67950,00a67a20; bound by 009bed10); the target is now ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z
+RETIRE	?Initialise@CPixelFormat@@QAEXW4D3DFORMAT@@@Z	009e3830	00b3b4f0	no row names it after wave 25 (was: 00b3b4f0; bound by 00b3b4f0); the target is now ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z
+RETIRE	?Initialise@CPixelFormat_Methods@@QAEXK@Z	009e3830	009f3470	no row names it after wave 25 (was: 009f3470,009f3520,009f3ff0; bound by 009f3470); the target is now ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z
+RETIRE	?Initialise@PixelFormat@@QAEXW4_D3DFORMAT@@@Z	009e3830	009fcef0	no row names it after wave 25 (was: 009fcef0; bound by 009fcef0); the target is now ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z
+RETIRE	?Initialise@PixelFormatMethods@@QAEXH@Z	009e3830	00b6d510	no row names it after wave 25 (was: 00b6d510; bound by 00b6d510); the target is now ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z
+RETIRE	?Initialise@PixelFormatMethods@@QAEXJ@Z	009e3830	00b5bf10	no row names it after wave 25 (was: 00b5bf10; bound by 00b5bf10); the target is now ?Initialise@CPixelFormat@@QAEXW4_D3DFORMAT@@@Z
+RETIRE	?ConvertRGBToPFDData@CPixelFormat_Methods@@QBEXABVCRGBColour@@PAE@Z	009e3f60	009f3ff0	no row names it after wave 25 (was: 009f3ff0; bound by 009f3ff0); the target is now ?ConvertRGBToPFDData@CPixelFormat@@QBEXABVCRGBColour@@PAE@Z
+RETIRE	?WritePixel@CPixelFormat@@QBEXABVCRGBColour@@PAX@Z	009e3f60	009f4120	no row names it after wave 25 (was: 009f4120,009f4190; bound by 009f4120); the target is now ?ConvertRGBToPFDData@CPixelFormat@@QBEXABVCRGBColour@@PAE@Z
+RETIRE	?ClearMemoryBlocks@CSimpleMemoryPool@@QAEXXZ	00a5c600	00b3b8e0	no row names it after wave 25 (was: 00b3b8e0; bound by 00b3b8e0); the target is now ?ClearMemoryBlocks@CSimpleMemoryPool@@AAEXXZ
+RETIRE	?First@AutoTinyFieldMethodsTarget@@QAEXXZ	00a5c600	0122ab10	no row names it after wave 25 (was: 0122ab10,0122ab30,0122ab50; bound by 0122ab10); the target is now ?ClearMemoryBlocks@CSimpleMemoryPool@@AAEXXZ
+RETIRE	@sub_A5C600@4	00a5c600	00987f10	no row names it after wave 25 (was: 00987f10; bound by 00987f10); the target is now ?ClearMemoryBlocks@CSimpleMemoryPool@@AAEXXZ
+RETIRE	?Uninitialise@CVertexBufferNative@@QAEXXZ	00a63200	00b6db80	no row names it after wave 25 (was: 00b6db80; bound by 00b6db80); the target is now ?Uninitialise@CVertexBufferWin32@@QAEXXZ
+RETIRE	?Uninitialise@CVertexBufferWin32_Retail@@QAEXXZ	00a63200	00bc5420	no row names it after wave 25 (was: 00bc5420; bound by 00bc5420); the target is now ?Uninitialise@CVertexBufferWin32@@QAEXXZ
+RETIRE	?Release@CIndexBuffer@@QAEXXZ	00ac1ee0	00ac2070	no row names it after wave 25 (was: 00ac2070; bound by 00ac2070); the target is now ?Uninitialise@CIndexBuffer@@QAEXXZ
+RETIRE	?Release@CIndexBuffer_Retail@@QAEXXZ	00ac1ee0	00bc5420	no row names it after wave 25 (was: 00bc5420; bound by 00bc5420); the target is now ?Uninitialise@CIndexBuffer@@QAEXXZ
+RETIRE	?Uninitialise@CIndexBufferNative@@QAEXXZ	00ac1ee0	00b6db80	no row names it after wave 25 (was: 00b6db80; bound by 00b6db80); the target is now ?Uninitialise@CIndexBuffer@@QAEXXZ
+RETIRE	?Uninitialise@CIndexBuffer_00b6d480@@QAEXXZ	00ac1ee0	00b6d480	no row names it after wave 25 (was: 00b6d480; bound by 00b6d480); the target is now ?Uninitialise@CIndexBuffer@@QAEXXZ
+KEEP	?GetChecked@CAutoDeletePointer@@QAEPAXXZ	00c17740	00c17400	still named by 4 unedited row(s) (index)
+RETIRE	?SetPredicate@CGuardInWoods@@QAEXABVCPredicateBase@NScript@@@Z	00f35b10	00d864b0	no row names it after wave 25 (was: 00d864b0; bound by 00d864b0); the target is now ?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z
+RETIRE	?SetPredicate@CTraderComment@CQ_TraderEscortScript@NScript@@QAEXABVCPredicateBase@3@@Z	00f35b10	00e05360	no row names it after wave 25 (was: 00e05360; bound by 00e05360); the target is now ?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z
+RETIRE	?IsActiveThreadTerminating@CDrinkersReactMarker@@QAE_NXZ	00f35b30	00d9c2b0	no row names it after wave 25 (was: 00d9c2b0; bound by 00d9c2b0); the target is now ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+RETIRE	?IsActiveThreadTerminating@CEM_FlashLightPoint@CV_ExposeMayorScript@NScript@@QAE_NXZ	00f35b30	00e76920	no row names it after wave 25 (was: 00e76920; bound by 00e76920); the target is now ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+RETIRE	?IsActiveThreadTerminating@CGuardInWoods@@QAE_NXZ	00f35b30	00d864b0	no row names it after wave 25 (was: 00d864b0; bound by 00d864b0); the target is now ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+RETIRE	?IsActiveThreadTerminating@CTraderComment@CQ_TraderEscortScript@NScript@@QAE_NXZ	00f35b30	00e05360	no row names it after wave 25 (was: 00e05360; bound by 00e05360); the target is now ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+RETIRE	?IsDone@CFader@CBenTestScriptsScript@NScript@@QAE_NXZ	00f35b30	00efe8d0	no row names it after wave 25 (was: 00efe8d0; bound by 00efe8d0); the target is now ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+RETIRE	?IsDone@CHERO_GUILD_TELEPORT_MARKER@CPersonalScript_GlobalThingsScript@NScript@@QAE_NXZ	00f35b30	00cdf620	no row names it after wave 25 (was: 00cdf620; bound by 00cdf620); the target is now ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+RETIRE	?IsDone@CHitSwitch@CHitSwitchTestScript@NScript@@QAE_NXZ	00f35b30	00efb8c0	no row names it after wave 25 (was: 00efb8c0; bound by 00efb8c0); the target is now ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ
+KEEP	??_7T@@6B@	012354d0	00550800	still named by 188 unedited row(s) (index)
+RETIRE	??_7CMovableResource_Retail@@6B@	0129b860	00bc5420	no row names it after wave 25 (was: 00bc5420; bound by 00bc5420); the target is now ??_7CMovableResource@@6B@
+KEEP	??_7CVertexBufferWin32_Retail@@6B@	0129ba20	009e2830	still named by 4 unedited row(s) (index)
+RETIRE	??_7CIndexBuffer_Retail@@6B@	0129ef2c	00bc5420	no row names it after wave 25 (was: 00bc5420; bound by 00bc5420); the target is now ??_7CIndexBuffer@@6B@
+RETIRE	??_7CCS_OakValeRevisitedScript@@6B@	012f53c0	00ee8100	no row names it after wave 25 (was: 00ee8100; bound by 00ee8100); the target is now ??_7CCS_OakValeRevisitedScript@NScript@@6B@
+RETIRE	?g_AutoTinyFieldMethodsObject@@3UAutoTinyFieldMethodsTarget@@A	013d2db0	0122ab10	no row names it after wave 25 (was: 0122ab10; bound by 0122ab10); the target is now ?MatrixBufferPool@@3VCSimpleMemoryPool@@A
+ADD	?OpenTrainingScreen@CTCHeroCentre@@QAEXXZ	0077d4b0	0077db90	exact Ego_r/FableWin spelling, not yet bound; first named by 0077db90
+ADD	??_7CCS_OakValeRevisitedScript@NScript@@6B@	012f53c0	00ee8100	the compiler-emitted vftable of the Ego_r/FableWin class (the name sets carry no data symbols; its destructor ??1CCS_OakValeRevisitedScript@NScript@@ is there), not yet bound; first named by 00ee8100
+ADD	??1CCS_OakValeRevisitedScript@NScript@@UAE@XZ	00ee8c30	00ee8c10	exact Ego_r/FableWin spelling, not yet bound; first named by 00ee8c10

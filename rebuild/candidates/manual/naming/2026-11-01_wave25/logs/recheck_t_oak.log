@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00ee8100   RELOCATION_MATCH PASS   NScript::CCS_OakValeRevisitedScript::CCS_OakValeRevisitedScript
+00ee8c10   RELOCATION_MATCH PASS   NScript::CCS_OakValeRevisitedScript::`scalar deleting destructor'
+
+WINS: 2
+  00ee8100 RELOCATION_MATCH CCS_OakValeRevisitedScript::??0CCS_OakValeRevisitedScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00ee8c10 RELOCATION_MATCH CVtable_012f53c0::??_GCCS_OakValeRevisitedScript@NScript@@UAEPAXI@Z

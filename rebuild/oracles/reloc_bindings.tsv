@@ -4538,7 +4538,6 @@ _GetMapwhoHelper	00686d30	0071a710
 ?Inner_Do@@YIXPAUInner@@PAXE@Z	0076c1a0	0076c6b0
 ?InsertGrow@CRetailVector_CElement12_0076a0a0@@QAEXPAUCElement12_0076a0a0@@ABU2@ABUSScalarTag@@K_N@Z	0076c470	0076c6d0
 ?InsertGrow@CRetailVector_CElement12_0076a030@@QAEXPAUCElement12_0076a030@@ABU2@ABUSScalarTag@@K_N@Z	0076c590	0076c710
-@Enemy_GetObj@4	00686a80	0076c810
 ?CTCElectrocutedEffect_base_OnInitialActivate@@YIXPAUCTCElectrocutedEffect@@@Z	00686870	0076c830
 ??_7CTCBandit@@6B@	0126a534	0076d930
 ?GetLastWeaponTrailPoints@CTCWeaponTrail@@QBE_NAAUCPointPairVector@@ABUCWeaponTrailList@@@Z	0076e4d0	0076e5f0
@@ -4592,8 +4591,6 @@ __aullrem	00bfebb0	00770e80
 ?Register_0077e430@CRegistry@@QAEXPAUSEntry@@@Z	0077e430	0077d3d0
 ?g_singleton_13b8790@@3PAUCSingletonTarget@@A	013b8790	0077d3e0
 ??_7CTCHeroCentre@@6B@	0126af94	0077d470
-?GFGetHeroCreature@@YAPAUCHeroCreatureCalls@@XZ	00686a80	0077db90
-?OnHeroEnteredGuildDoor@CTCHeroCentre_Methods@@QAEXXZ	0077d4b0	0077db90
 ?erase@CThingPointerVector@@QAEPAV?$CIntelligentPointer@VCThing@@@@PAV2@0@Z	004ac0f0	0077dbc0
 ?resize@CThingPointerVector@@QAEXI@Z	00739b40	0077dbc0
 ?__adjust_heap@@YIXPAUSNamedPosition@@JJU1@UCKeyPairCompareLess@@@Z	0077ea60	0077ed20
@@ -7073,8 +7070,6 @@ N_008ff247	008ff247	008ff28d
 ??_7CShaderBase@@6B@	0129a030	00987d10
 ??_7CShaderConstantRange@@6B@	0129a04c	00987d50
 ??_7CPixelShader@@6B@	0129a054	00987e20
-@base_dtor_99A300@4	0099a300	00987f10
-@sub_A5C600@4	00a5c600	00987f10
 ?SetVertexShaderMode@CDisplayEngineVertexShaderView@@QAEX_N@Z	00a0aa20	00987fe0
 ?GetPixelShaderVersion@CDisplayManagerPixelShaderView@@QBEIXZ	009bee00	00988110
 ?Transpose@CMatrix4x4@@QAEXXZ	00a5cab0	00988540
@@ -7311,7 +7306,6 @@ __imp__ClientToScreen@8	01440304	009be490
 __imp__GetSystemMetrics@4	0144038c	009be490
 __imp__MoveWindow@24	01440334	009be490
 ?g_bitDepthTable@@3PAHA	0129ba48	009be530
-?Initialise@CPixelFormat@@QAEXJ@Z	009e3830	009be590
 ?g_D3DFormatInfo@@3QBUCD3DFormatInfo@@B	0129ba40	009be590
 ?g_texFormatTable@@3PAIA	0129ba40	009be8f0
 ?g_PixelFormatTable@@3PAUSPixelFormatInfo@@A	0129ba40	009be930
@@ -7324,7 +7318,6 @@ _floor	00bfeb8a	009be980
 ?g_RampZero@@3MB	0122dedc	009beaa0
 ?g_VirtualScreenHeight_013961f0@@3NA	013961f0	009bece0
 ?g_VirtualScreenWidth_013961e8@@3NA	013961e8	009bece0
-?Initialise@CPixelFormat@@QAEXK@Z	009e3830	009bed10
 __imp__GetWindowRect@8	01440308	009bed10
 ?BeginRender@CRenderManagerCore@@QAEXXZ	00a0b480	009bef20
 ?EndRender@CRenderManagerCore@@QAEXXZ	00a0b520	009bef50
@@ -7652,8 +7645,6 @@ _Helper_9fc540@4	009fc170	009fc540
 ?ReleaseVolume@CVolume@@QAEXJ@Z	00a67460	009fcd10
 ?Helper@CVolume@@QAEXPAX@Z	00a67440	009fcd40
 ?ReleaseVolume@CVolume@@QAEX_N@Z	00a67460	009fcd40
-?Initialise@PixelFormat@@QAEXJJJJ_N@Z	009e3790	009fcef0
-?Initialise@PixelFormat@@QAEXW4_D3DFORMAT@@@Z	009e3830	009fcef0
 ?SetScene@CResourceList_009fd0c0@@QAEXJ@Z	009fc160	009fd0c0
 ?WritePixelFormat@CDataOutputStream@@QAEXPAUSPixelFormat_009fd1e0@@@Z	00993f60	009fd1e0
 ?CCameraSub_Reset@@YIXPAUCCameraSub@@@Z	00a696d0	009fd640
@@ -8324,7 +8315,6 @@ __chkstk	00bfea30	00ab6060
 ?DeleteMapChunk@@YIXPAX@Z	00ac1460	00ac0c00
 ?NotifyLock@CRenderStatistics_Retail@@QAEXPAUIDirect3DIndexBuffer_Retail@@M@Z	00a0aa70	00ac1fb0
 ??_7CIndexBuffer@@6B@	0129ef2c	00ac2010
-?Release@CIndexBuffer@@QAEXXZ	00ac1ee0	00ac2070
 ?g_MprtDescriptor@@3USMprtDescriptor_Retail@@A	0129ef40	00ac20f0
 ??1C3DMeshPartitionElement@@QAE@XZ	00ac2100	00ac2100
 ?N@C3DMeshPartitionElement@@QAEXPAX@Z	00ac27a0	00ac2920
@@ -8609,7 +8599,6 @@ _g_GFPreMainMemoryUsed	013d2e0c	00aeaab0
 ?Defragment@CHandleBasedMemoryPool@@QAEXXZ	00a02730	00b3b1a0
 ?g_pEngine_01436ea8@@3PAUCEngineGlobal_01436ea8@@A	01436ea8	00b3b1a0
 ?FlushCache@CEngineSurfaceCompositionManager@@QAEXXZ	00b2ad80	00b3b4f0
-?Initialise@CPixelFormat@@QAEXW4D3DFORMAT@@@Z	009e3830	00b3b4f0
 ?ResizePoolByFormat@CTextureManager@@QAE_NJJ@Z	00a6abe0	00b3b4f0
 ?SetLevel@CGraphicDataBank@@QAEXJ@Z	009fd100	00b3b4f0
 ?g_pSurfaceComposition_01436eac@@3PAVCEngineSurfaceCompositionManager@@A	01436eac	00b3b4f0
@@ -8715,7 +8704,6 @@ _g_GFPreMainMemoryUsed	013d2e0c	00aeaab0
 ?Release@CTexturePool_00f36f00@@QAEXPAX@Z	00f36f00	00b5bd30
 ?AllocteMemoryPage@CGPUScratchBufferTextureManager@@QAEJJ_N@Z	00f37660	00b5bf10
 ?FreeMemoryPage@CGPUScratchBufferTextureManager@@QAEXJ@Z	00f37030	00b5bf10
-?Initialise@PixelFormatMethods@@QAEXJ@Z	009e3830	00b5bf10
 ?gEngine@@3PAUEngineTextureGlobal@@A	01436e98	00b5bf10
 ?InitialiseTextures@CEngineScreenEffectRadialBlurRenderer_Quality@@QAE_NXZ	00b5bf10	00b5bfd0
 ?ApplyRadialBlur@CEngineScreenEffectRadialBlurRenderer_Render@@QAEXXZ	00b5e0f0	00b5ea30
@@ -8727,7 +8715,6 @@ _g_GFPreMainMemoryUsed	013d2e0c	00aeaab0
 ?Release@CTexturePool_Retail@@QAEXJ@Z	00f36f00	00b5ec90
 ?g_pEngine_01436e98@@3PAUCEngine_Retail@@A	01436e98	00b5ec90
 ?AllocateMemoryPage@CGlowScratchManager@@QAEJJ_N@Z	00f37660	00b5ece0
-?Initialise@CGlowPixelFormat@@QAEXI@Z	009e3830	00b5ece0
 ?gGlowResources@@3PAUCGlowResourceManager@@A	01436e98	00b5ece0
 ?InitialiseTextures@CEngineScreenEffectGlowRenderer_Quality@@QAE_NXZ	00b5ece0	00b5ee00
 ?ApplyGlow@CEngineScreenEffectGlowRenderer@@QAEXXZ	00b60f70	00b619b0
@@ -8766,13 +8753,9 @@ _g_GFPreMainMemoryUsed	013d2e0c	00aeaab0
 ?SetSize@CBridgeVertexBufferMethods@@QAEXJPAUCBridgeVertexBufferResult@@@Z	00b6cd10	00b6ccf0
 ??0CWaterSeaGenerator_00b6d420@@QAE@XZ	00be9140	00b6d420
 ??1CWaterSeaGenerator_00b6d420@@QAE@XZ	00be9150	00b6d420
-?Uninitialise@CIndexBuffer_00b6d480@@QAEXXZ	00ac1ee0	00b6d480
-?Initialise@PixelFormatMethods@@QAEXH@Z	009e3830	00b6d510
 ?gResourceManager@@3PAUCEngineResourceManagerNative@@A	01436e98	00b6d510
 ?g_pEngine_01436e98@@3PAUSEngine_01436e98@@A	01436e98	00b6d600
 ?DiscardAsyncData@@YIXPAUCAsyncPointer@@@Z	009d68a0	00b6db80
-?Uninitialise@CIndexBufferNative@@QAEXXZ	00ac1ee0	00b6db80
-?Uninitialise@CVertexBufferNative@@QAEXXZ	00a63200	00b6db80
 ??_7CTriangleStripifierBase@@6B@	012a3310	00b7a880
 ??_7CTriangleStripifier2@@6B@	012a331c	00b7add0
 ??_7CParticleContext@@6B@	012a38e0	00b80660
@@ -8808,7 +8791,6 @@ _g_GFPreMainMemoryUsed	013d2e0c	00aeaab0
 ?SetViewport@CDisplayManager@@QAEXPAX@Z	009bef80	00b869a0
 ?FableBuyHelper_b86a10@@YIPAXPAUCBuyHost@@@Z	009bf5e0	00b86a10
 ?g_buyHost_b86a10@@3PAUCBuyHost@@A	01436e1c	00b86a10
-??0CPixelFormat@@QAE@K@Z	009e3830	00b86a70
 ?AllocateMemoryPage@CGPUScratchBufferTextureManager@@QAEJJJ@Z	00f37660	00b86a70
 ?InitialiseTextures@CEngineScreenEffectDisplacementRenderer_Quality@@QAE_NXZ	00b86a70	00b86b00
 ?RestoreCaptureBlock@CRenderStateManagerCalls@@QAEXXZ	00a05840	00b86bb0
@@ -8964,13 +8946,9 @@ _SpriteHelper@4	00bade40	00baf9e0
 ?g_ResourceManager@@3PAUCEngineResourceManager_Methods@@A	01436e98	00bbf380
 ??_7CEngineInternalPrimitiveParticleMesh@@6B@	012a6184	00bc3410
 ??_7CEngineInternalPrimitiveParticleMeshGroup@@6B@	012a61fc	00bc3410
-??_7CIndexBuffer_Retail@@6B@	0129ef2c	00bc5420
-??_7CMovableResource_Retail@@6B@	0129b860	00bc5420
 ??_7CPixelShader_Retail@@6B@	0129a054	00bc5420
 ??_7CShaderBase_Retail@@6B@	0129a030	00bc5420
 ??_7CVertexShader_Retail@@6B@	0129b3d0	00bc5420
-?Release@CIndexBuffer_Retail@@QAEXXZ	00ac1ee0	00bc5420
-?Uninitialise@CVertexBufferWin32_Retail@@QAEXXZ	00a63200	00bc5420
 ?UpdatePosition_00b91840@@YIXPAVCEngineInternalPrimitiveBase@@K@Z	00b91840	00bc58e0
 ?reserve_00bc5e90@CRetailHandleVector@@QAEXK@Z	00bc5e90	00bc5ae0
 ??_7CEngineInternalPrimitiveChanger@@6B@	012a662c	00bc5b70
@@ -10847,10 +10825,8 @@ _rand	00bfeb16	00d2c530
 ?push_back@?$CRetailVector@M@@QAEXABM@Z	00568850	00d77340
 ??_7CVtable_012d2f48@@6B@	012d2f48	00d7ac50
 ??_7CVtable_012D3994@@6B@	012d3994	00d7c700
-?IsActiveThreadTerminating@CGuardInWoods@@QAE_NXZ	00f35b30	00d864b0
 ??_7CVtable_012d5018@@6B@	012d5018	00d8d5a0
 ??_7CEvent_00d97360@@6B@	01238c8c	00d97360
-?IsActiveThreadTerminating@CDrinkersReactMarker@@QAE_NXZ	00f35b30	00d9c2b0
 ??0ScriptThing@NScript@@QAE@ABU01@@Z	004abe90	00d9c4a0
 ??1ScriptThing@NScript@@QAE@XZ	004aa840	00d9c4a0
 ??_7CEvent_00d9d8f0@@6B@	01238c8c	00d9d8f0
@@ -11401,9 +11377,6 @@ _g_Cleanup_LTextTreeWalker_5_0122a4f0	013bca04	0122a4f0
 _g_Cleanup_LTextTreeWalker_6_0122a7c0	013ca86c	0122a7c0
 ?Invoke@AutoTinyFieldTarget@@QAEXXZ	0099a300	0122aad0
 ?g_AutoTinyFieldObject@@3UAutoTinyFieldTarget@@A	013d2d2c	0122aad0
-?First@AutoTinyFieldMethodsTarget@@QAEXXZ	00a5c600	0122ab10
-?Second_0099a300@AutoTinyFieldMethodsTarget@@QAEXXZ	0099a300	0122ab10
-?g_AutoTinyFieldMethodsObject@@3UAutoTinyFieldMethodsTarget@@A	013d2db0	0122ab10
 ?BaseDtor_0099a300@@YIXPAX@Z	0099a300	004016b0
 ?Member599270@@YIXPAX@Z	0099a920	004016b0
 ??0CCharString@@QAE@PAVCAFile@@J@Z	0099fa50	00401f30
@@ -12284,7 +12257,6 @@ _tolower	00bfed10	0099ed10
 ?g_ReverbEffectGuid@@3USGuid@@B	012b94b8	00c630d0
 ?g_bitMasks@@3QBKB	0139ddb8	00c90fc0
 __imp__realloc	01440054	00c90fc0
-??_7CCS_OakValeRevisitedScript@@6B@	012f53c0	00ee8100
 ?AllocateAndCopy@CCharStringVector@@QAEPAVCCharString@@IPBV2@0@Z	00432ff0	00432ee9
 ?Clear@CCharStringVector@@QAEXXZ	00433040	00432ee9
 ?DestroyRange@@YIXPAVCCharString@@0@Z	00414e00	00432ee9
@@ -12364,7 +12336,6 @@ __imp__realloc	01440054	00c90fc0
 ?Init@CRenderManagerBase@@QAEXPAUIDirect3DDevice9@@@Z	00a0a940	009c1050
 ?InitialiseDeviceState@CDisplayManager@@QAEXXZ	009be490	009c1050
 ?Release@CSurface@@QAEXXZ	009f2e20	009c1050
-??0CPixelFormatNative@@QAE@J@Z	009e3830	00b27ee0
 ?resize@?$CRetailArray@PAUCSurfaceNative@@@@QAEXIABQAUCSurfaceNative@@@Z	00b2aab0	00b27ee0
 ??_7CEngineScreenEffectGlowRenderer@@6B@	012a27cc	00b5ee80
 ??_7CEngineInternalRepeatedStaticMeshNative@@6B@	012a3f4c	00b9ab30
@@ -12399,10 +12370,7 @@ __imp__realloc	01440054	00c90fc0
 ?g_pRenderManagerCore@@3PAVCRenderManagerCore@@A	01436e18	00b54100
 ?DrawCurrentBuffersAsPointList@CRenderManagerCore@@QAEXJJ@Z	00a0ae70	00b54210
 ??0CPerlinNoise@@QAE@K@Z	00f36be0	00b81bc0
-?IsDone@CHERO_GUILD_TELEPORT_MARKER@CPersonalScript_GlobalThingsScript@NScript@@QAE_NXZ	00f35b30	00cdf620
 ?EndCompetition@CV_FishingCompetitionScript@NScript@@QAEXXZ	00e7f140	00e7f030
-?IsDone@CHitSwitch@CHitSwitchTestScript@NScript@@QAE_NXZ	00f35b30	00efb8c0
-?IsDone@CFader@CBenTestScriptsScript@NScript@@QAE_NXZ	00f35b30	00efe8d0
 ?GetWorldSeed@CWorld@@QBEPAKXZ	0049d810	004ff080
 ?_M_insert_overflow@CLongVector@@QAEXPAJABJABU__true_type@@K_N@Z	00440990	004ff080
 ?IsAngleValid@CTCCameraPointShapeActivationBase@@QAE_NXZ	0075c530	0075c5f0
@@ -12854,7 +12822,6 @@ _wcsrchr	00bfedb2	009a5340
 ?FinalInsertionSort_009d3ed0@@YIXPAJ0UCFreeBlockCompare@@@Z	009d3ed0	009d0630
 ?IntrosortLoop_009d48c0@@YIXPAJ00JUCFreeBlockCompare@@@Z	009d48c0	009d0630
 ?__copy@@YI?AUback_insert_iterator@@PBE0U1@ABUrandom_access_iterator_tag@@PAJ@Z	009e9900	009e99c0
-?Initialise@CPixelFormat_Methods@@QAEXK@Z	009e3830	009f3470
 ?ForceResendRenderStatesToHardware@CRenderStateManager_Methods@@QAEXXZ	00a044e0	00a07900
 ?SetDefaultRenderStates@CRenderStateManager_Methods@@QAEXXZ	00a059e0	00a07900
 ?SetupRenderStates@CRenderStateManager_Methods@@QAEXXZ	00a04630	00a07900
@@ -14980,7 +14947,6 @@ _g_LeaderboardApproachDistance	013bb6ac	0092ae70
 ?_M_clear@CTextureMorphEntryVector@@QAEXXZ	004e70c1	004e6f74
 ?_M_allocate_and_copy@CSkeletalMorphEntryVector@@QAEPAUCSkeletalMorphEntry@@IPBU2@0@Z	004e741d	004e72c8
 ?_M_clear@CSkeletalMorphEntryVector@@QAEXXZ	004e740f	004e72c8
-??0CPixelFormat@@QAE@J@Z	009e3830	009bebb0
 ?TransformVertices@CAnimatedBlock@@QAEXPAUCAnimatedVertex@@PBUCDeviceIndependent@@@Z	00a8ff50	00a91180
 ?TransformVerticesWithNormals@CAnimatedBlock@@QAEXPAUCAnimatedVertexWithNormals@@PBUCDeviceIndependent@@@Z	00a90040	00a91180
 ?resize@CLipSyncEntryVector@@QAEXKABUSLipSyncEntry@@@Z	00a43f20	00a42df0
@@ -15210,7 +15176,6 @@ __imp__waveOutPrepareHeader@12	01440484	00c5d7f0
 ?g_bScriptAnimationFlag@@3_NA	01375748	00d7f460
 ?CheckLampSlot@CV_ExposeMayorScript@NScript@@QAEXXZ	00e76ca0	00e76920
 ?HeroFlashesLamp@CV_ExposeMayorScript@NScript@@QAEXJ@Z	00e76e90	00e76920
-?IsActiveThreadTerminating@CEM_FlashLightPoint@CV_ExposeMayorScript@NScript@@QAE_NXZ	00f35b30	00e76920
 ?Finalise@CSymbolTable@@QAEXXZ	009e5c30	009aef60
 ?GFRemoveComments@@YIXPADPBD1@Z	00a60410	009aef60
 ?ParseStringForSymbols@CDefinitionManager@@QAEXPADJ@Z	009ade90	009aef60
@@ -16212,7 +16177,6 @@ __TI1?AUCGenericException@@	013692f8	00a37060
 ?g_bVibrationEnabled@@3_NA	013966f0	00407370
 ?true_value@CRendererPtr@@QBEXXZ	0040d870	00407370
 ?_M_insert_overflow@CTutorialCategoryVector@@QAEXPAW4ETutorialCategory@@ABW42@ABU__true_type@@I_N@Z	00411a10	00408a70
-?IsActiveThreadTerminating@CTraderComment@CQ_TraderEscortScript@NScript@@QAE_NXZ	00f35b30	00e05360
 ??_7CSpawnedFunc1@@6B@	012e0088	00e0e2e0
 ?SetPredicate@CUndeadRisingZombieAttackerBoss@@QAEXABUCPredicateBase@@@Z	00f35b10	00e0e2e0
 ?CheckForHenchmanFiredOverride@CV_BodyGuardScript@NScript@@QAEXXZ	00e5d900	00e5d4f0
@@ -24840,8 +24804,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?_M_fill_insert@?$vector@VCDegradableInfo@@@std@@QAEXPAVCDegradableInfo@@IABV3@@Z	0067ef00	0067f220
 ?sort@@YIXPAU?$pair@JJ@@0V?$CKeyPairCompareLess@JJ@@@Z	006813a0	00680a40
 ?GetToleranceToBeingHit@COpinionReactionManager@@QBEMPBVCThing@@@Z	00701940	00681940
-?GetDisplayEngine@CViewBase@@QAEPAVCDisplayEngine@@XZ	00686a80	00681980
-?GetToleranceToBeingHit@COpinionReactionManager@@QAEMPAVCThing@@@Z	00701940	00681980
 ?Read@CPersistContext@@QAEXPBDAAVCCharString@@@Z	00411010	00681ba0
 ?Write@CPersistContext@@QAEXPBDAAVCCharString@@1@Z	004109a0	00681ba0
 ?SetPersonalityOverride@CTCCreatureOpinionOfHero@@QAEXABVCCharString@@_N@Z	006820e0	00682310
@@ -25005,7 +24967,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?DistanceCheck@CDistanceChecker_006af220@@QAE_NPAVCThing@@@Z	00833230	006af220
 ?SurfaceCheck@CDistanceChecker_006af220@@QAE_NPAVCThing@@@Z	008332e0	006af220
 ?GetDisplayEngine@@YIPAVCDisplayEngine@@PAUCViewBase@@@Z	00686a70	006af620
-?helper_686a80@@YIPAUHelperResult@@PAVCThingCreatureBase@@@Z	00686a80	006afd40
 ?GetGroundFaceNormalAt@CWorldMap@@QAE?AVC3DVector@@ABV2@J@Z	0063ab10	006aff00
 ??$GetDef@UCThingDef@@@CGameDefinitionManager@@QBE_NJAAV?$CDefPointer@UCThingDef@@@@@Z	0042af3c	006b0780
 ??$GetSubDef@VCPhysicsDef@@@CDefClassBase@@QAE_NAAV?$CDefPointer@VCPhysicsDef@@@@@Z	006b0fa0	006b0780
@@ -25623,7 +25584,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??$sort_heap@PAV?$pair@KVC3DVector@@@std@@V?$CKeyPairCompareLess@KVC3DVector@@@@@std@@YIXPAV?$pair@KVC3DVector@@@0@0V?$CKeyPairCompareLess@KVC3DVector@@@@@Z	0076af10	0076b530
 ?_M_insert_overflow@?$CRetailVector@V?$pair@KVC3DVector@@@std@@@@QAEXPAV?$pair@KVC3DVector@@@std@@ABV23@ABU__false_type@@I_N@Z	0076ada0	0076b700
 ?IsAlliedWithFaction@CFactionHolder@@QAE_NPAVCFaction@@@Z	006b9460	0076c7f0
-?resolve@Sub@@QAEHPAVCCharString@@@Z	006b93d0	0076c810
 ?remove@?$CRetailList@V?$CIntelligentPointer@$$CBVCThing@@@@@@QAEXABV?$CIntelligentPointer@$$CBVCThing@@@@@Z	0076d7b0	0076cc00
 ?push_back@?$CRetailList@V?$CIntelligentPointer@$$CBVCThing@@@@@@QAEXABV?$CIntelligentPointer@$$CBVCThing@@@@@Z	0065617d	0076d1b0
 ?IsAlliedWith@CFaction@@QBE_NPBV1@@Z	006b9460	0076d460
@@ -25887,7 +25847,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GetSubDef@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCFishDef@@@@@Z	007b2600	007dfb20
 ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	00487dc0	007e00d0
 ?GetPlayerManager2@CTCTeleporter@@QAEPAVCPlayerManager@@XZ	00686d50	007e00d0
-?GetWorld@CTCTeleporter@@QAEPAVCWorld@@XZ	00686a80	007e00d0
 ?GetWorldMap@CTCTeleporter@@QAEPAVCWorldMap@@XZ	00686d30	007e00d0
 ?IsAvailableForHeroSprint@@YI_NPAVCThing@@@Z	0085f470	007e0670
 ?IsAvailableForHeroRun@@YI_NPAVCThing@@@Z	0085f560	007e0750
@@ -27681,9 +27640,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?DestroyCodeSectionManager@@YIXPAVCCodeSectionManager@@@Z	009f1560	009f1540
 ?WriteColour@CPixelFormatFromD3D@@QBEXVCRGBColour@@PAE@Z	009e3f60	009f31c0
 ?InitialiseAsImage@CSurface@@QAE_NABVC2DExtentsI@@ABVCPixelFormat@@_N@Z	009f3230	009f37e0
-?ConvertRGBToPFDData@CPixelFormat_Methods@@QBEXABVCRGBColour@@PAE@Z	009e3f60	009f3ff0
 ?Lock@CSurface@@QAE?AVCSurfaceLockedRect@@K@Z	009f33e0	009f4120
-?WritePixel@CPixelFormat@@QBEXABVCRGBColour@@PAX@Z	009e3f60	009f4120
 ?Lock@CSurface_Methods@@QAE?AVCSurfaceLockedRect@@K@Z	009f33e0	009f4330
 ?IsEventInQueue@CInputManager@@QBE_NABVCInputEvent@@@Z	009f4d40	009f50a0
 ??0?$vector@VCInputEvent@@@@QAE@ABU0@@Z	009f66a0	009f53c0
@@ -28625,7 +28582,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??0CActiveEntityScriptBase@EntityScriptBinding_00d82210@@QAE@PAVCScriptThing@@III@Z	00ce1110	00d82210
 ?PlayCutscene@CQ_HeroSoulsMotherScript@NScript@@QAEXVCCharString@@@Z	00d848d0	00d835d0
 ??0CActiveEntityScriptBase@EntityScriptBinding_00d844a0@@QAE@PAVCScriptThing@@III@Z	00ce1110	00d844a0
-?SetPredicate@CGuardInWoods@@QAEXABVCPredicateBase@NScript@@@Z	00f35b10	00d864b0
 ??0CScriptThingCopy@@QAE@ABVCScriptThing@@@Z	004abe90	00d874f0
 ?FadeOutThing@@YIXABVCScriptThing@@MM@Z	00cbe814	00d89380
 ??0CActiveEntityScriptBase@EntityScriptBinding_00d89580@@QAE@PAVCScriptThing@@III@Z	00ce1110	00d89580
@@ -28683,7 +28639,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??0CActiveEntityScriptBase@EntityScriptBinding_00dfc100@@QAE@PAVCScriptThing@@III@Z	00ce1110	00dfc100
 ?MakeTraderComment@CQ_TraderEscortScript@NScript@@QAE_NABVCCharString@@ABVCScriptThing@@W4ETraderComment@12@@Z	00e01900	00e01760
 ??0CActiveEntityScriptBase@EntityScriptBinding_00e05170@@QAE@PAVCScriptThing@@III@Z	00ce1110	00e05170
-?SetPredicate@CTraderComment@CQ_TraderEscortScript@NScript@@QAEXABVCPredicateBase@3@@Z	00f35b10	00e05360
 ?MakeTraderComment@CQ_TraderEscortScript@NScript@@QAE_NABVCCharString@@ABVCScriptThing@@W4ETraderComment@@@Z	00e01900	00e06050
 ?erase@CScriptThingVector@@QAEPAVCScriptThing@@PAV2@0@Z	008ac9d0	00e06050
 ?Add@CQ_UndeadRisingScript@@QAEXPAVCSpawnedFuncBase@@ABVCCharString@@@Z	00cb7e50	00e0e2e0
@@ -35280,7 +35235,6 @@ __aulldvrm	00f3fd50	00cb0370
 ??1CVertexShaderConstantLayout@@UAE@XZ	0098d710	00b3b8e0
 ??_7CEngineResourceManager@@6BCAsyncLoadingProcessCallback@@@	012a1b34	00b3b8e0
 ??_7CEngineResourceManager@@6BCEngineComponent@@@	012a1b3c	00b3b8e0
-?ClearMemoryBlocks@CSimpleMemoryPool@@QAEXXZ	00a5c600	00b3b8e0
 ?RemoveLoadingCallback@CAsyncLoadingMemoryPool@@SIXPAVCAsyncLoadingProcessCallback@@@Z	00a14930	00b3b8e0
 ?UninitialiseShaders@CEngineResourceManager@@AAEXXZ	00b3b0c0	00b3b8e0
 ?UnregisterVertexShaderConstantLayouts@CShaderRenderManager@@QAEXXZ	0098b280	00b3b8e0
@@ -35377,3 +35331,6 @@ __imp__strstr	0143ffdc	00c0ce50
 __tr_flush_block	00c057d0	00c011a0
 _fill_window	00c01090	00c011a0
 _flush_pending	00c00630	00c011a0
+?OpenTrainingScreen@CTCHeroCentre@@QAEXXZ	0077d4b0	0077db90
+??_7CCS_OakValeRevisitedScript@NScript@@6B@	012f53c0	00ee8100
+??1CCS_OakValeRevisitedScript@NScript@@UAE@XZ	00ee8c30	00ee8c10
