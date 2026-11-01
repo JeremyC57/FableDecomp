@@ -25702,3 +25702,13 @@ chunk	address	module	name	length
 667	00a6b5b0	C3DMeshStripifier	~C3DMeshStripifier	107
 667	009ac7c0	C3DMeshStripifier	~C3DMeshStripifier	161
 667	00b3ab10	CEngineInternalAttachedPrimitiveInfo	~CEngineInternalAttachedPrimitiveInfo	105
+668	00b42a90	CBankFileEntryUpdateData	~CBankFileEntryUpdateData	121
+668	00991880	CBankFileEntryUpdateData	~CBankFileEntryUpdateData	104
+668	008d7a90	NCreatureMode::CModeGuildmasterPowerUpShield	vfunc_6	135
+668	008d7b20	NCreatureMode::CModeGuildmasterPowerUpSpeed	vfunc_6	135
+668	00b52870	CEngineWeatherRenderer	FadeRainToTarget	132
+668	00b52900	CEngineWeatherRenderer	FadeRainToTarget	132
+668	00558c70	NUISystem::CNavButton	vfunc_48	151
+668	00a3bd00	CTextureRenderer	vfunc_0	15
+668	009c2fd0	CEnginePrimitiveManagerOcclusionBase	~CEnginePrimitiveManagerOcclusionBase	217
+668	00a75e30	CNavQuadTreeNode	SetUpNeighbours	224
