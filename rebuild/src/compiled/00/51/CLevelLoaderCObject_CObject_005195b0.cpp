@@ -14,13 +14,7 @@ extern "C" void __cdecl free(void* p);      // 0x00BFEA14
 class CCharString { public: void* m_pData; };
 class CAFile;
 struct CCountedPointerAFile { CAFile* Object; void* Block; };
-struct CLevelFiles {                        // CLevelLoader::CObject::CLevelFiles (28 bytes)
-    long LevelID;                           // +0x00
-    CCountedPointerAFile PTopologyFile;     // +0x04
-    CCountedPointerAFile PNavigationFile;   // +0x0c
-    CCountedPointerAFile PThingFile;        // +0x14
-    ~CLevelFiles();                         // 0x0050F980
-};
+class CLevelLoader { public: class CObject; };   // CObject's body (with its nested CLevelFiles) follows the container models
 template <class T> inline void _Destroy(T* first, T* last)
 {
     for (; first != last; ++first)
@@ -66,14 +60,20 @@ struct CCharStringSet {                     // retail STLport set<CCharString> (
             free(_M_header);
     }
 };
-class CLevelLoader { public:
-class CObject { public:
+class CLevelLoader::CObject {
+public:
+class CLevelFiles { public:                 // CLevelLoader::CObject::CLevelFiles (28 bytes; nested -- naming wave 20, chunk 688: ??1CLevelFiles@CObject@CLevelLoader@@QAE@XZ)
+    long LevelID;                           // +0x00
+    CCountedPointerAFile PTopologyFile;     // +0x04
+    CCountedPointerAFile PNavigationFile;   // +0x0c
+    CCountedPointerAFile PThingFile;        // +0x14
+    ~CLevelFiles();                         // 0x0050F980
+};
     CCharStringSet LoadableSections;        // +0x00
     CLevelLoader* PLevelLoader;             // +0x0c
     vector<CLevelFiles> RegionLevelFiles;   // +0x10
     long RegionIndex;                       // +0x1c
     ~CObject();
-};
 };
 CLevelLoader::CObject::~CObject()
 {

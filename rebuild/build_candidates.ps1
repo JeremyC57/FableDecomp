@@ -3715,9 +3715,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004507fb'
-        Module = 'LTextTreeWalkThrough'
-        Source = '00/45/LTextTreeWalkThrough_BuildTreeArray_004507fb.cpp'
-        TestSource = '00/45/LTextTreeWalkThrough_BuildTreeArray_004507fb_test.cpp'
+        Module = 'std::_Rb_tree<EOpinionReactionType,std::pair<const EOpinionReactionType,bool>,std::_Select1st<std::pair<const EOpinionReactionType,bool> >,std::less<EOpinionReactionType>,std::allocator<std::pair<const EOpinionReactionType,bool> > >'
+        Source = '00/45/stdRbtreeEOpinionReactionTypestdpairconstEOpinionReactionTypeboolstdSelect1ststd_Merase_004507fb.cpp'
+        TestSource = '00/45/stdRbtreeEOpinionReactionTypestdpairconstEOpinionReactionTypeboolstdSelect1ststd_Merase_004507fb_test.cpp'
         PassPattern = 'LTextTreeWalkThrough_004507fb_TEST PASS'
     }
     [pscustomobject]@{
@@ -17850,9 +17850,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004da360'
-        Module = 'LTextTreeWalkThrough'
-        Source = '00/4d/LTextTreeWalkThrough_BuildTreeArray_004da360.cpp'
-        TestSource = '00/4d/LTextTreeWalkThrough_BuildTreeArray_004da360_test.cpp'
+        Module = 'std::_Rb_tree<EOpinionAttitudeType,std::pair<const EOpinionAttitudeType,float>,std::_Select1st<std::pair<const EOpinionAttitudeType,float> >,std::less<EOpinionAttitudeType>,std::allocator<std::pair<const EOpinionAttitudeType,float> > >'
+        Source = '00/4d/stdRbtreeEOpinionAttitudeTypestdpairconstEOpinionAttitudeTypefloatstdSelect1stst_Merase_004da360.cpp'
+        TestSource = '00/4d/stdRbtreeEOpinionAttitudeTypestdpairconstEOpinionAttitudeTypefloatstdSelect1stst_Merase_004da360_test.cpp'
         PassPattern = 'AUTO_TINY_004da360_TEST PASS'
     }
     [pscustomobject]@{
@@ -42876,9 +42876,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0051af00'
-        Module = '_global'
-        Source = '00/51/CTCMapwho_OnDie_0051af00.cpp'
-        TestSource = '00/51/CTCMapwho_OnDie_0051af00_test.cpp'
+        Module = 'CCountedPointer<CLevelLoader::CObject>'
+        Source = '00/51/CCountedPointerCLevelLoaderCObject_DeleteData_0051af00.cpp'
+        TestSource = '00/51/CCountedPointerCLevelLoaderCObject_DeleteData_0051af00_test.cpp'
         PassPattern = 'OK_0051af00'
     }
     [pscustomobject]@{
@@ -62214,8 +62214,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '009fc550'
         Module = 'CResource'
-        Source = '00/9f/CMemoryBlock_CMemoryBlock_009fc550.cpp'
-        TestSource = '00/9f/CMemoryBlock_CMemoryBlock_009fc550_test.cpp'
+        Source = '00/9f/CResource_CResource_009fc550.cpp'
+        TestSource = '00/9f/CResource_CResource_009fc550_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
@@ -84008,9 +84008,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b6d250'
-        Module = '_unattributed'
-        Source = '00/b6/_unattributed_ReleaseFirstMember_00b6d250_00b6d250.cpp'
-        TestSource = '00/b6/_unattributed_ReleaseFirstMember_00b6d250_00b6d250_test.cpp'
+        Module = 'std::vector<CTVertexLandscapeBackground,std::allocator<CTVertexLandscapeBackground> >'
+        Source = '00/b6/stdvectorCTVertexLandscapeBackgroundstdallocatorCTVertexLandscapeBackground_Mclear_00b6d250.cpp'
+        TestSource = '00/b6/stdvectorCTVertexLandscapeBackgroundstdallocatorCTVertexLandscapeBackground_Mclear_00b6d250_test.cpp'
         PassPattern = '00b6d250_TEST PASS'
     }
     [pscustomobject]@{
@@ -166603,16 +166603,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0067a7c0'
-        Module = '_unattributed'
-        Source = '00/67/unattributed_FreeTreeCTreeOwner0067a7c0_0067a7c0.cpp'
-        TestSource = '00/67/unattributed_FreeTreeCTreeOwner0067a7c0_0067a7c0_test.cpp'
+        Module = 'std::_Rb_tree<EOpinionReactionType,std::pair<const EOpinionReactionType,EOpinionAttitudeType>,std::_Select1st<std::pair<const EOpinionReactionType,EOpinionAttitudeType> >,std::less<EOpinionReactionType>,std::allocator<std::pair<const EOpinionReactionType,EOpinionAttitudeType> > >'
+        Source = '00/67/stdRbtreeEOpinionReactionTypestdpairconstEOpinionReactionTypeEOpinionAttitudeTyp_Merase_0067a7c0.cpp'
+        TestSource = '00/67/stdRbtreeEOpinionReactionTypestdpairconstEOpinionReactionTypeEOpinionAttitudeTyp_Merase_0067a7c0_test.cpp'
         PassPattern = '0067a7c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0067a800'
-        Module = '_unattributed'
-        Source = '00/67/unattributed_FreeTreeCTreeOwner0067a800_0067a800.cpp'
-        TestSource = '00/67/unattributed_FreeTreeCTreeOwner0067a800_0067a800_test.cpp'
+        Module = 'std::_Rb_tree<EOpinionReactionType,std::pair<const EOpinionReactionType,EOpinionTargetingConditionType>,std::_Select1st<std::pair<const EOpinionReactionType,EOpinionTargetingConditionType> >,std::less<EOpinionReactionType>,std::allocator<std::pair<const EOpinionReactionType,EOpinionTargetingConditionType> > >'
+        Source = '00/67/stdRbtreeEOpinionReactionTypestdpairconstEOpinionReactionTypeEOpinionTargetingCo_Merase_0067a800.cpp'
+        TestSource = '00/67/stdRbtreeEOpinionReactionTypestdpairconstEOpinionReactionTypeEOpinionTargetingCo_Merase_0067a800_test.cpp'
         PassPattern = '0067a800_TEST PASS'
     }
     [pscustomobject]@{
@@ -166743,9 +166743,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0067a840'
-        Module = '_unattributed'
-        Source = '00/67/unattributed_FreeTreeCTreeOwner0067a840_0067a840.cpp'
-        TestSource = '00/67/unattributed_FreeTreeCTreeOwner0067a840_0067a840_test.cpp'
+        Module = 'std::_Rb_tree<EOpinionReactionType,std::pair<const EOpinionReactionType,float>,std::_Select1st<std::pair<const EOpinionReactionType,float> >,std::less<EOpinionReactionType>,std::allocator<std::pair<const EOpinionReactionType,float> > >'
+        Source = '00/67/stdRbtreeEOpinionReactionTypestdpairconstEOpinionReactionTypefloatstdSelect1stst_Merase_0067a840.cpp'
+        TestSource = '00/67/stdRbtreeEOpinionReactionTypestdpairconstEOpinionReactionTypefloatstdSelect1stst_Merase_0067a840_test.cpp'
         PassPattern = '0067a840_TEST PASS'
     }
     [pscustomobject]@{
@@ -209444,9 +209444,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00be4380'
-        Module = 'CRetailVector_SRecord24'
-        Source = '00/be/CRetailVectorSRecord24_PushBackSRecord2400be4380_00be4380.cpp'
-        TestSource = '00/be/CRetailVectorSRecord24_PushBackSRecord2400be4380_00be4380_test.cpp'
+        Module = 'std::vector<CTVertexLandscapeBackground,std::allocator<CTVertexLandscapeBackground> >'
+        Source = '00/be/stdvectorCTVertexLandscapeBackgroundstdallocatorCTVertexLandscapeBackground_pushback_00be4380.cpp'
+        TestSource = '00/be/stdvectorCTVertexLandscapeBackgroundstdallocatorCTVertexLandscapeBackground_pushback_00be4380_test.cpp'
         PassPattern = '00be4380_TEST PASS'
     }
     [pscustomobject]@{
@@ -210046,9 +210046,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006c27a0'
-        Module = 'SMappedRecords_006c27a0'
-        Source = '00/6c/SMappedRecords006c27a0_Set_006c27a0.cpp'
-        TestSource = '00/6c/SMappedRecords006c27a0_Set_006c27a0_test.cpp'
+        Module = 'CLevelLoader::CObject'
+        Source = '00/6c/CLevelLoaderCObject_SetAsLoading_006c27a0.cpp'
+        TestSource = '00/6c/CLevelLoaderCObject_SetAsLoading_006c27a0_test.cpp'
         PassPattern = '006c27a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -227282,9 +227282,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0050f980'
-        Module = 'CLevelFiles'
-        Source = '00/50/CLevelFiles_CLevelFiles_0050f980.cpp'
-        TestSource = '00/50/CLevelFiles_CLevelFiles_0050f980_test.cpp'
+        Module = 'CLevelLoader::CObject::CLevelFiles'
+        Source = '00/50/CLevelLoaderCObjectCLevelFiles_CLevelFiles_0050f980.cpp'
+        TestSource = '00/50/CLevelLoaderCObjectCLevelFiles_CLevelFiles_0050f980_test.cpp'
         PassPattern = '0050f980_TEST PASS'
     }
     [pscustomobject]@{
@@ -257377,9 +257377,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b6d0b0'
-        Module = 'std::vector'
-        Source = '00/b6/CRetailVectorSRecord24_InsertGrow_00b6d0b0.cpp'
-        TestSource = '00/b6/CRetailVectorSRecord24_InsertGrow_00b6d0b0_test.cpp'
+        Module = 'std::vector<CTVertexLandscapeBackground,std::allocator<CTVertexLandscapeBackground> >'
+        Source = '00/b6/stdvectorCTVertexLandscapeBackgroundstdallocatorCTVertexLandscapeBackground_Minsertoverflow_00b6d0b0.cpp'
+        TestSource = '00/b6/stdvectorCTVertexLandscapeBackgroundstdallocatorCTVertexLandscapeBackground_Minsertoverflow_00b6d0b0_test.cpp'
         PassPattern = '00b6d0b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -276717,9 +276717,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006c2d40'
-        Module = 'std'
-        Source = '00/6c/STL_operator_006c2d40.cpp'
-        TestSource = '00/6c/STL_operator_006c2d40_test.cpp'
+        Module = 'std::vector<CLevelLoader::CObject::CLevelFiles,std::allocator<CLevelLoader::CObject::CLevelFiles> >'
+        Source = '00/6c/stdvectorCLevelLoaderCObjectCLevelFilesstdallocatorCLevelLoaderCObjectCLevelFile_operator_006c2d40.cpp'
+        TestSource = '00/6c/stdvectorCLevelLoaderCObjectCLevelFilesstdallocatorCLevelLoaderCObjectCLevelFile_operator_006c2d40_test.cpp'
         PassPattern = '006c2d40_TEST PASS'
     }
     [pscustomobject]@{
@@ -287152,9 +287152,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00513570'
-        Module = '_global'
-        Source = '00/51/global_UninitFillNThreeCountedPointers00513570_00513570.cpp'
-        TestSource = '00/51/global_UninitFillNThreeCountedPointers00513570_00513570_test.cpp'
+        Module = 'std'
+        Source = '00/51/std_uninitializedfillnCLevelLoaderCObjectCLevelFilesunsignedintCLevelLoaderCObjectCLevelFiles_00513570.cpp'
+        TestSource = '00/51/std_uninitializedfillnCLevelLoaderCObjectCLevelFilesunsignedintCLevelLoaderCObjectCLevelFiles_00513570_test.cpp'
         PassPattern = '00513570_TEST PASS'
     }
     [pscustomobject]@{

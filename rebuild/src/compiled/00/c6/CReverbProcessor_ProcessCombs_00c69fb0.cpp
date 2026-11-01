@@ -28,7 +28,7 @@ struct CRingBuffer {
 struct CCombFilter {
     unsigned char _pad00[0x10];
     long          m_mode;                          // +0x10
-    void Blend(const SCombSettings* current, const SCombSettings* target, CRingBuffer* line, float* output,
+    void Blend(SCombSettings* current, const SCombSettings* target, CRingBuffer* line, float* output,                     // chunk 688: the body writes `*current = *target` -- not const (naming wave 20)
                const float* input, unsigned long count, unsigned long blendPosition);          // 0x00C76120
     void Process(const SCombSettings* current, CRingBuffer* line, float* output, const float* input,
                  unsigned long count);                                                     // 0x00C75FF0

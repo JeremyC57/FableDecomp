@@ -14,14 +14,14 @@ struct StageTwo {unsigned char Data[0x10];int Mode;
  void Process(void*,float*,float*,unsigned long); //00c76b60
  void Blend(void*,void*,float*,float*,unsigned long,unsigned long); //00c76c20
 };
-struct PostStage {void Process(float*,unsigned long);}; //00c75140
+struct CStereoDelayLine {void Process(float*,unsigned long);}; //00c75140
 struct Backend {void Write(Ring*,unsigned long,float*,unsigned long);}; //00c76460
 extern Backend* Backend_0143ccdc;
 struct BufferState {
  void* Unknown;ConfigurationView* First;ConfigurationView* Second;
  unsigned char ToMode[0x18-0xc];int Mode;unsigned long BlendPosition;
  unsigned char ToRing[0x60-0x20];Ring Output;
- unsigned char ToStage[0x1e0-0x6c];StageOne One;StageTwo Two;PostStage Post;
+ unsigned char ToStage[0x1e0-0x6c];StageOne One;StageTwo Two;CStereoDelayLine Post;
  void ProcessBlock(unsigned long count,const float* input);
 };
 void BufferState::ProcessBlock(unsigned long count,const float* input){
@@ -41,7 +41,7 @@ void StageOne::Process(void*,const float* a,float*b,unsigned long n){++one;align
 void StageOne::Blend(void*,void*,const float*a,float*b,unsigned long n,unsigned long){one+=10;for(unsigned long i=0;i<n;++i)b[i]=a[i]+2;}
 void StageTwo::Process(void*,float*a,float*b,unsigned long n){++two;for(unsigned long i=0;i<n;++i)b[i]=a[i]*2;}
 void StageTwo::Blend(void*,void*,float*a,float*b,unsigned long n,unsigned long){two+=10;for(unsigned long i=0;i<n;++i)b[i]=a[i]*3;}
-void PostStage::Process(float*,unsigned long){++post;}
+void CStereoDelayLine::Process(float*,unsigned long){++post;}
 void Backend::Write(Ring*r,unsigned long pos,float*a,unsigned long n){++writes;for(unsigned long i=0;i<n;++i)r->Data[(pos+i)%r->Length]=a[i];}
 int main(){BufferState s;ConfigurationView a,b;float output[8]={0},input[2]={2,3};s.First=&a;s.Second=&b;s.Mode=1;s.One.Mode=s.Two.Mode=2;s.Output.Data=output;s.Output.Length=8;s.Output.Position=7;s.BlendPosition=0;
  s.ProcessBlock(2,input);if(one!=1||two!=1||post!=1||s.Output.Position!=1||output[7]!=6||output[0]!=8||!alignok)return 1;

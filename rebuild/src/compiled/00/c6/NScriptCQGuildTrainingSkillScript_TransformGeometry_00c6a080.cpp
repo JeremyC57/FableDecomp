@@ -13,14 +13,14 @@ struct StageTwo {unsigned char Data[0x10];int Mode;
  void Process(void*,float*,float*,unsigned long); //00c76b60
  void Blend(void*,void*,float*,float*,unsigned long,unsigned long); //00c76c20
 };
-struct PostStage {void Process(float*,unsigned long);}; //00c75140
+struct CStereoDelayLine {void Process(float*,unsigned long);}; //00c75140 ?Process@CStereoDelayLine@@QAEXPAMK@Z (chunk 688: the CStereoDelayLine the landed ctor 0x00C75410 builds at CReverbProcessor+0x25C; naming wave 20)
 struct Backend {void Write(Ring*,unsigned long,float*,unsigned long);}; //00c76460
 extern Backend* Backend_0143ccdc;
 struct BufferState {
  void* Unknown;ConfigurationView* First;ConfigurationView* Second;
  unsigned char ToMode[0x18-0xc];int Mode;unsigned long BlendPosition;
  unsigned char ToRing[0x60-0x20];Ring Output;
- unsigned char ToStage[0x1e0-0x6c];StageOne One;StageTwo Two;PostStage Post;
+ unsigned char ToStage[0x1e0-0x6c];StageOne One;StageTwo Two;CStereoDelayLine Post;
  void ProcessBlock(unsigned long count,const float* input);
 };
 void BufferState::ProcessBlock(unsigned long count,const float* input){
