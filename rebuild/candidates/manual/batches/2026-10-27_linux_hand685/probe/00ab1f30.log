@@ -1,0 +1,11 @@
+1	first draft: header CCountedPointer, same-TU noinline __copy/__destroy_aux, STLport vector model	DIFFER(628v556)
+2	local CCountedPointer model (block takes the ctor argument)	DIFFER(624v556)
+3	sequence chunk pointer read once into a local	DIFFER(619v556)
+4	const counted-pointer local (no change)	DIFFER(619v556)
+5	raw CBoneInfo pointer + wrapping counted pointer (worse)	DIFFER(635v556)
+6	same-TU stand-in bodies (auto_inline off) for CCharString ctor/copy/op=/dtor and _M_insert_overflow	DIFFER(566v556)
+7	roots declared before bones.clear()	DIFFER(566v556)
+8	probe 7 minus the CCharString stand-in bodies (only the _M_insert_overflow body stays)	DIFFER(566v556)
+9	parent bone read once into a named CBoneInfo* local	RELOCATION_MATCH
+10	header notes; CCharStringData back to a forward declaration	RELOCATION_MATCH
+11	member declared private (Ego_r AAE) so the object symbol equals the Leaf line	RELOCATION_MATCH

@@ -1,0 +1,14 @@
+1	first draft (pointer-merged position copy, Find inline, !(r<0) gate)	DIFFER(524v554)
+2	if/else position copy, Find in && chain, >= 0 gate (Compare still dropped by VC)	DIFFER(508v554)
+3	explicit key < it->first in Find (VC was not inlining Find at all: the call was Find, not LowerBound)	DIFFER(508v554)
+4	__forceinline Find (Find now inlined; structure matches to the loop)	DIFFER(524v554)
+5	C3DVector operators: delta = position - pos; delta *= 1/d; accel = delta * force; chained zeroing	DIFFER(556v554)
+6	operand orders swapped in operator* / operator*= (no change: VC normalises)	DIFFER(556v554)
+7	operator*(const float&) (worse: register roles change)	DIFFER(542v554)
+8	named scale local before delta *= scale (no change)	DIFFER(556v554)
+9	plain dx/dy/dz scaled in place + C3DVector(dx,dy,dz)*force (worse frame)	DIFFER(548v554)
+10	delta via ctor + delta = delta / distance (operator/ with inverse local) (worse)	DIFFER(570v554)
+11	delta via three-float ctor (same as probe 5)	DIFFER(556v554)
+12	length written X first (VC reverses member chains: Z first now matches)	DIFFER(552v554)
+13	GetMagnitude() inline (X*X+Y*Y+Z*Z) + operator*= as X = f * X (by-value float)	RELOCATION_MATCH
+14	same with operator*=(const float&) and X *= f (also matches; by-value kept per PDB ??XC3DVector@@QAEABV0@M@Z)	RELOCATION_MATCH

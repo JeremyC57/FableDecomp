@@ -1,0 +1,17 @@
+address	name	evidence
+00caa4a0	AMovieSetupRegisterFilter	DirectShow strmbase dllsetup.cpp text verbatim (_AMovieSetupRegisterFilter@12), MATCH; label FileArchive_ValidateAndLoad wrong (chunk 685)
+00ca3b80	libvorbis::Laguerre_With_Deflation	libvorbis 1.0.1 lsp.c static _Laguerre_With_Deflation@12, vendor text; label Math_LevenbergMarquardtFit wrong (chunk 685)
+00ca0ba0	libvorbis::_01forward	libvorbis 1.0.1 res0.c static __01forward@24, vendor text (chunk 678 NAME_FIXES); label Environment_GetThemeIndex wrong (chunk 685)
+00b179a0	NParticleEngine::CPSCAttractor::Update	vtable 0x012A04AC slot 9 + Ego_r layout; label Particle_ApplyDistanceForces wrong (chunk 685)
+007748e0	CTCShop::AddSaleItemPlacesFromThing	Ego_r ?AddSaleItemPlacesFromThing@CTCShop@@QAEXPBVCThing@@@Z; "GoodsPlace"/"GOODS_PLACE_" literals, GoodsPlaces push_back 0x00778210; label CTCGraphicAppearance_InitGoodsPlaces wrong (chunk 685)
+00c674b0	CEaxContext::SetSlotLoadEffect	libpk, descriptive: EAX_REVERB_EFFECT 0x012B94B8 / EAX_NULL_GUID 0x012B9438, SDK reverb defaults, caller 0x00C689B0 slot-property dispatcher; label CCharacter_AddSkill wrong (chunk 685)
+00cb5180	ImeUi_Initialize	?ImeUi_Initialize@@YI_NPAUHWND__@@_N@Z, DXSDK 2004 ImeUi.cpp text, caller CIME::Initialise 0x00405650 (chunk 685)
+00ab1f30	C3DAnimationBuilder::BuildBoneInfoTree	Ego_r private sequence-chunk overload; callers in GetIntersection 0x00AB2160; label GetIntersection_CollectEntities wrong (chunk 685)
+00bec680	CEngineInternalPrimitiveMeshBase::CollectStats	Ego_r static; callers 0x00BEC8B0 / 0x00B98DE0; parked DIFFER 545v545 (chunk 685)
+00ab3640	CCountedPointer<CBoneInfo>::DeleteData	chunk 685: callee of BuildBoneInfoTree; label CTCMapwho::OnDie / DeleteObject_00ab3640 wrong
+00a36ec0	CCountedPointer<const C3DMesh2>::~CCountedPointer	chunk 685: ??1?$CCountedPointer@$$CBVC3DMesh2@@@@QAE@XZ
+00a89320	C3DMesh2::GetVertexCount	chunk 685 (Ego_r)
+00a89350	C3DMesh2::GetTriangleCount	chunk 685 (Ego_r)
+009cc240	CBankFile::GetEntryDataSize	chunk 685 (Ego_r)
+00c689b0	CEaxContext::SetSlotProperty	chunk 685: the slot-property dispatcher calling SetSlotLoadEffect (descriptive, libpk); landed spelling CSkillTable_00c67470::SetSkillPropertiesEx wrong
+0099f560	CCharString::RemoveWhiteSpaceBeginEnd	chunk 685 (Ego_r); labels CCharString::Trim / Destval wrong

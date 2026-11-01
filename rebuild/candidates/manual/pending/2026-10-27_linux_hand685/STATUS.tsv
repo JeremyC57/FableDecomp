@@ -1,0 +1,3 @@
+address	status	bytes	test	note
+00bec680	DIFFER	545v545	-	CEngineInternalPrimitiveMeshBase::CollectStats (static); 17 probes; instruction-identical, six temporaries homed in the dead statIndex argument slot in retail
+00cbf29f	DIFFER	930v936	-	CutsceneCameraPreloader; 12 probes; one register web: "" address materialised inside the || chain only in retail, the scaled index j*4 kept in edi (here spilled)

@@ -1,0 +1,2 @@
+1	1.0.1 res0.c text, static noinline __stdcall + same-TU fastcall caller, /Gr, extern C	DIFFER(578v579)
+2	verbatim 1.0.1 call: encode(..., statebook, accumulator) with accumulator=NULL (long*), not look	RELOCATION_MATCH

@@ -1,0 +1,4 @@
+1	landed models (toLowerCase STLport string + const GetTC + CTCThingOwner list), push_back inline member, i/10 tens digit	DIFFER(580v596)
+2	same-TU stand-in body for basic_string::assign (0x005693B0) under auto_inline(off)	DIFFER(578v596)
+3	unsigned long loop index	DIFFER(581v596)
+4	for (i = 0; i < 10; i++) with number = i + 1 for the digits	RELOCATION_MATCH

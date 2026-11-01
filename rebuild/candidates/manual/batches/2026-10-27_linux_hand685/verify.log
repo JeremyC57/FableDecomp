@@ -1,0 +1,40 @@
+addr       parity           behav  name
+007748e0   WARN RELOC_NAME: ?AddSaleItemPlacesFromThing@CTCShop@@QAEXPBVCThing@@@Z -> 007748e0 labelled 'CTCGraphicAppearance_InitGoodsPlaces'
+007748e0   RELOCATION_MATCH PASS   AddSaleItemPlacesFromThing
+00ab1f30   WARN RELOC_NAME: ??$__copy@PAV?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@PAV1@J@std@@YIPAV?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@PAV1@00ABUrandom_access_iterator_tag@0@PAJ@Z -> 00ab1480 labelled '_global::Move_CountedPointer_00ab1480'
+00ab1f30   WARN RELOC_NAME: ??$__destroy_aux@PAV?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@@std@@YIXPAV?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@0ABU__false_type@0@@Z -> 00ab2bd0 labelled '_global::DestroyRange_CountedPointer_00ab2bd0'
+00ab1f30   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@SIXPAX@Z -> 00ab3640 labelled '_global::DeleteObject_00ab3640'
+00ab1f30   RELOCATION_MATCH PASS   BuildBoneInfoTree
+00b179a0   WARN RELOC_ALIAS: __CIpow -> 00bfeb40 is the import thunk 'MSVCR71.DLL::_CIpow'
+00b179a0   RELOCATION_MATCH PASS   Update
+00c674b0   RELOCATION_MATCH PASS   SetSlotLoadEffect
+00ca0ba0   RELOCATION_MATCH PASS   _01forward
+00ca3b80   WARN RELOC_NAME: __alloca_probe -> 00bfea30 labelled '__chkstk'
+00ca3b80   RELOCATION_MATCH PASS   Laguerre_With_Deflation
+00caa4a0   MATCH            PASS   AMovieSetupRegisterFilter
+00cb5180   WARN RELOC_ALIAS: _ImmGetCompositionStringW@16 -> 00cb5570 is the import thunk 'IMM32.DLL::ImmGetCompositionStringW'
+00cb5180   WARN RELOC_ALIAS: _ImmGetCandidateListW@16 -> 00cb556a is the import thunk 'IMM32.DLL::ImmGetCandidateListW'
+00cb5180   WARN RELOC_ALIAS: _ImmGetCandidateListA@16 -> 00cb551c is the import thunk 'IMM32.DLL::ImmGetCandidateListA'
+00cb5180   WARN RELOC_ALIAS: _ImmGetContext@4 -> 00cb5540 is the import thunk 'IMM32.DLL::ImmGetContext'
+00cb5180   WARN RELOC_ALIAS: _ImmReleaseContext@8 -> 00cb5534 is the import thunk 'IMM32.DLL::ImmReleaseContext'
+00cb5180   RELOCATION_MATCH PASS   ImeUi_Initialize
+
+WINS: 8
+  007748e0 RELOCATION_MATCH CTCShop::?AddSaleItemPlacesFromThing@CTCShop@@QAEXPBVCThing@@@Z
+  00ab1f30 RELOCATION_MATCH C3DAnimationBuilder::?BuildBoneInfoTree@C3DAnimationBuilder@@AAE?AV?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@ABV?$CArray@V?$CCountedPointer@VC3DAnimFileSequenceChunk@@@@@@AAV?$CArray@V?$CCountedPointer@VCBoneInfo@C3DAnimationBuilder@@@@@@@Z
+  00b179a0 RELOCATION_MATCH NParticleEngine::CPSCAttractor::?Update@CPSCAttractor
+  00c674b0 RELOCATION_MATCH CEaxContext::?SetSlotLoadEffect@CEaxContext@@QAEJKUSGuid@@@Z
+  00ca0ba0 RELOCATION_MATCH libvorbis::__01forward@24
+  00ca3b80 RELOCATION_MATCH libvorbis::_Laguerre_With_Deflation@12
+  00caa4a0 MATCH _global::_AMovieSetupRegisterFilter@12
+  00cb5180 RELOCATION_MATCH _global::?ImeUi_Initialize@@YI_NPAUHWND__@@_N@Z
+
+LANDED 8 wins into src/compiled + tests + catalog + oracle
+  CTCShop_AddSaleItemPlacesFromThing_007748e0
+  C3DAnimationBuilder_BuildBoneInfoTree_00ab1f30
+  NParticleEngineCPSCAttractor_Update_00b179a0
+  CEaxContext_SetSlotLoadEffect_00c674b0
+  libvorbis_01forward_00ca0ba0
+  libvorbis_LaguerreWithDeflation_00ca3b80
+  global_AMovieSetupRegisterFilter_00caa4a0
+  global_ImeUiInitialize_00cb5180

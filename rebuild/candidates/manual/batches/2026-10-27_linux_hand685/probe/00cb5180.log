@@ -1,0 +1,3 @@
+1	2004 SDK text reconstructed from retail (bUnicodeImm, local imm32 handle, once flag, four callbacks), extern globals, SetWindow/SetSupportLevel bodies in TU	DIFFER(623v623)
+2	ANSI window arm first (if (!IsWindowUnicode(hwnd)))	RELOCATION_MATCH
+3	ANSI arm store order: _ImmGetCandidateList before _ImmGetCompositionString (retail stores 0x0143CD5C then 0x0143CE04 in the else arm; vland RELOC_IDENTITY)	RELOCATION_MATCH

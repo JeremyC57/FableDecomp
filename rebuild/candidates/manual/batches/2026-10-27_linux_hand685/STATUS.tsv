@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+007748e0	RELOCATION_MATCH	596v596	PASS	CTCShop::AddSaleItemPlacesFromThing; probe 4 of 4 (same-TU reserve/assign bodies, for (i=0;i<10) with number=i+1)
+00ab1f30	RELOCATION_MATCH	556v556	PASS	C3DAnimationBuilder::BuildBoneInfoTree (private); probe 9 of 11 (same-TU _M_insert_overflow body, roots before clear, named parent bone)
+00b179a0	RELOCATION_MATCH	554v554	PASS	NParticleEngine::CPSCAttractor::Update; probe 13 of 14 (__forceinline CVectorMap::Find, PDB C3DVector operators)
+00bec680	DIFFER	545v545	-	CEngineInternalPrimitiveMeshBase::CollectStats (static); 17 probes; instruction-identical, six temporaries homed in the dead statIndex argument slot in retail
+00c674b0	RELOCATION_MATCH	618v618	PASS	CEaxContext::SetSlotLoadEffect (descriptive, libpk); probe 7 of 7 (else-if chain with one return, store order)
+00ca0ba0	RELOCATION_MATCH	579v579	PASS	libvorbis 1.0.1 res0.c _01forward (/Gr, extern "C" static + same-TU caller); probe 2 of 2
+00ca3b80	RELOCATION_MATCH	718v718	PASS	libvorbis 1.0.1 lsp.c Laguerre_With_Deflation; probe 1 of 1
+00caa4a0	MATCH	477v477	PASS	strmbase dllsetup.cpp AMovieSetupRegisterFilter (/EHsc); probe 1 of 1
+00cb5180	RELOCATION_MATCH	623v623	PASS	ImeUi_Initialize (DXSDK 2004 ImeUi.cpp, /Gr); probe 3 of 3 (ANSI arm first; ANSI-arm store order CandidateList then CompositionString)
+00cbf29f	DIFFER	930v936	-	CutsceneCameraPreloader; 12 probes; one register web: "" address materialised inside the || chain only in retail, the scaled index j*4 kept in edi (here spilled)

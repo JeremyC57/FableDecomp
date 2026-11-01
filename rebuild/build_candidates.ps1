@@ -373937,6 +373937,65 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /GS'
         PassPattern = '00cb28f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007748e0'
+        Module = 'CTCShop'
+        Source = '00/77/CTCShop_AddSaleItemPlacesFromThing_007748e0.cpp'
+        TestSource = '00/77/CTCShop_AddSaleItemPlacesFromThing_007748e0_test.cpp'
+        PassPattern = '007748e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ab1f30'
+        Module = 'C3DAnimationBuilder'
+        Source = '00/ab/C3DAnimationBuilder_BuildBoneInfoTree_00ab1f30.cpp'
+        TestSource = '00/ab/C3DAnimationBuilder_BuildBoneInfoTree_00ab1f30_test.cpp'
+        PassPattern = '00ab1f30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b179a0'
+        Module = 'NParticleEngine::CPSCAttractor'
+        Source = '00/b1/NParticleEngineCPSCAttractor_Update_00b179a0.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCAttractor_Update_00b179a0_test.cpp'
+        PassPattern = '00b179a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c674b0'
+        Module = 'CEaxContext'
+        Source = '00/c6/CEaxContext_SetSlotLoadEffect_00c674b0.cpp'
+        TestSource = '00/c6/CEaxContext_SetSlotLoadEffect_00c674b0_test.cpp'
+        PassPattern = '00c674b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca0ba0'
+        Module = 'libvorbis'
+        Source = '00/ca/libvorbis_01forward_00ca0ba0.cpp'
+        TestSource = '00/ca/libvorbis_01forward_00ca0ba0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00ca0ba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca3b80'
+        Module = 'libvorbis'
+        Source = '00/ca/libvorbis_LaguerreWithDeflation_00ca3b80.cpp'
+        TestSource = '00/ca/libvorbis_LaguerreWithDeflation_00ca3b80_test.cpp'
+        PassPattern = '00ca3b80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00caa4a0'
+        Module = '_global'
+        Source = '00/ca/global_AMovieSetupRegisterFilter_00caa4a0.cpp'
+        TestSource = '00/ca/global_AMovieSetupRegisterFilter_00caa4a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00caa4a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb5180'
+        Module = '_global'
+        Source = '00/cb/global_ImeUiInitialize_00cb5180.cpp'
+        TestSource = '00/cb/global_ImeUiInitialize_00cb5180_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00cb5180_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

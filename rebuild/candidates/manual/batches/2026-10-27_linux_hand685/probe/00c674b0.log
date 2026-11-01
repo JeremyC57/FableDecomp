@@ -1,0 +1,7 @@
+1	landed SetSlotLock structs, member-wise EAX defaults, GUID operator== memcmp, committed copy by struct assignment	DIFFER(518v618)
+2	no local reverb pointer: m_reverb[slot].field stores	DIFFER(603v618)
+3	null branch order room, air, HF, dirty (the landed SetSlotEnabled analogy)	DIFFER(603v618)
+4	null branch air, room, HF, dirty; reverb branch dirty |= before the lRoom clamp	DIFFER(609v618)
+5	reverb branch clamp then dirty (probe 2 form); null branch room, HF, air, dirty (landed SetSlotEnabled order)	DIFFER(603v618)
+6	if / else if / else chain with one shared return 0 (null branch air, HF, room, dirty)	DIFFER(618v618)
+7	else-if chain; null branch air, room, HF, dirty	RELOCATION_MATCH
