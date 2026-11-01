@@ -25922,3 +25922,14 @@ chunk	address	module	name	length
 691	00a39010	CCRCSymbolMap	CCRCSymbolMap::LoadFromFile	378
 691	007877e0	CTCBob	FrameUpdate	487
 691	0084fdb0	NCameraModes::CCameraPointModeBase	NCameraModes::CCameraPointModeBase::vfunc_22	15
+692	00a9a900	C3DMeshFileLoader	~C3DMeshFileLoader	1021
+692	00bb6730	CEngineClothRenderer	~CEngineClothRenderer	537
+692	00ea4980	CLostTraderTrader	TraderYellAtHero	556
+692	00ea4bb0	CLostTraderTrader	TraderYellAtHero	556
+692	00ee8c30	CParticleEmitter	CParticleEmitter::~CParticleEmitter_0xe8c30	585
+692	00b621a0	CEngineSkyRenderer	~CEngineSkyRenderer	660
+692	009fb110	_gapscan	sub_009fb110	732
+692	00a68ae0	_gapscan	sub_00a68ae0	753
+692	009fb3f0	_gapscan	sub_009fb3f0	850
+692	00c011a0	_gapscan	sub_00c011a0	529
+692	00c08d40	_global	CSystem_ProcessMainEvent	964
