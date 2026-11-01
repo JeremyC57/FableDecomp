@@ -373879,6 +373879,64 @@ $catalog = @(
         TestSource = '00/85/CCreatureActionSpiritAttack_FrameUpdate_00854b90_test.cpp'
         PassPattern = '00854b90_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a5b870'
+        Module = 'NVectorMath'
+        Source = '00/a5/NVectorMath_GFInterpolateVectors_00a5b870.cpp'
+        TestSource = '00/a5/NVectorMath_GFInterpolateVectors_00a5b870_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Zi'
+        PassPattern = '00a5b870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ba9360'
+        Module = 'CEnginePrimitiveManagerMeshBase'
+        Source = '00/ba/CEnginePrimitiveManagerMeshBase_GetDiffuseTexture_00ba9360.cpp'
+        TestSource = '00/ba/CEnginePrimitiveManagerMeshBase_GetDiffuseTexture_00ba9360_test.cpp'
+        PassPattern = '00ba9360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ba95d0'
+        Module = 'CEnginePrimitiveManagerMeshBase'
+        Source = '00/ba/CEnginePrimitiveManagerMeshBase_GetBumpTexture_00ba95d0.cpp'
+        TestSource = '00/ba/CEnginePrimitiveManagerMeshBase_GetBumpTexture_00ba95d0_test.cpp'
+        PassPattern = '00ba95d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ba9a70'
+        Module = 'CEnginePrimitiveManagerMeshBase'
+        Source = '00/ba/CEnginePrimitiveManagerMeshBase_Get2DAlphaMaskTexture_00ba9a70.cpp'
+        TestSource = '00/ba/CEnginePrimitiveManagerMeshBase_Get2DAlphaMaskTexture_00ba9a70_test.cpp'
+        PassPattern = '00ba9a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bda150'
+        Module = 'CEngineLandscapeMemoryManager'
+        Source = '00/bd/CEngineLandscapeMemoryManager_ProcessDisposalList_00bda150.cpp'
+        TestSource = '00/bd/CEngineLandscapeMemoryManager_ProcessDisposalList_00bda150_test.cpp'
+        PassPattern = '00bda150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c677c0'
+        Module = 'CEaxContext'
+        Source = '00/c6/CEaxContext_SetEnvironmentSize_00c677c0.cpp'
+        TestSource = '00/c6/CEaxContext_SetEnvironmentSize_00c677c0_test.cpp'
+        PassPattern = '00c677c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c77d90'
+        Module = '_global'
+        Source = '00/c7/global_MixChannels00c77d90_00c77d90.cpp'
+        TestSource = '00/c7/global_MixChannels00c77d90_00c77d90_test.cpp'
+        PassPattern = '00c77d90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb28f0'
+        Module = '_global'
+        Source = '00/cb/global_GetImeId_00cb28f0.cpp'
+        TestSource = '00/cb/global_GetImeId_00cb28f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00cb28f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

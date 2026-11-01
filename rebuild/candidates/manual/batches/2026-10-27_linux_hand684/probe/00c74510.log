@@ -1,0 +1,30 @@
+1	coefficient copies a1/a2/b0/b1/b2, bool hasInput, index loops block[i]/source[i], memcpy intrinsic, Biquad slot 8	DIFFER 860v828 (structure right; VC indexes source by block-source difference in the input loop and pushes ebp early; retail walks two pointers)
+2	input loop walks source/block pointers (*source++ / *block++)	DIFFER 830v828 (only the frame: retail 0x10 with a fourth local slot for the two-pole path's -(b0+b1+b2); ours 0xc)
+3	two-pole loop via a yOld temporary (y0 updated in place, y1 = yOld)	DIFFER 818v828 (frame still 0xc; two-pole section changed, check)
+4	two-pole: y1 declared first, y0 last (index loop)	DIFFER 830v828 (frame 0xc; unchanged)
+5	two-pole: pointer walk *block++ (y0/y1 as probe 2)	DIFFER 828v828 (same size; retail keeps y0 in a frame slot (int copy from state[0], updated in place) and carries the old y0 on the x87 stack into the y1 slot; ours carries y0 on the stack and keeps y1 in memory -- mirror roles; frame 0xc v 0x10)
+6	two-pole: t = y1; y1 = y0; y0 = t*a2 + y1*a1 + c	DIFFER 818v828
+7	two-pole: state[0] stored before state[1]	DIFFER 830v828
+8	two-pole: yOld temporary + pointer walk	DIFFER 816v828 (both states carried on the x87 stack)
+12	two-pole: y1 declared first + pointer walk	DIFFER 828v828 (mirror roles as probe 5)
+13	two-pole: while (count--) + pointer walk	DIFFER 828v828 (mirror roles as probe 5)
+16	two-pole: rotation through a temp with y1 assigned last	DIFFER 818v828
+17	two-pole: __forceinline helper taking y0/y1 by reference	DIFFER 824v828 (same mirror)
+18	two-pole: y0 read/written through a local pointer	DIFFER 1114v828 (explodes)
+19	two-pole: float y[2] with y[1] = state[0] (reversed array)	DIFFER 828v828 (VC scalarises the array; same mirror)
+22	two-pole: float y[2] natural order	DIFFER 828v828 (same mirror)
+23	two-pole: yOld temp, y0 in place, pointer walk	DIFFER 816v828 (y0 and y1 both on the x87 stack, yOld in memory; retail: yOld on the stack, y0/y1 in memory)
+24	two-pole: y0/y1 at function scope + yOld form	DIFFER 816v828
+25	two-pole: y0/y1 at function scope + y temp form	DIFFER 828v828 (same mirror)
+26	two-pole: yOld declared outside the loop	DIFFER 816v828
+27	two-pole: c/d folded into the loop expressions (LICM)	DIFFER 826v828 (same mirror, d subtracted)
+28	two-pole: d declared before c	DIFFER 828v828
+29	two-pole: state[0] stored first (pointer walk)	DIFFER 828v828
+30	two-pole: local SRampState copy with reversed element roles	DIFFER 828v828 (scalarised; same mirror)
+31	two-pole: y0/y1 declared before the hasInput branch (scope spans the Biquad call)	DIFFER 829v828
+32	two-pole: y0 alone declared before the hasInput branch	DIFFER 829v828 (frame 0x10 now, y0 still on the x87 stack)
+33	two-pole: y0 assigned inside the output expression (yOld copy)	DIFFER 816v828
+35	two-pole: y0 assigned inside the output expression after y0*b1	DIFFER 824v828 (VC refolds b1+b2)
+36	two-pole: __restrict block/state with direct state[] accesses	SRC_FAIL (C4235: __restrict not supported by VC7.1 RTM)
+37	two-pole: direct state[0]/state[1] accesses in the loop	DIFFER 1063v828 (reloads through the pointer every use)
+PARK	best state = probe 5 (828v828): every block byte-equal except the two-pole decay loop, where retail keeps y0 (state[0]) in a frame slot (int copy in, updated in place, int copy out) and carries the old y0 on the x87 stack into the y1 slot, while VC7.1 here enregisters the state[0]-derived variable in every spelling tried (28 spellings of the loop; frame 0xc v 0x10 follows from it)

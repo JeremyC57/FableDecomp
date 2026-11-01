@@ -1,0 +1,50 @@
+addr       parity           behav  name
+00a5b870   WARN RELOC_UNCHECKED: no object block of the retail length (multi-block TU)
+00a5b870   RELOCATION_MATCH PASS   GFInterpolateVectors
+00ba9360   WARN SHARED_HEADER_AVAILABLE CResource
+00ba9360   WARN SHARED_HEADER_AVAILABLE CResourceList
+00ba9360   WARN SHARED_HEADER_AVAILABLE CGraphicFrame
+00ba9360   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerMeshBase
+00ba9360   RELOCATION_MATCH PASS   GetDiffuseTexture
+00ba95d0   WARN SHARED_HEADER_AVAILABLE CResource
+00ba95d0   WARN SHARED_HEADER_AVAILABLE CResourceList
+00ba95d0   WARN SHARED_HEADER_AVAILABLE CGraphicFrame
+00ba95d0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerMeshBase
+00ba95d0   RELOCATION_MATCH PASS   GetBumpTexture
+00ba9a70   WARN SHARED_HEADER_AVAILABLE CResource
+00ba9a70   WARN SHARED_HEADER_AVAILABLE CResourceList
+00ba9a70   WARN SHARED_HEADER_AVAILABLE CGraphicFrame
+00ba9a70   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerMeshBase
+00ba9a70   RELOCATION_MATCH PASS   Get2DAlphaMaskTexture
+00bda150   WARN SHARED_HEADER_AVAILABLE CTexture
+00bda150   WARN SHARED_HEADER_AVAILABLE CVertexBufferWin32
+00bda150   WARN SHARED_HEADER_AVAILABLE CIndexBuffer
+00bda150   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00bda150   RELOCATION_MATCH PASS   ProcessDisposalList
+00c677c0   RELOCATION_MATCH PASS   SetEnvironmentSize
+00c77d90   RELOCATION_MATCH PASS   MixChannels_00c77d90
+00cb28f0   WARN RELOC_ALIAS: _ImmGetIMEFileNameA@12 -> 00cb5528 is the import thunk 'IMM32.DLL::ImmGetIMEFileNameA'
+00cb28f0   WARN RELOC_ALIAS: _GetFileVersionInfoSizeA@8 -> 00cb558e is the import thunk 'VERSION.DLL::GetFileVersionInfoSizeA'
+00cb28f0   WARN RELOC_ALIAS: _GetFileVersionInfoA@16 -> 00cb5588 is the import thunk 'VERSION.DLL::GetFileVersionInfoA'
+00cb28f0   WARN RELOC_ALIAS: _VerQueryValueA@16 -> 00cb5582 is the import thunk 'VERSION.DLL::VerQueryValueA'
+00cb28f0   RELOCATION_MATCH PASS   GetImeId
+
+WINS: 8
+  00a5b870 RELOCATION_MATCH NVectorMath::?GFInterpolateVectors@NVectorMath@@YAXPAVC4DVector@@KPBV2@KKM@Z
+  00ba9360 RELOCATION_MATCH CEnginePrimitiveManagerMeshBase::?GetDiffuseTexture@CEnginePrimitiveManagerMeshBase@@SIPBVCTexture@@PBVC3DMeshMaterial@@PAV?$CVectorMap@JVCCompositeSurfaceInfo@@V?$CKeyPairCompareLess@JVCCompositeSurfaceInfo@@@@@@KAA_NPBVCGraphicDataBank@@_N@Z
+  00ba95d0 RELOCATION_MATCH CEnginePrimitiveManagerMeshBase::?GetBumpTexture@CEnginePrimitiveManagerMeshBase@@SIPBVCTexture@@PBVC3DMeshMaterial@@PAV?$CVectorMap@JVCCompositeSurfaceInfo@@V?$CKeyPairCompareLess@JVCCompositeSurfaceInfo@@@@@@KAA_NPBVCGraphicDataBank@@_N@Z
+  00ba9a70 RELOCATION_MATCH CEnginePrimitiveManagerMeshBase::?Get2DAlphaMaskTexture@CEnginePrimitiveManagerMeshBase@@SIPBVCTexture@@KKAA_NPBVCGraphicDataBank@@_N@Z
+  00bda150 RELOCATION_MATCH CEngineLandscapeMemoryManager::?ProcessDisposalList@CEngineLandscapeMemoryManager@@AAEXXZ
+  00c677c0 RELOCATION_MATCH CEaxContext::?SetEnvironmentSize@CEaxContext@@QAEJKM@Z
+  00c77d90 RELOCATION_MATCH _global::?MixChannels_00c77d90@@YAXPBMPAMKK@Z
+  00cb28f0 RELOCATION_MATCH _global::?GetImeId@@YGKI@Z
+
+LANDED 8 wins into src/compiled + tests + catalog + oracle
+  NVectorMath_GFInterpolateVectors_00a5b870
+  CEnginePrimitiveManagerMeshBase_GetDiffuseTexture_00ba9360
+  CEnginePrimitiveManagerMeshBase_GetBumpTexture_00ba95d0
+  CEnginePrimitiveManagerMeshBase_Get2DAlphaMaskTexture_00ba9a70
+  CEngineLandscapeMemoryManager_ProcessDisposalList_00bda150
+  CEaxContext_SetEnvironmentSize_00c677c0
+  global_MixChannels00c77d90_00c77d90
+  global_GetImeId_00cb28f0

@@ -1,0 +1,2 @@
+1	Alpha model: long index address-taken, if(surfaces) composed block, ternary flags	DIFFER 606v597 (retail keeps mipmap in ebx and flags in a stack slot with ebp=0; ours mipmap in memory/flags in ebx, ternary)
+2	if-shape flags (flags = 0; if (BlockOnLoad || force) flags = 0x11)	RELOCATION_MATCH 597v597

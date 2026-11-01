@@ -1,0 +1,13 @@
+address	name	evidence
+00bda150	CEngineLandscapeMemoryManager::ProcessDisposalList	Ego_r/FableWin private member, donor order EnablePoolAllocation/ProcessDisposalList/AllocateIndexBuffer = 0x00BDA070/0x00BDA150/0x00BDA360; drains the three disposal lists of FreeDisposalList 0x00BD9CE0; label CDrawResourcePool_FlushCycle wrong (chunk 684)
+00c77d90	MixChannels_00c77d90	libpk, descriptive (no PDB name); label Audio_MixChannels (chunk 684)
+00ba9a70	CEnginePrimitiveManagerMeshBase::Get2DAlphaMaskTexture	PDB donor order with the three texture siblings (chunk 684)
+00ba95d0	CEnginePrimitiveManagerMeshBase::GetBumpTexture	PDB donor order with the three texture siblings (chunk 684)
+00ba9360	CEnginePrimitiveManagerMeshBase::GetDiffuseTexture	PDB donor order with the three texture siblings (chunk 684)
+00c677c0	CEaxContext::SetEnvironmentSize	libpk, descriptive: landed CEaxContext/SetDecayTime family, EAX 4.0 environment-size scaling flags, range 1..100; label HeroAttribute_SetValueWithValidation wrong (chunk 684)
+00cb28f0	GetImeId	?GetImeId@@YGKI@Z, PDB name sets + DXSDK ImeUi.cpp text (chunk 684)
+00a5b870	NVectorMath::GFInterpolateVectors	Ego_r (KKM) overload, donor order 0x00A5B850/0x00A5B870/0x00A5BBA0/0x00A5BEF0/0x00A5C2B0; retail_asm SSE kernel (chunk 684)
+0077a890	CTCDExperienceOrb::Create	PDB ?Create@CTCDExperienceOrb@@SIXAAVCThing@@@Z, the CThing& overload beside landed 0x00779E90; parked DIFFER 724v707 (chunk 684)
+00c74510	CDspGain::ApplyRamps	libpk, descriptive; sixth argument is a byte test = bool; parked DIFFER 828v828 (chunk 684)
+009fe380	CGraphicInfoFrame::CFrameData::CFrameData	??0CFrameData@CGraphicInfoFrame@@QAE@PBV1@@Z; NUISystem-namespaced binding wrong (chunk 684)
+009ff6b0	CGraphicInfoFrame::InternalGetFrameForcedLoading	?InternalGetFrameForcedLoading@CGraphicInfoFrame@@ABE_NK@Z; NUISystem-namespaced binding wrong (chunk 684)

@@ -1,0 +1,4 @@
+1	Bump model + preloading-aware inline (if (!(flags&1) || !Internal()) { preloading = true; return 0; } return tex;) and a frame null test	DIFFER 602v613 (final tex return cross-jumped to the earlier copy; touch compare register form)
+2	inline final condition positive ((flags&1) && Internal()) return tex; preloading tail	DIFFER 602v613 (identical bytes to probe 1)
+3	row: if (frame) return frame->GetTexture(..., preloading); preloading = true; return 0;	DIFFER 617v613 (touch block now matches; the inline's two preloading sites merge into an eax-form block separate from the row's ecx-form tail; retail has one tail)
+4	bool CGraphicInfoFrame::GetTexture(mipmap, flags, const CTexture*& texture) returning false on the frame-less paths; row: if (frame && frame->GetTexture(..)) return texture; preloading = true; return 0;	RELOCATION_MATCH 613v613

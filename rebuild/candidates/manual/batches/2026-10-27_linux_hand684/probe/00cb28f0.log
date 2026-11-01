@@ -1,0 +1,8 @@
+1	SDK text, static __stdcall noinline GetImeId with a same-TU caller, statics defined; graded WITHOUT /GS by mistake	DIFFER 606v662 (no cookie; VC gave the static a register convention: uIndex in ebx)
+2	external __stdcall GetImeId, /GS	DIFFER 697v662 (failure tails duplicated per site instead of one shared tail; GETLANG not hoisted/cached, statics re-read after calls)
+3	diagnostics: no g_hklCurrent writer / no _GetReadingString writer / no same-TU writer at all	DIFFER 697v662 (identical: VC7.1 never caches the static across calls; retail's LOWORD in ebp must be a local)
+4	unsigned short wLang local after hklPrev write (LOWORD cached)	DIFFER 662v662 (own zeroing tail still duplicated after the layout check; zero register ebp used for the tests; wLang in bx not ebp)
+5	DWORD dwLang = hkl & 0xffff before the layout check; layout/Imm/compare checks folded into one && condition so every failure shares the tail	DIFFER 660v662 (ebp/esi/tail now retail; only residue: retail keeps uIndex in edi from entry (push edi in the prologue) and reloads it only on the version path; ours ecx everywhere)
+6	SDK early returns (layout / Imm / compare each zero+return) with DWORD dwLang hoisted	DIFFER 666v662 (uIndex now edi from entry as retail, but the layout-fail return gets its own zeroing tail with a zero register ebp; dwLang pushed to ebx)
+7	layout+Imm folded into one condition, compare chain kept as an early return	DIFFER 629v662 (zero register ebx again; early-return sites make VC materialise 0)
+8	probe 5 + ImeUiCallback_Free moved outside the lpVerBuffer test (retail's Malloc-failure edge reaches the Free: 0x00CB2A59 je 0x00CB2AF3), buffer checks folded into one &&	RELOCATION_MATCH 662v662

@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00bda150	RELOCATION_MATCH	514v514	PASS	CEngineLandscapeMemoryManager::ProcessDisposalList (PDB, private); 1 probe; landed FreeDisposalList TU model
+00c77d90	RELOCATION_MATCH	557v557	PASS	MixChannels_00c77d90 (descriptive, libpk; binding name kept, counts unsigned); 1 probe
+00ba9a70	RELOCATION_MATCH	563v563	PASS	CEnginePrimitiveManagerMeshBase::Get2DAlphaMaskTexture (PDB); 2 probes; per-row __forceinline CGraphicInfoFrame::GetTexture + ternary flags
+00ba95d0	RELOCATION_MATCH	597v597	PASS	CEnginePrimitiveManagerMeshBase::GetBumpTexture (PDB); 2 probes; if-shape flags
+00ba9360	RELOCATION_MATCH	613v613	PASS	CEnginePrimitiveManagerMeshBase::GetDiffuseTexture (PDB); 4 probes; bool out-param GetTexture inline merges the preloading tails
+00c677c0	RELOCATION_MATCH	582v582	PASS	CEaxContext::SetEnvironmentSize (descriptive, libpk EAX context of the landed SetDecayTime family); 1 probe
+00cb28f0	RELOCATION_MATCH	662v662	PASS	GetImeId (PDB name set, DXSDK ImeUi.cpp text); 8 probes; /GS; DWORD dwLang before the layout check, one failure tail, Free outside the buffer test
+00a5b870	RELOCATION_MATCH (retail_asm)	801v801	PASS	NVectorMath::GFInterpolateVectors (KKM) (PDB); 3 probes; /Zi; SSE __asm kernel with `// Retail-asm:` evidence, aligned float[4] weight locals
+0077a890	DIFFER(724v707)	707	-	parked: CTCDExperienceOrb::Create(CThing&) (PDB); 21 probes; register allocation only (creature ebp v edi, zero register placement, loop driver edi v spilled, count in memory v edi)
+00c74510	DIFFER(828v828)	828	-	parked: CDspGain::ApplyRamps (descriptive, bool sixth argument); 29 probes; only the two-pole decay loop: retail keeps y0 in a frame slot and carries the old y0 on the x87 stack into y1, VC7.1 enregisters the state[0] variable in every spelling (frame 0xC v 0x10 follows)

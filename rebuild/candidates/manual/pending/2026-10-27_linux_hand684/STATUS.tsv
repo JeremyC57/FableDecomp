@@ -1,0 +1,3 @@
+address	status	bytes	test	note
+0077a890	DIFFER(724v707)	707	-	parked: CTCDExperienceOrb::Create(CThing&) (PDB); 21 probes; register allocation only (creature ebp v edi, zero register placement, loop driver edi v spilled, count in memory v edi)
+00c74510	DIFFER(828v828)	828	-	parked: CDspGain::ApplyRamps (descriptive, bool sixth argument); 29 probes; only the two-pole decay loop: retail keeps y0 in a frame slot and carries the old y0 on the x87 stack into y1, VC7.1 enregisters the state[0] variable in every spelling (frame 0xC v 0x10 follows)

@@ -21007,7 +21007,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0077a180	OnCollected	CTCDExperienceOrb	__thiscall	void	2	CTCDExperienceOrb *,CThing *	1	yes	accepted									
 0077a350	SortedMap_FillFromSortedTree	_global	unknown	undefined	0		0	yes	accepted									
 0077a430	FrameUpdate	CTCDExperienceOrb	__thiscall	void	1	CTCDExperienceOrb *	1	yes	accepted									
-0077a890	Create	_global	__fastcall	void	1	CThing *	1	yes	accepted									
+0077a890	Create	CTCDExperienceOrb	__fastcall	void	1	CThing *	1	yes	accepted									
 0077ab60	GetInterfaceType	CTCDExperienceOrb	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0077ab70	GetActionName	CActionDoCreatureAction	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
 0077ab90	CTCDExperienceOrb::vfunc_28	CTCDExperienceOrb	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -37324,7 +37324,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a5b760	CRenderTarget	CRenderTarget	__thiscall	undefined	3	CRenderTarget *,CSurface *,CSurface *	0	yes	accepted									
 00a5b7d0	GetFacingVector	CTCPhysicsStandard	__thiscall	C3DVector	2	CTCPhysicsStandard *,float	1	yes	accepted									
 00a5b850	GFInitVectorMath	NVectorMath	__cdecl	void	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a5\global_GFInitVectorMath_00a5b850.cpp
-00a5b870	GFInterpolateVectors	_global	__cdecl	void	8	C4DVector *,ulong,C4DVector *,ulong,C4DVector *,ulong,ulong,float	1	yes	accepted									
+00a5b870	GFInterpolateVectors	NVectorMath	__cdecl	void	8	C4DVector *,ulong,C4DVector *,ulong,C4DVector *,ulong,ulong,float	1	yes	accepted									
 00a5bba0	GFInterpolateVectors	_global	__cdecl	void	8	C4DVector *,ulong,C4DVector *,ulong,C4DVector *,ulong,ulong,float	1	yes	accepted									
 00a5bef0	GFInterpolateVectors	NVectorMath	__cdecl	void	9	C4DVector *,ulong,C4DVector *,ulong,C4DVector *,ulong,float *,ulong,ulong	1	yes	accepted									
 00a5c2b0	GFFinishPartialSlerp	_global	__cdecl	void	7	CQuaternion *,ulong,CQuaternion *,ulong,CQuaternion *,ulong,ulong	1	yes	accepted									
@@ -42373,10 +42373,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ba9290	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ba\CLandscapeBackgroundPatch_vectordeletingdestructor_00ba9290.cpp
 00ba92b0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ba\CLandscapeBackgroundPatch_vectordeletingdestructor_00ba92b0.cpp
 00ba9300	`scalar deleting destructor'	std::pair<long, CCompositeSurfaceInfo>	__thiscall	void *	2	C3DMeshFilePartitionChunk *,uint	1	yes	accepted									
-00ba9360	GetDiffuseTexture	_global	__fastcall	CTexture *	6	C3DMeshMaterial *,CVectorMap<long,CCompositeSurfaceInfo,CKeyPairCompareLess<long,CCompositeSurfaceInfo>_> *,ulong,bool *,CGraphicDataBank *,bool	1	yes	accepted									
-00ba95d0	GetBumpTexture	_global	__fastcall	CTexture *	6	C3DMeshMaterial *,CVectorMap<long,CCompositeSurfaceInfo,CKeyPairCompareLess<long,CCompositeSurfaceInfo>_> *,ulong,bool *,CGraphicDataBank *,bool	1	yes	accepted									
+00ba9360	GetDiffuseTexture	CEnginePrimitiveManagerMeshBase	__fastcall	CTexture *	6	C3DMeshMaterial *,CVectorMap<long,CCompositeSurfaceInfo,CKeyPairCompareLess<long,CCompositeSurfaceInfo>_> *,ulong,bool *,CGraphicDataBank *,bool	1	yes	accepted									
+00ba95d0	GetBumpTexture	CEnginePrimitiveManagerMeshBase	__fastcall	CTexture *	6	C3DMeshMaterial *,CVectorMap<long,CCompositeSurfaceInfo,CKeyPairCompareLess<long,CCompositeSurfaceInfo>_> *,ulong,bool *,CGraphicDataBank *,bool	1	yes	accepted									
 00ba9830	GetReflectionTexture	CEnginePrimitiveManagerMeshBase	__fastcall	CTexture *	5	C3DMeshMaterial *,ulong,bool *,CGraphicDataBank *,bool	1	yes	accepted									
-00ba9a70	Get2DAlphaMaskTexture	_global	__fastcall	CTexture *	5	ulong,ulong,bool *,CGraphicDataBank *,bool	1	yes	accepted									
+00ba9a70	Get2DAlphaMaskTexture	CEnginePrimitiveManagerMeshBase	__fastcall	CTexture *	5	ulong,ulong,bool *,CGraphicDataBank *,bool	1	yes	accepted									
 00ba9cb0	ComputeParticleVisibilityDistance	_global	unknown	undefined	0		0	yes	accepted									
 00ba9fd0	__destroy_aux<std::pair<long, CCompositeSurfaceInfo> *>	std	__fastcall	void	4	pair<long,CCompositeSurfaceInfo> *,pair<long,CCompositeSurfaceInfo> *,allocator<std::pair<long,CCompositeSurfaceInfo>_> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00baa030	~CSystemRegistry	CSystemRegistry	__thiscall	void	1	CSystemRegistry *	1	yes	accepted									
@@ -42866,7 +42866,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00bda090	DeleteIndexBufferBlockWhileBusy	CEngineLandscapeMemoryManager	unknown	undefined	0		0	yes	accepted									
 00bda0d0	DeleteVertexBufferBlockWhileBusy	CEngineLandscapeMemoryManager	unknown	undefined	0		0	yes	accepted									
 00bda110	DeleteTextureBlockWhileBusy	CEngineLandscapeMemoryManager	unknown	undefined	0		0	yes	accepted									
-00bda150	CDrawResourcePool_FlushCycle	_global	unknown	undefined	0		0	yes	accepted									
+00bda150	ProcessDisposalList	CEngineLandscapeMemoryManager	unknown	undefined	0		0	yes	accepted									
 00bda360	AllocateIndexBuffer	CEngineLandscapeMemoryManager	__thiscall	CIndexBuffer *	6	CEngineLandscapeMemoryManager *,CMovableResource *,long,ulong,EIndexBufferFormat,EPrimitiveType	1	yes	accepted									
 00bda3d0	AllocateVertexBuffer	CEngineLandscapeMemoryManager	__thiscall	CVertexBufferWin32 *	6	CEngineLandscapeMemoryManager *,CMovableResource *,EVertexType,long,long,ulong	1	yes	accepted									
 00bda470	AllocateTexture	CEngineLandscapeMemoryManager	__thiscall	CTexture *	7	CEngineLandscapeMemoryManager *,CMovableResource *,C2DExtentsI *,long,CPixelFormat *,ulong,bool	1	yes	accepted									
@@ -47215,7 +47215,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c67470	SetSlotLock	CEaxContext	unknown	undefined	0		0	yes	accepted									
 00c674b0	CCharacter_AddSkill	_global	unknown	undefined	0		0	yes	accepted									
 00c67720	SetSlotVolume	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c677c0	HeroAttribute_SetValueWithValidation	_global	unknown	undefined	0		0	yes	accepted									
+00c677c0	SetEnvironmentSize	CEaxContext	unknown	undefined	0		0	yes	accepted									
 00c67a10	SetReverbFlags	CEaxContext	unknown	undefined	0		0	yes	accepted									
 00c67ae0	SetAllParameters	CEaxContext	unknown	undefined	0		0	yes	accepted									
 00c67c00	ScriptCommand_SetCharacterAttributes	_global	unknown	undefined	0		0	yes	accepted									
@@ -47472,7 +47472,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c74450	CTCHeroStats::~CTCHeroStats	CTCHeroStats	unknown	undefined	0		0	yes	accepted									
 00c74480	CTCHeroStats::~CTCHeroStats	CTCHeroStats	unknown	undefined	0		0	yes	accepted									
 00c744e0	Reset	CDspGain	__thiscall	void	1	CQ_GuildTrainingSkillScript *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c7\Init_Init_00c744e0.cpp
-00c74510	Audio_IIRFilterProcess	_global	unknown	undefined	0		0	yes	accepted									
+00c74510	ApplyRamps	CDspGain	unknown	undefined	0		0	yes	accepted									
 00c74850	CFilter_Setup	_global	unknown	undefined	0		0	yes	accepted									
 00c74ab0	SetLowPass	CEffectFilter	unknown	undefined	0		0	yes	accepted									
 00c74bb0	SetHighPass	CEffectFilter	unknown	undefined	0		0	yes	accepted									
@@ -47540,7 +47540,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c77b30	CAudioChannel_ApplyDistortionEffect	_global	unknown	undefined	0		0	yes	accepted									
 00c77c00	CAudioChannel_ApplyReverbEffect	_global	unknown	undefined	0		0	yes	accepted									
 00c77c80	Audio_Channel_ComputePitch_Modulation	_global	unknown	undefined	0		0	yes	accepted									
-00c77d90	Audio_MixChannels	_global	unknown	undefined	0		0	yes	accepted									
+00c77d90	MixChannels_00c77d90	_global	unknown	undefined	0		0	yes	accepted									
 00c77fc0	CAudioChannel_ApplyChorusEffect	_global	unknown	undefined	0		0	yes	accepted									
 00c78040	CAudioChannel_ApplyDelayEffect	_global	unknown	undefined	0		0	yes	accepted									
 00c780c0	Audio_Channel_ComputeEnvelope_Amplitude	_global	unknown	undefined	0		0	yes	accepted									
