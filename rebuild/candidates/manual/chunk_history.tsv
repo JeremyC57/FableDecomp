@@ -25568,3 +25568,13 @@ chunk	address	module	name	length
 653	00c5a9d0	C3DMeshFileXBoundingBoxChunk	ReadFromFile	382
 653	0089f300	CGameScriptInterface	CreateCreatureNearby	403
 653	00896b60	CGameScriptInterface	KickOffQuestStartScreen	445
+654	00935e40	CAIStateGroup_MinionPutOutFires	PutOutFire	468
+654	0095ef80	CAIStateGroup_OpinionReactionRoot	?IsRunnable@CAIStateGroup_OpinionReactionRoot@@UAE_NXZ	1528
+654	0065a8ee	CTCVillage	IsTimeToGoToSchool	385
+654	0078f8f0	CTCDivineWrath	CancelForCutscene	505
+654	00670d50	CThingCreatureDef	?Validate@CThingCreatureDef@@UBEXABVCValidateDefinitionInitBase@@ABVCCharString@@@Z	533
+654	00533d30	CComponent	GetSize	1750
+654	00a6bcd0	_global	Vector_InsertN_DetailPlacementGrid	276
+654	007b8b10	CTCTavernTable	GetEatingPoint	417
+654	00d38d20	CQ_FireHeartScript	RunVillagerComments	526
+654	00bc7660	CEnginePrimitiveManagerText	Render2DPrimitive	692
