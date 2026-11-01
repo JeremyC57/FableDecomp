@@ -42,12 +42,14 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
   `toolchain_library` from the vendor .asm.
 
 ## Next
-1. **Owner decisions** (`naming/2026-10-31_wave12/DECISIONS_W12.tsv`, each with a recommendation): 0x013B83D0 `g_Game`;
-   0x013B8394 sound manager (24 spellings, pick the type); 0x0124F2B8 keep `g_twoPi`; anonymous-namespace binding
-   policy (0x008E8A10, 0x00870C90, 0x0097ABF0); 0x00C351B0 CVirtualPlayer::Start parameter; 0x00686D90 =
-   PeekThingSearchTools; 0x0129BA3C epsilon (49 spellings); duplicate-COMDAT allowlist instead of `_copy2` names; vtable
-   0x012B29F8 = PKCPlaybackTemplate; CPhysicsMesh static access. Also from the chunks: GetPWorld 0x008FCFC0 (~45
-   spellings), VIRTUAL_SCREEN_* (20), vector<CCharString> dtor 0x00414EA0 (17), GetCurrentWorldFrame 0x004167C8 (8).
+1. **Decisions made 2026-11-01** (`naming/2026-10-31_wave12/DECISIONS_W12_RESOLVED.tsv`, canonical spellings in
+   `naming/ESTABLISHED_SPELLINGS.tsv`): GGame 0x013B83D0, GSystemManager 0x013CA618, PSoundManager 0x013B8394 (+ the
+   PDisplayManager / PInputManager / PGraphicBankManager / PFontManager caches), TWO_PI 0x0124F2B8, EPSILON 0x0129BA3C,
+   CTCBase::Get/PeekThingSearchTools 0x00686D80/90, the SmoothFadeValue / CDefString / LowerBound / IS_THING_ALIVE
+   pairs, PKCDeferredBank for vtable 0x012B29F8, the anonymous-namespace policy (PDB spelling with the retail hash,
+   tools match ignoring it), the per-TU static allowlist (`DUPLICATE_STATICS.tsv`, only libvorbis ilog2). Still open
+   from the chunks: GetPWorld 0x008FCFC0 (~45 spellings), VIRTUAL_SCREEN_* (20), vector<CCharString> dtor 0x00414EA0
+   (17), GetCurrentWorldFrame 0x004167C8 (8) -- decide them the same way (callers first, PDB initializer list, layouts).
 2. **Naming wave 13** input: NAME_FIXES_QUEUE rows c643-c650 + codex50 (~90), the decisions above, and
    `2026-10-31_wave12/DEFERRED.tsv` (30 items; the GetPItem family is 2,247 rows and has a plan there). Brief template:
    `naming/briefs/BRIEF_W12.md`. Then re-run `tools/sync_catalog_names.py`.

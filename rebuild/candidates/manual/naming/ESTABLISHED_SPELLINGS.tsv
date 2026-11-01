@@ -1,0 +1,15 @@
+address	symbol	evidence
+0x013B83D0	?GGame@@3VCGame@@A	PDB dynamic initializer 'GGame'; CGame& ctor parameters; 2026-11-01
+0x013CA618	?GSystemManager@@3VCSystemManager@@A	PDB dynamic initializer 'GSystemManager'; GFGetSystemManager; 2026-11-01
+0x013B8394	?PSoundManager@@3PAVCASoundManager@@A	GFInitialise copy of GSystemManager+0x7c; CASoundManager base ctor; PDB member spelling CMovieSubtitles::PSoundManager; 2026-11-01
+0x013B8390	?PDisplayManager@@3PAVCDisplayManager@@A	GFInitialise copy of GSystemManager+0x60 = Ego_r CSystemManager::PDisplayManager; 2026-11-01
+0x013B8388	?PInputManager@@3PAVCInputManager@@A	GFInitialise copy of GSystemManager+0x58 = Ego_r CSystemManager::PInputManager; 2026-11-01
+0x013B837C	?PGraphicBankManager@@3PAVCGraphicBankManager@@A	GFInitialise copy of GSystemManager+0x6c = Ego_r CSystemManager::PGraphicBankManager; 2026-11-01
+0x013B838C	?PFontManager@@3PAVCFontManager@@A	GFInitialise copy of GSystemManager+0x84 (retail slot of PFontManager, CFontManager ctor 0x009E2E30); 2026-11-01
+0x0124F2B8	?TWO_PI@@3NB	single shared extern const double; Lionhead ALL_CAPS constant style; replaces g_twoPi; 2026-11-01
+0x0129BA3C	?EPSILON@@3MB	single shared extern const float 1e-4f (49 TUs); Lionhead ALL_CAPS constant style; 2026-11-01
+0x0143E8F8	?g_pGameScriptInterface@@3PAVCGameScriptInterface@@A	established 2026-10-28 (owner decision list)
+0x0143E90C	?pGlobalScriptDef@@3V?$CDefPointer@VCScriptDef@@@@A	PDB dynamic initializer 'pGlobalScriptDef' (a CDefPointer<CScriptDef> object, hence the initializer); established 2026-10-28
+0x013B86A0	?g_pMainGameComponent@@3PAVCMainGameComponent@@A	established 2026-10-28 (owner decision list)
+0x013CA828	?GDefStringTable@@3VCDefStringTable@@A	PDB dynamic initializer 'GDefStringTable'; established 2026-10-28
+0x013961E8	?VIRTUAL_SCREEN_WIDTH@@3NA	established 2026-10-31 (chunk 649)

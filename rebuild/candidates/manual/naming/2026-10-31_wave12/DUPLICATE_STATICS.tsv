@@ -1,0 +1,2 @@
+symbol	addresses	evidence
+@ilog2@4	0x00C8DB60 0x00C8F060 0x00CA17A0	libvorbis per-TU static (byte-identical, no PDB); the only proven one-name-several-addresses case (owner decision 2026-11-01)
