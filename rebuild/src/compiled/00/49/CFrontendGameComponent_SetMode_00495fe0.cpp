@@ -15,15 +15,17 @@ public:
     void Refresh();                 // 0x004959E0
 };
 
-class CFrontendModePointer_00495fe0
+// Naming (naming wave 24): the CWideString at +0x1E40 is Ego_r's WorldToLoad (CFrontendGameComponent PDB +0x1E4C less the three 4-byte
+// vector shrinks; the landed GetWorldNames 0x00495890 models it so), cleared
+// to the empty wide literal 0x0122D70C through CWideString::operator=(const wchar_t*) 0x0099B800 (??4CWideString@@QAEABV0@PBG@Z); it
+// was a CFrontendModePointer_00495fe0 stand-in with an Assign member and a g_EmptyFrontendModePointer_00495fe0 object.
+class CWideString
 {
-    void* m_Data;
+    void* PStringData;
 
 public:
-    void Assign(const CFrontendModePointer_00495fe0*);
+    const CWideString& operator=(const unsigned short* text);   // 0x0099B800
 };
-
-extern CFrontendModePointer_00495fe0 g_EmptyFrontendModePointer_00495fe0;
 
 class CFrontendGameComponent
 {
@@ -40,7 +42,7 @@ class CFrontendGameComponent
     unsigned char m_Pad1e1d[0x0b];
     long m_SaveIndex;
     unsigned char m_Pad1e2c[0x14];
-    CFrontendModePointer_00495fe0 m_ModePointer;
+    CWideString WorldToLoad;
     long m_ModePointerEnabled;
 
 
@@ -66,7 +68,7 @@ void CFrontendGameComponent::SetMode(long mode)
     if (mode == 11)
     {
         m_SaveList.Refresh();
-        m_ModePointer.Assign(&g_EmptyFrontendModePointer_00495fe0);
+        WorldToLoad = L"";
         m_SaveIndex = 0;
         return;
     }
