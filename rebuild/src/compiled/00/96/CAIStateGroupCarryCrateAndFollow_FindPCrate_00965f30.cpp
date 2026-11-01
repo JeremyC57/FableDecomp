@@ -60,13 +60,13 @@ template<class A, class B, class C> inline CFilter_Bind3<A, B, C> operator&&(con
 typedef CFilter_Bind3<CThingFilter_ObjectHasProperty, CThingFilter_HasFreeActionPoint, CThingFilter_HasTC> CCrateFilter;
 
 class CThingSearchTools { public:
-    bool GetPBestThing(const CCrateFilter& filter, const CThingCompare_Nearest& compare, CThingObject** ppBest);   // 0x00965E80
+    bool GetPBestThing(const CCrateFilter& filter, const CThingCompare_Nearest& compare, CThingObject** ppBest) const;   // 0x00965E80
 };
 long NearSink_s7_0(const void* self, long seen);   // stand-in: the search GetPBestThing runs (returns the best thing or 0)
 #pragma auto_inline(off)
 // Same-TU stand-in for CThingSearchTools::GetPBestThing @ 0x00965E80 (compiled in retail's TU): clears the out pointer, stores the best
 // thing found, reads the filter and comparator through their const references; no argument escapes.
-__declspec(noinline) bool CThingSearchTools::GetPBestThing(const CCrateFilter& filter, const CThingCompare_Nearest& compare, CThingObject** ppBest)
+__declspec(noinline) bool CThingSearchTools::GetPBestThing(const CCrateFilter& filter, const CThingCompare_Nearest& compare, CThingObject** ppBest) const
 {
     *ppBest = 0;
     long best = NearSink_s7_0(this, *(const long*)&filter + *(const long*)&compare);
@@ -90,7 +90,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                         // +0x11
     unsigned char Enabled;                          // +0x12
     unsigned char _pad_0x13;
-    CThingSearchTools* PeekThingSearchTools();      // 0x008FD000
+protected:
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000 (Ego_r.pdb ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ, protected)      // 0x008FD000
+public:
 };
 
 struct CAIStateGroup_CarryCrateAndFollow : CAIStateGroupBase {
@@ -106,7 +108,7 @@ struct CAIStateGroup_CarryCrateAndFollow : CAIStateGroupBase {
 CThingObject* CAIStateGroup_CarryCrateAndFollow::FindPCrate()
 {
     CThingObject* crate;
-    PeekThingSearchTools()->GetPBestThing(
+    PeekThingSearchTools().GetPBestThing(
         CThingFilter_ObjectHasProperty(0x08000000) && CThingFilter_HasFreeActionPoint() && CThingFilter_HasTC(0x47),
         CThingCompare_Nearest(PBrain->Creature->GetPos()), &crate);
     return crate;

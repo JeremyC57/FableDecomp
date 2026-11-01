@@ -3,7 +3,8 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C2240, length 587 bytes, plain `ret` (virtual).
 // Callees: CCharString @ 0x0099EBF0 / copy @ 0x0099EC30 / ~ @ 0x0099EAE0, CBaseIntelligentPointer::GetPItem @ 0x00A01B50,
 //          CThing::GetPos @ 0x004C73D0, __ftol2 @ 0x00BFEA70, CCreatureActionBase::GetThingSearchTools @ 0x00692990,
-//          CThingSearchTools::GetPFirstThingInRoughArea<HasTrackName> @ 0x007FD110, CCreatureActionBase::GetWorldMap
+//          CThingSearchTools::GetPFirstThingInRoughArea<HasScriptName> @ 0x007FD110, CCreatureActionBase::GetWorldMap
+// 0x007FD110 is the <CThingFilter_HasScriptName, CThing> instance (filter operator 0x006A7E30 compares the ScriptName; naming wave 19)
 //          @ 0x00692C10, CWorldMap::GetHeightZBelowPos @ 0x0063E480, CVectorMap::LowerBound @ 0x0040F020,
 //          CTCCarrying::GetThingInPrimarySlot @ 0x006A1440 / RemoveThingFromPrimarySlot(bool) @ 0x006A1E00,
 //          CTCGraphicAppearance::GetDummyObject @ 0x004C08C0, the sword's physics slots 30 (+0x78) / 38 (+0x98) / 75 (+0x12c).
@@ -29,9 +30,9 @@ class CCharString { public:
     CCharString(const CCharString& other);                   // 0x0099EC30
     ~CCharString();                                          // 0x0099EAE0
 };
-class CThingFilter_HasTrackName { public:
+class CThingFilter_HasScriptName { public:
     CCharString Name;
-    CThingFilter_HasTrackName(const CCharString& name) : Name(name) { }
+    CThingFilter_HasScriptName(const CCharString& name) : Name(name) { }
 };
 struct CPhysicsBody {
 #define VF(n) virtual void v##n();
@@ -87,7 +88,7 @@ public:
     }
 };
 class CThingSearchTools { public:
-    bool GetPFirstThingInRoughArea(const C2DBoxI& area, const CThingFilter_HasTrackName& filter, CThing** out) const;   // 0x007FD110
+    bool GetPFirstThingInRoughArea(const C2DBoxI& area, const CThingFilter_HasScriptName& filter, CThing** out) const;   // 0x007FD110
 };
 class CWorldMap { public:
     float GetHeightZBelowPos(const C3DVector& position);     // 0x0063E480
@@ -141,7 +142,7 @@ void CCreatureAction_JackScream::PerformAction()
         CThing* marker = 0;
         {
             CCharString name("SwordDropMarker");
-            CThingFilter_HasTrackName filter(name);
+            CThingFilter_HasScriptName filter(name);
             const C3DVector& pos = GetCreature()->GetPos();
             long x = (long)pos.X;
             long y = (long)pos.Y;

@@ -125,7 +125,9 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];                 // +0x08..+0x13
     CThing* GetCreature() const { return PBrain->PCreature; }
-    CThingSearchTools* PeekThingSearchTools();  // 0x008FD000
+protected:
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000 (Ego_r.pdb ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ, protected)  // 0x008FD000
+public:
 };
 struct CAIStateGroup_Guildmaster : CAIStateGroupBase {
     long AttackNum;                             // +0x14
@@ -148,7 +150,7 @@ void CAIStateGroup_Guildmaster::OnActivate()
         const C3DVector& pos = GetCreature()->GetPos();
         long x = (long)pos.X;
         long y = (long)pos.Y;
-        PeekThingSearchTools()->GetAllThingsInRoughArea(C2DBoxI(x - 55, y - 55, x + 55, y + 55), filter, markers);
+        PeekThingSearchTools().GetAllThingsInRoughArea(C2DBoxI(x - 55, y - 55, x + 55, y + 55), filter, markers);
     }
     unsigned int count = markers.size();
     for (unsigned int i = 0; i < count; ++i)

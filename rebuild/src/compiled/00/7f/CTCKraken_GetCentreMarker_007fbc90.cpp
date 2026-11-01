@@ -5,7 +5,8 @@
 // "GetDisplayEngine" / "_Cons_val" are propagated), CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410,
 // CCharString(const char*, long) @ 0x0099EBF0 / copy @ 0x0099EC30 / ~CCharString @ 0x0099EAE0, CThing::GetPos @
 // 0x004C73D0, __ftol2 @ 0x00BFEA70, CThingSearchTools::GetPFirstThingInRoughArea<HasDefGlobalIndex> @ 0x007FCEF0 and
-// <HasTrackName> @ 0x007FD110, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0,
+// <HasScriptName> @ 0x007FD110, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0,
+// 0x007FD110 is the <CThingFilter_HasScriptName, CThing> instance (filter operator 0x006A7E30 compares the ScriptName; naming wave 19)
 // CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 / GetPItem @ 0x00A01B50 / dtor @ 0x00A01C10
 // (CIntelligentPointer<CThing> vtable 0x01238C6C).
 // Strings: "BUILDING_KRAKEN_CHAMBER" @ 0x01272074, "KRACKEN_CHAMBER_CENTRE" @ 0x0127205C.
@@ -34,13 +35,13 @@ class CThingFilter_HasDefGlobalIndex { public:
     long m_defGlobalIndex;
     CThingFilter_HasDefGlobalIndex(long index) : m_defGlobalIndex(index) { }
 };
-class CThingFilter_HasTrackName { public:
+class CThingFilter_HasScriptName { public:
     CCharString Name;
-    CThingFilter_HasTrackName(const CCharString& name) : Name(name) { }
+    CThingFilter_HasScriptName(const CCharString& name) : Name(name) { }
 };
 class CThingSearchTools { public:
     bool GetPFirstThingInRoughArea(const C2DBoxI& area, const CThingFilter_HasDefGlobalIndex& filter, CThing** out) const;   // 0x007FCEF0
-    bool GetPFirstThingInRoughArea(const C2DBoxI& area, const CThingFilter_HasTrackName& filter, CThing** out) const;        // 0x007FD110
+    bool GetPFirstThingInRoughArea(const C2DBoxI& area, const CThingFilter_HasScriptName& filter, CThing** out) const;        // 0x007FD110
 };
 class CDefinitionManager { public:
 public:
@@ -117,7 +118,7 @@ void CTCKraken::GetCentreMarker()
         PChamber = CIntelligentPointer<CThing>(found);
         {
             CCharString name("KRACKEN_CHAMBER_CENTRE");
-            PeekThingSearchTools().GetPFirstThingInRoughArea(area, CThingFilter_HasTrackName(name), &found);
+            PeekThingSearchTools().GetPFirstThingInRoughArea(area, CThingFilter_HasScriptName(name), &found);
         }
         PCentreMarker = CIntelligentPointer<CThing>(found);
     }

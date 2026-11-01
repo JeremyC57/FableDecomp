@@ -85,7 +85,11 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
-class CAIStateGroupBase { public:
+class CThingSearchTools;
+class CAIStateGroupBase {
+protected:
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000 (Ego_r.pdb ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ, protected)
+private: public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual bool IsStillValid();                // slot 5  (+0x14)
@@ -143,12 +147,11 @@ class CThingFilter_HasDefGlobalIndex { public:
 };
 
 class CThingSearchTools { public:
-    bool GetPFirstThing(const CThingFilter_HasDefGlobalIndex& filter, CThing** ppThing);   // 0x00910740
+    bool GetPFirstThing(const CThingFilter_HasDefGlobalIndex& filter, CThing** ppThing) const;   // 0x00910740
 };
 
 struct CAIStateGroup_MinionListenToStory : CAIStateGroupBase {
-    CThingSearchTools* PeekThingSearchTools();  // 0x008FD000 (CAIStateGroupBase)
-    bool FindMarker(CThingFilter_HasDefGlobalIndex& filter, long markerIndex) { CThing* marker; filter.DefGlobalIndex = markerIndex; return PeekThingSearchTools()->GetPFirstThing(filter, &marker); }
+    bool FindMarker(CThingFilter_HasDefGlobalIndex& filter, long markerIndex) { CThing* marker; filter.DefGlobalIndex = markerIndex; return PeekThingSearchTools().GetPFirstThing(filter, &marker); }
     virtual bool IsRunnable();
 };
 

@@ -125,7 +125,7 @@ template <class A, class B> class CFilter_Bind2 { public:
 template <class A, class B> inline CFilter_Bind2<A, B> operator&&(const A& a, const B& b) { return CFilter_Bind2<A, B>(a, b); }
 class CThingSearchTools { public:
     void FindThingsInRoughArea(const C2DBoxI& area, const CFilter_Bind2<CThingFilter_HasTC, CThingFilter_In2DRange>& filter,
-                               std::list<CThingCreatureBase*>& things);   // 0x0091A750
+                               std::list<CThingCreatureBase*>& things) const;   // 0x0091A750
 };
 // The search instantiation lives in this TU (0x0091A750, just above): a same-TU noinline stand-in that only reads its
 // arguments tells VC7.1 the list's address never escapes, so the header pointer stays in a register across every
@@ -133,7 +133,7 @@ class CThingSearchTools { public:
 void SearchSink_91a750(const CThingSearchTools* self, long x0, long tcType, float range, std::_List_node_base* header);
 #pragma auto_inline(off)
 __declspec(noinline) void CThingSearchTools::FindThingsInRoughArea(const C2DBoxI& area,
-    const CFilter_Bind2<CThingFilter_HasTC, CThingFilter_In2DRange>& filter, std::list<CThingCreatureBase*>& things)
+    const CFilter_Bind2<CThingFilter_HasTC, CThingFilter_In2DRange>& filter, std::list<CThingCreatureBase*>& things) const
 {
     SearchSink_91a750(this, area.X0, filter.m_pFirst->TCType, filter.m_pSecond->Range, things._M_node);
 }
@@ -148,7 +148,9 @@ public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                                  // +0x04
     unsigned char _pad08[0x0c];
-    CThingSearchTools* PeekThingSearchTools();         // 0x008FD000
+protected:
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000 (Ego_r.pdb ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ, protected)         // 0x008FD000
+public:
     protected:
     unsigned long* GetPWorldSeed() const;                    // 0x008FCFD0
     public:
@@ -181,7 +183,7 @@ template <class Base> void CAIStateGroup_WorkBase<Base>::AcquireSeller()
     long x = (long)pos.X;
     long y = (long)pos.Y;
     C2DBoxI area(x - 20, y - 20, x + 20, y + 20);
-    this->PeekThingSearchTools()->FindThingsInRoughArea(area,
+    this->PeekThingSearchTools().FindThingsInRoughArea(area,
                                                         CThingFilter_HasTC(0x90) && CThingFilter_In2DRange(pos, 20.0f), sellers);
     while (sellers.size() != 0) {
         unsigned long count = sellers.size();

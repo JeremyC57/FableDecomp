@@ -155,7 +155,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;
     unsigned char Enabled;
     unsigned char _pad_0x13;
-    CThingSearchTools* PeekThingSearchTools();  // 0x008FD000
+protected:
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000 (Ego_r.pdb ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ, protected)  // 0x008FD000
+public:
 };
 #pragma pack(push, 1)
 struct CAIStateGroup_Thunder : CAIStateGroupBase {
@@ -185,7 +187,7 @@ bool CAIStateGroup_Thunder::IsRunnable()
         CThing* arena = 0;
         {
             CCharString name("ThunderArenaCentre");
-            PeekThingSearchTools()->GetPFirstThing(CThingFilter_HasScriptName(name), &arena);
+            PeekThingSearchTools().GetPFirstThing(CThingFilter_HasScriptName(name), &arena);
         }
         PArenaCentre = CIntelligentPointerThing(arena);
         if (++HitCount == def->HitsBeforeTarget) {

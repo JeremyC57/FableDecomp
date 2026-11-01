@@ -44,9 +44,9 @@ class CCharString { public:
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
 };
-class CThingFilter_HasTrackName { public:
+class CThingFilter_HasScriptName { public:
     CCharString Name;
-    CThingFilter_HasTrackName(const CCharString& name) : Name(name) { }
+    CThingFilter_HasScriptName(const CCharString& name) : Name(name) { }
 };
 class CThingSearchTools { public:
     template <class TFilter, class T> bool GetPFirstThingInRoughArea(const C2DBoxI& area, const TFilter& filter, T** out) const;   // 0x007FD110
@@ -135,7 +135,7 @@ void CAIStateGroup_HoverHornetQueen::SetUpCirclePoints()
         sprintf(name, "WaspQueenCirclePos%d", index);
         {
             CCharString track(name);
-            CThingFilter_HasTrackName filter(track);
+            CThingFilter_HasScriptName filter(track);
             const C3DVector& pos = GetCreature()->GetPosition();
             long x = (long)pos.X;
             long y = (long)pos.Y;
@@ -177,7 +177,7 @@ CThing* CThingSearchTools::FindFirstInArea(const C2DBoxI& area, const void* filt
 {
     ++g_lookups;
     if (area.MinX != (long)g_queenPos.X - 60 || area.MaxY != (long)g_queenPos.Y + 60) return 0;
-    const char* name = (const char*)((const CThingFilter_HasTrackName*)filter)->Name.PStringData;
+    const char* name = (const char*)((const CThingFilter_HasScriptName*)filter)->Name.PStringData;
     for (int i = 0; i < g_markerCount; ++i)
         if (strcmp(g_markers[i].name, name) == 0) return g_markers[i].thing;
     return 0;

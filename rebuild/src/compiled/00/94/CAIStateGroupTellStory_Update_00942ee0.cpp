@@ -124,12 +124,12 @@ struct CThingPtrVector {                        // std::vector<CThing*> (STLport
     ~CThingPtrVector() { if (_M_start) free(_M_start); }
 };
 class CThingSearchTools { public:
-    bool GetPBestThing(const CThingFilter_HasDefGlobalIndex& filter, const CThingCompare_Nearest& compare, CThing** out);   // 0x009107B0
-    void FindThings(const CThingFilter_And3& filter, CThingPtrVector& out);   // 0x00943830
+    bool GetPBestThing(const CThingFilter_HasDefGlobalIndex& filter, const CThingCompare_Nearest& compare, CThing** out) const;   // 0x009107B0
+    void FindThings(const CThingFilter_And3& filter, CThingPtrVector& out) const;   // 0x00943830
 };
 long BestSink_9107B0(const void* self, long index, float x);
 #pragma auto_inline(off)
-__declspec(noinline) bool CThingSearchTools::GetPBestThing(const CThingFilter_HasDefGlobalIndex& filter, const CThingCompare_Nearest& compare, CThing** out)
+__declspec(noinline) bool CThingSearchTools::GetPBestThing(const CThingFilter_HasDefGlobalIndex& filter, const CThingCompare_Nearest& compare, CThing** out) const
 {
     long best = BestSink_9107B0(this, filter.DefGlobalIndex, compare.Pos.x);
     *out = (CThing*)best;
@@ -138,7 +138,7 @@ __declspec(noinline) bool CThingSearchTools::GetPBestThing(const CThingFilter_Ha
 #pragma auto_inline(on)
 long FindSink_943830(const void* self, float radius);
 #pragma auto_inline(off)
-__declspec(noinline) void CThingSearchTools::FindThings(const CThingFilter_And3& filter, CThingPtrVector& out)
+__declspec(noinline) void CThingSearchTools::FindThings(const CThingFilter_And3& filter, CThingPtrVector& out) const
 {
     long found = FindSink_943830(this, filter.C->Radius);
     out._M_finish = out._M_start + found;
@@ -165,7 +165,9 @@ public:
     protected:
     unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
     public:
-    CThingSearchTools* PeekThingSearchTools();  // 0x008FD000
+protected:
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000 (Ego_r.pdb ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ, protected)  // 0x008FD000
+public:
     unsigned long Random(unsigned long range)
     {
         unsigned long* seed = GetPWorldSeed();
@@ -195,7 +197,7 @@ void CAIStateGroup_TellStory::Update()
     {
         CThingCompare_Nearest compare(GetCreature()->GetPos());
         CThingFilter_HasDefGlobalIndex filter(index);
-        PeekThingSearchTools()->GetPBestThing(filter, compare, &marker);
+        PeekThingSearchTools().GetPBestThing(filter, compare, &marker);
     }
     CThingBody* body = marker->PBody;
     C3DVector markerPos = body->Pos;
@@ -220,7 +222,7 @@ void CAIStateGroup_TellStory::Update()
         CThingFilter_InRadius inRadius(markerPos, 10.0f);
         CThingFilter_IsCreature isCreature;
         CThingFilter_NotThing notMe(GetCreature());
-        PeekThingSearchTools()->FindThings(CThingFilter_And3(isCreature, notMe, inRadius), listeners);
+        PeekThingSearchTools().FindThings(CThingFilter_And3(isCreature, notMe, inRadius), listeners);
         CThing** start = listeners._M_start;
         long count = listeners._M_finish - start;
         C3DVector facePos;

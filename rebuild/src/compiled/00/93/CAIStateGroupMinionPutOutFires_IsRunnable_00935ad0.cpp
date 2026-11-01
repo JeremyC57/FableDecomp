@@ -72,14 +72,14 @@ class CThingCompare_Nearest { public:
 };
 class CThingSearchTools { public:
     bool GetPBestLeafThing(const CFilter_Bind2<CThingFilter_IsBurning, CThingFilter_In2DRange>& filter,
-                           const CThingCompare_Nearest& compare, CThing** out);   // 0x00936070 (stand-in below)
+                           const CThingCompare_Nearest& compare, CThing** out) const;   // 0x00936070 (stand-in below)
 };
 long NearSink_PutOutFires(const void* self, long seen);   // stand-in: the search the real body runs
 #pragma auto_inline(off)
 // Same-TU stand-in for GetPBestLeafThing (0x00936070, an out-of-line COMDAT template instance): it reads its inputs and
 // writes the out pointer only, so VC7.1 sees the filter/comparator/out addresses do not escape (landed 0x00936A60 idiom).
 __declspec(noinline) bool CThingSearchTools::GetPBestLeafThing(const CFilter_Bind2<CThingFilter_IsBurning, CThingFilter_In2DRange>& filter,
-                                                              const CThingCompare_Nearest& compare, CThing** out)
+                                                              const CThingCompare_Nearest& compare, CThing** out) const
 {
     *out = 0;
     long best = NearSink_PutOutFires(this, *(const long*)&compare + *(const long*)&filter.Second.Range);
@@ -124,7 +124,9 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
     CThing* GetCreature() const { return PBrain->PCreature; }
-    CThingSearchTools* PeekThingSearchTools();  // 0x008FD000
+protected:
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000 (Ego_r.pdb ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ, protected)  // 0x008FD000
+public:
 };
 
 struct CAIStateGroup_MinionPutOutFires : CAIStateGroupBase {
@@ -139,7 +141,7 @@ bool CAIStateGroup_MinionPutOutFires::IsRunnable()
         CThing* fire = 0;
         PFire = CIntelligentPointerThing(0);
         float radius = perceive->GetExtendedSightRadius();
-        if (PeekThingSearchTools()->GetPBestLeafThing(
+        if (PeekThingSearchTools().GetPBestLeafThing(
                 CThingFilter_IsBurning() && CThingFilter_In2DRange(((CThing*)(GetCreature()))->GetPos(), radius),
                 CThingCompare_Nearest(((CThing*)(GetCreature()))->GetPos()), &fire)) {
             PFire = CIntelligentPointerThing(fire);

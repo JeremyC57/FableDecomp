@@ -68,7 +68,11 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
-class CAIStateGroupBase { public:
+class CThingSearchTools;
+class CAIStateGroupBase {
+protected:
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000 (Ego_r.pdb ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ, protected)
+private: public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual bool IsStillValid();                // slot 5  (+0x14)
@@ -121,11 +125,10 @@ class CThingFilter_HasScriptName { public:
 };
 
 class CThingSearchTools { public:
-    bool GetPFirstThing(const CThingFilter_HasScriptName& filter, CThing** ppThing);   // 0x0056D050
+    bool GetPFirstThing(const CThingFilter_HasScriptName& filter, CThing** ppThing) const;   // 0x0056D050
 };
 
 struct CAIStateGroup_MinionWalkToMarker : CAIStateGroupBase {
-    CThingSearchTools* PeekThingSearchTools();  // 0x008FD000 (CAIStateGroupBase)
     virtual bool IsRunnable();
 };
 
@@ -139,7 +142,7 @@ bool CAIStateGroup_MinionWalkToMarker::IsRunnable()
             CCharString name(walk->MarkerName);
             CThingFilter_HasScriptName filter(name);
             CThing* marker;
-            found = PeekThingSearchTools()->GetPFirstThing(filter, &marker);
+            found = PeekThingSearchTools().GetPFirstThing(filter, &marker);
         }
         if (found)
             return true;

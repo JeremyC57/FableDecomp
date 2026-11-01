@@ -39,13 +39,13 @@ class CThingCompare_Nearest { public:
 };
 class CThingSearchTools { public:
     bool GetPBestThingInRoughArea(const C2DBoxI& area, const CThingFilter_HasTrackName& filter,
-                                  const CThingCompare_Nearest& compare, CThingTrackNode** out);   // 0x0093CDB0
+                                  const CThingCompare_Nearest& compare, CThingTrackNode** out) const;   // 0x0093CDB0
 };
 long NearSink_s7_0(const void* self, long seen);   // stand-in: the work GetPBestThingInRoughArea does outside this TU
 #pragma auto_inline(off)
 // Same-TU stand-in for CThingSearchTools::GetPBestThingInRoughArea @ 0x0093CDB0 (compiled in retail's TU): reads its const reference / pointer-to-const
 // arguments, updates its out-parameters, and lets no argument escape.
-__declspec(noinline) bool CThingSearchTools::GetPBestThingInRoughArea(const C2DBoxI& area, const CThingFilter_HasTrackName& filter, const CThingCompare_Nearest& compare, CThingTrackNode** out)
+__declspec(noinline) bool CThingSearchTools::GetPBestThingInRoughArea(const C2DBoxI& area, const CThingFilter_HasTrackName& filter, const CThingCompare_Nearest& compare, CThingTrackNode** out) const
 {
     *out = 0;
     long best = NearSink_s7_0(this, *(const long*)&area + *(const long*)&filter + *(const long*)&compare);
@@ -82,7 +82,9 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
     CThing* GetCreature() const { return PBrain->PCreature; }
-    CThingSearchTools* PeekThingSearchTools();  // 0x008FD000
+protected:
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000 (Ego_r.pdb ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ, protected)  // 0x008FD000
+public:
 };
 struct CAIStateGroup_NonVillageGuardPatrol : CAIStateGroupBase {
     CIntelligentPointerTrackNode PNode;         // +0x14 (descriptive)
@@ -97,7 +99,7 @@ bool CAIStateGroup_NonVillageGuardPatrol::IsRunnable()
     bool found;
     {
         CCharString track("MoveTrack");
-        found = PeekThingSearchTools()->GetPBestThingInRoughArea(area, CThingFilter_HasTrackName(track),
+        found = PeekThingSearchTools().GetPBestThingInRoughArea(area, CThingFilter_HasTrackName(track),
             CThingCompare_Nearest(GetCreature()->GetPos()), &node);
     }
     if (found) {

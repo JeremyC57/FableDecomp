@@ -1,5 +1,5 @@
 // CAIStateGroup_HoverHornetQueen::SetUpCirclePoints() -- rebuild the circle markers from the live "WaspQueenCirclePos<n>" track things (n = 1, 2, ... until one is missing) within 60 units of the queen, and set the circle radius to the farthest marker's distance from the arena centre plus 12
-//   template instance, manifest <CThingFilter_HasDefGlobalIndex, CThing>) as a same-TU `template <class TFilter, class T>
+//   template instance, manifest <CThingFilter_HasDefGlobalIndex, CThing>, in fact <CThingFilter_HasScriptName, CThing>) as a same-TU `template <class TFilter, class T>
 //   __declspec(noinline)` body: VC7.1 then knows only that call writes `marker`, keeps the one marker load in esi across the
 //   GetPos call and drops the null half of the loop test. The body is a STAND-IN (the real search walks the thing-map
 //   cells; FindFirstInArea is a placeholder declaration) -- flag it for review. (2) The loop is
@@ -10,6 +10,7 @@
 // CCharString(const char*, long) @ 0x0099EBF0 / copy ctor @ 0x0099EC30 / ~CCharString @ 0x0099EAE0, CThing::GetPos
 // @ 0x004C73D0, __ftol2 @ 0x00BFEA70, CAIStateGroupBase::PeekThingSearchTools @ 0x008FD000, CThingSearchTools::
 // GetPFirstThingInRoughArea @ 0x007FD110 (manifest instance <CThingFilter_HasDefGlobalIndex, CThing>; here the filter carries
+// 0x007FD110 is the <CThingFilter_HasScriptName, CThing> instance (filter operator 0x006A7E30 compares the ScriptName; naming wave 19)
 // a track name), CBaseIntelligentPointer ctor @ 0x00A01B10 / GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10
 // (CIntelligentPointer<CThing> vtable 0x01238C6C), the vector's _M_insert_overflow @ 0x004AC940, __security_check_cookie
 // @ 0x00BFE9F9 (cookie @ 0x0139C8A8).
@@ -37,9 +38,9 @@ class CCharString { public:
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
 };
-class CThingFilter_HasTrackName { public:
+class CThingFilter_HasScriptName { public:
     CCharString Name;
-    CThingFilter_HasTrackName(const CCharString& name) : Name(name) { }
+    CThingFilter_HasScriptName(const CCharString& name) : Name(name) { }
 };
 class CThingSearchTools { public:
     template <class TFilter, class T> bool GetPFirstThingInRoughArea(const C2DBoxI& area, const TFilter& filter, T** out) const;   // 0x007FD110
@@ -96,7 +97,9 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];                 // +0x08..+0x13
     CThing* GetCreature() const { return PBrain->PCreature; }
-    CThingSearchTools* PeekThingSearchTools();  // 0x008FD000
+protected:
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000 (Ego_r.pdb ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ, protected)  // 0x008FD000
+public:
 };
 extern float g_WaspQueenCircleRadius;           // 0x0138D2D8
 struct CAIStateGroup_HoverHornetQueen : CAIStateGroupBase {
@@ -126,11 +129,11 @@ void CAIStateGroup_HoverHornetQueen::SetUpCirclePoints()
         sprintf(name, "WaspQueenCirclePos%d", index);
         {
             CCharString track(name);
-            CThingFilter_HasTrackName filter(track);
+            CThingFilter_HasScriptName filter(track);
             const C3DVector& pos = GetCreature()->GetPos();
             long x = (long)pos.X;
             long y = (long)pos.Y;
-            PeekThingSearchTools()->GetPFirstThingInRoughArea(C2DBoxI(x - 60, y - 60, x + 60, y + 60), filter, &marker);
+            PeekThingSearchTools().GetPFirstThingInRoughArea(C2DBoxI(x - 60, y - 60, x + 60, y + 60), filter, &marker);
         }
         if (IS_THING_ALIVE(marker)) {
             const C3DVector& pos = marker->GetPos();

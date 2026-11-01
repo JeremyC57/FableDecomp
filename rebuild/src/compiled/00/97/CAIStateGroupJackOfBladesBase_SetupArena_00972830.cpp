@@ -2,7 +2,8 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00972830, length 352 bytes (+ int3 padding).
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / CCharString(const CCharString&) @ 0x0099EC30 / ~CCharString
 //          @ 0x0099EAE0, CThing::GetPos @ 0x004C73D0, __ftol2 @ 0x00BFEA70, CAIStateGroupBase::PeekThingSearchTools
-//          @ 0x008FD000, CThingSearchTools::GetPFirstThingInRoughArea<CThingFilter_HasDefGlobalIndex, CThing> @ 0x007FD110,
+//          @ 0x008FD000, CThingSearchTools::GetPFirstThingInRoughArea<CThingFilter_HasScriptName, CThing> @ 0x007FD110,
+// 0x007FD110 is the <CThingFilter_HasScriptName, CThing> instance (filter operator 0x006A7E30 compares the ScriptName; naming wave 19)
 //          CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor (temporary vtable 0x01238C6C), CAIStateGroupBase::GetPWorld
 //          @ 0x008FCFC0, the world's +0x34 object virtual slot 9 (+0x24, camera manager out pointer),
 //          CAIStateGroupBase::GetPDefinitionManager @ 0x008FCFB0 (manifest "_Cons_val" is propagated),
@@ -40,13 +41,13 @@ class C2DBoxI { public:
 class CThing { public:
     const C3DVector& GetPos() const;             // 0x004C73D0
 };
-class CThingFilter_HasDefGlobalIndex { public:
+class CThingFilter_HasScriptName { public:
     CCharString DefName;
-    CThingFilter_HasDefGlobalIndex(const CCharString& name) : DefName(name) { }
+    CThingFilter_HasScriptName(const CCharString& name) : DefName(name) { }
 };
 class CThingSearchTools { public:
-    bool GetPFirstThingInRoughArea(const C2DBoxI& area, const CThingFilter_HasDefGlobalIndex& filter,
-                                   CThing** result);   // 0x007FD110
+    bool GetPFirstThingInRoughArea(const C2DBoxI& area, const CThingFilter_HasScriptName& filter,
+                                   CThing** result) const;   // 0x007FD110
 };
 
 class CBaseObject;
@@ -112,14 +113,16 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
-class CAIStateGroupBase { protected:   // engine/CAIStateGroupBase.h flattens the vptr: the getter only
+class CAIStateGroupBase {
+protected:
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000 (Ego_r.pdb ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ, protected)
+private: protected:   // engine/CAIStateGroupBase.h flattens the vptr: the getter only
     CWorld& GetWorld() const;   // 0x008FCFC0 (Ego_r.pdb ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ)
 };
 struct CAIStateGroupJackOfBladesBaseMethods : public CAIStateGroupBase, CAIStateGroup_JackOfBladesBase {
     CAIBrain* Brain() const { return *(CAIBrain* const*)_pad_0x04; }
     CThing* GetCreature() const { return Brain()->PCreature; }
     CIntelligentPointer<CThing>& ArenaCentre() { return *(CIntelligentPointer<CThing>*)PArenaCentre; }
-    CThingSearchTools* PeekThingSearchTools();  // 0x008FD000
     CDefinitionManager* GetPDefinitionManager();   // 0x008FCFB0
     void SetupArena();
 };
@@ -128,9 +131,9 @@ void CAIStateGroupJackOfBladesBaseMethods::SetupArena()
 {
     {
         CThing* centre = 0;
-        PeekThingSearchTools()->GetPFirstThingInRoughArea(
+        PeekThingSearchTools().GetPFirstThingInRoughArea(
             C2DBoxI(GetCreature()->GetPos(), 50),
-            CThingFilter_HasDefGlobalIndex("FrescoCentre"), &centre);
+            CThingFilter_HasScriptName("FrescoCentre"), &centre);
         ArenaCentre() = CIntelligentPointer<CThing>(centre);
     }
     CGameCameraManager* camera;

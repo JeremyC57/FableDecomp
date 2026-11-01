@@ -6,6 +6,7 @@
 // CVectorMap::LowerBound @ 0x0040F020 (inlined GetTC 0x4d CTCSolidToThing = bit 13 of +0x28), CTCSolidToThing::
 // AddThingNotSolidTo @ 0x00770FA0, CCharString(const char*, long) @ 0x0099EBF0 / copy ctor @ 0x0099EC30 / ~CCharString
 // @ 0x0099EAE0 ("WaspQueenArenaCentre" @ 0x012952E8), CThingSearchTools::GetPFirstThingInRoughArea @ 0x007FD110, the CRT free
+// 0x007FD110 is the <CThingFilter_HasScriptName, CThing> instance (filter operator 0x006A7E30 compares the ScriptName; naming wave 19)
 // @ 0x00BFEA14 (the local vector's storage).
 // Shape: the creature named before the local vector (its load precedes the vector's zero stores); the empty filter needs a user
 // ctor (else a dead byte store); the centre out-pointer lives in its own block after the solid-to loop so the 0x4d lookup key
@@ -59,9 +60,9 @@ class CCharString { public:
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
 };
-class CThingFilter_HasTrackName { public:
+class CThingFilter_HasScriptName { public:
     CCharString Name;
-    CThingFilter_HasTrackName(const CCharString& name) : Name(name) { }
+    CThingFilter_HasScriptName(const CCharString& name) : Name(name) { }
 };
 struct CThingFilter_All {                       // empty filter (descriptive name)
     CThingFilter_All() { }
@@ -78,7 +79,7 @@ struct CThingPtrVector {                        // STLport vector<CThing*> (12 b
 };
 class CThingSearchTools { public:
     void GetAllThingsInRoughArea(const C2DBoxI& area, const CThingFilter_All& filter, CThingPtrVector& out) const;   // 0x0095C7C0
-    bool GetPFirstThingInRoughArea(const C2DBoxI& area, const CThingFilter_HasTrackName& filter, CThing** out) const;   // 0x007FD110
+    bool GetPFirstThingInRoughArea(const C2DBoxI& area, const CThingFilter_HasScriptName& filter, CThing** out) const;   // 0x007FD110
 };
 class CTCSolidToThing { public:                        // interface 0x4d
     void AddThingNotSolidTo(CThing* thing);     // 0x00770FA0
@@ -92,7 +93,9 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];                 // +0x08..+0x13
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    CThingSearchTools* PeekThingSearchTools();  // 0x008FD000
+protected:
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000 (Ego_r.pdb ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ, protected)  // 0x008FD000
+public:
 };
 struct CAIStateGroup_HoverHornetQueen : CAIStateGroupBase {
     unsigned char _pad14[0x1c - 0x14];
@@ -111,7 +114,7 @@ void CAIStateGroup_HoverHornetQueen::SetupArena()
         const C3DVector& pos = self->GetPos();
         long x = (long)pos.X;
         long y = (long)pos.Y;
-        PeekThingSearchTools()->GetAllThingsInRoughArea(C2DBoxI(x - 60, y - 60, x + 60, y + 60), CThingFilter_All(), things);
+        PeekThingSearchTools().GetAllThingsInRoughArea(C2DBoxI(x - 60, y - 60, x + 60, y + 60), CThingFilter_All(), things);
     }
     CThingCreatureBase* me = GetCreature();
     if (me->HasTC(0x4d)) {
@@ -124,11 +127,11 @@ void CAIStateGroup_HoverHornetQueen::SetupArena()
         CThing* centre = 0;
         {
             CCharString name("WaspQueenArenaCentre");
-            CThingFilter_HasTrackName filter(name);
+            CThingFilter_HasScriptName filter(name);
             const C3DVector& pos = GetCreature()->GetPos();
             long x = (long)pos.X;
             long y = (long)pos.Y;
-            PeekThingSearchTools()->GetPFirstThingInRoughArea(C2DBoxI(x - 60, y - 60, x + 60, y + 60), filter, &centre);
+            PeekThingSearchTools().GetPFirstThingInRoughArea(C2DBoxI(x - 60, y - 60, x + 60, y + 60), filter, &centre);
         }
         if (centre)
             ArenaCentrePos = centre->GetPos();

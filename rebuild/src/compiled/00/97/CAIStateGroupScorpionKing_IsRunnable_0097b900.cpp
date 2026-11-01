@@ -78,11 +78,11 @@ class CThingFilter_HasScriptName { public:
     CThingFilter_HasScriptName(const CCharString& name) : ScriptName(name) { }
 };
 class CThingSearchTools { public:
-    bool GetPFirstThing(const CThingFilter_HasScriptName& filter, CThing** out);   // 0x0056D050
+    bool GetPFirstThing(const CThingFilter_HasScriptName& filter, CThing** out) const;   // 0x0056D050
 };
 long FirstSink_56D050(const void* self, const void* name);
 #pragma auto_inline(off)
-__declspec(noinline) bool CThingSearchTools::GetPFirstThing(const CThingFilter_HasScriptName& filter, CThing** out)
+__declspec(noinline) bool CThingSearchTools::GetPFirstThing(const CThingFilter_HasScriptName& filter, CThing** out) const
 {
     long first = FirstSink_56D050(this, filter.ScriptName.m_pData);
     *out = (CThing*)first;
@@ -119,7 +119,9 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;
     unsigned char _pad_0x13;
     CWorld* GetPWorld();                        // 0x008FCFC0
-    CThingSearchTools* PeekThingSearchTools();  // 0x008FD000
+protected:
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000 (Ego_r.pdb ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ, protected)  // 0x008FD000
+public:
 };
 struct CThingVector12 { void* _M_start; void* _M_finish; void* _M_end_of_storage; };
 struct CAIStateGroup_ScorpionKing : CAIStateGroupBase {
@@ -138,7 +140,7 @@ bool CAIStateGroup_ScorpionKing::IsRunnable()
     CThing* arena = 0;
     {
         CCharString name("ScorpionArenaCentre", -1);
-        PeekThingSearchTools()->GetPFirstThing(CThingFilter_HasScriptName(name), &arena);
+        PeekThingSearchTools().GetPFirstThing(CThingFilter_HasScriptName(name), &arena);
     }
     PArenaCentre = CIntelligentPointerThing(arena);
     CTCEnemySource* source;

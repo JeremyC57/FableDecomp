@@ -168,7 +168,11 @@ class CAIBrain { public:
 long __fastcall GFGetCurrentFrame();            // 0x0049D870
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
-class CAIStateGroupBase { public:
+class CThingSearchTools;
+class CAIStateGroupBase {
+protected:
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000 (Ego_r.pdb ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ, protected)
+private: public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -224,13 +228,13 @@ class CThingCompare_Nearest { public:
 class CThingDeadCreature;
 class CThingSearchTools { public:
     bool GetPBestLeafThing(const CThingFilter_None& filter, const CThingCompare_Nearest& compare,
-        CThingDeadCreature** out);              // 0x00936950
+        CThingDeadCreature** out) const;              // 0x00936950
 };
 long NearSink_s7_0(const void* self, long seen);   // stand-in: the search GetPBestLeafThing runs (returns the best leaf thing or 0)
 #pragma auto_inline(off)
 // Same-TU stand-in for CThingSearchTools::GetPBestLeafThing @ 0x00936950 (compiled in retail's TU): clears the out pointer, stores the best
 // thing found, reads the comparator through its const reference; no argument escapes.
-__declspec(noinline) bool CThingSearchTools::GetPBestLeafThing(const CThingFilter_None& filter, const CThingCompare_Nearest& compare, CThingDeadCreature** out)
+__declspec(noinline) bool CThingSearchTools::GetPBestLeafThing(const CThingFilter_None& filter, const CThingCompare_Nearest& compare, CThingDeadCreature** out) const
 {
     *out = 0;
     long best = NearSink_s7_0(this, *(const long*)&compare);
@@ -251,14 +255,13 @@ struct CIntelligentPointerDead : CBaseIntelligentPointer {   // CIntelligentPoin
 
 struct CAIStateGroup_MinionReactToCorpse : CAIStateGroupBase {
     CIntelligentPointerDead PCorpse;            // +0x14
-    CThingSearchTools* PeekThingSearchTools();  // 0x008FD000
     virtual bool IsRunnable();
 };
 
 bool CAIStateGroup_MinionReactToCorpse::IsRunnable()
 {
     CThingDeadCreature* corpse = 0;
-    if (PeekThingSearchTools()->GetPBestLeafThing(CThingFilter_None(),
+    if (PeekThingSearchTools().GetPBestLeafThing(CThingFilter_None(),
             CThingCompare_Nearest(((CThingPhysical*)PBrain->PCreature)->PeekPos()), &corpse)) {
         PCorpse = CIntelligentPointerDead((CThing*)corpse);
         if (IS_THING_ALIVE(PCorpse)) {

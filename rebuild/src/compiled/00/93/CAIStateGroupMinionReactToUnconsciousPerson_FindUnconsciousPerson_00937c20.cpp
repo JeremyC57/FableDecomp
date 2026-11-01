@@ -172,7 +172,11 @@ public:
 };            // 0x0049D870
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
-class CAIStateGroupBase { public:
+class CThingSearchTools;
+class CAIStateGroupBase {
+protected:
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000 (Ego_r.pdb ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ, protected)
+private: public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -287,19 +291,18 @@ class CThingSearchTools { public:
     CThing** m_things;                          // candidate list (stand-in model)
     CThing** m_thingsEnd;
     bool GetPBestThingInRoughArea(const C2DBoxI& box, const TUnconsciousFilter& filter,
-        const CThingCompare_Nearest& compare, CThingCreatureBase** out);    // 0x00937690
+        const CThingCompare_Nearest& compare, CThingCreatureBase** out) const;    // 0x00937690
     bool GetPBestThingInRoughArea(const C2DBoxI& box, const TUndiscoveredFilter& filter,
-        const CThingCompare_Nearest& compare, CThingCreatureBase** out);    // 0x00937420
+        const CThingCompare_Nearest& compare, CThingCreatureBase** out) const;    // 0x00937420
 };
 struct CAIStateGroup_MinionReactToUnconsciousPerson : CAIStateGroupBase {
-    CThingSearchTools* PeekThingSearchTools();  // 0x008FD000
     CThingCreatureBase* FindUnconsciousPerson();
     CThingCreatureBase* FindUndiscoveredUnconsciousPerson();
 };
 // GetPBestThingInRoughArea stand-in: the nearest candidate in the box passing every bound filter.
 #pragma auto_inline(off)
 bool CThingSearchTools::GetPBestThingInRoughArea(const C2DBoxI& box, const TUnconsciousFilter& filter,
-    const CThingCompare_Nearest& compare, CThingCreatureBase** out)
+    const CThingCompare_Nearest& compare, CThingCreatureBase** out) const
 {
     CThing* best = 0;
     float bestDistance = 0.0f;
@@ -333,7 +336,7 @@ CThingCreatureBase* CAIStateGroup_MinionReactToUnconsciousPerson::FindUnconsciou
         long x = (long)pos.x;
         long y = (long)pos.y;
         C2DBoxI box(x - 7, y - 7, x + 7, y + 7);
-        PeekThingSearchTools()->GetPBestThingInRoughArea(box,
+        PeekThingSearchTools().GetPBestThingInRoughArea(box,
             CThingFilter_IsAICreatureAwareOf(PBrain->PCreature) && CThingFilter_IsUnconscious()
                 && CThingFilter_IsAnAlly(PBrain->PCreature),
             CThingCompare_Nearest(((CThingPos*)PBrain->PCreature)->GetPos()), &found);

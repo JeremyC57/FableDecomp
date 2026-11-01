@@ -4,7 +4,8 @@
 // Callees: GetPWorld @ 0x008FCFC0, CWorld random-seed getter @ 0x0049D810 (labelled CVertexBufferWin32::DoSizeof; result unused),
 // LowerBound @ 0x0040F020, SetNavigatorToType @ 0x006CBA80, GetPWorldSeed @ 0x008FCFD0, GFROR13 @ 0x00497890, sprintf @ 0x00BFEB10,
 // CCharString @ 0x0099EBF0 / 0x0099EC30 / ~ @ 0x0099EAE0, CThing::GetPos @ 0x004C73D0, _ftol @ 0x00BFEA70,
-// PeekThingSearchTools @ 0x008FD000, GetPFirstThingInRoughArea<CThingFilter_HasDefGlobalIndex,CThing> @ 0x007FD110,
+// PeekThingSearchTools @ 0x008FD000, GetPFirstThingInRoughArea<CThingFilter_HasScriptName,CThing> @ 0x007FD110,
+// 0x007FD110 is the <CThingFilter_HasScriptName, CThing> instance (filter operator 0x006A7E30 compares the ScriptName; naming wave 19)
 // IsStillRunnable @ 0x0095A420, GetPItem @ 0x00A01B50, AIAction_LookAtPos @ 0x0097D580,
 // AIAction_MoveToPosProximityAndFacePos @ 0x0091D510, Terminate @ 0x008FCF40. String "QueenDepositPos%d" @ 0x01294EE4.
 // Shape: the search rectangle is a function-scope local written member by member (Left/Top/Right/Bottom); a ctor or a
@@ -21,9 +22,9 @@ class CCharString { public:
     CCharString(const CCharString& other);       // 0x0099EC30
     ~CCharString();                              // 0x0099EAE0
 };
-class CThingFilter_HasDefGlobalIndex { public:
+class CThingFilter_HasScriptName { public:
     CCharString Name;
-    CThingFilter_HasDefGlobalIndex(const CCharString& name) : Name(name) { }
+    CThingFilter_HasScriptName(const CCharString& name) : Name(name) { }
 };
 class C2DCoordI { public:
     long X, Y;
@@ -66,7 +67,7 @@ public:
 private:              // 0x0049D810
 };
 class CThingSearchTools { public:
-    CThing* GetPFirstThingInRoughArea(const CRectI& area, const CThingFilter_HasDefGlobalIndex& filter, CThing** found);   // 0x007FD110
+    CThing* GetPFirstThingInRoughArea(const CRectI& area, const CThingFilter_HasScriptName& filter, CThing** found) const;   // 0x007FD110
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -97,7 +98,9 @@ class CAIStateGroupBase { public:
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
     CWorld* GetPWorld();                        // 0x008FCFC0
     unsigned long& GetPWorldSeed();             // 0x008FCFD0
-    CThingSearchTools* PeekThingSearchTools();  // 0x008FD000
+protected:
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000 (Ego_r.pdb ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ, protected)  // 0x008FD000
+public:
     void Terminate();                           // 0x008FCF40
 protected:
     EAIActionReturn AIAction_LookAtPos(EAIActionRepeat repeat, C3DVector pos, long flags, float tolerance);   // 0x0097D580
@@ -146,14 +149,14 @@ void CAIStateGroup_HoverHornetQueen::GoToSpawnPoint()
     C3DVector target;
     {
         CCharString name(text, -1);
-        CThingFilter_HasDefGlobalIndex filter(name);
+        CThingFilter_HasScriptName filter(name);
         const C3DVector& pos = GetCreature()->GetPos();
         C2DCoordI centre((long)pos.X, (long)pos.Y);
         area.Left = centre.X - 60;
         area.Top = centre.Y - 60;
         area.Right = centre.X + 60;
         area.Bottom = centre.Y + 60;
-        PeekThingSearchTools()->GetPFirstThingInRoughArea(area, filter, &found);
+        PeekThingSearchTools().GetPFirstThingInRoughArea(area, filter, &found);
     }
     if (found)
         target = found->GetPos();

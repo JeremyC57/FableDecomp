@@ -70,7 +70,11 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
-class CAIStateGroupBase { public:
+class CThingSearchTools;
+class CAIStateGroupBase {
+protected:
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000 (Ego_r.pdb ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ, protected)
+private: public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual bool IsStillValid();                // slot 5  (+0x14)
@@ -143,13 +147,13 @@ class CThingCompare_Nearest { public:
     CThingCompare_Nearest(const C3DVector& pos) : Pos(pos) { }
 };
 class CThingSearchTools { public:
-    bool GetPBestThing(const CFilter_Bind4& filter, const CThingCompare_Nearest& compare, CThingObject** out);   // 0x009650C0
+    bool GetPBestThing(const CFilter_Bind4& filter, const CThingCompare_Nearest& compare, CThingObject** out) const;   // 0x009650C0
 };
 long NearSink_s7_0(const void* self, long seen);   // stand-in: the search GetPBestThing runs (returns the best thing or 0)
 #pragma auto_inline(off)
 // Same-TU stand-in for CThingSearchTools::GetPBestThing @ 0x009650C0 (compiled in retail's TU): clears the out pointer, stores the best
 // thing found, reads the filter and comparator through their const references; no argument escapes.
-__declspec(noinline) bool CThingSearchTools::GetPBestThing(const CFilter_Bind4& filter, const CThingCompare_Nearest& compare, CThingObject** out)
+__declspec(noinline) bool CThingSearchTools::GetPBestThing(const CFilter_Bind4& filter, const CThingCompare_Nearest& compare, CThingObject** out) const
 {
     *out = 0;
     long best = NearSink_s7_0(this, *(const long*)&filter + *(const long*)&compare);
@@ -160,7 +164,6 @@ __declspec(noinline) bool CThingSearchTools::GetPBestThing(const CFilter_Bind4& 
 #pragma auto_inline(on)
 
 struct CAIStateGroup_RecoverStealableItem : CAIStateGroupBase {
-    CThingSearchTools* PeekThingSearchTools();  // 0x008FD000 (CAIStateGroupBase)
     CThingObject* FindPStealableItemOutsideTargetPointRange(const C3DVector& targetPoint, float range);
 };
 
@@ -168,7 +171,7 @@ CThingObject* CAIStateGroup_RecoverStealableItem::FindPStealableItemOutsideTarge
                                                                                          float range)
 {
     CThingObject* item;
-    PeekThingSearchTools()->GetPBestThing(
+    PeekThingSearchTools().GetPBestThing(
         CFilter_Bind4(CThingFilter_ObjectHasProperty(0x8000000), CThingFilter_HasFreeActionPoint(), CThingFilter_HasTC(0x47),
                       CThingFilter_NotIn3DRange(CThingFilter_In3DRange(targetPoint, range))),
         CThingCompare_Nearest(((CThingCreaturePos*)PBrain->PCreature)->GetPos()), &item);

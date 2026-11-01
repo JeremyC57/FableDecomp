@@ -196,7 +196,11 @@ class CAIBrain { public:
 long __fastcall GFGetCurrentFrame();            // 0x0049D870
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
-class CAIStateGroupBase { public:
+class CThingSearchTools;
+class CAIStateGroupBase {
+protected:
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000 (Ego_r.pdb ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ, protected)
+private: public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -291,11 +295,11 @@ class CThingCompare_Nearest { public:
     CThingCompare_Nearest(const C3DVector& pos) : Pos(pos) {}
 };
 class CThingSearchTools { public:
-    bool GetPBestThing(const CThingFilter_HasDefGlobalIndex& filter, const CThingCompare_Nearest& compare, CThing** out);   // 0x009107B0
+    bool GetPBestThing(const CThingFilter_HasDefGlobalIndex& filter, const CThingCompare_Nearest& compare, CThing** out) const;   // 0x009107B0
 };
 long BestSink_9107B0(const void* self, long index, float x);
 #pragma auto_inline(off)
-__declspec(noinline) bool CThingSearchTools::GetPBestThing(const CThingFilter_HasDefGlobalIndex& filter, const CThingCompare_Nearest& compare, CThing** out)
+__declspec(noinline) bool CThingSearchTools::GetPBestThing(const CThingFilter_HasDefGlobalIndex& filter, const CThingCompare_Nearest& compare, CThing** out) const
 {
     long best = BestSink_9107B0(this, filter.DefGlobalIndex, compare.Pos.x);
     *out = (CThing*)best;
@@ -304,7 +308,6 @@ __declspec(noinline) bool CThingSearchTools::GetPBestThing(const CThingFilter_Ha
 #pragma auto_inline(on)
 struct CAIStateGroup_TellStory : CAIStateGroupBase {
     CThingVillagerBase* GetCreature() const { return (CThingVillagerBase*)PBrain->PCreature; }
-    CThingSearchTools* PeekThingSearchTools();  // 0x008FD000
     bool IsRunnable();
     virtual void Update();
 };
@@ -327,7 +330,7 @@ bool CAIStateGroup_TellStory::IsRunnable()
                         CThing* marker;
                         CThingCompare_Nearest compare(((CThingPos*)PBrain->PCreature)->GetPos());
                         CThingFilter_HasDefGlobalIndex filter(index);
-                        if (PeekThingSearchTools()->GetPBestThing(filter, compare, &marker))
+                        if (PeekThingSearchTools().GetPBestThing(filter, compare, &marker))
                             return true;
                     }
                 }

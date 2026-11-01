@@ -113,7 +113,9 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;                             // +0x12
     unsigned char _pad_0x13;
     CWorld* GetPWorld();                               // 0x008FCFC0
-    CThingSearchTools* PeekThingSearchTools();         // 0x008FD000
+protected:
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000 (Ego_r.pdb ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ, protected)         // 0x008FD000
+public:
 };
 struct CAIStateGroup_WhisperRetreat : CAIStateGroupBase {
     unsigned char _pad14[0x1c - 0x14];
@@ -136,7 +138,7 @@ bool CAIStateGroup_WhisperRetreat::IsRunnableLeaf()
             NumHits = 0;
             {
                 CCharString name("WhisperArenaCentre");
-                PeekThingSearchTools()->GetPFirstThing(CThingFilter_HasScriptName(name), &arenaCentre);
+                PeekThingSearchTools().GetPFirstThing(CThingFilter_HasScriptName(name), &arenaCentre);
             }
             PArenaCentre = arenaCentre;
             if (DecRefToZero(retreat->RefCount))

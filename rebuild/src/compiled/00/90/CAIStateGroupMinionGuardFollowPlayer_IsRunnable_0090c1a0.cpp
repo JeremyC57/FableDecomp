@@ -127,7 +127,11 @@ class CAIBrain { public:
 class CWorld { public: static long __fastcall GetFrame(); };            // 0x0049D870
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
-class CAIStateGroupBase { public:
+class CThingSearchTools;
+class CAIStateGroupBase {
+protected:
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000 (Ego_r.pdb ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ, protected)
+private: public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -212,13 +216,12 @@ class CThingAICreature;
 class CThingSearchTools { public:
     CThing** m_things;                          // candidate list (stand-in model)
     CThing** m_thingsEnd;
-    bool GetPBestThing(const CThingFilter_HasTC& filter, const CThingCompare_Nearest& compare, CThingAICreature** out);  // 0x0065F744
+    bool GetPBestThing(const CThingFilter_HasTC& filter, const CThingCompare_Nearest& compare, CThingAICreature** out) const;  // 0x0065F744
 };
 
 struct CAIStateGroup_MinionGuardFollowPlayer : CAIStateGroupBase {
     unsigned char _pad14[4];
     unsigned long NextCheckFrame;               // +0x18
-    CThingSearchTools* PeekThingSearchTools();  // 0x008FD000
     virtual bool IsRunnable();
 };
 struct CAIStateGroup_MinionGuardFollowPlayerV {
@@ -229,7 +232,7 @@ struct CAIStateGroup_MinionGuardFollowPlayerV {
 
 // GetPBestThing stand-in: the nearest candidate carrying the filter's interface.
 #pragma auto_inline(off)
-bool CThingSearchTools::GetPBestThing(const CThingFilter_HasTC& filter, const CThingCompare_Nearest& compare, CThingAICreature** out)
+bool CThingSearchTools::GetPBestThing(const CThingFilter_HasTC& filter, const CThingCompare_Nearest& compare, CThingAICreature** out) const
 {
     CThing* best = 0;
     float bestDistance = 0.0f;
@@ -264,7 +267,7 @@ bool CAIStateGroup_MinionGuardFollowPlayer::IsRunnable()
             CThing* follower = ((CThing*)village->PGuardFollower.GetPItem());
             if (!follower || (follower->m_flags91 & 1)) {
                 CThingAICreature* nearest;
-                PeekThingSearchTools()->GetPBestThing(CThingFilter_HasTC(0xb4),
+                PeekThingSearchTools().GetPBestThing(CThingFilter_HasTC(0xb4),
                     CThingCompare_Nearest(((CThingPos*)hero)->GetPos()), &nearest);
                 if ((CThing*)nearest == PBrain->PCreature
                         && ((CAIStateGroup_MinionGuardFollowPlayerV*)this)->IsStillRunnable(true))

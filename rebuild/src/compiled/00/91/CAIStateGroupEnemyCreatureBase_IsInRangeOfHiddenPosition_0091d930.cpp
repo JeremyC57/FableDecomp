@@ -60,7 +60,9 @@ class CAIStateGroupBase { public:
     unsigned char _pad08[0x0c];
     CThingCreatureBase* GetCreature() const { return PBrain->Creature; }
     CWorldMap* PeekWorldMap();                  // 0x008FCFF0
-    CThingSearchTools* PeekThingSearchTools();  // 0x008FD000
+protected:
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000 (Ego_r.pdb ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ, protected)  // 0x008FD000
+public:
 };
 struct CAIStateGroup_EnemyCreatureBase : CAIStateGroupBase {
     CIntelligentPointer<CThing> PTargetThing;       // +0x14
@@ -70,7 +72,7 @@ struct CAIStateGroup_EnemyCreatureBase : CAIStateGroupBase {
 bool CAIStateGroup_EnemyCreatureBase::IsInRangeOfHiddenPosition(C3DVector* out, bool sameSideOfTarget)
 {
     CPositionVector positions;
-    GetValidPositions(positions, *PeekWorldMap(), *PeekThingSearchTools(), GetCreature()->GetPos(), GetHidingRange(),
+    GetValidPositions(positions, *PeekWorldMap(), PeekThingSearchTools(), GetCreature()->GetPos(), GetHidingRange(),
                       true, 0);
     bool found = false;
     if (!positions.empty()) {

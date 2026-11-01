@@ -101,7 +101,7 @@ float SearchDistanceTo(const CThingCompare_Nearest& compare, const CThing* thing
 class CThingSearchTools { public:
     CThing** m_things;                          // candidate list (stand-in model)
     CThing** m_thingsEnd;
-    bool GetPBestThing_00935040(const CThingFilter_HasDefGlobalIndex& filter, const CThingCompare_Nearest& compare, CThing** best);   // 0x00935040
+    bool GetPBestThing_00935040(const CThingFilter_HasDefGlobalIndex& filter, const CThingCompare_Nearest& compare, CThing** best) const;   // 0x00935040
 };
 class CMessageEvent;
 class CMessageEventFilter_IsOfType { public:
@@ -171,7 +171,9 @@ class CAIStateGroupBase { public:
     unsigned char _pad08[0x0c];
     CThingAICreature* GetCreature() const { return PBrain->Creature; }
     CWorld* GetPWorld();                        // 0x008FCFC0
-    CThingSearchTools* PeekThingSearchTools();  // 0x008FD000
+protected:
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000 (Ego_r.pdb ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ, protected)  // 0x008FD000
+public:
 };
 struct CAIStateGroup_MinionKidGroupTag : CAIStateGroupBase {
     bool InitiatedTag;                          // +0x14
@@ -184,7 +186,7 @@ struct CAIStateGroup_MinionKidGroupTag : CAIStateGroupBase {
 
 // GetPBestThing stand-in: the nearest candidate passing the filters.
 #pragma auto_inline(off)
-bool CThingSearchTools::GetPBestThing_00935040(const CThingFilter_HasDefGlobalIndex& filter, const CThingCompare_Nearest& compare, CThing** arg2)
+bool CThingSearchTools::GetPBestThing_00935040(const CThingFilter_HasDefGlobalIndex& filter, const CThingCompare_Nearest& compare, CThing** arg2) const
 {
     CThing* best = 0;
     float bestDistance = 0.0f;
@@ -224,7 +226,7 @@ bool CAIStateGroup_MinionKidGroupTag::IsRunnable()
     InitiatedTag = false;
     {
     CThing* group;
-    if (PeekThingSearchTools()->GetPBestThing_00935040(CThingFilter_HasDefGlobalIndex(0xa4),
+    if (PeekThingSearchTools().GetPBestThing_00935040(CThingFilter_HasDefGlobalIndex(0xa4),
                                               CThingCompare_Nearest(GetCreature()->GetPos()), &group)) {
         group->GetInterface(&PTCGroupTag, 0xa4);
         CTCCreatureGroupTag* tag = PTCGroupTag;

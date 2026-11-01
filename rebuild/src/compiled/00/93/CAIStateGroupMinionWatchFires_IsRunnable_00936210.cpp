@@ -101,12 +101,12 @@ template<class A, class B> class CFilter_Bind2 { public:
 template<class A, class B> inline CFilter_Bind2<A, B> operator&&(const A& a, const B& b) { return CFilter_Bind2<A, B>(a, b); }
 class CThingSearchTools { public:
     bool GetPBestLeafThing(const CFilter_Bind2<CThingFilter_OnFire, CThingFilter_In2DRange>& filter,
-        const CThingCompare_Nearest& compare, CThingBuilding** out);   // 0x00936070
+        const CThingCompare_Nearest& compare, CThingBuilding** out) const;   // 0x00936070
 };
 long NearSink_936070(const void* self, float a, float b);
 #pragma auto_inline(off)
 __declspec(noinline) bool CThingSearchTools::GetPBestLeafThing(const CFilter_Bind2<CThingFilter_OnFire, CThingFilter_In2DRange>& filter,
-    const CThingCompare_Nearest& compare, CThingBuilding** out)
+    const CThingCompare_Nearest& compare, CThingBuilding** out) const
 {
     long best = NearSink_936070(this, filter.m_pSecond->Range, compare.m_pos.x);
     *out = (CThingBuilding*)best;
@@ -128,7 +128,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;
     unsigned char Enabled;
     unsigned char _pad_0x13;
-    CThingSearchTools* PeekThingSearchTools();  // 0x008FD000
+protected:
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000 (Ego_r.pdb ?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ, protected)  // 0x008FD000
+public:
 };
 struct CAIStateGroup_MinionWatchFires : CAIStateGroupBase {
     CIntelligentPointerBuilding PBuildingOnFire;   // +0x14
@@ -149,7 +151,7 @@ bool CAIStateGroup_MinionWatchFires::IsRunnable()
         float radius = perceive->GetSightRadius();
         CThingCompare_Nearest nearest(PBrain->PCreature->GetPos());
         CThingFilter_In2DRange inRange(PBrain->PCreature->GetPos(), radius);
-        if (PeekThingSearchTools()->GetPBestLeafThing(CThingFilter_OnFire() && inRange, nearest, &building)) {
+        if (PeekThingSearchTools().GetPBestLeafThing(CThingFilter_OnFire() && inRange, nearest, &building)) {
             PBuildingOnFire = CIntelligentPointerBuilding(building);
             if (IS_THING_ALIVE(PBuildingOnFire))
                 return true;
