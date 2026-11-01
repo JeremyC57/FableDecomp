@@ -1,0 +1,5 @@
+1	DIFFER(165v169)	diff=16	004c7e90_a.cpp	baseline prior
+2	DIFFER(165v169)	diff=16	004c7e90_b.cpp	[diagnostic] virtual call inside an inline helper taking CScriptThing& (non-const ref to temp, VC7.1 extension)
+3	RELOCATION_MATCH	diff=0	004c7e90_c.cpp	[diagnostic] factory call inside an inline by-value wrapper (RVO through the wrapper)
+4	RELOCATION_MATCH	diff=0	004c7e90_d.cpp	same-TU ordinary CThing::GetScriptThing/HasScriptThing (retail 0x4C7E50/0x4C7E70) + return Has && Get().GetScriptCounter()>0
+5	RELOCATION_MATCH	diff=0	004c7e90_e.cpp	d with the two helpers marked inline

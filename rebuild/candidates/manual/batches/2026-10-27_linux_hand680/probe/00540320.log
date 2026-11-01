@@ -1,0 +1,15 @@
+1	DIFFER(755v755)	diff=18	00540320.cpp	baseline prior
+2	DIFFER(755v755)	diff=24	00540320_a.cpp	Adjustment = i - 5 - len (unsigned)
+3	DIFFER(755v755)	diff=24	00540320_b.cpp	Adjustment = i - len - 5 (unsigned)
+4	DIFFER(755v755)	diff=24	00540320_c.cpp	Adjustment = i - (long)len - 5
+5	DIFFER(755v755)	diff=24	00540320_d.cpp	Adjustment = (i-5) - (long)len
+6	DIFFER(755v755)	diff=18	00540320_e.cpp	local = i - (long)(len + 5)
+7	DIFFER(755v755)	diff=18	00540320_f.cpp	local = i - len - 5
+8	DIFFER(755v755)	diff=18	00540320_g.cpp	local = i; local -= len + 5
+9	DIFFER(755v755)	diff=18	00540320_h.cpp	local = i - 5; local -= len
+10	DIFFER(755v755)	diff=18	00540320_i.cpp	local -= 5u (unsigned constant)
+11	DIFFER(755v755)	diff=18	00540320_j.cpp	local = i - len - 5u
+12	DIFFER(755v755)	diff=18	00540320_k.cpp	unsigned long index i, local = i - len - 5
+13	DIFFER(755v755)	diff=18	00540320_l.cpp	local = -5; local += i - len
+14	DIFFER(755v755)	diff=18	00540320_m.cpp	local = i + -5 - len
+15	DIFFER(755v755)	diff=18	00540320_n.cpp	local = (i - len) + -5

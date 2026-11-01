@@ -1,0 +1,21 @@
+1	DIFFER(257v257)	diff=4	00bebaa0.cpp	baseline prior (chatgpt sel 46)
+2	DIFFER(255v257)	diff=56	00bebaa0_a.cpp	Cross body = landed retail out-of-line Cross 0xC25860 (ctor args, o alias)
+3	DIFFER(255v257)	diff=52	00bebaa0_b.cpp	Cross plain ctor-arg form Y*v.Z-Z*v.Y...
+4	DIFFER(257v257)	diff=12	00bebaa0_c.cpp	GetRight via free inline CrossProduct(Forward,Up) sequential components (free helper loads 1st param first, GOTCHAS 413)
+5	DIFFER(255v257)	diff=52	00bebaa0_d.cpp	GetRight via free inline CrossProduct ctor-args = landed 0x49CE00 shape
+6	DIFFER(257v257)	diff=12	00bebaa0_e.cpp	free CrossProduct sequential, products written in retail load order (member-vs-member keeps source order in free helper)
+7	DIFFER(271v257)	diff=71	00bebaa0_orfu.cpp	local definition order rfu (forward/right/up) with sequential Cross
+8	DIFFER(257v257)	diff=50	00bebaa0_oufr.cpp	local definition order ufr (forward/right/up) with sequential Cross
+9	DIFFER(271v257)	diff=81	00bebaa0_ourf.cpp	local definition order urf (forward/right/up) with sequential Cross
+10	DIFFER(257v257)	diff=12	00bebaa0_ofur.cpp	local definition order fur (forward/right/up) with sequential Cross
+11	DIFFER(271v257)	diff=65	00bebaa0_oruf.cpp	local definition order ruf (forward/right/up) with sequential Cross
+12	DIFFER(257v257)	diff=12	00bebaa0_f.cpp	rule probe: sequential Cross all through b (no c alias)
+13	DIFFER(257v257)	diff=12	00bebaa0_g.cpp	rule probe: all-b sequential, products in retail load order
+14	DIFFER(257v257)	diff=4	00bebaa0_h.cpp	c alias only for x products, y and z through b
+15	DIFFER(257v257)	diff>=4	sweep/be_sweep.txt	SWEEP (counted as 1 shape probe): 256 Cross variants, y1/y2/z1/z2 each b-or-c alias x operand order, x via c; best = same z2 residue; operand order canonicalised, alias choice alone cannot fix z2
+16	DIFFER(263v257)	diff=64	00bebaa0_i.cpp	right = forward.Cross(up) from the local copies
+17	DIFFER(255v257)	diff=48	00bebaa0_j.cpp	right = forward(local).Cross(rhset.GetUp())
+18	DIFFER(257v257)	diff=12	00bebaa0_k.cpp	right = rhset.GetForward().Cross(rhset.GetUp()) at the GetRight site
+19	DIFFER(219v257)	diff=83	00bebaa0_l.cpp	PDB operator*(float) const for all three scaled vectors
+20	DIFFER(257v257)	diff=36	00bebaa0_m.cpp	right = GetRight()*scale (operator*), forward/up *= scale
+21	DIFFER(257v257)	diff=4	00bebaa0.cpp	differ file regrade (not counted)

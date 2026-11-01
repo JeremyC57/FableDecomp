@@ -1,0 +1,14 @@
+1	DIFFER(620v620)	diff=48	005ad305.cpp	baseline prior
+2	DIFFER(620v620)	diff=48	005ad305_a.cpp	appearance morph pointer zero-initialised
+3	DIFFER(623v620)	diff=83	005ad305_b.cpp	layers set declared before the tattoo def
+4	DIFFER(622v620)	diff=51	005ad305_c.cpp	signed count/index
+5	DIFFER(620v620)	diff=48	005ad305_d.cpp	items pointer taken before count
+6	DIFFER(620v620)	diff=48	005ad305_e.cpp	heroMorph != 0 test
+7	SRC_FAIL	diff=0	005ad305_f.cpp	const ref item = items[i] in the loop
+8	DIFFER(620v620)	diff=48	005ad305_g.cpp	diagnostic: morph copied to a second local
+9	DIFFER(620v620)	diff=48	005ad305_h.cpp	heroMorph assigned 0 after declaration
+10	DIFFER(590v620)	diff=80	005ad305_i.cpp	final upload guarded by count != 0
+11	DIFFER(620v620)	diff=48	005ad305_j.cpp	count declared in the for header
+12	DIFFER(622v620)	diff=51	005ad305_k.cpp	diagnostic: explicit else heroMorph=0
+13	DIFFER(620v620)	diff=48	005ad305_l.cpp	RemovesAllTattoos != 0
+14	DIFFER(620v620)	diff=48	005ad305_m.cpp	inner def in its own block

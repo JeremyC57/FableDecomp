@@ -1,0 +1,78 @@
+// CTCSpecialAbilities::SetupSummonSpell() -- reset the creature's summon-spell minions if it already has a CTCSummonSpell component, else add one; always true
+// Leaf: ?SetupSummonSpell@CTCSpecialAbilities@@AAE_NXZ
+// Retail: Fable.exe @ 0x0072B330, 118 bytes (`push ecx` frame = the LowerBound key word). Ego_r/FableWin: private
+//   ?SetupSummonSpell@CTCSpecialAbilities@@AAE_NXZ. Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020,
+//   CTCSummonSpell::ResetMinionPos 0x0079B6F0 (PDB QAEXXZ), CCharString(const char*, long) 0x0099EBF0 ("CTCSummonSpell"
+//   0x0123C378), CThing::AddTC 0x004C9D60, ~CCharString 0x0099EAE0. Interface 0x91 = word 4 bit 17 of CThing+0x20 (`test
+//   dword ptr [eax+30h],20000h`).
+// Shape: the landed out-parameter GetInterface(T** ppOut, long type) template (0x007FFC70 / 0x008337B0 family), written
+//   `if (!GetInterface(&spell, 0x91)) { add; return true; } spell->ResetMinionPos(); return true;` -- the negated test is
+//   what leaves the component in eax (`mov eax,[eax+4] ; mov ecx,eax`); the positive `if (GetInterface) {call; return}`
+//   form (ChatGPT's selected source and the 0x0072B0D0 sibling's shape) loads it straight into ecx (116v118).
+// Layout: the landed sibling CTCSpecialAbilities::SetupPhysicalShieldSpell 0x0072B0D0's model (retail STLport offsets:
+//   UndeadFollowers list 4 bytes at +0x14, Creature +0x18).
+class CTCBase;
+class CTCParamsBase;
+class CCharString { public:
+    void* m_pData;
+    CCharString(const char* text, long length = -1);   // 0x0099EBF0
+    ~CCharString();                                    // 0x0099EAE0
+};
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
+    SEntry* first;
+    SEntry* last;
+    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
+};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+class CThing {
+public:
+    unsigned char _pad00[0x20];
+    unsigned long m_presentBits[9];             // +0x20
+    CInterfaceMap m_interfaces;                 // +0x44
+    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    {
+        if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
+            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
+            CInterfaceMap* map = &m_interfaces;
+            CInterfaceMap::SEntry* it = map->LowerBound(type);
+            if (it == map->last || interfaceType < it->first)
+                it = map->last;
+            *ppOut = (T*)it->second;
+            return true;
+        }
+        return false;
+    }
+    CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
+};
+class CTCSummonSpell { public:
+    void ResetMinionPos();                      // 0x0079B6F0
+};
+class CTCSpecialAbilities { public:
+    virtual void v00();
+    CThing* ParentThing;                        // +0x04 (CTCBase)
+    unsigned char _base08[4];
+    bool AbilityMutexLock;                      // +0x0c
+    bool UsingBed;                              // +0x0d
+    long CurrentAbility;                        // +0x10
+    void* UndeadFollowers;                      // +0x14 list sentinel
+    CThing* Creature;                           // +0x18 (PDB +0x20)
+private:
+    bool SetupSummonSpell();
+};
+
+bool CTCSpecialAbilities::SetupSummonSpell()
+{
+    CTCSummonSpell* spell;
+    if (!Creature->GetInterface(&spell, 0x91)) {
+        CCharString name("CTCSummonSpell");
+        Creature->AddTC(name, true, 0);
+        return true;
+    }
+    spell->ResetMinionPos();
+    return true;
+}

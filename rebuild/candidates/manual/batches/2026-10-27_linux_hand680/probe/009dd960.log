@@ -1,0 +1,12 @@
+1	DIFFER(227v229)	diff=9	009dd960_a.cpp	baseline prior
+2	DIFFER(233v229)	diff=24	009dd960_b.cpp	v0.RHW and v1.RHW both from the global
+3	DIFFER(227v229)	diff=9	009dd960_c.cpp	v1.SetRHW(global); v0.SetRHW(v1.GetRHW())
+4	DIFFER(227v229)	diff=9	009dd960_d.cpp	v0.SetRHW(global); v1.SetRHW(v0.GetRHW())
+5	DIFFER(227v229)	diff=9	009dd960_e.cpp	float rhw local copied to both
+6	DIFFER(227v229)	diff=9	009dd960_f.cpp	non-const extern float global
+7	DIFFER(227v229)	diff=9	009dd960_g.cpp	v0.RHW = v1.RHW right after v1.RHW = global
+8	DIFFER(227v229)	diff=9	009dd960_h.cpp	chained v0.RHW = v1.RHW = global
+9	DIFFER(229v229)	diff=26	009dd960_i.cpp	both from global, adjacent
+10	DIFFER(227v229)	diff=9	009dd960_j.cpp	SetRHW(const float&)/GetRHW const& both sides
+11	DIFFER(227v229)	diff=9	009dd960_k.cpp	SetRHW(const float&) for v1, v0.RHW = v1.RHW
+12	DIFFER(233v229)	diff=24	009dd960_n.cpp	non-const global, both RHW from it (prior order)

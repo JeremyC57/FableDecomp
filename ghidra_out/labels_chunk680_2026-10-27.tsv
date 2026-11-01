@@ -1,0 +1,32 @@
+address	name	evidence
+004c7e90	CThing::IsUnderScriptSupervision	chunk 680 (ChatGPT pass 10 retry) leaf ?IsUnderScriptSupervision@CThing@@QBE_NXZ; proven per batch 2026-10-27_linux_hand680 NOTES.md
+005c0121	NInventory::CTCInventoryBase::OnCreate	chunk 680 (ChatGPT pass 10 retry) leaf ?OnCreate@CTCInventoryBase@NInventory@@UAEXXZ; proven per batch 2026-10-27_linux_hand680 NOTES.md
+00681790	CTCCreatureOpinionOfHero::TransformForcedOpinion	chunk 680 (ChatGPT pass 10 retry) leaf ?TransformForcedOpinion@CTCCreatureOpinionOfHero@@QBEMW4EOpinion@@M@Z; proven per batch 2026-10-27_linux_hand680 NOTES.md
+00698b50	CGameCameraManager::PushUpManualCameraList	chunk 680 (ChatGPT pass 10 retry) leaf ?PushUpManualCameraList@CGameCameraManager@@QAEXXZ; proven per batch 2026-10-27_linux_hand680 NOTES.md
+006dffb0	CTCDParticleEmitter::UpdateEmitterThingAttachment	chunk 680 (ChatGPT pass 10 retry) leaf ?UpdateEmitterThingAttachment@CTCDParticleEmitter@@QAEX_NM@Z; proven per batch 2026-10-27_linux_hand680 NOTES.md
+0072b330	CTCSpecialAbilities::SetupSummonSpell	chunk 680 (ChatGPT pass 10 retry) leaf ?SetupSummonSpell@CTCSpecialAbilities@@AAE_NXZ; proven per batch 2026-10-27_linux_hand680 NOTES.md
+007622c0	NShape::CShape::UpdateSplit	chunk 680 (ChatGPT pass 10 retry) leaf ?UpdateSplit@CShape@NShape@@QAE_NXZ; proven per batch 2026-10-27_linux_hand680 NOTES.md
+00854b90	CCreatureAction_SpiritAttack::FrameUpdate	chunk 680 (ChatGPT pass 10 retry) leaf ?FrameUpdate@CCreatureAction_SpiritAttack@@EAEXXZ; proven per batch 2026-10-27_linux_hand680 NOTES.md
+0087bf40	NCameraModes::CRotateAround::OnInit	chunk 680 (ChatGPT pass 10 retry) leaf ?OnInit@CRotateAround@NCameraModes@@MAEXXZ; proven per batch 2026-10-27_linux_hand680 NOTES.md
+00939dd0	CAIStateGroup_MinionGuardReactToPlayerWithWeapon::RemoveMessageEventsAdded	chunk 680 (ChatGPT pass 10 retry) leaf ?RemoveMessageEventsAdded@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@AAEXXZ; proven per batch 2026-10-27_linux_hand680 NOTES.md
+009a4160	CStreamingFontBank::FindGlyph	chunk 680 (ChatGPT pass 10 retry) leaf ?FindGlyph@CStreamingFontBank@@IBEPBVCStreamingGlyph@@G@Z; proven per batch 2026-10-27_linux_hand680 NOTES.md
+009c3590	CFileInstaller::StartReadingFile	chunk 680 (ChatGPT pass 10 retry) leaf ?StartReadingFile@CFileInstaller@@IAEXAAVCActiveFile@1@@Z; proven per batch 2026-10-27_linux_hand680 NOTES.md
+009c3660	CFileInstaller::StartWritingFile	chunk 680 (ChatGPT pass 10 retry) leaf ?StartWritingFile@CFileInstaller@@IAEXAAVCActiveFile@1@K@Z; proven per batch 2026-10-27_linux_hand680 NOTES.md
+009c5690	CFileInstaller::ThreadMain	chunk 680 (ChatGPT pass 10 retry) leaf ?ThreadMain@CFileInstaller@@IAEXXZ; proven per batch 2026-10-27_linux_hand680 NOTES.md
+00a2ea20	C3DMeshStats::HasHelperPoint	chunk 680 (ChatGPT pass 10 retry) leaf ?HasHelperPoint@C3DMeshStats@@QBE_NK@Z; proven per batch 2026-10-27_linux_hand680 NOTES.md
+00b8d420	CEngineOcclusionManager::RenderOcclusionBox	chunk 680 (ChatGPT pass 10 retry) leaf ?RenderOcclusionBox@CEngineOcclusionManager@@QAEKABVCMatrix3x4@@@Z; proven per batch 2026-10-27_linux_hand680 NOTES.md
+00badb40	CEngineInternalPrimitive2DClockSprite::Update	chunk 680 (ChatGPT pass 10 retry) leaf ?Update@CEngineInternalPrimitive2DClockSprite@@UAEXABVCEnginePrimitive@@K@Z; proven per batch 2026-10-27_linux_hand680 NOTES.md
+00c0ffe0	PKCProtectionInstance::~PKCProtectionInstance	chunk 680 (ChatGPT pass 10 retry) leaf ??1PKCProtectionInstance@@QAE@XZ; proven per batch 2026-10-27_linux_hand680 NOTES.md
+00c73660	DetectWindowsVersion	chunk 680 (ChatGPT pass 10 retry) leaf ?DetectWindowsVersion@@YAXXZ; proven per batch 2026-10-27_linux_hand680 NOTES.md
+00d08b40	NScript::CQ_BanditCampBossBattleScript::CCampHostageDoor::Main	chunk 680 (ChatGPT pass 10 retry) leaf ?Main@CCampHostageDoor@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ; proven per batch 2026-10-27_linux_hand680 NOTES.md
+006bd900	CMusicManager::PlayMusic	chunk 680: ?PlayMusic@CMusicManager@@IAEXJABVCFadeTimes@1@J@Z (parked DIFFER 170v169); label Music_LoadAndStartTrack wrong
+004c7e50	CThing::GetScriptThing	chunk 680: reloc_bindings + Ego_r order GetScriptThing/HasScriptThing/IsUnderScriptSupervision; catalog label was a GFPredicateAnd stand-in
+004c7e70	CThing::HasScriptThing	chunk 680: Ego_r order; catalog label operator_new wrong
+00cd2770	CScriptGameResourceObjectScriptedThingBase::Release	chunk 680: reloc_bindings PDB-bound tail call; label CMemoryDataOutputStream::Clear wrong
+005c0c99	CDefinitionManager::GetDef<CInventoryCategoryDef>	chunk 680: called with CDefPointer<const CInventoryCategoryDef> from 0x005C0121; label GetDef<CSpecialAbilitiesDrunkennessDef> wrong
+005c2d32	std::vector<NInventory::CCategory>::push_back	chunk 680: Categories.push_back(CCategory(...)) in 0x005C0121; label NInventory_AddCategoryNode wrong
+009ad3b0	CDefinitionManager::GetNoInstantiatedDefsOfType	chunk 680: PDB-bound callee of 0x005C0121; label LTextSystem::GetIDFromSymbol wrong
+005dc340	CAnimationSet::GetAnim	chunk 680: ?GetAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z (parked 56v66); label Animation_FindNthValid wrong
+005bfcd9	NInventory::CCategory::CCategory	chunk 680: ??0CCategory@NInventory@@QAE@V?$CDefPointer@$$CBVCInventoryCategoryDef@@@@...; label CIntelligentPointer<CThing>::CIntelligentPointer (rtti guess) wrong
+00863e70	CWorld::GetAllThingsInRoughArea<CThingFilter_HasPhysicsMesh>	chunk 680: template instantiation called by 0x00863CA0 (parked)
+00863ca0	CThingBodyReorienter::FillBodyReorientationPossibleIntersecting	chunk 680: true extent 358 bytes (BOUNDS_FIX); parked DIFFER 358v358

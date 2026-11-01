@@ -1,0 +1,25 @@
+1	DIFFER(178v169)	diff=86	006bd900_a.cpp	first model: cached global, Find ternary, CacheToHD branch, PathExists early return
+2	DIFFER(178v169)	diff=78	006bd900_b.cpp	Find takes key by value
+3	DIFFER(178v169)	diff=86	006bd900_c.cpp	else-if PathExists / else return
+4	DIFFER(178v169)	diff=76	006bd900_d.cpp	local copy id = music_id used for Find; store from music_id
+5	DIFFER(178v169)	diff=86	006bd900_e.cpp	definition takes const long music_id (top-level const)
+6	DIFFER(178v169)	diff=86	006bd900_f.cpp	early-return form (if !sound return; if it==End return)
+7	DIFFER(178v169)	diff=86	006bd900_g.cpp	a with /Oa (assume no aliasing TU)
+8	DIFFER(178v169)	diff=86	006bd900_h.cpp	[sed miss: identical to a, not counted]
+9	DIFFER(174v169)	diff=58	006bd900_i.cpp	end store CurrentMusicID = it->first
+10	DIFFER(170v169)	diff=76	006bd900_j.cpp	same-TU CVectorMap::LowerBound body (landed 0x6BE5E0 model, CArray/STLport vector)
+11	DIFFER(170v169)	diff=76	006bd900_k.cpp	j with PSoundManager read directly everywhere (VC CSEs it across the known LowerBound)
+12	SRC_FAIL	diff=0	006bd900_l.cpp	it->second.X directly (no entry reference) [script error: not counted]
+13	SRC_FAIL	diff=0	006bd900_m.cpp	entry as const pointer [script error: not counted]
+14	DIFFER(177v169)	diff=58	006bd900_n.cpp	it->second.X directly (no entry reference)
+15	DIFFER(170v169)	diff=76	006bd900_o.cpp	entry as const pointer
+16	DIFFER(170v169)	diff=76	006bd900_p.cpp	iterator declared at function scope before the PSoundManager test
+17	DIFFER(174v169)	diff=58	006bd900_q.cpp	k + CurrentMusicID = it->first
+18	DIFFER(170v169)	diff=76	006bd900_r.cpp	k in early-return form
+19	DIFFER(170v169)	diff=76	006bd900_s.cpp	r with member-order stores (fade ptr before loop count)
+20	DIFFER(142v169)	diff=98	006bd900_t.cpp	r under /Os
+21	DIFFER(170v169)	diff=76	006bd900_u.cpp	Find as if/return Data.end()
+22	DIFFER(170v169)	diff=76	006bd900_v.cpp	Find with named end local
+23	DIFFER(170v169)	diff=76	006bd900_w.cpp	Find positive test (it!=end && !(key<first)) return it
+24	DIFFER(170v169)	diff=76	006bd900_x.cpp	LowerBound body defined after PlayMusic
+25	DIFFER(163v169)	diff=96	006bd900_y.cpp	[diagnostic] comparator declared only (LowerBound then calls out)

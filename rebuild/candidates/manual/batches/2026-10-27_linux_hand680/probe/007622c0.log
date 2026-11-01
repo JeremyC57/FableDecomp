@@ -1,0 +1,5 @@
+1	DIFFER(274v274)	diff=20	007622c0.cpp	baseline prior
+2	DIFFER(274v274)	diff=16	007622c0_a.cpp	pos=b; if(indexA>indexB) pos=a; insert(pos)
+3	DIFFER(274v274)	diff=20	007622c0_b.cpp	ternary indexA<=indexB?b:a
+4	DIFFER(281v274)	diff=93	007622c0_c.cpp	SelectedPoints[1] instead of back()
+5	RELOCATION_MATCH	diff=0	007622c0_d.cpp	pos variable + midpoint written (b + a)

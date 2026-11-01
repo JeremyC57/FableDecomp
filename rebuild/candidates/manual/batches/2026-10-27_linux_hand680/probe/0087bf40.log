@@ -1,0 +1,12 @@
+1	DIFFER(293v295)	diff=21	0087bf40_p0.cpp	ChatGPT selected (baseline, own extent 295)
+2	DIFFER(318v295)	diff=40	0087bf40_b.cpp	operator- as named-local field-by-field r + return r; axis=GetPosition()-axis; axis.Z=0
+3	DIFFER(297v295)	diff=76	0087bf40_c.cpp	axis.Z=0 first, then axis=C3DVector(dx,dy,axis.Z) ctor
+4	DIFFER(293v295)	diff=7	0087bf40_d.cpp	axis.Z=0 before HeightOffset; named x,y floats then stores
+5	DIFFER(297v295)	diff=76	0087bf40_e.cpp	Z=0 before HeightOffset, axis=C3DVector(dx,dy,axis.Z)
+6	DIFFER(296v295)	diff=21	0087bf40_f.cpp	full foc_pos copy; line=GetPosition()-foc_pos (ctor op-); line.Z=0
+7	DIFFER(322v295)	diff=30	0087bf40_g.cpp	single foc_pos local reassigned = GetPosition()-foc_pos
+8	DIFFER(310v295)	diff=49	0087bf40_h.cpp	C2DVector foc_pos(C3DVector&); 2D line_from_thing; line=C3DVector-C2DVector (named r)
+9	DIFFER(308v295)	diff=52	0087bf40_i.cpp	same, C3DVector-C2DVector via ctor
+10	DIFFER(329v295)	diff=29	0087bf40_j.cpp	one C3DVector local: foc_pos=GetPosition()-foc_pos (named-r op-), Z=0; xAxis ref
+11	RELOCATION_MATCH	diff=0	0087bf40_k.cpp	C2DVector foc_pos; prior dx/dy sqrt; line=C3DVector-C2DVector named r; xAxis ref
+12	RELOCATION_MATCH	diff=0	0087bf40.cpp	final cleaned source (extent/)

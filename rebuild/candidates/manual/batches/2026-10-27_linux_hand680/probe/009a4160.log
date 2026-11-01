@@ -1,0 +1,12 @@
+1	DIFFER(143v142)	diff=7	009a4160_p0.cpp	ChatGPT selected
+2	DIFFER(139v142)	diff=28	009a4160_a.cpp	test *packed & 0x8000 (short bit)
+3	DIFFER(139v142)	diff=28	009a4160_b.cpp	packed bank header as bitfield struct {Size:15, Compressed:1}
+4	DIFFER(143v142)	diff=7	009a4160_c.cpp	flag byte read as (signed) char & 0x80
+5	DIFFER(142v142)	diff=7	009a4160_d.cpp	flag read as dword & 0x8000 (VC narrows to test byte [eax+1],80h)
+6	DIFFER(143v142)	diff=7	009a4160_e.cpp	flag as unsigned char bitfield (bit 7 of byte 1); size via short & 0x7fff
+7	DIFFER(139v142)	diff=28	009a4160_f.cpp	flag as short bitfield view, size via plain short & 0x7fff
+8	DIFFER(143v142)	diff=7	009a4160_g.cpp	LZO 1.08 types (lzo_uint unsigned long, lzo_bytep) for the call
+9	DIFFER(143v142)	diff=5	009a4160_h.cpp	LZO types + output size declared at function scope, assigned in the block
+10	RELOCATION_MATCH	diff=0	009a4160_i.cpp	h + flag as *packed & 0x8000
+11	DIFFER(142v142)	diff=5	009a4160_j.cpp	h + flag as dword & 0x8000
+12	RELOCATION_MATCH	diff=0	009a4160_k.cpp	i with landed LZO 1.08 typedefs (lzo_uint = unsigned int)

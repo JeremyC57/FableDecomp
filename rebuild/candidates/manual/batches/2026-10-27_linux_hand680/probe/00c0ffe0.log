@@ -1,0 +1,13 @@
+1	DIFFER(256v253)	diff=30	00c0ffe0_a.cpp	baseline supplied history attempt_01
+2	DIFFER(256v253)	diff=32	00c0ffe0_b.cpp	compare written max < elapsed
+3	DIFFER(256v253)	diff=30	00c0ffe0_c.cpp	elapsed = GetTickCount(); elapsed -= m_tick
+4	DIFFER(256v253)	diff=30	00c0ffe0_d.cpp	const elapsed local
+5	DIFFER(256v253)	diff=30	00c0ffe0_e.cpp	assignment inside the condition
+6	DIFFER(253v253)	diff=28	00c0ffe0_f.cpp	[flags sweep, not counted] /EHsc /G7
+7	DIFFER(256v253)	diff=30	00c0ffe0_g.cpp	m_tick declared long (signed)
+8	DIFFER(256v253)	diff=30	00c0ffe0_h.cpp	maximum global declared long, cast to unsigned in the compare
+9	DIFFER(256v253)	diff=30	00c0ffe0_i.cpp	maximum read into a local first
+10	DIFFER(256v253)	diff=30	00c0ffe0_k.cpp	GetTickCount through an inline time wrapper
+11	DIFFER(256v253)	diff=30	00c0ffe0_m.cpp	elapsed as unsigned int
+12	DIFFER(256v253)	diff=30	00c0ffe0_n.cpp	elapsed = elapsed - m_tick statement
+13	RELOCATION_MATCH	diff=0	00c0ffe0_o.cpp	named now local then now - m_tick

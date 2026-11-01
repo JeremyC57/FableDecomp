@@ -1,0 +1,12 @@
+1	DIFFER(552v552)	diff=10	00794e60.cpp	baseline prior
+2	DIFFER(546v552)	diff=43	00794e60_a.cpp	StopSound(const unsigned long&)
+3	DIFFER(552v552)	diff=10	00794e60_b.cpp	StopSound with named parent reference
+4	DIFFER(552v552)	diff=10	00794e60_c.cpp	sample copied to a local before StopSound
+5	DIFFER(552v552)	diff=10	00794e60_d.cpp	sound pointer zero-initialised
+6	DIFFER(552v552)	diff=10	00794e60_e.cpp	StopSound body = landed out-of-line 0x00794180 GetInterface(T**,long) form
+7	DIFFER(552v552)	diff=10	00794e60_f.cpp	__forceinline StopSound
+8	DIFFER(552v552)	diff=10	00794e60_g.cpp	StopSound defined inline out of class above the caller
+9	DIFFER(547v552)	diff=31	00794e60_h.cpp	RemoveTC on a fresh ParentThing read
+10	DIFFER(552v552)	diff=10	00794e60_i.cpp	StopSound early-return form
+11	DIFFER(552v552)	diff=10	00794e60_j.cpp	nested DarkFaces test
+12	DIFFER(536v552)	diff=17	00794e60_k.cpp	named dark effect pointer

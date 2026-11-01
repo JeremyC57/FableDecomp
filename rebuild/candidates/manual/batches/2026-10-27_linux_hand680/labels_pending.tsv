@@ -1,0 +1,10 @@
+label	00939dd0	_global::CAIStateGroup_MinionGuardReactToPlayerWithWeapon_CheckAndRemove	?RemoveMessageEventsAdded@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@AAEXXZ
+label	006bd900	_global::Music_LoadAndStartTrack	?PlayMusic@CMusicManager@@IAEXJABVCFadeTimes@1@J@Z
+label	004c7e50	GFPredicateAnd<NScript::CPredicate_And<...>> (catalog)	?GetScriptThing@CThing@@QBE?AVCScriptThing@@XZ (reloc_bindings + Ego_r order; same-TU body reproduces it)
+label	004c7e70	_global::operator_new (catalog)	?HasScriptThing@CThing@@QBE_NXZ (Ego_r order GetScriptThing/HasScriptThing/IsUnderScriptSupervision; body calls CGameScriptThingManager::HasScriptThing)
+label	00cd2770	CMemoryDataOutputStream::Clear (catalog)	?Release@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ (reloc_bindings PDB-bound; tail-called with ecx = handle at 0x00EB3C5A)
+label	005c0c99	CDefinitionManager::GetDef<CSpecialAbilitiesDrunkennessDef>	CDefinitionManager::GetDef<CInventoryCategoryDef>	called with CDefPointer<const CInventoryCategoryDef>* from 0x005C0121
+label	005c2d32	_global::NInventory_AddCategoryNode	std::vector<NInventory::CCategory>::push_back	Categories.push_back(CCategory(...)) in 0x005C0121
+label	009ad3b0	LTextSystem::GetIDFromSymbol	CDefinitionManager::GetNoInstantiatedDefsOfType	PDB-bound callee of 0x005C0121
+label	005dc340	_global::Animation_FindNthValid (forge-autoname)	?GetAnim@CAnimationSet@@QBEABVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z (reloc_bindings PDB-bound at 0x005DC340; Ego_r+FableWin name sets)
+label	005bfcd9	CIntelligentPointer<CThing>::CIntelligentPointer (rtti)	??0CCategory@NInventory@@QAE@V?$CDefPointer@$$CBVCInventoryCategoryDef@@@@PAVCTCInventoryBase@1@J@Z (Ego_r+FableWin name sets; the CCategory(def,this,index) temporary of 0x005C0121 push_back; the CIntelligentPointer vtable store is its inlined member ctor)

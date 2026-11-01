@@ -1,0 +1,13 @@
+1	DIFFER(346v348)	diff=39	00666d40.cpp	baseline prior
+2	DIFFER(346v348)	diff=39	00666d40_a.cpp	named float z = pos.Z + radius for top/bottom
+3	DIFFER(346v348)	diff=39	00666d40_b.cpp	radius + pos.Z order
+4	DIFFER(292v348)	diff=84	00666d40_c.cpp	finder built from two C3DVector temporaries
+5	DIFFER(346v348)	diff=43	00666d40_d.cpp	bottom declared before top
+6	DIFFER(322v348)	diff=96	00666d40_e.cpp	named top, bottom as temporary in finder ctor
+7	DIFFER(346v348)	diff=39	00666d40_f.cpp	search call in its own {} block
+8	DIFFER(346v348)	diff=39	00666d40_h.cpp	return finder.GetHeight() inside the branch
+9	DIFFER(346v348)	diff=37	00666d40_i.cpp	double z = pos.Z + radius, float casts
+10	DIFFER(346v348)	diff=81	00666d40_j.cpp	bottom built from top X/Y
+11	DIFFER(351v348)	diff=44	00666d40_k.cpp	copy pos then Z += radius+1 / radius-50
+12	DIFFER(346v348)	diff=39	00666d40_l.cpp	const C3DVector top/bottom
+13	DIFFER(346v348)	diff=39	00666d40_m.cpp	copy-initialised top/bottom from temporaries

@@ -1,0 +1,14 @@
+1	DIFFER(260v261)	diff=29	004feb70.cpp	baseline prior
+2	DIFFER(260v261)	diff=29	004feb70_a.cpp	STLport 4.6 text: _M_start!=0 test, deallocate(p!=0) forwarding to __malloc_alloc::deallocate free
+3	DIFFER(285v261)	diff=143	004feb70_b.cpp	both loops index-based: unsigned i<maps.size(), maps[i] (strength-reduced)
+4	DIFFER(287v261)	diff=137	004feb70_c.cpp	both loops index-based: long i<(long)maps.size()
+5	DIFFER(260v261)	diff=29	004feb70_d.cpp	area defaulting before the vector declaration
+6	DIFFER(260v261)	diff=29	004feb70_e.cpp	named box = area ? area : &dimensions
+7	DIFFER(260v261)	diff=29	004feb70_f.cpp	STLport iterator typedef, separate it/it2 for the two loops
+8	DIFFER(260v261)	diff=64	004feb70_g.cpp	counted-pointer reference then .Data test/call
+9	DIFFER(260v261)	diff=29	004feb70_h.cpp	vector(const allocator_type& = allocator_type()) and proxy (T*)0 as STLport 4.6
+10	DIFFER(260v261)	diff=29	004feb70_i.cpp	PDB CCountedPointer<CMap>::IsNull() + operator-> (FableWin names; header bodies)
+11	DIFFER(260v261)	diff=29	004feb70_j.cpp	CCountedPointer::Get() into pmap, pmap!=0
+12	DIFFER(260v261)	diff=29	004feb70_k.cpp	const C2DBoxI& box = area ? *area : dimensions (on IsNull base)
+13	DIFFER(267v261)	diff=123	004feb70_l.cpp	loop1 *it direct + CMapInfo& info = Maps[*it] (on IsNull base)
+14	DIFFER(260v261)	diff=29	004feb70.cpp	differ file regrade (not counted)

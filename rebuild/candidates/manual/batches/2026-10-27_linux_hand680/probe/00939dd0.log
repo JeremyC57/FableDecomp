@@ -1,0 +1,14 @@
+1	DIFFER(149v150)	diff=4	00939dd0_a.cpp	baseline prior unchanged
+2	DIFFER(149v150)	diff=4	00939dd0_b.cpp	baseline with explicit leaf [not counted]
+3	DIFFER(149v150)	diff=10	00939dd0_c.cpp	raw counted-pointer Data member with -> at both sites
+4	DIFFER(149v150)	diff=4	00939dd0_d.cpp	CCountedPointer member, ref accessors via operator*
+5	DIFFER(149v150)	diff=4	00939dd0_e.cpp	inline pointer accessor + -> (landed sibling 0x939D70 form)
+6	DIFFER(149v150)	diff=4	00939dd0_f.cpp	explicit CFilter_Bind2<..>(a,b) temporary instead of GFFilter_Bind2
+7	DIFFER(149v150)	diff=4	00939dd0_g.cpp	GFFilter_Bind2 without __fastcall
+8	DIFFER(149v150)	diff=4	00939dd0_h.cpp	operator&& expression chain (sibling 0x939D70 style)
+9	DIFFER(155v150)	diff=9	00939dd0_i.cpp	FindMostRecentMessage template declared only (no same-TU body)
+10	DIFFER(149v150)	diff=4	00939dd0_j.cpp	same-TU FindMostRecentMessage body without noinline
+11	DIFFER(149v150)	diff=4	00939dd0_k.cpp	same-TU FindMostRecentMessage body defined after the caller (noinline)
+12	RELOCATION_MATCH	diff=0	00939dd0_l.cpp	visible FindMostRecentMessage, predicates IsOfType/IsOriginatedByThing operator() declared only (out of line 0x6AF1C0/0x6AF200)
+13	RELOCATION_MATCH	diff=0	00939dd0_m.cpp	prior (shared CWorld.h layout) + predicates declared only
+14	RELOCATION_MATCH	diff=0	00939dd0_n.cpp	m without __declspec(noinline) on the FindMostRecentMessage template

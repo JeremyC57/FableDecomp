@@ -1,0 +1,12 @@
+1	DIFFER(182v183)	diff=31	006d8980_a.cpp	baseline prior
+2	DIFFER(179v183)	diff=44	006d8980_b.cpp	level read once into a local, store level+1
+3	DIFFER(179v183)	diff=44	006d8980_c.cpp	b + size() as end()-begin()
+4	DIFFER(182v183)	diff=31	006d8980_d.cpp	named first = abilities.begin() before end()-first
+5	DIFFER(180v183)	diff=57	006d8980_e.cpp	prior + named reference to TrainableStatLevels
+6	DIFFER(185v183)	diff=51	006d8980_f.cpp	same-TU GetTrainableStatMaxLevel (landed 0x6D6770 body) + inline GetTrainableStatLevel; level<max; ++
+7	DIFFER(180v183)	diff=57	006d8980_g.cpp	same-TU GetTrainableStatMaxLevel; TrainableStatLevels[stat]<max; ++
+8	DIFFER(180v183)	diff=57	006d8980_h.cpp	direct: (end-begin)-1 clamp, level<max, post-increment
+9	DIFFER(180v183)	diff=57	006d8980_i.cpp	direct: size()-1 clamp, level<max, post-increment
+10	DIFFER(180v183)	diff=57	006d8980_k.cpp	i with reversed compare max_level > level
+11	DIFFER(180v183)	diff=57	006d8980_l.cpp	i with pre-increment
+12	DIFFER(180v183)	diff=57	006d8980_m.cpp	i with += 1

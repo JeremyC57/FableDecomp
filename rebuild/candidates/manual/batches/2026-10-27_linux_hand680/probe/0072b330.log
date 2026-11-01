@@ -1,0 +1,8 @@
+1	DIFFER(116v118)	diff=5	0072b330_p0.cpp	ChatGPT selected
+2	DIFFER(116v118)	diff=5	0072b330_a.cpp	out-param GetTC storing *out=it->second (0x7504e0 landed shape)
+3	ERR	diff=5	0072b330_b.cpp	landed sibling 0x72b0d0 model (HasTC if-return-true, GetTC returns it->second) [leaf missed: graded largest fn, not counted]
+4	DIFFER(116v118)	diff=5	0072b330_c.cpp	sibling 0x72b0d0 model, private SetupSummonSpell (leaf fix)
+5	DIFFER(116v118)	diff=5	0072b330_d.cpp	landed out-param GetInterface(T** ppOut, long) template (0x8337b0 family)
+6	DIFFER(116v118)	diff=5	0072b330_e.cpp	if/else, one return true
+7	RELOCATION_MATCH	diff=0	0072b330_f.cpp	negated test, AddTC first with return, then call
+8	DIFFER(141v118)	diff=15	0072b330_g.cpp	HasTC then separate GetInterface (two lookups merged?)

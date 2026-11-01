@@ -1,0 +1,5 @@
+1	DIFFER(468v469)	diff=52	009c5690_a.cpp	baseline prior
+2	DIFFER(469v469)	diff=8	009c5690_b.cpp	volatile PCompletedRead + volatile ExitThread
+3	DIFFER(469v469)	diff=8	009c5690_c.cpp	volatile PCompletedRead only
+4	DIFFER(469v469)	diff=6	009c5690_d.cpp	volatile PCompletedRead, ExitThread, Running
+5	RELOCATION_MATCH	diff=0	009c5690_e.cpp	volatile PCompletedRead, ExitThread, Running, ThreadFinished

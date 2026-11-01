@@ -1,0 +1,12 @@
+1	DIFFER(465v465)	diff=26	007d75a0.cpp	baseline prior
+2	DIFFER(465v465)	diff=26	007d75a0_a.cpp	named CCard* c=*i in the dealt<=half scan
+3	DIFFER(465v465)	diff=26	007d75a0_b.cpp	const CCardDef& chosen for the outputs
+4	DIFFER(465v465)	diff=26	007d75a0_c.cpp	dealt>half test as accept-condition with else
+5	DIFFER(465v465)	diff=26	007d75a0_d.cpp	const half + named output locals
+6	DIFFER(473v465)	diff=76	007d75a0_e.cpp	card declared before def
+7	DIFFER(465v465)	diff=26	007d75a0_f.cpp	total/2 inline (no half local)
+8	DIFFER(465v465)	diff=26	007d75a0_g.cpp	const CCardDef& picked then card=picked
+9	DIFFER(465v465)	diff=26	007d75a0_h.cpp	seed as reference
+10	DIFFER(335v465)	diff=111	007d75a0_i.cpp	implicit CCardDef operator=
+11	DIFFER(465v465)	diff=32	007d75a0_j.cpp	operator= copies CardVal before CardName
+12	DIFFER(335v465)	diff=111	007d75a0_k.cpp	operator= plain inline (no forceinline)

@@ -1,0 +1,17 @@
+1	DIFFER(358v358)	diff=74	00863ca0_p0.cpp	ChatGPT selected 10, own extent 358
+2	DIFFER(358v358)	diff=60	00863ca0_c24.cpp	ChatGPT attempt-24 shape (ToC2DCoordI, named ithing), own extent
+3	DIFFER(358v358)	diff=74	00863ca0_a.cpp	box declared first (before size), size/center inside
+4	SRC_FAIL	diff=0	00863ca0_b.cpp	unnamed center temp; loop as while over begin() [SRC_FAIL: not counted]
+5	DIFFER(358v358)	diff=74	00863ca0_c.cpp	filter temporary passed directly
+6	DIFFER(358v358)	diff=74	00863ca0_d.cpp	filter declared first in function
+7	DIFFER(356v358)	diff=75	00863ca0_e.cpp	things declared before size/box
+8	DIFFER(358v358)	diff=84	00863ca0_f.cpp	size in block scope; box from four scalars
+9	DIFFER(358v358)	diff=76	00863ca0_g.cpp	box ctor with explicit init-list (TLX,TLY,BRX,BRY order)
+10	DIFFER(358v358)	diff=84	00863ca0_h.cpp	half converted before position
+11	DIFFER(358v358)	diff=74	00863ca0_i.cpp	radius named local, size=radius*2 (no named half)
+12	DIFFER(358v358)	diff=63	00863ca0_j.cpp	loop pointer declared before loop; ithing named in body
+13	DIFFER(358v358)	diff=74	00863ca0_k.cpp	index loop over things
+14	DIFFER(358v358)	diff=76	00863ca0_l.cpp	flags set after search (statement order moved)
+15	DIFFER(356v358)	diff=75	00863ca0_m.cpp	size+center+box in inner block with search; things outer; named ithing
+16	DIFFER(358v358)	diff=74	00863ca0_n.cpp	prior shape + named ithing in loop body (no other change)
+17	DIFFER(358v358)	diff=63	00863ca0.cpp	differ/ copy of probe j (check)

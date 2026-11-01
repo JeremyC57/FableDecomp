@@ -1,0 +1,12 @@
+1	DIFFER(646v648)	diff=15	00add690.cpp	baseline prior
+2	DIFFER(646v648)	diff=17	00add690_a.cpp	signed j < count second loop
+3	DIFFER(646v648)	diff=15	00add690_b.cpp	second loop reuses i
+4	DIFFER(646v648)	diff=15	00add690_c.cpp	unsigned n copy of count
+5	DIFFER(646v648)	diff=15	00add690_d.cpp	post-increment j
+6	DIFFER(646v648)	diff=15	00add690_e.cpp	const ref p = points[j]
+7	DIFFER(646v648)	diff=15	00add690_f.cpp	unsigned int index
+8	DIFFER(646v648)	diff=15	00add690_g.cpp	j declared before the second loop
+9	DIFFER(646v648)	diff=15	00add690_h.cpp	first loop index declared in the for
+10	DIFFER(638v648)	diff=96	00add690_i.cpp	d > best comparison
+11	DIFFER(646v648)	diff=15	00add690_j.cpp	second loop as while
+12	DIFFER(646v648)	diff=15	00add690_k.cpp	best = 0 integer literal

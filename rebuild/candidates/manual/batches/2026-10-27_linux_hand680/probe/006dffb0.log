@@ -1,0 +1,14 @@
+1	DIFFER(613v633)	diff=26	006dffb0.cpp	baseline prior
+2	DIFFER(633v633)	diff=26	006dffb0_a.cpp	inner ternaries negated (physics arm second)
+3	DIFFER(633v633)	diff=44	006dffb0_b.cpp	outer ternary negated (no-emitter arm first)
+4	DIFFER(613v633)	diff=26	006dffb0_c.cpp	second physics arm through a CThing* cast
+5	DIFFER(613v633)	diff=26	006dffb0_d.cpp	no-emitter physics arm through const CThing* (const GetPhysicsTC)
+6	DIFFER(613v633)	diff=26	006dffb0_e.cpp	emitter physics arm through const CThing*
+7	DIFFER(613v633)	diff=26	006dffb0_g.cpp	direct-initialised orientation, explicit != 0
+8	DIFFER(616v633)	diff=183	006dffb0_h.cpp	flags byte local
+9	DIFFER(671v633)	diff=63	006dffb0_i.cpp	creation-parameter arm as explicit CRightHandedSet copy
+10	SRC_FAIL	diff=0	006dffb0_j.cpp	second physics arm via intelligent-pointer operator->
+11	DIFFER(613v633)	diff=26	006dffb0_k.cpp	creation arm *& form
+12	DIFFER(613v633)	diff=26	006dffb0_l.cpp	combined condition form
+13	RELOCATION_MATCH	diff=0	006dffb0_m.cpp	if/else whole-arm assignment to a default-constructed orientation
+14	DIFFER(613v633)	diff=34	006dffb0_n.cpp	only the no-emitter inner ternary negated

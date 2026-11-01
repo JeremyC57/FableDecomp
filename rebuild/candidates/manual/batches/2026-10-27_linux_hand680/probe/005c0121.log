@@ -1,0 +1,5 @@
+1	DIFFER(297v297)	diff=4	005c0121.cpp	baseline prior
+2	DIFFER(296v297)	diff=4	005c0121_a.cpp	diagnostic re-run of ChatGPT parent-ref form (not counted)
+3	DIFFER(296v297)	diff=4	005c0121_b.cpp	parent ref taken before the reset-store group
+4	DIFFER(296v297)	diff=20	005c0121_c.cpp	map number read into a local before the reset-store group
+5	RELOCATION_MATCH	diff=0	005c0121_d.cpp	InventoryOpen=false first in the reset group

@@ -1,0 +1,11 @@
+addr       parity           behav  name
+0087bf40   RELOCATION_MATCH PASS   OnInit
+00854b90   RELOCATION_MATCH PASS   FrameUpdate
+
+WINS: 2
+  0087bf40 RELOCATION_MATCH NCameraModes::CRotateAround::?OnInit@CRotateAround@NCameraModes@@MAEXXZ
+  00854b90 RELOCATION_MATCH CCreatureAction_SpiritAttack::?FrameUpdate@CCreatureAction_SpiritAttack@@EAEXXZ
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  NCameraModesCRotateAround_OnInit_0087bf40
+  CCreatureActionSpiritAttack_FrameUpdate_00854b90

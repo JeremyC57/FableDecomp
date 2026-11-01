@@ -1,0 +1,14 @@
+1	DIFFER(56v66)	diff=16	005dc340_p0.cpp	ChatGPT selected
+2	DIFFER(56v66)	diff=16	005dc340_a.cpp	return inside loop; unreachable return Anims.end()[-1].second after for(;;)
+3	DIFFER(65v66)	diff=32	005dc340_b.cpp	while(this) loop with break
+4	DIFFER(56v66)	diff=16	005dc340_c.cpp	index-- form in condition, this-relative fallback
+5	DIFFER(56v66)	diff=16	005dc340_d.cpp	same-TU FindFirstAnimWithName = landed 0x5dc020 body (inline CCharString GetCRC)
+6	DIFFER(56v66)	diff=16	005dc340_e.cpp	dead end() local after the call
+7	DIFFER(56v66)	diff=12	005dc340_f.cpp	index copied to local n before loop
+8	DIFFER(56v66)	diff=16	005dc340_g.cpp	while(true) with nested if returning
+9	DIFFER(56v66)	diff=12	005dc340_h.cpp	diagnostic: __assume(it!=Anims.end()) in loop (tests the dead-this theory)
+10	DIFFER(56v66)	diff=12	005dc340_i.cpp	FableWin locals start_it + it, it=start_it, for(;;)
+11	DIFFER(56v66)	diff=12	005dc340_j.cpp	do-while with count
+12	DIFFER(58v66)	diff=17	005dc340_k.cpp	if(n--==0) post-decrement test
+13	DIFFER(56v66)	diff=16	005dc340_l.cpp	start_it/it, for(;;++it) with return inside, unreachable return start_it->second
+14	DIFFER(56v66)	diff=12	005dc340.cpp	differ/ copy of probe f (check)

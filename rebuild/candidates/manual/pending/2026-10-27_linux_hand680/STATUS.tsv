@@ -1,0 +1,24 @@
+address	status	bytes	test	note
+00c3d030	DIFFER(98v94)	94	-	differ/00c3d030.cpp
+006bd900	DIFFER(170v169)	169	-	differ/006bd900.cpp
+006d8980	DIFFER(182v183)	183	-	differ/006d8980.cpp
+00eb3ba0	DIFFER(186v187)	187	-	differ/00eb3ba0.cpp
+008eebe0	DIFFER(129v131)	131	-	differ/008eebe0.cpp
+004be3e0	DIFFER(175v173)	173	-	differ/004be3e0.cpp
+004feb70	DIFFER(260v261)	261	-	differ/004feb70.cpp
+009dd960	DIFFER(227v229)	229	-	differ/009dd960.cpp
+00bebaa0	DIFFER(257v257)	257	-	differ/00bebaa0.cpp
+00666d40	DIFFER(346v348)	348	-	differ/00666d40.cpp
+00794e60	DIFFER(552v552)	552	-	differ/00794e60.cpp
+00eb3f40	DIFFER(378v381)	381	-	differ/00eb3f40.cpp
+00b21a50	DIFFER(565v565)	565	-	differ/00b21a50.cpp
+00863ca0	DIFFER(358v358)	53	-	differ/00863ca0.cpp true extent 358 (catalog 53, manifest split); DIFFER(358v358) at own extent: box-corner registers, store order
+00c6b260	OWNER_DECISION DIFFER(391v315)	315	-	differ/00c6b260.cpp OWNER DECISION: retail is SDK inline asm (SalFrame.obj $sse2FtoiLoop$21115/$sseFtoiLoop$21127); retail_asm grade needed
+005ad305	DIFFER(620v620)	620	-	differ/005ad305.cpp
+007d75a0	DIFFER(465v465)	465	-	differ/007d75a0.cpp
+006e3890	DIFFER(535v529)	529	-	differ/006e3890.cpp also identity-blocked: sound global 0x013B8394 and its 0x009917E0 bank lookup unnamed
+00911300	DIFFER(658v666)	666	-	differ/00911300.cpp
+005dc340	DIFFER(56v66)	66	-	differ/005dc340.cpp
+00773790	DIFFER(462v448)	448	-	differ/00773790.cpp
+00540320	DIFFER(755v755)	755	-	differ/00540320.cpp
+00add690	DIFFER(646v648)	648	-	differ/00add690.cpp

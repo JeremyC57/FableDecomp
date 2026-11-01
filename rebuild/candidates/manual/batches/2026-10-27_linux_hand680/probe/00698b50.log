@@ -1,0 +1,8 @@
+1	DIFFER(216v218)	diff=7	00698b50_a.cpp	baseline prior
+2	DIFFER(216v218)	diff=7	00698b50_b.cpp	index==list.begin()
+3	DIFFER(216v218)	diff=7	00698b50_c.cpp	named first=list.begin(); first==index
+4	DIFFER(216v218)	diff=7	00698b50_d.cpp	named first; index==first
+5	DIFFER(218v218)	diff=6	00698b50_e.cpp	begin() bound to a const reference temporary
+6	DIFFER(216v218)	diff=7	00698b50_f.cpp	const begin() overload
+7	DIFFER(216v218)	diff=9	00698b50_g.cpp	index copied to a local first
+8	RELOCATION_MATCH	diff=0	00698b50_h.cpp	begin() const-ref temporary; index==first

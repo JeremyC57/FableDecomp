@@ -1,0 +1,6 @@
+1	DIFFER(778v778)	diff=16	00d08b40.cpp	baseline prior
+2	DIFFER(778v778)	diff=40	00d08b40_a.cpp	rest of Main nested in if(!IsActiveThreadTerminating()) instead of early return
+3	RELOCATION_MATCH	diff=0	00d08b40_b.cpp	for(;;){ if(IATT()) return; body; NewScriptFrame(); }
+4	DIFFER(778v778)	diff=16	00d08b40_c.cpp	plain while(!IATT()) loop
+5	RELOCATION_MATCH	diff=0	00d08b40_d.cpp	b without the leftover do-body brace block
+6	RELOCATION_MATCH	diff=0	00d08b40_e.cpp	d reindented (pragmas at column 0)

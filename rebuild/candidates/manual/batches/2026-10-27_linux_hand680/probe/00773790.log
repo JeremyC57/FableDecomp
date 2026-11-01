@@ -1,0 +1,12 @@
+1	DIFFER(430v448)	diff=131	00773790.cpp	baseline prior
+2	DIFFER(430v448)	diff=131	00773790_a.cpp	no thing alias: ParentThing member used directly
+3	ERR	diff=0	00773790_c.cpp	house test as one && condition
+4	DIFFER(430v448)	diff=131	00773790_d.cpp	both CDefPointers declared before GetDef
+5	DIFFER(430v448)	diff=131	00773790_c.cpp	house test as one && condition
+6	DIFFER(506v448)	diff=150	00773790_f.cpp	GetDef and GetSubDef declared only (no same-TU noinline bodies)
+7	DIFFER(450v448)	diff=133	00773790_g.cpp	GetDef declared only, GetSubDef body kept
+8	DIFFER(462v448)	diff=123	00773790_h.cpp	g + shopDef declared before thingDef
+9	DIFFER(450v448)	diff=133	00773790_i.cpp	g + raw thingDef pointer local for GetSubDef
+10	DIFFER(472v448)	diff=171	00773790_j.cpp	GetDef body kept, GetSubDef declared only
+11	DIFFER(462v448)	diff=123	00773790_k.cpp	h + raw thingDef pointer for GetSubDef
+12	DIFFER(450v448)	diff=133	00773790_l.cpp	g + house check in its own {} block

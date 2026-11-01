@@ -1,0 +1,12 @@
+1	DIFFER(186v187)	diff=12	00eb3ba0_a.cpp	baseline prior
+2	DIFFER(186v187)	diff=12	00eb3ba0_b.cpp	reference handle
+3	DIFFER(196v187)	diff=17	00eb3ba0_c.cpp	direct indexed expression twice
+4	DIFFER(186v187)	diff=12	00eb3ba0_d.cpp	operator[] as _M_start[n]
+5	DIFFER(186v187)	diff=12	00eb3ba0_e.cpp	begin()+ID pointer
+6	DIFFER(186v187)	diff=12	00eb3ba0_f.cpp	named guards vector reference
+7	DIFFER(186v187)	diff=12	00eb3ba0_g.cpp	signed (long) index
+8	DIFFER(186v187)	diff=12	00eb3ba0_h.cpp	local id copy
+9	DIFFER(186v187)	diff=12	00eb3ba0_i.cpp	named parent reference
+10	DIFFER(186v187)	diff=12	00eb3ba0_j.cpp	named guards = begin() pointer, handle = guards + ID
+11	DIFFER(190v187)	diff=17	00eb3ba0_k.cpp	named guards pointer, guards[ID] twice
+12	DIFFER(186v187)	diff=12	00eb3ba0_l.cpp	id copy first, guards pointer, handle reference

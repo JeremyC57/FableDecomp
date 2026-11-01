@@ -1,0 +1,10 @@
+1	DIFFER(260v262)	diff=45	00c73660_base.cpp	baseline (supplied)
+2	DIFFER(260v262)	diff=45	00c73660_a.cpp	switch on the just-stored global g_windowsMajorVersion
+3	DIFFER(260v262)	diff=45	00c73660_b.cpp	switch on global major + minor tests on global
+4	DIFFER(260v262)	diff=45	00c73660_c.cpp	switch ((int)major)
+5	DIFFER(259v262)	diff=56	00c73660_d.cpp	major/minor as unsigned char locals (LOBYTE/HIBYTE)
+6	DIFFER(268v262)	diff=47	00c73660_e.cpp	switch (version & 0xFF)
+7	DIFFER(263v262)	diff=53	00c73660_f.cpp	NT branch as if/else-if chain on major
+8	DIFFER(260v262)	diff=45	00c73660_g.cpp	switch ((unsigned char)version) - same expression as major
+9	DIFFER(260v262)	diff=47	00c73660_h.cpp	switch (g_windowsMajorVersion = major) assignment-expression
+10	RELOCATION_MATCH	diff=0	00c73660_i.cpp	no locals: everything through the version globals (store-forwarded)

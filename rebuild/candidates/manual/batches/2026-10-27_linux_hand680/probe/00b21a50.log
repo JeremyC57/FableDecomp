@@ -1,0 +1,12 @@
+1	DIFFER(565v565)	diff=19	00b21a50.cpp	baseline prior
+2	DIFFER(565v565)	diff=21	00b21a50_a.cpp	STLport 4.6 size(): size_type(_M_finish - _M_start)
+3	DIFFER(565v565)	diff=51	00b21a50_b.cpp	empty-string CRC named before resize
+4	DIFFER(565v565)	diff=80	00b21a50_c.cpp	new size named before resize
+5	DIFFER(565v565)	diff=23	00b21a50_d.cpp	compare written count < pos_param_size
+6	DIFFER(565v565)	diff=19	00b21a50_e.cpp	GetControlPointCount as end()-begin() pointer difference
+7	DIFFER(565v565)	diff=21	00b21a50_f.cpp	GetControlPointCount returns unsigned int
+8	DIFFER(565v565)	diff=19	00b21a50_g.cpp	GetControlPointCount via const array reference
+9	DIFFER(565v565)	diff=35	00b21a50_h.cpp	pos_param_size zero-initialised
+10	DIFFER(565v565)	diff=21	00b21a50_i.cpp	have_pos_param declared before resize
+11	DIFFER(548v565)	diff=66	00b21a50_j.cpp	named spline reference
+12	DIFFER(568v565)	diff=22	00b21a50_k.cpp	CCharString(\"\") temp

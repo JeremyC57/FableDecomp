@@ -1,0 +1,13 @@
+1	DIFFER(658v666)	diff=125	00911300.cpp	baseline prior
+2	DIFFER(642v666)	diff=153	00911300_b.cpp	type test as !(~flags&mask) (landed GetPTarget form)
+3	DIFFER(658v666)	diff=125	00911300_c.cpp	type test mask==(flags&mask)
+4	DIFFER(658v666)	diff=125	00911300_d.cpp	RemoveMessage chained without manager local
+5	DIFFER(658v666)	diff=125	00911300_e.cpp	C3DVector copy ctor body assignments
+6	DIFFER(658v666)	diff=171	00911300_f.cpp	bodyPos built with the (float,float,float) ctor
+7	DIFFER(658v666)	diff=73	00911300_g.cpp	bodyPos default-constructed then assigned
+8	DIFFER(698v666)	diff=144	00911300_h.cpp	retry loop as for(;;) with break
+9	DIFFER(658v666)	diff=125	00911300_i.cpp	C3DVector with all three PDB ctors, copy-init
+10	DIFFER(658v666)	diff=125	00911300_j.cpp	bodyPos default then per-component assignment
+11	DIFFER(658v666)	diff=73	00911300_k.cpp	g + mask fetched after the flags reference
+12	DIFFER(644v666)	diff=142	00911300_l.cpp	g + StatGetTypeFlags called inline twice in the test
+13	DIFFER(658v666)	diff=73	00911300_m.cpp	g + mask also a const reference, after flags

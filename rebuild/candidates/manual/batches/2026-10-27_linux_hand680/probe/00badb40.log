@@ -1,0 +1,11 @@
+1	DIFFER(764v764)	diff=24	00badb40.cpp	baseline prior
+2	DIFFER(764v764)	diff=42	00badb40_a.cpp	plain Colour2 = sprite.Colour2
+3	DIFFER(764v764)	diff=42	00badb40_b.cpp	a + Filter = (Flags & 2) != 0
+4	DIFFER(764v764)	diff=42	00badb40_c.cpp	a + Filter = ((Flags>>1)&1) != 0
+5	DIFFER(764v764)	diff=42	00badb40_d.cpp	a + Filter = (Flags & 2) ? true : false
+6	DIFFER(764v764)	diff=46	00badb40_e.cpp	named locals for both colours (sibling 0x00BAD8A0 shape)
+7	DIFFER(764v764)	diff=24	00badb40_f.cpp	named local for Colour, Colour2 direct
+8	DIFFER(764v764)	diff=46	00badb40_g.cpp	one colour local reused for both
+9	DIFFER(764v764)	diff=42	00badb40_h.cpp	a + interpolation set through a named local
+10	RELOCATION_MATCH	diff=0	00badb40_i.cpp	a + interpolation set bound to a const reference
+11	DIFFER(764v764)	diff=42	00badb40_j.cpp	a + GetInterpolationSet returns const reference

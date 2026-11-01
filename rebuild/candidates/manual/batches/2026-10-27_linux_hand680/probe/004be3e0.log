@@ -1,0 +1,13 @@
+1	DIFFER(175v173)	diff=13	004be3e0_a.cpp	baseline prior
+2	DIFFER(175v173)	diff=13	004be3e0_b.cpp	iterator initialised in its own statement before the for
+3	DIFFER(175v173)	diff=13	004be3e0_c.cpp	while loop with ++ at the end
+4	DIFFER(175v173)	diff=13	004be3e0_d.cpp	iterator declared before loaded=true, assigned in for-init
+5	DIFFER(175v173)	diff=13	004be3e0_e.cpp	PeekMeshInfo declared only (out of line, no same-TU body)
+6	DIFFER(175v173)	diff=13	004be3e0_f.cpp	e + vector::reserve declared only
+7	DIFFER(175v173)	diff=15	004be3e0_g.cpp	loaded declared first (before the vector)
+8	DIFFER(175v173)	diff=13	004be3e0_h.cpp	const_iterator loop variable
+9	DIFFER(175v173)	diff=13	004be3e0_i.cpp	same-TU GetAllMeshes (retail 0x4BD420) + IsResourcesLoadedForMesh (Ego_r) helpers inlined
+10	DIFFER(175v173)	diff=13	004be3e0_j.cpp	no vector _Destroy loop (trivial element dtor path)
+11	DIFFER(175v173)	diff=13	004be3e0_k.cpp	[diagnostic] _Vector_base dtor through named start local
+12	DIFFER(175v173)	diff=13	004be3e0_l.cpp	iterator initialised before loaded=true
+13	DIFFER(175v173)	diff=13	004be3e0_m.cpp	[diagnostic] dead end local before loop

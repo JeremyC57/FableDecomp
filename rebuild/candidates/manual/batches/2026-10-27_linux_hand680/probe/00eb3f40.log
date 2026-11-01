@@ -1,0 +1,13 @@
+1	DIFFER(378v381)	diff=37	00eb3f40.cpp	baseline prior
+2	DIFFER(378v381)	diff=37	00eb3f40_a.cpp	bool trusts=false at top, assigned later
+3	DIFFER(378v381)	diff=37	00eb3f40_b.cpp	long trusts=0 at top
+4	DIFFER(378v381)	diff=37	00eb3f40_c.cpp	diagnostic: trusts read in unreachable tail
+5	DIFFER(378v381)	diff=35	00eb3f40_d.cpp	if(trusts)/else with identical CALL bodies in loop 1
+6	DIFFER(378v381)	diff=35	00eb3f40_e.cpp	if(trusts) DoWatchingForTrouble() else same
+7	DIFFER(378v381)	diff=35	00eb3f40_f.cpp	e + bool trusts=false at top
+8	DIFFER(378v381)	diff=35	00eb3f40_g.cpp	diagnostic: e + an unused zeroed long at top
+9	DIFFER(378v381)	diff=35	00eb3f40_h.cpp	SetPredicate(CIsThingAlive(Me)) temporary (on e)
+10	DIFFER(378v381)	diff=35	00eb3f40_i.cpp	diagnostic: ctor-zeroed 4-byte struct local inside the predicate block
+11	DIFFER(378v381)	diff=35	00eb3f40_j.cpp	diagnostic: ctor-zeroed 4-byte struct local at function scope
+12	DIFFER(387v381)	diff=44	00eb3f40_k.cpp	predicate filter at function scope (no block)
+13	DIFFER(378v381)	diff=35	00eb3f40_l.cpp	named handle reference for StartScriptingEntity loop

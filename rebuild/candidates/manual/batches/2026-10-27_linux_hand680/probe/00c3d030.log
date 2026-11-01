@@ -1,0 +1,20 @@
+1	DIFFER(95v94)	diff=48	00c3d030_a.cpp	if(m_pSal) four ternaries max>0?free:max; else copy maxes
+2	DIFFER(95v94)	diff=48	00c3d030_b.cpp	early-return copy when no Sal
+3	DIFFER(98v94)	diff=64	00c3d030_c.cpp	copy maxes first then override with free when Sal
+4	DIFFER(110v94)	diff=28	00c3d030_d.cpp	per-field (m_pSal && max>0) ? free : max (jump threading merges the Sal tests)
+5	DIFFER(92v94)	diff=55	00c3d030_e.cpp	baseline count-local shape (count = max before branch)
+6	DIFFER(103v94)	diff=49	00c3d030_f.cpp	Sal pointer in a local, per-field (sal && max>0) ? free : max
+7	DIFFER(108v94)	diff=53	00c3d030_g.cpp	bool created local
+8	DIFFER(97v94)	diff=59	00c3d030_h.cpp	returns CRESOURCEDESC by value (hidden ptr; eax=ptr at ret): named local, ternaries
+9	DIFFER(92v94)	diff=51	00c3d030_i.cpp	by value, count local shape
+10	DIFFER(92v94)	diff=9	00c3d030_j.cpp	out-pointer returned (eax=desc at ret), count-local shape
+11	DIFFER(100v94)	diff=8	00c3d030_k.cpp	out-pointer returned, ternary shape
+12	DIFFER(98v94)	diff=5	00c3d030_l.cpp	j + last field as if/else stores
+13	DIFFER(100v94)	diff=8	00c3d030_m.cpp	ternaries + local desc pointer copy at entry
+14	DIFFER(92v94)	diff=25	00c3d030_n.cpp	l with branches inverted (if(!m_pSal) copy else counts)
+15	DIFFER(98v94)	diff=5	00c3d030_o.cpp	l with CRESOURCEDESC& reference param/return
+16	DIFFER(98v94)	diff=5	00c3d030_p.cpp	l + bool created local
+17	DIFFER(98v94)	diff=5	00c3d030_q.cpp	l + Sal pointer local
+18	DIFFER(98v94)	diff=5	00c3d030_r.cpp	l with count declared before, m_pSal test written as (m_pSal != NULL)
+19	DIFFER(107v94)	diff=26	00c3d030_s.cpp	diagnostic: maxima as one CRESOURCEDESC member, else-arm struct copy
+20	DIFFER(98v94)	diff=5	00c3d030.cpp	differ/ copy of l (check)

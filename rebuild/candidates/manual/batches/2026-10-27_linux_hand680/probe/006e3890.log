@@ -1,0 +1,12 @@
+1	DIFFER(531v529)	diff=93	006e3890_base.cpp	baseline (supplied)
+2	DIFFER(531v529)	diff=93	006e3890_a.cpp	entry initialised to 0 at declaration
+3	DIFFER(535v529)	diff=91	006e3890_b.cpp	group null test on group.Data, entry assigned after the test
+4	DIFFER(531v529)	diff=93	006e3890_c.cpp	explicit ==0 / !=0 tests
+5	DIFFER(526v529)	diff=120	006e3890_d.cpp	b + ternary return (b1||force)?1:2
+6	DIFFER(535v529)	diff=91	006e3890_e.cpp	b + nested if(!entry) if(found)
+7	DIFFER(535v529)	diff=91	006e3890_f.cpp	diagnostic: b + empty else on join
+8	DIFFER(535v529)	diff=91	006e3890_g.cpp	b + !GetEntryDataType(id) test
+9	DIFFER(518v529)	diff=100	006e3890_h.cpp	b + text branch first (type != 0)
+10	DIFFER(535v529)	diff=91	006e3890_i.cpp	b + group pointer in an inner {} block
+11	DIFFER(535v529)	diff=91	006e3890_j.cpp	b + one-line join test
+12	DIFFER(535v529)	diff=91	006e3890_k.cpp	b + named entry-type local

@@ -1,0 +1,14 @@
+1	DIFFER(129v131)	diff=11	008eebe0_p0.cpp	ChatGPT selected
+2	DIFFER(127v131)	diff=20	008eebe0_a.cpp	shared inline helper FrictionScale(speed, strength) for both halves
+3	DIFFER(127v131)	diff=20	008eebe0_b.cpp	helper with ternary
+4	DIFFER(144v131)	diff=31	008eebe0_c.cpp	if/else statements per half, AVel*= in each arm
+5	DIFFER(129v131)	diff=27	008eebe0_d.cpp	aspeed reused to hold scale: aspeed = 1 - (strength/radius)/aspeed
+6	DIFFER(129v131)	diff=13	008eebe0_e.cpp	strength rescaled in place: strength/=radius
+7	DIFFER(129v131)	diff=11	008eebe0_f.cpp	strength/=radius; ternary on AVel
+8	DIFFER(129v131)	diff=11	008eebe0_g.cpp	strength/=radius; aspeed reassigned to scale in both arms; AVel*=aspeed
+9	DIFFER(129v131)	diff=11	008eebe0_h.cpp	speed reused for angular: speed=fabs(AVel) (one named local)
+10	DIFFER(131v131)	diff=18	008eebe0_i.cpp	reversed compare: angular >= aspeed ? 0 : ...
+11	DIFFER(129v131)	diff=19	008eebe0_j.cpp	positive test first: aspeed > angular ? 1-angular/aspeed : 0
+12	DIFFER(127v131)	diff=20	008eebe0_k.cpp	named scale local, AVel = scale * AVel
+13	DIFFER(129v131)	diff=27	008eebe0_l.cpp	early return in the clamp arm, multiply after
+14	DIFFER(129v131)	diff=11	008eebe0.cpp	differ/ = prior shape with PDB param/local names (check)

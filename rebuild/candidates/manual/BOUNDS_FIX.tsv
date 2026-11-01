@@ -146,3 +146,6 @@ address	pool	module	name	length	class	action	new_length	evidence
 00b5c120	small	CEngineScreenEffectRadialBlurRenderer	CEngineScreenEffectRadialBlurRenderer::UpdateWorldPositionTracking	821	OVERLONG	len	580	section 6b (2026-10-31): body ends b0 01 5e 83 c4 14 c3 at +0x23d; int3 pad + the next setters follow (header says length 0x244)
 00becde0	small	CMorphVectorMap	CMorphVectorMap::UpdateMorphArray	551	OVERLONG	len	346	section 6b (2026-10-31): ret 4 (c2 04 00) at +0x157, int3 padding follows
 00f37660	small	CGPUScratchBufferTextureManager	CGPUScratchBufferTextureManager::AllocteMemoryPage	776	OVERLONG	len	206	section 6b (2026-10-31): ret 8 (c2 08 00) at +0xcb, int3 padding follows (header length 206)
+0087bf40	chatgpt10	NCameraModes::CRotateAround	OnInit	6	TRUNCATED	len	295	chunk 680: true extent 0x0087BF40..0x0087C066 (ret, then int3 to 0x0087C070); the 6-byte span was a reserved-row defect; byte-exact at 295
+00854b90	chatgpt10	CCreatureAction_SpiritAttack	FrameUpdate	21	TRUNCATED	len	566	chunk 680: true extent 0x00854B90..0x00854DC5 (next row 0x00854DD0); byte-exact at 566
+00863ca0	chatgpt10	CThingBodyReorienter	FillBodyReorientationPossibleIntersecting	53	TRUNCATED	len	358	chunk 680: true extent 358 bytes (next row 0x00863E10); parked DIFFER 358v358 at that extent

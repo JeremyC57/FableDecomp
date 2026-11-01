@@ -1,0 +1,9 @@
+1	DIFFER(664v664)	diff=32	00b8d420.cpp	baseline prior
+2	DIFFER(664v664)	diff=32	00b8d420_a.cpp	device reference after SelectVertexBuffer in DrawBuffersIndexed
+3	DIFFER(664v664)	diff=32	00b8d420_b.cpp	device reference before SelectVertexBuffer
+4	DIFFER(664v664)	diff=32	00b8d420_c.cpp	device through a const-reference accessor in DrawBuffersIndexed
+5	DIFFER(664v664)	diff=32	00b8d420_d.cpp	c + SelectVertexBuffer through the accessor too
+6	DIFFER(664v664)	diff=32	00b8d420_e.cpp	named render-manager pointer before RealiseRenderState
+7	DIFFER(664v664)	diff=32	00b8d420_f.cpp	device copied to a local before DrawIndexedPrimitive
+8	RELOCATION_MATCH	diff=0	00b8d420_g.cpp	DrawBuffersIndexed straight on the global with inline casts
+9	DIFFER(664v664)	diff=32	00b8d420_h.cpp	PT_NULL==type spelling

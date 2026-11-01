@@ -1,0 +1,2 @@
+1	DIFFER(299v305)	diff=18	009c3660_a.cpp	baseline prior
+2	RELOCATION_MATCH	diff=0	009c3660_b.cpp	volatile bool ExitThread

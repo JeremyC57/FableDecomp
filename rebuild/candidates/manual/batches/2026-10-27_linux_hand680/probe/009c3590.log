@@ -1,0 +1,2 @@
+1	DIFFER(191v194)	diff=11	009c3590_a.cpp	baseline prior
+2	RELOCATION_MATCH	diff=0	009c3590_b.cpp	volatile bool ExitThread (owner-allowed, Retail-volatile line)
