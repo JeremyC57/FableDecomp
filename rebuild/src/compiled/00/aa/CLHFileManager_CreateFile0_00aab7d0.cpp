@@ -1,19 +1,21 @@
-// CLHFileManager::CreateFile0(const SFileSpec_00aab7d0& spec) -- allocate a 0x14-byte CLHFile (operator new @ 0x00BFEA1A) and construct it from this manager and the spec (0x00ADD4A0); null when the allocation failed
+// CLHFileManager::CreateFile0(const unsigned short* fileName) -- allocate a 0x14-byte CLHFile (operator new @ 0x00BFEA1A) and construct it from this manager and the file name (0x00ADD4A0); null when the allocation failed
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AAB7D0, length 40 bytes.
 // Vtable 0x0129D2B4 slot 0 (labelled vfunc_0). Callees: operator new, CLHFile's constructor @ 0x00ADD4A0 (labelled "PlayerGuiDef_ctor"). Shape: the `new` null test, `xor eax,eax`, `ret 4`.
-struct SFileSpec_00aab7a0;
-struct SFileSpec_00aab7d0;
-struct CLHFileManager;
-struct CLHFile {                                   // 0x14 bytes, vtable 0x0129F094
+// Naming wave 17: the constructor is c676's ??0CLHFile@@QAE@PAVCLHFileManager@@PBG@Z; the landed SFileSpec_00aab7d0 reference parameter is that
+//   wide file-name pointer (name-only: the bytes are unchanged).
+class CLHFileManager;
+class CLHFile {                                    // 0x14 bytes, vtable 0x0129F094 (RTTI .?AVCLHFile@@ : LHA::CFile)
+public:
     unsigned char _body[0x14];
-    CLHFile(CLHFileManager* manager, const SFileSpec_00aab7d0& spec);   // 0x00ADD4A0
+    CLHFile(CLHFileManager* manager, const unsigned short* fileName);  // 0x00ADD4A0 (??0CLHFile@@QAE@PAVCLHFileManager@@PBG@Z)
 };
-struct CLHFileManager {                            // vtable 0x0129D2B4
-    virtual CLHFile* CreateFile0(const SFileSpec_00aab7d0& spec);   // slot 0, 0x00AAB7D0
-    virtual CLHFile* CreateFile1(const SFileSpec_00aab7a0& spec);   // slot 1, 0x00AAB7A0
+class CLHFileManager {                             // vtable 0x0129D2B4
+public:
+    virtual CLHFile* CreateFile0(const unsigned short* fileName);   // slot 0, 0x00AAB7D0
+    virtual CLHFile* CreateFile1(const char* fileName);             // slot 1, 0x00AAB7A0
 };
 
-CLHFile* CLHFileManager::CreateFile0(const SFileSpec_00aab7d0& spec)
+CLHFile* CLHFileManager::CreateFile0(const unsigned short* fileName)
 {
-    return new CLHFile(this, spec);
+    return new CLHFile(this, fileName);
 }

@@ -30753,9 +30753,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0049cf80'
-        Module = 'CNearestBuildingWithProperty'
-        Source = '00/49/CNearestBuildingWithProperty_CNearestBuildingWithProperty_0049cf80.cpp'
-        TestSource = '00/49/CNearestBuildingWithProperty_CNearestBuildingWithProperty_0049cf80_test.cpp'
+        Module = 'CRightHandedSet'
+        Source = '00/49/CRightHandedSet_CRightHandedSet_0049cf80.cpp'
+        TestSource = '00/49/CRightHandedSet_CRightHandedSet_0049cf80_test.cpp'
         PassPattern = 'OK_0x0049cf80'
     }
     [pscustomobject]@{
@@ -182371,9 +182371,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00772110'
-        Module = 'CShaderPreParser'
-        Source = '00/77/CShaderPreParser_GetConstantCount_00772110.cpp'
-        TestSource = '00/77/CShaderPreParser_GetConstantCount_00772110_test.cpp'
+        Module = 'CTCShop'
+        Source = '00/77/CTCShop_GetNumShoppers_00772110.cpp'
+        TestSource = '00/77/CTCShop_GetNumShoppers_00772110_test.cpp'
         PassPattern = '00772110_TEST PASS'
     }
     [pscustomobject]@{
