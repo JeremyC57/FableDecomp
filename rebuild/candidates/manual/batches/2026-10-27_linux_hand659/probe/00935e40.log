@@ -1,0 +1,17 @@
+p00 prior/00935e40.cpp as handed in (for(;;) loop, invented IsThingAlive helper): DIFFER(476v468) 18 masked lines (eax copy in first LowerBound; PlayAnimation zero args as immediates)
+p01 real CVectorMap LowerBound bodies + __forceinline GetTC/PeekTC, for(;;) loop: DIFFER(450v468) both LowerBounds called
+p02 do/while(result==4) loop + if(result!=2) fail: DIFFER(458v468) 27 lines; first LowerBound inlined w/o eax copy; second IsThingAlive called
+p03 clean shared model (m_pre.txt + m_put.txt): IS_THING_ALIVE template + free operator!=(CIntelligentPointer<T>&,int), do/while: DIFFER(476v468) 18 lines, same two residues as p00
+p04 PlayAnimation `&temporary` + pointer ctor/PerformAction(const CCreatureActionBase*) (landed 0x0091E750 form): DIFFER(476v468) 18 lines, zero args still immediates
+p05 p04 + AIAction_PerformAction returning long: DIFFER(476v468) 18 lines
+p06 LowerBound count = end() - begin(), first = begin(): DIFFER(476v468) 18 lines (eax copy unchanged)
+p07 LowerBound first = _M_start then count = _M_finish - first: DIFFER(476v468) 18 lines
+p08 LowerBound first/last locals, count = last - first: DIFFER(476v468) 18 lines
+p09 FableWin CVectorMap::Find (LowerBound + end/key test) used by both GetTC and PeekTC: DIFFER(476v468) 20 lines (PeekTC key store hoisted above the je)
+p10 Find in GetTC only, PeekTC unchanged: DIFFER(476v468) 18 lines
+p11 LowerBound count = (long)size() via an inline vector::size(): DIFFER(476v468) 18 lines
+p12 `return AIAction_PerformAction(...) == 2;` inside the second test: DIFFER(472v468) 46 lines
+p13 named `long none = 0` for all zero args: DIFFER(476v468) 18 lines (constant-propagated back to immediates)
+p14 GetCreature() as CThingAICreature* (PBrain->Creature) + pointer ctor: DIFFER(476v468) 18 lines
+x1  control: landed 0x0091E750 with its PerformAction result tested `== 2` still emits the xor ecx zero register, so the zero CSE is context-driven, not call-shape-driven
+PARK best p03 (PDB reference signatures, shared m_pre4 model): DIFFER(476v468) 18 lines = first-site inlined LowerBound loads _M_start straight into esi (retail eax + mov esi,eax) and PlayAnimation zero args as immediates (retail xor ecx,ecx). Last 4 probes (p11-p14) did not reduce. Prior's 16 probes (prior/00935e40_probes.log) hit the same two residues.

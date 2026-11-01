@@ -35637,3 +35637,8 @@ _NEWLINE	013b8ba8	0121ab3f
 ?REACTION_MANAGER_DEF_INSTANTIATION_NAME@?A0xb41d3c3b@@3VCCharString@@A	013b8bc4	0121ac08
 ?TITLE_NAME@?A0xab817341@@3VCCharString@@A	013b8c60	0121ae9c
 ?STrapCycle@?A0xf91fa7da@@3VCCharString@@A	013bae00	0121f074
+?ConstructItemCategoryList@CTCQuickAccessMenu@@AAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@_N@Z	00626e40	006276f0
+?GetAllItems@CTCInventoryBase@NInventory@@QBEXAAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@@Z	005bf482	006276f0
+?GetUIInventoryCategory@CTCInventoryItem@@SI?AW4EUIInventoryCategory@@J@Z	005d96f0	006276f0
+?IsExpression@CTCInventoryItem@@SI_NJ@Z	005d9830	006276f0
+?push_back@?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@QAEXABU?$pair@JJ@2@@Z	005947b6	006276f0

@@ -3,5 +3,5 @@ address	status	bytes	test	note
 0x00E36750	DIFFER	541v536	-	CV_ArcheryCompetitionScript::DoCountDown: block placement of the post-wait / wait-loop return blocks; 19 probes
 0x007280C0	DIFFER	795v802	-	CTCRandomAppearanceMorph::UpdateMorphSet: def/flag slots, def in edi, morph loops (needs real CArray morph-set models); 18 probes
 0x005FD5E0	DIFFER	975v982	-	CTCInventoryMap::ConstructRegionDescriptionQuests: non-core subtree placement only (retail moves it after the ret); 14 probes
-0x006276F0	DIFFER	1244v1260	-	CTCQuickAccessMenu::GetItemsListUI: allocation from ConstructItemCategoryList 0x00626E40 not being in the TU (invented same-TU body = RELOCATION_MATCH, p05); 12 probes
+0x006276F0	RELOCATION_MATCH	1244v1260	PASS	landed 2026-11-01 in chunk 659 with the real ConstructItemCategoryList 0x00626E40 body in the same file
 0x00E96110	DIFFER	1360v1356	-	CV_HauntedHouseScript::CM_QuestControl::Main: zero-in-ebx / timer-in-edi allocation tied to ~CTimer inlining at the main exit; 17 probes

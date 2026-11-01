@@ -1,0 +1,13 @@
+p01 shared model (m_pre4) + Update: do/while(result==4) first loop with goto terminate, for(;;) second loop (break -> Terminate, DoNothing != 4 -> return): DIFFER(442v438) 10 lines (first-site eax copy; 2-byte vs 3-byte alignment pad; tail reloads this into ebx on the PerformActionAndWait-failed path instead of jumping past `mov ecx,ebx`)
+p02 explicit `Terminate(); return;` on the PerformActionAndWait failure: DIFFER(445v438) 67 lines (two Terminate sites reshuffle the prologue)
+p03 second loop as do { ... goto terminate } while (AIAction_DoNothing() == 4); return;: DIFFER(442v438) 10 lines
+p04 `if (result != 2) goto terminate;` then for(;;): DIFFER(442v438) 10 lines
+p05 while (IS_THING_ALIVE(...)) with nested `== 2` branch: DIFFER(442v438) 12 lines
+p06 explicit `Terminate(); return;` at every failure: DIFFER(445v438) 67 lines
+p07 named `bool failed = ... != 2; if (failed) break;`: DIFFER(442v438) 10 lines
+p08 `== 2` nested with `continue`, break after: DIFFER(442v438) 12 lines
+p09 FableWin CVectorMap::Find in GetTC: DIFFER(442v438) 10 lines
+p10 LowerBound first/last locals: DIFFER(442v438) 10 lines
+p11 AIAction_* returning long, long result: DIFFER(442v438) 10 lines
+p12 p01 under the QFE-4035 compiler: DIFFER(442v438) 10 lines
+PARK best p01: DIFFER(442v438) 10 lines. Last 4 probes (p09-p12) did not reduce. The first-site eax copy is the same residue as 0x00935E40.

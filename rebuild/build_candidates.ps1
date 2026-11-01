@@ -371989,6 +371989,13 @@ $catalog = @(
         TestSource = '01/21/global_ESTrapCycle_0121f074_test.cpp'
         PassPattern = '0121f074_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006276f0'
+        Module = 'CTCQuickAccessMenu'
+        Source = '00/62/CTCQuickAccessMenu_GetItemsListUI_006276f0.cpp'
+        TestSource = '00/62/CTCQuickAccessMenu_GetItemsListUI_006276f0_test.cpp'
+        PassPattern = '006276f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

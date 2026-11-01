@@ -1,0 +1,12 @@
+address	name	evidence
+006276f0	CTCQuickAccessMenu::GetItemsListUI	chunk 659 RELOCATION_MATCH: FableWin spelling; matched once the real ConstructItemCategoryList 0x00626E40 body sat in the same file
+00626e40	CTCQuickAccessMenu::ConstructItemCategoryList	chunk 659 (parked 1513v1471, destructor-inlining gap): FableWin spelling (catalog CTCQuickAccessMenu_PopulateQuickAccessList was a guess)
+00626110	CTCQuickAccessMenu::ContructItemLists	chunk 659: the PDB's own misspelling "Contruct"
+00428b10	CCountedPointer<NUISystem::CComponent>::DeleteData	chunk 659 (labelled DeleteViaVtable0_00428b10)
+0041e5f2	NUISystem::CManager::GetInstance	chunk 659: 0xD0 allocation = Ego_r sizeof(CManager) (the prior said CFrontEndManager)
+0042cd84	NUISystem::CDeletion::CDeletion(const CDeletion&)	chunk 659
+005cc772	CTCInventoryStats::GetXString	chunk 659: static (landed as a free ?GetXString@@YI in ~9 callers)
+005d9830	CTCInventoryItem::IsExpression	chunk 659: static (landed as IsAugmentation_005d9830)
+005d96f0	CTCInventoryItem::GetUIInventoryCategory	chunk 659: static, returns EUIInventoryCategory (landed as GetInventoryTabState in three CTCInventoryTrade rows)
+004e539f	std::_Rb_tree<...>::insert_unique	chunk 659: the 0x005B2A37 header had 0x004E539F / 0x004E5425 swapped
+004e5425	std::_Rb_tree<...>::_M_insert	chunk 659

@@ -1,0 +1,4 @@
+address	status	bytes	test	note
+00626e40	DIFFER(1513v1471)	1471	-	parked after 17 probes + 16 diagnostics (differ/00626e40.cpp); lane gap: ~list<CComponent*> 0x0042ABCA inlined at both CDeletion sites (retail calls it, copy inlined); 53 masked lines, 10 with ~list out of line
+00935e40	DIFFER(476v468)	468	-	parked after 15 probes (+16 prior); first-site inlined LowerBound loads _M_start into esi directly (retail eax + mov esi,eax), PlayAnimation zero args immediates (retail xor ecx,ecx); 18 masked lines
+009363d0	DIFFER(442v438)	438	-	parked after 12 probes; same eax-copy residue + resulting nop size + tail this reload; 10 masked lines; authored in one file with 0x00935E40

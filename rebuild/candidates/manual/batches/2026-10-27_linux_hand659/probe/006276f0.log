@@ -1,0 +1,2 @@
+p01	prior GetItemsListUI body (p04 shape) over the REAL ConstructItemCategoryList body of 0x00626E40 (probe 626_p06) in the same TU; PDB names: CManager::GetInstance, CThing::GetTC<CTCInventory>(T**), CTCInventoryItem::IsExpression / GetUIInventoryCategory, NInventory::CTCInventoryBase::GetAllItems, CMainGameComponent::GetTextBank, CList::InitialiseOffsets	RELOCATION_MATCH
+p02	final: GetItemsListUI over the final ConstructItemCategoryList body (626 p13, f626_vC) in one TU = src/006276f0.cpp	RELOCATION_MATCH (626e40 in the same file stays DIFFER(1513v1471) 53 lines)

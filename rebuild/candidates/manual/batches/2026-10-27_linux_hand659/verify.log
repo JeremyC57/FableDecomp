@@ -1,0 +1,12 @@
+addr       parity           behav  name
+006276f0   WARN SHARED_HEADER_AVAILABLE CManager
+006276f0   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem
+006276f0   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z -> 00428b10 labelled '_global::DeleteViaVtable0_00428b10'
+006276f0   WARN RELOC_NAME: ?ConstructItemCategoryList@CTCQuickAccessMenu@@AAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@U?$pair@JJ@std@@V?$allocator@U?$pair@JJ@std@@@2@@std@@PAVCComponent@4@_N@Z -> 00626e40 labelled 'CTCQuickAccessMenu_PopulateQuickAccessList'
+006276f0   RELOCATION_MATCH PASS   GetItemsListUI
+
+WINS: 1
+  006276f0 RELOCATION_MATCH CTCQuickAccessMenu::?GetItemsListUI@CTCQuickAccessMenu@@AAEPAVCComponent@NUISystem@@AAJPAV23@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CTCQuickAccessMenu_GetItemsListUI_006276f0

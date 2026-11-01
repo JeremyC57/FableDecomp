@@ -1,0 +1,19 @@
+p01	first full body: real STLport vector/list/_Rb_tree/map text, engine CCountedPointer, CDeletion by value, PeekTC<const CTCTargetingBase>, inline GFIntToWideString	DIFFER(1531v1471) 338 masked lines -- ~list of the local CDeletion inlined (retail calls 0x0042ABCA), registers shifted
+p02	+ STLport _List_base::clear defined out of class (_list.c)	DIFFER(1531v1471) 338 -- no change
+p03	+ real STLport list::insert(iterator,const T&) / _M_create_node bodies (in class)	DIFFER(1503v1471) 310 -- _M_insert_dispatch now called at both sites; ~list still inlined
+p04	CThing::UsingComponents as the real STLport bitset<274> (operator[] -> _Unchecked_test)	DIFFER(1503v1471) 310 -- HasTC still `test bl,ch`
+p05	PeekTC with a named `present` bool returned after the block	DIFFER(1515v1471) 304 -- HasTC now retail's shr/and/store into the dead checkUsable slot
+p06	PeekTC as the one-ternary store (component straight into ecx for the GetPTargetedThing vcall)	DIFFER(1515v1471) 299 -- best so far
+d1-d10	diagnostics (not candidates): ~list inline decision. Any loop in the caller BEFORE the CDeletion site makes VC7.1 inline both the CDeletion copy and ~list (fb4/fb4a/fb4c); a loop after it, or none, calls both (fb5/fb3b, = retail 0x00627400 ConstructExpressionCategoryList). Retail here sits between (copy inlined, ~list called) at both sites. Not moved by: implicit vs user ~list/~CDeletion, out-of-class clear/~_List_base/_M_find, a wrapping helper, extra inlined GFIntToWideString calls, an earlier TU user of ~list, /GL (ltcg_grade: still inlined). Loop moved into an inline helper: both called (d7).
+p07	+ STLport _Rb_tree::_M_find out of class (_tree.c)	DIFFER(1515v1471) 299 -- no change
+p08	fe as `CManager& fe = *CManager::GetInstance()`	DIFFER(1515v1471) 299 -- no change
+p09	merge loop bound `(long)items.size()` (signed compare against the STLport size)	DIFFER(1517v1471) 213 -- fe now in ebp spilled at def (retail), function start byte-identical to the empty-branch CDeletion
+p10	flags /Ob1 (probe)	DIFFER(1465v1471) 286 -- ~list called at both sites (retail) but IS_THING_ALIVE / insert shapes break: not retail's setting
+p11	p09 + /Ob1 (probe)	DIFFER(1465v1471) 202
+p12	p09 + named long key for find/insert (PC sibling 0x005907AB form)	DIFFER(1513v1471) 70 masked lines -- merge loop now retail; left: ~list inlined x2, actions counted-pointer ctor register reuse, nop pad
+p13	p12 + vcall SetSelectedChild through `actions.Data` before the named actionsList local	DIFFER(1513v1471) 53 -- best; with ~list forced out of line (diagnostic) only 10 lines remain (actionsList reload after the vcall)
+p14	p13 + STLport allocator over a __malloc_alloc<0> layer (allocate/deallocate wrappers)	DIFFER(1513v1471) 53 -- no change (~list still inlined)
+p15	p13 + `bool usable` declared at the head of the else block	DIFFER(1513v1471) 83 -- worse
+p16	p13 + if-declarations `if (CComponent* arrow = ...)` / `arrow != 0`	DIFFER(1513v1471) 53 -- no change
+p17	p13 under the QFE-4035 compiler (probe)	DIFFER(1513v1471) 53 -- no change
+PARK: 17 probes + 16 diagnostics; p14-p17 did not reduce the residue. Best = p13 -> differ/00626e40.cpp. Residue: VC7.1 here inlines std::list<CComponent*>::~list (the CDeletion local's AssociatedParents, 0x0042ABCA) at both SetDeletion sites where retail calls it (copy constructor inlined in both); with ~list forced out of line (diagnostic only) the body is 1467v1471 with one register-reuse block left (actionsList reloaded after the SetSelectedChild vcall). Per-site inline gap class (GOTCHAS 2026-10-30 chunk 583).

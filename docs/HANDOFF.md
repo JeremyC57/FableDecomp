@@ -12,7 +12,7 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
   5/5 proof + lib_verify MATCH). **Nothing is running** (chunk 651 landed 3/10 under the increased-attempts brief). The owner gives the `Fable.exe` link in a new
   container; it is never written into the repo.
 - Coverage (`rebuild/COVERAGE.md`; `tools/landed_metrics.py` → `write_decomp_dashboard.py` → `update_readme_progress.py`,
-  never hand-edit): 52,848 of 57,611 known functions (91.7%), 45,447 of the original 49,568 (91.7%); 174 `retail_asm`,
+  never hand-edit): 52,849 of 57,611 known functions (91.7%), 45,448 of the original 49,568 (91.7%); 174 `retail_asm`,
   441 `toolchain_library`, 13 asm_bake oracles.
 - Retail compiler cl 13.10.3077 RTM (lane default `$S/wine/vc71rtm`); `--qfe` 13.10.4035 (`$S/wine/vc71`). Lane-only
   downloads (never committed): VS 2003 `Vc7/lib` (`libsig/fetch_vs2003_libs.sh` → `$S/wine/vs2003lib`,
@@ -35,6 +35,8 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
 - At most two Opus high-effort agents; agents never run git, never write under the repo, never kill processes.
 
 ## Done 2026-11-01 (details in FINDINGS_LOG)
+- Chunk 659 (the parked pairs) landed 0x006276F0 GetItemsListUI with the real same-file ConstructItemCategoryList body; that
+  sibling (destructor-inlining gap, chunk 583) and the Minion pair 0x00935E40 / 0x009363D0 (one source) stay parked with 12-33 probes.
 - Chunks 656-658, 660, 661 (NA002-NA006: landed-twin rows) landed 10/10 each, almost every row on the first probe; 102 NAME_FIXES
   (c656-c661), 90 labels; the twin pipeline holds (655-661 = 60/60). Rows above 0x01200000 were dynamic initializers, not library code;
   masked-identical "_Dest_val" twins are ??1 / ??_G / _Destroy triples of different element types (chunk 661 GOTCHAS). Every twin label so far was wrong: identity from callers first.
@@ -67,7 +69,7 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
 
 ## Next
 1. **Never-attempted pool is cut** (2026-11-01, `pending/never_attempted/CHUNKS.tsv`, 170 chunks NA001-NA170, easiest first;
-   coordinator README "Cut a chunk from the never-attempted pool"): NA001 landed as chunk 655; NA002-NA006 = chunks 656-658/660/661 landed 10/10; the pairs chunk 659, NA007 = 662 and NA008 = 663 running at this write
+   coordinator README "Cut a chunk from the never-attempted pool"): NA001 landed as chunk 655; NA002-NA006 = chunks 656-658/660/661 landed 10/10; the pairs chunk 659 landed 1/4; NA007 = 662, NA008 = 663 (first authorable chunk) and NA009 = 664 running at this write
    (owner allowed three agents). Then the pairs chunk (EXTRA_RULES 2026-11-01), then NA005... The parked fixable bucket (97 rows after chunks 652-654) is the other source; keep the chunk 651
    increased-attempts + retail-fidelity brief:
    `pick_parked.py` needs `$S/retry1/WORKLIST.tsv` + `$S/retry/sec6b/WORKLIST.tsv` from the old scratch (gone) -- rebuild the ranked
