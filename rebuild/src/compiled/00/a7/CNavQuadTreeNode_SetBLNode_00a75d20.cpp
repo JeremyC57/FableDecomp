@@ -1,5 +1,5 @@
 // CNavQuadTreeNode::SetBLNode(CANavQuadTreeNode* node) -- delete the old BLNode unless it is the shared blocked node, then store node
-// Leaf: ?SetBLNode@CNavQuadTreeNode@@QAEXPAVCANavQuadTreeNode@@@Z
+// Leaf: ?SetBLNode@CNavQuadTreeNode@@IAEXPAVCANavQuadTreeNode@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00a75d20, 57 bytes, thiscall, `ret 4`.
 // Identity (proven): it reads and writes this+0x18, which is Ego_r.pdb CNavQuadTreeNode::BLNode; the landed CNavQuadTreeNode::RemoveRegionZero 0x00A76060 calls it at 0x00A76116 for its BL child and binds it as ?SetBLNode@CNavQuadTreeNode@@QAEXPAVCANavQuadTreeNode@@@Z; the other caller is CNavQuadTreeNode::Initialise 0x00A79B30.
 // Shape (family L110): compare with the shared CNavBlockedQuadTreeNode @ 0x013D2D2C, `delete` (null test, scalar deleting
@@ -36,7 +36,9 @@ extern CNavBlockedQuadTreeNode g_BlockedNavNode;                   // 0x013D2D2C
 
 class CNavQuadTreeNode : public CANavQuadTreeNode {
 public:
+protected:
     void SetBLNode(CANavQuadTreeNode* node);
+public:
 
     CANavQuadTreeNode* TLNode;                                     // +0x10
     CANavQuadTreeNode* TRNode;                                     // +0x14
