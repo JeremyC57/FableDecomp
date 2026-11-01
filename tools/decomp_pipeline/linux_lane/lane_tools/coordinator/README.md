@@ -44,3 +44,11 @@ then steps 2-5 of "Cut a chunk" above (oracle_from_exe.py, chunk<N>.tsv with byt
 chunk 651 brief incl. its "Increased attempts" and retail-fidelity sections, chunk_history.tsv). Rows whose reason says
 "length uncertain" need the extent checked by hand before the oracle (a cold arm after a noreturn call). twin_landed rows: start
 from the landed twin's source (the masked bodies are equal; only names / relocations differ). Re-run the analyser after landings.
+
+## Wrong catalog names are fixed at landing (owner, 2026-11-01)
+After the labels file is written for a chunk or naming wave, run
+`python3 tools/decomp_pipeline/linux_lane/lane_tools/coordinator/apply_labels.py ghidra_out/labels_<x>.tsv` then
+`python3 tools/sync_catalog_names.py`: every proven callee / global / neighbour name goes into `auto-re-candidates.tsv` and
+`functions.tsv` immediately (vland only renames the chunk's own rows). A landed row whose own Leaf spelling is wrong is re-synced
+from that Leaf, so it stays wrong until its NAME_FIXES_QUEUE row is respelled in the next naming wave -- queue rows are
+therefore landed in a naming wave right after every chunk round, not held.
