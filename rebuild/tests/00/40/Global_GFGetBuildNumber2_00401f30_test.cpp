@@ -21,23 +21,27 @@ public:
 };
 class CBaseClassNonCopyable
 {
-public:
-    ~CBaseClassNonCopyable();
-    void** Vftable;
+protected:
+    virtual ~CBaseClassNonCopyable();
 };
 class CAFile : public CBaseClassNonCopyable
 {
+public:
+    virtual void Close() = 0;
 };
-#pragma pack(push, 1)
+enum FileAccessType { };
 class CDiskFileWin32 : public CAFile
 {
 public:
-    CDiskFileWin32(const CWideString& path, int accessMode, int shareMode);
-    void Close();
-    unsigned char Unknown04[0x14];
+    CDiskFileWin32(const CWideString& path, FileAccessType accessType, unsigned long shareMode);
+    virtual void Close();
+    long        AccessType;
+    long        Position;
+    long        Length;
+    void*       WinFileHandle;
+    bool        Opened;
     CWideString Pathname;
 };
-#pragma pack(pop)
 void __cdecl GFGetBuildNumber2();
 enum BuildEvent
 {
@@ -61,10 +65,10 @@ struct BuildCall
 };
 
 CCharString FableFullBuildVersion(0, 0);
-void* FableDiskFileWin32Vftable[1];
 static BuildCall gCalls[20];
 static int gCallCount;
 static bool gPathExists;
+static const void* gDiskVtable;          // the CDiskFileWin32 vtable, as constructed
 
 static void Record(BuildEvent event, const void* self, const void* argument, int valueA, int valueB)
 {
@@ -99,9 +103,10 @@ CCharString::~CCharString()
     Record(EVENT_DESTROY, this, 0, 0, 0);
 }
 
-CDiskFileWin32::CDiskFileWin32(const CWideString& path, int accessMode, int shareMode) : Pathname(0)
+CDiskFileWin32::CDiskFileWin32(const CWideString& path, FileAccessType accessType, unsigned long shareMode) : Pathname(0)
 {
-    Record(EVENT_DISK_CONSTRUCT, this, &path, accessMode, shareMode);
+    gDiskVtable = *reinterpret_cast<void* const*>(this);
+    Record(EVENT_DISK_CONSTRUCT, this, &path, (int)accessType, (int)shareMode);
 }
 
 CCharString::CCharString(CAFile* file, long length)
@@ -117,7 +122,7 @@ const CCharString& CCharString::operator=(const CCharString& other)
 
 void CDiskFileWin32::Close()
 {
-    Record(EVENT_DISK_CLOSE, this, Vftable, 0, 0);
+    Record(EVENT_DISK_CLOSE, this, *reinterpret_cast<void* const*>(this), 0, 0);   // the vtable the destructor stored
 }
 
 CBaseClassNonCopyable::~CBaseClassNonCopyable()
@@ -152,7 +157,8 @@ int main()
         gCalls[7].Argument != gCalls[6].Self) return 11;
     if (gCalls[8].Event != EVENT_DESTROY || gCalls[8].Self != gCalls[6].Self) return 12;
     if (gCalls[9].Event != EVENT_DISK_CLOSE ||
-        gCalls[9].Argument != FableDiskFileWin32Vftable) return 13;
+        gCalls[9].Self != gCalls[4].Self ||
+        gCalls[9].Argument != gDiskVtable) return 13;        // the destructor restored CDiskFileWin32's vtable before Close
     if (gCalls[10].Event != EVENT_DESTROY) return 14;
     if (gCalls[11].Event != EVENT_DISK_BASE_CLEANUP ||
         gCalls[11].Self != gCalls[9].Self) return 15;

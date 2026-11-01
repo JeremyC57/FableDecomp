@@ -1,24 +1,23 @@
 #include "rebuild_abi.h"
 #include <cstdio>
-static int g_help = 0;
-struct FableCarry_006a2520
-{
-    char pad[0x1c];
-    unsigned char field_1c;
-    char pad2[3];
-    unsigned long field_20;
-    void helper();
-    void SetAll(unsigned long arg);
+static int g_reset = 0;
+class CTCCarrying { public:
+    unsigned char _pad[0x1c];
+    bool  BypassFilters;
+    void* Key;
+    void ResetAllCarriedThingsAsBypassFilter();
+    void SetAllCarriedThingsAsBypassFilter(void* key);
 };
-void FableCarry_006a2520::helper() { g_help++; }
+void CTCCarrying::ResetAllCarriedThingsAsBypassFilter() { g_reset++; }
 int main()
 {
-    static FableCarry_006a2520 c;
-    c.field_1c = 0; c.field_20 = 0; g_help = 0;
-    c.SetAll(0x99);
-    if (c.field_1c != 1) { std::printf("BAD_FLAG\n"); return 1; }
-    if (c.field_20 != 0x99) { std::printf("BAD_VAL\n"); return 1; }
-    if (g_help != 1) { std::printf("BAD_HELP\n"); return 1; }
+    static CTCCarrying c;
+    static int key;
+    c.BypassFilters = false; c.Key = 0; g_reset = 0;
+    c.SetAllCarriedThingsAsBypassFilter(&key);
+    if (!c.BypassFilters) { std::printf("BAD_FLAG\n"); return 1; }
+    if (c.Key != &key) { std::printf("BAD_VAL\n"); return 1; }
+    if (g_reset != 1) { std::printf("BAD_HELP\n"); return 1; }
     std::printf("SETCARRY_006a2520_OK\n");
     return 0;
 }
