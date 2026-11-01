@@ -1,0 +1,36 @@
+addr       parity           behav  name
+004aa840   RELOCATION_MATCH PASS   ~CScriptThing
+0055acb0   RELOCATION_MATCH PASS   Update
+005ede37   RELOCATION_MATCH PASS   GetCategory
+0070b5b0   RELOCATION_MATCH PASS   ~CTCAnimationComplex
+00740540   RELOCATION_MATCH PASS   ~CModeJackOfBladesScream
+008c36d0   RELOCATION_MATCH PASS   ~CModeBriarRoseTeleportInvulnerable
+00995e70   MATCH            PASS   PeekData
+00a69e20   RELOCATION_MATCH PASS   ~CManagedTexture
+00cdd4c0   WARN RELOC_NAME: ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ -> 00cdd4f0 labelled '_global::CCountedPointer_Release_00cdd4f0'
+00cdd4c0   RELOCATION_MATCH PASS   ~CSpawnedFuncBase
+00ed7dd0   RELOCATION_MATCH PASS   ~CTB_Bard
+
+WINS: 10
+  004aa840 RELOCATION_MATCH CScriptThing::??1CScriptThing@@UAE@XZ
+  0055acb0 RELOCATION_MATCH NUISystem::CClickable::?Update@CClickable@NUISystem@@UAEXM@Z
+  005ede37 RELOCATION_MATCH CTCInventoryAbilities::?GetCategory@CTCInventoryAbilities@@QAE?AW4EUISpellCategory@1@W4EHeroAbility@@@Z
+  0070b5b0 RELOCATION_MATCH CTCAnimationComplex::??1CTCAnimationComplex@@UAE@XZ
+  00740540 RELOCATION_MATCH NCreatureMode::CModeJackOfBladesScream::??1CModeJackOfBladesScream@NCreatureMode@@UAE@XZ
+  008c36d0 RELOCATION_MATCH NCreatureMode::CModeBriarRoseTeleportInvulnerable::??1CModeBriarRoseTeleportInvulnerable@NCreatureMode@@UAE@XZ
+  00995e70 MATCH CMemoryDataOutputStream::?PeekData@CMemoryDataOutputStream@@QBEPBXXZ
+  00a69e20 RELOCATION_MATCH CManagedTexture::??1CManagedTexture@@UAE@XZ
+  00cdd4c0 RELOCATION_MATCH CSpawnedFuncBase::??1CSpawnedFuncBase@@UAE@XZ
+  00ed7dd0 RELOCATION_MATCH NScript::CV_TalentlessBardScript::CTB_Bard::??1CTB_Bard@CV_TalentlessBardScript@NScript@@UAE@XZ
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  CScriptThing_CScriptThing_004aa840
+  NUISystemCClickable_Update_0055acb0
+  CTCInventoryAbilities_GetCategory_005ede37
+  CTCAnimationComplex_CTCAnimationComplex_0070b5b0
+  NCreatureModeCModeJackOfBladesScream_CModeJackOfBladesScream_00740540
+  NCreatureModeCModeBriarRoseTeleportInvulnerable_CModeBriarRoseTeleportInvulnerable_008c36d0
+  CMemoryDataOutputStream_PeekData_00995e70
+  CManagedTexture_CManagedTexture_00a69e20
+  CSpawnedFuncBase_CSpawnedFuncBase_00cdd4c0
+  NScriptCVTalentlessBardScriptCTBBard_CTBBard_00ed7dd0

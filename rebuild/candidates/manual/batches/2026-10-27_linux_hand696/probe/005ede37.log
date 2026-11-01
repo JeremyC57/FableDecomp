@@ -1,0 +1,1 @@
+p1 switch, three case groups (1 / explicit 0 / 2) + default 0, #pragma optimize(s) -- RELOCATION_MATCH; jump table [ret1,ret0,ret2,default] and the 17-byte index table checked by hand = retail

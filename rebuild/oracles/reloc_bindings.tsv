@@ -35318,3 +35318,5 @@ _longest_match_fast	00c00fd0	00c013c0
 ?WriteDateAndTime@CDataOutputStream@@QAEXABVCDateAndTime@@@Z	00994180	00a60aa0
 ?Save@CChecksumCacheFile@@AAEXXZ	00a60aa0	00a60c30
 ?GetCutsceneName@CV_FisticuffsClubScript@NScript@@QAE?AVCCharString@@V3@@Z	00e8a1d0	00e8b020
+?Update@CHoverable@NUISystem@@UAEXM@Z	0055b890	0055acb0
+??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ	00cdd4f0	00cdd4c0

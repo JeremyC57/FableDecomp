@@ -1,0 +1,3 @@
+p1 local CSuspendableProcessMicrothread model, implicit dtor, DestroyOne -- RELOCATION_MATCH
+p2 base from engine/CSuspendableProcessMicrothread.h -- RELOCATION_MATCH (kept)
+p3 engine/CCountedPointer.h for PPredicate -- DIFFER(76v35): the header's inline ~CCountedPointer expands where retail calls 0x00CDD4F0 (p2 kept)

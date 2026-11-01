@@ -1,0 +1,2 @@
+p1 empty() ? GetZeroSizeArray() : &front() -- DIFFER(15v15) cmp vs sub
+p2 size() > 0 ? &front() : GetZeroSizeArray() -- MATCH

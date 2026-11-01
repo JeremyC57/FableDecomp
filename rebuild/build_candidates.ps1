@@ -374518,6 +374518,76 @@ $catalog = @(
         TestSource = '00/a0/CAInputProcess_CAInputProcess_00a0d3d0_test.cpp'
         PassPattern = '00a0d3d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004aa840'
+        Module = 'CScriptThing'
+        Source = '00/4a/CScriptThing_CScriptThing_004aa840.cpp'
+        TestSource = '00/4a/CScriptThing_CScriptThing_004aa840_test.cpp'
+        PassPattern = '004aa840_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055acb0'
+        Module = 'NUISystem::CClickable'
+        Source = '00/55/NUISystemCClickable_Update_0055acb0.cpp'
+        TestSource = '00/55/NUISystemCClickable_Update_0055acb0_test.cpp'
+        PassPattern = '0055acb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005ede37'
+        Module = 'CTCInventoryAbilities'
+        Source = '00/5e/CTCInventoryAbilities_GetCategory_005ede37.cpp'
+        TestSource = '00/5e/CTCInventoryAbilities_GetCategory_005ede37_test.cpp'
+        PassPattern = '005ede37_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0070b5b0'
+        Module = 'CTCAnimationComplex'
+        Source = '00/70/CTCAnimationComplex_CTCAnimationComplex_0070b5b0.cpp'
+        TestSource = '00/70/CTCAnimationComplex_CTCAnimationComplex_0070b5b0_test.cpp'
+        PassPattern = '0070b5b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00740540'
+        Module = 'NCreatureMode::CModeJackOfBladesScream'
+        Source = '00/74/NCreatureModeCModeJackOfBladesScream_CModeJackOfBladesScream_00740540.cpp'
+        TestSource = '00/74/NCreatureModeCModeJackOfBladesScream_CModeJackOfBladesScream_00740540_test.cpp'
+        PassPattern = '00740540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c36d0'
+        Module = 'NCreatureMode::CModeBriarRoseTeleportInvulnerable'
+        Source = '00/8c/NCreatureModeCModeBriarRoseTeleportInvulnerable_CModeBriarRoseTeleportInvulnerable_008c36d0.cpp'
+        TestSource = '00/8c/NCreatureModeCModeBriarRoseTeleportInvulnerable_CModeBriarRoseTeleportInvulnerable_008c36d0_test.cpp'
+        PassPattern = '008c36d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00995e70'
+        Module = 'CMemoryDataOutputStream'
+        Source = '00/99/CMemoryDataOutputStream_PeekData_00995e70.cpp'
+        TestSource = '00/99/CMemoryDataOutputStream_PeekData_00995e70_test.cpp'
+        PassPattern = '00995e70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a69e20'
+        Module = 'CManagedTexture'
+        Source = '00/a6/CManagedTexture_CManagedTexture_00a69e20.cpp'
+        TestSource = '00/a6/CManagedTexture_CManagedTexture_00a69e20_test.cpp'
+        PassPattern = '00a69e20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cdd4c0'
+        Module = 'CSpawnedFuncBase'
+        Source = '00/cd/CSpawnedFuncBase_CSpawnedFuncBase_00cdd4c0.cpp'
+        TestSource = '00/cd/CSpawnedFuncBase_CSpawnedFuncBase_00cdd4c0_test.cpp'
+        PassPattern = '00cdd4c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed7dd0'
+        Module = 'NScript::CV_TalentlessBardScript::CTB_Bard'
+        Source = '00/ed/NScriptCVTalentlessBardScriptCTBBard_CTBBard_00ed7dd0.cpp'
+        TestSource = '00/ed/NScriptCVTalentlessBardScriptCTBBard_CTBBard_00ed7dd0_test.cpp'
+        PassPattern = '00ed7dd0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

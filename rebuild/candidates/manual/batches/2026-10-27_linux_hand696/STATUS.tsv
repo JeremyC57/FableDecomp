@@ -1,0 +1,11 @@
+address	status	bytes	test	probes	note
+0070b5b0	RELOCATION_MATCH	42v42	PASS	1	CTCAnimationComplex::~CTCAnimationComplex (vtable 0x012650A4; label ~CAInputProcess wrong)
+00cdd4c0	RELOCATION_MATCH	35v35	PASS	3	CSpawnedFuncBase::~CSpawnedFuncBase, implicit (vtable 0x012C2F9C ??_G caller; label _Dest_val<CMacro> wrong)
+00740540	RELOCATION_MATCH	45v45	PASS	2	NCreatureMode::CModeJackOfBladesScream::~CModeJackOfBladesScream, implicit (label _Dest_val<CMacro> wrong)
+008c36d0	RELOCATION_MATCH	45v45	PASS	1	NCreatureMode::CModeBriarRoseTeleportInvulnerable::~..., implicit (label _Dest_val<CMacro> wrong)
+00ed7dd0	RELOCATION_MATCH	35v35	PASS	1	NScript::CV_TalentlessBardScript::CTB_Bard::~CTB_Bard, implicit (label _Dest_val<CMacro> wrong)
+0055acb0	RELOCATION_MATCH	49v49	PASS	1	NUISystem::CClickable::Update (vtable 0x0124BD2C slot 1); two bound spellings invented
+00995e70	MATCH	15v15	PASS	2	CMemoryDataOutputStream::PeekData (CArray<char>::GetAsCArray inlined; size()>0 not empty())
+00a69e20	RELOCATION_MATCH	61v61	PASS	2	CManagedTexture::~CManagedTexture (label CEnginePrimitiveHandle::Clear wrong; CIVCountedPointer::Release named local)
+005ede37	RELOCATION_MATCH	72v72	PASS	1	CTCInventoryAbilities::GetCategory switch; jump + index tables checked by hand and by vland
+004aa840	RELOCATION_MATCH	66v66	PASS	1	CScriptThing::~CScriptThing (vtable 0x01238C8C; label ~C3DClothPrimitive from twin 0x00AC3B80 wrong); 9 invented spellings

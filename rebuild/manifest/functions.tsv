@@ -10020,7 +10020,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0055ac60	NUISystem::CDraggable::vfunc_0	NUISystem::CDraggable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0055ac70	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CLandscapeBackgroundPatch_vectordeletingdestructor_0055ac70.cpp
 0055ac90	Initialise	CClickable	__thiscall	void	1	CClickable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CClickable_Initialise_0055ac90.cpp
-0055acb0	Update	CClickable	__thiscall	void	2	CClickable *,float	1	yes	accepted									
+0055acb0	Update	NUISystem::CClickable	__thiscall	void	2	CClickable *,float	1	yes	accepted									
 0055acf0	OnLeftUnclicked	CClickable	__thiscall	void	1	CClickable *	1	yes	accepted									
 0055ad30	OnRightUnclicked	CClickable	__thiscall	void	1	CClickable *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CClickable_OnRightUnclicked_0055ad30.cpp
 0055ad60	ProcessEvent	CClickable	__thiscall	void	2	CClickable *,EEvent	1	yes	accepted									
@@ -10041,7 +10041,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0055b840	NUISystem::CClickable::vfunc_0	NUISystem::CClickable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0055b850	`scalar deleting destructor'	NUISystem::CClickable	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CLandscapeBackgroundPatch_vectordeletingdestructor_0055b850.cpp
 0055b880	Initialise	CChangingStateComponent	__thiscall	void	1	CChangingStateComponent *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CChangingStateComponent_Initialise_0055b880.cpp
-0055b890	Update	CHoverable	__thiscall	void	2	CHoverable *,float	1	yes	accepted									
+0055b890	Update	NUISystem::CHoverable	__thiscall	void	2	CHoverable *,float	1	yes	accepted									
 0055b8f0	IsHovered	CHoverable	__thiscall	bool	2	CHoverable *,C2DBoxI *	1	yes	accepted									
 0055b9a0	OnUnhovered	NUISystem::CHoverable	__thiscall	void	1	CHoverable *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CHoverable_OnUnhovered_0055b9a0.cpp
 0055b9d0	ProcessEvent	CHoverable	__thiscall	void	2	CHoverable *,EEvent	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CHoverable_ProcessEvent_0055b9d0.cpp
@@ -18318,7 +18318,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0070b490	GetAnimIndex	CTCAnimationComplex	__thiscall	long	1	CTCAnimationComplex *	1	yes	accepted									
 0070b4a0	GetAnimDuration	CTCAnimationComplex	__thiscall	float	2	CTCAnimationComplex *,long	1	yes	accepted									
 0070b4d0	OnCreate	CTCAnimationComplex	__thiscall	void	1	CTCAnimationComplex *	1	yes	accepted									
-0070b5b0	~CAInputProcess	CAInputProcess	__thiscall	void	1	CAInputProcess *	1	yes	accepted									
+0070b5b0	~CTCAnimationComplex	CTCAnimationComplex	__thiscall	void	1	CAInputProcess *	1	yes	accepted									
 0070b5e0	GetActionName	CActionDoCreatureAction	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
 0070b600	CTCAnimationComplex::vfunc_8	CTCAnimationComplex	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0070b680	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\70\CLandscapeBackgroundPatch_vectordeletingdestructor_0070b680.cpp
@@ -19594,7 +19594,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00740500	NCreatureMode::CModeJackOfBladesScream::vfunc_1	NCreatureMode::CModeJackOfBladesScream	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00740510	NCreatureMode::CModeJackOfBladesScream::vfunc_4	NCreatureMode::CModeJackOfBladesScream	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00740520	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\74\CLandscapeBackgroundPatch_vectordeletingdestructor_00740520.cpp
-00740540	_Dest_val<std::allocator<CMacro>,CMacro>	_Dest_val<std	__fastcall	void	2	allocator<CMacro> *,CMacro *	1	yes	accepted									
+00740540	~CModeJackOfBladesScream	NCreatureMode::CModeJackOfBladesScream	__fastcall	void	2	allocator<CMacro> *,CMacro *	1	yes	accepted									
 00740570	CTCCreatureNavigation::CTCCreatureNavigation_JACK_OF_BLADES_DEATH	CTCCreatureNavigation	unknown	undefined	0		0	yes	accepted									
 007405f0	NCreatureMode::CModeJackOfBladesDeath::vfunc_1	NCreatureMode::CModeJackOfBladesDeath	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00740600	NCreatureMode::CModeJackOfBladesDeath::vfunc_4	NCreatureMode::CModeJackOfBladesDeath	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -28500,7 +28500,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008c3690	NCreatureMode::CModeBriarRoseTeleportInvulnerable::vfunc_4	NCreatureMode::CModeBriarRoseTeleportInvulnerable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008c36a0	NCreatureMode::CModeBriarRoseTeleportInvulnerable::vfunc_11	NCreatureMode::CModeBriarRoseTeleportInvulnerable	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008c36b0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8c\CLandscapeBackgroundPatch_vectordeletingdestructor_008c36b0.cpp
-008c36d0	_Dest_val<std::allocator<CMacro>,CMacro>	_Dest_val<std	__fastcall	void	2	allocator<CMacro> *,CMacro *	1	yes	accepted									
+008c36d0	~CModeBriarRoseTeleportInvulnerable	NCreatureMode::CModeBriarRoseTeleportInvulnerable	__fastcall	void	2	allocator<CMacro> *,CMacro *	1	yes	accepted									
 008c3700	CModeBriarRoseTeleportIntangible	CModeBriarRoseTeleportIntangible	__thiscall	undefined	3	CModeBriarRoseTeleportIntangible *,CThing *,CThingCreatureBase *	0	yes	accepted									
 008c3790	NCreatureMode::CModeBriarRoseTeleportIntangible::vfunc_1	NCreatureMode::CModeBriarRoseTeleportIntangible	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008c37a0	NCreatureMode::CModeBriarRoseTeleportIntangible::vfunc_4	NCreatureMode::CModeBriarRoseTeleportIntangible	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -37705,7 +37705,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a69b70	AllocateTexture	CTextureManager	__thiscall	bool	7	CTextureManager *,CManagedTexture *,ulong,ulong,long,CPixelFormat *,CManagedTextureOwner *	1	yes	accepted									
 00a69c20	AllocateVolumeTexture	CTextureManager	__thiscall	bool	8	CTextureManager *,CManagedTexture *,ulong,ulong,ulong,long,CPixelFormat *,CManagedTextureOwner *	1	yes	accepted									
 00a69da0	Uninitialise	CManagedTextureData	__thiscall	void	1	CManagedTextureData *	1	yes	accepted									
-00a69e20	Clear	CEnginePrimitiveHandle	__thiscall	void	1	CEnginePrimitiveHandle *	1	yes	accepted									
+00a69e20	~CManagedTexture	CManagedTexture	__thiscall	void	1	CEnginePrimitiveHandle *	1	yes	accepted									
 00a69e60	Sizeof	CManagedTexture	__thiscall	ulong	1	CManagedTexture *	1	yes	accepted									
 00a69ed0	GetTexturesInUse	CPreallocTexturePool	__thiscall	ulong	2	CPreallocTexturePool *,ulong	1	yes	accepted									
 00a69f70	ReduceMipmapLevel	CTextureManager	__thiscall	bool	4	CTextureManager *,CGraphicFrame *,CManagedTexture *,ulong	1	yes	accepted									
@@ -49062,8 +49062,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00cdd430	SuspendableProcess	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript>	__thiscall	void	1	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cd\CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00cdd430.cpp
 00cdd450	CSpawnedFunc<NScript::CExpression_FollowScript>	CSpawnedFunc<NScript	__thiscall	undefined	5	CSpawnedFunc<NScript::CExpression_FollowScript> *,CCharString *,ulong,CExpression_FollowScript *,_func_void *	0	yes	accepted									
 00cdd4a0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cd\CLandscapeBackgroundPatch_vectordeletingdestructor_00cdd4a0.cpp
-00cdd4c0	_Dest_val<std::allocator<CMacro>,CMacro>	_Dest_val<std	__fastcall	void	2	allocator<CMacro> *,CMacro *	1	yes	accepted									
-00cdd4f0	_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>	_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cd\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00cdd4f0.cpp
+00cdd4c0	~CSpawnedFuncBase	CSpawnedFuncBase	__fastcall	void	2	allocator<CMacro> *,CMacro *	1	yes	accepted									
+00cdd4f0	~CCountedPointer	CCountedPointer<NScript::CPredicateBase const>	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cd\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00cdd4f0.cpp
 00cdd530	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cd\CLandscapeBackgroundPatch_vectordeletingdestructor_00cdd530.cpp
 00cdd550	Alloc	CActionEventShot	__thiscall	CActionEventBase *	4	CActionEventShot *,long,CThingCreatureBase *,CGameCameraManager *	1	yes	accepted									
 00cdd590	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cd\CLandscapeBackgroundPatch_vectordeletingdestructor_00cdd590.cpp
@@ -53904,8 +53904,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ed7c70	GetQuestIndex	CV_TalentlessBardScript	__thiscall	long	2	CV_TalentlessBardScript *,CCharString	1	yes	accepted									
 00ed7d50	CTB_Bard	NScript::CV_TalentlessBardScript::CTB_Bard	unknown	undefined	0		0	yes	review-low									
 00ed7da0	sub_00ed7da0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
-00ed7db0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ed\CLandscapeBackgroundPatch_vectordeletingdestructor_00ed7db0.cpp
-00ed7dd0	_Dest_val<std::allocator<CMacro>,CMacro>	_Dest_val<std	__fastcall	void	2	allocator<CMacro> *,CMacro *	1	yes	accepted									
+00ed7db0	`scalar deleting destructor'	NScript::CV_TalentlessBardScript::CTB_Bard	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ed\CLandscapeBackgroundPatch_vectordeletingdestructor_00ed7db0.cpp
+00ed7dd0	~CTB_Bard	NScript::CV_TalentlessBardScript::CTB_Bard	__fastcall	void	2	allocator<CMacro> *,CMacro *	1	yes	accepted									
 00ed7e00	Init	NScript::CV_TalentlessBardScript::CTB_Bard	unknown	undefined	0		0			discovered	gapscan							
 00ed8050	Alloc	NScript::CV_TalentlessBardScript::CTB_BardSpawnPoint	__thiscall	undefined	1	CTriangleList *	0	yes	accepted									
 00ed80f0	sub_00ed80f0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
