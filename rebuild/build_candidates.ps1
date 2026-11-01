@@ -42166,9 +42166,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c73770'
-        Module = 'CDefString'
-        Source = '00/c7/CDefString_SetDefaultString_00c73770.cpp'
-        TestSource = '00/c7/CDefString_SetDefaultString_00c73770_test.cpp'
+        Module = '_global'
+        Source = '00/c7/global_EnsureWindowsVersionDetected00c73770_00c73770.cpp'
+        TestSource = '00/c7/global_EnsureWindowsVersionDetected00c73770_00c73770_test.cpp'
         PassPattern = 'OK_00c73770'
     }
     [pscustomobject]@{
@@ -234741,8 +234741,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0063a390'
         Module = 'CWorldMap'
-        Source = '00/63/CWorldMap_GetGroundSizeZAt_0063a390.cpp'
-        TestSource = '00/63/CWorldMap_GetGroundSizeZAt_0063a390_test.cpp'
+        Source = '00/63/CWorldMap_GetThemeSizeZAt_0063a390.cpp'
+        TestSource = '00/63/CWorldMap_GetThemeSizeZAt_0063a390_test.cpp'
         PassPattern = '0063a390_TEST PASS'
     }
     [pscustomobject]@{
@@ -275016,8 +275016,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00c25860'
         Module = 'C3DVector'
-        Source = '00/c2/C3DVector_CrossProduct_00c25860.cpp'
-        TestSource = '00/c2/C3DVector_CrossProduct_00c25860_test.cpp'
+        Source = '00/c2/C3DVector_Cross_00c25860.cpp'
+        TestSource = '00/c2/C3DVector_Cross_00c25860_test.cpp'
         PassPattern = '00c25860_TEST PASS'
     }
     [pscustomobject]@{

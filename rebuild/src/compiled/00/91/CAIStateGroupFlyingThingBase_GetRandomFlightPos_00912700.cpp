@@ -19,7 +19,7 @@ struct CThingRetail : public CThing {unsigned char beforeComponents[0x20];unsign
  __forceinline bool GetNavigation(CNavigationMethods** out){if(UsingComponents[0]&128){ETCInterfaceType key = (ETCInterfaceType)(7);CInterfaceMap* map=&Components;CInterfaceMap::Entry* it=map->LowerBound(key);if(it==map->last||7<it->first)it=map->last;*out=(CNavigationMethods*)((void*)it->second);return true;}return false;}
 };
 struct CWorldMapMethods {
-virtual void s00();virtual void s01();virtual void s02();virtual void s03();virtual void s04();virtual void s05();virtual void s06();virtual void s07();virtual void s08();virtual void s09();virtual void s10();virtual void s11();virtual void s12();virtual void s13();virtual void s14();virtual void s15();virtual long GetMapNumberAt(const C3DVector&)const;float GetGroundSizeZAt(const C3DVector&);}; //slot16=004FC0C0,0063A390
+virtual void s00();virtual void s01();virtual void s02();virtual void s03();virtual void s04();virtual void s05();virtual void s06();virtual void s07();virtual void s08();virtual void s09();virtual void s10();virtual void s11();virtual void s12();virtual void s13();virtual void s14();virtual void s15();virtual long GetMapNumberAt(const C3DVector&)const;float GetThemeSizeZAt(const C3DVector&) const;}; //slot16=004FC0C0, 0063A390 = Ego_r.pdb ?GetThemeSizeZAt@CWorldMap@@QBEMABVC3DVector@@@Z (naming wave 19; the view class stays)
 extern unsigned long FlyingNavigatorType; //0129CB44
 extern const C3DVector HeightProbeOffset; //0138C500
 struct FlyingMethods:CAIStateGroupBase {float MinHeightToKeepAboveGround;float MinHeightToKeepAboveGroundInFlight;float MaxHeightAboveGround;float FlightRange;
@@ -36,6 +36,6 @@ bool FlyingMethods::GetRandomFlightPos(const C3DVector& from,float radius,C3DVec
  C3DVector probe;probe.X=HeightProbeOffset.X+out->X;probe.Y=HeightProbeOffset.Y+out->Y;probe.Z=HeightProbeOffset.Z+out->Z;
  CThingRetail* creature=(CThingRetail*)PBrain->Creature;
  out->Z=creature->GetHeightZBelowAt(probe,true,true)+MinHeightToKeepAboveGround;
- float ground=PeekWorldMap()->GetGroundSizeZAt(*out);if(ground>out->Z)out->Z=ground;
+ float ground=PeekWorldMap()->GetThemeSizeZAt(*out);if(ground>out->Z)out->Z=ground;
  return true;
 }

@@ -53,7 +53,7 @@ class CWorldMap
     {
         return C3DVector(pos.X - (float)Maps[map].Area.TLX, pos.Y - (float)Maps[map].Area.TLY, pos.Z);
     }
-    float GetGroundSizeZAt(const C3DVector& pos) const;
+    float GetThemeSizeZAt(const C3DVector& pos) const;
     void Setup(long m, bool loaded, bool inMap)
     {
         for (int i = 0; i < 4; ++i) { Maps[i].Area.TLX = i * 100; Maps[i].Area.TLY = i * 1000; Maps[i].Area.BRX = 0; Maps[i].Area.BRY = 0; }
@@ -63,7 +63,7 @@ class CWorldMap
     }
 };
 
-float CWorldMap::GetGroundSizeZAt(const C3DVector& pos) const
+float CWorldMap::GetThemeSizeZAt(const C3DVector& pos) const
 {
     if (IsPosInMap(pos))
     {
@@ -84,13 +84,13 @@ int main()
     CWorldMap w;
     C3DVector p(250.5f, 3010.25f, 9.0f);
     w.Setup(2, true, true);
-    if (w.GetGroundSizeZAt(p) != 5.5f || g_lastVec.X != 50.5f || g_lastVec.Y != 1010.25f || g_lastVec.Z != 9.0f) FAIL();
+    if (w.GetThemeSizeZAt(p) != 5.5f || g_lastVec.X != 50.5f || g_lastVec.Y != 1010.25f || g_lastVec.Z != 9.0f) FAIL();
     w.Setup(2, true, false);
-    if (w.GetGroundSizeZAt(p) != 0.0f || g_calls != 0) FAIL();
+    if (w.GetThemeSizeZAt(p) != 0.0f || g_calls != 0) FAIL();
     w.Setup(0, true, true);
-    if (w.GetGroundSizeZAt(p) != 0.0f || g_calls != 0) FAIL();
+    if (w.GetThemeSizeZAt(p) != 0.0f || g_calls != 0) FAIL();
     w.Setup(1, false, true);
-    if (w.GetGroundSizeZAt(p) != 0.0f || g_calls != 0) FAIL();
+    if (w.GetThemeSizeZAt(p) != 0.0f || g_calls != 0) FAIL();
     std::printf("0063a390_TEST PASS\n");
     return 0;
 }

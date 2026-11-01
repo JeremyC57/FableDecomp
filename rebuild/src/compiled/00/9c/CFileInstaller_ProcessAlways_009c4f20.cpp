@@ -1,5 +1,6 @@
 // CFileInstaller::ProcessAlways() -- process a queued read completion under the lock; bank a finished current write; retire every finished active file at the head of the list; then start writing the next active file
 // Retail-volatile: PCompletedRead is written by the read-completion thread; retail re-reads [ebp+74h] for the push after the null test (0x009C4F20: `cmp [ebp+74h],esi ; je ; mov ecx,[ebp+74h]`), the VC7.1 codegen of a volatile member; the landed 0x009C42F0 carries the same qualifier. Owner 2026-11-01: recreate retail.
+// Retail-volatile: ExitThread (+0x7A) is written by the main thread (shutdown / SetDirtyDiscError) and re-read by the installer thread: 0x009C35FC `mov al,[eax+7Ah]` then 0x009C3608 `mov byte ptr [eax+7Ah],1` (the discarded read, chunk 680; the landed 0x009C3590 / 0x009C3660 / 0x009C5690 carry the qualifier); not read in this body.
 // Leaf: ?ProcessAlways@CFileInstaller@@IAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009C4F20, 490 bytes, thiscall `ret`. Name: Ego_r.pdb ?ProcessAlways@CFileInstaller@@IAEXXZ (protected).
 // Callees: CCriticalSectionLock ctor 0x00A62920 / dtor 0x00A629A0; CFileInstaller::PostFileReadCompletion 0x009C4120 (Ego_r IAE);
@@ -205,7 +206,7 @@ class CFileInstaller { public:
     CActiveRead* volatile                        PCompletedRead;         // +0x74 (volatile: see the Retail-volatile line)
     bool                                         ThreadFinished;         // +0x78
     bool                                         DecompressionThreadFinished;
-    bool                                         ExitThread;
+    volatile bool                                ExitThread;             // +0x7a (volatile: see the Retail-volatile line)
     bool                                         Running;
     unsigned long                                Paused;                 // +0x7c
     bool                                         Completed;              // +0x80

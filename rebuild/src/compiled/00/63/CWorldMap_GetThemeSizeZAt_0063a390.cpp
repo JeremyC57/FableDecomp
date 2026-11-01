@@ -1,8 +1,12 @@
-// CWorldMap::GetGroundSizeZAt(const C3DVector&) -- height query: forwards to CMap::GetInterpolatedSizeZAt of the loaded map holding the position, else 0
+// CWorldMap::GetThemeSizeZAt(const C3DVector&) -- theme height query: forwards to CMap::GetThemeSizeZAt of the loaded map holding the position, else 0
+// Leaf: ?GetThemeSizeZAt@CWorldMap@@QBEMABVC3DVector@@@Z
+// Name (naming wave 19): Ego_r.pdb donor order GetGroundSizeZAt 0x006E7EC0 / GetThemeSizeZAt 0x006E7F50 / GetWaterSizeZAt 0x006E7FE0 = retail 0x0063A300 /
+//   0x0063A390 / 0x0063A420 (0x90 apart in both); the callee 0x008200B0 is then ?GetThemeSizeZAt@CMap@@IBEMABVC3DVector@@@Z (Ego_r 0x0067B2D0, after
+//   CMap::GetGroundSizeZAt 0x006796E0 = retail 0x0081EA50 of the twin row). Landed as the propagated GetGroundSizeZAt label.
 // Retail 0x000063a390, 0x83 bytes (world-map theme/height TU, 0x0063Axxx). Callees: IsPosInMap(C3DVector) 0x004FC600,
 // __ftol2 0x00BFEA70 (block coord), slot 17 GetMapNumberAt(C2DCoordI) [+0x44], slot 10 IsMapLoaded [+0x28],
 // ConvertWorldMapCoordsToLocalCoords(long, C3DVector) 0x004FC2A0 (out of line here, hidden result pointer),
-// slot 19 PeekMap [+0x4C], CMap::GetInterpolatedSizeZAt 0x008200B0. Default 0.0f from the float pool (0x0122DEDC). Byte twin of 0x0063A300 except for the CMap callee; the manifest name of this row and of 0x008200B0 (labelled CGameScriptInterface::MsgIsActionModeButtonPressed) are propagations, the true names are unverified.
+// slot 19 PeekMap [+0x4C], CMap::GetThemeSizeZAt 0x008200B0. Default 0.0f from the float pool (0x0122DEDC). Byte twin of 0x0063A300 except for the CMap callee; the manifest name of this row and of 0x008200B0 (labelled CGameScriptInterface::MsgIsActionModeButtonPressed) are propagations, the true names are unverified.
 // ---- local CWorldMap model (retail offsets; the PDB header rebuild/include/engine/CWorldMap.h
 // uses 16-byte STL containers, retail uses 12-byte STLport vectors, so every member after +0x14
 // sits 4/8/12.. bytes lower in retail: Maps +0x20 (PDB +0x24), Granularity +0x50 (PDB +0x60),
@@ -41,7 +45,7 @@ public:
     bool IsCameraPassableAt(const C2DCoordI& pos) const;          // 0x0081F460
     // theme/height TU callees (0x0063Axxx rows)
     float GetGroundSizeZAt(const C3DVector& localPos) const;      // 0x0081EA50
-    float GetInterpolatedSizeZAt(const C3DVector& localPos) const; // 0x008200B0
+    float GetThemeSizeZAt(const C3DVector& localPos) const;        // 0x008200B0 (Ego_r.pdb ?GetThemeSizeZAt@CMap@@IBEMABVC3DVector@@@Z; protected in the PDB, reached here through the row's public CMap model)
     float GetThemeMinCameraSizeZOffsetAt(const C2DCoordI& pos) const; // 0x0081FA90
     float GetThemeSizeZAt(const C2DCoordI& pos) const;            // 0x00820100
     float GetGroundSizeZAt(const C2DCoordI& pos) const;           // 0x00820080
@@ -135,10 +139,10 @@ public:
     bool IsPosInMap(const C3DVector& pos) const;                     // 0x004FC600
     C2DCoordI ConvertWorldMapCoordsToLocalCoords(long map, const C2DCoordI& pos) const; // 0x004FC3C0
     C3DVector ConvertWorldMapCoordsToLocalCoords(long map, const C3DVector& pos) const; // 0x004FC2A0
-    float GetGroundSizeZAt(const C3DVector& pos) const;
+    float GetThemeSizeZAt(const C3DVector& pos) const;
 };
 
-float CWorldMap::GetGroundSizeZAt(const C3DVector& pos) const
+float CWorldMap::GetThemeSizeZAt(const C3DVector& pos) const
 {
     if (IsPosInMap(pos))
     {
@@ -147,7 +151,7 @@ float CWorldMap::GetGroundSizeZAt(const C3DVector& pos) const
         {
             C3DVector local = ConvertWorldMapCoordsToLocalCoords(map, pos);
             const CMap& theMap = PeekMap(map);
-            return theMap.GetInterpolatedSizeZAt(local);
+            return theMap.GetThemeSizeZAt(local);
         }
     }
     return 0.0f;
