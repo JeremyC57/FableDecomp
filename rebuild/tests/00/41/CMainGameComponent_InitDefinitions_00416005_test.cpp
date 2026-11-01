@@ -10,7 +10,7 @@ public:
     virtual ~CGameDefinitionManager();
     virtual void _slot01();
     virtual void InitAndCompile();                       // slot 2 (+8)
-    void FollowUp_9ACB10();                              // 0x009ACB10
+    void ClearSymbols();                              // 0x009ACB10
 };
 class CMainGameComponent {
 protected:
@@ -23,7 +23,7 @@ bool CMainGameComponent::InitDefinitions(bool flag)
         g_pGlobalService_13CAA90->Step();
     CGameDefinitionManager::Get().InitAndCompile();
     if (flag)
-        CGameDefinitionManager::Get().FollowUp_9ACB10();
+        CGameDefinitionManager::Get().ClearSymbols();
     if (g_pGlobalService_13CAA90)
         g_pGlobalService_13CAA90->Step();
     return true;
@@ -35,7 +35,7 @@ CGlobalService* g_pGlobalService_13CAA90 = 0;
 CGameDefinitionManager::~CGameDefinitionManager() {}
 void CGameDefinitionManager::_slot01() {}
 void CGameDefinitionManager::InitAndCompile() { g_log[g_n++] = 'I'; }
-void CGameDefinitionManager::FollowUp_9ACB10() { g_log[g_n++] = 'F'; }
+void CGameDefinitionManager::ClearSymbols() { g_log[g_n++] = 'F'; }
 static CGameDefinitionManager* g_dm = 0;
 CGameDefinitionManager& __fastcall CGameDefinitionManager::Get() { return *g_dm; }
 struct CMainGameComponent_Test { static bool Run(CMainGameComponent& c, bool f) { return c.InitDefinitions(f); } };

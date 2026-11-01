@@ -1,4 +1,4 @@
-// dynamic initializer for CCharString g_CCharString_013ca7d4 @ 0x013CA7D4 -- default-constructs it out of line, then registers its destructor with atexit
+// dynamic initializer for CWideString NBankFileManager::SymbolHeaderDir @ 0x013CA7D4 -- default-constructs it out of line, then registers its destructor with atexit
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x01224030, oracle length 22 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -12,5 +12,7 @@
 // real identifier is not recoverable. One of 36 bodies of this shape.
 #include "fable_string.h"      // CCharString: ctor @ 0x0099EBF0 / default @ 0x0099AED0, ~CCharString @ 0x0099EAE0
 // Identity: the default constructor called here is 0x0099AED0, CWideString::CWideString() (labels, chunks 237/247/265/284), so the object is a CWideString.
+// Naming (naming wave 24): Ego_r.pdb / FableWin.pdb NBankFileManager::`dynamic initializer for 'SymbolHeaderDir'' (labels_chunk691; read
+//   by GetHeaderDir 0x009A76A0, written by SetHeaderDir 0x009A76C0); was the descriptive g_CCharString_013ca7d4.
 
-CWideString g_CCharString_013ca7d4;
+namespace NBankFileManager { CWideString SymbolHeaderDir; }

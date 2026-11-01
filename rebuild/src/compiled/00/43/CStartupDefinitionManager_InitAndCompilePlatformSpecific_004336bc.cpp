@@ -6,7 +6,10 @@
 //   (__fastcall, hidden result in ecx), operator+(const CWideString&, const CWideString&) 0x0099BE70 / (const CWideString&, const unsigned short*)
 //   0x0099BF30 (__fastcall, hidden result in ecx), vector<CWideString>::push_back 0x004128A0 / dtor 0x00412130 / operator= 0x00433DF0,
 //   CCharString(const char*, long) 0x0099EBF0 / copy 0x0099EC30 / dtor 0x0099EAE0, CDefinitionManager::AddDefinitionType 0x009B0AC0,
-//   CDefinitionManager::InitAndCompile 0x009B08C0; creators 0x00434540 / 0x004343F0 / 0x00433670 / 0x00432180 / 0x00434660.
+//   CDefinitionManager::Compile 0x009B08C0; creators 0x00434540 / 0x004343F0 / 0x00433670 / 0x00432180 / 0x00434660.
+// Naming (naming wave 24, labels_chunk691): 0x009B08C0 is Ego_r ?Compile@CDefinitionManager@@QAEXXZ (was InitAndCompile), 0x009A76A0
+//   ?GetHeaderDir@NBankFileManager@@YI?AVCWideString@@XZ (was GetBankDirectory), the lists are std::vector<CWideString> (FableWin
+//   push_back / ~vector / operator=; was a CWideStringVector stand-in) under the PDB member names SymbolPathList / CompilePathList.
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 
@@ -18,7 +21,7 @@ public:
 };
 CWideString __fastcall operator+(const CWideString& left, const CWideString& right);   // 0x0099BE70
 CWideString __fastcall operator+(const CWideString& left, const unsigned short* right);       // 0x0099BF30
-CWideString __fastcall GetBankDirectory();             // 0x009A76A0
+namespace NBankFileManager { CWideString __fastcall GetHeaderDir(); }                 // 0x009A76A0
 namespace NResourceDirectoryNames { CWideString __fastcall GetDefDir(); }             // 0x0041A080
 
 class CCharString {
@@ -28,16 +31,19 @@ public:
     CCharString(const CCharString& other);             // 0x0099EC30
     ~CCharString();                                    // 0x0099EAE0
 };
-class CWideStringVector {                              // STLport vector<CWideString> (12 bytes)
+namespace std {
+template <class _Tp> class allocator { };
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector {   // STLport vector (12 bytes)
 public:
-    CWideString* _M_start;
-    CWideString* _M_finish;
-    CWideString* _M_end_of_storage;
-    CWideStringVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    ~CWideStringVector();                              // 0x00412130
-    void push_back(const CWideString& x);              // 0x004128A0
-    CWideStringVector& operator=(const CWideStringVector& other);   // 0x00433DF0
+    _Tp* _M_start;
+    _Tp* _M_finish;
+    _Tp* _M_end_of_storage;
+    vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
+    ~vector();                                         // 0x00412130
+    void push_back(const _Tp& __x);                    // 0x004128A0
+    vector<_Tp, _Alloc>& operator=(const vector<_Tp, _Alloc>& __x);   // 0x00433DF0
 };
+}
 class CDefinitionManager;
 typedef void* (*TDefCreator)();
 struct SDefinitionType {
@@ -55,11 +61,11 @@ class CDefinitionManager {
 public:
     virtual ~CDefinitionManager();
     unsigned char _pad04[0x40 - 0x04];
-    CWideStringVector HeaderFiles;                     // +0x40
-    CWideStringVector DefFiles;                        // +0x4c
+    std::vector<CWideString> SymbolPathList;           // +0x40
+    std::vector<CWideString> CompilePathList;          // +0x4c
     unsigned char _pad58[0xf0 - 0x58];
     void AddDefinitionType(const SDefinitionType& type);   // 0x009B0AC0
-    void InitAndCompile();                             // 0x009B08C0
+    void Compile();                                    // 0x009B08C0
 };
 class CStartupDefinitionManager : public CDefinitionManager {
 public:
@@ -68,13 +74,13 @@ public:
 
 void CStartupDefinitionManager::InitAndCompilePlatformSpecific(bool testFrontEnd)
 {
-    CWideStringVector headers;
-    CWideStringVector defs;
+    std::vector<CWideString> headers;
+    std::vector<CWideString> defs;
     CWideString platform(L"pc\\");
-    headers.push_back(GetBankDirectory() + platform + L"textures.h");
-    headers.push_back(GetBankDirectory() + L"fonts.h");
-    headers.push_back(GetBankDirectory() + platform + L"front_end_bank.h");
-    headers.push_back(GetBankDirectory() + platform + L"particles_frontend.h");
+    headers.push_back(NBankFileManager::GetHeaderDir() + platform + L"textures.h");
+    headers.push_back(NBankFileManager::GetHeaderDir() + L"fonts.h");
+    headers.push_back(NBankFileManager::GetHeaderDir() + platform + L"front_end_bank.h");
+    headers.push_back(NBankFileManager::GetHeaderDir() + platform + L"particles_frontend.h");
     headers.push_back(NResourceDirectoryNames::GetDefDir() + L"FrontEndDefs\\engine.def");
     headers.push_back(NResourceDirectoryNames::GetDefDir() + L"FrontEndDefs\\engine_video_options.def");
     headers.push_back(NResourceDirectoryNames::GetDefDir() + L"FrontEndDefs\\front_end.def");
@@ -105,7 +111,7 @@ void CStartupDefinitionManager::InitAndCompilePlatformSpecific(bool testFrontEnd
     AddDefinitionType(SDefinitionType("UI", CreateUIDef));
     AddDefinitionType(SDefinitionType("CONTROL_SCHEME", CreateControlSchemeDef));
     AddDefinitionType(SDefinitionType("CONFIG_OPTIONS_DEFAULTS_DEF", CreateConfigOptionsDefaultsDef));
-    HeaderFiles = headers;
-    DefFiles = defs;
-    InitAndCompile();
+    SymbolPathList = headers;
+    CompilePathList = defs;
+    Compile();
 }

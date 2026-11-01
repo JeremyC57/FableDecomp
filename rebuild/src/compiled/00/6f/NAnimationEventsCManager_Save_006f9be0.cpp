@@ -21,7 +21,7 @@ class CWideString { public:
     ~CWideString();                                 // 0x0099B510
 };
 CWideString __fastcall operator+(const CWideString& a, const unsigned short* b);   // 0x0099BF30
-CWideString __fastcall GetDataDirectory();          // 0x009A76A0 (name descriptive)
+namespace NBankFileManager { CWideString __fastcall GetHeaderDir(); }   // 0x009A76A0 (Ego_r; naming wave 24, was GetDataDirectory)
 class CBaseClassNonCopyable {
 protected:
     virtual ~CBaseClassNonCopyable();                                       // 0x0099A300
@@ -114,7 +114,7 @@ void CManager::Save(const CWideString& fileName)
             context.Transfer_009bab50(line);
         }
         CSymbolMap animTypes;
-        animTypes.LoadFromHeaderFile(GetDataDirectory() + (const unsigned short*)L"meshdata.h");
+        animTypes.LoadFromHeaderFile(NBankFileManager::GetHeaderDir() + (const unsigned short*)L"meshdata.h");
         for (CAnimEvents* it = ExtraAnimEvents_start; it != ExtraAnimEvents_finish; ++it) {
             unsigned long animID = it->AnimID;
             const CSymbolInfo* info = animTypes.FindFirstSymbolWithVal("EAnimType", animID);

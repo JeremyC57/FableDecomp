@@ -41247,9 +41247,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009a76a0'
-        Module = '_global'
-        Source = '00/9a/CUserProfileManager_GetAutoSaveFileName_009a76a0.cpp'
-        TestSource = '00/9a/CUserProfileManager_GetAutoSaveFileName_009a76a0_test.cpp'
+        Module = 'NBankFileManager'
+        Source = '00/9a/NBankFileManager_GetHeaderDir_009a76a0.cpp'
+        TestSource = '00/9a/NBankFileManager_GetHeaderDir_009a76a0_test.cpp'
         PassPattern = 'RB_9a76a0_OK'
     }
     [pscustomobject]@{
@@ -76273,9 +76273,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009acb10'
-        Module = '_global'
-        Source = '00/9a/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_009acb10.cpp'
-        TestSource = '00/9a/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_009acb10_test.cpp'
+        Module = 'CDefinitionManager'
+        Source = '00/9a/CDefinitionManager_ClearSymbols_009acb10.cpp'
+        TestSource = '00/9a/CDefinitionManager_ClearSymbols_009acb10_test.cpp'
         PassPattern = 'PASS_009acb10'
     }
     [pscustomobject]@{
@@ -144879,8 +144879,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '01224030'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCCharString013ca7d4_01224030.cpp'
-        TestSource = '01/22/staticinit_gCCharString013ca7d4_01224030_test.cpp'
+        Source = '01/22/staticinit_NBankFileManagerSymbolHeaderDir_01224030.cpp'
+        TestSource = '01/22/staticinit_NBankFileManagerSymbolHeaderDir_01224030_test.cpp'
         PassPattern = '01224030_TEST PASS'
     }
     [pscustomobject]@{
@@ -194065,8 +194065,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00cbf647'
         Module = '_global'
-        Source = '00/cb/global_GFLoadScriptDef00cbf647_00cbf647.cpp'
-        TestSource = '00/cb/global_GFLoadScriptDef00cbf647_00cbf647_test.cpp'
+        Source = '00/cb/global_SetGlobalScriptDef_00cbf647.cpp'
+        TestSource = '00/cb/global_SetGlobalScriptDef_00cbf647_test.cpp'
         PassPattern = '00cbf647_TEST PASS'
     }
     [pscustomobject]@{
@@ -240691,8 +240691,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '009d4ce0'
         Module = 'CDefStringTable'
-        Source = '00/9d/CDefStringTable_SaveBinary_009d4ce0.cpp'
-        TestSource = '00/9d/CDefStringTable_SaveBinary_009d4ce0_test.cpp'
+        Source = '00/9d/CDefStringTable_SaveTable_009d4ce0.cpp'
+        TestSource = '00/9d/CDefStringTable_SaveTable_009d4ce0_test.cpp'
         PassPattern = '009d4ce0_TEST PASS'
     }
     [pscustomobject]@{

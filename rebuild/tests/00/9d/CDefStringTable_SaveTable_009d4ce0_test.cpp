@@ -1,4 +1,4 @@
-// Behaviour test for CDefStringTable::SaveBinary (0x009D4CE0): a locked table is not written; otherwise it is written
+// Behaviour test for CDefStringTable::SaveTable (0x009D4CE0): a locked table is not written; otherwise it is written
 // (write access, flags 4) and, when locking, the map is cleared (erase called on the root, header reset) and locked.
 #include <cstdio>
 class CWideString { public: const char* path; };
@@ -32,9 +32,9 @@ class CDefStringTable {
 public:
     CStringMap StringMap; CWideString TableFilename; bool Locked;
     void WriteTable(CFileDataOutputStream* s) { if (s->file->Opened) ++g_writes; }
-    void SaveBinary(bool lock);
+    void SaveTable(bool lock);
 };
-void CDefStringTable::SaveBinary(bool lock)
+void CDefStringTable::SaveTable(bool lock)
 {
     if (!Locked) {
         CDiskFileWin32 file;
@@ -53,13 +53,13 @@ int main()
     header.Parent = &root; header.Left = &left; header.Right = &right;
     CDefStringTable t; t.StringMap.Header = &header; t.StringMap.NodeCount = 3; t.Locked = false; t.TableFilename.path = "x";
     int bad = 0;
-    t.SaveBinary(false);
+    t.SaveTable(false);
     if (g_writes != 1 || g_closes != 1 || g_erases || t.Locked || t.StringMap.NodeCount != 3) bad = 1;
     if (g_access != FILE_ACCESS_WRITE || g_flags != 4) bad = 2;
-    t.SaveBinary(true);
+    t.SaveTable(true);
     if (g_writes != 2 || g_erases != 1 || g_erasedRoot != &root || !t.Locked) bad = 3;
     if (header.Parent != 0 || header.Left != &header || header.Right != &header || t.StringMap.NodeCount) bad = 4;
-    t.SaveBinary(true);
+    t.SaveTable(true);
     if (g_opens != 2 || g_writes != 2) bad = 5;   // locked: nothing written
     if (bad) { std::printf("009d4ce0_TEST FAIL\n"); return 1; }
     std::printf("009d4ce0_TEST PASS\n");

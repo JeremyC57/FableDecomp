@@ -1,6 +1,6 @@
 // 009b08c0 CDefinitionManager::Compile
 // Flags: /O2 /Oy /W3
-// Leaf: Compile
+// Leaf: ?Compile@CDefinitionManager@@QAEXXZ
 // Bring the definitions up to date: check the symbol-path dependencies, then try the compiled binary file when
 // binary loading is on and the file exists. When that fails, build the symbols from the symbol paths, compile the
 // compile paths, drop unused memory, and (when binary saving is on) write the definitions to the compiled file
@@ -12,8 +12,14 @@
 // CreateSymbolsFromPathList 0x009AEF60, CCharString(const char*, long) 0x0099EBF0 / dtor 0x0099EAE0,
 // DoCompilePathList 0x009AF480, RemoveUnusedMemory 0x009AE5F0, CMemoryDataOutputStream ctor 0x00996AF0 /
 // GetSize 0x00994B40 / GetData 0x00995E70 / dtor 0x00996B30, SaveBinaryDefinitions 0x009AF7A0.
+// Naming (naming wave 24): Ego_r.pdb / FableWin.pdb ?Compile@CDefinitionManager@@QAEXXZ (labels_chunk691; the caller 0x00CD3F50 binds
+//   it). The row defined it on a NDefinitionManager::CDefinitionManager stand-in; now the PDB class itself over the engine header's
+//   layout (the rename pattern of the landed CompileString / RecompileAllDefs rows), with its callees at their PDB access (IAE for
+//   CheckDependencies / CreateSymbolsFromPathList / DoCompilePathList / RemoveUnusedMemory) on std::vector<CWideString>.
 // Globals: bytes 0x013CA7D8 (load binary definitions) and 0x0138E188 (save binary definitions), descriptive names.
+#define CDefinitionManager CDefinitionManagerLayout
 #include "engine/CDefinitionManager.h"
+#undef CDefinitionManager
 #include "engine/CDataInputStream.h"
 #include "engine/CDataOutputStream.h"
 extern "C" double __fastcall GFGetTime();                // 0x009E1BC0
@@ -66,23 +72,27 @@ private: public:      // 0x18 bytes
     CMemoryDataOutputStream();                           // 0x00996AF0
     ~CMemoryDataOutputStream();                          // 0x00996B30
 };
-template <class T> struct vector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
+namespace std {
+template <class _Tp> class allocator { };
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector { public: _Tp* _M_start; _Tp* _M_finish; _Tp* _M_end_of_storage; };
+}
 extern bool g_bLoadBinaryDefinitions;                    // 0x013CA7D8
 extern bool g_bSaveBinaryDefinitions;                    // 0x0138E188
-namespace NDefinitionManager {
 // Layout: engine/CDefinitionManager.h with the retail 12-byte STLport containers (SymbolPathList +0x40,
 // CompilePathList +0x4c, CompiledFileName +0xb8; landed destructor 0x009B02E0).
-struct CDefinitionManager : ::CDefinitionManager {
-    const vector<CWideString>& GetSymbolPathList() const { return *(const vector<CWideString>*)SymbolPathList; }
-    const vector<CWideString>& GetCompilePathList() const { return *(const vector<CWideString>*)CompilePathList; }
+class CDefinitionManager : public CDefinitionManagerLayout {
+public:
+    const std::vector<CWideString>& GetSymbolPathList() const { return *(const std::vector<CWideString>*)SymbolPathList; }
+    const std::vector<CWideString>& GetCompilePathList() const { return *(const std::vector<CWideString>*)CompilePathList; }
     const CWideString& GetCompiledFileName() const { return *(const CWideString*)&CompiledFileName_PStringData; }
-    void CheckDependencies(const vector<CWideString>& paths);                         // 0x009B05F0
     bool LoadBinaryDefinitions(CDataInputStream& stream);                             // 0x009AFB90
     void SaveBinaryDefinitions(CDataOutputStream& stream);                            // 0x009AF7A0
-    void CreateSymbolsFromPathList(const vector<CWideString>& paths, bool clear);     // 0x009AEF60
-    void DoCompilePathList(const vector<CWideString>& paths, const CCharString& prefix);   // 0x009AF480
-    void RemoveUnusedMemory();                                                        // 0x009AE5F0
     void Compile();
+protected:
+    void CheckDependencies(const std::vector<CWideString>& paths);                    // 0x009B05F0
+    void CreateSymbolsFromPathList(const std::vector<CWideString>& paths, bool clear);     // 0x009AEF60
+    void DoCompilePathList(const std::vector<CWideString>& paths, const CCharString& prefix);   // 0x009AF480
+    void RemoveUnusedMemory();                                                        // 0x009AE5F0
 };
 void CDefinitionManager::Compile()
 {
@@ -114,5 +124,4 @@ void CDefinitionManager::Compile()
         GFGetTime();
         file.Close();
     }
-}
 }

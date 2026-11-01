@@ -1,5 +1,8 @@
-// CDefStringTable::SaveBinary(bool lock) -- unless the table is locked, write it to its file through a file stream; when asked to lock, also clear the string map and mark the table locked
-// Leaf: SaveBinary
+// CDefStringTable::SaveTable(bool lock) -- unless the table is locked, write it to its file through a file stream; when asked to lock, also clear the string map and mark the table locked
+// Leaf: ?SaveTable@CDefStringTable@@QAEX_N@Z
+// Naming (naming wave 24): Ego_r.pdb / FableWin.pdb ?SaveTable@CDefStringTable@@QAEX_N@Z -- the PDB member order GetString /
+//   GetStringAsCharArray / GetStringCRC / ReadTable / LoadTable / SaveTable is retail 0x009D49B0 / 49F0 / 4A20 / 4AB0 / 4C30 / 4CE0
+//   (labels_chunk691); its caller CScriptDefinitionManager::InitAndCompile 0x00CD3F50 already binds it. Was landed as SaveBinary.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D4CE0, length 200 bytes (+ int3 padding), `ret 4`.
 // Callees: CBaseClassNonCopyable ctor @ 0x0099A2F0 / dtor @ 0x0099A300, CWideString::CWideString() @ 0x0099AED0 / ~CWideString
 // @ 0x0099B510, CDiskFileWin32::Open(const CWideString&, FileAccessType, ulong) @ 0x0099A6A0 (write access 4, flags 4),
@@ -77,10 +80,10 @@ public:
     bool Locked;                                   // +0x34
     bool ReadOnly;                                 // +0x35
     void WriteTable(CFileDataOutputStream* stream);   // 0x009D4A50
-    void SaveBinary(bool lock);
+    void SaveTable(bool lock);
 };
 
-void CDefStringTable::SaveBinary(bool lock)
+void CDefStringTable::SaveTable(bool lock)
 {
     if (!Locked) {
         CDiskFileWin32 file;
