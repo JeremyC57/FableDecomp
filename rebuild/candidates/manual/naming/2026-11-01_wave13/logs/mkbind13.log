@@ -1,0 +1,14 @@
+Counter({'RETIRE': 156, 'ADD': 52, 'KEEP': 6}) removed lines 157 added 52
+NEWDEF 00415dd0 ?GetString@CDefString@@QBE?AVCCharString@@XZ
+NEWDEF 00658ec3 ?IsPointInside@CThingBuilding@@QBE_NABVC3DVector@@@Z
+NEWDEF 00698a30 ??BCDefString@@QBE?AVCCharString@@XZ
+NEWDEF 006c5e90 ??$GetAllThings@VCThing@@UCThingList@N_004ab4f0@@V?$CFilter_Bind2@VCThingFilter_None@@VCThingFilter_HasTC@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind2@VCThingFilter_None@@VCThingFilter_HasTC@@@@AAUCThingList@N_004ab4f0@@@Z
+NEWDEF 007f8dc0 ?PlayAnimation@CTCAnimatingObject@@AAEXABVCAnimInit@@J@Z
+NEWDEF 0082d000 ?IsPointInside@CThingBuilding@@QBE_NABVC3DVector@@@Z
+NEWDEF 00af9000 ?GFSmoothFadeValue@NParticleEngine@@YIMM@Z
+NEWDEF 00c14a50 ?DeleteData@PKCDeferredBank@@QAEXPAVCData_00c14a50@@@Z
+NEWDEF 00c14a80 ?ApplyTo@PKCDeferredBank@@QAEAAUPKCPlaybackState@@AAU2@_N1@Z
+NEWDEF 00c14b50 ?SetOptionCC@PKCDeferredBank@@UAEX_N@Z
+NEWDEF 00c14bc0 ?SetOptionCD@PKCDeferredBank@@UAEX_N@Z
+NEWDEF 00c14e40 ??0PKCDeferredBank@@QAE@PAVCThing@@PBUCDiceGameSetup@@J@Z ??_7PKCDeferredBank@@6B@ ??_GPKCDeferredBank@@UAEPAXI@Z
+NEWDEF 01223ff0 ?GSystemManager@@3VCSystemManager@@A

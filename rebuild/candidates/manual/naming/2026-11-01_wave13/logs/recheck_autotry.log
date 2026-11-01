@@ -1,0 +1,72 @@
+addr       parity           behav  name
+00658ec3   WARN SHARED_HEADER_AVAILABLE CTCVillage
+00658ec3   WARN RELOC_DUPLICATE: retail 00a01b50 bound to ?GetPItem@?$CIntelligentPointer@VCThingAICreature@@@@QBEPAVCThingAICreature@@XZ, ?GetPItem@?$CIntelligentPointer@VCThingBuilding@@@@QBEPAVCThingBuilding@@XZ
+00658ec3   RELOCATION_MATCH PASS   CTCVillage::BuildingContainsCorrectVillagers
+007f8dc0   RELOCATION_MATCH PASS   CTCAnimatingObject::PlayAnimation
+0082d000   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0082d000   RELOCATION_MATCH PASS   CThingBuilding::IsPointInside
+00917520   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00917520   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00917520   RELOCATION_MATCH PASS   CAIStateGroup_Clean::OnActivate
+00917a10   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00917a10   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00917a10   RELOCATION_MATCH PASS   CAIStateGroup_Clean::IsRunnable
+00927df0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00927df0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00927df0   RELOCATION_MATCH PASS   CAIStateGroup_SetupWares::IsRunnable
+00957f20   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00957f20   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00957f20   WARN SHARED_HEADER_AVAILABLE CThingAICreature
+00957f20   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+00957f20   WARN SHARED_HEADER_AVAILABLE CWorld
+00957f20   WARN RELOC_NAME: ?GetPWorld@CAIStateGroup_MinionReactToBurglary@@QAEPAVCWorld@@XZ -> 008fcfc0 labelled 'CAIStateGroupBase::GetWorld'
+00957f20   WARN RELOC_NAME: ?GetPlayerManager@CWorld@@QAEPAVCPlayerManager@@XZ -> 0049d9d0 labelled 'CWorld::PeekMyPlayer'
+00957f20   WARN RELOC_NAME: ?GetPlayerCharacter@CPlayerManager@@QAEPAVCThing@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+00957f20   WARN RELOC_NAME: ?CanCreatureSeeCreature@@YI_NPBVCThing@@0_N@Z -> 008645e0 labelled 'CMainGameComponent::BeginInputLoading'
+00957f20   WARN RELOC_NAME: ??0CIntelligentPointerOut@@QAE@PAVCThing@@@Z -> 0056c860 labelled 'CIntelligentPointer<const CThing>::CIntelligentPointer'
+00957f20   WARN RELOC_NAME: ??1CBaseIntelligentPointerCtor@@QAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+00957f20   RELOCATION_MATCH PASS   CAIStateGroup_MinionReactToBurglary::IsRunnable
+
+WINS: 7
+  00658ec3 RELOCATION_MATCH CTCVillage::BuildingContainsCorrectVillagers
+  007f8dc0 RELOCATION_MATCH CTCAnimatingObject::PlayAnimation
+  0082d000 RELOCATION_MATCH CThingBuilding::IsPointInside
+  00917520 RELOCATION_MATCH CAIStateGroup_Clean::OnActivate@CAIStateGroup_Clean
+  00917a10 RELOCATION_MATCH CAIStateGroup_Clean::IsRunnable@CAIStateGroup_Clean
+  00927df0 RELOCATION_MATCH CAIStateGroup_SetupWares::IsRunnable
+  00957f20 RELOCATION_MATCH CAIStateGroup_MinionReactToBurglary::IsRunnable
+addr       parity           behav  name
+00799140   WARN SHARED_HEADER_AVAILABLE CTCVillage
+00799140   WARN SHARED_HEADER_AVAILABLE CPlayer
+00799140   WARN SHARED_HEADER_AVAILABLE CTCBase
+00799140   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00799140   RELOCATION_MATCH PASS   CTCShopKeeper::CalcAreOtherPeopleInShop
+007f8f30   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+007f8f30   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007f8f30   WARN RELOC_NAME: ?GetAnimation@CAnimationSet@@QBEPBVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z -> 005dc340 labelled 'Animation_FindNthValid'
+007f8f30   WARN RELOC_NAME: ?Set@CAnimInit@@QAEXJJJJ_NKJ@Z -> 0070c050 labelled 'CAnimInit::Init'
+007f8f30   RELOCATION_MATCH PASS   CTCAnimatingObject::PlayDefaultAnimation
+00843fc0   WARN SHARED_HEADER_AVAILABLE CQuestManager
+00843fc0   RELOCATION_MATCH PASS   CCreatureAction_ActivateQuest::Initialise
+009175e0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+009175e0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+009175e0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+009175e0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+009175e0   RELOCATION_MATCH PASS   CAIStateGroup_Clean::Update
+00926c50   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00926c50   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00926c50   RELOCATION_MATCH PASS   CAIStateGroup_OpenAndCloseShop::IsRunnable
+00927ea0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00927ea0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00927ea0   RELOCATION_MATCH PASS   CAIStateGroup_SetupWares::InitCreaturePosition
+00b4fc10   WARN SHARED_HEADER_AVAILABLE CEngineShadowRenderer
+00b4fc10   RELOCATION_MATCH PASS   CEngineShadowRenderer::SetShadowMapSize
+
+WINS: 7
+  00799140 RELOCATION_MATCH CTCShopKeeper::CalcAreOtherPeopleInShop
+  007f8f30 RELOCATION_MATCH CTCAnimatingObject::PlayDefaultAnimation
+  00843fc0 RELOCATION_MATCH CCreatureAction_ActivateQuest::Initialise
+  009175e0 RELOCATION_MATCH CAIStateGroup_Clean::Update
+  00926c50 RELOCATION_MATCH CAIStateGroup_OpenAndCloseShop::IsRunnable
+  00927ea0 RELOCATION_MATCH CAIStateGroup_SetupWares::InitCreaturePosition
+  00b4fc10 RELOCATION_MATCH CEngineShadowRenderer::SetShadowMapSize

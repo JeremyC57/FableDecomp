@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00869020   WARN SHARED_HEADER_AVAILABLE CTCWeapon
+00869020   WARN RELOC_NAME: ?IsRanged@CTCWeapon@@QBE_NXZ -> 007bed60 labelled '_global::GetMember_byte0x68_007bed60'
+00869020   RELOCATION_MATCH PASS   CHitParameters::SetAsModifiedByArmour
+
+WINS: 1
+  00869020 RELOCATION_MATCH CHitParameters::SetAsModifiedByArmour

@@ -1,0 +1,1410 @@
+addr       parity           behav  name
+00401b80   WARN RELOC_NAME: ?FileInstallerSingletonRelease@@YIXXZ -> 00406df0 labelled '_global::Release_013b7d4c'
+00401b80   RELOCATION_MATCH PASS   _global::GFUninitialise
+00406cc0   WARN SHARED_HEADER_AVAILABLE CEngine
+00406cc0   WARN SHARED_HEADER_AVAILABLE CDisplayEngine
+00406cc0   RELOCATION_MATCH PASS   CUserProfileManager::CaptureBackBufferForUIBackground
+0040ed10   RELOCATION_MATCH PASS   CActionInputControl::GetDirection
+00415dd0   RELOCATION_MATCH PASS   CDefString::operator CCharString
+0041627f   WARN RELOC_NAME: ?Begin_009f5e10@CLoader@@QAEXPBDH@Z -> 009f5e10 labelled 'CInputManager::StreamInputsFromFile'
+0041627f   RELOCATION_MATCH PASS   CMainGameComponent::BeginInputLoading
+00416392   WARN SHARED_HEADER_AVAILABLE CWorld
+00416392   WARN SHARED_HEADER_AVAILABLE CNetworkClient
+00416392   RELOCATION_MATCH PASS   CMainGameComponent::PeekWorldChecksum
+0041641f   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+0041641f   WARN SHARED_HEADER_AVAILABLE CSurface
+0041641f   RELOCATION_MATCH PASS   CMainGameComponent::SetDisplayMode
+0041674a   RELOCATION_MATCH PASS   CMainGameComponent::IsTimeForServerUpdate
+004168dc   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+004168dc   WARN SHARED_HEADER_AVAILABLE CFontBank
+004168dc   WARN RELOC_NAME: ??1?$CCountedPointer@UCFont@@@@QAE@XZ -> 004057a0 labelled 'CCountedPointer<CFontBank>::Release'
+004168dc   RELOCATION_MATCH PASS   CMainGameComponent::InitialiseFonts
+00416e78   WARN SHARED_HEADER_AVAILABLE CWorld
+00416e78   WARN SHARED_HEADER_AVAILABLE CGamePlayerInterface
+00416e78   WARN RELOC_NAME: ?BeginEventPoll@CGamePlayerInterface@@QAEXXZ -> 004457f0 labelled '_global::SetMemberConst_004457f0'
+00416e78   RELOCATION_MATCH PASS   CMainGameComponent::GetInputs
+00417568   WARN RELOC_NAME: ?Format@CCharString@@QAAXPBDZZ -> 0099f1f0 labelled 'CCharString::Sprintf'
+00417568   RELOCATION_MATCH PASS   CMainGameComponent::ConsoleSetResolution
+0041799b   WARN SHARED_HEADER_AVAILABLE CWorld
+0041799b   WARN SHARED_HEADER_AVAILABLE CDisplayEngine
+0041799b   WARN RELOC_NAME: ?ChangeTextureColourDepth@CDisplayEngine@@QAEXJ@Z -> 00434dc0 labelled '_global::Nop_ret4_00434dc0'
+0041799b   WARN RELOC_NAME: ?ChangeTextureColourDepth@CWorld@@QAEXJ@Z -> 0049d830 labelled '_global::Nop_ret4_0049d830'
+0041799b   RELOCATION_MATCH PASS   CMainGameComponent::ChangeTextureColourDepth
+00418dca   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00418dca   WARN SHARED_HEADER_AVAILABLE CGameEventPackageSet
+00418dca   WARN SHARED_HEADER_AVAILABLE CNetworkClient
+00418dca   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32
+00418dca   WARN RELOC_NAME: ??0CRoughFrameCounter@@QAE@XZ -> 009f8b10 labelled 'CBaseIntelligentPointer::CBaseIntelligentPointer'
+00418dca   WARN RELOC_NAME: ?AddComponent@CComponentList@@QAEXPAUCComponentListEntry@@@Z -> 009c0190 labelled 'CDisplayManager::AddDeviceResetCallback'
+00418dca   RELOCATION_MATCH PASS   CMainGameComponent::CMainGameComponent
+0041d0a8   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0041d0a8   RELOCATION_MATCH PASS   NUISystem::CManager::PlaySoundW
+0042dc63   WARN SHARED_HEADER_AVAILABLE CGameJoystickManager
+0042dc63   WARN RELOC_NAME: ?HasExplicitMainPlayerJoystickDeviceNumber@CGameJoystickManager@@QBE_NXZ -> 0049bb50 labelled 'CActiveJoystick::IsLocked'
+0042dc63   WARN RELOC_NAME: ?GetMainPlayerJoystickDeviceNumber@CGameJoystickManager@@QBEJXZ -> 0049bb40 labelled 'CActiveJoystick::GetDeviceNumber'
+0042dc63   RELOCATION_MATCH PASS   CNewFrontendGameComponent::IsControllerDisconnected
+0042ddb3   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+0042ddb3   WARN SHARED_HEADER_AVAILABLE CFontBank
+0042ddb3   WARN RELOC_NAME: ??1?$CCountedPointer_0042fe34@UCFont@@@@QAE@XZ -> 004057a0 labelled 'CCountedPointer<CFontBank>::Release'
+0042ddb3   WARN RELOC_NAME: ??0CGraphicDataBankInit@@QAE@XZ -> 00415b80 labelled 'SNavigationLayerDefaults_00415b80::SNavigationLayerDefaults_00415b80'
+0042ddb3   WARN RELOC_NAME: ?GetBestCompressedNonAlphaTextureFormat@CDisplayManager@@QAE_NKPAVCPixelFormat@@@Z -> 009be830 labelled 'CDisplayManager::GetBestCompressedOpaqueTextureFormat'
+0042ddb3   WARN RELOC_NAME: ?CreateAndInitialize@CGraphicDataBankManager@@QAE?AV?$CCountedPointer_0042fe34@VCGraphicDataBank@@@@ABVCCharString@@ABVCGraphicDataBankInit@@_N2@Z -> 009f83d0 labelled 'CGraphicBankManager::OpenGraphicBank'
+0042ddb3   WARN RELOC_NAME: ??1?$CCountedPointer_0042fe34@VCGraphicDataBank@@@@QAE@XZ -> 00419108 labelled 'CCountedPointer<CGraphicDataBank>::Release'
+0042ddb3   RELOCATION_MATCH PASS   CNewFrontendGameComponent::InitialiseGraphics
+0042e17c   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0042e17c   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0042e17c   WARN RELOC_NAME: ?SetEnabled@CSoundManagerLH@@QAEX_N@Z -> 00991600 labelled 'CWorld::SetMiniMapEnabled'
+0042e17c   RELOCATION_MATCH PASS   CNewFrontendGameComponent::InitialiseSounds
+0042e98f   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0042e98f   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0042e98f   WARN SHARED_HEADER_AVAILABLE CManager
+  WARN leaf '?Init2@CNewFrontendGameComponent@@QAEXXZ (Ego_r.pdb AAEXXZ @ 0x0043B547, private; modelled public)' matches no symbol in 0042e98f.obj; graded the largest function
+  WARN leaf '?Init2@CNewFrontendGameComponent@@QAEXXZ (Ego_r.pdb AAEXXZ @ 0x0043B547, private; modelled public)' matches no symbol in 0042e98f.obj; graded the largest function
+0042e98f   WARN RELOC_NAME: ?SetCurrentGraphicBank@@YIXPAVCGraphicDataBank@@@Z -> 00aeaa80 labelled '_global::SetCurrentThingManager'
+0042e98f   WARN RELOC_NAME: ?GetTextBankName@NLocalisation@@YI?AVCCharString@@XZ -> 00415260 labelled '_global::GetFontBankName'
+0042e98f   WARN RELOC_NAME: ?BuildComponents@CFrontEndManager@NUISystem@@QAEX_N@Z -> 00598a1c labelled 'CFrontEndManager::Init2'
+0042e98f   RELOCATION_MATCH PASS   CNewFrontendGameComponent::Init2
+004348d0   WARN SHARED_HEADER_AVAILABLE CFadeInFadeOutBase
+004348d0   RELOCATION_MATCH PASS   CFadeInFadeOutBase::GetFadeInOutAlpha
+00438aa0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00438aa0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00438aa0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00438aa0   WARN RELOC_NAME: ?GFVXToAX@@YGMM@Z -> 009e1da0 labelled 'GFAXToVX'
+00438aa0   RELOCATION_MATCH PASS   CPlayerGui::AddScreenMessage
+00445a60   WARN SHARED_HEADER_AVAILABLE CDiskFileWin32
+00445a60   WARN RELOC_NAME: ?GetFrame@CMainGameComponent@@QAEKXZ -> 00416225 labelled '_global::GetMember_dword0x48_00416225'
+00445a60   RELOCATION_MATCH PASS   CGamePlayerInterface::SavePacketEvent
+00445b40   RELOCATION_MATCH PASS   CGamePlayerInterface_Methods::LoadInitialInfo
+0048f50c   WARN SHARED_HEADER_AVAILABLE CFontBank
+0048f50c   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0048f50c   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+0048f50c   WARN RELOC_NAME: ?GetBuffer@CWideString@@QBEPAGXZ -> 0099af00 labelled 'CWideString::operator unsigned short const *'
+0048f50c   WARN RELOC_NAME: ?Set@CWStringParser@@QAEXPAG@Z -> 00a0c8e0 labelled 'CWStringParser::Init'
+0048f50c   RELOCATION_MATCH PASS   CSubtitleRenderer::FormatTextForVWindow
+00499c50   RELOCATION_MATCH PASS   CProgressDisplay::DisplayProgress
+0049e080   WARN SHARED_HEADER_AVAILABLE CEnvironment
+0049e080   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0049e080   RELOCATION_MATCH PASS   CWorld::RenderUpdate
+004a6550   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+004a6550   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+004a6550   WARN SHARED_HEADER_AVAILABLE CQuestManager
+004a6550   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+004a6550   WARN SHARED_HEADER_AVAILABLE CIEngine
+004a6550   WARN SHARED_HEADER_AVAILABLE CDisplayEngine
+004a6550   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+004a6550   RELOCATION_MATCH PASS   CWorld::PostInit
+004cdb70   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+004cdb70   RELOCATION_MATCH PASS   CSubtitledMessage::CSubtitledMessage
+00546a50   RELOCATION_MATCH PASS   NUISystem::CZoomingComponent::Update
+00556470   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00556470   RELOCATION_MATCH PASS   NUISystem::CRedefinerList::Cancel
+00557000   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00557000   RELOCATION_MATCH PASS   NUISystem::CRedefinerList::Refresh
+0055a3e0   WARN RELOC_NAME: ?GetUIManager@@YAPAUNativeUIManager@@XZ -> 0041e5f2 labelled 'NUISystem::CManager::GetInstance'
+0055a3e0   RELOCATION_MATCH PASS   NUISystem::CDraggable::Update
+0056fad7   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience
+0056fad7   WARN SHARED_HEADER_AVAILABLE CManager
+0056fad7   WARN SHARED_HEADER_AVAILABLE CTCInventoryExperience
+0056fad7   WARN RELOC_NAME: ?PrepareScreen@CTCInventoryExperience@@QAEXXZ -> 005bc6ed labelled 'CTCInventoryBase::ScreenHook_5bc6ed'
+0056fad7   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0056fad7   WARN RELOC_NAME: ?GetStatExperience@CTCHeroExperience@@QAEJJ@Z -> 006d6510 labelled 'CTCInventoryAbilities::GetAbilityLevel'
+0056fad7   RELOCATION_MATCH PASS   CTCInventoryExperience::OpenInventory
+00587847   WARN SHARED_HEADER_AVAILABLE CTCInGameMenu
+00587847   WARN SHARED_HEADER_AVAILABLE CManager
+00587847   WARN SHARED_HEADER_AVAILABLE CDisplayEngine
+00587847   WARN SHARED_HEADER_AVAILABLE CEngine
+00587847   WARN SHARED_HEADER_AVAILABLE CTCInventory
+00587847   WARN RELOC_NAME: ?Reset@CTreePane@@QAEXXZ -> 00592ba7 labelled '_global::StdList_Clear_00592ba7'
+00587847   WARN RELOC_NAME: ?Stop@CTCInventoryEffect@@QAEXXZ -> 00562e70 labelled 'CTCHeroOnlineScoreboard::ResetScoreboard'
+00587847   WARN RELOC_NAME: ?Reset@CInventoryCamera@@QAEXXZ -> 004855a3 labelled '_global::StdList_Clear_004855a3'
+00587847   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00587847   WARN RELOC_NAME: ?ClearQuestPersistentFlags@CTCInventory@@QAEXXZ -> 005bd597 labelled 'NInventory::CTCInventoryBase::CloseInventory'
+00587847   RELOCATION_MATCH PASS   CTCInventory::ClosePCInventory
+00596763   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00596763   WARN SHARED_HEADER_AVAILABLE CObserver
+00596763   WARN SHARED_HEADER_AVAILABLE CFrontEndManager
+00596763   WARN RELOC_NAME: ?back@?$deque@PAVCComponent@NUISystem@@@std@@QAEAAPAVCComponent@NUISystem@@XZ -> 0059b039 labelled 'CScreenStack::Top'
+00596763   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00596763   WARN RELOC_NAME: ??G?$_Deque_iterator@PAVCComponent@NUISystem@@@std@@QBEHABU01@@Z -> 0059a8f3 labelled 'NThingMap::CThingMapManager::GetMemoryFootprint'
+00596763   WARN RELOC_NAME: ?push_back@?$deque@PAVCComponent@NUISystem@@@std@@QAEXABQAVCComponent@NUISystem@@@Z -> 0059b61c labelled 'CCreatureAction_FireMissileWeapon::FrameUpdate'
+00596763   RELOCATION_MATCH PASS   NUISystem::CFrontEndManager::GotoNextScreen
+0059f304   WARN SHARED_HEADER_AVAILABLE CFrontEndManager
+0059f304   WARN SHARED_HEADER_AVAILABLE CWorld
+0059f304   WARN SHARED_HEADER_AVAILABLE CManager
+0059f304   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0059f304   WARN SHARED_HEADER_AVAILABLE CTCBase
+0059f304   WARN RELOC_NAME: ?SetCurrentScreenType@CManager@NHeroInformationScreens@@QAEXJ@Z -> 0066e799 labelled '_global::SetMember_dword0x28_0066e799'
+0059f304   WARN RELOC_NAME: ?RemoveTattooAndHairCategories@CTCInventoryTrade@@QAEXXZ -> 0059d9ad labelled 'CTCInventoryTrade::ResetTradeList'
+0059f304   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0059f304   RELOCATION_MATCH PASS   CTCInventoryTrade::CloseInventory
+005bc5c6   WARN SHARED_HEADER_AVAILABLE CPlayer
+005bc5c6   WARN SHARED_HEADER_AVAILABLE CTCBase
+005bc5c6   WARN RELOC_NAME: ?GetPlayerNumber@CPlayer@@QBEJXZ -> 00487510 labelled 'CPlayer::GetJoystickDeviceNumber'
+005bc5c6   WARN RELOC_NAME: ?GetAnalogueVector@CInputEvent@@QBE?AVC2DVector@@XZ -> 00a043a0 labelled 'CInputEvent::GetJoystickPosition'
+005bc5c6   RELOCATION_MATCH PASS   CTCInventoryBase::GetRightStickPosition
+005bd3a0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+005bd3a0   RELOCATION_MATCH PASS   NInventory::CTCInventoryBase::PlayInventoryNoMovementSound
+005bdc77   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+005bdc77   WARN SHARED_HEADER_AVAILABLE CTCBase
+005bdc77   RELOCATION_MATCH PASS   CTCInventoryBase::GetInventoryGuildValidity
+005da540   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+005da540   RELOCATION_MATCH PASS   CTCWeapon::GetUnsheatheAnim
+005db6b0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+005db6b0   WARN SHARED_HEADER_AVAILABLE C3DAnimationInfo
+005db6b0   WARN SHARED_HEADER_AVAILABLE CMeshDataBank
+005db6b0   WARN SHARED_HEADER_AVAILABLE CWorld
+005db6b0   WARN RELOC_ALIAS: __CIacos -> 00bfeba2 is the import thunk 'MSVCR71.DLL::_CIacos'
+005db6b0   RELOCATION_MATCH PASS   _global::GetRotationInAnimationBetweenTimes
+005ec7c0   WARN SHARED_HEADER_AVAILABLE CFontBank
+005ec7c0   WARN SHARED_HEADER_AVAILABLE CIEngine
+005ec7c0   WARN SHARED_HEADER_AVAILABLE CTCTavernGame
+005ec7c0   WARN RELOC_NAME: ?AddDefaultHandle_005ed940@CHandleVector@@QAEXXZ -> 005ed940 labelled 'CEnginePrimitiveRenderer::AddPrimitive'
+005ec7c0   RELOCATION_MATCH PASS   CTCTavernGame::RenderText
+005ee6bf   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+005ee6bf   WARN SHARED_HEADER_AVAILABLE CTCInventoryAbilities
+005ee6bf   RELOCATION_MATCH PASS   CTCInventoryAbilities::GetAbilityMaximumLevelWithRenown
+005fce60   WARN SHARED_HEADER_AVAILABLE CFrontEndManager
+005fce60   WARN SHARED_HEADER_AVAILABLE CWorld
+005fce60   WARN SHARED_HEADER_AVAILABLE CManager
+005fce60   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+005fce60   WARN SHARED_HEADER_AVAILABLE CTCBase
+005fce60   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+005fce60   WARN RELOC_NAME: ?SetScreen@CManager@NHeroInformationScreens@@QAEXJ@Z -> 0066e799 labelled '_global::SetMember_dword0x28_0066e799'
+005fce60   WARN RELOC_NAME: ?ClearAllLists@CTCInventoryMap@@QAEXXZ -> 005fc510 labelled 'CTCInventoryMap::ResetPrimitiveHandles'
+005fce60   RELOCATION_MATCH PASS   CTCInventoryMap::vfunc_31
+00621720   WARN SHARED_HEADER_AVAILABLE CFrontEndManager
+00621720   WARN SHARED_HEADER_AVAILABLE CWorld
+00621720   WARN SHARED_HEADER_AVAILABLE CManager
+00621720   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00621720   WARN SHARED_HEADER_AVAILABLE CTCBase
+00621720   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00621720   WARN RELOC_NAME: ?SetScreen@CManager@NHeroInformationScreens@@QAEXJ@Z -> 0066e799 labelled '_global::SetMember_dword0x28_0066e799'
+00621720   WARN RELOC_NAME: ?__destroy_aux@@YIXPAUCQuestCard@@0ABU__false_type@@@Z -> 005c2a8e labelled '_global::ForEachElem0x2c__CCreatureAction_FireMiss_005c2a8e'
+00621720   RELOCATION_MATCH PASS   CTCInventoryQuests::CloseInventoryPC
+00629de0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00629de0   WARN SHARED_HEADER_AVAILABLE CGameEvent
+00629de0   WARN SHARED_HEADER_AVAILABLE CWorld
+00629de0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00629de0   RELOCATION_MATCH PASS   CWorld::EAAnswerQuestion
+0063d960   RELOCATION_MATCH PASS   CWorldMap::FindLastUnblockedGroundPositionAndReportCollision
+00643bfc   RELOCATION_MATCH PASS   NPlayerGui::GFToScreenScaled
+00643cda   RELOCATION_MATCH PASS   NPlayerGui::GFAnchorToBottomLeft
+0064560d   WARN SHARED_HEADER_AVAILABLE CList
+0064560d   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0064560d   WARN RELOC_NAME: ??1CFontPointer@@QAE@XZ -> 004057a0 labelled 'CCountedPointer<CFontBank>::Release'
+0064560d   WARN RELOC_NAME: ?IsHighlighted@SScriptLine@@QBE_NXZ -> 004381b0 labelled 'CScreenMessage::IsHardCoded'
+0064560d   RELOCATION_MATCH PASS   NPlayerGui::CDrawScriptScreenText::Draw
+00646010   WARN SHARED_HEADER_AVAILABLE CFontBank
+00646010   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00646010   WARN RELOC_NAME: ?LongToWideString@@YI?AVCWideString@@J@Z -> 00405f00 labelled '_global::GFIntToWideString'
+00646010   RELOCATION_MATCH PASS   NPlayerGui::CCrimeStatBar::DrawStatBarOnLeft
+00646b12   RELOCATION_MATCH PASS   NPlayerGui::CStatBar::UpdateChangeTexts
+0065431d   WARN RELOC_NAME: ??1CFontPointer@@QAE@XZ -> 004057a0 labelled 'CCountedPointer<CFontBank>::Release'
+0065431d   RELOCATION_MATCH PASS   NPlayerGui::CStatBar::CStatBar
+00658ec3   WARN SHARED_HEADER_AVAILABLE CTCVillage
+00658ec3   WARN RELOC_DUPLICATE: retail 00a01b50 bound to ?GetPItem@?$CIntelligentPointer@VCThingAICreature@@@@QBEPAVCThingAICreature@@XZ, ?GetPItem@?$CIntelligentPointer@VCThingBuilding@@@@QBEPAVCThingBuilding@@XZ
+00658ec3   RELOCATION_MATCH PASS   CTCVillage::BuildingContainsCorrectVillagers
+006622d0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+006622d0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+006622d0   WARN RELOC_NAME: ?SetFlag_00863260@CThingBodyReorienter@@QAEX_N@Z -> 00863260 labelled '_global::SetMember_byte0x8_00863260'
+006622d0   RELOCATION_MATCH PASS   CThingCreatureBase::UpdateBodyReorientation
+0066ace0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0066ace0   WARN SHARED_HEADER_AVAILABLE CTCBase
+0066ace0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0066ace0   RELOCATION_MATCH PASS   CTCSoundPlayer::PlayUnattachedSample
+0066add0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0066add0   RELOCATION_MATCH PASS   CTCSoundPlayer::StopAttachedSound
+0066ae60   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0066ae60   RELOCATION_MATCH PASS   CTCSoundPlayer::IsAttachedSoundLoadedAndPlaying
+0066afa0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0066afa0   RELOCATION_MATCH PASS   CTCSoundPlayer::SetSpecificSamplePitch
+0066b080   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0066b080   WARN SHARED_HEADER_AVAILABLE CTCBase
+0066b080   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0066b080   RELOCATION_MATCH PASS   CTCSoundPlayer::InternalPlayAttachedSample
+0066ba80   WARN SHARED_HEADER_AVAILABLE CBankFile
+0066ba80   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0066ba80   RELOCATION_MATCH PASS   CTCSoundPlayer::PlayAttachedDialogue
+0066bdf0   WARN SHARED_HEADER_AVAILABLE CTCBase
+0066bdf0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0066bdf0   WARN RELOC_NAME: ?GetPotentialCriteriaStrings@CTCSoundPlayer@@QAEXABVCCharString@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z -> 0066bc10 labelled 'Sound_AppendAbilityNameToDescription'
+0066bdf0   RELOCATION_MATCH PASS   CTCSoundPlayer::PlayUnattachedCriteria
+0066f320   RELOCATION_MATCH PASS   CInputTypeXboxPadLeftStickEvent_Methods::IsEventOfThisTypeInQueue
+0066f440   RELOCATION_MATCH PASS   CInputTypeMouseMovementEvent_Methods::IsEventOfThisTypeInQueue
+0066f5c0   WARN RELOC_NAME: ?GetValue@CInputEvent@@QBEMXZ -> 00a03bb0 labelled 'CInputEvent::GetMouseWheel'
+0066f5c0   RELOCATION_MATCH PASS   CInputTypeMouseWheelMovementDownEvent::IsEventOfThisType
+0066f6d0   WARN SHARED_HEADER_AVAILABLE CInputTypeMouseButtonEvent
+0066f6d0   RELOCATION_MATCH PASS   CInputTypeMouseButtonEvent::IsEventOfThisTypeInQueue
+0066f7d0   RELOCATION_MATCH PASS   CInputTypeXboxPadLeftStickEvent::GetControlDirection
+0066fb80   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0066fb80   WARN SHARED_HEADER_AVAILABLE CPlayer
+0066fb80   WARN SHARED_HEADER_AVAILABLE CTCBase
+0066fb80   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0066fb80   RELOCATION_MATCH PASS   CTCCoopSpirit::UpdateLocalJostling
+00698a30   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00698a30   WARN RELOC_NAME: ?GetString@CDefString@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator CCharString'
+00698a30   RELOCATION_MATCH PASS   _global::PlayCameraSoundThroughObservedThing
+006b14b0   RELOCATION_MATCH PASS   CTCPhysicsBase::HasPositiveMass
+006b1900   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+006b1900   WARN SHARED_HEADER_AVAILABLE CDefPointer
+006b1900   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+006b1900   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+006b1900   RELOCATION_MATCH PASS   CAtmosProcess::MixAtmos
+006b1f30   WARN RELOC_NAME: ?GetReverbSettings@CThingBuilding@@QBEXAAW4EReverbEnvironmentType@@AAM@Z -> 0082d8c0 labelled 'CThingBuilding::GetReverbEnvironment'
+006b1f30   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+006b1f30   RELOCATION_MATCH PASS   CAtmosProcess::UpdateInsideBuildings
+006bd8a0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+006bd8a0   RELOCATION_MATCH PASS   CMusicManager::UpdateCurrentMusicOffset
+006c5e90   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+006c5e90   WARN SHARED_HEADER_AVAILABLE CTCCreatureOpinionOfHero
+006c5e90   WARN SHARED_HEADER_AVAILABLE CTCBase
+006c5e90   WARN RELOC_NAME: ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 labelled 'CTCBase::GetThingSearchTools'
+006c5e90   WARN RELOC_NAME: ??1CThingList@N_004ab4f0@@QAE@XZ -> 004ab4f0 labelled '_global::StdList_Clear_004ab4f0'
+006c5e90   RELOCATION_MATCH PASS   CTCHeroOpinionDeedLog::IsDeedWitnessed
+006cb6e0   WARN SHARED_HEADER_AVAILABLE CWorldMap
+006cb6e0   WARN SHARED_HEADER_AVAILABLE CNavigatorBase
+006cb6e0   WARN SHARED_HEADER_AVAILABLE CTCBase
+006cb6e0   RELOCATION_MATCH PASS   CTCCreatureNavigation::GetNearbyWanderPosition
+006cb840   WARN SHARED_HEADER_AVAILABLE CWorldMap
+006cb840   WARN SHARED_HEADER_AVAILABLE CNavigatorBase
+006cb840   WARN SHARED_HEADER_AVAILABLE CTCBase
+006cb840   RELOCATION_MATCH PASS   CTCCreatureNavigation::GetNearestFleePosition
+006e2860   WARN SHARED_HEADER_AVAILABLE CTCBase
+006e2860   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+006e2860   WARN RELOC_NAME: ?FindValueForSymbol@CSymbolMap@@QAEPAXJ@Z -> 009916f0 labelled 'CSymbolMap::FindFirstSymbolWithVal'
+006e2860   WARN RELOC_NAME: ?FindFirstValue@CSymbolMap@@QAEPAXXZ -> 00991720 labelled '_global::ElemLoop0x24_00991720'
+006e2860   RELOCATION_MATCH PASS   CTCTalk::GetPLipSyncBank
+006e29a0   WARN SHARED_HEADER_AVAILABLE CLipSyncDataBank
+006e29a0   WARN SHARED_HEADER_AVAILABLE CTCBase
+006e29a0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+006e29a0   WARN RELOC_NAME: ?FindValueForSymbol@CSymbolMap@@QAEPAXJ@Z -> 009916f0 labelled 'CSymbolMap::FindFirstSymbolWithVal'
+006e29a0   WARN RELOC_NAME: ?FindFirstValue@CSymbolMap@@QAEPAXXZ -> 00991720 labelled '_global::ElemLoop0x24_00991720'
+006e29a0   RELOCATION_MATCH PASS   CTCTalk::PlayLipMovement
+006e3440   RELOCATION_MATCH PASS   NSpeechGainManager::UpdateDialogueElement
+006e93c0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+006e93c0   RELOCATION_MATCH PASS   CCombatManager::IsCreatureOnRotatingCombatRing
+006ea770   RELOCATION_MATCH PASS   CCombatManager::GetPreferredPos
+007032f0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007032f0   RELOCATION_MATCH PASS   CThingObject::OnCreate
+00705c30   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+00705c30   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00705c30   RELOCATION_MATCH PASS   CTCCarryable::vfunc_6
+00713ee0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00713ee0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00713ee0   WARN RELOC_NAME: ?Get2DDistance@@YIMABVC2DVector@@0@Z -> 009e1ad0 labelled '_global::GFGet2DBoxDistance'
+00713ee0   WARN RELOC_NAME: ?GetSneakSpeedTowards@CThing@@QAEMABVC3DVector@@@Z -> 00664cb0 labelled 'CThingCreatureBase::GetMaxSneakingSpeed'
+00713ee0   RELOCATION_MATCH PASS   NTCScriptedControl::CActionFollowCreature::Update
+0071c7c0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+0071c7c0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0071c7c0   WARN SHARED_HEADER_AVAILABLE CTCBase
+0071c7c0   WARN RELOC_NAME: ?GetString@CDefString@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator CCharString'
+0071c7c0   RELOCATION_MATCH PASS   CTCHeroMorph::AddParticles
+0071de80   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+0071de80   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0071de80   WARN SHARED_HEADER_AVAILABLE CTCBase
+0071de80   WARN RELOC_NAME: ?Clear@CTextureMapSet@@QAEXXZ -> 006ca8b0 labelled 'SetStaticCast_NUISystem::CComponent_'
+0071de80   WARN RELOC_NAME: ?MakeCompositeHeap@@YIXPAUCCompositeTextureEntry@@0UCCompositeTextureLess@@@Z -> 00721fe0 labelled 'std::sort<std::pair<long, CTCHeroMorph::CTextureLayer> *, CKeyPairCompareLess<long, CTCHeroMorph::CTextureLayer>>'
+0071de80   WARN RELOC_NAME: ?Set@CTextureMapSet@@QAEXJPBE@Z -> 006ca950 labelled 'CEngineTextureMorphSet::AddTextureMorph'
+0071de80   WARN RELOC_NAME: ?RemoveMorphs@CTCTextureMorphs@@QAEXJ@Z -> 00786580 labelled 'CSkeletalMorph::ClearByTag'
+0071de80   WARN RELOC_NAME: ?InsertionSort@@YIXPAUCTextureMorph@@0UCTextureMorphLess@@@Z -> 007212d0 labelled 'std::__insertion_sort<std::pair<CSkeletalMorphs::CEntry, float> *, CIsSkeletalMorphLowerPriorityThan>'
+0071de80   WARN RELOC_NAME: ?AddMorph@CTCTextureMorphs@@QAEXJABVCCharString@@M@Z -> 00786670 labelled 'CTCSkeletalMorph::AddSkeletalMorph'
+0071de80   RELOCATION_MATCH PASS   CTCHeroMorph::UpdateTextureMorphs
+007235e0   WARN RELOC_NAME: ?GetAirResistance_006afe00@CTCPhysicsBase@@QAEMXZ -> 006afe00 labelled 'CTCPhysicsBase::GetMass'
+007235e0   RELOCATION_MATCH PASS   CTCPhysicsStandard::vfunc_38
+00725290   WARN SHARED_HEADER_AVAILABLE CWorldMap
+00725290   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00725290   RELOCATION_MATCH PASS   CTCPhysicsControlled::UpdateOnSurface
+00745730   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00745730   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+00745730   WARN RELOC_NAME: ?RemovePerceivingThing@CPlayerGui@@QAEXPAVCThing@@@Z -> 00437900 labelled '_global::Forward_RemoveThing_via0x1b8_00437900'
+00745730   WARN RELOC_NAME: ?SetAsDirectlyAwareOfPerceivedThing_00744730@CTCPerceiveThing@@QAEXXZ -> 00744730 labelled 'CTCPerceiveThing::SetLastAwareInfo'
+00745730   WARN RELOC_NAME: ?GetGameSubsystem@CTCPerceiveThing@@QBEPAUCGameSubsystem@@XZ -> 00686d60 labelled 'CTCBase::PeekComponent'
+00745730   RELOCATION_MATCH PASS   CTCPerceiveThing::UpdatePerception
+007479b0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007479b0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+007479b0   WARN SHARED_HEADER_AVAILABLE CStealthDef
+007479b0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007479b0   WARN RELOC_NAME: ?GetHearabilityModifier@CTCStealth@@QAEMXZ -> 007475c0 labelled 'CTCHearabilityManager::GetSoundRadiusWithModifiers'
+007479b0   RELOCATION_MATCH PASS   CTCStealth::UpdateHearability
+0074ff60   RELOCATION_MATCH PASS   COpenCloseHelper::FrameUpdate
+00751970   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00751970   RELOCATION_MATCH PASS   CTCLook::GetBodySettingsSlowInFastOut
+00751e80   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00751e80   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00751e80   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+00751e80   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00751e80   WARN RELOC_NAME: ?AngleBetweenPositions@@YIMABVC3DVector@@0@Z -> 00661540 labelled '_global::GFGetAngleXYTo'
+00751e80   RELOCATION_MATCH PASS   CTCLook::GetTurningAngles
+00752930   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00752930   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+00752930   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00752930   WARN RELOC_NAME: ?AngleBetweenPositions@@YIMABVC3DVector@@0@Z -> 00661540 labelled '_global::GFGetAngleXYTo'
+00752930   WARN RELOC_NAME: ?AngleYZBetweenPositions@@YIMABVC3DVector@@0@Z -> 00754e70 labelled '_global::GFGetAngleYZTo'
+00752930   RELOCATION_MATCH PASS   CTCLook::SetEyesLooking
+  WARN leaf 'Validate' matches no symbol in 0075cdf0.obj; graded the largest function
+  WARN leaf 'Validate' matches no symbol in 0075cdf0.obj; graded the largest function
+0075cdf0   RELOCATION_MATCH PASS   CTCCameraPointScripted::Validate
+00766330   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00766330   WARN SHARED_HEADER_AVAILABLE CWorld
+00766330   WARN RELOC_CONFLICT: ??$GetSubDef@VCAugmentationDef@@@CDefClassBase@@QBE_NAAV?$CDefPointer@VCAugmentationDef@@@@@Z -> 0042b248 here, 0042af9e in landed 005bec92
+00766330   RELOCATION_MATCH PASS   CTCObjectAugmentations::GetStaminaToAddThisFrame
+0077c360   RELOCATION_MATCH PASS   CLoopedRange::GetFraction
+00799140   WARN SHARED_HEADER_AVAILABLE CTCVillage
+00799140   WARN SHARED_HEADER_AVAILABLE CPlayer
+00799140   WARN SHARED_HEADER_AVAILABLE CTCBase
+00799140   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00799140   RELOCATION_MATCH PASS   CTCShopKeeper::CalcAreOtherPeopleInShop
+007c04a0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+007c04a0   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+007c04a0   WARN SHARED_HEADER_AVAILABLE CWorld
+007c04a0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007c04a0   WARN RELOC_NAME: ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 labelled 'CTCBase::GetThingSearchTools'
+007c04a0   WARN RELOC_NAME: ?GetAllThingsInRoughArea@CThingSearchTools@@QBE_NABVC2DBoxI@@ABUCThingFilter_All@@AAUCThingVector@@@Z -> 007197c0 labelled 'CThingSearchTools::GetAllThingsInRoughArea<CThingCreatureBase, std::vector<CThingCreatureBase*>, CThingFilter_None>'
+007c04a0   WARN RELOC_NAME: ?Find@CMap@CSoundDef@@QAEPAUCSoundGroup@@ABVCCharString@@@Z -> 0065fba4 labelled 'CSoundMap::GetPSoundPair'
+007c04a0   WARN RELOC_NAME: ?PlaySound@CTCAI@@QAEXABEABVCSoundInit@@JJ@Z -> 0066ace0 labelled 'CTCSoundPlayer::PlayUnattachedSample'
+007c04a0   RELOCATION_MATCH PASS   CTCShotDefinitionBase::UpdateCreatureAwarenessOfMe
+007ca670   WARN SHARED_HEADER_AVAILABLE CTCBase
+007ca670   WARN SHARED_HEADER_AVAILABLE CDisplayEngine
+007ca670   RELOCATION_MATCH PASS   CTCHeroReceiveItems::PrepareToShowItems
+007dff90   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+007dff90   WARN SHARED_HEADER_AVAILABLE CWorld
+007dff90   WARN SHARED_HEADER_AVAILABLE CTCBase
+007dff90   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+007dff90   RELOCATION_MATCH PASS   CTCTeleporter::StartTeleporting
+007e5680   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+007e5680   WARN SHARED_HEADER_AVAILABLE CBettingDef
+007e5680   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007e5680   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+007e5680   RELOCATION_MATCH PASS   CTCBetting::DrawPreparePrimitivesForRendering
+007e7c90   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer
+007e7c90   WARN RELOC_NAME: ?push_back_default@?$CRetailVector@VCEnginePrimitiveHandle@@@@QAEXXZ -> 005ed940 labelled 'CEnginePrimitiveRenderer::AddPrimitive'
+007e7c90   RELOCATION_MATCH PASS   CTCFireheartMinigame::DrawPreparePrimitivesForRendering
+007f8dc0   RELOCATION_MATCH PASS   CTCAnimatingObject::PlayAnimation
+007fbc90   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+007fbc90   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007fbc90   WARN SHARED_HEADER_AVAILABLE CWorld
+007fbc90   WARN SHARED_HEADER_AVAILABLE CPlayer
+007fbc90   WARN SHARED_HEADER_AVAILABLE CTCBase
+007fbc90   WARN RELOC_NAME: ?GetWorld_00686d60@CTCBase@@QAEPAVCWorld@@XZ -> 00686d60 labelled 'CTCBase::PeekComponent'
+007fbc90   WARN RELOC_NAME: ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 labelled 'CTCBase::GetThingSearchTools'
+007fbc90   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+007fbc90   RELOCATION_MATCH PASS   CTCKraken::GetCentreMarker
+00805a90   RELOCATION_MATCH PASS   CGetBestTargetInDirection::operator()
+0080c190   RELOCATION_MATCH PASS   _global::GetExplosionEffectInterpolate
+  WARN leaf 'vfunc_7' matches no symbol in 00815070.obj; graded the largest function
+  WARN leaf 'vfunc_7' matches no symbol in 00815070.obj; graded the largest function
+00815070   RELOCATION_MATCH PASS   NHitLocations::CPhysicalPrimitiveMesh::vfunc_7
+00815aa0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00815aa0   RELOCATION_MATCH PASS   NHitLocations::CPhysicalPrimitiveCylinder::GetBoundingSphere
+008203a0   WARN SHARED_HEADER_AVAILABLE CScriptedMapBrush
+008203a0   WARN SHARED_HEADER_AVAILABLE CHeightMapCell
+008203a0   WARN RELOC_ALIAS: __CIpow -> 00bfeb40 is the import thunk 'MSVCR71.DLL::_CIpow'
+008203a0   WARN RELOC_NAME: ?GetWorldBox@CMapRegionTable@@QAE?AVC2DBoxI@@JABV2@@Z -> 004fc560 labelled 'CWorldMap::ConvertLocalMapAreaToWorldArea'
+008203a0   RELOCATION_MATCH PASS   CMap::ApplyScriptedMapBrushUpdate
+0082d000   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0082d000   RELOCATION_MATCH PASS   CThingBuilding::IsPointInside
+00836740   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00836740   RELOCATION_MATCH PASS   CThingSoundEmitter::OnCreate
+00836840   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00836840   RELOCATION_MATCH PASS   CThingSoundEmitter::PlaySoundEvent
+008368a0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+008368a0   RELOCATION_MATCH PASS   CThingSoundEmitter::IsSampleLoadedAndPlaying
+008368f0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+008368f0   RELOCATION_MATCH PASS   CThingSoundEmitter::ReleaseLoop
+008385b0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+008385b0   RELOCATION_MATCH PASS   CThingNoise::Create
+00851bd0   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience
+00851bd0   WARN RELOC_NAME: ?GetTrainableStatLevel@CTCHeroExperience@@QBEJW4EHeroTrainableStatType@@@Z -> 006d6520 labelled 'CTCInventoryAbilities::GetAbilityLevel'
+00851bd0   RELOCATION_MATCH PASS   CHeroAbilityStatWeight::GetParameter
+00853830   RELOCATION_MATCH PASS   NCameraModes::CScriptModuleOpenChest::Update
+00856040   RELOCATION_MATCH PASS   _global::ProcessFramesRunningForOnHitWithParams
+  WARN leaf '?ProcessPossibleCreatureStrikeEvent@CCombatActionBase@@IAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z' matches no symbol in 00858130.obj; graded the largest function
+  WARN leaf '?ProcessPossibleCreatureStrikeEvent@CCombatActionBase@@IAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z' matches no symbol in 00858130.obj; graded the largest function
+00858130   WARN RELOC_NAME: ?_M_insert_overflow@?$CVector@PAVCThingGameObject@@@@QAEXPAPAVCThingGameObject@@ABQAV2@ABU__true_type@@I_N@Z -> 00788ffc labelled '_global::Vector_Assign'
+00858130   RELOCATION_MATCH PASS   CCombatActionBase::ProcessPossibleCreatureStrikeEvent
+  WARN leaf '?ProcessPossibleObjectStrikeEvent@CCombatActionBase@@IAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z' matches no symbol in 008587b0.obj; graded the largest function
+  WARN leaf '?ProcessPossibleObjectStrikeEvent@CCombatActionBase@@IAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z' matches no symbol in 008587b0.obj; graded the largest function
+008587b0   WARN RELOC_NAME: ?_M_insert_overflow@?$CVector@PAVCThingGameObject@@@@QAEXPAPAVCThingGameObject@@ABQAV2@ABU__true_type@@I_N@Z -> 00788ffc labelled '_global::Vector_Assign'
+008587b0   RELOCATION_MATCH PASS   CCombatActionBase::ProcessPossibleObjectStrikeEvent
+0085f8d0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0085f8d0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0085f8d0   RELOCATION_MATCH PASS   NCreatureMode::IsValidRangedWeaponTargetForShooter
+00866e80   RELOCATION_MATCH PASS   CCombatAction_GenericStrikeResponseKnockdownRecoverBase::FinishAction
+00870d70   RELOCATION_MATCH PASS   NCreatureAction::CActionEventAddObject::SetDataFromString
+00872490   WARN RELOC_ALIAS: __CIacos -> 00bfeba2 is the import thunk 'MSVCR71.DLL::_CIacos'
+00872490   RELOCATION_MATCH PASS   NCameraModes::CZTargetNew::InitialiseTransitionVariables
+008754a0   RELOCATION_MATCH PASS   NCameraModes::CTools::GetThemePointIntersectionFromTo
+0087e860   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0087e860   WARN RELOC_NAME: ?SetSuspendAnimation@CThingAICreature@@QAEX_NPAX@Z -> 00833a10 labelled 'CThingAICreature::SuspendAI'
+0087e860   RELOCATION_MATCH PASS   CCombatAction_KickThingOnGround::Initialise
+0088f610   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+0088f610   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0088f610   RELOCATION_MATCH PASS   CGameScriptInterface::IsSoundPlaying
+0088f660   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+0088f660   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0088f660   RELOCATION_MATCH PASS   CGameScriptInterface::StopSound
+008912a0   WARN SHARED_HEADER_AVAILABLE CWorld
+008912a0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+008912a0   WARN RELOC_NAME: ?CGSIStopMusic_StopEvent@@YIXPAUCGSIStopMusicEvent@@@Z -> 006bdf90 labelled 'CMusicManager::ClearCinematicOverridingMusicSet'
+008912a0   WARN RELOC_NAME: ?CGSIStopMusic_ResumeEvent@@YIXPAUCGSIStopMusicEvent@@@Z -> 006bdef0 labelled 'CMusicManager::ClearOverridingMusicSet'
+008912a0   RELOCATION_MATCH PASS   CGameScriptInterface::StopOverrideMusic
+00892df0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00892df0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00892df0   WARN RELOC_NAME: ?GetIndex@@YIHPAUCRumbleTarget@@@Z -> 004c7ca0 labelled 'CThing::GetJoystickDeviceNumber'
+00892df0   RELOCATION_MATCH PASS   CGameScriptInterface::ClearAllRumbles
+0089bdf0   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing
+0089bdf0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0089bdf0   RELOCATION_MATCH PASS   CGameScriptInterface::EntitySetFacingAngle
+008cffe0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+008cffe0   RELOCATION_MATCH PASS   InitFromThing
+008e52f0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsStandard
+008e52f0   RELOCATION_MATCH PASS   CTCPhysicsStandard::CalculateNoStepsForStepBasedMovement
+008e5f00   WARN SHARED_HEADER_AVAILABLE CWorldMap
+008e5f00   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+008e5f00   RELOCATION_MATCH PASS   CTCPhysicsStandard::PerformForceUpdates
+008ea220   WARN RELOC_NAME: ?GetChargeFraction@CTCProjectileCharge@@QBEMXZ -> 00789a70 labelled '_global::GetMember_float0x20_00789a70'
+008ea220   WARN RELOC_ALIAS: __CIpow -> 00bfeb40 is the import thunk 'MSVCR71.DLL::_CIpow'
+008ea220   RELOCATION_MATCH PASS   NCreatureMode::CModeStrafe::FrameUpdate
+008ecac0   WARN SHARED_HEADER_AVAILABLE CThingPhysical
+008ecac0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+008ecac0   WARN RELOC_NAME: ?GetHealthPercentage@CThingPhysical@@QBEMXZ -> 006a4e40 labelled 'NParticleEngine::CParticleSystem::GetNormalisedTime'
+008ecac0   RELOCATION_MATCH PASS   CTCDegradableBase::OnParentHealthChanged
+009175e0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+009175e0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+009175e0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+009175e0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+009175e0   RELOCATION_MATCH PASS   CAIStateGroup_Clean::Update
+00926c50   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00926c50   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00926c50   RELOCATION_MATCH PASS   CAIStateGroup_OpenAndCloseShop::IsRunnable
+00927ea0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00927ea0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00927ea0   RELOCATION_MATCH PASS   CAIStateGroup_SetupWares::InitCreaturePosition
+0093c6d0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0093c6d0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0093c6d0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0093c6d0   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing
+0093c6d0   RELOCATION_MATCH PASS   CAIStateGroup_StealthSeekEnemy::SetWhatsThatAnimation
+00957f20   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00957f20   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00957f20   WARN SHARED_HEADER_AVAILABLE CThingAICreature
+00957f20   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+00957f20   WARN SHARED_HEADER_AVAILABLE CWorld
+00957f20   WARN RELOC_NAME: ?GetPWorld@CAIStateGroup_MinionReactToBurglary@@QAEPAVCWorld@@XZ -> 008fcfc0 labelled 'CAIStateGroupBase::GetWorld'
+00957f20   WARN RELOC_NAME: ?GetPlayerManager@CWorld@@QAEPAVCPlayerManager@@XZ -> 0049d9d0 labelled 'CWorld::PeekMyPlayer'
+00957f20   WARN RELOC_NAME: ?GetPlayerCharacter@CPlayerManager@@QAEPAVCThing@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+00957f20   WARN RELOC_NAME: ?CanCreatureSeeCreature@@YI_NPBVCThing@@0_N@Z -> 008645e0 labelled 'CMainGameComponent::BeginInputLoading'
+00957f20   WARN RELOC_NAME: ??0CIntelligentPointerOut@@QAE@PAVCThing@@@Z -> 0056c860 labelled 'CIntelligentPointer<const CThing>::CIntelligentPointer'
+00957f20   WARN RELOC_NAME: ??1CBaseIntelligentPointerCtor@@QAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+00957f20   RELOCATION_MATCH PASS   CAIStateGroup_MinionReactToBurglary::IsRunnable
+009647c0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+009647c0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+009647c0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+009647c0   WARN RELOC_NAME: ??0CIntelligentPointerThing@@QAE@PAVCThing@@@Z -> 004a96f0 labelled 'CIntelligentPointer<CThing>::CIntelligentPointer'
+009647c0   WARN RELOC_NAME: ??1CCreatureAction_PickUpGenericBox@@UAE@XZ -> 007120d0 labelled '_global::Dtor_CCreatureActionBaseBase_007120d0'
+009647c0   RELOCATION_MATCH PASS   CAIStateGroup_StealStealableItem::Update
+00a0c450   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00a0c450   WARN RELOC_ALIAS: __CIacos -> 00bfeba2 is the import thunk 'MSVCR71.DLL::_CIacos'
+00a0c450   RELOCATION_MATCH PASS   CCamera::GetAngleXZ
+00a18ea0   WARN SHARED_HEADER_AVAILABLE CNavigatorFlyer
+00a18ea0   RELOCATION_MATCH PASS   CNavigatorFlyer::MoveToPos
+00a39fe0   RELOCATION_MATCH PASS   C2DBoxI::ClipLineTo
+00a560a0   RELOCATION_MATCH PASS   CMatrix3x4::IsIdentity
+00a57bd0   RELOCATION_MATCH PASS   C2DLineF::IntersectsWith
+00a88c50   RELOCATION_MATCH PASS   CQuaternion::Equals
+00adebc0   RELOCATION_MATCH PASS   C3DBoundingBox::CalculateMatrix
+00ae1600   RELOCATION_MATCH PASS   CParticleProgram::PrepareForRendering
+00af9000   RELOCATION_MATCH PASS   NParticleEngine::CPSCLight::SmoothFadeValue
+00b4fc10   WARN SHARED_HEADER_AVAILABLE CEngineShadowRenderer
+00b4fc10   RELOCATION_MATCH PASS   CEngineShadowRenderer::SetShadowMapSize
+00b61b30   WARN SHARED_HEADER_AVAILABLE CEngineSkyRenderer
+00b61b30   RELOCATION_MATCH PASS   CEngineSkyRenderer::BuildOuterSkyMesh
+00bcbc00   RELOCATION_MATCH PASS   CEngineInternalPrimitiveSpriteTrail::Update
+00c14a80   RELOCATION_MATCH PASS   PKCPlaybackTemplate::ApplyTo
+00c14bc0   RELOCATION_MATCH PASS   CSettingsProxy_012b29f8::SetOptionCD
+00ec8230   WARN RELOC_CONFLICT: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 here, 00415dd0 in landed 0071c7c0
+00ec8230   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 labelled 'CDefString::operator_class_CCharString'
+00ec8230   RELOCATION_MATCH PASS   NScript::CV_SickChildScript::CManInLove::OnPredicateFail
+
+WINS: 157
+  00401b80 RELOCATION_MATCH _global::GFUninitialise
+  00406cc0 RELOCATION_MATCH CUserProfileManager::CaptureBackBufferForUIBackground
+  0040ed10 RELOCATION_MATCH CActionInputControl::GetDirection
+  00415dd0 RELOCATION_MATCH CDefString::?GetString@CDefString@@QBE?AVCCharString@@XZ
+  0041627f RELOCATION_MATCH CMainGameComponent::BeginInputLoading
+  00416392 RELOCATION_MATCH CMainGameComponent::?PeekWorldChecksum@CMainGameComponent@@QBEKXZ
+  0041641f RELOCATION_MATCH CMainGameComponent::?SetDisplayMode@CMainGameComponent@@QAEXKKE@Z
+  0041674a RELOCATION_MATCH CMainGameComponent::?IsTimeForServerUpdate@CMainGameComponent@@QBE_NJ@Z
+  004168dc RELOCATION_MATCH CMainGameComponent::InitialiseFonts
+  00416e78 RELOCATION_MATCH CMainGameComponent::GetInputs
+  00417568 RELOCATION_MATCH CMainGameComponent::?ConsoleSetResolution@CMainGameComponent@@KIXAAV1@ABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z
+  0041799b RELOCATION_MATCH CMainGameComponent::?ChangeTextureColourDepth@CMainGameComponent@@UAEXJ@Z
+  00418dca RELOCATION_MATCH CMainGameComponent::??0CMainGameComponent
+  0041d0a8 RELOCATION_MATCH NUISystem::CManager::?PlaySoundW@CManager@NUISystem@@UAEXAAVCCharString@@J@Z
+  0042dc63 RELOCATION_MATCH CNewFrontendGameComponent::?IsControllerDisconnected@CNewFrontendGameComponent@@AAE_NXZ
+  0042ddb3 RELOCATION_MATCH CNewFrontendGameComponent::InitialiseGraphics
+  0042e17c RELOCATION_MATCH CNewFrontendGameComponent::?InitialiseSounds@CNewFrontendGameComponent@@AAEXXZ
+  0042e98f RELOCATION_MATCH CNewFrontendGameComponent::?Init2@CNewFrontendGameComponent@@QAEXXZ (Ego_r.pdb AAEXXZ @ 0x0043B547, private; modelled public)
+  004348d0 RELOCATION_MATCH CFadeInFadeOutBase::GetFadeInOutAlpha
+  00438aa0 RELOCATION_MATCH CPlayerGui::AddScreenMessage
+  00445a60 RELOCATION_MATCH CGamePlayerInterface::SavePacketEvent
+  00445b40 RELOCATION_MATCH CGamePlayerInterface::?LoadInitialInfo@CGamePlayerInterface_Methods@@QAEXXZ
+  0048f50c RELOCATION_MATCH CSubtitleRenderer::FormatTextForVWindow
+  00499c50 RELOCATION_MATCH CProgressDisplay::DisplayProgress
+  0049e080 RELOCATION_MATCH CWorld::?RenderUpdate@CWorld@@
+  004a6550 RELOCATION_MATCH CWorld::?PostInit@CWorld@@UAEXAAVCDisplayEngine@@@Z
+  004cdb70 RELOCATION_MATCH CSubtitledMessage::??0CSubtitledMessage
+  00546a50 RELOCATION_MATCH NUISystem::CZoomingComponent::?Update@CZoomingComponent
+  00556470 RELOCATION_MATCH NUISystem::CRedefinerList::?Cancel@
+  00557000 RELOCATION_MATCH NUISystem::CRedefinerList::Refresh@CRedefinerList
+  0055a3e0 RELOCATION_MATCH NUISystem::CDraggable::Update
+  0056fad7 RELOCATION_MATCH CTCInventoryExperience::OpenInventory
+  00587847 RELOCATION_MATCH CTCInventory::ClosePCInventory
+  00596763 RELOCATION_MATCH NUISystem::CFrontEndManager::?GotoNextScreen@CFrontEndManager@NUISystem@@QAEXPAVCComponent@2@_N@Z
+  0059f304 RELOCATION_MATCH CTCInventoryTrade::CloseInventory
+  005bc5c6 RELOCATION_MATCH CTCInventoryBase::GetRightStickPosition
+  005bd3a0 RELOCATION_MATCH NInventory::CTCInventoryBase::?PlayInventoryNoMovementSound@
+  005bdc77 RELOCATION_MATCH CTCInventoryBase::GetInventoryGuildValidity
+  005da540 RELOCATION_MATCH CTCWeapon::GetUnsheatheAnim
+  005db6b0 RELOCATION_MATCH _global::?GetRotationInAnimationBetweenTimes@
+  005ec7c0 RELOCATION_MATCH CTCTavernGame::RenderText
+  005ee6bf RELOCATION_MATCH CTCInventoryAbilities::GetAbilityMaximumLevelWithRenown
+  005fce60 RELOCATION_MATCH CTCInventoryMap::vfunc_31
+  00621720 RELOCATION_MATCH CTCInventoryQuests::CloseInventoryPC@CTCInventoryQuests
+  00629de0 RELOCATION_MATCH CWorld::?EAAnswerQuestion@
+  0063d960 RELOCATION_MATCH CWorldMap::FindLastUnblockedGroundPositionAndReportCollision
+  00643bfc RELOCATION_MATCH NPlayerGui::?GFToScreenScaled@NPlayerGui@
+  00643cda RELOCATION_MATCH NPlayerGui::?GFAnchorToBottomLeft@NPlayerGui@
+  0064560d RELOCATION_MATCH NPlayerGui::CDrawScriptScreenText::Draw
+  00646010 RELOCATION_MATCH NPlayerGui::CCrimeStatBar::DrawStatBarOnLeft@CCrimeStatBar
+  00646b12 RELOCATION_MATCH NPlayerGui::CStatBar::UpdateChangeTexts
+  0065431d RELOCATION_MATCH NPlayerGui::CStatBar::??0CStatBar@NPlayerGui@
+  00658ec3 RELOCATION_MATCH CTCVillage::BuildingContainsCorrectVillagers
+  006622d0 RELOCATION_MATCH CThingCreatureBase::UpdateBodyReorientation
+  0066ace0 RELOCATION_MATCH CTCSoundPlayer::?PlayUnattachedSample@CTCSoundPlayer
+  0066add0 RELOCATION_MATCH CTCSoundPlayer::?StopAttachedSound@CTCSoundPlayer@@QAEXK@Z
+  0066ae60 RELOCATION_MATCH CTCSoundPlayer::?IsAttachedSoundLoadedAndPlaying@CTCSoundPlayer@@QBE_NK@Z
+  0066afa0 RELOCATION_MATCH CTCSoundPlayer::SetSpecificSamplePitch
+  0066b080 RELOCATION_MATCH CTCSoundPlayer::?InternalPlayAttachedSample@CTCSoundPlayer
+  0066ba80 RELOCATION_MATCH CTCSoundPlayer::?PlayAttachedDialogue@
+  0066bdf0 RELOCATION_MATCH CTCSoundPlayer::?PlayUnattachedCriteria@CTCSoundPlayer
+  0066f320 RELOCATION_MATCH CInputTypeXboxPadLeftStickEvent::?IsEventOfThisTypeInQueue@CInputTypeXboxPadLeftStickEvent_Methods@@QBE_NW4EInputButtonEventType@@JAAM@Z
+  0066f440 RELOCATION_MATCH CInputTypeMouseMovementEvent::?IsEventOfThisTypeInQueue@CInputTypeMouseMovementEvent_Methods@@QBE_NW4EInputButtonEventType@@JAAM@Z
+  0066f5c0 RELOCATION_MATCH CInputTypeMouseWheelMovementDownEvent::IsEventOfThisType
+  0066f6d0 RELOCATION_MATCH CInputTypeMouseButtonEvent::?IsEventOfThisTypeInQueue@CInputTypeMouseButtonEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z
+  0066f7d0 RELOCATION_MATCH CInputTypeXboxPadLeftStickEvent::?GetControlDirection@CInputTypeXboxPadLeftStickEvent
+  0066fb80 RELOCATION_MATCH CTCCoopSpirit::UpdateLocalJostling
+  00698a30 RELOCATION_MATCH _global::?PlayCameraSoundThroughObservedThing@?A0x
+  006b14b0 RELOCATION_MATCH CTCPhysicsBase::HasPositiveMass
+  006b1900 RELOCATION_MATCH CAtmosProcess::?MixAtmos@CAtmosProcess@@QAEXABVCCharString@@0MM@Z
+  006b1f30 RELOCATION_MATCH CAtmosProcess::?UpdateInsideBuildings@CAtmosProcess@@AAEXXZ
+  006bd8a0 RELOCATION_MATCH CMusicManager::?UpdateCurrentMusicOffset@CMusicManager@@IAEXXZ
+  006c5e90 RELOCATION_MATCH CTCHeroOpinionDeedLog::IsDeedWitnessed
+  006cb6e0 RELOCATION_MATCH CTCCreatureNavigation::GetNearbyWanderPosition
+  006cb840 RELOCATION_MATCH CTCCreatureNavigation::GetNearestFleePosition
+  006e2860 RELOCATION_MATCH CTCTalk::?GetPLipSyncBank@CTCTalk@@
+  006e29a0 RELOCATION_MATCH CTCTalk::?PlayLipMovement@CTCTalk@@
+  006e3440 RELOCATION_MATCH NSpeechGainManager::?UpdateDialogueElement@NSpeechGainManager@@
+  006e93c0 RELOCATION_MATCH CCombatManager::?IsCreatureOnRotatingCombatRing@CCombatManager@@
+  006ea770 RELOCATION_MATCH CCombatManager::GetPreferredPos
+  007032f0 RELOCATION_MATCH CThingObject::?OnCreate@CThingObject
+  00705c30 RELOCATION_MATCH CTCCarryable::vfunc_6
+  00713ee0 RELOCATION_MATCH NTCScriptedControl::CActionFollowCreature::?Update@CActionFollowCreature@NTCScriptedControl@@UAEXXZ
+  0071c7c0 RELOCATION_MATCH CTCHeroMorph::AddParticles
+  0071de80 RELOCATION_MATCH CTCHeroMorph::UpdateTextureMorphs
+  007235e0 RELOCATION_MATCH CTCPhysicsStandard::vfunc_38
+  00725290 RELOCATION_MATCH CTCPhysicsControlled::UpdateOnSurface
+  00745730 RELOCATION_MATCH CTCPerceiveThing::UpdatePerception
+  007479b0 RELOCATION_MATCH CTCStealth::UpdateHearability
+  0074ff60 RELOCATION_MATCH COpenCloseHelper::FrameUpdate
+  00751970 RELOCATION_MATCH CTCLook::GetBodySettingsSlowInFastOut
+  00751e80 RELOCATION_MATCH CTCLook::GetTurningAngles
+  00752930 RELOCATION_MATCH CTCLook::SetEyesLooking
+  0075cdf0 RELOCATION_MATCH CTCCameraPointScripted::Validate
+  00766330 RELOCATION_MATCH CTCObjectAugmentations::GetStaminaToAddThisFrame
+  0077c360 RELOCATION_MATCH CLoopedRange::?GetFraction@
+  00799140 RELOCATION_MATCH CTCShopKeeper::CalcAreOtherPeopleInShop
+  007c04a0 RELOCATION_MATCH CTCShotDefinitionBase::UpdateCreatureAwarenessOfMe
+  007ca670 RELOCATION_MATCH CTCHeroReceiveItems::PrepareToShowItems
+  007dff90 RELOCATION_MATCH CTCTeleporter::StartTeleporting
+  007e5680 RELOCATION_MATCH CTCBetting::DrawPreparePrimitivesForRendering
+  007e7c90 RELOCATION_MATCH CTCFireheartMinigame::DrawPreparePrimitivesForRendering
+  007f8dc0 RELOCATION_MATCH CTCAnimatingObject::PlayAnimation
+  007fbc90 RELOCATION_MATCH CTCKraken::GetCentreMarker
+  00805a90 RELOCATION_MATCH CGetBestTargetInDirection::??RCGetBestTargetInDirection
+  0080c190 RELOCATION_MATCH _global::?GetExplosionEffectInterpolate@
+  00815070 RELOCATION_MATCH NHitLocations::CPhysicalPrimitiveMesh::vfunc_7
+  00815aa0 RELOCATION_MATCH NHitLocations::CPhysicalPrimitiveCylinder::GetBoundingSphere
+  008203a0 RELOCATION_MATCH CMap::?ApplyScriptedMapBrushUpdate@CMap@
+  0082d000 RELOCATION_MATCH CThingBuilding::IsPointInside
+  00836740 RELOCATION_MATCH CThingSoundEmitter::OnCreate
+  00836840 RELOCATION_MATCH CThingSoundEmitter::PlaySoundEvent
+  008368a0 RELOCATION_MATCH CThingSoundEmitter::IsSampleLoadedAndPlaying
+  008368f0 RELOCATION_MATCH CThingSoundEmitter::?ReleaseLoop@CThingSoundEmitter@@QAEXK@Z
+  008385b0 RELOCATION_MATCH CThingNoise::?Create@CThingNoise@@SIPAV1@JABVC3DVector@@M@Z
+  00851bd0 RELOCATION_MATCH CHeroAbilityStatWeight::?GetParameter@CHeroAbilityStatWeight@@
+  00853830 RELOCATION_MATCH NCameraModes::CScriptModuleOpenChest::Update
+  00856040 RELOCATION_MATCH _global::?ProcessFramesRunningForOnHitWithParams@
+  00858130 RELOCATION_MATCH CCombatActionBase::?ProcessPossibleCreatureStrikeEvent@CCombatActionBase@@IAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z
+  008587b0 RELOCATION_MATCH CCombatActionBase::?ProcessPossibleObjectStrikeEvent@CCombatActionBase@@IAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z
+  0085f8d0 RELOCATION_MATCH NCreatureMode::?IsValidRangedWeaponTargetForShooter@NCreatureMode@@YI_NABVCThing@@0M@Z
+  00866e80 RELOCATION_MATCH CCombatAction_GenericStrikeResponseKnockdownRecoverBase::?FinishAction@CCombatAction_GenericStrikeResponseKnockdownRecoverBase
+  00870d70 RELOCATION_MATCH NCreatureAction::CActionEventAddObject::SetDataFromString
+  00872490 RELOCATION_MATCH NCameraModes::CZTargetNew::InitialiseTransitionVariables
+  008754a0 RELOCATION_MATCH NCameraModes::CTools::?GetThemePointIntersectionFromTo@CTools@NCameraModes@@QBE_NABVC3DVector@@0AAV3@1_N@Z
+  0087e860 RELOCATION_MATCH CCombatAction_KickThingOnGround::?Initialise@CCombatAction_KickThingOnGround
+  0088f610 RELOCATION_MATCH CGameScriptInterface::IsSoundPlaying
+  0088f660 RELOCATION_MATCH CGameScriptInterface::StopSound
+  008912a0 RELOCATION_MATCH CGameScriptInterface::StopOverrideMusic
+  00892df0 RELOCATION_MATCH CGameScriptInterface::ClearAllRumbles
+  0089bdf0 RELOCATION_MATCH CGameScriptInterface::?EntitySetFacingAngle@CGameScriptInterface@@UBEXABVCScriptThing@@M_N@Z
+  008cffe0 RELOCATION_MATCH CGameScriptThing::InitFromThing
+  008e52f0 RELOCATION_MATCH CTCPhysicsStandard::CalculateNoStepsForStepBasedMovement
+  008e5f00 RELOCATION_MATCH CTCPhysicsStandard::PerformForceUpdates
+  008ea220 RELOCATION_MATCH NCreatureMode::CModeStrafe::FrameUpdate
+  008ecac0 RELOCATION_MATCH CTCDegradableBase::OnParentHealthChanged
+  009175e0 RELOCATION_MATCH CAIStateGroup_Clean::Update
+  00926c50 RELOCATION_MATCH CAIStateGroup_OpenAndCloseShop::IsRunnable
+  00927ea0 RELOCATION_MATCH CAIStateGroup_SetupWares::InitCreaturePosition
+  0093c6d0 RELOCATION_MATCH CAIStateGroup_StealthSeekEnemy::SetWhatsThatAnimation
+  00957f20 RELOCATION_MATCH CAIStateGroup_MinionReactToBurglary::IsRunnable
+  009647c0 RELOCATION_MATCH CAIStateGroup_StealStealableItem::Update
+  00a0c450 RELOCATION_MATCH CCamera::?GetAngleXZ@CCamera@@
+  00a18ea0 RELOCATION_MATCH CNavigatorFlyer::MoveToPos
+  00a39fe0 RELOCATION_MATCH C2DBoxI::ClipLineTo
+  00a560a0 RELOCATION_MATCH CMatrix3x4::IsIdentity
+  00a57bd0 RELOCATION_MATCH C2DLineF::IntersectsWith
+  00a88c50 RELOCATION_MATCH CQuaternion::Equals
+  00adebc0 RELOCATION_MATCH C3DBoundingBox::CalculateMatrix@C3DBoundingBox
+  00ae1600 RELOCATION_MATCH CParticleProgram::?PrepareForRendering@CParticleProgram@@QAEXPAVC4DVector@@PAVCParticleSimulation@@MM@Z
+  00af9000 RELOCATION_MATCH NParticleEngine::CPSCLight::?GFSmoothFadeValue@NParticleEngine@@YIMM@Z
+  00b4fc10 RELOCATION_MATCH CEngineShadowRenderer::SetShadowMapSize
+  00b61b30 RELOCATION_MATCH CEngineSkyRenderer::BuildOuterSkyMesh
+  00bcbc00 RELOCATION_MATCH CEngineInternalPrimitiveSpriteTrail::Update
+  00c14a80 RELOCATION_MATCH PKCPlaybackTemplate::?ApplyTo@PKCDeferredBank@@
+  00c14bc0 RELOCATION_MATCH CSettingsProxy_012b29f8::SetOptionCD
+  00ec8230 RELOCATION_MATCH NScript::CV_SickChildScript::CManInLove::?OnPredicateFail@CManInLove@CV_SickChildScript@NScript@@EAEXXZ
+addr       parity           behav  name
+004022b0   WARN RELOC_NAME: ?AddChildPrimitive@@YIPAUFableEngineRoot@@XZ -> 009a4ec0 labelled 'GFGetSystemManager'
+004022b0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+004022b0   RELOCATION_MATCH PASS   GFInitialise
+00407370   WARN SHARED_HEADER_AVAILABLE CPlayer
+00407370   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+00407370   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00407370   WARN RELOC_NAME: ?Refresh@CPlayerObject@@QAEXXZ -> 00447390 labelled 'Catch@0040d959'
+00407370   RELOCATION_MATCH PASS   CUserProfileManager::ApplyValues
+0040fa20   RELOCATION_MATCH PASS   CPersistTraits<CActionInputControl>::TransferOut
+00416268   WARN RELOC_NAME: ?Begin@CLoader@@QAEXPBDH@Z -> 009f4cf0 labelled 'CInputManager::StreamInputsToFile'
+00416268   RELOCATION_MATCH PASS   CMainGameComponent::BeginInputLoading
+00416296   WARN SHARED_HEADER_AVAILABLE CGameJoystickManager
+00416296   WARN RELOC_NAME: ?GetMainPlayerJoystickDeviceNumber@CGameJoystickManager@@QBEJXZ -> 0049bb40 labelled 'CActiveJoystick::GetDeviceNumber'
+00416296   RELOCATION_MATCH PASS   CMainGameComponent::IsControllerDisconnected
+004163b7   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+004163b7   WARN SHARED_HEADER_AVAILABLE CSurface
+004163b7   RELOCATION_MATCH PASS   CMainGameComponent::SetExclusiveMode
+004166e2   RELOCATION_MATCH PASS   CMainGameComponent::GetGameTimeOfNextPresentCompletion
+004167da   WARN SHARED_HEADER_AVAILABLE CDisplayEngine
+004167da   RELOCATION_MATCH PASS   CMainGameComponent::AppReinitFunc
+00416c8a   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+00416c8a   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00416c8a   WARN RELOC_NAME: ??0CGraphicDataBankInit@@QAE@XZ -> 00415b80 labelled 'SNavigationLayerDefaults_00415b80::SNavigationLayerDefaults_00415b80'
+00416c8a   WARN RELOC_NAME: ?GetBestCompressedNonAlphaTextureFormat@CDisplayManager@@QAE_NKPAVCPixelFormat@@@Z -> 009be830 labelled 'CDisplayManager::GetBestCompressedOpaqueTextureFormat'
+00416c8a   WARN RELOC_NAME: ?CreateAndInitialize@CGraphicDataBankManager@@QAE?AV?$CCountedPointer@VCGraphicDataBank@@@@ABVCCharString@@ABVCGraphicDataBankInit@@_N2@Z -> 009f83d0 labelled 'CGraphicBankManager::OpenGraphicBank'
+00416c8a   WARN RELOC_NAME: ??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ -> 00419108 labelled 'CCountedPointer<CGraphicDataBank>::Release'
+00416c8a   RELOCATION_MATCH PASS   CMainGameComponent::InitGraphics
+00417418   WARN RELOC_NAME: ?reset@?$scoped_ptr@VCDisplayEngine@@@@QAEXPAVCDisplayEngine@@@Z -> 0041940c labelled 'CCountedPointer<CEditTransactionBase>::DeleteData'
+00417418   RELOCATION_MATCH PASS   CMainGameComponent::InitDisplayEngine
+004175e5   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+004175e5   WARN RELOC_NAME: ?StopMusic@CSoundManager@@QAEXXZ -> 00991750 labelled 'CThing::OnDie'
+004175e5   WARN RELOC_NAME: ?CloseSocket@CLSocketServer@@QAEXPAX@Z -> 009bf5a0 labelled 'CDisplayManager::RemoveDeviceResetCallback'
+004175e5   WARN RELOC_NAME: ?IsInitialised@CInitBaseClass@@QBE_NXZ -> 0099a330 labelled '_global::GetMember_byte0x4_0099a330'
+004175e5   WARN RELOC_NAME: ?Set@CGameDefinitionManager@@SIXPAV1@@Z -> 0044c71f labelled 'CEngineSubPrimitiveBase::operator_new'
+004175e5   RELOCATION_MATCH PASS   CMainGameComponent::Shutdown
+004189c2   WARN SHARED_HEADER_AVAILABLE CRegion
+004189c2   WARN SHARED_HEADER_AVAILABLE CWorldMap
+004189c2   WARN SHARED_HEADER_AVAILABLE CWorld
+004189c2   WARN SHARED_HEADER_AVAILABLE CDisplayEngine
+004189c2   WARN SHARED_HEADER_AVAILABLE CNetworkClient
+004189c2   WARN RELOC_NAME: ?Start@CNetworkClient@@QAEXXZ -> 004ae9c0 labelled '_global::Nop_ret0_004ae9c0'
+004189c2   WARN RELOC_NAME: ?BeginOutputSaving@CMainGameComponent@@QAEXABVCWideString@@@Z -> 0041627f labelled 'CMainGameComponent::BeginInputLoading'
+004189c2   WARN RELOC_NAME: ?GFFrameHook@@YIXXZ -> 0098e1b0 labelled '_global::Nop_ret0_0098e1b0'
+004189c2   WARN RELOC_NAME: ?Update@CSystemObjectF8@@QAEXXZ -> 009f8c10 labelled '_global::Nop_ret0_009f8c10'
+004189c2   WARN RELOC_NAME: ?RecordFrameTime@CMainGameComponent@@QAEXN@Z -> 00416202 labelled 'CEngineSubPrimitiveBase::operator_new'
+004189c2   WARN RELOC_NAME: ?Tick@CSingleton44C6B0@@QAEXJ@Z -> 009ac9e0 labelled '_global::Nop_ret4_009ac9e0'
+004189c2   RELOCATION_MATCH PASS   CMainGameComponent::Run
+0041ceb3   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0041ceb3   RELOCATION_MATCH PASS   NUISystem::CManager::PlaySample
+0041e3f6   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+0041e3f6   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0041e3f6   WARN RELOC_NAME: ??0CManagerBase@NUISystem@@QAE@XZ -> 0042be7b labelled 'NUISystem::CObservable::CObservable'
+0041e3f6   WARN RELOC_NAME: ??0CKeyMap@NUISystem@@QAE@XZ -> 0042bf67 labelled 'std::map<T_0042bf67>::map'
+0041e3f6   WARN RELOC_NAME: ??0CLongList@NUISystem@@QAE@ABUSAllocator@1@@Z -> 0042ab58 labelled '_global::StdList_Ctor_0042ab58'
+0041e3f6   WARN RELOC_NAME: ??0CActionParamList@NUISystem@@QAE@ABUSAllocator@1@@Z -> 0042ab01 labelled 'Std_DoubleLinkedList_CreateNode'
+0041e3f6   WARN RELOC_NAME: ??0CLayerMap@NUISystem@@QAE@XZ -> 0042bf85 labelled 'std::map<T_0042bf85>::map'
+0041e3f6   WARN RELOC_NAME: ??0CChildrenMap@NUISystem@@QAE@XZ -> 0042d28b labelled 'std::map<T_0042d28b>::map'
+0041e3f6   WARN RELOC_NAME: ??0CGraphicBankParams@@QAE@XZ -> 00415b80 labelled 'SNavigationLayerDefaults_00415b80::SNavigationLayerDefaults_00415b80'
+0041e3f6   WARN RELOC_NAME: ?GetBestCompressedAlphaTextureFormat_009be830@CDisplayManager@@QAE_NKPAVCPixelFormat@@@Z -> 009be830 labelled 'CDisplayManager::GetBestCompressedOpaqueTextureFormat'
+0041e3f6   WARN RELOC_NAME: ?GetBestCompressedAlphaTextureFormat3@CDisplayManager@@QAE_NKPAVCPixelFormat@@@Z -> 009be8b0 labelled 'CDisplayManager::GetBestCompressedBooleanAlphaTextureFormat'
+0041e3f6   WARN RELOC_NAME: ?CreateAndInitialize@CGraphicBankManager@@QAE?AV?$CCountedPointer@VCGraphicDataBank@@@@ABVCCharString@@PAUCGraphicBankParams@@_N2@Z -> 009f83d0 labelled 'CGraphicBankManager::OpenGraphicBank'
+0041e3f6   RELOCATION_MATCH PASS   NUISystem::CManager::CManager
+0042dd28   WARN SHARED_HEADER_AVAILABLE CFrontEndManager
+0042dd28   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0042dd28   WARN SHARED_HEADER_AVAILABLE CMeshBankManager
+0042dd28   WARN RELOC_NAME: ??1?$CCountedPointer@VCIEngine@@@@QAE@XZ -> 0042f974 labelled 'CCountedPointer<CIEngine>::Release'
+0042dd28   WARN RELOC_NAME: ??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ -> 00419108 labelled 'CCountedPointer<CGraphicDataBank>::Release'
+0042dd28   WARN RELOC_NAME: ??1?$CCountedPointer@VCMeshDataBank@@@@QAE@XZ -> 0042918c labelled 'CCountedPointer<CMeshDataBank>::Release'
+0042dd28   WARN RELOC_NAME: ??1?$CCountedPointer@$$CBVCFontBank@@@@QAE@XZ -> 0042f948 labelled 'CCountedPointer<CFontBank_const>::Release'
+0042dd28   RELOCATION_MATCH PASS   CNewFrontendGameComponent::CleanUpInterfaces
+0042ded5   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+0042ded5   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0042ded5   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0042ded5   WARN RELOC_NAME: ?GetDVDMusicDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ -> 0041a3d0 labelled 'NResourceDirectoryNames::GetHDMusicDir'
+0042ded5   RELOCATION_MATCH PASS   _global::GPlayMusic
+0042e3ee   WARN SHARED_HEADER_AVAILABLE CManager
+0042e3ee   WARN RELOC_NAME: ?GetKey@CInputEvent@@QBEJXZ -> 00a03b70 labelled '_global::GetMember_dword0x0_00a03b70'
+0042e3ee   RELOCATION_MATCH PASS   CNewFrontendGameComponent::Input
+0042ebb6   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0042ebb6   WARN RELOC_NAME: ?SetActiveFrontend_004336b0@@YIXPAVCNewFrontendGameComponent@@@Z -> 004336b0 labelled 'CEngineSubPrimitiveBase::operator_new'
+0042ebb6   WARN RELOC_NAME: ?ReleaseScene_0042dd28@CNewFrontendGameComponent@@QAEXXZ -> 0042dd28 labelled 'CNewFrontendGameComponent::CleanUpInterfaces'
+0042ebb6   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0042ebb6   WARN RELOC_NAME: ?Restore_00991750@CGameStateOwner_013b8394@@QAEXXZ -> 00991750 labelled 'CThing::OnDie'
+0042ebb6   WARN RELOC_NAME: ?erase@?$vector@VCDateAndTime@@@@QAEPAVCDateAndTime@@PAV2@0@Z -> 00411b00 labelled 'vector_push_back_copy'
+0042ebb6   RELOCATION_MATCH PASS   CNewFrontendGameComponent::Shutdown
+00437ae0   WARN SHARED_HEADER_AVAILABLE CWorld
+00437ae0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00437ae0   RELOCATION_MATCH PASS   CPlayerGui::UpdateStat
+0043a4d0   RELOCATION_MATCH PASS   CPlayerGui::SetGuildSealLevelUpPos
+00445ae0   WARN SHARED_HEADER_AVAILABLE CMouse
+00445ae0   RELOCATION_MATCH PASS   CGamePlayerInterface_Methods::SaveInitialInfo
+0047d78b   WARN SHARED_HEADER_AVAILABLE CIEngine
+0047d78b   WARN SHARED_HEADER_AVAILABLE CDisplayEngine
+0047d78b   WARN SHARED_HEADER_AVAILABLE CPlayer
+0047d78b   WARN SHARED_HEADER_AVAILABLE CWorld
+0047d78b   WARN SHARED_HEADER_AVAILABLE CManager
+0047d78b   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0047d78b   WARN SHARED_HEADER_AVAILABLE CTCBase
+0047d78b   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0047d78b   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0047d78b   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+0047d78b   WARN RELOC_NAME: ?ResetMenus@CManager@NUISystem@@SIXXZ -> 0041d165 labelled 'NUISystem::CManager::OnCloseMenus'
+0047d78b   RELOCATION_MATCH PASS   CTCInGameMenu::CloseInGameMenu
+00494840   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00494840   WARN SHARED_HEADER_AVAILABLE CFontBank
+  WARN leaf '?InitGraphics@CFrontendGameComponent@@AAE_NXZ (Ego_r.pdb, private; modelled public)' matches no symbol in 00494840.obj; graded the largest function
+  WARN leaf '?InitGraphics@CFrontendGameComponent@@AAE_NXZ (Ego_r.pdb, private; modelled public)' matches no symbol in 00494840.obj; graded the largest function
+00494840   RELOCATION_MATCH PASS   CFrontendGameComponent::InitGraphics
+0049dcc0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0049dcc0   RELOCATION_MATCH PASS   CWorld::ResetToFrontEnd
+004a2f10   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+004a2f10   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+004a2f10   RELOCATION_MATCH PASS   CWorld::UpdateSaveGameLoad
+004c5f10   WARN SHARED_HEADER_AVAILABLE CBulletTimeManager
+004c5f10   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+004c5f10   RELOCATION_MATCH PASS   CBulletTimeManager::RecalculateSoundPitch
+004cdbd0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+004cdbd0   RELOCATION_MATCH PASS   CSubtitledMessage::CSubtitledMessage
+0054b360   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0054b360   WARN SHARED_HEADER_AVAILABLE CObserver
+0054b360   WARN SHARED_HEADER_AVAILABLE CManager
+0054b360   WARN RELOC_NAME: ?DestroyActionRange@@YIXPAV?$CCountedPointer@VCAction@NUISystem@@@@0ABUCActionAllocator@@@Z -> 0054a1c0 labelled '_global::DestroyRange_CountedPointer_0054a1c0'
+0054b360   RELOCATION_MATCH PASS   NUISystem::CSlider::~CSlider
+005565c0   WARN SHARED_HEADER_AVAILABLE CObserver
+005565c0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+005565c0   RELOCATION_MATCH PASS   NUISystem::CRedefinerList::ResetKeysToDefaults
+00557d20   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00557d20   RELOCATION_MATCH PASS   NUISystem::CKeyRedefiner::Redefine
+0055b890   RELOCATION_MATCH PASS   NUISystem::CHoverable::Update
+0057a60a   WARN SHARED_HEADER_AVAILABLE CTCBase
+0057a60a   RELOCATION_MATCH PASS   CTCHeroStats::GetFatnessReducingFrequencyInFrames
+00589d30   WARN SHARED_HEADER_AVAILABLE CManager
+00589d30   WARN SHARED_HEADER_AVAILABLE CDisplayEngine
+00589d30   WARN SHARED_HEADER_AVAILABLE CEngine
+00589d30   WARN SHARED_HEADER_AVAILABLE CWorld
+00589d30   WARN SHARED_HEADER_AVAILABLE CTCBase
+00589d30   WARN RELOC_NAME: ?ClearQuestPersistentFlags@CTCInventory@@QAEXXZ -> 005bd597 labelled 'NInventory::CTCInventoryBase::CloseInventory'
+00589d30   WARN RELOC_NAME: ?SetEditBoxesActive@CTCInventory@@QAEX_N@Z -> 00581a14 labelled 'CTCInventory::SetQuickAccessAssign'
+00589d30   WARN RELOC_NAME: ?Reset@CInventoryCamera@@QAEXXZ -> 004855a3 labelled '_global::StdList_Clear_004855a3'
+00589d30   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00589d30   WARN RELOC_NAME: ?RestoreCursor@@YIXXZ -> 0041d165 labelled 'NUISystem::CManager::OnCloseMenus'
+00589d30   RELOCATION_MATCH PASS   CTCInventory::CloseInventory
+0059e2c7   WARN SHARED_HEADER_AVAILABLE CManager
+0059e2c7   WARN SHARED_HEADER_AVAILABLE CWorld
+0059e2c7   WARN SHARED_HEADER_AVAILABLE CTCBase
+0059e2c7   WARN RELOC_NAME: ?RemoveTattooAndHairCategories@CTCInventoryTrade@@QAEXXZ -> 0059d9ad labelled 'CTCInventoryTrade::ResetTradeList'
+0059e2c7   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0059e2c7   RELOCATION_MATCH PASS   CTCInventoryTrade::CloseInventoryPC
+005ae86b   WARN SHARED_HEADER_AVAILABLE CManager
+005ae86b   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade
+005ae86b   WARN RELOC_NAME: ?PrepareScreen@CTCInventoryTrade@@QAEXXZ -> 005bc6ed labelled 'CTCInventoryBase::ScreenHook_5bc6ed'
+005ae86b   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+005ae86b   RELOCATION_MATCH PASS   CTCInventoryTrade::OpenInventoryPC
+005bd33c   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+005bd33c   RELOCATION_MATCH PASS   NInventory::CTCInventoryBase::PlayInventoryMovementSound
+005bd4ea   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+005bd4ea   WARN SHARED_HEADER_AVAILABLE CDefPointer
+005bd4ea   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+005bd4ea   WARN SHARED_HEADER_AVAILABLE CCategory
+005bd4ea   RELOCATION_MATCH PASS   NInventory::CTCInventoryBase::OpenInventory
+005bff07   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+005bff07   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+005bff07   WARN SHARED_HEADER_AVAILABLE CTCBase
+005bff07   WARN RELOC_NAME: ??0CGraphicBankParams@@QAE@XZ -> 00415b80 labelled 'SNavigationLayerDefaults_00415b80::SNavigationLayerDefaults_00415b80'
+005bff07   WARN RELOC_NAME: ?GetBestCompressedAlphaTextureFormat_009be830@CDisplayManager@@QAE_NKPAVCPixelFormat@@@Z -> 009be830 labelled 'CDisplayManager::GetBestCompressedOpaqueTextureFormat'
+005bff07   WARN RELOC_NAME: ?GetBestCompressedAlphaTextureFormat3@CDisplayManager@@QAE_NKPAVCPixelFormat@@@Z -> 009be8b0 labelled 'CDisplayManager::GetBestCompressedBooleanAlphaTextureFormat'
+005bff07   WARN RELOC_NAME: ?CreateAndInitialize@CGraphicBankManager@@QAE?AV?$CCountedPointer@VCGraphicDataBank@@@@ABVCCharString@@PAUCGraphicBankParams@@_N2@Z -> 009f83d0 labelled 'CGraphicBankManager::OpenGraphicBank'
+005bff07   WARN RELOC_NAME: ??1?$CCountedPointer@VCGraphicDataBank@@@@QAE@XZ -> 00419108 labelled 'CCountedPointer<CGraphicDataBank>::Release'
+005bff07   RELOCATION_MATCH PASS   NInventory::CTCInventoryBase::CTCInventoryBase
+005da5a0   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+005da5a0   RELOCATION_MATCH PASS   CTCWeapon::GetSheatheAnim
+005ea400   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+005ea400   WARN SHARED_HEADER_AVAILABLE CDefPointer
+005ea400   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+005ea400   WARN SHARED_HEADER_AVAILABLE CTCTavernGame
+005ea400   RELOCATION_MATCH PASS   CTCTavernGame::DrawBetAndMoney
+005ec990   WARN SHARED_HEADER_AVAILABLE CDefPointer
+005ec990   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005ec990   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+005ec990   WARN RELOC_NAME: ?GetSubDef_005ed4a0@CDefClassBase@@QAE_NAAUCDefPointer@@@Z -> 005ed4a0 labelled 'CDefClassBase::GetSubDef<CTavernGameDef>'
+005ec990   RELOCATION_MATCH PASS   CTCTavernGame::DrawBox
+005fa990   WARN SHARED_HEADER_AVAILABLE CWorldMap
+005fa990   RELOCATION_MATCH PASS   CTCInventoryMap::GetGuildSealRecallRegion
+006116e0   WARN SHARED_HEADER_AVAILABLE CManager
+006116e0   WARN SHARED_HEADER_AVAILABLE CManager
+006116e0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+006116e0   WARN SHARED_HEADER_AVAILABLE CDisplayEngine
+006116e0   WARN RELOC_NAME: ?ResetOpenState@CTCInventoryBase@@QAEXXZ -> 005bc6ed labelled 'CTCInventoryBase::ScreenHook_5bc6ed'
+006116e0   WARN RELOC_NAME: ?SetCurrentScreenType@CManager@NHeroInformationScreens@@QAEXJ@Z -> 0066e799 labelled '_global::SetMember_dword0x28_0066e799'
+006116e0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+006116e0   WARN RELOC_NAME: ?_M_insert_overflow@?$CRetailVector@PAVCComponent@NUISystem@@@@QAEXPAPAVCComponent@NUISystem@@ABQAV23@ABU__true_type@@K_N@Z -> 00485dbc labelled '_global::Std_Vector_Insert_Range_Fill'
+006116e0   RELOCATION_MATCH PASS   CTCInventoryMap::OpenInventory
+00621c80   WARN SHARED_HEADER_AVAILABLE CFrontEndManager
+00621c80   WARN SHARED_HEADER_AVAILABLE CWorld
+00621c80   WARN SHARED_HEADER_AVAILABLE CManager
+00621c80   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00621c80   WARN SHARED_HEADER_AVAILABLE CTCBase
+00621c80   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00621c80   WARN RELOC_NAME: ?SetScreen@CManager@NHeroInformationScreens@@QAEXJ@Z -> 0066e799 labelled '_global::SetMember_dword0x28_0066e799'
+00621c80   WARN RELOC_NAME: ?__destroy_aux@@YIXPAUCQuestCard@@0ABU__false_type@@@Z -> 005c2a8e labelled '_global::ForEachElem0x2c__CCreatureAction_FireMiss_005c2a8e'
+00621c80   RELOCATION_MATCH PASS   CTCInventoryQuests::CloseInventory
+00629f50   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00629f50   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00629f50   RELOCATION_MATCH PASS   CWorld::EASkipCutScene
+0063db30   RELOCATION_MATCH PASS   CWorldMap::FindLastUnblockedThemePositionAndReportCollision
+00643ca1   RELOCATION_MATCH PASS   NPlayerGui::GFAnchorToTopRight
+00643d0c   RELOCATION_MATCH PASS   NPlayerGui::GFAnchorToBottomRight
+00645ce9   WARN SHARED_HEADER_AVAILABLE CFontBank
+00645ce9   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00645ce9   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+00645ce9   WARN RELOC_NAME: ??4?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@QAEAAV0@ABV0@@Z -> 0065533c labelled '_global::CIntelligentPointer_Assign_0065533c'
+00645ce9   RELOCATION_MATCH PASS   CStatBar::DrawStatBox
+00646a46   WARN SHARED_HEADER_AVAILABLE CFontBank
+00646a46   RELOCATION_MATCH PASS   NPlayerGui::CStatBar::DrawStatBoxWithText
+0064d6a8   WARN SHARED_HEADER_AVAILABLE CPlayer
+0064d6a8   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0064d6a8   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+0064d6a8   RELOCATION_MATCH PASS   NPlayerGui::CDrawQuickAccessIcons::Update
+006572a0   WARN RELOC_NAME: ?GetCurrentWorldFrame@CMainGameComponent@@QBEJXZ -> 004167c8 labelled 'CWorld::GetFrameNumber'
+006572a0   WARN RELOC_NAME: ??4CWideString@@QAEABV0@PBG@Z -> 0099b800 labelled 'CCharString::AssignFromWide'
+006572a0   RELOCATION_MATCH PASS   NPlayerGui::CDrawNPCName::Draw
+0065c781   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0065c781   WARN SHARED_HEADER_AVAILABLE CWorld
+0065c781   WARN SHARED_HEADER_AVAILABLE CWorldMap
+0065c781   WARN SHARED_HEADER_AVAILABLE CPlayer
+0065c781   WARN SHARED_HEADER_AVAILABLE CTCBase
+0065c781   WARN RELOC_NAME: ?ReleaseInvalidTasks@CTCVillage@@QAEXXZ -> 0065be32 labelled 'CGuiControlComboBox_0065be32::ReleaseMembers'
+0065c781   WARN RELOC_NAME: ?IS_THING_ALIVE_Villager@@YI_NABUCBaseIntelligentPointer@@@Z -> 004ab8f0 labelled '_global::IsThingAlive_004ab8f0'
+0065c781   WARN RELOC_NAME: ?GetVillagerState@CThing@@QAEJXZ -> 00662010 labelled 'CThingCreatureBase::GetLifeState'
+0065c781   WARN RELOC_NAME: ?GetString@CCharString@@QBEPBDXZ -> 00404310 labelled 'CCharString::GetCRC'
+0065c781   WARN RELOC_NAME: ?GetPGroupEntry@CTextBank@@QAE?AUCGroupEntryRef@@J_N@Z -> 009c9070 labelled 'NGameText::CDataBank::GetPTextEntry'
+0065c781   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0065c781   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0065c781   RELOCATION_MATCH PASS   CTCVillage::FrameUpdate
+0066a920   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0066a920   WARN SHARED_HEADER_AVAILABLE CTCBase
+0066a920   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0066a920   RELOCATION_MATCH PASS   CTCSoundPlayer::InternalPlaySoundEventAtPos
+0066ad90   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0066ad90   RELOCATION_MATCH PASS   CTCSoundPlayer::ReleaseAttachedLoopingSound
+0066ae10   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0066ae10   RELOCATION_MATCH PASS   CTCSoundPlayer::IsAttachedSoundPlaying
+0066aeb0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0066aeb0   RELOCATION_MATCH PASS   CTCSoundPlayer::StopAllAttachedSounds
+0066aff0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0066aff0   RELOCATION_MATCH PASS   CTCSoundPlayer::SetSpecificSampleVolume
+0066b120   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0066b120   WARN SHARED_HEADER_AVAILABLE CTCBase
+0066b120   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0066b120   RELOCATION_MATCH PASS   CTCSoundPlayer::InternalPlaySoundEvent
+0066bd00   WARN SHARED_HEADER_AVAILABLE CTCBase
+0066bd00   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0066bd00   WARN RELOC_NAME: ?GetPotentialCriteriaStrings@CTCSoundPlayer@@AAEXABVCCharString@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z -> 0066bc10 labelled 'Sound_AppendAbilityNameToDescription'
+0066bd00   RELOCATION_MATCH PASS   CTCSoundPlayer::PlayAttachedCriteria
+0066e742   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0066e742   WARN SHARED_HEADER_AVAILABLE CManager
+0066e742   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0066e742   RELOCATION_MATCH PASS   NHeroInformationScreens::CManager::PlayScreenUpdateSound
+0066f3b0   RELOCATION_MATCH PASS   CInputTypeXboxPadRightStickEvent_Methods::IsEventOfThisTypeInQueue
+0066f4d0   RELOCATION_MATCH PASS   CInputTypeMouseWheelMovementEvent_Methods::IsEventOfThisTypeInQueue
+0066f630   WARN SHARED_HEADER_AVAILABLE CInputTypeKeyboardKeyEvent
+0066f630   RELOCATION_MATCH PASS   CInputTypeKeyboardKeyEvent::IsEventOfThisTypeInQueue
+0066f750   WARN SHARED_HEADER_AVAILABLE CInputTypeXboxPadButtonEvent
+0066f750   RELOCATION_MATCH PASS   CInputTypeXboxPadButtonEvent::IsEventOfThisTypeInQueue
+0066f840   RELOCATION_MATCH PASS   CInputTypeXboxPadRightStickEvent::GetControlDirection
+0068fb90   WARN SHARED_HEADER_AVAILABLE CWorld
+0068fb90   WARN SHARED_HEADER_AVAILABLE CPlayer
+0068fb90   WARN RELOC_NAME: ?GetPlayerNumber@CPlayer@@QBEJXZ -> 00487510 labelled 'CPlayer::GetJoystickDeviceNumber'
+0068fb90   RELOCATION_MATCH PASS   CInputProcessCombat::ProcessInput
+  WARN leaf 'vfunc_3' matches no symbol in 0069e980.obj; graded the largest function
+  WARN leaf 'vfunc_3' matches no symbol in 0069e980.obj; graded the largest function
+0069e980   WARN RELOC_NAME: ?PeekDisplayEngine@CViewBase@NDisplayView@@IBEABVCDisplayEngine@@XZ -> 00640020 labelled 'CViewBase::GetDisplayEngine'
+0069e980   WARN RELOC_NAME: ?GetWorld@CViewBase@NDisplayView@@IAEAAVCWorld@@XZ -> 00640000 labelled 'CViewBase::GetDisplayEngine'
+0069e980   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0069e980   WARN RELOC_NAME: ?DrawBettingHUD@CPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z -> 00437d00 labelled '_global::Forward_Draw_via0x210_00437d00'
+0069e980   WARN RELOC_NAME: ?DrawReceivedItems@CPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z -> 00437660 labelled '_global::Forward_Draw_via0x198_00437660'
+0069e980   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+0069e980   WARN RELOC_NAME: ?Draw2DText@CPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z -> 00438000 labelled '_global::Forward_Draw_via0x238_00438000'
+0069e980   RELOCATION_MATCH PASS   NDisplayView::CView3DBase::vfunc_3
+006b1600   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+006b1600   WARN SHARED_HEADER_AVAILABLE CDefPointer
+006b1600   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+006b1600   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+006b1600   RELOCATION_MATCH PASS   CAtmosProcess::ApplyReverbSettings
+006b1960   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+006b1960   WARN SHARED_HEADER_AVAILABLE CDefPointer
+006b1960   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+006b1960   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+006b1960   WARN RELOC_NAME: ?LoadThemes_006b16b0@CAtmosProcess@@QAEXXZ -> 006b16b0 labelled 'SoundTheme_LoadDefinitions'
+006b1960   RELOCATION_MATCH PASS   CAtmosProcess::CAtmosProcess
+006bb720   RELOCATION_MATCH PASS   CGameTimeManager::FastForwardTimeTo
+006c3f40   RELOCATION_MATCH PASS   CTCFadeOutAndIn::FrameUpdate
+006cb620   WARN SHARED_HEADER_AVAILABLE CWorldMap
+006cb620   WARN SHARED_HEADER_AVAILABLE CNavigatorBase
+006cb620   RELOCATION_MATCH PASS   CTCCreatureNavigation::IsAbleToNavigateFromPosToPos
+006cb780   WARN SHARED_HEADER_AVAILABLE CNavigatorBase
+006cb780   WARN SHARED_HEADER_AVAILABLE CWorldMap
+006cb780   WARN SHARED_HEADER_AVAILABLE CTCBase
+006cb780   RELOCATION_MATCH PASS   CTCCreatureNavigation::GetNearbyDirectedPosition
+006dabe0   RELOCATION_MATCH PASS   std::__find_if<std::reverse_iterator<const long*>,`anonymous namespace'::CPredIsFallbackMultiplierForMultiplier>
+006e2940   WARN SHARED_HEADER_AVAILABLE CLipSyncDataBank
+006e2940   WARN SHARED_HEADER_AVAILABLE CTCBase
+006e2940   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+006e2940   WARN RELOC_NAME: ?FindValueForSymbol@CSymbolMap@@QAEPAXJ@Z -> 009916f0 labelled 'CSymbolMap::FindFirstSymbolWithVal'
+006e2940   WARN RELOC_NAME: ?FindFirstValue@CSymbolMap@@QAEPAXXZ -> 00991720 labelled '_global::ElemLoop0x24_00991720'
+006e2940   RELOCATION_MATCH PASS   CTCTalk::GetSpeechDurationInFrames
+006e2a50   WARN SHARED_HEADER_AVAILABLE CLipSyncDataBank
+006e2a50   WARN SHARED_HEADER_AVAILABLE CTCBase
+006e2a50   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+006e2a50   WARN RELOC_NAME: ?FindValueForSymbol@CSymbolMap@@QAEPAXJ@Z -> 009916f0 labelled 'CSymbolMap::FindFirstSymbolWithVal'
+006e2a50   WARN RELOC_NAME: ?FindFirstValue@CSymbolMap@@QAEPAXXZ -> 00991720 labelled '_global::ElemLoop0x24_00991720'
+006e2a50   WARN RELOC_NAME: ?FindSymbolForValue@CSymbolMap@@QAEPAXJ@Z -> 00991690 labelled 'CSymbolMap::FindFirstSymbolWithVal'
+006e2a50   WARN RELOC_NAME: ?GetSampleDurationFrames@CTCTalk@@QAEJJ@Z -> 006e2940 labelled 'CTCTalk::GetSpeechDurationInFrames'
+006e2a50   RELOCATION_MATCH PASS   CTCTalk::SetUpSpeechSample
+006e80f0   WARN SHARED_HEADER_AVAILABLE CWorld
+006e80f0   RELOCATION_MATCH PASS   CCombatWheel::ReassignAttacker
+006ea5f0   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+006ea5f0   RELOCATION_MATCH PASS   CCombatManager::IsTargetOverriddenByAttemptedFacingDirection
+006f9130   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+006f9130   RELOCATION_MATCH PASS   CManager::GetEmbeddedEventTime
+00705b60   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00705b60   WARN SHARED_HEADER_AVAILABLE CWorldMap
+00705b60   WARN SHARED_HEADER_AVAILABLE CTCBase
+00705b60   RELOCATION_MATCH PASS   CTCCarryable::UpdateCarriedPosition
+0070be40   RELOCATION_MATCH PASS   CAnimateThing::GetProgressFromAlpha
+00714900   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00714900   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00714900   RELOCATION_MATCH PASS   NTCScriptedControl::CActionMoveTo::Update
+0071c9f0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+0071c9f0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0071c9f0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0071c9f0   WARN SHARED_HEADER_AVAILABLE CWorld
+0071c9f0   WARN SHARED_HEADER_AVAILABLE CTCBase
+0071c9f0   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+0071c9f0   WARN RELOC_NAME: ?GetString@CDefString@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator CCharString'
+0071c9f0   RELOCATION_MATCH PASS   CTCHeroMorph::UpdateIdleParticles
+007232e0   RELOCATION_MATCH PASS   CTCPhysicsLight::OnCreate
+00724010   WARN SHARED_HEADER_AVAILABLE C3DMeshInfo
+00724010   WARN SHARED_HEADER_AVAILABLE CWorld
+00724010   WARN SHARED_HEADER_AVAILABLE CWorldMap
+00724010   WARN SHARED_HEADER_AVAILABLE CTCBase
+00724010   WARN RELOC_NAME: ?GetMesh@CGraphicBank@@QAEPAVC3DMeshInfo@@K@Z -> 00a24280 labelled 'CMeshDataBank::PeekStaticMesh'
+00724010   WARN RELOC_NAME: ?GetAnimatedMesh@CGraphicBank@@QAEPAVC3DMeshInfo@@K@Z -> 00a242b0 labelled 'CMeshDataBank::PeekAnimatedMesh'
+00724010   RELOCATION_MATCH PASS   CTCPhysicsStandard::OnCreate
+007308f0   WARN SHARED_HEADER_AVAILABLE CWorld
+007308f0   WARN SHARED_HEADER_AVAILABLE CDoorDef
+007308f0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007308f0   WARN RELOC_NAME: ?GetTimeScale@CBulletTime@@QAEMXZ -> 004c5fa0 labelled 'CBulletTimeManager::GetBulletTimeSlowdownMultiplier'
+007308f0   RELOCATION_MATCH PASS   CTCDoor::UpdateAnimation
+007468c0   WARN RELOC_NAME: ?Set@CAnimInit@@QAEXJJJJ_NKJ@Z -> 0070c050 labelled 'CAnimInit::Init'
+007468c0   RELOCATION_MATCH PASS   CTCBed::UpdateAnimation
+00749b40   RELOCATION_MATCH PASS   CTCCupboard::UpdateAnimation
+00751820   RELOCATION_MATCH PASS   CTCLook::GetHeadSettingsSlowInFastOut
+00751c70   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00751c70   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+00751c70   WARN RELOC_NAME: ?AngleBetweenPositions@@YIMABVC3DVector@@0@Z -> 00661540 labelled '_global::GFGetAngleXYTo'
+00751c70   WARN RELOC_NAME: ?AngleYZBetweenPositions@@YIMABVC3DVector@@0@Z -> 00754e70 labelled '_global::GFGetAngleYZTo'
+00751c70   RELOCATION_MATCH PASS   CTCLook::GetAnglesFromBodyToPos
+00752300   WARN SHARED_HEADER_AVAILABLE CPlayer
+00752300   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+00752300   WARN SHARED_HEADER_AVAILABLE CLookDef
+00752300   WARN SHARED_HEADER_AVAILABLE CTCBase
+00752300   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00752300   RELOCATION_MATCH PASS   CTCLook::ImplementBodySettings
+00759d30   WARN SHARED_HEADER_AVAILABLE CWorld
+00759d30   WARN SHARED_HEADER_AVAILABLE CTCBase
+00759d30   RELOCATION_MATCH PASS   CTCPhysicsRigidBody::ComputeForces
+00766260   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00766260   WARN SHARED_HEADER_AVAILABLE CWorld
+00766260   WARN RELOC_CONFLICT: ??$GetSubDef@VCAugmentationDef@@@CDefClassBase@@QBE_NAAV?$CDefPointer@VCAugmentationDef@@@@@Z -> 0042b248 here, 0042af9e in landed 005bec92
+00766260   RELOCATION_MATCH PASS   CTCObjectAugmentations::GetHealthToAddThisFrame
+007796b0   WARN SHARED_HEADER_AVAILABLE CPlayer
+007796b0   WARN SHARED_HEADER_AVAILABLE CDisplayEngine
+007796b0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+007796b0   WARN SHARED_HEADER_AVAILABLE CWorld
+007796b0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007796b0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+007796b0   RELOCATION_MATCH PASS   CTCDRegionExit::FrameUpdate
+007899e0   RELOCATION_MATCH PASS   CTCHeroRangedAttacks::SetButtonPressure
+00799790   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+00799790   WARN SHARED_HEADER_AVAILABLE CTCBase
+00799790   WARN RELOC_NAME: ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 labelled 'CTCBase::GetThingSearchTools'
+00799790   WARN RELOC_NAME: ?CTCBase_OnInitialActivate@CTCShopKeeper@@QAEXXZ -> 00686870 labelled 'CTCBase::vfunc_6'
+00799790   RELOCATION_MATCH PASS   CTCShopKeeper::OnInitialActivate
+007c2480   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+007c2480   RELOCATION_MATCH PASS   CTCShotDefinitionBase::UpdateEffects
+007dccb0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+007dccb0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+007dccb0   RELOCATION_MATCH PASS   CTCCreatureFlyOnSpline::FrameUpdate
+007e3610   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007e3610   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+007e3610   RELOCATION_MATCH PASS   CTCAtmosPlayer::SetAtmosDefIndex
+007e5d20   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+007e5d20   WARN SHARED_HEADER_AVAILABLE CPlayer
+007e5d20   WARN SHARED_HEADER_AVAILABLE COracleMinigameDef
+007e5d20   WARN SHARED_HEADER_AVAILABLE CTCBase
+007e5d20   WARN RELOC_NAME: ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 labelled 'CTCBase::GetThingSearchTools'
+007e5d20   WARN RELOC_NAME: ?GetPFirstSpeechThing@CThingSearchTools@@QBE_NABVCThingFilter_HasTrackName@@PAPAVCThing@@@Z -> 0056d050 labelled 'CThingSearchTools::GetPFirstThing<CThingFilter_HasScriptName, CThing>'
+007e5d20   RELOCATION_MATCH PASS   CTCOracleMinigame::PlayGame
+007f1930   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+007f1930   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007f1930   WARN SHARED_HEADER_AVAILABLE CPlayer
+007f1930   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+007f1930   WARN SHARED_HEADER_AVAILABLE CAIGameCameraBase
+007f1930   WARN SHARED_HEADER_AVAILABLE CWorld
+007f1930   WARN SHARED_HEADER_AVAILABLE CTCBase
+007f1930   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+007f1930   WARN RELOC_NAME: ?RumbleDistanceFalloff@@YIMABVC3DVector@@0@Z -> 007f1840 labelled 'NRumble::GetRumbleDistanceAttenuationAtPos'
+007f1930   RELOCATION_MATCH PASS   CTCDRumble::OnInitialActivate
+007f8f30   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+007f8f30   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007f8f30   WARN RELOC_NAME: ?GetAnimation@CAnimationSet@@QBEPBVCAnimationEntry@@ABVCCharString@@JABVCAnimFilterBase@@@Z -> 005dc340 labelled 'Animation_FindNthValid'
+007f8f30   WARN RELOC_NAME: ?Set@CAnimInit@@QAEXJJJJ_NKJ@Z -> 0070c050 labelled 'CAnimInit::Init'
+007f8f30   RELOCATION_MATCH PASS   CTCAnimatingObject::PlayDefaultAnimation
+008059f0   RELOCATION_MATCH PASS   CGetBestTargetInDirection::CGetBestTargetInDirection
+008090e0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+008090e0   RELOCATION_MATCH PASS   CThingFilter_IsInTargetingRangeAndFOV::operator()
+0080d0b0   WARN SHARED_HEADER_AVAILABLE CWorld
+0080d0b0   WARN SHARED_HEADER_AVAILABLE CTCBase
+0080d0b0   WARN RELOC_NAME: ?GetEmitterSpacing@CExplosionDef@@QBEMM@Z -> 0080c190 labelled '_global::GetExplosionEffectInterpolate'
+0080d0b0   RELOCATION_MATCH PASS   CTCDExplosion::CreateStaticExplosion
+008158d0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+008158d0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+008158d0   RELOCATION_MATCH PASS   NHitLocations::CPhysicalPrimitiveCylinder::GetCylinderBaseAndTop
+00815ce0   RELOCATION_MATCH PASS   NHitLocations::CPhysicalPrimitiveCylinder::IsPosInside
+00825440   RELOCATION_MATCH PASS   CHeightMap::SetSizeZAt
+00830dd0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+00830dd0   RELOCATION_MATCH PASS   CThingAICreature::InitialiseMovementSpeeds
+00836810   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00836810   RELOCATION_MATCH PASS   CThingSoundEmitter::PlaySample
+00836870   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00836870   RELOCATION_MATCH PASS   CThingSoundEmitter::IsSamplePlaying
+008368d0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+008368d0   RELOCATION_MATCH PASS   CThingSoundEmitter::StopSpecificSample
+00836a50   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00836a50   RELOCATION_MATCH PASS   CThingSoundEmitter::~CThingSoundEmitter
+00843fc0   WARN SHARED_HEADER_AVAILABLE CQuestManager
+00843fc0   RELOCATION_MATCH PASS   CCreatureAction_ActivateQuest::Initialise
+00853320   RELOCATION_MATCH PASS   NCameraModes::CScriptModuleBase::GetViewPosInFocalPlane
+00853ba0   RELOCATION_MATCH PASS   NCameraModes::CScriptModuleUseLamp::Update
+00857b70   WARN RELOC_NAME: ?ResetComboChainPos@CCombatComponent@@QAEXXZ -> 00733210 labelled 'CWADFile::Close'
+00857b70   RELOCATION_MATCH PASS   ProcessPlayerControl
+  WARN leaf '?ProcessPossibleShotStrikeEvent@CCombatActionBase@@IAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z' matches no symbol in 00858590.obj; graded the largest function
+  WARN leaf '?ProcessPossibleShotStrikeEvent@CCombatActionBase@@IAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z' matches no symbol in 00858590.obj; graded the largest function
+00858590   WARN RELOC_NAME: ?_M_insert_overflow@?$CVector@PAVCThingGameObject@@@@QAEXPAPAVCThingGameObject@@ABQAV2@ABU__true_type@@I_N@Z -> 00788ffc labelled '_global::Vector_Assign'
+00858590   RELOCATION_MATCH PASS   CCombatActionBase::ProcessPossibleShotStrikeEvent
+0085c190   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+0085c190   RELOCATION_MATCH PASS   CCombatAction_ControlledStrafeJump::CCombatAction_ControlledStrafeJump
+00861a80   WARN RELOC_NAME: ?AddBlendAnim@CAnimateThing@@QAEXJM@Z -> 0070d2f0 labelled 'CAnimSet::AddAnim'
+00861a80   RELOCATION_MATCH PASS   CModeStandBase::SetUpMovementAnim
+00868ca0   RELOCATION_MATCH PASS   CHitParameters::AddDamageWithAttribute
+00870de0   RELOCATION_MATCH PASS   NCreatureAction::CActionEventRemoveObject::SetDataFromString
+00872ec0   WARN SHARED_HEADER_AVAILABLE CTCBase
+00872ec0   RELOCATION_MATCH PASS   NCameraModes::CZTargetNew::UpdateCoordSystem
+0087ca30   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+0087ca30   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0087ca30   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0087ca30   WARN SHARED_HEADER_AVAILABLE CTCBase
+0087ca30   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0087ca30   WARN SHARED_HEADER_AVAILABLE CJoystick
+0087ca30   WARN RELOC_NAME: ?PeekDefinitionManager@CCreatureActionBase@@IBEABVCGameDefinitionManager@@XZ -> 00692910 labelled 'CCreatureActionBase::GetPDefinitionManager'
+0087ca30   RELOCATION_MATCH PASS   CCreatureAction_GeneralInterruptedAttack::Initialise
+0088f570   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0088f570   RELOCATION_MATCH PASS   CGameScriptInterface::Play2DSound
+0088f620   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0088f620   RELOCATION_MATCH PASS   CGameScriptInterface::EnableSounds
+00891220   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+00891220   WARN RELOC_NAME: ?AddUBYTE@CGSIOverrideMusicEvent@@QAEXE@Z -> 006bdf40 labelled 'CMusicManager::SetCinematicOverridingMusicSet'
+00891220   WARN RELOC_NAME: ?SetOverrideMusic@CGSIOverrideMusicEvent@@QAEXW4EMusicSetType@@_N@Z -> 006bdea0 labelled 'CMusicManager::SetOverridingMusicSet'
+00891220   RELOCATION_MATCH PASS   CGameScriptInterface::OverrideMusic
+00891720   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00891720   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+00891720   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00891720   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00891720   WARN RELOC_NAME: ??0CCreatureAction_StabbedToDeath@@QAE@AAVCThingCreatureBase@@_N@Z -> 008ed650 labelled 'CCreatureAction_Die::CCreatureAction_Die'
+00891720   WARN RELOC_NAME: ??1CCreatureAction_StabbedToDeath@@UAE@XZ -> 00693ef0 labelled 'CCreatureActionBase::~CCreatureActionBase'
+00891720   RELOCATION_MATCH PASS   CGameScriptInterface::ChangeHeroHealthBy
+00899c10   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899c10   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00899c10   WARN RELOC_NAME: ?IsPCReady_GetReadiness@@YIMPAX@Z -> 00789a60 labelled 'CTCHeroRangedAttacks::GetShotBuildupTime'
+00899c10   RELOCATION_MATCH PASS   CGameScriptInterface::IsPlayerCreatureReadyToFireProjectileWeapon
+008c6db0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+008c6db0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+008c6db0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+008c6db0   WARN SHARED_HEADER_AVAILABLE CAnimComponentCombatHandedness
+008c6db0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+008c6db0   WARN RELOC_NAME: ?AddThingToIgnore@CTCDExplosiveTrail@@QAEXAAVCThing@@@Z -> 00810970 labelled 'CUnprovenDriverOwner_00810970::AppendTrackedThing'
+008c6db0   RELOCATION_MATCH PASS   CCreatureAction_IceTrollIcicleAttack::PerformAction
+008e5270   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+008e5270   RELOCATION_MATCH PASS   CTCPhysicsStandard::UpdateIsMoving
+008e5670   WARN SHARED_HEADER_AVAILABLE CWorldMap
+008e5670   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+008e5670   RELOCATION_MATCH PASS   CTCPhysicsStandard::PerformForceUpdates
+008e9460   WARN SHARED_HEADER_AVAILABLE CPlayer
+008e9460   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+008e9460   WARN RELOC_ALIAS: __CIacos -> 00bfeba2 is the import thunk 'MSVCR71.DLL::_CIacos'
+008e9460   RELOCATION_MATCH PASS   NCreatureMode::CModeStrafe::GetBestFrameInAimingAnim
+008ea500   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+008ea500   WARN SHARED_HEADER_AVAILABLE CWorld
+008ea500   WARN RELOC_NAME: ?GetWorld@CModeBase@@QAEPAVCWorld@@XZ -> 0073a680 labelled '_global::GetGlobal_013b8a1c_deref0x24_0073a680'
+008ea500   WARN RELOC_NAME: ?GetAnimMovementSpeed@@YIMABVCCharString@@PAVCThingCreatureBase@@J@Z -> 00861c90 labelled 'NCreatureMode::GetMovementSpeedFromAnimation'
+008ea500   WARN RELOC_NAME: ?GetHoverSpeedSlow@CThingCreatureBase@@QBEMXZ -> 006620e0 labelled 'CTCPhysicsBase::GetAirResistance'
+008ea500   WARN RELOC_NAME: ?GetHoverSpeedMedium@CThingCreatureBase@@QBEMXZ -> 006620f0 labelled 'CTCPhysicsBase::GetAirResistance'
+008ea500   WARN RELOC_NAME: ?GetHoverSpeedFast@CThingCreatureBase@@QBEMXZ -> 00662100 labelled 'CTCPhysicsBase::GetAirResistance'
+008ea500   RELOCATION_MATCH PASS   NCreatureMode::CModeHoverBase::InitialiseMovementSpeeds
+00917520   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00917520   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00917520   RELOCATION_MATCH PASS   CAIStateGroup_Clean::OnActivate
+00917a10   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00917a10   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00917a10   RELOCATION_MATCH PASS   CAIStateGroup_Clean::IsRunnable
+00927df0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00927df0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00927df0   RELOCATION_MATCH PASS   CAIStateGroup_SetupWares::IsRunnable
+0092c3b0   RELOCATION_MATCH PASS   CTCSleep::GetFastTrack
+00942270   WARN SHARED_HEADER_AVAILABLE CThingPhysical
+00942270   WARN RELOC_NAME: ?GetCreatureCategory@CThing@@QBEJXZ -> 00662000 labelled 'CThingCreatureBase::GetMovementMode'
+00942270   RELOCATION_MATCH PASS   CIsVeryCloseMotionlessCreature::operator
+009624d0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+009624d0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+009624d0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+009624d0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+009624d0   WARN RELOC_NAME: ?HasMode@CTCCreatureModeManager@@QAE_NJ@Z -> 0073a8a0 labelled 'CTCCreatureModeManager::IsModeActive'
+009624d0   WARN RELOC_NAME: ??0CCombatAction_StabThing@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z -> 0094e5f0 labelled 'CCreatureAction_TrollGroundPound::CCreatureAction_TrollGroundPound'
+009624d0   RELOCATION_MATCH PASS   CAIStateGroup_IceTrollPoundGroundAttack::Update
+0096e700   WARN RELOC_NAME: ?IsPositionOccupied@CCombatManager@@QAE_NPAVCThingCreatureBase@@@Z -> 006e9700 labelled 'CCombatManager::IsCreatureOnOuterRing'
+0096e700   RELOCATION_MATCH PASS   CAIStateGroup_MeleeCombatNearby::IsEnemyCreatureInCombatPosition
+00a11610   RELOCATION_MATCH PASS   CPhysicsMeshObject::IsRigidBodyBoundingPointsValid
+00a1fb00   RELOCATION_MATCH PASS   CNavigatorAStar::MoveToPos
+00a472f0   WARN SHARED_HEADER_AVAILABLE CNavigatorManager
+00a472f0   WARN RELOC_NAME: ?GetSmallestNodeSize@@YAMXZ -> 00a76320 labelled '_global::GetConstFloat_0_5_00a76320'
+00a472f0   RELOCATION_MATCH PASS   CNavigatorBase::GetNextNeighbour
+00a57ad0   RELOCATION_MATCH PASS   C2DLineF::IntersectsWith
+  WARN leaf '?IsAreaBlockedByLines@ (Ego_r.pdb ?IsAreaBlockedByLines@CNavQuadTree@@ABE_NABVC2DBoxF@@ABV?$vector@PBV?$list@VC2DLineF@@...@std@@@Z; modelled through CNavQuadTree_Methods)' matches no symbol in 00a76f30.obj; graded the largest function
+  WARN leaf '?IsAreaBlockedByLines@ (Ego_r.pdb ?IsAreaBlockedByLines@CNavQuadTree@@ABE_NABVC2DBoxF@@ABV?$vector@PBV?$list@VC2DLineF@@...@std@@@Z; modelled through CNavQuadTree_Methods)' matches no symbol in 00a76f30.obj; graded the largest function
+00a76f30   RELOCATION_MATCH PASS   CNavQuadTree::IsAreaBlockedByLines
+00a88cb0   RELOCATION_MATCH PASS   CQuaternion::IsIdentity
+00ae1260   WARN SHARED_HEADER_AVAILABLE CParticleProgram
+00ae1260   WARN RELOC_NAME: ?GetGroupVectorBuffer@@YIPAVC4DVector@@K@Z -> 00ae0540 labelled 'CParticleProgram::GetVectorBuffer'
+00ae1260   RELOCATION_MATCH PASS   CParticleProgram::PrepareForRendering
+00aee9f0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00aee9f0   WARN SHARED_HEADER_AVAILABLE CIEngine
+00aee9f0   WARN RELOC_NAME: ?GetParticleEngine@@YAPAVCIEngine@@XZ -> 00aeab10 labelled '_global::GetGlobal_013d2e2c_00aeab10'
+00aee9f0   RELOCATION_MATCH PASS   CParticleEmitter::Update
+00b18af0   WARN RELOC_NAME: ?GetParticleFrameRate@@YAJXZ -> 00aea9f0 labelled 'NParticleEngine::GetParticleUpdateRate'
+00b18af0   RELOCATION_MATCH PASS   NParticleEngine::CPSCLight::AddToBoundingSphere
+00b5af60   WARN SHARED_HEADER_AVAILABLE CEngineScreenEffectColourFilter
+00b5af60   RELOCATION_MATCH PASS   CEngineScreenEffectColourFilter::Render
+00bad8a0   WARN SHARED_HEADER_AVAILABLE CTexture
+00bad8a0   RELOCATION_MATCH PASS   CEngineInternalPrimitive2DSprite::Update
+00c14a50   WARN RELOC_NAME: ?Remove@CRegistryA_00c14a50@@QAEXPAVCData_00c14a50@@@Z -> 00c2a640 labelled 'CResourceRegistry::ReleaseOwnerEntries'
+00c14a50   WARN RELOC_NAME: ?Remove@CRegistryB_00c14a50@@QAEXPAVCData_00c14a50@@@Z -> 00c2bc10 labelled 'CInstanceRegistry::DestroyOwnerInstances'
+00c14a50   RELOCATION_MATCH PASS   CDataOwner_00c14a50::DeleteData
+00c14b50   RELOCATION_MATCH PASS   CSettingsProxy_012b29f8::SetOptionCC
+00c14e40   WARN RELOC_NAME: ??0CDiceRuleSet@@QAE@J@Z -> 00c194f0 labelled 'PKCTRRedblackTree_00c18b20::PKCTRRedblackTree_00c18b20'
+00c14e40   WARN RELOC_NAME: ??0CDiceSeedPair@@QAE@JJ@Z -> 00c2d0c0 labelled 'CDateAndTime::CDateAndTime'
+00c14e40   WARN RELOC_NAME: ??0CDiceQuad@@QAE@XZ -> 00c2c6b0 labelled 'CFlagOverride::CFlagOverride'
+00c14e40   WARN RELOC_NAME: ??0CDiceGameState@@QAE@PAVPKCDeferredBank@@J@Z -> 00c2a8c0 labelled '_global::CTCDiceGame_InitializeTree'
+00c14e40   WARN RELOC_NAME: ??0CDiceController@@QAE@PAVPKCDeferredBank@@@Z -> 00c2bd90 labelled 'CVtable_012b4510::CVtable_012b4510'
+00c14e40   RELOCATION_MATCH PASS   CVtable_012b28d8::CVtable_012b28d8
+  WARN leaf '??__EGSystemManager@@YAXXZ' matches no symbol in 01223ff0.obj; graded the largest function
+  WARN leaf '??__EGSystemManager@@YAXXZ' matches no symbol in 01223ff0.obj; graded the largest function
+01223ff0   WARN RELOC_NAME: _$E2 -> 0122a680 labelled '_global::AtexitDtor_CSystemManager_at_013ca618_0122a680'
+01223ff0   RELOCATION_MATCH PASS   _static_init::g_CStatic_009a7440_013ca618
+
+WINS: 157
+  004022b0 RELOCATION_MATCH _global::GFInitialise
+  00407370 RELOCATION_MATCH CUserProfileManager::ApplyValues
+  0040fa20 RELOCATION_MATCH CPersistTraits<CActionInputControl>::?TransferOut@?$CPersistTraits@VCActionInputControl@@
+  00416268 RELOCATION_MATCH CMainGameComponent::BeginInputLoading
+  00416296 RELOCATION_MATCH CMainGameComponent::IsControllerDisconnected@CMainGameComponent
+  004163b7 RELOCATION_MATCH CMainGameComponent::SetExclusiveMode
+  004166e2 RELOCATION_MATCH CMainGameComponent::GetGameTimeOfNextPresentCompletion
+  004167da RELOCATION_MATCH CMainGameComponent::?AppReinitFunc@CMainGameComponent@@KIXPAX@Z
+  00416c8a RELOCATION_MATCH CMainGameComponent::InitGraphics
+  00417418 RELOCATION_MATCH CMainGameComponent::InitDisplayEngine
+  004175e5 RELOCATION_MATCH CMainGameComponent::Shutdown
+  004189c2 RELOCATION_MATCH CMainGameComponent::Run
+  0041ceb3 RELOCATION_MATCH NUISystem::CManager::?PlaySample@CManager@NUISystem@@UAEKAAVCCharString@@J@Z
+  0041e3f6 RELOCATION_MATCH NUISystem::CManager::??0CManager@NUISystem
+  0042dd28 RELOCATION_MATCH CNewFrontendGameComponent::CleanUpInterfaces
+  0042ded5 RELOCATION_MATCH _global::?GPlayMusic@@YIXM@Z
+  0042e3ee RELOCATION_MATCH CNewFrontendGameComponent::?Input@CNewFrontendGameComponent@@UAEXXZ
+  0042ebb6 RELOCATION_MATCH CNewFrontendGameComponent::Shutdown
+  00437ae0 RELOCATION_MATCH CPlayerGui::?UpdateStat@CPlayerGui@
+  0043a4d0 RELOCATION_MATCH CPlayerGui::SetGuildSealLevelUpPos
+  00445ae0 RELOCATION_MATCH CGamePlayerInterface::?SaveInitialInfo@CGamePlayerInterface_Methods@@QAEXXZ
+  0047d78b RELOCATION_MATCH CTCInGameMenu::CloseInGameMenu
+  00494840 RELOCATION_MATCH CFrontendGameComponent::?InitGraphics@CFrontendGameComponent@@AAE_NXZ (Ego_r.pdb, private; modelled public)
+  0049dcc0 RELOCATION_MATCH CWorld::?ResetToFrontEnd@CWorld@@QAEXXZ
+  004a2f10 RELOCATION_MATCH CWorld::?UpdateSaveGameLoad@CWorld@@IAEXXZ
+  004c5f10 RELOCATION_MATCH CBulletTimeManager::?RecalculateSoundPitch@CBulletTimeManager@@AAEXXZ
+  004cdbd0 RELOCATION_MATCH CSubtitledMessage::??0CSubtitledMessage
+  0054b360 RELOCATION_MATCH NUISystem::CSlider::??1CSlider@NUISystem
+  005565c0 RELOCATION_MATCH NUISystem::CRedefinerList::?ResetKeysToDefaults@
+  00557d20 RELOCATION_MATCH NUISystem::CKeyRedefiner::Redefine
+  0055b890 RELOCATION_MATCH NUISystem::CHoverable::Update
+  0057a60a RELOCATION_MATCH CTCHeroStats::GetFatnessReducingFrequencyInFrames
+  00589d30 RELOCATION_MATCH CTCInventory::CloseInventory
+  0059e2c7 RELOCATION_MATCH CTCInventoryTrade::CloseInventoryPC
+  005ae86b RELOCATION_MATCH CTCInventoryTrade::OpenInventoryPC
+  005bd33c RELOCATION_MATCH NInventory::CTCInventoryBase::?PlayInventoryMovementSound@
+  005bd4ea RELOCATION_MATCH NInventory::CTCInventoryBase::OpenInventory
+  005bff07 RELOCATION_MATCH NInventory::CTCInventoryBase::??0CTCInventoryBase
+  005da5a0 RELOCATION_MATCH CTCWeapon::GetSheatheAnim
+  005ea400 RELOCATION_MATCH CTCTavernGame::DrawBetAndMoney
+  005ec990 RELOCATION_MATCH CTCTavernGame::?DrawBox@CTCTavernGame
+  005fa990 RELOCATION_MATCH CTCInventoryMap::?GetGuildSealRecallRegion@CTCInventoryMap@@ABEJXZ
+  006116e0 RELOCATION_MATCH CTCInventoryMap::OpenInventory@CTCInventoryMap
+  00621c80 RELOCATION_MATCH CTCInventoryQuests::CloseInventory@CTCInventoryQuests
+  00629f50 RELOCATION_MATCH CWorld::?EASkipCutScene@CWorld@@
+  0063db30 RELOCATION_MATCH CWorldMap::?FindLastUnblockedThemePositionAndReportCollision@CWorldMap@@QBE_NABVC3DVector@@0AAV2@@Z
+  00643ca1 RELOCATION_MATCH NPlayerGui::?GFAnchorToTopRight@NPlayerGui@
+  00643d0c RELOCATION_MATCH NPlayerGui::?GFAnchorToBottomRight@NPlayerGui@
+  00645ce9 RELOCATION_MATCH CStatBar::DrawStatBox@CStatBar
+  00646a46 RELOCATION_MATCH NPlayerGui::CStatBar::?DrawStatBoxWithText@CStatBar@NPlayerGui@
+  0064d6a8 RELOCATION_MATCH NPlayerGui::CDrawQuickAccessIcons::Update
+  006572a0 RELOCATION_MATCH NPlayerGui::CDrawNPCName::?Draw@CDrawNPCName@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
+  0065c781 RELOCATION_MATCH CTCVillage::?FrameUpdate@CTCVillage
+  0066a920 RELOCATION_MATCH CTCSoundPlayer::?InternalPlaySoundEventAtPos@CTCSoundPlayer
+  0066ad90 RELOCATION_MATCH CTCSoundPlayer::?ReleaseAttachedLoopingSound@CTCSoundPlayer@@QAEXK@Z
+  0066ae10 RELOCATION_MATCH CTCSoundPlayer::?IsAttachedSoundPlaying@CTCSoundPlayer@@
+  0066aeb0 RELOCATION_MATCH CTCSoundPlayer::StopAllAttachedSounds
+  0066aff0 RELOCATION_MATCH CTCSoundPlayer::SetSpecificSampleVolume
+  0066b120 RELOCATION_MATCH CTCSoundPlayer::?InternalPlaySoundEvent@CTCSoundPlayer
+  0066bd00 RELOCATION_MATCH CTCSoundPlayer::?PlayAttachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@_N11J@Z
+  0066e742 RELOCATION_MATCH NHeroInformationScreens::CManager::?PlayScreenUpdateSound@CManager@NHeroInformationScreens
+  0066f3b0 RELOCATION_MATCH CInputTypeXboxPadRightStickEvent::?IsEventOfThisTypeInQueue@CInputTypeXboxPadRightStickEvent_Methods@@QBE_NW4EInputButtonEventType@@JAAM@Z
+  0066f4d0 RELOCATION_MATCH CInputTypeMouseWheelMovementEvent::?IsEventOfThisTypeInQueue@CInputTypeMouseWheelMovementEvent_Methods@@QBE_NW4EInputButtonEventType@@JAAM@Z
+  0066f630 RELOCATION_MATCH CInputTypeKeyboardKeyEvent::?IsEventOfThisTypeInQueue@CInputTypeKeyboardKeyEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z
+  0066f750 RELOCATION_MATCH CInputTypeXboxPadButtonEvent::?IsEventOfThisTypeInQueue@CInputTypeXboxPadButtonEvent@@UBE_NW4EInputButtonEventType@@JAAM@Z
+  0066f840 RELOCATION_MATCH CInputTypeXboxPadRightStickEvent::GetControlDirection
+  0068fb90 RELOCATION_MATCH CInputProcessCombat::ProcessInput
+  0069e980 RELOCATION_MATCH NDisplayView::CView3DBase::vfunc_3
+  006b1600 RELOCATION_MATCH CAtmosProcess::?ApplyReverbSettings@CAtmosProcess@@AAEXXZ
+  006b1960 RELOCATION_MATCH CAtmosProcess::??0CAtmosProcess
+  006bb720 RELOCATION_MATCH CGameTimeManager::FastForwardTimeTo
+  006c3f40 RELOCATION_MATCH CTCFadeOutAndIn::FrameUpdate
+  006cb620 RELOCATION_MATCH CTCCreatureNavigation::IsAbleToNavigateFromPosToPos
+  006cb780 RELOCATION_MATCH CTCCreatureNavigation::GetNearbyDirectedPosition
+  006dabe0 RELOCATION_MATCH std::??$__find_if@V?$reverse_iterator@PBJ@std@@VCPredIsFallbackMultiplierForMultiplier@?A
+  006e2940 RELOCATION_MATCH CTCTalk::?GetSpeechDurationInFrames@CTCTalk@@
+  006e2a50 RELOCATION_MATCH CTCTalk::SetUpSpeechSample
+  006e80f0 RELOCATION_MATCH CCombatWheel::ReassignAttacker
+  006ea5f0 RELOCATION_MATCH CCombatManager::IsTargetOverriddenByAttemptedFacingDirection
+  006f9130 RELOCATION_MATCH NAnimationEvents_CManager::GetEmbeddedEventTime
+  00705b60 RELOCATION_MATCH CTCCarryable::UpdateCarriedPosition
+  0070be40 RELOCATION_MATCH CAnimateThing::GetProgressFromAlpha
+  00714900 RELOCATION_MATCH NTCScriptedControl::CActionMoveTo::?Update@CActionMoveTo@NTCScriptedControl@@
+  0071c9f0 RELOCATION_MATCH CTCHeroMorph::UpdateIdleParticles
+  007232e0 RELOCATION_MATCH CTCPhysicsLight::OnCreate
+  00724010 RELOCATION_MATCH CTCPhysicsStandard::OnCreate
+  007308f0 RELOCATION_MATCH CTCDoor::UpdateAnimation
+  007468c0 RELOCATION_MATCH CTCBed::UpdateAnimation
+  00749b40 RELOCATION_MATCH CTCCupboard::UpdateAnimation
+  00751820 RELOCATION_MATCH CTCLook::GetHeadSettingsSlowInFastOut
+  00751c70 RELOCATION_MATCH CTCLook::GetAnglesFromBodyToPos
+  00752300 RELOCATION_MATCH CTCLook::ImplementBodySettings
+  00759d30 RELOCATION_MATCH CTCPhysicsRigidBody::ComputeForces
+  00766260 RELOCATION_MATCH CTCObjectAugmentations::GetHealthToAddThisFrame
+  007796b0 RELOCATION_MATCH CTCDRegionExit::FrameUpdate
+  007899e0 RELOCATION_MATCH CTCHeroRangedAttacks::SetButtonPressure
+  00799790 RELOCATION_MATCH CTCShopKeeper::?OnInitialActivate@CTCShopKeeper
+  007c2480 RELOCATION_MATCH CTCShotDefinitionBase::UpdateEffects
+  007dccb0 RELOCATION_MATCH CTCCreatureFlyOnSpline::FrameUpdate
+  007e3610 RELOCATION_MATCH CTCAtmosPlayer::?SetAtmosDefIndex@CTCAtmosPlayer@@QAEXJ@Z
+  007e5d20 RELOCATION_MATCH CTCOracleMinigame::PlayGame
+  007f1930 RELOCATION_MATCH CTCDRumble::OnInitialActivate
+  007f8f30 RELOCATION_MATCH CTCAnimatingObject::PlayDefaultAnimation
+  008059f0 RELOCATION_MATCH CGetBestTargetInDirection::??0CGetBestTargetInDirection
+  008090e0 RELOCATION_MATCH CThingFilter_IsInTargetingRangeAndFOV::??RCThingFilter_IsInTargetingRangeAndFOV
+  0080d0b0 RELOCATION_MATCH CTCDExplosion::CreateStaticExplosion
+  008158d0 RELOCATION_MATCH NHitLocations::CPhysicalPrimitiveCylinder::?GetCylinderBaseAndTop@CPhysicalPrimitiveCylinder@NHitLocations@@
+  00815ce0 RELOCATION_MATCH NHitLocations::CPhysicalPrimitiveCylinder::?IsPosInside@CPhysicalPrimitiveCylinder@
+  00825440 RELOCATION_MATCH CHeightMap::SetSizeZAt
+  00830dd0 RELOCATION_MATCH CThingAICreature::InitialiseMovementSpeeds
+  00836810 RELOCATION_MATCH CThingSoundEmitter::PlaySample
+  00836870 RELOCATION_MATCH CThingSoundEmitter::IsSamplePlaying
+  008368d0 RELOCATION_MATCH CThingSoundEmitter::StopSpecificSample
+  00836a50 RELOCATION_MATCH CThingSoundEmitter::??1CThingSoundEmitter
+  00843fc0 RELOCATION_MATCH CCreatureAction_ActivateQuest::Initialise
+  00853320 RELOCATION_MATCH NCameraModes::CScriptModuleBase::GetViewPosInFocalPlane
+  00853ba0 RELOCATION_MATCH NCameraModes::CScriptModuleUseLamp::Update
+  00857b70 RELOCATION_MATCH CCombatActionBase::ProcessPlayerControl
+  00858590 RELOCATION_MATCH CCombatActionBase::?ProcessPossibleShotStrikeEvent@CCombatActionBase@@IAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z
+  0085c190 RELOCATION_MATCH CCombatAction_ControlledStrafeJump::??0CCombatAction_ControlledStrafeJump
+  00861a80 RELOCATION_MATCH CModeStandBase::SetUpMovementAnim
+  00868ca0 RELOCATION_MATCH CHitParameters::AddDamageWithAttribute
+  00870de0 RELOCATION_MATCH NCreatureAction::CActionEventRemoveObject::?SetDataFromString@CActionEventRemoveObject
+  00872ec0 RELOCATION_MATCH NCameraModes::CZTargetNew::UpdateCoordSystem
+  0087ca30 RELOCATION_MATCH CCreatureAction_GeneralInterruptedAttack::?Initialise@CCreatureAction_GeneralInterruptedAttack@@UAEXXZ
+  0088f570 RELOCATION_MATCH CGameScriptInterface::Play2DSound
+  0088f620 RELOCATION_MATCH CGameScriptInterface::EnableSounds
+  00891220 RELOCATION_MATCH CGameScriptInterface::OverrideMusic
+  00891720 RELOCATION_MATCH CGameScriptInterface::ChangeHeroHealthBy
+  00899c10 RELOCATION_MATCH CGameScriptInterface::IsPlayerCreatureReadyToFireProjectileWeapon
+  008c6db0 RELOCATION_MATCH CCreatureAction_IceTrollIcicleAttack::?PerformAction@CCreatureAction_IceTrollIcicleAttack@@UAEXXZ
+  008e5270 RELOCATION_MATCH CTCPhysicsStandard::UpdateIsMoving
+  008e5670 RELOCATION_MATCH CTCPhysicsStandard::PerformForceUpdates
+  008e9460 RELOCATION_MATCH NCreatureMode::CModeStrafe::GetBestFrameInAimingAnim
+  008ea500 RELOCATION_MATCH NCreatureMode::CModeHoverBase::InitialiseMovementSpeeds
+  00917520 RELOCATION_MATCH CAIStateGroup_Clean::OnActivate@CAIStateGroup_Clean
+  00917a10 RELOCATION_MATCH CAIStateGroup_Clean::IsRunnable@CAIStateGroup_Clean
+  00927df0 RELOCATION_MATCH CAIStateGroup_SetupWares::IsRunnable
+  0092c3b0 RELOCATION_MATCH CTCSleep::GetFastTrack
+  00942270 RELOCATION_MATCH CIsVeryCloseMotionlessCreature::??RCIsVeryCloseMotionlessCreature
+  009624d0 RELOCATION_MATCH CAIStateGroup_IceTrollPoundGroundAttack::Update
+  0096e700 RELOCATION_MATCH CAIStateGroup_MeleeCombatNearby::IsEnemyCreatureInCombatPosition
+  00a11610 RELOCATION_MATCH CPhysicsMeshObject::IsRigidBodyBoundingPointsValid
+  00a1fb00 RELOCATION_MATCH CNavigatorAStar::MoveToPos
+  00a472f0 RELOCATION_MATCH CNavigatorBase::GetNextNeighbour
+  00a57ad0 RELOCATION_MATCH C2DLineF::IntersectsWith
+  00a76f30 RELOCATION_MATCH CNavQuadTree::?IsAreaBlockedByLines@ (Ego_r.pdb ?IsAreaBlockedByLines@CNavQuadTree@@ABE_NABVC2DBoxF@@ABV?$vector@PBV?$list@VC2DLineF@@...@std@@@Z; modelled through CNavQuadTree_Methods)
+  00a88cb0 RELOCATION_MATCH CQuaternion::IsIdentity
+  00ae1260 RELOCATION_MATCH CParticleProgram::?PrepareForRendering@CParticleProgram@@QAEXPAVC4DVector@@PAVCParticleSimulation@@MMPAVC3DAnimationBlendState
+  00aee9f0 RELOCATION_MATCH CParticleEmitter::Update
+  00b18af0 RELOCATION_MATCH NParticleEngine::CPSCLight::AddToBoundingSphere
+  00b5af60 RELOCATION_MATCH CEngineScreenEffectColourFilter::Render
+  00bad8a0 RELOCATION_MATCH CEngineInternalPrimitive2DSprite::Update
+  00c14a50 RELOCATION_MATCH CDataOwner_00c14a50::DeleteData
+  00c14b50 RELOCATION_MATCH CSettingsProxy_012b29f8::SetOptionCC
+  00c14e40 RELOCATION_MATCH CVtable_012b28d8::??0PKCDeferredBank@@
+  01223ff0 RELOCATION_MATCH _static_init::??__EGSystemManager@@YAXXZ

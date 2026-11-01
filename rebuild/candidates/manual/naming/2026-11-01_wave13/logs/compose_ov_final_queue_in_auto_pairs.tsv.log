@@ -1,0 +1,18 @@
+edited 00658ec3 IsPointInside @QA->@QB + ['?IsPointInside@CThingBuilding@@QBE_NABVC3DVector@@@Z'] - ['?IsPointInside@CThingBuilding@@QAE_NABVC3DVector@@@Z']
+skip 006621c0 IsPerformingAnyAction: 0 declarations in CThingCreatureBase
+skip 006622d0 IsPerformingAnyAction: 0 declarations in CThingCreatureBase
+skip 006643c0 IsPerformingAnyAction: 0 declarations in CThingCreatureBase
+skip 00692c10 compile: \rebuild\src\compiled\00\69\CCreatureActionBase_GetWorldMap_00692c10.cpp(40) : error C2248: 'CThing::GetWorld' : cannot access protected member declared in class 'CThing'
+edited 00799140 IsPointInside @QA->@QB + ['?IsPointInside@CThingBuilding@@QBE_NABVC3DVector@@@Z'] - ['?IsPointInside@CThingBuilding@@QAE_NABVC3DVector@@@Z']
+edited 007f8dc0 PlayAnimation @QA->@AA + ['?PlayAnimation@CTCAnimatingObject@@AAEXABVCAnimInit@@J@Z'] - ['?PlayAnimation@CTCAnimatingObject@@QAEXABVCAnimInit@@J@Z']
+edited 007f8f30 PlayAnimation @QA->@AA + ['?PlayAnimation@CTCAnimatingObject@@AAEXABVCAnimInit@@J@Z'] - ['?PlayAnimation@CTCAnimatingObject@@QAEXABVCAnimInit@@J@Z']
+edited 0082d000 IsPointInside @QA->@QB + ['?IsPointInside@CThingBuilding@@QBE_NABVC3DVector@@@Z'] - ['?IsPointInside@CThingBuilding@@QAE_NABVC3DVector@@@Z']
+edited 00843fc0 GetDefName @QA->@QB + ['?GetDefName@CThing@@QBE?AVCDefString@@XZ'] - ['?GetDefName@CThing@@QAE?AVCDefString@@XZ']
+edited 00917520 IsPointInside @QA->@QB + ['?IsPointInside@CThingBuilding@@QBE_NABVC3DVector@@@Z'] - ['?IsPointInside@CThingBuilding@@QAE_NABVC3DVector@@@Z']
+edited 009175e0 IsPointInside @QA->@QB + ['?IsPointInside@CThingBuilding@@QBE_NABVC3DVector@@@Z'] - ['?IsPointInside@CThingBuilding@@QAE_NABVC3DVector@@@Z']
+edited 00917a10 IsPointInside @QA->@QB + ['?IsPointInside@CThingBuilding@@QBE_NABVC3DVector@@@Z'] - ['?IsPointInside@CThingBuilding@@QAE_NABVC3DVector@@@Z']
+edited 00926c50 IsPointInside @QA->@QB IsPermanentlyStocked @QA->@QB + ['?IsPermanentlyStocked@CTCShop@@QBE_NXZ', '?IsPointInside@CThingBuilding@@QBE_NABVC3DVector@@@Z'] - ['?IsPermanentlyStocked@CTCShop@@QAE_NXZ', '?IsPointInside@CThingBuilding@@QAE_NABVC3DVector@@@Z']
+edited 00927df0 IsPermanentlyStocked @QA->@QB + ['?IsPermanentlyStocked@CTCShop@@QBE_NXZ'] - ['?IsPermanentlyStocked@CTCShop@@QAE_NXZ']
+edited 00927ea0 IsPermanentlyStocked @QA->@QB + ['?IsPermanentlyStocked@CTCShop@@QBE_NXZ'] - ['?IsPermanentlyStocked@CTCShop@@QAE_NXZ']
+edited 00957f20 IsPointInside @QA->@QB + ['?IsPointInside@CThingBuilding@@QBE_NABVC3DVector@@@Z'] - ['?IsPointInside@CThingBuilding@@QAE_NABVC3DVector@@@Z']
+edited 00b4fc10 InitialiseTextures @QA->@AA + ['?InitialiseTextures@CEngineShadowRenderer@@AAE_NXZ'] - ['?InitialiseTextures@CEngineShadowRenderer@@QAE_NXZ']

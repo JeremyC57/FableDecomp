@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00853ba0   RELOCATION_MATCH PASS   NCameraModes::CScriptModuleUseLamp::Update
+
+WINS: 1
+  00853ba0 RELOCATION_MATCH NCameraModes::CScriptModuleUseLamp::Update

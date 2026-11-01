@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00870d70   RELOCATION_MATCH PASS   NCreatureAction::CActionEventAddObject::SetDataFromString
+00870de0   RELOCATION_MATCH PASS   NCreatureAction::CActionEventRemoveObject::SetDataFromString
+
+WINS: 2
+  00870d70 RELOCATION_MATCH NCreatureAction::CActionEventAddObject::SetDataFromString
+  00870de0 RELOCATION_MATCH NCreatureAction::CActionEventRemoveObject::?SetDataFromString@CActionEventRemoveObject

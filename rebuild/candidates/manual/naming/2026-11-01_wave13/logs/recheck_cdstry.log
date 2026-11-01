@@ -1,0 +1,31 @@
+addr       parity           behav  name
+00415dd0   RELOCATION_MATCH PASS   CDefString::operator CCharString
+0071c7c0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+0071c7c0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0071c7c0   WARN SHARED_HEADER_AVAILABLE CTCBase
+0071c7c0   WARN RELOC_NAME: ?GetString@CDefString@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator CCharString'
+0071c7c0   RELOCATION_MATCH PASS   CTCHeroMorph::AddParticles
+00ec8230   WARN RELOC_CONFLICT: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 here, 00415dd0 in landed 0071c7c0
+00ec8230   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 labelled 'CDefString::operator_class_CCharString'
+00ec8230   RELOCATION_MATCH PASS   NScript::CV_SickChildScript::CManInLove::OnPredicateFail
+
+WINS: 3
+  00415dd0 RELOCATION_MATCH CDefString::?GetString@CDefString@@QBE?AVCCharString@@XZ
+  0071c7c0 RELOCATION_MATCH CTCHeroMorph::AddParticles
+  00ec8230 RELOCATION_MATCH NScript::CV_SickChildScript::CManInLove::?OnPredicateFail@CManInLove@CV_SickChildScript@NScript@@EAEXXZ
+addr       parity           behav  name
+00698a30   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00698a30   WARN RELOC_NAME: ?GetString@CDefString@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator CCharString'
+00698a30   RELOCATION_MATCH PASS   _global::PlayCameraSoundThroughObservedThing
+0071c9f0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+0071c9f0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0071c9f0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0071c9f0   WARN SHARED_HEADER_AVAILABLE CWorld
+0071c9f0   WARN SHARED_HEADER_AVAILABLE CTCBase
+0071c9f0   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+0071c9f0   WARN RELOC_NAME: ?GetString@CDefString@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator CCharString'
+0071c9f0   RELOCATION_MATCH PASS   CTCHeroMorph::UpdateIdleParticles
+
+WINS: 2
+  00698a30 RELOCATION_MATCH _global::?PlayCameraSoundThroughObservedThing@?A0x
+  0071c9f0 RELOCATION_MATCH CTCHeroMorph::UpdateIdleParticles

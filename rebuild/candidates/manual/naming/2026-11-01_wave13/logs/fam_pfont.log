@@ -1,0 +1,8 @@
+edited 004022b0 g_FableResourceManager_013B838C(fable_u32 r0 w1) -> PFontManager + ['?PFontManager@@3PAVCFontManager@@A'] - ['?g_FableResourceManager_013B838C@@3IA']
+edited 004168dc g_pFontBank(CFontBank* r1 w0) -> PFontManager + ['?PFontManager@@3PAVCFontManager@@A'] - ['?g_pFontBank@@3PAVCFontBank@@A']
+edited 0042ddb3 g_pFontBank(CFontBank* r1 w0) -> PFontManager + ['?PFontManager@@3PAVCFontManager@@A'] - ['?g_pFontBank@@3PAVCFontBank@@A']
+edited 0042ebb6 g_pFrontendGlobal_013b838c(CFrontendGlobal_013b838c* r1 w0) -> PFontManager + ['?PFontManager@@3PAVCFontManager@@A'] - ['?g_pFrontendGlobal_013b838c@@3PAUCFrontendGlobal_013b838c@@A']
+edited 00438aa0 g_pFontBankManager(CFontBankManager* r1 w0) -> PFontManager + ['?PFontManager@@3PAVCFontManager@@A'] - ['?g_pFontBankManager@@3PAUCFontBankManager@@A']
+edited 00494840 g_pFontBank(CFontBank* r1 w0) -> PFontManager + ['?PFontManager@@3PAVCFontManager@@A'] - ['?g_pFontBank@@3PAVCFontBank@@A']
+edited 0064560d g_pFontBankManager(CFontBankManager* r2 w0) -> PFontManager + ['?PFontManager@@3PAVCFontManager@@A'] - ['?g_pFontBankManager@@3PAUCFontBankManager@@A']
+edited 0065431d g_pFontBankManager(CFontBankManager* r1 w0) -> PFontManager + ['?PFontManager@@3PAVCFontManager@@A'] - ['?g_pFontBankManager@@3PAUCFontBankManager@@A']

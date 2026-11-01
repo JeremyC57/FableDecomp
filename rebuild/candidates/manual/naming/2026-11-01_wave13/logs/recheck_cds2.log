@@ -1,0 +1,27 @@
+addr       parity           behav  name
+004b4aa0   WARN SHARED_HEADER_AVAILABLE CTCQuestCard
+004b4aa0   WARN SHARED_HEADER_AVAILABLE CWorld
+004b4aa0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+004b4aa0   WARN SHARED_HEADER_AVAILABLE CQuestManager
+004b4aa0   DIFFER(426v426)  PASS   CQuestManager::ActivateQuestCard
+00591a66   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00591a66   DIFFER(281v281)  PASS   CTCInventory::OnSerialise
+005c3a95   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005c3a95   DIFFER(1020v1020) PASS   CTCInventoryWeapons::OnSerialise
+
+WINS: 0
+addr       parity           behav  name
+004b4c50   WARN SHARED_HEADER_AVAILABLE CTCQuestCard
+004b4c50   WARN SHARED_HEADER_AVAILABLE CWorld
+004b4c50   WARN SHARED_HEADER_AVAILABLE CPlayer
+004b4c50   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+004b4c50   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+004b4c50   WARN SHARED_HEADER_AVAILABLE CQuestManager
+004b4c50   DIFFER(479v479)  PASS   CQuestManager::ActivateTestQuestCard
+005c0e81   DIFFER(586v587)  PASS   CPersistTraits<NInventory::CItem>::TransferOut
+00698a30   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00698a30   WARN RELOC_NAME: ?GetString@CDefString@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator CCharString'
+00698a30   RELOCATION_MATCH PASS   _global::PlayCameraSoundThroughObservedThing
+
+WINS: 1
+  00698a30 RELOCATION_MATCH _global::?PlayCameraSoundThroughObservedThing@?A0x

@@ -1,0 +1,10 @@
+addr       parity           behav  name
+008368f0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+008368f0   RELOCATION_MATCH PASS   CThingSoundEmitter::ReleaseLoop
+0088f660   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+0088f660   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0088f660   RELOCATION_MATCH PASS   CGameScriptInterface::StopSound
+
+WINS: 2
+  008368f0 RELOCATION_MATCH CThingSoundEmitter::?ReleaseLoop@CThingSoundEmitter@@QAEXK@Z
+  0088f660 RELOCATION_MATCH CGameScriptInterface::StopSound

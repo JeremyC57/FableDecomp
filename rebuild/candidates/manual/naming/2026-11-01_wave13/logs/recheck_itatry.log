@@ -1,0 +1,10 @@
+addr       parity           behav  name
+009647c0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+009647c0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+009647c0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+009647c0   WARN RELOC_NAME: ??0CIntelligentPointerThing@@QAE@PAVCThing@@@Z -> 004a96f0 labelled 'CIntelligentPointer<CThing>::CIntelligentPointer'
+009647c0   WARN RELOC_NAME: ??1CCreatureAction_PickUpGenericBox@@UAE@XZ -> 007120d0 labelled '_global::Dtor_CCreatureActionBaseBase_007120d0'
+009647c0   RELOCATION_MATCH PASS   CAIStateGroup_StealStealableItem::Update
+
+WINS: 1
+  009647c0 RELOCATION_MATCH CAIStateGroup_StealStealableItem::Update

@@ -1,0 +1,19 @@
+ggame h13_ggame.py ok 17 already 0 other 0 
+twopi h13_twopi.py ok 5 already 0 other 0 
+twopi fam_glob.py {'edited': 2, 'skip': 0, 'already': 0} 
+stools h13_stools.py ok 22 already 0 other 0 
+cds h13_cds.py ok 13 already 0 other 0 
+pmgr fam_gptr.py {'edited': 74, 'skip': 1, 'already': 0} 
+pmgr fam_gptr.py {'edited': 34, 'skip': 1, 'already': 0} 
+pmgr fam_gptr.py {'edited': 27, 'skip': 0, 'already': 0} 
+pmgr fam_gptr.py {'edited': 4, 'skip': 0, 'already': 0} 
+pmgr fam_gptr.py {'edited': 8, 'skip': 0, 'already': 0} 
+pmgr h13_ptr.py ok 15 already 0 other 0 
+eps fam_glob.py {'edited': 140, 'skip': 0, 'already': 0} 
+eps h13_eps_t.py ok 1 already 0 other 0 
+sfv h13_sfv.py ok 7 already 0 other 0 
+ita h13_ita.py ok 2 already 0 other 0 
+pkc h13_pkc.py ok 13 already 0 other 0 
+anon h13_anon.py ok 7 already 0 other 0 
+queue fam_auto.py {'edited': 14, 'skip': 4, 'already': 0} 
+{'ggame': 4, 'twopi': 4, 'stools': 6, 'cds': 5, 'pmgr': 138, 'eps': 140, 'sfv': 1, 'ita': 1, 'pkc': 5, 'anon': 2, 'queue': 14}

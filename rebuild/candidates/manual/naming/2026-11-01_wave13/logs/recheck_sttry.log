@@ -1,0 +1,51 @@
+addr       parity           behav  name
+005bdc77   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+005bdc77   WARN SHARED_HEADER_AVAILABLE CTCBase
+005bdc77   RELOCATION_MATCH PASS   CTCInventoryBase::GetInventoryGuildValidity
+00799790   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+00799790   WARN SHARED_HEADER_AVAILABLE CTCBase
+00799790   WARN RELOC_NAME: ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 labelled 'CTCBase::GetThingSearchTools'
+00799790   WARN RELOC_NAME: ?CTCBase_OnInitialActivate@CTCShopKeeper@@QAEXXZ -> 00686870 labelled 'CTCBase::vfunc_6'
+00799790   RELOCATION_MATCH PASS   CTCShopKeeper::OnInitialActivate
+007e5d20   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+007e5d20   WARN SHARED_HEADER_AVAILABLE CPlayer
+007e5d20   WARN SHARED_HEADER_AVAILABLE COracleMinigameDef
+007e5d20   WARN SHARED_HEADER_AVAILABLE CTCBase
+007e5d20   WARN RELOC_NAME: ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 labelled 'CTCBase::GetThingSearchTools'
+007e5d20   WARN RELOC_NAME: ?GetPFirstSpeechThing@CThingSearchTools@@QBE_NABVCThingFilter_HasTrackName@@PAPAVCThing@@@Z -> 0056d050 labelled 'CThingSearchTools::GetPFirstThing<CThingFilter_HasScriptName, CThing>'
+007e5d20   RELOCATION_MATCH PASS   CTCOracleMinigame::PlayGame
+
+WINS: 3
+  005bdc77 RELOCATION_MATCH CTCInventoryBase::GetInventoryGuildValidity
+  00799790 RELOCATION_MATCH CTCShopKeeper::?OnInitialActivate@CTCShopKeeper
+  007e5d20 RELOCATION_MATCH CTCOracleMinigame::PlayGame
+addr       parity           behav  name
+006c5e90   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+006c5e90   WARN SHARED_HEADER_AVAILABLE CTCCreatureOpinionOfHero
+006c5e90   WARN SHARED_HEADER_AVAILABLE CTCBase
+006c5e90   WARN RELOC_NAME: ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 labelled 'CTCBase::GetThingSearchTools'
+006c5e90   WARN RELOC_NAME: ??1CThingList@N_004ab4f0@@QAE@XZ -> 004ab4f0 labelled '_global::StdList_Clear_004ab4f0'
+006c5e90   RELOCATION_MATCH PASS   CTCHeroOpinionDeedLog::IsDeedWitnessed
+007c04a0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+007c04a0   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+007c04a0   WARN SHARED_HEADER_AVAILABLE CWorld
+007c04a0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007c04a0   WARN RELOC_NAME: ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 labelled 'CTCBase::GetThingSearchTools'
+007c04a0   WARN RELOC_NAME: ?GetAllThingsInRoughArea@CThingSearchTools@@QBE_NABVC2DBoxI@@ABUCThingFilter_All@@AAUCThingVector@@@Z -> 007197c0 labelled 'CThingSearchTools::GetAllThingsInRoughArea<CThingCreatureBase, std::vector<CThingCreatureBase*>, CThingFilter_None>'
+007c04a0   WARN RELOC_NAME: ?Find@CMap@CSoundDef@@QAEPAUCSoundGroup@@ABVCCharString@@@Z -> 0065fba4 labelled 'CSoundMap::GetPSoundPair'
+007c04a0   WARN RELOC_NAME: ?PlaySound@CTCAI@@QAEXABEABVCSoundInit@@JJ@Z -> 0066ace0 labelled 'CTCSoundPlayer::PlayUnattachedSample'
+007c04a0   RELOCATION_MATCH PASS   CTCShotDefinitionBase::UpdateCreatureAwarenessOfMe
+007fbc90   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+007fbc90   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007fbc90   WARN SHARED_HEADER_AVAILABLE CWorld
+007fbc90   WARN SHARED_HEADER_AVAILABLE CPlayer
+007fbc90   WARN SHARED_HEADER_AVAILABLE CTCBase
+007fbc90   WARN RELOC_NAME: ?GetWorld_00686d60@CTCBase@@QAEPAVCWorld@@XZ -> 00686d60 labelled 'CTCBase::PeekComponent'
+007fbc90   WARN RELOC_NAME: ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 labelled 'CTCBase::GetThingSearchTools'
+007fbc90   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+007fbc90   RELOCATION_MATCH PASS   CTCKraken::GetCentreMarker
+
+WINS: 3
+  006c5e90 RELOCATION_MATCH CTCHeroOpinionDeedLog::IsDeedWitnessed
+  007c04a0 RELOCATION_MATCH CTCShotDefinitionBase::UpdateCreatureAwarenessOfMe
+  007fbc90 RELOCATION_MATCH CTCKraken::GetCentreMarker

@@ -1,0 +1,4 @@
+edited 004022b0 g_FableTextureManager_013B837C(fable_u32 r0 w1) -> PGraphicBankManager + ['?PGraphicBankManager@@3PAVCGraphicBankManager@@A'] - ['?g_FableTextureManager_013B837C@@3IA']
+edited 00416c8a g_pGraphicDataBankManager(CGraphicDataBankManager* r1 w0) -> PGraphicBankManager + ['?PGraphicBankManager@@3PAVCGraphicBankManager@@A'] - ['?g_pGraphicDataBankManager@@3PAUCGraphicDataBankManager@@A']
+edited 0042dd28 g_pGraphicBankManager(same r1 w0) -> PGraphicBankManager + ['?PGraphicBankManager@@3PAVCGraphicBankManager@@A'] - ['?g_pGraphicBankManager@@3PAVCGraphicBankManager@@A']
+edited 0042ddb3 g_pGraphicDataBankManager(CGraphicDataBankManager* r1 w0) -> PGraphicBankManager + ['?PGraphicBankManager@@3PAVCGraphicBankManager@@A'] - ['?g_pGraphicDataBankManager@@3PAUCGraphicDataBankManager@@A']

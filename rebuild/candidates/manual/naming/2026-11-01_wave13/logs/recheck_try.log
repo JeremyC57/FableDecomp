@@ -1,0 +1,27 @@
+addr       parity           behav  name
+00401b80   WARN RELOC_NAME: ?FileInstallerSingletonRelease@@YIXXZ -> 00406df0 labelled '_global::Release_013b7d4c'
+00401b80   RELOCATION_MATCH PASS   _global::GFUninitialise
+0049dcc0   WARN RELOC_NAME: ?DAT_013B8394@@3PAUCGameScriptInterface_SoundProvider@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0049dcc0   RELOCATION_MATCH PASS   CWorld::ResetToFrontEnd
+00a0c450   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00a0c450   WARN RELOC_ALIAS: __CIacos -> 00bfeba2 is the import thunk 'MSVCR71.DLL::_CIacos'
+00a0c450   RELOCATION_MATCH PASS   CCamera::GetAngleXZ
+
+WINS: 3
+  00401b80 RELOCATION_MATCH _global::GFUninitialise
+  0049dcc0 RELOCATION_MATCH CWorld::?ResetToFrontEnd@CWorld@@QAEXXZ
+  00a0c450 RELOCATION_MATCH CCamera::?GetAngleXZ@CCamera@@
+addr       parity           behav  name
+004022b0   WARN RELOC_NAME: ?AddChildPrimitive@@YIPAUFableEngineRoot@@XZ -> 009a4ec0 labelled 'GFGetSystemManager'
+004022b0   WARN RELOC_NAME: ?g_FablePrimitiveManager_013B8394@@3IA -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+004022b0   WARN RELOC_NAME: ?g_FableRenderDevice_013B8388@@3IA -> 013b8388 labelled 'g_pInputManager'
+004022b0   RELOCATION_MATCH LINK_FAIL GFInitialise
+00853830   RELOCATION_MATCH PASS   NCameraModes::CScriptModuleOpenChest::Update
+  WARN leaf '??__EGSystemManager@@YAXXZ' matches no symbol in 01223ff0.obj; graded the largest function
+  WARN leaf '??__EGSystemManager@@YAXXZ' matches no symbol in 01223ff0.obj; graded the largest function
+01223ff0   WARN RELOC_NAME: _$E2 -> 0122a680 labelled '_global::AtexitDtor_CSystemManager_at_013ca618_0122a680'
+01223ff0   RELOCATION_MATCH PASS   _static_init::g_CStatic_009a7440_013ca618
+
+WINS: 2
+  00853830 RELOCATION_MATCH NCameraModes::CScriptModuleOpenChest::Update
+  01223ff0 RELOCATION_MATCH _static_init::??__EGSystemManager@@YAXXZ

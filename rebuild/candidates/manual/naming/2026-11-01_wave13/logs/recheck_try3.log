@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00a0c450   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00a0c450   WARN RELOC_ALIAS: __CIacos -> 00bfeba2 is the import thunk 'MSVCR71.DLL::_CIacos'
+00a0c450   RELOCATION_MATCH PASS   CCamera::GetAngleXZ
+
+WINS: 1
+  00a0c450 RELOCATION_MATCH CCamera::?GetAngleXZ@CCamera@@

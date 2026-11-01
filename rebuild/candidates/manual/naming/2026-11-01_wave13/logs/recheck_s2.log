@@ -1,0 +1,25 @@
+addr       parity           behav  name
+00af9000   RELOCATION_MATCH PASS   NParticleEngine::CPSCLight::SmoothFadeValue
+00c14a80   RELOCATION_MATCH PASS   PKCPlaybackTemplate::ApplyTo
+00c14bc0   RELOCATION_MATCH PASS   CSettingsProxy_012b29f8::SetOptionCD
+
+WINS: 3
+  00af9000 RELOCATION_MATCH NParticleEngine::CPSCLight::?GFSmoothFadeValue@NParticleEngine@@YIMM@Z
+  00c14a80 RELOCATION_MATCH PKCPlaybackTemplate::?ApplyTo@PKCDeferredBank@@
+  00c14bc0 RELOCATION_MATCH CSettingsProxy_012b29f8::SetOptionCD
+addr       parity           behav  name
+00c14a50   WARN RELOC_NAME: ?Remove@CRegistryA_00c14a50@@QAEXPAVCData_00c14a50@@@Z -> 00c2a640 labelled 'CResourceRegistry::ReleaseOwnerEntries'
+00c14a50   WARN RELOC_NAME: ?Remove@CRegistryB_00c14a50@@QAEXPAVCData_00c14a50@@@Z -> 00c2bc10 labelled 'CInstanceRegistry::DestroyOwnerInstances'
+00c14a50   RELOCATION_MATCH PASS   CDataOwner_00c14a50::DeleteData
+00c14b50   RELOCATION_MATCH PASS   CSettingsProxy_012b29f8::SetOptionCC
+00c14e40   WARN RELOC_NAME: ??0CDiceRuleSet@@QAE@J@Z -> 00c194f0 labelled 'PKCTRRedblackTree_00c18b20::PKCTRRedblackTree_00c18b20'
+00c14e40   WARN RELOC_NAME: ??0CDiceSeedPair@@QAE@JJ@Z -> 00c2d0c0 labelled 'CDateAndTime::CDateAndTime'
+00c14e40   WARN RELOC_NAME: ??0CDiceQuad@@QAE@XZ -> 00c2c6b0 labelled 'CFlagOverride::CFlagOverride'
+00c14e40   WARN RELOC_NAME: ??0CDiceGameState@@QAE@PAVPKCDeferredBank@@J@Z -> 00c2a8c0 labelled '_global::CTCDiceGame_InitializeTree'
+00c14e40   WARN RELOC_NAME: ??0CDiceController@@QAE@PAVPKCDeferredBank@@@Z -> 00c2bd90 labelled 'CVtable_012b4510::CVtable_012b4510'
+00c14e40   RELOCATION_MATCH PASS   CVtable_012b28d8::CVtable_012b28d8
+
+WINS: 3
+  00c14a50 RELOCATION_MATCH CDataOwner_00c14a50::DeleteData
+  00c14b50 RELOCATION_MATCH CSettingsProxy_012b29f8::SetOptionCC
+  00c14e40 RELOCATION_MATCH CVtable_012b28d8::??0PKCDeferredBank@@

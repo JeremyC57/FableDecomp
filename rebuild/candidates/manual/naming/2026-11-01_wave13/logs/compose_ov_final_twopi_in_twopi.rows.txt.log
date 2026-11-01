@@ -1,0 +1,2 @@
+edited 0089bdf0 g_twoPi -> TWO_PI + ['?TWO_PI@@3NB'] - ['?g_twoPi@@3NB']
+edited 00853ba0 Scale@NCameraModes -> TWO_PI + ['?TWO_PI@@3NB'] - ['?Scale@NCameraModes@@3NB']
