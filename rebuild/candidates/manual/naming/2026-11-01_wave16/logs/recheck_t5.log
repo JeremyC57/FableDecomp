@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00a0b6c0   MATCH            PASS   CSoundBankLH::vfunc_2
+00ac1ee0   MATCH            PASS   CIndexBuffer::Uninitialise
+
+WINS: 2
+  00a0b6c0 MATCH CSoundBankLH::?Unload_00a0b6c0@CSoundBankLH@@UAEXXZ
+  00ac1ee0 MATCH CVolume::?Uninitialise@CIndexBuffer@@QAEXXZ

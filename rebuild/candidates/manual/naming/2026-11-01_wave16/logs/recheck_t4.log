@@ -1,0 +1,22 @@
+addr       parity           behav  name
+006925b0   MATCH            PASS   CCreatureActionBase::GetTotalTimeWorldFrames
+00692910   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00692910   RELOCATION_MATCH PASS   CCreatureActionBase::PeekDefinitionManager
+0099a330   MATCH            PASS   CInitBaseClass::IsValid
+00ac1ee0   WARN SHARED_HEADER_AVAILABLE CIndexBuffer
+00ac1ee0   MATCH            LINK_FAIL CIndexBuffer::Uninitialise
+
+WINS: 3
+  006925b0 MATCH CCreatureActionBase::?GetTotalTimeWorldFrames@CCreatureActionBase@@QBEJXZ
+  00692910 RELOCATION_MATCH CCreatureActionBase::?PeekDefinitionManager@CCreatureActionBase@@IBEABVCGameDefinitionManager@@XZ
+  0099a330 MATCH _global::?IsValid@CInitBaseClass@@QBE_NXZ
+addr       parity           behav  name
+006925c0   MATCH            PASS   CCreatureActionBase::GetFramesRunning
+008fcfc0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+008fcfc0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+008fcfc0   MATCH            PASS   CAIStateGroupBase::GetWorld
+00a0b6c0   MATCH            LINK_FAIL CSoundBankLH::vfunc_2
+
+WINS: 2
+  006925c0 MATCH _global::?GetFramesRunning@CCreatureActionBase@@QBEJXZ
+  008fcfc0 MATCH CAIStateGroupBase::?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ

@@ -1,0 +1,105 @@
+action	symbol	target	by_row	note
+RETIRE	_FableThrow_1228ed8@16	00401400	01228ed8	no row names it after wave 16 (was: 01228ed8; bound by 01228ed8); the target is now ??_I@YGXPAXIHP6EX0@Z@Z
+KEEP	??0CStringParser@@QAE@ABVCCharString@@P6AXPAV1@@Z0J@Z	00404720	005dca60	still named by 2 unedited row(s) (index)
+RETIRE	?dv_h2_004c7990@@YIXPAX@Z	004c7990	00692910	no row names it after wave 16 (was: 00692910; bound by 00692910); the target is now ?PeekDefinitionManager@CThing@@QBEABVCGameDefinitionManager@@XZ
+KEEP	?AddMode@CPlayer_Methods@@QAEXJ_N@Z	006345c0	00487bd0	still named by 2 unedited row(s) (index)
+RETIRE	?ResetModes@CPlayer_Methods@@QAEXXZ	00634870	00487bd0	no row names it after wave 16 (was: 00487bd0,00634870; bound by 00487bd0); the target is now ?ResetModes@CPlayer@@QAEXXZ
+RETIRE	??0CTCBase_00771360@@QAE@PAVCThing@@@Z	00686800	00771360	no row names it after wave 16 (was: 00771360; bound by 00771360); the target is now ??0CTCBase@@QAE@AAVCThing@@@Z
+RETIRE	?GetTotalTime@CCombatActionBase@@QBEJXZ	006925b0	008f2e00	no row names it after wave 16 (was: 008f2e00; bound by 008f2e00); the target is now ?GetTotalTimeWorldFrames@CCreatureActionBase@@QBEJXZ
+RETIRE	?GetTotalTime@CCreatureActionBase@@QBEJXZ	006925b0	007ddcc0	no row names it after wave 16 (was: 007ddcc0; bound by 007ddcc0); the target is now ?GetTotalTimeWorldFrames@CCreatureActionBase@@QBEJXZ
+KEEP	?RegisterCombatant@CCombatManager@@QAEXPAVCThingCreatureBase@@0_N@Z	006edc50	009777a0	still named by 1 unedited row(s) (index)
+RETIRE	?Restore_009918f0@CGameStateOwner_013b8394@@QAEXXZ	009918f0	0042ebb6	no row names it after wave 16 (was: 0042ebb6; bound by 0042ebb6); the target is now ?ClearBanks_009918f0@CASoundManager@@QAEXXZ
+RETIRE	?IsInitialised@CInitBaseClass@@QAE_NXZ	0099a330	00a0b590	no row names it after wave 16 (was: 006a9d10,00a0b590; bound by 00a0b590); the target is now ?IsValid@CInitBaseClass@@QBE_NXZ
+RETIRE	?IsInitialised@CInitBaseClass@@QBE_NXZ	0099a330	00487af0	no row names it after wave 16 (was: 004175e5,00487af0,009a60d0; bound by 00487af0); the target is now ?IsValid@CInitBaseClass@@QBE_NXZ
+RETIRE	?IsInitialised@CInitBaseClassCalls@@QAE_NXZ	0099a330	00a0a9d0	no row names it after wave 16 (was: 00a0a9d0; bound by 00a0a9d0); the target is now ?IsValid@CInitBaseClass@@QBE_NXZ
+RETIRE	?IsLocal@CPlayer@@QAE_NXZ	0099a330	0082d1d0	no row names it after wave 16 (was: 0082d1d0; bound by 0082d1d0); the target is now ?IsValid@CInitBaseClass@@QBE_NXZ
+RETIRE	?IsValid@CNetworkClient_Methods@@QBE_NXZ	0099a330	004166a8	no row names it after wave 16 (was: 004166a8; bound by 004166a8); the target is now ?IsValid@CInitBaseClass@@QBE_NXZ
+KEEP	??1CMember_0099eae0@@QAE@XZ	0099eae0	004ac700	still named by 27 unedited row(s) (index)
+KEEP	?_M_erase@?$_Rb_tree@UCUnprovenKey_009aa780@@UCUnprovenValue_009aa780@@UCUnprovenKeyOfValue_009aa780@@U?$less@UCUnprovenKey_009aa780@@@std@@V?$allocator@UCUnprovenValue_009aa780@@@5@@std@@AAEXPAU?$_Rb_tree_node@UCUnprovenValue_009aa780@@@2@@Z	009aa780	009aa780	still named by 4 unedited row(s) (index)
+RETIRE	?CloseSocket@CLSocketServer@@QAEXPAX@Z	009bf5a0	004175e5	no row names it after wave 16 (was: 004175e5; bound by 004175e5); the target is now ?RemoveDeviceResetCallback@CDisplayManager@@QAEXPAVCDeviceResetCallback@@@Z
+RETIRE	?RemoveDeviceResetCallback@CRenderManager@@QAEXPAVCDeviceResetCallback@@@Z	009bf5a0	00b25d80	no row names it after wave 16 (was: 00b25d80; bound by 00b25d80); the target is now ?RemoveDeviceResetCallback@CDisplayManager@@QAEXPAVCDeviceResetCallback@@@Z
+RETIRE	?ClearMemoryBlocks@CSimpleMemoryPool@@QAEXXZ	00a5c600	0098abf0	no row names it after wave 16 (was: 0098abf0; bound by 0098abf0); the target is now ?ClearMemoryBlocks@CSimpleMemoryPool@@AAEXXZ
+RETIRE	?Free@CHandleBasedMemoryPool_Calls@@QAEXJ@Z	00a62ed0	009d5410	no row names it after wave 16 (was: 009d5410; bound by 009d5410); the target is now ?FreeResource@CMovableResourceMemoryPool@@QAEXJ@Z
+RETIRE	?Free@CMovableResourceMemoryPool@@QAEXJ@Z	00a62ed0	00a8b3a0	no row names it after wave 16 (was: 00a8b3a0; bound by 00a8b3a0); the target is now ?FreeResource@CMovableResourceMemoryPool@@QAEXJ@Z
+RETIRE	?Free@CMovableResourceMemoryPool_Calls@@QAEXJ@Z	00a62ed0	00a752f0	no row names it after wave 16 (was: 00a752f0; bound by 00a752f0); the target is now ?FreeResource@CMovableResourceMemoryPool@@QAEXJ@Z
+RETIRE	?SetTLNode@CNavQuadTreeNode@@QAEXPAVCANavQuadTreeNode@@@Z	00a75ca0	00a76060	no row names it after wave 16 (was: 00a75ca0,00a76060; bound by 00a76060); the target is now ?SetTLNode@CNavQuadTreeNode@@IAEXPAVCANavQuadTreeNode@@@Z
+RETIRE	?SetTRNode@CNavQuadTreeNode@@QAEXPAVCANavQuadTreeNode@@@Z	00a75ce0	00a76060	no row names it after wave 16 (was: 00a75ce0,00a76060; bound by 00a76060); the target is now ?SetTRNode@CNavQuadTreeNode@@IAEXPAVCANavQuadTreeNode@@@Z
+RETIRE	?SetBLNode@CNavQuadTreeNode@@QAEXPAVCANavQuadTreeNode@@@Z	00a75d20	00a76060	no row names it after wave 16 (was: 00a75d20,00a76060; bound by 00a76060); the target is now ?SetBLNode@CNavQuadTreeNode@@IAEXPAVCANavQuadTreeNode@@@Z
+RETIRE	?SetBRNode@CNavQuadTreeNode@@QAEXPAVCANavQuadTreeNode@@@Z	00a75d60	00a76060	no row names it after wave 16 (was: 00a75d60,00a76060; bound by 00a76060); the target is now ?SetBRNode@CNavQuadTreeNode@@IAEXPAVCANavQuadTreeNode@@@Z
+RETIRE	?FadeRainToTarget@CEngineWeatherRenderer@@QAEXM@Z	00b52870	00b52b30	no row names it after wave 16 (was: 00b52b30; bound by 00b52b30); the target is now ?FadeRainToTarget@CEngineWeatherRenderer@@AAEXM@Z
+RETIRE	?FadeSnowToTarget@CEngineWeatherRenderer@@QAEXM@Z	00b52900	00b52b30	no row names it after wave 16 (was: 00b52b30; bound by 00b52b30); the target is now ?FadeSnowToTarget@CEngineWeatherRenderer@@AAEXM@Z
+RETIRE	?Reconfigure@CEngineLandscapeMemoryManager@@QAEXXZ	00bd9ce0	00bda070	no row names it after wave 16 (was: 00bda070; bound by 00bda070); the target is now ?FreeDisposalList@CEngineLandscapeMemoryManager@@QAEXXZ
+KEEP	??0?$map@VCUnprovenMapKey_00CD3640@@VCUnprovenMapValue_00CD3640@@U?$less@VCUnprovenMapKey_00CD3640@@@std@@V?$allocator@U?$pair@$$CBVCUnprovenMapKey_00CD3640@@VCUnprovenMapValue_00CD3640@@@std@@@4@@std@@QAE@XZ	00cd3640	01224c6d	identifier appears in 5 unindexed row(s) (00946f90,00ac8840,00ad8ed0,006ad260): conservative
+RETIRE	?h@Glob@@QAEPAHPAX@Z	00cd39b1	00cbfab8	no row names it after wave 16 (was: 00cbfab8; bound by 00cbfab8); the target is now ??A?$map@VCCharString@@W4EScriptActiveStatus@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@W4EScriptActiveStatus@@@std@@@4@@std@@QAEAAW4EScriptActiveStatus@@ABVCCharString@@@Z
+RETIRE	??0CClass_00e81f60@@QAE@PAX0@Z	00e81f60	00e8b700	no row names it after wave 16 (was: 00e8b700; bound by 00e8b700); the target is now ??0CV_FisticuffsClubScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+RETIRE	??0CClass_00ee41f0@@QAE@PAX0@Z	00ee41f0	00ee6c00	no row names it after wave 16 (was: 00ee6c00; bound by 00ee6c00); the target is now ??0CV_TourGuideScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+RETIRE	?ReleaseMemoryPage@CGlowScratchManager@@QAEXJ@Z	00f37030	00b5ece0	no row names it after wave 16 (was: 00b5ece0; bound by 00b5ece0); the target is now ?FreeMemoryPage@CGPUScratchBufferTextureManager@@QAEXJ@Z
+KEEP	??_7CV_SwordInTheStoneScript@@6B@	012de6a4	00df5c90	still named by 1 unedited row(s) (index)
+RETIRE	?g_AnimGroupNameTable@@3PAPAXA	013b8a38	004cd9b0	no row names it after wave 16 (was: 004cd9b0; bound by 004cd9b0); the target is now ?ConversationAttitudeToAnimName@CConversationAttitude@@2V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@A
+RETIRE	?g_ConversationAttitudeAnimNames@@3V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@A	013b8a38	004cd670	no row names it after wave 16 (was: 004cd670; bound by 004cd670); the target is now ?ConversationAttitudeToAnimName@CConversationAttitude@@2V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@A
+RETIRE	?g_ConversationAttitudeAnimGroupNames@@3V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@A	013b8a44	004cd670	no row names it after wave 16 (was: 004cd670; bound by 004cd670); the target is now ?ConversationAttitudeToAnimGroupName@CConversationAttitude@@2V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@A
+RETIRE	?g_UnprovenMap_0143E910@@3V?$map@VCUnprovenMapKey_00CD3640@@VCUnprovenMapValue_00CD3640@@U?$less@VCUnprovenMapKey_00CD3640@@@std@@V?$allocator@U?$pair@$$CBVCUnprovenMapKey_00CD3640@@VCUnprovenMapValue_00CD3640@@@std@@@4@@std@@A	0143e910	01224c6d	no row names it after wave 16 (was: 01224c6d; bound by 01224c6d); the target is now ?ScriptActiveStatuses@@3V?$map@VCCharString@@W4EScriptActiveStatus@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@W4EScriptActiveStatus@@@std@@@4@@std@@A
+RETIRE	??0CBase@@QAE@H@Z	00686800	006b0730	stale: no indexed row names it and no unindexed row source mentions it (bound by 006b0730; the target is now ??0CTCBase@@QAE@AAVCThing@@@Z)
+RETIRE	?Release@TextureOwner@@QAEXH@Z	00a62ed0	00adf1e0	stale: no indexed row names it and no unindexed row source mentions it (bound by 00adf1e0; the target is now ?FreeResource@CMovableResourceMemoryPool@@QAEXJ@Z)
+RETIRE	N_00bded60	00bded60	00b59840	stale: no indexed row names it and no unindexed row source mentions it (bound by 00b59840; the target is now ??1CLocalDetailCacheMap@@QAE@XZ)
+ADD	??1CUserProfileManager@@UAE@XZ	00408990	00412b00	exact Ego_r/FableWin spelling, not yet bound; first named by 00412b00
+ADD	??0CStringParser@@QAE@ABVCCharString@@P6IX0@Z0J@Z	00404720	004b3760	exact Ego_r/FableWin spelling, not yet bound; first named by 004b3760
+ADD	??1CTCTrophy@@UAE@XZ	006ddb80	006dfb40	exact Ego_r/FableWin spelling, not yet bound; first named by 006dfb40
+ADD	??1CScriptGameResourceObjectMovie@@UAE@XZ	006e7550	006e7c90	exact Ego_r/FableWin spelling, not yet bound; first named by 006e7c90
+ADD	??1CTCSpotLight@@UAE@XZ	00731db0	00732690	exact Ego_r/FableWin spelling, not yet bound; first named by 00732690
+ADD	??1CTCOpinionSource@@UAE@XZ	00771a90	00771a70	exact Ego_r/FableWin spelling, not yet bound; first named by 00771a70
+ADD	??1CTCTurncoatSpell@@UAE@XZ	007c66f0	007c77d0	exact Ego_r/FableWin spelling, not yet bound; first named by 007c77d0
+ADD	??1CTCHitOnCollision@@UAE@XZ	007c8560	007c8540	exact Ego_r/FableWin spelling, not yet bound; first named by 007c8540
+ADD	??1CTCMultiStrike@@UAE@XZ	007cca90	007cd810	exact Ego_r/FableWin spelling, not yet bound; first named by 007cd810
+ADD	??1CTCElectrocutedEffect@@UAE@XZ	007ce730	007ced40	exact Ego_r/FableWin spelling, not yet bound; first named by 007ced40
+ADD	??1CBufferedFileDataOutputStream@@UAE@XZ	009947a0	009971e0	exact Ego_r/FableWin spelling, not yet bound; first named by 009971e0
+ADD	??1CRenderManager2D@@UAE@XZ	009c2fd0	009c3100	exact Ego_r/FableWin spelling, not yet bound; first named by 009c3100
+ADD	??1CSoundBankLH@@UAE@XZ	00a0b9a0	00a0bdf0	wave-16 spelling (no PDB name: libpk / GameCODA / descriptive owner or compiler-derived instantiation), not yet bound; first named by 00a0bdf0
+ADD	??1C3DMeshLODInfo@@UAE@XZ	00a24470	00a2b690	exact Ego_r/FableWin spelling, not yet bound; first named by 00a2b690
+ADD	??1CSoundManagerLH@@UAE@XZ	00a3ede0	00a41a50	wave-16 spelling (no PDB name: libpk / GameCODA / descriptive owner or compiler-derived instantiation), not yet bound; first named by 00a41a50
+ADD	??1C3DAnimation2@@UAE@XZ	00a4eec0	00a555c0	exact Ego_r/FableWin spelling, not yet bound; first named by 00a555c0
+ADD	??1CStreamingFontDataBankEntry@@UAE@XZ	00a5f150	00a5f800	exact Ego_r/FableWin spelling, not yet bound; first named by 00a5f800
+ADD	??1CStreamingFontDataBank@@UAE@XZ	00a5f3a0	00a5fa30	exact Ego_r/FableWin spelling, not yet bound; first named by 00a5fa30
+ADD	??1CFontDataBankEntry@@UAE@XZ	00a63480	00a63970	exact Ego_r/FableWin spelling, not yet bound; first named by 00a63970
+ADD	?SetBLNode@CNavQuadTreeNode@@IAEXPAVCANavQuadTreeNode@@@Z	00a75d20	00a76060	exact Ego_r/FableWin spelling, not yet bound; first named by 00a76060
+ADD	?SetBRNode@CNavQuadTreeNode@@IAEXPAVCANavQuadTreeNode@@@Z	00a75d60	00a76060	exact Ego_r/FableWin spelling, not yet bound; first named by 00a76060
+ADD	?SetTLNode@CNavQuadTreeNode@@IAEXPAVCANavQuadTreeNode@@@Z	00a75ca0	00a76060	exact Ego_r/FableWin spelling, not yet bound; first named by 00a76060
+ADD	?SetTRNode@CNavQuadTreeNode@@IAEXPAVCANavQuadTreeNode@@@Z	00a75ce0	00a76060	exact Ego_r/FableWin spelling, not yet bound; first named by 00a76060
+ADD	??1CNavQuadTreeNode@@UAE@XZ	00a75c20	00a7d900	exact Ego_r/FableWin spelling, not yet bound; first named by 00a7d900
+ADD	??1CNavSwitchableLeafNode@@UAE@XZ	00a84f00	00a84ee0	exact Ego_r/FableWin spelling, not yet bound; first named by 00a84ee0
+ADD	??1C3DMesh2@@UAE@XZ	00a895f0	00a8d700	exact Ego_r/FableWin spelling, not yet bound; first named by 00a8d700
+ADD	??1C3DAnimFileBoneMaskChunk@@UAE@XZ	00a9a7c0	00ab0b50	exact Ego_r/FableWin spelling, not yet bound; first named by 00ab0b50
+ADD	??1CMouseDX@@UAE@XZ	00ab5320	00ab5fa0	exact Ego_r/FableWin spelling, not yet bound; first named by 00ab5fa0
+ADD	??1CStaticFontBank@@UAE@XZ	00ab7a70	00ab9990	exact Ego_r/FableWin spelling, not yet bound; first named by 00ab9990
+ADD	??1CEngine@@UAE@XZ	00b261d0	00b2ab10	exact Ego_r/FableWin spelling, not yet bound; first named by 00b2ab10
+ADD	??1CEngineShadowRenderer@@UAE@XZ	00b4d210	00b50b80	exact Ego_r/FableWin spelling, not yet bound; first named by 00b50b80
+ADD	?FadeRainToTarget@CEngineWeatherRenderer@@AAEXM@Z	00b52870	00b52b30	exact Ego_r/FableWin spelling, not yet bound; first named by 00b52b30
+ADD	?FadeSnowToTarget@CEngineWeatherRenderer@@AAEXM@Z	00b52900	00b52b30	exact Ego_r/FableWin spelling, not yet bound; first named by 00b52b30
+ADD	??1CEngineLocalDetailGenerator@@UAE@XZ	00b59be0	00b5a090	exact Ego_r/FableWin spelling, not yet bound; first named by 00b5a090
+ADD	??1CEngineScreenEffectColourFilter@@UAE@XZ	00b5a0d0	00b5bb00	exact Ego_r/FableWin spelling, not yet bound; first named by 00b5bb00
+ADD	??1CEngineScreenEffectRadialBlurRenderer@@UAE@XZ	00b5c050	00b5eb00	exact Ego_r/FableWin spelling, not yet bound; first named by 00b5eb00
+ADD	??1CEngineSubPrimitiveRenderer@@UAE@XZ	00b84390	00b866a0	exact Ego_r/FableWin spelling, not yet bound; first named by 00b866a0
+ADD	??1CEngineBillboardGenerator@@UAE@XZ	00b8c7c0	00b8c7a0	exact Ego_r/FableWin spelling, not yet bound; first named by 00b8c7a0
+ADD	??1CEngineSceneGrid@@UAE@XZ	00b93e40	00b97a60	exact Ego_r/FableWin spelling, not yet bound; first named by 00b97a60
+ADD	??1CEnginePrimitiveManagerRepeatedZSprites@@UAE@XZ	00babe60	00bac970	exact Ego_r/FableWin spelling, not yet bound; first named by 00bac970
+ADD	??1CEnginePrimitiveManagerParticleMeshGroup@@UAE@XZ	00bc3c20	00bc3c00	exact Ego_r/FableWin spelling, not yet bound; first named by 00bc3c00
+ADD	??A?$map@VCCharString@@W4EScriptActiveStatus@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@W4EScriptActiveStatus@@@std@@@4@@std@@QAEAAW4EScriptActiveStatus@@ABVCCharString@@@Z	00cd39b1	00cbfab8	exact Ego_r/FableWin spelling, not yet bound; first named by 00cbfab8
+ADD	?ScriptActiveStatuses@@3V?$map@VCCharString@@W4EScriptActiveStatus@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@W4EScriptActiveStatus@@@std@@@4@@std@@A	0143e910	00cbfab8	wave-16 spelling (no PDB name: libpk / GameCODA / descriptive owner or compiler-derived instantiation), not yet bound; first named by 00cbfab8
+ADD	??1CQ_ArenaScript@NScript@@UAE@XZ	00cfac40	00cfac20	exact Ego_r/FableWin spelling, not yet bound; first named by 00cfac20
+ADD	??1CHTG_Audience@CQ_HangingTreeGoodScript@NScript@@UAE@XZ	00d728f0	00d728d0	exact Ego_r/FableWin spelling, not yet bound; first named by 00d728d0
+ADD	??1CBriarRose@CQ_MinionCampScript@NScript@@UAE@XZ	00d9fed0	00d9feb0	exact Ego_r/FableWin spelling, not yet bound; first named by 00d9feb0
+ADD	??1CQ_WizardBattleScript@NScript@@UAE@XZ	00e1da40	00e1da20	exact Ego_r/FableWin spelling, not yet bound; first named by 00e1da20
+ADD	??1CV_BanditCampPathScript@NScript@@UAE@XZ	00e477f0	00e477d0	exact Ego_r/FableWin spelling, not yet bound; first named by 00e477d0
+ADD	??1CV_BodyGuardScript@NScript@@UAE@XZ	00e62780	00e62760	exact Ego_r/FableWin spelling, not yet bound; first named by 00e62760
+ADD	??1CV_ChickenKickingScript@NScript@@UAE@XZ	00e68eb0	00e68e90	exact Ego_r/FableWin spelling, not yet bound; first named by 00e68e90
+ADD	??0CV_FisticuffsClubScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z	00e81f60	00e8b700	exact Ego_r/FableWin spelling, not yet bound; first named by 00e8b700
+ADD	??1CV_FisticuffsClubScript@NScript@@UAE@XZ	00e8b750	00e8b730	exact Ego_r/FableWin spelling, not yet bound; first named by 00e8b730
+ADD	??1CV_MurderTwistFinalScript@NScript@@UAE@XZ	00eb6ab0	00eb6a90	exact Ego_r/FableWin spelling, not yet bound; first named by 00eb6a90
+ADD	??_7CV_SwordInTheStoneScript@NScript@@6B@	012f301c	00ed4aa0	wave-16 spelling (no PDB name: libpk / GameCODA / descriptive owner or compiler-derived instantiation), not yet bound; first named by 00ed4aa0
+ADD	??1CV_SwordInTheStoneScript@NScript@@UAE@XZ	00ed7640	00ed7620	exact Ego_r/FableWin spelling, not yet bound; first named by 00ed7620
+ADD	??1CV_TalentlessBardScript@NScript@@UAE@XZ	00edad10	00edacf0	exact Ego_r/FableWin spelling, not yet bound; first named by 00edacf0
+ADD	??1CV_TravellingHeroesScript@NScript@@UAE@XZ	00ee40f0	00ee40d0	exact Ego_r/FableWin spelling, not yet bound; first named by 00ee40d0
+ADD	??0CV_TourGuideScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z	00ee41f0	00ee6c00	exact Ego_r/FableWin spelling, not yet bound; first named by 00ee6c00
+ADD	??1CV_TourGuideScript@NScript@@UAE@XZ	00ee6c50	00ee6c30	exact Ego_r/FableWin spelling, not yet bound; first named by 00ee6c30
+ADD	??1CCutsceneDef@@UAE@XZ	00f29dc0	00f29da0	exact Ego_r/FableWin spelling, not yet bound; first named by 00f29da0
+ADD	??0?$map@VCCharString@@W4EScriptActiveStatus@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@W4EScriptActiveStatus@@@std@@@4@@std@@QAE@XZ	00cd3640	01224c6d	exact Ego_r/FableWin spelling, not yet bound; first named by 01224c6d

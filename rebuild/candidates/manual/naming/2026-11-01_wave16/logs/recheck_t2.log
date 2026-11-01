@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00510d40   RELOCATION_MATCH PASS   std::_List_base<CIntelligentPointer<CThingAICreature>,std::allocator<CIntelligentPointer<CThingAICreature> > >::clear
+00a53300   RELOCATION_MATCH PASS   std::_List_base<CIntelligentPointer<C3DAnimation2>,std::allocator<CIntelligentPointer<C3DAnimation2> > >::clear
+
+WINS: 2
+  00510d40 RELOCATION_MATCH _unattributed::?clear@?$_List_base@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QAEXXZ
+  00a53300 RELOCATION_MATCH _unattributed::?clear@?$_List_base@V?$CIntelligentPointer@VC3DAnimation2@@@@V?$allocator@V?$CIntelligentPointer@VC3DAnimation2@@@@@std@@@std@@QAEXXZ

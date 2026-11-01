@@ -1,0 +1,104 @@
+addr       parity           behav  name
+004166a8   RELOCATION_MATCH PASS   CMainGameComponent::CreatePlayers
+0042ebb6   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0042ebb6   WARN RELOC_NAME: ?SetActiveFrontend_004336b0@@YIXPAVCNewFrontendGameComponent@@@Z -> 004336b0 labelled 'CEngineSubPrimitiveBase::operator_new'
+0042ebb6   WARN RELOC_NAME: ?ReleaseScene_0042dd28@CNewFrontendGameComponent@@QAEXXZ -> 0042dd28 labelled 'CNewFrontendGameComponent::CleanUpInterfaces'
+0042ebb6   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0042ebb6   WARN RELOC_NAME: ?Restore_00991750@CGameStateOwner_013b8394@@QAEXXZ -> 00991750 labelled 'CThing::OnDie'
+0042ebb6   WARN RELOC_NAME: ?erase@?$vector@VCDateAndTime@@@@QAEPAVCDateAndTime@@PAV2@0@Z -> 00411b00 labelled 'vector_push_back_copy'
+0042ebb6   RELOCATION_MATCH PASS   CNewFrontendGameComponent::Shutdown
+006a9d10   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+006a9d10   WARN SHARED_HEADER_AVAILABLE CDefPointer
+006a9d10   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+006a9d10   WARN SHARED_HEADER_AVAILABLE CThingPhysical
+006a9d10   WARN RELOC_NAME: ?GetPlayerManager_004c79f0@CThingPlayerCreature@@QAEPAVCPlayerManager@@XZ -> 004c79f0 labelled 'CThing::PeekPlayerManager'
+006a9d10   WARN RELOC_NAME: ?GetHealthPercentage@CThingPhysical@@QBEMXZ -> 006a4e40 labelled 'NParticleEngine::CParticleSystem::GetNormalisedTime'
+006a9d10   RELOCATION_MATCH PASS   CThingPlayerCreature::vfunc_34
+0082d1d0   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+0082d1d0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0082d1d0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0082d1d0   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+0082d1d0   WARN SHARED_HEADER_AVAILABLE CThingPhysical
+0082d1d0   WARN RELOC_NAME: ?GetPlayerManager@CThingBuilding@@QAEPAVCPlayerManager@@XZ -> 004c79f0 labelled 'CThing::PeekPlayerManager'
+0082d1d0   WARN RELOC_NAME: ?GetHealthPercentage@CThingPhysical@@QBEMXZ -> 006a4e40 labelled 'NParticleEngine::CParticleSystem::GetNormalisedTime'
+0082d1d0   RELOCATION_MATCH PASS   CThingBuilding::GetHighlightInfo_slot34
+0091ea20   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+0091ea20   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0091ea20   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0091ea20   RELOCATION_MATCH PASS   CAIStateGroup_CreatureRangedCombat2::OnActivate
+0098abf0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+0098abf0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0098abf0   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout
+0098abf0   WARN RELOC_NAME: ??1CIndexedArray_CCharString@@QAE@XZ -> 0098d9f0 labelled 'CNamedShaderTable::~CNamedShaderTable'
+0098abf0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@UAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+0098abf0   RELOCATION_MATCH PASS   CShaderRenderManager::~CShaderRenderManager
+009d5410   WARN SHARED_HEADER_AVAILABLE CMovableResourceMemoryPool
+009d5410   RELOCATION_MATCH PASS   CBankFileAsyncData::FreeBuffer
+00a0b590   RELOCATION_MATCH PASS   CRenderManagerCore::`scalar_deleting_destructor'
+00a76060   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode
+00a76060   WARN RELOC_NAME: ?g_BlockedNavNode@@3VCNavBlockedQuadTreeNode@@A -> 013d2d2c labelled 'CNavQuadTree::BlockedNode'
+00a76060   RELOCATION_MATCH PASS   CNavQuadTreeNode::RemoveRegionZero
+00b25d80   WARN SHARED_HEADER_AVAILABLE CRenderManagerCore
+00b25d80   RELOCATION_MATCH PASS   CEngine::Uninitialise
+00b5ece0   RELOCATION_MATCH PASS   InitialiseTextures
+
+WINS: 11
+  004166a8 RELOCATION_MATCH CMainGameComponent::?CreatePlayers@CMainGameComponent@@IAEXXZ
+  0042ebb6 RELOCATION_MATCH CNewFrontendGameComponent::Shutdown
+  006a9d10 RELOCATION_MATCH CThingPlayerCreature::vfunc_34
+  0082d1d0 RELOCATION_MATCH CThingBuilding::GetHighlightInfo_slot34
+  0091ea20 RELOCATION_MATCH CAIStateGroup_CreatureRangedCombat2::OnActivate
+  0098abf0 RELOCATION_MATCH CShaderRenderManager::??1CShaderRenderManager
+  009d5410 RELOCATION_MATCH CBankFileAsyncData::FreeBuffer
+  00a0b590 RELOCATION_MATCH CRenderManagerCore::??_GCRenderManagerCore
+  00a76060 RELOCATION_MATCH CNavQuadTreeNode::RemoveRegionZero
+  00b25d80 RELOCATION_MATCH CEngine::Uninitialise
+  00b5ece0 RELOCATION_MATCH CGlowRendererMethods::InitialiseTextures
+addr       parity           behav  name
+004175e5   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+004175e5   WARN RELOC_NAME: ?StopMusic@CSoundManager@@QAEXXZ -> 00991750 labelled 'CThing::OnDie'
+004175e5   WARN RELOC_NAME: ?IsInitialised@CInitBaseClass@@QBE_NXZ -> 0099a330 labelled 'CInitBaseClass::IsValid'
+004175e5   WARN RELOC_NAME: ?Set@CGameDefinitionManager@@SIXPAV1@@Z -> 0044c71f labelled 'CEngineSubPrimitiveBase::operator_new'
+004175e5   RELOCATION_MATCH PASS   CMainGameComponent::Shutdown
+00487af0   RELOCATION_MATCH PASS   CPlayer::Uninitialise
+007ddcc0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+007ddcc0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+007ddcc0   RELOCATION_MATCH PASS   CTCCreatureFlyInCircles::ChangeMode
+008f2e00   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+008f2e00   RELOCATION_MATCH PASS   CCreatureAction_DragonFlight::FrameUpdate
+009777a0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+009777a0   WARN SHARED_HEADER_AVAILABLE CPlayer
+009777a0   WARN SHARED_HEADER_AVAILABLE CWorld
+009777a0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+009777a0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+009777a0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+009777a0   WARN RELOC_NAME: ?GetPWorld@CAIStateGroupBase@@QAEPAVCWorld@@XZ -> 008fcfc0 labelled 'CAIStateGroupBase::GetWorld'
+009777a0   RELOCATION_MATCH PASS   CAIStateGroup_Guildmaster::IsRunnable
+009a60d0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+009a60d0   WARN SHARED_HEADER_AVAILABLE CMeshBankManager
+009a60d0   RELOCATION_MATCH PASS   CSystemManager::Uninitialise
+00a0a9d0   RELOCATION_MATCH PASS   CRenderManagerCore::Uninit
+00a752f0   WARN SHARED_HEADER_AVAILABLE CMovableResourceMemoryPool
+  WARN leaf '~CContainmentVolume' matches no symbol in 00a752f0.obj; graded the largest function
+  WARN leaf '~CContainmentVolume' matches no symbol in 00a752f0.obj; graded the largest function
+00a752f0   RELOCATION_MATCH PASS   CContainmentVolume::~CContainmentVolume
+00a8b3a0   WARN SHARED_HEADER_AVAILABLE CMovableResourceMemoryPool
+00a8b3a0   RELOCATION_MATCH PASS   C3DMesh2::ConvertToMeshStats
+00b52b30   WARN SHARED_HEADER_AVAILABLE CEnvironment
+00b52b30   WARN SHARED_HEADER_AVAILABLE CEngineWeatherRenderer
+00b52b30   RELOCATION_MATCH PASS   CEngineWeatherRenderer::WorldFrameUpdate
+00bda070   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00bda070   RELOCATION_MATCH PASS   CEngineLandscapeMemoryManager::EnablePoolAllocation
+
+WINS: 11
+  004175e5 RELOCATION_MATCH CMainGameComponent::Shutdown
+  00487af0 RELOCATION_MATCH CPlayer::?Uninitialise@CPlayer@@QAEXXZ
+  007ddcc0 RELOCATION_MATCH CTCCreatureFlyInCircles::ChangeMode
+  008f2e00 RELOCATION_MATCH CCreatureAction_DragonFlight::FrameUpdate
+  009777a0 RELOCATION_MATCH CAIStateGroup_Guildmaster::?IsRunnable@CAIStateGroup_Guildmaster@@MAE_NXZ
+  009a60d0 RELOCATION_MATCH CSystemManager::Uninitialise
+  00a0a9d0 RELOCATION_MATCH CRenderManagerCore::Uninit
+  00a752f0 RELOCATION_MATCH CContainmentVolume::~CContainmentVolume
+  00a8b3a0 RELOCATION_MATCH C3DMesh2::ConvertToMeshStats
+  00b52b30 RELOCATION_MATCH CEngineWeatherRenderer::WorldFrameUpdate
+  00bda070 RELOCATION_MATCH CEngineLandscapeMemoryManager::EnablePoolAllocation

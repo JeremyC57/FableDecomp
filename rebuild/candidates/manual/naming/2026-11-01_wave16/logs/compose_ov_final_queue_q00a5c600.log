@@ -1,0 +1,5 @@
+skip 00987f10 non-public ClearMemoryBlocks needs an access path
+edited 0098abf0 inplace CSimpleMemoryPool::ClearMemoryBlocks -> ClearMemoryBlocks x1 +u ['?ClearMemoryBlocks@CSimpleMemoryPool@@AAEXXZ'] -u ['?ClearMemoryBlocks@CSimpleMemoryPool@@QAEXXZ']
+skip 0122ab10 non-public ClearMemoryBlocks needs an access path
+skip 0122ab30 non-public ClearMemoryBlocks needs an access path
+skip 0122ab50 non-public ClearMemoryBlocks needs an access path

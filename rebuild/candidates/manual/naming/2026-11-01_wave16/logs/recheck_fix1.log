@@ -1,0 +1,8 @@
+addr       parity           behav  name
+004175e5   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+004175e5   WARN RELOC_NAME: ?StopMusic@CSoundManager@@QAEXXZ -> 00991750 labelled 'CThing::OnDie'
+004175e5   WARN RELOC_NAME: ?Set@CGameDefinitionManager@@SIXPAV1@@Z -> 0044c71f labelled 'CEngineSubPrimitiveBase::operator_new'
+004175e5   RELOCATION_MATCH PASS   CMainGameComponent::Shutdown
+
+WINS: 1
+  004175e5 RELOCATION_MATCH CMainGameComponent::Shutdown

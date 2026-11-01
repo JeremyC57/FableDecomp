@@ -1,0 +1,1 @@
+edited 00b52b30 inplace CEngineWeatherRenderer::FadeRainToTarget -> FadeRainToTarget x2 +u ['?FadeRainToTarget@CEngineWeatherRenderer@@AAEXM@Z'] -u ['?FadeRainToTarget@CEngineWeatherRenderer@@QAEXM@Z']

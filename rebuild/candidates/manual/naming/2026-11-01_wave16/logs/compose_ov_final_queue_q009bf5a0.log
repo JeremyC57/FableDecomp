@@ -1,0 +1,2 @@
+edited 004175e5 moved CLSocketServer::CloseSocket -> RemoveDeviceResetCallback x1 +u ['?RemoveDeviceResetCallback@CDisplayManager@@QAEXPAVCDeviceResetCallback@@@Z'] -u ['?CloseSocket@CLSocketServer@@QAEXPAX@Z']
+edited 00b25d80 moved CRenderManager::RemoveDeviceResetCallback -> RemoveDeviceResetCallback x1 +u ['?RemoveDeviceResetCallback@CDisplayManager@@QAEXPAVCDeviceResetCallback@@@Z'] -u ['?RemoveDeviceResetCallback@CRenderManager@@QAEXPAVCDeviceResetCallback@@@Z']

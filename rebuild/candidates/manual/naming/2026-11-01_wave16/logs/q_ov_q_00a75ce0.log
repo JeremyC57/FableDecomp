@@ -1,0 +1,1 @@
+skip 00a76060 inplace CNavQuadTreeNode::SetTRNode -> SetTRNode x1 :: diff -['?SetBLNode@CNavQuadTreeNode@@QAEXPAVCANavQuadTreeNode@@@Z', '?SetBRNode@CNavQuadTreeNode@@QAEXPAVCANavQuadTreeNode@@@Z'] +['?SetBRNode@CNavQuadTreeNode@@IAEXPAVCANavQuadTreeNode@@@Z', '?SetBLNode@CNavQuadTreeNode@@IAEXPAVCANavQuadTreeNode@@@Z']

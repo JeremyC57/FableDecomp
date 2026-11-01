@@ -1,0 +1,91 @@
+Counter({'ADD': 61, 'RETIRE': 36, 'KEEP': 7}) removed lines 36 added 61
+NEWDEF 00412b00 ??0CUserProfileManager@@QAE@XZ ??_7CUserProfileManager@@6B@ ??_GCUserProfileManager@@UAEPAXI@Z
+NEWDEF 00487bd0 ?IsMainPlayer@CPlayer@@QBE_NXZ ?UninitCharacter@CPlayer@@QAEXXZ
+NEWDEF 004cd9b0 ??A?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEAAVCCharString@@I@Z ?GetAnimName@CConversationAttitude@@SIABVCCharString@@W4EConversationAttitude@@@Z ?begin@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEPAVCCharString@@XZ
+NEWDEF 00510d40 ??$_Destroy@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@YAXPAV?$CIntelligentPointer@VCThingAICreature@@@@@Z ?clear@?$_List_base@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QAEXXZ ?deallocate@?$allocator@U?$_List_node@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QAEXPAU?$_List_node@V?$CIntelligentPointer@VCThingAI
+NEWDEF 00558c10 ?IsAcceptButton@CNavButton@NUISystem@@QBE_NXZ
+NEWDEF 00634870 ?ResetModes@CPlayer@@QAEXXZ
+NEWDEF 006925b0 ?GetTotalTimeWorldFrames@CCreatureActionBase@@QBEJXZ
+NEWDEF 006925c0 ?GetFramesRunning@CCreatureActionBase@@QBEJXZ
+NEWDEF 00692910 ??C?$CIntelligentPointer@VCThingCreatureBase@@@@QBEPAVCThingCreatureBase@@XZ ?PeekDefinitionManager@CCreatureActionBase@@IBEABVCGameDefinitionManager@@XZ
+NEWDEF 006dfb40 ??0CTCTrophy@@QAE@AAVCThing@@@Z ??_7CTCTrophy@@6B@ ??_GCTCTrophy@@UAEPAXI@Z
+NEWDEF 006e7c90 ??0CScriptGameResourceObjectMovie@@QAE@AAVCGameScriptInterface@@_N@Z ??_7CScriptGameResourceObjectMovie@@6B@ ??_GCScriptGameResourceObjectMovie@@UAEPAXI@Z
+NEWDEF 00732690 ??0CTCSpotLight@@QAE@AAVCThing@@@Z ??_7CTCSpotLight@@6B@ ??_GCTCSpotLight@@UAEPAXI@Z
+NEWDEF 00771360 ??0CTCOpinionSource@@QAE@AAVCThing@@@Z
+NEWDEF 00771a70 ??0CTCOpinionSource@@QAE@AAVCThing@@@Z ??_7CTCOpinionSource@@6B@ ??_GCTCOpinionSource@@UAEPAXI@Z
+NEWDEF 007c77d0 ??0CTCTurncoatSpell@@QAE@AAVCThing@@@Z ??_7CTCTurncoatSpell@@6B@ ??_GCTCTurncoatSpell@@UAEPAXI@Z
+NEWDEF 007c8540 ??0CTCHitOnCollision@@AAE@AAVCThing@@@Z ??_7CTCHitOnCollision@@6B@ ??_GCTCHitOnCollision@@UAEPAXI@Z
+NEWDEF 007cd810 ??0CTCMultiStrike@@QAE@AAVCThing@@@Z ??_7CTCMultiStrike@@6B@ ??_GCTCMultiStrike@@UAEPAXI@Z
+NEWDEF 007ced40 ??0CTCElectrocutedEffect@@QAE@AAVCThing@@@Z ??_7CTCElectrocutedEffect@@6B@ ??_GCTCElectrocutedEffect@@UAEPAXI@Z
+NEWDEF 00887a30 ?SetDefaultThemeWeight@CEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@QAEXM_N@Z
+NEWDEF 008fcfc0 ?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ
+NEWDEF 009937b0 ??0CASoundManager@@QAE@XZ ??_7CASoundManager@@6B@ ??_GCASoundManager@@UAEPAXI@Z ?MakeOne_009937b0@@YAPAXXZ
+NEWDEF 009971e0 ??0CBufferedFileDataOutputStream@@QAE@AAVCAFile@@J@Z ??_7CBufferedFileDataOutputStream@@6B@ ??_GCBufferedFileDataOutputStream@@UAEPAXI@Z
+NEWDEF 0099a330 ?IsValid@CInitBaseClass@@QBE_NXZ
+NEWDEF 009aa780 ??$_Destroy@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@std@@YAXPAU?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@0@@Z ??1?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@QAE@XZ ??_G?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@QAEPAXI@Z ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManag
+NEWDEF 009c2f50 ??$_Destroy@VCQuickDrawTriInfo@@@std@@YAXPAVCQuickDrawTriInfo@@0@Z ??$_Destroy@VCQuickDrawTriInfo@@@std@@YAXPAVCQuickDrawTriInfo@@@Z ??$__destroy_aux@PAVCQuickDrawTriInfo@@@std@@YAXPAVCQuickDrawTriInfo@@0ABU__false_type@0@@Z ??0?$_STLP_alloc_proxy@PAVCQuickDrawTriInfo@@V1@V?$allocator@VCQuickDrawTriInfo@@@std@@@std@@QAE@ABV?$allocator@VCQuickDrawTriInfo@@@1@PAVCQuickDrawTriInfo@@@Z ??0?$_Vector_ba
+NEWDEF 009c3100 ??0CRenderManager@@QAE@AAVCDisplayManager@@ABVCWideString@@K@Z ??_7CRenderManager@@6B@ ??_GCRenderManager@@UAEPAXI@Z
+NEWDEF 009e16e0 ??0CRenderManager2D@@QAE@AAVCDisplayManager@@ABVCWideString@@K@Z ??_7CRenderManager2D@@6B@ ??_GCRenderManager2D@@UAEPAXI@Z
+NEWDEF 00a0b6c0 ?Unload_00a0b6c0@CSoundBankLH@@UAEXXZ
+NEWDEF 00a0bdf0 ??0CSoundBankLH@@QAE@XZ ??_7CSoundBankLH@@6B@ ??_GCSoundBankLH@@UAEPAXI@Z ?MakeOne_00a0bdf0@@YAPAXXZ
+NEWDEF 00a2b690 ??0C3DMeshLODInfo@@AAE@PBVC3DMeshInfo@@K@Z ??_7C3DMeshLODInfo@@6B@ ??_GC3DMeshLODInfo@@UAEPAXI@Z
+NEWDEF 00a3ff60 ??$_Destroy@PAVCSoundObjectLH@@@std@@YAXPAPAVCSoundObjectLH@@@Z ??1?$_List_base@PAVCSoundObjectLH@@V?$allocator@PAVCSoundObjectLH@@@std@@@std@@QAE@XZ ?clear@?$_List_base@PAVCSoundObjectLH@@V?$allocator@PAVCSoundObjectLH@@@std@@@std@@QAEXXZ ?deallocate@?$allocator@U?$_List_node@PAVCSoundObjectLH@@@std@@@std@@QAEXPAU?$_List_node@PAVCSoundObjectLH@@@2@I@Z
+NEWDEF 00a40bd0 ??$_Destroy@U?$pair@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@std@@@std@@YAXPAU?$pair@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@0@0@Z ??$_Destroy@U?$pair@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@std@@@std@@YAXPAU?$pair@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@0@@Z ??$__destroy@PAU?$pair@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@std@@U12@@std@@YAXPAU?$pair@U?$pa
+NEWDEF 00a41a50 ??0CSoundManagerLH@@QAE@XZ ??_7CSoundManagerLH@@6B@ ??_GCSoundManagerLH@@UAEPAXI@Z ?MakeOne_00a41a50@@YAPAXXZ
+NEWDEF 00a53300 ??$_Destroy@V?$CIntelligentPointer@VC3DAnimation2@@@@@std@@YAXPAV?$CIntelligentPointer@VC3DAnimation2@@@@@Z ?clear@?$_List_base@V?$CIntelligentPointer@VC3DAnimation2@@@@V?$allocator@V?$CIntelligentPointer@VC3DAnimation2@@@@@std@@@std@@QAEXXZ ?deallocate@?$allocator@U?$_List_node@V?$CIntelligentPointer@VC3DAnimation2@@@@@std@@@std@@QAEXPAU?$_List_node@V?$CIntelligentPointer@VC3DAnimation2@@@@@2@I@Z
+NEWDEF 00a555a0 ??0C3DAnimationStats@@QAE@XZ ??_7C3DAnimationStats@@6B@ ??_GC3DAnimationStats@@UAEPAXI@Z
+NEWDEF 00a555c0 ??0C3DAnimation2@@QAE@XZ ??_7C3DAnimation2@@6B@ ??_GC3DAnimation2@@UAEPAXI@Z
+NEWDEF 00a5c600 ?ClearMemoryBlocks@CSimpleMemoryPool@@AAEXXZ
+NEWDEF 00a5f800 ??0CStreamingFontDataBankEntry@@QAE@KKPAVCStreamingFontDataBank@@@Z ??_7CStreamingFontDataBankEntry@@6B@ ??_GCStreamingFontDataBankEntry@@UAEPAXI@Z
+NEWDEF 00a5fa30 ??0CStreamingFontDataBank@@QAE@XZ ??_7CStreamingFontDataBank@@6B@ ??_GCStreamingFontDataBank@@UAEPAXI@Z
+NEWDEF 00a63970 ??0CFontDataBankEntry@@QAE@KKPAVCFontDataBank@@@Z ??_7CFontDataBankEntry@@6B@ ??_GCFontDataBankEntry@@UAEPAXI@Z
+NEWDEF 00a75ca0 ?SetTLNode@CNavQuadTreeNode@@IAEXPAVCANavQuadTreeNode@@@Z
+NEWDEF 00a75ce0 ?SetTRNode@CNavQuadTreeNode@@IAEXPAVCANavQuadTreeNode@@@Z
+NEWDEF 00a75d20 ?SetBLNode@CNavQuadTreeNode@@IAEXPAVCANavQuadTreeNode@@@Z
+NEWDEF 00a75d60 ?SetBRNode@CNavQuadTreeNode@@IAEXPAVCANavQuadTreeNode@@@Z
+NEWDEF 00a7d900 ??0CNavQuadTreeNode@@QAE@ABVC2DVector@@EEAAVCAFile@@@Z ??_7CNavQuadTreeNode@@6B@ ??_GCNavQuadTreeNode@@UAEPAXI@Z
+NEWDEF 00a80340 ??0CNavNavigableLeafNode@@QAE@ABVC2DVector@@EEE@Z ??_7CNavNavigableLeafNode@@6B@ ??_GCNavNavigableLeafNode@@UAEPAXI@Z
+NEWDEF 00a84ee0 ??0CNavSwitchableLeafNode@@QAE@ABVC2DVector@@EEEABV?$vector@_KV?$allocator@_K@std@@@std@@@Z ??_7CNavSwitchableLeafNode@@6B@ ??_GCNavSwitchableLeafNode@@UAEPAXI@Z
+NEWDEF 00a8d700 ??0C3DMesh2@@QAE@XZ ??_7C3DMesh2@@6B@ ??_GC3DMesh2@@UAEPAXI@Z
+NEWDEF 00ab0b50 ??0C3DAnimFileBoneMaskChunk@@QAE@XZ ??_7C3DAnimFileBoneMaskChunk@@6B@ ??_GC3DAnimFileBoneMaskChunk@@UAEPAXI@Z
+NEWDEF 00ab5fa0 ??0CMouseDX@@QAE@AAVCInputManagerDX@@_N@Z ??_7CMouseDX@@6B@ ??_GCMouseDX@@UAEPAXI@Z
+NEWDEF 00ab9990 ??0CStaticFontBank@@QAE@PAVCFontDataBank@@K@Z ??_7CStaticFontBank@@6B@ ??_GCStaticFontBank@@UAEPAXI@Z
+NEWDEF 00ac1ee0 ?Uninitialise@CIndexBuffer@@QAEXXZ
+NEWDEF 00b2ab10 ??0CEngine@@QAE@XZ ??_7CEngine@@6B@ ??_GCEngine@@UAEPAXI@Z
+NEWDEF 00b44420 ??_GCEngineMap@@QAEPAXI@Z ?Kill_00b44420@@YAXPAVCEngineMap@@@Z
+NEWDEF 00b50b80 ??0CEngineShadowRenderer@@QAE@XZ ??_7CEngineShadowRenderer@@6B@ ??_GCEngineShadowRenderer@@UAEPAXI@Z
+NEWDEF 00b52b30 ?WorldFrameUpdate@CEngineWeatherRenderer@@EAEX_N@Z
+NEWDEF 00b59840 ??_GCLocalDetailCacheMap@@QAEPAXI@Z ?DeleteMap@CEngineLocalDetailGenerator@@QAEXPAVCEngineMap@@@Z
+NEWDEF 00b5a090 ??0CEngineLocalDetailGenerator@@QAE@_N@Z ??_7CEngineLocalDetailGenerator@@6B@ ??_GCEngineLocalDetailGenerator@@UAEPAXI@Z
+NEWDEF 00b5bb00 ??0CEngineScreenEffectColourFilter@@QAE@ABVCEngineInit@@@Z ??_7CEngineScreenEffectColourFilter@@6B@ ??_GCEngineScreenEffectColourFilter@@UAEPAXI@Z
+NEWDEF 00b5eb00 ??0CEngineScreenEffectRadialBlurRenderer@@QAE@ABVCEngineInit@@@Z ??_7CEngineScreenEffectRadialBlurRenderer@@6B@ ??_GCEngineScreenEffectRadialBlurRenderer@@UAEPAXI@Z
+NEWDEF 00b866a0 ??0CEngineSubPrimitiveRenderer@@QAE@XZ ??_7CEngineSubPrimitiveRenderer@@6B@ ??_GCEngineSubPrimitiveRenderer@@UAEPAXI@Z
+NEWDEF 00b8c7a0 ??0CEngineBillboardGenerator@@QAE@XZ ??_7CEngineBillboardGenerator@@6B@ ??_GCEngineBillboardGenerator@@UAEPAXI@Z
+NEWDEF 00b97a60 ??0CEngineSceneGrid@@AAE@K@Z ??_7CEngineSceneGrid@@6B@ ??_GCEngineSceneGrid@@UAEPAXI@Z
+NEWDEF 00bac970 ??0CEnginePrimitiveManagerRepeatedZSprites@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z ??_7CEnginePrimitiveManagerRepeatedZSprites@@6B@ ??_GCEnginePrimitiveManagerRepeatedZSprites@@UAEPAXI@Z
+NEWDEF 00bc3c00 ??0CEnginePrimitiveManagerParticleMeshGroup@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z ??_7CEnginePrimitiveManagerParticleMeshGroup@@6B@ ??_GCEnginePrimitiveManagerParticleMeshGroup@@UAEPAXI@Z
+NEWDEF 00cbfab8 ?SetScriptActiveStatus@@YIXABVCCharString@@W4EScriptActiveStatus@@@Z
+NEWDEF 00cfa660 ??0CQ_ArenaScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z ??0CScriptObject@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+NEWDEF 00cfac20 ??0CQ_ArenaScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z ??_7CQ_ArenaScript@NScript@@6B@ ??_GCQ_ArenaScript@NScript@@UAEPAXI@Z
+NEWDEF 00d728d0 ??0CHTG_Audience@CQ_HangingTreeGoodScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z ??_7CHTG_Audience@CQ_HangingTreeGoodScript@NScript@@6B@ ??_GCHTG_Audience@CQ_HangingTreeGoodScript@NScript@@UAEPAXI@Z
+NEWDEF 00d9feb0 ??0CBriarRose@CQ_MinionCampScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z ??_7CBriarRose@CQ_MinionCampScript@NScript@@6B@ ??_GCBriarRose@CQ_MinionCampScript@NScript@@UAEPAXI@Z
+NEWDEF 00e1da20 ??0CQ_WizardBattleScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z ??_7CQ_WizardBattleScript@NScript@@6B@ ??_GCQ_WizardBattleScript@NScript@@UAEPAXI@Z
+NEWDEF 00e477d0 ??0CV_BanditCampPathScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z ??_7CV_BanditCampPathScript@NScript@@6B@ ??_GCV_BanditCampPathScript@NScript@@UAEPAXI@Z
+NEWDEF 00e62760 ??0CV_BodyGuardScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z ??_7CV_BodyGuardScript@NScript@@6B@ ??_GCV_BodyGuardScript@NScript@@UAEPAXI@Z
+NEWDEF 00e68e90 ??0CV_ChickenKickingScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z ??_7CV_ChickenKickingScript@NScript@@6B@ ??_GCV_ChickenKickingScript@NScript@@UAEPAXI@Z
+NEWDEF 00e81f60 ??0CQuestScriptObject@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z ??0CV_FisticuffsClubScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z ??1CV_FisticuffsClubScript@NScript@@UAE@XZ
+NEWDEF 00e8b700 ?Alloc@CV_FisticuffsClubScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+NEWDEF 00e8b730 ??0CV_FisticuffsClubScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z ??_7CV_FisticuffsClubScript@NScript@@6B@ ??_GCV_FisticuffsClubScript@NScript@@UAEPAXI@Z
+NEWDEF 00eb6a90 ??0CV_MurderTwistFinalScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z ??_7CV_MurderTwistFinalScript@NScript@@6B@ ??_GCV_MurderTwistFinalScript@NScript@@UAEPAXI@Z
+NEWDEF 00ed4aa0 ??0CQuestScriptObject@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z ??0CV_SwordInTheStoneScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z ??1CV_SwordInTheStoneScript@NScript@@UAE@XZ ??_7CV_SwordInTheStoneScript@NScript@@6B@ ??_GCV_SwordInTheStoneScript@NScript@@UAEPAXI@Z
+NEWDEF 00ed7620 ??0CV_SwordInTheStoneScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z ??_7CV_SwordInTheStoneScript@NScript@@6B@ ??_GCV_SwordInTheStoneScript@NScript@@UAEPAXI@Z
+NEWDEF 00ed76e0 ??0CQuestScriptObjectNative@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z ??0CV_TalentlessBardScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z ??1CV_TalentlessBardScript@NScript@@UAE@XZ
+NEWDEF 00edacf0 ??0CV_TalentlessBardScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z ??_7CV_TalentlessBardScript@NScript@@6B@ ??_GCV_TalentlessBardScript@NScript@@UAEPAXI@Z
+NEWDEF 00edeba0 ??0CQuestScriptBase@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z ??0CV_TravellingHeroesScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+NEWDEF 00ee40d0 ??0CV_TravellingHeroesScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z ??_7CV_TravellingHeroesScript@NScript@@6B@ ??_GCV_TravellingHeroesScript@NScript@@UAEPAXI@Z
+NEWDEF 00ee41f0 ??0?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z ??0CV_TourGuideScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+NEWDEF 00ee6c00 ?Alloc@CV_TourGuideScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+NEWDEF 00ee6c30 ??0CV_TourGuideScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z ??_7CV_TourGuideScript@NScript@@6B@ ??_GCV_TourGuideScript@NScript@@UAEPAXI@Z
+NEWDEF 00f29da0 ??0CCutsceneDef@@QAE@XZ ??_7CCutsceneDef@@6B@ ??_GCCutsceneDef@@UAEPAXI@Z
+NEWDEF 01224c6d ??1?$map@VCCharString@@W4EScriptActiveStatus@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@W4EScriptActiveStatus@@@std@@@4@@std@@QAE@XZ ?ScriptActiveStatuses@@3V?$map@VCCharString@@W4EScriptActiveStatus@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@W4EScriptActiveStatus@@@std@@@4@@std@@A
+NEWDEF 01228ed8 ??_I@YGXPAXIHP6EX0@Z@Z

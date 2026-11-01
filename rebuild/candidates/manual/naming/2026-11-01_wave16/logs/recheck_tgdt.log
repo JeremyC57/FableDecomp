@@ -1,0 +1,133 @@
+addr       parity           behav  name
+00412b00   RELOCATION_MATCH PASS   CUserProfileManager::`scalar deleting destructor'
+006e7c90   RELOCATION_MATCH PASS   CScriptGameResourceObjectMovie::`scalar deleting destructor'
+00771a70   RELOCATION_MATCH PASS   CTCOpinionSource::`scalar deleting destructor'
+007c8540   RELOCATION_MATCH PASS   CTCHitOnCollision::`scalar deleting destructor'
+007ced40   RELOCATION_MATCH PASS   CTCElectrocutedEffect::`scalar deleting destructor'
+009971e0   WARN SHARED_HEADER_AVAILABLE CBufferedFileDataOutputStream
+009971e0   RELOCATION_MATCH PASS   CBufferedFileDataOutputStream::`scalar deleting destructor'
+009e16e0   RELOCATION_MATCH PASS   CRenderManager2D::`scalar deleting destructor'
+00a2b690   WARN SHARED_HEADER_AVAILABLE C3DMeshLODInfo
+00a2b690   RELOCATION_MATCH PASS   C3DMeshLODInfo::`scalar deleting destructor'
+00a555a0   RELOCATION_MATCH PASS   C3DAnimationStats::`scalar deleting destructor'
+00a5f800   WARN SHARED_HEADER_AVAILABLE CStreamingFontDataBankEntry
+00a5f800   RELOCATION_MATCH PASS   CStreamingFontDataBankEntry::`scalar deleting destructor'
+00a63970   WARN SHARED_HEADER_AVAILABLE CFontDataBankEntry
+00a63970   RELOCATION_MATCH PASS   CFontDataBankEntry::`scalar deleting destructor'
+00a80340   WARN SHARED_HEADER_AVAILABLE CNavNavigableLeafNode
+00a80340   RELOCATION_MATCH PASS   CNavNavigableLeafNode::`scalar deleting destructor'
+00a8d700   RELOCATION_MATCH PASS   C3DMesh2::`scalar deleting destructor'
+00ab5fa0   RELOCATION_MATCH PASS   CMouseDX::`scalar deleting destructor'
+00b2ab10   WARN SHARED_HEADER_AVAILABLE CEngine
+00b2ab10   RELOCATION_MATCH PASS   CEngine::`scalar deleting destructor'
+00b50b80   WARN SHARED_HEADER_AVAILABLE CEngineShadowRenderer
+00b50b80   RELOCATION_MATCH PASS   CEngineShadowRenderer::`scalar deleting destructor'
+00b5bb00   WARN SHARED_HEADER_AVAILABLE CEngineScreenEffectColourFilter
+00b5bb00   RELOCATION_MATCH PASS   CEngineScreenEffectColourFilter::`scalar deleting destructor'
+00b866a0   WARN SHARED_HEADER_AVAILABLE CEngineSubPrimitiveRenderer
+00b866a0   RELOCATION_MATCH PASS   CEngineSubPrimitiveRenderer::`scalar deleting destructor'
+00b97a60   RELOCATION_MATCH PASS   CEngineSceneGrid::`scalar deleting destructor'
+00bc3c00   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerParticleMeshGroup
+00bc3c00   RELOCATION_MATCH PASS   CEnginePrimitiveManagerParticleMeshGroup::`scalar deleting destructor'
+00d728d0   RELOCATION_MATCH PASS   NScript::CQ_HangingTreeGoodScript::CHTG_Audience::`scalar deleting destructor'
+00e1da20   RELOCATION_MATCH PASS   NScript::CQ_WizardBattleScript::`scalar deleting destructor'
+00e62760   RELOCATION_MATCH PASS   NScript::CV_BodyGuardScript::`scalar deleting destructor'
+00e8b730   RELOCATION_MATCH PASS   NScript::CV_FisticuffsClubScript::`scalar deleting destructor'
+00ed7620   RELOCATION_MATCH PASS   NScript::CV_SwordInTheStoneScript::`scalar deleting destructor'
+00ee40d0   RELOCATION_MATCH PASS   NScript::CV_TravellingHeroesScript::`scalar deleting destructor'
+00f29da0   RELOCATION_MATCH PASS   CCutsceneDef::`scalar deleting destructor'
+
+WINS: 27
+  00412b00 RELOCATION_MATCH CUserProfileManager::??_GCUserProfileManager@@UAEPAXI@Z
+  006e7c90 RELOCATION_MATCH CScriptGameResourceObjectMovie::??_GCScriptGameResourceObjectMovie@@UAEPAXI@Z
+  00771a70 RELOCATION_MATCH CTCOpinionSource::??_GCTCOpinionSource@@UAEPAXI@Z
+  007c8540 RELOCATION_MATCH CTCHitOnCollision::??_GCTCHitOnCollision@@UAEPAXI@Z
+  007ced40 RELOCATION_MATCH CTCElectrocutedEffect::??_GCTCElectrocutedEffect@@UAEPAXI@Z
+  009971e0 RELOCATION_MATCH CBufferedFileDataOutputStream::??_GCBufferedFileDataOutputStream@@UAEPAXI@Z
+  009e16e0 RELOCATION_MATCH CRenderManager2D::??_GCRenderManager2D@@UAEPAXI@Z
+  00a2b690 RELOCATION_MATCH C3DMeshLODInfo::??_GC3DMeshLODInfo@@UAEPAXI@Z
+  00a555a0 RELOCATION_MATCH C3DAnimationStats::??_GC3DAnimationStats@@UAEPAXI@Z
+  00a5f800 RELOCATION_MATCH CStreamingFontDataBankEntry::??_GCStreamingFontDataBankEntry@@UAEPAXI@Z
+  00a63970 RELOCATION_MATCH CFontDataBankEntry::??_GCFontDataBankEntry@@UAEPAXI@Z
+  00a80340 RELOCATION_MATCH CNavNavigableLeafNode::??_GCNavNavigableLeafNode@@UAEPAXI@Z
+  00a8d700 RELOCATION_MATCH C3DMesh2::??_GC3DMesh2@@UAEPAXI@Z
+  00ab5fa0 RELOCATION_MATCH CMouseDX::??_GCMouseDX@@UAEPAXI@Z
+  00b2ab10 RELOCATION_MATCH CEngine::??_GCEngine@@UAEPAXI@Z
+  00b50b80 RELOCATION_MATCH CEngineShadowRenderer::??_GCEngineShadowRenderer@@UAEPAXI@Z
+  00b5bb00 RELOCATION_MATCH CEngineScreenEffectColourFilter::??_GCEngineScreenEffectColourFilter@@UAEPAXI@Z
+  00b866a0 RELOCATION_MATCH CEngineSubPrimitiveRenderer::??_GCEngineSubPrimitiveRenderer@@UAEPAXI@Z
+  00b97a60 RELOCATION_MATCH CEngineSceneGrid::??_GCEngineSceneGrid@@UAEPAXI@Z
+  00bc3c00 RELOCATION_MATCH CEnginePrimitiveManagerParticleMeshGroup::??_GCEnginePrimitiveManagerParticleMeshGroup@@UAEPAXI@Z
+  00d728d0 RELOCATION_MATCH CVtable_012d292c::??_GCHTG_Audience@CQ_HangingTreeGoodScript@NScript@@UAEPAXI@Z
+  00e1da20 RELOCATION_MATCH CVtable_012e0f54::??_GCQ_WizardBattleScript@NScript@@UAEPAXI@Z
+  00e62760 RELOCATION_MATCH CVtable_012e6e4c::??_GCV_BodyGuardScript@NScript@@UAEPAXI@Z
+  00e8b730 RELOCATION_MATCH CVtable_012eaf14::??_GCV_FisticuffsClubScript@NScript@@UAEPAXI@Z
+  00ed7620 RELOCATION_MATCH CVtable_012f301c::??_GCV_SwordInTheStoneScript@NScript@@UAEPAXI@Z
+  00ee40d0 RELOCATION_MATCH CVtable_012f407c::??_GCV_TravellingHeroesScript@NScript@@UAEPAXI@Z
+  00f29da0 RELOCATION_MATCH CVtable_012fb6e0::??_GCCutsceneDef@@UAEPAXI@Z
+addr       parity           behav  name
+006dfb40   RELOCATION_MATCH PASS   CTCTrophy::`scalar deleting destructor'
+00732690   WARN SHARED_HEADER_AVAILABLE CTCSpotLight
+00732690   RELOCATION_MATCH PASS   CTCSpotLight::`scalar deleting destructor'
+007c77d0   WARN SHARED_HEADER_AVAILABLE CTCTurncoatSpell
+007c77d0   RELOCATION_MATCH PASS   CTCTurncoatSpell::`scalar deleting destructor'
+007cd810   RELOCATION_MATCH PASS   CTCMultiStrike::`scalar deleting destructor'
+009937b0   RELOCATION_MATCH PASS   CASoundManager::`scalar deleting destructor'
+009c3100   RELOCATION_MATCH PASS   CRenderManager::`scalar deleting destructor'
+00a0bdf0   RELOCATION_MATCH PASS   CSoundBankLH::`scalar deleting destructor'
+00a41a50   RELOCATION_MATCH PASS   CSoundManagerLH::`scalar deleting destructor'
+00a555c0   WARN SHARED_HEADER_AVAILABLE C3DAnimation2
+00a555c0   RELOCATION_MATCH PASS   C3DAnimation2::`scalar deleting destructor'
+00a5fa30   WARN SHARED_HEADER_AVAILABLE CStreamingFontDataBank
+00a5fa30   RELOCATION_MATCH PASS   CStreamingFontDataBank::`scalar deleting destructor'
+00a7d900   WARN SHARED_HEADER_AVAILABLE CNavQuadTreeNode
+00a7d900   RELOCATION_MATCH PASS   CNavQuadTreeNode::`scalar deleting destructor'
+00a84ee0   WARN SHARED_HEADER_AVAILABLE CNavSwitchableLeafNode
+00a84ee0   RELOCATION_MATCH PASS   CNavSwitchableLeafNode::`scalar deleting destructor'
+00ab0b50   WARN SHARED_HEADER_AVAILABLE C3DAnimFileBoneMaskChunk
+00ab0b50   RELOCATION_MATCH PASS   C3DAnimFileBoneMaskChunk::`scalar deleting destructor'
+00ab9990   WARN SHARED_HEADER_AVAILABLE CStaticFontBank
+00ab9990   RELOCATION_MATCH PASS   CStaticFontBank::`scalar deleting destructor'
+00b44420   RELOCATION_MATCH PASS   CEngineMap::`scalar deleting destructor'
+00b5a090   RELOCATION_MATCH PASS   CEngineLocalDetailGenerator::`scalar deleting destructor'
+00b5eb00   WARN SHARED_HEADER_AVAILABLE CEngineScreenEffectRadialBlurRenderer
+00b5eb00   RELOCATION_MATCH PASS   CEngineScreenEffectRadialBlurRenderer::`scalar deleting destructor'
+00b8c7a0   WARN SHARED_HEADER_AVAILABLE CEngineBillboardGenerator
+00b8c7a0   RELOCATION_MATCH PASS   CEngineBillboardGenerator::`scalar deleting destructor'
+00bac970   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerRepeatedZSprites
+00bac970   RELOCATION_MATCH PASS   CEnginePrimitiveManagerRepeatedZSprites::`scalar deleting destructor'
+00cfac20   RELOCATION_MATCH PASS   NScript::CQ_ArenaScript::`scalar deleting destructor'
+00d9feb0   RELOCATION_MATCH PASS   NScript::CQ_MinionCampScript::CBriarRose::`scalar deleting destructor'
+00e477d0   RELOCATION_MATCH PASS   NScript::CV_BanditCampPathScript::`scalar deleting destructor'
+00e68e90   RELOCATION_MATCH PASS   NScript::CV_ChickenKickingScript::`scalar deleting destructor'
+00eb6a90   RELOCATION_MATCH PASS   NScript::CV_MurderTwistFinalScript::`scalar deleting destructor'
+00edacf0   RELOCATION_MATCH PASS   NScript::CV_TalentlessBardScript::`scalar deleting destructor'
+00ee6c30   RELOCATION_MATCH PASS   NScript::CV_TourGuideScript::`scalar deleting destructor'
+
+WINS: 26
+  006dfb40 RELOCATION_MATCH CTCTrophy::??_GCTCTrophy@@UAEPAXI@Z
+  00732690 RELOCATION_MATCH CTCSpotLight::??_GCTCSpotLight@@UAEPAXI@Z
+  007c77d0 RELOCATION_MATCH CTCTurncoatSpell::??_GCTCTurncoatSpell@@UAEPAXI@Z
+  007cd810 RELOCATION_MATCH CTCMultiStrike::??_GCTCMultiStrike@@UAEPAXI@Z
+  009937b0 RELOCATION_MATCH CASoundManager::??_GCASoundManager@@UAEPAXI@Z
+  009c3100 RELOCATION_MATCH CRenderManager::??_GCRenderManager@@UAEPAXI@Z
+  00a0bdf0 RELOCATION_MATCH CSoundBankLH::??_GCSoundBankLH@@UAEPAXI@Z
+  00a41a50 RELOCATION_MATCH CSoundManagerLH::??_GCSoundManagerLH@@UAEPAXI@Z
+  00a555c0 RELOCATION_MATCH C3DAnimation2::??_GC3DAnimation2@@UAEPAXI@Z
+  00a5fa30 RELOCATION_MATCH CStreamingFontDataBank::??_GCStreamingFontDataBank@@UAEPAXI@Z
+  00a7d900 RELOCATION_MATCH CNavQuadTreeNode::??_GCNavQuadTreeNode@@UAEPAXI@Z
+  00a84ee0 RELOCATION_MATCH CNavSwitchableLeafNode::??_GCNavSwitchableLeafNode@@UAEPAXI@Z
+  00ab0b50 RELOCATION_MATCH C3DAnimFileBoneMaskChunk::??_GC3DAnimFileBoneMaskChunk@@UAEPAXI@Z
+  00ab9990 RELOCATION_MATCH CStaticFontBank::??_GCStaticFontBank@@UAEPAXI@Z
+  00b44420 RELOCATION_MATCH _global::??_GCEngineMap@@QAEPAXI@Z
+  00b5a090 RELOCATION_MATCH CEngineLocalDetailGenerator::??_GCEngineLocalDetailGenerator@@UAEPAXI@Z
+  00b5eb00 RELOCATION_MATCH CEngineScreenEffectRadialBlurRenderer::??_GCEngineScreenEffectRadialBlurRenderer@@UAEPAXI@Z
+  00b8c7a0 RELOCATION_MATCH CEngineBillboardGenerator::??_GCEngineBillboardGenerator@@UAEPAXI@Z
+  00bac970 RELOCATION_MATCH CEnginePrimitiveManagerRepeatedZSprites::??_GCEnginePrimitiveManagerRepeatedZSprites@@UAEPAXI@Z
+  00cfac20 RELOCATION_MATCH CVtable_012c7798::??_GCQ_ArenaScript@NScript@@UAEPAXI@Z
+  00d9feb0 RELOCATION_MATCH CVtable_012d6d0c::??_GCBriarRose@CQ_MinionCampScript@NScript@@UAEPAXI@Z
+  00e477d0 RELOCATION_MATCH CVtable_012e4a9c::??_GCV_BanditCampPathScript@NScript@@UAEPAXI@Z
+  00e68e90 RELOCATION_MATCH CVtable_012e7318::??_GCV_ChickenKickingScript@NScript@@UAEPAXI@Z
+  00eb6a90 RELOCATION_MATCH CVtable_012ef978::??_GCV_MurderTwistFinalScript@NScript@@UAEPAXI@Z
+  00edacf0 RELOCATION_MATCH CVtable_012f3428::??_GCV_TalentlessBardScript@NScript@@UAEPAXI@Z
+  00ee6c30 RELOCATION_MATCH CVtable_012f46b8::??_GCV_TourGuideScript@NScript@@UAEPAXI@Z

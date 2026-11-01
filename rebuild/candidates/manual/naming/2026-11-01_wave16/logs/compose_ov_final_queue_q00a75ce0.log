@@ -1,0 +1,1 @@
+edited 00a76060 inplace CNavQuadTreeNode::SetTRNode -> SetTRNode x1 +u ['?SetTRNode@CNavQuadTreeNode@@IAEXPAVCANavQuadTreeNode@@@Z'] -u ['?SetTRNode@CNavQuadTreeNode@@QAEXPAVCANavQuadTreeNode@@@Z']

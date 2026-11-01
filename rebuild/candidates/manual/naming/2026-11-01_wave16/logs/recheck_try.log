@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00487bd0   RELOCATION_MATCH PASS   CPlayer::UninitCharacter
+00634870   RELOCATION_MATCH PASS   CPlayer::ResetModes
+
+WINS: 2
+  00487bd0 RELOCATION_MATCH CPlayer::UninitCharacter
+  00634870 RELOCATION_MATCH CPlayer::ResetModes

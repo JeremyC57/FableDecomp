@@ -1,0 +1,289 @@
+addr       parity           behav  name
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00412b00.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00412b00.obj; graded the largest function
+00412b00   WARN RELOC_NAME: ?Dtor@CUserProfileManager@@QAEXXZ -> 00408990 labelled 'CUserProfileManager::~CUserProfileManager'
+00412b00   RELOCATION_MATCH PASS   CUserProfileManager::`scalar deleting destructor'
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 006e7c90.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 006e7c90.obj; graded the largest function
+006e7c90   WARN RELOC_NAME: ?Dtor@CScriptGameResourceObjectMovie@@QAEXXZ -> 006e7550 labelled 'CScriptGameResourceObjectMovie::~CScriptGameResourceObjectMovie'
+006e7c90   RELOCATION_MATCH PASS   CScriptGameResourceObjectMovie::`scalar deleting destructor'
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00771a70.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00771a70.obj; graded the largest function
+00771a70   RELOCATION_MATCH PASS   CTCOpinionSource::`scalar deleting destructor'
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 007c8540.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 007c8540.obj; graded the largest function
+007c8540   RELOCATION_MATCH PASS   CTCHitOnCollision::`scalar deleting destructor'
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 007ced40.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 007ced40.obj; graded the largest function
+007ced40   WARN RELOC_NAME: ?Dtor@CTCElectrocutedEffect@@QAEXXZ -> 007ce730 labelled 'CTCElectrocutedEffect::~CTCElectrocutedEffect'
+007ced40   RELOCATION_MATCH PASS   CTCElectrocutedEffect::`scalar deleting destructor'
+009971e0   WARN SHARED_HEADER_AVAILABLE CBufferedFileDataOutputStream
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 009971e0.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 009971e0.obj; graded the largest function
+009971e0   WARN RELOC_NAME: ?Dtor@CBufferedFileDataOutputStream@@QAEXXZ -> 009947a0 labelled 'CBufferedFileDataOutputStream::~CBufferedFileDataOutputStream'
+009971e0   RELOCATION_MATCH PASS   CBufferedFileDataOutputStream::`scalar deleting destructor'
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 009e16e0.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 009e16e0.obj; graded the largest function
+009e16e0   WARN RELOC_NAME: ?Dtor@CRenderManager2D@@QAEXXZ -> 009c2fd0 labelled 'CRenderManager2D::~CRenderManager2D'
+009e16e0   RELOCATION_MATCH PASS   CRenderManager2D::`scalar deleting destructor'
+00a2b690   WARN SHARED_HEADER_AVAILABLE C3DMeshLODInfo
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00a2b690.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00a2b690.obj; graded the largest function
+00a2b690   RELOCATION_MATCH PASS   C3DMeshLODInfo::`scalar deleting destructor'
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00a555a0.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00a555a0.obj; graded the largest function
+00a555a0   RELOCATION_MATCH PASS   C3DAnimationStats::`scalar deleting destructor'
+00a5f800   WARN SHARED_HEADER_AVAILABLE CStreamingFontDataBankEntry
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00a5f800.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00a5f800.obj; graded the largest function
+00a5f800   WARN RELOC_NAME: ?Dtor@CStreamingFontDataBankEntry@@QAEXXZ -> 00a5f150 labelled 'CStreamingFontDataBankEntry::~CStreamingFontDataBankEntry'
+00a5f800   RELOCATION_MATCH PASS   CStreamingFontDataBankEntry::`scalar deleting destructor'
+00a63970   WARN SHARED_HEADER_AVAILABLE CFontDataBankEntry
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00a63970.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00a63970.obj; graded the largest function
+00a63970   WARN RELOC_NAME: ?Dtor@CFontDataBankEntry@@QAEXXZ -> 00a63480 labelled 'CFontDataBankEntry::~CFontDataBankEntry'
+00a63970   RELOCATION_MATCH PASS   CFontDataBankEntry::`scalar deleting destructor'
+00a80340   WARN SHARED_HEADER_AVAILABLE CNavNavigableLeafNode
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00a80340.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00a80340.obj; graded the largest function
+00a80340   RELOCATION_MATCH PASS   CNavNavigableLeafNode::`scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00a8d700.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00a8d700.obj; graded the largest function
+00a8d700   WARN RELOC_NAME: ?Dtor@C3DMesh2@@QAEXXZ -> 00a895f0 labelled 'C3DMesh2::~C3DMesh2'
+00a8d700   RELOCATION_MATCH PASS   C3DMesh2::`scalar deleting destructor'
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00ab5fa0.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00ab5fa0.obj; graded the largest function
+00ab5fa0   RELOCATION_MATCH PASS   CMouseDX::`scalar deleting destructor'
+00b2ab10   WARN SHARED_HEADER_AVAILABLE CEngine
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00b2ab10.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00b2ab10.obj; graded the largest function
+00b2ab10   WARN RELOC_NAME: ?Dtor@CEngine@@QAEXXZ -> 00b261d0 labelled 'CEngine::~CEngine'
+00b2ab10   RELOCATION_MATCH PASS   CEngine::`scalar deleting destructor'
+00b50b80   WARN SHARED_HEADER_AVAILABLE CEngineShadowRenderer
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00b50b80.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00b50b80.obj; graded the largest function
+00b50b80   WARN RELOC_NAME: ?Dtor@CEngineShadowRenderer@@QAEXXZ -> 00b4d210 labelled 'CEngineShadowRenderer::~CEngineShadowRenderer'
+00b50b80   RELOCATION_MATCH PASS   CEngineShadowRenderer::`scalar deleting destructor'
+00b5bb00   WARN SHARED_HEADER_AVAILABLE CEngineScreenEffectColourFilter
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00b5bb00.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00b5bb00.obj; graded the largest function
+00b5bb00   WARN RELOC_NAME: ?Dtor@CEngineScreenEffectColourFilter@@QAEXXZ -> 00b5a0d0 labelled 'CEngineScreenEffectColourFilter::~CEngineScreenEffectColourFilter'
+00b5bb00   RELOCATION_MATCH PASS   CEngineScreenEffectColourFilter::`scalar deleting destructor'
+00b866a0   WARN SHARED_HEADER_AVAILABLE CEngineSubPrimitiveRenderer
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00b866a0.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00b866a0.obj; graded the largest function
+00b866a0   WARN RELOC_NAME: ?Dtor@CEngineSubPrimitiveRenderer@@QAEXXZ -> 00b84390 labelled 'CEngineSubPrimitiveRenderer::~CEngineSubPrimitiveRenderer'
+00b866a0   RELOCATION_MATCH PASS   CEngineSubPrimitiveRenderer::`scalar deleting destructor'
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00b97a60.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00b97a60.obj; graded the largest function
+00b97a60   RELOCATION_MATCH PASS   CEngineSceneGrid::`scalar deleting destructor'
+00bc3c00   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerParticleMeshGroup
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00bc3c00.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00bc3c00.obj; graded the largest function
+00bc3c00   RELOCATION_MATCH PASS   CEnginePrimitiveManagerParticleMeshGroup::`scalar deleting destructor'
+00d728d0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d728d0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d728d0.obj; graded the largest function
+00d728d0   WARN RELOC_NAME: ?CLandscapeBackgroundPatch_dtor_00d728f0@@YIXPAVCLandscapeBackgroundPatch@@@Z -> 00d728f0 labelled 'NScript::CQ_HangingTreeGoodScript::CHTG_Audience::~CHTG_Audience'
+00d728d0   RELOCATION_MATCH PASS   NScript::CQ_HangingTreeGoodScript::CHTG_Audience::`scalar deleting destructor'
+00e1da20   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e1da20.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e1da20.obj; graded the largest function
+00e1da20   WARN RELOC_NAME: ?CLandscapeBackgroundPatch_dtor_00e1da40@@YIXPAVCLandscapeBackgroundPatch@@@Z -> 00e1da40 labelled 'NScript::CQ_WizardBattleScript::~CQ_WizardBattleScript'
+00e1da20   RELOCATION_MATCH PASS   NScript::CQ_WizardBattleScript::`scalar deleting destructor'
+00e62760   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e62760.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e62760.obj; graded the largest function
+00e62760   WARN RELOC_NAME: ?CLandscapeBackgroundPatch_dtor_00e62780@@YIXPAVCLandscapeBackgroundPatch@@@Z -> 00e62780 labelled 'NScript::CV_BodyGuardScript::~CV_BodyGuardScript'
+00e62760   RELOCATION_MATCH PASS   NScript::CV_BodyGuardScript::`scalar deleting destructor'
+00e8b730   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e8b730.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e8b730.obj; graded the largest function
+00e8b730   WARN RELOC_NAME: ?CLandscapeBackgroundPatch_dtor_00e8b750@@YIXPAVCLandscapeBackgroundPatch@@@Z -> 00e8b750 labelled 'NScript::CV_FisticuffsClubScript::~CV_FisticuffsClubScript'
+00e8b730   RELOCATION_MATCH PASS   NScript::CV_FisticuffsClubScript::`scalar deleting destructor'
+00ed7620   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ed7620.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ed7620.obj; graded the largest function
+00ed7620   WARN RELOC_NAME: ?CLandscapeBackgroundPatch_dtor_00ed7640@@YIXPAVCLandscapeBackgroundPatch@@@Z -> 00ed7640 labelled 'NScript::CV_SwordInTheStoneScript::~CV_SwordInTheStoneScript'
+00ed7620   RELOCATION_MATCH PASS   NScript::CV_SwordInTheStoneScript::`scalar deleting destructor'
+00ee40d0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ee40d0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ee40d0.obj; graded the largest function
+00ee40d0   WARN RELOC_NAME: ?CLandscapeBackgroundPatch_dtor_00ee40f0@@YIXPAVCLandscapeBackgroundPatch@@@Z -> 00ee40f0 labelled 'NScript::CV_TravellingHeroesScript::~CV_TravellingHeroesScript'
+00ee40d0   RELOCATION_MATCH PASS   NScript::CV_TravellingHeroesScript::`scalar deleting destructor'
+00f29da0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00f29da0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00f29da0.obj; graded the largest function
+00f29da0   WARN RELOC_NAME: ?CLandscapeBackgroundPatch_dtor_00f29dc0@@YIXPAVCLandscapeBackgroundPatch@@@Z -> 00f29dc0 labelled 'CCutsceneDef::~CCutsceneDef'
+00f29da0   RELOCATION_MATCH PASS   CCutsceneDef::`scalar deleting destructor'
+
+WINS: 27
+  00412b00 RELOCATION_MATCH CUserProfileManager::`scalar deleting destructor'
+  006e7c90 RELOCATION_MATCH CScriptGameResourceObjectMovie::`scalar deleting destructor'
+  00771a70 RELOCATION_MATCH CTCOpinionSource::`scalar deleting destructor'
+  007c8540 RELOCATION_MATCH CTCHitOnCollision::`scalar deleting destructor'
+  007ced40 RELOCATION_MATCH CTCElectrocutedEffect::`scalar deleting destructor'
+  009971e0 RELOCATION_MATCH CBufferedFileDataOutputStream::`scalar deleting destructor'
+  009e16e0 RELOCATION_MATCH CRenderManager2D::`scalar deleting destructor'
+  00a2b690 RELOCATION_MATCH C3DMeshLODInfo::`scalar deleting destructor'
+  00a555a0 RELOCATION_MATCH C3DAnimationStats::`scalar deleting destructor'
+  00a5f800 RELOCATION_MATCH CStreamingFontDataBankEntry::`scalar deleting destructor'
+  00a63970 RELOCATION_MATCH CFontDataBankEntry::`scalar deleting destructor'
+  00a80340 RELOCATION_MATCH CNavNavigableLeafNode::`scalar deleting destructor'
+  00a8d700 RELOCATION_MATCH C3DMesh2::`scalar_deleting_destructor'
+  00ab5fa0 RELOCATION_MATCH CMouseDX::`scalar deleting destructor'
+  00b2ab10 RELOCATION_MATCH CEngine::`scalar deleting destructor'
+  00b50b80 RELOCATION_MATCH CEngineShadowRenderer::`scalar deleting destructor'
+  00b5bb00 RELOCATION_MATCH CEngineScreenEffectColourFilter::`scalar deleting destructor'
+  00b866a0 RELOCATION_MATCH CEngineSubPrimitiveRenderer::`scalar deleting destructor'
+  00b97a60 RELOCATION_MATCH CEngineSceneGrid::`scalar deleting destructor'
+  00bc3c00 RELOCATION_MATCH CEnginePrimitiveManagerParticleMeshGroup::`scalar deleting destructor'
+  00d728d0 RELOCATION_MATCH CVtable_012d292c::`vector_deleting_destructor'
+  00e1da20 RELOCATION_MATCH CVtable_012e0f54::`vector_deleting_destructor'
+  00e62760 RELOCATION_MATCH CVtable_012e6e4c::`vector_deleting_destructor'
+  00e8b730 RELOCATION_MATCH CVtable_012eaf14::`vector_deleting_destructor'
+  00ed7620 RELOCATION_MATCH CVtable_012f301c::`vector_deleting_destructor'
+  00ee40d0 RELOCATION_MATCH CVtable_012f407c::`vector_deleting_destructor'
+  00f29da0 RELOCATION_MATCH CVtable_012fb6e0::`vector_deleting_destructor'
+addr       parity           behav  name
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 006dfb40.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 006dfb40.obj; graded the largest function
+006dfb40   RELOCATION_MATCH PASS   CTCTrophy::`scalar deleting destructor'
+00732690   WARN SHARED_HEADER_AVAILABLE CTCSpotLight
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00732690.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00732690.obj; graded the largest function
+00732690   WARN RELOC_NAME: ?Dtor@CTCSpotLight@@QAEXXZ -> 00731db0 labelled 'CTCSpotLight::~CTCSpotLight'
+00732690   RELOCATION_MATCH PASS   CTCSpotLight::`scalar deleting destructor'
+007c77d0   WARN SHARED_HEADER_AVAILABLE CTCTurncoatSpell
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 007c77d0.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 007c77d0.obj; graded the largest function
+007c77d0   WARN RELOC_NAME: ?Dtor@CTCTurncoatSpell@@QAEXXZ -> 007c66f0 labelled 'CTCTurncoatSpell::~CTCTurncoatSpell'
+007c77d0   RELOCATION_MATCH PASS   CTCTurncoatSpell::`scalar deleting destructor'
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 007cd810.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 007cd810.obj; graded the largest function
+007cd810   WARN RELOC_NAME: ?Dtor@CTCMultiStrike@@QAEXXZ -> 007cca90 labelled 'CTCMultiStrike::~CTCMultiStrike'
+007cd810   RELOCATION_MATCH PASS   CTCMultiStrike::`scalar deleting destructor'
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 009937b0.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 009937b0.obj; graded the largest function
+009937b0   RELOCATION_MATCH PASS   CASoundManager::`scalar deleting destructor'
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 009c3100.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 009c3100.obj; graded the largest function
+009c3100   WARN RELOC_NAME: ?Dtor@CRenderManager@@QAEXXZ -> 009c2fd0 labelled 'CRenderManager2D::~CRenderManager2D'
+009c3100   RELOCATION_MATCH PASS   CRenderManager::`scalar deleting destructor'
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00a0bdf0.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00a0bdf0.obj; graded the largest function
+00a0bdf0   RELOCATION_MATCH PASS   CSoundBankLH::`scalar deleting destructor'
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00a41a50.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00a41a50.obj; graded the largest function
+00a41a50   RELOCATION_MATCH PASS   CSoundManagerLH::`scalar deleting destructor'
+00a555c0   WARN SHARED_HEADER_AVAILABLE C3DAnimation2
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00a555c0.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00a555c0.obj; graded the largest function
+00a555c0   WARN RELOC_NAME: ?Dtor@C3DAnimation2@@QAEXXZ -> 00a4eec0 labelled 'C3DAnimation2::~C3DAnimation2'
+00a555c0   RELOCATION_MATCH PASS   C3DAnimation2::`scalar deleting destructor'
+00a5fa30   WARN SHARED_HEADER_AVAILABLE CStreamingFontDataBank
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00a5fa30.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00a5fa30.obj; graded the largest function
+00a5fa30   WARN RELOC_NAME: ?Dtor@CStreamingFontDataBank@@QAEXXZ -> 00a5f3a0 labelled 'CStreamingFontDataBank::~CStreamingFontDataBank'
+00a5fa30   RELOCATION_MATCH PASS   CStreamingFontDataBank::`scalar deleting destructor'
+00a7d900   WARN SHARED_HEADER_AVAILABLE CNavQuadTreeNode
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00a7d900.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00a7d900.obj; graded the largest function
+00a7d900   RELOCATION_MATCH PASS   CNavQuadTreeNode::`scalar deleting destructor'
+00a84ee0   WARN SHARED_HEADER_AVAILABLE CNavSwitchableLeafNode
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00a84ee0.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00a84ee0.obj; graded the largest function
+00a84ee0   RELOCATION_MATCH PASS   CNavSwitchableLeafNode::`scalar deleting destructor'
+00ab0b50   WARN SHARED_HEADER_AVAILABLE C3DAnimFileBoneMaskChunk
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00ab0b50.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00ab0b50.obj; graded the largest function
+00ab0b50   RELOCATION_MATCH PASS   C3DAnimFileBoneMaskChunk::`scalar deleting destructor'
+00ab9990   WARN SHARED_HEADER_AVAILABLE CStaticFontBank
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00ab9990.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00ab9990.obj; graded the largest function
+00ab9990   WARN RELOC_NAME: ?Dtor@CStaticFontBank@@QAEXXZ -> 00ab7a70 labelled 'CStaticFontBank::~CStaticFontBank'
+00ab9990   RELOCATION_MATCH PASS   CStaticFontBank::`scalar deleting destructor'
+00b44420   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00b44420.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00b44420.obj; graded the largest function
+00b44420   WARN RELOC_NAME: ?CLandscapeBackgroundPatch_dtor_00b42a90@@YIXPAVCLandscapeBackgroundPatch@@@Z -> 00b42a90 labelled 'CEngineMap::~CEngineMap'
+00b44420   RELOCATION_MATCH PASS   CEngineMap::`scalar deleting destructor'
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00b5a090.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00b5a090.obj; graded the largest function
+00b5a090   RELOCATION_MATCH PASS   CEngineLocalDetailGenerator::`scalar deleting destructor'
+00b5eb00   WARN SHARED_HEADER_AVAILABLE CEngineScreenEffectRadialBlurRenderer
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00b5eb00.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00b5eb00.obj; graded the largest function
+00b5eb00   WARN RELOC_NAME: ?Dtor@CEngineScreenEffectRadialBlurRenderer@@QAEXXZ -> 00b5c050 labelled 'CEngineScreenEffectRadialBlurRenderer::~CEngineScreenEffectRadialBlurRenderer'
+00b5eb00   RELOCATION_MATCH PASS   CEngineScreenEffectRadialBlurRenderer::`scalar deleting destructor'
+00b8c7a0   WARN SHARED_HEADER_AVAILABLE CEngineBillboardGenerator
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00b8c7a0.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00b8c7a0.obj; graded the largest function
+00b8c7a0   RELOCATION_MATCH PASS   CEngineBillboardGenerator::`scalar deleting destructor'
+00bac970   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveManagerRepeatedZSprites
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00bac970.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00bac970.obj; graded the largest function
+00bac970   RELOCATION_MATCH PASS   CEnginePrimitiveManagerRepeatedZSprites::`scalar deleting destructor'
+00cfac20   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00cfac20.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00cfac20.obj; graded the largest function
+00cfac20   WARN RELOC_NAME: ?CLandscapeBackgroundPatch_dtor_00cfac40@@YIXPAVCLandscapeBackgroundPatch@@@Z -> 00cfac40 labelled 'NScript::CQ_ArenaScript::~CQ_ArenaScript'
+00cfac20   RELOCATION_MATCH PASS   NScript::CQ_ArenaScript::`scalar deleting destructor'
+00d9feb0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d9feb0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d9feb0.obj; graded the largest function
+00d9feb0   WARN RELOC_NAME: ?CLandscapeBackgroundPatch_dtor_00d9fed0@@YIXPAVCLandscapeBackgroundPatch@@@Z -> 00d9fed0 labelled 'NScript::CQ_MinionCampScript::CBriarRose::~CBriarRose'
+00d9feb0   RELOCATION_MATCH PASS   NScript::CQ_MinionCampScript::CBriarRose::`scalar deleting destructor'
+00e477d0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e477d0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e477d0.obj; graded the largest function
+00e477d0   WARN RELOC_NAME: ?CLandscapeBackgroundPatch_dtor_00e477f0@@YIXPAVCLandscapeBackgroundPatch@@@Z -> 00e477f0 labelled 'NScript::CV_BanditCampPathScript::~CV_BanditCampPathScript'
+00e477d0   RELOCATION_MATCH PASS   NScript::CV_BanditCampPathScript::`scalar deleting destructor'
+00e68e90   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e68e90.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00e68e90.obj; graded the largest function
+00e68e90   WARN RELOC_NAME: ?CLandscapeBackgroundPatch_dtor_00e68eb0@@YIXPAVCLandscapeBackgroundPatch@@@Z -> 00e68eb0 labelled 'NScript::CV_ChickenKickingScript::~CV_ChickenKickingScript'
+00e68e90   RELOCATION_MATCH PASS   NScript::CV_ChickenKickingScript::`scalar deleting destructor'
+00eb6a90   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00eb6a90.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00eb6a90.obj; graded the largest function
+00eb6a90   WARN RELOC_NAME: ?CLandscapeBackgroundPatch_dtor_00eb6ab0@@YIXPAVCLandscapeBackgroundPatch@@@Z -> 00eb6ab0 labelled 'NScript::CV_MurderTwistFinalScript::~CV_MurderTwistFinalScript'
+00eb6a90   RELOCATION_MATCH PASS   NScript::CV_MurderTwistFinalScript::`scalar deleting destructor'
+00edacf0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00edacf0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00edacf0.obj; graded the largest function
+00edacf0   WARN RELOC_NAME: ?CLandscapeBackgroundPatch_dtor_00edad10@@YIXPAVCLandscapeBackgroundPatch@@@Z -> 00edad10 labelled 'NScript::CV_TalentlessBardScript::~CV_TalentlessBardScript'
+00edacf0   RELOCATION_MATCH PASS   NScript::CV_TalentlessBardScript::`scalar deleting destructor'
+00ee6c30   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ee6c30.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00ee6c30.obj; graded the largest function
+00ee6c30   WARN RELOC_NAME: ?CLandscapeBackgroundPatch_dtor_00ee6c50@@YIXPAVCLandscapeBackgroundPatch@@@Z -> 00ee6c50 labelled 'NScript::CV_TourGuideScript::~CV_TourGuideScript'
+00ee6c30   RELOCATION_MATCH PASS   NScript::CV_TourGuideScript::`scalar deleting destructor'
+
+WINS: 26
+  006dfb40 RELOCATION_MATCH CTCTrophy::`scalar deleting destructor'
+  00732690 RELOCATION_MATCH CTCSpotLight::`scalar deleting destructor'
+  007c77d0 RELOCATION_MATCH CTCTurncoatSpell::`scalar deleting destructor'
+  007cd810 RELOCATION_MATCH CTCMultiStrike::`scalar deleting destructor'
+  009937b0 RELOCATION_MATCH CASoundManager::`scalar deleting destructor'
+  009c3100 RELOCATION_MATCH CRenderManager::`scalar deleting destructor'
+  00a0bdf0 RELOCATION_MATCH CSoundBankLH::`scalar deleting destructor'
+  00a41a50 RELOCATION_MATCH CSoundManagerLH::`scalar deleting destructor'
+  00a555c0 RELOCATION_MATCH C3DAnimation2::`scalar deleting destructor'
+  00a5fa30 RELOCATION_MATCH CStreamingFontDataBank::`scalar deleting destructor'
+  00a7d900 RELOCATION_MATCH CNavQuadTreeNode::`scalar deleting destructor'
+  00a84ee0 RELOCATION_MATCH CNavSwitchableLeafNode::`scalar deleting destructor'
+  00ab0b50 RELOCATION_MATCH C3DAnimFileBoneMaskChunk::`scalar deleting destructor'
+  00ab9990 RELOCATION_MATCH CStaticFontBank::`scalar deleting destructor'
+  00b44420 RELOCATION_MATCH _global::`vector_deleting_destructor'
+  00b5a090 RELOCATION_MATCH CEngineLocalDetailGenerator::`scalar deleting destructor'
+  00b5eb00 RELOCATION_MATCH CEngineScreenEffectRadialBlurRenderer::`scalar deleting destructor'
+  00b8c7a0 RELOCATION_MATCH CEngineBillboardGenerator::`scalar deleting destructor'
+  00bac970 RELOCATION_MATCH CEnginePrimitiveManagerRepeatedZSprites::`scalar deleting destructor'
+  00cfac20 RELOCATION_MATCH CVtable_012c7798::`vector_deleting_destructor'
+  00d9feb0 RELOCATION_MATCH CVtable_012d6d0c::`vector_deleting_destructor'
+  00e477d0 RELOCATION_MATCH CVtable_012e4a9c::`vector_deleting_destructor'
+  00e68e90 RELOCATION_MATCH CVtable_012e7318::`vector_deleting_destructor'
+  00eb6a90 RELOCATION_MATCH CVtable_012ef978::`vector_deleting_destructor'
+  00edacf0 RELOCATION_MATCH CVtable_012f3428::`vector_deleting_destructor'
+  00ee6c30 RELOCATION_MATCH CVtable_012f46b8::`vector_deleting_destructor'

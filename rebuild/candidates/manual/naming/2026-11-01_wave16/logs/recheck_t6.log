@@ -1,0 +1,18 @@
+addr       parity           behav  name
+00558c10   MATCH            PASS   NUISystem::CNavButton::IsAcceptButton
+00a5c600   MATCH            PASS   CSimpleMemoryPool::ClearMemoryBlocks
+00cbfab8   RELOCATION_MATCH PASS   SetScriptActiveStatus
+
+WINS: 3
+  00558c10 MATCH NUISystem::CNavButton::?IsAcceptButton@CNavButton@NUISystem@@QBE_NXZ
+  00a5c600 MATCH CSimpleMemoryPool::?ClearMemoryBlocks@CSimpleMemoryPool@@AAEXXZ
+  00cbfab8 RELOCATION_MATCH _global::?SetScriptActiveStatus@@YIXABVCCharString@@W4EScriptActiveStatus@@@Z
+addr       parity           behav  name
+00771360   WARN SHARED_HEADER_AVAILABLE CTCBase
+00771360   RELOCATION_MATCH PASS   CTCOpinionSource::CTCOpinionSource
+00b59840   WARN SHARED_HEADER_AVAILABLE CLocalDetailCacheMap
+00b59840   RELOCATION_MATCH PASS   CEngineLocalDetailGenerator::DeleteMap
+
+WINS: 2
+  00771360 RELOCATION_MATCH CTCOpinionSource::??0CTCOpinionSource@@QAE@AAVCThing@@@Z
+  00b59840 RELOCATION_MATCH CEngineResourceManager::?DeleteMap@CEngineLocalDetailGenerator@@QAEXPAVCEngineMap@@@Z

@@ -1,0 +1,16 @@
+addr       parity           behav  name
+004cd670   RELOCATION_MATCH PASS   CConversationAttitude::Init
+01224c6d   WARN RELOC_CONFLICT: _$E2 -> 0122aea0 here, 01228930 in landed 01219f00
+01224c6d   WARN RELOC_NAME: _$E2 -> 0122aea0 labelled '_global::Static_OnReadFinished_on_0143e910_0122aea0'
+01224c6d   RELOCATION_MATCH PASS   _gapscan::sub_01224c6d
+
+WINS: 2
+  004cd670 RELOCATION_MATCH CConversationAttitude::?Init@CConversationAttitude@@
+  01224c6d RELOCATION_MATCH StaticInitialization::_$E1
+addr       parity           behav  name
+004cd9b0   RELOCATION_MATCH PASS   CConversationAttitude::GetAnimGroupName
+01228ed8   RELOCATION_MATCH PASS   `anonymous namespace'::`dynamic atexit destructor for 'CrimeText''
+
+WINS: 2
+  004cd9b0 RELOCATION_MATCH _global::?GetAnimName@CConversationAttitude@@SIABVCCharString@@W4EConversationAttitude@@@Z
+  01228ed8 RELOCATION_MATCH CDebugManager::_$E2

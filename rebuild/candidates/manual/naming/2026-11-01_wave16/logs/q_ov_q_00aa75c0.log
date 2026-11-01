@@ -1,0 +1,4 @@
+skip 00aa49b0 moved CTCInventoryItem::BaseOnDie_00aa75c0 -> ~CChunkedFileChunk x1 :: final not named
+skip 00aa71f0 moved CTCInventoryItemBase::BaseOnDie -> ~CChunkedFileChunk x1 :: final not named
+skip 00aa7210 moved CTCInventoryItemBase::BaseOnDie -> ~CChunkedFileChunk x1 :: final not named
+skip 00aa7370 0 CChunkedFileChunk::~CChunkedFileChunk declarations

@@ -1,0 +1,25 @@
+gdt h16_gdt.py ok 53 already 0 other 0 
+qctor h16_qctor.py ok 38 already 0 other 0 
+stl h16_lclear.py ok 2 already 0 other 0 
+stl h16_stlsnd.py ok 2 already 0 other 0 
+own h16_own.py ok 9 already 0 other 0 
+own h16_own2.py ok 14 already 0 other 0 
+data h16_data.py ok 11 already 0 other 0 
+sp fam_sp.py {'edited': 33, 'skip': 0, 'already': 0} 
+queue fam_q.py {'edited': 2, 'skip': 13, 'already': 0} 
+queue fam_q.py {'edited': 2, 'skip': 0, 'already': 0} 
+queue fam_q.py {'edited': 1, 'skip': 0, 'already': 0} 
+queue fam_q.py {'edited': 1, 'skip': 0, 'already': 0} 
+queue fam_q.py {'edited': 1, 'skip': 0, 'already': 0} 
+queue fam_q.py {'edited': 1, 'skip': 0, 'already': 0} 
+queue fam_q.py {'edited': 1, 'skip': 0, 'already': 0} 
+queue fam_q.py {'edited': 1, 'skip': 0, 'already': 0} 
+queue fam_q.py {'edited': 1, 'skip': 1, 'already': 0} 
+queue fam_q.py {'edited': 7, 'skip': 5, 'already': 0} 
+queue fam_q.py {'edited': 3, 'skip': 0, 'already': 0} 
+queue fam_q.py {'edited': 1, 'skip': 1, 'already': 0} 
+queue fam_q.py {'edited': 1, 'skip': 4, 'already': 0} 
+queue fam_q.py {'edited': 2, 'skip': 0, 'already': 0} 
+queue fam_q.py {'edited': 1, 'skip': 1, 'already': 0} 
+leaf fam_leaf.py {'edited': 4, 'skip': 0, 'already': 0} 
+{'gdt': 53, 'qctor': 8, 'stl': 4, 'own': 12, 'data': 4, 'sp': 33, 'queue': 22, 'leaf': 4}

@@ -1,0 +1,2 @@
+edited 007ddcc0 moved CCreatureActionBase::GetTotalTime -> GetTotalTimeWorldFrames x1 +u ['?GetTotalTimeWorldFrames@CCreatureActionBase@@QBEJXZ'] -u ['?GetTotalTime@CCreatureActionBase@@QBEJXZ']
+edited 008f2e00 moved CCombatActionBase::GetTotalTime -> GetTotalTimeWorldFrames x1 +u ['?GetTotalTimeWorldFrames@CCreatureActionBase@@QBEJXZ'] -u ['?GetTotalTime@CCombatActionBase@@QBEJXZ']

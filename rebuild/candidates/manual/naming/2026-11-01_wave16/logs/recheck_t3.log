@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00a3ff60   RELOCATION_MATCH PASS   std::_List_base<CSoundObjectLH*,std::allocator<CSoundObjectLH*> >::~_List_base
+00a40bd0   RELOCATION_MATCH PASS   std::vector<std::pair<std::pair<CCharString,CCharString>,CSoundBankLH*> >::~vector
+
+WINS: 2
+  00a3ff60 RELOCATION_MATCH _global::??1?$_List_base@PAVCSoundObjectLH@@V?$allocator@PAVCSoundObjectLH@@@std@@@std@@QAE@XZ
+  00a40bd0 RELOCATION_MATCH CRetailVector_SPairCMember_0099eae012::??1?$vector@U?$pair@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@std@@V?$allocator@U?$pair@U?$pair@VCCharString@@V1@@std@@PAVCSoundBankLH@@@std@@@2@@std@@QAE@XZ

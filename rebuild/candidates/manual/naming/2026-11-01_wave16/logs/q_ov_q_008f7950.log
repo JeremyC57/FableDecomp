@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/naming/w16/scripts/fam_q.py", line 49, in <module>
+    NF = parse(FIN); assert NF and NF['kind'] == 'mem', (FIN, NF)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('?CreateDustEffectForCreature@NCombatActionHelpers@@YIXAAVCThingCreatureBase@@ABVCWorldMap@@ABVCGameDefinitionManager@@ABVC3DVector@@PAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z', {'kind': 'free', 'ret': 'void', 'cc': '__fastcall', 'scope': ['NCombatActionHelpers'], 'name': 'CreateDustEffectForCreature', 'params': ['class CThingCreatureBase &', 'class CWorldMap const &', 'class CGameDefinitionManager const &', 'class C3DVector const &', 'class std::vector<class CThing *', 'class std::allocator<class CThing *>> *'], 'dem': 'void __fastcall NCombatActionHelpers::CreateDustEffectForCreature(class CThingCreatureBase &, class CWorldMap const &, class CGameDefinitionManager const &, class C3DVector const &, class std::vector<class CThing *, class std::allocator<class CThing *>> *)'})

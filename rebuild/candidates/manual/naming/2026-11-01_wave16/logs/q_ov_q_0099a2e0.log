@@ -1,0 +1,27 @@
+skip 0042ea8f 0 CBase::~CBase declarations
+skip 0046381b 0 CBase::~CBase declarations
+skip 00496070 0 CBase::~CBase declarations
+skip 004abe90 0 CBase::~CBase declarations
+skip 004abec0 0 CBase::~CBase declarations
+skip 004abf00 0 CBase::~CBase declarations
+skip 004abf40 0 CBase::~CBase declarations
+skip 004abf80 0 CBase::~CBase declarations
+skip 00529cc0 CInventoryItemBase::OnDie defined out of line
+skip 00704730 0 CBase::~CBase declarations
+skip 008ac180 0 CBase::~CBase declarations
+skip 00904540 0 CBase::~CBase declarations
+skip 00a006e0 0 CBase_0099a2e0::~CBase_0099a2e0 declarations
+skip 00a5e650 moved CTCInventoryItem::BaseOnDie -> ~CBaseClass x1 :: final not named
+skip 00a90fc0 0 definitions of CBaseClass
+skip 00a91390 0 definitions of CBaseClass
+skip 00af5900 0 CBase::~CBase declarations
+skip 00b18020 0 CBase::~CBase declarations
+skip 00ba7f40 0 CBase_0099a2e0::~CBase_0099a2e0 declarations
+skip 00bedb60 0 CBase::~CBase declarations
+skip 00bee990 0 CBase::~CBase declarations
+skip 00d1fa00 0 CBase::~CBase declarations
+skip 00d85b40 0 CBase::~CBase declarations
+skip 00d9f6c0 0 CBase::~CBase declarations
+skip 00dac4f0 0 CBase::~CBase declarations
+skip 00dac650 0 CBase::~CBase declarations
+skip 00db2a70 0 CBase::~CBase declarations

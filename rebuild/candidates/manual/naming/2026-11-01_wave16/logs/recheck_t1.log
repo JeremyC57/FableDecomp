@@ -1,0 +1,6 @@
+addr       parity           behav  name
+00ed76e0   WARN RELOC_NAME: ??0CScriptBaseNative@@QAE@XZ -> 00cb8110 labelled 'CScriptBase::CScriptBase'
+00ed76e0   RELOCATION_MATCH PASS   NScript::CV_TalentlessBardScript::CV_TalentlessBardScript
+
+WINS: 1
+  00ed76e0 RELOCATION_MATCH NScript::CV_TalentlessBardScript::??0CV_TalentlessBardScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z

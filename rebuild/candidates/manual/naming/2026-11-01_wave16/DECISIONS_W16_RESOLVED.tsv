@@ -1,0 +1,8 @@
+item	address	spelling	evidence	decision (coordinator under the owner delegation 2026-11-01, "do what retail did")
+??_G emitter rows define the real PDB ??0 with an empty body	gdt family	e.g. ??0CV_SwordInTheStoneScript@NScript@@QAE@...	landed precedents 0x00BB6520 / 0x00F29DC0 / 0x008413F0; each row is its own TU, only the graded function counts	ACCEPTED (chunks 664-676 practice); a ??0 defined in more than one row is the emitter pattern, not a duplicate reconstruction
+local class models instead of the flat engine headers	61 rows (88 SHARED_HEADER warnings)	n/a	the generated headers flatten vptrs / carry Dinkumware sizes	ACCEPTED as header debt (migration wave 10); warn-only
+0x004CD9B0 label	004cd9b0	?GetAnimName@CConversationAttitude@@...	reads 0x013B8A38 (AnimName vector); twin 0x004CD9C0 reads 0x013B8A44 (AnimGroupName)	ACCEPTED: catalog GetAnimGroupName -> GetAnimName; file renamed
+0x00404720 behaviour test fails at HEAD	00404720	??0CStringParser@@QAE@ABVCCharString@@P6IX0@Z0J@Z	pre-existing (the test, not the bytes); unrelated to this wave	own-row respell deferred; fix the test in the next wave (DEFERRED.tsv)
+descriptive names stay	009918f0 00a0b6c0 CSoundObjectLH CThingManager::World	ClearBanks_009918f0, Unload_00a0b6c0, ...	libpk / RTTI-less; neither PDB names them	KEPT descriptive (chunk 670 decision)
+libpk CHandleBasedMemoryPool copy	00c28690	needs its own retail name	Ego_r/FableWin hold one CHandleBasedMemoryPool only	DEFERRED (wave 15 decision stands)
+EPlayerMode 3 enumerator	00487bd0	AddMode((EPlayerMode)3, true)	neither PDB lists EPlayerMode enumerators	cast stays until an enumerator source exists

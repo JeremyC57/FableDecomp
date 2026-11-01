@@ -1,0 +1,2 @@
+edited 00b5ece0 moved CGlowScratchManager::ReleaseMemoryPage -> FreeMemoryPage x1 +u ['?FreeMemoryPage@CGPUScratchBufferTextureManager@@QAEXJ@Z'] -u ['?ReleaseMemoryPage@CGlowScratchManager@@QAEXJ@Z']
+skip 00b6d600 inplace CGPUScratchBufferTextureManager::FreeMemoryPage -> FreeMemoryPage x1 :: compile: tailCacheMap00b6d600_CloseStaticMap_00b6d600.cpp(20) : error C2664: 'CGPUScratchBufferTextureManager::FreeMemoryPage' : cannot convert parameter 1 from 'void *' to 'long'

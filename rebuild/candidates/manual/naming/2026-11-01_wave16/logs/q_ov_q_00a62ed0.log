@@ -1,0 +1,3 @@
+edited 009d5410 moved CHandleBasedMemoryPool_Calls::Free -> FreeResource x1 +u ['?FreeResource@CMovableResourceMemoryPool@@QAEXJ@Z'] -u ['?Free@CHandleBasedMemoryPool_Calls@@QAEXJ@Z']
+edited 00a752f0 moved CMovableResourceMemoryPool_Calls::Free -> FreeResource x1 +u ['?FreeResource@CMovableResourceMemoryPool@@QAEXJ@Z'] -u ['?Free@CMovableResourceMemoryPool_Calls@@QAEXJ@Z']
+edited 00a8b3a0 moved CMovableResourceMemoryPool::Free -> FreeResource x2 +u ['?FreeResource@CMovableResourceMemoryPool@@QAEXJ@Z'] -u ['?Free@CMovableResourceMemoryPool@@QAEXJ@Z']

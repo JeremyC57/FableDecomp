@@ -1,0 +1,3 @@
+skip 004303f0 moved CMemoryBlockOverlay::BaseDestructor -> ~CResource x1 :: final not named
+skip 00472b63 moved WaypointTemp::Destroy -> ~CResource x1 :: final not named
+skip 004e108c 0 CMemoryBlock::~CMemoryBlock declarations

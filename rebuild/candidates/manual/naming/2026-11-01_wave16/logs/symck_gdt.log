@@ -1,0 +1,59 @@
+00b44420 DEF ??_GCEngineMap@@QAEPAXI@Z | U: ??1CEngineMap@@QAE@XZ ??3@YAXPAX@Z
+009937b0 DEF ??_GCASoundManager@@UAEPAXI@Z | U: ??1CASoundManager@@UAE@XZ ??2@YAPAXI@Z ??3@YAXPAX@Z ??_GCASoundManager@@UAEPAXI@Z
+009e16e0 DEF ??_GCRenderManager2D@@UAEPAXI@Z | U: ??1CRenderManager2D@@UAE@XZ ??3@YAXPAX@Z ??_GCRenderManager2D@@UAEPAXI@Z
+009c3100 DEF ??_GCRenderManager@@UAEPAXI@Z | U: ??0CRenderManager2D@@QAE@AAVCDisplayManager@@ABVCWideString@@K@Z ??1CRenderManager2D@@UAE@XZ ??3@YAXPAX@Z ??_GCRenderManager@@UAEPAXI@Z
+00a7d900 DEF ??_GCNavQuadTreeNode@@UAEPAXI@Z | U: ??1CNavQuadTreeNode@@UAE@XZ ??3@YAXPAX@Z ??_GCNavQuadTreeNode@@UAEPAXI@Z
+006dfb40 DEF ??_GCTCTrophy@@UAEPAXI@Z | U: ??1CTCTrophy@@UAE@XZ ??3@YAXPAX@Z ??_GCTCTrophy@@UAEPAXI@Z
+006e7c90 DEF ??_GCScriptGameResourceObjectMovie@@UAEPAXI@Z | U: ??1CScriptGameResourceObjectMovie@@UAE@XZ ??3@YAXPAX@Z ??_GCScriptGameResourceObjectMovie@@UAEPAXI@Z
+00732690 DEF ??_GCTCSpotLight@@UAEPAXI@Z | U: ??1CTCSpotLight@@UAE@XZ ??3@YAXPAX@Z ??_GCTCSpotLight@@UAEPAXI@Z
+00771a70 DEF ??_GCTCOpinionSource@@UAEPAXI@Z | U: ??1CTCOpinionSource@@UAE@XZ ??3@YAXPAX@Z ??_GCTCOpinionSource@@UAEPAXI@Z
+007c77d0 DEF ??_GCTCTurncoatSpell@@UAEPAXI@Z | U: ??1CTCTurncoatSpell@@UAE@XZ ??3@YAXPAX@Z ??_GCTCTurncoatSpell@@UAEPAXI@Z
+007cd810 DEF ??_GCTCMultiStrike@@UAEPAXI@Z | U: ??1CTCMultiStrike@@UAE@XZ ??3@YAXPAX@Z ??_GCTCMultiStrike@@UAEPAXI@Z
+007ced40 DEF ??_GCTCElectrocutedEffect@@UAEPAXI@Z | U: ??1CTCElectrocutedEffect@@UAE@XZ ??3@YAXPAX@Z ??_GCTCElectrocutedEffect@@UAEPAXI@Z
+009971e0 DEF ??_GCBufferedFileDataOutputStream@@UAEPAXI@Z | U: ??1CBufferedFileDataOutputStream@@UAE@XZ ??3@YAXPAX@Z ??_GCBufferedFileDataOutputStream@@UAEPAXI@Z
+00a2b690 DEF ??_GC3DMeshLODInfo@@UAEPAXI@Z | U: ??1C3DMeshLODInfo@@UAE@XZ ??3@YAXPAX@Z ??_GC3DMeshLODInfo@@UAEPAXI@Z
+00a0bdf0 DEF ??_GCSoundBankLH@@UAEPAXI@Z | U: ??1CSoundBankLH@@UAE@XZ ??2@YAPAXI@Z ??3@YAXPAX@Z ??_GCSoundBankLH@@UAEPAXI@Z
+00a41a50 DEF ??_GCSoundManagerLH@@UAEPAXI@Z | U: ??1CSoundManagerLH@@UAE@XZ ??2@YAPAXI@Z ??3@YAXPAX@Z ??_GCSoundManagerLH@@UAEPAXI@Z
+00a5f800 DEF ??_GCStreamingFontDataBankEntry@@UAEPAXI@Z | U: ??1CStreamingFontDataBankEntry@@UAE@XZ ??3@YAXPAX@Z ??_GCStreamingFontDataBankEntry@@UAEPAXI@Z
+00a63970 DEF ??_GCFontDataBankEntry@@UAEPAXI@Z | U: ??1CFontDataBankEntry@@UAE@XZ ??3@YAXPAX@Z ??_GCFontDataBankEntry@@UAEPAXI@Z
+00ab5fa0 DEF ??_GCMouseDX@@UAEPAXI@Z | U: ??1CMouseDX@@UAE@XZ ??3@YAXPAX@Z ??_GCMouseDX@@UAEPAXI@Z
+00b866a0 DEF ??_GCEngineSubPrimitiveRenderer@@UAEPAXI@Z | U: ??1CEngineSubPrimitiveRenderer@@UAE@XZ ??3@YAXPAX@Z ??_GCEngineSubPrimitiveRenderer@@UAEPAXI@Z
+00b8c7a0 DEF ??_GCEngineBillboardGenerator@@UAEPAXI@Z | U: ??1CEngineBillboardGenerator@@UAE@XZ ??3@YAXPAX@Z ??_GCEngineBillboardGenerator@@UAEPAXI@Z
+00b97a60 DEF ??_GCEngineSceneGrid@@UAEPAXI@Z | U: ??1CEngineSceneGrid@@UAE@XZ ??3@YAXPAX@Z ??_GCEngineSceneGrid@@UAEPAXI@Z
+00a5fa30 DEF ??_GCStreamingFontDataBank@@UAEPAXI@Z | U: ??1CStreamingFontDataBank@@UAE@XZ ??3@YAXPAX@Z ??_GCStreamingFontDataBank@@UAEPAXI@Z
+007c8540 DEF ??_GCTCHitOnCollision@@UAEPAXI@Z | U: ??1CTCHitOnCollision@@UAE@XZ ??3@YAXPAX@Z ??_GCTCHitOnCollision@@UAEPAXI@Z
+00a84ee0 DEF ??_GCNavSwitchableLeafNode@@UAEPAXI@Z | U: ??1CNavSwitchableLeafNode@@UAE@XZ ??3@YAXPAX@Z ??_GCNavSwitchableLeafNode@@UAEPAXI@Z
+00a80340 DEF ??_GCNavNavigableLeafNode@@UAEPAXI@Z | U: ??1CNavNavigableLeafNode@@UAE@XZ ??3@YAXPAX@Z ??_GCNavNavigableLeafNode@@UAEPAXI@Z
+00ab0b50 DEF ??_GC3DAnimFileBoneMaskChunk@@UAEPAXI@Z | U: ??1C3DAnimFileBoneMaskChunk@@UAE@XZ ??3@YAXPAX@Z ??_GC3DAnimFileBoneMaskChunk@@UAEPAXI@Z
+00ab9990 DEF ??_GCStaticFontBank@@UAEPAXI@Z | U: ??1CStaticFontBank@@UAE@XZ ??3@YAXPAX@Z ??_GCStaticFontBank@@UAEPAXI@Z
+00b5a090 DEF ??_GCEngineLocalDetailGenerator@@UAEPAXI@Z | U: ??1CEngineLocalDetailGenerator@@UAE@XZ ??3@YAXPAX@Z ??_GCEngineLocalDetailGenerator@@UAEPAXI@Z
+00b5bb00 DEF ??_GCEngineScreenEffectColourFilter@@UAEPAXI@Z | U: ??1CEngineScreenEffectColourFilter@@UAE@XZ ??3@YAXPAX@Z ??_GCEngineScreenEffectColourFilter@@UAEPAXI@Z
+00ed7620 DEF ??_GCV_SwordInTheStoneScript@NScript@@UAEPAXI@Z | U: ??1CV_SwordInTheStoneScript@NScript@@UAE@XZ ??3@YAXPAX@Z ??_GCV_SwordInTheStoneScript@NScript@@UAEPAXI@Z
+00a8d700 DEF ??_GC3DMesh2@@UAEPAXI@Z | U: ??1C3DMesh2@@UAE@XZ ??3@YAXPAX@Z ??_GC3DMesh2@@UAEPAXI@Z
+00b50b80 DEF ??_GCEngineShadowRenderer@@UAEPAXI@Z | U: ??1CEngineShadowRenderer@@UAE@XZ ??3@YAXPAX@Z ??_GCEngineShadowRenderer@@UAEPAXI@Z
+00e62780 DEF ??1CV_BodyGuardScript@NScript@@UAE@XZ | U: ??0CScriptBase@@QAE@XZ ??0CTimer@@QAE@XZ ??1CScriptBase@@UAE@XZ ??3@YAXPAX@Z ??_G?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAEPAXI@Z ??_GCV_BodyGuardScript@NScript@@UAEPAXI@Z ?Init@CScriptBase@@MAEXXZ ?Main@CScriptBase@@MAEXXZ ?OnPersist@CScriptBase@@UAEXAAVCPersistContext@@@Z ?RegisterMain@CScriptBase@@MAEXXZ ?g_pGameScriptInterface@@3PAVCGameScriptInterface@@A _free
+00eb6ab0 DEF ??1CV_MurderTwistFinalScript@NScript@@UAE@XZ | U: ??0CBaseObject@@IAE@XZ ??0CScriptBase@@QAE@XZ ??0CScriptThing@@QAE@XZ ??1CBaseClass@@UAE@XZ ??1CBaseObject@@MAE@XZ ??1CScriptBase@@UAE@XZ ??3@YAXPAX@Z ??_G?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAEPAXI@Z ??_GCScriptGameResourceObjectBase@@UAEPAXI@Z ??_GCScriptGameResourceObjectScriptedThingBase@@UAEPAXI@Z ??_GCScriptThing@@UAEPAXI@Z ??_GCV_MurderTwistFinalScript@NScript@@UAEPAXI@Z ?AskHeroQuestion@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDABVCCharString@@22_N3@Z ?ClearAllActions@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ ?ClearAllActionsIncludin
+00d728f0 DEF ??1CHTG_Audience@CQ_HangingTreeGoodScript@NScript@@UAE@XZ | U: ??0CScriptThing@@QAE@ABV0@@Z ??0CScriptThing@@QAE@XZ ??1CBaseClass@@UAE@XZ ??1CEntityScriptBase@@UAE@XZ ??3@YAXPAX@Z ??_GCEntityScriptBase@@UAEPAXI@Z ??_GCHTG_Audience@CQ_HangingTreeGoodScript@NScript@@UAEPAXI@Z ??_GCScriptThing@@UAEPAXI@Z ?DecrementScriptCounter@CScriptThing@@UAEXXZ ?GetActivationTriggerStatus@CScriptThing@@UBE_NXZ ?GetAngleXY@CScriptThing@@UBEMXZ ?GetCurrentMapName@CScriptThing@@UBE?AVCCharString@@XZ ?GetCurrentScriptPriority@CScriptThing@@UBE?AW4EScriptAIPriority@@XZ ?GetCurrentStateGroupType@CScriptThing@@UBE?AW4EAIStateGroupType@@XZ ?GetDataString@CScriptThing@@UBE?AVCCha
+00e1da40 DEF ??1CQ_WizardBattleScript@NScript@@UAE@XZ | U: ??0CScriptBase@@QAE@XZ ??0CScriptThing@@QAE@XZ ??1CBaseClass@@UAE@XZ ??1CScriptBase@@UAE@XZ ??3@YAXPAX@Z ??_G?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAEPAXI@Z ??_GCQ_WizardBattleScript@NScript@@UAEPAXI@Z ??_GCScriptThing@@UAEPAXI@Z ?DecrementScriptCounter@CScriptThing@@UAEXXZ ?GetActivationTriggerStatus@CScriptThing@@UBE_NXZ ?GetAngleXY@CScriptThing@@UBEMXZ ?GetCurrentMapName@CScriptThing@@UBE?AVCCharString@@XZ ?GetCurrentScriptPriority@CScriptThing@@UBE?AW4EScriptAIPriority@@XZ ?GetCurrentStateGroupType@CScriptThing@@UBE?AW4EAIStateGroupType@@XZ ?GetDataString@CScriptThing@@UBE?
+00e68eb0 DEF ??1CV_ChickenKickingScript@NScript@@UAE@XZ | U: ??0CBaseObject@@IAE@XZ ??0CScriptBase@@QAE@XZ ??1CBaseObject@@MAE@XZ ??1CScriptBase@@UAE@XZ ??3@YAXPAX@Z ??_G?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAEPAXI@Z ??_GCScriptGameResourceObjectBase@@UAEPAXI@Z ??_GCScriptGameResourceObjectScriptedThingBase@@UAEPAXI@Z ??_GCV_ChickenKickingScript@NScript@@UAEPAXI@Z ?AskHeroQuestion@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDABVCCharString@@22_N3@Z ?ClearAllActions@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ ?ClearAllActionsIncludingLoopingAnimations@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ ?Clear
+00d9fed0 DEF ??1CBriarRose@CQ_MinionCampScript@NScript@@UAE@XZ | U: ??0CBaseObject@@IAE@XZ ??0CScriptThing@@QAE@ABV0@@Z ??0CScriptThing@@QAE@XZ ??0CTimer@@QAE@XZ ??1CBaseClass@@UAE@XZ ??1CBaseObject@@MAE@XZ ??1CEntityScriptBase@@UAE@XZ ??3@YAXPAX@Z ??_GCBriarRose@CQ_MinionCampScript@NScript@@UAEPAXI@Z ??_GCEntityScriptBase@@UAEPAXI@Z ??_GCScriptGameResourceObjectBase@@UAEPAXI@Z ??_GCScriptGameResourceObjectScriptedThingBase@@UAEPAXI@Z ??_GCScriptThing@@UAEPAXI@Z ?AskHeroQuestion@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDABVCCharString@@22_N3@Z ?ClearAllActions@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ ?ClearAllActionsIncludin
+00e477d0 DEF ??_GCV_BanditCampPathScript@NScript@@UAEPAXI@Z | U: ??1CV_BanditCampPathScript@NScript@@UAE@XZ ??3@YAXPAX@Z ??_GCV_BanditCampPathScript@NScript@@UAEPAXI@Z
+00e62760 DEF ??_GCV_BodyGuardScript@NScript@@UAEPAXI@Z | U: ??1CV_BodyGuardScript@NScript@@UAE@XZ ??3@YAXPAX@Z ??_GCV_BodyGuardScript@NScript@@UAEPAXI@Z
+00eb6a90 DEF ??_GCV_MurderTwistFinalScript@NScript@@UAEPAXI@Z | U: ??1CV_MurderTwistFinalScript@NScript@@UAE@XZ ??3@YAXPAX@Z ??_GCV_MurderTwistFinalScript@NScript@@UAEPAXI@Z
+00d728d0 DEF ??_GCHTG_Audience@CQ_HangingTreeGoodScript@NScript@@UAEPAXI@Z | U: ??1CHTG_Audience@CQ_HangingTreeGoodScript@NScript@@UAE@XZ ??3@YAXPAX@Z ??_GCHTG_Audience@CQ_HangingTreeGoodScript@NScript@@UAEPAXI@Z
+00e1da20 DEF ??_GCQ_WizardBattleScript@NScript@@UAEPAXI@Z | U: ??1CQ_WizardBattleScript@NScript@@UAE@XZ ??3@YAXPAX@Z ??_GCQ_WizardBattleScript@NScript@@UAEPAXI@Z
+00e68e90 DEF ??_GCV_ChickenKickingScript@NScript@@UAEPAXI@Z | U: ??1CV_ChickenKickingScript@NScript@@UAE@XZ ??3@YAXPAX@Z ??_GCV_ChickenKickingScript@NScript@@UAEPAXI@Z
+00d9feb0 DEF ??_GCBriarRose@CQ_MinionCampScript@NScript@@UAEPAXI@Z | U: ??1CBriarRose@CQ_MinionCampScript@NScript@@UAE@XZ ??3@YAXPAX@Z ??_GCBriarRose@CQ_MinionCampScript@NScript@@UAEPAXI@Z
+00a555c0 DEF ??_GC3DAnimation2@@UAEPAXI@Z | U: ??1C3DAnimation2@@UAE@XZ ??3@YAXPAX@Z ??_GC3DAnimation2@@UAEPAXI@Z
+00b5eb00 DEF ??_GCEngineScreenEffectRadialBlurRenderer@@UAEPAXI@Z | U: ??1CEngineScreenEffectRadialBlurRenderer@@UAE@XZ ??3@YAXPAX@Z ??_GCEngineScreenEffectRadialBlurRenderer@@UAEPAXI@Z
+00bac970 DEF ??_GCEnginePrimitiveManagerRepeatedZSprites@@UAEPAXI@Z | U: ??1CEnginePrimitiveManagerRepeatedZSprites@@UAE@XZ ??3@YAXPAX@Z ??_GCEnginePrimitiveManagerRepeatedZSprites@@UAEPAXI@Z
+00a555a0 DEF ??_GC3DAnimationStats@@UAEPAXI@Z | U: ??1C3DAnimationStats@@UAE@XZ ??3@YAXPAX@Z ??_GC3DAnimationStats@@UAEPAXI@Z
+00412b00 DEF ??_GCUserProfileManager@@UAEPAXI@Z | U: ??1CUserProfileManager@@UAE@XZ ??3@YAXPAX@Z ??_GCUserProfileManager@@UAEPAXI@Z
+00bc3c00 DEF ??_GCEnginePrimitiveManagerParticleMeshGroup@@UAEPAXI@Z | U: ??1CEnginePrimitiveManagerParticleMeshGroup@@UAE@XZ ??3@YAXPAX@Z ??_GCEnginePrimitiveManagerParticleMeshGroup@@UAEPAXI@Z
+00b2ab10 DEF ??_GCEngine@@UAEPAXI@Z | U: ??1CEngine@@UAE@XZ ??3@YAXPAX@Z ??_GCEngine@@UAEPAXI@Z
+00edacf0 DEF ??_GCV_TalentlessBardScript@NScript@@UAEPAXI@Z | U: ??1CV_TalentlessBardScript@NScript@@UAE@XZ ??3@YAXPAX@Z ??_GCV_TalentlessBardScript@NScript@@UAEPAXI@Z
+00ee6c30 DEF ??_GCV_TourGuideScript@NScript@@UAEPAXI@Z | U: ??1CV_TourGuideScript@NScript@@UAE@XZ ??3@YAXPAX@Z ??_GCV_TourGuideScript@NScript@@UAEPAXI@Z
+00cfac20 DEF ??_GCQ_ArenaScript@NScript@@UAEPAXI@Z | U: ??1CQ_ArenaScript@NScript@@UAE@XZ ??3@YAXPAX@Z ??_GCQ_ArenaScript@NScript@@UAEPAXI@Z
+00e8b730 DEF ??_GCV_FisticuffsClubScript@NScript@@UAEPAXI@Z | U: ??1CV_FisticuffsClubScript@NScript@@UAE@XZ ??3@YAXPAX@Z ??_GCV_FisticuffsClubScript@NScript@@UAEPAXI@Z
+00ee40d0 DEF ??_GCV_TravellingHeroesScript@NScript@@UAEPAXI@Z | U: ??1CV_TravellingHeroesScript@NScript@@UAE@XZ ??3@YAXPAX@Z ??_GCV_TravellingHeroesScript@NScript@@UAEPAXI@Z
+00f29da0 DEF ??_GCCutsceneDef@@UAEPAXI@Z | U: ??1CCutsceneDef@@UAE@XZ ??3@YAXPAX@Z ??_GCCutsceneDef@@UAEPAXI@Z

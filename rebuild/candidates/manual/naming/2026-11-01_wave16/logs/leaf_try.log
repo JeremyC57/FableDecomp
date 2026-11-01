@@ -1,0 +1,27 @@
+skip 00558c10 namespaced class NUISystem::CNavButton
+skip 006925b0 0 candidate own definitions []
+skip 006925c0 0 candidate own definitions []
+skip 00692910 0 candidate own definitions []
+skip 00771360 0 candidate own definitions []
+skip 008f7950 final not a member function
+skip 008fcfc0 return type differs void * -> class CWorld &
+skip 0099a330 return type differs unsigned char -> bool
+skip 0099a410 special member ~CInitBaseClass
+skip 009fc550 special member ~CResource
+skip 00a0b6c0 0 candidate own definitions []
+skip 00a5c600 class CSimpleMemoryPool_Methods->CSimpleMemoryPool private :: compile: ratchpad\naming\w16\ov_leaf\rebuild\src\compiled\00\a5\CSimpleMemoryPool_ClearMemoryBlocks_00a5c600.cpp(21) : error C2011: 'CSimpleMemoryPool' : 'class' type redefinition | ng\w16\ov_leaf\rebuild\src\compiled\00\a5\
+edited 00a75ca0 protected +u [] -u []
+edited 00a75ce0 protected +u [] -u []
+edited 00a75d20 protected +u [] -u []
+edited 00a75d60 protected +u [] -u []
+skip 00ac1ee0 0 candidate own definitions []
+skip 00b59840 0 candidate own definitions []
+skip 00cbfab8 final not a member function
+skip 00cfa660 namespaced class NScript::CQ_ArenaScript
+skip 00e81f60 namespaced class NScript::CV_FisticuffsClubScript
+skip 00e8b700 namespaced class NScript::CV_FisticuffsClubScript
+skip 00ed4aa0 namespaced class NScript::CV_SwordInTheStoneScript
+skip 00ed76e0 namespaced class NScript::CV_TalentlessBardScript
+skip 00edeba0 namespaced class NScript::CV_TravellingHeroesScript
+skip 00ee41f0 namespaced class NScript::CV_TourGuideScript
+skip 00ee6c00 namespaced class NScript::CV_TourGuideScript

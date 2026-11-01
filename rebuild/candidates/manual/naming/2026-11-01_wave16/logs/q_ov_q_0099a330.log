@@ -1,0 +1,12 @@
+edited 004166a8 moved CNetworkClient_Methods::IsValid -> IsValid x1 +u ['?IsValid@CInitBaseClass@@QBE_NXZ'] -u ['?IsValid@CNetworkClient_Methods@@QBE_NXZ']
+skip 004175e5 moved CInitBaseClass::IsInitialised -> IsValid x1 :: compile: \41\CMainGameComponent_Shutdown_004175e5.cpp(149) : error C2248: 'CInitBaseClass::Uninitialise_004ae990' : cannot access private member declared in class 'CInitBaseClass'
+edited 00487af0 moved CInitBaseClass::IsInitialised -> IsValid x1 +u ['?IsValid@CInitBaseClass@@QBE_NXZ'] -u ['?IsInitialised@CInitBaseClass@@QBE_NXZ']
+skip 004c5ea0 moved CPlayer::IsInitialised -> IsValid x1 :: compile: CBulletTimeManager_UpdateCombatRelatedEffects_004c5ea0.cpp(68) : error C2248: 'CPlayer::GetPControlledCreature' : cannot access private member declared in class 'CPlayer'
+edited 006a9d10 moved CInitBaseClass::IsInitialised -> IsValid x1 +u ['?IsValid@CInitBaseClass@@QBE_NXZ'] -u ['?IsInitialised@CInitBaseClass@@QAE_NXZ']
+edited 0082d1d0 moved CPlayer::IsLocal -> IsValid x1 +u ['?IsValid@CInitBaseClass@@QBE_NXZ'] -u ['?IsLocal@CPlayer@@QAE_NXZ']
+skip 0083c690 moved CPlayer::IsInitialised -> IsValid x1 :: compile: h_SwitchTriggerPlayerOnlyMultipleTimesInArea_0083c690.cpp(110) : error C2248: 'CPlayer::GetPControlledCreature' : cannot access private member declared in class 'CPlayer'
+skip 0083c800 moved CPlayer::IsInitialised -> IsValid x1 :: compile: 83\CThingSwitch_TriggerPlayerResetWhenLeaves_0083c800.cpp(110) : error C2248: 'CPlayer::GetPControlledCreature' : cannot access private member declared in class 'CPlayer'
+skip 0083ca90 moved CPlayer::IsInitialised -> IsValid x1 :: compile: hingSwitch_SwitchTriggerPlayerOnlyOnceInArea_0083ca90.cpp(111) : error C2248: 'CPlayer::GetPControlledCreature' : cannot access private member declared in class 'CPlayer'
+edited 009a60d0 moved CInitBaseClass::IsInitialised -> IsValid x2 +u ['?IsValid@CInitBaseClass@@QBE_NXZ'] -u ['?IsInitialised@CInitBaseClass@@QBE_NXZ']
+edited 00a0a9d0 moved CInitBaseClassCalls::IsInitialised -> IsValid x1 +u ['?IsValid@CInitBaseClass@@QBE_NXZ'] -u ['?IsInitialised@CInitBaseClassCalls@@QAE_NXZ']
+edited 00a0b590 moved CInitBaseClass::IsInitialised -> IsValid x1 +u ['?IsValid@CInitBaseClass@@QBE_NXZ'] -u ['?IsInitialised@CInitBaseClass@@QAE_NXZ']

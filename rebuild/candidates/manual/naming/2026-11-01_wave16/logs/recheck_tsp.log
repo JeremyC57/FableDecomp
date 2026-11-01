@@ -1,0 +1,111 @@
+addr       parity           behav  name
+00404720   RELOCATION_MATCH FAIL   CStringParser::CStringParser
+004b5080   WARN RELOC_NAME: ?NextItemIs@CStringParser@@QAE_NABVCCharString@@@Z -> 009b9ba0 labelled 'CStringParser::FindKeyword'
+004b5080   WARN RELOC_NAME: ?sort@NQuestManager@@YIXPAUSPair@CRuntimeQuestPersistence@1@0UCKeyPairCompareLess@31@@Z -> 004bbb40 labelled 'std::sort<std::pair<CCharString, NQuestManager::CRuntimeQuestPersistence::CPersistInfo> *, CKeyPairCompareLess<CCharString, NQuestManager::CRuntimeQuestPersistence::CPersistInfo>>'
+004b5080   RELOCATION_MATCH PASS   NQuestManager::CRuntimeQuestPersistence::LoadFromGameStateScript
+004ca230   WARN RELOC_NAME: ?NextItemIs@CStringParser@@QAE_NABVCCharString@@@Z -> 009b9ba0 labelled 'CStringParser::FindKeyword'
+004ca230   RELOCATION_MATCH PASS   CThing::CreateTCsFromString
+005079c0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+005079c0   WARN SHARED_HEADER_AVAILABLE CRegion
+005079c0   WARN SHARED_HEADER_AVAILABLE CWorldMap
+005079c0   WARN RELOC_NAME: ?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z -> 009b9ba0 labelled 'CStringParser::FindKeyword'
+005079c0   RELOCATION_MATCH PASS   CWorldMap::LoadGameState
+00521ae0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00521ae0   RELOCATION_MATCH PASS   CThingManager::LoadFromFile
+005dc450   RELOCATION_MATCH PASS   CAnimComponentTransitionInTime::Initialise
+005dc550   WARN SHARED_HEADER_AVAILABLE CAnimComponentCombatHandedness
+005dc550   RELOCATION_MATCH PASS   CAnimComponentCombatHandedness::Initialise
+005dc730   RELOCATION_MATCH PASS   CAnimComponentCombatRecoil::Initialise
+005dc8b0   WARN SHARED_HEADER_AVAILABLE CAnimComponentCombatFlourishTargetOffset
+005dc8b0   RELOCATION_MATCH PASS   CAnimComponentCombatFlourishTargetOffset::Initialise
+005dca60   RELOCATION_MATCH PASS   CAnimComponentStrikeSpeedMultiplier::Initialise
+006bbba0   RELOCATION_MATCH PASS   CGameTimeManager::Load
+  WARN leaf 'vfunc_4' matches no symbol in 00816000.obj; graded the largest function
+  WARN leaf 'vfunc_4' matches no symbol in 00816000.obj; graded the largest function
+00816000   RELOCATION_MATCH PASS   NHitLocations::CPhysicalPrimitiveSphere::vfunc_4
+00998250   WARN RELOC_NAME: ?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z -> 009b9ba0 labelled 'CStringParser::FindKeyword'
+00998250   RELOCATION_MATCH PASS   CAFile::GetAbsoluteFilePath
+009eb2c0   WARN RELOC_NAME: ?FindInput@CConsole_Retail@@QAEPAVCConsoleInputBase@@ABVCCharString@@@Z -> 009eb220 labelled 'CConsole_Retail::GetRegisteredConsoleInput'
+009eb2c0   RELOCATION_MATCH PASS   CConsole::SetHelpBarString
+009ec430   WARN SHARED_HEADER_AVAILABLE CItem
+009ec430   RELOCATION_MATCH PASS   CConsoleVariable::ProcessCommandLine
+00cb7cb0   RELOCATION_MATCH PASS   CScriptBase::DoScriptDataPersist
+00cb8440   WARN RELOC_NAME: ?erase@?$CVector@UCEntry@CRuntimeScriptedEntityPersist@NScript@@@CRuntimeScriptedEntityPersist@NScript@@QAEPAUCEntry@23@PAU423@0@Z -> 00cbbda0 labelled '_global::Container_MoveAndConstruct'
+00cb8440   WARN RELOC_NAME: ?NextItemIs@CStringParser@@QAE_NABVCCharString@@@Z -> 009b9ba0 labelled 'CStringParser::FindKeyword'
+00cb8440   WARN RELOC_NAME: ?SortEntries@NScript@@YIXPAUCEntry@CRuntimeScriptedEntityPersist@1@0UCCompare@31@@Z -> 00cbd370 labelled 'std::sort<std::pair<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo> *, CKeyPairCompareLess<unsigned __int64, NScript::CRuntimeScriptedEntityPersist::CPersistInfo>>'
+00cb8440   RELOCATION_MATCH PASS   NScript::CRuntimeScriptedEntityPersist::LoadFromGameStateScript
+
+WINS: 16
+  004b5080 RELOCATION_MATCH NQuestManager::CRuntimeQuestPersistence::LoadFromGameStateScript
+  004ca230 RELOCATION_MATCH CThing::CreateTCsFromString
+  005079c0 RELOCATION_MATCH CWorldMap::?LoadGameState@CWorldMap@@
+  00521ae0 RELOCATION_MATCH CThingManager::LoadFromFile
+  005dc450 RELOCATION_MATCH CAnimComponentTransitionInTime::?Initialise@CAnimComponentTransitionInTime@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+  005dc550 RELOCATION_MATCH CAnimComponentCombatHandedness::?Initialise@CAnimComponentCombatHandedness@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+  005dc730 RELOCATION_MATCH CAnimComponentCombatRecoil::?Initialise@CAnimComponentCombatRecoil@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+  005dc8b0 RELOCATION_MATCH CAnimComponentCombatFlourishTargetOffset::?Initialise@CAnimComponentCombatFlourishTargetOffset@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+  005dca60 RELOCATION_MATCH CAnimComponentStrikeSpeedMultiplier::?Initialise@CAnimComponentStrikeSpeedMultiplier@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+  006bbba0 RELOCATION_MATCH CGameTimeManager::?Load@CGameTimeManager@@QAEXABVCCharString@@@Z
+  00816000 RELOCATION_MATCH NHitLocations::CPhysicalPrimitiveSphere::vfunc_4
+  00998250 RELOCATION_MATCH CAFile::?GetAbsoluteFilePath@CAFile@@SI?AVCCharString@@
+  009eb2c0 RELOCATION_MATCH CConsole::SetHelpBarString
+  009ec430 RELOCATION_MATCH CConsoleVariable::?ProcessCommandLine@CConsoleVariable
+  00cb7cb0 RELOCATION_MATCH CScriptBase::DoScriptDataPersist
+  00cb8440 RELOCATION_MATCH NScript::CRuntimeScriptedEntityPersist::LoadFromGameStateScript
+addr       parity           behav  name
+004b3760   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+004b3760   WARN SHARED_HEADER_AVAILABLE CQuestManager
+004b3760   RELOCATION_MATCH PASS   CQuestManager::LoadMasterScriptDataFromGameState
+004b6380   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream
+004b6380   WARN SHARED_HEADER_AVAILABLE CQuestManager
+004b6380   WARN RELOC_NAME: ??0CByteArray@N_00411910@@QAE@K@Z -> 00411910 labelled 'std::vector<char, std::allocator<char>>::vector'
+004b6380   RELOCATION_MATCH PASS   CQuestManager::LoadGameState
+004fe2a0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+004fe2a0   WARN SHARED_HEADER_AVAILABLE CWorld
+004fe2a0   WARN SHARED_HEADER_AVAILABLE CWorldMap
+004fe2a0   WARN RELOC_NAME: ?Init@CMemoryDataInputStream@@QAEXPBDJ@Z -> 009e93c0 labelled 'CMemoryFile::Open'
+004fe2a0   WARN RELOC_NAME: ?DeleteDataInputStream@@YIXPAX@Z -> 0050be40 labelled '_global::DeleteViaVtable0_0050be40'
+004fe2a0   WARN RELOC_NAME: ?LoadGlobalThingBatch@CThingManager@@QAEXUCDataInputStreamPointer@@J@Z -> 005223f0 labelled 'CThingManager::LoadLoadableGlobalThingsFromFile'
+004fe2a0   RELOCATION_MATCH PASS   CWorldMap::LoadAllLoadableGlobalThingsFromSingleFile
+00520570   WARN RELOC_NAME: ?ReadAsStringUntilString_009ba3e0@CStringParser@@QAE?AVCCharString@@ABV2@@Z -> 009ba3e0 labelled 'CStringParser::ReadAsStringUntilPastString'
+00520570   RELOCATION_MATCH PASS   CThingManager::LoadHeroStateScript
+005dc3c0   RELOCATION_MATCH PASS   CAnimComponentFlags::Initialise
+005dc4d0   RELOCATION_MATCH PASS   CAnimComponentDelayTime::Initialise
+005dc650   RELOCATION_MATCH PASS   CAnimComponentCombatComboChain::Initialise
+005dc7b0   WARN SHARED_HEADER_AVAILABLE CAnimComponentCombatMisc
+005dc7b0   RELOCATION_MATCH PASS   CAnimComponentCombatMisc::Initialise
+005dc9b0   RELOCATION_MATCH PASS   CAnimComponentSetCreatureMode::Initialise
+006ba8b0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+006ba8b0   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream
+006ba8b0   RELOCATION_MATCH PASS   CPersistTraits<CFaction>::TransferBinaryIn
+0072e290   RELOCATION_MATCH PASS   CTCMeshAutomaticEntityCreator::CreateChildThings
+00816150   RELOCATION_MATCH PASS   NHitLocations::CPhysicalPrimitiveCylinder::Init
+00998a30   WARN RELOC_NAME: ?ParserReadPastSeparator@CAFile@@CI_NAAVCStringParser@@@Z -> 00997e90 labelled 'CAFile::ParserIsSeparatorNext'
+00998a30   RELOCATION_MATCH PASS   CAFile::IsFilePathSyntaxValid
+009eb430   RELOCATION_MATCH PASS   CConsole::RunCommandLine
+009ec710   RELOCATION_MATCH PASS   CConsole::RunTextCommand
+00cb7da0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00cb7da0   WARN SHARED_HEADER_AVAILABLE CActiveEntityScriptBase
+00cb7da0   RELOCATION_MATCH PASS   CScriptBase::DoEntityScriptPersist
+00cb8690   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00cb8690   WARN RELOC_NAME: ?NextItemIs@CStringParser@@QAE_NABVCCharString@@@Z -> 009b9ba0 labelled 'CStringParser::FindKeyword'
+00cb8690   RELOCATION_MATCH PASS   CScriptBase::LoadGameState
+
+WINS: 17
+  004b3760 RELOCATION_MATCH CQuestManager::?LoadMasterScriptDataFromGameState@CQuestManager@@AAEXAAVCScriptDataBase@@ABVCCharString@@@Z
+  004b6380 RELOCATION_MATCH CQuestManager::?LoadGameState@CQuestManager@@QAEXAAVCPersistContext
+  004fe2a0 RELOCATION_MATCH CWorldMap::?LoadAllLoadableGlobalThingsFromSingleFile@CWorldMap@
+  00520570 RELOCATION_MATCH CThingManager::LoadHeroStateScript
+  005dc3c0 RELOCATION_MATCH CAnimComponentFlags::?Initialise@CAnimComponentFlags
+  005dc4d0 RELOCATION_MATCH CAnimComponentDelayTime::?Initialise@CAnimComponentDelayTime@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+  005dc650 RELOCATION_MATCH CAnimComponentCombatComboChain::?Initialise@CAnimComponentCombatComboChain
+  005dc7b0 RELOCATION_MATCH CAnimComponentCombatMisc::?Initialise@CAnimComponentCombatMisc@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
+  005dc9b0 RELOCATION_MATCH CAnimComponentSetCreatureMode::?Initialise@CAnimComponentSetCreatureMode
+  006ba8b0 RELOCATION_MATCH CPersistTraits<CFaction>::?TransferBinaryIn@?$CPersistTraits@VCFaction@@
+  0072e290 RELOCATION_MATCH CTCMeshAutomaticEntityCreator::CreateChildThings
+  00816150 RELOCATION_MATCH NHitLocations::CPhysicalPrimitiveCylinder::?Init@CPhysicalPrimitiveCylinder@
+  00998a30 RELOCATION_MATCH CAFile::?IsFilePathSyntaxValid@CAFile@@
+  009eb430 RELOCATION_MATCH CConsole::RunCommandLine
+  009ec710 RELOCATION_MATCH CConsole::RunTextCommand
+  00cb7da0 RELOCATION_MATCH CScriptBase::DoEntityScriptPersist
+  00cb8690 RELOCATION_MATCH CScriptBase::?LoadGameState@CScriptBase

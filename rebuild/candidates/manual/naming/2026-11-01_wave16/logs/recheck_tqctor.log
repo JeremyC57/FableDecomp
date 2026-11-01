@@ -1,0 +1,24 @@
+addr       parity           behav  name
+00cfa660   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00cfa660   RELOCATION_MATCH PASS   NScript::CQ_ArenaScript::CQ_ArenaScript
+00e8b700   RELOCATION_MATCH PASS   NScript::CV_FisticuffsClubScript::Alloc
+00ed76e0   SRC_FAIL         PASS   NScript::CV_TalentlessBardScript::CV_TalentlessBardScript
+00ee41f0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00ee41f0   RELOCATION_MATCH PASS   NScript::CV_TourGuideScript::CV_TourGuideScript
+
+WINS: 3
+  00cfa660 RELOCATION_MATCH NScript::CQ_ArenaScript::??0CQ_ArenaScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00e8b700 RELOCATION_MATCH _global::?Alloc@CV_FisticuffsClubScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00ee41f0 RELOCATION_MATCH NScript::CV_TourGuideScript::??0CV_TourGuideScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+addr       parity           behav  name
+00e81f60   RELOCATION_MATCH PASS   NScript::CV_FisticuffsClubScript::CV_FisticuffsClubScript
+00ed4aa0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00ed4aa0   RELOCATION_MATCH PASS   NScript::CV_SwordInTheStoneScript::CV_SwordInTheStoneScript
+00edeba0   RELOCATION_MATCH PASS   NScript::CV_TravellingHeroesScript::CV_TravellingHeroesScript
+00ee6c00   RELOCATION_MATCH PASS   NScript::CV_TourGuideScript::Alloc
+
+WINS: 4
+  00e81f60 RELOCATION_MATCH NScript::CV_FisticuffsClubScript::??0CV_FisticuffsClubScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00ed4aa0 RELOCATION_MATCH CV_SwordInTheStoneScript::??0CV_SwordInTheStoneScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00edeba0 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::??0CV_TravellingHeroesScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00ee6c00 RELOCATION_MATCH _global::?Alloc@CV_TourGuideScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z

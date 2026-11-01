@@ -4377,7 +4377,7 @@ address	name	length	bytes
 004c7bd0	CThing::IsForceNoSerialise	19	8b417085c07409f64041407403b001c332c0c3
 004c74f0	CThing::SetCurrentThingManager	7	890d1c8a3b01c3
 004c7e10	CThing::GetTypeName	21	0fb641108b0d1c8a3b018b51048d04808d448210c3
-004cd9b0	CConversationAttitude::GetAnimGroupName	9	a1388a3b018d0488c3
+004cd9b0	CConversationAttitude::GetAnimName	9	a1388a3b018d0488c3
 004df3b4	CObstacleNavigatorExternalInterface::FindPosZAt	9	d905dcde2201c20800
 004df3bd	CObstacleNavigatorExternalInterface::FindPosZAtIncludingThemes	9	d905dcde2201c20800
 004df3d4	CObstacleNavigatorExternalInterface::GetTerrainHeightAt	9	d905dcde2201c20400
@@ -6153,7 +6153,7 @@ address	name	length	bytes
 009f26b0	CMemoryAllocator::ClearPerformanceStats	23	6870aa3c01ff150cfe43016870aa3c01ff1510fe4301c3
 009f9e60	CTexture::GenerateMipmaps	23	8b4424048b542408508b01526a0050e85a512000c20800
 009fd640	CEngine::ChangeCameraAngle	23	568bf18b8e80020000e882c00600c686f8010000005ec3
-00a0b6c0	CSoundBankLH::vfunc_2	23	568bf18b4e1085c9740b8b01ff10c74610000000005ec3
+00a0b6c0	CSoundBankLH::Unload_00a0b6c0	23	568bf18b4e1085c9740b8b01ff10c74610000000005ec3
 00a19ae0	CNavigatorBase::CalculateNavigableWidthOfLine	23	8b4424108b4c240cc70000000000c70100000000c21000
 00a35b50	NGameText::ConstructString	23	8b4424088b5424048b49086a005052e8ec95ffffc20800
 00a47040	_global::DeleteObject_00a47040	23	568bf185f6740ee844fdffff56e86a791b0083c4045ec3

@@ -1,0 +1,2 @@
+skip 004175e5 qualified call of Shutdown
+edited 0042ebb6 moved CGameStateOwner_013b8394::Restore_009918f0 -> ClearBanks_009918f0 x1 +u ['?ClearBanks_009918f0@CASoundManager@@QAEXXZ'] -u ['?Restore_009918f0@CGameStateOwner_013b8394@@QAEXXZ']

@@ -1,0 +1,4 @@
+skip 00865c20 non-public GetWorldMap needs an access path
+skip 008c2240 non-public GetWorldMap needs an access path
+skip 008c9f40 non-public GetWorldMap needs an access path
+skip 008ca4a0 non-public GetWorldMap needs an access path
