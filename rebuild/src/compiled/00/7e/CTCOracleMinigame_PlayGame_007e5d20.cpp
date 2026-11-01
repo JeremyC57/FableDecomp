@@ -24,8 +24,8 @@ class CThingFilter_HasTrackName { public:
     CThingFilter_HasTrackName(const CCharString& name) : Name(name) { }
 };
 class CThingSearchTools { public:
-    bool GetPFirstThing(const CThingFilter_HasTrackName& filter, CThing** out);         // 0x007E6EC0
-    bool GetPFirstSpeechThing(const CThingFilter_HasTrackName& filter, CThing** out);   // 0x0056D050 (second instantiation)
+    bool GetPFirstThing(const CThingFilter_HasTrackName& filter, CThing** out) const;         // 0x007E6EC0 (const: Ego_r / FableWin)
+    bool GetPFirstSpeechThing(const CThingFilter_HasTrackName& filter, CThing** out) const;   // 0x0056D050 (second instantiation)
 };
 class CPlayer { public:
     long GetCurrentMode();                              // 0x00633BE0
@@ -39,7 +39,12 @@ class COracleMinigameDef { public:
     unsigned char _pad00[0x2c];
     float TimeBetweenOutputs;                           // +0x2c (descriptive)
 };
-class CTCOracleMinigame { public:
+class CTCBase { public:                             // the PDB base the accessor belongs to (its first virtual slot only: offset 0)
+    virtual void v00();
+protected:
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x00686D90 ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ (Ego_r / FableWin)
+};
+class CTCOracleMinigame : public CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04 (CTCBase)
     unsigned char _base08[4];
@@ -60,7 +65,6 @@ class CTCOracleMinigame { public:
     CThing* SpeechMarker;                               // +0xe4
     const COracleMinigameDef* PDef;                     // +0xe8
     CPlayerManager*    GetPlayerManager();              // 0x00686D40 (CTCBase)
-    CThingSearchTools* GetThingSearchTools() const;     // 0x00686D90 (CTCBase)
     void PlayGame();
 };
 
@@ -71,23 +75,23 @@ void CTCOracleMinigame::PlayGame()
     TimeBetweenOutputs = PDef->TimeBetweenOutputs;
     {
         CCharString name("OBJECT_SS_ORACLE_SYMBOL_YELLOW_01");
-        GetThingSearchTools()->GetPFirstThing(CThingFilter_HasTrackName(name), &Symbols[0]);
+        PeekThingSearchTools().GetPFirstThing(CThingFilter_HasTrackName(name), &Symbols[0]);
     }
     {
         CCharString name("OBJECT_SS_ORACLE_SYMBOL_RED_01");
-        GetThingSearchTools()->GetPFirstThing(CThingFilter_HasTrackName(name), &Symbols[1]);
+        PeekThingSearchTools().GetPFirstThing(CThingFilter_HasTrackName(name), &Symbols[1]);
     }
     {
         CCharString name("OBJECT_SS_ORACLE_SYMBOL_GREEN_01");
-        GetThingSearchTools()->GetPFirstThing(CThingFilter_HasTrackName(name), &Symbols[2]);
+        PeekThingSearchTools().GetPFirstThing(CThingFilter_HasTrackName(name), &Symbols[2]);
     }
     {
         CCharString name("OBJECT_SS_ORACLE_SYMBOL_BLUE_01");
-        GetThingSearchTools()->GetPFirstThing(CThingFilter_HasTrackName(name), &Symbols[3]);
+        PeekThingSearchTools().GetPFirstThing(CThingFilter_HasTrackName(name), &Symbols[3]);
     }
     {
         CCharString name("OracleGamesmaster");
-        GetThingSearchTools()->GetPFirstSpeechThing(CThingFilter_HasTrackName(name), &SpeechMarker);
+        PeekThingSearchTools().GetPFirstSpeechThing(CThingFilter_HasTrackName(name), &SpeechMarker);
     }
     SymbolsFiring[0] = 0;
     SymbolsFiring[1] = 0;

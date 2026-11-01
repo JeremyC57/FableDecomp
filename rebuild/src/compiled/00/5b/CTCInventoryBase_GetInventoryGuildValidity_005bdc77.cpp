@@ -16,8 +16,10 @@ class CThingFilter_HasTC { public:
 class CThingSearchTools { public:
     bool GetPFirstLeafThing(const CThingFilter_HasTC& filter, CThing** out);   // 0x005C0D9D
 };
-CThingSearchTools* GetThingSearchTools();       // 0x00686D80
-struct CTCInventoryBase_Retail {
+class CTCBase { protected:                      // the PDB base the accessor belongs to (empty here: offset 0)
+    CThingSearchTools& GetThingSearchTools();   // 0x00686D80 ?GetThingSearchTools@CTCBase@@IAEAAVCThingSearchTools@@XZ (Ego_r / FableWin)
+};
+struct CTCInventoryBase_Retail : public CTCBase {
     unsigned char _pad_0x00[0xB8];
     CThing*       pBuildingThing;               // +0xB8
     bool GetInventoryGuildValidity();
@@ -25,7 +27,7 @@ struct CTCInventoryBase_Retail {
 bool CTCInventoryBase_Retail::GetInventoryGuildValidity()
 {
     CThing* building = 0;
-    GetThingSearchTools()->GetPFirstLeafThing(CThingFilter_HasTC(0x6A), &building);
+    GetThingSearchTools().GetPFirstLeafThing(CThingFilter_HasTC(0x6A), &building);
     if (building) {
         pBuildingThing = building;
         return true;

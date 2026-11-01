@@ -95,14 +95,14 @@ template <class A, class B> class CFilter_Bind2 : public A { public:
 class CThingSearchTools { public:
     CThing** m_pFirst;                               // stand-in model of the searched things
     CThing** m_pLast;
-    template <class T, class C, class F> void GetAllThings(const F& filter, C& found);   // 0x004ACF90
+    template <class T, class C, class F> void GetAllThings(const F& filter, C& found) const;   // 0x004ACF90 (const: Ego_r / FableWin)
 };
 
 // Stand-in body of the GetAllThings instantiation (0x004ACF90): the template is instantiated in this TU in the
 // original build, so VC7.1 compiled its body before the caller; compiled here above the caller with auto_inline
 // off so the caller knows the list header pointer survives the call. Only IsDeedWitnessed is graded.
 #pragma auto_inline(off)
-template <class T, class C, class F> void CThingSearchTools::GetAllThings(const F& filter, C& found)
+template <class T, class C, class F> void CThingSearchTools::GetAllThings(const F& filter, C& found) const
 {
     for (CThing** it = m_pFirst; it != m_pLast; ++it) {
         if ((*it)->HasTC(filter.Second.Type)) {
@@ -122,10 +122,12 @@ class CTCCreatureOpinionOfHero { public:                    // interface type 0x
     bool KnowsOfDeed(long deed, bool flag);          // 0x00683650
 };
 
-class CTCHeroOpinionDeedLog { public:
+class CTCBase { protected:                          // the PDB base the accessor belongs to (empty here: offset 0)
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x00686D90 ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ (Ego_r / FableWin)
+};
+class CTCHeroOpinionDeedLog : public CTCBase { public:
     void*   __vftable;                               // +0x00
     CThing* ParentThing;                             // +0x04 CTCBase
-    CThingSearchTools* GetThingSearchTools() const;  // 0x00686D90 (CTCBase)
     bool IsDeedWitnessed(long deed, bool flag);
 };
 
@@ -134,7 +136,7 @@ bool CTCHeroOpinionDeedLog::IsDeedWitnessed(long deed, bool flag)
     CThingList creatures;
     CFilter_Bind2<CThingFilter_None, CThingFilter_HasTC> filter;
     filter.Second.Type = 0x4F;
-    GetThingSearchTools()->GetAllThings<CThing>(filter, creatures);
+    PeekThingSearchTools().GetAllThings<CThing>(filter, creatures);
     for (SThingListNode* node = creatures._M_node->_M_next; node != creatures._M_node; node = node->_M_next) {
         CThing* creature = node->_M_data;
         if (IS_THING_ALIVE(creature) && creature->HasTC(0x4F)) {

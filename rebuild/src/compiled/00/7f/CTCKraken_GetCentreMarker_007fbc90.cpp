@@ -88,9 +88,9 @@ class CTCBase { public:
     CThing* ParentThing;                                // +0x04
 protected:
     CPlayerManager&     GetPlayerManager();             // 0x00686D40 (Ego_r.pdb: protected, CPlayerManager&)
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x00686D90 ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ (Ego_r / FableWin)
 public:
     CWorld*             GetWorld_00686d60();                     // 0x00686D60
-    CThingSearchTools*  GetThingSearchTools() const;    // 0x00686D90
     CDefinitionManager* GetDefinitionManager() const;   // 0x006869D0
 };
 class CTCKraken : public CTCBase { public:
@@ -113,11 +113,11 @@ void CTCKraken::GetCentreMarker()
         long y = (long)pos.Y;
         C2DBoxI area(x - 5, y - 5, x + 5, y + 5);
         CThing* found;
-        GetThingSearchTools()->GetPFirstThingInRoughArea(area, CThingFilter_HasDefGlobalIndex(chamberIndex), &found);
+        PeekThingSearchTools().GetPFirstThingInRoughArea(area, CThingFilter_HasDefGlobalIndex(chamberIndex), &found);
         PChamber = CIntelligentPointer<CThing>(found);
         {
             CCharString name("KRACKEN_CHAMBER_CENTRE");
-            GetThingSearchTools()->GetPFirstThingInRoughArea(area, CThingFilter_HasTrackName(name), &found);
+            PeekThingSearchTools().GetPFirstThingInRoughArea(area, CThingFilter_HasTrackName(name), &found);
         }
         PCentreMarker = CIntelligentPointer<CThing>(found);
     }

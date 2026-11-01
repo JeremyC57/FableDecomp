@@ -75,7 +75,7 @@ class CThingFilter_HasTC { public:
     CThingFilter_HasTC(long type) : m_type(type) { }
 };
 class CThingSearchTools { public:
-    void GetAllThings(const CThingFilter_HasTC& filter, vector<CThing*>& out);   // 0x00799FB0
+    void GetAllThings(const CThingFilter_HasTC& filter, vector<CThing*>& out) const;   // 0x00799FB0 (const: Ego_r / FableWin)
 };
 
 class CTCShop { public:
@@ -88,7 +88,12 @@ class CTCShop { public:
     void SetShopKeeper(CThing* keeper);         // 0x007751A0 (CThingCreatureBase*)
 };
 
-class CTCShopKeeper { public:
+class CTCBase { public:                             // the PDB base the accessor belongs to (its first virtual slot only: offset 0)
+    virtual void v00();
+protected:
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x00686D90 ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ (Ego_r / FableWin)
+};
+class CTCShopKeeper : public CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                        // +0x04 (CTCBase)
     bool ToBeRemoved;                           // +0x08
@@ -98,7 +103,6 @@ class CTCShopKeeper { public:
     CIntelligentPointer<CThing> Shop;           // +0x14
     CTCShop* GetShopTC() const;                 // 0x00798F50
     CThing* GetCreature() const { return ParentThing; }
-    CThingSearchTools* GetThingSearchTools() const;   // 0x00686D90 (CTCBase)
     void CTCBase_OnInitialActivate();           // 0x00686870 (CTCBase::OnInitialActivate)
     void OnInitialActivate();
 };
@@ -109,7 +113,7 @@ void CTCShopKeeper::OnInitialActivate()
     CTCShop* shop = GetShopTC();
     if (!shop) {
         vector<CThing*> shops;
-        GetThingSearchTools()->GetAllThings(CThingFilter_HasTC(0x53), shops);
+        PeekThingSearchTools().GetAllThings(CThingFilter_HasTC(0x53), shops);
         for (CThing** it = shops._M_start; it != shops._M_finish; ++it) {
             CTCShop* candidate = 0;
             if ((*it)->HasTC(0x53))

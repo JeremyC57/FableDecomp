@@ -177,12 +177,13 @@ struct CBaseIntelligentPointer {
 class CThingFilter_IsNot { public: const CThing* Thing; };
 struct CThingFilter_All { CThingFilter_All() {} };
 class CThingSearchTools { public:
-    bool GetAllThingsInRoughArea(const C2DBoxI& area, const CThingFilter_IsNot& filter, CThingVector& out);   // 0x00725F10
-    bool GetAllThingsInRoughArea(const C2DBoxI& area, const CThingFilter_All& filter, CThingVector& out);     // 0x007197C0
+    bool GetAllThingsInRoughArea(const C2DBoxI& area, const CThingFilter_IsNot& filter, CThingVector& out) const;   // 0x00725F10 (const: Ego_r / FableWin)
+    bool GetAllThingsInRoughArea(const C2DBoxI& area, const CThingFilter_All& filter, CThingVector& out) const;     // 0x007197C0 (const)
 };
 class CWorld { public: unsigned long* GetWorldSeed() const; };  // 0x0049D810
 class CTCBase { protected:
     CWorld& GetWorld() const;   // 0x00686A70 (Ego_r.pdb CTCBase, protected)
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x00686D90 ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ (Ego_r / FableWin)
 };
 struct CTCShotDefinitionBase : public CTCBase {
     void*   __vftable;
@@ -191,7 +192,6 @@ struct CTCShotDefinitionBase : public CTCBase {
     CBaseIntelligentPointer PShooter;               // +0x28
     unsigned char _pad34[0x31];
     bool    MadeSound;                              // +0x65
-    CThingSearchTools* GetThingSearchTools() const; // 0x00686D90
     CDefClassBase* GetOwnerDefClass() const { return ParentThing->DefClass; }
     void UpdateCreatureAwarenessOfMe();
 };
@@ -207,10 +207,10 @@ void CTCShotDefinitionBase::UpdateCreatureAwarenessOfMe()
     {
         CThingFilter_IsNot filter;
         filter.Thing = ((CThing*)PShooter.GetPItem());
-        GetThingSearchTools()->GetAllThingsInRoughArea(area, filter, things);
+        PeekThingSearchTools().GetAllThingsInRoughArea(area, filter, things);
     }
     else
-        GetThingSearchTools()->GetAllThingsInRoughArea(area, CThingFilter_All(), things);
+        PeekThingSearchTools().GetAllThingsInRoughArea(area, CThingFilter_All(), things);
     for (CThing** it = things._M_start; it != things._M_finish; ++it)
     {
         CThing* thing = *it;
