@@ -1,0 +1,2 @@
+1	SDK ctlutil.cpp ctor verbatim on the landed Postpone 0xCAECF0 model + CUnknown(const char*,IUnknown*) + GetIID(); GetTypeInfo body in the TU	DIFFER 461v501 no flags; RELOCATION_MATCH with /EHsc
+2	p1 with oaidl spellings tagVARIANT/tagDISPPARAMS (real mangled leaf)	RELOCATION_MATCH /EHsc (kept)

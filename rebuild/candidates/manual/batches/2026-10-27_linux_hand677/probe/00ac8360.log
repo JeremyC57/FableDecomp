@@ -1,0 +1,15 @@
+1	local std::set<unsigned long> + two inline find()/insert() per sub-contraction (c675 GetRemainingVertices STLport model + _M_find)	DIFFER(487v471) both finds inlined, frame 0x28
+2	PDB CIndexList local with inline HasIndex(unsigned long) / AddIndex(unsigned long) (by-value key -> retail's stack copy)	DIFFER(481v471) only residue: second find inlined (retail calls set find 0x00AD2790), esi/ebp swap for this
+3	2 + _Rb_tree::find defined out of class as a non-inline template (as _tree.c)	DIFFER(481v471) same
+4	2 + HasIndex non-inline, defined in the TU before IsIllegal (retail has its out-of-line copy 0x00AC7F90)	DIFFER(481v471) same
+5	2 + PDB accessors GetSubContractionCount / GetSubContraction inline	DIFFER(481v471) same
+6	5 + STLport _S_value / _S_key layers	DIFFER(481v471) same
+7	6 + End() accessor, set::find const only	DIFFER(481v471) same
+8	7 + user CIndexList ctor/dtor (PDB ??0/??1)	DIFFER(481v471) same
+9	3 + 4 (non-inline find template and non-inline HasIndex: HasIndex's own body then calls find, as retail 0x00AC7F90)	DIFFER(481v471) same in IsIllegal
+10	9 + non-inline accessors / ctor / dtor defined in the TU (more auto-inline budget consumed)	DIFFER(481v471) same
+11	8 + real STLport insert_unique body (non-inline template)	DIFFER(481v471) frame 0x18, same inlining
+12	8 + second test written as a direct Indices.find != end	DIFFER(481v471) same
+flags	/Ob1 on 2 and 8	DIFFER(481v471) same
+13	8 + STLport allocator layering (__malloc_alloc<0>::allocate/deallocate statics under allocator<T>::allocate/deallocate) to spend inline budget	DIFFER(481v471) same
+14	9 with the out-of-line HasIndex body defined after IsIllegal (declaration-only at the use)	DIFFER(481v471) same

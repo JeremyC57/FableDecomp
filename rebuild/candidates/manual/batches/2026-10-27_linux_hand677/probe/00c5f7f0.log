@@ -1,0 +1,13 @@
+1	SDK DecodeS16 text, headers read as SHORT + BYTE	DIFFER(480v486) header loads, frame, early exit
+2	headers read as one DWORD, LOWORD/HIWORD extraction	DIFFER(470v486) only the zero-block early exit (pushes not sunk, no `mov eax,1 ; je tail`)
+3	explicit `if (!cBlocks) return TRUE;` before the loop	DIFFER(486v486) pushes sunk, but own `mov eax,1 ; add esp ; ret` block
+4	`while (cBlocks) { cBlocks--; ...}`	DIFFER(470v486)
+5	`if (cBlocks) do {...} while (--cBlocks);`	DIFFER(457v486)
+6	`if (!cBlocks) goto done;`	DIFFER(470v486)
+7	`if (cBlocks) while (cBlocks--)`	DIFFER(470v486)
+8	early return + do/while with decrement at top	DIFFER(486v486) as 3
+9	`BOOL fSuccess = TRUE; ... return fSuccess;` with `return FALSE` on bad step index	DIFFER(470v486)
+10	`if (cBlocks) do { cBlocks--; ... } while (cBlocks);`	DIFFER(470v486)
+11	fSuccess + early `return fSuccess`	DIFFER(486v486) as 3
+12	SDK error path `fSuccess = FALSE; break;` + `return fSuccess;`	RELOCATION_MATCH
+13	12 with the SDK `dwHeader` local and (INT)(SHORT)LOWORD / (INT)(BYTE)HIWORD	RELOCATION_MATCH (kept)

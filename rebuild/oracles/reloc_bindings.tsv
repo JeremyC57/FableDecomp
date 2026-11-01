@@ -35627,3 +35627,15 @@ _bi_flush	00c05040	00c055d0
 ??1CV_TourGuideScript@NScript@@UAE@XZ	00ee6c50	00ee6c30
 ??1CCutsceneDef@@UAE@XZ	00f29dc0	00f29da0
 ??0?$map@VCCharString@@W4EScriptActiveStatus@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@W4EScriptActiveStatus@@@std@@@4@@std@@QAE@XZ	00cd3640	01224c6d
+?Reset@CScreenEffectPriorityStack@NScreenEffect@@AAEXXZ	00880a40	00881210
+?_M_erase@?$_Rb_tree@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@PAU123@U?$_Identity@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@std@@U?$less@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@5@V?$allocator@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@5@@std@@AAEXPAU?$_Rb_tree_node@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@2@@Z	00882bc0	00881210
+?_M_insert_overflow@?$vector@VCTVertexWaterBackground@@V?$allocator@VCTVertexWaterBackground@@@std@@@std@@IAEXPAVCTVertexWaterBackground@@ABV3@ABU__false_type@2@I_N@Z	00b7ffc0	00b7fde0
+?DecodeSample@CImaAdpcmCodec@@SIHHHH@Z	00c5f350	00c5f7f0
+?m_asNextStep@CImaAdpcmCodec@@2QBFB	012b91a0	00c5f7f0
+?m_asStep@CImaAdpcmCodec@@2QBFB	012b91c0	00c5f7f0
+?CommitDeferredSettings@CEaxContext@@QAEJXZ	00c67f60	00c683c0
+?SetAllParameters@CEaxContext@@QAEJPBUEAXCONTEXTPROPERTIES@@@Z	00c67ae0	00c683c0
+??0CDispParams@@QAE@IPAUtagVARIANT@@PAJ@Z	00cae9b0	00caf230
+??_7CDeferredCommand@@6BCUnknown@@@	012bf8d4	00caf230
+??_7CDeferredCommand@@6BIDeferredCommand@@@	012bf8b8	00caf230
+??_7CQ_AmbushTradersScript@NScript@@6B@	012c6cac	00cf9350

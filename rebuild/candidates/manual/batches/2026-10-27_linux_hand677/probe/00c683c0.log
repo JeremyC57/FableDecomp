@@ -1,0 +1,6 @@
+1	switch with case 6 `return -3` and default `return -3`	DIFFER(328v328) tail `mov eax,-3` vs `mov esi,-3 ; mov eax,esi`
+2	case 6 falls into default `result = -3; return result;`	DIFFER(328v328) same tail
+3	case 6 and default each `result = -3; return result;`	DIFFER(328v328) same tail
+4	case 6 and default each `result = -3; break;`	RELOCATION_MATCH
+5	case 6 falls into default `result = -3; break;`	RELOCATION_MATCH (kept: one shared assignment)
+6	default `result = -3; goto done;`	DIFFER(348v328)

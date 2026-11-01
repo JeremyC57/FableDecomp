@@ -1,0 +1,2 @@
+address	status	bytes	test	note
+00ac8360	DIFFER	481v471	-	QuadricOptimiserInternals::CVertexPairContraction::IsIllegal (proven: PDB); probes=14 + /Ob1; residue: second HasIndex's set find inlined, retail calls find 0x00AD2790 (inline budget); best source differ/00ac8360.cpp (p8)

@@ -19251,7 +19251,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007348c0	IsToBlock	CTCCombat	__thiscall	bool	2	CTCCombat *,CHitParameters *	1	yes	accepted									
 00734c60	SetStruck	CTCCombat	__thiscall	void	3	CTCCombat *,CHitLocation *,CHitParameters *	1	yes	accepted									
 007352d0	CombatBlockingData_AddIfNew	_global	unknown	undefined	0		0	yes	accepted									
-00735340	CChunkedFileChunk_dtor	_global	unknown	undefined	0		0	yes	accepted									
+00735340	~CTCCombat	CTCCombat	unknown	undefined	0		0	yes	accepted									
 00735540	CTCCombat	CTCCombat	__thiscall	undefined	2	CTCCombat *,CThing *	0	yes	accepted									
 007355f0	CCreatureAction_InitializeForCombat	_global	unknown	undefined	0		0	yes	accepted									
 00735fd0	AttemptToStartParticle	CTCCombat	__thiscall	void	2	CTCCombat *,CThing *	1	yes	accepted									
@@ -26269,7 +26269,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00880920	NScreenEffect::CScreenEffectPriorityStack::ICustomProcessInterface::vfunc_0	NScreenEffect::CScreenEffectPriorityStack::ICustomProcessInterface	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008809f0	NScreenEffect::CScreenEffectPriorityStack::CDisplacementProcess::vfunc_1	NScreenEffect::CScreenEffectPriorityStack::CDisplacementProcess	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00880a10	NScreenEffect::CScreenEffectPriorityStack::CScreenFilterProcess::vfunc_1	NScreenEffect::CScreenEffectPriorityStack::CScreenFilterProcess	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00880a40	Reset	CScreenEffectPriorityStack	__thiscall	void	1	CScreenEffectPriorityStack *	1	yes	accepted									
+00880a40	Reset	NScreenEffect::CScreenEffectPriorityStack	__thiscall	void	1	CScreenEffectPriorityStack *	1	yes	accepted									
 00880ae0	Process	CRadialBlurProcess	__thiscall	void	3	CRadialBlurProcess *,float,CStackEntry *	1	yes	accepted									
 00880d50	Process	CDisplacementProcess	__thiscall	void	3	CDisplacementProcess *,float,CStackEntry *	1	yes	accepted									
 00880e00	NScreenEffect::CScreenEffectPriorityStack::CScreenFilterProcess::vfunc_3	NScreenEffect::CScreenEffectPriorityStack::CScreenFilterProcess	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -26281,7 +26281,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008810c0	SetAreaCenter	CScreenEffectPriorityStack	__thiscall	void	3	CScreenEffectPriorityStack *,void *,C3DVector *	1	yes	accepted									
 00881150	SetAreaTrackPos	CScreenEffectPriorityStack	__thiscall	void	3	CScreenEffectPriorityStack *,void *,ENVIRONMENT_RADIAL_BLUR_TRACK_POSITION	1	yes	accepted									
 008811d0	SetAreaTrackPos	CScreenEffectPriorityStack	__thiscall	void	3	CScreenEffectPriorityStack *,void *,ENVIRONMENT_RADIAL_BLUR_TRACK_POSITION	1	yes	accepted									
-00881210	CScreenEffectPriorityStack_Rebuild	_global	unknown	undefined	0		0	yes	accepted									
+00881210	Clear	NScreenEffect::CScreenEffectPriorityStack	unknown	undefined	0		0	yes	accepted									
 00881370	CScreenEffectPriorityStack_Constructor	_global	unknown	undefined	0		0	yes	accepted									
 008814c0	CEnvironment_Destructor	_global	unknown	undefined	0		0	yes	accepted									
 00881690	InsertRadialBlurEntry	CScreenEffectPriorityStack	__thiscall	void *	5	CScreenEffectPriorityStack *,float,CRadialBlurParams *,CRadialBlurPositionParams *,ScreenEffectPriority	1	yes	accepted									
@@ -26300,7 +26300,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008827c0	operator++	std::_Rb_tree_iterator<std::pair<CThing *const, NScreenEffect::CScreenEffectPriorityStack::CScreenFilterEntry::CThingGraphicByPassFlagState>, std::_Nonconst_traits<std::pair<CThing *const, NScreenEffect::CScreenEffectPriorityStack::CScreenFilterEntry::CThingGraphicByPassFlagState>>>	unknown	undefined	0		0	yes	accepted									
 008828d0	pair	std::pair<CIntelligentPointer<CThing>, CUnprovenByte_008828d0>	__thiscall	undefined	2	CIntelligentPointer<CThing_const_> *,CIntelligentPointer<class_CThing_const_> *	0	yes	accepted									
 00882b80	clear	std::_List_base<NScreenEffect::CScreenEffectPriorityStack::CRadialBlurEntry, std::allocator<NScreenEffect::CScreenEffectPriorityStack::CRadialBlurEntry>>	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted									
-00882bc0	BuildTreeArray	LTextTreeWalkThrough	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
+00882bc0	_M_erase	std::_Rb_tree<NScreenEffect::CScreenEffectPriorityStack::CStackEntry*,...>	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
 00882c00	clear	std::_List_base<NScreenEffect::CScreenEffectPriorityStack::CDisplacementMonochromeEffectColourEntry, std::allocator<NScreenEffect::CScreenEffectPriorityStack::CDisplacementMonochromeEffectColourEntry>>	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted									
 00882c40	clear	std::_List_base<NScreenEffect::CScreenEffectPriorityStack::CScreenFilterEntry, std::allocator<NScreenEffect::CScreenEffectPriorityStack::CScreenFilterEntry>>	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted									
 00882c90	CRadialBlurEntry	CRadialBlurEntry	__thiscall	undefined	2	CRadialBlurEntry *,CRadialBlurEntry *	0	yes	accepted									
@@ -39563,7 +39563,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ac7ff0	BinaryTree_ComputeSubContractionCost	_global	unknown	undefined	0		0	yes	accepted									
 00ac8170	PaintSegment	QuadricOptimiserInternals::COptimisedPrimitive	unknown	undefined	0		0	yes	accepted									
 00ac82a0	ComputeSubContractionCost	COptimisedPrimitive	__thiscall	float	3	COptimisedPrimitive *,CSubContraction *,C3DVector *	1	yes	accepted									
-00ac8360	QuadricOptimiser_VertexPairContraction_Initialize	_global	unknown	undefined	0		0	yes	accepted									
+00ac8360	IsIllegal	QuadricOptimiserInternals::CVertexPairContraction	unknown	undefined	0		0	yes	accepted									
 00ac8540	PaintSegments	COptimisedPrimitive	__thiscall	void	1	COptimisedPrimitive *	1	yes	accepted									
 00ac85d0	CollapseSegments	COptimisedPrimitive	__thiscall	void	2	COptimisedPrimitive *,float	1	yes	accepted									
 00ac8680	CollapseSegments	QuadricOptimiserInternals::COptimisedMesh	unknown	undefined	0		0			discovered	gapscan							
@@ -39665,7 +39665,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ad2640	_Dest_val<std::allocator<std::pair<unsigned_long,CCountedPointer<CFaction>_>_>,std::pair<unsigned_long,CCountedPointer<CFaction>_>_>	_Dest_val<std::allocator<std::pair<unsigned_long,CCountedPointer<CFaction>_>_>,std	__fastcall	void	2	allocator<std::pair<unsigned_long,CCountedPointer<CFaction>_>_> *,pair<unsigned_long,CCountedPointer<CFaction>_> *	1	yes	accepted									
 00ad26d0	vector	std::vector<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>, std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>>>	unknown	undefined	0		0	yes	accepted									
 00ad2730	Vector_Construct_CFeatDef	_global	unknown	undefined	0		0	yes	accepted									
-00ad2790	find	std::_Rb_tree<CUnprovenKey_00ad2790, CUnprovenValue_00ad2790, CUnprovenKeyOfValue_00ad2790, std::less<CUnprovenKey_00ad2790>, std::allocator<CUnprovenValue_00ad2790>>	unknown	undefined	0		0	yes	accepted									
+00ad2790	find	std::_Rb_tree<unsigned long,unsigned long,std::_Identity<unsigned long>,std::less<unsigned long>,std::allocator<unsigned long> >	unknown	undefined	0		0	yes	accepted									
 00ad27e0	_Dest_val<std::allocator<std::pair<unsigned_long,CCountedPointer<CFaction>_>_>,std::pair<unsigned_long,CCountedPointer<CFaction>_>_>	_Dest_val<std::allocator<std::pair<unsigned_long,CCountedPointer<CFaction>_>_>,std	__fastcall	void	2	allocator<std::pair<unsigned_long,CCountedPointer<CFaction>_>_> *,pair<unsigned_long,CCountedPointer<CFaction>_> *	1	yes	accepted									
 00ad28e0	insert_unique	std::_Rb_tree<unsigned long, unsigned long, std::_Identity<unsigned long>, std::less<unsigned long>, std::allocator<unsigned long>>	unknown	undefined	0		0	yes	accepted									
 00ad2af0	Partition_TwoWaySwap	_global	unknown	undefined	0		0	yes	accepted									
@@ -41826,10 +41826,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b7f600	RenderSnowBox	CEngineWeatherRenderer	__thiscall	void	2	CEngineWeatherRenderer *,C3DVector *	1	yes	accepted									
 00b7fa20	RenderSeaNonReflectiveForeground	CEngineWaterRenderer	__thiscall	void	2	CEngineWaterRenderer *,float	1	yes	accepted									
 00b7fce0	SetBridgeVertexBufferSize	CWaterPatchTesselatorBase<CTVertexWaterBackground>	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00b7fd00	resize	vector<CVectorMap<unsigned_long	__thiscall	void	2	vector<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>,std::allocator<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>_>_> *,uint	1	yes	accepted									
+00b7fd00	resize	std::vector<CTVertexWaterBackground,std::allocator<CTVertexWaterBackground> >	__thiscall	void	2	vector<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>,std::allocator<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>_>_> *,uint	1	yes	accepted									
 00b7fd70	Vector_Erase_56Byte	_global	unknown	undefined	0		0	yes	accepted									
-00b7fde0	Vector_Insert_14Elements	_global	unknown	undefined	0		0	yes	accepted									
-00b7ffc0	_M_insert_overflow	std::vector<CTVertexWaterBackground, std::allocator<CTVertexWaterBackground>>	unknown	undefined	0		0	yes	accepted									
+00b7fde0	_M_fill_insert	std::vector<CTVertexWaterBackground,std::allocator<CTVertexWaterBackground> >	unknown	undefined	0		0	yes	accepted									
+00b7ffc0	_M_insert_overflow	std::vector<CTVertexWaterBackground,std::allocator<CTVertexWaterBackground> >	unknown	undefined	0		0	yes	accepted									
 00b800f0	OnReadFinished	CActiveFile	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b8\CActiveFile_OnReadFinished_00b800f0.cpp
 00b80100	SetBridgeVertexBufferSize	CWaterPatchTesselatorBase<CTVertexSeaBackground>	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00b80120	resize	std::vector<CTVertexSeaBackground, std::allocator<CTVertexSeaBackground>>	__thiscall	void	2	vector<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>,std::allocator<CVectorMap<unsigned_long,CRandomAppearanceMorph::CTextureMorph,CKeyPairCompareLess<unsigned_long,CRandomAppearanceMorph::CTextureMorph>_>_>_> *,uint	1	yes	accepted									
@@ -47068,7 +47068,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c5f3b0	EncodeM16	CImaAdpcmCodec	unknown	undefined	0		0	yes	accepted									
 00c5f4e0	EncodeS16	CImaAdpcmCodec	unknown	undefined	0		0	yes	accepted									
 00c5f6a0	Audio_ExpandADPCM_Mono	_global	unknown	undefined	0		0	yes	accepted									
-00c5f7f0	Audio_ExpandADPCM_Stereo	_global	unknown	undefined	0		0	yes	accepted									
+00c5f7f0	DecodeS16	CImaAdpcmCodec	unknown	undefined	0		0	yes	accepted									
 00c5f9e0	Audio_InitializeCodecBuffer	_global	unknown	undefined	0		0	yes	accepted									
 00c5fa50	Audio_EncodeAdpcmWithBestStepIndex	_global	unknown	undefined	0		0	yes	accepted									
 00c5ff50	CBase	CBase	__thiscall	undefined	1	CBase *	0	yes	accepted									
@@ -47219,8 +47219,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c67a10	SetReverbFlags	CEaxContext	unknown	undefined	0		0	yes	accepted									
 00c67ae0	SetAllParameters	CEaxContext	unknown	undefined	0		0	yes	accepted									
 00c67c00	ScriptCommand_SetCharacterAttributes	_global	unknown	undefined	0		0	yes	accepted									
-00c67f60	CTCHeroStats_UpdateAttributeEvents	_global	unknown	undefined	0		0	yes	accepted									
-00c683c0	CDrawGuildSeal_ApplyEffect	_global	unknown	undefined	0		0	yes	accepted									
+00c67f60	CommitDeferredSettings	CEaxContext	unknown	undefined	0		0	yes	accepted									
+00c683c0	SetContextProperty	CEaxContext	unknown	undefined	0		0	yes	accepted									
 00c68510	CDrawGuildSeal_SetProperty	_global	unknown	undefined	0		0	yes	accepted									
 00c689b0	CDrawGuildSeal::SetSkillPropertiesEx	CDrawGuildSeal	unknown	undefined	0		0	yes	accepted									
 00c68a50	CDrawGuildSeal_SetLightProperty	_global	unknown	undefined	0		0	yes	accepted									
@@ -48246,7 +48246,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00caddc0	CTCGraphicAppearanceMultipleStaticMeshes	CTCGraphicAppearanceMultipleStaticMeshes	__thiscall	undefined	2	CTCGraphicAppearanceMultipleStaticMeshes *,CThing *	0	yes	accepted									
 00caddf0	CSurface_GetRefCountAndLock	_global	unknown	undefined	0		0	yes	accepted									
 00cae170	StackCheck_ValidateFrame	_global	unknown	undefined	0		0	yes	accepted									
-00cae9b0	Variant_CopyVariantArray	_global	unknown	undefined	0		0	yes	accepted									
+00cae9b0	CDispParams	CDispParams	unknown	undefined	0		0	yes	accepted									
 00caebb0	Unwind_Cleanup	_global	unknown	undefined	0		0	yes	accepted									
 00caec30	sub_00caec30	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00caec80	GetAnims	CTCGraphicAppearance	__thiscall	bool	2	CTCGraphicAppearance *,C3DAnimationInterpolator *	1	yes	accepted									
@@ -48268,7 +48268,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00caf0e0	GetStopPosition	CPosPassThru	unknown	undefined	0		0			discovered	gapscan							
 00caf120	GetDuration	CPosPassThru	unknown	undefined	0		0			discovered	gapscan							
 00caf160	sub_00caf160	_gapscan	unknown	undefined	0		0			discovered	gapscan							
-00caf230	COM_InitializeDispatchContainer	_global	unknown	undefined	0		0	yes	accepted									
+00caf230	CDeferredCommand	CDeferredCommand	unknown	undefined	0		0	yes	accepted									
 00caf430	sub_00caf430	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00caf480	ReleaseVolume	CVolume	__thiscall	void	1	CVolume *	1	yes	accepted									
 00caf500	CCmdQueue	CCmdQueue	__thiscall	void	1	CV_SingingStonesScript *	1	yes	accepted									
@@ -49305,13 +49305,13 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00cf91c0	sub_00cf91c0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00cf91f0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cf\CLandscapeBackgroundPatch_vectordeletingdestructor_00cf91f0.cpp
 00cf9210	~CLadyGreyWifeManagerScript	CLadyGreyWifeManagerScript	__thiscall	void	1	CLadyGreyWifeManagerScript *	1	yes	accepted									
-00cf9350	CHeroMorphDef_Ctor	_global	unknown	undefined	0		0	yes	accepted									
+00cf9350	CQ_AmbushTradersScript	NScript::CQ_AmbushTradersScript	unknown	undefined	0		0	yes	accepted									
 00cf9550	RegisterMain	NScript::CQ_AmbushTradersScript	__thiscall	void	1	CGlobal_WatchForHeroDeathScript *	1	yes	accepted									
 00cf95e0	SuspendableProcess	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript>	__thiscall	void	1	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cf\CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00cf95e0.cpp
 00cf95f0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cf\CLandscapeBackgroundPatch_vectordeletingdestructor_00cf95f0.cpp
 00cf9610	sub_00cf9610	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00cf9a50	Init	CQ_AmbushTradersScript	__thiscall	void	1	CQ_AmbushTradersScript *	1	yes	accepted									
-00cfa2f0	sub_00cfa2f0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00cfa2f0	Alloc	NScript::CQ_AmbushTradersScript	unknown	undefined	0		0			discovered	gapscan							
 00cfa320	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cf\CLandscapeBackgroundPatch_vectordeletingdestructor_00cfa320.cpp
 00cfa340	CParticleEmitter_Dtor	_global	unknown	undefined	0		0	yes	accepted									
 00cfa660	CQ_ArenaScript	NScript::CQ_ArenaScript	__thiscall	undefined	3	CQ_ArenaScript *,CScriptDataBase *,CGameScriptInterfaceBase *	0	yes	accepted									
@@ -49322,7 +49322,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00cfab10	OnPersist	NScript::CQ_ArenaScript	unknown	undefined	0		0			discovered	gapscan							
 00cfac20	`scalar deleting destructor'	NScript::CQ_ArenaScript	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cf\CLandscapeBackgroundPatch_vectordeletingdestructor_00cfac20.cpp
 00cfac40	~CQ_ArenaScript	NScript::CQ_ArenaScript	__thiscall	void	1	CQ_ArenaScript *	1	yes	accepted									
-00cfad30	CHeroMorphDef_Create	_global	unknown	undefined	0		0	yes	accepted									
+00cfad30	CQ_AwakeningTheOracleScript	NScript::CQ_AwakeningTheOracleScript	unknown	undefined	0		0	yes	accepted									
 00cfadd0	Init	NScript::CQ_AwakeningTheOracleScript	unknown	undefined	0		0			discovered	gapscan							
 00cfaeb0	RegisterMain	NScript::CQ_AwakeningTheOracleScript	__thiscall	void	1	CGlobal_WatchForHeroDeathScript *	1	yes	accepted									
 00cfaf40	SuspendableProcess	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript>	__thiscall	void	1	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cf\CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00cfaf40.cpp
@@ -50302,7 +50302,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00d6ed10	sub_00d6ed10	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00d6ed40	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d6\CLandscapeBackgroundPatch_vectordeletingdestructor_00d6ed40.cpp
 00d6ed60	~CQ_HangingTreeEvilScript	CQ_HangingTreeEvilScript	__thiscall	void	1	CQ_HangingTreeEvilScript *	1	yes	accepted									
-00d6ef20	CQ_HangingTreeGoodScript	CQ_HangingTreeGoodScript	__thiscall	undefined	3	CQ_HangingTreeGoodScript *,CScriptDataBase *,CGameScriptInterfaceBase *	0	yes	accepted									
+00d6ef20	CQ_HangingTreeGoodScript	NScript::CQ_HangingTreeGoodScript	__thiscall	undefined	3	CQ_HangingTreeGoodScript *,CScriptDataBase *,CGameScriptInterfaceBase *	0	yes	accepted									
 00d6f020	Init	CQ_HangingTreeGoodScript	__thiscall	void	1	CQ_HangingTreeGoodScript *	1	yes	accepted									
 00d6f3c0	RegisterMain	NScript::CQ_HangingTreeGoodScript	__thiscall	void	1	CGlobal_WatchForHeroDeathScript *	1	yes	accepted									
 00d6f450	SuspendableProcess	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript>	__thiscall	void	1	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d6\CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00d6f450.cpp
@@ -50382,8 +50382,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00d77340	BuildAndSaveSea	CEngineWorldMap	__thiscall	void	2	CEngineWorldMap *,CStaticMapGenerationVisibiilityInfo *	1	yes	accepted									
 00d773e0	MonitorRegionPresence	CQ_HangingTreeGoodScript	__thiscall	void	1	CQ_HangingTreeGoodScript *	1	yes	accepted									
 00d77690	DoCutscene	CQ_HangingTreeGoodScript	__thiscall	void	2	CQ_HangingTreeGoodScript *,long	1	yes	accepted									
-00d782c0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d7\CLandscapeBackgroundPatch_vectordeletingdestructor_00d782c0.cpp
-00d782e0	CParticleEmitter_Dtor_5	_global	unknown	undefined	0		0	yes	accepted									
+00d782c0	`scalar deleting destructor'	NScript::CQ_HangingTreeGoodScript	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d7\CLandscapeBackgroundPatch_vectordeletingdestructor_00d782c0.cpp
+00d782e0	~CQ_HangingTreeGoodScript	NScript::CQ_HangingTreeGoodScript	unknown	undefined	0		0	yes	accepted									
 00d784d0	CQ_HeroSoulsScript	NScript::CQ_HeroSoulsScript	__thiscall	undefined	5	CEngineSubPrimitiveAnimatedMesh *,CEngineInternalPrimitiveAnimatedMesh *,C3DPrimitive2 *,ERenderMode,bool	0	yes	accepted									
 00d78500	Init	NScript::CQ_HeroSoulsScript	unknown	undefined	0		0			discovered	gapscan							
 00d78520	RegisterMain	NScript::CQ_HeroSoulsScript	__thiscall	void	1	CGlobal_WatchForHeroDeathScript *	1	yes	accepted									

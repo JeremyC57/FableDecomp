@@ -1,0 +1,24 @@
+address	name	evidence
+00735340	CTCCombat::~CTCCombat	chunk 677 RELOCATION_MATCH: stores vtable 0x0126724C (RTTI CTCCombat); sole caller slot-0 ??_G 0x00739D20; Ego_r (catalog CChunkedFileChunk_dtor wrong)
+00881210	NScreenEffect::CScreenEffectPriorityStack::Clear	chunk 677 RELOCATION_MATCH: Ego_r + FableWin; tail-calls private Reset 0x00880A40 (catalog CScreenEffectPriorityStack_Rebuild wrong)
+00ac8360	QuadricOptimiserInternals::CVertexPairContraction::IsIllegal	chunk 677 parked DIFFER(481v471): Ego_r/FableWin; inline-budget residue on the second set<unsigned long>::find (catalog QuadricOptimiser_VertexPairContraction_Initialize wrong)
+00b7fde0	std::vector<CTVertexWaterBackground,std::allocator<CTVertexWaterBackground> >::_M_fill_insert	chunk 677 RELOCATION_MATCH: STLport 4.6 text; sole caller resize 0x00B7FD00 (catalog Vector_Insert_14Elements wrong)
+00c5f7f0	CImaAdpcmCodec::DecodeS16	chunk 677 RELOCATION_MATCH: DirectX/Xbox SDK imaadpcm.cpp stereo decoder (7 params, static __fastcall); Initialize's converter table 0x012B9274 (catalog Audio_ExpandADPCM_Stereo wrong)
+00c683c0	CEaxContext::SetContextProperty	chunk 677 RELOCATION_MATCH: descriptive (EAX emulation layer, no PDB/RTTI); dispatcher calling ClearEvents first (catalog CDrawGuildSeal_ApplyEffect wrong)
+00cae9b0	CDispParams::CDispParams	chunk 677 RELOCATION_MATCH: DX9 SDK strmbase ctlutil.cpp (per-VARTYPE copy switch); called by the CDeferredCommand ctor (catalog Variant_CopyVariantArray wrong)
+00caf230	CDeferredCommand::CDeferredCommand	chunk 677 RELOCATION_MATCH (/EHsc): DX9 SDK strmbase ctlutil.cpp (type-library strings, ret 38h) (catalog COM_InitializeDispatchContainer wrong)
+00cf9350	NScript::CQ_AmbushTradersScript::CQ_AmbushTradersScript	chunk 677 RELOCATION_MATCH: sole caller Alloc 0x00CFA2F0 (push 1D0h) registered "S_QAT"; Ego_r ctor symbol (catalog CHeroMorphDef_Ctor wrong)
+00d782e0	NScript::CQ_HangingTreeGoodScript::~CQ_HangingTreeGoodScript	chunk 677 RELOCATION_MATCH: ??_G 0x00D782C0 slot 0 of vtable 0x012D260C <- ctor 0x00D6EF20 <- Alloc 0x00D78290 "S_QHTG" (catalog CParticleEmitter_Dtor_5 wrong)
+00c60410	CEaxContext::ClearEvents	chunk 677: first call of the dispatcher 0x00C683C0 and of CEaxSource::Set 0x00C61B40; clears the event queue (landed as ClearMessages@CMessageOwner wrong)
+00c67f60	CEaxContext::CommitDeferredSettings	chunk 677 descriptive: shared commit of the context/source/FX-slot dispatchers (catalog CTCHeroStats_UpdateAttributeEvents wrong)
+00880a40	NScreenEffect::CScreenEffectPriorityStack::Reset	chunk 677: Ego_r/FableWin private (AAE), namespace NScreenEffect; tail target of Clear
+00882bc0	std::_Rb_tree<NScreenEffect::CScreenEffectPriorityStack::CStackEntry*,...>::_M_erase	chunk 677: STLport node eraser (private AAE); landed with QAE stand-in names
+00a01b50	CBaseIntelligentPointer::GetPItem	chunk 677: Ego_r/FableWin GetPItem returns CBaseObject* (const)
+00ad2790	std::_Rb_tree<unsigned long,unsigned long,std::_Identity<unsigned long>,std::less<unsigned long>,std::allocator<unsigned long> >::find	chunk 677: set<unsigned long>::find (catalog CUnprovenKey placeholder)
+00ac7f90	QuadricOptimiserInternals::CIndexList::HasIndex	chunk 677: Ego_r/FableWin HasIndex(unsigned long) const; `call find 0x00AD2790; cmp; setne`
+00b7fd00	std::vector<CTVertexWaterBackground,std::allocator<CTVertexWaterBackground> >::resize	chunk 677: landed as a CRetailVector_elem56 stand-in
+00b7ffc0	std::vector<CTVertexWaterBackground,std::allocator<CTVertexWaterBackground> >::_M_insert_overflow	chunk 677: landed as a CArray stand-in
+00d782c0	NScript::CQ_HangingTreeGoodScript::`scalar deleting destructor'	chunk 677: slot 0 of vtable 0x012D260C (landed as CLandscapeBackgroundPatch stand-in)
+00d6ef20	NScript::CQ_HangingTreeGoodScript::CQ_HangingTreeGoodScript	chunk 677: Ego_r/FableWin ctor (CScriptDataBase*, CGameScriptInterfaceBase&)
+00cfa2f0	NScript::CQ_AmbushTradersScript::Alloc	chunk 677: new(0x1D0) + ctor 0x00CF9350 (landed as Create_CClass_00cf9350_00cfa2f0 stand-in)
+00cfad30	NScript::CQ_AwakeningTheOracleScript::CQ_AwakeningTheOracleScript	chunk 677 follow-up: the catalog (landed source leaf) already names it; the manifest carried the propagated CHeroMorphDef_Create label

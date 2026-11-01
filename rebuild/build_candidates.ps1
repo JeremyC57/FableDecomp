@@ -373032,6 +373032,70 @@ $catalog = @(
         TestSource = '00/db/NScriptCQNewOakValeIntroScript_CQNewOakValeIntroScript_00dbefc0_test.cpp'
         PassPattern = '00dbefc0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00735340'
+        Module = 'CTCCombat'
+        Source = '00/73/CTCCombat_CTCCombat_00735340.cpp'
+        TestSource = '00/73/CTCCombat_CTCCombat_00735340_test.cpp'
+        PassPattern = '00735340_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00881210'
+        Module = 'NScreenEffect::CScreenEffectPriorityStack'
+        Source = '00/88/NScreenEffectCScreenEffectPriorityStack_Clear_00881210.cpp'
+        TestSource = '00/88/NScreenEffectCScreenEffectPriorityStack_Clear_00881210_test.cpp'
+        PassPattern = '00881210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b7fde0'
+        Module = 'std::vector<CTVertexWaterBackground>'
+        Source = '00/b7/stdvectorCTVertexWaterBackground_Mfillinsert_00b7fde0.cpp'
+        TestSource = '00/b7/stdvectorCTVertexWaterBackground_Mfillinsert_00b7fde0_test.cpp'
+        PassPattern = '00b7fde0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5f7f0'
+        Module = 'CImaAdpcmCodec'
+        Source = '00/c5/CImaAdpcmCodec_DecodeS16_00c5f7f0.cpp'
+        TestSource = '00/c5/CImaAdpcmCodec_DecodeS16_00c5f7f0_test.cpp'
+        PassPattern = '00c5f7f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c683c0'
+        Module = 'CEaxContext'
+        Source = '00/c6/CEaxContext_SetContextProperty_00c683c0.cpp'
+        TestSource = '00/c6/CEaxContext_SetContextProperty_00c683c0_test.cpp'
+        PassPattern = '00c683c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cae9b0'
+        Module = 'CDispParams'
+        Source = '00/ca/CDispParams_CDispParams_00cae9b0.cpp'
+        TestSource = '00/ca/CDispParams_CDispParams_00cae9b0_test.cpp'
+        PassPattern = '00cae9b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00caf230'
+        Module = 'CDeferredCommand'
+        Source = '00/ca/CDeferredCommand_CDeferredCommand_00caf230.cpp'
+        TestSource = '00/ca/CDeferredCommand_CDeferredCommand_00caf230_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00caf230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cf9350'
+        Module = 'NScript::CQ_AmbushTradersScript'
+        Source = '00/cf/NScriptCQAmbushTradersScript_CQAmbushTradersScript_00cf9350.cpp'
+        TestSource = '00/cf/NScriptCQAmbushTradersScript_CQAmbushTradersScript_00cf9350_test.cpp'
+        PassPattern = '00cf9350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d782e0'
+        Module = 'NScript::CQ_HangingTreeGoodScript'
+        Source = '00/d7/NScriptCQHangingTreeGoodScript_CQHangingTreeGoodScript_00d782e0.cpp'
+        TestSource = '00/d7/NScriptCQHangingTreeGoodScript_CQHangingTreeGoodScript_00d782e0_test.cpp'
+        PassPattern = '00d782e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

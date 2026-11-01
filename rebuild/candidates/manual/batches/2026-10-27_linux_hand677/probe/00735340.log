@@ -1,0 +1,7 @@
+1	user dtor: multimap clear + IS_THING_ALIVE/Kill loop, landed CTCChest models, operator[] `*(_M_start + n)`	DIFFER(507v507) `mov ecx,[esi+88h] ; add ecx,ebx` vs `mov eax,[esi+88h] ; lea ecx,[ebx+eax]`
+2	Kill through `.Get()->`	DIFFER(507v507) same
+3	operator[] `_M_start[n]`	DIFFER(507v507) same
+4	STLport 4.6 operator[] `*(begin() + n)`	RELOCATION_MATCH
+5	`int i` / `i++`	DIFFER(507v507) same as 1
+6	4 with engine/CCountedPointer.h + engine/CDefPointer.h (FABLE_RETAIL_DEF_CLASS_BASE) for the local models, no #pragma pack	RELOCATION_MATCH
+7	6 + engine/CCombatAbility.h	RELOCATION_MATCH (kept)

@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00735340	RELOCATION_MATCH	507v507	PASS	CTCCombat::~CTCCombat (proven: RTTI vtable 0x0126724C + Ego_r); probes=7; lever STLport operator[] `*(begin()+n)`
+00881210	RELOCATION_MATCH	346v346	PASS	NScreenEffect::CScreenEffectPriorityStack::Clear (proven: Ego_r/FableWin); probes=2
+00ac8360	DIFFER	481v471	-	QuadricOptimiserInternals::CVertexPairContraction::IsIllegal (proven: PDB); probes=14 + /Ob1; residue: second HasIndex's set find inlined, retail calls find 0x00AD2790 (inline budget); best source differ/00ac8360.cpp (p8)
+00b7fde0	RELOCATION_MATCH	469v469	PASS	std::vector<CTVertexWaterBackground>::_M_fill_insert (STLport 4.6 text, sole caller resize 0x00B7FD00); probes=3; __forceinline helpers as the sibling 0x00B7FFC0 TU
+00c5f7f0	RELOCATION_MATCH	486v486	PASS	CImaAdpcmCodec::DecodeS16 (SDK imaadpcm.cpp, converter table 0x012B9278); probes=13; lever SDK `fSuccess = FALSE; break;`
+00c683c0	RELOCATION_MATCH	328v328	PASS	CEaxContext::SetContextProperty (descriptive: EAX layer, no PDB/RTTI); probes=6; lever case 6 falls into `default: result = -3; break;`
+00cae9b0	RELOCATION_MATCH	504v504	PASS	CDispParams::CDispParams (DX9 SDK strmbase ctlutil.cpp; caller CDeferredCommand ctor); probes=1
+00caf230	RELOCATION_MATCH	501v501	PASS	CDeferredCommand::CDeferredCommand (DX9 SDK ctlutil.cpp); probes=2; Flags /EHsc (461v501 without)
+00cf9350	RELOCATION_MATCH	505v505	PASS	NScript::CQ_AmbushTradersScript::CQ_AmbushTradersScript (proven: Alloc 0x00CFA2F0 / S_QAT + Ego_r ctor); probes=1
+00d782e0	RELOCATION_MATCH	491v491	PASS	NScript::CQ_HangingTreeGoodScript::~CQ_HangingTreeGoodScript (proven: ??_G 0x00D782C0 slot 0 of 0x012D260C, S_QHTG); probes=1

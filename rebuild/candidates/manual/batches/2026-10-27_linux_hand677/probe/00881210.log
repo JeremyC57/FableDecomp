@@ -1,0 +1,2 @@
+1	PDB Clear: set::clear x3 via _M_t.clear(), one loop over the three list arrays (landed dtor model)	RELOCATION_MATCH
+2	same with a real set::clear() member	RELOCATION_MATCH (kept)

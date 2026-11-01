@@ -1,0 +1,36 @@
+addr       parity           behav  name
+00735340   RELOCATION_MATCH PASS   ~CTCCombat
+00881210   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@PAU123@U?$_Identity@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@std@@U?$less@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@5@V?$allocator@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@5@@std@@AAEXPAU?$_Rb_tree_node@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@2@@Z -> 00882bc0 labelled '_unattributed::FreeTree_CTreeOwner_00882bc0'
+00881210   RELOCATION_MATCH PASS   Clear
+00b7fde0   RELOCATION_MATCH PASS   _M_fill_insert
+00c5f7f0   RELOCATION_MATCH PASS   DecodeS16
+00c683c0   WARN RELOC_NAME: ?CommitDeferredSettings@CEaxContext@@QAEJXZ -> 00c67f60 labelled 'CTCHeroStats_UpdateAttributeEvents'
+00c683c0   RELOCATION_MATCH PASS   SetContextProperty
+00cae9b0   RELOCATION_MATCH PASS   CDispParams
+00caf230   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00caf230   WARN RELOC_NAME: ??0CDispParams@@QAE@IPAUtagVARIANT@@PAJ@Z -> 00cae9b0 labelled 'Variant_CopyVariantArray'
+00caf230   RELOCATION_MATCH PASS   CDeferredCommand
+00cf9350   RELOCATION_MATCH PASS   CQ_AmbushTradersScript
+00d782e0   RELOCATION_MATCH PASS   ~CQ_HangingTreeGoodScript
+
+WINS: 9
+  00735340 RELOCATION_MATCH CTCCombat::??1CTCCombat@@UAE@XZ
+  00881210 RELOCATION_MATCH NScreenEffect::CScreenEffectPriorityStack::?Clear@CScreenEffectPriorityStack@NScreenEffect@@QAEXXZ
+  00b7fde0 RELOCATION_MATCH std::vector<CTVertexWaterBackground>::?_M_fill_insert@?$vector@VCTVertexWaterBackground@@V?$allocator@VCTVertexWaterBackground@@@std@@@std@@QAEXPAVCTVertexWaterBackground@@IABV3@@Z
+  00c5f7f0 RELOCATION_MATCH CImaAdpcmCodec::?DecodeS16@CImaAdpcmCodec@@SIHPAE0IIIPAH1@Z
+  00c683c0 RELOCATION_MATCH CEaxContext::?SetContextProperty@CEaxContext@@QAEJKPBXKPAPAUSEaxEvent@@@Z
+  00cae9b0 RELOCATION_MATCH CDispParams::??0CDispParams@@QAE@IPAUtagVARIANT@@PAJ@Z
+  00caf230 RELOCATION_MATCH CDeferredCommand::??0CDeferredCommand@@QAE@PAVCCmdQueue@@PAUIUnknown@@PAJ1NPAU_GUID@@JFJPAUtagVARIANT@@4PAFH@Z
+  00cf9350 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::??0CQ_AmbushTradersScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00d782e0 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::??1CQ_HangingTreeGoodScript@NScript@@UAE@XZ
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  CTCCombat_CTCCombat_00735340
+  NScreenEffectCScreenEffectPriorityStack_Clear_00881210
+  stdvectorCTVertexWaterBackground_Mfillinsert_00b7fde0
+  CImaAdpcmCodec_DecodeS16_00c5f7f0
+  CEaxContext_SetContextProperty_00c683c0
+  CDispParams_CDispParams_00cae9b0
+  CDeferredCommand_CDeferredCommand_00caf230
+  NScriptCQAmbushTradersScript_CQAmbushTradersScript_00cf9350
+  NScriptCQHangingTreeGoodScript_CQHangingTreeGoodScript_00d782e0
