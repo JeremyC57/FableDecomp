@@ -1,0 +1,32 @@
+addr       parity           behav  name
+009cdf50   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+009cdf50   DIFFER(246v246)  PASS   CBankFile::WriteRecoveryFile
+00bc9c30   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+  WARN leaf 'CEngineSubPrimitive2DClockSprite' matches no symbol in 00bc9c30.obj; graded the largest function
+  WARN leaf 'CEngineSubPrimitive2DClockSprite' matches no symbol in 00bc9c30.obj; graded the largest function
+  WARN leaf 'CEngineSubPrimitive2DClockSprite' matches no symbol in 00bc9c30.obj; graded the largest function
+  WARN leaf 'CEngineSubPrimitive2DClockSprite' matches no symbol in 00bc9c30.obj; graded the largest function
+  WARN leaf 'CEngineSubPrimitive2DClockSprite' matches no symbol in 00bc9c30.obj; graded the largest function
+  WARN leaf 'CEngineSubPrimitive2DClockSprite' matches no symbol in 00bc9c30.obj; graded the largest function
+  WARN leaf 'CEngineSubPrimitive2DClockSprite' matches no symbol in 00bc9c30.obj; graded the largest function
+  WARN leaf 'CEngineSubPrimitive2DClockSprite' matches no symbol in 00bc9c30.obj; graded the largest function
+  WARN leaf 'CEngineSubPrimitive2DClockSprite' matches no symbol in 00bc9c30.obj; graded the largest function
+  WARN leaf 'CEngineSubPrimitive2DClockSprite' matches no symbol in 00bc9c30.obj; graded the largest function
+  WARN leaf 'CEngineSubPrimitive2DClockSprite' matches no symbol in 00bc9c30.obj; graded the largest function
+  WARN leaf 'CEngineSubPrimitive2DClockSprite' matches no symbol in 00bc9c30.obj; graded the largest function
+  WARN leaf 'CEngineSubPrimitive2DClockSprite' matches no symbol in 00bc9c30.obj; graded the largest function
+  WARN leaf 'CEngineSubPrimitive2DClockSprite' matches no symbol in 00bc9c30.obj; graded the largest function
+  WARN leaf 'CEngineSubPrimitive2DClockSprite' matches no symbol in 00bc9c30.obj; graded the largest function
+  WARN leaf 'CEngineSubPrimitive2DClockSprite' matches no symbol in 00bc9c30.obj; graded the largest function
+  WARN leaf 'CEngineSubPrimitive2DClockSprite' matches no symbol in 00bc9c30.obj; graded the largest function
+  WARN leaf 'CEngineSubPrimitive2DClockSprite' matches no symbol in 00bc9c30.obj; graded the largest function
+  WARN leaf 'CEngineSubPrimitive2DClockSprite' matches no symbol in 00bc9c30.obj; graded the largest function
+  WARN leaf 'CEngineSubPrimitive2DClockSprite' matches no symbol in 00bc9c30.obj; graded the largest function
+  WARN leaf 'CEngineSubPrimitive2DClockSprite' matches no symbol in 00bc9c30.obj; graded the largest function
+  WARN leaf 'CEngineSubPrimitive2DClockSprite' matches no symbol in 00bc9c30.obj; graded the largest function
+  WARN leaf 'CEngineSubPrimitive2DClockSprite' matches no symbol in 00bc9c30.obj; graded the largest function
+  WARN leaf 'CEngineSubPrimitive2DClockSprite' matches no symbol in 00bc9c30.obj; graded the largest function
+  WARN leaf 'CEngineSubPrimitive2DClockSprite' matches no symbol in 00bc9c30.obj; graded the largest function
+00bc9c30   DIFFER(34v34)    PASS   CEngineSubPrimitive2DClockSprite
+
+WINS: 0

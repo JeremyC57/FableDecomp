@@ -1,0 +1,25 @@
+addr       parity           behav  name
+006156e0   RELOCATION_MATCH PASS   CThingSearchTools::GetPFirstLeafThing<CThingFilter_AICreatureHasProperty, CThingAICreature>
+00777000   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+00777000   RELOCATION_MATCH PASS   CThingSearchTools::GetPFirstThing<CFilter_Bind2<CThingFilter_HasTC, CThingFilter_InMap >, CThing>
+009223a0   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+009223a0   WARN RELOC_NAME: ??$?RVCThing@@@CThingCompare_Nearest@@QBEPAVCThing@@PAV1@0@Z -> 004a8d80 labelled 'CThingCompare_Nearest::operator()<CThing>'
+009223a0   RELOCATION_MATCH PASS   CThingSearchTools::GetPBestThing<CFilter_Bind3<CThingFilter_HasTC, CThingFilter_InRegion, CThingFilter_IsRegionEntranceActive >, CThingCompare_Nearest, CThing>
+
+WINS: 3
+  006156e0 RELOCATION_MATCH CThingSearchTools::GetPFirstLeafThing
+  00777000 RELOCATION_MATCH CThingSearchTools::GetPFirstThing
+  009223a0 RELOCATION_MATCH CThingSearchTools::GetPBestThing
+addr       parity           behav  name
+006d3fb0   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+006d3fb0   RELOCATION_MATCH PASS   CThingSearchTools::GetPFirstThing<CThingFilter_HasDefGlobalIndex, CThing>
+007ee660   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+007ee660   RELOCATION_MATCH PASS   CThingSearchTools::GetPFirstThing<CThingFilter_HasScriptName, const CThingVillage>
+0093f930   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+0093f930   WARN RELOC_NAME: ??$?RVCThing@@@CThingCompare_Nearest@@QBEPAVCThing@@PAV1@0@Z -> 004a8d80 labelled 'CThingCompare_Nearest::operator()<CThing>'
+0093f930   RELOCATION_MATCH PASS   CThingSearchTools::GetPBestThing<CThingFilter_HasDefGlobalIndex, CThingCompare_Nearest, CThing>
+
+WINS: 3
+  006d3fb0 RELOCATION_MATCH CThingSearchTools::GetPFirstThing
+  007ee660 RELOCATION_MATCH CThingSearchTools::GetPFirstThing
+  0093f930 RELOCATION_MATCH CThingSearchTools::GetPBestThing

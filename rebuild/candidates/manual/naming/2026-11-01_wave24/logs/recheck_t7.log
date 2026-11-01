@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00c17260   WARN RELOC_NAME: ?ReadBankData@@YIXPAXPAVCBankData@@KPAVCLoadLog@@@Z -> 00c30f60 labelled 'Fastcall_InventoryAudioWaveLoad'
+00c17260   WARN RELOC_NAME: ?SerialiseBankMetaData@@YI_NPAVCBankData@@PAUCRequest_00c09110@@@Z -> 00c17820 labelled 'CMessageEventThingFilter::TestThing'
+00c17260   WARN RELOC_NAME: ?AddError@CLoadLog@@QAEAAVCString@@XZ -> 00c30840 labelled 'CInstanceOwner_00c30840::CreateNewInstance'
+00c17260   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c17260   RELOCATION_MATCH PASS   _global::LoadRecordAndReport_00c17260
+
+WINS: 1
+  00c17260 RELOCATION_MATCH _global::?LoadBank@@YGXPAVCLoadLog@@PAXPAUCRequest_00c09110@@@Z

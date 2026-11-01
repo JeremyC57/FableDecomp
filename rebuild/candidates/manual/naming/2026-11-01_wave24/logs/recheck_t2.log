@@ -1,0 +1,36 @@
+addr       parity           behav  name
+004126e0   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCWideString@@PAV1@@std@@YIPAVCWideString@@PAV1@00ABU__false_type@0@@Z -> 0040dd60 labelled '_global::UninitCopy_CElement4_0099b720_0040dd60'
+004126e0   WARN RELOC_NAME: ??$uninitialized_fill_n@PAVCWideString@@IV1@@std@@YIPAVCWideString@@PAV1@IABV1@@Z -> 0040f5b0 labelled 'std::_Fill_n<unsigned_long*,unsigned_int,unsigned_long>'
+004126e0   RELOCATION_MATCH PASS   std::vector<CWideString>::_M_fill_insert
+007066a0   WARN SHARED_HEADER_AVAILABLE CWorld
+007066a0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+007066a0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007066a0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007066a0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007066a0   WARN RELOC_NAME: ?GetWorld@CTCBase@@QBEAAVCWorld@@XZ -> 00686a80 labelled 'CTCBase::PeekWorld'
+007066a0   RELOCATION_MATCH PASS   CTCHeroAttachableAppearanceModifiers::RemoveAppearanceModifiersCoveringBodyArea
+00a38550   RELOCATION_MATCH PASS   CCRCSymbolMap::Clear
+00a38e50   RELOCATION_MATCH PASS   CCRCSymbolMap::ParseBuffer
+
+WINS: 4
+  004126e0 RELOCATION_MATCH std::vector<CWideString>::?_M_fill_insert@?$vector@VCWideString@@
+  007066a0 RELOCATION_MATCH CTCHeroAttachableAppearanceModifiers::RemoveAppearanceModifiersCoveringBodyArea
+  00a38550 RELOCATION_MATCH CCRCSymbolMap::?Clear@CCRCSymbolMap@@
+  00a38e50 RELOCATION_MATCH CCRCSymbolMap::?ParseBuffer@CCRCSymbolMap@@IAE_NPBDABVCCharString@@@Z
+addr       parity           behav  name
+  WARN leaf '~CGameScriptThingManager' matches no symbol in 004bb600.obj; graded the largest function
+  WARN leaf '~CGameScriptThingManager' matches no symbol in 004bb600.obj; graded the largest function
+004bb600   RELOCATION_MATCH PASS   CGameScriptThingManager::~CGameScriptThingManager
+00a381d0   WARN RELOC_ALIAS: _vsprintf -> 00bfedd0 is the import thunk 'MSVCR71.DLL::vsprintf'
+00a381d0   RELOCATION_MATCH PASS   CCRCSymbolMap::Error
+00a38670   WARN SHARED_HEADER_AVAILABLE CStringParser
+00a38670   RELOCATION_MATCH PASS   CCRCSymbolMap::ParseEnum
+00e81b40   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00e81b40   WARN RELOC_NAME: ?PlayCutscene@CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@AAEXVCCharString@@@Z -> 00e80d60 labelled '_global::CTCCarryable_Initialize'
+00e81b40   RELOCATION_MATCH PASS   NScript::CV_FishingCompetitionScript::CFishCompOrganiser::GetBiggestFishWeight
+
+WINS: 4
+  004bb600 RELOCATION_MATCH CGameScriptThingManager::~CGameScriptThingManager
+  00a381d0 RELOCATION_MATCH CCRCSymbolMap::?Error@CCRCSymbolMap@@IAAXABVCWideString@@JPBDZZ
+  00a38670 RELOCATION_MATCH CCRCSymbolMap::?ParseEnum@CCRCSymbolMap@@IAE_NAAVCStringParser@@ABVCCharString@@@Z
+  00e81b40 RELOCATION_MATCH NScript::CV_FishingCompetitionScript::CFishCompOrganiser::?GetBiggestFishWeight@CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@AAEMXZ

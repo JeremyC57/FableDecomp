@@ -1,0 +1,10 @@
+addr       parity           behav  name
+007066a0   WARN SHARED_HEADER_AVAILABLE CWorld
+007066a0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+007066a0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007066a0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007066a0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007066a0   RELOCATION_MATCH PASS   CTCHeroAttachableAppearanceModifiers::RemoveAppearanceModifiersCoveringBodyArea
+
+WINS: 1
+  007066a0 RELOCATION_MATCH CTCHeroAttachableAppearanceModifiers::RemoveAppearanceModifiersCoveringBodyArea

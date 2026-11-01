@@ -1,0 +1,48 @@
+addr       parity           behav  name
+00416005   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00416005   WARN RELOC_NAME: ?Step@CGlobalService@@QAEXXZ -> 009f2450 labelled 'CMemoryAllocator::GetHeaderOverhead'
+00416005   RELOCATION_MATCH PASS   CMainGameComponent::InitDefinitions
+006f9be0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+006f9be0   WARN SHARED_HEADER_AVAILABLE CManager
+006f9be0   WARN RELOC_NAME: ?Transfer_009bab50@CPersistContext@@QAEXAAVCCharString@@@Z -> 009bab50 labelled '_global::Forward_operator___via0x20_009bab50'
+006f9be0   WARN RELOC_NAME: ?LoadFromHeaderFile@CSymbolMap@@QAEXABVCWideString@@@Z -> 009e5c90 labelled 'CSymbolMap::LoadFromFile'
+006f9be0   RELOCATION_MATCH PASS   NAnimationEvents::CManager::Save
+009a76c0   RELOCATION_MATCH PASS   NBankFileManager::SetHeaderDir
+009b08c0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+009b08c0   WARN RELOC_NAME: ??1CFileDataInputStream@@QAE@XZ -> 00994780 labelled '_global::Dtor_CBaseBase_00994780'
+009b08c0   RELOCATION_MATCH PASS   CDefinitionManager::Compile
+00cbf647   WARN RELOC_NAME: ?GFGetPDefinitionManager@@YAPAVCDefinitionManager@@XZ -> 00cd3ef0 labelled '_global::GetGlobal_0143e920_00cd3ef0'
+00cbf647   RELOCATION_MATCH PASS   SetGlobalScriptDef
+
+WINS: 5
+  00416005 RELOCATION_MATCH CMainGameComponent::?InitDefinitions@CMainGameComponent@@IAE_N_N@Z
+  006f9be0 RELOCATION_MATCH NAnimationEvents::CManager::?Save@CManager@NAnimationEvents
+  009a76c0 RELOCATION_MATCH NBankFileManager::?SetHeaderDir@NBankFileManager@@YIXABVCWideString@@@Z
+  009b08c0 RELOCATION_MATCH CDefinitionManager::?Compile@CDefinitionManager@@QAEXXZ
+  00cbf647 RELOCATION_MATCH _global::?SetGlobalScriptDef@@YIXXZ
+addr       parity           behav  name
+004336bc   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+004336bc   WARN RELOC_NAME: ?CreateEngineVideoOptionsDef@@YAPAXXZ -> 00434540 labelled 'CEngineVideoOptionsDef::Alloc'
+004336bc   WARN RELOC_NAME: ?AddDefinitionType@CDefinitionManager@@QAEXABUSDefinitionType@@@Z -> 009b0ac0 labelled 'CDefinitionManager::AddDefClass'
+004336bc   WARN RELOC_NAME: ?CreateEngineDef@@YAPAXXZ -> 004343f0 labelled 'CEngineDef::Alloc'
+004336bc   WARN RELOC_NAME: ?CreateUIDef@@YAPAXXZ -> 00433670 labelled 'NUISystem::CUIDef::Alloc'
+004336bc   WARN RELOC_NAME: ?CreateControlSchemeDef@@YAPAXXZ -> 00432180 labelled 'CControlsDef::Alloc'
+004336bc   WARN RELOC_NAME: ?CreateConfigOptionsDefaultsDef@@YAPAXXZ -> 00434660 labelled 'CConfigOptionsDefaultsDef::Alloc'
+004336bc   RELOCATION_MATCH PASS   CStartupDefinitionManager::InitAndCompilePlatformSpecific
+009a76a0   RELOCATION_MATCH PASS   NBankFileManager::GetHeaderDir
+009acb10   RELOCATION_MATCH PASS   CDefinitionManager::ClearSymbols
+009d4ce0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+009d4ce0   WARN SHARED_HEADER_AVAILABLE CFileDataOutputStream
+009d4ce0   RELOCATION_MATCH PASS   CDefStringTable::SaveTable
+  WARN leaf 'g_CCharString_013ca7d4' matches no symbol in 01224030.obj; graded the largest function
+  WARN leaf 'g_CCharString_013ca7d4' matches no symbol in 01224030.obj; graded the largest function
+01224030   WARN RELOC_CONFLICT: _$E2 -> 0122a690 here, 01228930 in landed 01219f00
+01224030   WARN RELOC_NAME: _$E2 -> 0122a690 labelled '_global::AtexitDtor_CCharString_at_013ca7d4_0122a690'
+01224030   RELOCATION_MATCH PASS   _static_init::g_CCharString_013ca7d4
+
+WINS: 5
+  004336bc RELOCATION_MATCH CStartupDefinitionManager::?InitAndCompilePlatformSpecific@CStartupDefinitionManager@@QAEX_N@Z
+  009a76a0 RELOCATION_MATCH _global::?GetHeaderDir@NBankFileManager@@YI?AVCWideString@@XZ
+  009acb10 RELOCATION_MATCH _global::?ClearSymbols@CDefinitionManager@@QAEXXZ
+  009d4ce0 RELOCATION_MATCH CDefStringTable::?SaveTable@CDefStringTable@@QAEX_N@Z
+  01224030 RELOCATION_MATCH _static_init::g_CCharString_013ca7d4

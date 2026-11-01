@@ -1,0 +1,15 @@
+addr       parity           behav  name
+00774b40   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+00774b40   WARN SHARED_HEADER_AVAILABLE CWorld
+00774b40   WARN SHARED_HEADER_AVAILABLE CTCBase
+00774b40   WARN RELOC_NAME: ??0CGoodsPlaceVector@@QAE@ABU0@@Z -> 00777430 labelled 'std::vector<CTCShop::GoodsPlace, std::allocator<CTCShop::GoodsPlace>>::vector'
+00774b40   RELOCATION_MATCH PASS   CTCShop::GetFreeSaleItemPlaces
+007ee5a0   WARN SHARED_HEADER_AVAILABLE CTCVillage
+007ee5a0   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+007ee5a0   WARN SHARED_HEADER_AVAILABLE CVillageMemberDef
+007ee5a0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007ee5a0   RELOCATION_MATCH PASS   CTCVillageMember::OnInitialActivate
+
+WINS: 2
+  00774b40 RELOCATION_MATCH CTCShop::GetFreeSaleItemPlaces
+  007ee5a0 RELOCATION_MATCH CTCVillageMember::?OnInitialActivate@CTCVillageMember

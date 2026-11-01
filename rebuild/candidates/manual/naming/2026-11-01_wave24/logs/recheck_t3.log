@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00495fe0   RELOCATION_MATCH PASS   CFrontendGameComponent::SetMode
+009e90a0   RELOCATION_MATCH PASS   CMemoryFile::Open
+
+WINS: 2
+  00495fe0 RELOCATION_MATCH CFrontendGameComponent::SetMode
+  009e90a0 RELOCATION_MATCH CMemoryFile::?Open@CMemoryFile@@QAEXXZ

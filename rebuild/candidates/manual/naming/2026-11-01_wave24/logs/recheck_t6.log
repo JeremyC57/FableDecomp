@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00c0c0c0   RELOCATION_MATCH PASS   CCharString::Assign
+
+WINS: 1
+  00c0c0c0 RELOCATION_MATCH CCharString::??4CString@@QAEABV0@ABV0@@Z

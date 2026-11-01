@@ -1,0 +1,18 @@
+addr       parity           behav  name
+00c309e0   RELOCATION_MATCH PASS   _unattributed::Forward_00c309e0
+00c3bb50   WARN RELOC_NAME: ?Find@Reader@@QAEHABVCString@@@Z -> 00c2d9c0 labelled 'CSegmentFile::OpenSegment'
+00c3bb50   WARN RELOC_NAME: ?AddError@CLoadLog@@QAEAAVCString@@XZ -> 00c30840 labelled 'CInstanceOwner_00c30840::CreateNewInstance'
+00c3bb50   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c3bb50   WARN RELOC_NAME: ??6CString@@QAIAAV0@K@Z -> 00c0df10 labelled 'CString::operator<<(unsigned long)'
+00c3bb50   RELOCATION_MATCH PASS   AudioBankTableReader_00c3bb50::Load
+  WARN leaf 'LoadCriteria (owner uncertain)' matches no symbol in 00c3bcb0.obj; graded the largest function
+  WARN leaf 'LoadCriteria (owner uncertain)' matches no symbol in 00c3bcb0.obj; graded the largest function
+00c3bcb0   WARN RELOC_NAME: ?FindSegment@CriteriaReader@@QAEHABVCString@@@Z -> 00c2d9c0 labelled 'CSegmentFile::OpenSegment'
+00c3bcb0   WARN RELOC_NAME: ?AddError@CLoadLog@@QAEAAVCString@@XZ -> 00c30840 labelled 'CInstanceOwner_00c30840::CreateNewInstance'
+00c3bcb0   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<(char const *)'
+00c3bcb0   RELOCATION_MATCH PASS   AudioCriteriaLoader_00c3bcb0::LoadCriteria (owner uncertain)
+
+WINS: 3
+  00c309e0 RELOCATION_MATCH _unattributed::??1CClass_00c309e0@@QAE@XZ
+  00c3bb50 RELOCATION_MATCH AudioBankTableReader_00c3bb50::Load
+  00c3bcb0 RELOCATION_MATCH AudioCriteriaLoader_00c3bcb0::LoadCriteria (owner uncertain)
