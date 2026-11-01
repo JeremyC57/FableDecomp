@@ -53,12 +53,11 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
 1. **Next chunk cycle** (two agents; keep the chunk 651 increased-attempts brief, it lifted the match rate to 3/10):
    `pick_parked.py` needs `$S/retry1/WORKLIST.tsv` + `$S/retry/sec6b/WORKLIST.tsv` from the old scratch (gone) -- rebuild the ranked
    pool from `pending/*/differ/` + `chunk_history.tsv` first, or cut from `2026-10-31_wave12/DEFERRED.tsv`-adjacent parked rows.
-2. **Owner decisions from wave 13** (`naming/2026-11-01_wave13/DECISIONS_W13.tsv`): GetPWorld 0x008FCFC0 (= protected reference getter
-   `?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ`; 72 rows, `->` becomes `.`), VIRTUAL_SCREEN_* 0x013961E8/F0 (3NA; GFAXToVX models it
-   volatile), vector<CCharString> dtor 0x00414EA0 (header family vs table-only), GetCurrentWorldFrame 0x004167C8 (one source). Decide,
-   then naming wave 14 = those four families + the wave 13 DEFERRED items that need per-row modelling (IsPerformingAnyAction, GetWorld
-   IAE, Initialise UAE, LowerBound CVectorMap models, IS_THING_ALIVE<const CThingPhysical>, the 0x0097ABF0 comparator family) + the
-   remaining queue rows. Reuse `naming/2026-11-01_wave13/scripts/` (compose13.py, fam_glob.py, fam_gptr.py, hand13/).
+2. **Naming wave 14** (brief `naming/briefs/BRIEF_W14.md`, decisions resolved 2026-11-01 under the owner rule "recreate retail
+   faithfully" in `naming/2026-11-01_wave13/DECISIONS_W13_RESOLVED.tsv`): GetWorld@CAIStateGroupBase (48 callers), VIRTUAL_SCREEN_*
+   (37), GetCurrentWorldFrame (15), the std::vector<CCharString> header family (54), 0x0070C770 slot 1 = Delete, IS_THING_ALIVE
+   <const CThingPhysical> per-caller layout proof, the per-row DEFERRED items, c651 queue rows, then the anonymous-namespace comparator
+   re-authoring. Launch after the chunk pair 652/653 (two-agent cap).
 3. **Migration wave 10** per `headers/2026-10-30_retail_models_wave9/NEXT.md`: the 76 local `enum ENullDef` models, the
    1,317 proven CCountedPointer rows, and the shared `engine/CDefPointer.h` Release() shape (mov/dec/mov vs retail
    `dec [ecx+4]; jne`, header debt found in chunk 649).
