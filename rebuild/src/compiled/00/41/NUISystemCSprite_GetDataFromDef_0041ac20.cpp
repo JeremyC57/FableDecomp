@@ -114,7 +114,40 @@ class CManagedTexture { public:                               // Ego_r.pdb, 8 by
     __forceinline void Touch() { if (Data) Data->Touch(); }
 };
 class CGraphicInfoFrame;
-struct CFrameData : CResource {                        // Ego_r.pdb, 0x44 bytes
+class CGraphicDataBank;
+class CGraphicInfo { public:
+    unsigned char      _pad00[0x20];
+    CGraphicDataBank*  Bank;                           // +0x20
+    long               Index;                          // +0x24
+    CGraphicInfoFrame* Frames;                         // +0x28
+};
+template <class T> struct CFrameDataPointer {                             // CIVCountedPointer<CFrameData>
+    T* P;
+    __forceinline CFrameDataPointer& operator=(T* p)
+    {
+        if (P) {
+            P->DecRef();
+            P = 0;
+        }
+        P = p;
+        return *this;
+    }
+    T* operator->() const { return P; }
+    operator bool() const { return P != 0; }
+};
+class CGraphicInfoFrame { public: class CFrameData; public:                             // Ego_r.pdb, 16 bytes
+    unsigned long     _pad00;
+    unsigned short    FrameNum;                        // +0x04
+    signed char       SmallMipmapLevel;                // +0x06
+    CFrameDataPointer<CFrameData> Data;                            // +0x08
+    CGraphicInfo*     GraphicInfo;                     // +0x0c
+    void BeginLoading(unsigned long a0, unsigned long a1) const;   // 0x009FE620
+private:
+    bool InternalGetFrameForcedLoading(unsigned long flags) const;   // 0x009FF6B0 (Ego_r.pdb ?InternalGetFrameForcedLoading@CGraphicInfoFrame@@ABE_NK@Z, private)   // 0x009FF6B0
+public:
+    __forceinline bool GetFrame(CGraphicFrame& out, unsigned long mipmapLevel, unsigned long flags);
+};
+class CGraphicInfoFrame::CFrameData : public CResource { public:                        // Ego_r.pdb, 0x44 bytes
     CGraphicFrame   Frame;                             // +0x1c
     CManagedTexture ManagedTexture;                    // +0x20
     CManagedTexture LoadingManagedTexture;             // +0x28
@@ -124,43 +157,12 @@ struct CFrameData : CResource {                        // Ego_r.pdb, 0x44 bytes
     signed char     TouchedMipmapLevel;                // +0x3a
     unsigned long   TouchedFrame;                      // +0x3c
     CGraphicInfoFrame* GraphicInfoFrame;               // +0x40
-    CFrameData(CGraphicInfoFrame* frame);              // 0x009FE380
+    CFrameData(const CGraphicInfoFrame* frame);              // 0x009FE380
     void BeginLoading(unsigned long mipmapLevel, unsigned long flags);   // 0x009FDE80
     __forceinline void DecRef() { if (--RefCount == 0) Release(); }
-};
-class CGraphicDataBank;
-class CGraphicInfo { public:
-    unsigned char      _pad00[0x20];
-    CGraphicDataBank*  Bank;                           // +0x20
-    long               Index;                          // +0x24
-    CGraphicInfoFrame* Frames;                         // +0x28
-};
-struct CFrameDataPointer {                             // CIVCountedPointer<CFrameData>
-    CFrameData* P;
-    __forceinline CFrameDataPointer& operator=(CFrameData* p)
-    {
-        if (P) {
-            P->DecRef();
-            P = 0;
-        }
-        P = p;
-        return *this;
-    }
-    CFrameData* operator->() const { return P; }
-    operator bool() const { return P != 0; }
-};
-class CGraphicInfoFrame { public:                             // Ego_r.pdb, 16 bytes
-    unsigned long     _pad00;
-    unsigned short    FrameNum;                        // +0x04
-    signed char       SmallMipmapLevel;                // +0x06
-    CFrameDataPointer Data;                            // +0x08
-    CGraphicInfo*     GraphicInfo;                     // +0x0c
-    void BeginLoading(unsigned long a0, unsigned long a1) const;   // 0x009FE620
-private:
-    bool InternalGetFrameForcedLoading(unsigned long a0) const;   // 0x009FF6B0
-public:
-    __forceinline bool GetFrame(CGraphicFrame& out, unsigned long mipmapLevel, unsigned long flags);
-};
+};   // Ego_r.pdb: nested in CGraphicInfoFrame (RTTI .?AVCFrameData@CGraphicInfoFrame@@), 0x44 bytes
+typedef CGraphicInfoFrame::CFrameData CFrameData;   // the row's free code keeps the unqualified name
+
 struct CGraphicInfoArray {
     CGraphicInfo* _M_start; CGraphicInfo* _M_finish; CGraphicInfo* _M_end_of_storage;
     unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }

@@ -97,7 +97,25 @@ struct CVolumeHolder {
     CResource* Volume;                             // +0x04
 };
 class CGraphicInfoFrame;
-struct CFrameData : CResource {
+struct CFrameCounter {
+    unsigned char _pad[0x194];
+    unsigned long FrameStamp;                      // +0x194
+};
+class CGraphicInfo { public:
+    unsigned char  _pad[0x20];
+    CFrameCounter* Counter;                        // +0x20
+};
+class CGraphicInfoFrame { public: class CFrameData; public:
+    void*          _word00;
+    unsigned short FrameNum;
+    signed char    SmallMipmapLevel;
+    CFrameData*    Data;                           // +0x08
+    CGraphicInfo*  GraphicInfo;                    // +0x0c
+private:
+    bool InternalGetFrameForcedLoading(unsigned long flags) const;   // 0x009FF6B0 (Ego_r.pdb ?InternalGetFrameForcedLoading@CGraphicInfoFrame@@ABE_NK@Z, private)   // 0x009FF6B0
+public:
+};
+class CGraphicInfoFrame::CFrameData : public CResource { public:
     CGraphicFrame Frame;                           // +0x1c
     CVolumeHolder VolumeHolder;                    // +0x20
     unsigned char _pad28[0x38 - 0x28];
@@ -107,25 +125,11 @@ struct CFrameData : CResource {
     unsigned char _pad3B;
     unsigned long LastFrameStamp;                  // +0x3c
     unsigned char _pad40[4];
-    CFrameData(CGraphicInfoFrame* frame);          // 0x009FE380
+    CFrameData(const CGraphicInfoFrame* frame);          // 0x009FE380
     void BeginLoading(unsigned long a, unsigned long b);   // 0x009FDE80
-};
-struct CFrameCounter {
-    unsigned char _pad[0x194];
-    unsigned long FrameStamp;                      // +0x194
-};
-class CGraphicInfo { public:
-    unsigned char  _pad[0x20];
-    CFrameCounter* Counter;                        // +0x20
-};
-class CGraphicInfoFrame { public:
-    void*          _word00;
-    unsigned short FrameNum;
-    signed char    SmallMipmapLevel;
-    CFrameData*    Data;                           // +0x08
-    CGraphicInfo*  GraphicInfo;                    // +0x0c
-    bool InternalGetFrameForcedLoading(long flags);   // 0x009FF6B0
-};
+};   // Ego_r.pdb: nested in CGraphicInfoFrame (RTTI .?AVCFrameData@CGraphicInfoFrame@@), 0x44 bytes
+typedef CGraphicInfoFrame::CFrameData CFrameData;   // the row's free code keeps the unqualified name
+
 template <class T> class CIVCountedPointer { public:
     T* Data;
     void Reset()

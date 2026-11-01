@@ -1,6 +1,6 @@
 // CGraphicInfoFrame::BeginLoading(unsigned long a, unsigned long b) -- starts loading this frame's data; frames of a flat-animated graphic share frame 0's data, so the walk first moves to that frame, then creates its frame data on demand and forwards the request
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009FE620, length 118 bytes (padded to 120).
-// Callees: operator new @ 0x00BFEA1A (0x44 bytes), CGraphicInfoFrame::CFrameData::CFrameData(CGraphicInfoFrame*) @ 0x009FE380,
+// Callees: operator new @ 0x00BFEA1A (0x44 bytes), CGraphicInfoFrame::CGraphicInfoFrame::CFrameData::CFrameData(const CGraphicInfoFrame*) @ 0x009FE380,
 //          the frame data's virtual slot 1 (+4, the last-reference destroy), CFrameData::BeginLoading @ 0x009FDE80.
 // Shape: `while (frame->FrameNum > 0 && frame->GraphicInfo->Header.IsFlatAnimatedGraphic) frame = frame->GraphicInfo->Frames;`
 // rotated (the bit mask hoisted into cl, `lea esp,[esp]` pad); the CIVCountedPointer assignment from `new` is an inline
@@ -11,14 +11,6 @@
 // Leaf: ?BeginLoading@CGraphicInfoFrame@@
 void* operator new(unsigned int size);             // 0x00BFEA1A
 class CGraphicInfoFrame;
-struct CFrameData {                                // CGraphicInfoFrame::CFrameData (0x44 bytes): an intrusively counted pointee
-    virtual void v00();
-    virtual void Destroy();                        // slot 1 (+4)
-    long          m_references;                    // +0x04
-    unsigned char _pad08[0x3c];
-    CFrameData(CGraphicInfoFrame* frame);          // 0x009FE380
-    void BeginLoading(unsigned long a, unsigned long b);   // 0x009FDE80
-};
 template <class T> class CIVCountedPointer { public:
     T* Data;
     void Reset()
@@ -47,7 +39,7 @@ class CGraphicInfo { public:
     unsigned char      _pad1c[0x0c];
     CGraphicInfoFrame* Frames;                     // +0x28
 };
-class CGraphicInfoFrame { public:
+class CGraphicInfoFrame { public: class CFrameData; public:
     long                          _pad00;
     unsigned short                FrameNum;        // +0x04
     signed char                   SmallMipmapLevel;   // +0x06
@@ -55,6 +47,16 @@ class CGraphicInfoFrame { public:
     CGraphicInfo*                 GraphicInfo;     // +0x0c
     void BeginLoading(unsigned long a, unsigned long b);
 };
+class CGraphicInfoFrame::CFrameData { public:                                // CGraphicInfoFrame::CFrameData (0x44 bytes): an intrusively counted pointee
+    virtual void v00();
+    virtual void Destroy();                        // slot 1 (+4)
+    long          m_references;                    // +0x04
+    unsigned char _pad08[0x3c];
+    CFrameData(const CGraphicInfoFrame* frame);          // 0x009FE380
+    void BeginLoading(unsigned long a, unsigned long b);   // 0x009FDE80
+};   // Ego_r.pdb: nested in CGraphicInfoFrame (RTTI .?AVCFrameData@CGraphicInfoFrame@@), 0x44 bytes
+typedef CGraphicInfoFrame::CFrameData CFrameData;   // the row's free code keeps the unqualified name
+
 
 void CGraphicInfoFrame::BeginLoading(unsigned long a, unsigned long b)
 {

@@ -50,19 +50,21 @@ public:
     bool Release();   // 0x00A69AD0 (Ego_r.pdb ?Release@CManagedTexture@@QAE_NXZ)
 private: public: void* VTable; CIVCountedPointeeBase* Data; CManagedTexture& operator=(const CManagedTexture&);  };
 class CGraphicInfoFrame;
-struct CFrameData : CResource {
- SharedFrame Frame; CManagedTexture Texture; CManagedTexture SmallTexture; void* LoadInfo; void* LoadContext;
- signed char CurrentPreloadMipmap; unsigned char Unknown39; signed char RequestedMipmap; unsigned char Unknown3B; long ResourcePriority; CGraphicInfoFrame* Owner;
- CFrameData(CGraphicInfoFrame*);
+template <class T> struct ResourcePointer { T* Object;
+ __forceinline void Assign(T* p) { if(Object) { IVRelease((CIVCountedPointeeBase*)Object); Object=0; } Object=p; }
 };
-struct ResourcePointer { CFrameData* Object;
- __forceinline void Assign(CFrameData* p) { if(Object) { IVRelease((CIVCountedPointeeBase*)Object); Object=0; } Object=p; }
-};
-class CGraphicInfoFrame { public:
+class CGraphicInfoFrame { public: class CFrameData; public:
  unsigned long Unknown; unsigned short FrameNum; signed char SmallMipmapLevel; unsigned char Unknown7;
- ResourcePointer Data; void* GraphicInfo;
+ ResourcePointer<CFrameData> Data; void* GraphicInfo;
  void InitialiseFrame(const SharedFrame&,const CManagedTexture&,signed char);
 };
+class CGraphicInfoFrame::CFrameData : public CResource { public:
+ SharedFrame Frame; CManagedTexture Texture; CManagedTexture SmallTexture; void* LoadInfo; void* LoadContext;
+ signed char CurrentPreloadMipmap; unsigned char Unknown39; signed char RequestedMipmap; unsigned char Unknown3B; long ResourcePriority; CGraphicInfoFrame* Owner;
+ CFrameData(const CGraphicInfoFrame*);
+};   // Ego_r.pdb: nested in CGraphicInfoFrame (RTTI .?AVCFrameData@CGraphicInfoFrame@@), 0x44 bytes
+typedef CGraphicInfoFrame::CFrameData CFrameData;   // the row's free code keeps the unqualified name
+
 void CGraphicInfoFrame::InitialiseFrame(const SharedFrame& frame,const CManagedTexture& texture,signed char level) {
  if(!Data.Object) Data.Assign(new CFrameData(this));
  Data.Object->Frame.Assign(frame);
