@@ -20,7 +20,7 @@ struct CRampedParam {
 struct CDisplay { void Refresh() { ++g_refreshes; } };
 struct CSprite { void Update() { ++g_spriteUpdates; } };
 
-struct CAudioOwner {
+struct CSoundSystem {
     CDisplay* m_pDisplay;
     CSprite* m_pSprite;
     float m_tickRate;
@@ -30,7 +30,7 @@ struct CAudioParamBlock {
     void* m_vtable;
     CRampedParam m_gains[16];
     float m_pitchFactors[8];
-    CAudioOwner* m_pOwner;
+    CSoundSystem* m_pOwner;
     void Update();
 };
 
@@ -53,7 +53,7 @@ void CAudioParamBlock::Update()
 int main()
 {
     CDisplay display; CSprite sprite;
-    CAudioOwner owner; owner.m_pDisplay = &display; owner.m_pSprite = &sprite; owner.m_tickRate = 50.0f;
+    CSoundSystem owner; owner.m_pDisplay = &display; owner.m_pSprite = &sprite; owner.m_tickRate = 50.0f;
     CAudioParamBlock block; block.m_pOwner = &owner;
     for (int i = 0; i < 16; ++i) { block.m_gains[i].m_time = 1.0f; block.m_gains[i].m_duration = 1.0f; }
     block.Update();                                               // nothing running: no refresh

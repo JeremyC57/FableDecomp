@@ -1,9 +1,10 @@
-// CSoundEventManager::CSoundEventManager(CAudioOwner* g, float a4, float a0, float a8, float w, float h, CSteeringWorldEntry* entry) -- libpk sound-event manager: seed the owner, the listener frame (position 0,0,0, front 0,1,0, up 0,0,1), build the event set and the fader (1000 / owner rate), clear the state block, then allocate the two script-module helpers, the audio resources (on the world entry) and the 50 Hz timer host
+// CSoundEventManager::CSoundEventManager(CSoundSystem* g, float a4, float a0, float a8, float w, float h, CSteeringWorldEntry* entry) -- libpk sound-event manager: seed the owner, the listener frame (position 0,0,0, front 0,1,0, up 0,0,1), build the event set and the fader (1000 / owner rate), clear the state block, then allocate the two script-module helpers, the audio resources (on the world entry) and the 50 Hz timer host
 // Flags: /EHsc
-// Leaf: ??0CSoundEventManager@@QAE@PAUCAudioOwner@@MMMMMPAUCSteeringWorldEntry@@@Z
+// Leaf: ??0CSoundEventManager@@QAE@PAUCSoundSystem@@MMMMMPAUCSteeringWorldEntry@@@Z
+// Naming (naming wave 21, DECISIONS_W20_RESOLVED): CAudioOwner -> CSoundSystem, the one class name for vtable 0x012B1E24 (the libpk sound system CreateSoundSystem_00c096e0 0x00C096E0 returns and the landed CSoundManagerLH ctor 0x00A3EF00 drives; descriptive, libpk has no PDB).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C11D00, 507 bytes, speed TU with an EH frame (5 unwind states), `ret 1Ch`.
-// Name (probable, libpk has no PDB or RTTI): the landed CAudioOwner::CAudioOwner 0x00C094A0 declares and calls this
-//   `CSoundEventManager(CAudioOwner* g, float a4, float a0, float a8, float w, float h, CSteeringWorldEntry* entry)`, and the
+// Name (probable, libpk has no PDB or RTTI): the landed CSoundSystem::CSoundSystem 0x00C094A0 declares and calls this
+//   `CSoundEventManager(CSoundSystem* g, float a4, float a0, float a8, float w, float h, CSteeringWorldEntry* entry)`, and the
 //   landed CSoundEvent sources (sweep1, 2026-10-25) name vtable 0x012B2748 CSoundEventManager from the TraceEvents strings.
 //   The catalog's "CTCHero::Initialize" and the stale binding `??0CSteeringSolver@@...` are wrong.
 // Callees: CSoundEventSet ctor 0x00C222D0 (3 floats), CFader::CFader(float) 0x00C26010 (landed), operator new 0x00BFEA1A,
@@ -25,7 +26,7 @@ struct CVec3 {                                              // descriptive: thre
     CVec3(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 struct CSteeringWorldEntry;
-struct CAudioOwner {
+struct CSoundSystem {
     unsigned char _pad00[0x70];
     float Rate;                                             // +0x70
 };
@@ -62,7 +63,7 @@ public:
 
 struct CSoundEventManager {                                 // vtable 0x012B2748
     virtual ~CSoundEventManager();
-    CAudioOwner*  Owner;                                    // +0x04
+    CSoundSystem*  Owner;                                    // +0x04
     CVec3         Position;                                 // +0x08 (0,0,0)
     CVec3         Front;                                    // +0x14 (0,1,0)
     CVec3         Up;                                       // +0x20 (0,0,1)
@@ -84,10 +85,10 @@ struct CSoundEventManager {                                 // vtable 0x012B2748
     bool          Flag885;                                  // +0x885
     long          Value888;                                 // +0x888
     long          Value88C;                                 // +0x88C
-    CSoundEventManager(CAudioOwner* g, float a4, float a0, float a8, float w, float h, CSteeringWorldEntry* entry);
+    CSoundEventManager(CSoundSystem* g, float a4, float a0, float a8, float w, float h, CSteeringWorldEntry* entry);
 };
 
-CSoundEventManager::CSoundEventManager(CAudioOwner* g, float a4, float a0, float a8, float w, float h, CSteeringWorldEntry* entry)
+CSoundEventManager::CSoundEventManager(CSoundSystem* g, float a4, float a0, float a8, float w, float h, CSteeringWorldEntry* entry)
     : Owner(g), Position(0.0f, 0.0f, 0.0f), Front(0.0f, 1.0f, 0.0f), Up(0.0f, 0.0f, 1.0f), Event(a4, a0, a8), HelperA(0), HelperB(0), Gain(1.0f), Timer(0), ValueC8(0), ValueCC(0),
       Width(w), Height(h), Timing(1000.0f / g->Rate)
 {

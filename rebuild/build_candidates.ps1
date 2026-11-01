@@ -54737,9 +54737,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c0a6b0'
-        Module = 'CAudioOwner'
-        Source = '00/c0/CAudioOwner_scalardeletingdestructor_00c0a6b0.cpp'
-        TestSource = '00/c0/CAudioOwner_scalardeletingdestructor_00c0a6b0_test.cpp'
+        Module = 'CSoundSystem'
+        Source = '00/c0/CSoundSystem_scalardeletingdestructor_00c0a6b0.cpp'
+        TestSource = '00/c0/CSoundSystem_scalardeletingdestructor_00c0a6b0_test.cpp'
         PassPattern = '00c0a6b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -188499,9 +188499,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c091f0'
-        Module = 'CAudioOwner'
-        Source = '00/c0/CAudioOwner_Update_00c091f0.cpp'
-        TestSource = '00/c0/CAudioOwner_Update_00c091f0_test.cpp'
+        Module = 'CSoundSystem'
+        Source = '00/c0/CSoundSystem_Update_00c091f0.cpp'
+        TestSource = '00/c0/CSoundSystem_Update_00c091f0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c091f0_TEST PASS'
     }
@@ -196443,9 +196443,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c09380'
-        Module = 'CAudioOwner'
-        Source = '00/c0/CAudioOwner_CAudioOwner_00c09380.cpp'
-        TestSource = '00/c0/CAudioOwner_CAudioOwner_00c09380_test.cpp'
+        Module = 'CSoundSystem'
+        Source = '00/c0/CSoundSystem_CSoundSystem_00c09380.cpp'
+        TestSource = '00/c0/CSoundSystem_CSoundSystem_00c09380_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c09380_TEST PASS'
     }
@@ -234647,9 +234647,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c096e0'
-        Module = 'CWorldManager'
-        Source = '00/c0/CWorldManager_InitializeSteeringAfterSave_00c096e0.cpp'
-        TestSource = '00/c0/CWorldManager_InitializeSteeringAfterSave_00c096e0_test.cpp'
+        Module = '_global'
+        Source = '00/c0/global_CreateSoundSystem00c096e0_00c096e0.cpp'
+        TestSource = '00/c0/global_CreateSoundSystem00c096e0_00c096e0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c096e0_TEST PASS'
     }
@@ -270944,9 +270944,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c094a0'
-        Module = 'CAudioOwner'
-        Source = '00/c0/CAudioOwner_CAudioOwner_00c094a0.cpp'
-        TestSource = '00/c0/CAudioOwner_CAudioOwner_00c094a0_test.cpp'
+        Module = 'CSoundSystem'
+        Source = '00/c0/CSoundSystem_CSoundSystem_00c094a0.cpp'
+        TestSource = '00/c0/CSoundSystem_CSoundSystem_00c094a0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c094a0_TEST PASS'
     }
@@ -303856,9 +303856,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c08ae0'
-        Module = 'CAudioOwner'
-        Source = '00/c0/CAudioOwner_WaitForSprite_00c08ae0.cpp'
-        TestSource = '00/c0/CAudioOwner_WaitForSprite_00c08ae0_test.cpp'
+        Module = 'CSoundSystem'
+        Source = '00/c0/CSoundSystem_WaitForSprite_00c08ae0.cpp'
+        TestSource = '00/c0/CSoundSystem_WaitForSprite_00c08ae0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c08ae0_TEST PASS'
     }

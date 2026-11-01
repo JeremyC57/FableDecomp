@@ -1,6 +1,7 @@
-// CAudioOwner::WaitForSprite() -- poll the owner's optional sprite object (+0x60) under the library lock until it reports finished, sleeping 100 ms after every poll
+// CSoundSystem::WaitForSprite() -- poll the owner's optional sprite object (+0x60) under the library lock until it reports finished, sleeping 100 ms after every poll
 // Flags: /EHsc
 // Leaf: WaitForSprite
+// Naming (naming wave 21, DECISIONS_W20_RESOLVED): CAudioOwner -> CSoundSystem, the one class name for vtable 0x012B1E24 (the libpk sound system CreateSoundSystem_00c096e0 0x00C096E0 returns and the landed CSoundManagerLH ctor 0x00A3EF00 drives; descriptive, libpk has no PDB).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C08AE0, 133 bytes (`ret`). Built under /EHsc. Descriptive names (no PDB covers
 //   this library): the manifest's "EventQueue_ProcessBlockParrySuccessesWithTimeout" is propagated. The only caller is
 //   the owner's destructor 0x00C09380 (landed as CCreatureActionHeroJump_00c09380; "Finish"), right after its Stop
@@ -24,13 +25,13 @@ struct CSprite {
     bool IsFinished();                          // 0x00C15B00
 };
 
-struct CAudioOwner {
+struct CSoundSystem {
     unsigned char _pad00[0x60];
     CSprite* m_pSprite;                         // +0x60
     void WaitForSprite();
 };
 
-void CAudioOwner::WaitForSprite()
+void CSoundSystem::WaitForSprite()
 {
     bool done;
     do {

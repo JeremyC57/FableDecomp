@@ -1,4 +1,4 @@
-// behaviour test for 0x00C08AE0 CAudioOwner::WaitForSprite: poll the optional sprite under the lock, sleep 100 ms after every poll, until it is finished
+// behaviour test for 0x00C08AE0 CSoundSystem::WaitForSprite: poll the optional sprite under the lock, sleep 100 ms after every poll, until it is finished
 #include <cstdio>
 
 static int g_sleeps = 0, g_locks = 0, g_unlocks = 0, g_lockDepth = 0, g_badPoll = 0;
@@ -20,12 +20,12 @@ struct CSprite {
     bool IsFinished() { if (g_lockDepth != 1) g_badPoll = 1; return m_pollsLeft-- <= 0; }   // stand-in for 0x00C15B00
 };
 
-struct CAudioOwner {
+struct CSoundSystem {
     CSprite* m_pSprite;
     void WaitForSprite();
 };
 
-void CAudioOwner::WaitForSprite()
+void CSoundSystem::WaitForSprite()
 {
     bool done;
     do {
@@ -41,7 +41,7 @@ void CAudioOwner::WaitForSprite()
 
 int main()
 {
-    CAudioOwner owner; owner.m_pSprite = 0;
+    CSoundSystem owner; owner.m_pSprite = 0;
     owner.WaitForSprite();                                        // no sprite: one poll, one sleep
     if (g_sleeps != 1 || g_locks != 1 || g_unlocks != 1 || g_lastSleep != 100) { std::printf("00c08ae0_TEST FAIL\n"); return 1; }
     CSprite sprite; sprite.m_pollsLeft = 3;

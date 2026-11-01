@@ -1,9 +1,10 @@
-// CAudioOwner::Update() -- EH-framed per-tick update under a scoped lock over the global @ 0x0143BB14: an out-of-line step on `this` (@ 0x00C091A0), then the parameter block at +0x34 (CAudioParamBlock::Update @ 0x00C0AF20) and the sound-event manager at +0x38 (@ 0x00C12880) are updated, and the optional object at +0x64 advanced (@ 0x00C14DD0)
-// Leaf: ?Update@CAudioOwner@@QAEXXZ
+// CSoundSystem::Update() -- EH-framed per-tick update under a scoped lock over the global @ 0x0143BB14: an out-of-line step on `this` (@ 0x00C091A0), then the parameter block at +0x34 (CAudioParamBlock::Update @ 0x00C0AF20) and the sound-event manager at +0x38 (@ 0x00C12880) are updated, and the optional object at +0x64 advanced (@ 0x00C14DD0)
+// Leaf: ?Update@CSoundSystem@@QAEXXZ
+// Naming (naming wave 21, DECISIONS_W20_RESOLVED): CAudioOwner -> CSoundSystem, the one class name for vtable 0x012B1E24 (the libpk sound system CreateSoundSystem_00c096e0 0x00C096E0 returns and the landed CSoundManagerLH ctor 0x00A3EF00 drives; descriptive, libpk has no PDB).
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C091F0, oracle length 116 bytes. Built under /EHsc.
 // Naming (sweep1, 2026-10-25): was landed as _unattributed::CPixelShader_00c091f0::Shutdown (manifest "~CPixelShader",
-//   propagated); descriptive (no PDB covers this library). `this` is the libpk audio owner (chunk 431's CAudioOwner,
+//   propagated); descriptive (no PDB covers this library). `this` is the libpk audio owner (chunk 431's CSoundSystem,
 //   destructor 0x00C09380): its two callers are the owner's own pumps, 0x00C092AA (under the lock, when the worker
 //   thread handle +0x74 is null) and 0x00C09345 (in 0x00C092D0, when GetTickCount passes the next-tick time +0x78, which is then
 //   advanced by 1000 / the tick rate +0x70), so the body is the periodic update, not a shutdown. +0x34 is the parameter
@@ -26,7 +27,7 @@ struct CAudioParamBlock { void Update(); };       // 0x00C0AF20
 struct CSoundEventManager { void Update(); };     // 0x00C12880
 struct CThird_00c091f0 { void Advance(); };       // 0x00C14DD0
 
-struct CAudioOwner {
+struct CSoundSystem {
     unsigned char _pad[0x34];
     CAudioParamBlock* m_pParams;           // +0x34
     CSoundEventManager* m_pEventManager;   // +0x38
@@ -36,7 +37,7 @@ struct CAudioOwner {
     void Update();
 };
 
-void CAudioOwner::Update()
+void CSoundSystem::Update()
 {
     PKCProtectionInstance lock(&g_lock_0143bb14);
     OnActivate();

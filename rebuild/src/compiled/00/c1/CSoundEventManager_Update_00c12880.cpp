@@ -1,5 +1,6 @@
 // CSoundEventManager::Update() -- EH-framed per-tick update under a scoped lock over the global @ 0x0143BB14: every active event of the pool at +0x5c (count at +0x60, accessor @ 0x00C13620, CSoundEvent::IsActive @ 0x00C20840) is applied with `this` and the flags at +0x7c8 (@ 0x00C21A50); then the flags are cleared, the pending events assigned (AssignPendingItems @ 0x00C10CD0), the step @ 0x00C12040 run and the owned part at +0x7bc finished (@ 0x00C1C6A0)
 // Leaf: ?Update@CSoundEventManager@@QAEXXZ
+// Naming (naming wave 21, DECISIONS_W20_RESOLVED): CAudioOwner -> CSoundSystem, the one class name for vtable 0x012B1E24 (the libpk sound system CreateSoundSystem_00c096e0 0x00C096E0 returns and the landed CSoundManagerLH ctor 0x00A3EF00 drives; descriptive, libpk has no PDB).
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C12880, oracle length 179 bytes. Built under /EHsc.
 // Retail bytes:  ... loop: push edi ; mov ecx,ebp ; call CArray::Get ; mov ebx,eax ; mov ecx,ebx ; call IsActive ; test eax,eax ; je next ; mov eax,[esi+7C8h] ; push eax ; push esi ; mov ecx,ebx ; call Apply ; next: mov eax,[esi+60h] ; inc edi ; cmp edi,eax ; jb loop ; pop ebp ; pop ebx ; done: mov ecx,esi ; mov dword ptr [esi+7C8h],0 ; call AssignPendingItems ; mov ecx,esi ; call Rebuild ; mov ecx,[esi+7BCh] ; call COwner::Finish ; ...
@@ -9,7 +10,7 @@
 //   bounds-checked accessor 0x00C13620 and CSoundEvent::IsActive 0x00C20840 (`state != 0`, the +0xac state word) is
 //   the one the landed UpdateItems 0x00C11CB0 / CountPlayingEvents 0x00C12680 walk; 0x00C10CD0 is the landed
 //   CSoundEventManager::AssignPendingItems; +0x7c8 is the flag word the landed SetFlagBit1 0x00C11180 sets. Its caller
-//   is the audio owner's per-tick CAudioOwner::Update 0x00C091F0 (on the owner's +0x38 manager). The +0x7bc part and
+//   is the audio owner's per-tick CSoundSystem::Update 0x00C091F0 (on the owner's +0x38 manager). The +0x7bc part and
 //   the 0x00C12040 / 0x00C21A50 callees keep descriptive placeholder names.
 class PKCCriticalSection;
 extern PKCCriticalSection g_lock_0143bb14;        // 0x0143BB14

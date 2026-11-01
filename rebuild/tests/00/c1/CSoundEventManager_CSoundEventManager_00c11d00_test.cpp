@@ -1,4 +1,4 @@
-// Behaviour test for 0x00C11D00 CSoundEventManager::CSoundEventManager(CAudioOwner*, float, float, float, float, float,
+// Behaviour test for 0x00C11D00 CSoundEventManager::CSoundEventManager(CSoundSystem*, float, float, float, float, float,
 // CSteeringWorldEntry*): the same member initialisation (listener frame 0/front/up, event set from the three floats, fader
 // step 1000 / owner rate, cleared state block, flags, 500 default) and the four heap components wired to the manager,
 // with stub components that record what they were built with.
@@ -10,7 +10,7 @@ struct CVec3 {
     CVec3(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 struct CSteeringWorldEntry { int Id; };
-struct CAudioOwner { float Rate; };
+struct CSoundSystem { float Rate; };
 struct CSoundEventSet {
     float A, B, C;
     CSoundEventSet(float a, float b, float c) : A(a), B(b), C(c) { }
@@ -36,7 +36,7 @@ struct CTimerHost {
 };
 
 struct CSoundEventManager {
-    CAudioOwner*  Owner;
+    CSoundSystem*  Owner;
     CVec3         Position;
     CVec3         Front;
     CVec3         Up;
@@ -58,7 +58,7 @@ struct CSoundEventManager {
     bool          Flag885;
     long          Value888;
     long          Value88C;
-    CSoundEventManager(CAudioOwner* g, float a4, float a0, float a8, float w, float h, CSteeringWorldEntry* entry)
+    CSoundEventManager(CSoundSystem* g, float a4, float a0, float a8, float w, float h, CSteeringWorldEntry* entry)
         : Owner(g), Position(0.0f, 0.0f, 0.0f), Front(0.0f, 1.0f, 0.0f), Up(0.0f, 0.0f, 1.0f), Event(a4, a0, a8),
           HelperA(0), HelperB(0), Gain(1.0f), Timer(0), ValueC8(0), ValueCC(0), Width(w), Height(h), Timing(1000.0f / g->Rate)
     {
@@ -81,7 +81,7 @@ struct CSoundEventManager {
 
 int main()
 {
-    CAudioOwner owner;
+    CSoundSystem owner;
     owner.Rate = 50.0f;
     CSteeringWorldEntry entry;
     entry.Id = 7;
