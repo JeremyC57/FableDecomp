@@ -4,7 +4,7 @@
 // Callees: PathExists(const CWideString&) @ 0x00999230 (__fastcall), operator new @ 0x00BFEA1A, CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0,
 // CWideString::CWideString() @ 0x0099AED0, CCountedPointer<CDiskFileWin32>::Reset(CDiskFileWin32*) @ 0x009D1EE0 (catalog
 // "CCountedPointer<CIPhysicsFacesSegmentBase const>::Reset", a byte-twin), the file's virtual slot 1 (+0x04, Open(name,
-// read 1, flags 4)), CWideString::operator= @ 0x0099B7D0, CBankFile::ReadFileInformation(bool) @ 0x009D0880, CBankFile::Close
+// read 1, flags 4)), CWideString::operator= @ 0x0099B7D0, CBankFile::ReadFileInformation(bool) @ 0x009D0880, CBankFile::CloseEntries
 // @ 0x009CD850 (catalog "CDefStringTable::Destructor", propagated), this's virtual slot 11 (+0x2c, the post-open step).
 // Shape: the resets use the zero register ebx, which then doubles as the null result of the `new` (null test, inline
 // CDiskFileWin32 ctor: vtable 0x0122D06C, Pathname, Opened = false in the body). The bool argument is `!(flags & 2)`
@@ -45,6 +45,9 @@ template <class T> class CCountedPointer { public:
 };
 
 class CBankFile {
+private:
+    void CloseEntries();   // 0x009CD850 (Ego_r.pdb ?CloseEntries@CBankFile@@AAEXXZ)
+private:
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();
@@ -63,7 +66,6 @@ public:
     bool FileValid;                                // +0x94
     bool UpdatingFlag;                             // +0x95
     bool ReadFileInformation(bool validate);       // 0x009D0880
-    void Close();                                  // 0x009CD850
 };
 
 bool CBankFile::OpenFileReadOnly(const CWideString& filename, unsigned long flags)
@@ -82,7 +84,7 @@ bool CBankFile::OpenFileReadOnly(const CWideString& filename, unsigned long flag
     BankFile->Open(filename, 1, 4);
     Filename = filename;
     if (!ReadFileInformation(!(flags & 2))) {
-        Close();
+        ((CBankFile*)this)->CloseEntries();
         return false;
     }
     PostOpen();

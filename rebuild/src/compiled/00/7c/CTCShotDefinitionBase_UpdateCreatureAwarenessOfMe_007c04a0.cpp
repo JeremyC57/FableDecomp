@@ -28,12 +28,16 @@ class CSoundInit { public:
     CSoundInit();                                   // 0x0041C930
 };
 struct CSoundGroup { unsigned char* first; unsigned char* last; };
+class CSoundPair;
+class CSoundMap { public:
+    CSoundPair const* GetPSoundPair(CCharString const&a0) const;   // 0x0065FBA4 (Ego_r.pdb ?GetPSoundPair@CSoundMap@@QBEPBVCSoundPair@@ABVCCharString@@@Z)
+};
 class CSoundDef { public:
     virtual void v00();
     virtual void Destroy();
     long RefCount;
     unsigned char _pad08[0x20];
-    struct CMap { CSoundGroup* Find(const CCharString& name); } Sounds;   // +0x28, 0x0065FBA4
+    struct CMap {  } Sounds;   // +0x28, 0x0065FBA4
 };
 struct CSoundDefPtr {
     CSoundDef* Object;
@@ -223,7 +227,7 @@ void CTCShotDefinitionBase::UpdateCreatureAwarenessOfMe()
                 CSoundGroup* group;
                 {
                     CCharString name("ARROW_FLY_BY");
-                    group = def.Object->Sounds.Find(name);
+                    group = ((CSoundGroup*)((CSoundMap*)&(def.Object->Sounds))->GetPSoundPair(name));
                 }
                 if (group)
                 {

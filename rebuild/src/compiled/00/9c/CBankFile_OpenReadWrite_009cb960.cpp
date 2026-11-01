@@ -26,10 +26,12 @@ class CWideString { public:
 };
 class CBankFile;
 struct CBankFileManager {
+public:
+    CWideString GetDevBankFilePath(CCharString const&a0) const;   // 0x009A7CA0 (Ego_r.pdb ?GetDevBankFilePath@CBankFileManager@@QBE?AVCWideString@@ABVCCharString@@@Z)
+public:
     unsigned char _pad[0x14];
     bool m_retailMode;                             // +0x14
     CWideString GetRetailBankPath(const CCharString& bankHandle);   // 0x009A7D40
-    CWideString GetBankPath(const CCharString& bankHandle);         // 0x009A7CA0
     void RegisterRetailBank(const CCharString& bankHandle, CBankFile* bank);   // 0x009A8090
 };
 extern CBankFileManager g_bankFileManager;         // 0x013CA79C
@@ -75,6 +77,6 @@ void CBankFile::OpenReadWrite(const CCharString& bankHandle, unsigned long flags
         OpenRetail();
         return;
     }
-    CWideString path = g_bankFileManager.GetBankPath(bankHandle);
+    CWideString path = ((CBankFileManager*)&g_bankFileManager)->GetDevBankFilePath(bankHandle);
     OpenFileReadWrite(path, flags, alignment);
 }
