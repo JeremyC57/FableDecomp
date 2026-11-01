@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CBA8E0, 194 bytes (`ret`, both references in ecx/edx).
 // TU: the scripting library's STLport 4.x instantiations (0x00CB6xxx-0x00CBDxxx); the game is built /Gr, so the
 //   algorithm templates are __fastcall (first two pointer arguments in ecx/edx, callee pops the rest).
-// Identity: STLport std::swap over (name, entity script binding) = std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > (0x0C bytes, CCompareString -> CCharString::FastCompare 0x009E6530); reached through
+// Identity: STLport std::swap over (name, entity script binding) = std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > (0x0C bytes, CCompareString -> CCharString::operator< 0x009E6530 (??MCCharString@@QBE_NABV0@@Z, naming wave 20)); reached through
 //   iter_swap (tail `jmp` at 0x00CBB2C0) and __unguarded_partition 0x00CBB8B9. The manifest label "swap<C3DMeshVolume>"
 //   is propagated and wrong.
 // Callees: CCharString copy/assign/dtor 0x0099EC30 / 0x0099EFB0 / 0x0099EAE0, pair operator= 0x00CBA700 (retail
@@ -16,7 +16,7 @@ public:
     CCharString(const CCharString& other);                 // 0x0099EC30
     ~CCharString();                                        // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);      // 0x0099EFB0
-    bool FastCompare(const CCharString& other) const;      // 0x009E6530
+    bool operator<(const CCharString& other) const;      // 0x009E6530
 };
 class CCPPointerInfo { public:                                    // CCountedPointer count block
     long  RefCount;                                        // +0x00
@@ -73,7 +73,7 @@ template <class _T1, class _T2> struct pair {
 }
 template <class V> class CCompareString {                  // empty, passed by value (4-byte slot)
 public:
-    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
+    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.operator<(b.first); }
 };
 typedef std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > CBindingPair;   // 12 bytes
 typedef CCompareString<CCountedPointer<CEntityScriptBindingBase> > CBindingLess;
