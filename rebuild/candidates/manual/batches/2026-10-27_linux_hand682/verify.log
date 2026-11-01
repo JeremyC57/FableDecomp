@@ -1,0 +1,45 @@
+addr       parity           behav  name
+00788617   WARN SHARED_HEADER_AVAILABLE CTCBase
+00788617   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00788617   WARN SHARED_HEADER_AVAILABLE CFadeInFadeOutBase
+00788617   WARN SHARED_HEADER_AVAILABLE CWorld
+00788617   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+00788617   WARN RELOC_NAME: ??$?0V?$CIntelligentPointer@VCThing@@@@M@?$pair@V?$CIntelligentPointer@VCThing@@@@J@std@@QAE@ABU?$pair@V?$CIntelligentPointer@VCThing@@@@M@1@@Z -> 00788d68 labelled 'pair<CIntelligentPointer<const CThing>,long>::pair'
+00788617   RELOCATION_MATCH PASS   ProcessPossibleStrike
+00b513b0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00b513b0   RELOCATION_MATCH PASS   ~CEngineWeatherRenderer
+00bbbbc0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00bbbbc0   RELOCATION_MATCH PASS   ~CEnginePrimitiveManagerDecal
+00d6ed60   RELOCATION_MATCH PASS   ~CQ_HangingTreeEvilScript
+00f26250   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00f26250   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00f26250   WARN RELOC_NAME: ?WriteLong@CDataOutputStream@@QAEXJ@Z -> 00993eb0 labelled 'CDataOutputStream::WriteSLONG'
+00f26250   WARN RELOC_NAME: ??0CArenaCreatureDef@@QAE@XZ -> 00f263d0 labelled 'CFireheartMinigameDef_00f263d0::CFireheartMinigameDef_00f263d0'
+00f26250   RELOCATION_MATCH PASS   TransferVectorOfSubComponents<CArenaCreatureDef>
+00f34330   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00f34330   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00f34330   WARN RELOC_NAME: ?WriteLong@CDataOutputStream@@QAEXJ@Z -> 00993eb0 labelled 'CDataOutputStream::WriteSLONG'
+00f34330   WARN RELOC_NAME: ??0CFeatDef@@QAE@XZ -> 00f344c0 labelled 'CVtable_012fb778::CVtable_012fb778'
+00f34330   RELOCATION_MATCH PASS   TransferVectorOfSubComponents<CFeatDef>
+0121e260   WARN SHARED_HEADER_AVAILABLE CTCWife
+0121e260   WARN RELOC_CONFLICT: _$E2 -> 01229480 here, 01228930 in landed 01219f00
+0121e260   WARN RELOC_NAME: _$E2 -> 01229480 labelled 'CFontBankStateBlock::CreateCRC'
+0121e260   RELOCATION_MATCH PASS   $E_WifeAppearanceDialogueGroupStemNames
+
+WINS: 7
+  00788617 RELOCATION_MATCH CTCMeleeTrap::?ProcessPossibleStrike@CTCMeleeTrap@@AAEXMMABU?$pair@VC3DVector@@V1@@std@@0AAVCThing@@@Z
+  00b513b0 RELOCATION_MATCH CEngineWeatherRenderer::??1CEngineWeatherRenderer
+  00bbbbc0 RELOCATION_MATCH CEnginePrimitiveManagerDecal::??1CEnginePrimitiveManagerDecal
+  00d6ed60 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::??1CQ_HangingTreeEvilScript@NScript@@UAE@XZ
+  00f26250 RELOCATION_MATCH CPersistContext::??$TransferVectorOfSubComponents@
+  00f34330 RELOCATION_MATCH CPersistContext::??$TransferVectorOfSubComponents@
+  0121e260 RELOCATION_MATCH CTCWife::_$E1
+
+LANDED 7 wins into src/compiled + tests + catalog + oracle
+  CTCMeleeTrap_ProcessPossibleStrike_00788617
+  CEngineWeatherRenderer_CEngineWeatherRenderer_00b513b0
+  CEnginePrimitiveManagerDecal_CEnginePrimitiveManagerDecal_00bbbbc0
+  NScriptCQHangingTreeEvilScript_CQHangingTreeEvilScript_00d6ed60
+  CPersistContext_TransferVectorOfSubComponentsCArenaCreatureDef_00f26250
+  CPersistContext_TransferVectorOfSubComponentsCFeatDef_00f34330
+  CTCWife_EWifeAppearanceDialogueGroupStemNames_0121e260

@@ -1,0 +1,11 @@
+address	name	evidence
+0121e260	CTCWife::WifeAppearanceDialogueGroupStemNames::`dynamic initializer'	Ego_r's three CTCWife dynamic initializers in .CRT$XCU order after 0x0121E1F0 / 0x0121E210; landed 0x00985F40 indexes 0x013BAB40 by EWifeAppearanceCategories; 16 TEXT_AI_WIFE_OPINION_ACT_CLOTHING_* literals (chunk 682)
+00f26250	CPersistContext::TransferVectorOfSubComponents<CArenaCreatureDef>	caller CArenaWaveDef::Transfer 0x00F261F0 key "Creatures", element 0x38 (ctor 0x00F263D0, dtor 0x00F25E40), landed 0x00F349F0 template; label Transfer<signed_char> wrong (chunk 682)
+00f34330	CPersistContext::TransferVectorOfSubComponents<CFeatDef>	caller 0x00F332CE, element 0x64, ctor 0x00F344C0, wrapper vtable 0x01301C54; label Transfer<signed_char> wrong (chunk 682)
+00b513b0	CEngineWeatherRenderer::~CEngineWeatherRenderer	sole caller the ??_G, vtable 0x012A2434 RTTI chain (chunk 682)
+00bbbbc0	CEnginePrimitiveManagerDecal::~CEnginePrimitiveManagerDecal	??_G 0x00BBBBA0; RTTI 0x012A5B6C chain (chunk 682)
+00d6ed60	NScript::CQ_HangingTreeEvilScript::~CQ_HangingTreeEvilScript	RTTI-less quest vtable 0x012D1F98, ctor 0x00D68F00 / Alloc 0x00D6ED10 "Q_HangingTreeEvil" (chunk 682)
+00788617	CTCMeleeTrap::ProcessPossibleStrike	Ego_r name; sole caller 0x0078891D (chunk 682)
+00f344c0	CFeatDef::CFeatDef	element ctor called by TransferVectorOfSubComponents<CFeatDef> 0x00F34330 (chunk 682)
+00f263d0	CArenaCreatureDef::CArenaCreatureDef	element ctor called by TransferVectorOfSubComponents<CArenaCreatureDef> 0x00F26250 (chunk 682)
+00f25e40	CArenaCreatureDef::~CArenaCreatureDef	element dtor called by 0x00F26250 (chunk 682)

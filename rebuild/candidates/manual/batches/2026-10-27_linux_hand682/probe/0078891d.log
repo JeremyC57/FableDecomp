@@ -1,0 +1,23 @@
+1	first source: shared MeleeTrap model, named filter locals with user ctors, two GetPos calls	DIFFER 463v466
+2	no user ctors on the anonymous functors (value-initialised: retail `stosb` zeroing), one GetPos through a reference	DIFFER 471v466
+3	named isNotList + temporaries in a named CFilter_Bind4 initialiser	DIFFER 471v466 (temporaries homed in dead argument slots)
+4	every filter a temporary inside the search call, named centre statements	DIFFER 488v466
+5	p4 with C2DCoordI(long, long) temp (Y first: right-to-left)	DIFFER 487v466
+6	C2DCoordI(const C3DVector&) temp inside the call, named def	DIFFER 471v466 (161 lines)
+7	landed GetTCIfPresent pointer form (two ParentThing loads)	DIFFER 472v466 (weapon trail now lands in ecx, prologue reloads ParentThing)
+8	named CFilter_Bind4 local + named centre	DIFFER 446v466
+9	named centre statement before the call, filter temporaries in the call	DIFFER 474v466
+10	iterator-object vector (landed CRetailVector shape)	DIFFER 471v466 (= p6)
+11	inner loop through a `CPointPairVector& points` reference	DIFFER 471v466 (= p6)
+12	inner loop through explicit `*(begin() + i)`	DIFFER 471v466 (= p6)
+13	GetTC with a `T*&` out-parameter	DIFFER 471v466 (= p6)
+14	p6 + pointer-returning GetTC on a `CThing* thing = ParentThing` local	DIFFER 469v466 (156: prologue and GetTC exact)
+15	GetTCIfPresent single inline returning the pointer	DIFFER 477v466
+16	results/search/loops in a nested block inside an exclusions block	DIFFER 469v466 (= p14)
+17	exclusions..loops in one block	DIFFER 469v466 (= p14)
+18	declaration-order experiment (exclusions before trails)	DIFFER 469v466 (148; slots do not follow declaration order)
+19	explicit specialisation vector<CPointPairVector> with the out-of-line destructor 0x007898CC	DIFFER 463v466 (115 lines; parked source)
+20	p19 + named C2DCoordI centre before the call	DIFFER 466v466 (182: centre evaluated before the filter stores)
+21	p20 without the named def	DIFFER 464v466 (187)
+22	named filter locals copy-initialised from temporaries	DIFFER 454v466 (208)
+24	named `const C3DVector& pos` reference, C2DCoordI(pos) temp in the call	DIFFER 461v466 (161) -- parked: 23 probes, the last 5 did not reduce the p19 residue

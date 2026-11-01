@@ -1,0 +1,2 @@
+1	first source: landed 0x00B52250 member models, user ~CEngineWeatherRenderer() {} over a CEngineComponent base model; SRC_FAIL (missing <stddef.h> for offsetof)	SRC_FAIL
+2	same source + <stddef.h>	RELOCATION_MATCH 443v443

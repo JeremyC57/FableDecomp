@@ -35663,3 +35663,15 @@ __01forward@24	00ca0ba0	00ca1060
 ??1CV_ExposeMayorScript@NScript@@UAE@XZ	00e7b2e0	00e7b2c0
 ??1CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@UAE@XZ	00e7f210	00e7f1f0
 ??0CAudioContext@@QAE@XZ	00c55cd0	01224bc0
+??$?0V?$CIntelligentPointer@VCThing@@@@M@?$pair@V?$CIntelligentPointer@VCThing@@@@J@std@@QAE@ABU?$pair@V?$CIntelligentPointer@VCThing@@@@M@1@@Z	00788d68	00788617
+?AddDamageWithAttribute@CHitParameters@@QAEXW4EDamageAttribute@@M@Z	00868ca0	00788617
+?GetPCombatFirstHitLocationIntersectionWithTriangle@CTCHitLocations@@QAEPAVCHitLocation@NHitLocations@@ABV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@AAVC3DVector@@1M@Z	008169b0	00788617
+?push_back@?$vector@U?$pair@V?$CIntelligentPointer@VCThing@@@@J@std@@V?$allocator@U?$pair@V?$CIntelligentPointer@VCThing@@@@J@std@@@2@@std@@QAEXABU?$pair@V?$CIntelligentPointer@VCThing@@@@J@2@@Z	00789515	00788617
+?push_back@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXABVC3DVector@@@Z	0066e630	00788617
+??_7?$CPersistContext_TransferableVectorOfSubComponents@VCArenaCreatureDef@@@@6B@	012fb41c	00f26250
+?TransferVectorOfSubComponentsLoadText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableVectorOfSubComponentsGenericType@@@Z	009bc120	00f26250
+?WriteLong@CDataOutputStream@@QAEXJ@Z	00993eb0	00f26250
+??0CFeatDef@@QAE@XZ	00f344c0	00f34330
+??_7?$CPersistContext_TransferableVectorOfSubComponents@VCFeatDef@@@@6B@	01301c54	00f34330
+?resize@?$vector@VCFeatDef@@V?$allocator@VCFeatDef@@@std@@@std@@QAEXIABVCFeatDef@@@Z	00f34580	00f34330
+?WifeAppearanceDialogueGroupStemNames@CTCWife@@2PAVCCharString@@A	013bab40	0121e260

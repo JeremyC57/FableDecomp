@@ -1,0 +1,1 @@
+1	first source: as 00f26250 with CFeatDef (no user dtor: implicit ~CFeatDef inlined = CDefPointeeBase vtable store + ~CResource call)	RELOCATION_MATCH 400v400

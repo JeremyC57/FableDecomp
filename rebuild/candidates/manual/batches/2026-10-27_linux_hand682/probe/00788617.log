@@ -1,0 +1,2 @@
+1	first source: shared MeleeTrap model (retail CTCTrapBase, STLport vector/pair, CFilter_Bind4, CThing slot-65 OnHit), early return after the triangle block	DIFFER 423v423 (direction/pair temp slots swapped)
+2	the hit built inside `if (hitLocation != 0) { ... }` so the direction takes the freed triangle slot	RELOCATION_MATCH 423v423

@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+0121e260	RELOCATION_MATCH	284v284	PASS	CTCWife::WifeAppearanceDialogueGroupStemNames dynamic initializer (_$E1); probe 1
+00f26250	RELOCATION_MATCH	380v380	PASS	CPersistContext::TransferVectorOfSubComponents<CArenaCreatureDef>; probe 1
+00f34330	RELOCATION_MATCH	400v400	PASS	CPersistContext::TransferVectorOfSubComponents<CFeatDef>; probe 1
+00b513b0	RELOCATION_MATCH	443v443	PASS	CEngineWeatherRenderer::~CEngineWeatherRenderer (user empty dtor); probe 2 (<stddef.h>)
+00bbbbc0	RELOCATION_MATCH	488v488	PASS	CEnginePrimitiveManagerDecal::~CEnginePrimitiveManagerDecal (implicit); probe 1
+00d6ed60	RELOCATION_MATCH	446v446	PASS	NScript::CQ_HangingTreeEvilScript::~CQ_HangingTreeEvilScript (implicit); probe 1
+00788617	RELOCATION_MATCH	423v423	PASS	CTCMeleeTrap::ProcessPossibleStrike (/Os biased frame, block-scoped triangle vector); probe 2
+0078891d	DIFFER	463v466	-	CTCMeleeTrap::PerformPossibleTrapDamage; 23 probes; centre/GetWorld/radius evaluation order, mirrored vector slots, loop registers
+00783850	DIFFER	443v443	-	CTCBoastingCrowdControl::Startup; 26 probes; 12-byte position copy interleave only
+00670820	DIFFER	483v483	-	CTCCoopSpirit::UpdateMovement; 31 probes; x87 order of the X/Y squares (Y*Y kept instead of X*X)

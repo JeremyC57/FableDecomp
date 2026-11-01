@@ -50301,7 +50301,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00d6d670	CQ_HangingTreeEvil_Execute	_global	unknown	undefined	0		0	yes	accepted									
 00d6ed10	sub_00d6ed10	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00d6ed40	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d6\CLandscapeBackgroundPatch_vectordeletingdestructor_00d6ed40.cpp
-00d6ed60	~CQ_HangingTreeEvilScript	CQ_HangingTreeEvilScript	__thiscall	void	1	CQ_HangingTreeEvilScript *	1	yes	accepted									
+00d6ed60	~CQ_HangingTreeEvilScript	NScript::CQ_HangingTreeEvilScript	__thiscall	void	1	CQ_HangingTreeEvilScript *	1	yes	accepted									
 00d6ef20	CQ_HangingTreeGoodScript	NScript::CQ_HangingTreeGoodScript	__thiscall	undefined	3	CQ_HangingTreeGoodScript *,CScriptDataBase *,CGameScriptInterfaceBase *	0	yes	accepted									
 00d6f020	Init	CQ_HangingTreeGoodScript	__thiscall	void	1	CQ_HangingTreeGoodScript *	1	yes	accepted									
 00d6f3c0	RegisterMain	NScript::CQ_HangingTreeGoodScript	__thiscall	void	1	CGlobal_WatchForHeroDeathScript *	1	yes	accepted									
@@ -54987,7 +54987,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00f25dd0	COpinionDeedReactionDef	COpinionDeedReactionDef	__thiscall	undefined	2	COpinionDeedReactionDef *,COpinionDeedReactionDef *	0	yes	accepted									
 00f25e10	sub_00f25e10	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00f25e20	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\f2\CLandscapeBackgroundPatch_vectordeletingdestructor_00f25e20.cpp
-00f25e40	~CAIStateGroup_HoverHornetQueen	CAIStateGroup_HoverHornetQueen	__thiscall	void	1	CAIStateGroup_HoverHornetQueen *	1	yes	accepted									
+00f25e40	~CArenaCreatureDef	CArenaCreatureDef	__thiscall	void	1	CAIStateGroup_HoverHornetQueen *	1	yes	accepted									
 00f25e70	Transfer	CArenaCreatureDef	unknown	undefined	0		0			discovered	gapscan							
 00f25f00	sub_00f25f00	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00f25f10	Copy	CArenaCreatureDef	__thiscall	void	2	CArenaCreatureDef *,CDefClassBase *	1	yes	accepted									
@@ -54998,8 +54998,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00f26150	_M_allocate_and_copy<CArenaCreatureDef const *>	std::vector<CArenaCreatureDef, std::allocator<CArenaCreatureDef>>	unknown	undefined	0		0	yes	accepted									
 00f261a0	_M_allocate_and_copy<CArenaRoundDef const *>	std::vector<CArenaRoundDef, std::allocator<CArenaRoundDef>>	unknown	undefined	0		0	yes	accepted									
 00f261f0	Transfer	CArenaWaveDef	unknown	undefined	0		0			discovered	gapscan							
-00f26250	Transfer<signed_char>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
-00f263d0	CFireheartMinigameDef	CFireheartMinigameDef	__thiscall	undefined	1	CFireheartMinigameDef *	0	yes	accepted									
+00f26250	TransferVectorOfSubComponents<CArenaCreatureDef>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
+00f263d0	CArenaCreatureDef	CArenaCreatureDef	__thiscall	undefined	1	CFireheartMinigameDef *	0	yes	accepted									
 00f26400	Size	CPersistContext_TransferableVector<CArenaCreatureDef>	unknown	undefined	0		0			discovered	gapscan							
 00f26420	AreDefaultValsApplied	CPersistContext_TransferableVectorOfSubComponents<CArenaCreatureDef>	unknown	undefined	0		0			discovered	gapscan							
 00f26440	SetDefaultValsApplied	CPersistContext_TransferableVectorOfSubComponents<CArenaCreatureDef>	unknown	undefined	0		0			discovered	gapscan							
@@ -55156,8 +55156,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00f34110	__copy_backward_ptrs<CFireHeartPatternDef *, CFireHeartPatternDef *>	std	unknown	undefined	0		0	yes	accepted									
 00f34160	_M_insert_overflow	std::vector<CFireHeartPatternDef, std::allocator<CFireHeartPatternDef>>	unknown	undefined	0		0	yes	accepted									
 00f342b0	Resize	CPersistContext_TransferableVectorOfSubComponents<CFireHeartPatternDef>	unknown	undefined	0		0	yes	accepted									
-00f34330	Transfer<signed_char>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
-00f344c0	CAIStateGroup_HoverHornetQueen	CAIStateGroup_HoverHornetQueen	__thiscall	undefined	1	CAIStateGroup_HoverHornetQueen *	0	yes	accepted									
+00f34330	TransferVectorOfSubComponents<CFeatDef>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
+00f344c0	CFeatDef	CFeatDef	__thiscall	undefined	1	CAIStateGroup_HoverHornetQueen *	0	yes	accepted									
 00f344f0	sub_00f344f0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00f34510	AreDefaultValsApplied	CPersistContext_TransferableVectorOfSubComponents<CFeatDef>	unknown	undefined	0		0			discovered	gapscan							
 00f34530	SetDefaultValsApplied	CPersistContext_TransferableVectorOfSubComponents<CFeatDef>	unknown	undefined	0		0			discovered	gapscan							
@@ -56872,7 +56872,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0121e1d0	sub_0121e1d0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 0121e1f0	sub_0121e1f0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 0121e210	sub_0121e210	_gapscan	unknown	undefined	0		0			discovered	gapscan							
-0121e260	sub_0121e260	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+0121e260	`dynamic initializer'	CTCWife::WifeAppearanceDialogueGroupStemNames	unknown	undefined	0		0			discovered	gapscan							
 0121e380	sub_0121e380	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 0121e3a0	sub_0121e3a0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 0121e3d0	sub_0121e3d0	_gapscan	unknown	undefined	0		0			discovered	gapscan							

@@ -1,0 +1,4 @@
+address	status	bytes	test	note
+0078891d	DIFFER	463v466	-	CTCMeleeTrap::PerformPossibleTrapDamage; 23 probes; centre/GetWorld/radius evaluation order, mirrored vector slots, loop registers
+00783850	DIFFER	443v443	-	CTCBoastingCrowdControl::Startup; 26 probes; 12-byte position copy interleave only
+00670820	DIFFER	483v483	-	CTCCoopSpirit::UpdateMovement; 31 probes; x87 order of the X/Y squares (Y*Y kept instead of X*X)

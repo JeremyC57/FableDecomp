@@ -373631,6 +373631,55 @@ $catalog = @(
         TestSource = '00/e7/NScriptCVFishingCompetitionScriptCFishCompOrganiser_CFishCompOrganiser_00e7f210_test.cpp'
         PassPattern = '00e7f210_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00788617'
+        Module = 'CTCMeleeTrap'
+        Source = '00/78/CTCMeleeTrap_ProcessPossibleStrike_00788617.cpp'
+        TestSource = '00/78/CTCMeleeTrap_ProcessPossibleStrike_00788617_test.cpp'
+        PassPattern = '00788617_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b513b0'
+        Module = 'CEngineWeatherRenderer'
+        Source = '00/b5/CEngineWeatherRenderer_CEngineWeatherRenderer_00b513b0.cpp'
+        TestSource = '00/b5/CEngineWeatherRenderer_CEngineWeatherRenderer_00b513b0_test.cpp'
+        PassPattern = '00b513b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bbbbc0'
+        Module = 'CEnginePrimitiveManagerDecal'
+        Source = '00/bb/CEnginePrimitiveManagerDecal_CEnginePrimitiveManagerDecal_00bbbbc0.cpp'
+        TestSource = '00/bb/CEnginePrimitiveManagerDecal_CEnginePrimitiveManagerDecal_00bbbbc0_test.cpp'
+        PassPattern = '00bbbbc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d6ed60'
+        Module = 'NScript::CQ_HangingTreeEvilScript'
+        Source = '00/d6/NScriptCQHangingTreeEvilScript_CQHangingTreeEvilScript_00d6ed60.cpp'
+        TestSource = '00/d6/NScriptCQHangingTreeEvilScript_CQHangingTreeEvilScript_00d6ed60_test.cpp'
+        PassPattern = '00d6ed60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f26250'
+        Module = 'CPersistContext'
+        Source = '00/f2/CPersistContext_TransferVectorOfSubComponentsCArenaCreatureDef_00f26250.cpp'
+        TestSource = '00/f2/CPersistContext_TransferVectorOfSubComponentsCArenaCreatureDef_00f26250_test.cpp'
+        PassPattern = '00f26250_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f34330'
+        Module = 'CPersistContext'
+        Source = '00/f3/CPersistContext_TransferVectorOfSubComponentsCFeatDef_00f34330.cpp'
+        TestSource = '00/f3/CPersistContext_TransferVectorOfSubComponentsCFeatDef_00f34330_test.cpp'
+        PassPattern = '00f34330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0121e260'
+        Module = 'CTCWife'
+        Source = '01/21/CTCWife_EWifeAppearanceDialogueGroupStemNames_0121e260.cpp'
+        TestSource = '01/21/CTCWife_EWifeAppearanceDialogueGroupStemNames_0121e260_test.cpp'
+        PassPattern = '0121e260_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
