@@ -3598,3 +3598,5 @@ w24	0139c8fc	?_afxDataNil@@3PAUCStringData@@A (a pointer) or _afxInitData (the b
 w24	00686a80	?PeekWorld@CTCBase@@... (the spelling 0x004BC750 binds)	DECISIONS_W24_RESOLVED item 7: seven junk binders 00744580 0076c810 0077db90 007345d0 00681980 006afd40 007e00d0	junk per-row spellings
 w24	00c2d9c0	the owner of 0x00C2D9C0 from its own row and both callers	DECISIONS_W24_RESOLVED item 5	Reader::Find / CriteriaReader::FindSegment
 w24	0042db40 00523540 0055d070 00770e50 00778ae0 0077b250 0077b9b0 0077be40	per-row ruling on the implicit-dtor rows under the protected ~CBaseClassNonCopyable	DECISIONS_W24_RESOLVED item 8	the public UAE spelling
+w25	0139c8fc	?_NullString@@3PAUCStringData@@A	DECISIONS_W25_RESOLVED D1: retail text "stringSrc.GetData() != _NullString" in Fable.exe; no _afx name in the binary	?_afxDataNil@@3PAUCStringData@@A (0x00C0B910 / 0x00C0B9F0 / 0x00C0BA40)
+w25	00744580	identity of the remaining 0x00686A80 binder	DECISIONS_W25_RESOLVED D5	junk spelling
