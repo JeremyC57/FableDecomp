@@ -25912,3 +25912,13 @@ chunk	address	module	name	length
 690	009cec60	CBankFile	CBankFile::Update	1684
 690	00c059d0	_global	crc32_little	722
 690	00c05cb0	_global	crc32_little	793
+691	00c0ce50	_global	CCharString_ReplaceAll	681
+691	00cd3f50	_global	DefinitionManager_LoadDefinitions	867
+691	00c6d630	_global	CAudioMixer_ProcessChannels	808
+691	00d89710	_global	Script_Undead_Generator	960
+691	00c08d40	_global	CSystem_ProcessMainEvent	964
+691	00e3a6b0	_global	CScriptGameResourceObjectScriptedThingBase_HandleBordelloNPC	1013
+691	004ba810	remove_if<NEntityEvents::CConvFilterToCP<NEntityEvents	remove_if<NEntityEvents::CConvFilterToCP<NEntityEvents::CIsEventOfType>_>	89
+691	00a39010	CCRCSymbolMap	CCRCSymbolMap::LoadFromFile	378
+691	007877e0	CTCBob	FrameUpdate	487
+691	0084fdb0	NCameraModes::CCameraPointModeBase	NCameraModes::CCameraPointModeBase::vfunc_22	15
