@@ -25672,3 +25672,13 @@ chunk	address	module	name	length
 664	00ca5570	_global	Audio_SleepUntilFrameTime	100
 664	00442610	_global	RenderState_Destructor	201
 664	00f37570	_global	CGPUScratchBufferTextureManager_Destructor	225
+665	006ed200	_global	CombatDialogueManager_UpdateDialogueFrame	101
+665	00c051c0	_global	__tr_init	100
+665	00d2f640	_global	CParticleEmitter_Dtor_3	108
+665	007aff70	_global	CChunkedFileChunk_Destructor_WithVectorCleanup	129
+665	00dd1f40	_global	CParticleEmitter_Dtor_8	155
+665	007c5660	_global	Destroy_CChunkedFileChunk	161
+665	009a1090	_global	CTextureScreen_dtor	170
+665	00d83350	_global	CParticleEmitter_Dtor_6	165
+665	0098e690	_global	CThreadedFileManager_Destructor	214
+665	00d27290	_global	CParticleEmitter_Dtor_2	217
