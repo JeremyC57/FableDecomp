@@ -6,7 +6,10 @@
 // Layout: retail CDefinitionManager (PDB minus 0x10 from the 12-byte vectors ahead): CurrentFilename +0xb4. Modelled locally.
 // Shape: as CreateSymbolsFromPathList, except that the (unused) function-name string is built inside the per-path loop after the
 //   scan locals, and there is no symbol-table finalise tail.
-// Leaf: DoCompilePathList
+// Leaf: ?DoCompilePathList@CDefinitionManager@@IAEXABV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@ABVCCharString@@@Z
+// Naming wave 27 (family dm, DECISIONS_W26 D5): DoCompilePathList is protected with a const CCharString& def type,
+//   passed on to the protected CompileString(const char*, const CCharString&) 0x009AF1E0 (both PDBs; its own row's spelling).
+//   Was public with a long flag (QAE ..J).
 // Naming wave 26 (family vws): the vector is STLport 4.6 std::vector<CWideString, allocator<CWideString> >; its grow-insert 0x00412330
 //   is the protected ?_M_insert_overflow@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@IAEXPAVCWideString@@ABV3@ABU__false_type@2@I_N@Z
 //   (size_type unsigned int; c691 queue). Was CWideStringVector::_M_insert_overflow(..., const __false_type&, unsigned int, bool).
@@ -129,12 +132,12 @@ public:
     CSymbolTable* Symbols60;                            // +0x60
     unsigned char _pad064[0xb4 - 0x64];
     CCharString   CurrentFileName;                      // +0xb4
-    void ParseStringForSymbols(char* text, long flags);   // 0x009ADE90
-    void CompileString(char* text, long flags);         // 0x009AF1E0
-    void DoCompilePathList(const std::vector<CWideString>& paths, long flags);
+protected:                                              // Ego_r.pdb / FableWin.pdb IAE
+    void CompileString(const char* text, const CCharString& defType);   // 0x009AF1E0
+    void DoCompilePathList(const std::vector<CWideString>& paths, const CCharString& defType);
 };
 
-void CDefinitionManager::DoCompilePathList(const std::vector<CWideString>& paths, long flags)
+void CDefinitionManager::DoCompilePathList(const std::vector<CWideString>& paths, const CCharString& defType)
 {
     for (const CWideString* path = paths.begin(); path != paths.end(); ++path) {
         CWideString fileName;
@@ -157,7 +160,7 @@ void CDefinitionManager::DoCompilePathList(const std::vector<CWideString>& paths
             GFRemoveComments(buffer, "//", "\r");
             GFRemoveComments(buffer, "/*", "*/");
             CurrentFileName = ((CWideString*)&(file.GetPathname()))->ToCharString();
-            CompileString(buffer, flags);
+            CompileString(buffer, defType);
             delete[] buffer;
         }
     }

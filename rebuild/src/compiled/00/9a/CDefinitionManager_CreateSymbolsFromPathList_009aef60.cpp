@@ -12,7 +12,11 @@
 //   placement-new push_back; _M_insert_overflow is a same-TU noinline stand-in that reads Start/Finish before writing, so the vector stops
 //   escaping and _M_start/_M_finish stay in edi/esi as in retail. The chained ConvertToCharString().ToLower().ToWideString() pre-pushes
 //   every hidden-return slot; Read is called qualified to get the direct call.
-// Leaf: CreateSymbolsFromPathList
+// Leaf: ?CreateSymbolsFromPathList@CDefinitionManager@@IAEXABV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@_N@Z
+// Naming wave 27 (family dm, DECISIONS_W26 D5): CreateSymbolsFromPathList is protected with a bool flag, passed on to
+//   the protected ParseStringForSymbols(const char*, bool) 0x009ADE90 (both PDBs). Was public with a long flag (QAE ..J).
+//   The two symbol maps (Ego_r PSymbolMap / PDefinitionSymbolMap) end with CSymbolMap::UpdateDirty 0x009E5C30 (both PDBs,
+//   const; chunk 695), which this row had spelled ?Finalise@CSymbolTable (no Finalise in either PDB).
 // Naming wave 26 (family vws): the vector is STLport 4.6 std::vector<CWideString, allocator<CWideString> >; its grow-insert 0x00412330
 //   is the protected ?_M_insert_overflow@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@IAEXPAVCWideString@@ABV3@ABU__false_type@2@I_N@Z
 //   (size_type unsigned int; c691 queue). Was CWideStringVector::_M_insert_overflow(..., const __false_type&, unsigned int, bool).
@@ -125,21 +129,22 @@ __declspec(noinline) void std::vector<_Tp, _Alloc>::_M_insert_overflow(_Tp* pos,
     _M_end_of_storage = newStart + len;
 }
 #pragma auto_inline(on)
-struct CSymbolTable { void Finalise(); };              // 0x009E5C30
+class CSymbolMap { public: void UpdateDirty() const; };   // 0x009E5C30 (Ego_r.pdb / FableWin.pdb ?UpdateDirty@CSymbolMap@@QBEXXZ)
 
 class CDefinitionManager {
 public:
     unsigned char _pad000[0x58];
-    CSymbolTable* Symbols58;                            // +0x58
+    CSymbolMap*   PSymbolMap;                           // +0x58 CCountedPointer<CSymbolMap> PSymbolMap (its pointer word)
     unsigned char _pad05c[4];
-    CSymbolTable* Symbols60;                            // +0x60
+    CSymbolMap*   PDefinitionSymbolMap;                 // +0x60 CCountedPointer<CSymbolMap> PDefinitionSymbolMap
     unsigned char _pad064[0xb4 - 0x64];
     CCharString   CurrentFileName;                      // +0xb4
-    void ParseStringForSymbols(char* text, long flags);   // 0x009ADE90
-    void CreateSymbolsFromPathList(const std::vector<CWideString>& paths, long flags);
+protected:                                              // Ego_r.pdb / FableWin.pdb IAE
+    void ParseStringForSymbols(const char* text, bool instantiate);   // 0x009ADE90
+    void CreateSymbolsFromPathList(const std::vector<CWideString>& paths, bool instantiate);
 };
 
-void CDefinitionManager::CreateSymbolsFromPathList(const std::vector<CWideString>& paths, long flags)
+void CDefinitionManager::CreateSymbolsFromPathList(const std::vector<CWideString>& paths, bool instantiate)
 {
     CCharString functionName("DefinitionManager : CreateSymbolsFromPathList");
     for (const CWideString* path = paths.begin(); path != paths.end(); ++path) {
@@ -162,10 +167,10 @@ void CDefinitionManager::CreateSymbolsFromPathList(const std::vector<CWideString
             GFRemoveComments(buffer, "//", "\r");
             GFRemoveComments(buffer, "/*", "*/");
             CurrentFileName = ((CWideString*)&(file.GetPathname()))->ToCharString();
-            ParseStringForSymbols(buffer, flags);
+            ParseStringForSymbols(buffer, instantiate);
             delete[] buffer;
         }
     }
-    Symbols58->Finalise();
-    Symbols60->Finalise();
+    PSymbolMap->UpdateDirty();
+    PDefinitionSymbolMap->UpdateDirty();
 }

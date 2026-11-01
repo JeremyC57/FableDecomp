@@ -1,5 +1,7 @@
 // CBankFile::CreateSymbolMap(CSymbolMap&, bool) -- add valid, non-array entry names with their type prefix and index.
 // Retail: 0x009CC530, 262 bytes. Leaf: CreateSymbolMap
+// Naming wave 27 (family dm, chunk 695): 0x009E5C30 is CSymbolMap::UpdateDirty() const (Ego_r.pdb + FableWin.pdb); was
+//   an invented ?Finalise@CSymbolMap (no Finalise in either PDB).
 // CBankFile.h donor CArrays are 16 bytes, retail 12: Symbols +8, RuntimeData +20,
 // PackedDataType +58, PackedValid +68. Local typed layout follows PackRuntimeData.
 // Virtual slot19 at vtable0129B54C is GetBankHandle 009CBD10; its type parameter is
@@ -18,7 +20,7 @@ public:
 class CSymbolMap { public:
     void Clear(); //009E5250
     void AddSymbolDirty(const CCharString&, const CCharString&, long); //009E54E0
-    void Finalise(); //009E5C30
+    void UpdateDirty() const;   // 0x009E5C30 (Ego_r.pdb / FableWin.pdb ?UpdateDirty@CSymbolMap@@QBEXXZ)
 };
 template<class T> class CArray { public: T* First; T* Last; T* Limit; bool empty() const { return First==Last; } T& operator[](unsigned long i) { return First[i]; } };
 struct CRuntimeData { unsigned long DataOffset, DataSize; unsigned char DataType; bool Valid; };
@@ -66,5 +68,5 @@ void CBankFile::CreateSymbolMap(CSymbolMap& map, bool append)
             }
         }
     }
-    map.Finalise();
+    map.UpdateDirty();
 }

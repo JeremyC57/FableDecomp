@@ -1,7 +1,8 @@
 // CDefinitionManager::ParseStringForSymbols(const char* text, bool instantiate) -- symbol pre-pass over a definition
 // source: optionally instantiate every "#definition_template" and then every "#definition" (class name, instance
 // name; unknown classes reported), rewinding the parser after each pass; then parse every "enum" for its symbols
-// Leaf: ParseStringForSymbols
+// Leaf: ?ParseStringForSymbols@CDefinitionManager@@IAEXPBD_N@Z
+// Naming wave 27 (family dm, DECISIONS_W26 D5): ParseStringForSymbols is protected in both PDBs (IAE). Was public (QAE).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009ADE90, length 699 bytes, `ret 8`. Mangled (PDB):
 //   ?ParseStringForSymbols@CDefinitionManager@@IAEXPBD_N@Z
 // Callees: CBaseClass ctor 0x0099A2D0 / ~ 0x0099A2E0, CCharString() 0x0099E4B0 / (const char*, long) 0x0099EBF0 / ~
@@ -70,7 +71,8 @@ class CDefinitionManager { public:
     bool InstantiateDef(const CCharString& className, const CCharString& instanceName, bool isTemplate);   // 0x009ADC90
     void Error(const CStringParser& parser, const CCharString& message);   // 0x009AC9F0
     void ParseEnumForSymbols(CStringParser& parser);   // 0x009ACEE0
-    void ParseStringForSymbols(const char* text, bool instantiate);
+protected:
+    void ParseStringForSymbols(const char* text, bool instantiate);   // protected (Ego_r.pdb / FableWin.pdb IAE)
 };
 
 void CDefinitionManager::ParseStringForSymbols(const char* text, bool instantiate)
