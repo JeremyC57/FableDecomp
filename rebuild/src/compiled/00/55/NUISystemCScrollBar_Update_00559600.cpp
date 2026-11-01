@@ -1,8 +1,8 @@
 // NUISystem::CScrollBar::Update(float deltaTime) -- when a drag ended without a left click held, snap the bar back to its pre-drag position immediately and raise its layer; then the base update
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00559600, 70 bytes (vtable 0x0124B7E4 slot 1 = NUISystem::CScrollBar).
 // Callees: ChangePosition (primary vtable slot 31, +0x7C = 0x0055A630: `(const C2DVector&, float time,
-// bool)`, called with PositionBeforeDrag, 0.0f, false), the base CDraggable/CClickable::Update(float)
-// @ 0x0055ACB0 (CDraggable does not override it).
+// bool)`, called with PositionBeforeDrag, 0.0f, false), CClickable::Update(float) @ 0x0055ACB0, called qualified
+// (CDraggable's own override 0x0055A3E0 is skipped).
 //
 // Shape: two `mov al,[..] ; test al,al` bool tests (WasDragged, then !WasLeftClicked), the vtable fetch and
 // the three pushes scheduled above the `WasDragged = false` byte store, `inc byte ptr` = `++Layer`.
@@ -11,6 +11,8 @@
 // CDraggable::PositionBeforeDrag +0x194 / WasDragged +0x19C (PDB +0x1C4 / +0x1CC). No engine header exists
 // at retail offsets; the chain is modelled as in the landed CDraggable constructor (0x0055A9C0).
 // Leaf: ?Update@CScrollBar
+// Naming wave 28 (family clk): the base call 0x0055ACB0 is ?Update@CClickable@NUISystem@@UAEXM@Z (chunk 696; RTTI COL of
+//   vtable 0x0124BD2C slot 1; Ego_r.pdb), qualified on CClickable. Was CDraggable_Retail::Update.
 
 namespace NUISystem {
 
@@ -39,19 +41,22 @@ struct CEventSinkInterface {                     // vtable at +0x18
     virtual void v0();
 };
 
-struct CDraggable_Retail : CComponentInterface, CObserver_Retail, CEventSinkInterface {   // retail 0x1AC bytes
+class CClickable : public CComponentInterface, public CObserver_Retail, public CEventSinkInterface { public:   // retail 0x194 bytes
     unsigned char _pad_0x1c[0x12f - 0x1c];
     char          Layer;                         // +0x12F CComponent::Layer
     unsigned char _pad_0x130[0x170 - 0x130];
     bool          WasLeftClicked;                // +0x170 CClickable
     unsigned char _pad_0x171[0x194 - 0x171];
+    virtual void Update(float deltaTime);        // 0x0055ACB0
+};
+class CDraggable : public CClickable { public:   // retail 0x1AC bytes
     C2DVector     PositionBeforeDrag;            // +0x194 CDraggable
     bool          WasDragged;                    // +0x19C
     unsigned char _pad_0x19d[0x1ac - 0x19d];
-    virtual void Update(float deltaTime);        // CClickable::Update 0x0055ACB0
+    virtual void Update(float deltaTime);        // 0x0055A3E0
 };
 
-class CScrollBar : public CDraggable_Retail { public:
+class CScrollBar : public CDraggable { public:
     virtual void Update(float deltaTime);
 };
 
@@ -62,7 +67,7 @@ void CScrollBar::Update(float deltaTime)
         ChangePosition(PositionBeforeDrag, 0.0f, false);
         ++Layer;
     }
-    CDraggable_Retail::Update(deltaTime);
+    CClickable::Update(deltaTime);
 }
 
 }
