@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00771540, 221 bytes (`ret 4`; PDB ?AppliesToWitness@CTCOpinionSource@@ABE_NPBVCThingAICreature@@@Z).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound const @ 0x004365B0 (interface 0x49 = CTCEnemy, bitset word 2 bit 9),
 //   virtual CDefClassBase::GetInstantiationName() const slot 10 (+0x28, CDefString by hidden pointer), CDefStringTable::GetString
-//   @ 0x009D49B0 on g_DefStringTable @ 0x013CA828, CFactionManager::GetPFaction(const CCharString&) const @ 0x006B93D0 (manifest
+//   @ 0x009D49B0 on GDefStringTable @ 0x013CA828, CFactionManager::GetPFaction(const CCharString&) const @ 0x006B93D0 (manifest
 //   "Faction::FindFactionByHash"; PDB ?GetPFaction@CFactionManager@@QBEPAVCFaction@@ABVCCharString@@@Z) through
 //   CMainGameComponent::Get() @ 0x013B86A0 ->PWorld (+0x24) ->PFactionManager (+0x54), ~CCharString @ 0x0099EAE0,
 //   CTCEnemy::IsAlliedWithFaction(const CFaction*) const @ 0x0076C7F0 (PDB QBE_NPBVCFaction@@@Z; the one landed caller declares
@@ -20,11 +20,11 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 class CDefString { public: long Index; };
-struct CDefStringTable {
+class CDefStringTable {
 public:
     CCharString GetString(long) const;   // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;                // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                // 0x013CA828
 class CFaction;
 template <class T> struct scoped_ptr {                  // boost-style scoped_ptr, one pointer
     T* ptr;
@@ -108,7 +108,7 @@ bool CTCOpinionSource::AppliesToWitness(const CThingAICreature* witness) const
             const CTCEnemy* enemy = (const CTCEnemy*)witness->GetTC(0x49);
             const CFaction* factionObject;
             {
-                CCharString name = g_DefStringTable.GetString(faction->GetInstantiationName().Index);
+                CCharString name = GDefStringTable.GetString(faction->GetInstantiationName().Index);
                 factionObject = CMainGameComponent::Get()->PWorld->PFactionManager->GetPFaction(name);
             }
             if (factionObject) {

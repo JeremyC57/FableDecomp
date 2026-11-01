@@ -30,11 +30,11 @@ class CCharString { public:
     CWideString ToWideString() const;                   // 0x0099E480
 };
 
-struct CDefStringTable {
+class CDefStringTable {
 public:
     CCharString GetString(long) const;   // 0x009D49B0
 };
-extern CDefStringTable GDefStringTable;                 // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                 // 0x013CA828
 
 CWideString __fastcall GetSoundDataDirectory();         // 0x0041A3F0 (L"Data\\Sound\\")
 namespace NResourceDirectoryNames { CWideString __fastcall GetHDMusicDir(); }   // 0x0041A3D0        // 0x0041A3D0 (byte-identical twin)

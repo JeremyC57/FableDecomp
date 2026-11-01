@@ -24,10 +24,10 @@ class CDefString { public: long Handle; };
 class CDefinitionManager { public:
     CDefString GetDefNameFromGlobalIndex(long index) const;   // 0x009ACCC0
 };
-struct CDefStringTable {
+class CDefStringTable { public:
     CCharString GetString(CDefString name) const;            // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;                    // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                    // 0x013CA828
 class CThingManager { public:
     unsigned char _pad00[0x20];
     CDefinitionManager* DefinitionManager;                   // +0x20
@@ -58,6 +58,6 @@ void CThing::GetInfo(CThingInfo* info) const
         return;
     }
     CDefinitionManager* definitions = CThing::GetPCurrentThingManager()->DefinitionManager;
-    CCharString name = g_DefStringTable.GetString(definitions->GetDefNameFromGlobalIndex(DefGlobalIndex));
+    CCharString name = GDefStringTable.GetString(definitions->GetDefNameFromGlobalIndex(DefGlobalIndex));
     info->SubTypeName = name;
 }

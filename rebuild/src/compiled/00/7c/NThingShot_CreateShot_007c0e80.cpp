@@ -10,7 +10,7 @@
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*,..>::LowerBound const 0x004365B0, CTCWeapon::GetCreatedShotDefGlobalIndex() const
 //   0x005DA750, CMainGameComponent::PeekDefinitionManager() const 0x00415FBC (jmp thunk), CDefinitionManager::GetDef<CThingShotDef>
 //   (long, CDefPointer<const CThingShotDef>*) const 0x0078B230, CDefStringTable::GetString(long) const 0x009D49B0 on
-//   g_DefStringTable 0x013CA828 (CDefString's inline operator CCharString), CThing::AddTC(const CCharString&, bool, const
+//   GDefStringTable 0x013CA828 (CDefString's inline operator CCharString), CThing::AddTC(const CCharString&, bool, const
 //   CTCParamsBase*) 0x004C9D60, ~CCharString 0x0099EAE0, NThingShot::CTCShotDefinitionBase::Init(CDefPointer<const CThingShotDef>,
 //   CThing*, CThing*, const CThing*, float, float, float, const CDefPointer<const CMeleeCombatAbilityDef>&) 0x007C0690; inside
 //   GetDef: CDefinitionManager::GetPDefFromGlobalIndex(long) const 0x009AD9E0.
@@ -116,11 +116,11 @@ class CDefStringTable {
 public:
     CCharString GetString(long table_pos) const;        // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;                // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                // 0x013CA828
 class CDefString {
 public:
     long TablePos;
-    operator CCharString() const { return g_DefStringTable.GetString(TablePos); }
+    operator CCharString() const { return GDefStringTable.GetString(TablePos); }
 };
 
 class CIVCountedPointeeBase {

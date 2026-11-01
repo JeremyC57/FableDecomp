@@ -3,7 +3,7 @@
 // Callees: CDefClassBase::GetSubDef<CChestDef>(CDefPointer<const CChestDef>*) @ 0x0074F7D0 (manifest
 // "GetSubDef<CAICreatureWillPowerIndicatorDef>", byte twin, as the landed GetOpenAnimationForCreature 0x00750240),
 // CTCBase::GetDefinitionManager() @ 0x006869D0, CDefinitionManager::GetDefNameFromGlobalIndex(long) @ 0x009ACCC0 (a CDefString
-// by hidden pointer), CDefStringTable::GetString(long) @ 0x009D49B0 on g_DefStringTable @ 0x013CA828, CCharString::operator=
+// by hidden pointer), CDefStringTable::GetString(long) @ 0x009D49B0 on GDefStringTable @ 0x013CA828, CCharString::operator=
 // (const CCharString&) @ 0x0099EFB0 and (const char*) @ 0x0099EFE0, ~CCharString @ 0x0099EAE0, the def's virtual slot 1 on the
 // last release. Literal "" @ 0x0122D70E.
 // Layout: CTCBase ParentThing +0x04; CThing def +0x70; CChestDef OpenerObject +0x34, OpenersRequired +0x38 (GOTCHAS chest facts).
@@ -20,11 +20,11 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 class CDefString { public: long Index; };
-struct CDefStringTable {
+class CDefStringTable {
 public:
     CCharString GetString(long) const;   // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;                // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                // 0x013CA828
 class CDefinitionManager { public:
     CDefString GetDefNameFromGlobalIndex(long index) const;   // 0x009ACCC0
 };
@@ -111,7 +111,7 @@ long CTCChest::GetNumberOfKeysToUnlock(CCharString& keyName) const
     CDefHolder<CChestDef> def(out.Object);
     if (found && out.Object->OpenerObject > 0 && out.Object->OpenersRequired > 0) {
         {
-            CCharString name = g_DefStringTable.GetString(GetDefinitionManager().GetDefNameFromGlobalIndex(def->OpenerObject).Index);
+            CCharString name = GDefStringTable.GetString(GetDefinitionManager().GetDefNameFromGlobalIndex(def->OpenerObject).Index);
             keyName = name;
         }
         return def->OpenersRequired;

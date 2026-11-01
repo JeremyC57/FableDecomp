@@ -4,7 +4,7 @@
 // `?OnSerialise@CTCHeroAttachableAppearanceModifiers@@UAEXAAVCPersistContext@@_N@Z`.
 // Callees: vector<CCharString>(size_type) @ 0x0057FCDD, CTCBase::GetDefinitionManager @ 0x006869D0, CDefinitionManager::
 // GetDefNameFromGlobalIndex(long) @ 0x009ACCC0 (CDefString by hidden pointer), CDefStringTable::GetString @ 0x009D49B0 on
-// g_DefStringTable @ 0x013CA828, CCharString::operator=(const CCharString&) @ 0x0099EFB0, ~CCharString @ 0x0099EAE0,
+// GDefStringTable @ 0x013CA828, CCharString::operator=(const CCharString&) @ 0x0099EFB0, ~CCharString @ 0x0099EAE0,
 // CPersistContext::Transfer(const char*, vector<CCharString>&) @ 0x0049B8D0 (shared COMDAT body; manifest TransferSignedChar),
 // CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410, AddAppearanceModifierWithReplace(long) @ 0x00706950, free @ 0x00BFEA14.
 // Layout: as the landed RemoveAllAppearanceModifiers 0x00706640 (AppearanceModifiers +0x30, element 0 = the hair list; the
@@ -43,10 +43,10 @@ struct CCharStringVector {                              // STLport vector<CCharS
 class CDefString { public:
     long ID;
 };
-struct CDefStringTable {
+class CDefStringTable { public:
     CCharString GetString(CDefString id);               // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;                // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                // 0x013CA828
 class CDefinitionManager { public:
     CDefString GetDefNameFromGlobalIndex(long index) const;   // 0x009ACCC0
     long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
@@ -107,7 +107,7 @@ void CTCHeroAttachableAppearanceModifiers::OnSerialise(CPersistContext& context,
         CModifierVector& hair = AppearanceModifiers[0];
         CCharStringVector names(hair.size());
         for (unsigned long i = 0; i < hair.size(); ++i) {
-            CCharString name = g_DefStringTable.GetString(GetDefinitionManager().GetDefNameFromGlobalIndex(hair[i].DefIndex));
+            CCharString name = GDefStringTable.GetString(GetDefinitionManager().GetDefNameFromGlobalIndex(hair[i].DefIndex));
             names[i] = name;
         }
         context.Transfer("HairModifierNames", names);

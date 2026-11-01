@@ -24,12 +24,12 @@ class CDefStringTable {
 public:
     CCharString GetString(long table_pos) const;             // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;                     // 0x013CA828 (descriptive)
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                     // 0x013CA828 (descriptive)
 
 class CDefString {
 public:
     long TablePos;
-    operator CCharString() const { return g_DefStringTable.GetString(TablePos); }
+    operator CCharString() const { return GDefStringTable.GetString(TablePos); }
 };
 
 class CAnimationEntry {

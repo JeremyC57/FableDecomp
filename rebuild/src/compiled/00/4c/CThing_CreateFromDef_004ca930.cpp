@@ -4,7 +4,7 @@
 //   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004CA930, 204 bytes (+4 int3). `ret 4`.
 // Callees: CVectorMap (vector) reserve 0x004CC9B0 on Components (+0x44), CDefStringTable::GetString(long) 0x009D49B0 on
-//          g_DefStringTable (0x013CA828, CCharString by hidden pointer), CThing::AddTC(const CCharString&, bool,
+//          GDefStringTable (0x013CA828, CCharString by hidden pointer), CThing::AddTC(const CCharString&, bool,
 //          CTCParamsBase*) 0x004C9D60, ~CCharString 0x0099EAE0.
 // Shape: the force flag is a frame byte (0, then 1 when ThingTypeFlags bit 1 is set and the world's +0x102 byte is on);
 //        the reserve count is the signed pair distance (`sar 3`) plus the def's signed component count; the loop keeps
@@ -18,11 +18,11 @@ public:
     void* PStringData;
     ~CCharString();                                  // 0x0099EAE0
 };
-struct CDefStringTable {
+class CDefStringTable {
 public:
     CCharString GetString(long) const;   // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;             // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)             // 0x013CA828
 class CTCBase; class CTCParamsBase;
 struct SComponentPair { long first; CTCBase* second; };
 struct CComponentMap {                               // CVectorMap<ETCInterfaceType, CTCBase*>: STLport vector first
@@ -86,7 +86,7 @@ void CThing::CreateFromDef(const CThingDef* def)
         force = true;
     Components.reserve(Components.size() + def->NoTCs);
     for (long i = 0; i < def->NoTCs; ++i) {
-        CCharString name = g_DefStringTable.GetString(def->TCs[i].NameId);
+        CCharString name = GDefStringTable.GetString(def->TCs[i].NameId);
         bool flag = def->TCs[i].Flag;
         if (force)
             flag = true;

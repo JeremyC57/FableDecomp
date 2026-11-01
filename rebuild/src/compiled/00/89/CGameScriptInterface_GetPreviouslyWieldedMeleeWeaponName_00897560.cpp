@@ -21,15 +21,15 @@ public:
     bool operator!=(const char* text) const;        // 0x0099E960
 };
 
-struct CDefStringTable {
+class CDefStringTable {
 public:
     CCharString GetString(long) const;   // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;            // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)            // 0x013CA828
 
 class CDefString { public:
     long Index;
-    CCharString GetString() const { return g_DefStringTable.GetString(Index); }
+    CCharString GetString() const { return GDefStringTable.GetString(Index); }
 };
 
 class CDefinitionManager { public:

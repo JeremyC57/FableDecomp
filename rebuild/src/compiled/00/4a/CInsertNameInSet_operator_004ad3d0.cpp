@@ -26,13 +26,13 @@ class CDefStringTable {
 public:
     CCharString GetString(long table_pos) const;   // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;           // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)           // 0x013CA828
 
 class CDefString {
 public:
     long TablePos;                                 // +0x00
     CDefString& operator=(const CDefString& other);   // user assignment: returned through the hidden pointer
-    CCharString GetString() const { return g_DefStringTable.GetString(TablePos); }
+    CCharString GetString() const { return GDefStringTable.GetString(TablePos); }
 };
 
 class CThingPhysicsMeshInfo;

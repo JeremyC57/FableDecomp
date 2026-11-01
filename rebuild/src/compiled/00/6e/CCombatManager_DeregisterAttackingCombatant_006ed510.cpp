@@ -34,10 +34,10 @@ CCharString __fastcall GFIntToCharString(long value);                           
 class CDefString { public:
     long m_index;
 };
-struct CDefStringTable {
+class CDefStringTable { public:
     CCharString GetString(CDefString name);        // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;           // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)           // 0x013CA828
 inline void CombatTrace(const CCharString&) {}     // the trace output, compiled out
 
 class CTCBase;
@@ -269,7 +269,7 @@ __forceinline void TraceDeregister(CCharString attackerName, const CCharString& 
 }
 __forceinline void TraceDeregister(const CThing* attacker, CCharString attackedName, const CCombatantInfo& attackedInfo)
 {
-    TraceDeregister(g_DefStringTable.GetString(attacker->GetDefName()), attackedName, attackedInfo);
+    TraceDeregister(GDefStringTable.GetString(attacker->GetDefName()), attackedName, attackedInfo);
 }
 class CCombatManager {
 public:
@@ -296,7 +296,7 @@ void CCombatManager::DeregisterAttackingCombatant(CThingCreatureBase* attacker)
                 IncrementDefenderAttackPattern(attackedInfo);
         }
     }
-    TraceDeregister(attacker, g_DefStringTable.GetString(info.AttackerInfo.Attacked->GetDefName()), attackedInfo);
+    TraceDeregister(attacker, GDefStringTable.GetString(info.AttackerInfo.Attacked->GetDefName()), attackedInfo);
     attackedInfo.DefenderInfo.Attackers.erase(attacker->GetUID());
     if (attackedInfo.DefenderInfo.Attackers.size() == 0) {
         DeregisterAttackedCombatant(attacked);

@@ -35,8 +35,8 @@ class CIVCountedPointeeBase{public:CIVCountedPointeeBase():IVRefCount(1){}virtua
 class CResourceList;class CResource:public CIVCountedPointeeBase{public:CResourceList* ResourceList;CResource* PrevResource;CResource* NextResource;unsigned long ResourceSize,LastUsedFrame;CResource():ResourceList(0),PrevResource(0),NextResource(0),ResourceSize(0),LastUsedFrame(0){}virtual ~CResource();};class CDefPointeeBase:public CResource{public:virtual void Delete()const;};enum ENullDef{ENullDef_DescriptiveNull=0};
 class CFailedAllocationHandler{public:virtual ~CFailedAllocationHandler();};class CResourceList:public CFailedAllocationHandler{public:CResource Head;unsigned long ResourceCount;long AllocatedMemory,MaximumMemory;unsigned long CurrentFrame,DebugStatsFrame,UnloadDelay,UnloadedThisFrame;};class CDefinitionManager:public CResourceList{public:CDefString GetDefNameFromGlobalIndex(long)const;};
 class CGameDefinitionManager:public CDefinitionManager {};
-class CDefStringTable { public: CCharString GetString(long) const; }; extern CDefStringTable g_DefStringTable;
-inline CDefString::operator CCharString() const { return g_DefStringTable.GetString(TablePos); }
+class CDefStringTable { public: CCharString GetString(long) const; }; extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)
+inline CDefString::operator CCharString() const { return GDefStringTable.GetString(TablePos); }
 class CRGBColour { public: unsigned char B,G,R,A; void Set(unsigned char r,unsigned char g,unsigned char b,unsigned char a) { R=r; G=g; B=b; A=a; } };
 class C3DVector { public: float X,Y,Z; };
 class CEditEngineDrawInfo { public: C3DVector Pos; float Radius; CCharString Fullname; CRGBColour Colour; long PlayerOwner; float EffectRadius; bool UsesEffectRadius; float AngleXY; };

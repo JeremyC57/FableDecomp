@@ -4,7 +4,7 @@
 //   temporaries give the `and esp,-8` frame.
 // Callees: CDefClassBase::GetSubDef<CParticleAttacherDef> @ 0x007F87A0 (pushes "CParticleAttacherDef" 0x01243F00; the
 //   FableWin name GetSubDef<CAICreatureWillPowerIndicatorDef> is wrong), CDefStringTable::GetString @ 0x009D49B0 on
-//   g_DefStringTable 0x013CA828, CTCGraphicAppearance::GetNoDummyObjects @ 0x004BE000 / GetNoHelperPoints @ 0x004BDE90,
+//   GDefStringTable 0x013CA828, CTCGraphicAppearance::GetNoDummyObjects @ 0x004BE000 / GetNoHelperPoints @ 0x004BDE90,
 //   CBasicString<char>::operator== @ 0x004115A0, CThing::GetPos @ 0x004C73D0, CTCDParticleEmitter::Create (__fastcall,
 //   particle index) @ 0x006E0880, CBaseIntelligentPointer ctor/SetPItem/dtor @ 0x00A01B10/0x00A01B90/0x00A01C10, the
 //   particle list push_back @ 0x004AD520, CTCDParticleEmitter::AttachToThing @ 0x006E0BE0, CCharString @ 0x0099EBF0 / dtor
@@ -46,10 +46,10 @@ public:
         return PStringData->Data == text;
     }
 };
-struct CDefStringTable {
+class CDefStringTable { public:
     CCharString GetString(long index) const;                 // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;               // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)               // 0x013CA828
 
 class C3DVector { public: float X, Y, Z; };
 class CThing;
@@ -156,7 +156,7 @@ void CTCParticleAttacher::AttachParticles()
     if (baseDef.P)
         baseDef.P->GetSubDef(&PDef);
     for (const CParticleAttachmentInfo* info = PDef->ParticlesToAttachFirst; info != PDef->ParticlesToAttachLast; ++info) {
-        CCharString name = g_DefStringTable.GetString(info->AttachmentObjectName);
+        CCharString name = GDefStringTable.GetString(info->AttachmentObjectName);
         CThing* parent = ParentThing;
         bool oriented = parent->ThingTypeBit3;
         if (!oriented)

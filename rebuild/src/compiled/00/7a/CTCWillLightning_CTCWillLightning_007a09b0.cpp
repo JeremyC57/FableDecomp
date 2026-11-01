@@ -22,10 +22,10 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CDefStringTable {
+class CDefStringTable { public:
     CCharString GetString(long id) const;                     // 0x009D49B0
 };
-extern CDefStringTable g_StringTable;                   // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                   // 0x013CA828
 extern unsigned long g_InvalidSoundHandle;              // 0x0129D25C
 class CMainGameComponent {
 protected:
@@ -263,7 +263,7 @@ CTCWillLightning::CTCWillLightning(CThing* parent)
     if (ParentThing->HasTC(0x10)) {
         CTCSoundPlayer* sound = ParentThing->GetTC<CTCSoundPlayer>(0x10);
         {
-            CCharString name = g_StringTable.GetString(m_lspDef->InitSoundName);
+            CCharString name = GDefStringTable.GetString(m_lspDef->InitSoundName);
             ((CTCSoundPlayer*)sound)->PlayAttachedCriteria(name, 0, 0, 0, -1);
         }
     }

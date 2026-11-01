@@ -5,10 +5,10 @@
 // Layout (PDB CAnimFilterOf2Groups, 0x14 bytes): vptr +0, Group1 +4, Group2 +8, Group1CRC +0xc, Group2CRC +0x10.
 // The result is a long (`mov eax,1` / `xor eax,eax`), not a bool (that would be `mov al,1`); the anim's
 // string index at +8 is re-read before the second lookup because the call may have changed it.
-struct CDefStringTable {
+class CDefStringTable { public:
     unsigned long GetStringCRC(long stringIndex);      // 0x009D4A20
 };
-extern CDefStringTable g_defStringTable;                // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                // 0x013CA828
 
 class CCharString { public: void* PStringData; };
 
@@ -27,8 +27,8 @@ struct CAnimFilterOf2Groups {
 
 long CAnimFilterOf2Groups::Accepts(const CAnimInfo& anim)
 {
-    if (g_defStringTable.GetStringCRC(anim.GroupName) == Group1CRC ||
-        g_defStringTable.GetStringCRC(anim.GroupName) == Group2CRC)
+    if (GDefStringTable.GetStringCRC(anim.GroupName) == Group1CRC ||
+        GDefStringTable.GetStringCRC(anim.GroupName) == Group2CRC)
         return 1;
     return 0;
 }

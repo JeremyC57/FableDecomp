@@ -10,7 +10,7 @@ public:
     long lastIndex; int calls;
     CCharString GetString(long index) const;
 };
-CDefStringTable g_DefStringTable;
+CDefStringTable GDefStringTable;
 CCharString CDefStringTable::GetString(long index) const
 {
     CDefStringTable* self = const_cast<CDefStringTable*>(this);
@@ -27,10 +27,10 @@ int main()
 {
     CDefString d; d.TablePos = 0x2A;
     CCharString s = d.GetString();
-    if (s.PStringData != (void*)0x102A || g_DefStringTable.lastIndex != 0x2A || g_DefStringTable.calls != 1) return 1;
+    if (s.PStringData != (void*)0x102A || GDefStringTable.lastIndex != 0x2A || GDefStringTable.calls != 1) return 1;
     d.TablePos = -1;
     CCharString t = d.GetString();
-    if (t.PStringData != (void*)(0x1000 - 1) || g_DefStringTable.lastIndex != -1 || g_DefStringTable.calls != 2) return 2;
+    if (t.PStringData != (void*)(0x1000 - 1) || GDefStringTable.lastIndex != -1 || GDefStringTable.calls != 2) return 2;
     printf("PASS_00415dd0\n");
     return 0;
 }

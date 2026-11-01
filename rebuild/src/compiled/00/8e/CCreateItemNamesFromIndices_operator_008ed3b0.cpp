@@ -5,7 +5,7 @@
 //   (saving branch of CTCContainer::OnSerialise).
 // Callees: CGameDefinitionManager::Get __fastcall @ 0x0044C6B0, CDefinitionManager::GetDefNameFromGlobalIndex @
 //   0x009ACCC0 (CDefString by hidden pointer into the one `push ecx` frame word), CDefStringTable::GetString(long) @
-//   0x009D49B0 on g_DefStringTable @ 0x013CA828, CCharString copy ctor 0x0099EC30 / dtor 0x0099EAE0,
+//   0x009D49B0 on GDefStringTable @ 0x013CA828, CCharString copy ctor 0x0099EC30 / dtor 0x0099EAE0,
 //   vector<CCharString>::_M_insert_overflow @ 0x00433530.
 // Shape: the def name is a NAMED CCharString local (VC homes it in the dead `item` argument slot and re-forms its address
 //   with `lea` for the placement copy; an unnamed temporary passes GetString's eax instead).
@@ -40,7 +40,7 @@ class CDefStringTable {
 public:
     CCharString GetString(long tablePos) const; // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;        // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)        // 0x013CA828
 
 class CDefinitionManager {
 public:
@@ -167,6 +167,6 @@ public:
 
 void CCreateItemNamesFromIndices::operator()(const CContainerItem& item)
 {
-    CCharString name = g_DefStringTable.GetString(CGameDefinitionManager::Get().GetDefNameFromGlobalIndex(item.first).TablePos);
+    CCharString name = GDefStringTable.GetString(CGameDefinitionManager::Get().GetDefNameFromGlobalIndex(item.first).TablePos);
     ItemNames->push_back(name);
 }

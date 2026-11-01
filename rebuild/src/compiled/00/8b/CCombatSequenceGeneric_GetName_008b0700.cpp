@@ -17,12 +17,12 @@ struct CDefStringId {                          // 4 bytes with a user constructo
     CDefStringId(long id) : m_id(id) { }
 };
 
-struct CDefStringTable {
+class CDefStringTable {
 public:
     CCharString GetString(long) const;   // 0x009D49B0
 };
 
-extern CDefStringTable g_DefStringTable;       // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)       // 0x013CA828
 
 struct CCombatSequenceDef_Retail {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
@@ -39,6 +39,6 @@ struct CCombatSequenceGeneric_Retail {
 
 CCharString CCombatSequenceGeneric_Retail::GetName()
 {
-    CCharString name = g_DefStringTable.GetString(Def_Object->GetNameStringId().m_id);
+    CCharString name = GDefStringTable.GetString(Def_Object->GetNameStringId().m_id);
     return name;
 }

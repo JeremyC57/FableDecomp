@@ -4,7 +4,7 @@
 //   `?GetDataFromDef@CText@NUISystem@@QAEXXZ`). Called by the CText constructor 0x0054F5C0 (landed).
 // Callees: CComponent::LoadAndReturnDef() const (vtable slot 108, +0x1B0; CDefPointer<const CUIDef> by hidden pointer, as
 //   the landed CTextContainer::GetDataFromDef 0x00546CD0); CDefStringTable::GetString(long) 0x009D49B0 on
-//   g_DefStringTable 0x013CA828 (as landed); GFGetSystemManager 0x009A4EC0 (__fastcall; its +0x84 font bank, as the landed
+//   GDefStringTable 0x013CA828 (as landed); GFGetSystemManager 0x009A4EC0 (__fastcall; its +0x84 font bank, as the landed
 //   InitialiseGraphics 0x0042DDB3); the bank's GetFont(const CCharString&) 0x009E2C80 (landed label; returns the counted
 //   pointer by hidden pointer); the count block's destroy function (+4, object in ecx) and operator delete 0x00BFE9BC on
 //   the last release; ~CCharString 0x0099EAE0; CText::SetValue(const CWideString&, bool, bool) vtable slot 144 (+0x240);
@@ -20,20 +20,23 @@
 //   with CCountedPointer's inline operator= (the source words read into ebx/edi first, count-block compare, release
 //   re-reading the member, add-ref) and the temporary's release clears both words; Window is a struct copy; the
 //   alignment switch ORs one bit per case into the flag byte.
-namespace NUISystem {
-class CCharString {
+class CCharString {                                     // global scope (naming wave 21): the PDB class
 public:
     void* PStringData;
     ~CCharString();                                     // 0x0099EAE0
 };
+namespace NUISystem {
+using ::CCharString;
 class CWideString { public: void* PStringData; };
-struct CDefStringTable {
-    CCharString GetString(long id);                     // 0x009D49B0
+}
+class CDefStringTable { public:                         // global scope (naming wave 21): the PDB class, not NUISystem's
+    CCharString GetString(long id) const;               // 0x009D49B0 ?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z
 };
-extern CDefStringTable g_DefStringTable;                // 0x013CA828
+extern CDefStringTable GDefStringTable;                 // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)
+namespace NUISystem {
 struct CDefString {
     long Index;
-    CCharString GetString() const { return g_DefStringTable.GetString(Index); }
+    CCharString GetString() const { return GDefStringTable.GetString(Index); }
 };
 
 struct CCPPointerInfo {                                 // CCountedPointer count block

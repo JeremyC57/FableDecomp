@@ -8,7 +8,7 @@
 //   IsPosInside 0x00815CE0 and 0x00816428 -- all declare this address as GetCylinderBaseAndTop. The catalog's
 //   "GetDummyObjectOriginTransformed" is descriptive.
 // Callees: CDefString::operator==(const char*) 0x005B3440, the physics component's virtual slot 72 (+0x120, GetRHSet,
-//   as the landed CTCLook 0x00753930), CDefStringTable::GetString(long) 0x009D49B0 on g_DefStringTable 0x013CA828,
+//   as the landed CTCLook 0x00753930), CDefStringTable::GetString(long) 0x009D49B0 on GDefStringTable 0x013CA828,
 //   CTCGraphicAppearance::GetDummyObject(const CCharString&, long, unsigned long, C3DVector&, CRightHandedSet&, float)
 //   0x004C08C0, ~CCharString 0x0099EAE0, the def's virtual slot 1 (+4, destroy at refcount 0).
 // Strings/constants: "" 0x0122D70E, the 1e-4f epsilon 0x0129BA3C.
@@ -48,7 +48,7 @@ class CDefStringTable {
 public:
     CCharString GetString(long tablePos) const;         // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;                // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                // 0x013CA828
 
 class CThingDef {
 public:
@@ -135,7 +135,7 @@ void CPhysicalPrimitiveCylinder::GetCylinderBaseAndTop(const CThing& thing, C3DV
     else {
         CRightHandedSet rhs;
         {
-            CCharString name = g_DefStringTable.GetString(BaseName.TablePos);
+            CCharString name = GDefStringTable.GetString(BaseName.TablePos);
             thing.PTCGraphicAppearance->GetDummyObject(name, 0, 0, base, rhs, 1.0f);
         }
         C3DVector up = rhs.Up;

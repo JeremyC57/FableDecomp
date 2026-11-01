@@ -42,10 +42,10 @@ class CDefString { public:                              // a def name: its offse
 struct CDefinitionManager_Retail {
     CDefString GetDefNameFromGlobalIndex(long index);   // 0x009ACCC0
 };
-struct CDefStringTable_Retail {
+class CDefStringTable { public:
     CCharString GetString(long index);              // 0x009D49B0
 };
-extern CDefStringTable_Retail g_defStringTable;     // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)     // 0x013CA828
 struct CWorldMap_Retail;
 struct CDefinitionManager_Retail;
 struct CPlayerManager_Retail;
@@ -87,21 +87,21 @@ bool CGameScriptInterface::MsgOnHeroHairTypeChanged(EClothingCoversArea area, CC
     if (area == CLOTHING_COVERS_HAIR) {
         CMessageEvent_Retail* message = messages->FindMostRecentMessage(CMessageEventFilter_IsOfType(0x39) && CMessageEventFilter_CanBeSeenOrHeard(frame, maxFrame));
         if (message) {
-            CCharString text = g_defStringTable.GetString(DefinitionManager->GetDefNameFromGlobalIndex(message->m_extraData).m_index);
+            CCharString text = GDefStringTable.GetString(DefinitionManager->GetDefNameFromGlobalIndex(message->m_extraData).m_index);
             name = text;
             return true;
         }
     } else if (area == CLOTHING_COVERS_FACIAL_HAIR) {
         CMessageEvent_Retail* message = messages->FindMostRecentMessage(CMessageEventFilter_IsOfType(0x3a) && CMessageEventFilter_CanBeSeenOrHeard(frame, maxFrame));
         if (message) {
-            CCharString text = g_defStringTable.GetString(DefinitionManager->GetDefNameFromGlobalIndex(message->m_extraData).m_index);
+            CCharString text = GDefStringTable.GetString(DefinitionManager->GetDefNameFromGlobalIndex(message->m_extraData).m_index);
             name = text;
             return true;
         }
     } else {
         CMessageEvent_Retail* message = messages->FindMostRecentMessage(CMessageEventFilter_IsOfType(0x3b) && CMessageEventFilter_CanBeSeenOrHeard(frame, maxFrame));
         if (message) {
-            CCharString text = g_defStringTable.GetString(DefinitionManager->GetDefNameFromGlobalIndex(message->m_extraData).m_index);
+            CCharString text = GDefStringTable.GetString(DefinitionManager->GetDefNameFromGlobalIndex(message->m_extraData).m_index);
             name = text;
             return true;
         }

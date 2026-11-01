@@ -187,10 +187,10 @@ class CWorld { public:
     unsigned char                _pad64[0x70];
     bool                         m_creatureGeneratorsEnabled;   // +0xd4 (global switch)
 };
-struct CDefStringTable_Retail {
+class CDefStringTable { public:
     CCharString GetString(long index);              // 0x009D49B0
 };
-extern CDefStringTable_Retail g_defStringTable;     // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)     // 0x013CA828
 class CWorld;
 struct CDefinitionManager_Retail;
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
@@ -204,7 +204,7 @@ void CGameScriptInterface::GetWanderingPopulationScriptDefNameInRegion(const CCh
     if (region > 0) {
         CCountedPointer<CRegionDef_Retail> def(World->PeekWorldMap()->GetRegion(region).m_pDef.Data);
         if (!def.IsNull()) {
-            CCharString name = g_defStringTable.GetString(def->m_wanderingPopulationScriptDef.m_index);
+            CCharString name = GDefStringTable.GetString(def->m_wanderingPopulationScriptDef.m_index);
             defName = name;
         }
     }

@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0079FE90, 580 bytes (+ int3 padding), `ret 8` (by-value intelligent pointer, callee destroys).
 // Callees: CBaseIntelligentPointer ctor 0x00A01B10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 / dtor 0x00A01C10 (pointer
 //   vtable 0x0123E7D8); itself (child beams); CVectorMap LowerBound 0x0040F020; CDefStringTable::GetString 0x009D49B0
-//   (g_DefStringTable 0x013CA828); CTCSoundPlayer::PlayAttachedCriteria 0x0066BD00 / PlayUnattachedCriteria 0x0066BDF0
+//   (GDefStringTable 0x013CA828); CTCSoundPlayer::PlayAttachedCriteria 0x0066BD00 / PlayUnattachedCriteria 0x0066BDF0
 //   (FableWin.pdb signatures); ~CCharString 0x0099EAE0; operator delete 0x00BFE9BC.
 // Layout: Ego_r.pdb CTCWillLightning::CLightningBeam up to the child list (+0x4c); the retail STLport list is 4 bytes (PDB 12),
 //   so the later members sit 8 lower (m_bTemporary +0x50, PDef +0x74); the def's +0x11c CDefString is the sound name
@@ -16,10 +16,10 @@ class CCharString { public:
     ~CCharString();                                   // 0x0099EAE0
 };
 class CDefString { public: long Index; };
-struct CDefStringTable {
+class CDefStringTable { public:
     CCharString GetString(CDefString name);           // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;              // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)              // 0x013CA828
 class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -169,13 +169,13 @@ void CLightningBeam::Deactivate(CIntelligentPointer player)
         if (IS_THING_ALIVE(m_tcpTarget)) {
             CTCSoundPlayer* sound;
             if (((CThing*)m_tcpTarget.GetPItem())->GetInterface(&sound, 0x10)) {
-                CCharString name = g_DefStringTable.GetString(PDef->HitSound);
+                CCharString name = GDefStringTable.GetString(PDef->HitSound);
                 sound->PlayAttachedCriteria(name, true, false, false, -1);
             }
         } else if (IS_THING_ALIVE(player) && !m_bTemporary) {
             CTCSoundPlayer* sound;
             if (((CThing*)player.GetPItem())->GetInterface(&sound, 0x10)) {
-                CCharString name = g_DefStringTable.GetString(PDef->HitSound);
+                CCharString name = GDefStringTable.GetString(PDef->HitSound);
                 sound->PlayUnattachedCriteria(name, m_vEndPos, false, false);
             }
         }

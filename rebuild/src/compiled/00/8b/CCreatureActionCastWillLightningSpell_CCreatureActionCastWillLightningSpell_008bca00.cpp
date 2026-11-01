@@ -8,7 +8,7 @@
 //   0x0099EAE0, CCombatActionBase::SetCombatAnimation 0x008574D0, CGameDefinitionManager::Get 0x0044C6B0 (__fastcall),
 //   CDefinitionManager::GetGlobalIndexFromClassIndex 0x009AD390, GetDef<CSpecialAbilitiesLightningSpellDef> 0x007A35D0,
 //   CVectorMap::LowerBound 0x0040F020 (inlined GetInterface type 0x10), CDefStringTable::GetString 0x009D49B0 on
-//   g_DefStringTable 0x013CA828, CTCSoundPlayer::PlayAttachedCriteria 0x0066BD00.
+//   GDefStringTable 0x013CA828, CTCSoundPlayer::PlayAttachedCriteria 0x0066BD00.
 // Layout: local model (as the landed overloads) -- retail CCombatActionBase is 0x114 bytes (PCreature +0x08, PTarget
 //   +0xa8); members +0x114/+0x118 take the two arguments; the def's cast-sound string id at +0x110.
 // Shape: the landed 0x008BC8C0 source verbatim with a by-value inline SetPTarget(CIntelligentPointer<CThing>) fed an
@@ -75,10 +75,10 @@ bool CDefinitionManager::GetDef(long index, CDefPointer<CSpecialAbilitiesLightni
 class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();  // 0x0044C6B0
 };
-struct CDefStringTable {
+class CDefStringTable { public:
     CCharString GetString(long id) const;                   // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;              // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)              // 0x013CA828
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -162,7 +162,7 @@ CCreatureAction_CastWillLightningSpell::CCreatureAction_CastWillLightningSpell(C
     CGameDefinitionManager::Get().GetDef(index, &def);
     CTCSound* sound;
     if (((CThing*)PCreature.GetPItem())->GetInterface(&sound, 0x10)) {
-        CCharString castSound = g_DefStringTable.GetString(def->CastSound);
+        CCharString castSound = GDefStringTable.GetString(def->CastSound);
         ((CTCSoundPlayer*)sound)->PlayAttachedCriteria(castSound, 0, 0, 0, -1);
     }
     SetPTarget(CIntelligentPointerThing(target));

@@ -23,11 +23,11 @@ class CCharString { public:
     ~CCharString();                                // 0x0099EAE0
 };
 
-struct CDefStringTable {
+class CDefStringTable {
 public:
     CCharString GetString(long) const;   // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;           // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)           // 0x013CA828
 
 class CCPPointerInfo;
 template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
@@ -83,7 +83,7 @@ unsigned char __stdcall CTCInventoryQuests::IsQuestCardRegionFree(CTCQuestCard* 
     bool started;
     {
         CQuestCardDefPointer def(card->PDef);
-        CCharString region = g_DefStringTable.GetString(def->RegionName);
+        CCharString region = GDefStringTable.GetString(def->RegionName);
         started = CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().IsActiveQuestStartedInRegion(region);
     }
     return !started;

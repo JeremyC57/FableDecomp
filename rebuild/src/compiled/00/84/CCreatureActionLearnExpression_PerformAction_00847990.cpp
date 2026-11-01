@@ -5,7 +5,7 @@
 //   ?PerformAction@CCreatureAction_LearnExpression@@UAEXXZ.
 // Callees: CBaseIntelligentPointer::GetPItem() const 0x00A01B50, CVectorMap<ETCInterfaceType,CTCBase*,..>::LowerBound 0x004365B0
 //   (inlined CThing::PeekTC, 0x8F = CTCExpression), CDefClassBase::GetInstantiationName()
-//   const (virtual slot 10, +0x28), CDefStringTable::GetString(long) const 0x009D49B0 on g_DefStringTable 0x013CA828 (the inline
+//   const (virtual slot 10, +0x28), CDefStringTable::GetString(long) const 0x009D49B0 on GDefStringTable 0x013CA828 (the inline
 //   CDefString::GetString() const), CThingPlayerCreature::LearnExpression(const CCharString&, long, bool) 0x006AC430,
 //   ~CCharString 0x0099EAE0, CIVCountedPointeeBase::Delete() const (virtual slot 1).
 // Layout: Ego_r CCreatureAction_LearnExpression::PPlayerCreature CIntelligentPointer<CThingPlayerCreature> (+0xA8 retail),
@@ -100,7 +100,7 @@ class CDefinitionManager;
 class CDefString {
 public:
     CDefString() : TablePos(0) { }
-    CCharString GetString() const;                               // inline over g_DefStringTable (where used)
+    CCharString GetString() const;                               // inline over GDefStringTable (where used)
     long TablePos;                                               // +0x00
 };
 class CIVCountedPointeeBase {
@@ -320,8 +320,8 @@ class CDefStringTable {
 public:
     CCharString GetString(long tablePos) const;                  // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;                         // 0x013CA828
-inline CCharString CDefString::GetString() const { return g_DefStringTable.GetString(TablePos); }
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                         // 0x013CA828
+inline CCharString CDefString::GetString() const { return GDefStringTable.GetString(TablePos); }
 class CThingPlayerCreature : public CThingCreatureBase {
 public:
     bool LearnExpression(const CCharString& name, long index, bool silent);   // 0x006AC430

@@ -4,7 +4,7 @@
 // Callees: CCharString() 0x0099E4B0 / CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, Compare 0x00411570
 //   (the inlined CCharString == const char*), CWideString() 0x0099AED0 / operator=(const wchar_t*) 0x0099B800 / ~CWideString
 //   0x0099B510, ~CScriptThing 0x004AA840, CScriptBase::IsActiveThreadTerminating 0x00CB7940, CDefStringTable::GetString
-//   0x009D49B0 on g_DefStringTable 0x013CA828 (index pGlobalScriptDef 0x0143E90C +0xbb0); CScriptThing::IsAlive (slot 75);
+//   0x009D49B0 on GDefStringTable 0x013CA828 (index pGlobalScriptDef 0x0143E90C +0xbb0); CScriptThing::IsAlive (slot 75);
 //   the game script interface (+0x40) slots 7, 12, 22, 72, 108, 133, 281, 288, 289, 374, 376, 425, 440, 655, 656, 657, 688.
 // Strings: "VILLAGE_KNOTHOLEGLADE" 0x012CAECC, "KnotholeGlade" 0x012C513C, "Blockage" 0x012CAEC0, "KG_Gate" 0x012C31A8,
 //   L"TEXT_QST_018_QUEST_FAILED_PRISONER_DIED" 0x012CAE70, L"..._CHIEF_DIED" 0x012CAE20, L"..._PRISONER_ESCAPED" 0x012CADC8,
@@ -62,10 +62,10 @@ class CCPPointerInfo;
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
-struct CDefStringTable {
+class CDefStringTable { public:
     CCharString GetString(long index) const;                      // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;                    // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                    // 0x013CA828
 class CScriptDef { public:
     unsigned char _pad[0xbb0];
     long KnotholeGladeSiegeTheme;                           // +0xbb0 (string-table index of the siege music theme)
@@ -113,7 +113,7 @@ void CQ_BreakSiegeScript::WatchForTermination()
     CCharString region;
     Game->SetVillageLimbo(village, true);
     {
-        CCharString theme = g_DefStringTable.GetString(pGlobalScriptDef->KnotholeGladeSiegeTheme);
+        CCharString theme = GDefStringTable.GetString(pGlobalScriptDef->KnotholeGladeSiegeTheme);
         Game->TransitionToTheme(theme, 0.5f);
     }
     Game->EnableDecals(false);
@@ -126,7 +126,7 @@ void CQ_BreakSiegeScript::WatchForTermination()
                 return;
             Game->SetVillageLimbo(village, true);
             {
-                CCharString theme = g_DefStringTable.GetString(pGlobalScriptDef->KnotholeGladeSiegeTheme);
+                CCharString theme = GDefStringTable.GetString(pGlobalScriptDef->KnotholeGladeSiegeTheme);
                 Game->TransitionToTheme(theme, 0.5f);
             }
             Game->EnableDecals(false);

@@ -3,7 +3,7 @@
 // Leaf: GetRegionName
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007025A0, 129 bytes, `ret 4` (hidden CCharString result).
 // Callees: CBasicString<char>::operator==(const char*) const @ 0x004115A0 (inline CCharString::operator== on a non-null block),
-//   CCharString::CCharString(const CCharString&) @ 0x0099EC30, CDefStringTable::GetString(long) @ 0x009D49B0 on g_DefStringTable
+//   CCharString::CCharString(const CCharString&) @ 0x0099EC30, CDefStringTable::GetString(long) @ 0x009D49B0 on GDefStringTable
 //   0x013CA828, CCharString::~CCharString @ 0x0099EAE0; literal "" @ 0x0122D70E.
 // Layout: PDB CTCQuestCard PDef +0x0c (CDefPointer<CQuestCardDef const>), RegionName +0x20 (CCharString); CQuestCardDef
 //   RegionName +0x38 (CDefString id).
@@ -38,11 +38,11 @@ public:
         return PStringData->Data == text;
     }
 };
-struct CDefStringTable {
+class CDefStringTable {
 public:
     CCharString GetString(long) const;   // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;        // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)        // 0x013CA828
 class CDefPointeeBase { public: virtual void v00(); long m_refCount; };
 class CQuestCardDef : public CDefPointeeBase { public:
     unsigned char _pad08[0x38 - 0x08];
@@ -67,7 +67,7 @@ CCharString CTCQuestCard::GetRegionName() const
 {
     if (RegionName == "") {
         if (PDef) {
-            CCharString name = g_DefStringTable.GetString(PDef->RegionName);
+            CCharString name = GDefStringTable.GetString(PDef->RegionName);
             return name;
         }
     }

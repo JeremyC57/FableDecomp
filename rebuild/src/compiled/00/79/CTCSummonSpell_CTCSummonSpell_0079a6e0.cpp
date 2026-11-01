@@ -7,7 +7,7 @@
 //   CCharString(const char*, long) @ 0x0099EBF0 ("SPECIAL_ABILITIES_SUMMON_SPELL_DEF" @ 0x01235C3C), CGameDefinitionManager::Get()
 //   @ 0x0044C6B0 (`__fastcall`, three times), CDefinitionManager::GetGlobalIndexFromClassIndex(const CCharString&, long) const
 //   @ 0x009AD390, ~CCharString @ 0x0099EAE0 (x2), CDefinitionManager::GetDef<CSpecialAbilitiesSummonSpellDef> @ 0x0079BD10,
-//   CDefStringTable::GetString(long) @ 0x009D49B0 (on g_DefStringTable @ 0x013CA828), CDefinitionManager::
+//   CDefStringTable::GetString(long) @ 0x009D49B0 (on GDefStringTable @ 0x013CA828), CDefinitionManager::
 //   GetDefGlobalIndexFromName(const CCharString&) @ 0x009AD410, __ftol2 @ 0x00BFEA70, the const interface LowerBound
 //   @ 0x004365B0 (interface 0x6F), CTCInventoryAbilities::GetAbilityLevel(EHeroAbility) @ 0x005EDE93 (ability 10).
 //   Globals: CTCSummonSpell::SummonCreatureGlobalDefNum @ 0x0138306C (class static), CMainGameComponent::GetConstantFPS() @ 0x01375550.
@@ -27,11 +27,11 @@ class CCharString { public:
     CCharString(const CCharString& other);
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CDefStringTable {
+class CDefStringTable {
 public:
     CCharString GetString(long) const;   // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;                // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                // 0x013CA828
 class CSpecialAbilitiesSummonSpellDef {
 public:
     virtual void v00();
@@ -147,7 +147,7 @@ CTCSummonSpell::CTCSummonSpell(CThing& parent)
     }
     CGameDefinitionManager::Get().GetDef(index, &PDef);
     if (SummonCreatureGlobalDefNum == -1) {
-        CCharString creatureName = g_DefStringTable.GetString(PDef->BaseSummonCreatureName);
+        CCharString creatureName = GDefStringTable.GetString(PDef->BaseSummonCreatureName);
         SummonCreatureGlobalDefNum = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(creatureName);
     }
     FadeInTimer = CurFadeInTimer = (long)(CMainGameComponent::GetConstantFPS() * PDef->FadeInTime);

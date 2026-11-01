@@ -5,11 +5,11 @@
 // then `== 0` as a bool through a full register (`xor ecx,ecx ; sete cl ; mov al,cl`). PDB CDefString: long TablePos at +0.
 #include <string.h>
 
-struct CDefStringTable {
+class CDefStringTable { public:
     const char* GetStringAsCharArray(long id);     // 0x009D49F0
 };
 
-extern CDefStringTable g_DefStringTable;           // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)           // 0x013CA828
 
 class CDefString { public:
     long TablePos;                                 // +0
@@ -18,5 +18,5 @@ class CDefString { public:
 
 bool CDefString::operator==(const char* text) const
 {
-    return strcmp(g_DefStringTable.GetStringAsCharArray(TablePos), text) == 0;
+    return strcmp(GDefStringTable.GetStringAsCharArray(TablePos), text) == 0;
 }

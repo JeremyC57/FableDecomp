@@ -16,15 +16,15 @@ class CCharString { public:
     ~CCharString();                                 // 0x0099EAE0
 };
 
-struct CDefStringTable {
+class CDefStringTable {
 public:
     CCharString GetString(long) const;   // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;            // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)            // 0x013CA828
 
 class CDefString { public:
     long TablePos;
-    CCharString GetString() const { return g_DefStringTable.GetString(TablePos); }
+    CCharString GetString() const { return GDefStringTable.GetString(TablePos); }
 };
 
 class CThing { public:

@@ -4,7 +4,7 @@
 //   `?InitManualCameraList@CGameCameraManager@@AAEXXZ` (private); called from CGameCameraManager::SetCameraManagerDef 0x0069A850
 //   right after PDef is replaced (followed by InitSpecialCameraList 0x0069A1A0).
 // Callees: the current mode def's virtual slot 10 (+0x28, a CDefString returned through a hidden pointer; descriptive name
-//   GetDefName), CDefStringTable::GetString(CDefString) 0x009D49B0 on g_DefStringTable 0x013CA828, CDefinitionManager::
+//   GetDefName), CDefStringTable::GetString(CDefString) 0x009D49B0 on GDefStringTable 0x013CA828, CDefinitionManager::
 //   GetDefGlobalIndexFromName 0x009AD410 (on World->DefinitionManager, +0x74 -> +0x10), CCharString::~CCharString 0x0099EAE0,
 //   STLport __copy<CDefPointer<const CCameraModeDef>*, .., int> 0x0069CB80 and __destroy_aux 0x0069D2B0 (the inline
 //   vector::clear = erase(begin(), end())), CDefinitionManager::GetDef<CCameraModeDef> 0x0056D0C0 (COMDAT-folded, catalog
@@ -39,7 +39,7 @@ class CDefStringTable {
 public:
     CCharString GetString(CDefString name);            // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;               // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)               // 0x013CA828
 
 class CDefVirtual {
 public:
@@ -218,7 +218,7 @@ void CGameCameraManager::InitManualCameraList()
     CGameDefinitionManager* defManager = World->DefinitionManager;
     long currentMode = -1;
     if (CameraListIndex != CameraList.end()) {
-        CCharString name = g_DefStringTable.GetString((*CameraListIndex)->GetDefName());
+        CCharString name = GDefStringTable.GetString((*CameraListIndex)->GetDefName());
         currentMode = defManager->GetDefGlobalIndexFromName(name);
     }
     CameraList.clear();

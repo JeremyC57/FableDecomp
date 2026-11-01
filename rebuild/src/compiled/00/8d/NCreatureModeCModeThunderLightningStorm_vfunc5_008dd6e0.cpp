@@ -98,10 +98,10 @@ class CDefinitionManager:public CDefinitionManagerPdb { public:
 class CGameDefinitionManager:public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get(); //0044c6b0
 };
-struct CDefStringTable:CDefStringTablePdb {
+class CDefStringTable : public CDefStringTablePdb { public:   // naming wave 21: class key V (PDB)
     CCharString GetString(long)const; //009d49b0
 };
-extern CDefStringTable g_DefStringTable;
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)
 extern unsigned long g_InvalidSoundHandle;
 
 enum ETCInterfaceType {TC_SOUND_PLAYER=16};
@@ -158,7 +158,7 @@ void CModeThunderLightningStorm::OnActivate(){
     StormRotation=0.0f;StormRadius=def->StartRadius;
     CTCSoundPlayer* sound;
     if(ParentThing->GetTC(&sound,TC_SOUND_PLAYER)){
-        CCharString initSound=g_DefStringTable.GetString(def->InitSound.TablePos);
+        CCharString initSound=GDefStringTable.GetString(def->InitSound.TablePos);
         sound->PlayAttachedCriteria(initSound,false,false,false,-1);
     }
     LoopingSound=0;LoopingSound=g_InvalidSoundHandle;StartLoopingSound();

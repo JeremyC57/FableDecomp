@@ -6,14 +6,14 @@
 //   descriptive: the body fills the two sound maps from the def. Callers: OnSetInLimbo 0x00768310,
 //   CopyAugmentationDataFromThing 0x00768210, AttachAugmentationToSlot / RemoveAugmentationFromSlot and the init paths.
 // Callees: ClearAllSounds 0x00766550, HasCombinationOfAugmentations(EObjectAugmentationType) const 0x00766050,
-//   CDefStringTable::GetString(CDefString) 0x009D49B0 on g_DefStringTable 0x013CA828 (CCharString returned through the
+//   CDefStringTable::GetString(CDefString) 0x009D49B0 on GDefStringTable 0x013CA828 (CCharString returned through the
 //   hidden pointer), map<EObjectAugmentationType, CObjectAugmentationSoundSet>::operator[] 0x0076AFF0,
 //   CCharString::operator= 0x0099EFB0 (the Sound member, +4 of the sound set), ~CCharString 0x0099EAE0.
 // Layout: CTCBase PThing +0x04 (CThing state byte +0x91: InLimbo 0x20); CTCObjectAugmentations PDef +0x0C, InitSounds
 //   +0x20, LoopingSounds +0x2C; retail CObjectAugmentationsDef InitSounds +0x58, LoopingSounds +0x64 (STLport maps of
 //   EObjectAugmentationType -> CDefString; Ego_r.pdb +0x64/+0x74 with its 16-byte containers).
 // Shape: `ClearAllSounds(); if (!PThing->InLimbo) { for each (type, name) in PDef->InitSounds { type copied to a local;
-//   if (HasCombinationOfAugmentations(type)) { CCharString sound = g_DefStringTable.GetString(name); InitSounds[type].Sound
+//   if (HasCombinationOfAugmentations(type)) { CCharString sound = GDefStringTable.GetString(name); InitSounds[type].Sound
 //   = sound; } } the same for
 //   LoopingSounds }` -- STLport tree iterator, `++` through the inlined static `_Rb_global<bool>::_M_increment`; PDef is
 //   re-read for every end() compare.
@@ -197,7 +197,7 @@ class CDefStringTable {
 public:
     CCharString GetString(CDefString name);                 // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;                    // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                    // 0x013CA828
 
 class CDefPointeeBase {
 public:
@@ -249,14 +249,14 @@ void CTCObjectAugmentations::SetupAugmentationSounds()
         for (it = PDef->InitSounds.begin(); it != PDef->InitSounds.end(); ++it) {
             EObjectAugmentationType type = (*it).first;
             if (HasCombinationOfAugmentations(type)) {
-                CCharString sound = g_DefStringTable.GetString((*it).second);
+                CCharString sound = GDefStringTable.GetString((*it).second);
                 InitSounds[type].Sound = sound;
             }
         }
         for (it = PDef->LoopingSounds.begin(); it != PDef->LoopingSounds.end(); ++it) {
             EObjectAugmentationType type = (*it).first;
             if (HasCombinationOfAugmentations(type)) {
-                CCharString sound = g_DefStringTable.GetString((*it).second);
+                CCharString sound = GDefStringTable.GetString((*it).second);
                 LoopingSounds[type].Sound = sound;
             }
         }

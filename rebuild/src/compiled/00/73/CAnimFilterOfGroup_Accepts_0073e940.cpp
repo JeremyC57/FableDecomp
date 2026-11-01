@@ -4,10 +4,10 @@
 // Callees: CDefStringTable::GetStringCRC 0x009D4A20 (on the global table @ 0x013CA828).
 // Layout (PDB CAnimFilterOfGroup, 0xc bytes): vptr +0, Group +4, GroupCRC +8.
 // The equality comes back as a long through `sub ; neg ; sbb ; inc` (an int result, not a bool `sete al`).
-struct CDefStringTable {
+class CDefStringTable { public:
     unsigned long GetStringCRC(long stringIndex);      // 0x009D4A20
 };
-extern CDefStringTable g_defStringTable;                // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                // 0x013CA828
 
 class CCharString { public: void* PStringData; };
 
@@ -24,5 +24,5 @@ class CAnimFilterOfGroup { public:
 
 long CAnimFilterOfGroup::Accepts(const CAnimInfo& anim)
 {
-    return g_defStringTable.GetStringCRC(anim.GroupName) == GroupCRC;
+    return GDefStringTable.GetStringCRC(anim.GroupName) == GroupCRC;
 }

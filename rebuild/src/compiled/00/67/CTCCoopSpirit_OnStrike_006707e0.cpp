@@ -14,12 +14,12 @@ class CCharString { public:
     ~CCharString();                                         // 0x0099EAE0
 };
 
-struct CDefStringTable {
+class CDefStringTable {
 public:
     CCharString GetString(long) const;   // 0x009D49B0
 };
 
-extern CDefStringTable g_DefStringTable;                    // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                    // 0x013CA828
 
 class CCoopSpiritDef { public:
     unsigned char _pad[0x28];
@@ -40,6 +40,6 @@ class CTCCoopSpirit { public:
 
 void CTCCoopSpirit::OnStrike()
 {
-    CCharString particle = g_DefStringTable.GetString(PCoopSpiritDef->OnStrikeParticle);
+    CCharString particle = GDefStringTable.GetString(PCoopSpiritDef->OnStrikeParticle);
     AddAppearanceParticle(particle);
 }

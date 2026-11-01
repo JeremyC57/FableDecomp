@@ -8,7 +8,7 @@
 //   LoopingSound handle at retail +0x98, same interface-16 sound component: start when no handle vs stop and forget it), and
 //   both are called from the lightning update code at 0x007A1B20.
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (inlined GetInterface, interface 16 = sound),
-//   CDefStringTable::GetString(long) @ 0x009D49B0 on g_DefStringTable 0x013CA828, the sound component's PlaySound @ 0x0066BD00,
+//   CDefStringTable::GetString(long) @ 0x009D49B0 on GDefStringTable 0x013CA828, the sound component's PlaySound @ 0x0066BD00,
 //   CCharString::~CCharString @ 0x0099EAE0. g_InvalidSoundHandle @ 0x0129D25C.
 // Layout: PDB CTCWillLightning (0xf0): m_lspDef +0x28 (CDefPointer<CSpecialAbilitiesLightningSpellDef>), LoopingSound PDB +0xa4,
 //   retail +0x98 (the PDB list/intelligent-pointer members are 12 bytes larger than retail's). Def LoopingSound (CDefString id)
@@ -19,10 +19,10 @@ class CCharString { public:
     void* PStringData;                          // +0 the shared string block
     ~CCharString();                             // 0x0099EAE0
 };
-struct CDefStringTable {
+class CDefStringTable { public:
     CCharString GetString(long id) const;             // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;        // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)        // 0x013CA828
 extern unsigned long g_InvalidSoundHandle;      // 0x0129D25C
 class CTCBase;
 class CTCSoundPlayer { public:
@@ -78,7 +78,7 @@ void CTCWillLightning::StartLoopingSound()
     if (LoopingSound == g_InvalidSoundHandle) {
         CTCSound* sound;
         if (ParentThing->GetInterface(&sound, 16)) {
-            CCharString name = g_DefStringTable.GetString(m_lspDef->LoopingSound);
+            CCharString name = GDefStringTable.GetString(m_lspDef->LoopingSound);
             LoopingSound = ((CTCSoundPlayer*)sound)->PlayAttachedCriteria(name, false, 0, 0, -1);
         }
     }

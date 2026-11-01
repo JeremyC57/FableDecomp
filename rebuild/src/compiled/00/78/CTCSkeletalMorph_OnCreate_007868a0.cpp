@@ -15,11 +15,11 @@ class CCharString { public:
     void* PStringData;
     ~CCharString();                                 // 0x0099EAE0
 };
-struct CDefStringTable {
+class CDefStringTable {
 public:
     CCharString GetString(long) const;   // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;            // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)            // 0x013CA828
 class CDefPointeeBase { public:
     virtual void Destroy();                         // slot 0
     virtual void Delete();                          // slot 1 (+0x04)
@@ -79,7 +79,7 @@ void CTCSkeletalMorph::vfunc_4()
         if (found) {
             for (unsigned long i = 0; i < def->SkeletalMorphs.size(); ++i) {
                 {
-                    CCharString name = g_DefStringTable.GetString(def->SkeletalMorphs[i]);
+                    CCharString name = GDefStringTable.GetString(def->SkeletalMorphs[i]);
                     AddMorph(0x534b454c, name, 1.0f);
                 }
             }

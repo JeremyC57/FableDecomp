@@ -23,11 +23,11 @@ class CDefString { public:
     CDefString(const CDefString& other) : m_index(other.m_index) { }
     operator CCharString() const;
 };
-struct CDefStringTable_Retail {
+class CDefStringTable { public:
     CCharString GetString(long index);                  // 0x009D49B0
 };
-extern CDefStringTable_Retail g_defStringTable;         // 0x013CA828
-inline CDefString::operator CCharString() const { return g_defStringTable.GetString(m_index); }
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)         // 0x013CA828
+inline CDefString::operator CCharString() const { return GDefStringTable.GetString(m_index); }
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>

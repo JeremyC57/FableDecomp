@@ -50,8 +50,8 @@ public:
 };
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 class CDefString { public: long m_index; };
-struct CDefStringTable { CCharString GetString(CDefString name); };   // 0x009D49B0
-extern CDefStringTable g_DefStringTable;           // 0x013CA828
+class CDefStringTable { public: CCharString GetString(CDefString name); };   // 0x009D49B0
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)           // 0x013CA828
 inline void CombatTrace(const CCharString&) {}
 
 template<class T> struct CRetailVector {
@@ -207,7 +207,7 @@ void CCombatManager::FillCombatSequenceList(CThingCreatureBase& attacker, CThing
         return;
     const CCombatTypeDef* def = attacker.GetCombatTypeDef();
     if (def->CombatSequence.first == def->CombatSequence.last && def->CombatSequenceDef.first == def->CombatSequenceDef.last) {
-        CCharString name = g_DefStringTable.GetString(((CThing*)&attacker)->GetDefName());
+        CCharString name = GDefStringTable.GetString(((CThing*)&attacker)->GetDefName());
         CCharString message = "WARNING : No combat sequences registered for this combat type - in creature " + name;
         CombatTrace(message);
     }

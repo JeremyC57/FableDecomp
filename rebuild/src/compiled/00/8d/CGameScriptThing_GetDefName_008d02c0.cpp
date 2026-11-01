@@ -17,10 +17,10 @@ extern const char g_emptyString_0122d70e[];       // 0x0122D70E ("")
 class CDefString { public:                                // a definition-string handle: one table index
     long m_index;
 };
-struct CDefStringTable {
+class CDefStringTable { public:
     CCharString GetString(CDefString name);        // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;           // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)           // 0x013CA828
 class CThing_Retail { public:
     unsigned char  _pad00[0x91];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
@@ -53,7 +53,7 @@ class CGameScriptThing { public:
 CCharString CGameScriptThing::GetDefName() const
 {
     if (PThing.GetPItem() && !PThing.GetPItem()->m_dead) {
-        CCharString name = g_DefStringTable.GetString(PThing.GetPItem()->GetDefName());
+        CCharString name = GDefStringTable.GetString(PThing.GetPItem()->GetDefName());
         return name;
     }
     return CCharString(g_emptyString_0122d70e, -1);

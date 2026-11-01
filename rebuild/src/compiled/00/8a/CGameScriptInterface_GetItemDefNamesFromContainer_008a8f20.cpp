@@ -70,10 +70,10 @@ class CDefString { public:
 struct CDefinitionManager_Retail {
     CDefString GetDefNameFromGlobalIndex(long index);   // 0x009ACCC0
 };
-struct CDefStringTable_Retail {
+class CDefStringTable { public:
     CCharString GetString(long index);                  // 0x009D49B0
 };
-extern CDefStringTable_Retail g_defStringTable;         // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)         // 0x013CA828
 class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -156,7 +156,7 @@ void CGameScriptInterface::GetItemDefNamesFromContainer(const CScriptThing& cont
         return;
     const CTCContainer* items = thing->GetTC<CTCContainer>(0x3c);
     for (unsigned long i = 0; i < items->ItemCount(); ++i) {
-        CCharString name = g_defStringTable.GetString(DefinitionManager->GetDefNameFromGlobalIndex(items->ItemsStart[i].DefIndex).m_index);
+        CCharString name = GDefStringTable.GetString(DefinitionManager->GetDefNameFromGlobalIndex(items->ItemsStart[i].DefIndex).m_index);
         names.push_back(name);
     }
 }

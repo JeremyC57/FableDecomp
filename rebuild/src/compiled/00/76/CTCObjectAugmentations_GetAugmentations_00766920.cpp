@@ -7,7 +7,7 @@
 //   with interface 0xBF (CTCObjectAugmentations). The catalog label "CParticleMorphs_InitFromDef" is propagated.
 // Callees: memmove 0x00BFEAE6 (STLport __copy_trivial inside clear()), std::vector<long>::reserve(size_type) 0x00660684,
 //   CDefClassBase::GetInstantiationName() const (virtual slot 10, +0x28, CDefString by value), CDefStringTable::GetString(long)
-//   const 0x009D49B0 on g_DefStringTable 0x013CA828 (CDefString's inline operator CCharString), CCharString(const CCharString&)
+//   const 0x009D49B0 on GDefStringTable 0x013CA828 (CDefString's inline operator CCharString), CCharString(const CCharString&)
 //   0x0099EC30, ~CCharString 0x0099EAE0, CTCBase::GetDefinitionManager() const 0x006869D0 (protected; ParentThing->
 //   PeekDefinitionManager()), CDefinitionManager::GetDefGlobalIndexFromName(const CCharString&) const 0x009AD410,
 //   std::vector<long>::_M_insert_overflow(long*, const long&, const __true_type&, size_type, bool) 0x00440990 (malloc 0x00BFEA0E,
@@ -141,11 +141,11 @@ class CDefStringTable {
 public:
     CCharString GetString(long table_pos) const;        // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;                // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                // 0x013CA828
 class CDefString {
 public:
     long TablePos;
-    operator CCharString() const { return g_DefStringTable.GetString(TablePos); }
+    operator CCharString() const { return GDefStringTable.GetString(TablePos); }
 };
 
 class CIVCountedPointeeBase {

@@ -3,7 +3,7 @@
 //
 // Retail 0x007306C0, 559 bytes, plain `ret`.
 // Callees: CThing::GetDefName @ 0x004C7CC0 (CDefString by hidden pointer), CDefStringTable::GetString @ 0x009D49B0
-// (g_DefStringTable 0x013CA828), CCharString copy ctor @ 0x0099EC30 / dtor @ 0x0099EAE0, CVectorMap LowerBound @ 0x0040F020
+// (GDefStringTable 0x013CA828), CCharString copy ctor @ 0x0099EC30 / dtor @ 0x0099EAE0, CVectorMap LowerBound @ 0x0040F020
 // (0x5a CTCAnimationComplex, 0x79 CTCSwitchableNavigation), CTCAnimationComplex::GetAnimation @ 0x0070B460,
 // CAnimateThing::Reset @ 0x0070EC30 / SetMainAnim(const CAnimInit&) @ 0x0070D920, CThingBaseDef::GetSubDef
 // <CAnimatingObjectDef> @ 0x0042B0A2, CAnimationSet::GetAnimation @ 0x005DC340 (CAnimFilterNoGroup temporary),
@@ -51,10 +51,10 @@ class CDefString { public:
     long Index;
     CDefString() {}
 };
-struct CDefStringTable {
+class CDefStringTable { public:
     CCharString GetString(CDefString name);                    // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;                       // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                       // 0x013CA828
 class CAnimationEntry { public: long AnimIndex; };
 class CAnimFilterBase { public:                        // vtable 0x0122FFCC
     virtual bool Accept(const CAnimationEntry* entry) const;
@@ -221,7 +221,7 @@ class CThing { public:
     CDefString GetDefName() const;              // 0x004C7CC0
     CCharString GetDefNameString() const
     {
-        CCharString name = g_DefStringTable.GetString(GetDefName());
+        CCharString name = GDefStringTable.GetString(GetDefName());
         return name;
     }
     __forceinline bool HasTC(long interfaceType) const

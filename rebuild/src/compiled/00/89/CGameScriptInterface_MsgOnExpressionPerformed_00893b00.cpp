@@ -41,10 +41,10 @@ public:
     CDefString GetDefNameFromGlobalIndex(long) const;   // 0x009ACCC0
 };
 class CGameDefinitionManager : public CDefinitionManager { };
-struct CDefStringTable_Retail {
+class CDefStringTable { public:
     CCharString GetString(long index);              // 0x009D49B0
 };
-extern CDefStringTable_Retail g_defStringTable;     // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)     // 0x013CA828
 struct CWorldMap_Retail;
 class CDefinitionManager;
 struct CPlayerManager_Retail;
@@ -74,7 +74,7 @@ bool CGameScriptInterface::MsgOnExpressionPerformed(CCharString& name) const
     CMessageEventManager_Retail* messages = World->PMessageEventManager_Data;
     CMessageEvent_Retail* message = messages->FindMostRecentMessage(CMessageEventFilter_IsOfType(0x2a) && CMessageEventFilter_CanBeSeenOrHeard(frame, maxFrame));
     if (message) {
-        CCharString text = g_defStringTable.GetString(DefinitionManager->GetDefNameFromGlobalIndex(message->m_extraData).m_index);
+        CCharString text = GDefStringTable.GetString(DefinitionManager->GetDefNameFromGlobalIndex(message->m_extraData).m_index);
         name = text;
         return true;
     }

@@ -27,7 +27,7 @@ public:
     CCharString GetString(long index) const;   // 0x009D49B0
 };
 
-extern CDefStringTable g_DefStringTable;    // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)    // 0x013CA828
 
 class CThing { public:
     unsigned char _pad00[0x10];
@@ -72,7 +72,7 @@ void CTCPhysicalShieldSpell::UnPause()
         CThingCreatureBase* owner = static_cast<CThingCreatureBase*>(ParentThing);
         Paused = false;
         {
-            CCharString sound = g_DefStringTable.GetString(PDef->LoopingSound[SpellLevel]);
+            CCharString sound = GDefStringTable.GetString(PDef->LoopingSound[SpellLevel]);
             LoopingSound = PlaySoundW(sound, owner->Type == 2);
         }
         PlayShieldEffects(owner);

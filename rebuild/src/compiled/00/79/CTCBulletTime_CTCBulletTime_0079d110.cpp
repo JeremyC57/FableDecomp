@@ -3,7 +3,7 @@
 // Retail 0x0079D110, 444 bytes (plain `ret`), vtable 0x0126C49C.
 // Callees: CTCBase::GetWorld @ 0x00686A70, bullet-time manager RemoveBulletTimeSlowdown @ 0x004C6140 (world +0x68),
 // LowerBound @ 0x0040F020 (inlined GetInterface, sound emitter 0x10), StopSample @ 0x0066ADD0, filter removal @ 0x006B83F0,
-// CDefStringTable::GetString(long) @ 0x009D49B0 on g_DefStringTable 0x013CA828, CTCBulletTime::PlaySoundW @ 0x0079CE80
+// CDefStringTable::GetString(long) @ 0x009D49B0 on GDefStringTable 0x013CA828, CTCBulletTime::PlaySoundW @ 0x0079CE80
 // (retail passes the CCharString's address), ~CCharString @ 0x0099EAE0, CBaseIntelligentPointer GetPItem 0x00A01B50 /
 // ctor 0x00A01B10 / SetPItem 0x00A01B90 / dtor 0x00A01C10, CParticleEmitter::Kill @ 0x00AEE8C0, ~CBaseClass @ 0x0099A2E0,
 // CTCBase::~CTCBase @ 0x00686830.
@@ -14,10 +14,10 @@ class CCharString { public:
     void* PStringData;
     ~CCharString();                             // 0x0099EAE0
 };
-struct CDefStringTable {
+class CDefStringTable { public:
     CCharString GetString(long id) const;             // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;        // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)        // 0x013CA828
 struct CTCBaseInterface;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -204,7 +204,7 @@ CTCBulletTime::~CTCBulletTime()
     } else {
         CWorld* world = (&GetWorld());
         world->PEnvironment->SpellEffects->RemoveFilter_006b83f0(PDef->FilterRemoveMode, ScreenFilterKey);
-        CCharString sound = g_DefStringTable.GetString(PDef->EndSoundStringID);
+        CCharString sound = GDefStringTable.GetString(PDef->EndSoundStringID);
         PlaySoundW(sound, 1);
     }
     CIntelligentPointer<NParticleEngine::CParticleEmitter>& effect = m_tpLoopingEffect;

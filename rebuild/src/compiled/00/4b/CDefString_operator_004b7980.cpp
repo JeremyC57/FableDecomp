@@ -18,11 +18,11 @@ class CCharString { public:
     const char* GetChars() const { return m_pStringData == 0 ? g_emptyLiteral_0129aaf4 : m_pStringData->m_pChars; }
 };
 
-struct CDefStringTable {
+class CDefStringTable { public:
     const char* GetStringAsCharArray(long id);      // 0x009D49F0
 };
 
-extern CDefStringTable g_DefStringTable;            // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)            // 0x013CA828
 
 class CDefString { public:
     long TablePos;                                  // +0
@@ -31,5 +31,5 @@ class CDefString { public:
 
 bool CDefString::operator==(const CCharString& text) const
 {
-    return strcmp(g_DefStringTable.GetStringAsCharArray(TablePos), text.GetChars()) == 0;
+    return strcmp(GDefStringTable.GetStringAsCharArray(TablePos), text.GetChars()) == 0;
 }

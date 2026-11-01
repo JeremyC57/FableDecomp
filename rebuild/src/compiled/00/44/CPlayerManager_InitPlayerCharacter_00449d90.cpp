@@ -5,7 +5,7 @@
 // CDefinitionManager::GetDefGlobalIndexFromName(const CCharString&) 0x009AD410,
 // CDefinitionManager::GetDef<CPlayerDef>(long, CDefPointer<const CPlayerDef>*) 0x0044BA90 (catalogued under a
 // propagated CThingPhysicalSwitchDef instantiation name), CDefinitionManager::GetDefNameFromGlobalIndex(long)
-// 0x009ACCC0 (CDefString by hidden pointer), CDefStringTable::GetString(CDefString) 0x009D49B0 on g_DefStringTable
+// 0x009ACCC0 (CDefString by hidden pointer), CDefStringTable::GetString(CDefString) 0x009D49B0 on GDefStringTable
 // 0x013CA828 (CCharString by hidden pointer), CPlayerManager::GetPlayer(long) 0x004498C0,
 // CPlayer::InitCharacterAs(const CCharString&) 0x0048A070.
 // Layout: DefinitionManager +0x08, MainPlayer +0x1C (engine/CPlayerManager.h has the PDB's 16-byte Players vector, so
@@ -27,10 +27,10 @@ class CCharString { public:
 class CDefString { public:                                     // a definition-string handle: one table index
     long m_index;
 };
-struct CDefStringTable {
+class CDefStringTable { public:
     CCharString GetString(CDefString name);             // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;                // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                // 0x013CA828
 
 class CDefPointeeBase { public:
     virtual void v00();
@@ -102,7 +102,7 @@ void CPlayerManager::InitPlayerCharacter(bool fromSave)
     bool found = GetDefinitionManager()->GetDef(index, &out);
     CDefHolder<const CPlayerDef> playerDef(out.Object);
     if (found) {
-        CCharString characterName = g_DefStringTable.GetString(GetDefinitionManager()->GetDefNameFromGlobalIndex(playerDef->CharacterDef));
+        CCharString characterName = GDefStringTable.GetString(GetDefinitionManager()->GetDefNameFromGlobalIndex(playerDef->CharacterDef));
         GetPlayer(MainPlayer)->InitCharacterAs(characterName);
     } else {
         CCharString characterName("CREATURE_HERO", -1);

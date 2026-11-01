@@ -88,10 +88,10 @@ class CGameDefinitionManager : public CDefinitionManager {
 public:
     static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
 };
-struct CDefStringTable {
+class CDefStringTable { public:
     CCharString GetString(long id) const;                    // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;               // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)               // 0x013CA828
 class CMainGameComponent {
 protected:
     static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
@@ -263,7 +263,7 @@ void CTCMultiArrow::Init()
     }
     CTCSoundPlayer* player;
     if (parent->GetInterface(&player, 0x10)) {
-        CCharString sound = g_DefStringTable.GetString(PDef->CastSound);
+        CCharString sound = GDefStringTable.GetString(PDef->CastSound);
         ((CTCSoundPlayer*)player)->PlayAttachedCriteria(sound, 1, 0, 0, -1);
     }
 }

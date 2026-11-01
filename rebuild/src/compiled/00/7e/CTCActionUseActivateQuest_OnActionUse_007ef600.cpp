@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007EF600, length 187 bytes. Vtable slot 28 ("vfunc_28" in the catalog), `ret 4`.
 // Callees: CTCActionUseBase::OnActionUse @ 0x007EAB90 (qualified; manifest "$E2"), CDefClassBase::GetSubDef<CActivateQuestDef>
 // @ 0x007B5680 (on the thing's def, +0x70; manifest instantiation name is a byte twin), CDefStringTable::GetString(long)
-// @ 0x009D49B0 on g_DefStringTable 0x013CA828, CCreatureAction_ActivateQuest::CCreatureAction_ActivateQuest @ 0x00843F50,
+// @ 0x009D49B0 on GDefStringTable 0x013CA828, CCreatureAction_ActivateQuest::CCreatureAction_ActivateQuest @ 0x00843F50,
 // CThingCreatureBase::SetCurrentAction @ 0x006644F0 (result dropped), ~CBaseIntelligentPointer @ 0x00A01C10,
 // ~CCharString @ 0x0099EAE0, ~CCreatureActionBase @ 0x00693EF0, the def's virtual Delete (slot 1).
 // Layout: Ego_r.pdb CActivateQuestDef: ScriptName (CDefString index) +0x28, LoadResources +0x2C. CCreatureAction_ActivateQuest
@@ -64,11 +64,11 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CActivateQuestDef
     return true;
 }
 #pragma auto_inline(on)
-struct CDefStringTable {
+class CDefStringTable {
 public:
     CCharString GetString(long) const;   // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;            // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)            // 0x013CA828
 
 #pragma pack(push, 1)
 class CBaseObject;
@@ -128,7 +128,7 @@ void CTCActionUseActivateQuest::OnActionUse(CThing& user)
     if (!def)
         return;
     if (creature && !creature->IsDead()) {
-        CCharString scriptName = g_DefStringTable.GetString(def->ScriptName);
+        CCharString scriptName = GDefStringTable.GetString(def->ScriptName);
         CThing* parent = ParentThing;
         creature->SetCurrentAction(CCreatureAction_ActivateQuest(*creature, *parent, scriptName, def->LoadResources));
     }

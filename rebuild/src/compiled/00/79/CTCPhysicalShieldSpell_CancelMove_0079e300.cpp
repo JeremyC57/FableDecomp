@@ -1,7 +1,7 @@
 // CTCPhysicalShieldSpell::CancelMove() -- play the def's cancel sound (player-flagged for a player owner), play the "END" effect on the owner, stop being pausable and remove the shield component (0x93) from the owner
 // Leaf: CancelMove
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0079E300, 155 bytes.
-// Callees: CDefStringTable::GetString(long) @ 0x009D49B0 on g_DefStringTable 0x013CA828, CTCPhysicalShieldSpell::PlaySound
+// Callees: CDefStringTable::GetString(long) @ 0x009D49B0 on GDefStringTable 0x013CA828, CTCPhysicalShieldSpell::PlaySound
 //   (const CCharString&, bool) @ 0x0079DE00 (landed under the propagated label "CTCBulletTime::PlaySoundW"), CCharString::~CCharString
 //   @ 0x0099EAE0, CCharString::CCharString(const char*, long) @ 0x0099EBF0, CTCPhysicalShieldSpell::PlayEffect @ 0x0079DEB0,
 //   CThing::RemoveTC(long) @ 0x004C9840 (catalog "CBaseObject::OnPropertyChanged").
@@ -15,10 +15,10 @@ class CCharString { public:
     CCharString(const char* text, long length); // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
-struct CDefStringTable {
+class CDefStringTable { public:
     CCharString GetString(long id) const;             // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;        // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)        // 0x013CA828
 enum ETCInterfaceType { };
 class CThing { public:
     unsigned char _pad00[0x10];
@@ -45,7 +45,7 @@ void CTCPhysicalShieldSpell::CancelMove()
 {
     CThing* owner = ParentThing;
     {
-        CCharString sound = g_DefStringTable.GetString(PDef->CancelSound);
+        CCharString sound = GDefStringTable.GetString(PDef->CancelSound);
         PlaySound(sound, owner->Type == 2);
     }
     {

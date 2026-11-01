@@ -3,7 +3,7 @@
 // Callees: CCharString() @ 0x0099E4B0, CCharString(const CCharString&) @ 0x0099EC30, ~CCharString @ 0x0099EAE0,
 //   CCharString::operator= @ 0x0099EFB0, operator!=(const char*) @ 0x0099E960, the def's virtual slot 10 (+0x28,
 //   GetInstantiationName, CDefString by hidden pointer), CDefStringTable::GetString(long) @ 0x009D49B0 on
-//   g_DefStringTable 0x013CA828, CPersistContext::Transfer(const char*, CCharString&, const CCharString&) @ 0x004109A0
+//   GDefStringTable 0x013CA828, CPersistContext::Transfer(const char*, CCharString&, const CCharString&) @ 0x004109A0
 //   (manifest "Transfer<CIntelligentPointer<CThing>>" is propagated), CTCBase::GetDefinitionManager @ 0x006869D0,
 //   CDefinitionManager::GetDef<CExpressionDef>(const CCharString&, CDefPointer*) @ 0x00593666 (manifest
 //   "GetDef<CHeroPostcardGeneratorDef>" is a byte-twin propagation).
@@ -24,15 +24,15 @@ class CCharString { public:
     bool operator!=(const char* text) const;            // 0x0099E960
 };
 inline CCharString EmptyString() { CCharString empty; return empty; }
-struct CDefStringTable {
+class CDefStringTable {
 public:
     CCharString GetString(long) const;   // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;                // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                // 0x013CA828
 class CDefString { public:                                     // 4-byte def-name handle (user constructor: hidden-pointer return)
     long Index;
     CDefString();
-    CCharString GetString() const { return g_DefStringTable.GetString(Index); }
+    CCharString GetString() const { return GDefStringTable.GetString(Index); }
 };
 class CDefClassBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();

@@ -18,10 +18,10 @@ class CCharString { public:
 
 class CDefString { public: long Index; };
 
-struct CDefStringTable {
+class CDefStringTable { public:
     CCharString GetString(CDefString name);     // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;        // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)        // 0x013CA828
 
 class CSpecialAbilitiesMultiStrikeDef { public:
     virtual void v00();
@@ -99,7 +99,7 @@ CCreatureAction_CastStrengthMultiStrikeProper::CCreatureAction_CastStrengthMulti
     }
     CGameDefinitionManager::Get().GetDef(index, &def);
     {
-        CCharString animation = g_DefStringTable.GetString(def->Animations[SpellLevel - 1]);
+        CCharString animation = GDefStringTable.GetString(def->Animations[SpellLevel - 1]);
         SetCombatAnimation(animation);
     }
 }

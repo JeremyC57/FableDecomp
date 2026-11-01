@@ -3,7 +3,7 @@
 // Retail: Fable.exe @ 0x007CF530, 123 bytes; CTCTavernGameShoveHaPenny vtable 0x0126F2F4 slot 29 (EnterGame; the catalog's
 //         "vfunc_29").
 // Callees: CTCTavernGameCoinBase::EnterGame() 0x008EF390 (non-virtual base call); CTCTavernGame::GetTavernGameDef(CDefPointer*)
-//          0x005EA000; CDefStringTable::GetString(long) 0x009D49B0 on g_DefStringTable 0x013CA828 (CCharString by hidden
+//          0x005EA000; CDefStringTable::GetString(long) 0x009D49B0 on GDefStringTable 0x013CA828 (CCharString by hidden
 //          pointer); CTCTavernGame::CameraUseCameraPoint(const CCharString&) 0x005EBFA0; CCharString::~CCharString 0x0099EAE0;
 //          the def's slot 1 on release.
 // Layout: CTavernGameDef::CameraName (CDefString, a string-table id) +0x90 (PDB offset holds); retail
@@ -14,11 +14,11 @@ class CCharString { public:
     void* m_data;
     ~CCharString();                             // 0x0099EAE0
 };
-struct CDefStringTable {
+class CDefStringTable {
 public:
     CCharString GetString(long) const;   // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;        // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)        // 0x013CA828
 
 struct CRefCounted {
     long m_count;
@@ -65,7 +65,7 @@ void CTCTavernGameShoveHaPenny::EnterGame()
     CDefPointer def;
     GetTavernGameDef(&def);
     {
-        CCharString camera = g_DefStringTable.GetString(def->CameraName);
+        CCharString camera = GDefStringTable.GetString(def->CameraName);
         CameraUseCameraPoint(camera);
     }
     RoundsPlayed = 0;

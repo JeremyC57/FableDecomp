@@ -8,7 +8,7 @@
 //   CDefinitionManager::GetGlobalIndexFromClassIndex 0x009AD390, GetDef<CSpecialAbilitiesLightningSpellDef> 0x007A35D0,
 //   CBaseIntelligentPointer::GetPItem 0x00A01B50, CVectorMap::LowerBound 0x0040F020 (inlined GetInterface type 0x10,
 //   the CTCSoundPlayer component: bit 16 of the presence word at +0x20), CDefStringTable::GetString 0x009D49B0 on
-//   g_DefStringTable 0x013CA828, CTCSoundPlayer::PlaySound 0x0066BD00.
+//   GDefStringTable 0x013CA828, CTCSoundPlayer::PlaySound 0x0066BD00.
 // Layout: retail CCombatActionBase is 0x114 bytes (PCreature +0x08); this class's members +0x114/+0x118 take the two
 //   arguments; the
 //   lightning def's cast-sound string id at +0x110 (the def's RefCount +0x04, Destroy in vtable slot 1).
@@ -81,11 +81,11 @@ bool CDefinitionManager::GetDef(long index, CDefPointer<CSpecialAbilitiesLightni
 class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();  // 0x0044C6B0
 };
-struct CDefStringTable {
+class CDefStringTable {
 public:
     CCharString GetString(long) const;   // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;              // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)              // 0x013CA828
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -169,7 +169,7 @@ CCreatureAction_CastWillLightningSpell::CCreatureAction_CastWillLightningSpell(C
     CGameDefinitionManager::Get().GetDef(index, &def);
     CTCSoundPlayer* sound;
     if (PCreature.GetPItem()->GetInterface(&sound, 0x10)) {
-        CCharString castSound = g_DefStringTable.GetString(def->CastSound);
+        CCharString castSound = GDefStringTable.GetString(def->CastSound);
         sound->PlayAttachedCriteria(castSound, 0, 0, 0, -1);
     }
 }

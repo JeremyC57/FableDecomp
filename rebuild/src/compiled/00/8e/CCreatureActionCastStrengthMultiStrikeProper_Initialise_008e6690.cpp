@@ -19,10 +19,10 @@ class CCharString { public:
 
 class CDefString { public: long Index; };
 
-struct CDefStringTable {
+class CDefStringTable { public:
     CCharString GetString(CDefString name);     // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;        // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)        // 0x013CA828
 
 class CSpecialAbilitiesMultiStrikeDef { public:
     virtual void v00();
@@ -143,7 +143,7 @@ void CCreatureAction_CastStrengthMultiStrikeProper::Initialise()
     CGameDefinitionManager::Get().GetDef(index, &def);
     CTCSound* sound;
     if (PCreature.GetPItem()->GetInterface(&sound, 0x10)) {
-        CCharString soundName = g_DefStringTable.GetString(def->Sounds[SpellLevel - 1]);
+        CCharString soundName = GDefStringTable.GetString(def->Sounds[SpellLevel - 1]);
         ((CTCSoundPlayer*)sound)->PlayAttachedCriteria(soundName, 1, 0, 0, -1);
     }
     CCombatActionBase::Initialise();

@@ -6,7 +6,7 @@
 //   the inline CEnginePrimitiveHandle::Clear (0x0041BE70 out of line); std::for_each<CEnginePrimitiveHandle*,
 //   mem_fun_ref_t<void, CEnginePrimitiveHandle> > 0x0043F360 (__fastcall, /Gr); operator delete 0x00BFE9BC (font pointer info);
 //   CComponent::LoadAndReturnDef 0x00530EC0 (virtual, called directly in the destructor); CDefStringTable::GetString
-//   0x009D49B0 on g_DefStringTable 0x013CA828 (inline CDefString -> CCharString conversion, built in the return slot, so the
+//   0x009D49B0 on GDefStringTable 0x013CA828 (inline CDefString -> CCharString conversion, built in the return slot, so the
 //   ReleaseFont argument is `lea`d after the GFGetSystemManager call); __fastcall GFGetSystemManager 0x009A4EC0;
 //   CFontManager::ReleaseFont 0x009E2B40; ~CCharString 0x0099EAE0; free 0x00BFEA14 (vector storage); CBaseClass::~CBaseClass
 //   0x0099A2E0; ~CWideString 0x0099B510; CChangingStateComponent::~CChangingStateComponent 0x0052CCF0.
@@ -174,8 +174,8 @@ class CDefStringTable {
 public:
     CCharString GetString(long tablePos) const;         // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;                // 0x013CA828
-inline CCharString CDefString::GetString() const { return g_DefStringTable.GetString(TablePos); }
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                // 0x013CA828
+inline CCharString CDefString::GetString() const { return GDefStringTable.GetString(TablePos); }
 inline CDefString::operator CCharString() const { return GetString(); }
 template <class T> class CDefPointer {
 public:

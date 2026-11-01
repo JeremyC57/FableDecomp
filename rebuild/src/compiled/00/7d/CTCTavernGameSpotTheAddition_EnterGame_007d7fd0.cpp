@@ -4,7 +4,7 @@
 // 0x0126F814 slot 29. Ego_r.pdb `?EnterGame@CTCTavernGameSpotTheAddition@@UAEXXZ`.
 // Callees: CTCTavernGame::EnterGame() 0x005EC0F0 (non-virtual base call); CTCTavernGame::GetTavernGameDef(CDefPointer*)
 //          0x005EA000 (Ego_r.pdb GetDef, out of line in this TU); CDefStringTable::GetString(long) 0x009D49B0 on
-//          g_DefStringTable 0x013CA828; CTCTavernGame::CameraUseCameraPoint(const CCharString&) 0x005EBFA0;
+//          GDefStringTable 0x013CA828; CTCTavernGame::CameraUseCameraPoint(const CCharString&) 0x005EBFA0;
 //          ~CCharString 0x0099EAE0; CDefClassBase::GetSubDef<CTavernGameSpotTheAdditionDef> 0x007D9A80 (the inline
 //          GetDef of this class); CTCTavernGame::CreateGamePiece(long) 0x005EA9B0; CTCTavernGame::PositionMesh(CThing*,
 //          const C3DVector&, const CRightHandedSet&, const C3DVector&, float, float) 0x005EABC0 (static `__fastcall`);
@@ -38,11 +38,11 @@ class CCharString { public:
     void* m_data;
     ~CCharString();                             // 0x0099EAE0
 };
-struct CDefStringTable {
+class CDefStringTable {
 public:
     CCharString GetString(long) const;   // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;        // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)        // 0x013CA828
 
 struct CRefCounted {
     long m_count;
@@ -166,7 +166,7 @@ void CTCTavernGameSpotTheAddition::EnterGame()
     CDefPointer gameDef;
     GetTavernGameDef(&gameDef);
     {
-        CCharString camera = g_DefStringTable.GetString(gameDef->CameraName);
+        CCharString camera = GDefStringTable.GetString(gameDef->CameraName);
         CameraUseCameraPoint(camera);
     }
     CSpotTheAdditionDefPointer def;

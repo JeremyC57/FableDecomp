@@ -47,10 +47,10 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-struct CDefStringTable {
+class CDefStringTable { public:
     CCharString GetString(long index) const;                 // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;               // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)               // 0x013CA828
 
 struct CDefBase {
     virtual void v00();
@@ -258,7 +258,7 @@ void CCreatureAction_DragonRearUpFull::PerformAction()
         long accuracy = PCreature.GetPItem()->GetShotAccuracyPercentage();
         CTCShotDefinitionBase* shot;
         {
-            CCharString name = g_DefStringTable.GetString(shotDef->TCName);
+            CCharString name = GDefStringTable.GetString(shotDef->TCName);
             shot = (CTCShotDefinitionBase*)PShot.GetPItem()->AddTC(name, true, 0);
         }
         C3DVector facing = PCreature.GetPItem()->GetPhysics()->GetFacing();

@@ -33,7 +33,7 @@ class CDefStringTable {
 public:
     CCharString GetString(long index) const;              // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;            // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)            // 0x013CA828
 
 class CDefClassBase {
 public:
@@ -155,7 +155,7 @@ void CTCHero::OnSerialise(CPersistContext* context, long)
         CDefPointer<const CDefinition> def = GetDefinitionManager().GetPDefFromGlobalIndex(HeroTitleObjectDef);
         if (def.Object)
         {
-            CCharString name = g_DefStringTable.GetString(def->GetDefName().Index);
+            CCharString name = GDefStringTable.GetString(def->GetDefName().Index);
             defName = name;
         }
         context->Transfer("hero_title_object_def_name", defName, EmptyString());

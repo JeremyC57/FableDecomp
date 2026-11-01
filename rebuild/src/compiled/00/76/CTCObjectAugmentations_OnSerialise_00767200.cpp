@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00767200, length 441 bytes (+ int3 padding), `ret 8` (vtable 0x0126A3A4 slot 1).
 // Callees: CPersistContext::Transfer(const char*, bool&, const bool&) @ 0x004045C0 and (const char*, vector<CCharString>&)
 // @ 0x0049B8D0, vector<CCharString>(size_type) @ 0x0057FCDD, the def's virtual slot 10 (+0x28, its CDefString name by hidden
-// pointer), CDefStringTable::GetString @ 0x009D49B0 on g_DefStringTable @ 0x013CA828, CCharString::operator= @ 0x0099EFB0 /
+// pointer), CDefStringTable::GetString @ 0x009D49B0 on GDefStringTable @ 0x013CA828, CCharString::operator= @ 0x0099EFB0 /
 // ~CCharString @ 0x0099EAE0, vector<CDefPointer<const CThingBaseDef> >::resize(n, const T&) @ 0x0076BF80,
 // CGameDefinitionManager::Get @ 0x0044C6B0, CGameDefinitionManager::GetDef(const CCharString&, CDefPointer&) @ 0x00528760,
 // free @ 0x00BFEA14.
@@ -51,10 +51,10 @@ class CDefString { public:
     long ID;
     CDefString() { }
 };
-struct CDefStringTable {
+class CDefStringTable { public:
     CCharString GetString(CDefString id);               // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;                // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                // 0x013CA828
 class CPersistContext { public:
     unsigned char _pad00[0x18];
     long Mode;                                          // +0x18
@@ -114,7 +114,7 @@ void CTCObjectAugmentations::OnSerialise(CPersistContext& context, bool savedInG
         if (savedInGame) {
             for (unsigned long i = 0; i < Augmentations.size(); ++i) {
                 if (Augmentations[i].Object) {
-                    CCharString name = g_DefStringTable.GetString(Augmentations[i]->GetDefName());
+                    CCharString name = GDefStringTable.GetString(Augmentations[i]->GetDefName());
                     names[i] = name;
                 }
             }

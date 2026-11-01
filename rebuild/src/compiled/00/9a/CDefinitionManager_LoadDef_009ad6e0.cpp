@@ -121,10 +121,10 @@ struct CDefClassInfo {
     CDefClassBase* (*Create)();                              // +0x04 factory
 };
 
-struct CDefStringTable {
+class CDefStringTable { public:
     CCharString GetString(long id) const;                    // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;                     // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                     // 0x013CA828
 
 class CDefinitionManager : public CResourceList { public:
     unsigned char          _pad30[0xa4 - 0x30];
@@ -149,7 +149,7 @@ void CDefinitionManager::LoadDef(unsigned long globalIndex)
     DecompressDefinitionData(&stream, globalIndex);
     CDefClassInfo* classInfo;
     {
-        CCharString className = g_DefStringTable.GetString(info->ClassName);
+        CCharString className = GDefStringTable.GetString(info->ClassName);
         classInfo = FindClassInfo(className);
     }
     if (classInfo) {

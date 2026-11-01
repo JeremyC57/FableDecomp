@@ -26,10 +26,10 @@ CCharString __fastcall operator+(const CCharString& left, const char* right);   
 class CDefString { public:
     long m_index;
 };
-struct CDefStringTable {
+class CDefStringTable { public:
     CCharString GetString(CDefString name);        // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;           // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)           // 0x013CA828
 inline void CombatTrace(const CCharString&) {}     // the trace output, compiled out
 
 class CThing
@@ -154,7 +154,7 @@ bool CCombatManager::IsDefenderDueForAttack(const CCombatantInfo& info) const
 {
     if (!NCreatureMode::IsAbleToBeAttacked(*info.Parent)) {
         {
-            CCharString name = g_DefStringTable.GetString(info.Parent->GetDefName());
+            CCharString name = GDefStringTable.GetString(info.Parent->GetDefName());
             CCharString message = name + " - not attack - based on : mode";
             CombatTrace(message);
         }
@@ -162,7 +162,7 @@ bool CCombatManager::IsDefenderDueForAttack(const CCombatantInfo& info) const
     }
     if (IsAnotherAttackerAttacking(info)) {
         {
-            CCharString name = g_DefStringTable.GetString(info.Parent->GetDefName());
+            CCharString name = GDefStringTable.GetString(info.Parent->GetDefName());
             CCharString message = name + " - not attack - based on : other attackers";
             CombatTrace(message);
         }
@@ -170,7 +170,7 @@ bool CCombatManager::IsDefenderDueForAttack(const CCombatantInfo& info) const
     }
     if (info.PAttackPattern->AttackPattern[info.AttackPatternIndex] <= 0) {
         {
-            CCharString name = g_DefStringTable.GetString(info.Parent->GetDefName());
+            CCharString name = GDefStringTable.GetString(info.Parent->GetDefName());
             CCharString message = name + " - not attack - based on : attack patterns";
             CombatTrace(message);
         }

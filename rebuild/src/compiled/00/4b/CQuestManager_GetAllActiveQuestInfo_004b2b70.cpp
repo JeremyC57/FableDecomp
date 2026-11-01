@@ -3,7 +3,7 @@
 // Callees: vector<CCharString>::erase(first, last) 0x0043336A (the inline clear, x2), CBaseIntelligentPointer::GetPItem
 // 0x00A01B50, CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound const 0x004365B0 (TC 0x6c), CCharString(const
 // CCharString&) 0x0099EC30 (the placement copies), vector<CCharString>::_M_insert_overflow 0x00433530, CThing::GetDefName
-// 0x004C7CC0 (CDefString by hidden pointer), CDefStringTable::GetString 0x009D49B0 on g_DefStringTable 0x013CA828,
+// 0x004C7CC0 (CDefString by hidden pointer), CDefStringTable::GetString 0x009D49B0 on GDefStringTable 0x013CA828,
 // ~CCharString 0x0099EAE0.
 // Note: retail appends BOTH strings to the first vector (esi) -- the second list is only cleared; the source keeps
 // that behaviour.
@@ -56,10 +56,10 @@ __declspec(noinline) void vector<T>::_M_insert_overflow(T* position, const T& x,
 class CDefString { public:                                    // a definition-string handle: one table index
     long m_index;
 };
-struct CDefStringTable {
+class CDefStringTable { public:
     CCharString GetString(CDefString name);            // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;               // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)               // 0x013CA828
 
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -135,7 +135,7 @@ void CQuestManager::GetAllActiveQuestInfo(vector<CCharString>& scriptNames, vect
         if (tc) {
             scriptNames.push_back(tc->ScriptQuestName);
             {
-                CCharString name = g_DefStringTable.GetString(card->GetDefName());
+                CCharString name = GDefStringTable.GetString(card->GetDefName());
                 scriptNames.push_back(name);
             }
         }

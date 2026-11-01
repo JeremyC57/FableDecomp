@@ -37,8 +37,8 @@ struct CDefEntry {
     CCountedPointer Obj;                                  // +0x0c
     static __forceinline CCountedPointer Pass(CCountedPointer p) { return p; }
 };
-struct CDefTypeNames { const char* GetName(long type); };
-extern CDefTypeNames g_DefTypeNames;                      // 0x13CA828
+class CDefStringTable { public: const char* GetStringAsCharArray(long id) const; };   // 0x009D49F0 ?GetStringAsCharArray@CDefStringTable@@QBEPBDJ@Z (PDB; naming wave 21: was a CDefTypeNames::GetName stand-in)
+extern CDefStringTable GDefStringTable;                   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)
 struct CDefMap { CCountedPointer* operator[](const CDefKey& key); };
 class CDefinitionManager {
 public:
@@ -56,7 +56,7 @@ void CDefinitionManager::ClearDefsForRecompile(const CCharString& name)
     unsigned long count = DefsEnd - DefsBegin;
     for (unsigned long i = 0; i < count; ++i) {
         CDefEntry* def = DefsBegin[i];
-        if (!name.IsEmpty() && _stricmp(g_DefTypeNames.GetName(def->Type), name.c_str()) != 0)
+        if (!name.IsEmpty() && _stricmp(GDefStringTable.GetStringAsCharArray(def->Type), name.c_str()) != 0)
             continue;
         ClearDef(i);
         CCountedPointer obj = CDefEntry::Pass(DefsBegin[i]->Obj);

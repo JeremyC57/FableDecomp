@@ -43956,8 +43956,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '009d5060'
         Module = 'CDefString'
-        Source = '00/9d/CRegion_SetMiniMapRegionExitTextOffsetX_009d5060.cpp'
-        TestSource = '00/9d/CRegion_SetMiniMapRegionExitTextOffsetX_009d5060_test.cpp'
+        Source = '00/9d/CDefString_SetString_009d5060.cpp'
+        TestSource = '00/9d/CDefString_SetString_009d5060_test.cpp'
         PassPattern = '009d5060_TEST PASS'
     }
     [pscustomobject]@{
@@ -92970,8 +92970,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00415d70'
         Module = 'CDefString'
-        Source = '00/41/CDefString_operatorclassCCharString_00415d70.cpp'
-        TestSource = '00/41/CDefString_operatorclassCCharString_00415d70_test.cpp'
+        Source = '00/41/CDefString_operatorCCharString_00415d70.cpp'
+        TestSource = '00/41/CDefString_operatorCCharString_00415d70_test.cpp'
         PassPattern = 'PASS_00415d70'
     }
     [pscustomobject]@{
@@ -144893,8 +144893,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '012240a0'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCStatic009d4db0013ca828_012240a0.cpp'
-        TestSource = '01/22/staticinit_gCStatic009d4db0013ca828_012240a0_test.cpp'
+        Source = '01/22/staticinit_GDefStringTable_012240a0.cpp'
+        TestSource = '01/22/staticinit_GDefStringTable_012240a0_test.cpp'
         PassPattern = '012240a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -256437,9 +256437,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0054ed90'
-        Module = 'NUISystem::CText'
-        Source = '00/54/NUISystemCText_GetDataFromDef_0054ed90.cpp'
-        TestSource = '00/54/NUISystemCText_GetDataFromDef_0054ed90_test.cpp'
+        Module = 'NUISystem::CDefString'
+        Source = '00/54/NUISystemCDefString_GetString_0054ed90.cpp'
+        TestSource = '00/54/NUISystemCDefString_GetString_0054ed90_test.cpp'
         PassPattern = '0054ed90_TEST PASS'
     }
     [pscustomobject]@{

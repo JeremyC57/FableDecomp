@@ -1,6 +1,6 @@
 // CPersistTraits<CDefString>::TransferOut(CPersistContext*, CCharString*, const CDefString*) -- append the def string's text to the text save, quoted
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007E3930, 149 bytes (+ int3 padding), `ret 0Ch` (__fastcall, the empty traits `this` is unused).
-// Callees: CDefStringTable::GetString(long) @ 0x009D49B0 on g_DefStringTable 0x013CA828 (hidden CCharString result),
+// Callees: CDefStringTable::GetString(long) @ 0x009D49B0 on GDefStringTable 0x013CA828 (hidden CCharString result),
 //   CCharString::CCharString(const char*, long) @ 0x0099EBF0, operator+(const CCharString&, const char*) @ 0x0099F600,
 //   operator+(const CCharString&, const CCharString&) @ 0x0099F570 (both __fastcall, hidden result in ecx),
 //   CCharString::operator+=(const CCharString&) @ 0x0099F0A0, ~CCharString @ 0x0099EAE0. Strings: "\"" 0x0122DF24,
@@ -20,11 +20,11 @@ class CCharString { public:
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 
-struct CDefStringTable {
+class CDefStringTable {
 public:
     CCharString GetString(long) const;   // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;                // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                // 0x013CA828
 
 class CDefString { public:
     long Index;                                         // +0x00
@@ -37,6 +37,6 @@ template<> struct CPersistTraits<CDefString> {
 
 void CPersistTraits<CDefString>::TransferOut(CPersistContext* context, CCharString* out, const CDefString* value)
 {
-    CCharString text = g_DefStringTable.GetString(value->Index);
+    CCharString text = GDefStringTable.GetString(value->Index);
     *out += CCharString("") + "\"" + text + "\"";
 }

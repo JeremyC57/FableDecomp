@@ -77,8 +77,8 @@ class CParentDefClassBase { public:
 
 // Flattened native virtual projection retains all real slots; quarantined expression donor uses larger containers.
 struct ExpressionDefNative:CParentDefClassBase {};
-struct CDefStringTable {CCharString GetString(long)const;}; //009D49B0, PDB GetString@@QBE...J
-extern CDefStringTable DefinitionStrings; //013CA828
+class CDefStringTable { public:CCharString GetString(long)const;}; //009D49B0, PDB GetString@@QBE...J
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21) //013CA828
 class CThingCreatureBase; class CExpressionDef; template<class T> class CDefPointer;
 struct ExpressionEvent:EventBase {ExpressionEvent(CThingCreatureBase*,long,const CDefPointer<const CExpressionDef>&,long,long); /* PDB00526270 */ PointerView PerformedBy;const ExpressionDefNative* PExpressionDef; };
 struct EventNode { EventNode* Next;EventNode* Previous;EventBase* Data;void* Info; };
@@ -98,7 +98,7 @@ bool CGameScriptThingMethods::MsgExpressionPerformedTo(CCharString& name)const {
  if(e->GetType()==3&&e->WorldFrame>last&&e->WorldFrame<=current) {
  const ExpressionDefNative* def=static_cast<ExpressionEvent*>(e)->PExpressionDef;
  if(def)++def->IVRefCount;
- {CCharString text=DefinitionStrings.GetString(def->GetInstantiationName().TablePos);name=text;}
+ {CCharString text=GDefStringTable.GetString(def->GetInstantiationName().TablePos);name=text;}
  if(--def->IVRefCount==0)def->Delete();
  return true;
  }

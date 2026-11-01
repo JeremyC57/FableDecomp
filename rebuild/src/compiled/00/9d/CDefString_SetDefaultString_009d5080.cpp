@@ -6,14 +6,14 @@
 // TableFilename +56, bool Locked +60; retail map (12) and stream (24) are 8 bytes smaller in all, so Locked is +0x34.
 class CCharString;
 
-struct CDefStringTable {
+class CDefStringTable { public:
     unsigned char _pad[0x34];                      // +0x00 StringMap, StringStream, counts, random id, filename
     bool          Locked;                          // +0x34
     unsigned char ReadOnly;                        // +0x35
     long AddString(const CCharString& text);       // 0x009D4F90
 };
 
-extern CDefStringTable g_DefStringTable;           // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)           // 0x013CA828
 
 class CDefString { public:
     long TablePos;                                 // +0
@@ -22,6 +22,6 @@ class CDefString { public:
 
 void CDefString::SetDefaultString(const CCharString& text)
 {
-    if (!g_DefStringTable.Locked)
-        TablePos = g_DefStringTable.AddString(text);
+    if (!GDefStringTable.Locked)
+        TablePos = GDefStringTable.AddString(text);
 }

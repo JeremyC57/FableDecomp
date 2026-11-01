@@ -8,7 +8,7 @@
 //   (CASoundEmitter*), AtmosDefIndex +0x10.
 // Callees: the sound system singleton 0x013B8394 slot 4 (+0x10, creates an emitter at a position), CThing::GetPos
 //   @ 0x004C73D0, CGameDefinitionManager::Get @ 0x0044C6B0 (__fastcall), CDefinitionManager::GetDefNameFromGlobalIndex
-//   @ 0x009ACCC0 (CDefString by hidden pointer), CDefStringTable::GetString @ 0x009D49B0 on g_DefStringTable 0x013CA828,
+//   @ 0x009ACCC0 (CDefString by hidden pointer), CDefStringTable::GetString @ 0x009D49B0 on GDefStringTable 0x013CA828,
 //   the emitter's slot 5 (+0x14, play by name), ~CCharString @ 0x0099EAE0. Module built without /EHsc (no frame).
 class CCharString {
 public:
@@ -39,7 +39,7 @@ public:
 public:
     CCharString GetString(long) const;   // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;                        // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                        // 0x013CA828
 
 class CASoundEmitter {
 public:
@@ -77,7 +77,7 @@ void CTCAtmosPlayer::SetAtmosDefIndex(long index)
         if (((CASoundSystem*)PSoundManager))
             PSoundEmitter = ((CASoundSystem*)PSoundManager)->CreateEmitter(ParentThing->GetPos());
         if (PSoundEmitter) {
-            CCharString name = g_DefStringTable.GetString(CGameDefinitionManager::Get().GetDefNameFromGlobalIndex(AtmosDefIndex).m_index);
+            CCharString name = GDefStringTable.GetString(CGameDefinitionManager::Get().GetDefNameFromGlobalIndex(AtmosDefIndex).m_index);
             PSoundEmitter->Play(name);
         }
     }

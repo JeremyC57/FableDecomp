@@ -8,7 +8,7 @@
 //   0x00814D10, vfunc_8 0x00814D90, IsPosInside 0x00814E10, GetClosestPointToPos2D 0x00814EA0, GetBoundingSphere
 //   0x00814F90), each `call 0x814c70` with this = the sphere.
 // Callees: CDefString::operator==(const char*) 0x005B3440 (against "" 0x0122D70E); CDefStringTable::GetString(long)
-//   0x009D49B0 on g_DefStringTable 0x013CA828 (the inline CDefString -> CCharString conversion; the temporary lives in
+//   0x009D49B0 on GDefStringTable 0x013CA828 (the inline CDefString -> CCharString conversion; the temporary lives in
 //   the thing reference's dead slot); NGraphicAppearance::CTCGraphicAppearance::GetDummyObject(const CCharString&, long,
 //   unsigned long, C3DVector&, CRightHandedSet&, float) const 0x004C08C0; CCharString::~CCharString 0x0099EAE0.
 // Layout: CPhysicalPrimitiveSphere BaseName (CDefString) +0x04, Radius +0x08 (Ego_r.pdb); retail CThing PhysicsTC +0x60,
@@ -29,13 +29,13 @@ class CDefStringTable {
 public:
     CCharString GetString(long tablePos) const;              // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;                     // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                     // 0x013CA828
 
 class CDefString {
 public:
     long TablePos;                                           // +0x0
     bool operator==(const char* text) const;                 // 0x005B3440
-    operator CCharString() const { return g_DefStringTable.GetString(TablePos); }
+    operator CCharString() const { return GDefStringTable.GetString(TablePos); }
 };
 
 #pragma pack(push, 1)

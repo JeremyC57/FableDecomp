@@ -3,7 +3,7 @@
 // Retail 0x0086B900, 0xC8 bytes (+ int3 padding to 0xD0), thiscall `ret 0Ch` (`this` unused). FableWin/Ego_r name:
 // ?AddSkeletalMorphToMorphSet@CRandomAppearanceMorph@@IBEXAAKABVCSkeletalMorph@1@AAVCMorphSet@1@@Z (protected const);
 // callers 0x0086BA7E / 0x0086BB1A are GetRandomSkeletalMorph's two picks (seed, &pair.second, morph set).
-// Callees: CCharString() @ 0x0099E4B0, CDefStringTable::GetString(long) @ 0x009D49B0 on g_DefStringTable @ 0x013CA828
+// Callees: CCharString() @ 0x0099E4B0, CDefStringTable::GetString(long) @ 0x009D49B0 on GDefStringTable @ 0x013CA828
 // (by-value result built in the dead `morph` argument slot), CCharString::operator= @ 0x0099EFB0, ~CCharString @ 0x0099EAE0
 // (temporary, then the entry), GFFloatRandom(float, unsigned long*) @ 0x004978A0 (__fastcall: seed in ecx, 1.0f pushed),
 // CCharString(const CCharString&) @ 0x0099EC30 (the push_back placement copy), vector<CMorphSetSkeletalMorph>::
@@ -41,7 +41,7 @@ public:
 public:
     CCharString GetString(long) const;   // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;             // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)             // 0x013CA828
 
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
@@ -110,7 +110,7 @@ void CRandomAppearanceMorph::AddSkeletalMorphToMorphSet(unsigned long& seed, con
 {
     CMorphSet::CMorphSetSkeletalMorph entry;
     {
-        CCharString name = g_DefStringTable.GetString(morph.Name.TablePos);
+        CCharString name = GDefStringTable.GetString(morph.Name.TablePos);
         entry.Name = name;
     }
     if (morph.AllowVariation)

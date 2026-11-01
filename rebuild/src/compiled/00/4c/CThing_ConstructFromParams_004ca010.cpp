@@ -43,11 +43,11 @@ struct CThingBaseDefPointer {                        // CDefPointer<const CThing
     CThingBaseDef* m_p;
 };
 
-struct CDefStringTable {
+class CDefStringTable {
 public:
     CCharString GetString(long) const;   // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;             // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)             // 0x013CA828
 
 class CGameDefinitionManager { public:
     bool GetDef(long globalIndex, CThingBaseDefPointer* out);   // 0x0042AF3C
@@ -138,11 +138,11 @@ bool CThing::ConstructFromParams(long defGlobalIndex, long playerNumber, long ma
     if (PBaseDef.m_p) {
         OnBaseDefSet(PBaseDef.m_p);
         {
-            CCharString name = g_DefStringTable.GetString(PBaseDef.m_p->DefaultScriptName);
+            CCharString name = GDefStringTable.GetString(PBaseDef.m_p->DefaultScriptName);
             ScriptName = name;
         }
         {
-            CCharString data = g_DefStringTable.GetString(PBaseDef.m_p->DefaultScriptData);
+            CCharString data = GDefStringTable.GetString(PBaseDef.m_p->DefaultScriptData);
             ScriptData = data;
         }
     }

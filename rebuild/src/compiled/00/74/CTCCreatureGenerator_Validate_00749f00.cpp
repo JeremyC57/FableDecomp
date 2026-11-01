@@ -7,7 +7,7 @@
 //          result in ecx); CTCBase::GetDefinitionManager @ 0x006869D0, CDefinitionManager::GetDef<CCreatureGenerationFamilyDef>
 //          @ 0x0074D220 (catalog "GetDef<CThingPhysicalSwitchDef>", one body of the shared template); the def's virtual slot 10
 //          GetDefName (+0x28, CDefString by value) and slot 1 Destroy; CDefStringTable::GetString(long) @ 0x009D49B0 on
-//          g_DefStringTable 0x013CA828; the STLport random-access __find<long> @ 0x0074C9B0 (__fastcall, value and tag by reference).
+//          GDefStringTable 0x013CA828; the STLport random-access __find<long> @ 0x0074C9B0 (__fastcall, value and tag by reference).
 // Layout: retail CTCCreatureGenerator: CreatureFamilies (CArray<CDefIndex>) begin +0x0c / end +0x10, OpenPositions begin +0x60 /
 //         end +0x64, HiddenPositions begin +0x6c / end +0x70 (12-byte retail vectors; Ego_r.pdb +0x70 / +0x80 with 16-byte ones).
 //         CCreatureGenerationFamilyDef GenerationTypes begin +0x50 / end +0x54 (PDB +0x58).
@@ -26,11 +26,11 @@ class CCharString { public:
     const CCharString& operator+=(const char* text);                       // 0x0099F100
 };
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
-struct CDefStringTable {
+class CDefStringTable {
 public:
     CCharString GetString(long) const;   // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;                             // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                             // 0x013CA828
 class CDefString { public:                                                  // a def name: its offset into the def string table
     long m_index;
     CDefString(const CDefString& other) : m_index(other.m_index) { }
@@ -161,7 +161,7 @@ bool CTCCreatureGenerator::Validate(CCharString& error) const
         CDefPointer<CCreatureGenerationFamilyDef> def;
         GetDefinitionManager().GetDef(*it, &def);
         {
-            CCharString name = g_DefStringTable.GetString(def->GetDefName().m_index);
+            CCharString name = GDefStringTable.GetString(def->GetDefName().m_index);
             error = "creature family " + name;
         }
         const long* last = def->GenerationTypes.end();

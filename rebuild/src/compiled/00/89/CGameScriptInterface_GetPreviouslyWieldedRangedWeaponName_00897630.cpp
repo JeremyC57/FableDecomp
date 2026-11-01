@@ -16,8 +16,8 @@ class CPlayer : public CPlayerPdb { public: CThingPlayerCreature* GetPControlled
 struct CTCInventoryWeaponsNative {unsigned char Base[0x168];long PreviouslyWieldedMeleeWeaponDefIndex,PreviouslyWieldedRangedWeaponDefIndex; __forceinline long GetPreviousRanged()const{return PreviouslyWieldedRangedWeaponDefIndex;}}; // donor184/188; native168/16c
 class CDefString { public:long TablePos;CDefString(){} CDefString(const CDefString& x):TablePos(x.TablePos){}};
 struct CDefinitionManagerMethods {CDefString GetDefNameFromGlobalIndex(long);}; //009ACCC0
-struct CDefStringTable {CCharString GetString(long);}; //009D49B0
-extern CDefStringTable g_DefStringTable; //013CA828
+class CDefStringTable { public:CCharString GetString(long);}; //009D49B0
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21) //013CA828
 struct CCharStringMethods:CCharString {bool operator!=(const char*)const;}; //0099E960
 __forceinline bool CThingNative::GetInventory(CTCInventoryWeaponsNative** out){
  if(UsingComponents[0]&0x80000){ComponentMap* map=&Components;ComponentEntry* it=map->LowerBound(19);ComponentEntry* end=map->Finish;*out=static_cast<CTCInventoryWeaponsNative*>((it==end||it->Type>19?end:it)->Component);return true;}return false;
@@ -29,6 +29,6 @@ bool CGameScriptInterfaceMethods::GetPreviouslyWieldedRangedWeaponName(CCharStri
  if(hero && !(hero->LifeFlags&1) && hero->GetInventory(&inventory)) {
 
  long index=inventory->PreviouslyWieldedRangedWeaponDefIndex;
- if(index>0){{CCharString name=g_DefStringTable.GetString(reinterpret_cast<CDefinitionManagerMethods*>(DefinitionManager)->GetDefNameFromGlobalIndex(index).TablePos);result=name;}if(static_cast<CCharStringMethods&>(result)!="")return true;}
+ if(index>0){{CCharString name=GDefStringTable.GetString(reinterpret_cast<CDefinitionManagerMethods*>(DefinitionManager)->GetDefNameFromGlobalIndex(index).TablePos);result=name;}if(static_cast<CCharStringMethods&>(result)!="")return true;}
  } return true;
 }

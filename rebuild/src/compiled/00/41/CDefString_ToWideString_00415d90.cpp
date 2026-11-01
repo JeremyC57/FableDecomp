@@ -19,12 +19,12 @@ class CCharString { public:
     CWideString ToWideString() const;          // 0x0099E480
 };
 
-struct CDefStringTable {
+class CDefStringTable {
 public:
     CCharString GetString(long) const;   // 0x009D49B0
 };
 
-extern CDefStringTable g_DefStringTable;       // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)       // 0x013CA828
 
 class CDefString { public:
     long TablePos;                             // +0
@@ -33,6 +33,6 @@ class CDefString { public:
 
 CWideString CDefString::ToWideString() const
 {
-    CCharString text = g_DefStringTable.GetString(TablePos);
+    CCharString text = GDefStringTable.GetString(TablePos);
     return text.ToWideString();
 }

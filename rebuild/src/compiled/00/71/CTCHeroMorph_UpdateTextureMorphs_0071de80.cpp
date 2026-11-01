@@ -10,7 +10,7 @@ class CDefStringTable {
 public:
     CCharString GetString(long index) const;            // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;                // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                // 0x013CA828
 class CDefClassBase {
 public:
     virtual void v00();
@@ -259,7 +259,7 @@ void CTCHeroMorph::UpdateTextureMorphs()
         for (unsigned k = 0; k < n; ++k) {
             CTextureMorph& m = morphs._M_start[k];
             float strength = m.Strength;
-            CCharString name = g_DefStringTable.GetString(m.NameIndex);
+            CCharString name = GDefStringTable.GetString(m.NameIndex);
             textureMorphs->AddMorph('HERO', name, strength);
         }
     }

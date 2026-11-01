@@ -6,7 +6,7 @@
 //   operator CCharString() const 0x00415D70 (was catalogued as the operator: one retail address, one name), and
 //   struct_layouts_egor CDefString = { long TablePos; } (4 bytes): the body loads [this] = TablePos and returns
 //   CDefStringTable::GetString(TablePos) const (Ego_r.pdb `?GetString@CDefStringTable@@QBE?AVCCharString@@J@Z`, landed
-//   0x009D49B0) on the global table @ 0x013CA828 (Ego_r.pdb `GDefStringTable`; the landed TUs call it g_DefStringTable,
+//   0x009D49B0) on the global table @ 0x013CA828 (Ego_r.pdb `GDefStringTable`; the landed TUs call it GDefStringTable,
 //   kept here so every TU binds one symbol). 49 callers.
 // Fix (FINDINGS chunk 384): the landed model was a fake `CCharString::AssignTo(void*)` handing (dst, data) to a
 //   placeholder `Pool::Assign`.
@@ -20,7 +20,7 @@ class CDefStringTable {
 public:
     CCharString GetString(long index) const;       // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;           // 0x013CA828 (Ego_r.pdb GDefStringTable)
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)           // 0x013CA828 (Ego_r.pdb GDefStringTable)
 
 class CDefString {
 public:
@@ -30,5 +30,5 @@ public:
 
 CCharString CDefString::GetString() const
 {
-    return g_DefStringTable.GetString(TablePos);
+    return GDefStringTable.GetString(TablePos);
 }

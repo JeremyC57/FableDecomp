@@ -5,7 +5,7 @@
 // ?A0x95990025@@YI_NABV?$map@JVCDefString@@...@std@@JAAVCCharString@@@Z` -- a file-local helper of
 // CTCHeroExperience.cpp; single caller PlayCombatMultiplierSound 0x006D768A (this chunk). The manifest label is right.
 // Callees: the map const_iterator operator--() @ 0x006DA140 (landed; STLport `_M_decrement`), CDefStringTable::GetString
-// (CDefString) @ 0x009D49B0 on g_DefStringTable @ 0x013CA828, CCharString::operator=(const CCharString&) @ 0x0099EFB0,
+// (CDefString) @ 0x009D49B0 on GDefStringTable @ 0x013CA828, CCharString::operator=(const CCharString&) @ 0x0099EFB0,
 // ~CCharString @ 0x0099EAE0.
 // Layout: STLport map {header pointer +0, node count +4}; node key +0x10, CDefString +0x14.
 // Shape: `if (sounds.empty()) return false; it = sounds.lower_bound(multiplier); if (it == sounds.end()) --it;
@@ -27,12 +27,12 @@ class CDefStringTable {
 public:
     CCharString GetString(CDefString name);                 // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;                    // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                    // 0x013CA828
 
 class CDefString {
 public:
     long Index;
-    CCharString GetString() const { return g_DefStringTable.GetString(*this); }
+    CCharString GetString() const { return GDefStringTable.GetString(*this); }
 };
 
 namespace std {

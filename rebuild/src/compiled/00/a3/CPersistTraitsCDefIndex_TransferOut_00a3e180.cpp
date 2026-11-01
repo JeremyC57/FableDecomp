@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A3E180, 195 bytes, `ret 0Ch` (__fastcall, the empty traits `this` is unused).
 // Callees: CCharString::CCharString() @ 0x0099E4B0 (x2), CDefinitionManager::GetDefNameFromGlobalIndex(long) @ 0x009ACCC0
 //   (CDefString by hidden pointer) on context->PDefinitionManager (+0), CDefStringTable::GetString(long) @ 0x009D49B0 on
-//   g_DefStringTable 0x013CA828, CCharString::operator=(const CCharString&) @ 0x0099EFB0, CBasicString<char>::operator==
+//   GDefStringTable 0x013CA828, CCharString::operator=(const CCharString&) @ 0x0099EFB0, CBasicString<char>::operator==
 //   (const char*) @ 0x004115A0 (on the string data), CCharString::operator=(const char*) @ 0x0099EFE0,
 //   CPersistTraits<CCharString>::TransferOut(CPersistContext&, CCharString&, const CCharString&) @ 0x0040E630, ~CCharString @ 0x0099EAE0. Strings: "" 0x0122D70E,
 //   "NULL" 0x012393E4.
@@ -38,15 +38,15 @@ class CCharString { public:
     }
 };
 
-struct CDefStringTable {
+class CDefStringTable {
 public:
     CCharString GetString(long) const;   // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;                // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                // 0x013CA828
 class CDefString { public:
     long TablePos;                                      // +0x00 (PDB)
     CDefString() {}
-    CCharString GetString() const { return g_DefStringTable.GetString(TablePos); }
+    CCharString GetString() const { return GDefStringTable.GetString(TablePos); }
 };
 class CDefIndex { public:
     long Val;                                           // +0x00 (PDB)

@@ -16,12 +16,12 @@ class CCharString { public:
     ~CCharString();                         // 0x0099EAE0
 };
 
-struct CDefStringTable {
+class CDefStringTable {
 public:
     CCharString GetString(long) const;   // 0x009D49B0
 };
 
-extern CDefStringTable g_DefStringTable;    // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)    // 0x013CA828
 
 class CThing { public:
     unsigned char _pad00[0x10];
@@ -61,7 +61,7 @@ void CTCPhysicalShieldSpell::ResumeForCutscene()
     if (CutSceneCancelled) {
         CThing* owner = ParentThing;
         CutSceneCancelled = false;
-        CCharString sound = g_DefStringTable.GetString(PDef->LoopingSound[SpellLevel]);
+        CCharString sound = GDefStringTable.GetString(PDef->LoopingSound[SpellLevel]);
         LoopingSound = PlaySound(sound, owner->Type == 2);
     }
 }

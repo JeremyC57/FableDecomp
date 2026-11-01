@@ -25,13 +25,13 @@ class CCRC {
 public:
     static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
 };   // 0x004014A0: CRC
-struct CDefStringTable {
+class CDefStringTable { public:
     CCharString GetString(long index) const;    // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;        // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)        // 0x013CA828
 class CDefString { public:
     long Index;
-    operator CCharString() const { return g_DefStringTable.GetString(Index); }
+    operator CCharString() const { return GDefStringTable.GetString(Index); }
 };
 class CAnimationEntry { public:
     long BankIndex;                             // +0x00

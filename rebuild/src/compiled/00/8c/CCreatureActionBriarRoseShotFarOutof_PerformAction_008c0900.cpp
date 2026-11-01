@@ -7,7 +7,7 @@
 //   CCharString::CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CTCGraphicAppearance::GetDummyObject
 //   @ 0x004C08C0, the `__fastcall` thing factory Create @ 0x00703210, CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem
 //   @ 0x00A01B90 / dtor @ 0x00A01C10, CThingCreatureBase::GetShotAccuracyPercentage @ 0x00663B10, CDefStringTable::GetString
-//   @ 0x009D49B0 on g_DefStringTable 0x013CA828, CThing::AddTC @ 0x004C9D60, CTCShotDefinitionBase::Init @ 0x007C0690.
+//   @ 0x009D49B0 on GDefStringTable 0x013CA828, CThing::AddTC @ 0x004C9D60, CTCShotDefinitionBase::Init @ 0x007C0690.
 // Shape: both def out words go to same-TU out-only stand-ins, so VC7.1 knows their addresses do not escape. The weapon def
 //   stays in its frame word and is released by hand at the end (`dec [ecx+4]; jne`, no null test). The shot def's out word
 //   lives in an inner block and is copied into a register local (ebx, first loaded at the Create call, after ebx served as
@@ -30,10 +30,10 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
 };
 
-struct CDefStringTable {
+class CDefStringTable { public:
     CCharString GetString(long index) const;                 // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;               // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)               // 0x013CA828
 
 struct CDefBase {
     virtual void v00();
@@ -213,7 +213,7 @@ void CCreatureAction_BriarRoseShotFarOutof::PerformAction()
         accuracy = PCreature.GetPItem()->GetShotAccuracyPercentage();
         CTCShotDefinitionBase* shot;
         {
-            CCharString name = g_DefStringTable.GetString(shotDef->TCName);
+            CCharString name = GDefStringTable.GetString(shotDef->TCName);
             shot = (CTCShotDefinitionBase*)PShot.GetPItem()->AddTC(name, true, 0);
         }
         {

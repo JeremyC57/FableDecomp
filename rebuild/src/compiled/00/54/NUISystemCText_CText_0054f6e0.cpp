@@ -5,7 +5,7 @@
 //   CText : CChangingStateComponent : CComponent : CUIInterface@0, CObserver@4, CActionParam@24).
 // Callees: CComponent::LoadAndReturnDef() const 0x00530EC0 (Ego_r.pdb `?LoadAndReturnDef@CComponent@NUISystem@@UBE?AV?$CDefPointer@$$CBVCUIDef@NUISystem@@@@XZ`,
 //   vtable slot 108; called directly because it is a virtual call on `this` inside a destructor), CDefStringTable::GetString(long) const
-//   0x009D49B0 on g_DefStringTable 0x013CA828, GFGetSystemManager 0x009A4EC0 (`?GFGetSystemManager@@YIPAVCSystemManager@@XZ`),
+//   0x009D49B0 on GDefStringTable 0x013CA828, GFGetSystemManager 0x009A4EC0 (`?GFGetSystemManager@@YIPAVCSystemManager@@XZ`),
 //   CFontManager::ReleaseFont(const CCharString&) 0x009E2B40, ~CCharString 0x0099EAE0, ~CBaseClass 0x0099A2E0 (each handle's base),
 //   ~CWideString 0x0099B510, ~CChangingStateComponent 0x0052CCF0, operator delete 0x00BFE9BC.
 // Layout: retail CText = Ego_r.pdb minus 0x30 (landed ctor 0x0054F5C0 / GetDataFromDef 0x0054ED90): Value +0x15C, PFont +0x160/+0x164,
@@ -29,11 +29,11 @@ class CDefStringTable {
 public:
     CCharString GetString(long index) const;                // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;                    // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)                    // 0x013CA828
 class CDefString {
 public:
     long Index;
-    CCharString GetString() const { return g_DefStringTable.GetString(Index); }
+    CCharString GetString() const { return GDefStringTable.GetString(Index); }
 };
 
 class CCPPointerInfo {                                      // CCountedPointer count block

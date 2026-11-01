@@ -17,10 +17,10 @@ class CCharString { public:
     ~CCharString();                                   // 0x0099EAE0
 };
 class CDefString { public: long Index; };
-struct CDefStringTable {
+class CDefStringTable { public:
     CCharString GetString(CDefString name);           // 0x009D49B0
 };
-extern CDefStringTable g_DefStringTable;              // 0x013CA828
+extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)              // 0x013CA828
 struct CDefVirtual {
     virtual ~CDefVirtual();                           // slot 0
     virtual void Destroy();                           // slot 1
@@ -188,7 +188,7 @@ CCreatureAction_CastSkillMultiArrow::CCreatureAction_CastSkillMultiArrow(CThingC
     CGameDefinitionManager::Get().GetDef(index, &def);
     CTCSound* sound;
     if (GetCreature()->GetInterface(&sound, 0x10)) {
-        CCharString soundName = g_DefStringTable.GetString(def->CastSound);
+        CCharString soundName = GDefStringTable.GetString(def->CastSound);
         ((CTCSoundPlayer*)sound)->PlayAttachedCriteria(soundName, 1, 0, 0, -1);
     }
     CDefPointer<CSpecialEffectsDef> effects;
