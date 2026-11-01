@@ -1,0 +1,10 @@
+address	name	evidence
+0121e480	COpinionReactionManager::AttitudeStrings::`dynamic initializer'	PDB donor 0x0100CEA0 ?AttitudeStrings@COpinionReactionManager@@2PAVCCharString@@A; .CRT$XCU 0x01374488; user 0x007018B0 (chunk 683)
+0121f2d0	CTCFireheartMinigame::BlockNames::`dynamic initializer'	PDB donor 0x01011AE0 ?BlockNames@CTCFireheartMinigame@@2PAY03VCCharString@@A; landed PlayGame 0x007E78E0 indexes [row][column]; .CRT$XCU 0x01374620 (chunk 683)
+00cefac0	NScript::CGameflowAssistanceScript::Main	vtable 0x012C5DE0 slot 2; four Tutorial_* spawned functions (chunk 683)
+00effe10	NScript::COracleMinigameTestScript::Main	vtable 0x012F70A0 slot 2 (chunk 683)
+00ed83c0	NScript::CV_TalentlessBardScript::Init	vtable 0x012F3428 slot 3 (chunk 683)
+00d50800	NScript::CQ_GuildTrainingDepartureScript::Main	vtable 0x012CF670 slot 2; Alloc 0x00D509D0 (chunk 683)
+00c6d150	CVtable_012bed7c::Update	slot 4 of vtable 0x012BED7C (libpk delay effect, descriptive; same shape as landed 0x00C71270 / 0x00C708A0) (chunk 683)
+0099a6a0	CDiskFileWin32::Open	PDB ?Open@CDiskFileWin32@@UAEXABVCWideString@@W4FileAccessType@@K@Z; called by the landed copy ctor 0x0099ADC0 (chunk 683)
+00ba9830	CEnginePrimitiveManagerMeshBase::GetReflectionTexture	PDB name; parked DIFFER 570v570 (push ebx placement); label _global::GetReflectionTexture was a stand-in (chunk 683)

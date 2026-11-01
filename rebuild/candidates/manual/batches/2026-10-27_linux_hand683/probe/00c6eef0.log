@@ -1,0 +1,24 @@
+1	C++ stand-in kernels (cdecl, 5 args)	DIFFER -- caller passes step in eax, `add esp,0Ch`: retail uses a private convention (initial in ecx, 4 stack args)
+2	real retail_asm kernel bodies (landed 0x00C6ED70 / 0x00C6ECD0) as same-TU statics	DIFFER -- convention still cdecl
+3	+ --flags /GS	DIFFER -- private convention matches (initial in ecx, caller cleans 0x10); src homed in ebp instead of ebx
+4	drop __declspec(align(16)) from the kernel locals	DIFFER -- src in ebx as retail; residue now only the record swap
+5	swap: previous local, m_pPrevious = m_pCurrent, m_pCurrent = previous	DIFFER(511v507) -- built loads [0x34] first, 4-instruction swap
+6	same with the m_gain / -m_step order of the ramp-down calls rewritten	DIFFER(511v507)
+7	swap with the ramp-up tests reading a `previous` local	DIFFER(511v507) -- CSE'd to the same code
+8	std::swap-style helper swap(m_pPrevious, m_pCurrent)	DIFFER(511v507)
+9	old = m_pCurrent; m_pCurrent = m_pPrevious; m_pPrevious = old	DIFFER(517v507) -- pointer forwarded in edx, m_step read zero-extended
+10	hoist diagnostic: m_pCurrent read after m_alternate = false	DIFFER -- first load moved below the flag store
+11	hoist diagnostic: ramp local read before the flag store	DIFFER -- fixes the hoist
+12	step held in a short local before the ramp calls	DIFFER -- extra movsx
+13	`!= 0` comparisons on the m_step tests	DIFFER(511v507)
+14	(abandoned: identical to 13 after preprocessing)	-
+15	std::swap from <algorithm> (STLport)	DIFFER(511v507)
+16	old/next locals, next forwarded into the first m_step test	DIFFER(511v507)
+17	(short)(-step) cast variants on the ramp-down step	DIFFER(511v507)
+18	(abandoned: duplicate of 17)	-
+19	p4 + ramp local read before m_alternate = false (p11)	DIFFER(511v507) -- best: residue is only the 5-instruction swap form
+20	p19 + the p9 swap	DIFFER(517v507)
+21	p19 + first ramp-up test via `previous` local	DIFFER(511v507) -- CSE'd
+22	p19 + all four ramp-up tests via `previous` local	DIFFER(489v507) -- previous homed in ebp, worse
+23	p19 + previous-first swap (p5 form)	DIFFER(511v507)
+24	p23 + first ramp-up test via `previous` local	DIFFER(511v507) -- parked; last 4 probes did not reduce the residue

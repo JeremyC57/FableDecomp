@@ -33435,7 +33435,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0099a540	CPersistContextReadSection	CPersistContextReadSection	__thiscall	undefined	1	CPersistContextReadSection *	0	yes	accepted									
 0099a560	?SetLength@CDiskFileWin32@@UAEXJ@Z	CDiskFileWin32	__thiscall	void	2	CDiskFileWin32 *,long	1	yes	accepted									
 0099a5a0	GetFileInformation	CDiskFileWin32	__thiscall	CFileInformation	1	CDiskFileWin32 *	1	yes	accepted									
-0099a6a0	?Open@CDiskFileWin32@@UAEXABVCWideString@@W4FileAccessType@@K@Z	CDiskFileWin32	__thiscall	void	4	CDiskFileWin32 *,CWideString *,FileAccessType,ulong	1	yes	accepted									
+0099a6a0	Open	CDiskFileWin32	__thiscall	void	4	CDiskFileWin32 *,CWideString *,FileAccessType,ulong	1	yes	accepted									
 0099a920	Close	CDiskFileWin32	__thiscall	void	1	CDiskFileWin32 *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CDiskFileWin32_Close_0099a920.cpp
 0099a960	?Read@CDiskFileWin32@@UAEXPAXJPAVCASuspendableProcess@@@Z	CDiskFileWin32	__thiscall	void	4	CDiskFileWin32 *,void *,long,CASuspendableProcess *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CDiskFileWin32_Read_0099a960.cpp
 0099aa90	?Write@CDiskFileWin32@@UAEXPBXJPAVCASuspendableProcess@@@Z	CDiskFileWin32	__thiscall	void	4	CDiskFileWin32 *,void *,long,CASuspendableProcess *	1	yes	accepted									
@@ -42375,7 +42375,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ba9300	`scalar deleting destructor'	std::pair<long, CCompositeSurfaceInfo>	__thiscall	void *	2	C3DMeshFilePartitionChunk *,uint	1	yes	accepted									
 00ba9360	GetDiffuseTexture	_global	__fastcall	CTexture *	6	C3DMeshMaterial *,CVectorMap<long,CCompositeSurfaceInfo,CKeyPairCompareLess<long,CCompositeSurfaceInfo>_> *,ulong,bool *,CGraphicDataBank *,bool	1	yes	accepted									
 00ba95d0	GetBumpTexture	_global	__fastcall	CTexture *	6	C3DMeshMaterial *,CVectorMap<long,CCompositeSurfaceInfo,CKeyPairCompareLess<long,CCompositeSurfaceInfo>_> *,ulong,bool *,CGraphicDataBank *,bool	1	yes	accepted									
-00ba9830	GetReflectionTexture	_global	__fastcall	CTexture *	5	C3DMeshMaterial *,ulong,bool *,CGraphicDataBank *,bool	1	yes	accepted									
+00ba9830	GetReflectionTexture	CEnginePrimitiveManagerMeshBase	__fastcall	CTexture *	5	C3DMeshMaterial *,ulong,bool *,CGraphicDataBank *,bool	1	yes	accepted									
 00ba9a70	Get2DAlphaMaskTexture	_global	__fastcall	CTexture *	5	ulong,ulong,bool *,CGraphicDataBank *,bool	1	yes	accepted									
 00ba9cb0	ComputeParticleVisibilityDistance	_global	unknown	undefined	0		0	yes	accepted									
 00ba9fd0	__destroy_aux<std::pair<long, CCompositeSurfaceInfo> *>	std	__fastcall	void	4	pair<long,CCompositeSurfaceInfo> *,pair<long,CCompositeSurfaceInfo> *,allocator<std::pair<long,CCompositeSurfaceInfo>_> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
@@ -47313,7 +47313,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c6cef0	Audio_SetFilterCoefficients	_global	unknown	undefined	0		0	yes	accepted									
 00c6cf40	Audio_SetFilterCoefficients	_global	unknown	undefined	0		0	yes	accepted									
 00c6d120	SetVolume	CVtable_012bed7c	unknown	undefined	0		0			discovered	gapscan							
-00c6d150	sub_00c6d150	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c6d150	Update	CVtable_012bed7c	unknown	undefined	0		0			discovered	gapscan							
 00c6d350	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CLandscapeBackgroundPatch_vectordeletingdestructor_00c6d350.cpp
 00c6d370	Audio_ProcessSSEMultiply	_global	unknown	undefined	0		0	yes	accepted									
 00c6d410	SIMD_AccumulateWeightedSamples_16bit	_global	unknown	undefined	0		0	yes	accepted									
@@ -49244,7 +49244,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00cefa00	Init	NScript::CGameflowAssistanceScript	unknown	undefined	0		0			discovered	gapscan							
 00cefa20	RegisterMain	NScript::CGameflowAssistanceScript	unknown	undefined	0		0			discovered	gapscan							
 00cefab0	SuspendableProcess	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript>	__thiscall	void	1	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ce\CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00cefab0.cpp
-00cefac0	sub_00cefac0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00cefac0	Main	NScript::CGameflowAssistanceScript	unknown	undefined	0		0			discovered	gapscan							
 00cefcc0	Tutorial_LowHealth	CGameflowAssistanceScript	__thiscall	void	1	CGameflowAssistanceScript *	1	yes	accepted									
 00ceffb0	Tutorial_LowHealth	CGameflowAssistanceScript	__thiscall	void	1	CGameflowAssistanceScript *	1	yes	accepted									
 00cf0180	Tutorial_LowHealth	CGameflowAssistanceScript	__thiscall	void	1	CGameflowAssistanceScript *	1	yes	accepted									
@@ -50058,7 +50058,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00d506b0	Init	CQ_GuildTrainingDepartureScript	__thiscall	void	1	CQ_GuildTrainingDepartureScript *	1	yes	accepted									
 00d50760	RegisterMain	NScript::CQ_GuildTrainingDepartureScript	unknown	undefined	0		0			discovered	gapscan							
 00d507f0	SuspendableProcess	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript>	__thiscall	void	1	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\d5\SuspendableProcess_SuspendableProcess_00d507f0.cpp
-00d50800	sub_00d50800	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00d50800	Main	NScript::CQ_GuildTrainingDepartureScript	unknown	undefined	0		0			discovered	gapscan							
 00d509c0	sub_00d509c0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00d509d0	Alloc	NScript::CQ_GuildTrainingDepartureScript::CTheRealGuildmaster	__thiscall	undefined	1	CTriangleList *	0	yes	accepted									
 00d50a70	sub_00d50a70	_gapscan	unknown	undefined	0		0			discovered	gapscan							
@@ -53919,7 +53919,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ed8320	SuspendableProcess	CActiveEntityScript<NScript::CV_TalentlessBardScript>	__thiscall	void	1	CActiveEntityScript<NScript::CQ_HangingTreeEvilScript> *	1	yes	accepted									
 00ed8370	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ed\CLandscapeBackgroundPatch_vectordeletingdestructor_00ed8370.cpp
 00ed8390	`vector_deleting_destructor'	CThingSwitch	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ed\CThingSwitch_vectordeletingdestructor_00ed8390.cpp
-00ed83c0	sub_00ed83c0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00ed83c0	Init	NScript::CV_TalentlessBardScript	unknown	undefined	0		0			discovered	gapscan							
 00ed85a0	OnPersist	NScript::CV_TalentlessBardScript	unknown	undefined	0		0			discovered	gapscan							
 00ed8680	sub_00ed8680	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00ed94d0	WatchForResetWanderCentre	CV_TalentlessBardScript	__thiscall	void	2	CV_TalentlessBardScript *,CScriptThing	1	yes	accepted									
@@ -54725,7 +54725,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00effd60	sub_00effd60	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00effd70	RegisterMain	NScript::COracleMinigameTestScript	__thiscall	void	1	CGlobal_WatchForHeroDeathScript *	1	yes	accepted									
 00effe00	SuspendableProcess	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript>	__thiscall	void	1	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ef\SuspendableProcess_SuspendableProcess_00effe00.cpp
-00effe10	sub_00effe10	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00effe10	Main	NScript::COracleMinigameTestScript	unknown	undefined	0		0			discovered	gapscan							
 00effff0	sub_00effff0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00f00000	Alloc	NScript::COracleMinigameTestScript::COracleGamesmaster	__thiscall	undefined	1	CTriangleList *	0	yes	accepted									
 00f000a0	sub_00f000a0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
@@ -56883,7 +56883,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0121e440	sub_0121e440	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 0121e450	sub_0121e450	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 0121e460	sub_0121e460	_gapscan	unknown	undefined	0		0			discovered	gapscan							
-0121e480	sub_0121e480	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+0121e480	`dynamic initializer'	COpinionReactionManager::AttitudeStrings	unknown	undefined	0		0			discovered	gapscan							
 0121e5c0	sub_0121e5c0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 0121e5e0	sub_0121e5e0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 0121e600	sub_0121e600	_gapscan	unknown	undefined	0		0			discovered	gapscan							
@@ -56985,7 +56985,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0121f240	sub_0121f240	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 0121f260	sub_0121f260	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 0121f280	sub_0121f280	_gapscan	unknown	undefined	0		0			discovered	gapscan							
-0121f2d0	sub_0121f2d0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+0121f2d0	`dynamic initializer'	CTCFireheartMinigame::BlockNames	unknown	undefined	0		0			discovered	gapscan							
 0121f3f0	sub_0121f3f0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 0121f410	sub_0121f410	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 0121f430	sub_0121f430	_gapscan	unknown	undefined	0		0			discovered	gapscan							

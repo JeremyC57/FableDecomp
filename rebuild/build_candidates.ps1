@@ -373680,6 +373680,62 @@ $catalog = @(
         TestSource = '01/21/CTCWife_EWifeAppearanceDialogueGroupStemNames_0121e260_test.cpp'
         PassPattern = '0121e260_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0099a6a0'
+        Module = 'CDiskFileWin32'
+        Source = '00/99/CDiskFileWin32_Open_0099a6a0.cpp'
+        TestSource = '00/99/CDiskFileWin32_Open_0099a6a0_test.cpp'
+        PassPattern = '0099a6a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c6d150'
+        Module = 'CVtable_012bed7c'
+        Source = '00/c6/CVtable012bed7c_Update_00c6d150.cpp'
+        TestSource = '00/c6/CVtable012bed7c_Update_00c6d150_test.cpp'
+        PassPattern = '00c6d150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cefac0'
+        Module = 'NScript::CGameflowAssistanceScript'
+        Source = '00/ce/NScriptCGameflowAssistanceScript_Main_00cefac0.cpp'
+        TestSource = '00/ce/NScriptCGameflowAssistanceScript_Main_00cefac0_test.cpp'
+        PassPattern = '00cefac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d50800'
+        Module = 'NScript::CQ_GuildTrainingDepartureScript'
+        Source = '00/d5/NScriptCQGuildTrainingDepartureScript_Main_00d50800.cpp'
+        TestSource = '00/d5/NScriptCQGuildTrainingDepartureScript_Main_00d50800_test.cpp'
+        PassPattern = '00d50800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed83c0'
+        Module = 'NScript::CV_TalentlessBardScript'
+        Source = '00/ed/NScriptCVTalentlessBardScript_Init_00ed83c0.cpp'
+        TestSource = '00/ed/NScriptCVTalentlessBardScript_Init_00ed83c0_test.cpp'
+        PassPattern = '00ed83c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00effe10'
+        Module = 'NScript::COracleMinigameTestScript'
+        Source = '00/ef/NScriptCOracleMinigameTestScript_Main_00effe10.cpp'
+        TestSource = '00/ef/NScriptCOracleMinigameTestScript_Main_00effe10_test.cpp'
+        PassPattern = '00effe10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0121e480'
+        Module = 'COpinionReactionManager'
+        Source = '01/21/COpinionReactionManager_EAttitudeStrings_0121e480.cpp'
+        TestSource = '01/21/COpinionReactionManager_EAttitudeStrings_0121e480_test.cpp'
+        PassPattern = '0121e480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0121f2d0'
+        Module = 'CTCFireheartMinigame'
+        Source = '01/21/CTCFireheartMinigame_EBlockNames_0121f2d0.cpp'
+        TestSource = '01/21/CTCFireheartMinigame_EBlockNames_0121f2d0_test.cpp'
+        PassPattern = '0121f2d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

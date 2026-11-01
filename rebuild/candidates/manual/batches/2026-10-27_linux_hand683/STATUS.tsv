@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+0121e480	RELOCATION_MATCH	318	PASS	dynamic initializer for COpinionReactionManager::AttitudeStrings (Leaf _$E1); 1 probe
+0121f2d0	RELOCATION_MATCH	284	PASS	dynamic initializer for CTCFireheartMinigame::BlockNames[4][4] (Leaf _$E1); 1 probe
+00cefac0	RELOCATION_MATCH	499	PASS	NScript::CGameflowAssistanceScript::Main; 1 probe
+00effe10	RELOCATION_MATCH	480	PASS	NScript::COracleMinigameTestScript::Main; 1 probe
+00ed83c0	RELOCATION_MATCH	480	PASS	NScript::CV_TalentlessBardScript::Init; 1 probe
+00d50800	RELOCATION_MATCH	448	PASS	NScript::CQ_GuildTrainingDepartureScript::Main; 2 probes (`!= false` on the second quest loop)
+00c6d150	RELOCATION_MATCH	511	PASS	CVtable_012bed7c::Update (descriptive, libpk delay effect slot 4); 8 probes (function-scope float gain[6])
+0099a6a0	RELOCATION_MATCH	640	PASS	CDiskFileWin32::Open (PDB); 6 probes (attributes = 0 declared before the pathname assignment, raised by an if)
+00c6eef0	DIFFER(511v507)	507	-	parked: CVtable_012b8a8c::Process; 24 probes; only the current/previous record swap form differs (retail 5-instruction swap with `mov eax,ecx`); needs /GS and the same-TU retail_asm kernels (differ file holds __asm)
+00ba9830	DIFFER(570v570)	570	-	parked: CEnginePrimitiveManagerMeshBase::GetReflectionTexture (PDB); 25 probes; only `push ebx` placement differs (retail sinks it past the lookup diamond to the flags block; known lane gap)

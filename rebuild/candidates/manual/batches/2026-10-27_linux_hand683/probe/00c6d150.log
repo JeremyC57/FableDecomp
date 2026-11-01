@@ -1,0 +1,8 @@
+1	sibling-shaped body: named float locals per arm, float angle local	DIFFER(501v511) -- angle rounded through memory, sin hoisted above the channel branch, frame 0xc
+2	cos before sin	DIFFER(513v511)
+3	stereo arm inline sin expressions	DIFFER(501v511)
+4	inline `x * 0.017453292f` in each sin/cos call (no angle local)	DIFFER(511v511) -- FPU sequence matches; only the local homes differ (frame 0xc vs 0x20)
+5	p4 + all float locals declared up front	DIFFER(511v511) -- coalesced the same
+6	p4 + gains as CSE'd inline expressions	DIFFER(559v511)
+7	p4 + quad arm `float gain[4]` array	DIFFER(511v511) -- quad homes match, frame 0x18, stereo gain still in a parameter slot
+8	function-scope `float gain[6]` (mirrors m_gains[6]), stereo arm uses gain[0..1]	RELOCATION_MATCH

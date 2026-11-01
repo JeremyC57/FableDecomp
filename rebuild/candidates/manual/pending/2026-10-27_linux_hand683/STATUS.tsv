@@ -1,0 +1,3 @@
+address	status	bytes	test	note
+00c6eef0	DIFFER(511v507)	507	-	parked: CVtable_012b8a8c::Process; 24 probes; only the current/previous record swap form differs (retail 5-instruction swap with `mov eax,ecx`); needs /GS and the same-TU retail_asm kernels (differ file holds __asm)
+00ba9830	DIFFER(570v570)	570	-	parked: CEnginePrimitiveManagerMeshBase::GetReflectionTexture (PDB); 25 probes; only `push ebx` placement differs (retail sinks it past the lookup diamond to the flags block; known lane gap)

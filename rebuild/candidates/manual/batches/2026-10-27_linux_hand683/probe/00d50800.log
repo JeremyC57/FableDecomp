@@ -1,0 +1,2 @@
+1	plain `while (Game->IsQuestActive(..))` for the second wait loop	DIFFER(443v448): mov bl,al v test al,al; setne bl
+2	`while (Game->IsQuestActive(..) != false)` (landed 0x00D3CBD0 lever)	RELOCATION_MATCH

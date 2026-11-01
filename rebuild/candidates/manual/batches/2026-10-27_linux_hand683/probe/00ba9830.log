@@ -1,0 +1,25 @@
+1	landed GetFrame model + texture-returning inline, begin/end pointer bank, ternary flags	DIFFER(526v570) -- size computed once (CSE), flags ternary shape, no ebp
+2	flags = 0; if (BlockOnLoad || force) flags = 1	DIFFER(524v570) -- flags block matches; lookup still single-size
+3	lookup as if/else with pointer test	DIFFER(529v570)
+4	first check through raw members, second through the inline	DIFFER(529v570)
+5	first lookup through a const reference, second through the pointer	DIFFER(524v570)
+6	GetGraphicInfo as if/return form	DIFFER(524v570)
+7	single GetGraphicInfo into a local	DIFFER(523v570)
+8	signed long GetNoGraphics with unsigned compare	DIFFER(524v570)
+9	IsValidGraphicIndex inline + GetGraphicInfo	DIFFER(524v570)
+10	STLport-style vector member (start/finish/end_of_storage, size() = finish - start)	DIFFER(570v570) -- lookup now byte-identical (double size computation); residue only `push ebx` placement
+11	p10 + ternary flags	DIFFER(572v570)
+12	p10 + BlockOnLoad in a bool local	DIFFER(570v570)
+13	flags computed inside the inline helper from a bool parameter	DIFFER(580v570)
+14	p10 + GetGraphicInfo result in a local then re-lookup	DIFFER(570v570)
+15	p10 + lookup wrapped in a static __forceinline helper	DIFFER(570v570)
+16	p15 + ternary flags	DIFFER(572v570)
+17	p10 + flags as the inline argument expression	DIFFER(572v570)
+18	p10 + lookup as one expression over the vector members	DIFFER(570v570)
+19	p18 via a macro	DIFFER(570v570)
+20	p10 + flags declared before the lookup, assigned after	DIFFER(570v570)
+21	p10 + flags = (BlockOnLoad || force) bool conversion	DIFFER(572v570)
+22	helper with early returns for the lookup	DIFFER(570v570)
+23	nested ifs for the lookup in the body	DIFFER(560v570)
+24	flags through a static __forceinline helper	DIFFER(557v570)
+25	whole body nested under `if (index != 0)`	DIFFER(575v570) -- parked: last 4 probes did not reduce the residue

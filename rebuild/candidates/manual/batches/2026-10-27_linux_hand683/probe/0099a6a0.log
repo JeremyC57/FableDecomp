@@ -1,0 +1,6 @@
+1	full body: ternary attributes, named `error` local for GFGetLastWindowsError, switch with default handle 0	DIFFER(640v640) -- attributes as `and edi,2 ; shl edi,1Ah`; ebx instead of ebp
+2	attributes = 0; if (flags & 2) attributes = FILE_FLAG_SEQUENTIAL_SCAN	DIFFER(644v640) -- branch form right, WinFileHandle stored as immediate 0
+3	same with |=	DIFFER(644v640)
+4	bool sequential local + ternary	DIFFER(644v640)
+5	`attributes = 0` declared before `Pathname = pathname` (shares the zero register with WinFileHandle)	RELOCATION_MATCH
+6	attributes declared before the fullPath local	DIFFER(640v640) -- register choice shifts

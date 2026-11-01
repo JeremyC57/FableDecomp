@@ -1,0 +1,39 @@
+addr       parity           behav  name
+0099a6a0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+0099a6a0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+0099a6a0   WARN RELOC_ALIAS: __CxxThrowException@8 -> 00bfeb84 is the import thunk 'MSVCR71.DLL::_CxxThrowException'
+0099a6a0   WARN RELOC_NAME: ??BCWideString@@QBEPBGXZ -> 0099af00 labelled 'CWideString::operator unsigned short const *'
+0099a6a0   RELOCATION_MATCH PASS   Open
+00c6d150   WARN RELOC_NAME: ?LookupDirectionFilterPair@@YAXJMMPAPBUSDirectionFilter@@0@Z -> 00c400d0 labelled 'Animation_ComputeFrameOffset'
+00c6d150   WARN RELOC_NAME: ?RebuildGain@CVtable_012bed7c@@QAEX_N@Z -> 00c6cf40 labelled 'Audio_SetFilterCoefficients'
+00c6d150   RELOCATION_MATCH PASS   Update
+00cefac0   RELOCATION_MATCH PASS   Main
+00d50800   RELOCATION_MATCH PASS   Main
+00ed83c0   RELOCATION_MATCH PASS   Init
+00effe10   RELOCATION_MATCH PASS   Main
+0121e480   WARN RELOC_CONFLICT: _$E2 -> 012295f0 here, 01228930 in landed 01219f00
+0121e480   WARN RELOC_NAME: _$E2 -> 012295f0 labelled 'CFontBankStateBlock::CreateCRC'
+0121e480   RELOCATION_MATCH PASS   $E_AttitudeStrings
+0121f2d0   WARN RELOC_CONFLICT: _$E2 -> 01229e20 here, 01228930 in landed 01219f00
+0121f2d0   WARN RELOC_NAME: _$E2 -> 01229e20 labelled 'CFontBankStateBlock::CreateCRC'
+0121f2d0   RELOCATION_MATCH PASS   $E_BlockNames
+
+WINS: 8
+  0099a6a0 RELOCATION_MATCH CDiskFileWin32::?Open@CDiskFileWin32@@UAEXABVCWideString@@W4FileAccessType@@K@Z
+  00c6d150 RELOCATION_MATCH CVtable_012bed7c::?Update@CVtable_012bed7c@@UAEXMMMMPBM_N1@Z
+  00cefac0 RELOCATION_MATCH NScript::CGameflowAssistanceScript::?Main@CGameflowAssistanceScript@NScript@@UAEXXZ
+  00d50800 RELOCATION_MATCH NScript::CQ_GuildTrainingDepartureScript::?Main@CQ_GuildTrainingDepartureScript@NScript@@UAEXXZ
+  00ed83c0 RELOCATION_MATCH NScript::CV_TalentlessBardScript::?Init@CV_TalentlessBardScript@NScript@@UAEXXZ
+  00effe10 RELOCATION_MATCH NScript::COracleMinigameTestScript::?Main@COracleMinigameTestScript@NScript@@UAEXXZ
+  0121e480 RELOCATION_MATCH COpinionReactionManager::_$E1
+  0121f2d0 RELOCATION_MATCH CTCFireheartMinigame::_$E1
+
+LANDED 8 wins into src/compiled + tests + catalog + oracle
+  CDiskFileWin32_Open_0099a6a0
+  CVtable012bed7c_Update_00c6d150
+  NScriptCGameflowAssistanceScript_Main_00cefac0
+  NScriptCQGuildTrainingDepartureScript_Main_00d50800
+  NScriptCVTalentlessBardScript_Init_00ed83c0
+  NScriptCOracleMinigameTestScript_Main_00effe10
+  COpinionReactionManager_EAttitudeStrings_0121e480
+  CTCFireheartMinigame_EBlockNames_0121f2d0
