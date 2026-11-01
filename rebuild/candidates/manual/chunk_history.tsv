@@ -25902,3 +25902,13 @@ chunk	address	module	name	length
 689	00d3b010	_global	CParticleEmitter_Dtor_4	883
 689	00cb0370	_global	Math_Divide64bit	779
 689	00606f80	_global	CTCActionUseBuyOrSteal_dtor	937
+690	00b3b8e0	_global	CEngineResourceManager_Destructor	942
+690	00adefc0	_global	Matrix4x4_Multiply	471
+690	00c76880	_global	DSP_TransformWithFilterCoefficients	513
+690	00cb0700	_global	SignedDecimal_Divide	493
+690	00ca1360	_global	Environment_TransformVertexArray	596
+690	00767da0	_global	CTCLinkDisplay_SetupParticleNodes	622
+690	00c73050	_global	Audio_PlaySourceAndProcessQueue	672
+690	009cec60	CBankFile	CBankFile::Update	1684
+690	00c059d0	_global	crc32_little	722
+690	00c05cb0	_global	crc32_little	793

@@ -34499,7 +34499,6 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009cea70	EndUpdateEntries	CBankFile	__thiscall	void	1	CBankFile *	1	yes	accepted									
 009ceae0	CDefClassBase_SetSubDefInfo	_global	unknown	undefined	0		0	yes	accepted									
 009cec60	?Update@CBankFile@@UAEXXZ	CBankFile	__thiscall	void	1	CBankFile *	1	yes	accepted									
-009cf053	CBankFile_ProcessHeroQuestions	_global	unknown	undefined	0		0	yes	accepted									
 009cf2f4	Catch@009cf2f4	_global	unknown	undefined	0		0	yes	accepted									
 009cf3a0	CBankFile_WriteSymbolFile	_global	unknown	undefined	0		0	yes	accepted									
 009cfb70	OnInitialActivate	CTCVillage	__thiscall	void	1	CTCVillage *	1	yes	accepted									

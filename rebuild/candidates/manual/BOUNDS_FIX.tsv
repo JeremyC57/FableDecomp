@@ -152,3 +152,5 @@ address	pool	module	name	length	class	action	new_length	evidence
 00a0f4b0	never	_global	RenderList_ProcessLargeInsert	570	TRUNCATED	len	1462	chunk 687: std::deque<C2DVector>::_M_insert_aux is one function 0x00A0F4B0..0x00A0FA66 (single epilogue); the catalog split it into three rows
 00a0f6ea	never	_global	Deque_InsertRange	673	MIDSTART	skip	673	chunk 687: not a function start, inside 00a0f4b0 (_M_insert_aux, 1462); row removed from the manifest and catalog
 00a0f98b	never	_global	Deque_InsertRangeReverse	219	MIDSTART	skip	219	chunk 687: not a function start, inside 00a0f4b0 (_M_insert_aux, 1462); row removed from the manifest and catalog
+009cec60	never	CBankFile	?Update@CBankFile@@UAEXXZ	1011	TRUNCATED	len	1684	chunk 690 cut: CBankFile::Update runs 0x009CEC60..0x009CF2F4 (the catch funclet Catch@009cf2f4 keeps its own row, as LoadAllEventPackages 0x009F5D70); the catalog split it at +1011
+009cf053	never	_global	CBankFile_ProcessHeroQuestions	673	MIDSTART	skip	673	chunk 690 cut: not a function start (no padding, no callers, fell-into and jmp target inside 009cec60 CBankFile::Update); row removed from the manifest
