@@ -1,5 +1,9 @@
-// CCS_OakValeRevisitedScript::CCS_OakValeRevisitedScript(void* data, CGameScriptInterface* game) -- cut-scene script ctor: script base, interface/data pair, vtable 0x012F53C0, the empty FirePoint/Fires vectors and OakValeFlag map, and the seven v1..v7 scripted-thing handles
-// Leaf: ??0CCS_OakValeRevisitedScript
+// NScript::CCS_OakValeRevisitedScript::CCS_OakValeRevisitedScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- cut-scene script ctor: script base, interface/data pair, vtable 0x012F53C0, the empty FirePoint/Fires vectors and OakValeFlag map, and the seven v1..v7 scripted-thing handles
+// Leaf: ??0CCS_OakValeRevisitedScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+// Naming wave 25 (c692 queue): the class lives in namespace NScript and the ctor takes the PDB parameter pair (CScriptDataBase*,
+//   CGameScriptInterfaceBase&) (Ego_r.pdb 0x00F60DC0 / FableWin.pdb ??0CCS_OakValeRevisitedScript@NScript@@QAE@PAVCScriptDataBase@@
+//   AAVCGameScriptInterfaceBase@@@Z); was a global struct taking (void*, CGameScriptInterface*). Name-only: both are one pushed
+//   pointer, stored as before (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EE8100, length 266 bytes (`ret 8`); the only caller is its factory
 // thunk at 0x00EE8BFB.
 // Callees: CScriptBase::CScriptBase @ 0x00CB8110, malloc @ 0x00BFEA0E (the map's 0x18-byte header),
@@ -23,10 +27,11 @@ inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { 
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"
+class CScriptDataBase;
 struct __declspec(novtable) CQuestScriptObject : CScriptBase {   // the argument-carrying intermediate base
-    CGameScriptInterface* Game;                    // +0x40 (second argument)
-    void*                 Data;                    // +0x44 (first argument, the script data)
-    CQuestScriptObject(void* data, CGameScriptInterface* game) : CScriptBase(), Game(game), Data(data) { }
+    CGameScriptInterfaceBase* Game;                // +0x40 (second argument)
+    CScriptDataBase*          Data;                // +0x44 (first argument, the script data)
+    CQuestScriptObject(CScriptDataBase* data, CGameScriptInterfaceBase& game) : CScriptBase(), Game(&game), Data(data) { }
 };
 #include "engine/CCountedPointer.h"
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
@@ -72,7 +77,9 @@ template <unsigned int NodeSize> struct CRetailMap : _Rb_tree_base<NodeSize> {  
 };
 class CScriptThing;
 struct CMapNodeCharStringBool;
-struct CCS_OakValeRevisitedScript : CQuestScriptObject {   // vtable 0x012F53C0
+namespace NScript {
+class CCS_OakValeRevisitedScript : public CQuestScriptObject {   // vtable 0x012F53C0
+public:
     CRetailVector<CScriptThing*> FirePoint;        // +0x48 (vector<CScriptThing>, 12 bytes)
     CRetailVector<CScriptThing*> Fires;            // +0x54
     CRetailMap<0x18> OakValeFlag;                  // +0x60 map<CCharString,bool>
@@ -84,9 +91,10 @@ struct CCS_OakValeRevisitedScript : CQuestScriptObject {   // vtable 0x012F53C0
     CScriptGameResourceObjectScriptedThingBase v6; // +0xbc
     CScriptGameResourceObjectScriptedThingBase v7; // +0xcc
     virtual void v00();
-    CCS_OakValeRevisitedScript(void* data, CGameScriptInterface* game);
+    CCS_OakValeRevisitedScript(CScriptDataBase* data, CGameScriptInterfaceBase& game);
 };
-CCS_OakValeRevisitedScript::CCS_OakValeRevisitedScript(void* data, CGameScriptInterface* game)
+}
+NScript::CCS_OakValeRevisitedScript::CCS_OakValeRevisitedScript(CScriptDataBase* data, CGameScriptInterfaceBase& game)
     : CQuestScriptObject(data, game)
 {
 }
