@@ -239662,9 +239662,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c09920'
-        Module = 'CAutoDeletePointer'
-        Source = '00/c0/CAutoDeletePointer_GetChecked_00c09920.cpp'
-        TestSource = '00/c0/CAutoDeletePointer_GetChecked_00c09920_test.cpp'
+        Module = 'PKCAutoDelete<CUnprovenPKObject_00c099f0>'
+        Source = '00/c0/PKCAutoDeleteCUnprovenPKObject00c099f0_GetChecked_00c09920.cpp'
+        TestSource = '00/c0/PKCAutoDeleteCUnprovenPKObject00c099f0_GetChecked_00c09920_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c09920_TEST PASS'
     }
