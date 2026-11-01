@@ -5,6 +5,9 @@
 //   GetAnimGroupName(EConversationAttitude) reading the three tables); catalog "Init" (name only).
 // Callees: CCharString::operator=(const char*) @ 0x0099EFE0, 42 times. Globals: the initialised flag @ 0x013B8A28 and three
 //   STLport vector<CCharString> tables @ 0x013B8A2C / 0x013B8A38 / 0x013B8A44 (12 bytes apart; _M_start reloaded per store).
+// Naming wave 16 (c674): the 0x013B8A38 / 0x013B8A44 tables are the static members
+//   CConversationAttitude::ConversationAttitudeToAnimName / ConversationAttitudeToAnimGroupName (Ego_r.pdb dynamic initializer
+//   and atexit names; the landed initializers 0x0121A4F0 / 0x0121A580 define them); the landed g_* externs are respelled.
 // Strings: every literal pairs with its retail push in statement order (generated from the retail disassembly;
 //   duplicates pool to one address as in retail).
 class CCharString {
@@ -27,12 +30,12 @@ public:
 
 extern bool g_ConversationAttitudeInitialised;                            // 0x013B8A28
 extern std::vector<CCharString> g_AttitudeAnimNames;                     // 0x013B8A2C (18, by EAttitude)
-extern std::vector<CCharString> g_ConversationAttitudeAnimNames;         // 0x013B8A38 (12, by EConversationAttitude)
-extern std::vector<CCharString> g_ConversationAttitudeAnimGroupNames;    // 0x013B8A44 (12, by EConversationAttitude)
 
 class CConversationAttitude {
 public:
     static void __fastcall Init();
+    static std::vector<CCharString> ConversationAttitudeToAnimName;        // 0x013B8A38 (12, by EConversationAttitude)
+    static std::vector<CCharString> ConversationAttitudeToAnimGroupName;   // 0x013B8A44 (12, by EConversationAttitude)
 };
 
 void __fastcall CConversationAttitude::Init()
@@ -56,30 +59,30 @@ void __fastcall CConversationAttitude::Init()
         g_AttitudeAnimNames[15] = "STANDARD_TALK_ANGER";
         g_AttitudeAnimNames[16] = "STANDARD_TALK_LOVE";
         g_AttitudeAnimNames[17] = "STANDARD_TALK_GENERIC";
-        g_ConversationAttitudeAnimNames[0] = "NULL";
-        g_ConversationAttitudeAnimNames[1] = "STANDARD_TALK_GENERIC";
-        g_ConversationAttitudeAnimNames[2] = "STANDARD_TALK_LOVE";
-        g_ConversationAttitudeAnimNames[3] = "STANDARD_TALK_ANGER";
-        g_ConversationAttitudeAnimNames[4] = "STANDARD_TALK_FEAR";
-        g_ConversationAttitudeAnimNames[5] = "STANDARD_TALK_GLEE";
-        g_ConversationAttitudeAnimNames[6] = "STANDARD_TALK_SADNESS";
-        g_ConversationAttitudeAnimNames[7] = "STANDARD_TALK_RIDICULE";
-        g_ConversationAttitudeAnimNames[8] = "STANDARD_TALK_FRIENDLY";
-        g_ConversationAttitudeAnimNames[9] = "STANDARD_TALK_RIDICULE";
-        g_ConversationAttitudeAnimNames[10] = "STANDARD_TALK_GENERIC";
-        g_ConversationAttitudeAnimNames[11] = "STANDARD_TALK_GENERIC";
-        g_ConversationAttitudeAnimGroupNames[0] = "";
-        g_ConversationAttitudeAnimGroupNames[1] = "CONVERSATION_HAPPY";
-        g_ConversationAttitudeAnimGroupNames[2] = "CONVERSATION_HAPPY";
-        g_ConversationAttitudeAnimGroupNames[3] = "CONVERSATION_ANGRY";
-        g_ConversationAttitudeAnimGroupNames[4] = "CONVERSATION_FEAR";
-        g_ConversationAttitudeAnimGroupNames[5] = "CONVERSATION_HAPPY";
-        g_ConversationAttitudeAnimGroupNames[6] = "CONVERSATION_SAD";
-        g_ConversationAttitudeAnimGroupNames[7] = "CONVERSATION_BELLIGERENT";
-        g_ConversationAttitudeAnimGroupNames[8] = "CONVERSATION_HAPPY";
-        g_ConversationAttitudeAnimGroupNames[9] = "CONVERSATION_BELLIGERENT";
-        g_ConversationAttitudeAnimGroupNames[10] = "CONVERSATION_CAGED";
-        g_ConversationAttitudeAnimGroupNames[11] = "CONVERSATION_HOLDING_SWORD";
+        ConversationAttitudeToAnimName[0] = "NULL";
+        ConversationAttitudeToAnimName[1] = "STANDARD_TALK_GENERIC";
+        ConversationAttitudeToAnimName[2] = "STANDARD_TALK_LOVE";
+        ConversationAttitudeToAnimName[3] = "STANDARD_TALK_ANGER";
+        ConversationAttitudeToAnimName[4] = "STANDARD_TALK_FEAR";
+        ConversationAttitudeToAnimName[5] = "STANDARD_TALK_GLEE";
+        ConversationAttitudeToAnimName[6] = "STANDARD_TALK_SADNESS";
+        ConversationAttitudeToAnimName[7] = "STANDARD_TALK_RIDICULE";
+        ConversationAttitudeToAnimName[8] = "STANDARD_TALK_FRIENDLY";
+        ConversationAttitudeToAnimName[9] = "STANDARD_TALK_RIDICULE";
+        ConversationAttitudeToAnimName[10] = "STANDARD_TALK_GENERIC";
+        ConversationAttitudeToAnimName[11] = "STANDARD_TALK_GENERIC";
+        ConversationAttitudeToAnimGroupName[0] = "";
+        ConversationAttitudeToAnimGroupName[1] = "CONVERSATION_HAPPY";
+        ConversationAttitudeToAnimGroupName[2] = "CONVERSATION_HAPPY";
+        ConversationAttitudeToAnimGroupName[3] = "CONVERSATION_ANGRY";
+        ConversationAttitudeToAnimGroupName[4] = "CONVERSATION_FEAR";
+        ConversationAttitudeToAnimGroupName[5] = "CONVERSATION_HAPPY";
+        ConversationAttitudeToAnimGroupName[6] = "CONVERSATION_SAD";
+        ConversationAttitudeToAnimGroupName[7] = "CONVERSATION_BELLIGERENT";
+        ConversationAttitudeToAnimGroupName[8] = "CONVERSATION_HAPPY";
+        ConversationAttitudeToAnimGroupName[9] = "CONVERSATION_BELLIGERENT";
+        ConversationAttitudeToAnimGroupName[10] = "CONVERSATION_CAGED";
+        ConversationAttitudeToAnimGroupName[11] = "CONVERSATION_HOLDING_SWORD";
         g_ConversationAttitudeInitialised = true;
     }
 }

@@ -30879,9 +30879,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004cd9b0'
-        Module = '_global'
-        Source = '00/4c/global_GetAnimGroupName_004cd9b0.cpp'
-        TestSource = '00/4c/global_GetAnimGroupName_004cd9b0_test.cpp'
+        Module = 'CConversationAttitude'
+        Source = '00/4c/CConversationAttitude_GetAnimName_004cd9b0.cpp'
+        TestSource = '00/4c/CConversationAttitude_GetAnimName_004cd9b0_test.cpp'
         PassPattern = 'OK_0x004cd9b0'
     }
     [pscustomobject]@{
@@ -40736,9 +40736,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '01228ed8'
-        Module = 'CDebugManager'
-        Source = '01/22/CDebugManager_ThrowException_01228ed8.cpp'
-        TestSource = '01/22/CDebugManager_ThrowException_01228ed8_test.cpp'
+        Module = '_global'
+        Source = '01/22/global_ECrimeText_01228ed8.cpp'
+        TestSource = '01/22/global_ECrimeText_01228ed8_test.cpp'
         PassPattern = 'TE_1228ed8_OK'
     }
     [pscustomobject]@{
