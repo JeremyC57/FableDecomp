@@ -1,21 +1,24 @@
 // CTCCombat::GetAppropriateCombatAnimationFromList(const vector<const CAnimationEntry*>& entries) const -- pick a random entry index, preferring flourish or fully matching (combo + handedness) animations, then handedness-only, then combo-only matches; 0 when none fits
-// Leaf: ?GetAppropriateCombatAnimationFromList@
+// Leaf: ?GetAppropriateCombatAnimationFromList@CTCCombat@@QBEJABV?$vector@PBVCAnimationEntry@@V?$allocator@PBVCAnimationEntry@@@std@@@std@@@Z
+// Naming wave 28 (family d4): own row defines the Ego_r.pdb / FableWin.pdb CTCCombat member (DECISIONS_W27 D4; was
+//   CTCCombat_Methods : CTCCombat); the world comes from the protected CTCBase::PeekWorld 0x00686A80 (DECISIONS_W24 D7;
+//   was CTCCombat_Methods::GetWorld) and its seed from the bound CWorld::GetWorldSeed 0x0049D810 (QBE).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007345D0, 685 bytes, __fastcall, `ret 4`, returns long.
 // PDB: ?GetAppropriateCombatAnimationFromList@CTCCombat@@QBEJABV?$vector@PBVCAnimationEntry@@V?$allocator@PBVCAnimationEntry@@@std@@@std@@@Z
 //   (name set); catalog "GetAppropriateCombatAnimation_FilterAndSelect" was descriptive.
 // Callees: CAnimationEntry::GetComponent<CAnimComponentCombatComboChain> 0x00738980 (component 4),
 //   GetComponent<CAnimComponentCombatHandedness> 0x00669CB0 (component 3), GetComponent<CAnimComponentCombatMisc>
 //   0x00738A00 (component 6), vector<long>::_M_insert_overflow 0x00440990 (the push_back growth path),
-//   CTCBase::GetWorld 0x00686A80, CWorld::GetPRandomSeed 0x0049D810, GFROR13 0x00497890, free 0x00BFEA14.
+//   CTCBase::PeekWorld 0x00686A80, CWorld::GetWorldSeed 0x0049D810, GFROR13 0x00497890, free 0x00BFEA14.
 // Shape: three STLport vector<long> index lists (finish pointers in ebp/edi/ebx, re-stored after every push_back);
 //   the creature's previous action handedness is read once before the loop; per entry two bools (handedness match,
 //   combo match); the random pick is `range ? r % range : 0` on the world seed (GFRandom); the second and third
 //   lists share the pick tail. Operand order matters: `previous == start` gives retail's `cmp [esp+20h],eax`, and the
 //   combo stage is read once ahead of the ComboChainPos branch (retail loads [combo+8] before the `jne`).
-// Layout: CTCCombat (engine/CTCCombat.h): ComboChainPos +0x0C (-777 = none), ComboChainID +0x10, ParentCreature
+// Layout: CTCCombat at engine/CTCCombat.h's offsets: ComboChainPos +0x0C (-777 = none), ComboChainID +0x10, ParentCreature
 //   +0x24; retail CThingCreatureBase PreviousActionHandedness +0x138; components: ComboStage +8 / ComboID +0x0C,
-//   StartHandedness +8, MeleeFlourish +8 (bool).
-#include "engine/CTCCombat.h"
+//   StartHandedness +8, MeleeFlourish +8 (bool). engine/CTCCombat.h / engine/CTCBase.h flatten the CTCBase vptr into a data
+//   word, so CTCBase (protected PeekWorld) and CTCCombat are modelled locally, polymorphic, at the headers' offsets.
 
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E (import thunk)
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14 (import thunk)
@@ -53,6 +56,34 @@ public:
     template <class T> void GetComponent(const T** out) const;   // 0x00738980 / 0x00669CB0 / 0x00738A00
 };
 
+class CThing;
+class CWorld;
+class CCombatManager;
+class CTCBase {                                         // vtable 0x0125BE0C (RTTI .?AVCTCBase@@), sizeof 0xc
+public:
+    virtual ~CTCBase();                                 // 0x00686830
+protected:
+    const CWorld& PeekWorld() const;                    // 0x00686A80 (Ego_r.pdb / FableWin.pdb IBE)
+public:
+    CThing* ParentThing;                                // +0x04
+    bool ToBeRemoved;                                   // +0x08
+    bool IsInGlobalUpdateTCs;                           // +0x09
+};
+class CThingCreatureBase;
+class CAnimationEntry;
+namespace std { template <class _Tp> class allocator; template <class _Tp, class _Alloc> class vector; }
+class CTCCombat : public CTCBase {
+public:
+    long ComboChainPos;                                 // +0x0c
+    long ComboChainID;                                  // +0x10
+    long ComboChainGracePeriodCountdown;                // +0x14
+    long HandednessGracePeriodCountdown;                // +0x18
+    long UnarmedCombatIdleCountdown;                    // +0x1c
+    CCombatManager* CombatManager;                      // +0x20
+    CThingCreatureBase* ParentCreature;                 // +0x24
+    long GetAppropriateCombatAnimationFromList(const std::vector<const CAnimationEntry*, std::allocator<const CAnimationEntry*> >& entries) const;
+};
+
 class CThingCreatureBase { public:
     unsigned char _pad00[0x138];
     ECombatAnimationHandedness PreviousActionHandedness;   // +0x138 (retail)
@@ -61,7 +92,7 @@ class CThingCreatureBase { public:
 long __fastcall GFROR13(unsigned long);   // 0x00497890
 class CWorld {
 public:
-    unsigned long* GetPRandomSeed();                    // 0x0049D810
+    unsigned long* GetWorldSeed() const;                // 0x0049D810
 };
 inline unsigned long GFRandom(unsigned long* seed)
 {
@@ -166,19 +197,15 @@ __declspec(noinline) void vector<_Tp, _Alloc>::_M_insert_overflow(_Tp* __positio
 #pragma auto_inline(on)
 }
 
-struct CTCCombat_Methods : CTCCombat {
-    CWorld* GetWorld() const;                           // 0x00686A80 (CTCBase)
-    __forceinline unsigned long GetRandomIndex(unsigned long range) const
-    {
-        unsigned long r = GFRandom(GetWorld()->GetPRandomSeed());
-        if (range == 0)
-            return 0;
-        return r % range;
-    }
-    long GetAppropriateCombatAnimationFromList(const std::vector<const CAnimationEntry*>& entries) const;
-};
+__forceinline unsigned long GetRandomIndex(const CWorld& world, unsigned long range)
+{
+    unsigned long r = GFRandom(world.GetWorldSeed());
+    if (range == 0)
+        return 0;
+    return r % range;
+}
 
-long CTCCombat_Methods::GetAppropriateCombatAnimationFromList(const std::vector<const CAnimationEntry*>& entries) const
+long CTCCombat::GetAppropriateCombatAnimationFromList(const std::vector<const CAnimationEntry*>& entries) const
 {
     ECombatAnimationHandedness previousHandedness = ParentCreature->PreviousActionHandedness;
     std::vector<long> preferred;
@@ -214,11 +241,11 @@ long CTCCombat_Methods::GetAppropriateCombatAnimationFromList(const std::vector<
     }
     long result;
     if (!preferred.empty())
-        result = preferred[GetRandomIndex(preferred.size())];
+        result = preferred[GetRandomIndex(PeekWorld(), preferred.size())];
     else if (!handednessMatches.empty())
-        result = handednessMatches[GetRandomIndex(handednessMatches.size())];
+        result = handednessMatches[GetRandomIndex(PeekWorld(), handednessMatches.size())];
     else if (!comboMatches.empty())
-        result = comboMatches[GetRandomIndex(comboMatches.size())];
+        result = comboMatches[GetRandomIndex(PeekWorld(), comboMatches.size())];
     else
         result = 0;
     return result;

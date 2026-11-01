@@ -1,5 +1,9 @@
 // CThingCreatureBase::GetAppropriateCombatAnimation(const CCharString& name) -- collect every appearance animation called `name` and return the one GetAppropriateCombatAnimationFromList picks
 // Leaf: GetAppropriateCombatAnimation
+// Naming wave 28 (family d4): 0x00666B50 is ?GetAppropriateCombatAnimationFromList@CThingCreatureBase@@QBEJABV?$vector@PBVCAnimationEntry@@..@Z
+//   (Ego_r.pdb / FableWin.pdb const member, DECISIONS_W27 D4) over the STLport vector<const CAnimationEntry*>. Was CThingCreatureBase::..(const CRetailVector_dword&) (QAE); the candidate
+//   list's grow-insert is the own row 0x005E1420's ?_M_insert_overflow@?$vector@PBVCAnimationEntry@@V?$allocator@..@std@@@std@@IAEX..@Z
+//   (same-TU body kept; was CRetailVector_dword::InsertGrow_005e1420).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00667B30, length 204 bytes, `ret 4`, const CAnimationEntry* in eax.
 // Label correction: the catalog/engine_api name "GetCombatAnimationSet" (returning CAnimationSet*) does not fit the body,
 //   which returns the chosen vector element; the name used here is descriptive.
@@ -20,7 +24,7 @@ class CAnimationEntry;
 struct SAnimationSetEntry {                     // 0x14 bytes
     long Key;                                   // +0x00
     unsigned char Entry[0x10];                  // +0x04 CAnimationEntry
-    long GetEntryAddress() const { return (long)Entry; }
+    const CAnimationEntry* GetEntryAddress() const { return (const CAnimationEntry*)Entry; }
 };
 class CAnimationSet { public:
     SAnimationSetEntry* first;                  // +0x00
@@ -28,32 +32,39 @@ class CAnimationSet { public:
     SAnimationSetEntry* LowerBound_005dc020(const CCharString& name);   // 0x005DC020
 };
 
-struct SScalarTag { SScalarTag() { } };
-struct CRetailVector_dword {                    // STLport vector<const CAnimationEntry*> seen as dwords
-    long* first;
-    long* last;
-    long* end;
-    CRetailVector_dword() : first(0), last(0), end(0) { }
-    ~CRetailVector_dword() { if (first) free(first); }
-    void InsertGrow_005e1420(long* where, const long& value, const SScalarTag& tag, unsigned long count, bool noTail);   // 0x005E1420
-    void push_back(const long& value)
+namespace std {
+template <class _Tp> class allocator { public: allocator() { } };
+struct __true_type { __true_type() { } };
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector {   // STLport 4.6 vector<const CAnimationEntry*>, 12 bytes
+public:
+    _Tp* first;
+    _Tp* last;
+    _Tp* end;
+    vector() : first(0), last(0), end(0) { }
+    ~vector() { if (first) free(first); }
+protected:
+    void _M_insert_overflow(_Tp* where, const _Tp& value, const __true_type& tag, unsigned int count, bool noTail);   // 0x005E1420
+public:
+    void push_back(const _Tp& value)
     {
         if (last != end) {
-            new (last) long(value);
+            new (last) _Tp(value);
             ++last;
         }
         else
-            InsertGrow_005e1420(last, value, SScalarTag(), 1, true);
+            _M_insert_overflow(last, value, __true_type(), 1, true);
     }
-    const long& operator[](long n) const { return *(first + n); }
+    const _Tp& operator[](unsigned int n) const { return *(first + n); }
 };
+}
 void* GrowVectorStorage_s7(void* vector, unsigned long count);
 #pragma auto_inline(off)
-// Same-TU body of the vector growth template (InsertGrow, instantiated in retail's TU): reads the value through its const
-// reference into the new storage and never touches the empty tag (the landed push_back idiom).
-__declspec(noinline) void CRetailVector_dword::InsertGrow_005e1420(long* where, const long& value, const SScalarTag& tag, unsigned long count, bool noTail)
+// Same-TU body of the vector growth template (_M_insert_overflow, instantiated in retail's TU): reads the value through its
+// const reference into the new storage and never touches the empty tag (the landed push_back idiom).
+template <class _Tp, class _Alloc>
+__declspec(noinline) void std::vector<_Tp, _Alloc>::_M_insert_overflow(_Tp* where, const _Tp& value, const std::__true_type& tag, unsigned int count, bool noTail)
 {
-    long* p = (long*)GrowVectorStorage_s7(this, count);
+    _Tp* p = (_Tp*)GrowVectorStorage_s7(this, count);
     if (p)
         *p = value;
     
@@ -94,7 +105,7 @@ class CThingCreatureBase {
 public:
     unsigned char _pad00[0x70];
     CThingBaseDef* PBaseDef;                    // +0x70
-    long GetAppropriateCombatAnimationFromList(const CRetailVector_dword& animations);   // 0x00666B50
+    long GetAppropriateCombatAnimationFromList(const std::vector<const CAnimationEntry*>& animations) const;   // 0x00666B50
     const CAnimationEntry* GetAppropriateCombatAnimation(const CCharString& name);
 };
 
@@ -108,10 +119,10 @@ const CAnimationEntry* CThingCreatureBase::GetAppropriateCombatAnimation(const C
         if (--def->RefCount == 0)
             def->Destroy();
     }
-    CRetailVector_dword candidates;
+    std::vector<const CAnimationEntry*> candidates;
     SAnimationSetEntry* found = animations.LowerBound_005dc020(name);
     for (SAnimationSetEntry* it = found; it != animations.last && it->Key == found->Key; ++it)
         candidates.push_back(it->GetEntryAddress());
     long index = GetAppropriateCombatAnimationFromList(candidates);
-    return (const CAnimationEntry*)candidates[index];
+    return candidates[index];
 }

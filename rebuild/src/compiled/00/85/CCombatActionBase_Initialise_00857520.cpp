@@ -1,5 +1,8 @@
 // CCombatActionBase::Initialise() -- resets the combat state, plays the combat animation the creature picks from the candidates, runs the base Initialise and, for a strike action, advances the creature's combo chain
 // Leaf: ?Initialise@CCombatActionBase
+// Naming wave 28 (family d4): 0x00666B50 is ?GetAppropriateCombatAnimationFromList@CThingCreatureBase@@QBEJABV?$vector@PBVCAnimationEntry@@..@Z
+//   (Ego_r.pdb / FableWin.pdb const member, DECISIONS_W27 D4) over the STLport vector<const CAnimationEntry*>. Was CThing::..(const CAnimationEntryVector&) (QAE); PCreature is the Ego_r
+//   CIntelligentPointer<CThingCreatureBase>.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00857520, 145 bytes of code (virtual slot 12).
 // Callees: the combat-state reset @ 0x008561C0 (clears the strike-event flags/times; manifest "CV_ChickenKickingScript::Init"
 //          is propagated), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8, twice through one
@@ -26,19 +29,22 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-struct CAnimationEntryVector {              // STLport vector<const CAnimationEntry*>
-    const CAnimationEntry** m_pFirst;
-    const CAnimationEntry** m_pLast;
-    const CAnimationEntry** m_pEnd;
-    const CAnimationEntry** begin() const { return m_pFirst; }
-    const CAnimationEntry* const& operator[](long n) const { return *(begin() + n); }
+namespace std {
+template <class _Tp> class allocator { public: allocator() { } };
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector {   // STLport 4.6 vector, 12 bytes
+public:
+    _Tp* _M_start;                              // +0x00
+    _Tp* _M_finish;                             // +0x04
+    _Tp* _M_end_of_storage;                     // +0x08
+    _Tp* begin() const { return _M_start; }
+    const _Tp& operator[](unsigned int __n) const { return *(begin() + __n); }
 };
+}
 
 class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
-    long GetAppropriateCombatAnimationFromList(const CAnimationEntryVector& animations);   // 0x00666B50 (CThingCreatureBase)
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -52,6 +58,9 @@ class CThing { public:
         }
         return false;
     }
+};
+class CThingCreatureBase : public CThing { public:
+    long GetAppropriateCombatAnimationFromList(const std::vector<const CAnimationEntry*>& animations) const;   // 0x00666B50
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -82,14 +91,14 @@ class CCreatureActionBase { public:                // retail sizeof 0xa8
     virtual void v13(); virtual void v14();
     virtual bool IsStrikeAction();          // slot 15 (+0x3c)
     unsigned char _pad04[4];                // +0x04
-    CIntelligentPointer<CThing> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
+    CIntelligentPointer<CThingCreatureBase> PCreature;   // +0x08
     unsigned char _pad10[0xa8 - 0x10];
     void SetAnimation(const CAnimationEntry* entry, float blendIn, float speed);   // 0x00693030
 };
 
 class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _pada8[0xf0 - 0xa8];
-    CAnimationEntryVector CombatAnimations; // +0xf0
+    std::vector<const CAnimationEntry*> CombatAnimations; // +0xf0
     unsigned char _padfc[0x114 - 0xfc];
     void ResetCombatState();                // 0x008561C0
     virtual void Initialise();

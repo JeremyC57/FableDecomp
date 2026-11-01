@@ -1,4 +1,6 @@
 // CCombatActionBase::SetupCombatAnimation() -- let the creature pick an entry from CombatAnimations and play it from -1 to 1
+// Naming wave 28 (family d4): 0x00666B50 is ?GetAppropriateCombatAnimationFromList@CThingCreatureBase@@QBEJABV?$vector@PBVCAnimationEntry@@..@Z
+//   (Ego_r.pdb / FableWin.pdb const member, DECISIONS_W27 D4) over the STLport vector<const CAnimationEntry*>. Was CThingCreatureBase_Calls::..(const CAnimationEntryVector&) (QAE).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00856AC0, length 52 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8), CThingCreatureBase::
 // GetAppropriateCombatAnimationFromList(const std::vector<const CAnimationEntry*>&) @ 0x00666B50 (returns the
@@ -10,15 +12,19 @@
 // entry are pushed right to left.
 class CAnimationEntry;
 
-struct CAnimationEntryVector {                  // std::vector<const CAnimationEntry*>
-    const CAnimationEntry** m_pFirst;           // +0x00
-    const CAnimationEntry** m_pLast;            // +0x04
-    const CAnimationEntry** m_pEnd;             // +0x08
-    const CAnimationEntry* operator[](long index) const { return m_pFirst[index]; }
+namespace std {
+template <class _Tp> class allocator { public: allocator() { } };
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector {   // STLport 4.6 vector, 12 bytes
+public:
+    _Tp* _M_start;                              // +0x00
+    _Tp* _M_finish;                             // +0x04
+    _Tp* _M_end_of_storage;                     // +0x08
+    const _Tp& operator[](unsigned int __n) const { return *(_M_start + __n); }
 };
+}
 
-class CThingCreatureBase_Calls { public:              // engine/CThingCreatureBase.h exists but is not used: only its GetAppropriateCombatAnimationFromList call is used
-    long GetAppropriateCombatAnimationFromList(const CAnimationEntryVector& animations);   // 0x00666B50
+class CThingCreatureBase { public:                    // engine/CThingCreatureBase.h is a data layout without members: only this call is used
+    long GetAppropriateCombatAnimationFromList(const std::vector<const CAnimationEntry*>& animations) const;   // 0x00666B50
 };
 
 class CBaseObject;
@@ -41,9 +47,9 @@ public:
 class CCombatActionBase { public:
     virtual void v00();
     unsigned char _pad04[4];                    // +0x04
-    CIntelligentPointer<CThingCreatureBase_Calls> PCreature;          // +0x08
+    CIntelligentPointer<CThingCreatureBase> PCreature;               // +0x08
     unsigned char _pad10[0xf0 - 0x10];          // +0x10
-    CAnimationEntryVector CombatAnimations;     // +0xf0
+    std::vector<const CAnimationEntry*> CombatAnimations;   // +0xf0
     unsigned char _padfc[0x114 - 0xfc];         // +0xfc
     void SetAnimation(const CAnimationEntry* entry, float start, float end);   // 0x00693030 (CCreatureActionBase)
     void SetupCombatAnimation();
