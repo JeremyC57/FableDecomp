@@ -19,7 +19,7 @@ class CWideString { public:
     const CWideString& operator+=(const CWideString& other);      // 0x0099B8D0
 };
 extern const CWideString g_EmptyWideString;                       // 0x013BCA24
-extern const CWideString g_NewLineWideString;                     // 0x013B8BA8 (a static separator string; name descriptive)
+namespace { extern const CWideString NEWLINE; }                  // 0x013B8BA8 (`anonymous namespace'::NEWLINE of this TU, L"\n"; ESTABLISHED_SPELLINGS)
 class CTCInventoryItem { public:
     static CWideString __fastcall GetDetails(long defIndex);      // 0x005D9630 (Ego_r.pdb ?GetDetails@CTCInventoryItem@@SI?AVCWideString@@J@Z)
 };
@@ -111,8 +111,8 @@ CCountedPointer<NUISystem::CComponent> CTCInventoryWeapons::ConstructWieldEntryP
     CCharString guide(melee ? "TEXT_GUI_MENUGUIDE_WEAPONS_MELEE_WIELD_PC" : "TEXT_GUI_MENUGUIDE_WEAPONS_RANGED_WIELD_PC");
     CWideString guideText(g_EmptyWideString);
     guideText = guideBank->GetTextBySymbol(guide);
-    guideText += g_NewLineWideString;
-    guideText += g_NewLineWideString;
+    guideText += NEWLINE;
+    guideText += NEWLINE;
     guideText += CTCInventoryItem::GetDetails(defIndex);
     descriptionComponent->SetText(guideText, true, true);
     NUISystem::CComponent* entryComponent = entry.Data;
