@@ -18,11 +18,13 @@
 namespace NCreatureMode {
 struct CTCBase;
 struct CThing;
-struct CCharString {
+} // (hoisted to global scope: naming wave 22, the PDB CCharString)
+class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
 };
+namespace NCreatureMode {
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;

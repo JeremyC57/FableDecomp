@@ -17,10 +17,12 @@
 extern "C" void __cdecl free(void* p);                  // 0x00BFEA14
 struct __false_type { __false_type() { } };
 namespace FableDestroy_0076bdd0 {
-struct CCharString {                                    // 4 bytes: the shared string-data pointer
+} // (hoisted to global scope: naming wave 22, the PDB CCharString)
+class CCharString { public:                                    // 4 bytes: the shared string-data pointer
     void* m_pData;
     ~CCharString();                                     // 0x0099EAE0 (out of line)
 };
+namespace FableDestroy_0076bdd0 {
 class CThing;
 struct CBaseIntelligentPointer {                        // 8 bytes: vtable + item
     virtual void v00();

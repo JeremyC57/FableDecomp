@@ -51,10 +51,12 @@ struct SUpdateParameters {                         // CParticleUpdateParameters<
     ~SUpdateParameters();                          // 0x006E2500
 };
 
-struct CCharString {
+} // (hoisted to global scope: naming wave 22, the PDB CCharString)
+class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                // 0x0099EAE0
 };
+namespace NParticleEngine {
 
 struct CBase {
     virtual void v00();

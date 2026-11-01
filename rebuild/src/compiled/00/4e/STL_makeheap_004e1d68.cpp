@@ -16,11 +16,13 @@
 #pragma optimize("s", on)
 namespace std {
 
-struct CCharString {
+} // (hoisted to global scope: naming wave 22, the PDB CCharString)
+class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);                 // 0x0099EC30
     ~CCharString();                                        // 0x0099EAE0
 };
+namespace std {
 
 struct CThing;
 struct CTCBase;

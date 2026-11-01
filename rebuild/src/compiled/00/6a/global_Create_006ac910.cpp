@@ -11,7 +11,9 @@ struct CRightHandedSet {C3DVector forward,up;__forceinline CRightHandedSet():for
 struct CTCParamsPhysicsBase:CBaseClass {C3DVector position;CRightHandedSet axes;CTCParamsPhysicsBase(const C3DVector&,const CRightHandedSet&);};
 struct Physics {virtual void v0()=0;virtual void v1()=0;virtual void v2()=0;virtual void Set(const CTCParamsPhysicsBase&)=0;};
 void* __fastcall Allocate(unsigned charSize,bool);
-struct CCharString {void* data;CCharString(const char*,int=-1);~CCharString();};
+} // (hoisted to global scope: naming wave 22, the PDB CCharString)
+class CCharString { public:void* data;CCharString(const char*,int=-1);~CCharString();};
+namespace NFactory006ac910 {
 void __fastcall DisplayProgress(const CCharString&,bool,float,int);
 struct Extra {void Set(void*);};struct Handle {virtual void v0()=0;virtual void* Get()=0;};
 struct CThingPlayerCreature {char prefix[96];Physics* physics;char gap[108];Extra extra;CThingPlayerCreature();bool ConstructFromParams(int,const C3DVector&,int,int);bool Init8(int,int,int,int,int,int,int,int);bool DoActivationSequence();void Add(const CCharString&,int,int);static CThingPlayerCreature* __fastcall Create(int,const C3DVector&,int,int);};

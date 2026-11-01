@@ -2,7 +2,9 @@
 // Flags: /O2 /Oy /W3 
 // Leaf: HandleTraderEscortQuestEnd
 namespace Row00e1e530 {
-struct CCharString{const char*p;CCharString();CCharString(const char*,int=-1);CCharString(const CCharString&);~CCharString();};
+} // (hoisted to global scope: naming wave 22, the PDB CCharString)
+class CCharString{ public:const char*p;CCharString();CCharString(const char*,int=-1);CCharString(const CCharString&);~CCharString();};
+namespace Row00e1e530 {
 struct Thing{virtual void V0()=0;virtual void V1()=0;virtual void V2()=0;virtual void V3()=0;virtual void V4()=0;virtual void V5()=0;virtual void V6()=0;virtual void V7()=0;virtual void V8()=0;virtual void V9()=0;virtual void V10()=0;virtual void V11()=0;virtual void V12()=0;virtual void V13()=0;virtual void V14()=0;virtual void V15()=0;virtual void V16()=0;virtual void V17()=0;virtual void V18()=0;virtual void V19()=0;virtual void V20()=0;virtual void V21()=0;virtual void V22()=0;virtual void V23()=0;virtual void V24()=0;virtual void V25()=0;virtual void V26()=0;virtual void V27()=0;virtual void V28()=0;virtual void V29()=0;virtual void V30()=0;virtual void V31()=0;virtual void V32()=0;virtual void V33()=0;virtual void V34()=0;virtual void V35()=0;virtual void V36()=0;virtual void V37()=0;virtual void V38()=0;virtual void V39()=0;virtual void V40()=0;virtual void V41()=0;virtual void V42()=0;virtual void V43()=0;virtual void V44()=0;virtual void V45()=0;virtual void V46()=0;virtual void V47()=0;virtual void V48()=0;virtual void V49()=0;virtual void V50()=0;virtual void V51()=0;virtual void V52()=0;virtual void V53()=0;virtual void V54()=0;virtual void V55()=0;virtual void V56()=0;virtual void V57()=0;virtual void V58()=0;virtual void V59()=0;virtual void V60()=0;virtual void V61()=0;virtual void V62()=0;virtual void V63()=0;virtual void V64()=0;virtual void V65()=0;virtual void V66()=0;virtual void V67()=0;virtual void V68()=0;virtual void V69()=0;virtual void V70()=0;virtual void V71()=0;virtual void V72()=0;virtual void V73()=0;virtual void V74()=0;virtual bool IsAlive()=0;};
 
 // Layout:004aa840 handle virtual table+0x00, object+0x04, control+0x08;

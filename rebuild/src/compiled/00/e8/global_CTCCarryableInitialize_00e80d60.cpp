@@ -3,7 +3,9 @@
 // Leaf: Run
 #include <stdlib.h>
 namespace Row00e80d60 {
-struct CCharString{const char*p;CCharString():p(0){}CCharString(const CCharString&);CCharString(const char*,int);~CCharString();};struct Control{int refs;void(__fastcall*destroy)(void*);void*object;};
+} // (hoisted to global scope: naming wave 22, the PDB CCharString)
+class CCharString{ public:const char*p;CCharString():p(0){}CCharString(const CCharString&);CCharString(const char*,int);~CCharString();};
+namespace Row00e80d60 {struct Control{int refs;void(__fastcall*destroy)(void*);void*object;};
 struct CScriptGameResourceObjectScriptedThingBase{unsigned a,b;void*object;Control*control;void CopyBase(const CScriptGameResourceObjectScriptedThingBase&);__forceinline void Assign(const CScriptGameResourceObjectScriptedThingBase&h){CopyBase(h);Control*c=h.control;void*o=h.object;if(control!=c){if(control&&--control->refs==0){control->destroy(control->object);operator delete(control);}object=o;control=c;if(c)++c->refs;}}};
 struct _Rb_tree_node{unsigned char _M_color;char pad[3];_Rb_tree_node*_M_parent,*_M_left,*_M_right;CCharString key;CScriptGameResourceObjectScriptedThingBase value;};
 struct CCutsceneCastMap{_Rb_tree_node*_M_header;unsigned _M_node_count;char compare;CScriptGameResourceObjectScriptedThingBase&operator[](const CCharString&);void _M_erase(_Rb_tree_node*);__forceinline CCutsceneCastMap(){_M_header=0;_M_header=(_Rb_tree_node*)malloc(36);_M_node_count=0;_M_header->_M_color=0;_M_header->_M_parent=0;_M_header->_M_left=_M_header;_M_header->_M_right=_M_header;}__forceinline ~CCutsceneCastMap(){if(_M_node_count){_M_erase(_M_header->_M_parent);_M_header->_M_left=_M_header;_M_header->_M_parent=0;_M_header->_M_right=_M_header;_M_node_count=0;}if(_M_header)free(_M_header);}};
