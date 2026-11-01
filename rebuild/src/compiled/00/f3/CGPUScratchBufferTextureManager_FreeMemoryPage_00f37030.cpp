@@ -1,5 +1,8 @@
 // CGPUScratchBufferTextureManager::FreeMemoryPage(long page) -- mark the memory page's resource as none (-1), free every resource entry still listed on the page (each FreeResourceEntry call removes the page's first slot), then push the page index onto FreeTexturePageSlots
 // Leaf: ?FreeMemoryPage@CGPUScratchBufferTextureManager@@QAEXJ@Z
+// Naming wave 26 (family vlong): the vector is STLport 4.6 std::vector<long, allocator<long> >; its grow-insert 0x00440990 is the
+//   protected ?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@std@@IAEXPAJABJABU__true_type@2@I_N@Z (size_type unsigned int; the
+//   own row's spelling, c689 queue). Was CLongVector::InsertGrow(..., const SScalarTag&, unsigned long, bool).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F37030, length 140 bytes (+ int3 padding). `ret 4`.
 // Callees: CGPUScratchBufferTextureManager::FreeResourceEntry(long) @ 0x00F36F40 (on `this`; Ego_r.pdb
 // ?FreeResourceEntry@CGPUScratchBufferTextureManager@@AAEXJ@Z, private, the landed row's Leaf; catalog name "TexturePool_FreeSlot";
@@ -13,31 +16,39 @@
 // grow call with the page parameter's own slot as the value and the empty tag in a dead slot), as the landed PushBackConstant family.
 #include <new>
 
-struct SScalarTag { SScalarTag() { } };
 
-struct CLongVector {                       // retail vector<long>
-    long* first;
-    long* last;
-    long* end;
-    long* begin() { return first; }
+namespace std {
+template <class _Tp> class allocator { public: allocator() { } };
+struct __true_type { __true_type() { } };
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector { // retail vector<long>
+public:
+    _Tp* first;
+    _Tp* last;
+    _Tp* end;
+    _Tp* begin() { return first; }
     unsigned long size() { return last - first; }
-    long& operator[](unsigned long n) { return *(begin() + n); }
-    void InsertGrow(long* where, const long& value, const SScalarTag& tag, unsigned long count, bool noTail);   // 0x00440990
-    void push_back(long value)                                   // by value: keeps page in ebx like retail
+    _Tp& operator[](unsigned long n) { return *(begin() + n); }
+protected:
+    void _M_insert_overflow(_Tp* where, const _Tp& value, const __true_type& tag, unsigned int count, bool noTail);   // 0x00440990
+public:
+    void push_back(_Tp value)                                   // by value: keeps page in ebx like retail
     {
         if (last != end) {
-            new (last) long(value);
+            new (last) _Tp(value);
             ++last;
         }
         else
-            InsertGrow(last, value, SScalarTag(), 1, true);
+            _M_insert_overflow(last, value, __true_type(), 1, true);
     }
 };
+}
+
 void* FindRef_CLongVector_InsertGrow_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it only writes a word through the reference parameter inline, so
 // VC7.1 knows the caller's address-taken local does not escape the call.
 #pragma auto_inline(off)
-__declspec(noinline) void CLongVector::InsertGrow(long* where, const long& value, const SScalarTag& tag, unsigned long count, bool noTail)
+template <class _Tp, class _Alloc>
+__declspec(noinline) void std::vector<_Tp, _Alloc>::_M_insert_overflow(_Tp* where, const _Tp& value, const std::__true_type& tag, unsigned int count, bool noTail)
 {
     void* p = FindRef_CLongVector_InsertGrow_0();
     if (!p)
@@ -49,7 +60,7 @@ __declspec(noinline) void CLongVector::InsertGrow(long* where, const long& value
 
 struct CResourcePage {                     // 0x1c bytes
     long          ResourceIndex;           // +0x00
-    CLongVector   Slots;                   // +0x04
+    std::vector<long>   Slots;                   // +0x04
     unsigned char _pad10[0x0c];
 };
 
@@ -66,8 +77,8 @@ class CGPUScratchBufferTextureManager { public:
     unsigned char       Resources[0x0c];         // +0x04
     CResourcePageVector MemoryPages;             // +0x10
     unsigned char       ScratchPools[0x0c];      // +0x1c
-    CLongVector         FreeTexturePageSlots;    // +0x28
-    CLongVector         FreeTextureSlots;        // +0x34
+    std::vector<long>         FreeTexturePageSlots;    // +0x28
+    std::vector<long>         FreeTextureSlots;        // +0x34
     bool                ShutdownFlag;            // +0x40
     void FreeMemoryPage(long page);
 private:

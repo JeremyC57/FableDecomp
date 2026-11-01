@@ -1,5 +1,8 @@
 // CRegionConnectionNode::SetAsConnectedToRegion(long region, bool connected) -- add the region to (or remove it from) this node's connection list
 // Leaf: ?SetAsConnectedToRegion@CRegionConnectionNode
+// Naming wave 26 (family vlong): std::vector takes STLport's allocator<_Tp> parameter and its grow-insert 0x00440990 is the protected
+//   ?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@std@@IAEXPAJABJABU__true_type@2@I_N@Z (size_type unsigned int; the own
+//   row's spelling, c689 queue). Was the public vector<long> member without the allocator.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008285D0, 195 bytes (+13 int3), thiscall `ret 8`.
 // Identity: Ego_r.pdb name set ?SetAsConnectedToRegion@CRegionConnectionNode@@QAEXJ_N@Z; the caller 0x008286A0 is
 //   CRegionConnectionGraph::SetRegionsAsConnected (QAEXJJ_N). The catalog label "StdVector_RemoveIf" is descriptive.
@@ -65,14 +68,17 @@ inline void* __copy_trivial(const void* __first, const void* __last, void* __res
               + ((const char*)__last - (const char*)__first);
 }
 
-template <class T> class vector {
+template <class T> class allocator { public: allocator() { } };
+template <class T, class _Alloc = allocator<T> > class vector {
 public:
     T* _M_start;                                            // +0x00
     T* _M_finish;                                           // +0x04
     T* _M_end_of_storage;                                   // +0x08
     T* begin() { return _M_start; }
     T* end() { return _M_finish; }
+protected:
     __declspec(noinline) void _M_insert_overflow(T* __position, const T& __x, const __true_type&, unsigned int __fill_len, bool __atend);   // 0x00440990
+public:
     void push_back(const T& __x)
     {
         if (this->_M_finish != this->_M_end_of_storage) {
@@ -90,8 +96,8 @@ public:
     }
 };
 
-template <class T>
-void vector<T>::_M_insert_overflow(T* __position, const T& __x, const __true_type&, unsigned int __fill_len, bool __atend)
+template <class T, class _Alloc>
+void vector<T, _Alloc>::_M_insert_overflow(T* __position, const T& __x, const __true_type&, unsigned int __fill_len, bool __atend)
 {
     if (__x == 0 && __atend)
         this->_M_finish = __position + __fill_len;

@@ -1,4 +1,7 @@
 // CVectorMap<long,CRandomAppearanceMorph::CSkeletalMorph,CKeyPairCompareLess<long,CRandomAppearanceMorph::CSkeletalMorph> >::GetKeyList(std::vector<long>& keys) const -- append each distinct key of the sorted map to a vector, in order
+// Naming wave 26 (family vlong): std::vector takes STLport's allocator<_Tp> parameter and its grow-insert 0x00440990 is the protected
+//   ?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@std@@IAEXPAJABJABU__true_type@2@I_N@Z (size_type unsigned int; the own
+//   row's spelling, c689 queue). Was the public vector<long> member without the allocator (tag SScalarTag, unsigned long).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0086D240, 90 bytes, `__fastcall`, `ret 4`.
 // Callees: the STLport vector<long> grow-and-insert `_M_insert_overflow(pos, const long&, __true_type, 1, true)` @ 0x00440990
 //   (the landed push_back model of CEnginePrimitiveManager*::GetSupportedTypes 0x00BBAC20 calls it as InsertGrow).
@@ -11,19 +14,22 @@
 //   with the empty scalar tag homed in the dead `keys` argument slot.
 #include <new>
 
-struct SScalarTag { SScalarTag() { } };
 
 namespace std {
+struct __true_type { __true_type() { } };
 template <class A, class B> struct pair {
     A first;
     B second;
 };
-template <class T> class vector {
+template <class T> class allocator { public: allocator() { } };
+template <class T, class _Alloc = allocator<T> > class vector {
 public:
     T* _M_start;                                          // +0x00
     T* _M_finish;                                         // +0x04
     T* _M_end_of_storage;                                 // +0x08
-    void _M_insert_overflow(T* pos, const T& x, const SScalarTag& tag, unsigned long n, bool atend);   // 0x00440990
+protected:
+    void _M_insert_overflow(T* pos, const T& x, const __true_type& tag, unsigned int n, bool atend);   // 0x00440990
+public:
     void push_back(const T& x)
     {
         if (_M_finish != _M_end_of_storage) {
@@ -31,7 +37,7 @@ public:
             ++_M_finish;
         }
         else
-            _M_insert_overflow(_M_finish, x, SScalarTag(), 1, true);
+            _M_insert_overflow(_M_finish, x, __true_type(), 1, true);
     }
 };
 }

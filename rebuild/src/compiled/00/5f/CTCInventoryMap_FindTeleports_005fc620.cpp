@@ -1,4 +1,7 @@
 // CTCInventoryMap::FindTeleports() -- rebuilds the list of regions that hold a teleport: for every region (1..count), every map linked to the region is searched for teleporter things (TC 0xDD) and the region index is recorded once when an enabled teleporter is found
+// Naming wave 26 (family vlong): the vector is STLport 4.6 std::vector<long, allocator<long> >; its grow-insert 0x00440990 is the
+//   protected ?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@std@@IAEXPAJABJABU__true_type@2@I_N@Z (size_type unsigned int; the
+//   own row's spelling, c689 queue). Was CLongVector::_M_insert_overflow(..., const __false_type&, unsigned long, bool).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005FC620, 528 bytes, plain `ret`. Speed TU (no pragmas; RTM `and esp,-8` frame).
 // Callees: memmove 0x00BFEAE6 (inline STLport clear), CTCBase::PeekWorld() const 0x00686A80, CWorld slot 13 (+0x34)
 //   PeekWorldMap, CWorldMap::GetRegion 0x004FC180, malloc 0x00BFEA0E / free 0x00BFEA14 (STLport list),
@@ -11,32 +14,39 @@
 // Layout: local view -- CTCInventoryMap teleport region list vector<long> +0x208, region count +0x23C; CWorld +0x20
 //   thing search tools (engine/CWorld.h); CRegion's linked-map vector<long> +0x00; teleporter (0xDD) enabled flag +0x10.
 #include <new>
-struct __false_type { __false_type() { } };
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int n);   // 0x00BFEAE6
-struct CLongVector {                               // std::vector<long> (12 bytes)
-    long* _M_start;
-    long* _M_finish;
-    long* _M_end_of_storage;
-    static long* copy_trivial(long* first, long* last, long* result)
+namespace std {
+template <class _Tp> class allocator { public: allocator() { } };
+struct __true_type { __true_type() { } };
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector { // std::vector<long> (12 bytes)
+public:
+    _Tp* _M_start;
+    _Tp* _M_finish;
+    _Tp* _M_end_of_storage;
+    static _Tp* copy_trivial(_Tp* first, _Tp* last, _Tp* result)
     {
         if (first == last)
             return result;
         unsigned int n = (char*)last - (char*)first;
-        return (long*)((char*)memmove(result, first, n) + n);
+        return (_Tp*)((char*)memmove(result, first, n) + n);
     }
-    void erase(long* first, long* last) { _M_finish = copy_trivial(last, _M_finish, first); }
+    void erase(_Tp* first, _Tp* last) { _M_finish = copy_trivial(last, _M_finish, first); }
     void clear() { erase(_M_start, _M_finish); }
-    void _M_insert_overflow(long* position, const long& x, const __false_type& tag, unsigned long n, bool atEnd);   // 0x00440990
-    void push_back(const long& x)
+protected:
+    void _M_insert_overflow(_Tp* position, const _Tp& x, const __true_type& tag, unsigned int n, bool atEnd);   // 0x00440990
+public:
+    void push_back(const _Tp& x)
     {
         if (_M_finish != _M_end_of_storage) {
-            new (_M_finish) long(x);
+            new (_M_finish) _Tp(x);
             ++_M_finish;
         }
         else
-            _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
+            _M_insert_overflow(_M_finish, x, __true_type(), 1, true);
     }
 };
+}
+
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 template <class T>
@@ -182,7 +192,7 @@ class CTCBase { protected:
 };
 class CTCInventoryMap : public CTCBase { public:
     unsigned char _pad00[0x208];
-    CLongVector   TeleportRegions;                    // +0x208
+    std::vector<long>   TeleportRegions;                    // +0x208
     unsigned char _pad214[0x23c - 0x214];
     long          NumberOfRegions;                    // +0x23c
     void FindTeleports();

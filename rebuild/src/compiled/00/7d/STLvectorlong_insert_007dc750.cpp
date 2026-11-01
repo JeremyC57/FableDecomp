@@ -1,5 +1,8 @@
 // std::vector<long>::insert(long* position, const long& x) -- STLport single-element insert into a vector of longs (the blackjack bets): append at the end, or shift the tail up one slot (memmove) and store the value; grow through _M_insert_overflow when full; returns the iterator to the inserted value
 // Leaf: ?insert@?$vector@
+// Naming wave 26 (family vlong): std::vector takes STLport's allocator<_Tp> parameter and its grow-insert 0x00440990 is the protected
+//   ?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@std@@IAEXPAJABJABU__true_type@2@I_N@Z (size_type unsigned int; the own
+//   row's spelling, c689 queue). Was the public vector<long> member without the allocator.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007DC750, 167 bytes, thiscall `ret 8`.
 // Identity: CTCTavernGameCardBlackjack::Split (0x007DB5C0, call at 0x007DB68D) inserts the second bet with it
 //   (Bets.insert(bet, BaseBet)); the overflow 0x00440990 is vector<long>::_M_insert_overflow (the same callee as
@@ -27,7 +30,8 @@ inline _BidirectionalIter2 __copy_backward_ptrs(_BidirectionalIter1 __first, _Bi
     return (_BidirectionalIter2)__copy_trivial_backward(__first, __last, __result);
 }
 
-template <class _Tp> class vector {
+template <class _Tp> class allocator { public: allocator() { } };
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector {
 public:
     typedef _Tp* iterator;
     _Tp* _M_start;                                          // +0x00
@@ -35,7 +39,9 @@ public:
     _Tp* _M_end_of_storage;                                 // +0x08
     iterator begin() { return _M_start; }
     iterator end() { return _M_finish; }
+protected:
     void _M_insert_overflow(_Tp* __position, const _Tp& __x, const __true_type&, unsigned int __fill_len, bool __atend = false);   // 0x00440990
+public:
     iterator insert(iterator __position, const _Tp& __x)
     {
         unsigned int __n = __position - begin();

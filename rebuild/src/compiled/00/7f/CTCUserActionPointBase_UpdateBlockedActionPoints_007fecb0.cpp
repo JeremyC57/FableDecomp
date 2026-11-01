@@ -1,5 +1,9 @@
 // CTCUserActionPointBase::UpdateBlockedActionPoints() -- at most every 10 frames, re-tests every blocked action point: those still blocked (for a live owner) stay blocked, the rest go back to the free list
 // Leaf: UpdateBlockedActionPoints
+// Naming wave 26 (family vlong): the vector is STLport 4.6 std::vector<long, allocator<long> >; its grow-insert 0x00440990 is the
+//   protected ?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@std@@IAEXPAJABJABU__true_type@2@I_N@Z (size_type unsigned int; the
+//   own row's spelling, c689 queue). Was CLongVector::_M_insert_overflow(..., const __true_type&, unsigned long, bool).
+//   The same-TU operator= body (0x00454886) is the vector's ??4?$vector@JV?$allocator@J@std@@@std@@QAEAAV01@ABV01@@Z (was ??4CLongVector@@).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FECB0, 291 bytes (plain `ret`; Ego_r.pdb
 // `?UpdateBlockedActionPoints@CTCUserActionPointBase@@IAEXXZ`).
 // Callees: GFGetCurrentFrame() 0x0049D870 (x2, `__fastcall` with no arguments); CBaseIntelligentPointer::GetPItem()
@@ -28,19 +32,24 @@ public:
     static long __fastcall GetFrame();   // 0x0049D870
 };            // 0x0049D870
 
+namespace std {
+template <class _Tp> class allocator { public: allocator() { } };
 struct __true_type { __true_type() { } };
-struct CLongVector {                            // STLport vector<long> (12 bytes)
-    long* _M_start;
-    long* _M_finish;
-    long* _M_end_of_storage;
-    CLongVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-    ~CLongVector() { if (_M_start) free(_M_start); }
-    long* begin() const { return _M_start; }
-    long* end() const { return _M_finish; }
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector { // STLport vector<long> (12 bytes)
+public:
+    _Tp* _M_start;
+    _Tp* _M_finish;
+    _Tp* _M_end_of_storage;
+    vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
+    ~vector() { if (_M_start) free(_M_start); }
+    _Tp* begin() const { return _M_start; }
+    _Tp* end() const { return _M_finish; }
     bool empty() const { return _M_start == _M_finish; }
-    void _M_insert_overflow(long* position, const long& x, const __true_type& tag, unsigned long n, bool atEnd);   // 0x00440990
-    CLongVector& operator=(const CLongVector& other);   // 0x00454886
-    void push_back(const long& x)
+protected:
+    void _M_insert_overflow(_Tp* position, const _Tp& x, const __true_type& tag, unsigned int n, bool atEnd);   // 0x00440990
+public:
+    vector& operator=(const vector& other);   // 0x00454886
+    void push_back(const _Tp& x)
     {
         if (_M_finish != _M_end_of_storage) {
             if (_M_finish)
@@ -50,6 +59,8 @@ struct CLongVector {                            // STLport vector<long> (12 byte
             _M_insert_overflow(_M_finish, x, __true_type(), 1, true);
     }
 };
+}
+
 
 #pragma auto_inline(off)
 static long* CopyTrivial(const long* first, const long* last, long* result)
@@ -59,7 +70,8 @@ static long* CopyTrivial(const long* first, const long* last, long* result)
     unsigned int n = (const char*)last - (const char*)first;
     return (long*)((char*)memmove(result, first, n) + n);
 }
-void CLongVector::_M_insert_overflow(long* position, const long& x, const __true_type&, unsigned long n, bool atEnd)
+template <class _Tp, class _Alloc>
+__declspec(noinline) void std::vector<_Tp, _Alloc>::_M_insert_overflow(_Tp* position, const _Tp& x, const std::__true_type&, unsigned int n, bool atEnd)
 {
     unsigned long oldSize = _M_finish - _M_start;
     unsigned long len = oldSize + (oldSize < n ? n : oldSize);
@@ -75,7 +87,8 @@ void CLongVector::_M_insert_overflow(long* position, const long& x, const __true
     _M_finish = newFinish;
     _M_end_of_storage = newStart + len;
 }
-CLongVector& CLongVector::operator=(const CLongVector& other)
+template <class _Tp, class _Alloc>
+__declspec(noinline) std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(const std::vector<_Tp, _Alloc>& other)
 {
     if (&other != this) {
         unsigned long length = other._M_finish - other._M_start;
@@ -139,8 +152,8 @@ struct CTCUserActionPointBase {
     virtual bool IsActionPointIndexBlocked(CThing& thing, C3DVector& position, CRightHandedSet& rh, long index) const;   // slot 28 (+0x70)
     CThing*       ParentThing;                  // +0x04 (CTCBase)
     unsigned char _pad_0x08[4];
-    CLongVector   FreeActionPointIndexes;       // +0x0c
-    CLongVector   BlockedActionPointIndexes;    // +0x18
+    std::vector<long>   FreeActionPointIndexes;       // +0x0c
+    std::vector<long>   BlockedActionPointIndexes;    // +0x18
     long          NumberOfActionPoints;         // +0x24
     long          FrameOfNextCheck;             // +0x28
     CIntelligentPointer<CThing> PThing;             // +0x2c
@@ -153,7 +166,7 @@ void CTCUserActionPointBase::UpdateBlockedActionPoints()
         return;
     if (CWorld::GetFrame() <= FrameOfNextCheck)
         return;
-    CLongVector stillBlocked;
+    std::vector<long> stillBlocked;
     C3DVector position;
     CRightHandedSet rh;
     for (long* it = BlockedActionPointIndexes.begin(); it != BlockedActionPointIndexes.end(); ++it) {

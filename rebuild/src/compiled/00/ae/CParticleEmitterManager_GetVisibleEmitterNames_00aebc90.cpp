@@ -1,4 +1,8 @@
 // CParticleEmitterManager::GetVisibleEmitterNames(vector<CCharString>& names) -- collect the names of the visible particle emitters, counting duplicates, then append " (count)" to each name; returns the number of visible emitters
+// Leaf: ?GetVisibleEmitterNames@CParticleEmitterManager@@
+// Naming wave 26 (family vlong): the vector is STLport 4.6 std::vector<long, allocator<long> >; its grow-insert 0x00440990 is the
+//   protected ?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@std@@IAEXPAJABJABU__true_type@2@I_N@Z (size_type unsigned int; the
+//   own row's spelling, c689 queue). Was CLongVector::_M_insert_overflow<Tag>(..., const Tag&, unsigned long, bool).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AEBC90, length 383 bytes (+ int3 padding), `ret 4`.
 // Callees: CParticleEmitter::IsVisible 0x00AED010, the SGI __find for CCharString ranges 0x004B8E40 (`__fastcall`, as the
 // landed CQuestManager::SetCreatureGenerationEnabledDuringScript 0x004B3810), vector<CCharString>::push_back
@@ -65,30 +69,38 @@ struct CCharStringVector {                              // STLport vector<CCharS
     void push_back(const CCharString& value);           // 0x0044BFF0
 };
 
-struct __true_type { __true_type() {} };
 inline void* operator new(unsigned int, void* where) { return where; }
-struct CLongVector {                                    // STLport vector<long> (12 bytes, malloc storage)
-    long* _M_start;
-    long* _M_finish;
-    long* _M_end_of_storage;
-    CLongVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-    ~CLongVector() { if (_M_start) free(_M_start); }
-    long& operator[](unsigned long n) { return _M_start[n]; }
-    template <class Tag> void _M_insert_overflow(long* position, const long& x, const Tag&, unsigned long fill_len, bool atend);   // 0x00440990
-    void push_back(const long& x)
+namespace std {
+template <class _Tp> class allocator { public: allocator() { } };
+struct __true_type { __true_type() { } };
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector { // STLport vector<long> (12 bytes, malloc storage)
+public:
+    _Tp* _M_start;
+    _Tp* _M_finish;
+    _Tp* _M_end_of_storage;
+    vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
+    ~vector() { if (_M_start) free(_M_start); }
+    _Tp& operator[](unsigned long n) { return _M_start[n]; }
+protected:
+    void _M_insert_overflow(_Tp* position, const _Tp& x, const __true_type&, unsigned int fill_len, bool atend);   // 0x00440990
+public:
+    void push_back(const _Tp& x)
     {
         if (_M_finish != _M_end_of_storage) {
-            new (_M_finish) long(x);
+            new (_M_finish) _Tp(x);
             ++_M_finish;
         } else
             _M_insert_overflow(_M_finish, x, __true_type(), 1, true);
     }
 };
+}
+
 
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);
 // Same-TU body of vector<long>::_M_insert_overflow 0x00440990 (retail instantiated it in this TU), tag unused.
-template <class Tag> __declspec(noinline) void CLongVector::_M_insert_overflow(long* position, const long& x, const Tag&, unsigned long fill_len, bool atend)
+template <class _Tp, class _Alloc>
+__declspec(noinline) void std::vector<_Tp, _Alloc>::_M_insert_overflow(_Tp* position, const _Tp& x, const std::__true_type&, unsigned int fill_len, bool atend)
 {
     unsigned long oldSize = _M_finish - _M_start;
     unsigned long len = oldSize + (oldSize < fill_len ? fill_len : oldSize);
@@ -150,7 +162,7 @@ struct CParticleEmitterManager {
 
 long CParticleEmitterManager::GetVisibleEmitterNames(CCharStringVector& names)
 {
-    CLongVector counts;
+    std::vector<long> counts;
     for (CEmitterListIterator it = Emitters.begin(); it != Emitters.end(); ++it) {
         if (*it && !(*it)->IsDead() && (*it)->IsVisible()) {
             CCharString* last = names._M_finish;

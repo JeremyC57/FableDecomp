@@ -1,5 +1,9 @@
 // CShaderRenderManager::CreatePixelShader(const CArray<unsigned long>& code, const CArray<CCharString>& constNames, const CCharString& name) -- create the D3D pixel shader and wrap it with the PSConstNames indices of its named constants
 // Leaf: CreatePixelShader
+// Naming wave 26 (family vlong): the vector is STLport 4.6 std::vector<long, allocator<long> >; its grow-insert 0x00440990 is the
+//   protected ?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@std@@IAEXPAJABJABU__true_type@2@I_N@Z (size_type unsigned int; the
+//   own row's spelling, c689 queue). Was CLongArray::InsertGrow(..., const SScalarTag&, unsigned long, bool). The local is CArray<long>
+//   (CArray<T> : std::vector<T>, the landed 0x00B1B380 model), the CPixelShader ctor 0x00A5ECB0's PDB parameter type.
 // Retail 0x0098A9A0, 345 bytes, `ret 0x10` (hidden CPixelShader result). Callees: IDirect3DDevice9::CreatePixelShader
 // (COM slot 106, +0x1A8), CCharString copy 0x0099EC30 / dtor 0x0099EAE0, the PSConstNames index map's find 0x0042B467,
 // the STLport vector<long> growth insert 0x00440990, CPixelShader(IDirect3DPixelShader9*, const CArray<long>&, const
@@ -28,34 +32,36 @@ class CCharString { public:
     ~CCharString();                             // 0x0099EAE0
 };
 
-template<class T> class CArray { public:
-    T* first; T* last; T* end_of_storage;
-    unsigned long Size() const { return (unsigned long)(last - first); }
-    const T& operator[](unsigned long i) const { return first[i]; }
-    const T* GetData() const { return Size() > 0 ? first : (const T*)this; }
-};
 
-struct SScalarTag { SScalarTag() { } };
 
-struct CLongArray {                             // CArray<long>
-    long* first; long* last; long* end_of_storage;
-    CLongArray() : first(0), last(0), end_of_storage(0) { }
-    ~CLongArray() { if (first) free(first); }
-    void InsertGrow(long* where, const long& value, const SScalarTag& tag, unsigned long count, bool noTail);   // 0x00440990
-    void push_back(const long& value)
+namespace std {
+template <class _Tp> class allocator { public: allocator() { } };
+struct __true_type { __true_type() { } };
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector { // CArray<long>
+public:
+    _Tp* first; _Tp* last; _Tp* end_of_storage;
+    vector() : first(0), last(0), end_of_storage(0) { }
+    ~vector() { if (first) free(first); }
+protected:
+    void _M_insert_overflow(_Tp* where, const _Tp& value, const __true_type& tag, unsigned int count, bool noTail);   // 0x00440990
+public:
+    void push_back(const _Tp& value)
     {
         if (last != end_of_storage) {
-            new (last) long(value);
+            new (last) _Tp(value);
             ++last;
         }
         else
-            InsertGrow(last, value, SScalarTag(), 1, true);
+            _M_insert_overflow(last, value, __true_type(), 1, true);
     }
 };
+}
+
 
 #pragma auto_inline(off)
 // Same-TU stand-in for the STLport growth insert 0x00440990 (_M_insert_overflow): VC7.1 sees it never reads the tag.
-__declspec(noinline) void CLongArray::InsertGrow(long* where, const long& value, const SScalarTag& tag, unsigned long count, bool noTail)
+template <class _Tp, class _Alloc>
+__declspec(noinline) void std::vector<_Tp, _Alloc>::_M_insert_overflow(_Tp* where, const _Tp& value, const std::__true_type& tag, unsigned int count, bool noTail)
 {
     unsigned long size = last - first;
     unsigned long len = size + (size > count ? size : count);
@@ -75,6 +81,12 @@ __declspec(noinline) void CLongArray::InsertGrow(long* where, const long& value,
     end_of_storage = start + len;
 }
 #pragma auto_inline(on)
+
+template<class T> class CArray : public std::vector<T, std::allocator<T> > { public:   // Fable's CArray over the STLport vector
+    unsigned long Size() const { return (unsigned long)(this->last - this->first); }
+    const T& operator[](unsigned long i) const { return this->first[i]; }
+    const T* GetData() const { return Size() > 0 ? this->first : (const T*)this; }
+};
 
 struct CNameIndexNode {                          // STLport _Rb_tree_node<pair<const CCharString, long>>
     long            color;
@@ -119,7 +131,7 @@ class CShaderBase { public:                            // vtable 0x0129A030
 
 class CPixelShader : public CShaderBase { public:             // vtable 0x0129A054
     CPixelShaderData* Data;
-    CPixelShader(IDirect3DPixelShader9* shader, const CLongArray& constIndices, const CCharString& name);   // 0x00A5ECB0
+    CPixelShader(IDirect3DPixelShader9* shader, const CArray<long>& constIndices, const CCharString& name);   // 0x00A5ECB0
     CPixelShader(const CPixelShader& other) : Data(other.Data) { if (Data) ++Data->ReferenceCount; }
     virtual ~CPixelShader()
     {
@@ -140,7 +152,7 @@ CPixelShader CShaderRenderManager::CreatePixelShader(const CArray<unsigned long>
 {
     IDirect3DPixelShader9* shader = 0;
     D3DDevice->lpVtbl->CreatePixelShader(D3DDevice, code.GetData(), &shader);
-    CLongArray indices;
+    CArray<long> indices;
     for (unsigned long i = 0; i < constNames.Size(); ++i) {
         CCharString constName(constNames[i]);
         long index = PSConstIndexMap.GetIndex(constName);

@@ -1,6 +1,9 @@
 // CPhysicsFacesSegmentLeaf::GetPossibleCollisionSet(float radius, const C3DVector& from, const C3DVector& to, std::vector<long>& faces) -- add each of the leaf's triangle indices not yet stamped in this query to the result, stamping it so shared triangles are reported once
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A86E20, length 115 bytes (+ int3 padding).
 // Leaf: GetPossibleCollisionSet
+// Naming wave 26 (family vlong): the vector is STLport 4.6 std::vector<long, allocator<long> >; its grow-insert 0x00440990 is the
+//   protected ?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@std@@IAEXPAJABJABU__true_type@2@I_N@Z (size_type unsigned int; the
+//   own row's spelling, c689 queue). Was CLongVector::InsertGrow(..., const SScalarTag&, unsigned long, bool).
 // Slot 4 of CPhysicsFacesSegmentLeaf's vtable 0x0129DEA4 (a leaf ignores the query volume: radius/from/to are unused).
 // Callees: the vector<long> reallocating insert @ 0x00440990 (`this` = the vector; where, value&, tag&, count 1, true).
 // Globals: the current query stamp @ 0x013D2D44 and the per-triangle stamp array @ 0x013D2D48 (both re-read per index).
@@ -15,27 +18,35 @@
 #include <new>
 class C3DVector { public: float x, y, z; };
 
-struct SScalarTag { SScalarTag() { } };
-struct CLongVector {                               // STLport vector<long>
-    long* first;
-    long* last;
-    long* end;
-    void InsertGrow(long* where, const long& value, const SScalarTag& tag, unsigned long count, bool noTail);   // 0x00440990
-    void push_back(const long& value)
+namespace std {
+template <class _Tp> class allocator { public: allocator() { } };
+struct __true_type { __true_type() { } };
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector { // STLport vector<long>
+public:
+    _Tp* first;
+    _Tp* last;
+    _Tp* end;
+protected:
+    void _M_insert_overflow(_Tp* where, const _Tp& value, const __true_type& tag, unsigned int count, bool noTail);   // 0x00440990
+public:
+    void push_back(const _Tp& value)
     {
         if (last != end) {
-            new (last) long(value);
+            new (last) _Tp(value);
             ++last;
         }
         else
-            InsertGrow(last, value, SScalarTag(), 1, true);
+            _M_insert_overflow(last, value, __true_type(), 1, true);
     }
 };
+}
+
 
 // Same-TU stand-in for the vector<long> insert 0x00440990 (not the retail body).
-void GrowInsert_00440990(CLongVector* v, long* where, long value, unsigned long count);
+void GrowInsert_00440990(std::vector<long>* v, long* where, long value, unsigned long count);
 #pragma auto_inline(off)
-__declspec(noinline) void CLongVector::InsertGrow(long* where, const long& value, const SScalarTag& tag, unsigned long count, bool noTail)
+template <class _Tp, class _Alloc>
+__declspec(noinline) void std::vector<_Tp, _Alloc>::_M_insert_overflow(_Tp* where, const _Tp& value, const std::__true_type& tag, unsigned int count, bool noTail)
 {
     GrowInsert_00440990(this, where, value, count);
 }
@@ -50,10 +61,10 @@ struct CPhysicsFacesSegmentLeaf {                  // engine/CPhysicsFacesSegmen
     unsigned short* TriangleListIndexEnd;          // +0x0c
     unsigned long   TriangleListIndexPad;          // +0x10
     long GetNoFaces() const { return TriangleListIndexLast - TriangleListIndexFirst; }
-    void GetPossibleCollisionSet(float radius, const C3DVector& from, const C3DVector& to, CLongVector& faces);
+    void GetPossibleCollisionSet(float radius, const C3DVector& from, const C3DVector& to, std::vector<long>& faces);
 };
 
-void CPhysicsFacesSegmentLeaf::GetPossibleCollisionSet(float radius, const C3DVector& from, const C3DVector& to, CLongVector& faces)
+void CPhysicsFacesSegmentLeaf::GetPossibleCollisionSet(float radius, const C3DVector& from, const C3DVector& to, std::vector<long>& faces)
 {
     long count = GetNoFaces();
     for (long i = 0; i < count; ++i) {

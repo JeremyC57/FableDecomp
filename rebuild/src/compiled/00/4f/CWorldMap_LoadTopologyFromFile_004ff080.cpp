@@ -1,6 +1,9 @@
 // CWorldMap::LoadTopologyFromFile(long, CCountedPointer<CAFile>, CASuspendableProcess&) -- build the map object from its topology file, record the map as loaded, step the suspendable process and rebuild the map edges
 // before the pushes and reads file.Data after the first push; ours loads process/file.Data first (eax/edx) and Maps.Start late
 // Leaf: LoadTopologyFromFile
+// Naming wave 26 (family vlong): the vector is STLport 4.6 std::vector<long, allocator<long> >; its grow-insert 0x00440990 is the
+//   protected ?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@std@@IAEXPAJABJABU__true_type@2@I_N@Z (size_type unsigned int; the
+//   own row's spelling, c689 queue). Was CLongVector::_M_insert_overflow(..., const __true_type&, unsigned long, bool).
 // Retail: Fable.exe @ 0x004FF080, 198 bytes, `ret 10h`. PDB ?LoadTopologyFromFile@CWorldMap@@UAEXJV?$CCountedPointer@VCAFile@@@@AAVCASuspendableProcess@@@Z
 // (CWorldMap virtual slot 6 of vtable 0x01244AEC).
 // Callees: operator new 0x00BFEA1A, CWorld::GetWorldSeed() const 0x0049D810 (manifest "CVertexBufferWin32::DoSizeof";
@@ -44,13 +47,18 @@ extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
 extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count);   // 0x00BFEAE6
 
+namespace std {
+template <class _Tp> class allocator { public: allocator() { } };
 struct __true_type { __true_type() { } };
-struct CLongVector {                                         // STLport vector<long> (12 bytes)
-    long* _M_start;
-    long* _M_finish;
-    long* _M_end_of_storage;
-    void _M_insert_overflow(long* position, const long& x, const __true_type& tag, unsigned long n, bool atEnd);   // 0x00440990
-    void push_back(const long& x)
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector { // STLport vector<long> (12 bytes)
+public:
+    _Tp* _M_start;
+    _Tp* _M_finish;
+    _Tp* _M_end_of_storage;
+protected:
+    void _M_insert_overflow(_Tp* position, const _Tp& x, const __true_type& tag, unsigned int n, bool atEnd);   // 0x00440990
+public:
+    void push_back(const _Tp& x)
     {
         if (_M_finish != _M_end_of_storage)
         {
@@ -62,6 +70,8 @@ struct CLongVector {                                         // STLport vector<l
             _M_insert_overflow(_M_finish, x, __true_type(), 1, true);
     }
 };
+}
+
 
 // The STLport body of 0x00440990 (a template instantiated in this TU), defined above the caller under
 // auto_inline(off): VC7.1 then keeps `map` in a register although its address is passed.
@@ -73,7 +83,8 @@ static long* CopyTrivial(const long* first, const long* last, long* result)
     unsigned int n = (const char*)last - (const char*)first;
     return (long*)((char*)memmove(result, first, n) + n);
 }
-void CLongVector::_M_insert_overflow(long* position, const long& x, const __true_type&, unsigned long n, bool atEnd)
+template <class _Tp, class _Alloc>
+__declspec(noinline) void std::vector<_Tp, _Alloc>::_M_insert_overflow(_Tp* position, const _Tp& x, const std::__true_type&, unsigned int n, bool atEnd)
 {
     unsigned long oldSize = _M_finish - _M_start;
     unsigned long len = oldSize + (oldSize < n ? n : oldSize);
@@ -129,7 +140,7 @@ class CWorldMap { public:
     unsigned char    _pad0c[0x14];
     CArray<CMapInfo> Maps;                                   // +0x20
     unsigned char    _pad2c[0x64];
-    CLongVector      LoadedMaps;                             // +0x90 (PDB +0xAC)
+    std::vector<long>      LoadedMaps;                             // +0x90 (PDB +0xAC)
 protected:
     void UpdateAllEdges();                                   // 0x0063DFD0
 public:
