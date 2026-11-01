@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+005ed210	RELOCATION_MATCH	34v34	PASS	NCameraModes::CScriptModuleGoToLookInDirection::~ (implicit; label CTCIdleScheduler::Clear wrong); 1 probe
+00854380	RELOCATION_MATCH	34v34	PASS	NCameraModes::CScriptModuleFOVZoom::~ (implicit; label CTCIdleScheduler::Clear wrong); 1 probe; byte twin of 005ed210 but a different class (caller RTTI)
+00713630	RELOCATION_MATCH	40v40	PASS	CTCScriptedControl::CleanupAllActions; 3 probes (slot names, shared header)
+00713700	RELOCATION_MATCH	51v51	PASS	CTCScriptedControl::OnKill (slot 14); 2 probes
+00838a00	RELOCATION_MATCH	40v40	PASS	CThingGameObject::~CThingGameObject; 2 probes
+009959f0	RELOCATION_MATCH	46v46	PASS	CDataOutputStream::WriteString; 4 probes (named data local)
+00996b30	RELOCATION_MATCH	47v47	PASS	CMemoryDataOutputStream::~ (label ~CCompressedMemoryDataInputStream wrong); 1 probe
+009e5c30	RELOCATION_MATCH	39v39	PASS	CSymbolMap::UpdateDirty (label CTCInventoryQuests::ProcessButtonBReleased wrong); 1 probe
+0061b590	RELOCATION_MATCH	93v93	PASS	CTCInventoryQuests::ProcessButtonAReleased (slot 58); 2 probes
+00a0d3d0	RELOCATION_MATCH	46v46	PASS	CAInputProcess::~CAInputProcess; 1 probe

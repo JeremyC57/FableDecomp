@@ -1,0 +1,2 @@
+1	CleanupAllActions plain member above OnKill + qualified CTCBase::OnKill	RELOCATION_MATCH
+2	engine/CBaseClassNonCopyable.h in place of the local CBaseClass model (vland SHARED_HEADER)	RELOCATION_MATCH

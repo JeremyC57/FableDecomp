@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <string.h>
-// CSymbolMap::UpdateDirty()const -- Sort pending map entries before lookup.
-// Leaf: ?UpdateDirty@CSymbolMap@@QBEXXZ
-// Identity: Own TransferIn009e2590 and canonical binding prove CSymbolMap::UpdateDirty()const; original nested CSymbolInfo GroupName/EntryName/Val gives16-byte pair. Own RTTI129c158 -> CBaseClassNonCopyable -> CBaseClass. Sort009e7e40.
+// CSymbolMap::UpdateDirtyQuick()const -- Sort pending map entries before lookup.
+// Leaf: ?UpdateDirtyQuick@CSymbolMap@@QBEXXZ
+// Identity: CSymbolMap::UpdateDirtyQuick()const (chunk 695): this body only sorts, as the landed CCRCSymbolMap::UpdateDirtyQuick 0x00A38FE0 does, and FableWin orders UpdateDirty (0x009E5C30, sort + trim) before UpdateDirtyQuick, as retail does; caller TransferIn 0x009E2590; original nested CSymbolInfo GroupName/EntryName/Val gives16-byte pair. Own RTTI129c158 -> CBaseClassNonCopyable -> CBaseClass. Sort009e7e40.
 // Layout: original polymorphic bases and STLport containers; no active owner header. CVectorMap Data12, empty Compare byte+12, Dirty+13.
 #ifndef _MSC_VER
 #define __fastcall
@@ -30,12 +30,12 @@ template<class T>class CArray:public std::vector<T>{};
 template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b)const{return a.first<b.first;}};
 template<class V>class CCompareString{public:bool operator()(const std::pair<CCharString,V>& a,const std::pair<CCharString,V>& b)const{return a.first.FastCompare(b.first);}};
 template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
-class CSymbolMap:public CBaseClassNonCopyable{public:class CSymbolInfo{public:CCharString GroupName,EntryName;long Val;};mutable CVectorMap<CCharString,CSymbolInfo,CCompareString<CSymbolInfo> > SLONGMap;void UpdateDirty()const;};
-void CSymbolMap::UpdateDirty()const{SLONGMap.Sort();}
+class CSymbolMap:public CBaseClassNonCopyable{public:class CSymbolInfo{public:CCharString GroupName,EntryName;long Val;};mutable CVectorMap<CCharString,CSymbolInfo,CCompareString<CSymbolInfo> > SLONGMap;void UpdateDirtyQuick()const;};
+void CSymbolMap::UpdateDirtyQuick()const{SLONGMap.Sort();}
 
 typedef std::pair<CCharString,CSymbolMap::CSymbolInfo> Entry;typedef CCompareString<CSymbolMap::CSymbolInfo> Compare;
 
 class CCharStringData{public:const char* Text;};bool CCharString::FastCompare(const CCharString& o)const{return strcmp(PStringData->Text,o.PStringData->Text)<0;}
 static Entry* expectedFirst;static Entry* expectedLast;static int sorts,bad;static bool* dirty;
 namespace std{template<class Iter,class Cmp>void __fastcall sort(Iter first,Iter last,Cmp cmp){++sorts;if(first!=expectedFirst||last!=expectedLast||!*dirty)bad=1;for(Iter i=first;i!=last;++i){Iter j=i;while(j!=first&&cmp(*j,*(j-1))){Entry value=*j;*j=*(j-1);*(j-1)=value;--j;}}}}
-int main(){CSymbolMap owner;Entry values[3];CCharStringData names[3];names[0].Text="c";names[1].Text="a";names[2].Text="b";for(int i=0;i<3;++i){values[i].first.PStringData=&names[i];memset(&values[i].second,0,sizeof(values[i].second));} owner.SLONGMap.Data._M_start=values;owner.SLONGMap.Data._M_finish=values+3;owner.SLONGMap.Data._M_end_of_storage._M_data=values+3;owner.SLONGMap.Dirty=false;expectedFirst=values;expectedLast=values+3;dirty=&owner.SLONGMap.Dirty;owner.UpdateDirty();bool ok=sorts==0;owner.SLONGMap.Dirty=true;owner.UpdateDirty();Compare cmp;ok=ok&&sorts==1&&!owner.SLONGMap.Dirty&&!cmp(values[1],values[0])&&!cmp(values[2],values[1]);owner.UpdateDirty();ok=ok&&sorts==1;owner.SLONGMap.Data._M_finish=values;expectedLast=values;owner.SLONGMap.Dirty=true;owner.UpdateDirty();ok=ok&&sorts==2&&!owner.SLONGMap.Dirty&&!bad;puts(ok?"009e5c60_TEST PASS":"009e5c60_TEST FAIL");return ok?0:1;}
+int main(){CSymbolMap owner;Entry values[3];CCharStringData names[3];names[0].Text="c";names[1].Text="a";names[2].Text="b";for(int i=0;i<3;++i){values[i].first.PStringData=&names[i];memset(&values[i].second,0,sizeof(values[i].second));} owner.SLONGMap.Data._M_start=values;owner.SLONGMap.Data._M_finish=values+3;owner.SLONGMap.Data._M_end_of_storage._M_data=values+3;owner.SLONGMap.Dirty=false;expectedFirst=values;expectedLast=values+3;dirty=&owner.SLONGMap.Dirty;owner.UpdateDirtyQuick();bool ok=sorts==0;owner.SLONGMap.Dirty=true;owner.UpdateDirtyQuick();Compare cmp;ok=ok&&sorts==1&&!owner.SLONGMap.Dirty&&!cmp(values[1],values[0])&&!cmp(values[2],values[1]);owner.UpdateDirtyQuick();ok=ok&&sorts==1;owner.SLONGMap.Data._M_finish=values;expectedLast=values;owner.SLONGMap.Dirty=true;owner.UpdateDirtyQuick();ok=ok&&sorts==2&&!owner.SLONGMap.Dirty&&!bad;puts(ok?"009e5c60_TEST PASS":"009e5c60_TEST FAIL");return ok?0:1;}

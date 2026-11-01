@@ -357187,8 +357187,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '009e5c60'
         Module = 'CSymbolMap'
-        Source = '00/9e/CSymbolMap_UpdateDirty_009e5c60.cpp'
-        TestSource = '00/9e/CSymbolMap_UpdateDirty_009e5c60_test.cpp'
+        Source = '00/9e/CSymbolMap_UpdateDirtyQuick_009e5c60.cpp'
+        TestSource = '00/9e/CSymbolMap_UpdateDirtyQuick_009e5c60_test.cpp'
         PassPattern = '009e5c60_TEST PASS'
     }
     [pscustomobject]@{
@@ -374447,6 +374447,76 @@ $catalog = @(
         TestSource = '00/ca/CCmdQueue_GetCommandDueFor_00cafa10_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00cafa10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005ed210'
+        Module = 'NCameraModes::CScriptModuleGoToLookInDirection'
+        Source = '00/5e/NCameraModesCScriptModuleGoToLookInDirection_CScriptModuleGoToLookInDirection_005ed210.cpp'
+        TestSource = '00/5e/NCameraModesCScriptModuleGoToLookInDirection_CScriptModuleGoToLookInDirection_005ed210_test.cpp'
+        PassPattern = '005ed210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0061b590'
+        Module = 'CTCInventoryQuests'
+        Source = '00/61/CTCInventoryQuests_ProcessButtonAReleased_0061b590.cpp'
+        TestSource = '00/61/CTCInventoryQuests_ProcessButtonAReleased_0061b590_test.cpp'
+        PassPattern = '0061b590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00713630'
+        Module = 'CTCScriptedControl'
+        Source = '00/71/CTCScriptedControl_CleanupAllActions_00713630.cpp'
+        TestSource = '00/71/CTCScriptedControl_CleanupAllActions_00713630_test.cpp'
+        PassPattern = '00713630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00713700'
+        Module = 'CTCScriptedControl'
+        Source = '00/71/CTCScriptedControl_OnKill_00713700.cpp'
+        TestSource = '00/71/CTCScriptedControl_OnKill_00713700_test.cpp'
+        PassPattern = '00713700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00838a00'
+        Module = 'CThingGameObject'
+        Source = '00/83/CThingGameObject_CThingGameObject_00838a00.cpp'
+        TestSource = '00/83/CThingGameObject_CThingGameObject_00838a00_test.cpp'
+        PassPattern = '00838a00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00854380'
+        Module = 'NCameraModes::CScriptModuleFOVZoom'
+        Source = '00/85/NCameraModesCScriptModuleFOVZoom_CScriptModuleFOVZoom_00854380.cpp'
+        TestSource = '00/85/NCameraModesCScriptModuleFOVZoom_CScriptModuleFOVZoom_00854380_test.cpp'
+        PassPattern = '00854380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009959f0'
+        Module = 'CDataOutputStream'
+        Source = '00/99/CDataOutputStream_WriteString_009959f0.cpp'
+        TestSource = '00/99/CDataOutputStream_WriteString_009959f0_test.cpp'
+        PassPattern = '009959f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00996b30'
+        Module = 'CMemoryDataOutputStream'
+        Source = '00/99/CMemoryDataOutputStream_CMemoryDataOutputStream_00996b30.cpp'
+        TestSource = '00/99/CMemoryDataOutputStream_CMemoryDataOutputStream_00996b30_test.cpp'
+        PassPattern = '00996b30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e5c30'
+        Module = 'CSymbolMap'
+        Source = '00/9e/CSymbolMap_UpdateDirty_009e5c30.cpp'
+        TestSource = '00/9e/CSymbolMap_UpdateDirty_009e5c30_test.cpp'
+        PassPattern = '009e5c30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0d3d0'
+        Module = 'CAInputProcess'
+        Source = '00/a0/CAInputProcess_CAInputProcess_00a0d3d0.cpp'
+        TestSource = '00/a0/CAInputProcess_CAInputProcess_00a0d3d0_test.cpp'
+        PassPattern = '00a0d3d0_TEST PASS'
     }
 )
 

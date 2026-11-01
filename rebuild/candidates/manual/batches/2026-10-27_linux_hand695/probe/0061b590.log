@@ -1,0 +1,2 @@
+1	full PDB-named CTCInventoryBase vtable + retail STLport-size member layout, else-if chain with one base tail	RELOCATION_MATCH
+2	engine/CCountedPointer.h + engine/CDefPointer.h in place of local member models (vland SHARED_HEADER)	RELOCATION_MATCH

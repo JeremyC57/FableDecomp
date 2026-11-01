@@ -8799,11 +8799,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0051da30	CClassFactory::OnDeleteClass	CClassFactory	__thiscall	void	2	CClassFactory *,CClass &	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\51\CClassFactory_OnDeleteClass_0051da30.cpp
 0051dee0	GetMapAt	CThingManager	__thiscall	CMap *	2	CThingManager *,C3DVector *	1	yes	accepted									
 0051df20	PeekMapAt	CThingManager	__thiscall	CMap *	2	CThingManager *,C3DVector *	1	yes	accepted									
-0051df60	$E2	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\51\E2_E2_0051df60.cpp
-0051df70	$E2	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\51\E2_E2_0051df70.cpp
+0051df60	AddToPhysicalList	CThingManager	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\51\E2_E2_0051df60.cpp
+0051df70	AddToGameObjectList	CThingManager	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\51\E2_E2_0051df70.cpp
 0051df80	AddToRenderList	CThingManager	__thiscall	void	2	CThingManager *,CThing *	1	yes	accepted									
-0051dfe0	$E2	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\51\E2_E2_0051dfe0.cpp
-0051dff0	$E2	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\51\E2_E2_0051dff0.cpp
+0051dfe0	RemoveFromPhysicalList	CThingManager	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\51\E2_E2_0051dfe0.cpp
+0051dff0	RemoveFromGameObjectList	CThingManager	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\51\E2_E2_0051dff0.cpp
 0051e000	RemoveFromRenderList	CThingManager	__thiscall	void	2	CThingManager *,CThing *	1	yes	accepted									
 0051e100	AllocateNewThingUID	CThingManager	__thiscall	__uint64	4	CThingManager *,long,bool,bool	1	yes	accepted									
 0051e210	RemapUIDForSerialisation	CThingManager	__thiscall	__uint64	5	CThingManager *,bool,bool,ulong,__uint64	1	yes	accepted									
@@ -12555,7 +12555,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005ed120	~CScriptModuleBase	NCameraModes::CScriptModuleBase	__thiscall	void	1	CTCIdleScheduler *	1	yes	accepted									
 005ed150	`scalar deleting destructor'	NCameraModes::CScriptModuleBase	__thiscall	void *	2	CThingTrackNode *,uint	1	yes	accepted									
 005ed190	C3DPositionInterpolator	C3DPositionInterpolator	__thiscall	undefined	3	C3DPositionInterpolator *,C3DVector *,C3DVector *	0	yes	accepted									
-005ed210	Clear	CTCIdleScheduler	__thiscall	void	1	CTCIdleScheduler *	1	yes	accepted									
+005ed210	~CScriptModuleGoToLookInDirection	NCameraModes::CScriptModuleGoToLookInDirection	__thiscall	void	1	CTCIdleScheduler *	1	yes	accepted									
 005ed240	CScriptModuleTavernGame	NCameraModes::CScriptModuleTavernGame	__thiscall	undefined	3	CDrawAutoPickups *,CPlayerGui *,vector<NPlayerGui::CDrawBase*,std::allocator<NPlayerGui::CDrawBase*>_> *	0	yes	accepted									
 005ed260	NCameraModes::CScriptModuleTavernGame::vfunc_5	NCameraModes::CScriptModuleTavernGame	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005ed270	CCountedPointer<CFileInstaller::CFileInfo_const_>	CCountedPointer<CFileInstaller	__thiscall	undefined	2	CCountedPointer<CFileInstaller::CFileInfo_const_> *,CFileInfo *	0	yes	accepted									
@@ -16146,7 +16146,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006a5950	ConstructFromParams	CThingPhysical	__thiscall	bool	8	CThingPhysical *,long,C3DVector *,long,ulong,CThingPhysical *,CThingPhysical *,bool	1	yes	accepted									
 006a5ab0	IsThingAbleToComeBetweenCameraAndObservedThing	CThingPhysical	__thiscall	bool	1	CThingPhysical *	1	yes	accepted									
 006a5af0	SerialiseGameState	CThingPhysical	__thiscall	bool	2	CThingPhysical *,CPersistContext *	1	yes	accepted									
-006a5d50	~CTCFishingSpot	CTCFishingSpot	__thiscall	void	1	CTCFishingSpot *	1	yes	accepted									
+006a5d50	~CThingPhysical	CThingPhysical	__thiscall	void	1	CTCFishingSpot *	1	yes	accepted									
 006a5d90	ConstructFromLevelScript	CThingPhysical	__thiscall	bool	2	CThingPhysical *,char *	1	yes	accepted									
 006a6290	CTCInventoryProcessor_EnqueueItemEffect	_global	unknown	undefined	0		0	yes	accepted									
 006a62e0	InternalModifyHealth	CThingPhysical	__thiscall	void	3	CThingPhysical *,float,bool	1	yes	accepted									
@@ -18484,7 +18484,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00713630	CleanupAllActions	CTCScriptedControl	__thiscall	void	1	CTCScriptedControl *	1	yes	accepted									
 00713660	NTCScriptedControl::CActionStopScripting::vfunc_1	NTCScriptedControl::CActionStopScripting	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00713700	OnKill	CTCScriptedControl	__thiscall	void	1	CTCScriptedControl *	1	yes	accepted									
-00713740	CTCScriptedControl::vfunc_13	CTCScriptedControl	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00713740	OnDie	CTCScriptedControl	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007137d0	AddAction	CTCScriptedControl	__thiscall	void	2	CTCScriptedControl *,CActionBase *	1	yes	accepted									
 00713850	InterruptControl	CTCScriptedControl	__thiscall	void	1	CTCScriptedControl *	1	yes	accepted									
 00713910	Update	CTCScriptedControl	__thiscall	void	1	CTCScriptedControl *	1	yes	accepted									
@@ -18574,13 +18574,13 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00719150	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\71\CEngineSubPrimitiveText_scalardeletingdestructor_00719150.cpp
 00719180	ListHead_InitCircular_0x10_00719180	_global	unknown	undefined	0		0	yes	review-medium									
 00719210	erase	list<CCountedPointer<NCreatureMode::CModeHoverBase::CHoverAnim>	__thiscall	_List_iterator<std::_List_val<CCountedPointer<NCreatureMode::CModeHoverBase::CHoverAnim>,std::allocator<CCountedPointer<NCreatureMode::CModeHoverBase::CHoverAnim>_>_>_>	2	list<CCountedPointer<NCreatureMode::CModeHoverBase::CHoverAnim>,std::allocator<CCountedPointer<NCreatureMode::CModeHoverBase::CHoverAnim>_>_> *,_List_const_iterator<std::_List_val<CCountedPointer<NCreatureMode::CModeHoverBase::CHoverAnim>,std::allocator<CCountedPointer<NCreatureMode::CModeHoverBase::CHoverAnim>_>_>_>	1	yes	accepted									
-00719280	remove_if<NEntityEvents::CConvFilterToCP<NEntityEvents::CIsEventOfType>_>	remove_if<NEntityEvents::CConvFilterToCP<NEntityEvents	__thiscall	void	2	list<CCountedPointer<NEntityEvents::CEventBase>,std::allocator<CCountedPointer<NEntityEvents::CEventBase>_>_> *,CConvFilterToCP<NEntityEvents::CIsEventOfType>	1	yes	accepted									
+00719280	clear	std::_List_base<CCountedPointer<CTCScriptedControl::CActionBase>, std::allocator<CCountedPointer<CTCScriptedControl::CActionBase>>>	__thiscall	void	2	list<CCountedPointer<NEntityEvents::CEventBase>,std::allocator<CCountedPointer<NEntityEvents::CEventBase>_>_> *,CConvFilterToCP<NEntityEvents::CIsEventOfType>	1	yes	accepted									
 00719360	push_back	std::list<CCountedPointer<CCreatureActionBase>, std::allocator<CCountedPointer<CCreatureActionBase>>>	__thiscall	_Node *	4	_List_val<CCountedPointer<CSpawnedFuncBase>,std::allocator<CCountedPointer<CSpawnedFuncBase>_>_> *,_Node *,_Node *,CCountedPointer<CSpawnedFuncBase> *	1	yes	accepted									
 007193a0	OnReadFinished	CActiveFile	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\71\CActiveFile_OnReadFinished_007193a0.cpp
 00719470	operator=	std::vector<std::pair<float, EConversationAttitude>, std::allocator<std::pair<float, EConversationAttitude>>>	unknown	undefined	0		0	yes	accepted									
 00719540	CSubtitledMessage::Assign_CActionInputControl	CSubtitledMessage	unknown	undefined	0		0	yes	accepted									
 00719690	ListHead_InitCircular_0x10_00719690	_global	unknown	undefined	0		0	yes	review-medium									
-007196b0	OnReadFinished	CActiveFile	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\71\CActiveFile_OnReadFinished_007196b0.cpp
+007196b0	~_List_base	std::_List_base<CCountedPointer<CTCScriptedControl::CActionBase>, std::allocator<CCountedPointer<CTCScriptedControl::CActionBase>>>	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\71\CActiveFile_OnReadFinished_007196b0.cpp
 007196d0	Vector_ReallocateAndCopyMorphs	_global	unknown	undefined	0		0	yes	accepted									
 007197c0	GetPBestThingInRoughArea<CThingFilter_IsPotentialCustomer,CThingCompare_Nearest,CThingCreatureBase>	CThingSearchTools	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CThingFilter_IsPotentialCustomer *,CThingCompare_Nearest *,CThingCreatureBase * *	1	yes	accepted									
 00719a40	GetInterfaceType	CTCScriptedControl	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -25343,7 +25343,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00854340	NCameraModes::CScriptModuleTransitionBetweenPoints::vfunc_5	NCameraModes::CScriptModuleTransitionBetweenPoints	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00854360	NCameraModes::CScriptModuleFOVZoom::vfunc_3	NCameraModes::CScriptModuleFOVZoom	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00854370	NCameraModes::CScriptModuleFOVZoom::vfunc_7	NCameraModes::CScriptModuleFOVZoom	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00854380	Clear	CTCIdleScheduler	__thiscall	void	1	CTCIdleScheduler *	1	yes	accepted									
+00854380	~CScriptModuleFOVZoom	NCameraModes::CScriptModuleFOVZoom	__thiscall	void	1	CTCIdleScheduler *	1	yes	accepted									
 008543b0	NCameraModes::CScriptModuleSpline::vfunc_5	NCameraModes::CScriptModuleSpline	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008543c0	NCameraModes::CScriptModuleSpline::vfunc_6	NCameraModes::CScriptModuleSpline	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00854410	`scalar deleting destructor'	NCameraModes::CScriptModuleSelfTerminateBase	__thiscall	void *	2	CThingTrackNode *,uint	1	yes	accepted									
@@ -33344,7 +33344,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00996990	CCompressedMemoryDataInputStream	CCompressedMemoryDataInputStream	__thiscall	undefined	4	CCompressedMemoryDataInputStream *,void *,ulong,long	0	yes	accepted									
 00996a40	OpenMemorySource	CCompressedMemoryDataInputStream	__thiscall	void	4	CCompressedMemoryDataInputStream *,void *,ulong,long	1	yes	accepted									
 00996af0	CMemoryDataOutputStream	CMemoryDataOutputStream	__thiscall	undefined	1	CMemoryDataOutputStream *	0	yes	accepted									
-00996b30	~CCompressedMemoryDataInputStream	CCompressedMemoryDataInputStream	__thiscall	void	1	CCompressedMemoryDataInputStream *	1	yes	accepted									
+00996b30	~CMemoryDataOutputStream	CMemoryDataOutputStream	__thiscall	void	1	CCompressedMemoryDataInputStream *	1	yes	accepted									
 00996b60	Clear	CMemoryDataOutputStream	__fastcall	void	2	allocator<std::pair<std::pair<long,long>,CEngineTextureDecal>_> *,pair<std::pair<long,long>,CEngineTextureDecal> *	1	yes	accepted									
 00996bc0	ReserveSize	CMemoryDataOutputStream	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00996bc0.cpp
 00996be0	ReadString	CDataInputStream	__thiscall	CCharString	2	CDataInputStream *,ulong	1	yes	accepted									
@@ -34874,14 +34874,14 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009e5200	CParticleUpdateParameters<unsigned_long,unsigned_long>	CParticleUpdateParameters<unsigned_long	__thiscall	undefined	1	CParticleUpdateParameters<unsigned_long,unsigned_long> *	0	yes	accepted									
 009e5250	construct	allocator<std::pair<CCharString_const_	__thiscall	void	3	allocator<std::pair<CCharString_const_,EScriptActiveStatus>_> *,pair<CCharString_const_,EScriptActiveStatus> *,pair<class_CCharString_const_,enum_EScriptActiveStatus> *	1	yes	accepted									
 009e5290	CCombatWheel_TryInsertMatchingString	_global	unknown	undefined	0		0	yes	accepted									
-009e5350	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted									
+009e5350	DeallocateUnusedMemory	CSymbolMap	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted									
 009e5360	RemoveSymbolsOfGroupType	CSymbolMap	unknown	undefined	0		0			discovered	gapscan							
 009e5420	AddSymbolDirty	CSymbolMap	__thiscall	void	3	CSymbolMap *,CCharString *,long	1	yes	accepted									
 009e54e0	AddSymbolDirty	CSymbolMap	__thiscall	void	4	CSymbolMap *,CCharString *,CCharString *,long	1	yes	accepted									
 009e55a0	ParseEnum	CSymbolMap	__thiscall	bool	2	CSymbolMap *,CStringParser *	1	yes	accepted									
 009e5ad0	ParseBuffer	CSymbolMap	__thiscall	bool	2	CSymbolMap *,char *	1	yes	accepted									
-009e5c30	ProcessButtonBReleased	CTCInventoryQuests	__thiscall	void	1	CTCInventoryQuests *	1	yes	accepted									
-009e5c60	UpdateDirty	CSymbolMap	__thiscall	void	1	CTCVillage *	1	yes	accepted									
+009e5c30	UpdateDirty	CSymbolMap	__thiscall	void	1	CTCInventoryQuests *	1	yes	accepted									
+009e5c60	UpdateDirtyQuick	CSymbolMap	__thiscall	void	1	CTCVillage *	1	yes	accepted									
 009e5c90	CSymbolMap::LoadFromFile	CSymbolMap	unknown	undefined	0		0	yes	accepted									
 009e5f60	_Cons_val<std::allocator<CSymbolMap::CSymbolInfo>,CSymbolMap::CSymbolInfo,CSymbolMap::CSymbolInfo>	_Cons_val<std::allocator<CSymbolMap::CSymbolInfo>,CSymbolMap::CSymbolInfo,CSymbolMap	__fastcall	void	3	allocator<CSymbolMap::CSymbolInfo> *,CSymbolInfo *,CSymbolInfo *	1	yes	accepted									
 009e5fa0	__uninitialized_copy<CSymbolMap::CSymbolInfo *, CSymbolMap::CSymbolInfo *>	std	__fastcall	uint *	5	_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,uint *,allocator<unsigned_int> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
@@ -34924,9 +34924,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009e7b40	Partition_IntroSort	_global	unknown	undefined	0		0	yes	accepted									
 009e7bd0	`vector_deleting_destructor'	CThingSwitch	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9e\CThingSwitch_vectordeletingdestructor_009e7bd0.cpp
 009e7c00	AddGossipFactionToCategory	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CCharString *,CCharString *	1	yes	accepted									
-009e7c70	DeallocateUnusedMemory	CArray<std::pair<CCharString	__thiscall	void	1	CArray<std::pair<CCharString,CSymbolMap::CSymbolInfo>_> *	1	yes	accepted									
+009e7c70	DeallocateUnusedMemory	CArray<std::pair<CCharString, CSymbolMap::CSymbolInfo>>	__thiscall	void	1	CArray<std::pair<CCharString,CSymbolMap::CSymbolInfo>_> *	1	yes	accepted									
 009e7d30	__introsort_loop<std::pair<CCharString, CSymbolMap::CSymbolInfo> *, std::pair<CCharString, CSymbolMap::CSymbolInfo>, long, CCompareString<CSymbolMap::CSymbolInfo>>	std	unknown	undefined	0		0	yes	accepted									
-009e7e40	std::introsort_partial<pair<CCharString,CSymbolMap::CSymbolInfo>>	std::introsort_partial<pair<CCharString,CSymbolMap	unknown	undefined	0		0	yes	accepted									
+009e7e40	sort<std::pair<CCharString, CSymbolMap::CSymbolInfo> *, CCompareString<CSymbolMap::CSymbolInfo>>	std	unknown	undefined	0		0	yes	accepted									
 009e7ec0	TransferToGui	CGuiVarTransferBool	__thiscall	void	1	CGuiVarTransferBool *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9e\CGuiVarTransferBool_TransferToGui_009e7ec0.cpp
 009e7ee0	OnInitialActivate	CTCVillage	__thiscall	void	1	CTCVillage *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9e\CTCVillage_OnInitialActivate_009e7ee0.cpp
 009e7f00	TransferOut	CPersistTraits<C2DVector>	__thiscall	void	4	CPersistTraits<C2DVector> *,CPersistContext *,CCharString *,C2DVector *	1	yes	accepted									

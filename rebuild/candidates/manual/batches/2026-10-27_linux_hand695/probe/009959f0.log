@@ -1,0 +1,4 @@
+1	inline accessors, Write(GetAsCharArray(), GetLength())	DIFFER(52v46) length test first
+2	non-null ternary arms first	DIFFER(52v46)
+3	named data local before the call	RELOCATION_MATCH
+4	engine/CBaseClassNonCopyable.h in place of the local CBaseClass model (vland SHARED_HEADER)	RELOCATION_MATCH

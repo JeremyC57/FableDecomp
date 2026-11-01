@@ -22632,7 +22632,7 @@ __imp__GetCurrentDirectoryA@8	0143fd78	0099e260
 ?g_PixelFormatTable@@3PAUCPixelFormatInfo@@A	0129ba40	009c02d0
 ?insert_unique@?$_Rb_tree@VCDisplayModeDesc@@V1@U?$_Identity@VCDisplayModeDesc@@@std@@U?$less@VCDisplayModeDesc@@@3@V?$allocator@VCDisplayModeDesc@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@VCDisplayModeDesc@@@std@@_N@2@ABVCDisplayModeDesc@@@Z	009c2800	009c02d0
 ?reserve@?$vector@VCDisplayModeDesc@@V?$allocator@VCDisplayModeDesc@@@std@@@std@@QAEXI@Z	009c2900	009c02d0
-?UpdateDirty@CSymbolMap@@QBEXXZ	009e5c60	009e2590
+?UpdateDirtyQuick@CSymbolMap@@QBEXXZ	009e5c60	009e2590
 ?g_msgUnableToFindSymbol_0122dfe8@@3QBDB	0122dfe8	009e2590
 ??$__copy@PBU?$pair@VCCharString@@VCSymbolInfo@CSymbolMap@@@std@@PAU12@H@std@@YIPAU?$pair@VCCharString@@VCSymbolInfo@CSymbolMap@@@0@PBU10@0PAU10@ABUrandom_access_iterator_tag@0@PAH@Z	009e6600	009e73f0
 ??$__copy_backward@PAU?$pair@VCCharString@@VCSymbolInfo@CSymbolMap@@@std@@PAU12@H@std@@YIPAU?$pair@VCCharString@@VCSymbolInfo@CSymbolMap@@@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z	009e6410	009e73f0
@@ -35328,3 +35328,9 @@ _longest_match_fast	00c00fd0	00c013c0
 ??1CScriptModuleBase@NCameraModes@@UAE@XZ	005ed120	00718810
 ??1CScriptModuleSelfTerminateBase@NCameraModes@@UAE@XZ	00854310	00854500
 ??0CPixelShader@@QAE@PAUIDirect3DPixelShader9@@ABV?$CArray@J@@ABVCCharString@@@Z	00a5ecb0	0098a9a0
+?ActivateSelectedTestQuest@CTCInventoryQuests@@QAEXXZ	0061ab30	0061b590
+?clear@?$_List_base@V?$CCountedPointer@VCActionBase@CTCScriptedControl@@@@V?$allocator@V?$CCountedPointer@VCActionBase@CTCScriptedControl@@@@@std@@@std@@QAEXXZ	00719280	00713630
+??1CThingPhysical@@UAE@XZ	006a5d50	00838a00
+?RemoveFromGameObjectList@CThingManager@@QAEXAAVCThingGameObject@@@Z	0051dff0	00838a00
+?DeallocateUnusedMemory@?$CArray@U?$pair@VCCharString@@VCSymbolInfo@CSymbolMap@@@std@@@@QAEXXZ	009e7c70	009e5c30
+?RemoveInputProcess@CInputProcessManager@@IAEXAAVCAInputProcess@@@Z	00a0d780	00a0d3d0

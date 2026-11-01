@@ -4,14 +4,14 @@
 //   `ret 4`. 115 call sites (every CPersistTraits<long>-style text read; the landed 0x00755F40 and the 21 transferable-
 //   component hooks such as 0x00EB68C0 call it with this signature). The catalog label "TransferIn" is kept; the PDB
 //   class (CPersistTraits<long>) is not recoverable from the body because the traits object is never passed.
-// Callees: CStringParser::PeekNextItemType 0x009BA900, CSymbolMap::UpdateDirty 0x009E5C60 (sorts the symbol vector map when
+// Callees: CStringParser::PeekNextItemType 0x009BA900, CSymbolMap::UpdateDirtyQuick 0x009E5C60 (sorts the symbol vector map when
 //   dirty; ICF-shared with the catalog's CTCVillage::OnInitialActivate), CStringParser::ReadAsString 0x009BA6F0 (hidden
 //   result), CSymbolMap::FindSymbol 0x009E5170, operator+(const char*, const CCharString&) 0x0099F690 (`__fastcall`, hidden
 //   result in ecx), CPersistContext::PersistError 0x009BAA90, ~CCharString 0x0099EAE0, CStringParser::ReadAsInteger 0x009BA540,
 //   CCharString(const char*, long = -1) 0x0099EBF0, CStringParser::SkipPastNextItemIfIs 0x009B9E00.
 // Globals: "Unable to find symbol " 0x0122DFE8; "|" 0x0129B9FC, "+" 0x01230A74, "-" 0x0122E630, "<<" 0x0129B9F8,
 //   ">>" 0x0129B9F4.
-// Shape: the symbol path refreshes the map (UpdateDirty) before reading the name, then looks the name up through the
+// Shape: the symbol path refreshes the map (UpdateDirtyQuick) before reading the name, then looks the name up through the
 //   re-read context pointer through an inline GetSymbolMap() accessor (so `this` is loaded before the argument pushes;
 //   value starts at 0); every operator test is an IMPLICIT const char* -> CCharString conversion (re-addressed with `lea`
 //   after the constructor; an explicit temporary pushes the constructor's eax) built in the dead `value` argument slot (the
@@ -44,7 +44,7 @@ struct CStringParserMethods : CStringParser {
 
 class CSymbolMap {
 public:
-    void UpdateDirty() const;                                  // 0x009E5C60
+    void UpdateDirtyQuick() const;                                  // 0x009E5C60
     bool FindSymbol(const CCharString& name, long& value) const;   // 0x009E5170
 };
 
@@ -61,7 +61,7 @@ void __fastcall TransferIn(CPersistContext* context, CStringParser* parser, long
 {
     CStringParserMethods* p = static_cast<CStringParserMethods*>(parser);
     if (p->PeekNextItemType() == PARSED_ITEM_SYMBOL) {
-        context->GetSymbolMap()->UpdateDirty();
+        context->GetSymbolMap()->UpdateDirtyQuick();
         CCharString name = p->ReadAsString();
         long symbolValue = 0;
         if (!context->GetSymbolMap()->FindSymbol(name, symbolValue))

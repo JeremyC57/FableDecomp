@@ -1,0 +1,36 @@
+addr       parity           behav  name
+005ed210   RELOCATION_MATCH PASS   ~CScriptModuleGoToLookInDirection
+0061b590   RELOCATION_MATCH PASS   ProcessButtonAReleased
+00713630   RELOCATION_MATCH PASS   CleanupAllActions
+00713700   RELOCATION_MATCH PASS   OnKill
+00838a00   WARN RELOC_NAME: ?RemoveFromGameObjectList@CThingManager@@QAEXAAVCThingGameObject@@@Z -> 0051dff0 labelled '_global::Nop_ret4_0051dff0'
+00838a00   RELOCATION_MATCH PASS   ~CThingGameObject
+00854380   RELOCATION_MATCH PASS   ~CScriptModuleFOVZoom
+009959f0   RELOCATION_MATCH PASS   WriteString
+00996b30   RELOCATION_MATCH PASS   ~CMemoryDataOutputStream
+009e5c30   RELOCATION_MATCH PASS   UpdateDirty
+00a0d3d0   RELOCATION_MATCH PASS   ~CAInputProcess
+
+WINS: 10
+  005ed210 RELOCATION_MATCH NCameraModes::CScriptModuleGoToLookInDirection::??1CScriptModuleGoToLookInDirection@NCameraModes@@UAE@XZ
+  0061b590 RELOCATION_MATCH CTCInventoryQuests::?ProcessButtonAReleased@CTCInventoryQuests@@UAEXXZ
+  00713630 RELOCATION_MATCH CTCScriptedControl::?CleanupAllActions@CTCScriptedControl@@QAEXXZ
+  00713700 RELOCATION_MATCH CTCScriptedControl::?OnKill@CTCScriptedControl@@UAEXXZ
+  00838a00 RELOCATION_MATCH CThingGameObject::??1CThingGameObject@@UAE@XZ
+  00854380 RELOCATION_MATCH NCameraModes::CScriptModuleFOVZoom::??1CScriptModuleFOVZoom@NCameraModes@@UAE@XZ
+  009959f0 RELOCATION_MATCH CDataOutputStream::?WriteString@CDataOutputStream@@QAEXABVCCharString@@@Z
+  00996b30 RELOCATION_MATCH CMemoryDataOutputStream::??1CMemoryDataOutputStream@@UAE@XZ
+  009e5c30 RELOCATION_MATCH CSymbolMap::?UpdateDirty@CSymbolMap@@QBEXXZ
+  00a0d3d0 RELOCATION_MATCH CAInputProcess::??1CAInputProcess@@UAE@XZ
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  NCameraModesCScriptModuleGoToLookInDirection_CScriptModuleGoToLookInDirection_005ed210
+  CTCInventoryQuests_ProcessButtonAReleased_0061b590
+  CTCScriptedControl_CleanupAllActions_00713630
+  CTCScriptedControl_OnKill_00713700
+  CThingGameObject_CThingGameObject_00838a00
+  NCameraModesCScriptModuleFOVZoom_CScriptModuleFOVZoom_00854380
+  CDataOutputStream_WriteString_009959f0
+  CMemoryDataOutputStream_CMemoryDataOutputStream_00996b30
+  CSymbolMap_UpdateDirty_009e5c30
+  CAInputProcess_CAInputProcess_00a0d3d0

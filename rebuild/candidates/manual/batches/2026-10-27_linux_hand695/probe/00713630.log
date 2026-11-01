@@ -1,0 +1,3 @@
+1	STLport list empty/front + CCountedPointer::Get + IsActive	RELOCATION_MATCH
+2	slot names from PDB (Update / GetActionName)	RELOCATION_MATCH
+3	engine/CBaseClassNonCopyable.h in place of the local CBaseClass model (vland SHARED_HEADER)	RELOCATION_MATCH

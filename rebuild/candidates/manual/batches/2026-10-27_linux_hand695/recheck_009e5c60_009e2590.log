@@ -1,0 +1,8 @@
+addr       parity           behav  name
+009e2590   RELOCATION_MATCH PASS   _global::TransferIn
+009e5c60   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+009e5c60   RELOCATION_MATCH PASS   CSymbolMap::UpdateDirty
+
+WINS: 2
+  009e2590 RELOCATION_MATCH _global::?TransferIn@@YIXPAVCPersistContext@@
+  009e5c60 RELOCATION_MATCH CSymbolMap::?UpdateDirtyQuick@CSymbolMap@@QBEXXZ

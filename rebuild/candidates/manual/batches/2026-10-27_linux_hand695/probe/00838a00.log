@@ -1,0 +1,2 @@
+1	PDB inline user dtor, header-sized local chain	SRC_FAIL (extent assert)
+2	same, CThingPhysical extent assert only	RELOCATION_MATCH
