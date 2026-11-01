@@ -25712,3 +25712,13 @@ chunk	address	module	name	length
 668	00a3bd00	CTextureRenderer	vfunc_0	15
 668	009c2fd0	CEnginePrimitiveManagerOcclusionBase	~CEnginePrimitiveManagerOcclusionBase	217
 668	00a75e30	CNavQuadTreeNode	SetUpNeighbours	224
+669	00a75c20	CNavQuadTreeNode	~CNavQuadTreeNode	123
+669	006ddb80	CTCActionUseBuyOrSteal	~CTCActionUseBuyOrSteal	98
+669	006e7550	CScriptGameResourceObjectMovie	~CScriptGameResourceObjectMovie	111
+669	00731db0	CTCSpotLight	~CTCSpotLight	98
+669	00771a90	CSharedData	~CSharedData	100
+669	007c66f0	CTCTurncoatSpell	~CTCTurncoatSpell	108
+669	007cca90	CTCCoopSpirit	~CTCCoopSpirit	102
+669	007ce730	CTCActionUseBuyHouse	~CTCActionUseBuyHouse	105
+669	00887b00	CEnvironmentThemePriorityStack	ProcessTransitions	99
+669	009947a0	CBufferedFileDataOutputStream	~CBufferedFileDataOutputStream	105
