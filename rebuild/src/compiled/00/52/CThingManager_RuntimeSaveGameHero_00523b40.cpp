@@ -179,11 +179,13 @@ __declspec(noinline) void vector<_Tp, _Alloc>::_M_insert_overflow(pointer __posi
 
 class CMemoryDataOutputStream : public CMemoryDataOutputStreamDonor {
 public:
+    unsigned long GetLength() const;   // 0x00994B40 (Ego_r.pdb ?GetLength@CMemoryDataOutputStream@@QBEKXZ)
+private:
+public:
     CMemoryDataOutputStream();                                                         // 0x00996AF0
     ~CMemoryDataOutputStream();                                                        // 0x00996B30
     void ReserveSize(unsigned long size);                                              // 0x00996BC0
-    long GetSize();                                                                    // 0x00994B40
-    void* PeekData();                                                                  // 0x00995E70
+    void const* PeekData() const;                                                                  // 0x00995E70
 };
 
 namespace NThingManager {
@@ -246,7 +248,7 @@ void CThingManager::RuntimeSaveGameHero(bool binary)
             CMemoryDataOutputStream stream;
             stream.ReserveSize(0x2000);
             SaveEntitiesBinary(stream, 2, things, names);
-            EntityRuntimePersistence.SetGamePersistentSaveData(1, stream.PeekData(), stream.GetSize());
+            EntityRuntimePersistence.SetGamePersistentSaveData(1, ((void*)stream.PeekData()), ((CMemoryDataOutputStream*)&stream)->GetLength());
             CCharString noScript("");
             EntityRuntimePersistence.SetGamePersistentScript(1, noScript);
         }

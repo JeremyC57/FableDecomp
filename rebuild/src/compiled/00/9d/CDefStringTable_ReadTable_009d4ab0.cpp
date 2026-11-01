@@ -43,7 +43,7 @@ struct CDataInputStreamReader : CDataInputStream {         // the engine layout 
 class CMemoryDataOutputStream { public:                           // 24 bytes
     unsigned char _body[0x18];
     void ReadFromInputStream(CDataInputStreamReader& in, long size);   // 0x00996970
-    void* PeekData();                                      // 0x00995E70
+    void const* PeekData() const;                                      // 0x00995E70
 public:
     void ReserveSize(unsigned long);   // 0x00996BC0
 };
@@ -67,5 +67,5 @@ void CDefStringTable::ReadTable(CDataInputStreamReader& in)
     CMemoryDataOutputStream* data = &StringStream;
     data->ReserveSize(size);
     data->ReadFromInputStream(in, size);
-    g_pStringTableData = (unsigned char*)data->PeekData() + 4;
+    g_pStringTableData = (unsigned char*)((void*)data->PeekData()) + 4;
 }

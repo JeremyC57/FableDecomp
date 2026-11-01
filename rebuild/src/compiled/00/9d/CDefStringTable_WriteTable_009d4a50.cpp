@@ -14,7 +14,7 @@ public:
 
 class CMemoryDataOutputStream { public:
     unsigned long GetSize();                       // 0x00994B40
-    void* PeekData();                              // 0x00995E70
+    void const* PeekData() const;                              // 0x00995E70
 };
 
 struct CDefStringTable {
@@ -35,5 +35,5 @@ void CDefStringTable::WriteTable(CDataOutputStream& stream)
     CMemoryDataOutputStream* data = &StringStream;
     unsigned long size = data->GetSize();
     stream.WriteULONG(size);
-    stream.WriteData(data->PeekData(), size);
+    stream.WriteData(((void*)data->PeekData()), size);
 }

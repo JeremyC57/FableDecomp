@@ -1,7 +1,7 @@
 // C3DClothPrimitive::SaveBinary(CDataOutputStream& out) const -- primitive and material index, then the particle program serialised into a memory stream and written as size + bytes
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AC3B00, 128 bytes. Callees: CDataOutputStream::WriteULONG 0x00993EA0,
 // CMemoryDataOutputStream::CMemoryDataOutputStream 0x00996AF0 / ~CMemoryDataOutputStream 0x00996B30,
-// CParticleProgram::WriteToFile 0x00AE2230, CMemoryDataOutputStream::GetSize 0x00994B40,
+// CParticleProgram::WriteToFile 0x00AE2230, CMemoryDataOutputStream::GetLength 0x00994B40,
 // CMemoryDataOutputStream::PeekData 0x00995E70, CDataOutputStream::WriteData(data, size) 0x00996610.
 // Layout from the PDB (C3DClothPrimitive: ParticleProgram CCountedPointer +4 {object, block}, PrimitiveIndex
 // +0xC, MaterialIndex +0x10). The 0x18-byte memory stream is a frame local; the last call's arguments are
@@ -13,12 +13,14 @@ class CDataOutputStream { public:
     void WriteData(const void* data, unsigned long size);       // 0x00996610
 };
 
-class CMemoryDataOutputStream : public CDataOutputStream { public:
+class CMemoryDataOutputStream : public CDataOutputStream {
+public:
+    unsigned long GetLength() const;   // 0x00994B40 (Ego_r.pdb ?GetLength@CMemoryDataOutputStream@@QBEKXZ)
+private: public:
     unsigned char _body[0x14];                                  // +0x04 .. +0x17
     CMemoryDataOutputStream();                                  // 0x00996AF0
     virtual ~CMemoryDataOutputStream();                                 // 0x00996B30
-    unsigned long GetSize();                                    // 0x00994B40
-    void* PeekData();                                           // 0x00995E70
+    void const* PeekData() const;                                           // 0x00995E70
 };
 
 class CParticleProgram { public:
@@ -47,6 +49,6 @@ void C3DClothPrimitive::SaveBinary(CDataOutputStream& out) const
     out.WriteULONG(MaterialIndex);
     CMemoryDataOutputStream stream;
     ParticleProgram->WriteToFile(stream);
-    out.WriteULONG(stream.GetSize());
-    out.WriteData(stream.PeekData(), stream.GetSize());
+    out.WriteULONG(((CMemoryDataOutputStream*)&stream)->GetLength());
+    out.WriteData(((void*)stream.PeekData()), ((CMemoryDataOutputStream*)&stream)->GetLength());
 }

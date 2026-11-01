@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AE2230, length 736 bytes (`ret 4`).
 // Callees: CDataOutputStream::WriteULONG @ 0x00993EA0, WriteFloat @ 0x00993EE0, WriteEBOOL @ 0x00993E30,
 //   WriteNullTerminatedString @ 0x00995AE0, the stream's virtual Write(const void*, long) (slot 4),
-//   CMemoryDataOutputStream::GetSize @ 0x00994B40 (label "GetFramesRemaining" propagated) and PeekData @ 0x00995E70,
+//   CMemoryDataOutputStream::GetLength @ 0x00994B40 (label "GetFramesRemaining" propagated) and PeekData @ 0x00995E70,
 //   CParticleSimulation::WriteToFile @ 0x00AE2050, the C4DVector array writer @ 0x00AE18C0 (__fastcall),
 //   WriteGroups @ 0x00AE0680 (__fastcall stream, CArray<C3DGroup2>*).
 // Layout: Ego_r.pdb CParticleProgram with retail 12-byte CArrays (PDB 16; engine/CParticleProgram.h is the PDB view,
@@ -40,9 +40,11 @@ public:
 };
 class CMemoryDataOutputStream : public CDataOutputStream {
 public:
+    unsigned long GetLength() const;   // 0x00994B40 (Ego_r.pdb ?GetLength@CMemoryDataOutputStream@@QBEKXZ)
+private:
+public:
     unsigned char _body04[0x18];
-    long GetSize();                                                    // 0x00994B40
-    void* PeekData();                                                  // 0x00995E70
+    void const* PeekData() const;                                                  // 0x00995E70
 };
 
 template <class T> class CArray { public:                                     // retail 12 bytes
@@ -91,8 +93,8 @@ public:
 void CParticleProgram::WriteToFile(CDataOutputStream& stream)
 {
     stream.WriteULONG(0x14d);
-    stream.WriteULONG(Constraints.GetSize());
-    stream.Write(Constraints.PeekData(), Constraints.GetSize());
+    stream.WriteULONG(((CMemoryDataOutputStream*)&Constraints)->GetLength());
+    stream.Write(((void*)Constraints.PeekData()), ((CMemoryDataOutputStream*)&Constraints)->GetLength());
     InitialSimulation.WriteToFile(stream);
     stream.WriteULONG(RenderTris.size());
     {

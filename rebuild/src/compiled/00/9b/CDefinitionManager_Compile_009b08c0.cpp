@@ -55,12 +55,16 @@ class CFileDataInputStream : public CDataInputStream { public:         // 0x24 b
     CFileDataInputStream(CDiskFileWin32* file, unsigned long bufferSize);   // 0x00994700
     ~CFileDataInputStream();                             // 0x00994780
 };
-class CMemoryDataOutputStream : public CDataOutputStream { public:      // 0x18 bytes
+class CMemoryDataOutputStream : public CDataOutputStream {
+public:
+    unsigned long GetLength() const;   // 0x00994B40 (Ego_r.pdb ?GetLength@CMemoryDataOutputStream@@QBEKXZ)
+private:
+public:
+    void const* PeekData() const;   // 0x00995E70 (Ego_r.pdb ?PeekData@CMemoryDataOutputStream@@QBEPBXXZ)
+private: public:      // 0x18 bytes
     unsigned char _body[0x10];
     CMemoryDataOutputStream();                           // 0x00996AF0
     ~CMemoryDataOutputStream();                          // 0x00996B30
-    unsigned long GetSize() const;                       // 0x00994B40
-    const void* GetData() const;                         // 0x00995E70
 };
 template <class T> struct vector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
 extern bool g_bLoadBinaryDefinitions;                    // 0x013CA7D8
@@ -106,7 +110,7 @@ void CDefinitionManager::Compile()
         CMemoryDataOutputStream stream;
         GFGetTime();
         SaveBinaryDefinitions(stream);
-        file.Write(stream.GetData(), stream.GetSize(), 0);
+        file.Write(((CMemoryDataOutputStream*)&stream)->PeekData(), ((CMemoryDataOutputStream*)&stream)->GetLength(), 0);
         GFGetTime();
         file.Close();
     }

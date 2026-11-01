@@ -42,15 +42,17 @@ public:
     void WriteNullTerminatedString(const CCharString&);   // 0x00995AE0
 };
 
-class CMemoryDataOutputStream : public CDataOutputStream { public:                   // 0x18 bytes, vtable 0x0129A788
+class CMemoryDataOutputStream : public CDataOutputStream {
+public:
+    unsigned long GetLength() const;   // 0x00994B40 (Ego_r.pdb ?GetLength@CMemoryDataOutputStream@@QBEKXZ)
+private: public:                   // 0x18 bytes, vtable 0x0129A788
     void* NewLine;                                 // +0x04
     unsigned char* First;                          // +0x08
     unsigned char* Last;                           // +0x0c
     unsigned char* End;                            // +0x10
     unsigned long Position;                        // +0x14
-    long GetSize();                                // 0x00994B40
     void WriteRepeatedByte(unsigned char value, long count);   // 0x00994230
-    void* PeekData();                              // 0x00995E70
+    void const* PeekData() const;                              // 0x00995E70
     void WriteULong(unsigned long value) { Write(&value, 4); }
 };
 
@@ -97,13 +99,13 @@ long CDefStringTable::AddString(const CCharString& text)
         ++SharedCount;
         return node->Offset;
     }
-    if (StringStream.GetSize() == 0)
+    if (((CMemoryDataOutputStream*)&StringStream)->GetLength() == 0)
         StringStream.WriteRepeatedByte(0, 4);
-    long offset = StringStream.GetSize();
+    long offset = ((CMemoryDataOutputStream*)&StringStream)->GetLength();
     StringStream.WriteULong(CCRC::Calc(0, text.GetPString(), text.GetLength()));
     StringStream.WriteNullTerminatedString(text);
     StringMap[text] = offset;
     ++StringCount;
-    g_pDefStringTableData = (unsigned char*)StringStream.PeekData() + 4;
+    g_pDefStringTableData = (unsigned char*)((void*)StringStream.PeekData()) + 4;
     return offset;
 }

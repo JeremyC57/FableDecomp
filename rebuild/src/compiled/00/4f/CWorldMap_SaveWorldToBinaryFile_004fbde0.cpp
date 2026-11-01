@@ -6,7 +6,7 @@
 //   CMapInfo/CRegion ::SaveBinary(CDataOutputStream&) (QAE, non-const).
 // Callees: CMemoryDataOutputStream ctor 0x00996AF0 / dtor 0x00996B30, CDataOutputStream::WriteSLONG 0x00993EB0,
 //   CMapInfo::SaveBinary 0x004FB3E0, CRegion::SaveBinary 0x006BBFD0, CDiskFileWin32(const CWideString&,
-//   FileAccessType, unsigned long) 0x0099AD80, CDiskFileWin32::Write 0x0099AA90, CMemoryDataOutputStream::GetSize
+//   FileAccessType, unsigned long) 0x0099AD80, CDiskFileWin32::Write 0x0099AA90, CMemoryDataOutputStream::GetLength
 //   0x00994B40 / PeekData 0x00995E70; the inlined ~CDiskFileWin32 (vtable 0x0122D06C, Close 0x0099A920, ~CWideString
 //   0x0099B510, ~CBaseClassNonCopyable 0x0099A300) -- the stream/file model of the landed NAnimationEvents::CManager::SaveBinary
 //   0x006F92A0.
@@ -40,11 +40,13 @@ public:
 class CDataOutputStream { public:
     void WriteSLONG(long value);                    // 0x00993EB0
 };
-class CMemoryDataOutputStream : public CDataOutputStream { public:
+class CMemoryDataOutputStream : public CDataOutputStream {
+public:
+    unsigned long GetLength() const;   // 0x00994B40 (Ego_r.pdb ?GetLength@CMemoryDataOutputStream@@QBEKXZ)
+private: public:
     unsigned char _body[0x18];
     CMemoryDataOutputStream();                      // 0x00996AF0
     ~CMemoryDataOutputStream();                     // 0x00996B30
-    long GetSize() const;                           // 0x00994B40
     const void* PeekData() const;                   // 0x00995E70
 };
 class CMapInfo { public:                                   // 0x48 bytes
@@ -78,5 +80,5 @@ void CWorldMap::SaveWorldToBinaryFile(CWideString& fileName)
     for (unsigned long j = 1; j < Regions.size(); ++j)
         Regions[j].SaveBinary(stream);
     CDiskFileWin32 file(fileName, FILE_ACCESS_WRITE, 2);
-    file.Write(stream.PeekData(), stream.GetSize(), 0);
+    file.Write(stream.PeekData(), ((CMemoryDataOutputStream*)&stream)->GetLength(), 0);
 }

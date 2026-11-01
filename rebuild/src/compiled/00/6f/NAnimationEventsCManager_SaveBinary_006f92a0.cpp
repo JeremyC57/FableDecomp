@@ -4,7 +4,7 @@
 // Ego_r.pdb: `?SaveBinary@CManager@NAnimationEvents@@AAEXABVCWideString@@@Z` (the catalog class "CManager" is this one).
 // Callees: CMemoryDataOutputStream ctor @ 0x00996AF0 / dtor @ 0x00996B30 (manifest "~CCompressedMemoryDataInputStream" is a twin),
 //   CDataOutputStream::WriteSLONG @ 0x00993EB0, WriteULONG @ 0x00993EA0, WriteEBOOL @ 0x00993E30, WriteFLOAT @ 0x00993EE0 (the manifest
-//   names all three 4-byte writers "WriteCBYTE"), CMemoryDataOutputStream::GetSize @ 0x00994B40 (manifest "GetFramesRemaining" is a
+//   names all three 4-byte writers "WriteCBYTE"), CMemoryDataOutputStream::GetLength @ 0x00994B40 (manifest "GetFramesRemaining" is a
 //   twin) and PeekData @ 0x00995E70, CDiskFileWin32(const CWideString&, FileAccessType, unsigned long) @ 0x0099AD80, Write @ 0x0099AA90,
 //   the inlined ~CDiskFileWin32 (vtable 0x0122D06C, Close @ 0x0099A920, ~CWideString @ 0x0099B510, ~CBaseClassNonCopyable @ 0x0099A300) as the landed
 //   CInputManager::StreamInputsFromFile 0x009F5E10.
@@ -46,11 +46,13 @@ public:
     void WriteFloat(float);   // 0x00993EE0
 };
 
-class CMemoryDataOutputStream : public CDataOutputStream { public:
+class CMemoryDataOutputStream : public CDataOutputStream {
+public:
+    unsigned long GetLength() const;   // 0x00994B40 (Ego_r.pdb ?GetLength@CMemoryDataOutputStream@@QBEKXZ)
+private: public:
     unsigned char _body[0x18];
     CMemoryDataOutputStream();                      // 0x00996AF0
     ~CMemoryDataOutputStream();                     // 0x00996B30
-    long GetSize() const;                           // 0x00994B40
     const void* PeekData() const;                   // 0x00995E70
 };
 
@@ -105,7 +107,7 @@ void CManager::SaveBinary(const CWideString& fileName)
         }
     }
     CDiskFileWin32 file(fileName, FILE_ACCESS_WRITE, 2);
-    file.Write(stream.PeekData(), stream.GetSize(), 0);
+    file.Write(stream.PeekData(), ((CMemoryDataOutputStream*)&stream)->GetLength(), 0);
 }
 
 }

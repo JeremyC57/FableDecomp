@@ -21,7 +21,8 @@ extern "C" char DAT_0122d70e;
 class CMemoryDataOutputStream
 {
 public:
-    void *PeekData();
+void const* PeekData() const;
+private:
 };
 
 class CDefStringTable
@@ -40,6 +41,6 @@ char *CDefStringTable::GetStringAsCharArray(long index)
         return &DAT_0122d70e;
     }
 
-    void *base = m_stream.PeekData();
+    void *base = ((void*)m_stream.PeekData());
     return (char *)base + index + 4;
 }

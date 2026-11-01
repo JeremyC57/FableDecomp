@@ -32,13 +32,15 @@ public:
     void WriteULONG(unsigned long);   // 0x00993EA0
 };
 
-class CMemoryDataOutputStream : public CDataOutputStream { public:    // 0x18 bytes in retail
+class CMemoryDataOutputStream : public CDataOutputStream {
+public:
+    unsigned long GetLength() const;   // 0x00994B40 (Ego_r.pdb ?GetLength@CMemoryDataOutputStream@@QBEKXZ)
+private: public:    // 0x18 bytes in retail
     char* First; char* Last; char* End;                 // +0x08 CArray<char>
     unsigned long Position;                             // +0x14
     CMemoryDataOutputStream();                          // 0x00996AF0
     ~CMemoryDataOutputStream();                         // 0x00996B30
     virtual void Write(const void* data, long length);  // 0x00996CC0
-    long GetSize() const;                               // 0x00994B40
     const void* PeekData() const;                       // 0x00995E70
 };
 
@@ -72,13 +74,13 @@ void CWaveLoader::SaveWaveFile(CWaveFile* wave, CDataOutputStream* output)
     CMemoryDataOutputStream form;
     form.WriteString("WAVE");
     form.WriteString("fmt ");
-    form.WriteULONG(format.GetSize());
-    form.Write(format.PeekData(), format.GetSize());
+    form.WriteULONG(((CMemoryDataOutputStream*)&format)->GetLength());
+    form.Write(format.PeekData(), ((CMemoryDataOutputStream*)&format)->GetLength());
     form.WriteString("data");
     form.WriteULONG(wave->AudioData.size() * sizeof(short));
     form.Write(wave->AudioData.GetData(), wave->AudioData.size() * sizeof(short));
 
     output->WriteString("RIFF");
-    output->WriteULONG(form.GetSize());
-    output->Write(form.PeekData(), form.GetSize());
+    output->WriteULONG(((CMemoryDataOutputStream*)&form)->GetLength());
+    output->Write(form.PeekData(), ((CMemoryDataOutputStream*)&form)->GetLength());
 }

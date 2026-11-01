@@ -22,13 +22,15 @@ public:
 };
 class CMemoryDataOutputStream : public CDataOutputStream {
 public:
+    unsigned long GetLength() const;   // 0x00994B40 (Ego_r.pdb ?GetLength@CMemoryDataOutputStream@@QBEKXZ)
+private:
+public:
     unsigned char _body04[0x14];
     CMemoryDataOutputStream();                                         // 0x00996AF0
     virtual ~CMemoryDataOutputStream();                                        // 0x00996B30
     virtual void Write(const void* data, long length);                 // 0x00996CC0
     void Reset();                                                      // 0x00996B60
-    long GetSize();                                                    // 0x00994B40
-    void* PeekData();                                                  // 0x00995E70
+    void const* PeekData() const;                                                  // 0x00995E70
 };
 class CDataInputStream { public:
     virtual void v0();
@@ -90,7 +92,7 @@ void CParticleProgram::OptimiseConstraints()
                 merged.WriteULong(lastType);
                 merged.WriteULong(totalCount);
                 merged.WriteULong(totalSize);
-                merged.Write(data.PeekData(), data.GetSize());
+                merged.Write(((void*)data.PeekData()), ((CMemoryDataOutputStream*)&data)->GetLength());
             }
             lastType = type;
             totalCount = count;
@@ -103,8 +105,8 @@ void CParticleProgram::OptimiseConstraints()
         merged.WriteULong(lastType);
         merged.WriteULong(totalCount);
         merged.WriteULong(totalSize);
-        merged.Write(data.PeekData(), data.GetSize());
+        merged.Write(((void*)data.PeekData()), ((CMemoryDataOutputStream*)&data)->GetLength());
     }
     constraints.Reset();
-    constraints.Write(merged.PeekData(), merged.GetSize());
+    constraints.Write(((void*)merged.PeekData()), ((CMemoryDataOutputStream*)&merged)->GetLength());
 }

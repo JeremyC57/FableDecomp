@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A382E0, 198 bytes (ret 4).
 // Callees: CMemoryDataOutputStream::CMemoryDataOutputStream @ 0x00996AF0 / ~ @ 0x00996B30, CDataOutputStream::WriteSLONG
 //          @ 0x00993EB0, CDiskFileWin32::CDiskFileWin32(const CWideString&, FileAccessType, ulong) @ 0x0099AD80 (access 4 =
-//          write, flags 2), CMemoryDataOutputStream::GetSize @ 0x00994B40 / PeekData @ 0x00995E70, CDiskFileWin32::Write
+//          write, flags 2), CMemoryDataOutputStream::GetLength @ 0x00994B40 / PeekData @ 0x00995E70, CDiskFileWin32::Write
 //          @ 0x0099AA90, then the local file's inline destructor (vtable 0x0122D06C, Close @ 0x0099A920, ~CWideString
 //          @ 0x0099B510, ~CBaseClassNonCopyable @ 0x0099A300). Manifest labels of 0x00994B40 / 0x00996B30 are propagated.
 // Layout (Ego_r.pdb CCRCSymbolMap): SLONGMap CVectorMap<unsigned long, long> +4 (the retail vector {first +4, last +8}),
@@ -37,12 +37,14 @@ class CDataOutputStream { public:
     virtual void v00();
     void WriteSLONG(long value);                   // 0x00993EB0
 };
-class CMemoryDataOutputStream : public CDataOutputStream { public:
+class CMemoryDataOutputStream : public CDataOutputStream {
+public:
+    unsigned long GetLength() const;   // 0x00994B40 (Ego_r.pdb ?GetLength@CMemoryDataOutputStream@@QBEKXZ)
+private: public:
     unsigned char _body[0x14];                     // +0x04 .. +0x17
     CMemoryDataOutputStream();                     // 0x00996AF0
     virtual ~CMemoryDataOutputStream();                    // 0x00996B30
-    long GetSize();                                // 0x00994B40
-    void* PeekData();                              // 0x00995E70
+    void const* PeekData() const;                              // 0x00995E70
 };
 
 struct CSymbolPair {
@@ -73,5 +75,5 @@ void CCRCSymbolMap::SaveBinary(const CWideString& filename)
         stream.WriteSLONG(SLONGMap[i].second);
     }
     CDiskFileWin32 file(filename, FILE_ACCESS_WRITE, 2);
-    file.Write(stream.PeekData(), stream.GetSize(), 0);
+    file.Write(((void*)stream.PeekData()), ((CMemoryDataOutputStream*)&stream)->GetLength(), 0);
 }

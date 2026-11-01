@@ -28,7 +28,7 @@ struct CStringOffsetMap {                           // map<CCharString, long> (S
 
 class CMemoryDataOutputStream { public:
     unsigned long GetSize();                        // 0x00994B40
-    void* PeekData();                               // 0x00995E70
+    void const* PeekData() const;                               // 0x00995E70
 };
 
 struct CDefStringTable {
@@ -51,7 +51,7 @@ void CDefStringTable::Unlock()
     if (ReadOnly)
         return;
     CMemoryDataOutputStream* stream = &StringStream;
-    const char* data = (const char*)stream->PeekData();
+    const char* data = (const char*)((void*)stream->PeekData());
     unsigned long size = stream->GetSize();
     for (unsigned long offset = 4; offset < size; ) {
         CCharString name(data + offset + 4, -1);

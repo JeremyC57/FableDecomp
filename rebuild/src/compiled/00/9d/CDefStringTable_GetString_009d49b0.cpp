@@ -12,8 +12,7 @@ class CCharString { public:
     CCharString(const char* text, long length);    // 0x0099EBF0
 };
 
-class CMemoryDataOutputStream { public:
-    void* PeekData();                              // 0x00995E70
+class CMemoryDataOutputStream { public: void const* PeekData() const; private:                              // 0x00995E70
 };
 
 struct CDefStringTable {
@@ -26,6 +25,6 @@ CCharString CDefStringTable::GetString(long index)
 {
     if (index == -1)
         return CCharString();
-    const char* text = (const char*)StringStream.PeekData() + index + 4;
+    const char* text = (const char*)((void*)StringStream.PeekData()) + index + 4;
     return CCharString(text, -1);
 }
