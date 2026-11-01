@@ -1,4 +1,7 @@
 // CTCInventoryMap::Copy(const CTCBase& other) -- copies the map state from another map component: empties the three name lists and the id list, appends every entry of the other map's lists in order, then runs the base CTCBase::Copy
+// Naming wave 26 (family vws): the vector is STLport 4.6 std::vector<CWideString, allocator<CWideString> >; its grow-insert 0x00412330
+//   is the protected ?_M_insert_overflow@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@IAEXPAVCWideString@@ABV3@ABU__false_type@2@I_N@Z
+//   (size_type unsigned int; c691 queue). Was CWideStringVector::_M_insert_overflow(..., const __false_type&, unsigned long, bool).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005FDAD0, 758 bytes, `ret 4`. Speed TU (no pragmas, no frame pointer).
 // Callees: vector<CWideString>::erase(first, last) 0x00412450, CWideString copy ctor 0x0099B720 (push_back's placement
 //   copy), vector<CWideString>::_M_insert_overflow 0x00412330, malloc 0x00BFEA0E / free 0x00BFEA14 (the id list's
@@ -12,37 +15,45 @@
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);           // 0x00BFEA14
 inline void* operator new(unsigned int, void* where) { return where; }
-struct __false_type { __false_type() {} };
 class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);           // 0x0099B720
 };
-struct CWideStringVector {                           // retail STLport vector<CWideString> (12 bytes)
-    CWideString* _M_start;
-    CWideString* _M_finish;
-    CWideString* _M_end_of_storage;
+namespace std {
+template <class _Tp> class allocator { public: allocator() { } };
+struct __false_type { __false_type() { } };
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector { // retail STLport vector<CWideString> (12 bytes)
+public:
+    _Tp* _M_start;
+    _Tp* _M_finish;
+    _Tp* _M_end_of_storage;
     unsigned long size() const { return _M_finish - _M_start; }
-    const CWideString& operator[](unsigned long n) const { return _M_start[n]; }
-    CWideString* erase(CWideString* first, CWideString* last);   // 0x00412450
+    const _Tp& operator[](unsigned long n) const { return _M_start[n]; }
+    _Tp* erase(_Tp* first, _Tp* last);   // 0x00412450
     void clear() { erase(_M_start, _M_finish); }
-    void _M_insert_overflow(CWideString* pos, const CWideString& x, const __false_type& tag,
-                            unsigned long fillLength, bool atEnd);   // 0x00412330
-    void push_back(const CWideString& x)
+protected:
+    void _M_insert_overflow(_Tp* pos, const _Tp& x, const __false_type& tag,
+                            unsigned int fillLength, bool atEnd);   // 0x00412330
+public:
+    void push_back(const _Tp& x)
     {
         if (_M_finish != _M_end_of_storage) {
             if (_M_finish)
-                new (_M_finish) CWideString(x);
+                new (_M_finish) _Tp(x);
             ++_M_finish;
         } else {
             _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
         }
     }
 };
+}
+
 void* FindRef_CWideStringVector__M_insert_overflow_0();   // stand-in callee of the stand-in body below
 // Same-TU stand-in body for vector<CWideString>::_M_insert_overflow 0x00412330 (out of line in retail): it reads the value
 // only through its const reference and never touches the empty tag.
 #pragma auto_inline(off)
-__declspec(noinline) void CWideStringVector::_M_insert_overflow(CWideString* pos, const CWideString& x, const __false_type& tag, unsigned long fillLength, bool atEnd)
+template <class _Tp, class _Alloc>
+__declspec(noinline) void std::vector<_Tp, _Alloc>::_M_insert_overflow(_Tp* pos, const _Tp& x, const std::__false_type& tag, unsigned int fillLength, bool atEnd)
 {
     void* p = FindRef_CWideStringVector__M_insert_overflow_0();
     if (*(void**)&x != p)
@@ -110,9 +121,9 @@ public:
 class CTCInventoryMap : public CTCBase {
 public:
     unsigned char     _pad04[0x150 - 0x04];
-    CWideStringVector Names150;                      // +0x150
-    CWideStringVector Names15C;                      // +0x15C
-    CWideStringVector Names168;                      // +0x168
+    std::vector<CWideString> Names150;                      // +0x150
+    std::vector<CWideString> Names15C;                      // +0x15C
+    std::vector<CWideString> Names168;                      // +0x168
     CIdVector         Ids174;                        // +0x174
     void Copy(const CTCBase& other);
 };

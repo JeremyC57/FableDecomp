@@ -13,6 +13,9 @@
 //   escaping and _M_start/_M_finish stay in edi/esi as in retail. The chained ConvertToCharString().ToLower().ToWideString() pre-pushes
 //   every hidden-return slot; Read is called qualified to get the direct call.
 // Leaf: CreateSymbolsFromPathList
+// Naming wave 26 (family vws): the vector is STLport 4.6 std::vector<CWideString, allocator<CWideString> >; its grow-insert 0x00412330
+//   is the protected ?_M_insert_overflow@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@IAEXPAVCWideString@@ABV3@ABU__false_type@2@I_N@Z
+//   (size_type unsigned int; c691 queue). Was CWideStringVector::_M_insert_overflow(..., const __false_type&, unsigned int, bool).
 #include <stdlib.h>
 #include <new>
 void* __cdecl operator new[](unsigned int size);
@@ -58,40 +61,48 @@ struct CFileScanState { long _body[2]; };
 bool __fastcall ScanFirstFile(const CWideString& directory, CFileScanState& state, CWideString& fileName);   // 0x00999C50
 bool __fastcall ScanNextFile(const CWideString& directory, CFileScanState& state, CWideString& fileName);    // 0x00999CB0
 void __fastcall GFRemoveComments(char* text, const char* start, const char* end);   // 0x00A60410
-struct __false_type { __false_type() {} };
 void __fastcall SortWideStrings(CWideString* first, CWideString* last);   // 0x009B8440 (std::sort<CWideString*>)
-class CWideStringVector {                               // STLport vector<CWideString>, 12 bytes
+namespace std {
+template <class _Tp> class allocator { public: allocator() { } };
+struct __false_type { __false_type() { } };
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector { // STLport vector<CWideString>, 12 bytes
 public:
-    CWideString* _M_start;
-    CWideString* _M_finish;
-    CWideString* _M_end_of_storage;
-    CWideStringVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-    ~CWideStringVector()
+public:
+    _Tp* _M_start;
+    _Tp* _M_finish;
+    _Tp* _M_end_of_storage;
+    vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
+    ~vector()
     {
-        for (CWideString* p = _M_start; p != _M_finish; ++p)
-            p->~CWideString();
+        for (_Tp* p = _M_start; p != _M_finish; ++p)
+            p->~_Tp();
         if (_M_start)
             free(_M_start);
     }
-    CWideString* begin() { return _M_start; }
-    CWideString* end() { return _M_finish; }
-    const CWideString* begin() const { return _M_start; }
-    const CWideString* end() const { return _M_finish; }
+    _Tp* begin() { return _M_start; }
+    _Tp* end() { return _M_finish; }
+    const _Tp* begin() const { return _M_start; }
+    const _Tp* end() const { return _M_finish; }
     unsigned int size() const { return _M_finish - _M_start; }
-    CWideString& operator[](unsigned int n) { return *(_M_start + n); }
-    void _M_insert_overflow(CWideString* pos, const CWideString& x, const __false_type&, unsigned int fillLen, bool atEnd);   // 0x00412330
-    void push_back(const CWideString& x)
+    _Tp& operator[](unsigned int n) { return *(_M_start + n); }
+protected:
+    void _M_insert_overflow(_Tp* pos, const _Tp& x, const __false_type&, unsigned int fillLen, bool atEnd);   // 0x00412330
+public:
+    void push_back(const _Tp& x)
     {
         if (_M_finish != _M_end_of_storage) {
-            new (_M_finish) CWideString(x);
+            new (_M_finish) _Tp(x);
             ++_M_finish;
         }
         else
             _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
     }
 };
+}
+
 #pragma auto_inline(off)
-void CWideStringVector::_M_insert_overflow(CWideString* pos, const CWideString& x, const __false_type&, unsigned int fillLen, bool atEnd)
+template <class _Tp, class _Alloc>
+__declspec(noinline) void std::vector<_Tp, _Alloc>::_M_insert_overflow(_Tp* pos, const _Tp& x, const std::__false_type&, unsigned int fillLen, bool atEnd)
 {
     unsigned int oldSize = _M_finish - _M_start;
     unsigned int len = oldSize + (oldSize > fillLen ? oldSize : fillLen);
@@ -125,16 +136,16 @@ public:
     unsigned char _pad064[0xb4 - 0x64];
     CCharString   CurrentFileName;                      // +0xb4
     void ParseStringForSymbols(char* text, long flags);   // 0x009ADE90
-    void CreateSymbolsFromPathList(const CWideStringVector& paths, long flags);
+    void CreateSymbolsFromPathList(const std::vector<CWideString>& paths, long flags);
 };
 
-void CDefinitionManager::CreateSymbolsFromPathList(const CWideStringVector& paths, long flags)
+void CDefinitionManager::CreateSymbolsFromPathList(const std::vector<CWideString>& paths, long flags)
 {
     CCharString functionName("DefinitionManager : CreateSymbolsFromPathList");
     for (const CWideString* path = paths.begin(); path != paths.end(); ++path) {
         CWideString fileName;
         CFileScanState scan;
-        CWideStringVector files;
+        std::vector<CWideString> files;
         if (ScanFirstFile(*path, scan, fileName)) {
             do {
                 files.push_back(((CWideString*)&fileName)->ToCharString().ToLower().ToWideString());

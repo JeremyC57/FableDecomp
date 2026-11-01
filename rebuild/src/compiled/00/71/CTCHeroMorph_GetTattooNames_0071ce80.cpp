@@ -1,5 +1,8 @@
 // CTCHeroMorph::GetTattooNames(std::vector<CWideString>&) const -- appends the display name (inventory-item description text) of every tattoo the hero wears
 // Leaf: GetTattooNames
+// Naming wave 26 (family vws): the vector is STLport 4.6 std::vector<CWideString, allocator<CWideString> >; its grow-insert 0x00412330
+//   is the protected ?_M_insert_overflow@?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@IAEXPAVCWideString@@ABV3@ABU__false_type@2@I_N@Z
+//   (size_type unsigned int; c691 queue). Was CWideStringVector::_M_insert_overflow(..., const __false_type&, unsigned long, bool).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0071CE80, 238 bytes (+ int3 padding), `ret 4`.
@@ -98,29 +101,37 @@ class CWideString { public:
 };
 inline void* operator new(unsigned int, void* where) { return where; }
 
-struct __false_type { __false_type() {} };
-struct CWideStringVector {                           // retail STLport vector<CWideString> (12 bytes)
-    CWideString* _M_start;
-    CWideString* _M_finish;
-    CWideString* _M_end_of_storage;
-    void _M_insert_overflow(CWideString* pos, const CWideString& x, const __false_type& tag,
-                            unsigned long fillLength, bool atEnd);   // 0x00412330
-    void push_back(const CWideString& x)
+namespace std {
+template <class _Tp> class allocator { public: allocator() { } };
+struct __false_type { __false_type() { } };
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector { // retail STLport vector<CWideString> (12 bytes)
+public:
+    _Tp* _M_start;
+    _Tp* _M_finish;
+    _Tp* _M_end_of_storage;
+protected:
+    void _M_insert_overflow(_Tp* pos, const _Tp& x, const __false_type& tag,
+                            unsigned int fillLength, bool atEnd);   // 0x00412330
+public:
+    void push_back(const _Tp& x)
     {
         if (_M_finish != _M_end_of_storage) {
             if (_M_finish)
-                new (_M_finish) CWideString(x);
+                new (_M_finish) _Tp(x);
             ++_M_finish;
         } else {
             _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
         }
     }
 };
+}
+
 void* FindRef_CWideStringVector__M_insert_overflow_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it only writes a word through the reference parameter inline, so
 // VC7.1 knows the caller's address-taken local does not escape the call.
 #pragma auto_inline(off)
-__declspec(noinline) void CWideStringVector::_M_insert_overflow(CWideString* pos, const CWideString& x, const __false_type& tag, unsigned long fillLength, bool atEnd)
+template <class _Tp, class _Alloc>
+__declspec(noinline) void std::vector<_Tp, _Alloc>::_M_insert_overflow(_Tp* pos, const _Tp& x, const std::__false_type& tag, unsigned int fillLength, bool atEnd)
 {
     void* p = FindRef_CWideStringVector__M_insert_overflow_0();
     if (!p)
@@ -173,10 +184,10 @@ class CTCHeroMorph { public:
     void*         __vftable;                         // +0x00
     unsigned char _pad_0x04[0x18];
     CTattooVector Tattoos;                           // +0x1C (PDB +0x2C)
-    void GetTattooNames(CWideStringVector& names) const;
+    void GetTattooNames(std::vector<CWideString>& names) const;
 };
 
-void CTCHeroMorph::GetTattooNames(CWideStringVector& names) const
+void CTCHeroMorph::GetTattooNames(std::vector<CWideString>& names) const
 {
     for (unsigned long i = 0; i < Tattoos.size(); ++i) {
         CItemDefPointer item;
