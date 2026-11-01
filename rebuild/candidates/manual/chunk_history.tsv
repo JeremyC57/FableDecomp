@@ -25987,3 +25987,13 @@ chunk	address	module	name	length
 697	00569d30	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	90
 697	00bded60	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	44
 697	00a60ce0	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	82
+698	0072da60	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	54
+698	007dca90	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	60
+698	004d1d50	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	93
+698	00a4eb50	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	83
+698	00b42e70	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	88
+698	00ca9690	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	88
+698	0051d590	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	43
+698	006f2fd0	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	44
+698	00aa7320	CPatchTesselationEdgeStrip	~CPatchTesselationEdgeStrip	43
+698	00a3acc0	CCompressorZlib	~CCompressorZlib	91
