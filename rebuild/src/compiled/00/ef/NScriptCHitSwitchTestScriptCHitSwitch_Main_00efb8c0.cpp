@@ -1,5 +1,8 @@
 // NScript::CHitSwitchTestScript::CHitSwitch::Main() -- register an alive filter over Me, then until the script ends: wait a script frame at a time until the hero hits the switch, then (unless the script is ending) set its activation trigger, pause ten seconds, clear it again and wait a frame
 // Leaf: Main
+// Naming wave 25: ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ 0x00F35B30 (Ego_r.pdb / FableWin.pdb: global class, const)
+//   is declared on the global CEntityScriptBase the entity derives from (the landed SetPredicate rows' empty-base model; the vptr /
+//   Game / Me fields stay on the entity: empty-base layout, bytes unchanged); was CHitSwitchTestScript::CHitSwitch::IsDone (non-const; the label DB's IsDone).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EFB8C0, length 243 bytes (+ int3 padding), plain `ret`.
 // Identity: Ego_r.pdb ?Main@CHitSwitch@CHitSwitchTestScript@NScript@@EAEXXZ (catalog row "CHitSwitch::Main").
 // Callees: CScriptThing(const CScriptThing&) @ 0x004ABE90 (the filter's member, filter vtable 0x012C2FE8), the filter
@@ -9,7 +12,7 @@
 //   NewScriptFrame, 70 GetHero, 376 Pause(float) (cgsi_slots_aligned.tsv); Me's CGameScriptThing slot 69
 //   SetActivationTriggerStatus(bool) (vtable 0x012852CC).
 // Layout: CEntityScriptBase {vptr, Game +4, CScriptThing Me +8}.
-// Shape: block-scoped filter (CFader form); `if (IsDone()) return;` then a `while (!IsDone())` outer loop whose entry test
+// Shape: block-scoped filter (CFader form); `if (IsActiveThreadTerminating()) return;` then a `while (!IsActiveThreadTerminating())` outer loop whose entry test
 //   is the second IsDone call; the inner hit wait is a plain rotated while.
 class CCharString { public:
     void* PStringData;
@@ -98,17 +101,19 @@ namespace N_00ef7ab0 { struct CIsThingAlive {                                  /
 
 bool __fastcall FoundMessageIsThingHitBy(CScriptThing* thing, CScriptThing* hitter);   // 0x00CBE0C7
 
+class CEntityScriptBase { public:                        // the PDB class the accessors belong to (Ego_r.pdb CEntityScriptBase, global)
+    bool IsActiveThreadTerminating() const;             // 0x00F35B30
+};
 namespace NScript {
 class CHitSwitchTestScript { public:
     class CHitSwitch;
 };
-class CHitSwitchTestScript::CHitSwitch {
+class CHitSwitchTestScript::CHitSwitch : public CEntityScriptBase {
 public:
     void*                       __vftable;              // +0x00
     CGameScriptInterface_Calls* Game;                   // +0x04
     CScriptThing                Me;                     // +0x08
     void RegisterFilter(CIsThingAlive& filter);         // 0x00F35B10
-    bool IsDone();                                      // 0x00F35B30
     void Main();
 };
 
@@ -119,15 +124,15 @@ void CHitSwitchTestScript::CHitSwitch::Main()
         RegisterFilter(filter);
     }
     Game->NewScriptFrame();
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
-    while (!IsDone()) {
+    while (!IsActiveThreadTerminating()) {
         while (!FoundMessageIsThingHitBy(&Me, &Game->GetHero())) {
             Game->NewScriptFrame();
-            if (IsDone())
+            if (IsActiveThreadTerminating())
                 return;
         }
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
         Me.SetActivationTriggerStatus(true);
         Game->Pause(10.0f);

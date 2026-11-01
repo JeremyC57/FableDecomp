@@ -1,5 +1,8 @@
 // NScript::CQ_TraderEscortScript::CTraderComment::Main() -- trader-escort comment marker: with an is-alive filter on Me, each frame look for a live DarkwoodTrader within the script def's comment distance; the first one that makes Me's comment removes the marker
 // Leaf: ?Main@CTraderComment@CQ_TraderEscortScript@NScript@@
+// Naming wave 25: ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ 0x00F35B30 (Ego_r.pdb / FableWin.pdb: global class, const)
+//   is declared on the global CEntityScriptBase the entity derives from (the landed SetPredicate rows' empty-base model; the vptr /
+//   Game / Me fields stay on the entity: empty-base layout, bytes unchanged); was CQ_TraderEscortScript::CTraderComment::SetPredicate / IsActiveThreadTerminating (non-const).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E05360, length 585 bytes, plain `ret`.
 // Callees: CScriptThing(const CScriptThing&) 0x004ABE90 / ~CScriptThing 0x004AA840 (the CIsThingAlive filter, vtable
 //   0x012C32F0, inline destructor) and SetPredicate 0x00F35B10; IsActiveThreadTerminating 0x00F35B30; CCharString(const char*,
@@ -68,6 +71,11 @@ class CScriptDef { public:
     long          TE_TraderCommentDistance;             // +0xe10 (PDB +0xec0)
 };
 extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+namespace NScript { class CPredicateBase; }
+class CEntityScriptBase { public:                        // the PDB class the accessors belong to (Ego_r.pdb CEntityScriptBase, global)
+    bool IsActiveThreadTerminating() const;             // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
 namespace NScript {
 class CPredicateBase { public:
     virtual bool IsTrue() = 0;
@@ -83,14 +91,12 @@ class CQ_TraderEscortScript { public:
     bool MakeTraderComment(const CCharString& text, const CScriptThing& trader, ETraderComment comment);   // 0x00E01900
     struct CTraderComment;
 };
-struct CQ_TraderEscortScript::CTraderComment {
+struct CQ_TraderEscortScript::CTraderComment : CEntityScriptBase {
     void*                  VTable;
     GameCalls*             Game;                        // +0x04
     CScriptThing           Me;                          // +0x08
     CQ_TraderEscortScript* ParentClass;                 // +0x14
     void*                  PMasterData;                 // +0x18
-    void SetPredicate(const CPredicateBase& predicate); // 0x00F35B10
-    bool IsActiveThreadTerminating();                   // 0x00F35B30
     void Main();
 };
 

@@ -1,5 +1,8 @@
 // NScript::CBenTestScriptsScript::CFader::Main() -- register an alive filter over Me, give it hero information, wait a script frame at a time until the hero talks to or uses it, then (unless the script is ending) fade it out through the parent test script
 // Leaf: Main
+// Naming wave 25: ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ 0x00F35B30 (Ego_r.pdb / FableWin.pdb: global class, const)
+//   is declared on the global CEntityScriptBase the entity derives from (the landed SetPredicate rows' empty-base model; the vptr /
+//   Game / Me fields stay on the entity: empty-base layout, bytes unchanged); was CBenTestScriptsScript::CFader::IsDone (non-const; the label DB's IsDone).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EFE8D0, length 277 bytes (+ int3 padding), plain `ret`.
 // Identity: Ego_r.pdb ?Main@CFader@CBenTestScriptsScript@NScript@@EAEXXZ; the parent call is
 //   ?FadeEntityOut@CBenTestScriptsScript@NScript@@QAEXABVCScriptThing@@_N@Z @ 0x00EFE9F0 (the next function).
@@ -89,12 +92,15 @@ namespace N_00ef7ab0 { struct CIsThingAlive {                                  /
     ~CIsThingAlive();                                   // 0x00EF7AB0
 }; } using N_00ef7ab0::CIsThingAlive;
 
+class CEntityScriptBase { public:                        // the PDB class the accessors belong to (Ego_r.pdb CEntityScriptBase, global)
+    bool IsActiveThreadTerminating() const;             // 0x00F35B30
+};
 namespace NScript {
 class CBenTestScriptsScript { public:
     void FadeEntityOut(const CScriptThing& thing, bool fadeOut);   // 0x00EFE9F0
     class CFader;
 };
-class CBenTestScriptsScript::CFader {
+class CBenTestScriptsScript::CFader : public CEntityScriptBase {
 public:
     void*                       __vftable;              // +0x00
     CGameScriptInterface_Calls* Game;                   // +0x04
@@ -102,7 +108,6 @@ public:
     CBenTestScriptsScript*      ParentClass;            // +0x14
     void*                       PMasterData;            // +0x18
     void RegisterFilter(CIsThingAlive& filter);         // 0x00F35B10
-    bool IsDone();                                      // 0x00F35B30
     void Main();
 };
 
@@ -113,7 +118,7 @@ void CBenTestScriptsScript::CFader::Main()
         RegisterFilter(filter);
     }
     Game->NewScriptFrame();
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     Game->SetThingHasInformation(Me, false, true, false);
     for (;;) {
@@ -121,10 +126,10 @@ void CBenTestScriptsScript::CFader::Main()
         if (!waiting)
             break;
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     ParentClass->FadeEntityOut(Me, true);
 }

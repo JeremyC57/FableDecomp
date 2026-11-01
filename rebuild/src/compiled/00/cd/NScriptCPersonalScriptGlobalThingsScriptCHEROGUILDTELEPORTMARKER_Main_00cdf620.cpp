@@ -1,5 +1,8 @@
 // NScript::CPersonalScript_GlobalThingsScript::CHERO_GUILD_TELEPORT_MARKER::Main() -- unless the teleporter is already active: wait a script frame at a time until the LookoutPoint region is loaded and the hero carries the OBJECT_GUILD_SEAL_1, then (unless the script is ending) activate the teleporter
 // Leaf: Main
+// Naming wave 25: ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ 0x00F35B30 (Ego_r.pdb / FableWin.pdb: global class, const)
+//   is declared on the global CEntityScriptBase the entity derives from (the landed SetPredicate rows' empty-base model; the vptr /
+//   Game / Me fields stay on the entity: empty-base layout, bytes unchanged); was CPersonalScript_GlobalThingsScript::CHERO_GUILD_TELEPORT_MARKER::IsDone (non-const; the label DB's IsDone).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CDF620, length 260 bytes (+ int3 padding), plain `ret`.
 // Identity: Ego_r.pdb ?Main@CHERO_GUILD_TELEPORT_MARKER@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ.
 // Callees: IsDone @ 0x00F35B30 (the entity script's IsActiveThreadTerminating), CCharString(const char*, long) @ 0x0099EBF0
@@ -102,17 +105,19 @@ struct CGameScriptInterface_Calls {
     virtual bool IsTeleporterActive(const CScriptThing& teleporter) const;   // slot 564 (+0x8d0)
 };
 
+class CEntityScriptBase { public:                        // the PDB class the accessors belong to (Ego_r.pdb CEntityScriptBase, global)
+    bool IsActiveThreadTerminating() const;             // 0x00F35B30
+};
 namespace NScript {
 class CPersonalScript_GlobalThingsScript { public:
     class CHERO_GUILD_TELEPORT_MARKER;
 };
-class CPersonalScript_GlobalThingsScript::CHERO_GUILD_TELEPORT_MARKER {
+class CPersonalScript_GlobalThingsScript::CHERO_GUILD_TELEPORT_MARKER : public CEntityScriptBase {
 public:
     void*                       __vftable;              // +0x00
     CGameScriptInterface_Calls* Game;                   // +0x04
     CScriptThing                Me;                     // +0x08
     void*                       ParentClass;            // +0x14
-    bool IsDone();                                      // 0x00F35B30
     void Main();
 };
 
@@ -120,17 +125,17 @@ void CPersonalScript_GlobalThingsScript::CHERO_GUILD_TELEPORT_MARKER::Main()
 {
     if (Game->IsTeleporterActive(Me))
         return;
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     for (;;) {
         bool waiting = !(Game->IsRegionLoaded("LookoutPoint") && Game->IsObjectInThingsPossession("OBJECT_GUILD_SEAL_1", Game->GetHero()));
         if (!waiting)
             break;
         Game->NewScriptFrame();
-        if (IsDone())
+        if (IsActiveThreadTerminating())
             return;
     }
-    if (IsDone())
+    if (IsActiveThreadTerminating())
         return;
     Game->SetTeleporterAsActive(Me, true);
 }

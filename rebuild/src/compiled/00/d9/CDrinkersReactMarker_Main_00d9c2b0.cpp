@@ -4,6 +4,9 @@
 // Game slots70 GetHero(ref),72 GetThingWithScriptName(value),7 NewScriptFrame; F35B30 termination.
 // Literal12D6788 Q_HobbeToothWhisper. Actual Thing/Game/string headers; real79slot Thing interface.
 // Leaf: Main
+// Naming wave 25: ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ 0x00F35B30 (Ego_r.pdb / FableWin.pdb: global class, const)
+//   is declared on the global CEntityScriptBase the entity derives from (the landed SetPredicate rows' empty-base model; the vptr /
+//   Game / Me fields stay on the entity: empty-base layout, bytes unchanged); was CDrinkersReactMarker::IsActiveThreadTerminating (non-const).
 #include "engine/CScriptThing.h"
 #include "engine/CGameScriptInterface.h"
 #include "fable_string.h"
@@ -189,8 +192,11 @@ virtual ScriptMethods GetHeroTargetedThing(void) const; //slot71 0x0089a490
 virtual ScriptMethods GetThingWithScriptName(ImplicitCharString const &) const; //slot72 0x008a7d60
 };
 struct NativeParent {unsigned char UnrecoveredPrefix[0x5a];bool ScriptFlag;};
-struct CDrinkersReactMarker {void* VTable;GameMethods* Game;CScriptThing Me;NativeParent* Parent;void* Master;
- bool IsActiveThreadTerminating();void Main();
+class CEntityScriptBase { public:                        // the PDB class the accessors belong to (Ego_r.pdb CEntityScriptBase, global)
+    bool IsActiveThreadTerminating() const;             // 0x00F35B30
+};
+struct CDrinkersReactMarker : CEntityScriptBase {void* VTable;GameMethods* Game;CScriptThing Me;NativeParent* Parent;void* Master;
+ void Main();
 };
 #ifdef _MSC_VER
 FABLE_STATIC_ASSERT(offsetof(CDrinkersReactMarker,Parent)==0x14);

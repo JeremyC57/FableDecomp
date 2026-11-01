@@ -1,5 +1,8 @@
 // CEM_FlashLightPoint::Main() -- Expose-the-Mayor lamp point entity: waits for stage 2, spawns the parent's CheckLampSlot thread, then until the hero has flashed the lights correctly waits for the hero to come within MaxFlashDistFromStables, waits for the hand lamp to go off and on again, spawns HeroFlashesLamp(5) and waits for a result or a lamp reset
 // Leaf: Main
+// Naming wave 25: ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ 0x00F35B30 (Ego_r.pdb / FableWin.pdb: global class, const)
+//   is declared on the global CEntityScriptBase the entity derives from (the landed SetPredicate rows' empty-base model; the vptr /
+//   Game / Me fields stay on the entity: empty-base layout, bytes unchanged); was CV_ExposeMayorScript::CEM_FlashLightPoint::IsActiveThreadTerminating (non-const).
 // Retail: Fable.exe (TLC, VC7.1) NScript::CV_ExposeMayorScript::CEM_FlashLightPoint::Main @ 0x00E76920, 851 bytes (+ int3 padding).
 // Callees: IsActiveThreadTerminating 0x00F35B30 (on this), operator new 0x00BFEA1A (0x3c / 0x40 bytes), CCharString(const
 // char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, operator+ 0x0099F570 (__fastcall), CSpawnedFuncBase ctor 0x00CDD450,
@@ -55,6 +58,9 @@ namespace NScript {
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"
+class CEntityScriptBase { public:                        // the PDB class the accessors belong to (Ego_r.pdb CEntityScriptBase, global)
+    bool IsActiveThreadTerminating() const;             // 0x00F35B30
+};
 namespace NScript {
 class CV_ExposeMayorScript : public CScriptBase { public:
     unsigned char _pad40[0x48 - 0x40];
@@ -69,14 +75,13 @@ class CV_ExposeMayorScript : public CScriptBase { public:
     void HeroFlashesLamp(long slot);                    // 0x00E76E90
     class CEM_FlashLightPoint;
 };
-class CV_ExposeMayorScript::CEM_FlashLightPoint {
+class CV_ExposeMayorScript::CEM_FlashLightPoint : public CEntityScriptBase {
 public:
     void*                  __vftable;                   // +0x00
     CGameScriptInterface*  Game;                        // +0x04
     CScriptThing           Me;                          // +0x08
     CV_ExposeMayorScript*  ParentClass;                 // +0x14
     void*                  PMasterData;                 // +0x18
-    bool IsActiveThreadTerminating();                   // 0x00F35B30
     void Main();
 };
 

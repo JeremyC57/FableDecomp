@@ -1,4 +1,8 @@
 // NScript::CQ_HeroSoulsGuildmasterScript::CGuardInWoods::Main -- wait for guildmaster cutscene then target hero until terminated.
+// Leaf: ?Main@CGuardInWoods@@QAEXXZ
+// Naming wave 25: ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ 0x00F35B30 (Ego_r.pdb / FableWin.pdb: global class, const)
+//   is declared on the global CEntityScriptBase the entity derives from (the landed SetPredicate rows' empty-base model; the vptr /
+//   Game / Me fields stay on the entity: empty-base layout, bytes unchanged); was CGuardInWoods::SetPredicate / IsActiveThreadTerminating (non-const).
 // Native00D864B0 length176; predicate VT012C32F0 CIsThingAlive(copy4ABE90/dtor4AA840), SetPredicateF35B10, terminatingF35B30.
 // Game real slots7 NewScriptFrame6E7410,70 GetHero891CA0,451 GiveThingBestEnemyTarget8A0260.
 // Parent native PlayedGuildMasterCS+49 and GuardInWoodsCount+50 corroborate donor5D/64 (base shrunk14).
@@ -910,9 +914,13 @@ struct CQ_HeroSoulsGuildmasterScript {
 };
 FABLE_STATIC_ASSERT(offsetof(CQ_HeroSoulsGuildmasterScript,PlayedGuildMasterCS)==0x49);
 FABLE_STATIC_ASSERT(offsetof(CQ_HeroSoulsGuildmasterScript,GuardInWoodsCount)==0x50);
-struct CGuardInWoods {
+class CEntityScriptBase { public:                        // the PDB class the accessors belong to (Ego_r.pdb CEntityScriptBase, global)
+    bool IsActiveThreadTerminating() const;             // 0x00F35B30
+    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
+};
+struct CGuardInWoods : CEntityScriptBase {
  void* VTable;GameCalls* Game;CScriptThing Me;CQ_HeroSoulsGuildmasterScript* ParentClass;void* PMasterData;
- void SetPredicate(const NScript::CPredicateBase&);bool IsActiveThreadTerminating();void Main();
+ void Main();
 };
 void CGuardInWoods::Main() {
  SetPredicate(NScript::CIsThingAlive(Me));
