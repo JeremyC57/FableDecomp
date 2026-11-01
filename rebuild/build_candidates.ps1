@@ -193274,9 +193274,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c0e360'
-        Module = 'CString_00c0e360'
-        Source = '00/c0/CString00c0e360_GetFileNameWithoutExtension00c0e360_00c0e360.cpp'
-        TestSource = '00/c0/CString00c0e360_GetFileNameWithoutExtension00c0e360_00c0e360_test.cpp'
+        Module = 'CString'
+        Source = '00/c0/CString_GetFileNameWithoutExtension_00c0e360.cpp'
+        TestSource = '00/c0/CString_GetFileNameWithoutExtension_00c0e360_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c0e360_TEST PASS'
     }
@@ -195627,9 +195627,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c0e0f0'
-        Module = 'CString_00c0e0f0'
-        Source = '00/c0/CString00c0e0f0_Right00c0e0f0_00c0e0f0.cpp'
-        TestSource = '00/c0/CString00c0e0f0_Right00c0e0f0_00c0e0f0_test.cpp'
+        Module = 'CString'
+        Source = '00/c0/CString_Right_00c0e0f0.cpp'
+        TestSource = '00/c0/CString_Right_00c0e0f0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c0e0f0_TEST PASS'
     }
@@ -196411,9 +196411,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c0ad10'
-        Module = '_unattributed'
-        Source = '00/c0/unattributed_DescribeBitset00c0ad10_00c0ad10.cpp'
-        TestSource = '00/c0/unattributed_DescribeBitset00c0ad10_00c0ad10_test.cpp'
+        Module = '_global'
+        Source = '00/c0/global_DescribeBitset00c0ad10_00c0ad10.cpp'
+        TestSource = '00/c0/global_DescribeBitset00c0ad10_00c0ad10_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c0ad10_TEST PASS'
     }
@@ -257384,9 +257384,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c0df50'
-        Module = 'CString_00c0e0f0'
-        Source = '00/c0/CString00c0e0f0_Mid_00c0df50.cpp'
-        TestSource = '00/c0/CString00c0e0f0_Mid_00c0df50_test.cpp'
+        Module = 'CString'
+        Source = '00/c0/CString_Mid_00c0df50.cpp'
+        TestSource = '00/c0/CString_Mid_00c0df50_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c0df50_TEST PASS'
     }
