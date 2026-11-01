@@ -1,5 +1,7 @@
-// CV_SwordInTheStoneScript::CV_SwordInTheStoneScript(void* data, CGameScriptInterface* game) -- quest-script ctor: script base, data/interface pair, own vtable, two empty CScriptThing members (CrowdMemberPullingCurrent/Null) and the CrowdSwordTimer registered with the global script interface
-// Leaf: ??0CV_SwordInTheStoneScript
+// NScript::CV_SwordInTheStoneScript::CV_SwordInTheStoneScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- quest-script ctor: script base, data/interface pair, own vtable, two empty CScriptThing members (CrowdMemberPullingCurrent/Null) and the CrowdSwordTimer registered with the global script interface
+// Leaf: ??0CV_SwordInTheStoneScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+// Naming wave 16 (c671): the PDB parameter pair (CScriptDataBase*, CGameScriptInterfaceBase&) replaces the landed (void*, CGameScriptInterface*) and global-namespace class;
+//   name-only (both are one pushed pointer: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ED4AA0, length 101 bytes (padded to 112), `ret 8`.
 // Callees: CScriptBase::CScriptBase @ 0x00CB8110, CBase::CBase @ 0x0099A2D0 (each CScriptThing's base, x2),
 // g_pGameScriptInterface (0x0143E8F8) slot 87 (+0x15c, RegisterTimer) for the CTimer member.
@@ -22,9 +24,9 @@ inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { 
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"
 struct __declspec(novtable) CQuestScriptObject : CScriptBase {
-    CGameScriptInterface* Game;                    // +0x40 (second argument)
-    void*                 Data;                    // +0x44 (first argument)
-    CQuestScriptObject(void* data, CGameScriptInterface* game) : CScriptBase(), Game(game), Data(data) { }
+    CGameScriptInterfaceBase* Game;                // +0x40 (second argument; Ego_r CLevelScriptBase<T>::Game)
+    CScriptDataBase*          Data;                // +0x44 (first argument)
+    CQuestScriptObject(CScriptDataBase* data, CGameScriptInterfaceBase& game) : CScriptBase(), Game(&game), Data(data) { }
 };
 template <class T> class CCountedPointer { public:
     void* Data;
@@ -39,7 +41,9 @@ inline CScriptThing::CScriptThing() : CBaseClass(), PImp() { }
 inline CScriptThing::~CScriptThing() { }
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
-struct CV_SwordInTheStoneScript : CQuestScriptObject {   // vtable 0x012F301C
+namespace NScript {
+class CV_SwordInTheStoneScript : public CQuestScriptObject {   // vtable 0x012F301C
+public:
     long         SwordRemovalAttemptCount;         // +0x48
     bool         SwordCutscene;                    // +0x4c
     bool         CrowdAttemptingToPullSword;       // +0x4d
@@ -57,9 +61,10 @@ struct CV_SwordInTheStoneScript : CQuestScriptObject {   // vtable 0x012F301C
     CScriptThing CrowdMemberPullingCurrent;        // +0x64
     CScriptThing CrowdMemberPullingNull;           // +0x70
     CTimer       CrowdSwordTimer;                  // +0x7c
-    CV_SwordInTheStoneScript(void* data, CGameScriptInterface* game);
+    CV_SwordInTheStoneScript(CScriptDataBase* data, CGameScriptInterfaceBase& game);
 };
-CV_SwordInTheStoneScript::CV_SwordInTheStoneScript(void* data, CGameScriptInterface* game)
+} // namespace NScript
+NScript::CV_SwordInTheStoneScript::CV_SwordInTheStoneScript(CScriptDataBase* data, CGameScriptInterfaceBase& game)
     : CQuestScriptObject(data, game)
 {
 }

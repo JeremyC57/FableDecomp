@@ -1,5 +1,8 @@
-// CV_FisticuffsClubScript::CV_FisticuffsClubScript(void* data, CGameScriptInterface* game) -- quest-script ctor: script base, interface/data pair, vtable 0x012EAF14, the two fighter timers, the SFighterOne/SFighterTwo/Village script things and the five RegionNames strings
-// Leaf: ??0CV_FisticuffsClubScript
+// NScript::CV_FisticuffsClubScript::CV_FisticuffsClubScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- quest-script ctor: script base, interface/data pair, vtable 0x012EAF14, the two fighter timers, the SFighterOne/SFighterTwo/Village script things and the five RegionNames strings
+// Leaf: ??0CV_FisticuffsClubScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+// Naming wave 16 (c673): the PDB parameter pair (CScriptDataBase*, CGameScriptInterfaceBase&) replaces the landed (void*, CGameScriptInterface*); the user ~CV_FisticuffsClubScript the landed model declared is dropped
+//   (retail's 0x00E8B750 is the implicit destructor, chunk c673);
+//   name-only (both are one pushed pointer: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E81F60, 167 bytes (padded to 176), `ret 8`.
 // Identity: factory 0x00E8B700 (`push 0C8h`, this ctor) registered at 0x00CD8968; size 0xc8 = Ego_r.pdb 220 - 0x14
 //   (the retail CScriptBase is 0x14 bytes smaller), the members line up at PDB - 0x14.
@@ -28,9 +31,9 @@ inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { 
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"
 struct __declspec(novtable) CQuestScriptObject : CScriptBase {   // the argument-carrying intermediate base
-    CGameScriptInterface* Game;                    // +0x40 (second argument)
+    CGameScriptInterfaceBase* Game;                // +0x40 (second argument; Ego_r CLevelScriptBase<T>::Game)
     void*                 Data;                    // +0x44 (first argument, the script data)
-    CQuestScriptObject(void* data, CGameScriptInterface* game) : CScriptBase(), Game(game), Data(data) { }
+    CQuestScriptObject(CScriptDataBase* data, CGameScriptInterfaceBase& game) : CScriptBase(), Game(&game), Data(data) { }
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 #include "engine/CCountedPointer.h"
@@ -66,12 +69,11 @@ public:
     float CheerNumber;                             // +0xac
     float BooNumber;                               // +0xb0
     CCharString RegionNames[5];                    // +0xb4
-    virtual ~CV_FisticuffsClubScript();
-    CV_FisticuffsClubScript(void* data, CGameScriptInterface* game);
+    CV_FisticuffsClubScript(CScriptDataBase* data, CGameScriptInterfaceBase& game);
 };
 } // namespace NScript
 using NScript::CV_FisticuffsClubScript;
-NScript::CV_FisticuffsClubScript::CV_FisticuffsClubScript(void* data, CGameScriptInterface* game)
+NScript::CV_FisticuffsClubScript::CV_FisticuffsClubScript(CScriptDataBase* data, CGameScriptInterfaceBase& game)
     : CQuestScriptObject(data, game)
 {
 }

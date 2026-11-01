@@ -173014,9 +173014,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e8b700'
-        Module = '_global'
-        Source = '00/e8/global_CreateCClass00e81f6000e8b700_00e8b700.cpp'
-        TestSource = '00/e8/global_CreateCClass00e81f6000e8b700_00e8b700_test.cpp'
+        Module = 'NScript::CV_FisticuffsClubScript'
+        Source = '00/e8/NScriptCVFisticuffsClubScript_Alloc_00e8b700.cpp'
+        TestSource = '00/e8/NScriptCVFisticuffsClubScript_Alloc_00e8b700_test.cpp'
         PassPattern = '00e8b700_TEST PASS'
     }
     [pscustomobject]@{
@@ -173028,9 +173028,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ee6c00'
-        Module = '_global'
-        Source = '00/ee/global_CreateCClass00ee41f000ee6c00_00ee6c00.cpp'
-        TestSource = '00/ee/global_CreateCClass00ee41f000ee6c00_00ee6c00_test.cpp'
+        Module = 'NScript::CV_TourGuideScript'
+        Source = '00/ee/NScriptCVTourGuideScript_Alloc_00ee6c00.cpp'
+        TestSource = '00/ee/NScriptCVTourGuideScript_Alloc_00ee6c00_test.cpp'
         PassPattern = '00ee6c00_TEST PASS'
     }
     [pscustomobject]@{
@@ -234430,9 +234430,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ed4aa0'
-        Module = 'CV_SwordInTheStoneScript'
-        Source = '00/ed/CVSwordInTheStoneScript_CVSwordInTheStoneScript_00ed4aa0.cpp'
-        TestSource = '00/ed/CVSwordInTheStoneScript_CVSwordInTheStoneScript_00ed4aa0_test.cpp'
+        Module = 'NScript::CV_SwordInTheStoneScript'
+        Source = '00/ed/NScriptCVSwordInTheStoneScript_CVSwordInTheStoneScript_00ed4aa0.cpp'
+        TestSource = '00/ed/NScriptCVSwordInTheStoneScript_CVSwordInTheStoneScript_00ed4aa0_test.cpp'
         PassPattern = '00ed4aa0_TEST PASS'
     }
     [pscustomobject]@{

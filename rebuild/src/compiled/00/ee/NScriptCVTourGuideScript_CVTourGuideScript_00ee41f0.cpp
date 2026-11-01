@@ -1,5 +1,8 @@
-// NScript::CV_TourGuideScript::CV_TourGuideScript(CScriptDataBase* data, CGameScriptInterface& game) -- the tour-guide village script's ctor: script base and interface/data pair, vtable 0x012F46B8, the 18 waypoint records (three strings each), the three five-string response tables and the NextTourWaypoint handle
-// Leaf: ??0CV_TourGuideScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterface@@@Z
+// NScript::CV_TourGuideScript::CV_TourGuideScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- the tour-guide village script's ctor: script base and interface/data pair, vtable 0x012F46B8, the 18 waypoint records (three strings each), the three five-string response tables and the NextTourWaypoint handle
+// Leaf: ??0CV_TourGuideScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+// Naming wave 16 (c673): the PDB parameter pair (CScriptDataBase*, CGameScriptInterfaceBase&) replaces the landed CGameScriptInterface& parameter; the user ~CV_TourGuideScript the landed model declared is dropped
+//   (retail's 0x00EE6C50 is the implicit destructor, chunk c673);
+//   name-only (both are one pushed pointer: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EE41F0, 176 bytes, `ret 8`. Its only caller is the factory 0x00EE6C00
 //   (`push 178h`, CV_TourGuideScript::Alloc) registered at 0x00CD97BC under "S_VTG" / "V_TourGuide". PDB:
 //   ??0CV_TourGuideScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z.
@@ -13,7 +16,7 @@
 //   `__declspec(novtable)` CLevelScriptBase<T> before the derived vtable store; arrays of classes with an inline constructor
 //   and no destructor in the TU become inline counted loops (`mov ebx,12h` ... `dec ebx ; jne`); the scalars stay
 //   uninitialised; CScriptThing() is CBaseClass() + its vtable + the two zeroed counted-pointer words.
-class CGameScriptInterface;
+class CGameScriptInterfaceBase;
 class CScriptDataBase;
 class CScriptBase { public:                                    // 0x40 bytes, the quest-script root
     virtual ~CScriptBase();
@@ -22,9 +25,9 @@ class CScriptBase { public:                                    // 0x40 bytes, th
 };
 template <class TData>
 struct __declspec(novtable) CLevelScriptBase : CScriptBase {
-    CGameScriptInterface* Game;                         // +0x40
+    CGameScriptInterfaceBase* Game;                     // +0x40
     TData*                MasterScriptData;             // +0x44
-    CLevelScriptBase(CScriptDataBase* data, CGameScriptInterface& game) : CScriptBase(), Game(&game), MasterScriptData((TData*)data) { }
+    CLevelScriptBase(CScriptDataBase* data, CGameScriptInterfaceBase& game) : CScriptBase(), Game(&game), MasterScriptData((TData*)data) { }
 };
 class CCharString { public: void* PStringData; CCharString(); };   // default ctor 0x0099E4B0
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
@@ -59,10 +62,9 @@ public:
     CScriptThing NextTourWaypoint;                      // +0x168
     bool GuideSpokenToHeroThisWaypoint;                 // +0x174
     bool OverheardTourGuideThisWaypoint;                // +0x175
-    virtual ~CV_TourGuideScript();
-    CV_TourGuideScript(CScriptDataBase* data, CGameScriptInterface& game);
+    CV_TourGuideScript(CScriptDataBase* data, CGameScriptInterfaceBase& game);
 };
-CV_TourGuideScript::CV_TourGuideScript(CScriptDataBase* data, CGameScriptInterface& game)
+CV_TourGuideScript::CV_TourGuideScript(CScriptDataBase* data, CGameScriptInterfaceBase& game)
     : CLevelScriptBase<CQ_SunnyvaleMasterData>(data, game)
 {
 }

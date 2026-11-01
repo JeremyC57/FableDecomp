@@ -1,5 +1,7 @@
-// CQ_ArenaScript::CQ_ArenaScript(void* owner, CGameScriptInterface* game) -- quest-script constructor: script base, interface/owner pair, vtable 0x012C7798, twenty empty crowd-loop tags, an empty Rounds vector, two empty CScriptThing members and a registered crowd timer
-// Leaf: ??0CQ_ArenaScript
+// NScript::CQ_ArenaScript::CQ_ArenaScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- quest-script constructor: script base, interface/owner pair, vtable 0x012C7798, twenty empty crowd-loop tags, an empty Rounds vector, two empty CScriptThing members and a registered crowd timer
+// Leaf: ??0CQ_ArenaScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+// Naming wave 16 (c673): the PDB parameter pair (CScriptDataBase*, CGameScriptInterfaceBase&) replaces the landed (void* owner, CGameScriptInterface*);
+//   name-only (both are one pushed pointer: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CFA660, length 149 bytes, `ret 8`.
 // Callees: CScriptBase::CScriptBase @ 0x00CB8110, CCharString::CCharString() @ 0x0099E4B0 (20 times, inline counted
 // loop), CBaseClass::CBaseClass @ 0x0099A2D0 (the CScriptThing root, twice; CScriptThing vtable 0x01238C8C), and
@@ -34,9 +36,9 @@ inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { 
 #include "engine/CScriptBase.h"
 
 struct __declspec(novtable) CScriptObject : CScriptBase {
-    CGameScriptInterface* m_pGame;                   // +0x40
-    void* m_pOwner;                                  // +0x44
-    CScriptObject(void* owner, CGameScriptInterface* game) : CScriptBase(), m_pGame(game), m_pOwner(owner) { }
+    CGameScriptInterfaceBase* m_pGame;               // +0x40 (Ego_r CLevelScriptBase<T>::Game)
+    CScriptDataBase* m_pOwner;                       // +0x44
+    CScriptObject(CScriptDataBase* data, CGameScriptInterfaceBase& game) : CScriptBase(), m_pGame(&game), m_pOwner(data) { }
 };
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
@@ -114,12 +116,12 @@ public:              // vtable 0x012C7798
     bool         WhisperNeededForCutscene;           // +0x115
     long         StopTimeIndex;                      // +0x118
     virtual void v00();
-    CQ_ArenaScript(void* owner, CGameScriptInterface* game);
+    CQ_ArenaScript(CScriptDataBase* data, CGameScriptInterfaceBase& game);
 };
 } // namespace NScript
 using NScript::CQ_ArenaScript;
 
-NScript::CQ_ArenaScript::CQ_ArenaScript(void* owner, CGameScriptInterface* game)
-    : CScriptObject(owner, game)
+NScript::CQ_ArenaScript::CQ_ArenaScript(CScriptDataBase* data, CGameScriptInterfaceBase& game)
+    : CScriptObject(data, game)
 {
 }

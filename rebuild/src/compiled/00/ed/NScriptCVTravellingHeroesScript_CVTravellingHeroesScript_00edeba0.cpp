@@ -1,5 +1,7 @@
-// CV_TravellingHeroesScript::CV_TravellingHeroesScript(CScriptDataBase*, CGameScriptInterface&) -- quest-script ctor: script base, interface/data pair, own vtable, the three hero handles and the empty cutscene-argument map
-// Leaf: ??0CV_TravellingHeroesScript
+// NScript::CV_TravellingHeroesScript::CV_TravellingHeroesScript(CScriptDataBase*, CGameScriptInterfaceBase&) -- quest-script ctor: script base, interface/data pair, own vtable, the three hero handles and the empty cutscene-argument map
+// Leaf: ??0CV_TravellingHeroesScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+// Naming wave 16 (c673): the PDB parameter pair (CScriptDataBase*, CGameScriptInterfaceBase&) replaces the landed (CScriptDataBase*, CGameScriptInterface&);
+//   name-only (both are one pushed pointer: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EDEBA0, length 161 bytes, `ret 8`; vtable 0x012F407C; built by the factory
 // 0x00EE40A0 (registered as "V_TravellingHeroes" / "S_VTH", `push 8Ch` = Ego_r.pdb 0xa4 - 0x18). The catalog label
 // CQ_WizardBattleScript::CQ_WizardBattleScript is propagated (that ctor is the landed 0x00E1A800).
@@ -76,9 +78,9 @@ class CScriptDataBase;
 #include "engine/CScriptBase.h"
 
 struct __declspec(novtable) CQuestScriptBase : CScriptBase {   // the argument pair stored before the derived vtable
-    CGameScriptInterface* GSI;                           // +0x40
+    CGameScriptInterfaceBase* GSI;                       // +0x40 (Ego_r CLevelScriptBase<T>::Game)
     CScriptDataBase*      Data;                          // +0x44
-    CQuestScriptBase(CScriptDataBase* data, CGameScriptInterface* gsi) : CScriptBase(), GSI(gsi), Data(data) {}
+    CQuestScriptBase(CScriptDataBase* data, CGameScriptInterfaceBase& gsi) : CScriptBase(), GSI(&gsi), Data(data) {}
 };
 
 namespace NScript {
@@ -95,12 +97,12 @@ public:    // vtable 0x012F407C
     bool SnowTrollSceneDone;                             // +0x7d
     map<0x18> csargs;                                    // +0x80 map<CCharString, CCharString>
     virtual void v00();
-    CV_TravellingHeroesScript(CScriptDataBase* data, CGameScriptInterface& gsi);
+    CV_TravellingHeroesScript(CScriptDataBase* data, CGameScriptInterfaceBase& gsi);
 };
 } // namespace NScript
 using NScript::CV_TravellingHeroesScript;
 
-NScript::CV_TravellingHeroesScript::CV_TravellingHeroesScript(CScriptDataBase* data, CGameScriptInterface& gsi)
-    : CQuestScriptBase(data, &gsi)
+NScript::CV_TravellingHeroesScript::CV_TravellingHeroesScript(CScriptDataBase* data, CGameScriptInterfaceBase& gsi)
+    : CQuestScriptBase(data, gsi)
 {
 }
