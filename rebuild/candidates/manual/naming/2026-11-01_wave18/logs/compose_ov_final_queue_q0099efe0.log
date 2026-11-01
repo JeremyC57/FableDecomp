@@ -1,0 +1,3 @@
+skip 00908090 moved FableEffectResult_00908090::ctor -> operator= x1 :: compile: ld\src\compiled\00\90\CCreatureActionTrollAngryGroundPound_GetEffectName_00908090.cpp(11) : error C2440: 'type cast' : cannot convert from 'const CCharString' to 'void *'
+skip 00908140 moved FableEffectResult_00908140::ctor -> operator= x1 :: compile: ld\src\compiled\00\90\CCreatureActionTrollProjectileAttack_GetEffectName_00908140.cpp(11) : error C2440: 'type cast' : cannot convert from 'const CCharString' to 'void *'
+skip 009081d0 moved FableEffectResult_009081d0::ctor -> operator= x1 :: compile: inal\rebuild\src\compiled\00\90\CCreatureActionTrollTunnel_GetEffectName_009081d0.cpp(11) : error C2440: 'type cast' : cannot convert from 'const CCharString' to 'void *'

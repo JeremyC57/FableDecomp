@@ -1,0 +1,53 @@
+skip 0058400a template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 005a30a1 2 CInterfaceMap::LowerBound declarations
+skip 005a45f6 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 005a731f template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 005cdd86 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 0062b7c0 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 0065a1fd template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 00689130 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 00693140 0 definitions of CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>>
+skip 00698a30 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 0069e980 2 CTCMap::LowerBound declarations
+skip 006cf3b0 0 definitions of CVectorMap<enum ETCInterfaceType, class CTCBase *>
+skip 006d53c0 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 006e7820 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 006e7920 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 006eb390 2 CInterfaceMap::LowerBound declarations
+skip 00717710 2 CInterfaceMap::LowerBound declarations
+skip 00747da0 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 00766550 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 007b2d50 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 007be0f9 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 007de030 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 007ee8f0 2 CInterfaceMap::LowerBound declarations
+skip 007f01f0 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 0082de20 2 CInterfaceMap::LowerBound declarations
+skip 00847c90 2 CInterfaceMap::LowerBound declarations
+skip 00849700 2 CInterfaceMap::LowerBound declarations
+skip 008621a0 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 00896e60 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 00896f60 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 00896fd0 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 00898b30 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 00898bb0 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 0089a270 free stand-in VMap_LowerBound not a one-argument this-call
+skip 0089ae30 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 0089b390 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 0089c4c0 free stand-in EntVec_LowerBound not a one-argument this-call
+skip 0089dff0 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 0089e4c0 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 0089ec60 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 0089ecc0 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 008af5f0 2 CInterfaceMap::LowerBound declarations
+skip 008af780 2 CInterfaceMap::LowerBound declarations
+skip 008d89c0 2 CInterfaceMap::LowerBound declarations
+skip 008dcb60 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 0090bd40 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 00915190 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 00927c80 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 00929b10 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 00935ad0 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 009547d0 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 00954e30 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model
+skip 00972490 template class CVectorMap<enum ETCInterfaceType, class CTCBase *, class CKeyPairCompareLess<enum ETCInterfaceType, class CTCBase *>> needs a bespoke model

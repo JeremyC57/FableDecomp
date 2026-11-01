@@ -1,0 +1,1 @@
+skip 009d0380 non-public ReadEntryList: CBankFile_Retail is not an RTTI-derived class of the row (CBankFile::ReadRecoveryFile)

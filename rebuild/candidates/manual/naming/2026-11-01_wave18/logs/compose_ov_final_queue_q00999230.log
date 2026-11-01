@@ -1,0 +1,5 @@
+skip 00401f30 call of PathExists with 0 args
+edited 0040d350 freestatic ::PathExists -> PathExists x1 +u ['?PathExists@CAFile@@SI_NABVCWideString@@@Z'] -u ['?PathExists@@YI_NABVCWideString@@@Z']
+edited 00506d40 freestatic ::PathExists -> PathExists x1 +u ['?PathExists@CAFile@@SI_NABVCWideString@@@Z'] -u ['?PathExists@@YI_NABVCWideString@@@Z']
+skip 0066ca80 call of Check with 0 args
+skip 00999620 CAFile defined in another scope

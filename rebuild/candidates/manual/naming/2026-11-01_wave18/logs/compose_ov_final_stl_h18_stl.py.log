@@ -1,0 +1,9 @@
+ok 007acc50 ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@_N@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@_N@std@@@3@U?$less@VCCharString@@@3@V?$al
+ok 00579435 ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@K@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@K@std@@@3@U?$less@VCCharString@@@3@V?$allo
+ok 00b2ef20 ?_M_erase@?$_Rb_tree@U?$pair@JJ@std@@U?$pair@$$CBU?$pair@JJ@std@@VCEngineTextureMorph@@@2@U?$_Select1st@U?$pair@$$CBU?$pair@JJ@std@@VCEngineTextureMor
+ok 00b2ea90 ?clear@?$_List_base@V?$CCountedPointer@VCCompositeSurfaceCache@@@@V?$allocator@V?$CCountedPointer@VCCompositeSurfaceCache@@@@@std@@@std@@QAEXXZ
+ok 009c2220 ??1?$_List_base@PAVCDeviceResetCallback@@V?$allocator@PAVCDeviceResetCallback@@@std@@@std@@QAE@XZ
+ok 004e34b2 ??1?$vector@U?$pair@JVCCharString@@@std@@V?$allocator@U?$pair@JVCCharString@@@std@@@2@@std@@QAE@XZ
+ok 004dd782 ??$__destroy_aux@PAU?$pair@JVCCharString@@@std@@@std@@YIXPAU?$pair@JVCCharString@@@0@0ABU__false_type@0@@Z
+ok 004da68a ??_G?$pair@JVCCharString@@@std@@QAEPAXI@Z
+ok 00b7fd00 ?resize@?$vector@VCTVertexWaterBackground@@V?$allocator@VCTVertexWaterBackground@@@std@@@std@@QAEXIABVCTVertexWaterBackground@@@Z

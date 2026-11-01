@@ -1,0 +1,369 @@
+skip 004069e0 no stand-in identifier
+skip 00406a80 no stand-in identifier
+skip 00406c20 no stand-in identifier
+edited 00406cc0 g_pMainGameComponent x7 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00407370 g_pMainGameComponent x6 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 004083e0 g_pMainGameComponent typed void
+edited 00408a70 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 004175e5 stand-in g_pGame typed void
+skip 0041cf47 0 definitions of stand-in class CEngine
+edited 0041cfb2 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0041d122 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0041d165 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 0041db84 no stand-in identifier
+edited 00435070 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00438310 g_pMainGameComponent x4 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00446330 g_pMainGameComponent x3 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00446720 g_pMainGameComponent x4 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0047d21c g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0047d78b g_pMainGameComponent x3 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0047d9e3 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 0047db73 no stand-in identifier
+edited 0047dc69 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0047e941 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0047eee4 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00487cf0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0048dd94 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 0048de44 no stand-in identifier
+edited 0048df77 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 0048e072 no stand-in identifier
+edited 0048f6bd g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0048f939 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00490927 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00490a22 g_pMainGameComponent x4 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00492bab g_pMainGameComponent x4 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0049319c g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 00497b30 no stand-in identifier
+edited 0049daa0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0049f180 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 004a0370 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 004a0940 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 004afca0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 004b1720 class CEngine -> CMainGameComponent g_pEngine x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngine@@3PAVCEngine@@A']
+edited 004b1ba0 class CEngine -> CMainGameComponent g_pEngine x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngine@@3PAVCEngine@@A']
+edited 004b4490 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 004b4c50 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 004c9690 class CEngine -> CMainGameComponent g_pEngine x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngine@@3PAVCEngine@@A']
+edited 004cea60 CUnprovenGlobal_013b86a0 x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?CUnprovenGlobal_013b86a0@@3PAVCMainGameComponent@@A']
+edited 004ff570 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0051f980 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0051fa00 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00522720 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00523b40 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 00541e60 class Game -> CMainGameComponent Game_013b86a0 x2 :: final not named (+['?PMainGameComponent@CMainGameComponent@@1PAU1@A'] -['?Game_013b86a0@@3PAUGame@@A'])
+skip 00541f20 class Game -> CMainGameComponent Game_013b86a0 x2 :: final not named (+['?PMainGameComponent@CMainGameComponent@@1PAU1@A'] -['?Game_013b86a0@@3PAUGame@@A'])
+skip 00542140 0 extern declarations of Game_013b86a0
+edited 0054f370 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0054f410 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00558170 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0055d5d0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0055d6c0 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0055d770 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0055e6b0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 00563130 class CEngineGlobals -> CMainGameComponent g_pEngineGlobals_013b86a0 x1 :: final not named (+['?PMainGameComponent@CMainGameComponent@@1PAU1@A'] -['?g_pEngineGlobals_013b86a0@@3PAUCEngineGlobals@@A'])
+skip 00563410 class CEngineGlobals -> CMainGameComponent g_pEngineGlobals_013b86a0 x1 :: final not named (+['?PMainGameComponent@CMainGameComponent@@1PAU1@A'] -['?g_pEngineGlobals_013b86a0@@3PAUCEngineGlobals@@A'])
+skip 0056a880 stand-in g_pEngine typed CEngineCalls
+skip 0056a980 stand-in g_pEngine typed CEngineCalls
+edited 0056be00 class CEngine -> CMainGameComponent g_pEngine x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngine@@3PAVCEngine@@A']
+skip 0056ed08 class CEngineGlobals -> CMainGameComponent g_pEngineGlobals x1 :: final not named (+['?PMainGameComponent@CMainGameComponent@@1PAU1@A'] -['?g_pEngineGlobals@@3PAUCEngineGlobals@@A'])
+edited 0056fad7 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0056fbed g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00570009 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005701da g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0057a7b9 class CEngine -> CMainGameComponent g_pEngine x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngine@@3PAVCEngine@@A']
+skip 0057a989 class CEngineGlobals -> CMainGameComponent g_pEngineGlobals x1 :: final not named (+['?PMainGameComponent@CMainGameComponent@@1PAU1@A'] -['?g_pEngineGlobals@@3PAUCEngineGlobals@@A'])
+skip 0057ad4c stand-in g_pWorld typed CWorldGlobal
+skip 00581c1e no stand-in identifier
+edited 005820e7 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00582673 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00587847 class CEngine -> CMainGameComponent g_pEngine x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngine@@3PAVCEngine@@A']
+skip 00587b93 class CEngineGlobals -> CMainGameComponent g_pEngineGlobals x1 :: final not named (+['?PMainGameComponent@CMainGameComponent@@1PAU1@A'] -['?g_pEngineGlobals@@3PAUCEngineGlobals@@A'])
+edited 00589d30 class CEngine -> CMainGameComponent g_pEngine x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngine@@3PAVCEngine@@A']
+edited 0058ef79 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00590198 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0059cb90 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0059d820 class CEngine -> CMainGameComponent g_pEngine x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngine@@3PAVCEngine@@A']
+edited 0059da10 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0059e2c7 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0059f304 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005a30a1 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005a3436 class CEngine -> CMainGameComponent g_pEngine x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngine@@3PAVCEngine@@A']
+edited 005a3581 class CEngine -> CMainGameComponent g_pEngine x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngine@@3PAVCEngine@@A']
+edited 005a45f6 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005a731f g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005a8a5d g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005ae86b g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005b358c g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005b3613 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005b5cf8 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005b62fe g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 005b6881 class CEngineGlobals -> CMainGameComponent g_pEngineGlobals x1 :: final not named (+['?PMainGameComponent@CMainGameComponent@@1PAU1@A'] -['?g_pEngineGlobals@@3PAUCEngineGlobals@@A'])
+edited 005bc527 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005bd273 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005bd82e g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005bd8a0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005bda1d g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005be3b1 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005be62c g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005c323a g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005c3444 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005c770c g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005cc772 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005cc862 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005cc9ad g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005ccbbd g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005ccc91 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 005cd433 class CEngineGlobals -> CMainGameComponent g_pEngineGlobals x1 :: final not named (+['?PMainGameComponent@CMainGameComponent@@1PAU1@A'] -['?g_pEngineGlobals@@3PAUCEngineGlobals@@A'])
+edited 005cdd86 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005d9070 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005d95c0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005d9630 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005db6b0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005dbfd0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005e3df0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005e3ea0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005e41e0 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005e9c50 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005e9d60 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005e9e70 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005eadc0 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005eaf30 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005eb080 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005eb3a0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005eb4b0 class CWorld -> CMainGameComponent g_pWorld x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pWorld@@3PAVCWorld@@A']
+edited 005ec0f0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005ec650 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005ee99d g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005fad40 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005faf50 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005fb8f0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 005fce60 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 006116e0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00621720 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00621c80 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00625ed0 class CEngine -> CMainGameComponent g_pEngine x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngine@@3PAVCEngine@@A']
+edited 006276f0 g_pMainGameComponent x5 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00633d80 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00633f10 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00633ff0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 00639ba0 stand-in g_pWorld typed CWorldGlobal
+edited 0063e480 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 00640000 class CGlobalObject -> CMainGameComponent g_object_013b86a0 x1 :: final not named (+['?PMainGameComponent@CMainGameComponent@@1PAU1@A'] -['?g_object_013b86a0@@3PAUCGlobalObject@@A'])
+skip 00640010 class CGlobalObject -> CMainGameComponent g_object_013b86a0 x1 :: final not named (+['?PMainGameComponent@CMainGameComponent@@1PAU1@A'] -['?g_object_013b86a0@@3PAUCGlobalObject@@A'])
+skip 00640020 class CGlobalObject -> CMainGameComponent g_object_013b86a0 x1 :: final not named (+['?PMainGameComponent@CMainGameComponent@@1PAU1@A'] -['?g_object_013b86a0@@3PAUCGlobalObject@@A'])
+skip 00640030 class CGlobalObject -> CMainGameComponent g_object_013b86a0 x1 :: final not named (+['?PMainGameComponent@CMainGameComponent@@1PAU1@A'] -['?g_object_013b86a0@@3PAUCGlobalObject@@A'])
+edited 006463ff class CGame -> CMainGameComponent g_pGame x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pGame@@3PAVCGame@@A']
+edited 00646c44 class CGame -> CMainGameComponent g_pGame x3 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pGame@@3PAVCGame@@A']
+edited 00646dbd g_pMainGameComponent x4 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0064a568 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0064d6a8 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00657240 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00657280 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 006572a0 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00659164 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 0065a075 no stand-in identifier
+edited 0065a1fd g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0065a28f g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0065a5bb g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0065a686 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0065a7a9 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0065c146 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0065c1fc g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0065c2d0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0065c781 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0066ba80 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0066bed0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0066e742 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0066e985 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0066fc90 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00687fd0 g_pMainGameComponent x3 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0068ae30 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0068b2e0 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0068b7c0 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0068e3c0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0068eb20 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00690030 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00690480 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 00690830 g_pMainGameComponent typed CMainGameComponentView
+edited 00691560 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 006946c0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 00697860 no stand-in identifier
+skip 00697e20 no stand-in identifier
+skip 00699b00 no stand-in identifier
+skip 0069a8b0 no stand-in identifier
+edited 0069a920 class CEngine -> CMainGameComponent g_pEngine x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngine@@3PAVCEngine@@A']
+edited 0069a990 g_pMainGameComponent x3 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0069ad10 class CEngine -> CMainGameComponent g_pEngine x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngine@@3PAVCEngine@@A']
+edited 0069b610 class CEngine -> CMainGameComponent g_pEngine x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngine@@3PAVCEngine@@A']
+edited 0069e980 g_MainGameComponent_013b86a0 x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_MainGameComponent_013b86a0@@3PAVCMainGameComponent@@A']
+edited 006b1580 class CGame -> CMainGameComponent g_pGame x3 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pGame@@3PAVCGame@@A']
+edited 006b15c0 class CGame -> CMainGameComponent g_pGame x3 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pGame@@3PAVCGame@@A']
+edited 006b1f30 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 006b32b0 stand-in g_pEngineGlobals_013b86a0 typed CEngineGlobals_006b32b0
+edited 006c1150 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 006ca0a0 class CEngine -> CMainGameComponent g_pEngine x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngine@@3PAVCEngine@@A']
+edited 006cebf0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 006cef20 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 006cf1d0 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 006cf920 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 006cff10 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 006d0020 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 006d0590 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 006d7960 class CGameTextManager -> CMainGameComponent g_GameText x1 :: final not named (+['?PMainGameComponent@CMainGameComponent@@1PAU1@A'] -['?g_GameText@@3PAUCGameTextManager@@A'])
+edited 006dd760 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 006dd7e0 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 006dda50 class CEngineGlobals -> CMainGameComponent g_pEngineGlobals x1 :: final not named (+['?PMainGameComponent@CMainGameComponent@@1PAU1@A'] -['?g_pEngineGlobals@@3PAUCEngineGlobals@@A'])
+edited 006df480 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 006e11f0 0 extern declarations of g_pMainGameComponent
+skip 006e28a0 class CWorld -> CMainGameComponent g_pWorld x1 :: diff -['?g_pWorld@@3PAVCWorld@@A', '?GetFrame@CWorld@@QAEJXZ'] +['?GetFrame@CMainGameComponent@@QAEJXZ', '?PMainGameComponent@CMainGameComponent@@1PAV1@A']
+skip 006e28d0 class CWorld -> CMainGameComponent g_pWorld x1 :: diff -['?g_pWorld@@3PAVCWorld@@A', '?GetFrame@CWorld@@QAEJXZ'] +['?GetFrame@CMainGameComponent@@QAEJXZ', '?PMainGameComponent@CMainGameComponent@@1PAV1@A']
+edited 006e2910 class CWorld -> CMainGameComponent g_pWorld x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pWorld@@3PAVCWorld@@A']
+skip 006e2dc0 class CWorld -> CMainGameComponent g_pWorld x1 :: diff -['?g_pWorld@@3PAVCWorld@@A', '?GetFrame@CWorld@@QAEJXZ'] +['?GetFrame@CMainGameComponent@@QAEJXZ', '?PMainGameComponent@CMainGameComponent@@1PAV1@A']
+edited 006e2e60 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 006e37d0 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 006e3ab0 no stand-in identifier
+edited 00702310 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00702400 class CEngine -> CMainGameComponent g_pEngine x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngine@@3PAVCEngine@@A']
+edited 00702470 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00702630 class CEngine -> CMainGameComponent g_pEngine x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngine@@3PAVCEngine@@A']
+edited 00704a80 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 0070c0d0 no stand-in identifier
+edited 0070c330 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0070c590 g_PMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_PMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0070c800 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0070e520 g_pMainGameComponent x4 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 007173d0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 0071c790 no stand-in identifier
+edited 0071ce80 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0071d3b0 class CEngine -> CMainGameComponent g_pEngine x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngine@@3PAVCEngine@@A']
+edited 00726340 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0072db00 class CEngine -> CMainGameComponent g_pEngine x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngine@@3PAVCEngine@@A']
+edited 0072e710 g_pMainGameComponent x4 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0072e810 g_pMainGameComponent x5 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0072e940 g_pMainGameComponent x8 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 007317d0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 00731970 class CEngineGlobals -> CMainGameComponent g_pEngineGlobals x1 :: final not named (+['?PMainGameComponent@CMainGameComponent@@1PAU1@A'] -['?g_pEngineGlobals@@3PAUCEngineGlobals@@A'])
+skip 007319a0 class CEngineGlobals -> CMainGameComponent g_pEngineGlobals x1 :: final not named (+['?PMainGameComponent@CMainGameComponent@@1PAU1@A'] -['?g_pEngineGlobals@@3PAUCEngineGlobals@@A'])
+edited 00736910 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0074ee90 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00765f90 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0076cfe0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 0076deb0 stand-in g_pEngine typed CEngineCalls
+edited 007713c0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00771540 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00773b20 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00773c90 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 007795a0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 007796b0 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0077d4b0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0077fb00 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 007800b0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 007b2e20 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 007b2fd0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 007bedf0 no stand-in identifier
+edited 007c0e80 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 007ca670 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 007d0850 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 007d4410 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 007d5730 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 007d6f70 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 007d8ab0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 007dab60 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 007df4b0 g_pMainGameComponent typed CMainGameComponentFontView
+edited 007dff90 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 007e27f0 class CGameTextManager -> CMainGameComponent g_GameText x5 :: final not named (+['?PMainGameComponent@CMainGameComponent@@1PAU1@A'] -['?g_GameText@@3PAUCGameTextManager@@A'])
+edited 007e4d70 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 007e5230 g_pMainGameComponent x7 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 007e5ff0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 007e60f0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 007e62d0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 007e7580 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 007e7ac0 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 007e7c00 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 007f0300 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 007f4b60 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00805fe0 class CWorld -> CMainGameComponent g_pWorld x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pWorld@@3PAVCWorld@@A']
+edited 00806910 class CWorld -> CMainGameComponent g_pWorld x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pWorld@@3PAVCWorld@@A']
+edited 00806990 class CWorld -> CMainGameComponent g_pWorld x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pWorld@@3PAVCWorld@@A']
+edited 00807520 class CWorld -> CMainGameComponent g_pWorld x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pWorld@@3PAVCWorld@@A']
+edited 00808950 class CWorld -> CMainGameComponent g_pWorld x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pWorld@@3PAVCWorld@@A']
+edited 00809650 class CWorld -> CMainGameComponent g_pWorld x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pWorld@@3PAVCWorld@@A']
+edited 0080a240 class CWorld -> CMainGameComponent g_pWorld x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pWorld@@3PAVCWorld@@A']
+edited 0080ffb0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 008139c0 g_pMainGameComponent x4 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 0081f460 class CEngineGlobals -> CMainGameComponent g_pEngineGlobals_013b86a0 x1 :: final not named (+['?PMainGameComponent@CMainGameComponent@@1PAU1@A'] -['?g_pEngineGlobals_013b86a0@@3PAUCEngineGlobals@@A'])
+edited 00829d90 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 0082a180 no stand-in identifier
+edited 0082a960 class CGame -> CMainGameComponent g_pGame x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pGame@@3PAVCGame@@A']
+edited 0082a9b0 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0082abd0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0082acd0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0082add0 class CGame -> CMainGameComponent g_pGame x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pGame@@3PAVCGame@@A']
+edited 0082ae80 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0082b520 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0082b630 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0082ba00 class CGame -> CMainGameComponent g_pGame x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pGame@@3PAVCGame@@A']
+edited 0082be60 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 008367b0 class CEngine -> CMainGameComponent g_pEngine x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngine@@3PAVCEngine@@A']
+edited 00859040 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0085f470 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0085f560 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00862780 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 008718b0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 0088e150 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 0088f570 stand-in g_pEngine typed CEngine_Retail
+skip 00890550 no stand-in identifier
+edited 008905b0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 008905e0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00890610 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00890640 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 00890670 no stand-in identifier
+skip 00890b70 no stand-in identifier
+skip 00890c80 0 extern declarations of g_MainGameComponent
+skip 00890d80 0 extern declarations of g_MainGameComponent
+skip 00890ff0 no stand-in identifier
+edited 00891170 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 00891340 stand-in g_pEngineGlobals_013b86a0 typed CEngineGlobals_Retail
+skip 008913a0 no stand-in identifier
+skip 008913c0 no stand-in identifier
+edited 00891940 class CEngine -> CMainGameComponent g_pEngine x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngine@@3PAVCEngine@@A']
+edited 00891a00 class CEngine -> CMainGameComponent g_pEngine x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngine@@3PAVCEngine@@A']
+skip 00892070 stand-in g_pEngineGlobals_013b86a0 typed CEngineGlobals_Retail
+skip 00892850 stand-in g_pEngine typed CEngine_Retail
+skip 008981c0 stand-in g_pEngine typed CEngine_Retail
+edited 0089ad90 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 008a0a20 0 extern declarations of g_MainGameComponent
+edited 008a0cb0 g_pMainGameComponent x3 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 008af1e0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 008af5f0 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 008af780 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 008af850 no stand-in identifier
+skip 008d74b0 stand-in g_pGame typed NCreatureMode::CGame
+edited 008d7510 class CEngine -> CMainGameComponent g_pEngine x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngine@@3PAVCEngine@@A']
+edited 008d90b0 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 008e9080 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 008e9110 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 008e9460 stand-in g_pEngine typed CEngineCalls
+edited 008eddd0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 008ee5a0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 008ee600 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 008ee660 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 008ee6c0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 008ee720 stand-in g_pEngine typed CEngineSingleton
+edited 008f3e70 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 008f40b0 no stand-in identifier
+edited 008f47e0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 008f7860 no stand-in identifier
+skip 00907010 g_pMainGameComponent typed CMainGameComponent_Retail
+edited 00908da0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00908de0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 00909070 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 009098e0 g_pMainGameComponent typed CMainGameComponent_Retail
+skip 0090c1a0 g_pMainGameComponent typed CGameGlobals
+edited 0090c2d0 g_pMainGameComponent x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+edited 009261f0 class CGame -> CMainGameComponent g_pGame x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pGame@@3PAVCGame@@A']
+skip 00929650 no stand-in identifier
+edited 00929820 g_pMainGameComponent x2 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pMainGameComponent@@3PAVCMainGameComponent@@A']
+skip 0095e790 class CEngine -> CMainGameComponent g_pEngine x1 :: new defined ['?GetPlayerManager@CMainGameComponent@@QBEPAVCPlayerManager@@XZ']
+skip 0095f9a0 class CWorld -> CMainGameComponent g_pWorld x1 :: diff -['?g_pWorld@@3PAVCWorld@@A', '?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ', '?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] +['?PeekMyPlayer@CMainGameComponent@@QBEPBVCPlayer@@XZ', '?GetWorld@CAIStateGroupBase@@IBEAAVCMainGameComponent@@XZ', '?PMainGameComponent@CMainGameComponent@@1PAV1@A']
+edited 00981350 class CEngine -> CMainGameComponent g_pEngine x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngine@@3PAVCEngine@@A']

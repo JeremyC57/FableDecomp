@@ -1,0 +1,1 @@
+skip 00487fb0 moved CPlayerManagerCalls::GetMainPlayerNumber -> GetMainPlayerNumber x1 :: compile: hpad\naming\w18\ov_final\rebuild\src\compiled\00\48\CPlayer_InitPlayerGui_00487fb0.cpp(49) : error C2039: 'GetMainPlayerNumber' : is not a member of 'CPlayerManagerCalls'

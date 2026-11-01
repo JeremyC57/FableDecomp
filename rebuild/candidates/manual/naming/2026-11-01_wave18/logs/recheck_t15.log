@@ -1,0 +1,704 @@
+addr       parity           behav  name
+0040ed10   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0040ed10   RELOCATION_MATCH PASS   CActionInputControl::GetDirection
+0042e3ee   WARN SHARED_HEADER_AVAILABLE CManager
+0042e3ee   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0042e3ee   WARN RELOC_NAME: ?GetDeviceNumber@CActiveJoystick@@QBEJXZ -> 0049bb40 labelled 'CGameJoystickManager::GetMainPlayerJoystickDeviceNumber'
+0042e3ee   RELOCATION_MATCH PASS   CNewFrontendGameComponent::Input
+00437ae0   WARN SHARED_HEADER_AVAILABLE CWorld
+00437ae0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00437ae0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00437ae0   RELOCATION_MATCH PASS   CPlayerGui::UpdateStat
+00499c50   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00499c50   RELOCATION_MATCH PASS   CProgressDisplay::DisplayProgress
+00546a50   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00546a50   RELOCATION_MATCH PASS   NUISystem::CZoomingComponent::Update
+0055a3e0   WARN RELOC_NAME: ?GetUIManager@@YAPAUNativeUIManager@@XZ -> 0041e5f2 labelled 'NUISystem::CManager::GetInstance'
+0055a3e0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0055a3e0   RELOCATION_MATCH PASS   NUISystem::CDraggable::Update
+0057a60a   WARN SHARED_HEADER_AVAILABLE CTCBase
+0057a60a   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0057a60a   RELOCATION_MATCH PASS   CTCHeroStats::GetFatnessReducingFrequencyInFrames
+005da5a0   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+005da5a0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+005da5a0   RELOCATION_MATCH PASS   CTCWeapon::GetSheatheAnim
+005ee6bf   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+005ee6bf   WARN SHARED_HEADER_AVAILABLE CTCInventoryAbilities
+005ee6bf   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+005ee6bf   RELOCATION_MATCH PASS   CTCInventoryAbilities::GetAbilityMaximumLevelWithRenown
+0063d960   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0063d960   RELOCATION_MATCH PASS   CWorldMap::FindLastUnblockedGroundPositionAndReportCollision
+00646b12   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00646b12   RELOCATION_MATCH PASS   NPlayerGui::CStatBar::UpdateChangeTexts
+006622d0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+006622d0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+006622d0   WARN RELOC_NAME: ?SetFlag_00863260@CThingBodyReorienter@@QAEX_N@Z -> 00863260 labelled '_global::SetMember_byte0x8_00863260'
+006622d0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+006622d0   RELOCATION_MATCH PASS   CThingCreatureBase::UpdateBodyReorientation
+0066f7d0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0066f7d0   RELOCATION_MATCH PASS   CInputTypeXboxPadLeftStickEvent::GetControlDirection
+0066fb80   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0066fb80   WARN SHARED_HEADER_AVAILABLE CPlayer
+0066fb80   WARN SHARED_HEADER_AVAILABLE CTCBase
+0066fb80   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0066fb80   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0066fb80   RELOCATION_MATCH PASS   CTCCoopSpirit::UpdateLocalJostling
+006bb720   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+006bb720   RELOCATION_MATCH PASS   CGameTimeManager::FastForwardTimeTo
+006cb620   WARN SHARED_HEADER_AVAILABLE CWorldMap
+006cb620   WARN SHARED_HEADER_AVAILABLE CNavigatorBase
+006cb620   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+006cb620   RELOCATION_MATCH PASS   CTCCreatureNavigation::IsAbleToNavigateFromPosToPos
+006cb780   WARN SHARED_HEADER_AVAILABLE CNavigatorBase
+006cb780   WARN SHARED_HEADER_AVAILABLE CWorldMap
+006cb780   WARN SHARED_HEADER_AVAILABLE CTCBase
+006cb780   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+006cb780   RELOCATION_MATCH PASS   CTCCreatureNavigation::GetNearbyDirectedPosition
+006dabe0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+006dabe0   RELOCATION_MATCH PASS   std::__find_if<std::reverse_iterator<const long*>,`anonymous namespace'::CPredIsFallbackMultiplierForMultiplier>
+006e80f0   WARN SHARED_HEADER_AVAILABLE CWorld
+006e80f0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+006e80f0   RELOCATION_MATCH PASS   CCombatWheel::ReassignAttacker
+006ea5f0   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+006ea5f0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+006ea5f0   RELOCATION_MATCH PASS   CCombatManager::IsTargetOverriddenByAttemptedFacingDirection
+006f9130   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+006f9130   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+006f9130   RELOCATION_MATCH PASS   CManager::GetEmbeddedEventTime
+00705b60   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00705b60   WARN SHARED_HEADER_AVAILABLE CWorldMap
+00705b60   WARN SHARED_HEADER_AVAILABLE CTCBase
+00705b60   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00705b60   RELOCATION_MATCH PASS   CTCCarryable::UpdateCarriedPosition
+0070be40   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0070be40   RELOCATION_MATCH PASS   CAnimateThing::GetProgressFromAlpha
+0070d390   WARN SHARED_HEADER_AVAILABLE CWorld
+0070d390   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0070d390   RELOCATION_MATCH PASS   CAnimateThing::UpdateCombinationAnimList
+00714900   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00714900   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00714900   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00714900   RELOCATION_MATCH PASS   NTCScriptedControl::CActionMoveTo::Update
+0071c9f0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+0071c9f0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0071c9f0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0071c9f0   WARN SHARED_HEADER_AVAILABLE CWorld
+0071c9f0   WARN SHARED_HEADER_AVAILABLE CTCBase
+0071c9f0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0071c9f0   RELOCATION_MATCH PASS   CTCHeroMorph::UpdateIdleParticles
+007232e0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+007232e0   RELOCATION_MATCH PASS   CTCPhysicsLight::OnCreate
+00724010   WARN SHARED_HEADER_AVAILABLE C3DMeshInfo
+00724010   WARN SHARED_HEADER_AVAILABLE CMeshDataBank
+00724010   WARN SHARED_HEADER_AVAILABLE CWorld
+00724010   WARN SHARED_HEADER_AVAILABLE CWorldMap
+00724010   WARN SHARED_HEADER_AVAILABLE CTCBase
+00724010   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00724010   RELOCATION_MATCH PASS   CTCPhysicsStandard::OnCreate
+007308f0   WARN SHARED_HEADER_AVAILABLE CWorld
+007308f0   WARN SHARED_HEADER_AVAILABLE CDoorDef
+007308f0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007308f0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+007308f0   WARN RELOC_NAME: ?GetTimeScale@CBulletTime@@QAEMXZ -> 004c5fa0 labelled 'CBulletTimeManager::GetBulletTimeSlowdownMultiplier'
+007308f0   RELOCATION_MATCH PASS   CTCDoor::UpdateAnimation
+007468c0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+007468c0   WARN RELOC_NAME: ?Set@CAnimInit@@QAEXJJJJ_NKJ@Z -> 0070c050 labelled 'CAnimInit::Init'
+007468c0   RELOCATION_MATCH PASS   CTCBed::UpdateAnimation
+00749b40   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00749b40   RELOCATION_MATCH PASS   CTCCupboard::UpdateAnimation
+00751820   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00751820   RELOCATION_MATCH PASS   CTCLook::GetHeadSettingsSlowInFastOut
+00751c70   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00751c70   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+00751c70   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00751c70   WARN RELOC_NAME: ?AngleBetweenPositions@@YIMABVC3DVector@@0@Z -> 00661540 labelled '_global::GFGetAngleXYTo'
+00751c70   WARN RELOC_NAME: ?AngleYZBetweenPositions@@YIMABVC3DVector@@0@Z -> 00754e70 labelled '_global::GFGetAngleYZTo'
+00751c70   RELOCATION_MATCH PASS   CTCLook::GetAnglesFromBodyToPos
+00752930   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00752930   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+00752930   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00752930   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00752930   WARN RELOC_NAME: ?AngleBetweenPositions@@YIMABVC3DVector@@0@Z -> 00661540 labelled '_global::GFGetAngleXYTo'
+00752930   WARN RELOC_NAME: ?AngleYZBetweenPositions@@YIMABVC3DVector@@0@Z -> 00754e70 labelled '_global::GFGetAngleYZTo'
+00752930   RELOCATION_MATCH PASS   CTCLook::SetEyesLooking
+00766260   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00766260   WARN SHARED_HEADER_AVAILABLE CWorld
+00766260   WARN RELOC_CONFLICT: ??$GetSubDef@VCAugmentationDef@@@CDefClassBase@@QBE_NAAV?$CDefPointer@VCAugmentationDef@@@@@Z -> 0042b248 here, 0042af9e in landed 005bec92
+00766260   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00766260   RELOCATION_MATCH PASS   CTCObjectAugmentations::GetHealthToAddThisFrame
+007796b0   WARN SHARED_HEADER_AVAILABLE CPlayer
+007796b0   WARN SHARED_HEADER_AVAILABLE CDisplayEngine
+007796b0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+007796b0   WARN SHARED_HEADER_AVAILABLE CWorld
+007796b0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007796b0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+007796b0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+007796b0   RELOCATION_MATCH PASS   CTCDRegionExit::FrameUpdate
+007899e0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+007899e0   RELOCATION_MATCH PASS   CTCHeroRangedAttacks::SetButtonPressure
+007dccb0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+007dccb0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+007dccb0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+007dccb0   RELOCATION_MATCH PASS   CTCCreatureFlyOnSpline::FrameUpdate
+008059f0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+008059f0   RELOCATION_MATCH PASS   CGetBestTargetInDirection::CGetBestTargetInDirection
+008090e0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+008090e0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+008090e0   RELOCATION_MATCH PASS   CThingFilter_IsInTargetingRangeAndFOV::operator()
+0080d0b0   WARN SHARED_HEADER_AVAILABLE CWorld
+0080d0b0   WARN SHARED_HEADER_AVAILABLE CTCBase
+0080d0b0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0080d0b0   WARN RELOC_NAME: ?GetEmitterSpacing@CExplosionDef@@QBEMM@Z -> 0080c190 labelled '_global::GetExplosionEffectInterpolate'
+0080d0b0   RELOCATION_MATCH PASS   CTCDExplosion::CreateStaticExplosion
+008158d0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+008158d0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+008158d0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+008158d0   RELOCATION_MATCH PASS   NHitLocations::CPhysicalPrimitiveCylinder::GetCylinderBaseAndTop
+00815ce0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00815ce0   RELOCATION_MATCH PASS   NHitLocations::CPhysicalPrimitiveCylinder::IsPosInside
+00825440   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00825440   RELOCATION_MATCH PASS   CHeightMap::SetSizeZAt
+008385b0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+008385b0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+008385b0   RELOCATION_MATCH PASS   CThingNoise::Create
+00853320   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00853320   RELOCATION_MATCH PASS   NCameraModes::CScriptModuleBase::GetViewPosInFocalPlane
+00857b70   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00857b70   WARN RELOC_NAME: ?ResetComboChainPos@CCombatComponent@@QAEXXZ -> 00733210 labelled 'CWADFile::Close'
+00857b70   RELOCATION_MATCH PASS   ProcessPlayerControl
+  WARN leaf '?ProcessPossibleShotStrikeEvent@CCombatActionBase@@IAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z' matches no symbol in 00858590.obj; graded the largest function
+  WARN leaf '?ProcessPossibleShotStrikeEvent@CCombatActionBase@@IAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z' matches no symbol in 00858590.obj; graded the largest function
+00858590   WARN RELOC_NAME: ?_M_insert_overflow@?$CVector@PAVCThingGameObject@@@@QAEXPAPAVCThingGameObject@@ABQAV2@ABU__true_type@@I_N@Z -> 00788ffc labelled '_global::Vector_Assign'
+00858590   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00858590   RELOCATION_MATCH PASS   CCombatActionBase::ProcessPossibleShotStrikeEvent
+0085c190   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+0085c190   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0085c190   RELOCATION_MATCH PASS   CCombatAction_ControlledStrafeJump::CCombatAction_ControlledStrafeJump
+00861a80   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00861a80   WARN RELOC_NAME: ?AddBlendAnim@CAnimateThing@@QAEXJM@Z -> 0070d2f0 labelled 'CAnimSet::AddAnim'
+00861a80   RELOCATION_MATCH PASS   CModeStandBase::SetUpMovementAnim
+00868ca0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00868ca0   RELOCATION_MATCH PASS   CHitParameters::AddDamageWithAttribute
+00872ec0   WARN SHARED_HEADER_AVAILABLE CTCBase
+00872ec0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00872ec0   RELOCATION_MATCH PASS   NCameraModes::CZTargetNew::UpdateCoordSystem
+0087e860   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0087e860   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0087e860   RELOCATION_MATCH PASS   CCombatAction_KickThingOnGround::Initialise
+008991a0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008991a0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+008991a0   RELOCATION_MATCH PASS   CGameScriptInterface::IsHeroRenownLevelFull
+008c6db0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+008c6db0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+008c6db0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+008c6db0   WARN SHARED_HEADER_AVAILABLE CAnimComponentCombatHandedness
+008c6db0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+008c6db0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+008c6db0   WARN RELOC_NAME: ?AddThingToIgnore@CTCDExplosiveTrail@@QAEXAAVCThing@@@Z -> 00810970 labelled 'CUnprovenDriverOwner_00810970::AppendTrackedThing'
+008c6db0   RELOCATION_MATCH PASS   CCreatureAction_IceTrollIcicleAttack::PerformAction
+008e5270   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+008e5270   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+008e5270   RELOCATION_MATCH PASS   CTCPhysicsStandard::UpdateIsMoving
+008e5670   WARN SHARED_HEADER_AVAILABLE CWorldMap
+008e5670   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+008e5670   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+008e5670   RELOCATION_MATCH PASS   CTCPhysicsStandard::PerformForceUpdates
+008e9460   WARN SHARED_HEADER_AVAILABLE CPlayer
+008e9460   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+008e9460   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+008e9460   WARN RELOC_ALIAS: __CIacos -> 00bfeba2 is the import thunk 'MSVCR71.DLL::_CIacos'
+008e9460   RELOCATION_MATCH PASS   NCreatureMode::CModeStrafe::GetBestFrameInAimingAnim
+008ecac0   WARN SHARED_HEADER_AVAILABLE CThingPhysical
+008ecac0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+008ecac0   WARN RELOC_NAME: ?GetHealthPercentage@CThingPhysical@@QBEMXZ -> 006a4e40 labelled 'NParticleEngine::CParticleSystem::GetNormalisedTime'
+008ecac0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+008ecac0   RELOCATION_MATCH PASS   CTCDegradableBase::OnParentHealthChanged
+0092c3b0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0092c3b0   RELOCATION_MATCH PASS   CTCSleep::GetFastTrack
+00942270   WARN SHARED_HEADER_AVAILABLE CThingPhysical
+00942270   WARN RELOC_NAME: ?GetCreatureCategory@CThing@@QBEJXZ -> 00662000 labelled 'CThingCreatureBase::GetMovementMode'
+00942270   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00942270   RELOCATION_MATCH PASS   CIsVeryCloseMotionlessCreature::operator
+0096e700   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0096e700   WARN RELOC_NAME: ?IsPositionOccupied@CCombatManager@@QAE_NPAVCThingCreatureBase@@@Z -> 006e9700 labelled 'CCombatManager::IsCreatureOnOuterRing'
+0096e700   RELOCATION_MATCH PASS   CAIStateGroup_MeleeCombatNearby::IsEnemyCreatureInCombatPosition
+0097ec00   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0097ec00   WARN SHARED_HEADER_AVAILABLE CThingPhysical
+0097ec00   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0097ec00   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0097ec00   WARN RELOC_NAME: ?SetNavigationIgnoreThing@CAIStateGroupBase@@QAEXPBVCThing@@@Z -> 0097e270 labelled 'CAIStateGroupBase::SetThingToNotAvoid'
+0097ec00   WARN RELOC_NAME: ?SetNavigationSpeedScale@CAIStateGroupBase@@QAEXM@Z -> 0097e2d0 labelled 'CAIStateGroupBase::SetProximityForDirectApproach'
+0097ec00   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0097ec00   WARN RELOC_NAME: ??0CBrainOutput@@QAE@XZ -> 00835620 labelled '_global::Dtor_CountedPtrAt0x24_00835620'
+0097ec00   WARN RELOC_NAME: ?SetBrainOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z -> 0088b8f0 labelled 'CAIBrain::SetOutput'
+0097ec00   RELOCATION_MATCH PASS   CAIStateGroupBase::AIAction_MoveToPos
+00a11610   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00a11610   RELOCATION_MATCH PASS   CPhysicsMeshObject::IsRigidBodyBoundingPointsValid
+00a1fb00   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00a1fb00   RELOCATION_MATCH PASS   CNavigatorAStar::MoveToPos
+00a472f0   WARN SHARED_HEADER_AVAILABLE CNavigatorManager
+00a472f0   WARN RELOC_NAME: ?GetSmallestNodeSize@@YAMXZ -> 00a76320 labelled '_global::GetConstFloat_0_5_00a76320'
+00a472f0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00a472f0   RELOCATION_MATCH PASS   CNavigatorBase::GetNextNeighbour
+00a57ad0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00a57ad0   RELOCATION_MATCH PASS   C2DLineF::IntersectsWith
+  WARN leaf '?IsAreaBlockedByLines@ (Ego_r.pdb ?IsAreaBlockedByLines@CNavQuadTree@@ABE_NABVC2DBoxF@@ABV?$vector@PBV?$list@VC2DLineF@@...@std@@@Z; modelled through CNavQuadTree_Methods)' matches no symbol in 00a76f30.obj; graded the largest function
+  WARN leaf '?IsAreaBlockedByLines@ (Ego_r.pdb ?IsAreaBlockedByLines@CNavQuadTree@@ABE_NABVC2DBoxF@@ABV?$vector@PBV?$list@VC2DLineF@@...@std@@@Z; modelled through CNavQuadTree_Methods)' matches no symbol in 00a76f30.obj; graded the largest function
+00a76f30   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00a76f30   RELOCATION_MATCH PASS   CNavQuadTree::IsAreaBlockedByLines
+00a88cb0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00a88cb0   RELOCATION_MATCH PASS   CQuaternion::IsIdentity
+00ae1260   WARN SHARED_HEADER_AVAILABLE CParticleProgram
+00ae1260   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00ae1260   WARN RELOC_NAME: ?GetGroupVectorBuffer@@YIPAVC4DVector@@K@Z -> 00ae0540 labelled 'CParticleProgram::GetVectorBuffer'
+00ae1260   RELOCATION_MATCH PASS   CParticleProgram::PrepareForRendering
+00aee9f0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00aee9f0   WARN SHARED_HEADER_AVAILABLE CIEngine
+00aee9f0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00aee9f0   WARN RELOC_NAME: ?GetParticleEngine@@YAPAVCIEngine@@XZ -> 00aeab10 labelled '_global::GetGlobal_013d2e2c_00aeab10'
+00aee9f0   RELOCATION_MATCH PASS   CParticleEmitter::Update
+00b5af60   WARN SHARED_HEADER_AVAILABLE CEngineScreenEffectColourFilter
+00b5af60   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00b5af60   RELOCATION_MATCH PASS   CEngineScreenEffectColourFilter::Render
+00bad8a0   WARN SHARED_HEADER_AVAILABLE CTexture
+00bad8a0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00bad8a0   RELOCATION_MATCH PASS   CEngineInternalPrimitive2DSprite::Update
+
+WINS: 73
+  0040ed10 RELOCATION_MATCH CActionInputControl::GetDirection
+  0042e3ee RELOCATION_MATCH CNewFrontendGameComponent::?Input@CNewFrontendGameComponent@@UAEXXZ
+  00437ae0 RELOCATION_MATCH CPlayerGui::?UpdateStat@CPlayerGui@
+  00499c50 RELOCATION_MATCH CProgressDisplay::DisplayProgress
+  00546a50 RELOCATION_MATCH NUISystem::CZoomingComponent::?Update@CZoomingComponent
+  0055a3e0 RELOCATION_MATCH NUISystem::CDraggable::Update
+  0057a60a RELOCATION_MATCH CTCHeroStats::GetFatnessReducingFrequencyInFrames
+  005da5a0 RELOCATION_MATCH CTCWeapon::GetSheatheAnim
+  005ee6bf RELOCATION_MATCH CTCInventoryAbilities::GetAbilityMaximumLevelWithRenown
+  0063d960 RELOCATION_MATCH CWorldMap::FindLastUnblockedGroundPositionAndReportCollision
+  00646b12 RELOCATION_MATCH NPlayerGui::CStatBar::UpdateChangeTexts
+  006622d0 RELOCATION_MATCH CThingCreatureBase::UpdateBodyReorientation
+  0066f7d0 RELOCATION_MATCH CInputTypeXboxPadLeftStickEvent::?GetControlDirection@CInputTypeXboxPadLeftStickEvent
+  0066fb80 RELOCATION_MATCH CTCCoopSpirit::UpdateLocalJostling
+  006bb720 RELOCATION_MATCH CGameTimeManager::FastForwardTimeTo
+  006cb620 RELOCATION_MATCH CTCCreatureNavigation::IsAbleToNavigateFromPosToPos
+  006cb780 RELOCATION_MATCH CTCCreatureNavigation::GetNearbyDirectedPosition
+  006dabe0 RELOCATION_MATCH std::??$__find_if@V?$reverse_iterator@PBJ@std@@VCPredIsFallbackMultiplierForMultiplier@?A
+  006e80f0 RELOCATION_MATCH CCombatWheel::ReassignAttacker
+  006ea5f0 RELOCATION_MATCH CCombatManager::IsTargetOverriddenByAttemptedFacingDirection
+  006f9130 RELOCATION_MATCH NAnimationEvents_CManager::GetEmbeddedEventTime
+  00705b60 RELOCATION_MATCH CTCCarryable::UpdateCarriedPosition
+  0070be40 RELOCATION_MATCH CAnimateThing::GetProgressFromAlpha
+  0070d390 RELOCATION_MATCH CAnimateThing::UpdateCombinationAnimList
+  00714900 RELOCATION_MATCH NTCScriptedControl::CActionMoveTo::?Update@CActionMoveTo@NTCScriptedControl@@
+  0071c9f0 RELOCATION_MATCH CTCHeroMorph::UpdateIdleParticles
+  007232e0 RELOCATION_MATCH CTCPhysicsLight::OnCreate
+  00724010 RELOCATION_MATCH CTCPhysicsStandard::OnCreate
+  007308f0 RELOCATION_MATCH CTCDoor::UpdateAnimation
+  007468c0 RELOCATION_MATCH CTCBed::UpdateAnimation
+  00749b40 RELOCATION_MATCH CTCCupboard::UpdateAnimation
+  00751820 RELOCATION_MATCH CTCLook::GetHeadSettingsSlowInFastOut
+  00751c70 RELOCATION_MATCH CTCLook::GetAnglesFromBodyToPos
+  00752930 RELOCATION_MATCH CTCLook::SetEyesLooking
+  00766260 RELOCATION_MATCH CTCObjectAugmentations::GetHealthToAddThisFrame
+  007796b0 RELOCATION_MATCH CTCDRegionExit::FrameUpdate
+  007899e0 RELOCATION_MATCH CTCHeroRangedAttacks::SetButtonPressure
+  007dccb0 RELOCATION_MATCH CTCCreatureFlyOnSpline::FrameUpdate
+  008059f0 RELOCATION_MATCH CGetBestTargetInDirection::??0CGetBestTargetInDirection
+  008090e0 RELOCATION_MATCH CThingFilter_IsInTargetingRangeAndFOV::??RCThingFilter_IsInTargetingRangeAndFOV
+  0080d0b0 RELOCATION_MATCH CTCDExplosion::CreateStaticExplosion
+  008158d0 RELOCATION_MATCH NHitLocations::CPhysicalPrimitiveCylinder::?GetCylinderBaseAndTop@CPhysicalPrimitiveCylinder@NHitLocations@@
+  00815ce0 RELOCATION_MATCH NHitLocations::CPhysicalPrimitiveCylinder::?IsPosInside@CPhysicalPrimitiveCylinder@
+  00825440 RELOCATION_MATCH CHeightMap::SetSizeZAt
+  008385b0 RELOCATION_MATCH CThingNoise::?Create@CThingNoise@@SIPAV1@JABVC3DVector@@M@Z
+  00853320 RELOCATION_MATCH NCameraModes::CScriptModuleBase::GetViewPosInFocalPlane
+  00857b70 RELOCATION_MATCH CCombatActionBase::ProcessPlayerControl
+  00858590 RELOCATION_MATCH CCombatActionBase::?ProcessPossibleShotStrikeEvent@CCombatActionBase@@IAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z
+  0085c190 RELOCATION_MATCH CCombatAction_ControlledStrafeJump::??0CCombatAction_ControlledStrafeJump
+  00861a80 RELOCATION_MATCH CModeStandBase::SetUpMovementAnim
+  00868ca0 RELOCATION_MATCH CHitParameters::AddDamageWithAttribute
+  00872ec0 RELOCATION_MATCH NCameraModes::CZTargetNew::UpdateCoordSystem
+  0087e860 RELOCATION_MATCH CCombatAction_KickThingOnGround::?Initialise@CCombatAction_KickThingOnGround
+  008991a0 RELOCATION_MATCH CGameScriptInterface::IsHeroRenownLevelFull@CGameScriptInterface
+  008c6db0 RELOCATION_MATCH CCreatureAction_IceTrollIcicleAttack::?PerformAction@CCreatureAction_IceTrollIcicleAttack@@UAEXXZ
+  008e5270 RELOCATION_MATCH CTCPhysicsStandard::UpdateIsMoving
+  008e5670 RELOCATION_MATCH CTCPhysicsStandard::PerformForceUpdates
+  008e9460 RELOCATION_MATCH NCreatureMode::CModeStrafe::GetBestFrameInAimingAnim
+  008ecac0 RELOCATION_MATCH CTCDegradableBase::OnParentHealthChanged
+  0092c3b0 RELOCATION_MATCH CTCSleep::GetFastTrack
+  00942270 RELOCATION_MATCH CIsVeryCloseMotionlessCreature::??RCIsVeryCloseMotionlessCreature
+  0096e700 RELOCATION_MATCH CAIStateGroup_MeleeCombatNearby::IsEnemyCreatureInCombatPosition
+  0097ec00 RELOCATION_MATCH CAIStateGroupBase::AIAction_MoveToPos
+  00a11610 RELOCATION_MATCH CPhysicsMeshObject::IsRigidBodyBoundingPointsValid
+  00a1fb00 RELOCATION_MATCH CNavigatorAStar::MoveToPos
+  00a472f0 RELOCATION_MATCH CNavigatorBase::GetNextNeighbour
+  00a57ad0 RELOCATION_MATCH C2DLineF::IntersectsWith
+  00a76f30 RELOCATION_MATCH CNavQuadTree::?IsAreaBlockedByLines@ (Ego_r.pdb ?IsAreaBlockedByLines@CNavQuadTree@@ABE_NABVC2DBoxF@@ABV?$vector@PBV?$list@VC2DLineF@@...@std@@@Z; modelled through CNavQuadTree_Methods)
+  00a88cb0 RELOCATION_MATCH CQuaternion::IsIdentity
+  00ae1260 RELOCATION_MATCH CParticleProgram::?PrepareForRendering@CParticleProgram@@QAEXPAVC4DVector@@PAVCParticleSimulation@@MMPAVC3DAnimationBlendState
+  00aee9f0 RELOCATION_MATCH CParticleEmitter::Update
+  00b5af60 RELOCATION_MATCH CEngineScreenEffectColourFilter::Render
+  00bad8a0 RELOCATION_MATCH CEngineInternalPrimitive2DSprite::Update
+addr       parity           behav  name
+0040fa20   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0040fa20   RELOCATION_MATCH PASS   CPersistTraits<CActionInputControl>::TransferOut
+004348d0   WARN SHARED_HEADER_AVAILABLE CFadeInFadeOutBase
+004348d0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+004348d0   RELOCATION_MATCH PASS   CFadeInFadeOutBase::GetFadeInOutAlpha
+0043a4d0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0043a4d0   RELOCATION_MATCH PASS   CPlayerGui::SetGuildSealLevelUpPos
+0049e080   WARN SHARED_HEADER_AVAILABLE CEnvironment
+0049e080   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0049e080   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0049e080   RELOCATION_MATCH PASS   CWorld::RenderUpdate
+0054b360   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0054b360   WARN SHARED_HEADER_AVAILABLE CObserver
+0054b360   WARN SHARED_HEADER_AVAILABLE CManager
+0054b360   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0054b360   WARN RELOC_NAME: ?DestroyActionRange@@YIXPAV?$CCountedPointer@VCAction@NUISystem@@@@0ABUCActionAllocator@@@Z -> 0054a1c0 labelled '_global::DestroyRange_CountedPointer_0054a1c0'
+0054b360   RELOCATION_MATCH PASS   NUISystem::CSlider::~CSlider
+0055b890   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0055b890   RELOCATION_MATCH PASS   NUISystem::CHoverable::Update
+005da540   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+005da540   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+005da540   RELOCATION_MATCH PASS   CTCWeapon::GetUnsheatheAnim
+005db6b0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+005db6b0   WARN SHARED_HEADER_AVAILABLE C3DAnimationInfo
+005db6b0   WARN SHARED_HEADER_AVAILABLE CMeshDataBank
+005db6b0   WARN SHARED_HEADER_AVAILABLE CWorld
+005db6b0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+005db6b0   WARN RELOC_ALIAS: __CIacos -> 00bfeba2 is the import thunk 'MSVCR71.DLL::_CIacos'
+005db6b0   RELOCATION_MATCH PASS   _global::GetRotationInAnimationBetweenTimes
+005fa990   WARN SHARED_HEADER_AVAILABLE CWorldMap
+005fa990   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+005fa990   RELOCATION_MATCH PASS   CTCInventoryMap::GetGuildSealRecallRegion
+0063db30   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0063db30   RELOCATION_MATCH PASS   CWorldMap::FindLastUnblockedThemePositionAndReportCollision
+0064d6a8   WARN SHARED_HEADER_AVAILABLE CPlayer
+0064d6a8   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0064d6a8   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0064d6a8   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+0064d6a8   RELOCATION_MATCH PASS   NPlayerGui::CDrawQuickAccessIcons::Update
+0066f5c0   WARN RELOC_NAME: ?GetValue@CInputEvent@@QBEMXZ -> 00a03bb0 labelled 'CInputEvent::GetMouseWheel'
+0066f5c0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0066f5c0   RELOCATION_MATCH PASS   CInputTypeMouseWheelMovementDownEvent::IsEventOfThisType
+0066f840   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0066f840   RELOCATION_MATCH PASS   CInputTypeXboxPadRightStickEvent::GetControlDirection
+006b14b0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+006b14b0   RELOCATION_MATCH PASS   CTCPhysicsBase::HasPositiveMass
+006c3f40   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+006c3f40   RELOCATION_MATCH PASS   CTCFadeOutAndIn::FrameUpdate
+006cb6e0   WARN SHARED_HEADER_AVAILABLE CWorldMap
+006cb6e0   WARN SHARED_HEADER_AVAILABLE CNavigatorBase
+006cb6e0   WARN SHARED_HEADER_AVAILABLE CTCBase
+006cb6e0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+006cb6e0   RELOCATION_MATCH PASS   CTCCreatureNavigation::GetNearbyWanderPosition
+006cb840   WARN SHARED_HEADER_AVAILABLE CWorldMap
+006cb840   WARN SHARED_HEADER_AVAILABLE CNavigatorBase
+006cb840   WARN SHARED_HEADER_AVAILABLE CTCBase
+006cb840   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+006cb840   RELOCATION_MATCH PASS   CTCCreatureNavigation::GetNearestFleePosition
+006e3440   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+006e3440   RELOCATION_MATCH PASS   NSpeechGainManager::UpdateDialogueElement
+006e93c0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+006e93c0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+006e93c0   RELOCATION_MATCH PASS   CCombatManager::IsCreatureOnRotatingCombatRing
+006ea770   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+006ea770   RELOCATION_MATCH PASS   CCombatManager::GetPreferredPos
+007032f0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007032f0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+007032f0   RELOCATION_MATCH PASS   CThingObject::OnCreate
+00705c30   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+00705c30   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00705c30   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00705c30   RELOCATION_MATCH PASS   CTCCarryable::vfunc_6
+0070c330   WARN SHARED_HEADER_AVAILABLE CMeshDataBank
+0070c330   WARN SHARED_HEADER_AVAILABLE CWorld
+0070c330   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0070c330   WARN RELOC_NAME: ?GetNonLoopingDuration@C3DAnimationInfo@@QBEMXZ -> 00a23ce0 labelled '_global::GetMember_float0x14_00a23ce0'
+0070c330   RELOCATION_MATCH PASS   CAnimSet::UpdateTimePassed
+00713ee0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00713ee0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00713ee0   WARN RELOC_NAME: ?Get2DDistance@@YIMABVC2DVector@@0@Z -> 009e1ad0 labelled '_global::GFGet2DBoxDistance'
+00713ee0   WARN RELOC_NAME: ?GetSneakSpeedTowards@CThing@@QAEMABVC3DVector@@@Z -> 00664cb0 labelled 'CThingCreatureBase::GetMaxSneakingSpeed'
+00713ee0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00713ee0   RELOCATION_MATCH PASS   NTCScriptedControl::CActionFollowCreature::Update
+0071c7c0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+0071c7c0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0071c7c0   WARN SHARED_HEADER_AVAILABLE CTCBase
+0071c7c0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0071c7c0   RELOCATION_MATCH PASS   CTCHeroMorph::AddParticles
+0071de80   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+0071de80   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0071de80   WARN SHARED_HEADER_AVAILABLE CTCBase
+0071de80   WARN RELOC_NAME: ?Clear@CTextureMapSet@@QAEXXZ -> 006ca8b0 labelled 'SetStaticCast_NUISystem::CComponent_'
+0071de80   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0071de80   WARN RELOC_NAME: ?MakeCompositeHeap@@YIXPAUCCompositeTextureEntry@@0UCCompositeTextureLess@@@Z -> 00721fe0 labelled 'std::sort<std::pair<long, CTCHeroMorph::CTextureLayer> *, CKeyPairCompareLess<long, CTCHeroMorph::CTextureLayer>>'
+0071de80   WARN RELOC_NAME: ?Set@CTextureMapSet@@QAEXJPBE@Z -> 006ca950 labelled 'CEngineTextureMorphSet::AddTextureMorph'
+0071de80   WARN RELOC_NAME: ?RemoveMorphs@CTCTextureMorphs@@QAEXJ@Z -> 00786580 labelled 'CSkeletalMorph::ClearByTag'
+0071de80   WARN RELOC_NAME: ?InsertionSort@@YIXPAUCTextureMorph@@0UCTextureMorphLess@@@Z -> 007212d0 labelled 'std::__insertion_sort<std::pair<CSkeletalMorphs::CEntry, float> *, CIsSkeletalMorphLowerPriorityThan>'
+0071de80   WARN RELOC_NAME: ?AddMorph@CTCTextureMorphs@@QAEXJABVCCharString@@M@Z -> 00786670 labelled 'CTCSkeletalMorph::AddSkeletalMorph'
+0071de80   RELOCATION_MATCH PASS   CTCHeroMorph::UpdateTextureMorphs
+007235e0   WARN RELOC_NAME: ?GetAirResistance_006afe00@CTCPhysicsBase@@QAEMXZ -> 006afe00 labelled 'CTCPhysicsBase::GetMass'
+007235e0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+007235e0   RELOCATION_MATCH PASS   CTCPhysicsStandard::vfunc_38
+00725290   WARN SHARED_HEADER_AVAILABLE CWorldMap
+00725290   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00725290   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00725290   RELOCATION_MATCH PASS   CTCPhysicsControlled::UpdateOnSurface
+00745730   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00745730   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+00745730   WARN RELOC_NAME: ?RemovePerceivingThing@CPlayerGui@@QAEXPAVCThing@@@Z -> 00437900 labelled '_global::Forward_RemoveThing_via0x1b8_00437900'
+00745730   WARN RELOC_NAME: ?SetAsDirectlyAwareOfPerceivedThing_00744730@CTCPerceiveThing@@QAEXXZ -> 00744730 labelled 'CTCPerceiveThing::SetLastAwareInfo'
+00745730   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00745730   WARN RELOC_NAME: ?GetGameSubsystem@CTCPerceiveThing@@QBEPAUCGameSubsystem@@XZ -> 00686d60 labelled 'CTCBase::PeekComponent'
+00745730   RELOCATION_MATCH PASS   CTCPerceiveThing::UpdatePerception
+007479b0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007479b0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+007479b0   WARN SHARED_HEADER_AVAILABLE CStealthDef
+007479b0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007479b0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+007479b0   WARN RELOC_NAME: ?GetHearabilityModifier@CTCStealth@@QAEMXZ -> 007475c0 labelled 'CTCHearabilityManager::GetSoundRadiusWithModifiers'
+007479b0   RELOCATION_MATCH PASS   CTCStealth::UpdateHearability
+0074ff60   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0074ff60   RELOCATION_MATCH PASS   COpenCloseHelper::FrameUpdate
+00751970   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00751970   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00751970   RELOCATION_MATCH PASS   CTCLook::GetBodySettingsSlowInFastOut
+00752300   WARN SHARED_HEADER_AVAILABLE CPlayer
+00752300   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+00752300   WARN SHARED_HEADER_AVAILABLE CLookDef
+00752300   WARN SHARED_HEADER_AVAILABLE CTCBase
+00752300   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00752300   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00752300   RELOCATION_MATCH PASS   CTCLook::ImplementBodySettings
+  WARN leaf 'Validate' matches no symbol in 0075cdf0.obj; graded the largest function
+  WARN leaf 'Validate' matches no symbol in 0075cdf0.obj; graded the largest function
+0075cdf0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0075cdf0   RELOCATION_MATCH PASS   CTCCameraPointScripted::Validate
+00766330   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00766330   WARN SHARED_HEADER_AVAILABLE CWorld
+00766330   WARN RELOC_CONFLICT: ??$GetSubDef@VCAugmentationDef@@@CDefClassBase@@QBE_NAAV?$CDefPointer@VCAugmentationDef@@@@@Z -> 0042b248 here, 0042af9e in landed 005bec92
+00766330   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00766330   RELOCATION_MATCH PASS   CTCObjectAugmentations::GetStaminaToAddThisFrame
+0077c360   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0077c360   RELOCATION_MATCH PASS   CLoopedRange::GetFraction
+007c2480   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+007c2480   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+007c2480   RELOCATION_MATCH PASS   CTCShotDefinitionBase::UpdateEffects
+007dff90   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+007dff90   WARN SHARED_HEADER_AVAILABLE CWorld
+007dff90   WARN SHARED_HEADER_AVAILABLE CTCBase
+007dff90   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+007dff90   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+007dff90   RELOCATION_MATCH PASS   CTCTeleporter::StartTeleporting
+00805a90   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00805a90   RELOCATION_MATCH PASS   CGetBestTargetInDirection::operator()
+0080c190   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0080c190   RELOCATION_MATCH PASS   _global::GetExplosionEffectInterpolate
+  WARN leaf 'vfunc_7' matches no symbol in 00815070.obj; graded the largest function
+  WARN leaf 'vfunc_7' matches no symbol in 00815070.obj; graded the largest function
+00815070   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00815070   RELOCATION_MATCH PASS   NHitLocations::CPhysicalPrimitiveMesh::vfunc_7
+00815aa0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00815aa0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00815aa0   RELOCATION_MATCH PASS   NHitLocations::CPhysicalPrimitiveCylinder::GetBoundingSphere
+008203a0   WARN SHARED_HEADER_AVAILABLE CScriptedMapBrush
+008203a0   WARN SHARED_HEADER_AVAILABLE CHeightMapCell
+008203a0   WARN RELOC_ALIAS: __CIpow -> 00bfeb40 is the import thunk 'MSVCR71.DLL::_CIpow'
+008203a0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+008203a0   WARN RELOC_NAME: ?GetWorldBox@CMapRegionTable@@QAE?AVC2DBoxI@@JABV2@@Z -> 004fc560 labelled 'CWorldMap::ConvertLocalMapAreaToWorldArea'
+008203a0   RELOCATION_MATCH PASS   CMap::ApplyScriptedMapBrushUpdate
+00830dd0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+00830dd0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00830dd0   RELOCATION_MATCH PASS   CThingAICreature::InitialiseMovementSpeeds
+00851bd0   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience
+00851bd0   WARN RELOC_NAME: ?GetTrainableStatLevel@CTCHeroExperience@@QBEJW4EHeroTrainableStatType@@@Z -> 006d6520 labelled 'CTCInventoryAbilities::GetAbilityLevel'
+00851bd0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00851bd0   RELOCATION_MATCH PASS   CHeroAbilityStatWeight::GetParameter
+00856040   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00856040   RELOCATION_MATCH PASS   _global::ProcessFramesRunningForOnHitWithParams
+  WARN leaf '?ProcessPossibleCreatureStrikeEvent@CCombatActionBase@@IAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z' matches no symbol in 00858130.obj; graded the largest function
+  WARN leaf '?ProcessPossibleCreatureStrikeEvent@CCombatActionBase@@IAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z' matches no symbol in 00858130.obj; graded the largest function
+00858130   WARN RELOC_NAME: ?_M_insert_overflow@?$CVector@PAVCThingGameObject@@@@QAEXPAPAVCThingGameObject@@ABQAV2@ABU__true_type@@I_N@Z -> 00788ffc labelled '_global::Vector_Assign'
+00858130   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00858130   RELOCATION_MATCH PASS   CCombatActionBase::ProcessPossibleCreatureStrikeEvent
+  WARN leaf '?ProcessPossibleObjectStrikeEvent@CCombatActionBase@@IAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z' matches no symbol in 008587b0.obj; graded the largest function
+  WARN leaf '?ProcessPossibleObjectStrikeEvent@CCombatActionBase@@IAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z' matches no symbol in 008587b0.obj; graded the largest function
+008587b0   WARN RELOC_NAME: ?_M_insert_overflow@?$CVector@PAVCThingGameObject@@@@QAEXPAPAVCThingGameObject@@ABQAV2@ABU__true_type@@I_N@Z -> 00788ffc labelled '_global::Vector_Assign'
+008587b0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+008587b0   RELOCATION_MATCH PASS   CCombatActionBase::ProcessPossibleObjectStrikeEvent
+0085f8d0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0085f8d0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0085f8d0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0085f8d0   RELOCATION_MATCH PASS   NCreatureMode::IsValidRangedWeaponTargetForShooter
+00866e80   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00866e80   RELOCATION_MATCH PASS   CCombatAction_GenericStrikeResponseKnockdownRecoverBase::FinishAction
+00872490   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00872490   WARN RELOC_ALIAS: __CIacos -> 00bfeba2 is the import thunk 'MSVCR71.DLL::_CIacos'
+00872490   RELOCATION_MATCH PASS   NCameraModes::CZTargetNew::InitialiseTransitionVariables
+008754a0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+008754a0   RELOCATION_MATCH LINK_FAIL NCameraModes::CTools::GetThemePointIntersectionFromTo
+00891720   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00891720   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+00891720   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00891720   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00891720   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00891720   WARN RELOC_NAME: ??0CCreatureAction_StabbedToDeath@@QAE@AAVCThingCreatureBase@@_N@Z -> 008ed650 labelled 'CCreatureAction_Die::CCreatureAction_Die'
+00891720   RELOCATION_MATCH PASS   CGameScriptInterface::ChangeHeroHealthBy
+00899c10   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899c10   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00899c10   WARN RELOC_NAME: ?IsPCReady_GetReadiness@@YIMPAX@Z -> 00789a60 labelled 'CTCHeroRangedAttacks::GetShotBuildupTime'
+00899c10   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00899c10   RELOCATION_MATCH PASS   CGameScriptInterface::IsPlayerCreatureReadyToFireProjectileWeapon
+008cffe0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+008cffe0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+008cffe0   RELOCATION_MATCH PASS   InitFromThing
+008e52f0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsStandard
+008e52f0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+008e52f0   RELOCATION_MATCH PASS   CTCPhysicsStandard::CalculateNoStepsForStepBasedMovement
+008e5f00   WARN SHARED_HEADER_AVAILABLE CWorldMap
+008e5f00   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+008e5f00   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+008e5f00   RELOCATION_MATCH PASS   CTCPhysicsStandard::PerformForceUpdates
+008ea500   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+008ea500   WARN SHARED_HEADER_AVAILABLE CWorld
+008ea500   WARN RELOC_NAME: ?GetWorld@CModeBase@@QAEPAVCWorld@@XZ -> 0073a680 labelled '_global::GetGlobal_013b8a1c_deref0x24_0073a680'
+008ea500   WARN RELOC_NAME: ?GetAnimMovementSpeed@@YIMABVCCharString@@PAVCThingCreatureBase@@J@Z -> 00861c90 labelled 'NCreatureMode::GetMovementSpeedFromAnimation'
+008ea500   WARN RELOC_NAME: ?GetHoverSpeedSlow@CThingCreatureBase@@QBEMXZ -> 006620e0 labelled 'CTCPhysicsBase::GetAirResistance'
+008ea500   WARN RELOC_NAME: ?GetHoverSpeedMedium@CThingCreatureBase@@QBEMXZ -> 006620f0 labelled 'CTCPhysicsBase::GetAirResistance'
+008ea500   WARN RELOC_NAME: ?GetHoverSpeedFast@CThingCreatureBase@@QBEMXZ -> 00662100 labelled 'CTCPhysicsBase::GetAirResistance'
+008ea500   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+008ea500   RELOCATION_MATCH PASS   NCreatureMode::CModeHoverBase::InitialiseMovementSpeeds
+0091d510   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0091d510   WARN SHARED_HEADER_AVAILABLE CThingPhysical
+0091d510   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0091d510   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0091d510   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0091d510   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0091d510   WARN RELOC_NAME: ??0CBrainOutput@@QAE@XZ -> 00835620 labelled '_global::Dtor_CountedPtrAt0x24_00835620'
+0091d510   WARN RELOC_NAME: ?SetBrainOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z -> 0088b8f0 labelled 'CAIBrain::SetOutput'
+0091d510   RELOCATION_MATCH PASS   CAIStateGroup_HoverMovementBase::AIAction_MoveToPosProximityAndFacePos
+0093c6d0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0093c6d0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0093c6d0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0093c6d0   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing
+0093c6d0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0093c6d0   RELOCATION_MATCH PASS   CAIStateGroup_StealthSeekEnemy::SetWhatsThatAnimation
+009624d0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+009624d0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+009624d0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+009624d0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+009624d0   WARN RELOC_NAME: ?HasMode@CTCCreatureModeManager@@QAE_NJ@Z -> 0073a8a0 labelled 'CTCCreatureModeManager::IsModeActive'
+009624d0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+009624d0   WARN RELOC_NAME: ??0CCombatAction_StabThing@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z -> 0094e5f0 labelled 'CCreatureAction_TrollGroundPound::CCreatureAction_TrollGroundPound'
+009624d0   RELOCATION_MATCH PASS   CAIStateGroup_IceTrollPoundGroundAttack::Update
+0097e890   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0097e890   WARN SHARED_HEADER_AVAILABLE CThingPhysical
+0097e890   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0097e890   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0097e890   WARN RELOC_NAME: ?SetNavigationIgnoreThing@CAIStateGroupBase@@QAEXPBVCThing@@@Z -> 0097e270 labelled 'CAIStateGroupBase::SetThingToNotAvoid'
+0097e890   WARN RELOC_NAME: ?SetNavigationSpeedScale@CAIStateGroupBase@@QAEXM@Z -> 0097e2d0 labelled 'CAIStateGroupBase::SetProximityForDirectApproach'
+0097e890   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0097e890   WARN RELOC_NAME: ??0CBrainOutput@@QAE@XZ -> 00835620 labelled '_global::Dtor_CountedPtrAt0x24_00835620'
+0097e890   WARN RELOC_NAME: ?SetBrainOutput@CAIBrain@@QAEXABVCBrainOutput@@@Z -> 0088b8f0 labelled 'CAIBrain::SetOutput'
+0097e890   RELOCATION_MATCH PASS   CAIStateGroupBase::AIAction_MoveToPosProximity
+009804a0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+009804a0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+009804a0   RELOCATION_MATCH PASS   CAIStateGroupBase::AIAction_FleeToThingProximity
+00a18ea0   WARN SHARED_HEADER_AVAILABLE CNavigatorFlyer
+00a18ea0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00a18ea0   RELOCATION_MATCH PASS   CNavigatorFlyer::MoveToPos
+00a39fe0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00a39fe0   RELOCATION_MATCH PASS   C2DBoxI::ClipLineTo
+00a560a0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00a560a0   RELOCATION_MATCH PASS   CMatrix3x4::IsIdentity
+00a57bd0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00a57bd0   RELOCATION_MATCH PASS   C2DLineF::IntersectsWith
+00a88c50   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00a88c50   RELOCATION_MATCH PASS   CQuaternion::Equals
+00adebc0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00adebc0   RELOCATION_MATCH PASS   C3DBoundingBox::CalculateMatrix
+00ae1600   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00ae1600   RELOCATION_MATCH PASS   CParticleProgram::PrepareForRendering
+00b18af0   WARN RELOC_NAME: ?GetParticleFrameRate@@YAJXZ -> 00aea9f0 labelled 'NParticleEngine::GetParticleUpdateRate'
+00b18af0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00b18af0   RELOCATION_MATCH PASS   NParticleEngine::CPSCLight::AddToBoundingSphere
+00b61b30   WARN SHARED_HEADER_AVAILABLE CEngineSkyRenderer
+00b61b30   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00b61b30   RELOCATION_MATCH PASS   CEngineSkyRenderer::BuildOuterSkyMesh
+00bcbc00   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00bcbc00   RELOCATION_MATCH PASS   CEngineInternalPrimitiveSpriteTrail::Update
+
+WINS: 72
+  0040fa20 RELOCATION_MATCH CPersistTraits<CActionInputControl>::?TransferOut@?$CPersistTraits@VCActionInputControl@@
+  004348d0 RELOCATION_MATCH CFadeInFadeOutBase::GetFadeInOutAlpha
+  0043a4d0 RELOCATION_MATCH CPlayerGui::SetGuildSealLevelUpPos
+  0049e080 RELOCATION_MATCH CWorld::?RenderUpdate@CWorld@@
+  0054b360 RELOCATION_MATCH NUISystem::CSlider::??1CSlider@NUISystem
+  0055b890 RELOCATION_MATCH NUISystem::CHoverable::Update
+  005da540 RELOCATION_MATCH CTCWeapon::GetUnsheatheAnim
+  005db6b0 RELOCATION_MATCH _global::?GetRotationInAnimationBetweenTimes@
+  005fa990 RELOCATION_MATCH CTCInventoryMap::?GetGuildSealRecallRegion@CTCInventoryMap@@ABEJXZ
+  0063db30 RELOCATION_MATCH CWorldMap::?FindLastUnblockedThemePositionAndReportCollision@CWorldMap@@QBE_NABVC3DVector@@0AAV2@@Z
+  0064d6a8 RELOCATION_MATCH NPlayerGui::CDrawQuickAccessIcons::Update
+  0066f5c0 RELOCATION_MATCH CInputTypeMouseWheelMovementDownEvent::IsEventOfThisType
+  0066f840 RELOCATION_MATCH CInputTypeXboxPadRightStickEvent::GetControlDirection
+  006b14b0 RELOCATION_MATCH CTCPhysicsBase::HasPositiveMass
+  006c3f40 RELOCATION_MATCH CTCFadeOutAndIn::FrameUpdate
+  006cb6e0 RELOCATION_MATCH CTCCreatureNavigation::GetNearbyWanderPosition
+  006cb840 RELOCATION_MATCH CTCCreatureNavigation::GetNearestFleePosition
+  006e3440 RELOCATION_MATCH NSpeechGainManager::?UpdateDialogueElement@NSpeechGainManager@@
+  006e93c0 RELOCATION_MATCH CCombatManager::?IsCreatureOnRotatingCombatRing@CCombatManager@@
+  006ea770 RELOCATION_MATCH CCombatManager::GetPreferredPos
+  007032f0 RELOCATION_MATCH CThingObject::?OnCreate@CThingObject
+  00705c30 RELOCATION_MATCH CTCCarryable::vfunc_6
+  0070c330 RELOCATION_MATCH CAnimSet::UpdateTimePassed
+  00713ee0 RELOCATION_MATCH NTCScriptedControl::CActionFollowCreature::?Update@CActionFollowCreature@NTCScriptedControl@@UAEXXZ
+  0071c7c0 RELOCATION_MATCH CTCHeroMorph::AddParticles
+  0071de80 RELOCATION_MATCH CTCHeroMorph::UpdateTextureMorphs
+  007235e0 RELOCATION_MATCH CTCPhysicsStandard::vfunc_38
+  00725290 RELOCATION_MATCH CTCPhysicsControlled::UpdateOnSurface
+  00745730 RELOCATION_MATCH CTCPerceiveThing::UpdatePerception
+  007479b0 RELOCATION_MATCH CTCStealth::UpdateHearability
+  0074ff60 RELOCATION_MATCH COpenCloseHelper::FrameUpdate
+  00751970 RELOCATION_MATCH CTCLook::GetBodySettingsSlowInFastOut
+  00752300 RELOCATION_MATCH CTCLook::ImplementBodySettings
+  0075cdf0 RELOCATION_MATCH CTCCameraPointScripted::Validate
+  00766330 RELOCATION_MATCH CTCObjectAugmentations::GetStaminaToAddThisFrame
+  0077c360 RELOCATION_MATCH CLoopedRange::?GetFraction@
+  007c2480 RELOCATION_MATCH CTCShotDefinitionBase::UpdateEffects
+  007dff90 RELOCATION_MATCH CTCTeleporter::StartTeleporting
+  00805a90 RELOCATION_MATCH CGetBestTargetInDirection::??RCGetBestTargetInDirection
+  0080c190 RELOCATION_MATCH _global::?GetExplosionEffectInterpolate@
+  00815070 RELOCATION_MATCH NHitLocations::CPhysicalPrimitiveMesh::vfunc_7
+  00815aa0 RELOCATION_MATCH NHitLocations::CPhysicalPrimitiveCylinder::GetBoundingSphere
+  008203a0 RELOCATION_MATCH CMap::?ApplyScriptedMapBrushUpdate@CMap@
+  00830dd0 RELOCATION_MATCH CThingAICreature::InitialiseMovementSpeeds
+  00851bd0 RELOCATION_MATCH CHeroAbilityStatWeight::?GetParameter@CHeroAbilityStatWeight@@
+  00856040 RELOCATION_MATCH _global::?ProcessFramesRunningForOnHitWithParams@
+  00858130 RELOCATION_MATCH CCombatActionBase::?ProcessPossibleCreatureStrikeEvent@CCombatActionBase@@IAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z
+  008587b0 RELOCATION_MATCH CCombatActionBase::?ProcessPossibleObjectStrikeEvent@CCombatActionBase@@IAEXMABU?$pair@VC3DVector@@V1@@std@@0AAVCThingGameObject@@@Z
+  0085f8d0 RELOCATION_MATCH NCreatureMode::?IsValidRangedWeaponTargetForShooter@NCreatureMode@@YI_NABVCThing@@0M@Z
+  00866e80 RELOCATION_MATCH CCombatAction_GenericStrikeResponseKnockdownRecoverBase::?FinishAction@CCombatAction_GenericStrikeResponseKnockdownRecoverBase
+  00872490 RELOCATION_MATCH NCameraModes::CZTargetNew::InitialiseTransitionVariables
+  00891720 RELOCATION_MATCH CGameScriptInterface::ChangeHeroHealthBy
+  00899c10 RELOCATION_MATCH CGameScriptInterface::IsPlayerCreatureReadyToFireProjectileWeapon
+  008cffe0 RELOCATION_MATCH CGameScriptThing::InitFromThing
+  008e52f0 RELOCATION_MATCH CTCPhysicsStandard::CalculateNoStepsForStepBasedMovement
+  008e5f00 RELOCATION_MATCH CTCPhysicsStandard::PerformForceUpdates
+  008ea500 RELOCATION_MATCH NCreatureMode::CModeHoverBase::InitialiseMovementSpeeds
+  0091d510 RELOCATION_MATCH CAIStateGroup_HoverMovementBase::AIAction_MoveToPosProximityAndFacePos
+  0093c6d0 RELOCATION_MATCH CAIStateGroup_StealthSeekEnemy::SetWhatsThatAnimation
+  009624d0 RELOCATION_MATCH CAIStateGroup_IceTrollPoundGroundAttack::Update
+  0097e890 RELOCATION_MATCH CAIStateGroupBase::AIAction_MoveToPosProximity
+  009804a0 RELOCATION_MATCH CAIStateGroupBase::AIAction_FleeToThingProximity
+  00a18ea0 RELOCATION_MATCH CNavigatorFlyer::MoveToPos
+  00a39fe0 RELOCATION_MATCH C2DBoxI::ClipLineTo
+  00a560a0 RELOCATION_MATCH CMatrix3x4::IsIdentity
+  00a57bd0 RELOCATION_MATCH C2DLineF::IntersectsWith
+  00a88c50 RELOCATION_MATCH CQuaternion::Equals
+  00adebc0 RELOCATION_MATCH C3DBoundingBox::CalculateMatrix@C3DBoundingBox
+  00ae1600 RELOCATION_MATCH CParticleProgram::?PrepareForRendering@CParticleProgram@@QAEXPAVC4DVector@@PAVCParticleSimulation@@MM@Z
+  00b18af0 RELOCATION_MATCH NParticleEngine::CPSCLight::AddToBoundingSphere
+  00b61b30 RELOCATION_MATCH CEngineSkyRenderer::BuildOuterSkyMesh
+  00bcbc00 RELOCATION_MATCH CEngineInternalPrimitiveSpriteTrail::Update

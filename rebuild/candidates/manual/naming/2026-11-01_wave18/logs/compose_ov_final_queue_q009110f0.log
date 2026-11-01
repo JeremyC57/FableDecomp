@@ -1,0 +1,1 @@
+skip 009378f0 moved CCreatureAction_AlertToPlayer::CCreatureAction_AlertToPlayer -> CCreatureAction_OrderSecuritySweep x1 :: compile: uild\src\compiled\00\93\CAIStateGroupMinionReactToUnconsciousPerson_Update_009378f0.cpp(153) : error C2273: 'function-style cast' : illegal as right side of '->' operator

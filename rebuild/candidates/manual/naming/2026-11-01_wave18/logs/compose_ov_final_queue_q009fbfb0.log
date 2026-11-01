@@ -1,0 +1,13 @@
+skip 0041b550 non-public ListRemove: CResource is not an RTTI-derived class of the row (NUISystem::CSprite::vfunc_145)
+skip 0041b9c0 non-public ListRemove: FableCameraPointScriptedSpline_0041B9C0 is not an RTTI-derived class of the row (CTCCameraPointScriptedSpline::EditCyclePreviousKeyCamera)
+skip 009c8700 non-public ListRemove: CResourceMethods is not an RTTI-derived class of the row (NGameText::CDataBankGroupEntry::BuildGroup)
+skip 009c8fb0 non-public ListRemove: CResourceMethods is not an RTTI-derived class of the row (NGameText::CDataBankTextEntry::BuildText)
+skip 00a25530 inplace CResource::ListRemove -> ListRemove x1 :: compile: l\rebuild\src\compiled\00\a2\C3DMeshInfo_GetMeshStats_00a25530.cpp(75) : error C2248: 'CResource::ListRemove' : cannot access private member declared in class 'CResource'
+skip 00a25e70 inplace CResource::ListRemove -> ListRemove x1 :: compile: _final\rebuild\src\compiled\00\a2\C3DMeshInfo_GetMesh_00a25e70.cpp(86) : error C2248: 'CResource::ListRemove' : cannot access private member declared in class 'CResource'
+skip 00a269c0 inplace CResource::ListRemove -> ListRemove x1 :: compile: src\compiled\00\a2\C3DAnimationInfo_GetAnimationStats_00a269c0.cpp(60) : error C2248: 'CResource::ListRemove' : cannot access private member declared in class 'CResource'
+skip 00a26a50 inplace CResource::ListRemove -> ListRemove x1 :: compile: ld\src\compiled\00\a2\C3DAnimationInfo_TouchAnimation_00a26a50.cpp(61) : error C2248: 'CResource::ListRemove' : cannot access private member declared in class 'CResource'
+skip 00a26c60 inplace CResource::ListRemove -> ListRemove x1 :: compile: ild\src\compiled\00\a2\C3DAnimationInfo_GetAnimation_00a26c60.cpp(108) : error C2248: 'CResource::ListRemove' : cannot access private member declared in class 'CResource'
+skip 00a42fc0 inplace CResource::ListRemove -> ListRemove x1 :: compile: ld\src\compiled\00\a4\CLipSyncDataBank_GetLipSyncData_00a42fc0.cpp(62) : error C2248: 'CResource::ListRemove' : cannot access private member declared in class 'CResource'
+skip 00bec000 0 definitions of CResource
+skip 00bec470 0 definitions of CResource
+skip 00bec950 0 definitions of CResource

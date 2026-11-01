@@ -1,0 +1,1 @@
+skip 005bb5ae template class _List_base<class CDefPointer<class CAppearanceModifierDef const>, class std::allocator<class CDefPointer<class CAppearanceModifierDef const>>> needs a bespoke model

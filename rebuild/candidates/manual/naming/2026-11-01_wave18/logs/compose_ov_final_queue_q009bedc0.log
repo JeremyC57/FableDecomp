@@ -1,0 +1,4 @@
+skip 00405650 call of GetRenderTargetDimensions with 1 args
+skip 0040f0e0 call of GetDims with 1 args
+skip 009e1d00 0 definitions of CDisplayManagerPixelRoundView
+skip 009e1d50 0 definitions of CDisplayManagerPixelRoundView

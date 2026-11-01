@@ -1,0 +1,8 @@
+addr       parity           behav  name
+004022b0   WARN RELOC_NAME: ?AddChildPrimitive@@YIPAUFableEngineRoot@@XZ -> 009a4ec0 labelled 'GFGetSystemManager'
+004022b0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+004022b0   RELOCATION_MATCH PASS   GFInitialise
+
+WINS: 1
+  004022b0 RELOCATION_MATCH _global::GFInitialise
+oracle TSV is missing required columns: address, bytes, length, name

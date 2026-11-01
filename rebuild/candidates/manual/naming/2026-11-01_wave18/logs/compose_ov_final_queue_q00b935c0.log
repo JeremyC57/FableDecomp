@@ -1,0 +1,1 @@
+skip 00b937a0 inplace CEngineSceneGridCell::CEngineSceneGridCell -> CEngineSceneGridCell x1 :: compile: eneGrid_GetCellCreate_00b937a0.cpp(57) : error C2248: 'CEngineSceneGridCell::CEngineSceneGridCell' : cannot access private member declared in class 'CEngineSceneGridCell'

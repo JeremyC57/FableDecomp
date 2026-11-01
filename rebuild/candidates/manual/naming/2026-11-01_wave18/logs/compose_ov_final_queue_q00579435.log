@@ -1,0 +1,6 @@
+skip 009ccc00 non-public _M_erase: CBankSymbolTree is not an RTTI-derived class of the row (CBankFile::ClearEntries)
+skip 009cd850 non-public _M_erase: CSymbolTree is not an RTTI-derived class of the row (CBankFile::CloseEntries)
+skip 009ceae0 non-public _M_erase: SymbolTree is not an RTTI-derived class of the row (CBankFile::AllocateBuffers)
+skip 009d3420 non-public _M_erase: CRetailTree_009d2d00 is not an RTTI-derived class of the row (CRetailTree_009d2d00::operator=)
+skip 009d38d0 non-public _M_erase: CRetailTree_erase00579435 is not an RTTI-derived class of the row (CRetailTree_erase00579435::~CRetailTree_erase00579435)
+skip 009f1560 non-public _M_erase: CNameToHandleMap is not an RTTI-derived class of the row (CCodeSectionManager::~CCodeSectionManager)

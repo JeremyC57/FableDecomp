@@ -1,0 +1,16 @@
+addr       parity           behav  name
+0074ee90   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0074ee90   WARN SHARED_HEADER_AVAILABLE CPlayer
+0074ee90   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+0074ee90   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+0074ee90   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0074ee90   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+0074ee90   WARN SHARED_HEADER_AVAILABLE CTCBase
+0074ee90   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0074ee90   RELOCATION_MATCH PASS   CTCContainerRewardHero::RewardHeroWithItems
+00994b40   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00994b40   MATCH            PASS   CCreatureActionBase::GetFramesRemaining
+
+WINS: 2
+  0074ee90 RELOCATION_MATCH CTCContainerRewardHero::?RewardHeroWithItems@CTCContainerRewardHero@@QAE_NXZ
+  00994b40 MATCH CCreatureActionBase::?GetLength@CMemoryDataOutputStream@@QBEKXZ

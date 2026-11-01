@@ -1,0 +1,3 @@
+skip 009b08c0 2 CFileDataInputStream::CFileDataInputStream declarations
+skip 009d0380 2 CFileDataInputStream::CFileDataInputStream declarations
+skip 009d4c30 2 CFileDataInputStream::CFileDataInputStream declarations

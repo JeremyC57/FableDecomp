@@ -1,0 +1,7 @@
+skip 004d0740 non-public _M_erase: CRetailTree_erase004cf810 is not an RTTI-derived class of the row (CRetailTree_erase004cf810::~CRetailTree_erase004cf810)
+skip 004d0e20 non-public _M_erase: CRetailTree_erase004cf810 is not an RTTI-derived class of the row (CRetailTree_erase004cf810::~CRetailTree_erase004cf810)
+skip 008a0cb0 non-public _M_erase: CStringSet is not an RTTI-derived class of the row (CGameScriptInterface::DebugGetAllTextEntriesForTargetedThing)
+skip 00ad4a00 non-public _M_erase: CRetailTree_erase004cf810 is not an RTTI-derived class of the row (CRetailTree_erase004cf810::~CRetailTree_erase004cf810)
+skip 00ad4a70 non-public _M_erase: CLongSet is not an RTTI-derived class of the row (CTwoLongSets::~CTwoLongSets)
+skip 00ad7400 0 definitions of CRbTree<unsigned long>
+skip 00ae7150 non-public _M_erase: CRetailTree_erase004cf810 is not an RTTI-derived class of the row (CRetailTree_erase004cf810::~CRetailTree_erase004cf810)

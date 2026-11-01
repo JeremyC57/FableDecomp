@@ -1,0 +1,80 @@
+skip 004069e0 no stand-in identifier
+skip 00406a80 no stand-in identifier
+skip 00406c20 no stand-in identifier
+skip 004083e0 g_pMainGameComponent typed void
+skip 004175e5 stand-in g_pGame typed void
+skip 0041cf47 0 definitions of stand-in class CEngine
+skip 0041db84 no stand-in identifier
+skip 0047db73 no stand-in identifier
+skip 0048de44 no stand-in identifier
+skip 0048e072 no stand-in identifier
+skip 00497b30 no stand-in identifier
+skip 00541e60 class Game -> CMainGameComponent struct -> class Game_013b86a0 x2 :: new defined ['?GetTextDataBank@CMainGameComponent@@QBEPAVCDataBank@NGameText@@XZ']
+skip 00541f20 class Game -> CMainGameComponent struct -> class Game_013b86a0 x2 :: new defined ['?GetTextDataBank@CMainGameComponent@@QBEPAVCDataBank@NGameText@@XZ']
+skip 00542140 0 extern declarations of Game_013b86a0
+edited 00563130 class CEngineGlobals -> CMainGameComponent struct -> class g_pEngineGlobals_013b86a0 x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngineGlobals_013b86a0@@3PAUCEngineGlobals@@A']
+edited 00563410 class CEngineGlobals -> CMainGameComponent struct -> class g_pEngineGlobals_013b86a0 x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngineGlobals_013b86a0@@3PAUCEngineGlobals@@A']
+skip 0056a880 stand-in g_pEngine typed CEngineCalls
+skip 0056a980 stand-in g_pEngine typed CEngineCalls
+edited 0056ed08 class CEngineGlobals -> CMainGameComponent struct -> class g_pEngineGlobals x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngineGlobals@@3PAUCEngineGlobals@@A']
+edited 0057a989 class CEngineGlobals -> CMainGameComponent struct -> class g_pEngineGlobals x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngineGlobals@@3PAUCEngineGlobals@@A']
+skip 0057ad4c stand-in g_pWorld typed CWorldGlobal
+skip 00581c1e no stand-in identifier
+edited 00587b93 class CEngineGlobals -> CMainGameComponent struct -> class g_pEngineGlobals x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngineGlobals@@3PAUCEngineGlobals@@A']
+edited 005b6881 class CEngineGlobals -> CMainGameComponent struct -> class g_pEngineGlobals x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngineGlobals@@3PAUCEngineGlobals@@A']
+edited 005cd433 class CEngineGlobals -> CMainGameComponent struct -> class g_pEngineGlobals x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngineGlobals@@3PAUCEngineGlobals@@A']
+skip 00639ba0 stand-in g_pWorld typed CWorldGlobal
+edited 00640000 class CGlobalObject -> CMainGameComponent struct -> class g_object_013b86a0 x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_object_013b86a0@@3PAUCGlobalObject@@A']
+edited 00640010 class CGlobalObject -> CMainGameComponent struct -> class g_object_013b86a0 x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_object_013b86a0@@3PAUCGlobalObject@@A']
+edited 00640020 class CGlobalObject -> CMainGameComponent struct -> class g_object_013b86a0 x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_object_013b86a0@@3PAUCGlobalObject@@A']
+edited 00640030 class CGlobalObject -> CMainGameComponent struct -> class g_object_013b86a0 x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_object_013b86a0@@3PAUCGlobalObject@@A']
+skip 0065a075 no stand-in identifier
+skip 00690830 g_pMainGameComponent typed CMainGameComponentView
+skip 00697860 no stand-in identifier
+skip 00697e20 no stand-in identifier
+skip 00699b00 no stand-in identifier
+skip 0069a8b0 no stand-in identifier
+skip 006b32b0 stand-in g_pEngineGlobals_013b86a0 typed CEngineGlobals_006b32b0
+edited 006d7960 class CGameTextManager -> CMainGameComponent struct -> class g_GameText x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_GameText@@3PAUCGameTextManager@@A']
+edited 006dda50 class CEngineGlobals -> CMainGameComponent struct -> class g_pEngineGlobals x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngineGlobals@@3PAUCEngineGlobals@@A']
+skip 006e11f0 0 extern declarations of g_pMainGameComponent
+skip 006e28a0 class CWorld -> CMainGameComponent g_pWorld x1 :: diff -['?GetFrame@CWorld@@QAEJXZ', '?g_pWorld@@3PAVCWorld@@A'] +['?PMainGameComponent@CMainGameComponent@@1PAV1@A', '?GetFrame@CMainGameComponent@@QAEJXZ']
+skip 006e28d0 class CWorld -> CMainGameComponent g_pWorld x1 :: diff -['?GetFrame@CWorld@@QAEJXZ', '?g_pWorld@@3PAVCWorld@@A'] +['?PMainGameComponent@CMainGameComponent@@1PAV1@A', '?GetFrame@CMainGameComponent@@QAEJXZ']
+skip 006e2dc0 class CWorld -> CMainGameComponent g_pWorld x1 :: diff -['?GetFrame@CWorld@@QAEJXZ', '?g_pWorld@@3PAVCWorld@@A'] +['?PMainGameComponent@CMainGameComponent@@1PAV1@A', '?GetFrame@CMainGameComponent@@QAEJXZ']
+skip 006e3ab0 no stand-in identifier
+skip 0070c0d0 no stand-in identifier
+skip 0071c790 no stand-in identifier
+edited 00731970 class CEngineGlobals -> CMainGameComponent struct -> class g_pEngineGlobals x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngineGlobals@@3PAUCEngineGlobals@@A']
+edited 007319a0 class CEngineGlobals -> CMainGameComponent struct -> class g_pEngineGlobals x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngineGlobals@@3PAUCEngineGlobals@@A']
+skip 0076deb0 stand-in g_pEngine typed CEngineCalls
+skip 007bedf0 no stand-in identifier
+skip 007df4b0 g_pMainGameComponent typed CMainGameComponentFontView
+edited 007e27f0 class CGameTextManager -> CMainGameComponent struct -> class g_GameText x5 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_GameText@@3PAUCGameTextManager@@A']
+edited 0081f460 class CEngineGlobals -> CMainGameComponent struct -> class g_pEngineGlobals_013b86a0 x1 +u ['?PMainGameComponent@CMainGameComponent@@1PAV1@A'] -u ['?g_pEngineGlobals_013b86a0@@3PAUCEngineGlobals@@A']
+skip 0082a180 no stand-in identifier
+skip 0088f570 stand-in g_pEngine typed CEngine_Retail
+skip 00890550 no stand-in identifier
+skip 00890670 no stand-in identifier
+skip 00890b70 no stand-in identifier
+skip 00890c80 0 extern declarations of g_MainGameComponent
+skip 00890d80 0 extern declarations of g_MainGameComponent
+skip 00890ff0 no stand-in identifier
+skip 00891340 stand-in g_pEngineGlobals_013b86a0 typed CEngineGlobals_Retail
+skip 008913a0 no stand-in identifier
+skip 008913c0 no stand-in identifier
+skip 00892070 stand-in g_pEngineGlobals_013b86a0 typed CEngineGlobals_Retail
+skip 00892850 stand-in g_pEngine typed CEngine_Retail
+skip 008981c0 stand-in g_pEngine typed CEngine_Retail
+skip 008a0a20 0 extern declarations of g_MainGameComponent
+skip 008af850 no stand-in identifier
+skip 008d74b0 stand-in g_pGame typed NCreatureMode::CGame
+skip 008e9460 stand-in g_pEngine typed CEngineCalls
+skip 008ee720 stand-in g_pEngine typed CEngineSingleton
+skip 008f40b0 no stand-in identifier
+skip 008f7860 no stand-in identifier
+skip 00907010 g_pMainGameComponent typed CMainGameComponent_Retail
+skip 009098e0 g_pMainGameComponent typed CMainGameComponent_Retail
+skip 0090c1a0 g_pMainGameComponent typed CGameGlobals
+skip 00929650 no stand-in identifier
+skip 0095e790 class CEngine -> CMainGameComponent g_pEngine x1 :: new defined ['?GetPlayerManager@CMainGameComponent@@QBEPAVCPlayerManager@@XZ']
+skip 0095f9a0 class CWorld -> CMainGameComponent g_pWorld x1 :: diff -['?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ', '?g_pWorld@@3PAVCWorld@@A', '?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ'] +['?GetWorld@CAIStateGroupBase@@IBEAAVCMainGameComponent@@XZ', '?PMainGameComponent@CMainGameComponent@@1PAV1@A', '?PeekMyPlayer@CMainGameComponent@@QBEPBVCPlayer@@XZ']

@@ -1,0 +1,238 @@
+rfail h18_rfail.py ok 8 already 0 other 0 
+qctor h18_qctor.py ok 12 already 0 other 0 
+own h18_own.py ok 6 already 0 other 0 
+stl h18_stl.py ok 9 already 0 other 0 
+pmgc fam_glob18.py {'edited': 320, 'skip': 49, 'already': 0} 
+pclass fam_glob18.py {'edited': 62, 'skip': 71, 'already': 0} 
+pclass h18_gtests.py ok 2 already 0 other 0 
+dstgame fam_glob18.py {'edited': 184, 'skip': 20, 'already': 0} 
+pgui fam_glob18.py {'edited': 156, 'skip': 49, 'already': 0} 
+pgui h18_gtests2.py ok 16 already 0 other 0 
+thingmgr fam_glob18.py {'edited': 65, 'skip': 14, 'already': 0} 
+cfps fam_glob18.py {'edited': 291, 'skip': 13, 'already': 0} 
+eps fam_eps18.py {'edited': 146, 'skip': 1, 'already': 0} 
+eps h18_eps_test.py ok 1 already 0 other 0 
+bitset fam_bitset18.py {'edited': 229, 'skip': 1, 'already': 0} 
+gpdm fam_gren18.py {'edited': 35, 'skip': 0, 'already': 0} 
+gpdm h18_gpdm_test.py ok 1 already 0 other 0 
+isqrt fam_gren18.py {'edited': 36, 'skip': 0, 'already': 0} 
+queue fam_q18.py {'edited': 1, 'skip': 3, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 53, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 230, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 2, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 2, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 99, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 4, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 15, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 6, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 8, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 2, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 0, 'already': 0} 649-a32d96bb1c2d/scratchpad/naming/w18/scripts/fam_q18.py", line 71, in <module>
+    NF = parse(FIN); assert NF and NF['kind'] == 'mem', (FIN, NF)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('??$__uninitialized_copy@PB_NPA_N@std@@YIPA_NPB_N0PA_NABU__true_type@0@@Z', None)
+queue fam_q18.py {'edited': 0, 'skip': 0, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 4, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 3, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 0, 'already': 0}  assert NF and NF['kind'] == 'mem', (FIN, NF)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('?GFROR13@@YIJK@Z', {'kind': 'free', 'ret': 'long', 'cc': '__fastcall', 'scope': [], 'name': 'GFROR13', 'params': ['unsigned long'], 'dem': 'long __fastcall GFROR13(unsigned long)'})
+queue fam_q18.py {'edited': 0, 'skip': 0, 'already': 0} F)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('?GFFloatRandom@@YIMMPAK@Z', {'kind': 'free', 'ret': 'float', 'cc': '__fastcall', 'scope': [], 'name': 'GFFloatRandom', 'params': ['float', 'unsigned long *'], 'dem': 'float __fastcall GFFloatRandom(float, unsigned long *)'})
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 3, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 3, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 8, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 5, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 25, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 2, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 8, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 3, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 22, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 7, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 2, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 0, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 3, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 11, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 0, 'already': 0} rToTopRight@NPlayerGui@@YI?AVC2DVector@@ABV2@@Z', {'kind': 'free', 'ret': 'class C2DVector', 'cc': '__fastcall', 'scope': ['NPlayerGui'], 'name': 'GFAnchorToTopRight', 'params': ['class C2DVector const &'], 'dem': 'class C2DVector __fastcall NPlayerGui::GFAnchorToTopRight(class C2DVector const &)'})
+queue fam_q18.py {'edited': 0, 'skip': 6, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 5, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 12, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 4, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 5, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 2, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 17, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 4, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 11, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 9, 'already': 0} 
+queue fam_q18.py {'edited': 62, 'skip': 4, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 6, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 8, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 0, 'already': 0} 
+queue fam_q18.py {'edited': 13, 'skip': 10, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 0, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 6, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 3, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 2, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 0, 'already': 0} ', 'ret': 'bool', 'cc': '__fastcall', 'scope': ['NCombatActionHelpers'], 'name': 'IsToCreateCombatParticleEffects', 'params': ['class CThing const &', 'class CThing const *'], 'dem': 'bool __fastcall NCombatActionHelpers::IsToCreateCombatParticleEffects(class CThing const &, class CThing const *)'})
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 5, 'already': 0} 
+queue fam_q18.py {'edited': 2, 'skip': 3, 'already': 0} 
+queue fam_q18.py {'edited': 1, 'skip': 2, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 2, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 39, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 5, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 2, 'already': 1} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 7, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 19, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 3, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 25, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 0, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 128, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 62, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 112, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 0, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 3, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 2, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 4, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 0, 'already': 0} ^
+AssertionError: ('?ConstructString@NGameText@@YI_NAAVCWideString@@J@Z', {'kind': 'free', 'ret': 'bool', 'cc': '__fastcall', 'scope': ['NGameText'], 'name': 'ConstructString', 'params': ['class CWideString &', 'long'], 'dem': 'bool __fastcall NGameText::ConstructString(class CWideString &, long)'})
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 3, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 10, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 13, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 6, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 11, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 89, 'already': 0} 
+queue fam_q18.py {'edited': 1, 'skip': 90, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 57, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 68, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 2, 'skip': 0, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 2, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 8, 'already': 0} 
+queue fam_q18.py {'edited': 14, 'skip': 0, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 4, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 0, 'already': 0}   NF = parse(FIN); assert NF and NF['kind'] == 'mem', (FIN, NF)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('?sal_round@@YAHM@Z', {'kind': 'free', 'ret': 'int', 'cc': '__cdecl', 'scope': [], 'name': 'sal_round', 'params': ['float'], 'dem': 'int __cdecl sal_round(float)'})
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 0, 'already': 0} ude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/naming/w18/scripts/fam_q18.py", line 71, in <module>
+    NF = parse(FIN); assert NF and NF['kind'] == 'mem', (FIN, NF)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('??_7CDiskFileWin32@@6B@', None)
+queue fam_q18.py {'edited': 0, 'skip': 0, 'already': 0} p/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/naming/w18/scripts/fam_q18.py", line 71, in <module>
+    NF = parse(FIN); assert NF and NF['kind'] == 'mem', (FIN, NF)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('??_7?$CIntelligentPointer@VCThingAICreature@@@@6B@', None)
+queue fam_q18.py {'edited': 0, 'skip': 0, 'already': 0} 1bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/naming/w18/scripts/fam_q18.py", line 71, in <module>
+    NF = parse(FIN); assert NF and NF['kind'] == 'mem', (FIN, NF)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('??_7?$CParticleUpdateParameters@KK@NParticleEngine@@6B@', None)
+queue fam_q18.py {'edited': 0, 'skip': 0, 'already': 0} 18-575f-8649-a32d96bb1c2d/scratchpad/naming/w18/scripts/fam_q18.py", line 71, in <module>
+    NF = parse(FIN); assert NF and NF['kind'] == 'mem', (FIN, NF)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('?m_pNewFrontendGameComponent@CNewFrontendGameComponent@@0PAV1@A', None)
+queue fam_q18.py {'edited': 0, 'skip': 0, 'already': 0} home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/naming/w18/scripts/fam_q18.py", line 71, in <module>
+    NF = parse(FIN); assert NF and NF['kind'] == 'mem', (FIN, NF)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('?NullString@CWideString@@2V1@A', None)
+queue fam_q18.py {'edited': 0, 'skip': 0, 'already': 0} ome-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/naming/w18/scripts/fam_q18.py", line 71, in <module>
+    NF = parse(FIN); assert NF and NF['kind'] == 'mem', (FIN, NF)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('?DirtyDisc@CFileInstaller@@1_NA', None)
+queue fam_q18.py {'edited': 0, 'skip': 0, 'already': 0} 575f-8649-a32d96bb1c2d/scratchpad/naming/w18/scripts/fam_q18.py", line 71, in <module>
+    NF = parse(FIN); assert NF and NF['kind'] == 'mem', (FIN, NF)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('?StateManager@CRenderStateCaptureBlock@@0PAVCRenderStateManager@@A', None)
+queue fam_q18.py {'edited': 0, 'skip': 0, 'already': 0} e-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/naming/w18/scripts/fam_q18.py", line 71, in <module>
+    NF = parse(FIN); assert NF and NF['kind'] == 'mem', (FIN, NF)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('?m_bInitialized@CSalCpuInfo@@0_NA', None)
+queue fam_q18.py {'edited': 0, 'skip': 0, 'already': 0} /-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/naming/w18/scripts/fam_q18.py", line 71, in <module>
+    NF = parse(FIN); assert NF and NF['kind'] == 'mem', (FIN, NF)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('?m_bHasSSE@CSalCpuInfo@@0_NA', None)
+queue fam_q18.py {'edited': 0, 'skip': 0, 'already': 0} -home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/naming/w18/scripts/fam_q18.py", line 71, in <module>
+    NF = parse(FIN); assert NF and NF['kind'] == 'mem', (FIN, NF)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('?m_bHasSSE2@CSalCpuInfo@@0_NA', None)
+queue fam_q18.py {'edited': 0, 'skip': 6, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 14, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 30, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 1, 'skip': 0, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 6, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 3, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 3, 'already': 0} 
+queue fam_q18.py {'edited': 1, 'skip': 0, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 2, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 17, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 5, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 2, 'skip': 0, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 3, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 4, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 2, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 0, 'already': 0} -575f-8649-a32d96bb1c2d/scratchpad/naming/w18/scripts/fam_q18.py", line 71, in <module>
+    NF = parse(FIN); assert NF and NF['kind'] == 'mem', (FIN, NF)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('?WifeAppearanceDialogueGroupStemNames@CTCWife@@2PAVCCharString@@A', None)
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 18, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 4, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 0, 'already': 0} NF = parse(FIN); assert NF and NF['kind'] == 'mem', (FIN, NF)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('LookupDirectionFilterPair (descriptive; libpk: (long table, float azimuth, float elevation, const SDirectionFilter** first, const SDirectionFilter** second))', None)
+queue fam_q18.py {'edited': 0, 'skip': 0, 'already': 0} mp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/naming/w18/scripts/fam_q18.py", line 71, in <module>
+    NF = parse(FIN); assert NF and NF['kind'] == 'mem', (FIN, NF)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('CVtable_012bed7c::RebuildGain(bool) (descriptive)', None)
+queue fam_q18.py {'edited': 0, 'skip': 4, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 4, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 4, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 8, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 2, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 1, 'skip': 4, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+queue fam_q18.py {'edited': 0, 'skip': 1, 'already': 0} 
+{'rfail': 4, 'qctor': 10, 'own': 2, 'stl': 9, 'pmgc': 320, 'pclass': 62, 'dstgame': 184, 'pgui': 156, 'thingmgr': 65, 'cfps': 291, 'eps': 146, 'bitset': 229, 'gpdm': 35, 'isqrt': 36, 'queue': 101}

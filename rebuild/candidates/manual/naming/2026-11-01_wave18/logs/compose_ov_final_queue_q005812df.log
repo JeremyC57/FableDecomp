@@ -1,0 +1,3 @@
+skip 0057d990 no calls of operator[]
+skip 0057d9fd no calls of operator[]
+skip 0057daf5 no calls of operator[]

@@ -1,0 +1,8 @@
+skip 00438570 free stand-in AcquireBuilder not a one-argument this-call
+skip 005fc2d0 free stand-in GetDefinitionManager not a one-argument this-call
+skip 005fc8a0 free stand-in GetDefinitionManager not a one-argument this-call
+skip 007f1b70 free stand-in GetDefinitionManager not a one-argument this-call
+skip 0088fee0 free stand-in Resolve not a one-argument this-call
+skip 0088ffb0 unparsed _GetTheme@4
+skip 00890010 free stand-in GetTheme not a one-argument this-call
+skip 00890090 free stand-in Resolve not a one-argument this-call

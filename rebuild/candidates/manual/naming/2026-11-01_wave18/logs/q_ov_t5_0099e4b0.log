@@ -1,0 +1,25 @@
+skip 00406070 no calls of CCharStringMember
+skip 00413280 no calls of CCharStringMember
+skip 0044a570 no calls of CCharStringMember
+skip 004558bf no calls of CMember_0099e4b0
+skip 0047a750 no calls of CCharStringMember
+skip 004cb0d0 no calls of CCharStringMember
+skip 004d3826 no calls of CMember_0099e4b0
+skip 0050b470 no calls of CCharStringMember
+skip 00525ff0 no calls of CCharStringMember
+skip 006d41f0 3 CCharString::CCharString declarations
+skip 0074c6d0 no calls of CCharStringMember
+skip 00822690 no calls of CCharStringMember
+skip 00869fa0 no calls of CCharStringMember
+skip 008fd255 no calls of CMember_0099e4b0
+skip 008fe862 no calls of CMember_0099e4b0
+skip 009a9930 moved CClass_009a9930::Initialise -> CCharString x1 :: compile: pad\naming\w18\ov_t5\rebuild\src\compiled\00\9a\unattributed_CClass009a9930_009a9930.cpp(22) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 009aa240 moved CClass_009aa240::Initialise -> CCharString x1 :: compile: pad\naming\w18\ov_t5\rebuild\src\compiled\00\9a\unattributed_CClass009aa240_009aa240.cpp(19) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 009c97a0 no calls of CCharStringMember
+skip 009cb910 moved C3DAnimationBlendState::HelperReset -> CCharString x1 :: compile: ov_t5\rebuild\src\compiled\00\9c\C3DAnimationBlendState_AddCombinationBlend_009cb910.cpp(30) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 00a16d50 moved SubInit::Init -> CCharString x1 :: compile: ov_t5\rebuild\src\compiled\00\a1\global_GetDefaultValCPhysicalPrimitiveInit_00a16d50.cpp(20) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 00bf8d50 no calls of CCharStringMember
+skip 00cb7840 no calls of CCharStringMember
+skip 00cd4580 no calls of CCharStringMember
+skip 00dc0300 no calls of CCharStringFmt
+skip 00e1e530 4 CCharString::CCharString declarations

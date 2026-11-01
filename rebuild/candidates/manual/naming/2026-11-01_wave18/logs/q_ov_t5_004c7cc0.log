@@ -1,0 +1,3 @@
+skip 004b4aa0 inplace CThing::GetDefName -> GetDefName x1 :: final not named
+skip 004b4c50 inplace CThing::GetDefName -> GetDefName x1 :: final not named
+skip 008d02c0 qualified call of GetDefName

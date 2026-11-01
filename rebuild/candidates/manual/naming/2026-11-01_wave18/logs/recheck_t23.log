@@ -1,0 +1,20 @@
+addr       parity           behav  name
+004c7990   RELOCATION_MATCH PASS   CThing::PeekDefinitionManager
+004c79e0   RELOCATION_MATCH PASS   CThing::PeekWorldMap
+004c7a00   RELOCATION_MATCH PASS   CThing::GetPlayerManager
+004c7a30   RELOCATION_MATCH PASS   CThing::GetPlayer
+
+WINS: 4
+  004c7990 RELOCATION_MATCH CThing::?PeekDefinitionManager@CThing@@QBEABVCGameDefinitionManager@@XZ
+  004c79e0 RELOCATION_MATCH CThing::?PeekWorldMap@CThing@@IBEABVCWorldMap@@XZ
+  004c7a00 RELOCATION_MATCH CThing::?GetPlayerManager@CThing@@IAEAAVCPlayerManager@@XZ
+  004c7a30 RELOCATION_MATCH CThing::?GetPlayer@CThing@@QAEAAVCPlayer@@XZ
+addr       parity           behav  name
+004c79d0   RELOCATION_MATCH PASS   CThing::GetWorldMap
+004c79f0   RELOCATION_MATCH PASS   CThing::PeekPlayerManager
+004c7a10   RELOCATION_MATCH PASS   CThing::PeekPlayer
+
+WINS: 3
+  004c79d0 RELOCATION_MATCH CThing::?GetWorldMap@CThing@@IAEAAVCWorldMap@@XZ
+  004c79f0 RELOCATION_MATCH CThing::?PeekPlayerManager@CThing@@IBEABVCPlayerManager@@XZ
+  004c7a10 RELOCATION_MATCH CThing::?PeekPlayer@CThing@@QBEABVCPlayer@@XZ

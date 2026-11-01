@@ -1,0 +1,2 @@
+skip 005ee3b3 moved CDefinitionManager::GetDefGlobalIndex -> GetGlobalIndexFromClassIndex x1 :: compile: \CTCInventoryAbilities_GetMiscThingsDef_005ee3b3.cpp(88) : error C2248: 'CDefinitionManager::GetDef' : cannot access private member declared in class 'CDefinitionManager'
+skip 007c6760 moved CDefinitionManager::GetDefIndex -> GetGlobalIndexFromClassIndex x1 :: compile: 0\7c\CTCTurncoatSpell_CTCTurncoatSpell_007c6760.cpp(148) : error C2248: 'CDefinitionManager::GetDef' : cannot access private member declared in class 'CDefinitionManager'

@@ -1,0 +1,29 @@
+addr       parity           behav  name
+00cf88c0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00cf88c0   RELOCATION_MATCH PASS   CLadyGreyWifeManagerScript::CLadyGreyWifeManagerScript
+00d9e210   RELOCATION_MATCH PASS   NScript::CQ_MinionCampScript::CQ_MinionCampScript
+00dec7f0   RELOCATION_MATCH PASS   NScript::CQ_SecretPassageScript::CQ_SecretPassageScript
+00e1db00   RELOCATION_MATCH PASS   CQR_EscortTraderScript::CQR_EscortTraderScript
+00e755f0   RELOCATION_MATCH PASS   NScript::CV_ExposeMayorScript::CV_ExposeMayorScript
+
+WINS: 5
+  00cf88c0 RELOCATION_MATCH CLadyGreyWifeManagerScript::??0CLadyGreyWifeManagerScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00d9e210 RELOCATION_MATCH NScript::CQ_MinionCampScript::??0CQ_MinionCampScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00dec7f0 RELOCATION_MATCH NScript::CQ_SecretPassageScript::??0CQ_SecretPassageScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00e1db00 RELOCATION_MATCH CQR_EscortTraderScript::??0CQR_EscortTraderScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00e755f0 RELOCATION_MATCH NScript::CV_ExposeMayorScript::??0CV_ExposeMayorScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+addr       parity           behav  name
+00cf91c0   RELOCATION_MATCH PASS   _global::Create_CLadyGreyWifeManagerScript_00cf91c0
+00de0320   RELOCATION_MATCH PASS   NScript::CQ_RansomVictimScript::CQ_RansomVictimScript
+00df1080   RELOCATION_MATCH PASS   _global::Create_CHeroMorphDef_00df1080
+00e398f0   RELOCATION_MATCH PASS   NScript::CV_BordelloScript::CV_BordelloScript
+00e7ef70   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00e7ef70   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e7ef70   RELOCATION_MATCH PASS   NScript::CV_FishingCompetitionScript::CFishCompOrganiser::CFishCompOrganiser
+
+WINS: 5
+  00cf91c0 RELOCATION_MATCH _global::?Alloc@CLadyGreyWifeManagerScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00de0320 RELOCATION_MATCH NScript::CQ_RansomVictimScript::??0CQ_RansomVictimScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00df1080 RELOCATION_MATCH _global::?Alloc@CQ_SecretPassageScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00e398f0 RELOCATION_MATCH NScript::CV_BordelloScript::??0CV_BordelloScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00e7ef70 RELOCATION_MATCH CFishCompOrganiser::??0CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z

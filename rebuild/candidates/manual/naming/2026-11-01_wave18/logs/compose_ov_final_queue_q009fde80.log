@@ -1,0 +1,6 @@
+skip 0041ac20 CFrameData defined in another scope
+skip 0041b550 moved NUISystem::CFrameData::BeginLoading -> BeginLoading x5 :: compile: 49-a32d96bb1c2d\scratchpad\naming\w18\ov_final\rebuild\src\compiled\00\41\NUISystemCSprite_vfunc145_0041b550.cpp(153) : error C2143: syntax error : missing ')' before '*' | 21bbec-fb18-575f-8649-a32d96bb1c2d\scratchpad\naming\w18\ov_final\rebuild\src\compiled\00\41\NUISystemCSprite_vfunc145_0041b550.cpp(153) : error C2059: syntax error : ')' | f-8649-a32d96bb1c2d\scratchpad\naming\w18\ov_final\rebuild\src\compiled\00\41\NUISystemCSprite_vfunc145_0041b550.cpp(153) : error C2238: unexpected token(s) preceding ';'
+skip 0041c260 CFrameData defined in another scope
+skip 009fe620 qualified call of BeginLoading
+skip 009ff8d0 CFrameData defined in another scope
+skip 00b9bcc0 CFrameData defined in another scope

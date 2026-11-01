@@ -1,0 +1,32 @@
+addr       parity           behav  name
+004da68a   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 004da68a.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 004da68a.obj; graded the largest function
+004da68a   RELOCATION_MATCH PASS   std::pair<long,CCharString>::`scalardeletingdestructor'
+004e34b2   WARN RELOC_NAME: ?AutoTinyFinishRead_004dd782@@YIXPAX0PAD@Z -> 004dd782 labelled '_global::ForEachElem0x8__vector_deleting_destruct_004dd782'
+004e34b2   RELOCATION_MATCH PASS   std::vector<std::pair<long,CCharString>>::~vector
+007acc50   RELOCATION_MATCH PASS   std::_Rb_tree<CCharString,pair<const CCharString,bool>,...>::_M_erase
+00b2ea90   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00b2ea90   RELOCATION_MATCH PASS   CRetailList_CountedPointer::clear
+00b7fd00   RELOCATION_MATCH PASS   std::vector<CTVertexWaterBackground,std::allocator<CTVertexWaterBackground> >::resize
+
+WINS: 5
+  004da68a RELOCATION_MATCH std::pair<long,CCharString>::`vector_deleting_destructor'
+  004e34b2 RELOCATION_MATCH std::vector<std::pair<long,CCharString>>::OnReadFinished
+  007acc50 RELOCATION_MATCH _unattributed::?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@_N@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@_N@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@_N@std@@@2@@Z
+  00b2ea90 RELOCATION_MATCH CRetailList_CountedPointer::clear
+  00b7fd00 RELOCATION_MATCH CRetailVector_elem56::resize
+addr       parity           behav  name
+  WARN leaf 'CFlash>_>' matches no symbol in 004dd782.obj; graded the largest function
+  WARN leaf 'CFlash>_>' matches no symbol in 004dd782.obj; graded the largest function
+004dd782   WARN RELOC_NAME: ?DestroyElement@CFlash@@QAEXH@Z -> 004da68a labelled 'std::pair<long,CCharString>::`scalardeletingdestructor''
+004dd782   RELOCATION_MATCH PASS   _global::ForEachElem0x8__vector_deleting_destruct_004dd782
+00579435   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@K@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@K@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@K@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@K@std@@@2@@Z -> 00579435 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+00579435   RELOCATION_MATCH["s"] PASS   LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray
+009c2220   RELOCATION_MATCH PASS   _global::StdList_Clear_009c2220
+00b2ef20   SRC_FAIL         PASS   CRetailTree_erase00b2ef20::Erase
+
+WINS: 3
+  004dd782 RELOCATION_MATCH _global::CFlash>_>
+  00579435 RELOCATION_MATCH["s"] LTextTreeWalkThrough::?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@K@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@K@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@K@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@K@std@@@2@@Z
+  009c2220 RELOCATION_MATCH _global::SortTreeRecursively

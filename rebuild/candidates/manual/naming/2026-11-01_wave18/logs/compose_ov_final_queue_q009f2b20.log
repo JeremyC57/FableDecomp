@@ -1,0 +1,2 @@
+edited 00a5c6e0 freestatic ::DeallocateAligned_009f2b20 -> DeallocateAligned x1 +u ['?DeallocateAligned@CMemoryAllocator@@SIXPAX@Z'] -u ['?DeallocateAligned_009f2b20@@YIXPAX@Z']
+edited 00a5c9b0 freestatic ::DeallocateAligned_009f2b20 -> DeallocateAligned x1 +u ['?DeallocateAligned@CMemoryAllocator@@SIXPAX@Z'] -u ['?DeallocateAligned_009f2b20@@YIXPAX@Z']

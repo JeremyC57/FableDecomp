@@ -1,0 +1,1 @@
+skip 009b9ba0 non-public CalcInQuotes: CThingCreatureBase is not an RTTI-derived class of the row (CStringParser::FindKeyword)

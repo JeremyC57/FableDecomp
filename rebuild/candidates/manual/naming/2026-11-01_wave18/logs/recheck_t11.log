@@ -1,0 +1,52 @@
+addr       parity           behav  name
+00891b20   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00891b20   WARN RELOC_NAME: ?AddCounter_0064f93f@CDrawQuestInfo@NPlayerGui@@QAEJABVCTimer@@ABVCCharString@@M@Z -> 0064f93f labelled 'NPlayerGui::CDrawQuestInfo::AddTimer'
+00891b20   RELOCATION_MATCH PASS   CGameScriptInterface::AddQuestInfoTimer
+00891b40   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00891b40   RELOCATION_MATCH PASS   CGameScriptInterface::AddQuestInfoCounter
+00891b60   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00891b60   RELOCATION_MATCH PASS   CGameScriptInterface::AddQuestInfoTick
+00891b80   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00891b80   RELOCATION_MATCH PASS   CGameScriptInterface::UpdateQuestInfoBar
+00891bd0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00891bd0   RELOCATION_MATCH PASS   CGameScriptInterface::UpdateQuestInfoCounter
+00891bf0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00891bf0   RELOCATION_MATCH PASS   CGameScriptInterface::UpdateQuestInfoTick
+00892280   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00892280   RELOCATION_MATCH PASS   CGameScriptInterface::SetCutsceneSkippable
+008922d0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+008922d0   RELOCATION_MATCH PASS   CGameScriptInterface::SetScreenMessagesEnabled
+
+WINS: 8
+  00891b20 RELOCATION_MATCH CGameScriptInterface::AddQuestInfoTimer
+  00891b40 RELOCATION_MATCH CGameScriptInterface::AddQuestInfoCounter
+  00891b60 RELOCATION_MATCH CGameScriptInterface::AddQuestInfoTick
+  00891b80 RELOCATION_MATCH CGameScriptInterface::UpdateQuestInfoBar
+  00891bd0 RELOCATION_MATCH CGameScriptInterface::UpdateQuestInfoCounter
+  00891bf0 RELOCATION_MATCH CGameScriptInterface::UpdateQuestInfoTick
+  00892280 RELOCATION_MATCH CGameScriptInterface::SetCutsceneSkippable
+  008922d0 RELOCATION_MATCH CGameScriptInterface::SetScreenMessagesEnabled
+addr       parity           behav  name
+00891b30   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00891b30   RELOCATION_MATCH PASS   CGameScriptInterface::AddQuestInfoCounter
+00891b50   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00891b50   RELOCATION_MATCH PASS   CGameScriptInterface::AddQuestInfoCounterList
+00891b70   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00891b70   RELOCATION_MATCH PASS   CGameScriptInterface::AddQuestInfoTick
+00891ba0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00891ba0   RELOCATION_MATCH PASS   CGameScriptInterface::ChangeQuestInfoBarColour
+00891be0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00891be0   RELOCATION_MATCH PASS   CGameScriptInterface::UpdateQuestInfoCounterList
+00891c10   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00891c10   RELOCATION_MATCH PASS   CGameScriptInterface::RemoveQuestInfoElement
+008922a0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+008922a0   RELOCATION_MATCH PASS   CGameScriptInterface::SetCutsceneSkippableWhilePaused
+
+WINS: 7
+  00891b30 RELOCATION_MATCH CGameScriptInterface::AddQuestInfoCounter
+  00891b50 RELOCATION_MATCH CGameScriptInterface::AddQuestInfoCounterList
+  00891b70 RELOCATION_MATCH CGameScriptInterface::AddQuestInfoTick
+  00891ba0 RELOCATION_MATCH CGameScriptInterface::ChangeQuestInfoBarColour
+  00891be0 RELOCATION_MATCH CGameScriptInterface::UpdateQuestInfoCounterList
+  00891c10 RELOCATION_MATCH CGameScriptInterface::RemoveQuestInfoElement
+  008922a0 RELOCATION_MATCH CGameScriptInterface::SetCutsceneSkippableWhilePaused

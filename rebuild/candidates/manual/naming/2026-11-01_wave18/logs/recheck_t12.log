@@ -1,0 +1,107 @@
+addr       parity           behav  name
+0049e9f0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0049e9f0   WARN SHARED_HEADER_AVAILABLE CWorld
+0049e9f0   RELOCATION_MATCH PASS   CWorld::IsDisplayingMiniMapOnRegionLoad
+0056a880   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+0056a880   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0056a880   RELOCATION_MATCH PASS   CTCBoastUI::Deactivate
+00639ba0   WARN SHARED_HEADER_AVAILABLE CBankFile
+00639ba0   WARN SHARED_HEADER_AVAILABLE CWorld
+00639ba0   WARN SHARED_HEADER_AVAILABLE CTCBase
+00639ba0   WARN RELOC_NAME: ?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z -> 00403c60 labelled 'MemCmp_Unsigned16'
+00639ba0   WARN RELOC_NAME: ??4CWideString@@QAEABV0@PBG@Z -> 0099b800 labelled 'CCharString::AssignFromWide'
+00639ba0   RELOCATION_MATCH PASS   CTCRegionDisplay::SetCurrentAreaName
+00690830   WARN SHARED_HEADER_AVAILABLE CManager
+00690830   WARN SHARED_HEADER_AVAILABLE CTCTavernGame
+00690830   WARN SHARED_HEADER_AVAILABLE CPlayer
+00690830   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00690830   RELOCATION_MATCH PASS   CInputProcessTavernGame::ProcessInput
+0076deb0   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+0076deb0   RELOCATION_MATCH PASS   _global::GetProjectileTrailElementFromPoint
+007e2790   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+007e2790   WARN RELOC_NAME: ?GetGameSubsystem1C@CTCFineDialogue@@QAEPAUCPlayerManager_007e2790@@XZ -> 00686d60 labelled 'CTCBase::PeekComponent'
+007e2790   RELOCATION_MATCH PASS   CTCFineDialogue::IsAllowed
+00891920   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00891920   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00891920   RELOCATION_MATCH PASS   CGameScriptInterface::DisplayQuestInfo
+00892850   WARN SHARED_HEADER_AVAILABLE CBankFile
+00892850   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00892850   WARN SHARED_HEADER_AVAILABLE CWorld
+00892850   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00892850   RELOCATION_MATCH PASS   CGameScriptInterface::AddScreenMessage
+008d0fb0   WARN SHARED_HEADER_AVAILABLE CQuestManager
+008d0fb0   RELOCATION_MATCH PASS   CGameScriptThingMethods::MsgIsHitBy
+008d1440   WARN SHARED_HEADER_AVAILABLE CQuestManager
+  WARN leaf '?MsgIsHitByWithDecapitate@CGameScriptThing@@UBE_NABVCCharString@@@Z' matches no symbol in 008d1440.obj; graded the largest function
+  WARN leaf '?MsgIsHitByWithDecapitate@CGameScriptThing@@UBE_NABVCCharString@@@Z' matches no symbol in 008d1440.obj; graded the largest function
+008d1440   RELOCATION_MATCH PASS   CGameScriptThing::MsgIsHitByWithDecapitate
+008e9460   WARN SHARED_HEADER_AVAILABLE CPlayer
+008e9460   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+008e9460   WARN RELOC_ALIAS: __CIacos -> 00bfeba2 is the import thunk 'MSVCR71.DLL::_CIacos'
+008e9460   RELOCATION_MATCH PASS   NCreatureMode::CModeStrafe::GetBestFrameInAimingAnim
+009098e0   WARN SHARED_HEADER_AVAILABLE CPlayer
+009098e0   RELOCATION_MATCH PASS   CCombatSequence_WillForcePush::IsValid
+
+WINS: 12
+  0049e9f0 RELOCATION_MATCH CWorld::IsDisplayingMiniMapOnRegionLoad
+  0056a880 RELOCATION_MATCH CTCBoastUI::Deactivate
+  00639ba0 RELOCATION_MATCH CTCRegionDisplay::SetCurrentAreaName
+  00690830 RELOCATION_MATCH CInputProcessTavernGame::ProcessInput
+  0076deb0 RELOCATION_MATCH _global::?GetProjectileTrailElementFromPoint@
+  007e2790 RELOCATION_MATCH CTCFineDialogue::IsAllowed
+  00891920 RELOCATION_MATCH CGameScriptInterface::DisplayQuestInfo
+  00892850 RELOCATION_MATCH CGameScriptInterface::AddScreenMessage
+  008d0fb0 RELOCATION_MATCH CGameScriptThingMethods::MsgIsHitBy
+  008d1440 RELOCATION_MATCH CGameScriptThing::?MsgIsHitByWithDecapitate@CGameScriptThing@@UBE_NABVCCharString@@@Z
+  008e9460 RELOCATION_MATCH NCreatureMode::CModeStrafe::GetBestFrameInAimingAnim
+  009098e0 RELOCATION_MATCH CCombatSequence_WillForcePush::IsValid
+addr       parity           behav  name
+  WARN leaf 'PeekComponent' matches no symbol in 004c7a70.obj; graded the largest function
+  WARN leaf 'PeekComponent' matches no symbol in 004c7a70.obj; graded the largest function
+004c7a70   RELOCATION_MATCH PASS   CThing::PeekComponent
+0056a980   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0056a980   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+0056a980   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0056a980   WARN SHARED_HEADER_AVAILABLE CTCBoastUI
+0056a980   WARN RELOC_NAME: ?DetachAll@CTCBoastingCrowdControl@@QAEXXZ -> 00783680 labelled 'CTCBoastingCrowdControl::OnNoBoastsRemain'
+0056a980   RELOCATION_MATCH PASS   CTCBoastUI::BoastTaken
+0068c880   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+0068c880   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0068c880   WARN RELOC_NAME: ?GetKey_00a03b40@CInputEvent@@QBEJXZ -> 00a03b40 labelled 'CInputEvent::GetType'
+0068c880   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+0068c880   WARN RELOC_NAME: ?SetHandled@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+0068c880   WARN RELOC_NAME: ?CanCancel@CPlayerGuiQuestion@@QAE_NXZ -> 0048db98 labelled '_global::Forward_operator___member0x6c_0048db98'
+0068c880   RELOCATION_MATCH PASS   CInputProcessYesNoQuestion::ProcessInput
+006b32b0   RELOCATION_MATCH PASS   CEnvironment::SetRainEnabled
+007df4b0   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+007df4b0   WARN SHARED_HEADER_AVAILABLE CWorld
+007df4b0   RELOCATION_MATCH PASS   CTCWallMountEffects::OnWallMountUseAction
+00891340   RELOCATION_MATCH PASS   CGameScriptInterface::GetFormattedString
+00892070   WARN RELOC_NAME: ?LookupText@CDataBank_Retail@@QAEPAXK@Z -> 009cc410 labelled 'NGameText::CDataBank::LookupValue'
+00892070   RELOCATION_MATCH PASS   CGameScriptInterface::TextEntryExists
+00892b30   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00892b30   WARN RELOC_NAME: ?Query@CSub@@QAE_N_N@Z -> 00490927 labelled 'CSubtitleRenderer::IsAllowedToSetText'
+00892b30   RELOCATION_MATCH PASS   CGameScriptInterface::IsSafeToDisplayGameInfo
+008d1130   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+008d1130   WARN SHARED_HEADER_AVAILABLE CQuestManager
+008d1130   WARN RELOC_NAME: ?GetDefinitionManager@CThingNative@@QBEPAVCDefinitionManager@@XZ -> 004c7990 labelled 'CThing::PeekDefinitionManager'
+008d1130   RELOCATION_MATCH PASS   CGameScriptThing::MsgIsHitByWithWeapon
+008d23c0   WARN SHARED_HEADER_AVAILABLE CQuestManager
+  WARN leaf '?MsgIsPresentedWithItem@CGameScriptThing@@UBE_NAAVCCharString@@@Z' matches no symbol in 008d23c0.obj; graded the largest function
+  WARN leaf '?MsgIsPresentedWithItem@CGameScriptThing@@UBE_NAAVCCharString@@@Z' matches no symbol in 008d23c0.obj; graded the largest function
+008d23c0   RELOCATION_MATCH PASS   CGameScriptThing::MsgIsPresentedWithItem
+008ee720   WARN RELOC_NAME: ?GetRandomGenerator@CEngineRandomOwner@@QAEPAUCRandomGenerator@@XZ -> 0049d800 labelled 'CVertexBufferWin32::DoSizeof'
+008ee720   RELOCATION_MATCH PASS   CMaterialDef::GetRandomBerserkedSwordHitParticleEffect
+
+WINS: 11
+  004c7a70 RELOCATION_MATCH CThing::PeekComponent
+  0056a980 RELOCATION_MATCH CTCBoastUI::BoastTaken
+  0068c880 RELOCATION_MATCH CInputProcessYesNoQuestion::ProcessInput
+  006b32b0 RELOCATION_MATCH CEnvironment::SetRainEnabled
+  007df4b0 RELOCATION_MATCH CTCWallMountEffects::?OnWallMountUseAction@CTCWallMountEffects
+  00891340 RELOCATION_MATCH CGameScriptInterface::GetFormattedString
+  00892070 RELOCATION_MATCH CGameScriptInterface::TextEntryExists
+  00892b30 RELOCATION_MATCH CGameScriptInterface::IsSafeToDisplayGameInfo
+  008d1130 RELOCATION_MATCH CGameScriptThing::MsgIsHitByWithWeapon
+  008d23c0 RELOCATION_MATCH CGameScriptThingMethods::?MsgIsPresentedWithItem@CGameScriptThing@@UBE_NAAVCCharString@@@Z
+  008ee720 RELOCATION_MATCH CMaterialDef::GetRandomBerserkedSwordHitParticleEffect

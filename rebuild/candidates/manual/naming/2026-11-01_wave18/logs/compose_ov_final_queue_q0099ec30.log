@@ -1,0 +1,112 @@
+skip 0047b590 no calls of CCharString
+skip 0047b630 no calls of operator=
+skip 004aa9e0 inplace CCharString::CCharString -> CCharString x2 :: compile: b1c2d\scratchpad\naming\w18\ov_final\rebuild\src\compiled\00\4a\CScriptThing_GetCurrentMapName_004aa9e0.cpp(2) : error C2226: syntax error : unexpected type 'CCharString' | 649-a32d96bb1c2d\scratchpad\naming\w18\ov_final\rebuild\src\compiled\00\4a\CScriptThing_GetCurrentMapName_004aa9e0.cpp(2) : error C2238: unexpected token(s) preceding ';' | ing\w18\ov_final\rebuild\src\compiled\00\4a\CScriptThing_GetCurrentMapName_004aa9e0.cpp(24) : error C2440: 'type cast' : cannot convert from 'const char' to 'CCharString'
+skip 004aaa10 inplace CCharString::CCharString -> CCharString x2 :: compile: 96bb1c2d\scratchpad\naming\w18\ov_final\rebuild\src\compiled\00\4a\CScriptThing_GetHomeMapName_004aaa10.cpp(4) : error C2226: syntax error : unexpected type 'CCharString' | f-8649-a32d96bb1c2d\scratchpad\naming\w18\ov_final\rebuild\src\compiled\00\4a\CScriptThing_GetHomeMapName_004aaa10.cpp(4) : error C2238: unexpected token(s) preceding ';' | naming\w18\ov_final\rebuild\src\compiled\00\4a\CScriptThing_GetHomeMapName_004aaa10.cpp(32) : error C2440: 'type cast' : cannot convert from 'const char' to 'CCharString'
+skip 004b8130 no calls of CCharString
+skip 004b8160 no calls of CCharString
+skip 004b82f0 no calls of CCharString
+skip 004cf950 no calls of CSecond_0099ec30
+skip 004cf9d0 no calls of CSecond_0099ec30
+skip 004faee0 no calls of CRetailCharString
+skip 00511f10 moved Pair::ConsFirst -> CCharString x1 :: compile: irCWideStringconstfloatstdpairCWideStringconstfloatstd_pairCWideStringfloat_00511f10.cpp(25) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 00527bb0 no calls of CCharString
+skip 0052b4e0 no calls of CCharString
+skip 00565780 no calls of CCharString
+skip 00566180 no calls of CCharString
+skip 00566430 no calls of CCharString
+skip 00613d20 no calls of CCharString
+skip 00623700 no calls of CCharString
+skip 00692c80 2 CRetailString::CRetailString declarations
+skip 006951a0 no calls of CSecond_0099ec30
+skip 006c3170 no calls of CCharString
+skip 006d3770 no calls of CSecond_0099ec30
+skip 006d37b0 no calls of CSecond_0099ec30
+skip 006d3b20 no calls of CSecond_0099ec30
+skip 006e6570 no calls of CCharString
+skip 006e65a0 no calls of CCharString
+skip 006e68a0 no calls of CCharString
+skip 006fb1a0 moved WStr::Cons -> CCharString x1 :: compile: irCWideStringconstfloatstdpairCWideStringconstfloatstd_pairCWideStringfloat_006fb1a0.cpp(27) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 006fb1c0 no calls of CSecond_0099ec30
+skip 006fb200 no calls of CSecond_0099ec30
+skip 006fc130 3 CCharString::CCharString declarations
+skip 00717d40 2 CCharStringValue::CCharStringValue declarations
+skip 0074f4f0 no calls of CSecond_0099ec30
+skip 0074f530 no calls of CSecond_0099ec30
+skip 0074fce0 3 CCharString::CCharString declarations
+skip 0075c9b0 no calls of CRetailCharString
+skip 007696a0 no calls of CCharString
+skip 0076f700 no calls of CCharString
+skip 0077e250 no calls of CCharString
+skip 00786d60 no calls of CCharString
+skip 00786da0 no calls of CCharString
+skip 007ac8f0 moved CElement4_0099ec30::CElement4_0099ec30 -> CCharString x1 :: compile: -8649-a32d96bb1c2d\scratchpad\naming\w18\ov_final\rebuild\src\compiled\00\7a\global_UninitCopyCElement40099ec30007ac8f0_007ac8f0.cpp(28) : error C2059: syntax error : '('
+skip 00824650 no calls of CSecond_0099ec30
+skip 00824690 no calls of CSecond_0099ec30
+skip 0086ab10 no calls of CSecond_0099ec30
+skip 0086ab50 no calls of CSecond_0099ec30
+skip 0086d370 3 CCharString::CCharString declarations
+skip 0088ab90 no calls of CCharString
+skip 00891490 moved Str::ctor -> CCharString x1 :: compile: al\rebuild\src\compiled\00\89\CGameScriptInterface_RemoveQuestCardFromGuild_00891490.cpp(23) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 008a41b0 2 NativeCharString::NativeCharString declarations
+skip 008a4730 2 NativeCharString::NativeCharString declarations
+skip 008a6570 2 NativeCharString::NativeCharString declarations
+skip 008a6840 2 NativeCharString::NativeCharString declarations
+skip 008a7e00 no calls of CopyString
+skip 008a96c0 2 Key::Key declarations
+skip 008a9720 2 Key::Key declarations
+skip 008a9e00 moved Cat::ctor -> CCharString x1 :: compile: \scratchpad\naming\w18\ov_final\rebuild\src\compiled\00\8a\CGameScriptInterface_RemoveRumourCategory_008a9e00.cpp(16) : error C2065: 'CCharString' : undeclared identifier | f-8649-a32d96bb1c2d\scratchpad\naming\w18\ov_final\rebuild\src\compiled\00\8a\CGameScriptInterface_RemoveRumourCategory_008a9e00.cpp(16) : error C2059: syntax error : ')'
+skip 008aa050 2 GString::GString declarations
+skip 008aa270 2 StrKey::StrKey declarations
+skip 008aa2b0 2 Str::Str declarations
+skip 008aa510 2 GStr::GStr declarations
+skip 008cfe00 moved Arg::Consume -> CCharString x1 :: compile: 32d96bb1c2d\scratchpad\naming\w18\ov_final\rebuild\src\compiled\00\8c\CGameScriptThing_GetDataString_008cfe00.cpp(15) : error C2065: 'CCharString' : undeclared identifier | ec-fb18-575f-8649-a32d96bb1c2d\scratchpad\naming\w18\ov_final\rebuild\src\compiled\00\8c\CGameScriptThing_GetDataString_008cfe00.cpp(15) : error C2059: syntax error : ')'
+skip 008d9530 2 NativeStringValue::NativeStringValue declarations
+skip 00994b50 2 CStringReadResult::CStringReadResult declarations
+skip 0099aa90 2 CStringFileArgument::CStringFileArgument declarations
+skip 0099ac90 2 CStringFileArgument::CStringFileArgument declarations
+skip 009ac5d0 4 CCharString::CCharString declarations
+skip 009b2680 no calls of CSecond_0099ec30
+skip 009b26c0 no calls of CSecond_0099ec30
+skip 009c9cc0 no calls of CSecond_0099ec30
+skip 009ca220 no calls of CSecond_0099ec30
+skip 009cad20 3 CCharString::CCharString declarations
+skip 009cb910 moved SubMember::AddAlpha -> CCharString x1 :: compile: final\rebuild\src\compiled\00\9c\C3DAnimationBlendState_AddCombinationBlend_009cb910.cpp(32) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 009e5f60 no calls of CCharString
+skip 009e6fa0 no calls of SymbolString
+skip 009eb590 3 CCharString::CCharString declarations
+skip 009ec5e0 2 CRetailString::CRetailString declarations
+skip 009edfe0 no calls of CCharString
+skip 009ee180 no calls of CCharString
+skip 009eee50 no calls of CCharString
+skip 009ef750 2 CStringCopy::CStringCopy declarations
+skip 009efa50 3 CCharString::CCharString declarations
+skip 009f03b0 3 CCharString::CCharString declarations
+skip 009f8780 no calls of CCharString
+skip 00a2a330 moved CCharString::CopyFrom -> CCharString x1 :: compile: irCWideStringconstfloatstdpairCWideStringconstfloatstd_pairCWideStringfloat_00a2a330.cpp(24) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 00a2a350 no calls of CSecond_0099ec30
+skip 00a2a390 no calls of CSecond_0099ec30
+skip 00a2a3c0 no calls of CSecond_0099ec30
+skip 00a31e70 no calls of CCharString
+skip 00a31f20 no calls of CCharString
+skip 00a3fb60 no calls of CCharString
+skip 00a3fc40 no calls of CSecond_0099ec30
+skip 00a3fc80 no calls of CSecond_0099ec30
+skip 00a48650 moved CCharString::CopyFrom -> CCharString x1 :: compile: rstdpairCCharStringconststdpairlonglongstdpairCCharStringconst_pairlonglong_00a48650.cpp(26) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 00a49b70 no calls of CCharString
+skip 00a537d0 moved CWideString::CopyCtor -> CCharString x1 :: compile: irCWideStringconstfloatstdpairCWideStringconstfloatstd_pairCWideStringfloat_00a537d0.cpp(30) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 00a6ed30 no calls of CCharString
+skip 00a6fdc0 no calls of CCharString
+skip 00aa7c70 no calls of CRetailString
+skip 00aab8b0 inplace CCharString::CCharString -> CCharString x1 :: compile: chpad\naming\w18\ov_final\rebuild\src\compiled\00\aa\CSoundEmitterLHCActiveSound_CActiveSound_00aab8b0.cpp(15) : error C2226: syntax error : unexpected type 'CCharString' | b1c2d\scratchpad\naming\w18\ov_final\rebuild\src\compiled\00\aa\CSoundEmitterLHCActiveSound_CActiveSound_00aab8b0.cpp(15) : error C2238: unexpected token(s) preceding ';' | und_CActiveSound_00aab8b0.cpp(42) : error C2664: 'CCharString::CCharString(const CCharString &)' : cannot convert parameter 1 from 'const char *' to 'const CCharString &'
+skip 00ad15c0 no calls of CCharString
+skip 00ae5850 no calls of CSecond_0099ec30
+skip 00af2b70 no calls of CCharString
+skip 00bf8f30 no calls of CSecond_0099ec30
+skip 00bf8f70 no calls of CSecond_0099ec30
+skip 00bf8ff0 no calls of CSecond_0099ec30
+skip 00cb60b0 no calls of CCharString
+skip 00cb6fd0 3 CCharString::CCharString declarations
+skip 00cbc940 4 CCharString::CCharString declarations
+skip 00cd2395 no calls of CSecond_0099ec30
+skip 00cd4e30 no calls of CCharString
+skip 0121ee70 2 CStatic_0099ec30::CStatic_0099ec30 declarations

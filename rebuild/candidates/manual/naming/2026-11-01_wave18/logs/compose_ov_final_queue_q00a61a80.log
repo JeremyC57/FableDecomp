@@ -1,0 +1,1 @@
+edited 00a61b10 moved CDirectInputDeviceLists_00a61b10::ReleaseAll -> ClearAllQueries x1 +u ['?ClearAllQueries@CBusyResourceManager@@QAEXXZ'] -u ['?ReleaseAll@CDirectInputDeviceLists_00a61b10@@QAEXXZ']

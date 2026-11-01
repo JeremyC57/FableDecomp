@@ -1,0 +1,57 @@
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
+
+#include "rebuild_abi.h"
+
+class C2DExtentsI
+{ public:
+    fable_i32 X;
+    fable_i32 Y;
+};
+
+class CDisplayManager
+{ public:
+    const C2DExtentsI GetRenderTargetDimensions();
+};
+
+class CSystemManager
+{ public:
+    fable_u8 unknown000[0x60];
+    CDisplayManager* PDisplayManager;
+};
+
+double g_FableVirtualHeight_013961F0 = 960.0;
+static C2DExtentsI g_Dimensions = {640, 480};
+static CDisplayManager g_DisplayManager;
+static CSystemManager g_SystemManager;
+
+const C2DExtentsI
+CDisplayManager::GetRenderTargetDimensions()
+{
+    return g_Dimensions;
+}
+
+CSystemManager* FABLE_FASTCALL GFGetSystemManager()
+{
+    return &g_SystemManager;
+}
+
+float FABLE_FASTCALL GFRoundVYToNearestPixel(double y);
+
+int main()
+{
+    memset(&g_SystemManager, 0, sizeof(g_SystemManager));
+    g_SystemManager.PDisplayManager = &g_DisplayManager;
+
+    if (
+        GFRoundVYToNearestPixel(9.9) != 8.0f ||
+        GFRoundVYToNearestPixel(-0.1) != -2.0f ||
+        GFRoundVYToNearestPixel(960.0) != 960.0f)
+    {
+        return 1;
+    }
+
+    printf("FABLETLC_ROUND_VY_TO_PIXEL_BEHAVIOR PASS\n");
+    return 0;
+}

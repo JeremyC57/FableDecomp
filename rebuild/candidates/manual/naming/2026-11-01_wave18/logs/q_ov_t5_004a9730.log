@@ -1,0 +1,4 @@
+skip 005c2086 no calls of CIntelligentPointer
+skip 0065f0fa moved CIntelligentPointer::copyctor_4a9730 -> CIntelligentPointer<class CThing> x1 :: compile: 49-a32d96bb1c2d\scratchpad\naming\w18\ov_t5\rebuild\src\compiled\00\65\CTCActionUseBuyHouse_OnCreate_0065f0fa.cpp(24) : error C2143: syntax error : missing ';' before '<' | 21bbec-fb18-575f-8649-a32d96bb1c2d\scratchpad\naming\w18\ov_t5\rebuild\src\compiled\00\65\CTCActionUseBuyHouse_OnCreate_0065f0fa.cpp(24) : error C2059: syntax error : '<' | 49-a32d96bb1c2d\scratchpad\naming\w18\ov_t5\rebuild\src\compiled\00\65\CTCActionUseBuyHouse_OnCreate_0065f0fa.cpp(24) : error C2143: syntax error : missing ';' before '{'
+skip 00788d68 0 definitions of CIntelligentPointer<class CThing const>
+skip 00979f70 0 definitions of CIntelligentPointer<class CThing const>

@@ -1,0 +1,6 @@
+skip 007c2480 call of SetEmitterUpdateParameters with 1 args
+skip 007c25a0 call of SetEmitterUpdateParameters with 1 args
+skip 008f7950 call of SetEmitterUpdateParameters with 1 args
+skip 008f7bd0 call of SetEmitterUpdateParameters with 1 args
+skip 008f7e70 call of SetEmitterUpdateParameters with 1 args
+skip 008f7f50 call of SetEmitterUpdateParameters with 1 args

@@ -1,0 +1,1 @@
+skip 008f47e0 template class vector<class C3DVector, class std::allocator<class C3DVector>> needs a bespoke model

@@ -1,0 +1,1 @@
+skip 00b936e0 moved CPrimitiveMethods::RemoveFromList -> RemoveFromList x1 :: compile: w18\ov_t5\rebuild\src\compiled\00\b9\CEngineSceneGridCell_CheckVisibilityResults_00b936e0.cpp(53) : error C2039: 'RemoveFromList' : is not a member of 'CPrimitiveMethods'

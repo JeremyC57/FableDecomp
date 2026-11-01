@@ -1,0 +1,4 @@
+skip 005c2086 no calls of CIntelligentPointer
+skip 0065f0fa template class CIntelligentPointer<class CThing> needs a bespoke model
+skip 00788d68 0 definitions of CIntelligentPointer<class CThing const>
+skip 00979f70 0 definitions of CIntelligentPointer<class CThing const>

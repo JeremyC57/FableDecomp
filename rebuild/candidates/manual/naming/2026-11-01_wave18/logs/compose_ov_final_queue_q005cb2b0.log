@@ -1,0 +1,1 @@
+skip 005cb780 inplace CTCInventoryWeapons::SetThingAsActiveWeapon -> SetThingAsActiveWeapon x2 :: compile: ing\w18\ov_final\rebuild\src\compiled\00\5c\CTCInventoryWeapons_CheckForSoldWieldedWeapons_005cb780.cpp(115) : error C2653: 'NUISystem' : is not a class or namespace name

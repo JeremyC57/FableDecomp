@@ -1,0 +1,3 @@
+skip 0041cfb2 CGameJoystickManager::Get defined out of line
+skip 0042e3ee CActiveJoystick::Get defined out of line
+skip 00449e60 CGameJoystickManager::Get defined out of line

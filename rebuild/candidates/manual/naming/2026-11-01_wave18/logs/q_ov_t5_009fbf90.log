@@ -1,0 +1,10 @@
+skip 0041b550 non-public ListInsert: CResource is not an RTTI-derived class of the row (NUISystem::CSprite::vfunc_145)
+skip 0041b9c0 non-public ListInsert: FableCameraPointScriptedSpline_0041B9C0 is not an RTTI-derived class of the row (CTCCameraPointScriptedSpline::EditCyclePreviousKeyCamera)
+skip 009c8700 non-public ListInsert: CResourceMethods is not an RTTI-derived class of the row (NGameText::CDataBankGroupEntry::BuildGroup)
+skip 009c8fb0 non-public ListInsert: CResourceMethods is not an RTTI-derived class of the row (NGameText::CDataBankTextEntry::BuildText)
+skip 00a25530 inplace CResource::ListInsert -> ListInsert x1 :: compile: 5\rebuild\src\compiled\00\a2\C3DMeshInfo_GetMeshStats_00a25530.cpp(76) : error C2248: 'CResource::ListInsert' : cannot access private member declared in class 'CResource'
+skip 00a25e70 inplace CResource::ListInsert -> ListInsert x1 :: compile: \ov_t5\rebuild\src\compiled\00\a2\C3DMeshInfo_GetMesh_00a25e70.cpp(87) : error C2248: 'CResource::ListInsert' : cannot access private member declared in class 'CResource'
+skip 00a269c0 inplace CResource::ListInsert -> ListInsert x1 :: compile: src\compiled\00\a2\C3DAnimationInfo_GetAnimationStats_00a269c0.cpp(61) : error C2248: 'CResource::ListInsert' : cannot access private member declared in class 'CResource'
+skip 00a26a50 inplace CResource::ListInsert -> ListInsert x1 :: compile: ld\src\compiled\00\a2\C3DAnimationInfo_TouchAnimation_00a26a50.cpp(62) : error C2248: 'CResource::ListInsert' : cannot access private member declared in class 'CResource'
+skip 00a26c60 inplace CResource::ListInsert -> ListInsert x1 :: compile: ild\src\compiled\00\a2\C3DAnimationInfo_GetAnimation_00a26c60.cpp(109) : error C2248: 'CResource::ListInsert' : cannot access private member declared in class 'CResource'
+skip 00a42fc0 inplace CResource::ListInsert -> ListInsert x1 :: compile: ld\src\compiled\00\a4\CLipSyncDataBank_GetLipSyncData_00a42fc0.cpp(63) : error C2248: 'CResource::ListInsert' : cannot access private member declared in class 'CResource'

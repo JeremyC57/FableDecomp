@@ -1,0 +1,15 @@
+skip 00463334 non-public _M_find: CStringLongMap is not an RTTI-derived class of the row (CPersistContext::TransferMap)
+skip 004fe510 non-public _M_find: CRetailNameMap is not an RTTI-derived class of the row (CMapBrushOwner004fe510::ApplyScriptedMapBrushByName)
+skip 004fe550 0 definitions of _Rb_tree<class CCharString, struct std::pair<class CCharString const, long>, struct std::less<class CCharString>, class std::allocator<struct std::pair<class CCharString const, long>>>
+skip 004fe5b0 0 definitions of _Rb_tree<class CCharString, struct std::pair<class CCharString const, long>, struct std::less<class CCharString>, class std::allocator<struct std::pair<class CCharString const, long>>>
+skip 00515700 unparsed _FableHelp_515700@4
+skip 0064a37b 0 definitions of _Rb_tree<class CCharString, struct std::pair<class CCharString const, long>, struct std::_Select1st<struct std::pair<class CCharString const, long>>, struct std::less<class CCharString>, class std::allocator<struct std::pair<class CCharString const, long>>>
+skip 00666850 non-public _M_find: CSubDefMap is not an RTTI-derived class of the row (CThingPlayerCreature::vfunc_71)
+skip 006e3780 non-public _M_find: CPhonemeMap is not an RTTI-derived class of the row (CTCTalk::GetPhonemeAnim)
+skip 007329e0 non-public _M_find: CSoundMap is not an RTTI-derived class of the row (CTCClock::PlaySoundW)
+skip 0082ba00 non-public _M_find: CCharStringLongMap is not an RTTI-derived class of the row (CMiniMapDisplay::InitialiseOnRegionLoad)
+skip 0082be60 non-public _M_find: CMinimapMap is not an RTTI-derived class of the row (CMiniMapDisplay::DrawMap)
+skip 0098a9a0 non-public _M_find: CNameIndexMap is not an RTTI-derived class of the row (CShaderRenderManager::CreatePixelShader)
+skip 0098b390 non-public _M_find: CNameIndexMap is not an RTTI-derived class of the row (CShaderRenderManager::SetPixelShaderConstant)
+skip 009d4f90 non-public _M_find: CStringMap is not an RTTI-derived class of the row (CDefStringTable::AddString)
+skip 00b41e50 0 definitions of _Rb_tree<class CCharString, struct std::pair<class CCharString const, long>, struct std::_Select1st<struct std::pair<class CCharString const, long>>, struct std::less<class CCharString>, class std::allocator<struct std::pair<class CCharString const, long>>>

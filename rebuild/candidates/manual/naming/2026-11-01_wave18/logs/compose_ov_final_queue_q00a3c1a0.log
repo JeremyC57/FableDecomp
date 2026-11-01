@@ -1,0 +1,1 @@
+skip 00a3c310 non-public MakeOwnCopyOfData: C3DAnimationBlendState is not an RTTI-derived class of the row (C3DAnimationBlendState::AddCombinationBlend)

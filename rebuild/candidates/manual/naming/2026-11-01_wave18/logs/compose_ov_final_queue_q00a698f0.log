@@ -1,0 +1,2 @@
+edited 00a6aaa0 freestatic ::CalculateTextureSize -> CalculateTextureSize x1 +u ['?CalculateTextureSize@CTextureManager@@SIKKK_NABVCPixelFormat@@@Z'] -u ['?CalculateTextureSize@@YIKKK_NPBVCPixelFormat@@@Z']
+edited 00b3b4f0 freestatic ::CalculateTextureSize -> CalculateTextureSize x1 +u ['?CalculateTextureSize@CTextureManager@@SIKKK_NABVCPixelFormat@@@Z'] -u ['?CalculateTextureSize@@YIJKK_NABVCPixelFormat@@@Z']

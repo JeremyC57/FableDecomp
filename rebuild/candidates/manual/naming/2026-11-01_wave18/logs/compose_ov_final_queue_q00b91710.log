@@ -1,0 +1,2 @@
+skip 00b8ff70 inplace CEngineSceneGridCell::InvalidateAll -> InvalidateAll x1 :: compile: PrimitiveBase_NotifyReleased_00b8ff70.cpp(25) : error C2248: 'CEngineSceneGridCell::InvalidateAll' : cannot access private member declared in class 'CEngineSceneGridCell'
+skip 00b91870 non-public InvalidateAll: CSceneGridOwner_00b91710 is not an RTTI-derived class of the row (CEngineSceneGridCell::AddPrimitive)

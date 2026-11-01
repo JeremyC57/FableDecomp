@@ -1,0 +1,2 @@
+skip 006d41f0 call of Equal with 2 args
+skip 00a63ee0 template class CBasicString<char> needs a bespoke model

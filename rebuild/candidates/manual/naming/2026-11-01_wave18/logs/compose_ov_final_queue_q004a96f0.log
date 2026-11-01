@@ -1,0 +1,18 @@
+skip 004dabbc no calls of CIntelligentPointer
+skip 004daee9 no calls of CIntelligentPointer
+skip 004db15e no calls of CIntelligentPointer_CThing
+skip 004db3db no calls of CIntelligentPointer_CThing
+skip 004ddab4 no calls of CIntelligentPointer_CThing
+skip 005c3947 no calls of CIntelligentPointer_CThing
+skip 006542a4 no calls of CIntelligentPointer_CThing
+skip 006592e2 2 CIntelligentPointer::CIntelligentPointer declarations
+skip 0065ef94 no calls of CIntelligentPointerThing
+skip 0078839a template class CIntelligentPointer<class CThing> needs a bespoke model
+skip 00789238 no calls of CIntelligentPointer
+skip 007898a3 template class CIntelligentPointer<class CThing> needs a bespoke model
+skip 007c7a00 no calls of CIntelligentPointer
+skip 0094b8b0 no calls of CIntelligentPointerConstThing
+skip 00961e80 no calls of CIntelligentPointerConstThing
+skip 00961fb0 no calls of CIntelligentPointer
+skip 009647c0 no calls of CIntelligentPointerThing
+skip 0096e540 no calls of CIntelligentPointerConstThing

@@ -1,0 +1,3 @@
+skip 00406610 moved CWSraw::fromLit -> CWideString x1 :: compile: \ov_t5\rebuild\src\compiled\00\40\CUserProfileManager_GetManualSaveFileName_00406610.cpp(50) : error C2273: 'function-style cast' : illegal as right side of '->' operator
+skip 004917b5 4 CWideString::CWideString declarations
+skip 009c7a60 5 CWideString::CWideString declarations

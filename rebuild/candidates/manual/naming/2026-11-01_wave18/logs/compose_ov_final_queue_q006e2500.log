@@ -1,0 +1,8 @@
+skip 006e26f0 template class CParticleUpdateParameters<unsigned long, unsigned long> needs a bespoke model
+skip 007c2480 0 CParticleUpdateParameters::~CParticleUpdateParameters declarations
+skip 007c25a0 0 CParticleUpdateParameters::~CParticleUpdateParameters declarations
+skip 008f7950 0 CParticleUpdateParameters::~CParticleUpdateParameters declarations
+skip 008f7e70 0 CParticleUpdateParameters::~CParticleUpdateParameters declarations
+skip 008f7f50 0 CParticleUpdateParameters::~CParticleUpdateParameters declarations
+skip 00af10e0 0 SUpdateParameters::~SUpdateParameters declarations
+skip 00af5900 0 SUpdateParameters::~SUpdateParameters declarations

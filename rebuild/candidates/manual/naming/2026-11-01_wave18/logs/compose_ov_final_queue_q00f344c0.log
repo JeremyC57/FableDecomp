@@ -1,0 +1,1 @@
+skip 00f349b0 moved CDefRecord64::CDefRecord64 -> CFeatDef x1 :: compile: v_final\rebuild\src\compiled\00\f3\CPersistContextTransferableVector_Resize_00f349b0.cpp(49) : error C2273: 'function-style cast' : illegal as right side of '->' operator

@@ -1,0 +1,5 @@
+skip 005dd090 non-public ReadWithSrcChunkOverflow: CMemoryDataInputStream is not an RTTI-derived class of the row (CAnimationEntry::TransferBinaryIn)
+skip 006c8780 non-public ReadWithSrcChunkOverflow: CMemoryDataInputStreamAdapter is not an RTTI-derived class of the row (CPersistTraits<CIntelligentPointer<CThing>>::TransferBinaryI)
+skip 007565e0 non-public ReadWithSrcChunkOverflow: CMemoryDataInputStreamAdapter is not an RTTI-derived class of the row (GFSerialiseMapBinaryIn)
+skip 007adbf0 non-public ReadWithSrcChunkOverflow: CMemoryDataInputStreamAdapter is not an RTTI-derived class of the row (_global::GFSerialiseMapBinaryIn)
+skip 009bae70 non-public ReadWithSrcChunkOverflow: CMemoryDataInputStream is not an RTTI-derived class of the row (CPersistContext::ReadSection)

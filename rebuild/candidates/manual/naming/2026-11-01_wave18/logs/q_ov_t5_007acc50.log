@@ -1,0 +1,6 @@
+skip 007ad180 non-public _M_erase: CStringBoolTree is not an RTTI-derived class of the row (std::_Rb_tree<CCharString, pair<const CCharString,bool>, ...)
+skip 007adb50 non-public _M_erase: CRetailTree_erase007acc50 is not an RTTI-derived class of the row (CRetailTree_erase007acc50::~CRetailTree_erase007acc50)
+skip 007adbf0 non-public _M_erase: map is not an RTTI-derived class of the row (_global::GFSerialiseMapBinaryIn)
+skip 007add50 non-public _M_erase: CRetailTree_erase007acc50 is not an RTTI-derived class of the row (CRetailTree_erase007acc50::~CRetailTree_erase007acc50)
+skip 008a78e0 non-public _M_erase: List is not an RTTI-derived class of the row (CGameScriptInterface::ClearActiveGossipCategories)
+skip 008a7930 non-public _M_erase: GossipList is not an RTTI-derived class of the row (CGameScriptInterface::ClearIsGossipForPlayer)

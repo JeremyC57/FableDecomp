@@ -1,0 +1,33 @@
+addr       parity           behav  name
+004c7990   RELOCATION_MATCH PASS   CThing::PeekDefinitionManager
+004c79e0   RELOCATION_MATCH LINK_FAIL CThing::PeekWorldMap
+004c7a00   RELOCATION_MATCH LINK_FAIL CThing::GetPlayerManager
+004c7a30   RELOCATION_MATCH LINK_FAIL CThing::GetPlayer
+007e5230   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+007e5230   WARN SHARED_HEADER_AVAILABLE CInputProcessGameBase
+007e5230   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+007e5230   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+007e5230   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+007e5230   WARN SHARED_HEADER_AVAILABLE CPlayer
+007e5230   WARN SHARED_HEADER_AVAILABLE CBettingDef
+007e5230   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007e5230   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+007e5230   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+007e5230   WARN RELOC_NAME: ?GetFrame@CMainGameComponent@@QAEJXZ -> 00416225 labelled '_global::GetMember_dword0x48_00416225'
+007e5230   WARN RELOC_NAME: ?GetEventType@CInputEvent@@QBEJXZ -> 00a03b40 labelled 'CInputEvent::GetType'
+007e5230   WARN RELOC_NAME: ?SetHandled@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+007e5230   RELOCATION_MATCH PASS   CTCBetting::ProcessInput
+
+WINS: 2
+  004c7990 RELOCATION_MATCH CThing::?PeekDefinitionManager@CThing@@QBEABVCGameDefinitionManager@@XZ
+  007e5230 RELOCATION_MATCH CTCBetting::ProcessInput
+addr       parity           behav  name
+004c79d0   RELOCATION_MATCH LINK_FAIL CThing::GetWorldMap
+004c79f0   RELOCATION_MATCH LINK_FAIL CThing::PeekPlayerManager
+004c7a10   RELOCATION_MATCH LINK_FAIL CThing::PeekPlayer
+0076c830   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0076c830   WARN RELOC_NAME: ?CTCEnemy_base_OnInitialActivate@@YIXPAVCTCEnemy@@@Z -> 00686870 labelled 'CTCBase::vfunc_6'
+0076c830   RELOCATION_MATCH PASS   CTCEnemy::OnInitialActivate
+
+WINS: 1
+  0076c830 RELOCATION_MATCH CTCEnemy::OnInitialActivate

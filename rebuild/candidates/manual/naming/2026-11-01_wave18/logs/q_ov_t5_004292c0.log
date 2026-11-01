@@ -1,0 +1,99 @@
+skip 0041ded2 free stand-in Rb_tree_increment not a one-argument this-call
+skip 004293db unparsed _Helper
+skip 004293f2 unparsed _Helper
+skip 00429403 unparsed _Helper
+skip 004295fa unparsed _Helper
+skip 00429cea unparsed _Helper
+skip 00429cfb unparsed _Helper
+skip 00429db7 unparsed _Helper
+skip 0042a0ce unparsed _RegionExitTextHelper
+skip 0042a8bd template class _Rb_global<bool> needs a bespoke model
+skip 00431277 template class _Rb_global<bool> needs a bespoke model
+skip 0045c91d template class _Rb_global<bool> needs a bespoke model
+skip 0045da9a template class _Rb_global<bool> needs a bespoke model
+skip 0045de67 SRbGlobal::Increment defined out of line
+skip 0045f178 template class _Rb_global<bool> needs a bespoke model
+skip 0045f31f template class _Rb_global<bool> needs a bespoke model
+skip 00461695 template class _Rb_global<bool> needs a bespoke model
+skip 004618c9 template class _Rb_global<bool> needs a bespoke model
+skip 00463334 template class _Rb_global<bool> needs a bespoke model
+skip 00463cdb template class _Rb_global<bool> needs a bespoke model
+skip 004645e0 template class _Rb_global<bool> needs a bespoke model
+skip 00466848 template class _Rb_global<bool> needs a bespoke model
+skip 0046fa57 template class _Rb_global<bool> needs a bespoke model
+skip 00475026 template class _Rb_global<bool> needs a bespoke model
+skip 004753b1 template class _Rb_global<bool> needs a bespoke model
+skip 0047550f template class _Rb_global<bool> needs a bespoke model
+skip 00475c3b template class _Rb_global<bool> needs a bespoke model
+skip 004e507f template class _Rb_global<bool> needs a bespoke model
+skip 004e52b3 template class _Rb_global<bool> needs a bespoke model
+skip 004e5636 template class _Rb_global<bool> needs a bespoke model
+skip 004e5a39 template class _Rb_global<bool> needs a bespoke model
+skip 004e628d template class _Rb_global<bool> needs a bespoke model
+skip 004e67c0 template class _Rb_global<bool> needs a bespoke model
+skip 004e6a5b template class _Rb_global<bool> needs a bespoke model
+skip 004e7a62 template class _Rb_global<bool> needs a bespoke model
+skip 004e9356 template class _Rb_global<bool> needs a bespoke model
+skip 004ec62f template class _Rb_global<bool> needs a bespoke model
+skip 004ecd6b template class _Rb_global<bool> needs a bespoke model
+skip 0057770a unparsed __Rb_tree_increment
+skip 005778ca unparsed __Rb_tree_increment
+skip 00578dda unparsed _Helper
+skip 00578df1 unparsed _sub
+skip 00578e02 template class _Rb_global<bool> needs a bespoke model
+skip 00578e22 unparsed _Helper
+skip 00578e39 unparsed _Helper
+skip 0057f1f6 unparsed _Helper
+skip 0057f425 unparsed _Helper
+skip 0057f564 unparsed _RegionExitTextHelper
+skip 0057f906 template class _Rb_global<bool> needs a bespoke model
+skip 005925ca unparsed _sub
+skip 005925db unparsed _sub
+skip 0059299d unparsed _sub
+skip 005929df unparsed _sub
+skip 00599e3f unparsed __Rb_increment
+skip 0059aa21 unparsed _sub
+skip 0059ab5f template class _Rb_global<bool> needs a bespoke model
+skip 005a30a1 template class _Rb_global<bool> needs a bespoke model
+skip 005b1546 unparsed _FableRegionXform_5b1546
+skip 005b155a template class _Rb_global<bool> needs a bespoke model
+skip 005b167f unparsed _Helper
+skip 005b16e8 unparsed _Helper
+skip 005b16ff unparsed _sub
+skip 005b172e unparsed _Helper
+skip 005b1876 unparsed _RegionXformPtr
+skip 005b1890 unparsed _SetMiniMapRegionExitTextOffsetX_helper
+skip 005b1afd template class _Rb_global<bool> needs a bespoke model
+skip 005b3d7a template class _Rb_global<bool> needs a bespoke model
+skip 005b406d template class _Rb_global<bool> needs a bespoke model
+skip 005b43a2 template class _Rb_global<bool> needs a bespoke model
+skip 005b4a95 template class _Rb_global<bool> needs a bespoke model
+skip 005ba1cc unparsed _Helper
+skip 005ba222 unparsed _helper_4292c0
+skip 005ba3e4 unparsed _Helper
+skip 005ba50e unparsed _sub
+skip 005ba51f template class _Rb_global<bool> needs a bespoke model
+skip 005ba539 unparsed _sub
+skip 005ba723 unparsed _RegionExitTextHelper
+skip 005ba9f9 template class _Rb_global<bool> needs a bespoke model
+skip 005be3b1 template class _Rb_global<bool> needs a bespoke model
+skip 005be62c template class _Rb_global<bool> needs a bespoke model
+skip 005c0822 unparsed _Helper
+skip 005cbe5d template class _Rb_global<bool> needs a bespoke model
+skip 005cbf2e unparsed _Helper
+skip 005cbf58 template class _Rb_global<bool> needs a bespoke model
+skip 005d80f3 unparsed _Helper
+skip 005d81b9 unparsed _RegionExitTextHelper
+skip 005d8218 template class _Rb_global<bool> needs a bespoke model
+skip 005d82bd unparsed _Helper
+skip 005f7aa6 unparsed _Helper
+skip 0065a1fd _Rb_global::_M_increment defined out of line
+skip 0065a28f template class _Rb_global<bool> needs a bespoke model
+skip 0065a5bb template class _Rb_global<bool> needs a bespoke model
+skip 0065a686 template class _Rb_global<bool> needs a bespoke model
+skip 0065a7a9 template class _Rb_global<bool> needs a bespoke model
+skip 0065c2d0 template class _Rb_global<bool> needs a bespoke model
+skip 0065ce56 unparsed _RbIncrement
+skip 00cd2247 unparsed _Helper
+skip 00cd2290 unparsed _Helper
+skip 00cd2410 unparsed _helper_4292c0

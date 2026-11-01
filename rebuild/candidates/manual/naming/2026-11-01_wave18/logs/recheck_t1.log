@@ -1,0 +1,17 @@
+addr       parity           behav  name
+00401f30   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00401f30   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00401f30   RELOCATION_MATCH FAIL   GFGetBuildNumber2
+009e1d00   WARN RELOC_ALIAS: _floor -> 00bfeb8a is the import thunk 'MSVCR71.DLL::floor'
+009e1d00   RELOCATION_MATCH PASS   GFRoundVXToNearestPixel
+
+WINS: 1
+  009e1d00 RELOCATION_MATCH _global::?GFRoundVXToNearestPixel@@YIMN@Z
+addr       parity           behav  name
+006a2520   RELOCATION_MATCH PASS   CTCCarrying::SetAllCarriedThingsAsBypassFilter
+009e1d50   WARN RELOC_ALIAS: _floor -> 00bfeb8a is the import thunk 'MSVCR71.DLL::floor'
+009e1d50   RELOCATION_MATCH PASS   GFRoundVYToNearestPixel
+
+WINS: 2
+  006a2520 RELOCATION_MATCH CTCCarrying::?SetAllCarriedThingsAsBypassFilter@CTCCarrying@@QAEXPAX@Z
+  009e1d50 RELOCATION_MATCH _global::?GFRoundVYToNearestPixel@@YIMN@Z

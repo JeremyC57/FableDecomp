@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/naming/w18/scripts/fam_q18.py", line 71, in <module>
+    NF = parse(FIN); assert NF and NF['kind'] == 'mem', (FIN, NF)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('LookupDirectionFilterPair (descriptive; libpk: (long table, float azimuth, float elevation, const SDirectionFilter** first, const SDirectionFilter** second))', None)

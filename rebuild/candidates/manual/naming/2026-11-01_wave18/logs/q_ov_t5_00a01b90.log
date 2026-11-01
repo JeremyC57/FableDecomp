@@ -1,0 +1,57 @@
+skip 004aa030 CBaseIntelligentPointer defined in another scope
+skip 00511f50 CBaseIntelligentPointer defined in another scope
+skip 006a23e0 CBaseIntelligentPointer defined in another scope
+skip 006a2e20 CBaseIntelligentPointer defined in another scope
+skip 006a3130 CBaseIntelligentPointer defined in another scope
+skip 006a3180 CBaseIntelligentPointer defined in another scope
+skip 006a31d0 CBaseIntelligentPointer defined in another scope
+skip 006a3220 CBaseIntelligentPointer defined in another scope
+skip 006a3300 CBaseIntelligentPointer defined in another scope
+skip 006a3cd0 CBaseIntelligentPointer defined in another scope
+skip 006e1080 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 :: compile: 32d96bb1c2d\scratchpad\naming\w18\ov_t5\rebuild\src\compiled\00\6e\CTCDParticleEmitter_SetPEmitter_006e1080.cpp(30) : error C2061: syntax error : identifier 'CBaseObject'
+skip 006e4bd0 CBaseIntelligentPointer defined in another scope
+skip 006e5790 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: scratchpad\naming\w18\ov_t5\rebuild\src\compiled\00\6e\CScriptConversation_AddPersonToConversation_006e5790.cpp(28) : error C2061: syntax error : identifier 'CBaseObject'
+skip 007008c0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: \scratchpad\naming\w18\ov_t5\rebuild\src\compiled\00\70\COpinionReactionManager_ClearOpinionSource_007008c0.cpp(51) : error C2061: syntax error : identifier 'CBaseObject' | ild\src\compiled\00\70\COpinionReactionManager_ClearOpinionSource_007008c0.cpp(72) : error C2660: 'CBaseIntelligentPointer::SetPItem' : function does not take 1 arguments
+skip 00737ad0 CBaseIntelligentPointer defined in another scope
+skip 00739550 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: 8649-a32d96bb1c2d\scratchpad\naming\w18\ov_t5\rebuild\src\compiled\00\73\stdvector_Minsertoverflow_00739550.cpp(27) : error C2061: syntax error : identifier 'CBaseObject'
+skip 00748d80 CBaseIntelligentPointer defined in another scope
+skip 0074cc90 CBaseIntelligentPointer defined in another scope
+skip 0074ce40 CBaseIntelligentPointer defined in another scope
+skip 00770e80 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: 49-a32d96bb1c2d\scratchpad\naming\w18\ov_t5\rebuild\src\compiled\00\77\CTCSolidToThing_FrameUpdate_00770e80.cpp(27) : error C2061: syntax error : identifier 'CBaseObject'
+skip 00771660 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 :: compile: 8649-a32d96bb1c2d\scratchpad\naming\w18\ov_t5\rebuild\src\compiled\00\77\CTCOpinionSource_OnCreate_00771660.cpp(67) : error C2061: syntax error : identifier 'CBaseObject'
+skip 007c21a0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: 1c2d\scratchpad\naming\w18\ov_t5\rebuild\src\compiled\00\7c\NThingShotCTCShotDefinitionBase_Update_007c21a0.cpp(32) : error C2061: syntax error : identifier 'CBaseObject'
+skip 007f3ad0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: 2d96bb1c2d\scratchpad\naming\w18\ov_t5\rebuild\src\compiled\00\7f\CLightningBranch_CLightningBranch_007f3ad0.cpp(8) : error C2061: syntax error : identifier 'CBaseObject'
+skip 007fdeb0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: 6bb1c2d\scratchpad\naming\w18\ov_t5\rebuild\src\compiled\00\7f\CTCAISummon_GetAllSummonedCreatures_007fdeb0.cpp(22) : error C2061: syntax error : identifier 'CBaseObject'
+skip 007fdf60 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: a32d96bb1c2d\scratchpad\naming\w18\ov_t5\rebuild\src\compiled\00\7f\CTCAISummon_GetNumberCanSummon_007fdf60.cpp(23) : error C2061: syntax error : identifier 'CBaseObject'
+skip 007ffdb0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: 32d96bb1c2d\scratchpad\naming\w18\ov_t5\rebuild\src\compiled\00\7f\CTCGatherPointBase_RemoveAsUser_007ffdb0.cpp(28) : error C2061: syntax error : identifier 'CBaseObject'
+skip 007ffeb0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: 9-a32d96bb1c2d\scratchpad\naming\w18\ov_t5\rebuild\src\compiled\00\7f\CTCGatherPointBase_AddAsUser_007ffeb0.cpp(19) : error C2061: syntax error : identifier 'CBaseObject'
+skip 00807b70 CBaseIntelligentPointer defined in another scope
+skip 00809d60 CBaseIntelligentPointer defined in another scope
+skip 0080df90 CBaseIntelligentPointer defined in another scope
+skip 008110a0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: \scratchpad\naming\w18\ov_t5\rebuild\src\compiled\00\81\NEntityEventsCEventHitThing_CEventHitThing_008110a0.cpp(16) : error C2061: syntax error : identifier 'CBaseObject'
+skip 0082c5e0 CBaseIntelligentPointer defined in another scope
+skip 0084ae00 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: d\naming\w18\ov_t5\rebuild\src\compiled\00\84\NEntityEventsCEventReceivedMoney_CEventReceivedMoney_0084ae00.cpp(15) : error C2061: syntax error : identifier 'CBaseObject'
+skip 0084ae80 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: pad\naming\w18\ov_t5\rebuild\src\compiled\00\84\NEntityEventsCEventReceivedItem_CEventReceivedItem_0084ae80.cpp(16) : error C2061: syntax error : identifier 'CBaseObject'
+skip 0084af30 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: \scratchpad\naming\w18\ov_t5\rebuild\src\compiled\00\84\NEntityEventsCEventSoldItem_CEventSoldItem_0084af30.cpp(16) : error C2061: syntax error : identifier 'CBaseObject'
+skip 0084b010 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: t5\rebuild\src\compiled\00\84\NEntityEventsCEventExpressionPerformedTo_CEventExpressionPerformedTo_0084b010.cpp(16) : error C2061: syntax error : identifier 'CBaseObject'
+skip 00883180 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: g\w18\ov_t5\rebuild\src\compiled\00\88\SThingPointerWithFlag00883180_SThingPointerWithFlag00883180_00883180.cpp(17) : error C2061: syntax error : identifier 'CBaseObject'
+skip 008ac3f0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: 18\ov_t5\rebuild\src\compiled\00\8a\NCreatureModeCModeScreamerSuperAttack_CModeScreamerSuperAttack_008ac3f0.cpp(54) : error C2061: syntax error : identifier 'CBaseObject'
+skip 008c0900 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 :: compile: ad\naming\w18\ov_t5\rebuild\src\compiled\00\8c\CCreatureActionBriarRoseShotFarOutof_PerformAction_008c0900.cpp(168) : error C2061: syntax error : identifier 'CBaseObject'
+skip 008d74b0 CBaseIntelligentPointer defined in another scope
+skip 008f3100 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 :: compile: chpad\naming\w18\ov_t5\rebuild\src\compiled\00\8f\CCreatureActionDragonLandFireball_PerformAction_008f3100.cpp(164) : error C2061: syntax error : identifier 'CBaseObject'
+skip 008f3630 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 :: compile: atchpad\naming\w18\ov_t5\rebuild\src\compiled\00\8f\CCreatureActionDragonRearUpFull_PerformAction_008f3630.cpp(215) : error C2061: syntax error : identifier 'CBaseObject'
+skip 00917130 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: 6bb1c2d\scratchpad\naming\w18\ov_t5\rebuild\src\compiled\00\91\CAIStateGroupThrowLogsOnFire_Update_00917130.cpp(39) : error C2061: syntax error : identifier 'CBaseObject'
+skip 0091d190 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x4 :: compile: 2d\scratchpad\naming\w18\ov_t5\rebuild\src\compiled\00\91\CAIStateGroupMinionReactToApology_Update_0091d190.cpp(48) : error C2061: syntax error : identifier 'CBaseObject'
+skip 00929820 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 :: compile: scratchpad\naming\w18\ov_t5\rebuild\src\compiled\00\92\CAIStateGroupMinionGuardGreetPlayer_Update_00929820.cpp(118) : error C2061: syntax error : identifier 'CBaseObject'
+skip 0092a8a0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: \scratchpad\naming\w18\ov_t5\rebuild\src\compiled\00\92\CAIStateGroupApprenticeHero_PracticeSkills_0092a8a0.cpp(22) : error C2061: syntax error : identifier 'CBaseObject'
+skip 0092afe0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: b1c2d\scratchpad\naming\w18\ov_t5\rebuild\src\compiled\00\92\CAIStateGroupApprenticeHero_LookAtMap_0092afe0.cpp(37) : error C2061: syntax error : identifier 'CBaseObject'
+skip 0092b3e0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: d\scratchpad\naming\w18\ov_t5\rebuild\src\compiled\00\92\CAIStateGroupSkillPractice_PracticeSkills_0092b3e0.cpp(33) : error C2061: syntax error : identifier 'CBaseObject'
+skip 009352c0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 :: compile: d96bb1c2d\scratchpad\naming\w18\ov_t5\rebuild\src\compiled\00\93\CAIStateGroupPerformAction_Update_009352c0.cpp(95) : error C2061: syntax error : identifier 'CBaseObject'
+skip 00935ad0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 :: compile: d\scratchpad\naming\w18\ov_t5\rebuild\src\compiled\00\93\CAIStateGroupMinionPutOutFires_IsRunnable_00935ad0.cpp(97) : error C2061: syntax error : identifier 'CBaseObject'
+skip 0093e8c0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 :: compile: 2d\scratchpad\naming\w18\ov_t5\rebuild\src\compiled\00\93\CAIStateGroupVillageTaskTorch_IsRunnable_0093e8c0.cpp(34) : error C2061: syntax error : identifier 'CBaseObject'
+skip 009473e0 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 :: compile: ad\naming\w18\ov_t5\rebuild\src\compiled\00\94\CAIStateGroupWanderAroundShops_InitCreaturePosition_009473e0.cpp(31) : error C2061: syntax error : identifier 'CBaseObject'
+skip 0094c900 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x2 :: compile: 96bb1c2d\scratchpad\naming\w18\ov_t5\rebuild\src\compiled\00\94\CAIStateGroupGameMaster_IsRunnable_0094c900.cpp(51) : error C2061: syntax error : identifier 'CBaseObject'
+skip 00961880 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: 6bb1c2d\scratchpad\naming\w18\ov_t5\rebuild\src\compiled\00\96\CAIStateGroupBanditKingLunge_Update_00961880.cpp(36) : error C2061: syntax error : identifier 'CBaseObject'
+skip 00982210 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: \naming\w18\ov_t5\rebuild\src\compiled\00\98\CCreatureActionSendMessage_CCreatureActionSendMessage_00982210.cpp(58) : error C2061: syntax error : identifier 'CBaseObject'
+skip 00982320 inplace CBaseIntelligentPointer::SetPItem -> SetPItem x1 :: compile: \ov_t5\rebuild\src\compiled\00\98\NEntityEventsCEventVillagerInteraction_CEventVillagerInteraction_00982320.cpp(17) : error C2061: syntax error : identifier 'CBaseObject'
+skip 00a53520 CBaseIntelligentPointer defined in another scope

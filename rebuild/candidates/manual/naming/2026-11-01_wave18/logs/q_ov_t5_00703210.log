@@ -1,0 +1,23 @@
+edited 004b4c50 freestatic ::CreateThingObject -> Create x1 +u ['?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z'] -u ['?CreateThingObject@@YIPAVCThing@@JABVC3DVector@@JPAVCRightHandedSet@@KABVCCharString@@@Z']
+edited 00664680 freestatic ::CreateThingObject -> Create x1 +u ['?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z'] -u ['?CreateThingObject@@YIPAVCThing@@JABVC3DVector@@JPAVCRightHandedSet@@KABVCCharString@@@Z']
+edited 006648d0 freestatic ::CreateObject -> Create x1 +u ['?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z'] -u ['?CreateObject@@YIPAVCThingObject@@JPAVC3DVector@@JPAMKABVCCharString@@@Z']
+skip 006ac690 CreateThingObject defined here
+skip 006c0c90 CThingObject::Create defined out of line
+skip 007038d0 freestatic ::CreateObject -> Create x1 :: compile: 5f-8649-a32d96bb1c2d\scratchpad\naming\w18\ov_t5\rebuild\src\compiled\00\70\CThingObject_OnDie_007038d0.cpp(45) : error C2061: syntax error : identifier 'CRightHandedSet' | 1c2d\scratchpad\naming\w18\ov_t5\rebuild\src\compiled\00\70\CThingObject_OnDie_007038d0.cpp(61) : error C2660: 'CThingObject::Create' : function does not take 6 arguments
+edited 0072ddb0 freestatic ::CreateThing -> Create x1 +u ['?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z'] -u ['?CreateThing@@YIPAVCThing@@JPBVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z']
+skip 0078b070 CreateThingObject defined here
+edited 007eed20 freestatic ::Create -> Create x1 +u ['?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z'] -u ['?Create@@YIPAVCThingObject@@JPBVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z']
+skip 00846100 CThingObject::Create defined out of line
+skip 00846410 CThingObject::Create defined out of line
+skip 00848500 freestatic ::CreateObject -> Create x1 :: compile: naming\w18\ov_t5\rebuild\src\compiled\00\84\CCreatureActionGetPlateFromCupboard_PerformAction_00848500.cpp(136) : error C2061: syntax error : identifier 'CRightHandedSet' | \rebuild\src\compiled\00\84\CCreatureActionGetPlateFromCupboard_PerformAction_00848500.cpp(177) : error C2660: 'CThingObject::Create' : function does not take 6 arguments
+edited 00849380 freestatic ::CreateThingObject -> Create x1 +u ['?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z'] -u ['?CreateThingObject@@YIPAVCThing@@JPBVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z']
+edited 008718b0 freestatic ::CreateThingObject -> Create x1 +u ['?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z'] -u ['?CreateThingObject@@YIPAVCThing@@JPAVC3DVector@@JPAVCRightHandedSet@@KABVCCharString@@@Z']
+edited 008c0900 freestatic ::Create -> Create x1 +u ['?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z'] -u ['?Create@@YIPAVCThing@@JPBVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z']
+skip 008c64f0 CThingObject::Create defined out of line
+skip 008c6b20 CreateThingObject defined here
+edited 008ed170 freestatic ::Create -> Create x1 +u ['?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z'] -u ['?Create@@YIPAVCThingObject@@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z']
+edited 008f3100 freestatic ::Create -> Create x1 +u ['?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z'] -u ['?Create@@YIPAVCThing@@JPBVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z']
+skip 008f3630 call of Create with 3 args
+edited 008fd0a0 freestatic ::CreateObject -> Create x1 +u ['?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z'] -u ['?CreateObject@@YIPAVCThingObject@@JPAVC3DVector@@JPAMKABVCCharString@@@Z']
+edited 00923510 freestatic ::CreateThingObject -> Create x1 +u ['?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z'] -u ['?CreateThingObject@@YIPAVCThing@@JPBVC3DVector@@JPAVCRightHandedSet@@KABVCCharString@@@Z']
+edited 009261f0 freestatic ::CreateThingObject -> Create x1 +u ['?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z'] -u ['?CreateThingObject@@YIPAVCThing@@JPBVC3DVector@@JPAVCRightHandedSet@@KABVCCharString@@@Z']

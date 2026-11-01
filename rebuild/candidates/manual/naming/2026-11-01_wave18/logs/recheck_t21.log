@@ -1,0 +1,6 @@
+addr       parity           behav  name
+004dd782   WARN RELOC_NAME: ??_G?$pair@JVCCharString@@@std@@QAEPAXI@Z -> 004da68a labelled 'std::pair<long,CCharString>::`scalardeletingdestructor''
+004dd782   RELOCATION_MATCH LINK_FAIL _global::ForEachElem0x8__vector_deleting_destruct_004dd782
+004e34b2   DIFFER(30v35)    PASS   std::vector<std::pair<long,CCharString>>::~vector
+
+WINS: 0

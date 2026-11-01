@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00401f30   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00401f30   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@QAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00401f30   RELOCATION_MATCH PASS   GFGetBuildNumber2
+
+WINS: 1
+  00401f30 RELOCATION_MATCH _global::GFGetBuildNumber2

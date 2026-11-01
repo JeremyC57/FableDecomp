@@ -1,0 +1,1 @@
+edited 00b42530 inplace CDataInputStream::SetPosition -> SetPosition x3 +u ['?SetPosition@CDataInputStream@@UAEXK@Z'] -u ['?SetPosition@CDataInputStream@@QAEXK@Z']

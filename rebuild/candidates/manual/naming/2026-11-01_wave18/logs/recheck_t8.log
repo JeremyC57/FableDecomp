@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00892f10   WARN SHARED_HEADER_AVAILABLE CQuestManager
+00892f10   WARN RELOC_NAME: ?DeactivateQuestLater@CQuestManager@@QAEXABVCCharString@@K@Z -> 004b0a30 labelled 'CQuestManager::AddPendingQuestToDeactivate'
+00892f10   RELOCATION_MATCH PASS   CGameScriptInterface::DeactivateQuestLater
+
+WINS: 1
+  00892f10 RELOCATION_MATCH CGameScriptInterface::DeactivateQuestLater

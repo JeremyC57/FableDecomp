@@ -1,0 +1,2 @@
+skip 00563130 inplace NUISystem::CManager::CreateComponent -> CreateComponent x2 :: compile: chpad\naming\w18\ov_final\rebuild\src\compiled\00\56\CTCHeroOnlineScoreboard_ShowScoreboard_00563130.cpp(245) : error C2039: 'CComponent' : is not a member of 'NUISystem'
+skip 005e4430 inplace NUISystem::CManager::CreateComponent -> CreateComponent x1 :: compile: c2d\scratchpad\naming\w18\ov_final\rebuild\src\compiled\00\5e\CTCQuestCompletionUI_Activate_005e4430.cpp(104) : error C2039: 'CComponent' : is not a member of 'NUISystem'

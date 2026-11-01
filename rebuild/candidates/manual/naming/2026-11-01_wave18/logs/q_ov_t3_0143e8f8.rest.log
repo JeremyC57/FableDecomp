@@ -1,0 +1,20 @@
+skip 00cef3b0 no stand-in identifier
+skip 00d00050 typed GameCalls
+skip 00d8f6d0 typed GameCalls
+skip 00d8fa30 typed GameCalls
+skip 00d907b0 typed GameCalls
+skip 00d90b30 typed GameCalls
+skip 00d9e9e0 no stand-in identifier
+skip 00da2610 no stand-in identifier
+skip 00da30b0 0 extern declarations of g_pGameScriptInterface
+skip 00daab70 0 extern declarations of g_pGameScriptInterface
+skip 00e337c0 0 extern declarations of g_pGameScriptInterface
+skip 00e53c70 0 extern declarations of g_pGameScriptInterface
+skip 00e57bb0 0 extern declarations of g_pGameScriptInterface
+skip 00e5d0b0 0 extern declarations of g_pGameScriptInterface
+skip 00e5f2b0 no stand-in identifier
+skip 00e9c360 0 extern declarations of g_pGameScriptInterface
+skip 00e9fb40 0 extern declarations of g_pGameScriptInterface
+skip 00ea0b10 typed GameCalls
+skip 00ed4b10 g_pGameScriptInterface x1 :: compile: \compiled\00\ed\CVSwordInTheStoneScript_Init_00ed4b10.cpp(24) : error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *'
+skip 00ed76e0 g_pGameScriptInterface x2 :: compile: w18\ov_t3\rebuild\src\compiled\00\ed\NScriptCVTalentlessBardScript_CVTalentlessBardScript_00ed76e0.cpp(52) : error C2027: use of undefined type 'CGameScriptInterfaceBase' | _t3\rebuild\src\compiled\00\ed\NScriptCVTalentlessBardScript_CVTalentlessBardScript_00ed76e0.cpp(52) : error C2227: left of '->__vftable' must point to class/struct/union | rebuild\src\compiled\00\ed\NScriptCVTalentlessBardScript_CVTalentlessBardScript_00ed76e0.cpp(52) : error C2227: left of '->RegisterTimer' must point to class/struct/union

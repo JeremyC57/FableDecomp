@@ -1,0 +1,79 @@
+edited 004c7380 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 004c7990 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+skip 004c79a0 no stand-in identifier
+edited 004c79d0 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 004c79e0 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 004c79f0 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 004c7a00 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 004c7a10 g_pThingManager x2 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 004c7a30 g_pThingManager x2 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+skip 004c7a70 no stand-in identifier
+skip 004c7a80 no stand-in identifier
+skip 004c7aa0 no stand-in identifier
+skip 004c7ab0 no stand-in identifier
+edited 004c7ae0 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+skip 004c7b00 no stand-in identifier
+skip 004c7c40 no stand-in identifier
+edited 004c7c60 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+skip 004c7ca0 no stand-in identifier
+edited 004c7cc0 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 004c7cf0 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+skip 004c7d90 no stand-in identifier
+skip 004c7da0 no stand-in identifier
+skip 004c7e10 no stand-in identifier
+skip 004c7e30 no stand-in identifier
+edited 004c7f40 g_pThingManager x2 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 004c7ff0 g_pThingManager x2 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 004c8310 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 004c8a30 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 004c8da0 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 004c9030 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 004c9560 g_pThingManager x5 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 004c9690 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 004c97b0 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 004c9b80 g_pThingManager x2 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 004c9c40 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 004c9ca0 g_pThingManager x2 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 004c9d20 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 004ca010 g_pThingManager x4 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 004ca1d0 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 004ca930 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 006666a0 g_pThingManager x2 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 00686a70 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 00686a80 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 00686ae0 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 00686af0 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 00686d20 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 00686d30 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 00686d40 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 00686d50 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 00686d60 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 00686d70 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 00686da0 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 00686db0 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+skip 00692980 no stand-in identifier
+skip 00694430 g_pThingManager x1 :: compile: a32d96bb1c2d\scratchpad\naming\w18\ov_t3\rebuild\src\compiled\00\69\CCreatureActionBase_FinishAction_00694430.cpp(42) : error C2143: syntax error : missing ';' before '*' | v_t3\rebuild\src\compiled\00\69\CCreatureActionBase_FinishAction_00694430.cpp(42) : error C2501: 'CThing::PCurrentThingManager' : missing storage-class or type specifiers | a32d96bb1c2d\scratchpad\naming\w18\ov_t3\rebuild\src\compiled\00\69\CCreatureActionBase_FinishAction_00694430.cpp(44) : error C2143: syntax error : missing ';' before '*'
+skip 006a5230 no stand-in identifier
+edited 006a5950 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+skip 006c8780 g_pThingManager x1 :: final not named (+['?PCurrentThingManager@CThing@X_006c8780@@0PAUCThingManager@2@A'] -['?g_pThingManager@X_006c8780@@3PAUCThingManager@1@A'])
+skip 006c9900 g_pThingManager x1 :: compile: chpad\naming\w18\ov_t3\rebuild\src\compiled\00\6c\CPersistTraitsCIntelligentPointerCThing_TransferIn_006c9900.cpp(98) : error C2143: syntax error : missing ';' before '*' | ompiled\00\6c\CPersistTraitsCIntelligentPointerCThing_TransferIn_006c9900.cpp(98) : error C2501: 'CThing::PCurrentThingManager' : missing storage-class or type specifiers | hpad\naming\w18\ov_t3\rebuild\src\compiled\00\6c\CPersistTraitsCIntelligentPointerCThing_TransferIn_006c9900.cpp(100) : error C2143: syntax error : missing ';' before '*'
+skip 006e11f0 0 extern declarations of g_pThingManager
+skip 0073a680 no stand-in identifier
+edited 0073a6f0 g_pThingManager x2 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 0073a760 g_pThingManager x2 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 0073a7d0 g_pThingManager x2 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 00779e90 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+skip 00799e30 no stand-in identifier
+edited 007f1ac0 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 007fd4b0 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 0080c460 g_pThingManager x2 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 0080c500 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 00833010 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 00835a20 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+edited 00836910 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+skip 00837830 no stand-in identifier
+skip 008385b0 no stand-in identifier
+skip 008389e0 no stand-in identifier
+edited 00870bb0 g_pThingManager x1 +u ['?PCurrentThingManager@CThing@@0PAVCThingManager@@A'] -u ['?g_pThingManager@@3PAVCThingManager@@A']
+skip 0088ae40 g_pThingManager x3 :: compile: f-8649-a32d96bb1c2d\scratchpad\naming\w18\ov_t3\rebuild\src\compiled\00\88\global_GFSerialisePointer_0088ae40.cpp(89) : error C2143: syntax error : missing ';' before '*' | g\w18\ov_t3\rebuild\src\compiled\00\88\global_GFSerialisePointer_0088ae40.cpp(89) : error C2501: 'CThing::PCurrentThingManager' : missing storage-class or type specifiers | f-8649-a32d96bb1c2d\scratchpad\naming\w18\ov_t3\rebuild\src\compiled\00\88\global_GFSerialisePointer_0088ae40.cpp(91) : error C2143: syntax error : missing ';' before '*'
+skip 0088aff0 g_pThingManager x1 :: compile: b1c2d\scratchpad\naming\w18\ov_t3\rebuild\src\compiled\00\88\global_GFRemapToThingAfterSerialisation_0088aff0.cpp(55) : error C2143: syntax error : missing ';' before '*' | build\src\compiled\00\88\global_GFRemapToThingAfterSerialisation_0088aff0.cpp(55) : error C2501: 'CThing::PCurrentThingManager' : missing storage-class or type specifiers | b1c2d\scratchpad\naming\w18\ov_t3\rebuild\src\compiled\00\88\global_GFRemapToThingAfterSerialisation_0088aff0.cpp(57) : error C2143: syntax error : missing ';' before '*'

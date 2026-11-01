@@ -1,0 +1,1 @@
+skip 006bd8a0 template class CVectorMap<long, class CMusicManager::CRegisteredMusicEntry, class CKeyPairCompareLess<long, class CMusicManager::CRegisteredMusicEntry>> needs a bespoke model
