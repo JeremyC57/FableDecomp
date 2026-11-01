@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00780D20, length 94 bytes (vtable 0x0126B1A4 slot 6, the CTCBase
 // "OnInitialActivate" slot).
 // Callees: CDefClassBase::GetSubDef<CFlammableDef>(CDefPointer<..>*) @ 0x007815A0 (on the def class at +0x70 of the parent),
-// CTCFlammable::InitialiseFirePoints() @ 0x007808B0 (labelled "CTCAvoidRegion_Initialize"), CThing::SetForceFrameUpdate(bool)
+// CTCFlammable::InitFirePoints() @ 0x007808B0 (labelled "CTCAvoidRegion_Initialize"), CThing::SetForceFrameUpdate(bool)
 // @ 0x004C7C60, the def's virtual slot 1 (+0x04, Destroy at count zero).
 // Layout: PDB CTCFlammable (56 bytes): PDef +0xc, FirePoints +0x10 (vector: PDB 16 bytes, retail 12), then retail
 // Burning +0x1c, FireDamageAfterFrame +0x20, FireResistance +0x24, FireStrength +0x28, DamageCaused +0x2c,
@@ -62,7 +62,9 @@ class CTCFlammable : public CTCBase { public:
     float         DamageCaused;                  // +0x2c
     bool          DamagePerPoint;                // +0x30
     bool          HasFirePoint;                  // +0x31
-    void InitialiseFirePoints();                 // 0x007808B0
+private:
+    void InitFirePoints();                 // 0x007808B0 ?InitFirePoints@CTCFlammable@@AAEXXZ (Ego_r / FableWin.pdb, private; naming wave 20, chunk 686)
+public:
     void OnInitialActivate();
 };
 
@@ -76,6 +78,6 @@ void CTCFlammable::OnInitialActivate()
     FireStrength = 1;
     DamageCaused = 0.0f;
     DamagePerPoint = false;
-    InitialiseFirePoints();
+    InitFirePoints();
     ParentThing->SetForceFrameUpdate(true);
 }

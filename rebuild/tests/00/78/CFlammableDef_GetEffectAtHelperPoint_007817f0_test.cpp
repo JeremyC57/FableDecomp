@@ -65,12 +65,12 @@ template <class K, class V> struct map {
     const_iterator end() const { return const_iterator(_M_header); }
 };
 
-class CNamedValueTreeOwner {
+class CFlammableDef {
 public:
     unsigned char         _pad00[0x40];
     map<CDefString, long> m_attributes;
 
-    bool FindAttributeByName(const CCharString& name, long* value) const
+    bool GetEffectAtHelperPoint(const CCharString& name, long* value) const
     {
         for (map<CDefString, long>::const_iterator it = m_attributes.begin(); it != m_attributes.end(); ++it) {
             if ((*it).first == name) {
@@ -105,7 +105,7 @@ int main()
     header._M_parent = &m;
     header._M_left = &d;
     header._M_right = &t;
-    CNamedValueTreeOwner owner;
+    CFlammableDef owner;
     owner.m_attributes._M_header = &header;
     owner.m_attributes._M_node_count = 4;
 
@@ -114,14 +114,14 @@ int main()
     for (int i = 0; i < 4; ++i) {
         CCharString key = { names[i] };
         long out = -1;
-        if (!owner.FindAttributeByName(key, &out) || out != values[i]) {
+        if (!owner.GetEffectAtHelperPoint(key, &out) || out != values[i]) {
             std::printf("007817f0_TEST FAIL\n");
             return 1;
         }
     }
     CCharString missing = { "zz" };
     long out = 77;
-    if (owner.FindAttributeByName(missing, &out) || out != 77) {
+    if (owner.GetEffectAtHelperPoint(missing, &out) || out != 77) {
         std::printf("007817f0_TEST FAIL\n");
         return 1;
     }
@@ -132,7 +132,7 @@ int main()
     empty._M_parent = 0;
     owner.m_attributes._M_header = &empty;
     CCharString key = { "m" };
-    if (owner.FindAttributeByName(key, &out)) {
+    if (owner.GetEffectAtHelperPoint(key, &out)) {
         std::printf("007817f0_TEST FAIL\n");
         return 1;
     }

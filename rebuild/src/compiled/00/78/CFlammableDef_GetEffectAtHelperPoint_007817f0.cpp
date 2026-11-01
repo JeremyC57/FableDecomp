@@ -1,5 +1,8 @@
-// CNamedValueTreeOwner::FindAttributeByName(const CCharString& name, long* value) -- walk the owner's def-string -> value map in order and return the value of the first entry whose name equals `name`
-// Leaf: FindAttributeByName
+// CFlammableDef::GetEffectAtHelperPoint(const CCharString& helperPoint, long& effect) const -- walk the def's helper-point -> effect map in order and return the effect of the first entry whose name equals `helperPoint`
+// Leaf: ?GetEffectAtHelperPoint@CFlammableDef@@QBE_NABVCCharString@@AAJ@Z
+// Name (naming wave 20, chunk 686): Ego_r / FableWin.pdb ?GetEffectAtHelperPoint@CFlammableDef@@QBE_NABVCCharString@@AAJ@Z -- the CFlammableDef
+//   (CTCFlammable::PDef at +0x0c) of InitFirePoints 0x007808B0, whose map at +0x40 the landed GetAllFireHelpers 0x00781B90 walks;
+//   was the descriptive CFlammableDef::FindAttributeByName with a long* out parameter.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007817F0, 118 bytes, __fastcall `ret 8`.
 // Caller: 0x007808B0 (catalogued CTCAvoidRegion_Initialize) calls it on the object at its +0x0c, the same owner the landed
 //   0x00781B90 (catalogued CTCAvoidRegion_BuildVectorFromTree) walks; no CTCAvoidRegion class exists in the PDBs and no
@@ -71,19 +74,19 @@ template <class K, class V> struct map {                 // STLport map, 12 byte
     const_iterator end() const { return const_iterator(_M_header); }
 };
 
-class CNamedValueTreeOwner {
+class CFlammableDef {
 public:
     unsigned char           _pad00[0x40];
-    map<CDefString, long>   m_attributes;                // +0x40
+    map<CDefString, long>   m_helperPointEffects;         // +0x40 (descriptive member name)
 
-    bool FindAttributeByName(const CCharString& name, long* value) const;
+    bool GetEffectAtHelperPoint(const CCharString& helperPoint, long& effect) const;
 };
 
-bool CNamedValueTreeOwner::FindAttributeByName(const CCharString& name, long* value) const
+bool CFlammableDef::GetEffectAtHelperPoint(const CCharString& helperPoint, long& effect) const
 {
-    for (map<CDefString, long>::const_iterator it = m_attributes.begin(); it != m_attributes.end(); ++it) {
-        if ((*it).first == name) {
-            *value = (*it).second;
+    for (map<CDefString, long>::const_iterator it = m_helperPointEffects.begin(); it != m_helperPointEffects.end(); ++it) {
+        if ((*it).first == helperPoint) {
+            effect = (*it).second;
             return true;
         }
     }

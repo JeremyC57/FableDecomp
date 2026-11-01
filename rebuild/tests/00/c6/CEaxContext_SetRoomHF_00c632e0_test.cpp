@@ -1,4 +1,4 @@
-// Behaviour test for 0x00c632e0 (CLight level setter: Level2).
+// Behaviour test for 0x00c632e0 (CEaxContext level setter: Level2).
 #include <cstdio>
 // Host model of the voice property block: slots (base level, live flag), per-voice records, committed copies,
 // dirty mask and last error.

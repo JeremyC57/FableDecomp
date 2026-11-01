@@ -52,12 +52,12 @@ public:
     void BeginUpdateEntries();                          // 0x009CE8D0
     void EndUpdateEntries();                            // 0x009CEA70
     void Close();                                       // 0x009D58A0
-    void UpdateEntryFromFile(const CWideString& fileName);   // 0x00A3A410
     unsigned char _body[0x164 - 4];
 };
 class CWADBank : public CBankFileAsync {                // vtable 0x012442DC
 public:
     CWADBank() { }
+    void AddFile(const CWideString& fileName);          // 0x00A3A410 ?AddFile@CWADBank@@QAEXABVCWideString@@@Z (Ego_r / FableWin.pdb; naming wave 20, chunk 686)
 };
 class CWorldMap { public:
     void GetLevelFilesFromWorldFile(const CWideString& worldFile, vector<CWideString>& levelFiles);   // 0x00501D30
@@ -86,9 +86,9 @@ void CWorldMap::CreateWorldLevelWad(const CWideString& worldFile, const CWideStr
     for (unsigned long i = 1; i < count; ++i) {
         DisplayProgress("Updating WAD bank entries", -1.0f, false, false);
         CWideString levelFile(levelFiles[i]);
-        bank.UpdateEntryFromFile(levelFile);
+        bank.AddFile(levelFile);
         CWideString thingFile = GetThingFilenameFromLevelFilename(levelFiles[i]);
-        bank.UpdateEntryFromFile(thingFile);
+        bank.AddFile(thingFile);
     }
     bank.EndUpdateEntries();
     bank.Close();

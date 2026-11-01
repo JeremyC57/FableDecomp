@@ -227457,16 +227457,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c632e0'
-        Module = 'CLight'
-        Source = '00/c6/CLight_SetIntegerProperty2_00c632e0.cpp'
-        TestSource = '00/c6/CLight_SetIntegerProperty2_00c632e0_test.cpp'
+        Module = 'CEaxContext'
+        Source = '00/c6/CEaxContext_SetRoomHF_00c632e0.cpp'
+        TestSource = '00/c6/CEaxContext_SetRoomHF_00c632e0_test.cpp'
         PassPattern = '00c632e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c63350'
-        Module = 'CLight'
-        Source = '00/c6/CLight_SetIntegerProperty3_00c63350.cpp'
-        TestSource = '00/c6/CLight_SetIntegerProperty3_00c63350_test.cpp'
+        Module = 'CEaxContext'
+        Source = '00/c6/CEaxContext_SetRoomLF_00c63350.cpp'
+        TestSource = '00/c6/CEaxContext_SetRoomLF_00c63350_test.cpp'
         PassPattern = '00c63350_TEST PASS'
     }
     [pscustomobject]@{
@@ -275573,9 +275573,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00781b90'
-        Module = '_global'
-        Source = '00/78/global_CTCAvoidRegionBuildVectorFromTree_00781b90.cpp'
-        TestSource = '00/78/global_CTCAvoidRegionBuildVectorFromTree_00781b90_test.cpp'
+        Module = 'CFlammableDef'
+        Source = '00/78/CFlammableDef_GetAllFireHelpers_00781b90.cpp'
+        TestSource = '00/78/CFlammableDef_GetAllFireHelpers_00781b90_test.cpp'
         PassPattern = '00781b90_TEST PASS'
     }
     [pscustomobject]@{
@@ -295230,9 +295230,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007817f0'
-        Module = 'CNamedValueTreeOwner'
-        Source = '00/78/CNamedValueTreeOwner_FindAttributeByName_007817f0.cpp'
-        TestSource = '00/78/CNamedValueTreeOwner_FindAttributeByName_007817f0_test.cpp'
+        Module = 'CFlammableDef'
+        Source = '00/78/CFlammableDef_GetEffectAtHelperPoint_007817f0.cpp'
+        TestSource = '00/78/CFlammableDef_GetEffectAtHelperPoint_007817f0_test.cpp'
         PassPattern = '007817f0_TEST PASS'
     }
     [pscustomobject]@{

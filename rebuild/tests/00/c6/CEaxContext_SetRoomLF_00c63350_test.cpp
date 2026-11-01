@@ -1,4 +1,4 @@
-// Behaviour test for 0x00c63350 (CLight level setter: Level3).
+// Behaviour test for 0x00c63350 (CEaxContext level setter: Level3).
 #include <cstdio>
 // Host model of the voice property block: slots (base level, live flag), per-voice records, committed copies,
 // dirty mask and last error.

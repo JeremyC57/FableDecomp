@@ -7,7 +7,7 @@
 // is a byte-twin instantiation), NFire::CFirePoint::Reset @ 0x00780700 (pushed as the functor's member
 // pointer), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (inlined lookup of the
 // sound component, interface 16), the sound component's stop @ 0x0066AEB0 (manifest
-// "CTCSummonSpell::ResumeForCutscene", propagated), CTCFlammable::InitialiseFirePoints() @ 0x007808B0,
+// "CTCSummonSpell::ResumeForCutscene", propagated), CTCFlammable::InitFirePoints() @ 0x007808B0,
 // CTCBase::GetWorld() @ 0x00686A70, COpinionReactionManager::ClearOpinionSource(CThing*, bool) @
 // 0x007008C0 (the world's +0x74 manager).
 // Layout: as the landed CTCFlammable::OnInitialActivate (0x00780D20): PDef +0xc, FirePoints +0x10
@@ -113,7 +113,9 @@ class CTCFlammable : public CTCBase { public:
     float          DamageCaused;                            // +0x2c
     bool           DamagePerPoint;                          // +0x30
     bool           HasFirePoint;                            // +0x31
-    void InitialiseFirePoints();                            // 0x007808B0
+private:
+    void InitFirePoints();                            // 0x007808B0 ?InitFirePoints@CTCFlammable@@AAEXXZ (Ego_r / FableWin.pdb, private; naming wave 20, chunk 686)
+public:
     void ExtinguishFire();
 };
 
@@ -128,7 +130,7 @@ void CTCFlammable::ExtinguishFire()
     FireStrength = 1;
     DamageCaused = 0.0f;
     DamagePerPoint = false;
-    InitialiseFirePoints();
+    InitFirePoints();
     CThing* thing = ParentThing;
     CWorld* world = (&GetWorld());
     world->POpinionReactionManager->ClearOpinionSource(thing, true);
