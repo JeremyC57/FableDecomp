@@ -35626,3 +35626,5 @@ _IID_IDirectInput8W	012acbf4	00a60050
 ?Clear@CHeroLogBook@@QAEXXZ	0047ae50	00487550
 ?ResetModes@CPlayer@@QAEXXZ	00634870	00487550
 ?SetDoorState@CTCActivationReceptorDoor@@AAEX_N@Z	007f80c0	007f8140
+?FadeOrKillEffect@CTCSpecialAbilities@@SIXPAVCThing@@@Z	0072ac40	007c7560
+?StopTurncoatingEffects@CTCTurncoatSpell@@AAEXXZ	007c6da0	007c7560

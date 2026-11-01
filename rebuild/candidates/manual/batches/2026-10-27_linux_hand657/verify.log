@@ -1,0 +1,37 @@
+addr       parity           behav  name
+00529ad0   RELOCATION_MATCH PASS   ~CThingHolySite
+00628ee0   RELOCATION_MATCH PASS   ~CCreatureAction_GiveItemToThing
+0066a530   RELOCATION_MATCH PASS   ~CCombatAction_GenericStrikeResponseKnockdown
+006dd690   RELOCATION_MATCH PASS   ~CCreatureAction_ShowTrophy
+007599c0   RELOCATION_MATCH PASS   SetFacingAnglesFromRHSet
+007710a0   RELOCATION_MATCH PASS   ~CTCDegradableBase
+007c7560   WARN RELOC_NAME: ?FadeOrKillEffect@CTCSpecialAbilities@@SIXPAVCThing@@@Z -> 0072ac40 labelled 'CTCPhysicalShieldSpell::FadeOutEffect'
+007c7560   RELOCATION_MATCH PASS   FinalCleanup
+007c75a0   WARN RELOC_NAME: ?FadeOrKillEffect@CTCSpecialAbilities@@SIXPAVCThing@@@Z -> 0072ac40 labelled 'CTCPhysicalShieldSpell::FadeOutEffect'
+007c75a0   RELOCATION_MATCH PASS   OnKill
+007ed750   RELOCATION_MATCH PASS   ~CCreatureAction_ShowItemToThing
+008c9580   RELOCATION_MATCH PASS   ~CCreatureAction_BanditKingStuck
+
+WINS: 10
+  00529ad0 RELOCATION_MATCH CThingHolySite::??1CThingHolySite@@UAE@XZ
+  00628ee0 RELOCATION_MATCH CCreatureAction_GiveItemToThing::??1CCreatureAction_GiveItemToThing@@UAE@XZ
+  0066a530 RELOCATION_MATCH CCombatAction_GenericStrikeResponseKnockdown::??1CCombatAction_GenericStrikeResponseKnockdown@@UAE@XZ
+  006dd690 RELOCATION_MATCH CCreatureAction_ShowTrophy::??1CCreatureAction_ShowTrophy@@UAE@XZ
+  007599c0 RELOCATION_MATCH CTCPhysicsRigidBody::?SetFacingAnglesFromRHSet@CTCPhysicsRigidBody@@UAEXABVCRightHandedSet@@@Z
+  007710a0 RELOCATION_MATCH CTCDegradableBase::??1CTCDegradableBase@@UAE@XZ
+  007c7560 RELOCATION_MATCH CTCTurncoatSpell::?FinalCleanup@CTCTurncoatSpell@@AAEXXZ
+  007c75a0 RELOCATION_MATCH CTCTurncoatSpell::?OnKill@CTCTurncoatSpell@@UAEXXZ
+  007ed750 RELOCATION_MATCH CCreatureAction_ShowItemToThing::??1CCreatureAction_ShowItemToThing@@UAE@XZ
+  008c9580 RELOCATION_MATCH CCreatureAction_BanditKingStuck::??1CCreatureAction_BanditKingStuck@@UAE@XZ
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  CThingHolySite_CThingHolySite_00529ad0
+  CCreatureActionGiveItemToThing_CCreatureActionGiveItemToThing_00628ee0
+  CCombatActionGenericStrikeResponseKnockdown_CCombatActionGenericStrikeResponseKnockdown_0066a530
+  CCreatureActionShowTrophy_CCreatureActionShowTrophy_006dd690
+  CTCPhysicsRigidBody_SetFacingAnglesFromRHSet_007599c0
+  CTCDegradableBase_CTCDegradableBase_007710a0
+  CTCTurncoatSpell_FinalCleanup_007c7560
+  CTCTurncoatSpell_OnKill_007c75a0
+  CCreatureActionShowItemToThing_CCreatureActionShowItemToThing_007ed750
+  CCreatureActionBanditKingStuck_CCreatureActionBanditKingStuck_008c9580

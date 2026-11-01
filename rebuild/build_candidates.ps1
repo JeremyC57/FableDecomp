@@ -371708,6 +371708,76 @@ $catalog = @(
         TestSource = '00/f2/CHeroSoulsCreatureDef_CHeroSoulsCreatureDef_00f270d0_test.cpp'
         PassPattern = '00f270d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00529ad0'
+        Module = 'CThingHolySite'
+        Source = '00/52/CThingHolySite_CThingHolySite_00529ad0.cpp'
+        TestSource = '00/52/CThingHolySite_CThingHolySite_00529ad0_test.cpp'
+        PassPattern = '00529ad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00628ee0'
+        Module = 'CCreatureAction_GiveItemToThing'
+        Source = '00/62/CCreatureActionGiveItemToThing_CCreatureActionGiveItemToThing_00628ee0.cpp'
+        TestSource = '00/62/CCreatureActionGiveItemToThing_CCreatureActionGiveItemToThing_00628ee0_test.cpp'
+        PassPattern = '00628ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0066a530'
+        Module = 'CCombatAction_GenericStrikeResponseKnockdown'
+        Source = '00/66/CCombatActionGenericStrikeResponseKnockdown_CCombatActionGenericStrikeResponseKnockdown_0066a530.cpp'
+        TestSource = '00/66/CCombatActionGenericStrikeResponseKnockdown_CCombatActionGenericStrikeResponseKnockdown_0066a530_test.cpp'
+        PassPattern = '0066a530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006dd690'
+        Module = 'CCreatureAction_ShowTrophy'
+        Source = '00/6d/CCreatureActionShowTrophy_CCreatureActionShowTrophy_006dd690.cpp'
+        TestSource = '00/6d/CCreatureActionShowTrophy_CCreatureActionShowTrophy_006dd690_test.cpp'
+        PassPattern = '006dd690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007599c0'
+        Module = 'CTCPhysicsRigidBody'
+        Source = '00/75/CTCPhysicsRigidBody_SetFacingAnglesFromRHSet_007599c0.cpp'
+        TestSource = '00/75/CTCPhysicsRigidBody_SetFacingAnglesFromRHSet_007599c0_test.cpp'
+        PassPattern = '007599c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007710a0'
+        Module = 'CTCDegradableBase'
+        Source = '00/77/CTCDegradableBase_CTCDegradableBase_007710a0.cpp'
+        TestSource = '00/77/CTCDegradableBase_CTCDegradableBase_007710a0_test.cpp'
+        PassPattern = '007710a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c7560'
+        Module = 'CTCTurncoatSpell'
+        Source = '00/7c/CTCTurncoatSpell_FinalCleanup_007c7560.cpp'
+        TestSource = '00/7c/CTCTurncoatSpell_FinalCleanup_007c7560_test.cpp'
+        PassPattern = '007c7560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c75a0'
+        Module = 'CTCTurncoatSpell'
+        Source = '00/7c/CTCTurncoatSpell_OnKill_007c75a0.cpp'
+        TestSource = '00/7c/CTCTurncoatSpell_OnKill_007c75a0_test.cpp'
+        PassPattern = '007c75a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007ed750'
+        Module = 'CCreatureAction_ShowItemToThing'
+        Source = '00/7e/CCreatureActionShowItemToThing_CCreatureActionShowItemToThing_007ed750.cpp'
+        TestSource = '00/7e/CCreatureActionShowItemToThing_CCreatureActionShowItemToThing_007ed750_test.cpp'
+        PassPattern = '007ed750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c9580'
+        Module = 'CCreatureAction_BanditKingStuck'
+        Source = '00/8c/CCreatureActionBanditKingStuck_CCreatureActionBanditKingStuck_008c9580.cpp'
+        TestSource = '00/8c/CCreatureActionBanditKingStuck_CCreatureActionBanditKingStuck_008c9580_test.cpp'
+        PassPattern = '008c9580_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

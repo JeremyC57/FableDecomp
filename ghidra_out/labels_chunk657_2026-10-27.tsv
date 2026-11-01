@@ -1,0 +1,21 @@
+address	name	evidence
+00628ee0	CCreatureAction_GiveItemToThing::~CCreatureAction_GiveItemToThing	chunk 657 RELOCATION_MATCH: callers 0x0062A8FF / 0x007ED37B build a local with ctor 0x0062D9E0; ??_G 0x0062DA90 inlines the sequence; FableWin ??1 (catalog _Dest_val<pair<CCharString,CSymbolInfo>> was wrong)
+007ed750	CCreatureAction_ShowItemToThing::~CCreatureAction_ShowItemToThing	chunk 657 RELOCATION_MATCH: precedes ctor 0x007ED780 and ??_G 0x007ED830; FableWin ??1
+006dd690	CCreatureAction_ShowTrophy::~CCreatureAction_ShowTrophy	chunk 657 RELOCATION_MATCH: +0xB5 PEmitter (packed); told from 0x006DD6C0 (ShowToSheatheTrophy) by emission order of the ctor / ??_G pairs (coordinator-accepted; swap both together if a caller shows otherwise)
+006dd6c0	CCreatureAction_ShowToSheatheTrophy::~CCreatureAction_ShowToSheatheTrophy	chunk 657: emission-order sibling of 0x006DD690 (landed as CAggregate_006dd6c0)
+008c9580	CCreatureAction_BanditKingStuck::~CCreatureAction_BanditKingStuck	chunk 657 RELOCATION_MATCH: ??_G 0x008C9690 is the only action slot 0 destroying +0x120/+0x118
+0066a530	CCombatAction_GenericStrikeResponseKnockdown::~CCombatAction_GenericStrikeResponseKnockdown	chunk 657 RELOCATION_MATCH: callers in ReactToGenericStrike follow ctor 0x008679C0; ??_G 0x00868350 identical; both PDBs
+007710a0	CTCDegradableBase::~CTCDegradableBase	chunk 657 RELOCATION_MATCH: called by ??_GCTCDegradableBarrier 0x00771120 and ??_GCTCDegradableBase 0x008ECE80; +0x10 PDefinition CDefPointer<const CDegradableDef>
+00529ad0	CThingHolySite::~CThingHolySite	chunk 657 RELOCATION_MATCH: only caller ??_GCThingHolySite 0x00529AB0; tail-jumps ~CThingGameObject
+007599c0	CTCPhysicsRigidBody::SetFacingAnglesFromRHSet	chunk 657 RELOCATION_MATCH: vtable slot 74; slots 74/75 ordered by retail function order = Ego_r donor order (CTCPhysicsStandard)
+00759a00	CTCPhysicsRigidBody::SetRHSet	chunk 657: vtable slot 75 (landed as vfunc_75)
+007239c0	CTCPhysicsStandard::SetRHSet	chunk 657: Ego_r UAE (landed under the non-virtual SetFacingAnglesFromRHSet name)
+007238e0	CTCPhysicsStandard::SetFacingAnglesFromRHSet	chunk 657: Ego_r UAE
+007c75a0	CTCTurncoatSpell::OnKill	chunk 657 RELOCATION_MATCH: vtable slot 14 (CTCBase::OnKill); body = inlined FinalCleanup
+007c7560	CTCTurncoatSpell::FinalCleanup	chunk 657 RELOCATION_MATCH: Ego_r AAE, unreferenced first of three identical bodies in Ego_r order FinalCleanup / OnKill / OnRemove
+007c75e0	CTCTurncoatSpell::OnRemove	chunk 657: Ego_r UAE (landed as FinalCleanup QAE)
+0072ac40	CTCSpecialAbilities::FadeOrKillEffect	chunk 657: Ego_r donor order CreateParticleEffect / FadeOrKillEffect(&) / FadeOrKillEffect(*) = retail 0x0072AB70 / 0x0072ABD0 / 0x0072AC40; static __fastcall (CThing*) (catalog FadeOutEffect was wrong)
+0062da90	CCreatureAction_GiveItemToThing::`scalar deleting destructor'	chunk 657: vtable slot 0 inlining the ??1 sequence
+00529ab0	CThingHolySite::`scalar deleting destructor'	chunk 657: calls 0x00529AD0
+00771120	CTCDegradableBarrier::`scalar deleting destructor'	chunk 657: calls 0x007710A0
+008ece80	CTCDegradableBase::`scalar deleting destructor'	chunk 657: calls 0x007710A0

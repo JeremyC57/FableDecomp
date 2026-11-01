@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00628ee0	RELOCATION_MATCH	33v33	PASS	??1CCreatureAction_GiveItemToThing (implicit), probe 1
+0066a530	RELOCATION_MATCH	33v33	PASS	??1CCombatAction_GenericStrikeResponseKnockdown (implicit), probe 1
+006dd690	RELOCATION_MATCH	33v33	PASS	??1CCreatureAction_ShowTrophy (implicit; pack(1) pointer classes), probe 1
+007ed750	RELOCATION_MATCH	33v33	PASS	??1CCreatureAction_ShowItemToThing (implicit), probe 1
+008c9580	RELOCATION_MATCH	33v33	PASS	??1CCreatureAction_BanditKingStuck (implicit), probe 1
+007710a0	RELOCATION_MATCH	35v35	PASS	??1CTCDegradableBase (implicit; engine/CDefPointer.h), probe 1
+00529ad0	RELOCATION_MATCH	41v41	PASS	??1CThingHolySite (implicit; engine/CDefPointer.h), probe 1
+007599c0	RELOCATION_MATCH	56v56	PASS	CTCPhysicsRigidBody::SetFacingAnglesFromRHSet (vtable slot 74), probe 1
+007c75a0	RELOCATION_MATCH	60v60	PASS	CTCTurncoatSpell::OnKill (slot 14, FinalCleanup auto-inlined), probe 1
+007c7560	RELOCATION_MATCH	60v60	PASS	CTCTurncoatSpell::FinalCleanup (private, unreferenced copy), probe 1

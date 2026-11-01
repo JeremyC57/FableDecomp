@@ -1,0 +1,1 @@
+1	OnKill() { FinalCleanup(); } with FinalCleanup a plain member above it (VC7.1 auto-inlines it)	RELOCATION_MATCH

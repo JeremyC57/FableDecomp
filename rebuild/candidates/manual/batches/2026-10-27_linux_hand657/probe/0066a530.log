@@ -1,0 +1,1 @@
+1	implicit ~CCombatAction_GenericStrikeResponseKnockdown: CCharString AnimName +0x114, CIntelligentPointer<const CThing> +0x118	RELOCATION_MATCH

@@ -1,0 +1,1 @@
+1	implicit ~CTCDegradableBase with engine/CDefPointer.h PDefinition; emitted through the CTCDegradableBarrier constructor's vftable	RELOCATION_MATCH

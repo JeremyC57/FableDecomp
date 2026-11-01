@@ -1,0 +1,1 @@
+1	twin 0x0057A545 shape respelled: implicit ~CCreatureAction_GiveItemToThing (no user dtor), CCreatureActionBase local model 0xA8, CIntelligentPointer<CThing> members, TU harness destroying a local action (probe/00628ee0_p1.cpp, then src/)	RELOCATION_MATCH
