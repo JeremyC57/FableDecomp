@@ -2,7 +2,7 @@
 // Leaf: ?FindSymbol@CSymbolMap@@QBE_NABVCCharString@@AAJ@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E5170, length 76 bytes. PDB: ?FindSymbol@CSymbolMap@@QBE_NABVCCharString@@AAJ@Z.
 // Label correction: the catalog's "SymbolMap_Lookup" is CSymbolMap::FindSymbol(name, value&) (`ret 8`, bool in al).
-// Callees: CVectorMap<CCharString,CSymbolInfo,CCompareString>::LowerBound @ 0x009E6910 (landed), CCharString::FastCompare
+// Callees: CVectorMap<CCharString,CSymbolInfo,CCompareString>::LowerBound @ 0x009E6910 (landed), CCharString::operator<
 //   @ 0x009E6530 (`key < entry.first`).
 // Model: the landed sibling GetSymbolSLONG (0x009E5120, landed as "CSymbolMap::Lookup"): PDB CSymbolMap {_padding_ +0,
 //   SLONGMap +4}, CSymbolInfo {GroupName, EntryName, Val}, the retail 12-byte vector under the vector map.
@@ -13,7 +13,7 @@ class CCharStringData;
 class CCharString {
 public:
     CCharStringData* m_pStringData;
-    bool FastCompare(const CCharString& other) const;   // 0x009E6530 (the CCompareString "less")
+    bool operator<(const CCharString& other) const;   // 0x009E6530 (the CCompareString "less")
 };
 
 class CSymbolInfo {                                // PDB CSymbolMap::CSymbolInfo, 12 bytes
@@ -38,7 +38,7 @@ struct CSymbolVectorMap {
     {
         SSymbolPair* it = LowerBound(key);
         SSymbolPair* last = end();
-        return (it == last || key.FastCompare(it->first)) ? last : it;
+        return (it == last || key.operator<(it->first)) ? last : it;
     }
 };
 

@@ -1,10 +1,10 @@
-// std::__adjust_heap(pair<CCharString,CSymbolMap::CSymbolInfo>* first, int holeIndex, int len, pair<CCharString,CSymbolMap::CSymbolInfo> val, CCompareString comp) -- STLport heap sift-down of the symbol map's (name, symbol info) table by CCharString::FastCompare, then __push_heap val back up
+// std::__adjust_heap(pair<CCharString,CSymbolMap::CSymbolInfo>* first, int holeIndex, int len, pair<CCharString,CSymbolMap::CSymbolInfo> val, CCompareString comp) -- STLport heap sift-down of the symbol map's (name, symbol info) table by CCharString::operator<, then __push_heap val back up
 // Leaf: ??$__adjust_heap@PAU?$pair@VCCharString@@VCSymbolInfo@CSymbolMap@@@std@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009E6DB0, 287 bytes (+ int3 padding), `ret 18h` (__fastcall: first in ecx,
 //   holeIndex in edx; len, the 16-byte value and the empty comparator on the stack: 4 + 0x10 + 4 = 0x18).
 // Element (16 bytes, `shl eax,4`): CCharString key +0, CSymbolMap::CSymbolInfo +4 (Ego_r.pdb, 0xC bytes:
 //   CCharString GroupName +0, CCharString EntryName +4, long Val +8).
-// Callees: CCharString::FastCompare(const CCharString&) @ 0x009E6530 (out of line, thiscall on first[second].first:
+// Callees: CCharString::operator<(const CCharString&) @ 0x009E6530 (out of line, thiscall on first[second].first:
 //   length first, then the bytes -- the CCompareString predicate), CCharString::operator= @ 0x0099EFB0 x3 (implicit
 //   element assignment, then the Val dword), CCharString(const CCharString&) @ 0x0099EC30 x3 (memberwise pair copy
 //   built in __push_heap's argument slot), __push_heap @ 0x009E67C0 (same instantiation), ~CCharString @ 0x0099EAE0 x3.
@@ -15,7 +15,7 @@ public:
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-    bool FastCompare(const CCharString& other) const;   // 0x009E6530
+    bool operator<(const CCharString& other) const;   // 0x009E6530
 private:
     void* PStringData;
 };
@@ -40,7 +40,7 @@ template <class _T1, class _T2> struct pair {
 
 template <class T> class CCompareString {       // empty (Ego_r.pdb: 1 byte)
 public:
-    bool operator()(const std::pair<CCharString, T>& a, const std::pair<CCharString, T>& b) const { return a.first.FastCompare(b.first); }
+    bool operator()(const std::pair<CCharString, T>& a, const std::pair<CCharString, T>& b) const { return a.first.operator<(b.first); }
 };
 typedef std::pair<CCharString, CSymbolMap::CSymbolInfo> CSymbolPair;
 

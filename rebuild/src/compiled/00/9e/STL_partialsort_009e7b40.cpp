@@ -4,7 +4,7 @@
 // Label correction: the catalog's "Partition_IntroSort" is STLport `__partial_sort` (the introsort's depth-limit fallback)
 //   for pair<CCharString, CSymbolMap::CSymbolInfo>* with CCompareString<CSymbolMap::CSymbolInfo>.
 // Callees: __make_heap @ 0x009E7100 (the inline make_heap: `push 0 ; push 0 ; push comp` = null value/distance-type
-//   pointers), CCharString::FastCompare @ 0x009E6530 (the inline comparator), CCharString copy constructor @ 0x0099EC30 (x3),
+//   pointers), CCharString::operator< @ 0x009E6530 (the inline comparator), CCharString copy constructor @ 0x0099EC30 (x3),
 //   __pop_heap @ 0x009E7060 (landed), sort_heap @ 0x009E7950 (landed).
 // Convention: /Gr algorithm TU, `__fastcall` (first in ecx, middle in edx).
 // Shape: STLport 4.x verbatim: `make_heap(first, middle, comp); for (i = middle; i < last; ++i) if (comp(*i, *first))
@@ -15,7 +15,7 @@ public:
     void* PStringData;
     CCharString(const CCharString& other);        // 0x0099EC30
     ~CCharString();                               // 0x0099EAE0
-    bool FastCompare(const CCharString& other) const;   // 0x009E6530
+    bool operator<(const CCharString& other) const;   // 0x009E6530
 };
 
 class CSymbolMap {
@@ -41,7 +41,7 @@ typedef std::pair<CCharString, CSymbolMap::CSymbolInfo> SSymbolEntry;
 
 template <class T>
 class CCompareString { public:
-    bool operator()(const SSymbolEntry& a, const SSymbolEntry& b) const { return a.first.FastCompare(b.first); }
+    bool operator()(const SSymbolEntry& a, const SSymbolEntry& b) const { return a.first.operator<(b.first); }
 };
 
 namespace std {

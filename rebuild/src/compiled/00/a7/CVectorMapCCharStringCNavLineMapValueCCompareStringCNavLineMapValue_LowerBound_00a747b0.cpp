@@ -1,8 +1,8 @@
 // CVectorMap<CCharString,CNavLineMapValue,CCompareString<CNavLineMapValue> >::LowerBound(const CCharString& key) -- binary search of the sorted 20-byte entries for the first entry whose key does not sort before the key
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A747B0, 91 bytes, `__fastcall`, `ret 4`, the entry pointer (STLport iterator) in eax.
-// Instance: a second 20-byte-entry CCharString map compared with CCharString::FastCompare (callers 0x00A74180, 0x00A74840); byte-identical to 0x00A6F290 apart from the call displacement. The manifest's value types are propagated across byte-identical bodies (the
+// Instance: a second 20-byte-entry CCharString map compared with CCharString::operator< (callers 0x00A74180, 0x00A74840); byte-identical to 0x00A6F290 apart from the call displacement. The manifest's value types are propagated across byte-identical bodies (the
 //   entry stride here is 20 bytes), so the payload after the CCharString key is modelled opaque (16 bytes).
-// Callees: CCharString::FastCompare(const CCharString&) const @ 0x009E6530 (the CCompareString "less", called on the
+// Callees: CCharString::operator<(const CCharString&) const @ 0x009E6530 (the CCompareString "less", called on the
 //   middle entry's key with the caller's key reference re-pushed every iteration).
 // Body: Dinkumware-style lower bound -- count = (last - first) / sizeof(entry); halve, compare the middle entry,
 //   step past it (`count -= half + 1`, emitted `or -1 ; sub ; add`) or keep the lower half.
@@ -16,7 +16,7 @@ public:
 class CCharString {
 public:
     CBasicString<char>* PData;
-    bool FastCompare(const CCharString& other) const;   // 0x009E6530
+    bool operator<(const CCharString& other) const;   // 0x009E6530
 };
 struct CNavLineMapValue {
     unsigned char _payload[16];                      // opaque value
@@ -28,7 +28,7 @@ template <class A, class B> struct pair {
 };
 }
 template <class V> class CCompareString { public:
-    bool operator()(const std::pair<CCharString, V>& entry, const CCharString& key) const { return entry.first.FastCompare(key); }
+    bool operator()(const std::pair<CCharString, V>& entry, const CCharString& key) const { return entry.first.operator<(key); }
 };
 template <class K, class V, class C> class CVectorMap {
 public:

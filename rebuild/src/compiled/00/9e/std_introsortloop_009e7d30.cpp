@@ -4,9 +4,9 @@
 //   pointer, depth limit, comparator).
 // Identity: the one caller is the landed sort 0x009E7E40 (`__lg(n) * 2` depth); the element and comparator are the ones
 //   the landed same-TU helpers prove: __unguarded_partition 0x009E6C80 and __partial_sort 0x009E7B40 (pair<CCharString,
-//   CSymbolMap::CSymbolInfo>, 16 bytes; CCompareString<CSymbolInfo> comparing `first` with CCharString::FastCompare).
+//   CSymbolMap::CSymbolInfo>, 16 bytes; CCompareString<CSymbolInfo> comparing `first` with CCharString::operator<).
 //   Catalog label "std::introsort_partial_16byte_quicksort" is descriptive.
-// Callees: CCharString::FastCompare 0x009E6530 (the inline __median's five comparisons), CCharString copy ctor 0x0099EC30
+// Callees: CCharString::operator< 0x009E6530 (the inline __median's five comparisons), CCharString copy ctor 0x0099EC30
 //   (x3: the by-value pivot built in its argument slot), __unguarded_partition 0x009E6C80, __partial_sort 0x009E7B40 (the
 //   inline partial_sort), itself (the right-part recursion).
 // Shape: STLport 4.x `__introsort_loop` verbatim; threshold 16 folds to `((last-first)&~0xF) > 0x100`.
@@ -15,7 +15,7 @@ public:
     void* PStringData;
     CCharString(const CCharString& other);        // 0x0099EC30
     ~CCharString();                               // 0x0099EAE0
-    bool FastCompare(const CCharString& other) const;   // 0x009E6530
+    bool operator<(const CCharString& other) const;   // 0x009E6530
 };
 
 class CSymbolMap {
@@ -41,7 +41,7 @@ typedef std::pair<CCharString, CSymbolMap::CSymbolInfo> SSymbolEntry;
 
 template <class T>
 class CCompareString { public:
-    bool operator()(const SSymbolEntry& a, const SSymbolEntry& b) const { return a.first.FastCompare(b.first); }
+    bool operator()(const SSymbolEntry& a, const SSymbolEntry& b) const { return a.first.operator<(b.first); }
 };
 
 namespace std {

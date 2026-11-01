@@ -1,5 +1,5 @@
 // Link test for 0x00A6F290: the source object's CVectorMap<CCharString,C3DHelperPoint,...>::LowerBound over a sorted
-// HelperPoints array, with CCharString::FastCompare supplied here (length first, then the bytes, as a stand-in order).
+// HelperPoints array, with CCharString::operator< supplied here (length first, then the bytes, as a stand-in order).
 #include <cstdio>
 #include <cstring>
 template <class C> class CBasicString {
@@ -9,10 +9,10 @@ public:
 class CCharString {
 public:
     CBasicString<char>* PData;
-    bool FastCompare(const CCharString& other) const;
+    bool operator<(const CCharString& other) const;
 };
 static int g_compares = 0;
-bool CCharString::FastCompare(const CCharString& other) const
+bool CCharString::operator<(const CCharString& other) const
 {
     ++g_compares;
     unsigned int n = (unsigned int)std::strlen(PData->Text), m = (unsigned int)std::strlen(other.PData->Text);
@@ -45,7 +45,7 @@ public:
 }
 template <class V> class CCompareString {
 public:
-    bool operator()(const std::pair<CCharString, V>& entry, const CCharString& key) const { return entry.first.FastCompare(key); }
+    bool operator()(const std::pair<CCharString, V>& entry, const CCharString& key) const { return entry.first.operator<(key); }
 };
 template <class K, class V, class C> class CVectorMap : public std::vector<std::pair<K, V> > {
 public:

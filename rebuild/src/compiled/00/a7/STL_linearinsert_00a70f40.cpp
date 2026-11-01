@@ -2,7 +2,7 @@
 // Leaf: ??$__linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A70F40, 167 bytes (+9 int3), /Gr `__fastcall` (first in ecx, last in
 //   edx; the 20-byte value and the 4-byte comparator by value on the stack, `ret 18h`).
-// Callees: CCharString::FastCompare 0x009E6530 (the CCompareString "less"), std::__copy_backward 0x00A6E7C0 (landed
+// Callees: CCharString::operator< 0x009E6530 (the CCompareString "less"), std::__copy_backward 0x00A6E7C0 (landed
 //   "CopyBackward_PairCharStringValue10": first/last in ecx/edx, result, the tag reference and a null distance
 //   pointer), CCharString::operator= 0x0099EFB0, CCharString::CCharString(const CCharString&) 0x0099EC30,
 //   std::__unguarded_linear_insert 0x00A6EFD0 (same chunk), CCharString::~CCharString 0x0099EAE0 (val).
@@ -19,7 +19,7 @@ public:
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-    bool FastCompare(const CCharString& other) const;   // 0x009E6530
+    bool operator<(const CCharString& other) const;   // 0x009E6530
 };
 
 class C3DVector {                                       // user memberwise copy ctor, implicit (block) assignment
@@ -45,7 +45,7 @@ public:
 
 template <class V> class CCompareString {
 public:
-    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
+    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.operator<(b.first); }
 };
 
 namespace std {

@@ -2,21 +2,21 @@
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6F610, 115 bytes (+13 int3), /Gr `__fastcall` (first in ecx, last in
 //   edx; the 20-byte pivot and the 4-byte comparator by value on the stack, `ret 18h`).
-// Callees: CCharString::FastCompare(const CCharString&) const 0x009E6530 (the CCompareString "less"),
+// Callees: CCharString::operator<(const CCharString&) const 0x009E6530 (the CCompareString "less"),
 //   std::swap<pair<CCharString,C3DHelperPoint> > 0x00A6E5E0 (same chunk, out of line), CCharString::~CCharString
 //   0x0099EAE0 (the by-value pivot).
 // Identity: the manifest's "QuickSort_Partition_Skeleton_Small" is descriptive. 20-byte pair<CCharString,
 //   C3DHelperPoint> entries of CPhysicsMesh::HelperPoints ordered by CCompareString.
 // Shape: STLport `for (;;) { while (comp(*first, pivot)) ++first; --last; while (comp(pivot, *last)) --last;
 //   if (!(first < last)) return first; iter_swap(first, last); ++first; }` -- the comparator inlined to the
-//   FastCompare call, iter_swap reaching the out-of-line swap(*a, *b); the callee destroys its by-value pivot.
+//   operator< call, iter_swap reaching the out-of-line swap(*a, *b); the callee destroys its by-value pivot.
 class CCharString {
 public:
     void* PStringData;
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-    bool FastCompare(const CCharString& other) const;   // 0x009E6530
+    bool operator<(const CCharString& other) const;   // 0x009E6530
 };
 
 class C3DVector {                                       // user memberwise copy ctor, implicit (block) assignment
@@ -42,7 +42,7 @@ public:
 
 template <class V> class CCompareString {
 public:
-    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
+    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.operator<(b.first); }
 };
 
 namespace std {

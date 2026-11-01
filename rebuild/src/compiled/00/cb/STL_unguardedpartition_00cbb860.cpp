@@ -3,10 +3,10 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CBB860, 162 bytes (`ret 10h`: by-value 12-byte pivot + comparator slot).
 // TU: the scripting library's STLport 4.x instantiations (0x00CB6xxx-0x00CBDxxx); the game is built /Gr, so the
 //   algorithm templates are __fastcall (first two pointer arguments in ecx/edx, callee pops the rest).
-// Identity: STLport __unguarded_partition over (name, entity script binding) = std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > (0x0C bytes, CCompareString -> CCharString::FastCompare 0x009E6530);
+// Identity: STLport __unguarded_partition over (name, entity script binding) = std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > (0x0C bytes, CCompareString -> CCharString::operator< 0x009E6530);
 //   the 5 callers 0x00CBDBBB..0x00CBDDAA are the 12-byte introsort loops. The manifest label "Quicksort_Partition" is
 //   descriptive.
-// Callees: CCharString::FastCompare 0x009E6530 (the comparator), std::swap 0x00CBA8E0 (inline iter_swap),
+// Callees: CCharString::operator< 0x009E6530 (the comparator), std::swap 0x00CBA8E0 (inline iter_swap),
 //   ~CCharString 0x0099EAE0, operator delete 0x00BFE9BC (the pivot's destructor).
 // Shape: the textbook loop; the pivot's CCountedPointer destructor is the D-form release (re-read count, zero Data/Info).
 void __cdecl operator delete(void* block);                 // 0x00BFE9BC
@@ -16,7 +16,7 @@ public:
     CCharString(const CCharString& other);                 // 0x0099EC30
     ~CCharString();                                        // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);      // 0x0099EFB0
-    bool FastCompare(const CCharString& other) const;      // 0x009E6530
+    bool operator<(const CCharString& other) const;      // 0x009E6530 ??MCCharString@@QBE_NABV0@@Z (FableWin.pdb; was the descriptive FastCompare -- naming wave 20)
 };
 class CCPPointerInfo { public:                                    // CCountedPointer count block
     long  RefCount;                                        // +0x00
@@ -73,7 +73,7 @@ template <class _T1, class _T2> struct pair {
 }
 template <class V> class CCompareString {                  // empty, passed by value (4-byte slot)
 public:
-    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
+    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.operator<(b.first); }
 };
 typedef std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > CBindingPair;   // 12 bytes
 typedef CCompareString<CCountedPointer<CEntityScriptBindingBase> > CBindingLess;

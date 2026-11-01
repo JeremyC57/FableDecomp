@@ -2,7 +2,7 @@
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6F6F0, 198 bytes, /Gr `__fastcall` (first in ecx, last in edx; the
 //   56-byte pivot and the 4-byte comparator by value on the stack, `ret 3Ch`).
-// Callees: CCharString::FastCompare(const CCharString&) const 0x009E6530 (the CCompareString "less"),
+// Callees: CCharString::operator<(const CCharString&) const 0x009E6530 (the CCompareString "less"),
 //   CCharString::CCharString(const CCharString&) 0x0099EC30, CCharString::operator= 0x0099EFB0 (x2),
 //   CCharString::~CCharString 0x0099EAE0 (the swap temporary and the by-value pivot).
 // Identity: the manifest's "QuickSort_Partition_CCharString" is descriptive. 56-byte pair<CCharString,
@@ -17,7 +17,7 @@ public:
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-    bool FastCompare(const CCharString& other) const;   // 0x009E6530
+    bool operator<(const CCharString& other) const;   // 0x009E6530
 };
 
 class CMatrix3x4 {                                      // 48 bytes
@@ -42,7 +42,7 @@ public:
 
 template <class V> class CCompareString {
 public:
-    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
+    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.operator<(b.first); }
 };
 
 namespace std {

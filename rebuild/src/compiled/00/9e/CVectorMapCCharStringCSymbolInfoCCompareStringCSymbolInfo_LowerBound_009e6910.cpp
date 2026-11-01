@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009E6910, 77 bytes, `__fastcall`, `ret 4`, the entry pointer (STLport iterator) in eax.
 // Instance: CSymbolMap's SLONGMap, CVectorMap<CCharString, CSymbolMap::CSymbolInfo, CCompareString<CSymbolInfo> > (the landed callers CSymbolMap::Lookup 0x009E5120 / FindSymbol 0x009E51C0 name this LowerBound). The manifest's value types are propagated across byte-identical bodies (the
 //   entry stride here is 16 bytes), so the payload after the CCharString key is modelled opaque (12 bytes).
-// Callees: CCharString::FastCompare(const CCharString&) const @ 0x009E6530 (the CCompareString "less", called on the
+// Callees: CCharString::operator<(const CCharString&) const @ 0x009E6530 (the CCompareString "less", called on the
 //   middle entry's key with the caller's key reference re-pushed every iteration).
 // Body: Dinkumware-style lower bound -- count = (last - first) / sizeof(entry); halve, compare the middle entry,
 //   step past it (`count -= half + 1`, emitted `or -1 ; sub ; add`) or keep the lower half.
@@ -16,7 +16,7 @@ public:
 class CCharString {
 public:
     CBasicString<char>* PData;
-    bool FastCompare(const CCharString& other) const;   // 0x009E6530
+    bool operator<(const CCharString& other) const;   // 0x009E6530
 };
 struct CSymbolInfo {
     unsigned char _payload[12];                      // opaque value
@@ -28,7 +28,7 @@ template <class A, class B> struct pair {
 };
 }
 template <class V> class CCompareString { public:
-    bool operator()(const std::pair<CCharString, V>& entry, const CCharString& key) const { return entry.first.FastCompare(key); }
+    bool operator()(const std::pair<CCharString, V>& entry, const CCharString& key) const { return entry.first.operator<(key); }
 };
 template <class K, class V, class C> class CVectorMap {
 public:

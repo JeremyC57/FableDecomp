@@ -5,7 +5,7 @@
 // CCharString&, long&) const) / SymbolExists (0x00B36B80, bool(const CCharString&) const); retail runs the same three bodies
 // 0x009E5120 (ret 4, value or 0) / 0x009E5170 (ret 8, stores the value through the second argument, al = 1/0) / 0x009E51C0.
 // Callees: CVectorMap::LowerBound @ 0x009E6910 (`__fastcall` on the map at +4, the iterator returned in eax),
-// CCharString::FastCompare @ 0x009E6530 (`key < entry.first`, `__fastcall` on the key).
+// CCharString::operator< @ 0x009E6530 (`key < entry.first`, `__fastcall` on the key).
 // Shape: the inline map Find reads end() ONCE right after LowerBound (`mov esi,[esi+4]`) and keeps it as the
 // default result (`(it == last || key < it->first) ? last : it`); the caller re-reads end() from the member
 // (`cmp esi,[ebx+8]`), then `mov eax,[esi+0Ch]` (pair.second.Val) or the shared `xor eax,eax` tail, `ret 4`.
@@ -14,7 +14,7 @@ class CCharStringData;
 class CCharString {                               // a class, as Ego_r.pdb mangles it (V)
 public:
     CCharStringData* m_pStringData;
-    bool FastCompare(const CCharString& other) const;   // 0x009E6530 (the CCompareString "less")
+    bool operator<(const CCharString& other) const;   // 0x009E6530 (the CCompareString "less")
 };
 
 struct CSymbolInfo {                               // PDB CSymbolMap::CSymbolInfo, 12 bytes
@@ -39,7 +39,7 @@ struct CSymbolVectorMap {
     {
         SSymbolPair* it = LowerBound(key);
         SSymbolPair* last = end();
-        return (it == last || key.FastCompare(it->first)) ? last : it;
+        return (it == last || key.operator<(it->first)) ? last : it;
     }
 };
 

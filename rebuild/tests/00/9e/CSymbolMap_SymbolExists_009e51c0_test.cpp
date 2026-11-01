@@ -6,9 +6,9 @@ class CCharStringData { public: const char* m_pChars; unsigned long m_length; };
 class CCharString {
 public:
     CCharStringData* m_pStringData;
-    bool FastCompare(const CCharString& other) const;
+    bool operator<(const CCharString& other) const;
 };
-bool CCharString::FastCompare(const CCharString& other) const { return std::strcmp(m_pStringData->m_pChars, other.m_pStringData->m_pChars) < 0; }
+bool CCharString::operator<(const CCharString& other) const { return std::strcmp(m_pStringData->m_pChars, other.m_pStringData->m_pChars) < 0; }
 struct CSymbolInfo { CCharString GroupName; CCharString EntryName; long Val; };
 struct SSymbolPair { CCharString first; CSymbolInfo second; };
 struct CSymbolVectorMap {
@@ -18,7 +18,7 @@ struct CSymbolVectorMap {
 SSymbolPair* CSymbolVectorMap::LowerBound(const CCharString& key) const
 {
     SSymbolPair* it = m_pFirst;
-    while (it != m_pLast && it->first.FastCompare(key)) ++it;
+    while (it != m_pLast && it->first.operator<(key)) ++it;
     return it;
 }
 class CSymbolMap { public:

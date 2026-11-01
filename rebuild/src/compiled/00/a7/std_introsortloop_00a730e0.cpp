@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A730E0, 298 bytes, /Gr `__fastcall` (first ecx, last edx; the value-type
 //   pointer, the depth limit and the empty comparator's slot on the stack), `ret 0Ch`.
 // Callers: std::sort 0x00A73600 (landed, binds this exact symbol) and itself. Callees: __unguarded_partition 0x00A6F6F0
-//   (landed, by-value 56-byte pivot + comparator), __partial_sort 0x00A72380 (landed), CCharString::FastCompare
+//   (landed, by-value 56-byte pivot + comparator), __partial_sort 0x00A72380 (landed), CCharString::operator<
 //   0x009E6530 (the inline CCompareString inside the inline __median), CCharString copy ctor 0x0099EC30 (pivot key).
 // Identity (proven): the landed sort 0x00A73600 binds ??$__introsort_loop@PAU?$pair@VCCharString@@VC3DDummyObject@@@std@@...
 //   (CPhysicsMesh::DummyObjects ordered by CCompareString<C3DDummyObject>).
@@ -14,7 +14,7 @@ public:
     void* PStringData;
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
-    bool FastCompare(const CCharString& other) const;   // 0x009E6530
+    bool operator<(const CCharString& other) const;   // 0x009E6530
 };
 
 class CMatrix3x4 {                                      // 48 bytes
@@ -38,7 +38,7 @@ template <class _T1, class _T2> struct pair {
 
 template <class V> class CCompareString {
 public:
-    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
+    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.operator<(b.first); }
 };
 
 namespace std {

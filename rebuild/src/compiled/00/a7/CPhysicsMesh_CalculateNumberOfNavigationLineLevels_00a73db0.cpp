@@ -3,7 +3,7 @@
 // Leaf: CalculateNumberOfNavigationLineLevels
 // Callees: GFIntToCharString(long) @ 0x0099F830 and operator+(const char*, const CCharString&) @ 0x0099F690 (both
 // __fastcall: hidden result in ecx), ~CCharString @ 0x0099EAE0 (x2), CVectorMap<CCharString,C3DHelperPoint>::LowerBound
-// @ 0x00A6F290, CCharString::FastCompare @ 0x009E6530 (the CCompareString "less"). Literal "NAV_LAYER_0" @ 0x0129DC80.
+// @ 0x00A6F290, CCharString::operator< @ 0x009E6530 (the CCompareString "less"). Literal "NAV_LAYER_0" @ 0x0129DC80.
 // Layout: Ego_r.pdb CPhysicsMesh with the retail 16-byte vector maps: HelperPoints +0x10 (vector first/last +0x10/+0x14).
 // Shape: a zero-based 9-pass loop using `i + 1` (VC keeps i+1 in ebx and turns i into a count-down frame counter; a
 // 1..9 loop compares ebx with 10 instead); `this` spilled to the frame, the map kept in ebp
@@ -14,7 +14,7 @@ class CCharStringData;
 class CCharString { public:
     CCharStringData* m_pStringData;
     ~CCharString();                                // 0x0099EAE0
-    bool FastCompare(const CCharString& other) const;   // 0x009E6530
+    bool operator<(const CCharString& other) const;   // 0x009E6530
 };
 CCharString __fastcall GFIntToCharString(long value);                          // 0x0099F830
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
@@ -35,7 +35,7 @@ struct CHelperPointMap {                           // CVectorMap<CCharString, C3
     {
         SHelperPointPair* it = LowerBound(key);
         SHelperPointPair* last = end();
-        return (it == last || key.FastCompare(it->first)) ? last : it;
+        return (it == last || key.operator<(it->first)) ? last : it;
     }
 };
 

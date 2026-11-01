@@ -3,12 +3,12 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A72FA0, 306 bytes, /Gr `__fastcall` (first ecx, last edx; the value-type
 //   pointer, the depth limit and the empty comparator's slot on the stack), `ret 0Ch`.
 // Callers: the sort 0x00A735A0 (landed) and itself. Callees: __unguarded_partition 0x00A6F610 (landed, by-value
-//   20-byte pivot + comparator, `ret 18h`), __partial_sort 0x00A72300 (landed), CCharString::FastCompare 0x009E6530
+//   20-byte pivot + comparator, `ret 18h`), __partial_sort 0x00A72300 (landed), CCharString::operator< 0x009E6530
 //   (the inline CCompareString inside the inline __median), CCharString copy ctor 0x0099EC30 (the pivot copy).
 // Identity: element and comparator are the ones its two landed callees prove (pair<CCharString, C3DHelperPoint>,
 //   CCompareString<C3DHelperPoint>: CPhysicsMesh::HelperPoints). The binding `IntrosortLoop_00a72fa0` from the
 //   landed sort is an invented global stand-in; this is STLport _algo.c `__introsort_loop`.
-// Shape: STLport verbatim with __median inline (the comp(a,b)/comp(b,c)/comp(a,c) ladder of FastCompare calls),
+// Shape: STLport verbatim with __median inline (the comp(a,b)/comp(b,c)/comp(a,c) ladder of operator< calls),
 //   the pivot copied into the partition's argument area by pair's explicit copy (string call, then C3DHelperPoint's
 //   four words through C3DVector's memberwise copy).
 class CCharString {
@@ -16,7 +16,7 @@ public:
     void* PStringData;
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
-    bool FastCompare(const CCharString& other) const;   // 0x009E6530
+    bool operator<(const CCharString& other) const;   // 0x009E6530
 };
 
 class C3DVector {                                       // user memberwise copy ctor
@@ -41,7 +41,7 @@ template <class _T1, class _T2> struct pair {
 
 template <class V> class CCompareString {
 public:
-    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
+    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.operator<(b.first); }
 };
 
 namespace std {

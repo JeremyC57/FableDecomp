@@ -2,7 +2,7 @@
 // Leaf: ??$__partial_sort@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A72380, 125 bytes (+3 int3), /Gr `__fastcall` (first in ecx, middle
 //   in edx; last, the value-type tag pointer and the comparator on the stack, `ret 0Ch`).
-// Callees: std::__make_heap 0x00A706B0, CCharString::FastCompare 0x009E6530 (the CCompareString comparator),
+// Callees: std::__make_heap 0x00A706B0, CCharString::operator< 0x009E6530 (the CCompareString comparator),
 //   CCharString::CCharString(const CCharString&) 0x0099EC30 (the by-value copy for __pop_heap), std::__pop_heap
 //   0x00A70280, std::sort_heap 0x00A71A40.
 // Identity: the manifest's "Introsort_QuickPartition_BlendedEnv" is descriptive. 56-byte pair<CCharString,
@@ -17,7 +17,7 @@ public:
     void* PStringData;
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
-    bool FastCompare(const CCharString& other) const;   // 0x009E6530
+    bool operator<(const CCharString& other) const;   // 0x009E6530
 };
 
 class CMatrix3x4 {                                      // 48 bytes
@@ -42,7 +42,7 @@ public:
 
 template <class V> class CCompareString {
 public:
-    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
+    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.operator<(b.first); }
 };
 
 namespace std {

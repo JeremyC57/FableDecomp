@@ -6,7 +6,7 @@
 //   CSymbolMap entry sort: element pair<CCharString, CSymbolMap::CSymbolInfo> (Ego_r.pdb CSymbolInfo = GroupName +0,
 //   EntryName +4, Val +8), comparator CCompareString<CSymbolMap::CSymbolInfo> (the manifest's _Push_heap /
 //   _Adjust_heap labels of the family name it). The catalog label "insertion_sort_16byte" is descriptive.
-// Callees: CCharString::FastCompare(const CCharString&) const @ 0x009E6530 (landed; the comparator inlined down to it),
+// Callees: CCharString::operator<(const CCharString&) const @ 0x009E6530 (landed; the comparator inlined down to it),
 //   CCharString::operator= @ 0x0099EFB0 (x3 per assignment), ~CCharString @ 0x0099EAE0 (val's three strings).
 // Shape: STLport `next = last; --next; while (comp(val, *next)) { *last = *next; last = next; --next; } *last = val;`
 //   with the implicit pair / CSymbolInfo assignments inline (three string assignments, then the Val dword); the loop
@@ -17,7 +17,7 @@ public:
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-    bool FastCompare(const CCharString& other) const;   // 0x009E6530
+    bool operator<(const CCharString& other) const;   // 0x009E6530
 };
 
 class CSymbolMap {
@@ -39,12 +39,12 @@ template <class _T1, class _T2> struct pair {           // STLport 4.6 pair (a s
 };
 }
 
-// The CVectorMap<CCharString, T> key order: names compared with the cheap CCharString::FastCompare (empty functor).
+// The CVectorMap<CCharString, T> key order: names compared with the cheap CCharString::operator< (empty functor).
 template <class T> class CCompareString {
 public:
     bool operator()(const std::pair<CCharString, T>& a, const std::pair<CCharString, T>& b) const
     {
-        return a.first.FastCompare(b.first);
+        return a.first.operator<(b.first);
     }
 };
 typedef std::pair<CCharString, CSymbolMap::CSymbolInfo> TSymbolEntry;

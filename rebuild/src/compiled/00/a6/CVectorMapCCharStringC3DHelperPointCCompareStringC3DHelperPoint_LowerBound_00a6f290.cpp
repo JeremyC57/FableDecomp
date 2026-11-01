@@ -9,7 +9,7 @@
 //   String@VC3DHelperPoint@@@@@@QBE...@ABVCCharString@@@Z (Dinkumware const_iterator there; STLport's is a pointer). The
 //   catalog's CNavLineMapValue is in no PDB name set or layout: CPhysicsMesh's 20-byte CCharString maps are HelperPoints
 //   (C3DHelperPoint: Position +0, BoneIndex +0xC) and DummyObjects (+0x20, not a caller here).
-// Callees: CCharString::FastCompare(const CCharString&) const @ 0x009E6530 (the CCompareString "less", called on the
+// Callees: CCharString::operator<(const CCharString&) const @ 0x009E6530 (the CCompareString "less", called on the
 //   middle entry's key with the caller's key reference re-pushed every iteration).
 // Body: Dinkumware-style lower bound -- count = (last - first) / sizeof(entry); halve, compare the middle entry,
 //   step past it (`count -= half + 1`, emitted `or -1 ; sub ; add`) or keep the lower half.
@@ -24,7 +24,7 @@ public:
 class CCharString {
 public:
     CBasicString<char>* PData;
-    bool FastCompare(const CCharString& other) const;   // 0x009E6530
+    bool operator<(const CCharString& other) const;   // 0x009E6530
 };
 class C3DVector {
 public:
@@ -52,7 +52,7 @@ public:
 }
 template <class V> class CCompareString {
 public:
-    bool operator()(const std::pair<CCharString, V>& entry, const CCharString& key) const { return entry.first.FastCompare(key); }
+    bool operator()(const std::pair<CCharString, V>& entry, const CCharString& key) const { return entry.first.operator<(key); }
 };
 template <class K, class V, class C> class CVectorMap : public std::vector<std::pair<K, V> > {
 public:

@@ -23,11 +23,11 @@ template<class T> struct PolyCounted:Base {
  __forceinline PolyCounted& operator=(const PolyCounted& o){RefBlock* block=o.Block;T* data=o.Data;if(Block!=block){if(Block){--Block->Refs;if(Block->Refs==0){Block->Destroy(Block->Data);::operator delete(Block);}}Data=data;Block=block;if(block)++block->Refs;}return *this;}
 };
 } // (hoisted to global scope: naming wave 9)
-struct CCharStringData;class CCharString { public:CCharStringData* Data;CCharString();CCharString(const CCharString&);~CCharString();const CCharString& operator=(const CCharString&);bool FastCompare(const CCharString&)const;};
+struct CCharStringData;class CCharString { public:CCharStringData* Data;CCharString();CCharString(const CCharString&);~CCharString();const CCharString& operator=(const CCharString&);bool operator<(const CCharString&)const;};
 namespace N00cbac70 {
 struct CWideString {unsigned int Key; CWideString();CWideString(const CWideString&);~CWideString();CWideString& operator=(const CWideString&);};
 struct Element {CCharString S;Counted<void> P;};
-struct CCompareString {unsigned int State; __forceinline bool operator()(const Element& a,const Element& b) const {return a.S.FastCompare(b.S);}};
+struct CCompareString {unsigned int State; __forceinline bool operator()(const Element& a,const Element& b) const {return a.S.operator<(b.S);}};
 
 template<class T,class C> void __fastcall __push_heap(T* first,int hole,int top,T value,C comp) {
  int parent=(hole-1)/2;

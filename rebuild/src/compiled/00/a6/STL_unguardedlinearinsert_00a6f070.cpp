@@ -2,13 +2,13 @@
 // Leaf: ??$__unguarded_linear_insert@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6F070, 116 bytes (+12 int3), /Gr `__fastcall` (last in ecx; the
 //   56-byte value and the 4-byte comparator by value on the stack, `ret 3Ch`).
-// Callees: CCharString::FastCompare(const CCharString&) const 0x009E6530 (the CCompareString "less"),
+// Callees: CCharString::operator<(const CCharString&) const 0x009E6530 (the CCompareString "less"),
 //   CCharString::operator=(const CCharString&) 0x0099EFB0, CCharString::~CCharString 0x0099EAE0 (the by-value val).
 // Identity: the manifest's "std_fill_StringDummyObjectPair_Radial" is descriptive. 56-byte pair<CCharString,
-//   C3DDummyObject> entries of CPhysicsMesh::DummyObjects ordered by CCompareString (FastCompare), as the
+//   C3DDummyObject> entries of CPhysicsMesh::DummyObjects ordered by CCompareString (operator<), as the
 //   __copy_backward 0x00A6E840 / __uninitialized_copy 0x00A6EE30 of this TU.
 // Shape: STLport `next = last; --next; while (comp(val, *next)) { *last = *next; last = next; --next; } *last = val;`
-//   -- the comparator inlined to `val.first.FastCompare(next->first)`; each assignment is the pair's implicit
+//   -- the comparator inlined to `val.first.operator<(next->first)`; each assignment is the pair's implicit
 //   operator= (string operator=, then C3DDummyObject's 13-dword `rep movsd` from a strength-reduced src+4 pointer in
 //   ebp); the callee destroys its by-value val before `ret 3Ch`.
 class CCharString {
@@ -17,7 +17,7 @@ public:
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-    bool FastCompare(const CCharString& other) const;   // 0x009E6530
+    bool operator<(const CCharString& other) const;   // 0x009E6530
 };
 
 class CMatrix3x4 {                                      // 48 bytes
@@ -42,7 +42,7 @@ public:
 
 template <class V> class CCompareString {
 public:
-    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
+    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.operator<(b.first); }
 };
 
 namespace std {

@@ -4,13 +4,13 @@
 // Identity: Ego_r.pdb `?LowerBound@?$CVectorMap@VCCharString@@VC3DDummyObject@@V?$CCompareString@VC3DDummyObject@@@@@@QBE...`
 //   (Dinkumware const_iterator there; STLport's is a pointer); its one caller CPhysicsMesh::GetDummyObjectPositionStatic
 //   (0x00A6CA00) calls it on DummyObjects (+0x20). Twin of the landed HelperPoints LowerBound 0x00A6F290 (20-byte entries).
-// Callees: CCharString::FastCompare(const CCharString&) const @ 0x009E6530 (the CCompareString "less").
+// Callees: CCharString::operator<(const CCharString&) const @ 0x009E6530 (the CCompareString "less").
 // Layout: entry = pair<CCharString, C3DDummyObject> (4 + 52 bytes: Transform CMatrix3x4 +0, BoneIndex +0x30), so the count
 //   is (last - first) / 56 (`imul 92492493h ; add edx,ecx ; sar edx,5`) and the middle entry `imul esi,esi,38h`.
 class CCharString {
 public:
     void* PData;                                         // +0x00
-    bool FastCompare(const CCharString& other) const;    // 0x009E6530
+    bool operator<(const CCharString& other) const;    // 0x009E6530
 };
 class CMatrix3x4 { public: float M[12]; };
 class C3DDummyObject {                                   // 52 bytes (Ego_r.pdb)
@@ -35,7 +35,7 @@ public:
 }
 template <class V> class CCompareString {
 public:
-    bool operator()(const std::pair<CCharString, V>& entry, const CCharString& key) const { return entry.first.FastCompare(key); }
+    bool operator()(const std::pair<CCharString, V>& entry, const CCharString& key) const { return entry.first.operator<(key); }
 };
 template <class K, class V, class C> class CVectorMap : public std::vector<std::pair<K, V> > {
 public:

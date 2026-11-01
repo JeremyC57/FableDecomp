@@ -5,7 +5,7 @@
 // OnScriptedEntityDeactivated 0x00CB88B0). The catalog label "CScriptBase::AttachNavigator" is a forge autoname.
 // Callees: the EntityScripts map's LowerBound(const unsigned __int64&) 0x00CB9840, the active script's bool setter
 // 0x00F359F0 (manifest "CTCPhysicsNavigator::EnableNavigator", a propagated byte-twin), CScriptBase::LoadEntityScript
-// 0x00CB7EE0, the binding map's LowerBound 0x00CBA190, CCharString::FastCompare 0x009E6530, the active-script vector's
+// 0x00CB7EE0, the binding map's LowerBound 0x00CBA190, CCharString::operator< 0x009E6530, the active-script vector's
 // _M_insert_overflow 0x00CBC850, SGI sort 0x00CBDEF0 (__fastcall, empty comparator by value), operator delete
 // 0x00BFE9BC; virtuals: CScriptThing::GetName (slot 1), SetToKillOnLevelUnload (slot 70), IncrementScriptCounter
 // (slot 72); the binding's slot 1 (creates the active script, counted pointer returned by hidden pointer); the
@@ -18,7 +18,7 @@
 // __false_type tag in the entity argument slot; the inline Sort re-reads Dirty right after the store.
 class CCharString { public:
     char* m_pData;
-    bool FastCompare(const CCharString& other) const;   // 0x009E6530
+    bool operator<(const CCharString& other) const;   // 0x009E6530
 };
 class CScriptThing { public:                                // vtable 0x01238C8C
     virtual void v00();
@@ -149,7 +149,7 @@ struct CBindingMap {
     {
         SBindingEntry* it = LowerBound(key);
         SBindingEntry* last = end();
-        return (it == last || key.FastCompare(it->first)) ? last : it;
+        return (it == last || key.operator<(it->first)) ? last : it;
     }
 };
 

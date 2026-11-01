@@ -3,10 +3,10 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CBA9B0, 247 bytes, __fastcall (last in ecx), `ret 10h` (by-value 12-byte val +
 //   the comparator slot).
 // Identity (proven): STLport __unguarded_linear_insert over std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> >
-//   with CCompareString (CCharString::FastCompare 0x009E6530); the landed __linear_insert 0x00CBC3C0 of the same pair declares
+//   with CCompareString (CCharString::operator< 0x009E6530); the landed __linear_insert 0x00CBC3C0 of the same pair declares
 //   0x00CBA9B0 as its __unguarded_linear_insert callee, and the landed __unguarded_insertion_sort_aux 0x00CBB2D0 calls it too.
 // Label: the catalog's "_global::SpeechFrame_InsertSortedWithComparison" is a propagated label (no CSpeechFrame here).
-// Callees: CCharString::FastCompare 0x009E6530, CCharString::operator= 0x0099EFB0, ~CCharString 0x0099EAE0, operator delete
+// Callees: CCharString::operator< 0x009E6530, CCharString::operator= 0x0099EFB0, ~CCharString 0x0099EAE0, operator delete
 //   0x00BFE9BC (count block; its delete function via +4).
 // Shape: the implicit pair operator= inlines here (CCharString::operator= call plus the inline CCountedPointer::operator=);
 //   val's destructor releases the counted pointer inline, zeroes Data/Info, then calls ~CCharString.
@@ -18,7 +18,7 @@ public:
     CCharString(const CCharString& other);                 // 0x0099EC30
     ~CCharString();                                        // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);      // 0x0099EFB0
-    bool FastCompare(const CCharString& other) const;      // 0x009E6530
+    bool operator<(const CCharString& other) const;      // 0x009E6530 ??MCCharString@@QBE_NABV0@@Z (FableWin.pdb; was the descriptive FastCompare -- naming wave 20)
 };
 class CCPPointerInfo { public:                                    // CCountedPointer count block
     long  RefCount;                                        // +0x00
@@ -75,7 +75,7 @@ template <class _T1, class _T2> struct pair {
 }
 template <class V> class CCompareString {                  // empty, passed by value (4-byte slot)
 public:
-    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
+    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.operator<(b.first); }
 };
 typedef std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > CBindingPair;   // 12 bytes
 typedef CCompareString<CCountedPointer<CEntityScriptBindingBase> > CBindingLess;

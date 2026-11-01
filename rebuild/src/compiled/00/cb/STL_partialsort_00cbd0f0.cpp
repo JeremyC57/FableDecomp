@@ -3,10 +3,10 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CBD0F0, 120 bytes (`ret 0Ch`).
 // TU: the scripting library's STLport 4.x instantiations (0x00CB6xxx-0x00CBDxxx); the game is built /Gr, so the
 //   algorithm templates are __fastcall (first two pointer arguments in ecx/edx, callee pops the rest).
-// Identity: STLport __partial_sort over (name, entity script binding) = std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > (0x0C bytes, CCompareString -> CCharString::FastCompare 0x009E6530); the 6 callers
+// Identity: STLport __partial_sort over (name, entity script binding) = std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > (0x0C bytes, CCompareString -> CCharString::operator< 0x009E6530); the 6 callers
 //   0x00CBD49C, 0x00CBDDE4..0x00CBDEB3 are the binding-map sort. The manifest label "CGameCameraManager_InitModes" is
 //   propagated and wrong.
-// Callees: __make_heap 0x00CBBC00, __pop_heap 0x00CBBAD0, sort_heap 0x00CBC580, CCharString::FastCompare 0x009E6530,
+// Callees: __make_heap 0x00CBBC00, __pop_heap 0x00CBBAD0, sort_heap 0x00CBC580, CCharString::operator< 0x009E6530,
 //   CCharString copy constructor 0x0099EC30 (the by-value `_Tp(*__i)`).
 // Shape: as 0x00CB7140 for the 12-byte element.
 void __cdecl operator delete(void* block);                 // 0x00BFE9BC
@@ -16,7 +16,7 @@ public:
     CCharString(const CCharString& other);                 // 0x0099EC30
     ~CCharString();                                        // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);      // 0x0099EFB0
-    bool FastCompare(const CCharString& other) const;      // 0x009E6530
+    bool operator<(const CCharString& other) const;      // 0x009E6530 ??MCCharString@@QBE_NABV0@@Z (FableWin.pdb; was the descriptive FastCompare -- naming wave 20)
 };
 class CCPPointerInfo { public:                                    // CCountedPointer count block
     long  RefCount;                                        // +0x00
@@ -73,7 +73,7 @@ template <class _T1, class _T2> struct pair {
 }
 template <class V> class CCompareString {                  // empty, passed by value (4-byte slot)
 public:
-    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.FastCompare(b.first); }
+    bool operator()(const std::pair<CCharString, V>& a, const std::pair<CCharString, V>& b) const { return a.first.operator<(b.first); }
 };
 typedef std::pair<CCharString, CCountedPointer<CEntityScriptBindingBase> > CBindingPair;   // 12 bytes
 typedef CCompareString<CCountedPointer<CEntityScriptBindingBase> > CBindingLess;

@@ -2,8 +2,8 @@
 // Leaf: FindScriptBinding
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB7D60, length 61 bytes.
 // Callees: CVectorMap<CCharString, CCountedPointer<CEntityScriptBindingBase>, CCompareString<..>>::LowerBound
-// @ 0x00CBA1F0 (on the map at +0x18, returns the element pointer in eax), CCharString::FastCompare
-// @ 0x009E6530 (key.FastCompare(element name): the map's "less" -- true when the key sorts first).
+// @ 0x00CBA1F0 (on the map at +0x18, returns the element pointer in eax), CCharString::operator<
+// @ 0x009E6530 (key.operator<(element name): the map's "less" -- true when the key sorts first).
 // Shape: the map's inline Find is `it = LowerBound(key); last = end(); return (it == last ||
 // key < *it) ? last : it;` -- `end()` read ONCE into a local right after the call (`mov esi,[esi+4]`,
 // reusing the map-address register; reading end() at each use compares against memory and forks the
@@ -16,7 +16,7 @@ class CEntityScriptBindingBase;
 
 class CCharString { public:
     char* m_pData;
-    bool FastCompare(const CCharString& other) const;     // 0x009E6530
+    bool operator<(const CCharString& other) const;     // 0x009E6530
 };
 
 struct SScriptBindingPair {
@@ -37,7 +37,7 @@ struct CScriptBindingMap {
     {
         const SScriptBindingPair* it = LowerBound(key);
         const SScriptBindingPair* last = end();
-        return (it == last || key.FastCompare(it->first)) ? last : it;
+        return (it == last || key.operator<(it->first)) ? last : it;
     }
 };
 

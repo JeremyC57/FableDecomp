@@ -2,7 +2,7 @@
 // Flags: /Gr
 // Leaf: _Adjust_heap
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6FB40, 224 bytes.
-// Callees: 0x009E6530 CCharString::FastCompare (out of line), 0x0099EFB0 CCharString::operator=,
+// Callees: 0x009E6530 CCharString::operator< (out of line), 0x0099EFB0 CCharString::operator=,
 // 0x0099EC30 CCharString copy ctor, 0x0099EAE0 ~CCharString, 0x00A6F1D0 _Push_heap (same
 // instantiation).  Link-time __fastcall: first in ecx, hole in edx, then bottom, the 0x38-byte pair
 // by value and the 4-byte comparator; `ret 0x40`.
@@ -16,7 +16,7 @@ class CCharString { public:
     CCharString(const CCharString& other);                 // 0x0099EC30
     ~CCharString();                                        // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);      // 0x0099EFB0
-    bool FastCompare(const CCharString& other) const;      // 0x009E6530
+    bool operator<(const CCharString& other) const;      // 0x009E6530 ??MCCharString@@QBE_NABV0@@Z (FableWin.pdb; was the descriptive FastCompare -- naming wave 20)
 };
 
 class CMatrix3x4 { public:
@@ -36,7 +36,7 @@ typedef pair<CCharString, C3DDummyObject> TEntry;
 
 template<class T> class CCompareString { public:
     char m_tag;
-    bool operator()(const pair<CCharString, T>& a, const pair<CCharString, T>& b) const { return a.first.FastCompare(b.first); }
+    bool operator()(const pair<CCharString, T>& a, const pair<CCharString, T>& b) const { return a.first.operator<(b.first); }
 };
 typedef CCompareString<C3DDummyObject> TCompare;
 
