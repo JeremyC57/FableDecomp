@@ -1,5 +1,5 @@
 // CFileInstaller::ProcessAlways() -- process a queued read completion under the lock; bank a finished current write; retire every finished active file at the head of the list; then start writing the next active file
-// Grade: DIFFER(490v490) -- one residue: retail re-reads PCompletedRead for the push after the null test (`cmp [ebp+74h],esi ; je ; mov ecx,[ebp+74h]`), ours keeps it (`mov eax,[ebp+74h] ; cmp eax,esi ; mov ecx,eax`) plus the loop-alignment nop that follows from the 1-byte shift. Retail's member is a vo-latile `CActiveRead*` (the read-completion thread writes it; the landed 0x009C42F0 carries the same qualifier): this exact file with the qualifier on PCompletedRead and the plain `if (PCompletedRead)` test is RELOCATION_MATCH (probe/009c4f20_diagV2.cpp, diagnostic). Purity forbids the qualifier: owner decision. Next: a landable non-qualified form that re-reads a member with no intervening store (24 probes found none).
+// Retail-volatile: PCompletedRead is written by the read-completion thread; retail re-reads [ebp+74h] for the push after the null test (0x009C4F20: `cmp [ebp+74h],esi ; je ; mov ecx,[ebp+74h]`), the VC7.1 codegen of a volatile member; the landed 0x009C42F0 carries the same qualifier. Owner 2026-11-01: recreate retail.
 // Leaf: ?ProcessAlways@CFileInstaller@@IAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009C4F20, 490 bytes, thiscall `ret`. Name: Ego_r.pdb ?ProcessAlways@CFileInstaller@@IAEXXZ (protected).
 // Callees: CCriticalSectionLock ctor 0x00A62920 / dtor 0x00A629A0; CFileInstaller::PostFileReadCompletion 0x009C4120 (Ego_r IAE);
@@ -202,7 +202,7 @@ class CFileInstaller { public:
     unsigned long                                NoBufferChunks;         // +0x68
     long                                         NoTotalBytesWritten;    // +0x6c
     long                                         TotalSizeOfAllFiles;    // +0x70
-    CActiveRead*                                 PCompletedRead;         // +0x74
+    CActiveRead* volatile                        PCompletedRead;         // +0x74 (volatile: see the Retail-volatile line)
     bool                                         ThreadFinished;         // +0x78
     bool                                         DecompressionThreadFinished;
     bool                                         ExitThread;
@@ -219,8 +219,7 @@ protected:
 void CFileInstaller::ProcessFileReadCompletion()
 {
     CCriticalSectionLock lock(CriticalSection, false);
-    CActiveRead* const& completed = PCompletedRead;
-    if (completed) {
+    if (PCompletedRead) {
         PostFileReadCompletion(PCompletedRead);
         PCompletedRead = 0;
     }

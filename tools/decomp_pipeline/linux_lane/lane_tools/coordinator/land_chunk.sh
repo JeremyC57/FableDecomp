@@ -14,7 +14,9 @@ print("payload",len(p["result"]["authored"]))
 PY
 python3 $T/chunk_pool/fixmove.py $B/payload.json
 python3 $T/naming/keypayload.py $B/payload.json
-if grep -lE '(^|[^A-Za-z0-9_])(__asm|_emit|volatile|naked)([^A-Za-z0-9_]|$)' $A/src/*.cpp $A/test/*.cpp; then echo "ASM in src, STOP"; exit 1; fi
+if grep -lE '(^|[^A-Za-z0-9_])(__asm|_emit|naked)([^A-Za-z0-9_]|$)' $A/src/*.cpp $A/test/*.cpp; then echo "ASM in src, STOP"; exit 1; fi
+# volatile only with the owner-decision evidence line (EXTRA_RULES 2026-11-01): a cross-thread member retail re-reads
+if grep -LE '^// Retail-volatile:' $(grep -lE '(^|[^A-Za-z0-9_])volatile([^A-Za-z0-9_]|$)' $A/src/*.cpp $A/test/*.cpp 2>/dev/null) 2>/dev/null | grep .; then echo "volatile without a Retail-volatile line, STOP"; exit 1; fi
 LANDVERIFY_WORK=$S/lv$n timeout 3000 python3 -u $T/vland.py $B/payload.json $B/oracle.tsv --land > $S/lv$n.land.log 2>&1
 echo "main: $(grep -E '^WINS' $S/lv$n.land.log)"
 echo ALLDONE

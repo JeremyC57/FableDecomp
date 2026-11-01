@@ -371629,6 +371629,13 @@ $catalog = @(
         TestSource = '00/a6/stdvector_Mfillinsert_00a6bcd0_test.cpp'
         PassPattern = '00a6bcd0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '009c4f20'
+        Module = 'CFileInstaller'
+        Source = '00/9c/CFileInstaller_ProcessAlways_009c4f20.cpp'
+        TestSource = '00/9c/CFileInstaller_ProcessAlways_009c4f20_test.cpp'
+        PassPattern = '009c4f20_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -35688,3 +35688,7 @@ _IID_IDirectInput8W	012acbf4	00a60050
 ??$fill@PAV?$CIVCountedPointer@VCManagedTextureData@@@@V1@@std@@YIXPAV?$CIVCountedPointer@VCManagedTextureData@@@@0ABV1@@Z	00a6b000	00a6bcd0
 ??$uninitialized_fill_n@PAV?$CIVCountedPointer@VCManagedTextureData@@@@IV1@@std@@YIPAV?$CIVCountedPointer@VCManagedTextureData@@@@PAV1@IABV1@@Z	00a6b340	00a6bcd0
 ?_M_insert_overflow@?$vector@V?$CIVCountedPointer@VCManagedTextureData@@@@V?$allocator@V?$CIVCountedPointer@VCManagedTextureData@@@@@std@@@std@@IAEXPAV?$CIVCountedPointer@VCManagedTextureData@@@@ABV3@ABU__false_type@2@I_N@Z	00a6ba60	00a6bcd0
+?OnWriteFinished@CActiveFile@CFileInstaller@@QAEXXZ	009c38c0	009c4f20
+?PostFileReadCompletion@CFileInstaller@@IAEXPAVCActiveRead@1@@Z	009c4120	009c4f20
+?StartWritingFile@CFileInstaller@@IAEXAAVCActiveFile@1@K@Z	009c3660	009c4f20
+?remove@?$list@V?$CCountedPointer@$$CBVCFileInfo@CFileInstaller@@@@V?$allocator@V?$CCountedPointer@$$CBVCFileInfo@CFileInstaller@@@@@std@@@std@@QAEXABV?$CCountedPointer@$$CBVCFileInfo@CFileInstaller@@@@@Z	009c6e50	009c4f20

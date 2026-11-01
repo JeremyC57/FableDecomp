@@ -90,3 +90,23 @@ member names, and script names (NScript quest scripts: check work/aeon_lua_ports
 - **Fix what you find.** Hand back `NAME_FIXES.tsv` (`address<TAB>correct_symbol<TAB>evidence<TAB>wrong_spellings_seen`)
   for every retail address whose landed spelling (in reloc_bindings.tsv, a landed source or the catalog) you proved
   wrong. The coordinator respells the landed callers in the same landing and rechecks them, so no separate pass is needed.
+
+## Owner decisions, 2026-11-01 (delegated to the coordinator under the rule "do what retail did"; override anything above that disagrees)
+- **`volatile` where retail's bytes prove it.** A member that retail re-reads from memory with no intervening call or store
+  (`cmp [ebp+N],reg ; je ; mov ecx,[ebp+N]`) and that another thread writes (completion records, thread flags) carries the
+  qualifier in the retail class: write it with `volatile` and a `// Retail-volatile: <address>: <instruction pair>; <who writes it>`
+  line (0x009C42F0 / 0x009C4F20 CFileInstaller::PCompletedRead). Still never as a spill trick: no `volatile` on a local, a
+  parameter, or a member only one thread touches; the lander's grep is relaxed only for a source carrying the evidence line.
+- **`__forceinline` on Lionhead header helpers is retail.** GetTC / PeekTC / GetInterface, C3DVector arithmetic and GetLength,
+  CCountedPointer copy / Release: no out-of-line copy exists in the Ego_r / FableWin PDB name sets or in retail Fable.exe
+  (thousands of use sites, all expanded), and plain `inline` leaves a call under VC7.1's budget. Keep `__forceinline` there;
+  no re-author pass. Where an out-of-line copy DOES exist (HasTC: one in each PDB; GetInterface: one retail instance), prefer
+  plain `inline` when the bytes hold and record which form the row needed. STLport members stay `inline` (their source is known).
+- **libpk / GameCODA / Vorbis rows are ordinary C++ reconstruction.** The Rich header puts every compiled object on cl 3077, there
+  is no vendor `.lib` to prove `toolchain_library`, and no PDB: author them as C++ under their own header names from the trace
+  strings (GOTCHAS 0xC1xxxx..0xC9xxxx lines), Dinkumware STL for libpk.
+- **Data-symbol spellings (VIRTUAL_SCREEN_WIDTH / HEIGHT, PMainGameComponent) stay as established** until a PDB data-symbol dump
+  exists on the owner's machine (`cvdump -s` of Ego_r.pdb, S_GDATA32 / S_PUB32); keep them gated for respell waves, use the
+  established spelling in new rows.
+- **Parked pairs land together.** 0x00626E40 ConstructItemCategoryList is reconstructed first (same retail TU, before
+  0x006276F0 GetItemsListUI); 0x00935E40 PutOutFire with its identical sibling 0x009363D0. Cut as one "pairs" chunk.
