@@ -1,4 +1,6 @@
 // CWorld::AutoSave(bool) -- autosave: between the quest start and finish screens reuse the quest-start save as the autosave (copied with the progress display), otherwise (or if no quest-start save exists) run a full autosave
+// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x004A0AE0, 195 bytes. PDB ?AutoSave@CWorld@@QAE_N_N@Z
 // Callees: quest manager singleton 0x013B89FC IsBetweenQuestStartAndFinishScreens() 0x004AF290;
 // CTBaseSingleton<CUserProfileManager>::Get 0x0040D2A0; CUserProfileManager::GetAutoSaveQuestStartPathName() const
@@ -28,8 +30,18 @@ public:
     static bool __fastcall PathExists(const CWideString&);   // 0x00999230
 };          // 0x00999230
 
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
 class CQuestManager { public: bool IsBetweenQuestStartAndFinishScreens() const; };   // 0x004AF290
-extern CQuestManager* g_pQuestManager;                        // 0x013B89FC
 
 class CWorld { public:
     unsigned char _pad0[0x134];
@@ -50,7 +62,7 @@ bool CWorld::AutoSave(bool ignoreQuestStart)
     MostRecentSaveType = 2;
     MostRecentSaveTypeBeforeManualSave = 2;
     bool saved = false;
-    if (!ignoreQuestStart && g_pQuestManager->IsBetweenQuestStartAndFinishScreens())
+    if (!ignoreQuestStart && CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().IsBetweenQuestStartAndFinishScreens())
     {
         CWideString questStart = CUserProfileManager::Get().GetAutoSaveQuestStartPathName();
         if (CAFile::PathExists(questStart))

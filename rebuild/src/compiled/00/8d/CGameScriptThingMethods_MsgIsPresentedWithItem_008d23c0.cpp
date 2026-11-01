@@ -1,5 +1,7 @@
 // CGameScriptThing::MsgIsPresentedWithItem(CCharString& itemDefName) const -- scan the live thing's entity events (TC 0x42) from the running quest script's last to current frame for an "item presented" event (types 10 / 11) and return the presented item's def name
 // Leaf: ?MsgIsPresentedWithItem@CGameScriptThing@@UBE_NAAVCCharString@@@Z
+// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D23C0, length 370 bytes (`ret 4`, bool in al).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, the const component-map LowerBound @ 0x004365B0, the event's
 //   virtual slot 1 (GetType), CThing::GetDefName @ 0x004C7CC0 (CDefString by value), CDefStringTable::GetString @ 0x009D49B0
@@ -73,8 +75,18 @@ struct CTCEntityEventsNative {
 };
 struct ScriptBaseNative { unsigned char Containers[0x2c]; CSpawnedFuncBase* PActiveThread; };
 struct ActiveQuest { unsigned char State[8]; ScriptBaseNative* Script; };
-struct QuestManagerNative { unsigned char State[0x88]; ActiveQuest* PQuestCurrentlyRunning; };
-extern QuestManagerNative* g_pQuestManager;             // 0x013B89FC
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
+class CQuestManager { public: unsigned char State[0x88]; ActiveQuest* PQuestCurrentlyRunning; };
 __forceinline long LastFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->LastScriptFrame : 0; }
 __forceinline long CurrentFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->CurrentScriptFrame : 0; }
 
@@ -86,8 +98,8 @@ bool CGameScriptThingMethods::MsgIsPresentedWithItem(CCharString& itemDefName) c
 {
     const PointerView* p = reinterpret_cast<const PointerView*>(PThing);
     if (((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem()) && !(((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem())->LifeFlags & 1)) {
-        long last = LastFrame(g_pQuestManager->PQuestCurrentlyRunning);
-        long current = CurrentFrame(g_pQuestManager->PQuestCurrentlyRunning);
+        long last = LastFrame(CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().PQuestCurrentlyRunning);
+        long current = CurrentFrame(CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().PQuestCurrentlyRunning);
         CThingNative* thing = ((CThingNative*)((CBaseIntelligentPointer*)p)->GetPItem());
         if (thing->UsingComponents[2] & 4) {
             const ComponentMap* map = &thing->Components;

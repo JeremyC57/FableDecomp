@@ -1,4 +1,6 @@
 // CTCCreatureGroupBoastingCrowd::FrameUpdate() -- kill the crowd once the hero is gone or dead; when an off-podium state's clear frame has passed, clear every opinion source pushed for the hero and return to state 0; when the post-boast state's leave frame has passed, go back to the encouragement state (boasts left) or to 7/8 (good/bad boast)
+// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00784500, 245 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3), CThing::Kill(bool) @ 0x004C9B80, GFGetCurrentFrame @
 //   0x0049D870 (__fastcall), CTCBase::GetWorld @ 0x00686A70 (manifest "CViewBase::GetDisplayEngine" is propagated),
@@ -28,12 +30,22 @@ class CWorld { public:
     static long __fastcall GetFrame();   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
 };
 struct SListNode { SListNode* next; SListNode* prev; };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
 class CQuestManager { public:
     unsigned char _pad00[0x68];
     SListNode* m_boasts;                        // +0x68 list head (retail 4-byte STLport list)
     bool BoastsEmpty() const { return m_boasts->next == m_boasts; }
 };
-extern CQuestManager* g_pQuestManager;          // 0x013B89FC
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -103,7 +115,7 @@ void CTCCreatureGroupBoastingCrowd::FrameUpdate()
     }
     if ((CrowdState == 5 || CrowdState == 6) && CWorld::GetFrame() > FrameToLeavePostBoastState) {
         FrameToLeavePostBoastState = 0;
-        if (!g_pQuestManager->BoastsEmpty())
+        if (!CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().BoastsEmpty())
             EnterCrowdState(CurrentEncouragementState);
         else
             EnterCrowdState(HeroMadeGoodBoast ? 7 : 8);

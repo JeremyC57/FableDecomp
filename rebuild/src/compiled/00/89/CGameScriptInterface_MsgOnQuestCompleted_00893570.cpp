@@ -1,10 +1,12 @@
 // CGameScriptInterface::MsgOnQuestCompleted(const CCharString& name) const -- did a message of type 0x33 occur since the previous frame for the named quest
 // Leaf: ?MsgOnQuestCompleted@CGameScriptInterface@@UBE_NABVCCharString@@@Z
+// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00893570, 154 bytes, thiscall, `ret 4`.
 // Identity (proven): vtable 0x01260F0C (RTTI .?AVCGameScriptInterface@@) slot 25; ghidra_out/cgsi_slots_aligned.tsv (Ego_r.pdb vtable order; neighbours 26 MsgOnAnyQuestCompleted 0x00893610 (type 0x33) and 30 MsgOnQuestAccepted landed) names it ?MsgOnQuestCompleted@CGameScriptInterface@@UBE_NABVCCharString@@@Z; message type 0x33.
 // Callees: the frame getters 0x006E7510 / 0x006E7530, CMessageEventManager::FindMostRecentMessage<CFilter_Bind2<IsOfType,
 //   OccuredBetween> >(const&) const 0x008ABED0, CQuestManager::GetRegisteredQuestFromIndex(long) const 0x004AF3C0 on the quest
-//   manager global 0x013B89FC (descriptive spelling g_pQuestManager), CBasicString<char>::Compare(const char*, const char*)
+//   manager global 0x013B89FC (descriptive spelling CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass), CBasicString<char>::Compare(const char*, const char*)
 //   0x00411570 (the inlined CCharString / CBasicString equality).
 // Body: as the landed MsgOnAnyQuestCompleted 0x00893610 (frame - 1 .. max frame, the manager in a named local), then
 //   `quest == name`: the same string block -> true; either block null or the lengths differ -> false; else Compare == 0
@@ -39,11 +41,21 @@ public:
         return PStringData->Data == other.PStringData->Data;
     }
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
 class CQuestManager {
 public:
     const CCharString& GetRegisteredQuestFromIndex(long index) const;   // 0x004AF3C0
 };
-extern CQuestManager* g_pQuestManager;                     // 0x013B89FC
 enum EMessageEventType { EMessageEventType_FIRST };
 class CMessageEvent {
 public:
@@ -88,7 +100,7 @@ bool CGameScriptInterface::MsgOnQuestCompleted(const CCharString& name) const
     const CMessageEventManager* messages = World->PMessageEventManager_Data;
     const CMessageEvent* message = messages->FindMostRecentMessage(
         CMessageEventFilter_IsOfType((EMessageEventType)0x33) && CMessageEventFilter_OccuredBetween(frame, maxFrame));
-    if (message && g_pQuestManager->GetRegisteredQuestFromIndex(message->ExtraData) == name)
+    if (message && CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().GetRegisteredQuestFromIndex(message->ExtraData) == name)
         return true;
     return false;
 }

@@ -1,5 +1,7 @@
 // CGameScriptThing::MsgGetThingsKilled(std::vector<unsigned long>& groups) const -- append the creature group of every "killed creature" entity event (type 0x22) this live thing received in the current script frame interval; whether any was found
 // Leaf: MsgGetThingsKilled
+// Naming wave 18: the global stand-in QuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D3DD0, length 289 bytes, `ret 4`.
 // Signature from Ego_r.pdb: ?MsgGetThingsKilled@CGameScriptThing@@UBE_NAAV?$vector@KV?$allocator@K@std@@@std@@@Z.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3), the const TC map lower bound @ 0x004365B0, the event's
@@ -21,8 +23,18 @@ struct CSpawnedFuncNative {
 };
 struct ScriptBaseNative { unsigned char Containers[0x2c]; CSpawnedFuncNative* PActiveThread; };
 struct ActiveQuest { unsigned char State[8]; ScriptBaseNative* Script; };
-struct QuestManagerNative { unsigned char State[0x88]; ActiveQuest* PQuestCurrentlyRunning; };
-extern QuestManagerNative* QuestManager;                // 0x013B89FC
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
+class CQuestManager { public: unsigned char State[0x88]; ActiveQuest* PQuestCurrentlyRunning; };
 __forceinline long LastFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->LastScriptFrame : 0; }
 __forceinline long CurrentFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->CurrentScriptFrame : 0; }
 
@@ -101,8 +113,8 @@ bool CGameScriptThingMethods::MsgGetThingsKilled(CULongVector& groups) const
     bool found = false;
     const CBaseIntelligentPointer* pointer = reinterpret_cast<const CBaseIntelligentPointer*>(PThing);
     if (pointer->Get() && !(pointer->Get()->LifeFlags & 1)) {
-        long last = LastFrame(QuestManager->PQuestCurrentlyRunning);
-        long current = CurrentFrame(QuestManager->PQuestCurrentlyRunning);
+        long last = LastFrame(CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().PQuestCurrentlyRunning);
+        long current = CurrentFrame(CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().PQuestCurrentlyRunning);
         CThingNative* thing = pointer->Get();
         if (thing->HasTC(0x42)) {
             const CTCEntityEventsNative* events = thing->GetTC<CTCEntityEventsNative>(0x42);

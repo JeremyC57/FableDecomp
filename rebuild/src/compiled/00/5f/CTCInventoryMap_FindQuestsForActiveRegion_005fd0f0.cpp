@@ -1,9 +1,11 @@
 // CTCInventoryMap::FindQuestsForActiveRegion() -- rebuilds ActiveRegionQuestPositions: the marker position of every active quest that contains the active region (zero markers skipped)
+// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005FD0F0, length 224 bytes (+ int3 padding); speed TU (no frame pointer).
 // Callees: CTCBase::PeekWorld() const @ 0x00686A80 (manifest "CViewBase::GetDisplayEngine" is propagated), CWorld virtual slot 13 (+0x34,
 // PeekWorldMap), CWorldMap::GetRegion(long) @ 0x004FC180 (CRegion&), CQuestManager::CActiveQuest::ContainsRegion(const CRegion&) const
 // @ 0x004AFD80 (manifest "CHitParameters::IsDivineWrathStrike" is propagated), vector<C2DCoordI>::_M_insert_overflow(pos, x, __false_type,
-// n, bool) @ 0x00618550 (manifest "CVector_InsertRange"); the active-quest list is g_pQuestManager(0x013B89FC)->ActiveQuests (+0x38).
+// n, bool) @ 0x00618550 (manifest "CVector_InsertRange"); the active-quest list is CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass(0x013B89FC)->ActiveQuests (+0x38).
 // Layout: retail ActiveRegionQuestPositions +0x1DC (12-byte vector of 8-byte C2DCoordI; PDB +0x224), ActiveRegionIndex +0x238; CQuestManager::
 // ActiveQuests at +0x38 (4-byte STLport list of CCountedPointer<CActiveQuest> nodes, the quest pointer at node +8); CActiveQuest::
 // MarkerPosition +0x1C (PDB +0x20).
@@ -77,11 +79,21 @@ struct CActiveQuestList {                         // STLport list<CCountedPointe
     CActiveQuestNode* begin() const { return _M_node->_M_next; }
     CActiveQuestNode* end() const { return _M_node; }
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
 class CQuestManager { public:
     unsigned char _pad00[0x38];
     CActiveQuestList ActiveQuests;                 // +0x38
 };
-extern CQuestManager* g_pQuestManager;             // 0x013B89FC
 class CTCBase
 {
 protected:
@@ -107,7 +119,7 @@ void CTCInventoryMap::FindQuestsForActiveRegion()
     const CRegion& region = PeekWorld().PeekWorldMap()->GetRegion(ActiveRegionIndex);
     CActiveQuestNode* node;
     CActiveQuest* quest;
-    const CActiveQuestList& quests = g_pQuestManager->ActiveQuests;
+    const CActiveQuestList& quests = CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().ActiveQuests;
     for (node = quests.begin(); node != quests.end(); node = node->_M_next) {
         quest = node->Data;
         if (quest->ContainsRegion(region)) {

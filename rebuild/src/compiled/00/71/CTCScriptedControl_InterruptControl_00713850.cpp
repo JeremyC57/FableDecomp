@@ -1,5 +1,7 @@
 // CTCScriptedControl::InterruptControl() -- end the running front action (virtual slot 5) when it has started, drop every queued action, tell the quest manager the thing was interrupted, clear the script handle and unlock
 // Leaf: InterruptControl
+// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe 0x00713850, 125 bytes (plain `ret`).
 // Callees: CActionBase virtual slot 5 (+0x14), the action list's clear() @ 0x00719280 (manifest "remove_if<...CConvFilterToCP...>"
 // is a byte-twin propagation; called with only the list as `this`), CQuestManager::OnEntityInterrupted(CThing*)
@@ -21,10 +23,20 @@ struct CIntelligentPointer : CBaseIntelligentPointer {    // CIntelligentPointer
     CIntelligentPointer(CBaseObject* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
 class CQuestManager { public:
     void OnEntityInterrupted(CThing* thing);        // 0x004AFBB0
 };
-extern CQuestManager* g_pQuestManager;              // 0x013B89FC
 
 struct CActionBase {                                // CTCScriptedControl::CActionBase, vtable 0x01265504
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
@@ -63,7 +75,7 @@ void CTCScriptedControl::InterruptControl()
     if (action && action->Activated)
         action->Exit();
     PActionList.clear();
-    g_pQuestManager->OnEntityInterrupted(ParentThing);
+    CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().OnEntityInterrupted(ParentThing);
     PScriptHandleImp = CIntelligentPointer(0);
     Locked = false;
 }

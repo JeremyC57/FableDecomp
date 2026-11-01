@@ -1,7 +1,9 @@
 // CTCBoastingPodium::OnHeroBoast(long boastId, CThing* hero) -- a live hero made a boast: pay its cost out of the hero's money, mark the boast as made and count one boasting position fewer
+// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00813C50, length 168 bytes (+ int3 padding), `ret 8`.
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 (the by-value "" script names), CQuestManager::GetBoast(long, CCharString)
-// @ 0x004AF7A0 and CQuestManager::SetBoastAsMade(long, CCharString) @ 0x004B1A80 on g_pQuestManager 0x013B89FC,
+// @ 0x004AF7A0 and CQuestManager::SetBoastAsMade(long, CCharString) @ 0x004B1A80 on CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass 0x013B89FC,
 // CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (inlined GetTC for CTCHeroStats, type 4 = bit 4 of
 // CThing+0x20), CTCHeroStats::AddMoney(long, bool) @ 0x0057B327.
 // Layout: Ego_r.pdb CTCBoastingPodium LastPositionsWithBoastCount +0x20 sits at retail +0x1C (12-byte vector in the
@@ -51,19 +53,29 @@ struct CBoast {
     long Cost;                                  // +0x04
     long Reward;                                // +0x08
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
 class CQuestManager { public:
     CBoast* GetBoast(long id, CCharString scriptName);          // 0x004AF7A0
     void SetBoastAsMade(long id, CCharString scriptName);       // 0x004B1A80
 };
-extern CQuestManager* g_pQuestManager;          // 0x013B89FC
 __forceinline CBoast* GetBoast(long id)
 {
-    CQuestManager* questManager = g_pQuestManager;
+    CQuestManager* questManager = (&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get());
     return questManager->GetBoast(id, "");
 }
 __forceinline void SetBoastAsMade(long id)
 {
-    CQuestManager* questManager = g_pQuestManager;
+    CQuestManager* questManager = (&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get());
     questManager->SetBoastAsMade(id, "");
 }
 class CTCHeroStats {

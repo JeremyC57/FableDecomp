@@ -14,6 +14,8 @@
 // local (a bare temporary reuses GetString's returned eax instead of `lea eax,[esp+0Ch]`), and an
 // `unsigned char` result (a bool return adds `xor eax,eax` before the sete).
 // Leaf: IsQuestCardRegionFree
+// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 
 class CCharString { public:
     void* m_pStringData;
@@ -27,10 +29,20 @@ public:
 };
 extern CDefStringTable g_DefStringTable;           // 0x013CA828
 
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
 class CQuestManager { public:
     bool IsActiveQuestStartedInRegion(const CCharString& region);  // 0x004B1270
 };
-extern CQuestManager* g_pQuestManager;             // 0x013B89FC
 
 class CQuestCardDef { public:
     virtual void v00();
@@ -72,7 +84,7 @@ unsigned char __stdcall CTCInventoryQuests::IsQuestCardRegionFree(CTCQuestCard* 
     {
         CQuestCardDefPointer def(card->PDef);
         CCharString region = g_DefStringTable.GetString(def->RegionName);
-        started = g_pQuestManager->IsActiveQuestStartedInRegion(region);
+        started = CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().IsActiveQuestStartedInRegion(region);
     }
     return !started;
 }

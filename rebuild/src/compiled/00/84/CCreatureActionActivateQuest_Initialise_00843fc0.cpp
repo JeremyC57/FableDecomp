@@ -1,5 +1,7 @@
 // CCreatureAction_ActivateQuest::Initialise() -- record the object used on the quest manager (and, when there is one, its definition's display string), activate the named quest with the LoadResources flag, mark the action initialised
 // Leaf: Initialise
+// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00843FC0, 207 bytes (208 with padding), virtual `?Initialise@CCreatureAction_ActivateQuest@@UAEXXZ`.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 / ctor 0x00A01B10 / SetPItem 0x00A01B90 / dtor 0x00A01C10 (vtable
 //   0x01238C6C), CThing::GetDefName 0x004C7CC0 (CDefString by hidden pointer), CDefStringTable::GetString 0x009D49B0 on the
@@ -54,13 +56,23 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
 class CQuestManager { public:
     unsigned char _pad00[0xa8];
     CIntelligentPointer<CThing> LastObjectUsed;         // +0xa8
     CCharString LastObjectUsedName;             // +0xb0
     bool ActivateQuest(const CCharString& name, bool a2, bool loadResources);   // 0x004B4A10
 };
-extern CQuestManager* g_pQuestManager;          // 0x013B89FC
 
 #pragma pack(push, 1)                           // the real (PDB) layout: PObjectToUse is unaligned
 class CCreatureAction_ActivateQuest { public:
@@ -77,13 +89,13 @@ class CCreatureAction_ActivateQuest { public:
 
 void CCreatureAction_ActivateQuest::Initialise()
 {
-    CQuestManager* questManager = g_pQuestManager;
+    CQuestManager* questManager = (&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get());
     questManager->LastObjectUsed = CIntelligentPointer<CThing>(PObjectToUse.GetPItem());
     if (PObjectToUse.GetPItem()) {
         CThing* object = PObjectToUse.GetPItem();
         CCharString name = g_DefStringTable.GetString(object->GetDefName());
-        g_pQuestManager->LastObjectUsedName = name;
+        CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().LastObjectUsedName = name;
     }
-    g_pQuestManager->ActivateQuest(ScriptName, false, LoadResources);
+    CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().ActivateQuest(ScriptName, false, LoadResources);
     Initialised = true;
 }

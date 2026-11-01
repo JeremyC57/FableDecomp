@@ -1,4 +1,6 @@
 // CWorld::AutoSaveInternal(const CWideString&, bool) -- autosave the game unless there is no live hero or an autosave is already running
+// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x004A0850, 113 bytes. PDB ?AutoSaveInternal@CWorld@@IAE_NABVCWideString@@_N@Z (protected)
 // Callees: CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetPControlledCreature 0x00487DC0, the quest manager singleton
 // 0x013B89FC IsBetweenQuestStartAndFinishScreens() 0x004AF290, CWorld::SaveGameState(const CWideString&, bool, bool)
@@ -23,10 +25,20 @@ class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
 #include "engine/CPlayerManager.h"
           // 0x00449970
 class CQuestManager { public: bool IsBetweenQuestStartAndFinishScreens() const; };   // 0x004AF290
-extern CQuestManager* g_pQuestManager;           // 0x013B89FC
 
 class CWorld : public CWorldDonor {
  public:
@@ -40,7 +52,7 @@ bool CWorld::AutoSaveInternal(const CWideString& name, bool b)
     if (hero && !hero->Dead && !AutoSaveLocked)
     {
         AutoSaveLocked = true;
-        if (g_pQuestManager->IsBetweenQuestStartAndFinishScreens())
+        if (CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().IsBetweenQuestStartAndFinishScreens())
             SaveGameState(name, true, b);
         else
             SaveGameState(name, false, b);

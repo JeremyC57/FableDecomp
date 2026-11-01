@@ -1,8 +1,10 @@
 // CTCDayOrNightOnlySupport::vfunc_6() -- on initial activation read the day/night-only suffix of the thing's section name: "DayOnly" -> 1, "NightOnly" -> 2, anything else -> 0
 // Leaf: vfunc_6
+// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00702B10, 176 bytes (plain `ret`). CTCDayOrNightOnlySupport vtable 0x01264D3C slot 6
 // (OnInitialActivate, GOTCHAS chunk 160).
-// Callees: CQuestManager::GetDayOrNightOnlyStringFromFullSectionName(const CCharString&) @ 0x004AF350 on g_pQuestManager
+// Callees: CQuestManager::GetDayOrNightOnlyStringFromFullSectionName(const CCharString&) @ 0x004AF350 on CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass
 // @ 0x013B89FC (CCharString by hidden pointer), Compare_00411570 @ 0x00411570 (`__fastcall`, the inlined CCharString equality),
 // ~CCharString @ 0x0099EAE0. Globals: g_DayOnlySuffix @ 0x013BAC18, g_NightOnlySuffix @ 0x013BAC1C (as the landed
 // GetSectionNameSuffix 0x00702AC0).
@@ -46,10 +48,20 @@ class CCharString { public:
 };
 extern CCharString g_DayOnlySuffix;                     // 0x013BAC18 "DayOnly"
 extern CCharString g_NightOnlySuffix;                   // 0x013BAC1C "NightOnly"
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
 class CQuestManager { public:
     CCharString GetDayOrNightOnlyStringFromFullSectionName(const CCharString& sectionName);   // 0x004AF350
 };
-extern CQuestManager* g_pQuestManager;                  // 0x013B89FC
 class CThing { public:
     unsigned char _pad00[0x58];
     CCharString   SerialisationSectionName;             // +0x58
@@ -64,7 +76,7 @@ class CTCDayOrNightOnlySupport { public:
 
 void CTCDayOrNightOnlySupport::vfunc_6()
 {
-    CCharString suffix = g_pQuestManager->GetDayOrNightOnlyStringFromFullSectionName(ParentThing->SerialisationSectionName);
+    CCharString suffix = CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().GetDayOrNightOnlyStringFromFullSectionName(ParentThing->SerialisationSectionName);
     if (suffix == g_DayOnlySuffix) {
         DayNightOrBoth = 1;
         return;

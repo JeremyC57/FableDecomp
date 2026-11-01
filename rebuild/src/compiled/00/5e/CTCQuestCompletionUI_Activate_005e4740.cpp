@@ -1,11 +1,13 @@
 // CTCQuestCompletionUI::Activate(CompletionType type, const CCharString& scriptName, bool arg, const CWideString& failureReason, bool canTeleport) -- open the quest-completion screen for a script: (type 3 first closes the boast UI) store the script name, failure text and teleport flag, activate against the script's active quest card, and on a type-0 completion drop the script's accepted boasts
 // Leaf: ?Activate@CTCQuestCompletionUI@@QAEXW4CompletionType@@ABVCCharString@@_NABVCWideString@@_N@Z
+// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005E4740, 277 bytes, `ret 14h`.
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (interfaces 0xE8 = CTCBoastUI and 0x6C = CTCQuestCard), CTCBoastUI::Deactivate
 //   @ 0x0056A880, CCharString::operator= @ 0x0099EFB0, CWideString::operator= @ 0x0099B7D0, Activate(CompletionType,
 //   CTCQuestCard*, bool) @ 0x005E4430, CQuestManager::GetActiveQuestCardFromScriptName(const CCharString&) @ 0x004B0C80,
 //   CCharString copy ctor @ 0x0099EC30, CQuestManager::RemoveAcceptedBoastsForScript(CCharString) @ 0x004AFFA0.
-//   g_pQuestManager @ 0x013B89FC.
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass @ 0x013B89FC.
 // Layout: Ego_r.pdb CTCQuestCompletionUI with retail containers: ScriptName +0x50 / FailureReason +0x54 (PDB -8),
 //   CanTeleportToGuildMember +0xD4 (PDB 0xE8, -0x14 after the three 12-byte maps). CThing interface bitset +0x20, map +0x44.
 // Shape: the out-parameter GetInterface for the boast UI (the key in the frame word; HasTC returns the raw masked word, a
@@ -60,12 +62,22 @@ class CTCBoastUI { public:
     void Deactivate();                                  // 0x0056A880
 };
 class CTCQuestCard;
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
 class CQuestManager { public:
     void RemoveAcceptedBoastsForScript(CCharString name);               // 0x004AFFA0
 public:
     CThing* GetActiveQuestCardFromScriptName(const CCharString&) const;   // 0x004B0C80
 };
-extern CQuestManager* g_pQuestManager;                  // 0x013B89FC
 enum CompletionType { COMPLETION_0, COMPLETION_1, COMPLETION_2, COMPLETION_3 };
 class CTCQuestCompletionUI { public:
     virtual void v00();
@@ -94,7 +106,7 @@ void CTCQuestCompletionUI::Activate(CompletionType type, const CCharString& scri
         Activate(COMPLETION_3, card, arg);
         return;
     }
-    CThing* cardThing = g_pQuestManager->GetActiveQuestCardFromScriptName(scriptName);
+    CThing* cardThing = CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().GetActiveQuestCardFromScriptName(scriptName);
     if (cardThing) {
         if (cardThing->HasTC(0x6c))
             card = cardThing->GetTC<CTCQuestCard>(0x6c);
@@ -103,7 +115,7 @@ void CTCQuestCompletionUI::Activate(CompletionType type, const CCharString& scri
         Activate(type, 0, arg);
     }
     if (type == COMPLETION_0) {
-        CQuestManager* questManager = g_pQuestManager;
+        CQuestManager* questManager = (&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get());
         questManager->RemoveAcceptedBoastsForScript(ScriptName);
     }
 }

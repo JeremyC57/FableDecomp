@@ -1,4 +1,6 @@
 // CTCCreatureGroupBoastingCrowd::OnHeroApproachBoastingArea() -- while the quest manager has boasts and the hero has not boasted yet, give the living hero the boasting tutorial (category 5) and enter crowd state 1
+// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- HasTC + the ternary GetTC model (landed 0x00584157 idiom) on a GetPItem() thing local, hero zero-initialised: the component loads straight into ecx
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00784600, length 135 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3), CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020
@@ -41,12 +43,22 @@ class CTCHero { public:                                // interface 0x29
     bool GiveTutorialForCategory(long category, bool force);   // 0x006C9FA0
 };
 struct SListNode { SListNode* next; SListNode* prev; };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
 class CQuestManager { public:
     unsigned char _pad00[0x68];
     SListNode* m_boasts;                        // +0x68 list head (retail 4-byte STLport list)
     bool BoastsEmpty() const { return m_boasts->next == m_boasts; }
 };
-extern CQuestManager* g_pQuestManager;          // 0x013B89FC
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -79,7 +91,7 @@ class CTCCreatureGroupBoastingCrowd { public:
 
 void CTCCreatureGroupBoastingCrowd::OnHeroApproachBoastingArea()
 {
-    if (!g_pQuestManager->BoastsEmpty() && !HeroBoasted) {
+    if (!CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().BoastsEmpty() && !HeroBoasted) {
         if (PHero.GetPItem() && !PHero.GetPItem()->IsDead()) {
             CTCHero* hero = 0;
             CThing* heroThing = PHero.GetPItem();

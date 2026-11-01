@@ -1,5 +1,7 @@
 // CThingManager::ActivateAfterLoading(long level) -- for every thing on the all-things list: ticks the loading progress display, and takes living, activatable things of the given level out of limbo and tells the quest manager
 // Leaf: ActivateAfterLoading
+// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0051E5A0, length 131 bytes (`ret 4`, + int3 padding).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 ("Activate After Loading" @ 0x01244E34), DisplayProgress(const CCharString&,
 // float, bool, bool) @ 0x009E9F40 (__fastcall: text in ecx, the third bool in dl, the float and fourth bool on the stack),
@@ -26,10 +28,20 @@ public:
     unsigned char m_flags93;                    // +0x93
     void SetInLimbo(bool inLimbo);              // 0x004C8CF0
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
 class CQuestManager { public:
     void OnActivateEntity(CThing* thing);       // 0x004AFA60
 };
-extern CQuestManager* g_pQuestManager;          // 0x013B89FC
 struct SThingListNode {                         // STLport list<CThing*> node
     SThingListNode* _M_next;
     SThingListNode* _M_prev;
@@ -51,7 +63,7 @@ void CThingManager::ActivateAfterLoading(long level)
         CThing* thing = node->_M_data;
         if (thing && !thing->m_dead && !(thing->m_flags93 & 0xc) && thing->m_level == level) {
             thing->SetInLimbo(false);
-            g_pQuestManager->OnActivateEntity(thing);
+            CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().OnActivateEntity(thing);
         }
     }
 }

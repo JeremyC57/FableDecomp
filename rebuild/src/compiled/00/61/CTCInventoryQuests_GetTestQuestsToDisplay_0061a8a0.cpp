@@ -1,4 +1,6 @@
 // CTCInventoryQuests::GetTestQuestsToDisplay(vector<CTestQuest>* quests) -- copies the world's test quest list sorted, and unless "show all" is set keeps only the quests the quest manager reports active
+// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail 0x0061A8A0, 304 bytes (+ int3), `ret 4`, esp frame (speed TU).
 // Callees: CTCBase::PeekWorld() const 0x00686A80, vector<CTestQuest>::operator= 0x00624A30 (manifest
 // "vector_assign_questpair"), the std::sort instantiation 0x006257C0 (__fastcall first/last + the empty comparator by
@@ -87,13 +89,23 @@ CTestQuestVector& CTestQuestVector::operator=(const CTestQuestVector& other)
     _M_end_of_storage = endOfStorage;
     return *this;
 }
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
 #pragma auto_inline(on)
 
 class CQuestManager { public:
 public:
     bool IsQuestActive(const CCharString&) const;   // 0x004AF610
 };
-extern CQuestManager* g_pQuestManager;             // 0x013B89FC
 class CWorld { public:
     unsigned char _pad_0x00[0xc4];
     CTestQuestVector TestQuests;                   // +0xc4
@@ -125,7 +137,7 @@ void CTCInventoryQuests::GetTestQuestsToDisplay(CTestQuestVector* quests)
         return;
     CTestQuestVector active;
     for (unsigned long i = 0; i < quests->size(); ++i)
-        if (g_pQuestManager->IsQuestActive((*quests)[i].QuestName))
+        if (CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().IsQuestActive((*quests)[i].QuestName))
             active.push_back((*quests)[i]);
     *quests = active;
 }

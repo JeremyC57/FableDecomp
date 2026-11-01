@@ -2,6 +2,10 @@
 // goes to well/ill wishes (7/8), otherwise to "annoyed, no boasting" (9) while the quest manager still has boasts, or
 // dies (0); the remaining opinion sources clear after 30..60 seconds
 // Leaf: OnHeroLeaveBoastingArea
+// Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 //
 // Retail 0x007846B0, 624 bytes (plain `ret`); EnterCrowdState (0x00784260) is defined in this TU and retail inlines the
 // constant-9 call.
@@ -79,14 +83,29 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
 class CQuestManager { public:
     unsigned char _pad00[0x68];
     struct SNode { SNode* next; SNode* prev; };
     SNode* BoastsNode;                                       // +0x68 (list head node)
     bool BoastsEmpty() const { return BoastsNode->next == BoastsNode; }
 };
-extern CQuestManager* g_pQuestManager;                       // 0x013B89FC
-extern long g_framesPerSecond;                               // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 class CTCBase
 {
@@ -191,14 +210,14 @@ void CTCCreatureGroupBoastingCrowd::EnterCrowdState(long state)
 void CTCCreatureGroupBoastingCrowd::OnHeroLeaveBoastingArea()
 {
     if (HeroBoasted) {
-        long fps = g_framesPerSecond;
+        long fps = CMainGameComponent::GetConstantFPS();
         float delay = (GFFloatRandom(0.5f, GetPWorldSeed()) + 0.5f) * fps * 60.0f;
         FrameToClearRemainingOpinionSources = (long)(CWorld::GetFrame() + delay);
         EnterCrowdState(HeroMadeGoodBoast ? 7 : 8);
         return;
     }
-    if (!g_pQuestManager->BoastsEmpty()) {
-        long fps = g_framesPerSecond;
+    if (!CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().BoastsEmpty()) {
+        long fps = CMainGameComponent::GetConstantFPS();
         float delay = (GFFloatRandom(0.5f, GetPWorldSeed()) + 0.5f) * fps * 60.0f;
         FrameToClearRemainingOpinionSources = (long)(CWorld::GetFrame() + delay);
         EnterCrowdState(9);

@@ -1,8 +1,10 @@
 // CThingManager::SaveThingsOnLevelReadyForUnloading(long mapNumber, bool savePersistent, vector<CThing*>* toDelete) -- for every thing on the unloading map: park it in limbo, or queue it for deletion and save its persistent state
+// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005252B0, length 310 bytes (+ int3 padding), `ret 0Ch`.
 // Callees: CThing virtual slot 42 (+0xa8, the limbo preparation, vtable 0x01239ABC slot 42 = 0x004CD280),
 // CThing::SetInLimbo(bool) @ 0x004C8CF0, CQuestManager::OnDeactivateEntity(CThing*, bool) @ 0x004AFB00 on
-// g_pQuestManager @ 0x013B89FC, vector<CThing*>::push_back @ 0x00436C80 (out of line, landed as the 4-byte-element
+// CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass @ 0x013B89FC, vector<CThing*>::push_back @ 0x00436C80 (out of line, landed as the 4-byte-element
 // push_back), CThing::IsGameStatePersisted @ 0x004C8280, CThing::IsLevelPersistent @ 0x004C82A0, the persistent-state
 // writer @ 0x005239C0 (catalog "Thing_SavePersistentState"), free @ 0x00BFEA14 (the two local vectors' storage).
 // Layout: CThing (retail = Ego_r.pdb - 0x10): CurrentMapNumber +0x8e; bits +0x91 Dead(0) GloballyLoaded(4) InLimbo(5);
@@ -90,11 +92,21 @@ public:
     bool IsLevelPersistent() const;   // 0x004C82A0
 };
 
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
 class CQuestManager {
 public:
     void OnDeactivateEntity(CThing* thing, bool deactivate);   // 0x004AFB00
 };
-extern CQuestManager* g_pQuestManager;                         // 0x013B89FC
 
 struct SThingListNode {
     SThingListNode* _M_next;
@@ -132,7 +144,7 @@ void CThingManager::SaveThingsOnLevelReadyForUnloading(long mapNumber, bool save
         if (!thing->KillOnLevelUnload) {
             thing->PrepareForLimbo();
             thing->SetInLimbo(true);
-            g_pQuestManager->OnDeactivateEntity(thing, true);
+            CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().OnDeactivateEntity(thing, true);
         } else if (!thing->GloballyLoaded && (thing->PersistOnUnloadWhenInLimbo || !thing->InLimbo)
                    && thing->DeletedOnOwnerLevelOutOfScope) {
             toDelete->push_back(thing);

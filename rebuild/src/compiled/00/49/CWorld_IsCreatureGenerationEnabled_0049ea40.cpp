@@ -1,4 +1,6 @@
 // CWorld::IsCreatureGenerationEnabled(const CThing&) const -- may this creature generator spawn now?
+// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x0049EA40, 126 bytes. PDB ?IsCreatureGenerationEnabled@CWorld@@QBE_NABVCThing@@@Z
 // Callees: the quest manager singleton 0x013B89FC: IsCreatureGenerationEnabled() 0x004AFC60 (label
 // "COptimisedPrimitive::DetectFoldOver" is a propagation), IsActiveQuestInRegion(const CRegion&) 0x004AFDD0 (label
@@ -17,13 +19,23 @@ class CRegion { public:
     bool          CreatureGenerationFlag;          // +0x55 (unnamed)
 };
 
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
 class CQuestManager { public:
     bool IsCreatureGenerationEnabled() const;      // 0x004AFC60
     bool IsActiveQuestInRegion(const CRegion& region) const;   // 0x004AFDD0
 public:
     bool IsQuestActive(const CCharString&) const;   // 0x004AF610
 };
-extern CQuestManager* g_pQuestManager;             // 0x013B89FC
 
 class CWorldMap { public:
     long GetLoadedRegion() const;                  // 0x004FB150
@@ -56,13 +68,13 @@ class CWorld { public:
 
 bool CWorld::IsCreatureGenerationEnabled(const CThing& thing) const
 {
-    if (CreatureGenerationEnabled && g_pQuestManager->IsCreatureGenerationEnabled())
+    if (CreatureGenerationEnabled && CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().IsCreatureGenerationEnabled())
     {
         const CRegion& region = PeekWorldMap()->GetRegion(PeekWorldMap()->GetLoadedRegion());
-        if (region.CreatureGenerationFlag && !g_pQuestManager->IsActiveQuestInRegion(region))
+        if (region.CreatureGenerationFlag && !CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().IsActiveQuestInRegion(region))
             return true;
     }
-    if (g_pQuestManager->IsQuestActive(thing.SerialisationSectionName))
+    if (CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().IsQuestActive(thing.SerialisationSectionName))
         return true;
     const CThingBaseDef* def = thing.PBaseDef;
     if (def && def->CreatureGenerationBit)

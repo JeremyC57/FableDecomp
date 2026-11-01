@@ -1,10 +1,12 @@
 // CGameScriptThing::MsgWhoKilledMe() const -- the script thing of whoever originated the most recent "killed" message (type 9) aimed at this thing, when that originator is still a live thing; otherwise the null script thing
 // Leaf: MsgWhoKilledMe
+// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D0610, 161 bytes, `ret 4` (the hidden CScriptThing result).
 // Callees: CMessageEventManager::FindMostRecentMessage<CFilter_Bind2<IsOfType, IsTargettedAtThing>> @ 0x008D46D0 (its
 //   label names the CanBeSeenOrHeard instantiation), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3),
 //   CThing::GetScriptThing @ 0x004C7E50 (result pointer passed straight through), CGameScriptThingManager::
-//   GetNullScriptThing @ 0x00704730 (landed) through g_pQuestManager (0x013B89FC) ->PGameScriptThingManager (+4).
+//   GetNullScriptThing @ 0x00704730 (landed) through CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (0x013B89FC) ->PGameScriptThingManager (+4).
 // Layout: engine/CGameScriptThing.h (ThingUID +0x18, World +0x44), engine/CWorld.h (PMessageEventManager_Data +0x60);
 //   CMessageEvent (Ego_r.pdb, 0x58 bytes) POriginator +0x48; CThing retail ThingTypeFlags +0x6c and the Dead bit at
 //   +0x91 (landed CThingSearchTools models).
@@ -70,12 +72,22 @@ class CMessageEventManager { public:
 class CGameScriptThingManager { public:
     CScriptThing GetNullScriptThing();             // 0x00704730
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
 class CQuestManager { public:
     void*                    _vftable;
     CGameScriptThingManager* PGameScriptThingManager;   // +0x04 CCountedPointer<CGameScriptThingManager>::Data
     CGameScriptThingManager* GetGameScriptThingManager() const { return PGameScriptThingManager; }
 };
-extern CQuestManager* g_pQuestManager;             // 0x013B89FC
 
 struct CGameScriptThingMethods : CGameScriptThing {
     CScriptThing MsgWhoKilledMe() const;
@@ -94,5 +106,5 @@ CScriptThing CGameScriptThingMethods::MsgWhoKilledMe() const
                 return killer->GetScriptThing();
         }
     }
-    return g_pQuestManager->GetGameScriptThingManager()->GetNullScriptThing();
+    return CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().GetGameScriptThingManager()->GetNullScriptThing();
 }

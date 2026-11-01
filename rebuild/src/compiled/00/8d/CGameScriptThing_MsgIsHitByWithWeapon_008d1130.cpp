@@ -1,5 +1,7 @@
 // CGameScriptThing::MsgIsHitByWithWeapon(const CCharString& attackerScriptName, const CCharString& weaponDefName) const -- whether the live thing got a hit event (TC 0x42) since the running quest script's last frame from a thing with that script name, with the named weapon (by global def index) or, for "NO_WEAPON", with no weapon
 // Leaf: MsgIsHitByWithWeapon
+// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Shape: the two GetEvent<CEventHitBy, Bind4 filter> instantiations get same-TU out-only stand-in bodies (template members
 //   compiled in the caller's TU), so the event out pointer does not escape and VC7.1 packs it into the spilled
 //   events/key word as retail (frame 0x1c).
@@ -74,8 +76,18 @@ struct PointerView {                                    // CIntelligentPointer<C
 };
 struct ScriptBaseNative { unsigned char Containers[0x2c]; CSpawnedFuncBase* PActiveThread; };
 struct ActiveQuest { unsigned char State[8]; ScriptBaseNative* Script; };
-struct QuestManagerNative { unsigned char State[0x88]; ActiveQuest* PQuestCurrentlyRunning; };
-extern QuestManagerNative* g_pQuestManager;             // 0x013B89FC
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
+class CQuestManager { public: unsigned char State[0x88]; ActiveQuest* PQuestCurrentlyRunning; };
 __forceinline long LastFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->LastScriptFrame : 0; }
 __forceinline long CurrentFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->CurrentScriptFrame : 0; }
 struct CEventHitBy;                                     // NEntityEvents::CEventHitBy
@@ -143,8 +155,8 @@ bool CGameScriptThingMethods::MsgIsHitByWithWeapon(const CCharString& attackerSc
             const ComponentEntry* it = map->LowerBound((ETCInterfaceType)0x42);
             const ComponentEntry* end = map->Finish;
             const CTCEntityEventsNative* events = (const CTCEntityEventsNative*)((void*)((it == end || it->first > 0x42) ? end : it)->second);
-            long last = LastFrame(g_pQuestManager->PQuestCurrentlyRunning);
-            long current = CurrentFrame(g_pQuestManager->PQuestCurrentlyRunning);
+            long last = LastFrame(CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().PQuestCurrentlyRunning);
+            long current = CurrentFrame(CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().PQuestCurrentlyRunning);
             if (weaponDefName == "NO_WEAPON") {
                 if (HasHitFor(events, attackerScriptName, CEventFilter_HitEventWithNoWeapon(false), current, last))
                     return true;

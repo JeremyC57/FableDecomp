@@ -1,8 +1,10 @@
 // CGameScriptInterface::GiveHeroQuestCardDirectly(const CCharString& cardDefName, const CCharString& questName, bool silent) const -- create the named quest-card object at the hero, name its quest and activate it; tell the hero through the guild master unless silent or a vignette; kill the card when it cannot be activated
+// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008968C0, length 364 bytes (`ret 0Ch`).
 // Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0,
 //   CQuestManager::IsQuestCardActive(const CCharString&) @ 0x004AF560 and ActivateQuestCard(CThing*, bool) @ 0x004B4AA0
-//   on g_pQuestManager (0x013B89FC), CGameDefinitionManager::Get @ 0x0044C6B0 (static __fastcall),
+//   on CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (0x013B89FC), CGameDefinitionManager::Get @ 0x0044C6B0 (static __fastcall),
 //   CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410, CThing::GetPos @ 0x004C73D0,
 //   CThingObject::Create @ 0x00703210 (static __fastcall), the component map LowerBound @ 0x0040F020,
 //   CCharString ctor/dtor/operator= @ 0x0099EBF0 / 0x0099EAE0 / 0x0099EFB0, CTCQuestCard::IsVignette @ 0x007022E0,
@@ -64,13 +66,23 @@ class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
 #include "engine/CPlayerManager.h"
     // 0x00449970
 class CQuestManager { public:
     bool IsQuestCardActive(const CCharString& name);    // 0x004AF560
     bool ActivateQuestCard(CThing* card, bool b);       // 0x004B4AA0
 };
-extern CQuestManager* g_pQuestManager;                  // 0x013B89FC
 class CDefinitionManager
 {
 public:
@@ -100,7 +112,7 @@ void CGameScriptInterface::GiveHeroQuestCardDirectly(const CCharString& cardDefN
     CThing* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (!hero || (hero->m_deadFlags & 1))
         return;
-    if (g_pQuestManager->IsQuestCardActive(cardDefName))
+    if (CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().IsQuestCardActive(cardDefName))
         return;
     long index = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(cardDefName);
     if (index <= 0)
@@ -116,7 +128,7 @@ void CGameScriptInterface::GiveHeroQuestCardDirectly(const CCharString& cardDefN
         CTCQuestCard* tc = (CTCQuestCard*)card->m_tcs.Find(0x6c);
         if (tc) {
             tc->QuestName = questName;
-            if (g_pQuestManager->ActivateQuestCard(card, true)) {
+            if (CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().ActivateQuestCard(card, true)) {
                 if (!silent && !tc->IsVignette()) {
                     CCharString orb("HUD_ORB_QUEST_CORE");
                     CCharString message("TEXT_QST_078_GM_MSG_NEW_QUEST_CARD");

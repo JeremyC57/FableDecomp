@@ -4,6 +4,9 @@
 // zeroes it); while the quest-persistent ref count is unset (-1, or no data yet), an analogue-loading weapon (0x1a) marks the
 // item quest-persistent unless the quest manager is between start and finish screens, and resets the ref count to 0
 // Leaf: UpdateItemStats
+// Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
+// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005BEDCB, 574 bytes; size-optimised frame-pointer TU (`push 48h ; pop esi`, `leave`).
 // Callees: std::bitset::test 0x00410DE0, CVectorMap::LowerBound 0x004365B0 (const overload; the second copy of 0x0040F020),
 //   operator new 0x00BFEA1A, CPerItemData ctor 0x005C14A6, CCountedPointer<CPerItemData>::Reset 0x005C1946 (the landed
@@ -21,9 +24,12 @@
 #pragma optimize("s", on)
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
 class CTCBase;
-struct CPresenceBits {
-    bool test(long bit);                   // 0x00410DE0 (std::bitset::test)
+namespace std {                                                       // STLport 4.6 <bitset>: _Base_bitset<9> words + bitset<274>
+template <unsigned int _Nb> class bitset { public:
+    // the row lays the 9 words (36 bytes) out itself: the stand-in was an empty class
+    bool test(unsigned int __pos) const;                            // 0x00410DE0 ?test@?$bitset@$0BBC@@std@@QBE_NI@Z
 };
+}
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
 template <class K, class V> class CKeyPairCompareLess;
@@ -72,7 +78,7 @@ class CTCTrophy { public:
 };
 class CThing { public:
     unsigned char _pad0[0x20];
-    CPresenceBits m_present;               // +0x20
+    std::bitset<274> m_present;               // +0x20
     unsigned char _pad1[0x23];
     CInterfaceMap m_interfaces;            // +0x44
     template <class T> __forceinline bool GetInterface(T** out, long interfaceType)
@@ -87,11 +93,21 @@ class CThing { public:
         return false;
     }
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
 class CQuestManager { public:
 public:
     bool IsBetweenQuestStartAndFinishScreens() const;   // 0x004AF290
 };
-extern CQuestManager* g_pQuestManager;     // 0x013B89FC
 extern float g_lastFishWeight;             // 0x013BAE80
 
 struct CItem {
@@ -133,7 +149,7 @@ void CItem::UpdateItemStats(CThing* thing)
         CTCWeapon* loader;
         if (thing->GetInterface(&loader, 0x1a) && loader && loader->IsAnalogueLoading_005d9270()) {
             EnsurePerItemData();
-            if (g_pQuestManager->IsBetweenQuestStartAndFinishScreens())
+            if (CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().IsBetweenQuestStartAndFinishScreens())
                 PPerItemData.Data->QuestPersistent = false;
             else
                 PPerItemData.Data->QuestPersistent = true;

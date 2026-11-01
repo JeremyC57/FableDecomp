@@ -1,5 +1,9 @@
 // CThing::OnInitialActivate() -- tell the quest manager, advance the initialisation stage, activate every component, and join the render list if drawable
 // Leaf: ?OnInitialActivate@CThing
+// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C97B0, 137 bytes (+7 int3). __fastcall virtual (CThing vtable 0x01239ABC slot 10), `ret`.
 // Callees: CQuestManager::OnActivateEntity(CThing*) 0x004AFA60 on the global 0x013B89FC; the component vector's copy ctor
 //          0x004CC290 (catalog "Vector_CopyFrom"); each component's CTCBase::OnInitialActivate (slot 6, +0x18); CThing slot 27
@@ -21,14 +25,23 @@ public:
     bool ToBeRemoved;                            // +0x08
     bool IsInGlobalUpdateTCs;                    // +0x09
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
 class CQuestManager { public:
     void OnActivateEntity(CThing* thing);        // 0x004AFA60
 };
-extern CQuestManager* g_pQuestManager;           // 0x013B89FC
 class CThingManager { public:
     void AddToRenderList(CThing* thing);         // 0x0051DF80
 };
-extern CThingManager* g_pThingManager;           // 0x013B8A1C
 struct CInterfaceEntry { long type; CTCBase* component; };
 struct CInterfaceVector {                        // CVectorMap: STLport vector<pair<ETCInterfaceType, CTCBase*> > + comparator
     CInterfaceEntry* _M_start;
@@ -53,6 +66,11 @@ __declspec(noinline) CInterfaceVector::CInterfaceVector(const CInterfaceVector& 
 }
 #pragma auto_inline(on)
 class CThing {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private:
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
@@ -68,7 +86,7 @@ public:
 };
 void CThing::OnInitialActivate()
 {
-    g_pQuestManager->OnActivateEntity(this);
+    CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().OnActivateEntity(this);
     InitialisationStage++;
     CInterfaceVector components(Components);
     for (CInterfaceEntry* it = components.begin(); it != components.end(); ++it) {
@@ -77,5 +95,5 @@ void CThing::OnInitialActivate()
             component->OnInitialActivate();
     }
     if (DrawIsDrawable())
-        g_pThingManager->AddToRenderList(this);
+        CThing::GetPCurrentThingManager()->AddToRenderList(this);
 }

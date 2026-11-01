@@ -1,4 +1,8 @@
 // CTCHeroExperience::AddExperience(long) -- scales the amount by the pickup multiplier, books it, clamps the spendable pool, may give the experience tutorial, queues a pickup display entry and reports the stat and scoreboard
+// Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
+//   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006D77C0, 407 bytes (+ int3 padding), `ret 4`.
 // Callees: __ftol2 0x00BFEA70, CTCBase::GetDefinitionManager 0x006869D0 (twice: +0xDC hero-stats def, MaximumExpToSpend +0x60,
 // ExpToSpendAtWhichToDisplayTutorial +0x64 = PDB - 4), CQuestManager::IsBetweenQuestStartAndFinishScreens 0x004AF290 on the
@@ -18,7 +22,12 @@
 #include <stddef.h>
 
 extern "C" void* __cdecl malloc(size_t size);       // 0x00BFEA0E
-extern long g_FramesPerSecond;                      // 0x01375550
+class CMainGameComponent {
+protected:
+    static long ConstantFPS;                             // 0x01375550 ?ConstantFPS@CMainGameComponent@@1JA (protected static)
+public:
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // Ego_r / FableWin ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+};
 
 template <class T> __forceinline void GFLimitHigh(T& value, const T& hi)
 {
@@ -61,8 +70,18 @@ class CThingCreatureBase : public CThing { public:
     bool IsInMelee() const;                     // 0x00661E80
 };
 
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
 class CQuestManager { public: bool IsBetweenQuestStartAndFinishScreens() const; };   // 0x004AF290
-extern CQuestManager* g_pQuestManager;          // 0x013B89FC
 
 class CTCHero { public: bool GiveTutorialForCategory(long category, bool force); };   // 0x006C9FA0
 class CTCHeroStats { public: void AddHeroStatExperience(long category, long amount); };   // 0x0057A8DA
@@ -173,13 +192,13 @@ void CTCHeroExperience::AddExperience(long amount)
     ExperiencePointsAvailableToSpend += added;
     GFLimitHigh(ExperiencePointsAvailableToSpend, GetDefinitionManager().PHeroStatsDef->MaximumExpToSpend);
     if (ExperiencePointsAvailableToSpend > GetDefinitionManager().PHeroStatsDef->ExpToSpendAtWhichToDisplayTutorial
-        && !g_pQuestManager->IsBetweenQuestStartAndFinishScreens()
+        && !CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().IsBetweenQuestStartAndFinishScreens()
         && !((CThingCreatureBase*)ParentThing)->IsInMelee()) {
         CTCHero* hero;
         if (ParentThing->GetInterface(&hero, 0x29))
             hero->GiveTutorialForCategory(0x18, false);
     }
-    Pickups.push_back(SPickup((long)(g_FramesPerSecond * 2.0f), added));
+    Pickups.push_back(SPickup((long)(CMainGameComponent::GetConstantFPS() * 2.0f), added));
     CTCHeroStats* stats;
     ParentThing->GetInterface(&stats, 4);
     stats->AddHeroStatExperience(3, added);

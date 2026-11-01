@@ -15,7 +15,16 @@ class CQuestManager
         unsigned long delay);
 };
 
-CQuestManager* FableGlobalQuestManager;
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; T& operator*() const { return *Data; } };
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the source reads the private static PClass through Get()
+    static CCountedPointer<T> PClass;
+public:
+    static T& __fastcall Get() { return *PClass; }
+    static void __fastcall Set(T* p) { PClass.Data = p; PClass.Info = 0; }   // ?Set@...@SIXPAVCQuestManager@@@Z
+};
+template <class T> CCountedPointer<T> CTBaseSingletonNoDefaultAlloc<T>::PClass;
+template class CTBaseSingletonNoDefaultAlloc<CQuestManager>;
 
 static CQuestManager* g_seenManager;
 static const CCharString* g_seenQuestName;
@@ -44,7 +53,7 @@ static int RunCase(
     const CCharString& questName,
     unsigned long delay)
 {
-    FableGlobalQuestManager = &manager;
+    CTBaseSingletonNoDefaultAlloc<CQuestManager>::Set(&manager);
     g_seenManager = 0;
     g_seenQuestName = 0;
     g_seenDelay = 0;

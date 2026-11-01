@@ -16,6 +16,8 @@
 // Layout (retail): ActiveTestQuestMode +0x157, TestQuestSelectedIndex +0x158 (Ego_r.pdb names, 0x20 below the PDB);
 // CTestQuest QuestName +0x00, IniFile +0x10, OutiFile +0x14.
 // Leaf: ActivateSelectedTestQuest
+// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 typedef unsigned short wchar_t;                    // VC7.1 without /Zc:wchar_t
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
@@ -58,13 +60,23 @@ struct CTestQuestVector {                          // vector<CTestQuest> (12 byt
     }
     CTestQuest& operator[](unsigned long n) { return *(_M_start + n); }
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
 class CQuestManager { public:
     void DeactivateQuest(const CCharString& name, unsigned long reason);        // 0x004B43D0
     void ClearQuestPersistScript(const CCharString& name);                     // 0x004B39B0
     bool ActivateTestQuestCard(const CCharString& name, const CCharString& cardDefName);   // 0x004B4C50
     void ActivateQuest(const CCharString& name, bool a, bool b);               // 0x004B4A10
 };
-extern CQuestManager* g_pQuestManager;             // 0x013B89FC
 class CWorld { public:
     void LoadQuestHSP(const CCharString& hspName);  // 0x004A0940
 };
@@ -123,11 +135,11 @@ void CTCInventoryQuests::ActivateSelectedTestQuest()
         if (CAFile::PathExists(path))
             CConsole::Get()->RunScript(path);
     }
-    g_pQuestManager->DeactivateQuest(quest.QuestName, 0);
-    g_pQuestManager->ClearQuestPersistScript(quest.QuestName);
+    CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().DeactivateQuest(quest.QuestName, 0);
+    CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().ClearQuestPersistScript(quest.QuestName);
     GetWorld().LoadQuestHSP(quest.HSPName);
     if (quest.QuestCardDefName != "")
-        g_pQuestManager->ActivateTestQuestCard(quest.QuestName, quest.QuestCardDefName);
+        CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().ActivateTestQuestCard(quest.QuestName, quest.QuestCardDefName);
     else
-        g_pQuestManager->ActivateQuest(quest.QuestName, true, true);
+        CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().ActivateQuest(quest.QuestName, true, true);
 }

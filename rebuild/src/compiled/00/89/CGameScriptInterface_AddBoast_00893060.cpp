@@ -1,3 +1,5 @@
+// Naming wave 18: the global stand-in DAT_013b89fc (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 class CCharStringData
 { public:
     char m_Pad00[0x04];
@@ -14,6 +16,17 @@ public:
     ~CCharString();
 };
 
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
 class CQuestManager
 {
 public:
@@ -40,7 +53,6 @@ public:
         long value4) const;
 };
 
-extern CQuestManager* DAT_013b89fc;
 
 struct BoastEntryOverlay
 {
@@ -73,7 +85,7 @@ void CGameScriptInterface::AddBoast(
     long value4) const
 {
     const QuestManagerBoastOverlay* const managerOverlay =
-        reinterpret_cast<const QuestManagerBoastOverlay*>(DAT_013b89fc);
+        reinterpret_cast<const QuestManagerBoastOverlay*>((&CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get()));
 
     BoastEntryOverlay* boastEntry = managerOverlay->m_pCurrentBoastEntry;
     if (boastEntry == 0)
@@ -93,7 +105,7 @@ void CGameScriptInterface::AddBoast(
         resolvedQuestName = boastEntry->m_QuestName;
     }
 
-    DAT_013b89fc->AddBoast(
+    CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().AddBoast(
         resolvedQuestName,
         boastName,
         value1,

@@ -1,10 +1,12 @@
 // CTCInventoryQuests::vfunc_70() -- take the selected quest card: when the screen allows it and has cards, activate the selected category's card with the quest manager (as a feat card when it has a feat index, else as a quest card), drop it from the trading thing's hero centre and rebuild the card list
+// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006223C0, length 242 bytes (+ int3 padding), bool in al. Vtable 0x012585B4
 // (CTCInventoryQuests) slot 70 (catalog "CTCInventoryQuests::vfunc_70"; the PDB name of the slot is not established).
 // Callees: own virtual slot 75 (+0x12C, a bool gate; name descriptive), CTCInventoryBase::GetSelectedCategoryIndex @ 0x005BC4B2,
 // GetCategoryWithIndex(long) @ 0x005BCE3C, CCategory::GetAssociatedThing @ 0x005BD1AE, the component-map LowerBound const @
 // 0x004365B0 / non-const @ 0x0040F020, CQuestManager::ActivateFeatCard(CThing*) @ 0x004B1590 / ActivateQuestCard(CThing*,
-// bool) @ 0x004B4AA0 on g_pQuestManager (0x013B89FC), CTCInventoryBase::GetTradingThing() @ 0x005BC4C4,
+// bool) @ 0x004B4AA0 on CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass (0x013B89FC), CTCInventoryBase::GetTradingThing() @ 0x005BC4C4,
 // CTCHeroCentre::RemoveQuestCard(CThing*) @ 0x0077D400, CTCInventoryQuests::InitialiseQuestCardList() @ 0x00621A20.
 // Shape: the component pointers are the landed GetTCIfPresent form (left unset when the thing lacks the component: retail
 // reads the lookup-key word), TC 0x6C (quest card, UsingComponents[3] bit 12, const lookup) and TC 0x6A (hero centre,
@@ -66,11 +68,21 @@ class CTCQuestCard { public:
 class CTCHeroCentre { public:
     void RemoveQuestCard(CThing* card);         // 0x0077D400
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
 class CQuestManager { public:
     bool ActivateFeatCard(CThing* card);                    // 0x004B1590
     bool ActivateQuestCard(CThing* card, bool fromScript);  // 0x004B4AA0
 };
-extern CQuestManager* g_pQuestManager;          // 0x013B89FC
 namespace NInventory {
 class CCategory { public:
     CThing* GetAssociatedThing();               // 0x005BD1AE
@@ -103,9 +115,9 @@ bool CTCInventoryQuests::vfunc_70()
             CTCQuestCard* questCard = (CTCQuestCard*)GetTCIfPresentConst(card, 0x6c);
             if (questCard) {
                 if (questCard->FeatIndex > -1) {
-                    if (!g_pQuestManager->ActivateFeatCard(card))
+                    if (!CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().ActivateFeatCard(card))
                         return false;
-                } else if (!g_pQuestManager->ActivateQuestCard(card, false)) {
+                } else if (!CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().ActivateQuestCard(card, false)) {
                     return false;
                 }
                 CThing* trader = GetTradingThing();

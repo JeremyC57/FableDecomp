@@ -1,5 +1,9 @@
 // CThing::OnKill() -- tell the quest manager the thing is deactivated (passing whether its level is unloading), call OnKill on every component with component adds forbidden, then notify the thing manager of the kill
 // Leaf: ?OnKill@CThing@@
+// Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
+//   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
+// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C7CF0, 90 bytes. CThing vtable 0x01239ABC slot 12.
 // Callees: CQuestManager::OnDeactivateEntity(CThing*, bool) @ 0x004AFB00 on the quest manager @ 0x013B89FC;
 // for_each<pair<ETCInterfaceType, CTCBase*>*, CCallOnKill> @ 0x004CB9F0 (SGI algorithm built /Gr: first in ecx,
@@ -23,6 +27,17 @@ class CCallOnKill { public:                                 // empty functor: p.
 
 CCallOnKill __fastcall for_each(SComponentPair* first, SComponentPair* last, CCallOnKill f);   // 0x004CB9F0
 
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
 class CQuestManager { public:
     void OnDeactivateEntity(CThing* thing, bool levelUnloading);   // 0x004AFB00
 };
@@ -31,10 +46,13 @@ class CThingManager { public:
     void OnThingKill(CThing* thing);                 // 0x00520C80
 };
 
-extern CQuestManager* g_pQuestManager;              // 0x013B89FC
-extern CThingManager* g_pThingManager;              // 0x013B8A1C
 
-class CThing { public:
+class CThing {
+private:
+    static CThingManager* PCurrentThingManager;      // 0x013B8A1C ?PCurrentThingManager@CThing@@0PAVCThingManager@@A (private static)
+public:
+    static CThingManager* __fastcall GetPCurrentThingManager() { return PCurrentThingManager; }   // Ego_r / FableWin ?GetPCurrentThingManager@CThing@@SIPAVCThingManager@@XZ (inline)
+private: public:
     unsigned char   m_pad00[0x44];
     SComponentPair* m_componentsFirst;               // +0x44  Components (CVectorMap)
     SComponentPair* m_componentsLast;                // +0x48
@@ -52,9 +70,9 @@ class CThing { public:
 
 void CThing::OnKill()
 {
-    g_pQuestManager->OnDeactivateEntity(this, LevelIsUnloading);
+    CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().OnDeactivateEntity(this, LevelIsUnloading);
     AddingTCsPermitted = false;
     for_each(m_componentsFirst, m_componentsLast, CCallOnKill());
     AddingTCsPermitted = true;
-    g_pThingManager->OnThingKill(this);
+    CThing::GetPCurrentThingManager()->OnThingKill(this);
 }

@@ -14,6 +14,8 @@
 // Layout (retail): ActiveTestQuestMode +0x157, TestQuestSelectedIndex +0x158 (Ego_r.pdb names, 0x20 below the PDB);
 // CTestQuest QuestName +0x00, IniFile +0x10, OutiFile +0x14.
 // Leaf: DeactivateSelectedTestQuest
+// Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
+//   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 typedef unsigned short wchar_t;                    // VC7.1 without /Zc:wchar_t
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
@@ -56,12 +58,22 @@ struct CTestQuestVector {                          // vector<CTestQuest> (12 byt
     }
     CTestQuest& operator[](unsigned long n) { return *(_M_start + n); }
 };
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
+    T* Data;
+    CCPPointerInfo* Info;
+    T& operator*() const { return *Data; }
+};
+template <class T> class CTBaseSingletonNoDefaultAlloc {              // the CRTP singleton base of CQuestManager
+    static CCountedPointer<T> PClass;                                // 0x013B89FC ?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A (private static)
+public:
+    static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
+};
 class CQuestManager { public:
     bool SetQuestAsCompleted(const CCharString& name, bool a, bool b, bool c);   // 0x004B1D30
     bool OnQuestFinishScreenDisplayed(const CCharString& name);                 // 0x004B0160
     void DeactivateQuest(const CCharString& name, unsigned long reason);        // 0x004B43D0
 };
-extern CQuestManager* g_pQuestManager;             // 0x013B89FC
 extern bool g_bQuestFinishScreensEnabled;          // 0x01375741 (descriptive)
 class CConsole {
 public:
@@ -101,10 +113,10 @@ void CTCInventoryQuests::DeactivateSelectedTestQuest()
     CTestQuestVector quests;
     GetTestQuestsToDisplay(&quests);
     CTestQuest& quest = quests[TestQuestSelectedIndex];
-    g_pQuestManager->SetQuestAsCompleted(quest.QuestName, false, false, false);
+    CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().SetQuestAsCompleted(quest.QuestName, false, false, false);
     if (g_bQuestFinishScreensEnabled)
-        g_pQuestManager->OnQuestFinishScreenDisplayed(quest.QuestName);
-    g_pQuestManager->DeactivateQuest(quest.QuestName, 0);
+        CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().OnQuestFinishScreenDisplayed(quest.QuestName);
+    CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().DeactivateQuest(quest.QuestName, 0);
     if (quest.OutiFile != "") {
         CWideString path = ("Data\\Levels\\Ini\\" + quest.OutiFile).ToWideString();
         if (CAFile::PathExists(path))
