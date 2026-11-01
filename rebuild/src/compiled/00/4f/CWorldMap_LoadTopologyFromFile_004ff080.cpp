@@ -1,6 +1,8 @@
 // CWorldMap::LoadTopologyFromFile(long, CCountedPointer<CAFile>, CASuspendableProcess&) -- build the map object from its topology file, record the map as loaded, step the suspendable process and rebuild the map edges
 // before the pushes and reads file.Data after the first push; ours loads process/file.Data first (eax/edx) and Maps.Start late
-// Leaf: LoadTopologyFromFile
+// Leaf: ?LoadTopologyFromFile@CWorldMap@@UAEXJV?$CCountedPointer@VCAFile@@@@AAVCASuspendableProcess@@@Z
+// Naming wave 27 (family virt, DECISIONS_W26 D5): LoadTopologyFromFile is virtual in both PDBs (UAE; slot 6 of vtable 0x01244AEC), so
+//   the vptr is the compiler's. Was a non-virtual (QAE) over a `void* _vptr` member.
 // Naming wave 26 (family vlong): the vector is STLport 4.6 std::vector<long, allocator<long> >; its grow-insert 0x00440990 is the
 //   protected ?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@std@@IAEXPAJABJABU__true_type@2@I_N@Z (size_type unsigned int; the
 //   own row's spelling, c689 queue). Was CLongVector::_M_insert_overflow(..., const __true_type&, unsigned long, bool).
@@ -133,8 +135,7 @@ template <class T> class CArray { public:
     T& operator[](unsigned long i) { return *(_SweepBegin1() + i); }
 };
 
-class CWorldMap { public:
-    void*            _vptr;                                  // +0x00
+class CWorldMap { public:                                   // vptr +0x00 (vtable 0x01244AEC)
     long             f4;                                     // +0x04
     CWorld*          World;                                  // +0x08
     unsigned char    _pad0c[0x14];
@@ -145,7 +146,7 @@ protected:
     void UpdateAllEdges();                                   // 0x0063DFD0
 public:
     const CGameDefinitionManager& WorldDefinitionManager() const { return *World->DefinitionManager; }
-    void LoadTopologyFromFile(long map, CCountedPointer<CAFile> file, CASuspendableProcess& process);
+    virtual void LoadTopologyFromFile(long map, CCountedPointer<CAFile> file, CASuspendableProcess& process);   // slot 6
 };
 
 void CWorldMap::LoadTopologyFromFile(long map, CCountedPointer<CAFile> file, CASuspendableProcess& process)
