@@ -73,8 +73,6 @@ class CSubDefClassBase : public CDefClassBase {         // vtable 0x01231D54, Eg
 class CPersistContext {
 public:
     void Transfer(std::map<CCharString, long >& value);          // 0x00431493
-    void Transfer(float& value);                                 // 0x00431061
-    void Transfer(long& value);                                  // 0x00431102
     void Transfer(CDefString& value);                            // 0x0045228F
     template <class T> void Transfer(T& value);              // enum instances: ETrapTriggerType 0x004E5DA4, ETrapType 0x004E5E48
 };

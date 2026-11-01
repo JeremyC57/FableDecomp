@@ -65,9 +65,6 @@ class CSubDefClassBase : public CDefClassBase {         // vtable 0x01231D54, Eg
 #pragma pack(pop)
 class CPersistContext {
 public:
-    void Transfer(float& value);                                 // 0x00431061
-    void Transfer(long& value);                                  // 0x00431102
-    void Transfer(bool& value);                                  // 0x0043314A
     void Transfer(std::vector<CExplosionRing >& value);          // 0x004EB17A
     template <class T> void Transfer(T& value);              // enum instances: EQuakeStrength 0x004EB102, EQuakeLength 0x004EB13E
 };

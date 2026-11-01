@@ -43,9 +43,7 @@ class CSubDefClassBase : public CDefClassBase {         // vtable 0x01231D54, Eg
 #pragma pack(pop)
 class CPersistContext {
 public:
-    void Transfer(float& value);                                 // 0x00431061
-    void Transfer(long& value);                                  // 0x00431102
-    void Transfer(unsigned long& value);                         // 0x00431020
+    template <class T> void Transfer(T& value);              // ??$Transfer@J@CPersistContext@@QAEXAAJ@Z 0x00431102, @K@ 0x00431020, @M@ 0x00431061, @_N@ 0x0043314A (Ego_r.pdb member template instantiations)
 };
 class COracleMinigameDef : public CSubDefClassBase {    // vtable 0x0123E504
 public:

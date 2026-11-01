@@ -10,10 +10,6 @@
 #pragma optimize("s", on)
 class CPersistContext {
 public:
-    void Transfer(unsigned long& value);                   // 0x00431020
-    void Transfer(long& value);                            // 0x00431102
-    void Transfer(float& value);                           // 0x00431061
-    void Transfer(bool& value);                            // 0x0043314A
     template <class T> void Transfer(T& value);            // enum / class instances in this TU
 };
 class CStockItemDef {                                              // retail fields from +0x28

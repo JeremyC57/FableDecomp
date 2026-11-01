@@ -53,8 +53,7 @@ class CDefinitionManager;
 #pragma pack(pop)
 class CPersistContext {
 public:
-    void Transfer(long& value);                                  // 0x00431102
-    void Transfer(float& value);                                 // 0x00431061
+    template <class T> void Transfer(T& value);              // ??$Transfer@J@CPersistContext@@QAEXAAJ@Z 0x00431102, @K@ 0x00431020, @M@ 0x00431061, @_N@ 0x0043314A (Ego_r.pdb member template instantiations)
     void Transfer(std::vector<long >& value);                    // 0x00466A47
     void Transfer(std::vector<float >& value);                   // 0x00464CBF
     void Transfer(CDefString& value);                            // 0x0045228F

@@ -16,9 +16,6 @@ class CFloatRange { public: float Min; float Max; };
 enum EDamageAttribute { EDamageAttribute_Force32 = 0x7fffffff };
 
 class CPersistContext { public:
-    void Transfer(float& v);                 // 0x00431061
-    void Transfer(long& v);                  // 0x00431102
-    void Transfer(bool& v);                  // 0x0043314A
     void Transfer(CDefString& v);            // 0x0045228F
     template <class T> void Transfer(T& v);  // 0x00458F2B <CFloatRange>, 0x00459042 <EDamageAttribute>
 };

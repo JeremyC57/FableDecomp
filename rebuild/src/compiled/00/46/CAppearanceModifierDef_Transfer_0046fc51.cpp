@@ -76,9 +76,6 @@ class CPersistContext {
 public:
     void Transfer(std::vector<CCharString >& value);             // 0x004331F9
     void Transfer(CAppearanceModifierGraphics& value);           // 0x0046FE40
-    void Transfer(long& value);                                  // 0x00431102
-    void Transfer(bool& value);                                  // 0x0043314A
-    void Transfer(float& value);                                 // 0x00431061
     template <class T> void Transfer(T& value);              // enum instances: EClothingSuitPart 0x0046FCF8, EHeroAttachableAppearanceModifierType 0x0046FD9C
 };
 class CAppearanceModifierDef : public CSubDefClassBase {    // vtable 0x012330DC

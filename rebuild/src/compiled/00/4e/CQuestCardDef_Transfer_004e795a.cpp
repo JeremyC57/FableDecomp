@@ -67,12 +67,10 @@ class CSubDefClassBase : public CDefClassBase {         // vtable 0x01231D54, Eg
 #pragma pack(pop)
 class CPersistContext {
 public:
-    void Transfer(long& value);                                  // 0x00431102
+    template <class T> void Transfer(T& value);              // ??$Transfer@J@CPersistContext@@QAEXAAJ@Z 0x00431102, @K@ 0x00431020, @M@ 0x00431061, @_N@ 0x0043314A (Ego_r.pdb member template instantiations)
     void Transfer(CDefString& value);                            // 0x0045228F
     void Transfer(std::vector<long >& value);                    // 0x00466A47
-    void Transfer(bool& value);                                  // 0x0043314A
     void Transfer(std::map<EQuestCardPrerequisite, long >& value); // 0x004E7A2D
-    void Transfer(unsigned long& value);                         // 0x00431020
 };
 class CQuestCardDef : public CSubDefClassBase {    // vtable 0x01241E44
 public:

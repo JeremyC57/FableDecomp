@@ -75,8 +75,6 @@ public:
 };
 class CPersistContext {
 public:
-    void Transfer(float& value);                                 // 0x00431061
-    void Transfer(long& value);                                  // 0x00431102
     void Transfer(CRGBColour& value);                            // 0x004595A3
     void Transfer(C2DVector& value);                             // 0x004568BC
     void Transfer(std::vector<CCardPositionsDef >& value);       // 0x004F9C07
