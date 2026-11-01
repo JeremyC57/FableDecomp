@@ -4369,7 +4369,7 @@ address	name	length	bytes
 004b87d0	CGuiControlTreePane::SortTreeRecursively	24	8b118b0a33c03bca740d8d9b000000008b09403bca75f9c3
 004bbff0	CMap::DrawGetSeaLevel	7	d9414cd84934c3
 004bbfc0	NGraphicAppearance::CTCGraphicAppearance::SetGraphicBank	7	890d088a3b01c3
-004c73d0	CThing::GetPosition	7	8b416083c00cc3
+004c73d0	CThing::GetPos	7	8b416083c00cc3
 004c7440	_global::SetMember_byte0x90_004c7440	13	8a442404888190000000c20400
 004c7580	CThing::SetCurrentMapNumber	15	668b4424046689818e000000c20400
 004c7770	CThing::SetAsGameStatePersisted	28	8a4424048a9191000000c0e00332c2240832d0889191000000c20400
