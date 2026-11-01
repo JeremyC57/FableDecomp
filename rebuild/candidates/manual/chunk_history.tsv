@@ -25752,3 +25752,13 @@ chunk	address	module	name	length
 672	00b5c050	CEngineScreenEffectRadialBlurRenderer	~CEngineScreenEffectRadialBlurRenderer	205
 672	00babe60	CEnginePrimitiveManagerRepeatedZSprites	~CEnginePrimitiveManagerRepeatedZSprites	200
 672	00d9fed0	CBriarRose	~CBriarRose	203
+673	00408990	LTextSymbol	~LTextSymbol	215
+673	00bc3c20	CEnginePrimitiveManagerParticleMeshGroup	~CEnginePrimitiveManagerParticleMeshGroup	217
+673	00edad10	CV_TalentlessBardScript	~CV_TalentlessBardScript	219
+673	00ee6c50	CActionTalkedTo	~CActionTalkedTo	215
+673	00b261d0	CEngine	~CEngine	238
+673	00cfac40	CQ_ArenaScript	~CQ_ArenaScript	232
+673	00e8b750	CV_FisticuffsClubScript	~CV_FisticuffsClubScript	248
+673	00ee40f0	CTCTavernGame	~CTCTavernGame	247
+673	00cafc40	_gapscan	sub_00cafc40	15
+673	0121a460	_gapscan	sub_0121a460	139
