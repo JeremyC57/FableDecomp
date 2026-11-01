@@ -83,7 +83,8 @@ struct CSoundSystem {
     virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45();
     virtual void RefreshCategory(long category, float a, float b);   // slot 46 (+0xB8)
 };
-extern CSoundSystem* g_pSoundSystem;            // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;            // 0x013B8394
 struct CComponentVector {                       // vector<NUISystem::CComponent*>
     NUISystem::CComponent** _M_start;
     NUISystem::CComponent** _M_finish;
@@ -114,10 +115,10 @@ void CTCInventoryTrade::OpenInventoryPC()
     PrepareScreen();
     g_pMainGameComponent->World->Hud->SetEnabled(false);
     AccumFadeTime = 0.0f;
-    if (g_pSoundSystem) {
-        g_pSoundSystem->RefreshCategory(0x10, 0.0f, 500.0f);
-        g_pSoundSystem->RefreshCategory(0x40, 0.0f, 500.0f);
-        g_pSoundSystem->RefreshCategory(0x80, 0.0f, 500.0f);
+    if (((CSoundSystem*)PSoundManager)) {
+        ((CSoundSystem*)PSoundManager)->RefreshCategory(0x10, 0.0f, 500.0f);
+        ((CSoundSystem*)PSoundManager)->RefreshCategory(0x40, 0.0f, 500.0f);
+        ((CSoundSystem*)PSoundManager)->RefreshCategory(0x80, 0.0f, 500.0f);
     }
     NUISystem::CManager* frontEnd = NUISystem::CManager::GetInstance();
     frontEnd->OnInventoryScreenOpened(this);

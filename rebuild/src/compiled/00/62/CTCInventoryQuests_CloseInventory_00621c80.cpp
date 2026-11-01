@@ -156,7 +156,8 @@ struct CSoundSystem {
     virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45();
     virtual void RefreshCategory(long category, float a, float b);   // slot 46 (+0xB8)
 };
-extern CSoundSystem* g_pSoundSystem;                 // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;                 // 0x013B8394
 class CUserProfileManager { public:
     unsigned char _pad00[0x0c];
     bool  UseCustomVolumes;                          // +0x0c
@@ -223,10 +224,10 @@ class CTCInventoryQuests : public NInventory::CTCInventoryBase { public:
 void CTCInventoryQuests::CloseInventory()
 {
     if (!Screen.IsActive()) {
-        if (g_pSoundSystem) {
-            g_pSoundSystem->RefreshCategory(0x10, CUserProfileManager::Get().GetSFXVolume(), 0.0f);
-            g_pSoundSystem->RefreshCategory(0x40, CUserProfileManager::Get().GetMusicVolume(), 0.0f);
-            g_pSoundSystem->RefreshCategory(0x80, CUserProfileManager::Get().GetSFXVolume(), 0.0f);
+        if (((CSoundSystem*)PSoundManager)) {
+            ((CSoundSystem*)PSoundManager)->RefreshCategory(0x10, CUserProfileManager::Get().GetSFXVolume(), 0.0f);
+            ((CSoundSystem*)PSoundManager)->RefreshCategory(0x40, CUserProfileManager::Get().GetMusicVolume(), 0.0f);
+            ((CSoundSystem*)PSoundManager)->RefreshCategory(0x80, CUserProfileManager::Get().GetSFXVolume(), 0.0f);
         }
         CFrontEndManager* a = CFrontEndManager::GetInstance();
         CFrontEndManager* b = CFrontEndManager::GetInstance();

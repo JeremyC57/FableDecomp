@@ -66,7 +66,8 @@ struct CSoundSystem {
     virtual void v45();
     virtual void RefreshCategory(long category, long a, long b);   // slot 46 (+0xb8)
 };
-extern CSoundSystem* g_pSoundSystem;               // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;               // 0x013B8394
 
 namespace NUISystem {
 
@@ -87,10 +88,10 @@ void CRedefinerList::Refresh()
     RefreshScriptThings(CUserProfileManager::Get().GetAssignedInputsPassive());
     UpdateVisibleList(0.0f, 0.2f);
     UpdateUndefinedWarning(0.2f);
-    if (g_pSoundSystem) {
-        g_pSoundSystem->RefreshCategory(0x10, 0, 0);
-        g_pSoundSystem->RefreshCategory(0x80, 0, 0);
-        g_pSoundSystem->RefreshCategory(0x40, 0, 0);
+    if (((CSoundSystem*)PSoundManager)) {
+        ((CSoundSystem*)PSoundManager)->RefreshCategory(0x10, 0, 0);
+        ((CSoundSystem*)PSoundManager)->RefreshCategory(0x80, 0, 0);
+        ((CSoundSystem*)PSoundManager)->RefreshCategory(0x40, 0, 0);
     }
 }
 

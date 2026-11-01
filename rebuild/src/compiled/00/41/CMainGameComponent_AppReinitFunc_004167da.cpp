@@ -38,7 +38,7 @@ public:
     unsigned char    _pad00[0x2c];
     CSurface_Methods BackBufferSurface;                  // +0x2c
 };
-extern CDisplayManager* g_pDisplayManager;               // 0x013B8390
+extern CDisplayManager* PDisplayManager;               // 0x013B8390
 class CDisplayEngine {
 public:
     void PreChangeResolution();                          // 0x00434A10
@@ -56,6 +56,6 @@ void __fastcall CMainGameComponent::AppReinitFunc(void* component)
 {
     CMainGameComponent* game = (CMainGameComponent*)component;
     game->PDisplayEngine->PreChangeResolution();
-    const CSurface_Methods& surface = g_pDisplayManager->BackBufferSurface;
-    game->PostChangeResolution(surface.GetWidth(), surface.GetHeight(), g_pDisplayManager->BackBufferSurface.GetPixelFormat().GetColourDepth());
+    const CSurface_Methods& surface = PDisplayManager->BackBufferSurface;
+    game->PostChangeResolution(surface.GetWidth(), surface.GetHeight(), PDisplayManager->BackBufferSurface.GetPixelFormat().GetColourDepth());
 }

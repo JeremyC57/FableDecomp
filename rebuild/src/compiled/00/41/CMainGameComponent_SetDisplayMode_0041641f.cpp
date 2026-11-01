@@ -42,7 +42,7 @@ class CDisplayManager { public:
     ECreateDeviceSuccess SetDisplayMode(const C2DExtentsI& resolution, unsigned long bitsPerPixel,
                                         ESurfaceMultisampleType antialiasing, unsigned long refreshRate);   // 0x009BFF40
 };
-extern CDisplayManager* g_pDisplayManager;         // 0x013B8390
+extern CDisplayManager* PDisplayManager;         // 0x013B8390
 class CDisplayEngine {
 public:
     void PreChangeResolution();                    // 0x00434A10
@@ -60,8 +60,8 @@ public:
 void CMainGameComponent::SetDisplayMode(unsigned long width, unsigned long height, unsigned char bitsPerPixel)
 {
     PDisplayEngine->PreChangeResolution();
-    g_pDisplayManager->SetDisplayMode(C2DExtentsI(width, height), bitsPerPixel, SURFACE_MULTISAMPLE_NONE, 0);
-    CSurface* surface = &g_pDisplayManager->m_backSurface;
+    PDisplayManager->SetDisplayMode(C2DExtentsI(width, height), bitsPerPixel, SURFACE_MULTISAMPLE_NONE, 0);
+    CSurface* surface = &PDisplayManager->m_backSurface;
     unsigned long newWidth = surface->GetDimensions().Width;
-    PostChangeResolution(newWidth, surface->GetHeight(), g_pDisplayManager->m_backSurface.GetPixelFormat().GetColourDepth());
+    PostChangeResolution(newWidth, surface->GetHeight(), PDisplayManager->m_backSurface.GetPixelFormat().GetColourDepth());
 }

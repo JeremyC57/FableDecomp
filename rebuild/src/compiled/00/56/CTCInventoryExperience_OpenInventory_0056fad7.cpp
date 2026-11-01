@@ -226,7 +226,8 @@ struct CSoundSystem {
     virtual void v045();
     virtual void RefreshCategory(long category, float a, float b);   // slot 46 (+0xb8)
 };
-extern CSoundSystem* g_pSoundSystem;                 // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;                 // 0x013B8394
 struct CTutorialSoundHandleMap {                     // map<CCharString, unsigned long>
     void* _M_header; long _M_node_count; long _M_compare;
     void clear();                                    // 0x005795C3
@@ -344,9 +345,9 @@ void CTCInventoryExperience::OpenInventory()
     g_pMainGameComponent->World->Hud->SetEnabled(false);
     CTCHeroExperience* experience;
     ParentThing->GetInterface(&experience, 0x68);
-    if (g_pSoundSystem) {
-        g_pSoundSystem->RefreshCategory(0x10, 0.0f, 500.0f);
-        g_pSoundSystem->RefreshCategory(0x80, 0.0f, 500.0f);
+    if (((CSoundSystem*)PSoundManager)) {
+        ((CSoundSystem*)PSoundManager)->RefreshCategory(0x10, 0.0f, 500.0f);
+        ((CSoundSystem*)PSoundManager)->RefreshCategory(0x80, 0.0f, 500.0f);
         TutorialSoundHandles.clear();
     }
     OrigGeneral = experience->GeneralExperience;

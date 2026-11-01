@@ -73,7 +73,8 @@ struct CEngine_Retail {
     CASoundBank& GetSampleBank() const { return *m_pSoundBank; }
 };
 extern CEngine_Retail*    g_pEngine;                // 0x013B86A0
-extern CGameState_Retail* g_pGameState;             // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;             // 0x013B8394
 extern long               g_InvalidSoundHandle;     // 0x0129D25C
 class CWorld;
 struct CPlayerManager_Retail;
@@ -89,7 +90,7 @@ unsigned long CGameScriptInterface::Play2DSound(const CCharString& symbol) const
     if (sample) {
         CSoundInit init;
         init.GainFaderBits = 0x8010;
-        return g_pGameState->GetSoundPlayer()->PlaySample(g_pEngine->GetSampleBank(), sample, false, init, true);
+        return ((CGameState_Retail*)PSoundManager)->GetSoundPlayer()->PlaySample(g_pEngine->GetSampleBank(), sample, false, init, true);
     }
     return g_InvalidSoundHandle;
 }

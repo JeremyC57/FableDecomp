@@ -56,7 +56,8 @@ class CSoundManagerLH { public:
     virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39();
     virtual void MixAtmos(const CCharString& from, const CCharString& to, float mix, float time);   // slot 40 (+0xA0)
 };
-extern CSoundManagerLH* g_pSoundSystem;            // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;            // 0x013B8394
 
 class CAtmosProcess {
 public:
@@ -66,9 +67,9 @@ public:
 
 void CAtmosProcess::MixAtmos(const CCharString& from, const CCharString& to, float mix, float time)
 {
-    if (g_pSoundSystem) {
+    if (((CSoundManagerLH*)PSoundManager)) {
         CDefPointer def;
         CGameDefinitionManager::Get().GetDef_006b2660(from, def);
-        g_pSoundSystem->MixAtmos(from, to, mix, time);
+        ((CSoundManagerLH*)PSoundManager)->MixAtmos(from, to, mix, time);
     }
 }

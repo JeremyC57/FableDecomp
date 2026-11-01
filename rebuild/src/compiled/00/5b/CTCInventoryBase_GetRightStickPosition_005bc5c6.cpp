@@ -32,7 +32,7 @@ class CInputManager { public:
     bool IsJoystickEventInQueue(long type, long device, CInputEvent* event, long player);  // 0x009F4C60
 };
 
-extern CInputManager* g_pInputManager;               // 0x013B8388
+extern CInputManager* PInputManager;               // 0x013B8388
 
 class CPlayer { public:
     long GetPlayerNumber() const;                    // 0x00487510
@@ -59,7 +59,7 @@ class CTCInventoryBase : public ::CTCBase { public:
 void CTCInventoryBase::GetRightStickPosition(C2DVector& out)
 {
     CInputEvent event;
-    if (g_pInputManager->IsJoystickEventInQueue(0x12, 0, &event, GetPlayerManager().GetMainPlayer().GetPlayerNumber()))
+    if (PInputManager->IsJoystickEventInQueue(0x12, 0, &event, GetPlayerManager().GetMainPlayer().GetPlayerNumber()))
         out = event.GetAnalogueVector();
     else {
         out.x = 0.0f;

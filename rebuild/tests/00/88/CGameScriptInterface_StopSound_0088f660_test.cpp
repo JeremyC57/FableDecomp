@@ -27,7 +27,7 @@ public:
     virtual void StopSound(unsigned long soundId) const;
 };
 
-CGSIStopSoundEmitter* CGSIStopSound_Emitter;
+class CASoundManager; CASoundManager* PSoundManager;   // 0x013B8394 (naming wave 13)
 static CGSIStopSoundEmitter* g_ObservedEmitter;
 static unsigned long g_ObservedSoundId;
 static unsigned long g_CallCount;
@@ -49,18 +49,18 @@ int main()
     vtable[14] = (void*)&CGSIStopSound_VirtualStop;
     void* emitterObject[1] = { vtable };
     CGameScriptInterface interfaceObject;
-    CGSIStopSound_Emitter =
-        (CGSIStopSoundEmitter*)emitterObject;
+    PSoundManager =
+        (CASoundManager*)emitterObject;
 
     interfaceObject.StopSound(0);
     if (g_CallCount != 1 ||
-        g_ObservedEmitter != CGSIStopSound_Emitter ||
+        g_ObservedEmitter != (CGSIStopSoundEmitter*)PSoundManager ||
         g_ObservedSoundId != 0)
         return 1;
 
     interfaceObject.StopSound(0xfedcba98);
     if (g_CallCount != 2 ||
-        g_ObservedEmitter != CGSIStopSound_Emitter ||
+        g_ObservedEmitter != (CGSIStopSoundEmitter*)PSoundManager ||
         g_ObservedSoundId != 0xfedcba98)
         return 2;
 

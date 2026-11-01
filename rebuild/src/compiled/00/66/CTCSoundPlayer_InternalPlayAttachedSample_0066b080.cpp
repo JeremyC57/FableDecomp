@@ -63,7 +63,8 @@ public:
     const C3DVector& GetPosition() const { return PhysicsTC->Position; }   // CThing::GetPosition 0x004C73D0, inline
     CASoundBank& GetSampleBank() const;         // 0x004C7A80
 };
-extern void*         g_pGameState;              // 0x013B8394 (no sound while null)
+class CASoundManager;
+extern CASoundManager* PSoundManager;              // 0x013B8394 (no sound while null)
 extern unsigned long g_InvalidSoundHandle;      // 0x0129D25C
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 class CRandomGenerator {                        // the landed 0x0066B300 model
@@ -96,7 +97,7 @@ public:
 
 unsigned long CTCSoundPlayer::InternalPlayAttachedSample(CASoundBank& bank, long sample, const CSoundInit& init, bool flag, bool loop, bool attached)
 {
-    if (sample && g_pGameState) {
+    if (sample && ((void*)PSoundManager)) {
         CThingSoundEmitter* emitter = CreatePAttachedEmitter(flag);
         if (emitter) {
             if (init.GainFaderBits == 0) {

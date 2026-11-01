@@ -22,7 +22,8 @@ struct CRumbleManager {
     CRumbleTableEntry* Table;
 };
 
-extern CRumbleManager* g_manager;
+class CInputManager;
+extern CInputManager* PInputManager;
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
 //   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
 //   GetMainPlayerNumber 0x00449700).
@@ -39,6 +40,6 @@ void __fastcall CGameScriptInterface_ClearAllRumbles(CGameScriptInterface* self)
     if (target->StateFlags & 1)
         return;
     int index = GetIndex(target);
-    CRumbleTarget* entryTarget = g_manager->Table[index].Target;
+    CRumbleTarget* entryTarget = ((CRumbleManager*)PInputManager)->Table[index].Target;
     entryTarget->__vftable->ClearRumbles(entryTarget);
 }

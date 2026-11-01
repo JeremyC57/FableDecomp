@@ -83,7 +83,7 @@ class CDisplayManager { public:
     C2DBoxF GetAVisibleTelevisionScreenArea();          // 0x009BECB0
 };
 extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
-extern CDisplayManager* g_pDisplayManager;              // 0x013B8390
+extern CDisplayManager* PDisplayManager;              // 0x013B8390
 extern C3DVector g_ItemUp;                              // 0x01383A5C
 
 class CTCHeroReceiveItems : public CTCBase { public:
@@ -117,7 +117,7 @@ void CTCHeroReceiveItems::PrepareToShowItems(const C3DVector& position)
     if (g_pMainGameComponent->DisplayEngine->Renderer->GetScreenPosition(position, &screen)) {
         InitialAreaItemTook.Set(screen.X, screen.Y, screen.X, screen.Y);
     } else {
-        C2DBoxF area = g_pDisplayManager->GetAVisibleTelevisionScreenArea();
+        C2DBoxF area = PDisplayManager->GetAVisibleTelevisionScreenArea();
         float x = (area.BRX - area.TLX) * 0.5f + area.TLX;
         float y = (area.BRY - area.TLY) * 0.5f + area.TLY;
         InitialAreaItemTook.Set(x, y, x, y);

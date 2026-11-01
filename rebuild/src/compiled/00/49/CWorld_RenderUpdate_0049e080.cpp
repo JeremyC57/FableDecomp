@@ -66,8 +66,9 @@ public:
     virtual void v08(); virtual void v09(); virtual void v10();
     virtual CSoundListener* GetListener();           // slot 11
 };
-extern CSoundSystem* g_pSoundSystem;                 // 0x013B8394
-extern const float g_Epsilon;                        // 0x0129BA3C (0.0001f)
+class CASoundManager;
+extern CASoundManager* PSoundManager;                 // 0x013B8394
+extern const float EPSILON;  // 0x0129BA3C (0.0001f)
 void __fastcall SetCurrentThingManager(CThingManager* manager);   // 0x004C74F0
 
 class CWorld {
@@ -85,16 +86,16 @@ void CWorld::RenderUpdate(const CInterpolationInfo* info)
     SetCurrentThingManager(PThingManager_ptr);
     PThingManager_ptr->RenderUpdateThings(info);
     PEnvironment_ptr->RenderUpdate(info->Current.WFInterpolate);
-    if (g_pSoundSystem) {
+    if (((CSoundSystem*)PSoundManager)) {
         CCamera camera = GetCurrentSoundCamera(info);
         C3DVector forward = camera.RHSet.Forward;
         C3DVector up = camera.RHSet.Up;
-        if (camera.RHSet.Forward.GetLengthSquared() > g_Epsilon * g_Epsilon &&
-            camera.RHSet.Up.GetLengthSquared() > g_Epsilon * g_Epsilon) {
-            CSoundListener* listener = g_pSoundSystem->GetListener();
+        if (camera.RHSet.Forward.GetLengthSquared() > EPSILON * EPSILON &&
+            camera.RHSet.Up.GetLengthSquared() > EPSILON * EPSILON) {
+            CSoundListener* listener = ((CSoundSystem*)PSoundManager)->GetListener();
             listener->SetPosition(camera.WorldPosition);
             listener->SetOrientation(forward, up);
         }
-        g_pSoundSystem->Update();
+        ((CSoundSystem*)PSoundManager)->Update();
     }
 }

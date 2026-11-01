@@ -11,7 +11,8 @@
 // Shape: the global test first and `push esi` hoisted above its branch; the pointer's address kept in esi;
 // nested ifs with one `return false` at the end (`xor al,al`).
 // No engine header exists for CTCSoundPlayer or CThingSoundEmitter: local models (CTCBase part as padding).
-extern void* g_pSoundSystem;                        // 0x013B8394 (descriptive name)
+class CASoundManager;
+extern CASoundManager* PSoundManager;                        // 0x013B8394 (descriptive name)
 
 class CBaseObject;
 class CBaseIntelligentPointer {                     // 8 bytes: vptr + the pointee link
@@ -38,7 +39,7 @@ public:
 
 bool CTCSoundPlayer::IsAttachedSoundPlaying(unsigned long sampleID) const
 {
-    if (g_pSoundSystem) {
+    if (((void*)PSoundManager)) {
         if (PAttachedEmitter.GetPItem()) {
             if (!((const CThingSoundEmitter*)PAttachedEmitter.GetPItem())->Dead)
                 return ((const CThingSoundEmitter*)PAttachedEmitter.GetPItem())->IsSamplePlaying(sampleID);

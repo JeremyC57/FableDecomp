@@ -32,13 +32,13 @@ class C2DExtentsI { public:
 class CDisplayManager { public:
     const C2DExtentsI GetRenderTargetDimensions();                 // 0x009BEDC0
 };
-extern CDisplayManager* g_pDisplayManager;                    // 0x013B8390
+extern CDisplayManager* PDisplayManager;                    // 0x013B8390
 
 namespace NPlayerGui {
 
 C2DVector __fastcall GFAnchorToBottomLeft(const C2DVector& pos)
 {
-    return C2DVector(pos.X, (float)g_pDisplayManager->GetRenderTargetDimensions().Height + pos.Y - 480.0f);
+    return C2DVector(pos.X, (float)PDisplayManager->GetRenderTargetDimensions().Height + pos.Y - 480.0f);
 }
 
 }

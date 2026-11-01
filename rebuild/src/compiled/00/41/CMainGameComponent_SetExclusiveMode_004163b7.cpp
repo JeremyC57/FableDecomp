@@ -30,7 +30,8 @@ struct CDisplayDevice {
     unsigned char _pad00[0x2c];
     CSurface      m_backSurface;                   // +0x2c
 };
-extern CDisplayDevice* g_pDisplayDevice;           // 0x013B8390
+class CDisplayManager;
+extern CDisplayManager* PDisplayManager;           // 0x013B8390 (naming wave 13)
 struct CDisplayHolder {
     void OnExclusiveModeChange();                  // 0x00434A10
 };
@@ -45,7 +46,7 @@ void CMainGameComponent::SetExclusiveMode(bool exclusive)
 {
     m_pDisplay->OnExclusiveModeChange();
     GFGetSystemManager()->SetExclusiveMode(exclusive);
-    CSurface* surface = &g_pDisplayDevice->m_backSurface;
+    CSurface* surface = &((CDisplayDevice*)PDisplayManager)->m_backSurface;
     unsigned long width = surface->GetDimensions().Width;
-    PostChangeResolution(width, surface->GetHeight(), g_pDisplayDevice->m_backSurface.GetPixelFormat().GetColourDepth());
+    PostChangeResolution(width, surface->GetHeight(), ((CDisplayDevice*)PDisplayManager)->m_backSurface.GetPixelFormat().GetColourDepth());
 }

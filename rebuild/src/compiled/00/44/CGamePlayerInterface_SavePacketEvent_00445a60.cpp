@@ -45,7 +45,8 @@ struct CLoader {
     unsigned char _pad[0x24];
     CMouseDevice* m_pMouse;                             // +0x24
 };
-extern CLoader* g_Loader;                               // 0x013B8388
+class CInputManager;
+extern CInputManager* PInputManager;                               // 0x013B8388
 
 class CMainGameComponent { public:
     unsigned long GetFrame();                           // 0x00416225
@@ -73,7 +74,7 @@ void CGamePlayerInterface::SavePacketEvent(const CInputEvent& event)
     CSavedInputEvent saved;
     saved.InputEvent = event;
     saved.Frame = Component->GetFrame();
-    CMouseDevice* mouse = g_Loader->m_pMouse;
+    CMouseDevice* mouse = ((CLoader*)PInputManager)->m_pMouse;
     if (mouse)
         mouse->GetPosition(&saved.MousePos);
     PacketFile.Write(&saved, sizeof(saved), 0);

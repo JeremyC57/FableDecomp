@@ -21,7 +21,7 @@ class CInputManager {
 public:
     bool IsKeyboardEventInQueue(EInputEventType type, EInputKey key, CInputEvent& event) const;   // 0x009F50A0
 };
-extern CInputManager* g_pInputManager;
+extern CInputManager* PInputManager;
 
 class CInputTypeKeyboardKeyEvent {
 public:
@@ -48,7 +48,7 @@ private:
 bool CInputTypeKeyboardKeyEvent::IsEventOfThisTypeInQueue(EInputButtonEventType type, long player, float& value) const
 {
     CInputEvent event;
-    if (g_pInputManager->IsKeyboardEventInQueue(GetEventTypeFromGeneralButtonType(type), KeyboardKey, event)) {
+    if (PInputManager->IsKeyboardEventInQueue(GetEventTypeFromGeneralButtonType(type), KeyboardKey, event)) {
         value = 1.0f;
         return true;
     }

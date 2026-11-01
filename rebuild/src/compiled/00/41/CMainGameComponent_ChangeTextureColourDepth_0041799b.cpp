@@ -14,7 +14,7 @@ class CDisplayManager {
 public:
     bool IsTextureBitDepthSupported(unsigned long depth);   // 0x009BE530
 };
-extern CDisplayManager* g_pDisplayManager;                  // 0x013B8390
+extern CDisplayManager* PDisplayManager;                  // 0x013B8390
 extern long g_TextureColourDepth;                           // 0x013B7D68
 class CWorld {
 public:
@@ -37,7 +37,7 @@ void CMainGameComponent::ChangeTextureColourDepth(long depth)
 {
     if (depth == 16 || depth == 24 || depth == 32)
     {
-        if (g_pDisplayManager->IsTextureBitDepthSupported(depth) && depth != g_TextureColourDepth)
+        if (PDisplayManager->IsTextureBitDepthSupported(depth) && depth != g_TextureColourDepth)
         {
             g_TextureColourDepth = depth;
             InitGraphics();

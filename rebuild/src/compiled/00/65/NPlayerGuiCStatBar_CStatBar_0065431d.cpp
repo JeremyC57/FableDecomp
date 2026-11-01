@@ -36,7 +36,8 @@ struct CFontPointer {                                         // CCountedPointer
 struct CFontBankManager {
     CFontPointer GetFont(const CCharString& name);            // 0x009E2C80
 };
-extern CFontBankManager* g_pFontBankManager;                  // 0x013B838C
+class CFontManager;
+extern CFontManager* PFontManager;                  // 0x013B838C
 
 namespace std {
 template <class T> class allocator {
@@ -134,7 +135,7 @@ CStatBar::CStatBar(const CPlayerGuiDef& def)
       BorderGraphicIndex(0),
       EffectIndex(0),
       OldEffectIndex(0),
-      FontBank(g_pFontBankManager->GetFont(def.GetStatBarsFontName()).m_pObject),
+      FontBank(((CFontBankManager*)PFontManager)->GetFont(def.GetStatBarsFontName()).m_pObject),
       ChangeTexts()
 {
     PrimitiveHandles.Resize(5);

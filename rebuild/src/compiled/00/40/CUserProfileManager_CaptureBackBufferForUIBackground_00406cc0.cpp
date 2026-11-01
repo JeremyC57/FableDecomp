@@ -39,7 +39,7 @@ class CDisplayManager { public:
 };
 extern bool                g_bCaptureUIBackground;         // 0x013750A7
 extern CMainGameComponent* g_pMainGameComponent;           // 0x013B86A0
-extern CDisplayManager*    g_pDisplayManager;              // 0x013B8390
+extern CDisplayManager* PDisplayManager;              // 0x013B8390
 
 class CUserProfileManager { public:
     unsigned char _pad000[0x138];
@@ -57,7 +57,7 @@ void CUserProfileManager::CaptureBackBufferForUIBackground()
         g_pMainGameComponent->PDisplayEngine->DoRender(&info, false, false);
         g_pMainGameComponent->PDisplayEngine->Engine3D->Enable3DSceneRendering(false);
         g_pMainGameComponent->PDisplayEngine->Engine3D->Enable2DSceneRendering(true);
-        PBackBufferTexture = g_pDisplayManager->CopyBackBufferToTexture();
+        PBackBufferTexture = PDisplayManager->CopyBackBufferToTexture();
     }
     else
         PBackBufferTexture = 0;

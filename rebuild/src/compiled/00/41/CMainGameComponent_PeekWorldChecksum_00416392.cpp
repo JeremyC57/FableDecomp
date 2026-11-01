@@ -18,7 +18,7 @@ public:
     bool          Loading;                               // +0x38
     bool          Saving;                                // +0x39
 };
-extern CInputManager* g_pInputManager;                   // 0x013B8388
+extern CInputManager* PInputManager;                   // 0x013B8388
 class CNetworkClient {
 public:
     unsigned char _pad00[0x2662];
@@ -34,7 +34,7 @@ public:
 };
 unsigned long CMainGameComponent::PeekWorldChecksum() const
 {
-    if (Client.LocalGame && !g_pInputManager->Loading && !g_pInputManager->Saving)
+    if (Client.LocalGame && !PInputManager->Loading && !PInputManager->Saving)
         return 1;
     return PWorld->GetChecksum();
 }

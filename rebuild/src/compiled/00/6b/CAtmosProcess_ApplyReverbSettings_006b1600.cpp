@@ -94,7 +94,8 @@ public:
     virtual void SetReverbParameters(const CReverbParameters& params);   // slot 29 (+0x74, descriptive)
     virtual void SetReverbLevel(float level, float time);               // slot 30 (+0x78, descriptive)
 };
-extern CSoundSystem* g_pSoundSystem;                        // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;                        // 0x013B8394
 
 class CAtmosProcess {
 public:
@@ -107,7 +108,7 @@ private:
 
 void CAtmosProcess::ApplyReverbSettings()
 {
-    if (g_pSoundSystem) {
+    if (((CSoundSystem*)PSoundManager)) {
         CDefPointer<const CSoundDef> soundDef;
         {
             CCharString name("MAIN_SOUND_SETUP", -1);
@@ -117,8 +118,8 @@ void CAtmosProcess::ApplyReverbSettings()
         CReverbParameters params;
         std::copy(def->ReverbEnvironmentEntries[ReverbType].Params, def->ReverbEnvironmentEntries[ReverbType].Params + 21,
                   params.Parameters);
-        g_pSoundSystem->SetReverbParameters(params);
-        g_pSoundSystem->SetReverbLevel(ReverbLevel, 0.0f);
+        ((CSoundSystem*)PSoundManager)->SetReverbParameters(params);
+        ((CSoundSystem*)PSoundManager)->SetReverbLevel(ReverbLevel, 0.0f);
         if (--def->RefCount == 0)
             def->Destroy();
     }

@@ -46,7 +46,7 @@ class C2DExtentsI { public:
 class CDisplayManager { public:
     const C2DExtentsI GetRenderTargetDimensions();   // 0x009BEDC0
 };
-extern CDisplayManager* g_pDisplayDevice;      // 0x013B8390
+extern CDisplayManager* PDisplayManager;      // 0x013B8390
 
 class CFontBank { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
@@ -117,7 +117,7 @@ void CTCTavernGame::RenderText(const CEnginePrimitivePrepareInfo& info, float x,
 {
     font.Preload(text, false);
     Handles.AddDefaultHandle_005ed940();
-    C2DExtentsI size = g_pDisplayDevice->GetRenderTargetDimensions();
+    C2DExtentsI size = PDisplayManager->GetRenderTargetDimensions();
     CEnginePrimitive2DText primitive(0, C2DVector(size.X * x, size.Y * y), 0x45, 1.0f, text, font, colour, 0);
     info.Engine->AddPrimitive(&Handles.back(), &primitive, 0xc0);
 }

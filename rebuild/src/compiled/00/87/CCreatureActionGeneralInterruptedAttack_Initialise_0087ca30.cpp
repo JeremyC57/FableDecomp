@@ -438,7 +438,7 @@ public:
     unsigned char _pad00[0x2C];
     std::vector<CCountedPointer<CJoystick>, std::allocator<CCountedPointer<CJoystick> > > PJoysticks;   // +0x2C
 };
-extern CInputManager* g_pInputManager;                           // 0x013B8388
+extern CInputManager* PInputManager;                           // 0x013B8388
 namespace NCombatActionHelpers {
 void __fastcall CreateDustEffectForCreature(CThingCreatureBase& creature, const CWorldMap& worldMap, const CGameDefinitionManager& definitionManager,
     const C3DVector& direction, std::vector<CThing*, std::allocator<CThing*> >* hitThings);   // 0x008F7950
@@ -451,7 +451,7 @@ public:
 void CCreatureAction_GeneralInterruptedAttack::Initialise()
 {
     if (PCreature->IsPlayerCharacter())
-        g_pInputManager->PJoysticks[PCreature->GetJoystickDeviceNumber()]->AddRumble(3, CJoystick::CInitRumble(1.0f, 0.5f, 0.0f, 0.2f, false), true);
+        PInputManager->PJoysticks[PCreature->GetJoystickDeviceNumber()]->AddRumble(3, CJoystick::CInitRumble(1.0f, 0.5f, 0.0f, 0.2f, false), true);
     CCombatActionBase::Initialise();
     C3DVector direction = -PCreature->GetPhysicsTC()->GetFacingVector();
     NCombatActionHelpers::CreateDustEffectForCreature(*PCreature, GetWorldMap(), PeekDefinitionManager(), direction, 0);

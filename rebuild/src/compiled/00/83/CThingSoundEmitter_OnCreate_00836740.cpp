@@ -18,7 +18,8 @@ struct CGameState {                                      // 0x013B8394
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003();
     virtual CSoundPlayer* CreateSoundPlayer(const C3DVector& pos);   // slot 4 (+0x10)
 };
-extern CGameState* g_pGameState;                         // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;                         // 0x013B8394
 
 class CThing { public:
     virtual void v000();
@@ -39,8 +40,8 @@ class CThingSoundEmitter : public CThing { public:
 
 bool CThingSoundEmitter::OnCreate()
 {
-    if (CThing::OnCreate() && g_pGameState) {
-        m_pSoundPlayer = g_pGameState->CreateSoundPlayer(Pos);
+    if (CThing::OnCreate() && ((CGameState*)PSoundManager)) {
+        m_pSoundPlayer = ((CGameState*)PSoundManager)->CreateSoundPlayer(Pos);
         if (m_pSoundPlayer)
             return true;
     }

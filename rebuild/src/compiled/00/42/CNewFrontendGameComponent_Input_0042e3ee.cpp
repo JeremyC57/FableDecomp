@@ -43,7 +43,7 @@ public:
     void EventScanEnd(CInputEventScanInfo& scan);                         // 0x009F4AC0
     void ClearEvents();                                                   // 0x009F5540
 };
-extern CInputManager* g_pInputManager;             // 0x013B8388
+extern CInputManager* PInputManager;             // 0x013B8388
 namespace NUISystem {
 class CManager {
 public:
@@ -87,7 +87,7 @@ public:
     float GetElapsedSeconds() const;               // 0x0062F900
     bool IsRunning() const { return m_bIsRunning; }
 };
-extern const float g_epsilon_0129ba3c;             // 0x0129BA3C (1e-4f, the shared float epsilon)
+extern const float EPSILON;           // 0x0129BA3C (1e-4f, the shared float epsilon)
 class CNewFrontendGameComponent {
 public:
     virtual void v00();
@@ -106,15 +106,15 @@ public:
 void CNewFrontendGameComponent::Input()
 {
     if (m_inputDelayTimer.IsRunning()) {
-        g_pInputManager->ClearEvents();
+        PInputManager->ClearEvents();
         return;
     }
     CInputEventScanInfo scan;
     CInputEvent event;
     CInputEvent lastEvent;
-    g_pInputManager->Update();
+    PInputManager->Update();
     unsigned long flags = 0;
-    for (bool more = g_pInputManager->EventScanStart(scan, event); more; more = g_pInputManager->EventScanNext(scan, event)) {
+    for (bool more = PInputManager->EventScanStart(scan, event); more; more = PInputManager->EventScanNext(scan, event)) {
         switch (event.GetType()) {
         case 1:
             CTBaseSingleton<CConsole>::Get().ProcessInput(event);
@@ -147,9 +147,9 @@ void CNewFrontendGameComponent::Input()
             break;
         }
         case 14:
-            if (event.GetMouseWheel() > g_epsilon_0129ba3c)
+            if (event.GetMouseWheel() > EPSILON)
                 NUISystem::CManager::GetInstance()->SendCommand(0x24);
-            else if (event.GetMouseWheel() < -g_epsilon_0129ba3c)
+            else if (event.GetMouseWheel() < -EPSILON)
                 NUISystem::CManager::GetInstance()->SendCommand(0x25);
             break;
         case 15:
@@ -213,7 +213,7 @@ void CNewFrontendGameComponent::Input()
             break;
         }
     }
-    g_pInputManager->EventScanEnd(scan);
+    PInputManager->EventScanEnd(scan);
     if (m_dwDPadTriggerState)
         flags |= m_dwDPadTriggerState;
     if (flags) {

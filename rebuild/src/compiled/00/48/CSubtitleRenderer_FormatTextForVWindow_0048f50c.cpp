@@ -54,7 +54,7 @@ struct CWStringParser : CBaseClass {
 class CDisplayManager { public:
     const C2DExtentsI GetRenderTargetDimensions();           // 0x009BEDC0
 };
-extern CDisplayManager* g_pDisplayManager;                   // 0x013B8390
+extern CDisplayManager* PDisplayManager;                   // 0x013B8390
 
 class CPlayerGuiDef { public:
     unsigned char _pad000[0x2ac];
@@ -113,7 +113,7 @@ void CSubtitleRenderer::FormatTextForVWindow(const C2DBoxF& box, const CFontBank
         ++lines;
     if (lines == 0)
         lines = 1;
-    float scale = g_pDisplayManager->GetRenderTargetDimensions().X * (1.0f / 640.0f);
+    float scale = PDisplayManager->GetRenderTargetDimensions().X * (1.0f / 640.0f);
     const CPlayerGuiDef* def = (&CPlayerGui::PeekGuiDef());
     GFLimit(maxWidth, GFAXToVX(def->TextBoxMinWidth) * scale, GFAXToVX(def->TextBoxMaxWidth) * scale);
     outBox = box;

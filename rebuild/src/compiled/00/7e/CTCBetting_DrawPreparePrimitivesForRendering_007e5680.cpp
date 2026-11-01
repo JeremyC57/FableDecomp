@@ -31,7 +31,7 @@ class C2DExtentsI { public:
 class CDisplayManager { public:
     const C2DExtentsI GetRenderTargetDimensions();   // 0x009BEDC0
 };
-extern CDisplayManager* g_pDisplayDevice;      // 0x013B8390
+extern CDisplayManager* PDisplayManager;      // 0x013B8390
 extern bool g_bBettingInputEnabled;             // 0x013BAE1D
 
 class CWideString { public:
@@ -122,12 +122,12 @@ void CTCBetting::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepare
         if (ParentThing->GetBaseDef()->GetSubDef(&def)) {
             CBettingDef* bettingDef = def.Object;
             DrawStatBoxWithText(info, BetHandles,
-                                C2DVector(bettingDef->BetBoxX * g_pDisplayDevice->GetRenderTargetDimensions().X,
-                                          bettingDef->BetBoxY * g_pDisplayDevice->GetRenderTargetDimensions().Y),
+                                C2DVector(bettingDef->BetBoxX * PDisplayManager->GetRenderTargetDimensions().X,
+                                          bettingDef->BetBoxY * PDisplayManager->GetRenderTargetDimensions().Y),
                                 CPlayerGui::PeekGuiDef().StatBoxWidth, GetBetText(), 0, 0xff, false);
             DrawStatBoxWithText(info, MoneyHandles,
-                                C2DVector(bettingDef->MoneyBoxX * g_pDisplayDevice->GetRenderTargetDimensions().X,
-                                          bettingDef->MoneyBoxY * g_pDisplayDevice->GetRenderTargetDimensions().Y),
+                                C2DVector(bettingDef->MoneyBoxX * PDisplayManager->GetRenderTargetDimensions().X,
+                                          bettingDef->MoneyBoxY * PDisplayManager->GetRenderTargetDimensions().Y),
                                 CPlayerGui::PeekGuiDef().StatBoxWidth, GetPlayersMoney(), 0, 0xff, true);
         }
     }

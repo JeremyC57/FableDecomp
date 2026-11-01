@@ -61,9 +61,11 @@ struct CFrontendGlobal_013b838c {
 class CNewFrontendGameComponent;
 void __fastcall SetActiveFrontend_004336b0(CNewFrontendGameComponent* component);   // 0x004336B0
 extern CNewFrontendGameComponent* g_pNewFrontendGameComponent;   // 0x013B871C
-extern CFrontendGlobal_013b838c* g_pFrontendGlobal_013b838c;    // 0x013B838C
-extern CGameStateOwner_013b8394* g_pGameState_013b8394;          // 0x013B8394
-extern CDisplayManager* g_pDisplayDevice;                        // 0x013B8390
+class CFontManager;
+extern CFontManager* PFontManager;    // 0x013B838C
+class CASoundManager;
+extern CASoundManager* PSoundManager;          // 0x013B8394
+extern CDisplayManager* PDisplayManager;                        // 0x013B8390
 class CNewFrontendGameComponent {
 public:
     void*                     __vftable;           // +0x00
@@ -85,18 +87,18 @@ void CNewFrontendGameComponent::Shutdown()
     SetActiveFrontend_004336b0(0);
     g_pNewFrontendGameComponent = 0;
     ReleaseScene_0042dd28();
-    g_pFrontendGlobal_013b838c->Flag38 = true;
-    if (!m_bCreateGame && g_pGameState_013b8394) {
-        g_pGameState_013b8394->ResumeGame_slot16();
-        g_pGameState_013b8394->SetPaused_slot18(false);
-        g_pGameState_013b8394->Restore_00991750();
-        g_pGameState_013b8394->Restore_009918f0();
+    ((CFrontendGlobal_013b838c*)PFontManager)->Flag38 = true;
+    if (!m_bCreateGame && ((CGameStateOwner_013b8394*)PSoundManager)) {
+        ((CGameStateOwner_013b8394*)PSoundManager)->ResumeGame_slot16();
+        ((CGameStateOwner_013b8394*)PSoundManager)->SetPaused_slot18(false);
+        ((CGameStateOwner_013b8394*)PSoundManager)->Restore_00991750();
+        ((CGameStateOwner_013b8394*)PSoundManager)->Restore_009918f0();
     }
     ReleaseXMVCode();
     FileNames.clear();
     FileTimes.clear();
-    if (g_pDisplayDevice) {
-        g_pDisplayDevice->ClearRenderTarget(CRGBColour(0, 0, 0, 0xff), 7);
-        g_pDisplayDevice->SwapScreens();
+    if (PDisplayManager) {
+        PDisplayManager->ClearRenderTarget(CRGBColour(0, 0, 0, 0xff), 7);
+        PDisplayManager->SwapScreens();
     }
 }

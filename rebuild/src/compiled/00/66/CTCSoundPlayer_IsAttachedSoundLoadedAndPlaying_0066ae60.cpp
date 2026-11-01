@@ -12,7 +12,8 @@
 //   CThingSoundEmitter::IsSampleLoadedAndPlaying(unsigned long) const @ 0x008368A0.
 // Shape: as the landed IsAttachedSoundPlaying 0x0066AE10 (the global test first, the pointer's address kept in esi).
 // No engine header exists for CTCSoundPlayer or CThingSoundEmitter: local models (CTCBase part as padding).
-extern void* g_pSoundSystem;                        // 0x013B8394 (descriptive name, as 0x0066AE10)
+class CASoundManager;
+extern CASoundManager* PSoundManager;                        // 0x013B8394 (descriptive name, as 0x0066AE10)
 
 class CBaseObject;
 class CBaseIntelligentPointer {                     // 8 bytes: vptr + the pointee link
@@ -39,7 +40,7 @@ public:
 
 bool CTCSoundPlayer::IsAttachedSoundLoadedAndPlaying(unsigned long sampleID) const
 {
-    if (g_pSoundSystem) {
+    if (((void*)PSoundManager)) {
         if (PAttachedEmitter.GetPItem()) {
             if (!((const CThingSoundEmitter*)PAttachedEmitter.GetPItem())->Dead)
                 return ((const CThingSoundEmitter*)PAttachedEmitter.GetPItem())->IsSampleLoadedAndPlaying(sampleID);

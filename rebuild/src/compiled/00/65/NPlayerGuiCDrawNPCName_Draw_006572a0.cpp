@@ -76,7 +76,7 @@ class CDisplayManager {
 public:
     const C2DExtentsI GetRenderTargetDimensions();              // 0x009BEDC0
 };
-extern CDisplayManager* g_pDisplayManager;                     // 0x013B8390
+extern CDisplayManager* PDisplayManager;                     // 0x013B8390
 namespace NGameText {
 class CDataBank {
 public:
@@ -126,7 +126,7 @@ void CDrawNPCName::Draw(const CEnginePrimitivePrepareInfo& prepare_info)
         const CFontBank& font = Component->PeekCutSceneMainFont();
         static CRGBColour colour(0xff, 0xff, 0xff, 0xff);
         float width = font.GetStringWidth(Name);
-        float x = g_pDisplayManager->GetRenderTargetDimensions().Width * 0.5f - width * 0.5f;
+        float x = PDisplayManager->GetRenderTargetDimensions().Width * 0.5f - width * 0.5f;
         PlayerGui->Draw2DText(C2DVector(GFAXToVX(x), GFAYToVY(10.0f)), Name, font, colour, 0.7f, ENGINE_2D_LAYER_TEXT, true);
     }
     if (ScreenShotMessageCounter > 0 &&

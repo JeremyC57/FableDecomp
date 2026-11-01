@@ -66,8 +66,10 @@ class CFontBank { public:
 struct CGraphicDataBankManager {
     CCountedPointer_0042fe34<CGraphicDataBank> CreateAndInitialize(const CCharString& name, const CGraphicDataBankInit& init, bool a, bool b);   // 0x009F83D0
 };
-extern CFontBank* g_pFontBank;                     // 0x013B838C
-extern CGraphicDataBankManager* g_pGraphicDataBankManager;   // 0x013B837C
+class CFontManager;
+extern CFontManager* PFontManager;                     // 0x013B838C
+class CGraphicBankManager;
+extern CGraphicBankManager* PGraphicBankManager;   // 0x013B837C
 extern CCharString g_FrontEndMenuFontName;         // 0x013B875C
 
 class CNewFrontendGameComponent { public:
@@ -80,7 +82,7 @@ class CNewFrontendGameComponent { public:
 
 bool CNewFrontendGameComponent::InitialiseGraphics()
 {
-    m_pMenuFont = g_pFontBank->GetFont(g_FrontEndMenuFontName);
+    m_pMenuFont = ((CFontBank*)PFontManager)->GetFont(g_FrontEndMenuFontName);
     CGraphicDataBankInit init;
     CSystemManager* system;
     system = GFGetSystemManager();
@@ -102,7 +104,7 @@ bool CNewFrontendGameComponent::InitialiseGraphics()
     init.AllowDither = true;
     {
         CCharString name("GBANK_FRONT_END", -1);
-        m_pFrontEndGraphicBank = g_pGraphicDataBankManager->CreateAndInitialize(name, init, true, true);
+        m_pFrontEndGraphicBank = ((CGraphicDataBankManager*)PGraphicBankManager)->CreateAndInitialize(name, init, true, true);
     }
     return true;
 }

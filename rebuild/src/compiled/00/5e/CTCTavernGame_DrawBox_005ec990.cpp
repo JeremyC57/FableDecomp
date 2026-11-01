@@ -36,7 +36,7 @@ class C2DExtentsI { public:
 class CDisplayManager { public:
     const C2DExtentsI GetRenderTargetDimensions();   // 0x009BEDC0
 };
-extern CDisplayManager* g_pDisplayDevice;      // 0x013B8390
+extern CDisplayManager* PDisplayManager;      // 0x013B8390
 
 struct CRetailHandleVector {                    // STLport vector<CEnginePrimitiveHandle> (12 bytes)
     CEnginePrimitiveHandle* m_pFirst;
@@ -119,7 +119,7 @@ void CTCTavernGame::DrawBox(const CEnginePrimitivePrepareInfo& info)
     CDefPointer def;
     GetDef(&def);
     BoxHandles.Resize(9);
-    C2DExtentsI size = g_pDisplayDevice->GetRenderTargetDimensions();
+    C2DExtentsI size = PDisplayManager->GetRenderTargetDimensions();
     ::DrawBox(const_cast<CEnginePrimitivePrepareInfo*>(&info), &BoxHandles,
               C2DBoxF(def->MainGameScoreBoxX * (float)size.Y, def->MainGameScoreBoxY * (float)size.Y,
                       (def->MainGameScoreBoxX + def->MainGameScoreBoxWidthPC) * size.X,

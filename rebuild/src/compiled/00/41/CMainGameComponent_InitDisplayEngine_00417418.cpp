@@ -40,7 +40,8 @@ class CSurface : public CSurfaceDonor { public:
  CPixelFormat GetPixelFormat()const; //009f2f60
 };
 struct CDisplayDevice { unsigned char DisplayState[0x2c]; CSurface BackSurface; CSurface& GetBackSurface(){return BackSurface;} };
-extern CDisplayDevice* g_DisplayDevice; //013b8390
+class CDisplayManager;
+extern CDisplayManager* PDisplayManager; //013b8390
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CBaseClassNonCopyable : CBaseClass { CBaseClassNonCopyable(); private: CBaseClassNonCopyable(const CBaseClassNonCopyable&); CBaseClassNonCopyable&operator=(const CBaseClassNonCopyable&); };
 class CMainGameComponent; class CGamePlayerInterface;
@@ -79,9 +80,9 @@ FABLE_STATIC_ASSERT(sizeof(CDisplayEngineInit)==0x24);
 void CMainGameComponent::InitDisplayEngine(){
  CDisplayEngineInit init;
  init.World=PWorld;
- init.Height=g_DisplayDevice->BackSurface.GetHeight();
- init.Width=g_DisplayDevice->BackSurface.GetWidth();
- init.PixelFormat=g_DisplayDevice->BackSurface.GetPixelFormat();
+ init.Height=((CDisplayDevice*)PDisplayManager)->BackSurface.GetHeight();
+ init.Width=((CDisplayDevice*)PDisplayManager)->BackSurface.GetWidth();
+ init.PixelFormat=((CDisplayDevice*)PDisplayManager)->BackSurface.GetPixelFormat();
  init.DefinitionManager=(&CGameDefinitionManager::Get());
  init.PlayerManager=PPlayerManager;
  init.MainGraphicBank=PMainGraphicBank;

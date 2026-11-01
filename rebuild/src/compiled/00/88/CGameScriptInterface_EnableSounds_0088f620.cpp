@@ -4,7 +4,8 @@ struct CSoundMgr {
 };
 class CFlaggedObject_Retail { public: void func_00991620(bool muted); };   // 0x00991620 (landed definer spelling; bool parameter)
 
-extern CSoundMgr* g_soundMgr;
+class CASoundManager;
+extern CASoundManager* PSoundManager;
 extern unsigned char g_soundsEnabledFlag;
 
 typedef void (__fastcall *StopFn)(CSoundMgr*);
@@ -12,7 +13,7 @@ typedef void (__fastcall *StopFn)(CSoundMgr*);
 
 void __fastcall CGameScriptInterface_EnableSounds(CGameScriptInterface* self, void* edx, char enable)
 {
-    CSoundMgr* mgr = g_soundMgr;
+    CSoundMgr* mgr = ((CSoundMgr*)PSoundManager);
     if (mgr == 0)
         return;
     if (enable) {
@@ -21,6 +22,6 @@ void __fastcall CGameScriptInterface_EnableSounds(CGameScriptInterface* self, vo
         return;
     }
     (*(StopFn*)((char*)mgr->vtbl + 0x40))(mgr);
-    ((CFlaggedObject_Retail*)g_soundMgr)->func_00991620(false);
+    ((CFlaggedObject_Retail*)((CSoundMgr*)PSoundManager))->func_00991620(false);
     g_soundsEnabledFlag = 0;
 }

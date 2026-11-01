@@ -24,9 +24,10 @@ public:
     virtual void StopSound(unsigned long soundId) const;
 };
 
-extern CGSIStopSoundEmitter* CGSIStopSound_Emitter;
+class CASoundManager;
+extern CASoundManager* PSoundManager;
 
 void CGameScriptInterface::StopSound(unsigned long soundId) const
 {
-    CGSIStopSound_Emitter->StopSound(soundId);
+    ((CGSIStopSoundEmitter*)PSoundManager)->StopSound(soundId);
 }

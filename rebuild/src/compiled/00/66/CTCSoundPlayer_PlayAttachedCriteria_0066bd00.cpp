@@ -54,7 +54,8 @@ public:
     CASoundBank& GetSampleBank() const;                // 0x004C7A80
 };
 extern bool          g_bSoundEnabled;                  // 0x0137E974
-extern void*         g_pGameState;                     // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;                     // 0x013B8394
 extern unsigned long g_InvalidSoundHandle;             // 0x0129D25C
 class CTCBase {
 public:
@@ -86,7 +87,7 @@ __declspec(noinline) void CTCSoundPlayer::GetPotentialCriteriaStrings(const CCha
 
 unsigned long CTCSoundPlayer::PlayAttachedCriteria(const CCharString& criteria, bool a, bool b, bool c, long d)
 {
-    if (g_bSoundEnabled && g_pGameState) {
+    if (g_bSoundEnabled && ((void*)PSoundManager)) {
         CASoundBank& bank = ParentThing->GetSampleBank();
         std::vector<CCharString> names;
         GetPotentialCriteriaStrings(criteria, names);

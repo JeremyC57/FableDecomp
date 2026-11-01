@@ -9,7 +9,8 @@
 // Layout: as the landed sibling 0x008368D0: CThing dead bit = bit 0 of +0x91, the sound object +0x98 (retail-only
 //   member); g_pGameState 0x013B8394.
 // Shape: one inline `g && !Dead` guard; the call is the last statement, so it becomes the tail jump.
-extern void* g_pGameState;                               // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;                               // 0x013B8394
 
 struct CSoundPlayer {                                    // the emitter's sound object at +0x98
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
@@ -26,7 +27,7 @@ public:
     unsigned char  _flags91_1 : 7;
     unsigned char  _pad92[0x6];
     CSoundPlayer*  m_pSoundPlayer;                       // +0x98 (retail-only member, not in Ego_r.pdb)
-    bool IsActive() const { return g_pGameState && !Dead; }
+    bool IsActive() const { return ((void*)PSoundManager) && !Dead; }
     void ReleaseLoop(unsigned long sampleID);
 };
 

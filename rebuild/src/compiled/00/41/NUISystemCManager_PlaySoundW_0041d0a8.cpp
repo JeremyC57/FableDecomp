@@ -49,7 +49,8 @@ public:
     virtual CSoundPlayer* GetSoundPlayer();              // slot 9 (+0x24)
     CASoundBank* GetBank(long id);                       // 0x00991840 (CSoundBankRegistry::GetBank)
 };
-extern CSoundSystem* g_pSoundSystem;                     // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;                     // 0x013B8394
 class CNewFrontendGameComponent {
 public:
     unsigned char _pad00[0x50];
@@ -66,7 +67,7 @@ public:
 };
 void CManager::PlaySoundW(CCharString& symbol, long bankId)
 {
-    CSoundSystem* soundSystem = g_pSoundSystem;
+    CSoundSystem* soundSystem = ((CSoundSystem*)PSoundManager);
     if (soundSystem)
     {
         CSoundInit init;
@@ -81,7 +82,7 @@ void CManager::PlaySoundW(CCharString& symbol, long bankId)
         {
             CASoundBank* bank = soundSystem->GetBank(bankId);
             if (bank)
-                g_pSoundSystem->GetSoundPlayer()->PlaySoundEvent(*bank, symbol, true, init, false);
+                ((CSoundSystem*)PSoundManager)->GetSoundPlayer()->PlaySoundEvent(*bank, symbol, true, init, false);
         }
     }
 }

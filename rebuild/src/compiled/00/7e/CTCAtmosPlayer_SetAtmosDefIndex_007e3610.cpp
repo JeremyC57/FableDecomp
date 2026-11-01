@@ -52,7 +52,8 @@ public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual CASoundEmitter* CreateEmitter(const C3DVector& pos);   // slot 4 (+0x10)
 };
-extern CASoundSystem* g_pSoundSystem;                           // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;                           // 0x013B8394
 
 class CThing {
 public:
@@ -73,8 +74,8 @@ void CTCAtmosPlayer::SetAtmosDefIndex(long index)
 {
     AtmosDefIndex = index;
     if (index) {
-        if (g_pSoundSystem)
-            PSoundEmitter = g_pSoundSystem->CreateEmitter(ParentThing->GetPos());
+        if (((CASoundSystem*)PSoundManager))
+            PSoundEmitter = ((CASoundSystem*)PSoundManager)->CreateEmitter(ParentThing->GetPos());
         if (PSoundEmitter) {
             CCharString name = g_DefStringTable.GetString(CGameDefinitionManager::Get().GetDefNameFromGlobalIndex(AtmosDefIndex).m_index);
             PSoundEmitter->Play(name);

@@ -72,7 +72,7 @@ public:
     ECreateDeviceSuccess SetDisplayMode(const C2DExtentsI& size, unsigned long bitDepth, ESurfaceMultisampleType multisample,
                                         unsigned long refreshRate);   // 0x009BFF40
 };
-extern CDisplayManager* g_pDisplayManager;               // 0x013B8390
+extern CDisplayManager* PDisplayManager;               // 0x013B8390
 extern bool g_bFrontEndFlag_01375448;                    // 0x01375448 (name not recovered)
 class CNewFrontendGameComponent;
 namespace NUISystem {
@@ -120,5 +120,5 @@ void CNewFrontendGameComponent::Init2()
     NUISystem::CManager::Clear();
     m_pFrontEndManager->Init(m_pFrontEndGraphicBank, m_pMeshBank, m_pInputManager, &CStartupDefinitionManager::Get());
     m_pFrontEndManager->BuildComponents(!WindowsMediaPlayerInstalled);
-    g_pDisplayManager->SetDisplayMode(C2DExtentsI(1024, 768), 16, SURFACE_MULTISAMPLE_NONE, 60);
+    PDisplayManager->SetDisplayMode(C2DExtentsI(1024, 768), 16, SURFACE_MULTISAMPLE_NONE, 60);
 }

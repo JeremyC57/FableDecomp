@@ -53,7 +53,8 @@ public:
     virtual CSoundPlayer* GetSoundPlayer();              // slot 9 (+0x24)
     CASoundBank* GetBank(long id);                       // 0x00991840 (CSoundBankRegistry::GetBank)
 };
-extern CSoundSystem* g_pSoundSystem;                     // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;                     // 0x013B8394
 class CDefinitionManager;
 namespace NUISystem {
 class CManager {
@@ -64,9 +65,9 @@ public:
 };
 unsigned long CManager::PlaySample(CCharString& symbol, long bankId)
 {
-    if (g_pSoundSystem && !m_pDefinitionManager)
+    if (((CSoundSystem*)PSoundManager) && !m_pDefinitionManager)
     {
-        CASoundBank* bank = g_pSoundSystem->GetBank(bankId);
+        CASoundBank* bank = ((CSoundSystem*)PSoundManager)->GetBank(bankId);
         if (bank)
         {
             long index = bank->GetSoundIndexFromSymbol(symbol);
@@ -74,7 +75,7 @@ unsigned long CManager::PlaySample(CCharString& symbol, long bankId)
             {
                 CSoundInit init;
                 init.GainFaderBits = 0x40;
-                return g_pSoundSystem->GetSoundPlayer()->PlaySoundEvent(*bank, index, true, init, false);
+                return ((CSoundSystem*)PSoundManager)->GetSoundPlayer()->PlaySoundEvent(*bank, index, true, init, false);
             }
         }
     }

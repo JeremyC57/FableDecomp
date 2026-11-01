@@ -33,7 +33,8 @@ public:
     unsigned char _pad_0x04[0x21];
     bool          m_musicEnabled;                       // +0x25
 };
-extern CSoundSystem* g_pSoundSystem;                    // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;                    // 0x013B8394
 
 namespace std {
 template <class T1, class T2> struct pair {
@@ -85,7 +86,7 @@ protected:
 
 void CMusicManager::UpdateCurrentMusicOffset()
 {
-    CSoundSystem* sound = g_pSoundSystem;
+    CSoundSystem* sound = ((CSoundSystem*)PSoundManager);
     if (sound && sound->m_musicEnabled) {
         CRegisteredMusicMap::value_type* it = RegisteredMusic.Find(CurrentMusicID);
         if (it != RegisteredMusic.End()) {

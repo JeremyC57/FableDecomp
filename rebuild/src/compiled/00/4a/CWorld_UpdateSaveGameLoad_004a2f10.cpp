@@ -239,7 +239,8 @@ class CSoundManagerLH { public:                             // the object at 0x0
     virtual void v045();
     virtual void SetGroupVolume(unsigned long groupMask, float volume, float fadeTime);   // slot 46 (+0xB8) 0x00A3E9D0
 };
-extern CSoundManagerLH* g_pSoundSystem;                     // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;                     // 0x013B8394
 
 extern bool g_ProgressDebugDisplay;                         // 0x013B85F0
 extern bool g_ProgressDebugDisplaySaved;                    // 0x013B89B8
@@ -313,10 +314,10 @@ void CWorld::UpdateSaveGameLoad()
         g_ProgressDebugDisplay = g_ProgressDebugDisplaySaved;
         Component->GetDisplayEngine().EndScreenFadeOut();
         DisplayMiniMapOnRegionLoad = true;
-        if (g_pSoundSystem) {
-            g_pSoundSystem->SetGroupVolume(0x10, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
-            g_pSoundSystem->SetGroupVolume(0x40, CUserProfileManager::Get().GetDialogueVolume(), 0.0f);
-            g_pSoundSystem->SetGroupVolume(0x80, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
+        if (((CSoundManagerLH*)PSoundManager)) {
+            ((CSoundManagerLH*)PSoundManager)->SetGroupVolume(0x10, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
+            ((CSoundManagerLH*)PSoundManager)->SetGroupVolume(0x40, CUserProfileManager::Get().GetDialogueVolume(), 0.0f);
+            ((CSoundManagerLH*)PSoundManager)->SetGroupVolume(0x80, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
         }
         SetAsPaused(false);
         SaveGameLoadStatus = 0;

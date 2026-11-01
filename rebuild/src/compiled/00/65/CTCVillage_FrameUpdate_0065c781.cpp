@@ -103,7 +103,8 @@ bool __fastcall IS_THING_ALIVE(CThingSoundEmitter* const& thing);   // 0x0065D55
 class CSymbolMap { public:
     CASoundBank* FindFirstSymbolWithVal(const CCharString* value);   // 0x009917E0
 };
-extern CSymbolMap* g_pSoundBankMap;             // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;             // 0x013B8394
 struct CGroupEntryRef {                         // CDefPointer-like counted pointer to the text group entry
     struct CRefCounted {
         long m_count;
@@ -288,7 +289,7 @@ void CTCVillage::FrameUpdate()
                 WasCurfewTime = IsCurfewTime_00658db3();
                 WasCookTime = IsCookTime_00658b20();
                 if (entry) {
-                    CASoundBank* soundBank = g_pSoundBankMap->FindFirstSymbolWithVal(&entry->BankName);
+                    CASoundBank* soundBank = ((CSymbolMap*)PSoundManager)->FindFirstSymbolWithVal(&entry->BankName);
                     if (soundBank) {
                         long sample = soundBank->GetSoundIndexFromSymbol("SND_" + entry->SoundName);
                         if (sample > 0) {

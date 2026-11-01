@@ -31,7 +31,7 @@ class C2DBoxF { public:
 class CDisplayManager { public:
     C2DBoxF GetVVisibleTelevisionScreenArea() const;        // 0x009BECE0
 };
-extern CDisplayManager* g_pDisplayManager;                  // 0x013B8390
+extern CDisplayManager* PDisplayManager;                  // 0x013B8390
 float __stdcall GFVXToAX(float x);                          // 0x009E1DA0
 extern long g_framesPerSecond;                              // 0x01375550
 
@@ -84,7 +84,8 @@ class CFontBank;
 struct CFontBankManager {
     CCountedPointer<CFontBank> GetFont(const CCharString& name);   // 0x009E2C80
 };
-extern CFontBankManager* g_pFontBankManager;                // 0x013B838C
+class CFontManager;
+extern CFontManager* PFontManager;                // 0x013B838C
 
 namespace NPlayerGui {
 class CScreenMessage { public:
@@ -127,11 +128,11 @@ class CPlayerGui { public:
 
 void CPlayerGui::AddScreenMessage(const CWideString& text)
 {
-    C2DBoxF area = g_pDisplayManager->GetVVisibleTelevisionScreenArea();
+    C2DBoxF area = PDisplayManager->GetVVisibleTelevisionScreenArea();
     float margin = GFVXToAX(GetPlayerGuiDef()->MessageLeftMargin);
     if (area.TLX < margin)
         area.TLX = margin;
-    CFontBank* font = g_pFontBankManager->GetFont(GetPlayerGuiDef()->MessageFont).Data;
+    CFontBank* font = ((CFontBankManager*)PFontManager)->GetFont(GetPlayerGuiDef()->MessageFont).Data;
     CWideString formatted;
     FormatStringForArea(area, *font, text, formatted);
     ScreenMessages.push_back(NPlayerGui::CScreenMessage(formatted, (long)(g_framesPerSecond * GetPlayerGuiDef()->MessageDisplaySeconds), GetPlayerGuiDef()->MessageCharactersPerFrame));

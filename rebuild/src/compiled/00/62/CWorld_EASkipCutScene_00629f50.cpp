@@ -47,7 +47,8 @@ struct CSoundSystem {
     virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008();
     virtual CSoundPlayer* GetSoundPlayer();       // slot 9 (+0x24)
 };
-extern CSoundSystem* g_pSoundSystem;               // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;               // 0x013B8394
 class CPlayerGuiDef { public:
     unsigned char _pad[0x5ec];
     CCharString   TextBoxButtonBSoundCriteria;    // +0x5EC
@@ -80,7 +81,7 @@ void CWorld::EASkipCutScene(const CGameEvent* event)
         const CPlayerGuiDef* def = &CPlayerGui::PeekGuiDef();
         CSoundInit init;
         init.GainFaderBits = 0x8010;
-        g_pSoundSystem->GetSoundPlayer()->PlaySoundEvent(GetSampleBank(), def->TextBoxButtonBSoundCriteria, true, init, false);
+        ((CSoundSystem*)PSoundManager)->GetSoundPlayer()->PlaySoundEvent(GetSampleBank(), def->TextBoxButtonBSoundCriteria, true, init, false);
         PMessageEventManager->AddMessage(0x32, g_framesPerSecond, C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, 0);
         subtitles.Clear(false);
         subtitles.CutsceneSkipped = true;

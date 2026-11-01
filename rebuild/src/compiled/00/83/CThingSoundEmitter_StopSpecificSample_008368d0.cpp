@@ -10,7 +10,8 @@
 // Layout: retail CThingSoundEmitter (the landed PlaySample 0x00836810 model): the CThing flag byte +0x91 (bit 0 = Dead)
 //   and the retail-only sound object at +0x98. Local model (Ego_r.pdb lacks the +0x98 member).
 // Shape: the global test first, then the dead bit, through one inline guard (`g && !Dead`), as the landed siblings.
-extern void* g_pGameState;                               // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;                               // 0x013B8394
 
 struct CSoundPlayer {                                    // the emitter's sound object at +0x98
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
@@ -24,7 +25,7 @@ class CThingSoundEmitter { public:
     unsigned char  _flags91_1 : 7;
     unsigned char  _pad92[0x6];
     CSoundPlayer*  m_pSoundPlayer;                       // +0x98 (retail-only member, not in Ego_r.pdb)
-    bool IsActive() const { return g_pGameState && !Dead; }
+    bool IsActive() const { return ((void*)PSoundManager) && !Dead; }
     void StopSpecificSample(unsigned long sampleID);
 };
 

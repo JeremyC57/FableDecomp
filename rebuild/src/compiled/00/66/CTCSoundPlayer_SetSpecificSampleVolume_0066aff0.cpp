@@ -36,7 +36,8 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-extern void* g_pSoundSystem;                                // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;                                // 0x013B8394
 
 class CTCSoundPlayer { public:
     void*                   __vftable;                      // +0x00
@@ -53,7 +54,7 @@ class CTCSoundPlayer { public:
 
 void CTCSoundPlayer::SetSpecificSampleVolume(unsigned long sampleID, float volume)
 {
-    if (g_pSoundSystem) {
+    if (((void*)PSoundManager)) {
         if (HasLiveAttachedEmitter())
             PAttachedEmitter.GetPItem()->SetSpecificSampleVolume(sampleID, volume);
     }

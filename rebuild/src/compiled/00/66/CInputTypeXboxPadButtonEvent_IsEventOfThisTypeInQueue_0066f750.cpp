@@ -22,7 +22,7 @@ class CInputManager {
 public:
     bool IsJoystickEventInQueue(EInputEventType type, long button, CInputEvent& event, long player) const;   // 0x009F4C60
 };
-extern CInputManager* g_pInputManager;
+extern CInputManager* PInputManager;
 
 class CInputTypeXboxPadButtonEvent {
 public:
@@ -48,7 +48,7 @@ private:
 bool CInputTypeXboxPadButtonEvent::IsEventOfThisTypeInQueue(EInputButtonEventType type, long player, float& value) const
 {
     CInputEvent event;
-    if (g_pInputManager->IsJoystickEventInQueue(GetEventTypeFromGeneralButtonType(type), Button, event, player)) {
+    if (PInputManager->IsJoystickEventInQueue(GetEventTypeFromGeneralButtonType(type), Button, event, player)) {
         value = event.GetJoystickButtonPressureFraction();
         return true;
     }

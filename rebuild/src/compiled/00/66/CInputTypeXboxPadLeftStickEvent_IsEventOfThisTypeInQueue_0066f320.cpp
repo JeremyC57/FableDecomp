@@ -19,12 +19,12 @@ class CInputManager {
 public:
     bool IsJoystickEventInQueue(EInputEventType type, long index, CInputEvent& event, long player) const;  // 0x009F4C60
 };
-extern CInputManager* g_pInputManager;                   // 0x013B8388
+extern CInputManager* PInputManager;                   // 0x013B8388
 struct CInputTypeXboxPadLeftStickEvent_Methods : CInputTypeXboxPadLeftStickEvent {
     bool IsEventOfThisTypeInQueue(EInputButtonEventType button_event_type, long player, float& value) const;
 };
 bool CInputTypeXboxPadLeftStickEvent_Methods::IsEventOfThisTypeInQueue(EInputButtonEventType button_event_type, long player, float& value) const
 {
     CInputEvent event;
-    return g_pInputManager->IsJoystickEventInQueue(INPUT_EVENT_TYPE_XBOX_PAD_LEFT_STICK, 0, event, player);
+    return PInputManager->IsJoystickEventInQueue(INPUT_EVENT_TYPE_XBOX_PAD_LEFT_STICK, 0, event, player);
 }

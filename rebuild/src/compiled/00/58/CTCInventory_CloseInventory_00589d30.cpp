@@ -150,7 +150,8 @@ struct CSoundSystem {
     virtual void s042(); virtual void s043(); virtual void s044(); virtual void s045();
     virtual void SetGroupVolume(long groupMask, float volume, float fadeTime); // slot 46 (+0xB8)
 };
-extern CSoundSystem* g_pSoundSystem;                    // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;                    // 0x013B8394
 struct CRenderer {
     virtual void r000(); virtual void r001(); virtual void r002(); virtual void r003(); virtual void r004(); virtual void r005();
     virtual void r006(); virtual void r007(); virtual void r008(); virtual void r009(); virtual void r010(); virtual void r011();
@@ -269,10 +270,10 @@ void CTCInventory::CloseInventory()
     g_pEngine->PDisplayEngine->PRenderer->SetEnabled(true);
     CWorld* world = (&GetWorld());
     world->LastInventoryCloseFrame = CWorld::GetFrame();
-    if (g_pSoundSystem) {
-        g_pSoundSystem->SetGroupVolume(0x10, CUserProfileManager::Get().GetMusicVolume(), 0.0f);
-        g_pSoundSystem->SetGroupVolume(0x40, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
-        g_pSoundSystem->SetGroupVolume(0x80, CUserProfileManager::Get().GetMusicVolume(), 0.0f);
+    if (((CSoundSystem*)PSoundManager)) {
+        ((CSoundSystem*)PSoundManager)->SetGroupVolume(0x10, CUserProfileManager::Get().GetMusicVolume(), 0.0f);
+        ((CSoundSystem*)PSoundManager)->SetGroupVolume(0x40, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
+        ((CSoundSystem*)PSoundManager)->SetGroupVolume(0x80, CUserProfileManager::Get().GetMusicVolume(), 0.0f);
     }
     NUISystem::CManager::GetInstance()->SetCurrentStyle(NUISystem::CManager::GetInstance()->GetStyleDef()->Style, true);
     g_pEngine->PDisplayEngine->PRenderer->SetPaused(false, false);

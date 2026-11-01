@@ -30,7 +30,8 @@ public:
     void* FindValueForSymbol(long symbol);                  // 0x009916F0
     void* FindFirstValue();                                 // 0x00991720
 };
-extern CSymbolMap* g_pSpeechBankMap;                        // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;                        // 0x013B8394
 extern long g_framesPerSecond;                              // 0x01375550
 extern long g_DefaultSpeechDurationFrames;                  // 0x013BAB90
 
@@ -58,11 +59,11 @@ private:
     const CLipSyncDataBank* GetPLipSyncBank() const         // out of line @ 0x006E2860
     {
         const CLipSyncDataBank* lipSync = 0;
-        if (g_pSpeechBankMap) {
+        if (((CSymbolMap*)PSoundManager)) {
             const CASoundBank* bank = PSpeechBank ? PSpeechBank : (&PeekSampleBank());
-            lipSync = (const CLipSyncDataBank*)g_pSpeechBankMap->FindValueForSymbol((long)bank);
+            lipSync = (const CLipSyncDataBank*)((CSymbolMap*)PSoundManager)->FindValueForSymbol((long)bank);
             if (!lipSync)
-                lipSync = (const CLipSyncDataBank*)g_pSpeechBankMap->FindFirstValue();
+                lipSync = (const CLipSyncDataBank*)((CSymbolMap*)PSoundManager)->FindFirstValue();
         }
         return lipSync;
     }

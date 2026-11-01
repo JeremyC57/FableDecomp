@@ -32,16 +32,16 @@ class C2DExtentsI { public:
 class CDisplayManager { public:
     const C2DExtentsI GetRenderTargetDimensions();                 // 0x009BEDC0
 };
-extern CDisplayManager* g_pDisplayManager;                    // 0x013B8390
+extern CDisplayManager* PDisplayManager;                    // 0x013B8390
 
 namespace NPlayerGui {
 
 C2DBoxF __fastcall GFToScreenScaled(const C2DBoxF& box)
 {
-    return C2DBoxF((float)g_pDisplayManager->GetRenderTargetDimensions().Width * box.TLX * (1.0f / 640.0f),
-                   (float)g_pDisplayManager->GetRenderTargetDimensions().Height * box.TLY * (1.0f / 480.0f),
-                   (float)g_pDisplayManager->GetRenderTargetDimensions().Width * box.BRX * (1.0f / 640.0f),
-                   (float)g_pDisplayManager->GetRenderTargetDimensions().Height * box.BRY * (1.0f / 480.0f));
+    return C2DBoxF((float)PDisplayManager->GetRenderTargetDimensions().Width * box.TLX * (1.0f / 640.0f),
+                   (float)PDisplayManager->GetRenderTargetDimensions().Height * box.TLY * (1.0f / 480.0f),
+                   (float)PDisplayManager->GetRenderTargetDimensions().Width * box.BRX * (1.0f / 640.0f),
+                   (float)PDisplayManager->GetRenderTargetDimensions().Height * box.BRY * (1.0f / 480.0f));
 }
 
 }

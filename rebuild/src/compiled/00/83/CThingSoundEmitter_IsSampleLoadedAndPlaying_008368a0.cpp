@@ -11,7 +11,8 @@ class CASoundBank;
 class CSoundInit;
 class CCharString { public: void* m_pData; };
 
-extern void*         g_pGameState;                       // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;                       // 0x013B8394
 extern unsigned long g_InvalidSoundHandle;               // 0x0129D25C
 
 struct CSoundPlayer {                                    // the emitter's sound object at +0x98
@@ -32,7 +33,7 @@ class CThingSoundEmitter { public:
     unsigned char  _flags91_1 : 7;
     unsigned char  _pad92[0x6];
     CSoundPlayer*  m_pSoundPlayer;                       // +0x98 (retail-only member, not in Ego_r.pdb)
-    bool IsActive() const { return g_pGameState && !Dead; }
+    bool IsActive() const { return ((void*)PSoundManager) && !Dead; }
     unsigned long PlaySample(CASoundBank& bank, long sample, bool loop, const CSoundInit& init, bool attached);
     unsigned long PlaySoundEvent(CASoundBank& bank, const CCharString& name, bool loop, CSoundInit& init, bool attached);
     bool IsSamplePlaying(unsigned long sampleID) const;

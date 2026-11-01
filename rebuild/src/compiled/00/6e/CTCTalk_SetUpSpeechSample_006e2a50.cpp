@@ -37,7 +37,8 @@ public:
     void* FindFirstValue();                                      // 0x00991720
     void* FindSymbolForValue(long value);                        // 0x00991690
 };
-extern CSymbolMap* g_pSpeechBankMap;                             // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;                             // 0x013B8394
 
 struct CSpeakerInfo {
     unsigned char _pad_0x00[0xAC];
@@ -78,12 +79,12 @@ public:
 
     CLipSyncDataBank* GetLipSyncBank()
     {
-        if (!g_pSpeechBankMap)
+        if (!((CSymbolMap*)PSoundManager))
             return 0;
         const CASoundBank* bank = PSpeechBank ? PSpeechBank : (&PeekSampleBank());
-        CLipSyncDataBank* lipSync = (CLipSyncDataBank*)g_pSpeechBankMap->FindValueForSymbol((long)bank);
+        CLipSyncDataBank* lipSync = (CLipSyncDataBank*)((CSymbolMap*)PSoundManager)->FindValueForSymbol((long)bank);
         if (!lipSync)
-            lipSync = (CLipSyncDataBank*)g_pSpeechBankMap->FindFirstValue();
+            lipSync = (CLipSyncDataBank*)((CSymbolMap*)PSoundManager)->FindFirstValue();
         return lipSync;
     }
 
@@ -96,7 +97,7 @@ void CTCTalk::SetUpSpeechSample()
     SpeechSample = 0;
     CLipSyncDataBank* lipSync = GetLipSyncBank();
     if (lipSync) {
-        CASoundBank* soundBank = (CASoundBank*)g_pSpeechBankMap->FindSymbolForValue((long)lipSync);
+        CASoundBank* soundBank = (CASoundBank*)((CSymbolMap*)PSoundManager)->FindSymbolForValue((long)lipSync);
         if (soundBank)
             SpeechSample = soundBank->GetSoundIndexFromSymbol(GetDefinitionManager().GetSpeakerInfo()->SpeechSymbol);
         lipSync->BeginLoadingEntry(SpeechSample);

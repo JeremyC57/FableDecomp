@@ -36,7 +36,8 @@ class CASoundBank;
 struct CSoundBankRegistry {
     CASoundBank* GetBank(long id);                 // 0x00991840
 };
-extern CSoundBankRegistry* g_pSoundBankRegistry;   // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;   // 0x013B8394
 
 class CSubtitledMessage {
 public:
@@ -54,5 +55,5 @@ public:
 CSubtitledMessage::CSubtitledMessage()
     : PSpeechBank(0), SpeechIndex(0), Speech3D(true), Narrator("UNKNOWN")
 {
-    PSpeechBank = g_pSoundBankRegistry->GetBank(1);
+    PSpeechBank = ((CSoundBankRegistry*)PSoundManager)->GetBank(1);
 }

@@ -59,7 +59,7 @@ class CGraphicDataBank;
 void __fastcall GFACoordToVCoord(const C2DVector& in, C2DVector& out);  // 0x009E21D0
 class C2DExtentsI { public: long Width, Height; };
 class CDisplayManager { public: const C2DExtentsI GetRenderTargetDimensions(); };   // 0x009BEDC0
-extern CDisplayManager* g_pDisplayManager_013b8390;                    // 0x013B8390
+extern CDisplayManager* PDisplayManager;                    // 0x013B8390
 class CFontBank { public: float GetStringWidth(const CWideString& text) const; };   // 0x0048DA62
 enum EEngine2DLayer { ENGINE_2D_LAYER_SUBTITLE = 0x43 };
 struct CPlayerGui {
@@ -99,13 +99,13 @@ void CCrimeStatBar::DrawStatBarOnLeft(const CEnginePrimitivePrepareInfo& info, c
     float y = (pos.Y - left) * Fraction + left;
     long rounded = FloorToLong(y);
     C2DVector barEnd(pos.X, (float)rounded);
-    barEnd.Y = (float)g_pDisplayManager_013b8390->GetRenderTargetDimensions().Height - barEnd.Y;
+    barEnd.Y = (float)PDisplayManager->GetRenderTargetDimensions().Height - barEnd.Y;
     DrawStatBox(info, bank, barEnd, StatType, Effect, Graphic, LongToWideString((long)Value), alpha, withText, true);
     CRGBColour textColour = colour;
     if (TextColourFlag > 0)
         textColour = Def->TextColour;
     C2DVector textPos(0.0f, barEnd.Y + textOffset.Y);
-    float width = (float)g_pDisplayManager_013b8390->GetRenderTargetDimensions().Width;
+    float width = (float)PDisplayManager->GetRenderTargetDimensions().Width;
     textPos.X = (width - Font->GetStringWidth(LongToWideString((long)Value))) * 0.5f;
     C2DVector screen;
     GFACoordToVCoord(textPos, screen);

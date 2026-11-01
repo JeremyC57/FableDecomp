@@ -67,13 +67,15 @@ public:
     void StopMusic();                                // 0x00991750
     void Shutdown();                                 // 0x009918F0
 };
-extern CSoundManager* g_pSoundManager;               // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;               // 0x013B8394
 
 class CLSocketServer {
 public:
     void CloseSocket(void* socket);                  // 0x009BF5A0
 };
-extern CLSocketServer* g_pSocketServer;              // 0x013B8390
+class CDisplayManager;
+extern CDisplayManager* PDisplayManager;              // 0x013B8390
 extern CCountedPointer41915a g_GlobalCountedPointer; // 0x013B8790
 extern void* g_pGame;                                // 0x013B86A0
 
@@ -128,19 +130,19 @@ public:
 void CMainGameComponent::Shutdown()
 {
     Running = false;
-    if (g_pSoundManager) {
-        g_pSoundManager->StopAll();
-        g_pSoundManager->SetPaused(false);
-        g_pSoundManager->StopMusic();
+    if (((CSoundManager*)PSoundManager)) {
+        ((CSoundManager*)PSoundManager)->StopAll();
+        ((CSoundManager*)PSoundManager)->SetPaused(false);
+        ((CSoundManager*)PSoundManager)->StopMusic();
     }
     if (NetworkSession)
         NetworkSession->Shutdown();
-    if (g_pSoundManager)
-        g_pSoundManager->Shutdown();
+    if (((CSoundManager*)PSoundManager))
+        ((CSoundManager*)PSoundManager)->Shutdown();
     m_10 = 0;
     g_GlobalCountedPointer.Clear();
     g_pGame = 0;
-    g_pSocketServer->CloseSocket(Socket);
+    ((CLSocketServer*)PDisplayManager)->CloseSocket(Socket);
     EditWorld.Shutdown();
     if (InputSystem.IsInitialised())
         InputSystem.Uninitialise_004ae990();

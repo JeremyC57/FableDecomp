@@ -52,7 +52,8 @@ public:
     virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008();
     virtual CSoundPlayer* GetSoundPlayer();           // slot 9 (+0x24)
 };
-extern CSoundSystem* g_pSoundSystem;                   // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;                   // 0x013B8394
 class CPlayerGuiDef {
 public:
     unsigned char _pad[0x5e8];
@@ -114,9 +115,9 @@ void CWorld::EAAnswerQuestion(const CGameEvent* event)
         CSoundInit init;
         init.GainFaderBits = 0x8010;
         if (answer == 1)
-            g_pSoundSystem->GetSoundPlayer()->PlaySoundEvent(GetSampleBank(), def->TextBoxButtonASoundCriteria, true, init, false);
+            ((CSoundSystem*)PSoundManager)->GetSoundPlayer()->PlaySoundEvent(GetSampleBank(), def->TextBoxButtonASoundCriteria, true, init, false);
         else
-            g_pSoundSystem->GetSoundPlayer()->PlaySoundEvent(GetSampleBank(), def->TextBoxButtonBSoundCriteria, true, init, false);
+            ((CSoundSystem*)PSoundManager)->GetSoundPlayer()->PlaySoundEvent(GetSampleBank(), def->TextBoxButtonBSoundCriteria, true, init, false);
         subtitles.Clear(false);
     }
 }

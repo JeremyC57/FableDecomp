@@ -41,7 +41,7 @@ class CGraphicBankManager {
 public:
     void CloseGraphicBank(CCountedPointer<CGraphicDataBank> bank);   // 0x009F8290
 };
-extern CGraphicBankManager* g_pGraphicBankManager;       // 0x013B837C
+extern CGraphicBankManager* PGraphicBankManager;       // 0x013B837C
 class CMeshBankManager {
 public:
     void CloseMeshBank(CCountedPointer<CMeshDataBank> bank);         // 0x00A09DC0
@@ -78,7 +78,7 @@ void CNewFrontendGameComponent::CleanUpInterfaces()
         m_pEngine.Data = 0;
     }
     if (m_pFrontEndGraphicBank.Data) {
-        g_pGraphicBankManager->CloseGraphicBank(m_pFrontEndGraphicBank);
+        PGraphicBankManager->CloseGraphicBank(m_pFrontEndGraphicBank);
         m_pFrontEndGraphicBank.~CCountedPointer<CGraphicDataBank>();
         m_pFrontEndGraphicBank.Data = 0;
     }

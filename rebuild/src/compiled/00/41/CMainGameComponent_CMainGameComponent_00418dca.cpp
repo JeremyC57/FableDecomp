@@ -53,7 +53,8 @@ class CGameComponent : public CBaseClass, public CComponentListEntry { public:
 struct CComponentList {
     void AddComponent(CComponentListEntry* component);  // 0x009C0190
 };
-extern CComponentList* g_pComponentList;           // 0x013B8390
+class CDisplayManager;
+extern CDisplayManager* PDisplayManager;           // 0x013B8390
 class CMainGameComponent : public CGameComponent {
 public:
     CASoundBank*                         PSampleBank;               // +0x10
@@ -114,6 +115,6 @@ CMainGameComponent::CMainGameComponent(CMainGameComponentParent* parent, const C
       InitStructure(init), Initialised(false), AllowRender(true), Rendered(false)
 {
     LastGameTurnForceRendered = 0;
-    g_pComponentList->AddComponent(this);
+    ((CComponentList*)PDisplayManager)->AddComponent(this);
     DebugNoFramesUnableToRender = 0;
 }

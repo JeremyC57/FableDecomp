@@ -91,7 +91,7 @@ class CGameDefinitionManager : public CSingleton44C6B0 { public: static CGameDef
 struct CNetworkClient { void Start(); };           // 0x004AE9C0 (empty)
 struct CRoughFrameCounter { long _a, _b; void NewFrame(); };   // 0x009F8BA0
 class CGameComponent;
-extern CDisplayManager* g_pDisplayManager;         // 0x013B8390
+extern CDisplayManager* PDisplayManager;         // 0x013B8390
 extern CMemoryAllocator* g_pMemoryAllocator;       // 0x013CAA90
 extern bool g_LoadEventPackages;                   // 0x013B85F6
 extern bool g_SaveEventPackages;                   // 0x013B85F5
@@ -143,7 +143,7 @@ bool CMainGameComponent::Run(CGameComponent** next)
     else if (g_SaveEventPackages)
         BeginOutputSaving(g_EventPackageFileName);
     if (g_PresentationInterval)
-        g_pDisplayManager->ChangePresentationInterval(g_PresentationInterval, 1, true);
+        PDisplayManager->ChangePresentationInterval(g_PresentationInterval, 1, true);
     else {
         CWorld* world = PWorld;
         world->GetWorldMap()->GetRegion(world->GetWorldMap()->GetLoadedRegion()).GetPointer();

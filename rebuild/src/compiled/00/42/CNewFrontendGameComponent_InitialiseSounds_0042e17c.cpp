@@ -58,7 +58,8 @@ public:
     virtual void SetGroupVolume(unsigned long groupMask, float volume, float fadeTime);   // slot 46 (+0xB8) 0x00A3E9D0
     void SetEnabled(bool enabled);                       // 0x00991600
 };
-extern CSoundManagerLH* g_pSoundSystem;                 // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;                 // 0x013B8394
 
 class CNewFrontendGameComponent {
 public:
@@ -71,10 +72,10 @@ private:
 
 void CNewFrontendGameComponent::InitialiseSounds()
 {
-    if (g_pSoundSystem) {
-        PSampleBank.Reset(new CSoundBankLH(g_pSoundSystem));
+    if (((CSoundManagerLH*)PSoundManager)) {
+        PSampleBank.Reset(new CSoundBankLH(((CSoundManagerLH*)PSoundManager)));
         PSampleBank->Load(L"data\\sound\\frontend.lug");
-        g_pSoundSystem->SetGroupVolume(0x8000, 1.0f, 0.0f);
-        g_pSoundSystem->SetEnabled(true);
+        ((CSoundManagerLH*)PSoundManager)->SetGroupVolume(0x8000, 1.0f, 0.0f);
+        ((CSoundManagerLH*)PSoundManager)->SetEnabled(true);
     }
 }

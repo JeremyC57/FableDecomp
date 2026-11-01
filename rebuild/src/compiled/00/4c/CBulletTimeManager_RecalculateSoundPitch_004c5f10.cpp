@@ -27,7 +27,8 @@ public:
     virtual void v040(); virtual void v041(); virtual void v042(); virtual void v043(); virtual void v044();
     virtual void SetPitch(long category, float pitch);  // slot 45 (+0xB4); name by effect
 };
-extern CSoundSystem* g_pSoundSystem;                    // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;                    // 0x013B8394
 
 namespace std {
 template <class T1, class T2> struct pair {
@@ -113,11 +114,11 @@ private:
 
 void CBulletTimeManager::RecalculateSoundPitch()
 {
-    if (g_pSoundSystem) {
+    if (((CSoundSystem*)PSoundManager)) {
         float pitch = 1.0f;
         for (std::map<void*, CBulletTimeInfo>::iterator it = BulletTimeInfoMap.begin(); it != BulletTimeInfoMap.end(); ++it)
             if (it->second.SoundPitch < pitch)
                 pitch = it->second.SoundPitch;
-        g_pSoundSystem->SetPitch(0, pitch);
+        ((CSoundSystem*)PSoundManager)->SetPitch(0, pitch);
     }
 }

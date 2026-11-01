@@ -83,14 +83,15 @@ public:
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16();
     virtual void PlayStream(const CWideString& fileName, long channel, long flags, float gain, float fade, long loops);   // slot 17 (+0x44) 0x00A3E4B0
 };
-extern CSoundManagerLH* g_pSoundSystem;                 // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;                 // 0x013B8394
 
 void __fastcall GPlayMusic(float fade)
 {
-    if (g_pSoundSystem) {
+    if (((CSoundManagerLH*)PSoundManager)) {
         CWideString fileName = NResourceDirectoryNames::GetDVDMusicDir()
                              + NUISystem::CManager::GetInstance()->GetMiscThingsDef()->FrontEndMusic;
         fileName.Replace(L".wma", L".ogg");
-        g_pSoundSystem->PlayStream(fileName, 0, 0, 1.0f, fade, -1);
+        ((CSoundManagerLH*)PSoundManager)->PlayStream(fileName, 0, 0, 1.0f, fade, -1);
     }
 }

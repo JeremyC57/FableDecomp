@@ -13,6 +13,8 @@
 //   epilogues); C2DVector's user copy constructor makes the copy-out memberwise while the assignment stays a `rep movsd`;
 //   `long index = 0` sits between them so it lives in a frame word; the parent list is named before the notify call;
 //   in the action walk `previous.GameAction = current.GameAction = action` stores the member first.
+class CASoundManager;
+extern CASoundManager* PSoundManager;                    // 0x013B8394 (naming wave 13)
 namespace NUISystem {
 struct C2DVector {
     float X, Y;
@@ -39,7 +41,6 @@ struct CGameState {
     virtual void v040(); virtual void v041(); virtual void v042(); virtual void v043(); virtual void v044(); virtual void v045();
     virtual void PlaySound(long sound, long a, long b);                  // slot 46 (+0xb8)
 };
-extern CGameState* g_pGameState;                   // 0x013B8394
 struct ActionNode {
     ActionNode* _M_next;
     ActionNode* _M_prev;
@@ -105,10 +106,10 @@ void CKeyRedefiner::Redefine(const CActionInputControl& control, bool notify)
         previous.GameAction = current.GameAction = node->_M_data;
         ::CUserProfileManager::Get().RedefineControlPassive(&current, &previous, index);
     }
-    if (g_pGameState) {
-        g_pGameState->PlaySound(0x10, 0, 0);
-        g_pGameState->PlaySound(0x80, 0, 0);
-        g_pGameState->PlaySound(0x40, 0, 0);
+    if (((CGameState*)PSoundManager)) {
+        ((CGameState*)PSoundManager)->PlaySound(0x10, 0, 0);
+        ((CGameState*)PSoundManager)->PlaySound(0x80, 0, 0);
+        ((CGameState*)PSoundManager)->PlaySound(0x40, 0, 0);
     }
     current.GameAction = Actions->_M_next->_M_data;
 }

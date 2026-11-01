@@ -29,7 +29,8 @@ public:
 class CFontBank { public:
     CCountedPointer<CFont> GetFont(const CCharString& name);   // 0x009E2C80
 };
-extern CFontBank* g_pFontBank;                     // 0x013B838C
+class CFontManager;
+extern CFontManager* PFontManager;                     // 0x013B838C
 class CMainGameComponent { public:
     unsigned char          _pad00[0x1614c];
     CCountedPointer<CFont> m_font;                 // +0x1614c
@@ -44,6 +45,6 @@ void CMainGameComponent::InitialiseFonts()
     }
     {
         CCharString name("ENG_ARIAL_18", -1);
-        m_font = g_pFontBank->GetFont(name);
+        m_font = ((CFontBank*)PFontManager)->GetFont(name);
     }
 }

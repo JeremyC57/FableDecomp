@@ -35,7 +35,8 @@ public:
     virtual void v045();
     virtual void SetGroupVolume(unsigned long groupMask, float volume, float fadeTime);   // slot 46 (+0xb8) 0x00A3E9D0
 };
-extern CSoundManagerLH* g_pSoundSystem;                 // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;                 // 0x013B8394
 
 class CRGBColour {
 public:
@@ -101,10 +102,10 @@ void __fastcall CRedefinerList::ResetKeysToDefaults(bool wasd)
             acceptButton->SetColour(colour);
         }
     }
-    if (g_pSoundSystem != 0) {
-        g_pSoundSystem->SetGroupVolume(0x10, 0.0f, 0.0f);
-        g_pSoundSystem->SetGroupVolume(0x80, 0.0f, 0.0f);
-        g_pSoundSystem->SetGroupVolume(0x40, 0.0f, 0.0f);
+    if (((CSoundManagerLH*)PSoundManager) != 0) {
+        ((CSoundManagerLH*)PSoundManager)->SetGroupVolume(0x10, 0.0f, 0.0f);
+        ((CSoundManagerLH*)PSoundManager)->SetGroupVolume(0x80, 0.0f, 0.0f);
+        ((CSoundManagerLH*)PSoundManager)->SetGroupVolume(0x40, 0.0f, 0.0f);
     }
 }
 }

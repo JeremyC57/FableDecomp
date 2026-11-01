@@ -19,7 +19,8 @@ struct CSoundSystem {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void ReleaseSoundObject(CSoundObject* sound);   // slot 5 (+0x14)
 };
-extern CSoundSystem* g_pSoundSystem;                     // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;                     // 0x013B8394
 
 class CThing { public:
     virtual ~CThing();                                   // 0x004C8310
@@ -63,7 +64,7 @@ class CThingSoundEmitter : public CThing { public:
 CThingSoundEmitter::~CThingSoundEmitter()
 {
     if (m_pSoundObject)
-        g_pSoundSystem->ReleaseSoundObject(m_pSoundObject);
+        ((CSoundSystem*)PSoundManager)->ReleaseSoundObject(m_pSoundObject);
     CIntelligentPointer<const CThing> cleared(0);
     const CThing* item = cleared.GetPItem();
     PAttachedThing.SetPItem(item);

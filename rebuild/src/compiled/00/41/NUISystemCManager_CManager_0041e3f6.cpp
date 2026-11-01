@@ -66,7 +66,7 @@ class CNewFrontendGameComponent { public:
     unsigned char _pad00[9];
     bool          Active;                       // +0x09 (descriptive)
 };
-extern CDisplayManager* g_pDisplayManager;      // 0x013B8390
+extern CDisplayManager* PDisplayManager;      // 0x013B8390
 extern CNewFrontendGameComponent* g_pNewFrontendGameComponent;   // 0x013B871C
 CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0
 void __fastcall SetIsUsingRelativeCoords(bool relative);   // 0x004299A8
@@ -152,12 +152,12 @@ CManager::CManager()
     SetInput(EIT_KEYBOARD);
     PWeaponsInventory = 0;
     CGraphicBankParams params;
-    g_pDisplayManager->GetBestCompressedAlphaTextureFormat_009be830(0x10, &params.CompressedAlpha);
-    g_pDisplayManager->GetBestCompressedAlphaTextureFormat2(0x10, &params.CompressedAlpha2);
-    g_pDisplayManager->GetBestCompressedAlphaTextureFormat3(0x10, &params.CompressedAlpha3);
-    g_pDisplayManager->GetBestAlphaTextureFormat(0x20, &params.Alpha);
-    g_pDisplayManager->GetBestOpaqueTextureFormat(0x20, &params.Opaque, false);
-    g_pDisplayManager->GetBestSignedTextureFormat(0x10, &params.Signed);
+    PDisplayManager->GetBestCompressedAlphaTextureFormat_009be830(0x10, &params.CompressedAlpha);
+    PDisplayManager->GetBestCompressedAlphaTextureFormat2(0x10, &params.CompressedAlpha2);
+    PDisplayManager->GetBestCompressedAlphaTextureFormat3(0x10, &params.CompressedAlpha3);
+    PDisplayManager->GetBestAlphaTextureFormat(0x20, &params.Alpha);
+    PDisplayManager->GetBestOpaqueTextureFormat(0x20, &params.Opaque, false);
+    PDisplayManager->GetBestSignedTextureFormat(0x10, &params.Signed);
     params.Value20 = -1;
     params.Value24 = -1;
     params.Flag1c = false;

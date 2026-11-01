@@ -29,21 +29,22 @@ struct CGSIOverrideMusicEmitter {
 struct CGameScriptInterface_OverrideMusicMethods : CGameScriptInterface {
     virtual void OverrideMusic(EMusicSetType musicSetType, bool enabled, bool forcePlay) const;
 };
-extern CGSIOverrideMusicEmitter* CGSIOverrideMusic_Emitter;
+class CASoundManager;
+extern CASoundManager* PSoundManager;
 
 void CGameScriptInterface_OverrideMusicMethods::OverrideMusic(
     EMusicSetType musicSetType, bool enabled, bool forcePlay) const {
     const CGameScriptInterface* scriptInterface =
         reinterpret_cast<const CGameScriptInterface*>(this);
     if (enabled) {
-        if (CGSIOverrideMusic_Emitter != 0) {
+        if (((CGSIOverrideMusicEmitter*)PSoundManager) != 0) {
             CGSIOverrideMusicCodeSection* section = &CUserProfileManager::Get();
             float value;
             if (section->useAlternate != 0)
                 value = section->alternateValue;
             else
                 value = section->primaryValue;
-            CGSIOverrideMusic_Emitter->Stop(0x100, value, 500.0f);
+            ((CGSIOverrideMusicEmitter*)PSoundManager)->Stop(0x100, value, 500.0f);
         }
         reinterpret_cast<CGSIOverrideMusicInner*>(scriptInterface->World)
             ->event->AddUBYTE((unsigned char)musicSetType);

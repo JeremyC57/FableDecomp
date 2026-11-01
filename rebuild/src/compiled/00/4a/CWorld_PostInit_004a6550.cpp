@@ -100,7 +100,7 @@ public:
     virtual void v40(); virtual void v41(); virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45();
     virtual void RefreshCategory(long category, float a, float b);   // slot 46 (+0xb8)
 };
-extern CASoundManager* g_pSoundManager;                // 0x013B8394
+extern CASoundManager* PSoundManager;                // 0x013B8394
 
 class CWorld : public CBaseClassNonCopyable, public CIDrawWorld {
 public:
@@ -147,9 +147,9 @@ void CWorld::PostInit(CDisplayEngine& displayEngine)
     NProfileTimer::StartProfile("Init Music Manager", 0);
     NProgressDisplay::DisplayProgress("Init Music Manager", -1.0f, false, false);
     PMusicManager.Reset(new CMusicManager);
-    if (g_pSoundManager) {
-        g_pSoundManager->RefreshCategory(0x10, 0, 0);
-        g_pSoundManager->RefreshCategory(0x40, 0, 0);
-        g_pSoundManager->RefreshCategory(0x80, 0, 0);
+    if (PSoundManager) {
+        PSoundManager->RefreshCategory(0x10, 0, 0);
+        PSoundManager->RefreshCategory(0x40, 0, 0);
+        PSoundManager->RefreshCategory(0x80, 0, 0);
     }
 }

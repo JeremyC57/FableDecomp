@@ -238,7 +238,7 @@ class CASoundManager { public:                            // RTTI base of CSound
     virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45();
     virtual void SetGroupVolume(unsigned long groupMask, float volume, float fadeTime);   // slot 46 (+0xB8) 0x00A3E9D0
 };
-extern CASoundManager* g_pSoundManager;                     // 0x013B8394 (labels DB: g_pSoundManager, CASoundManager*)
+extern CASoundManager* PSoundManager;                     // 0x013B8394 (labels DB: g_pSoundManager, CASoundManager*)
 
 class CAtmosProcess { public:
     unsigned char          _pad00[0x14];
@@ -290,15 +290,15 @@ void CAtmosProcess::UpdateInsideBuildings()
     if (wasInside != InsideBuilding) {
         float gain = CGameDefinitionManager::Get().PGlobalDef->SoundGainLowerValueWhenInsideOutside;
         if (InsideBuilding != 0) {
-            g_pSoundManager->SetGroupVolume(0x800, 1.0f, 1000.0f);
-            g_pSoundManager->SetGroupVolume(0x1000, 0.0f, 1000.0f);
-            g_pSoundManager->SetGroupVolume(0x2000, 1.0f, 1000.0f);
-            g_pSoundManager->SetGroupVolume(0x4000, gain, 1000.0f);
+            PSoundManager->SetGroupVolume(0x800, 1.0f, 1000.0f);
+            PSoundManager->SetGroupVolume(0x1000, 0.0f, 1000.0f);
+            PSoundManager->SetGroupVolume(0x2000, 1.0f, 1000.0f);
+            PSoundManager->SetGroupVolume(0x4000, gain, 1000.0f);
         } else {
-            g_pSoundManager->SetGroupVolume(0x1000, 1.0f, 1000.0f);
-            g_pSoundManager->SetGroupVolume(0x800, 0.0f, 1000.0f);
-            g_pSoundManager->SetGroupVolume(0x4000, 1.0f, 1000.0f);
-            g_pSoundManager->SetGroupVolume(0x2000, gain, 1000.0f);
+            PSoundManager->SetGroupVolume(0x1000, 1.0f, 1000.0f);
+            PSoundManager->SetGroupVolume(0x800, 0.0f, 1000.0f);
+            PSoundManager->SetGroupVolume(0x4000, 1.0f, 1000.0f);
+            PSoundManager->SetGroupVolume(0x2000, gain, 1000.0f);
         }
         long count;
         {

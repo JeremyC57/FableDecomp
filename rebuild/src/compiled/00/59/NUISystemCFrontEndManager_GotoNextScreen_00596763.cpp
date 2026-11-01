@@ -81,7 +81,8 @@ public:
     virtual void _s040(); virtual void _s041(); virtual void _s042(); virtual void _s043(); virtual void _s044(); virtual void _s045();
     virtual void SetChannelVolume(unsigned long channels, float volume, float time);   // slot 46 (+0xb8)
 };
-extern CSoundObject_013B8394* g_pSound_013B8394;         // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;         // 0x013B8394
 namespace NUISystem {
 class CObserver {
 public:
@@ -136,8 +137,8 @@ void CFrontEndManager::GotoNextScreen(CComponent* screen, bool clearStack)
 {
     CComponent* leaving = m_stackScreens.top();
     DeactivateAllEditBoxes(0);
-    if (screen == m_mapScreens[FRONTEND_SCREEN_0x1A] && g_pSound_013B8394)
-        g_pSound_013B8394->SetChannelVolume(0x100, 0.0f, 1000.0f);
+    if (screen == m_mapScreens[FRONTEND_SCREEN_0x1A] && ((CSoundObject_013B8394*)PSoundManager))
+        ((CSoundObject_013B8394*)PSoundManager)->SetChannelVolume(0x100, 0.0f, 1000.0f);
     leaving->OnScreenEvent(6);
     CManager::GetInstance()->RemoveObserver(&static_cast<CObserver&>(*leaving));
     if (clearStack)

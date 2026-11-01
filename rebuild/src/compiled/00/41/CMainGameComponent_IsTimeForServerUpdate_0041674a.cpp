@@ -17,7 +17,7 @@
 
 extern long g_WorldFramesPerSecond;               // 0x01375550
 class CInputManager { public: char _pad[0x38]; bool b38; };
-extern CInputManager* g_pInputManager;            // 0x013B8388
+extern CInputManager* PInputManager;            // 0x013B8388
 extern bool g_b13B860C;                           // 0x013B860C
 extern bool g_b13B8629;                           // 0x013B8629
 extern bool g_b13B8688;                           // 0x013B8688
@@ -38,7 +38,7 @@ protected:
 bool CMainGameComponent::IsTimeForServerUpdate(long frame) const
 {
     if (m_b09) {
-        if ((g_b13B860C && g_pInputManager->b38 && !g_b13B8629) || g_b13B8688) return true;
+        if ((g_b13B860C && PInputManager->b38 && !g_b13B8629) || g_b13B8688) return true;
         float framesAhead = ConvertGTToWF(GetGameTimeOfNextPresentCompletion()) - frame;
         if (framesAhead > 1.0f) return true;
     }

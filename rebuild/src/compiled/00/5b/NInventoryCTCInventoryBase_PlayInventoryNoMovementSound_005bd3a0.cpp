@@ -35,7 +35,8 @@ struct CGameState {
     virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008();
     virtual CSoundPlayer* GetSoundPlayer();              // slot 9 (+0x24)
 };
-extern CGameState* g_pGameState;                        // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;                        // 0x013B8394
 class CThing { public:
     CASoundBank& GetSampleBank() const;                 // 0x004C7A80
 };
@@ -58,11 +59,11 @@ public:
 };
 void CTCInventoryBase::PlayInventoryNoMovementSound() const
 {
-    if (g_pGameState) {
+    if (((CGameState*)PSoundManager)) {
         CASoundBank& bank = ParentThing->GetSampleBank();
         CSoundInit init;
         init.Flags = 0x20;
-        CSoundPlayer* player = g_pGameState->GetSoundPlayer();
+        CSoundPlayer* player = ((CGameState*)PSoundManager)->GetSoundPlayer();
         CInventoryDef* def = PDef;
         if (def)
             ++def->RefCount;

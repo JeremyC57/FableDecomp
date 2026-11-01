@@ -62,7 +62,8 @@ public:
     virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35();
     virtual void SetAtmosMap_slot36(CMyAtmosMap* map, float dampingMin, float dampingRange, unsigned long flags);   // slot 36 (+0x90)
 };
-extern CSoundSystem* g_pSoundSystem;            // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;            // 0x013B8394
 
 class CBaseObject;
 #pragma pack(push, 1)
@@ -98,14 +99,14 @@ public:
 CAtmosProcess::CAtmosProcess()
     : DayNightState(0), RainCurrentlyPlaying(false), AtmosSoundsMuted(false), InsideBuilding(-1), ReverbType(0), ReverbLevel(0)
 {
-    if (g_pSoundSystem) {
+    if (((CSoundSystem*)PSoundManager)) {
         CDefPointer<const CSoundDef> soundDef;
         {
             CCharString name("MAIN_SOUND_SETUP", -1);
             CGameDefinitionManager::Get().GetDef(name, soundDef);
         }
         CSoundDef* def = const_cast<CSoundDef*>(soundDef.Object);
-        g_pSoundSystem->SetAtmosMap_slot36(&AtmosMap, def->AtmosListenerDampingMin, def->AtmosListenerDampingRange, 0x8010);
+        ((CSoundSystem*)PSoundManager)->SetAtmosMap_slot36(&AtmosMap, def->AtmosListenerDampingMin, def->AtmosListenerDampingRange, 0x8010);
         LoadThemes_006b16b0();
         ApplyReverbSettings();
         if (--def->RefCount == 0)

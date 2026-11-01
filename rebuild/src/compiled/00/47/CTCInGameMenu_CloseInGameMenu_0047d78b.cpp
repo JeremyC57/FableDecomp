@@ -49,7 +49,8 @@ struct CGameState {
     virtual void v400(); virtual void v401(); virtual void v402(); virtual void v403(); virtual void v404(); virtual void v405();
     virtual void SetCategoryVolume(long category, float volume, float fadeTime);   // slot 46 (+0xB8)
 };
-extern CGameState* g_pGameState;                     // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;                     // 0x013B8394
 
 class CIEngine { public:
     V10(0) V10(1) V10(2) V10(3) V10(4)
@@ -203,10 +204,10 @@ class CTCInGameMenu : public CTCBase { public:
 
 void CTCInGameMenu::CloseInGameMenu()
 {
-    if (g_pGameState) {
-        g_pGameState->SetCategoryVolume(0x10, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
-        g_pGameState->SetCategoryVolume(0x40, CUserProfileManager::Get().GetDialogueVolume(), 0.0f);
-        g_pGameState->SetCategoryVolume(0x80, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
+    if (((CGameState*)PSoundManager)) {
+        ((CGameState*)PSoundManager)->SetCategoryVolume(0x10, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
+        ((CGameState*)PSoundManager)->SetCategoryVolume(0x40, CUserProfileManager::Get().GetDialogueVolume(), 0.0f);
+        ((CGameState*)PSoundManager)->SetCategoryVolume(0x80, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
     }
     g_pMainGameComponent->PDisplayEngine->Engine3D->SetEngineFlag76(true);
     CWorld* world = (&GetWorld());

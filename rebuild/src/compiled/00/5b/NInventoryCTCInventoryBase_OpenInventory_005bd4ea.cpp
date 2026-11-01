@@ -44,7 +44,8 @@ struct CDisplayDevice {
     unsigned char _pad00[0x1cc];
     CPresentationIntervalDesc PresentationInterval;   // +0x1cc
 };
-extern CDisplayDevice* g_pDisplayDevice;         // 0x013B8390
+class CDisplayManager;
+extern CDisplayManager* PDisplayManager;         // 0x013B8390
 class CPlayerGui { public:
     void Close(bool immediately);                // 0x00438400
 };
@@ -108,7 +109,7 @@ void CTCInventoryBase::OpenInventory()
     FirstRenderFrame = true;
     CInventoryDef* inventoryDef = AddRef(PDef.Object);   // keeps the definition alive while the screen comes up
     if (!OldIntervalDescInitialised) {
-        OldIntervalDesc = g_pDisplayDevice->PresentationInterval;
+        OldIntervalDesc = ((CDisplayDevice*)PDisplayManager)->PresentationInterval;
         OldIntervalDescInitialised = true;
     }
     InventoryOpen = true;

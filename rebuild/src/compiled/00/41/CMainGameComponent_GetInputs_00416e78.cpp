@@ -59,7 +59,7 @@ class CInputManager { public:
     virtual void Update();                         // slot 2
     void UpdateChecksum(long channel, CChecksum* checksum);   // 0x009F4A90
 };
-extern CInputManager* g_pInputManager;             // 0x013B8388
+extern CInputManager* PInputManager;             // 0x013B8388
 class CSystemManager { public:
     bool IsApplicationActive();                    // 0x009A57B0
 };
@@ -99,8 +99,8 @@ void CMainGameComponent::GetInputs()
     inputChecksum = (long)(inputChecksum + CameraOwner->Camera->GetCamera(1.0f).WorldPosition.Y);
     inputChecksum = (long)(inputChecksum + CameraOwner->Camera->GetCamera(1.0f).WorldPosition.Z);
     CChecksum checksum(PeekWorldChecksum(), Frame, inputChecksum);
-    g_pInputManager->UpdateChecksum(InputChannel, &checksum);
-    g_pInputManager->Update();
+    PInputManager->UpdateChecksum(InputChannel, &checksum);
+    PInputManager->Update();
     if (GFGetSystemManager()->IsApplicationActive() && CWorld::GetFrame() > 1) {
         GetPlayerInterface()->BeginEventPoll();
         while (GetPlayerInterface()->PopGameEvent(&event)) {

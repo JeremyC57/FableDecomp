@@ -45,7 +45,7 @@ extern CMainGameComponent* g_pMainGameComponent;            // 0x013B86A0
 class CDisplayManager { public:
     void SetGamma(float gamma, bool b);                     // 0x009BEAA0
 };
-extern CDisplayManager* g_pDisplayManager;                  // 0x013B8390
+extern CDisplayManager* PDisplayManager;                  // 0x013B8390
 struct CSoundSystem {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void SetUsingHeadPhones(bool on);               // slot 7 (+0x1c)
@@ -56,7 +56,8 @@ struct CSoundSystem {
     virtual void v40(); virtual void v41(); virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45();
     virtual void RefreshCategory(long category, float volume, bool b);   // slot 46 (+0xb8)
 };
-extern CSoundSystem* g_pSoundSystem;                        // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;                        // 0x013B8394
 extern bool g_bVibrationEnabled;                            // 0x013966F0
 class CUserProfileManager { public:
     unsigned char _pad00[0x0c];
@@ -99,34 +100,34 @@ void CUserProfileManager::ApplyValues()
             else
                 g_pMainGameComponent->Renderer->Gamma = Gamma;
         }
-    } else if (g_pDisplayManager) {
+    } else if (PDisplayManager) {
         if (UseNewProfileValues)
-            g_pDisplayManager->SetGamma(GammaNewProfile, false);
+            PDisplayManager->SetGamma(GammaNewProfile, false);
         else
-            g_pDisplayManager->SetGamma(Gamma, false);
+            PDisplayManager->SetGamma(Gamma, false);
     }
-    if (g_pSoundSystem) {
+    if (((CSoundSystem*)PSoundManager)) {
         if (SoundsMuted) {
-            g_pSoundSystem->RefreshCategory(0x10, 0.0f, false);
-            g_pSoundSystem->RefreshCategory(0x20, 0.0f, false);
-            g_pSoundSystem->RefreshCategory(0x40, 0.0f, false);
-            g_pSoundSystem->RefreshCategory(0x80, 0.0f, false);
-            g_pSoundSystem->RefreshCategory(0x100, 0.0f, false);
+            ((CSoundSystem*)PSoundManager)->RefreshCategory(0x10, 0.0f, false);
+            ((CSoundSystem*)PSoundManager)->RefreshCategory(0x20, 0.0f, false);
+            ((CSoundSystem*)PSoundManager)->RefreshCategory(0x40, 0.0f, false);
+            ((CSoundSystem*)PSoundManager)->RefreshCategory(0x80, 0.0f, false);
+            ((CSoundSystem*)PSoundManager)->RefreshCategory(0x100, 0.0f, false);
         } else {
             if (UseNewProfileValues) {
-                g_pSoundSystem->RefreshCategory(0x10, SoundVolumeNewProfile, false);
-                g_pSoundSystem->RefreshCategory(0x20, SoundVolumeNewProfile, false);
-                g_pSoundSystem->RefreshCategory(0x40, DialogueVolumeNewProfile, false);
-                g_pSoundSystem->RefreshCategory(0x80, SoundVolumeNewProfile, false);
-                g_pSoundSystem->RefreshCategory(0x100, MusicVolumeNewProfile, false);
-                g_pSoundSystem->SetUsingHeadPhones(UsingHeadPhonesNewProfile);
+                ((CSoundSystem*)PSoundManager)->RefreshCategory(0x10, SoundVolumeNewProfile, false);
+                ((CSoundSystem*)PSoundManager)->RefreshCategory(0x20, SoundVolumeNewProfile, false);
+                ((CSoundSystem*)PSoundManager)->RefreshCategory(0x40, DialogueVolumeNewProfile, false);
+                ((CSoundSystem*)PSoundManager)->RefreshCategory(0x80, SoundVolumeNewProfile, false);
+                ((CSoundSystem*)PSoundManager)->RefreshCategory(0x100, MusicVolumeNewProfile, false);
+                ((CSoundSystem*)PSoundManager)->SetUsingHeadPhones(UsingHeadPhonesNewProfile);
             } else {
-                g_pSoundSystem->RefreshCategory(0x10, SoundVolume, false);
-                g_pSoundSystem->RefreshCategory(0x20, SoundVolume, false);
-                g_pSoundSystem->RefreshCategory(0x40, DialogueVolume, false);
-                g_pSoundSystem->RefreshCategory(0x80, SoundVolume, false);
-                g_pSoundSystem->RefreshCategory(0x100, MusicVolume, false);
-                g_pSoundSystem->SetUsingHeadPhones(UsingHeadPhones);
+                ((CSoundSystem*)PSoundManager)->RefreshCategory(0x10, SoundVolume, false);
+                ((CSoundSystem*)PSoundManager)->RefreshCategory(0x20, SoundVolume, false);
+                ((CSoundSystem*)PSoundManager)->RefreshCategory(0x40, DialogueVolume, false);
+                ((CSoundSystem*)PSoundManager)->RefreshCategory(0x80, SoundVolume, false);
+                ((CSoundSystem*)PSoundManager)->RefreshCategory(0x100, MusicVolume, false);
+                ((CSoundSystem*)PSoundManager)->SetUsingHeadPhones(UsingHeadPhones);
             }
         }
     }

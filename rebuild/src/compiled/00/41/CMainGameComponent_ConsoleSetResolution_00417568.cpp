@@ -59,7 +59,7 @@ class CDisplayManager { public:
     ECreateDeviceSuccess SetDisplayMode(const C2DExtentsI& resolution, unsigned long bitsPerPixel,
                                         ESurfaceMultisampleType antialiasing, unsigned long refreshRate);   // 0x009BFF40
 };
-extern CDisplayManager* g_pDisplayManager;               // 0x013B8390
+extern CDisplayManager* PDisplayManager;               // 0x013B8390
 class CDisplayEngine {
 public:
     void PreChangeResolution();                          // 0x00434A10
@@ -83,6 +83,6 @@ void __fastcall CMainGameComponent::ConsoleSetResolution(CMainGameComponent& com
     unsigned long depth = args[2].ValSLONG;
     message.Format("Nearest supported resolution is (%d,%d,%d)", width, height, depth);
     component.PDisplayEngine->PreChangeResolution();
-    g_pDisplayManager->SetDisplayMode(C2DExtentsI(width, height), depth, SURFACE_MULTISAMPLE_NONE, 0);
+    PDisplayManager->SetDisplayMode(C2DExtentsI(width, height), depth, SURFACE_MULTISAMPLE_NONE, 0);
     component.PostChangeResolution(width, height, depth);
 }

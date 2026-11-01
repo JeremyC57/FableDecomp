@@ -27,7 +27,8 @@ struct CDisplayDevice {
     unsigned char        _pad1d8[0x294 - 0x1d8];
     CVsyncCallbackTimer* m_pVsyncTimer;            // +0x294
 };
-extern CDisplayDevice* g_pDisplayDevice;           // 0x013B8390
+class CDisplayManager;
+extern CDisplayManager* PDisplayManager;           // 0x013B8390
 extern bool g_immediatePresent;                    // 0x013B86A4
 class CMainGameComponent { public:
     unsigned char _pad00[0x60];
@@ -37,8 +38,8 @@ class CMainGameComponent { public:
 
 double CMainGameComponent::GetGameTimeOfNextPresentCompletion()
 {
-    CVsyncCallbackTimerInfo info = g_pDisplayDevice->m_pVsyncTimer->GetInfo();
-    double t = (info.VsyncCount - info.PresentedVsyncCount + 1) * g_pDisplayDevice->m_refreshPeriod + info.LastVsyncTime;
+    CVsyncCallbackTimerInfo info = ((CDisplayDevice*)PDisplayManager)->m_pVsyncTimer->GetInfo();
+    double t = (info.VsyncCount - info.PresentedVsyncCount + 1) * ((CDisplayDevice*)PDisplayManager)->m_refreshPeriod + info.LastVsyncTime;
     double now = GFGetTime();
     if (t < now)
         t = now;

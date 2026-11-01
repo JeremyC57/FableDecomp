@@ -2,7 +2,7 @@
 // recording stub, the game-state global is defined here.
 #include <cstdio>
 #include <cstring>
-void* g_pGameState = 0;
+class CASoundManager; CASoundManager* PSoundManager = 0;   // 0x013B8394 (naming wave 13)
 static int g_calls = 0; static unsigned long g_id = 0;
 struct CSoundPlayer {
     virtual void v000() {} virtual void v001() {} virtual void v002() {} virtual void v003() {} virtual void v004() {}
@@ -22,7 +22,7 @@ int main()
     CSoundPlayer player; CThingSoundEmitter e; std::memset(&e, 0, sizeof e); e.m_pSoundPlayer = &player;
     e.ReleaseLoop(7);                            // no game state: nothing
     if (g_calls != 0) { std::printf("008368f0_TEST FAIL 1\n"); return 1; }
-    int gs; g_pGameState = &gs;
+    int gs; PSoundManager = (CASoundManager*)&gs;
     e.Dead = 1; e.ReleaseLoop(7);                // dead: nothing
     if (g_calls != 0) { std::printf("008368f0_TEST FAIL 2\n"); return 1; }
     e.Dead = 0; e.ReleaseLoop(42);

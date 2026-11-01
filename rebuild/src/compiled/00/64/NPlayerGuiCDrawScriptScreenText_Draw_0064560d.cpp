@@ -66,7 +66,8 @@ struct CFontPointer {                               // CCountedPointer<CFontBank
 struct CFontBankManager {
     CFontPointer GetFont(const CCharString& name);  // 0x009E2C80
 };
-extern CFontBankManager* g_pFontBankManager;        // 0x013B838C
+class CFontManager;
+extern CFontManager* PFontManager;        // 0x013B838C
 
 struct SScriptScreenText {                          // list element (node +8)
     CWideString Text;                               // +0x00
@@ -153,14 +154,14 @@ void CDrawScriptScreenText::Draw(CEnginePrimitivePrepareInfo* info)
         Drawing = true;
         for (SScriptTextNode* node = gui->ScriptTexts.begin(); node != gui->ScriptTexts.end(); node = node->Next) {
             SScriptScreenText& text = node->Data;
-            CFontBank* font = text.FontName == "" ? Resources->DefaultFont : g_pFontBankManager->GetFont(text.FontName).m_pObject;
+            CFontBank* font = text.FontName == "" ? Resources->DefaultFont : ((CFontBankManager*)PFontManager)->GetFont(text.FontName).m_pObject;
             PlayerGui->Draw2DText(text.Position, text.Text, font, text.Colour, 1.0f, ENGINE_2D_LAYER_TEXT, true);
         }
     }
     CList<SScriptLineNode>& lines = PlayerGui->ScriptLines;
     if (!lines.empty()) {
         const CPlayerGuiDef* def = &CPlayerGui::PeekGuiDef();
-        CFontBank* font = g_pFontBankManager->GetFont(def->ScriptTextFont).m_pObject;
+        CFontBank* font = ((CFontBankManager*)PFontManager)->GetFont(def->ScriptTextFont).m_pObject;
         C2DVector pos;
         GFACoordToVCoord(&def->ScriptTextPos, &pos);
         C2DVector step;

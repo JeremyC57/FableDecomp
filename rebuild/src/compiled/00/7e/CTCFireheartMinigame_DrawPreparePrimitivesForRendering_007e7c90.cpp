@@ -40,7 +40,7 @@ class CDisplayManager {
 public:
     const C2DExtentsI GetRenderTargetDimensions();  // 0x009BEDC0
 };
-extern CDisplayManager* g_pDisplayDevice;           // 0x013B8390
+extern CDisplayManager* PDisplayManager;           // 0x013B8390
 
 class CEnginePrimitive2DSprite {
 public:
@@ -79,7 +79,7 @@ void CTCFireheartMinigame::DrawPreparePrimitivesForRendering(const CEnginePrimit
 {
     Handles.clear();
     if (QuitWithDelay) {
-        C2DExtentsI size = g_pDisplayDevice->GetRenderTargetDimensions();
+        C2DExtentsI size = PDisplayManager->GetRenderTargetDimensions();
         C2DBoxF box(0.0f, 0.0f, (float)size.X, (float)size.Y);
         CEnginePrimitive2DSprite sprite(0, box, 0x4a, 0, 0, 2, 0, 0.0f, 0.0f, 0xff, 0, 0, 0, 0, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
         Handles.push_back_default();

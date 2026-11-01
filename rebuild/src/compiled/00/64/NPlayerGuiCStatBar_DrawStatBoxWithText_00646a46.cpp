@@ -44,7 +44,7 @@ public:
 
 class C2DExtentsI { public: long Width, Height; };
 class CDisplayManager { public: const C2DExtentsI GetRenderTargetDimensions(); };   // 0x009BEDC0
-extern CDisplayManager* g_pDisplayManager;                              // 0x013B8390
+extern CDisplayManager* PDisplayManager;                              // 0x013B8390
 
 void __fastcall GFACoordToVCoord(const C2DVector& in, C2DVector& out);  // 0x009E21D0
 float __fastcall GFAXToVX(float x);                                     // 0x009E1DA0
@@ -95,7 +95,7 @@ void __fastcall CStatBar::DrawStatBoxWithText(const CEnginePrimitivePrepareInfo&
     C2DVector textPos;
     GFACoordToVCoord(screenPos, textPos);
     if (rightAlign)
-        textPos.X = GFAXToVX((float)g_pDisplayManager->GetRenderTargetDimensions().Width) - textPos.X
+        textPos.X = GFAXToVX((float)PDisplayManager->GetRenderTargetDimensions().Width) - textPos.X
                   - font->GetVStringWidth(text);
     font->Preload(text, false);
     g_pGameUI->Draw2DText(textPos, text, font, CRGBColour(255, 255, 255, 255), 1.0f, ENGINE_2D_LAYER_TEXT, false);

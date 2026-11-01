@@ -42,7 +42,8 @@ public:
     CASoundBank*  PSampleBank;                  // +0x10
     CASoundBank& GetSampleBank() const { return *PSampleBank; }
 };
-extern CGameState*         g_pGameState;            // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;            // 0x013B8394
 extern CMainGameComponent* g_pMainGameComponent;    // 0x013B86A0
 class CPlayerGuiDef {
 public:
@@ -73,9 +74,9 @@ void CManager::PlayScreenUpdateSound(EScreenSoundTypes type) const
         sample = CPlayerGui::PeekGuiDef().InventoryNoMovementSound;
         break;
     }
-    if (g_pGameState) {
+    if (((CGameState*)PSoundManager)) {
         CASoundBank& bank = g_pMainGameComponent->GetSampleBank();
-        g_pGameState->GetSoundPlayer()->PlaySample(bank, sample, true, CSoundInit(), false);
+        ((CGameState*)PSoundManager)->GetSoundPlayer()->PlaySample(bank, sample, true, CSoundInit(), false);
     }
 }
 }

@@ -73,7 +73,8 @@ struct CGameScriptInterface_Methods : CGameScriptInterface {
     void StopOverrideMusic(bool enabled) const;
 };
 
-extern CGSIStopMusicEmitter* CGSIStopMusic_Emitter;
+class CASoundManager;
+extern CASoundManager* PSoundManager;
 extern void __fastcall CGSIStopMusic_StopEvent(CGSIStopMusicEvent* event);
 extern void __fastcall CGSIStopMusic_ResumeEvent(CGSIStopMusicEvent* event);
 
@@ -81,7 +82,7 @@ void CGameScriptInterface_Methods::StopOverrideMusic(bool enabled) const
 {
     if (enabled)
     {
-        if (CGSIStopMusic_Emitter != 0)
+        if (((CGSIStopMusicEmitter*)PSoundManager) != 0)
         {
             CGSIStopMusicCodeSection* section =
                 &CUserProfileManager::Get();
@@ -90,7 +91,7 @@ void CGameScriptInterface_Methods::StopOverrideMusic(bool enabled) const
                 value = section->alternateValue;
             else
                 value = section->primaryValue;
-            CGSIStopMusic_Emitter->Stop(0x100, value, 500.0f);
+            ((CGSIStopMusicEmitter*)PSoundManager)->Stop(0x100, value, 500.0f);
         }
         CGSIStopMusic_StopEvent(World->event);
         return;

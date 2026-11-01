@@ -102,7 +102,8 @@ struct CSoundSystem {
 #undef V
     virtual void FadeChannel(long channel, long target, float time);   // slot 46 (+0xb8)
 };
-extern CSoundSystem* g_pSoundSystem;                    // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;                    // 0x013B8394
 void __fastcall OnOpenMenus();                          // 0x0041D122
 struct CInputController {
 #define V(n) virtual void v##n();
@@ -165,10 +166,10 @@ void CTCInventoryMap::OpenInventory()
     NUISystem::CManager::GetInstance()->AddActiveTC(this);
     if (IsActive())
         return;
-    if (g_pSoundSystem) {
-        g_pSoundSystem->FadeChannel(0x10, 0, 500.0f);
-        g_pSoundSystem->FadeChannel(0x40, 0, 500.0f);
-        g_pSoundSystem->FadeChannel(0x80, 0, 500.0f);
+    if (((CSoundSystem*)PSoundManager)) {
+        ((CSoundSystem*)PSoundManager)->FadeChannel(0x10, 0, 500.0f);
+        ((CSoundSystem*)PSoundManager)->FadeChannel(0x40, 0, 500.0f);
+        ((CSoundSystem*)PSoundManager)->FadeChannel(0x80, 0, 500.0f);
     }
     OnOpenMenus();
     g_pMainGameComponent->Display->Input->SetEnabled(false);

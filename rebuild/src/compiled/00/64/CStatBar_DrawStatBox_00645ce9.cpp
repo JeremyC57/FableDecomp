@@ -32,7 +32,7 @@ class CEnginePrimitivePrepareInfo;
 class CEnginePrimitiveHandle { public: unsigned long m_handle; };
 class C2DExtentsI { public: long Width, Height; };
 class CDisplayManager { public: const C2DExtentsI GetRenderTargetDimensions(); };   // 0x009BEDC0
-extern CDisplayManager* g_pDisplayManager_013b8390;                    // 0x013B8390
+extern CDisplayManager* PDisplayManager;                    // 0x013B8390
 class CFontBank { public: float GetStringWidth(const CWideString& text); };    // 0x0048DA62
 struct CGameUI { unsigned char _pad[0x138]; CFontBank* Font; };        // +0x138
 extern CGameUI* g_pGameUI;                                              // 0x013B8790
@@ -118,7 +118,7 @@ void CStatBar::DrawStatBox(const CEnginePrimitivePrepareInfo& info, const CGraph
             const CPlayerGuiDef* def = (&CPlayerGui::PeekGuiDef());
             CFontBank* font = g_pGameUI->Font;
             C2DVector corner = pos;
-            corner.X = (float)g_pDisplayManager_013b8390->GetRenderTargetDimensions().Width - corner.X;
+            corner.X = (float)PDisplayManager->GetRenderTargetDimensions().Width - corner.X;
             corner += def->StatBoxOffset;
             float boxWidth = (float)bank.GetGraphicWidth(graphic);
             float textWidth = def->StatBoxTextWidth;

@@ -147,7 +147,8 @@ class CSymbolMap {
 public:
     CASoundBank* FindFirstSymbolWithVal(const CCharString* value) const;   // 0x009917E0
 };
-extern CSymbolMap* g_pSoundBankMap;                    // 0x013B8394
+class CASoundManager;
+extern CASoundManager* PSoundManager;                    // 0x013B8394
 
 class CSoundInit {
 public:
@@ -183,7 +184,7 @@ unsigned long CTCSoundPlayer::PlayAttachedDialogue(unsigned long textID, bool fl
             entry = bank->GetTextEntryFromGroup(textID, talk->GetDialogueVoice());
         }
         if (entry) {
-            CASoundBank* soundBank = g_pSoundBankMap->FindFirstSymbolWithVal(&entry->BankName);
+            CASoundBank* soundBank = ((CSymbolMap*)PSoundManager)->FindFirstSymbolWithVal(&entry->BankName);
             if (soundBank) {
                 long sample = soundBank->GetSoundIndexFromSymbol("SND_" + entry->SoundName);
                 if (sample > 0) {

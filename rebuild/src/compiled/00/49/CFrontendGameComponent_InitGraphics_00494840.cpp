@@ -52,7 +52,8 @@ class CFontBank {
 public:
     CCountedPointer<const CFontBank> GetFont(const CCharString& name);   // 0x009E2C80
 };
-extern CFontBank* g_pFontBank;                          // 0x013B838C
+class CFontManager;
+extern CFontManager* PFontManager;                          // 0x013B838C
 
 class CFrontendGameComponent {
 public:
@@ -63,6 +64,6 @@ public:
 
 bool CFrontendGameComponent::InitGraphics()
 {
-    MainFont = g_pFontBank->GetFont("ENG_ARIAL_16");
+    MainFont = ((CFontBank*)PFontManager)->GetFont("ENG_ARIAL_16");
     return true;
 }
