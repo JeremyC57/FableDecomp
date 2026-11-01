@@ -191490,9 +191490,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c44f80'
-        Module = '_unattributed'
-        Source = '00/c4/unattributed_CGameFilters00c44f80dtor_00c44f80.cpp'
-        TestSource = '00/c4/unattributed_CGameFilters00c44f80dtor_00c44f80_test.cpp'
+        Module = 'CAmbientEmitter'
+        Source = '00/c4/CAmbientEmitter_CAmbientEmitter_00c44f80.cpp'
+        TestSource = '00/c4/CAmbientEmitter_CAmbientEmitter_00c44f80_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c44f80_TEST PASS'
     }

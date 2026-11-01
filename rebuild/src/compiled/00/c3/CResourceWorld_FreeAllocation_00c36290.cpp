@@ -1,16 +1,17 @@
 // CResourceWorld::FreeAllocation(void* owner) -- detaches the owner's resource allocation from the world's +0x14 registry (virtual slot 17, keyed by the owner) and deletes it
+// Naming (naming wave 22): the allocation is the CAmbientEmitter (destructor 0x00C44F80 runs the landed CAmbientEmitter::ReleaseSounds 0x00C44B80 / ClearEvents 0x00C44D30 on it); was the descriptive CResourceAllocation.
 // Leaf: FreeAllocation
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C36290, 49 bytes, __fastcall `ret 4`. Descriptive name (no PDB covers this
 //   library): the catalog's `Thiscall_ResourceMapEntryRemove` is propagated. Callers: 0x00C2A5B3 (tail jump) and
-//   0x00C365CB. Counterpart of AllocateFor 0x00C36180 (`new CResourceAllocation(this, owner)`), whose constructor
+//   0x00C365CB. Counterpart of AllocateFor 0x00C36180 (`new CAmbientEmitter(this, owner)`), whose constructor
 //   (landed 0x00C44EB0) registers the allocation in the same +0x14 registry.
 // Callees: the registry's Detach (slot 17, +0x44: takes the key's address, returns the allocation or 0), the
 //   allocation's destructor (landed 0x00C44F80) and scalar operator delete @ 0x00BFE9BC.
 // Shape: an inline helper takes the key BY VALUE and passes its address (`mov eax,[esp+4] ; mov [esp+4],eax` -- the
 //   fresh copy lands in the dead argument slot); `delete p` = null test + destructor + operator delete.
-struct CResourceAllocation {
+class CAmbientEmitter { public:
     unsigned char _body[0x8c];
-    ~CResourceAllocation();                                 // 0x00C44F80
+    ~CAmbientEmitter();                                 // 0x00C44F80
 };
 
 struct CAllocationRegistry {
@@ -19,13 +20,13 @@ struct CAllocationRegistry {
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
     virtual void v16();
-    virtual CResourceAllocation* Detach(void* const* key);  // slot 17 (+0x44)
+    virtual CAmbientEmitter* Detach(void* const* key);  // slot 17 (+0x44)
 };
 
 struct CResourceWorld {
     unsigned char       _pad00[0x14];
     CAllocationRegistry m_registry;                         // +0x14
-    CResourceAllocation* DetachAllocation(void* owner) { return m_registry.Detach(&owner); }
+    CAmbientEmitter* DetachAllocation(void* owner) { return m_registry.Detach(&owner); }
     void FreeAllocation(void* owner);
 };
 
