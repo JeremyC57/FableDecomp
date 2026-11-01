@@ -5,9 +5,8 @@
 // (MSVCR71 thunk 0x00BFE9BC) when flags & 1. Each callee is declared under its own identity (vtable RTTI /
 // retail labels); the class itself is not attributed, so it is named by address.
 #pragma optimize("t", on)
-struct CRecordSet_00cbd510 {                // catalog/landed name for the class whose destructor is 0x00CBD510
-    void* _vptr;                            // (layout beyond the first word not modelled)
-    ~CRecordSet_00cbd510();                 // 0x00CBD510
+class CScriptBase { public:                // CScriptBase (Ego_r.pdb ??1CScriptBase@@UAE@XZ; was stand-in CRecordSet_00cbd510, naming wave 15)
+    virtual ~CScriptBase();                 // 0x00CBD510
 };
 #define FABLE_RETAIL_NSCRIPT
 // CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
@@ -16,7 +15,7 @@ struct CRecordSet_00cbd510 {                // catalog/landed name for the class
 void __cdecl operator delete(void* block);  // MSVCR71 import thunk 0x00BFE9BC
 
 #pragma pack(push, 1)
-struct CObject_00daabd0 : CRecordSet_00cbd510 {
+struct CObject_00daabd0 : CScriptBase {
     unsigned char _pad58[0x54];
     CTimer Member58;                            // +0x58
     CTimer Member5c;                            // +0x5c
@@ -28,7 +27,7 @@ void* __fastcall CThingSwitch_CompositeScalarDeletingDestructor(void* self, int,
     CObject_00daabd0* object = static_cast<CObject_00daabd0*>(self);
     object->Member5c.~CTimer();
     object->Member58.~CTimer();
-    object->CRecordSet_00cbd510::~CRecordSet_00cbd510();
+    object->CScriptBase::~CScriptBase();
     if (flags & 1)
         operator delete(object);
     return self;

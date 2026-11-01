@@ -5,9 +5,8 @@
 // (MSVCR71 thunk 0x00BFE9BC) when flags & 1. Each callee is declared under its own identity (vtable RTTI /
 // retail labels); the class itself is not attributed, so it is named by address.
 #pragma optimize("t", on)
-struct CRecordSet_00cbd510 {                // catalog/landed name for the class whose destructor is 0x00CBD510
-    void* _vptr;                            // (layout beyond the first word not modelled)
-    ~CRecordSet_00cbd510();                 // 0x00CBD510
+class CScriptBase { public:                // CScriptBase (Ego_r.pdb ??1CScriptBase@@UAE@XZ; was stand-in CRecordSet_00cbd510, naming wave 15)
+    virtual ~CScriptBase();                 // 0x00CBD510
 };
 class CCharString;
 namespace std {
@@ -21,7 +20,7 @@ template <> class vector<CCharString, allocator<CCharString> > { public:        
 void __cdecl operator delete(void* block);  // MSVCR71 import thunk 0x00BFE9BC
 
 #pragma pack(push, 1)
-struct CObject_00cef9a0 : CRecordSet_00cbd510 {
+struct CObject_00cef9a0 : CScriptBase {
     unsigned char _pad4c[0x48];
     std::vector<CCharString> Member4c;                 // +0x4c
     std::vector<CCharString> Member58;                 // +0x58
@@ -33,7 +32,7 @@ void* __fastcall CThingSwitch_CompositeScalarDeletingDestructor(void* self, int,
     CObject_00cef9a0* object = static_cast<CObject_00cef9a0*>(self);
     object->Member58.~vector();
     object->Member4c.~vector();
-    object->CRecordSet_00cbd510::~CRecordSet_00cbd510();
+    object->CScriptBase::~CScriptBase();
     if (flags & 1)
         operator delete(object);
     return self;

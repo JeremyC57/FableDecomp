@@ -10,9 +10,8 @@
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 #undef CScriptGameResourceObjectScriptedThingBase
 #pragma optimize("t", on)
-struct CRecordSet_00cbd510 {                // catalog/landed name for the class whose destructor is 0x00CBD510
-    void* _vptr;                            // (layout beyond the first word not modelled)
-    ~CRecordSet_00cbd510();                 // 0x00CBD510
+class CScriptBase { public:                // CScriptBase (Ego_r.pdb ??1CScriptBase@@UAE@XZ; was stand-in CRecordSet_00cbd510, naming wave 15)
+    virtual ~CScriptBase();                 // 0x00CBD510
 };
 class CScriptGameResourceObjectScriptedThingBase { public:   // ctor 0x007E72A0 (landed rows)
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0 (releases the counted handle at +0xc)
@@ -20,7 +19,7 @@ class CScriptGameResourceObjectScriptedThingBase { public:   // ctor 0x007E72A0 
 void __cdecl operator delete(void* block);  // MSVCR71 import thunk 0x00BFE9BC
 
 #pragma pack(push, 1)
-struct CObject_00ed0e30 : CRecordSet_00cbd510 {
+struct CObject_00ed0e30 : CScriptBase {
     unsigned char _pad48[0x44];
     CScriptGameResourceObjectScriptedThingBase Member48;// +0x48
     unsigned char _pad58[0xc];
@@ -33,7 +32,7 @@ void* __fastcall CThingSwitch_CompositeScalarDeletingDestructor(void* self, int,
     CObject_00ed0e30* object = static_cast<CObject_00ed0e30*>(self);
     object->Member58.CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase();
     object->Member48.CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase();
-    object->CRecordSet_00cbd510::~CRecordSet_00cbd510();
+    object->CScriptBase::~CScriptBase();
     if (flags & 1)
         operator delete(object);
     return self;
