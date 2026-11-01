@@ -1,4 +1,4 @@
-// Behaviour test for CGraphicDataBankInfo::~CGraphicDataBankInfo: the bank pointer is released (data deleted at zero), then BankHandle (0x009F88C0).
+// Behaviour test for std::_Destroy<CGraphicBankManager::CGraphicDataBankInfo>: the bank pointer is released (data deleted at zero), then BankHandle (0x009F88C0).
 #include <cstdio>
 static int g_log[32]; static int g_n = 0;
 class CCharString { public: int id; ~CCharString() { g_log[g_n++] = id; } };

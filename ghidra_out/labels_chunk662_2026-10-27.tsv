@@ -1,0 +1,16 @@
+address	name	evidence
+00a0bd40	CASoundBank::~CASoundBank	chunk 662 RELOCATION_MATCH: ctor 0x00A0BD00, vtable 0x0129C9AC, slot-0 ??_G 0x00A0BD80 inlines it; Ego_r layout (catalog _Dest_val<..C3DSkeletalMorphTarget..> was the ICF representative)
+00af6570	NParticleEngine::CComponentInstance::~CComponentInstance	chunk 662 RELOCATION_MATCH: after ctor 0x00AF6550; ??_G 0x00AF6B90 and ~pair 0x00AF65B0 inline it; FableWin
+00a32690	C3DMeshVolume::~C3DMeshVolume	chunk 662 RELOCATION_MATCH: its own TU (ctor 0x00A325E0, ~pair<long,C3DMeshVolume>, Ego_r operator= 0x00A32960); FableWin
+009f81c0	CGraphicBankManager::CGraphicDataBankInfo::~CGraphicDataBankInfo	chunk 662 RELOCATION_MATCH: follows the inline copy ctor 0x009F80E0 and default ctor 0x009F8170 (class-member COMDATs precede template helpers)
+009f88c0	std::_Destroy<CGraphicBankManager::CGraphicDataBankInfo>	chunk 662: among the list template helpers (_Construct 0x009F8780 __fastcall: /Gr TU); respelled at landing from the dtor's name (one name on two addresses)
+004d1db0	CSubtitledMessage::~CSubtitledMessage	chunk 662 RELOCATION_MATCH: 22 callers (message lookups, vector<CSubtitledMessage> helpers, CActionTalkBase family); Ego_r (catalog ~CPatchTesselationEdgeStrip was wrong)
+00a0a5d0	std::_Destroy<CMeshBankManager::CMeshDataBankInfo>	chunk 662 RELOCATION_MATCH (/Gr): placement among the list helpers; same layout as the graphics TU
+00a0a3f0	CMeshBankManager::CMeshDataBankInfo::~CMeshDataBankInfo	chunk 662: right after the record's default ctor (landed descriptive ~CBase_0099eae0_Derived_00a0a3f0)
+00a0a3d0	CMeshBankManager::CMeshDataBankInfo::CMeshDataBankInfo	chunk 662: ~C3DMeshVolume lives in a later TU, so this ctor is the mesh-bank record's (landed as ??0C3DMeshVolume)
+006966d0	std::_Destroy<std::pair<const CCharString,CCountedPointer<NCreatureAction::CActionEventBase> > >	chunk 662 RELOCATION_MATCH (/Gr): RegisterActionEventTypes 0x006932B0, _M_erase 0x00696900; placement
+00695f40	std::pair<CCharString,CCountedPointer<NCreatureAction::CActionEventBase> >::~pair	chunk 662 RELOCATION_MATCH: VC7.1 emits ~pair<K,V> immediately before ~pair<const K,V> (0x00695F80); emission order, tentative
+00695f80	std::pair<const CCharString,CCountedPointer<NCreatureAction::CActionEventBase> >::~pair	chunk 662: emission order (landed descriptive)
+00cb9700	std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase> >::~pair	chunk 662 RELOCATION_MATCH: ~pair vs _Destroy (0x00CBA6C0) by emission order, tentative
+00cba6c0	std::_Destroy<std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase> > >	chunk 662 RELOCATION_MATCH (/Gr)
+0099a300	CBaseClassNonCopyable::~CBaseClassNonCopyable	chunk 662: ??_GCBaseClass 0x004371F0 calls 0x0099A2E0, the real ~CBaseClass (catalog CBaseClass::~CBaseClass was wrong here)

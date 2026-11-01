@@ -1,0 +1,36 @@
+addr       parity           behav  name
+004d1db0   RELOCATION_MATCH PASS   ~CSubtitledMessage
+00695f40   RELOCATION_MATCH PASS   ~pair
+006966d0   RELOCATION_MATCH PASS   _Destroy<pair<CCharString const,CCountedPointer<CActionEventBase> > >
+009f81c0   RELOCATION_MATCH PASS   ~CGraphicDataBankInfo
+00a0a5d0   RELOCATION_MATCH PASS   _Destroy<CMeshDataBankInfo>
+00a0bd40   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00a0bd40   RELOCATION_MATCH PASS   ~CASoundBank
+00a32690   RELOCATION_MATCH PASS   ~C3DMeshVolume
+00af6570   RELOCATION_MATCH PASS   ~CComponentInstance
+00cb9700   RELOCATION_MATCH PASS   ~pair
+00cba6c0   RELOCATION_MATCH PASS   _Destroy<pair<CCharString,CCountedPointer<CEntityScriptBindingBase> > >
+
+WINS: 10
+  004d1db0 RELOCATION_MATCH CSubtitledMessage::??1CSubtitledMessage@@QAE@XZ
+  00695f40 RELOCATION_MATCH std::pair<CCharString,CCountedPointer<CActionEventBase> >::??1?$pair@VCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@QAE@XZ
+  006966d0 RELOCATION_MATCH std::??$_Destroy@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@std@@YIXPAU?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@0@@Z
+  009f81c0 RELOCATION_MATCH CGraphicBankManager::CGraphicDataBankInfo::??1CGraphicDataBankInfo@CGraphicBankManager@@QAE@XZ
+  00a0a5d0 RELOCATION_MATCH std::??$_Destroy@VCMeshDataBankInfo@CMeshBankManager@@@std@@YIXPAVCMeshDataBankInfo@CMeshBankManager@@@Z
+  00a0bd40 RELOCATION_MATCH CASoundBank::??1CASoundBank@@UAE@XZ
+  00a32690 RELOCATION_MATCH C3DMeshVolume::??1C3DMeshVolume@@QAE@XZ
+  00af6570 RELOCATION_MATCH NParticleEngine::CComponentInstance::??1CComponentInstance@NParticleEngine@@UAE@XZ
+  00cb9700 RELOCATION_MATCH std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase> >::??1?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@std@@QAE@XZ
+  00cba6c0 RELOCATION_MATCH std::??$_Destroy@U?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@std@@@std@@YIXPAU?$pair@VCCharString@@V?$CCountedPointer@VCEntityScriptBindingBase@@@@@0@@Z
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  CSubtitledMessage_CSubtitledMessage_004d1db0
+  stdpairCCharStringCCountedPointerCActionEventBase_pair_00695f40
+  std_DestroypairCCharStringconstCCountedPointerCActio_006966d0
+  CGraphicBankManagerCGraphicDataBankInfo_CGraphicDataBankInfo_009f81c0
+  std_DestroyCMeshDataBankInfo_00a0a5d0
+  CASoundBank_CASoundBank_00a0bd40
+  C3DMeshVolume_C3DMeshVolume_00a32690
+  NParticleEngineCComponentInstance_CComponentInstance_00af6570
+  stdpairCCharStringCCountedPointerCEntityScriptBindingBase_pair_00cb9700
+  std_DestroypairCCharStringCCountedPointerCEntityScri_00cba6c0

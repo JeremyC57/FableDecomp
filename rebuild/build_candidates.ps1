@@ -283707,10 +283707,11 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009f88c0'
-        Module = 'CGraphicBankManager::CGraphicDataBankInfo'
-        Source = '00/9f/CGraphicBankManagerCGraphicDataBankInfo_CGraphicDataBankInfo_009f88c0.cpp'
-        TestSource = '00/9f/CGraphicBankManagerCGraphicDataBankInfo_CGraphicDataBankInfo_009f88c0_test.cpp'
+        Module = 'std'
+        Source = '00/9f/std_Destroy_009f88c0.cpp'
+        TestSource = '00/9f/std_Destroy_009f88c0_test.cpp'
         PassPattern = '009f88c0_TEST PASS'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
     }
     [pscustomobject]@{
         Address = '00a326d0'
@@ -371995,6 +371996,79 @@ $catalog = @(
         Source = '00/62/CTCQuickAccessMenu_GetItemsListUI_006276f0.cpp'
         TestSource = '00/62/CTCQuickAccessMenu_GetItemsListUI_006276f0_test.cpp'
         PassPattern = '006276f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d1db0'
+        Module = 'CSubtitledMessage'
+        Source = '00/4d/CSubtitledMessage_CSubtitledMessage_004d1db0.cpp'
+        TestSource = '00/4d/CSubtitledMessage_CSubtitledMessage_004d1db0_test.cpp'
+        PassPattern = '004d1db0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00695f40'
+        Module = 'std::pair<CCharString,CCountedPointer<CActionEventBase> >'
+        Source = '00/69/stdpairCCharStringCCountedPointerCActionEventBase_pair_00695f40.cpp'
+        TestSource = '00/69/stdpairCCharStringCCountedPointerCActionEventBase_pair_00695f40_test.cpp'
+        PassPattern = '00695f40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006966d0'
+        Module = 'std'
+        Source = '00/69/std_DestroypairCCharStringconstCCountedPointerCActio_006966d0.cpp'
+        TestSource = '00/69/std_DestroypairCCharStringconstCCountedPointerCActio_006966d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '006966d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f81c0'
+        Module = 'CGraphicBankManager::CGraphicDataBankInfo'
+        Source = '00/9f/CGraphicBankManagerCGraphicDataBankInfo_CGraphicDataBankInfo_009f81c0.cpp'
+        TestSource = '00/9f/CGraphicBankManagerCGraphicDataBankInfo_CGraphicDataBankInfo_009f81c0_test.cpp'
+        PassPattern = '009f81c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0a5d0'
+        Module = 'std'
+        Source = '00/a0/std_DestroyCMeshDataBankInfo_00a0a5d0.cpp'
+        TestSource = '00/a0/std_DestroyCMeshDataBankInfo_00a0a5d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00a0a5d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a0bd40'
+        Module = 'CASoundBank'
+        Source = '00/a0/CASoundBank_CASoundBank_00a0bd40.cpp'
+        TestSource = '00/a0/CASoundBank_CASoundBank_00a0bd40_test.cpp'
+        PassPattern = '00a0bd40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a32690'
+        Module = 'C3DMeshVolume'
+        Source = '00/a3/C3DMeshVolume_C3DMeshVolume_00a32690.cpp'
+        TestSource = '00/a3/C3DMeshVolume_C3DMeshVolume_00a32690_test.cpp'
+        PassPattern = '00a32690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af6570'
+        Module = 'NParticleEngine::CComponentInstance'
+        Source = '00/af/NParticleEngineCComponentInstance_CComponentInstance_00af6570.cpp'
+        TestSource = '00/af/NParticleEngineCComponentInstance_CComponentInstance_00af6570_test.cpp'
+        PassPattern = '00af6570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb9700'
+        Module = 'std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase> >'
+        Source = '00/cb/stdpairCCharStringCCountedPointerCEntityScriptBindingBase_pair_00cb9700.cpp'
+        TestSource = '00/cb/stdpairCCharStringCCountedPointerCEntityScriptBindingBase_pair_00cb9700_test.cpp'
+        PassPattern = '00cb9700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cba6c0'
+        Module = 'std'
+        Source = '00/cb/std_DestroypairCCharStringCCountedPointerCEntityScri_00cba6c0.cpp'
+        TestSource = '00/cb/std_DestroypairCCharStringCCountedPointerCEntityScri_00cba6c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00cba6c0_TEST PASS'
     }
 )
 

@@ -1,0 +1,11 @@
+address	status	bytes	test	probes	note
+00695f40	RELOCATION_MATCH	60v60	PASS	1	std::pair<CCharString,CCountedPointer<NCreatureAction::CActionEventBase>>::~pair (order-derived among the TU's 3 copies)
+006966d0	RELOCATION_MATCH	60v60	PASS	1	std::_Destroy<pair<const CCharString,CCountedPointer<NCreatureAction::CActionEventBase>>> /Gr
+00a0a5d0	RELOCATION_MATCH	60v60	PASS	1	std::_Destroy<CMeshBankManager::CMeshDataBankInfo> /Gr
+00a0bd40	RELOCATION_MATCH	60v60	PASS	1	CASoundBank::~CASoundBank (implicit; ??_G 0x00A0BD80 slot 0)
+00a32690	RELOCATION_MATCH	60v60	PASS	1	C3DMeshVolume::~C3DMeshVolume (implicit)
+00af6570	RELOCATION_MATCH	60v60	PASS	1	NParticleEngine::CComponentInstance::~CComponentInstance (implicit; after ctor 0x00AF6550)
+00cb9700	RELOCATION_MATCH	60v60	PASS	1	std::pair<CCharString,CCountedPointer<CEntityScriptBindingBase>>::~pair (order-derived)
+00cba6c0	RELOCATION_MATCH	60v60	PASS	1	std::_Destroy<pair<CCharString,CCountedPointer<CEntityScriptBindingBase>>> /Gr (order-derived)
+009f81c0	RELOCATION_MATCH	61v61	PASS	1	CGraphicBankManager::CGraphicDataBankInfo::~CGraphicDataBankInfo (landed twin 0x009F88C0 respelled to _Destroy)
+004d1db0	RELOCATION_MATCH	98v98	PASS	2	CSubtitledMessage::~CSubtitledMessage (label ~CPatchTesselationEdgeStrip wrong)

@@ -1,0 +1,2 @@
+1	probe/004d1db0_p1.cpp: implicit dtor over STLport 4.6 vector/_Vector_base/_STLP_alloc_proxy (malloc allocator) + CArray/CVectorMap wrappers, emission helper	RELOCATION_MATCH
+2	src/004d1db0.cpp: same shape with the Ego_r CCameraTag member names and enum types (no codegen change)	RELOCATION_MATCH
