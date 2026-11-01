@@ -21,6 +21,9 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 class CThing {
 public:
     unsigned char _pad00[0x10];
@@ -31,7 +34,6 @@ public:
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_dead : 1;                   // +0x91 bit 0
     unsigned char m_91_1 : 7;
-    void SetSuspendAnimation(bool suspend, bool immediate);   // 0x00833A10
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -70,7 +72,7 @@ void CTCBattleCharge::OnInitialActivate()
     if (thing->GetInterface(&modes, 0x31))
         modes->AddMode(0x23);
     if (!thing->m_dead && thing->m_type == 1)
-        ParentThing->SetSuspendAnimation(true, false);
+        ((CThingAICreature*)ParentThing)->SuspendAI(true, (void*)false);
     else
         Reset_007a7000();
 }

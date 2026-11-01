@@ -2,10 +2,10 @@
 // Leaf: ?Initialise@CCombatAction_RecoverFromDazed
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008ED8C0, 144-byte slot (139 bytes of code). Initialise is vtable slot 12.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8, three times through one `lea esi,[edi+8]`),
-//          CThingAnimatable::SetSuspendAnimation(bool, long) @ 0x00833A10, CVectorMap::LowerBound @ 0x0040F020 (inlined
+//          CThingAICreature::SuspendAI(bool, long) @ 0x00833A10, CVectorMap::LowerBound @ 0x0040F020 (inlined
 //          GetInterface for type 0x31), CTCCreatureModeManager::RemoveMode @ 0x0073ABA0, CCombatActionBase::Initialise @ 0x00857520.
 // Shape: the thing-type byte at +0x10 (1 = the player creature, as in the landed CModeKnockedDown::OnDeactivate)
-// gates SetSuspendAnimation(false, 0); the GetInterface result is not tested, so RemoveMode + the base call are
+// gates SuspendAI(false, 0); the GetInterface result is not tested, so RemoveMode + the base call are
 // duplicated on both paths (the absent path reads the uninitialised out pointer from the `push ecx` frame word).
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -19,13 +19,15 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     SEntry* LowerBound(const ETCInterfaceType& type);   // 0x0040F020
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 class CThing { public:
     unsigned char _pad0[0x10];
     unsigned char m_type;                   // +0x10 thing type (1 = the player creature)
     unsigned char _pad11[0x20 - 0x11];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
-    void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10 (CThingAnimatable)
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -76,7 +78,7 @@ void CCombatAction_RecoverFromDazed::Initialise()
 {
     if (PCreature.GetPItem()->m_type == 1) {
         CThing* pCreature = PCreature.GetPItem();   // named: retail fetches it before the argument pushes
-        pCreature->SetSuspendAnimation(false, 0);
+        ((CThingAICreature*)pCreature)->SuspendAI(false, 0);
     }
     CTCCreatureModeManager* pModes;
     PCreature.GetPItem()->GetInterface(&pModes, 0x31);

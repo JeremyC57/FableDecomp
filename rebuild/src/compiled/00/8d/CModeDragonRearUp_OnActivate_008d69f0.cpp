@@ -1,10 +1,12 @@
 // CModeDragonRearUp::OnActivate  @ 008d69f0
 struct CModeDragonRearUp;
 
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 struct SomeState {
     char pad[0x10];
     unsigned char flag;                        // +0x10
-    void Do(int a, CModeDragonRearUp* self);   // thiscall -> 0x833a10
 };
 
 struct ModeBase {
@@ -21,5 +23,5 @@ void CModeDragonRearUp::OnActivate()
 {
     this->BaseOnActivate();
     if (this->state->flag == 1)
-        this->state->Do(1, this);
+        ((CThingAICreature*)(this->state))->SuspendAI(1, this);
 }

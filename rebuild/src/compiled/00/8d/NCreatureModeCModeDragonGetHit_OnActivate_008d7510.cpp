@@ -4,17 +4,19 @@
 // Callees: CModeStandBase::OnActivate @ 0x008621A0, CPlayerManager::GetMainPlayer @ 0x00449970 (catalog label is a
 // catch funclet; the 0x00449960 twin is GetMainPlayer per GOTCHAS chunk 139), CPlayer::GetPControlledCreature @ 0x00487DC0
 // (GOTCHAS chunk 140), CBaseIntelligentPointer: ctor 0x00A01B10, SetPItem 0x00A01B90, GetPItem 0x00A01B50,
-// ~CBaseIntelligentPointer 0x00A01C10, CThingAnimatable::SetSuspendAnimation @ 0x00833A10.
+// ~CBaseIntelligentPointer 0x00A01C10, CThingAICreature::SuspendAI @ 0x00833A10.
 // Globals: the engine singleton @ 0x013B86A0 (player manager at +0x1c).
 // Layout: Ego_r.pdb CModeDragonGetHit: Filter +0x68, PTarget +0x74, Timer +0x7c.
 // Shape: `PTarget = CIntelligentPointer<CThing>(hero)`: the 8-byte temporary (base ctor, vtable 0x01238C6C, SetPItem)
 // is copied through an inline operator= (`SetPItem(other.GetPItem())`) and destroyed by the base's out-of-line dtor.
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 namespace NCreatureMode {
 struct CModeBase;
 struct CThing {
     unsigned char _pad00[0x10];
     unsigned char m_type;                          // +0x10 (1 = the player creature)
-    void SetSuspendAnimation(bool suspend, CModeBase* mode);   // 0x00833A10
 };
 }
 using NCreatureMode::CThing;
@@ -73,7 +75,7 @@ void CModeDragonGetHit::OnActivate()
     CModeStandBase::OnActivate();
     PTarget = CIntelligentPointer(g_pEngine->m_pPlayerManager->GetMainPlayer().GetPControlledCreature());
     if (m_pThing->m_type == 1)
-        m_pThing->SetSuspendAnimation(true, this);
+        ((CThingAICreature*)m_pThing)->SuspendAI(true, this);
 }
 
 }

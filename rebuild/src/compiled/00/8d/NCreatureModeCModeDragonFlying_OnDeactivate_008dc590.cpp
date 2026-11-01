@@ -2,7 +2,7 @@
 // Leaf: OnDeactivate
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DC590, 104 bytes (`ret`).
 // Callees: SetThingAsNotBloodyWillableAtAll(CThing*, bool) @ 0x007E4040 and SetThingIsAbleToBeLifted(CThing*, bool)
-// @ 0x007E4330 (both `__fastcall`, the bool in dl), CThingAnimatable::SetSuspendAnimation @ 0x00833A10,
+// @ 0x007E4330 (both `__fastcall`, the bool in dl), CThingAICreature::SuspendAI @ 0x00833A10,
 // CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, type 0x3a: word 1 bit 26 of the presence bitset).
 // Layout: CModeBase: ParentThing +4, Active +0x18; the component's flag byte +0x50 bit 0.
 // Shape: the GetInterface result IS tested (the absent arm skips the flag store); the parent is reloaded after the
@@ -20,6 +20,9 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CModeBase;
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char m_type;                   // +0x10 (1 = player creature)
@@ -39,7 +42,6 @@ class CThing { public:
         }
         return false;
     }
-    void SetSuspendAnimation(bool suspend, CModeBase* mode);   // 0x00833A10
 };
 struct CTCFlagged {                         // the type-0x3a component
     unsigned char _pad00[0x50];
@@ -66,7 +68,7 @@ void CModeDragonFlying::OnDeactivate()
     SetThingAsNotBloodyWillableAtAll(ParentThing, false);
     SetThingIsAbleToBeLifted(ParentThing, true);
     if (ParentThing->m_type == 1)
-        ParentThing->SetSuspendAnimation(false, this);
+        ((CThingAICreature*)ParentThing)->SuspendAI(false, this);
     Active = false;
     CTCFlagged* tc;
     if (ParentThing->GetInterface(&tc, 0x3a))

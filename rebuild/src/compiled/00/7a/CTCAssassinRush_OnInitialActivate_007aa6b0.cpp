@@ -56,6 +56,9 @@ template <class T> struct CRetailVector {                  // STLport vector (12
     ~CRetailVector() { if (_M_start) free(_M_start); }
     void push_back(const T& value);                        // 0x004AD520
 };
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 class CThing { public:
     unsigned char         _pad00[0x10];
     unsigned char         ThingType;                       // +0x10
@@ -66,7 +69,6 @@ class CThing { public:
     CTCGraphicAppearance* Graphic;                         // +0x64
     unsigned char         _pad68[0x91 - 0x68];
     unsigned char         m_flags;                         // +0x91 bit 0: dead
-    void SetSuspendAnimation(bool suspend, bool b);        // 0x00833A10
     __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -133,7 +135,7 @@ void CTCAssassinRush::OnInitialActivate()
         }
     }
     if (!(thing->m_flags & 1) && thing->ThingType == 1)
-        ParentThing->SetSuspendAnimation(true, false);
+        ((CThingAICreature*)ParentThing)->SuspendAI(true, (void*)false);
     else
         UpdateDirectionOverride();
 }

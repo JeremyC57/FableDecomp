@@ -5,7 +5,6 @@ struct CModeDragonRearUp;
 struct SomeState {
     char pad[0x10];
     unsigned char flag;
-    void Do(int a, CModeDragonRearUp* self);
 };
 
 struct ModeBase {
@@ -25,7 +24,8 @@ static CModeDragonRearUp* g_lastSelf = 0;
 
 ModeBase::~ModeBase() {}
 void ModeBase::BaseOnActivate() { g_baseCalls++; }
-void SomeState::Do(int a, CModeDragonRearUp* self) { g_doCalls++; g_lastArg = a; g_lastSelf = self; }
+class CThingAICreature { public: void SuspendAI(bool suspend, void* suspender); };   // 0x00833A10 (Ego_r.pdb)
+void CThingAICreature::SuspendAI(bool suspend, void* suspender) { g_doCalls++; g_lastArg = suspend; g_lastSelf = (CModeDragonRearUp*)suspender; }
 
 int main()
 {

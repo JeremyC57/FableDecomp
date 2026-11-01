@@ -1,6 +1,6 @@
 // NCreatureMode::CModeScreamerSuperAttack::OnActivate() -- the stand-mode activation, suspend the creature's animation when it is in state 1, then (while the target is alive) look up the "SUPER_ATTACK_BEAM" effect in the thing definition's special-effects sub-def, spawn it at the creature and keep it in PLightningBeamParticleEmitter
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D8330, 285 bytes, plain `ret` (virtual).
-// Callees: CModeStandBase::OnActivate 0x008621A0 (qualified base call, first), CThingAnimatable::SetSuspendAnimation(bool,
+// Callees: CModeStandBase::OnActivate 0x008621A0 (qualified base call, first), CThingAICreature::SuspendAI(bool,
 //   long) 0x00833A10, CBaseIntelligentPointer::GetPItem 0x00A01B50 (PTarget +0x74, twice), CDefClassBase::GetSubDef<
 //   CSpecialEffectsDef>(CDefPointer<CSpecialEffectsDef>&) 0x00669580, CCharString(const char*, long) 0x0099EBF0 /
 //   ~CCharString 0x0099EAE0, CSpecialEffectsDef::GetEffectFromString(const CCharString&, long&) 0x00669D30 (result
@@ -65,10 +65,12 @@ bool CDefClassBase::GetSubDef(CDefPointer<CSpecialEffectsDef>& out)
     out.m_p = def;
     return true;
 }
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 #pragma auto_inline(on)
 
 struct CThingAnimatable {
-    void SetSuspendAnimation(bool suspend, long owner);   // 0x00833A10
 };
 class CThing : public CThingAnimatable { public:
     unsigned char  _pad00[0x10];
@@ -127,7 +129,7 @@ void CModeScreamerSuperAttack::OnActivate()
 {
     CModeStandBase::OnActivate();
     if (ParentThing->State == 1)
-        ParentThing->SetSuspendAnimation(true, (long)this);
+        ((CThingAICreature*)ParentThing)->SuspendAI(true, (void*)((long)this));
     CBaseIntelligentPointer* target = &PTarget;
     if (((CThing*)target->GetPItem()) == 0 || ((CThing*)target->GetPItem())->Dead)
         return;

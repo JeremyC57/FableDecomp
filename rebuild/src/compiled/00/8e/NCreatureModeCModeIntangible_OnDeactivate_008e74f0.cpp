@@ -7,7 +7,7 @@
 //   44 (+0xB0, 0x00723A50: re-apply the def's physics flags); CThing::SetAsDrawable (slot 28, +0x70, 0x004C8E50);
 //   CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, types 0x3a mapwho and 9 targeted);
 //   CTCWillResponse::SetThingAsNotBloodyWillableAtAll @ 0x007E4040 (static `__fastcall`, bool in dl);
-//   CThingAnimatable::SetSuspendAnimation @ 0x00833A10; CThingCreatureBase::SetCurrentAction(const CCountedPointer&) @ 0x00664670
+//   CThingAICreature::SuspendAI @ 0x00833A10; CThingCreatureBase::SetCurrentAction(const CCountedPointer&) @ 0x00664670
 //   (returns bool; the manifest label `_Cons_val<...>` is propagated); the action's virtual slot 4 (+0x10) when it is refused.
 // Layout: Ego_r.pdb CModeIntangible (0x44): CModeBase ParentThing +4, Active +0x18; Timer +0x30, BossPhase +0x34,
 //   WasDamageable +0x38, PActionOnDeactivate (CCountedPointer<CCreatureActionBase>) +0x3c. The thing (landed CModeDragonFlying /
@@ -51,6 +51,9 @@ template <class T> class CCountedPointer { public:
     void* Info;
     T* operator->() const { return Data; }
 };
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -80,7 +83,6 @@ class CThing { public:
         }
         return false;
     }
-    void SetSuspendAnimation(bool suspend, CModeBase* mode);                   // 0x00833A10
     bool SetCurrentAction(const CCountedPointer<CCreatureActionBase>& action); // 0x00664670
 };
 class CTCMapwho { public:                              // interface 0x3a
@@ -130,7 +132,7 @@ void CModeIntangible::OnDeactivate()
         targeted->Targetable = true;
     CThing* thing = ParentThing;
     if (thing->m_type == 1) {
-        thing->SetSuspendAnimation(false, this);
+        ((CThingAICreature*)thing)->SuspendAI(false, this);
         thing->Damageable = WasDamageable;
         if (PActionOnDeactivate.Data) {
             if (!thing->SetCurrentAction(PActionOnDeactivate))

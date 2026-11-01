@@ -5,7 +5,7 @@
 // Callees: the physics component's virtual slots 38 (+0x98), 36 (+0x90) and 43 (+0xAC, SetPhysicsFlags 0x007234C0);
 //   CModeBase::OnActivate @ 0x0073AAC0; CThing::SetAsDrawable (slot 28, +0x70); CVectorMap::LowerBound @ 0x0040F020 (inlined
 //   GetInterface, types 0x3a, 9 and 0x4c) and its const instantiation @ 0x004365B0 (type 0xad, the boss);
-//   CTCWillResponse::SetThingAsNotBloodyWillableAtAll @ 0x007E4040 (static `__fastcall`); CThingAnimatable::SetSuspendAnimation
+//   CTCWillResponse::SetThingAsNotBloodyWillableAtAll @ 0x007E4040 (static `__fastcall`); CThingAICreature::SuspendAI
 //   @ 0x00833A10; CTCBoss::GetBossPhase @ 0x007AED10 (manifest label CWorld::DrawGetEnvironment is propagated);
 //   CTCWeaponTrail::ClearAllWeaponTrails @ 0x0076E150.
 // Layout: as OnDeactivate 0x008E74F0 (Ego_r.pdb CModeIntangible; CThingPhysical::Damageable bit 0 of +0xBC).
@@ -43,6 +43,9 @@ class CCreatureActionBase;
 template <class T> class CCountedPointer { public:
     T*    Data;
     void* Info;
+};
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
 };
 class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -93,7 +96,6 @@ class CThing { public:
         CInterfaceMap::SEntry* sel = (it == map->last || interfaceType < it->first) ? map->last : it;
         return (T*)sel->second;
     }
-    void SetSuspendAnimation(bool suspend, CModeBase* mode);                   // 0x00833A10
 };
 class CTCMapwho { public:                              // interface 0x3a
     unsigned char _pad00[0x50];
@@ -148,7 +150,7 @@ void CModeIntangible::OnActivate()
         targeted->Targetable = false;
     CThing* thing = ParentThing;
     if (thing->m_type == 1) {
-        thing->SetSuspendAnimation(true, this);
+        ((CThingAICreature*)thing)->SuspendAI(true, this);
         WasDamageable = thing->Damageable;
     }
     if (((const CThing*)ParentThing)->HasTC(0xad))

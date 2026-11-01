@@ -1,7 +1,7 @@
 // NCreatureMode::CModeBriarRoseTeleportInvulnerable::OnDeactivate() -- base deactivate, resume the owner's animation, drop TC 0x93, restore full alpha, kill the summoned helper if still alive
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008E7850, 112 bytes (padding included); vtable 0x01280228 slot 6.
 // Shape: CModeStandBase::OnDeactivate (0x00861D00) first; when the owner's state byte (+0x10) is 1
-// it un-suspends its animation for this mode (CThingAnimatable::SetSuspendAnimation(false, this),
+// it un-suspends its animation for this mode (CThingAICreature::SuspendAI(false, this),
 // 0x00833A10); RemoveTC(0x93) (0x004C9840); the owner's graphic appearance (+0x64) gets
 // SetAlpha(255) (0x004BFAC0); finally the CIntelligentPointer at +0x80 is tested with the
 // IS_THING_ALIVE idiom (GetPItem 0x00A01B50 re-called for each use: non-null, dead bit 0 of +0x91
@@ -14,6 +14,9 @@ class CTCGraphicAppearance { public:
 using NGraphicAppearance::CTCGraphicAppearance;
 
 enum ETCInterfaceType { };
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char m_state;                  // +0x10 (compared with 1, as in the landed 0x008C4B00)
@@ -23,7 +26,6 @@ class CThing { public:
     unsigned char m_flags91;                // +0x91 bit 0: dead
     void RemoveTC(ETCInterfaceType interfaceType);      // 0x004C9840
     void Kill(bool b);                      // 0x004C9B80
-    void SetSuspendAnimation(bool suspend, void* suspender);   // 0x00833A10 (CThingAnimatable)
 };
 
 class CBaseObject;
@@ -71,7 +73,7 @@ void CModeBriarRoseTeleportInvulnerable::OnDeactivate()
 {
     CModeStandBase::OnDeactivate();
     if (ParentThing->m_state == 1)
-        ParentThing->SetSuspendAnimation(false, this);
+        ((CThingAICreature*)ParentThing)->SuspendAI(false, this);
     ParentThing->RemoveTC((ETCInterfaceType)(0x93));
     ParentThing->m_pGraphicAppearance->SetAlpha(0xff);
     if (IS_THING_ALIVE(m_pHelper))

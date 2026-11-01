@@ -1,7 +1,7 @@
 // NCreatureMode::CModeOutOfActionBase::OnDeactivate() -- the creature comes back into action: resume its animation if it was in state 1, clear targeting flag 4, wake its physics, kill the out-of-action emitter if it is still alive, then the stand-mode deactivation
 // Leaf: OnDeactivate
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D8F30, 161 bytes (`ret`).
-// Callees: CThingAnimatable::SetSuspendAnimation(bool, long) 0x00833A10; CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound
+// Callees: CThingAICreature::SuspendAI(bool, long) 0x00833A10; CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound
 // 0x0040F020 (inlined HasTC/GetTC, type 9 = bit 9 of +0x20); the type-9 component's flag setter 0x007EA270 (beside
 // CTCTargeted::IsTargetable 0x007EA280; manifest "CObservable::AddExclusiveObserver" is propagated); the physics object's
 // (+0x60) virtual slot 44 (+0xb0, wake); CBaseIntelligentPointer::GetPItem 0x00A01B50 (three times); CThing::Kill(bool)
@@ -33,8 +33,10 @@ struct CPhysicsObject {
     virtual void Wake();   // slot 44 (+0xb0)
 };
 
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 struct CThingAnimatable {                  // empty here: only its member is called (thing base at offset 0)
-    void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
 };
 
 class CThing : public CThingAnimatable { public:
@@ -124,7 +126,7 @@ struct CModeOutOfActionBase : CModeStandBase {
 void CModeOutOfActionBase::OnDeactivate()
 {
     if (ParentThing->m_state == 1)
-        ParentThing->SetSuspendAnimation(false, 0);
+        ((CThingAICreature*)ParentThing)->SuspendAI(false, 0);
     if (ParentThing->HasTC(9)) {
         ParentThing->GetTC<CTCTargetedFlags>(9)->ClearFlag(4);
     }

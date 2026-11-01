@@ -1,7 +1,7 @@
 // NCreatureMode::CModeGuildmasterPowerUpHeal::OnActivate() -- stand-mode activation; suspend a player's animation; for every live guild bodyguard within 20 units of the guildmaster play the HEAL effect (attached through its particle emitter) and make sure the guildmaster has a CTCHealLife component
 // Leaf: ?OnActivate@CModeGuildmasterPowerUpHeal
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DDD70, 565 bytes (`ret`).
-// Callees: CModeStandBase::OnActivate @ 0x008621A0, CThingAnimatable::SetSuspendAnimation @ 0x00833A10, CCharString(const char*, long)
+// Callees: CModeStandBase::OnActivate @ 0x008621A0, CThingAICreature::SuspendAI @ 0x00833A10, CCharString(const char*, long)
 //   @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CGameDefinitionManager::Get @ 0x0044C6B0, CDefinitionManager::GetDefGlobalIndexFromName
 //   @ 0x009AD410, CThing::GetPos @ 0x004C73D0, __ftol2 @ 0x00BFEA70, CModeBase::GetWorld @ 0x0073A680 (labelled
 //   "CViewBase::GetDisplayEngine"), CThingSearchTools::GetAllThingsInRoughArea<..., CThingFilter_HasDefGlobalIndex> @ 0x008E3EB0,
@@ -110,7 +110,6 @@ class CThing { public:
     unsigned char _pad74[0x91 - 0x74];
     unsigned char m_flags91;                          // +0x91 bit 0: dead
     const C3DVector& GetPos() const;             // 0x004C73D0
-    void SetSuspendAnimation(bool suspend, NCreatureMode::CModeBase* mode);   // 0x00833A10
     CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     CDefPointer<CDefClassBase> GetDef() const { return CDefPointer<CDefClassBase>(m_pDef); }
@@ -160,7 +159,10 @@ class CThingFilter_HasDefGlobalIndex { public:
     long DefGlobalIndex;
     CThingFilter_HasDefGlobalIndex(long index) : DefGlobalIndex(index) {}
 };
-class CThingAICreature : public CThing { public:
+class CThingAICreature : public CThing {
+public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+public: public:
 };
 struct CCreatureVector {                              // STLport vector<CThingAICreature*> {start, finish, end_of_storage}
     CThingAICreature** _M_start;
@@ -217,7 +219,7 @@ void CModeGuildmasterPowerUpHeal::OnActivate()
 {
     CModeStandBase::OnActivate();
     if (m_pThing->m_type == 1)
-        m_pThing->SetSuspendAnimation(true, this);
+        ((CThingAICreature*)m_pThing)->SuspendAI(true, this);
     CCreatureVector bodyguards;
     long bodyguardDef = CGameDefinitionManager::Get().GetDefGlobalIndexFromName("CREATURE_GUILDMASTER_BODYGUARD");
     {

@@ -1,7 +1,7 @@
 // CTCAssassinRush::FinalCleanup() -- when the parent thing is alive: release its special-abilities lock if ability 13 (assassin rush) is running and, unless the exit modes already ran, resume the player's animation (player-controlled parent) or end this TC's bullet-time slowdown; then kill both trail effects that are still alive
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007AA4D0, 231 bytes (+9 int3), `ret`.
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020 (inline GetInterface, type 0xA7),
-//   CThing::SetSuspendAnimation 0x00833A10, CTCBase::GetWorld 0x00686A70, CBulletTimeManager::RemoveBulletTimeSlowdown
+//   CThingAICreature::SuspendAI 0x00833A10, CTCBase::GetWorld 0x00686A70, CBulletTimeManager::RemoveBulletTimeSlowdown
 //   0x004C6140 (world +0x68), CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::Kill 0x004C9B80.
 // Naming: Ego_r.pdb ?FinalCleanup@CTCAssassinRush@@AAEXXZ; the only references are the two vtable thunks
 //   0x007AA820 (slot 14) and 0x007AA830 (slot 2) of CTCAssassinRush (vtable 0x0126CF2C) that tail-jump here
@@ -25,6 +25,9 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char State;                                // +0x10
@@ -35,7 +38,6 @@ class CThing { public:
     unsigned char m_stateFlags;                         // +0x91 (bit 0: dead)
     bool IsDead() const { return (m_stateFlags & 1) != 0; }
     void Kill(bool immediately);                        // 0x004C9B80
-    void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -114,7 +116,7 @@ void CTCAssassinRush::FinalCleanup()
         }
         if (!CompletedExitModes) {
             if (ParentThing->State == 1)
-                ParentThing->SetSuspendAnimation(false, 0);
+                ((CThingAICreature*)ParentThing)->SuspendAI(false, 0);
             else
                 GetWorld().RemoveBulletTimeSlowdown((unsigned long)this);
         }

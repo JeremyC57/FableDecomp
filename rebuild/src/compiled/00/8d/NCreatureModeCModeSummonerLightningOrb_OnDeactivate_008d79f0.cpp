@@ -1,12 +1,15 @@
 // NCreatureMode::CModeSummonerLightningOrb::OnDeactivate() -- the CModeStandBase deactivation, then (live parent) resume a player's animation and remove the parent's 0xee component, then kill the live charge effects behind +0x84 and +0x7c
 // Leaf: OnDeactivate
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D79F0, 151 bytes (`ret`).
-// Callees: CModeStandBase::OnDeactivate @ 0x00861D00, CThingAnimatable::SetSuspendAnimation @ 0x00833A10,
+// Callees: CModeStandBase::OnDeactivate @ 0x00861D00, CThingAICreature::SuspendAI @ 0x00833A10,
 // CThing::RemoveTC(long) @ 0x004C9840 (GOTCHAS chunk 140 label), CBaseIntelligentPointer::GetPItem @ 0x00A01B50,
 // CThing::Kill(bool) @ 0x004C9B80.
 // Layout: Ego_r.pdb CModeSummonerLightningOrb: Filter +0x68, PTarget +0x74, PChargeEffect +0x7c, POrbChargeEffect +0x84,
 // Timer +0x8c.
 // Shape: the constant 1 lives in ebx (bit tests, the type compare and the Kill argument share it).
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 namespace NCreatureMode {
 struct CModeBase;
 struct CThing {
@@ -18,7 +21,6 @@ struct CThing {
     unsigned char _pad6d[0x24];
     unsigned char m_dead : 1;                      // +0x91 bit 0
     unsigned char m_91_1 : 7;
-    void SetSuspendAnimation(bool suspend, CModeBase* mode);   // 0x00833A10
     void Kill(bool flag);                          // 0x004C9B80
 };
 struct CBaseIntelligentPointer {
@@ -55,7 +57,7 @@ void CModeSummonerLightningOrb::OnDeactivate()
     CModeStandBase::OnDeactivate();
     if (m_pThing && !m_pThing->m_dead) {
         if (m_pThing->m_type == 1)
-            m_pThing->SetSuspendAnimation(false, this);
+            ((CThingAICreature*)m_pThing)->SuspendAI(false, this);
         ((CThingTC*)m_pThing)->RemoveTC(0xee);
     }
     if (POrbChargeEffect.GetPItem() && !POrbChargeEffect.GetPItem()->m_dead)

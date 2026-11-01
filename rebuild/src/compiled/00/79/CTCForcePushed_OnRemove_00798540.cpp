@@ -1,6 +1,6 @@
 // CTCForcePushed::OnRemove() -- CTCBase virtual (vtable 0x0126C09C slot 2): the inlined FinalCleanup -- when the owning thing is alive and is the player creature (type byte 1), take this component off its animation-suspender set
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00798540, length 34 bytes (slot 2 of CTCForcePushed's vtable 0x0126C09C).
-// Callees: the creature method @ 0x00833A10 (landed "CThingAnimatable::SetSuspendAnimation(bool, void*)"; a two-argument
+// Callees: the creature method @ 0x00833A10 (landed "CThingAICreature::SuspendAI(bool, void*)"; a two-argument
 // thiscall, bool first, working on the creature's +0x1cc suspender set).
 // Naming: Ego_r.pdb has ?OnRemove@CTCForcePushed@@UAEXXZ and ?OnKill@CTCForcePushed@@UAEXXZ, both next to the private,
 //   non-virtual ?FinalCleanup@CTCForcePushed@@AAEXXZ; a vtable slot cannot hold the non-virtual FinalCleanup, and
@@ -13,13 +13,15 @@
 // Shape: the owner read once into ecx; VC materialises the constant 1 in al and reuses it for the bit test
 // (`test al,dl`) and the `== 1` compare; the call is the last statement, so nothing follows it but `ret`.
 // Leaf: ?OnRemove@CTCForcePushed@@UAEXXZ
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 class CThing { public:
     unsigned char _pad_0x00[0x10];
     unsigned char m_type;                               // +0x10 (1 = the player creature)
     unsigned char _pad_0x11[0x80];
     unsigned char Dead : 1;                             // +0x91 bit 0
     unsigned char _flags_0x91 : 7;
-    void SetSuspendAnimation(bool suspend, void* suspender);   // 0x00833A10
 };
 
 class CTCForcePushed {
@@ -32,7 +34,7 @@ private:
     {
         CThing* thing = ParentThing;
         if (thing && !thing->Dead && thing->m_type == 1)
-            thing->SetSuspendAnimation(false, 0);
+            ((CThingAICreature*)thing)->SuspendAI(false, 0);
     }
     CThing*       ParentThing;                          // +0x04 (CTCBase)
 };

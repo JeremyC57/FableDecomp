@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008EC470, length 119 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8, twice), CVectorMap::LowerBound @ 0x0040F020 (the
 // inlined GetInterface lookup for type 9 = bit 9 of the bitset dword at +0x20, `test ch,2`), CCreatureAction_RiseUp::
-// RemoveUndergroundMode @ 0x008B7640 (landed), CThingAnimatable::SetSuspendAnimation(bool, bool) @ 0x00833A10 (two zero
+// RemoveUndergroundMode @ 0x008B7640 (landed), CThingAICreature::SuspendAI(bool, bool) @ 0x00833A10 (two zero
 // pushes), CCombatActionBase::FinishAction @ 0x00859A20 (direct base call, kept a call by the push-ecx frame).
 // Shape: the FrameUpdate twin (0x008EC3F0) without the progress test; the component pointer comes from the landed
 // out-parameter GetInterface template. The rising flag at +0x118 follows the retail CCreatureAction_RiseUp base
@@ -19,9 +19,11 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     SEntry* LowerBound(const ETCInterfaceType& type);   // 0x0040F020
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 class CThing { public:
     unsigned char _pad0[0x20];
-    void SetSuspendAnimation(bool suspend, bool immediate);   // 0x00833A10 (CThingAnimatable)
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
@@ -87,6 +89,6 @@ void CCreatureAction_UndeadRiseUp::FinishAction()
         m_rising = 0;
     }
     CThing* creature = PCreature.GetPItem();      // a named local: retail fetches the creature before the argument pushes
-    creature->SetSuspendAnimation(false, false);
+    ((CThingAICreature*)creature)->SuspendAI(false, (void*)false);
     CCombatActionBase::FinishAction();
 }

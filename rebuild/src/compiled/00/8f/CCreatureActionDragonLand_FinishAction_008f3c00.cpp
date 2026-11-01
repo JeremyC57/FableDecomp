@@ -1,11 +1,11 @@
 // CCreatureAction_DragonLand::FinishAction() -- flag the dragon's interface-0x3a component (bit 0 of +0x50), release this action's animation suspension on a creature, then the base FinishAction
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F3C00, length 111 bytes, plain `ret`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3), CVectorMap::LowerBound @ 0x0040F020,
-//          CThingAnimatable::SetSuspendAnimation(bool, requester) @ 0x00833A10 (landed UndeadRiseUp shape),
+//          CThingAICreature::SuspendAI(bool, requester) @ 0x00833A10 (landed UndeadRiseUp shape),
 //          CCombatActionBase::FinishAction @ 0x00859A20.
 // Shape: `this` lives in ebp (it is pushed as the requester), PCreature's address in edi; the bool out-parameter
 //   GetInterface for bit 0x3a (`test dword ptr [eax+24h],4000000h`) with the component flag set by `or byte ptr`;
-//   the thing-type byte +0x10 compared with 1; the creature for SetSuspendAnimation is a named local fetched before
+//   the thing-type byte +0x10 compared with 1; the creature for SuspendAI is a named local fetched before
 //   the pushes; the base FinishAction is a direct call.
 // Layout: CCombatActionBase (retail 0x114 bytes) with PCreature at +8; nothing else of the class is touched. The
 //   0x3a component is not identified (only its flag byte at +0x50 is modelled).
@@ -23,13 +23,15 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 class CThing { public:
     unsigned char _pad0[0x10];
     unsigned char m_type;                   // +0x10: 1 = creature
     unsigned char _pad11[0x0f];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
-    void SetSuspendAnimation(bool suspend, const void* requester);   // 0x00833A10 (CThingAnimatable)
     template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -86,7 +88,7 @@ void CCreatureAction_DragonLand::FinishAction()
         tc->m_flags50 |= 1;
     if (PCreature.GetPItem()->m_type == 1) {
         CThing* creature = PCreature.GetPItem();
-        creature->SetSuspendAnimation(false, this);
+        ((CThingAICreature*)creature)->SuspendAI(false, this);
     }
     CCombatActionBase::FinishAction();
 }

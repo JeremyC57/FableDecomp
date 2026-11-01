@@ -2,11 +2,12 @@
 
 struct CModeDragonRearUp;
 
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 struct SomeState {
     char pad[0x10];
     unsigned char flag;   // +0x10
-    // __fastcall member (helper 0x833a10): ecx = this(state), args (int, self)
-    void Helper(int a, CModeDragonRearUp* self);
 };
 
 struct CModeDragonRearUp {
@@ -22,6 +23,6 @@ void CModeDragonRearUp::OnDeactivate()
 {
     SomeState* s = this->state;
     if (s->flag == 1)
-        s->Helper(0, this);
+        ((CThingAICreature*)s)->SuspendAI(0, this);
     DragonRearUpBase_861d00(this);
 }

@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C4B00, length 123 bytes (+ int3 padding).
 // Model: rebuild/include/engine/CCreatureAction_ScorpionRecover.h is the flattened PDB layout and sits high against the bytes (CCombatActionBase is 0x12c bytes in the PDB, 0x114 in retail: retail containers are 12 bytes), so `this` is a local model with the retail offsets.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8, three times), CVectorMap::LowerBound @ 0x0040F020 (inlined
-// GetInterface for type 0x31), CTCCreatureModeManager::RemoveMode @ 0x0073ABA0, CThingAnimatable::SetSuspendAnimation(bool, long)
+// GetInterface for type 0x31), CTCCreatureModeManager::RemoveMode @ 0x0073ABA0, CThingAICreature::SuspendAI(bool, long)
 // @ 0x00833A10, CCombatActionBase::FinishAction @ 0x00859A20 (direct base call, last).
 // Shape: the mirror of ScorpionSummon::Initialise (0x008C4A80); the GetInterface result is ignored; `this` rides in ebx, PCreature in edi.
 class CTCBase;
@@ -49,10 +49,12 @@ private:
 class CTCCreatureModeManager { public:             // interface type 0x31
     void RemoveMode(unsigned long mode);    // 0x0073ABA0
 };
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 class CThingCreatureBase { public:
     unsigned char _pad00[0x10];
     unsigned char m_state;                  // +0x10 creature state byte (compared with 1; meaning not pinned down)
-    void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
@@ -81,7 +83,7 @@ void CCreatureAction_ScorpionRecover::FinishAction()
     modes->RemoveMode(0x38);
     if (PCreature.GetCreature()->m_state == 1) {
         CThingCreatureBase* creature = PCreature.GetCreature();
-        creature->SetSuspendAnimation(false, 0);
+        ((CThingAICreature*)creature)->SuspendAI(false, 0);
     }
     CCombatActionBase::FinishAction();
 }

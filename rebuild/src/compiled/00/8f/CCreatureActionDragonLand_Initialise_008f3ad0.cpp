@@ -34,12 +34,14 @@ template <class K, class V> class CKeyPairCompareLess;
 template <class K, class V, class TCompare> class CVectorMap;
 template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:typedef std::pair<ETCInterfaceType, CTCBase*> Entry;Entry* First;Entry* Last;Entry* LowerBound(const ETCInterfaceType& key);};
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap; //0040F020
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 class CThing : public CClass { public:
  unsigned char _nativeBeforeUsingComponents[0xf];unsigned long UsingComponents[9];CInterfaceMap Components;
  unsigned char _nativeBeforePhysics[0x14];CPhysicsMethods* PPhysics;
  __forceinline CPhysicsMethods* GetPhysics()const{return PPhysics;}
  const C3DVector& GetPos() const; //004C73D0
- void SetSuspendAnimation(bool,const void*); //00833A10, requester keyed suspension
 };
 class CBaseObject;
 struct CBaseIntelligentPointer {virtual ~CBaseIntelligentPointer();void* PData;CBaseObject* GetPItem() const;}; //00A01C10/00A01B50
@@ -70,5 +72,5 @@ void CCreatureAction_DragonLand::Initialise(){
   target=static_cast<CTCTargeted*>(((void*)p->second));
  }
  target->Targetable=true;
- if(((CThing*)PCreature.GetPItem())->Type==1){CThing* creature=((CThing*)PCreature.GetPItem());creature->SetSuspendAnimation(true,this);}
+ if(((CThing*)PCreature.GetPItem())->Type==1){CThing* creature=((CThing*)PCreature.GetPItem());((CThingAICreature*)creature)->SuspendAI(true, this);}
 }

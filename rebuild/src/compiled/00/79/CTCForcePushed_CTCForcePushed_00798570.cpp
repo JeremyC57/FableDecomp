@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00798570, length 170 bytes (+ int3 padding). `ret 4`; vtable 0x0126C09C.
 //         Ego_r.pdb: `??0CTCForcePushed@@QAE@AAVCThing@@@Z`.
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800; CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10 (x2,
-//          CIntelligentPointer<CThing> vtable 0x01238C6C); CThingAnimatable::SetSuspendAnimation(bool, long) @ 0x00833A10;
+//          CIntelligentPointer<CThing> vtable 0x01238C6C); CThingAICreature::SuspendAI(bool, long) @ 0x00833A10;
 //          CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0; CGameDefinitionManager::Get @ 0x0044C6B0
 //          (__fastcall, twice); CDefinitionManager::GetGlobalIndexFromClassIndex(const CCharString&, long) const @ 0x009AD390;
 //          CDefinitionManager::GetDef<CSpecialAbilitiesForcePushDef>(long, CDefPointer<const ..>*) const @ 0x00798C10.
@@ -76,9 +76,10 @@ public:
     unsigned char _pad20[0x91 - 0x20];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
 };
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 class CThingAnimatable : public CThing {
-public:
-    void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
 };
 
 class CTCBase {
@@ -109,7 +110,7 @@ CTCForcePushed::CTCForcePushed(CThing& parent)
     : CTCBase(&parent), Initialised(false)
 {
     if (ParentThing && !(ParentThing->m_flags91 & 1) && ParentThing->ThingClass == 1)
-        ((CThingAnimatable*)ParentThing)->SetSuspendAnimation(true, 0);
+        ((CThingAICreature*)(((CThingAnimatable*)ParentThing)))->SuspendAI(true, 0);
     long index;
     {
         CCharString name("SPECIAL_ABILITIES_FORCE_PUSH_DEF", -1);

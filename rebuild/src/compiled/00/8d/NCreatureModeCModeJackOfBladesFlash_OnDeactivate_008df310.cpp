@@ -2,11 +2,14 @@
 // Leaf: OnDeactivate
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DF310, 134 bytes (`ret`).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::Kill(bool) @ 0x004C9B80,
-// CModeJackOfBladesFlash::ExtinguishFlames @ 0x008DCB60, CThingAnimatable::SetSuspendAnimation @ 0x00833A10.
+// CModeJackOfBladesFlash::ExtinguishFlames @ 0x008DCB60, CThingAICreature::SuspendAI @ 0x00833A10.
 // Layout: Ego_r.pdb CModeJackOfBladesFlash (offsets equal retail): Timer +0x68, BurnCounter +0x6c, Filter +0x70,
 // PCreature +0x7c, PTarget +0x80, PEmitter +0x88, PSpotLight +0x90; CModeBase::Active +0x18.
-// Shape: the two kill blocks, then the out-of-line ExtinguishFlames, then SetSuspendAnimation(false, 0) on the creature
+// Shape: the two kill blocks, then the out-of-line ExtinguishFlames, then SuspendAI(false, 0) on the creature
 // when its +0x6c bit 0 is set; Active cleared last.
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 namespace NCreatureMode {
 struct CModeBase;
 struct CThing {
@@ -18,7 +21,6 @@ struct CThing {
     unsigned char _pad6d[0x24];
     unsigned char m_dead : 1;                      // +0x91 bit 0
     unsigned char m_91_1 : 7;
-    void SetSuspendAnimation(bool suspend, CModeBase* mode);   // 0x00833A10
     void Kill(bool flag);                          // 0x004C9B80
 };
 struct CBaseIntelligentPointer {
@@ -59,7 +61,7 @@ void CModeJackOfBladesFlash::OnDeactivate()
         PSpotLight.GetPItem()->Kill(true);
     ExtinguishFlames();
     if (PCreature->m_animSuspended)
-        PCreature->SetSuspendAnimation(false, 0);
+        ((CThingAICreature*)PCreature)->SuspendAI(false, 0);
     Active = false;
 }
 }

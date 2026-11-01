@@ -1,7 +1,7 @@
 // NCreatureMode::CModeCreatureIsProjectile::Recover() -- the thrown creature lands: resume its animation and physics if it was in state 1, make it play the knockdown-recover combat action, then remove this projectile mode (0x39)
 // Leaf: Recover
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E08C0, 203 bytes (`ret`).
-// Callees: CThingAnimatable::SetSuspendAnimation(bool, long) 0x00833A10; the creature's physics object (+0x60) virtual slots 40
+// Callees: CThingAICreature::SuspendAI(bool, long) 0x00833A10; the creature's physics object (+0x60) virtual slots 40
 // (+0xa0, enable) and 44 (+0xb0, wake); CCombatAction_GenericStrikeResponseKnockdownRecoverBase(CThingCreatureBase*, bool)
 // 0x00867AF0 (then the derived CCombatAction_GenericStrikeResponseKnockdownRecover vtable 0x0127191C from its inline ctor);
 // CThingCreatureBase::SetCurrentAction(const CCombatActionBase&) 0x006644F0; ~CCombatActionBase 0x0062E900;
@@ -38,8 +38,10 @@ struct CPhysicsObject {
 
 class CCombatActionBase;
 
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 struct CThingAnimatable {                  // empty here: only its member is called (thing base at offset 0)
-    void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
 };
 
 class CThingCreatureBase : public CThingAnimatable { public:
@@ -117,7 +119,7 @@ void CModeCreatureIsProjectile::Recover()
 {
     CThingCreatureBase* creature = PCreature;
     if (creature->m_state == 1) {
-        creature->SetSuspendAnimation(false, 0);
+        ((CThingAICreature*)creature)->SuspendAI(false, 0);
         creature->PPhysics->SetEnabled(true);
         creature->PPhysics->Wake();
     }

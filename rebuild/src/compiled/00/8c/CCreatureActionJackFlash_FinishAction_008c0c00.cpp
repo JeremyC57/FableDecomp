@@ -5,7 +5,7 @@
 //   (inlined unchecked lookup of 0x31 = CTCCreatureModeManager, bit 17 of +0x24), operator new 0x00BFEA1A (0x98 bytes),
 //   NCreatureMode::CModeJackOfBladesFlash(CThing*) 0x008D7E60, CCountedPointer<CModeJackOfBladesFlash>(T*) 0x008C3260
 //   (out of line), the mode's SetTarget(CThing*) 0x008D7320 (manifest "AssignCreatureToTask" is propagated),
-//   CTCCreatureModeManager::AddMode(CCountedPointer<CModeBase>) 0x0073ACC0, CThingAnimatable::SetSuspendAnimation(bool,
+//   CTCCreatureModeManager::AddMode(CCountedPointer<CModeBase>) 0x0073ACC0, CThingAICreature::SuspendAI(bool,
 //   long) 0x00833A10, operator delete 0x00BFE9BC, CCombatActionBase::FinishAction 0x00859A20.
 // Layout: retail CCombatActionBase is 0x114 bytes: PTarget +0xa8; CThing +0x10 the type byte (1 here: a player), +0x6c
 //   flag bit 3.
@@ -13,7 +13,7 @@
 //   unchecked out-parameter lookup; the counted pointer is a named local (ctor out of line) copied by value into AddMode
 //   (inline copy: object, count, addref) and released inline at the block end (count block destroy + delete);
 //   `this` is spilled to the frame because edi is reused for &PCreature; the player creature is a named local so it is
-//   fetched before SetSuspendAnimation's argument pushes.
+//   fetched before SuspendAI's argument pushes.
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
@@ -26,6 +26,9 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     SEntry* LowerBound(const ETCInterfaceType& type);             // 0x0040F020
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char m_type;                             // +0x10 (1: player)
@@ -34,7 +37,6 @@ class CThing { public:
     CInterfaceMap m_interfaces;                       // +0x44
     unsigned char _pad4c[0x6c - 0x4c];
     unsigned char m_flags6c;                          // +0x6c bit 3
-    void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10 (CThingAnimatable)
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -141,7 +143,7 @@ void CCreatureAction_JackFlash::FinishAction()
         modes->AddMode(mode);
         if (PCreature.GetPItem()->m_type == 1) {
             CThing* creature = PCreature.GetPItem();
-            creature->SetSuspendAnimation(true, 0);
+            ((CThingAICreature*)creature)->SuspendAI(true, 0);
         }
     }
     CCombatActionBase::FinishAction();

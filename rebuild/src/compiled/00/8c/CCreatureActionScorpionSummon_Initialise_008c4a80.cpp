@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C4A80, length 117 bytes (+ int3 padding).
 // Callees: CCombatActionBase::Initialise @ 0x00857520 (direct base call, first), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8,
 // three times), CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface for type 0x31), CTCCreatureModeManager::AddMode @ 0x0073AE10,
-// CThingAnimatable::SetSuspendAnimation(bool, long) @ 0x00833A10.
+// CThingAICreature::SuspendAI(bool, long) @ 0x00833A10.
 // Shape: the mode-manager lookup's result is not tested, so the absent arm calls through the never-written local (it reads the dead
 // key frame word straight into ecx, as retail); the call is spelled in BOTH arms so VC7.1 cross-jumps them with the component already
 // in ecx (one call after a joined pointer copies it through eax, +2 bytes). PCreature is addressed once (`lea edi,[esi+8]`); the last
@@ -73,10 +73,12 @@ private:
 class CTCCreatureModeManager { public:             // interface type 0x31
     bool AddMode(unsigned long mode);       // 0x0073AE10
 };
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 class CThingCreatureBase { public:
     unsigned char _pad00[0x10];
     unsigned char m_state;                  // +0x10 creature state byte (compared with 1; meaning not pinned down)
-    void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
@@ -110,6 +112,6 @@ void CCreatureAction_ScorpionSummon::Initialise()
         modes->AddMode(0x38);
     if (PCreature.GetCreature()->m_state == 1) {
         CThingCreatureBase* self = PCreature.GetCreature();
-        self->SetSuspendAnimation(true, 0);
+        ((CThingAICreature*)self)->SuspendAI(true, 0);
     }
 }

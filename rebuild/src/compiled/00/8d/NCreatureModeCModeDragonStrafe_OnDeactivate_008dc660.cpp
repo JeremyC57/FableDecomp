@@ -1,7 +1,7 @@
 // NCreatureMode::CModeDragonStrafe::OnDeactivate() -- resume a player-type dragon's animation, mark the mode inactive, and set bit 0 of the interface-0x3a component's flag byte again
 // Leaf: ?OnDeactivate@CModeDragonStrafe
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DC660, 84 bytes (+ int3 padding), `ret`; vtable 0x012686C8 slot 6.
-// Callees: CThingAnimatable::SetSuspendAnimation(bool, long) @ 0x00833A10 (the mode's address is the suspend reason),
+// Callees: CThingAICreature::SuspendAI(bool, long) @ 0x00833A10 (the mode's address is the suspend reason),
 //   CVectorMap::LowerBound @ 0x0040F020 (inlined out-parameter GetInterface, type 0x3a = bit 26 of the +0x24 dword).
 // Name: FableWin.pdb `?OnDeactivate@CModeDragonStrafe@NCreatureMode@@UAEXXZ` (slot 6).
 // Shape: the mirror of CModeDragonStrafe::OnActivate @ 0x008DC600; the inline CModeBase::OnDeactivate (`Active = false`)
@@ -20,8 +20,10 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 struct CThingAnimatable {
-    void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
 };
 
 class CThing : public CThingAnimatable { public:
@@ -67,7 +69,7 @@ struct CModeDragonStrafe : CModeBase {     // vtable 0x012686C8 (CModeDragonFlyi
 void NCreatureMode::CModeDragonStrafe::OnDeactivate()
 {
     if (ParentThing->m_type == 1)
-        ParentThing->SetSuspendAnimation(false, (long)this);
+        ((CThingAICreature*)ParentThing)->SuspendAI(false, (void*)((long)this));
     CModeBase::OnDeactivate();
     CTCFlagged* flagged;
     if (ParentThing->GetInterface(&flagged, 0x3a))

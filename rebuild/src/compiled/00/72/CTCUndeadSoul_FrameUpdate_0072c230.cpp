@@ -6,7 +6,7 @@
 //          PeekPControlledCreature() 0x00487DD0; CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound const 0x004365B0
 //          (interface 0x6F, CTCInventoryAbilities, through the const GetTC) and 0x0040F020 (interface 9, CTCTargeted);
 //          CTCInventoryAbilities::IsAbleToUseAbility(EHeroAbility, bool) 0x005EE49A; CThing::DrawIsDrawable (slot 27, +0x6C)
-//          and SetAsDrawable(bool) (slot 28, +0x70); CThing::SetSuspendAnimation(bool, long) 0x00833A10.
+//          and SetAsDrawable(bool) (slot 28, +0x70); CThingAICreature::SuspendAI(bool, long) 0x00833A10.
 // Layout (retail): CThing m_type +0x10 (1 = the player creature), bitset +0x20 (0x6F = bit 15 of word +0x2c, 9 = bit 9 of
 //          word +0x20), interface map +0x44, dead bit +0x91; CTCTargeted::Targetable +0x10 (PDB offset holds).
 // Shape: the constant 1 lives in ebx (dead-bit mask, the ability flag, the drawable flag, the type compare); the
@@ -27,6 +27,9 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 class CThing {
 public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
@@ -59,7 +62,6 @@ public:
         const CInterfaceMap::SEntry* it = map->LowerBound(type);
         return (it == map->last || interfaceType < it->first ? map->last : it)->second;
     }
-    void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
 };
 class CThingPlayerCreature : public CThing { };
 
@@ -103,7 +105,7 @@ void CTCUndeadSoul::FrameUpdate()
                 targeted = (CTCTargeted*)ParentThing->GetTC(9);
             targeted->Targetable = true;
             if (ParentThing->m_type == 1)
-                ParentThing->SetSuspendAnimation(false, 0);
+                ((CThingAICreature*)ParentThing)->SuspendAI(false, 0);
         }
     } else if (ParentThing->DrawIsDrawable()) {
         ParentThing->SetAsDrawable(false);
@@ -112,6 +114,6 @@ void CTCUndeadSoul::FrameUpdate()
             targeted = (CTCTargeted*)ParentThing->GetTC(9);
         targeted->Targetable = false;
         if (ParentThing->m_type == 1)
-            ParentThing->SetSuspendAnimation(true, 0);
+            ((CThingAICreature*)ParentThing)->SuspendAI(true, 0);
     }
 }

@@ -2,7 +2,7 @@
 // Leaf: OnActivate
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008E7B90, length 342 bytes (padded to 352), `ret`.
 // Callees: CModeStandBase::OnActivate @ 0x008621A0, CDefClassBase::GetSubDef<T>(CDefPointer<T>*) @ 0x008E7790 (manifest instantiation
-//   name is a byte twin), the defs' virtual slot 1 (release), __ftol2 @ 0x00BFEA70, CThingAnimatable::SetSuspendAnimation @ 0x00833A10,
+//   name is a byte twin), the defs' virtual slot 1 (release), __ftol2 @ 0x00BFEA70, CThingAICreature::SuspendAI @ 0x00833A10,
 //   CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, types 0x3a and 9), the creature's virtual slot 28 (+0x70),
 //   CModeBase::GetGlobalComponents @ 0x0073A680, CEnvironment::TransitionToTheme(long, long, long, float) @ 0x006B3800.
 // Globals: game frames per second (long) @ 0x01375550.
@@ -79,6 +79,9 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointer<CBriarRoseTelepor
 }
 #pragma auto_inline(on)
 struct CModeBase;
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -106,7 +109,6 @@ class CThing { public:
         }
         return false;
     }
-    void SetSuspendAnimation(bool suspend, CModeBase* mode);   // 0x00833A10
 };
 struct CTCFlagged {                             // the type-0x3a component
     unsigned char _pad00[0x50];
@@ -166,7 +168,7 @@ void CModeBriarRoseTeleportIntangible::OnActivate()
     }
     FrameCount = (long)(g_GameFramesPerSecond * duration);
     if (ParentThing->m_type == 1)
-        ParentThing->SetSuspendAnimation(true, this);
+        ((CThingAICreature*)ParentThing)->SuspendAI(true, this);
     CTCFlagged* flagged;
     if (ParentThing->GetInterface(&flagged, 0x3a))
         flagged->m_flag = 0;

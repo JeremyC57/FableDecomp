@@ -80,9 +80,10 @@ public:
     void Kill(bool immediately);                    // 0x004C9B80
     void RemoveTC(ETCInterfaceType interfaceType);              // 0x004C9840
 };
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 class CThingAnimatable : public CThing {
-public:
-    void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
 };
 
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
@@ -132,7 +133,7 @@ void CTCForcePushed::FinishBeingForcePushed(bool reversed, float damage)
             HitOwner(owner, owner->GetPos(), direction, 1.0f);
     }
     if (ParentThing->ThingClass == 1)
-        ((CThingAnimatable*)ParentThing)->SetSuspendAnimation(false, 0);
+        ((CThingAICreature*)(((CThingAnimatable*)ParentThing)))->SuspendAI(false, 0);
     if (IS_THING_ALIVE(PParticle))
         PParticle.GetPItem()->Kill(true);
     ParentThing->RemoveTC((ETCInterfaceType)(0x8d));

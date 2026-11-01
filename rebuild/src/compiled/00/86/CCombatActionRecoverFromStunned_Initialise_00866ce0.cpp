@@ -2,12 +2,12 @@
 // Leaf: ?Initialise@CCombatAction_RecoverFromStunned
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00866CE0, 160-byte slot (157 bytes of code). Initialise is vtable slot 12.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8, four times through one `lea esi,[edi+8]`),
-//          CThingAnimatable::SetSuspendAnimation(bool, long) @ 0x00833A10, the physics component's virtual slot 44
+//          CThingAICreature::SuspendAI(bool, long) @ 0x00833A10, the physics component's virtual slot 44
 //          (`call [eax+0B0h]`, no arguments; CTCPhysicsBase @ 0x006B1120 is empty, CTCPhysicsStandard @ 0x00723A50
 //          forwards to its slot 43), CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface for type 0x31),
 //          CTCCreatureModeManager::RemoveMode @ 0x0073ABA0,
 //          CCombatAction_GenericStrikeResponseKnockdownRecoverBase::Initialise @ 0x00865EB0 (direct base call).
-// Shape: as RecoverFromDazed (0x008ED8C0): the creature fetched for SetSuspendAnimation is a named local (retail
+// Shape: as RecoverFromDazed (0x008ED8C0): the creature fetched for SuspendAI is a named local (retail
 // calls GetPItem before the pushes); the physics component pointer is read through an inline accessor
 // (`mov ecx,[eax+60h]` straight into ecx; the bare member goes through eax) of the thing's member at +0x60 (PhysicsTC,
 // PDB +0x70; the landed JackFloatUp::Initialise reads its position through the same member); the GetInterface
@@ -35,6 +35,9 @@ class CTCPhysicsBase { public:
     virtual void v42(); virtual void v43();
     virtual void ResetMovement();           // slot 44 (unnamed in the manifest: CTCPhysicsBase::vfunc_44)
 };
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 class CThing { public:
     unsigned char _pad0[0x10];
     unsigned char m_type;                   // +0x10 thing type (1 = the player creature)
@@ -44,7 +47,6 @@ class CThing { public:
     unsigned char _pad4c[0x60 - 0x4c];
     CTCPhysicsBase* PhysicsTC;              // +0x60 (PDB +0x70)
     CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }   // inline accessor: loads straight into ecx
-    void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10 (CThingAnimatable)
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -99,7 +101,7 @@ void CCombatAction_RecoverFromStunned::Initialise()
 {
     if (PCreature.GetPItem()->m_type == 1) {
         CThing* pCreature = PCreature.GetPItem();   // named: retail fetches it before the argument pushes
-        pCreature->SetSuspendAnimation(false, 0);
+        ((CThingAICreature*)pCreature)->SuspendAI(false, 0);
     }
     PCreature.GetPItem()->GetPhysicsTC()->ResetMovement();
     CTCCreatureModeManager* pModes;

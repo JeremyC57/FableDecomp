@@ -7,9 +7,9 @@ class CThing { public:
     unsigned char _pad_0x11[0x80];
     unsigned char Dead : 1;
     unsigned char _flags_0x91 : 7;
-    void SetSuspendAnimation(bool suspend, void* suspender);
 };
-void CThing::SetSuspendAnimation(bool suspend, void* suspender) { ++g_calls; g_suspend = suspend; g_suspender = suspender; }
+class CThingAICreature { public: void SuspendAI(bool suspend, void* suspender); };   // 0x00833A10 (Ego_r.pdb)
+void CThingAICreature::SuspendAI(bool suspend, void* suspender) { ++g_calls; g_suspend = suspend; g_suspender = suspender; }
 class CTCForcePushed {
 public:
     CTCForcePushed(CThing* t) : ParentThing(t) {}

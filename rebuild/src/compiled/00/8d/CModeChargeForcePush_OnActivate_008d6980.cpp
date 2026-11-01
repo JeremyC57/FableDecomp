@@ -10,10 +10,12 @@
 // The pointer at +4 is loaded into ecx because it is BOTH the object whose flag
 // is tested AND the `this` for the conditional call 0x833a10.
 
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 struct Sub {
     char pad[0x10];
     unsigned char flag;          // +0x10
-    void Helper(int a, int b);   // __fastcall member (ecx=this) -> call 0x833a10
 };
 
 struct CModeChargeForcePush {
@@ -29,5 +31,5 @@ void CModeChargeForcePush::OnActivate()
     BaseActivate();
     Sub* s = sub;
     if (s->flag == 1)
-        s->Helper(0, 0);
+        ((CThingAICreature*)s)->SuspendAI(0, 0);
 }

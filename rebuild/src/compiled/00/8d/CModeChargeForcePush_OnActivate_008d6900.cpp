@@ -2,10 +2,12 @@
 // Leaf: OnActivate
 // __fastcall void OnActivate(CModeChargeForcePush* this)
 
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 struct CMember {
     char pad[0x10];
     unsigned char flag;                    // +0x10
-    void DoPush(int a, int b);             // __fastcall, out-of-line @ 0x833a10
 };
 
 struct CModeChargeForcePush {
@@ -22,5 +24,5 @@ void __fastcall CModeChargeForcePush_OnActivate(CModeChargeForcePush* self)
     CMode_Base_OnActivate(self);
     m = self->member;
     if (m->flag == 1)
-        m->DoPush(0, 0);
+        ((CThingAICreature*)m)->SuspendAI(0, 0);
 }

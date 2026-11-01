@@ -7,7 +7,6 @@ static int g_push_this   = 0;
 struct CMember {
     char pad[0x10];
     unsigned char flag;                    // +0x10
-    void DoPush(int a, int b);             // __fastcall
 };
 
 struct CModeChargeForcePush {
@@ -19,10 +18,11 @@ extern void __fastcall CMode_Base_OnActivate(void* self);
 
 void __fastcall CMode_Base_OnActivate(void* self) { (void)self; g_base_called++; }
 
-void CMember::DoPush(int a, int b) {
-    (void)a; (void)b;
+class CThingAICreature { public: void SuspendAI(bool suspend, void* suspender); };   // 0x00833A10 (Ego_r.pdb)
+void CThingAICreature::SuspendAI(bool suspend, void* suspender) {
+    (void)suspend; (void)suspender;
     g_push_called++;
-    g_push_this += (int)(this->flag);   // prove 'this' is the member
+    g_push_this += (int)(((CMember*)this)->flag);   // prove 'this' is the member
 }
 
 void __fastcall CModeChargeForcePush_OnActivate(CModeChargeForcePush* self);

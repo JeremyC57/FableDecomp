@@ -50,6 +50,9 @@ struct CTCMap {
     Entry *First,*Last;
     Entry* LowerBound(const long*); // original 0040f020
 };
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 class CThing : public CBaseObject { public:
     virtual ~CThing() {}
     unsigned char pad00[0x20 - sizeof(CBaseObject)];
@@ -74,7 +77,6 @@ class CThing : public CBaseObject { public:
         return (CTCSoundPlayer*)first->Component;
     }
     void RemoveTC(unsigned long); // 0x004C9840
-    void SetSuspendAnimation(bool, long); // 0x00833A10
 };
 struct CEffect : CThing {};
 class CCreatureActionBase { public: virtual ~CCreatureActionBase() {} };
@@ -155,7 +157,7 @@ void CModeThunderLightningStorm::OnDeactivate()
     HitThings.clear();
     {
         CThingCreatureBase* owner=ParentThing;
-        owner->SetSuspendAnimation(false, 0);
+        ((CThingAICreature*)owner)->SuspendAI(false, 0);
         CCharString name("LIGHTNING_STORM_OUTOF", -1);
         owner->SetCurrentAction(CCreatureAction_PlayCombatAnimation(*owner, name, true));
     }

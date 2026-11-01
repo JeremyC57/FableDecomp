@@ -1,10 +1,10 @@
 // CTCAssassinRush::FrameUpdate() -- per frame: on release finish the current action, play the cast sound and start the trail; while the trail delay runs keep the radial blur centred above the rusher, otherwise rush on; end the slow-down, and once the trail delay is over leave the exit modes, kill the trails and fade the blur; remove the rush component when everything has run out, and cancel when scheduled
 // Leaf: FrameUpdate
 // Retail 0x007AB190, 620 bytes, `ret`. Callees: CThingCreatureBase::FinishCurrentAction 0x00662650, LowerBound
-// 0x0040F020, CCharString 0x0099EBF0 / dtor 0x0099EAE0, CTCSound::PlaySound 0x0066BD00, CreateTrailingEffect
+// 0x0040F020, CCharString 0x0099EBF0 / dtor 0x0099EAE0, CTCSoundPlayer::PlayAttachedCriteria 0x0066BD00, CreateTrailingEffect
 // 0x007A9FE0, CThing::GetPos 0x004C73D0, CTCBase::GetWorld 0x00686A70, the spell-effect interpolator's
 // RadialBlurSetCenterWorldPos 0x006B8310 and fade-out 0x006B82E0 (world +0x18 -> +0x1964), RushForwards 0x007AAC50,
-// RemoveBulletTimeSlowdown 0x004C6140 (world +0x68), SetSuspendAnimation 0x00833A10, CIntelligentPointer::GetPItem
+// RemoveBulletTimeSlowdown 0x004C6140 (world +0x68), SuspendAI 0x00833A10, CIntelligentPointer::GetPItem
 // 0x00A01B50, CThing::Kill 0x004C9B80, CThing::RemoveTC 0x004C9840, CancelMove 0x007AA480.
 // Layout: Ego_r.pdb CTCAssassinRush less 4 past the 12-byte retail vector: PDef +0x14, AssassinTrail +0x18,
 // AssassinDisplacementTrail +0x20, TrailDelay +0x28, StartTrailDelay +0x2c, JustReleased +0x42, SlowTimeLength
@@ -32,6 +32,9 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char State;                                // +0x10
@@ -44,7 +47,6 @@ class CThing { public:
     void Kill(bool immediately);                        // 0x004C9B80
     void RemoveTC(ETCInterfaceType interfaceType);                  // 0x004C9840
     void FinishCurrentAction();                         // 0x00662650
-    void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -73,8 +75,10 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
+class CTCSoundPlayer { public:
+    unsigned long PlayAttachedCriteria(CCharString const&a0, bool a1, bool a2, bool a3, long a4);   // 0x0066BD00 (Ego_r.pdb ?PlayAttachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@_N11J@Z)
+};
 struct CTCSound {                                       // interface 0x10
-    unsigned long PlaySound(const CCharString& name, long a, long b, long c, long d);   // 0x0066BD00
 };
 struct CTCExitMode {                                    // interface 0xA7
     unsigned char _pad00[0xc];
@@ -144,7 +148,7 @@ void CTCAssassinRush::FrameUpdate()
         parent->FinishCurrentAction();
         CTCSound* sound;
         if (ParentThing->GetInterface(&sound, 0x10))
-            sound->PlaySound("HERO_ABILITY_ASSASSIN_RUSH_CAST", 1, 0, 0, -1);
+            ((CTCSoundPlayer*)sound)->PlayAttachedCriteria("HERO_ABILITY_ASSASSIN_RUSH_CAST", 1, 0, 0, -1);
         JustReleased = false;
         CreateTrailingEffect();
     } else if (StartTrailDelay) {
@@ -171,7 +175,7 @@ void CTCAssassinRush::FrameUpdate()
                 }
             }
             if (parent->State == 1)
-                ParentThing->SetSuspendAnimation(false, 0);
+                ((CThingAICreature*)ParentThing)->SuspendAI(false, 0);
             else
                 GetWorld().RemoveBulletTimeSlowdown((unsigned long)this);
         }

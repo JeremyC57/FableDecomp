@@ -1,7 +1,7 @@
 // NCreatureMode::CModeSummonerLightningOrb::OnActivate() -- stand-mode activation; suspend a player's animation; spawn the orb-charge effect (attached to the summoner's LIGHTNING_ORB_FOCUS bone through its particle emitter) and the charge effect; give the summoner an electrocute-on-touch component; arm the timer
 // Leaf: ?OnActivate@CModeSummonerLightningOrb
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DAE10, 541 bytes (`ret`).
-// Callees: CModeStandBase::OnActivate @ 0x008621A0, CThingAnimatable::SetSuspendAnimation @ 0x00833A10,
+// Callees: CModeStandBase::OnActivate @ 0x008621A0, CThingAICreature::SuspendAI @ 0x00833A10,
 //   CDefClassBase::GetSubDef<CSpecialEffectsDef> @ 0x00669580, CCRC::CalcAndLookup @ 0x00669D30, CCharString(const char*, long)
 //   @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CThing::GetPos @ 0x004C73D0, the special-effect Create(long, const C3DVector&,
 //   bool) @ 0x006E0880 (__fastcall), CBaseIntelligentPointer() @ 0x00A01B10 / GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 /
@@ -82,6 +82,9 @@ bool CDefClassBase::GetSubDef(CDefPointer<CSpecialEffectsDef>* out)
 #pragma auto_inline(on)
 
 namespace NCreatureMode { struct CModeBase; }
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char m_type;                             // +0x10 (1 = the player creature)
@@ -94,7 +97,6 @@ class CThing { public:
     unsigned char _pad74[0x91 - 0x74];
     unsigned char m_flags91;                          // +0x91 bit 0: dead
     const C3DVector& GetPos() const;             // 0x004C73D0
-    void SetSuspendAnimation(bool suspend, NCreatureMode::CModeBase* mode);   // 0x00833A10
     CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     CDefPointer<CDefClassBase> GetDef() const { return CDefPointer<CDefClassBase>(m_pDef); }
@@ -161,7 +163,7 @@ void CModeSummonerLightningOrb::OnActivate()
 {
     CModeStandBase::OnActivate();
     if (m_pThing->m_type == 1)
-        m_pThing->SetSuspendAnimation(true, this);
+        ((CThingAICreature*)m_pThing)->SuspendAI(true, this);
     CDefPointer<CSpecialEffectsDef> effects;
     if (m_pThing->GetDef()->GetSubDef(&effects)) {
         long effect;

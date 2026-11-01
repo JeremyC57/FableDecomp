@@ -1,7 +1,7 @@
 // NCreatureMode::CModeBlock::OnActivate() -- base activation, remember the creature, suspend its animation while it is in state 1, play its "START_BLOCKING" sound pair, then run one FrameUpdate
 // Leaf: OnActivate
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D8CE0, 231 bytes (`ret`; vtable 0x01267C3C slot 5).
-// Callees: CTCCreatureModeManager::CModeBase::OnActivate 0x0073AAC0 (qualified base call); CThingAnimatable::SetSuspendAnimation
+// Callees: CTCCreatureModeManager::CModeBase::OnActivate 0x0073AAC0 (qualified base call); CThingAICreature::SuspendAI
 // (bool, long) 0x00833A10; CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (inlined GetInterface, type 0x10 = bit 16
 // of the dword at +0x20); CCharString(const char*, long) 0x0099EBF0 ("START_BLOCKING"), ~CCharString 0x0099EAE0; the creature's
 // virtual slot 89 (+0x164, the sound pair for a name, hidden-pointer return); the sound component's play call 0x0066B280
@@ -52,9 +52,11 @@ class CTCSoundPlayer { public:                    // the interface-0x10 componen
 
 class CThing;
 
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 struct CThingAnimatable {                  // the thing's polymorphic root here (vptr at +0); only its member is called
     virtual void v000();
-    void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
 };
 
 class CThingCreatureBase : public CThingAnimatable { public:
@@ -112,7 +114,7 @@ void CModeBlock::OnActivate()
     CModeBase::OnActivate();
     PCreature = ParentThing;
     if (PCreature->m_state == 1)
-        PCreature->SetSuspendAnimation(true, 0);
+        ((CThingAICreature*)PCreature)->SuspendAI(true, 0);
     CTCSoundPlayer* player;
     if (ParentThing->GetInterface(&player, 0x10)) {
         player->PlaySound(PCreature->GetSoundPair("START_BLOCKING"), CSoundPlayParams(), 1, 0, 0);

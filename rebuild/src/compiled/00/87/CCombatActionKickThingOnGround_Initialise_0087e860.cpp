@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0087E860, 880 bytes, plain `ret` (virtual, vtable 0x01277D3C).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8, PTarget +0xa8), CCharString ctor/dtor 0x0099EBF0 /
 //   0x0099EAE0, CCombatActionBase::SetCombatAnimation 0x008574D0 and Initialise 0x00857520, CThing::GetPos 0x004C73D0,
-//   the physics virtual slot 70 GetFacing (+0x118), CThingAICreature::SetSuspendAnimation 0x00833A10, CThing::AddTC
+//   the physics virtual slot 70 GetFacing (+0x118), CThingAICreature::SuspendAI 0x00833A10, CThing::AddTC
 //   0x004C9D60 ("CTCSolidToThing"), CTCSolidToThing::AddThingNotSolidTo 0x00770FA0, the interface-map LowerBound
 //   0x004365B0 (interface 0x7F), its component's hit-location getter 0x00814BF0 (`mov eax,[ecx+18h]`),
 //   CHitLocation::GetClosestPointToPos2D 0x00815370 (hidden C3DVector result, position and direction by reference),
@@ -90,8 +90,10 @@ class CThing { public:
         return false;
     }
 };
-class CThingAICreature : public CThing { public:
-    void SetSuspendAnimation(bool suspend, void* suspender);   // 0x00833A10
+class CThingAICreature : public CThing {
+public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+public: public:
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -158,7 +160,7 @@ void CCombatAction_KickThingOnGround::Initialise()
     if (IS_THING_ALIVE(PTarget)) {
         if (PTarget.GetPItem()->ThingType == 1) {
             CThingAICreature* creature = (CThingAICreature*)PTarget.GetPItem();
-            creature->SetSuspendAnimation(true, 0);
+            ((CThingAICreature*)creature)->SuspendAI(true, 0);
         }
         CTCSolidToThing* targetSolid;
         {

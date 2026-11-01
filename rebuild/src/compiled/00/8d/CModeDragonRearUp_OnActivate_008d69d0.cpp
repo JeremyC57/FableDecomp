@@ -3,11 +3,12 @@
 
 struct CModeDragonRearUp;
 
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 struct CSomeState {
     char pad[0x10];
     unsigned char flag;   // +0x10
-    // thiscall method: ecx = this(state), stack args (int a, self)
-    void Notify(int a, CModeDragonRearUp* self);
 };
 
 // base OnActivate: thiscall on this (ecx). Declared extern -> real call.
@@ -23,6 +24,6 @@ void CModeDragonRearUp::OnActivate() {
     DragonRear_BaseActivate(this);
     CSomeState* s = this->state;
     if (s->flag == 1) {
-        s->Notify(0, this);
+        ((CThingAICreature*)s)->SuspendAI(0, this);
     }
 }

@@ -1,7 +1,7 @@
 // NCreatureMode::CModeDragonFlying::OnActivate() -- start a flying leg: suspend a player creature's animation, clear the interface-0x3a flag, make the dragon un-willable, measure the leg, prime the flight animation and its playback rate
 // Leaf: OnActivate
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008DBB30, length 331 bytes (padded to 336), `ret`; vtable 0x0126868C slot 5.
-// Callees: CModeBase::OnActivate @ 0x0073AAC0, CThingAnimatable::SetSuspendAnimation @ 0x00833A10, CVectorMap::LowerBound
+// Callees: CModeBase::OnActivate @ 0x0073AAC0, CThingAICreature::SuspendAI @ 0x00833A10, CVectorMap::LowerBound
 //          @ 0x0040F020 (inlined GetInterface, types 0x3a and 0x5a), SetThingAsNotBloodyWillableAtAll(CThing*, bool) @ 0x007E4040
 //          (`__fastcall`, bool in dl), CTCAnimationComplex::GetAnimateThing @ 0x0070B460 (returns +0xc; manifest label
 //          "CWorld::DrawGetEnvironment" is propagated), GetAnimIndex @ 0x0070B490, GetAnimDuration(long) @ 0x0070B4A0, virtual
@@ -29,6 +29,9 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CModeBase;
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char m_type;                   // +0x10 (1 = player creature)
@@ -48,7 +51,6 @@ class CThing { public:
         }
         return false;
     }
-    void SetSuspendAnimation(bool suspend, CModeBase* mode);   // 0x00833A10
 };
 struct CTCFlagged {                         // the type-0x3a component
     unsigned char _pad00[0x50];
@@ -113,7 +115,7 @@ void CModeDragonFlying::OnActivate()
 {
     CModeBase::OnActivate();
     if (ParentThing->m_type == 1)
-        ParentThing->SetSuspendAnimation(true, this);
+        ((CThingAICreature*)ParentThing)->SuspendAI(true, this);
     CTCFlagged* flagged;
     if (ParentThing->GetInterface(&flagged, 0x3a))
         flagged->m_flag = 0;

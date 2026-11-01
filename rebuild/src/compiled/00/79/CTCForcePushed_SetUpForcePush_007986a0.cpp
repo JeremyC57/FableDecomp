@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007986A0, length 202 bytes (+ int3 padding). __fastcall, `ret 0Ch`.
 //         Ego_r.pdb: `?SetUpForcePush@CTCForcePushed@@QAEXABVC3DVector@@MAAVCThing@@@Z`.
 // Callees: CThing::GetPos @ 0x004C73D0; CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor @ 0x00A01B10/0x00A01B90/
-//          0x00A01B50/0x00A01C10 (CIntelligentPointer<CThing> vtable 0x01238C6C); CThingAnimatable::SetSuspendAnimation(bool,
+//          0x00A01B50/0x00A01C10 (CIntelligentPointer<CThing> vtable 0x01238C6C); CThingAICreature::SuspendAI(bool,
 //          long) @ 0x00833A10; CThingCreatureBase::FinishCurrentAction @ 0x00662650.
 // Shape: the two vector members are implicit C3DVector copies (destination through a `lea` register); the per-frame
 //        distance is the step vector's length (x87: z, y, x loaded, then x*x + y*y + z*z and fsqrt); the pusher is the
@@ -58,9 +58,10 @@ public:
     unsigned char ThingClass;                       // +0x10 (1: AI creature)
     const C3DVector& GetPos() const;           // 0x004C73D0
 };
+class CThingAICreature { public:
+    void SuspendAI(bool suspend, void* suspender);   // 0x00833A10 (Ego_r.pdb CThingAICreature::SuspendAI)
+};
 class CThingAnimatable : public CThing {
-public:
-    void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
 };
 class CThingCreatureBase : public CThingAnimatable {
 public:
@@ -93,7 +94,7 @@ void CTCForcePushed::SetUpForcePush(const C3DVector& direction, float distance, 
     PThingCausingForcePush = CIntelligentPointer<CThing>(&pusher);
     CThing* owner = ParentThing;
     if (owner->ThingClass == 1) {
-        ((CThingAnimatable*)owner)->SetSuspendAnimation(true, 0);
+        ((CThingAICreature*)(((CThingAnimatable*)owner)))->SuspendAI(true, 0);
         ((CThingCreatureBase*)owner)->FinishCurrentAction();
     }
     StartedMoving = false;
