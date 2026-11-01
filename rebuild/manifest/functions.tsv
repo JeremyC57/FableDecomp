@@ -463,7 +463,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00415d10	NParticleEngine::CAEnvironmentInteraction::vfunc_0	NParticleEngine::CAEnvironmentInteraction	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00415d70	operator_class_CCharString	CDefString	__thiscall	CCharString	1	CDefString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CDefString_operatorclassCCharString_00415d70.cpp
 00415d90	ToWideString	CDefString	__thiscall	CWideString	1	CDefString *	1	yes	accepted									
-00415dd0	operator CCharString	CDefString	__thiscall	CCharString	1	CDefString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CDefString_operatorclassCCharString_00415dd0.cpp
+00415dd0	GetString	CDefString	__thiscall	CCharString	1	CDefString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CDefString_operatorclassCCharString_00415dd0.cpp
 00415e17	CMainGameComponentInit	CMainGameComponentInit	__thiscall	undefined	2	CMainGameComponentInit *,CMainGameComponentInit *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CMainGameComponentInit_CMainGameComponentInit_00415e17.cpp
 00415e50	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00415e67	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\41\CLandscapeBackgroundPatch_vectordeletingdestructor_00415e67.cpp
@@ -40439,7 +40439,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00af8d50	Audio_CalculateFilterParameter	_global	unknown	undefined	0		0	yes	accepted									
 00af8f00	ScaleParticleDimensions	CParticleSystem	__thiscall	void	2	CParticleSystem *,float *	1	yes	accepted									
 00af8f80	ScaleParticleDimensions	CParticleSystem	__thiscall	void	2	CParticleSystem *,float *	1	yes	accepted									
-00af9000	SmoothFadeValue	CPSCLight	__thiscall	float	2	CPSCLight *,float	1	yes	accepted									
+00af9000	GFSmoothFadeValue	NParticleEngine	__thiscall	float	2	CPSCLight *,float	1	yes	accepted									
 00af90c0	GetComponentCost	NParticleEngine::CPSCRenderSprite	__thiscall	void	5	CPSCRenderSprite *,CParticleSystemCost *,CParticleSystem *,float,float	1	yes	accepted									
 00af9310	Initialise	CPSCRenderSprite	__thiscall	bool	5	CPSCRenderSprite *,CIEngine *,CParticleSystem *,CParticleUpdateParameters<unsigned_long,unsigned_long> *,CEnginePrimitiveHandle *	1	yes	accepted									
 00af9410	NParticleEngine::CPSCRenderSprite::vfunc_18	NParticleEngine::CPSCRenderSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				

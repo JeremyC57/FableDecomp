@@ -1,6 +1,6 @@
 # Full-decompilation coverage dashboard
 
-Generated: `2026-10-31T23:37:22+00:00`
+Generated: `2026-11-01T02:16:58+00:00`
 
 ## Landed reconstruction (live)
 
@@ -17,7 +17,7 @@ From `rebuild/oracles/auto-re-candidates.tsv` and `rebuild/build_candidates.ps1`
 | Landed rows that are VC7.1 compiles of vendor CRT source (`// Library:` line) | 8 | 52,787 | — | Genuine compiles whose bytes equal the library object retail linked (crtexew, atonexit, initsect, fp8, ehvecdtr); vendor code, not Fable logic |
 | Landed rows that are hand-written asm bakes | 13 | 52,787 | — | Byte-exact oracles, **not** reconstruction; excluded above (`toolchain_library` rows are not asm bakes) |
 
-## Analysis and pipeline snapshot (`rebuild/manifest/status.json`, 2026-10-20)
+## Analysis and pipeline snapshot (`rebuild/manifest/status.json`, 2026-09-07)
 
 Written by `tools/bootstrap_rebuild_tree.py` (the Windows pipeline). The Linux lane does not refresh it, so the compile, parity and match rows below stop at that date; use the live table above for landing progress.
 

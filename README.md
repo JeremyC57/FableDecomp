@@ -111,7 +111,7 @@ parity, coverage, and naming reports:
 | Boot path | Current Phase 10 direct calls proven | **21 / 21** (100.00%) |
 | Modern C++23 | GFMain phases promoted into the modern startup lane | **0 / 10** (0.00%) |
 
-Counts above are from the 2026-10-31 canonical refresh: landing rows from
+Counts above are from the 2026-11-01 canonical refresh: landing rows from
 `rebuild/oracles/auto-re-candidates.tsv` and `rebuild/build_candidates.ps1` (`tools/landed_metrics.py`);
 analysis rows from `rebuild/manifest/status.json`, `rebuild/compile-gate/retail-parity.json` and the
 naming-quality reports (rows marked 2026-09 snapshot are not refreshed by the Linux landing lane).

@@ -1,4 +1,4 @@
-# Resume here (one page) — updated 2026-10-31 (end of session)
+# Resume here (one page) — updated 2026-11-01 (naming wave 13 landed; chunk 651 agent in flight)
 
 **Next session: read `docs/journal/2026-10/2026-10-31_HANDOFF.md`** (lane rebuild incl. the downloads, resume steps, open
 decisions) and the 2026-10-31 lines at the end of `docs/journal/FINDINGS_LOG.md`. Fresh container:
@@ -7,8 +7,11 @@ LZO 1.08). Coordinator commands: `tools/decomp_pipeline/linux_lane/lane_tools/co
 handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
 
 ## State
-- Branch `FullDecomp` (`JeremyC57/FableDecomp`), clean and pushed. **Nothing is running**; no chunk agent and no naming agent.
-  The owner gives the `Fable.exe` link in the new session; it is never written into the repo.
+- Branch `FullDecomp` (`JeremyC57/FableDecomp`), pushed. 2026-11-01: lane rebuilt in the surviving scratch
+  `/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad` (game, both compilers, VS 2003 libs, LZO;
+  5/5 proof + lib_verify MATCH). Chunk 651 agent (Opus 5.5, increased-attempts brief `$S/w22/agent651/CHUNK_BRIEF.md`) was
+  running at this write; land it with `land_chunk.sh 651` + `records.py 651`. The owner gives the `Fable.exe` link in a new
+  container; it is never written into the repo.
 - Coverage (`rebuild/COVERAGE.md`; `tools/landed_metrics.py` → `write_decomp_dashboard.py` → `update_readme_progress.py`,
   never hand-edit): 52,774 of 57,611 known functions (91.6%), 45,384 of the original 49,568 (91.6%); 174 `retail_asm`,
   441 `toolchain_library`, 13 asm_bake oracles.
@@ -32,6 +35,10 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
   retest. Dead-load lever probes (`pending/2026-10-27_linux_hand649/lever_probe_not_reconstruction/`) never land.
 - At most two Opus high-effort agents; agents never run git, never write under the repo, never kill processes.
 
+## Done 2026-11-01 (details in FINDINGS_LOG)
+- Naming wave 13 landed: 314 rows, 11 family commits, coordinator recheck 314/314, bindings 156 RETIRE / 52 ADD, 8 renames,
+  22 labels; 4 owner decisions scoped (`naming/2026-11-01_wave13/`). ESTABLISHED_SPELLINGS now applied across the tree.
+
 ## Done 2026-10-31 (details in FINDINGS_LOG)
 - Chunks 643-650 landed (2, 1, 0, 3, 0, 1, 2+bonus, 2 of 10; 650 stopped early at the owner's request); GFAXToVX
   re-authored without `volatile`. Codex parked-50 return: 11 of 50 landed, 11 callers respelled. ChatGPT pass 10 handed
@@ -42,34 +49,22 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
   `toolchain_library` from the vendor .asm.
 
 ## Next
-1. **Decisions made 2026-11-01** (`naming/2026-10-31_wave12/DECISIONS_W12_RESOLVED.tsv`, canonical spellings in
-   `naming/ESTABLISHED_SPELLINGS.tsv`): GGame 0x013B83D0, GSystemManager 0x013CA618, PSoundManager 0x013B8394 (+ the
-   PDisplayManager / PInputManager / PGraphicBankManager / PFontManager caches), TWO_PI 0x0124F2B8, EPSILON 0x0129BA3C,
-   CTCBase::Get/PeekThingSearchTools 0x00686D80/90, the SmoothFadeValue / CDefString / LowerBound / IS_THING_ALIVE
-   pairs, PKCDeferredBank for vtable 0x012B29F8, the anonymous-namespace policy (PDB spelling with the retail hash,
-   tools match ignoring it), the per-TU static allowlist (`DUPLICATE_STATICS.tsv`, only libvorbis ilog2). Still open
-   from the chunks: GetPWorld 0x008FCFC0 (~45 spellings), VIRTUAL_SCREEN_* (20), vector<CCharString> dtor 0x00414EA0
-   (17), GetCurrentWorldFrame 0x004167C8 (8) -- decide them the same way (callers first, PDB initializer list, layouts).
-2. **Naming wave 13 = apply the 2026-11-01 decisions** (plan agreed with the owner 2026-11-01, not started; details in
-   `docs/journal/2026-10/2026-10-31_HANDOFF.md` "Wave 13 plan"). Order: GGame + GSystemManager (4 rows) -> TWO_PI (3) ->
-   CTCBase Get/PeekThingSearchTools (6) -> CDefString / LowerBound bindings -> PSoundManager (24) + the four GF caches
-   (~20) -> EPSILON (49) -> SmoothFadeValue rename of 0x00AF9000 (git mv, free __fastcall GFSmoothFadeValue, must stay
-   byte-exact) -> IS_THING_ALIVE (read 0x0097A630's argument type first, then 3) -> PKCDeferredBank (5 libpk rows, land
-   last) -> the anonymous-namespace rewrite (214 bindings, 18 rows; confirm famlib.hashy tolerance on the live table
-   first) -> 0x00C351B0 Start callers only when that row lands. All are name-only (no byte change): edit the declaration
-   and uses, replace the binding row, `vland.py --recheck-landed` per family, commit per family. Then the queue rows
-   c643-c650 + codex50 (~90) and `2026-10-31_wave12/DEFERRED.tsv`. Reuse the wave 12 family tools
-   (`2026-10-31_wave12/scripts/`: famlib.run + fam_free / fam_base / fam_decl / fam_auto, famrep.py to list a target's
-   spellings, mkbind12.py for BINDINGS.tsv, recheck.sh). After landing run `tools/sync_catalog_names.py` + the dashboard trio.
-3. **Chunk cycle** (two agents): `pick_parked.py` → `$S/w30/ranked.tsv`, `cutp.sh N addrs` from the fixable bucket
-   (137 rows ranked fixable, 1,036 ties wait for migration wave 10), land with `land_chunk.sh N` + `records.py N`.
-   Chunk 651 needs re-cutting in the new scratch (`cutp.sh 651 <addrs from chunk_history.tsv>`).
-4. **Migration wave 10** per `headers/2026-10-30_retail_models_wave9/NEXT.md`: the 76 local `enum ENullDef` models, the
+1. **Land chunk 651** when the agent reports (`$S/w22/agent651/`): `land_chunk.sh 651`, `records.py 651`, NAME_FIXES into the
+   queue (prefix c651), batch README + FINDINGS_LOG + GOTCHAS, dashboard trio, commit, push. Then the next chunk cycle (two agents):
+   `pick_parked.py` needs `$S/retry1/WORKLIST.tsv` + `$S/retry/sec6b/WORKLIST.tsv` from the old scratch (gone) -- rebuild the ranked
+   pool from `pending/*/differ/` + `chunk_history.tsv` first, or cut from `2026-10-31_wave12/DEFERRED.tsv`-adjacent parked rows.
+2. **Owner decisions from wave 13** (`naming/2026-11-01_wave13/DECISIONS_W13.tsv`): GetPWorld 0x008FCFC0 (= protected reference getter
+   `?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ`; 72 rows, `->` becomes `.`), VIRTUAL_SCREEN_* 0x013961E8/F0 (3NA; GFAXToVX models it
+   volatile), vector<CCharString> dtor 0x00414EA0 (header family vs table-only), GetCurrentWorldFrame 0x004167C8 (one source). Decide,
+   then naming wave 14 = those four families + the wave 13 DEFERRED items that need per-row modelling (IsPerformingAnyAction, GetWorld
+   IAE, Initialise UAE, LowerBound CVectorMap models, IS_THING_ALIVE<const CThingPhysical>, the 0x0097ABF0 comparator family) + the
+   remaining queue rows. Reuse `naming/2026-11-01_wave13/scripts/` (compose13.py, fam_glob.py, fam_gptr.py, hand13/).
+3. **Migration wave 10** per `headers/2026-10-30_retail_models_wave9/NEXT.md`: the 76 local `enum ENullDef` models, the
    1,317 proven CCountedPointer rows, and the shared `engine/CDefPointer.h` Release() shape (mov/dec/mov vs retail
    `dec [ecx+4]; jne`, header debt found in chunk 649).
-5. **ChatGPT pass 10 return** (by 2026-11-04): regrade like the Codex pass (`batches/2026-10-31_codex_parked50/README.md`):
+4. **ChatGPT pass 10 return** (by 2026-11-04): regrade like the Codex pass (`batches/2026-10-31_codex_parked50/README.md`):
    oracle from `oracle_from_exe.py`, `vland.py` on our lane, check every name against both PDBs before landing, respell
    callers, then release the rest back to the pool (rename RESERVED.tsv → RETURNED.tsv).
-6. Leaf lines: make `verify_and_land.py` write `// Leaf: <mangled>` into every landed source so the catalog sync covers
-   all rows; then a one-off pass to add it to the 23,447 rows without one (the object symbol is known at recheck time).
-7. Older open work: `docs/ROADMAP.md`.
+5. Leaf lines: make `verify_and_land.py` write `// Leaf: <mangled>` into every landed source so the catalog sync covers
+   all rows; then a one-off pass to add it to the 23,446 rows without one (the object symbol is known at recheck time).
+6. Older open work: `docs/ROADMAP.md`.
