@@ -1,14 +1,14 @@
 chunk	address	module	name	length	band	kind	callers	vtable	twin_pool	reason
-NA001	004b9e20	vector<EWeaponClass	_Umove<EWeaponClass*>	176	97-256	twin_landed	1			masked body equals landed 006e6950; scan stops 158 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA001	00a95890	_Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std	_Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>_>	224	97-256	twin_landed	1		2:00b96150	masked body equals landed 00a2a650,00a959e0,00b82dc0; scan stops 178 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA001	004b9e20	vector<EWeaponClass	_Umove<EWeaponClass*>	18	97-256	twin_landed	1			masked body equals landed 006e6950; extent SPLIT: tail = 14 filler bytes then an unlisted function at 004b9e40 (lea eax,
+NA001	00a95890	_Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std	_Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>_>	46	97-256	twin_landed	1		2:00b96150	masked body equals landed 00a2a650,00a959e0,00b82dc0; extent SPLIT: tail = 2 filler bytes then an unlisted function at 00a958c0 (mov eax, 
 NA001	00e1df60	CPersistContext	Transfer<signed_char>	216	97-256	twin_landed	1		2:00e38dd0	masked body equals landed 00cdca70,00cdcc20,00cdcdd0
 NA001	00e38dd0	CPersistContext	Transfer<signed_char>	216	97-256	twin_landed	1		2:00e1df60	masked body equals landed 00cdca70,00cdcc20,00cdcdd0
-NA001	00cdcf80	CPersistContext	Transfer<signed_char>	288	257-512	twin_landed	5			masked body equals landed 0049b8d0,00619710,006197d0; scan stops 100 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA001	009d8250	_global	$E2	352	257-512	twin_landed	19			masked body equals landed 0088edb0,00a65d30,00b8fde0; scan stops 351 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA001	00cdcf80	CPersistContext	Transfer<signed_char>	188	257-512	twin_landed	5			masked body equals landed 0049b8d0,00619710,006197d0; extent SPLIT: tail = 4 filler bytes then an unlisted function at 00cdd040 (mov ecx, 
+NA001	009d8250	_global	$E2	1	257-512	twin_landed	19			masked body equals landed 0088edb0,00a65d30,00b8fde0; extent SPLIT: tail = 15 filler bytes then an unlisted function at 009d8260 (mov eax,
 NA001	00adca30	_global	Vector_Reserve_Copy	347	257-512	twin_landed	4			masked body equals landed 0052bff0
-NA001	00ca9710	_global	Thunk_VirtualMethod_2	272	257-512	twin_landed	0			masked body equals landed 00ca5510; scan stops 256 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA001	00b96150	_Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std	_Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>_>	304	257-512	twin_landed	1		2:00a95890	masked body equals landed 00a2a650,00a959e0,00b82dc0; scan stops 258 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA001	00771f30	CTCInventoryItem	OnDie	400	257-512	twin_landed	1			masked body equals landed 00529cc0,00aa49b0,00aa7210; scan stops 373 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA001	00ca9710	_global	Thunk_VirtualMethod_2	16	257-512	twin_landed	0			masked body equals landed 00ca5510; extent SPLIT: code right after the row end, referenced from outside ({'data': 2, 'im
+NA001	00b96150	_Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std	_Uninit_fill_n<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,unsigned_int,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>,std::pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_>_>	46	257-512	twin_landed	1		2:00a95890	masked body equals landed 00a2a650,00a959e0,00b82dc0; extent SPLIT: tail = 2 filler bytes then an unlisted function at 00b96180 (mov eax, 
+NA001	00771f30	CTCInventoryItem	OnDie	27	257-512	twin_landed	1			masked body equals landed 00529cc0,00aa49b0,00aa7210; extent SPLIT: tail = 5 filler bytes then an unlisted function at 00771f50 (mov eax, 
 NA002	00cd4550	_Dest_val<std	_Dest_val<std::allocator<CMacro>,CMacro>	35	17-96	twin_landed	10		2:00cd4fa0	masked body equals landed 004047a0
 NA002	00cd4fa0	_Dest_val<std	_Dest_val<std::allocator<CMacro>,CMacro>	35	17-96	twin_landed	0		2:00cd4550	masked body equals landed 004047a0
 NA002	0078adf0	CCreatureAction_FireMissileWeapon	~CCreatureAction_FireMissileWeapon	52	17-96	twin_landed	6			masked body equals landed 007e7030
@@ -40,24 +40,24 @@ NA004	0071a570	_Dest_val<std	_Dest_val<std::allocator<CMacro>,CMacro>	44	17-96	t
 NA004	007dfaf0	CCreatureAction_PerformExpressionExtended	~CCreatureAction_PerformExpressionExtended	43	17-96	twin_landed	1			masked body equals landed 007b5130
 NA004	007e24d0	C3DAnimationBlendState	~C3DAnimationBlendState	35	17-96	twin_landed	1		2:007e3370	masked body equals landed 005dae40,00732cb0,007dfca0
 NA005	007e3370	C3DAnimationBlendState	~C3DAnimationBlendState	35	17-96	twin_landed	1		2:007e24d0	masked body equals landed 005dae40,00732cb0,007dfca0
-NA005	0087b660	CTCInventoryItem	OnDie	48	17-96	twin_landed	1			masked body equals landed 007d9ef0,00953890; scan stops 18 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA005	0087b660	CTCInventoryItem	OnDie	30	17-96	twin_landed	1			masked body equals landed 007d9ef0,00953890; extent SPLIT: tail = 2 filler bytes then an unlisted function at 0087b680 (mov eax, 
 NA005	007d7950	CTCInventoryItem	OnDie	33	17-96	twin_landed	0			masked body equals landed 00430300
 NA005	0072d3e0	_Dest_val<std::allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>,std	_Dest_val<std::allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>,std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>	75	17-96	twin_landed	1		4:006df920,0072d430,009771a0	masked body equals landed 0048c950,008abaa0
 NA005	0072d430	_Dest_val<std::allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>,std	_Dest_val<std::allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>,std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>	75	17-96	twin_landed	1		4:006df920,0072d3e0,009771a0	masked body equals landed 0048c950,008abaa0
 NA005	006df920	_Dest_val<std::allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>,std	_Dest_val<std::allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>,std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>	75	17-96	twin_landed	0		4:0072d3e0,0072d430,009771a0	masked body equals landed 0048c950,008abaa0
 NA005	009771a0	_Dest_val<std::allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>,std	_Dest_val<std::allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>,std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>	75	17-96	twin_landed	0		4:006df920,0072d3e0,0072d430	masked body equals landed 0048c950,008abaa0
-NA005	0090c780	CVillageTaskCarryCrate	AssignCreatureToTask	96	17-96	twin_landed	1			masked body equals landed 006f5720,0085aa90,008abc90; scan stops 22 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA005	0090c780	CVillageTaskCarryCrate	AssignCreatureToTask	74	17-96	twin_landed	1			masked body equals landed 006f5720,0085aa90,008abc90; extent SPLIT: tail = 6 filler bytes then an unlisted function at 0090c7d0 (mov eax, 
 NA005	0121ab3f	_gapscan	sub_0121ab3f	27	17-96	twin_landed	0			masked body equals landed 01219ec0,01219fe0,0121a3e0
 NA005	01219f00	_gapscan	sub_01219f00	32	17-96	twin_landed	0			masked body equals landed 01224140,01224250,01224270
 NA006	0121a670	_gapscan	sub_0121a670	60	17-96	twin_landed	0			masked body equals landed 0121f160,0121f1a0,0121f1e0
 NA006	004b6a80	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::CSymbolInfo>_>	31	17-96	twin_landed	0		2:006fb8d0	masked body equals landed 004b86b0,006fb460
 NA006	006fb8d0	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::CSymbolInfo>_>	31	17-96	twin_landed	0		2:004b6a80	masked body equals landed 004b86b0,006fb460
 NA006	007803d0	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::CSymbolInfo>_>	27	17-96	twin_landed	0			masked body equals landed 00781540
-NA006	00768bf0	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::CSymbolInfo>_>	64	17-96	twin_landed	0			masked body equals landed 007699c0; scan stops 37 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA006	00768bf0	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::CSymbolInfo>_>	27	17-96	twin_landed	0			masked body equals landed 007699c0; extent SPLIT: tail = 5 filler bytes then an unlisted function at 00768c10 (mov eax, 
 NA006	0121ae9c	_gapscan	sub_0121ae9c	29	17-96	twin_landed	0		3:0121ac08,0121f074	masked body equals landed 01219f20,0121a000,0121a050
 NA006	0121ac08	_gapscan	sub_0121ac08	29	17-96	twin_landed	0		3:0121ae9c,0121f074	masked body equals landed 01219f20,0121a000,0121a050
 NA006	0121f074	_gapscan	sub_0121f074	29	17-96	twin_landed	0		3:0121ac08,0121ae9c	masked body equals landed 01219f20,0121a000,0121a050
-NA006	00c5ee20	_gapscan	sub_00c5ee20	48	17-96	twin_landed	0		3:00c35460,00c57490	masked body equals landed 00c5d600; scan stops 43 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA006	00c5ee20	_gapscan	sub_00c5ee20	5	17-96	twin_landed	0		3:00c35460,00c57490	masked body equals landed 00c5d600; extent SPLIT: tail = 11 filler bytes then an unlisted function at 00c5ee30 (mov eax,
 NA006	0067c370	CCompressedMemoryDataInputStream	~CCompressedMemoryDataInputStream	49	17-96	twin_landed	0			masked body equals landed 004304a0
 NA007	00695f40	_Dest_val<std::allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>,std	_Dest_val<std::allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>,std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>	60	17-96	twin_landed	0		8:006966d0,00a0a5d0,00a0bd40,00a32690,00af6570,00cb9700,00cba6	masked body equals landed 004abd40,004ad2a0,00695f80
 NA007	006966d0	_Dest_val<std::allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>,std	_Dest_val<std::allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>,std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>	60	17-96	twin_landed	0		8:00695f40,00a0a5d0,00a0bd40,00a32690,00af6570,00cb9700,00cba6	masked body equals landed 004abd40,004ad2a0,00695f80
@@ -125,8 +125,8 @@ NA013	008d7a90	NCreatureMode::CModeGuildmasterPowerUpShield	NCreatureMode::CMode
 NA013	008d7b20	NCreatureMode::CModeGuildmasterPowerUpSpeed	NCreatureMode::CModeGuildmasterPowerUpSpeed::vfunc_6	135	97-256	authorable	0	NCreatureMode::CModeGuildmasterPowerUpSpeed#6	2:008d7a90	
 NA013	00b52870	CEngineWeatherRenderer	FadeRainToTarget	132	97-256	authorable	2		2:00b52900	
 NA013	00b52900	CEngineWeatherRenderer	FadeRainToTarget	132	97-256	authorable	2		2:00b52870	
-NA013	00558c70	NUISystem::CNavButton	NUISystem::CNavButton::vfunc_48	192	97-256	authorable	0	NUISystem::CNavButton#48		scan stops 41 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA013	00a3bd00	CTextureRenderer	CTextureRenderer::vfunc_0	192	97-256	authorable	0	CTextureRenderer#0	6:00ca53c0,00ca62d0,00ca96f0,00caa470,00caf430	scan stops 177 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA013	00558c70	NUISystem::CNavButton	NUISystem::CNavButton::vfunc_48	151	97-256	authorable	0	NUISystem::CNavButton#48		; extent SPLIT: tail = 9 filler bytes then an unlisted function at 00558d10 (sub ecx, 
+NA013	00a3bd00	CTextureRenderer	CTextureRenderer::vfunc_0	15	97-256	authorable	0	CTextureRenderer#0	6:00ca53c0,00ca62d0,00ca96f0,00caa470,00caf430	; extent SPLIT: tail = 1 filler bytes then an unlisted function at 00a3bd10 (mov eax, 
 NA013	009c2fd0	CEnginePrimitiveManagerOcclusionBase	~CEnginePrimitiveManagerOcclusionBase	217	97-256	authorable	2			
 NA013	00a75e30	CNavQuadTreeNode	CNavQuadTreeNode::SetUpNeighbours	224	97-256	authorable	0	CNavQuadTreeNode#17		
 NA014	00a75c20	CNavQuadTreeNode	~CNavQuadTreeNode	123	97-256	authorable	1			
@@ -149,14 +149,14 @@ NA015	00b84390	CEngineWaterBackgroundSubPatch	~CEngineWaterBackgroundSubPatch	10
 NA015	00b8c7c0	CEngineBillboardGenerator	~CEngineBillboardGenerator	102	97-256	authorable	1			
 NA015	00b93e40	CLocalDetailGeneratorTheme	~CLocalDetailGeneratorTheme	98	97-256	authorable	1			
 NA015	00a5f3a0	CChunkedFile	~CChunkedFile	126	97-256	authorable	1			
-NA016	007c8560	CTCInventoryItem	OnDie	144	97-256	authorable	1		2:00778d20	scan stops 117 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA016	007c8560	CTCInventoryItem	OnDie	27	97-256	authorable	1		2:00778d20	; extent SPLIT: tail = 5 filler bytes then an unlisted function at 007c8580 (mov eax, 
 NA016	00ab7a70	CStaticFontBank	~CStaticFontBank	143	97-256	authorable	1			
 NA016	00b59be0	CEngineLocalDetailGenerator	AddLocalDetailDynamic	129	97-256	authorable	1			
 NA016	00b5a0d0	CEngineScreenEffectColourFilter	~CEngineScreenEffectColourFilter	139	97-256	authorable	1			
 NA016	00a04160	_Dest_val<std	_Dest_val<std::allocator<CMacro>,CMacro>	145	97-256	authorable	1			
 NA016	00ed7640	CV_SwordInTheStoneScript	~CV_SwordInTheStoneScript	147	97-256	authorable	1			
-NA016	00a84f00	CTCInventoryItem	OnDie	176	97-256	authorable	1			scan stops 149 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA016	00a9a7c0	CTCInventoryItem	OnDie	256	97-256	authorable	1			scan stops 229 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA016	00a84f00	CTCInventoryItem	OnDie	27	97-256	authorable	1			; extent SPLIT: tail = 5 filler bytes then an unlisted function at 00a84f20 (push ecx;
+NA016	00a9a7c0	CTCInventoryItem	OnDie	27	97-256	authorable	1			; extent SPLIT: tail = 5 filler bytes then an unlisted function at 00a9a7e0 (mov eax, 
 NA016	00a895f0	C3DMesh2	~C3DMesh2	175	97-256	authorable	1			
 NA016	00b4d210	CEngineShadowRenderer	~CEngineShadowRenderer	171	97-256	authorable	1			
 NA017	00e477f0	CActionMoveTo	~CActionMoveTo	171	97-256	authorable	1			
@@ -177,17 +177,17 @@ NA018	00b261d0	CEngine	~CEngine	238	97-256	authorable	1
 NA018	00cfac40	CQ_ArenaScript	~CQ_ArenaScript	232	97-256	authorable	1			
 NA018	00e8b750	CV_FisticuffsClubScript	~CV_FisticuffsClubScript	248	97-256	authorable	1			
 NA018	00ee40f0	CTCTavernGame	~CTCTavernGame	247	97-256	authorable	1			
-NA018	00cafc40	_gapscan	sub_00cafc40	128	97-256	authorable	0			scan stops 113 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA018	00cafc40	_gapscan	sub_00cafc40	15	97-256	authorable	0			; extent SPLIT: tail = 1 filler bytes then an unlisted function at 00cafc50 (mov eax, 
 NA018	0121a460	_gapscan	sub_0121a460	139	97-256	authorable	0			
-NA019	00ca5200	_gapscan	sub_00ca5200	160	97-256	authorable	0			scan stops 146 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA019	00ca5200	_gapscan	sub_00ca5200	14	97-256	authorable	0			; extent SPLIT: tail = 2 filler bytes then an unlisted function at 00ca5210 (mov ecx, 
 NA019	0121a7ca	_gapscan	sub_0121a7ca	177	97-256	authorable	0			
 NA019	0121a4f0	_gapscan	sub_0121a4f0	139	97-256	authorable	0		2:0121a580	
 NA019	0121a580	_gapscan	sub_0121a580	139	97-256	authorable	0		2:0121a4f0	
-NA019	00ca62d0	_gapscan	sub_00ca62d0	160	97-256	authorable	0		6:00a3bd00,00ca53c0,00ca96f0,00caa470,00caf430	scan stops 145 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA019	00ca62d0	_gapscan	sub_00ca62d0	15	97-256	authorable	0		6:00a3bd00,00ca53c0,00ca96f0,00caa470,00caf430	; extent SPLIT: tail = 1 filler bytes then an unlisted function at 00ca62e0 (mov eax, 
 NA019	005fd410	CTCInventoryMap	GetRegionsToDisplay	451	257-512	authorable	6			
 NA019	00f29dc0	CTCInventoryMap	ResetPrimitiveHandles	382	257-512	authorable	1			
 NA019	00cbf7fe	_global	PlayCutsceneSound	480	257-512	authorable	69			
-NA019	00c057d0	_global	__tr_flush_block	512	257-512	authorable	8			scan stops 27 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA019	00c057d0	_global	__tr_flush_block	485	257-512	authorable	8			; extent SPLIT: tail = 11 filler bytes then an unlisted function at 00c059c0 (mov eax,
 NA019	00bd9ce0	_global	TexturePool_Clear	488	257-512	authorable	4			
 NA020	00c052c0	_global	build_tree	498	257-512	authorable	3			
 NA020	00ad8ed0	_global	VertexListMarkConnected	269	257-512	authorable	2			
@@ -204,7 +204,7 @@ NA021	00ca3f60	_global	Math_SolveLinearSystemGaussian	507	257-512	authorable	2
 NA021	006c5d70	_global	LTextTreeWalkThrough_Destructor	284	257-512	authorable	1			
 NA021	00add380	_global	CPlayerGuiDef_LoadAnimationSet	276	257-512	authorable	1			
 NA021	00ac8170	_global	PaintSegments_AddSegmentLink	295	257-512	authorable	1			
-NA021	00add4a0	_global	PlayerGuiDef_ctor	304	257-512	authorable	1			scan stops 30 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA021	00add4a0	_global	PlayerGuiDef_ctor	274	257-512	authorable	1			; extent SPLIT: tail = 14 filler bytes then an unlisted function at 00add5c0 (mov edx,
 NA021	00ba48f0	_global	SetupStaticBlocksNoMorph	324	257-512	authorable	1			
 NA021	006661b0	_global	CThingGameObject_Finalize	348	257-512	authorable	1			
 NA021	006ad260	_global	CThingPlayerCreature_ComputeAcceleration	338	257-512	authorable	1			
@@ -269,12 +269,12 @@ NA027	00bda150	_global	CDrawResourcePool_FlushCycle	514	513-1024	authorable	3
 NA027	00c677c0	_global	HeroAttribute_SetValueWithValidation	582	513-1024	authorable	3			
 NA027	00a5b870	_global	GFInterpolateVectors	801	513-1024	authorable	3			10 SSE/MMX instructions: try the xmmintrin/mmintrin intrinsics first
 NA027	00c74510	_global	Audio_IIRFilterProcess	828	513-1024	authorable	3			
-NA028	00cb5180	_global	ImeUI_Initialize	924	513-1024	authorable	3			scan stops 301 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA028	00cb5180	_global	ImeUI_Initialize	623	513-1024	authorable	3			; extent SPLIT: tail = 1 filler bytes then an unlisted function at 00cb53f0 (mov al, b
 NA028	00cbf29f	_global	CutsceneCameraPreloader	936	513-1024	authorable	3			
 NA028	00ab1f30	_global	GetIntersection_CollectEntities	556	513-1024	authorable	2			
 NA028	00b179a0	_global	Particle_ApplyDistanceForces	554	513-1024	authorable	0	NParticleEngine::CPSCAttractor#9		
 NA028	00bec680	_global	CollectStats	545	513-1024	authorable	2			
-NA028	00caa4a0	_global	FileArchive_ValidateAndLoad	576	513-1024	authorable	2			scan stops 99 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA028	00caa4a0	_global	FileArchive_ValidateAndLoad	477	513-1024	authorable	2			; extent SPLIT: tail = 3 filler bytes then an unlisted function at 00caa680 (mov eax, 
 NA028	00ca0ba0	_global	Environment_GetThemeIndex	579	513-1024	authorable	2			
 NA028	007748e0	_global	CTCGraphicAppearance_InitGoodsPlaces	596	513-1024	authorable	2			
 NA028	00c674b0	_global	CCharacter_AddSkill	618	513-1024	authorable	2			
@@ -282,16 +282,16 @@ NA028	00ca3b80	_global	Math_LevenbergMarquardtFit	718	513-1024	authorable	2
 NA029	00c68a50	_global	CDrawGuildSeal_SetLightProperty	798	513-1024	authorable	2			
 NA029	00a5bba0	_global	GFInterpolateVectors	840	513-1024	authorable	2			10 SSE/MMX instructions: try the xmmintrin/mmintrin intrinsics first
 NA029	00b202d0	_global	Transform_VectorWithQuaternion	850	513-1024	authorable	2			
-NA029	00a3a410	_global	CreateWorldLevelWad	960	513-1024	authorable	2			scan stops 40 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA029	007808b0	_global	CTCAvoidRegion_Initialize	976	513-1024	authorable	2			scan stops 53 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA029	00a3a410	_global	CreateWorldLevelWad	920	513-1024	authorable	2			; extent SPLIT: tail = 8 filler bytes then an unlisted function at 00a3a7b0 (mov eax, 
+NA029	007808b0	_global	CTCAvoidRegion_Initialize	923	513-1024	authorable	2			; extent SPLIT: tail = 5 filler bytes then an unlisted function at 00780c50 (mov edx, 
 NA029	00cbdad0	_global	CCharString_Quicksort	1010	513-1024	authorable	2			
 NA029	00a8efa0	_global	TransformVertexBuffer_LoopUnrolled_x4	520	513-1024	authorable	1			
 NA029	00b801f0	_global	Vector_Insert_3Floats	523	513-1024	authorable	1			
-NA029	00ca4570	_global	Math_ApplyDampeningFilter	528	513-1024	authorable	1			scan stops 130 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA029	00ca4570	_global	Math_ApplyDampeningFilter	398	513-1024	authorable	1			; extent SPLIT: tail = 2 filler bytes then an unlisted function at 00ca4700 (mov ecx, 
 NA029	00ac97d0	_global	QuadricOptimiser_RemapAndAccumulateCosts	535	513-1024	authorable	1			
 NA030	00c68d70	_global	ScriptCommand_SetLightAttributes	542	513-1024	authorable	1			
 NA030	00ca2480	_global	CurveInterpolation_ValidateSplineQuality	542	513-1024	authorable	1			
-NA030	00cb09a0	_global	OS_WaitForMultipleObjectsWithMessages	544	513-1024	authorable	1			scan stops 24 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA030	00cb09a0	_global	OS_WaitForMultipleObjectsWithMessages	520	513-1024	authorable	1			; extent SPLIT: tail = 8 filler bytes then an unlisted function at 00cb0bb0 (mov eax, 
 NA030	00a0f4b0	_global	RenderList_ProcessLargeInsert	570	513-1024	authorable	1			
 NA030	00a3ef00	_global	CMainGameComponent_Initialize	561	513-1024	authorable	1			
 NA030	00aca5f0	_global	QuadricOptimiser_NormalizeQuadricWeights	570	513-1024	authorable	1			
@@ -299,7 +299,7 @@ NA030	00c04020	_global	gen_bitlen	563	513-1024	authorable	1
 NA030	00c61d10	_global	CRegion_UpdateMouseCursorVisuals	581	513-1024	authorable	1			
 NA030	00c733d0	_global	Audio_ApplyEffectProperties	610	513-1024	authorable	1			
 NA030	00c73af0	_global	NHeroInformationScreens_CreateScreen	672	513-1024	authorable	1			
-NA031	00c76120	_global	SignalProcessing_InterpolateAndAccumulate	672	513-1024	authorable	1			scan stops 31 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA031	00c76120	_global	SignalProcessing_InterpolateAndAccumulate	641	513-1024	authorable	1			; extent SPLIT: tail = 15 filler bytes then an unlisted function at 00c763b0 (push esi
 NA031	00b6ce00	_global	Vector_InsertFill_Vertices	674	513-1024	authorable	1			
 NA031	00c88e60	_global	Audio_ProcessFilter4Channel	681	513-1024	authorable	1			43 SSE/MMX instructions: try the xmmintrin/mmintrin intrinsics first
 NA031	00aa5460	_global	ReadFromFile	700	513-1024	authorable	1			
@@ -309,7 +309,7 @@ NA031	00ac9a60	_global	QuadricOptimiser_PreprocessAdjacencyAndNormals	745	513-10
 NA031	00501150	_global	LoadLevel_ParseObjects	756	513-1024	authorable	1			
 NA031	00678460	_global	CMemoryBlock_Destructor_Extended	758	513-1024	authorable	1			
 NA031	00ca0890	_global	CurveInterpolation_ResampleCurveData	776	513-1024	authorable	1			
-NA032	00c04850	_global	send_all_trees	800	513-1024	authorable	1			scan stops 179 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA032	00c04850	_global	send_all_trees	621	513-1024	authorable	1			; extent SPLIT: tail = 3 filler bytes then an unlisted function at 00c04ac0 (mov eax, 
 NA032	00cfa340	_global	CParticleEmitter_Dtor	792	513-1024	authorable	1			
 NA032	00a73e50	_global	Mesh_FindIntersectionPoints	811	513-1024	authorable	1			
 NA032	00ab1990	_global	BuildEntityScriptBindings_FromNameArray	812	513-1024	authorable	1			
@@ -317,28 +317,28 @@ NA032	00c67c00	_global	ScriptCommand_SetCharacterAttributes	854	513-1024	authora
 NA032	00ac9d50	_global	QuadricOptimiser_ComputeVertexBounds	874	513-1024	authorable	1			
 NA032	00ca02b0	_global	Audio_ComputeTimeFrequencyMap	879	513-1024	authorable	1			
 NA032	00d3b010	_global	CParticleEmitter_Dtor_4	883	513-1024	authorable	1			
-NA032	00cb0370	_global	Math_Divide64bit	912	513-1024	authorable	1			scan stops 133 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA032	00cb0370	_global	Math_Divide64bit	779	513-1024	authorable	1			; extent SPLIT: tail = 5 filler bytes then an unlisted function at 00cb0680 (mov eax, 
 NA032	00606f80	_global	CTCActionUseBuyOrSteal_dtor	937	513-1024	authorable	1			
 NA033	00b3b8e0	_global	CEngineResourceManager_Destructor	942	513-1024	authorable	1			
-NA033	00adefc0	_global	Matrix4x4_Multiply	544	513-1024	authorable	0			68 SSE/MMX instructions: try the xmmintrin/mmintrin intrinsics first; scan stops 73 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA033	00c76880	_global	DSP_TransformWithFilterCoefficients	560	513-1024	authorable	0			scan stops 47 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA033	00cb0700	_global	SignedDecimal_Divide	576	513-1024	authorable	0			scan stops 83 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA033	00adefc0	_global	Matrix4x4_Multiply	471	513-1024	authorable	0			68 SSE/MMX instructions: try the xmmintrin/mmintrin intrinsics first; extent SPLIT: tail = 9 filler bytes then an unlisted function at 00adf1a0 (mov eax, 
+NA033	00c76880	_global	DSP_TransformWithFilterCoefficients	513	513-1024	authorable	0			; extent SPLIT: tail = 15 filler bytes then an unlisted function at 00c76a90 (push ecx
+NA033	00cb0700	_global	SignedDecimal_Divide	493	513-1024	authorable	0			; extent SPLIT: tail = 3 filler bytes then an unlisted function at 00cb08f0 (mov eax, 
 NA033	00ca1360	_global	Environment_TransformVertexArray	596	513-1024	authorable	0			
 NA033	00767da0	_global	CTCLinkDisplay_SetupParticleNodes	622	513-1024	authorable	0			
 NA033	00c73050	_global	Audio_PlaySourceAndProcessQueue	672	513-1024	authorable	0			
 NA033	009cf053	_global	CBankFile_ProcessHeroQuestions	673	513-1024	authorable	0			
 NA033	00c059d0	_global	crc32_little	722	513-1024	authorable	0			
 NA033	00c05cb0	_global	crc32_little	793	513-1024	authorable	0			
-NA034	00c0ce50	_global	CCharString_ReplaceAll	864	513-1024	authorable	0			scan stops 183 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA034	00cd3f50	_global	DefinitionManager_LoadDefinitions	912	513-1024	authorable	0			scan stops 45 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA034	00c6d630	_global	CAudioMixer_ProcessChannels	928	513-1024	authorable	0			scan stops 120 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA034	00c0ce50	_global	CCharString_ReplaceAll	681	513-1024	authorable	0			; extent SPLIT: tail = 7 filler bytes then an unlisted function at 00c0d100 (push ecx;
+NA034	00cd3f50	_global	DefinitionManager_LoadDefinitions	867	513-1024	authorable	0			; extent SPLIT: tail = 13 filler bytes then an unlisted function at 00cd42c0 (mov eax,
+NA034	00c6d630	_global	CAudioMixer_ProcessChannels	808	513-1024	authorable	0			; extent SPLIT: tail = 8 filler bytes then an unlisted function at 00c6d960 (push ecx;
 NA034	00d89710	_global	Script_Undead_Generator	960	513-1024	authorable	0			
 NA034	00c08d40	_global	CSystem_ProcessMainEvent	964	513-1024	authorable	0			
 NA034	00e3a6b0	_global	CScriptGameResourceObjectScriptedThingBase_HandleBordelloNPC	1013	513-1024	authorable	0			
-NA034	004ba810	remove_if<NEntityEvents::CConvFilterToCP<NEntityEvents	remove_if<NEntityEvents::CConvFilterToCP<NEntityEvents::CIsEventOfType>_>	544	513-1024	authorable	3			scan stops 455 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA034	00a39010	CCRCSymbolMap	CCRCSymbolMap::LoadFromFile	528	513-1024	authorable	2			scan stops 150 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA034	007877e0	CTCBob	FrameUpdate	544	513-1024	authorable	0	CTCBob#9		scan stops 57 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA034	0084fdb0	NCameraModes::CCameraPointModeBase	NCameraModes::CCameraPointModeBase::vfunc_22	992	513-1024	authorable	0	NCameraModes::CCameraPointModeBase#22		scan stops 977 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA034	004ba810	remove_if<NEntityEvents::CConvFilterToCP<NEntityEvents	remove_if<NEntityEvents::CConvFilterToCP<NEntityEvents::CIsEventOfType>_>	89	513-1024	authorable	3			; extent SPLIT: tail = 7 filler bytes then an unlisted function at 004ba870 (push ecx;
+NA034	00a39010	CCRCSymbolMap	CCRCSymbolMap::LoadFromFile	378	513-1024	authorable	2			; extent SPLIT: tail = 6 filler bytes then an unlisted function at 00a39190 (mov eax, 
+NA034	007877e0	CTCBob	FrameUpdate	487	513-1024	authorable	0	CTCBob#9		; extent SPLIT: tail = 9 filler bytes then an unlisted function at 007879d0 (mov eax, 
+NA034	0084fdb0	NCameraModes::CCameraPointModeBase	NCameraModes::CCameraPointModeBase::vfunc_22	15	513-1024	authorable	0	NCameraModes::CCameraPointModeBase#22		; extent SPLIT: tail = 1 filler bytes then an unlisted function at 0084fdc0 (sub esp, 
 NA035	00a9a900	C3DMeshFileLoader	~C3DMeshFileLoader	1021	513-1024	authorable	2			
 NA035	00bb6730	CEngineClothRenderer	~CEngineClothRenderer	537	513-1024	authorable	1			
 NA035	00ea4980	CLostTraderTrader	TraderYellAtHero	556	513-1024	authorable	1			
@@ -349,11 +349,11 @@ NA035	009fb110	_gapscan	sub_009fb110	732	513-1024	authorable	1
 NA035	00a68ae0	_gapscan	sub_00a68ae0	753	513-1024	authorable	1			
 NA035	009fb3f0	_gapscan	sub_009fb3f0	850	513-1024	authorable	1			
 NA035	00c011a0	_gapscan	sub_00c011a0	529	513-1024	authorable	0			
-NA036	00c6fe10	_gapscan	sub_00c6fe10	560	513-1024	authorable	0			scan stops 53 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA036	00c6fe10	_gapscan	sub_00c6fe10	507	513-1024	authorable	0			; extent SPLIT: tail = 5 filler bytes then an unlisted function at 00c70010 (fld dword
 NA036	00c6cc60	_gapscan	sub_00c6cc60	648	513-1024	authorable	0			
 NA036	00c6e8f0	_gapscan	sub_00c6e8f0	673	513-1024	authorable	0			
 NA036	00c6dba0	_gapscan	sub_00c6dba0	689	513-1024	authorable	0			
-NA036	0099d8c0	_gapscan	sub_0099d8c0	800	513-1024	authorable	0			scan stops 111 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA036	0099d8c0	_gapscan	sub_0099d8c0	689	513-1024	authorable	0			; extent SPLIT: tail = 15 filler bytes then an unlisted function at 0099db80 (mov eax,
 NA036	00c013c0	_gapscan	sub_00c013c0	909	513-1024	authorable	0			
 NA036	00cf0790	_gapscan	sub_00cf0790	960	513-1024	authorable	0			
 NA036	00d89e60	_gapscan	sub_00d89e60	976	513-1024	authorable	0			
@@ -362,7 +362,7 @@ NA036	00ef8d30	_gapscan	sub_00ef8d30	1013	513-1024	authorable	0
 NA037	00ab5420	CMouseDX	ConvertMouseEventToInputEvent	740	513-1024	authorable	1			
 NA037	00c6e410	_gapscan	sub_00c6e410	533	513-1024	authorable	0		2:00c6f990	
 NA037	00c6f990	_gapscan	sub_00c6f990	533	513-1024	authorable	0		2:00c6e410	
-NA037	00cafa10	CEditControlCentre	CEditControlCentre::FindTrackNodeInTimeRange	560	513-1024	authorable	0			scan stops 165 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA037	00cafa10	CEditControlCentre	CEditControlCentre::FindTrackNodeInTimeRange	395	513-1024	authorable	0			; extent SPLIT: tail = 5 filler bytes then an unlisted function at 00cafba0 (mov eax, 
 NA037	00a36f90	CClassFactory	?AddNewClassType@CClassFactory@@MAEXABVCClassTypeInit@@@Z	47	17-96	authorable	15	CThingManager#1		
 NA037	00a371c0	CClassFactory	AllocateClass	42	17-96	authorable	1			
 NA037	00859a20	CCombatActionBase	?FinishAction@CCombatActionBase@@MAEXXZ	72	17-96	authorable	91	?A0x13af75c9::CCreatureAction_HeroRangedWeaponUseDummy#4		
@@ -385,7 +385,7 @@ NA039	00740540	_Dest_val<std	_Dest_val<std::allocator<CMacro>,CMacro>	45	17-96	a
 NA039	008c36d0	_Dest_val<std	_Dest_val<std::allocator<CMacro>,CMacro>	45	17-96	authorable	1			
 NA039	00ed7dd0	_Dest_val<std	_Dest_val<std::allocator<CMacro>,CMacro>	35	17-96	authorable	1			
 NA039	0055acb0	CClickable	Update	49	17-96	authorable	3	NUISystem::CFrontEndButton#1		
-NA039	00995e70	CMemoryDataOutputStream	PeekData	64	17-96	authorable	44			scan stops 49 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA039	00995e70	CMemoryDataOutputStream	PeekData	15	17-96	authorable	44			; extent SPLIT: tail = 1 filler bytes then an unlisted function at 00995e80 (mov edx, 
 NA039	00a69e20	CEnginePrimitiveHandle	Clear	61	17-96	authorable	5			
 NA039	005ede37	CTCInventoryAbilities	GetCategory	72	17-96	authorable	5			
 NA039	004aa840	C3DClothPrimitive	~C3DClothPrimitive	66	17-96	authorable	4187		2:00ac3b80	
@@ -420,12 +420,12 @@ NA042	00b0a160	CTCInventoryItem	OnDie	41	17-96	authorable	1
 NA042	00e81f30	CTCInventoryItem	OnDie	35	17-96	authorable	1			
 NA042	008cc330	CTCInventoryItem	OnDie	50	17-96	authorable	1			
 NA043	00671100	CTCInventoryItem	OnDie	75	17-96	authorable	1			
-NA043	00b18780	CTCInventoryItem	OnDie	80	17-96	authorable	1			scan stops 53 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA043	00b18780	CTCInventoryItem	OnDie	27	17-96	authorable	1			; extent SPLIT: tail = 5 filler bytes then an unlisted function at 00b187a0 (mov eax, 
 NA043	006b7570	CTCInventoryItem	OnDie	33	17-96	authorable	0			
 NA043	0085ad00	CTCInventoryItem	OnDie	36	17-96	authorable	0			
 NA043	00a9d330	CTCInventoryItem	OnDie	33	17-96	authorable	0			
 NA043	00aac4f0	CTCInventoryItem	OnDie	49	17-96	authorable	0			
-NA043	009b5d50	CTCInventoryItem	OnDie	96	17-96	authorable	0			scan stops 69 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA043	009b5d50	CTCInventoryItem	OnDie	27	17-96	authorable	0			; extent SPLIT: tail = 5 filler bytes then an unlisted function at 009b5d70 (push ebx;
 NA043	007f5810	CVillageTaskCarryCrate	AssignCreatureToTask	71	17-96	authorable	4			
 NA043	008abb50	CVillageTaskCarryCrate	AssignCreatureToTask	71	17-96	authorable	2			
 NA043	008d73e0	CVillageTaskCarryCrate	AssignCreatureToTask	71	17-96	authorable	1			
@@ -456,7 +456,7 @@ NA046	00900b41	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	36	17-96	au
 NA046	0090143e	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	36	17-96	authorable	0			
 NA046	004bf8f0	CTCGraphicAppearance	OnKill	41	17-96	authorable	0	NGraphicAppearance::CTCGraphicAppearance#14		
 NA046	005596d0	NUISystem::CScrollBar	NUISystem::CScrollBar::vfunc_146	47	17-96	authorable	0	NUISystem::CScrollBar#146		
-NA046	005df750	CAnimComponentCombatMisc	CAnimComponentCombatMisc::Alloc	48	17-96	authorable	0	CAnimComponentCombatMisc#4		scan stops 17 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA046	005df750	CAnimComponentCombatMisc	CAnimComponentCombatMisc::Alloc	31	17-96	authorable	0	CAnimComponentCombatMisc#4		; extent SPLIT: tail = 1 filler bytes then an unlisted function at 005df770 (mov eax, 
 NA046	005faee0	CTCInventory	OnKill	44	17-96	authorable	0	CTCInventoryMap#14	2:0061a1f0	
 NA046	0061a1f0	CTCInventory	OnKill	44	17-96	authorable	0	CTCInventoryQuests#14	2:005faee0	
 NA047	006b1550	CCounter	operator=	44	17-96	authorable	2			
@@ -465,11 +465,11 @@ NA047	00ca7310	CTCStealth	OnCreate	45	17-96	authorable	1
 NA047	007fc7a0	CTCKraken	StartHighAttackBeam	38	17-96	authorable	2			
 NA047	007fc7d0	CTCKraken	StartHighAttackBeam	38	17-96	authorable	1			
 NA047	00820b50	CMap	?Update@CMap@@MAEXXZ	36	17-96	authorable	0	CMap#13		
-NA047	008424a0	CCreatureAction_ActivateZTarget	CCreatureAction_ActivateZTarget::PerformAction	48	17-96	authorable	0	CCreatureAction_ActivateZTarget#3		scan stops 31 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA047	008424a0	CCreatureAction_ActivateZTarget	CCreatureAction_ActivateZTarget::PerformAction	17	17-96	authorable	0	CCreatureAction_ActivateZTarget#3		; extent SPLIT: tail = 15 filler bytes then an unlisted function at 008424c0 (ret ; re
 NA047	008426e0	CCreatureAction_PlayAnimation	CCreatureAction_PlayAnimation::FrameUpdate	34	17-96	authorable	0	CCreatureAction_PlayAnimation#56		
 NA047	00850640	CPhysicsLeaf<NCameraModes::CPhysicsTargetModelGoTo	FrameUpdate	44	17-96	authorable	0	CPhysicsLeaf#0		
 NA047	0085ca10	CPhysicsLeaf<NCameraModes::CPhysicsTargetModelGoTo	FrameUpdate	44	17-96	authorable	0	CPhysicsLeaf#0		
-NA048	0087bbc0	NCameraModes::CScriptedControl	NCameraModes::CScriptedControl::vfunc_1	48	17-96	authorable	0	NCameraModes::CScriptedControl#1		scan stops 37 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA048	0087bbc0	NCameraModes::CScriptedControl	NCameraModes::CScriptedControl::vfunc_1	11	17-96	authorable	0	NCameraModes::CScriptedControl#1		; extent SPLIT: tail = 5 filler bytes then an unlisted function at 0087bbd0 (mov ecx, 
 NA048	008b74a0	CCreatureAction_LeapLong	?FinishAction@CCreatureAction_LeapLong@@UAEXXZ	47	17-96	authorable	0	CCreatureAction_LeapLong#4	2:008c0b10	
 NA048	008c0b10	CCreatureAction_WhisperSommersaultForward	?FinishAction@CCreatureAction_WhisperSommersaultForward@@UAEXXZ	47	17-96	authorable	0	CCreatureAction_WhisperSommersaultForward#4	2:008b74a0	
 NA048	008d6710	CModeUnderground	OnDeactivate	38	17-96	authorable	0	NCreatureMode::CModeUnderground#6		
@@ -483,10 +483,10 @@ NA049	00c77470	CLandscapeBackgroundPatch	ClearTextures	42	17-96	authorable	2
 NA049	00be5c60	CLandscapeBackgroundPatch	GetEdgeStrip	64	17-96	authorable	1			
 NA049	004de253	CExplodingObjectDef	?Transfer@CExplodingObjectDef@@UAEXAAVCPersistContext@@@Z	57	17-96	authorable	0	CExplodingObjectDef#18		
 NA049	004df32c	CTCVolumeContainmentTrackerDef	?Transfer@CTCVolumeContainmentTrackerDef@@UAEXAAVCPersistContext@@@Z	57	17-96	authorable	0	CTCVolumeContainmentTrackerDef#18		
-NA049	005df790	CAnimComponentCombatFlourishTargetOffset	CAnimComponentCombatFlourishTargetOffset::Alloc	64	17-96	authorable	0	CAnimComponentCombatFlourishTargetOffset#4		scan stops 33 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA049	005df790	CAnimComponentCombatFlourishTargetOffset	CAnimComponentCombatFlourishTargetOffset::Alloc	31	17-96	authorable	0	CAnimComponentCombatFlourishTargetOffset#4		; extent SPLIT: tail = 1 filler bytes then an unlisted function at 005df7b0 (mov eax, 
 NA049	00759970	CTCPhysicsRigidBody	CTCPhysicsRigidBody::vfunc_94	50	17-96	authorable	0	CTCPhysicsRigidBody#94		
 NA049	007ca630	CTCHeroReceiveItems	OnKill	62	17-96	authorable	0	CTCHeroReceiveItems#14		
-NA049	00802610	CTCTargetingPlayer	GetPTargetedThing	64	17-96	authorable	0	CTCTargetingPlayer#33		scan stops 22 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA049	00802610	CTCTargetingPlayer	GetPTargetedThing	42	17-96	authorable	0	CTCTargetingPlayer#33		; extent SPLIT: tail = 6 filler bytes then an unlisted function at 00802640 (add ecx, 
 NA049	008547d0	CCreatureAction_SpiritAttack	?FinishAction@CCreatureAction_SpiritAttack@@EAEXXZ	62	17-96	authorable	0	CCreatureAction_SpiritAttack#4		
 NA049	008b6a20	CCreatureAction_GoUnderground	?FinishAction@CCreatureAction_GoUnderground@@UAEXXZ	63	17-96	authorable	0	CCreatureAction_GoUnderground#4	2:008b6a90	
 NA050	008b6a90	CCreatureAction_RiseUp	?FinishAction@CCreatureAction_RiseUp@@UAEXXZ	63	17-96	authorable	0	CCreatureAction_RiseUp#4	2:008b6a20	
@@ -529,7 +529,7 @@ NA053	00741390	_Dest_val<std	_Dest_val<std::allocator<CMacro>,CMacro>	42	17-96	a
 NA053	008ac4d0	_Dest_val<std	_Dest_val<std::allocator<CMacro>,CMacro>	42	17-96	authorable	1		3:00740420,00741390	
 NA053	00749a70	CThingNoiseDef	~CThingNoiseDef	33	17-96	authorable	1			
 NA053	008e31a0	CThingNoiseDef	~CThingNoiseDef	34	17-96	authorable	1			
-NA054	00778d20	CTCInventoryItem	OnDie	48	17-96	authorable	1		2:007c8560	scan stops 21 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA054	00778d20	CTCInventoryItem	OnDie	27	17-96	authorable	1		2:007c8560	; extent SPLIT: tail = 5 filler bytes then an unlisted function at 00778d40 (mov eax, 
 NA054	007e3420	CTCFlashOnHit	~CTCFlashOnHit	42	17-96	authorable	1			
 NA054	0086d090	_global	_Fill_n<unsigned_long*,unsigned_int,unsigned_long>	48	17-96	authorable	1			
 NA054	0086d570	_global	_Fill_n<unsigned_long*,unsigned_int,unsigned_long>	48	17-96	authorable	1			
@@ -586,7 +586,7 @@ NA059	00ca7ae0	_gapscan	sub_00ca7ae0	17	17-96	authorable	0
 NA059	00ca7c10	_gapscan	sub_00ca7c10	17	17-96	authorable	0			
 NA059	00ca9060	_gapscan	sub_00ca9060	17	17-96	authorable	0			
 NA059	00cad2e0	_gapscan	sub_00cad2e0	24	17-96	authorable	0			
-NA059	00ce1090	_gapscan	sub_00ce1090	32	17-96	authorable	0			scan stops 19 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA059	00ce1090	_gapscan	sub_00ce1090	13	17-96	authorable	0			; extent SPLIT: tail = 3 filler bytes then an unlisted function at 00ce10a0 (mov ecx, 
 NA059	01219e90	_gapscan	sub_01219e90	17	17-96	authorable	0			
 NA059	01219f40	_gapscan	sub_01219f40	19	17-96	authorable	0			
 NA060	0121f220	_gapscan	sub_0121f220	19	17-96	authorable	0			
@@ -598,17 +598,17 @@ NA060	01221b60	_gapscan	sub_01221b60	17	17-96	authorable	0
 NA060	0121a6ac	_gapscan	sub_0121a6ac	31	17-96	authorable	0			
 NA060	0121e3a0	_gapscan	sub_0121e3a0	46	17-96	authorable	0			
 NA060	0121ef70	_gapscan	sub_0121ef70	41	17-96	authorable	0			
-NA060	00cdf120	_gapscan	sub_00cdf120	64	17-96	authorable	0			scan stops 53 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA060	00cdf120	_gapscan	sub_00cdf120	11	17-96	authorable	0			; extent SPLIT: tail = 5 filler bytes then an unlisted function at 00cdf130 (push esi;
 NA061	00d3b3d0	_gapscan	sub_00d3b3d0	55	17-96	authorable	0			
 NA061	0121ad80	_gapscan	sub_0121ad80	53	17-96	authorable	0			
 NA061	00d7ae30	_gapscan	sub_00d7ae30	67	17-96	authorable	0			
 NA061	00d8dcc0	_gapscan	sub_00d8dcc0	67	17-96	authorable	0			
 NA061	00eb6980	_gapscan	sub_00eb6980	67	17-96	authorable	0			
-NA061	00ca7d60	_gapscan	sub_00ca7d60	96	17-96	authorable	0			scan stops 76 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA061	00ca7d60	_gapscan	sub_00ca7d60	20	17-96	authorable	0			; extent SPLIT: tail = 12 filler bytes then an unlisted function at 00ca7d80 (mov eax,
 NA061	0077cd30	CAIStateGroup_CreatureUseCoverBase	~CAIStateGroup_CreatureUseCoverBase	30	17-96	authorable	0			
 NA061	0098f380	_global	CThreadedFileManager_InitiatePriority	24	17-96	authorable	0		2:009c5870	
 NA061	009c5870	CFileInstaller	CFileInstaller::ThreadMain	24	17-96	authorable	0		2:0098f380	
-NA061	00c088b0	_gapscan	sub_00c088b0	32	17-96	authorable	0		2:00c33070	scan stops 25 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA061	00c088b0	_gapscan	sub_00c088b0	7	17-96	authorable	0		2:00c33070	; extent SPLIT: tail = 9 filler bytes then an unlisted function at 00c088c0 (mov ecx, 
 NA062	00ca7780	CRenderManager2D	AddLineToDrawBuffer	19	17-96	authorable	0			
 NA062	008ffbee	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	36	17-96	authorable	0		3:008ffd84,008ffdce	
 NA062	008ffd84	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	36	17-96	authorable	0		3:008ffbee,008ffdce	
@@ -626,8 +626,8 @@ NA063	00a26aa0	C3DAnimationInfo	BuildSharedAnimation	43	17-96	authorable	0		2:00
 NA063	00a5ec10	CPixelShaderData	~CPixelShaderData	42	17-96	authorable	0			
 NA063	00aa7710	CChunkedFileRawDataChunk	~CChunkedFileRawDataChunk	35	17-96	authorable	0			
 NA063	00ab5fc0	CKeyboardDX	~CKeyboardDX	41	17-96	authorable	0			
-NA063	00caa470	_gapscan	sub_00caa470	48	17-96	authorable	0		6:00a3bd00,00ca53c0,00ca62d0,00ca96f0,00caf430	scan stops 33 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA063	00caf430	_gapscan	sub_00caf430	80	17-96	authorable	0		6:00a3bd00,00ca53c0,00ca62d0,00ca96f0,00caa470	scan stops 65 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA063	00caa470	_gapscan	sub_00caa470	15	17-96	authorable	0		6:00a3bd00,00ca53c0,00ca62d0,00ca96f0,00caf430	; extent SPLIT: tail = 1 filler bytes then an unlisted function at 00caa480 (mov eax, 
+NA063	00caf430	_gapscan	sub_00caf430	15	17-96	authorable	0		6:00a3bd00,00ca53c0,00ca62d0,00ca96f0,00caa470	; extent SPLIT: tail = 1 filler bytes then an unlisted function at 00caf440 (mov eax, 
 NA063	0121ac70	_gapscan	sub_0121ac70	33	17-96	authorable	0		2:0121adc0	
 NA064	0121adc0	_gapscan	sub_0121adc0	33	17-96	authorable	0		2:0121ac70	
 NA064	0121aca0	_gapscan	sub_0121aca0	35	17-96	authorable	0		2:0121adf0	
@@ -654,20 +654,20 @@ NA066	0072e6c0	CTCActionUseBuyHouse	~CTCActionUseBuyHouse	70	17-96	authorable	0
 NA066	00779cd0	CTCDExperienceOrb	~CTCDExperienceOrb	72	17-96	authorable	0			
 NA066	0098f090	CThreadedFile	~CThreadedFile	67	17-96	authorable	0			
 NA066	00b2b000	CEngineSurfaceCompositionManager	BeginBankUpdate	74	17-96	authorable	0			
-NA066	00c09c40	_gapscan	sub_00c09c40	80	17-96	authorable	0		30:00c09ec0,00c0f110,00c0f220,00c0f330,00c0f440,00c15220,00c153	scan stops 72 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA066	00c09ec0	_gapscan	sub_00c09ec0	80	17-96	authorable	0		30:00c09c40,00c0f110,00c0f220,00c0f330,00c0f440,00c15220,00c153	scan stops 72 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA066	00c0f110	_gapscan	sub_00c0f110	80	17-96	authorable	0		30:00c09c40,00c09ec0,00c0f220,00c0f330,00c0f440,00c15220,00c153	scan stops 72 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA066	00c0f220	_gapscan	sub_00c0f220	80	17-96	authorable	0		30:00c09c40,00c09ec0,00c0f110,00c0f330,00c0f440,00c15220,00c153	scan stops 72 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA066	00c0f330	_gapscan	sub_00c0f330	80	17-96	authorable	0		30:00c09c40,00c09ec0,00c0f110,00c0f220,00c0f440,00c15220,00c153	scan stops 72 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA067	00c0f440	_gapscan	sub_00c0f440	80	17-96	authorable	0		30:00c09c40,00c09ec0,00c0f110,00c0f220,00c0f330,00c15220,00c153	scan stops 72 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA066	00c09c40	_gapscan	sub_00c09c40	8	17-96	authorable	0		30:00c09ec0,00c0f110,00c0f220,00c0f330,00c0f440,00c15220,00c153	; extent SPLIT: tail = 8 filler bytes then an unlisted function at 00c09c50 (mov ecx, 
+NA066	00c09ec0	_gapscan	sub_00c09ec0	8	17-96	authorable	0		30:00c09c40,00c0f110,00c0f220,00c0f330,00c0f440,00c15220,00c153	; extent SPLIT: tail = 8 filler bytes then an unlisted function at 00c09ed0 (mov ecx, 
+NA066	00c0f110	_gapscan	sub_00c0f110	8	17-96	authorable	0		30:00c09c40,00c09ec0,00c0f220,00c0f330,00c0f440,00c15220,00c153	; extent SPLIT: tail = 8 filler bytes then an unlisted function at 00c0f120 (mov ecx, 
+NA066	00c0f220	_gapscan	sub_00c0f220	8	17-96	authorable	0		30:00c09c40,00c09ec0,00c0f110,00c0f330,00c0f440,00c15220,00c153	; extent SPLIT: tail = 8 filler bytes then an unlisted function at 00c0f230 (mov ecx, 
+NA066	00c0f330	_gapscan	sub_00c0f330	8	17-96	authorable	0		30:00c09c40,00c09ec0,00c0f110,00c0f220,00c0f440,00c15220,00c153	; extent SPLIT: tail = 8 filler bytes then an unlisted function at 00c0f340 (mov ecx, 
+NA067	00c0f440	_gapscan	sub_00c0f440	8	17-96	authorable	0		30:00c09c40,00c09ec0,00c0f110,00c0f220,00c0f330,00c15220,00c153	; extent SPLIT: tail = 8 filler bytes then an unlisted function at 00c0f450 (mov ecx, 
 NA067	0121e210	_gapscan	sub_0121e210	80	17-96	authorable	0		2:0121f280	
 NA067	0121f280	_gapscan	sub_0121f280	80	17-96	authorable	0		2:0121e210	
 NA067	01229fc0	_global	ClearCachedDefs	76	17-96	authorable	0		2:0122a010	
 NA067	0122a010	_global	ClearCachedDefs	76	17-96	authorable	0		2:01229fc0	
-NA067	0052cf40	CChangingStateComponent	ChangeState	1504	1025-4096	authorable	33	NUISystem::CSprite#48		scan stops 400 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA067	0052cf40	CChangingStateComponent	ChangeState	1104	1025-4096	authorable	33	NUISystem::CSprite#48		; extent SPLIT: code right after the row end, referenced from outside ({'imm': 8}): a 
 NA067	005eb9e0	CTCTavernGame	FrameUpdate	1472	1025-4096	authorable	4	CTCTavernGame#9		
 NA067	00666ef0	CThingCreatureBase	AutoPlaceNearBuilding	1055	1025-4096	authorable	9			
-NA067	00667d30	CThingCreatureBase	OnHit	1968	1025-4096	authorable	2	CThingCreatureBase#65		scan stops 758 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA067	00667d30	CThingCreatureBase	OnHit	1210	1025-4096	authorable	2	CThingCreatureBase#65		; extent SPLIT: tail = 6 filler bytes then an unlisted function at 006681f0 (mov eax, 
 NA067	00667450	CThingCreatureBase	ReactToGenericStrike	1755	1025-4096	authorable	1			
 NA068	0074a5d0	_global	GetValidPositions	1065	1025-4096	authorable	15			
 NA068	00c006a0	_global	z_deflate	1080	1025-4096	authorable	5			
@@ -675,7 +675,7 @@ NA068	0055f710	_global	LHNetworkLib_RequestLoginWithCredentials	1122	1025-4096	a
 NA068	00d17470	_global	Main_InitializeCreatureSpawners	1332	1025-4096	authorable	6			
 NA068	00626e40	_global	CTCQuickAccessMenu_PopulateQuickAccessList	1471	1025-4096	authorable	5			
 NA068	00d39330	_global	Game_InitializeRound	1578	1025-4096	authorable	9			
-NA068	006286f0	_global	GFPlayFullScreenXBoxMovie	1936	1025-4096	authorable	5			scan stops 72 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA068	006286f0	_global	GFPlayFullScreenXBoxMovie	1864	1025-4096	authorable	5			; extent SPLIT: tail = 8 filler bytes then an unlisted function at 00628e40 (push ecx;
 NA068	007355f0	_global	CCreatureAction_InitializeForCombat	2525	1025-4096	authorable	7			
 NA068	00409730	_global	VerifySignature	1078	1025-4096	authorable	4			
 NA068	0047a9f0	_global	CHeroLogBook_AddLogEntry	1105	1025-4096	authorable	4			
@@ -683,11 +683,11 @@ NA069	00a4b230	_global	Collision_SphereSegmentDistance	1074	1025-4096	authorable
 NA069	00ca26c0	_global	CurveInterpolation_ComputeSpline	1082	1025-4096	authorable	3			
 NA069	00774d20	_global	CTCShop_SellHighlightedItem	1149	1025-4096	authorable	3			
 NA069	00879070	_global	ProjectileWeapon_CalcHeightForAngle	1251	1025-4096	authorable	3			
-NA069	00c07af0	_global	lzo1x_999_compress_internal	1600	1025-4096	authorable	3			scan stops 177 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA069	00c68f90	_global	CDrawGuildSeal_SetPropertyEx	1744	1025-4096	authorable	3			scan stops 192 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA069	00c07af0	_global	lzo1x_999_compress_internal	1423	1025-4096	authorable	3			; extent SPLIT: tail = 1 filler bytes then an unlisted function at 00c08080 (mov eax, 
+NA069	00c68f90	_global	CDrawGuildSeal_SetPropertyEx	1552	1025-4096	authorable	3			; extent MANUAL: unreferenced code right after the row with no padding (a cold block of
 NA069	0048e0a2	_global	DrawBox	1772	1025-4096	authorable	3			
 NA069	00c65a00	_global	HeroStats_UpdateDerivedValues	2349	1025-4096	authorable	3			
-NA069	008fb170	_global	PhysicsForceModel_Initialize	2368	1025-4096	authorable	3			scan stops 1331 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA069	008fb170	_global	PhysicsForceModel_Initialize	1037	1025-4096	authorable	3			; extent SPLIT: tail = 3 filler bytes then an unlisted function at 008fb580 (mov eax, 
 NA069	00a4efc0	_global	C3DKeyframe_InitialiseAsConstant	3491	1025-4096	authorable	3			
 NA070	0055b040	_global	SetupRumbleAction_Strong	1043	1025-4096	authorable	2			
 NA070	00840740	_global	LHHttp2_ReceiveResponseHeaders	1047	1025-4096	authorable	2			
@@ -697,9 +697,9 @@ NA070	00c67f60	_global	CTCHeroStats_UpdateAttributeEvents	1112	1025-4096	authora
 NA070	00cb7310	_global	ScriptInfo_QuickSort	1129	1025-4096	authorable	2			
 NA070	00645853	_global	DrawStatBox	1174	1025-4096	authorable	2			
 NA070	00c68510	_global	CDrawGuildSeal_SetProperty	1184	1025-4096	authorable	2			
-NA070	00ca5850	_global	Audio_AdjustBufferLevel	1184	1025-4096	authorable	0	CTextureRenderer#23		scan stops 46 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA070	00ca5850	_global	Audio_AdjustBufferLevel	1138	1025-4096	authorable	0	CTextureRenderer#23		; extent SPLIT: tail = 14 filler bytes then an unlisted function at 00ca5cd0 (mov eax,
 NA070	00cbca50	_global	MusicEntry_QuickSort	1228	1025-4096	authorable	2			
-NA071	00c6c530	_global	Audio_ApplyGainFilter_SIMD	1264	1025-4096	authorable	2			scan stops 141 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA071	00c6c530	_global	Audio_ApplyGainFilter_SIMD	1123	1025-4096	authorable	2			; extent SPLIT: tail = 13 filler bytes then an unlisted function at 00c6c9a0 (push ecx
 NA071	00c04340	_global	send_tree	1290	1025-4096	authorable	2			
 NA071	008400b0	_global	LHHttp_BuildPOSTRequest	1334	1025-4096	authorable	2			
 NA071	0069a2a0	_global	CGameCameraManager_UpdateMode	1452	1025-4096	authorable	2			
@@ -710,8 +710,8 @@ NA071	00b3efa0	_global	ReadMapInfoBlock	1597	1025-4096	authorable	2
 NA071	00a4fe60	_global	CAnimatedMesh_LoadAndInitialize	1709	1025-4096	authorable	2			
 NA071	0052f900	_global	GameAnimation_UpdatePosition	1730	1025-4096	authorable	0	NUISystem::CSprite#40		
 NA072	00430900	_global	InitialiseDefaultCameraTags	1824	1025-4096	authorable	0	NUISystem::CUIMiscThingsDef#18		
-NA072	005e8220	_global	CTCInventoryMapSerialization_TransferCharactersAndStats	1888	1025-4096	authorable	0	CTCQuestCompletionUI#1		scan stops 630 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA072	00775c60	_global	CPersistentShop_TransferStockItems	1968	1025-4096	authorable	0	CTCShop#1		scan stops 806 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA072	005e8220	_global	CTCInventoryMapSerialization_TransferCharactersAndStats	1258	1025-4096	authorable	0	CTCQuestCompletionUI#1		; extent SPLIT: tail = 6 filler bytes then an unlisted function at 005e8710 (mov eax, 
+NA072	00775c60	_global	CPersistentShop_TransferStockItems	1162	1025-4096	authorable	0	CTCShop#1		; extent SPLIT: tail = 6 filler bytes then an unlisted function at 007760f0 (mov eax, 
 NA072	00a15890	_global	CNavigatorManager_InitializeNavigationData	1973	1025-4096	authorable	2			
 NA072	00aef1f0	_global	CParticleSystem_Serialize	2216	1025-4096	authorable	2			
 NA072	00a3d5b0	_global	md5_process	2382	1025-4096	authorable	2			
@@ -731,24 +731,24 @@ NA073	00c06060	_global	inflate_fast	1131	1025-4096	authorable	1
 NA073	00763060	_global	Polygon_GeneratePath_WithCirculation	1146	1025-4096	authorable	1			
 NA074	00cb4340	_global	ImeUI_PopulateCompositionCandidates	1151	1025-4096	authorable	1			
 NA074	00762620	_global	StatOnSerialise	1160	1025-4096	authorable	1			
-NA074	008eec70	_global	Collide	1184	1025-4096	authorable	1			scan stops 55 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA074	008eec70	_global	Collide	1129	1025-4096	authorable	1			; extent SPLIT: tail = 7 filler bytes then an unlisted function at 008ef0e0 (fld dword
 NA074	00cb2f80	_global	ImeUI_RenderCompositionCurve	1172	1025-4096	authorable	1			
 NA074	00e13310	_global	DoMission_WaspMenace	1175	1025-4096	authorable	1			
 NA074	00998570	_global	GenerateHeaderFile	1201	1025-4096	authorable	1			
 NA074	00a7a0a0	_global	CNavQuadTree_InitializeWithEvents	1222	1025-4096	authorable	1			
 NA074	00ee8390	_global	DoMission_OakValeRevisited	1240	1025-4096	authorable	1			
 NA074	00accbf0	_global	QuadricOptimiser_ContractVertexPair_Full	1264	1025-4096	authorable	1			
-NA074	00c5fa50	_global	Audio_EncodeAdpcmWithBestStepIndex	1280	1025-4096	authorable	1			scan stops 36 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA074	00c5fa50	_global	Audio_EncodeAdpcmWithBestStepIndex	1244	1025-4096	authorable	1			; extent SPLIT: tail = 4 filler bytes then an unlisted function at 00c5ff30 (mov eax, 
 NA075	00828710	_global	CWorldMap_LoadRegionGraph	1289	1025-4096	authorable	1			
 NA075	00f3d320	_global	CTriangleStripifier2_GenerateStrips_Part2	1281	1025-4096	authorable	1			
 NA075	00839420	_global	CreateEffectOnHit	1308	1025-4096	authorable	1			
 NA075	00875fb0	_global	EditorDrawHighlightPoints_Impl	1315	1025-4096	authorable	1			
 NA075	008185b0	_global	Geometry_PolygonClipping	1360	1025-4096	authorable	1			
 NA075	0078b7c0	_global	BuildSpline_CubicRootFinding	1390	1025-4096	authorable	1			
-NA075	00a59fd0	_global	C3DLineF_GetFirstIntersectionWithFiniteLine	1392	1025-4096	authorable	1			scan stops 115 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA075	00c0d1b0	_global	CCharString_FormatVarArgs	1424	1025-4096	authorable	1			scan stops 78 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA075	00a58130	_global	CPSCSplineBase_GenerateCurvePoints	1440	1025-4096	authorable	1			scan stops 168 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA075	006b97e0	_global	CWorld_InitFactions	1456	1025-4096	authorable	1			scan stops 18 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA075	00a59fd0	_global	C3DLineF_GetFirstIntersectionWithFiniteLine	1277	1025-4096	authorable	1			; extent SPLIT: tail = 3 filler bytes then an unlisted function at 00a5a4d0 (mov eax, 
+NA075	00c0d1b0	_global	CCharString_FormatVarArgs	1346	1025-4096	authorable	1			; extent SPLIT: tail = 14 filler bytes then an unlisted function at 00c0d700 (push ecx
+NA075	00a58130	_global	CPSCSplineBase_GenerateCurvePoints	1272	1025-4096	authorable	1			; extent SPLIT: tail = 8 filler bytes then an unlisted function at 00a58630 (mov edx, 
+NA075	006b97e0	_global	CWorld_InitFactions	1438	1025-4096	authorable	1			; extent SPLIT: tail = 2 filler bytes then an unlisted function at 006b9d80 (mov eax, 
 NA076	0099dcb0	_global	_DisplayErrorDialog@8	1454	1025-4096	authorable	1			
 NA076	00a8f1b0	_global	TransformVertexBufferWithNormals_LoopUnrolled	1469	1025-4096	authorable	1			
 NA076	00f3c990	_global	CTriangleStripifier2_GenerateStrips_Part1	1463	1025-4096	authorable	1			
@@ -759,12 +759,12 @@ NA076	00d6d080	_global	CQ_HangingTreeEvil_Init	1516	1025-4096	authorable	1
 NA076	00520670	_global	CThingManager_LoadGameState_Scripts	1524	1025-4096	authorable	1			
 NA076	0087aff0	_global	ProjectileWeapon_CalcPhiAngleTrajectory_Alt	1522	1025-4096	authorable	1			
 NA076	00524290	_global	CThingManager_SaveGameState	1553	1025-4096	authorable	1			
-NA077	00c60ff0	_global	CTCHeroStats_ProcessEventData	1568	1025-4096	authorable	1			scan stops 151 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA077	00c60ff0	_global	CTCHeroStats_ProcessEventData	1417	1025-4096	authorable	1			; extent SPLIT: tail = 7 filler bytes then an unlisted function at 00c61580 (push esi;
 NA077	00490be0	_global	ProcessEmbeddedGraphicTags_ResolveButtonName	1646	1025-4096	authorable	1			
 NA077	00b3be10	_global	Image_GenerateAlphaStipplePattern	1684	1025-4096	authorable	1			
 NA077	00f29530	_global	CMemoryBlock_destructor_cleanup	1756	1025-4096	authorable	1			
 NA077	00a1c010	_global	AStar_process_node_queue	1773	1025-4096	authorable	1			
-NA077	00d321c0	_global	CScriptGameResourceObject_LoadEndGameSister	1792	1025-4096	authorable	1			scan stops 656 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA077	00d321c0	_global	CScriptGameResourceObject_LoadEndGameSister	1136	1025-4096	authorable	1			; extent SPLIT: code right after the row end, referenced from outside ({'imm': 1, 'jmp
 NA077	00b2fd60	_global	CPlane_InitializeFromCorners	1812	1025-4096	authorable	1			
 NA077	00ae0710	_global	CalcErrorMetric_Vertices	1863	1025-4096	authorable	1			
 NA077	0092f310	_global	Interaction_EvaluateAndAct	1945	1025-4096	authorable	1			
@@ -773,9 +773,9 @@ NA078	00a86110	_global	CalculateDividingPlane	1967	1025-4096	authorable	1
 NA078	00775350	_global	CTCShop_OnInitialActivate	1988	1025-4096	authorable	1			
 NA078	00417a58	_global	CMainGameComponent_InitSoundBanks	2097	1025-4096	authorable	1			
 NA078	00821010	_global	CWorldMap_LoadScriptBrushesFromFile	2101	1025-4096	authorable	1			
-NA078	00ca2bb0	_global	CEnvironment_SerializeTheme	2160	1025-4096	authorable	1			scan stops 720 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA078	00ca2bb0	_global	CEnvironment_SerializeTheme	1440	1025-4096	authorable	1			; extent SPLIT: code right after the row end, referenced from outside ({'data': 1, 'im
 NA078	006932b0	_global	RegisterActionEventTypes	2176	1025-4096	authorable	1			
-NA078	00cb48a0	_global	ImeUI_ProcessWindowMessage	2192	1025-4096	authorable	1			scan stops 32 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA078	00cb48a0	_global	ImeUI_ProcessWindowMessage	2160	1025-4096	authorable	1			; extent MANUAL: unreferenced code right after the row with no padding (a cold block of
 NA078	00cb38e0	_global	ImeUI_RenderCompositionString	2644	1025-4096	authorable	1			
 NA078	0043a570	_global	NHeroInformationScreens_Destructor	2770	1025-4096	authorable	1			
 NA078	00df5000	_global	DoMission_PrisonEscape	3071	1025-4096	authorable	1			
@@ -784,11 +784,11 @@ NA079	00a9bbe0	_global	C3DMeshFileXLoader_Constructor	3281	1025-4096	authorable	
 NA079	00402510	_global	GFMain	3952	1025-4096	authorable	1			
 NA079	00c01750	_global	deflate_slow	1033	1025-4096	authorable	0			
 NA079	00ca4160	_global	Math_FitSplineCurve	1028	1025-4096	authorable	0			
-NA079	00b2d9f0	_global	CEngineSurfaceCompositionManager_UpdateTextureMorphCache	1072	1025-4096	authorable	0			scan stops 265 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA079	00b2d9f0	_global	CEngineSurfaceCompositionManager_UpdateTextureMorphCache	807	1025-4096	authorable	0			; extent SPLIT: tail = 9 filler bytes then an unlisted function at 00b2dd20 (mov eax, 
 NA079	00ae0070	_global	CCreatureActionBase_ApplyMatrixTransform	1090	1025-4096	authorable	0			
 NA079	00defb10	_global	Script_Door_Blocker	1094	1025-4096	authorable	0			
 NA079	007602f0	_global	Math_PolygonAngleSumClosureCheck	1126	1025-4096	authorable	0			
-NA079	00e247f0	_global	CScriptGameResourceObjectScriptedThingBase_HandleFollowQuestDialogue	1136	1025-4096	authorable	0			scan stops 63 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA079	00e247f0	_global	CScriptGameResourceObjectScriptedThingBase_HandleFollowQuestDialogue	1073	1025-4096	authorable	0			; extent SPLIT: tail = 15 filler bytes then an unlisted function at 00e24c30 (push esi
 NA080	00d3a4a0	_global	Quest_Tournament_Manager	1140	1025-4096	authorable	0			
 NA080	00ae2e20	_global	LTextBinTree_BuildAndSort	1293	1025-4096	authorable	0			
 NA080	00c9f8c0	_global	Mesh_BlendMorphStreams	1282	1025-4096	authorable	0			
@@ -817,7 +817,7 @@ NA082	00e5e5a0	CV_BodyGuardScript	MakeHenchmanPerformIdleComment	1580	1025-4096	
 NA082	007c0690	CTCShotDefinitionBase	Init	1088	1025-4096	authorable	7			
 NA082	007bfe30	CTCShotDefinitionBase	UpdateCollision	1648	1025-4096	authorable	1	NThingShot::CTCShotDefinitionThrow#37		
 NA082	00c5ffb0	CTCHeroStats	CTCHeroStats::AddEventData	1120	1025-4096	authorable	49			
-NA082	0057e2f1	CTCHeroStats	OnSerialise	2586	1025-4096	authorable	0	CTCHeroStats#1		scan stops 213 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA082	0057e2f1	CTCHeroStats	OnSerialise	2373	1025-4096	authorable	0	CTCHeroStats#1		; extent SPLIT: code right after the row end, referenced from outside ({'imm': 4}): a 
 NA082	00de6730	CV_ExposeMayorScript	PlayCutscene	1252	1025-4096	authorable	14			
 NA083	00e78100	CV_ExposeMayorScript	PlayCutscene	1323	1025-4096	authorable	17			
 NA083	00e76e90	CV_ExposeMayorScript	HeroFlashesLamp	1612	1025-4096	authorable	4			
@@ -827,7 +827,7 @@ NA083	0051fd80	CThingManager	LoadSingleThing	1320	1025-4096	authorable	5
 NA083	00520d00	CThingManager	LoadEntitiesFromScript	1338	1025-4096	authorable	4			
 NA083	005253f0	CThingManager	LoadGameState	2263	1025-4096	authorable	1			
 NA083	00522a20	CThingManager	InitThingTypes	2589	1025-4096	authorable	1			
-NA083	008edff0	CWillButtonHelperTimer	CWillButtonHelperTimer	1456	1025-4096	authorable	5			scan stops 255 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA083	008edff0	CWillButtonHelperTimer	CWillButtonHelperTimer	1201	1025-4096	authorable	5			; extent SPLIT: tail = 15 filler bytes then an unlisted function at 008ee4b0 (mov eax,
 NA083	007677e0	CTCObjectAugmentations	AttachAugmentationParticles	1467	1025-4096	authorable	6			
 NA084	0058e99f	CTCInventory	OpenInventoryShortcut	1498	1025-4096	authorable	10			
 NA084	0058e208	CTCInventory	ConstructItemEntryPC	1943	1025-4096	authorable	2			
@@ -836,12 +836,12 @@ NA084	0058f9bc	CTCInventory	OpenPCPhotojournal	2012	1025-4096	authorable	1
 NA084	00590f0b	CTCInventory	GetItemsListUIComponentPC	2907	1025-4096	authorable	1			
 NA084	0041d21b	CManager	CreateComponent	1677	1025-4096	authorable	32			
 NA084	00427216	CManager	CreateTickSlider	2995	1025-4096	authorable	23			
-NA084	009bc120	_gapscan	sub_009bc120	1712	1025-4096	authorable	9			scan stops 73 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA084	00ac2be0	_gapscan	sub_00ac2be0	3024	1025-4096	authorable	3			scan stops 233 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA084	00c66330	_gapscan	sub_00c66330	2400	1025-4096	authorable	2			scan stops 392 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA085	00ae8d50	_gapscan	sub_00ae8d50	1136	1025-4096	authorable	1			scan stops 308 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA085	00a68de0	_gapscan	sub_00a68de0	1904	1025-4096	authorable	1			scan stops 985 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA085	00642aa0	_gapscan	sub_00642aa0	3376	1025-4096	authorable	1			scan stops 2036 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA084	009bc120	_gapscan	sub_009bc120	1639	1025-4096	authorable	9			; extent SPLIT: tail = 9 filler bytes then an unlisted function at 009bc790 (push -1; 
+NA084	00ac2be0	_gapscan	sub_00ac2be0	2791	1025-4096	authorable	3			; extent SPLIT: tail = 9 filler bytes then an unlisted function at 00ac36d0 (push ecx;
+NA084	00c66330	_gapscan	sub_00c66330	2008	1025-4096	authorable	2			; extent SPLIT: tail = 8 filler bytes then an unlisted function at 00c66b10 (mov edx, 
+NA085	00ae8d50	_gapscan	sub_00ae8d50	828	1025-4096	authorable	1			; extent SPLIT: tail = 4 filler bytes then an unlisted function at 00ae9090 (mov al, b
+NA085	00a68de0	_gapscan	sub_00a68de0	919	1025-4096	authorable	1			; extent SPLIT: tail = 9 filler bytes then an unlisted function at 00a69180 (sub esp, 
+NA085	00642aa0	_gapscan	sub_00642aa0	1340	1025-4096	authorable	1			; extent SPLIT: tail = 4 filler bytes then an unlisted function at 00642fe0 (push ecx;
 NA085	00ef71e0	_gapscan	sub_00ef71e0	1051	1025-4096	authorable	0			
 NA085	00ef80a0	_gapscan	sub_00ef80a0	1070	1025-4096	authorable	0			
 NA085	00cf9610	_gapscan	sub_00cf9610	1084	1025-4096	authorable	0			
@@ -861,7 +861,7 @@ NA086	00efa4f0	_gapscan	sub_00efa4f0	1362	1025-4096	authorable	0
 NA086	00ed3b30	_gapscan	sub_00ed3b30	1402	1025-4096	authorable	0			
 NA087	00eded10	_gapscan	sub_00eded10	1411	1025-4096	authorable	0			
 NA087	00dd35d0	_gapscan	sub_00dd35d0	1454	1025-4096	authorable	0			
-NA087	00eeef70	_gapscan	sub_00eeef70	1456	1025-4096	authorable	0			scan stops 28 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA087	00eeef70	_gapscan	sub_00eeef70	1428	1025-4096	authorable	0			; extent SPLIT: tail = 12 filler bytes then an unlisted function at 00eef510 (ret ; re
 NA087	00debef0	_gapscan	sub_00debef0	1471	1025-4096	authorable	0			
 NA087	00e36d50	_gapscan	sub_00e36d50	1471	1025-4096	authorable	0			
 NA087	00e6e380	_gapscan	sub_00e6e380	1475	1025-4096	authorable	0			
@@ -901,7 +901,7 @@ NA090	00e17840	_gapscan	sub_00e17840	2515	1025-4096	authorable	0
 NA090	00efcc50	_gapscan	sub_00efcc50	2517	1025-4096	authorable	0			
 NA091	00e19d80	_gapscan	sub_00e19d80	2539	1025-4096	authorable	0			
 NA091	00dc1770	_gapscan	sub_00dc1770	2546	1025-4096	authorable	0			
-NA091	00deb280	_gapscan	sub_00deb280	2576	1025-4096	authorable	0			scan stops 48 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA091	00deb280	_gapscan	sub_00deb280	2528	1025-4096	authorable	0			; extent SPLIT: code right after the row end, referenced from outside ({'imm': 1}): a 
 NA091	00e799f0	_gapscan	sub_00e799f0	2580	1025-4096	authorable	0			
 NA091	00eaafe0	_gapscan	sub_00eaafe0	2598	1025-4096	authorable	0			
 NA091	00e40420	_gapscan	sub_00e40420	2647	1025-4096	authorable	0			
@@ -926,7 +926,7 @@ NA093	00ecb0e0	_gapscan	sub_00ecb0e0	2963	1025-4096	authorable	0
 NA093	00ebfd10	_gapscan	sub_00ebfd10	3046	1025-4096	authorable	0			
 NA093	00d17f20	_gapscan	sub_00d17f20	3068	1025-4096	authorable	0			
 NA093	00dee2e0	_gapscan	sub_00dee2e0	3102	1025-4096	authorable	0			
-NA093	00ecbdf0	_gapscan	sub_00ecbdf0	3104	1025-4096	authorable	0			scan stops 176 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA093	00ecbdf0	_gapscan	sub_00ecbdf0	2928	1025-4096	authorable	0			; extent SPLIT: code right after the row end, referenced from outside ({'imm': 1, 'dat
 NA093	00ef9280	_gapscan	sub_00ef9280	3158	1025-4096	authorable	0			
 NA093	00f19bb0	_gapscan	sub_00f19bb0	3158	1025-4096	authorable	0			
 NA094	00ef5ff0	_gapscan	sub_00ef5ff0	3265	1025-4096	authorable	0			
@@ -970,7 +970,7 @@ NA097	00577ac0	CTCInventoryExperience	CTCInventoryExperience::vfunc_87	2157	1025
 NA097	00446ef0	CGamePlayerInterface	SetControlScheme	1174	1025-4096	authorable	4			
 NA097	00e2ec30	CV_AmbushScamScript	GetTrickster	1336	1025-4096	authorable	4			
 NA098	00e2f170	CV_AmbushScamScript	SpringAmbush	2781	1025-4096	authorable	1			
-NA098	00e2b090	CV_AmbushScamScript	Main	2496	1025-4096	authorable	0			scan stops 139 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA098	00e2b090	CV_AmbushScamScript	Main	2357	1025-4096	authorable	0			; extent SPLIT: tail = 11 filler bytes then an unlisted function at 00e2b9d0 (push ecx
 NA098	005c4f42	CTCInventoryWeapons	ConstructAugmentationsLeftDescription	1514	1025-4096	authorable	4			
 NA098	005c3e91	CTCInventoryWeapons	FinalConstructWeaponItemEntries	1641	1025-4096	authorable	4			
 NA098	005c47d5	CTCInventoryWeapons	FinalConstructWeaponItemEntriesPC	1901	1025-4096	authorable	4			
@@ -985,7 +985,7 @@ NA099	005fe090	CTCInventoryMap	ConstructQuestsScreen	1937	1025-4096	authorable	1
 NA099	00600b60	CTCInventoryMap	ConstructRegionDescriptionBuyableBuildings	1963	1025-4096	authorable	1			
 NA099	005fe840	CTCInventoryMap	ConstructRegionExitMarkers	2379	1025-4096	authorable	1			
 NA099	006001e0	CTCInventoryMap	ConstructRegionDescriptionShops	2422	1025-4096	authorable	1			
-NA099	009ed190	CConsole	Initialise	2528	1025-4096	authorable	4			scan stops 262 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA099	009ed190	CConsole	Initialise	2266	1025-4096	authorable	4			; extent SPLIT: tail = 6 filler bytes then an unlisted function at 009eda70 (mov eax, 
 NA099	004a21f0	CWorld	LoadGameStateInternal	2931	1025-4096	authorable	4			
 NA099	004a1cb0	CWorld	CWorld::PreparePrimitivesForEngine	1330	1025-4096	authorable	0	CWorld#11		
 NA099	004a6e30	CWorld	?Init@CWorld@@UAEXXZ	2259	1025-4096	authorable	0	CWorld#9		
@@ -997,7 +997,7 @@ NA100	00682810	CTCCreatureOpinionOfHero	InformOfDeed	3442	1025-4096	authorable	4
 NA100	008f12d0	CTCTavernGameCardBase	ProcessInput	1095	1025-4096	authorable	1	CTCTavernGameCardSorting#28		
 NA100	00409b70	CUserProfileManager	SetDefaultValuesForNewProfile	1105	1025-4096	authorable	3			
 NA100	0040c790	CUserProfileManager	SetDefaultValues	1284	1025-4096	authorable	3			
-NA100	004075c0	CUserProfileManager	RenderUIBackground	1808	1025-4096	authorable	2			scan stops 614 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA100	004075c0	CUserProfileManager	RenderUIBackground	1194	1025-4096	authorable	2			; extent SPLIT: tail = 6 filler bytes then an unlisted function at 00407a70 (mov al, b
 NA100	0040a7f0	CUserProfileManager	ApplyVideoValues	1941	1025-4096	authorable	2			
 NA101	00409fd0	CUserProfileManager	SaveGameState	1892	1025-4096	authorable	1			
 NA101	0040bca0	CUserProfileManager	LoadGameState	2790	1025-4096	authorable	1			
@@ -1006,7 +1006,7 @@ NA101	0059bb1b	CTCInventoryTrade	AttachToFrame	1451	1025-4096	authorable	3
 NA101	005a94bd	CTCInventoryTrade	OpenInventory	1482	1025-4096	authorable	0	CTCInventoryTrade#30		
 NA101	005a3734	CTCInventoryTrade	RefreshBuyPossibilityNumbers	1811	1025-4096	authorable	2			
 NA101	005a29f4	CTCInventoryTrade	ConstructSpecialShopList	1709	1025-4096	authorable	1			
-NA101	005b0aac	CTCInventoryTrade	CTCInventoryTrade::BuyItemPC	1793	1025-4096	authorable	1			scan stops 275 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA101	005b0aac	CTCInventoryTrade	CTCInventoryTrade::BuyItemPC	1518	1025-4096	authorable	1			; extent SPLIT: unreferenced function-shaped code right after the terminator at 005b10
 NA101	005a8175	CTCInventoryTrade	RefreshBuyPossibilityNumbersPC	1800	1025-4096	authorable	1			
 NA101	005a8c66	CTCInventoryTrade	ConstructActualSpecialInventoryPC	2135	1025-4096	authorable	1			
 NA102	005b01fe	CTCInventoryTrade	SellItemPC	2222	1025-4096	authorable	1			
@@ -1030,7 +1030,7 @@ NA103	00772bb0	CTCShop	AddSaleItem	2585	1025-4096	authorable	3
 NA103	005841f9	CTCShop	CTCShop::BuildItemDescription	2033	1025-4096	authorable	0	CTCInventory#78		
 NA103	00981410	CAIStateGroupBase	AIAction_InteractWith	2703	1025-4096	authorable	3			
 NA104	005b4eba	CTCInventoryClothing	CalculateArmorValues	3372	1025-4096	authorable	3			
-NA104	005b9641	CTCInventoryClothing	CTCInventoryClothing::vfunc_11	1867	1025-4096	authorable	0	CTCInventoryClothing#11		scan stops 412 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA104	005b9641	CTCInventoryClothing	CTCInventoryClothing::vfunc_11	1455	1025-4096	authorable	0	CTCInventoryClothing#11		; extent SPLIT: unreferenced function-shaped code right after the terminator at 005b9b
 NA104	005b8743	CTCInventoryClothing	ConstructScreenPC	3838	1025-4096	authorable	1			
 NA104	00531ec0	CGuiComponent	CGuiComponent::Update	3642	1025-4096	authorable	1	NUISystem::CComponent#1		
 NA104	006cddf0	CGroundNavigatorExternalInterface	?IsMovementBlockedAt@CGroundNavigatorExternalInterface@@UBE_NABVC3DVector@@0AA_N1@Z	1044	1025-4096	authorable	0	CGroundNavigatorExternalInterface#0		
@@ -1039,7 +1039,7 @@ NA104	00657580	NPlayerGui::CDrawQuickAccessIconsPC	NPlayerGui::CDrawQuickAccessI
 NA104	00745840	CTCPerceiveThing	CTCPerceiveThing::vfunc_11	1068	1025-4096	authorable	0	CTCPerceiveThing#11		
 NA104	00745120	CTCPerceiveThing	UpdateLineOfSight	1538	1025-4096	authorable	1			
 NA104	00497fd0	CProgressDisplay	DisplayCenteredText	1076	1025-4096	authorable	2			
-NA105	0049a0b0	CProgressDisplay	CProgressDisplay::InitialiseTextures	2992	1025-4096	authorable	0	CProgressDisplay#4		scan stops 72 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA105	0049a0b0	CProgressDisplay	CProgressDisplay::InitialiseTextures	2920	1025-4096	authorable	0	CProgressDisplay#4		; extent SPLIT: tail = 8 filler bytes then an unlisted function at 0049ac20 (mov eax, 
 NA105	006aa2e0	CThingPlayerCreature	DrawPreparePrimitivesForRendering	1080	1025-4096	authorable	0	CThingPlayerCreature#36		
 NA105	006aabe0	CThingPlayerCreature	SetActionForMelee	1278	1025-4096	authorable	0	CThingPlayerCreature#72		
 NA105	006aa720	CThingPlayerCreature	SetPlayerCreatureActionForMelee	1212	1025-4096	authorable	1			
@@ -1060,16 +1060,16 @@ NA106	00b57860	CEngineStateBlockAlpha2X	CEngineStateBlockAlpha2X::Apply	1208	102
 NA106	00b57d20	CEngineStateBlockAdditiveAlpha	CEngineStateBlockAdditiveAlpha::Apply	1208	1025-4096	authorable	0	CEngineStateBlockAdditiveAlpha#0		
 NA106	00b581e0	CEngineStateBlockAddSmoothAlpha	CEngineStateBlockAddSmoothAlpha::Apply	1208	1025-4096	authorable	0	CEngineStateBlockAddSmoothAlpha#0	2:00b573a0	
 NA107	007b90f0	CTCTavernTable	OnInitialActivate	1257	1025-4096	authorable	0	CTCTavernTable#6		
-NA107	009fed30	CGraphicDataBank	LoadGraphicFrame	1264	1025-4096	authorable	2			scan stops 58 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA107	009fed30	CGraphicDataBank	LoadGraphicFrame	1206	1025-4096	authorable	2			; extent SPLIT: tail = 10 filler bytes then an unlisted function at 009ff1f0 (mov eax,
 NA107	006a5d90	CThingPhysical	ConstructFromLevelScript	1268	1025-4096	authorable	0	CThingPhysical#4		
 NA107	00af4900	CParticleSystem	CParticleSystem::SerializeComponents	1282	1025-4096	authorable	2			
 NA107	007d8570	CTCTavernGameSpotTheAddition	ProcessInput	1340	1025-4096	authorable	0	CTCTavernGameSpotTheAddition#28		
-NA107	007d8e20	CTCTavernGameSpotTheAddition	FrameUpdate	2064	1025-4096	authorable	0	CTCTavernGameSpotTheAddition#9		scan stops 164 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA107	007d8e20	CTCTavernGameSpotTheAddition	FrameUpdate	1900	1025-4096	authorable	0	CTCTavernGameSpotTheAddition#9		; extent SPLIT: tail = 4 filler bytes then an unlisted function at 007d9590 (mov eax, 
 NA107	00b36ec0	CEnginePrimitiveRendererSharedData	~CEnginePrimitiveRendererSharedData	1345	1025-4096	authorable	2			
 NA107	00b71880	CEnginePrimitiveRendererSharedData	~CEnginePrimitiveRendererSharedData	1833	1025-4096	authorable	1			
 NA107	007cf9a0	CTCTavernGameShoveHaPenny	ProcessInput	1434	1025-4096	authorable	0	CTCTavernGameShoveHaPenny#28		
 NA107	00671600	CThingCreatureDef	CThingCreatureDef::Transfer	1450	1025-4096	authorable	0	CThingCreatureDef#18		
-NA108	00549440	CTextSlider	ProcessEvent	1472	1025-4096	authorable	0	NUISystem::CTextSlider#1		scan stops 298 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA108	00549440	CTextSlider	ProcessEvent	1174	1025-4096	authorable	0	NUISystem::CTextSlider#1		; extent SPLIT: tail = 10 filler bytes then an unlisted function at 005498e0 (push ecx
 NA108	00f38a10	CSurfaceCompositor	SetBlendMode	1504	1025-4096	authorable	2			
 NA108	0088edc0	CGameScriptInterface	?CameraDoConversation@CGameScriptInterface@@UBEXABVCScriptThing@@0W4ECameraOp@@_N@Z	1564	1025-4096	authorable	0	CGameScriptInterface#415		
 NA108	006414a0	CTCLight	DrawLight	1596	1025-4096	authorable	2			
@@ -1077,32 +1077,32 @@ NA108	00960120	CAIStateGroup_DeedReactionRoot	CAIStateGroup_DeedReactionRoot::Up
 NA108	0053f1c0	NUISystem::CScrollingViewport	NUISystem::CScrollingViewport::vfunc_1	1601	1025-4096	authorable	0	NUISystem::CScrollingViewport#1		
 NA108	008dec80	NCreatureMode::CModeJackOfBladesFlash	NCreatureMode::CModeJackOfBladesFlash::vfunc_3	1665	1025-4096	authorable	0	NCreatureMode::CModeJackOfBladesFlash#3		
 NA108	00651273	NPlayerGui::CDrawQuestInfo::CQuestInfoElementMiniGameBar	NPlayerGui::CDrawQuestInfo::CQuestInfoElementMiniGameBar::vfunc_0	1681	1025-4096	authorable	0	NPlayerGui::CDrawQuestInfo::CQuestInfoElementMiniGameBar#0		
-NA108	00837e40	CThingTrackNode	CThingTrackNode::vfunc_4	1696	1025-4096	authorable	0	CThingTrackNode#4		scan stops 273 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA108	00837e40	CThingTrackNode	CThingTrackNode::vfunc_4	1423	1025-4096	authorable	0	CThingTrackNode#4		; extent SPLIT: tail = 1 filler bytes then an unlisted function at 008383d0 (sub esp, 
 NA108	008e9b70	NCreatureMode::CModeStrafe	NCreatureMode::CModeStrafe::vfunc_2	1705	1025-4096	authorable	0	NCreatureMode::CModeStrafe#2		
-NA109	0054ac90	NUISystem::CSlider	NUISystem::CSlider::vfunc_1	1744	1025-4096	authorable	0	NUISystem::CSlider#1		scan stops 290 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA109	0054ac90	NUISystem::CSlider	NUISystem::CSlider::vfunc_1	1454	1025-4096	authorable	0	NUISystem::CSlider#1		; extent SPLIT: tail = 2 filler bytes then an unlisted function at 0054b240 (push ecx;
 NA109	007d6870	CTCTavernGameCardPairs	CTCTavernGameCardPairs::vfunc_28	1778	1025-4096	authorable	0	CTCTavernGameCardPairs#28		
 NA109	0092da20	CAIStateGroup_MinionSleep	CAIStateGroup_MinionSleep::Update	1802	1025-4096	authorable	0	CAIStateGroup_MinionSleep#12		
 NA109	007039a0	CThingObject	OnHit	1848	1025-4096	authorable	0	CThingObject#65		
-NA109	0094c050	CAIStateGroup_SellToBuyer	?Update@CAIStateGroup_SellToBuyer@@UAEXXZ	1888	1025-4096	authorable	0	CAIStateGroup_SellToBuyer#12		scan stops 29 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA109	0094c050	CAIStateGroup_SellToBuyer	?Update@CAIStateGroup_SellToBuyer@@UAEXXZ	1859	1025-4096	authorable	0	CAIStateGroup_SellToBuyer#12		; extent SPLIT: tail = 13 filler bytes then an unlisted function at 0094c7a0 (mov eax,
 NA109	00915b60	CAIStateGroup_MoveGoodsBase	PlaceGoods	1931	1025-4096	authorable	2			
 NA109	007c4430	CTCHealLife	StartHealingEffect	1952	1025-4096	authorable	2			
-NA109	006d2bd0	CThingNPC	CThingNPC::TransferLoveState	2000	1025-4096	authorable	0	CTCWife#1		scan stops 230 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA109	006d2bd0	CThingNPC	CThingNPC::TransferLoveState	1770	1025-4096	authorable	0	CTCWife#1		; extent SPLIT: tail = 6 filler bytes then an unlisted function at 006d32c0 (mov eax, 
 NA109	00ec32f0	CV_RandomPopulationSimScript	ChooseRandomBanditFromDefs	2016	1025-4096	authorable	2			
-NA109	006fdd60	CGameCameraBase	?Update@CGameCameraBase@@UAEXXZ	2032	1025-4096	authorable	0	CGameCameraBase#0		scan stops 373 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA109	006fdd60	CGameCameraBase	?Update@CGameCameraBase@@UAEXXZ	1659	1025-4096	authorable	0	CGameCameraBase#0		; extent SPLIT: tail = 5 filler bytes then an unlisted function at 006fe3e0 (mov eax, 
 NA110	008304a0	CThingAICreature	Save	2060	1025-4096	authorable	0	CThingAICreature#2		
-NA110	00833c00	CThingAICreature	CThingAICreature::vfunc_36	2352	1025-4096	authorable	0	CThingAICreature#36		scan stops 52 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA110	00833c00	CThingAICreature	CThingAICreature::vfunc_36	2300	1025-4096	authorable	0	CThingAICreature#36		; extent SPLIT: tail = 4 filler bytes then an unlisted function at 00834500 (push esi;
 NA110	008315c0	CThingAICreature	CThingAICreature::vfunc_4	2488	1025-4096	authorable	0	CThingAICreature#4		
 NA110	00bbc460	CEnginePrimitiveManagerParticleGroup	?RenderSubPrimitive@CEnginePrimitiveManagerParticleGroup@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z	2055	1025-4096	authorable	0	CEnginePrimitiveManagerParticleGroup#5		
 NA110	005f519f	CTCInventoryAbilities	CTCInventoryAbilities::vfunc_77	2088	1025-4096	authorable	0	CTCInventoryAbilities#77		
-NA110	005f6e40	CTCInventoryAbilities	OnSerialise	2113	1025-4096	authorable	0	CTCInventoryAbilities#1		scan stops 367 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA110	005f6e40	CTCInventoryAbilities	OnSerialise	1746	1025-4096	authorable	0	CTCInventoryAbilities#1		; extent SPLIT: unreferenced function-shaped code right after the terminator at 005f75
 NA110	005f1526	CTCInventoryAbilities	ConstructPCItemLists	1514	1025-4096	authorable	1			
 NA110	005f59c7	CTCInventoryAbilities	ConstructPCExpressionsList	2652	1025-4096	authorable	1			
-NA110	0094ab00	CAIStateGroup_GoToPub	CAIStateGroup_GoToPub::Update	2096	1025-4096	authorable	0	CAIStateGroup_GoToPub#12		scan stops 29 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA110	0094ab00	CAIStateGroup_GoToPub	CAIStateGroup_GoToPub::Update	2067	1025-4096	authorable	0	CAIStateGroup_GoToPub#12		; extent SPLIT: tail = 13 filler bytes then an unlisted function at 0094b320 (mov eax,
 NA110	00b193d0	CPSCLight	ReadBinary	2119	1025-4096	authorable	0	NParticleEngine::CPSCLight#15		
 NA111	007ebea0	CTCActionUseBed	OnActionUse	2145	1025-4096	authorable	0	CTCActionUseBed#28		
 NA111	009500e0	CAIStateGroup_JackDragon	?OnActivate@CAIStateGroup_JackDragon@@UAEXXZ	2154	1025-4096	authorable	0	CAIStateGroup_JackDragon#2		
 NA111	00951fb0	CAIStateGroup_JackDragon	UpdateHover	2272	1025-4096	authorable	1			
-NA111	00559a90	NUISystem::CScrollBar	NUISystem::CScrollBar::vfunc_1	2208	1025-4096	authorable	0	NUISystem::CScrollBar#1		scan stops 45 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA111	00559a90	NUISystem::CScrollBar	NUISystem::CScrollBar::vfunc_1	2163	1025-4096	authorable	0	NUISystem::CScrollBar#1		; extent SPLIT: tail = 13 filler bytes then an unlisted function at 0055a310 (mov eax,
 NA111	00ab8e10	CStaticFontBank	CStaticFontBank	2197	1025-4096	authorable	2			
 NA111	00ab83a0	CStaticFontBank	?PrepareToRender@CStaticFontBank@@UBEX_N@Z	2672	1025-4096	authorable	0	CStaticFontBank#3		
 NA111	00491ad2	CSubtitleRenderer	ProcessEmbeddedHighlightTags	2223	1025-4096	authorable	2			
@@ -1110,13 +1110,13 @@ NA111	0048e78e	CSubtitleRenderer	DrawButtonGraphics	2662	1025-4096	authorable	1
 NA111	0064bfba	CDrawHighlightingTargetingCursor	Draw	2223	1025-4096	authorable	2			
 NA111	00bc6db0	CEnginePrimitiveManagerText	?RenderSubPrimitive@CEnginePrimitiveManagerText@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z	2217	1025-4096	authorable	0	CEnginePrimitiveManagerText#5		
 NA112	00b0d360	NParticleEngine::CPSCUpdateNormal	NParticleEngine::CPSCUpdateNormal::vfunc_17	2240	1025-4096	authorable	0	NParticleEngine::CPSCUpdateNormal#17		
-NA112	00544d20	CSpellContainerList	ProcessEvent	2256	1025-4096	authorable	0	NUISystem::CSpellContainerList#1		scan stops 654 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA112	00544d20	CSpellContainerList	ProcessEvent	1602	1025-4096	authorable	0	NUISystem::CSpellContainerList#1		; extent SPLIT: tail = 14 filler bytes then an unlisted function at 00545370 (push esi
 NA112	007542b0	CTCLook	CTCLook::OnAppearanceDraw	2266	1025-4096	authorable	0	CTCLook#0		
 NA112	009a1720	CStreamingFontBank	?PrepareToRender@CStreamingFontBank@@UBEX_N@Z	2260	1025-4096	authorable	0	CStreamingFontBank#3		
 NA112	009a25d0	CStreamingFontBank	CStreamingFontBank::Render	3722	1025-4096	authorable	0	CStreamingFontBank#5		
 NA112	0075e4c0	CTCCameraPointScriptedSpline	CTCCameraPointScriptedSpline::vfunc_33	2316	1025-4096	authorable	0	CTCCameraPointScriptedSpline#33		
 NA112	008dbc80	NCreatureMode::CModeDragonFlying	NCreatureMode::CModeDragonFlying::vfunc_3	2319	1025-4096	authorable	0	NCreatureMode::CModeDragonFlying#3		
-NA112	007f2dc0	CTCLightningNode	FrameUpdate	2336	1025-4096	authorable	0	CTCLightningNode#9		scan stops 394 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA112	007f2dc0	CTCLightningNode	FrameUpdate	1942	1025-4096	authorable	0	CTCLightningNode#9		; extent SPLIT: tail = 10 filler bytes then an unlisted function at 007f3560 (mov eax,
 NA112	005e78f0	CTCQuestCompletionUI	GlobalUpdate	2340	1025-4096	authorable	0	CTCQuestCompletionUI#26		
 NA112	00be4660	CWaterPatchTesselatorBase	CWaterPatchTesselatorBase::vfunc_0	2349	1025-4096	authorable	0	CWaterPatchTesselatorBase#0		
 NA113	005d6748	CTCInventoryStats	ConstructExperienceList	2361	1025-4096	authorable	0	CTCInventoryStats#87		
@@ -1137,20 +1137,20 @@ NA114	00e55ce0	CBS_Teacher	AskForBook	2529	1025-4096	authorable	2
 NA114	00ac5770	C3DMeshFileEngineMaterialChunk	C3DMeshFileEngineMaterialChunk::ReadFromFile	2568	1025-4096	authorable	0	C3DMeshFileEngineMaterialChunk#7		
 NA114	006d0830	CTCWife	GlobalUpdate	2584	1025-4096	authorable	0	CTCWife#26		
 NA114	006d1e30	CTCWife	FrameUpdate	3484	1025-4096	authorable	0	CTCWife#9		
-NA114	0068cb90	CInputProcessControlFreeCamera	CInputProcessControlFreeCamera::ProcessInput	2656	1025-4096	authorable	0	CInputProcessControlFreeCamera#4		scan stops 317 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA114	0054cbf0	NUISystem::CFrontEndList	NUISystem::CFrontEndList::vfunc_48	2672	1025-4096	authorable	0	NUISystem::CFrontEndList#48		scan stops 1264 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA114	0068cb90	CInputProcessControlFreeCamera	CInputProcessControlFreeCamera::ProcessInput	2339	1025-4096	authorable	0	CInputProcessControlFreeCamera#4		; extent SPLIT: tail = 13 filler bytes then an unlisted function at 0068d4c0 (fld dwor
+NA114	0054cbf0	NUISystem::CFrontEndList	NUISystem::CFrontEndList::vfunc_48	1408	1025-4096	authorable	0	NUISystem::CFrontEndList#48		; extent SPLIT: code right after the row end, referenced from outside ({'data': 1, 'im
 NA115	007abbd0	CTCAIScratchpad	CTCAIScratchpad::vfunc_1	2828	1025-4096	authorable	0	CTCAIScratchpad#1		
 NA115	00afa2b0	CPSCRenderSprite	ReadBinary	2830	1025-4096	authorable	0	NParticleEngine::CPSCRenderSprite#15		
-NA115	00684610	COpinionReactionManager	COpinionReactionManager::TransferOpinionData	2848	1025-4096	authorable	0	CTCCreatureOpinionOfHero#1		scan stops 25 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA115	00ade080	C3DBoundingBox	InitialiseFromOBB	2880	1025-4096	authorable	2			39 SSE/MMX instructions: try the xmmintrin/mmintrin intrinsics first; scan stops 145 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA115	00684610	COpinionReactionManager	COpinionReactionManager::TransferOpinionData	2823	1025-4096	authorable	0	CTCCreatureOpinionOfHero#1		; extent SPLIT: tail = 9 filler bytes then an unlisted function at 00685120 (mov eax, 
+NA115	00ade080	C3DBoundingBox	InitialiseFromOBB	2735	1025-4096	authorable	2			39 SSE/MMX instructions: try the xmmintrin/mmintrin intrinsics first; extent SPLIT: tail = 1 filler bytes then an unlisted function at 00adeb30 (sub esp, 
 NA115	00be0eb0	CEnginePrimitiveManager2DParticleGroup	?RenderSubPrimitive@CEnginePrimitiveManager2DParticleGroup@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z	2889	1025-4096	authorable	0	CEnginePrimitiveManager2DParticleGroup#5		
-NA115	008eacb0	CModeHoverBase	OnActivate	2912	1025-4096	authorable	0	NCreatureMode::CModeWalkInAllDirections#5		scan stops 364 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA115	008eacb0	CModeHoverBase	OnActivate	2548	1025-4096	authorable	0	NCreatureMode::CModeWalkInAllDirections#5		; extent SPLIT: tail = 12 filler bytes then an unlisted function at 008eb6b0 (mov eax,
 NA115	00bb2540	CEngineClothRenderer	RenderPolygons	2905	1025-4096	authorable	2			
 NA115	00bb30a0	CEngineClothRenderer	Render2DClothPrimitive	3538	1025-4096	authorable	1			
-NA115	00ae3c30	CParticleProgram	ReadFromFile	2944	1025-4096	authorable	2			scan stops 634 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA115	00ae3c30	CParticleProgram	ReadFromFile	2310	1025-4096	authorable	2			; extent SPLIT: tail = 10 filler bytes then an unlisted function at 00ae4540 (mov eax,
 NA115	007cacb0	CTCHeroReceiveItems	GlobalUpdate	2974	1025-4096	authorable	0	CTCHeroReceiveItems#26		
 NA116	00974aa0	CAIStateGroup_JackOfBladesStage2	CAIStateGroup_JackOfBladesStage2::Update	3080	1025-4096	authorable	0	CAIStateGroup_JackOfBladesStage2#12		
-NA116	00d77690	CQ_HangingTreeGoodScript	DoCutscene	3120	1025-4096	authorable	2			scan stops 56 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA116	00d77690	CQ_HangingTreeGoodScript	DoCutscene	3064	1025-4096	authorable	2			; extent SPLIT: tail = 8 filler bytes then an unlisted function at 00d78290 (push esi;
 NA116	00d75060	CQ_HangingTreeGoodScript	FinalRound	4044	1025-4096	authorable	1			
 NA116	00d6f4b0	CQ_HangingTreeGoodScript	Main	2106	1025-4096	authorable	0			
 NA116	00d69480	CQ_HangingTreeGoodScript	Main	2118	1025-4096	authorable	0			
@@ -1164,12 +1164,12 @@ NA117	00b1c880	NParticleEngine::CPSCDecalRenderer	NParticleEngine::CPSCDecalRend
 NA117	007b0cd0	CTCFishing	FrameUpdate	3416	1025-4096	authorable	0	CTCFishing#9		
 NA117	00bc25f0	CEnginePrimitiveManagerParticleMeshGroup	?RenderSubPrimitive@CEnginePrimitiveManagerParticleMeshGroup@@UAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z	3480	1025-4096	authorable	0	CEnginePrimitiveManagerParticleMeshGroup#5		
 NA117	00afffe0	NParticleEngine::CPSCRenderMesh	NParticleEngine::CPSCRenderMesh::vfunc_15	3536	1025-4096	authorable	0	NParticleEngine::CPSCRenderMesh#15		
-NA117	0090d030	CAIStateGroup_MinionGossip	?Update@CAIStateGroup_MinionGossip@@MAEXXZ	3696	1025-4096	authorable	0	CAIStateGroup_MinionGossip#12		scan stops 427 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA117	0090d030	CAIStateGroup_MinionGossip	?Update@CAIStateGroup_MinionGossip@@MAEXXZ	3269	1025-4096	authorable	0	CAIStateGroup_MinionGossip#12		; extent SPLIT: tail = 11 filler bytes then an unlisted function at 0090dd00 (mov eax,
 NA117	00b0b860	CPSCUpdateNormal	ReadBinary	3787	1025-4096	authorable	0	NParticleEngine::CPSCUpdateNormal#15		
 NA117	00b149d0	CPSCEmitterGeneric	ReadBinary	3779	1025-4096	authorable	0	NParticleEngine::CPSCEmitterGeneric#15		
 NA117	00689df0	CInputProcessInventory	?ProcessInput@CInputProcessInventory@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z	3827	1025-4096	authorable	0	CInputProcessInventory#4		
-NA117	00b555a0	CEngineWeatherRenderer	?Render@CEngineWeatherRenderer@@UAEXABVCEngineComponentRenderParams@@@Z	3872	1025-4096	authorable	0	CEngineWeatherRenderer#4		scan stops 40 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA118	00931390	CAIStateGroup_MinionReactToCriminal	?Update@CAIStateGroup_MinionReactToCriminal@@UAEXXZ	3904	1025-4096	authorable	0	CAIStateGroup_MinionReactToCriminal#12		scan stops 41 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA117	00b555a0	CEngineWeatherRenderer	?Render@CEngineWeatherRenderer@@UAEXABVCEngineComponentRenderParams@@@Z	3832	1025-4096	authorable	0	CEngineWeatherRenderer#4		; extent SPLIT: tail = 8 filler bytes then an unlisted function at 00b564a0 (mov eax, 
+NA118	00931390	CAIStateGroup_MinionReactToCriminal	?Update@CAIStateGroup_MinionReactToCriminal@@UAEXXZ	3863	1025-4096	authorable	0	CAIStateGroup_MinionReactToCriminal#12		; extent SPLIT: tail = 9 filler bytes then an unlisted function at 009322b0 (push esi;
 NA118	00627be0	CTCQuickAccessMenu	GetExpressionsListUI	1056	1025-4096	authorable	1			
 NA118	00626110	CTCQuickAccessMenu	ContructItemLists	1596	1025-4096	authorable	1			
 NA118	00626750	CTCQuickAccessMenu	ContructItemLists	1771	1025-4096	authorable	1			
@@ -1191,23 +1191,23 @@ NA119	00eb2900	CMurderTwistSheriffGuard	DoAskingHeroToSpeakToBossAgain	1203	1025
 NA119	00eb2dc0	CMurderTwistSheriffGuard	DoAskingHeroToSpeakToBossAgain	1203	1025-4096	authorable	1		2:00eb2900	
 NA120	00eb3280	CMurderTwistSheriffGuard	DoAskingHeroToSpeakToBossAgain	1203	1025-4096	authorable	1			
 NA120	00b67920	CEngineLandscapeRenderer	~CEngineLandscapeRenderer	1294	1025-4096	authorable	1			
-NA120	00487570	CPlayer	DrawFreeCamDebug	1328	1025-4096	authorable	1			scan stops 23 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA120	00487570	CPlayer	DrawFreeCamDebug	1305	1025-4096	authorable	1			; extent SPLIT: tail = 7 filler bytes then an unlisted function at 00487a90 (mov eax, 
 NA120	00725500	CTCPhysicsControlled	PerformImpulseBasedMovement	1324	1025-4096	authorable	1			
-NA120	00a12ee0	CPhysicsMeshObject	GetNavigationLevelVolumes	1376	1025-4096	authorable	1			scan stops 232 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA120	008771a0	CTools	GetThingPointIntersectionFromTo	1408	1025-4096	authorable	1			scan stops 144 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA120	00a12ee0	CPhysicsMeshObject	GetNavigationLevelVolumes	1144	1025-4096	authorable	1			; extent SPLIT: tail = 8 filler bytes then an unlisted function at 00a13360 (fld dword
+NA120	008771a0	CTools	GetThingPointIntersectionFromTo	1264	1025-4096	authorable	1			; extent SPLIT: unreferenced function-shaped code right after the terminator at 008776
 NA120	00eaf1e0	CV_MurderTwistFinalScript	PlayBeingRumbledCutscene	1573	1025-4096	authorable	1			
 NA120	00beae50	CWaterPatchMesh	Load	1592	1025-4096	authorable	1			
 NA120	00ea2080	CV_KnotholeGladeGatesScript	ControlMainBalverines	1682	1025-4096	authorable	1			
 NA120	00ea1720	CV_KnotholeGladeGatesScript	DoInitialBalverineAttack	1940	1025-4096	authorable	1			
-NA121	00615e70	CPersistTraits<CTCInventoryMap::CUIRegionInfo>	TransferIn	1808	1025-4096	authorable	1			scan stops 385 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA121	00615e70	CPersistTraits<CTCInventoryMap::CUIRegionInfo>	TransferIn	1423	1025-4096	authorable	1			; extent SPLIT: tail = 1 filler bytes then an unlisted function at 00616400 (mov eax, 
 NA121	007f26b0	CTCLightningOrb	Initialise	1802	1025-4096	authorable	1			
 NA121	00ed5830	CV_SwordInTheStoneScript	SwordPullCutscene	1819	1025-4096	authorable	1			
-NA121	00aad650	CWaveLoader	LoadWaveFile	1840	1025-4096	authorable	1			scan stops 266 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA121	00aad650	CWaveLoader	LoadWaveFile	1574	1025-4096	authorable	1			; extent SPLIT: tail = 10 filler bytes then an unlisted function at 00aadc80 (mov eax,
 NA121	0069ae80	CGameCameraManager	CGameCameraManager	1923	1025-4096	authorable	1			
 NA121	0097bda0	CAIStateGroup_ScorpionKing	UpdateCombat	2009	1025-4096	authorable	1			
 NA121	009fa780	CTexture	BltToRenderTargetWithGPU	2028	1025-4096	authorable	1			
 NA121	007941d0	CTCUnholyPower	CTCUnholyPower	2073	1025-4096	authorable	1			
-NA121	0083e1f0	CThingScriptUIDReplacer	CThingScriptUIDReplacer	2080	1025-4096	authorable	1			scan stops 107 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA121	0083e1f0	CThingScriptUIDReplacer	CThingScriptUIDReplacer	1973	1025-4096	authorable	1			; extent SPLIT: tail = 11 filler bytes then an unlisted function at 0083e9b0 (mov ax, 
 NA121	008e18d0	CModeThunderLightningStorm	UpdateLightningBeams	2073	1025-4096	authorable	1			
 NA122	00eb4760	CMurderTwistAssassin	DoDealWithHero	2075	1025-4096	authorable	1			
 NA122	00b5f090	CEnginePrimitiveManagerDecal	CEnginePrimitiveManagerDecal	2093	1025-4096	authorable	1			
@@ -1234,7 +1234,7 @@ NA124	00cf9a50	CQ_AmbushTradersScript	Init	2199	1025-4096	authorable	0
 NA124	0064ed4f	CDrawDamage	Draw	2314	1025-4096	authorable	1			
 NA124	004963a0	CFrontendGameComponent	Input	2384	1025-4096	authorable	1			
 NA124	00494900	CFrontendGameComponent	Output	3336	1025-4096	authorable	1			
-NA124	007a5580	CTCForcePushPower	PlayCastSound	2416	1025-4096	authorable	1			scan stops 2112 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA124	007a5580	CTCForcePushPower	PlayCastSound	304	1025-4096	authorable	1			; extent SPLIT: code right after the row end, referenced from outside ({'data': 1, 'im
 NA124	00bbe090	CEnginePrimitiveManagerParticleSpriteTrailGroup	RenderSingleSpriteTrail	2464	1025-4096	authorable	1			
 NA124	00a7af60	CNavQuadTree	LoadFromFile	2503	1025-4096	authorable	1			
 NA124	007de710	CTCWallMount	AttachObject	2578	1025-4096	authorable	1			
@@ -1243,13 +1243,13 @@ NA125	00b64550	CEngineSkyRenderer	RenderSunFlare	2631	1025-4096	authorable	1
 NA125	00b64fa0	CEngineSkyRenderer	RenderClouds	2688	1025-4096	authorable	1			
 NA125	00439070	CPlayerGui	DrawPreparePrimitivesForEngine	2613	1025-4096	authorable	1			
 NA125	0043b570	CPlayerGui	CPlayerGui	3661	1025-4096	authorable	1			
-NA125	007a4520	CTCWillEnflame	PlaySoundW	2640	1025-4096	authorable	1			scan stops 2324 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA125	007a4520	CTCWillEnflame	PlaySoundW	316	1025-4096	authorable	1			; extent SPLIT: tail = 4 filler bytes then an unlisted function at 007a4660 (sub esp, 
 NA125	00821a80	CMap	LoadFromFile	2648	1025-4096	authorable	1			
 NA125	00acdb80	COptimisedPrimitive	COptimisedPrimitive	2674	1025-4096	authorable	1			
 NA125	00e80f10	CFishCompOrganiser	AskForFish	2894	1025-4096	authorable	1			
-NA125	00e80060	CV_FishingCompetitionScript	GetHeroTitleTextTag	2976	1025-4096	authorable	1			scan stops 2664 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA125	00e80060	CV_FishingCompetitionScript	GetHeroTitleTextTag	312	1025-4096	authorable	1			; extent SPLIT: tail = 8 filler bytes then an unlisted function at 00e801a0 (sub esp, 
 NA125	00a593f0	CCylinder	GetFirstIntersectionWithTriangle	3027	1025-4096	authorable	1			
-NA126	00bc14e0	CEnginePrimitiveManagerParticleSpriteGroup	CEnginePrimitiveManagerParticleSpriteGroup	3104	1025-4096	authorable	1			scan stops 134 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA126	00bc14e0	CEnginePrimitiveManagerParticleSpriteGroup	CEnginePrimitiveManagerParticleSpriteGroup	2970	1025-4096	authorable	1			; extent SPLIT: tail = 6 filler bytes then an unlisted function at 00bc2080 (push esi;
 NA126	0066cf00	CRegionMinimap	PopulateRegionMinimap	3248	1025-4096	authorable	1			
 NA126	00bc8a60	CEnginePrimitiveManagerLines	RenderLine	3416	1025-4096	authorable	1			
 NA126	00648820	CDrawMiniMap	Draw	3464	1025-4096	authorable	1			
@@ -1266,13 +1266,13 @@ NA127	00e10e60	CWaspChaseWoman	Main	1306	1025-4096	authorable	0
 NA127	00e50910	CV_BeardyBaldyScript	WatchForQuestCardConditions	1328	1025-4096	authorable	0			
 NA127	00e4fa20	CV_BeardyBaldyScript	Main	1756	1025-4096	authorable	0			
 NA127	00631720	CUIDef	operator=	1337	1025-4096	authorable	0			
-NA127	006303c0	CUIDef	CUIDef	1616	1025-4096	authorable	0			scan stops 344 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA127	006303c0	CUIDef	CUIDef	1272	1025-4096	authorable	0			; extent SPLIT: tail = 8 filler bytes then an unlisted function at 006308c0 (mov eax, 
 NA127	00d91e00	CHobbeSpawn	Main	1399	1025-4096	authorable	0			
 NA127	00decad0	CV_TravellingHeroesScript	Main	1479	1025-4096	authorable	0			
 NA128	00e00db0	CV_TravellingHeroesScript	Main	2088	1025-4096	authorable	0			
 NA128	00ebe620	CVO_Woman	Main	1482	1025-4096	authorable	0			
 NA128	00e7c010	CV_FishermanScript	NPCAttitudeProcess	1623	1025-4096	authorable	0			
-NA128	00e6fc40	CDF_Dragon	Main	1840	1025-4096	authorable	0			scan stops 176 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA128	00e6fc40	CDF_Dragon	Main	1664	1025-4096	authorable	0			; extent SPLIT: code right after the row end, referenced from outside ({'imm': 1, 'dat
 NA128	00e9cfd0	CTrophiesIntroWatcher	Main	1833	1025-4096	authorable	0			
 NA128	009c47a0	CFileInstaller	CFileInstaller::AddFilteredFiles	1915	1025-4096	authorable	0			
 NA128	00e46d30	CV_BanditCampPathScript	Main	1971	1025-4096	authorable	0			
@@ -1285,14 +1285,14 @@ NA129	004321f0	CSpecialAbilitiesBerserkDef	operator=	2117	1025-4096	authorable	0
 NA129	00ba1b00	CEnginePrimitiveManagerStaticMeshesBase	DisplayMirroredTextures	2113	1025-4096	authorable	0			
 NA129	00dd3b80	CQ_GuildTrainingScript	RunCeremonyCutscene	2126	1025-4096	authorable	0			
 NA129	00da34b0	CQ_GuildTrainingScript	Main	2681	1025-4096	authorable	0			
-NA129	00d3bc60	CQ_GuildTrainingScript	Main	3200	1025-4096	authorable	0			scan stops 166 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA129	00d3bc60	CQ_GuildTrainingScript	Main	3034	1025-4096	authorable	0			; extent SPLIT: tail = 6 filler bytes then an unlisted function at 00d3c840 (push ecx;
 NA129	00ddb720	CPrisonRaceGuard	Main	2158	1025-4096	authorable	0			
 NA129	00e18630	CQ_WhiteBalverineWWScript	Main	2150	1025-4096	authorable	0			
 NA129	00d07490	CGate3Guard	Main	2182	1025-4096	authorable	0			
 NA130	00d26190	CQ_DragonBossFightScript	DoMission	2235	1025-4096	authorable	0			
 NA130	00dd5a60	CPrisoner	Main	2250	1025-4096	authorable	0			
 NA130	00dd2ce0	CQ_PrisonEscapeRescueMotherScript	Main	2265	1025-4096	authorable	0			
-NA130	00d2ed20	CEndGameScythe	Main	2304	1025-4096	authorable	0			scan stops 56 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA130	00d2ed20	CEndGameScythe	Main	2248	1025-4096	authorable	0			; extent SPLIT: tail = 8 filler bytes then an unlisted function at 00d2f5f0 (push esi;
 NA130	00e93120	CM_HiddenBooty	Main	2354	1025-4096	authorable	0			
 NA130	00ee95c0	CExpression_FishScript	Main	2357	1025-4096	authorable	0			
 NA130	00ea0090	CKGG_VillagerOutside	Main	2392	1025-4096	authorable	0			
@@ -1309,7 +1309,7 @@ NA131	00da91a0	CMapKeeper	Main	2765	1025-4096	authorable	0
 NA131	00dadf80	CNOVI_Villager	Main	2787	1025-4096	authorable	0			
 NA131	00e64210	CKickedChicken	Main	2803	1025-4096	authorable	0			
 NA131	00e693f0	CV_ChapelOfEvilScript	Main	2832	1025-4096	authorable	0			
-NA132	00d0a830	CBanditKing	Main	2960	1025-4096	authorable	0			scan stops 240 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA132	00d0a830	CBanditKing	Main	2720	1025-4096	authorable	0			; extent SPLIT: code right after the row end, referenced from outside ({'imm': 3, 'dat
 NA132	00eb8900	CMI_InfoKeeper	Main	2964	1025-4096	authorable	0			
 NA132	00dea3f0	CVictimsBrother	Main	3076	1025-4096	authorable	0			
 NA132	00d7fe90	CQ_HeroSoulsArenaScript	WatchForRoundsInArena	3148	1025-4096	authorable	0			
@@ -1333,7 +1333,7 @@ NA134	005a04f7	CTCInventoryTrade	ConstructNormalShopList	9469	>4096	authorable	1
 NA134	00603000	CTCInventoryMap	CreateMiniMapMarkers	9571	>4096	authorable	10			
 NA134	005ff190	CTCInventoryMap	CreateMapMarkers	4176	>4096	authorable	4			
 NA134	0060c900	CTCInventoryMap	CTCInventoryMap::BuildMapTeleportUI	9635	>4096	authorable	3			
-NA134	00839940	CThingGameObject	OnHit	5360	>4096	authorable	2	CThingGameObject#65		scan stops 165 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA134	00839940	CThingGameObject	OnHit	5195	>4096	authorable	2	CThingGameObject#65		; extent SPLIT: tail = 5 filler bytes then an unlisted function at 0083ad90 (mov dword
 NA134	00652fa4	CDrawQuickAccessIcons	Draw	4653	>4096	authorable	1	NPlayerGui::CDrawQuickAccessIcons#2		
 NA134	00a1e5c0	_global	CNavigatorAStar_MoveTowardGoal	5437	>4096	authorable	3			
 NA134	00c02470	_global	z_inflate	5204	>4096	authorable	2			
@@ -1341,32 +1341,32 @@ NA134	0060eeb0	_global	CTCInventoryMap_BuildMapMenu	10254	>4096	authorable	2
 NA134	00c7e420	_global	Audio_ConvolveFilter_LongVariant	11980	>4096	authorable	2			238 SSE/MMX instructions: try the xmmintrin/mmintrin intrinsics first
 NA135	00c812f0	_global	Audio_ConvolveFilter_LongComplex	12532	>4096	authorable	2			253 SSE/MMX instructions: try the xmmintrin/mmintrin intrinsics first
 NA135	00c843f0	_global	Audio_ConvolveFilter_LongFull	15328	>4096	authorable	2			251 SSE/MMX instructions: try the xmmintrin/mmintrin intrinsics first
-NA135	00a8b990	_global	C3DMesh2_AddSubMeshBoneVertices	4208	>4096	authorable	1			scan stops 2584 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA135	00a8b990	_global	C3DMesh2_AddSubMeshBoneVertices	1624	>4096	authorable	1			; extent SPLIT: tail = 8 filler bytes then an unlisted function at 00a8bff0 (mov eax, 
 NA135	005dd670	_global	StatRegisterClass	5317	>4096	authorable	1			
 NA135	00804020	_global	CViewBase_UpdatePlayerTargeting	5587	>4096	authorable	1			
 NA135	00d6d670	_global	CQ_HangingTreeEvil_Execute	5786	>4096	authorable	1			
 NA135	00601310	_global	ConstructQuestsScreen_MainMenu	6931	>4096	authorable	1			
-NA135	0073b130	_global	Init_RegisterGameComponents	7008	>4096	authorable	1			scan stops 335 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA135	0073b130	_global	Init_RegisterGameComponents	6673	>4096	authorable	1			; extent SPLIT: tail = 15 filler bytes then an unlisted function at 0073cb50 (mov eax,
 NA135	00d30030	_global	CScriptGameResourceObject_LoadGuildComplex	8589	>4096	authorable	1			
 NA135	006f5c10	_global	StatRegisterClass	8717	>4096	authorable	1			
 NA136	00cd52d0	_global	CScriptManager_RegisterAllScripts	24717	>4096	authorable	1			
 NA136	004ee23f	_global	Init_RegisterGameComponents	44806	>4096	authorable	1			
 NA136	00e0f8a0	_global	CScriptGameResourceObjectScriptedThingBase_HandleWaspQueenHelper	4389	>4096	authorable	0			
 NA136	0121f86f	_global	ParticleEngine_ModuleInit	8142	>4096	authorable	0			
-NA136	00d0f640	_global	Quest009_BanditCamp_Residential_OnLoad	8944	>4096	authorable	0			scan stops 6843 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA136	00d0f640	_global	Quest009_BanditCamp_Residential_OnLoad	2101	>4096	authorable	0			; extent SPLIT: tail = 11 filler bytes then an unlisted function at 00d0fe80 (sub esp,
 NA136	00c7baf0	_global	Graphics_RenderTextConditional_ProcessRows	10544	>4096	authorable	0			237 SSE/MMX instructions: try the xmmintrin/mmintrin intrinsics first
 NA136	0061e6d0	CTCInventoryQuests	ConstructQuestListPC	12356	>4096	authorable	3			
-NA136	0061b610	CTCInventoryQuests	ConstructQuestList	12480	>4096	authorable	3			scan stops 139 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA136	0061b610	CTCInventoryQuests	ConstructQuestList	12341	>4096	authorable	3			; extent SPLIT: tail = 11 filler bytes then an unlisted function at 0061e650 (push ecx
 NA136	00502e90	CWorldMap	PopulateRegionWithVillagers	13622	>4096	authorable	3			
 NA136	00507c30	CWorldMap	CWorldMap::LoadFromFile	7661	>4096	authorable	0	CWorldMap#3		
 NA137	005b76d1	CTCInventoryClothing	CTCInventoryClothing::vfunc_77	4210	>4096	authorable	0	CTCInventoryClothing#77		
 NA137	00b9ac30	CEnginePrimitiveManagerRepeatedStaticMeshes	CEnginePrimitiveManagerRepeatedStaticMeshes::RenderSubPrimitive	4229	>4096	authorable	0	CEnginePrimitiveManagerRepeatedStaticMeshes#5		
 NA137	00b24850	CEngine	SetDefaultRenderStates	4344	>4096	authorable	2			
 NA137	00b26360	CEngine	?Initialise@CEngine@@UAE_NABVCEngineInit@@@Z	5174	>4096	authorable	0	CEngine#2		
-NA137	00551ea0	NUISystem::CTable	NUISystem::CTable::ConstructSpritesToDraw	4512	>4096	authorable	0	NUISystem::CTable#142		scan stops 663 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA137	00551ea0	NUISystem::CTable	NUISystem::CTable::ConstructSpritesToDraw	3849	>4096	authorable	0	NUISystem::CTable#142		; extent SPLIT: tail = 7 filler bytes then an unlisted function at 00552db0 (mov eax, 
 NA137	007c1000	CTCShotDefinitionBase	OnCollisionProper	4510	>4096	authorable	2			
-NA137	007a1b20	CLightningBeam	FrameUpdate	4816	>4096	authorable	2			scan stops 1976 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA137	00975bb0	CAIStateGroup_JackOfBladesStage1	?Update@CAIStateGroup_JackOfBladesStage1@@UAEXXZ	4816	>4096	authorable	0	CAIStateGroup_JackOfBladesStage1#12		scan stops 192 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA137	007a1b20	CLightningBeam	FrameUpdate	2840	>4096	authorable	2			; extent SPLIT: tail = 8 filler bytes then an unlisted function at 007a2640 (sub esp, 
+NA137	00975bb0	CAIStateGroup_JackOfBladesStage1	?Update@CAIStateGroup_JackOfBladesStage1@@UAEXXZ	4624	>4096	authorable	0	CAIStateGroup_JackOfBladesStage1#12		; extent MANUAL: unreferenced code right after the row with no padding (a cold block of
 NA137	0058807d	CTCInventory	OpenPCInventoryMenu	4997	>4096	authorable	2			
 NA137	0058578b	CTCInventory	CTCInventory::vfunc_30	8081	>4096	authorable	0	CTCInventory#30		
 NA138	00651b04	CDrawAbilityButtons	Draw	5126	>4096	authorable	0	NPlayerGui::CDrawAbilityButtons#2		
@@ -1376,20 +1376,20 @@ NA138	00bae2d0	CEnginePrimitiveManager2DSprites	?RenderSubPrimitive@CEnginePrimi
 NA138	004736c4	CPlayerGuiDef	?Transfer@CPlayerGuiDef@@UAEXAAVCPersistContext@@@Z	6498	>4096	authorable	0	CPlayerGuiDef#18		
 NA138	00a059e0	CRenderStateManager	SetDefaultRenderStates	7958	>4096	authorable	2			
 NA138	00a04630	CRenderStateManager	SetupRenderStates	4609	>4096	authorable	1			
-NA138	00bcff10	CEnginePrimitiveManagerAnimatedMeshesBase	CEnginePrimitiveManagerAnimatedMeshesBase	8160	>4096	authorable	2			scan stops 20 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA138	00bcff10	CEnginePrimitiveManagerAnimatedMeshesBase	CEnginePrimitiveManagerAnimatedMeshesBase	8140	>4096	authorable	2			; extent SPLIT: tail = 4 filler bytes then an unlisted function at 00bd1ee0 (jmp 0xbcf
 NA138	00b9ece0	CEnginePrimitiveManagerStaticMeshesBase	CEnginePrimitiveManagerStaticMeshesBase	8921	>4096	authorable	2			
 NA138	00ba2350	CEnginePrimitiveManagerStaticMeshesBase	SetupRenderModeShadersAndConstants	9632	>4096	authorable	1			
-NA139	0044c72b	CGameDefinitionManager	InitAndCompile	9225	>4096	authorable	0	CGameDefinitionManager#2		scan stops 230 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA139	0078fd60	CTCDivineWrath	FrameUpdate	9312	>4096	authorable	0	CTCDivineWrath#9		scan stops 44 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA139	00795300	CTCDivineWrath	FrameUpdate	9312	>4096	authorable	0	CTCUnholyPower#9		scan stops 44 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA139	00b783f0	CEngineWaterRenderer	?Render@CEngineWaterRenderer@@UAEXABVCEngineComponentRenderParams@@@Z	9360	>4096	authorable	0	CEngineWaterRenderer#4		scan stops 17 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA139	0044c72b	CGameDefinitionManager	InitAndCompile	8995	>4096	authorable	0	CGameDefinitionManager#2		; extent SPLIT: code right after the row end, referenced from outside ({'imm': 3}): a 
+NA139	0078fd60	CTCDivineWrath	FrameUpdate	9268	>4096	authorable	0	CTCDivineWrath#9		; extent SPLIT: tail = 12 filler bytes then an unlisted function at 007921a0 (mov eax,
+NA139	00795300	CTCDivineWrath	FrameUpdate	9268	>4096	authorable	0	CTCUnholyPower#9		; extent SPLIT: tail = 12 filler bytes then an unlisted function at 00797740 (mov eax,
+NA139	00b783f0	CEngineWaterRenderer	?Render@CEngineWaterRenderer@@UAEXABVCEngineComponentRenderParams@@@Z	9343	>4096	authorable	0	CEngineWaterRenderer#4		; extent SPLIT: tail = 1 filler bytes then an unlisted function at 00b7a870 (jmp 0x99a
 NA139	00b72180	CEngineWaterRenderer	CreateDynamicTextures	5587	>4096	authorable	1			
 NA139	00b73760	CEngineWaterRenderer	CEngineWaterRenderer	6799	>4096	authorable	1			
 NA139	0041e6d3	NUISystem::CManager	NUISystem::CManager::vfunc_14	35651	>4096	authorable	0	NUISystem::CManager#14		
 NA139	00488d10	CPlayer	InitInterfaces	4142	>4096	authorable	1			
 NA139	0056ad40	CQuestManager	CQuestManager::UpdateUI_QuestMenu	4284	>4096	authorable	1			
 NA139	00a91640	_gapscan	sub_00a91640	4344	>4096	authorable	1			
-NA140	00a2f740	_gapscan	sub_00a2f740	4912	>4096	authorable	1			scan stops 1861 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA140	00a2f740	_gapscan	sub_00a2f740	3051	>4096	authorable	1			; extent SPLIT: tail = 5 filler bytes then an unlisted function at 00a30330 (add ecx, 
 NA140	005eeff2	_gapscan	sub_005eeff2	5619	>4096	authorable	1			
 NA140	00dc27c0	_gapscan	sub_00dc27c0	4134	>4096	authorable	0			
 NA140	00f1b9c0	_gapscan	sub_00f1b9c0	4198	>4096	authorable	0			
@@ -1409,21 +1409,21 @@ NA141	00cf18d0	_gapscan	sub_00cf18d0	4539	>4096	authorable	0
 NA141	00e0b160	_gapscan	sub_00e0b160	4584	>4096	authorable	0			
 NA141	00ddf090	_gapscan	sub_00ddf090	4599	>4096	authorable	0			
 NA141	00d41d00	_gapscan	sub_00d41d00	4662	>4096	authorable	0			
-NA142	00dc93f0	_gapscan	sub_00dc93f0	4720	>4096	authorable	0			scan stops 213 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA142	00dc93f0	_gapscan	sub_00dc93f0	4507	>4096	authorable	0			; extent SPLIT: tail = 5 filler bytes then an unlisted function at 00dca590 (push ecx;
 NA142	00ec9d30	_gapscan	sub_00ec9d30	4708	>4096	authorable	0			
 NA142	00d706e0	_gapscan	sub_00d706e0	4755	>4096	authorable	0			
 NA142	00ea36b0	_gapscan	sub_00ea36b0	4804	>4096	authorable	0			
 NA142	00db2b10	_gapscan	sub_00db2b10	4890	>4096	authorable	0			
 NA142	00de8370	_gapscan	sub_00de8370	4894	>4096	authorable	0			
 NA142	00ecf7f0	_gapscan	sub_00ecf7f0	4885	>4096	authorable	0			
-NA142	00d0d910	_gapscan	sub_00d0d910	4928	>4096	authorable	0			scan stops 176 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA142	00d0d910	_gapscan	sub_00d0d910	4752	>4096	authorable	0			; extent SPLIT: code right after the row end, referenced from outside ({'data': 1}): a
 NA142	00e90be0	_gapscan	sub_00e90be0	4914	>4096	authorable	0			
 NA142	00ed5f50	_gapscan	sub_00ed5f50	5024	>4096	authorable	0			
 NA143	00e78630	_gapscan	sub_00e78630	5045	>4096	authorable	0			
 NA143	00db09e0	_gapscan	sub_00db09e0	5058	>4096	authorable	0			
 NA143	00d2d930	_gapscan	sub_00d2d930	5094	>4096	authorable	0			
 NA143	00d01630	_gapscan	sub_00d01630	5178	>4096	authorable	0			
-NA143	00dcfa60	_gapscan	sub_00dcfa60	5200	>4096	authorable	0			scan stops 2788 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA143	00dcfa60	_gapscan	sub_00dcfa60	2412	>4096	authorable	0			; extent SPLIT: tail = 4 filler bytes then an unlisted function at 00dd03d0 (sub esp, 
 NA143	00e93eb0	_gapscan	sub_00e93eb0	5321	>4096	authorable	0			
 NA143	00e7c8e0	_gapscan	sub_00e7c8e0	5358	>4096	authorable	0			
 NA143	00d0c410	_gapscan	sub_00d0c410	5373	>4096	authorable	0			
@@ -1434,7 +1434,7 @@ NA144	00ebcf70	_gapscan	sub_00ebcf70	5572	>4096	authorable	0
 NA144	00f063b0	_gapscan	sub_00f063b0	5651	>4096	authorable	0			
 NA144	00d09010	_gapscan	sub_00d09010	5864	>4096	authorable	0			
 NA144	00dac760	_gapscan	sub_00dac760	5867	>4096	authorable	0			
-NA144	00d2aa40	_gapscan	sub_00d2aa40	5888	>4096	authorable	0			scan stops 28 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA144	00d2aa40	_gapscan	sub_00d2aa40	5860	>4096	authorable	0			; extent SPLIT: tail = 12 filler bytes then an unlisted function at 00d2c130 (lea eax,
 NA144	00e9e420	_gapscan	sub_00e9e420	5915	>4096	authorable	0			
 NA144	00ec68a0	_gapscan	sub_00ec68a0	5962	>4096	authorable	0			
 NA144	00e8ef80	_gapscan	sub_00e8ef80	5996	>4096	authorable	0			
@@ -1447,7 +1447,7 @@ NA145	00d62480	_gapscan	sub_00d62480	6195	>4096	authorable	0
 NA145	00e3eb10	_gapscan	sub_00e3eb10	6330	>4096	authorable	0			
 NA145	00d8bcd0	_gapscan	sub_00d8bcd0	6343	>4096	authorable	0			
 NA145	00ec8300	_gapscan	sub_00ec8300	6394	>4096	authorable	0			
-NA145	00dca6d0	_gapscan	sub_00dca6d0	6448	>4096	authorable	0			scan stops 53 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA145	00dca6d0	_gapscan	sub_00dca6d0	6395	>4096	authorable	0			; extent SPLIT: tail = 5 filler bytes then an unlisted function at 00dcbfd0 (push esi;
 NA145	00dd6a60	_gapscan	sub_00dd6a60	6494	>4096	authorable	0			
 NA146	00df6010	_gapscan	sub_00df6010	6493	>4096	authorable	0			
 NA146	00edd170	_gapscan	sub_00edd170	6594	>4096	authorable	0			
@@ -1457,7 +1457,7 @@ NA146	00ea59e0	_gapscan	sub_00ea59e0	6780	>4096	authorable	0
 NA146	00d13580	_gapscan	sub_00d13580	6917	>4096	authorable	0			
 NA146	00db97a0	_gapscan	sub_00db97a0	7013	>4096	authorable	0			
 NA146	00e5b3b0	_gapscan	sub_00e5b3b0	7012	>4096	authorable	0			
-NA146	00e44ea0	_gapscan	sub_00e44ea0	7056	>4096	authorable	0			scan stops 54 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA146	00e44ea0	_gapscan	sub_00e44ea0	7002	>4096	authorable	0			; extent SPLIT: tail = 6 filler bytes then an unlisted function at 00e46a00 (push esi;
 NA146	00d647f0	_gapscan	sub_00d647f0	7389	>4096	authorable	0			
 NA147	00e6bc50	_gapscan	sub_00e6bc50	7655	>4096	authorable	0			
 NA147	00f17c70	_gapscan	sub_00f17c70	7740	>4096	authorable	0			
@@ -1472,8 +1472,8 @@ NA147	00e5fd40	_gapscan	sub_00e5fd40	9381	>4096	authorable	0
 NA148	00dfe0f0	_gapscan	sub_00dfe0f0	9501	>4096	authorable	0			
 NA148	00d58490	_gapscan	sub_00d58490	9560	>4096	authorable	0			
 NA148	0121b9b0	_gapscan	sub_0121b9b0	9567	>4096	authorable	0			
-NA148	00d3e2e0	_gapscan	sub_00d3e2e0	9648	>4096	authorable	0			scan stops 208 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA148	00e58d40	_gapscan	sub_00e58d40	9808	>4096	authorable	0			scan stops 192 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA148	00d3e2e0	_gapscan	sub_00d3e2e0	9440	>4096	authorable	0			; extent SPLIT: code right after the row end, referenced from outside ({'imm': 2, 'dat
+NA148	00e58d40	_gapscan	sub_00e58d40	9616	>4096	authorable	0			; extent SPLIT: code right after the row end, referenced from outside ({'imm': 1, 'dat
 NA148	00d973d0	_gapscan	sub_00d973d0	9821	>4096	authorable	0			
 NA148	00e50fd0	_gapscan	sub_00e50fd0	9885	>4096	authorable	0			
 NA148	00e3bb70	_gapscan	sub_00e3bb70	10149	>4096	authorable	0			
@@ -1481,42 +1481,42 @@ NA148	00e4b5b0	_gapscan	sub_00e4b5b0	10594	>4096	authorable	0
 NA148	00d5ae70	_gapscan	sub_00d5ae70	11636	>4096	authorable	0			
 NA149	00e07640	_gapscan	sub_00e07640	11984	>4096	authorable	0			
 NA149	00e87030	_gapscan	sub_00e87030	12551	>4096	authorable	0			
-NA149	00eb9980	_gapscan	sub_00eb9980	12944	>4096	authorable	0			scan stops 191 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA149	00d524a0	_gapscan	sub_00d524a0	14448	>4096	authorable	0			scan stops 11908 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA149	00eb9980	_gapscan	sub_00eb9980	12753	>4096	authorable	0			; extent SPLIT: tail = 15 filler bytes then an unlisted function at 00ebcb60 (push ecx
+NA149	00d524a0	_gapscan	sub_00d524a0	2540	>4096	authorable	0			; extent SPLIT: tail = 4 filler bytes then an unlisted function at 00d52e90 (sub esp, 
 NA149	00e20600	_gapscan	sub_00e20600	14510	>4096	authorable	0			
 NA149	00d5e0c0	_gapscan	sub_00d5e0c0	15084	>4096	authorable	0			
 NA149	00e64fb0	_gapscan	sub_00e64fb0	15210	>4096	authorable	0			
-NA149	00e40e80	_gapscan	sub_00e40e80	15296	>4096	authorable	0			scan stops 192 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA149	00e40e80	_gapscan	sub_00e40e80	15104	>4096	authorable	0			; extent MANUAL: unreferenced code right after the row with no padding (a cold block of
 NA149	01224ce0	_gapscan	sub_01224ce0	45	>4096	authorable	0			
-NA149	00d45060	_gapscan	sub_00d45060	18064	>4096	authorable	0			scan stops 14625 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA149	00d45060	_gapscan	sub_00d45060	3439	>4096	authorable	0			; extent SPLIT: tail = 1 filler bytes then an unlisted function at 00d45dd0 (sub esp, 
 NA150	00f0fb70	_gapscan	sub_00f0fb70	18144	>4096	authorable	0			
 NA150	00f2d6e0	_gapscan	sub_00f2d6e0	23755	>4096	authorable	0			
-NA150	00d4a270	_gapscan	sub_00d4a270	25488	>4096	authorable	0			scan stops 16100 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA150	00d4a270	_gapscan	sub_00d4a270	9388	>4096	authorable	0			; extent SPLIT: tail = 4 filler bytes then an unlisted function at 00d4c720 (sub esp, 
 NA150	00ce7670	_gapscan	sub_00ce7670	32057	>4096	authorable	0			
 NA150	00574885	CTCInventoryExperience	ConstructCategoryStrength	4357	>4096	authorable	1			
 NA150	005759bf	CTCInventoryExperience	ConstructCategoryStrengthPC	4684	>4096	authorable	1			
 NA150	00baa870	CEnginePrimitiveManagerRepeatedZSprites	RenderFromSortList	4600	>4096	authorable	1			
 NA150	00dd9a50	CQ_PrisonEscapeRescueMotherScript	ResetCells	4696	>4096	authorable	1			
-NA150	00bb5040	CEngineClothRenderer	CEngineClothRenderer	4848	>4096	authorable	1			scan stops 24 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA150	00bb5040	CEngineClothRenderer	CEngineClothRenderer	4824	>4096	authorable	1			; extent SPLIT: tail = 8 filler bytes then an unlisted function at 00bb6320 (mov eax, 
 NA150	00598a1c	CFrontEndManager	CFrontEndManager::Init2	4928	>4096	authorable	1			
 NA151	005e4be0	CTCQuestCompletionUI	GetQuestDescription	4939	>4096	authorable	1			
 NA151	00b87870	CEngineScreenEffectDisplacementRenderer	ApplyDisplacement	4944	>4096	authorable	1			
 NA151	00498490	CProgressDisplay	DrawRetailDisplay	5101	>4096	authorable	1			
 NA151	00b5fab0	CEngineScreenEffectGlowRenderer	CaptureBackBuffer	5302	>4096	authorable	1			
-NA151	00b3cb30	CEngineResourceManager	CEngineResourceManager	5440	>4096	authorable	1			scan stops 41 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA151	00b3cb30	CEngineResourceManager	CEngineResourceManager	5399	>4096	authorable	1			; extent SPLIT: tail = 9 filler bytes then an unlisted function at 00b3e050 (mov eax, 
 NA151	00b5ca70	CEngineScreenEffectRadialBlurRenderer	CaptureBackBuffer	5748	>4096	authorable	1			
 NA151	00b89c30	CEngineScreenEffectOutlineGlow	ApplyOutline	6431	>4096	authorable	1			
 NA151	00b4d370	CEngineShadowRenderer	UpdateShadowSpace	7176	>4096	authorable	1			
 NA151	00aca830	COptimisedPrimitive	Initialise	7256	>4096	authorable	1			
-NA151	004830a1	CTCInGameMenu	OpenInGameMenuPC	8024	>4096	authorable	1			scan stops 128 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA151	004830a1	CTCInGameMenu	OpenInGameMenuPC	7896	>4096	authorable	1			; extent MANUAL: unreferenced code right after the row with no padding (a cold block of
 NA152	004804de	CTCInGameMenu	OpenInGameMenuPC	11203	>4096	authorable	1			
 NA152	00b69000	CEnginePrimitiveManagerParticleSpriteGroup	CEnginePrimitiveManagerParticleSpriteGroup	8358	>4096	authorable	1			
 NA152	005f1b10	CTCInventoryAbilities	ConstructPCMagicList	8383	>4096	authorable	1			
 NA152	004a3740	CWorld	UpdateRegionLoad	8948	>4096	authorable	1			
-NA152	00a079b0	CPSCOrbit	CPSCOrbit	9168	>4096	authorable	1			scan stops 4218 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA152	00a079b0	CPSCOrbit	CPSCOrbit	4950	>4096	authorable	1			; extent SPLIT: tail = 10 filler bytes then an unlisted function at 00a08d10 (mov edx,
 NA152	00f1eed0	CQ_ArenaScript	PlayWave	9262	>4096	authorable	1			
-NA152	00f21590	CQ_ArenaScript	GetEndRoundQuestion	17072	>4096	authorable	1			scan stops 16868 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA152	00b33b50	CEnginePrimitiveRenderer	CEnginePrimitiveRenderer	9488	>4096	authorable	1			scan stops 630 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA152	00f21590	CQ_ArenaScript	GetEndRoundQuestion	204	>4096	authorable	1			; extent SPLIT: tail = 4 filler bytes then an unlisted function at 00f21660 (push ecx;
+NA152	00b33b50	CEnginePrimitiveRenderer	CEnginePrimitiveRenderer	8858	>4096	authorable	1			; extent SPLIT: tail = 6 filler bytes then an unlisted function at 00b35df0 (mov eax, 
 NA152	00dc5f80	CSecretPassageWoman	Main	4245	>4096	authorable	0			
 NA152	00de2610	CVictimsFatherGuard	Main	4420	>4096	authorable	0			
 NA153	00d78670	CQ_HeroSoulsScript	Main	5390	>4096	authorable	0			
@@ -1524,16 +1524,16 @@ NA153	00e13f10	CQ_WhiteBalverineKnotholeGladeScript	Main	5589	>4096	authorable	0
 NA153	0045a159	CParentDefClassBase	CParentDefClassBase::operator=	6481	>4096	authorable	0			
 NA153	0046ce2d	CParentDefClassBase	CParentDefClassBase::operator=	7312	>4096	authorable	0			
 NA153	00f2a250	CScriptDef	operator=	11711	>4096	authorable	0			
-NA153	00514eb0	std	std::vector_construct_from_C2DLineF_vector	144	97-256	retry_skipped	8		2:00ae5c60	SKIPPED_ROWS single (re-attemptable): grades 0; SKIP: element type unproven: a 16-byte-class vector copy constructor (G052 shape; scan stops 57 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA153	00514eb0	std	std::vector_construct_from_C2DLineF_vector	87	97-256	retry_skipped	8		2:00ae5c60	SKIPPED_ROWS single (re-attemptable): grades 0; SKIP: element type unproven: a 16-byte-class vector copy constructor (G052 shape; extent SPLIT: tail = 9 filler bytes then an unlisted function at 00514f10 (push esi;
 NA153	0080aad1	CTCActionUseBuyHouse	OnCreate	106	97-256	retry_skipped	0			SKIPPED_ROWS single (re-attemptable): not a function: the else-branch tail of 0x0080AA60 (je 0x80AAD1; pops edi/esi it never pus
-NA153	00a43e30	_global	CVertexBufferWin32_SizeofElements	240	97-256	retry_skipped	0			SKIPPED_ROWS single (re-attemptable): not a function start: the row begins inside 0x00A43DF0 (the `eb 05` jump at 0x00A43E2F lan; scan stops 180 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA153	00a43e30	_global	CVertexBufferWin32_SizeofElements	60	97-256	retry_skipped	0			SKIPPED_ROWS single (re-attemptable): not a function start: the row begins inside 0x00A43DF0 (the `eb 05` jump at 0x00A43E2F lan; extent MANUAL: unreferenced code right after the row with no padding (a cold block of
 NA153	006bdc60	_global	Environment_UpdateMusicForRegion	492	257-512	retry_skipped	2			SKIPPED_ROWS single (re-attemptable): not attempted (region music update: CCharString temporary with a construction flag, def re
 NA153	006b1d30	_global	Sound_SetThemeByName	507	257-512	retry_skipped	2			SKIPPED_ROWS single (re-attemptable): not attempted (sound theme by name: CCharString temporaries, def lookups, calls 0x006B1A20
 NA154	006b3e60	_global	CEnvironmentThemePriorityStackEntry_SetWeight	393	257-512	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): not attempted (function-local static CVectorMap with guard 0x013BA8F8 + atexit, weighted a
 NA154	00802b60	_global	GetTargetingRangeForTarget	424	257-512	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): not attempted (budget): anonymous GetTargetingRangeForTarget, CDefPointer refcounts + CCha
 NA154	006b9610	_global	CFaction_LoadFromPersist	451	257-512	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): not attempted (CFactionManager::LoadGameState: inline CRC-32 key hash, vector-map LowerBou
 NA154	00750e30	CTCExplodingObject	FrameUpdate	501	257-512	retry_skipped	0	CTCExplodingObject#9		SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: lane gap: inline fistp rounding helper (fadd 0.5 ; fistp ; fild ; fsub 1.0 compare)
-NA154	00ae5c60	_gapscan	sub_00ae5c60	288	257-512	retry_skipped	1		2:00514eb0	SKIPPED_ROWS single (re-attemptable): grades 0; SKIP: element type unproven: the only user is the unreferenced copy-construct wr; scan stops 201 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA154	00ae5c60	_gapscan	sub_00ae5c60	87	257-512	retry_skipped	1		2:00514eb0	SKIPPED_ROWS single (re-attemptable): grades 0; SKIP: element type unproven: the only user is the unreferenced copy-construct wr; extent SPLIT: tail = 9 filler bytes then an unlisted function at 00ae5cc0 (mov eax, 
 NA154	00c6b050	CTCHeroStats	CTCHeroStats::InitializeAudioEffects	490	257-512	retry_skipped	1			SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: lane gap: inline fstp/fld/fistp rounding (audio reverb; catalog name wrong)
 NA154	004ca019	CThing	ConstructFromParams	428	257-512	retry_skipped	0			SKIPPED_ROWS single (re-attemptable): mis-cut row: real entry 0x004CA010 (row starts 9 bytes in)
 NA154	006bd9b0	_global	CMusicManager_CopyAssign	676	513-1024	retry_skipped	8			SKIPPED_ROWS single (re-attemptable): not attempted (CMusicManager state assignment: chains of inline pointer-field null tests, 
@@ -1541,7 +1541,7 @@ NA154	007c0ad0	_global	CreateShot	938	513-1024	retry_skipped	10			SKIPPED_ROWS s
 NA154	008028d0	_global	GetTargetingRangeForTargetType	648	513-1024	retry_skipped	3			SKIPPED_ROWS single (re-attemptable): not attempted (budget): anonymous GetTargetingRangeForTargetType, def-map lookups + max() 
 NA155	007bf000	_global	GetCreatureFirePosAndOrientation	679	513-1024	retry_skipped	3			SKIPPED_ROWS single (re-attemptable): not attempted (budget): NThingShot::GetCreatureFirePosAndOrientation, x87 + matrix code
 NA155	006b1a20	_global	CGameScriptInterface_SetSoundTheme	769	513-1024	retry_skipped	3			SKIPPED_ROWS single (re-attemptable): not attempted (script SetSoundTheme: 44 calls, CCharString temporaries, music-manager stat
-NA155	007cb8b0	_global	Save_TransferPickedUpItems	608	513-1024	retry_skipped	0	CTCHeroReceiveItems#1		SKIPPED_ROWS single (re-attemptable): not attempted (budget): persistence Transfer over vector<CCharString> + def lookups, 508 b; scan stops 100 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA155	007cb8b0	_global	Save_TransferPickedUpItems	508	513-1024	retry_skipped	0	CTCHeroReceiveItems#1		SKIPPED_ROWS single (re-attemptable): not attempted (budget): persistence Transfer over vector<CCharString> + def lookups, 508 b; extent SPLIT: tail = 4 filler bytes then an unlisted function at 007cbab0 (push esi;
 NA155	007eff80	_global	IsThingAbleToFish	619	513-1024	retry_skipped	2			SKIPPED_ROWS single (re-attemptable): not attempted (budget): CTCCarriedActionUseFishingRod::IsThingAbleToFish, x87 + fast inver
 NA155	007db2e0	_global	CTCTavernGameCardBase_NewGame	723	513-1024	retry_skipped	0	CTCTavernGameCardBlackjack#32		SKIPPED_ROWS single (re-attemptable): not attempted (budget): CTCTavernGameCardBase::NewGame, nested vector push_backs, 736 byte
 NA155	007bc38a	_global	CTCPhysicsRigidBody_ApplyForceToward	880	513-1024	retry_skipped	0	NThingShot::CTCShotDefinitionThrowPredictive#33		SKIPPED_ROWS single (re-attemptable): not attempted (budget): 880-byte ebp-frame x87 body at an unaligned start (size-optimised 
@@ -1551,7 +1551,7 @@ NA155	006b2260	_global	CGameScriptInterface_UpdateAtmosphere	671	513-1024	retry_
 NA155	006e2ed0	_global	CViewBase_ProcessLipSync	673	513-1024	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): not attempted (lip-sync processing: x87, phoneme vectors, 31 calls incl. virtual slots +0x
 NA156	005fddd0	_global	ConstructQuestsScreen_PastQuestsPC	691	513-1024	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): 0 grades; not attempted (704-byte quests-screen GUI builder, ~12 unidentified callees); on
 NA156	006b3b80	_global	CEnvironment_UpdateThunder	734	513-1024	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): not attempted (environment thunder: x87 + hero/world lookups, CCharString temporary)
-NA156	007ea580	_global	CTCTargeted_BuildTargetTrajectory	768	513-1024	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): not attempted (budget): vector<pair<C3DVector,long>> push_back loop with inline _M_insert_; scan stops 311 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA156	007ea580	_global	CTCTargeted_BuildTargetTrajectory	457	513-1024	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): not attempted (budget): vector<pair<C3DVector,long>> push_back loop with inline _M_insert_; extent SPLIT: tail = 7 filler bytes then an unlisted function at 007ea750 (mov eax, 
 NA156	006e3b90	_global	CThingCreatureBase_UpdatePhonemeAnimation	816	513-1024	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): not attempted (phoneme animation update: list erase loop, CCharString copies, 21 calls)
 NA156	006b2ca0	_global	CGameCamera_UpdateViewMatrix	910	513-1024	retry_skipped	1			SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: not attempted (camera/view matrix: 205 x87 instructions, inline normalise/cross products; 
 NA156	0062fe60	_global	CParticleMorphs_ctor	817	513-1024	retry_skipped	0			SKIPPED_ROWS single (re-attemptable): 0 grades; not attempted (832-byte ctor, interleaved dead temp stores); one function
@@ -1576,27 +1576,27 @@ NA158	008a93a0	CGameScriptInterface	CGameScriptInterface::EntityWillTeleportToAr
 NA158	0089e190	CGameScriptInterface	?CameraUseCameraPoint@CGameScriptInterface@@UBEXABVCScriptThing@@PBVC3DVector@@PBVCRightHandedSet@@MJJ@Z	803	513-1024	retry_skipped	0	CGameScriptInterface#411		SKIPPED_ROWS single (re-attemptable): SKIP: 803-byte camera-point x87/RHS-set body, not reached in budget
 NA158	007a6760	NGraphicAppearance::CTCGraphicAppearanceReplaceableMesh	NGraphicAppearance::CTCGraphicAppearanceReplaceableMesh::vfunc_0	645	513-1024	retry_skipped	0	NGraphicAppearance::CTCGraphicAppearanceReplaceableMesh#0		SKIPPED_ROWS single (re-attemptable): CTCGraphicAppearanceReplaceableMesh::OnAppearanceDraw not attempted (mesh-group primitive 
 NA158	0077bec0	NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity	NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity::vfunc_0	658	513-1024	retry_skipped	0	NGraphicAppearance::CTCGraphicAppearanceStaticMeshFadeOutOnProximity#0		SKIPPED_ROWS single (re-attemptable): CTCGraphicAppearanceStaticMeshFadeOutOnProximity::OnAppearanceDraw not attempted (0077ba40
-NA158	007c36a0	CTCDrainLife	FrameUpdate	672	513-1024	retry_skipped	0	CTCDrainLife#9		SKIPPED_ROWS single (re-attemptable): SKIP: inline list + filter object + search, 13 callees unmodelled; scan stops 66 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA158	007c36a0	CTCDrainLife	FrameUpdate	606	513-1024	retry_skipped	0	CTCDrainLife#9		SKIPPED_ROWS single (re-attemptable): SKIP: inline list + filter object + search, 13 callees unmodelled; extent SPLIT: tail = 2 filler bytes then an unlisted function at 007c3900 (mov eax, 
 NA158	00b98e10	CEnginePrimitiveManagerRepeatedStaticMeshes	ClipSubSectionsSIMD	664	513-1024	retry_skipped	2			SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: ClipSubSectionsSIMD: hand-written SSE inline asm (ebp frame)
 NA158	00716b30	CActionTalkBase	SetUpTextAndSpeech	681	513-1024	retry_skipped	2			SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: known lane gap: two inline-asm fistp rounding helpers (fld/fadd 0.5/fistp [ebp-4]/fild/fsu
 NA159	00bbddd0	CEnginePrimitiveManagerParticleSpriteTrailGroup	?RenderPrimitive@CEnginePrimitiveManagerParticleSpriteTrailGroup@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@AAVCEngineSubPrimitiveChain@@@Z	699	513-1024	retry_skipped	0	CEnginePrimitiveManagerParticleSpriteTrailGroup#7		SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: ParticleSpriteTrailGroup::RenderPrimitive: inline-asm fistp float-to-int helper (fstp/fld/
 NA159	008e0a10	NCreatureMode::CModeScorpionKingVulnerable	NCreatureMode::CModeScorpionKingVulnerable::vfunc_3	776	513-1024	retry_skipped	0	NCreatureMode::CModeScorpionKingVulnerable#3		SKIPPED_ROWS single (re-attemptable): CModeScorpionKingVulnerable vfunc_3 (FrameUpdate) not attempted (five GetInterface lookups
-NA159	0077b350	NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh	NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh::vfunc_0	800	513-1024	retry_skipped	0	NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh#0		SKIPPED_ROWS single (re-attemptable): CTCGraphicAppearanceAnimatedMesh::OnAppearanceDraw not attempted (the 0077ba40 model appli; scan stops 33 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA159	007b57c0	CTCCarriedActionUseActivateQuest	CTCCarriedActionUseActivateQuest::vfunc_28	896	513-1024	retry_skipped	0	CTCCarriedActionUseActivateQuest#28		SKIPPED_ROWS single (re-attemptable): SKIP: vfunc_28 with 23 distinct callees (quest activation, CCharString, inventory) unmodel; scan stops 120 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
-NA159	00944940	CAIStateGroup_WorkSawingWood	?Update@CAIStateGroup_WorkSawingWood@@MAEXXZ	912	513-1024	retry_skipped	0	CAIStateGroup_WorkSawingWood#12		SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: known lane gap: inlined lower_bound eax copy (two inlined STLport lower_bound interface se; scan stops 29 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA159	0077b350	NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh	NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh::vfunc_0	767	513-1024	retry_skipped	0	NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh#0		SKIPPED_ROWS single (re-attemptable): CTCGraphicAppearanceAnimatedMesh::OnAppearanceDraw not attempted (the 0077ba40 model appli; extent SPLIT: tail = 1 filler bytes then an unlisted function at 0077b650 (mov eax, 
+NA159	007b57c0	CTCCarriedActionUseActivateQuest	CTCCarriedActionUseActivateQuest::vfunc_28	776	513-1024	retry_skipped	0	CTCCarriedActionUseActivateQuest#28		SKIPPED_ROWS single (re-attemptable): SKIP: vfunc_28 with 23 distinct callees (quest activation, CCharString, inventory) unmodel; extent SPLIT: tail = 8 filler bytes then an unlisted function at 007b5ad0 (mov edx, 
+NA159	00944940	CAIStateGroup_WorkSawingWood	?Update@CAIStateGroup_WorkSawingWood@@MAEXXZ	883	513-1024	retry_skipped	0	CAIStateGroup_WorkSawingWood#12		SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: known lane gap: inlined lower_bound eax copy (two inlined STLport lower_bound interface se; extent SPLIT: tail = 13 filler bytes then an unlisted function at 00944cc0 (jmp 0xa0
 NA159	00945060	CAIStateGroup_WorkHammerAnvil	?Update@CAIStateGroup_WorkHammerAnvil@@MAEXXZ	936	513-1024	retry_skipped	0	CAIStateGroup_WorkHammerAnvil#12		SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: known lane gap: inlined lower_bound eax copy (interface-0x23 lookup inlined as an STLport 
 NA159	006823d0	CTCCreatureOpinionOfHero	FrameUpdate	962	513-1024	retry_skipped	0	CTCCreatureOpinionOfHero#9		SKIPPED_ROWS single (re-attemptable): SKIP: opaque +0x344 layout, transient list, __aullrem
 NA159	007e15c0	NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes	NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes::vfunc_0	963	513-1024	retry_skipped	0	NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes#0		SKIPPED_ROWS single (re-attemptable): CTCGraphicAppearanceMultipleStaticMeshes::OnAppearanceDraw not attempted (the 0077ba40 mod
 NA159	0074e860	CTCContainerRewardHero	GetRewardItems	1005	513-1024	retry_skipped	2			SKIPPED_ROWS single (re-attemptable): SKIP: 24 callees, inventory reward vectors (STL) unmodelled
 NA159	008dfb00	NCreatureMode::CModeSummonerLightningOrb	NCreatureMode::CModeSummonerLightningOrb::vfunc_3	1001	513-1024	retry_skipped	0	NCreatureMode::CModeSummonerLightningOrb#3		SKIPPED_ROWS single (re-attemptable): CModeSummonerLightningOrb vfunc_3 not attempted (x87, intelligent pointers)
-NA160	007ef200	CTCCarriedActionUseExpression	CTCCarriedActionUseExpression::vfunc_28	1024	513-1024	retry_skipped	0	CTCCarriedActionUseExpression#28		SKIPPED_ROWS single (re-attemptable): SKIP: vfunc_28 expression action, 15 callees + vcalls unmodelled; scan stops 290 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA160	007ef200	CTCCarriedActionUseExpression	CTCCarriedActionUseExpression::vfunc_28	734	513-1024	retry_skipped	0	CTCCarriedActionUseExpression#28		SKIPPED_ROWS single (re-attemptable): SKIP: vfunc_28 expression action, 15 callees + vcalls unmodelled; extent SPLIT: tail = 2 filler bytes then an unlisted function at 007ef4e0 (push ecx;
 NA160	008e20f0	NCreatureMode::CModeGuildmasterPowerUpShield	NCreatureMode::CModeGuildmasterPowerUpShield::vfunc_3	1019	513-1024	retry_skipped	0	NCreatureMode::CModeGuildmasterPowerUpShield#3		SKIPPED_ROWS single (re-attemptable): CModeGuildmasterPowerUpShield vfunc_3 not attempted (x87 + intelligent-pointer loops; 008e
 NA160	008e24f0	NCreatureMode::CModeGuildmasterPowerUpSpeed	NCreatureMode::CModeGuildmasterPowerUpSpeed::vfunc_3	1023	513-1024	retry_skipped	0	NCreatureMode::CModeGuildmasterPowerUpSpeed#3		SKIPPED_ROWS single (re-attemptable): CModeGuildmasterPowerUpSpeed vfunc_3 not attempted (twin of 008e20f0)
 NA160	00b67270	CEngineLandscapeRenderer	BuildBlendingTables	518	513-1024	retry_skipped	1			SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: BuildBlendingTables: ebp-frame inline-asm fistp floor/ceil helper (known lane gap)
 NA160	00b8dcd0	CEngineOcclusionManager	SelectFlareTestVertexBuffer	639	513-1024	retry_skipped	1			SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: SelectFlareTestVertexBuffer: inline-asm fistp float-to-int helper (fstp/fld/fistp round tr
 NA160	00c3dfd0	CTCHeroStats	CTCHeroStats::InitializeVectorArrays	642	513-1024	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): third-party library code at 0xC3xxxx/0xC4xxxx mislabelled CTCHeroStats::InitializeVectorAr
 NA160	00c41060	CTCHeroStats	CTCHeroStats::SetupCharacterStateInitial	621	513-1024	retry_skipped	0			SKIPPED_ROWS single (re-attemptable): third-party library code at 0xC3xxxx/0xC4xxxx mislabelled CTCHeroStats::SetupCharacterStat
-NA160	0078c210	CTCBerserk	CTCBerserk	688	513-1024	retry_skipped	1			SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: lane gap: inline-asm fistp rounding helper; scan stops 86 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA160	0078c210	CTCBerserk	CTCBerserk	602	513-1024	retry_skipped	1			SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: lane gap: inline-asm fistp rounding helper; extent SPLIT: tail = 6 filler bytes then an unlisted function at 0078c470 (push ecx;
 NA160	0075d580	CTCCameraPointScriptedSpline	UpdateCameraParams	809	513-1024	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): SKIP: spline camera params, 16 callees incl. inline spline/interpolator math with no model
 NA160	0080c6d0	CTCDExplosion	UpdateDynamicHitThings	842	513-1024	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): SKIP: STL-heavy hit filters (vector-of-def builds 0x80EC50, search filters 0x80E670/0x80E8
 NA161	0080cd40	CTCDExplosion	UpdateHitThings	876	513-1024	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): SKIP: same filter machinery as 0080c6d0
@@ -1608,7 +1608,7 @@ NA161	00bf7bc0	CEngineLandscapePatch	DebugCalcInForgroundRange	546	513-1024	retr
 NA161	006cbe80	CTCCreatureNavigation	GetNearestFleePositionBehindCover	741	513-1024	retry_skipped	0			SKIPPED_ROWS single (re-attemptable): SKIP: bind2nd/ptr_fun cover search (0x6CD3B0 with predicate 0x6CCF50), inline fast rsqrt, 
 NA161	00875690	CGeneralCircle	CGeneralCircle	762	513-1024	retry_skipped	0			SKIPPED_ROWS single (re-attemptable): SKIP: 768-byte x87 circumcircle geometry (two Normalise calls, cross products); x87 schedu
 NA161	00b41770	CEngineMap	PeekInterpolatedWaterHeight	777	513-1024	retry_skipped	0			SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: GetInterpolatedWaterHeight: inline-asm fistp float-to-int helper (fstp/fld/fistp round tri
-NA161	00b3fc40	CEngineMap	PeekInterpolatedMapNormal	816	513-1024	retry_skipped	0			SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: GetInterpolatedMapNormal: ebp-frame inline-asm fistp floor/ceil helper (known lane gap); scan stops 288 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA161	00b3fc40	CEngineMap	PeekInterpolatedMapNormal	528	513-1024	retry_skipped	0			SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: GetInterpolatedMapNormal: ebp-frame inline-asm fistp floor/ceil helper (known lane gap); extent SPLIT: code right after the row end, referenced from outside ({'data': 2, 'im
 NA162	00cdd6b0	CGlobal_TeleportToHeroGuildScript	Main	1012	513-1024	retry_skipped	0			SKIPPED_ROWS single (re-attemptable): SKIP: 1024-byte script Main with x87 distance tests and many virtual calls, not reached in
 NA162	007fae34	CPersistContext_TransferableVector<CHeroMarriageInfo>	Resize	32	17-96	retry_skipped	0			SKIPPED_ROWS single (re-attemptable): not a function: unreferenced tail block after 0x007FAE31 ret 3Ch (pops never-pushed regs)
 NA162	0080bfec	CPersistContext_TransferableVector<CHeroMarriageInfo>	Resize	38	17-96	retry_skipped	0			SKIPPED_ROWS single (re-attemptable): not a function: unreferenced tail block (pops never-pushed regs, same shape as 0x007FAE34)
@@ -1620,10 +1620,10 @@ NA162	00b47bc0	CEngineLightingManager	UpdateShadowedSpotLights	1028	1025-4096	re
 NA162	00b4fc40	CEngineShadowRenderer	SetupShadowFuncRenderStates	1837	1025-4096	retry_skipped	11			SKIPPED_ROWS single (re-attemptable): decode-only: 55 x87 ops + per-stage state tables; low-yield
 NA162	00b4ef80	CEngineShadowRenderer	UpdateSpotLightShadowSpace	1028	1025-4096	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): decode-only: 234 x87 ops (spot-light shadow matrix); low-yield
 NA163	00a9eb90	C3DAnimationManager	BlendAnimations	1337	1025-4096	retry_skipped	4			SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: lane gap: inline-asm dword fistp rounding (fsub 0.5; fstp/fld; fistp) in the inlined quate
-NA163	00665860	CThingCreatureBase	UpdateAnimation	1424	1025-4096	retry_skipped	4			SKIPPED_ROWS single (re-attemptable): CThingCreatureBase::UpdateAnimation not attempted; scan stops 19 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA163	00665860	CThingCreatureBase	UpdateAnimation	1405	1025-4096	retry_skipped	4			SKIPPED_ROWS single (re-attemptable): CThingCreatureBase::UpdateAnimation not attempted; extent SPLIT: tail = 3 filler bytes then an unlisted function at 00665de0 (push 0; r
 NA163	00b3f5e0	CEngineMap	PeekMapNormal	1624	1025-4096	retry_skipped	4			SKIPPED_ROWS single (re-attemptable): x87 normal + second inline 0xB43870 on the PeekLayerValue family gap
 NA163	00b40bd0	CEngineMap	PeekWaterDepth	1736	1025-4096	retry_skipped	4			SKIPPED_ROWS single (re-attemptable): x87 depth + second inline 0xB43870 on the PeekLayerValue family gap
-NA163	0076efa0	CTCWeaponTrail	UpdateWeaponTrails	1888	1025-4096	retry_skipped	4			SKIPPED_ROWS single (re-attemptable): CTCWeaponTrail::UpdateWeaponTrails not attempted; scan stops 576 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA163	0076efa0	CTCWeaponTrail	UpdateWeaponTrails	1312	1025-4096	retry_skipped	4			SKIPPED_ROWS single (re-attemptable): CTCWeaponTrail::UpdateWeaponTrails not attempted; extent SPLIT: unreferenced function-shaped code right after the terminator at 0076f4
 NA163	0076eb00	CTCWeaponTrail	InitialiseTrails	1080	1025-4096	retry_skipped	2			SKIPPED_ROWS single (re-attemptable): CTCWeaponTrail::InitialiseTrails not attempted (inline vector<CCharString> + strcmp)
 NA163	004c9120	CThing	Save	1083	1025-4096	retry_skipped	1	CThing#2		SKIPPED_ROWS single (re-attemptable): CThing::Save decoded only (conditional CCharString temporaries); not graded
 NA163	004caa00	CThing	ConstructFromLevelScript	1730	1025-4096	retry_skipped	1	CThing#4		SKIPPED_ROWS single (re-attemptable): CThing::ConstructFromLevelScript not attempted
@@ -1634,10 +1634,10 @@ NA164	009609b0	CAIStateGroup_DeedReactionRoot	?IsRunnable@CAIStateGroup_DeedReac
 NA164	00b9d220	CEngineInternalPrimitive2DStaticMesh	CEngineInternalPrimitive2DStaticMesh::CalcInterpolatedObjectTransform	1071	1025-4096	retry_skipped	0	CEngineInternalPrimitive2DStaticMesh#33		SKIPPED_ROWS single (re-attemptable): x87 interpolated transform (decoded, low yield)
 NA164	00a4d330	C3DAnimation2	CalcLocalBoneTransformation	1083	1025-4096	retry_skipped	2			SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: lane gap: inline-asm dword fistp rounding (fsub 0.5; fstp/fld; fistp) in the inlined quate
 NA164	00a4cec0	C3DAnimation2	CalcLocalTransformations	1128	1025-4096	retry_skipped	2			SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: lane gap: inline-asm dword fistp rounding (fsub 0.5; fstp/fld; fistp) in the inlined quate
-NA164	00a4d920	C3DAnimation2	CalcLocalBoneTransformationRelative	1408	1025-4096	retry_skipped	2			SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: lane gap: inline-asm dword fistp rounding (fsub 0.5; fstp/fld; fistp) in the inlined quate; scan stops 67 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA164	00a4d920	C3DAnimation2	CalcLocalBoneTransformationRelative	1341	1025-4096	retry_skipped	2			SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: lane gap: inline-asm dword fistp rounding (fsub 0.5; fstp/fld; fistp) in the inlined quate; extent SPLIT: tail = 3 filler bytes then an unlisted function at 00a4de60 (mov eax, 
 NA164	00a4e300	C3DAnimation2	C3DAnimation2::GetDeltaMovement	1619	1025-4096	retry_skipped	0	C3DAnimation2#6		SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: not attempted to completion: 0x104-frame x87 quaternion-to-matrix pair + inverse product (
 NA164	00a50510	C3DAnimation2	InitialiseAnimationSequences	1748	1025-4096	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): not authored: 1760-byte x87-heavy sequence initialisation (223 x87 ops); decoded only, bud
-NA164	00a53c50	C3DAnimation2	CalcLocalBoneTransformation	1216	1025-4096	retry_skipped	0			SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: lane gap: inline-asm dword fistp rounding (fsub 0.5; fstp/fld; fistp) in the inlined quate; scan stops 161 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA164	00a53c50	C3DAnimation2	CalcLocalBoneTransformation	1055	1025-4096	retry_skipped	0			SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: lane gap: inline-asm dword fistp rounding (fsub 0.5; fstp/fld; fistp) in the inlined quate; extent SPLIT: tail = 1 filler bytes then an unlisted function at 00a54070 (mov eax, 
 NA164	007b5e50	CTCWaterWader	FrameUpdate	1099	1025-4096	retry_skipped	0	CTCWaterWader#9		SKIPPED_ROWS single (re-attemptable): CTCWaterWader::FrameUpdate decoded only (inline float floor/ceil, vector temporary); not g
 NA165	00b68070	CEngineLandscapeRenderer	LoadForegroundTextures	1139	1025-4096	retry_skipped	2			SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: inline-asm fistp rounding helper (lane gap)
 NA165	00ba4c10	CEnginePrimitiveManagerStaticMeshesBase	?PreloadPrimitive@CEnginePrimitiveManagerStaticMeshesBase@@UAE_NAAVCEngineInternalPrimitiveBase@@ABVC3DVector@@K@Z	1159	1025-4096	retry_skipped	0	CEnginePrimitiveManagerStaticMeshesBase#9		SKIPPED_ROWS single (re-attemptable): x87 preload LOD distances (decoded, low yield)
@@ -1661,21 +1661,21 @@ NA166	00974110	CAIStateGroup_JackOfBladesBase	Summon	1631	1025-4096	retry_skippe
 NA166	00973900	CAIStateGroup_JackOfBladesBase	SummonPillarsOld	1212	1025-4096	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): not authored: 0x188-frame pillar summon (CCharString/def temporaries, 121 x87 ops); decode
 NA167	00b9a4a0	CEnginePrimitiveManagerRepeatedStaticMeshes	CEnginePrimitiveManagerRepeatedStaticMeshes::RenderPrimitive	1674	1025-4096	retry_skipped	0	CEnginePrimitiveManagerRepeatedStaticMeshes#7		SKIPPED_ROWS single (re-attemptable): x87 repeated-mesh render (decoded, low yield)
 NA167	007c6e50	CTCTurncoatSpell	FrameUpdate	1806	1025-4096	retry_skipped	0	CTCTurncoatSpell#9		SKIPPED_ROWS single (re-attemptable): CTCTurncoatSpell::FrameUpdate not attempted (x87-heavy)
-NA167	00b8df50	CEngineOcclusionManager	CEngineOcclusionManager::FrameEnd	1856	1025-4096	retry_skipped	0	CEngineOcclusionManager#2		SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: x87-heavy + fistp rounding (lane gap); scan stops 230 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA167	00b8df50	CEngineOcclusionManager	CEngineOcclusionManager::FrameEnd	1626	1025-4096	retry_skipped	0	CEngineOcclusionManager#2		SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: x87-heavy + fistp rounding (lane gap); extent SPLIT: tail = 6 filler bytes then an unlisted function at 00b8e5b0 (mov edx, 
 NA167	0094e7b0	CAIStateGroup_EarthTroll	CAIStateGroup_EarthTroll::Update	1980	1025-4096	retry_skipped	0	CAIStateGroup_EarthTroll#12		SKIPPED_ROWS single (re-attemptable): not authored: 0x15C-frame EarthTroll update with 394 x87 ops; decoded only, budget
-NA167	00bb8ef0	CEnginePrimitiveManagerParticleDecalGroup	CEnginePrimitiveManagerParticleDecalGroup::RenderSubPrimitive	2672	1025-4096	retry_skipped	0	CEnginePrimitiveManagerParticleDecalGroup#5		SKIPPED_ROWS single (re-attemptable): long SetState chain + texture refcount + lighting inline (decoded, low yield); scan stops 731 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA167	00bb8ef0	CEnginePrimitiveManagerParticleDecalGroup	CEnginePrimitiveManagerParticleDecalGroup::RenderSubPrimitive	1941	1025-4096	retry_skipped	0	CEnginePrimitiveManagerParticleDecalGroup#5		SKIPPED_ROWS single (re-attemptable): long SetState chain + texture refcount + lighting inline (decoded, low yield); extent SPLIT: tail = 11 filler bytes then an unlisted function at 00bb9690 (mov eax,
 NA167	00bb8750	CEnginePrimitiveManagerParticleDecalGroup	RenderLandscapeDecalGroup	1951	1025-4096	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): x87 landscape decal render loop (decoded, low yield)
 NA167	00c604e0	CEnvironmentSpellEffectInterface	CEnvironmentSpellEffectInterface	1093	1025-4096	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): decode-only: constant-store ctor scheduling; label likely wrong (0x4f0-byte object, vtable
 NA167	00b640e0	CEngineSkyRenderer	RenderMoon	1129	1025-4096	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): decode-only: x87 + fast inverse-sqrt table + __ftol2; low-yield
 NA167	00b63c00	CEngineSkyRenderer	RenderSun	1243	1025-4096	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): decode-only: x87 + fast inverse-sqrt table + __ftol2; low-yield
-NA167	00b665e0	CEngineSkyRenderer	GetEnvironmentMap	1456	1025-4096	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): decode-only: fptan, 0x138 frame, many unknown callees; low-yield; scan stops 285 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA167	00b665e0	CEngineSkyRenderer	GetEnvironmentMap	1171	1025-4096	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): decode-only: fptan, 0x138 frame, many unknown callees; low-yield; extent SPLIT: tail = 13 filler bytes then an unlisted function at 00b66a80 (mov eax,
 NA168	00b65a20	CEngineSkyRenderer	RenderOuterSky	1893	1025-4096	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): decode-only: inlined texture-manager refcount lookups, large; low-yield
 NA168	0097a1b0	CAIStateGroup_CreatureTakeCover	MoveFromCoverToFiringPosition	1143	1025-4096	retry_skipped	1			SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: not authored: 0x20C-frame x87 arc search for a firing position (224 x87 ops; chunk-293 x87
 NA168	008637d0	CThingBodyReorienter	CheckForNewBodyReorientationAngle	1223	1025-4096	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): CThingBodyReorienter::CheckForNewBodyReorientationAngle not attempted (x87)
 NA168	00912ba0	CAIStateGroup_FlyingThingBase	CalculatePrettyPath	1314	1025-4096	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): not authored: CalculatePrettyPath x87 spline (136 x87 ops); decoded only, budget
-NA168	00ab2520	C3DAnimationBuilder	BuildMeshAnimation	1376	1025-4096	retry_skipped	1			SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: not authored: inline 3x4 matrix inverse + product (x87 operand-order lane gap, chunk 293); scan stops 111 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA168	00ab2520	C3DAnimationBuilder	BuildMeshAnimation	1265	1025-4096	retry_skipped	1			SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: not authored: inline 3x4 matrix inverse + product (x87 operand-order lane gap, chunk 293); extent SPLIT: tail = 15 filler bytes then an unlisted function at 00ab2a20 (mov eax,
 NA168	00b3c5d0	CEngineResourceManager	SetupAlphaStippleTexture	1363	1025-4096	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): decode-only: file streams + 64-bit arithmetic for the stipple texture; low-yield
-NA168	00b51570	CEngineWeatherRenderer	BuildBuffers	1376	1025-4096	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): decode-only: RNG/pow loops with 4x-unrolled fills; low-yield; scan stops 122 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA168	00b51570	CEngineWeatherRenderer	BuildBuffers	1254	1025-4096	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): decode-only: RNG/pow loops with 4x-unrolled fills; low-yield; extent SPLIT: tail = 10 filler bytes then an unlisted function at 00b51a60 (mov al, 
 NA168	00b54890	CEngineWeatherRenderer	RenderRain	1431	1025-4096	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): decode-only: two STLport C3DVector vectors (push_back overflow 0x66E370) in nested x87 loo
 NA168	00b54e30	CEngineWeatherRenderer	RenderSnow	1901	1025-4096	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): decode-only: as RenderRain plus more x87; not reached
 NA168	00952890	CAIStateGroup_JackDragon	UpdateGround	1509	1025-4096	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): not authored: 0x148-frame JackDragon ground update (86 x87 ops, 229 calls); decoded only, 
@@ -1687,9 +1687,9 @@ NA169	00b2b180	CEngineSurfaceCompositionManager	RenderToTexture	1539	1025-4096	r
 NA169	00b2cb40	CEngineSurfaceCompositionManager	CEngineSurfaceCompositionManager	1637	1025-4096	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): decode-only: aligned-frame (and esp,-8) ctor with many member ctors; not reached
 NA169	00b2d330	CEngineSurfaceCompositionManager	UpdateDiskCacheTexture	1723	1025-4096	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): decode-only: disk-cache texture update, many unknown callees; not reached
 NA169	00bea110	CEngineWaterSettings	UpdateConstants	1607	1025-4096	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): decode-only: 150 x87 ops; low-yield
-NA169	00be9920	CEngineWaterSettings	CEngineWaterSettings	2032	1025-4096	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): decode-only: settings ctor with fcos/x87 constant setup; low-yield; scan stops 146 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA169	00be9920	CEngineWaterSettings	CEngineWaterSettings	1886	1025-4096	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): decode-only: settings ctor with fcos/x87 constant setup; low-yield; extent SPLIT: tail = 2 filler bytes then an unlisted function at 00bea080 (mov eax, 
 NA169	00b891b0	CEngineScreenEffectOutlineGlow	CEngineScreenEffectOutlineGlow::CEngineScreenEffectOutlineGlow	1819	1025-4096	retry_skipped	1			SKIPPED_ROWS single (re-attemptable): decode-only: 49-call ctor with many unmodelled member ctors; low-yield
-NA170	00a4c5e0	C3DAnimationSequenceData	ReadCompressedFromFile	1936	1025-4096	retry_skipped	1			SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: lane gap: unsigned 64-bit size guard (mul; test edx,edx; ja) keeps a dead jb in this lane ; scan stops 92 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA170	00a4c5e0	C3DAnimationSequenceData	ReadCompressedFromFile	1844	1025-4096	retry_skipped	1			SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: lane gap: unsigned 64-bit size guard (mul; test edx,edx; ja) keeps a dead jb in this lane; extent SPLIT: tail = 12 filler bytes then an unlisted function at 00a4cd20 (push ecx
 NA170	0074bc30	CTCCreatureGenerator	DrawDebugInfo	1274	1025-4096	retry_skipped	0			SKIPPED_ROWS single (re-attemptable): catalog row starts 16 bytes into DrawDebugInfo 0x0074BC20 (sub esp/push ebx/cmp al,bl prec
 NA170	00dcd350	CTeamSpawn	Main	1833	1025-4096	retry_skipped	0			SKIPPED_ROWS single (re-attemptable): CTeamSpawn::Main partly decoded (parent offsets in NOTES); not graded
-NA170	00dfca90	CBanditExtra	Main	2928	1025-4096	retry_skipped	0			SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: lane gap: inline-asm dword fistp rounding (GOTCHAS wave 25) in the shout-count Round; not ; scan stops 2555 bytes before the next start over non-filler bytes: length uncertain (cold arm after a noreturn call?)
+NA170	00dfca90	CBanditExtra	Main	373	1025-4096	retry_skipped	0			SKIPPED_ROWS before the retail_asm rule (2026-10-24) / lane-gap note, re-attemptable: lane gap: inline-asm dword fistp rounding (GOTCHAS wave 25) in the shout-count Round; not; extent SPLIT: tail = 11 filler bytes then an unlisted function at 00dfcc10 (sub esp,

@@ -1,0 +1,415 @@
+start	after_row	row_name	gap_to_next_start	first_insn	refs_outside
+00407a70	004075c0	RenderUIBackground	608	mov al, byte ptr [esp + 0xc]	{'imm': 12}
+00419ca0	004199c0	HeroAbility_StringToID	240	push ecx	{'imm': 12}
+0044ea4e	0044c72b	InitAndCompile	230	mov eax, ecx	{'imm': 3}
+00462fb1	00462fac	NUISystem::CUILocaleGraphicsDef::vfunc_1	51	push esi	{}
+00487a90	00487570	DrawFreeCamDebug	16	mov eax, dword ptr [ecx + 0x18	{'imm': 1}
+0049ac20	0049a0b0	CProgressDisplay::InitialiseTextures	64	mov eax, dword ptr [ecx]	{'imm': 2}
+004b9e40	004b9e20	_Umove<EWeaponClass*>	144	lea eax, [esp + 4]	{}
+004ba870	004ba810	remove_if<NEntityEvents::CConvFilterToCP	448	push ecx	{'imm': 5}
+00514f10	00514eb0	std::vector_construct_from_C2DLineF_vect	48	push esi	{}
+0052d390	0052cf40	ChangeState	400	mov eax, dword ptr [ecx + 4]	{'imm': 8}
+0052f1c0	0052f1b0	operator()	544	xor eax, eax	{'data': 849, 'imm': 4}
+00545370	00544d20	ProcessEvent	640	push esi	{'data': 11, 'imm': 8, 'jmp': 1}
+005498e0	00549440	ProcessEvent	288	push ecx	{'imm': 7, 'data': 2}
+0054b240	0054ac90	NUISystem::CSlider::vfunc_1	288	push ecx	{'data': 2, 'imm': 2}
+0054d170	0054cbf0	NUISystem::CFrontEndList::vfunc_48	1264	push ecx	{'data': 1, 'imm': 9, 'jmp': 2}
+005507f0	005502e0	NUISystem::CMesh::vfunc_2	16	add ecx, 0x24	{'imm': 4}
+00552db0	00551ea0	NUISystem::CTable::ConstructSpritesToDra	656	mov eax, ecx	{'imm': 7}
+00554d70	00554740	NUISystem::CMorphingSprite::vfunc_2	384	mov eax, ecx	{'imm': 8, 'data': 8}
+00558d10	00558c70	NUISystem::CNavButton::vfunc_48	32	sub ecx, 4	{'data': 2}
+0055a310	00559a90	NUISystem::CScrollBar::vfunc_1	32	mov eax, dword ptr [ecx]	{'imm': 1}
+00564d80	00564d5d	_Copy_impl<CAppearanceModifierGraphics::	688	mov eax, dword ptr [ecx]	{'imm': 12, 'data': 1}
+0057ec36	0057e2f1	OnSerialise	213	jmp 0x99eae0	{'imm': 4}
+005b109a	005b0aac	CTCInventoryTrade::BuyItemPC	275	mov eax, dword ptr [ecx]	{}
+005b9bf0	005b9641	CTCInventoryClothing::vfunc_11	412	mov eax, ecx	{}
+005df770	005df750	CAnimComponentCombatMisc::Alloc	16	mov eax, ecx	{}
+005df7b0	005df790	CAnimComponentCombatFlourishTargetOffset	32	mov eax, ecx	{}
+005e8710	005e8220	CTCInventoryMapSerialization_TransferCha	624	mov eax, ecx	{}
+005f7512	005f6e40	OnSerialise	367	mov eax, dword ptr [ecx]	{}
+00616400	00615e70	TransferIn	384	mov eax, dword ptr [esp + 8]	{'imm': 5, 'call': 1, 'data': 1}
+0061e650	0061b610	ConstructQuestList	128	push ecx	{}
+00628e40	006286f0	GFPlayFullScreenXBoxMovie	64	push ecx	{}
+006308c0	006303c0	CUIDef	336	mov eax, dword ptr [esp + 4]	{'imm': 2}
+00642fe0	00642aa0	sub_00642aa0	2032	push ecx	{'imm': 13, 'call': 9, 'data': 1, 'jmp': 1}
+0064427c	00644263	NPlayerGui::CDrawMoney::vfunc_0	50	cmp byte ptr [ecx + 0x18], 0	{'data': 2}
+00665de0	00665860	UpdateAnimation	16	push 0	{}
+006681f0	00667d30	OnHit	752	mov eax, ecx	{}
+00685120	00684610	COpinionReactionManager::TransferOpinion	16	mov eax, ecx	{'imm': 31}
+0068d4c0	0068cb90	CInputProcessControlFreeCamera::ProcessI	304	fld dword ptr [esp + 8]	{}
+00691f80	00691d70	?ProcessInput@CInputProcessCreatureMovem	96	push ecx	{'data': 1}
+006b9d80	006b97e0	CWorld_InitFactions	16	mov eax, ecx	{'imm': 1}
+006c9cd0	006c9c60	Catch@004ab920	128	mov edx, dword ptr [ecx]	{}
+006d32c0	006d2bd0	CThingNPC::TransferLoveState	224	mov eax, ecx	{}
+006fe3e0	006fdd60	?Update@CGameCameraBase@@UAEXXZ	368	mov eax, dword ptr [ecx]	{'imm': 1}
+0072d180	0072cf40	UseSpecialAbility	432	mov eax, ecx	{'imm': 4}
+0073cb50	0073b130	Init_RegisterGameComponents	320	mov eax, dword ptr [ecx]	{}
+00768c10	00768bf0	_Dest_val<std::allocator<std::pair<CChar	32	mov eax, dword ptr [esp + 4]	{'imm': 1}
+0076f4c0	0076efa0	UpdateWeaponTrails	576	mov ecx, dword ptr [ecx]	{}
+00771f50	00771f30	OnDie	368	mov eax, ecx	{'imm': 9}
+007760f0	00775c60	CPersistentShop_TransferStockItems	800	mov eax, ecx	{'imm': 1, 'data': 1}
+00778d40	00778d20	OnDie	16	mov eax, 0x58	{}
+0077b650	0077b350	NGraphicAppearance::CTCGraphicAppearance	32	mov eax, dword ptr [ecx]	{}
+00780c50	007808b0	CTCAvoidRegion_Initialize	48	mov edx, dword ptr [ecx + 0xc]	{}
+007879d0	007877e0	FrameUpdate	48	mov eax, ecx	{'imm': 1}
+0078c470	0078c210	CTCBerserk	80	push ecx	{}
+007921a0	0078fd60	FrameUpdate	32	mov eax, dword ptr [ecx]	{}
+00797740	00795300	FrameUpdate	32	mov eax, dword ptr [ecx]	{}
+007a2640	007a1b20	FrameUpdate	1968	sub esp, 0x57c	{'data': 1, 'imm': 18, 'jmp': 4}
+007a4660	007a4520	PlaySoundW	2320	sub esp, 0xcc	{'data': 1, 'imm': 52, 'jmp': 2}
+007a56b0	007a5580	PlayCastSound	2112	sub esp, 0x134	{'data': 1, 'imm': 9, 'jmp': 1}
+007b5ad0	007b57c0	CTCCarriedActionUseActivateQuest::vfunc_	112	mov edx, dword ptr [esp + 8]	{}
+007c3900	007c36a0	FrameUpdate	64	mov eax, ecx	{}
+007c8580	007c8560	OnDie	112	mov eax, dword ptr [ecx + 4]	{'imm': 1}
+007cbab0	007cb8b0	Save_TransferPickedUpItems	96	push esi	{'imm': 1}
+007cd6b0	007cd390	CTCMultiStrike	32	mov eax, ecx	{}
+007d9590	007d8e20	FrameUpdate	160	mov eax, ecx	{}
+007dc0a0	007db6a0	CardsMainGame	688	mov eax, ecx	{}
+007ea750	007ea580	CTCTargeted_BuildTargetTrajectory	304	mov eax, dword ptr [ecx]	{'imm': 4}
+007ef4e0	007ef200	CTCCarriedActionUseExpression::vfunc_28	288	push ecx	{'imm': 4}
+007f3560	007f2dc0	FrameUpdate	384	mov eax, dword ptr [ecx]	{}
+00802640	00802610	GetPTargetedThing	16	add ecx, 0x25	{'data': 1}
+00834500	00833c00	CThingAICreature::vfunc_36	48	push esi	{}
+008383d0	00837e40	CThingTrackNode::vfunc_4	272	sub esp, 0x44	{'imm': 85}
+0083ad90	00839940	OnHit	160	mov dword ptr [ecx], 0x127232c	{}
+0083e9b0	0083e1f0	CThingScriptUIDReplacer	96	mov ax, word ptr [esp + 4]	{'imm': 11}
+008424c0	008424a0	CCreatureAction_ActivateZTarget::Perform	16	ret 	{'imm': 78}
+0084fdc0	0084fdb0	NCameraModes::CCameraPointModeBase::vfun	976	sub esp, 0x24	{'data': 29, 'imm': 9}
+00876a20	008764e0	RenderParticleEmitter_4particles	640	mov eax, dword ptr [ecx]	{'jmp': 1}
+00877690	008771a0	GetThingPointIntersectionFromTo	144	push ecx	{}
+0087a660	00879900	NCameraModes::CProjectileWeapon::vfunc_1	352	mov edx, dword ptr [esp + 8]	{}
+0087b680	0087b660	OnDie	16	mov eax, 1	{}
+0087bbd0	0087bbc0	NCameraModes::CScriptedControl::vfunc_1	32	mov ecx, dword ptr [ecx + 0xa4	{'data': 2}
+008eb6b0	008eacb0	OnActivate	352	mov eax, dword ptr [ecx]	{}
+008ee4b0	008edff0	CWillButtonHelperTimer	240	mov eax, ecx	{'imm': 2}
+008ef0e0	008eec70	Collide	48	fld dword ptr [esp + 4]	{}
+008fb580	008fb170	PhysicsForceModel_Initialize	1328	mov eax, dword ptr [esp + 4]	{'imm': 3}
+0090c7d0	0090c780	AssignCreatureToTask	16	mov eax, 0xc1	{}
+0090dd00	0090d030	?Update@CAIStateGroup_MinionGossip@@MAEX	416	mov eax, ecx	{}
+009322b0	00931390	?Update@CAIStateGroup_MinionReactToCrimi	32	push esi	{}
+00944cc0	00944940	?Update@CAIStateGroup_WorkSawingWood@@MA	16	jmp 0xa01b90	{}
+0094b320	0094ab00	CAIStateGroup_GoToPub::Update	16	mov eax, ecx	{}
+0094c7a0	0094c050	?Update@CAIStateGroup_SellToBuyer@@UAEXX	16	mov eax, dword ptr [esp + 4]	{}
+00995e80	00995e70	PeekData	48	mov edx, dword ptr [ecx + 0xc]	{}
+0099db80	0099d8c0	sub_0099d8c0	96	mov eax, dword ptr [0x138de50]	{}
+009b5d70	009b5d50	OnDie	64	push ebx	{}
+009bc790	009bc120	sub_009bc120	64	push -1	{}
+009cf351	009cf2f4	Catch@009cf2f4	79	inc edi	{'jmp': 1}
+009d8260	009d8250	$E2	336	mov eax, ecx	{'imm': 1}
+009eda70	009ed190	Initialise	256	mov eax, ecx	{'imm': 1}
+009ff1f0	009fed30	LoadGraphicFrame	48	mov eax, dword ptr [ecx + 0xc]	{}
+00a08d10	00a079b0	CPSCOrbit	4208	mov edx, dword ptr [esp + 4]	{'imm': 537}
+00a0f7c6	00a0f6ea	Deque_InsertRange	453	mov eax, dword ptr [esi + 0x18	{}
+00a0fa70	00a0f98b	Deque_InsertRangeReverse	48	mov eax, dword ptr [ecx]	{}
+00a13360	00a12ee0	GetNavigationLevelVolumes	224	fld dword ptr [ecx]	{'imm': 1}
+00a30330	00a2f740	sub_00a2f740	1856	add ecx, 0x34	{'data': 4, 'imm': 4}
+00a39190	00a39010	CCRCSymbolMap::LoadFromFile	144	mov eax, dword ptr [ecx + 8]	{}
+00a3a7b0	00a3a410	CreateWorldLevelWad	32	mov eax, dword ptr [esp + 4]	{}
+00a3bd10	00a3bd00	CTextureRenderer::vfunc_0	176	mov eax, dword ptr [esp + 4]	{'jmp': 6, 'data': 22}
+00a3e540	00a3e520	CSoundManagerLH::vfunc_18	704	mov eax, dword ptr [ecx + 0x40	{'data': 17, 'imm': 2}
+00a3e850	00a3e830	CSoundManagerLH::vfunc_35	720	push ecx	{'call': 2, 'data': 7, 'imm': 28}
+00a465e0	00a46594	GetDefaultVal<CObjectAugmentationParticl	160	mov eax, dword ptr [esp + 4]	{}
+00a4cd20	00a4c5e0	ReadCompressedFromFile	80	push ecx	{}
+00a4de60	00a4d920	CalcLocalBoneTransformationRelative	64	mov eax, dword ptr [ecx + 0x58	{}
+00a54070	00a53c50	CalcLocalBoneTransformation	160	mov eax, dword ptr [esp + 4]	{'imm': 1}
+00a58630	00a58130	CPSCSplineBase_GenerateCurvePoints	160	mov edx, dword ptr [esp + 8]	{'imm': 4}
+00a5a4d0	00a59fd0	C3DLineF_GetFirstIntersectionWithFiniteL	112	mov eax, dword ptr [esp + 4]	{}
+00a69180	00a68de0	sub_00a68de0	976	sub esp, 0xac	{'jmp': 2}
+00a84f20	00a84f00	OnDie	144	push ecx	{}
+00a8bff0	00a8b990	C3DMesh2_AddSubMeshBoneVertices	2576	mov eax, dword ptr [esp + 0x20	{'imm': 82, 'jmp': 2}
+00a958c0	00a95890	_Uninit_fill_n<std::pair<unsigned___int6	176	mov eax, dword ptr [esp + 4]	{}
+00a9a7e0	00a9a7c0	OnDie	224	mov eax, 0x129e064	{}
+00a9fe30	00a9f540	CalcMeshTransformations	608	push ecx	{'data': 9, 'imm': 5}
+00aa32e0	00aa2110	CalcBlendedBoneTransformation	176	mov eax, dword ptr [ecx]	{}
+00aadc80	00aad650	LoadWaveFile	256	mov eax, ecx	{}
+00ab2a20	00ab2520	BuildMeshAnimation	96	mov eax, dword ptr [ecx]	{}
+00ac36d0	00ac2be0	sub_00ac2be0	224	push ecx	{}
+00add5c0	00add4a0	PlayerGuiDef_ctor	16	mov edx, dword ptr [ecx]	{}
+00adeb30	00ade080	InitialiseFromOBB	144	sub esp, 0x18	{}
+00adf1a0	00adefc0	Matrix4x4_Multiply	64	mov eax, dword ptr [esp + 8]	{}
+00ae4540	00ae3c30	ReadFromFile	624	mov eax, ecx	{}
+00ae5cc0	00ae5c60	sub_00ae5c60	192	mov eax, ecx	{}
+00ae9090	00ae8d50	sub_00ae8d50	304	mov al, byte ptr [esp + 4]	{}
+00afe0d0	00afcc30	NParticleEngine::CPSCRenderSprite::vfunc	336	mov eax, dword ptr [esp + 4]	{}
+00b055f0	00b03ca0	NParticleEngine::CPSCRenderMesh::vfunc_1	48	mov eax, dword ptr [ecx]	{}
+00b11bd0	00b10b10	GenerateParticle	4896	mov eax, dword ptr [esp + 8]	{'data': 3, 'imm': 2}
+00b16130	00b15bd0	InterpolateAnimationSequence	112	push esi	{}
+00b187a0	00b18780	OnDie	48	mov eax, ecx	{}
+00b2dd20	00b2d9f0	CEngineSurfaceCompositionManager_UpdateT	256	mov eax, dword ptr [ecx]	{}
+00b35df0	00b33b50	CEnginePrimitiveRenderer	624	mov eax, dword ptr [ecx]	{'imm': 1}
+00b3e050	00b3cb30	CEngineResourceManager	32	mov eax, ecx	{}
+00b3fe50	00b3fc40	PeekInterpolatedMapNormal	288	mov edx, dword ptr [esp + 0xc]	{'data': 2, 'imm': 1}
+00b48950	00b484b0	?FrameStart@CEngineLightingManager@@UAEX	656	mov eax, ecx	{'imm': 16}
+00b51a60	00b51570	BuildBuffers	112	mov al, byte ptr [ecx + 8]	{}
+00b564a0	00b555a0	?Render@CEngineWeatherRenderer@@UAEXABVC	32	mov eax, dword ptr [ecx + 4]	{}
+00b5bac0	00b5af80	RenderColorFilteredQuad	16	mov eax, dword ptr [esp + 4]	{}
+00b66a80	00b665e0	GetEnvironmentMap	272	mov eax, dword ptr [esp + 4]	{}
+00b7a870	00b783f0	?Render@CEngineWaterRenderer@@UAEXABVCEn	16	jmp 0x99a300	{}
+00b8c6e0	00b8b780	RenderBillboard	160	fld dword ptr [esp + 4]	{'imm': 4}
+00b8e5b0	00b8df50	CEngineOcclusionManager::FrameEnd	224	mov edx, dword ptr [ecx]	{}
+00b96180	00b96150	_Uninit_fill_n<std::pair<unsigned___int6	256	mov eax, dword ptr [ecx]	{}
+00bb6320	00bb5040	CEngineClothRenderer	16	mov eax, dword ptr [ecx]	{}
+00bb9690	00bb8ef0	CEnginePrimitiveManagerParticleDecalGrou	720	mov eax, dword ptr [ecx]	{}
+00bc2080	00bc14e0	CEnginePrimitiveManagerParticleSpriteGro	128	push esi	{}
+00bd1ee0	00bcff10	CEnginePrimitiveManagerAnimatedMeshesBas	16	jmp 0xbcfb00	{}
+00be42d0	00be3970	?TesselateEdge@CLandscapePatchTesselator	176	mov eax, dword ptr [ecx + 8]	{}
+00bea080	00be9920	CEngineWaterSettings	144	mov eax, dword ptr [edx]	{}
+00c04ac0	00c04850	send_all_trees	176	mov eax, dword ptr [esp + 4]	{}
+00c059c0	00c057d0	__tr_flush_block	16	mov eax, 0x12af780	{}
+00c08080	00c07af0	lzo1x_999_compress_internal	176	mov eax, dword ptr [esp + 0x24	{'imm': 7}
+00c088c0	00c088b0	sub_00c088b0	16	mov ecx, dword ptr [esp + 4]	{'data': 1}
+00c09c50	00c09c40	sub_00c09c40	64	mov ecx, dword ptr [ecx + 4]	{'data': 20}
+00c09ed0	00c09ec0	sub_00c09ec0	64	mov ecx, dword ptr [ecx + 4]	{'data': 12, 'imm': 10}
+00c0d100	00c0ce50	CCharString_ReplaceAll	176	push ecx	{}
+00c0d700	00c0d1b0	CCharString_FormatVarArgs	64	push ecx	{}
+00c0f120	00c0f110	sub_00c0f110	64	mov ecx, dword ptr [ecx + 4]	{'data': 12}
+00c0f230	00c0f220	sub_00c0f220	64	mov ecx, dword ptr [ecx + 4]	{'data': 12}
+00c0f340	00c0f330	sub_00c0f330	64	mov ecx, dword ptr [ecx + 4]	{'data': 12}
+00c0f450	00c0f440	sub_00c0f440	64	mov ecx, dword ptr [ecx + 4]	{'data': 12}
+00c15230	00c15220	sub_00c15220	64	mov ecx, dword ptr [ecx + 4]	{'data': 20}
+00c15340	00c15330	sub_00c15330	64	mov ecx, dword ptr [ecx + 4]	{'data': 12}
+00c1d720	00c1d500	Jenkins_HashBuffer	96	mov eax, ecx	{}
+00c1ee40	00c1ee30	GetWorldMapNumber	32	mov ecx, dword ptr [ecx + 4]	{}
+00c1f6e0	00c1f6d0	sub_00c1f6d0	64	mov eax, dword ptr [esp + 4]	{'data': 4, 'imm': 3}
+00c1f7c0	00c1f7b0	sub_00c1f7b0	32	mov eax, ecx	{'imm': 14, 'data': 2}
+00c1f880	00c1f870	sub_00c1f870	32	mov eax, ecx	{'data': 2}
+00c1f940	00c1f930	sub_00c1f930	32	mov eax, ecx	{'data': 2}
+00c1fa00	00c1f9f0	sub_00c1f9f0	32	mov eax, ecx	{'data': 2}
+00c1fac0	00c1fab0	sub_00c1fab0	64	mov eax, dword ptr [esp + 4]	{'data': 4}
+00c1fba0	00c1fb90	sub_00c1fb90	64	mov eax, dword ptr [esp + 4]	{'data': 4}
+00c1fc80	00c1fc70	sub_00c1fc70	64	mov eax, dword ptr [esp + 4]	{'data': 5}
+00c212f0	00c21040	Thiscall_CombatActionDebugFormat	64	call 0xc20ee0	{'data': 2}
+00c21e00	00c21df0	operator()	32	mov eax, dword ptr [ecx + 0xd8	{}
+00c22fd0	00c22fc0	sub_00c22fc0	64	mov ecx, dword ptr [ecx + 4]	{'data': 36}
+00c235e0	00c235d0	sub_00c235d0	64	mov ecx, dword ptr [ecx + 4]	{'data': 12}
+00c236f0	00c236e0	sub_00c236e0	64	mov ecx, dword ptr [ecx + 4]	{'data': 12}
+00c23800	00c237f0	sub_00c237f0	64	mov ecx, dword ptr [ecx + 4]	{'data': 28}
+00c23910	00c23900	sub_00c23900	64	mov ecx, dword ptr [ecx + 4]	{'data': 12}
+00c297a0	00c295b0	std_vector_InsertRange	112	mov eax, dword ptr [esp + 8]	{}
+00c29dd0	00c29dc0	sub_00c29dc0	224	mov ecx, dword ptr [ecx + 8]	{'data': 6, 'imm': 1}
+00c2adb0	00c2ada0	sub_00c2ada0	64	mov ecx, dword ptr [ecx + 4]	{'data': 20}
+00c2aec0	00c2aeb0	sub_00c2aeb0	64	mov ecx, dword ptr [ecx + 4]	{'data': 28}
+00c2afd0	00c2afc0	sub_00c2afc0	64	mov ecx, dword ptr [ecx + 4]	{'data': 12}
+00c2c060	00c2c050	sub_00c2c050	64	mov ecx, dword ptr [ecx + 4]	{'data': 20}
+00c2dd80	00c2dd70	sub_00c2dd70	64	mov ecx, dword ptr [ecx + 4]	{'data': 12}
+00c2f550	00c2f540	sub_00c2f540	64	mov ecx, dword ptr [ecx + 4]	{'data': 12}
+00c2f660	00c2f650	sub_00c2f650	64	mov ecx, dword ptr [ecx + 4]	{'data': 12}
+00c2f770	00c2f760	sub_00c2f760	64	mov ecx, dword ptr [ecx + 4]	{'data': 12, 'imm': 1}
+00c30b70	00c30b60	sub_00c30b60	64	mov ecx, dword ptr [ecx + 4]	{'data': 12}
+00c311b0	00c30f60	Fastcall_InventoryAudioWaveLoad	128	mov eax, ecx	{}
+00c33080	00c33070	sub_00c33070	32	mov ecx, dword ptr [ecx + 4]	{'data': 2}
+00c35470	00c35460	sub_00c35460	48	ret 8	{'data': 3}
+00c36850	00c36840	sub_00c36840	64	mov ecx, dword ptr [ecx + 4]	{'data': 12}
+00c38000	00c37ff0	sub_00c37ff0	64	mov ecx, dword ptr [ecx + 4]	{'data': 12}
+00c3ad80	00c3ad70	sub_00c3ad70	64	mov ecx, dword ptr [ecx + 4]	{'data': 12}
+00c3b310	00c3b300	sub_00c3b300	64	mov ecx, dword ptr [ecx + 4]	{'data': 12}
+00c3c4d0	00c3c4b0	sub_00c3c4b0	16	mov eax, 0xfffffff7	{'data': 2}
+00c3ec20	00c3ec10	sub_00c3ec10	16	mov ecx, dword ptr [ecx + 0x1d	{'data': 1}
+00c401d0	00c400d0	Animation_ComputeFrameOffset	272	fld dword ptr [esp + 4]	{'data': 2}
+00c42ba0	00c42b80	_Cons_val<std::allocator<std::pair<EHero	144	mov eax, dword ptr [ecx]	{'imm': 1}
+00c451b0	00c451a0	sub_00c451a0	64	mov ecx, dword ptr [ecx + 4]	{'data': 12}
+00c46a80	00c46a70	sub_00c46a70	64	mov ecx, dword ptr [ecx + 4]	{'data': 12}
+00c476b0	00c476a0	sub_00c476a0	64	mov ecx, dword ptr [ecx + 4]	{'data': 12}
+00c477c0	00c477b0	sub_00c477b0	64	mov ecx, dword ptr [ecx + 4]	{'data': 12}
+00c51a00	00c4f600	PropertySerializer_GetPropertyTypeCode	32	mov eax, dword ptr [esp + 0x14	{}
+00c51eb0	00c51a20	PropertySerializer_WriteProperty	80	push ecx	{}
+00c53400	00c53340	sub_00c53340	64	mov eax, ecx	{}
+00c574a0	00c57490	sub_00c57490	16	lea eax, [ecx + 4]	{'data': 2}
+00c5dfd0	00c5dd70	Audio_InitializeDriver	128	mov eax, ecx	{}
+00c5e0e0	00c5e0c0	Unwind@00fbe57b	80	mov eax, ecx	{}
+00c5ee30	00c5ee20	sub_00c5ee20	32	mov eax, dword ptr [esp + 8]	{'data': 1}
+00c5ff30	00c5fa50	Audio_EncodeAdpcmWithBestStepIndex	32	mov eax, ecx	{}
+00c61580	00c60ff0	CTCHeroStats_ProcessEventData	144	push esi	{'imm': 1}
+00c66b10	00c66330	sub_00c66330	384	mov edx, dword ptr [esp + 4]	{'imm': 9}
+00c6c9a0	00c6c530	Audio_ApplyGainFilter_SIMD	128	push ecx	{}
+00c6d960	00c6d630	CAudioMixer_ProcessChannels	112	push ecx	{'imm': 1}
+00c70010	00c6fe10	sub_00c6fe10	48	fld dword ptr [esp + 4]	{'data': 1}
+00c763b0	00c76120	SignalProcessing_InterpolateAndAccumulat	16	push esi	{}
+00c76a90	00c76880	DSP_TransformWithFilterCoefficients	32	push ecx	{}
+00c77410	00c770b0	FFT_ComputeComplexTransform	48	mov dword ptr [ecx + 0x18], 0	{'imm': 1}
+00c78390	00c78150	CAudioChannel_ApplyEqualizerEffect	32	mov eax, dword ptr [ecx + 0x28	{}
+00c896b0	00c89350	Partition_ProcessAnimationData	16	push edi	{}
+00c8bee0	00c8bb20	Primitive_ProcessVertexBuffer	176	push ecx	{'imm': 1}
+00c95c60	00c95a10	Waveform_FindClosestFrequencyBin	64	mov eax, dword ptr [ecx + 0xc]	{}
+00c9da80	00c9cff0	CLandscapeBackgroundDynamicBuildTemplate	192	push ecx	{}
+00ca3150	00ca2bb0	CEnvironment_SerializeTheme	720	sub esp, 0x2c	{'data': 1, 'imm': 2}
+00ca4700	00ca4570	Math_ApplyDampeningFilter	128	mov ecx, dword ptr [esp + 8]	{}
+00ca5210	00ca5200	sub_00ca5200	144	mov ecx, dword ptr [ecx + 0xd8	{'data': 5}
+00ca53d0	00ca53c0	CallCommandFunction	32	mov eax, dword ptr [esp + 4]	{}
+00ca5cd0	00ca5850	Audio_AdjustBufferLevel	32	mov eax, dword ptr [ecx + 0x9c	{}
+00ca62e0	00ca62d0	sub_00ca62d0	144	mov eax, dword ptr [esp + 4]	{'jmp': 2, 'data': 9}
+00ca7d80	00ca7d60	sub_00ca7d60	64	mov eax, dword ptr [esp + 4]	{'data': 2}
+00ca9720	00ca9710	Thunk_VirtualMethod_2	256	push esi	{'data': 2, 'imm': 1}
+00caa480	00caa470	sub_00caa470	32	mov eax, dword ptr [esp + 4]	{'data': 2}
+00caa680	00caa4a0	FileArchive_ValidateAndLoad	96	mov eax, dword ptr [esp + 4]	{}
+00caf440	00caf430	sub_00caf430	64	mov eax, dword ptr [esp + 4]	{'data': 3}
+00cafba0	00cafa10	CEditControlCentre::FindTrackNodeInTimeR	160	mov eax, ecx	{'data': 1}
+00cafc50	00cafc40	sub_00cafc40	112	mov eax, dword ptr [esp + 4]	{'jmp': 2, 'data': 12}
+00cb0680	00cb0370	Math_Divide64bit	128	mov eax, dword ptr [esp + 4]	{}
+00cb08f0	00cb0700	SignedDecimal_Divide	80	mov eax, dword ptr [esp + 8]	{'data': 1}
+00cb0bb0	00cb09a0	OS_WaitForMultipleObjectsWithMessages	16	mov eax, ecx	{}
+00cb53f0	00cb5180	ImeUI_Initialize	300	mov al, byte ptr [0x143e8ae]	{'jmp': 2}
+00cd42c0	00cd3f50	DefinitionManager_LoadDefinitions	32	mov eax, ecx	{}
+00cdd040	00cdcf80	Transfer<signed_char>	96	mov ecx, dword ptr [ecx + 4]	{'data': 3}
+00cdf130	00cdf120	sub_00cdf120	48	push esi	{'data': 1}
+00ce10a0	00ce1090	sub_00ce1090	16	mov ecx, dword ptr [ecx + 0x34	{'data': 121}
+00d0b2d0	00d0a830	Main	240	push ebx	{'imm': 3, 'data': 2}
+00d0eba0	00d0d910	sub_00d0d910	176	push esi	{'data': 1}
+00d0fe80	00d0f640	Quest009_BanditCamp_Residential_OnLoad	6832	sub esp, 0x84	{'imm': 12, 'data': 26, 'jmp': 5}
+00d2c130	00d2aa40	sub_00d2aa40	16	lea eax, [ecx + 4]	{'data': 1}
+00d2f5f0	00d2ed20	Main	48	push esi	{'imm': 1}
+00d32630	00d321c0	CScriptGameResourceObject_LoadEndGameSis	656	sub esp, 0x30	{'imm': 1, 'jmp': 1}
+00d3c840	00d3bc60	Main	160	push ecx	{}
+00d407c0	00d3e2e0	sub_00d3e2e0	208	push ebx	{'imm': 2, 'data': 3}
+00d45dd0	00d45060	sub_00d45060	14624	sub esp, 0x94	{'imm': 597, 'jmp': 6}
+00d4c720	00d4a270	sub_00d4a270	16096	sub esp, 0x174	{'data': 11, 'imm': 93, 'jmp': 39, 'call': 2}
+00d52e90	00d524a0	sub_00d524a0	11904	sub esp, 0x18c	{'data': 1, 'imm': 94, 'jmp': 18}
+00d78290	00d77690	DoCutscene	48	push esi	{'imm': 3}
+00d92940	00d92380	Main	18480	sub esp, 0x11c	{'data': 4, 'imm': 87, 'jmp': 18}
+00dca590	00dc93f0	sub_00dc93f0	208	push ecx	{}
+00dcbfd0	00dca6d0	sub_00dca6d0	48	push esi	{'imm': 2}
+00dd03d0	00dcfa60	sub_00dcfa60	2784	sub esp, 0xc8	{'imm': 27, 'data': 1}
+00debc60	00deb280	sub_00deb280	48	push esi	{'imm': 1}
+00dfcc10	00dfca90	Main	2544	sub esp, 0xc8	{'imm': 1, 'data': 1, 'jmp': 10}
+00e24c30	00e247f0	CScriptGameResourceObjectScriptedThingBa	48	push esi	{'imm': 1}
+00e2b9d0	00e2b090	Main	128	push ecx	{}
+00e46a00	00e44ea0	sub_00e44ea0	48	push esi	{'imm': 1}
+00e5b2d0	00e58d40	sub_00e58d40	192	push ebx	{'imm': 1, 'data': 2}
+00e62730	00e621f0	SetHenchmanAsHired	48	push esi	{'imm': 1}
+00e702c0	00e6fc40	Main	176	push ebx	{'imm': 1, 'data': 2}
+00e801a0	00e80060	GetHeroTitleTextTag	2656	sub esp, 0x9c	{'data': 6, 'imm': 79, 'jmp': 5}
+00ebcb60	00eb9980	sub_00eb9980	176	push ecx	{}
+00ecc960	00ecbdf0	sub_00ecbdf0	176	push ebx	{'imm': 1, 'data': 1}
+00ed16e0	00ed14e0	Init	208	push ebx	{'imm': 1, 'data': 2}
+00eef510	00eeef70	sub_00eeef70	16	ret 	{}
+00f21660	00f21590	GetEndRoundQuestion	16864	push ecx	{'data': 8, 'imm': 29, 'jmp': 37}
+00f29f70	00f29f60	sub_00f29f60	48	push esi	{}
+00f2a000	00f29ff0	sub_00f29ff0	208	push esi	{}
+00f33660	00f334e0	Transfer<signed_char>	144	mov eax, dword ptr [ecx + 4]	{'data': 4}
+01210c48	01210c40	Unwind@01210c40	24	mov eax, 0x1369888	{'imm': 1}
+01210c68	01210c60	Unwind@01210c60	24	mov eax, 0x13698ac	{'imm': 1}
+01211308	01211300	Unwind@01211300	24	mov eax, 0x136a098	{'imm': 1}
+01211cef	01211ce4	Unwind@01211ce4	17	mov eax, 0x136b088	{'imm': 1}
+01211e8d	01211e82	Unwind@01211e82	19	mov eax, 0x136b2b0	{'imm': 1}
+01211ea8	01211ea0	Unwind@01211ea0	24	mov eax, 0x136b2d4	{'imm': 1}
+01211ec8	01211ec0	Unwind@01211ec0	24	mov eax, 0x136b2f8	{'imm': 1}
+0121206a	01212062	Unwind@01212062	22	mov eax, 0x136b5ac	{'imm': 1}
+01212208	01212200	Unwind@01212200	24	mov eax, 0x136b85c	{'imm': 1}
+01212408	01212400	Unwind@01212400	24	mov eax, 0x136bb10	{'imm': 1}
+0121244b	01212440	Unwind@01212440	21	mov eax, 0x136bb58	{'imm': 1}
+01212578	01212570	Unwind@01212570	24	mov eax, 0x136bcec	{'imm': 1}
+01212598	01212590	Unwind@01212590	24	mov eax, 0x136bd10	{'imm': 1}
+012129f8	012129f0	Unwind@012129f0	24	mov eax, 0x136c264	{'imm': 1}
+01212a78	01212a70	Unwind@01212a70	24	mov eax, 0x136c30c	{'imm': 1}
+01212a98	01212a90	Unwind@01212a90	24	mov eax, 0x136c330	{'imm': 1}
+01212ab8	01212ab0	Unwind@01212ab0	24	mov eax, 0x136c354	{'imm': 1}
+01212ad8	01212ad0	Unwind@01212ad0	24	mov eax, 0x136c378	{'imm': 1}
+01212e2e	01212e26	Unwind@01212e26	18	mov eax, 0x136c654	{'imm': 1}
+012132a8	012132a0	Unwind@012132a0	24	mov eax, 0x136cb88	{'imm': 1}
+01213308	01213300	Unwind@01213300	24	mov eax, 0x136cbe8	{'imm': 1}
+01213348	01213340	Unwind@01213340	24	mov eax, 0x136cc30	{'imm': 1}
+012133a8	012133a0	Unwind@012133a0	24	mov eax, 0x136cc90	{'imm': 1}
+01213482	01213479	Unwind@01213479	30	mov eax, 0x136cdd0	{'imm': 2}
+012134ee	012134e3	Unwind@012134e3	18	mov eax, 0x136ced0	{'imm': 1}
+0121352c	01213524	Unwind@01213524	20	mov eax, 0x136cf3c	{'imm': 1}
+01213c4e	01213c46	Unwind@01213c46	18	mov eax, 0x136d8ac	{'imm': 1}
+01213c88	01213c80	Unwind@01213c80	24	mov eax, 0x136d8f4	{'imm': 1}
+01213ca8	01213ca0	Unwind@01213ca0	24	mov eax, 0x136d918	{'imm': 1}
+01213cc8	01213cc0	Unwind@01213cc0	24	mov eax, 0x136d93c	{'imm': 1}
+01213cfb	01213cf3	Unwind@01213cf3	21	mov eax, 0x136d970	{'imm': 1}
+01213d4b	01213d43	Unwind@01213d43	21	mov eax, 0x136d9c8	{'imm': 1}
+01213d9b	01213d93	Unwind@01213d93	21	mov eax, 0x136da20	{'imm': 1}
+012140d8	012140d0	Unwind@012140d0	24	mov eax, 0x136de30	{'imm': 1}
+0121415c	01214154	Unwind@01214154	20	mov eax, 0x136deec	{'imm': 1}
+01214178	01214170	Unwind@01214170	24	mov eax, 0x136df10	{'imm': 1}
+012141aa	012141a2	Unwind@012141a2	22	mov eax, 0x136df58	{'imm': 1}
+012141c8	012141c0	Unwind@012141c0	24	mov eax, 0x136df7c	{'imm': 1}
+012142ba	012142b2	Unwind@012142b2	22	mov eax, 0x136e114	{'imm': 1}
+01214368	01214360	Unwind@01214360	24	mov eax, 0x136e1ec	{'imm': 1}
+012143a8	0121439d	Unwind@0121439d	24	mov eax, 0x136e23c	{'imm': 1}
+012145c9	012145be	Unwind@012145be	23	mov eax, 0x136e584	{'imm': 1}
+01214b17	01214b09	Unwind@01214b09	25	mov eax, 0x136ebec	{'imm': 1}
+01214bd8	01214bd0	Unwind@01214bd0	24	mov eax, 0x136ecc4	{'imm': 1}
+01214bf8	01214bf0	Unwind@01214bf0	24	mov eax, 0x136ece8	{'imm': 1}
+01214c18	01214c10	Unwind@01214c10	24	mov eax, 0x136ed0c	{'imm': 1}
+01214c38	01214c30	Unwind@01214c30	24	mov eax, 0x136ed30	{'imm': 1}
+01214c58	01214c50	Unwind@01214c50	24	mov eax, 0x136ed54	{'imm': 1}
+01214c78	01214c70	Unwind@01214c70	24	mov eax, 0x136ed78	{'imm': 1}
+01214c98	01214c90	Unwind@01214c90	24	mov eax, 0x136ed9c	{'imm': 1}
+01214cb8	01214cb0	Unwind@01214cb0	24	mov eax, 0x136edc0	{'imm': 1}
+01214cd8	01214cd0	Unwind@01214cd0	24	mov eax, 0x136ede4	{'imm': 1}
+01214cf8	01214cf0	Unwind@01214cf0	24	mov eax, 0x136ee08	{'imm': 1}
+01214e7d	01214e75	Unwind@01214e75	19	mov eax, 0x136f018	{'imm': 1}
+01214ee8	01214ee0	Unwind@01214ee0	24	mov eax, 0x136f09c	{'imm': 1}
+01214f4b	01214f40	Unwind@01214f40	21	mov eax, 0x136f104	{'imm': 1}
+01214feb	01214fe0	Unwind@01214fe0	21	mov eax, 0x136f1b4	{'imm': 1}
+0121500b	01215000	Unwind@01215000	21	mov eax, 0x136f1d8	{'imm': 1}
+012150ac	012150a1	Unwind@012150a1	20	mov eax, 0x136f280	{'imm': 1}
+012151e8	012151e0	Unwind@012151e0	24	mov eax, 0x136f3f4	{'imm': 1}
+012152d8	012152d0	Unwind@012152d0	24	mov eax, 0x136f4fc	{'imm': 1}
+0121531b	01215310	Unwind@01215310	21	mov eax, 0x136f544	{'imm': 1}
+01215528	01215520	Unwind@01215520	24	mov eax, 0x136f7a0	{'imm': 1}
+01215548	01215540	Unwind@01215540	24	mov eax, 0x136f7c4	{'imm': 1}
+0121559d	01215595	Unwind@01215595	19	mov eax, 0x136f838	{'imm': 1}
+01215a18	01215a10	Unwind@01215a10	24	mov eax, 0x136fe00	{'imm': 1}
+01215a3b	01215a30	Unwind@01215a30	21	mov eax, 0x136fe24	{'imm': 1}
+01215a58	01215a50	Unwind@01215a50	24	mov eax, 0x136fe48	{'imm': 1}
+01215a88	01215a80	Unwind@01215a80	24	mov eax, 0x136fe7c	{'imm': 1}
+01215b68	01215b60	Unwind@01215b60	24	mov eax, 0x136ff78	{'imm': 1}
+01215c38	01215c30	Unwind@01215c30	24	mov eax, 0x1370068	{'imm': 1}
+01215c58	01215c50	Unwind@01215c50	24	mov eax, 0x137008c	{'imm': 1}
+01215e58	01215e50	Unwind@01215e50	24	mov eax, 0x137036c	{'imm': 1}
+01215ef8	01215ef0	Unwind@01215ef0	24	mov eax, 0x1370428	{'imm': 1}
+01216148	01216140	Unwind@01216140	24	mov eax, 0x137071c	{'imm': 1}
+012161d8	012161cd	Unwind@012161cd	24	mov eax, 0x13707a4	{'imm': 1}
+01216348	01216340	Unwind@01216340	24	mov eax, 0x1370960	{'imm': 1}
+012163d8	012163d0	Unwind@012163d0	24	mov eax, 0x13709f4	{'imm': 1}
+01216418	01216410	Unwind@01216410	24	mov eax, 0x1370a3c	{'imm': 1}
+0121644d	01216442	Unwind@01216442	19	mov eax, 0x1370a84	{'imm': 1}
+012164c8	012164c0	Unwind@012164c0	24	mov eax, 0x1370b2c	{'imm': 1}
+0121671e	01216710	Unwind@01216710	18	mov eax, 0x1370d2c	{'imm': 1}
+012167bf	012167b7	Unwind@012167b7	17	mov eax, 0x1370de4	{'imm': 1}
+012169a8	012169a0	Unwind@012169a0	24	mov eax, 0x1371030	{'imm': 1}
+01216a78	01216a70	Unwind@01216a70	24	mov eax, 0x1371108	{'imm': 1}
+01216a98	01216a90	Unwind@01216a90	24	mov eax, 0x137112c	{'imm': 1}
+01216ab8	01216ab0	Unwind@01216ab0	24	mov eax, 0x1371150	{'imm': 1}
+01216ba8	01216ba0	Unwind@01216ba0	24	mov eax, 0x137127c	{'imm': 1}
+01216bc8	01216bc0	Unwind@01216bc0	24	mov eax, 0x13712a0	{'imm': 1}
+01216be8	01216be0	Unwind@01216be0	24	mov eax, 0x13712c4	{'imm': 1}
+01216c48	01216c40	Unwind@01216c40	24	mov eax, 0x1371338	{'imm': 1}
+01216c68	01216c60	Unwind@01216c60	24	mov eax, 0x137135c	{'imm': 1}
+01216ca8	01216ca0	Unwind@01216ca0	24	mov eax, 0x13713a4	{'imm': 1}
+01216cc8	01216cc0	Unwind@01216cc0	24	mov eax, 0x13713c8	{'imm': 1}
+01216ce8	01216ce0	Unwind@01216ce0	24	mov eax, 0x13713ec	{'imm': 1}
+01216d4f	01216d28	Unwind@01216d28	17	mov eax, 0x137143c	{'imm': 1}
+01216d68	01216d60	Unwind@01216d60	24	mov eax, 0x1371460	{'imm': 1}
+01216d88	01216d80	Unwind@01216d80	24	mov eax, 0x1371484	{'imm': 1}
+01216da8	01216da0	Unwind@01216da0	24	mov eax, 0x13714a8	{'imm': 1}
+01216dc8	01216dc0	Unwind@01216dc0	24	mov eax, 0x13714cc	{'imm': 1}
+01216de8	01216de0	Unwind@01216de0	24	mov eax, 0x13714f0	{'imm': 1}
+01216e08	01216e00	Unwind@01216e00	24	mov eax, 0x1371514	{'imm': 1}
+01216e28	01216e20	Unwind@01216e20	24	mov eax, 0x1371538	{'imm': 1}
+01216e48	01216e40	Unwind@01216e40	24	mov eax, 0x137155c	{'imm': 1}
+01216e68	01216e60	Unwind@01216e60	24	mov eax, 0x1371580	{'imm': 1}
+01216ec8	01216ec0	Unwind@01216ec0	24	mov eax, 0x13715ec	{'imm': 1}
+01216ee8	01216ee0	Unwind@01216ee0	24	mov eax, 0x1371610	{'imm': 1}
+01216f08	01216f00	Unwind@01216f00	24	mov eax, 0x1371634	{'imm': 1}
+01216f28	01216f20	Unwind@01216f20	24	mov eax, 0x1371658	{'imm': 1}
+01216f68	01216f60	Unwind@01216f60	24	mov eax, 0x13716a8	{'imm': 1}
+01216f88	01216f80	Unwind@01216f80	24	mov eax, 0x13716cc	{'imm': 1}
+01217008	01217000	Unwind@01217000	24	mov eax, 0x1371764	{'imm': 1}
+0121704b	01217040	Unwind@01217040	21	mov eax, 0x13717ac	{'imm': 1}
+0121706b	01217060	Unwind@01217060	21	mov eax, 0x13717d0	{'imm': 1}
+012170ab	012170a0	Unwind@012170a0	21	mov eax, 0x1371820	{'imm': 1}
+012170e8	012170e0	Unwind@012170e0	24	mov eax, 0x1371870	{'imm': 1}
+01217108	01217100	Unwind@01217100	24	mov eax, 0x1371894	{'imm': 1}
+0121712b	01217120	Unwind@01217120	21	mov eax, 0x13718b8	{'imm': 1}
+0121714b	01217140	Unwind@01217140	21	mov eax, 0x13718dc	{'imm': 1}
+012171c7	012171a0	Unwind@012171a0	25	mov eax, 0x1371948	{'imm': 1}
+012171fe	012171f3	Unwind@012171f3	18	mov eax, 0x137197c	{'imm': 1}
+0121728c	01217281	Unwind@01217281	20	mov eax, 0x1371a18	{'imm': 1}
+012172c8	012172c0	Unwind@012172c0	24	mov eax, 0x1371a68	{'imm': 1}
+01217308	01217300	Unwind@01217300	24	mov eax, 0x1371ab0	{'imm': 1}
+01217328	01217320	Unwind@01217320	24	mov eax, 0x1371ad4	{'imm': 1}
+01217348	01217340	Unwind@01217340	24	mov eax, 0x1371af8	{'imm': 1}
+012173eb	012173e0	Unwind@012173e0	10917	mov eax, 0x1371bb4	{'imm': 64}

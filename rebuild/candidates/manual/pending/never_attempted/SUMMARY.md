@@ -28,3 +28,10 @@ Reserved to ChatGPT pass 10 and left out of the cuts: 0.
 Order: twins of landed rows first, then bands 97-256, 257-512, 513-1024, 17-96, 1025-4096, >4096; inside a band the rows with more callers / a vtable slot first; class siblings stay in one chunk.
 
 Top modules among the authorable rows: _global 328, _gapscan 299, CPatchTesselationEdgeStrip 27, CTCInventoryItem 23, _Dest_val<std::allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>,std 17, CTCInventoryTrade 17, CTCInventoryMap 12, CParticleEmitter 12, _Dest_val<std 11, _Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap 11, CWorld 10, CTCInventory 9, CEngineWaterRenderer 9, C3DAnimationBlendState 8, CEngineSkyRenderer 8.
+
+## Extents settled (check_extents.py, 2026-11-01)
+All 423 "length uncertain" rows (199 of them in the cuts) are decided in EXTENTS.tsv and their `length` column updated:
+414 SPLIT (the bytes after the row are an unlisted function, usually behind int3 padding; the row's length is its scan extent and
+the new starts are listed in UNLISTED_STARTS.tsv for the gap-scan), 8 MANUAL (unreferenced code right after the row with no padding:
+length = extent, a neighbour's cold block or an unlisted start), 1 EXTEND (a Catch funclet whose continuation follows a
+_CxxThrowException call the scanner took for noreturn). No row needs a hand check before its oracle is built.
