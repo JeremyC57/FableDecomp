@@ -5380,7 +5380,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004cd5d0	CNavigationPosition_HeapSort	_global	unknown	undefined	0		0	yes	accepted									
 004cd650	TransferToGui	CGuiVarTransferBool	__thiscall	void	1	CGuiVarTransferBool *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\CGuiVarTransferBool_TransferToGui_004cd650.cpp
 004cd670	Init	_global	__fastcall	void	0		1	yes	accepted									
-004cd9b0	GetAnimGroupName	_global	__fastcall	CCharString *	1	EConversationAttitude	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\global_GetAnimGroupName_004cd9b0.cpp
+004cd9b0	GetAnimName	CConversationAttitude	__fastcall	CCharString *	1	EConversationAttitude	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\global_GetAnimGroupName_004cd9b0.cpp
 004cd9c0	GetAnimGroupName	CConversationAttitude	__fastcall	CCharString *	1	EConversationAttitude	1	yes	accepted									
 004cd9d0	std::vector_ctor	std	unknown	undefined	0		0	yes	accepted									
 004cdae0	GFRandom	_global	__fastcall	ulong	2	ulong,ulong *	1	yes	accepted									
@@ -8480,7 +8480,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00510b00	_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>	_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\51\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00510b00.cpp
 00510bf0	_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>	_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\51\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00510bf0.cpp
 00510d10	SortTreeRecursively	CGuiControlTreePane	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\51\CGuiControlTreePane_SortTreeRecursively_00510d10.cpp
-00510d40	clear	std::_List_base<CIntelligentPointer<CThingAICreature>,std::allocator<CIntelligentPointer<CThingAICreature> > >	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted									
+00510d40	clear	std::_List_base<CIntelligentPointer<CThingAICreature>, std::allocator<CIntelligentPointer<CThingAICreature>>>	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted									
 00510da0	BuildTreeArray	LTextTreeWalkThrough	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
 00510df0	SortTreeRecursively	CGuiControlTreePane	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\51\CGuiControlTreePane_SortTreeRecursively_00510df0.cpp
 00510f60	_Copy_impl<C2DLineF*,C2DLineF*>	_global	__fastcall	C2DLineF *	3	C2DLineF *,C2DLineF *,C2DLineF *	1	yes	accepted									
@@ -33198,7 +33198,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009917e0	FindFirstSymbolWithVal	CSymbolMap	__thiscall	CSymbolInfo *	2	CSymbolMap *,long	1	yes	accepted									
 00991840	MessageMap::FindMessageByID	MessageMap	unknown	undefined	0		0	yes	accepted									
 00991880	~CASoundManager	CASoundManager	__thiscall	void	1	CBankFileEntryUpdateData *	1	yes	accepted									
-009918f0	Unwind@00fbdab0	_global	unknown	undefined	0		0	yes	accepted									
+009918f0	ClearBanks_009918f0	CASoundManager	unknown	undefined	0		0	yes	accepted									
 00991910	CASoundManager	CASoundManager	unknown	undefined	0		0	yes	accepted									
 009919c0	RegisterSoundBanks	_global	unknown	undefined	0		0	yes	accepted									
 00991c10	CMainGameComponent_RegisterSoundBank	_global	unknown	undefined	0		0	yes	accepted									
@@ -33752,7 +33752,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009aa6f0	PtrHolder_Alloc_sz28_009aa6f0	_global	unknown	undefined	0		0	yes	review-low									
 009aa720	PtrHolder_Alloc_sz18_009aa720	_global	unknown	undefined	0		0	yes	review-low									
 009aa750	PtrHolder_Alloc_sz14_009aa750	_global	unknown	undefined	0		0	yes	review-low									
-009aa780	_M_erase	std::_Rb_tree<CUnprovenKey_009aa780, CUnprovenValue_009aa780, CUnprovenKeyOfValue_009aa780, std::less<CUnprovenKey_009aa780>, std::allocator<CUnprovenValue_009aa780>>	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
+009aa780	_M_erase	std::_Rb_tree<CCharString, std::pair<CCharString const, NBankFileManager::CContainedBank>, std::_Select1st<std::pair<CCharString const, NBankFileManager::CContainedBank>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, NBankFileManager::CContainedBank>>>	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
 009aa7c0	Erase	CRetailTree_erase009aa7c0	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
 009aa830	_M_erase	std::_Rb_tree<CCharString, std::pair<CCharString const, CCharString>, std::_Select1st<std::pair<CCharString const, CCharString>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, CCharString>>>	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
 009aa880	BuildTreeArray	LTextTreeWalkThrough	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
@@ -34240,7 +34240,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009c2c10	~CUnprovenContainer_009c1e00	CUnprovenContainer_009c1e00	unknown	undefined	0		0	yes	accepted									
 009c2ca0	_M_insert_overflow	std::vector<ESurfaceMultisampleType, std::allocator<ESurfaceMultisampleType>>	unknown	undefined	0		0	yes	accepted									
 009c2e30	_M_insert_overflow	std::vector<CPixelFormat, std::allocator<CPixelFormat>>	unknown	undefined	0		0	yes	accepted									
-009c2f50	~vector	std::vector<CQuickDrawTriInfo>	__thiscall	void	1	CCombatWheel *	1	yes	accepted									
+009c2f50	~vector	std::vector<CQuickDrawTriInfo, std::allocator<CQuickDrawTriInfo>>	__thiscall	void	1	CCombatWheel *	1	yes	accepted									
 009c2fd0	~CRenderManager2D	CRenderManager2D	__thiscall	void	1	CEnginePrimitiveManagerOcclusionBase *	1	yes	accepted									
 009c30b0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9c\CLandscapeBackgroundPatch_vectordeletingdestructor_009c30b0.cpp
 009c3100	`scalar deleting destructor'	CRenderManager	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9c\CLandscapeBackgroundPatch_vectordeletingdestructor_009c3100.cpp
@@ -35723,7 +35723,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a0b560	SetVWindow	CRenderManagerCore	__thiscall	void	2	CTCInventoryBase *,C2DBoxF const &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\CTCInventoryBase_SetViewportFloat_00a0b560.cpp
 00a0b590	`scalar_deleting_destructor'	CRenderManagerCore	__thiscall	void *	2	CRenderManagerCore *,uint	1	yes	accepted									
 00a0b630	PathConversion_InitializeTemp	_global	unknown	undefined	0		0	yes	accepted									
-00a0b6c0	ClearAllChildPrimitives	CEnginePrimitiveRenderer	__thiscall	void	2	CEnginePrimitiveRenderer *,CEnginePrimitiveHandle *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\CEnginePrimitiveRenderer_ClearAllChildPrimitives_00a0b6c0.cpp
+00a0b6c0	Unload_00a0b6c0	CSoundBankLH	__thiscall	void	2	CEnginePrimitiveRenderer *,CEnginePrimitiveHandle *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\CEnginePrimitiveRenderer_ClearAllChildPrimitives_00a0b6c0.cpp
 00a0b6e0	ClearAllChildPrimitives	CEnginePrimitiveRenderer	__thiscall	void	2	CEnginePrimitiveRenderer *,CEnginePrimitiveHandle *	1	yes	accepted									
 00a0b710	UpdateLightGlobals	CShaderRenderManager	__thiscall	void	1	CShaderRenderManager *	1	yes	accepted									
 00a0b790	QuadTree_QueryBounds	_global	unknown	undefined	0		0	yes	accepted									
@@ -36853,7 +36853,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a3fdc0	swap<CSymbolMap::CSymbolInfo>	swap<CSymbolMap	__fastcall	void	2	CSymbolInfo *,CSymbolInfo *	1	yes	accepted									
 00a3fe60	_Copy_backward<CSymbolMap::CSymbolInfo*,CSymbolMap::CSymbolInfo*>	_Copy_backward<CSymbolMap::CSymbolInfo*,CSymbolMap	__fastcall	CSymbolInfo *	4	CSymbolInfo *,CSymbolInfo *,CSymbolInfo *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00a3ff40	StdList_DefaultCtor_a3ff40	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\global_StdListDefaultCtora3ff40_00a3ff40.cpp
-00a3ff60	~_List_base	std::_List_base<CSoundObjectLH*,std::allocator<CSoundObjectLH*> >	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\CGuiControlTreePane_SortTreeRecursively_00a3ff60.cpp
+00a3ff60	~_List_base	std::_List_base<CSoundObjectLH *, std::allocator<CSoundObjectLH *>>	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a3\CGuiControlTreePane_SortTreeRecursively_00a3ff60.cpp
 00a40040	_Copy_impl<std::pair<CCharString,CCharString>*,std::pair<class_CCharString,class_CCharString>*>	_Copy_impl<std::pair<CCharString,CCharString>*,std	__fastcall	pair<CCharString,CCharString> *	4	pair<class_CCharString,class_CCharString> *,pair<class_CCharString,class_CCharString> *,pair<class_CCharString,class_CCharString> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00a40150	StdList_DefaultCtor_a40150	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a4\global_StdListDefaultCtora40150_00a40150.cpp
 00a40250	_Med3<std::pair<CCharString,CCharString>*,CKeyPairCompareLess<CCharString,CCharString>_>	_Med3<std	__fastcall	void	4	pair<CCharString,CCharString> *,pair<CCharString,CCharString> *,pair<CCharString,CCharString> *,CKeyPairCompareLess<CCharString,CCharString>	1	yes	accepted									
@@ -36868,7 +36868,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a408e0	_Adjust_heap<std::pair<CCharString,unsigned_long>*,int,std::pair<class_CCharString,unsigned_long>,CKeyPairCompareLess<CCharString,unsigned_long>_>	_Adjust_heap<std::pair<CCharString,unsigned_long>*,int,std	__fastcall	void	5	pair<CCharString,unsigned_long> *,int,int,pair<class_CCharString,unsigned_long> *,CKeyPairCompareLess<CCharString,unsigned_long>	1	yes	accepted									
 00a409a0	__push_heap<std::pair<std::pair<CCharString, CCharString>, CSoundBankLH *> *, int, std::pair<std::pair<CCharString, CCharString>, CSoundBankLH *>, CKeyPairCompareLess<std::pair<CCharString, CCharString>, CSoundBankLH *>>	std	unknown	undefined	0		0	yes	accepted									
 00a40af0	Map_FindUpper_CCharStringPair	_global	unknown	undefined	0		0	yes	accepted									
-00a40bd0	~vector	std::vector<std::pair<std::pair<CCharString,CCharString>,CSoundBankLH*> >	__thiscall	void	1	CCombatWheel *	1	yes	accepted									
+00a40bd0	~vector	std::vector<std::pair<std::pair<CCharString, CCharString>, CSoundBankLH *>, std::allocator<std::pair<std::pair<CCharString, CCharString>, CSoundBankLH *>>>	__thiscall	void	1	CCombatWheel *	1	yes	accepted									
 00a40c10	Vector_Copy_CCharStringPair	_global	unknown	undefined	0		0	yes	accepted									
 00a40cb0	erase	std::vector<std::pair<CCharString, CSoundBankLH *>, std::allocator<std::pair<CCharString, CSoundBankLH *>>>	unknown	undefined	0		0	yes	accepted									
 00a40d00	_M_clear	std::vector<CUnprovenElement_00a40d00, std::allocator<CUnprovenElement_00a40d00>>	__thiscall	void	1	CCombatWheel *	1	yes	accepted									
@@ -37207,7 +37207,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a53040	_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>	_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a5\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a53040.cpp
 00a53080	CIntelligentPointer<CThing_const_>	CIntelligentPointer<CThing_const_>	__thiscall	undefined	2	CIntelligentPointer<CThing_const_> *,CThing *	0	yes	accepted									
 00a530b0	_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>	_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a5\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a530b0.cpp
-00a53300	clear	std::_List_base<CIntelligentPointer<C3DAnimation2>,std::allocator<CIntelligentPointer<C3DAnimation2> > >	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted									
+00a53300	clear	std::_List_base<CIntelligentPointer<C3DAnimation2>, std::allocator<CIntelligentPointer<C3DAnimation2>>>	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted									
 00a533f0	New<C3DAnimationSequence>	CSimpleMemoryPool	__thiscall	C3DAnimationSequence *	2	CSimpleMemoryPool *,ulong	1	yes	accepted									
 00a53440	New<C3DAnimationSequenceData>	CSimpleMemoryPool	__thiscall	C3DAnimationSequenceData *	2	CSimpleMemoryPool *,ulong	1	yes	accepted									
 00a53520	_Cons_val<std::allocator<CIntelligentPointer<CThing_const_>_>,CIntelligentPointer<CThing_const_>,CIntelligentPointer<class_CThing_const_>_>	_Cons_val<std	__fastcall	void	3	allocator<CIntelligentPointer<CThing_const_>_> *,CIntelligentPointer<CThing_const_> *,CIntelligentPointer<class_CThing_const_> *	1	yes	accepted									
