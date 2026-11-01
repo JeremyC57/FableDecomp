@@ -1,4 +1,4 @@
-// Behaviour test for 0x00d25410 (CQ_NewOakValeIntroScript ctor): the reconstructed logic run over a host model.
+// Behaviour test for 0x00d25410 (NScript::CQ_DragonBossFightScript ctor): the reconstructed logic run over a host model.
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>

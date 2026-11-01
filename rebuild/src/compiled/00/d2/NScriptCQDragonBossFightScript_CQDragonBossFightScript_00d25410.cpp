@@ -1,10 +1,15 @@
-// CQ_NewOakValeIntroScript::CQ_NewOakValeIntroScript(void* data, CGameScriptInterface* game) -- quest-script ctor: script base, interface/data pair, own vtable, six zeroed counters, the empty map and two timers
-// Leaf: ??0CQ_NewOakValeIntroScript
+// NScript::CQ_DragonBossFightScript::CQ_DragonBossFightScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- quest-script ctor: script base, interface/data pair, own vtable, six zeroed counters, the empty map and two timers
+// Leaf: ??0CQ_DragonBossFightScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+// Identity (proven, chunk c676): the only caller is Alloc 0x00D27240 (push 98h; registered at 0x00CD5D9D with "S_QDBF",
+//   conversion_queue Q_DragonBossFight); vtable 0x012CB70C is ??_7CQ_DragonBossFightScript@NScript@@6B@. The real
+//   ??0CQ_NewOakValeIntroScript is 0x00DAAC00 (vtable 0x012D7A28, Alloc push 10Ch).
+// Naming wave 17: landed as ??0CQ_NewOakValeIntroScript(void*, CGameScriptInterface*) (a duplicate of 0x00DAAC00's name); respelled
+//   on the PDB constructor and its (CScriptDataBase*, CGameScriptInterfaceBase&) pair -- name-only (one pushed pointer each).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D25410, length 153 bytes (padded to 160), `ret 8`.
 // Callees: CScriptBase::CScriptBase @ 0x00CB8110 (catalog label "CHeroMorphDef" is propagated), malloc @ 0x00BFEA0E
 // (the map's 0x18-byte header), CGameScriptInterface::RegisterTimer (slot 87, +0x15c) through the global @ 0x0143E8F8 (x2).
-// Vtable 0x012CB70C (slot 3 = Init 0x00D254B0). The retail class does not follow the Ego_r PDB layout of
-// CQ_NewOakValeIntroScript past +0x4c (it has a 12-byte map at +0x84 and timers at +0x90/+0x94), so the members are
+// Vtable 0x012CB70C (slot 3 = Init 0x00D254B0). The retail class does not follow the Ego_r (debug-build) layout of
+// CQ_DragonBossFightScript past +0x4c (it has a 12-byte map at +0x84 and timers at +0x90/+0x94), so the members are
 // named descriptively: six zero-initialised words +0x4c..+0x60, the map +0x84, two timers +0x90/+0x94.
 // Shape (landed 0x00E299F0 model): argument words before the vtable store from the inline `__declspec(novtable)`
 // intermediate base; the six zero words come from the inline ctor of an embedded member object (one `xor ebx,ebx`
@@ -24,9 +29,9 @@ inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { 
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"
 struct __declspec(novtable) CQuestScriptObject : CScriptBase {   // the argument-carrying intermediate base: both words stored before the derived vtable
-    CGameScriptInterface* Game;                    // +0x40 (second argument)
-    void*                 Data;                    // +0x44 (first argument, the script data)
-    CQuestScriptObject(void* data, CGameScriptInterface* game) : CScriptBase(), Game(game), Data(data) { }
+    CGameScriptInterfaceBase* Game;                // +0x40 (second argument; Ego_r CLevelScriptBase<T>::Game)
+    CScriptDataBase*          Data;                // +0x44 (first argument, the script data)
+    CQuestScriptObject(CScriptDataBase* data, CGameScriptInterfaceBase& game) : CScriptBase(), Game(&game), Data(data) { }
 };
 struct _Rb_tree_node_base {
     char                _M_color;                  // +0x00
@@ -54,16 +59,20 @@ struct CZeroWords {                                // six counters zeroed by the
     long Word[6];                                  // script itself hoists the zero register above the vtable store)
     CZeroWords() { Word[0] = 0; Word[1] = 0; Word[2] = 0; Word[3] = 0; Word[4] = 0; Word[5] = 0; }
 };
-struct CQ_NewOakValeIntroScript : CQuestScriptObject {   // vtable 0x012CB70C
+class CScriptDataBase;
+namespace NScript {
+class CQ_DragonBossFightScript : public CQuestScriptObject {   // vtable 0x012CB70C (??_7CQ_DragonBossFightScript@NScript@@6B@)
+public:
     unsigned char    _pad48[4];                    // +0x48 (VictimShake)
     CZeroWords       m_counters;                   // +0x4c..+0x63
     unsigned char    _pad64[0x84 - 0x64];          // +0x64
     CRetailMap<0x18> m_map;                        // +0x84
     CTimer           m_timer90;                    // +0x90
     CTimer           m_timer94;                    // +0x94
-    CQ_NewOakValeIntroScript(void* data, CGameScriptInterface* game);
+    CQ_DragonBossFightScript(CScriptDataBase* data, CGameScriptInterfaceBase& game);
 };
-CQ_NewOakValeIntroScript::CQ_NewOakValeIntroScript(void* data, CGameScriptInterface* game)
+} // namespace NScript
+NScript::CQ_DragonBossFightScript::CQ_DragonBossFightScript(CScriptDataBase* data, CGameScriptInterfaceBase& game)
     : CQuestScriptObject(data, game)
 {
 }

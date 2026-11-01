@@ -229467,9 +229467,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d25410'
-        Module = 'CQ_NewOakValeIntroScript'
-        Source = '00/d2/CQNewOakValeIntroScript_CQNewOakValeIntroScript_00d25410.cpp'
-        TestSource = '00/d2/CQNewOakValeIntroScript_CQNewOakValeIntroScript_00d25410_test.cpp'
+        Module = 'NScript::CQ_DragonBossFightScript'
+        Source = '00/d2/NScriptCQDragonBossFightScript_CQDragonBossFightScript_00d25410.cpp'
+        TestSource = '00/d2/NScriptCQDragonBossFightScript_CQDragonBossFightScript_00d25410_test.cpp'
         PassPattern = '00d25410_TEST PASS'
     }
     [pscustomobject]@{
