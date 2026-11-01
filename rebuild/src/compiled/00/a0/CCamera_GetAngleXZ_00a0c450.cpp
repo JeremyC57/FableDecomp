@@ -23,7 +23,7 @@ extern "C" double __cdecl sin(double x);
 extern "C" double __cdecl cos(double x);
 #pragma intrinsic(atan2, fmod, acos, sqrt, sin, cos)
 
-const double g_twoPi = 6.2831854820251465;           // (double)(2 * 3.1415927f)
+extern const double TWO_PI;                           // 0x0124F2B8 (double)(2 * 3.1415927f); established spelling (the TU defined a local copy before naming wave 13)
 
 class C3DVector {
 public:
@@ -33,10 +33,10 @@ public:
     const float Dot(const C3DVector& other) const { return Z * other.Z + Y * other.Y + X * other.X; }
     __forceinline const C3DVector& InitialiseFromAngles(float angleXY, float angleYZ, float length)
     {
-        float cosYZ = (float)cos(angleYZ * g_twoPi);
-        X = (float)(sin(angleXY * g_twoPi) * (cosYZ * length));
-        Y = (float)(cos(angleXY * g_twoPi) * (cosYZ * length));
-        Z = (float)(sin(angleYZ * g_twoPi) * length);
+        float cosYZ = (float)cos(angleYZ * TWO_PI);
+        X = (float)(sin(angleXY * TWO_PI) * (cosYZ * length));
+        Y = (float)(cos(angleXY * TWO_PI) * (cosYZ * length));
+        Z = (float)(sin(angleYZ * TWO_PI) * length);
         return *this;
     }
 };

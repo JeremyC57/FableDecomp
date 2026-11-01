@@ -18,7 +18,7 @@ class C3DVector { public:
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
 };
 extern const double g_zeroPitch;                        // 0x0122ED70 (0.0)
-extern const double g_twoPi;                            // 0x0124F2B8 ((double)6.2831855f)
+extern const double TWO_PI; // 0x0124F2B8 ((double)6.2831855f)
 struct CTCBase_Retail;
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -94,7 +94,7 @@ void CGameScriptInterface::EntitySetFacingAngle(const CScriptThing& entity, floa
         look->StopLooking(0);
     if (!immediate && look) {
         float cosPitch = (float)cos(g_zeroPitch);
-        double yaw = angle * g_twoPi;
+        double yaw = angle * TWO_PI;
         C3DVector direction((float)(sin(yaw) * cosPitch), (float)(cos(yaw) * cosPitch), (float)sin(g_zeroPitch));
         look->LookAtPos(entity.GetPos() + direction, 0x21);
         return;
