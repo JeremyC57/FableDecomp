@@ -1,4 +1,8 @@
 // CAInputProcess::`scalar deleting destructor'(unsigned int) -- unregister from the manager, ~CBaseClass, optional delete
+// Leaf: ??_GCAInputProcess@@UAEPAXI@Z
+// Naming wave 27 (family c695): CInputProcessManager::RemoveInputProcess 0x00A0D780 is protected and takes the process by
+//   reference (Ego_r.pdb ?RemoveInputProcess@CInputProcessManager@@IAEXAAVCAInputProcess@@@Z; chunk 695); CAInputProcess is its friend.
+//   Was public by pointer (QAE ..PAV).
 // Naming (naming wave 24): ~CBaseClassNonCopyable 0x0099A300 is protected virtual (Ego_r.pdb / FableWin.pdb ??1CBaseClassNonCopyable@@MAE@XZ, engine/CBaseClassNonCopyable.h).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0D410, length 65 bytes (+ int3 padding).
 // Callees: this class's virtual slot 3 through the vtable constant (`call [0129CA1Ch]`: a virtual
@@ -13,8 +17,10 @@
 // `__forceinline` so its body sits inside the `??_G` (VC7.1 would otherwise emit `??1` out of line).
 class CAInputProcess;
 
-class CInputProcessManager { public:
-    void RemoveInputProcess(CAInputProcess* process);    // 0x00A0D780
+class CInputProcessManager {
+protected:                                               // Ego_r.pdb IAE (protected, by reference)
+    void RemoveInputProcess(CAInputProcess& process);    // 0x00A0D780
+    friend class CAInputProcess;                         // retail's ~CAInputProcess / RemoveFromInterface call it
 };
 
 struct CBaseClassNonCopyable {
@@ -30,7 +36,7 @@ class CAInputProcess : public CBaseClassNonCopyable { public:
     {
         if (PPlayerInterface != 0) {
             NotifyRemoved();
-            PPlayerInterface->RemoveInputProcess(this);
+            PPlayerInterface->RemoveInputProcess(*this);
             PPlayerInterface = 0;
         }
     }

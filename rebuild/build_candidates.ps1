@@ -44872,9 +44872,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007196b0'
-        Module = '_global'
-        Source = '00/71/CActiveFile_OnReadFinished_007196b0.cpp'
-        TestSource = '00/71/CActiveFile_OnReadFinished_007196b0_test.cpp'
+        Module = 'std::_List_base<CCountedPointer<CTCScriptedControl::CActionBase>,std::allocator<CCountedPointer<CTCScriptedControl::CActionBase> > >'
+        Source = '00/71/stdListbaseCCountedPointerCTCScriptedControlCActionBasestdallocatorCCountedPoint_Listbase_007196b0.cpp'
+        TestSource = '00/71/stdListbaseCCountedPointerCTCScriptedControlCActionBasestdallocatorCCountedPoint_Listbase_007196b0_test.cpp'
         PassPattern = '007196b0_TEST PASS'
     }
     [pscustomobject]@{

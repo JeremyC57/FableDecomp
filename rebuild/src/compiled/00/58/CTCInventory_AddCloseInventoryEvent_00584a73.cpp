@@ -1,5 +1,8 @@
 // CTCInventory::AddCloseInventoryEvent() -- an active, not yet closing interface-0xF6 menu is asked to close itself; otherwise the base queues the close-inventory game event; then the live GUI is toggled back if it was hidden
-// Leaf: AddCloseInventoryEvent
+// Leaf: ?AddCloseInventoryEvent@CTCInventory@@UAEXXZ
+// Naming wave 27 (family c695): NInventory::CTCInventoryBase::AddCloseInventoryEvent 0x005BC527 is the virtual
+//   ?AddCloseInventoryEvent@CTCInventoryBase@NInventory@@UAEXXZ (Ego_r.pdb + FableWin.pdb; chunk 695), called qualified, and the
+//   override is ?AddCloseInventoryEvent@CTCInventory@@UAEXXZ. Was the global CTCInventoryBase with non-virtual members (QAE).
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
@@ -91,14 +94,16 @@ class CPlayerGui : public CPlayerGuiDonor {
 };
 
 
-struct CTCInventoryBase {
-    void*   __vftable;                               // +0x00
+namespace NInventory {
+class CTCInventoryBase { public:                     // vtable 0x01253DBC (vptr +0x00)
     CThing* ParentThing;                             // +0x04 CTCBase
-    void AddCloseInventoryEvent();                   // 0x005BC527
+    virtual void AddCloseInventoryEvent();           // slot 32  0x005BC527
 };
+}
+using NInventory::CTCInventoryBase;
 
 class CTCInventory : public CTCInventoryBase { public:
-    void AddCloseInventoryEvent();
+    virtual void AddCloseInventoryEvent();           // Ego_r.pdb / FableWin.pdb UAE
 };
 
 void CTCInventory::AddCloseInventoryEvent()
