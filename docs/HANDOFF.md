@@ -50,9 +50,17 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
    tools match ignoring it), the per-TU static allowlist (`DUPLICATE_STATICS.tsv`, only libvorbis ilog2). Still open
    from the chunks: GetPWorld 0x008FCFC0 (~45 spellings), VIRTUAL_SCREEN_* (20), vector<CCharString> dtor 0x00414EA0
    (17), GetCurrentWorldFrame 0x004167C8 (8) -- decide them the same way (callers first, PDB initializer list, layouts).
-2. **Naming wave 13** input: NAME_FIXES_QUEUE rows c643-c650 + codex50 (~90), the decisions above, and
-   `2026-10-31_wave12/DEFERRED.tsv` (30 items; the GetPItem family is 2,247 rows and has a plan there). Brief template:
-   `naming/briefs/BRIEF_W12.md`. Then re-run `tools/sync_catalog_names.py`.
+2. **Naming wave 13 = apply the 2026-11-01 decisions** (plan agreed with the owner 2026-11-01, not started; details in
+   `docs/journal/2026-10/2026-10-31_HANDOFF.md` "Wave 13 plan"). Order: GGame + GSystemManager (4 rows) -> TWO_PI (3) ->
+   CTCBase Get/PeekThingSearchTools (6) -> CDefString / LowerBound bindings -> PSoundManager (24) + the four GF caches
+   (~20) -> EPSILON (49) -> SmoothFadeValue rename of 0x00AF9000 (git mv, free __fastcall GFSmoothFadeValue, must stay
+   byte-exact) -> IS_THING_ALIVE (read 0x0097A630's argument type first, then 3) -> PKCDeferredBank (5 libpk rows, land
+   last) -> the anonymous-namespace rewrite (214 bindings, 18 rows; confirm famlib.hashy tolerance on the live table
+   first) -> 0x00C351B0 Start callers only when that row lands. All are name-only (no byte change): edit the declaration
+   and uses, replace the binding row, `vland.py --recheck-landed` per family, commit per family. Then the queue rows
+   c643-c650 + codex50 (~90) and `2026-10-31_wave12/DEFERRED.tsv`. Reuse the wave 12 family tools
+   (`2026-10-31_wave12/scripts/`: famlib.run + fam_free / fam_base / fam_decl / fam_auto, famrep.py to list a target's
+   spellings, mkbind12.py for BINDINGS.tsv, recheck.sh). After landing run `tools/sync_catalog_names.py` + the dashboard trio.
 3. **Chunk cycle** (two agents): `pick_parked.py` → `$S/w30/ranked.tsv`, `cutp.sh N addrs` from the fixable bucket
    (137 rows ranked fixable, 1,036 ties wait for migration wave 10), land with `land_chunk.sh N` + `records.py N`.
    Chunk 651 needs re-cutting in the new scratch (`cutp.sh 651 <addrs from chunk_history.tsv>`).
