@@ -38,7 +38,7 @@ class CThingCompare_InDirectionOfAndNearestToHeuristicBitch {
 public:
     C2DVector Pos;                                        // +0x00 the searcher's XY position
     C2DVector Dir;                                        // +0x08 the unit XY direction it wants to move in
-    float GetScore(CThing* thing) const
+    float GetScore(const CThing* thing) const
     {
         const C3DVector& p = thing->GetPos();
         float dx = p.X - Pos.X;
@@ -50,11 +50,11 @@ public:
         float along = dy * Dir.Y + dx * Dir.X;
         return (float)pow(along, (float)((int)dist / 4 * 2 + 1));
     }
-    __declspec(noinline) bool operator()(CThing* a, CThing* b) const;   // 0x0097ABF0
+    __declspec(noinline) bool operator()(const CThing* a, const CThing* b) const;   // 0x0097ABF0
 };
 
 #pragma auto_inline(off)
-bool CThingCompare_InDirectionOfAndNearestToHeuristicBitch::operator()(CThing* a, CThing* b) const
+bool CThingCompare_InDirectionOfAndNearestToHeuristicBitch::operator()(const CThing* a, const CThing* b) const
 {
     float scoreA = GetScore(a);
     if (GetScore(b) < scoreA)

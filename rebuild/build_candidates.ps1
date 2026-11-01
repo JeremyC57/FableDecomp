@@ -285345,9 +285345,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0097adf0'
-        Module = '_global'
-        Source = '00/97/global_Pushheap_0097adf0.cpp'
-        TestSource = '00/97/global_Pushheap_0097adf0_test.cpp'
+        Module = 'std'
+        Source = '00/97/std_pushheap_0097adf0.cpp'
+        TestSource = '00/97/std_pushheap_0097adf0_test.cpp'
         PassPattern = '0097adf0_TEST PASS'
     }
     [pscustomobject]@{

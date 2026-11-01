@@ -42,7 +42,7 @@ class CThingCompare_InDirectionOfAndNearestToHeuristicBitch {
 public:
     C2DVector Pos;                                        // +0x00 the searcher's XY position
     C2DVector Dir;                                        // +0x08 the unit XY direction it wants to move in
-    bool operator()(CThing* a, CThing* b) const;          // 0x00978790 (declared only, see Shape)
+    bool operator()(const CThing* a, const CThing* b) const;          // 0x00978790 (declared only, see Shape)
 };
 }
 typedef CThingCompare_InDirectionOfAndNearestToHeuristicBitch TComp;

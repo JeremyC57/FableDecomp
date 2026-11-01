@@ -12,7 +12,7 @@ class CThingCompare_InDirectionOfAndNearestToHeuristicBitch {   // Ego_r.pdb 16 
 public:
     float PosX, PosY;                                    // +0x00 Pos (C2DVector)
     float DirX, DirY;                                    // +0x08 Dir (C2DVector)
-    bool operator()(CThing* a, CThing* b) const;         // 0x0097ABF0
+    bool operator()(const CThing* a, const CThing* b) const;         // 0x0097ABF0
 };
 }
 namespace std {

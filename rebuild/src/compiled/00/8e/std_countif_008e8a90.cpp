@@ -1,4 +1,4 @@
-// std::count_if(const CIntelligentPointer<CThing>* first, const CIntelligentPointer<CThing>* last, CThingFilter_IsNotInMode pred) -- counts the intelligent pointers the (out-of-line) thing filter 0x008E8A10 accepts
+// std::count_if(const CIntelligentPointer<CThing>* first, const CIntelligentPointer<CThing>* last, CIsImposterHit pred) -- counts the intelligent pointers the (out-of-line) thing filter 0x008E8A10 accepts
 // Leaf: count_if
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E8A90, 46 bytes, `ret 4`. No direct callers found (xref). Callee: the filter's operator() @
 // 0x008E8A10 (manifest "FindChargeEvent" is wrong: it tests the thing's interface 0x31 mode 0x3F and returns the negation).
@@ -26,9 +26,11 @@ public:
     void* m_vtable;
     T* m_pItem;
 };
-class CThingFilter_IsNotInMode : public std::unary_function<CIntelligentPointer<CThing>, bool> {
+namespace {
+class CIsImposterHit : public std::unary_function<CIntelligentPointer<CThing>, bool> {   // Ego_r.pdb anonymous namespace
 public:
-    CThingFilter_IsNotInMode() {}
+    CIsImposterHit() {}
     bool operator()(const CIntelligentPointer<CThing>& thing) const;   // 0x008E8A10
 };
-template int __fastcall std::count_if(const CIntelligentPointer<CThing>*, const CIntelligentPointer<CThing>*, CThingFilter_IsNotInMode);
+}
+template int __fastcall std::count_if(const CIntelligentPointer<CThing>*, const CIntelligentPointer<CThing>*, CIsImposterHit);

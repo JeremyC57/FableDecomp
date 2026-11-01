@@ -1,4 +1,4 @@
-// std::count_if(const CIntelligentPointer<CThing>* first, const CIntelligentPointer<CThing>* last, std::unary_negate<CThingFilter_IsNotInMode> pred) -- counts the intelligent pointers the (out-of-line) thing filter 0x008E8A10 rejects
+// std::count_if(const CIntelligentPointer<CThing>* first, const CIntelligentPointer<CThing>* last, std::unary_negate<CIsImposterHit> pred) -- counts the intelligent pointers the (out-of-line) thing filter 0x008E8A10 rejects
 // Leaf: count_if
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E8B80, 46 bytes, `ret 4`. No direct callers found (xref). Callee: the wrapped filter's
 // operator() @ 0x008E8A10. Same as 0x008E8A90 with the predicate wrapped in std::unary_negate (`jne` instead of `je` before `inc ebx`);
@@ -31,9 +31,11 @@ public:
     void* m_vtable;
     T* m_pItem;
 };
-class CThingFilter_IsNotInMode : public std::unary_function<CIntelligentPointer<CThing>, bool> {
+namespace {
+class CIsImposterHit : public std::unary_function<CIntelligentPointer<CThing>, bool> {   // Ego_r.pdb anonymous namespace
 public:
-    CThingFilter_IsNotInMode() {}
+    CIsImposterHit() {}
     bool operator()(const CIntelligentPointer<CThing>& thing) const;   // 0x008E8A10
 };
-template int __fastcall std::count_if(const CIntelligentPointer<CThing>*, const CIntelligentPointer<CThing>*, std::unary_negate<CThingFilter_IsNotInMode>);
+}
+template int __fastcall std::count_if(const CIntelligentPointer<CThing>*, const CIntelligentPointer<CThing>*, std::unary_negate<CIsImposterHit>);

@@ -28,7 +28,7 @@ class CThingCompare_InDirectionOfAndNearestToHeuristicBitch {
 public:
     C2DVector Pos;                                        // +0x00
     C2DVector Dir;                                        // +0x08
-    float GetScore(CThing* thing) const
+    float GetScore(const CThing* thing) const
     {
         const C3DVector& p = thing->GetPos();
         float dx = p.X - Pos.X;
@@ -40,11 +40,11 @@ public:
         float along = dy * Dir.Y + dx * Dir.X;
         return (float)pow(along, (float)((int)dist / 4 * 2 + 1));
     }
-    __declspec(noinline) bool operator()(CThing* a, CThing* b) const;   // 0x00978790
+    __declspec(noinline) bool operator()(const CThing* a, const CThing* b) const;   // 0x00978790
 };
 // Same-TU stand-in for operator() (its retail body is 0x00978790), as the landed sibling rows of this sort compile it.
 #pragma auto_inline(off)
-bool CThingCompare_InDirectionOfAndNearestToHeuristicBitch::operator()(CThing* a, CThing* b) const
+bool CThingCompare_InDirectionOfAndNearestToHeuristicBitch::operator()(const CThing* a, const CThing* b) const
 {
     float scoreA = GetScore(a);
     if (GetScore(b) < scoreA)
