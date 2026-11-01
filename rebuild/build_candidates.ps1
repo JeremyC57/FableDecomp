@@ -67971,9 +67971,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '007f7700'
-        Module = '_global'
-        Source = '00/7f/CXMVPlaybackInfo_CXMVPlaybackInfo_007f7700.cpp'
-        TestSource = '00/7f/CXMVPlaybackInfo_CXMVPlaybackInfo_007f7700_test.cpp'
+        Module = 'CTCActivationReceptorBase'
+        Source = '00/7f/CTCActivationReceptorBase_Deactivate_007f7700.cpp'
+        TestSource = '00/7f/CTCActivationReceptorBase_Deactivate_007f7700_test.cpp'
         PassPattern = 'OK_007f7700'
     }
     [pscustomobject]@{
@@ -216202,8 +216202,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00759a00'
         Module = 'CTCPhysicsRigidBody'
-        Source = '00/75/CTCPhysicsRigidBody_vfunc75_00759a00.cpp'
-        TestSource = '00/75/CTCPhysicsRigidBody_vfunc75_00759a00_test.cpp'
+        Source = '00/75/CTCPhysicsRigidBody_SetRHSet_00759a00.cpp'
+        TestSource = '00/75/CTCPhysicsRigidBody_SetRHSet_00759a00_test.cpp'
         PassPattern = '00759a00_TEST PASS'
     }
     [pscustomobject]@{
@@ -217518,8 +217518,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '007c75e0'
         Module = 'CTCTurncoatSpell'
-        Source = '00/7c/CTCTurncoatSpell_FinalCleanup_007c75e0.cpp'
-        TestSource = '00/7c/CTCTurncoatSpell_FinalCleanup_007c75e0_test.cpp'
+        Source = '00/7c/CTCTurncoatSpell_OnRemove_007c75e0.cpp'
+        TestSource = '00/7c/CTCTurncoatSpell_OnRemove_007c75e0_test.cpp'
         PassPattern = '007c75e0_TEST PASS'
     }
     [pscustomobject]@{
