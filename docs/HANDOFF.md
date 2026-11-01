@@ -12,7 +12,7 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
   5/5 proof + lib_verify MATCH). **Nothing is running** (chunk 651 landed 3/10 under the increased-attempts brief). The owner gives the `Fable.exe` link in a new
   container; it is never written into the repo.
 - Coverage (`rebuild/COVERAGE.md`; `tools/landed_metrics.py` → `write_decomp_dashboard.py` → `update_readme_progress.py`,
-  never hand-edit): 52,869 of 57,611 known functions (91.8%), 45,468 of the original 49,568 (91.7%); 174 `retail_asm`,
+  never hand-edit): 52,879 of 57,611 known functions (91.8%), 45,478 of the original 49,568 (91.7%); 174 `retail_asm`,
   441 `toolchain_library`, 13 asm_bake oracles.
 - Retail compiler cl 13.10.3077 RTM (lane default `$S/wine/vc71rtm`); `--qfe` 13.10.4035 (`$S/wine/vc71`). Lane-only
   downloads (never committed): VS 2003 `Vc7/lib` (`libsig/fetch_vs2003_libs.sh` → `$S/wine/vs2003lib`,
@@ -35,8 +35,8 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
 - At most two Opus high-effort agents; agents never run git, never write under the repo, never kill processes.
 
 ## Done 2026-11-01 (details in FINDINGS_LOG)
-- Chunk 663 (NA008, the first authorable never-attempted chunk: ten 100-215 byte destructors with one propagated label) landed
-  10/10 in 1-3 probes; 24 NAME_FIXES (c663), 36 labels. The pool's authorable band lands like the twins: identity first.
+- Chunks 663 and 664 (NA008, NA009: the authorable band, 100-250 bytes, no twins) landed 10/10 each in 1-3 probes; 45 NAME_FIXES
+  (c663, c664), 65 labels. The pool's authorable band lands like the twins: identity first. 0x00CA4xxx-0x00CA7xxx is DirectShow strmbase.
 - Chunk 659 (the parked pairs) landed 0x006276F0 GetItemsListUI with the real same-file ConstructItemCategoryList body; that
   sibling (destructor-inlining gap, chunk 583) and the Minion pair 0x00935E40 / 0x009363D0 (one source) stay parked with 12-33 probes.
 - Chunks 656-658, 660-662 (NA002-NA007: landed-twin rows) landed 10/10 each, almost every row on the first probe; 105 NAME_FIXES
@@ -71,7 +71,7 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
 
 ## Next
 1. **Never-attempted pool is cut** (2026-11-01, `pending/never_attempted/CHUNKS.tsv`, 170 chunks NA001-NA170, easiest first;
-   coordinator README "Cut a chunk from the never-attempted pool"): NA001 landed as chunk 655; NA002-NA006 = chunks 656-658/660/661 landed 10/10; the pairs chunk 659 landed 1/4; NA007/NA008 = 662/663 landed 10/10; NA009-NA011 = chunks 664-666 (authorable, 100-256 bytes) running at this write
+   coordinator README "Cut a chunk from the never-attempted pool"): NA001 landed as chunk 655; NA002-NA006 = chunks 656-658/660/661 landed 10/10; the pairs chunk 659 landed 1/4; NA007-NA009 = 662-664 landed 10/10; NA010-NA012 = chunks 665-667 (authorable) running at this write
    (owner allowed three agents). Then the pairs chunk (EXTRA_RULES 2026-11-01), then NA005... The parked fixable bucket (97 rows after chunks 652-654) is the other source; keep the chunk 651
    increased-attempts + retail-fidelity brief:
    `pick_parked.py` needs `$S/retry1/WORKLIST.tsv` + `$S/retry/sec6b/WORKLIST.tsv` from the old scratch (gone) -- rebuild the ranked
@@ -79,7 +79,7 @@ handoffs: `docs/journal/HANDOFF_ARCHIVE.md`.
 2. **Naming wave 15** (`naming/2026-11-01_wave14/DECISIONS_W14_RESOLVED.tsv` + DEFERRED.tsv): the IS_THING_ALIVE per-caller
    instantiation (0x0097A630), the CCreatureActionBase friend model (00692940, 00692c10), the c654 queue rows, the 10 vcs
    byte-changers and LowerBound's shared CVectorMap model (244 + 103 rows); VIRTUAL_SCREEN_* / PMainGameComponent stay gated.
-3. **Migration wave 10** per `headers/2026-10-30_retail_models_wave9/NEXT.md` (+ engine/CParentDefClassBase.h implicit destructor, chunk 661 decision): the 76 local `enum ENullDef` models, the
+3. **Migration wave 10** per `headers/2026-10-30_retail_models_wave9/NEXT.md` (+ engine/CParentDefClassBase.h and engine/CLevelScriptBase.h implicit destructors, chunks 661/664 decisions): the 76 local `enum ENullDef` models, the
    1,317 proven CCountedPointer rows, and the shared `engine/CDefPointer.h` Release() shape (mov/dec/mov vs retail
    `dec [ecx+4]; jne`, header debt found in chunk 649).
 4. **ChatGPT pass 10 return** (by 2026-11-04): regrade like the Codex pass (`batches/2026-10-31_codex_parked50/README.md`):

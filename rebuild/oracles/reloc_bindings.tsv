@@ -35660,3 +35660,13 @@ _NEWLINE	013b8ba8	0121ab3f
 ?ClearPrimitiveList@CEngineInternalPrimitiveBase@@SIXPAV1@@Z	00b8fee0	00b94b50
 ?_M_erase@?$_Rb_tree@JU?$pair@$$CBJV?$map@JV?$CCountedPointer@VCEngineSceneMap@@@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJV?$CCountedPointer@VCEngineSceneMap@@@@@std@@@3@@std@@@std@@U?$_Select1st@U?$pair@$$CBJV?$map@JV?$CCountedPointer@VCEngineSceneMap@@@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJV?$CCountedPointer@VCEngineSceneMap@@@@@std@@@3@@std@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJV?$map@JV?$CCountedPointer@VCEngineSceneMap@@@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJV?$CCountedPointer@VCEngineSceneMap@@@@@std@@@3@@std@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBJV?$map@JV?$CCountedPointer@VCEngineSceneMap@@@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJV?$CCountedPointer@VCEngineSceneMap@@@@@std@@@3@@std@@@std@@@2@@Z	00b98350	00b94b50
 ?_M_erase@?$_Rb_tree@W4EEngineRenderLayer@@U?$pair@$$CBW4EEngineRenderLayer@@VCEngineSceneRenderStats@@@std@@U?$_Select1st@U?$pair@$$CBW4EEngineRenderLayer@@VCEngineSceneRenderStats@@@std@@@3@U?$less@W4EEngineRenderLayer@@@3@V?$allocator@U?$pair@$$CBW4EEngineRenderLayer@@VCEngineSceneRenderStats@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EEngineRenderLayer@@VCEngineSceneRenderStats@@@std@@@2@@Z	00b95ee0	00b94b50
+??1CRegionMinimap@@QAE@XZ	0066ccf0	00442610
+?clear@?$_List_base@VCMarkerInfo@CMiniMapDisplay@@V?$allocator@VCMarkerInfo@CMiniMapDisplay@@@std@@@std@@QAEXXZ	00440730	00442610
+??1CEntityRuntimePersistence@NThingManager@@QAE@XZ	0052c4b0	00523440
+?_M_erase@?$_Rb_tree@_KU?$pair@$$CB_KPAVCThing@@@std@@U?$_Select1st@U?$pair@$$CB_KPAVCThing@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KPAVCThing@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CB_KPAVCThing@@@std@@@2@@Z	005278a0	00523440
+??$remove_if@VCIsNavigator@@@?$list@U?$pair@JPBVCNavigatorBase@@@std@@V?$allocator@U?$pair@JPBVCNavigatorBase@@@std@@@2@@std@@QAEXVCIsNavigator@@@Z	00a155c0	00a1cb40
+??1?$_List_base@VCNavWayPoint@@V?$allocator@VCNavWayPoint@@@std@@@std@@QAE@XZ	00a214c0	00a1cb40
+??1CNavigatorBase@@UAE@XZ	00a47180	00a1cb40
+?_M_erase@?$_Rb_tree@JU?$pair@$$CBJVCAStarState@CNavigatorAStar@@@std@@U?$_Select1st@U?$pair@$$CBJVCAStarState@CNavigatorAStar@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCAStarState@CNavigatorAStar@@@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBJVCAStarState@CNavigatorAStar@@@std@@@2@@Z	00a21640	00a1cb40
+?RegisterPrimitiveManager@CEnginePrimitiveTypeInfo@@QAEXPAVCEnginePrimitiveManager@@@Z	00b8fad0	00b33ae0
+?_M_insert_overflow@?$vector@V?$CCountedPointer@VCEnginePrimitiveManager@@@@V?$allocator@V?$CCountedPointer@VCEnginePrimitiveManager@@@@@std@@@std@@IAEXPAV?$CCountedPointer@VCEnginePrimitiveManager@@@@ABV3@ABU__false_type@2@I_N@Z	00b38bb0	00b33ae0

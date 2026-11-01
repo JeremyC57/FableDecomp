@@ -1,0 +1,48 @@
+addr       parity           behav  name
+00442610   WARN SHARED_HEADER_AVAILABLE CMarkerInfo
+00442610   WARN RELOC_NAME: ??1CMinimapData@@QAE@XZ -> 00642a60 labelled 'CResourceHolder_00642a60::~CResourceHolder_00642a60'
+00442610   WARN RELOC_NAME: ?clear@?$_List_base@VCMarkerInfo@CMiniMapDisplay@@V?$allocator@VCMarkerInfo@CMiniMapDisplay@@@std@@@std@@QAEXXZ -> 00440730 labelled 'CGuiControlTreePane::SortTreeRecursively'
+00442610   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00442610   RELOCATION_MATCH PASS   ~CMiniMapDisplay
+00523440   WARN RELOC_NAME: ??1CEntityRuntimePersistence@NThingManager@@QAE@XZ -> 0052c4b0 labelled 'CKeyedTablePair::~CKeyedTablePair'
+00523440   RELOCATION_MATCH PASS   ~CThingManager
+0055b760   WARN SHARED_HEADER_AVAILABLE CObserver
+0055b760   RELOCATION_MATCH PASS   ~CClickable
+0075a480   RELOCATION_MATCH PASS   ~CTCPhysicsRigidBody
+009fc690   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+009fc690   RELOCATION_MATCH PASS   ~CResourceBank
+00a1cb40   WARN SHARED_HEADER_AVAILABLE CNavigatorManager
+00a1cb40   WARN RELOC_NAME: ??1?$_List_base@VCNavWayPoint@@V?$allocator@VCNavWayPoint@@@std@@@std@@QAE@XZ -> 00a214c0 labelled '_global::StdList_Clear_00a214c0'
+00a1cb40   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00a1cb40   RELOCATION_MATCH PASS   ~CNavigatorAStar
+00b33ae0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveTypeInfo
+00b33ae0   RELOCATION_MATCH PASS   AddPrimitiveManager
+00ca5570   RELOCATION_MATCH PASS   OnDirectRender
+00d005e0   WARN RELOC_NAME: ??1CScriptBase@@UAE@XZ -> 00cbd510 labelled 'CRecordSet_00cbd510::~CRecordSet_00cbd510'
+00d005e0   RELOCATION_MATCH PASS   ~CQ_AwakeningTheOracleScript
+00f37570   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00f37570   RELOCATION_MATCH PASS   ~CGPUScratchBufferTextureManager
+
+WINS: 10
+  00442610 RELOCATION_MATCH CMiniMapDisplay::??1CMiniMapDisplay
+  00523440 RELOCATION_MATCH CThingManager::??1CThingManager
+  0055b760 RELOCATION_MATCH NUISystem::CClickable::??1CClickable
+  0075a480 RELOCATION_MATCH CTCPhysicsRigidBody::??1CTCPhysicsRigidBody
+  009fc690 RELOCATION_MATCH CResourceBank::??1CResourceBank
+  00a1cb40 RELOCATION_MATCH CNavigatorAStar::??1CNavigatorAStar
+  00b33ae0 RELOCATION_MATCH CEnginePrimitiveRenderer::?AddPrimitiveManager@CEnginePrimitiveRenderer@@AAEXABV?$CCountedPointer@VCEnginePrimitiveManager@@@@@Z
+  00ca5570 RELOCATION_MATCH CBaseVideoRenderer::?OnDirectRender@CBaseVideoRenderer@@
+  00d005e0 RELOCATION_MATCH NScript::CQ_AwakeningTheOracleScript::??1CQ_AwakeningTheOracleScript
+  00f37570 RELOCATION_MATCH CGPUScratchBufferTextureManager::??1CGPUScratchBufferTextureManager
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  CMiniMapDisplay_CMiniMapDisplay_00442610
+  CThingManager_CThingManager_00523440
+  NUISystemCClickable_CClickable_0055b760
+  CTCPhysicsRigidBody_CTCPhysicsRigidBody_0075a480
+  CResourceBank_CResourceBank_009fc690
+  CNavigatorAStar_CNavigatorAStar_00a1cb40
+  CEnginePrimitiveRenderer_AddPrimitiveManager_00b33ae0
+  CBaseVideoRenderer_OnDirectRender_00ca5570
+  NScriptCQAwakeningTheOracleScript_CQAwakeningTheOracleScript_00d005e0
+  CGPUScratchBufferTextureManager_CGPUScratchBufferTextureManager_00f37570

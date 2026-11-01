@@ -1,0 +1,3 @@
+1	user virtual dtor 'DeleteAllThings();' + STLport map/vector members, byte-array CEntityRuntimePersistence	DIFFER(250v250) member offsets shifted (CEntityRuntimePersistence at +0x9D: no alignment)
+2	CEntityRuntimePersistence with its PDB members (long SaveFormatVersion gives 4-byte alignment)	RELOCATION_MATCH
+3	same with the CArray members opaque bytes (no invented element type)	RELOCATION_MATCH

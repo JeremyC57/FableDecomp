@@ -1,0 +1,11 @@
+address	status	bytes	test	probes	residue	note
+0075a480	RELOCATION_MATCH	162v162	PASS	2	-	CTCPhysicsRigidBody::~CTCPhysicsRigidBody (label ~CPatchTesselationEdgeStrip wrong); `if (PPhysicsMeshInfo) delete` keeps the null test
+00a1cb40	RELOCATION_MATCH	164v164	PASS	3	-	CNavigatorAStar::~CNavigatorAStar (label wrong); real STLport tree/list/vector text, remove_if declared-only
+00d005e0	RELOCATION_MATCH	185v185	PASS	3	-	NScript::CQ_AwakeningTheOracleScript::~CQ_AwakeningTheOracleScript (compiler-generated; label wrong); local CLevelScriptBase<T> without the header's dtor declaration
+00523440	RELOCATION_MATCH	250v250	PASS	3	-	CThingManager::~CThingManager (label wrong); CEntityRuntimePersistence needs its long member for alignment
+009fc690	RELOCATION_MATCH	103v103	PASS	1	-	CResourceBank::~CResourceBank (label ~CDynamicList wrong); same-file ~CResource / ~CResourceList above it
+00b33ae0	RELOCATION_MATCH	103v103	PASS	1	-	CEnginePrimitiveRenderer::AddPrimitiveManager (Ego_r.pdb); STLport push_back with __false_type overflow
+0055b760	RELOCATION_MATCH	197v197	PASS	2	-	NUISystem::CClickable::~CClickable (label CHoverable_destructor named the base)
+00ca5570	RELOCATION_MATCH	100v100	PASS	1	-	CBaseVideoRenderer::OnDirectRender (DirectShow strmbase renbase.cpp; label Audio_SleepUntilFrameTime wrong)
+00442610	RELOCATION_MATCH	201v201	PASS	1	-	CMiniMapDisplay::~CMiniMapDisplay (label RenderState_Destructor wrong)
+00f37570	RELOCATION_MATCH	225v225	PASS	2	-	CGPUScratchBufferTextureManager::~CGPUScratchBufferTextureManager; `> -1` page test

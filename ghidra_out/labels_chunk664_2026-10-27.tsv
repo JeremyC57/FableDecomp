@@ -1,0 +1,30 @@
+address	name	evidence
+0075a480	CTCPhysicsRigidBody::~CTCPhysicsRigidBody	chunk 664 RELOCATION_MATCH: vtable stored; ??_G 0x0075C020 (catalog ~CPatchTesselationEdgeStrip was propagated)
+00a1cb40	CNavigatorAStar::~CNavigatorAStar	chunk 664 RELOCATION_MATCH: ??_G 0x00A224D0; ~CNavigatorBase 0x00A47180 tail
+00d005e0	NScript::CQ_AwakeningTheOracleScript::~CQ_AwakeningTheOracleScript	chunk 664 RELOCATION_MATCH: compiler-generated; ??_G 0x00D005C0; tail ~CScriptBase 0x00CBD510 (~CLevelScriptBase<T> is implicit: 0x00CDD100..50 are jmp thunks)
+00523440	CThingManager::~CThingManager	chunk 664 RELOCATION_MATCH: ??_G 0x0052C610; CEntityRuntimePersistence +0xA0
+009fc690	CResourceBank::~CResourceBank	chunk 664 RELOCATION_MATCH: ??_G 0x009FC750 (catalog ~CDynamicList was wrong)
+00b33ae0	CEnginePrimitiveRenderer::AddPrimitiveManager	chunk 664 RELOCATION_MATCH: private, Ego_r (const CCountedPointer<CEnginePrimitiveManager>&) (catalog CEnginePrimitiveTypeInfo_Manager_List_Insert)
+0055b760	NUISystem::CClickable::~CClickable	chunk 664 RELOCATION_MATCH: ??_G 0x0055B850 (catalog CHoverable_destructor)
+00ca5570	CBaseVideoRenderer::OnDirectRender	chunk 664 RELOCATION_MATCH: DirectShow strmbase renbase.cpp, primary-vtable slot 46 (0x00CA4xxx-0x00CA7xxx is strmbase, not libpk; catalog Audio_SleepUntilFrameTime)
+00442610	CMiniMapDisplay::~CMiniMapDisplay	chunk 664 RELOCATION_MATCH: ??_G 0x004426E0; ~CRegionMinimap 0x0066CCF0, ~CMinimapData 0x00642A60 (catalog RenderState_Destructor)
+00f37570	CGPUScratchBufferTextureManager::~CGPUScratchBufferTextureManager	chunk 664 RELOCATION_MATCH: ??_G 0x00F388D0
+00d005c0	NScript::CQ_AwakeningTheOracleScript::`scalar deleting destructor'	chunk 664 (landed under a stand-in name)
+009fc750	CResourceBank::`scalar deleting destructor'	chunk 664
+00a224d0	CNavigatorAStar::`scalar deleting destructor'	chunk 664
+0075c020	CTCPhysicsRigidBody::`scalar deleting destructor'	chunk 664
+0052c610	CThingManager::`scalar deleting destructor'	chunk 664
+0055b850	NUISystem::CClickable::`scalar deleting destructor'	chunk 664
+004426e0	CMiniMapDisplay::`scalar deleting destructor'	chunk 664
+00f388d0	CGPUScratchBufferTextureManager::`scalar deleting destructor'	chunk 664
+009fc020	CResourceList::RemoveResource	chunk 664: (CResource&) reference parameter
+00cbd510	CScriptBase::~CScriptBase	chunk 664: UAE
+00a155c0	std::list<std::pair<long,const CNavigatorBase*> >::remove_if<CIsNavigator>	chunk 664: out-of-line jmp _S_remove_if thunk (landed as an extern "C" Forward stand-in)
+00a214c0	std::_List_base<CNavWayPoint>::~_List_base	chunk 664 (landed as SortTreeRecursively)
+005356a0	std::_List_base<CCountedPointer<NUISystem::CAction> >::clear	chunk 664
+00440730	std::_List_base<CMiniMapDisplay::CMarkerInfo>::clear	chunk 664: from the ~CMiniMapDisplay call site (confirm the 0x0082A303 TU before respelling the landed placeholder)
+00a21640	std::_Rb_tree<long,pair<const long,CNavigatorAStar::CAStarState>,...>::_M_erase	chunk 664
+005278a0	std::_Rb_tree<unsigned __int64,pair<const unsigned __int64,CThing*>,...>::_M_erase	chunk 664 (CThingManager)
+005286d0	std::_Rb_tree<unsigned __int64,pair<const unsigned __int64,pair<CCharString,CWideString> >,...>::_M_erase	chunk 664 (CThingManager)
+00cd344a	std::_Rb_tree<CCharString,pair<const CCharString,CScriptGameResourceObjectScriptedThing...>,...>::_M_erase	chunk 664
+009aa830	std::_Rb_tree<CCharString,pair<const CCharString,CCharString>,...>::_M_erase	chunk 664

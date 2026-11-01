@@ -1,0 +1,3 @@
+1	engine/CLevelScriptBase.h + template ~CLevelScriptBase() {} definition, real STLport map/vector, retail ctor for the vtable	DIFFER(191v185) CLevelScriptBase vtable store + jmp ~CLevelScriptBase
+2	engine/CLevelScriptBase.h, dtor declared only	RELOCATION_MATCH (masked) but tail jump binds ??1CLevelScriptBase<CQ_SunnyvaleMasterData> (0x00CDD1xx), not ~CScriptBase 0x00CBD510 -- RELOC_IDENTITY fail
+3	local CLevelScriptBase<T> without a dtor declaration (compiler-generated, as retail 0x00CDD100..0x00CDD150 'jmp ~CScriptBase')	RELOCATION_MATCH, tail jump ??1CScriptBase@@UAE@XZ

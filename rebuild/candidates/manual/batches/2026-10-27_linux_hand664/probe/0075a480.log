@@ -1,0 +1,2 @@
+1	plain 'delete PPhysicsMeshInfo;' in a user virtual dtor, STLport vector members, implicit CTCPhysicsBase dtor (CDefPointer.h release)	DIFFER(158v162) no null test before operator delete
+2	'if (PPhysicsMeshInfo) delete PPhysicsMeshInfo;'	RELOCATION_MATCH

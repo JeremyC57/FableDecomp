@@ -1,0 +1,3 @@
+1	real STLport _Rb_tree/_List_base/_Vector_base text (declared-only _M_erase, remove_if), inline RemoveNavigatorFromQueue via GetNavigatorQueueManager, CANavQuadTreeNode user inline dtor, implicit CNavBlockedQuadTreeNode	RELOCATION_MATCH
+2	_M_erase private (STLport stl/_tree.h access: AAE spelling)	RELOCATION_MATCH
+3	faithful STLport in-class remove_if { _S_remove_if(*this, __pred); }	DIFFER(168v164) VC7.1 inlines remove_if and calls _S_remove_if (cdecl); retail calls the out-of-line remove_if COMDAT 0x00A155C0 (jmp 0x00A16EB0): remove_if stays declared-only

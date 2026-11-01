@@ -372140,6 +372140,76 @@ $catalog = @(
         TestSource = '00/b9/CEngineScene_CEngineScene_00b94b50_test.cpp'
         PassPattern = '00b94b50_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00442610'
+        Module = 'CMiniMapDisplay'
+        Source = '00/44/CMiniMapDisplay_CMiniMapDisplay_00442610.cpp'
+        TestSource = '00/44/CMiniMapDisplay_CMiniMapDisplay_00442610_test.cpp'
+        PassPattern = '00442610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00523440'
+        Module = 'CThingManager'
+        Source = '00/52/CThingManager_CThingManager_00523440.cpp'
+        TestSource = '00/52/CThingManager_CThingManager_00523440_test.cpp'
+        PassPattern = '00523440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0055b760'
+        Module = 'NUISystem::CClickable'
+        Source = '00/55/NUISystemCClickable_CClickable_0055b760.cpp'
+        TestSource = '00/55/NUISystemCClickable_CClickable_0055b760_test.cpp'
+        PassPattern = '0055b760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0075a480'
+        Module = 'CTCPhysicsRigidBody'
+        Source = '00/75/CTCPhysicsRigidBody_CTCPhysicsRigidBody_0075a480.cpp'
+        TestSource = '00/75/CTCPhysicsRigidBody_CTCPhysicsRigidBody_0075a480_test.cpp'
+        PassPattern = '0075a480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009fc690'
+        Module = 'CResourceBank'
+        Source = '00/9f/CResourceBank_CResourceBank_009fc690.cpp'
+        TestSource = '00/9f/CResourceBank_CResourceBank_009fc690_test.cpp'
+        PassPattern = '009fc690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a1cb40'
+        Module = 'CNavigatorAStar'
+        Source = '00/a1/CNavigatorAStar_CNavigatorAStar_00a1cb40.cpp'
+        TestSource = '00/a1/CNavigatorAStar_CNavigatorAStar_00a1cb40_test.cpp'
+        PassPattern = '00a1cb40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b33ae0'
+        Module = 'CEnginePrimitiveRenderer'
+        Source = '00/b3/CEnginePrimitiveRenderer_AddPrimitiveManager_00b33ae0.cpp'
+        TestSource = '00/b3/CEnginePrimitiveRenderer_AddPrimitiveManager_00b33ae0_test.cpp'
+        PassPattern = '00b33ae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca5570'
+        Module = 'CBaseVideoRenderer'
+        Source = '00/ca/CBaseVideoRenderer_OnDirectRender_00ca5570.cpp'
+        TestSource = '00/ca/CBaseVideoRenderer_OnDirectRender_00ca5570_test.cpp'
+        PassPattern = '00ca5570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d005e0'
+        Module = 'NScript::CQ_AwakeningTheOracleScript'
+        Source = '00/d0/NScriptCQAwakeningTheOracleScript_CQAwakeningTheOracleScript_00d005e0.cpp'
+        TestSource = '00/d0/NScriptCQAwakeningTheOracleScript_CQAwakeningTheOracleScript_00d005e0_test.cpp'
+        PassPattern = '00d005e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f37570'
+        Module = 'CGPUScratchBufferTextureManager'
+        Source = '00/f3/CGPUScratchBufferTextureManager_CGPUScratchBufferTextureManager_00f37570.cpp'
+        TestSource = '00/f3/CGPUScratchBufferTextureManager_CGPUScratchBufferTextureManager_00f37570_test.cpp'
+        PassPattern = '00f37570_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

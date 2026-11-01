@@ -1,0 +1,2 @@
+1	'for (long i = 0; i < MemoryPages.size(); ++i) if (MemoryPages[i].ScratchPool > -1) FreeMemoryPage(i);' + STLport vector members (CArray<T> : vector<T>)	RELOCATION_MATCH
+2	unsigned i and '!= -1'	DIFFER(225v225) je for jle (the '> -1' test is retail's)
