@@ -1,4 +1,5 @@
 // Levers: twin of 0x00E1FCF0 (EXPRESSION_WAIT, ExpressionDetectedWait): for(;;) with the terminating return first, alive/else-dead branches, in-body `#pragma inline_depth(0)` around the hit-block terminate return, nested CBasicString<char>::operator==, ternary IsAlive.
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // CQR_EscortTraderScript::WatchForExpressionWait(CScriptThing trader) -- spawned per trader: each frame, stop when the trader dies; when the hero performs EXPRESSION_WAIT to it, restart the random-speech timer and set ExpressionDetectedWait
 // Leaf: ?WatchForExpressionWait@CQR_EscortTraderScript@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E1FEF0, 435 bytes, `ret 0Ch` (the by-value CScriptThing).

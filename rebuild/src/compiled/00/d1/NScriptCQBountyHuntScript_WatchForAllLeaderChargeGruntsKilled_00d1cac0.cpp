@@ -1,4 +1,5 @@
 // CQ_BountyHuntScript::WatchForAllLeaderChargeGruntsKilled() -- collect every BH_GangGruntSpawn thing, wait until they are all dead, then (unless the thread is terminating) record AllLeaderChargeGruntsKilled
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Levers: ~vector<CScriptThing> __forceinline over an STLport-style by-value Destroy(first, last) helper; `if (Term) return; flag = true; }` with depth 0 covering the end (closing-brace exit out of line, the in-loop return inline)
 // Leaf: WatchForAllLeaderChargeGruntsKilled
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D1CAC0, length 214 bytes.

@@ -1,4 +1,5 @@
 // NScript::CPersonalScript_EmptyScript::CCrateDeathMarker::Main() -- death-marker crate: alive filter on Me; each round wait for the living hero to come within 5.5 of the marker, spawn a CREATURE_BS_VILLAGER_MALE at it, fade it in (alpha 0 to 1 in 0.05 steps, one per frame), then wait until the hero is dead or more than 8 away, and end the round with a script frame
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: Main
 // Identity (naming wave 11): ?Main@CCrateDeathMarker@CPersonalScript_EmptyScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012F5FC8 slot 1 is stored by the factory 0x00EF1210 registered as "CrateDeathMarker"
 // Retail: Fable.exe (TLC, VC7.1) CCrateDeathMarker::Main @ 0x00EF12F0, 693 bytes. Strings: "CREATURE_BS_VILLAGER_MALE" @ 0x012E39D8, "" @ 0x0122D70E; 0.05f @ 0x0125A15C.

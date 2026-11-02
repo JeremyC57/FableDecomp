@@ -1,4 +1,5 @@
 // CRandomPopulationCreature::Main() -- a randomly populated creature: register an alive-filter over Me; the first time through, attach Me to its village ("PopulationVillageEvil" for type 2, "PopulationVillageGood" for types 0/1) when that village is alive; make Me non-persistent, take it under scripted control and walk it to its exit point until within 2 units; then (non-evil types) lower the current region's population scale by 0.05 clamped to [0,1], remove Me and idle
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EC1EF0, length 836 bytes, plain `ret`.
 // Callees: CIsThingAlive (vtable 0x012C32F0) over the CScriptThing copy ctor 0x004ABE90, ~CIsThingAlive 0x00E241B0,

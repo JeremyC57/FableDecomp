@@ -1,4 +1,5 @@
 // CQ_BreakSiegeScript::WatchForWinLoseConditions() -- watch the bandit attackers (adding the siege leader's group once he has been attacked) until all are dead and Knothole Glade is loaded; then, once the second wave has started and unless the quest failed, make the imprisoned bandit leader unkillable-flag clear and mark the mission succeeded
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D20790, length 678 bytes; spawned from 0x00D1D69F.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CScriptBase::IsActiveThreadTerminating
 //   0x00CB7940, AreAllThingsInVectorDead 0x00CBED00 (__fastcall), free 0x00BFEA14 (inline vector destructor copies),

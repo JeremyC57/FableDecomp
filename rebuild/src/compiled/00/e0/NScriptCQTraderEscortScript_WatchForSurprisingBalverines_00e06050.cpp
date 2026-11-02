@@ -1,4 +1,5 @@
 //   IsAlive wait loop tests it through reinterpret_cast<const CScriptThingView&>(balverine).Thing(); VC7.1 then hoists `lea ecx,[esp+34h]`
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 //   above the terminate jne into the shared ~CScriptThing call (0xE063F5) as retail does (was DIFFER(1007v1007)). The view alone stays 1007v1007,
 //   the value alone is 991v1007; dropping the loop's inline_depth(0) pragma regresses to 1048 bytes.
 // CQ_TraderEscortScript::WatchForSurprisingBalverines() -- thread: while balverine ambushes are still needed, every two seconds finds an M_BalverineSurprise marker the camera cannot see, spawns a CREATURE_BALVERINE_EASY there facing the hero, has a trader comment, sets it on the nearest Darkwood trader (one time in five) or the hero, and waits for it to die

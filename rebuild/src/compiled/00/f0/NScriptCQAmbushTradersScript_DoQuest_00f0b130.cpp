@@ -1,4 +1,5 @@
 // CQ_AmbushTradersScript::DoQuest() -- the quest body: wait for the bandit contact intro, point the quest card at Bowerstone Jail, wait until the hero enters Bowerstone Jail by the entrance from Bowerstone Posh, activate phase 1, spawn the WatchForRegionLeaving / WatchForBanditsDeath / IntroPart2Checker threads, collect the bandit allies, play the intro, set the next objective, show the quest start screen, run phases one and two and, when the quest finished without the contact being killed, wait for Bowerstone Posh to load
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F0B130, length 1606 bytes.
 // Callees: CCharString() 0x0099E4B0 / CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, Compare 0x00411570
 //   (the inlined CCharString == const char*), CBaseClass ctor/dtor 0x0099A2D0 / 0x0099A2E0, operator new 0x00BFEA1A, operator

@@ -1,4 +1,5 @@
 // NScript::CPersonalScript_GlobalThingsScript::CTestGateSwitch::Main() -- test gate switch: open or close every "TestGate" thing to match the switch state (with an
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // on-screen reminder of the required script name), then whenever the hero uses the switch toggle the state and
 // re-apply it, once per script frame until the thread terminates
 // Leaf: Main

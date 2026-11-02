@@ -1,4 +1,5 @@
 // CMK_HS2_SOUL::Main() -- Hero Souls 2 trapped-soul marker (first soul): wait until the quest has freed a soul, then keep a "DG_SOUL_TRAPPED" effect alive at Me (oriented by Me's XY angle), re-creating it whenever it dies, until the script is done
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Levers: ~CScriptThing __forceinline; effect bound as `CScriptThing& effect = Game->CreateEffect(...)` (VC binds the temporary: IsAlive stays virtual); recreate as `effect.PImp = Game->CreateEffect(...).PImp` with depth 0 just before the `;` (temp dtor out of line, counted operator= still direct); for(;;){ if (IsActiveThreadTerminating()) return; ...}
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CE0920, length 470 bytes (+ int3 padding). Three CMK_HS2_SOUL Mains (0x00CE0920 /

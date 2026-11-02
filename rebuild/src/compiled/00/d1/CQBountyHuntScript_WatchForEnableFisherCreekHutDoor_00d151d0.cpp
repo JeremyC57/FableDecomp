@@ -1,4 +1,5 @@
 // CQ_BountyHuntScript::WatchForEnableFisherCreekHutDoor() -- watch thread: wait for the Fisherman region to load, then open the fisherman's hut door if it is still there
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: WatchForEnableFisherCreekHutDoor
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D151D0, 531 bytes (padded to 544), plain `ret`.
 // Callees: CCharString() 0x0099E4B0 / CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CBaseClass()

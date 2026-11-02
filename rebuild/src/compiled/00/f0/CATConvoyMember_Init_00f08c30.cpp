@@ -1,4 +1,5 @@
 // CAT_ConvoyMember::Init() -- a trader convoy member: a non-trader becomes an enemy of the hero and of every living bandit in the parent's AllBandits (stopping if the script is done); a trader (CREATURE_TRADER_01) gets a green mini-map marker; then register the parent's WatchForEnemyDeath callback
+// Revisit: two-view-CScriptThing -- byte-exact, but models CScriptThing as two classes (inline and out-of-line copy/dtor) where retail had one; merge once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: Init
 // Naming wave 29 (family sfbr): the thread class derives from the retail CSpawnedFuncBase (engine/CSpawnedFuncBase.h; Ego_r.pdb / FableWin.pdb
 //   ??0CSpawnedFuncBase@@QAE@ABVCCharString@@K@Z 0x00CDD450, implicit ??1CSpawnedFuncBase@@UAE@XZ 0x00CDD4C0). Was the invented

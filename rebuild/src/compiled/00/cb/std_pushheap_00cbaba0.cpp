@@ -1,4 +1,5 @@
 // 00cbaba0 std::__push_heap
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ??$__push_heap@PAU?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@std@@HU12@V?$CKeyPairCompareLess@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@@@std@@YIXPAU?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@0@HHU10@V?$CKeyPairCompareLess@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@@@Z
 // Flags: /Gr
 #include "engine/CCountedPointer.h"

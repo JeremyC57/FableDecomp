@@ -1,4 +1,5 @@
 // CHenchmanRegionExitComment::Main() -- body-guard henchman comment on leaving a region: collects the "BodyGuard" things; waits until none is within 30 units, then every frame asks the body-guard script for a region-exit comment from the first henchman within 10 units, stopping once one is made
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E5F8F0, length 649 bytes (+ int3 padding).
 // Callees: IsActiveThreadTerminating 0x00F35B30, IsDistanceBetweenThingsUnder 0x00CBE2FF (__fastcall), CCharString(const

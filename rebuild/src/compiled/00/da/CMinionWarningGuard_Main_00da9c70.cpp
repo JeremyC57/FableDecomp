@@ -1,4 +1,5 @@
 // CMinionWarningGuard::Main() -- the minion-chase warning guard: alive filter on Me, take scripted control of Me (priority 4),
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 //   wait for BowerstoneJail to load; the first time play the "CS_MINIONCHASE_INTRO" cut-scene with the hero and Me cast; set
 //   the quest card objective, kick off the quest start screen once, release Me, have Me follow the hero (region following
 //   too), show Me's health bar, spawn the parent's GuardChatter on Me, wait for the mission to end and remove Me

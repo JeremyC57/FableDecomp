@@ -1,4 +1,5 @@
 // CQ_OakValeBanditRaidScript::WatchForWhistling() -- thread: plays a bandit whistle on the nearest raid bandit, then each frame (while the camp path region is loaded and whistling is not stopped) plays one of three random whistles whenever the last one has finished and a bandit is alive
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: WatchForWhistling
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and

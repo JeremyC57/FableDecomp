@@ -1,4 +1,5 @@
 // NScript::CV_FishermanScript::CFisherman::Init() -- the fisherman entity's Init
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?Init@CFisherman@CV_FishermanScript@NScript@@EAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E7BD60, 680 bytes, thiscall, plain `ret` (private virtual, entity vtable slot 2).
 // Identity (proven): slot 2 (Init) of the CFisherman entity vtable 0x012EA0B4, stored by the landed CFisherman::Alloc

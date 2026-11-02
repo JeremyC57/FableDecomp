@@ -1,4 +1,5 @@
 // NScript::CV_ParanoidWhispersScript::CSecretWhisperingFriend::Main() -- the secret whispering man: look up "SecretWhisperingMan", take Me under scripted control, remove Me if the soul-mother quest is active, then while the quest stage (parent +0x48) is 5 give Me the hero as best enemy target, and while it is 1 walk Me back to its stored position and face the "M_SecretWhisperLookAtPos" marker
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: Main
 // Identity (naming wave 11): ?Main@CSecretWhisperingFriend@CV_ParanoidWhispersScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012F11F8 slot 1 is stored by the factory 0x00EC0A50 registered as "SecretWhisperingFriend"
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EC0BA0, 1114 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).

@@ -1,4 +1,5 @@
 // NScript::CQ_AmbushTradersScript::WatchForEnemyDeath(CScriptThing enemy) -- the per-enemy "WatchForEnemyDeath" spawned thread of the Ambush Traders quest: remember the enemy's def name, then every script frame ask the enemy who killed it; once someone has and the killer is the hero, decrease the quest's count for that def (EntityCountDecrease); stop when the thread is terminated
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?WatchForEnemyDeath@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F08590, 839 bytes (`ret 0Ch`: the by-value CScriptThing, destroyed by the callee).
 // Identity: Ego_r.pdb / FableWin.pdb ?WatchForEnemyDeath@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z; the landed

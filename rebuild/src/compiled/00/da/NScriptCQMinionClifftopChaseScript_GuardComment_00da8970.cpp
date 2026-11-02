@@ -1,4 +1,5 @@
 // CQ_MinionClifftopChaseScript::GuardComment(CCharString comment) -- one of the hero's followers (picked at random) speaks the TEXT_QST_067_<data string>_<comment> line, when that text entry exists, in a new conversation with the hero
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: GuardComment
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DA8970, 624 bytes, `ret 4` (the by-value comment is destroyed here).
 // Callees: CScriptThing::GetDataString 0x004AA900 (inline at the first call, out of line at the second), ~CScriptThing

@@ -1,4 +1,5 @@
 // CAT_Phase1Archer::Init() -- make the archer and the hero enemies of each other, then every living bandit in the
+// Revisit: two-view-CScriptThing -- byte-exact, but models CScriptThing as two classes (inline and out-of-line copy/dtor) where retail had one; merge once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // parent's AllBandits (stopping if the entity script is done), make the archer aware of the hero and register the
 // parent's WatchForEnemyDeath callback over a copy of the archer's script thing
 // Leaf: Init

@@ -1,4 +1,5 @@
 // CV_ChapelOfEvilScript::WatchForInsideChapel() -- track whether the (living) hero stands inside the evil chapel building: set InsideChapel on entering BUILDING_CHAPEL_EVIL, clear it once he stands in no building
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E6A0B0, length 650 bytes.
 // Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940; CBaseClass 0x0099A2D0 / ~CBaseClass 0x0099A2E0 (the inline
 //   CScriptThing copies), ~CScriptThing 0x004AA840 (the out-of-line copy at the in-branch returns), operator delete

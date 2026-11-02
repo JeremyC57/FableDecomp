@@ -1,4 +1,5 @@
 // CTCSoundPlayer::PlayUnattachedCriteria(const CCharString& criteria, const C3DVector& pos, bool loop, bool attached) -- expand the criteria into its candidate sound-event names and play the first one that starts from a new emitter at the owner's position; the invalid handle when sound is off or nothing plays
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Grade: RELOCATION_MATCH (agent902, 1 grade this pass) -- a same-TU noinline stand-in for GetPotentialCriteriaStrings 0x0066BC10 (this TU; it fills `names` but never keeps its address -- chunk-422 recipe) on top of the parked forceinline vector dtors + inline_depth(0) return: VC7.1 then zeroes edi only for the state test / the zero stores, keeps end in ebp and tests `test edi,edi` like retail (was 227v223: the CSE'd zero kept in ebp).
 // Leaf: ?PlayUnattachedCriteria@CTCSoundPlayer
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0066BDF0, 223 bytes (+ int3 padding to 224), thiscall `ret 10h`.

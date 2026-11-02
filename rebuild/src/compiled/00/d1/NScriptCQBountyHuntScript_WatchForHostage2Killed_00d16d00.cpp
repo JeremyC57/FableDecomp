@@ -1,4 +1,5 @@
 // NScript::CQ_BountyHuntScript::WatchForHostage2Killed(CScriptThing thing) -- Watch the hostage death message until cancellation.
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?WatchForHostage2Killed@CQ_BountyHuntScript@NScript@@QAEXVCScriptThing@@@Z
 // Identity: Own CBH_Hostage2 Init builds spawned member callback00d16c85 with literal WatchForHostage2Killed and ParentClass., passes parent+20; original PDB CQ_BountyHuntScript public method(CScriptThing by value). Real flag85 reconciles typed script base. CScriptThing MsgIsKilledBy const slot18, Game NewScriptFrame const slot7, CScriptBase IsActiveThreadTerminating00cb7940.
 // Layout: real typed script/level/container/handle ancestry; parent Game64 and flags84/85. Original CScriptThing vtable and counted-pointer destructor/copy semantics, no synthetic dispatch. Unused virtual slots descriptive. Shared headers aliased for real hierarchy.

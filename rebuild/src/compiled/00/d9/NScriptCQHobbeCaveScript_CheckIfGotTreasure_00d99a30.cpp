@@ -1,4 +1,5 @@
 // NScript::CQ_HobbeCaveScript::CheckIfGotTreasure() -- the Hobbe Cave quest's "CheckIfGotTreasure" spawned thread: each time the main chamber region is loaded, look up the two treasure chests HC_Treasure1 / HC_Treasure2 and, while the region stays loaded, count every chest the hero uses (GotTreasure) and have the sacrificial bandit comment on it (TEXT_QST_036_BANDIT_GOT_TREASURE_ONE / _TWO); runs until the thread is terminated
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?CheckIfGotTreasure@CQ_HobbeCaveScript@NScript@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D99A30, 911 bytes, thiscall, plain `ret`.
 // Identity: Ego_r.pdb ?CheckIfGotTreasure@CQ_HobbeCaveScript@NScript@@QAEXXZ (0x00DB72C0); the HobbeCave spawner stores

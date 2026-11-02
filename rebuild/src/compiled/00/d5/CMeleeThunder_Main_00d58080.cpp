@@ -1,4 +1,5 @@
 // NScript::CQ_GuildTrainingMeleeScript::CMeleeThunder::Main() (0x00D58080) -- the Thunder fight: wait for the parent's stage 4, take scripted control
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 //   (priority 4) and hold it while the stage stays 4; then wait for stage 6, take control again and hold it while the stage
 //   stays 6; release the scripted-thing handle and idle until the script is done
 // Leaf: ?Main@CMeleeThunder@

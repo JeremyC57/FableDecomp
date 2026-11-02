@@ -1,4 +1,5 @@
 // 00894500 CGameScriptInterface::CreateCreatureOnEntity
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?CreateCreatureOnEntity@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABV2@0@Z
 // Flags:
 #define FABLE_RETAIL_NSCRIPT

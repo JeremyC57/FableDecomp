@@ -1,4 +1,5 @@
 // CAT_Phase3Guard::Main() -- Arena phase-3 guard: alive filter on Me, wander round its own position (min 0, max from the script def), state group 4; find "AT_ConvoySpy" and ally it with every live guard of the parent, make it and the hero enemies of Me, mark Me on the minimap, wait for the phase to end, then take scripted control, walk to the nearest REGION_EXIT_POINT and fade out
+// Revisit: two-view-CScriptThing -- byte-exact, but models CScriptThing as two classes (inline and out-of-line copy/dtor) where retail had one; merge once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?Main@CAT_Phase3Guard@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F051D0, 1232 bytes; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840, CIsThingAlive dtor 0x00E241B0, SetPredicate 0x00F35B10,

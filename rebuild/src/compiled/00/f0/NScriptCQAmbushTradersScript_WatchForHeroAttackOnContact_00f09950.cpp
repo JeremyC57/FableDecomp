@@ -1,4 +1,5 @@
 // Levers: same for(;;) shape as 0x00F09260, but the hit block does not break: it sets ContactAttackedByHero and falls through to the frame (retail continues the loop); in-body `#pragma inline_depth(0)` around the hit-block terminate return gives the one out-of-line ~CScriptThing.
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // CQ_AmbushTradersScript::WatchForHeroAttackOnContact(CScriptThing) -- spawned per contact: each frame, stop when the contact dies; when the hero hits it (melee or an aggressive special ability) set ContactAttackedByHero and stop
 // Leaf: ?WatchForHeroAttackOnContact@CQ_AmbushTradersScript@NScript@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F09950, 437 bytes (448 with padding), `ret 0Ch` (the by-value CScriptThing).

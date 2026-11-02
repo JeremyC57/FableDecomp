@@ -1,4 +1,5 @@
 // NScript::CQ_HeroSoulsArenaScript::WatchArenaCellsToTurnOffVillage() -- Wait for region activation and update the target thing until cancellation.
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?WatchArenaCellsToTurnOffVillage@CQ_HeroSoulsArenaScript@NScript@@QAEXXZ
 // Grade: RELOCATION_MATCH (wave-2 sec6: length from the retail bytes, BOUNDS_FIX/oracle_extra; moved onto the shared
 //   retail NScript headers, bytes unchanged)

@@ -1,4 +1,5 @@
 // Levers: ~CScriptThing __forceinline; for(;;) with the terminating return first, the dead branch first, then the contest-state block; in-body `#pragma inline_depth(0)` around the attacked terminate return (the one out-of-line ~CScriptThing).
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // CV_ArcheryCompetitionScript::WatchForAttack(CScriptThing owner) -- while the contest is idle or over, flag the hero for attacking the living archery owner
 // Leaf: ?WatchForAttack@CV_ArcheryCompetitionScript@NScript@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E36390, 502 bytes, `ret 0Ch` (the by-value CScriptThing).

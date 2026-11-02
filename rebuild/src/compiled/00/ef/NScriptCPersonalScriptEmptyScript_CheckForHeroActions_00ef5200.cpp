@@ -1,4 +1,5 @@
 // NScript::CPersonalScript_EmptyScript::CheckForHeroActions() -- debug watcher: each script frame, while the hero is alive, fetch the things the hero killed and show "You killed <n> things, of types: <t1>, <t2>." as a screen message
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: CheckForHeroActions
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EF5200, 592 bytes, plain `ret`.
 // Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940; CGameScriptInterface slots 70 (+0x118) GetHero (by reference),

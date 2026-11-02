@@ -1,4 +1,5 @@
 // NScript::CV_AssassinAttacksScript::WatchForAssassinDead(CScriptThing assassin) -- the per-assassin "WatchForAssassinDead" spawned thread of the Assassin Attacks quest: every script frame ask the assassin who killed it; once someone has, hand the hero the OBJECT_QUEST_CARD_ASSASSIN_ATTACKS card (first kill only), record the kill region, clear that region's active-assassin flag and, when the killer is the hero, bump the region's kill count and award the assassin experience; stop when the assassin dies unkilled or the thread is terminated
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?WatchForAssassinDead@CV_AssassinAttacksScript@NScript@@QAEXVCScriptThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E39140, 967 bytes (`ret 0Ch`: the by-value CScriptThing, destroyed by the callee).
 // Identity: Ego_r.pdb / FableWin.pdb ?WatchForAssassinDead@CV_AssassinAttacksScript@NScript@@QAEXVCScriptThing@@@Z; its

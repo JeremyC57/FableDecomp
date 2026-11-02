@@ -1,4 +1,5 @@
 // std::map<long, COpinionDeed* >::~map() -- STLport 4.6 container destructor (implicit): the member _Rb_tree's destructor inlined -- clear(), then free the header node
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006C8270, 66 bytes.
 // Identity (proven, chunk c676): ~CTCHeroOpinionDeedLog 0x006C5E5B calls _M_erase on OpinionDeedMap (+0xC), Ego_r.pdb
 //   std::map<long, COpinionDeed*> (the class member type); node 0x18 = 0x10 header + pair<const long, COpinionDeed*> (signed key: jl/jge).

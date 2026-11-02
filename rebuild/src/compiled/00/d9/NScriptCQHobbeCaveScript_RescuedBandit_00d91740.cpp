@@ -1,4 +1,5 @@
 // CQ_HobbeCaveScript::RescuedBandit() -- each frame: wait for the HobbeCaveSideRoom level, gather the "HobbeRoaming" hobbes and, once they are all dead, record KilledSideRoomHobbes and stop
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Levers: ~vector<CScriptThing> __forceinline; for(;;){ if (Term) return; ...} outer loop (keeps three separate inline dtor copies, no cross-jumping); dead block `if (!Term) { if (!Term) KilledSideRoomHobbes = true; }` then one depth-0 `return;`
 // Leaf: RescuedBandit
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D91740, 481 bytes (496 with padding), plain `ret`; spawned as "RescuedBandit"

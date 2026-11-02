@@ -1,4 +1,5 @@
 // CV_ArcheryCompetitionScript::WatchForOwnerKilled() -- once a contest is running, fetch the AC_Owner and wait for him to be alive; then, until the contest reaches state 2, watch his health: when he dies, stop the game timer, finish the quest, reset the contest, enable teleporting, sheathe the hero's weapons and make his will usable
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E331F0, length 714 bytes, plain `ret`.

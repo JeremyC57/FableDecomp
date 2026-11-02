@@ -1,4 +1,5 @@
 // NScript::CQ_TraderEscortScript::CTraderComment::Main() -- trader-escort comment marker: with an is-alive filter on Me, each frame look for a live DarkwoodTrader within the script def's comment distance; the first one that makes Me's comment removes the marker
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?Main@CTraderComment@CQ_TraderEscortScript@NScript@@
 // Naming wave 25: ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ 0x00F35B30 (Ego_r.pdb / FableWin.pdb: global class, const)
 //   is declared on the global CEntityScriptBase the entity derives from (the landed SetPredicate rows' empty-base model; the vptr /

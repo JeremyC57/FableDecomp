@@ -1,4 +1,5 @@
 // CEngineTreeFilerBase::FindID(unsigned long* key) -- descend the bit-sliced key tree to the leaf for key and return that leaf's ID (its node address) when its stored key matches all KeySize words, else 0
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?FindID@CEngineTreeFilerBase@@QAEKPAK@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BC9B80, 115 bytes, thiscall, `ret 4`.
 // Identity: Ego_d.pdb / FableWin.pdb ?FindID@CEngineTreeFilerBase@@QAEKPAK@Z (absent from the Ego_r name set: inlined

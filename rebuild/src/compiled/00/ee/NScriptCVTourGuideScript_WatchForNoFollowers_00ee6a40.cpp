@@ -1,4 +1,5 @@
 // Levers: vector dtor __forceinline with the finish pointer cached in a local (`last`, edi); for(;;) with the terminating return first, both stop conditions break to one trailing terminating test; in-body `#pragma inline_depth(0)` around the all-dead terminate return keeps that vector dtor out of line (0x008AC970).
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // CV_TourGuideScript::WatchForNoFollowers() -- collect the tour followers, then watch until the hero leaves the guild complex or (tour unfinished) every follower is dead, flagging AllFollowersDead in the latter case
 // Leaf: ?WatchForNoFollowers@CV_TourGuideScript@NScript@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EE6A40, 441 bytes (448 with padding), plain `ret`.

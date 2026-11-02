@@ -1,4 +1,5 @@
 // CGuardOutsideWoods::Main() -- a guard outside the Guildmaster's woods: take scripted control, mark Me on the minimap, then every frame play the warning cutscene once when the hero first comes within 35, give three escalating warnings (within 30, 18, 10 units: "close", "closer" + HALT, "too close" -> attack), and attack the hero when hit by him or when the outside-wood guards already attack
+// Revisit: two-view-CScriptThing -- byte-exact, but models CScriptThing as two classes (inline and out-of-line copy/dtor) where retail had one; merge once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D874F0, 1418 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840, RegisterFilter 0x00F35B10, IsActiveThreadTerminating 0x00F35B30,

@@ -1,4 +1,5 @@
 // CQ_PrisonWardenGameScript::WardenKeyMiniGame() -- sparkles the prison cell key rack and keeps it targetable only while the hero is within 3 units, until the hero uses it; then marks the diary key taken, shows this race's diary code number (year one or two) and removes the sparkles
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: WardenKeyMiniGame
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DDE230, 1017 bytes, plain `ret`.
 // Callees: ~CScriptThing 0x004AA840 (out of line on the key-used path), ~CBaseClass 0x0099A2E0, operator delete

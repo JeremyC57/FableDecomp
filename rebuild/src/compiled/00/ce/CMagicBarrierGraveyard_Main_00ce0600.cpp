@@ -1,4 +1,5 @@
 // CMagicBarrierGraveyard::Main() (0x00CE0600) -- graveyard magic barrier: under an alive filter on Me, create the two red
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 //   force-field idle effects at Me (oriented by Me's XY angle); then every frame, once both effects are dead, re-create them
 // Leaf: ?Main@CMagicBarrierGraveyard@
 // Retail: Fable.exe @ 0x00CE0600, 795 bytes (+ int3 padding), plain `ret`.

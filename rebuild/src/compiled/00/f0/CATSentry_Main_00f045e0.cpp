@@ -1,4 +1,5 @@
 // CAT_Sentry::Main() -- Arena sentry: find "AT_ConvoySpy"; each frame until the thread ends: when the phase ends take scripted control, walk to the nearest REGION_EXIT_POINT and fade out; once alerted (flag) or seen by the hero, attack (state group 0, the hero as best target unless the spy is fleeing), make the hero follow it and idle; when the spy comes within the def's range scare it; on the first frame the spy is scared, turn on the spy and the hero and ally the spy with every live guard
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?Main@CAT_Sentry@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F045E0, 1520 bytes; entity-script vtable slot 1 (Main).
 // Callees: ~CScriptThing 0x004AA840, ~CBaseClass 0x0099A2E0, operator delete 0x00BFE9BC, IsActiveThreadTerminating

@@ -1,4 +1,5 @@
 // CAT_BanditContact::Init() -- register the parent script's WatchForHeroAttackOnContact and WatchForContactDeath
+// Revisit: two-view-CScriptThing -- byte-exact, but models CScriptThing as two classes (inline and out-of-line copy/dtor) where retail had one; merge once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // callbacks (spawned functions over a copy of the contact's script thing) with CQ_AmbushTradersScript::Add
 // Leaf: Init
 // Naming wave 29 (family sfbr): the thread class derives from the retail CSpawnedFuncBase (engine/CSpawnedFuncBase.h; Ego_r.pdb / FableWin.pdb

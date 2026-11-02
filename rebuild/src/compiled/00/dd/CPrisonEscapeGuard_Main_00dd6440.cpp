@@ -1,4 +1,5 @@
 // CPrisonEscapeGuard::Main() -- a prison guard during the escape: whenever its alert timer has run out and it sees the hero or is hit by him (any hit except special ability 14), it raises the alarm once (take scripted control, face the hero, play ALARM, blow the race whistle, wait, then sound the bandit alarm on the quest) and shouts one of two "seen criminal" lines (picked at random once), restarting the 30-second timer
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DD6440, length 1116 bytes (+ int3 padding), plain `ret`.

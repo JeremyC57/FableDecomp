@@ -1,4 +1,5 @@
 // CQ_OpeningGraveyardSecretPassageScript::CheckDoor() -- trigger the path generator, make it persistent, lock the secret-passage gate; until the lieutenant shows up (and then while he lives) re-trigger the generator whenever the hero comes back to the graveyard path; then play the path-door cut-scene, set the objective, fade the gate out and swap in the new door
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: CheckDoor
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DC8C80, 1904 bytes.
 // Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0, ~CScriptThing 0x004AA840 (and its inline body), ~vector<CScriptThing>

@@ -1,4 +1,5 @@
 // CMinionFieldGenerator::Main() -- the minion field generator: alive filter on Me, take scripted control (priority 4); the
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 //   first time (own flag clear) play the "CS_MINIONCHASE_FARM" cut-scene with Me cast as MINION and have the guildmaster
 //   explain the barrier; then run to "M_SummonerToWindmill" until within 2 units, retake scripted control at priority 3,
 //   face the "MagicBarrier" and idle until the thread terminates

@@ -1,4 +1,5 @@
 // CString::ConcatInPlace(int nSrcLen, const char* lpszSrcData) -- MFC-style in-place append: no-op for an empty source; when the buffer is shared or too small concatenate into a new buffer (ConcatCopy) and release the old one, otherwise copy the text after the current end, bump the length, assert it fits and terminate
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Grade: RELOCATION_MATCH (433 bytes; parked 383v433): GetData is __forceinline and the fast path's memcpy offset / `+=` and its terminator sit in `#pragma inline_depth(0)` regions, so exactly retail's three sites call the out-of-line GetData 0x00C0B8C0 while the condition's three, the grow path's two and the ASSERT pair expand inline
 // Leaf: ?ConcatInPlace@CString@@QAEXHPBD@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C0C270, 433 bytes, thiscall `ret 8`.

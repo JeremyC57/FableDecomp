@@ -1,4 +1,5 @@
 // CScytheNearOracle::Main() -- Scythe waiting by the Oracle: take Me under scripted control, add the quest-core minimap marker and face the MK_OW_SCYTHE3 marker; then every frame: when the hero comes within 20 units and the 2-second timer has run out, face the hero; within 12 units, play CS_ORACLE_AWAKENS inside a paused movie sequence (Me cast as "SCYTHE"), flag the parent and remove Me; when the hero hits Me, speak the on-hit line and make Me and the hero allies
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: Main
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).

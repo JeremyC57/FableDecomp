@@ -1,4 +1,5 @@
 // CDF_GiveGift::Main() -- demon-door face (give a gift): take scripted control of Me, make it persistent and immune, find the nearest REGION_EXIT_POINT and shut it; then each frame -- if Me is presented with a romantic gift, speak the opening line, fade the face out, open the door and reactivate the exit; else if the hero talks to the face, speak the intro line
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E71980, 1201 bytes (+ int3 padding), plain `ret`. Literals "TEXT_QST_088_GIVE_GIFT_INTRO" 0x012E9088,
 //   "TEXT_QST_088_GIVE_GIFT_OPENING" 0x012E9068, "DD_GiveGift" 0x012E905C (sibling of the matched CDF_CombatMult::Main 0x00E6F710).

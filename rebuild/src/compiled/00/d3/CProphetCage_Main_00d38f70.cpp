@@ -1,4 +1,5 @@
 // CProphetCage::Main() -- a Fire Heart prophet cage: under an alive filter on Me, wait for this cage's prophet to be released or killed; then wait for the OPENCAGE cutscene flag, burst the cage with the crystal implode (released) or crystal open (killed) effect, fade the cage out, clear the flag and mark the cage activated; then idle
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D38F70, length 955 bytes, plain `ret`.
 // Callees: CIsThingAlive filter (vtable 0x012C32F0, CScriptThing copy 0x004ABE90, out-of-line ~CScriptThing 0x004AA840),
 // SetPredicate 0x00F35B10, IsActiveThreadTerminating 0x00F35B30, CCharString 0x0099EBF0 / 0x0099EAE0 ("OPENCAGE"

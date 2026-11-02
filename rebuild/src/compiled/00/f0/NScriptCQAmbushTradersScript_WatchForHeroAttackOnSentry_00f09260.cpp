@@ -1,4 +1,5 @@
 // Levers: for(;;) with the terminating return first (rotated; the loop exit returns without the trailing test), both stop conditions break to one trailing terminating test; `#pragma inline_depth(0)` inside the body around the hit-block terminate return keeps that one ~CScriptThing out of line (0x004AA840), the __forceinline dtor expands at the other three exits.
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // CQ_AmbushTradersScript::WatchForHeroAttackOnSentry(CScriptThing) -- spawned per sentry: each frame, stop when the sentry dies; when the hero hits it (melee or an aggressive special ability) set SentryAttackedByHero and stop
 // Leaf: ?WatchForHeroAttackOnSentry@CQ_AmbushTradersScript@NScript@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F09260, 445 bytes (448 with padding), `ret 0Ch` (the by-value CScriptThing).

@@ -1,4 +1,5 @@
 // CV_TempleOfLightScript::WatchForInsideTemple() -- every frame the hero is alive, look up the building he is standing in; on entering BUILDING_CHAPEL_GOOD set the inside-temple flag, on standing in no building clear it
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?WatchForInsideTemple@CV_TempleOfLightScript@NScript@@QAEXXZ
 // Label: (catalog says CV_ChapelOfEvilScript::WatchForInsideChapel,
 //   propagated: that one is 0x00E6A0B0; +0x5a is Ego_r CV_TempleOfLightScript::InsideTemple at PDB 110, ChapelOfEvil's

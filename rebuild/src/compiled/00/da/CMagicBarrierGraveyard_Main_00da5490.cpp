@@ -1,4 +1,5 @@
 // NScript::CQ_MinionClifftopChaseScript::CMagicBarrierGraveyard::Main() (0x00DA5490) -- the second graveyard magic barrier: under an alive filter on Me, create the
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 //   two red force-field effects at Me (oriented by Me's XY angle); then every frame, once neither effect is alive, replace them
 //   with the two force-field idle effects
 // Leaf: ?Main@CMagicBarrierGraveyard@

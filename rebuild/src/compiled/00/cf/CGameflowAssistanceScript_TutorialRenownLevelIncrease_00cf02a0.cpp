@@ -1,4 +1,5 @@
 // CGameflowAssistanceScript::Tutorial_RenownLevelIncrease() -- while assistance runs, whenever the player-controlled hero's renown level rises have the guildmaster announce levels one to seven and, from level two on, retire the placeholder quest cards
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: Tutorial_RenownLevelIncrease
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CF02A0, length 672 bytes (+ int3 padding; plain `ret`; no EH frame).
 // Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940, CCharString() 0x0099E4B0 / CCharString(const char*, long)

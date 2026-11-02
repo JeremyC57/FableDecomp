@@ -1,4 +1,5 @@
 // CV_IntroductionToTrophiesScript::WatchForInsideTavern() -- every frame the hero is alive, look up the building he is standing in; on entering the slum inn set InsideTavern, on leaving it clear the flag and, if Briar Rose and an intro watcher both live, turn Briar to face the watcher over four frames
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E9CB20, 0x3B9 bytes, plain `ret`.
 // Callees: CBaseClass() 0x0099A2D0 / ~ 0x0099A2E0 (the local CScriptThing, vtable 0x01238C8C), IsActiveThreadTerminating
 //   0x00CB7940, CCharString(const CCharString&) 0x0099EC30 (from the empty string 0x0143E8EC) / (const char*, long)

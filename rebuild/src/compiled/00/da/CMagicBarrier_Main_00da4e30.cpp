@@ -1,4 +1,5 @@
 // CMagicBarrier::Main() -- a guild magic barrier: alive filter on Me, spawn the two red forcefield halves at Me turned 90 degrees; until the parent quest opens the barrier, respawn both idle halves whenever both are gone; then remove them, play the two "_OFF" effects, tell the hero the guildmaster unlocked the barrier and remove Me
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DA4E30, 1389 bytes; entity-script Main.
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840, CBaseClass dtor 0x0099A2E0, SetPredicate 0x00F35B10,

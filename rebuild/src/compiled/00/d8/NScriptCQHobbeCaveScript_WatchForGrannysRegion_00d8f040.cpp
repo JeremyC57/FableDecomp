@@ -1,4 +1,5 @@
 // NScript::CQ_HobbeCaveScript::WatchForGrannysRegion() -- Wait for region activation and update the target thing until cancellation.
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?WatchForGrannysRegion@CQ_HobbeCaveScript@NScript@@QAEXXZ
 // Identity: Own Main callback registration00d8e61c stores this function with exact method literal WatchForGrannysRegion and parent receiver; independent PDB nameset agrees. Own Game vtable01260f0c slot12 IsRegionLoaded,72 GetThingWithScriptName,440 SetVillageLimbo/447 SetThingAsUsable; real script base Game64. Counted handle CScriptThing lifetime and assigning returned handle explicit original copy semantics; late cancellation exits call destructor004aa840.
 // Layout: actual typed script ancestry and original counted handle model; inherited Game64; inactive owned trailing quest state unaccessed. Shared headers retained as evidence, unused virtual slots descriptive.

@@ -1,4 +1,5 @@
 // NScript::CPersonalScript_EmptyScript::CLookAtMe1::Main() -- under "Me and WalkToHere are alive": fetch the
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 //   TriggerCrate, then repeatedly wait until the hero uses Me and make the hero wear OBJECT_HERO_NO_HAT
 // Leaf: ?Main@CLookAtMe1@CPersonalScript_EmptyScript@NScript
 // Retail: Fable.exe @ 0x00EF5CB0, 817 bytes (+ int3 padding), plain `ret`.

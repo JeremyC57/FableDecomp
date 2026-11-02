@@ -1,4 +1,5 @@
 // CFisticuffsClubRing::Main() -- the Fisticuffs Club ring trigger: every frame track whether the hero is inside the ring radius; inside, cancel the "step outside" warning and, while an active club fight is idle, have a club member tell the hero to stop interrupting (rate-limited); stepping out while in the club triggers Tyler's "step outside" warning with a HUD clock; while in the club, leaving the ring during a fight raises the boo meter and times the hero out, otherwise fights raise the cheer meter; both meters are clamped to 0..12
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?Main@CFisticuffsClubRing@@
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).

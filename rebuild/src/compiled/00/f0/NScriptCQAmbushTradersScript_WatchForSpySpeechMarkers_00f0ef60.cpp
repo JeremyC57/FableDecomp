@@ -1,4 +1,5 @@
 // CQ_AmbushTradersScript::WatchForSpySpeechMarkers(CScriptThing spy) -- while the spy lives, each time EnableSpeechSpy is raised pick the spy's next line (sentry-seen, hero-proximity or, near the M_AT_EntitySpeech marker, the normal lines; the first five in order, then random ones without repeating the last) and play it as a conversation with the hero, restarting SpeechSpyTimer
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?WatchForSpySpeechMarkers@CQ_AmbushTradersScript@NScript@@
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).

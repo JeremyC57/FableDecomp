@@ -1,4 +1,5 @@
 // CFinalTabletSarcophagus::Main() -- the Necropolis sarcophagus holding the final Oracle tablet: unless tablet A is already taken, put up the magic-barrier forcefield, wait for three tablets, mark the sarcophagus, wait for the hero within 6 units of the barrier point, play the summoners cutscene once (re-raising the forcefield), wait for the final summoners to die, open the sarcophagus, give the hero expression A, take the tablet, have the hero comment twice and re-enable the Northern Wastes 2 creature generators
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CFFB60, 1252 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing dtor 0x004AA840 (inline copies at the first forcefield), CBaseClass dtor 0x0099A2E0, operator delete 0x00BFE9BC,

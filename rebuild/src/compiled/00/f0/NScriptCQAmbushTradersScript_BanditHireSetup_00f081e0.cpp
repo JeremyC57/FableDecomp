@@ -1,4 +1,5 @@
 // CQ_AmbushTradersScript::BanditHireSetup(const CScriptThing& bandit, CScriptGameResourceObjectScriptedThingBase& banditObject) -- a living bandit confirms the hire to the hero and finishes speaking; then the hire count rises, WatchForBanditSpeechMarkers is spawned for the bandit and its health bar is added
+// Revisit: two-view-CScriptThing -- byte-exact, but models CScriptThing as two classes (inline and out-of-line copy/dtor) where retail had one; merge once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?BanditHireSetup@CQ_AmbushTradersScript@NScript@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F081E0, 440 bytes, `ret 8`; Ego_r.pdb
 //   ?BanditHireSetup@CQ_AmbushTradersScript@NScript@@QAEJABVCScriptThing@@AAVCScriptGameResourceObjectScriptedThingBase@@@Z.

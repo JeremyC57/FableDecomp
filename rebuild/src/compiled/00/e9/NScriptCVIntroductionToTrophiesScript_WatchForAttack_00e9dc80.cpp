@@ -1,4 +1,5 @@
 // CV_IntroductionToTrophiesScript::WatchForAttack(CScriptThing briar) -- while Briar Rose lives, each time the hero hits her and she survives count the hit, re-arm the hit warning, charge the hero with a crime against Bowerstone Slums and (the first time) flag the attack
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E9DC80, 0x260 bytes, `ret 0Ch` (the by-value CScriptThing).
 // Callees: IsActiveThreadTerminating 0x00CB7940, CCharString 0x0099EBF0 / ~ 0x0099EAE0 ("SCRIPT_NAME_HERO" 0x0125D1C8),
 //   ~CBaseClass 0x0099A2E0, operator delete 0x00BFE9BC, ~CScriptThing 0x004AA840 (out of line at the in-loop exits);

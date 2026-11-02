@@ -1,4 +1,5 @@
 // Levers: ~CScriptThing __forceinline; for(;;) with the terminating return first, the dead branch (`if (term) return; if (term) return; break;`) before the hit test, in-body `#pragma inline_depth(0)` around the attacked terminate return (the one out-of-line ~CScriptThing).
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // CV_BeardyBaldyScript::WatchForAttack(CScriptThing) -- while the watched creature lives, flag AttackedByHero whenever the hero hits it (melee or an aggressive special ability) and it survives the hit
 // Leaf: ?WatchForAttack@CV_BeardyBaldyScript@NScript@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E53D90, 464 bytes, `ret 0Ch` (the by-value CScriptThing).

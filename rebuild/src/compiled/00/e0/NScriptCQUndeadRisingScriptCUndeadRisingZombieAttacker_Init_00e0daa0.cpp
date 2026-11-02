@@ -1,4 +1,5 @@
 // NScript::CQ_UndeadRisingScript::CUndeadRisingZombieAttacker::Init() -- spawn the parent script's LookAfterHealth thread on the entity's own thing
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?Init@CUndeadRisingZombieAttacker@CQ_UndeadRisingScript@NScript@@EAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00e0daa0, 258 bytes, thiscall, plain `ret` (virtual, entity vtable slot 2), no EH frame.
 // Identity (proven): slot 2 (Init) of the entity vtable 0x012DFF64 that the landed NScript::CQ_UndeadRisingScript::CUndeadRisingZombieAttacker::Alloc 0x00E0CF20 stores; Ego_r.pdb / FableWin.pdb name ?Init@CUndeadRisingZombieAttacker@CQ_UndeadRisingScript@NScript@@EAEXXZ in the PDB sets; it spawns ?LookAfterHealth@CQ_UndeadRisingScript@NScript@@QAEXVCScriptThing@@@Z 0x00E0DBB0 (the member pointer stored at +0x34; landed) under the name "ParentClass." + "LookAfterHealth".

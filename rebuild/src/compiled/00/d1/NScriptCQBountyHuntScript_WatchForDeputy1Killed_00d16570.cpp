@@ -1,4 +1,5 @@
 // CQ_BountyHuntScript::WatchForDeputy1Killed(CScriptThing deputy) -- watch thread: frame by frame until the first bandit deputy is killed, or is hit by the hero and has (almost) no health left; then (unless terminating) set Deputy1Killed
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: WatchForDeputy1Killed
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D16570, length 517 bytes (padded to 528), `ret 0Ch` (the 12-byte
 // CScriptThing is passed by value and destroyed here).

@@ -1,4 +1,5 @@
 // NScript::CV_AssassinAttacksScript::CChestHidingAssassin::Main() (0x00E386E0) -- conscious filter on Me; the first time, take scripted control (priority 4) and play
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 //   the jump-from-chest combat animation to its end; then take scripted control (priority 3), make Me the hero's enemy,
 //   follow the hero and idle until the script is done
 // Leaf: ?Main@CChestHidingAssassin@CV_AssassinAttacksScript@NScript@@EAEXXZ

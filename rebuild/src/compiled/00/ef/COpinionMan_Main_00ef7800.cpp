@@ -1,4 +1,5 @@
 // COpinionMan::Main() -- the hero-guide "opinion man": filter on Me and the HeroGuideDude, then every time the hero talks to him toggle whether the hero guide shows the quest cards when spoken to
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EF7800, 627 bytes (+ int3 padding); referenced from the COpinionMan
 //   vtable 0x012F63B8 (same script TU as the landed CCham::Main 0x00EF84D0).

@@ -1,4 +1,5 @@
 // CMinionTrollSummoner::Main() -- the minion troll summoner: alive filter on Me, take scripted control (priority 4); the first
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 //   time (parent flag clear) play the "CS_MINIONCHASE_TROLL" cut-scene with Me cast as MINION; set the flag, then run to
 //   "M_SummonerRunOffPoint" until within 2 units, face the hero, wait until Me is hit or the hero comes within 10 units,
 //   release scripted control and idle until the thread terminates

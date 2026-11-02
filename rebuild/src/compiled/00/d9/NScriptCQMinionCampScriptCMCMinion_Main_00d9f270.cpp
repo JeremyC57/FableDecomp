@@ -1,4 +1,5 @@
 // NScript::CQ_MinionCampScript::CMC_Minion::Main() -- minion: target Briar Rose (2 in 3, while she lives) or the hero; then,
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 //   every frame, retarget the hero whenever the hero hits Me (directly, or with any special ability other than 14) and is
 //   not already the target
 // Leaf: ?Main@CMC_Minion@CQ_MinionCampScript@NScript@@EAEXXZ

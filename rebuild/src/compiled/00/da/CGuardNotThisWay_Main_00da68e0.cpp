@@ -1,4 +1,5 @@
 // CGuardNotThisWay::Main() -- the minion clifftop-chase guard who blocks the wrong way: take scripted control, attach Me to the active quest, face the hero, then every frame -- when the 15-tick timer has run out and the hero is within 12 units -- point aggressively at the summoner's run-off point, tell the hero "not this way" (two lines), point again and restart the timer
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: Main
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).

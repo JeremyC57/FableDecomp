@@ -1,4 +1,5 @@
 // CHTG_FreedomFighter::Main() -- Hanging Tree (good) freedom fighter: until the bandits flee, turns on the hero (best enemy target) the first time the hero targets it; once the bandits flee it takes scripting control, walks to the nearest REGION_EXIT_POINT (re-issuing the move whenever the last one finished) until within 2 units, then fades out and dies
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D701C0, length 850 bytes (+ int3 padding).
 // Callees: the entity-script machinery of the landed CDyingVillager::Main 0x00D7F460 (CIsThingAlive predicate, SetPredicate

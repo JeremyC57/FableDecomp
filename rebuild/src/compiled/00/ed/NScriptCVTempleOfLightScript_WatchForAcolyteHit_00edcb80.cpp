@@ -1,4 +1,5 @@
 // CV_TempleOfLightScript::WatchForAcolyteHit(CScriptThing acolyte) -- with an is-alive predicate on the acolyte, every frame he is hit by the hero flag the attack and, the first time while the altar lives, have the altar speak TEXT_QST_064_WEAPON_02 to the hero
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?WatchForAcolyteHit@CV_TempleOfLightScript@NScript@@QAEXVCScriptThing@@@Z
 // Label: (catalog says CV_ChapelOfEvilScript, a
 //   propagated label: the body writes +0x5b/+0x5c = Ego_r CV_TempleOfLightScript AttackedByHero / AcolyteAttackMessageComplete

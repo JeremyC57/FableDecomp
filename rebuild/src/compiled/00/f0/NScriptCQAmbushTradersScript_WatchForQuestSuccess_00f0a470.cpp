@@ -1,4 +1,5 @@
 // CQ_AmbushTradersScript::WatchForQuestSuccess() -- wait for Deserted Farm, for the spy contact and for Bowerstone Jail; then, while the quest is not finished and Bowerstone Posh is loaded, finish the quest once the convoy spy (AT_ConvoySpy) follows the hero; when the quest is finished and the success speech is done, mark the quest succeeded
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F0A470, length 1127 bytes.
 // Callees: CBaseClass ctor/dtor 0x0099A2D0 / 0x0099A2E0, CCharString() 0x0099E4B0 / CCharString(const char*, long) 0x0099EBF0 /
 //   ~CCharString 0x0099EAE0, Compare 0x00411570 (the inlined CCharString == const char*), operator delete 0x00BFE9BC, free

@@ -1,4 +1,5 @@
 // CDemonDoorFace::Main() -- the Witchwood demon door (trophy-dealer quest): take scripted control of Me, add a core-quest minimap marker; while the stones are not in sync, each time the hero talks to the door say it is locked and (once) set the quest-card objective; once the master data's SingingStonesInSync is set, script the hero, play CS_TROPHY_DEALER_DOOR_OPENS with HERO and DOOR cast, move the objective on, make the DemonDoorDoor persistent, clear the flag and remove Me
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EE7A20, 1659 bytes (+ int3 padding), plain `ret`. Literals "HUD_ORB_QUEST_CORE" 0x01258AB0,
 //   "TEXT_QST_071_DOOR_LOCKED1" 0x012F53A4, "TEXT_QUEST_FIND_TROPHY_DEALER_OBJECTIVE_03" 0x012F5378 / _04 0x012F5330, "Witchwood2" 0x012DCEF8,

@@ -1,4 +1,5 @@
 // CEndScythe::Main() -- end-game hero-souls companion: wait until the parent quest has played Jack's message, mark Me as informationless, unkillable and off the combo count, take scripted control of Me; then each frame, if the hero talks to Me speak the on-talk line, and if the hero hits Me (plainly, or with a special ability other than ability 14) speak the on-hit line and make Me and the hero allies
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D79D50, 1333 bytes (+ int3 padding), plain `ret`. Literals "TEXT_QST_B04_SCYTHE_ONTALK" 0x012D33FC, "TEXT_QST_B04_SCYTHE_ONHIT" 0x012D33E0.
 //   CEndScythe::Main 0x00D79D50 and CEndBriarRose::Main 0x00D7A360 are byte-identical apart from the literals (the catalog books both

@@ -1,4 +1,5 @@
 // NScript::CBriarRose::Init() -- the trophies-introduction Briar Rose: spawn the parent script's WatchForAttack thread on her, give her a quest-information marker, sheathe her weapons, make her the loud Briar Rose opinion source, unkillable, not pushable by the hero, and put the quest-vignette orb on the minimap
+// Revisit: two-view-CScriptThing -- byte-exact, but models CScriptThing as two classes (inline and out-of-line copy/dtor) where retail had one; merge once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: Init
 // Naming wave 29 (family sfbr): the thread class derives from the retail CSpawnedFuncBase (engine/CSpawnedFuncBase.h; Ego_r.pdb / FableWin.pdb
 //   ??0CSpawnedFuncBase@@QAE@ABVCCharString@@K@Z 0x00CDD450, implicit ??1CSpawnedFuncBase@@UAE@XZ 0x00CDD4C0). Was the invented

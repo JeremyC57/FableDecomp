@@ -1,4 +1,5 @@
 // NScript::CPredicate_And<CPredicate_And<CPredicate_And<CIsThingAlive,CIsThingAlive>,CIsThingAlive>,CIsThingAlive>::CPredicate_And(const CPredicate_And&)
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // -- copy constructor of the four-term script predicate: own vtable, the nested three-term
 // predicate copied OUT OF LINE (@ 0x00EF6F40), then the fourth CIsThingAlive term inline
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EF6FE0, length 52 bytes (+ int3 padding).

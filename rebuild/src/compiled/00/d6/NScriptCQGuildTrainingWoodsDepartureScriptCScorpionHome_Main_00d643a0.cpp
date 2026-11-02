@@ -1,4 +1,5 @@
 // CQ_GuildTrainingWoodsDepartureScript::CScorpionHome::Main() -- wait for departure mission point 1, show the beetle counter; while the point stays 1, count the live guild scorpions each frame, update the counter, and whenever fewer than three are about either finish the point (none alive, none left to spawn: point 2 and the next objective) or spawn another stag beetle at the spawn point furthest from the hero; finally remove the counter
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?Main@CScorpionHome@CQ_GuildTrainingWoodsDepartureScript@NScript@@EAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D643A0, 1090 bytes (int3 padded to 1104).
 // Callees: CEntityScriptBase::IsActiveThreadTerminating 0x00F35B30 (manifest "CCreatureAction_TrollWhackGroundBase::Initialise" is

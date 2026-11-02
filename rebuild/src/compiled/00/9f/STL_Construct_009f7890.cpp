@@ -1,4 +1,5 @@
 // std::_Construct(CVsyncCallbackTimer::CPendingQuery* p, const CVsyncCallbackTimer::CPendingQuery& val) -- STLport: placement-copy one 16-byte pending vsync query into a list node (unoptimised TU)
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ??$_Construct@UCPendingQuery@CVsyncCallbackTimer@@U12@@std@@YIXPAUCPendingQuery@CVsyncCallbackTimer@@ABU12@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009F7890, 82 bytes (+14 int3), `__fastcall` (p in ecx, &val in edx), `ret`.
 // Identity: CVsyncCallbackTimer (Ego_r.pdb) holds two list<CPendingQuery> (FreeQueoryObjects +0x04, PendingQueories +0x10);

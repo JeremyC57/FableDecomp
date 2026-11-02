@@ -1,4 +1,5 @@
 // NScript::CQ_AmbushTradersScript::WatchForBanditSpeechMarkers(CScriptThing) -- whenever bandit speech is enabled, find the bandit's nearest speech marker; if he is close, have him say the next scripted line (the first five in order, then random ones; "back" lines once the spy made contact), and re-arm the speech timer
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: WatchForBanditSpeechMarkers
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).

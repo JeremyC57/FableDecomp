@@ -1,4 +1,5 @@
 // Cwelcome_guy::Main() -- the welcoming villager: take Me under scripted control (priority 4, retried each frame), walk Me up to the hero (within 3 units), then for as long as the script runs wait each frame until the hero is close (squared 2D distance under 3) and turn Me to face the hero
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?Main@Cwelcome_guy@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EFAB40, 571 bytes (576 with int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: CBaseIntelligentPointer ctor 0x0099A380 / dtor 0x0099A430, scripted-thing handle (vtable 0x0127094C) IsValid

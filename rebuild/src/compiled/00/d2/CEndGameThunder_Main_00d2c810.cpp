@@ -1,4 +1,5 @@
 // CEndGameThunder::Main() -- end-game Thunder: make Me undamageable, unkillable, a villager and off the combo count; unless the fight is already over, walk Me up to the hero, open a conversation (married / not married to Lady Grey line, then two more lines); then until the fight is over, ally Me with the hero whenever the hero hits Me, and whenever the hero strays beyond 8 units walk Me back to within 4
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D2C810, 1901 bytes, plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: CBaseIntelligentPointer ctor 0x0099A380 / dtor 0x0099A430, scripted-thing handle IsValid 0x00CD23B9 / Release

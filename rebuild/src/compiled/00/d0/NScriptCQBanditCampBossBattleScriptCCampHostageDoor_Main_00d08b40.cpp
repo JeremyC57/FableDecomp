@@ -1,4 +1,5 @@
 // NScript::CQ_BanditCampBossBattleScript::CCampHostageDoor::Main() -- hostage door: with the key and the guard dead or far, grant experience, rescue the hostages and take the key
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?Main@CCampHostageDoor@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
 // Flags:
 // Shape: the watch loop is `for (;;) { if (IsActiveThreadTerminating()) return; ... Game->NewScriptFrame(); }`

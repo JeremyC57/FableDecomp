@@ -1,4 +1,5 @@
 // CQ_WizardBattleScript::PhaseTwo() -- start the maze-phase monitor, set Maze on the hero, show his health bar and make him killable; then while Maze lives, have him taunt the hero (on a hit, when the hero strays far away, or at random in battle) through a fresh conversation whenever none is running, until the mission fails
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: PhaseTwo
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E1C580, 1324 bytes (int3 padded to 1344).
 // Callees: operator new 0x00BFEA1A, CSpawnedFuncBase 0x00CDD450 (spawn vtable 0x012E11CC, MonitorMazePhases 0x00E1CAE0),

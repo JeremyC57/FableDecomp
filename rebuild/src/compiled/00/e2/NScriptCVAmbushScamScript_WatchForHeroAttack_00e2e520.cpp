@@ -1,4 +1,5 @@
 // CV_AmbushScamScript::WatchForHeroAttack(CScriptThing target) -- each time the hero hits the target: while it survives count the hit and flag an attack on the trickster (before the ambush; after it, a warning or, past two hits, the real attack) or on the buddy; a first hit that kills it flags the killing blow
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E2E520, length 726 bytes, `ret 0Ch` (the by-value CScriptThing).
 // Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940, CCharString(const char*, long) 0x0099EBF0 / ~CCharString
 //   0x0099EAE0, Compare 0x00411570 (the inlined CCharString == const char*) and the empty string global 0x0143E8EC,

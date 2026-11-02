@@ -1,4 +1,5 @@
 // CTollBanditScript::HandleBanditToll() -- place the toll bandits: teleport Me to the nearer blockade point (M_TollBanditBlockWay when it is closer to the hero than Me, else M_TollBandit), pick the near or far blockade markers, spawn archer/grunt/archer "BlockingBandit" creatures on them and face them along the markers
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: HandleBanditToll
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E4E0E0, length 1811 bytes. Called from 0x00E4B68D.
 // Label: catalog/autoname-t5 "CCreatureAction_TrollWhackGroundBase::HandleBanditToll" is wrong -- `this` is an entity script (Game +4, Me +8),

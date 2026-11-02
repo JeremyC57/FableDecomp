@@ -1,4 +1,5 @@
 // CFadeinSummoner::Main() -- a Minion Camp summoner that fades in: take scripted control, make Me an inert neutral prop with an altar effect, wait for mission stage 2, then while the stage is 2 or 3: become the hero's ally when he hits Me, keep fading (PhaseMe), re-create the altar effect when it died, and every 20-25 seconds play one of two special idles before going back to breathing; afterwards remove the effect and idle unscripted until the thread ends
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: Main
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).

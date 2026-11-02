@@ -1,4 +1,5 @@
 // CShowTargetedThingHealthScript::ShowTargetedThingsHealth() -- script thread: whenever the hero targets a different
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 //   living thing, replace the quest-info health bar with one for the new target; when the old target dies and nothing
 //   living is targeted, remove the bar. Runs until the thread terminates.
 // Leaf: ShowTargetedThingsHealth

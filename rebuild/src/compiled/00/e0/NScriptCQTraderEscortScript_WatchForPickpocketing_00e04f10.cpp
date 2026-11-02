@@ -1,4 +1,5 @@
 // CQ_TraderEscortScript::WatchForPickpocketing(CScriptThing trader) -- watch thread: frame by frame, when the hero picks a pocket and the victim is this trader, count it (more than two marks the master data's pickpocketed-all-traders state as 2); when the trader is killed, reset that state to 0
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: WatchForPickpocketing
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E04F10, 531 bytes (544 with int3 padding), `ret 0Ch` (the 12-byte CScriptThing
 //   is passed by value and destroyed here).

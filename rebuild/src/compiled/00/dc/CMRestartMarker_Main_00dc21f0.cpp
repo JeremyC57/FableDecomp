@@ -1,4 +1,5 @@
 // CM_RestartMarker::Main() -- bandit-raid restart marker: forever, wait for the parent's restart flag, take the hero under
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 //   scripted control, start a paused movie sequence, fade out and in, and play CS_BANDITRAID_GATEOPEN (or _NONE when the
 //   parent cannot populate the level); then clear the parent's flags
 // Leaf: ?Main@CM_RestartMarker@

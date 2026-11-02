@@ -1,4 +1,5 @@
 // CQ_UndeadRisingScript::LampChecker() -- each time the graveyard is (re)loaded, recreate the light effect at every activated lamp and note the lamps whose light did not survive; while any lamp is out and the graveyard stays loaded, retry the missing lights once a second until all are back
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: LampChecker
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E0C4C0, 1197 bytes (int3 padded to 1200); /GS cookie (bool LampOut[8] array).

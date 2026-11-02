@@ -1,4 +1,5 @@
 //00551bc0 NUISystem::CTable::ConstructVerticalLine.
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Layout: generated CTable donor's debug containers contract; retail Children+b0, column lookup+168.
 #include "engine/CTable.h"
 #include <new>

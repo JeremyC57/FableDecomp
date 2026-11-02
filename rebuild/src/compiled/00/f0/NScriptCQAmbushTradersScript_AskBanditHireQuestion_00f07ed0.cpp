@@ -1,4 +1,5 @@
 // NScript::CQ_AmbushTradersScript::AskBanditHireQuestion(const CScriptThing&, CScriptGameResourceObjectScriptedThingBase&) -- ask the hero whether to hire the bandit; on "yes" with enough gold pay him and return true, otherwise make the bandit say why not (if he still has health) and return false
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?AskBanditHireQuestion@CQ_AmbushTradersScript@NScript@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F07ED0, length 782 bytes (padded to 784), ret 8.
 // Callees: IsActiveThreadTerminating 0x00CB7940; CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0;

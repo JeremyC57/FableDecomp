@@ -1,4 +1,5 @@
 // CV_AmbushScamScript::WatchForExpressions(CScriptThing buddy) -- every script frame until the thread ends: when the hero performs EXPRESSION_FOLLOW at the buddy flag ExpressionDetectedFollow and BuddyHelped, else when he performs EXPRESSION_WAIT flag ExpressionDetectedWait
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Levers: ~CScriptThing __forceinline; in-body `#pragma inline_depth(0)` around both in-loop terminating returns; inline MsgExpressionPerformedTo in `if (!PImp.Data) return false; return PImp.Data->...;` form (the `&&` form tipped VC7.1 into caching constants, mov bl,1)
 // Leaf: WatchForExpressions
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E32080, 384 bytes, `ret 0Ch` (the 12-byte CScriptThing by value).

@@ -1,4 +1,5 @@
 // CQ_HobbeToothContestScript::CQ_HobbeToothWhisper::Init() -- the Hobbe tooth contest's Whisper entity: spawn the parent quest's CheckToSeeIfWhisperHit thread on this Whisper, put her in the hero's faction, make her unkillable, set boss phase 2 and give her no information marker
+// Revisit: two-view-CScriptThing -- byte-exact, but models CScriptThing as two classes (inline and out-of-line copy/dtor) where retail had one; merge once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?Init@CQ_HobbeToothWhisper@CQ_HobbeToothContestScript@NScript@@EAEXXZ
 // Naming wave 29 (family sfbr): the thread class derives from the retail CSpawnedFuncBase (engine/CSpawnedFuncBase.h; Ego_r.pdb / FableWin.pdb
 //   ??0CSpawnedFuncBase@@QAE@ABVCCharString@@K@Z 0x00CDD450, implicit ??1CSpawnedFuncBase@@UAE@XZ 0x00CDD4C0). Was the invented

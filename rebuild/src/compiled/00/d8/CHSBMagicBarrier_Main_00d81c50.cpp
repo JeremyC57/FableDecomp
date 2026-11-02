@@ -1,4 +1,5 @@
 // CHSB_MagicBarrier::Main() -- Briar Rose's magic barrier in Hero Souls: register a thing-alive filter, raise the two forcefield idle effects facing the shrine centre, re-raise them whenever both have gone until Briar is killed, then remove them, play the two "off" effects facing the centre and remove Me
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D81C50, 1464 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840 / operator= 0x008AB980 (inline copies in the loop), ~CBaseClass 0x0099A2E0,

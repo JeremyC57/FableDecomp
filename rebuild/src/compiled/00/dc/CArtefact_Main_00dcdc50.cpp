@@ -1,4 +1,5 @@
 // Levers: ~CScriptThing __forceinline; `#pragma inline_depth(0)` around the CIsThingAlive class definition keeps its member dtor a call inside the inlined filter dtor; for(;;) with the terminating return first; in-body inline_depth(0) region from the carried test to the end of the near branch makes those four exits call 0x004AA840 (tail-merged); a `parent` local for the raid script (one ParentClass load, count read/decrement and MasterData read before the store).
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // CArtefact::Main() -- the orchard-farm-raid crate artefact: hold an alive filter over Me, find the bandit team's crate drop, then every frame while the hero is near it: if the hero is not carrying the artefact, count it off the parent raid, flag the master data and remove the artefact; track whether it was near on the previous frame
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DCDC50, 454 bytes (464 with padding); entity-script vtable slot 1 (Main).
 // Leaf: Main

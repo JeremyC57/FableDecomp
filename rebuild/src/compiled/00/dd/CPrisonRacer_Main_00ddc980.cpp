@@ -1,4 +1,5 @@
 // CPrisonRacer::Main() -- a prisoner in the prison race: wait for the race start, take scripted control and set its running speed (slower for each racer), then every frame: every fourth frame find the nearest WaypointSpeedCheck marker and remember its index; sprint ("SPRINT" comment, faster speed) while behind the hero's nearest race marker, slow down again ("SLOW") when the sprint timer runs out; when idle follow the route to the nearest RaceMarker; stop when the hero won, and flag RaceEnded on reaching the warden
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?Main@CPrisonRacer@@
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).

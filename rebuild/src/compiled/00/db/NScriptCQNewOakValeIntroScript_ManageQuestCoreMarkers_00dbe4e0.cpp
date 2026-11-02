@@ -1,4 +1,5 @@
 // NScript::CQ_NewOakValeIntroScript::ManageQuestCoreMarkers() -- walk the hero through the Oakvale intro's quest-core minimap markers: father first; once the hero has 3+ gold and control, move the marker to the book trader (after the tutorial if it shows), once the sweets are given to Theresa, and once the chocolates are given back to the father
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ManageQuestCoreMarkers
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DBE4E0, 944 bytes.
 // Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940, CCharString(const char*, long) 0x0099EBF0 /

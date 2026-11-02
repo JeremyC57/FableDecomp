@@ -1,4 +1,5 @@
 // CBanditAttacker::Main() -- Break-Siege bandit attacker: look up "MB_HeroTalksToChief", hold an alive filter over Me, wait for HeroLetInTown and StartSecondWave, take Me under scripted control (priority 3), set Me's combat break-off range from the script def, then (until BanditLeaderFree) keep running Me to "ImprisonedBanditLeader" while it is more than 5 units away; finally flag BanditLeaderFree, release scripting, make Me follow the leader and idle
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?Main@CBanditAttacker@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D1F610, 757 bytes (768 with padding); entity-script vtable slot 1 (Main).
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CScriptThing copy ctor 0x004ABE90 /

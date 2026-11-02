@@ -110,3 +110,8 @@ member names, and script names (NScript quest scripts: check work/aeon_lua_ports
   established spelling in new rows.
 - **Parked pairs land together.** 0x00626E40 ConstructItemCategoryList is reconstructed first (same retail TU, before
   0x006276F0 GetItemsListUI); 0x00935E40 PutOutFire with its identical sibling 0x009363D0. Cut as one "pairs" chunk.
+
+## Owner decision, 2026-11-02: inline_depth rows kept and marked
+- The 129 landed rows with `#pragma inline_depth` regions and the 17 two-view CScriptThing rows stay. Line 2 of each carries `// Revisit: inline-depth` or
+  `// Revisit: two-view-CScriptThing` (docs/pipeline/INLINE_DEPTH_REVISIT.md). No new row lands with either device. A chunk that finds a pragma-free
+  shape for one of them reports it; the coordinator tries it on the family and removes the marker from every row it redoes.

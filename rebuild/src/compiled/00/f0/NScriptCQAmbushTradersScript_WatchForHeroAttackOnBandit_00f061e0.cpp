@@ -1,4 +1,5 @@
 // CQ_AmbushTradersScript::WatchForHeroAttackOnBandit(CScriptThing bandit) -- watch thread: frame by frame, whenever the hero hits the hired bandit (by weapon or an aggressive special ability) and the bandit still has health, flag the attack and count it
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Levers: ~CScriptThing __forceinline; CCountedPointer dtor zero order `Data = 0; Info = 0;`; for(;;) with in-body `#pragma inline_depth(0)` around the third terminating return (after the health test), the one exit retail calls 0x004AA840 at
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F061E0, length 395 bytes (+ int3 padding), `ret 0Ch` (the 12-byte
 // CScriptThing is passed by value and destroyed here).

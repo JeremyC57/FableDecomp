@@ -1,4 +1,5 @@
 // CV_ChapelOfEvilScript::WatchForAcolyteHit(CScriptThing acolyte) -- with an is-alive predicate on the acolyte, flag AttackedByHero whenever the hero hits him and, the first time, have the sound altar deliver the TEXT_QST_019_WEAPON_02 warning
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E6AF20, length 725 bytes, `ret 0Ch` (the by-value CScriptThing).
 // Callees: CScriptThing(const CScriptThing&) 0x004ABE90 (the predicate's copy), CScriptBase::SetPredicate 0x00CB7920,
 //   ~CIsThingAlive 0x00E241B0, CScriptBase::IsActiveThreadTerminating 0x00CB7940, CCharString(const char*, long) 0x0099EBF0 /

@@ -1,4 +1,5 @@
 // NScript::CPersonalScript_EmptyScript::CUndeadFellow::Main() -- the empty personal script's "UndeadFellow" entity: run under "Me, Marker4 and Marker5 are alive", spawn the parent script's ChangeAlpha thread on Me, then take Me under scripted control (priority 4) and walk it back and forth between Marker4 and Marker5 every script frame until the thread terminates
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?Main@CUndeadFellow@CPersonalScript_EmptyScript@NScript@@EAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EF87D0, 1003 bytes (+ int3 padding), thiscall, plain `ret`.
 // Identity (proven): slot 1 of the entity-script vtable 0x012F64FC, the vtable the landed

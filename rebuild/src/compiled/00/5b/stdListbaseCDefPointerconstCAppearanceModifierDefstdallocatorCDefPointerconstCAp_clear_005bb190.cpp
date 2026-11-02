@@ -1,4 +1,5 @@
 // 005bb190 std::_List_base<CDefPointer<const CAppearanceModifierDef>,std::allocator<CDefPointer<const CAppearanceModifierDef> > >::clear
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?clear@?$_List_base@V?$CDefPointer@$$CBVCAppearanceModifierDef@@@@V?$allocator@V?$CDefPointer@$$CBVCAppearanceModifierDef@@@@@std@@@std@@QAEXXZ
 // Flags:
 #pragma optimize("s", on)

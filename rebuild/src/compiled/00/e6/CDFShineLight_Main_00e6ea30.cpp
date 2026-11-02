@@ -1,4 +1,5 @@
 // CDF_ShineLight::Main() -- demon-door face (shine a light): take scripted control of Me, make it persistent and immune, shut the nearest REGION_EXIT_POINT; each frame -- if the hero is within the trigger distance with the hand lamp lit, play the opening (teleport the hero to MK_DD, wide camera, opening line), fade the face out, open the door and reactivate the exit; else if the hero talks to the face, play the intro (hide the hero, close camera, intro line)
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?Main@CDF_ShineLight@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E6EA30, 1537 bytes (+ int3 padding), plain `ret`. Literals "CAM_DD_CLOSE" 0x012E8CA4,
 //   "TEXT_QST_088_SHINE_LIGHT_INTRO" 0x012E8C84, "MK_DD" 0x012E8C7C, "CAM_DD_WIDE" 0x012E8C70, "TEXT_QST_088_SHINE_LIGHT_OPENING"

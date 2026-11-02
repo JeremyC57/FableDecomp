@@ -1,4 +1,5 @@
 // CGuardToLeadTheWay::Main() -- the minion clifftop-chase guard who leads the hero: register a thing-alive filter, attach Me to the active quest, wait for the nearest minion attacker to appear and fight it (healing 100 each time Me is hit) until it dies, take scripted control, say the "lead the way" hint once, release control, follow the hero, show Me's health bar, spawn the quest's GuardChatter thread on Me, wait for the mission to end and remove Me
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DA7D30, 1472 bytes, plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy 0x004ABE90 / default ctor 0x006E7B40 / dtor 0x004AA840 (inline copies in the first loop) /
