@@ -1,5 +1,8 @@
 // NUISystem::CChangingStateComponent::`scalar deleting destructor'(unsigned int) -- stores the class's three vtables, destroys the StatesToDo list, runs ~CComponent, frees for flag bit 0
 // Leaf: ??_GCChangingStateComponent
+// Naming wave 30 (family stl): StatesToDo is the one-word STLport std::list<EChangingStateComponentState> (Ego_r.pdb; the landed own row 0x0052CCF0 model):
+//   its out-of-line destructor 0x0052D5C0 is ??1?$_List_base@W4EChangingStateComponentState@CChangingStateComponent@NUISystem@@...
+//   (was the invented ??1CStateList@NUISystem@@QAE@XZ); StatesBeingDone / StatesDone take the PDB enum type.
 // Retail: Fable.exe 0x0052D770, 63 bytes; NUISystem::CChangingStateComponent vtable 0x01245DE4 slot 0
 // (rtti-vtables.tsv). The manifest label "CThingTrackNode::`vector_deleting_destructor'" is propagated.
 // Vtables: 0x01245DE4 (+0x00, primary), 0x01245DBC (+0x04, nine slots), 0x01245DB4 (+0x18, one slot);
@@ -11,6 +14,22 @@
 // Shape: a user-declared inline virtual destructor (it stores all three vtables, unlike a generated one),
 // the member destroyed before the out-of-line base destructor; `new` with an inline constructor pulls the
 // vtable and the `??_G` into the TU.
+namespace std {                                          // STLport 4.6 list as the landed own row 0x0052CCF0 models it
+template <class _Tp> class allocator { public: };
+template <class _Tp> struct _List_node {
+    _List_node* _M_next;
+    _List_node* _M_prev;
+    _Tp _M_data;
+};
+template <class _Tp, class _Alloc> class _List_base {
+public:
+    ~_List_base();                                       // 0x0052D5C0 for EChangingStateComponentState (out of line)
+    _List_node<_Tp>* _M_node;
+};
+template <class _Tp, class _Alloc = allocator<_Tp> > class list : public _List_base<_Tp, _Alloc> {
+public:
+};
+}
 namespace NUISystem {
 
 struct CComponentRoot {                                  // +0x00 primary base (vptr only)
@@ -33,17 +52,11 @@ class CComponent : public CComponentRoot, public CComponentObserver, public CCom
     virtual ~CComponent();                               // 0x00532D90
 };
 
-struct CStateList {                                      // list<EChangingStateComponentState>
-    void* m_pHead;
-    void* m_size;
-    CStateList();
-    ~CStateList();                                       // 0x0052D5C0
-};
-
 class CChangingStateComponent : public CComponent { public:
-    long       StatesBeingDone;                          // +0x134
-    long       StatesDone;                               // +0x138
-    CStateList StatesToDo;                               // +0x13c
+    enum EChangingStateComponentState { };
+    EChangingStateComponentState StatesBeingDone;        // +0x134
+    EChangingStateComponentState StatesDone;             // +0x138
+    std::list<EChangingStateComponentState> StatesToDo;  // +0x13c (one-word STLport list)
     float      ParentUpdateTime;
     unsigned long CurrentState;
     unsigned long TargetState;

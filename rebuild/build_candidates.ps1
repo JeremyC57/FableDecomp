@@ -87452,9 +87452,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0052d5c0'
-        Module = '_global'
-        Source = '00/52/CGuiControlTreePane_SortTreeRecursively_0052d5c0.cpp'
-        TestSource = '00/52/CGuiControlTreePane_SortTreeRecursively_0052d5c0_test.cpp'
+        Module = 'std::_List_base<NUISystem::CChangingStateComponent::EChangingStateComponentState,std::allocator<NUISystem::CChangingStateComponent::EChangingStateComponentState> >'
+        Source = '00/52/stdListbaseNUISystemCChangingStateComponentEChangingStateComponentStatestdalloca_Listbase_0052d5c0.cpp'
+        TestSource = '00/52/stdListbaseNUISystemCChangingStateComponentEChangingStateComponentStatestdalloca_Listbase_0052d5c0_test.cpp'
         PassPattern = 'PASS_0052d5c0'
     }
     [pscustomobject]@{
@@ -87851,16 +87851,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00b09e40'
-        Module = '_global'
-        Source = '00/b0/CGuiControlTreePane_SortTreeRecursively_00b09e40.cpp'
-        TestSource = '00/b0/CGuiControlTreePane_SortTreeRecursively_00b09e40_test.cpp'
+        Module = 'std::_List_base<CEnginePrimitiveSpriteTrail::CSpriteTrailEntry,std::allocator<CEnginePrimitiveSpriteTrail::CSpriteTrailEntry> >'
+        Source = '00/b0/stdListbaseCEnginePrimitiveSpriteTrailCSpriteTrailEntrystdallocatorCEnginePrimit_Listbase_00b09e40.cpp'
+        TestSource = '00/b0/stdListbaseCEnginePrimitiveSpriteTrailCSpriteTrailEntrystdallocatorCEnginePrimit_Listbase_00b09e40_test.cpp'
         PassPattern = 'PASS_00b09e40'
     }
     [pscustomobject]@{
         Address = '00b43bb0'
-        Module = '_global'
-        Source = '00/b4/CGuiControlTreePane_SortTreeRecursively_00b43bb0.cpp'
-        TestSource = '00/b4/CGuiControlTreePane_SortTreeRecursively_00b43bb0_test.cpp'
+        Module = 'std::_List_base<CEngineMap*,std::allocator<CEngineMap*> >'
+        Source = '00/b4/stdListbaseCEngineMapstdallocatorCEngineMap_Listbase_00b43bb0.cpp'
+        TestSource = '00/b4/stdListbaseCEngineMapstdallocatorCEngineMap_Listbase_00b43bb0_test.cpp'
         PassPattern = 'PASS_00b43bb0'
     }
     [pscustomobject]@{
