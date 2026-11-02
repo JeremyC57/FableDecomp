@@ -194550,9 +194550,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ca6370'
-        Module = 'CVolume'
-        Source = '00/ca/CVolume_CVolume00ca6370dtor_00ca6370.cpp'
-        TestSource = '00/ca/CVolume_CVolume00ca6370dtor_00ca6370_test.cpp'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_CBaseRenderer_00ca6370.cpp'
+        TestSource = '00/ca/CBaseRenderer_CBaseRenderer_00ca6370_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00ca6370_TEST PASS'
     }
@@ -195871,9 +195871,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ca61d0'
-        Module = 'CVtable_012bf444'
-        Source = '00/ca/CVolume_CVolume00ca61d0ctor_00ca61d0.cpp'
-        TestSource = '00/ca/CVolume_CVolume00ca61d0ctor_00ca61d0_test.cpp'
+        Module = 'CBaseRenderer'
+        Source = '00/ca/CBaseRenderer_CBaseRenderer_00ca61d0.cpp'
+        TestSource = '00/ca/CBaseRenderer_CBaseRenderer_00ca61d0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00ca61d0_TEST PASS'
     }
@@ -202962,9 +202962,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00cb0190'
-        Module = 'CEvent_00cb0190'
-        Source = '00/cb/CEvent00cb0190_CEvent00cb0190_00cb0190.cpp'
-        TestSource = '00/cb/CEvent00cb0190_CEvent00cb0190_00cb0190_test.cpp'
+        Module = 'CAMEvent'
+        Source = '00/cb/CAMEvent_CAMEvent_00cb0190.cpp'
+        TestSource = '00/cb/CAMEvent_CAMEvent_00cb0190_test.cpp'
         PassPattern = '00cb0190_TEST PASS'
     }
     [pscustomobject]@{
@@ -230426,9 +230426,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ca7360'
-        Module = 'CVolumeDerived_00ca7360'
-        Source = '00/ca/CVolumeDerived00ca7360_CVolumeDerived00ca7360_00ca7360.cpp'
-        TestSource = '00/ca/CVolumeDerived00ca7360_CVolumeDerived00ca7360_00ca7360_test.cpp'
+        Module = 'CBaseVideoRenderer'
+        Source = '00/ca/CBaseVideoRenderer_CBaseVideoRenderer_00ca7360.cpp'
+        TestSource = '00/ca/CBaseVideoRenderer_CBaseVideoRenderer_00ca7360_test.cpp'
         PassPattern = '00ca7360_TEST PASS'
     }
     [pscustomobject]@{
