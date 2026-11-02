@@ -1,4 +1,6 @@
 // CTCElectrocutedEffect::FrameUpdate() -- fades the electrocution tint and highlight in and out on the thing and its tint list, then removes the effect when the fade-out ends
+// Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
+//   invented ?SetActive@CThing@@QAEX_N@Z)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007CE420, 784 bytes, `ret`.
 // Callees: CThing::SetActive(bool)? @ 0x004C7590, CThing::SetAsFrameUpdated() @ 0x004C7C40, _ftol @ 0x00BFEA70,
 //          NGraphicAppearance::CTCGraphicAppearance::SetTintColour(const CRGBColour&, void*) @ 0x004C00B0,
@@ -34,7 +36,7 @@ public:
     NGraphicAppearance::CTCGraphicAppearance* PGraphicAppearance;   // +0x64
     unsigned char _pad68[0x91 - 0x68];
     unsigned char Flags91;                          // +0x91 (bit 0: being destroyed)
-    void SetActive(bool active);                    // 0x004C7590
+    void SetAsRenderedThisFrame(unsigned long reasons);   // 0x004C7590
     void SetAsFrameUpdated();                       // 0x004C7C40
     void RemoveTC(ETCInterfaceType type);                       // 0x004C9840
 };
@@ -117,7 +119,7 @@ public:
 void CTCElectrocutedEffect::FrameUpdate()
 {
     CThing* thing = Thing;
-    thing->SetActive(true);
+    thing->SetAsRenderedThisFrame(1);
     thing->SetAsFrameUpdated();
     if (CurTime <= FadeInTime) {
         float t = (float)CurTime / FadeInTime;

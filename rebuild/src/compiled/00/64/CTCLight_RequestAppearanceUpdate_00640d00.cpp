@@ -1,6 +1,8 @@
 // CTCLight::RequestAppearanceUpdate() -- while the light is active and its def asks for it (byte +0x42), forward request 4 to the owning thing's graphic appearance
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00640D00, length 28 bytes.
 // Leaf: RequestAppearanceUpdate
+// Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
+//   invented ?ForwardToGraphicAppearance@CThing@@QAEXJ@Z)
 // Callees: the CThing forwarder @ 0x004C7590 (`if (PTCGraphicAppearance at +0x64) jmp 0x004BF9E0`, one long argument; the
 // manifest's CRenderTarget::DetachTarget is propagated).
 // Vtable: slot 9 of CTCLight's primary vtable (0x0125A194); the real slot name is not recorded (catalog "vfunc_9"), so the
@@ -12,7 +14,7 @@ class CLightDef { public:
 };
 
 class CThing { public:
-    void ForwardToGraphicAppearance(long request);  // 0x004C7590
+    void SetAsRenderedThisFrame(unsigned long reasons); // 0x004C7590
 };
 
 class CTCLight { public:
@@ -27,5 +29,5 @@ class CTCLight { public:
 void CTCLight::RequestAppearanceUpdate()
 {
     if (Active && PLightDef->m_bNeedsAppearanceUpdate)
-        m_pThing->ForwardToGraphicAppearance(4);
+        m_pThing->SetAsRenderedThisFrame(4);
 }

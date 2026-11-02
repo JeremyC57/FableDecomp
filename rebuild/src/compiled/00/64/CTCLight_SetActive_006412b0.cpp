@@ -1,4 +1,6 @@
 // CTCLight::SetActive(bool active) -- switch the light: flag it initialised, ask the appearance for an update, swap a replaceable mesh to its on/off mesh, then attach the particles (on) or remove the flare/light primitives and detach the particles (off)
+// Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
+//   invented ?UpdateGraphicAppearance@CThing@@QAEXJ@Z)
 // Shape (LowerBound): the CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound instantiation is defined in this TU (noinline),
 //   as retail compiled it in the caller's TU; with its body visible VC7.1 packs the lookup keys and temporaries as retail.
 extern "C" void* __cdecl memmove(void* dest, const void* source, unsigned int count);   // 0x00BFEAE6
@@ -117,7 +119,7 @@ public:
     CInterfaceMap  m_interfaces;                        // +0x44
     unsigned char  _pad4c[0x64 - 0x4c];
     CTCGraphicAppearance* PGraphicAppearance;           // +0x64
-    void UpdateGraphicAppearance(long reason);          // 0x004C7590
+    void SetAsRenderedThisFrame(unsigned long reasons);       // 0x004C7590
     void SetAsFrameUpdated();                           // 0x004C7C40
     __forceinline bool HasTC(long interfaceType) const
     {
@@ -171,7 +173,7 @@ void CTCLight::SetActive(bool active)
 {
     Initialised = true;
     Active = active;
-    ParentThing->UpdateGraphicAppearance(4);
+    ParentThing->SetAsRenderedThisFrame(4);
     ParentThing->SetAsFrameUpdated();
     CTCBase* mesh;
     if (ParentThing->GetInterface(&mesh, 0x5c)) {

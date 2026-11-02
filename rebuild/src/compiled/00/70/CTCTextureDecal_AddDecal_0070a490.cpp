@@ -1,5 +1,7 @@
 // CTCTextureDecal::AddDecal(long decal, CCompositeBlendDesc& desc) -- allocate the next decal entry id, append {id, decal, blend desc} to the decal list, mark the component dirty, ask the parent thing for an appearance update and return the id
 // Leaf: ?AddDecal@CTCTextureDecal@@
+// Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
+//   invented ?ForwardToGraphicAppearance@CThing@@QAEXJ@Z)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0070A490, length 131 bytes (+ int3 padding). __fastcall, `ret 8`.
 //         Ego_r.pdb: `?AddDecal@CTCTextureDecal@@QAEJJAAVCCompositeBlendDesc@@@Z`.
 // Callees: CCompositeBlendDesc::CCompositeBlendDesc(const CCompositeBlendDesc&) @ 0x005BA48A (out of line, twice: into the
@@ -33,7 +35,7 @@ public:
 
 class CThing {
 public:
-    void ForwardToGraphicAppearance(long request);   // 0x004C7590
+    void SetAsRenderedThisFrame(unsigned long reasons); // 0x004C7590
 };
 
 namespace std {
@@ -135,6 +137,6 @@ long CTCTextureDecal::AddDecal(long decal, CCompositeBlendDesc& desc)
     long id = CurrentAllocEntryID++;
     Decals.push_back(CEntry(id, decal, desc));
     Dirty = true;
-    ParentThing->ForwardToGraphicAppearance(4);
+    ParentThing->SetAsRenderedThisFrame(4);
     return id;
 }

@@ -1,5 +1,7 @@
 // CThingObject::WorldUpdateWeaponTrails() -- update the object's weapon trails and refresh its graphic appearance, unless it is a melee weapon that nobody is carrying
 // Leaf: ?WorldUpdateWeaponTrails@CThingObject@@
+// Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
+//   invented ?UpdateGraphicAppearance@CThing@@QAEXJ@Z)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007034D0, 189 bytes, plain `ret`.
 // Label correction: catalog "CRenderTarget_UpdateWeaponTrails" is propagated; the only caller is
 //   CThingObject::WorldUpdate (0x007041D7) and Ego_r.pdb has `?WorldUpdateWeaponTrails@CThingObject@@IAEXXZ`.
@@ -96,7 +98,7 @@ public:
             it = map->last;
         return it->component;
     }
-    void UpdateGraphicAppearance(long reason);            // 0x004C7590
+    void SetAsRenderedThisFrame(unsigned long reasons);         // 0x004C7590
 };
 
 class CThingObject : public CThing {
@@ -112,6 +114,6 @@ void CThingObject::WorldUpdateWeaponTrails()
             ((const CTCCarryable*)PeekTC(TC_CARRYABLE))->PCarryingTC == 0)
             return;
         trail->UpdateWeaponTrails();
-        UpdateGraphicAppearance(4);
+        SetAsRenderedThisFrame(4);
     }
 }

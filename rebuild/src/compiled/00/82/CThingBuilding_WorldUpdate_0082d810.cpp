@@ -1,4 +1,6 @@
 // CThingBuilding::WorldUpdate() -- the game-object update, then a graphic refresh request while the building is flagged or any global debug/visibility switch is on
+// Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
+//   invented ?UpdateGraphicAppearance@CThingGameObject@@QAEXJ@Z)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0082D810, 91 bytes (+ int3 padding).
 // Callees: CThingGameObject::WorldUpdate @ 0x00838BA0 (CThingGameObject vtable 0x01244F7C slot 19; the manifest names it
 //          "CThingCreatureBase::EditWorldUpdate", propagated), CThing::UpdateGraphicAppearance(long) @ 0x004C7590
@@ -14,11 +16,14 @@ extern unsigned char g_displaySwitch_13b863c;     // 0x013B863C
 extern unsigned char g_displaySwitch_13b863e;     // 0x013B863E
 extern unsigned char g_displaySwitch_13b86c6;     // 0x013B86C6
 
-class CThingGameObject { public:
+class CThing { public:
+    void SetAsRenderedThisFrame(unsigned long reasons);   // 0x004C7590
+};
+
+class CThingGameObject : public CThing { public:
     unsigned char _pad00[0x2c];
     unsigned long m_thingFlags;                   // +0x2c
     bool WorldUpdate();                           // 0x00838BA0
-    void UpdateGraphicAppearance(long reason);    // 0x004C7590 (CThing)
 };
 
 class CThingBuilding : public CThingGameObject { public:
@@ -31,6 +36,6 @@ bool CThingBuilding::WorldUpdate()
         return true;
     if ((m_thingFlags & 0x400) || g_displaySwitch_13b8637 || g_displayMode_13b8638 || g_displaySwitch_13b863d
         || g_displaySwitch_13b863c || g_displaySwitch_13b863e || g_displaySwitch_13b86c6)
-        UpdateGraphicAppearance(4);
+        SetAsRenderedThisFrame(4);
     return false;
 }

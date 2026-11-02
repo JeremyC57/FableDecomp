@@ -1,5 +1,7 @@
 // CTCLight::SetInverted(bool value) -- set the light's Inverted when it is overridden, then mark the parent thing's graphic appearance changed and put it back on the render list
 // Leaf: ?SetInverted@CTCLight@@QAEX_N@Z
+// Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
+//   invented ?UpdateGraphicAppearance@CThing@@QAEXJ@Z)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00640cd0, 42 bytes, thiscall, `ret 4`.
 // Identity (proven): Ego_r.pdb ?SetInverted@CTCLight@@QAEX_N@Z (unbound; no direct caller); the store goes to Ego_r.pdb
 //   CTCLight::CLightInfo::Inverted (+0x14) through PLightInfo; the CTCLight setters sit together (SetInnerRadius 0x00640C40,
@@ -12,7 +14,7 @@
 #include "engine/CTCBase.h"
 class CThing {
 public:
-    void UpdateGraphicAppearance(long reason);            // 0x004C7590
+    void SetAsRenderedThisFrame(unsigned long reasons);         // 0x004C7590
     void AddToRenderList();                               // 0x004C7AC0
 };
 class CCPPointerInfo;
@@ -53,7 +55,7 @@ void CTCLight::SetInverted(bool value)
 {
     if (Overridden) {
         PLightInfo->Inverted = value;
-        ParentThing->UpdateGraphicAppearance(4);
+        ParentThing->SetAsRenderedThisFrame(4);
         ParentThing->AddToRenderList();
     }
 }

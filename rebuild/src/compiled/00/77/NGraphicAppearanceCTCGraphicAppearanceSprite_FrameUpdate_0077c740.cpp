@@ -1,5 +1,7 @@
 // NGraphicAppearance::CTCGraphicAppearanceSprite::FrameUpdate() -- vtable slot 9: advance the sprite's rotation and animation stage by one frame and flag the owner's appearance as changed when either moved
 // Leaf: ?FrameUpdate@CTCGraphicAppearanceSprite@
+// Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
+//   invented ?SetGraphicAppearanceChanged@CThing@@QAEXK@Z)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077C740, 79 bytes (+1 int3 padding).
 // Name: FableWin.pdb ?FrameUpdate@CTCGraphicAppearanceSprite@NGraphicAppearance@@UAEXXZ (the sprite's only void no-argument
 // virtual besides OnCreate, slot 4 = the landed 0x0077C480, and OnAppearanceClear); slot 9 of the vtable 0x0126AE94.
@@ -31,7 +33,7 @@ class CThing {
 public:
     unsigned char         _pad_0x00[0x64];
     CTCGraphicAppearance* PTCGraphicAppearance;         // +0x64 (retail)
-    void SetGraphicAppearanceChanged(unsigned long flags);   // 0x004C7590
+    void SetAsRenderedThisFrame(unsigned long reasons);        // 0x004C7590
 };
 
 class CTCBase { public:                                        // 0x0c bytes: vptr, ParentThing, ToBeRemoved, IsInGlobalUpdateTCs
@@ -69,7 +71,7 @@ void CTCGraphicAppearanceSprite::FrameUpdate()
     RotationAngle += RotationAmountPerFrame;
     AnimStage += AnimSpeed * ParentThing->PTCGraphicAppearance->MainGraphic.AnimStep;
     if (AnimStage != LastAnimStage || RotationAmountPerFrame > 0.0f)
-        ParentThing->SetGraphicAppearanceChanged(4);
+        ParentThing->SetAsRenderedThisFrame(4);
 }
 
 } // namespace NGraphicAppearance

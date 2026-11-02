@@ -1,4 +1,6 @@
 // CTCTextureDecal::DeleteDecal(long id) -- erases every decal entry with the given allocation id; if any went, marks the component dirty and forwards appearance request 4 to the parent thing
+// Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
+//   invented ?ForwardToGraphicAppearance@CThing@@QAEXJ@Z)
 // Retail: Fable.exe @ 0x0070A430, 81 bytes (`ret 4`).
 // Callees: free 0x00BFEA14 (the STLport list node), the CThing forwarder 0x004C7590 (`if
 //          (PTCGraphicAppearance) ...(request)`, as the landed CTCLight::RequestAppearanceUpdate 0x00640D00;
@@ -38,7 +40,7 @@ struct CRetailList_DecalEntry {         // STLport list<CEntry>: the sentinel po
 };
 
 class CThing { public:
-    void ForwardToGraphicAppearance(long request);  // 0x004C7590
+    void SetAsRenderedThisFrame(unsigned long reasons); // 0x004C7590
 };
 
 class CTCTextureDecal { public:
@@ -65,6 +67,6 @@ void CTCTextureDecal::DeleteDecal(long id)
     }
     if (found) {
         Dirty = true;
-        m_pParentThing->ForwardToGraphicAppearance(4);
+        m_pParentThing->SetAsRenderedThisFrame(4);
     }
 }

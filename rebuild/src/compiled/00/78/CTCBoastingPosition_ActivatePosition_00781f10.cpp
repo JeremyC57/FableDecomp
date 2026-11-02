@@ -1,4 +1,6 @@
 // CTCBoastingPosition::ActivatePosition(long boastIndex, long cost) -- turn the boasting position on: store the boast and its cost, spawn the idle orb effect at the orb position, make the thing drawable and set the graphic-appearance flag
+// Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
+//   invented ?ForwardToGraphicAppearance@CThing@@QAEXJ@Z)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00781F10, length 207 bytes (+ int3 padding), `ret 8`
 // (?ActivatePosition@CTCBoastingPosition@@QAEXJJ@Z).
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, the __fastcall effect-thing factory
@@ -42,7 +44,7 @@ public:
     unsigned char _pad04[0x20 - 4];
     unsigned long m_presentBits[9];             // +0x20 UsingComponents
     CInterfaceMap m_interfaces;                 // +0x44 Components
-    void ForwardToGraphicAppearance(long request);   // 0x004C7590
+    void SetAsRenderedThisFrame(unsigned long reasons); // 0x004C7590
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -116,7 +118,7 @@ void CTCBoastingPosition::ActivatePosition(long boastIndex, long cost)
         PParticleEffect = CIntelligentPointer<CThing>(CTCDParticleEmitter::Create(name, OrbPosition, false));
     }
     ParentThing->SetAsDrawable(true);
-    ParentThing->ForwardToGraphicAppearance(4);
+    ParentThing->SetAsRenderedThisFrame(4);
     CTCGraphicAppearance* graphic;
     if (ParentThing->GetInterface(&graphic, 9))
         graphic->m_flag10 = true;

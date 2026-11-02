@@ -1,4 +1,6 @@
 // CTCLook::ChangeEyeAngles(float xy, float yz) -- set the eye angles, each clamped to half the def's eye turn range (degrees / 360); flag the change and poke the graphic appearance when either angle moved
+// Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
+//   invented ?UpdateGraphicAppearance@CThing@@QAEXJ@Z)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00752200, length 242 bytes (+ int3 padding), `ret 8`.
 // Callees: CThing::UpdateGraphicAppearance(long) @ 0x004C7590 (the parent's appearance forwarder; manifest
 // "CRenderTarget::DetachTarget" is propagated). Constants: 1/360 0x01238E00 (`/ 360.0f` becomes a reciprocal multiply),
@@ -23,7 +25,7 @@ template<class T> class CDefPointer { public:
     T* operator->() const { return Object; }
 };
 class CThing { public:
-    void UpdateGraphicAppearance(long reason);  // 0x004C7590
+    void SetAsRenderedThisFrame(unsigned long reasons);  // 0x004C7590
 };
 class CThingCreatureBase;
 class C3DVector { public: float X, Y, Z; };
@@ -80,6 +82,6 @@ void CTCLook::ChangeEyeAngles(float xy, float yz)
         EyeAnglesChanged = false;
     } else {
         EyeAnglesChanged = true;
-        ParentThing->UpdateGraphicAppearance(4);
+        ParentThing->SetAsRenderedThisFrame(4);
     }
 }

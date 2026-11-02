@@ -1,5 +1,7 @@
 // CThingDeadCreature::WorldUpdate() -- game-object update and body reorientation; then, for a creature def that persists after death, count the body's life down and, two seconds before the end, spawn the decay effect at the body and fade it out once; when the fade has finished kill the body
 // Leaf: ?WorldUpdate@CThingDeadCreature
+// Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
+//   invented ?UpdateGraphicAppearance@CThing@@QAEXJ@Z)
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00836260, length 539 bytes, `ret`, bool in al.
@@ -124,7 +126,7 @@ public:
     unsigned char _pad8e[0x91 - 0x8e];
     unsigned char Dead : 1;                             // +0x91 bit 0
     const C3DVector& GetPos() const;               // 0x004C73D0
-    void UpdateGraphicAppearance(long reason);          // 0x004C7590
+    void SetAsRenderedThisFrame(unsigned long reasons);       // 0x004C7590
     CDefinitionManager* GetDefinitionManager() const;   // 0x004C7990
     CTCBase* AddTC(const CCharString& name, long a, long b);   // 0x004C9D60
     void Kill(bool immediately);                        // 0x004C9B80
@@ -196,7 +198,7 @@ bool CThingDeadCreature::WorldUpdate()
         BodyReorienter->SetFlag_00863260(false);
     }
     if (HasTC(0x83))
-        UpdateGraphicAppearance(2);
+        SetAsRenderedThisFrame(2);
     if (PeekDefinitionInline().NumSecondsToPersistOnDeath > 0.0001f) {
         Health -= 1.0f;
         if (Health < CMainGameComponent::GetConstantFPS() * 2.0f) {

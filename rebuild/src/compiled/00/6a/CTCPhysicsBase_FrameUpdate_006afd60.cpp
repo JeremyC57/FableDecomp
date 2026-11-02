@@ -1,5 +1,7 @@
 // CTCPhysicsBase::FrameUpdate() -- per-frame physics bookkeeping: while the thing is (or was) moving, refresh the parent's graphic and run the moved hook; when physics is not active, finish a pending move and clear Moving; finally set the graphic appearance's persistence flags (2 while moving, 0 when still)
 // Leaf: FrameUpdate
+// Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
+//   invented ?RefreshGraphic@CThing@@QAEX_N@Z)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006AFD60, 122 bytes. CTCPhysicsBase vtable slot 9 (FrameUpdate).
 // Callees: CTCPhysicsBase virtual slots 37 (+0x94, IsPhysicsEnabled: base 0x006B10C0 returns true, the CTCPhysicsStandard override 0x00724BA0 reads PhysicsEnabled), 87 (+0x15c, base empty) and 94 (+0x178, base
 //   empty); CThing::<graphic refresh>(bool) @ 0x004C7590 (`mov ecx,[ecx+64h] ; test ; jmp 0x004BF9E0`; catalog
@@ -13,7 +15,7 @@ struct CTCGraphicAppearance {
 class CThing { public:
     unsigned char _pad00[0x64];
     CTCGraphicAppearance* PGraphicAppearance;   // +0x64
-    void RefreshGraphic(bool flag);             // 0x004C7590
+    void SetAsRenderedThisFrame(unsigned long reasons); // 0x004C7590
 };
 class CTCPhysicsBase { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
@@ -47,13 +49,13 @@ void CTCPhysicsBase::FrameUpdate()
 {
     if (IsPhysicsEnabled()) {
         if (Moving || OldMoving) {
-            ParentThing->RefreshGraphic(true);
+            ParentThing->SetAsRenderedThisFrame(1);
             OnMoveFinished();
         }
         if (Moving)
             OnMoved();
     } else if (Moving || OldMoving) {
-        ParentThing->RefreshGraphic(true);
+        ParentThing->SetAsRenderedThisFrame(1);
         OnMoveFinished();
         Moving = false;
     }

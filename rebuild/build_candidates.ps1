@@ -260726,8 +260726,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '004c7590'
         Module = 'CThing'
-        Source = '00/4c/CThing_SetGraphicAppearanceChanged_004c7590.cpp'
-        TestSource = '00/4c/CThing_SetGraphicAppearanceChanged_004c7590_test.cpp'
+        Source = '00/4c/CThing_SetAsRenderedThisFrame_004c7590.cpp'
+        TestSource = '00/4c/CThing_SetAsRenderedThisFrame_004c7590_test.cpp'
         PassPattern = '004c7590_TEST PASS'
     }
     [pscustomobject]@{

@@ -1,5 +1,7 @@
 // CTCPhysicsBase::SetPosition(const C3DVector& pos) -- move the body: when it is in the map-who, refuse a move into another map that is not loaded (reporting a collision of kind 4), else move its map-who entry; then store the position and the thing's map number
 // Leaf: SetPosition
+// Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
+//   invented ?UpdateGraphicAppearance@CThing@@QAEXJ@Z)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B0C10, 484 bytes (+int3), `ret 4`, esp frame (speed TU).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inline GetInterface 0x3A), CTCBase::GetWorld @ 0x00686A70 + slot 12 (inline
 //   GetWorldMap; out-of-line copy 0x006AF620), the physics slots 28 (+0x70, GetOffset2D) / 96 (+0x180, UpdateOldPosition),
@@ -59,7 +61,7 @@ public:
     unsigned long  m_presentBits[9];                    // +0x20 interface-present bitset
     CInterfaceMap  m_interfaces;                        // +0x44
     void SetCurrentMapNumber(long map);                 // 0x004C7580
-    void UpdateGraphicAppearance(long reason);          // 0x004C7590
+    void SetAsRenderedThisFrame(unsigned long reasons);       // 0x004C7590
     template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -127,7 +129,7 @@ void CTCPhysicsBase::SetPosition(const C3DVector& pos)
             }
         }
         mapwho->MoveInMapwho(pos.OffsetBy2D(GetOffset2D()));
-        ParentThing->UpdateGraphicAppearance(1);
+        ParentThing->SetAsRenderedThisFrame(1);
     }
     UpdateOldPosition();
     Position = pos;

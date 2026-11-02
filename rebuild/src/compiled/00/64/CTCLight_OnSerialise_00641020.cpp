@@ -1,6 +1,8 @@
 // CTCLight::OnSerialise(CPersistContext& context, bool flag) -- persist Active (a load with the flag set re-requests the appearance unless the hero state is being serialised) and, for an overridden light, its own light info (a load builds a fresh CLightInfo)
 // Grade: RELOCATION_MATCH
 // Leaf: OnSerialise
+// Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
+//   invented ?UpdateGraphicAppearance@CThing@@QAEXJ@Z)
 // Retail: Fable.exe @ 0x00641020, 488 bytes, `ret 8`. PDB ?OnSerialise@CTCLight@@UAEXAAVCPersistContext@@_N@Z (Ego_r).
 // Callees: CPersistContext::Transfer<bool> 0x004045C0 / Transfer<float> 0x00410620 / Transfer<CRGBColour> 0x006420F0;
 //   CTCBase::PeekWorld() const 0x00686A80; 0x004C7590 (name unproven, binding kept); CThing::SetAsFrameUpdated 0x004C7C40;
@@ -30,7 +32,7 @@ class CThing {
 public:
     unsigned char _pad00[0x6c];
     unsigned long ThingTypeFlags;                       // +0x6c
-    void UpdateGraphicAppearance(long reason);          // 0x004C7590 (name unproven)
+    void SetAsRenderedThisFrame(unsigned long reasons);       // 0x004C7590
     void SetAsFrameUpdated();                           // 0x004C7C40
 };
 
@@ -66,7 +68,7 @@ void CTCLight::OnSerialise(CPersistContext& context, bool flag)
     context.Transfer("Active", Active, false);
     if (flag && !context.IsSaving()) {
         if (!(ParentThing->ThingTypeFlags & 2) || !PeekWorld().SerialisingHeroState) {
-            ParentThing->UpdateGraphicAppearance(4);
+            ParentThing->SetAsRenderedThisFrame(4);
             ParentThing->SetAsFrameUpdated();
         }
     }

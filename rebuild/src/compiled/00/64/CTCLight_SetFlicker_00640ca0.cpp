@@ -1,5 +1,7 @@
 // CTCLight::SetFlicker(float value) -- set the light's Flicker when it is overridden, then mark the parent thing's graphic appearance changed and put it back on the render list
 // Leaf: ?SetFlicker@CTCLight@@QAEXM@Z
+// Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
+//   invented ?UpdateGraphicAppearance@CThing@@QAEXJ@Z)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00640ca0, 42 bytes, thiscall, `ret 4`.
 // Identity (proven): Ego_r.pdb ?SetFlicker@CTCLight@@QAEXM@Z (bound ?SetFlicker@CTCLight@@QAEXM@Z); the store goes to Ego_r.pdb
 //   CTCLight::CLightInfo::Flicker (+0x0C) through PLightInfo; the CTCLight setters sit together (SetInnerRadius 0x00640C40,
@@ -12,7 +14,7 @@
 #include "engine/CTCBase.h"
 class CThing {
 public:
-    void UpdateGraphicAppearance(long reason);            // 0x004C7590
+    void SetAsRenderedThisFrame(unsigned long reasons);         // 0x004C7590
     void AddToRenderList();                               // 0x004C7AC0
 };
 class CCPPointerInfo;
@@ -53,7 +55,7 @@ void CTCLight::SetFlicker(float value)
 {
     if (Overridden) {
         PLightInfo->Flicker = value;
-        ParentThing->UpdateGraphicAppearance(4);
+        ParentThing->SetAsRenderedThisFrame(4);
         ParentThing->AddToRenderList();
     }
 }

@@ -1,4 +1,6 @@
 // CTCLight::SetColour(const CRGBColour& colour) -- while overridden, change the shared light info's colour: a light that was black (0,0,0,255) becomes active, one set to black inactive, then refresh the owner's appearance
+// Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
+//   invented ?ForwardToGraphicAppearance@CThing@@QAEXJ@Z)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00640BB0, length 136 bytes (`ret 4`).
 // Callees: the CThing forwarder @ 0x004C7590 (request 4 to the graphic appearance; manifest "CRenderTarget::DetachTarget" is
 // propagated), CThing::AddToRenderList @ 0x004C7AC0.
@@ -8,7 +10,7 @@
 // Shape: member `operator!=` / `operator==` of CRGBColour inlined against the colour argument and a black constant (the 0xFF held in dl
 // for both black tests); the 4-byte colour assignment is one dword copy.
 class CThing { public:
-    void ForwardToGraphicAppearance(long request);  // 0x004C7590
+    void SetAsRenderedThisFrame(unsigned long reasons);  // 0x004C7590
     void AddToRenderList();                         // 0x004C7AC0
 };
 class CRGBColour { public:                                 // D3DCOLOR byte order
@@ -52,7 +54,7 @@ void CTCLight::SetColour(const CRGBColour& colour)
             PLightInfo->Colour = colour;
             if (PLightInfo->Colour == CRGBColour(0, 0, 0, 255))
                 Active = false;
-            ParentThing->ForwardToGraphicAppearance(4);
+            ParentThing->SetAsRenderedThisFrame(4);
             ParentThing->AddToRenderList();
         }
     }

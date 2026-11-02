@@ -1,5 +1,7 @@
 // CThingDeadCreature::WorldUpdateBulletTime() -- refresh the body's graphic appearance when it has component 0x83, then the base bullet-time update
 // Leaf: ?WorldUpdateBulletTime@CThingDeadCreature@@UAEXXZ
+// Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
+//   invented ?SetGraphicAppearanceChanged@CThing@@QAEXK@Z)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00836240, 24 bytes, thiscall: `test byte [esi+30h],8` (bit 0x83 of the UsingComponents
 //   bitset at +0x20) -> `push 2 ; call 0x004C7590`, then `jmp CThing::WorldUpdateBulletTime` 0x004C8BA0 (qualified base call).
 // Identity (proven): the only reference is slot 20 of the CThingDeadCreature vtable 0x01272B04 (0x01272B54); slot 20 of the CThing
@@ -20,7 +22,7 @@ public:
     virtual void WorldUpdateBulletTime();               // slot 20: 0x004C8BA0
     unsigned char _pad04[0x20 - 0x04];
     unsigned long m_presentBits[9];                     // +0x20 UsingComponents (bitset<274>)
-    void SetGraphicAppearanceChanged(unsigned long flags);   // 0x004C7590
+    void SetAsRenderedThisFrame(unsigned long reasons); // 0x004C7590
     __forceinline bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
@@ -40,6 +42,6 @@ public:
 void CThingDeadCreature::WorldUpdateBulletTime()
 {
     if (HasTC(0x83))
-        SetGraphicAppearanceChanged(2);
+        SetAsRenderedThisFrame(2);
     CThingGameObject::WorldUpdateBulletTime();
 }

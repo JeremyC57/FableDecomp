@@ -1,5 +1,7 @@
 // CThingDeadCreature::SetupDeadAnimation() -- start the corpse's "STANDARD_DEAD" animation: a random one passing the creature's animation filter (else of any group) from its appearance def, played as the main animation and immediately finished, then a zero-time frame update, a frame-updated mark and a graphic appearance update
 // Leaf: ?SetupDeadAnimation@CThingDeadCreature
+// Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
+//   invented ?UpdateGraphicAppearance@CThing@@QAEXJ@Z)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00835E30, length 392 bytes, plain `ret`.
 //   Name from Ego_r.pdb `?SetupDeadAnimation@CThingDeadCreature@@IAEXXZ`.
 // Callees: LowerBound @ 0x0040F020 (component 0x5A CTCAnimationComplex, read uninitialised when absent, as the landed
@@ -131,7 +133,7 @@ class CThing { public:
     CInterfaceMap  m_interfaces;                        // +0x44
     unsigned char  _pad4c[0x70 - 0x4c];
     CDefClassBase* PBaseDef;                            // +0x70
-    void UpdateGraphicAppearance(long reason);          // 0x004C7590
+    void SetAsRenderedThisFrame(unsigned long reasons);       // 0x004C7590
     unsigned long* GetRandomSeed();                     // 0x004C7AE0
     void SetAsFrameUpdated();                           // 0x004C7C40
     __forceinline bool HasTC(long type) const
@@ -189,5 +191,5 @@ void CThingDeadCreature::SetupDeadAnimation()
     }
     animate.UpdateFrameLogic(CAnimFrameTime());
     SetAsFrameUpdated();
-    UpdateGraphicAppearance(2);
+    SetAsRenderedThisFrame(2);
 }

@@ -1,5 +1,7 @@
 // CTCHighlightItem::FrameUpdate() -- while waiting, starts running once the def's delay has elapsed; while running, moves; counts frames either way
 // Leaf: FrameUpdate
+// Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
+//   invented ?UpdateGraphicAppearance@CThing@@QAEXJ@Z)
 // Naming wave 18: the global stand-in g_GameFramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077CD50, 117 bytes (+11 int3); default /O2 TU, no frame.
@@ -63,7 +65,7 @@ class CThing { public:
     CDefPointerMember<CThingDef> PDef;               // +0x70 CDefPointer<const CThingDef>
     const C3DVector& GetPos() const;            // 0x004C73D0
     void Kill(bool immediately);                     // 0x004C9B80
-    void UpdateGraphicAppearance(long reason);       // 0x004C7590
+    void SetAsRenderedThisFrame(unsigned long reasons);    // 0x004C7590
 };
 
 struct CBaseIntelligentPointer {
@@ -116,7 +118,7 @@ void CTCHighlightItem::FrameUpdate()
         const CHighlightItemDef* def = pdef.Object;
         if (LifeTimer > def->StartDelaySeconds * CMainGameComponent::GetConstantFPS())
             DoStartRunning();
-        ParentThing->UpdateGraphicAppearance(15);
+        ParentThing->SetAsRenderedThisFrame(15);
         ++LifeTimer;
         CHighlightItemDef* release = (CHighlightItemDef*)def;
         if (DecRefToZero(release->RefCount))
