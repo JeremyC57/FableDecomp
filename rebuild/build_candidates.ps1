@@ -237641,9 +237641,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0089faa0'
-        Module = 'CGameScriptInterfaceMethods'
-        Source = '00/89/CGameScriptInterfaceMethods_CreateLight_0089faa0.cpp'
-        TestSource = '00/89/CGameScriptInterfaceMethods_CreateLight_0089faa0_test.cpp'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_CreateLight_0089faa0.cpp'
+        TestSource = '00/89/CGameScriptInterface_CreateLight_0089faa0_test.cpp'
         PassPattern = '0089faa0_TEST PASS'
     }
     [pscustomobject]@{
