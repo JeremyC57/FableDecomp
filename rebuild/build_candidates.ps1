@@ -75741,16 +75741,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00643d7c'
-        Module = '_global'
-        Source = '00/64/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00643d7c.cpp'
-        TestSource = '00/64/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00643d7c_test.cpp'
+        Module = 'NPlayerGui::CDrawBase'
+        Source = '00/64/NPlayerGuiCDrawBase_GetPlayer_00643d7c.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawBase_GetPlayer_00643d7c_test.cpp'
         PassPattern = 'PASS_00643d7c'
     }
     [pscustomobject]@{
         Address = '00643d84'
-        Module = '_global'
-        Source = '00/64/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00643d84.cpp'
-        TestSource = '00/64/ConsvalstdallocatorstdpairEHeroMorphTypeCParticleMorphsCEntrystdpairEHeroMorphTy_CEntryconst_00643d84_test.cpp'
+        Module = 'NPlayerGui::CDrawBase'
+        Source = '00/64/NPlayerGuiCDrawBase_GetPlayer_00643d84.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawBase_GetPlayer_00643d84_test.cpp'
         PassPattern = 'PASS_00643d84'
     }
     [pscustomobject]@{

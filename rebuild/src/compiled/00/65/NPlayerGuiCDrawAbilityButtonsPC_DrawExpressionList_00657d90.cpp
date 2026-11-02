@@ -9,6 +9,9 @@
 //   so the vector stops escaping and _M_start stays in ebp (rematerialised from the vector) as in retail; `long row = firstRow;` is
 //   declared before `long drawn = firstRow - 1;`; the wrap-round scan runs on its own counter.
 // Leaf: DrawExpressionList
+// Naming wave 31 (family dgp): GetPlayer is the non-const NPlayerGui::CDrawBase member ?GetPlayer@CDrawBase@NPlayerGui@@QAEAAVCPlayer@@XZ 0x00643D7C
+//   (Ego_r.pdb / FableWin.pdb; returns CPlayer&), on a CDrawBase base of the local CDrawAbilityButtonsPC; was the invented
+//   ?GetPlayer@CDrawAbilityButtonsPC@NPlayerGui@@QAEPAVCPlayer@@XZ
 #include <stdlib.h>
 class C2DVector { public: float X, Y; };
 void __fastcall GFAPositionToScreen(C2DVector* out, const C2DVector* in);   // 0x00643D0C
@@ -48,15 +51,19 @@ struct CTCHeroExpressions {
 };
 
 namespace NPlayerGui {
-struct CDrawAbilityButtonsPC {
+class CDrawBase {                           // RTTI .?AVCDrawBase@NPlayerGui@@ (layout as 0x00643D7C / 0x00657200)
+public:
+    CPlayer&        GetPlayer();            // 0x00643D7C ?GetPlayer@CDrawBase@NPlayerGui@@QAEAAVCPlayer@@XZ (Ego_r.pdb / FableWin.pdb)
+    virtual void v00();
     void*           PlayerGui;              // +0x04
     CPlayerManager* PlayerManager;          // +0x08
     void*           World;                  // +0x0c
+};
+struct CDrawAbilityButtonsPC : CDrawBase {
     unsigned char   _pad10[0x28 - 0x10];
     long            Columns;                // +0x28
-    CPlayer* GetPlayer();                   // 0x00643D7C
     void GetExpressionSlotOffsets(LongVector& offsets);   // 0x00657BA0
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
+    virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
     virtual void DrawExpressionButton(CEnginePrimitivePrepareInfo* info, LongVector* expressions, long slot, long index,
                                       long row, float scale);   // slot 9
@@ -82,7 +89,7 @@ __declspec(noinline) void CDrawAbilityButtonsPC::GetExpressionSlotOffsets(LongVe
 }
 void CDrawAbilityButtonsPC::DrawExpressionList(CEnginePrimitivePrepareInfo* info, float scale)
 {
-    const CThingNative* hero = GetPlayer()->PeekPControlledCreature();
+    const CThingNative* hero = GetPlayer().PeekPControlledCreature();
     if (hero == 0 || (hero->LifeFlags & 1))
         return;
     LongVector offsets;

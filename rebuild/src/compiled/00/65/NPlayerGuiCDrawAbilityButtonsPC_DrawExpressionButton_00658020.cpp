@@ -1,5 +1,7 @@
 // NPlayerGui::CDrawAbilityButtonsPC::DrawExpressionButton(CEnginePrimitivePrepareInfo*, vector<long>*, long, long, long, float) -- draw one expression button: only for a live hero thing that has the expression component (0x6f); for a valid expression index inside the column-rounded list, place the button at the definition's expression origin plus the slot's button-type offset (X from the slot's type, Y from the first type) and the row step, look the expression def up by its global index, and draw the button with the def's graphic at full scale (or the default graphic at a third of the scale when there is no def), on layer 0x45 for type 1 and 0x44 otherwise
 // Leaf: DrawExpressionButton
+// Naming wave 31 (family dgp): GetPlayer is the non-const NPlayerGui::CDrawBase member ?GetPlayer@CDrawBase@NPlayerGui@@QAEAAVCPlayer@@XZ 0x00643D7C
+//   (Ego_r.pdb / FableWin.pdb; returns CPlayer&) on a CDrawBase base; was the invented ?GetPlayer@CDrawAbilityButtonsPC@NPlayerGui@@QAEPAVCPlayer@@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00658020, length 536 bytes (`ret 0x18`).
 // Callees: GetPlayer 0x00643D7C (PlayerManager->GetMainPlayer), CPlayer::PeekPControlledCreature 0x00487DD0, button-type list fill
 //   0x00657C80, LowerBound 0x004365B0 (const overload), PeekGuiDef 0x00438570, button vector size 0x0043CAC0 (0x5c entries),
@@ -87,14 +89,17 @@ class CEnginePrimitivePrepareInfo;
 enum EEngine2DLayer { LAYER_44 = 0x44, LAYER_45 = 0x45 };
 
 namespace NPlayerGui {
-struct CDrawAbilityButtonsPC {
+class CDrawBase {                           // RTTI .?AVCDrawBase@NPlayerGui@@ (layout as 0x00643D7C / 0x00657200)
+public:
     void*           _vtable;
     void*           PlayerGui;              // +0x04
     CPlayerManager* PlayerManager;          // +0x08
     CWorld*         World;                  // +0x0c
+    CPlayer&        GetPlayer();            // 0x00643D7C ?GetPlayer@CDrawBase@NPlayerGui@@QAEAAVCPlayer@@XZ (Ego_r.pdb / FableWin.pdb)
+};
+struct CDrawAbilityButtonsPC : CDrawBase {
     unsigned char   _pad10[0x28 - 0x10];
     long            Columns;                // +0x28
-    CPlayer* GetPlayer();                   // 0x00643D7C
     void GetExpressionButtonTypes(LongVector& types);   // 0x00657C80
     void DrawButton(CEnginePrimitivePrepareInfo* info, C2DVector* pos, float scale, long button, long graphic, bool flag,
                     EEngine2DLayer layer);  // 0x00645099
@@ -105,7 +110,7 @@ struct CDrawAbilityButtonsPC {
 void CDrawAbilityButtonsPC::DrawExpressionButton(CEnginePrimitivePrepareInfo* info, LongVector* expressions, long slot,
                                                  long index, long row, float scale)
 {
-    const CThingNative* hero = GetPlayer()->PeekPControlledCreature();
+    const CThingNative* hero = GetPlayer().PeekPControlledCreature();
     if (hero == 0 || (hero->LifeFlags & 1))
         return;
     LongVector types;
