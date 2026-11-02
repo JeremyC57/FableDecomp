@@ -1,0 +1,11 @@
+address	status	bytes	test	probes	note
+005567b0	RELOCATION_MATCH	84v84	PASS	3	NUISystem::CRedefinerList::ClearList (protected IAE; both PDBs, Ego_r order); CComponent MI bases from RTTI; residue none
+008c3e90	RELOCATION_MATCH	68v68	PASS	3	CCreatureAction_ScorpionTailPlunge::Initialise (vtable 0x01286494 slot 12; both PDBs); residue none
+008d6690	RELOCATION_MATCH	70v70	PASS	3	NCreatureMode::CModeCreatureIsProjectile::OnActivate (vtable 0x01285728 slot 5; both PDBs); p1 DIFFER 72v70 fixed by a named creature local
+008e63b0	RELOCATION_MATCH	69v69	PASS	3	CCreatureAction_CastStrengthMultiStrikeProper::FinishAction (vtable 0x012877A4 slot 4; both PDBs); residue none
+009fece0	RELOCATION_MATCH	68v68	PASS	3	CGraphicDataBank::Close (vtable 0x0129C8CC slot 5; both PDBs); inlines the private CloseGraphics
+009feb80	RELOCATION_MATCH	61v61	PASS	3	CGraphicDataBank::CloseGraphics (private AAE; both PDBs; out-of-line copy, byte twin of 0x009FECE0's head); catalog label "Close" wrong
+00a47180	RELOCATION_MATCH	79v79	PASS	3	CNavigatorBase::~CNavigatorBase (vtable 0x0129D4A4; both PDBs); hdr overlay CNavigatorBase.h + CClass.h opt-in; p2 DIFFER 79v79 (null-store order)
+00a66990	RELOCATION_MATCH	73v73	PASS	2	CKeyboard::~CKeyboard (vtable 0x0129DBA8; both PDBs); hdr overlay CKeyboard.h opt-in; catalog label _global::CBase_Destructor_Helper wrong
+00a66f80	RELOCATION_MATCH	73v73	PASS	2	CMouse::~CMouse (vtable 0x0129DBC4; both PDBs); hdr overlay CMouse.h opt-in; catalog label _global::CGuiControlTreePane_Destructor wrong
+00be2b20	RELOCATION_MATCH	74v74	PASS	2	CEngineLandscapeMeshBuilder::~CEngineLandscapeMeshBuilder (vtable 0x012A7FB8; both PDBs); hdr overlay CIndexBuffer.h + CMovableResource.h opt-in

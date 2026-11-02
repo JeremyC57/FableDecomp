@@ -1,0 +1,4 @@
+1	local CKeyboard : CBaseClassNonCopyable model (CInputEvent EventStore[256], counts, STLport list<CMaintainedEvent>, InputManager), user dtor with an empty body	RELOCATION_MATCH 73v73
+2	= src: engine/CKeyboard.h retail opt-in branch (FABLE_RETAIL_CKEYBOARD, hdr/ overlay: full vtable, Ego_r methods, members), `CKeyboard::~CKeyboard() { }`	RELOCATION_MATCH 73v73
+check	src without FABLE_HDR_OVERLAY (repo header has no user dtor declared)	SRC_FAIL C2600 (the overlay is the header in use)
+check	deliberate DeliberateShift member added in the overlay CKeyboard.h	DIFFER 73v73 (overlay confirmed, then removed)

@@ -1,0 +1,3 @@
+1	iterator loop over DependentThings (STLport vector<CIntelligentPointer<CThing> > +0x9C), GetPItem, `if (thing && !thing->IsDead()) thing->Kill(true)`, qualified CCombatActionBase::FinishAction tail	RELOCATION_MATCH 69v69
+2	CThing : CBaseObject with padding to the Dead bitfield +0x91	RELOCATION_MATCH 69v69
+3	= src: CThing : CClass (engine/CClass.h layout-rename include, CClass 0x14), FinishAction public in CCreatureActionBase / protected in CCombatActionBase	RELOCATION_MATCH 69v69

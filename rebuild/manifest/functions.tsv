@@ -9912,7 +9912,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00556580	OnDeactivate	CRedefinerList	__thiscall	void	1	CRedefinerList *	1	yes	accepted									
 005565c0	ResetKeysToDefaults	_global	__fastcall	void	1	bool	1	yes	accepted									
 005566a0	Initialise	CRedefinerList	__thiscall	void	1	CRedefinerList *	1	yes	accepted									
-005567b0	ClearList	CRedefinerList	__thiscall	void	1	CRedefinerList *	1	yes	accepted									
+005567b0	ClearList	NUISystem::CRedefinerList	__thiscall	void	1	CRedefinerList *	1	yes	accepted									
 00556810	UpdateUndefinedWarning	CRedefinerList	__thiscall	void	2	CRedefinerList *,float	1	yes	accepted									
 00556930	HasScriptThing	CGameScriptThingManager	__thiscall	bool	2	CGameScriptThingManager *,CThing *	1	yes	accepted									
 00556980	DeregisterAllScreens	CManager	__thiscall	void	1	CManager *	1	yes	accepted									
@@ -9929,7 +9929,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00557680	SortTreeRecursively	CGuiControlTreePane	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CGuiControlTreePane_SortTreeRecursively_00557680.cpp
 00557740	CircularLinkedList_InitializeSmall	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\global_CircularLinkedListInitializeSmall_00557740.cpp
 005577a0	find	std::_Rb_tree<CUnprovenKey_005577a0, CUnprovenValue_005577a0, CUnprovenKeyOfValue_005577a0, std::less<CUnprovenKey_005577a0>, std::allocator<CUnprovenValue_005577a0>>	unknown	undefined	0		0	yes	accepted									
-00557840	ResetButtonCounts	_global	__fastcall	void	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\global_ResetButtonCounts_00557840.cpp
+00557840	ResetButtonCounts	NUISystem::CKeyRedefiner	__fastcall	void	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\global_ResetButtonCounts_00557840.cpp
 00557850	NUISystem::CKeyRedefiner::OnLeftClicked	NUISystem::CKeyRedefiner	__thiscall	void	1	NUISystem::CKeyRedefiner *	1	unmeasured	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\NUISystemCKeyRedefiner_OnLeftClicked_00557850.cpp
 00557860	NUISystem::CKeyRedefiner::OnHovered	NUISystem::CKeyRedefiner	__thiscall	void	1	NUISystem::CKeyRedefiner *	1	yes	accepted									
 00557880	NUISystem::CKeyRedefiner::OnUnhovered	NUISystem::CKeyRedefiner	__thiscall	void	1	NUISystem::CKeyRedefiner *	1	yes	accepted									
@@ -14579,7 +14579,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006626a0	SetHiddenOnMiniMap	CThingCreatureBase	__thiscall	void	2	CThingCreatureBase *,bool	1	yes	accepted									
 006626e0	GetAnimMovementVector	CThingCreatureBase	__thiscall	C3DVector	2	CThingCreatureBase *,long	1	yes	accepted									
 006627a0	GetAnimDuration	CTCAnimationComplex	__thiscall	float	2	CTCAnimationComplex *,long	1	yes	accepted									
-006627f0	GetAnimDuration	CTCAnimationComplex	__thiscall	float	2	CTCAnimationComplex *,long	1	yes	accepted									
+006627f0	GetAnimDuration	CThingCreatureBase	__thiscall	float	2	CTCAnimationComplex *,long	1	yes	accepted									
 00662820	IsAnimCombinationAnim	CThingCreatureBase	__thiscall	bool	2	CThingCreatureBase *,long	1	yes	accepted									
 00662850	CThingPlayerCreature::vfunc_58	CThingPlayerCreature	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00662860	GetDefaultWeaponDef	CThingCreatureBase	__thiscall	long	1	CThingCreatureBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\66\CThingCreatureBase_GetDefaultWeaponDef_00662860.cpp
@@ -25452,7 +25452,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00857250	operator()	CThingFilter_CombatCanCollideOrInteractWithThing	__thiscall	bool	2	CThingFilter_CombatCanCollideOrInteractWithThing *,CThing *	1	yes	accepted									
 00857430	GetPCombatActionFromEnum	CCombatActionBase	__fastcall	CCountedPointer<CCombatActionBase>	3	EActionRegisteredType,CThingCreatureBase *,CThingCreatureBase *	1	yes	accepted									
 008574d0	SetPDef	CTCInGameMenu	__thiscall	void	2	CTCInGameMenu *,long	1	yes	accepted									
-00857520	?Initialise@CCombatActionBase@@UAEXXZ	CCombatActionBase	__thiscall	void	1	CCombatActionBase *	1	yes	accepted									
+00857520	Initialise	CCombatActionBase	__thiscall	void	1	CCombatActionBase *	1	yes	accepted									
 008575c0	CCombatActionBase::GetNextPos	CCombatActionBase	__thiscall	C3DVector	1	CCombatActionBase *	1	yes	accepted									
 008579d0	?UpdateActionRunningTime@CCombatActionBase@@UAEXXZ	CCombatActionBase	__thiscall	void	1	CCombatActionBase *	1	yes	accepted									
 00857b70	ProcessPlayerControl	CCombatActionBase	__thiscall	void	1	CCombatActionBase *	1	yes	accepted									
@@ -25692,7 +25692,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00861d00	OnDeactivate	CModeStandBase	__thiscall	void	1	CModeStandBase *	1	yes	accepted									
 00861e00	CTCCreatureNavigation	CTCCreatureNavigation	__thiscall	undefined	2	CTCCreatureNavigation *,CThing *	0	yes	accepted									
 00861e60	Animation_SelectRandomFromAbilityAnimations	_global	unknown	undefined	0		0	yes	accepted									
-008621a0	?OnActivate@CModeStandBase@@UAEXXZ	CModeStandBase	__thiscall	void	1	CModeStandBase *	1	yes	accepted									
+008621a0	OnActivate	CModeStandBase	__thiscall	void	1	CModeStandBase *	1	yes	accepted									
 00862780	UpdateIdleAnim	CModeStandBase	__thiscall	void	2	CModeStandBase *,CAnimateThing *	1	yes	accepted									
 00862aa0	UpdateWalkingAnim	CModeStandBase	__thiscall	void	2	CModeStandBase *,CAnimateThing *	1	yes	accepted									
 00862ec0	?AnimUpdate@CModeStandBase@@UAEXAAVCAnimateThing@@@Z	CModeStandBase	__thiscall	void	2	CModeStandBase *,CAnimateThing *	1	yes	accepted									
@@ -28543,7 +28543,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008c3e30	?FinishAction@CCreatureAction_ScorpionChargeStrike@@UAEXXZ	CCreatureAction_ScorpionChargeStrike	__thiscall	void	1	CCombatActionBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8c\CCreatureActionScorpionChargeStrike_FinishActionCCreatureActionScorpionChargeStrikeU_008c3e30.cpp
 008c3e40	?Initialise@CCreatureAction_ScorpionTailWithdraw@@UAEXXZ	CCreatureAction_ScorpionTailWithdraw	__thiscall	void	1	CCombatActionBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8c\CCreatureActionScorpionTailWithdraw_InitialiseCCreatureActionScorpionTailWithdrawUAE_008c3e40.cpp
 008c3e50	CCreatureAction_WaspQueenDie::Initialise	CCreatureAction_WaspQueenDie	__thiscall	void	1	CCreatureAction_WaspQueenDie *	1	yes	accepted									
-008c3e90	CCreatureAction_ScorpionTailPlunge::Initialise	CCreatureAction_ScorpionTailPlunge	__thiscall	void	1	CCreatureAction_ScorpionTailPlunge *	1	yes	accepted									
+008c3e90	Initialise	CCreatureAction_ScorpionTailPlunge	__thiscall	void	1	CCreatureAction_ScorpionTailPlunge *	1	yes	accepted									
 008c3ee0	?Initialise@CCreatureAction_ScorpionRecover@@UAEXXZ	CCreatureAction_ScorpionRecover	__thiscall	void	1	CCreatureAction_ScorpionRecover *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8c\CCreatureActionScorpionRecover_InitialiseCCreatureActionScorpionRecoverUAEXXZ_008c3ee0.cpp
 008c3f00	?FinishAction@CCreatureAction_ScorpionKingDeath@@UAEXXZ	CCreatureAction_ScorpionKingDeath	__thiscall	void	1	CCombatAction_GenericResponseToDecapitation *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8c\CCreatureActionScorpionKingDeath_FinishActionCCreatureActionScorpionKingDeathUAEX_008c3f00.cpp
 008c3f20	FrameUpdate	CCreatureAction_WaspQueenDie	__thiscall	void	1	CAIStateGroup_MinionHawkingFromStall *	1	yes	accepted									
@@ -29110,7 +29110,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008d6660	NCreatureMode::CModeDazed::Piece_008d6660	NCreatureMode::CModeDazed	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
 008d6670	NCreatureMode::CModeStunned::Piece_008d6670	NCreatureMode::CModeStunned	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
 008d6680	NCreatureMode::CModeStunned::Piece_008d6680	NCreatureMode::CModeStunned	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
-008d6690	OnActivate	CModeCreatureIsProjectile	__thiscall	void	1	CModeCreatureIsProjectile *	1	yes	accepted									
+008d6690	OnActivate	NCreatureMode::CModeCreatureIsProjectile	__thiscall	void	1	CModeCreatureIsProjectile *	1	yes	accepted									
 008d66e0	OnActivate	CModeUnderground	__thiscall	void	1	CModeUnderground *	1	yes	accepted									
 008d6710	OnDeactivate	NCreatureMode::CModeUnderground	__thiscall	void	1	CModeUnderground *	1	yes	accepted									
 008d6740	OnDeactivate	CModeKnockedDown	__thiscall	void	1	CModeKnockedDown *	1	yes	accepted									
@@ -29422,7 +29422,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008e6030	CollisionFilter_SphereTest	_global	unknown	undefined	0		0	yes	accepted									
 008e60d0	GetAllThingsInRoughArea<CThingGameObject_const_,std::vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_>,CThingFilter_None>	GetAllThingsInRoughArea<CThingGameObject_const_,std::vector<CIntelligentPointer<CThing_const_>,std	__thiscall	void	4	CThingSearchTools *,C2DBoxI *,CThingFilter_None *,vector<CIntelligentPointer<CThing_const_>,std::allocator<CIntelligentPointer<CThing_const_>_>_> *	1	yes	accepted									
 008e6390	?FrameUpdate@CCreatureAction_CastStrengthMultiStrike@@UAEXXZ	CCreatureAction_CastStrengthMultiStrike	__thiscall	void	1	CCreatureAction_CastStrengthMultiStrike *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8e\CCreatureActionCastStrengthMultiStrike_FrameUpdateCCreatureActionCastStrengthMultiStrik_008e6390.cpp
-008e63b0	?FinishAction@CCreatureAction_CastStrengthMultiStrikeProper@@UAEXXZ	CCreatureAction_CastStrengthMultiStrikeProper	__thiscall	void	1	CCreatureAction_CastStrengthMultiStrikeProper *	1	yes	accepted									
+008e63b0	FinishAction	CCreatureAction_CastStrengthMultiStrikeProper	__thiscall	void	1	CCreatureAction_CastStrengthMultiStrikeProper *	1	yes	accepted									
 008e6400	CCreatureAction_CastStrengthBerserk::Initialise	CCreatureAction_CastStrengthBerserk	__thiscall	void	1	CCreatureAction_CastStrengthBerserk *	1	yes	accepted									
 008e6490	CCreatureAction_ReleaseStrengthBerserk::Initialise	CCreatureAction_ReleaseStrengthBerserk	__thiscall	void	1	CCreatureAction_ReleaseStrengthBerserk *	1	yes	accepted									
 008e6500	?FrameUpdate@CCreatureAction_ReleaseStrengthBerserk@@UAEXXZ	CCreatureAction_ReleaseStrengthBerserk	__thiscall	void	1	CCreatureAction_ReleaseStrengthBerserk *	1	yes	accepted									
@@ -34843,7 +34843,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009e45b0	CMaintainedEvent	CMaintainedEvent	__thiscall	undefined	1	CAIStateGroupBase *	0	yes	accepted									
 009e45d0	_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>	_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9e\global_Destval_009e45d0.cpp
 009e45f0	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9e\CEngineSubPrimitiveText_scalardeletingdestructor_009e45f0.cpp
-009e4710	SortTreeRecursively	CGuiControlTreePane	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted									
+009e4710	clear	std::_List_base<CMaintainedEvent, std::allocator<CMaintainedEvent>>	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted									
 009e47e0	EventNode_Unlink	_global	unknown	undefined	0		0	yes	accepted									
 009e4810	StdList_DefaultCtor_9e4810	_global	unknown	undefined	0		0	yes	accepted									
 009e4830	OnReadFinished	CActiveFile	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9e\CActiveFile_OnReadFinished_009e4830.cpp
@@ -35489,9 +35489,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009fe8e0	UnloadFrame	CGraphicInfo	__thiscall	void	2	CGraphicInfo *,ulong	1	yes	accepted									
 009fea00	CGraphicInfoFrame::CFrameData::vfunc_10	CGraphicInfoFrame::CFrameData	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 009fea20	CGraphicDataBank	CGraphicDataBank	__thiscall	undefined	1	CGraphicDataBank *	0	yes	accepted									
-009feb80	Close	CGraphicDataBank	__thiscall	void	1	CGraphicDataBank *	1	yes	accepted									
+009feb80	CloseGraphics	CGraphicDataBank	__thiscall	void	1	CGraphicDataBank *	1	yes	accepted									
 009febc0	~CGraphicDataBank	CGraphicDataBank	__thiscall	void	1	CGraphicDataBank *	1	yes	accepted									
-009fece0	?Close@CGraphicDataBank@@UAEXXZ	CGraphicDataBank	__thiscall	void	1	CGraphicDataBank *	1	yes	accepted									
+009fece0	Close	CGraphicDataBank	__thiscall	void	1	CGraphicDataBank *	1	yes	accepted									
 009fed30	LoadGraphicFrame	CGraphicDataBank	__thiscall	bool	9	CGraphicDataBank *,CGraphicFrame *,CManagedTexture *,CBankFileAsyncData *,CGraphicInfo *,bool,ulong,ETextureType,bool	1	yes	accepted									
 009ff220	UploadFrame	CFrameData	__thiscall	bool	2	CFrameData *,bool	1	yes	accepted									
 009ff440	InitFrames	CGraphicDataBank	__thiscall	void	1	CGraphicDataBank *	1	yes	accepted									
@@ -35538,8 +35538,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a00b90	UnInitialise	CGraphicFrame	__thiscall	void	1	CGraphicFrame *	1	yes	accepted									
 00a00c80	CGameMapCellArray_InsertElements	_global	unknown	undefined	0		0	yes	accepted									
 00a00d90	InitialiseFrame	CGraphicInfoFrame	__thiscall	void	4	CGraphicInfoFrame *,CGraphicFrame *,CManagedTexture *,char	1	yes	accepted									
-00a00e60	erase	vector<CGraphicInfo	__thiscall	_Vector_iterator<std::_Vector_val<CGraphicInfo,std::allocator<CGraphicInfo>_>_>	3	vector<CGraphicInfo,std::allocator<CGraphicInfo>_> *,_Vector_const_iterator<std::_Vector_val<CGraphicInfo,std::allocator<CGraphicInfo>_>_>,_Vector_const_iterator<std::_Vector_val<CGraphicInfo,std::allocator<CGraphicInfo>_>_>	1	yes	accepted									
-00a00ed0	Vector_MoveAndDestroyElements	_global	unknown	undefined	0		0	yes	accepted									
+00a00e60	erase	std::vector<CGraphicInfo, std::allocator<CGraphicInfo>>	__thiscall	_Vector_iterator<std::_Vector_val<CGraphicInfo,std::allocator<CGraphicInfo>_>_>	3	vector<CGraphicInfo,std::allocator<CGraphicInfo>_> *,_Vector_const_iterator<std::_Vector_val<CGraphicInfo,std::allocator<CGraphicInfo>_>_>,_Vector_const_iterator<std::_Vector_val<CGraphicInfo,std::allocator<CGraphicInfo>_>_>	1	yes	accepted									
+00a00ed0	erase	std::vector<CGraphicInfoFrame, std::allocator<CGraphicInfoFrame>>	unknown	undefined	0		0	yes	accepted									
 00a00f50	CGameMapCellArray_ResizeAndInsert	_global	unknown	undefined	0		0	yes	accepted									
 00a010a0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\CLandscapeBackgroundPatch_vectordeletingdestructor_00a010a0.cpp
 00a01120	std_vector_expand	_global	unknown	undefined	0		0	yes	accepted									
@@ -35613,7 +35613,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a03a50	CHandleBasedMemoryPool::ValidateResource	CHandleBasedMemoryPool	__thiscall	void	2	CHandleBasedMemoryPool *,void *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\CHandleBasedMemoryPool_ValidateResource_00a03a50.cpp
 00a03aa0	`vector_deleting_destructor'	CThingTrackNode	__thiscall	void *	2	CThingTrackNode *,uint	1	yes	accepted									
 00a03af0	push_back	CArray<CHandleBasedMemoryPool::CHandleInfo>	unknown	undefined	0		0	yes	accepted									
-00a03b30	$E2	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\E2_E2_00a03b30.cpp
+00a03b30	~CInputEvent	CInputEvent	unknown	undefined	0		0	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\E2_E2_00a03b30.cpp
 00a03b40	GetType	CInputEvent	__thiscall	CIDrawEnvironment *	1	CWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\global_DrawGetEnvironment_00a03b40.cpp
 00a03b50	GetDeviceType	CInputEvent	__thiscall	CIDrawEnvironment *	1	CWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\global_DrawGetEnvironment_00a03b50.cpp
 00a03b60	DrawGetEnvironment	CWorld	__thiscall	CIDrawEnvironment *	1	CWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a0\global_DrawGetEnvironment_00a03b60.cpp
@@ -36609,7 +36609,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a36fe0	InterruptAllNavigators	CNavigatorManager	__thiscall	void	1	CNavigatorManager *	1	yes	accepted									
 00a37060	GetClassNumberFromName	CClassFactory	__thiscall	long	2	CClassFactory *,CCharString *	1	yes	accepted									
 00a37130	DeleteAllClasses	CClassFactory	__thiscall	void	1	CClassFactory *	1	yes	accepted									
-00a37160	UnregisterAllocatedClass	CClassFactory	__thiscall	void	2	CClassFactory *,CClass *	1	yes	accepted									
+00a37160	Unregister	CClass	__thiscall	void	2	CClassFactory *,CClass *	1	yes	accepted									
 00a371c0	AllocateClass	CClassFactory	__thiscall	CClass *	2	CClassFactory *,CCharString *	1	yes	accepted									
 00a371f0	CClass_AddAllocation	_global	unknown	undefined	0		0	yes	accepted									
 00a372d0	CClass	CClass	__thiscall	undefined	4	CClass *,CClassFactory *,ulong,bool	0	yes	accepted									
@@ -37634,11 +37634,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a66880	UpdateMaintainedEvents	CKeyboard	__thiscall	void	1	CKeyboard *	1	yes	accepted									
 00a668e0	AddMaintainedEventsToEventStore	CJoystick	__thiscall	void	1	CJoystick *	1	yes	accepted									
 00a66930	CKeyboard	CKeyboard	unknown	undefined	0		0	yes	accepted									
-00a66990	CBase_Destructor_Helper	_global	unknown	undefined	0		0	yes	accepted									
+00a66990	~CKeyboard	CKeyboard	unknown	undefined	0		0	yes	accepted									
 00a669e0	ProcessMaintainedEventsFromEvent	CKeyboard	__thiscall	void	2	CKeyboard *,CInputEvent *	1	yes	accepted									
 00a66ac0	CKeyboard::SetHasInputFocus	CKeyboard	__thiscall	void	2	CKeyboard *,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a6\CKeyboard_SetHasInputFocus_00a66ac0.cpp
 00a66ad0	CKeyboard::GetKeyName	CKeyboard	__thiscall	bool	3	CKeyboard *,EInputKey,CWideString &	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a6\CKeyboard_GetKeyName_00a66ad0.cpp
-00a66ae0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a6\CLandscapeBackgroundPatch_vectordeletingdestructor_00a66ae0.cpp
+00a66ae0	`scalar deleting destructor'	CKeyboard	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a6\CLandscapeBackgroundPatch_vectordeletingdestructor_00a66ae0.cpp
 00a66b00	EventScanEnd	CInputManager	__thiscall	void	2	CInputManager *,CInputEventScanInfo *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a6\CInputManager_EventScanEnd_00a66b00.cpp
 00a66b10	Clear	CGameEventPackage	__thiscall	void	1	CGameEventPackage *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a6\Clear_Clear_00a66b10.cpp
 00a66b20	AddEventToStore	CMouse	__thiscall	bool	2	CJoystick *,CInputEvent *	1	yes	accepted									
@@ -37652,7 +37652,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a66f80	~CMouse	CMouse	unknown	undefined	0		0	yes	accepted									
 00a66fd0	ProcessMaintainedEventsFromEvent	CMouse	__thiscall	void	2	CMouse *,CInputEvent *	1	yes	accepted									
 00a673a0	CMouse::SetHasInputFocus	CMouse	__thiscall	void	2	CMouse *,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a6\CMouse_SetHasInputFocus_00a673a0.cpp
-00a673b0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a6\CLandscapeBackgroundPatch_vectordeletingdestructor_00a673b0.cpp
+00a673b0	`scalar deleting destructor'	CMouse	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a6\CLandscapeBackgroundPatch_vectordeletingdestructor_00a673b0.cpp
 00a673e0	CVolumeTexture	CVolumeTexture	__thiscall	undefined	2	CVolumeTexture *,CVolumeTexture *	0	yes	accepted									
 00a67410	DoUnlock	CVertexBufferWin32	__thiscall	void	1	CVertexBufferWin32 *	1	yes	accepted									
 00a67420	ReleaseVolume	CVolume	__thiscall	void	1	CVolume *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a6\CVolume_ReleaseVolume_00a67420.cpp

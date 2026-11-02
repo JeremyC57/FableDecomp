@@ -1,0 +1,35 @@
+addr       parity           behav  name
+005567b0   RELOCATION_MATCH PASS   ClearList
+008c3e90   RELOCATION_MATCH PASS   Initialise
+008d6690   RELOCATION_MATCH PASS   OnActivate
+008e63b0   RELOCATION_MATCH PASS   FinishAction
+009feb80   RELOCATION_MATCH PASS   CloseGraphics
+009fece0   RELOCATION_MATCH PASS   Close
+00a47180   RELOCATION_MATCH PASS   ~CNavigatorBase
+00a66990   RELOCATION_MATCH PASS   ~CKeyboard
+00a66f80   RELOCATION_MATCH PASS   ~CMouse
+00be2b20   RELOCATION_MATCH PASS   ~CEngineLandscapeMeshBuilder
+
+WINS: 10
+  005567b0 RELOCATION_MATCH NUISystem::CRedefinerList::?ClearList@CRedefinerList@NUISystem@@IAEXXZ
+  008c3e90 RELOCATION_MATCH CCreatureAction_ScorpionTailPlunge::?Initialise@CCreatureAction_ScorpionTailPlunge@@UAEXXZ
+  008d6690 RELOCATION_MATCH NCreatureMode::CModeCreatureIsProjectile::?OnActivate@CModeCreatureIsProjectile@NCreatureMode@@UAEXXZ
+  008e63b0 RELOCATION_MATCH CCreatureAction_CastStrengthMultiStrikeProper::?FinishAction@CCreatureAction_CastStrengthMultiStrikeProper@@UAEXXZ
+  009feb80 RELOCATION_MATCH CGraphicDataBank::?CloseGraphics@CGraphicDataBank@@AAEXXZ
+  009fece0 RELOCATION_MATCH CGraphicDataBank::?Close@CGraphicDataBank@@UAEXXZ
+  00a47180 RELOCATION_MATCH CNavigatorBase::??1CNavigatorBase@@UAE@XZ
+  00a66990 RELOCATION_MATCH CKeyboard::??1CKeyboard@@UAE@XZ
+  00a66f80 RELOCATION_MATCH CMouse::??1CMouse@@UAE@XZ
+  00be2b20 RELOCATION_MATCH CEngineLandscapeMeshBuilder::??1CEngineLandscapeMeshBuilder@@UAE@XZ
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  NUISystemCRedefinerList_ClearList_005567b0
+  CCreatureActionScorpionTailPlunge_Initialise_008c3e90
+  NCreatureModeCModeCreatureIsProjectile_OnActivate_008d6690
+  CCreatureActionCastStrengthMultiStrikeProper_FinishAction_008e63b0
+  CGraphicDataBank_CloseGraphics_009feb80
+  CGraphicDataBank_Close_009fece0
+  CNavigatorBase_CNavigatorBase_00a47180
+  CKeyboard_CKeyboard_00a66990
+  CMouse_CMouse_00a66f80
+  CEngineLandscapeMeshBuilder_CEngineLandscapeMeshBuilder_00be2b20

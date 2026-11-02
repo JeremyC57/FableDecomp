@@ -1,0 +1,3 @@
+1	same TU as 009fece0_p1 (leaf ?CloseGraphics@CGraphicDataBank@@AAEXXZ): the out-of-line copy of the private member	RELOCATION_MATCH 61v61
+2	CGraphicInfo with the Ego_r members	RELOCATION_MATCH 61v61
+3	= src: CArray<T> : std::vector<T>, bank hierarchy as 009fece0	RELOCATION_MATCH 61v61

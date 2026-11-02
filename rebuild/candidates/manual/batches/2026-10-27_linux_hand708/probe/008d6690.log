@@ -1,0 +1,3 @@
+1	StartThrow = ParentThing->GetPos(); PCreature->SuspendAI(true); PCreature->GetPhysicsTC()->EnableNavigator(false); CModeStandBase::OnActivate()	DIFFER 72v70 (PCreature reloaded from this for the second call instead of held in edi)
+2	named `CThingAICreature* creature = static_cast<CThingAICreature*>(PCreature)` local for both calls	RELOCATION_MATCH 70v70
+3	= src: engine/CTCBase.h (FABLE_RETAIL_CTCBASE) with CTCPhysicsBase slots 28-40 named; CModeBase slots 0-6 named	RELOCATION_MATCH 70v70

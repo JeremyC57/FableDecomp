@@ -1,0 +1,3 @@
+1	shared TU: private CloseGraphics() { GraphicList.clear(); GraphicFrameBuffer.clear(); CBankFile::Close(); } defined above Close() { CloseGraphics(); CBankFileAsync::Close(); }; opaque CGraphicInfo (0x2c bytes)	RELOCATION_MATCH 68v68
+2	CGraphicInfo with the Ego_r members (Header 0x1c, TextureType, Bank, Index, Frames), CGraphicInfoFrame : CBaseClass 0x10	RELOCATION_MATCH 68v68
+3	= src: CArray<T> : std::vector<T> (Lionhead wrapper, STLport vector), bank hierarchy CBankFile : CBaseClassNonCopyable / CBankFileAsync / CResourceBank	RELOCATION_MATCH 68v68

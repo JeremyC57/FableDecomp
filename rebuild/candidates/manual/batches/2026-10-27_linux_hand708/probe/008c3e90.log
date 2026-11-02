@@ -1,0 +1,3 @@
+1	local CCreatureActionBase / CCombatActionBase polymorphic model, `TotalTime = (long)(PCreature->GetAnimDuration(GetAnimationIndex()) * CMainGameComponent::GetConstantFPS())`, tail PerformAction()	RELOCATION_MATCH 68v68
+2	vtable slots 2-12 named from the PDB virtual list (no placeholders), ConstantFPS / GetConstantFPS PDB spellings	RELOCATION_MATCH 68v68
+3	= src: p2 + engine/CThingCreatureBase.h through the layout-rename include (CThingCreatureBase opaque at the retail size 0x160; clears vland SHARED_HEADER_AVAILABLE)	RELOCATION_MATCH 68v68

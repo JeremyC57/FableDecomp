@@ -375289,6 +375289,76 @@ $catalog = @(
         TestSource = '00/9f/CGraphicFrame_InitialiseAsSurfaceSection_009fcb60_test.cpp'
         PassPattern = '009fcb60_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005567b0'
+        Module = 'NUISystem::CRedefinerList'
+        Source = '00/55/NUISystemCRedefinerList_ClearList_005567b0.cpp'
+        TestSource = '00/55/NUISystemCRedefinerList_ClearList_005567b0_test.cpp'
+        PassPattern = '005567b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c3e90'
+        Module = 'CCreatureAction_ScorpionTailPlunge'
+        Source = '00/8c/CCreatureActionScorpionTailPlunge_Initialise_008c3e90.cpp'
+        TestSource = '00/8c/CCreatureActionScorpionTailPlunge_Initialise_008c3e90_test.cpp'
+        PassPattern = '008c3e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d6690'
+        Module = 'NCreatureMode::CModeCreatureIsProjectile'
+        Source = '00/8d/NCreatureModeCModeCreatureIsProjectile_OnActivate_008d6690.cpp'
+        TestSource = '00/8d/NCreatureModeCModeCreatureIsProjectile_OnActivate_008d6690_test.cpp'
+        PassPattern = '008d6690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e63b0'
+        Module = 'CCreatureAction_CastStrengthMultiStrikeProper'
+        Source = '00/8e/CCreatureActionCastStrengthMultiStrikeProper_FinishAction_008e63b0.cpp'
+        TestSource = '00/8e/CCreatureActionCastStrengthMultiStrikeProper_FinishAction_008e63b0_test.cpp'
+        PassPattern = '008e63b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009feb80'
+        Module = 'CGraphicDataBank'
+        Source = '00/9f/CGraphicDataBank_CloseGraphics_009feb80.cpp'
+        TestSource = '00/9f/CGraphicDataBank_CloseGraphics_009feb80_test.cpp'
+        PassPattern = '009feb80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009fece0'
+        Module = 'CGraphicDataBank'
+        Source = '00/9f/CGraphicDataBank_Close_009fece0.cpp'
+        TestSource = '00/9f/CGraphicDataBank_Close_009fece0_test.cpp'
+        PassPattern = '009fece0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a47180'
+        Module = 'CNavigatorBase'
+        Source = '00/a4/CNavigatorBase_CNavigatorBase_00a47180.cpp'
+        TestSource = '00/a4/CNavigatorBase_CNavigatorBase_00a47180_test.cpp'
+        PassPattern = '00a47180_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a66990'
+        Module = 'CKeyboard'
+        Source = '00/a6/CKeyboard_CKeyboard_00a66990.cpp'
+        TestSource = '00/a6/CKeyboard_CKeyboard_00a66990_test.cpp'
+        PassPattern = '00a66990_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a66f80'
+        Module = 'CMouse'
+        Source = '00/a6/CMouse_CMouse_00a66f80.cpp'
+        TestSource = '00/a6/CMouse_CMouse_00a66f80_test.cpp'
+        PassPattern = '00a66f80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be2b20'
+        Module = 'CEngineLandscapeMeshBuilder'
+        Source = '00/be/CEngineLandscapeMeshBuilder_CEngineLandscapeMeshBuilder_00be2b20.cpp'
+        TestSource = '00/be/CEngineLandscapeMeshBuilder_CEngineLandscapeMeshBuilder_00be2b20_test.cpp'
+        PassPattern = '00be2b20_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

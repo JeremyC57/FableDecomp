@@ -1,0 +1,3 @@
+1	local CMouse : CBaseClassNonCopyable model (CInputEvent EventStore[256], counts, STLport list<CMaintainedEvent>, InputManager), user dtor with an empty body	RELOCATION_MATCH 73v73
+2	= src: engine/CMouse.h retail opt-in branch (FABLE_RETAIL_CMOUSE, hdr/ overlay: full vtable, Ego_r methods, members), `CMouse::~CMouse() { }`	RELOCATION_MATCH 73v73
+check	src without FABLE_HDR_OVERLAY (repo header has no user dtor declared)	SRC_FAIL C2600 (the overlay is the header in use)

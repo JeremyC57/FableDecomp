@@ -1,0 +1,4 @@
+1	Unregister(*NavigationManager); delete SteeringAgent; delete PInterface; SteeringAgent = 0; PInterface = 0; (local CNavigatorBase model)	RELOCATION_MATCH 79v79
+2	pointer cleared right after each delete (delete SteeringAgent; SteeringAgent = 0; delete PInterface; PInterface = 0;)	DIFFER 79v79 (the first null store moves between the two deletes)
+3	= src: p1 order with engine/CNavigatorBase.h retail opt-in (FABLE_RETAIL_CNAVIGATORBASE, FABLE_RETAIL_CCLASS) overlay	RELOCATION_MATCH 79v79
+check	src without FABLE_HDR_OVERLAY	SRC_FAIL C2433 (overlay in use)

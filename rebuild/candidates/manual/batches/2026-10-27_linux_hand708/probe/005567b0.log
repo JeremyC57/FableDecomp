@@ -1,0 +1,3 @@
+1	single-chain CComponent model (placeholder slots v00..v63, RemoveChild slot 64, Children STLport vector at +0xB0), `for (i=0; i<size(); ) if (!Children[i].IsNull()) RemoveChild(i); else ++i;` + static __fastcall CKeyRedefiner::ResetButtonCounts	RELOCATION_MATCH 84v84
+2	CComponent with the retail RTTI MI bases CUIInterface @0, CObserver @4 (0x14: vptr + STLport set + bool), CActionParam @0x18; members from +0x20 in Ego_r order	RELOCATION_MATCH 84v84
+3	= src: p2 + engine/CObserver.h through the layout-rename include, NUISystem::CObserver with the landed virtual list (CObservable::SetEvent 0x0055CB10) and a size assert against CObserverFields (clears vland SHARED_HEADER_AVAILABLE)	RELOCATION_MATCH 84v84

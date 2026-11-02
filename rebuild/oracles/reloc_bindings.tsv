@@ -2312,7 +2312,7 @@ _FableHelp_515700@4	0042b467	00515700
 ?g_obj@@3PAUObj@@A	013b8ac4	00556540
 ?HideList@CScrollableList@NUISystem@@QAEXM@Z	005559d0	00556580
 ?UpdateUndefinedWarning@CRedefinerList@@QAEXM@Z	00556810	00556980
-?ClearList@CRedefinerList@NUISystem@@QAEXXZ	005567b0	00557000
+?ClearList@CRedefinerList@NUISystem@@IAEXXZ	005567b0	00557000
 ?GetAssignedInputsPassive@CUserProfileManager@@QAEABUCActionInputVector@@XZ	004088e0	00557000
 ?RefreshScriptThings@CRedefinerList@NUISystem@@QAEXABUCActionInputVector@@@Z	00556a40	00557000
 ?UpdateUndefinedWarning@CRedefinerList@NUISystem@@QAEXM@Z	00556810	00557000
@@ -35321,3 +35321,7 @@ _z_inflateEnd	00c038d0	00a3acc0
 ?HasPerformedAction@CCreatureActionBase@@QBE_NXZ	006925a0	008b6a90
 ?InitialiseAsSurface@CGraphicFrameData@@QAE_NABV?$CCountedPointer@VCTexture@@@@JJ_N1@Z	009fc950	009fcb20
 ?InitialiseAsSurfaceSection@CGraphicFrameData@@QAE_NABV?$CCountedPointer@VCTexture@@@@MMJJ_N1@Z	009fca40	009fcb60
+?ResetButtonCounts@CKeyRedefiner@NUISystem@@SIXXZ	00557840	005567b0
+?GetAnimDuration@CThingCreatureBase@@QBEMJ@Z	006627f0	008c3e90
+?Close@CBankFileAsync@@UAEXXZ	009d58a0	009fece0
+?clear@?$_List_base@VCMaintainedEvent@@V?$allocator@VCMaintainedEvent@@@std@@@std@@QAEXXZ	009e4710	00a66990

@@ -75,8 +75,9 @@ class CScrollableList { public:
     void UpdateVisibleList(float offset, float time);   // 0x00555A90
 };
 
-class CRedefinerList : public CScrollableList { public:
-    void ClearList();                              // 0x005567B0
+class CRedefinerList : public CScrollableList { protected:
+    void ClearList();                              // 0x005567B0 ?ClearList@CRedefinerList@NUISystem@@IAEXXZ (protected, both PDBs; respelled at the chunk 708 landing)
+public:
     void RefreshScriptThings(const CActionInputVector& inputs);   // 0x00556A40
     void UpdateUndefinedWarning(float time);       // 0x00556810
     void Refresh();
