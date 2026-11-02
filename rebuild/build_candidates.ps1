@@ -375571,6 +375571,70 @@ $catalog = @(
         TestSource = '01/22/global_E2_0122a940_test.cpp'
         PassPattern = '0122a940_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0049d8c0'
+        Module = 'CWorld'
+        Source = '00/49/CWorld_EventIsWorldEvent_0049d8c0.cpp'
+        TestSource = '00/49/CWorld_EventIsWorldEvent_0049d8c0_test.cpp'
+        PassPattern = '0049d8c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0049e270'
+        Module = 'CWorld'
+        Source = '00/49/CWorld_Unload_0049e270.cpp'
+        TestSource = '00/49/CWorld_Unload_0049e270_test.cpp'
+        PassPattern = '0049e270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0071cd30'
+        Module = 'CTCHeroMorph'
+        Source = '00/71/CTCHeroMorph_FrameUpdate_0071cd30.cpp'
+        TestSource = '00/71/CTCHeroMorph_FrameUpdate_0071cd30_test.cpp'
+        PassPattern = '0071cd30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0072d390'
+        Module = 'CCreatureAction_SheatheItemToInventory_ForEnflame'
+        Source = '00/72/CCreatureActionSheatheItemToInventoryForEnflame_CCreatureActionSheatheItemToInventoryForEnflame_0072d390.cpp'
+        TestSource = '00/72/CCreatureActionSheatheItemToInventoryForEnflame_CCreatureActionSheatheItemToInventoryForEnflame_0072d390_test.cpp'
+        PassPattern = '0072d390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00826380'
+        Module = 'CCachedFile'
+        Source = '00/82/CCachedFile_CCachedFile_00826380.cpp'
+        TestSource = '00/82/CCachedFile_CCachedFile_00826380_test.cpp'
+        PassPattern = '00826380_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00873db0'
+        Module = 'NCameraModes::CPCMouseLook'
+        Source = '00/87/NCameraModesCPCMouseLook_OnCameraInsideObservedThing_00873db0.cpp'
+        TestSource = '00/87/NCameraModesCPCMouseLook_OnCameraInsideObservedThing_00873db0_test.cpp'
+        PassPattern = '00873db0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00953470'
+        Module = 'CCreatureAction_DragonTakeOffIntoFlying'
+        Source = '00/95/CCreatureActionDragonTakeOffIntoFlying_CCreatureActionDragonTakeOffIntoFlying_00953470.cpp'
+        TestSource = '00/95/CCreatureActionDragonTakeOffIntoFlying_CCreatureActionDragonTakeOffIntoFlying_00953470_test.cpp'
+        PassPattern = '00953470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009cae60'
+        Module = 'NGameText::CGroupEntry'
+        Source = '00/9c/NGameTextCGroupEntry_CGroupEntry_009cae60.cpp'
+        TestSource = '00/9c/NGameTextCGroupEntry_CGroupEntry_009cae60_test.cpp'
+        PassPattern = '009cae60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009eea50'
+        Module = 'std::pair'
+        Source = '00/9e/stdpair_pair_009eea50.cpp'
+        TestSource = '00/9e/stdpair_pair_009eea50_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '009eea50_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

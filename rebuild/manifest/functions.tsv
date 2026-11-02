@@ -18681,7 +18681,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0071c790	OnInitialActivate	CTCHeroMorph	__thiscall	void	1	CTCHeroMorph *	1	yes	accepted									
 0071c7c0	AddParticles	CTCHeroMorph	__thiscall	void	3	CTCHeroMorph *,EHeroMorphType,float	1	yes	accepted									
 0071c9f0	UpdateIdleParticles	CTCHeroMorph	__thiscall	void	1	CTCHeroMorph *	1	yes	accepted									
-0071cd30	CTCHeroMorph::vfunc_9	CTCHeroMorph	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0071cd30	FrameUpdate	CTCHeroMorph	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0071cd90	Copy	CTCHeroMorph	__thiscall	void	2	CTCHeroMorph *,CTCBase *	1	yes	accepted									
 0071ce80	GetTattooNames	CTCHeroMorph	__thiscall	void	2	CTCHeroMorph *,vector<CWideString,std::allocator<CWideString>_> *	1	yes	accepted									
 0071cf70	AddMorph	_global	__fastcall	void	4	CSkeletalMorphs *,EHeroMorphType,float,vector<std::pair<CSkeletalMorphs::CEntry,float>,std::allocator<std::pair<CSkeletalMorphs::CEntry,float>_>_> *	1	yes	accepted									
@@ -19057,7 +19057,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0072cf40	UseSpecialAbility	CTCSpecialAbilities	__thiscall	bool	2	CTCSpecialAbilities *,EHeroAbility	1	yes	accepted									
 0072d330	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\72\CLandscapeBackgroundPatch_vectordeletingdestructor_0072d330.cpp
 0072d360	GetItemDescription	CTCInventoryBase	__thiscall	void	4	CTCInventoryBase *,CWideString *,long,bool	1	yes	accepted									
-0072d390	_Dest_val<std::allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>,std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>	_Dest_val<std::allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>,std	__fastcall	void	2	allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_> *,pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_> *	1	yes	accepted									
+0072d390	~CCreatureAction_SheatheItemToInventory_ForEnflame	CCreatureAction_SheatheItemToInventory_ForEnflame	__fastcall	void	2	allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_> *,pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_> *	1	yes	accepted									
 0072d3e0	~CCreatureAction_SheatheItemToInventory_ForDivineWrath	CCreatureAction_SheatheItemToInventory_ForDivineWrath	__fastcall	void	2	allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_> *,pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_> *	1	yes	accepted									
 0072d430	~CCreatureAction_SheatheItemToInventory_ForUnholyPower	CCreatureAction_SheatheItemToInventory_ForUnholyPower	__fastcall	void	2	allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_> *,pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_> *	1	yes	accepted									
 0072d480	ListHead_InitCircular_0x1c_0072d480	_global	unknown	undefined	0		0	yes	review-medium									
@@ -24400,7 +24400,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00826180	__unguarded_partition<std::pair<long, CCountedPointer<CContainmentVolume>> *, std::pair<long, CCountedPointer<CContainmentVolume>>, CKeyPairCompareLess<long, CCountedPointer<CContainmentVolume>>>	std	unknown	undefined	0		0	yes	accepted									
 00826200	__pop_heap<std::pair<long, CCountedPointer<CContainmentVolume>> *, std::pair<long, CCountedPointer<CContainmentVolume>>, CKeyPairCompareLess<long, CCountedPointer<CContainmentVolume>>, int>	std	__fastcall	void	6	pair<CCharString,CCountedPointer<CEntityScriptBindingBase>_> *,pair<CCharString,CCountedPointer<CEntityScriptBindingBase>_> *,pair<CCharString,CCountedPointer<CEntityScriptBindingBase>_> *,pair<class_CCharString,class_CCountedPointer<class_CEntityScriptBindingBase>_> *,CCompareString<CCountedPointer<CEntityScriptBindingBase>_>,int *	1	yes	accepted									
 008262b0	__make_heap<std::pair<long, CCountedPointer<CContainmentVolume>> *, CKeyPairCompareLess<long, CCountedPointer<CContainmentVolume>>, std::pair<long, CCountedPointer<CContainmentVolume>>, int>	std	unknown	undefined	0		0	yes	accepted									
-00826380	~CChunkedFile	CChunkedFile	__thiscall	void	1	CChunkedFile *	1	yes	accepted									
+00826380	~CCachedFile	CCachedFile	__thiscall	void	1	CChunkedFile *	1	yes	accepted									
 008263e0	CCachedFile::GetPosition	CCachedFile	__thiscall	long	1	CCachedFile *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\82\CCachedFile_GetPosition_008263e0.cpp
 008263f0	CCachedFile::IsOpen	CCachedFile	__thiscall	bool	1	CCachedFile *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\82\CCachedFile_IsOpen_008263f0.cpp
 00826400	?GetPathname@CCachedFile@@UBE?AVCWideString@@XZ	CCachedFile	__thiscall	CCharString	1	CBankFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\82\CCachedFile_GetPathnameCCachedFileUBEAVCWideStringXZ_00826400.cpp
@@ -25222,7 +25222,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0084d8b0	GetObservedThingCurrentMeshHeight	CBase	__thiscall	float	1	CBase *	1	yes	accepted									
 0084d910	UpdateCameraStretchAroundHero	CBase	__thiscall	void	3	CBase *,C3DVector *,C3DVector *	1	yes	accepted									
 0084db30	UpdateCameraOcclusion	CBase	__thiscall	void	2	CBase *,C3DVector *	1	yes	accepted									
-0084dc10	FrameUpdate	CBase	__thiscall	void	1	CBase *	1	yes	accepted									
+0084dc10	FrameUpdate	NCameraModes::CBase	__thiscall	void	1	CBase *	1	yes	accepted									
 0084dfe0	OnDie	CFirstPerson	__thiscall	void	1	CFirstPerson *	1	yes	accepted									
 0084e110	Init	NCameraModes::CBase	__thiscall	void	1	CBase *	1	yes	accepted									
 0084e1a0	AddAttractorGoTo	NCameraModes::CBase	unknown	undefined	0		0	yes	accepted									
@@ -26074,7 +26074,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00873b60	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\87\CLandscapeBackgroundPatch_vectordeletingdestructor_00873b60.cpp
 00873bb0	NCameraModes::CPCMouseLook::vfunc_22	NCameraModes::CPCMouseLook	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00873bc0	Recentre	CPCMouseLook	__thiscall	void	1	CPCMouseLook *	1	yes	accepted									
-00873db0	NCameraModes::CPCMouseLook::vfunc_3	NCameraModes::CPCMouseLook	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00873db0	OnCameraInsideObservedThing	NCameraModes::CPCMouseLook	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00873e10	NCameraModes::CPCMouseLook::vfunc_1	NCameraModes::CPCMouseLook	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00874770	NCameraModes::CPCMouseLook::CPCMouseLookInit::vfunc_0	NCameraModes::CPCMouseLook::CPCMouseLookInit	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00874790	OnInit	CPCMouseLook	__thiscall	void	1	CPCMouseLook *	1	yes	accepted									
@@ -32136,7 +32136,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009533d0	CCreatureAction_DragonLand::IsMovementUsingPhysics	CCreatureAction_DragonLand	__thiscall	bool	1	CCreatureAction_DragonLand *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\95\CCreatureActionDragonLand_IsMovementUsingPhysics_009533d0.cpp
 009533e0	CCreatureAction_DragonTakeOffIntoFlying	CCreatureAction_DragonTakeOffIntoFlying	__thiscall	undefined	3	CCreatureAction_DragonTakeOffIntoFlying *,CThingCreatureBase *,vector<C3DVector,std::allocator<C3DVector>_> *	0	yes	accepted									
 00953460	CCreatureAction_DragonTakeOffIntoFlying::IsMovementUsingPhysics	CCreatureAction_DragonTakeOffIntoFlying	__thiscall	bool	1	CCreatureAction_DragonTakeOffIntoFlying *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\95\CCreatureActionDragonTakeOffIntoFlying_IsMovementUsingPhysics_00953460.cpp
-00953470	_Dest_val<std::allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>,std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>	_Dest_val<std::allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>,std	__fastcall	void	2	allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_> *,pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_> *	1	yes	accepted									
+00953470	~CCreatureAction_DragonTakeOffIntoFlying	CCreatureAction_DragonTakeOffIntoFlying	__fastcall	void	2	allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_> *,pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_> *	1	yes	accepted									
 009534d0	CCreatureAction_DragonHoverInto	CCreatureAction_DragonHoverInto	__thiscall	undefined	2	CCombatAction_Guildmaster_HealFollowersInto *,CThingCreatureBase *	0	yes	accepted									
 00953530	CCreatureAction_DragonHoverOutOf	CCreatureAction_DragonHoverOutOf	__thiscall	undefined	2	CCombatAction_Guildmaster_HealFollowersInto *,CThingCreatureBase *	0	yes	accepted									
 00953590	CCreatureAction_DragonHoverOutOf::IsMovementUsingPhysics	CCreatureAction_DragonHoverOutOf	__thiscall	bool	1	CCreatureAction_DragonHoverOutOf *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\95\CCreatureActionDragonHoverOutOf_IsMovementUsingPhysics_00953590.cpp
@@ -34409,7 +34409,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009cacd0	erase	std::vector<NGameText::CTextTag, std::allocator<NGameText::CTextTag>>	unknown	undefined	0		0	yes	accepted									
 009cad20	_M_insert_overflow	FableVector_009cad20::vector<FableVector_009cad20::pair<int, FableVector_009cad20::CCharString>>	unknown	undefined	0		0	yes	accepted									
 009cae40	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9c\CLandscapeBackgroundPatch_vectordeletingdestructor_009cae40.cpp
-009cae60	_Dest_val<std::allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>,std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>	_Dest_val<std::allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>,std	__fastcall	void	2	allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_> *,pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_> *	1	yes	accepted									
+009cae60	~CGroupEntry	NGameText::CGroupEntry	__fastcall	void	2	allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_> *,pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_> *	1	yes	accepted									
 009caeb0	resize	vector<unsigned_int	__thiscall	void	3	vector<unsigned_int,std::allocator<unsigned_int>_> *,uint,uint	1	yes	accepted									
 009caf60	_M_fill_insert	std::vector<NGameText::CTextTag, std::allocator<NGameText::CTextTag>>	unknown	undefined	0		0	yes	accepted									
 009cb1f0	reserve	std::vector<NGameText::CDataBankTextEntry, std::allocator<NGameText::CDataBankTextEntry>>	unknown	undefined	0		0	yes	accepted									
@@ -35048,8 +35048,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009ee8a0	BinaryTree_RemoveNode	_global	unknown	undefined	0		0	yes	accepted									
 009ee910	operator--	std::_Rb_tree_iterator<std::pair<char const, CCharString>, std::_Nonconst_traits<std::pair<char const, CCharString>>>	unknown	undefined	0		0	yes	accepted									
 009eea10	CConsoleCommandLine	CConsoleCommandLine	__thiscall	undefined	2	CConsoleCommandLine *,CCharString *	0	yes	accepted									
-009eea50	_Dest_val<std::allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>,std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>	_Dest_val<std::allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>,std	__fastcall	void	2	allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_> *,pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_> *	1	yes	accepted									
-009eea90	_Dest_val<std::allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>,std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>	_Dest_val<std::allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>,std	__fastcall	void	2	allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_> *,pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_> *	1	yes	accepted									
+009eea50	~pair	std::pair<CCharString, CCountedPointer<CConsoleInputBase>>	__fastcall	void	2	allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_> *,pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_> *	1	yes	accepted									
+009eea90	~pair	std::pair<CCharString const, CCountedPointer<CConsoleInputBase>>	__fastcall	void	2	allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_> *,pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_> *	1	yes	accepted									
 009eeb00	insert	std::list<CConsoleCommandLine>	unknown	undefined	0		0	yes	accepted									
 009eeb90	StdList_DefaultCtor_9eeb90	_global	unknown	undefined	0		0	yes	accepted									
 009eebb0	OnReadFinished	CActiveFile	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9e\CActiveFile_OnReadFinished_009eebb0.cpp
@@ -35058,7 +35058,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009eec60	Container_AllocAndStorePtr_9eec60	_global	unknown	undefined	0		0	yes	review-low									
 009eecc0	_M_erase	std::_Rb_tree<char, std::pair<char const, CCharString>, std::_Select1st<std::pair<char const, CCharString>>, std::less<char>, std::allocator<std::pair<char const, CCharString>>>	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
 009eed20	_M_find	std::_Rb_tree<CCharString, std::pair<CCharString const, CCountedPointer<CConsoleInputBase>>, std::_Select1st<std::pair<CCharString const, CCountedPointer<CConsoleInputBase>>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, CCountedPointer<CConsoleInputBase>>>>	unknown	undefined	0		0	yes	accepted									
-009eedc0	`vector_deleting_destructor'	C3DMeshFilePartitionChunk	__thiscall	void *	2	C3DMeshFilePartitionChunk *,uint	1	yes	accepted									
+009eedc0	`scalar deleting destructor'	std::pair<CCharString const, CCountedPointer<CConsoleInputBase>>	__thiscall	void *	2	C3DMeshFilePartitionChunk *,uint	1	yes	accepted									
 009eee50	_Cons_val<std::allocator<CMeshBankManager::CMeshDataBankInfo>,CMeshBankManager::CMeshDataBankInfo,CMeshBankManager::CMeshDataBankInfo_const&>	_Cons_val<std::allocator<CMeshBankManager::CMeshDataBankInfo>,CMeshBankManager::CMeshDataBankInfo,CMeshBankManager	__fastcall	void	3	allocator<CMeshBankManager::CMeshDataBankInfo> *,CMeshDataBankInfo *,CMeshDataBankInfo *	1	yes	accepted									
 009eee90	StdList_DefaultCtor_9eee90	_global	unknown	undefined	0		0	yes	accepted									
 009eef20	OnReadFinished	CActiveFile	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9e\CActiveFile_OnReadFinished_009eef20.cpp
@@ -35067,7 +35067,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009eefd0	_Rb_tree	std::_Rb_tree<CUnprovenKey_009eefd0, CUnprovenValue_009eefd0, CUnprovenKeyOfValue_009eefd0, std::less<CUnprovenKey_009eefd0>, std::allocator<CUnprovenValue_009eefd0>>	unknown	undefined	0		0	yes	accepted									
 009ef0d0	_M_insert	std::_Rb_tree<char, std::pair<char const, CCharString>, std::_Select1st<std::pair<char const, CCharString>>, std::less<char>, std::allocator<std::pair<char const, CCharString>>>	unknown	undefined	0		0	yes	accepted									
 009ef1a0	insert_unique	std::_Rb_tree<char, std::pair<char const, CCharString>, std::_Select1st<std::pair<char const, CCharString>>, std::less<char>, std::allocator<std::pair<char const, CCharString>>>	unknown	undefined	0		0	yes	accepted									
-009ef260	_Dest_val<std::allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>,std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>	_Dest_val<std::allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_>,std	__fastcall	void	2	allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_> *,pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_> *	1	yes	accepted									
+009ef260	_Destroy<std::pair<CCharString const, CCountedPointer<CConsoleInputBase>>>	std	__fastcall	void	2	allocator<std::pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_>_> *,pair<CCharString_const_,CCountedPointer<C3DSkeletalMorphTarget>_> *	1	yes	accepted									
 009ef2e0	OnKill	CTCCarryable	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9e\CTCCarryable_OnKill_009ef2e0.cpp
 009ef320	OnKill	CTCCarryable	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9e\CTCCarryable_OnKill_009ef320.cpp
 009ef360	SetMiniMapRegionExitTextOffsetX	CRegion	__thiscall	void	3	CRegion *,CCharString *,float	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9e\CRegion_SetMiniMapRegionExitTextOffsetX_009ef360.cpp

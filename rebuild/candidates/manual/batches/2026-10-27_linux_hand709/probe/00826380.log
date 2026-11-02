@@ -1,0 +1,3 @@
+# 0x00826380 CCachedFile::~CCachedFile -- probe log (probe, lever, grade)
+p1	user dtor `{ Close(); }` on CCachedFile : CAFile (implicit dtor, all slots declared from the vtables) : engine/CBaseClassNonCopyable.h; Ego_r members at retail offsets (CArray<unsigned char> over STLport 4.6 vector +0x0C, CWideString +0x18, CCountedPointer<CAFile> +0x1C)	RELOCATION_MATCH
+final	src/00826380.cpp = p1	RELOCATION_MATCH (gall.sh); Leaf ??1CCachedFile@@UAE@XZ in objdump -t

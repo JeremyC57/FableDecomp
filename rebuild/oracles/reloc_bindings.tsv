@@ -35336,3 +35336,6 @@ _z_inflateEnd	00c038d0	00a3acc0
 ?MakeOwnCopyOfDataOrEmptyString@CCharString@@IAEXXZ	0099eb40	0099f3d0
 ?DecompressionThreadMain@CFileInstaller@@IAEXXZ	009c4230	009c4420
 ?desc@?4??GetSectionDesc@CCodeSectionManager@@AAEAAUCSectionDesc@2@K@Z@4U32@A	013caa54	0122a940
+?UpdateIdleParticles@CTCHeroMorph@@AAEXXZ	0071c9f0	0071cd30
+?Close@CCachedFile@@UAEXXZ	00a5afa0	00826380
+?FrameUpdate@CBase@NCameraModes@@QAEXXZ	0084dc10	00873db0

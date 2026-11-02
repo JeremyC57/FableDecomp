@@ -86,6 +86,9 @@ class CThingManager;
 class CWorld;
 class CWorldMap;
 
+#ifdef FABLE_RETAIL_PLAYER
+class CThingPlayerCreature;                                     // chunk 709: GetPControlledCreature's return type
+#endif
 #pragma pack(push, 1)
 class CPlayer {
 public:
@@ -94,6 +97,11 @@ public:
     // list ?IsFirstPersonTargeting@CPlayer@@QBE_NXZ; retail 0x004874D0 (called from CTCTargetingPlayer::GetPTargetedThing
     // 0x00802610 on CThing::PeekPlayer's const CPlayer&).
     bool IsFirstPersonTargeting() const;                         // 0x004874D0
+    // Retail opt-in (chunk 709): ?ResetModes@CPlayer@@QAEXXZ (Ego_r 0x005579A0, FableWin 0x01F5AA20; retail 0x00634870, the
+    // only binding in reloc_bindings) and ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ (Ego_r 0x00493650,
+    // FableWin 0x01ACDE00; retail 0x00487DC0, 65 landed binders), both called by CWorld::Unload 0x0049E270.
+    void ResetModes();                                           // 0x00634870
+    CThingPlayerCreature* GetPControlledCreature() const;        // 0x00487DC0
 #endif // FABLE_RETAIL_PLAYER
     void*                                                        __vftable; // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                                                _pad_0x04[0x4]; // +0x04

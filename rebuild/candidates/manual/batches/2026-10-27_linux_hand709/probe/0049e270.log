@@ -1,0 +1,5 @@
+# 0x0049E270 CWorld::Unload -- probe log (probe, lever, grade)
+p1	FABLE_RETAIL_CWORLD (virtual GetThingManager slot 3) + FABLE_RETAIL_PLAYER (ResetModes / GetPControlledCreature) overlays, CPlayer& local, IS_THING_ALIVE(raw pointer local), CThing model with Dead bit only	RELOCATION_MATCH
+final	src/0049e270.cpp: p1 with the full retail CThing member layout (sizeof 0x98) and the creature chain's opaque storage (CThingPlayerCreature 0x208)	RELOCATION_MATCH (gall.sh); Leaf ?Unload@CWorld@@QAEXXZ in objdump -t
+p2	overlay off (FABLE_HDR_OVERLAY unset): proves hdr/engine/CWorld.h + hdr/engine/CPlayer.h are the copies used	SRC_FAIL (C2039 Unload not a member of CWorld; PlayerManager undeclared)
+recheck	landed includers graded read-only with the overlay (copies in probe/recheck_*.cpp): 00802610 (FABLE_RETAIL_PLAYER user), CWorld.h default-path samples 0041649c 0062b7c0 008a7f60 00972490	all RELOCATION_MATCH

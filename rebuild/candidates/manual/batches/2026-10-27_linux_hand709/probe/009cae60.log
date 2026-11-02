@@ -1,0 +1,3 @@
+# 0x009CAE60 NGameText::CGroupEntry::~CGroupEntry -- probe log (probe, lever, grade)
+p1	implicit dtor on engine/CResource.h (FABLE_RETAIL_DEF_CLASS_BASE) + Ego_r members at retail offsets (CArray<long> over STLport 4.6 vector +0x1C, CCountedPointer<CBankFileAsyncData> +0x28, Owner +0x30), emission by an explicit by-name destruction	RELOCATION_MATCH
+final	src/009cae60.cpp = p1	RELOCATION_MATCH (gall.sh); Leaf ??1CGroupEntry@NGameText@@UAE@XZ in objdump -t

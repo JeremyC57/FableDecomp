@@ -1,0 +1,11 @@
+# 0x0049D8C0 CWorld::EventIsWorldEvent -- probe log (probe, lever, grade)
+p1	FABLE_RETAIL_CWORLD overlay, CGameEventDispatch defined after the complete CWorld (8-byte member pointers), single-expression `!= 0`	DIFFER(42v23) -- 48-byte stride, PMF copy
+p2	CGameEventDispatch declared before CWorld.h (CWorld incomplete: 16-byte unspecified-inheritance PMF), single expression `!= 0`	DIFFER(52v23) -- stride right, 16-byte PMF copied to a frame temp
+p3	`if (entry->ActionFunction) return true; return false;` single expression	DIFFER(52v23)
+p4	`?: true : false` single expression	DIFFER(52v23)
+p5	named local `const CGameEventDispatch* dispatch = GetEventDispatchTableEntry(..); return dispatch->ActionFunction != NULL;` (GetEventDispatchTableEntry defined after, as retail)	RELOCATION_MATCH
+p6	named local, `!= 0`	RELOCATION_MATCH (NULL vs 0 irrelevant: the named local is the lever)
+p7	single expression `!= NULL`	DIFFER(52v23)
+p8	named local, `? true : false`	RELOCATION_MATCH
+p9	p5 without FABLE_HDR_OVERLAY	SRC_FAIL C2039 (proves the hdr/ overlay copy is the one used)
+final	src/0049d8c0.cpp = p5 + comments (gall.sh)	RELOCATION_MATCH; Leaf ?EventIsWorldEvent@CWorld@@QBE_NPBVCGameEvent@@@Z present in objdump -t

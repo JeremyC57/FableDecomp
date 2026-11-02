@@ -1,0 +1,3 @@
+# 0x0072D390 ~CCreatureAction_SheatheItemToInventory_ForEnflame -- probe log (probe, lever, grade)
+p1	landed byte-twin 0x0072D3E0 model (implicit dtor, CCountedPointer<CCreatureActionBase> PFollowUpAction +0xA8 on a 0xA8 base) respelled to the ForEnflame class (vtable 0x0125C95C, ctor 0x0069F060), harness = SetupEnflameSpell's by-name destruction	RELOCATION_MATCH
+final	src/0072d390.cpp = p1 (base members opaque, sizeof 0xB0 asserted)	RELOCATION_MATCH (gall.sh); Leaf ??1CCreatureAction_SheatheItemToInventory_ForEnflame@@UAE@XZ in objdump -t

@@ -1,0 +1,6 @@
+# 0x00873DB0 NCameraModes::CPCMouseLook::OnCameraInsideObservedThing -- probe log (probe, lever, grade)
+p1	`StateCurrent = StateLast; MouseInputs.clear(); FrameUpdate();` over a local CBase (retail 0xA4, Ego_r members at retail offsets) and the STLport 4.6 list<C2DVector> with _list.c's _List_base::clear body (inlined by VC7.1)	RELOCATION_MATCH
+p2	p1 with the STLport _STLP_alloc_proxy<_Node*, ...> member type, `this->` qualified as _list.c, EMode return type, no proxy deallocate forwarder	RELOCATION_MATCH
+final	src/00873db0.cpp = p2	RELOCATION_MATCH (gall.sh); Leaf ?OnCameraInsideObservedThing@CPCMouseLook@NCameraModes@@UAEXXZ in objdump -t
+p3	same source without #pragma pack(push,1) on the C3DVector / CBaseIntelligentPointer restatements (brief: no new #pragma pack; layout is natural-aligned either way)	RELOCATION_MATCH
+final2	src/00873db0.cpp = p3 (no #pragma pack)	RELOCATION_MATCH (gall.sh)

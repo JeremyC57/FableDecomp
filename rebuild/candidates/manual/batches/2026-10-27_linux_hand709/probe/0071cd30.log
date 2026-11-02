@@ -1,0 +1,5 @@
+# 0x0071CD30 CTCHeroMorph::FrameUpdate -- probe log (probe, lever, grade)
+p1	STLport 4.6 list<CIntelligentPointer<CThing> > iterator loop with the inline erase (unlink, _Destroy, deallocate) when it->Get() == 0, else ++it; UpdateIdleParticles(); DoMorphUpdate() (protected virtual slot 28) over engine/CTCBase.h FABLE_RETAIL_CTCBASE	RELOCATION_MATCH
+final	src/0071cd30.cpp = p1 + the full ctor-proven member layout (sizeof 0x64)	RELOCATION_MATCH (gall.sh); Leaf ?FrameUpdate@CTCHeroMorph@@UAEXXZ in objdump -t
+p2	same source without #pragma pack(push,1) on the C3DVector / CBaseIntelligentPointer restatements (brief: no new #pragma pack; layout is natural-aligned either way)	RELOCATION_MATCH
+final2	src/0071cd30.cpp = p2 (no #pragma pack)	RELOCATION_MATCH (gall.sh)

@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+0x0049D8C0	RELOCATION_MATCH	23v23	PASS	?EventIsWorldEvent@CWorld@@QBE_NPBVCGameEvent@@@Z; 9 probes (+overlay-off proof); hdr/engine/CWorld.h FABLE_RETAIL_CWORLD
+0x0049E270	RELOCATION_MATCH	66v66	PASS	?Unload@CWorld@@QAEXXZ; 1 probe + overlay-off proof; CWorld + CPlayer overlay opt-ins
+0x0071CD30	RELOCATION_MATCH	87v87	PASS	?FrameUpdate@CTCHeroMorph@@UAEXXZ (catalog vfunc_9); 2 probes
+0x0072D390	RELOCATION_MATCH	75v75	PASS	??1CCreatureAction_SheatheItemToInventory_ForEnflame@@UAE@XZ (catalog _Dest_val); 1 probe
+0x00826380	RELOCATION_MATCH	95v95	PASS	??1CCachedFile@@UAE@XZ (catalog CChunkedFile); 1 probe
+0x00873DB0	RELOCATION_MATCH	86v86	PASS	?OnCameraInsideObservedThing@CPCMouseLook@NCameraModes@@UAEXXZ (catalog vfunc_3); 3 probes
+0x00953470	RELOCATION_MATCH	94v94	PASS	??1CCreatureAction_DragonTakeOffIntoFlying@@UAE@XZ (catalog _Dest_val); 4 probes
+0x009CAE60	RELOCATION_MATCH	76v76	PASS	??1CGroupEntry@NGameText@@UAE@XZ (catalog _Dest_val); 1 probe
+0x009EEA50	RELOCATION_MATCH	60v60	PASS	??1?$pair@VCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@QAE@XZ, /Gr (catalog _Dest_val); identity experiment + 1 probe
+0x00BFEF20	SKIP	24	-	mid-function fragment: the __finally block of `eh vector destructor iterator' ??_M@YGXPAXIHP6EX0@Z@Z 0x00BFEED8 (96 bytes, already landed, covers 0xBFEF20..0xBFEF37); catalog "CFrameData::ReleaseTexture" is not a function

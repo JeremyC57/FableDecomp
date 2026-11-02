@@ -1,0 +1,34 @@
+addr       parity           behav  name
+0049d8c0   RELOCATION_MATCH PASS   EventIsWorldEvent
+0049e270   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0049e270   RELOCATION_MATCH PASS   Unload
+0071cd30   RELOCATION_MATCH PASS   FrameUpdate
+0072d390   RELOCATION_MATCH PASS   ~CCreatureAction_SheatheItemToInventory_ForEnflame
+00826380   RELOCATION_MATCH PASS   ~CCachedFile
+00873db0   RELOCATION_MATCH PASS   OnCameraInsideObservedThing
+00953470   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00953470   RELOCATION_MATCH PASS   ~CCreatureAction_DragonTakeOffIntoFlying
+009cae60   RELOCATION_MATCH PASS   ~CGroupEntry
+009eea50   RELOCATION_MATCH PASS   ~pair
+
+WINS: 9
+  0049d8c0 RELOCATION_MATCH CWorld::?EventIsWorldEvent@CWorld@@QBE_NPBVCGameEvent@@@Z
+  0049e270 RELOCATION_MATCH CWorld::?Unload@CWorld@@QAEXXZ
+  0071cd30 RELOCATION_MATCH CTCHeroMorph::?FrameUpdate@CTCHeroMorph@@UAEXXZ
+  0072d390 RELOCATION_MATCH CCreatureAction_SheatheItemToInventory_ForEnflame::??1CCreatureAction_SheatheItemToInventory_ForEnflame@@UAE@XZ
+  00826380 RELOCATION_MATCH CCachedFile::??1CCachedFile@@UAE@XZ
+  00873db0 RELOCATION_MATCH NCameraModes::CPCMouseLook::?OnCameraInsideObservedThing@CPCMouseLook@NCameraModes@@UAEXXZ
+  00953470 RELOCATION_MATCH CCreatureAction_DragonTakeOffIntoFlying::??1CCreatureAction_DragonTakeOffIntoFlying@@UAE@XZ
+  009cae60 RELOCATION_MATCH NGameText::CGroupEntry::??1CGroupEntry@NGameText@@UAE@XZ
+  009eea50 RELOCATION_MATCH std::pair::??1?$pair@VCCharString@@V?$CCountedPointer@VCConsoleInputBase@@@@@std@@QAE@XZ
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  CWorld_EventIsWorldEvent_0049d8c0
+  CWorld_Unload_0049e270
+  CTCHeroMorph_FrameUpdate_0071cd30
+  CCreatureActionSheatheItemToInventoryForEnflame_CCreatureActionSheatheItemToInventoryForEnflame_0072d390
+  CCachedFile_CCachedFile_00826380
+  NCameraModesCPCMouseLook_OnCameraInsideObservedThing_00873db0
+  CCreatureActionDragonTakeOffIntoFlying_CCreatureActionDragonTakeOffIntoFlying_00953470
+  NGameTextCGroupEntry_CGroupEntry_009cae60
+  stdpair_pair_009eea50

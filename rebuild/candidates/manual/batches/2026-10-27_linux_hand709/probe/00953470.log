@@ -1,0 +1,7 @@
+# 0x00953470 ~CCreatureAction_DragonTakeOffIntoFlying -- probe log (probe, lever, grade)
+p1	implicit dtor over CCombatActionBase (retail 0x114, opaque) : CCreatureActionBase (0xA8, opaque); Ego_r members at retail offsets (C3DVector x3, STLport vector<C3DVector> +0x138, bool +0x144, CCountedPointer<CCreatureActionBase> +0x148); explicit by-name dtor helper	SRC_FAIL (C2275: offsetof without <stddef.h>)
+p2	harness = local action destroyed by name (as retail FlyOutOfGround 0x00951B20), still no <stddef.h>	SRC_FAIL (same)
+p3	p2 + #include <stddef.h>	RELOCATION_MATCH
+final	src/00953470.cpp = p3	RELOCATION_MATCH (gall.sh); Leaf ??1CCreatureAction_DragonTakeOffIntoFlying@@UAE@XZ in objdump -t
+p4	same source without #pragma pack(push,1) on the C3DVector / CBaseIntelligentPointer restatements (brief: no new #pragma pack; layout is natural-aligned either way)	RELOCATION_MATCH
+final2	src/00953470.cpp = p4 (no #pragma pack)	RELOCATION_MATCH (gall.sh)
