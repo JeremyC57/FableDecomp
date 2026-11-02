@@ -1,5 +1,5 @@
 // CTCKrakenTentacle::DoDieFX() -- end the ripple effect, look up the "ON_DIE" special effect of the tentacle's def, create that particle emitter at the tentacle as the new ripple effect and, if it lives, attach it to the tentacle's "EFFECT_WATER" bone
-// Leaf: DoDieFX
+// Leaf: ?DoDieFX@CTCKrakenTentacle@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F0B10, 340 bytes, plain `ret`. Speed TU (esp frame, no pragma).
 //   Ego_r.pdb: `?DoDieFX@CTCKrakenTentacle@@QAEXXZ`.
 // Label correction: the catalog row "CTCKraken::CreateHeadEffect" (`AAEXABVCCharString@@@Z`) is wrong: that is
@@ -164,8 +164,9 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
 class CTCKrakenTentacle : public CTCBase { public:
     unsigned char _pad0c[0x20 - 0x0c];
     CIntelligentPointer<CThing> PRippleEffect;              // +0x20
-    void KillRippleFX();                                    // 0x007F07A0
     void DoDieFX();
+private:
+    void KillRippleFX();                                    // 0x007F07A0 ?KillRippleFX@CTCKrakenTentacle@@AAEXXZ (Ego_r / FableWin: private)
 };
 
 void CTCKrakenTentacle::DoDieFX()
