@@ -11,17 +11,51 @@
 // 0x01288C60 and constructs Name (+0x0C) out of line through CCharString() 0x0099E4B0; both PDBs declare no ~CAIStateGroupBase
 // (the implicit destructor). Members Ego_r.pdb; sizeof 0x14 = retail (every derived CAIStateGroup_* ctor constructs its first
 // own member at +0x14). The flattened layout below stays the landed default.
+// Retail opt-in (chunk 707): also define FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS for the member functions a derived row calls -- the
+// virtual slots of vtable 0x01288C60 (each base body checked in retail: 1 Initialise 0x008FCEC0, 2 OnActivate `ret`, 3 InitCreaturePosition
+// / 4 AllowPriorityOverlap `xor al,al`, 5 IsStillValid `mov al,1`, 6 GetDebugText `xor eax,eax`, 7 IsTimingCritical, 8 GetStateGroupType
+// `push 3`, 9 Cleanup / 10 OnReplace `ret`, 11 IsRunnable `mov al,1`, 12 Update _purecall, 13 InitStateGroup `ret 8` 0x008FD285), with the
+// FableWin.pdb spellings (Initialise / GetDebugText / GetStateGroupType / OnReplace also Ego_r.pdb) and their access (UAE public, MAE
+// protected), plus the non-virtual protected IsStopping() const 0x008FD010 and public Terminate() 0x008FCF40 (both PDBs).
+// InitStateGroup's base spelling is in neither PDB: it takes the (const CWorld&, CThingAICreature&) list of every override
+// (Ego_r ?InitStateGroup@CAIStateGroup_MinionGossip@@MAEXABVCWorld@@AAVCThingAICreature@@@Z and 30 more; protected like most).
+// Without the second macro the retail branch is unchanged.
 #ifdef FABLE_RETAIL_CAISTATEGROUPBASE
 #include <stddef.h>
 #include "rebuild_abi.h"
 #include "engine/CBaseClass.h"
 #include "fable_string.h"
 class CAIBrain;
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+class CThingAICreature;
+class CWorld;
+enum EAIStateGroupType;                                                  // MS forward enum
+#endif
 enum EScriptAIPriority;                                                  // MS forward enum (the row defines the enumerators it uses)
 
 class CAIStateGroupBase : public CBaseClass {
 public:
     CAIStateGroupBase();                                                 // 0x008FD255 ??0CAIStateGroupBase@@QAE@XZ
+#ifdef FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
+    virtual void Initialise(CAIBrain& brain, CThingAICreature& creature, long priority, EScriptAIPriority scriptPriority,
+                            const CCharString& name);                    // slot 1  0x008FCEC0
+    virtual void OnActivate();                                           // slot 2  0x008FD26F
+    virtual bool InitCreaturePosition();                                 // slot 3  0x008FD270
+    virtual bool AllowPriorityOverlap();                                 // slot 4  0x008FD273
+    virtual bool IsStillValid() const;                                   // slot 5  0x008FD276
+    virtual const CCharString* GetDebugText() const;                     // slot 6  0x008FCFE0
+    virtual bool IsTimingCritical() const;                               // slot 7  0x008FD279
+    virtual EAIStateGroupType GetStateGroupType() const;                 // slot 8  0x008FD27C
+protected:
+    virtual void Cleanup();                                              // slot 9  0x008FD280
+    virtual void OnReplace();                                            // slot 10 0x008FD281
+    virtual bool IsRunnable();                                           // slot 11 0x008FD282
+    virtual void Update() = 0;                                           // slot 12 (_purecall)
+    virtual void InitStateGroup(const CWorld& world, CThingAICreature& creature);   // slot 13 0x008FD285
+    bool IsStopping() const;                                             // 0x008FD010 ?IsStopping@CAIStateGroupBase@@IBE_NXZ
+public:
+    void Terminate();                                                    // 0x008FCF40 ?Terminate@CAIStateGroupBase@@QAEXXZ
+#endif // FABLE_RETAIL_CAISTATEGROUPBASE_MEMBERS
     CAIBrain*         PBrain;                                            // +0x04
     EScriptAIPriority ScriptAIPriority;                                  // +0x08
     CCharString       Name;                                              // +0x0c

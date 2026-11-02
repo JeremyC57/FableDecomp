@@ -1,0 +1,3 @@
+1	p1 slots v01,v02,PerformAction,FinishAction under CBaseObject retail branch; one-line static_cast<CThingAICreature*>(PCreature.GetPItem())->SuspendAI(false,0)	DIFFER(63v63): PerformAction slot off by one (CBaseObject already supplies Validate slot 1) and GetPItem called after the argument pushes
+2	p2 slots EditUpdate(float), PerformAction, FinishAction (slot fixed), same one-line SuspendAI	DIFFER(63v63): slots right; GetPItem still after the pushes
+3	p3 p2 + named local CThingAICreature* creature = static_cast<..>(PCreature.GetPItem()); creature->SuspendAI(false,0)	RELOCATION_MATCH

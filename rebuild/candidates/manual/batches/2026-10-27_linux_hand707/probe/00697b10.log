@@ -1,0 +1,4 @@
+1	p1 RightStickTargetLookAroundAngles = C2DVector(x*0.25f, y*0.125f) (FableWin inline ctor) then CurrentMode->SetRightStickLookAround(vector)	RELOCATION_MATCH
+2	p2 two float member stores .X = .. ; .Y = .. (no temporary)	DIFFER(48v68): retail builds an 8-byte stack temporary and dword-copies it
+3	p3 named default-constructed local C2DVector, X/Y stores, member = local	RELOCATION_MATCH (equivalent codegen; p1 kept: one statement over the FableWin two-float ctor)
+4	p4 p1 + user-declared copy ctor on C2DVector	RELOCATION_MATCH (copy ctor has no effect; dropped: FableWin C2DVector has no user copy ctor)

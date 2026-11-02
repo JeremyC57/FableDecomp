@@ -1,0 +1,1 @@
+1	p1 ~CVirtualKeyboard: PEntryBox->SetActive(false); PEntryBox->IgnoreAllEvents(); NUISystem::CManager::GetInstance()->RemoveObserver(PEntryBox) (implicit CEditBox*->CObserver* upcast gives the +4 adjust); ProfileName CWideString dtor emitted as tail	RELOCATION_MATCH (later moved onto hdr/ FABLE_RETAIL_CVIRTUALKEYBOARD, still RELOCATION_MATCH)

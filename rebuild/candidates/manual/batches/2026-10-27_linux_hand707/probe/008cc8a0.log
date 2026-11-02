@@ -1,0 +1,1 @@
+1	p1 PCreature.GetPItem()->GetPhysicsTC()->SetAsPushableByHero(true); PCreature.GetPItem()->RemoveTC((ETCInterfaceType)200); CCombatActionBase::FinishAction()	RELOCATION_MATCH

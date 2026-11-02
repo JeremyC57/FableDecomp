@@ -1,0 +1,4 @@
+1	p1 if (PracticeSkills() && !IsStopping()) NextFramePractice = frame + fps*60; Terminate();	DIFFER(52v60): retail duplicates the Terminate tail on the early exit
+2	p2 if (!PracticeSkills() || IsStopping()) { Terminate(); return; } NextFramePractice = CWorld::GetFrame() + CMainGameComponent::GetConstantFPS()*60; Terminate();	RELOCATION_MATCH (kept)
+3	p3 p2 with a named local framesPerSecond	RELOCATION_MATCH (same bytes; dropped, p2 has no extra local)
+4	p4 positive test with inner Terminate(); return; then outer Terminate()	RELOCATION_MATCH (same bytes; p2 kept: guard-clause form)

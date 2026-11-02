@@ -29205,7 +29205,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?AutoTinyScalarDestructor_00591f62@@YIXPAX@Z	00591f62	00592701
 ?AutoTinyScalarDestructor_005930f3@@YIXPAX@Z	005930f3	005938d5
 ?CTCInventory_Destruct@@YIXPAX@Z	00589c55	00594cd2
-?AutoTinyScalarDestructor_00851720@@YIXPAX@Z	00851720	00594f78
+??1CVirtualKeyboard@@QAE@XZ	00851720	00594f78
 ?CTCInventoryTrade_Destruct@@YIXPAX@Z	0059ec48	005b320f
 ?Sub_dtor@@YIXPAX@Z	005c04bf	005c1390
 ?AutoTinyScalarDestructor_00414ea0@@YIXPAX@Z	00414ea0	005c18ef
@@ -35315,3 +35315,9 @@ _z_inflateEnd	00c038d0	00a3acc0
 ?StopStreaming@CBaseRenderer@@UAEJXZ	00ca4e30	00ca6370
 ??0CBaseRenderer@@QAE@ABU_GUID@@PBGPAUIUnknown@@PAJ@Z	00ca61d0	00ca7360
 ?ResetStreamingTimes@CBaseVideoRenderer@@UAEJXZ	00ca52a0	00ca7360
+?SetRightStickLookAround@CBase@NCameraModes@@QAEXABVC2DVector@@@Z	0084cf40	00697b10
+?OnKill@CThingCreatureBase@@UAEXXZ	00664370	00830d80
+?RemoveElementsForThing@CDrawQuestInfo@NPlayerGui@@QAEXABVCThing@@@Z	006473b9	00830d80
+?HasPerformedAction@CCreatureActionBase@@QBE_NXZ	006925a0	008b6a90
+?InitialiseAsSurface@CGraphicFrameData@@QAE_NABV?$CCountedPointer@VCTexture@@@@JJ_N1@Z	009fc950	009fcb20
+?InitialiseAsSurfaceSection@CGraphicFrameData@@QAE_NABV?$CCountedPointer@VCTexture@@@@MMJJ_N1@Z	009fca40	009fcb60

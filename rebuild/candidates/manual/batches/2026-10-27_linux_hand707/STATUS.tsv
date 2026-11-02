@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+008b6a90	RELOCATION_MATCH	63v63	PASS	CCreatureAction_RiseUp::FinishAction; 3 probes (named creature local orders GetPItem before the pushes); byte twin of 0x008B6A20 GoUnderground::FinishAction (two symbols)
+008b8b80	RELOCATION_MATCH	56v56	PASS	CCreatureAction_ScreamerDie::FrameUpdate; 1 probe; const_check 2/2 (1.0f, 255.0f)
+008cc8a0	RELOCATION_MATCH	55v55	PASS	CCreatureAction_BalverineLungeAttack::FinishAction; 1 probe; slot 84 SetAsPushableByHero, RemoveTC(200 = CTCHitOnCollision)
+008d68a0	RELOCATION_MATCH	58v58	PASS	NCreatureMode::CModeDrained::OnActivate; 1 probe; catalog module lacked the NCreatureMode namespace
+0092b3a0	RELOCATION_MATCH	60v60	PASS	CAIStateGroup_SkillPractice::Update; 4 probes (guard-clause early return duplicates the Terminate tail); hdr overlay ApprenticeHero + CAIStateGroupBase members
+009fcb20	RELOCATION_MATCH	57v57	PASS	CGraphicFrame::InitialiseAsSurface; 1 probe; hdr overlay CGraphicFrame
+009fcb60	RELOCATION_MATCH	57v57	PASS	CGraphicFrame::InitialiseAsSurfaceSection; 1 probe; catalog name was its twin's (InitialiseAsSurface)
+00697b10	RELOCATION_MATCH	68v68	PASS	CGameCameraManager::SetRightStickLookAroundVector; 4 probes (C2DVector temporary assignment); const_check 2/2 (0.25f, 0.125f)
+00830d80	RELOCATION_MATCH	67v67	PASS	CThingAICreature::OnKill; 1 probe
+00851720	RELOCATION_MATCH	65v65	PASS	CVirtualKeyboard::~CVirtualKeyboard; 1 probe; hdr overlay CVirtualKeyboard

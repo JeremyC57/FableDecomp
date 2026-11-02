@@ -1,0 +1,1 @@
+1	p1 PCreature.GetPItem()->GetTCGraphicAppearance()->SetAlpha((unsigned char)((1.0f - GetPercentageComplete()) * 255.0f)); CCombatActionBase::FrameUpdate()	RELOCATION_MATCH

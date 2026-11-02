@@ -1,0 +1,1 @@
+1	p1 FrameData = new CGraphicFrameData; return FrameData->X(args) over the hdr/ opt-in CGraphicFrame.h + pack(1) CGraphicFrameData with FableWin inline ctor	RELOCATION_MATCH

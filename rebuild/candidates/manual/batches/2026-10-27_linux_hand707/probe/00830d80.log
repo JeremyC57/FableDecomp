@@ -1,0 +1,1 @@
+1	p1 IsInMelee -> GetCombatManager().DeregisterDestroyedCombatant(*this); CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().GetQuestInfo().RemoveElementsForThing(*this); if(!PBrain.IsNull()) PBrain->OnKill(); CThingCreatureBase::OnKill() over engine/CCountedPointer.h + CBaseObject/CClass retail branches	RELOCATION_MATCH

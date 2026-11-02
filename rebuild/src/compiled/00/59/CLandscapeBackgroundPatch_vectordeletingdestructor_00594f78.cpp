@@ -1,9 +1,12 @@
 #pragma optimize("s", on)
 // Leaf: `vector_deleting_destructor'
-extern void __fastcall AutoTinyScalarDestructor_00851720(void* self);
+// Callee 0x00851720 is ??1CVirtualKeyboard@@QAE@XZ (Ego_r + FableWin; landed in chunk 707), respelled from the stand-in
+// AutoTinyScalarDestructor_00851720 at that landing. This row itself is ??_GCVirtualKeyboard@@QAEPAXI@Z (FableWin; NAME_FIXES_QUEUE c707).
+#define FABLE_RETAIL_CVIRTUALKEYBOARD
+#include "engine/CVirtualKeyboard.h"
 void* __fastcall CLandscapeBackgroundPatch_ScalarDeletingDestructor(void* self, int, unsigned int flags)
 {
-    AutoTinyScalarDestructor_00851720(self);
+    static_cast<CVirtualKeyboard*>(self)->~CVirtualKeyboard();
     if (flags & 1)
         operator delete(self);
     return self;

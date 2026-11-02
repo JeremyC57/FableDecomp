@@ -1,0 +1,1 @@
+1	p1 if GetType()==1 SuspendAI(true,0) else if GetType()==2 GetPlayer().AddMode((EPlayerMode)31,false); CModeStandBase::OnActivate()	RELOCATION_MATCH

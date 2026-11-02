@@ -1,0 +1,39 @@
+addr       parity           behav  name
+00697b10   WARN RELOC_NAME: ?SetRightStickLookAround@CBase@NCameraModes@@QAEXABVC2DVector@@@Z -> 0084cf40 labelled 'CEditControlCentre::OnEngineSurveyLMBHeld'
+00697b10   RELOCATION_MATCH PASS   SetRightStickLookAroundVector
+00830d80   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00830d80   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00830d80   RELOCATION_MATCH PASS   OnKill
+00851720   RELOCATION_MATCH PASS   ~CVirtualKeyboard
+008b6a90   RELOCATION_MATCH PASS   FinishAction
+008b8b80   WARN RELOC_NAME: ?GetPercentageComplete@CCreatureActionBase@@QBEMXZ -> 006925e0 labelled 'CInputTypeMouseMovementEvent::GetMovementRatio'
+008b8b80   RELOCATION_MATCH PASS   FrameUpdate
+008cc8a0   RELOCATION_MATCH PASS   FinishAction
+008d68a0   RELOCATION_MATCH PASS   OnActivate
+0092b3a0   RELOCATION_MATCH PASS   Update
+009fcb20   RELOCATION_MATCH PASS   InitialiseAsSurface
+009fcb60   RELOCATION_MATCH PASS   InitialiseAsSurfaceSection
+
+WINS: 10
+  00697b10 RELOCATION_MATCH CGameCameraManager::?SetRightStickLookAroundVector@CGameCameraManager@@QAEXABVC2DVector@@@Z
+  00830d80 RELOCATION_MATCH CThingAICreature::?OnKill@CThingAICreature@@UAEXXZ
+  00851720 RELOCATION_MATCH CVirtualKeyboard::??1CVirtualKeyboard@@QAE@XZ
+  008b6a90 RELOCATION_MATCH CCreatureAction_RiseUp::?FinishAction@CCreatureAction_RiseUp@@UAEXXZ
+  008b8b80 RELOCATION_MATCH CCreatureAction_ScreamerDie::?FrameUpdate@CCreatureAction_ScreamerDie@@UAEXXZ
+  008cc8a0 RELOCATION_MATCH CCreatureAction_BalverineLungeAttack::?FinishAction@CCreatureAction_BalverineLungeAttack@@UAEXXZ
+  008d68a0 RELOCATION_MATCH NCreatureMode::CModeDrained::?OnActivate@CModeDrained@NCreatureMode@@UAEXXZ
+  0092b3a0 RELOCATION_MATCH CAIStateGroup_SkillPractice::?Update@CAIStateGroup_SkillPractice@@MAEXXZ
+  009fcb20 RELOCATION_MATCH CGraphicFrame::?InitialiseAsSurface@CGraphicFrame@@QAE_NABV?$CCountedPointer@VCTexture@@@@JJ_N1@Z
+  009fcb60 RELOCATION_MATCH CGraphicFrame::?InitialiseAsSurfaceSection@CGraphicFrame@@QAE_NABV?$CCountedPointer@VCTexture@@@@MMJJ_N1@Z
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  CGameCameraManager_SetRightStickLookAroundVector_00697b10
+  CThingAICreature_OnKill_00830d80
+  CVirtualKeyboard_CVirtualKeyboard_00851720
+  CCreatureActionRiseUp_FinishAction_008b6a90
+  CCreatureActionScreamerDie_FrameUpdate_008b8b80
+  CCreatureActionBalverineLungeAttack_FinishAction_008cc8a0
+  NCreatureModeCModeDrained_OnActivate_008d68a0
+  CAIStateGroupSkillPractice_Update_0092b3a0
+  CGraphicFrame_InitialiseAsSurface_009fcb20
+  CGraphicFrame_InitialiseAsSurfaceSection_009fcb60

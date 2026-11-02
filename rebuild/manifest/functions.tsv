@@ -11133,7 +11133,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00594ed4	sort<std::pair<long, CDefPointer<CContextSensitiveItemDef const>> *, CContextSensitivePriorityCompare>	std	unknown	undefined	0		0	yes	accepted									
 00594f28	SuspendableProcess	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript>	__thiscall	void	1	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\CProcess_SuspendableProcess_00594f28.cpp
 00594f36	LoadGame	CNewFrontendGameComponent	__thiscall	void	2	CNewFrontendGameComponent *,CWideString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\CNewFrontendGameComponent_LoadGame_00594f36.cpp
-00594f78	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\CLandscapeBackgroundPatch_vectordeletingdestructor_00594f78.cpp
+00594f78	`scalar deleting destructor'	CVirtualKeyboard	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\CLandscapeBackgroundPatch_vectordeletingdestructor_00594f78.cpp
 00594f94	CreateComponent	CFrontEndManager	__thiscall	CComponent *	2	CFrontEndManager *,CCharString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\CFrontEndManager_CreateComponent_00594f94.cpp
 00594fa9	FinishWithDynamicTextures	CEngineScreenEffectDisplacementRenderer	__thiscall	void	1	CEngineScreenEffectDisplacementRenderer *	1	yes	accepted									
 00594fdb	GenerateAboutMessage	CFrontEndManager	__thiscall	CWideString	1	CFrontEndManager *	1	yes	accepted									
@@ -15603,7 +15603,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006925b0	GetTotalTimeWorldFrames	CCreatureActionBase	__thiscall	CIDrawEnvironment *	1	CWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\69\global_DrawGetEnvironment_006925b0.cpp
 006925c0	GetFramesRunning	CCreatureActionBase	__thiscall	CIDrawEnvironment *	1	CWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\69\global_DrawGetEnvironment_006925c0.cpp
 006925d0	GetFramesRemaining	CCreatureActionBase	__thiscall	long	1	CCreatureActionBase *	1	yes	accepted									
-006925e0	operator==	CInputTypeMouseMovementEvent	__thiscall	bool	2	CInputTypeMouseMovementEvent *,CInputTypeBase *	1	yes	accepted									
+006925e0	GetPercentageComplete	CCreatureActionBase	__thiscall	bool	2	CInputTypeMouseMovementEvent *,CInputTypeBase *	1	yes	accepted									
 00692620	DrawGetEnvironment	CWorld	__thiscall	CIDrawEnvironment *	1	CWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\69\global_DrawGetEnvironment_00692620.cpp
 00692630	CCreatureActionBase::IsToEvadeAllHits	CCreatureActionBase	__thiscall	bool	1	CCreatureActionBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\69\CCreatureActionBase_IsToEvadeAllHits_00692630.cpp
 00692640	CCreatureActionBase::IsToCauseRecoil	CCreatureActionBase	__thiscall	bool	1	CCreatureActionBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\69\CCreatureActionBase_IsToCauseRecoil_00692640.cpp
@@ -25200,7 +25200,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0084cd10	SetCameraRoll	_global	__fastcall	void	2	CCamera *,float	1	yes	accepted									
 0084cde0	NCameraModes::CBase::vfunc_12	NCameraModes::CBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0084cdf0	UpdateFixLookDirection	CBase	__thiscall	void	5	CBase *,C3DVector *,C3DVector *,C3DVector *,float	1	yes	accepted									
-0084cf40	OnEngineSurveyLMBHeld	CEditControlCentre	__thiscall	void	2	CEditControlCentre *,C3DVector *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\84\CEditControlCentre_OnEngineSurveyLMBHeld_0084cf40.cpp
+0084cf40	SetRightStickLookAround	NCameraModes::CBase	__thiscall	void	2	CEditControlCentre *,C3DVector *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\84\CEditControlCentre_OnEngineSurveyLMBHeld_0084cf40.cpp
 0084cf60	OnEngineSurveyLMBHeld	CEditControlCentre	__thiscall	void	2	CEditControlCentre *,C3DVector *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\84\CEditControlCentre_OnEngineSurveyLMBHeld_0084cf60.cpp
 0084cf80	TransferPersistantBaseData	CBase	__thiscall	void	2	CBase *,CBase *	1	yes	accepted									
 0084d050	GetWorld	NCameraModes::CBase	__thiscall	ulong	1	CPixelShader *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\84\CPixelShader_CountReferences_0084d050.cpp
@@ -27993,7 +27993,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008b69f0	Initialise	CCreatureAction_GoUnderground	__thiscall	void	1	CCreatureAction_Die *	1	yes	accepted									
 008b6a20	?FinishAction@CCreatureAction_GoUnderground@@UAEXXZ	CCreatureAction_GoUnderground	__thiscall	void	1	CCreatureAction_GoUnderground *	1	yes	accepted									
 008b6a60	Initialise	CCreatureAction_RiseUp	__thiscall	void	1	CCreatureAction_Die *	1	yes	accepted									
-008b6a90	?FinishAction@CCreatureAction_RiseUp@@UAEXXZ	CCreatureAction_RiseUp	__thiscall	void	1	CCreatureAction_GoUnderground *	1	yes	accepted									
+008b6a90	FinishAction	CCreatureAction_RiseUp	__thiscall	void	1	CCreatureAction_GoUnderground *	1	yes	accepted									
 008b6ad0	CCreatureAction_MidAttackSide::Initialise	CCreatureAction_MidAttackSide	__thiscall	void	1	CCreatureAction_MidAttackSide *	1	yes	accepted									
 008b6c30	?FrameUpdate@CCreatureAction_ProjectileCrouch@@UAEXXZ	CCreatureAction_ProjectileCrouch	__thiscall	void	1	CCreatureAction_ProjectileCrouch *	1	yes	accepted									
 008b6e60	CCreatureAction_CombatBoast::Initialise	CCreatureAction_CombatBoast	__thiscall	void	1	CCreatureAction_CombatBoast *	1	yes	accepted									
@@ -28067,7 +28067,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008b8ac0	CCreatureAction_UnsheatheWeapons::Clone	CCreatureAction_UnsheatheWeapons	__thiscall	CCreatureActionBase *	1	CCreatureAction_UnsheatheWeapons *	1	yes	accepted									
 008b8b00	CCreatureAction_ScreamerDrainOutOf::Initialise	CCreatureAction_ScreamerDrainOutOf	__thiscall	void	1	CCreatureAction_ScreamerDrainOutOf *	1	yes	accepted									
 008b8b40	CCreatureAction_ScreamerIdle::Initialise	CCreatureAction_ScreamerIdle	__thiscall	void	1	CCreatureAction_ScreamerIdle *	1	yes	accepted									
-008b8b80	?FrameUpdate@CCreatureAction_ScreamerDie@@UAEXXZ	CCreatureAction_ScreamerDie	__thiscall	void	2	CVillageTaskCarryCrate *,CThing *	1	yes	accepted									
+008b8b80	FrameUpdate	CCreatureAction_ScreamerDie	__thiscall	void	2	CVillageTaskCarryCrate *,CThing *	1	yes	accepted									
 008b8bc0	?Initialise@CCreatureAction_ScreamerDrainAttack@@UAEXXZ	CCreatureAction_ScreamerDrainAttack	__thiscall	void	1	CCreatureAction_ScreamerDrainAttack *	1	yes	accepted									
 008b8cb0	CCreatureAction_ScreamerAdvance::FrameUpdate	CCreatureAction_ScreamerAdvance	__thiscall	void	1	CCreatureAction_ScreamerAdvance *	1	yes	accepted									
 008b8d30	?Initialise@CCreatureAction_ScreamerDie@@UAEXXZ	CCreatureAction_ScreamerDie	__thiscall	void	1	CCreatureAction_ScreamerDie *	1	yes	accepted									
@@ -28833,7 +28833,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008cc760	CCreatureAction_BalverineBreakOffFromCombatLong::Initialise	CCreatureAction_BalverineBreakOffFromCombatLong	__thiscall	void	1	CCreatureAction_BalverineBreakOffFromCombatLong *	1	yes	accepted									
 008cc7a0	FrameUpdate	CCreatureAction_BalverineCorneredJumpIntoSky	__thiscall	void	1	CCreatureAction_BalverineCorneredJumpIntoSky *	1	yes	accepted									
 008cc820	FrameUpdate	CCreatureAction_BalverineDropInFromSky	__thiscall	void	1	CCreatureAction_BalverineDropInFromSky *	1	yes	accepted									
-008cc8a0	?FinishAction@CCreatureAction_BalverineLungeAttack@@UAEXXZ	CCreatureAction_BalverineLungeAttack	__thiscall	void	1	CCreatureAction_BalverineLungeAttack *	1	yes	accepted									
+008cc8a0	FinishAction	CCreatureAction_BalverineLungeAttack	__thiscall	void	1	CCreatureAction_BalverineLungeAttack *	1	yes	accepted									
 008cc8e0	CCreatureAction_BalverineLungeAttack::Initialise	CCreatureAction_BalverineLungeAttack	__thiscall	void	1	CCreatureAction_BalverineLungeAttack *	1	yes	accepted									
 008cc9c0	CCreatureAction_BalverineCorneredJumpIntoSky::Initialise	CCreatureAction_BalverineCorneredJumpIntoSky	__thiscall	void	1	CCreatureAction_BalverineCorneredJumpIntoSky *	1	yes	accepted									
 008cca60	CCreatureAction_BalverineDropInFromSky::Initialise	CCreatureAction_BalverineDropInFromSky	__thiscall	void	1	CCreatureAction_BalverineDropInFromSky *	1	yes	accepted									
@@ -29123,7 +29123,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008d6850	NCreatureMode::CModeIceTrollGroundSmashIcicleAssault::vfunc_2	NCreatureMode::CModeIceTrollGroundSmashIcicleAssault	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 008d6860	OnActivate	CModeJackOfBladesDeath	__thiscall	void	1	CModeJackOfBladesDeath *	1	yes	accepted									
 008d6890	NCreatureMode::CModeJackOfBladesDeath::vfunc_6	NCreatureMode::CModeJackOfBladesDeath	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-008d68a0	OnActivate	CModeDrained	__thiscall	void	1	CModeDrained *	1	yes	accepted									
+008d68a0	OnActivate	NCreatureMode::CModeDrained	__thiscall	void	1	CModeDrained *	1	yes	accepted									
 008d68e0	OnActivate	CModeChargeForcePush	__thiscall	void	1	CModeChargeForcePush *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8d\CModeChargeForcePush_OnActivate_008d68e0.cpp
 008d6900	OnActivate	CModeChargeForcePush	__thiscall	void	1	CModeChargeForcePush *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8d\CModeChargeForcePush_OnActivate_008d6900.cpp
 008d6920	OnActivate	CModeSummonerDie	__thiscall	void	1	CModeSummonerDie *	1	yes	accepted									
@@ -31549,7 +31549,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0092b2b0	FUN_0092b2b0	_global	unknown	undefined	0		0			discovered	boundary							
 0092b2d0	GetAllThings<CThingGameObject, std::list<CThingGameObject *, std::allocator<CThingGameObject *>>, CThingFilter_HasScriptName>	CThingSearchTools	__thiscall	void	3	CThingSearchTools *,CFilter_Bind2<CThingFilter_None,CThingFilter_HasTC> *,vector<CThingAICreature*,std::allocator<CThingAICreature*>_> *	1	yes	accepted									
 0092b360	CAIStateGroup_SkillPractice::IsRunnable	CAIStateGroup_SkillPractice	__thiscall	bool	1	CAIStateGroup_SkillPractice *	1	yes	accepted									
-0092b3a0	?Update@CAIStateGroup_SkillPractice@@MAEXXZ	CAIStateGroup_SkillPractice	__thiscall	void	1	CAIStateGroup_SkillPractice *	1	yes	accepted									
+0092b3a0	Update	CAIStateGroup_SkillPractice	__thiscall	void	1	CAIStateGroup_SkillPractice *	1	yes	accepted									
 0092b3e0	CAIStateGroup_SkillPractice::PracticeSkills	CAIStateGroup_SkillPractice	__thiscall	bool	1	CAIStateGroup_SkillPractice *	1	yes	accepted									
 0092b800	?IsRunnable@CAIStateGroup_OnHeroPush@@UAE_NXZ	CAIStateGroup_OnHeroPush	__thiscall	bool	1	CAIStateGroup_OnHeroPush *	1	yes	accepted									
 0092b900	CAIStateGroup_OnHeroPush::Update	CAIStateGroup_OnHeroPush	__thiscall	void	1	CAIStateGroup_OnHeroPush *	1	yes	accepted									
@@ -35437,7 +35437,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009fc950	InitialiseAsSurface	CGraphicFrameData	__thiscall	bool	6	CGraphicFrameData *,CCountedPointer<CTexture> *,long,long,bool,bool	1	yes	accepted									
 009fca40	InitialiseAsSurfaceSection	CGraphicFrameData	__thiscall	bool	8	CGraphicFrameData *,CCountedPointer<CTexture> *,float,float,long,long,bool,bool	1	yes	accepted									
 009fcb20	InitialiseAsSurface	CGraphicFrame	__thiscall	bool	6	CGraphicFrame *,CCountedPointer<CTexture> *,long,long,bool,bool	1	yes	accepted									
-009fcb60	InitialiseAsSurface	CGraphicFrame	__thiscall	bool	6	CGraphicFrame *,CCountedPointer<CTexture> *,long,long,bool,bool	1	yes	accepted									
+009fcb60	InitialiseAsSurfaceSection	CGraphicFrame	__thiscall	bool	6	CGraphicFrame *,CCountedPointer<CTexture> *,long,long,bool,bool	1	yes	accepted									
 009fcba0	Uninitialise	CGraphicFrameData	__thiscall	void	1	CGraphicFrameData *	1	yes	accepted									
 009fcbf0	Sizeof	CGraphicFrameData	__thiscall	ulong	1	CGraphicFrameData *	1	yes	accepted									
 009fcca0	CBankStateBlock::vfunc_0	CBankStateBlock	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
