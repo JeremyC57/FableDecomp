@@ -35330,3 +35330,11 @@ _z_inflateEnd	00c038d0	00a3acc0
 ?GetPlayer@CDrawBase@NPlayerGui@@QBEABVCPlayer@@XZ	00643d84	00657200
 ??4?$vector@VCGenerationPos@CTCSmokeGenerator@@V?$allocator@VCGenerationPos@CTCSmokeGenerator@@@std@@@std@@QAEAAV01@ABV01@@Z	00722f30	00722570
 ??4?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@QAEAAV01@ABV01@@Z	00778c00	00778b10
+?clear@?$_List_base@VCPrimitive@NGraphicAppearance@@V?$allocator@VCPrimitive@NGraphicAppearance@@@std@@@std@@QAEXXZ	004c5690	004bf8f0
+?OnLeftClicked@CDraggable@NUISystem@@UAEXXZ	0055a5d0	005596d0
+??_7CAnimComponentCombatMisc@@6B@	01255738	005df750
+??4?$vector@VCSkeletalMorph@CTCSkeletalMorph@@V?$allocator@VCSkeletalMorph@CTCSkeletalMorph@@@std@@@std@@QAEAAV01@ABV01@@Z	007871d0	00786650
+?WorldUpdateBulletTime@CThing@@UAEXXZ	004c8ba0	00836240
+??_7CAIStateGroup_MinionReactToCrime@@6B@	0128c558	00900b41
+??0CAIStateGroup_VersusEnemyBase@@QAE@XZ	009013fa	0090143e
+??_7CAIStateGroup_VersusScorpionKing@@6B@	0128cbe4	0090143e

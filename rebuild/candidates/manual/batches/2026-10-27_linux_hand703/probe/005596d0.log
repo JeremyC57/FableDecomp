@@ -1,0 +1,2 @@
+1	PositionBeforeDrag = Position; DeltaBeforeAction = C2DVector(0,0); CScrollBar members after a pad in the derived class	DIFFER(73v47): sub esp,8 temp + members 4 high (base sizeof 0x1A0 rounds)
+2	pad moved into CDraggable (to 0x1AC); DeltaBeforeAction.X = 0.0f; .Y = 0.0f;	RELOCATION_MATCH

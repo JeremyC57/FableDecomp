@@ -1,0 +1,2 @@
+1	first form: virtual Alloc() const { return new CAnimComponentCombatMisc; } over pack(1) CIVCountedPointeeBase(IVRefCount(1)) <- CAnimComponentBase	RELOCATION_MATCH
+2	retail-form CIVCountedPointeeBase (Delete() const, mutable IVRefCount, inline virtual dtor) outside the pack; pack(1) only around CAnimComponentBase / CAnimComponentCombatMisc	RELOCATION_MATCH

@@ -1,0 +1,1 @@
+1	first form: STLport list iterator loop over Components calling OnAppearanceClear, then Primitives.clear() (inline _Base::clear)	RELOCATION_MATCH

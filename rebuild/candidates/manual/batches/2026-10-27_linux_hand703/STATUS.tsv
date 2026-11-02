@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00786650	RELOCATION_MATCH	23v23	PASS	CTCSkeletalMorph::Copy (vtable slot 12); 1 probe
+007f8120	RELOCATION_MATCH	18v18	PASS	CTCActivationReceptorDoor::Activate (slot 28); 1 probe
+00836240	RELOCATION_MATCH	24v24	PASS	CThingDeadCreature::WorldUpdateBulletTime (slot 20; label RenderSubPrimitive wrong); 1 probe
+00900b41	RELOCATION_MATCH	36v36	PASS	CAIStateGroup_MinionReactToCrime ctor (real start in a packed TU; label wrong); 1 probe
+0090143e	RELOCATION_MATCH	36v36	PASS	CAIStateGroup_VersusScorpionKing ctor (real start in a packed TU; label wrong); 1 probe
+004bf8f0	RELOCATION_MATCH	41v41	PASS	NGraphicAppearance::CTCGraphicAppearance::OnKill (slot 14); 1 probe
+005596d0	RELOCATION_MATCH	47v47	PASS	NUISystem::CScrollBar::OnLeftClicked (slot 146); 2 probes
+005df750	RELOCATION_MATCH	31v31	PASS	CAnimComponentCombatMisc::Alloc const (slot 4); 2 probes (2nd = retail-form IV base)
+005faee0	RELOCATION_MATCH	44v44	PASS	CTCInventoryMap::OnKill (slot 14; twin of 0061a1f0); 1 probe
+0061a1f0	RELOCATION_MATCH	44v44	PASS	CTCInventoryQuests::OnKill (slot 14; twin of 005faee0); 1 probe

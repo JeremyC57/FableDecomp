@@ -1,0 +1,1 @@
+1	first form: screen = this (CBase +0x130); Get().GetPHeroInfoScreensManager()->DeregisterScreen(*screen); base OnKill (landed twin model, default speed flags, no size pragma)	RELOCATION_MATCH

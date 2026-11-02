@@ -1,0 +1,1 @@
+1	first form: if (HasTC(0x83)) SetGraphicAppearanceChanged(2); CThingGameObject::WorldUpdateBulletTime(); (neighbour 0x00836260 model)	RELOCATION_MATCH

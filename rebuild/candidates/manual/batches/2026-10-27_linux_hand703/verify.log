@@ -1,0 +1,40 @@
+addr       parity           behav  name
+004bf8f0   RELOCATION_MATCH PASS   OnKill
+005596d0   RELOCATION_MATCH PASS   OnLeftClicked
+005df750   RELOCATION_MATCH PASS   Alloc
+005faee0   WARN SHARED_HEADER_AVAILABLE CManager
+005faee0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+005faee0   RELOCATION_MATCH PASS   OnKill
+0061a1f0   WARN SHARED_HEADER_AVAILABLE CManager
+0061a1f0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0061a1f0   RELOCATION_MATCH PASS   OnKill
+00786650   RELOCATION_MATCH PASS   Copy
+007f8120   RELOCATION_MATCH PASS   Activate
+00836240   WARN RELOC_NAME: ?SetGraphicAppearanceChanged@CThing@@QAEXK@Z -> 004c7590 labelled 'CRenderTarget::DetachTarget'
+00836240   RELOCATION_MATCH PASS   WorldUpdateBulletTime
+00900b41   RELOCATION_MATCH PASS   CAIStateGroup_MinionReactToCrime
+0090143e   RELOCATION_MATCH PASS   CAIStateGroup_VersusScorpionKing
+
+WINS: 10
+  004bf8f0 RELOCATION_MATCH NGraphicAppearance::CTCGraphicAppearance::?OnKill@CTCGraphicAppearance@NGraphicAppearance@@UAEXXZ
+  005596d0 RELOCATION_MATCH NUISystem::CScrollBar::?OnLeftClicked@CScrollBar@NUISystem@@UAEXXZ
+  005df750 RELOCATION_MATCH CAnimComponentCombatMisc::?Alloc@CAnimComponentCombatMisc@@UBEPAVCAnimComponentBase@@XZ
+  005faee0 RELOCATION_MATCH CTCInventoryMap::?OnKill@CTCInventoryMap@@UAEXXZ
+  0061a1f0 RELOCATION_MATCH CTCInventoryQuests::?OnKill@CTCInventoryQuests@@UAEXXZ
+  00786650 RELOCATION_MATCH CTCSkeletalMorph::?Copy@CTCSkeletalMorph@@UAEXABVCTCBase@@@Z
+  007f8120 RELOCATION_MATCH CTCActivationReceptorDoor::?Activate@CTCActivationReceptorDoor@@UAEXXZ
+  00836240 RELOCATION_MATCH CThingDeadCreature::?WorldUpdateBulletTime@CThingDeadCreature@@UAEXXZ
+  00900b41 RELOCATION_MATCH CAIStateGroup_MinionReactToCrime::??0CAIStateGroup_MinionReactToCrime@@QAE@XZ
+  0090143e RELOCATION_MATCH CAIStateGroup_VersusScorpionKing::??0CAIStateGroup_VersusScorpionKing@@QAE@XZ
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  NGraphicAppearanceCTCGraphicAppearance_OnKill_004bf8f0
+  NUISystemCScrollBar_OnLeftClicked_005596d0
+  CAnimComponentCombatMisc_Alloc_005df750
+  CTCInventoryMap_OnKill_005faee0
+  CTCInventoryQuests_OnKill_0061a1f0
+  CTCSkeletalMorph_Copy_00786650
+  CTCActivationReceptorDoor_Activate_007f8120
+  CThingDeadCreature_WorldUpdateBulletTime_00836240
+  CAIStateGroupMinionReactToCrime_CAIStateGroupMinionReactToCrime_00900b41
+  CAIStateGroupVersusScorpionKing_CAIStateGroupVersusScorpionKing_0090143e
