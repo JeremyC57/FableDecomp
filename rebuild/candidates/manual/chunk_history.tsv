@@ -26131,3 +26131,13 @@ chunk	address	module	name	length
 711	0122a940	_global	DynamicInit_013caa54_58	20
 711	0090aa10	LSocketServer	CloseSocket	41
 711	0099f3d0	CCharString	Insert	42
+712	009f4950	CScratchBuffer	Uninitialise	43
+712	00a23ad0	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::C	CSymbolInfo>_>	37
+712	0122a790	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::C	CSymbolInfo>_>	40
+712	00a9d270	CCreatureAction_FireMissileWeapon	~CCreatureAction_FireMissileWeapon	43
+712	00e839f0	CQ_MinionCampScript	StartMinionSpawnTimer	45
+712	006a5d50	CTCFishingSpot	~CTCFishingSpot	62
+712	007b0300	CTCFishingSpot	~CTCFishingSpot	46
+712	00719c70	CExclusiveAssert	~CExclusiveAssert	54
+712	0055d590	CExclusiveAssert	~CExclusiveAssert	54
+712	00b0ca90	CExclusiveAssert	~CExclusiveAssert	60
