@@ -374869,6 +374869,76 @@ $catalog = @(
         TestSource = '00/b1/NParticleEngineCPSCAttractor_CPSCAttractor_00b18780_test.cpp'
         PassPattern = '00b18780_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00541350'
+        Module = 'NUISystem::CDynamicList'
+        Source = '00/54/NUISystemCDynamicList_CDynamicList_00541350.cpp'
+        TestSource = '00/54/NUISystemCDynamicList_CDynamicList_00541350_test.cpp'
+        PassPattern = '00541350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00718d50'
+        Module = 'CCreatureAction_PerformExpression'
+        Source = '00/71/CCreatureActionPerformExpression_CCreatureActionPerformExpression_00718d50.cpp'
+        TestSource = '00/71/CCreatureActionPerformExpression_CCreatureActionPerformExpression_00718d50_test.cpp'
+        PassPattern = '00718d50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0079bc80'
+        Module = 'CTCSummonableCreature'
+        Source = '00/79/CTCSummonableCreature_SetSummoner_0079bc80.cpp'
+        TestSource = '00/79/CTCSummonableCreature_SetSummoner_0079bc80_test.cpp'
+        PassPattern = '0079bc80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0084adc0'
+        Module = 'CCreatureAction_PerformExpressionExtended'
+        Source = '00/84/CCreatureActionPerformExpressionExtended_CCreatureActionPerformExpressionExtended_0084adc0.cpp'
+        TestSource = '00/84/CCreatureActionPerformExpressionExtended_CCreatureActionPerformExpressionExtended_0084adc0_test.cpp'
+        PassPattern = '0084adc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f6170'
+        Module = 'CHeightMap'
+        Source = '00/8f/CHeightMap_CHeightMap_008f6170.cpp'
+        TestSource = '00/8f/CHeightMap_CHeightMap_008f6170_test.cpp'
+        PassPattern = '008f6170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009822e0'
+        Module = 'CCreatureAction_SendMessage'
+        Source = '00/98/CCreatureActionSendMessage_CCreatureActionSendMessage_009822e0.cpp'
+        TestSource = '00/98/CCreatureActionSendMessage_CCreatureActionSendMessage_009822e0_test.cpp'
+        PassPattern = '009822e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009d58a0'
+        Module = 'CBankFileAsync'
+        Source = '00/9d/CBankFileAsync_Close_009d58a0.cpp'
+        TestSource = '00/9d/CBankFileAsync_Close_009d58a0_test.cpp'
+        PassPattern = '009d58a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a620d0'
+        Module = 'CShaderDataBank'
+        Source = '00/a6/CShaderDataBank_CShaderDataBank_00a620d0.cpp'
+        TestSource = '00/a6/CShaderDataBank_CShaderDataBank_00a620d0_test.cpp'
+        PassPattern = '00a620d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a69a80'
+        Module = 'CManagedTextureData'
+        Source = '00/a6/CManagedTextureData_ReleaseTexture_00a69a80.cpp'
+        TestSource = '00/a6/CManagedTextureData_ReleaseTexture_00a69a80_test.cpp'
+        PassPattern = '00a69a80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f25e40'
+        Module = 'CArenaCreatureDef'
+        Source = '00/f2/CArenaCreatureDef_CArenaCreatureDef_00f25e40.cpp'
+        TestSource = '00/f2/CArenaCreatureDef_CArenaCreatureDef_00f25e40_test.cpp'
+        PassPattern = '00f25e40_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,2 @@
+1	probe1: ReleaseData + boost scoped_ptr reset + SetAsLRU, local CResource over CIVCountedPointeeBase.h	SRC_FAIL (header needs rebuild_abi.h first)
+2	probe2: same with rebuild_abi.h included first	RELOCATION_MATCH

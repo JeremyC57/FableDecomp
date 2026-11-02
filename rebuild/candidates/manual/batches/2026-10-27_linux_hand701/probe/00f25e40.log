@@ -1,0 +1,1 @@
+1	probe1: implicit dtor, CDefClassBase.h retail opt-in, two out-of-line CCharString members, DestroyOne	RELOCATION_MATCH

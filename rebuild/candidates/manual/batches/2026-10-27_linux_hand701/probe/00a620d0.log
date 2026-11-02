@@ -1,0 +1,2 @@
+1	probe1: user dtor { CloseShaders(); }, STLport vector CArray, CBankStateBlock inline dtor, local CBankFile (0x110)	RELOCATION_MATCH
+2	probe2: PDB nested CShaderBankStateBlock::CStateBlock State member in place of opaque words	RELOCATION_MATCH

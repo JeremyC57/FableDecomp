@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+0079bc80	RELOCATION_MATCH	71v71	PASS	CTCSummonableCreature::SetSummoner (FableWin; chunk 700 setter shape); 1 probe
+00a69a80	RELOCATION_MATCH	76v76	PASS	CManagedTextureData::ReleaseTexture (label right); ReleaseData + boost scoped_ptr::reset + SetAsLRU tail; 2 probes
+009d58a0	RELOCATION_MATCH	36v36	PASS	CBankFileAsync::Close (UAE; local polymorphic CBankFile, header on hold); 3 probes
+00f25e40	RELOCATION_MATCH	33v33	PASS	~CArenaCreatureDef (implicit def dtor; label wrong); 1 probe
+00718d50	RELOCATION_MATCH	52v52	PASS	~CCreatureAction_PerformExpression (byte twin of 0x0084ADC0, different class; label wrong); 1 probe
+0084adc0	RELOCATION_MATCH	52v52	PASS	~CCreatureAction_PerformExpressionExtended (label right); 1 probe
+009822e0	RELOCATION_MATCH	52v52	PASS	~CCreatureAction_SendMessage (uncalled; ctor neighbour; label wrong); 1 probe
+00a620d0	RELOCATION_MATCH	51v51	PASS	~CShaderDataBank (user dtor { CloseShaders(); }; label wrong); 2 probes
+008f6170	RELOCATION_MATCH	40v40	PASS	~CHeightMap (user dtor { WorldSeed = 0; }; label wrong); 2 probes
+00541350	RELOCATION_MATCH	50v50	PASS	NUISystem::~CDynamicList (user empty dtor, three vtables; label wrong); 1 probe

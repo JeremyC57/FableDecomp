@@ -1,0 +1,3 @@
+1	probe1: if (!ThreadedFile.IsNull() && !RetailMode) ThreadedFile->Close(); CBankFile::Close(); local polymorphic CBankFile with pads	RELOCATION_MATCH
+2	probe2: engine/CBankFile.h member list in the local polymorphic base (pack(1))	RELOCATION_MATCH
+3	probe3: probe2 without the inherited #pragma pack (layout naturally aligned)	RELOCATION_MATCH

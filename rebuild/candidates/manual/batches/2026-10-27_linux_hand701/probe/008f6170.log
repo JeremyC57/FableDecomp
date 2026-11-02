@@ -1,0 +1,2 @@
+1	probe1: user dtor { WorldSeed = 0; } over engine/CBaseClassNonCopyable.h, real STLport vector<CHeightMapCell>	RELOCATION_MATCH
+2	probe2: CHeightMapCell from engine/CHeightMapCell.h (vland SHARED_HEADER_AVAILABLE)	RELOCATION_MATCH

@@ -1,0 +1,35 @@
+addr       parity           behav  name
+00541350   RELOCATION_MATCH PASS   ~CDynamicList
+00718d50   RELOCATION_MATCH PASS   ~CCreatureAction_PerformExpression
+0079bc80   RELOCATION_MATCH PASS   SetSummoner
+0084adc0   RELOCATION_MATCH PASS   ~CCreatureAction_PerformExpressionExtended
+008f6170   RELOCATION_MATCH PASS   ~CHeightMap
+009822e0   RELOCATION_MATCH PASS   ~CCreatureAction_SendMessage
+009d58a0   RELOCATION_MATCH PASS   Close
+00a620d0   RELOCATION_MATCH PASS   ~CShaderDataBank
+00a69a80   RELOCATION_MATCH PASS   ReleaseTexture
+00f25e40   RELOCATION_MATCH PASS   ~CArenaCreatureDef
+
+WINS: 10
+  00541350 RELOCATION_MATCH NUISystem::CDynamicList::??1CDynamicList@NUISystem@@UAE@XZ
+  00718d50 RELOCATION_MATCH CCreatureAction_PerformExpression::??1CCreatureAction_PerformExpression@@UAE@XZ
+  0079bc80 RELOCATION_MATCH CTCSummonableCreature::?SetSummoner@CTCSummonableCreature@@QAEXPAVCThingCreatureBase@@@Z
+  0084adc0 RELOCATION_MATCH CCreatureAction_PerformExpressionExtended::??1CCreatureAction_PerformExpressionExtended@@UAE@XZ
+  008f6170 RELOCATION_MATCH CHeightMap::??1CHeightMap@@UAE@XZ
+  009822e0 RELOCATION_MATCH CCreatureAction_SendMessage::??1CCreatureAction_SendMessage@@UAE@XZ
+  009d58a0 RELOCATION_MATCH CBankFileAsync::?Close@CBankFileAsync@@UAEXXZ
+  00a620d0 RELOCATION_MATCH CShaderDataBank::??1CShaderDataBank@@UAE@XZ
+  00a69a80 RELOCATION_MATCH CManagedTextureData::?ReleaseTexture@CManagedTextureData@@QAEXXZ
+  00f25e40 RELOCATION_MATCH CArenaCreatureDef::??1CArenaCreatureDef@@UAE@XZ
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  NUISystemCDynamicList_CDynamicList_00541350
+  CCreatureActionPerformExpression_CCreatureActionPerformExpression_00718d50
+  CTCSummonableCreature_SetSummoner_0079bc80
+  CCreatureActionPerformExpressionExtended_CCreatureActionPerformExpressionExtended_0084adc0
+  CHeightMap_CHeightMap_008f6170
+  CCreatureActionSendMessage_CCreatureActionSendMessage_009822e0
+  CBankFileAsync_Close_009d58a0
+  CShaderDataBank_CShaderDataBank_00a620d0
+  CManagedTextureData_ReleaseTexture_00a69a80
+  CArenaCreatureDef_CArenaCreatureDef_00f25e40

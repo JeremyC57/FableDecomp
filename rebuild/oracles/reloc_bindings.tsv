@@ -35324,3 +35324,8 @@ _z_inflateEnd	00c038d0	00a3acc0
 ?LoadWaterData@CEngineWorldMap@@AAEXXZ	00b41fa0	00b428e0
 ?OpenStaticMaps@CEngineWorldMap@@AAEXW4STATIC_MAP_OPEN_STATE@CEngineMap@@@Z	00b42750	00b428e0
 ?clear@?$_List_base@V?$CCountedPointer@VCActiveSound@CSoundEmitterLH@@@@V?$allocator@V?$CCountedPointer@VCActiveSound@CSoundEmitterLH@@@@@std@@@std@@QAEXXZ	00aacc60	00aac4f0
+?Close@CBankFile@@UAEXXZ	009ce360	009d58a0
+?Close@CThreadedFile@@QAEXXZ	0098ec40	009d58a0
+??1CBankFile@@UAE@XZ	009ce180	00a620d0
+?CloseShaders@CShaderDataBank@@AAEXXZ	00a62050	00a620d0
+?SetAsLRU@CResource@@QAEXXZ	009fc450	00a69a80
