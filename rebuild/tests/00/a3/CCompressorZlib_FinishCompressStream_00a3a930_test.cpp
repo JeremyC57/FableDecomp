@@ -1,6 +1,6 @@
 #include <cstdio>
 
-extern "C" int __cdecl EndDeflateStream(void* strm);
+extern "C" int __cdecl z_deflateEnd(void* strm);
 
 class CCompressorZlib { public:
     char pad[0x1c];
@@ -11,7 +11,7 @@ class CCompressorZlib { public:
 
 static int g_ended = 0;
 static void* g_last = 0;
-extern "C" int __cdecl EndDeflateStream(void* strm) {
+extern "C" int __cdecl z_deflateEnd(void* strm) {
     g_ended++;
     g_last = strm;
     return 0;

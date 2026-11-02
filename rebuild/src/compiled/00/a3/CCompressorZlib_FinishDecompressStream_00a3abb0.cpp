@@ -1,4 +1,7 @@
 // CCompressorZlib::FinishDecompressStream()
+// Leaf: ?FinishDecompressStream@CCompressorZlib@@QAEXXZ
+// Naming wave 29 (family zlib): the own row is ?FinishDecompressStream@CCompressorZlib@@QAEXXZ (Ego_r.pdb / FableWin.pdb; was the invented
+//   CCompressorZlib_Retail); it calls _z_inflateEnd 0x00C038D0 (both PDBs; was _inflateEnd). Local layout kept (header debt: PDB +4).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A3ABB0, oracle length 44 bytes.
 // Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
 //        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
@@ -17,7 +20,7 @@
 //
 // Lane feedback: the zero stores go through the z_stream pointer (esi-relative), not through `this`;
 // member-relative stores swap the esi/edi roles. RELOCATION_MATCH.
-struct z_stream_s_Local {
+struct z_stream_s {
     unsigned char* next_in;      // +0x00
     unsigned long  avail_in;     // +0x04
     unsigned long  total_in;     // +0x08
@@ -26,23 +29,23 @@ struct z_stream_s_Local {
     unsigned char  _rest[0x24];  // 0x38-byte z_stream
 };
 
-extern "C" int __cdecl inflateEnd(z_stream_s_Local* stream);   // z_inflateEnd @ 0x00C038D0
+extern "C" int __cdecl z_inflateEnd(z_stream_s* stream); // 0x00C038D0 (zlib built with Z_PREFIX: both PDBs spell _z_inflateEnd)
 
 // Retail CCompressorZlib view (PDB offsets +4; see the README container rule).
-struct CCompressorZlib_Retail {
+struct CCompressorZlib {
     unsigned char    _pad_0x00[0x1C];
-    z_stream_s_Local Stream;             // +0x1C (PDB +0x20)
+    z_stream_s Stream;             // +0x1C (PDB +0x20)
     bool             ZlibInitialised;    // +0x54 (PDB +0x58)
     void FinishDecompressStream();
 };
 
-void CCompressorZlib_Retail::FinishDecompressStream()
+void CCompressorZlib::FinishDecompressStream()
 {
     // Tear the inflate state down and clear the stream's buffer pointers/counts through the
     // same z_stream pointer handed to inflateEnd (retail stores relative to that pointer).
     if (this->ZlibInitialised) {
-        z_stream_s_Local* stream = &this->Stream;
-        inflateEnd(stream);
+        z_stream_s* stream = &this->Stream;
+        z_inflateEnd(stream);
         stream->next_in   = 0;
         stream->next_out  = 0;
         stream->avail_in  = 0;
