@@ -2433,13 +2433,13 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004554a4	CInventoryDef::GetSizeofClass	CInventoryDef	__thiscall	ulong	1	CInventoryDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CInventoryDef_GetSizeofClass_004554a4.cpp
 004554aa	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CLandscapeBackgroundPatch_vectordeletingdestructor_004554aa.cpp
 004554c6	~CPatchTesselationEdgeStrip	CPatchTesselationEdgeStrip	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted									
-00455572	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+00455572	CInventoryCategoryDef	CInventoryCategoryDef	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00455584	CInventoryCategoryDef::GetSizeofClass	CInventoryCategoryDef	__thiscall	ulong	1	CInventoryCategoryDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CInventoryCategoryDef_GetSizeofClass_00455584.cpp
 00455588	Transfer	CInventoryCategoryDef	__fastcall	void	0		1	yes	accepted									
 004555f8	UpdateShadowScene	CEngineLightingManager	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_004555f8.cpp
 00455639	TransferBinaryIn	CPersistTraits<CDefIndex>	__thiscall	CDefIndex	2	CPersistTraits<CDefIndex> *,CMemoryDataInputStream *	1	yes	accepted									
 0045569c	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CLandscapeBackgroundPatch_vectordeletingdestructor_0045569c.cpp
-004556b8	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+004556b8	CMessageEventDef	CMessageEventDef	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 004556ca	CMessageEventDef::GetSizeofClass	CMessageEventDef	__thiscall	ulong	1	CMessageEventDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CMessageEventDef_GetSizeofClass_004556ca.cpp
 004556ce	?Transfer@CMessageEventDef@@UAEXAAVCPersistContext@@@Z	CMessageEventDef	__thiscall	void	1	CGuiControlComboBox *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CMessageEventDef_TransferCMessageEventDefUAEXAAVCPersistContextZ_004556ce.cpp
 00455712	UpdateShadowScene	CEngineLightingManager	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00455712.cpp
@@ -2512,7 +2512,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00456511	CFactionDef::GetSizeofClass	CFactionDef	__thiscall	ulong	1	CFactionDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CFactionDef_GetSizeofClass_00456511.cpp
 00456515	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CLandscapeBackgroundPatch_vectordeletingdestructor_00456515.cpp
 00456531	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::CSymbolInfo>_>	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap	__fastcall	void	2	allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_> *,pair<CCharString,CSymbolMap::CSymbolInfo> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00456531.cpp
-0045654c	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+0045654c	CCameraModeDef	CCameraModeDef	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 0045655e	CCameraModeDef::GetSizeofClass	CCameraModeDef	__thiscall	ulong	1	CCameraModeDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CCameraModeDef_GetSizeofClass_0045655e.cpp
 00456564	Transfer	CCameraModeDef	__fastcall	void	0		1	yes	accepted									
 00456779	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CLandscapeBackgroundPatch_vectordeletingdestructor_00456779.cpp
@@ -2520,11 +2520,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004567bb	CCameraManagerDef::GetSizeofClass	CCameraManagerDef	__thiscall	ulong	1	CCameraManagerDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CCameraManagerDef_GetSizeofClass_004567bb.cpp
 004567bf	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CLandscapeBackgroundPatch_vectordeletingdestructor_004567bf.cpp
 004567db	~CPatchTesselationEdgeStrip	CPatchTesselationEdgeStrip	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_004567db.cpp
-00456802	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+00456802	CCameraManagerSetDef	CCameraManagerSetDef	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00456814	CCameraManagerSetDef::GetSizeofClass	CCameraManagerSetDef	__thiscall	ulong	1	CCameraManagerSetDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CCameraManagerSetDef_GetSizeofClass_00456814.cpp
 00456818	?Transfer@CCameraManagerSetDef@@UAEXAAVCPersistContext@@@Z	CCameraManagerSetDef	__thiscall	void	4	deque<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_> *,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CCameraManagerSetDef_TransferCCameraManagerSetDefUAEXAAVCPersistConte_00456818.cpp
 00456851	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CLandscapeBackgroundPatch_vectordeletingdestructor_00456851.cpp
-0045686d	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+0045686d	CHeroPostcardGeneratorDef	CHeroPostcardGeneratorDef	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 0045687f	CHeroPostcardGeneratorDef::GetSizeofClass	CHeroPostcardGeneratorDef	__thiscall	ulong	1	CHeroPostcardGeneratorDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CHeroPostcardGeneratorDef_GetSizeofClass_0045687f.cpp
 00456883	?Transfer@CHeroPostcardGeneratorDef@@UAEXAAVCPersistContext@@@Z	CHeroPostcardGeneratorDef	__thiscall	void	4	deque<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_> *,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CHeroPostcardGeneratorDef_TransferCHeroPostcardGeneratorDefUAEXAAVCPersist_00456883.cpp
 004568bc	UpdateShadowScene	CEngineLightingManager	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_004568bc.cpp
@@ -2550,7 +2550,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00456d9e	COpinionDeedEffectsDef::GetSizeofClass	COpinionDeedEffectsDef	__thiscall	ulong	1	COpinionDeedEffectsDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\COpinionDeedEffectsDef_GetSizeofClass_00456d9e.cpp
 00456da4	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CLandscapeBackgroundPatch_vectordeletingdestructor_00456da4.cpp
 00456dc0	_Dest_val<std::allocator<CMacro>,CMacro>	_Dest_val<std	__fastcall	void	2	allocator<CMacro> *,CMacro *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\Destvalstd_allocatorCMacroCMacro_00456dc0.cpp
-00456de3	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+00456de3	CCombatDialogueDef	CCombatDialogueDef	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00456df5	CCombatDialogueDef::GetSizeofClass	CCombatDialogueDef	__thiscall	ulong	1	CCombatDialogueDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CCombatDialogueDef_GetSizeofClass_00456df5.cpp
 00456dfb	?Transfer@CCombatDialogueDef@@UAEXAAVCPersistContext@@@Z	CCombatDialogueDef	__fastcall	void	0		1	yes	accepted									
 00456eed	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CLandscapeBackgroundPatch_vectordeletingdestructor_00456eed.cpp
@@ -2610,7 +2610,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004579a2	CSpecialAbilitiesHealLifeDef::GetSizeofClass	CSpecialAbilitiesHealLifeDef	__thiscall	ulong	1	CSpecialAbilitiesHealLifeDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CSpecialAbilitiesHealLifeDef_GetSizeofClass_004579a2.cpp
 004579a6	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CLandscapeBackgroundPatch_vectordeletingdestructor_004579a6.cpp
 004579c2	~CPatchTesselationEdgeStrip	CPatchTesselationEdgeStrip	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_004579c2.cpp
-004579f7	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+004579f7	CSpecialAbilitiesGhostSwordDef	CSpecialAbilitiesGhostSwordDef	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00457a09	CSpecialAbilitiesGhostSwordDef::GetSizeofClass	CSpecialAbilitiesGhostSwordDef	__thiscall	ulong	1	CSpecialAbilitiesGhostSwordDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CSpecialAbilitiesGhostSwordDef_GetSizeofClass_00457a09.cpp
 00457a0d	Transfer	CSpecialAbilitiesGhostSwordDef	__fastcall	void	0		1	yes	accepted									
 00457a67	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CLandscapeBackgroundPatch_vectordeletingdestructor_00457a67.cpp
@@ -2638,7 +2638,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00457eb6	CSpecialAbilitiesElectrocutedEffectDef::GetSizeofClass	CSpecialAbilitiesElectrocutedEffectDef	__thiscall	ulong	1	CSpecialAbilitiesElectrocutedEffectDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CSpecialAbilitiesElectrocutedEffectDef_GetSizeofClass_00457eb6.cpp
 00457eba	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CLandscapeBackgroundPatch_vectordeletingdestructor_00457eba.cpp
 00457ed6	~CPatchTesselationEdgeStrip	CPatchTesselationEdgeStrip	__thiscall	void	1	CPatchTesselationEdgeStrip *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CPatchTesselationEdgeStrip_CPatchTesselationEdgeStrip_00457ed6.cpp
-00457efd	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+00457efd	CSpecialAbilitiesDrunkennessDef	CSpecialAbilitiesDrunkennessDef	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00457f0f	CSpecialAbilitiesDrunkennessDef::GetSizeofClass	CSpecialAbilitiesDrunkennessDef	__thiscall	ulong	1	CSpecialAbilitiesDrunkennessDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CSpecialAbilitiesDrunkennessDef_GetSizeofClass_00457f0f.cpp
 00457f13	Transfer	CSpecialAbilitiesDrunkennessDef	__thiscall	void	1	CGuiControlComboBox *	1	yes	accepted									
 00457f57	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CLandscapeBackgroundPatch_vectordeletingdestructor_00457f57.cpp
@@ -2674,7 +2674,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0045859d	CArmourDef::GetSizeofClass	CArmourDef	__thiscall	ulong	1	CArmourDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CArmourDef_GetSizeofClass_0045859d.cpp
 004585a1	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CLandscapeBackgroundPatch_vectordeletingdestructor_004585a1.cpp
 004585bd	_Dest_val<std::allocator<CMacro>,CMacro>	_Dest_val<std	__fastcall	void	2	allocator<CMacro> *,CMacro *	1	yes	accepted									
-004585e0	CCarriedReadableDef	CCarriedReadableDef	__thiscall	undefined	1	CCarriedReadableDef *	0	yes	accepted									
+004585e0	CHitLocationDef	CHitLocationDef	__thiscall	undefined	1	CCarriedReadableDef *	0	yes	accepted									
 004585fa	CHitLocationDef::GetSizeofClass	CHitLocationDef	__thiscall	ulong	1	CHitLocationDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CHitLocationDef_GetSizeofClass_004585fa.cpp
 004585fe	?Transfer@CHitLocationDef@@UAEXAAVCPersistContext@@@Z	CHitLocationDef	__fastcall	void	0		1	yes	accepted									
 004586eb	UpdateShadowScene	CEngineLightingManager	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_004586eb.cpp
@@ -2687,7 +2687,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004588c2	CCombatSequenceDef::GetSizeofClass	CCombatSequenceDef	__thiscall	ulong	1	CCombatSequenceDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CCombatSequenceDef_GetSizeofClass_004588c2.cpp
 004588c6	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\global_vectordeletingdestructor_004588c6.cpp
 004588e2	OnDie	CTCInventoryItem	__thiscall	void	1	CTCInventoryItem *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\global_OnDie_004588e2.cpp
-004588fb	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+004588fb	CLightningDef	CLightningDef	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 0045890d	CLightningDef::GetSizeofClass	CLightningDef	__thiscall	ulong	1	CLightningDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CLightningDef_GetSizeofClass_0045890d.cpp
 00458911	Transfer	CLightningDef	__fastcall	void	0		1	yes	accepted									
 0045896b	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CLandscapeBackgroundPatch_vectordeletingdestructor_0045896b.cpp
@@ -2703,7 +2703,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00458c46	CMeleeCombatAbilityDef::GetSizeofClass	CMeleeCombatAbilityDef	__thiscall	ulong	1	CMeleeCombatAbilityDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CMeleeCombatAbilityDef_GetSizeofClass_00458c46.cpp
 00458c4a	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CLandscapeBackgroundPatch_vectordeletingdestructor_00458c4a.cpp
 00458c66	FinishMove	CTCAssassinRush	__thiscall	void	2	CTCAssassinRush *,CThingCreatureBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\global_FinishMove_00458c66.cpp
-00458c87	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+00458c87	CMeleeCombatKnockdownEffects	CMeleeCombatKnockdownEffects	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00458c99	CMeleeCombatKnockdownEffects::GetSizeofClass	CMeleeCombatKnockdownEffects	__thiscall	ulong	1	CMeleeCombatKnockdownEffects *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CMeleeCombatKnockdownEffects_GetSizeofClass_00458c99.cpp
 00458c9d	Transfer	CMeleeCombatKnockdownEffects	__fastcall	void	0		1	yes	accepted									
 00458d23	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CLandscapeBackgroundPatch_vectordeletingdestructor_00458d23.cpp
@@ -2720,7 +2720,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0045912f	?Transfer@CThingObjectDef@@UAEXAAVCPersistContext@@@Z	CThingObjectDef	__thiscall	void	2	CThingObjectDef *,CPersistContext *	1	yes	accepted									
 004592ec	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CAssoc_scalardeletingdestructor_004592ec.cpp
 00459321	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CAssoc_scalardeletingdestructor_00459321.cpp
-0045933d	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+0045933d	CCreatureAbilityDef	CCreatureAbilityDef	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 0045934f	CCreatureAbilityDef::GetSizeofClass	CCreatureAbilityDef	__thiscall	ulong	1	CCreatureAbilityDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CCreatureAbilityDef_GetSizeofClass_0045934f.cpp
 00459353	CCreatureAbilityDef::Transfer	CCreatureAbilityDef	__thiscall	void	2	CCreatureAbilityDef *,CPersistContext &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CCreatureAbilityDef_Transfer_00459353.cpp
 00459363	UpdateShadowScene	CEngineLightingManager	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_00459363.cpp
@@ -2731,28 +2731,28 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004594b1	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CAssoc_scalardeletingdestructor_004594b1.cpp
 004594e6	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CAssoc_scalardeletingdestructor_004594e6.cpp
 0045951b	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CAssoc_scalardeletingdestructor_0045951b.cpp
-00459537	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+00459537	CThingGroupDef	CThingGroupDef	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00459549	CThingGroupDef::GetSizeofClass	CThingGroupDef	__thiscall	ulong	1	CThingGroupDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CThingGroupDef_GetSizeofClass_00459549.cpp
 0045954d	CThingGroupDef::Transfer	CThingGroupDef	__thiscall	void	2	CThingGroupDef *,CPersistContext &	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CThingGroupDef_Transfer_0045954d.cpp
 00459550	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CLandscapeBackgroundPatch_vectordeletingdestructor_00459550.cpp
-0045956c	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+0045956c	CPlayerDef	CPlayerDef	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 0045957e	CPlayerDef::GetSizeofClass	CPlayerDef	__thiscall	ulong	1	CPlayerDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CPlayerDef_GetSizeofClass_0045957e.cpp
 00459582	?Transfer@CPlayerDef@@UAEXAAVCPersistContext@@@Z	CPlayerDef	__thiscall	bool	2	CEngine *,C3DBoundingBox *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CPlayerDef_TransferCPlayerDefUAEXAAVCPersistContextZ_00459582.cpp
 004595a3	Transfer<CRGBColour>	CPersistContext	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted									
 004595e3	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CLandscapeBackgroundPatch_vectordeletingdestructor_004595e3.cpp
-004595ff	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+004595ff	CPlayerMovementDef	CPlayerMovementDef	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00459611	CPlayerMovementDef::GetSizeofClass	CPlayerMovementDef	__thiscall	ulong	1	CPlayerMovementDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CPlayerMovementDef_GetSizeofClass_00459611.cpp
 00459615	?Transfer@CPlayerMovementDef@@UAEXAAVCPersistContext@@@Z	CPlayerMovementDef	__fastcall	void	0		1	yes	accepted									
 004596d2	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CLandscapeBackgroundPatch_vectordeletingdestructor_004596d2.cpp
-004596ee	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+004596ee	CSimBuildingDef	CSimBuildingDef	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00459700	CSimBuildingDef::GetSizeofClass	CSimBuildingDef	__thiscall	ulong	1	CSimBuildingDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CSimBuildingDef_GetSizeofClass_00459700.cpp
 00459704	?Transfer@CSimBuildingDef@@UAEXAAVCPersistContext@@@Z	CSimBuildingDef	__thiscall	bool	2	CEngine *,C3DBoundingBox *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CSimBuildingDef_TransferCSimBuildingDefUAEXAAVCPersistContextZ_00459704.cpp
 00459732	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CLandscapeBackgroundPatch_vectordeletingdestructor_00459732.cpp
-0045974e	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+0045974e	CEngineThemeGroupDef	CEngineThemeGroupDef	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00459760	CEngineThemeGroupDef::GetSizeofClass	CEngineThemeGroupDef	__thiscall	ulong	1	CEngineThemeGroupDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineThemeGroupDef_GetSizeofClass_00459760.cpp
 00459764	CEngineThemeGroupDef::Transfer	CEngineThemeGroupDef	__thiscall	void	2	CEngineThemeGroupDef *,CPersistContext &	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineThemeGroupDef_Transfer_00459764.cpp
 00459767	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CLandscapeBackgroundPatch_vectordeletingdestructor_00459767.cpp
-00459783	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+00459783	CEngineThemeDef	CEngineThemeDef	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00459795	CEngineThemeDef::GetSizeofClass	CEngineThemeDef	__thiscall	ulong	1	CEngineThemeDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineThemeDef_GetSizeofClass_00459795.cpp
 0045979b	?Transfer@CEngineThemeDef@@UAEXAAVCPersistContext@@@Z	CEngineThemeDef	__thiscall	void	2	CEngineThemeDef *,CPersistContext *	1	yes	accepted									
 0045990b	UpdateShadowScene	CEngineLightingManager	__thiscall	void	2	CEngineLightingManager *,CEngineCamera *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\45\CEngineLightingManager_UpdateShadowScene_0045990b.cpp
@@ -5068,9 +5068,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004c1f80	_Push_heap<NGraphicAppearance::CMeshInfo*,int,NGraphicAppearance::CMeshInfo,CSortPrimaryMeshesFirst>	_Push_heap<NGraphicAppearance::CMeshInfo*,int,NGraphicAppearance	__fastcall	void	5	CMeshInfo *,int,int,CMeshInfo *,CSortPrimaryMeshesFirst	1	yes	accepted									
 004c2000	_Push_heap<NGraphicAppearance::CMeshInfo*,int,NGraphicAppearance::CMeshInfo,CSortPrimaryMeshesLast>	_Push_heap<NGraphicAppearance::CMeshInfo*,int,NGraphicAppearance	__fastcall	void	5	CMeshInfo *,int,int,CMeshInfo *,CSortPrimaryMeshesLast	1	yes	accepted									
 004c2070	_Move_backward<std::pair<unsigned___int64,NScript::CRuntimeScriptedEntityPersist::CPersistInfo>*,std::pair<unsigned___int64,class_NScript::CRuntimeScriptedEntityPersist::CPersistInfo>*>	_Move_backward<std::pair<unsigned___int64,NScript::CRuntimeScriptedEntityPersist::CPersistInfo>*,std::pair<unsigned___int64,class_NScript::CRuntimeScriptedEntityPersist	__fastcall	pair<unsigned___int64,NScript::CRuntimeScriptedEntityPersist::CPersistInfo> *	4	pair<unsigned___int64,class_NScript::CRuntimeScriptedEntityPersist::CPersistInfo> *,pair<unsigned___int64,class_NScript::CRuntimeScriptedEntityPersist::CPersistInfo> *,pair<unsigned___int64,class_NScript::CRuntimeScriptedEntityPersist::CPersistInfo> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
-004c20d0	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+004c20d0	C3DPositionInterpolator	C3DPositionInterpolator	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 004c20f0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\CLandscapeBackgroundPatch_vectordeletingdestructor_004c20f0.cpp
-004c2110	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+004c2110	C3DOrientationInterpolator	C3DOrientationInterpolator	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 004c2130	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\CLandscapeBackgroundPatch_vectordeletingdestructor_004c2130.cpp
 004c22c0	GetFacingVector	CTCPhysicsStandard	__thiscall	C3DVector	2	CTCPhysicsStandard *,float	1	yes	accepted									
 004c2340	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_004c2340.cpp
@@ -5202,7 +5202,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004c6b60	erase	std::_Rb_tree<void *, std::pair<void *const, CBulletTimeManager::CBulletTimeInfo>, std::_Select1st<std::pair<void *const, CBulletTimeManager::CBulletTimeInfo>>, std::less<void *>, std::allocator<std::pair<void *const, CBulletTimeManager::CBulletTimeInfo>>>	unknown	undefined	0		0	yes	accepted									
 004c6bc0	SplineDataList::FindAndInsert	SplineDataList	unknown	undefined	0		0	yes	accepted									
 004c6e00	SplineDataList::FindOrInsert	SplineDataList	unknown	undefined	0		0	yes	accepted									
-004c6fb0	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+004c6fb0	CMessageBase	CMessageBase	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 004c6fd0	NTCMessages::CMessageBase::vfunc_1	NTCMessages::CMessageBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004c7000	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\CLandscapeBackgroundPatch_vectordeletingdestructor_004c7000.cpp
 004c70f0	IsActive	CTCScriptedControl	__thiscall	bool	1	CTCScriptedControl *	1	yes	accepted									
@@ -5313,7 +5313,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004cb5e0	std::_Insertion_sort_BinaryInsert	std	unknown	undefined	0		0	yes	accepted									
 004cb640	_Push_heap<std::pair<float,EConversationAttitude>*,int,std::pair<float,enum_EConversationAttitude>,CKeyPairCompareLess<float,EConversationAttitude>_>	_Push_heap<std::pair<float,EConversationAttitude>*,int,std	__fastcall	void	5	pair<float,EConversationAttitude> *,int,int,pair<float,enum_EConversationAttitude> *,CKeyPairCompareLess<float,EConversationAttitude>	1	yes	accepted									
 004cb6e0	GetMapwhoPosition	CTCPhysicsBase	__thiscall	C3DVector	1	CTCPhysicsBase *	1	yes	accepted									
-004cb750	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+004cb750	CMessageClearPrimitives	CMessageClearPrimitives	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 004cb770	NTCMessages::CMessageClearPrimitives::vfunc_1	NTCMessages::CMessageClearPrimitives	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004cb780	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4c\CLandscapeBackgroundPatch_vectordeletingdestructor_004cb780.cpp
 004cb9f0	for_each<std::pair<ETCInterfaceType, CTCBase *> *, CCallOnKill>	std	__fastcall	CPixelFormat *	3	CPixelFormat *,CPixelFormat *,CPixelFormat *	1	yes	accepted									
@@ -7619,35 +7619,35 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004e37bf	~CGlobalDef	CGlobalDef	__thiscall	void	1	CGlobalDef *	1	yes	accepted									
 004e380e	CAIStateGroupBase	CAIStateGroupBase	__thiscall	undefined	1	CAIStateGroupBase *	0	yes	accepted									
 004e3828	CClockDef::GetSizeofClass	CClockDef	__thiscall	ulong	1	CClockDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CClockDef_GetSizeofClass_004e3828.cpp
-004e382c	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+004e382c	CMazeBattleDef	CMazeBattleDef	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 004e383e	CMazeBattleDef::GetSizeofClass	CMazeBattleDef	__thiscall	ulong	1	CMazeBattleDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CMazeBattleDef_GetSizeofClass_004e383e.cpp
 004e3842	Transfer	CMazeBattleDef	__fastcall	void	0		1	yes	accepted									
 004e38b2	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CLandscapeBackgroundPatch_vectordeletingdestructor_004e38b2.cpp
-004e38ce	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+004e38ce	CThunderBattleDef	CThunderBattleDef	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 004e38e0	CThunderBattleDef::GetSizeofClass	CThunderBattleDef	__thiscall	ulong	1	CThunderBattleDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CThunderBattleDef_GetSizeofClass_004e38e0.cpp
 004e38e4	?Transfer@CThunderBattleDef@@UAEXAAVCPersistContext@@@Z	CThunderBattleDef	__thiscall	void	4	deque<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_> *,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CThunderBattleDef_TransferCThunderBattleDefUAEXAAVCPersistContextZ_004e38e4.cpp
 004e391d	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CLandscapeBackgroundPatch_vectordeletingdestructor_004e391d.cpp
-004e3939	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+004e3939	CWhisperBattleDef	CWhisperBattleDef	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 004e394b	CWhisperBattleDef::GetSizeofClass	CWhisperBattleDef	__thiscall	ulong	1	CWhisperBattleDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CWhisperBattleDef_GetSizeofClass_004e394b.cpp
 004e394f	?Transfer@CWhisperBattleDef@@UAEXAAVCPersistContext@@@Z	CWhisperBattleDef	__thiscall	bool	2	CEngine *,C3DBoundingBox *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CWhisperBattleDef_TransferCWhisperBattleDefUAEXAAVCPersistContextZ_004e394f.cpp
 004e3970	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CLandscapeBackgroundPatch_vectordeletingdestructor_004e3970.cpp
-004e398c	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+004e398c	CWaspQueenBattleDef	CWaspQueenBattleDef	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 004e399e	CWaspQueenBattleDef::GetSizeofClass	CWaspQueenBattleDef	__thiscall	ulong	1	CWaspQueenBattleDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CWaspQueenBattleDef_GetSizeofClass_004e399e.cpp
 004e39a2	CWaspQueenBattleDef::Transfer	CWaspQueenBattleDef	__thiscall	void	2	CWaspQueenBattleDef *,CPersistContext &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CWaspQueenBattleDef_Transfer_004e39a2.cpp
 004e39b2	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CLandscapeBackgroundPatch_vectordeletingdestructor_004e39b2.cpp
-004e39ce	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+004e39ce	CJackOfBladesBattleDef	CJackOfBladesBattleDef	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 004e39e0	CJackOfBladesBattleDef::GetSizeofClass	CJackOfBladesBattleDef	__thiscall	ulong	1	CJackOfBladesBattleDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CJackOfBladesBattleDef_GetSizeofClass_004e39e0.cpp
 004e39e6	Transfer	CJackOfBladesBattleDef	__fastcall	void	0		1	yes	accepted									
 004e3aae	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CLandscapeBackgroundPatch_vectordeletingdestructor_004e3aae.cpp
-004e3aca	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+004e3aca	CScorpionKingBattleDef	CScorpionKingBattleDef	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 004e3adc	CScorpionKingBattleDef::GetSizeofClass	CScorpionKingBattleDef	__thiscall	ulong	1	CScorpionKingBattleDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CScorpionKingBattleDef_GetSizeofClass_004e3adc.cpp
 004e3ae0	Transfer	CScorpionKingBattleDef	__fastcall	void	0		1	yes	accepted									
 004e3b50	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CLandscapeBackgroundPatch_vectordeletingdestructor_004e3b50.cpp
-004e3b6c	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+004e3b6c	CTrollBattleDef	CTrollBattleDef	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 004e3b7e	CTrollBattleDef::GetSizeofClass	CTrollBattleDef	__thiscall	ulong	1	CTrollBattleDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CTrollBattleDef_GetSizeofClass_004e3b7e.cpp
 004e3b82	Transfer	CTrollBattleDef	__fastcall	void	0		1	yes	accepted									
 004e3bf2	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CLandscapeBackgroundPatch_vectordeletingdestructor_004e3bf2.cpp
-004e3c0e	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+004e3c0e	CBalverineBattleDef	CBalverineBattleDef	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 004e3c20	CBalverineBattleDef::GetSizeofClass	CBalverineBattleDef	__thiscall	ulong	1	CBalverineBattleDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CBalverineBattleDef_GetSizeofClass_004e3c20.cpp
 004e3c24	?Transfer@CBalverineBattleDef@@UAEXAAVCPersistContext@@@Z	CBalverineBattleDef	__thiscall	bool	2	CEngine *,C3DBoundingBox *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CBalverineBattleDef_TransferCBalverineBattleDefUAEXAAVCPersistContex_004e3c24.cpp
 004e3c52	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CLandscapeBackgroundPatch_vectordeletingdestructor_004e3c52.cpp
@@ -7674,7 +7674,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004e3f21	CAIStateGroupBase	CAIStateGroupBase	__thiscall	undefined	1	CAIStateGroupBase *	0	yes	accepted									
 004e3f3b	CIdleSchedulerDef::GetSizeofClass	CIdleSchedulerDef	__thiscall	ulong	1	CIdleSchedulerDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CIdleSchedulerDef_GetSizeofClass_004e3f3b.cpp
 004e3f3f	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CEngineSubPrimitiveText_scalardeletingdestructor_004e3f3f.cpp
-004e3f65	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+004e3f65	CAreaOfEffectAttackDef	CAreaOfEffectAttackDef	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 004e3f77	CAreaOfEffectAttackDef::GetSizeofClass	CAreaOfEffectAttackDef	__thiscall	ulong	1	CAreaOfEffectAttackDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CAreaOfEffectAttackDef_GetSizeofClass_004e3f77.cpp
 004e3f7b	?Transfer@CAreaOfEffectAttackDef@@UAEXAAVCPersistContext@@@Z	CAreaOfEffectAttackDef	__thiscall	void	4	deque<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_> *,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CAreaOfEffectAttackDef_TransferCAreaOfEffectAttackDefUAEXAAVCPersistCon_004e3f7b.cpp
 004e3fb4	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4e\CLandscapeBackgroundPatch_vectordeletingdestructor_004e3fb4.cpp
@@ -11585,7 +11585,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005bb1fa	_Fill_n<unsigned_long*,unsigned_int,unsigned_long>	_global	__fastcall	void	3	ulong *,uint,ulong *	1	yes	accepted									
 005bb220	TreeInsertNode_24Byte	_global	unknown	undefined	0		0	yes	accepted									
 005bb2a8	RBTree_InsertUpperBound_24Byte	_global	unknown	undefined	0		0	yes	accepted									
-005bb32e	C3DAnimationBlendState	C3DAnimationBlendState	__thiscall	undefined	1	C3DAnimationBlendState *	0	yes	accepted									
+005bb32e	CEnginePrimitiveHandle	CEnginePrimitiveHandle	__thiscall	undefined	1	C3DAnimationBlendState *	0	yes	accepted									
 005bb346	vector	std::vector<CCompositeBlendDesc, std::allocator<CCompositeBlendDesc>>	unknown	undefined	0		0	yes	accepted									
 005bb37d	pair<unsigned_long,CAnimationEntry>	pair<unsigned_long	__thiscall	undefined	2	pair<unsigned_long,CAnimationEntry> *,pair<unsigned_long,class_CAnimationEntry> *	0	yes	accepted									
 005bb3b3	set	std::set<EClothingSuitPart, std::less<EClothingSuitPart>, std::allocator<EClothingSuitPart>>	__thiscall	CTexture *	1	CDisplayManager *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5b\CDisplayManager_CopyBackBufferToTexture_005bb3b3.cpp
@@ -12095,7 +12095,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005d8933	operator[]	std::map<unsigned long, long, std::less<unsigned long>, std::allocator<std::pair<unsigned long const, long>>>	__thiscall	long *	2	map<NUISystem::CComponent*,long,std::less<NUISystem::CComponent*>,std::allocator<std::pair<NUISystem::CComponent*_const,long>_>_> *,CComponent * *	1	yes	accepted									
 005d8978	TransferMap<long,long>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,map<long,long,std::less<long>,std::allocator<std::pair<long_const_,long>_>_> *,long *	1	yes	accepted									
 005d8c6a	Transfer<long>	CPersistContext	__thiscall	void	3	CPersistContext *,char *,long *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\CPersistContext_Transferlong_005d8c6a.cpp
-005d8c90	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+005d8c90	CMessageOnPickup	CMessageOnPickup	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 005d8cb0	NTCMessages::CMessageOnPickup::vfunc_1	NTCMessages::CMessageOnPickup	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 005d8d50	AddToInventory	CTCInventoryItem	__thiscall	bool	7	CTCInventoryItem *,CTCInventoryBase *,bool,bool,long,bool,bool	1	yes	accepted									
 005d8e20	RemoveFromInventory	CTCInventoryItem	__thiscall	void	1	CTCInventoryItem *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\CTCInventoryItem_RemoveFromInventory_005d8e20.cpp
@@ -14114,7 +14114,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00658020	DrawExpressionButton	CDrawAbilityButtonsPC	__thiscall	void	7	CDrawAbilityButtonsPC *,CEnginePrimitivePrepareInfo *,vector<long,std::allocator<long>_> *,long,long,long,float	1	yes	accepted									
 00658240	CDrawMouseCursor	CDrawMouseCursor	__thiscall	undefined	3	CDrawMouseCursor *,CPlayerGui *,vector<NPlayerGui::CDrawBase*,std::allocator<NPlayerGui::CDrawBase*>_> *	0	yes	accepted									
 006582df	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\65\CLandscapeBackgroundPatch_vectordeletingdestructor_006582df.cpp
-00658301	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+00658301	CVillageTaskBase	CVillageTaskBase	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 0065846c	CNearestBuildingWithProperty	CNearestBuildingWithProperty	__thiscall	undefined	3	CNearestBuildingWithProperty *,C3DVector *,ESimBuildingProperty	0	yes	accepted									
 006584c5	SetTorchTaskAsAcceptedByThing	CTCVillage	__thiscall	bool	3	CTCVillage *,CVillageTaskCarryCrate *,CThing *	1	yes	accepted									
 006584f9	SetHornTaskAsAcceptedByThing	CTCVillage	__thiscall	bool	3	CTCVillage *,CVillageTaskCarryCrate *,CThing *	1	yes	accepted									
@@ -17554,7 +17554,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006e7820	CGameScriptInterface::WaitForCameraMessage	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,CCharString const &	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\6e\0x006E7820_global_WaitForCameraMessage_CGameScriptInterface_UBEXABVCCharString_Z.cpp				
 006e7920	CGameScriptInterface::CheckForCameraMessage	CGameScriptInterface	__thiscall	bool	2	CGameScriptInterface *,CCharString const &	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\6e\0x006E7920_global_CheckForCameraMessage_CGameScriptInterface_UBE_NABVCCharString_Z.cpp				
 006e79e0	CGameScriptInterface::RegisterTimer	CGameScriptInterface	__thiscall	long	1	CGameScriptInterface *	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\6e\0x006E79E0_global_RegisterTimer_CGameScriptInterface_UAEJXZ.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6e\CGameScriptInterface_RegisterTimer_006e79e0.cpp
-006e7a60	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+006e7a60	CScriptGameResourceObjectBase	CScriptGameResourceObjectBase	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 006e7ab0	_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>	_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6e\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006e7ab0.cpp
 006e7af0	_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>	_Dest_val<std::allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_>,CCountedPointer<QuadricOptimiserInternals	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6e\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_006e7af0.cpp
 006e7b40	CScriptThing	CScriptThing	__thiscall	undefined	1	CCarriedReadableDef *	0	yes	accepted									
@@ -18520,7 +18520,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00717bc0	CActionTalkBase::CActionTalkBase	CActionTalkBase	unknown	undefined	0		0	yes	accepted									
 00717c50	CActionTalkToThing	CActionTalkToThing	__thiscall	undefined	8	CActionTalkToThing *,CThing *,ulong,char *,ETextGroupSelectionMethod,bool,bool,bool	0	yes	accepted									
 00717d40	CActionTalkToThing	CActionTalkToThing	__thiscall	undefined	9	CActionTalkToThing *,CThing *,char *,char *,CCharString *,CCharString *,CCharString *,bool,bool	0	yes	accepted									
-00717e60	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+00717e60	CScriptConversation	CScriptConversation	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00717eb0	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00717f90	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00718020	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\71\CLandscapeBackgroundPatch_vectordeletingdestructor_00718020.cpp
@@ -18659,7 +18659,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0071b700	_For_each<std::_List_unchecked_iterator<std::_List_val<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>_>,CSetThingAsDrawable>	_For_each<std::_List_unchecked_iterator<std::_List_val<CIntelligentPointer<CThing>,std	__fastcall	CSetThingAsDrawable	3	_List_unchecked_iterator<std::_List_val<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>_>,_List_unchecked_iterator<std::_List_val<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>_>,CSetThingAsDrawable	1	yes	accepted									
 0071b790	CTCAppearanceMorphBase::vfunc_21	CTCAppearanceMorphBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0071b7a0	CTCAppearanceMorphBase::vfunc_28	CTCAppearanceMorphBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0071b800	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+0071b800	CMessageOnMorphChanged	CMessageOnMorphChanged	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 0071b820	NTCMessages::CMessageOnMorphChanged::vfunc_1	NTCMessages::CMessageOnMorphChanged	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0071b840	CopyCustomTattooToUserDir	CTattooDef	__thiscall	bool	1	CTattooDef *	1	yes	accepted									
 0071ba40	SetAsTeenager	CTCHeroMorph	__thiscall	void	2	CTCHeroMorph *,bool	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\71\CTCHeroMorph_SetAsTeenager_0071ba40.cpp
@@ -21871,7 +21871,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007a62d0	`vector_deleting_destructor'	CThingHolySite	__thiscall	void *	2	CThingHolySite *,uint	1	yes	accepted									
 007a6320	ListHead_InitCircular_0xc_007a6320	_global	unknown	undefined	0		0	yes	review-medium						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7a\global_ListHeadInitCircular0xc007a6320_007a6320.cpp
 007a63d0	GetPBestThingInRoughArea<CFilter_Bind2<CThingFilter_IsNot,CIsVeryCloseMotionlessCreature>,CThingCompare_Nearest,CThingCreatureBase>	CThingSearchTools	__thiscall	bool	5	CThingSearchTools *,C2DBoxI *,CFilter_Bind2<CThingFilter_IsNot,CIsVeryCloseMotionlessCreature> *,CThingCompare_Nearest *,CThingCreatureBase * *	1	yes	accepted									
-007a6650	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+007a6650	CMessageOnMeshReplaced	CMessageOnMeshReplaced	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 007a6670	NTCMessages::CMessageOnMeshReplaced::vfunc_1	NTCMessages::CMessageOnMeshReplaced	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007a6690	NGraphicAppearance::CTCGraphicAppearanceReplaceableMesh::vfunc_1	NGraphicAppearance::CTCGraphicAppearanceReplaceableMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007a66a0	CTCGraphicAppearanceReplaceableMesh	CTCGraphicAppearanceReplaceableMesh	__thiscall	undefined	2	CTCGraphicAppearanceReplaceableMesh *,CThing *	0	yes	accepted									
@@ -30199,11 +30199,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008fe82a	GetName	CAIStateGroup_MinionGuardBribed	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fe82a.cpp
 008fe83d	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 008fe84f	GetName	CAIStateGroup_ApprenticeHero	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fe84f.cpp
-008fe862	CAIStateGroupBase	CAIStateGroupBase	__thiscall	undefined	1	CAIStateGroupBase *	0	yes	accepted									
+008fe862	CAIStateGroup_ApprenticeHero	CAIStateGroup_ApprenticeHero	__thiscall	undefined	1	CAIStateGroupBase *	0	yes	accepted									
 008fe87c	CAIStateGroup_ApprenticeHero::IsTimingCritical	CAIStateGroup_ApprenticeHero	__thiscall	bool	1	CAIStateGroup_ApprenticeHero *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAIStateGroupApprenticeHero_IsTimingCritical_008fe87c.cpp
 008fe880	_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>	_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\global_Destval_008fe880.cpp
 008fe893	GetName	CAIStateGroup_SkillPractice	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fe893.cpp
-008fe8a6	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+008fe8a6	CAIStateGroup_SkillPractice	CAIStateGroup_SkillPractice	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 008fe8b8	GetName	CAIStateGroup_OnHeroPush	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fe8b8.cpp
 008fe8cb	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 008fe8dd	GetName	CAIStateGroup_AvoidRegionExit	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CActionDoCreatureAction_GetActionName_008fe8dd.cpp
@@ -30241,7 +30241,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008febb3	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 008febc5	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CLandscapeBackgroundPatch_vectordeletingdestructor_008febc5.cpp
 008fec05	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008fec05.cpp
-008fec21	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008fec21	CAIStateGroup_MinionFindPersonalSpace	CAIStateGroup_MinionFindPersonalSpace	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008fec45	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008fec45.cpp
 008fec6b	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 008fec7d	CAIStateGroup_MinionReactToPlayerInteraction::IsTimingCritical	CAIStateGroup_MinionReactToPlayerInteraction	__thiscall	bool	1	CAIStateGroup_MinionReactToPlayerInteraction *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAIStateGroupMinionReactToPlayerInteraction_IsTimingCritical_008fec7d.cpp
@@ -30249,81 +30249,81 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008fec9c	CAIStateGroup_MinionReactToCriminal	CAIStateGroup_MinionReactToCriminal	__thiscall	undefined	1	CAIStateGroup_BalverineCornered *	0	yes	accepted									
 008fecd0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CLandscapeBackgroundPatch_vectordeletingdestructor_008fecd0.cpp
 008fecec	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::CSymbolInfo>_>	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap	__fastcall	void	2	allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_> *,pair<CCharString,CSymbolMap::CSymbolInfo> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_008fecec.cpp
-008fed07	CAIStateGroup_MeleeAttacker_Constructor	_global	unknown	undefined	0		0	unmeasured	accepted									
+008fed07	CAIStateGroup_MinionGuardReactToCriminal	CAIStateGroup_MinionGuardReactToCriminal	unknown	undefined	0		0	unmeasured	accepted									
 008fed2b	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008fed2b.cpp
-008fed51	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008fed51	CAIStateGroup_MinionGuardReactToBribe	CAIStateGroup_MinionGuardReactToBribe	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008fed75	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008fed75.cpp
 008fedbf	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008fedbf.cpp
 008feddb	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 008feded	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008feded.cpp
 008fee2d	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008fee2d.cpp
 008fee6d	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008fee6d.cpp
-008fee89	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008fee89	CAIStateGroup_MinionMotherProtectFamily	CAIStateGroup_MinionMotherProtectFamily	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008feead	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008feead.cpp
-008feed3	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008feed3	CAIStateGroup_MinionKidAnnoy	CAIStateGroup_MinionKidAnnoy	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008feef7	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008feef7.cpp
 008fef1d	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 008fef2f	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008fef2f.cpp
 008fef6f	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008fef6f.cpp
 008fef8b	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 008fef9d	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008fef9d.cpp
-008fefb9	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008fefb9	CAIStateGroup_MinionFaceHero	CAIStateGroup_MinionFaceHero	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008fefdd	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008fefdd.cpp
-008ff003	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008ff003	CAIStateGroup_MinionPutOutFires	CAIStateGroup_MinionPutOutFires	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008ff027	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008ff027.cpp
-008ff04d	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008ff04d	CAIStateGroup_MinionWatchFires	CAIStateGroup_MinionWatchFires	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008ff071	CAIStateGroup_MinionWatchFires::AllowPriorityOverlap	CAIStateGroup_MinionWatchFires	__thiscall	bool	1	CAIStateGroup_MinionWatchFires *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAIStateGroupMinionWatchFires_AllowPriorityOverlap_008ff071.cpp
 008ff074	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008ff074.cpp
-008ff09a	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008ff09a	CAIStateGroup_MinionReactToCorpse	CAIStateGroup_MinionReactToCorpse	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008ff0be	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008ff0be.cpp
-008ff0e4	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008ff0e4	CAIStateGroup_MinionReactToUnconsciousPerson	CAIStateGroup_MinionReactToUnconsciousPerson	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008ff108	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008ff108.cpp
-008ff12e	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008ff12e	CAIStateGroup_MinionReactToEnemy	CAIStateGroup_MinionReactToEnemy	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008ff152	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008ff152.cpp
 008ff19c	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ff19c.cpp
 008ff1dc	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ff1dc.cpp
-008ff1f8	CAIStateGroup_OpinionReactionRoot	CAIStateGroup_OpinionReactionRoot	__thiscall	undefined	1	CAIStateGroup_OpinionReactionRoot *	0	yes	accepted									
+008ff1f8	CAIStateGroup_UsesSeat	CAIStateGroup_UsesSeat	__thiscall	undefined	1	CAIStateGroup_OpinionReactionRoot *	0	yes	accepted									
 008ff22b	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ff22b.cpp
-008ff247	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008ff247	CAIStateGroup_MinionSitOnSeatBase	CAIStateGroup_MinionSitOnSeatBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008ff26b	CAIStateGroup_MinionSitOnSeatBase::IsStateGroupStillValid	CAIStateGroup_MinionSitOnSeatBase	__thiscall	bool	1	CAIStateGroup_MinionSitOnSeatBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAIStateGroupMinionSitOnSeatBase_IsStateGroupStillValid_008ff26b.cpp
 008ff26e	CAIStateGroup_MinionSitOnSeatBase::IsOwnerSubjectToRegulation	CAIStateGroup_MinionSitOnSeatBase	__thiscall	bool	1	CAIStateGroup_MinionSitOnSeatBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAIStateGroupMinionSitOnSeatBase_IsOwnerSubjectToRegulation_008ff26e.cpp
 008ff271	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ff271.cpp
-008ff28d	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+008ff28d	CAIStateGroup_MinionSitAtWork	CAIStateGroup_MinionSitAtWork	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 008ff29f	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ff29f.cpp
-008ff2bb	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+008ff2bb	CAIStateGroup_MinionSitAtInn	CAIStateGroup_MinionSitAtInn	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 008ff2cd	CAIStateGroup_MinionSitAtInn::IsOwnerSubjectToRegulation	CAIStateGroup_MinionSitAtInn	__thiscall	bool	1	CAIStateGroup_MinionSitAtInn *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAIStateGroupMinionSitAtInn_IsOwnerSubjectToRegulation_008ff2cd.cpp
 008ff2d0	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ff2d0.cpp
-008ff2ec	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+008ff2ec	CAIStateGroup_MinionSitAtSchool	CAIStateGroup_MinionSitAtSchool	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 008ff2fe	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ff2fe.cpp
 008ff33e	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ff33e.cpp
-008ff35a	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+008ff35a	CAIStateGroup_MinionSitAtHome	CAIStateGroup_MinionSitAtHome	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 008ff36c	CAIStateGroup_MinionSitAtHome::AllowPriorityOverlap	CAIStateGroup_MinionSitAtHome	__thiscall	bool	1	CAIStateGroup_MinionSitAtHome *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAIStateGroupMinionSitAtHome_AllowPriorityOverlap_008ff36c.cpp
 008ff36f	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ff36f.cpp
-008ff38b	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008ff38b	CAIStateGroup_SitRoundCampfire	CAIStateGroup_SitRoundCampfire	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008ff3af	CAIStateGroup_SitRoundCampfire::AllowPriorityOverlap	CAIStateGroup_SitRoundCampfire	__thiscall	bool	1	CAIStateGroup_SitRoundCampfire *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAIStateGroupSitRoundCampfire_AllowPriorityOverlap_008ff3af.cpp
 008ff3b2	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008ff3b2.cpp
 008ff3fc	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ff3fc.cpp
-008ff418	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008ff418	CAIStateGroup_MinionGuardReactToPlayerWithWeapon	CAIStateGroup_MinionGuardReactToPlayerWithWeapon	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008ff43c	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008ff43c.cpp
 008ff486	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ff486.cpp
-008ff4a2	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008ff4a2	CAIStateGroup_BanditSitRoundCampfire	CAIStateGroup_BanditSitRoundCampfire	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008ff4c6	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008ff4c6.cpp
-008ff4ec	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008ff4ec	CAIStateGroup_SeekEnemy	CAIStateGroup_SeekEnemy	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008ff510	CAIStateGroup_SeekEnemy::GetStateGroupType	CAIStateGroup_SeekEnemy	__thiscall	EAIStateGroupType	1	CAIStateGroup_SeekEnemy *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAIStateGroupSeekEnemy_GetStateGroupType_008ff510.cpp
 008ff514	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008ff514.cpp
-008ff53a	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008ff53a	CAIStateGroup_SeekScriptTarget	CAIStateGroup_SeekScriptTarget	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008ff55e	CAIStateGroup_SeekScriptTarget::GetStateGroupType	CAIStateGroup_SeekScriptTarget	__thiscall	EAIStateGroupType	1	CAIStateGroup_SeekScriptTarget *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAIStateGroupSeekScriptTarget_GetStateGroupType_008ff55e.cpp
 008ff562	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008ff562.cpp
-008ff588	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008ff588	CAIStateGroup_StealthSeekEnemy	CAIStateGroup_StealthSeekEnemy	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008ff5ac	CAIStateGroup_StealthSeekEnemy::GetStateGroupType	CAIStateGroup_StealthSeekEnemy	__thiscall	EAIStateGroupType	1	CAIStateGroup_StealthSeekEnemy *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAIStateGroupStealthSeekEnemy_GetStateGroupType_008ff5ac.cpp
 008ff5b0	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008ff5b0.cpp
-008ff5d6	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008ff5d6	CAIStateGroup_NonVillageGuardPatrol	CAIStateGroup_NonVillageGuardPatrol	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008ff5fa	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008ff5fa.cpp
 008ff644	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ff644.cpp
 008ff684	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ff684.cpp
 008ff6c4	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ff6c4.cpp
 008ff704	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ff704.cpp
-008ff720	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008ff720	CAIStateGroup_EnemyCreatureBase	CAIStateGroup_EnemyCreatureBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008ff744	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ff744.cpp
 008ff784	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ff784.cpp
 008ff7c4	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ff7c4.cpp
@@ -30334,38 +30334,38 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008ff8b2	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ff8b2.cpp
 008ff8f2	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ff8f2.cpp
 008ff932	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ff932.cpp
-008ff94e	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008ff94e	CAIStateGroup_MeleeCombatNearbyBase	CAIStateGroup_MeleeCombatNearbyBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008ff972	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ff972.cpp
-008ff98e	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+008ff98e	CAIStateGroup_MeleeCombatNearby2	CAIStateGroup_MeleeCombatNearby2	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 008ff9a0	CAIStateGroup_MeleeCombatNearby2::GetStateGroupType	CAIStateGroup_MeleeCombatNearby2	__thiscall	EAIStateGroupType	1	CAIStateGroup_MeleeCombatNearby2 *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAIStateGroupMeleeCombatNearby2_GetStateGroupType_008ff9a0.cpp
 008ff9a4	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ff9a4.cpp
-008ff9c0	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+008ff9c0	CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose	CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 008ff9d2	CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::GetStateGroupType	CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose	__thiscall	EAIStateGroupType	1	CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAIStateGroupMeleeCombatNearbyAttackWhenVeryClose_GetStateGroupType_008ff9d2.cpp
 008ff9d6	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ff9d6.cpp
-008ff9f2	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008ff9f2	CAIStateGroup_VillageTaskTorch	CAIStateGroup_VillageTaskTorch	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008ffa16	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008ffa16.cpp
-008ffa3c	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008ffa3c	CAIStateGroup_VillageTaskPatrol	CAIStateGroup_VillageTaskPatrol	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008ffa60	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008ffa60.cpp
-008ffa86	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008ffa86	CAIStateGroup_VillageTaskSecuritySweep	CAIStateGroup_VillageTaskSecuritySweep	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008ffaaa	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008ffaaa.cpp
-008ffad0	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008ffad0	CAIStateGroup_VillageTaskPickCrops	CAIStateGroup_VillageTaskPickCrops	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008ffaf4	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008ffaf4.cpp
-008ffb1a	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008ffb1a	CAIStateGroup_VillageTaskHorn	CAIStateGroup_VillageTaskHorn	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008ffb3e	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008ffb3e.cpp
 008ffb88	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ffb88.cpp
-008ffba4	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008ffba4	CAIStateGroup_KidWatchHopscotch	CAIStateGroup_KidWatchHopscotch	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008ffbc8	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008ffbc8.cpp
 008ffbee	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008ffc12	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008ffc12.cpp
 008ffc5c	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ffc5c.cpp
-008ffc78	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008ffc78	CAIStateGroup_KidReactToBlockage	CAIStateGroup_KidReactToBlockage	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008ffc9c	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008ffc9c.cpp
 008ffcc2	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 008ffcd4	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ffcd4.cpp
 008ffcf0	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 008ffd02	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ffd02.cpp
 008ffd1e	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ffd1e.cpp
-008ffd3a	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008ffd3a	CAIStateGroup_WorkInWarehouse	CAIStateGroup_WorkInWarehouse	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008ffd5e	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008ffd5e.cpp
 008ffd84	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008ffda8	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008ffda8.cpp
@@ -30377,14 +30377,14 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008ffed8	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008ffed8.cpp
 008fff18	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008fff18.cpp
 008fff58	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CAssoc_scalardeletingdestructor_008fff58.cpp
-008fff74	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008fff74	CAIStateGroup_SitForMeal	CAIStateGroup_SitForMeal	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008fff98	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008fff98.cpp
-008fffbe	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+008fffbe	CAIStateGroup_PrepareMeal	CAIStateGroup_PrepareMeal	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 008fffe2	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8f\CEngineSubPrimitiveText_scalardeletingdestructor_008fffe2.cpp
-00900008	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+00900008	CAIStateGroup_LightHomeCandle	CAIStateGroup_LightHomeCandle	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 0090002c	CAIStateGroup_LightHomeCandle::IsWorkCandle	CAIStateGroup_LightHomeCandle	__thiscall	bool	1	CAIStateGroup_LightHomeCandle *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupLightHomeCandle_IsWorkCandle_0090002c.cpp
 0090002f	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_0090002f.cpp
-0090004b	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+0090004b	CAIStateGroup_LightWorkCandle	CAIStateGroup_LightWorkCandle	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 0090005d	CAIStateGroup_LightWorkCandle::IsWorkCandle	CAIStateGroup_LightWorkCandle	__thiscall	bool	1	CAIStateGroup_LightWorkCandle *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupLightWorkCandle_IsWorkCandle_0090005d.cpp
 00900060	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_00900060.cpp
 009000a0	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_009000a0.cpp
@@ -30392,28 +30392,28 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009000ef	CAIStateGroup_WanderAroundShops::AllowPriorityOverlap	CAIStateGroup_WanderAroundShops	__thiscall	bool	1	CAIStateGroup_WanderAroundShops *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupWanderAroundShops_AllowPriorityOverlap_009000ef.cpp
 009000f2	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CLandscapeBackgroundPatch_vectordeletingdestructor_009000f2.cpp
 0090010e	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::CSymbolInfo>_>	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap	__fastcall	void	2	allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_> *,pair<CCharString,CSymbolMap::CSymbolInfo> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_0090010e.cpp
-00900129	CAIStateGroup_RangeAttacker_Constructor	_global	unknown	undefined	0		0	unmeasured	accepted									
+00900129	CAIStateGroup_StayNearFoodHall	CAIStateGroup_StayNearFoodHall	unknown	undefined	0		0	unmeasured	accepted									
 0090014d	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CEngineSubPrimitiveText_scalardeletingdestructor_0090014d.cpp
 00900173	CAIStateGroup_GoToPub	CAIStateGroup_GoToPub	__thiscall	undefined	1	CAIStateGroup_GoToPub *	0	yes	accepted									
 009001d6	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CLandscapeBackgroundPatch_vectordeletingdestructor_009001d6.cpp
-009001f2	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+009001f2	CAIStateGroup_SitInPub	CAIStateGroup_SitInPub	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 00900216	CAIStateGroup_SitInPub::IsStateGroupStillValid	CAIStateGroup_SitInPub	__thiscall	bool	1	CAIStateGroup_SitInPub *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupSitInPub_IsStateGroupStillValid_00900216.cpp
 0090021b	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CEngineSubPrimitiveText_scalardeletingdestructor_0090021b.cpp
-00900241	~CCombatAbilityBlockDefBase	CCombatAbilityBlockDefBase	__thiscall	void	1	CCombatAbilityBlockDefBase *	1	yes	accepted									
+00900241	CAIStateGroup_MinionHawkingFromStall	CAIStateGroup_MinionHawkingFromStall	__thiscall	void	1	CCombatAbilityBlockDefBase *	1	yes	accepted									
 0090027f	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CEngineSubPrimitiveText_scalardeletingdestructor_0090027f.cpp
-009002a5	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+009002a5	CAIStateGroup_SellToBuyer	CAIStateGroup_SellToBuyer	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 009002c9	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CEngineSubPrimitiveText_scalardeletingdestructor_009002c9.cpp
 00900313	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_00900313.cpp
 0090032f	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00900341	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CLandscapeBackgroundPatch_vectordeletingdestructor_00900341.cpp
-0090035d	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+0090035d	CAIStateGroup_TrollBase	CAIStateGroup_TrollBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 00900381	CAIStateGroup_TrollBase::IsTimingCritical	CAIStateGroup_TrollBase	__thiscall	bool	1	CAIStateGroup_TrollBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupTrollBase_IsTimingCritical_00900381.cpp
 00900384	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_00900384.cpp
-009003a0	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+009003a0	CAIStateGroup_EarthTroll	CAIStateGroup_EarthTroll	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 009003b2	CAIStateGroup_EarthTroll::GetStateGroupType	CAIStateGroup_EarthTroll	__thiscall	EAIStateGroupType	1	CAIStateGroup_EarthTroll *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupEarthTroll_GetStateGroupType_009003b2.cpp
 009003b6	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_009003b6.cpp
 009003f6	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_009003f6.cpp
-00900412	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+00900412	CAIStateGroup_FollowPlayer	CAIStateGroup_FollowPlayer	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 00900436	CAIStateGroup_FollowPlayer::GetStateGroupType	CAIStateGroup_FollowPlayer	__thiscall	EAIStateGroupType	1	CAIStateGroup_FollowPlayer *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupFollowPlayer_GetStateGroupType_00900436.cpp
 0090043a	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CEngineSubPrimitiveText_scalardeletingdestructor_0090043a.cpp
 00900484	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_00900484.cpp
@@ -30422,7 +30422,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00900513	CAIStateGroup_BalverineCornered::GetStateGroupType	CAIStateGroup_BalverineCornered	__thiscall	EAIStateGroupType	1	CAIStateGroup_BalverineCornered *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupBalverineCornered_GetStateGroupType_00900513.cpp
 00900517	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CLandscapeBackgroundPatch_vectordeletingdestructor_00900517.cpp
 00900533	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::CSymbolInfo>_>	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap	__fastcall	void	2	allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_> *,pair<CCharString,CSymbolMap::CSymbolInfo> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00900533.cpp
-0090054e	CAIStateGroup_Caster_Constructor	_global	unknown	undefined	0		0	unmeasured	accepted									
+0090054e	CAIStateGroup_BalverineJumpAtFleeingEnemy	CAIStateGroup_BalverineJumpAtFleeingEnemy	unknown	undefined	0		0	unmeasured	accepted									
 00900572	CAIStateGroup_BalverineJumpAtFleeingEnemy::GetStateGroupType	CAIStateGroup_BalverineJumpAtFleeingEnemy	__thiscall	EAIStateGroupType	1	CAIStateGroup_BalverineJumpAtFleeingEnemy *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupBalverineJumpAtFleeingEnemy_GetStateGroupType_00900572.cpp
 00900576	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CEngineSubPrimitiveText_scalardeletingdestructor_00900576.cpp
 0090059c	CAIStateGroup_NymphFloatAround	CAIStateGroup_NymphFloatAround	__thiscall	undefined	1	CAIStateGroup_BalverineCornered *	0	yes	accepted									
@@ -30433,7 +30433,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009006be	CAIStateGroup_JackDragon::IsTimingCritical	CAIStateGroup_JackDragon	__thiscall	bool	1	CAIStateGroup_JackDragon *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupJackDragon_IsTimingCritical_009006be.cpp
 009006c1	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CLandscapeBackgroundPatch_vectordeletingdestructor_009006c1.cpp
 009006dd	~CGlobalDef	CGlobalDef	__thiscall	void	1	CGlobalDef *	1	yes	accepted									
-00900720	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+00900720	CAIStateGroup_MazeBase	CAIStateGroup_MazeBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 00900744	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_00900744.cpp
 00900760	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00900772	CAIStateGroup_MazeRangedCombat::GetStateGroupType	CAIStateGroup_MazeRangedCombat	__thiscall	EAIStateGroupType	1	CAIStateGroup_MazeRangedCombat *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupMazeRangedCombat_GetStateGroupType_00900772.cpp
@@ -30457,13 +30457,13 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0090088f	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 009008a1	CAIStateGroup_MazeTutorialBattleUseShield::GetStateGroupType	CAIStateGroup_MazeTutorialBattleUseShield	__thiscall	EAIStateGroupType	1	CAIStateGroup_MazeTutorialBattleUseShield *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupMazeTutorialBattleUseShield_GetStateGroupType_009008a1.cpp
 009008a5	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_009008a5.cpp
-009008c1	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+009008c1	CAIStateGroup_BriarRose	CAIStateGroup_BriarRose	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 009008e5	CAIStateGroup_BriarRose::GetStateGroupType	CAIStateGroup_BriarRose	__thiscall	EAIStateGroupType	1	CAIStateGroup_BriarRose *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupBriarRose_GetStateGroupType_009008e5.cpp
 009008e9	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CEngineSubPrimitiveText_scalardeletingdestructor_009008e9.cpp
-0090090f	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+0090090f	CAIStateGroup_BriarRoseWillUse	CAIStateGroup_BriarRoseWillUse	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 00900933	CAIStateGroup_BriarRoseWillUse::GetStateGroupType	CAIStateGroup_BriarRoseWillUse	__thiscall	EAIStateGroupType	1	CAIStateGroup_BriarRoseWillUse *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupBriarRoseWillUse_GetStateGroupType_00900933.cpp
 00900937	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CEngineSubPrimitiveText_scalardeletingdestructor_00900937.cpp
-0090095d	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+0090095d	CAIStateGroup_MinionBehaviourGreetCreature	CAIStateGroup_MinionBehaviourGreetCreature	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 00900981	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CEngineSubPrimitiveText_scalardeletingdestructor_00900981.cpp
 009009a7	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 009009cb	CAIStateGroupBehaviourBase::InitLeaf	CAIStateGroupBehaviourBase	__thiscall	void	1	CAIStateGroupBehaviourBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupBehaviourBase_InitLeaf_009009cb.cpp
@@ -30473,44 +30473,44 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009009ea	CAIStateGroup_CarryCrateAndFollow	CAIStateGroup_CarryCrateAndFollow	__thiscall	undefined	1	CAIStateGroup_CarryCrateAndFollow *	0	yes	accepted									
 00900a2e	_Dest_val<std::allocator<CMacro>,CMacro>	_Dest_val<std	__fastcall	void	2	allocator<CMacro> *,CMacro *	1	yes	accepted									
 00900a51	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CLandscapeBackgroundPatch_vectordeletingdestructor_00900a51.cpp
-00900a6d	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+00900a6d	CAIStateGroup_MinionReactToBurglary	CAIStateGroup_MinionReactToBurglary	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 00900a91	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CEngineSubPrimitiveText_scalardeletingdestructor_00900a91.cpp
-00900ab7	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+00900ab7	CAIStateGroup_MinionReactToTrespassing	CAIStateGroup_MinionReactToTrespassing	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 00900adb	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CEngineSubPrimitiveText_scalardeletingdestructor_00900adb.cpp
 00900b25	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_00900b25.cpp
 00900b41	CAIStateGroup_MinionReactToCrime	CAIStateGroup_MinionReactToCrime	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 00900b65	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_00900b65.cpp
-00900b81	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+00900b81	CAIStateGroup_MinionReactToCrimeFromSleep	CAIStateGroup_MinionReactToCrimeFromSleep	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00900b93	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_00900b93.cpp
 00900bd3	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_00900bd3.cpp
-00900bef	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
-00900c01	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+00900bef	CAIStateGroup_HoverMovementBase	CAIStateGroup_HoverMovementBase	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+00900c01	CAIStateGroup_HoverWander	CAIStateGroup_HoverWander	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00900c13	CAIStateGroup_HoverWander::IsCombatStateGroup	CAIStateGroup_HoverWander	__thiscall	bool	1	CAIStateGroup_HoverWander *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupHoverWander_IsCombatStateGroup_00900c13.cpp
 00900c16	CAIStateGroup_HoverWander::IsRunnable	CAIStateGroup_HoverWander	__thiscall	bool	1	CAIStateGroup_HoverWander *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupHoverWander_IsRunnable_00900c16.cpp
 00900c19	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CLandscapeBackgroundPatch_vectordeletingdestructor_00900c19.cpp
-00900c3b	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+00900c3b	CAIStateGroup_HoverAttack	CAIStateGroup_HoverAttack	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00900c4d	CAIStateGroup_HoverAttack::IsCombatStateGroup	CAIStateGroup_HoverAttack	__thiscall	bool	1	CAIStateGroup_HoverAttack *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupHoverAttack_IsCombatStateGroup_00900c4d.cpp
 00900c50	CAIStateGroup_HoverAttack::GetStateGroupType	CAIStateGroup_HoverAttack	__thiscall	EAIStateGroupType	1	CAIStateGroup_HoverAttack *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupHoverAttack_GetStateGroupType_00900c50.cpp
 00900c54	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CLandscapeBackgroundPatch_vectordeletingdestructor_00900c54.cpp
-00900c76	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+00900c76	CAIStateGroup_HoverAttackUnlessTargetIsFleeing	CAIStateGroup_HoverAttackUnlessTargetIsFleeing	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00900c88	CAIStateGroup_HoverAttackUnlessTargetIsFleeing::IsCombatStateGroup	CAIStateGroup_HoverAttackUnlessTargetIsFleeing	__thiscall	bool	1	CAIStateGroup_HoverAttackUnlessTargetIsFleeing *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupHoverAttackUnlessTargetIsFleeing_IsCombatStateGroup_00900c88.cpp
 00900c8b	CAIStateGroup_HoverAttackUnlessTargetIsFleeing::GetStateGroupType	CAIStateGroup_HoverAttackUnlessTargetIsFleeing	__thiscall	EAIStateGroupType	1	CAIStateGroup_HoverAttackUnlessTargetIsFleeing *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupHoverAttackUnlessTargetIsFleeing_GetStateGroupType_00900c8b.cpp
 00900c8f	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CLandscapeBackgroundPatch_vectordeletingdestructor_00900c8f.cpp
 00900cd5	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_00900cd5.cpp
-00900cf1	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+00900cf1	CAIStateGroup_HoverKeepInArea	CAIStateGroup_HoverKeepInArea	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00900d03	CAIStateGroup_HoverKeepInArea::IsCombatStateGroup	CAIStateGroup_HoverKeepInArea	__thiscall	bool	1	CAIStateGroup_HoverKeepInArea *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupHoverKeepInArea_IsCombatStateGroup_00900d03.cpp
 00900d06	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CLandscapeBackgroundPatch_vectordeletingdestructor_00900d06.cpp
-00900d28	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+00900d28	CAIStateGroup_HoverAttackArea	CAIStateGroup_HoverAttackArea	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00900d3a	CAIStateGroup_HoverAttackArea::IsCombatStateGroup	CAIStateGroup_HoverAttackArea	__thiscall	bool	1	CAIStateGroup_HoverAttackArea *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupHoverAttackArea_IsCombatStateGroup_00900d3a.cpp
 00900d3d	CAIStateGroup_HoverAttackArea::GetStateGroupType	CAIStateGroup_HoverAttackArea	__thiscall	EAIStateGroupType	1	CAIStateGroup_HoverAttackArea *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupHoverAttackArea_GetStateGroupType_00900d3d.cpp
 00900d41	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CLandscapeBackgroundPatch_vectordeletingdestructor_00900d41.cpp
-00900d63	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+00900d63	CAIStateGroup_HoverHornetQueenTakeDamage	CAIStateGroup_HoverHornetQueenTakeDamage	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00900d75	CAIStateGroup_HoverHornetQueenTakeDamage::IsCombatStateGroup	CAIStateGroup_HoverHornetQueenTakeDamage	__thiscall	bool	1	CAIStateGroup_HoverHornetQueenTakeDamage *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupHoverHornetQueenTakeDamage_IsCombatStateGroup_00900d75.cpp
 00900d78	CAIStateGroup_HoverHornetQueenTakeDamage::GetStateGroupType	CAIStateGroup_HoverHornetQueenTakeDamage	__thiscall	EAIStateGroupType	1	CAIStateGroup_HoverHornetQueenTakeDamage *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupHoverHornetQueenTakeDamage_GetStateGroupType_00900d78.cpp
 00900d7c	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CLandscapeBackgroundPatch_vectordeletingdestructor_00900d7c.cpp
 00900dc2	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_00900dc2.cpp
 00900e02	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_00900e02.cpp
-00900e1e	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+00900e1e	CAIStateGroup_CreatureRangedCombat2	CAIStateGroup_CreatureRangedCombat2	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 00900e42	CAIStateGroup_CreatureRangedCombat2::GetStateGroupType	CAIStateGroup_CreatureRangedCombat2	__thiscall	EAIStateGroupType	1	CAIStateGroup_CreatureRangedCombat2 *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupCreatureRangedCombat2_GetStateGroupType_00900e42.cpp
 00900e46	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CEngineSubPrimitiveText_scalardeletingdestructor_00900e46.cpp
 00900e90	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_00900e90.cpp
@@ -30520,50 +30520,50 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00900f23	CAIStateGroup_RangedCombatUsePreferredFirePoint::GetStateGroupType	CAIStateGroup_RangedCombatUsePreferredFirePoint	__thiscall	EAIStateGroupType	1	CAIStateGroup_RangedCombatUsePreferredFirePoint *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupRangedCombatUsePreferredFirePoint_GetStateGroupType_00900f23.cpp
 00900f27	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CLandscapeBackgroundPatch_vectordeletingdestructor_00900f27.cpp
 00900f43	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::CSymbolInfo>_>	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap	__fastcall	void	2	allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_> *,pair<CCharString,CSymbolMap::CSymbolInfo> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_00900f43.cpp
-00900f5e	CAIStateGroup_Summoned_Constructor	_global	unknown	undefined	0		0	unmeasured	accepted									
+00900f5e	CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets	CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets	unknown	undefined	0		0	unmeasured	accepted									
 00900f82	CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::GetStateGroupType	CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets	__thiscall	EAIStateGroupType	1	CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupCreatureRangedCombatFireAtSpecificTargets_GetStateGroupType_00900f82.cpp
 00900f86	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CEngineSubPrimitiveText_scalardeletingdestructor_00900f86.cpp
-00900fac	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+00900fac	CAIStateGroup_ReactToDeadLeader	CAIStateGroup_ReactToDeadLeader	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 00900fd0	CAIStateGroup_ReactToDeadLeader::GetStateGroupType	CAIStateGroup_ReactToDeadLeader	__thiscall	EAIStateGroupType	1	CAIStateGroup_ReactToDeadLeader *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupReactToDeadLeader_GetStateGroupType_00900fd0.cpp
 00900fd4	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CEngineSubPrimitiveText_scalardeletingdestructor_00900fd4.cpp
 0090101e	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_0090101e.cpp
 0090105e	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_0090105e.cpp
-0090107a	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+0090107a	CAIStateGroup_CreatureSeekEnemyUnderground	CAIStateGroup_CreatureSeekEnemyUnderground	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 0090109e	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CEngineSubPrimitiveText_scalardeletingdestructor_0090109e.cpp
-009010c4	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+009010c4	CAIStateGroup_BoastingCrowdMember	CAIStateGroup_BoastingCrowdMember	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 009010e8	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CEngineSubPrimitiveText_scalardeletingdestructor_009010e8.cpp
 0090110e	CAIStateGroup_OpinionReactionRoot	CAIStateGroup_OpinionReactionRoot	__thiscall	undefined	1	CAIStateGroup_OpinionReactionRoot *	0	yes	accepted									
 00901152	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CEngineSubPrimitiveText_scalardeletingdestructor_00901152.cpp
-00901178	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+00901178	CAIStateGroup_DeedReactionRoot	CAIStateGroup_DeedReactionRoot	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 0090119c	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_0090119c.cpp
-009011b8	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+009011b8	CAIStateGroup_DeedReactionRootFromSleep	CAIStateGroup_DeedReactionRootFromSleep	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 009011ca	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_009011ca.cpp
 0090120a	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_0090120a.cpp
-00901226	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+00901226	CAIStateGroup_BanditKingCharge	CAIStateGroup_BanditKingCharge	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 0090124a	CAIStateGroup_BanditKingCharge::GetStateGroupType	CAIStateGroup_BanditKingCharge	__thiscall	EAIStateGroupType	1	CAIStateGroup_BanditKingCharge *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupBanditKingCharge_GetStateGroupType_0090124a.cpp
 0090124e	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CEngineSubPrimitiveText_scalardeletingdestructor_0090124e.cpp
-00901274	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+00901274	CAIStateGroup_BanditKingLunge	CAIStateGroup_BanditKingLunge	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 00901298	CAIStateGroup_BanditKingLunge::GetStateGroupType	CAIStateGroup_BanditKingLunge	__thiscall	EAIStateGroupType	1	CAIStateGroup_BanditKingLunge *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupBanditKingLunge_GetStateGroupType_00901298.cpp
 0090129c	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CEngineSubPrimitiveText_scalardeletingdestructor_0090129c.cpp
-009012c2	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+009012c2	CAIStateGroup_BanditKingThrowWeapons	CAIStateGroup_BanditKingThrowWeapons	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 009012e6	CAIStateGroup_BanditKingThrowWeapons::GetStateGroupType	CAIStateGroup_BanditKingThrowWeapons	__thiscall	EAIStateGroupType	1	CAIStateGroup_BanditKingThrowWeapons *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupBanditKingThrowWeapons_GetStateGroupType_009012e6.cpp
 009012ea	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CEngineSubPrimitiveText_scalardeletingdestructor_009012ea.cpp
-00901310	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+00901310	CAIStateGroup_IceTrollIcicleAttack	CAIStateGroup_IceTrollIcicleAttack	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 00901334	CAIStateGroup_IceTrollIcicleAttack::GetStateGroupType	CAIStateGroup_IceTrollIcicleAttack	__thiscall	EAIStateGroupType	1	CAIStateGroup_IceTrollIcicleAttack *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupIceTrollIcicleAttack_GetStateGroupType_00901334.cpp
 00901338	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CEngineSubPrimitiveText_scalardeletingdestructor_00901338.cpp
-0090135e	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+0090135e	CAIStateGroup_IceTrollPoundGroundAttack	CAIStateGroup_IceTrollPoundGroundAttack	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 00901382	CAIStateGroup_IceTrollPoundGroundAttack::GetStateGroupType	CAIStateGroup_IceTrollPoundGroundAttack	__thiscall	EAIStateGroupType	1	CAIStateGroup_IceTrollPoundGroundAttack *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupIceTrollPoundGroundAttack_GetStateGroupType_00901382.cpp
 00901386	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CEngineSubPrimitiveText_scalardeletingdestructor_00901386.cpp
-009013ac	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+009013ac	CAIStateGroup_IceTrollIcicleAssault	CAIStateGroup_IceTrollIcicleAssault	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 009013d0	CAIStateGroup_IceTrollIcicleAssault::GetStateGroupType	CAIStateGroup_IceTrollIcicleAssault	__thiscall	EAIStateGroupType	1	CAIStateGroup_IceTrollIcicleAssault *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupIceTrollIcicleAssault_GetStateGroupType_009013d0.cpp
 009013d4	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CEngineSubPrimitiveText_scalardeletingdestructor_009013d4.cpp
-009013fa	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+009013fa	CAIStateGroup_VersusEnemyBase	CAIStateGroup_VersusEnemyBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 0090141e	CAIStateGroup_VersusEnemyBase::GetStateGroupType	CAIStateGroup_VersusEnemyBase	__thiscall	EAIStateGroupType	1	CAIStateGroup_VersusEnemyBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupVersusEnemyBase_GetStateGroupType_0090141e.cpp
 00901422	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_00901422.cpp
 0090143e	CAIStateGroup_VersusScorpionKing	CAIStateGroup_VersusScorpionKing	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 00901462	CAIStateGroup_VersusScorpionKing::GetStateGroupType	CAIStateGroup_VersusScorpionKing	__thiscall	EAIStateGroupType	1	CAIStateGroup_VersusScorpionKing *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupVersusScorpionKing_GetStateGroupType_00901462.cpp
 00901466	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CEngineSubPrimitiveText_scalardeletingdestructor_00901466.cpp
-0090148c	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+0090148c	CAIStateGroup_MinionFollowThing	CAIStateGroup_MinionFollowThing	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 009014b0	CAIStateGroup_MinionFollowThing::GetStateGroupType	CAIStateGroup_MinionFollowThing	__thiscall	EAIStateGroupType	1	CAIStateGroup_MinionFollowThing *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupMinionFollowThing_GetStateGroupType_009014b0.cpp
 009014b4	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CEngineSubPrimitiveText_scalardeletingdestructor_009014b4.cpp
 009014fe	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_009014fe.cpp
@@ -30585,9 +30585,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00901783	CAIStateGroup_WerewolfAttacker_Constructor	_global	unknown	undefined	0		0	unmeasured	accepted									
 009017d6	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CLandscapeBackgroundPatch_vectordeletingdestructor_009017d6.cpp
 009017f2	~CAIStateGroup_CarryCrateAndFollow	CAIStateGroup_CarryCrateAndFollow	__thiscall	void	1	CAIStateGroup_CarryCrateAndFollow *	1	yes	accepted									
-0090181d	CAIStateGroup_SimpleFollower_Constructor	_global	unknown	undefined	0		0	unmeasured	accepted									
+0090181d	CAIStateGroup_SleepOnFloor	CAIStateGroup_SleepOnFloor	unknown	undefined	0		0	unmeasured	accepted									
 00901841	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CEngineSubPrimitiveText_scalardeletingdestructor_00901841.cpp
-00901867	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+00901867	CAIStateGroup_WhisperRetreat	CAIStateGroup_WhisperRetreat	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 0090188b	CAIStateGroup_WhisperRetreat::IsCombatStateGroup	CAIStateGroup_WhisperRetreat	__thiscall	bool	1	CAIStateGroup_WhisperRetreat *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupWhisperRetreat_IsCombatStateGroup_0090188b.cpp
 0090188e	CAIStateGroup_WhisperRetreat::GetStateGroupType	CAIStateGroup_WhisperRetreat	__thiscall	EAIStateGroupType	1	CAIStateGroup_WhisperRetreat *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupWhisperRetreat_GetStateGroupType_0090188e.cpp
 00901892	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CEngineSubPrimitiveText_scalardeletingdestructor_00901892.cpp
@@ -30598,15 +30598,15 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0090190f	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::CSymbolInfo>_>	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap	__fastcall	void	2	allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_> *,pair<CCharString,CSymbolMap::CSymbolInfo> *	1	yes	accepted									
 0090194e	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_0090194e.cpp
 0090198e	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_0090198e.cpp
-009019aa	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+009019aa	CAIStateGroup_EatAtTable	CAIStateGroup_EatAtTable	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 009019ce	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_009019ce.cpp
-009019ea	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+009019ea	CAIStateGroup_EatAtTavern	CAIStateGroup_EatAtTavern	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 009019fc	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_009019fc.cpp
 00901a18	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00901a2a	CAIStateGroup_ServeFoodAtHome::SetPlaceForSelf	CAIStateGroup_ServeFoodAtHome	__thiscall	bool	1	CAIStateGroup_ServeFoodAtHome *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupServeFoodAtHome_SetPlaceForSelf_00901a2a.cpp
 00901a2d	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_00901a2d.cpp
 00901a6d	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_00901a6d.cpp
-00901a89	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+00901a89	CAIStateGroup_ScreamerPursueTarget	CAIStateGroup_ScreamerPursueTarget	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 00901aad	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CEngineSubPrimitiveText_scalardeletingdestructor_00901aad.cpp
 00901af7	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_00901af7.cpp
 00901b37	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_00901b37.cpp
@@ -30623,37 +30623,37 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00901de9	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_00901de9.cpp
 00901e29	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_00901e29.cpp
 00901e69	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_00901e69.cpp
-00901e85	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+00901e85	CAIStateGroup_SummonerSummon	CAIStateGroup_SummonerSummon	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 00901ea9	CAIStateGroup_SummonerSummon::GetStateGroupType	CAIStateGroup_SummonerSummon	__thiscall	EAIStateGroupType	1	CAIStateGroup_SummonerSummon *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupSummonerSummon_GetStateGroupType_00901ea9.cpp
 00901ead	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CEngineSubPrimitiveText_scalardeletingdestructor_00901ead.cpp
 00902045	?Initialise@CAIStateGroup_MinionFaceHero@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z	CAIStateGroup_MinionFaceHero	__thiscall	void	6	CAIStateGroup_MinionFaceHero *,CAIBrain *,CThingAICreature *,long,EScriptAIPriority,CCharString *	1	yes	accepted									
-00902122	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+00902122	CAIStateGroup_MinionSitOnSeat	CAIStateGroup_MinionSitOnSeat	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00902134	CAIStateGroup_MinionSitOnSeat::GetPOwnerObject	CAIStateGroup_MinionSitOnSeat	__thiscall	bool	2	CAIStateGroup_MinionSitOnSeat *,CThing * *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupMinionSitOnSeat_MinionSitOnSeatGetPOwnerObject_00902134.cpp
 00902140	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_00902140.cpp
-009021c8	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+009021c8	CAIStateGroup_MinionSitOutside	CAIStateGroup_MinionSitOutside	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 009021da	CAIStateGroup_MinionSitOutside::AllowPriorityOverlap	CAIStateGroup_MinionSitOutside	__thiscall	bool	1	CAIStateGroup_MinionSitOutside *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupMinionSitOutside_AllowPriorityOverlap_009021da.cpp
 009021dd	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_009021dd.cpp
 00902233	?Initialise@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@UAEXAAVCAIBrain@@AAVCThingAICreature@@JW4EScriptAIPriority@@ABVCCharString@@@Z	CAIStateGroup_MinionGuardReactToPlayerWithWeapon	__thiscall	void	6	CAIStateGroup_MinionGuardReactToPlayerWithWeapon *,CAIBrain *,CThingAICreature *,long,EScriptAIPriority,CCharString *	1	yes	accepted									
-0090233c	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+0090233c	CAIStateGroup_MeleeCombatNearby	CAIStateGroup_MeleeCombatNearby	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 0090234e	CAIStateGroup_MeleeCombatNearby::GetStateGroupType	CAIStateGroup_MeleeCombatNearby	__thiscall	EAIStateGroupType	1	CAIStateGroup_MeleeCombatNearby *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupMeleeCombatNearby_GetStateGroupType_0090234e.cpp
 00902352	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_00902352.cpp
-009025ee	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+009025ee	CAIStateGroup_RockTroll	CAIStateGroup_RockTroll	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00902600	CAIStateGroup_RockTroll::GetStateGroupType	CAIStateGroup_RockTroll	__thiscall	EAIStateGroupType	1	CAIStateGroup_RockTroll *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupRockTroll_GetStateGroupType_00902600.cpp
 00902604	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_00902604.cpp
 009026b5	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 009026c7	CAIStateGroup_MazeTeleport::GetStateGroupType	CAIStateGroup_MazeTeleport	__thiscall	EAIStateGroupType	1	CAIStateGroup_MazeTeleport *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupMazeTeleport_GetStateGroupType_009026c7.cpp
 009026cb	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_009026cb.cpp
-00902825	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+00902825	CAIStateGroup_MinionBehaviourSad	CAIStateGroup_MinionBehaviourSad	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 00902849	CAIStateGroup_MinionBehaviourSad::GetLeafConfrontationSpeech	CAIStateGroup_MinionBehaviourSad	__thiscall	EReactionSpeechType	1	CAIStateGroup_MinionBehaviourSad *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupMinionBehaviourSad_GetLeafConfrontationSpeech_00902849.cpp
 0090284d	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CEngineSubPrimitiveText_scalardeletingdestructor_0090284d.cpp
 00902873	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00902885	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CLandscapeBackgroundPatch_vectordeletingdestructor_00902885.cpp
-00902907	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+00902907	CAIStateGroup_HoverWanderAroundThing	CAIStateGroup_HoverWanderAroundThing	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 0090292b	CAIStateGroup_HoverWanderAroundThing::IsCombatStateGroup	CAIStateGroup_HoverWanderAroundThing	__thiscall	bool	1	CAIStateGroup_HoverWanderAroundThing *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupHoverWanderAroundThing_IsCombatStateGroup_0090292b.cpp
 0090292e	`scalar deleting destructor'	CAIStateGroup_HoverWanderAroundThing	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted									
-00902b74	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+00902b74	CAIStateGroup_VersusRockTroll	CAIStateGroup_VersusRockTroll	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00902b86	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_00902b86.cpp
-00902c55	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+00902c55	CAIStateGroup_EatAtHome	CAIStateGroup_EatAtHome	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00902c67	`scalar_deleting_destructor'	CAssoc	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAssoc_scalardeletingdestructor_00902c67.cpp
 00902ca7	CAIStateGroup_ServeFoodAtHome::GetBuilding	CAIStateGroup_ServeFoodAtHome	__thiscall	CThingBuilding *	1	CAIStateGroup_ServeFoodAtHome *	1	yes	accepted									
 00902cdc	CAIStateGroup_ServeFoodAtTavern::GetBuilding	CAIStateGroup_ServeFoodAtTavern	__thiscall	CThingBuilding *	1	CAIStateGroup_ServeFoodAtTavern *	1	yes	accepted									
@@ -30676,7 +30676,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00903043	CAIStateGroup_JackOfBladesBase::IsTimingCritical	CAIStateGroup_JackOfBladesBase	__thiscall	bool	1	CAIStateGroup_JackOfBladesBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupJackOfBladesBase_IsTimingCritical_00903043.cpp
 00903046	~CAIStateGroup_JackOfBladesBase	CAIStateGroup_JackOfBladesBase	__fastcall	void	2	allocator<CEditLevelMerger::CConflict> *,CConflict *	1	yes	accepted									
 00903079	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CLandscapeBackgroundPatch_vectordeletingdestructor_00903079.cpp
-00903095	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
+00903095	CAIStateGroup_JackOfBladesStage2	CAIStateGroup_JackOfBladesStage2	__thiscall	undefined	1	CAIStateGroupBehaviourBase *	0	yes	accepted									
 009030b9	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 009030cb	CAIStateGroup_Guildmaster	CAIStateGroup_Guildmaster	__thiscall	undefined	1	CAIStateGroup_Guildmaster *	0	yes	accepted									
 0090310a	CAIStateGroup_Guildmaster::GetStateGroupType	CAIStateGroup_Guildmaster	__thiscall	EAIStateGroupType	1	CAIStateGroup_Guildmaster *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\90\CAIStateGroupGuildmaster_GetStateGroupType_0090310a.cpp
@@ -32982,7 +32982,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00987bf0	operator*	CQuaternion	__thiscall	CQuaternion	2	CQuaternion *,CQuaternion *	1	yes	accepted									
 00987cf0	GetActionName	CActionDoCreatureAction	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
 00987d10	CShaderBase::vfunc_0	CShaderBase	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00987d50	CTargetPoint	CTargetPoint	__thiscall	undefined	1	CTargetPoint *	0	yes	accepted									
+00987d50	CShaderConstantRange	CShaderConstantRange	__thiscall	undefined	1	CTargetPoint *	0	yes	accepted									
 00987d70	operator()	CMessageEventFilter_IsOriginatedByThing	__thiscall	bool	2	CMessageEventFilter_IsOriginatedByThing *,CMessageEvent *	1	yes	accepted									
 00987e20	~CPhysicsMeshInfo	CPhysicsMeshInfo	__thiscall	void	1	CPhysicsMeshInfo *	1	yes	accepted									
 00987e50	ApplyPixelShader	CShaderRenderManager	__thiscall	void	2	CShaderRenderManager *,CPixelShader *	1	yes	accepted									
@@ -34840,7 +34840,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009e43b0	CJoystickDX::Constructor	CJoystickDX	unknown	undefined	0		0	yes	accepted									
 009e4420	JoystickGui_Destructor	_global	unknown	undefined	0		0	yes	accepted									
 009e4470	ProcessMaintainedEvents	CJoystick	__thiscall	void	2	CJoystick *,CInputEvent *	1	yes	accepted									
-009e45b0	CAIStateGroupBase	CAIStateGroupBase	__thiscall	undefined	1	CAIStateGroupBase *	0	yes	accepted									
+009e45b0	CMaintainedEvent	CMaintainedEvent	__thiscall	undefined	1	CAIStateGroupBase *	0	yes	accepted									
 009e45d0	_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>	_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9e\global_Destval_009e45d0.cpp
 009e45f0	`scalar_deleting_destructor'	CEngineSubPrimitiveText	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9e\CEngineSubPrimitiveText_scalardeletingdestructor_009e45f0.cpp
 009e4710	SortTreeRecursively	CGuiControlTreePane	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted									
@@ -36739,7 +36739,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a3b380	CVideoSys::Close	CVideoSys	__thiscall	void	1	CVideoSys *	1	yes	accepted									
 00a3b430	CVideoSys::Process	CVideoSys	__thiscall	bool	1	CVideoSys *	1	yes	accepted									
 00a3b4a0	CVideoSys::TogglePause	CVideoSys	unknown	undefined	0		0	unmeasured	accepted									
-00a3b510	CTextureRenderer::CTextureRenderer	CTextureRenderer	__thiscall	undefined	4	CTextureRenderer *,IUnknown *,long *,CTexture *	0	yes	accepted									
+00a3b510	CTextureRenderer	CTextureRenderer	__thiscall	undefined	4	CTextureRenderer *,IUnknown *,long *,CTexture *	0	yes	accepted									
 00a3b590	CTextureRenderer::CheckMediaType	CTextureRenderer	unknown	undefined	0		0	unmeasured	accepted									
 00a3b5f0	CTextureRenderer::SetMediaType	CTextureRenderer	unknown	undefined	0		0	unmeasured	accepted									
 00a3b730	CTextureRenderer::DoRenderSample	CTextureRenderer	unknown	undefined	0		0	yes	accepted									
@@ -37689,7 +37689,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a68de0	sub_00a68de0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00a69550	InitNumberBox	CPaintMapDialog	__thiscall	void	4	CPaintMapDialog *,CCharString *,CGuiWindowBox *,float	1	yes	accepted									
 00a69590	`scalar deleting destructor'	CVolumeTexture	__thiscall	void *	2	CThingTrackNode *,uint	1	yes	accepted									
-00a695c0	CTargetPoint	CTargetPoint	__thiscall	undefined	1	CTargetPoint *	0	yes	accepted									
+00a695c0	CVolumeTexture	CVolumeTexture	__thiscall	undefined	1	CTargetPoint *	0	yes	accepted									
 00a696d0	Uninitialise	CTextureManager	__thiscall	void	1	CTextureManager *	1	yes	accepted									
 00a69730	GetPoolIndex	CTextureManager	__thiscall	long	2	CTextureManager *,ulong	1	yes	accepted									
 00a697a0	CreateTexture	CManagedTextureData	__thiscall	bool	5	CManagedTextureData *,ulong,ulong,long,CPixelFormat *	1	yes	accepted									
@@ -38926,7 +38926,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00aab850	CTCAISummon	CTCAISummon	__thiscall	undefined	2	CTCAISummon *,CThing *	0	yes	accepted									
 00aab8b0	CEngineSubPrimitiveAnimatedMesh	CEngineSubPrimitiveAnimatedMesh	__thiscall	undefined	5	CEngineSubPrimitiveAnimatedMesh *,CEngineInternalPrimitiveAnimatedMesh *,C3DPrimitive2 *,ERenderMode,bool	0	yes	accepted									
 00aab910	CTCCarrying	CTCCarrying	__thiscall	undefined	2	CTCCarrying *,CThing *	0	yes	accepted									
-00aab980	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+00aab980	CASoundEmitter	CASoundEmitter	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00aab9a0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\aa\CLandscapeBackgroundPatch_vectordeletingdestructor_00aab9a0.cpp
 00aab9c0	CSoundEmitterLH::vfunc_16	CSoundEmitterLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00aaba00	vfunc_1	CSoundEmitterLH	unknown	undefined	0		0			discovered	boundary							
@@ -38972,7 +38972,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00aacda0	Vector_Reallocate_CopyFill	_global	unknown	undefined	0		0	yes	accepted									
 00aacea0	`vector_deleting_destructor'	CThingTrackNode	__thiscall	void *	2	CThingTrackNode *,uint	1	yes	accepted									
 00aacef0	Vector_PushBack_SingleElement	_global	unknown	undefined	0		0	yes	accepted									
-00aacf40	C3DAnimationUtil	C3DAnimationUtil	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
+00aacf40	CASoundReceiver	CASoundReceiver	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00aacf70	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\aa\CLandscapeBackgroundPatch_vectordeletingdestructor_00aacf70.cpp
 00aacf90	CSoundReceiverLH::vfunc_2	CSoundReceiverLH	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00aacfa0	CSoundReceiverLH::vfunc_4	CSoundReceiverLH	unknown	undefined	0		0			discovered	gapscan		rtti-vtables.tsv					
@@ -43143,7 +43143,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00bed010	ShareData	CCountedPointer<CScriptThing>	__thiscall	void	3	CCountedPointer<CScriptThing> *,CScriptThing *,CCPPointerInfo *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\be\CCountedPointerCScriptThing_ShareData_00bed010.cpp
 00bed0f0	fill<ENavigatorType*,ENavigatorType>	_global	__fastcall	void	3	ENavigatorType *,ENavigatorType *,ENavigatorType *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\be\global_fillENavigatorTypeENavigatorType_00bed0f0.cpp
 00bed2a0	LowerBound	CVectorMap<long	__thiscall	_Vector_const_iterator<std::_Vector_val<std::pair<long,CRandomAppearanceMorph::CSkeletalMorph>,std::allocator<std::pair<long,CRandomAppearanceMorph::CSkeletalMorph>_>_>_>	2	CVectorMap<long,CRandomAppearanceMorph::CSkeletalMorph,CKeyPairCompareLess<long,CRandomAppearanceMorph::CSkeletalMorph>_> *,long *	1	yes	accepted									
-00bed440	CCarriedReadableDef	CCarriedReadableDef	__thiscall	undefined	1	CCarriedReadableDef *	0	yes	accepted									
+00bed440	CCompositeSurfaceInfo	CCompositeSurfaceInfo	__thiscall	undefined	1	CCarriedReadableDef *	0	yes	accepted									
 00bed640	operator=	CItem	__thiscall	CItem *	2	CItem *,CItem *	1	yes	accepted									
 00bed690	swap<std::pair<long, CCompositeSurfaceInfo>>	std	__fastcall	void	2	CCompositeSurfaceInfo *,CCompositeSurfaceInfo *	1	yes	accepted									
 00bed790	CNavigationPosition_CopyRange	_global	unknown	undefined	0		0	yes	accepted									
@@ -47943,7 +47943,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ca4b20	CTextureRenderer::vfunc_42	CTextureRenderer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00ca4b60	ClipBox	CEngine	__thiscall	bool	2	CEngine *,C3DBoundingBox *	1	yes	accepted									
 00ca4b90	RemoveExclusiveForegroundWindow	CGuiWindowManager	__thiscall	void	2	CGuiWindowManager *,CGuiWindow *	1	yes	accepted									
-00ca4bf0	ReleaseVolume	CVolume	__thiscall	void	1	CVolume *	1	yes	accepted									
+00ca4bf0	ClearPendingSample	CBaseRenderer	__thiscall	void	1	CVolume *	1	yes	accepted									
 00ca4c60	TimerCallback	CBaseRenderer	unknown	undefined	0		0	yes	accepted									
 00ca4cc0	NotifyEndOfStream	CBaseRenderer	unknown	undefined	0		0	yes	accepted									
 00ca4d60	ClearTextures	CLandscapeBackgroundPatch	__thiscall	void	1	CLandscapeBackgroundPatch *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ca\CLandscapeBackgroundPatch_ClearTextures_00ca4d60.cpp
@@ -47960,7 +47960,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ca5190	sub_00ca5190	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00ca51c0	COM_GetOutputPinName	_global	unknown	undefined	0		0	yes	accepted									
 00ca5200	CheckMediaType	CRendererInputPin	unknown	undefined	0		0			discovered	gapscan							
-00ca52a0	OnActivate	CAIStateGroup_MinionHasInformation	__thiscall	void	1	CAIStateGroup_MinionHasInformation *	1	yes	accepted									
+00ca52a0	ResetStreamingTimes	CBaseVideoRenderer	__thiscall	void	1	CAIStateGroup_MinionHasInformation *	1	yes	accepted									
 00ca5360	CTextureRenderer::vfunc_16	CTextureRenderer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00ca5380	IsTalking	CTCTalk	__thiscall	bool	1	CTCTalk *	1	yes	accepted									
 00ca53a0	CTextureRenderer::vfunc_18	CTextureRenderer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -47994,7 +47994,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ca61a0	sub_00ca61a0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00ca61b0	sub_00ca61b0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00ca61c0	sub_00ca61c0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
-00ca61d0	CHeroExperienceDef	CHeroExperienceDef	__thiscall	undefined	1	CHeroExperienceDef *	0	yes	accepted									
+00ca61d0	CBaseRenderer	CBaseRenderer	__thiscall	undefined	1	CHeroExperienceDef *	0	yes	accepted									
 00ca62d0	QueryInterface	CBaseFilter	unknown	undefined	0		0			discovered	gapscan							
 00ca6370	~CBaseRenderer	CBaseRenderer	unknown	undefined	0		0	yes	accepted									
 00ca6450	GetMediaPositionInterface	CBaseRenderer	unknown	undefined	0		0	yes	accepted									
@@ -48021,7 +48021,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ca7210	Receive	CRendererInputPin	unknown	undefined	0		0			discovered	gapscan							
 00ca7310	~CBaseVideoRenderer	CBaseVideoRenderer	__thiscall	void	1	CTCStealth *	1	yes	accepted									
 00ca7340	`scalar deleting destructor'	CBaseRenderer	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ca\CLandscapeBackgroundPatch_vectordeletingdestructor_00ca7340.cpp
-00ca7360	CSpellContainerList	CSpellContainerList	__thiscall	undefined	2	CSpellContainerList *,long	0	yes	accepted									
+00ca7360	CBaseVideoRenderer	CBaseVideoRenderer	__thiscall	undefined	2	CSpellContainerList *,long	0	yes	accepted									
 00ca73d0	`scalar deleting destructor'	CBaseVideoRenderer	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ca\CLandscapeBackgroundPatch_vectordeletingdestructor_00ca73d0.cpp
 00ca7500	Resource_HandleMovableResourceRequest	_global	unknown	undefined	0		0	yes	accepted									
 00ca7620	CTextureRenderer::vfunc_3	CTextureRenderer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -48154,7 +48154,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00caa760	sub_00caa760	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00caa770	sub_00caa770	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00caa790	ReleaseVolume	CVolume	__thiscall	void	1	CVolume *	1	yes	accepted									
-00caaac0	~CJoystickDX	CJoystickDX	__thiscall	void	1	CJoystickDX *	1	yes	accepted									
+00caaac0	~CBaseFilter	CBaseFilter	__thiscall	void	1	CJoystickDX *	1	yes	accepted									
 00caab30	CAudioBank_PauseAllSounds	_global	unknown	undefined	0		0	yes	accepted									
 00caabe0	CAudioBank_ResumeAllSounds	_global	unknown	undefined	0		0	yes	accepted									
 00caaca0	CAudioBank_SetAudioFormat	_global	unknown	undefined	0		0	yes	accepted									
@@ -48190,7 +48190,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00cac4a0	CEngineScreenEffectRenderer::OnRenderEffect	CEngineScreenEffectRenderer	unknown	undefined	0		0	yes	accepted									
 00cac570	CBaseAllocator	CBaseAllocator	unknown	undefined	0		0			discovered	gapscan							
 00cac640	Alloc	CMemAllocator	unknown	undefined	0		0			discovered	gapscan							
-00cac830	CThingMap	CThingMap	__thiscall	undefined	3	CThingMap *,CThingMapManager *,C2DBoxI *	0	yes	accepted									
+00cac830	CBaseFilter	CBaseFilter	__thiscall	undefined	3	CThingMap *,CThingMapManager *,C2DBoxI *	0	yes	accepted									
 00cac890	CTextureRenderer::vfunc_10	CTextureRenderer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00cac920	AsyncOp_ValidateAndReset	_global	unknown	undefined	0		0	yes	accepted									
 00cac9d0	CreateInternalPrimitive	CEnginePrimitiveManagerRepeatedZSprites	__thiscall	CEngineInternalPrimitiveBase *	2	CEnginePrimitiveManagerRepeatedZSprites *,EEnginePrimitiveType	1	yes	accepted									
@@ -48285,7 +48285,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00caff70	CEditControlCentre::RemoveTrackNode	CEditControlCentre	unknown	undefined	0		0	yes	accepted									
 00cb0040	CEditControlCentre::SetRenderEffect	CEditControlCentre	unknown	undefined	0		0	yes	accepted									
 00cb0160	EnlargedUnsignedDivide	_global	__stdcall	ulong	3	_ULARGE_INTEGER,ulong,ulong *	1	yes	accepted									
-00cb0190	CHeroExperienceDef::Init	CHeroExperienceDef	unknown	undefined	0		0	yes	accepted									
+00cb0190	CAMEvent	CAMEvent	unknown	undefined	0		0	yes	accepted									
 00cb01b0	OnReadFinished	CActiveFile	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cb\CActiveFile_OnReadFinished_00cb01b0.cpp
 00cb01c0	WaitForObjectWithMessagePump	_global	unknown	undefined	0		0	yes	accepted									
 00cb0310	MemMove	_global	unknown	undefined	0		0	yes	accepted									

@@ -21,4 +21,4 @@ allocator), srtf 24 (0x004C7590 = ?SetAsRenderedThisFrame@CThing@@QAEXK@Z, seven
 Queue outcomes (QUEUE_W31.tsv): 11 respelled, 10 partial, 17 done, 114 deferred. Decisions (`DECISIONS_W31_RESOLVED.tsv`): D1 / D3 header branches
 accepted; D2 implicit dtors accepted; D9 SetAsRenderedThisFrame verified (Ego_r 0x004C9150 between SetCurrentMapNumber and ClearRenderedThisFrame;
 FableWin.pdb); D8 bisected by the coordinator -- 0x00692230 / 0x006922C0 broke in 84edb11e4 (no `// Leaf:` line, and engine/CBaseClass.h's virtual dtor makes
-the TU emit a 40-byte ??_G that the verifier graded instead of the 30-byte ctor -- chunk 705 found it; the coordinator first guessed an EH frame), 0x004D9861 / 0x009E1440 fail since 2026-10-28; all four become chunk 705 repairs; D10 / D11 / D12 / D13 carried to wave 32.
+the TU emit a 40-byte ??_G that the verifier graded instead of the 30-byte ctor -- chunk 705 found it; the coordinator first guessed an EH frame; and under lane_tools/recheck.py's leaf fallback they never failed at all), 0x004D9861 / 0x009E1440 fail since 2026-10-28; all four become chunk 705 repairs; D10 / D11 / D12 / D13 carried to wave 32.

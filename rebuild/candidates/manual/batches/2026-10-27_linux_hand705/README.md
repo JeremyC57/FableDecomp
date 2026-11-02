@@ -10,8 +10,8 @@ was wrong), CNavQuadTreeNode::RemoveNeighbours 0x00A75E00 (MATCH; protected virt
 
 Repairs (`repair_land.log`: WINS 4; the old sources and tests removed, bindings of the four addresses dropped, the new sources landed): 0x00692230 /
 0x006922C0 (the NCreatureAction::CActionEventExplosion / CActionEventRemoveObject ctors; the landed sources had no `// Leaf:` line, and since 84edb11e4
-engine/CBaseClass.h's virtual dtor makes the TU also emit a 40-byte ??_G, which the verifier graded instead of the 30-byte ctor -- re-landed with
-Leaf lines on the real Ego_r CActionEventBase members), 0x004D9861 (??1CFireheartMinigameDef@@UAE@XZ, the implicit def dtor; the only caller is ??_G
+engine/CBaseClass.h's virtual dtor makes the TU also emit a 40-byte ??_G, which a leaf-less payload grades instead of the 30-byte ctor (lane_tools/recheck.py's
+leaf fallback grades them clean) -- re-landed with Leaf lines on the real Ego_r CActionEventBase members), 0x004D9861 (??1CFireheartMinigameDef@@UAE@XZ, the implicit def dtor; the only caller is ??_G
 0x004D9845, slot 0 of vtable 0x0123E584, RTTI CFireheartMinigameDef : CSubDefClassBase; shared def headers and optimize("s"), was an invented
 CDefPointeeBase_Derived class) and 0x009E1440 (STLport std::vector<CTVertexRHWColSpecTex1>::erase(T*, T*), MATCH; the July-era test included the
 source by path and never compiled; "Render2DDrawList::CopyBlock" was a descriptive label). The old 0x009E1440 source is a bootstrap fixture

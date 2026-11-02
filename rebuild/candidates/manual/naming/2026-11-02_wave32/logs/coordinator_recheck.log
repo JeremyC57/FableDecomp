@@ -1,0 +1,285 @@
+addr       parity           behav  name
+008fcfd0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+008fcfd0   MATCH            PASS   CAIStateGroupBase::GetPWorldSeed
+008fcff0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+008fcff0   MATCH            PASS   CAIStateGroupBase::PeekWorldMap
+008fd0a0   RELOCATION_MATCH PASS   CAIStateGroupBase::CreateItem
+008fd1b0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+008fd1b0   RELOCATION_MATCH PASS   CAIStateGroupBase::DestroyItem
+008fd255   RELOCATION_MATCH PASS   CAIStateGroupBase::CAIStateGroupBase
+008fe862   RELOCATION_MATCH PASS   CAIStateGroup_ApprenticeHero::CAIStateGroup_ApprenticeHero
+008fe8a6   RELOCATION_MATCH PASS   CAIStateGroup_SkillPractice::CAIStateGroup_SkillPractice
+008fec21   RELOCATION_MATCH PASS   CAIStateGroup_MinionFindPersonalSpace::CAIStateGroup_MinionFindPersonalSpace
+008fed07   RELOCATION_MATCH PASS   CAIStateGroup_MinionGuardReactToCriminal::CAIStateGroup_MinionGuardReactToCriminal
+008fed51   RELOCATION_MATCH PASS   CAIStateGroup_MinionGuardReactToBribe::CAIStateGroup_MinionGuardReactToBribe
+008fee89   RELOCATION_MATCH PASS   CAIStateGroup_MinionMotherProtectFamily::CAIStateGroup_MinionMotherProtectFamily
+008feed3   RELOCATION_MATCH PASS   CAIStateGroup_MinionKidAnnoy::CAIStateGroup_MinionKidAnnoy
+008fefb9   RELOCATION_MATCH PASS   CAIStateGroup_MinionFaceHero::CAIStateGroup_MinionFaceHero
+008ff003   RELOCATION_MATCH PASS   CAIStateGroup_MinionPutOutFires::CAIStateGroup_MinionPutOutFires
+008ff04d   RELOCATION_MATCH PASS   CAIStateGroup_MinionWatchFires::CAIStateGroup_MinionWatchFires
+008ff09a   RELOCATION_MATCH PASS   CAIStateGroup_MinionReactToCorpse::CAIStateGroup_MinionReactToCorpse
+008ff0e4   RELOCATION_MATCH PASS   CAIStateGroup_MinionReactToUnconsciousPerson::CAIStateGroup_MinionReactToUnconsciousPerson
+008ff12e   RELOCATION_MATCH PASS   CAIStateGroup_MinionReactToEnemy::CAIStateGroup_MinionReactToEnemy
+008ff1f8   RELOCATION_MATCH PASS   CAIStateGroup_UsesSeat::CAIStateGroup_UsesSeat
+008ff247   RELOCATION_MATCH PASS   CAIStateGroup_MinionSitOnSeatBase::CAIStateGroup_MinionSitOnSeatBase
+008ff28d   RELOCATION_MATCH PASS   CAIStateGroup_MinionSitAtWork::CAIStateGroup_MinionSitAtWork
+008ff2bb   RELOCATION_MATCH PASS   CAIStateGroup_MinionSitAtInn::CAIStateGroup_MinionSitAtInn
+008ff2ec   RELOCATION_MATCH PASS   CAIStateGroup_MinionSitAtSchool::CAIStateGroup_MinionSitAtSchool
+008ff35a   RELOCATION_MATCH PASS   CAIStateGroup_MinionSitAtHome::CAIStateGroup_MinionSitAtHome
+008ff38b   RELOCATION_MATCH PASS   CAIStateGroup_SitRoundCampfire::CAIStateGroup_SitRoundCampfire
+008ff418   RELOCATION_MATCH PASS   CAIStateGroup_MinionGuardReactToPlayerWithWeapon::CAIStateGroup_MinionGuardReactToPlayerWithWeapon
+008ff4a2   RELOCATION_MATCH PASS   CAIStateGroup_BanditSitRoundCampfire::CAIStateGroup_BanditSitRoundCampfire
+008ff4ec   RELOCATION_MATCH PASS   CAIStateGroup_SeekEnemy::CAIStateGroup_SeekEnemy
+008ff53a   RELOCATION_MATCH PASS   CAIStateGroup_SeekScriptTarget::CAIStateGroup_SeekScriptTarget
+008ff588   RELOCATION_MATCH PASS   CAIStateGroup_StealthSeekEnemy::CAIStateGroup_StealthSeekEnemy
+008ff5d6   RELOCATION_MATCH PASS   CAIStateGroup_NonVillageGuardPatrol::CAIStateGroup_NonVillageGuardPatrol
+008ff720   RELOCATION_MATCH PASS   CAIStateGroup_EnemyCreatureBase::CAIStateGroup_EnemyCreatureBase
+008ff94e   RELOCATION_MATCH PASS   CAIStateGroup_MeleeCombatNearbyBase::CAIStateGroup_MeleeCombatNearbyBase
+008ff98e   RELOCATION_MATCH PASS   CAIStateGroup_MeleeCombatNearby2::CAIStateGroup_MeleeCombatNearby2
+008ff9c0   RELOCATION_MATCH PASS   CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose
+008ff9f2   RELOCATION_MATCH PASS   CAIStateGroup_VillageTaskTorch::CAIStateGroup_VillageTaskTorch
+008ffa3c   RELOCATION_MATCH PASS   CAIStateGroup_VillageTaskPatrol::CAIStateGroup_VillageTaskPatrol
+008ffa86   RELOCATION_MATCH PASS   CAIStateGroup_VillageTaskSecuritySweep::CAIStateGroup_VillageTaskSecuritySweep
+008ffad0   RELOCATION_MATCH PASS   CAIStateGroup_VillageTaskPickCrops::CAIStateGroup_VillageTaskPickCrops
+008ffb1a   RELOCATION_MATCH PASS   CAIStateGroup_VillageTaskHorn::CAIStateGroup_VillageTaskHorn
+008ffba4   RELOCATION_MATCH PASS   CAIStateGroup_KidWatchHopscotch::CAIStateGroup_KidWatchHopscotch
+008ffc78   RELOCATION_MATCH PASS   CAIStateGroup_KidReactToBlockage::CAIStateGroup_KidReactToBlockage
+008ffd3a   RELOCATION_MATCH PASS   CAIStateGroup_WorkInWarehouse::CAIStateGroup_WorkInWarehouse
+008fff74   RELOCATION_MATCH PASS   CAIStateGroup_SitForMeal::CAIStateGroup_SitForMeal
+008fffbe   RELOCATION_MATCH PASS   CAIStateGroup_PrepareMeal::CAIStateGroup_PrepareMeal
+00900008   RELOCATION_MATCH PASS   CAIStateGroup_LightHomeCandle::CAIStateGroup_LightHomeCandle
+0090004b   RELOCATION_MATCH PASS   CAIStateGroup_LightWorkCandle::CAIStateGroup_LightWorkCandle
+00900129   RELOCATION_MATCH PASS   CAIStateGroup_StayNearFoodHall::CAIStateGroup_StayNearFoodHall
+009001f2   RELOCATION_MATCH PASS   CAIStateGroup_SitInPub::CAIStateGroup_SitInPub
+00900241   RELOCATION_MATCH PASS   CAIStateGroup_MinionHawkingFromStall::CAIStateGroup_MinionHawkingFromStall
+009002a5   RELOCATION_MATCH PASS   CAIStateGroup_SellToBuyer::CAIStateGroup_SellToBuyer
+0090035d   RELOCATION_MATCH PASS   CAIStateGroup_TrollBase::CAIStateGroup_TrollBase
+009003a0   RELOCATION_MATCH PASS   CAIStateGroup_EarthTroll::CAIStateGroup_EarthTroll
+00900412   RELOCATION_MATCH PASS   CAIStateGroup_FollowPlayer::CAIStateGroup_FollowPlayer
+0090054e   RELOCATION_MATCH PASS   CAIStateGroup_BalverineJumpAtFleeingEnemy::CAIStateGroup_BalverineJumpAtFleeingEnemy
+00900720   RELOCATION_MATCH PASS   CAIStateGroup_MazeBase::CAIStateGroup_MazeBase
+009008c1   RELOCATION_MATCH PASS   CAIStateGroup_BriarRose::CAIStateGroup_BriarRose
+0090090f   RELOCATION_MATCH PASS   CAIStateGroup_BriarRoseWillUse::CAIStateGroup_BriarRoseWillUse
+0090095d   RELOCATION_MATCH PASS   CAIStateGroup_MinionBehaviourGreetCreature::CAIStateGroup_MinionBehaviourGreetCreature
+009009a7   RELOCATION_MATCH PASS   CAIStateGroupBehaviourBase::CAIStateGroupBehaviourBase
+00900a6d   RELOCATION_MATCH PASS   CAIStateGroup_MinionReactToBurglary::CAIStateGroup_MinionReactToBurglary
+00900ab7   RELOCATION_MATCH PASS   CAIStateGroup_MinionReactToTrespassing::CAIStateGroup_MinionReactToTrespassing
+00900b81   RELOCATION_MATCH PASS   CAIStateGroup_MinionReactToCrimeFromSleep::CAIStateGroup_MinionReactToCrimeFromSleep
+00900bef   RELOCATION_MATCH PASS   CAIStateGroup_HoverMovementBase::CAIStateGroup_HoverMovementBase
+00900c01   RELOCATION_MATCH PASS   CAIStateGroup_HoverWander::CAIStateGroup_HoverWander
+00900c3b   RELOCATION_MATCH PASS   CAIStateGroup_HoverAttack::CAIStateGroup_HoverAttack
+00900c76   RELOCATION_MATCH PASS   CAIStateGroup_HoverAttackUnlessTargetIsFleeing::CAIStateGroup_HoverAttackUnlessTargetIsFleeing
+00900cf1   RELOCATION_MATCH PASS   CAIStateGroup_HoverKeepInArea::CAIStateGroup_HoverKeepInArea
+00900d28   RELOCATION_MATCH PASS   CAIStateGroup_HoverAttackArea::CAIStateGroup_HoverAttackArea
+00900d63   RELOCATION_MATCH PASS   CAIStateGroup_HoverHornetQueenTakeDamage::CAIStateGroup_HoverHornetQueenTakeDamage
+00900e1e   RELOCATION_MATCH PASS   CAIStateGroup_CreatureRangedCombat2::CAIStateGroup_CreatureRangedCombat2
+00900f5e   RELOCATION_MATCH PASS   CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets
+00900fac   RELOCATION_MATCH PASS   CAIStateGroup_ReactToDeadLeader::CAIStateGroup_ReactToDeadLeader
+0090107a   RELOCATION_MATCH PASS   CAIStateGroup_CreatureSeekEnemyUnderground::CAIStateGroup_CreatureSeekEnemyUnderground
+009010c4   RELOCATION_MATCH PASS   CAIStateGroup_BoastingCrowdMember::CAIStateGroup_BoastingCrowdMember
+00901178   RELOCATION_MATCH PASS   CAIStateGroup_DeedReactionRoot::CAIStateGroup_DeedReactionRoot
+009011b8   RELOCATION_MATCH PASS   CAIStateGroup_DeedReactionRootFromSleep::CAIStateGroup_DeedReactionRootFromSleep
+00901226   RELOCATION_MATCH PASS   CAIStateGroup_BanditKingCharge::CAIStateGroup_BanditKingCharge
+00901274   RELOCATION_MATCH PASS   CAIStateGroup_BanditKingLunge::CAIStateGroup_BanditKingLunge
+009012c2   RELOCATION_MATCH PASS   CAIStateGroup_BanditKingThrowWeapons::CAIStateGroup_BanditKingThrowWeapons
+00901310   RELOCATION_MATCH PASS   CAIStateGroup_IceTrollIcicleAttack::CAIStateGroup_IceTrollIcicleAttack
+0090135e   RELOCATION_MATCH PASS   CAIStateGroup_IceTrollPoundGroundAttack::CAIStateGroup_IceTrollPoundGroundAttack
+009013ac   RELOCATION_MATCH PASS   CAIStateGroup_IceTrollIcicleAssault::CAIStateGroup_IceTrollIcicleAssault
+009013fa   RELOCATION_MATCH PASS   CAIStateGroup_VersusEnemyBase::CAIStateGroup_VersusEnemyBase
+0090148c   RELOCATION_MATCH PASS   CAIStateGroup_MinionFollowThing::CAIStateGroup_MinionFollowThing
+0090181d   RELOCATION_MATCH PASS   CAIStateGroup_SleepOnFloor::CAIStateGroup_SleepOnFloor
+00901867   RELOCATION_MATCH PASS   CAIStateGroup_WhisperRetreat::CAIStateGroup_WhisperRetreat
+009019aa   RELOCATION_MATCH PASS   CAIStateGroup_EatAtTable::CAIStateGroup_EatAtTable
+009019ea   RELOCATION_MATCH PASS   CAIStateGroup_EatAtTavern::CAIStateGroup_EatAtTavern
+00901a89   RELOCATION_MATCH PASS   CAIStateGroup_ScreamerPursueTarget::CAIStateGroup_ScreamerPursueTarget
+00901e85   RELOCATION_MATCH PASS   CAIStateGroup_SummonerSummon::CAIStateGroup_SummonerSummon
+00902122   RELOCATION_MATCH PASS   CAIStateGroup_MinionSitOnSeat::CAIStateGroup_MinionSitOnSeat
+009021c8   RELOCATION_MATCH PASS   CAIStateGroup_MinionSitOutside::CAIStateGroup_MinionSitOutside
+0090233c   RELOCATION_MATCH PASS   CAIStateGroup_MeleeCombatNearby::CAIStateGroup_MeleeCombatNearby
+009025ee   RELOCATION_MATCH PASS   CAIStateGroup_RockTroll::CAIStateGroup_RockTroll
+00902825   RELOCATION_MATCH PASS   CAIStateGroup_MinionBehaviourSad::CAIStateGroup_MinionBehaviourSad
+00902907   RELOCATION_MATCH PASS   CAIStateGroup_HoverWanderAroundThing::CAIStateGroup_HoverWanderAroundThing
+00902b74   RELOCATION_MATCH PASS   CAIStateGroup_VersusRockTroll::CAIStateGroup_VersusRockTroll
+00902c55   RELOCATION_MATCH PASS   CAIStateGroup_EatAtHome::CAIStateGroup_EatAtHome
+00903095   RELOCATION_MATCH PASS   CAIStateGroup_JackOfBladesStage2::CAIStateGroup_JackOfBladesStage2
+0090310e   RELOCATION_MATCH PASS   CAIStateGroup_HoverHornetQueen::CAIStateGroup_HoverHornetQueen
+009031ba   RELOCATION_MATCH PASS   CAIStateGroup_WhisperPotionCombat::CAIStateGroup_WhisperPotionCombat
+0090c670   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0090c670   RELOCATION_MATCH PASS   CAIStateGroup_MinionGuardFollowPlayer::OnReplace
+00912700   RELOCATION_MATCH PASS   CAIStateGroup_FlyingThingBase::GetRandomFlightPos
+00914c60   WARN SHARED_HEADER_AVAILABLE CTCBase
+00914c60   RELOCATION_MATCH PASS   CAIStateGroup_KidWanderNearKids::IsRunnable
+00915190   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00915190   WARN RELOC_NAME: ?FindEntry@KidTable@@QAEPAUKidEntry@@ABJ@Z -> 0040f020 labelled 'CVectorMap<ETCInterfaceType, CTCBase *, CKeyPairCompareLess<ETCInterfaceType, CTCBase *>>::LowerBound'
+00915190   RELOCATION_MATCH PASS   CAIStateGroup_KidHurtSelfRunToMother::Cleanup
+00917380   RELOCATION_MATCH PASS   CAIStateGroup_IdleAtHome::Update
+0091d190   WARN RELOC_NAME: ?GetApology@CTCEntityEventsMethods@@QAE_NPAPBUCEventApologyReceived@@ABUCEventFilter_None@@@Z -> 0091d0a0 labelled 'CTCEntityEvents::GetEvent<NEntityEvents::CEventApologyReceived, NEntityEvents::CEventFilter_None>'
+0091d190   WARN RELOC_NAME: ?GetPPlayerManager@CAIStateGroup_MinionReactToApology@@QAEPAUCPlayerManagerMethods@@XZ -> 008fcf90 labelled 'CAIStateGroupBase::GetPlayerManager'
+0091d190   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0091d190   RELOCATION_MATCH PASS   CAIStateGroup_MinionReactToApology::Update
+00923aa0   RELOCATION_MATCH PASS   CAIStateGroup_ServeFoodAtHome::IsTime
+00923b00   RELOCATION_MATCH PASS   CAIStateGroup_ServeFoodAtTavern::IsTime
+00927c80   WARN RELOC_NAME: ?GetPPlayerManager@CAIStateGroup_ShopkeeperWatchPlayer@@QAEPAVCPlayerManager@@XZ -> 008fcf90 labelled 'CAIStateGroupBase::GetPlayerManager'
+00927c80   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00927c80   RELOCATION_MATCH PASS   CAIStateGroup_ShopkeeperWatchPlayer::IsRunnable
+00929650   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00929650   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00929650   RELOCATION_MATCH PASS   CAIStateGroup_MinionGuardGreetPlayer::IsRunnable
+0092b800   WARN RELOC_NAME: ?g_InvSqrtMantissaTable@@3PAIA -> 013ce558 labelled 'GFastOneOverSqrtTable'
+0092b800   RELOCATION_MATCH PASS   CAIStateGroup_OnHeroPush::IsRunnable
+0092bcb0   RELOCATION_MATCH PASS   CAIStateGroup_AvoidRegionExit::IsRunnable
+0092f240   RELOCATION_MATCH PASS   CAIStateGroup_MinionReactToPlayerInteraction::InteractionFailed
+00939180   RELOCATION_MATCH PASS   CAIStateGroup_MinionSitAtHome::IsRunnable
+009395f0   RELOCATION_MATCH PASS   CAIStateGroup_SitRoundCampfire::GetPNearCampfire
+00939dd0   RELOCATION_MATCH PASS   CAIStateGroup_MinionGuardReactToPlayerWithWeapon::RemoveMessageEventsAdded
+0093b8b0   WARN RELOC_NAME: ?g_FrameForTargetPerception@@3HA -> 01375550 labelled 'CMainGameComponent::ConstantFPS'
+0093b8b0   WARN RELOC_NAME: ?CanCreatureSeeCreature@@YI_NPAVCThingAICreature@@PAVCThing@@_N@Z -> 008645e0 labelled 'CMainGameComponent::BeginInputLoading'
+0093b8b0   RELOCATION_MATCH PASS   CAIStateGroup_SeekEnemy::IsStillRunnable
+0093c2f0   WARN RELOC_NAME: ?IsThingValidTarget@CTCTargetingAI@@QBE_NABVCThing@@@Z -> 007f6170 labelled 'CTCTargetingAI::IsThingAttackable'
+0093c2f0   RELOCATION_MATCH PASS   CAIStateGroup_StealthSeekEnemy::IsRunnable
+0093cab0   RELOCATION_MATCH PASS   CAIStateGroup_NonVillageGuardPatrol::FindNextGuardPatrolPosition
+0093cb20   RELOCATION_MATCH PASS   CAIStateGroup_NonVillageGuardPatrol::Update
+0093cfe0   WARN SHARED_HEADER_AVAILABLE CThingPhysical
+0093cfe0   RELOCATION_MATCH PASS   CAIStateGroup_ButterflyWander::Initialise
+0093dae0   RELOCATION_MATCH PASS   CAIStateGroup_MeleeCombatNearby2::IsCombatSequenceActionPending
+0093dc10   RELOCATION_MATCH PASS   CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::IsStillRunnable
+0093dcd0   WARN RELOC_NAME: ?IsRegisteredCombatant@CCreatureCombatView@@QAE_NXZ -> 00662410 labelled 'CThingCreatureBase::IsInMeleeAsAttacker'
+0093dcd0   WARN RELOC_NAME: ?ValidateSequencePosition@CCombatPositionMethods@@QAE_NPAVCThingAICreature@@@Z -> 006e9700 labelled 'CCombatManager::IsCreatureOnOuterRing'
+0093dcd0   RELOCATION_MATCH PASS   CAIStateGroup_MeleeCombatNearby2::IsEnemyCreatureInCombatPosition
+00947a30   WARN SHARED_HEADER_AVAILABLE CTCVillage
+00947a30   WARN RELOC_NAME: ?IsCookTime_00658bb9@CTCVillage@@QAE_NXZ -> 00658bb9 labelled 'CTCVillage::IsEatTime'
+00947a30   RELOCATION_MATCH PASS   CAIStateGroup_StayNearFoodHall::Update
+009490d0   RELOCATION_MATCH PASS   CAIStateGroup_GoToPub::GetBar
+0094a6d0   WARN SHARED_HEADER_AVAILABLE CThingPhysical
+0094a6d0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0094a6d0   RELOCATION_MATCH PASS   CAIStateGroup_GoToPub::WalkToPoint
+0094c850   RELOCATION_MATCH PASS   CAIStateGroup_GameMaster::InitCreaturePosition
+0094cb40   WARN RELOC_NAME: ?SetGameMaster@CTCTavernGameCoinGolf@@QAEXPAVCThing@@@Z -> 0094d430 labelled '_unattributed::AssignTarget_0094d430'
+0094cb40   WARN RELOC_NAME: ??1?$CStlList@PAVCThing@@@@QAE@XZ -> 00792240 labelled 'std::list::~list'
+0094cb40   RELOCATION_MATCH PASS   CAIStateGroup_GameMaster::GetSeat
+0094f090   WARN SHARED_HEADER_AVAILABLE CWorldMap
+0094f090   RELOCATION_MATCH PASS   CAIStateGroup_BalverineCornered::GetLandPos
+0094feb0   WARN SHARED_HEADER_AVAILABLE CWorld
+0094feb0   WARN RELOC_NAME: ?FramesPerSecond@@3JA -> 01375550 labelled 'CMainGameComponent::ConstantFPS'
+0094feb0   RELOCATION_MATCH PASS   CAIStateGroup_JackDragon::StayIdleAndTurnToFace
+00950b20   RELOCATION_MATCH PASS   CAIStateGroup_JackDragon::FindHitEvent
+00953fa0   WARN SHARED_HEADER_AVAILABLE CWorld
+00953fa0   RELOCATION_MATCH PASS   CAIStateGroup_MazeDefensiveMeleeCombat::Initialise
+00954040   WARN SHARED_HEADER_AVAILABLE CWorld
+00954040   RELOCATION_MATCH PASS   CAIStateGroup_MazeTutorialBattleRespondToLightning::Initialise
+00954080   WARN SHARED_HEADER_AVAILABLE CWorld
+00954080   RELOCATION_MATCH PASS   CAIStateGroup_MazeTutorialBattleUseShield::Initialise
+009540f0   RELOCATION_MATCH PASS   CAIStateGroup_MazeBase::OnActivate
+00954150   RELOCATION_MATCH PASS   CAIStateGroup_MazeDefensiveMeleeCombat::OnActivate
+009541e0   RELOCATION_MATCH PASS   CAIStateGroup_MazeTutorialBattleTeleport::OnActivate
+009547d0   WARN RELOC_NAME: ?Find@MazeTable@@QAEPAUMazeEntry@@ABJ@Z -> 0040f020 labelled 'CVectorMap<ETCInterfaceType, CTCBase *, CKeyPairCompareLess<ETCInterfaceType, CTCBase *>>::LowerBound'
+009547d0   WARN RELOC_NAME: ?GetPhase@MazeBoss@@QAEJXZ -> 007aed10 labelled 'CTCBoss::GetBossPhase'
+009547d0   WARN RELOC_NAME: ??0MazeCreaturePointerBase@@QAE@XZ -> 00a01b10 labelled 'CBaseIntelligentPointer::CBaseIntelligentPointer'
+009547d0   WARN RELOC_NAME: ??1MazeCreaturePointerBase@@UAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+009547d0   RELOCATION_MATCH PASS   CAIStateGroup_MazeShieldedChase::OnActivate
+00954b50   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00954b50   WARN SHARED_HEADER_AVAILABLE CWorld
+00954b50   WARN RELOC_NAME: ?FindConst@MazeTable@@QAEPAUMazeEntry@@ABJ@Z -> 004365b0 labelled 'CVectorMap<ETCInterfaceType, CTCBase *, CKeyPairCompareLess<ETCInterfaceType, CTCBase *>>::LowerBound'
+00954b50   WARN RELOC_NAME: ??0MazePointerBase@@QAE@XZ -> 00a01b10 labelled 'CBaseIntelligentPointer::CBaseIntelligentPointer'
+00954b50   WARN RELOC_NAME: ??1MazePointerBase@@UAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+00954b50   RELOCATION_MATCH PASS   CAIStateGroup_MazeTutorialBattleTeleport::IsRunnable
+00954e30   WARN SHARED_HEADER_AVAILABLE CWorld
+00954e30   WARN RELOC_NAME: ?Find@MazeTable@@QAEPAUMazeEntry@@ABJ@Z -> 0040f020 labelled 'CVectorMap<ETCInterfaceType, CTCBase *, CKeyPairCompareLess<ETCInterfaceType, CTCBase *>>::LowerBound'
+00954e30   WARN RELOC_NAME: ?GetPhase@MazeBoss@@QAEJXZ -> 007aed10 labelled 'CTCBoss::GetBossPhase'
+00954e30   WARN RELOC_NAME: ?FindConst@MazeTable@@QAEPAUMazeEntry@@ABJ@Z -> 004365b0 labelled 'CVectorMap<ETCInterfaceType, CTCBase *, CKeyPairCompareLess<ETCInterfaceType, CTCBase *>>::LowerBound'
+00954e30   WARN RELOC_NAME: ?HasBeenHitByLightning@LightningMethods@@QAE_NXZ -> 00954c60 labelled 'CAIStateGroup_MazeTutorialBattleRespondToLightning::FindHitEvent'
+00954e30   WARN RELOC_NAME: ??0MazePointerBase@@QAE@XZ -> 00a01b10 labelled 'CBaseIntelligentPointer::CBaseIntelligentPointer'
+00954e30   WARN RELOC_NAME: ??1MazePointerBase@@UAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+00954e30   RELOCATION_MATCH PASS   CAIStateGroup_MazeTutorialBattleRespondToLightning::IsRunnable
+009551a0   WARN RELOC_NAME: ?CanRun@MazeRangedMethods@@QAE_NXZ -> 00954220 labelled 'CAIStateGroup_MazeRangedCombat::IsStillRunnable'
+009551a0   WARN RELOC_NAME: ??0CCombatActionBaseRetail@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z -> 00857f30 labelled 'CCombatActionBase::CCombatActionBase'
+009551a0   WARN RELOC_NAME: ??1CCombatActionBaseRetail@@UAE@XZ -> 0062e900 labelled 'CCombatActionBase::~CCombatActionBase'
+009551a0   WARN RELOC_NAME: ??0CCreatureAction_PlayCombatAnimationRetail@@QAE@PAVCThingCreatureBase@@ABVCCharString@@_N@Z -> 008b7ff0 labelled 'CCreatureAction_PlayCombatAnimation::CCreatureAction_PlayCombatAnimation'
+009551a0   RELOCATION_MATCH PASS   CAIStateGroup_MazeRangedCombat::Update
+00958c00   RELOCATION_MATCH PASS   CAIStateGroup_MinionReactToCrime::IsGuardOnLevel
+00959ee0   WARN SHARED_HEADER_AVAILABLE CThingPhysical
+00959ee0   RELOCATION_MATCH PASS   CAIStateGroup_HoverKeepInArea::Initialise
+0095a270   WARN SHARED_HEADER_AVAILABLE CThingPhysical
+0095a270   RELOCATION_MATCH PASS   CAIStateGroup_HoverAttackArea::Initialise
+0095aa00   RELOCATION_MATCH PASS   CAIStateGroup_HoverHornetQueen::KillBossHelpers
+00961880   WARN SHARED_HEADER_AVAILABLE CWorld
+00961880   WARN RELOC_NAME: ??0CRetailBanditKingLungeAction@@QAE@PAUCThingRetail@@0@Z -> 009619c0 labelled 'CCreatureAction_BanditKingLunge::CCreatureAction_BanditKingLunge'
+00961880   WARN RELOC_NAME: ??1CRetailBanditKingLungeAction@@QAE@XZ -> 0062e900 labelled 'CCombatActionBase::~CCombatActionBase'
+00961880   WARN RELOC_NAME: ?GetPhase@CTCBoss@@QAEJXZ -> 007aed10 labelled 'CTCBoss::GetBossPhase'
+00961880   WARN RELOC_NAME: ?ClearPhaseCounter@CTCBoss@@QAEXXZ -> 007aed50 labelled '_global::SetMemberConst_007aed50'
+00961880   RELOCATION_MATCH PASS   CAIStateGroup_BanditKingLunge::Update
+009627c0   WARN RELOC_NAME: ??0CIceTrollIcicleAssaultIntoNative@@QAE@PAUCIceThing@@0@Z -> 00962990 labelled 'CCreatureAction_IceTrollIcicleAssaultInto::CCreatureAction_IceTrollIcicleAssaultInto'
+009627c0   WARN RELOC_NAME: ??1CIceCombatAction@@UAE@XZ -> 0062e900 labelled 'CCombatActionBase::~CCombatActionBase'
+009627c0   RELOCATION_MATCH PASS   CAIStateGroup_IceTrollIcicleAssault::Update
+0096c250   RELOCATION_MATCH PASS   CAIStateGroup_Thunder::FindHitEvent
+0096c9a0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0096c9a0   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0096c9a0   WARN SHARED_HEADER_AVAILABLE CWorld
+0096c9a0   WARN RELOC_NAME: ??0CCreatureAction_PutDownTankard@N_0096c820@@QAE@PAVCThingCreatureBase@@@Z -> 0096c820 labelled 'CCreatureAction_StopEatingAtTable::CCreatureAction_StopEatingAtTable'
+0096c9a0   RELOCATION_MATCH PASS   CAIStateGroup_EatAtTable::Eat
+0096d200   RELOCATION_MATCH PASS   CAIStateGroup_EatAtHome::IsTime
+0096d2d0   RELOCATION_MATCH PASS   CAIStateGroup_EatAtTavern::IsStaffed
+0096e700   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0096e700   WARN RELOC_NAME: ?IsPositionOccupied@CCombatManager@@QAE_NPAVCThingCreatureBase@@@Z -> 006e9700 labelled 'CCombatManager::IsCreatureOnOuterRing'
+0096e700   RELOCATION_MATCH PASS   CAIStateGroup_MeleeCombatNearby::IsEnemyCreatureInCombatPosition
+00970cd0   WARN RELOC_NAME: ?IsOccupied@CTCOccupiableMethods@@QAE_NXZ -> 0087c3f0 labelled '_global::IsThingAlive_0087c3f0'
+00970cd0   WARN RELOC_NAME: ?SetOccupier@CTCOccupiableMethods@@QAEXPAUCThingRetail@@@Z -> 0087c390 labelled '_unattributed::AssignTarget_0087c390'
+00970cd0   RELOCATION_MATCH PASS   CAIStateGroup_CreatureUseCoverBase::GetHiddenCoverPosAndSetUpCoverThing
+009713e0   RELOCATION_MATCH PASS   CAIStateGroup_CreatureUseCoverBase::DuckBehindCover
+00972490   WARN RELOC_NAME: ?FindEntry@JackTable@@QAEPAUJackEntry@@ABJ@Z -> 0040f020 labelled 'CVectorMap<ETCInterfaceType, CTCBase *, CKeyPairCompareLess<ETCInterfaceType, CTCBase *>>::LowerBound'
+00972490   WARN RELOC_NAME: ?GetHitLocation@HitLocations@@QAEPAUHitLocation@@ABVCCharString@@@Z -> 00815820 labelled 'CTCHitLocations::GetPHitLocationFromName'
+00972490   RELOCATION_MATCH PASS   CAIStateGroup_JackOfBladesStage2::OnActivate
+00978fd0   WARN RELOC_NAME: ?ToInteger@C2DBox@@QBE?AVC2DBoxI@@XZ -> 00a55a30 labelled 'C2DBoxF::ToBoxI'
+00978fd0   WARN RELOC_NAME: ?FindInRoughArea@CThingSearchToolsRetail@@QAEXABVC2DBoxI@@ABUCFilterBind4@@AAUCThingVector@@@Z -> 009793d0 labelled 'CThingSearchTools::GetAllThingsInRoughArea'
+00978fd0   RELOCATION_MATCH PASS   CAIStateGroup_CreatureAdvanceInCover::GetCoverThingList
+0097baa0   RELOCATION_MATCH PASS   CAIStateGroup_ScorpionKing::FindHitEvent
+0097d360   RELOCATION_MATCH PASS   CAIStateGroupBase::AIAction_WaitForMessage
+009852c0   RELOCATION_MATCH PASS   CAIStateGroup_OpinionReactionRoot::FollowUpdate
+009863e0   WARN RELOC_DUPLICATE: retail 004c73d0 bound to ?GetPosition@CThingAICreatureView@@QAEPAVC3DVector@@XZ, ?GetPosition@CThingView@@QAEPAVC3DVector@@XZ
+009863e0   WARN RELOC_NAME: ??BCThingIntelligentPointerView@@QAEPAVCThing@@XZ -> 00a01b50 labelled 'CBaseIntelligentPointer::GetPItem'
+009863e0   RELOCATION_MATCH PASS   CAIStateGroup_OpinionReactionRoot::CommentAboutHeroIsRunnable
+00a3b510   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00a3b510   RELOCATION_MATCH PASS   CTextureRenderer::CTextureRenderer
+00ca61d0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca61d0   RELOCATION_MATCH PASS   CBaseRenderer::CBaseRenderer
+00ca6370   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca6370   WARN RELOC_NAME: ??1CAMEvent@@QAE@XZ -> 00cb01b0 labelled 'CFileInstaller::CActiveFile::OnReadFinished'
+00ca6370   RELOCATION_MATCH PASS   CBaseRenderer::~CBaseRenderer
+00ca7360   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca7360   RELOCATION_MATCH PASS   CBaseVideoRenderer::CBaseVideoRenderer
+00cb0190   RELOCATION_MATCH PASS   CAMEvent::CAMEvent
+  TIMEOUT /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/wine/vc71rtm/bin/cl.exe 0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/naming/w32/coord/lv/01/21/012169f0/012169f0.cpp
+  TIMEOUT /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/wine/vc71rtm/bin/cl.exe 0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/naming/w32/coord/lv/01/21/012169f0/012169f0.cpp
+  TIMEOUT /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/wine/vc71rtm/bin/cl.exe 0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/naming/w32/coord/lv/01/21/012169f0/012169f0.cpp
+  TIMEOUT /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/wine/vc71rtm/bin/cl.exe 0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/naming/w32/coord/lv/01/21/012169f0/012169f0.cpp
+  TIMEOUT /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/wine/vc71rtm/bin/cl.exe 0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/naming/w32/coord/lv/01/21/012169f0/012169f0.cpp
+  TIMEOUT /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/wine/vc71rtm/bin/cl.exe 0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/naming/w32/coord/lv/01/21/012169f0/012169f0.cpp
+  TIMEOUT /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/wine/vc71rtm/bin/cl.exe 0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/naming/w32/coord/lv/01/21/012169f0/012169f0.cpp
+  TIMEOUT /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/wine/vc71rtm/bin/cl.exe 0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/naming/w32/coord/lv/01/21/012169f0/012169f0.cpp
+  TIMEOUT /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/wine/vc71rtm/bin/cl.exe 0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/naming/w32/coord/lv/01/21/012169f0/012169f0.cpp
+  TIMEOUT /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/wine/vc71rtm/bin/cl.exe 0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/naming/w32/coord/lv/01/21/012169f0/012169f0.cpp
+  TIMEOUT /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/wine/vc71rtm/bin/cl.exe 0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/naming/w32/coord/lv/01/21/012169f0/012169f0.cpp
+  TIMEOUT /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/wine/vc71rtm/bin/cl.exe 0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/naming/w32/coord/lv/01/21/012169f0/012169f0.cpp
+addr       parity           behav  name
+012169c0   RELOCATION_MATCH PASS   Unwind@012169c0
+012169c8   RELOCATION_MATCH PASS   Unwind@012169c8
+012169d3   RELOCATION_MATCH PASS   Unwind@012169d3
+012169f0   RELOCATION_MATCH PASS   Unwind@012169f0
+012169f8   RELOCATION_MATCH PASS   Unwind@012169f8
+01216a03   RELOCATION_MATCH PASS   Unwind@01216a03
+01216a0e   RELOCATION_MATCH PASS   Unwind@01216a0e
+01216a19   RELOCATION_MATCH PASS   Unwind@01216a19
+01216a24   RELOCATION_MATCH PASS   Unwind@01216a24
+01216a32   RELOCATION_MATCH PASS   Unwind@01216a32
+
+WINS: 10
+  012169c0 RELOCATION_MATCH _global::Unwind@012169c0
+  012169c8 RELOCATION_MATCH _global::Unwind@012169c8
+  012169d3 RELOCATION_MATCH _global::Unwind@012169d3
+  012169f0 RELOCATION_MATCH _global::Unwind@012169f0
+  012169f8 RELOCATION_MATCH _global::Unwind@012169f8
+  01216a03 RELOCATION_MATCH _global::Unwind@01216a03
+  01216a0e RELOCATION_MATCH _global::Unwind@01216a0e
+  01216a19 RELOCATION_MATCH _global::Unwind@01216a19
+  01216a24 RELOCATION_MATCH _global::Unwind@01216a24
+  01216a32 RELOCATION_MATCH _global::Unwind@01216a32

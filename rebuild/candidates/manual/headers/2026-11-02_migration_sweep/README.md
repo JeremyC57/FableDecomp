@@ -14,3 +14,11 @@ symbol taken from each object (`objdump -t`): 44 / 44 RELOCATION_MATCH + PASS (`
 Lesson (GOTCHAS 2026-11-02): every landed source needs a `// Leaf:` line; a shared-header change can change which function a Leaf-less row is
 graded on. The landed tree still has ~23,000 sources without a Leaf line (sync_catalog_names.py: "no Leaf line"); a full-tree sweep would find
 any other such rows.
+
+CORRECTION (same day): the 44 DIFFER (and the two wave 31 "failures" 0x00692230 / 0x006922C0) were produced by the payload builder used here
+(`naming/2026-11-01_wave27/scripts/coordinator_mk_rc_list.py`), which passes an empty leaf when a source has no `// Leaf:` line, so vland graded the
+largest function. The lane's own `lane_tools/recheck.py` falls back to the mangled prefix of the catalog name (`??0Class@` for a ctor) and grades
+the same rows RELOCATION_MATCH (proved at 5abdb61c4 on 0x00455572 / 0x004C20D0). So none of these rows was broken and migration wave 4's recorded pass
+was right; the added Leaf lines only make grading independent of the payload builder. Use `lane_tools/recheck.py` for recheck payloads (it also
+sets EH-funclet offsets).
+

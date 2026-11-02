@@ -1,0 +1,30 @@
+address	name	evidence
+012bf5d8	CBaseVideoRenderer::`vftable'{for `CUnknown'}	naming wave 32 (c704 respelled, queue): ??_7CBaseVideoRenderer@@6BCUnknown@@@; callers / own row respelled and rechecked (MATCH / RELOCATION_MATCH + PASS)
+012bf598	CBaseVideoRenderer::`vftable'{for `IBaseFilter'}	naming wave 32 (c704 respelled, queue): ??_7CBaseVideoRenderer@@6BIBaseFilter@@@; callers / own row respelled and rechecked (MATCH / RELOCATION_MATCH + PASS)
+012bf584	CBaseVideoRenderer::`vftable'{for `IAMovieSetup'}	naming wave 32 (c704 respelled, queue): ??_7CBaseVideoRenderer@@6BIAMovieSetup@@@; callers / own row respelled and rechecked (MATCH / RELOCATION_MATCH + PASS)
+012bf560	CBaseVideoRenderer::`vftable'{for `IQualProp'}	naming wave 32 (c704 respelled, queue): ??_7CBaseVideoRenderer@@6BIQualProp@@@; callers / own row respelled and rechecked (MATCH / RELOCATION_MATCH + PASS)
+012bf54c	CBaseVideoRenderer::`vftable'{for `IQualityControl'}	naming wave 32 (c704 respelled, queue): ??_7CBaseVideoRenderer@@6BIQualityControl@@@; callers / own row respelled and rechecked (MATCH / RELOCATION_MATCH + PASS)
+012bf498	CBaseRenderer::`vftable'{for `CUnknown'}	naming wave 32 (c704 respelled, queue): ??_7CBaseRenderer@@6BCUnknown@@@; callers / own row respelled and rechecked (MATCH / RELOCATION_MATCH + PASS)
+012bf458	CBaseRenderer::`vftable'{for `IBaseFilter'}	naming wave 32 (c704 respelled, queue): ??_7CBaseRenderer@@6BIBaseFilter@@@; callers / own row respelled and rechecked (MATCH / RELOCATION_MATCH + PASS)
+012bf444	CBaseRenderer::`vftable'{for `IAMovieSetup'}	naming wave 32 (c704 respelled, queue): ??_7CBaseRenderer@@6BIAMovieSetup@@@; callers / own row respelled and rechecked (MATCH / RELOCATION_MATCH + PASS)
+00ca61d0	CBaseRenderer::CBaseRenderer	naming wave 32 (dshow): the row now defines ??0CBaseRenderer@@QAE@ABU_GUID@@PBGPAUIUnknown@@PAJ@Z (was -); rechecked MATCH / RELOCATION_MATCH + PASS
+00ca7360	CBaseVideoRenderer::CBaseVideoRenderer	naming wave 32 (dshow): the row now defines ??0CBaseVideoRenderer@@QAE@ABU_GUID@@PBGPAUIUnknown@@PAJ@Z (was ??0CVolumeDerived_00ca7360@@QAE@PAX000@Z); rechecked MATCH / RELOCATION_MATCH + PASS
+00cb0190	CAMEvent::CAMEvent	naming wave 32 (dshow): the row now defines ??0CAMEvent@@QAE@H@Z (was ??0CEvent_00cb0190@@QAE@H@Z); rechecked MATCH / RELOCATION_MATCH + PASS
+008fe862	CAIStateGroup_ApprenticeHero::CAIStateGroup_ApprenticeHero	naming wave 32: ??0CAIStateGroup_ApprenticeHero@@QAE@XZ, bound this wave (first named by 008fe8a6); rechecked MATCH / RELOCATION_MATCH + PASS
+0128b080	CIntelligentPointer<CThingDeadCreature>::`vftable'	naming wave 32: ??_7?$CIntelligentPointer@VCThingDeadCreature@@@@6B@, bound this wave (first named by 008ff09a); rechecked MATCH / RELOCATION_MATCH + PASS
+008ff1f8	CAIStateGroup_UsesSeat::CAIStateGroup_UsesSeat	naming wave 32: ??0CAIStateGroup_UsesSeat@@IAE@XZ, bound this wave (first named by 008ff247); rechecked MATCH / RELOCATION_MATCH + PASS
+008ff247	CAIStateGroup_MinionSitOnSeatBase::CAIStateGroup_MinionSitOnSeatBase	naming wave 32: ??0CAIStateGroup_MinionSitOnSeatBase@@QAE@XZ, bound this wave (first named by 008ff28d); rechecked MATCH / RELOCATION_MATCH + PASS
+008ff94e	CAIStateGroup_MeleeCombatNearbyBase::CAIStateGroup_MeleeCombatNearbyBase	naming wave 32: ??0CAIStateGroup_MeleeCombatNearbyBase@@QAE@XZ, bound this wave (first named by 008ff98e); rechecked MATCH / RELOCATION_MATCH + PASS
+0128b0a0	CIntelligentPointer<CVillageTaskPickCrops>::`vftable'	naming wave 32: ??_7?$CIntelligentPointer@VCVillageTaskPickCrops@@@@6B@, bound this wave (first named by 008ffad0); rechecked MATCH / RELOCATION_MATCH + PASS
+00900008	CAIStateGroup_LightHomeCandle::CAIStateGroup_LightHomeCandle	naming wave 32: ??0CAIStateGroup_LightHomeCandle@@QAE@XZ, bound this wave (first named by 0090004b); rechecked MATCH / RELOCATION_MATCH + PASS
+0090035d	CAIStateGroup_TrollBase::CAIStateGroup_TrollBase	naming wave 32: ??0CAIStateGroup_TrollBase@@QAE@XZ, bound this wave (first named by 009003a0); rechecked MATCH / RELOCATION_MATCH + PASS
+00901178	CAIStateGroup_DeedReactionRoot::CAIStateGroup_DeedReactionRoot	naming wave 32: ??0CAIStateGroup_DeedReactionRoot@@QAE@XZ, bound this wave (first named by 009011b8); rechecked MATCH / RELOCATION_MATCH + PASS
+009019aa	CAIStateGroup_EatAtTable::CAIStateGroup_EatAtTable	naming wave 32: ??0CAIStateGroup_EatAtTable@@QAE@XZ, bound this wave (first named by 009019ea); rechecked MATCH / RELOCATION_MATCH + PASS
+009009a7	CAIStateGroupBehaviourBase::CAIStateGroupBehaviourBase	naming wave 32: ??0CAIStateGroupBehaviourBase@@QAE@XZ, bound this wave (first named by 00902825); rechecked MATCH / RELOCATION_MATCH + PASS
+0125c29c	CIntelligentPointer<const CThingGameObject>::`vftable'	naming wave 32: ??_7?$CIntelligentPointer@$$CBVCThingGameObject@@@@6B@, bound this wave (first named by 00902907); rechecked MATCH / RELOCATION_MATCH + PASS
+0129d08c	CTextureRenderer::`vftable'{for `CUnknown'}	naming wave 32: ??_7CTextureRenderer@@6BCUnknown@@@, bound this wave (first named by 00a3b510); rechecked MATCH / RELOCATION_MATCH + PASS
+00cac830	CBaseFilter::CBaseFilter	naming wave 32: ??0CBaseFilter@@QAE@PBGPAUIUnknown@@PAVCCritSec@@ABU_GUID@@@Z, bound this wave (first named by 00ca61d0); rechecked MATCH / RELOCATION_MATCH + PASS
+00caaac0	CBaseFilter::~CBaseFilter	naming wave 32: ??1CBaseFilter@@UAE@XZ, bound this wave (first named by 00ca6370); rechecked MATCH / RELOCATION_MATCH + PASS
+00ca4bf0	CBaseRenderer::ClearPendingSample	naming wave 32: ?ClearPendingSample@CBaseRenderer@@UAEJXZ, bound this wave (first named by 00ca6370); rechecked MATCH / RELOCATION_MATCH + PASS
+00ca4e30	CBaseRenderer::StopStreaming	naming wave 32: ?StopStreaming@CBaseRenderer@@UAEJXZ, bound this wave (first named by 00ca6370); rechecked MATCH / RELOCATION_MATCH + PASS
+00ca52a0	CBaseVideoRenderer::ResetStreamingTimes	naming wave 32: ?ResetStreamingTimes@CBaseVideoRenderer@@UAEJXZ, bound this wave (first named by 00ca7360); rechecked MATCH / RELOCATION_MATCH + PASS
