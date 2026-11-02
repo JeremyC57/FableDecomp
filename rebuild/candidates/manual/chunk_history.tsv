@@ -26027,3 +26027,13 @@ chunk	address	module	name	length
 701	00a620d0	CParticleEffect	~CParticleEffect	51
 701	008f6170	CParticleEffect	~CParticleEffect	40
 701	00541350	CParticleEffect	~CParticleEffect	50
+702	00543cf0	CParticleEffect	~CParticleEffect	56
+702	005474c0	CParticleEffect	~CParticleEffect	50
+702	008d7580	CModeOutOfActionBase	~CModeOutOfActionBase	72
+702	00562e10	CTCHeroOnlineScoreboard	ClearScoreboard	84
+702	00bfbbf0	CObject	~CObject	94
+702	00544310	NUISystem::CSpellContainerList	vfunc_142	21
+702	00544330	NUISystem::CSpellContainerList	vfunc_143	21
+702	00657200	NPlayerGui::CDrawAbilityButtonsPC	vfunc_3	26
+702	00722570	CTCSmokeGenerator	vfunc_12	25
+702	00778b10	CTCFamilyMember	vfunc_12	19
