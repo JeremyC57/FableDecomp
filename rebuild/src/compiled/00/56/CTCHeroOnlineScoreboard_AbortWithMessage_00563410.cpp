@@ -1,5 +1,7 @@
 // CTCHeroOnlineScoreboard::AbortWithMessage(const CCharString& textSymbol) -- looks the symbol up in the engine text bank, shows the text, clears the scoreboard data, sets ScoreboardState 0 / TaskState 100 and closes the HTTP connection when one is open
-// Leaf: AbortWithMessage
+// Leaf: ?AbortWithMessage@CTCHeroOnlineScoreboard@@QAEXABVCCharString@@@Z
+// Naming wave 31 (family hos): ClearScoreboard 0x00562E10 is private in both PDBs (?ClearScoreboard@CTCHeroOnlineScoreboard@@AAEXXZ, the chunk 702 own
+//   row; was the public QAE spelling); the bare Leaf "AbortWithMessage" is the emitted symbol ?AbortWithMessage@CTCHeroOnlineScoreboard@@QAEXABVCCharString@@@Z (descriptive name; in neither PDB)
 // Naming wave 18: the global stand-in g_pEngineGlobals_013b86a0 (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00563410, length 95 bytes (`ret 4`).
@@ -75,7 +77,9 @@ class CTCHeroOnlineScoreboard { public:
     CComponent*    PClanMenuEntry;                                        // +0x5c
     CComponent*    PConnectingMessage;                                    // +0x60
     CComponent*    PConnectingMessage1;                                   // +0x64
-    void ClearScoreboard();                                               // 0x00562E10
+private:
+    void ClearScoreboard();                                               // 0x00562E10 ?ClearScoreboard@CTCHeroOnlineScoreboard@@AAEXXZ (Ego_r.pdb / FableWin.pdb: private)
+public:
     void AbortWithMessage(const CCharString& textSymbol);
 public:
     void DisplayErrorMessage(const CWideString&);   // 0x0055EF00

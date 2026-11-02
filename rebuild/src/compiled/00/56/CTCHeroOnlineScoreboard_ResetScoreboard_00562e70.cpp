@@ -1,5 +1,7 @@
 // CTCHeroOnlineScoreboard::ResetScoreboard() -- drops the HTTP connection (PHttp.reset(): the old LHHttp2 destroyed and freed), clears the downloaded scoreboard data, then zeroes ScoreboardState and the scoreboard/connecting component pointers
-// Leaf: ResetScoreboard
+// Leaf: ?ResetScoreboard@CTCHeroOnlineScoreboard@@QAEXXZ
+// Naming wave 31 (family hos): ClearScoreboard 0x00562E10 is private in both PDBs (?ClearScoreboard@CTCHeroOnlineScoreboard@@AAEXXZ, the chunk 702 own
+//   row; was the public QAE spelling); the bare Leaf "ResetScoreboard" is the emitted symbol ?ResetScoreboard@CTCHeroOnlineScoreboard@@QAEXXZ (descriptive name; PROBABLE Close, chunk 702: one source)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00562E70, length 56 bytes (`ret`).
 // Callees: LHNetworkLib::LHHttp2::~LHHttp2() @ 0x008410D0 (manifest label
 //          "CNetworkConnection_Cleanup"), operator delete @ 0x00BFE9BC,
@@ -52,7 +54,9 @@ class CTCHeroOnlineScoreboard { public:
     CComponent*    PClanMenuEntry;                                        // +0x5c
     CComponent*    PConnectingMessage;                                    // +0x60
     CComponent*    PConnectingMessage1;                                   // +0x64
-    void ClearScoreboard();                                               // 0x00562E10
+private:
+    void ClearScoreboard();                                               // 0x00562E10 ?ClearScoreboard@CTCHeroOnlineScoreboard@@AAEXXZ (Ego_r.pdb / FableWin.pdb: private)
+public:
     void ResetScoreboard();
 };
 

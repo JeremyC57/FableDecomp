@@ -1,5 +1,7 @@
 // CTCHeroOnlineScoreboard::ShowScoreboard() -- resets the scoreboard (connection dropped, TaskState 100) and, when the hero has a GUI component, creates the two "connecting" message components, registers them with the GUI, then either reports "not signed in" or starts the state machine (SelectedClan cleared, ScoreboardState 1)
-// Leaf: ShowScoreboard
+// Leaf: ?ShowScoreboard@CTCHeroOnlineScoreboard@@QAEXXZ
+// Naming wave 31 (family hos): ClearScoreboard 0x00562E10 is private in both PDBs (?ClearScoreboard@CTCHeroOnlineScoreboard@@AAEXXZ, the chunk 702 own
+//   row; was the public QAE spelling); the bare Leaf "ShowScoreboard" is the emitted symbol ?ShowScoreboard@CTCHeroOnlineScoreboard@@QAEXXZ (Ego_r.pdb / FableWin.pdb)
 // Naming wave 18: the global stand-in g_pEngineGlobals_013b86a0 (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x00563130, 736 bytes, `ret`. Ego_r.pdb `?ShowScoreboard@CTCHeroOnlineScoreboard@@QAEXXZ`.
@@ -302,7 +304,9 @@ public:
     CComponent*    PClanMenuEntry;                      // +0x5c
     CComponent*    PConnectingMessage;                  // +0x60
     CComponent*    PConnectingMessage1;                 // +0x64
-    void ClearScoreboard();                             // 0x00562E10
+private:
+    void ClearScoreboard();                             // 0x00562E10 ?ClearScoreboard@CTCHeroOnlineScoreboard@@AAEXXZ (Ego_r.pdb / FableWin.pdb: private)
+public:
     void DisplayErrorMessage(const CWideString& text);  // 0x0055EF00
     CCharString GetSignedInUserName() { CWideString name = CUserProfileManager::Get().SignedInUserName; return ((CWideString*)&name)->ToCharString(); }
     CCharString GetSignedInPassword() { CWideString password = CUserProfileManager::Get().SignedInPassword; return ((CWideString*)&password)->ToCharString(); }
