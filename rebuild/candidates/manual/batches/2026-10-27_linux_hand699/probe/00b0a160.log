@@ -1,0 +1,1 @@
+1	implicit dtor via DestroyOne; full implicit CPSCSplineBase chain (landed 0x00B0A060 model), CEnginePrimitiveSpriteTrail with STLport list (~list(){} over ~_List_base{clear();deallocate}), CArray<long>	RELOCATION_MATCH (= src/00b0a160.cpp); cross-grade of the same object's ??1?$_List_base COMDAT at 0x00B09E40: RELOCATION_MATCH

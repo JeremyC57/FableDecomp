@@ -1,0 +1,40 @@
+addr       parity           behav  name
+005d8e90   WARN RELOC_NAME: ?PeekPThingWithUID@CThingManager@@QBEPBVCThing@@_K@Z -> 0051ed60 labelled 'CStopWatch::GetTicks'
+005d8e90   RELOCATION_MATCH PASS   GetInventoryOwner
+005d8ec0   RELOCATION_MATCH PASS   OnDie
+008cc330   RELOCATION_MATCH PASS   ~CModeSummonerSummon
+00a02db0   RELOCATION_MATCH PASS   ~CHandleBasedMemoryPool
+00a9d3c0   RELOCATION_MATCH PASS   ~C3DMeshFileClothChunk
+00b0a160   WARN RELOC_NAME: ??1?$_List_base@VCSpriteTrailEntry@CEnginePrimitiveSpriteTrail@@V?$allocator@VCSpriteTrailEntry@CEnginePrimitiveSpriteTrail@@@std@@@std@@QAE@XZ -> 00b09e40 labelled '_global::StdList_Clear_00b09e40'
+00b0a160   RELOCATION_MATCH PASS   ~CPSCSingleSprite
+00b4abb0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveTypeInfo
+00b4abb0   WARN SHARED_HEADER_AVAILABLE CEngineComponent
+00b4abb0   RELOCATION_MATCH PASS   AddPrimitiveManager
+00c775a0   WARN RELOC_NAME: ??1CDspObject@@UAE@XZ -> 00c74450 labelled 'CVtable_012BF050::~CVtable_012BF050'
+00c775a0   RELOCATION_MATCH PASS   ~CVtable_012bf0c8
+00d34f80   RELOCATION_MATCH PASS   ~CFireHeartPatternDef
+00e81f30   RELOCATION_MATCH PASS   ~CV_FishingCompetitionScript
+
+WINS: 10
+  005d8e90 RELOCATION_MATCH CTCInventoryItem::?GetInventoryOwner@CTCInventoryItem@@QBEPBVCThing@@XZ
+  005d8ec0 RELOCATION_MATCH CTCInventoryItem::?OnDie@CTCInventoryItem@@UAEXXZ
+  008cc330 RELOCATION_MATCH NCreatureMode::CModeSummonerSummon::??1CModeSummonerSummon@NCreatureMode@@UAE@XZ
+  00a02db0 RELOCATION_MATCH CHandleBasedMemoryPool::??1CHandleBasedMemoryPool@@UAE@XZ
+  00a9d3c0 RELOCATION_MATCH C3DMeshFileClothChunk::??1C3DMeshFileClothChunk@@UAE@XZ
+  00b0a160 RELOCATION_MATCH NParticleEngine::CPSCSingleSprite::??1CPSCSingleSprite@NParticleEngine@@UAE@XZ
+  00b4abb0 RELOCATION_MATCH CEnginePrimitiveRenderer2D::?AddPrimitiveManager@CEnginePrimitiveRenderer2D@@AAEXABV?$CCountedPointer@VCEnginePrimitiveManager@@@@@Z
+  00c775a0 RELOCATION_MATCH CVtable_012bf0c8::??1CVtable_012bf0c8@@UAE@XZ
+  00d34f80 RELOCATION_MATCH CFireHeartPatternDef::??1CFireHeartPatternDef@@UAE@XZ
+  00e81f30 RELOCATION_MATCH NScript::CV_FishingCompetitionScript::??1CV_FishingCompetitionScript@NScript@@UAE@XZ
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  CTCInventoryItem_GetInventoryOwner_005d8e90
+  CTCInventoryItem_OnDie_005d8ec0
+  NCreatureModeCModeSummonerSummon_CModeSummonerSummon_008cc330
+  CHandleBasedMemoryPool_CHandleBasedMemoryPool_00a02db0
+  C3DMeshFileClothChunk_C3DMeshFileClothChunk_00a9d3c0
+  NParticleEngineCPSCSingleSprite_CPSCSingleSprite_00b0a160
+  CEnginePrimitiveRenderer2D_AddPrimitiveManager_00b4abb0
+  CVtable012bf0c8_CVtable012bf0c8_00c775a0
+  CFireHeartPatternDef_CFireHeartPatternDef_00d34f80
+  NScriptCVFishingCompetitionScript_CVFishingCompetitionScript_00e81f30

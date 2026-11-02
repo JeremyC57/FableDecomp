@@ -1,0 +1,1 @@
+1	landed CEnginePrimitiveRenderer::AddPrimitiveManager 0x00B33AE0 source with the 2D class (PrimitiveManagers +0x0C after CEngineComponent)	RELOCATION_MATCH (= src/00b4abb0.cpp)

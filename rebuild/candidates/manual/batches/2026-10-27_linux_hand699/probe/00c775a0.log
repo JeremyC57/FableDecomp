@@ -1,0 +1,1 @@
+1	user dtor { ReleaseBlock(); } with ReleaseBlock a plain same-TU member defined above (auto-inlined), landed CommitAndProcess 0x00C774F0 layout	RELOCATION_MATCH (= src/00c775a0.cpp); cross-grade of the same object's ReleaseBlock at 0x00C77470: RELOCATION_MATCH

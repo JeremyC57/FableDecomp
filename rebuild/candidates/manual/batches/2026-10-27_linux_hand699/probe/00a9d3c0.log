@@ -1,0 +1,1 @@
+1	implicit dtor via DestroyOne; landed C3DMeshFileXUVTangentChunk 0x00AA7320 model + CChunkedFileSuperChunk (user virtual dtor, 0x2C) + Name/ParticleCode/CompiledCode	RELOCATION_MATCH (= src/00a9d3c0.cpp after swapping the local CCountedPointer stub for engine/CCountedPointer.h)

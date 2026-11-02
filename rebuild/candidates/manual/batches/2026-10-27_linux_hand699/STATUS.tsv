@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+005d8e90	RELOCATION_MATCH	43v43	PASS	2 probe(s); CTCInventoryItem::GetInventoryOwner (label right); vland RELOCATION_MATCH
+005d8ec0	RELOCATION_MATCH	34v34	PASS	2 probe(s); CTCInventoryItem::OnDie (label right; vtable 0x01240004 slot 13); vland RELOCATION_MATCH
+008cc330	RELOCATION_MATCH	50v50	PASS	1 probe(s); NCreatureMode::CModeSummonerSummon::~CModeSummonerSummon (label wrong); vland RELOCATION_MATCH
+00a02db0	RELOCATION_MATCH	52v52	PASS	1 probe(s); CHandleBasedMemoryPool::~CHandleBasedMemoryPool (label wrong); vland RELOCATION_MATCH
+00a9d3c0	RELOCATION_MATCH	43v43	PASS	1 probe(s); C3DMeshFileClothChunk::~C3DMeshFileClothChunk (label wrong); vland RELOCATION_MATCH
+00b0a160	RELOCATION_MATCH	41v41	PASS	1 probe(s); NParticleEngine::CPSCSingleSprite::~CPSCSingleSprite (label wrong); vland RELOCATION_MATCH
+00b4abb0	RELOCATION_MATCH	94v94	PASS	1 probe(s); CEnginePrimitiveRenderer2D::AddPrimitiveManager (label right); vland RELOCATION_MATCH
+00c775a0	RELOCATION_MATCH	54v54	PASS	1 probe(s); CVtable_012bf0c8::~CVtable_012bf0c8 (libpk, descriptive class; label wrong); vland RELOCATION_MATCH
+00d34f80	RELOCATION_MATCH	33v33	PASS	1 probe(s); CFireHeartPatternDef::~CFireHeartPatternDef (label wrong); vland RELOCATION_MATCH
+00e81f30	RELOCATION_MATCH	35v35	PASS	1 probe(s); NScript::CV_FishingCompetitionScript::~CV_FishingCompetitionScript (label wrong); vland RELOCATION_MATCH

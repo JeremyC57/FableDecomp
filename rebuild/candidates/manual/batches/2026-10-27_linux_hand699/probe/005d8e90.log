@@ -1,0 +1,2 @@
+1	if (PInventory) return PInventory->ParentThing; if (uid > 0) return GetThingManager().PeekPThingWithUID(uid); return 0; local polymorphic CTCBase	RELOCATION_MATCH
+2	same source with engine/CDefPointer.h for PDef (vland SHARED_HEADER_AVAILABLE)	RELOCATION_MATCH (= src/005d8e90.cpp)

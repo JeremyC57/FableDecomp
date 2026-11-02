@@ -1,0 +1,2 @@
+1	OnDie() { RemoveFromInventory(); CTCBase::OnDie(); } with RemoveFromInventory a plain same-TU member above; CTCInventoryBase grants friendship for the protected RemoveItemFromInventory	RELOCATION_MATCH
+2	same source with engine/CDefPointer.h for PDef	RELOCATION_MATCH (= src/005d8ec0.cpp)

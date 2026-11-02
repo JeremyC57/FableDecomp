@@ -35323,3 +35323,10 @@ _z_inflateEnd	00c038d0	00a3acc0
 ??1?$_List_base@PAVCEngineMap@@V?$allocator@PAVCEngineMap@@@std@@@std@@QAE@XZ	00b43bb0	00b42e70
 ?CloseStaticMapFile@CEngineWorldMap@@QAEXXZ	00b40000	00b42e70
 ??1CBasePin@@UAE@XZ	00ca7c80	00ca9690
+?GetThingManager@CTCBase@@IBEABVCThingManager@@XZ	00686af0	005d8e90
+?PeekPThingWithUID@CThingManager@@QBEPBVCThing@@_K@Z	0051ed60	005d8e90
+?OnDie@CTCBase@@UAEXXZ	006868e0	005d8ec0
+?RemoveItemFromInventory@CTCInventoryBase@NInventory@@IAEXAAVCThing@@@Z	005bc499	005d8ec0
+??1?$_List_base@VCSpriteTrailEntry@CEnginePrimitiveSpriteTrail@@V?$allocator@VCSpriteTrailEntry@CEnginePrimitiveSpriteTrail@@@std@@@std@@QAE@XZ	00b09e40	00b0a160
+??1CPSCSplineBase@NParticleEngine@@UAE@XZ	00b0a060	00b0a160
+??1CDspObject@@UAE@XZ	00c74450	00c775a0

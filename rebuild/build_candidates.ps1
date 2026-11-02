@@ -374729,6 +374729,76 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00ca9690_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005d8e90'
+        Module = 'CTCInventoryItem'
+        Source = '00/5d/CTCInventoryItem_GetInventoryOwner_005d8e90.cpp'
+        TestSource = '00/5d/CTCInventoryItem_GetInventoryOwner_005d8e90_test.cpp'
+        PassPattern = '005d8e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005d8ec0'
+        Module = 'CTCInventoryItem'
+        Source = '00/5d/CTCInventoryItem_OnDie_005d8ec0.cpp'
+        TestSource = '00/5d/CTCInventoryItem_OnDie_005d8ec0_test.cpp'
+        PassPattern = '005d8ec0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008cc330'
+        Module = 'NCreatureMode::CModeSummonerSummon'
+        Source = '00/8c/NCreatureModeCModeSummonerSummon_CModeSummonerSummon_008cc330.cpp'
+        TestSource = '00/8c/NCreatureModeCModeSummonerSummon_CModeSummonerSummon_008cc330_test.cpp'
+        PassPattern = '008cc330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a02db0'
+        Module = 'CHandleBasedMemoryPool'
+        Source = '00/a0/CHandleBasedMemoryPool_CHandleBasedMemoryPool_00a02db0.cpp'
+        TestSource = '00/a0/CHandleBasedMemoryPool_CHandleBasedMemoryPool_00a02db0_test.cpp'
+        PassPattern = '00a02db0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a9d3c0'
+        Module = 'C3DMeshFileClothChunk'
+        Source = '00/a9/C3DMeshFileClothChunk_C3DMeshFileClothChunk_00a9d3c0.cpp'
+        TestSource = '00/a9/C3DMeshFileClothChunk_C3DMeshFileClothChunk_00a9d3c0_test.cpp'
+        PassPattern = '00a9d3c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b0a160'
+        Module = 'NParticleEngine::CPSCSingleSprite'
+        Source = '00/b0/NParticleEngineCPSCSingleSprite_CPSCSingleSprite_00b0a160.cpp'
+        TestSource = '00/b0/NParticleEngineCPSCSingleSprite_CPSCSingleSprite_00b0a160_test.cpp'
+        PassPattern = '00b0a160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b4abb0'
+        Module = 'CEnginePrimitiveRenderer2D'
+        Source = '00/b4/CEnginePrimitiveRenderer2D_AddPrimitiveManager_00b4abb0.cpp'
+        TestSource = '00/b4/CEnginePrimitiveRenderer2D_AddPrimitiveManager_00b4abb0_test.cpp'
+        PassPattern = '00b4abb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c775a0'
+        Module = 'CVtable_012bf0c8'
+        Source = '00/c7/CVtable012bf0c8_CVtable012bf0c8_00c775a0.cpp'
+        TestSource = '00/c7/CVtable012bf0c8_CVtable012bf0c8_00c775a0_test.cpp'
+        PassPattern = '00c775a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d34f80'
+        Module = 'CFireHeartPatternDef'
+        Source = '00/d3/CFireHeartPatternDef_CFireHeartPatternDef_00d34f80.cpp'
+        TestSource = '00/d3/CFireHeartPatternDef_CFireHeartPatternDef_00d34f80_test.cpp'
+        PassPattern = '00d34f80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e81f30'
+        Module = 'NScript::CV_FishingCompetitionScript'
+        Source = '00/e8/NScriptCVFishingCompetitionScript_CVFishingCompetitionScript_00e81f30.cpp'
+        TestSource = '00/e8/NScriptCVFishingCompetitionScript_CVFishingCompetitionScript_00e81f30_test.cpp'
+        PassPattern = '00e81f30_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

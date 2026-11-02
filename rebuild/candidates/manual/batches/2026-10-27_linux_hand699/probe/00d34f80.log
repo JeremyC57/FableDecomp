@@ -1,0 +1,1 @@
+1	implicit dtor via DestroyOne; engine/CDefClassBase.h (FABLE_RETAIL_DEF_CLASS_BASE: inline ~CDefClassBase/~CDefPointeeBase) + generic STLport vector<bool> PadActive +0x28	RELOCATION_MATCH (= src/00d34f80.cpp)
