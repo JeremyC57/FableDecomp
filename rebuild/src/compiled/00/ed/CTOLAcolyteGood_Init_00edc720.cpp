@@ -1,5 +1,8 @@
 // CTOL_AcolyteGood::Init() -- register the parent script's WatchForAcolyteHit and WatchForAcolyteDeath callbacks, start the script timer from the quest globals, set the thing's flags, hand it over by value and clear the parent's flag at +0x5b
 // Leaf: ?Init@CTOL_AcolyteGood
+// Naming wave 29 (family sfbr): the thread class derives from the retail CSpawnedFuncBase (engine/CSpawnedFuncBase.h; Ego_r.pdb / FableWin.pdb
+//   ??0CSpawnedFuncBase@@QAE@ABVCCharString@@K@Z 0x00CDD450, implicit ??1CSpawnedFuncBase@@UAE@XZ 0x00CDD4C0). Was the invented
+//   CScriptProcessBaseRuntime / CSpawnedFuncBaseRuntime pair (virtual ~CSpawnedFuncBaseRuntime, RuntimeHookCDD410 / CDD420).
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EDC720, 601 bytes (+ int3 padding), plain `ret`. A twin of the landed
@@ -10,9 +13,7 @@
 //   timer service slot 89, game interface slots 360 / 844).
 #include <new>
 #include "fable_string.h"
-#include "engine/CSpawnedFuncBase.h"
 #include "engine/CScriptThing.h"
-#include "engine/CASuspendableProcess.h"
 
 class CCPPointerInfo { public: long References; };
 class C3DVector { public: float X, Y, Z; };
@@ -69,38 +70,15 @@ inline CScriptThingRuntime::CScriptThingRuntime(const CScriptThingStored& other)
     : PImp_Data(other.PImp_Data), PImp_Info(other.PImp_Info)
 { if (PImp_Info) ++PImp_Info->References; }
 
-struct CScriptProcessBaseRuntime {
-    virtual ~CScriptProcessBaseRuntime();
-    virtual void RunSuspendableProcess();
-    virtual void SuspendSuspendableProcess(bool suspend);
-    virtual void Restart();
-    virtual void SuspendableProcess() = 0;
-    virtual void RuntimeHookCDD410(); // native one-byte ret at 0x00CDD410; original name/signature unresolved
-    virtual void RuntimeHookCDD420(); // native one-byte ret at 0x00CDD420; original name/signature unresolved
-    bool Running;
-    bool StopRunning;
-    bool TerminateUsingExceptions;
-    unsigned char _pad_07;
-    float TimeProcessSliceStarted;
-    float TimesliceLength;
-    CScriptProcessBaseRuntime(bool running, long stackSize, float fraction); // 0x00A44740
+template <class T> class CCountedPointer {             // CSpawnedFuncBase::PPredicate (header contract; this row keeps its own
+public:                                                //   CCPPointerInfo, so not engine/CCountedPointer.h); the dtor is out of line
+    T* Data; CCPPointerInfo* Info;                     //   in retail (CCountedPointer<const NScript::CPredicateBase> 0x00CDD4F0)
+    ~CCountedPointer();
 };
-
-struct CSpawnedFuncBaseRuntime : CScriptProcessBaseRuntime {
-    virtual ~CSpawnedFuncBaseRuntime(); // ordinary base destructor 0x00CDD4C0 cleans PPredicate
-    unsigned long SpawnedFuncBaseState; // +0x10 word in the retail CSpawnedFuncBase subobject
-    unsigned long ID;
-    long LastScriptFrame;
-    long CurrentScriptFrame;
-    CCharString Name;
-    CCharString AssociatedRegionName;
-    bool FuncPaused;
-    bool Interrupted;
-    unsigned char _pad_2a[2];
-    void* PPredicate_Data;
-    CCPPointerInfo* PPredicate_Info;
-    CSpawnedFuncBaseRuntime(const CCharString& name, unsigned long id); // 0x00CDD450
-};
+// CSpawnedFuncBase: the retail model of engine/CSpawnedFuncBase.h (FABLE_RETAIL_SUSPENDABLE_PROCESS: : CSuspendableProcessMicrothread
+//   : CASuspendableProcess : CBaseClassNonCopyable : CBaseClass, 0x34, vtable 0x012C2F9C; ctor 0x00CDD450, implicit dtor 0x00CDD4C0).
+#define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CSpawnedFuncBase.h"
 
 struct CSpawnedFuncAmbush;
 struct CQ_AcolyteParentScript {
@@ -111,7 +89,7 @@ struct CQ_AcolyteParentScript {
     bool AcolyteFlag5B;                         // +0x5b (descriptive)
 };
 typedef void (CQ_AcolyteParentScript::*SpawnedScriptCallback)(CScriptThingRuntime);
-struct CSpawnedFuncAmbush : CSpawnedFuncBaseRuntime {
+struct CSpawnedFuncAmbush : CSpawnedFuncBase {
     SpawnedScriptCallback Func;
     CQ_AcolyteParentScript* PClass;
     CScriptThingStored Par1;
@@ -1000,12 +978,10 @@ FABLE_STATIC_ASSERT(offsetof(CTOL_AcolyteGood, ParentClass) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CTOL_AcolyteGood, Timer) == 0x1c);
 #endif
 
-void CScriptProcessBaseRuntime::RuntimeHookCDD410() {}
-void CScriptProcessBaseRuntime::RuntimeHookCDD420() {}
 CSpawnedFuncAmbush::CSpawnedFuncAmbush(const CCharString& name, unsigned long id,
                                        SpawnedScriptCallback func, CQ_AcolyteParentScript* owner,
                                        CScriptThingRuntime par1)
-    : CSpawnedFuncBaseRuntime(name, id), Func(func), PClass(owner), Par1(par1)
+    : CSpawnedFuncBase(name, id), Func(func), PClass(owner), Par1(par1)
 {
 }
 

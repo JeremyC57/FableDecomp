@@ -1,11 +1,12 @@
 // CAttackingBandit::Init() -- mark the trader group and register WatchForBanditDead on ParentClass
+// Naming wave 29 (family sfbr): the thread class derives from the retail CSpawnedFuncBase (engine/CSpawnedFuncBase.h; Ego_r.pdb / FableWin.pdb
+//   ??0CSpawnedFuncBase@@QAE@ABVCCharString@@K@Z 0x00CDD450, implicit ??1CSpawnedFuncBase@@UAE@XZ 0x00CDD4C0). Was the invented
+//   CScriptProcessBaseRuntime / CSpawnedFuncBaseRuntime pair (virtual ~CSpawnedFuncBaseRuntime, RuntimeHookCDD410 / CDD420).
 // Native 0x00E1F3E0, 0x132 bytes; PDB fields ParentClass +0x14, PMasterData +0x18, Screamed +0x1c.
 // Retail object is CSpawnedFunc1<CQR_EscortTraderScript, CScriptThing>, size 0x48: base 0x34, Func +0x34, PClass +0x38, Par1 +0x3c. The nested new-expression keeps the callback-name temporaries through Add while the by-value trigger parameter is destroyed after construction and before Add.
 #include <new>
 #include "fable_string.h"
-#include "engine/CSpawnedFuncBase.h"
 #include "engine/CScriptThing.h"
-#include "engine/CASuspendableProcess.h"
 #include "engine/CGameScriptInterface.h"
 
 class CCPPointerInfo { public: long References; };
@@ -57,38 +58,15 @@ inline CScriptThingRuntime::CScriptThingRuntime(const CScriptThingStored& other)
     : PImp()
 { PImp.Data=other.PImp_Data; PImp.Info=other.PImp_Info; if (PImp.Info) ++PImp.Info->References; }
 
-struct CScriptProcessBaseRuntime {
-    virtual ~CScriptProcessBaseRuntime();
-    virtual void RunSuspendableProcess();
-    virtual void SuspendSuspendableProcess(bool suspend);
-    virtual void Restart();
-    virtual void SuspendableProcess() = 0;
-    virtual void RuntimeHookCDD410(); // native one-byte ret at 0x00CDD410; original name/signature unresolved
-    virtual void RuntimeHookCDD420(); // native one-byte ret at 0x00CDD420; original name/signature unresolved
-    bool Running;
-    bool StopRunning;
-    bool TerminateUsingExceptions;
-    unsigned char _pad_07;
-    float TimeProcessSliceStarted;
-    float TimesliceLength;
-    CScriptProcessBaseRuntime(bool running, long stackSize, float fraction); // 0x00A44740
+template <class T> class CCountedPointer {             // CSpawnedFuncBase::PPredicate (header contract; this row keeps its own
+public:                                                //   CCPPointerInfo, so not engine/CCountedPointer.h); the dtor is out of line
+    T* Data; CCPPointerInfo* Info;                     //   in retail (CCountedPointer<const NScript::CPredicateBase> 0x00CDD4F0)
+    ~CCountedPointer();
 };
-
-struct CSpawnedFuncBaseRuntime : CScriptProcessBaseRuntime {
-    unsigned long SpawnedFuncBaseState; // +0x10 word in the retail CSpawnedFuncBase subobject
-    unsigned long ID;
-    long LastScriptFrame;
-    long CurrentScriptFrame;
-    CCharString Name;
-    CCharString AssociatedRegionName;
-    bool FuncPaused;
-    bool Interrupted;
-    unsigned char _pad_2a[2];
-    void* PPredicate_Data;
-    CCPPointerInfo* PPredicate_Info;
-    virtual ~CSpawnedFuncBaseRuntime(); // 0x00CDD4C0; ordinary base destructor releases predicate and both strings
-    CSpawnedFuncBaseRuntime(const CCharString& name, unsigned long id); // 0x00CDD450
-};
+// CSpawnedFuncBase: the retail model of engine/CSpawnedFuncBase.h (FABLE_RETAIL_SUSPENDABLE_PROCESS: : CSuspendableProcessMicrothread
+//   : CASuspendableProcess : CBaseClassNonCopyable : CBaseClass, 0x34, vtable 0x012C2F9C; ctor 0x00CDD450, implicit dtor 0x00CDD4C0).
+#define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CSpawnedFuncBase.h"
 
 struct CSpawnedFuncPhase3;
 // PE evidence: native calls the true thiscall method at GSI vtable slot465
@@ -112,7 +90,7 @@ struct CQR_EscortTraderScript {
     void Add(CSpawnedFuncPhase3* function, const CCharString& name); // 0x00CB7E50; observed function at +4, name at +8
 };
 typedef void (CQR_EscortTraderScript::*SpawnedScriptCallback)(CScriptThingRuntime);
-struct CSpawnedFuncPhase3 : CSpawnedFuncBaseRuntime {
+struct CSpawnedFuncPhase3 : CSpawnedFuncBase {
     SpawnedScriptCallback Func;
     CQR_EscortTraderScript* PClass;
     CScriptThingStored Par1;
@@ -142,8 +120,6 @@ FABLE_STATIC_ASSERT(offsetof(CAttackingBandit, PMasterData) == 0x18);
 FABLE_STATIC_ASSERT(offsetof(CAttackingBandit, Screamed) == 0x1c);
 #endif
 
-void CScriptProcessBaseRuntime::RuntimeHookCDD410() {}
-void CScriptProcessBaseRuntime::RuntimeHookCDD420() {}
 // Native CSpawnedFunc1<CQR_EscortTraderScript, CScriptThing> virtual slot 4 is
 // 0x00E1F5E0 (directly copies Par1 into the member callback and sets StopRunning).
 // Its member callback thunk is 0x00E1F520. Both implementations remain external. The
@@ -151,7 +127,7 @@ void CScriptProcessBaseRuntime::RuntimeHookCDD420() {}
 CSpawnedFuncPhase3::CSpawnedFuncPhase3(const CCharString& name, unsigned long id,
                                        SpawnedScriptCallback func, CQR_EscortTraderScript* owner,
                                        CScriptThingRuntime par1)
-    : CSpawnedFuncBaseRuntime(name, id), Func(func), PClass(owner), Par1(par1)
+    : CSpawnedFuncBase(name, id), Func(func), PClass(owner), Par1(par1)
 {
 }
 

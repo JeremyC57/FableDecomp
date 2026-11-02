@@ -1,4 +1,7 @@
 // CBH_Hostage1::Init() -- bounty-hunt hostage 1 setup: disable opinion reaction 34, spawn the parent's WatchForHostage1Killed watcher on this thing, mark it scared and make it a villager-hostage opinion source
+// Naming wave 29 (family sfbr): the thread class derives from the retail CSpawnedFuncBase (engine/CSpawnedFuncBase.h; Ego_r.pdb / FableWin.pdb
+//   ??0CSpawnedFuncBase@@QAE@ABVCCharString@@K@Z 0x00CDD450, implicit ??1CSpawnedFuncBase@@UAE@XZ 0x00CDD4C0). Was the invented
+//   CScriptProcessBaseRuntime / CSpawnedFuncBaseRuntime pair (virtual ~CSpawnedFuncBaseRuntime, RuntimeHookCDD410 / CDD420).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D167C0, length 352 bytes (plain `ret`; vtable slot 2 = Init of the entity
 //          script contract). Same TU family and model as the landed CAT_Phase3Archer::Init @ 0x00D169E0.
 // Callees: the game interface's slots 617 EntitySetOpinionReactionEnabled, 496 EntitySetAsScared, 622 EntitySetAsOpinionSource (cgsi_slots_aligned.tsv), CCharString(const char*, long) @ 0x0099EBF0 /
@@ -60,38 +63,10 @@ struct CScriptThingStored {
 inline CScriptThingRuntime::CScriptThingRuntime(const CScriptThingStored& other)
     : PImp(other.PImp) {}
 
-struct CScriptProcessBaseRuntime {
-    virtual ~CScriptProcessBaseRuntime();
-    virtual void RunSuspendableProcess();
-    virtual void SuspendSuspendableProcess(bool suspend);
-    virtual void Restart();
-    virtual void SuspendableProcess() = 0;
-    virtual void RuntimeHookCDD410(); // native one-byte ret at 0x00CDD410; original name/signature unresolved
-    virtual void RuntimeHookCDD420(); // native one-byte ret at 0x00CDD420; original name/signature unresolved
-    bool Running;
-    bool StopRunning;
-    bool TerminateUsingExceptions;
-    unsigned char _pad_07;
-    float TimeProcessSliceStarted;
-    float TimesliceLength;
-    CScriptProcessBaseRuntime(bool running, long stackSize, float fraction); // 0x00A44740
-};
-
-struct CSpawnedFuncBaseRuntime : CScriptProcessBaseRuntime {
-    virtual ~CSpawnedFuncBaseRuntime(); // ordinary base destructor 0x00CDD4C0 cleans PPredicate
-    unsigned long SpawnedFuncBaseState; // +0x10 word in the retail CSpawnedFuncBase subobject
-    unsigned long ID;
-    long LastScriptFrame;
-    long CurrentScriptFrame;
-    CCharString Name;
-    CCharString AssociatedRegionName;
-    bool FuncPaused;
-    bool Interrupted;
-    unsigned char _pad_2a[2];
-    void* PPredicate_Data;
-    CCPPointerInfo* PPredicate_Info;
-    CSpawnedFuncBaseRuntime(const CCharString& name, unsigned long id); // 0x00CDD450
-};
+// CSpawnedFuncBase: the retail model of engine/CSpawnedFuncBase.h (FABLE_RETAIL_SUSPENDABLE_PROCESS: : CSuspendableProcessMicrothread
+//   : CASuspendableProcess : CBaseClassNonCopyable : CBaseClass, 0x34, vtable 0x012C2F9C; ctor 0x00CDD450, implicit dtor 0x00CDD4C0).
+#define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CSpawnedFuncBase.h"
 
 struct CSpawnedFuncPhase3;
 class CGameScriptInterface { public:
@@ -188,7 +163,7 @@ struct CQ_BountyHuntScript {
     void Add(CSpawnedFuncPhase3* function, const CCharString& name); // 0x00CB7E50; observed function at +4, name at +8
 };
 typedef void (CQ_BountyHuntScript::*SpawnedScriptCallback)(CScriptThingRuntime);
-struct CSpawnedFuncPhase3 : CSpawnedFuncBaseRuntime {
+struct CSpawnedFuncPhase3 : CSpawnedFuncBase {
     SpawnedScriptCallback Func;
     CQ_BountyHuntScript* PClass;
     CScriptThingStored Par1;
@@ -207,15 +182,13 @@ struct CBH_Hostage1 {
     void Init();
 };
 
-void CScriptProcessBaseRuntime::RuntimeHookCDD410() {}
-void CScriptProcessBaseRuntime::RuntimeHookCDD420() {}
 // Runtime slot body is external: retail D16780 copies Par1 directly into the
 // callback's by-value argument, then sets StopRunning. The callback's native
 // copy/destruction behavior is not synthesized into this Init translation unit.
 CSpawnedFuncPhase3::CSpawnedFuncPhase3(const CCharString& name, unsigned long id,
                                        SpawnedScriptCallback func, CQ_BountyHuntScript* owner,
                                        CScriptThingRuntime par1)
-    : CSpawnedFuncBaseRuntime(name, id), Func(func), PClass(owner), Par1(par1)
+    : CSpawnedFuncBase(name, id), Func(func), PClass(owner), Par1(par1)
 {
 }
 
