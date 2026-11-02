@@ -22771,16 +22771,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ce6be0'
-        Module = 'CVtable_012c36b8'
-        Source = '00/ce/CEngineSubPrimitiveText_scalardeletingdestructor_00ce6be0.cpp'
-        TestSource = '00/ce/CEngineSubPrimitiveText_scalardeletingdestructor_00ce6be0_test.cpp'
+        Module = 'CSpawnedFunc2<NScript::CHeroBoastsScript,long,CCharString>'
+        Source = '00/ce/CSpawnedFunc2NScriptCHeroBoastsScriptlongCCharString_scalardeletingdestructor_00ce6be0.cpp'
+        TestSource = '00/ce/CSpawnedFunc2NScriptCHeroBoastsScriptlongCCharString_scalardeletingdestructor_00ce6be0_test.cpp'
         PassPattern = 'AUTO_TINY_00ce6be0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ce6c10'
-        Module = 'CVtable_012c3b88'
-        Source = '00/ce/CEngineSubPrimitiveText_scalardeletingdestructor_00ce6c10.cpp'
-        TestSource = '00/ce/CEngineSubPrimitiveText_scalardeletingdestructor_00ce6c10_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CHeroBoastsScript,CCharString>'
+        Source = '00/ce/CSpawnedFunc1NScriptCHeroBoastsScriptCCharString_scalardeletingdestructor_00ce6c10.cpp'
+        TestSource = '00/ce/CSpawnedFunc1NScriptCHeroBoastsScriptCCharString_scalardeletingdestructor_00ce6c10_test.cpp'
         PassPattern = 'AUTO_TINY_00ce6c10_TEST PASS'
     }
     [pscustomobject]@{
@@ -22792,9 +22792,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d0edb0'
-        Module = 'CVtable_012c9918'
-        Source = '00/d0/CEngineSubPrimitiveText_scalardeletingdestructor_00d0edb0.cpp'
-        TestSource = '00/d0/CEngineSubPrimitiveText_scalardeletingdestructor_00d0edb0_test.cpp'
+        Module = 'CSpawnedFunc2<NScript::CQ_BanditCampBossBattleScript,float,CCharString>'
+        Source = '00/d0/CSpawnedFunc2NScriptCQBanditCampBossBattleScriptfloatCCharString_scalardeletingdestructor_00d0edb0.cpp'
+        TestSource = '00/d0/CSpawnedFunc2NScriptCQBanditCampBossBattleScriptfloatCCharString_scalardeletingdestructor_00d0edb0_test.cpp'
         PassPattern = 'AUTO_TINY_00d0edb0_TEST PASS'
     }
     [pscustomobject]@{
@@ -22806,9 +22806,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d172e0'
-        Module = 'CVtable_012ca5e0'
-        Source = '00/d1/CEngineSubPrimitiveText_scalardeletingdestructor_00d172e0.cpp'
-        TestSource = '00/d1/CEngineSubPrimitiveText_scalardeletingdestructor_00d172e0_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CQ_BountyHuntScript,CScriptThing>'
+        Source = '00/d1/CSpawnedFunc1NScriptCQBountyHuntScriptCScriptThing_scalardeletingdestructor_00d172e0.cpp'
+        TestSource = '00/d1/CSpawnedFunc1NScriptCQBountyHuntScriptCScriptThing_scalardeletingdestructor_00d172e0_test.cpp'
         PassPattern = 'AUTO_TINY_00d172e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -22820,9 +22820,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d2d6d0'
-        Module = 'CVtable_012cc444'
-        Source = '00/d2/CEngineSubPrimitiveText_scalardeletingdestructor_00d2d6d0.cpp'
-        TestSource = '00/d2/CEngineSubPrimitiveText_scalardeletingdestructor_00d2d6d0_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CQ_EndGameFocalSitesScript,CScriptThing>'
+        Source = '00/d2/CSpawnedFunc1NScriptCQEndGameFocalSitesScriptCScriptThing_scalardeletingdestructor_00d2d6d0.cpp'
+        TestSource = '00/d2/CSpawnedFunc1NScriptCQEndGameFocalSitesScriptCScriptThing_scalardeletingdestructor_00d2d6d0_test.cpp'
         PassPattern = 'AUTO_TINY_00d2d6d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -22925,9 +22925,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d973a0'
-        Module = 'CVtable_012d613c'
-        Source = '00/d9/CEngineSubPrimitiveText_scalardeletingdestructor_00d973a0.cpp'
-        TestSource = '00/d9/CEngineSubPrimitiveText_scalardeletingdestructor_00d973a0_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CQ_HobbeCaveScript,CScriptThing>'
+        Source = '00/d9/CSpawnedFunc1NScriptCQHobbeCaveScriptCScriptThing_scalardeletingdestructor_00d973a0.cpp'
+        TestSource = '00/d9/CSpawnedFunc1NScriptCQHobbeCaveScriptCScriptThing_scalardeletingdestructor_00d973a0_test.cpp'
         PassPattern = 'AUTO_TINY_00d973a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -22939,9 +22939,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00d9da90'
-        Module = 'CVtable_012d6bf0'
-        Source = '00/d9/CEngineSubPrimitiveText_scalardeletingdestructor_00d9da90.cpp'
-        TestSource = '00/d9/CEngineSubPrimitiveText_scalardeletingdestructor_00d9da90_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CQ_HobbeToothContestScript,CScriptThing>'
+        Source = '00/d9/CSpawnedFunc1NScriptCQHobbeToothContestScriptCScriptThing_scalardeletingdestructor_00d9da90.cpp'
+        TestSource = '00/d9/CSpawnedFunc1NScriptCQHobbeToothContestScriptCScriptThing_scalardeletingdestructor_00d9da90_test.cpp'
         PassPattern = 'AUTO_TINY_00d9da90_TEST PASS'
     }
     [pscustomobject]@{
@@ -22960,9 +22960,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00da29f0'
-        Module = '_global'
-        Source = '00/da/CEngineSubPrimitiveText_scalardeletingdestructor_00da29f0.cpp'
-        TestSource = '00/da/CEngineSubPrimitiveText_scalardeletingdestructor_00da29f0_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CQ_MinionCampScript,CScriptThing>'
+        Source = '00/da/CSpawnedFunc1NScriptCQMinionCampScriptCScriptThing_scalardeletingdestructor_00da29f0.cpp'
+        TestSource = '00/da/CSpawnedFunc1NScriptCQMinionCampScriptCScriptThing_scalardeletingdestructor_00da29f0_test.cpp'
         PassPattern = 'AUTO_TINY_00da29f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -22974,16 +22974,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00da8480'
-        Module = 'CVtable_012d771c'
-        Source = '00/da/CEngineSubPrimitiveText_scalardeletingdestructor_00da8480.cpp'
-        TestSource = '00/da/CEngineSubPrimitiveText_scalardeletingdestructor_00da8480_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CQ_MinionClifftopChaseScript,CScriptThing>'
+        Source = '00/da/CSpawnedFunc1NScriptCQMinionClifftopChaseScriptCScriptThing_scalardeletingdestructor_00da8480.cpp'
+        TestSource = '00/da/CSpawnedFunc1NScriptCQMinionClifftopChaseScriptCScriptThing_scalardeletingdestructor_00da8480_test.cpp'
         PassPattern = 'AUTO_TINY_00da8480_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00dca6a0'
-        Module = 'CVtable_012dac78'
-        Source = '00/dc/CEngineSubPrimitiveText_scalardeletingdestructor_00dca6a0.cpp'
-        TestSource = '00/dc/CEngineSubPrimitiveText_scalardeletingdestructor_00dca6a0_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CQ_OpeningGraveyardSecretPassageScript,CScriptThing>'
+        Source = '00/dc/CSpawnedFunc1NScriptCQOpeningGraveyardSecretPassageScriptCScriptThing_scalardeletingdestructor_00dca6a0.cpp'
+        TestSource = '00/dc/CSpawnedFunc1NScriptCQOpeningGraveyardSecretPassageScriptCScriptThing_scalardeletingdestructor_00dca6a0_test.cpp'
         PassPattern = 'AUTO_TINY_00dca6a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -23016,9 +23016,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00de8340'
-        Module = '_global'
-        Source = '00/de/CEngineSubPrimitiveText_scalardeletingdestructor_00de8340.cpp'
-        TestSource = '00/de/CEngineSubPrimitiveText_scalardeletingdestructor_00de8340_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CQ_RansomVictimScript,CScriptThing>'
+        Source = '00/de/CSpawnedFunc1NScriptCQRansomVictimScriptCScriptThing_scalardeletingdestructor_00de8340.cpp'
+        TestSource = '00/de/CSpawnedFunc1NScriptCQRansomVictimScriptCScriptThing_scalardeletingdestructor_00de8340_test.cpp'
         PassPattern = 'AUTO_TINY_00de8340_TEST PASS'
     }
     [pscustomobject]@{
@@ -23044,16 +23044,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e052d0'
-        Module = 'CVtable_012df764'
-        Source = '00/e0/CEngineSubPrimitiveText_scalardeletingdestructor_00e052d0.cpp'
-        TestSource = '00/e0/CEngineSubPrimitiveText_scalardeletingdestructor_00e052d0_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CQ_TraderEscortScript,CScriptThing>'
+        Source = '00/e0/CSpawnedFunc1NScriptCQTraderEscortScriptCScriptThing_scalardeletingdestructor_00e052d0.cpp'
+        TestSource = '00/e0/CSpawnedFunc1NScriptCQTraderEscortScriptCScriptThing_scalardeletingdestructor_00e052d0_test.cpp'
         PassPattern = 'AUTO_TINY_00e052d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e0e700'
-        Module = 'CVtable_012e0088'
-        Source = '00/e0/CEngineSubPrimitiveText_scalardeletingdestructor_00e0e700.cpp'
-        TestSource = '00/e0/CEngineSubPrimitiveText_scalardeletingdestructor_00e0e700_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CQ_UndeadRisingScript,CScriptThing>'
+        Source = '00/e0/CSpawnedFunc1NScriptCQUndeadRisingScriptCScriptThing_scalardeletingdestructor_00e0e700.cpp'
+        TestSource = '00/e0/CSpawnedFunc1NScriptCQUndeadRisingScriptCScriptThing_scalardeletingdestructor_00e0e700_test.cpp'
         PassPattern = 'AUTO_TINY_00e0e700_TEST PASS'
     }
     [pscustomobject]@{
@@ -23079,16 +23079,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e1f780'
-        Module = 'CVtable_012e15d0'
-        Source = '00/e1/CEngineSubPrimitiveText_scalardeletingdestructor_00e1f780.cpp'
-        TestSource = '00/e1/CEngineSubPrimitiveText_scalardeletingdestructor_00e1f780_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CQR_EscortTraderScript,CScriptThing>'
+        Source = '00/e1/CSpawnedFunc1NScriptCQREscortTraderScriptCScriptThing_scalardeletingdestructor_00e1f780.cpp'
+        TestSource = '00/e1/CSpawnedFunc1NScriptCQREscortTraderScriptCScriptThing_scalardeletingdestructor_00e1f780_test.cpp'
         PassPattern = 'AUTO_TINY_00e1f780_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e2ea60'
-        Module = 'CVtable_012e2b00'
-        Source = '00/e2/CEngineSubPrimitiveText_scalardeletingdestructor_00e2ea60.cpp'
-        TestSource = '00/e2/CEngineSubPrimitiveText_scalardeletingdestructor_00e2ea60_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CV_AmbushScamScript,CScriptThing>'
+        Source = '00/e2/CSpawnedFunc1NScriptCVAmbushScamScriptCScriptThing_scalardeletingdestructor_00e2ea60.cpp'
+        TestSource = '00/e2/CSpawnedFunc1NScriptCVAmbushScamScriptCScriptThing_scalardeletingdestructor_00e2ea60_test.cpp'
         PassPattern = 'AUTO_TINY_00e2ea60_TEST PASS'
     }
     [pscustomobject]@{
@@ -23100,9 +23100,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e374c0'
-        Module = 'CVtable_012e33dc'
-        Source = '00/e3/CEngineSubPrimitiveText_scalardeletingdestructor_00e374c0.cpp'
-        TestSource = '00/e3/CEngineSubPrimitiveText_scalardeletingdestructor_00e374c0_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CV_ArcheryCompetitionScript,CScriptThing>'
+        Source = '00/e3/CSpawnedFunc1NScriptCVArcheryCompetitionScriptCScriptThing_scalardeletingdestructor_00e374c0.cpp'
+        TestSource = '00/e3/CSpawnedFunc1NScriptCVArcheryCompetitionScriptCScriptThing_scalardeletingdestructor_00e374c0_test.cpp'
         PassPattern = 'AUTO_TINY_00e374c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -23114,9 +23114,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e39510'
-        Module = 'CVtable_012e37bc'
-        Source = '00/e3/CEngineSubPrimitiveText_scalardeletingdestructor_00e39510.cpp'
-        TestSource = '00/e3/CEngineSubPrimitiveText_scalardeletingdestructor_00e39510_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CV_AssassinAttacksScript,CScriptThing>'
+        Source = '00/e3/CSpawnedFunc1NScriptCVAssassinAttacksScriptCScriptThing_scalardeletingdestructor_00e39510.cpp'
+        TestSource = '00/e3/CSpawnedFunc1NScriptCVAssassinAttacksScriptCScriptThing_scalardeletingdestructor_00e39510_test.cpp'
         PassPattern = 'AUTO_TINY_00e39510_TEST PASS'
     }
     [pscustomobject]@{
@@ -23142,9 +23142,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e54200'
-        Module = 'CVtable_012e5e70'
-        Source = '00/e5/CEngineSubPrimitiveText_scalardeletingdestructor_00e54200.cpp'
-        TestSource = '00/e5/CEngineSubPrimitiveText_scalardeletingdestructor_00e54200_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CV_BeardyBaldyScript,CScriptThing>'
+        Source = '00/e5/CSpawnedFunc1NScriptCVBeardyBaldyScriptCScriptThing_scalardeletingdestructor_00e54200.cpp'
+        TestSource = '00/e5/CSpawnedFunc1NScriptCVBeardyBaldyScriptCScriptThing_scalardeletingdestructor_00e54200_test.cpp'
         PassPattern = 'AUTO_TINY_00e54200_TEST PASS'
     }
     [pscustomobject]@{
@@ -23191,9 +23191,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e6b3a0'
-        Module = 'CVtable_012e84d4'
-        Source = '00/e6/CEngineSubPrimitiveText_scalardeletingdestructor_00e6b3a0.cpp'
-        TestSource = '00/e6/CEngineSubPrimitiveText_scalardeletingdestructor_00e6b3a0_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CV_ChapelOfEvilScript,CScriptThing>'
+        Source = '00/e6/CSpawnedFunc1NScriptCVChapelOfEvilScriptCScriptThing_scalardeletingdestructor_00e6b3a0.cpp'
+        TestSource = '00/e6/CSpawnedFunc1NScriptCVChapelOfEvilScriptCScriptThing_scalardeletingdestructor_00e6b3a0_test.cpp'
         PassPattern = 'AUTO_TINY_00e6b3a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -23205,16 +23205,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e7c830'
-        Module = 'CVtable_012ea164'
-        Source = '00/e7/CEngineSubPrimitiveText_scalardeletingdestructor_00e7c830.cpp'
-        TestSource = '00/e7/CEngineSubPrimitiveText_scalardeletingdestructor_00e7c830_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CV_FishermanScript,CScriptThing>'
+        Source = '00/e7/CSpawnedFunc1NScriptCVFishermanScriptCScriptThing_scalardeletingdestructor_00e7c830.cpp'
+        TestSource = '00/e7/CSpawnedFunc1NScriptCVFishermanScriptCScriptThing_scalardeletingdestructor_00e7c830_test.cpp'
         PassPattern = 'AUTO_TINY_00e7c830_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00e8d240'
-        Module = 'CVtable_012ebc50'
-        Source = '00/e8/CEngineSubPrimitiveText_scalardeletingdestructor_00e8d240.cpp'
-        TestSource = '00/e8/CEngineSubPrimitiveText_scalardeletingdestructor_00e8d240_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CV_GhostGrannyNecklaceScript,CScriptThing>'
+        Source = '00/e8/CSpawnedFunc1NScriptCVGhostGrannyNecklaceScriptCScriptThing_scalardeletingdestructor_00e8d240.cpp'
+        TestSource = '00/e8/CSpawnedFunc1NScriptCVGhostGrannyNecklaceScriptCScriptThing_scalardeletingdestructor_00e8d240_test.cpp'
         PassPattern = 'AUTO_TINY_00e8d240_TEST PASS'
     }
     [pscustomobject]@{
@@ -23254,9 +23254,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00e9e0b0'
-        Module = 'CVtable_012ed6b8'
-        Source = '00/e9/CEngineSubPrimitiveText_scalardeletingdestructor_00e9e0b0.cpp'
-        TestSource = '00/e9/CEngineSubPrimitiveText_scalardeletingdestructor_00e9e0b0_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CV_IntroductionToTrophiesScript,CScriptThing>'
+        Source = '00/e9/CSpawnedFunc1NScriptCVIntroductionToTrophiesScriptCScriptThing_scalardeletingdestructor_00e9e0b0.cpp'
+        TestSource = '00/e9/CSpawnedFunc1NScriptCVIntroductionToTrophiesScriptCScriptThing_scalardeletingdestructor_00e9e0b0_test.cpp'
         PassPattern = 'AUTO_TINY_00e9e0b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -23268,9 +23268,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ea7650'
-        Module = '_global'
-        Source = '00/ea/CEngineSubPrimitiveText_scalardeletingdestructor_00ea7650.cpp'
-        TestSource = '00/ea/CEngineSubPrimitiveText_scalardeletingdestructor_00ea7650_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CV_LostTraderScript,CScriptThing>'
+        Source = '00/ea/CSpawnedFunc1NScriptCVLostTraderScriptCScriptThing_scalardeletingdestructor_00ea7650.cpp'
+        TestSource = '00/ea/CSpawnedFunc1NScriptCVLostTraderScriptCScriptThing_scalardeletingdestructor_00ea7650_test.cpp'
         PassPattern = 'AUTO_TINY_00ea7650_TEST PASS'
     }
     [pscustomobject]@{
@@ -23310,9 +23310,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ec5330'
-        Module = 'CVtable_012f17a8'
-        Source = '00/ec/CEngineSubPrimitiveText_scalardeletingdestructor_00ec5330.cpp'
-        TestSource = '00/ec/CEngineSubPrimitiveText_scalardeletingdestructor_00ec5330_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CV_RockTrollFirstEncounterScript,CScriptThing>'
+        Source = '00/ec/CSpawnedFunc1NScriptCVRockTrollFirstEncounterScriptCScriptThing_scalardeletingdestructor_00ec5330.cpp'
+        TestSource = '00/ec/CSpawnedFunc1NScriptCVRockTrollFirstEncounterScriptCScriptThing_scalardeletingdestructor_00ec5330_test.cpp'
         PassPattern = 'AUTO_TINY_00ec5330_TEST PASS'
     }
     [pscustomobject]@{
@@ -23331,16 +23331,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ed75c0'
-        Module = 'CVtable_012f3374'
-        Source = '00/ed/CEngineSubPrimitiveText_scalardeletingdestructor_00ed75c0.cpp'
-        TestSource = '00/ed/CEngineSubPrimitiveText_scalardeletingdestructor_00ed75c0_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CV_SwordInTheStoneScript,CScriptThing>'
+        Source = '00/ed/CSpawnedFunc1NScriptCVSwordInTheStoneScriptCScriptThing_scalardeletingdestructor_00ed75c0.cpp'
+        TestSource = '00/ed/CSpawnedFunc1NScriptCVSwordInTheStoneScriptCScriptThing_scalardeletingdestructor_00ed75c0_test.cpp'
         PassPattern = 'AUTO_TINY_00ed75c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ed99a0'
-        Module = 'CVtable_012f37d0'
-        Source = '00/ed/CEngineSubPrimitiveText_scalardeletingdestructor_00ed99a0.cpp'
-        TestSource = '00/ed/CEngineSubPrimitiveText_scalardeletingdestructor_00ed99a0_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CV_TalentlessBardScript,CScriptThing>'
+        Source = '00/ed/CSpawnedFunc1NScriptCVTalentlessBardScriptCScriptThing_scalardeletingdestructor_00ed99a0.cpp'
+        TestSource = '00/ed/CSpawnedFunc1NScriptCVTalentlessBardScriptCScriptThing_scalardeletingdestructor_00ed99a0_test.cpp'
         PassPattern = 'AUTO_TINY_00ed99a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -23352,9 +23352,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00edd000'
-        Module = 'CVtable_012f3ecc'
-        Source = '00/ed/CEngineSubPrimitiveText_scalardeletingdestructor_00edd000.cpp'
-        TestSource = '00/ed/CEngineSubPrimitiveText_scalardeletingdestructor_00edd000_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CV_TempleOfLightScript,CScriptThing>'
+        Source = '00/ed/CSpawnedFunc1NScriptCVTempleOfLightScriptCScriptThing_scalardeletingdestructor_00edd000.cpp'
+        TestSource = '00/ed/CSpawnedFunc1NScriptCVTempleOfLightScriptCScriptThing_scalardeletingdestructor_00edd000_test.cpp'
         PassPattern = 'AUTO_TINY_00edd000_TEST PASS'
     }
     [pscustomobject]@{
@@ -23366,9 +23366,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ef8d00'
-        Module = 'CVtable_012f6888'
-        Source = '00/ef/CEngineSubPrimitiveText_scalardeletingdestructor_00ef8d00.cpp'
-        TestSource = '00/ef/CEngineSubPrimitiveText_scalardeletingdestructor_00ef8d00_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CPersonalScript_EmptyScript,CScriptThing>'
+        Source = '00/ef/CSpawnedFunc1NScriptCPersonalScriptEmptyScriptCScriptThing_scalardeletingdestructor_00ef8d00.cpp'
+        TestSource = '00/ef/CSpawnedFunc1NScriptCPersonalScriptEmptyScriptCScriptThing_scalardeletingdestructor_00ef8d00_test.cpp'
         PassPattern = 'AUTO_TINY_00ef8d00_TEST PASS'
     }
     [pscustomobject]@{
@@ -23380,9 +23380,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00f09c70'
-        Module = 'CVtable_012f7ebc'
-        Source = '00/f0/CEngineSubPrimitiveText_scalardeletingdestructor_00f09c70.cpp'
-        TestSource = '00/f0/CEngineSubPrimitiveText_scalardeletingdestructor_00f09c70_test.cpp'
+        Module = 'CSpawnedFunc1<NScript::CQ_AmbushTradersScript,CScriptThing>'
+        Source = '00/f0/CSpawnedFunc1NScriptCQAmbushTradersScriptCScriptThing_scalardeletingdestructor_00f09c70.cpp'
+        TestSource = '00/f0/CSpawnedFunc1NScriptCQAmbushTradersScriptCScriptThing_scalardeletingdestructor_00f09c70_test.cpp'
         PassPattern = 'AUTO_TINY_00f09c70_TEST PASS'
     }
     [pscustomobject]@{
