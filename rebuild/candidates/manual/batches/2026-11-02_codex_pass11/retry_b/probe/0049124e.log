@@ -1,0 +1,12 @@
+22:51	c00	DIFFER(1045v1056)	difflines=414	codex selected source in codex's own header context (baseline regrade)
+23:23	c00	DIFFER(1045v1056)	difflines=414	baseline regrade (diff view)
+23:23	v04	DIFFER(1045v1056)	difflines=414	prefix block: const prefix string
+23:23	v02	DIFFER(1044v1056)	difflines=424	prefix block: ToCharString temporary used inline in the strncmp call
+23:23	v03	DIFFER(1045v1056)	difflines=414	prefix block: text held by value (copy-initialised from ToCharString)
+23:23	v01	DIFFER(1045v1056)	difflines=410	prefix block: text reference declared before the prefix string
+23:23	v07	DIFFER(1052v1056)	difflines=405	prefix length read into a long before the conversion
+23:23	v06	DIFFER(1045v1056)	difflines=442	every block: text reference declared before the literal string
+23:23	v05	DIFFER(1076v1056)	difflines=581	prefix compare without its own block scope
+23:23	v08	DIFFER(1045v1056)	difflines=414	matches initialised false
+23:23	v09	DIFFER(1037v1056)	difflines=425	prefix compare against the literal with a length temporary
+23:24	v10	DIFFER(1045v1056)	difflines=414	no /Oy- (frame pointer from the TU defaults)

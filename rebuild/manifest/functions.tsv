@@ -13415,7 +13415,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006315e0	operator=	std::vector<NUISystem::CUIStateDef, std::allocator<NUISystem::CUIStateDef>>	unknown	undefined	0		0	yes	accepted									
 00631710	NUISystem::CUIDef::vfunc_19	NUISystem::CUIDef	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00631720	operator=	CUIDef	__thiscall	CUIDef *	2	CUIDef *,CUIDef *	1	yes	accepted									
-00631c60	InitialiseDefaultCameraTags	_global	__fastcall	void	0		1	yes	accepted									
+00631c60	Transfer	NUISystem::CUIDef	__fastcall	void	0		1	yes	accepted									
 00632260	CPersistContext_TransferFloat	_global	unknown	undefined	0		0	yes	accepted									
 006322b0	TransferBinaryIn	CPersistTraits<float>	__thiscall	void	3	CPersistTraits<float> *,CMemoryDataInputStream *,float *	1	yes	accepted									
 00632340	CPersistContext_TransferFloat	_global	unknown	undefined	0		0	yes	accepted									
@@ -33513,7 +33513,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0099d8c0	ErrorDialogProc	_global	unknown	undefined	0		0			discovered	gapscan							
 0099dbe0	SetDirtyExitFlag	_global	__fastcall	undefined	0		0	yes	accepted									
 0099dc50	ClearDirtyExitFlag	_global	__fastcall	undefined	0		0	yes	accepted									
-0099dcb0	_DisplayErrorDialog@8	_global	unknown	undefined	0		0	yes	accepted									
+0099dcb0	DisplayErrorDialog	_global	unknown	undefined	0		0	yes	accepted									
 0099e260	InitExternalStrings	_global	__fastcall	undefined	0		0	yes	accepted									
 0099e480	ToWideString	CCharString	__thiscall	CWideString	1	CCharString const *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CCharString_ToWideString_0099e480.cpp
 0099e4b0	CCharString	CCharString	__thiscall	undefined	1	CCharString *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\99\CCharString_CCharString_0099e4b0.cpp
@@ -43863,7 +43863,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c0f3e0	IsNewDestinationGoingToResetNavigation	CTCCreatureNavigation	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c0f3e0.cpp
 00c0f400	IsNewDestinationGoingToResetNavigation	CTCCreatureNavigation	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c0f400.cpp
 00c0f420	IsNewDestinationGoingToResetNavigation	CTCCreatureNavigation	__thiscall	bool	3	CTCCreatureNavigation *,C3DVector *,float	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_00c0f420.cpp
-00c0f440	sub_00c0f440	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c0f440	GetFirst_00c0f440	CVtable_012b2308	unknown	undefined	0		0			discovered	gapscan							
 00c0f490	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\CLandscapeBackgroundPatch_vectordeletingdestructor_00c0f490.cpp
 00c0f4b0	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\CLandscapeBackgroundPatch_vectordeletingdestructor_00c0f4b0.cpp
 00c0f4d0	CBase	CBase	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c0\CBase_CBase_00c0f4d0.cpp

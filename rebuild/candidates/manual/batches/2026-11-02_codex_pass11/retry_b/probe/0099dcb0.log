@@ -1,0 +1,14 @@
+22:44	v00	RELOCATION_MATCH		codex selected (fn-pointer local), 1455 extent
+22:44	v01	DIFFER(1520v1455)	difflines=143	direct RetrieveString call at URL site
+22:44	v01	DIFFER(1520v1455)	difflines=167	direct RetrieveString call at URL site (regrade, new diff)
+22:44	v01	DIFFER(1520v1455)	difflines=109	direct RetrieveString call at URL site (regrade, new diff)
+22:45	v02	DIFFER(1536v1455)	difflines=185	explicit RetrieveString body at loop+title sites, direct call at URL
+22:45	v05	DIFFER(1520v1455)	difflines=101	`RetrieveString(..) || sprintf(..)` expression at URL site
+22:45	v03	DIFFER(1520v1455)	difflines=101	named `int found = RetrieveString(...)` at URL site
+22:45	v06	DIFFER(1520v1455)	difflines=101	RetrieveString body defined after DisplayErrorDialog (declared only before)
+22:45	v04	DIFFER(1520v1455)	difflines=101	`== 0` test + unsigned long url
+22:47	v09	DIFFER(1520v1455)	difflines=101	named titleID local before title call
+22:47	v08	DIFFER(1520v1455)	difflines=103	single-return RetrieveString body
+22:47	v10	RELOCATION_MATCH		error loop as `while (nErrorIndex < 10 && Error[nErrorIndex])` (++ at loop end), all direct calls -> MATCH
+22:47	v07	DIFFER(1520v1455)	difflines=101	landed 0x0099D470 RetrieveString body text in the TU
+22:48	0099dcb0	RELOCATION_MATCH		src/ final (while loop, direct calls)

@@ -1,0 +1,14 @@
+22:51	c00	DIFFER(1367v1264)	difflines=438	codex selected source in codex's own header context (baseline regrade)
+23:26	c00	DIFFER(1367v1264)	difflines=438	baseline regrade (diff view)
+23:26	v02	DIFFER(1321v1264)	difflines=513	other index and local contraction read straight from the iterator
+23:26	v01	DIFFER(1321v1264)	difflines=513	contraction pair bound by reference (no pair copy)
+23:26	v04	DIFFER(1301v1264)	difflines=567	pair by reference; next iterator computed after the body
+23:26	v03	DIFFER(1365v1264)	difflines=502	pair by const reference, local contraction copied by value
+23:26	v06	DIFFER(1359v1264)	difflines=430	cost max as if/else
+23:26	v07	DIFFER(1367v1264)	difflines=438	vertex references bound after the equal-index exit and existence checked one by one
+23:26	v08	DIFFER(1367v1264)	difflines=438	union list as a named copy of a temporary
+23:26	v05	SRC_FAIL		removal member written as erase(key)
+23:26	v10	DIFFER(1367v1264)	difflines=438	index pair read into separate statements
+23:26	v09	DIFFER(1309v1264)	difflines=514	pair by reference and other vertex looked up after the merged slot
+23:26	v11	DIFFER(1298v1264)	difflines=544	v04 (pair reference, ++itr at the end) plus other vertex looked up at the call
+23:26	v12	DIFFER(1293v1264)	difflines=569	v04 plus cost max as if/else

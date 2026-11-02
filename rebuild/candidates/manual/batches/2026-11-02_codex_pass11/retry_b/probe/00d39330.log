@@ -1,0 +1,12 @@
+22:51	c00	DIFFER(1056v1578)	difflines=528	codex selected source in codex's own header context (baseline regrade)
+23:28	c00	DIFFER(1056v1578)	difflines=528	baseline regrade (diff view)
+23:29	v03	DIFFER(1054v1578)	difflines=543	speech movie declared at function start
+23:29	v02	DIFFER(1054v1578)	difflines=607	map declared before the hero handle
+23:29	v04	DIFFER(1052v1578)	difflines=523	map keys through explicit CCharString temporaries
+23:29	v01	SRC_FAIL		hero inserted with insert(make_pair) instead of operator[] assignment
+23:29	v06	DIFFER(1092v1578)	difflines=559	header CCountedPointer destructor (no source-local specialisation)
+23:29	v07	DIFFER(1056v1578)	difflines=550	map slots bound to references then assigned
+23:29	v08	DIFFER(1056v1578)	difflines=508	hero handle assigned last
+23:29	v05	DIFFER(1056v1578)	difflines=528	no trailing return
+23:29	v09	DIFFER(1054v1578)	difflines=477	guest prophet read through a named index
+23:29	h01	DIFFER(1056v1578)	difflines=528	CCountedPointer operator= with the ShareData body written in place (ctx/cp1 overlay, landed 0x00D848D0 model) over Codex's context

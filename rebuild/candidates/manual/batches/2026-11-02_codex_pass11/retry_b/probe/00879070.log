@@ -1,0 +1,13 @@
+22:51	c00	DIFFER(1249v1251)	difflines=47	codex selected source in codex's own header context (baseline regrade)
+23:22	c00	DIFFER(1249v1251)	difflines=47	baseline regrade (diff view)
+23:23	v04	DIFFER(1249v1251)	difflines=47	cb without the (float) cast
+23:23	v01	DIFFER(1253v1251)	difflines=333	c_beta and cb read the scalar z instead of f_prime_again.Z
+23:23	v03	DIFFER(1249v1251)	difflines=47	cc written c_gamma*c_beta
+23:23	v02	DIFFER(1253v1251)	difflines=333	cb reads z (c_beta keeps f_prime_again.Z)
+23:23	v06	DIFFER(1249v1251)	difflines=47	discriminant written 4.0f*ca*cc order
+23:23	v07	DIFFER(1249v1251)	difflines=47	discriminant cc*ca*4 with ca*cc order
+23:23	v05	DIFFER(1249v1251)	difflines=47	ca and c_gamma without casts
+23:23	v08	DIFFER(1253v1251)	difflines=55	cb as 2*t.Z - 2*c_gamma*f.Z expanded
+23:23	v09	DIFFER(1265v1251)	difflines=95	c_beta declared after c_alpha
+23:23	v10	DIFFER(1253v1251)	difflines=53	rad and factor_x as doubles (sin/cos results not narrowed until c_gamma)
+23:23	v11	DIFFER(1249v1251)	difflines=57	tz/z accumulations as single expressions

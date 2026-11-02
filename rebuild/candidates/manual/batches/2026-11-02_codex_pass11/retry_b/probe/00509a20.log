@@ -1,0 +1,14 @@
+22:51	c00	DIFFER(3188v3120)	difflines=663	codex selected source in codex's own header context (baseline regrade)
+23:31	c00	DIFFER(3188v3120)	difflines=663	baseline regrade (diff view)
+23:31	v02	DIFFER(3204v3120)	difflines=616	blockage lines appended with vector::insert
+23:31	v01	DIFFER(3188v3120)	difflines=682	line list declared before the blockage
+23:31	v04	SRC_FAIL		blockage lines fetched straight into the blockage (no line_list)
+23:31	v03	SRC_FAIL		blockage lines assigned
+23:31	v06	DIFFER(3188v3120)	difflines=663	dummy index chosen inline in the call
+23:31	v05	DIFFER(3188v3120)	difflines=671	action point counter declared before the names vector
+23:31	v08	DIFFER(3186v3120)	difflines=749	area width cached in a local for the topology indices
+23:31	v07	DIFFER(3218v3120)	difflines=939	transition prefix length read inline (no local)
+23:31	v09	DIFFER(3188v3120)	difflines=663	blockage UniqueID masked with a 64-bit constant
+23:31	v10	DIFFER(3188v3120)	difflines=663	navigation layer total cached in a local
+23:31	v11	DIFFER(3202v3120)	difflines=733	thing pointer read through the iterator each time (no p_thing local)
+23:31	v12	DIFFER(3164v3120)	difflines=890	blockage pushed through a reference to the layer

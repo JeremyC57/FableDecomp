@@ -1,0 +1,12 @@
+22:51	c00	DIFFER(1225v1289)	difflines=472	codex selected source in codex's own header context (baseline regrade)
+23:26	c00	DIFFER(1225v1289)	difflines=472	baseline regrade (diff view)
+23:27	v03	DIFFER(1225v1289)	difflines=472	raw node pointer local then insert
+23:27	v01	DIFFER(1225v1289)	difflines=472	explicit CCountedPointer temporary argument
+23:27	v04	DIFFER(1221v1289)	difflines=470	connections vector declared before the insert
+23:27	v02	DIFFER(1253v1289)	difflines=506	named CCountedPointer local inserted
+23:27	v08	DIFFER(1225v1289)	difflines=474	reserve before clear
+23:27	v07	DIFFER(1231v1289)	difflines=491	progress string through a named CCharString
+23:27	v06	DIFFER(1225v1289)	difflines=472	last node initialised through Get()
+23:27	v05	DIFFER(1225v1289)	difflines=472	negative region early continue (skip to newline)
+23:27	h01	DIFFER(1225v1289)	difflines=472	CVectorMap::Insert model with Dirty set before the push (overlay ctx/828_a)
+23:27	h02	DIFFER(1225v1289)	difflines=472	CVectorMap::Insert model with a named value_type item (overlay ctx/828_b)

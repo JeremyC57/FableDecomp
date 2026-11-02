@@ -1,0 +1,15 @@
+22:55	e01	DIFFER(1504v1504)	difflines=26	codex selected + /EHsc
+22:55	c00	DIFFER(1504v1504)	difflines=8	codex selected source in codex's own header context (baseline regrade)
+23:20	b00	DIFFER(1504v1504)	difflines=8	codex body on the consolidated STLport model (stlport/fable_containers.h), no FABLE_RETAIL_TRAJECTORY
+23:20	v02	DIFFER(1504v1504)	difflines=8	converging pairs from std::make_pair
+23:20	v04	DIFFER(1504v1504)	difflines=8	GetValue sums the tangent term first
+23:20	v01	DIFFER(1504v1504)	difflines=8	converging pairs built with the pair(a,b) constructor
+23:20	v03	DIFFER(1504v1504)	difflines=8	bracket read through the iterator (it->first / it->second), no pair reference
+23:20	v05	DIFFER(1504v1504)	difflines=165	GetValue with named float locals for the two quotient terms
+23:20	v08	DIFFER(1504v1504)	difflines=8	accuracy as a function-scope const before the first loop
+23:20	v06	DIFFER(1613v1504)	difflines=619	GFSin/GFCos/GFTan return float
+23:20	v07	DIFFER(1504v1504)	difflines=8	val_b declared and evaluated in one statement after the pair of the left sample (val_a pair first)
+23:20	v10	DIFFER(1504v1504)	difflines=28	GetValue members cached in locals (const float tx=Tx ...)
+23:20	v09	DIFFER(1504v1504)	difflines=8	refinement while written as for(;;) with the bracket test and break
+23:20	v11	DIFFER(1504v1504)	difflines=8	r_start/r_end declared on separate lines from the pair reference
+23:30	f01	DIFFER(1504v1504)	difflines=8	parked shape regraded on the landed repo headers (+retry11b overlay)

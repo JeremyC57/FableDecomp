@@ -1,0 +1,14 @@
+22:51	c00	DIFFER(1315v1315)	difflines=6	codex selected source in codex's own header context (baseline regrade)
+22:55	e01	DIFFER(1315v1315)	difflines=6	codex selected + /EHsc
+23:04	c00	DIFFER(1315v1315)	difflines=6	baseline regrade (diff view)
+23:04	v04	DIFFER(1315v1315)	difflines=6	pt[4] declared at function start
+23:04	v02	DIFFER(1315v1315)	difflines=6	long c1 declared before r_lx_p
+23:04	v01	DIFFER(1315v1315)	difflines=6	pt[4] declared before r_lx_p
+23:04	v03	DIFFER(1315v1315)	difflines=6	pt[4] and c1 declared before r_lx_p
+23:04	v08	DIFFER(1324v1315)	difflines=207	loop counter as unsigned long
+23:04	v07	DIFFER(1386v1315)	difflines=354	r_ly_p declared before r_lx_p (default ctor), both assigned in order
+23:04	v06	DIFFER(1319v1315)	difflines=389	loop body through a C3DVector& p=pt[c1] reference
+23:04	v05	DIFFER(1315v1315)	difflines=6	colour local declared before the loop
+23:22	v09	DIFFER(1315v1315)	difflines=16	loop test c1!=4
+23:22	v10	DIFFER(1274v1315)	difflines=199	sin/cos of theta in named float locals before the rotated axes
+23:22	v11	DIFFER(1320v1315)	difflines=175	half-size scale folded into one float local before the loop

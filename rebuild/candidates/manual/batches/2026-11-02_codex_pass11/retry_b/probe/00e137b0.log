@@ -1,0 +1,11 @@
+22:51	c00	DIFFER(1004v1080)	difflines=205	codex selected source in codex's own header context (baseline regrade)
+23:01	v01	DIFFER(1004v1080)	difflines=205	codex Outro body ported to the cons11 consolidated wasp TU context (Game->, CCHARSTRING, repo NSCRIPT headers)
+23:02	v02	DIFFER(1004v1080)	difflines=205	diagnostic: CCountedPointer::operator= with the ShareData body written in place (landed 0x00D848D0 model) via ctx/cp1 overlay
+23:03	v03	DIFFER(1004v1080)	difflines=205	plain `return;` at the inner (queen) early exit, TRetVoid only at the first
+23:03	v05	DIFFER(1006v1080)	difflines=204	map slot bound to a named reference then assigned
+23:03	v06	DIFFER(1013v1080)	difflines=291	map declared at the start of the block
+23:03	v04	DIFFER(1004v1080)	difflines=205	plain `return;` at both early exits (no TRetVoid)
+23:03	v07	DIFFER(1004v1080)	difflines=207	IsAlive inline written in the if-form
+23:03	v09	DIFFER(1008v1080)	difflines=405	queen removal guarded with nested else-return
+23:03	v10	DIFFER(1004v1080)	difflines=217	CWideScreenMagicPauseEntities constructed before the movie sequence
+23:03	v08	DIFFER(1098v1080)	difflines=306	Queen default-constructed then assigned

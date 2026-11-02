@@ -1,0 +1,13 @@
+22:51	c00	DIFFER(1469v1469)	difflines=2	codex selected source in codex's own header context (baseline regrade)
+22:55	e01	DIFFER(1469v1469)	difflines=2	codex selected + /EHsc
+22:57	c00	DIFFER(1469v1469)	difflines=2	baseline regrade (diff view)
+22:57	v01	DIFFER(331v1469)	difflines=454	loop test `c_vert != no_vertices`
+22:57	v04	DIFFER(1469v1469)	difflines=2	post-increment c_vert++
+22:57	v03	DIFFER(344v1469)	difflines=449	count re-read in the loop condition (no local)
+22:57	v02	DIFFER(1469v1469)	difflines=4	signed long counter and vertex count
+22:57	v06	DIFFER(1453v1469)	difflines=299	tangent copies taken before the position/normal/UV setters
+22:57	v05	DIFFER(1471v1469)	difflines=81	handedness stored through a float local assigned in both arms
+22:57	v10	DIFFER(379v1469)	difflines=532	/Op flag (improve float consistency) as scheduling probe
+22:57	v07	DIFFER(1469v1469)	difflines=24	named float dot local compared with `!(dot < 0.0f)`
+22:57	v08	DIFFER(1467v1469)	difflines=169	tangent stores through a float* to UTangent
+22:57	v09	DIFFER(286v1469)	difflines=489	tangent references (const C3DVector&) into the arrays instead of by-value copies

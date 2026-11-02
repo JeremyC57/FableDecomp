@@ -1,0 +1,19 @@
+22:51	c00	DIFFER(1129v1129)	difflines=2	codex selected source in codex's own header context (baseline regrade)
+22:54	c00	DIFFER(1129v1129)	difflines=2	baseline regrade (diff view)
+22:54	v01	DIFFER(1129v1129)	difflines=2	codex selected + /EHsc (by-value class args, chunk 590)
+22:54	v02	DIFFER(1129v1129)	difflines=2	codex selected, /EHsc without /Gr
+23:19	b00	DIFFER(1129v1129)	difflines=2	codex body rebased on the shared C2DVector model (no FABLE_RETAIL_C2DVECTOR_MASS)
+23:19	v03	DIFFER(1131v1129)	difflines=449	tangent C2DVector named local (C2DVector tangent=Right(normal)) used in the friction statement and the last two impulses
+23:19	v05	DIFFER(1121v1129)	difflines=108	friction denominator in a named float before the division
+23:19	v06	DIFFER(1129v1129)	difflines=6	relative velocity C2DVector local (b vel minus a vel) before the friction statement
+23:19	v04	DIFFER(1129v1129)	difflines=2	friction numerator (relative tangent velocity) in a named float before the denominator
+23:19	v10	DIFFER(1129v1129)	difflines=2	GetVel written as Right(pos-Pos)*AVel+Vel (operand order)
+23:19	v08	DIFFER(1129v1129)	difflines=2	Right without __fastcall (plain inline free function)
+23:19	v09	DIFFER(1129v1129)	difflines=2	GetVel declared in-class inline order: GetVel defined before the auto_inline(off) block
+23:19	v07	DIFFER(1125v1129)	difflines=86	Right takes const C2DVector& instead of by value
+23:19	v11	DIFFER(1129v1129)	difflines=26	denominator sum written b first then a
+23:19	v12	DIFFER(1131v1129)	difflines=25	friction numerator as -(a vel - b vel) dot
+23:19	v13	DIFFER(1129v1129)	difflines=2	CopySign as inline (no __fastcall)
+23:19	v14	DIFFER(1129v1129)	difflines=2	sliding friction result clamped through a ternary
+23:24	e01	DIFFER(1129v1129)	difflines=2	b00 without /Gr
+23:30	f01	DIFFER(1129v1129)	difflines=2	parked shape regraded on the landed repo headers (+retry11b overlay)

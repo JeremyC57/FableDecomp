@@ -1,0 +1,12 @@
+22:51	c00	DIFFER(1450v1438)	difflines=798	codex selected source in codex's own header context (baseline regrade)
+23:27	c00	DIFFER(1450v1438)	difflines=798	baseline regrade (diff view)
+23:27	v02	DIFFER(1450v1438)	difflines=798	CBasicString::Compare specialisation not inline
+23:27	v01	DIFFER(1450v1438)	difflines=798	GetDef template without the inline keyword
+23:27	v04	DIFFER(1450v1438)	difflines=798	faction created into a named counted pointer before the insert
+23:27	v03	DIFFER(1516v1438)	difflines=847	first-loop name held as CCharString
+23:27	v06	DIFFER(1450v1438)	difflines=798	faction reference through a named iterator
+23:27	v07	DIFFER(1450v1438)	difflines=798	GetDef without inline and named counted pointer insert
+23:27	v05	DIFFER(1450v1438)	difflines=798	CRC of the first-loop name read into a local
+23:27	v08	DIFFER(1450v1438)	difflines=798	GetDef null branch written with early returns
+23:27	v10	DIFFER(1450v1438)	difflines=798	allied/enemy loops with unsigned long counters
+23:27	v09	DIFFER(1484v1438)	difflines=934	first loop with the def pointer declared before the loop

@@ -1,0 +1,12 @@
+22:51	c00	DIFFER(842v1127)	difflines=407	codex selected source in codex's own header context (baseline regrade)
+23:27	c00	DIFFER(842v1127)	difflines=407	baseline regrade (diff view)
+23:28	v03	DIFFER(842v1127)	difflines=407	traits declared long, string, float
+23:28	v04	DIFFER(842v1127)	difflines=407	traits declared float, string, long
+23:28	v02	DIFFER(842v1127)	difflines=407	traits declared string, float, long
+23:28	v01	DIFFER(842v1127)	difflines=407	traits declared string, long, float
+23:28	v05	DIFFER(842v1127)	difflines=407	traits declared long, float, string
+23:28	v06	DIFFER(842v1127)	difflines=411	default marker through a named local then assigned
+23:28	v08	DIFFER(723v1127)	difflines=501	CCharString equality without the source-local redefinition (header body)
+23:28	v07	DIFFER(842v1127)	difflines=419	CCharString equality with the null branch in if/else form
+23:28	v10	DIFFER(858v1127)	difflines=464	traits declared string, float, long with the CBasicString equality removed
+23:28	v09	DIFFER(848v1127)	difflines=461	every symbol read into the named symbol string

@@ -1,0 +1,12 @@
+22:51	c00	DIFFER(1182v1160)	difflines=157	codex selected source in codex's own header context (baseline regrade)
+23:24	c00	DIFFER(1182v1160)	difflines=157	baseline regrade (diff view)
+23:24	v01	DIFFER(1182v1160)	difflines=157	points vector declared before the type transfer
+23:24	v02	DIFFER(1182v1160)	difflines=161	points vector declared before the type string
+23:24	v03	DIFFER(1182v1160)	difflines=247	points vector declared first
+23:24	v04	DIFFER(1179v1160)	difflines=440	type key built in a named CCharString local
+23:24	v08	DIFFER(1186v1160)	difflines=156	size_guy initialised to 0
+23:24	v06	DIFFER(1154v1160)	difflines=155	size key appended with const char*
+23:24	v07	DIFFER(1182v1160)	difflines=157	size_guy declared with the type
+23:24	v05	DIFFER(1151v1160)	difflines=162	type key appended with a const char* (operator+(CCharString,const char*))
+23:24	v09	DIFFER(1182v1160)	difflines=157	points declared after size transfer
+23:24	v10	DIFFER(1182v1160)	difflines=157	default type through a named const reference

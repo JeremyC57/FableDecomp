@@ -1,0 +1,5 @@
+23:15	v01	DIFFER(1506v1524)	difflines=6	first authoring: one-arg Transfer per member in retail order, no CWideString default temp
+23:15	v02	RELOCATION_MATCH		block-scoped named default CWideString around the TextValue transfer
+23:15	v03	RELOCATION_MATCH		comma full-expression: default CWideString temporary then the transfer
+23:15	v04	RELOCATION_MATCH		comma inside the argument: default temporary, then TextValue lvalue
+23:29	f01	RELOCATION_MATCH		final source on the landed repo headers + retry11b overlay (FABLE_RETAIL_CUIDEF / FABLE_RETAIL_C2DVECTOR)

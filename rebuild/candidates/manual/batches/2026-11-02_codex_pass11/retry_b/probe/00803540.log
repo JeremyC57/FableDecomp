@@ -1,0 +1,18 @@
+22:51	c00	DIFFER(1108v1108)	difflines=2	codex selected source in codex's own header context (baseline regrade)
+22:53	v03	DIFFER(1108v1108)	difflines=6	reference to member taken just before the two final statements
+22:53	v02	DIFFER(1108v1108)	difflines=4	C3DVector& offset_3d reference to the member taken at function start
+22:53	v01	DIFFER(1070v1108)	difflines=61	grouped scalar product (dist*build_up*0) as one factor
+22:53	v04	DIFFER(1108v1108)	difflines=18	2D walk += moved before sin/cos assignment
+22:53	v05	DIFFER(1108v1108)	difflines=2	sum of axes as named C3DVector local before scaling
+22:53	v07	DIFFER(1108v1108)	difflines=165	single statement: assignment of sum including second-order term
+22:53	v06	DIFFER(1108v1108)	difflines=2	second-order term as named C3DVector local
+22:53	v08	DIFFER(1066v1108)	difflines=47	second-order scalar product hoisted into a float local
+22:53	v02	DIFFER(1108v1108)	difflines=4	C3DVector& offset_3d reference to the member taken at function start
+22:53	v03	DIFFER(1108v1108)	difflines=6	reference to member taken just before the two final statements
+22:53	v10	DIFFER(1108v1108)	difflines=4	v02 (member reference at function start) with __forceinline C3DVector
+22:53	v09	DIFFER(1108v1108)	difflines=2	codex source with C3DVector arithmetic __forceinline (owner rule) instead of the per-row plain inline
+22:54	v11	DIFFER(1108v1108)	difflines=6	member reference declared between the sin/cos store and the 2D walk
+22:54	v12	DIFFER(1108v1108)	difflines=6	member pointer local for the two final statements
+22:54	v13	DIFFER(1088v1108)	difflines=86	2D walk written per component (X then Y)
+22:54	v14	DIFFER(1062v1108)	difflines=67	offset scaled by named float scale (dist*build_up*0) declared before the vector sum
+22:55	e01	DIFFER(1108v1108)	difflines=6	codex selected + /EHsc

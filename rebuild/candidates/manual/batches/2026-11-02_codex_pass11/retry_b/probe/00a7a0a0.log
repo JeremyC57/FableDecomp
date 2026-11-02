@@ -1,0 +1,12 @@
+22:51	c00	DIFFER(1270v1222)	difflines=215	codex selected source in codex's own header context (baseline regrade)
+23:25	c00	DIFFER(1270v1222)	difflines=215	baseline regrade (diff view)
+23:26	v04	DIFFER(1296v1222)	difflines=360	first region pushed through a named local
+23:26	v02	DIFFER(1270v1222)	difflines=215	pre-increment inside the seed-loop constructor argument
+23:26	v03	DIFFER(1270v1222)	difflines=215	pre-increment inside both loop constructor arguments
+23:26	v01	DIFFER(1270v1222)	difflines=215	seed-loop region pushed through a named CNavRegion local
+23:26	v08	DIFFER(1270v1222)	difflines=215	region counter unsigned long
+23:26	v07	DIFFER(1270v1222)	difflines=245	seed node list declared before the null test
+23:26	v05	DIFFER(1270v1222)	difflines=284	switchable-loop region through a named local
+23:26	v06	DIFFER(1270v1222)	difflines=215	seed position read through the iterator (no nav_pos reference)
+23:26	v10	DIFFER(1286v1222)	difflines=381	seed-loop back region taken once into a pointer local
+23:26	v09	DIFFER(1270v1222)	difflines=215	region counter starts at 0 with ++region before the first push

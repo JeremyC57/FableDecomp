@@ -1,0 +1,14 @@
+22:51	c00	DIFFER(1164v1146)	difflines=459	codex selected source in codex's own header context (baseline regrade)
+23:25	c00	DIFFER(1164v1146)	difflines=459	baseline regrade (diff view)
+23:25	v01	DIFFER(1143v1146)	difflines=461	line arguments as C2DLineF temporaries in the condition
+23:25	v04	DIFFER(1159v1146)	difflines=383	distance computed inside the found branch
+23:25	v03	DIFFER(1069v1146)	difflines=542	a and b as const references into the duplicate
+23:25	v02	DIFFER(1143v1146)	difflines=461	second line as a temporary, first named
+23:25	v06	DIFFER(1164v1146)	difflines=459	find_if start advanced in a separate statement
+23:25	v05	DIFFER(1187v1146)	difflines=544	result point copied by value
+23:25	v08	DIFFER(1164v1146)	difflines=459	line pair built inside the loop with a block for the triangle test
+23:25	v07	SRC_FAIL		splices in their own blocks
+23:25	v09	DIFFER(1164v1146)	difflines=459	size_1/size_2 compared directly (no long locals)
+23:25	v10	DIFFER(1164v1146)	difflines=459	a/b from begin()[0]/[1] without the anchor iterator copy
+23:25	v11	DIFFER(1114v1146)	difflines=319	v01 line temporaries plus distance computed inside the found branch
+23:25	v12	DIFFER(1143v1146)	difflines=461	v01 plus the splice_two iterators as fresh locals (splice_one's reused names renamed)

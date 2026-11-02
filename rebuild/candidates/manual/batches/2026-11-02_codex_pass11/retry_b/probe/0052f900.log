@@ -1,0 +1,12 @@
+22:51	c00	DIFFER(1323v1730)	difflines=724	codex selected source in codex's own header context (baseline regrade)
+23:30	c00	DIFFER(1323v1730)	difflines=724	baseline regrade (diff view)
+23:30	v02	DIFFER(1280v1730)	difflines=732	render colour as one expression from temporaries
+23:30	v04	DIFFER(1323v1730)	difflines=724	clamps as if/else-if pairs
+23:30	v03	DIFFER(1314v1730)	difflines=723	initial/target float colours declared before the elapsed update
+23:30	v01	DIFFER(1132v1730)	difflines=674	pow(ColourTime,2) as ColourTime*ColourTime
+23:30	v06	DIFFER(1282v1730)	difflines=590	colour difference computed once into a local
+23:30	v05	DIFFER(1319v1730)	difflines=738	independent branch first
+23:30	h01	DIFFER(1323v1730)	difflines=724	CRGBFloatColour(CRGBColour) assigns R,G,B,A directly (overlay ctx/52f_a)
+23:30	h02	DIFFER(1323v1730)	difflines=724	CRGBFloatColour(CRGBColour) with an initialiser list (overlay ctx/52f_b)
+23:30	h03	DIFFER(1323v1730)	difflines=724	CRGBFloatColour(CRGBColour) dividing by 255.0f (overlay ctx/52f_c)
+23:30	h04	DIFFER(1323v1730)	difflines=724	GetRGBColour as one return expression (overlay ctx/52f_d)

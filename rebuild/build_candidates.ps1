@@ -376390,6 +376390,28 @@ $catalog = @(
         TestSource = '01/22/global_E2_0122a010_test.cpp'
         PassPattern = '0122a010_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0099dcb0'
+        Module = '_global'
+        Source = '00/99/global_DisplayErrorDialog_0099dcb0.cpp'
+        TestSource = '00/99/global_DisplayErrorDialog_0099dcb0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0099dcb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c0f440'
+        Module = 'CVtable_012b2308'
+        Source = '00/c0/CVtable012b2308_GetFirst00c0f440_00c0f440.cpp'
+        TestSource = '00/c0/CVtable012b2308_GetFirst00c0f440_00c0f440_test.cpp'
+        PassPattern = '00c0f440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00631c60'
+        Module = 'NUISystem::CUIDef'
+        Source = '00/63/NUISystemCUIDef_Transfer_00631c60.cpp'
+        TestSource = '00/63/NUISystemCUIDef_Transfer_00631c60_test.cpp'
+        PassPattern = '00631c60_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

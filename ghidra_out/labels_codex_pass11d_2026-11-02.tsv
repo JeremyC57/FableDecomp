@@ -1,0 +1,4 @@
+address	name	evidence
+0099dcb0	DisplayErrorDialog	Codex pass 11 retry b: Ego_r 0x00AEB890 + FableWin 0x02F6C0A0 (_DisplayErrorDialog@8); extent 1455
+00c0f440	CVtable_012b2308::GetFirst_00c0f440	Codex pass 11 retry b: libpk, no PDB/RTTI; slot 11 of vtable 0x012B2308 (descriptive)
+00631c60	NUISystem::CUIDef::Transfer	Codex pass 11 retry b: vtable 0x01259F8C slot 18, RTTI .?AVCUIDef@NUISystem@@, Ego_r 0x006758F0

@@ -1,0 +1,15 @@
+22:51	c00	DIFFER(1520v1522)	difflines=77	codex selected source in codex's own header context (baseline regrade)
+23:21	b00	DIFFER(1520v1522)	difflines=77	codex body on the consolidated STLport model, no FABLE_RETAIL_TRAJECTORY
+23:21	v12	DIFFER(1536v1522)	difflines=206	cotangent written as GFCos/GFSin of the shifted angle instead of 1.0/GFTan
+23:21	v02	DIFFER(1520v1522)	difflines=77	converging pairs from std::make_pair
+23:21	v01	DIFFER(1520v1522)	difflines=77	converging pairs built with the pair(a,b) constructor
+23:21	v13	DIFFER(1520v1522)	difflines=77	cotangent constant as 1.0f (float)
+23:21	v05	DIFFER(1522v1522)	difflines=164	GetValue with named float locals for the two quotient terms
+23:21	v07	DIFFER(1520v1522)	difflines=77	val_b declared and evaluated in one statement after the pair of the left sample (val_a pair first)
+23:21	v04	DIFFER(1520v1522)	difflines=77	GetValue sums the tangent term first
+23:21	v03	DIFFER(1520v1522)	difflines=77	bracket read through the iterator (it->first / it->second), no pair reference
+23:21	v11	DIFFER(1520v1522)	difflines=77	r_start/r_end declared on separate lines from the pair reference
+23:21	v10	DIFFER(1522v1522)	difflines=28	GetValue members cached in locals (const float tx=Tx ...)
+23:21	v09	DIFFER(1520v1522)	difflines=77	refinement while written as for(;;) with the bracket test and break
+23:21	v08	DIFFER(1520v1522)	difflines=77	accuracy as a function-scope const before the first loop
+23:30	f01	DIFFER(1520v1522)	difflines=77	parked shape regraded on the landed repo headers (+retry11b overlay)
