@@ -1,0 +1,7 @@
+probe	lever	grade
+1	implicit dtor over local CModeStandBase model (real members) + CAnimFilterOfGroup / pack(1) CIntelligentPointer; retail ctor CModeScreamerAggressive(CThing&) defined to emit vtable/??_G/??1 (probe/00741390_p1.cpp)	RELOCATION_MATCH 42v42
+2	same with engine/CModeStandBase.h retail opt-in (hdr/ overlay) instead of the local base (probe/00741390_p2.cpp)	RELOCATION_MATCH 42v42
+3	final src (shared CMode model: CTCBase retail opt-in, CTCCreatureModeManager::CModeBase, overlay header)	RELOCATION_MATCH 42v42 (vland RELOCATION_MATCH + PASS)
+check	overlay proof: no overlay = SRC_FAIL (C2664, flattened struct has no ctor); a 4-byte member inserted before PoseAnimName in an overlay copy = DIFFER(45v42), all member offsets +4	-
+check	emitted ??_GCModeScreamerAggressive@NCreatureMode@@UAEPAXI@Z graded against retail 0x00741370	RELOCATION_MATCH
+4	the inherited #pragma pack(push, 1) around CBaseIntelligentPointer stripped (brief: strip it when the bytes hold; every member here is 4-aligned)	same grade (RELOCATION_MATCH), vland RELOCATION_MATCH + PASS

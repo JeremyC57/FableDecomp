@@ -375429,6 +375429,76 @@ $catalog = @(
         TestSource = '00/c7/CVtable012bf0c8_ReleaseBlock_00c77470_test.cpp'
         PassPattern = '00c77470_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006f1770'
+        Module = 'CCombatSequenceGeneric'
+        Source = '00/6f/CCombatSequenceGeneric_CCombatSequenceGeneric_006f1770.cpp'
+        TestSource = '00/6f/CCombatSequenceGeneric_CCombatSequenceGeneric_006f1770_test.cpp'
+        PassPattern = '006f1770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073b0d0'
+        Module = 'CTCCreatureModeManager'
+        Source = '00/73/CTCCreatureModeManager_ResetModes_0073b0d0.cpp'
+        TestSource = '00/73/CTCCreatureModeManager_ResetModes_0073b0d0_test.cpp'
+        PassPattern = '0073b0d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00740420'
+        Module = 'NCreatureMode::CModeJackOfBladesFloat'
+        Source = '00/74/NCreatureModeCModeJackOfBladesFloat_CModeJackOfBladesFloat_00740420.cpp'
+        TestSource = '00/74/NCreatureModeCModeJackOfBladesFloat_CModeJackOfBladesFloat_00740420_test.cpp'
+        PassPattern = '00740420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00741390'
+        Module = 'NCreatureMode::CModeScreamerAggressive'
+        Source = '00/74/NCreatureModeCModeScreamerAggressive_CModeScreamerAggressive_00741390.cpp'
+        TestSource = '00/74/NCreatureModeCModeScreamerAggressive_CModeScreamerAggressive_00741390_test.cpp'
+        PassPattern = '00741390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00749a70'
+        Module = 'CTCNoise'
+        Source = '00/74/CTCNoise_CTCNoise_00749a70.cpp'
+        TestSource = '00/74/CTCNoise_CTCNoise_00749a70_test.cpp'
+        PassPattern = '00749a70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e0b20'
+        Module = 'CTCHeroSpecialMovement'
+        Source = '00/7e/CTCHeroSpecialMovement_CTCHeroSpecialMovement_007e0b20.cpp'
+        TestSource = '00/7e/CTCHeroSpecialMovement_CTCHeroSpecialMovement_007e0b20_test.cpp'
+        PassPattern = '007e0b20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ac4d0'
+        Module = 'NCreatureMode::CModeScreamerSuperAttack'
+        Source = '00/8a/NCreatureModeCModeScreamerSuperAttack_CModeScreamerSuperAttack_008ac4d0.cpp'
+        TestSource = '00/8a/NCreatureModeCModeScreamerSuperAttack_CModeScreamerSuperAttack_008ac4d0_test.cpp'
+        PassPattern = '008ac4d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008e31a0'
+        Module = 'NCreatureMode::CModeDragonHover'
+        Source = '00/8e/NCreatureModeCModeDragonHover_CModeDragonHover_008e31a0.cpp'
+        TestSource = '00/8e/NCreatureModeCModeDragonHover_CModeDragonHover_008e31a0_test.cpp'
+        PassPattern = '008e31a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c0e5c0'
+        Module = 'CVtable_012b25a8'
+        Source = '00/c0/CVtable012b25a8_Unlock_00c0e5c0.cpp'
+        TestSource = '00/c0/CVtable012b25a8_Unlock_00c0e5c0_test.cpp'
+        PassPattern = '00c0e5c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c0e5e0'
+        Module = 'CVtable_012b25a8'
+        Source = '00/c0/CVtable012b25a8_Lock_00c0e5e0.cpp'
+        TestSource = '00/c0/CVtable012b25a8_Lock_00c0e5e0_test.cpp'
+        PassPattern = '00c0e5e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

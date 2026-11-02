@@ -35327,3 +35327,7 @@ _z_inflateEnd	00c038d0	00a3acc0
 ?clear@?$_List_base@VCMaintainedEvent@@V?$allocator@VCMaintainedEvent@@@std@@@std@@QAEXXZ	009e4710	00a66990
 ??_7CAnimComponentCombatFlourishTargetOffset@@6B@	01255760	005df790
 ?UpdateInterpolation@CTCPhysicsBase@@MAEXXZ	006af780	00759970
+??1CCombatSequenceBase@@UAE@XZ	008b0a60	006f1770
+?SetupDefaultMode@CTCCreatureModeManager@@AAEXXZ	0073af60	0073b0d0
+?SetupInitialMode@CTCCreatureModeManager@@AAEXXZ	0073afc0	0073b0d0
+?clear@?$_List_base@V?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@V?$allocator@V?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@std@@@std@@QAEXXZ	0073e6a0	0073b0d0

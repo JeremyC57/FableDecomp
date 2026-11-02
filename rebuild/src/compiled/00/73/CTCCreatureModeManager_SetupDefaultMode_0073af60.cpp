@@ -73,7 +73,8 @@ class CTCCreatureModeManager { public:
     CThing* ParentThing;                    // +0x04
     bool ToBeRemoved;                       // +0x08
     bool IsInGlobalUpdateTCs;               // +0x09
-    void SetupDefaultMode();
+private:
+    void SetupDefaultMode();                // private (AAE): Ego_r + FableWin; respelled at the chunk 710 landing
 public:
     bool AddMode(unsigned long);   // 0x0073AE10
 };

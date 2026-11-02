@@ -1,0 +1,35 @@
+addr       parity           behav  name
+006f1770   RELOCATION_MATCH PASS   ~CCombatSequenceGeneric
+0073b0d0   RELOCATION_MATCH PASS   ResetModes
+00740420   RELOCATION_MATCH PASS   ~CModeJackOfBladesFloat
+00741390   RELOCATION_MATCH PASS   ~CModeScreamerAggressive
+00749a70   RELOCATION_MATCH PASS   ~CTCNoise
+007e0b20   RELOCATION_MATCH PASS   ~CTCHeroSpecialMovement
+008ac4d0   RELOCATION_MATCH PASS   ~CModeScreamerSuperAttack
+008e31a0   RELOCATION_MATCH PASS   ~CModeDragonHover
+00c0e5c0   MATCH            PASS   Unlock
+00c0e5e0   MATCH            PASS   Lock
+
+WINS: 10
+  006f1770 RELOCATION_MATCH CCombatSequenceGeneric::??1CCombatSequenceGeneric@@UAE@XZ
+  0073b0d0 RELOCATION_MATCH CTCCreatureModeManager::?ResetModes@CTCCreatureModeManager@@QAEXXZ
+  00740420 RELOCATION_MATCH NCreatureMode::CModeJackOfBladesFloat::??1CModeJackOfBladesFloat@NCreatureMode@@UAE@XZ
+  00741390 RELOCATION_MATCH NCreatureMode::CModeScreamerAggressive::??1CModeScreamerAggressive@NCreatureMode@@UAE@XZ
+  00749a70 RELOCATION_MATCH CTCNoise::??1CTCNoise@@UAE@XZ
+  007e0b20 RELOCATION_MATCH CTCHeroSpecialMovement::??1CTCHeroSpecialMovement@@UAE@XZ
+  008ac4d0 RELOCATION_MATCH NCreatureMode::CModeScreamerSuperAttack::??1CModeScreamerSuperAttack@NCreatureMode@@UAE@XZ
+  008e31a0 RELOCATION_MATCH NCreatureMode::CModeDragonHover::??1CModeDragonHover@NCreatureMode@@UAE@XZ
+  00c0e5c0 MATCH CVtable_012b25a8::?Unlock@CVtable_012b25a8@@QAEXXZ
+  00c0e5e0 MATCH CVtable_012b25a8::?Lock@CVtable_012b25a8@@QAEXXZ
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  CCombatSequenceGeneric_CCombatSequenceGeneric_006f1770
+  CTCCreatureModeManager_ResetModes_0073b0d0
+  NCreatureModeCModeJackOfBladesFloat_CModeJackOfBladesFloat_00740420
+  NCreatureModeCModeScreamerAggressive_CModeScreamerAggressive_00741390
+  CTCNoise_CTCNoise_00749a70
+  CTCHeroSpecialMovement_CTCHeroSpecialMovement_007e0b20
+  NCreatureModeCModeScreamerSuperAttack_CModeScreamerSuperAttack_008ac4d0
+  NCreatureModeCModeDragonHover_CModeDragonHover_008e31a0
+  CVtable012b25a8_Unlock_00c0e5c0
+  CVtable012b25a8_Lock_00c0e5e0

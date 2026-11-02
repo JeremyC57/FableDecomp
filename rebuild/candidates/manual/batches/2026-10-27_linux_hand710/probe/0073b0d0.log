@@ -1,0 +1,4 @@
+probe	lever	grade
+1	RemoveAllModes as a plain member defined above ResetModes in the same file (VC7.1 inlines it, keeps its COMDAT); real STLport 4.6 list (empty / front / clear -> out-of-line _List_base::clear); private SetupDefaultMode / SetupInitialMode (probe/0073b0d0_p1.cpp)	RELOCATION_MATCH 56v56
+2	final src = probe 1 + evidence comments	RELOCATION_MATCH 56v56 (vland RELOCATION_MATCH + PASS)
+check	emitted ?RemoveAllModes@CTCCreatureModeManager@@QAEXXZ graded against retail 0x0073AE70 (catalog "ClearModes")	RELOCATION_MATCH

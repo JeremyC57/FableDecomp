@@ -1,0 +1,4 @@
+probe	lever	grade
+1	final src: engine/CCombatSequenceGeneric.h retail opt-in (hdr/ overlay) over a local CCombatSequenceBase (Ego_r members at retail offsets, STLport vector opaque); CDefPointer<const CCombatSequenceDef> Def +0x28; retail ctor defined	RELOCATION_MATCH 35v35 (vland RELOCATION_MATCH + PASS)
+check	overlay proof: no overlay = SRC_FAIL (C2146); a 4-byte member inserted before Def in an overlay copy = DIFFER(35v35) with +0x2C for +0x28	-
+check	emitted ??_GCCombatSequenceGeneric@@UAEPAXI@Z graded against retail 0x006F1750	RELOCATION_MATCH

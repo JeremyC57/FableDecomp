@@ -1,0 +1,4 @@
+probe	lever	grade
+1	final src: twin of 0x00741390's model with Ego_r members PEmitter / PEmitter2; retail ctor CModeJackOfBladesFloat(CThing&) defined	RELOCATION_MATCH 42v42 (vland RELOCATION_MATCH + PASS)
+check	emitted ??_GCModeJackOfBladesFloat@NCreatureMode@@UAEPAXI@Z graded against retail 0x00740400	RELOCATION_MATCH
+2	the inherited #pragma pack(push, 1) around CBaseIntelligentPointer stripped (brief: strip it when the bytes hold; every member here is 4-aligned)	same grade (RELOCATION_MATCH), vland RELOCATION_MATCH + PASS

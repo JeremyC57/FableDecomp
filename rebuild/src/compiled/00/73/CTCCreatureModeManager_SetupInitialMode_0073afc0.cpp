@@ -134,7 +134,8 @@ class CTCCreatureModeManager : public CTCBase { public:
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
     bool AddMode(unsigned long mode);           // 0x0073AE10
     CModeBase* FrontMode() const { return PModes->m_pNext->m_pMode; }
-    void SetupInitialMode();
+private:
+    void SetupInitialMode();                    // private (AAE): Ego_r + FableWin; respelled at the chunk 710 landing
 };
 
 void CTCCreatureModeManager::SetupInitialMode()

@@ -1,0 +1,3 @@
+probe	lever	grade
+1	plain virtual calls on the two embedded member containers (m_50.Unlock(); m_60.Unlock();) -- checks whether VC7.1 devirtualises member-object calls (it does not) (probe/00c0e5c0_p1.cpp)	MATCH 22v22
+2	final src: the same body over the fuller libpk model (root CVtable_012b1ab0, containers CVtable_012b2350 / CVtable_012b23a0, bank CVtable_012b25a8 with constructor offsets)	MATCH 22v22 (vland MATCH + PASS)

@@ -1,0 +1,4 @@
+probe	lever	grade
+1	final src: CModeDragonHover (Filter, PTarget, UseHeadTurning) + derived CModeDragonFireBeam (Timer, PBeamWeaponEffect, LastExplodeFrame, BeamActive); FireBeam ctor(CThing&) defined, so FireBeam's ??_G expands ~FireBeam and calls this base ??1 out of line	RELOCATION_MATCH 34v34 (vland RELOCATION_MATCH + PASS)
+check	emitted ??_GCModeDragonFireBeam@NCreatureMode@@UAEPAXI@Z graded against retail 0x008E3860 (43 bytes)	RELOCATION_MATCH
+2	the inherited #pragma pack(push, 1) around CBaseIntelligentPointer stripped (brief: strip it when the bytes hold; every member here is 4-aligned)	same grade (RELOCATION_MATCH), vland RELOCATION_MATCH + PASS

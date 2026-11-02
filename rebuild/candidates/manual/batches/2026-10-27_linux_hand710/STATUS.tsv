@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00c0e5c0	MATCH	22v22	PASS	CVtable_012b25a8::Unlock (libpk, descriptive); 2 probes; label CMapsAndRegionsDialog::OpenMapDialog wrong
+00c0e5e0	MATCH	22v22	PASS	CVtable_012b25a8::Lock (libpk, descriptive); 1 probe; label CMapsAndRegionsDialog::OpenMapDialog wrong
+0073b0d0	RELOCATION_MATCH	56v56	PASS	CTCCreatureModeManager::ResetModes (RemoveAllModes inlined); 2 probes; label SetTooltipAsOpen wrong
+006f1770	RELOCATION_MATCH	35v35	PASS	CCombatSequenceGeneric::~CCombatSequenceGeneric implicit (vtable 0x01261D74); 1 probe; overlay CCombatSequenceGeneric.h
+007e0b20	RELOCATION_MATCH	35v35	PASS	CTCHeroSpecialMovement::~CTCHeroSpecialMovement implicit (vtable 0x0126FE3C); 1 probe
+00740420	RELOCATION_MATCH	42v42	PASS	NCreatureMode::CModeJackOfBladesFloat::~ implicit (vtable 0x01267D10); 2 probes; overlay CModeStandBase.h
+00741390	RELOCATION_MATCH	42v42	PASS	NCreatureMode::CModeScreamerAggressive::~ implicit (vtable 0x012681EC); 4 probes; overlay CModeStandBase.h
+008ac4d0	RELOCATION_MATCH	42v42	PASS	NCreatureMode::CModeScreamerSuperAttack::~ implicit (vtable 0x01278338); 2 probes; overlay CModeStandBase.h
+00749a70	RELOCATION_MATCH	33v33	PASS	CTCNoise::~CTCNoise implicit (vtable 0x01268A74; embedded CTCNoiseDef); 3 probes
+008e31a0	RELOCATION_MATCH	34v34	PASS	NCreatureMode::CModeDragonHover::~ implicit (base of CModeDragonFireBeam, ??_G 0x008E3860); 2 probes; overlay CModeStandBase.h
