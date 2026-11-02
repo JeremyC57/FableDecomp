@@ -26121,3 +26121,13 @@ chunk	address	module	name	length
 710	008ac4d0	_Dest_val<std	allocator<CMacro>,CMacro>	42
 710	00749a70	CThingNoiseDef	~CThingNoiseDef	33
 710	008e31a0	CThingNoiseDef	~CThingNoiseDef	34
+711	00778d20	CTCInventoryItem	OnDie	27
+711	007e3420	CTCFlashOnHit	~CTCFlashOnHit	42
+711	0086d090	_global	_Fill_n<unsigned_long*,unsigned_int,unsigned_long>	48
+711	0086d570	_global	_Fill_n<unsigned_long*,unsigned_int,unsigned_long>	48
+711	00b671a0	_global	UpdateLighting	58
+711	00e827a0	_global	CScriptBase_InitialiseVariables_Check	96
+711	009c4420	_global	CFileInstaller_ThreadEntry	24
+711	0122a940	_global	DynamicInit_013caa54_58	20
+711	0090aa10	LSocketServer	CloseSocket	41
+711	0099f3d0	CCharString	Insert	42
