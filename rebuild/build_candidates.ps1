@@ -179559,9 +179559,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00569940'
-        Module = 'std::vector<std::string>'
-        Source = '00/56/stdvectorstdstring_vector_00569940.cpp'
-        TestSource = '00/56/stdvectorstdstring_vector_00569940_test.cpp'
+        Module = 'std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >'
+        Source = '00/56/stdvectorstdbasicstringcharstdchartraitscharstdallocatorcharstdallocatorstdbasic_vector_00569940.cpp'
+        TestSource = '00/56/stdvectorstdbasicstringcharstdchartraitscharstdallocatorcharstdallocatorstdbasic_vector_00569940_test.cpp'
         PassPattern = '00569940_TEST PASS'
     }
     [pscustomobject]@{
@@ -211012,9 +211012,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00569c30'
-        Module = 'CBlockVectorOwner_00569c30'
-        Source = '00/56/CBlockVectorOwner00569c30_CBlockVectorOwner00569c30_00569c30.cpp'
-        TestSource = '00/56/CBlockVectorOwner00569c30_CBlockVectorOwner00569c30_00569c30_test.cpp'
+        Module = 'LHNetworkLib::LHHttpHeaders'
+        Source = '00/56/LHNetworkLibLHHttpHeaders_LHHttpHeaders_00569c30.cpp'
+        TestSource = '00/56/LHNetworkLibLHHttpHeaders_LHHttpHeaders_00569c30_test.cpp'
         PassPattern = '00569c30_TEST PASS'
     }
     [pscustomobject]@{
