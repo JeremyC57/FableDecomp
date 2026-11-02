@@ -1,4 +1,5 @@
 // CShaderConstantRange::CShaderConstantRange() -- construct an empty shader-constant range (offset 0, count 0)
+// Leaf: ??0CShaderConstantRange@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00987D50, length 26 bytes (+ int3 padding).
 // Callees: CBaseClass::CBaseClass @ 0x0099A2D0 (root of the engine's polymorphic classes, vtable 0x01231710).
 // Label correction: the manifest calls this "CTargetPoint::CTargetPoint" (propagated over the byte-identical

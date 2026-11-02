@@ -1,4 +1,5 @@
 #pragma optimize("s", on)
+// Leaf: ??0CHitLocationDef@@QAE@XZ
 // CHitLocationDef::CHitLocationDef() -- CParentDefClassBase(), this vtable, then the embedded
 // CPhysicalPrimitiveInit member zeroed by its inline constructor.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004585E0, length 26 bytes.

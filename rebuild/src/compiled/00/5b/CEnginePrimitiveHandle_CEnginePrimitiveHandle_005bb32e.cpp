@@ -1,4 +1,5 @@
 #pragma optimize("s", on)
+// Leaf: ??0CEnginePrimitiveHandle@@QAE@J@Z
 // CEnginePrimitiveHandle::CEnginePrimitiveHandle(long) -- CBaseClass base (@ 0x0099A2D0), own vtable (0x0122F598), null counted Data pointer; the argument is unused (ret 4)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BB32E, length 24 bytes.
 // Callees: CBaseClass::CBaseClass @ 0x0099A2D0 (stores vtable 0x01231710).

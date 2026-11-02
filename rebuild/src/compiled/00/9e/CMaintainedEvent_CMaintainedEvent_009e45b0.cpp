@@ -1,4 +1,5 @@
 // CMaintainedEvent::CMaintainedEvent() -- base CBase(), own vtable, the 0x2c-byte event record at +4 cleared by its out-of-line constructor
+// Leaf: ??0CMaintainedEvent@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E45B0, length 26 bytes.
 // Callees: CBaseClass::CBaseClass @ 0x0099A2D0, the member constructor @ 0x00A04410 (zeroes eleven dwords
 // +0x00..+0x28 of the record; its manifest label "CDefaultEngineMemoryInit" is a propagated

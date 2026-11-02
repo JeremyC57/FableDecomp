@@ -1,4 +1,5 @@
 // CVolumeTexture::CVolumeTexture() -- construct an empty volume texture (no D3D texture, no data block)
+// Leaf: ??0CVolumeTexture@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A695C0, length 26 bytes.
 // Callees: CBaseClass::CBaseClass @ 0x0099A2D0 (root of the engine's polymorphic classes, vtable 0x01231710).
 // Label correction: the manifest calls this "CTargetPoint::CTargetPoint" (propagated); the vtable it stores,
