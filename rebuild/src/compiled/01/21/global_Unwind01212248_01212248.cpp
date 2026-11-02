@@ -5,4 +5,4 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x01212248, oracle length 8 bytes.
 // Grade: landed -- byte-exact (the parent's object, funclet block offset 0x8) and the parent's
 //        behaviour test PASS under the Linux lane (Wine + DDK 13.10.4035 cl.exe).
-#include "../src/compiled/00/c1/unattributed_DispatchMessageCMailboxQueue00c1b030_00c1b030.cpp"
+#include "../src/compiled/00/c1/PKCMailbox_Receive_00c1b030.cpp"

@@ -5,4 +5,4 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x01216810, oracle length 8 bytes.
 // Grade: landed -- byte-exact (the parent's object, funclet block offset 0x0) and the parent's
 //        behaviour test PASS under the Linux lane (Wine + DDK 13.10.4035 cl.exe).
-#include "../src/compiled/00/c7/WaypointData_WaypointDatactor_00c75980.cpp"
+#include "../src/compiled/00/c7/CReverbDiffuser_CReverbDiffuser_00c75980.cpp"

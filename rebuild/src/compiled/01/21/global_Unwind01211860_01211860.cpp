@@ -5,4 +5,4 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x01211860, oracle length 8 bytes.
 // Grade: landed -- byte-exact (the parent's object, funclet block offset 0x0) and the parent's
 //        behaviour test PASS under the Linux lane (Wine + DDK 13.10.4035 cl.exe).
-#include "../src/compiled/00/c1/unattributed_CFrallocStaticGetSlot00c13700_00c13700.cpp"
+#include "../src/compiled/00/c1/PKCFrallocStatic_Get_00c13700.cpp"
