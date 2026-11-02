@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00778d20	RELOCATION_MATCH	27v27	PASS	CTCFamilyMember::~CTCFamilyMember (implicit; vtable 0x0126AADC ??_G caller; Ego_r member FamilyMembers); 2 probes; catalog CTCInventoryItem::OnDie wrong
+007e3420	RELOCATION_MATCH	42v42	PASS	CTCFlashOnHit::~CTCFlashOnHit (vtable 0x0123E034; both PDBs); 2 probes
+0086d090	RELOCATION_MATCH	48v48	PASS	std::__uninitialized_fill_n<CTextureMorphMap*,...> __false_type body, /Gr, ret 8 (caller _M_insert_overflow 0x0086E1C0); 1 probe
+0086d570	RELOCATION_MATCH	48v48	PASS	std::uninitialized_fill_n<CTextureMorphMap*,...> 3-arg front end, /Gr, ret 4 (caller _M_fill_insert 0x0086E4B0); 2 probes
+00b671a0	RELOCATION_MATCH	58v58	PASS	CEngineLandscapeRenderer::SetupBackgroundStates (Ego_r order + FableWin inline setter, out-of-line twin 0x00B66EB0); 30 probes + x29; global 0x01436E9C name unproven
+00e827a0	RELOCATION_MATCH	96v96	PASS	NScript::CV_FisticuffsClubScript::SetCompletedThisClub (FableWin; jump table verified); 3 probes
+009c4420	RELOCATION_MATCH	24v24	PASS	CFileInstaller::BeginDecompressionThread (Ego_r; _beginthread start routine); 1 probe
+0122a940	RELOCATION_MATCH	20v20	PASS	_$E2 = dynamic atexit destructor for 'desc' of CCodeSectionManager::GetSectionDesc (both PDBs); 1 probe
+0090aa10	RELOCATION_MATCH	41v41	PASS	LHNetworkLib::LSocketServer::CloseSocket (Ego_r; caller LSocket::Close); 1 probe
+0099f3d0	RELOCATION_MATCH	42v42	PASS	CCharString::Insert(long,char) (both PDBs; block-scope buffer); 3 probes

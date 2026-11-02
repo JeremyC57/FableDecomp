@@ -1,0 +1,1 @@
+p1	static cdecl BeginDecompressionThread: SetThreadPriority(GetCurrentThread(), THREAD_PRIORITY_NORMAL); DecompressionThreadMain() on the cast argument	RELOCATION_MATCH (kept)

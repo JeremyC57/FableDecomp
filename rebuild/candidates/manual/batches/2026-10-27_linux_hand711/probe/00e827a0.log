@@ -1,0 +1,3 @@
+p1	engine/CLevelScriptBase.h retail branch; members as opaque unsigned char arrays	SRC_FAIL sizeof assert (char arrays let later members misalign)
+t	offset check build: opaque members as unsigned long X_[n], offsetof asserts	RELOCATION_MATCH
+p2	full model (all Ego_r members, sizeof 0xC8) and switch 1/4/2/3 with default return; jump table entries checked by objdump -r [+0x96,+0x98,+0x97,+0x95]	RELOCATION_MATCH (kept)

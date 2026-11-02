@@ -1,0 +1,3 @@
+p1	char text[2] at function scope: text[0] = c, text[1] = 0, then Insert	DIFFER(44v42) buffer not homed in the argument slot
+p2	char text[2] = { c, 0 } initialiser form	DIFFER(44v42)
+p3	buffer in a block scope after MakeOwnCopyOfDataOrEmptyString: homed in the dead argument slot of c	RELOCATION_MATCH (kept)

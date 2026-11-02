@@ -375499,6 +375499,78 @@ $catalog = @(
         TestSource = '00/c0/CVtable012b25a8_Lock_00c0e5e0_test.cpp'
         PassPattern = '00c0e5e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00778d20'
+        Module = 'CTCFamilyMember'
+        Source = '00/77/CTCFamilyMember_CTCFamilyMember_00778d20.cpp'
+        TestSource = '00/77/CTCFamilyMember_CTCFamilyMember_00778d20_test.cpp'
+        PassPattern = '00778d20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e3420'
+        Module = 'CTCFlashOnHit'
+        Source = '00/7e/CTCFlashOnHit_CTCFlashOnHit_007e3420.cpp'
+        TestSource = '00/7e/CTCFlashOnHit_CTCFlashOnHit_007e3420_test.cpp'
+        PassPattern = '007e3420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086d090'
+        Module = 'std'
+        Source = '00/86/std_uninitializedfilln_0086d090.cpp'
+        TestSource = '00/86/std_uninitializedfilln_0086d090_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '0086d090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0086d570'
+        Module = 'std'
+        Source = '00/86/std_uninitializedfilln_0086d570.cpp'
+        TestSource = '00/86/std_uninitializedfilln_0086d570_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '0086d570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0090aa10'
+        Module = 'LHNetworkLib::LSocketServer'
+        Source = '00/90/LHNetworkLibLSocketServer_CloseSocket_0090aa10.cpp'
+        TestSource = '00/90/LHNetworkLibLSocketServer_CloseSocket_0090aa10_test.cpp'
+        PassPattern = '0090aa10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099f3d0'
+        Module = 'CCharString'
+        Source = '00/99/CCharString_Insert_0099f3d0.cpp'
+        TestSource = '00/99/CCharString_Insert_0099f3d0_test.cpp'
+        PassPattern = '0099f3d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c4420'
+        Module = 'CFileInstaller'
+        Source = '00/9c/CFileInstaller_BeginDecompressionThread_009c4420.cpp'
+        TestSource = '00/9c/CFileInstaller_BeginDecompressionThread_009c4420_test.cpp'
+        PassPattern = '009c4420_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b671a0'
+        Module = 'CEngineLandscapeRenderer'
+        Source = '00/b6/CEngineLandscapeRenderer_SetupBackgroundStates_00b671a0.cpp'
+        TestSource = '00/b6/CEngineLandscapeRenderer_SetupBackgroundStates_00b671a0_test.cpp'
+        PassPattern = '00b671a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e827a0'
+        Module = 'NScript::CV_FisticuffsClubScript'
+        Source = '00/e8/NScriptCVFisticuffsClubScript_SetCompletedThisClub_00e827a0.cpp'
+        TestSource = '00/e8/NScriptCVFisticuffsClubScript_SetCompletedThisClub_00e827a0_test.cpp'
+        PassPattern = '00e827a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a940'
+        Module = '_global'
+        Source = '01/22/global_E2_0122a940.cpp'
+        TestSource = '01/22/global_E2_0122a940_test.cpp'
+        PassPattern = '0122a940_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

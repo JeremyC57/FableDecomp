@@ -13818,7 +13818,7 @@ __TI1?AUCCreateDeviceFailed@@	013692f8	009c0e50
 ?RenderSortedPatches@CEngineLandscapeRenderer@@QAEXXZ	00b68da0	00b6b0b0
 ?SetupCommonStates@CEngineLandscapeRenderer@@QAEXXZ	00b67480	00b6b0b0
 ?SetupForegroundStates@CEngineLandscapeRenderer@@QAEXXZ	00b677d0	00b6b0b0
-?UpdateLighting@CEngineLandscapeRenderer@@QAEXXZ	00b671a0	00b6b0b0
+?SetupBackgroundStates@CEngineLandscapeRenderer@@AAEXXZ	00b671a0	00b6b0b0
 ?CalculateMatrix@C3DBoundingBox@@QBEXAAVCMatrix3x4@@@Z	00adebc0	00b9d980
 ?GetFadeInRange@CZSprite@@QBE?AUCFadeInRange@@XZ	00baa460	00baa4e0
 ??0CPersistTraits_ParticleSet@@QAE@XZ	004e9627	004e9550
@@ -35331,3 +35331,8 @@ _z_inflateEnd	00c038d0	00a3acc0
 ?SetupDefaultMode@CTCCreatureModeManager@@AAEXXZ	0073af60	0073b0d0
 ?SetupInitialMode@CTCCreatureModeManager@@AAEXXZ	0073afc0	0073b0d0
 ?clear@?$_List_base@V?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@V?$allocator@V?$CCountedPointer@VCModeBase@CTCCreatureModeManager@@@@@std@@@std@@QAEXXZ	0073e6a0	0073b0d0
+?remove@?$list@PAVLSocket@LHNetworkLib@@V?$allocator@PAVLSocket@LHNetworkLib@@@std@@@std@@QAEXABQAVLSocket@LHNetworkLib@@@Z	0090b8e0	0090aa10
+?Insert@?$CBasicString@D@@QAEXKPAD@Z	009a06b0	0099f3d0
+?MakeOwnCopyOfDataOrEmptyString@CCharString@@IAEXXZ	0099eb40	0099f3d0
+?DecompressionThreadMain@CFileInstaller@@IAEXXZ	009c4230	009c4420
+?desc@?4??GetSectionDesc@CCodeSectionManager@@AAEAAUCSectionDesc@2@K@Z@4U32@A	013caa54	0122a940

@@ -1,0 +1,36 @@
+addr       parity           behav  name
+00778d20   RELOCATION_MATCH PASS   ~CTCFamilyMember
+007e3420   WARN RELOC_NAME: ?RemoveTintColour@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAX@Z -> 004bfae0 labelled 'NParticleEngine::CParticleSystem::Kill'
+007e3420   RELOCATION_MATCH PASS   ~CTCFlashOnHit
+0086d090   RELOCATION_MATCH PASS   __uninitialized_fill_n
+0086d570   RELOCATION_MATCH PASS   uninitialized_fill_n
+0090aa10   RELOCATION_MATCH PASS   CloseSocket
+0099f3d0   RELOCATION_MATCH PASS   Insert
+009c4420   RELOCATION_MATCH PASS   BeginDecompressionThread
+00b671a0   RELOCATION_MATCH PASS   SetupBackgroundStates
+00e827a0   RELOCATION_MATCH PASS   SetCompletedThisClub
+0122a940   RELOCATION_MATCH PASS   _$E2
+
+WINS: 10
+  00778d20 RELOCATION_MATCH CTCFamilyMember::??1CTCFamilyMember@@UAE@XZ
+  007e3420 RELOCATION_MATCH CTCFlashOnHit::??1CTCFlashOnHit@@UAE@XZ
+  0086d090 RELOCATION_MATCH std::??$__uninitialized_fill_n@PAV?$CVectorMap@KVCTextureMorph@CRandomAppearanceMorph@@
+  0086d570 RELOCATION_MATCH std::??$uninitialized_fill_n@PAV?$CVectorMap@KVCTextureMorph@CRandomAppearanceMorph@@
+  0090aa10 RELOCATION_MATCH LHNetworkLib::LSocketServer::?CloseSocket@LSocketServer@LHNetworkLib@@QAEXPAVLSocket@2@@Z
+  0099f3d0 RELOCATION_MATCH CCharString::?Insert@CCharString@@QAEXJD@Z
+  009c4420 RELOCATION_MATCH CFileInstaller::?BeginDecompressionThread@CFileInstaller@@KAXPAX@Z
+  00b671a0 RELOCATION_MATCH CEngineLandscapeRenderer::?SetupBackgroundStates@CEngineLandscapeRenderer@@AAEXXZ
+  00e827a0 RELOCATION_MATCH NScript::CV_FisticuffsClubScript::?SetCompletedThisClub@CV_FisticuffsClubScript@NScript@@QAEXXZ
+  0122a940 RELOCATION_MATCH _global::_$E2
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  CTCFamilyMember_CTCFamilyMember_00778d20
+  CTCFlashOnHit_CTCFlashOnHit_007e3420
+  std_uninitializedfilln_0086d090
+  std_uninitializedfilln_0086d570
+  LHNetworkLibLSocketServer_CloseSocket_0090aa10
+  CCharString_Insert_0099f3d0
+  CFileInstaller_BeginDecompressionThread_009c4420
+  CEngineLandscapeRenderer_SetupBackgroundStates_00b671a0
+  NScriptCVFisticuffsClubScript_SetCompletedThisClub_00e827a0
+  global_E2_0122a940

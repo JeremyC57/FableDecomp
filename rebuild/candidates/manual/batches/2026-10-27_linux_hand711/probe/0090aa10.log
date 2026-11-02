@@ -1,0 +1,1 @@
+p1	STLport 4.6 list (head-node proxy) + __find over input_iterator_tag; it = find(begin, end, socket); remove(*it)	RELOCATION_MATCH (kept)

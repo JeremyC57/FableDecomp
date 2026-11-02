@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00b6b0b0   WARN SHARED_HEADER_AVAILABLE CRenderStateManager
+00b6b0b0   WARN SHARED_HEADER_AVAILABLE CEngineWorldMap
+00b6b0b0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeRenderer
+00b6b0b0   RELOCATION_MATCH PASS   Render
+
+WINS: 1
+  00b6b0b0 RELOCATION_MATCH CEngineLandscapeRenderer::Render

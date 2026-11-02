@@ -1,0 +1,1 @@
+p1	TU = CCodeSectionManager::GetSectionDesc with `static CSectionDesc desc;` on the miss path; leaf _$E2 (the compiler's atexit thunk)	RELOCATION_MATCH (kept)

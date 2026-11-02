@@ -7,7 +7,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B6B0B0, 489 bytes (+int3), `ret 4`.
 // Callees: CShaderRenderManager::EnableVertexShaders 0x00987FE0 / DisableVertexShaders 0x009880E0 / EnablePixelShaders 0x00988110
 //   / DisablePixelShaders 0x00988190 / SetVertexShaderConstantLayout 0x0098B5E0 (global object 0x013BC470), CEngineLandscapeRenderer
-//   RenderSortedPatches 0x00B68DA0 / SetupCommonStates 0x00B67480 / SetupForegroundStates 0x00B677D0 / UpdateLighting 0x00B671A0
+//   RenderSortedPatches 0x00B68DA0 / SetupCommonStates 0x00B67480 / SetupForegroundStates 0x00B677D0 / SetupBackgroundStates 0x00B671A0
 //   (manifest has it as a `_global` unknown) / PostRenderClearRenderStates 0x00B67510, CEngineLandscapeMap::RenderForeground
 //   0x00BDC2D0 / RenderBackground 0x00BDC060, CRenderStateManager::RestoreCaptureBlock 0x00A05840; world map 0x01436E8C.
 // Layout: local model (see 0x00B68610): RenderForegroundEnabled +0x610, RenderBackgroundEnabled +0x611 (names descriptive);
@@ -129,7 +129,9 @@ class CEngineLandscapeRenderer { public:
     void RenderSortedPatches();                    // 0x00B68DA0
     void SetupCommonStates();                      // 0x00B67480
     void SetupForegroundStates();                  // 0x00B677D0
-    void UpdateLighting();                         // 0x00B671A0
+private:
+    void SetupBackgroundStates();                  // 0x00B671A0 ?SetupBackgroundStates@CEngineLandscapeRenderer@@AAEXXZ (Ego_r; respelled from the stand-in UpdateLighting at the chunk 711 landing)
+public:
     void PostRenderClearRenderStates();            // 0x00B67510
     void Render(const CEngineRenderParams& params);
 };
@@ -159,7 +161,7 @@ void CEngineLandscapeRenderer::Render(const CEngineRenderParams& params)
         SetupCommonStates();
         if (RenderBackgroundEnabled) {
             g_pRenderStateManager->CreateCaptureBlock();
-            UpdateLighting();
+            SetupBackgroundStates();
             for (_List_iterator it = maps.begin(); it != maps.end(); ++it)
                 (*it)->LandscapeMap->RenderBackground();
             g_pRenderStateManager->RestoreCaptureBlock();

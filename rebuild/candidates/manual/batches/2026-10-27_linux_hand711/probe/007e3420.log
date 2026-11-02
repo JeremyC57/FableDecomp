@@ -1,0 +1,2 @@
+p1	engine/CTCBase.h retail + CClass retail + full CThing opaque model; body via the PDB template IS_THING_ALIVE(ParentThing) + GetTCGraphicAppearance()	DIFFER(42v42) vtable store scheduled before the ParentThing load (retail loads+tests first)
+p2	plain `if (ParentThing && !ParentThing->IsDead())` (no reference taken to the member)	RELOCATION_MATCH (kept)

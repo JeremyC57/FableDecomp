@@ -1,0 +1,2 @@
+p1	engine/CTCBase.h retail branch + minimal STLport vector (_Vector_base dtor null-tested free), ctor defined to emit vtable/??_G/??1	RELOCATION_MATCH
+p2	real STLport 4.6 text (__malloc_alloc<0> as __sgi_alloc, 3-arg _STLP_alloc_proxy, protected _Vector_base, allocator ctor arg) + PDB virtual overrides (Copy/GetInterfaceType/GetClassTypeName)	RELOCATION_MATCH (kept)
