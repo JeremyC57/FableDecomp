@@ -1,0 +1,1 @@
+1	implicit ??1 (DestroyOne): STLport vector<CThingGameObject*>, CIntelligentPointer<const CThing> template over CBaseIntelligentPointer, CCharString	RELOCATION_MATCH

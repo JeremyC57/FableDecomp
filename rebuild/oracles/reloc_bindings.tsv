@@ -35323,3 +35323,4 @@ _z_inflateEnd	00c038d0	00a3acc0
 ??1CDspObject@@UAE@XZ	00c74450	00c775a0
 ?LoadWaterData@CEngineWorldMap@@AAEXXZ	00b41fa0	00b428e0
 ?OpenStaticMaps@CEngineWorldMap@@AAEXW4STATIC_MAP_OPEN_STATE@CEngineMap@@@Z	00b42750	00b428e0
+?clear@?$_List_base@V?$CCountedPointer@VCActiveSound@CSoundEmitterLH@@@@V?$allocator@V?$CCountedPointer@VCActiveSound@CSoundEmitterLH@@@@@std@@@std@@QAEXXZ	00aacc60	00aac4f0

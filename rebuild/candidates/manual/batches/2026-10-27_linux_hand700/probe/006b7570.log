@@ -1,0 +1,2 @@
+1	user `virtual ~CGameMap() {}` over STLport vector<CGameMapCell> + CBaseClassNonCopyable.h	RELOCATION_MATCH
+2	same with the Ego_r CGameMapCell members (7 bytes)	RELOCATION_MATCH

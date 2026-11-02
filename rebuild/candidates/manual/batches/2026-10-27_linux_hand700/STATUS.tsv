@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00671100	RELOCATION_MATCH	75v75	PASS	1 probe(s); CThingCreatureDef::~CThingCreatureDef (implicit; label wrong); extent verified
+006b7570	RELOCATION_MATCH	33v33	PASS	2 probe(s); CGameMap::~CGameMap (user, empty body; label wrong); extent verified
+007f5810	RELOCATION_MATCH	71v71	PASS	2 probe(s); CTCTargetingBase::SetPNearestInterestingThing (protected; label wrong); extent verified
+0085ad00	RELOCATION_MATCH	36v36	PASS	1 probe(s); CCombatActionBase::CStrikeEvent::~CStrikeEvent (implicit, non-virtual; label wrong); extent verified
+008abb50	RELOCATION_MATCH	71v71	PASS	2 probe(s); CTCTargetingBase::SetPScriptOverrideRangedTarget (label wrong); extent verified
+008d73e0	RELOCATION_MATCH	71v71	PASS	2 probe(s); NCreatureMode::CModeScorpionKingVulnerable::SetTarget(CThingCreatureBase&) (label wrong); extent verified
+009b5d50	RELOCATION_MATCH	27v27	PASS	1 probe(s); CDefinitionManager::CDefClassInfo::~CDefClassInfo (implicit; label wrong); extent verified (5 int3 then 0x009B5D70)
+00a9d330	RELOCATION_MATCH	33v33	PASS	1 probe(s); CMirroredTextureHighlightsChunk::~CMirroredTextureHighlightsChunk (user, empty body; label wrong); extent verified
+00aac4f0	RELOCATION_MATCH	49v49	PASS	2 probe(s); CSoundEmitterLH::~CSoundEmitterLH (user { Shutdown(); }; label wrong); extent verified
+00b18780	RELOCATION_MATCH	27v27	PASS	1 probe(s); NParticleEngine::CPSCAttractor::~CPSCAttractor (implicit; label wrong); extent verified (5 int3 then 0x00B187A0)

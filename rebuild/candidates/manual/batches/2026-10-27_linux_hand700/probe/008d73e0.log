@@ -1,0 +1,2 @@
+1	`PTarget = &target;` over a local CModeStandBase pad model	RELOCATION_MATCH
+2	engine/CModeStandBase.h as the base	RELOCATION_MATCH

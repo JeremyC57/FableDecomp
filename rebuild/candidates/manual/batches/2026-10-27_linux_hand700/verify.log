@@ -1,0 +1,37 @@
+addr       parity           behav  name
+00671100   RELOCATION_MATCH PASS   ~CThingCreatureDef
+006b7570   RELOCATION_MATCH PASS   ~CGameMap
+007f5810   RELOCATION_MATCH PASS   SetPNearestInterestingThing
+0085ad00   RELOCATION_MATCH PASS   ~CStrikeEvent
+008abb50   RELOCATION_MATCH PASS   SetPScriptOverrideRangedTarget
+008d73e0   RELOCATION_MATCH PASS   SetTarget
+009b5d50   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+009b5d50   RELOCATION_MATCH PASS   ~CDefClassInfo
+00a9d330   RELOCATION_MATCH PASS   ~CMirroredTextureHighlightsChunk
+00aac4f0   WARN RELOC_NAME: ?Shutdown@CSoundEmitterLH@@QAEXXZ -> 00aac2e0 labelled 'CSoundEmitterLH::vfunc_10'
+00aac4f0   RELOCATION_MATCH PASS   ~CSoundEmitterLH
+00b18780   RELOCATION_MATCH PASS   ~CPSCAttractor
+
+WINS: 10
+  00671100 RELOCATION_MATCH CThingCreatureDef::??1CThingCreatureDef@@UAE@XZ
+  006b7570 RELOCATION_MATCH CGameMap::??1CGameMap@@UAE@XZ
+  007f5810 RELOCATION_MATCH CTCTargetingBase::?SetPNearestInterestingThing@CTCTargetingBase@@IAEXPAVCThing@@@Z
+  0085ad00 RELOCATION_MATCH CCombatActionBase::CStrikeEvent::??1CStrikeEvent@CCombatActionBase@@QAE@XZ
+  008abb50 RELOCATION_MATCH CTCTargetingBase::?SetPScriptOverrideRangedTarget@CTCTargetingBase@@QAEXPAVCThing@@@Z
+  008d73e0 RELOCATION_MATCH NCreatureMode::CModeScorpionKingVulnerable::?SetTarget@CModeScorpionKingVulnerable@NCreatureMode@@QAEXAAVCThingCreatureBase@@@Z
+  009b5d50 RELOCATION_MATCH CDefinitionManager::CDefClassInfo::??1CDefClassInfo@CDefinitionManager@@QAE@XZ
+  00a9d330 RELOCATION_MATCH CMirroredTextureHighlightsChunk::??1CMirroredTextureHighlightsChunk@@UAE@XZ
+  00aac4f0 RELOCATION_MATCH CSoundEmitterLH::??1CSoundEmitterLH@@UAE@XZ
+  00b18780 RELOCATION_MATCH NParticleEngine::CPSCAttractor::??1CPSCAttractor@NParticleEngine@@UAE@XZ
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  CThingCreatureDef_CThingCreatureDef_00671100
+  CGameMap_CGameMap_006b7570
+  CTCTargetingBase_SetPNearestInterestingThing_007f5810
+  CCombatActionBaseCStrikeEvent_CStrikeEvent_0085ad00
+  CTCTargetingBase_SetPScriptOverrideRangedTarget_008abb50
+  NCreatureModeCModeScorpionKingVulnerable_SetTarget_008d73e0
+  CDefinitionManagerCDefClassInfo_CDefClassInfo_009b5d50
+  CMirroredTextureHighlightsChunk_CMirroredTextureHighlightsChunk_00a9d330
+  CSoundEmitterLH_CSoundEmitterLH_00aac4f0
+  NParticleEngineCPSCAttractor_CPSCAttractor_00b18780

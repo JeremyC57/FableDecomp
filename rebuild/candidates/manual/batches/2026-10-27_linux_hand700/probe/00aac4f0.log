@@ -1,0 +1,2 @@
+1	user `~CSoundEmitterLH() { Shutdown(); }` + real STLport list (~_List_base inline, clear out of line), local CCountedPointer	RELOCATION_MATCH
+2	same with engine/CCountedPointer.h	RELOCATION_MATCH

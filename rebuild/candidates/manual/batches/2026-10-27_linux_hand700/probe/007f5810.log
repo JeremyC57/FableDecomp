@@ -1,0 +1,2 @@
+1	`PNearestInterestingThing = thing;` via PDB CIntelligentPointer<T>(T*) + operator= inline, base dtor out of line; engine/CTCBase.h + packed Ego_r members	RELOCATION_MATCH
+2	pack(1) moved from CTCTargetingBase to the intelligent pointer classes (Ego_r: byte-aligned pointers, 4-aligned PTargetingDef +0x30)	RELOCATION_MATCH
