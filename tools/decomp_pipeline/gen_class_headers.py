@@ -455,7 +455,8 @@ HEADER_MEMBERS: dict[str, dict] = {
                      "0x00993CA0 ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z")],
     },
     "CWorld": {
-        "members": [("public", "static long __fastcall GetFrame();", "0x0049D870 ?GetFrame@CWorld@@SIJXZ")],
+        "members": [("public", "static long __fastcall GetFrame();", "0x0049D870 ?GetFrame@CWorld@@SIJXZ"),
+                    ("public", "unsigned long* GetWorldSeed() const;", "0x0049D810 ?GetWorldSeed@CWorld@@QBEPAKXZ")],
     },
     # naming wave 6: the scalar writers (Ego_r.pdb / FableWin.pdb member order EBOOL, UBYTE, SBYTE, CBYTE, UWORD, SWORD,
     # ULONG, SLONG, UHUGE, SHUGE, Float, Double, NullTerminatedWString, Colour, PixelFormat, 2DVector, 3DVector = retail

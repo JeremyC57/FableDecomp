@@ -152,6 +152,7 @@ public:
     bool                        HasInitialisedStartTime;     // +0x190
     unsigned char               _pad_0x191[0x7];             // +0x191
     static long __fastcall GetFrame();                       // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
+    unsigned long* GetWorldSeed() const;                     // 0x0049D810 ?GetWorldSeed@CWorld@@QBEPAKXZ
 };
 #pragma pack(pop)
 

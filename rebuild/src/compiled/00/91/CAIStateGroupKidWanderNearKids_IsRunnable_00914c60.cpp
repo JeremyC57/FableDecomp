@@ -1,6 +1,8 @@
 // Grade: RELOCATION_MATCH (Fable landing 2026-10-19 after the Codex review hold: KidMap::LowerBound bound to both 0x40f020 and 0x4365b0 (distinct instantiations))
 // CAIStateGroup_KidWanderNearKids::IsRunnable() -- gate idle modes, then find the first eligible child creature.
 // Leaf: IsRunnable
+// Naming wave 29 (family gws): the seed comes from the const ?GetWorldSeed@CWorld@@QBEPAKXZ 0x0049D810 (Ego_r.pdb / FableWin.pdb;
+//   engine/CWorld.h) through PeekWorld(). Was the invented CWorld_Methods::GetPRandomSeed (QAEPAIXZ).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00914C60, 279 bytes (virtual; manifest ?IsRunnable@CAIStateGroup_KidWanderNearKids@@UAE_NXZ).
 // Callees: the two component-map lookups call two distinct retail copies of CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound
 //   -- 0x0040F020 (first lookup, interface 0xd3) and 0x004365B0 (second lookup, interface 0x31). The copies are separate
@@ -8,7 +10,7 @@
 //   the same lookup (a modelling device: which retail instance is the const one is not proven).
 //   CTCIdleScheduler::IsPreferredIdle 0x00801BE0, CTCCreatureModeManager::IsModeActive(ulong) 0x0073A8A0 (manifest "CPlayer::HasMode"
 //   is propagated), CAIStateGroupBase::GetPWorld 0x008FCFA0 (manifest "CPlayer::GetCurrentMode" is propagated; body
-//   PBrain->+0x1c->+0x24, as landed), CWorld::GetPRandomSeed 0x0049D810, GFROR13 0x00497890,
+//   PBrain->+0x1c->+0x24, as landed), CWorld::GetWorldSeed 0x0049D810, GFROR13 0x00497890,
 //   CAIStateGroupBase::PeekThingSearchTools 0x008FD000, CThingSearchTools::GetPFirstThing<CFilter_Bind2<CThingFilter_IsNot,
 //   CThingFilter_IsChild>,CThingAICreature> 0x00914AA0 (manifest).
 // Layout: engine/ headers for the state group, brain, world and search tools; the generated CThingAICreature header is
@@ -54,7 +56,6 @@ class CThing { public:
         if (p==m->last || id<p->first) p=m->last; return (T*)p->second;
     }
 };
-struct CWorld_Methods : CWorld { unsigned int* GetPRandomSeed(); };          // 0x0049D810
 class CTCIdleScheduler : public CTCBase { public: bool IsPreferredIdle(CAIStateGroupBase* group); };   // 0x00801BE0
 class CTCCreatureModeManager : public CTCBase { public: public:
     bool IsModeActive(unsigned long) const;   // 0x0073A8A0
@@ -91,7 +92,7 @@ bool CAIStateGroup_KidWanderNearKids_Methods::IsRunnable() {
     if (((CThing*)stateGroup->PBrain->Creature)->UsingComponents[1] & 0x20000) {
         CTCCreatureModeManager* modes=((CThing*)(stateGroup->PBrain->Creature))->GetTCConst<CTCCreatureModeManager>(0x31);
         if (modes->IsModeActive(8) || modes->IsModeActive(9)) {
-            unsigned int* seed=((CWorld_Methods*)&PeekWorld())->GetPRandomSeed();
+            unsigned long* seed=PeekWorld().GetWorldSeed();
             *seed=*seed*0x24a1+0x24df;
             *seed=GFROR13(*seed);
             if (*seed % 100 > 10) return false;
