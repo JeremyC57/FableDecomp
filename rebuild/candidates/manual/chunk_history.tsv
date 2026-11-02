@@ -26161,3 +26161,13 @@ chunk	address	module	name	length
 714	00a628d0	CEnginePrimitiveRenderer	ResetVisibilityRatios	79
 714	00aa4170	C3DAnimationManager	~C3DAnimationManager	75
 714	00e01710	CDarkwoodTrader	~CDarkwoodTrader	65
+715	00e37680	CV_ArcheryCompetitionScript	~CV_ArcheryCompetitionScript	75
+715	00670090	CTCCoopSpirit	~CTCCoopSpirit	87
+715	007c31c0	CTCCoopSpirit	~CTCCoopSpirit	94
+715	0073aea0	CVertexShaderData	~CVertexShaderData	93
+715	00a62ff0	CVertexShaderData	~CVertexShaderData	43
+715	00743fe0	CNewFrontendGameComponent	~CNewFrontendGameComponent	94
+715	008d4740	CGameScriptThing	~CGameScriptThing	90
+715	009bdb40	CBankFileEntryUpdateData	~CBankFileEntryUpdateData	93
+715	00a2b630	CMeshData	~CMeshData	84
+715	00a3b970	CTextureRenderer	~CTextureRenderer	89
