@@ -1,0 +1,2 @@
+1	header model engine/CIsThingAlive.h + CScriptThing.h, return Thing.IsAlive()	MATCH (11v11), Leaf ??RCIsThingAlive@NScript@@UBE_NXZ confirmed by objdump -t
+2	src/00cdf120.cpp (final text + evidence header)	MATCH 11v11 (gall + vland PASS)

@@ -1,0 +1,5 @@
+1	probe/0121e3a0_p1.cpp: braced literal array through the stock fable_string.h	SRC_FAIL (no one-argument CCharString(const char*): the header lacks retail's default length)
+2	probe/0121e3a0_p2.cpp: explicit CCharString("...", -1) elements, stock header	RELOCATION_MATCH 46v46
+3	probe/0121e3a0_p3.cpp: braced literals over hdr/fable_string.h FABLE_RETAIL_CCHARSTRING (default length -1)	RELOCATION_MATCH 46v46
+4	src/0121e3a0.cpp (final: p3 form)	RELOCATION_MATCH 46v46 (gall + vland PASS, overlay)
+5	thunks/012294d0.cpp: the same TU graded at its array atexit destructor 0x012294D0, leaf _$E2	RELOCATION_MATCH 32v32

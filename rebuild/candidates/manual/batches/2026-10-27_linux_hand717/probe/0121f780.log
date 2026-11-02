@@ -1,0 +1,3 @@
+1	probe/0121f780_p1.cpp: anonymous-namespace long JACK_TOTAL_DURATION = g_01388a7c + g_01388a80 (extern longs)	RELOCATION_MATCH 20v20; relocation order a7c then a80 = retail (objdump -dr)
+2	layout_test.cpp: same sum over class statics (bss-order check only, not a row source)	RELOCATION_MATCH 20v20; .bss order is compiler-internal
+3	src/0121f780.cpp (final)	RELOCATION_MATCH 20v20 (gall + vland PASS); Leaf _$E1

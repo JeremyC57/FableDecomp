@@ -1,0 +1,2 @@
+1	probe/0121f220_p1.cpp: anonymous-namespace const float = GetConstantFPS() * 0.5f, plus a reader	RELOCATION_MATCH 19v19; const_check 1 constant 0 mismatches (0.5f)
+2	src/0121f220.cpp: 0.5f * GetConstantFPS(), no reader	RELOCATION_MATCH 19v19 (gall + vland PASS); const_check clean

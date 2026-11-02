@@ -2125,7 +2125,7 @@ address	name	length	bytes
 01228dc0	_global::AtexitDtor_CCharString_at_013b8a50_01228dc0	10	b9508a3b01e9165d77ff
 01228dd0	_global::AtexitDtor_CPatchTesselationEdgeStrip_at_013b8a54_01228dd0	10	b9548a3b01e9768f2aff
 01228de0	_global::AtexitDtor_CCharString_at_013b8a7c_01228de0	10	b97c8a3b01e9f65c77ff
-01228e44	_global::Static_OnReadFinished_on_013b8a98_01228e44	10	b9988a3b01e96e3b31ff
+01228e44	`dynamic atexit destructor for 'NUISystem::CList::GPreviousSelected'` (the TU-local _$E2 of row 0x0121A6AC's TU)	10	b9988a3b01e96e3b31ff
 01228e50	_global::Static_SortTreeRecursively_on_013b8ad4_01228e50	10	b9d48a3b01e9a63433ff
 01228e60	_global::AtexitDtor_CCharString_at_013b8ae4_01228e60	10	b9e48a3b01e9765c77ff
 01228e70	_global::AtexitDtor_CCharString_at_013b8ae8_01228e70	10	b9e88a3b01e9665c77ff
@@ -2268,7 +2268,7 @@ address	name	length	bytes
 01229b10	_global::AtexitDtor_CCharString_at_013badac_01229b10	10	b9acad3b01e9c64f77ff
 01229b20	_global::AtexitDtor_CStringKeyedTable_006fd040_at_013badb4_01229b20	10	b9b4ad3b01e916354dff
 01229b30	_global::AtexitDtor_CCharString_at_013baddc_01229b30	10	b9dcad3b01e9a64f77ff
-01229b40	_global::AtexitDtor_CCharString_at_013badd8_01229b40	10	b9d8ad3b01e9964f77ff
+01229b40	`dynamic atexit destructor for the temporary bound to NFire::OPINION_SOURCE_DEF_NAME` (the TU-local _$E3 of row 0x0121EF70's TU)	10	b9d8ad3b01e9964f77ff
 01229b50	_global::AtexitDtor_CCharString_at_013bade4_01229b50	10	b9e4ad3b01e9864f77ff
 01229b60	_global::AtexitDtor_CCharString_at_013bade8_01229b60	10	b9e8ad3b01e9764f77ff
 01229b70	_global::AtexitDtor_CCharString_at_013badec_01229b70	10	b9ecad3b01e9664f77ff
@@ -2396,7 +2396,7 @@ address	name	length	bytes
 0122ad40	CTCInventoryItem::ClearCachedDefs	30	b950744301c70550744301fc202a01e8bce091ffb950744301e932bfd0ff
 01229480	CFontBankStateBlock::CreateCRC	32	5657be80ab3b01bf100000008d64240083ee048bcee8465677ff4f75f35f5ec3
 012294a0	CFontBankStateBlock::CreateCRC	32	5657be40ab3b01bf040000008d64240083ee048bcee8265677ff4f75f35f5ec3
-012294d0	CFontBankStateBlock::CreateCRC	32	5657be8cab3b01bf020000008d64240083ee048bcee8f65577ff4f75f35f5ec3
+012294d0	`dynamic atexit destructor for 'CTCTrophy::InstructionsText'` (the TU-local _$E2 of row 0x0121E3A0's TU; never bind _$E names)	32	5657be8cab3b01bf020000008d64240083ee048bcee8f65577ff4f75f35f5ec3
 012295f0	CFontBankStateBlock::CreateCRC	32	5657be18ac3b01bf120000008d64240083ee048bcee8d65477ff4f75f35f5ec3
 01229df0	CFontBankStateBlock::CreateCRC	32	5657bea4ae3b01bf040000008d64240083ee048bcee8d64c77ff4f75f35f5ec3
 01229e20	CFontBankStateBlock::CreateCRC	32	5657bef0ae3b01bf100000008d64240083ee048bcee8a64c77ff4f75f35f5ec3
@@ -53425,3 +53425,13 @@ address	name	length	bytes
 01219f40	`dynamic initializer for 'GVersion'' (object symbol _$E1 of its TU)	19	6a7d6a056a136a19b9e4853b01e82e017dffc3
 0121df1c	NPlayerGui::`dynamic initializer for 'VALUE_DISPLAY_DURATION'' (object symbol _$E1 of its TU)	13	db0550553701d91d60a83b01c3
 0121f850	`dynamic initializer for 'LHNetworkLib::LSocket::GlobalList'' (object symbol _$E1 of its TU)	31	6a0ce8b7f19dff89008940046800a22201a300b03b01e8511a1eff83c408c3
+00cdf120	NScript::CIsThingAlive::operator()	11	83c1048b01ffa02c010000
+0121a6ac	NUISystem::CList::$E_GPreviousSelected	31	6a0ce85b439eff8900894004a3988a3b01c70424448e2201e8f36b1eff59c3
+0121e3a0	CTCTrophy::$E_InstructionsText	46	6aff68b4fe2501b984ab3b01e83f0878ff6aff6890fe2501b988ab3b01e82e0878ff68d0942201e8f02e1eff59c3
+0121ef70	NFire::$E_OPINION_SOURCE_DEF_NAME	41	68409b2201e842231eff83c4046aff6824b22601b9d8ad3b01e862fc77ffc705e0ad3b01d8ad3b01c3
+0121f220	_global::$E_VALUE_DISPLAY_DURATION	19	db0550553701d80d9cf52201d91d68ae3b01c3
+0121f260	CTCDrunkenness::$E_DrunkennessDeltaPerFrameOfDrinking	19	db0550553701d83dacde2601d91d70ae3b01c3
+0121f780	_global::$E_JACK_TOTAL_DURATION	20	a17c8a38018b0d808a380103c8890dd8af3b01c3
+0121f7a0	_global::$E_JACK_GLOW_START_FRAME	17	a1d8af3b012b05808a3801a3dcaf3b01c3
+0121f7e0	CTCCreatureModeManager::CModeBase::$E_NO_FRAMES_BEFORE_PLAYING_IDLE_ANIMS	17	a1505537018d0440c1e002a3e8af3b01c3
+01221b60	_global::$E_MIN_TIME_TO_SIT	17	a1505537018d0480c1e002a3f4b63b01c3

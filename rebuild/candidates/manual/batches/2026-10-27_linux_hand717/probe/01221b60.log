@@ -1,0 +1,2 @@
+1	probe/01221b60_p1.cpp: anonymous-namespace const long MIN_TIME_TO_SIT = GetConstantFPS() * 20, plus a reader function	RELOCATION_MATCH 17v17
+2	src/01221b60.cpp: reader dropped (the const object keeps its initializer: internal _MIN_TIME_TO_SIT)	RELOCATION_MATCH 17v17 (gall + vland PASS); Leaf _$E1

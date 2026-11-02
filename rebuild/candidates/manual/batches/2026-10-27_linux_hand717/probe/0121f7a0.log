@@ -1,0 +1,4 @@
+1	probe/0121f7a0_p1.cpp: JACK_GLOW_START_FRAME = extern stand-in total - g_01388a80	RELOCATION_MATCH 17v17 (rejected: the total is an anonymous-namespace object of the same TU, not an extern)
+2	probe/0121f7a0_p2.cpp: TOTAL / GLOW / FADE trio defined in retail order; leaf _$E2 named no symbol (VC7.1 numbers initializers _$E1/_$E3/_$E5)	DIFFER 30v17 (wrong leaf: graded ReadJack)
+3	probe/0121f7a0_p2.cpp with leaf _$E3	RELOCATION_MATCH 17v17
+4	src/0121f7a0.cpp: TOTAL then GLOW only, leaf _$E3	RELOCATION_MATCH 17v17 (gall + vland PASS)

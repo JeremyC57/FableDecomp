@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+0121f220	RELOCATION_MATCH	19v19	PASS	`anonymous namespace'::VALUE_DISPLAY_DURATION initializer (_$E1), const float = 0.5f * GetConstantFPS(); 2 probes; const_check clean
+0121f260	RELOCATION_MATCH	19v19	PASS	CTCDrunkenness::DrunkennessDeltaPerFrameOfDrinking initializer (_$E1), static const float = 0.1f / GetConstantFPS(); 2 probes; const_check clean
+0121f780	RELOCATION_MATCH	20v20	PASS	`anonymous namespace'::JACK_TOTAL_DURATION initializer (_$E1) = g_01388a7c + g_01388a80; 3 probes
+0121f7a0	RELOCATION_MATCH	17v17	PASS	`anonymous namespace'::JACK_GLOW_START_FRAME initializer, Leaf _$E3 (JACK_TOTAL_DURATION defined first, same TU); 4 probes
+0121f7e0	RELOCATION_MATCH	17v17	PASS	CTCCreatureModeManager::CModeBase::NO_FRAMES_BEFORE_PLAYING_IDLE_ANIMS initializer (_$E1) = GetConstantFPS() * 12; 2 probes
+01221b60	RELOCATION_MATCH	17v17	PASS	`anonymous namespace'::MIN_TIME_TO_SIT initializer (_$E1) = GetConstantFPS() * 20; 2 probes
+0121a6ac	RELOCATION_MATCH	31v31	PASS	NUISystem::CList::GPreviousSelected initializer (_$E1), STLport list ctor; #pragma optimize("s", on) (size-optimised TU); 4 probes (atexit thunk 0x01228E44 also graded)
+0121e3a0	RELOCATION_MATCH	46v46	PASS	CTCTrophy::InstructionsText[2] initializer (_$E1); needs hdr/fable_string.h FABLE_RETAIL_CCHARSTRING; 5 probes (atexit 0x012294D0 also graded)
+0121ef70	RELOCATION_MATCH	41v41	PASS	NFire::OPINION_SOURCE_DEF_NAME (const CCharString& to a temporary) initializer (_$E1); needs the overlay; 5 probes (atexit 0x01229B40 also graded)
+00cdf120	MATCH	11v11	PASS	??RCIsThingAlive@NScript@@UBE_NXZ (vtable 0x012C32F0 slot 0); engine/CIsThingAlive.h; 2 probes

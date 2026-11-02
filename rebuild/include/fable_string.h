@@ -75,7 +75,16 @@ class CCharString
 {
 public:
     CCharString();
+#ifdef FABLE_RETAIL_CCHARSTRING
+    // Retail opt-in (chunk 717): retail's only const char* constructor is ??0CCharString@@QAE@PBDJ@Z 0x0099EBF0 (Ego_r.pdb +
+    // FableWin.pdb; no one-argument overload exists in either PDB or in Fable.exe), yet retail converts bare literals
+    // implicitly through it (`push -1 ; push <lit>` at every in-place construction: braced CCharString arrays 0x0121E260 /
+    // 0x0121E3A0, vector<CCharString>(18, "") 0x0121A460 which matches only through the implicit conversion, a const
+    // CCharString& bound to a literal 0x0121EF70): the declaration carries the default length -1.
+    CCharString(const char* text, long length = -1);           // 0x0099EBF0
+#else
     CCharString(const char* text, long length);
+#endif
     CCharString(const CCharString& other);                     // 0x0099EC30 ??0CCharString@@QAE@ABV0@@Z (Ego_r / FableWin)
     ~CCharString();
     operator const char*() const;

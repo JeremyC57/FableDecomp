@@ -1,0 +1,4 @@
+1	probe/0121a6ac_p1.cpp: STLport 4.6 list<NUISystem::CList*> static, _List_base ctor with a local sentinel, #pragma optimize("s", on)	RELOCATION_MATCH 31v31; data symbol = the landed binding's spelling
+2	probe/0121a6ac_p2.cpp: same without the size pragma	DIFFER 31v31 (push thunk / add esp,8 instead of the reused argument slot mov [esp],thunk / pop ecx)
+3	src/0121a6ac.cpp (final, pragma kept: the TU is size-optimised)	RELOCATION_MATCH 31v31 (gall + vland PASS)
+4	thunks/01228e44.cpp: the same TU graded at its atexit thunk 0x01228E44, leaf _$E2	RELOCATION_MATCH 10v10

@@ -1,0 +1,5 @@
+1	probe/0121ef70_p1.cpp: const CCharString& bound to a literal, stock header	SRC_FAIL (no implicit conversion without the default length)
+2	probe/0121ef70_p2.cpp: const CCharString& = CCharString("...", -1), stock header	RELOCATION_MATCH 41v41: atexit of the temporary first, then its construction, then the reference store = retail
+3	probe/0121ef70_p3.cpp: const CCharString& = "..." over the overlay; same file without FABLE_HDR_OVERLAY	RELOCATION_MATCH 41v41 with the overlay; SRC_FAIL without it (overlay use-check)
+4	src/0121ef70.cpp (final: p3 form)	RELOCATION_MATCH 41v41 (gall + vland PASS)
+5	thunks/01229b40.cpp: the same TU graded at the temporary's destructor thunk 0x01229B40, leaf _$E3	RELOCATION_MATCH 10v10

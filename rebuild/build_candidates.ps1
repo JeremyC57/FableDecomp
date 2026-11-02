@@ -375985,6 +375985,76 @@ $catalog = @(
         TestSource = '01/21/LHNetworkLibLSocket_dynamicinitializerforGlobalList_0121f850_test.cpp'
         PassPattern = '0121f850_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00cdf120'
+        Module = 'NScript::CIsThingAlive'
+        Source = '00/cd/NScriptCIsThingAlive_operator_00cdf120.cpp'
+        TestSource = '00/cd/NScriptCIsThingAlive_operator_00cdf120_test.cpp'
+        PassPattern = '00cdf120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0121a6ac'
+        Module = 'NUISystem::CList'
+        Source = '01/21/NUISystemCList_EGPreviousSelected_0121a6ac.cpp'
+        TestSource = '01/21/NUISystemCList_EGPreviousSelected_0121a6ac_test.cpp'
+        PassPattern = '0121a6ac_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0121e3a0'
+        Module = 'CTCTrophy'
+        Source = '01/21/CTCTrophy_EInstructionsText_0121e3a0.cpp'
+        TestSource = '01/21/CTCTrophy_EInstructionsText_0121e3a0_test.cpp'
+        PassPattern = '0121e3a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0121ef70'
+        Module = 'NFire'
+        Source = '01/21/NFire_EOPINIONSOURCEDEFNAME_0121ef70.cpp'
+        TestSource = '01/21/NFire_EOPINIONSOURCEDEFNAME_0121ef70_test.cpp'
+        PassPattern = '0121ef70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0121f220'
+        Module = '_global'
+        Source = '01/21/global_EVALUEDISPLAYDURATION_0121f220.cpp'
+        TestSource = '01/21/global_EVALUEDISPLAYDURATION_0121f220_test.cpp'
+        PassPattern = '0121f220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0121f260'
+        Module = 'CTCDrunkenness'
+        Source = '01/21/CTCDrunkenness_EDrunkennessDeltaPerFrameOfDrinking_0121f260.cpp'
+        TestSource = '01/21/CTCDrunkenness_EDrunkennessDeltaPerFrameOfDrinking_0121f260_test.cpp'
+        PassPattern = '0121f260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0121f780'
+        Module = '_global'
+        Source = '01/21/global_EJACKTOTALDURATION_0121f780.cpp'
+        TestSource = '01/21/global_EJACKTOTALDURATION_0121f780_test.cpp'
+        PassPattern = '0121f780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0121f7a0'
+        Module = '_global'
+        Source = '01/21/global_EJACKGLOWSTARTFRAME_0121f7a0.cpp'
+        TestSource = '01/21/global_EJACKGLOWSTARTFRAME_0121f7a0_test.cpp'
+        PassPattern = '0121f7a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0121f7e0'
+        Module = 'CTCCreatureModeManager::CModeBase'
+        Source = '01/21/CTCCreatureModeManagerCModeBase_ENOFRAMESBEFOREPLAYINGIDLEANIMS_0121f7e0.cpp'
+        TestSource = '01/21/CTCCreatureModeManagerCModeBase_ENOFRAMESBEFOREPLAYINGIDLEANIMS_0121f7e0_test.cpp'
+        PassPattern = '0121f7e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01221b60'
+        Module = '_global'
+        Source = '01/22/global_EMINTIMETOSIT_01221b60.cpp'
+        TestSource = '01/22/global_EMINTIMETOSIT_01221b60_test.cpp'
+        PassPattern = '01221b60_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
