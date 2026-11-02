@@ -26037,3 +26037,13 @@ chunk	address	module	name	length
 702	00657200	NPlayerGui::CDrawAbilityButtonsPC	vfunc_3	26
 702	00722570	CTCSmokeGenerator	vfunc_12	25
 702	00778b10	CTCFamilyMember	vfunc_12	19
+703	00786650	CTCSkeletalMorph	vfunc_12	23
+703	007f8120	CTCActivationReceptorDoor	vfunc_28	18
+703	00836240	CEnginePrimitiveManager2DAnimatedMeshes	RenderSubPrimitive	24
+703	00900b41	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	36
+703	0090143e	CAIStateGroupBehaviourBase	CAIStateGroupBehaviourBase	36
+703	004bf8f0	CTCGraphicAppearance	OnKill	41
+703	005596d0	NUISystem::CScrollBar	vfunc_146	47
+703	005df750	CAnimComponentCombatMisc	Alloc	31
+703	005faee0	CTCInventory	OnKill	44
+703	0061a1f0	CTCInventory	OnKill	44
