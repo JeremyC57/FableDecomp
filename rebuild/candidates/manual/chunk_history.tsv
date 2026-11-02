@@ -26057,3 +26057,17 @@ chunk	address	module	name	length
 704	008426e0	CCreatureAction_PlayAnimation	FrameUpdate	34
 704	00850640	CPhysicsLeaf<NCameraModes::CPhysicsTargetModelGoTo	FrameUpdate	44
 704	0085ca10	CPhysicsLeaf<NCameraModes::CPhysicsTargetModelGoTo	FrameUpdate	44
+705	0087bbc0	NCameraModes::CScriptedControl	vfunc_1	11
+705	008b74a0	CCreatureAction_LeapLong	?FinishAction@CCreatureAction_LeapLong@@UAEXXZ	47
+705	008c0b10	CCreatureAction_WhisperSommersaultForward	?FinishAction@CCreatureAction_WhisperSommersaultForward@@UAEXXZ	47
+705	008d6710	CModeUnderground	OnDeactivate	38
+705	008dbb00	CModeDragonFireBeam	OnDeactivate	33
+705	0090f740	CAIStateGroup_MinionSitOnSeatBase	Update	47
+705	00913f00	CAIStateGroup_BirdFlyToFood	?Update@CAIStateGroup_BirdFlyToFood@@UAEXXZ	35
+705	00a3ebc0	CNavigatorManager	InterruptAllNavigators	41
+705	00a75e00	CNavQuadTreeNode	?RemoveNeighbours@CNavQuadTreeNode@@MAEXXZ	36
+705	00b23cb0	CEngine	GetEditorAnimation	34
+705	00692230	NCreatureAction::CActionEventExplosion	CActionEventExplosion	30
+705	006922c0	NCreatureAction::CActionEventRemoveObject	CActionEventRemoveObject	30
+705	004d9861	_unattributed	~CDefPointeeBase_Derived_004d9861	33
+705	009e1440	Render2DDrawList	CopyBlock	79
