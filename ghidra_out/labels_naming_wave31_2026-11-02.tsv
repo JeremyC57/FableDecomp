@@ -1,0 +1,23 @@
+address	name	evidence
+004c7590	CThing::SetAsRenderedThisFrame	naming wave 31 (srtf, DECISIONS_W31 D9): Ego_r.pdb ?SetAsRenderedThisFrame@CThing@@QAEXK@Z 0x004C9150 between SetCurrentMapNumber 0x004C9140 (= retail 0x004C7580) and ClearRenderedThisFrame 0x004C9160 (= retail 0x004C75A0), the 0x1BC0 delta of SetAsActivated; FableWin.pdb has the symbol; own row + 23 binders respelled (seven old spellings) and rechecked; was catalog CRenderTarget::DetachTarget
+004bf960	NGraphicAppearance::CTCGraphicAppearance::ClearAllPrimitivesDueToBeingOutOfRange	naming wave 31 (sup+c703): the row now defines ?ClearAllPrimitivesDueToBeingOutOfRange@CTCGraphicAppearance@NGraphicAppearance@@QAEXXZ (was ?CTCGraphicAppearance_ClearAllPrimitivesDueToBeingOutOfRange@@YIXPAUCTCGraphicAppearance@@@Z); rechecked MATCH / RELOCATION_MATCH + PASS
+004da967	CTCActionUseBase::~CTCActionUseBase	naming wave 31 (tcd): the row now defines ??1CTCActionUseBase@@UAE@XZ (was ??1C3DAnimationBlendState@@QAE@XZ); rechecked MATCH / RELOCATION_MATCH + PASS
+004db004	CTCSmashableBase::~CTCSmashableBase	naming wave 31 (tcd): the row now defines ??1CTCSmashableBase@@UAE@XZ (was ??1C3DAnimationBlendState@@QAE@XZ); rechecked MATCH / RELOCATION_MATCH + PASS
+004dc7c8	CTCExpression::~CTCExpression	naming wave 31 (tcd): the row now defines ??1CTCExpression@@UAE@XZ (was ??1C3DAnimationBlendState@@QAE@XZ); rechecked MATCH / RELOCATION_MATCH + PASS
+004dcbce	CTCDecapitation::~CTCDecapitation	naming wave 31 (tcd): the row now defines ??1CTCDecapitation@@UAE@XZ (was ??1C3DAnimationBlendState@@QAE@XZ); rechecked MATCH / RELOCATION_MATCH + PASS
+004dccd2	CTCResurrectionItem::~CTCResurrectionItem	naming wave 31 (tcd): the row now defines ??1CTCResurrectionItem@@UAE@XZ (was ??1C3DAnimationBlendState@@QAE@XZ); rechecked MATCH / RELOCATION_MATCH + PASS
+004dcdfd	CTCDRumble::~CTCDRumble	naming wave 31 (tcd): the row now defines ??1CTCDRumble@@UAE@XZ (was ??1C3DAnimationBlendState@@QAE@XZ); rechecked MATCH / RELOCATION_MATCH + PASS
+004dcf4e	CTCHasName::~CTCHasName	naming wave 31 (tcd): the row now defines ??1CTCHasName@@UAE@XZ (was ??1C3DAnimationBlendState@@QAE@XZ); rechecked MATCH / RELOCATION_MATCH + PASS
+00731330	CTCDoor::~CTCDoor	naming wave 31 (door): the row now defines ??1CTCDoor@@UAE@XZ (was -); rechecked MATCH / RELOCATION_MATCH + PASS
+00732cb0	CTCClock::~CTCClock	naming wave 31 (tcd): the row now defines ??1CTCClock@@UAE@XZ (was -); rechecked MATCH / RELOCATION_MATCH + PASS
+00746d00	CTCBed::~CTCBed	naming wave 31 (tcd): the row now defines ??1CTCBed@@UAE@XZ (was -); rechecked MATCH / RELOCATION_MATCH + PASS
+0078afc0	CTCHeroRangedAttacks::~CTCHeroRangedAttacks	naming wave 31 (tcd): the row now defines ??1CTCHeroRangedAttacks@@UAE@XZ (was -); rechecked MATCH / RELOCATION_MATCH + PASS
+007dfca0	CTCFish::~CTCFish	naming wave 31 (tcd): the row now defines ??1CTCFish@@UAE@XZ (was -); rechecked MATCH / RELOCATION_MATCH + PASS
+007e48e0	CTCWillResponse::~CTCWillResponse	naming wave 31 (tcd): the row now defines ??1CTCWillResponse@@UAE@XZ (was -); rechecked MATCH / RELOCATION_MATCH + PASS
+00aee9f0	NParticleEngine::CParticleEmitter::Update	naming wave 31 (pek): the row now defines ?Update@CParticleEmitter@NParticleEngine@@QAEXXZ (was ?Update@CParticleEmitter@@QAEXXZ); rechecked MATCH / RELOCATION_MATCH + PASS
+00c74420	CVtable_012bf050::CVtable_012bf050	naming wave 31 (libpk): the row now defines ??0CVtable_012bf050@@QAE@XZ (was ??0CDspObject@@QAE@XZ); rechecked MATCH / RELOCATION_MATCH + PASS
+00c74450	CVtable_012bf050::~CVtable_012bf050	naming wave 31 (libpk): the row now defines ??1CVtable_012bf050@@UAE@XZ (was ??1CVtable_012BF050@@QAE@XZ); rechecked MATCH / RELOCATION_MATCH + PASS
+00af5870	NParticleEngine::CParticleSystem::Kill	naming wave 31: ?Kill@CParticleSystem@NParticleEngine@@QAEXXZ, bound this wave (first named by 00aee8c0); rechecked MATCH / RELOCATION_MATCH + PASS
+00686830	CTCBase::~CTCBase	naming wave 31 (tcd, queue row 25): Ego_r.pdb / FableWin.pdb ??1CTCBase@@UAE@XZ; 14 derived implicit destructors now tail-call it by this name on engine/CTCBase.h's retail branch; rechecked RELOCATION_MATCH + PASS
+007ce370	CTCElectrocutedEffect::OnInitialActivate	naming wave 31 (srtf): Ego_r.pdb / FableWin.pdb ?OnInitialActivate@CTCElectrocutedEffect@@UAEXXZ (CTCBase slot 6); was the catalog CTCElectrocutedEffect::vfunc_6; rechecked RELOCATION_MATCH + PASS
+004bf9a0	NGraphicAppearance::CTCGraphicAppearance::ClearAllPrimitives	naming wave 31 (c703): Ego_r.pdb 0x004C4890 / FableWin.pdb 0x01D099D0 ?ClearAllPrimitives@CTCGraphicAppearance@NGraphicAppearance@@IAEXXZ (protected); rechecked RELOCATION_MATCH + PASS

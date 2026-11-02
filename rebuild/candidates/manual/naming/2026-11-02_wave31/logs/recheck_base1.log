@@ -1,0 +1,35 @@
+addr       parity           behav  name
+00401c00   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00401c00   RELOCATION_MATCH PASS   GFHandleSystemInitError
+004d9861   WARN SHARED_HEADER_AVAILABLE CResource
+  WARN leaf '~CDefPointeeBase_Derived_004d9861' matches no symbol in 004d9861.obj; graded the largest function
+  WARN leaf '~CDefPointeeBase_Derived_004d9861' matches no symbol in 004d9861.obj; graded the largest function
+  WARN leaf '~CDefPointeeBase_Derived_004d9861' matches no symbol in 004d9861.obj; graded the largest function
+  WARN leaf '~CDefPointeeBase_Derived_004d9861' matches no symbol in 004d9861.obj; graded the largest function
+  WARN leaf '~CDefPointeeBase_Derived_004d9861' matches no symbol in 004d9861.obj; graded the largest function
+  WARN leaf '~CDefPointeeBase_Derived_004d9861' matches no symbol in 004d9861.obj; graded the largest function
+  WARN leaf '~CDefPointeeBase_Derived_004d9861' matches no symbol in 004d9861.obj; graded the largest function
+  WARN leaf '~CDefPointeeBase_Derived_004d9861' matches no symbol in 004d9861.obj; graded the largest function
+  WARN leaf '~CDefPointeeBase_Derived_004d9861' matches no symbol in 004d9861.obj; graded the largest function
+  WARN leaf '~CDefPointeeBase_Derived_004d9861' matches no symbol in 004d9861.obj; graded the largest function
+  WARN leaf '~CDefPointeeBase_Derived_004d9861' matches no symbol in 004d9861.obj; graded the largest function
+  WARN leaf '~CDefPointeeBase_Derived_004d9861' matches no symbol in 004d9861.obj; graded the largest function
+  WARN leaf '~CDefPointeeBase_Derived_004d9861' matches no symbol in 004d9861.obj; graded the largest function
+  WARN leaf '~CDefPointeeBase_Derived_004d9861' matches no symbol in 004d9861.obj; graded the largest function
+  WARN leaf '~CDefPointeeBase_Derived_004d9861' matches no symbol in 004d9861.obj; graded the largest function
+  WARN leaf '~CDefPointeeBase_Derived_004d9861' matches no symbol in 004d9861.obj; graded the largest function
+  WARN leaf '~CDefPointeeBase_Derived_004d9861' matches no symbol in 004d9861.obj; graded the largest function
+  WARN leaf '~CDefPointeeBase_Derived_004d9861' matches no symbol in 004d9861.obj; graded the largest function
+  WARN leaf '~CDefPointeeBase_Derived_004d9861' matches no symbol in 004d9861.obj; graded the largest function
+  WARN leaf '~CDefPointeeBase_Derived_004d9861' matches no symbol in 004d9861.obj; graded the largest function
+  WARN leaf '~CDefPointeeBase_Derived_004d9861' matches no symbol in 004d9861.obj; graded the largest function
+  WARN leaf '~CDefPointeeBase_Derived_004d9861' matches no symbol in 004d9861.obj; graded the largest function
+  WARN leaf '~CDefPointeeBase_Derived_004d9861' matches no symbol in 004d9861.obj; graded the largest function
+  WARN leaf '~CDefPointeeBase_Derived_004d9861' matches no symbol in 004d9861.obj; graded the largest function
+  WARN leaf '~CDefPointeeBase_Derived_004d9861' matches no symbol in 004d9861.obj; graded the largest function
+004d9861   DIFFER(36v33)    PASS   _unattributed::~CDefPointeeBase_Derived_004d9861
+00692230   DIFFER(40v30)    PASS   NCreatureAction::CActionEventExplosion::CActionEventExplosion
+006922c0   DIFFER(40v30)    PASS   NCreatureAction::CActionEventRemoveObject::CActionEventRemoveObject
+
+WINS: 1
+  00401c00 RELOCATION_MATCH _global::GFHandleSystemInitError

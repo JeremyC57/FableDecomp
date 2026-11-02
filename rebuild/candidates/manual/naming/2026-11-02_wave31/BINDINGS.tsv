@@ -1,0 +1,66 @@
+action	symbol	target	by_row	note
+RETIRE	?GetAssignableSpecialMoveIndexForButton@CGamePlayerInterface@@QAEJW4EXboxControllerButton@@@Z	00445ee0	00643fc8	no row names it after wave 31 (was: 00643fc8; bound by 00643fc8); the target is now ?GetAssignableSpecialMoveIndexForButton@CGamePlayerInterface@@QBEJW4EXboxControllerButton@@@Z
+KEEP	??1ScriptMethods@@UAE@XZ	004aa840	008976f0	still named by 9 unedited row(s) (index)
+RETIRE	?ClearAllPrimitives@CTCGraphicAppearance@NGraphicAppearance@@QAEXXZ	004bf9a0	004bf9e0	no row names it after wave 31 (was: 004bf9e0,004bfce0,004c0000,004c01e0; bound by 004bf9e0); the target is now ?ClearAllPrimitives@CTCGraphicAppearance@NGraphicAppearance@@IAEXXZ
+RETIRE	?Clear@MemberAt38@@QAEXXZ	004c5690	004bf9a0	no row names it after wave 31 (was: 004bf9a0; bound by 004bf9a0); the target is now ?clear@?$_List_base@VCPrimitive@NGraphicAppearance@@V?$allocator@VCPrimitive@NGraphicAppearance@@@std@@@std@@QAEXXZ
+RETIRE	?SubObj_Clear@@YIXPAUSubObj@@@Z	004c5690	004bf960	no row names it after wave 31 (was: 004bf960; bound by 004bf960); the target is now ?clear@?$_List_base@VCPrimitive@NGraphicAppearance@@V?$allocator@VCPrimitive@NGraphicAppearance@@@std@@@std@@QAEXXZ
+KEEP	?clear@CPrimitiveListObject@@QAEXXZ	004c5690	004c0000	still named by 1 unedited row(s) (index)
+RETIRE	?ForwardToGraphicAppearance@CThing@@QAEXJ@Z	004c7590	00640bb0	no row names it after wave 31 (was: 00640bb0,00640d00,0070a430,0070a490,00781f10; bound by 00640bb0); the target is now ?SetAsRenderedThisFrame@CThing@@QAEXK@Z
+RETIRE	?RefreshGraphic@CThing@@QAEX_N@Z	004c7590	006afd60	no row names it after wave 31 (was: 006afd60; bound by 006afd60); the target is now ?SetAsRenderedThisFrame@CThing@@QAEXK@Z
+RETIRE	?SetActive@CThing@@QAEX_N@Z	004c7590	007ce420	no row names it after wave 31 (was: 007ce420; bound by 007ce420); the target is now ?SetAsRenderedThisFrame@CThing@@QAEXK@Z
+RETIRE	?SetActive@Sub@@QAEHH@Z	004c7590	007ce370	no row names it after wave 31 (was: 007ce370; bound by 007ce370); the target is now ?SetAsRenderedThisFrame@CThing@@QAEXK@Z
+RETIRE	?SetGraphicAppearanceChanged@CThing@@QAEXK@Z	004c7590	0077c740	no row names it after wave 31 (was: 004c7590,0077c740,00836240; bound by 0077c740); the target is now ?SetAsRenderedThisFrame@CThing@@QAEXK@Z
+RETIRE	?UpdateGraphicAppearance@CThing@@QAEXJ@Z	004c7590	00752200	no row names it after wave 31 (was: 00640c40,00640c70,00640ca0,00640cd0,00641020,006412b0,006b0c10,007034d0,00752200,0077cd50,00835e30,00836260; bound by 00752200); the target is now ?SetAsRenderedThisFrame@CThing@@QAEXK@Z
+RETIRE	?UpdateGraphicAppearance@CThingGameObject@@QAEXJ@Z	004c7590	0082d810	no row names it after wave 31 (was: 0082d810; bound by 0082d810); the target is now ?SetAsRenderedThisFrame@CThing@@QAEXK@Z
+RETIRE	?Refresh@Sub@@QAEXXZ	004c7c40	007ce370	no row names it after wave 31 (was: 007ce370; bound by 007ce370); the target is now ?SetAsFrameUpdated@CThing@@QAEXXZ
+RETIRE	?WorldUpdateBulletTime@CThing@@QAEXXZ	004c8ba0	0082fd90	no row names it after wave 31 (was: 004c8ba0,0082fd90; bound by 0082fd90); the target is now ?WorldUpdateBulletTime@CThing@@UAEXXZ
+KEEP	??1C3DAnimationBlendState@@QAE@XZ	004da967	004dc568	still named by 4 unedited row(s) (index)
+RETIRE	?ClearScoreboard@CTCHeroOnlineScoreboard@@QAEXXZ	00562e10	00562e70	no row names it after wave 31 (was: 00562e70,00563130,00563410; bound by 00562e70); the target is now ?ClearScoreboard@CTCHeroOnlineScoreboard@@AAEXXZ
+RETIRE	?GetPlayer@CDrawAbilityButtonsPC@NPlayerGui@@QAEPAVCPlayer@@XZ	00643d7c	00657d90	no row names it after wave 31 (was: 00657d90,00658020; bound by 00657d90); the target is now ?GetPlayer@CDrawBase@NPlayerGui@@QAEAAVCPlayer@@XZ
+KEEP	??1Base@@QAE@XZ	00686830	004dcbce	identifier appears in 1 unindexed row(s) (00cbb4d0): conservative
+KEEP	??1BlendBase@@QAE@XZ	00686830	004dbf56	still named by 1 unedited row(s) (index)
+RETIRE	??1BlendStateBase@@QAE@XZ	00686830	004da967	no row names it after wave 31 (was: 004da967; bound by 004da967); the target is now ??1CTCBase@@UAE@XZ
+RETIRE	??1C3DAnimBlendBase@@QAE@XZ	00686830	004dccd2	no row names it after wave 31 (was: 004dccd2; bound by 004dccd2); the target is now ??1CTCBase@@UAE@XZ
+RETIRE	??1CBase3DAnimState@@QAE@XZ	00686830	004db004	no row names it after wave 31 (was: 004db004; bound by 004db004); the target is now ??1CTCBase@@UAE@XZ
+RETIRE	??1CBaseAnimState@@QAE@XZ	00686830	004dcdfd	no row names it after wave 31 (was: 004dcdfd; bound by 004dcdfd); the target is now ??1CTCBase@@UAE@XZ
+KEEP	??1CBase_00686830@@QAE@XZ	00686830	005dae40	still named by 1 unedited row(s) (index)
+RETIRE	?GetThingManager@CTCHeroStats@@QBEABVCThingManager@@XZ	00686af0	0057ae53	no row names it after wave 31 (was: 0057ae53; bound by 0057ae53); the target is now ?GetThingManager@CTCBase@@IBEABVCThingManager@@XZ
+RETIRE	?GetThingManager@CTCHeroStats_Retail@@QBEABVCThingManager@@XZ	00686af0	0057abd6	no row names it after wave 31 (was: 0057abd6; bound by 0057abd6); the target is now ?GetThingManager@CTCBase@@IBEABVCThingManager@@XZ
+RETIRE	?GetPrimarySlotThing@CarryingMethods@@QAEPAVCThing@@XZ	006a1440	008976f0	no row names it after wave 31 (was: 008976f0; bound by 008976f0); the target is now ?GetThingInPrimarySlot@CTCCarrying@@QBEPAVCThing@@XZ
+RETIRE	??0NativeCharString@@QAE@ABU0@@Z	0099ec30	008a41b0	no row names it after wave 31 (was: 008a41b0,008a4730,008a6570,008a6840; bound by 008a41b0); the target is now ??0CCharString@@QAE@ABV0@@Z
+RETIRE	?Initialise@CParticleEmitter@@QAE_NPAVCIEngine@@@Z	00aee240	00aee9f0	no row names it after wave 31 (was: 00aee9f0; bound by 00aee9f0); the target is now ?Initialise@CParticleEmitter@NParticleEngine@@QAE_NPAVCIEngine@@@Z
+RETIRE	?Kill@CParticleEmitter@@QAEXXZ	00aee8c0	005440b0	no row names it after wave 31 (was: 005440b0,00aee8c0,00aee9f0; bound by 005440b0); the target is now ?Kill@CParticleEmitter@NParticleEngine@@QAEXXZ
+KEEP	?Kill@CParticleSystem@@QAEXXZ	00af5870	00aee8c0	still named by 1 unedited row(s) (index)
+RETIRE	??1CDspObject@@UAE@XZ	00c74450	00c775a0	no row names it after wave 31 (was: 00c69660,00c69680,00c69720,00c69740,00c697a0,00c697c0,00c69880,00c698a0,00c698d0,00c69930,00c69990,00c6a280,00c6a2e0,00c6a340,00c6a650,00c6a780,00c74420,00c75530,00c75980,00c75a00,00c775a0; bound by 00c775a0); the target is now ??1CVtable_012bf050@@UAE@XZ
+KEEP	??_7ScriptMethods@@6B@	01238c8c	008976f0	still named by 8 unedited row(s) (index)
+RETIRE	??_7CDspObject@@6B@	012bf050	00c74420	no row names it after wave 31 (was: 00c74420; bound by 00c74420); the target is now ??_7CVtable_012bf050@@6B@
+KEEP	??_7CVtable_012BF050@@6B@	012bf050	00c74450	still named by 1 unedited row(s) (index)
+KEEP	?s_pOps@CDspObject@@2PAUCDspOps@@A	0143ccdc	00c74420	still named by 11 unedited row(s) (index)
+KEEP	?s_pSharedTable@CVtable_012BF050@@2PAXA	0143ccdc	00c74450	still named by 1 unedited row(s) (index)
+KEEP	?s_refCount@CDspObject@@2JA	0143cce0	00c74420	still named by 1 unedited row(s) (index)
+KEEP	?s_refCount@CVtable_012BF050@@2JA	0143cce0	00c74450	still named by 1 unedited row(s) (index)
+RETIRE	??0CBase_00c74420@@QAE@XZ	00c74420	00c69660	stale: no indexed row names it and no unindexed row source mentions it (bound by 00c69660; the target is now ??0CVtable_012bf050@@QAE@XZ)
+RETIRE	??0CChunkBase_00c698d0@@QAE@XZ	00c74420	00c698d0	stale: no indexed row names it and no unindexed row source mentions it (bound by 00c698d0; the target is now ??0CVtable_012bf050@@QAE@XZ)
+RETIRE	??0CChunkBase_00c6a280@@QAE@XZ	00c74420	00c6a280	stale: no indexed row names it and no unindexed row source mentions it (bound by 00c6a280; the target is now ??0CVtable_012bf050@@QAE@XZ)
+RETIRE	??0CChunkBase_00c75530@@QAE@XZ	00c74420	00c75530	stale: no indexed row names it and no unindexed row source mentions it (bound by 00c75530; the target is now ??0CVtable_012bf050@@QAE@XZ)
+RETIRE	??0CChunkBase_00c75980@@QAE@XZ	00c74420	00c75980	stale: no indexed row names it and no unindexed row source mentions it (bound by 00c75980; the target is now ??0CVtable_012bf050@@QAE@XZ)
+RETIRE	??0CCounted_00c6a650@@QAE@XZ	00c74420	00c6a650	stale: no indexed row names it and no unindexed row source mentions it (bound by 00c6a650; the target is now ??0CVtable_012bf050@@QAE@XZ)
+RETIRE	??1CBase_00c69740@@QAE@XZ	00c74450	00c69740	stale: no indexed row names it and no unindexed row source mentions it (bound by 00c69740; the target is now ??1CVtable_012bf050@@UAE@XZ)
+RETIRE	??1CBase_00c697c0@@QAE@XZ	00c74450	00c697c0	stale: no indexed row names it and no unindexed row source mentions it (bound by 00c697c0; the target is now ??1CVtable_012bf050@@UAE@XZ)
+RETIRE	??1CChunkBase_00c69930@@QAE@XZ	00c74450	00c69930	stale: no indexed row names it and no unindexed row source mentions it (bound by 00c69930; the target is now ??1CVtable_012bf050@@UAE@XZ)
+RETIRE	??1CChunkBase_00c69990@@QAE@XZ	00c74450	00c69990	stale: no indexed row names it and no unindexed row source mentions it (bound by 00c69990; the target is now ??1CVtable_012bf050@@UAE@XZ)
+RETIRE	??1CChunkBase_00c6a2e0@@QAE@XZ	00c74450	00c6a2e0	stale: no indexed row names it and no unindexed row source mentions it (bound by 00c6a2e0; the target is now ??1CVtable_012bf050@@UAE@XZ)
+RETIRE	??1CChunkBase_00c6a340@@QAE@XZ	00c74450	00c6a340	stale: no indexed row names it and no unindexed row source mentions it (bound by 00c6a340; the target is now ??1CVtable_012bf050@@UAE@XZ)
+RETIRE	??1CCounted_00c6a780@@UAE@XZ	00c74450	00c6a780	stale: no indexed row names it and no unindexed row source mentions it (bound by 00c6a780; the target is now ??1CVtable_012bf050@@UAE@XZ)
+RETIRE	?g_pListener_0143ccdc@@3PAUCListenerBase_00c74360@@A	0143ccdc	00c74360	stale: no indexed row names it and no unindexed row source mentions it (bound by 00c74360; the target is now ?s_pSharedTable@CVtable_012bf050@@2PAXA)
+RETIRE	?g_listenerCount_0143cce0@@3JA	0143cce0	00c74360	stale: no indexed row names it and no unindexed row source mentions it (bound by 00c74360; the target is now ?s_refCount@CVtable_012bf050@@2JA)
+ADD	?ClearAllPrimitives@CTCGraphicAppearance@NGraphicAppearance@@IAEXXZ	004bf9a0	004bf9e0	exact Ego_r/FableWin spelling, not yet bound; first named by 004bf9e0
+ADD	?ClearScoreboard@CTCHeroOnlineScoreboard@@AAEXXZ	00562e10	00562e70	exact Ego_r/FableWin spelling, not yet bound; first named by 00562e70
+ADD	?SetAsRenderedThisFrame@CThing@@QAEXK@Z	004c7590	00640bb0	exact Ego_r/FableWin spelling, not yet bound; first named by 00640bb0
+ADD	?GetAssignableSpecialMoveIndexForButton@CGamePlayerInterface@@QBEJW4EXboxControllerButton@@@Z	00445ee0	00643fc8	exact Ego_r/FableWin spelling, not yet bound; first named by 00643fc8
+ADD	?GetPlayer@CDrawBase@NPlayerGui@@QAEAAVCPlayer@@XZ	00643d7c	00657d90	exact Ego_r/FableWin spelling, not yet bound; first named by 00657d90
+ADD	?Kill@CParticleSystem@NParticleEngine@@QAEXXZ	00af5870	00aee8c0	exact Ego_r/FableWin spelling, not yet bound; first named by 00aee8c0
+ADD	??1CVtable_012bf050@@UAE@XZ	00c74450	00c69680	the spelling the own row 00c74450 defines (landed; Ego_r/FableWin spell the member with another access / parameter: see DEFERRED.tsv), not yet bound; first named by 00c69680
+ADD	??_7CVtable_012bf050@@6B@	012bf050	00c74420	wave-31 spelling (no PDB name: libpk / GameCODA / descriptive owner or compiler-derived instantiation), not yet bound; first named by 00c74420
+ADD	?s_pSharedTable@CVtable_012bf050@@2PAXA	0143ccdc	00c74420	wave-31 spelling (no PDB name: libpk / GameCODA / descriptive owner or compiler-derived instantiation), not yet bound; first named by 00c74420
+ADD	?s_refCount@CVtable_012bf050@@2JA	0143cce0	00c74420	wave-31 spelling (no PDB name: libpk / GameCODA / descriptive owner or compiler-derived instantiation), not yet bound; first named by 00c74420
