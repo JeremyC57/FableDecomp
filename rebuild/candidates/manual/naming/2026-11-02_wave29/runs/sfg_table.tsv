@@ -1,0 +1,29 @@
+00d172e0	CQ_BountyHuntScript	CScriptThing	the storers are the CQ_BountyHuntScript entity Inits (landed ?Init@CBH_GangDeputy1@CQ_BountyHuntScript@NScript@@EAEXXZ 0x00D16460 and four more) storing Func = CQ_BountyHuntScript::WatchForDeputy1Killed 0x00D16570 / WatchForHostage1Killed / WatchForLeaderKilled ..
+00d2d6d0	CQ_EndGameFocalSitesScript	CScriptThing	the COMDAT sits in the CQ_EndGameFocalSitesScript TU (beside CEntityScriptBinding<CQ_EndGameFocalSitesScript>::CreateActiveEntityScript 0x00D2D570 / CActiveEntityScript<..>::SuspendableProcess 0x00D2D680); the remaining FableWin.pdb CSpawnedFunc1<*,CScriptThing> instantiation
+00d973a0	CQ_HobbeCaveScript	CScriptThing	the storer spawns Func = NScript::CQ_HobbeCaveScript::CheckJamesKilled 0x00D97170
+00d9da90	CQ_HobbeToothContestScript	CScriptThing	the storer is the landed ?Init@CQ_HobbeToothWhisper@CQ_HobbeToothContestScript@NScript@@EAEXXZ 0x00D9D4F0 (its parent script); the COMDAT sits in that TU beside CActiveEntityScript<CQ_HobbeToothContestScript>::SuspendableProcess 0x00D9DA40
+00da29f0	CQ_MinionCampScript	CScriptThing	the storer spawns Func = CQ_MinionCampScript::CheckBriarHit 0x00DA2860
+00da8480	CQ_MinionClifftopChaseScript	CScriptThing	the storers are the CQ_MinionClifftopChaseScript guard Mains (landed 0x00DA6D50 / 0x00DA7830 / 0x00DA7D30 / 0x00DA9C70; 0x00DA7D30 passes it to ?Add@CQ_MinionClifftopChaseScript@@)
+00dca6a0	CQ_OpeningGraveyardSecretPassageScript	CScriptThing	the COMDAT sits in the CQ_OpeningGraveyardSecretPassageScript TU (0x00DC2570 .. 0x00DC7020); the remaining FableWin.pdb CSpawnedFunc1<*,CScriptThing> instantiation
+00de8340	CQ_RansomVictimScript	CScriptThing	the storer spawns Func = NScript::CQ_RansomVictimScript::CheckVictimHit 0x00DE81B0
+00e052d0	CQ_TraderEscortScript	CScriptThing	the storer is the landed ?Init@CDarkwoodTrader@CQ_TraderEscortScript@NScript@@EAEXXZ 0x00E04BD0 spawning Func = CQ_TraderEscortScript::WatchForPickpocketing 0x00E04F10
+00e0e700	CQ_UndeadRisingScript	CScriptThing	the storers are the landed CQ_UndeadRisingScript entity rows 0x00E0DAA0 / 0x00E0E2E0 spawning Func = CQ_UndeadRisingScript::LookAfterHealth 0x00E0DBB0
+00e1f780	CQR_EscortTraderScript	CScriptThing	the storers spawn Func = CQR_EscortTraderScript::WatchForExpressionFollow 0x00E1FCF0 / WatchForExpressionWait 0x00E1FEF0 (and the landed CAttackingBandit::Init 0x00E1F3E0)
+00e2ea60	CV_AmbushScamScript	CScriptThing	the storers spawn Func = CV_AmbushScamScript::WatchForHeroAttack 0x00E2E520 / WatchForExpressions / WatchForTricksterComplete
+00e374c0	CV_ArcheryCompetitionScript	CScriptThing	the storer spawns Func = CV_ArcheryCompetitionScript::WatchForAttack 0x00E36390
+00e39510	CV_AssassinAttacksScript	CScriptThing	the storer (landed CAttackingAssassin::Init 0x00E38F80) spawns Func = CV_AssassinAttacksScript::WatchForAssassinDead 0x00E39140
+00e54200	CV_BeardyBaldyScript	CScriptThing	the storer spawns Func = CV_BeardyBaldyScript::WatchForAttack 0x00E53D90
+00e6b3a0	CV_ChapelOfEvilScript	CScriptThing	the storer (landed CAT_BanditContact::Init 0x00E6AAC0, an Acolyte entity of the chapel script) spawns Func = CV_ChapelOfEvilScript::WatchForAcolyteHit 0x00E6AF20
+00e7c830	CV_FishermanScript	CScriptThing	the storer is the landed ?Init@CFisherman@CV_FishermanScript@NScript@@EAEXXZ 0x00E7BD60 (its parent script)
+00e8d240	CV_GhostGrannyNecklaceScript	CScriptThing	the storer CV_GhostGrannyNecklaceScript::CreateBandit spawns Func = CV_GhostGrannyNecklaceScript::CheckBanditDead 0x00E8CF40
+00e9e0b0	CV_IntroductionToTrophiesScript	CScriptThing	the storer (landed 0x00E9DAC0) spawns Func = CV_IntroductionToTrophiesScript::WatchForAttack 0x00E9DC80
+00ea7650	CV_LostTraderScript	CScriptThing	the storer spawns Func = CV_LostTraderScript::WatchForQuestFailureState 0x00EA7460
+00ec5330	CV_RockTrollFirstEncounterScript	CScriptThing	the storers spawn Func = CV_RockTrollFirstEncounterScript::WatchForRockTroll 0x00EC5010 / 0x00EC5140
+00ed75c0	CV_SwordInTheStoneScript	CScriptThing	the storer spawns Func = CV_SwordInTheStoneScript::WatchForDeathDuringSwordPull 0x00ED7320
+00ed99a0	CV_TalentlessBardScript	CScriptThing	the storers spawn Func = CV_TalentlessBardScript::WatchForAttack 0x00ED9790
+00edd000	CV_TempleOfLightScript	CScriptThing	the storers (landed CTOL_AcolyteGood::Init 0x00EDC720) spawn Func = CV_TempleOfLightScript::WatchForAcolyteHit 0x00EDCB80
+00ef8d00	CPersonalScript_EmptyScript	CScriptThing	the storer is the landed ?Main@CUndeadFellow@CPersonalScript_EmptyScript@NScript@@EAEXXZ 0x00EF87D0 spawning Func = CPersonalScript_EmptyScript::ChangeAlpha 0x00EF8BC0
+00f09c70	CQ_AmbushTradersScript	CScriptThing	the storers (landed CQ_AmbushTradersScript entity Inits 0x00F05F30 .. and BanditHireSetup 0x00F081E0) spawn Func = CQ_AmbushTradersScript::WatchForHeroAttackOnBandit 0x00F061E0 / WatchForEnemyDeath ..
+00ce6c10	CHeroBoastsScript	CCharString	slot 4 is CSpawnedFunc1<NScript::CHeroBoastsScript,CCharString>::SuspendableProcess 0x00CE3D70 (catalog); the storer spawns Func = CHeroBoastsScript::BoastUseOnlyFryingPan 0x00CE40D0 and 40 more boasts
+00ce6be0	CHeroBoastsScript	long,CCharString	the vtable 0x012C36B8 is bound ??_7?$CSpawnedFunc2@VCHeroBoastsScript@NScript@@JVCCharString@@@@6B@ (its storer NScript::CHeroBoastsScript::Main 0x00CE1AF0); slot 4 is CSpawnedFunc2<NScript::CHeroBoastsScript,long,CCharString>::SuspendableProcess 0x00CE1C70 (catalog)
+00d0edb0	CQ_BanditCampBossBattleScript	float,CCharString	the COMDAT sits in the CQ_BanditCampBossBattleScript TU (beside CEntityScriptBinding<CQ_BanditCampBossBattleScript>::CreateActiveEntityScript 0x00D0EC50 / CActiveEntityScript<..>::SuspendableProcess 0x00D0ED60); the member at +0x40 is a CCharString, +0x3C a scalar: FableWin.pdb's only CSpawnedFunc2 of that script is <CQ_BanditCampBossBattleScript,float,CCharString>

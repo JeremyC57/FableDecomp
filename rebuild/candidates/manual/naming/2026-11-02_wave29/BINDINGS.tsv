@@ -1,0 +1,12 @@
+action	symbol	target	by_row	note
+RETIRE	?GetPRandomSeed@CWorld_Methods@@QAEPAIXZ	0049d810	00914c60	no row names it after wave 29 (was: 00914c60; bound by 00914c60); the target is now ?GetWorldSeed@CWorld@@QBEPAKXZ
+RETIRE	?GetPRandomSeed@WorldMethods@@QAEPAKXZ	0049d810	008a7e00	no row names it after wave 29 (was: 008a7e00; bound by 008a7e00); the target is now ?GetWorldSeed@CWorld@@QBEPAKXZ
+RETIRE	?CloseStaticMapFile@CEngineWorldMapRetail@@QAEXXZ	00b40000	00b428e0	no row names it after wave 29 (was: 00b428e0; bound by 00b428e0); the target is now ?CloseStaticMapFile@CEngineWorldMap@@QAEXXZ
+RETIRE	?LoadWaterData@CEngineWorldMapRetail@@QAEXXZ	00b41fa0	00b428e0	no row names it after wave 29 (was: 00b428e0; bound by 00b428e0); the target is now ?LoadWaterData@CEngineWorldMap@@AAEXXZ
+RETIRE	?OpenStaticMaps@CEngineWorldMapRetail@@QAEX_N@Z	00b42750	00b428e0	no row names it after wave 29 (was: 00b428e0; bound by 00b428e0); the target is now ?OpenStaticMaps@CEngineWorldMap@@AAEXW4STATIC_MAP_OPEN_STATE@CEngineMap@@@Z
+RETIRE	_EndDeflateStream	00c00ae0	00a3a930	no row names it after wave 29 (was: 00a3a930; bound by 00a3a930); the target is now _z_deflateEnd
+RETIRE	_inflateEnd	00c038d0	00a3abb0	no row names it after wave 29 (was: 00a3abb0; bound by 00a3abb0); the target is now _z_inflateEnd
+RETIRE	??0CSpawnedFuncBaseRuntime@@QAE@ABVCCharString@@K@Z	00cdd450	00d169e0	no row names it after wave 29 (was: 00d167c0,00d169e0,00d16bb0,00d16dc0,00d9d4f0,00e1f3e0,00e38f80,00e6aac0,00e9dac0,00edc720,00f083a0,00f08a30,00f08c30,00f09640; bound by 00d169e0); the target is now ??0CSpawnedFuncBase@@QAE@ABVCCharString@@K@Z
+RETIRE	_deflateEnd	00c00ae0	00a3a8c0	stale: no indexed row names it and no unindexed row source mentions it (bound by 00a3a8c0; the target is now _z_deflateEnd)
+ADD	?LoadWaterData@CEngineWorldMap@@AAEXXZ	00b41fa0	00b428e0	exact Ego_r/FableWin spelling, not yet bound; first named by 00b428e0
+ADD	?OpenStaticMaps@CEngineWorldMap@@AAEXW4STATIC_MAP_OPEN_STATE@CEngineMap@@@Z	00b42750	00b428e0	exact Ego_r/FableWin spelling, not yet bound; first named by 00b428e0

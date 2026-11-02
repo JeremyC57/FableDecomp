@@ -1,0 +1,15 @@
+addr       parity           behav  name
+00b40000   WARN SHARED_HEADER_AVAILABLE CEngineWaterRenderer
+00b40000   WARN SHARED_HEADER_AVAILABLE CStaticMapBankFile
+00b40000   WARN SHARED_HEADER_AVAILABLE CEngineWorldMap
+00b40000   RELOCATION_MATCH PASS   CEngineWorldMap::CloseStaticMapFile
+00b428e0   WARN RELOC_NAME: ?ReportStaticMapProgress@@YIXABVCCharString@@_NMI@Z -> 009e9f40 labelled 'NProgressDisplay::DisplayProgress'
+00b428e0   RELOCATION_MATCH PASS   CEngineWorldMap::SetStaticMapFileForUse
+00b42c70   WARN SHARED_HEADER_AVAILABLE CEngineWorldMap
+00b42c70   WARN RELOC_NAME: ?InsertN@?$CArray@PAVCEngineMap@@@@QAEXPAPAVCEngineMap@@KABQAV2@@Z -> 00b43f80 labelled 'std::vector::_M_fill_insert'
+00b42c70   RELOCATION_MATCH PASS   CEngineWorldMap::DeleteMap
+
+WINS: 3
+  00b40000 RELOCATION_MATCH CEngineWorldMap::?CloseStaticMapFile@CEngineWorldMap@@QAEXXZ
+  00b428e0 RELOCATION_MATCH CEngineWorldMap::?SetStaticMapFileForUse@CEngineWorldMap@@QAEXABVCWideString@@@Z
+  00b42c70 RELOCATION_MATCH CEngineWorldMap::?DeleteMap@CEngineWorldMap@@AAEXXZ

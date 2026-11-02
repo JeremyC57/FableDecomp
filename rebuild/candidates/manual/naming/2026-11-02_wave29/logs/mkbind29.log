@@ -1,0 +1,267 @@
+Counter({'RETIRE': 9, 'ADD': 2}) removed lines 9 added 2
+NEWDEF 00a3abb0 ?FinishDecompressStream@CCompressorZlib@@QAEXXZ
+NEWDEF 00b40000 ?CloseStaticMapFile@CEngineWorldMap@@QAEXXZ
+NEWDEF 00b428e0 ?SetStaticMapFileForUse@CEngineWorldMap@@QAEXABVCWideString@@@Z
+NEWDEF 00b42c70 ?DeleteMap@CEngineWorldMap@@AAEXXZ
+NEWDEF 00cdd380 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00cdd5f0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00cddbf0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00cde380 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ce1a30 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ce1af0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ce6be0 ??0?$CSpawnedFunc2@VCHeroBoastsScript@NScript@@JVCCharString@@@@QAE@ABVCCharString@@KPAVCHeroBoastsScript@NScript@@P823@AEXJV1@@ZJ2@Z ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ ??_7?$CSpawnedFunc2@VCHeroBoastsScript@NScript@@JVCCharString@@@@6B@ ??_G?$CSpawnedFunc2@VCHeroBoastsScript@NScript@@JVCCharString@@@@UAEPAXI@Z ?MakeOne@@YAPAVCSpawnedFuncBase@@AB
+NEWDEF 00ce6c10 ??0?$CSpawnedFunc1@VCHeroBoastsScript@NScript@@VCCharString@@@@QAE@ABVCCharString@@KPAVCHeroBoastsScript@NScript@@P823@AEXV1@@Z2@Z ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ ??_7?$CSpawnedFunc1@VCHeroBoastsScript@NScript@@VCCharString@@@@6B@ ??_G?$CSpawnedFunc1@VCHeroBoastsScript@NScript@@VCCharString@@@@UAEPAXI@Z ?MakeOne@@YAPAVCSpawnedFuncBase@@ABVCCha
+NEWDEF 00ce75b0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00cefa20 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00cefac0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00cf06f0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00cf9100 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00cf9550 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00cfaa50 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00cfaeb0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d009d0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d00af0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d03820 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d0edb0 ??0?$CSpawnedFunc2@VCQ_BanditCampBossBattleScript@NScript@@MVCCharString@@@@QAE@ABVCCharString@@KPAVCQ_BanditCampBossBattleScript@NScript@@P823@AEXMV1@@ZM2@Z ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ ??_7?$CSpawnedFunc2@VCQ_BanditCampBossBattleScript@NScript@@MVCCharString@@@@6B@ ??_G?$CSpawnedFunc2@VCQ_BanditCampBossBattleScript@NScript@@MVCCharString@
+NEWDEF 00d12b60 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d13070 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d167c0 ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d169e0 ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d16bb0 ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d16dc0 ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d172e0 ??0?$CSpawnedFunc1@VCQ_BountyHuntScript@NScript@@VCScriptThing@@@@QAE@ABVCCharString@@KPAVCQ_BountyHuntScript@NScript@@P823@AEXVCScriptThing@@@Z2@Z ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ ??_7?$CSpawnedFunc1@VCQ_BountyHuntScript@NScript@@VCScriptThing@@@@6B@ ??_G?$CSpawnedFunc1@VCQ_BountyHuntScript@NScript@@VCScriptThing@@@@UAEPAXI@Z ?MakeOne@@YAPAVCS
+NEWDEF 00d1cf00 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d23d20 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d25520 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d255e0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d273c0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d2a950 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d2d6d0 ??0?$CSpawnedFunc1@VCQ_EndGameFocalSitesScript@NScript@@VCScriptThing@@@@QAE@ABVCCharString@@KPAVCQ_EndGameFocalSitesScript@NScript@@P823@AEXVCScriptThing@@@Z2@Z ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ ??_7?$CSpawnedFunc1@VCQ_EndGameFocalSitesScript@NScript@@VCScriptThing@@@@6B@ ??_G?$CSpawnedFunc1@VCQ_EndGameFocalSitesScript@NScript@@VCScriptThing@@@
+NEWDEF 00d2f730 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d34660 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d3ad60 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d3bb50 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d50760 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d51460 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d55dd0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d5aaa0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d5dca0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d61c60 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d61d20 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d63dc0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d66560 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d66620 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d66ca0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d677d0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d69390 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d6f3c0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d78520 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d7ad70 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d7c740 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d80d50 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d834e0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d835d0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d84c20 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d87ba0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d87cb0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d89dc0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d89e60 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d8dc00 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d973a0 ??0?$CSpawnedFunc1@VCQ_HobbeCaveScript@NScript@@VCScriptThing@@@@QAE@ABVCCharString@@KPAVCQ_HobbeCaveScript@NScript@@P823@AEXVCScriptThing@@@Z2@Z ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ ??_7?$CSpawnedFunc1@VCQ_HobbeCaveScript@NScript@@VCScriptThing@@@@6B@ ??_G?$CSpawnedFunc1@VCQ_HobbeCaveScript@NScript@@VCScriptThing@@@@UAEPAXI@Z ?MakeOne@@YAPAVCSpawn
+NEWDEF 00d9a0a0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d9d4f0 ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d9da90 ??0?$CSpawnedFunc1@VCQ_HobbeToothContestScript@NScript@@VCScriptThing@@@@QAE@ABVCCharString@@KPAVCQ_HobbeToothContestScript@NScript@@P823@AEXVCScriptThing@@@Z2@Z ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ ??_7?$CSpawnedFunc1@VCQ_HobbeToothContestScript@NScript@@VCScriptThing@@@@6B@ ??_G?$CSpawnedFunc1@VCQ_HobbeToothContestScript@NScript@@VCScriptThing@@@
+NEWDEF 00d9e520 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00d9e5e0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00da0230 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00da05d0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00da29f0 ??0?$CSpawnedFunc1@VCQ_MinionCampScript@NScript@@VCScriptThing@@@@QAE@ABVCCharString@@KPAVCQ_MinionCampScript@NScript@@P823@AEXVCScriptThing@@@Z2@Z ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ ??_7?$CSpawnedFunc1@VCQ_MinionCampScript@NScript@@VCScriptThing@@@@6B@ ??_G?$CSpawnedFunc1@VCQ_MinionCampScript@NScript@@VCScriptThing@@@@UAEPAXI@Z ?MakeOne@@YAPAVCS
+NEWDEF 00da33a0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00da6d50 ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00da7830 ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00da8480 ??0?$CSpawnedFunc1@VCQ_MinionClifftopChaseScript@NScript@@VCScriptThing@@@@QAE@ABVCCharString@@KPAVCQ_MinionClifftopChaseScript@NScript@@P823@AEXVCScriptThing@@@Z2@Z ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ ??_7?$CSpawnedFunc1@VCQ_MinionClifftopChaseScript@NScript@@VCScriptThing@@@@6B@ ??_G?$CSpawnedFunc1@VCQ_MinionClifftopChaseScript@NScript@@VCScript
+NEWDEF 00da9c70 ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00daace0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00dbde40 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00dbf210 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00dbf2d0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00dc26b0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00dca6a0 ??0?$CSpawnedFunc1@VCQ_OpeningGraveyardSecretPassageScript@NScript@@VCScriptThing@@@@QAE@ABVCCharString@@KPAVCQ_OpeningGraveyardSecretPassageScript@NScript@@P823@AEXVCScriptThing@@@Z2@Z ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ ??_7?$CSpawnedFunc1@VCQ_OpeningGraveyardSecretPassageScript@NScript@@VCScriptThing@@@@6B@ ??_G?$CSpawnedFunc1@VCQ_OpeningGravey
+NEWDEF 00dcc660 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00dd2240 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00dd25c0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00dd2bc0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ddada0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00dddd80 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ddde20 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00de0790 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00de8340 ??0?$CSpawnedFunc1@VCQ_RansomVictimScript@NScript@@VCScriptThing@@@@QAE@ABVCCharString@@KPAVCQ_RansomVictimScript@NScript@@P823@AEXVCScriptThing@@@Z2@Z ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ ??_7?$CSpawnedFunc1@VCQ_RansomVictimScript@NScript@@VCScriptThing@@@@6B@ ??_G?$CSpawnedFunc1@VCQ_RansomVictimScript@NScript@@VCScriptThing@@@@UAEPAXI@Z ?MakeOne@
+NEWDEF 00debe50 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00deca10 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00deff60 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00df0200 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00df12e0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00df13a0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00df4150 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00df4240 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00df4e00 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00df5f50 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00dfa390 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e00c20 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e052d0 ??0?$CSpawnedFunc1@VCQ_TraderEscortScript@NScript@@VCScriptThing@@@@QAE@ABVCCharString@@KPAVCQ_TraderEscortScript@NScript@@P823@AEXVCScriptThing@@@Z2@Z ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ ??_7?$CSpawnedFunc1@VCQ_TraderEscortScript@NScript@@VCScriptThing@@@@6B@ ??_G?$CSpawnedFunc1@VCQ_TraderEscortScript@NScript@@VCScriptThing@@@@UAEPAXI@Z ?MakeOne@
+NEWDEF 00e0b0a0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e0e700 ??0?$CSpawnedFunc1@VCQ_UndeadRisingScript@NScript@@VCScriptThing@@@@QAE@ABVCCharString@@KPAVCQ_UndeadRisingScript@NScript@@P823@AEXVCScriptThing@@@Z2@Z ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ ??_7?$CSpawnedFunc1@VCQ_UndeadRisingScript@NScript@@VCScriptThing@@@@6B@ ??_G?$CSpawnedFunc1@VCQ_UndeadRisingScript@NScript@@VCScriptThing@@@@UAEPAXI@Z ?MakeOne@
+NEWDEF 00e0e8e0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e13e20 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e18570 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e1a8d0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e1a990 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e1dc30 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e1e110 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e1f3e0 ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e1f780 ??0?$CSpawnedFunc1@VCQR_EscortTraderScript@NScript@@VCScriptThing@@@@QAE@ABVCCharString@@KPAVCQR_EscortTraderScript@NScript@@P823@AEXVCScriptThing@@@Z2@Z ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ ??_7?$CSpawnedFunc1@VCQR_EscortTraderScript@NScript@@VCScriptThing@@@@6B@ ??_G?$CSpawnedFunc1@VCQR_EscortTraderScript@NScript@@VCScriptThing@@@@UAEPAXI@Z ?Make
+NEWDEF 00e25690 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e25a10 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e26820 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e27880 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e27920 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e28d40 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e29a80 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e2ac90 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e2ea60 ??0?$CSpawnedFunc1@VCV_AmbushScamScript@NScript@@VCScriptThing@@@@QAE@ABVCCharString@@KPAVCV_AmbushScamScript@NScript@@P823@AEXVCScriptThing@@@Z2@Z ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ ??_7?$CSpawnedFunc1@VCV_AmbushScamScript@NScript@@VCScriptThing@@@@6B@ ??_G?$CSpawnedFunc1@VCV_AmbushScamScript@NScript@@VCScriptThing@@@@UAEPAXI@Z ?MakeOne@@YAPAVCS
+NEWDEF 00e324a0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e374c0 ??0?$CSpawnedFunc1@VCV_ArcheryCompetitionScript@NScript@@VCScriptThing@@@@QAE@ABVCCharString@@KPAVCV_ArcheryCompetitionScript@NScript@@P823@AEXVCScriptThing@@@Z2@Z ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ ??_7?$CSpawnedFunc1@VCV_ArcheryCompetitionScript@NScript@@VCScriptThing@@@@6B@ ??_G?$CSpawnedFunc1@VCV_ArcheryCompetitionScript@NScript@@VCScriptThin
+NEWDEF 00e37730 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e38f80 ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e39510 ??0?$CSpawnedFunc1@VCV_AssassinAttacksScript@NScript@@VCScriptThing@@@@QAE@ABVCCharString@@KPAVCV_AssassinAttacksScript@NScript@@P823@AEXVCScriptThing@@@Z2@Z ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ ??_7?$CSpawnedFunc1@VCV_AssassinAttacksScript@NScript@@VCScriptThing@@@@6B@ ??_G?$CSpawnedFunc1@VCV_AssassinAttacksScript@NScript@@VCScriptThing@@@@UAEPAXI
+NEWDEF 00e39540 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e39aa0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e46c40 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e47910 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e4f730 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e54200 ??0?$CSpawnedFunc1@VCV_BeardyBaldyScript@NScript@@VCScriptThing@@@@QAE@ABVCCharString@@KPAVCV_BeardyBaldyScript@NScript@@P823@AEXVCScriptThing@@@Z2@Z ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ ??_7?$CSpawnedFunc1@VCV_BeardyBaldyScript@NScript@@VCScriptThing@@@@6B@ ??_G?$CSpawnedFunc1@VCV_BeardyBaldyScript@NScript@@VCScriptThing@@@@UAEPAXI@Z ?MakeOne@@YAP
+NEWDEF 00e543b0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e57c60 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e5d240 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e5d4f0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e628e0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e62a00 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e69030 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e6aac0 ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e6b3a0 ??0?$CSpawnedFunc1@VCV_ChapelOfEvilScript@NScript@@VCScriptThing@@@@QAE@ABVCCharString@@KPAVCV_ChapelOfEvilScript@NScript@@P823@AEXVCScriptThing@@@Z2@Z ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ ??_7?$CSpawnedFunc1@VCV_ChapelOfEvilScript@NScript@@VCScriptThing@@@@6B@ ??_G?$CSpawnedFunc1@VCV_ChapelOfEvilScript@NScript@@VCScriptThing@@@@UAEPAXI@Z ?MakeOne@
+NEWDEF 00e6e2e0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e756d0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e75ba0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e76920 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e7b440 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e7c830 ??0?$CSpawnedFunc1@VCV_FishermanScript@NScript@@VCScriptThing@@@@QAE@ABVCCharString@@KPAVCV_FishermanScript@NScript@@P823@AEXVCScriptThing@@@Z2@Z ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ ??_7?$CSpawnedFunc1@VCV_FishermanScript@NScript@@VCScriptThing@@@@6B@ ??_G?$CSpawnedFunc1@VCV_FishermanScript@NScript@@VCScriptThing@@@@UAEPAXI@Z ?MakeOne@@YAPAVCSpawn
+NEWDEF 00e7e150 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e7f030 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e820d0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e82220 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e8b8a0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e8b9c0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e8d240 ??0?$CSpawnedFunc1@VCV_GhostGrannyNecklaceScript@NScript@@VCScriptThing@@@@QAE@ABVCCharString@@KPAVCV_GhostGrannyNecklaceScript@NScript@@P823@AEXVCScriptThing@@@Z2@Z ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ ??_7?$CSpawnedFunc1@VCV_GhostGrannyNecklaceScript@NScript@@VCScriptThing@@@@6B@ ??_G?$CSpawnedFunc1@VCV_GhostGrannyNecklaceScript@NScript@@VCScript
+NEWDEF 00e90790 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e929b0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e93da0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e96e70 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e98700 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e9c410 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e9c4b0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e9dac0 ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e9e0b0 ??0?$CSpawnedFunc1@VCV_IntroductionToTrophiesScript@NScript@@VCScriptThing@@@@QAE@ABVCCharString@@KPAVCV_IntroductionToTrophiesScript@NScript@@P823@AEXVCScriptThing@@@Z2@Z ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ ??_7?$CSpawnedFunc1@VCV_IntroductionToTrophiesScript@NScript@@VCScriptThing@@@@6B@ ??_G?$CSpawnedFunc1@VCV_IntroductionToTrophiesScript@NScri
+NEWDEF 00e9fc10 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00e9fcd0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ea1630 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ea2de0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ea7650 ??0?$CSpawnedFunc1@VCV_LostTraderScript@NScript@@VCScriptThing@@@@QAE@ABVCCharString@@KPAVCV_LostTraderScript@NScript@@P823@AEXVCScriptThing@@@Z2@Z ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ ??_7?$CSpawnedFunc1@VCV_LostTraderScript@NScript@@VCScriptThing@@@@6B@ ??_G?$CSpawnedFunc1@VCV_LostTraderScript@NScript@@VCScriptThing@@@@UAEPAXI@Z ?MakeOne@@YAPAVCS
+NEWDEF 00ea7760 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ea8740 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ea8830 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00eae980 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00eb6cb0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00eb6d70 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ebccd0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ebeee0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ec1240 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ec1850 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ec1910 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ec3ca0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ec3d40 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ec5330 ??0?$CSpawnedFunc1@VCV_RockTrollFirstEncounterScript@NScript@@VCScriptThing@@@@QAE@ABVCCharString@@KPAVCV_RockTrollFirstEncounterScript@NScript@@P823@AEXVCScriptThing@@@Z2@Z ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ ??_7?$CSpawnedFunc1@VCV_RockTrollFirstEncounterScript@NScript@@VCScriptThing@@@@6B@ ??_G?$CSpawnedFunc1@VCV_RockTrollFirstEncounterScript@N
+NEWDEF 00ec5440 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ed0f50 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ed10a0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ed3a90 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ed4b90 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ed4d20 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ed75c0 ??0?$CSpawnedFunc1@VCV_SwordInTheStoneScript@NScript@@VCScriptThing@@@@QAE@ABVCCharString@@KPAVCV_SwordInTheStoneScript@NScript@@P823@AEXVCScriptThing@@@Z2@Z ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ ??_7?$CSpawnedFunc1@VCV_SwordInTheStoneScript@NScript@@VCScriptThing@@@@6B@ ??_G?$CSpawnedFunc1@VCV_SwordInTheStoneScript@NScript@@VCScriptThing@@@@UAEPAXI
+NEWDEF 00ed7790 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ed7830 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ed99a0 ??0?$CSpawnedFunc1@VCV_TalentlessBardScript@NScript@@VCScriptThing@@@@QAE@ABVCCharString@@KPAVCV_TalentlessBardScript@NScript@@P823@AEXVCScriptThing@@@Z2@Z ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ ??_7?$CSpawnedFunc1@VCV_TalentlessBardScript@NScript@@VCScriptThing@@@@6B@ ??_G?$CSpawnedFunc1@VCV_TalentlessBardScript@NScript@@VCScriptThing@@@@UAEPAXI@Z ?
+NEWDEF 00edae70 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00edc720 ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00edd000 ??0?$CSpawnedFunc1@VCV_TempleOfLightScript@NScript@@VCScriptThing@@@@QAE@ABVCCharString@@KPAVCV_TempleOfLightScript@NScript@@P823@AEXVCScriptThing@@@Z2@Z ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ ??_7?$CSpawnedFunc1@VCV_TempleOfLightScript@NScript@@VCScriptThing@@@@6B@ ??_G?$CSpawnedFunc1@VCV_TempleOfLightScript@NScript@@VCScriptThing@@@@UAEPAXI@Z ?Make
+NEWDEF 00edec70 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ee4710 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ee6df0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ee6e90 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ee8210 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ee8eb0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ee8f50 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ee9120 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ee94d0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ee9f80 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00eea680 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00eeadb0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00eeb670 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00eebcb0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00eec2d0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00eec690 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00eec7d0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00eecf70 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00eed160 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00eed2c0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00eee760 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00eee800 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00eee9d0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00eeea90 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00eeec00 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00eeed20 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00eeeed0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00eef610 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00eef7a0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00eef900 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00eefa60 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00eefbc0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00eefd20 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00eefe80 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00eeffd0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ef8d00 ??0?$CSpawnedFunc1@VCPersonalScript_EmptyScript@NScript@@VCScriptThing@@@@QAE@ABVCCharString@@KPAVCPersonalScript_EmptyScript@NScript@@P823@AEXVCScriptThing@@@Z2@Z ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ ??_7?$CSpawnedFunc1@VCPersonalScript_EmptyScript@NScript@@VCScriptThing@@@@6B@ ??_G?$CSpawnedFunc1@VCPersonalScript_EmptyScript@NScript@@VCScriptThin
+NEWDEF 00ef91c0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00ef9f70 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00efa450 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00efaff0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00efb140 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00efb6a0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00efbc00 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00efc1c0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00efc260 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00efc7e0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00efc960 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00efe410 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00eff090 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00eff800 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00eff8a0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00effd70 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00f013c0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00f017f0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00f018b0 ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00f01eb0 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00f083a0 ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00f08a30 ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00f08c30 ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00f09640 ??1CSpawnedFuncBase@@UAE@XZ
+NEWDEF 00f09c70 ??0?$CSpawnedFunc1@VCQ_AmbushTradersScript@NScript@@VCScriptThing@@@@QAE@ABVCCharString@@KPAVCQ_AmbushTradersScript@NScript@@P823@AEXVCScriptThing@@@Z2@Z ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ ??_7?$CSpawnedFunc1@VCQ_AmbushTradersScript@NScript@@VCScriptThing@@@@6B@ ??_G?$CSpawnedFunc1@VCQ_AmbushTradersScript@NScript@@VCScriptThing@@@@UAEPAXI@Z ?Make
+NEWDEF 00f0f680 ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ ??1CSpawnedFuncBase@@UAE@XZ

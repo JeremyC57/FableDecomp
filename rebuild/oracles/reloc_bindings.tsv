@@ -5863,7 +5863,6 @@ _GetTheme@4	0044c6b0	0088ffb0
 ?RemoveIf@EventListMethods@@QAEXPBJ@Z	008ac890	008a7980
 ??0CopyString@@QAE@ABVCCharString@@@Z	0099ec30	008a7e00
 ?GetAllWithScriptName@ThingSearchMethods@@QBEXABUHasScriptName@@AAUThingVector@@@Z	005ed860	008a7e00
-?GetPRandomSeed@WorldMethods@@QAEPAKXZ	0049d810	008a7e00
 ?ImpSetEntityAsAllyOfThing@CGameScriptInterface@@QBEXABVCScriptThing@@0_N@Z	0089c100	008a7ec0
 ?GetAllWithTC@ThingSearchMethods@@QBEXABUHasTC@@AAUThingVector@@@Z	0048d400	008a7f60
 ?SetForceVisible@CTCBobNative@@QAEXXZ	00787740	008a7f60
@@ -6406,7 +6405,6 @@ __imp__GetTickCount@0	0143fdfc	008f9e60
 ??_7CTCWillResponse@@6B@	01270534	007e3c70
 ??_7CCreatureAction_PerformExpression@@6B@	012743dc	0084bd40
 ??_7CModeBriarRoseTeleportInvulnerable@NCreatureMode@@6B@	01280228	008c35d0
-?GetPRandomSeed@CWorld_Methods@@QAEPAIXZ	0049d810	00914c60
 ??_7CCreatureAction_DragonTakeOffIntoFlying@@6B@	01293a7c	00953bc0
 ?EnemyMargin@@3MB	0122ded8	0096e700
 ?PreferredPosMargin@@3MB	01238170	0096e700
@@ -7795,8 +7793,6 @@ _deflate	00c006a0	00a3a7f0
 _deflateInit_	00c021c0	00a3a7f0
 _inflate	00c02470	00a3a840
 _inflateInit_	00c02310	00a3a840
-_deflateEnd	00c00ae0	00a3a8c0
-_EndDeflateStream	00c00ae0	00a3a930
 ?fn_a3a9c0@@YAXXZ	00a3a9c0	00a3aa10
 ?fn_a3aa00@@YAXXZ	00a3aa00	00a3aa10
 ?ZAlloc@CCompressorZlib@@SAPAXPAXII@Z	00a3a9c0	00a3aa40
@@ -7806,7 +7802,6 @@ _EndDeflateStream	00c00ae0	00a3a930
 ?ZlibFree@@YAXPAX0@Z	00a3aa00	00a3ab00
 ?g_staticInflate@@3USStaticInflateState@@A	013d27ec	00a3ab00
 _inflateReset	00c021f0	00a3ab00
-_inflateEnd	00c038d0	00a3abb0
 ?InternalDecompress@CCompressorZlib_Retail@@QAEKPBXKPAXK@Z	00a3ab00	00a3abe0
 ?InternalCompress@CCompressorZlib_Retail@@QAEKPBXKPAXK@Z	00a3aa40	00a3ac40
 ?DeallocateUnusedMemory@?$CArray@E@@QAEXXZ	009b5db0	00a3add0
@@ -8604,10 +8599,7 @@ _g_GFPreMainMemoryUsed	013d2e0c	00aeaab0
 ?SetMapVisibility@SMapState@@QAEXPAUCRetailMapList@@_N@Z	00b41db0	00b42390
 ?SetMapVisibility@CEngineMap@@QAEXPAUSMapRecord_00b423b0@@J@Z	00b41db0	00b423b0
 ?erase@CRetailBoxVector_00b424d0@@QAEXPAUC2DBoxI_00b424d0@@0@Z	00515bc0	00b424d0
-?CloseStaticMapFile@CEngineWorldMapRetail@@QAEXXZ	00b40000	00b428e0
 ?EnablePoolAllocation@CStaticMapPool@@QAEX_N@Z	00bda070	00b428e0
-?LoadWaterData@CEngineWorldMapRetail@@QAEXXZ	00b41fa0	00b428e0
-?OpenStaticMaps@CEngineWorldMapRetail@@QAEX_N@Z	00b42750	00b428e0
 ?ReportStaticMapProgress@@YIXABVCCharString@@_NMI@Z	009e9f40	00b428e0
 ?gStaticMapEngineState@@3PAUCStaticMapEngineState@@A	01436ea8	00b428e0
 ?DeleteMap@CEngineWorldMap@@QAEXJ@Z	00b42b10	00b42c70
@@ -10747,7 +10739,6 @@ __imp__CoTaskMemFree@4	01440630	00cb1cc0
 ?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ	00cb7940	00d15090
 ??_7CEvent_00d16780@@6B@	01238c8c	00d16780
 ??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z	004abe90	00d169e0
-??0CSpawnedFuncBaseRuntime@@QAE@ABVCCharString@@K@Z	00cdd450	00d169e0
 ??1CScriptThingRuntime@@UAE@XZ	004aa840	00d169e0
 ??_7CScriptThingRuntime@@6B@	01238c8c	00d169e0
 ??_7CSpawnedFuncPhase3@@6B@	012ca5e0	00d169e0
@@ -35330,3 +35321,5 @@ _z_inflateEnd	00c038d0	00a3acc0
 ??1?$_List_base@VCSpriteTrailEntry@CEnginePrimitiveSpriteTrail@@V?$allocator@VCSpriteTrailEntry@CEnginePrimitiveSpriteTrail@@@std@@@std@@QAE@XZ	00b09e40	00b0a160
 ??1CPSCSplineBase@NParticleEngine@@UAE@XZ	00b0a060	00b0a160
 ??1CDspObject@@UAE@XZ	00c74450	00c775a0
+?LoadWaterData@CEngineWorldMap@@AAEXXZ	00b41fa0	00b428e0
+?OpenStaticMaps@CEngineWorldMap@@AAEXW4STATIC_MAP_OPEN_STATE@CEngineMap@@@Z	00b42750	00b428e0
