@@ -26017,3 +26017,13 @@ chunk	address	module	name	length
 700	007f5810	CVillageTaskCarryCrate	AssignCreatureToTask	71
 700	008abb50	CVillageTaskCarryCrate	AssignCreatureToTask	71
 700	008d73e0	CVillageTaskCarryCrate	AssignCreatureToTask	71
+701	0079bc80	CVillageTaskCarryCrate	AssignCreatureToTask	71
+701	00a69a80	CManagedTextureData	ReleaseTexture	76
+701	009d58a0	CBankFileAsync	?Close@CBankFileAsync@@UAEXXZ	36
+701	00f25e40	CAIStateGroup_HoverHornetQueen	~CAIStateGroup_HoverHornetQueen	33
+701	00718d50	CCreatureAction_PerformExpressionExtended	~CCreatureAction_PerformExpressionExtended	52
+701	0084adc0	CCreatureAction_PerformExpressionExtended	~CCreatureAction_PerformExpressionExtended	52
+701	009822e0	CCreatureAction_PerformExpressionExtended	~CCreatureAction_PerformExpressionExtended	52
+701	00a620d0	CParticleEffect	~CParticleEffect	51
+701	008f6170	CParticleEffect	~CParticleEffect	40
+701	00541350	CParticleEffect	~CParticleEffect	50
