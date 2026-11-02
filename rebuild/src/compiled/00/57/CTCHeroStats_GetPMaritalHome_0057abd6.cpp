@@ -1,4 +1,9 @@
-// CTCHeroStats::GetPMaritalHome(const CThing*) const -- the building the hero shares with this spouse (first marriage record naming her whose home still exists as a building), else null
+// CTCHeroStats::GetPMaritalHome(const CThingAICreature*) const -- the building the hero shares with this spouse (first marriage record naming her whose home still exists as a building), else null
+// Leaf: ?GetPMaritalHome@CTCHeroStats@@QBEPBVCThingBuilding@@PBVCThingAICreature@@@Z
+// Naming wave 31 (family d3): DECISIONS_W30 D3: GetThingManager is the inherited protected ?GetThingManager@CTCBase@@IBEABVCThingManager@@XZ
+//   0x00686AF0 (engine/CTCBase.h retail branch; was the transitional ?GetThingManager@CTCHeroStats_Retail@@QBE...), and the own row is
+//   the PDB ?GetPMaritalHome@CTCHeroStats@@QBEPBVCThingBuilding@@PBVCThingAICreature@@@Z (Ego_r.pdb / FableWin.pdb; was the invented
+//   ?GetPMaritalHome@CTCHeroStats_Retail@@QBEPAVCThing@@PBV2@@Z)
 // Naming wave 30 (family c699): the UID lookup is the const PDB pair CTCBase::GetThingManager() const 0x00686AF0 (const CThingManager&) and
 //   ?PeekPThingWithUID@CThingManager@@QBEPBVCThing@@_K@Z 0x0051ED60 (both PDBs); was CWorld::GetThingFromUID through GetWorld()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057ABD6, 83 bytes.
@@ -17,12 +22,17 @@
 // from the PDB (WifeUID +0x00, MaritalHomeUID +0x08 -> node +0x08/+0x10); CThing::UniqueID +0x18 (PDB).
 #pragma optimize("s", on)
 
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                              // GetThingManager() const 0x00686AF0 (protected)
+
 class CThing { public:
     unsigned char    _pad_0x00[0x10];
     unsigned char    ThingType;                // +0x10 (3 = building)
     unsigned char    _pad_0x11[0x7];
     unsigned __int64 UniqueID;                 // +0x18
 };
+class CThingBuilding : public CThing { };     // the PDB return type (single inheritance from CThing)
+class CThingAICreature : public CThing { };   // the PDB parameter type
 
 class CThingManager { public:
     const CThing* PeekPThingWithUID(unsigned __int64 uid) const;   // 0x0051ED60 (Ego_r.pdb / FableWin.pdb)
@@ -37,22 +47,22 @@ struct CHeroMarriageInfoNode {                 // std::list<CHeroMarriageInfo> n
     bool                   GayMarriage;        // +0x1C
 };
 
-struct CTCHeroStats_Retail {
-    unsigned char          _pad_0x00[0x1D8];
+class CTCHeroStats : public CTCBase {          // RTTI .?AVCTCHeroStats@@ : CTCBase
+public:
+    unsigned char          _pad_0x0c[0x1D8 - 0x0C];
     CHeroMarriageInfoNode* Marriages_Head;     // +0x1D8 (PDB +0x1F0)
 
-    const CThingManager& GetThingManager() const; // 0x00686AF0 (Ego_r.pdb / FableWin.pdb: CTCBase, protected, const)
-    CThing* GetPMaritalHome(const CThing* wife) const;
+    const CThingBuilding* GetPMaritalHome(const CThingAICreature* wife) const;
 };
 
-CThing* CTCHeroStats_Retail::GetPMaritalHome(const CThing* wife) const
+const CThingBuilding* CTCHeroStats::GetPMaritalHome(const CThingAICreature* wife) const
 {
     CHeroMarriageInfoNode* head = Marriages_Head;
     for (CHeroMarriageInfoNode* node = head->Next; node != head; node = node->Next) {
         if (node->WifeUID == wife->UniqueID) {
             const CThing* home = GetThingManager().PeekPThingWithUID(node->MaritalHomeUID);
             if (home && home->ThingType == 3)
-                return (CThing*)home;
+                return static_cast<const CThingBuilding*>(home);
         }
     }
     return 0;

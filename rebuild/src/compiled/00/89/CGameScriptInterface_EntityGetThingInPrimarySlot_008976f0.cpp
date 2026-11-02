@@ -1,5 +1,7 @@
 // CGameScriptInterface::EntityGetThingInPrimarySlot(const CScriptThing&) -- return live primary carried thing or empty script handle
 // Leaf: ?EntityGetThingInPrimarySlot@CGameScriptInterface@@UBE?AVCScriptThing@@ABV2@@Z
+// Naming wave 31 (family d3): DECISIONS_W30 D3: the carrying component is CTCCarrying and its call the PDB const
+//   ?GetThingInPrimarySlot@CTCCarrying@@QBEPAVCThing@@XZ 0x006A1440 (was the transitional ?GetPrimarySlotThing@CarryingMethods@@QAEPAVCThing@@XZ)
 // Naming wave 30 (family csm): the ScriptMethods projection (??1ScriptMethods@@UAE@XZ bound to 0x004AA840) is engine/CScriptThing.h's retail class
 //   (virtual ~CScriptThing, Ego_r.pdb / FableWin.pdb ??1CScriptThing@@UAE@XZ; the projection's inline bodies defined after the include),
 //   CThingNative is the CThing layout (?GetScriptThing@CThing@@QBE?AVCScriptThing@@XZ, both PDBs: const), and the own row is the retail
@@ -29,10 +31,10 @@ inline CThing* CScriptThing::GetPThing() const { if (!PImp.Data) return 0; retur
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #include "engine/CGameScriptInterface.h"
 
-struct CarryingMethods{CThing* GetPrimarySlotThing();}; //006A1440
+class CTCCarrying{ public:CThing* GetThingInPrimarySlot() const;}; //006A1440 ?GetThingInPrimarySlot@CTCCarrying@@QBEPAVCThing@@XZ (Ego_r.pdb / FableWin.pdb)
 
 CScriptThing CGameScriptInterface::EntityGetThingInPrimarySlot(const CScriptThing& script)const{
  CScriptThing result;
- if(script.IsAlive()){CThing* thing=script.GetPThing();if(thing->UsingComponents[2]&0x40){ComponentMap* map=&thing->Components;const ComponentEntry* it=map->LowerBound((ETCInterfaceType)70);const ComponentEntry* end=map->Finish;CarryingMethods* carrying=static_cast<CarryingMethods*>(((void*)(it==end||it->first>70?end:it)->second));CThing* carried=carrying->GetPrimarySlotThing();if(carried&&!(carried->DeletedFlags&1))result=carried->GetScriptThing();}}
+ if(script.IsAlive()){CThing* thing=script.GetPThing();if(thing->UsingComponents[2]&0x40){ComponentMap* map=&thing->Components;const ComponentEntry* it=map->LowerBound((ETCInterfaceType)70);const ComponentEntry* end=map->Finish;CTCCarrying* carrying=static_cast<CTCCarrying*>(((void*)(it==end||it->first>70?end:it)->second));CThing* carried=carrying->GetThingInPrimarySlot();if(carried&&!(carried->DeletedFlags&1))result=carried->GetScriptThing();}}
  return result;
 }

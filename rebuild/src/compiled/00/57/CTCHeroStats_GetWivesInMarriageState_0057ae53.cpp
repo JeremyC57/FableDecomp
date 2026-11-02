@@ -1,5 +1,8 @@
 // CTCHeroStats::GetWivesInMarriageState(std::list<CThingCreatureBase*>&, EMarriageState) const -- collects the living wives whose marriage is in the given state (0 = any)
 // Leaf: GetWivesInMarriageState
+// Naming wave 31 (family d3): DECISIONS_W30 D3: GetThingManager is the inherited protected ?GetThingManager@CTCBase@@IBEABVCThingManager@@XZ
+//   0x00686AF0 (engine/CTCBase.h retail branch; was the transitional ?GetThingManager@CTCHeroStats@@QBE...). The own row's PDB
+//   signature (list<const CThingAICreature*>&, EMarriageState) waits on the CThingList stand-in (not this family)
 // Naming wave 30 (family c699): the UID lookup is the const PDB pair CTCBase::GetThingManager() const 0x00686AF0 (const CThingManager&) and
 //   ?PeekPThingWithUID@CThingManager@@QBEPBVCThing@@_K@Z 0x0051ED60 (both PDBs); was CWorld::GetThingFromUID
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057AE53, 97 bytes; frame-pointer size TU
@@ -16,6 +19,9 @@
 // CHeroMarriageInfo {WifeUID +0x08, MaritalHomeUID +0x10, State +0x18, GayMarriage +0x1C}}.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
+
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                              // GetThingManager() const 0x00686AF0 (protected)
 
 class CThing { public:
     unsigned char _pad_0x00[0x10];
@@ -44,13 +50,11 @@ struct CHeroMarriageInfoNode {
     bool                   GayMarriage;              // +0x1C
 };
 
-class CTCHeroStats { public:
-    void*                  __vftable;                // +0x00
-    void*                  ParentThing;              // +0x04 CTCBase
-    unsigned char          _pad_0x08[0x1D0];
+class CTCHeroStats : public CTCBase {               // RTTI .?AVCTCHeroStats@@ : CTCBase (vptr, ParentThing +0x04 from the header)
+public:
+    unsigned char          _pad_0x0c[0x1D8 - 0x0C];
     CHeroMarriageInfoNode* Marriages_Head;           // +0x1D8 list sentinel (PDB +0x1F0)
 
-    const CThingManager& GetThingManager() const;    // 0x00686AF0 (Ego_r.pdb / FableWin.pdb: CTCBase, protected, const)
     void GetWivesInMarriageState(CThingList& wives, long state) const;
 };
 
