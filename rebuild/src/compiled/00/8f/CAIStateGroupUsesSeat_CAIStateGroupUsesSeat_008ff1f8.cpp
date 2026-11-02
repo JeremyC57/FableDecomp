@@ -1,4 +1,6 @@
 // CAIStateGroup_UsesSeat::CAIStateGroup_UsesSeat() -- base, own vtable, the seat pointer, no seat position yet.
+// Leaf: ??0CAIStateGroup_UsesSeat@@IAE@XZ
+// Naming wave 32 (family aisg): the ctor is protected (IAE, both PDBs) and the local CAIStateGroupBase (a declared virtual dtor neither PDB has) is engine/CAIStateGroupBase.h's retail branch
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008FF1F8, length 51 bytes.
 // Callees: CAIStateGroupBase::CAIStateGroupBase() @ 0x008FD255, CBaseIntelligentPointer::CBaseIntelligentPointer()
 // @ 0x00A01B10 (PSeat at +0x14, vtable 0x0125A858 = CIntelligentPointer<CThingObject>). Own vtable 0x0128B53C
@@ -33,20 +35,19 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-class CAIStateGroupBase { public:
-    virtual ~CAIStateGroupBase();
-    unsigned char _pad[0x10];                   // +0x4..+0x13
-    CAIStateGroupBase();                        // 0x008FD255
-};
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#include "engine/CAIStateGroupBase.h"                  // CAIStateGroupBase : CBaseClass (0x14), ctor 0x008FD255
 
-struct CAIStateGroup_UsesSeat : CAIStateGroupBase {   // vtable 0x0128B53C
+class CAIStateGroup_UsesSeat : public CAIStateGroupBase {   // vtable 0x0128B53C
+public:
     CIntelligentPointer<CThingObject> PSeat;            // +0x14
     bool GotSeatPos;                            // +0x1c
     bool Sitting;                               // +0x1d
     long SeatPosIndex;                          // +0x20
     float SeatPos_X, SeatPos_Y, SeatPos_Z;      // +0x24 C3DVector
     bool SittingOnBench;                        // +0x30
-    CAIStateGroup_UsesSeat();
+protected:
+    CAIStateGroup_UsesSeat();                   // ??0CAIStateGroup_UsesSeat@@IAE@XZ (Ego_r.pdb / FableWin.pdb: protected)
 };
 
 CAIStateGroup_UsesSeat::CAIStateGroup_UsesSeat()

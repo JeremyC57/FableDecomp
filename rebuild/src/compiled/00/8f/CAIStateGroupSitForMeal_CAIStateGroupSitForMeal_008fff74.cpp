@@ -1,38 +1,46 @@
-// CAIStateGroup_SitForMeal::CAIStateGroup_SitForMeal() -- base CBase_008ff1f8(), this vtable, then the embedded CIntelligentPointer member at +0x34
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x008FFF74, oracle length 36 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; push edi ; mov esi,ecx ; call CBase_008ff1f8::CBase_008ff1f8 ; lea edi,[esi+0x34] ; mov ecx,edi ; mov dword ptr [esi],offset CAIStateGroup_SitForMeal::`vftable' ; call CMemberBase_00a01b10::CMemberBase_00a01b10 ; mov dword ptr [edi],offset CIntelligentPointer::`vftable' ; pop edi ; mov eax,esi ; pop esi ; ret
-// Default constructor: base CBase_008ff1f8() @ 0x008FF1F8 out of line, this class's vtable
-// (0x0128BD34), then the embedded member of type CIntelligentPointer at +0x34 is constructed with its
-// own constructor inlined: its base CMemberBase_00a01b10() @ 0x00A01B10 and its vtable (0x01238C6C).
-// Class names come from rtti-vtables.tsv; base-constructor names from unique manifest labels.
-// One of 73 bodies of this shape.
-struct CBase_008ff1f8 {
-    virtual void v00();
-    CBase_008ff1f8();                           // 0x008FF1F8
+// CAIStateGroup_SitForMeal::CAIStateGroup_SitForMeal() -- base CAIStateGroup_UsesSeat(), own vtable, then the PPot member (+0x34)
+// Leaf: ??0CAIStateGroup_SitForMeal@@QAE@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x008FFF74, 36 bytes, thiscall, `ret`.
+// Identity: stores own vtable 0x0128BD34 (RTTI .?AVCAIStateGroup_SitForMeal@@, base CAIStateGroup_UsesSeat : CAIStateGroupBase : CBaseClass); member vtable 0x01238C6C = RTTI .?AV?$CIntelligentPointer@VCThing@@@@; Ego_r.pdb / FableWin.pdb
+//   ??0CAIStateGroup_SitForMeal@@QAE@XZ.
+// Callees: CAIStateGroup_UsesSeat::CAIStateGroup_UsesSeat 0x008FF1F8 (??0CAIStateGroup_UsesSeat@@IAE@XZ), CBaseIntelligentPointer::CBaseIntelligentPointer 0x00A01B10 (??0CBaseIntelligentPointer@@QAE@XZ, Ego_r.pdb / FableWin.pdb).
+// Layout: engine/CAIStateGroupBase.h's retail branch (CAIStateGroupBase : CBaseClass, 0x14); Ego_r.pdb CAIStateGroup_SitForMeal::PPot +0x34; the members before it
+//   are left unmodelled. CBaseIntelligentPointer / CIntelligentPointer<T>: the chunk 703 model (0x00900B41).
+// Shape: user default ctor, empty; CIntelligentPointer's ctor inlines to the base call + vtable store after this class's own vtable store.
+// History: generated in a chunk batch for a repeated body shape over the CBase_008ff1f8 / CMemberBase_00a01b10 stand-ins; re-authored on the
+//   PDB classes in naming wave 32 (family aisg).
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#include "engine/CAIStateGroupBase.h"                  // CAIStateGroupBase : CBaseClass (0x14), ctor 0x008FD255
+
+class CBaseObjectPointer;
+#pragma pack(push, 1)
+class CBaseIntelligentPointer {                         // Ego_r.pdb: vptr + PData (8 bytes), 1-aligned (chunk 703 0x00900B41)
+public:
+    CBaseIntelligentPointer();                          // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
+    CBaseObjectPointer* PData;                          // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    CIntelligentPointer() : CBaseIntelligentPointer() { }
+    virtual ~CIntelligentPointer() { }
+};
+#pragma pack(pop)
+class CThing;
+
+class CAIStateGroup_UsesSeat : public CAIStateGroupBase {                    // RTTI CAIStateGroup_UsesSeat : CAIStateGroupBase
+protected:
+    CAIStateGroup_UsesSeat();                         // ??0CAIStateGroup_UsesSeat@@IAE@XZ (Ego_r.pdb / FableWin.pdb)
+public:
+    unsigned char _unmodeled14[0x34 - 0x14];       // Ego_r.pdb: PSeat +0x14, GotSeatPos +0x1c, Sitting +0x1d, SeatPosIndex +0x20, SeatPos +0x24, SittingOnBench +0x30
 };
 
-struct CMemberBase_00a01b10 {
-    virtual void v00();
-    CMemberBase_00a01b10();                          // 0x00A01B10
-};
-
-struct CIntelligentPointer : CMemberBase_00a01b10 {
-    virtual void v00();
-    CIntelligentPointer() : CMemberBase_00a01b10() { }            // inlined into every constructor that embeds it
-};
-
-struct CAIStateGroup_SitForMeal : CBase_008ff1f8 {
-    unsigned char _pad[0x30];        // base members / earlier members, not touched here
-    CIntelligentPointer m_member;                       // +0x34
-    virtual void v00();
+class CAIStateGroup_SitForMeal : public CAIStateGroup_UsesSeat {      // vtable 0x0128BD34
+public:
+    CIntelligentPointer<CThing> PPot;                     // +0x34
     CAIStateGroup_SitForMeal();
 };
 
 CAIStateGroup_SitForMeal::CAIStateGroup_SitForMeal()
-    : CBase_008ff1f8()
-    , m_member()
 {
 }

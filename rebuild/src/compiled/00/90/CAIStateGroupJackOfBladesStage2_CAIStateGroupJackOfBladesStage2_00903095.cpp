@@ -1,38 +1,45 @@
-// CAIStateGroup_JackOfBladesStage2::CAIStateGroup_JackOfBladesStage2() -- base CBase_00902fe8(), this vtable, then the embedded CIntelligentPointer member at +0x4c
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00903095, oracle length 36 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; push edi ; mov esi,ecx ; call CBase_00902fe8::CBase_00902fe8 ; lea edi,[esi+0x4c] ; mov ecx,edi ; mov dword ptr [esi],offset CAIStateGroup_JackOfBladesStage2::`vftable' ; call CMemberBase_00a01b10::CMemberBase_00a01b10 ; mov dword ptr [edi],offset CIntelligentPointer::`vftable' ; pop edi ; mov eax,esi ; pop esi ; ret
-// Default constructor: base CBase_00902fe8() @ 0x00902FE8 out of line, this class's vtable
-// (0x0128D3C4), then the embedded member of type CIntelligentPointer at +0x4c is constructed with its
-// own constructor inlined: its base CMemberBase_00a01b10() @ 0x00A01B10 and its vtable (0x01238C6C).
-// Class names come from rtti-vtables.tsv; base-constructor names from unique manifest labels.
-// One of 73 bodies of this shape.
-struct CBase_00902fe8 {
-    virtual void v00();
-    CBase_00902fe8();                           // 0x00902FE8
+// CAIStateGroup_JackOfBladesStage2::CAIStateGroup_JackOfBladesStage2() -- base CAIStateGroup_JackOfBladesBase(), own vtable, then the PCutsceneLookAtMarker member (+0x4c)
+// Leaf: ??0CAIStateGroup_JackOfBladesStage2@@QAE@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x00903095, 36 bytes, thiscall, `ret`.
+// Identity: stores own vtable 0x0128D3C4 (RTTI .?AVCAIStateGroup_JackOfBladesStage2@@, base CAIStateGroup_JackOfBladesBase : CAIStateGroupBase : CBaseClass); member vtable 0x01238C6C = RTTI .?AV?$CIntelligentPointer@VCThing@@@@; Ego_r.pdb / FableWin.pdb
+//   ??0CAIStateGroup_JackOfBladesStage2@@QAE@XZ.
+// Callees: CAIStateGroup_JackOfBladesBase::CAIStateGroup_JackOfBladesBase 0x00902FE8 (??0CAIStateGroup_JackOfBladesBase@@QAE@XZ), CBaseIntelligentPointer::CBaseIntelligentPointer 0x00A01B10 (??0CBaseIntelligentPointer@@QAE@XZ, Ego_r.pdb / FableWin.pdb).
+// Layout: engine/CAIStateGroupBase.h's retail branch (CAIStateGroupBase : CBaseClass, 0x14); Ego_r.pdb CAIStateGroup_JackOfBladesStage2::PCutsceneLookAtMarker +0x54 (retail +0x4c: the base's two STLport vectors are 8 bytes smaller than Ego_r's Dinkumware ones); the members before it
+//   are left unmodelled. CBaseIntelligentPointer / CIntelligentPointer<T>: the chunk 703 model (0x00900B41).
+// Shape: user default ctor, empty; CIntelligentPointer's ctor inlines to the base call + vtable store after this class's own vtable store.
+// History: generated in a chunk batch for a repeated body shape over the CBase_00902fe8 / CMemberBase_00a01b10 stand-ins; re-authored on the
+//   PDB classes in naming wave 32 (family aisg).
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#include "engine/CAIStateGroupBase.h"                  // CAIStateGroupBase : CBaseClass (0x14), ctor 0x008FD255
+
+class CBaseObjectPointer;
+#pragma pack(push, 1)
+class CBaseIntelligentPointer {                         // Ego_r.pdb: vptr + PData (8 bytes), 1-aligned (chunk 703 0x00900B41)
+public:
+    CBaseIntelligentPointer();                          // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
+    CBaseObjectPointer* PData;                          // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    CIntelligentPointer() : CBaseIntelligentPointer() { }
+    virtual ~CIntelligentPointer() { }
+};
+#pragma pack(pop)
+class CThing;
+
+class CAIStateGroup_JackOfBladesBase : public CAIStateGroupBase {                    // RTTI CAIStateGroup_JackOfBladesBase : CAIStateGroupBase
+public:
+    CAIStateGroup_JackOfBladesBase();                         // ??0CAIStateGroup_JackOfBladesBase@@QAE@XZ (Ego_r.pdb / FableWin.pdb)
+    unsigned char _unmodeled14[0x4c - 0x14];       // Ego_r.pdb: PSwordEmitter +0x14, PArenaCentre +0x1c, PTargetThing +0x24, EnemyKnockDownFrame +0x2c, SpeechCounter +0x30, PillarMarkers +0x34, Pillars +0x44
 };
 
-struct CMemberBase_00a01b10 {
-    virtual void v00();
-    CMemberBase_00a01b10();                          // 0x00A01B10
-};
-
-struct CIntelligentPointer : CMemberBase_00a01b10 {
-    virtual void v00();
-    CIntelligentPointer() : CMemberBase_00a01b10() { }            // inlined into every constructor that embeds it
-};
-
-struct CAIStateGroup_JackOfBladesStage2 : CBase_00902fe8 {
-    unsigned char _pad[0x48];        // base members / earlier members, not touched here
-    CIntelligentPointer m_member;                       // +0x4c
-    virtual void v00();
+class CAIStateGroup_JackOfBladesStage2 : public CAIStateGroup_JackOfBladesBase {      // vtable 0x0128D3C4
+public:
+    CIntelligentPointer<CThing> PCutsceneLookAtMarker;                     // +0x4c
     CAIStateGroup_JackOfBladesStage2();
 };
 
 CAIStateGroup_JackOfBladesStage2::CAIStateGroup_JackOfBladesStage2()
-    : CBase_00902fe8()
-    , m_member()
 {
 }

@@ -1,38 +1,39 @@
-// CAIStateGroup_BanditKingThrowWeapons::CAIStateGroup_BanditKingThrowWeapons() -- base CBase_008fd255(), this vtable, then the embedded CIntelligentPointer member at +0x14
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x009012C2, oracle length 36 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; push edi ; mov esi,ecx ; call CBase_008fd255::CBase_008fd255 ; lea edi,[esi+0x14] ; mov ecx,edi ; mov dword ptr [esi],offset CAIStateGroup_BanditKingThrowWeapons::`vftable' ; call CMemberBase_00a01b10::CMemberBase_00a01b10 ; mov dword ptr [edi],offset CIntelligentPointer::`vftable' ; pop edi ; mov eax,esi ; pop esi ; ret
-// Default constructor: base CBase_008fd255() @ 0x008FD255 out of line, this class's vtable
-// (0x0128CAB0), then the embedded member of type CIntelligentPointer at +0x14 is constructed with its
-// own constructor inlined: its base CMemberBase_00a01b10() @ 0x00A01B10 and its vtable (0x01231C4C).
-// Class names come from rtti-vtables.tsv; base-constructor names from unique manifest labels.
-// One of 73 bodies of this shape.
-struct CBase_008fd255 {
-    virtual void v00();
-    CBase_008fd255();                           // 0x008FD255
-};
+// CAIStateGroup_BanditKingThrowWeapons::CAIStateGroup_BanditKingThrowWeapons() -- base CAIStateGroupBase(), own vtable, then the Player member (+0x14)
+// Leaf: ??0CAIStateGroup_BanditKingThrowWeapons@@QAE@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x009012C2, 36 bytes, thiscall, `ret`.
+// Identity: stores own vtable 0x0128CAB0 (RTTI .?AVCAIStateGroup_BanditKingThrowWeapons@@, base CAIStateGroupBase : CBaseClass); member vtable 0x01231C4C = RTTI .?AV?$CIntelligentPointer@VCThingPlayerCreature@@@@; Ego_r.pdb / FableWin.pdb
+//   ??0CAIStateGroup_BanditKingThrowWeapons@@QAE@XZ.
+// Callees: CAIStateGroupBase::CAIStateGroupBase 0x008FD255, CBaseIntelligentPointer::CBaseIntelligentPointer 0x00A01B10 (??0CBaseIntelligentPointer@@QAE@XZ, Ego_r.pdb / FableWin.pdb).
+// Layout: engine/CAIStateGroupBase.h's retail branch (CAIStateGroupBase : CBaseClass, 0x14); Ego_r.pdb CAIStateGroup_BanditKingThrowWeapons::Player +0x14; the members before it
+//   are left unmodelled. CBaseIntelligentPointer / CIntelligentPointer<T>: the chunk 703 model (0x00900B41).
+// Shape: user default ctor, empty; CIntelligentPointer's ctor inlines to the base call + vtable store after this class's own vtable store.
+// History: generated in a chunk batch for a repeated body shape over the CBase_008fd255 / CMemberBase_00a01b10 stand-ins; re-authored on the
+//   PDB classes in naming wave 32 (family aisg).
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#include "engine/CAIStateGroupBase.h"                  // CAIStateGroupBase : CBaseClass (0x14), ctor 0x008FD255
 
-struct CMemberBase_00a01b10 {
-    virtual void v00();
-    CMemberBase_00a01b10();                          // 0x00A01B10
+class CBaseObjectPointer;
+#pragma pack(push, 1)
+class CBaseIntelligentPointer {                         // Ego_r.pdb: vptr + PData (8 bytes), 1-aligned (chunk 703 0x00900B41)
+public:
+    CBaseIntelligentPointer();                          // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
+    CBaseObjectPointer* PData;                          // +0x04
 };
-
-struct CIntelligentPointer : CMemberBase_00a01b10 {
-    virtual void v00();
-    CIntelligentPointer() : CMemberBase_00a01b10() { }            // inlined into every constructor that embeds it
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    CIntelligentPointer() : CBaseIntelligentPointer() { }
+    virtual ~CIntelligentPointer() { }
 };
+#pragma pack(pop)
+class CThingPlayerCreature;
 
-struct CAIStateGroup_BanditKingThrowWeapons : CBase_008fd255 {
-    unsigned char _pad[0x10];        // base members / earlier members, not touched here
-    CIntelligentPointer m_member;                       // +0x14
-    virtual void v00();
+class CAIStateGroup_BanditKingThrowWeapons : public CAIStateGroupBase {      // vtable 0x0128CAB0
+public:
+    CIntelligentPointer<CThingPlayerCreature> Player;                     // +0x14
     CAIStateGroup_BanditKingThrowWeapons();
 };
 
 CAIStateGroup_BanditKingThrowWeapons::CAIStateGroup_BanditKingThrowWeapons()
-    : CBase_008fd255()
-    , m_member()
 {
 }

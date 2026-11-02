@@ -1,38 +1,47 @@
-// CAIStateGroup_WorkInWarehouse::CAIStateGroup_WorkInWarehouse() -- base CBase_008fda5d(), this vtable, then the embedded CIntelligentPointer member at +0x1c
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x008FFD3A, oracle length 36 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; push edi ; mov esi,ecx ; call CBase_008fda5d::CBase_008fda5d ; lea edi,[esi+0x1c] ; mov ecx,edi ; mov dword ptr [esi],offset CAIStateGroup_WorkInWarehouse::`vftable' ; call CMemberBase_00a01b10::CMemberBase_00a01b10 ; mov dword ptr [edi],offset CIntelligentPointer::`vftable' ; pop edi ; mov eax,esi ; pop esi ; ret
-// Default constructor: base CBase_008fda5d() @ 0x008FDA5D out of line, this class's vtable
-// (0x0128BC80), then the embedded member of type CIntelligentPointer at +0x1c is constructed with its
-// own constructor inlined: its base CMemberBase_00a01b10() @ 0x00A01B10 and its vtable (0x0128B0B0).
-// Class names come from rtti-vtables.tsv; base-constructor names from unique manifest labels.
-// One of 73 bodies of this shape.
-struct CBase_008fda5d {
-    virtual void v00();
-    CBase_008fda5d();                           // 0x008FDA5D
+// CAIStateGroup_WorkInWarehouse::CAIStateGroup_WorkInWarehouse() -- base CAIStateGroup_MoveGoodsBase(), own vtable, then the PTask member (+0x1c)
+// Leaf: ??0CAIStateGroup_WorkInWarehouse@@QAE@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x008FFD3A, 36 bytes, thiscall, `ret`.
+// Identity: stores own vtable 0x0128BC80 (RTTI .?AVCAIStateGroup_WorkInWarehouse@@, base CAIStateGroup_MoveGoodsBase : CAIStateGroup_WorkBase<CAIStateGroupBase> : CAIStateGroupBase : CBaseClass); member vtable 0x0128B0B0 = RTTI .?AV?$CIntelligentPointer@VCVillageTaskCarryCrate@@@@; Ego_r.pdb / FableWin.pdb
+//   ??0CAIStateGroup_WorkInWarehouse@@QAE@XZ.
+// Callees: CAIStateGroup_MoveGoodsBase::CAIStateGroup_MoveGoodsBase 0x008FDA5D (??0CAIStateGroup_MoveGoodsBase@@QAE@XZ), CBaseIntelligentPointer::CBaseIntelligentPointer 0x00A01B10 (??0CBaseIntelligentPointer@@QAE@XZ, Ego_r.pdb / FableWin.pdb).
+// Layout: engine/CAIStateGroupBase.h's retail branch (CAIStateGroupBase : CBaseClass, 0x14); Ego_r.pdb CAIStateGroup_WorkInWarehouse::PTask +0x1c; the members before it
+//   are left unmodelled. CBaseIntelligentPointer / CIntelligentPointer<T>: the chunk 703 model (0x00900B41).
+// Shape: user default ctor, empty; CIntelligentPointer's ctor inlines to the base call + vtable store after this class's own vtable store.
+// History: generated in a chunk batch for a repeated body shape over the CBase_008fda5d / CMemberBase_00a01b10 stand-ins; re-authored on the
+//   PDB classes in naming wave 32 (family aisg).
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#include "engine/CAIStateGroupBase.h"                  // CAIStateGroupBase : CBaseClass (0x14), ctor 0x008FD255
+
+class CBaseObjectPointer;
+#pragma pack(push, 1)
+class CBaseIntelligentPointer {                         // Ego_r.pdb: vptr + PData (8 bytes), 1-aligned (chunk 703 0x00900B41)
+public:
+    CBaseIntelligentPointer();                          // 0x00A01B10
+    virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
+    CBaseObjectPointer* PData;                          // +0x04
+};
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
+public:
+    CIntelligentPointer() : CBaseIntelligentPointer() { }
+    virtual ~CIntelligentPointer() { }
+};
+#pragma pack(pop)
+class CVillageTaskCarryCrate;
+
+template <class T> class CAIStateGroup_WorkBase : public T { };              // RTTI CAIStateGroup_WorkBase<CAIStateGroupBase> (no ctor of its own)
+
+class CAIStateGroup_MoveGoodsBase : public CAIStateGroup_WorkBase<CAIStateGroupBase> {                    // RTTI CAIStateGroup_MoveGoodsBase : CAIStateGroup_WorkBase<CAIStateGroupBase>
+public:
+    CAIStateGroup_MoveGoodsBase();                         // ??0CAIStateGroup_MoveGoodsBase@@QAE@XZ (Ego_r.pdb / FableWin.pdb)
+    unsigned char _unmodeled14[0x1c - 0x14];       // Ego_r.pdb: DroppingGoods +0x14, PickUpGoodsActionID +0x18
 };
 
-struct CMemberBase_00a01b10 {
-    virtual void v00();
-    CMemberBase_00a01b10();                          // 0x00A01B10
-};
-
-struct CIntelligentPointer : CMemberBase_00a01b10 {
-    virtual void v00();
-    CIntelligentPointer() : CMemberBase_00a01b10() { }            // inlined into every constructor that embeds it
-};
-
-struct CAIStateGroup_WorkInWarehouse : CBase_008fda5d {
-    unsigned char _pad[0x18];        // base members / earlier members, not touched here
-    CIntelligentPointer m_member;                       // +0x1c
-    virtual void v00();
+class CAIStateGroup_WorkInWarehouse : public CAIStateGroup_MoveGoodsBase {      // vtable 0x0128BC80
+public:
+    CIntelligentPointer<CVillageTaskCarryCrate> PTask;                     // +0x1c
     CAIStateGroup_WorkInWarehouse();
 };
 
 CAIStateGroup_WorkInWarehouse::CAIStateGroup_WorkInWarehouse()
-    : CBase_008fda5d()
-    , m_member()
 {
 }
