@@ -1,4 +1,7 @@
 // NGraphicAppearance::CTCGraphicAppearance::UnregisterComponent(const CAGraphicAppearanceComponent* component) -- drop every primitive (ClearAllPrimitives inlined: each component's slot 1, the primitive list cleared, the rendered-frame stamp moved past the current frame), then remove the component from the list
+// Naming wave 31 (family c703): Primitives is the STLport std::list<CPrimitive>: its clear 0x004C5690 binds
+//   ?clear@?$_List_base@VCPrimitive@NGraphicAppearance@@V?$allocator@VCPrimitive@NGraphicAppearance@@@std@@@std@@QAEXXZ (the 0x004BF8F0
+//   spelling; was the invented ?clear@CPrimitiveListObject@@QAEXXZ); the inline ClearAllPrimitives is protected (IAE in both PDBs)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004C0000, length 72 bytes. Callees: each component's virtual slot 1 (+0x04), the
 // Primitives list clear @ 0x004C5690 (manifest "LinkedList_ClearAndDestroy"), GetWorldFrame @ 0x0049D870, the Components list
 // remove(const value_type&) @ 0x004C3460 (manifest "list<CTCBase*>::remove").
@@ -80,10 +83,60 @@ class CAGraphicAppearanceComponent { public:
 
 }
 
-struct CPrimitiveListObject {                           // STLport list<CPrimitive>
-    CPrimitiveListNode* m_head;
-    void clear();                                       // 0x004C5690
+namespace std {
+template <class _Tp> class allocator {
+public:
+    allocator() { }
 };
+template <class _Value, class _Tp, class _MaybeReboundAlloc>
+class _STLP_alloc_proxy : public _MaybeReboundAlloc {
+public:
+    _Value _M_data;
+};
+struct _List_node_base {
+    _List_node_base* _M_next;
+    _List_node_base* _M_prev;
+};
+template <class _Tp> struct _List_node : public _List_node_base {
+    _Tp _M_data;
+};
+struct _List_iterator_base {
+    _List_node_base* _M_node;
+    _List_iterator_base(_List_node_base* __x) : _M_node(__x) { }
+    _List_iterator_base() { }
+    void _M_incr() { _M_node = _M_node->_M_next; }
+    bool operator==(const _List_iterator_base& __y) const { return _M_node == __y._M_node; }
+    bool operator!=(const _List_iterator_base& __y) const { return _M_node != __y._M_node; }
+};
+template <class _Tp> struct _Nonconst_traits {
+    typedef _Tp& reference;
+};
+template <class _Tp, class _Traits> struct _List_iterator : public _List_iterator_base {
+    typedef typename _Traits::reference reference;
+    typedef _List_iterator<_Tp, _Traits> _Self;
+    typedef _List_node<_Tp> _Node;
+    _List_iterator(_Node* __x) : _List_iterator_base(__x) { }
+    _List_iterator() { }
+    _List_iterator(const _Self& __x) : _List_iterator_base(__x._M_node) { }
+    reference operator*() const { return ((_Node*)_M_node)->_M_data; }
+    _Self& operator++() { this->_M_incr(); return *this; }
+};
+template <class _Tp, class _Alloc> class _List_base {
+public:
+    typedef _List_node<_Tp> _Node;
+    _STLP_alloc_proxy<_Node*, _Node, allocator<_Node> > _M_node;   // +0x0: the sentinel node
+    void clear();                                                 // _list.c, out of line
+};
+template <class _Tp, class _Alloc = allocator<_Tp> > class list : public _List_base<_Tp, _Alloc> {
+    typedef _List_base<_Tp, _Alloc> _Base;
+public:
+    typedef _List_node<_Tp> _Node;
+    typedef _List_iterator<_Tp, _Nonconst_traits<_Tp> > iterator;
+    iterator begin() { return iterator((_Node*)(this->_M_node._M_data->_M_next)); }
+    iterator end() { return this->_M_node._M_data; }
+    void clear() { _Base::clear(); }
+};
+}
 
 struct CComponentListObject {                           // STLport list<CAGraphicAppearanceComponent*>
     CComponentListNode* m_head;
@@ -112,7 +165,7 @@ class CTCGraphicAppearance { public:
     CTCAnimationBase* PTCAnimation;                     // +0x24
     C3DVector      CachedStaticFocalPosOffset;          // +0x28
     float          Scale;                               // +0x34
-    CPrimitiveListObject Primitives;                    // +0x38 list<CPrimitive> (header-node pointer)
+    std::list<CPrimitive> Primitives;                   // +0x38 list<CPrimitive> (STLport: the sentinel-node pointer)
     CComponentListObject Components;                    // +0x3c list<CAGraphicAppearanceComponent*> (header-node pointer)
     unsigned long  LightingChannel;                     // +0x40 CEnginePrimitiveThemeChannelDesc
     CEngineGraphic MainGraphic;                         // +0x44
@@ -129,13 +182,15 @@ class CTCGraphicAppearance { public:
     unsigned char  PrimitivesDrawn : 1;                 //        bit 7
     unsigned char  Alpha;                               // +0x5a
     signed char    ByPassColorFilter;                   // +0x5b
-    void ClearAllPrimitives()                           // 0x004BF9A0 out of line; inlined here
+protected:
+    void ClearAllPrimitives()                           // 0x004BF9A0 out of line (protected, IAE); inlined here
     {
         for (CComponentListNode* node = Components.m_head->m_next; node != Components.m_head; node = node->m_next)
             node->m_value->ClearPrimitives();
         Primitives.clear();
         FrameUpdatedWasRenderedFlag = CWorld::GetFrame() + 1;
     }
+public:
     void UnregisterComponent(const CAGraphicAppearanceComponent* component);
 };
 

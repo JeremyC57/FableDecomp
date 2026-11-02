@@ -1,5 +1,7 @@
 // std::_List_base<NGraphicAppearance::CPrimitive, allocator<NGraphicAppearance::CPrimitive> >::clear() -- STLport: destroy every primitive node of the list (release the engine primitive handle, free the node) and relink the empty sentinel
-// Leaf: clear
+// Leaf: ?clear@?$_List_base@VCPrimitive@NGraphicAppearance@@V?$allocator@VCPrimitive@NGraphicAppearance@@@std@@@std@@QAEXXZ
+// Naming wave 31 (family c703): std::allocator is class-keyed: the emitted clear is the V?$allocator spelling the callers 0x004BF8F0 / 0x004BF960 /
+//   0x004BF9A0 / 0x004C0000 bind (was U?$allocator from `struct allocator`, under the bare Leaf "clear")
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004C5690, length 144 bytes (136 + int3 padding), plain `ret` (thiscall, no arguments).
 // Identity: CTCGraphicAppearance::Primitives (+0x38, list<CPrimitive>): the callers 0x004BF914 (jmp), 0x004BF986, 0x004BF9C2,
 // 0x004C0022 are CTCGraphicAppearance members and 0x004C5993 / 0x004C5C63 / 0x004C5DB2 are the list destructors
@@ -77,7 +79,8 @@ public:
 }
 
 namespace std {
-template <class T> struct allocator {
+template <class T> class allocator {                // STLport 4.6 _alloc.h: class key `class` (V?$allocator)
+public:
     __forceinline void deallocate(void* p, unsigned int) { free(p); }
 };
 

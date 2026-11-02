@@ -1,4 +1,6 @@
 // NGraphicAppearance::CTCGraphicAppearance::SetAsChanged(unsigned char reasons) -- re-queue the owner for rendering; a reason-8 change drops the existing primitives once (when none was pending), then the reasons are OR-ed in
+// Naming wave 31 (family c703): ClearAllPrimitives 0x004BF9A0 is protected (?ClearAllPrimitives@CTCGraphicAppearance@NGraphicAppearance@@IAEXXZ,
+//   Ego_r.pdb / FableWin.pdb); was bound as the public QAE spelling
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004BF9E0, length 55 bytes. Callees: CThing::AddToRenderList @ 0x004C7AC0 on
 // ParentThing, CTCGraphicAppearance::ClearAllPrimitives @ 0x004BF9A0 (landed).
 // Shape: the reasons byte held in bl; the pending-reasons byte read once before the reason-8 test and re-read after the
@@ -102,7 +104,9 @@ class CTCGraphicAppearance { public:
     unsigned char  PrimitivesDrawn : 1;                 //        bit 7
     unsigned char  Alpha;                               // +0x5a
     signed char    ByPassColorFilter;                   // +0x5b
-    void ClearAllPrimitives();                          // 0x004BF9A0
+protected:
+    void ClearAllPrimitives();                          // 0x004BF9A0 (protected: ?ClearAllPrimitives@CTCGraphicAppearance@NGraphicAppearance@@IAEXXZ)
+public:
     void SetAsChanged(unsigned char reasons);
 };
 

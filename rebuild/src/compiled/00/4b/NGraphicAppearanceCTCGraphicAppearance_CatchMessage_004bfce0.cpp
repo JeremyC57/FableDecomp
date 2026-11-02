@@ -1,4 +1,6 @@
 // NGraphicAppearance::CTCGraphicAppearance::CatchMessage(const CMessage* message) -- any caught message marks the appearance changed with reason 8 (drop the primitives once, then flag)
+// Naming wave 31 (family c703): ClearAllPrimitives 0x004BF9A0 is protected (?ClearAllPrimitives@CTCGraphicAppearance@NGraphicAppearance@@IAEXXZ,
+//   Ego_r.pdb / FableWin.pdb); was bound as the public QAE spelling
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004BFCE0, length 41 bytes (`ret 4`: the message is not read).
 // Callees: CThing::AddToRenderList @ 0x004C7AC0 on ParentThing, CTCGraphicAppearance::ClearAllPrimitives @ 0x004BF9A0 (landed).
 // Shape: SetAsChanged(8) (0x004BF9E0) inlined with the constant: the 8 lives in bl for both the test (`test bl,al`) and the
@@ -104,7 +106,9 @@ class CTCGraphicAppearance { public:
     unsigned char  PrimitivesDrawn : 1;                 //        bit 7
     unsigned char  Alpha;                               // +0x5a
     signed char    ByPassColorFilter;                   // +0x5b
-    void ClearAllPrimitives();                          // 0x004BF9A0
+protected:
+    void ClearAllPrimitives();                          // 0x004BF9A0 (protected: ?ClearAllPrimitives@CTCGraphicAppearance@NGraphicAppearance@@IAEXXZ)
+public:
     void SetAsChanged(unsigned char reasons)            // 0x004BF9E0, inlined here
     {
         ParentThing->AddToRenderList();

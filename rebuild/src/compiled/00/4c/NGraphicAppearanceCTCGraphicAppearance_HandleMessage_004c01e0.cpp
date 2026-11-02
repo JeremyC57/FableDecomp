@@ -1,5 +1,7 @@
 // NGraphicAppearance::CTCGraphicAppearance::HandleMessage(const NTCMessages::CMessageBase& message) -- vtable slot 27: dispatch the two caught messages: clear-primitives (type 1) marks the appearance changed with reason 8, set-thing-owner (type 4) goes to its CatchMessage
 // Leaf: ?HandleMessage@CTCGraphicAppearance@
+// Naming wave 31 (family c703): ClearAllPrimitives 0x004BF9A0 is protected (?ClearAllPrimitives@CTCGraphicAppearance@NGraphicAppearance@@IAEXXZ,
+//   Ego_r.pdb / FableWin.pdb); was bound as the public QAE spelling
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004C01E0, 86 bytes (+10 int3 padding).
 // Name: FableWin.pdb ?HandleMessage@CTCGraphicAppearance@NGraphicAppearance@@UAEXABVCMessageBase@NTCMessages@@@Z; slot 27 of the
 // vtable 0x0123986C (rtti-vtables.tsv; slot 27 of the other components is their landed HandleMessage, e.g. 0x006869B0).
@@ -56,7 +58,9 @@ class CTCGraphicAppearance { public:
     unsigned short ActivePersistenceFlags;              // +0x52
     long           FrameUpdatedWasRenderedFlag;         // +0x54
     unsigned char  UpdatePrimitiveReasons;              // +0x58
-    void ClearAllPrimitives();                          // 0x004BF9A0
+protected:
+    void ClearAllPrimitives();                          // 0x004BF9A0 (protected: ?ClearAllPrimitives@CTCGraphicAppearance@NGraphicAppearance@@IAEXXZ)
+public:
     void SetAsChanged(unsigned char reasons)            // 0x004BF9E0, inlined here
     {
         ParentThing->AddToRenderList();

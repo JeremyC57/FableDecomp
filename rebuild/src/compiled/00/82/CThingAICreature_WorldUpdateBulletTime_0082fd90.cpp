@@ -1,5 +1,7 @@
 // CThingAICreature::WorldUpdateBulletTime() -- bullet-time world update of an AI creature: update its action, run the CThing bullet-time update, then update the animation with the creature's distance from the camera
-// Leaf: WorldUpdateBulletTime
+// Leaf: ?WorldUpdateBulletTime@CThingAICreature@@UAEXXZ
+// Naming wave 31 (family c703): both WorldUpdateBulletTime are virtual (UAE in Ego_r.pdb / FableWin.pdb; was QAE and a bare Leaf); the base call
+//   CThing::WorldUpdateBulletTime() stays a direct call
 // Grade: RELOCATION_MATCH -- GetLength accumulates `s = Z*Z; s += Y*Y; s += X*X` (retail x87 order z, y, x); the single-expression sum is reassociated to z, x, y whatever the written order
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0082FD90, length 108 bytes. Catalog label "CTCLook::UpdateHeadPos" is propagated: the
 // address is slot 20 of CThingAICreature's vtable 0x0127293C (rtti-vtables.tsv), the CThing slot of WorldUpdateBulletTime (0x004C8BA0).
@@ -28,7 +30,7 @@ class CThingPhysical { public:  // retail: CThingPhysical derives from CThing; m
 };
 class CWorld;
 class CThing : public CThingPhysical { public:
-    void WorldUpdateBulletTime();               // 0x004C8BA0 (slot 20)
+    virtual void WorldUpdateBulletTime();       // 0x004C8BA0 (slot 20; ?WorldUpdateBulletTime@CThing@@UAEXXZ)
 protected:
     CWorld& GetWorld();   // 0x004C7AA0 (Ego_r.pdb ?GetWorld@CThing@@IAEAAVCWorld@@XZ)
 };
@@ -37,7 +39,7 @@ class CThingCreatureBase : public CThing { public:
     void UpdateAnimation(float distanceToCamera);   // 0x00665860
 };
 class CThingAICreature : public CThingCreatureBase { public:  // vtable 0x0127293C
-    void WorldUpdateBulletTime();
+    virtual void WorldUpdateBulletTime();       // slot 20
 };
 
 void CThingAICreature::WorldUpdateBulletTime()

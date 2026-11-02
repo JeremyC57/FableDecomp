@@ -1,4 +1,8 @@
 // CThing::WorldUpdateBulletTime() -- the bullet-time world update: if the thing carries objects (interface 0x46) update the carried objects, then give every component on the update list its bullet-time update
+// Leaf: ?WorldUpdateBulletTime@CThing@@UAEXXZ
+// Naming wave 31 (family c703): WorldUpdateBulletTime is virtual (?WorldUpdateBulletTime@CThing@@UAEXXZ, Ego_r.pdb / FableWin.pdb; was the
+//   QAE spelling over a `void* __vftable` member); the component call is CTCBase slot 10 BulletTimeFrameUpdate from engine/CTCBase.h's
+//   retail branch (was a local CTCBase with placeholder slots v00..v09)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C8BA0, 91 bytes. CThing vtable 0x01239ABC slot 20.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (the inlined GetInterface lookup),
 // CTCCarrying::UpdateCarriedObjects @ 0x006A1D60, CTCBase virtual slot 10 (+0x28) on each live component of
@@ -7,14 +11,8 @@
 // word 2 bit 6 (`test byte ptr [edi+28h],40h`), key in the `push ecx` slot, the map as a named pointer
 // local. UpdateComponentsList is the 4-byte STLport list at retail +0x54 (its node pointer; the loop walks
 // node->next until it is back at the node, the CTCBase* at node +8).
-class CTCBase { public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
-    virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
-    virtual void v08(); virtual void v09();
-    virtual void UpdateBulletTime();                 // slot 10 (+0x28)
-    void* ParentThing;                               // +0x04
-    bool  ToBeRemoved;                               // +0x08
-};
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                          // slot 10 (+0x28) BulletTimeFrameUpdate, ToBeRemoved +0x08
 
 class CTCCarrying { public:
     void UpdateCarriedObjects();                     // 0x006A1D60
@@ -39,7 +37,7 @@ struct SComponentListNode {
 };
 
 class CThing { public:
-    void*               __vftable;                   // +0x00
+    virtual void WorldUpdateBulletTime();            // slot 20 of 0x01239ABC (?WorldUpdateBulletTime@CThing@@UAEXXZ); vptr +0x00
     unsigned char       _pad04[0x20 - 0x04];
     unsigned long       UsingComponents[9];          // +0x20 bitset<274>
     CInterfaceMap       Components;                  // +0x44
@@ -58,7 +56,6 @@ class CThing { public:
         }
         return false;
     }
-    void WorldUpdateBulletTime();
 };
 
 void CThing::WorldUpdateBulletTime()
@@ -69,6 +66,6 @@ void CThing::WorldUpdateBulletTime()
     for (SComponentListNode* node = UpdateComponentsList->m_next; node != UpdateComponentsList; node = node->m_next) {
         CTCBase* tc = node->m_data;
         if (!tc->ToBeRemoved)
-            tc->UpdateBulletTime();
+            tc->BulletTimeFrameUpdate();
     }
 }

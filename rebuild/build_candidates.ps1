@@ -1516,9 +1516,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004bf9a0'
-        Module = 'CTCGraphicAppearance'
-        Source = '00/4b/CTCGraphicAppearance_ClearAllPrimitives_004bf9a0.cpp'
-        TestSource = '00/4b/CTCGraphicAppearance_ClearAllPrimitives_004bf9a0_test.cpp'
+        Module = 'NGraphicAppearance::CTCGraphicAppearance'
+        Source = '00/4b/NGraphicAppearanceCTCGraphicAppearance_ClearAllPrimitives_004bf9a0.cpp'
+        TestSource = '00/4b/NGraphicAppearanceCTCGraphicAppearance_ClearAllPrimitives_004bf9a0_test.cpp'
         PassPattern = 'CTCGraphicAppearance_004bf9a0_TEST PASS'
     }
     [pscustomobject]@{
@@ -1565,9 +1565,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004bf960'
-        Module = 'CTCGraphicAppearance'
-        Source = '00/4b/CTCGraphicAppearance_ClearAllPrimitivesDueToBeingOutOfRan_004bf960.cpp'
-        TestSource = '00/4b/CTCGraphicAppearance_ClearAllPrimitivesDueToBeingOutOfRan_004bf960_test.cpp'
+        Module = 'NGraphicAppearance::CTCGraphicAppearance'
+        Source = '00/4b/NGraphicAppearanceCTCGraphicAppearance_ClearAllPrimitivesDueToBeingOutOfRange_004bf960.cpp'
+        TestSource = '00/4b/NGraphicAppearanceCTCGraphicAppearance_ClearAllPrimitivesDueToBeingOutOfRange_004bf960_test.cpp'
         PassPattern = 'CTCGraphicAppearance_004bf960_TEST PASS'
     }
     [pscustomobject]@{
@@ -289380,9 +289380,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004c5690'
-        Module = 'std::_List_base<NGraphicAppearance::CPrimitive, allocator<NGraphicAppearance::CPrimitive> >'
-        Source = '00/4c/stdListbaseNGraphicAppearanceCPrimitiveallocatorNGraphicAppearanceCPrimitive_clear_004c5690.cpp'
-        TestSource = '00/4c/stdListbaseNGraphicAppearanceCPrimitiveallocatorNGraphicAppearanceCPrimitive_clear_004c5690_test.cpp'
+        Module = 'std::_List_base<NGraphicAppearance::CPrimitive,std::allocator<NGraphicAppearance::CPrimitive> >'
+        Source = '00/4c/stdListbaseNGraphicAppearanceCPrimitivestdallocatorNGraphicAppearanceCPrimitive_clear_004c5690.cpp'
+        TestSource = '00/4c/stdListbaseNGraphicAppearanceCPrimitivestdallocatorNGraphicAppearanceCPrimitive_clear_004c5690_test.cpp'
         PassPattern = '004c5690_TEST PASS'
     }
     [pscustomobject]@{
