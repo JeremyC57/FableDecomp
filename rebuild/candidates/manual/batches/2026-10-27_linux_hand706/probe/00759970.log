@@ -1,0 +1,3 @@
+1	`OldRHSet = RHSet; CTCPhysicsBase::UpdateInterpolation();` on the CTCBase retail opt-in, POD CRightHandedSet, STLport-shaped vectors, raw PhysicsDef pointer	RELOCATION_MATCH
+2	PhysicsDef as engine/CDefPointer.h CDefPointer<const CPhysicsDef>	RELOCATION_MATCH (superseded by probe 3: full member list)
+3	coordinator decision: every retail member present -- OffsetVector C2DVector +0x98, CRigidBody Body as opaque Body_[0x1B8] +0xA0; sizeof 0x258 asserted (retail operator new size at 0x004D399D)	RELOCATION_MATCH (kept)

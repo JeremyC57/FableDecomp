@@ -67,3 +67,6 @@ opt-in `FABLE_RETAIL_<CLASS>` branch. At landing: diff each hdr/ file against th
 copy it into rebuild/include, list every landed includer (real `#include` lines, transitively) and recheck them all with the chunk's rows
 before the commit; a failing includer means the change goes back to opt-in or out.
 
+## Codex pass 11 reservation (owner 2026-11-02)
+Pool chunks NA067-NA076 (100 rows, `pending/2026-11-02_codex_pass11/RESERVED.tsv`) are reserved for an outside Codex pass until
+2026-11-09: chunk cuts go NA055-NA066, then NA077 onward. Land a Codex return like ChatGPT pass 10 (own oracle, read-only vland regrade, symbol audit).

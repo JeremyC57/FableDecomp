@@ -1,0 +1,4 @@
+1	CBaseObject retail opt-in chain, `if (!HasPerformedAction()) PerformAction(); if (PCreature->GetType() == 1) static_cast<CThingAICreature*>(PCreature.Get())->SuspendAI(false, 0); CCombatActionBase::FinishAction();`	DIFFER(63v63) -- the two zero pushes land before the second GetPItem (retail: GetPItem first)
+2	`static_cast<CThingAICreature&>(*PCreature).SuspendAI(false, 0);`	DIFFER(63v63) -- same push order
+3	C-style cast `((CThingAICreature*)PCreature.Get())->SuspendAI(false, 0);`	DIFFER(63v63) -- same
+4	the AI creature in a named block local (`CThingAICreature* creature = static_cast<CThingAICreature*>(PCreature.Get()); creature->SuspendAI(false, 0);`)	RELOCATION_MATCH (kept)

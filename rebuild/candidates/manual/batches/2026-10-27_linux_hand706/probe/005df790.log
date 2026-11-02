@@ -1,0 +1,2 @@
+1	landed CAnimComponentCombatMisc::Alloc 0x005DF750 model, FlourishTargetOffset members (bool +8, C2DVector +9), base Alloc non-pure	RELOCATION_MATCH
+2	base CAnimComponentBase slots 2-8 pure (vtable 0x01255648 = _purecall), all seven derived overrides declared with PDB signatures	RELOCATION_MATCH (kept)

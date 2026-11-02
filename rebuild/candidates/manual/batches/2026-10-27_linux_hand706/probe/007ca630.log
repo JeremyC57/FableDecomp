@@ -1,0 +1,2 @@
+1	CTCBase retail opt-in, real STLport 4.6 list<pair<CIntelligentPointer<CThingObject>,bool> > iterator loop, item fetched once into a local, IS_THING_ALIVE(item) then Kill(true), CTCBase::OnKill()	RELOCATION_MATCH (superseded by probe 2: full member list)
+2	coordinator decision: every retail member present (PickedUpItems vector .. two CEnginePrimitiveHandle as opaque 8-byte storage); offsets from the retail ctor 0x007CA830, sizeof 0xAC asserted (retail push 0ACh)	RELOCATION_MATCH (kept)

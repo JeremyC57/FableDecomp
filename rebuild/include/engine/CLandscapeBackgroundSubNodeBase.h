@@ -8,6 +8,19 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+// Retail opt-in (chunk 706): RTTI .?AVCLandscapeBackgroundSubNodeBase@@ (class key V, not struct) : CMovableResource, vtable
+//   0x012A8014 (slots 0..8 in rtti-vtables.tsv); Ego_r sizeof 0x4 = the inherited vptr only. Its own virtuals are not modelled yet.
+#ifdef FABLE_RETAIL_LANDSCAPE_BACKGROUND_SUB_NODE_BASE
+#ifndef FABLE_RETAIL_CMOVABLERESOURCE
+#define FABLE_RETAIL_CMOVABLERESOURCE
+#endif
+#include "engine/CMovableResource.h"
+
+class CLandscapeBackgroundSubNodeBase : public CMovableResource {
+};
+
+FABLE_STATIC_ASSERT(sizeof(CLandscapeBackgroundSubNodeBase) == 0x4);
+#else // FABLE_RETAIL_LANDSCAPE_BACKGROUND_SUB_NODE_BASE
 #pragma pack(push, 1)
 struct CLandscapeBackgroundSubNodeBase {
     void* __vftable;                                         // +0x00 vptr, or first dword of a flattened base subobject
@@ -16,5 +29,6 @@ struct CLandscapeBackgroundSubNodeBase {
 
 FABLE_STATIC_ASSERT(sizeof(CLandscapeBackgroundSubNodeBase) == 0x4);
 FABLE_STATIC_ASSERT(offsetof(CLandscapeBackgroundSubNodeBase, __vftable) == 0x0);
+#endif // FABLE_RETAIL_LANDSCAPE_BACKGROUND_SUB_NODE_BASE
 
 #endif // FABLE_ENGINE_CLANDSCAPEBACKGROUNDSUBNODEBASE_H

@@ -35325,3 +35325,5 @@ _z_inflateEnd	00c038d0	00a3acc0
 ?GetAnimDuration@CThingCreatureBase@@QBEMJ@Z	006627f0	008c3e90
 ?Close@CBankFileAsync@@UAEXXZ	009d58a0	009fece0
 ?clear@?$_List_base@VCMaintainedEvent@@V?$allocator@VCMaintainedEvent@@@std@@@std@@QAEXXZ	009e4710	00a66990
+??_7CAnimComponentCombatFlourishTargetOffset@@6B@	01255760	005df790
+?UpdateInterpolation@CTCPhysicsBase@@MAEXXZ	006af780	00759970

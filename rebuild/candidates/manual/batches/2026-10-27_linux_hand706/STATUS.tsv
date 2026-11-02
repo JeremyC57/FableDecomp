@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00c77470	RELOCATION_MATCH	42v42	PASS	CVtable_012bf0c8::ReleaseBlock (libpk, descriptive; label ClearTextures was wrong); 1 probe
+00be5c60	RELOCATION_MATCH	64v64	PASS	CLandscapeBackgroundPatch::GetEdgeStrip, switch + 4-entry jump table (table order verified); hdr/ opt-in; 2 probes
+004de253	RELOCATION_MATCH	57v57	PASS	CExplodingObjectDef::Transfer, /Os def TU, real start; hdr/ opt-in; 3 probes
+004df32c	RELOCATION_MATCH	57v57	PASS	CTCVolumeContainmentTrackerDef::Transfer, /Os def TU, real start; hdr/ opt-in; 2 probes
+005df790	RELOCATION_MATCH	31v31	PASS	CAnimComponentCombatFlourishTargetOffset::Alloc; 2 probes
+00759970	RELOCATION_MATCH	50v50	PASS	CTCPhysicsRigidBody::UpdateInterpolation (label vfunc_94 was a placeholder); full member list (Body opaque); 3 probes
+007ca630	RELOCATION_MATCH	62v62	PASS	CTCHeroReceiveItems::OnKill, STLport list loop + IS_THING_ALIVE; full member list; 2 probes
+00802610	RELOCATION_MATCH	42v42	PASS	CTCTargetingPlayer::GetPTargetedThing; CPlayer via hdr/ opt-in; full member list; 5 probes
+008547d0	RELOCATION_MATCH	62v62	PASS	CCreatureAction_SpiritAttack::FinishAction (private virtual, both PDBs); 2 probes
+008b6a20	RELOCATION_MATCH	63v63	PASS	CCreatureAction_GoUnderground::FinishAction (twin of chunk 707's 0x008B6A90 RiseUp); named local fixes push order; 4 probes

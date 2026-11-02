@@ -7060,7 +7060,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004de1df	CCreatureGeneratorDef	CCreatureGeneratorDef	__thiscall	undefined	1	CBedDef *	0	yes	accepted									
 004de200	CCreatureGeneratorDef::GetSizeofClass	CCreatureGeneratorDef	__thiscall	ulong	1	CCreatureGeneratorDef *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CCreatureGeneratorDef_GetSizeofClass_004de200.cpp
 004de204	Transfer	CChestDef	__fastcall	void	0		1	yes	accepted									
-004de253	?Transfer@CExplodingObjectDef@@UAEXAAVCPersistContext@@@Z	CExplodingObjectDef	__thiscall	void	4	deque<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_> *,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>	1	yes	accepted									
+004de253	Transfer	CExplodingObjectDef	__thiscall	void	4	deque<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_> *,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>	1	yes	accepted									
 004de28c	Transfer	CLookDef	__fastcall	void	0		1	yes	accepted									
 004de33e	CEnemyDef::Transfer	CEnemyDef	__thiscall	void	2	CEnemyDef *,CPersistContext &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CEnemyDef_Transfer_004de33e.cpp
 004de34e	CEnginePrimitiveGroupManager_allocate	_global	unknown	undefined	0		0	unmeasured	accepted									
@@ -7185,7 +7185,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004df309	CTCAISummon::vfunc_22	CTCAISummon	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004df319	CTCAISummon::vfunc_8	CTCAISummon	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004df31c	CCameraCollisionDef::Transfer	CCameraCollisionDef	__thiscall	void	2	CCameraCollisionDef *,CPersistContext &	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CCameraCollisionDef_Transfer_004df31c.cpp
-004df32c	?Transfer@CTCVolumeContainmentTrackerDef@@UAEXAAVCPersistContext@@@Z	CTCVolumeContainmentTrackerDef	__thiscall	void	4	deque<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_> *,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>	1	yes	accepted									
+004df32c	Transfer	CTCVolumeContainmentTrackerDef	__thiscall	void	4	deque<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_> *,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>,_Deque_const_iterator<NUISystem::CComponent*,std::allocator<NUISystem::CComponent*>_>	1	yes	accepted									
 004df365	CTCObstacle::vfunc_6	CTCObstacle	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 004df3b4	CObstacleNavigatorExternalInterface::FindPosZAt	CObstacleNavigatorExternalInterface	__thiscall	float	3	CObstacleNavigatorExternalInterface *,C3DVector const &,bool	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CObstacleNavigatorExternalInterface_FindPosZAt_004df3b4.cpp
 004df3bd	CObstacleNavigatorExternalInterface::FindPosZAtIncludingThemes	CObstacleNavigatorExternalInterface	__thiscall	float	3	CObstacleNavigatorExternalInterface *,C3DVector const &,bool	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4d\CObstacleNavigatorExternalInterface_FindPosZAtIncludingThemes_004df3bd.cpp
@@ -12303,7 +12303,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005df740	?GetType@CAnimComponentCombatMisc@@UBE?AW4EAnimComponent@@XZ	CAnimComponentCombatMisc	__thiscall	ulong	3	CEngineInternalPrimitiveBase *,CEnginePrimitive *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\CAnimComponentCombatMisc_GetTypeCAnimComponentCombatMiscUBEAW4EAnimCompon_005df740.cpp
 005df750	Alloc	CAnimComponentCombatMisc	__thiscall	CAnimComponentBase *	1	CAnimComponentCombatMisc *	1	yes	accepted									
 005df780	?GetType@CAnimComponentCombatFlourishTargetOffset@@UBE?AW4EAnimComponent@@XZ	CAnimComponentCombatFlourishTargetOffset	__thiscall	ulong	3	CEngineInternalPrimitiveBase *,CEnginePrimitive *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\CAnimComponentCombatFlourishTargetOffset_GetTypeCAnimComponentCombatFlourishTargetOffsetU_005df780.cpp
-005df790	CAnimComponentCombatFlourishTargetOffset::Alloc	CAnimComponentCombatFlourishTargetOffset	__thiscall	CAnimComponentBase *	1	CAnimComponentCombatFlourishTargetOffset *	1	yes	accepted									
+005df790	Alloc	CAnimComponentCombatFlourishTargetOffset	__thiscall	CAnimComponentBase *	1	CAnimComponentCombatFlourishTargetOffset *	1	yes	accepted									
 005df7d0	?GetType@CAnimComponentFollowingOnAnim@@UBE?AW4EAnimComponent@@XZ	CAnimComponentFollowingOnAnim	__thiscall	ulong	3	CEngineInternalPrimitiveBase *,CEnginePrimitive *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\CAnimComponentFollowingOnAnim_GetTypeCAnimComponentFollowingOnAnimUBEAW4EAnimC_005df7d0.cpp
 005df7e0	CAnimComponentFollowingOnAnim::SetDefaultValue	CAnimComponentFollowingOnAnim	__thiscall	void	1	CAnimComponentFollowingOnAnim *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\CAnimComponentFollowingOnAnim_SetDefaultValue_005df7e0.cpp
 005df7f0	CAnimComponentFollowingOnAnim::Alloc	CAnimComponentFollowingOnAnim	__thiscall	CAnimComponentBase *	1	CAnimComponentFollowingOnAnim *	1	yes	accepted									
@@ -15599,7 +15599,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00692570	CCreatureActionBase::IsActionReadyForInterruption	CCreatureActionBase	__thiscall	bool	1	CCreatureActionBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\69\CCreatureActionBase_IsActionReadyForInterruption_00692570.cpp
 00692580	CCreatureActionBase::IsBlockable	CCreatureActionBase	__thiscall	bool	1	CCreatureActionBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\69\CCreatureActionBase_IsBlockable_00692580.cpp
 00692590	CCreatureActionBase::GetWeaponTrailUsedInStrikeAction	CCreatureActionBase	__thiscall	CTCWeaponTrail *	2	CCreatureActionBase *,long &	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\69\CCreatureActionBase_GetWeaponTrailUsedInStrikeAction_00692590.cpp
-006925a0	GetCanItemBeQuickAssigned	CTCInventoryBase	__thiscall	bool	1	CTCInventoryBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\69\GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_006925a0.cpp
+006925a0	HasPerformedAction	CCreatureActionBase	__thiscall	bool	1	CTCInventoryBase *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\69\GetCanItemBeQuickAssigned_GetCanItemBeQuickAssigned_006925a0.cpp
 006925b0	GetTotalTimeWorldFrames	CCreatureActionBase	__thiscall	CIDrawEnvironment *	1	CWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\69\global_DrawGetEnvironment_006925b0.cpp
 006925c0	GetFramesRunning	CCreatureActionBase	__thiscall	CIDrawEnvironment *	1	CWorld *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\69\global_DrawGetEnvironment_006925c0.cpp
 006925d0	GetFramesRemaining	CCreatureActionBase	__thiscall	long	1	CCreatureActionBase *	1	yes	accepted									
@@ -15676,7 +15676,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00693dc0	CCreatureActionBase	CCreatureActionBase	__thiscall	undefined	3	CCreatureActionBase *,long,long	0	yes	accepted									
 00693ef0	~CCreatureActionBase	CCreatureActionBase	unknown	undefined	0		0	yes	accepted									
 00694020	FrameUpdate	CCreatureActionBase	__thiscall	void	1	CCreatureActionBase *	1	yes	accepted									
-00694430	?FinishAction@CCreatureActionBase@@UAEXXZ	CCreatureActionBase	__thiscall	void	1	CCreatureActionBase *	1	yes	accepted									
+00694430	FinishAction	CCreatureActionBase	__thiscall	void	1	CCreatureActionBase *	1	yes	accepted									
 006946c0	InitialiseActionEvents	CCreatureActionBase	__thiscall	void	1	CCreatureActionBase *	1	yes	accepted									
 00694890	UpdateActionAnimation	CCreatureActionBase	__thiscall	void	1	CCreatureActionBase *	1	yes	accepted									
 00694d10	?Initialise@CCreatureActionBase@@UAEXXZ	CCreatureActionBase	__thiscall	void	1	CCreatureActionBase *	1	yes	accepted									
@@ -16344,7 +16344,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006af6d0	SetThingStandingOn	CTCPhysicsBase	__thiscall	void	2	CTCPhysicsBase *,CTCPhysicsBase *	1	yes	accepted									
 006af700	ConstructFromParams	CTCPhysicsBase	__thiscall	void	2	CTCPhysicsBase *,CTCParamsBase *	1	yes	accepted									
 006af740	UpdateOldRHSet	CTCPhysicsStandard	__thiscall	void	1	CTCPhysicsStandard *	1	yes	accepted									
-006af780	operator()	CThingFilter_IsValid	__thiscall	bool	2	CThingFilter_IsValid *,CThing *	1	yes	accepted									
+006af780	UpdateInterpolation	CTCPhysicsBase	__thiscall	bool	2	CThingFilter_IsValid *,CThing *	1	yes	accepted									
 006af790	ResetInterpolation	CTCPhysicsBase	__thiscall	void	1	CTCPhysicsBase *	1	yes	accepted									
 006af7d0	ImpulseRespondToCollision	CTCPhysicsBase	__thiscall	void	3	CTCPhysicsBase *,CPhysicsCollideResponse *,C3DVector *	1	yes	accepted									
 006afa40	ImpulseRespondToCollisonWithCylinder	CTCPhysicsBase	unknown	undefined	0		0	yes	accepted									
@@ -18838,7 +18838,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007236a0	CTCPhysicsStandard::vfunc_86	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007236c0	FillPhysicsDebugInfoForSelf	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007236e0	ResetInterpolation	CTCPhysicsStandard	__thiscall	void	1	CTCPhysicsStandard *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\72\CTCPhysicsStandard_ResetInterpolation_007236e0.cpp
-00723730	Initialise	CCreatureAction_TrollWhackGroundBase	__thiscall	void	1	CCreatureAction_TrollWhackGroundBase *	1	yes	accepted									
+00723730	UpdateInterpolation	CTCPhysicsStandard	__thiscall	void	1	CCreatureAction_TrollWhackGroundBase *	1	yes	accepted									
 00723750	GetFacingAngleXZ	CTCPhysicsStandard	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00723760	SetFacingAngleXY	CTCPhysicsStandard	__thiscall	void	2	CTCPhysicsStandard *,float	1	yes	accepted									
 007237e0	SetFacingAngleXY	CTCPhysicsStandard	__thiscall	void	2	CTCPhysicsStandard *,float	1	yes	accepted									
@@ -20321,7 +20321,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00759840	OnInitialActivate	CTCVillage	__thiscall	void	1	CTCVillage *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\75\CTCVillage_OnInitialActivate_00759840.cpp
 00759870	GetPossibleCollidedWithArea	CTCPhysicsRigidBody	__thiscall	C2DBoxI	1	CTCPhysicsRigidBody *	1	yes	accepted									
 00759900	CTCPhysicsRigidBody::vfunc_3	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00759970	CTCPhysicsRigidBody::vfunc_94	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00759970	UpdateInterpolation	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007599b0	GetFacingAngleXZ	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007599c0	SetFacingAnglesFromRHSet	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00759a00	SetRHSet	CTCPhysicsRigidBody	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -25364,7 +25364,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008546a0	?Initialise@CCreatureAction_SpiritReturnToHero@@UAEXXZ	CCreatureAction_SpiritReturnToHero	__thiscall	void	1	CCreatureAction_SpiritReturnToHero *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\85\CCreatureActionSpiritReturnToHero_InitialiseCCreatureActionSpiritReturnToHeroUAEXX_008546a0.cpp
 008546c0	CCreatureAction_SpiritAttack	CCreatureAction_SpiritAttack	__thiscall	undefined	2	CCreatureAction_SpiritAttack *,CThingCreatureBase *	0	yes	accepted									
 00854720	CCreatureAction_SpiritReturnToHero::PerformAction	CCreatureAction_SpiritReturnToHero	__thiscall	void	1	CCreatureAction_SpiritReturnToHero *	1	yes	accepted									
-008547d0	?FinishAction@CCreatureAction_SpiritAttack@@EAEXXZ	CCreatureAction_SpiritAttack	__thiscall	void	1	CCreatureAction_SpiritAttack *	1	yes	accepted									
+008547d0	FinishAction	CCreatureAction_SpiritAttack	__thiscall	void	1	CCreatureAction_SpiritAttack *	1	yes	accepted									
 00854810	CCreatureAction_SpiritHitResponse::Initialise	CCreatureAction_SpiritHitResponse	__thiscall	void	1	CCreatureAction_SpiritHitResponse *	1	yes	accepted									
 008548b0	CreateAttackEffect	CCreatureAction_SpiritAttack	__thiscall	void	1	CCreatureAction_SpiritAttack *	1	yes	accepted									
 00854b90	FrameUpdate	CCreatureAction_SpiritAttack	__thiscall	void	1	CCreatureAction_SpiritAttack *	1	yes	accepted									
@@ -27991,7 +27991,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008b6990	CCreatureAction_SheatheWeapons::Initialise	CCreatureAction_SheatheWeapons	__thiscall	void	1	CCreatureAction_SheatheWeapons *	1	yes	accepted									
 008b69d0	?FinishAction@CCreatureAction_UnsheatheWeapons@@UAEXXZ	CCreatureAction_UnsheatheWeapons	__thiscall	void	1	CCreatureAction_ForcePushOutOf *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8b\CCreatureActionUnsheatheWeapons_FinishActionCCreatureActionUnsheatheWeaponsUAEXX_008b69d0.cpp
 008b69f0	Initialise	CCreatureAction_GoUnderground	__thiscall	void	1	CCreatureAction_Die *	1	yes	accepted									
-008b6a20	?FinishAction@CCreatureAction_GoUnderground@@UAEXXZ	CCreatureAction_GoUnderground	__thiscall	void	1	CCreatureAction_GoUnderground *	1	yes	accepted									
+008b6a20	FinishAction	CCreatureAction_GoUnderground	__thiscall	void	1	CCreatureAction_GoUnderground *	1	yes	accepted									
 008b6a60	Initialise	CCreatureAction_RiseUp	__thiscall	void	1	CCreatureAction_Die *	1	yes	accepted									
 008b6a90	FinishAction	CCreatureAction_RiseUp	__thiscall	void	1	CCreatureAction_GoUnderground *	1	yes	accepted									
 008b6ad0	CCreatureAction_MidAttackSide::Initialise	CCreatureAction_MidAttackSide	__thiscall	void	1	CCreatureAction_MidAttackSide *	1	yes	accepted									
@@ -47526,7 +47526,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c77590	sub_00c77590	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00c775a0	~CVtable_012bf0c8	CVtable_012bf0c8	__thiscall	void	1	CTCInventoryItem *	1	yes	accepted									
 00c775e0	CTCHeroStats_NotifyObservers	_global	unknown	undefined	0		0	yes	accepted									
-00c77650	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c7\CLandscapeBackgroundPatch_vectordeletingdestructor_00c77650.cpp
+00c77650	`scalar deleting destructor'	CVtable_012bf0c8	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c7\CLandscapeBackgroundPatch_vectordeletingdestructor_00c77650.cpp
 00c77690	Math_Pow2_Fast	_global	unknown	undefined	0		0	yes	accepted									
 00c77700	CAudioChannel_GetOutputGain	_global	unknown	undefined	0		0	yes	accepted									
 00c77770	Clear	CGameEventPackage	__thiscall	void	1	CGameEventPackage *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c7\Clear_Clear_00c77770.cpp

@@ -89,6 +89,12 @@ class CWorldMap;
 #pragma pack(push, 1)
 class CPlayer {
 public:
+#ifdef FABLE_RETAIL_PLAYER
+    // Retail opt-in (chunk 706): member functions only, the layout is unchanged on both paths. Ego_r.pdb and FableWin.pdb both
+    // list ?IsFirstPersonTargeting@CPlayer@@QBE_NXZ; retail 0x004874D0 (called from CTCTargetingPlayer::GetPTargetedThing
+    // 0x00802610 on CThing::PeekPlayer's const CPlayer&).
+    bool IsFirstPersonTargeting() const;                         // 0x004874D0
+#endif // FABLE_RETAIL_PLAYER
     void*                                                        __vftable; // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                                                _pad_0x04[0x4]; // +0x04
     bool                                                         DrawingFreeCamDebug; // +0x08

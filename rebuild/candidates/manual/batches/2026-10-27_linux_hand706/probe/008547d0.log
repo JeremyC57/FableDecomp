@@ -1,0 +1,2 @@
+1	CBaseObject retail opt-in + CClass layout-rename CThing (Dead +0x91), CIntelligentPointer<T> with the PDB Get/->/* accessors, `if (IS_THING_ALIVE(PParticleEmitter)) PParticleEmitter->Kill(true); CCreatureActionBase::FinishAction();`, private override	RELOCATION_MATCH (kept)
+2	the test written out (`PParticleEmitter.Get() && !PParticleEmitter->IsDead()`)	RELOCATION_MATCH (same bytes; the PDB IS_THING_ALIVE template kept)

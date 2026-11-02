@@ -1,0 +1,24 @@
+addr       parity           behav  name
+004de253   RELOCATION_MATCH PASS   Transfer
+004df32c   RELOCATION_MATCH PASS   Transfer
+005df790   RELOCATION_MATCH PASS   Alloc
+00759970   WARN RELOC_NAME: ?UpdateInterpolation@CTCPhysicsBase@@MAEXXZ -> 006af780 labelled 'CTCPhysicsBase::vfunc_94'
+00759970   RELOCATION_MATCH PASS   UpdateInterpolation
+007ca630   RELOCATION_MATCH PASS   OnKill
+00802610   RELOCATION_MATCH PASS   GetPTargetedThing
+008547d0   RELOCATION_MATCH PASS   FinishAction
+008b6a20   RELOCATION_MATCH PASS   FinishAction
+00be5c60   RELOCATION_MATCH PASS   GetEdgeStrip
+00c77470   RELOCATION_MATCH PASS   ReleaseBlock
+
+WINS: 10
+  004de253 RELOCATION_MATCH CExplodingObjectDef::?Transfer@CExplodingObjectDef@@UAEXAAVCPersistContext@@@Z
+  004df32c RELOCATION_MATCH CTCVolumeContainmentTrackerDef::?Transfer@CTCVolumeContainmentTrackerDef@@UAEXAAVCPersistContext@@@Z
+  005df790 RELOCATION_MATCH CAnimComponentCombatFlourishTargetOffset::?Alloc@CAnimComponentCombatFlourishTargetOffset@@UBEPAVCAnimComponentBase@@XZ
+  00759970 RELOCATION_MATCH CTCPhysicsRigidBody::?UpdateInterpolation@CTCPhysicsRigidBody@@UAEXXZ
+  007ca630 RELOCATION_MATCH CTCHeroReceiveItems::?OnKill@CTCHeroReceiveItems@@UAEXXZ
+  00802610 RELOCATION_MATCH CTCTargetingPlayer::?GetPTargetedThing@CTCTargetingPlayer@@UBEPAVCThing@@XZ
+  008547d0 RELOCATION_MATCH CCreatureAction_SpiritAttack::?FinishAction@CCreatureAction_SpiritAttack@@EAEXXZ
+  008b6a20 RELOCATION_MATCH CCreatureAction_GoUnderground::?FinishAction@CCreatureAction_GoUnderground@@UAEXXZ
+  00be5c60 RELOCATION_MATCH CLandscapeBackgroundPatch::?GetEdgeStrip@CLandscapeBackgroundPatch@@QAEPAVCPatchTesselationEdgeStrip@@W4LANDSCAPE_EDGE_STRIP_SIDE@@@Z
+  00c77470 RELOCATION_MATCH CVtable_012bf0c8::?ReleaseBlock@CVtable_012bf0c8@@QAEXXZ
