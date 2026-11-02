@@ -17,9 +17,16 @@
 #include "rebuild_abi.h"
 
 struct IDirect3DTexture9;
+#include "engine/C2DExtentsI.h"
+#include "engine/CPixelFormat.h"
+#include "engine/ESurfacePool.h"
 
 class CTexture {
 public:
+    // Codex pass 11 consolidation: the inline default constructor (0x009C0880 CDisplayManager / 0x009A3640 font cache zero
+    // PD3DTexture and the +4 bitfield word in place) and Initialise (called out of line by 0x009A3640).
+    CTexture() : PD3DTexture(0), ByteLength(0), AllocationSource(0) { }
+    bool Initialise(const C2DExtentsI&,long,const CPixelFormat&,unsigned long,ESurfacePool,bool,bool);
     CTexture(const CTexture& other);                                     // 0x009F9D00 ??0CTexture@@QAE@ABV0@@Z
     ~CTexture() { Uninitialise(); }                                      // inline (Ego_r lists no ??1CTexture)
     CTexture& operator=(const CTexture& other);                          // 0x009FA1C0

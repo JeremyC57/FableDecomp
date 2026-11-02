@@ -1,0 +1,16 @@
+address	name	evidence
+00531560	NUISystem::CComponent::GetDynamicSize	Codex pass 11 wave 2 (consolidated headers): Leaf ?GetDynamicSize@CComponent@NUISystem@@UBE?AVC2DVector@@XZ
+008400b0	LHNetworkLib::LHHttp2::PrepareRequest	Codex pass 11 wave 2: Leaf ?PrepareRequest@LHHttp2@LHNetworkLib@@...
+00840740	LHNetworkLib::LHHttp2::ReceiveHeaderAsync	Codex pass 11 wave 2: Leaf ?ReceiveHeaderAsync@LHHttp2@LHNetworkLib@@QAE?AW4LH_HTTP_STATUS@2@XZ
+008fb170	NCameraModes::CPhysicsCollisionPointsObject::CPhysicsCollisionPointsObject	Codex pass 11 wave 2: Leaf ??0CPhysicsCollisionPointsObject@NCameraModes@@QAE@JMMJJJ@Z
+009a3640	`anonymous namespace'::InitializeStreamingFontTextureCache	Codex pass 11 wave 2: Leaf ?InitializeStreamingFontTextureCache@?A0x...@@YIXPAVCStreamingFontDataBank@@@Z
+009c0880	CDisplayManager::CDisplayManager	Codex pass 11 wave 2: Leaf ??0CDisplayManager@@QAE@AAVCSystemManager@@@Z
+00a4b230	NBBBMaths::GetSquaredDistanceBetweenSphereTriangle	Codex pass 11 wave 2: Leaf ?GetSquaredDistanceBetweenSphereTriangle@NBBBMaths@@YIMABVC3DVector@@M000@Z
+00b3efa0	CEngineMap::ReadMapInfoBlock	Codex pass 11 wave 2: Leaf ?ReadMapInfoBlock@CEngineMap@@CIXAAUCStaticMapInfoBlock@1@AAVCDataInputStream@@@Z
+00cb7310	std::__introsort_loop<std::pair<CCharString,CScriptInfo>*,std::pair<CCharString,CScriptInfo>,int,CKeyPairCompareLess<CCharString,CScriptInfo> >	Codex pass 11 wave 2: STLport 4.6 _algo.c instantiation
+00cbca50	std::__introsort_loop<std::pair<unsigned __int64,NScript::CRuntimeScriptedEntityPersist::CPersistInfo>*,...>	Codex pass 11 wave 2: STLport 4.6 _algo.c instantiation
+00f3d320	CTriangleStripifier2::GetMeshIslandSubsection	Codex pass 11 wave 2: Leaf ?GetMeshIslandSubsection@CTriangleStripifier2@@AAEX...
+0121e210	`dynamic initializer for 'CTCWife::CourtingAdviceGroupNames''	Codex pass 11 wave 2: TU-local _$E1
+0121f280	`dynamic initializer for 'CTCOracleMinigame::SymbolStrings''	Codex pass 11 wave 2: TU-local _$E1
+01229fc0	`dynamic atexit destructor for 'hit_pos''	Codex pass 11 wave 2: TU-local _$E2 (anonymous-namespace hit_pos)
+0122a010	`dynamic atexit destructor for 'hit_dir''	Codex pass 11 wave 2: TU-local _$E2 (anonymous-namespace hit_dir)

@@ -25,6 +25,12 @@
 // Members: CDefString / CVectorMap have no shared header. An includer that has the complete types (CDefString and
 // CVectorMap<K,V,C> defined before the include) defines FABLE_PDCB_TYPED_MEMBERS for the typed members; otherwise the two
 // members are opaque with the same offsets.
+// Retail opt-in (Codex pass 11 consolidation): define FABLE_RETAIL_CPARENTDEFCLASSBASE as well for retail's compiler-generated
+// ~CParentDefClassBase. Evidence: the implicit ~NUISystem::CUIMiscThingsDef 0x004317D0 expands the parent dtor inline with
+// no CParentDefClassBase vtable store (member cleanup, the SubDefInfoMap `free`, then the CDefClassBase vtable store), which a
+// declared dtor (call 0x00430300) or an inline `{}` (extra vptr store) cannot produce; 0x00430300 is the implicit dtor's
+// out-of-line COMDAT, called from 122 retail sites. Same shape as FABLE_RETAIL_CLEVELSCRIPTBASE (chunk 713); the default
+// text is kept for the landed includers and flipping it is header debt.
 #ifdef FABLE_RETAIL_DEF_CLASS_BASE
 #include <stddef.h>
 #include "rebuild_abi.h"
@@ -37,7 +43,9 @@ public:
     CParentDefClassBase();                                               // 0x00430370 (??0CParentDefClassBase@@QAE@XZ)
     CParentDefClassBase(const CParentDefClassBase&);                     // 0x0046EE98 (??0CParentDefClassBase@@QAE@ABV0@@Z)
     CParentDefClassBase& operator=(const CParentDefClassBase&);          // 0x00431ED0 (??4CParentDefClassBase@@QAEAAV0@ABV0@@Z)
+#ifndef FABLE_RETAIL_CPARENTDEFCLASSBASE
     virtual ~CParentDefClassBase();                                      // slot 0  0x004303F0 (scalar deleting); ~ 0x00430300
+#endif
     virtual CDefString GetInstantiationName() const;                     // slot 10 0x004303B0
     virtual void SetInstantiationName(CDefString);                       // slot 11 0x004303C0
     virtual void AddSubDef(const CCharString&, long, long);              // slot 12 0x009B00D0

@@ -8,6 +8,9 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CTCWIFE
+#include "fable_string.h"
+#endif
 
 class CDefPointeeBase;
 
@@ -69,6 +72,13 @@ public:
     long             FrameNoticedChangeInAppearance[16];     // +0xa4
     float            LastFatnessChangePoint;                 // +0xe4
     bool             BooleanHusbandAppearances[4];           // +0xe8
+#ifdef FABLE_RETAIL_CTCWIFE
+    // Retail opt-in (Codex pass 11): private static const CCharString CourtingAdviceGroupNames[4] (Ego_r TPI 0x1a9a9;
+    // FableWin.pdb "dynamic initializer/atexit destructor for 'CTCWife::CourtingAdviceGroupNames'"; 0x0121E210 builds four
+    // 4-byte elements at 0x013BAB30..3C). Static members leave the instance layout unchanged.
+private:
+    static const CCharString CourtingAdviceGroupNames[4];
+#endif
 };
 #pragma pack(pop)
 

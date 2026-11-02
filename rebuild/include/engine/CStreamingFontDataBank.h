@@ -8,6 +8,10 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CSTREAMINGFONTDATABANK
+#include "engine/CCountedPointer.h"
+class CBankFileAsyncData;
+#endif
 
 class CBankFileAsyncEntry;
 class CCPPointerInfo;
@@ -16,6 +20,12 @@ class CCharStringData;
 #pragma pack(push, 1)
 class CStreamingFontDataBank {
 public:
+#ifdef FABLE_RETAIL_CSTREAMINGFONTDATABANK
+    // Retail opt-in (Codex pass 11): non-virtual members called out of line by 0x009A3640 InitializeStreamingFontTextureCache
+    // (Ego_r ?StreamGlyph@CStreamingFontDataBank@@ / ?ReadData@CStreamingFontDataBank@@); the layout stays the flattened default.
+    CCountedPointer<CBankFileAsyncData> StreamGlyph(void*,unsigned long,unsigned long,bool);
+    void ReadData(void*,unsigned long,unsigned long);
+#endif
     void*                __vftable;                          // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char        _pad_0x04[0x4];                     // +0x04
     unsigned char        _pad_0x08[0x30];                    // +0x08

@@ -1,0 +1,37 @@
+address	grade	test	macros	note
+00430900	RELOCATION_MATCH	PASS	FABLE_RETAIL_CPERSISTCONTEXT,FABLE_RETAIL_CDEFSTRINGTABLE,FABLE_RETAIL_CCHARSTRING,FABLE_RETAIL_CWIDESTRING,FABLE_RETAIL_DEF_CLASS_BASE	retail CDefStringTable/CWideString branches; CUIMiscThingsDef on fable_containers+fable_map
+004317d0	RELOCATION_MATCH	PASS	FABLE_RETAIL_CDEFSTRINGTABLE,FABLE_RETAIL_CCHARSTRING,FABLE_RETAIL_CWIDESTRING,FABLE_RETAIL_DEF_CLASS_BASE,FABLE_RETAIL_CPARENTDEFCLASSBASE	FABLE_RETAIL_CPARENTDEFCLASSBASE (compiler-generated parent dtor)
+0052cf40	RELOCATION_MATCH	PASS		row std::_Destroy/_List_base::clear dropped (shared header provides them)
+00531560	RELOCATION_MATCH	PASS	FABLE_RETAIL_CCHARSTRING	row iterator tags dropped (shared header provides them)
+0055b040	RELOCATION_MATCH	PASS	FABLE_RETAIL_CDEFSTRINGTABLE,FABLE_RETAIL_CCHARSTRING,FABLE_RETAIL_CWIDESTRING,FABLE_RETAIL_DEF_CLASS_BASE	retail CDefStringTable/CWideString branches
+00626e40	RELOCATION_MATCH	PASS	FABLE_RETAIL_CCHARSTRING,FABLE_RETAIL_CWIDESTRING,FABLE_RETAIL_CCOUNTEDPOINTER,FABLE_RETAIL_CTCBASE	single PeekTC; CVectorMap::LowerBound same-TU noinline; FABLE_RETAIL_CCOUNTEDPOINTER (conflict, see NOTES)
+0078b7c0	RELOCATION_MATCH	PASS		see NOTES.md / hdr/README.md
+008400b0	RELOCATION_MATCH	PASS	FABLE_RETAIL_LHHTTP2	see NOTES.md / hdr/README.md
+00840740	RELOCATION_MATCH	PASS	FABLE_RETAIL_LHHTTP2	see NOTES.md / hdr/README.md
+008fb170	RELOCATION_MATCH	PASS		see NOTES.md / hdr/README.md
+00998570	RELOCATION_MATCH	PASS	FABLE_RETAIL_CCHARSTRING,FABLE_RETAIL_CSTRINGPARSER	see NOTES.md / hdr/README.md
+009a3640	RELOCATION_MATCH	PASS	FABLE_RETAIL_CSURFACE,FABLE_RETAIL_CTEXTURE,FABLE_RETAIL_CPIXELFORMAT,FABLE_RETAIL_CSTREAMINGFONTDATABANK	see NOTES.md / hdr/README.md
+009c0880	RELOCATION_MATCH	PASS	FABLE_RETAIL_CSURFACE,FABLE_RETAIL_CTEXTURE,FABLE_RETAIL_CPIXELFORMAT	see NOTES.md / hdr/README.md
+00a4b230	RELOCATION_MATCH	PASS		see NOTES.md / hdr/README.md
+00a4fe60	RELOCATION_MATCH	PASS	FABLE_RETAIL_BASE_OBJECT,FABLE_RETAIL_C3DANIMATION2,FABLE_RETAIL_C3DANIMFILEBONEMASKCHUNK,FABLE_RETAIL_C3DANIMFILEHELPERSCHUNK,FABLE_RETAIL_C3DANIMFILEMOVEMENTVECTORCHUNK,FABLE_RETAIL_C3DANIMFILEXALLOCATIONSIZECHUNK,FABLE_RETAIL_C3DANIMFILEXSEQUENCECHUNK,FABLE_RETAIL_CCHUNKEDFILECHUNK,FABLE_RETAIL_CCHUNKEDFILESUPERCHUNK,FABLE_RETAIL_CHANDLEBASEDMEMORYPOOL,FABLE_RETAIL_CMEMORYDATAINPUTSTREAM,FABLE_RETAIL_CMOVABLERESOURCE,FABLE_RETAIL_CMOVABLERESOURCEMEMORYPOOL,FABLE_RETAIL_CSIMPLEMEMORYPOOL,FABLE_RETAIL_CDATAINPUTSTREAM	11 animation headers gated per class; CSimpleMemoryPool branch extended; New<bool> -> AllocateType<bool> (FableWin name)
+00a59fd0	RELOCATION_MATCH	PASS		see NOTES.md / hdr/README.md
+00aef1f0	RELOCATION_MATCH	PASS	FABLE_RETAIL_BASE_OBJECT,FABLE_RETAIL_CPARTICLEEMITTER,FABLE_RETAIL_CSTRINGPARSER,FABLE_RETAIL_CCHARSTRING	see NOTES.md / hdr/README.md
+00b3efa0	RELOCATION_MATCH	PASS	FABLE_RETAIL_CDATAINPUTSTREAM	see NOTES.md / hdr/README.md
+00cb7310	RELOCATION_MATCH	PASS		see NOTES.md / hdr/README.md
+00cbca50	RELOCATION_MATCH	PASS		see NOTES.md / hdr/README.md
+00d17470	RELOCATION_MATCH	PASS	FABLE_RETAIL_NSCRIPT,FABLE_RETAIL_CCHARSTRING	CScriptThing +NullCoord (NSCRIPT branch); Game->; inline operator= in row (header contract)
+00d76030	RELOCATION_MATCH	PASS	FABLE_RETAIL_CCHARSTRING,FABLE_RETAIL_NSCRIPT,FABLE_RETAIL_BASE_OBJECT,FABLE_RETAIL_SUSPENDABLE_PROCESS	fable_hanging_tree.h preamble moved into source; Game->; inline operator= in row
+00e13310	RELOCATION_MATCH	PASS	FABLE_RETAIL_CCHARSTRING,FABLE_RETAIL_NSCRIPT,FABLE_RETAIL_BASE_OBJECT	fable_wasp.h preamble moved into source; Game->; inline operator= in row
+00f3d320	RELOCATION_MATCH	PASS		see NOTES.md / hdr/README.md
+0121e210	RELOCATION_MATCH	PASS	FABLE_RETAIL_CTCWIFE,FABLE_RETAIL_CCHARSTRING	see NOTES.md / hdr/README.md
+0121f280	RELOCATION_MATCH	PASS	FABLE_RETAIL_CTCORACLEMINIGAME,FABLE_RETAIL_CCHARSTRING	see NOTES.md / hdr/README.md
+01229fc0	RELOCATION_MATCH	PASS	FABLE_RETAIL_DEF_CLASS_BASE,FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE	see NOTES.md / hdr/README.md
+0122a010	RELOCATION_MATCH	PASS	FABLE_RETAIL_DEF_CLASS_BASE,FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE	see NOTES.md / hdr/README.md
+0047a9f0	NOT_DONE	-	-	not consolidated (budget): needs one model each for CThingPhysical/CThingGameObject/CThingCreatureBase/CTCBase/CWorld/CPlayerManager/CDefinitionManager/CResourceList/CThingSearchTools/CWorldMap etc.; not parked (fewer than 10 attempts)
+00606300	NOT_DONE	-	-	not consolidated (budget): needs one model each for CThingPhysical/CThingGameObject/CThingCreatureBase/CTCBase/CWorld/CPlayerManager/CDefinitionManager/CResourceList/CThingSearchTools/CWorldMap etc.; not parked (fewer than 10 attempts)
+00666ef0	NOT_DONE	-	-	not consolidated (budget): needs one model each for CThingPhysical/CThingGameObject/CThingCreatureBase/CTCBase/CWorld/CPlayerManager/CDefinitionManager/CResourceList/CThingSearchTools/CWorldMap etc.; not parked (fewer than 10 attempts)
+00667450	NOT_DONE	-	-	not consolidated (budget): needs one model each for CThingPhysical/CThingGameObject/CThingCreatureBase/CTCBase/CWorld/CPlayerManager/CDefinitionManager/CResourceList/CThingSearchTools/CWorldMap etc.; not parked (fewer than 10 attempts)
+00667d30	NOT_DONE	-	-	not consolidated (budget): needs one model each for CThingPhysical/CThingGameObject/CThingCreatureBase/CTCBase/CWorld/CPlayerManager/CDefinitionManager/CResourceList/CThingSearchTools/CWorldMap etc.; not parked (fewer than 10 attempts)
+007355f0	NOT_DONE	-	-	not consolidated (budget): needs one model each for CThingPhysical/CThingGameObject/CThingCreatureBase/CTCBase/CWorld/CPlayerManager/CDefinitionManager/CResourceList/CThingSearchTools/CWorldMap etc.; not parked (fewer than 10 attempts)
+0074a5d0	NOT_DONE	-	-	not consolidated (budget): needs one model each for CThingPhysical/CThingGameObject/CThingCreatureBase/CTCBase/CWorld/CPlayerManager/CDefinitionManager/CResourceList/CThingSearchTools/CWorldMap etc.; not parked (fewer than 10 attempts)
+00775c60	NOT_DONE	-	-	not consolidated (budget): needs one model each for CThingPhysical/CThingGameObject/CThingCreatureBase/CTCBase/CWorld/CPlayerManager/CDefinitionManager/CResourceList/CThingSearchTools/CWorldMap etc.; not parked (fewer than 10 attempts)

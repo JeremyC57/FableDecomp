@@ -61,7 +61,13 @@ public:
     CCountedPointer() : Data(0), Info(0) { }
     CCountedPointer(T* data) : Data(data)
     {
+#ifdef FABLE_RETAIL_CCOUNTEDPOINTER
+        // Retail (Codex pass 11): the ctor tests the member it just stored -- 0x00626E40 spills the pointer and reloads it
+        // for the test and the CCPPointerInfo store, which `if (data)` (the landed default) does not reproduce.
+        if (Data)
+#else
         if (data)
+#endif
             Info = new CCPPointerInfo(1, DeleteData, (void*)Data);
         else
             Info = 0;

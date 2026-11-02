@@ -31,6 +31,14 @@ public:
     class CMemoryBlock;
     CSimpleMemoryPool(unsigned long capacity, unsigned long growthGranularity);   // 0x00A5C570 ??0CSimpleMemoryPool@@QAE@KK@Z
     virtual ~CSimpleMemoryPool() { ClearMemoryBlocks(); }                // slot 0 (inline in retail)
+    void* Allocate(unsigned long size);                                  // ?Allocate@CSimpleMemoryPool@@QAEPAXK@Z
+    void SetCapacity(unsigned long capacity);                            // ?SetCapacity@CSimpleMemoryPool@@QAEXK@Z
+    void SetMemoryPool(void* memory, unsigned long size);                // ?SetMemoryPool@CSimpleMemoryPool@@QAEXPAXK@Z
+    // FableWin ??$AllocateType@_N@CSimpleMemoryPool@@QAEPA_NK@Z (0x03237A60; inline in retail): the 64-bit size check, then Allocate.
+    template<class T> T* AllocateType(unsigned long count)
+    {
+        return count != 0 ? ((unsigned __int64)count * sizeof(T) > 0xffffffffUL ? 0 : (T*)Allocate(count * sizeof(T))) : 0;
+    }
 private:
     void ClearMemoryBlocks();                                            // 0x00A5C600 ?ClearMemoryBlocks@CSimpleMemoryPool@@AAEXXZ
 public:

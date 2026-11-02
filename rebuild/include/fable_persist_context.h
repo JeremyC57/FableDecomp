@@ -1,4 +1,8 @@
 #pragma once
+#ifdef FABLE_RETAIL_CPERSISTCONTEXT
+// Retail opt-in (Codex pass 11 consolidation): the complete 44-byte Ego_r CPersistContext (engine/CPersistContext.h).
+#include "engine/CPersistContext.h"
+#else
 
 #include "rebuild_abi.h"
 
@@ -13,3 +17,4 @@ public:
         signed char& value,
         const signed char& defaultValue);
 };
+#endif

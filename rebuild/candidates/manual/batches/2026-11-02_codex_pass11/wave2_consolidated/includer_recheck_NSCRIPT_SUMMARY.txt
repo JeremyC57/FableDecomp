@@ -1,0 +1,8 @@
+NSCRIPT includer recheck (CScriptThing NullCoord addition), overlay /tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad/w22/cons11/hdr, vland --recheck-landed, 4 shards
+rows: 3344 sources (all landed sources defining FABLE_RETAIL_NSCRIPT)
+    134 MATCH PASS
+   3210 RELOCATION_MATCH PASS
+WINS: 836
+WINS: 836
+WINS: 836
+WINS: 836

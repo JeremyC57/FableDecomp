@@ -4,6 +4,19 @@
 
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CWIDESTRING
+// Retail CWideStringData (Ego_r TPI: protected Data, public NoRefs at +0x0C, const operator==); the STLport
+// basic_string<unsigned short> is the three-pointer string of stlport/fable_string.h (0x10 bytes in all).
+#include "stlport/fable_string.h"
+class CWideStringData
+{
+protected:
+    std::basic_string<unsigned short> Data;
+public:
+    long NoRefs;
+    bool operator==(const CWideStringData& other) const { const std::basic_string<unsigned short>& other_data=other.Data; return Data==other_data; }
+};
+#else
 class CWideStringData
 { public:
     wchar_t* text;
@@ -11,8 +24,33 @@ class CWideStringData
     fable_u32 unknown08;
     fable_i32 owners;
 };
+#endif
 
 #pragma pack(push, 1)
+#ifdef FABLE_RETAIL_CCHARSTRING
+// Retail opt-in (Codex pass 11 consolidation): Ego_r TPI CCharStringData = { CBasicString<char> Data; long NoRefs; } and
+// CBasicString<T> = { T* PData; unsigned long StringLength; unsigned long DataLength : 31; bool UseFastExtend : 1; },
+// 13 + 4 = 0x11 bytes in the existing packed scope (the same sizeof as the default stand-in below). PeekData and the
+// length-then-Compare equality are inline in both PDBs' callers (0x00998570 GetRelativeFilePath compares two paths inline).
+template<class T> class CBasicString {
+protected:
+    T* PData;
+    unsigned long StringLength;
+    unsigned long DataLength : 31;
+    bool UseFastExtend : 1;
+    static long __fastcall Compare(const T*,const T*);
+public:
+    const T* PeekData() const { return PData; }
+    unsigned long GetLength() const { return StringLength; }
+    bool operator==(const CBasicString& other) const { if(StringLength!=other.StringLength)return false; return !Compare(PData,other.PData); }
+};
+class CCharStringData
+{ public:
+    CBasicString<char> Data;
+protected:
+    long NoRefs;
+};
+#else
 class CCharStringData
 { public:
     char* text;
@@ -21,6 +59,7 @@ class CCharStringData
     fable_u8 flags0C;
     fable_i32 owners;
 };
+#endif
 #pragma pack(pop)
 
 class CCharString;
@@ -46,19 +85,38 @@ public:
 
     static CWideString FABLE_FASTCALL CreateFromCharString(
         const CCharString& text);
+#ifdef FABLE_RETAIL_CWIDESTRING
+    CCharString ToCharString() const;                          // ?ToCharString@CWideString@@QBE?AVCCharString@@XZ
+    bool operator==(const CWideString& other) const            // inline in retail (FableWin ??8CWideString@@QBE_NABV0@@Z)
+    {
+        if(PStringData==other.PStringData)return true;
+        if(!PStringData || !other.PStringData)return false;
+        return *PStringData==*other.PStringData;
+    }
+    bool Contains(const CWideString& other) const;             // ?Contains@CWideString@@QBE_NABV1@@Z
+#endif
 
 private:
     explicit CWideString(const CCharString& text);
+#ifndef FABLE_RETAIL_CWIDESTRING
     void UnassignString();
+#endif
 
 protected:
     CWideStringData* AllocStringData(                          // 0x0099B3C0 protected (Ego_r / FableWin: IAE)
         const wchar_t* text,
         long length);
 
+#ifdef FABLE_RETAIL_CWIDESTRING
+    static long NoStrings;
+    // FableWin ?UnassignString@CWideString@@IAEXXZ (protected; inline in retail)
+    void UnassignString() { if(PStringData) { if(--PStringData->NoRefs<=0)delete PStringData;PStringData=0; } }
+    CWideStringData* PStringData;                              // +0x00 (Ego_r TPI: protected PStringData)
+#else
 private:
 
     CWideStringData* storage_;
+#endif
 };
 
 CWideString FABLE_FASTCALL operator+(
@@ -82,6 +140,17 @@ public:
     // 0x0121E3A0, vector<CCharString>(18, "") 0x0121A460 which matches only through the implicit conversion, a const
     // CCharString& bound to a literal 0x0121EF70): the declaration carries the default length -1.
     CCharString(const char* text, long length = -1);           // 0x0099EBF0
+    // Retail opt-in (Codex pass 11 consolidation): further Ego_r CCharString members used inline by retail callers.
+    unsigned long GetCRC() const;                              // 0x00404310 (Ego_r 0x00403C00)
+    bool operator==(const CCharString& other) const {
+        if(PStringData==other.PStringData)return true;
+        if(!PStringData||!other.PStringData)return false;
+        return PStringData->Data==other.PStringData->Data;
+    }
+    bool operator!=(const CCharString&) const;
+    bool operator!=(const char*) const;
+    const CCharString& operator+=(const char*);
+    const CCharString& operator+=(const CCharString&);
 #else
     CCharString(const char* text, long length);
 #endif
@@ -98,8 +167,13 @@ protected:
         const char* text,
         long length);
 
+#ifdef FABLE_RETAIL_CCHARSTRING
+    static long NoStrings;
+    CCharStringData* PStringData;                              // +0x00 (Ego_r TPI 0x27dc: protected PStringData)
+#else
 private:
     CCharStringData* storage_;
+#endif
 };
 
 CCharString FABLE_FASTCALL operator+(

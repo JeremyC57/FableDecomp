@@ -8,6 +8,9 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CTCORACLEMINIGAME
+#include "fable_string.h"
+#endif
 
 class CDefPointeeBase;
 class CThing;
@@ -35,6 +38,12 @@ public:
     unsigned char    InputsPending[0x4];                     // +0xe0 list<EOracleMinigameInput,std::allocator<EOracleMinigameInput>_>
     CThing*          SpeechMarker;                           // +0xe4
     CDefPointeeBase* PDef_Object;                            // +0xe8 CDefPointer<COracleMinigameDef_const_>::Object
+#ifdef FABLE_RETAIL_CTCORACLEMINIGAME
+    // Retail opt-in (Codex pass 11): private static const CCharString SymbolStrings[4] (Ego_r TPI 0x33b4c; 0x0121F280 builds
+    // four 4-byte elements at 0x013BAE94..A0 and registers their atexit destructor). Instance layout unchanged.
+private:
+    static const CCharString SymbolStrings[4];
+#endif
 };
 #pragma pack(pop)
 

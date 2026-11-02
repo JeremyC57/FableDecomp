@@ -108,6 +108,8 @@ public:
     void SetImplementation(CCountedPointer<CScriptThing>);               // Ego_r.pdb / FableWin.pdb
     CCountedPointer<CScriptThing> PImp;                                  // +0x04 (Data +0x04, Info +0x08)
     static CCharString NullString;                                       // 0x0143E8EC
+protected:
+    static C3DVector NullCoord;                                          // 0x0143E8E0 ?NullCoord@CScriptThing@@1VC3DVector@@A (Ego_r PUBLIC32; GetPos null branch)
 private:
     void ValidatePImp() const;                                           // FableWin.pdb ?ValidatePImp@CScriptThing@@ABEXXZ
 };
