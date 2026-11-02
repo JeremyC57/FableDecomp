@@ -89,6 +89,9 @@ void C3DSkeletalMorphTarget::Initialise(CCharString& name, CArray& bones)
 CCharString::CCharString():storage_(0) {}
 CCharString::CCharString(const char* p,long):storage_((CCharStringData*)p) {}
 CCharString::~CCharString() {}
+#ifdef _MSC_VER
+CCharString::CCharString(const CCharString& x):storage_(x.storage_) {}   // test stub: the bitwise copy the implicit constructor made
+#endif
 CCharString::operator const char*() const {return (const char*)storage_;}
 static int nameAssignments;
 const CCharString& CCharString::operator=(const CCharString& x) { storage_=x.storage_;++nameAssignments;return *this; }

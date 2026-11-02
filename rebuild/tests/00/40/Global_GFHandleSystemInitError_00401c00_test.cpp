@@ -30,6 +30,11 @@ CCharString::CCharString(const char* text, long)
     Storage(*this) = &g_applicationStorage;
 }
 
+CCharString::CCharString(const CCharString& other)   // test stub: the bitwise copy the implicit constructor made
+{
+    Storage(*this) = const_cast<CCharStringData*>(Storage(other));
+}
+
 CCharString::~CCharString()
 {
 }

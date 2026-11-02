@@ -76,6 +76,7 @@ class CCharString
 public:
     CCharString();
     CCharString(const char* text, long length);
+    CCharString(const CCharString& other);                     // 0x0099EC30 ??0CCharString@@QAE@ABV0@@Z (Ego_r / FableWin)
     ~CCharString();
     operator const char*() const;
     const CCharString& operator=(const CCharString& other);
