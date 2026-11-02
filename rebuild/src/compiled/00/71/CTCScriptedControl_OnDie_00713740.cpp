@@ -1,5 +1,7 @@
 // CTCScriptedControl::OnDie() (vtable slot 13) -- tell the thing's interface-7 component its state group is gone, flag the CTCAnimationComplex animation (interface 0x5A) as changed, then the empty CTCBase slot-13 base
 // Leaf: ?OnDie@CTCScriptedControl@@UAEXXZ
+// Naming wave 31 (family tcb): the local CTCBase (slots 0-12 padded with the invented v00..v12) is engine/CTCBase.h's retail branch
+//   (FABLE_RETAIL_CTCBASE; DECISIONS_W30 D5; RTTI CTCScriptedControl : CTCBase; ParentThing +0x04 from the header)
 // Naming wave 30 (family c699): the slot-13 pair is OnDie: own row ?OnDie@CTCScriptedControl@@UAEXXZ and the empty base ?OnDie@CTCBase@@UAEXXZ
 //   0x006868E0 (Ego_r.pdb / FableWin.pdb; slot 13 = OnDie in the CTCBase order). Was the placeholder slot-13 Leaf / catalog "OnRemove".
 // Retail: Fable.exe 0x00713740, 135 bytes (plain `ret`). Vtable 0x012658E4 (CTCScriptedControl) slot 13 (manifest
@@ -53,15 +55,8 @@ class CThing { public:
     CInterfaceMap m_interfaces;             // +0x44
     unsigned long HasInterface(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
 };
-class CTCBase { public:
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
-    virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
-    virtual void v10(); virtual void v11(); virtual void v12();
-    virtual void OnDie();                // slot 13: 0x006868E0 (empty)
-    CThing* ParentThing;                    // +0x04
-    bool    ToBeRemoved;                    // +0x08
-    bool    IsInGlobalUpdateTCs;            // +0x09
-};
+#define FABLE_RETAIL_CTCBASE
+#include "engine/CTCBase.h"                              // : CBaseClassNonCopyable, vtable 0x0125BE0C; slot 13 OnDie 0x006868E0
 class CTCScriptedControl : public CTCBase { public:       // vtable 0x012658E4
     virtual void OnDie();
 };
