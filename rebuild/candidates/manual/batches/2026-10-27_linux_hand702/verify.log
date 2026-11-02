@@ -1,0 +1,41 @@
+addr       parity           behav  name
+00543cf0   WARN SHARED_HEADER_AVAILABLE CObserver
+00543cf0   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+00543cf0   RELOCATION_MATCH PASS   ~CParticleEffect
+00544310   WARN SHARED_HEADER_AVAILABLE CObserver
+00544310   RELOCATION_MATCH PASS   AddSpellSelectionChild
+00544330   WARN SHARED_HEADER_AVAILABLE CObserver
+00544330   RELOCATION_MATCH PASS   AddSpellIndicationChild
+005474c0   WARN SHARED_HEADER_AVAILABLE CObserver
+005474c0   RELOCATION_MATCH PASS   ~CSwappingStateComponent
+00562e10   RELOCATION_MATCH PASS   ClearScoreboard
+00657200   WARN RELOC_NAME: ?GetPlayer@CDrawBase@NPlayerGui@@QBEABVCPlayer@@XZ -> 00643d84 labelled '_global::Forward_GetMainPlayer_via0x8_00643d84'
+00657200   RELOCATION_MATCH PASS   GetAssignableSpecialMoveIndexForButtonDef
+00722570   RELOCATION_MATCH PASS   Copy
+00778b10   RELOCATION_MATCH PASS   Copy
+008d7580   RELOCATION_MATCH PASS   ~CModeOutOfActionBase
+00bfbbf0   RELOCATION_MATCH PASS   ~CObject
+
+WINS: 10
+  00543cf0 RELOCATION_MATCH NUISystem::CParticleEffect::??1CParticleEffect@NUISystem@@UAE@XZ
+  00544310 RELOCATION_MATCH NUISystem::CSpellContainerList::?AddSpellSelectionChild@CSpellContainerList@NUISystem@@UAEXAAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z
+  00544330 RELOCATION_MATCH NUISystem::CSpellContainerList::?AddSpellIndicationChild@CSpellContainerList@NUISystem@@UAEXAAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z
+  005474c0 RELOCATION_MATCH NUISystem::CSwappingStateComponent::??1CSwappingStateComponent@NUISystem@@UAE@XZ
+  00562e10 RELOCATION_MATCH CTCHeroOnlineScoreboard::?ClearScoreboard@CTCHeroOnlineScoreboard@@AAEXXZ
+  00657200 RELOCATION_MATCH NPlayerGui::CDrawAbilityButtonsPC::?GetAssignableSpecialMoveIndexForButtonDef@CDrawAbilityButtonsPC@NPlayerGui@@MBEJABVCAbilityButtonGuiDef@@@Z
+  00722570 RELOCATION_MATCH CTCSmokeGenerator::?Copy@CTCSmokeGenerator@@UAEXABVCTCBase@@@Z
+  00778b10 RELOCATION_MATCH CTCFamilyMember::?Copy@CTCFamilyMember@@UAEXABVCTCBase@@@Z
+  008d7580 RELOCATION_MATCH NCreatureMode::CModeOutOfActionBase::??1CModeOutOfActionBase@NCreatureMode@@UAE@XZ
+  00bfbbf0 RELOCATION_MATCH CLocalDetailPrimitiveMeshZSpriteBatch::CObject::??1CObject@CLocalDetailPrimitiveMeshZSpriteBatch@@QAE@XZ
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  NUISystemCParticleEffect_CParticleEffect_00543cf0
+  NUISystemCSpellContainerList_AddSpellSelectionChild_00544310
+  NUISystemCSpellContainerList_AddSpellIndicationChild_00544330
+  NUISystemCSwappingStateComponent_CSwappingStateComponent_005474c0
+  CTCHeroOnlineScoreboard_ClearScoreboard_00562e10
+  NPlayerGuiCDrawAbilityButtonsPC_GetAssignableSpecialMoveIndexForButtonDef_00657200
+  CTCSmokeGenerator_Copy_00722570
+  CTCFamilyMember_Copy_00778b10
+  NCreatureModeCModeOutOfActionBase_CModeOutOfActionBase_008d7580
+  CLocalDetailPrimitiveMeshZSpriteBatchCObject_CObject_00bfbbf0

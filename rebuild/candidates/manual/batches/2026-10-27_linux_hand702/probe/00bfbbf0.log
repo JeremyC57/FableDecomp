@@ -1,0 +1,4 @@
+1	src/00bfbbf0.cpp (p1)	implicit ~CObject via DestroyOne, plain inline virtual ~CEnginePrimitiveHandle { Clear(); } (CIconText model)	DIFFER(8v94) handle dtor called out of line
+2	probe/00bfbbf0_p2.cpp	user inline ~CObject() {}	DIFFER(8v94) same
+3	probe/00bfbbf0_p3.cpp	user out-of-class ~CObject() {}	DIFFER(8v94) same
+4	probe/00bfbbf0_p4.cpp	__forceinline handle dtor (fleet model), implicit ~CObject	RELOCATION_MATCH

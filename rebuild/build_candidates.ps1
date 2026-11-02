@@ -374939,6 +374939,76 @@ $catalog = @(
         TestSource = '00/f2/CArenaCreatureDef_CArenaCreatureDef_00f25e40_test.cpp'
         PassPattern = '00f25e40_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00543cf0'
+        Module = 'NUISystem::CParticleEffect'
+        Source = '00/54/NUISystemCParticleEffect_CParticleEffect_00543cf0.cpp'
+        TestSource = '00/54/NUISystemCParticleEffect_CParticleEffect_00543cf0_test.cpp'
+        PassPattern = '00543cf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00544310'
+        Module = 'NUISystem::CSpellContainerList'
+        Source = '00/54/NUISystemCSpellContainerList_AddSpellSelectionChild_00544310.cpp'
+        TestSource = '00/54/NUISystemCSpellContainerList_AddSpellSelectionChild_00544310_test.cpp'
+        PassPattern = '00544310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00544330'
+        Module = 'NUISystem::CSpellContainerList'
+        Source = '00/54/NUISystemCSpellContainerList_AddSpellIndicationChild_00544330.cpp'
+        TestSource = '00/54/NUISystemCSpellContainerList_AddSpellIndicationChild_00544330_test.cpp'
+        PassPattern = '00544330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005474c0'
+        Module = 'NUISystem::CSwappingStateComponent'
+        Source = '00/54/NUISystemCSwappingStateComponent_CSwappingStateComponent_005474c0.cpp'
+        TestSource = '00/54/NUISystemCSwappingStateComponent_CSwappingStateComponent_005474c0_test.cpp'
+        PassPattern = '005474c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00562e10'
+        Module = 'CTCHeroOnlineScoreboard'
+        Source = '00/56/CTCHeroOnlineScoreboard_ClearScoreboard_00562e10.cpp'
+        TestSource = '00/56/CTCHeroOnlineScoreboard_ClearScoreboard_00562e10_test.cpp'
+        PassPattern = '00562e10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00657200'
+        Module = 'NPlayerGui::CDrawAbilityButtonsPC'
+        Source = '00/65/NPlayerGuiCDrawAbilityButtonsPC_GetAssignableSpecialMoveIndexForButtonDef_00657200.cpp'
+        TestSource = '00/65/NPlayerGuiCDrawAbilityButtonsPC_GetAssignableSpecialMoveIndexForButtonDef_00657200_test.cpp'
+        PassPattern = '00657200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00722570'
+        Module = 'CTCSmokeGenerator'
+        Source = '00/72/CTCSmokeGenerator_Copy_00722570.cpp'
+        TestSource = '00/72/CTCSmokeGenerator_Copy_00722570_test.cpp'
+        PassPattern = '00722570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00778b10'
+        Module = 'CTCFamilyMember'
+        Source = '00/77/CTCFamilyMember_Copy_00778b10.cpp'
+        TestSource = '00/77/CTCFamilyMember_Copy_00778b10_test.cpp'
+        PassPattern = '00778b10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d7580'
+        Module = 'NCreatureMode::CModeOutOfActionBase'
+        Source = '00/8d/NCreatureModeCModeOutOfActionBase_CModeOutOfActionBase_008d7580.cpp'
+        TestSource = '00/8d/NCreatureModeCModeOutOfActionBase_CModeOutOfActionBase_008d7580_test.cpp'
+        PassPattern = '008d7580_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bfbbf0'
+        Module = 'CLocalDetailPrimitiveMeshZSpriteBatch::CObject'
+        Source = '00/bf/CLocalDetailPrimitiveMeshZSpriteBatchCObject_CObject_00bfbbf0.cpp'
+        TestSource = '00/bf/CLocalDetailPrimitiveMeshZSpriteBatchCObject_CObject_00bfbbf0_test.cpp'
+        PassPattern = '00bfbbf0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

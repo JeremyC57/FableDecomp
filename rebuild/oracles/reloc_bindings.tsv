@@ -35317,3 +35317,16 @@ _z_inflateEnd	00c038d0	00a3acc0
 ?KillRippleFX@CTCKrakenTentacle@@AAEXXZ	007f07a0	007f0890
 ?GetPrimarySlotThing@CarryingMethods@@QAEPAVCThing@@XZ	006a1440	008976f0
 ?CreateMarker@@YIPAVCThing@@JABVC3DVector@@ABVCCharString@@@Z	0083d460	0089faa0
+??_7CParticleEffect@NUISystem@@6BCActionParam@1@@	01247330	00543cf0
+??_7CParticleEffect@NUISystem@@6BCObserver@1@@	01247338	00543cf0
+??_7CParticleEffect@NUISystem@@6BCUIInterface@1@@	0124735c	00543cf0
+??_7CSwappingStateComponent@NUISystem@@6BCActionParam@1@@	0124857c	005474c0
+??_7CSwappingStateComponent@NUISystem@@6BCObserver@1@@	01248584	005474c0
+??_7CSwappingStateComponent@NUISystem@@6BCUIInterface@1@@	012485ac	005474c0
+?_M_erase@?$_Rb_tree@W4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@U?$pair@$$CBW4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@V?$vector@U?$pair@MVCWideString@@@std@@V?$allocator@U?$pair@MVCWideString@@@std@@@2@@std@@@std@@U?$_Select1st@U?$pair@$$CBW4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@V?$vector@U?$pair@MVCWideString@@@std@@V?$allocator@U?$pair@MVCWideString@@@std@@@2@@std@@@std@@@4@U?$less@W4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@@4@V?$allocator@U?$pair@$$CBW4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@V?$vector@U?$pair@MVCWideString@@@std@@V?$allocator@U?$pair@MVCWideString@@@std@@@2@@std@@@std@@@4@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@V?$vector@U?$pair@MVCWideString@@@std@@V?$allocator@U?$pair@MVCWideString@@@std@@@2@@std@@@std@@@2@@Z	00569a80	00562e10
+?clear@?$_List_base@VCClanInfo@CTCHeroOnlineScoreboard@@V?$allocator@VCClanInfo@CTCHeroOnlineScoreboard@@@std@@@std@@QAEXXZ	00566dc0	00562e10
+?clear@?$_List_base@VCClanMember@CTCHeroOnlineScoreboard@@V?$allocator@VCClanMember@CTCHeroOnlineScoreboard@@@std@@@std@@QAEXXZ	00566e10	00562e10
+?GetAssignableSpecialMoveIndexForMouseButton@CGamePlayerInterface@@QBEJW4EMouseButtonControl@@@Z	00445f40	00657200
+?GetPlayer@CDrawBase@NPlayerGui@@QBEABVCPlayer@@XZ	00643d84	00657200
+??4?$vector@VCGenerationPos@CTCSmokeGenerator@@V?$allocator@VCGenerationPos@CTCSmokeGenerator@@@std@@@std@@QAEAAV01@ABV01@@Z	00722f30	00722570
+??4?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@QAEAAV01@ABV01@@Z	00778c00	00778b10

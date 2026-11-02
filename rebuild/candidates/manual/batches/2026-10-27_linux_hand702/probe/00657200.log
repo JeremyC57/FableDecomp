@@ -1,0 +1,2 @@
+1	src/00657200.cpp (p1)	one-expression GetPlayer().PlayerInterface->Get...(def.MouseButton)	DIFFER(24v26) argument pushed before GetPlayer, no tail call
+2	src/00657200.cpp	named CGamePlayerInterface* local first, then the call	RELOCATION_MATCH

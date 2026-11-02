@@ -1,0 +1,1 @@
+1	src/00562e10.cpp	STLport map::clear (inline _Rb_tree::clear, private _M_erase), list::clear -> out-of-line _List_base::clear, SelectedClan = CWideString::NullString	RELOCATION_MATCH

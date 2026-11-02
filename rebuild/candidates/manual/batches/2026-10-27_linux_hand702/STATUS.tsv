@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00543cf0	RELOCATION_MATCH	56v56	PASS	NUISystem::CParticleEffect::~CParticleEffect; 1 probe; residue none
+005474c0	RELOCATION_MATCH	50v50	PASS	NUISystem::CSwappingStateComponent::~CSwappingStateComponent (catalog ~CParticleEffect wrong); 1 probe; residue none
+008d7580	RELOCATION_MATCH	72v72	PASS	NCreatureMode::CModeOutOfActionBase::~CModeOutOfActionBase; 1 probe; residue none
+00562e10	RELOCATION_MATCH	84v84	PASS	CTCHeroOnlineScoreboard::ClearScoreboard (private); 1 probe; residue none
+00bfbbf0	RELOCATION_MATCH	94v94	PASS	CLocalDetailPrimitiveMeshZSpriteBatch::CObject::~CObject (implicit); 4 probes (__forceinline handle dtor); residue none
+00544310	RELOCATION_MATCH	21v21	PASS	NUISystem::CSpellContainerList::AddSpellSelectionChild (slot 142); 1 probe; residue none
+00544330	RELOCATION_MATCH	21v21	PASS	NUISystem::CSpellContainerList::AddSpellIndicationChild (slot 143); 1 probe; residue none
+00657200	RELOCATION_MATCH	26v26	PASS	NPlayerGui::CDrawAbilityButtonsPC::GetAssignableSpecialMoveIndexForButtonDef (slot 3); 2 probes (named local); residue none
+00722570	RELOCATION_MATCH	25v25	PASS	CTCSmokeGenerator::Copy (slot 12); 1 probe; residue none
+00778b10	RELOCATION_MATCH	19v19	PASS	CTCFamilyMember::Copy (slot 12); 1 probe; residue none
