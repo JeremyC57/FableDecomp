@@ -376178,6 +376178,14 @@ $catalog = @(
         TestSource = '00/ca/global_00ca5850_00ca5850_test.cpp'
         PassPattern = '00ca5850_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c5fa50'
+        Module = '_global'
+        Source = '00/c5/global_00c5fa50_00c5fa50.cpp'
+        TestSource = '00/c5/global_00c5fa50_00c5fa50_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00c5fa50_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

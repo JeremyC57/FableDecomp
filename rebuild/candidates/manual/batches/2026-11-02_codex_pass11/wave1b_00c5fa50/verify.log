@@ -1,0 +1,3 @@
+00c5fa50   WARN RELOC_NAME: ?CalcDifference@CImaAdpcmCodec@@AAE_KPAE0IIK@Z -> 00c5f150 labelled 'CImaAdpcmCodec::CalculateError'
+00c5fa50   RELOCATION_MATCH PASS   00c5fa50
+WINS: 1

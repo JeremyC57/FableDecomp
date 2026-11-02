@@ -47066,7 +47066,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c5f6a0	Audio_ExpandADPCM_Mono	_global	unknown	undefined	0		0	yes	accepted									
 00c5f7f0	DecodeS16	CImaAdpcmCodec	unknown	undefined	0		0	yes	accepted									
 00c5f9e0	Audio_InitializeCodecBuffer	_global	unknown	undefined	0		0	yes	accepted									
-00c5fa50	Audio_EncodeAdpcmWithBestStepIndex	_global	unknown	undefined	0		0	yes	accepted									
+00c5fa50	Convert	CImaAdpcmCodec	unknown	undefined	0		0	yes	accepted									
 00c5ff50	CBase	CBase	__thiscall	undefined	1	CBase *	0	yes	accepted									
 00c5ff60	CConsoleVariable_Unregister	_global	unknown	undefined	0		0	yes	accepted									
 00c5ffb0	CTCHeroStats::AddEventData	CTCHeroStats	unknown	undefined	0		0	yes	accepted									

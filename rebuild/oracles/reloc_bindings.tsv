@@ -35427,3 +35427,6 @@ _base_dist	012af708	00c04b70
 _base_length	012af690	00c04b70
 _extra_dbits	012aedc0	00c04b70
 _extra_lbits	012aed48	00c04b70
+?CalcDifference@CImaAdpcmCodec@@AAE_KPAE0IIK@Z	00c5f150	00c5fa50
+?apfnDecoders@?1??Convert@CImaAdpcmCodec@@QAEHPBXPAXI@Z@4QBQ6IHPAE2IIIPAH3@ZB	012b9314	00c5fa50
+__imp__printf	01440004	00c5fa50

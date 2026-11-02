@@ -1,0 +1,3 @@
+address	name	evidence
+00c5fa50	CImaAdpcmCodec::Convert	Codex pass 11: Microsoft 2001 imaadpcm.cpp (Xbox IMA ADPCM SDK codec, vendor source; diagnostics strings identify the four modes)
+00c5f150	CImaAdpcmCodec::CalcDifference	Codex pass 11: Microsoft 2001 imaadpcm.h private CalcDifference, called by Convert 0x00C5FA50

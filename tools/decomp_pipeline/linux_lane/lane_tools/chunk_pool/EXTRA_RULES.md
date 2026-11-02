@@ -115,3 +115,10 @@ member names, and script names (NScript quest scripts: check work/aeon_lua_ports
 - The 129 landed rows with `#pragma inline_depth` regions and the 17 two-view CScriptThing rows stay. Line 2 of each carries `// Revisit: inline-depth` or
   `// Revisit: two-view-CScriptThing` (docs/pipeline/INLINE_DEPTH_REVISIT.md). No new row lands with either device. A chunk that finds a pragma-free
   shape for one of them reports it; the coordinator tries it on the family and removes the marker from every row it redoes.
+
+## Owner 2026-11-02: SDK packing boundaries retail used
+"If that is how retail did it then you should too." Where the retail bytes prove a structure was compiled byte-packed by a Microsoft SDK
+header (member offsets that natural alignment cannot give), include the SDK's own boundary exactly as the SDK header does:
+`#include <pshpack1.h>` ... `#include <poppack.h>` (rebuild/include/pshpack1.h / poppack.h, directive text only). Cite the offsets in the
+header comment. This is not a licence for authored `#pragma pack`: no packing without byte evidence (first use: CImaAdpcmCodec 0x00C5FA50,
+mmreg.h's tWAVEFORMATEX / ima_adpcmwaveformat_tag).
