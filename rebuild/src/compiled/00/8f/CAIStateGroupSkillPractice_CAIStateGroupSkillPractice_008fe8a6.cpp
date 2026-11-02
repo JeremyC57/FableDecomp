@@ -1,24 +1,25 @@
-// CAIStateGroup_SkillPractice::CAIStateGroup_SkillPractice() -- base CAIStateGroupBase() then this class's vtable
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x008FE8A6, oracle length 18 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; mov esi,ecx ; call CAIStateGroupBase::CAIStateGroupBase ; mov dword ptr [esi],offset CAIStateGroup_SkillPractice::`vftable' ; mov eax,esi ; pop esi ; ret
-// Default constructor of a polymorphic class with no members of its own to initialise: the base
-// constructor @ 0x008FE862 runs, then the compiler stores this class's vtable (0x0128AF1C
-// -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 265
-// bodies of this shape.
-namespace N_008fe862 { struct CAIStateGroupBase {
-    virtual void v00();
-    CAIStateGroupBase();                           // 0x008FE862
-}; } using N_008fe862::CAIStateGroupBase;
+// CAIStateGroup_SkillPractice::CAIStateGroup_SkillPractice() -- base CAIStateGroup_ApprenticeHero(), then this class's own vtable
+// Leaf: ??0CAIStateGroup_SkillPractice@@QAE@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x008FE8A6, 18 bytes, thiscall, `ret`.
+// Identity: stores own vtable 0x0128AF1C (RTTI .?AVCAIStateGroup_SkillPractice@@, base chain CAIStateGroup_ApprenticeHero : CAIStateGroupBase : CBaseClass); FableWin.pdb ??0CAIStateGroup_SkillPractice@@QAE@XZ.
+// Callees: CAIStateGroup_ApprenticeHero::CAIStateGroup_ApprenticeHero 0x008FE862 (??0CAIStateGroup_ApprenticeHero@@QAE@XZ, Ego_r.pdb / FableWin.pdb; the callee stores the CAIStateGroup_ApprenticeHero vtable).
+// Layout: engine/CAIStateGroupBase.h's retail branch (CAIStateGroupBase : CBaseClass); no member is touched, so none is modelled.
+// Shape: a polymorphic class with no members of its own to initialise.
+// History: generated in a chunk batch ("One of 265 bodies of this shape") over the invented base ??0CAIStateGroupBase@N_008fe862@@QAE@XZ;
+//   re-authored on the RTTI / PDB classes in naming wave 32 (family aisd).
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#include "engine/CAIStateGroupBase.h"                  // CAIStateGroupBase : CBaseClass (0x14), ctor 0x008FD255
 
-struct CAIStateGroup_SkillPractice : CAIStateGroupBase {
-    virtual void v00();                    // this class has its own vtable
+class CAIStateGroup_ApprenticeHero : public CAIStateGroupBase {                   // RTTI CAIStateGroup_ApprenticeHero : CAIStateGroupBase
+public:
+    CAIStateGroup_ApprenticeHero();                     // 0x008FE862 ??0CAIStateGroup_ApprenticeHero@@QAE@XZ (Ego_r.pdb / FableWin.pdb)
+};
+
+class CAIStateGroup_SkillPractice : public CAIStateGroup_ApprenticeHero {      // vtable 0x0128AF1C
+public:
     CAIStateGroup_SkillPractice();
 };
 
 CAIStateGroup_SkillPractice::CAIStateGroup_SkillPractice()
-    : CAIStateGroupBase()
 {
 }

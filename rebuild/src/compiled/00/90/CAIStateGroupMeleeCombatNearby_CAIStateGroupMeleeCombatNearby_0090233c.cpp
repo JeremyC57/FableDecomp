@@ -1,24 +1,25 @@
-// CAIStateGroup_MeleeCombatNearby::CAIStateGroup_MeleeCombatNearby() -- base CAIStateGroupBehaviourBase() then this class's vtable
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0090233C, oracle length 18 bytes.
-// Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
-//        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
-//
-// Retail bytes:  push esi ; mov esi,ecx ; call CAIStateGroupBehaviourBase::CAIStateGroupBehaviourBase ; mov dword ptr [esi],offset CAIStateGroup_MeleeCombatNearby::`vftable' ; mov eax,esi ; pop esi ; ret
-// Default constructor of a polymorphic class with no members of its own to initialise: the base
-// constructor @ 0x008FF94E runs, then the compiler stores this class's vtable (0x0128D05C
-// -- named through rebuild/manifest/rtti-vtables.tsv) and returns `this`. One of 265
-// bodies of this shape.
-namespace N_008ff94e { struct CAIStateGroupBehaviourBase {
-    virtual void v00();
-    CAIStateGroupBehaviourBase();                           // 0x008FF94E
-}; } using N_008ff94e::CAIStateGroupBehaviourBase;
+// CAIStateGroup_MeleeCombatNearby::CAIStateGroup_MeleeCombatNearby() -- base CAIStateGroup_MeleeCombatNearbyBase(), then this class's own vtable
+// Leaf: ??0CAIStateGroup_MeleeCombatNearby@@QAE@XZ
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0090233C, 18 bytes, thiscall, `ret`.
+// Identity: stores own vtable 0x0128D05C (RTTI .?AVCAIStateGroup_MeleeCombatNearby@@, base chain CAIStateGroup_MeleeCombatNearbyBase : CAIStateGroupBase : CBaseClass); FableWin.pdb ??0CAIStateGroup_MeleeCombatNearby@@QAE@XZ.
+// Callees: CAIStateGroup_MeleeCombatNearbyBase::CAIStateGroup_MeleeCombatNearbyBase 0x008FF94E (??0CAIStateGroup_MeleeCombatNearbyBase@@QAE@XZ, Ego_r.pdb / FableWin.pdb; the callee stores the CAIStateGroup_MeleeCombatNearbyBase vtable).
+// Layout: engine/CAIStateGroupBase.h's retail branch (CAIStateGroupBase : CBaseClass); no member is touched, so none is modelled.
+// Shape: a polymorphic class with no members of its own to initialise.
+// History: generated in a chunk batch ("One of 265 bodies of this shape") over the invented base ??0CAIStateGroupBehaviourBase@N_008ff94e@@QAE@XZ;
+//   re-authored on the RTTI / PDB classes in naming wave 32 (family aisd).
+#define FABLE_RETAIL_CAISTATEGROUPBASE
+#include "engine/CAIStateGroupBase.h"                  // CAIStateGroupBase : CBaseClass (0x14), ctor 0x008FD255
 
-struct CAIStateGroup_MeleeCombatNearby : CAIStateGroupBehaviourBase {
-    virtual void v00();                    // this class has its own vtable
+class CAIStateGroup_MeleeCombatNearbyBase : public CAIStateGroupBase {                   // RTTI CAIStateGroup_MeleeCombatNearbyBase : CAIStateGroupBase
+public:
+    CAIStateGroup_MeleeCombatNearbyBase();                     // 0x008FF94E ??0CAIStateGroup_MeleeCombatNearbyBase@@QAE@XZ (Ego_r.pdb / FableWin.pdb)
+};
+
+class CAIStateGroup_MeleeCombatNearby : public CAIStateGroup_MeleeCombatNearbyBase {      // vtable 0x0128D05C
+public:
     CAIStateGroup_MeleeCombatNearby();
 };
 
 CAIStateGroup_MeleeCombatNearby::CAIStateGroup_MeleeCombatNearby()
-    : CAIStateGroupBehaviourBase()
 {
 }
