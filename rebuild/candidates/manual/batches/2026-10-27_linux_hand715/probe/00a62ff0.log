@@ -1,0 +1,1 @@
+1	user dtor { release VertexShader; release VertexDeclaration; } (each: if set, Release(), zero) through a private inline Release, private virtual ~ (EAE), over engine/CBaseClassNonCopyable.h	RELOCATION_MATCH 43v43 (relocs vtable 0x0129DA50, ~CBaseClassNonCopyable MAE); ??_G matches 0x00A630D0; final src = this shape

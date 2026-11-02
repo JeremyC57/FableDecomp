@@ -1,0 +1,2 @@
+1	implicit dtor, PDB ctor (const CPhysicsMeshInfo*) defined; chunk 712 CIVCountedPointer Release model; CCountedPointer.h	DIFFER 53v84: VC7.1 inlined the implicit ~ into ??_G and emitted no ??1 (grader picked another function)
+2	add destroy-by-name harness DestroyOne (chunks 656/657/712 precedent) so the out-of-line ??1 is emitted	RELOCATION_MATCH 84v84 (relocs operator delete, ~CResource); ??_G matches 0x00A2B610; final src

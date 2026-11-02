@@ -1,0 +1,3 @@
+1	user dtor { if (Texture && CreateOwnTexture) delete Texture; } on the landed 0x00A3B510 strmbase model + FABLE_RETAIL_CTEXTURE overlay (inline ~CTexture() { Uninitialise(); })	RELOCATION_MATCH 89v89 (relocs 5 vtables, Uninitialise, operator delete, ~CBaseVideoRenderer)
+2	overlay proof: Uninitialise doubled in the overlay ~CTexture	DIFFER 96v89 -> overlay is the model used; restored
+3	final src with sizeof assert 0x180 (retail new pushes 180h at 0x00A3BA79)	RELOCATION_MATCH 89v89; ??_G matches 0x00A3BDC0

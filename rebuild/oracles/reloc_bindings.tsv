@@ -35349,3 +35349,6 @@ _z_inflateEnd	00c038d0	00a3acc0
 ?OnPreDeviceReset@CSystemManager@@QAEXXZ	009a52b0	009bf500
 ?OnPreDeviceReset@CVsyncCallbackTimer@@QAEXXZ	009f73a0	009bf500
 ?Uninit@CRenderManagerCore@@QAEXXZ	00a0a9d0	009bf500
+??1?$vector@VCIcicleData@CModeIceTrollGroundSmashIcicleAssault@NCreatureMode@@V?$allocator@VCIcicleData@CModeIceTrollGroundSmashIcicleAssault@NCreatureMode@@@std@@@std@@QAE@XZ	00743a90	00743fe0
+?clear@?$_List_base@UCSubTitle@@V?$allocator@UCSubTitle@@@std@@@std@@QAEXXZ	009be060	009bdb40
+??1CBaseVideoRenderer@@UAE@XZ	00ca7310	00a3b970

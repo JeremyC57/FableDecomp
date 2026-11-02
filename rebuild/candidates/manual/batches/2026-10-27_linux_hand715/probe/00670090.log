@@ -1,0 +1,2 @@
+1	user dtor { if (PParticleEmitter.Get()) PParticleEmitter->Kill(true); Master = 0; } on FABLE_RETAIL_CTCBASE + chunk 706 CIntelligentPointer model	RELOCATION_MATCH 87v87 (relocs vtable, GetPItem x2, Kill, ~CBaseIntelligentPointer, ~CTCBase)
+2	same shape regraded on the post-713/714 repo CTCBase.h (PeekWorld/PeekWorldMap added)	RELOCATION_MATCH 87v87; ??_G matches 0x00670C50; final src

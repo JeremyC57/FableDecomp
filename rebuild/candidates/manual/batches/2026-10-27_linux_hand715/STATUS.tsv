@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00670090	RELOCATION_MATCH	87v87	PASS	CTCCoopSpirit::~CTCCoopSpirit (??1CTCCoopSpirit@@UAE@XZ, label right); 2 probes (1 shape); FABLE_RETAIL_CTCBASE (post-713/714) + local chunk 706 CIntelligentPointer
+0073aea0	RELOCATION_MATCH	93v93	PASS	CTCCreatureModeManager::~CTCCreatureModeManager (label ~CVertexShaderData wrong); 2 probes (1 shape); RemoveAllModes inlined; STLport list/vector text
+00743fe0	RELOCATION_MATCH	94v94	PASS	NCreatureMode::CModeIceTrollGroundSmashIcicleAssault::~ implicit (label ~CNewFrontendGameComponent wrong); 2 probes; FABLE_RETAIL_CMODESTANDBASE
+007c31c0	RELOCATION_MATCH	94v94	PASS	CTCDrainLife::~CTCDrainLife (label ~CTCCoopSpirit wrong); 2 probes (1 shape); STLport vector<CIntelligentPointer<CThing> >
+008d4740	RELOCATION_MATCH	90v90	PASS	CGameScriptThing::~CGameScriptThing implicit (label right); 3 probes; hdr/ overlay FABLE_RETAIL_CGAMESCRIPTTHING (opt-in)
+009bdb40	RELOCATION_MATCH	93v93	PASS	CXMVPlayer::~CXMVPlayer (label ~CBankFileEntryUpdateData wrong); 1 probe; STLport list<CSubTitle>, tail ~CBaseClassNonCopyable
+00a2b630	RELOCATION_MATCH	84v84	PASS	CPhysicsMeshInfo::CMeshData::~CMeshData implicit (label lacked nesting); 2 probes (p1 DIFFER 53v84: no ??1 emitted; p2 DestroyOne harness)
+00a3b970	RELOCATION_MATCH	89v89	PASS	CTextureRenderer::~CTextureRenderer (UAE; PDBs say QAE -- coordinator decision); 3 probes; hdr/ overlay FABLE_RETAIL_CTEXTURE (opt-in); sizeof 0x180
+00a62ff0	RELOCATION_MATCH	43v43	PASS	CVertexShaderData::~CVertexShaderData (??1CVertexShaderData@@EAE@XZ private virtual, label right); 1 probe
+00e37680	RELOCATION_MATCH	75v75	PASS	NScript::CV_ArcheryCompetitionScript::~ implicit (label lacked NScript); 2 probes; repo FABLE_RETAIL_CLEVELSCRIPTBASE (chunk 713)

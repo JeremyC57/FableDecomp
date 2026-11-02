@@ -1,0 +1,2 @@
+1	implicit dtor (no user dtor), PDB ctor defined empty; CTimer inline ctor/dtor through pDSTGame; CLevelScriptBase<CQ_SunnyvaleMasterData> with my overlay (compiler-generated dtor)	RELOCATION_MATCH 75v75
+2	same shape on the repo FABLE_RETAIL_CLEVELSCRIPTBASE branch (chunk 713) after deleting my overlay	RELOCATION_MATCH 75v75 (relocs ~CCharString, pDSTGame x2, ~CScriptBase); ??_G matches 0x00E37660; final src

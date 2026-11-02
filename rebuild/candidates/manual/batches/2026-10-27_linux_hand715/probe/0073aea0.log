@@ -1,0 +1,2 @@
+1	user dtor { RemoveAllModes(); } with RemoveAllModes a plain member defined above (inlined: front()->OnDeactivate(), PModes.clear(), AddMode(0)); STLport list with _List_base::clear declared only, vector<EMode>	RELOCATION_MATCH 93v93 (relocs vtable, _List_base::clear x2, AddMode, free x2, ~CTCBase)
+2	same shape regraded on the post-713/714 repo CTCBase.h	RELOCATION_MATCH 93v93; ??_G matches 0x007442B0; final src

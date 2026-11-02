@@ -1,0 +1,2 @@
+1	empty user dtor; real STLport 4.6 vector<CIntelligentPointer<CThing> > text (_Destroy loop, _Vector_base free) on FABLE_RETAIL_CTCBASE	RELOCATION_MATCH 94v94 (relocs vtable, free, ~CBaseIntelligentPointer, ~CTCBase)
+2	same shape regraded on the post-713/714 repo CTCBase.h	RELOCATION_MATCH 94v94; ??_G matches 0x007C3E70; final src

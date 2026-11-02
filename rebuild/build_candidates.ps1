@@ -375845,6 +375845,76 @@ $catalog = @(
         TestSource = '00/ed/NScriptCVSingingStonesScript_CVSingingStonesScript_00ed39f0_test.cpp'
         PassPattern = '00ed39f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00670090'
+        Module = 'CTCCoopSpirit'
+        Source = '00/67/CTCCoopSpirit_CTCCoopSpirit_00670090.cpp'
+        TestSource = '00/67/CTCCoopSpirit_CTCCoopSpirit_00670090_test.cpp'
+        PassPattern = '00670090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0073aea0'
+        Module = 'CTCCreatureModeManager'
+        Source = '00/73/CTCCreatureModeManager_CTCCreatureModeManager_0073aea0.cpp'
+        TestSource = '00/73/CTCCreatureModeManager_CTCCreatureModeManager_0073aea0_test.cpp'
+        PassPattern = '0073aea0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00743fe0'
+        Module = 'NCreatureMode::CModeIceTrollGroundSmashIcicleAssault'
+        Source = '00/74/NCreatureModeCModeIceTrollGroundSmashIcicleAssault_CModeIceTrollGroundSmashIcicleAssault_00743fe0.cpp'
+        TestSource = '00/74/NCreatureModeCModeIceTrollGroundSmashIcicleAssault_CModeIceTrollGroundSmashIcicleAssault_00743fe0_test.cpp'
+        PassPattern = '00743fe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c31c0'
+        Module = 'CTCDrainLife'
+        Source = '00/7c/CTCDrainLife_CTCDrainLife_007c31c0.cpp'
+        TestSource = '00/7c/CTCDrainLife_CTCDrainLife_007c31c0_test.cpp'
+        PassPattern = '007c31c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d4740'
+        Module = 'CGameScriptThing'
+        Source = '00/8d/CGameScriptThing_CGameScriptThing_008d4740.cpp'
+        TestSource = '00/8d/CGameScriptThing_CGameScriptThing_008d4740_test.cpp'
+        PassPattern = '008d4740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009bdb40'
+        Module = 'CXMVPlayer'
+        Source = '00/9b/CXMVPlayer_CXMVPlayer_009bdb40.cpp'
+        TestSource = '00/9b/CXMVPlayer_CXMVPlayer_009bdb40_test.cpp'
+        PassPattern = '009bdb40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a2b630'
+        Module = 'CPhysicsMeshInfo::CMeshData'
+        Source = '00/a2/CPhysicsMeshInfoCMeshData_CMeshData_00a2b630.cpp'
+        TestSource = '00/a2/CPhysicsMeshInfoCMeshData_CMeshData_00a2b630_test.cpp'
+        PassPattern = '00a2b630_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a3b970'
+        Module = 'CTextureRenderer'
+        Source = '00/a3/CTextureRenderer_CTextureRenderer_00a3b970.cpp'
+        TestSource = '00/a3/CTextureRenderer_CTextureRenderer_00a3b970_test.cpp'
+        PassPattern = '00a3b970_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a62ff0'
+        Module = 'CVertexShaderData'
+        Source = '00/a6/CVertexShaderData_CVertexShaderData_00a62ff0.cpp'
+        TestSource = '00/a6/CVertexShaderData_CVertexShaderData_00a62ff0_test.cpp'
+        PassPattern = '00a62ff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e37680'
+        Module = 'NScript::CV_ArcheryCompetitionScript'
+        Source = '00/e3/NScriptCVArcheryCompetitionScript_CVArcheryCompetitionScript_00e37680.cpp'
+        TestSource = '00/e3/NScriptCVArcheryCompetitionScript_CVArcheryCompetitionScript_00e37680_test.cpp'
+        PassPattern = '00e37680_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
