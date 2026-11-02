@@ -21,7 +21,7 @@ Line 2 of every such source is a marker comment, so the list stays correct throu
 - `// Revisit: two-view-CScriptThing -- ...` (17 rows)
 
 List them at any time with `grep -rl '^// Revisit: inline-depth' rebuild/src` (or `two-view-CScriptThing`). The tables below are the snapshot taken
-when the markers were added (the recheck with the markers in place is recorded in docs/journal/FINDINGS_LOG.md, 2026-11-02).
+when the markers were added (rechecked with the markers in place: all 146 RELOCATION_MATCH + PASS, `rebuild/candidates/manual/revisit/2026-11-02_inline_depth/recheck_grades.tsv`).
 
 ## Rules
 - No new row may land with a `#pragma inline_depth` region or a second CScriptThing view (EXTRA_RULES; "no modelling device retail never had").
