@@ -26181,3 +26181,13 @@ chunk	address	module	name	length
 716	00ce1090	_gapscan	sub_00ce1090	13
 716	01219e90	_gapscan	sub_01219e90	17
 716	01219f40	_gapscan	sub_01219f40	19
+717	0121f220	_gapscan	sub_0121f220	19
+717	0121f260	_gapscan	sub_0121f260	19
+717	0121f780	_gapscan	sub_0121f780	20
+717	0121f7a0	_gapscan	sub_0121f7a0	17
+717	0121f7e0	_gapscan	sub_0121f7e0	17
+717	01221b60	_gapscan	sub_01221b60	17
+717	0121a6ac	_gapscan	sub_0121a6ac	31
+717	0121e3a0	_gapscan	sub_0121e3a0	46
+717	0121ef70	_gapscan	sub_0121ef70	41
+717	00cdf120	_gapscan	sub_00cdf120	11
