@@ -26141,3 +26141,13 @@ chunk	address	module	name	length
 712	00719c70	CExclusiveAssert	~CExclusiveAssert	54
 712	0055d590	CExclusiveAssert	~CExclusiveAssert	54
 712	00b0ca90	CExclusiveAssert	~CExclusiveAssert	60
+713	008e3720	CAIStateGroup_CarryCrateAndFollow	~CAIStateGroup_CarryCrateAndFollow	59
+713	008e37c0	CAIStateGroup_CarryCrateAndFollow	~CAIStateGroup_CarryCrateAndFollow	59
+713	00cb6e60	CCombatWheel	ResetRings	57
+713	00e32310	CParticleEmitter	~CParticleEmitter_Simple	57
+713	00e398a0	CParticleEmitter	~CParticleEmitter_WithMemFree	66
+713	00e542b0	CParticleEmitter	~CParticleEmitter_Variant	81
+713	00ed39f0	CParticleEmitter	~CParticleEmitter_0xd39f0	89
+713	0049ba20	CThingCreatureBase	EditWorldUpdate	65
+713	00681850	CTCCreatureOpinionOfHero	IsWillingToAttackHeroOnOpinion	80
+713	00702a50	CTCDExplosion	~CTCDExplosion	75
