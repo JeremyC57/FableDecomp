@@ -225565,15 +225565,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00b40000'
         Module = 'CEngineWorldMap'
-        Source = '00/b4/CEngineWorldMap_CloseStaticMap_00b40000.cpp'
-        TestSource = '00/b4/CEngineWorldMap_CloseStaticMap_00b40000_test.cpp'
+        Source = '00/b4/CEngineWorldMap_CloseStaticMapFile_00b40000.cpp'
+        TestSource = '00/b4/CEngineWorldMap_CloseStaticMapFile_00b40000_test.cpp'
         PassPattern = '00b40000_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00b42c70'
         Module = 'CEngineWorldMap'
-        Source = '00/b4/CEngineWorldMap_DeleteAllMaps_00b42c70.cpp'
-        TestSource = '00/b4/CEngineWorldMap_DeleteAllMaps_00b42c70_test.cpp'
+        Source = '00/b4/CEngineWorldMap_DeleteMap_00b42c70.cpp'
+        TestSource = '00/b4/CEngineWorldMap_DeleteMap_00b42c70_test.cpp'
         PassPattern = '00b42c70_TEST PASS'
     }
     [pscustomobject]@{

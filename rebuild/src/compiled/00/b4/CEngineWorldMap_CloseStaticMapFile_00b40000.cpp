@@ -1,5 +1,7 @@
-// CEngineWorldMap::CloseStaticMap() -- when a static map is open, close it on every engine map after the first, on the water renderer, and on the static-map bank file, then reset the open state and the build status
-// Leaf: CloseStaticMap
+// CEngineWorldMap::CloseStaticMapFile() -- when a static map is open, close it on every engine map after the first, on the water renderer, and on the static-map bank file, then reset the open state and the build status
+// Leaf: ?CloseStaticMapFile@CEngineWorldMap@@QAEXXZ
+// Naming wave 29 (family ewm): the own row is ?CloseStaticMapFile@CEngineWorldMap@@QAEXXZ (Ego_r.pdb / FableWin.pdb; bound by 0x00B42E70 / 0x00B428E0).
+//   Was the catalog name CloseStaticMap (the CEngineMap / CEngineWaterRenderer member it calls).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B40000, 108 bytes (+ int3 padding).
 // Label correction: the manifest's "FrameStart(CEngineComponentParams*)" does not fit -- the body takes no argument (bare
 //   `ret`) and calls CloseStaticMap on every map and on the water renderer; named after what it does.
@@ -44,10 +46,10 @@ class CEngineWorldMap { public:
     STATIC_MAP_OPEN_STATE   StaticMapOpenState;  // +0x1a8
     unsigned char           _pad1ac[0x1b0 - 0x1ac];
     STATIC_MAP_BUILD_STATUS StaticMapBuildStatus;// +0x1b0
-    void CloseStaticMap();
+    void CloseStaticMapFile();
 };
 
-void CEngineWorldMap::CloseStaticMap()
+void CEngineWorldMap::CloseStaticMapFile()
 {
     if (StaticMapOpenState == STATIC_MAP_CLOSED)
         return;

@@ -1,5 +1,7 @@
-// CEngineWorldMap::DeleteAllMaps() -- delete every engine map by index, shrink the map list to nothing and free the map grid
-// Leaf: DeleteAllMaps
+// CEngineWorldMap::DeleteMap() -- delete every engine map by index, shrink the map list to nothing and free the map grid
+// Leaf: ?DeleteMap@CEngineWorldMap@@AAEXXZ
+// Naming wave 29 (family ewm): the own row is the private overload ?DeleteMap@CEngineWorldMap@@AAEXXZ (Ego_r.pdb / FableWin.pdb; bound by
+//   0x00B42E70 / 0x00B42ED0). Was the catalog name DeleteAllMaps.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B42C70, 154 bytes (+ int3 padding).
 // Label: the manifest calls this "DeleteMap" too (the one-argument DeleteMap(long) is 0x00B42B10, which this body calls
 //   for each index); renamed after what it does.
@@ -42,10 +44,11 @@ class CEngineWorldMap { public:
     unsigned char        _pad10[0x20 - 0x10];
     CArray<CEngineMap*>  MapList;                // +0x20
     void DeleteMap(long index);                  // 0x00B42B10
-    void DeleteAllMaps();
+private:
+    void DeleteMap();
 };
 
-void CEngineWorldMap::DeleteAllMaps()
+void CEngineWorldMap::DeleteMap()
 {
     for (unsigned long i = 0; i < MapList.Size(); ++i)
         DeleteMap(i);
