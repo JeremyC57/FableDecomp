@@ -43771,7 +43771,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c0c970	CCharString_SetCharAt	_global	unknown	undefined	0		0	yes	accepted									
 00c0cb50	Insert	CString	unknown	undefined	0		0	yes	accepted									
 00c0ce50	Replace	CString	unknown	undefined	0		0	yes	accepted									
-00c0d1b0	CCharString_FormatVarArgs	_global	unknown	undefined	0		0	yes	accepted									
+00c0d1b0	FormatV	CString	unknown	undefined	0		0	yes	accepted									
 00c0d740	TrimRight	CString	unknown	undefined	0		0	yes	accepted									
 00c0d7c0	TrimRight	CString	unknown	undefined	0		0	yes	accepted									
 00c0d970	TrimLeft	CString	unknown	undefined	0		0	yes	accepted									
@@ -47204,7 +47204,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c65450	CEntity::SetSoundComponentsProperty	CEntity	unknown	undefined	0		0	yes	accepted									
 00c65690	CEntity::SetVFXComponentsProperty	CEntity	unknown	undefined	0		0	yes	accepted									
 00c65870	CEntity::SetPhysicsCollisionProperty	CEntity	unknown	undefined	0		0	yes	accepted									
-00c65a00	HeroStats_UpdateDerivedValues	_global	unknown	undefined	0		0	yes	accepted									
+00c65a00	CommitDeferredSettings	CEaxSource	unknown	undefined	0		0	yes	accepted									
 00c66330	sub_00c66330	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00c66c90	ScriptEvent_DispatchByID	_global	unknown	undefined	0		0	yes	accepted									
 00c67430	SetSlotFlags	CEaxContext	unknown	undefined	0		0	yes	accepted									
@@ -47217,11 +47217,11 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c67c00	SetAllParameters	CEaxSource	unknown	undefined	0		0	yes	accepted									
 00c67f60	CommitDeferredSettings	CEaxContext	unknown	undefined	0		0	yes	accepted									
 00c683c0	SetContextProperty	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c68510	CDrawGuildSeal_SetProperty	_global	unknown	undefined	0		0	yes	accepted									
+00c68510	SetSourceProperty_00c68510	CEaxSource	unknown	undefined	0		0	yes	accepted									
 00c689b0	SetSlotProperty	CEaxContext	unknown	undefined	0		0	yes	accepted									
 00c68a50	SetEnvironment	CEaxContext	unknown	undefined	0		0	yes	accepted									
 00c68d70	SetReverbAllParameters	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c68f90	CDrawGuildSeal_SetPropertyEx	_global	unknown	undefined	0		0	yes	accepted									
+00c68f90	SetEffectProperty_00c68f90	CEaxContext	unknown	undefined	0		0	yes	accepted									
 00c69660	CDspGain	CDspGain	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00c69680	~CDspGain	CDspGain	__thiscall	void	1	CChunkedFileChunk *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CChunkedFileChunk_CChunkedFileChunk_00c69680.cpp
 00c696a0	`scalar deleting destructor'	CDspGain	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CLandscapeBackgroundPatch_vectordeletingdestructor_00c696a0.cpp
@@ -47297,8 +47297,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c6bf60	MathUtils_Pow2_v2	_global	unknown	undefined	0		0	yes	accepted									
 00c6bff0	CTreePointer_00c555e0	CTreePointer_00c555e0	__thiscall	undefined	1	CBaseIntelligentPointer *	0	yes	accepted									
 00c6c000	Audio_ComputeDecibelsToLinear	_global	unknown	undefined	0		0	yes	accepted									
-00c6c0f0	Audio_ApplyIIRFilter	_global	unknown	undefined	0		0	yes	accepted									
-00c6c530	Audio_ApplyGainFilter_SIMD	_global	unknown	undefined	0		0	yes	accepted									
+00c6c0f0	Process	CSalIIRFilter	unknown	undefined	0		0	yes	accepted									
+00c6c530	Process	CSalIIRFilter	unknown	undefined	0		0	yes	accepted									
 00c6ca20	CEnvironmentSpellEffectInterface	CEnvironmentSpellEffectInterface	__thiscall	undefined	2	CEnvironmentSpellEffectInterface *,CEnvironment *	0	yes	accepted									
 00c6cac0	~CChunkedFileChunk	CChunkedFileChunk	__thiscall	void	1	CChunkedFileChunk *	1	yes	accepted									
 00c6cad0	ClearHistory	CVtable_012bed7c	unknown	undefined	0		0			discovered	gapscan							
@@ -47902,7 +47902,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ca2280	LinearRegression_CalcSlope	_global	unknown	undefined	0		0	yes	accepted									
 00ca2480	inspect_error	libvorbis	unknown	undefined	0		0	yes	accepted									
 00ca26a0	InterpolateInt_Conditional	_global	unknown	undefined	0		0	yes	accepted									
-00ca26c0	CurveInterpolation_ComputeSpline	_global	unknown	undefined	0		0	yes	accepted									
+00ca26c0	floor1_fit	_global	unknown	undefined	0		0	yes	accepted									
 00ca2b00	PixelBlend_InterpolateWithMemAlloc	_global	unknown	undefined	0		0	yes	accepted									
 00ca2bb0	CEnvironment_SerializeTheme	_global	unknown	undefined	0		0	yes	accepted									
 00ca3420	Geometry_ScaleVertexArray	_global	unknown	undefined	0		0	yes	accepted									
@@ -47976,7 +47976,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00ca55e0	WriteToFile	CChunkedFileRawDataChunk	__thiscall	void	3	CChunkedFileRawDataChunk *,CDataOutputStream *,CChunkedFileSaver *	1	yes	accepted									
 00ca5610	Audio_UpdateFrameTimings	_global	unknown	undefined	0		0	yes	accepted									
 00ca56e0	SendQuality	CBaseVideoRenderer	unknown	undefined	0		0	yes	accepted									
-00ca5850	Audio_AdjustBufferLevel	_global	unknown	undefined	0		0	yes	accepted									
+00ca5850	ShouldDrawSampleNow	CBaseVideoRenderer	unknown	undefined	0		0	yes	accepted									
 00ca5cf0	CTextureRenderer::vfunc_21	CTextureRenderer	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00ca5d50	COM_GetValue	_global	unknown	undefined	0		0	yes	accepted									
 00ca5da0	CritSec_GetField44_Locked	_global	unknown	undefined	0		0	yes	accepted									
@@ -48354,13 +48354,13 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00cb2ec0	ImeUi_GetCaretStatus	_global	__fastcall	bool	1	EWeaponClass	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cb\global_IsMeleeWeaponClass_00cb2ec0.cpp
 00cb2ee0	Draw	CDrawMouseCursor	__thiscall	void	2	CDrawMouseCursor *,CEnginePrimitivePrepareInfo *	1	yes	accepted									
 00cb2f00	ProcessAllMessages	_global	unknown	undefined	0		0	yes	accepted									
-00cb2f80	ImeUI_RenderCompositionCurve	_global	unknown	undefined	0		0	yes	accepted									
+00cb2f80	DrawImeIndicator	_global	unknown	undefined	0		0	yes	accepted									
 00cb3420	GetReadingWindowOrientation	_global	unknown	undefined	0		0	yes	accepted									
 00cb3570	ImeUi_ToggleLanguageBar	_global	__fastcall	void	1	int	1	yes	accepted									
 00cb36e0	SetImeApi	_global	unknown	undefined	0		0	yes	accepted									
 00cb37a0	CheckInputLocale	_global	unknown	undefined	0		0	yes	accepted									
 00cb38e0	ImeUI_RenderCompositionString	_global	unknown	undefined	0		0	yes	accepted									
-00cb4340	ImeUI_PopulateCompositionCandidates	_global	unknown	undefined	0		0	yes	accepted									
+00cb4340	GetReadingString	_global	unknown	undefined	0		0	yes	accepted									
 00cb47c0	ImeUi_QueryInputStatus	_global	unknown	undefined	0		0	yes	accepted									
 00cb48a0	ImeUI_ProcessWindowMessage	_global	unknown	undefined	0		0	yes	accepted									
 00cb5130	ImeUi_EnableIme	_global	__fastcall	void	1	bool	1	yes	accepted									

@@ -1,0 +1,51 @@
+00cb2f80   RELOCATION_MATCH PASS   00cb2f80
+00c65a00   WARN RELOC_NAME: ?QueueEvent_00c5ffb0@CEaxContext@@QAEPAUSEaxEvent@@KKPBXK@Z -> 00c5ffb0 labelled 'CTCHeroStats::AddEventData'
+00c65a00   RELOCATION_MATCH PASS   00c65a00
+00c67f60   WARN RELOC_NAME: ?QueueEvent_00c5ffb0@CEaxContext@@QAEPAUSEaxEvent@@KKPBXK@Z -> 00c5ffb0 labelled 'CTCHeroStats::AddEventData'
+00c67f60   WARN RELOC_NAME: ?CommitDeferredSettings@CEaxSource@@QAEJXZ -> 00c65a00 labelled 'HeroStats_UpdateDerivedValues'
+00c67f60   RELOCATION_MATCH PASS   00c67f60
+00c68510   WARN RELOC_NAME: ?CommitDeferredSettings@CEaxSource@@QAEJXZ -> 00c65a00 labelled 'HeroStats_UpdateDerivedValues'
+00c68510   WARN RELOC_NAME: ?SetOcclusionParameters@CEaxSource@@QAEJPBU_EAXOCCLUSIONPROPERTIES@@@Z -> 00c64840 labelled 'CEntity::SetVectorProperty_XYZW'
+00c68510   WARN RELOC_NAME: ?SetSendParameters@CEaxSource@@QAEJPBU_EAXSOURCESENDPROPERTIES@@K@Z -> 00c64fb0 labelled 'CEntity::SetMeshComponentsProperty'
+00c68510   WARN RELOC_NAME: ?SetAllSendParameters@CEaxSource@@QAEJPBU_EAXSOURCEALLSENDPROPERTIES@@K@Z -> 00c65170 labelled 'CEntity::SetLightComponentsProperty'
+00c68510   WARN RELOC_NAME: ?SetOcclusionSendParameters@CEaxSource@@QAEJPBU_EAXSOURCEOCCLUSIONSENDPROPERTIES@@K@Z -> 00c65450 labelled 'CEntity::SetSoundComponentsProperty'
+00c68510   WARN RELOC_NAME: ?SetExclusionSendParameters@CEaxSource@@QAEJPBU_EAXSOURCEEXCLUSIONSENDPROPERTIES@@K@Z -> 00c65690 labelled 'CEntity::SetVFXComponentsProperty'
+00c68510   WARN RELOC_NAME: ?SetActiveFXSlotID@CEaxSource@@QAEJPBU_GUID@@K@Z -> 00c65870 labelled 'CEntity::SetGuidListProperty'
+00c68510   RELOCATION_MATCH PASS   00c68510
+00c68f90   RELOCATION_MATCH PASS   00c68f90
+00c6c530   MATCH            PASS   00c6c530
+00c6c0f0   MATCH            PASS   00c6c0f0
+00cb4340   WARN RELOC_ALIAS: __except_handler3 -> 004013d8 is the import thunk 'MSVCR71.DLL::_except_handler3'
+00cb4340   WARN RELOC_ALIAS: _ImmGetContext@4 -> 00cb5540 is the import thunk 'IMM32.DLL::ImmGetContext'
+00cb4340   WARN RELOC_NAME: __alloca_probe -> 00bfea30 labelled '__chkstk'
+00cb4340   WARN RELOC_ALIAS: _ImmReleaseContext@8 -> 00cb5534 is the import thunk 'IMM32.DLL::ImmReleaseContext'
+00cb4340   RELOCATION_MATCH PASS   00cb4340
+00c0d1b0   WARN RELOC_NAME: __alloca_probe -> 00bfea30 labelled '__chkstk'
+00c0d1b0   WARN RELOC_NAME: ?ReleaseBuffer@CString@@QAEXH@Z -> 00c0c630 labelled 'CCharString::SetLengthAuto'
+00c0d1b0   RELOCATION_MATCH PASS   00c0d1b0
+00c006a0   RELOCATION_MATCH PASS   00c006a0
+00ca26c0   RELOCATION_MATCH PASS   00ca26c0
+00c07af0   RELOCATION_MATCH PASS   00c07af0
+00c04b70   RELOCATION_MATCH PASS   00c04b70
+00c04340   MATCH            PASS   00c04340
+00a3d5b0   MATCH            PASS   00a3d5b0
+00c06060   RELOCATION_MATCH PASS   00c06060
+00ca5850   MATCH            PASS   00ca5850
+WINS: 17
+  00cb2f80 RELOCATION_MATCH _global::?DrawImeIndicator@@YIXXZ
+  00c65a00 RELOCATION_MATCH _global::?CommitDeferredSettings@CEaxSource@@QAEJXZ
+  00c67f60 RELOCATION_MATCH _global::?CommitDeferredSettings@CEaxContext@@QAEJXZ
+  00c68510 RELOCATION_MATCH _global::?SetSourceProperty_00c68510@CEaxSource@@QAEJKPBXKPAPAUSEaxEvent@@@Z
+  00c68f90 RELOCATION_MATCH _global::?SetEffectProperty_00c68f90@CEaxContext@@QAEJKKPBXKPAPAUSEaxEvent@@@Z
+  00c6c530 MATCH _global::?Process@CSalIIRFilter@@QAEXPAFPBF@Z
+  00c6c0f0 MATCH _global::?Process@CSalIIRFilter@@QAEXPAF@Z
+  00cb4340 RELOCATION_MATCH _global::?GetReadingString@@YGXPAUHWND__@@@Z
+  00c0d1b0 RELOCATION_MATCH _global::?FormatV@CString@@QAEXPBDPAD@Z
+  00c006a0 RELOCATION_MATCH _global::_z_deflate
+  00ca26c0 RELOCATION_MATCH _global::@floor1_fit@16
+  00c07af0 RELOCATION_MATCH _global::_lzo1x_999_compress_internal
+  00c04b70 RELOCATION_MATCH _global::_compress_block
+  00c04340 MATCH _global::_send_tree
+  00a3d5b0 MATCH _global::_md5_process@8
+  00c06060 RELOCATION_MATCH _global::_inflate_fast
+  00ca5850 MATCH _global::?ShouldDrawSampleNow@CBaseVideoRenderer@@UAEJPAUIMediaSample@@PA_J1@Z

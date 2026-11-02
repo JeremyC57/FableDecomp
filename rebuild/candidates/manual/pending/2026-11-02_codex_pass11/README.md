@@ -12,3 +12,7 @@ README_CODEX.md is the brief (the chunk-agent expert brief adapted for Codex: ho
 PROMPT_CODEX.md is the paste-in prompt.
 Reserved until 2026-11-09: in-house chunk cuts skip NA067-NA076. Returned rows are regraded with vland.py and every bound symbol checked
 against the PDB name sets before landing (precedent: `batches/2026-10-31_chatgpt_pass10/README.md`).
+
+## Return (2026-11-02)
+Returned and regraded: see `batches/2026-11-02_codex_pass11/README.md`. Wave 1 landed 17 rows; the other 37 verified rows wait in
+`verified_pending/` for header consolidation; 0x00C5FA50 is held (SDK packing header).

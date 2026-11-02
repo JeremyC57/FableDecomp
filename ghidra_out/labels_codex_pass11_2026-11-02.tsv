@@ -1,0 +1,18 @@
+address	name	evidence
+00a3d5b0	md5_process	Codex pass 11 wave 1: MATCH; RSA md5.c body (vendor, __stdcall @8)
+00c006a0	z_deflate	Codex pass 11 wave 1: zlib 1.2.1 built with Z_PREFIX (GOTCHAS 1392); deflate()
+00c04340	send_tree	Codex pass 11 wave 1: MATCH; zlib trees.c send_tree
+00c04b70	compress_block	Codex pass 11 wave 1: zlib trees.c compress_block (/GS /TC)
+00c06060	inflate_fast	Codex pass 11 wave 1: zlib inffast.c inflate_fast
+00c07af0	lzo1x_999_compress_internal	Codex pass 11 wave 1: LZO 1.08 lzo1x_9x.c
+00ca26c0	floor1_fit	Codex pass 11 wave 1: libvorbis floor1.c floor1_fit (__fastcall in this build)
+00c68f90	CEaxContext::SetEffectProperty_00c68f90	Codex pass 11 wave 1: descriptive vendor name (no PDB; EAX 4 effect-property dispatcher)
+00c65a00	CEaxSource::CommitDeferredSettings	Codex pass 11 wave 1: EAX vendor member (no PDB)
+00c67f60	CEaxContext::CommitDeferredSettings	Codex pass 11 wave 1: EAX vendor member (no PDB)
+00c68510	CEaxSource::SetSourceProperty_00c68510	Codex pass 11 wave 1: descriptive vendor name (no PDB; EAX 4 source-property dispatcher)
+00c6c530	CSalIIRFilter::Process	Codex pass 11 wave 1: MATCH; GameCODA named release object + debug CodeView (two-buffer overload)
+00c6c0f0	CSalIIRFilter::Process	Codex pass 11 wave 1: MATCH; GameCODA named release object + debug CodeView (in-place overload)
+00c0d1b0	CString::FormatV	Codex pass 11 wave 1: libpk MFC-style CString (vendor, no PDB)
+00ca5850	CBaseVideoRenderer::ShouldDrawSampleNow	Codex pass 11 wave 1: MATCH; DirectShow strmbase renbase.cpp
+00cb4340	GetReadingString	Codex pass 11 wave 1: DXUT ImeUi.cpp GetReadingString (SEH frame)
+00cb2f80	DrawImeIndicator	Codex pass 11 wave 1: DXUT ImeUi.cpp DrawImeIndicator
