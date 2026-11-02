@@ -1,0 +1,38 @@
+addr       parity           behav  name
+006b1550   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+006b1550   RELOCATION_MATCH PASS   ~CAtmosProcess
+00747530   RELOCATION_MATCH PASS   OnCreate
+007fc7a0   RELOCATION_MATCH PASS   StartLowAttackBeam
+007fc7d0   RELOCATION_MATCH PASS   StartHighAttackBeam
+00820b50   RELOCATION_MATCH PASS   Update
+008424a0   WARN RELOC_NAME: ?GetPlayer@CCreatureActionBase@@IAEAAVCPlayer@@XZ -> 00692930 labelled 'std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>'
+008424a0   RELOCATION_MATCH PASS   PerformAction
+008426e0   RELOCATION_MATCH PASS   FrameUpdate
+00850640   RELOCATION_MATCH PASS   FrameUpdate
+0085ca10   RELOCATION_MATCH PASS   FrameUpdate
+00ca7310   WARN RELOC_NAME: ??1CBaseRenderer@@UAE@XZ -> 00ca6370 labelled 'CVolume::CVolume::~CVolume'
+00ca7310   RELOCATION_MATCH PASS   ~CBaseVideoRenderer
+
+WINS: 10
+  006b1550 RELOCATION_MATCH CAtmosProcess::??1CAtmosProcess@@QAE@XZ
+  00747530 RELOCATION_MATCH CTCStealth::?OnCreate@CTCStealth@@UAEXXZ
+  007fc7a0 RELOCATION_MATCH CTCKraken::?StartLowAttackBeam@CTCKraken@@QAEXXZ
+  007fc7d0 RELOCATION_MATCH CTCKraken::?StartHighAttackBeam@CTCKraken@@QAEXXZ
+  00820b50 RELOCATION_MATCH CMap::?Update@CMap@@MAEXXZ
+  008424a0 RELOCATION_MATCH CCreatureAction_ActivateZTarget::?PerformAction@CCreatureAction_ActivateZTarget@@UAEXXZ
+  008426e0 RELOCATION_MATCH CCreatureAction_PlayAnimation::?FrameUpdate@CCreatureAction_PlayAnimation@@UAEXXZ
+  00850640 RELOCATION_MATCH NCameraModes::CPhysicsLeaf::?FrameUpdate@?$CPhysicsLeaf@VCPhysicsTargetModelGoTo@NCameraModes@@VCPhysicsForceModelGotoOutsideSimple@2@VCPhysicsCoordCartesian@2@@NCameraModes@@UAEXXZ
+  0085ca10 RELOCATION_MATCH NCameraModes::CPhysicsLeaf::?FrameUpdate@?$CPhysicsLeaf@VCPhysicsTargetModelGoTo@NCameraModes@@VCPhysicsForceModelRigid@2@VCPhysicsCoordRigid@2@@NCameraModes@@UAEXXZ
+  00ca7310 RELOCATION_MATCH CBaseVideoRenderer::??1CBaseVideoRenderer@@UAE@XZ
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  CAtmosProcess_CAtmosProcess_006b1550
+  CTCStealth_OnCreate_00747530
+  CTCKraken_StartLowAttackBeam_007fc7a0
+  CTCKraken_StartHighAttackBeam_007fc7d0
+  CMap_Update_00820b50
+  CCreatureActionActivateZTarget_PerformAction_008424a0
+  CCreatureActionPlayAnimation_FrameUpdate_008426e0
+  NCameraModesCPhysicsLeaf_FrameUpdate_00850640
+  NCameraModesCPhysicsLeaf_FrameUpdate_0085ca10
+  CBaseVideoRenderer_CBaseVideoRenderer_00ca7310

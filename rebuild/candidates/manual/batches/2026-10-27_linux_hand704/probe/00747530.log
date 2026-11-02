@@ -1,0 +1,1 @@
+1	OnCreate() { ResetStealthVariables(); } with ResetStealthVariables a plain private member defined above (auto-inlined), InitialiseSneakSpeed tail	RELOCATION_MATCH

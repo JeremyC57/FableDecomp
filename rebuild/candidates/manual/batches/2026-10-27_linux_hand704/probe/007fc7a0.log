@@ -1,0 +1,2 @@
+1	direct: DelayBeforeBeam=(long)(def->DelayBeforeLowBeam*GetConstantFPS()); Mode=4; StartBeamEffect()	RELOCATION_MATCH
+2	same-TU SetMode(4) (with InitTentacles*), inlined+folded -- kept as src	RELOCATION_MATCH

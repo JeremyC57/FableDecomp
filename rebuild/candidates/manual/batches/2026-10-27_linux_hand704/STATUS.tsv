@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+006b1550	RELOCATION_MATCH	44v44	PASS	CAtmosProcess::~CAtmosProcess (label CCounter::operator= wrong); 1 probe; residue none
+00747530	RELOCATION_MATCH	36v36	PASS	CTCStealth::OnCreate (slot 4; label vfunc_4); ResetStealthVariables same-TU inlined; 1 probe; residue none
+00ca7310	RELOCATION_MATCH	45v45	PASS	CBaseVideoRenderer::~CBaseVideoRenderer (DX9 strmbase; label CTCStealth::OnCreate wrong); 1 probe; residue none
+007fc7a0	RELOCATION_MATCH	38v38	PASS	CTCKraken::StartLowAttackBeam (label StartHighAttackBeam wrong for this twin); 2 probes (direct + same-TU SetMode, both match; SetMode form kept); residue none
+007fc7d0	RELOCATION_MATCH	38v38	PASS	CTCKraken::StartHighAttackBeam (label right); 1 probe; residue none
+00820b50	RELOCATION_MATCH	36v36	PASS	CMap::Update (slot 13, MAE; label right); 1 probe; residue none
+008424a0	RELOCATION_MATCH	17v17	PASS	CCreatureAction_ActivateZTarget::PerformAction (slot 3; label right); 1 probe; residue none
+008426e0	RELOCATION_MATCH	34v34	PASS	CCreatureAction_PlayAnimation::FrameUpdate (slot 56; label right); 1 probe; residue none
+00850640	RELOCATION_MATCH	44v44	PASS	CPhysicsLeaf<GoTo,ForceModelGotoOutsideSimple,CoordCartesian>::FrameUpdate (vtable 0x01275974 slot 0); 1 probe; residue none
+0085ca10	RELOCATION_MATCH	44v44	PASS	CPhysicsLeaf<GoTo,ForceModelRigid,CoordRigid>::FrameUpdate (vtable 0x01276AEC slot 0; byte twin of 0x00850640, other instantiation); 1 probe; residue none

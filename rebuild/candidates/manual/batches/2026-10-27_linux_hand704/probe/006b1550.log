@@ -1,0 +1,1 @@
+1	user body: if (PSoundManager) { slot41(); slot42(); } + pack(1) CIntelligentPointer<CThingMarker> member at +0x0A (implicit dtor chains to ~CBaseIntelligentPointer)	RELOCATION_MATCH

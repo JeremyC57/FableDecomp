@@ -35306,3 +35306,14 @@ _z_inflateEnd	00c038d0	00a3acc0
 ??_7CVtable_012bf050@@6B@	012bf050	00c74420
 ?s_pSharedTable@CVtable_012bf050@@2PAXA	0143ccdc	00c74420
 ?s_refCount@CVtable_012bf050@@2JA	0143cce0	00c74420
+?InitialiseSneakSpeed@CTCStealth@@AAEXXZ	00747330	00747530
+?Update@CHeightMap@@AAEXXZ	008f5f00	00820b50
+?UpdateScriptedMapBrushes@CMap@@IAEXXZ	00820ab0	00820b50
+?GetPlayer@CCreatureActionBase@@IAEAAVCPlayer@@XZ	00692930	008424a0
+?clear@?$_List_base@U?$pair@VC3DVector@@M@std@@V?$allocator@U?$pair@VC3DVector@@M@std@@@2@@std@@QAEXXZ	0056cad0	00850640
+??1CBaseRenderer@@UAE@XZ	00ca6370	00ca7310
+??_7CBaseVideoRenderer@@6BCUnknown@@@	012bf5d8	00ca7310
+??_7CBaseVideoRenderer@@6BIAMovieSetup@@@	012bf584	00ca7310
+??_7CBaseVideoRenderer@@6BIBaseFilter@@@	012bf598	00ca7310
+??_7CBaseVideoRenderer@@6BIQualProp@@@	012bf560	00ca7310
+??_7CBaseVideoRenderer@@6BIQualityControl@@@	012bf54c	00ca7310

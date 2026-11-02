@@ -375079,6 +375079,76 @@ $catalog = @(
         TestSource = '00/90/CAIStateGroupVersusScorpionKing_CAIStateGroupVersusScorpionKing_0090143e_test.cpp'
         PassPattern = '0090143e_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006b1550'
+        Module = 'CAtmosProcess'
+        Source = '00/6b/CAtmosProcess_CAtmosProcess_006b1550.cpp'
+        TestSource = '00/6b/CAtmosProcess_CAtmosProcess_006b1550_test.cpp'
+        PassPattern = '006b1550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00747530'
+        Module = 'CTCStealth'
+        Source = '00/74/CTCStealth_OnCreate_00747530.cpp'
+        TestSource = '00/74/CTCStealth_OnCreate_00747530_test.cpp'
+        PassPattern = '00747530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fc7a0'
+        Module = 'CTCKraken'
+        Source = '00/7f/CTCKraken_StartLowAttackBeam_007fc7a0.cpp'
+        TestSource = '00/7f/CTCKraken_StartLowAttackBeam_007fc7a0_test.cpp'
+        PassPattern = '007fc7a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fc7d0'
+        Module = 'CTCKraken'
+        Source = '00/7f/CTCKraken_StartHighAttackBeam_007fc7d0.cpp'
+        TestSource = '00/7f/CTCKraken_StartHighAttackBeam_007fc7d0_test.cpp'
+        PassPattern = '007fc7d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00820b50'
+        Module = 'CMap'
+        Source = '00/82/CMap_Update_00820b50.cpp'
+        TestSource = '00/82/CMap_Update_00820b50_test.cpp'
+        PassPattern = '00820b50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008424a0'
+        Module = 'CCreatureAction_ActivateZTarget'
+        Source = '00/84/CCreatureActionActivateZTarget_PerformAction_008424a0.cpp'
+        TestSource = '00/84/CCreatureActionActivateZTarget_PerformAction_008424a0_test.cpp'
+        PassPattern = '008424a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008426e0'
+        Module = 'CCreatureAction_PlayAnimation'
+        Source = '00/84/CCreatureActionPlayAnimation_FrameUpdate_008426e0.cpp'
+        TestSource = '00/84/CCreatureActionPlayAnimation_FrameUpdate_008426e0_test.cpp'
+        PassPattern = '008426e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00850640'
+        Module = 'NCameraModes::CPhysicsLeaf'
+        Source = '00/85/NCameraModesCPhysicsLeaf_FrameUpdate_00850640.cpp'
+        TestSource = '00/85/NCameraModesCPhysicsLeaf_FrameUpdate_00850640_test.cpp'
+        PassPattern = '00850640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085ca10'
+        Module = 'NCameraModes::CPhysicsLeaf'
+        Source = '00/85/NCameraModesCPhysicsLeaf_FrameUpdate_0085ca10.cpp'
+        TestSource = '00/85/NCameraModesCPhysicsLeaf_FrameUpdate_0085ca10_test.cpp'
+        PassPattern = '0085ca10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca7310'
+        Module = 'CBaseVideoRenderer'
+        Source = '00/ca/CBaseVideoRenderer_CBaseVideoRenderer_00ca7310.cpp'
+        TestSource = '00/ca/CBaseVideoRenderer_CBaseVideoRenderer_00ca7310_test.cpp'
+        PassPattern = '00ca7310_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
