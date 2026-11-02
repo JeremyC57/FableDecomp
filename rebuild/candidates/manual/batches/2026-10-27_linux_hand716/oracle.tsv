@@ -1,0 +1,11 @@
+address	name	length	bytes
+00ca7ae0	CEnumPins::AddRef	17	8b44240483c01489442404ff2534fd4301
+00ca7c10	CEnumMediaTypes::AddRef	17	8b44240483c01089442404ff2534fd4301
+00ca9060	CMediaSample::AddRef	17	8b44240483c04489442404ff2534fd4301
+00cad2e0	CMediaPosition::GetIDsOfNames	24	c744240864a02a018b4c240483c110894c2404e978fbffff
+00ce1090	CActiveEntityScriptBase::OnPredicateFail	13	8b493485c974058b01ff6014c3
+00dcf700	NScript::CQ_OrchardFarmRaidScript::CTeamSpawn::~CTeamSpawn	94	56578bf98d4f38e8d4f3bcff8d4f34e8ccf3bcff8d771cc7068c8c23018b460885c0741cff088b460883380075128b4808ff50048b460850e87ff2e2ff83c4048bcec7460400000000c7460800000000e88babbcff8bcf5f5ee9e2631600
+01219e90	_global::`dynamic initializer for 'gIME''	17	e8fbab1eff68b0882201e81d741eff59c3
+01219f40	_global::`dynamic initializer for 'GVersion''	19	6a7d6a056a136a19b9e4853b01e82e017dffc3
+0121df1c	NPlayerGui::`dynamic initializer for 'VALUE_DISPLAY_DURATION''	13	db0550553701d91d60a83b01c3
+0121f850	LHNetworkLib::LSocket::`dynamic initializer for 'GlobalList''	31	6a0ce8b7f19dff89008940046800a22201a300b03b01e8511a1eff83c408c3

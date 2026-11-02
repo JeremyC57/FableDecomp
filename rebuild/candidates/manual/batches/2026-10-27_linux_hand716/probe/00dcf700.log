@@ -1,0 +1,4 @@
+probe	lever	grade
+1	CFisticuffsMember model (landed 0x00E839F0): CTeamSpawn nested in CQ_OrchardFarmRaidScript : CLevelScriptBase<CQ_SunnyvaleMasterData>, PDB members, inline ~CScriptThing, real PDB ctor defined in the TU; inline CScriptThing() defined inside namespace NScript	SRC_FAIL (C2888: CScriptThing::CScriptThing defined in NScript)
+2	same, inline CScriptThing() moved before the namespace	RELOCATION_MATCH 94v94 (all relocations checked: ~CCharString x2, ??_7CScriptThing, ??3, ~CBaseClass, tail ~CEntityScriptBase)
+3	final src: + FABLE_RETAIL_CLEVELSCRIPTBASE (repo branch from chunk 713: retail ~CLevelScriptBase is compiler-generated)	RELOCATION_MATCH 94v94; same TU's ??_G graded against 0x00DCF6E0 RELOCATION_MATCH; same TU's ctor graded against 0x00DCD160 RELOCATION_MATCH

@@ -1,0 +1,11 @@
+address	status	bytes	test	probes	note
+00dcf700	RELOCATION_MATCH	94v94	PASS	3	NScript::CQ_OrchardFarmRaidScript::CTeamSpawn::~CTeamSpawn (implicit); residue none; same TU also matches ??_G 0x00DCF6E0 and ctor 0x00DCD160; 3 grades
+0121df1c	RELOCATION_MATCH	13v13	PASS	2	NPlayerGui::`dynamic initializer for 'VALUE_DISPLAY_DURATION''; residue none; linkage (const?) is a coordinator decision; 2 grades
+0121f850	RELOCATION_MATCH	31v31	PASS	1	`dynamic initializer for 'LHNetworkLib::LSocket::GlobalList''; residue none; _$E2 also matches 0x0122A200; 1 grade
+00ca7ae0	RELOCATION_MATCH	17v17	PASS	2	CEnumPins::AddRef (strmbase); residue none; 2 grades (2nd comment-only)
+00ca7c10	RELOCATION_MATCH	17v17	PASS	2	CEnumMediaTypes::AddRef (strmbase); residue none; 2 grades (2nd comment-only)
+00ca9060	RELOCATION_MATCH	17v17	PASS	2	CMediaSample::AddRef (strmbase); residue none; 2 grades (2nd comment-only)
+00cad2e0	RELOCATION_MATCH	24v24	PASS	2	CMediaPosition::GetIDsOfNames (strmbase); residue none; 2 grades (2nd comment-only)
+00ce1090	MATCH	13v13	PASS	1	CActiveEntityScriptBase::OnPredicateFail; residue none; 1 grade
+01219e90	RELOCATION_MATCH	17v17	PASS	2	`dynamic initializer for 'gIME''; needs hdr/fable_ime.h FABLE_RETAIL_CIME overlay; _$E2 also matches 0x012288B0; probe 2 = overlay use-check
+01219f40	RELOCATION_MATCH	19v19	PASS	1	`dynamic initializer for 'GVersion''; residue none; 1 grade

@@ -1,0 +1,2 @@
+probe	lever	grade
+1	real STLport 4.6 list text (_List_base(const allocator_type&) allocating the sentinel, ~list() {}, ~_List_base() { clear(); deallocate }), static member LHNetworkLib::LSocket::GlobalList	RELOCATION_MATCH 31v31 (global symbol = the bound ?GlobalList@LSocket@LHNetworkLib@@2V?$list@...A; _$E2 graded against 0x0122A200 RELOCATION_MATCH)

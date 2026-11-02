@@ -1,0 +1,2 @@
+probe	lever	grade
+1	engine/CActiveEntityScriptBase.h + engine/CEntityScriptBase.h, `if (PEntityScript.Get()) PEntityScript->OnPredicateFail();`	MATCH 13v13

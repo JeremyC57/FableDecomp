@@ -375915,6 +375915,76 @@ $catalog = @(
         TestSource = '00/e3/NScriptCVArcheryCompetitionScript_CVArcheryCompetitionScript_00e37680_test.cpp'
         PassPattern = '00e37680_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00ca7ae0'
+        Module = 'CEnumPins'
+        Source = '00/ca/CEnumPins_AddRef_00ca7ae0.cpp'
+        TestSource = '00/ca/CEnumPins_AddRef_00ca7ae0_test.cpp'
+        PassPattern = '00ca7ae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca7c10'
+        Module = 'CEnumMediaTypes'
+        Source = '00/ca/CEnumMediaTypes_AddRef_00ca7c10.cpp'
+        TestSource = '00/ca/CEnumMediaTypes_AddRef_00ca7c10_test.cpp'
+        PassPattern = '00ca7c10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca9060'
+        Module = 'CMediaSample'
+        Source = '00/ca/CMediaSample_AddRef_00ca9060.cpp'
+        TestSource = '00/ca/CMediaSample_AddRef_00ca9060_test.cpp'
+        PassPattern = '00ca9060_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cad2e0'
+        Module = 'CMediaPosition'
+        Source = '00/ca/CMediaPosition_GetIDsOfNames_00cad2e0.cpp'
+        TestSource = '00/ca/CMediaPosition_GetIDsOfNames_00cad2e0_test.cpp'
+        PassPattern = '00cad2e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ce1090'
+        Module = 'CActiveEntityScriptBase'
+        Source = '00/ce/CActiveEntityScriptBase_OnPredicateFail_00ce1090.cpp'
+        TestSource = '00/ce/CActiveEntityScriptBase_OnPredicateFail_00ce1090_test.cpp'
+        PassPattern = '00ce1090_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dcf700'
+        Module = 'NScript::CQ_OrchardFarmRaidScript::CTeamSpawn'
+        Source = '00/dc/NScriptCQOrchardFarmRaidScriptCTeamSpawn_CTeamSpawn_00dcf700.cpp'
+        TestSource = '00/dc/NScriptCQOrchardFarmRaidScriptCTeamSpawn_CTeamSpawn_00dcf700_test.cpp'
+        PassPattern = '00dcf700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01219e90'
+        Module = '_global'
+        Source = '01/21/global_dynamicinitializerforgIME_01219e90.cpp'
+        TestSource = '01/21/global_dynamicinitializerforgIME_01219e90_test.cpp'
+        PassPattern = '01219e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '01219f40'
+        Module = '_global'
+        Source = '01/21/global_dynamicinitializerforGVersion_01219f40.cpp'
+        TestSource = '01/21/global_dynamicinitializerforGVersion_01219f40_test.cpp'
+        PassPattern = '01219f40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0121df1c'
+        Module = 'NPlayerGui'
+        Source = '01/21/NPlayerGui_dynamicinitializerforVALUEDISPLAYDURATION_0121df1c.cpp'
+        TestSource = '01/21/NPlayerGui_dynamicinitializerforVALUEDISPLAYDURATION_0121df1c_test.cpp'
+        PassPattern = '0121df1c_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0121f850'
+        Module = 'LHNetworkLib::LSocket'
+        Source = '01/21/LHNetworkLibLSocket_dynamicinitializerforGlobalList_0121f850.cpp'
+        TestSource = '01/21/LHNetworkLibLSocket_dynamicinitializerforGlobalList_0121f850_test.cpp'
+        PassPattern = '0121f850_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

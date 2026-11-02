@@ -1,0 +1,2 @@
+probe	lever	grade
+1	class CVersion (Ego_r members Month/Day/Year/Build, ctor ??0CVersion@@QAE@EEKK@Z declared) + `CVersion GVersion(25, 19, 5, 125);`	RELOCATION_MATCH 19v19 (relocations ?GVersion@@3VCVersion@@A -> 0x013B85E4, ctor -> 0x009EA080 checked)

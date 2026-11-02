@@ -1,0 +1,25 @@
+00ca7ae0   RELOCATION_MATCH PASS   AddRef
+00ca7c10   RELOCATION_MATCH PASS   AddRef
+00ca9060   RELOCATION_MATCH PASS   AddRef
+00cad2e0   RELOCATION_MATCH PASS   GetIDsOfNames
+00ce1090   MATCH            PASS   OnPredicateFail
+00dcf700   RELOCATION_MATCH PASS   ~CTeamSpawn
+01219e90   WARN RELOC_CONFLICT: _$E2 -> 012288b0 here, 01228930 in landed 01219f00
+01219e90   WARN RELOC_NAME: _$E2 -> 012288b0 labelled '_global::Static_Shutdown_on_013b7cd8_012288b0'
+01219e90   RELOCATION_MATCH PASS   `dynamic initializer for 'gIME''
+01219f40   RELOCATION_MATCH PASS   `dynamic initializer for 'GVersion''
+0121df1c   RELOCATION_MATCH PASS   `dynamic initializer for 'VALUE_DISPLAY_DURATION''
+0121f850   WARN RELOC_CONFLICT: _$E2 -> 0122a200 here, 01228930 in landed 01219f00
+0121f850   WARN RELOC_NAME: _$E2 -> 0122a200 labelled '_global::Static_SortTreeRecursively_on_013bb000_0122a200'
+0121f850   RELOCATION_MATCH PASS   `dynamic initializer for 'GlobalList''
+WINS: 10
+  00ca7ae0 RELOCATION_MATCH CEnumPins::?AddRef@CEnumPins@@UAGKXZ
+  00ca7c10 RELOCATION_MATCH CEnumMediaTypes::?AddRef@CEnumMediaTypes@@UAGKXZ
+  00ca9060 RELOCATION_MATCH CMediaSample::?AddRef@CMediaSample@@UAGKXZ
+  00cad2e0 RELOCATION_MATCH CMediaPosition::?GetIDsOfNames@CMediaPosition@@UAGJABU_GUID@@PAPAGIKPAJ@Z
+  00ce1090 MATCH CActiveEntityScriptBase::?OnPredicateFail@CActiveEntityScriptBase@@UAEXXZ
+  00dcf700 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidScript::CTeamSpawn::??1CTeamSpawn@CQ_OrchardFarmRaidScript@NScript@@UAE@XZ
+  01219e90 RELOCATION_MATCH _global::_$E1
+  01219f40 RELOCATION_MATCH _global::_$E1
+  0121df1c RELOCATION_MATCH NPlayerGui::_$E1
+  0121f850 RELOCATION_MATCH LHNetworkLib::LSocket::_$E1
