@@ -1,5 +1,7 @@
 // CCorneredGuard::Main() -- the cornered guard: register the alive filter, find the nearest MinionAttackingGuard, set the two fighting each other, then (once) heal whichever of the two is hit while the attacker lives and the hero is still over 15 units away, show the guard's health bar, call for help if the attacker still lives, wait for it to die, reward morality, thank the hero and follow him; finally spawn the parent's GuardChatter on Me, wait for the mission to end and remove Me
 // Leaf: ?Main@CCorneredGuard@@
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: a declaration-only CCountedPointer<T> declared before it (the row keeps its own CCPPointerInfo).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DA7830, length 1280 bytes, plain `ret`. Sibling of
 //   CBalverineFightingGuard::Main 0x00DA6D50 (same TU family, same model).
 // Callees: as 0x00DA6D50, plus IsDistanceBetweenThingsOver @ 0x00CBE3EA (`__fastcall`), CScriptThing::IsAlive @ 0x004AB130
@@ -103,6 +105,11 @@ extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+template <class T> class CCountedPointer {             // CSpawnedFuncBase::PPredicate (header contract; this row keeps its own
+public:                                                //   CCPPointerInfo, so not engine/CCountedPointer.h); the dtor is out of line
+    T* Data; CCPPointerInfo* Info;                     //   in retail (CCountedPointer<const NScript::CPredicateBase> 0x00CDD4F0)
+    ~CCountedPointer();
+};
 #include "engine/CSpawnedFuncBase.h"
 template <class T, class P1> struct CSpawnedFunc1 : CSpawnedFuncBase {   // 0x48 bytes
     void (T::*Func)(P1);                               // +0x34

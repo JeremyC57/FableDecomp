@@ -1,4 +1,6 @@
 // CV_ChickenKickingScript::Main() -- the Chicken Kicking quest main: wait for the OakBay region to load, bind the ChickenMaster / ChickenSign / KickedChicken / Spectator entity scripts and spawn the CreateSpectators and LookAfterOrganiser threads
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E62A00, 0x347 bytes, plain `ret`.
 // Callees: CCharString 0x0099EBF0 / 0x0099EC30 / ~ 0x0099EAE0, IsActiveThreadTerminating 0x00CB7940, operator new 0x00BFEA1A,
 //   CSpawnedFuncBase 0x00CDD450 (CSpawnedFunc<CV_ChickenKickingScript> vtable 0x012E732C), AddSpawnedFunction 0x00CB7E50,
@@ -19,6 +21,7 @@ class CCharString { public:
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 

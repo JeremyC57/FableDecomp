@@ -1,5 +1,7 @@
 // NScript::CV_RockTrollFirstEncounterScript::Main() -- the Rock Troll first-encounter quest main: bind the RTFE_Sparrow, RTFE_RockTroll and M_RTFERockTrollTrigger entity scripts, wait for Witchwood1 to load, spawn WatchForRegionExit, activate V_RockTrollFirstEncounter_Activate once, wait until the mission is over, drop the troll's health bar and the quest info, wait for the next region-loaded message, re-enable Witchwood1's creature generators and deactivate both quests
 // Leaf: ?Main@CV_RockTrollFirstEncounterScript@NScript@@UAEXXZ
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EC3D40, 994 bytes (+ int3 padding), thiscall, plain `ret`.
 // Identity (proven): slot 2 (Main) of the quest-script vtable 0x012F15C4, bound as ??_7CV_RockTrollFirstEncounterScript@NScript@@6B@
 //   (its RTTI-less vtable; slot 1 0x00EC3CA0, slot 3 0x00EC3C50); Ego_r.pdb ?Main@CV_RockTrollFirstEncounterScript@NScript@@UAEXXZ.
@@ -33,6 +35,7 @@ public:
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 class CScriptThing;

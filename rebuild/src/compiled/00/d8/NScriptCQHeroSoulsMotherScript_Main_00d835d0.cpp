@@ -1,4 +1,6 @@
 // CQ_HeroSoulsMotherScript::Main() -- the Hero Souls (mother) quest's main: bind the SummonerToKill / HS_Screamer entity scripts, wait for OakBay or the Oakvale memorial garden; in Oak Bay have Jack talk to the hero until he reaches the MotherJackChatMarker, then wait for the garden, play the mother start cutscene once, hand over the quest card, kick off the start screen, set the objective, spawn CreateScreamers, fade in, wait for the soul, and unless Briar is dead play the success cutscene, log the story entry, set the next objective, complete the quest and fade in
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D835D0, length 1808 bytes.
 // Callees: operator new 0x00BFEA1A, CCharString(const char*, long) 0x0099EBF0 / CCharString(const CCharString&) 0x0099EC30 /
 //   ~CCharString 0x0099EAE0, ~CScriptThing 0x004AA840, CScriptBase::IsActiveThreadTerminating 0x00CB7940 /
@@ -36,6 +38,7 @@ void __fastcall AddLogbookStoryEntryString(const CCharString& tag);   // 0x00CBE
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 class CScriptDataBase;

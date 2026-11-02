@@ -1,5 +1,7 @@
 // NScript::CQS_ScytheInfoScript::RegisterMain() -- spawn the script's "Main" thread: AddSpawnedFunction(new CSpawnedFunc<CQS_ScytheInfoScript>("Main", 0, this, &CQS_ScytheInfoScript::Main), "")
 // Leaf: ?RegisterMain@CQS_ScytheInfoScript@NScript@@UAEXXZ
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E29A80, 144 bytes, plain `ret`. Slot 1 (RegisterMain) of the script vtable @ 0x012E22C8.
 // Identity: the vtable is stored by the script's Alloc, which CScriptInfoManager::RegisterScripts (0x00CD52D0) registers under
 //   the name "QS_ScytheInfo" (site 0x00CD7F15); script classes are C<registered name>Script in NScript (the PDB name sets hold
@@ -27,6 +29,7 @@ void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 class CPersistContext;

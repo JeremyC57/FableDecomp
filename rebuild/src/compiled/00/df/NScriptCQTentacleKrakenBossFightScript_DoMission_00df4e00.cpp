@@ -1,4 +1,6 @@
 // CQ_TentacleKrakenBossFightScript::DoMission() -- the Kraken boss quest: wait for the KrakenChamber level, take the one-off auto-save checkpoint, spawn the WatchForLeaving thread, run phase one, and when the hero has not failed, stop the music override and mark the mission succeeded
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DF4E00, length 370 bytes (+ int3 padding), plain `ret`.
 // Identity: Ego_r.pdb ?DoMission@CQ_TentacleKrakenBossFightScript@NScript@@QAEXXZ (the class's member list: DoMission,
 // EndMission, Init, Main, PhaseOne, WatchForLeaving, WatchForTermination).
@@ -29,6 +31,7 @@ void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 

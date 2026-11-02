@@ -11,17 +11,21 @@
 // scalar deleting dtor 0x00CDD4A0, 1-3 the microthread's, 4 SuspendableProcess 0x00A44600, 5 0x00CDD410, 6 0x00CDD420 (both
 // `ret`). Slots 5/6 are OnPredicateFail / OnInterrupted by Ego_d.pdb address order (0x03B0A340 < 0x03B0A350): probable.
 #ifdef FABLE_RETAIL_SUSPENDABLE_PROCESS
+// Naming wave 29 (DECISIONS_W28 D5; chunk 696 decisions 2 / 3): the destructor is the implicit one -- retail 0x00CDD4C0 (Ego_r.pdb /
+// FableWin.pdb ??1CSpawnedFuncBase@@UAE@XZ) has no vtable store, releases PPredicate through the out-of-line
+// ??1?$CCountedPointer@$$CBVCPredicateBase@NScript@@@@QAE@XZ 0x00CDD4F0, destroys AssociatedRegionName and Name (0x0099EAE0) and
+// tail-jumps to ~CSuspendableProcessMicrothread 0x00A44620; every CSpawnedFunc<T> / CActiveEntityScript<T> scalar deleting
+// destructor calls it. The members are Ego_r.pdb's real types: CCharString Name (+0x20) / AssociatedRegionName (+0x24),
+// CCountedPointer<const NScript::CPredicateBase> PPredicate (+0x2C).
+// Contract: the includer defines CCharString (two by-value members) and the CCountedPointer<T> template (engine/CCountedPointer.h
+// or its own model) before including this header.
 #include <stddef.h>
 #include "rebuild_abi.h"
 #include "engine/CSuspendableProcessMicrothread.h"
-class CCharString;
-class CCharStringData;
-class CCPPointerInfo;
 namespace NScript { class CPredicateBase; }
 class CSpawnedFuncBase : public CSuspendableProcessMicrothread {
 public:
     CSpawnedFuncBase(const CCharString&, unsigned long);                 // 0x00CDD450
-    virtual ~CSpawnedFuncBase();                                         // slot 0  0x00CDD4A0 (scalar deleting)
     virtual void OnPredicateFail();                                      // slot 5  0x00CDD410 (order probable)
     virtual void OnInterrupted();                                        // slot 6  0x00CDD420 (order probable)
     unsigned long GetID() const;
@@ -41,15 +45,16 @@ public:
     unsigned long    ID;                                                 // +0x14
     long             LastScriptFrame;                                    // +0x18
     long             CurrentScriptFrame;                                 // +0x1c
-    CCharStringData* Name_PStringData;                                   // +0x20 CCharString Name
-    CCharStringData* AssociatedRegionName_PStringData;                   // +0x24 CCharString AssociatedRegionName
+    CCharString      Name;                                               // +0x20
+    CCharString      AssociatedRegionName;                               // +0x24
     bool             FuncPaused;                                         // +0x28
     bool             Interrupted;                                        // +0x29
-    const NScript::CPredicateBase* PPredicate_Data;                      // +0x2c CCountedPointer<const NScript::CPredicateBase>
-    CCPPointerInfo*  PPredicate_Info;                                    // +0x30
+    CCountedPointer<const NScript::CPredicateBase> PPredicate;           // +0x2c
 };
 FABLE_STATIC_ASSERT(sizeof(CSpawnedFuncBase) == 0x34);
 FABLE_STATIC_ASSERT(offsetof(CSpawnedFuncBase, ID) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CSpawnedFuncBase, Name) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CSpawnedFuncBase, PPredicate) == 0x2c);
 #else // flattened Ego_r layout (the landed default)
 #include <stddef.h>
 #include "rebuild_abi.h"

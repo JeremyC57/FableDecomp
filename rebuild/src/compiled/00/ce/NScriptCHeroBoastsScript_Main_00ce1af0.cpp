@@ -1,5 +1,7 @@
 // NScript::CHeroBoastsScript::Main() -- boast dispatcher: every script frame collect the boasts the hero has just made and spawn a "ControlNewBoast" thread for each (boast type and quest name), until the script terminates
 // Leaf: Main
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CE1AF0, length 376 bytes.
 // Callees: CScriptBase::IsActiveThreadTerminating @ 0x00CB7940, AddSpawnedFunction(CSpawnedFuncBase*, const CCharString&)
 //   @ 0x00CB7E50, CSpawnedFuncBase(const CCharString&, unsigned long) @ 0x00CDD450, operator new @ 0x00BFEA1A,
@@ -49,6 +51,7 @@ typedef std::vector<std::pair<long, CCharString> > BoastVector;
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 template <class T, class A1, class A2> struct CSpawnedFunc2 : CSpawnedFuncBase {   // vtable 0x012C36B8
     void (T::*Func)(A1, A2);                            // +0x34

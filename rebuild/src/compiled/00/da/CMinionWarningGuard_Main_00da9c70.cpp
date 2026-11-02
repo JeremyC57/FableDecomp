@@ -3,6 +3,8 @@
 //   the quest card objective, kick off the quest start screen once, release Me, have Me follow the hero (region following
 //   too), show Me's health bar, spawn the parent's GuardChatter on Me, wait for the mission to end and remove Me
 // Leaf: Main
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: a declaration-only CCountedPointer<T> declared before it (the row keeps its own CCPPointerInfo).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DA9C70, 1509 bytes, plain `ret`, no EH frame.
 // Callees: CIsThingAlive out-of-line dtor 0x00E241B0, CScriptThing copy 0x004ABE90 / dtor 0x004AA840, RegisterFilter
 //   0x00F35B10, IsActiveThreadTerminating 0x00F35B30, CBaseIntelligentPointer ctor 0x0099A380, scripted-thing handle
@@ -103,6 +105,11 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+template <class T> class CCountedPointer {             // CSpawnedFuncBase::PPredicate (header contract; this row keeps its own
+public:                                                //   CCPPointerInfo, so not engine/CCountedPointer.h); the dtor is out of line
+    T* Data; CCPPointerInfo* Info;                     //   in retail (CCountedPointer<const NScript::CPredicateBase> 0x00CDD4F0)
+    ~CCountedPointer();
+};
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc1.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :

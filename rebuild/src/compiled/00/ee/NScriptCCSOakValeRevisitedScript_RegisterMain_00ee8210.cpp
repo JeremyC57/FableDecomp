@@ -1,5 +1,7 @@
 // NScript::CCS_OakValeRevisitedScript::RegisterMain() -- spawn the script's "Main" thread: AddSpawnedFunction(new CSpawnedFunc<CCS_OakValeRevisitedScript>("Main", 0, this, &CCS_OakValeRevisitedScript::Main), "")
 // Leaf: ?RegisterMain@CCS_OakValeRevisitedScript@NScript@@UAEXXZ
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EE8210, 144 bytes, plain `ret`. Slot 1 (RegisterMain) of the script vtable @ 0x012F53C0.
 // Identity: the vtable is stored by the script's Alloc, which CScriptInfoManager::RegisterScripts (0x00CD52D0) registers under
 //   the name "CS_OakValeRevisited" (site 0x00CDA213); script classes are C<registered name>Script in NScript (the PDB name sets hold
@@ -27,6 +29,7 @@ void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 class CPersistContext;

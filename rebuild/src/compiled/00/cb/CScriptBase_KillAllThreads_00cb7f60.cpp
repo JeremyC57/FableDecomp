@@ -1,5 +1,7 @@
 // CScriptBase::KillAllThreads() -- terminate every spawned thread (clearing the list) and every active entity script (marking a live scripted entity to die on level unload first), with PActiveThread set to each one while it terminates, then empty the entity-script map
 // Leaf: ?KillAllThreads@CScriptBase@@QAEXXZ
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: fable_string.h (CCharString) included before it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB7F60, 394 bytes, thiscall, `ret`.
 // Identity (two sources): (1) Ego_r.pdb / FableWin.pdb ?KillAllThreads@CScriptBase@@QAEXXZ (public, void(void)); the body is
 //   exactly that over the PDB members: Threads +0x04 (STLport list<CCountedPointer<CSpawnedFuncBase> >, each thread
@@ -22,6 +24,7 @@ void __cdecl operator delete(void* block);                 // 0x00BFE9BC
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
 #include "engine/CScriptBase.h"
+#include "fable_string.h"                               // CCharString for CSpawnedFuncBase::Name / AssociatedRegionName (header contract)
 #include "engine/CActiveEntityScriptBase.h"
 
 // Retail expands the CScriptThing copy and destructor and the by-value GetEntity at this site.

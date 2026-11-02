@@ -1,5 +1,7 @@
 // CEM_FlashLightPoint::Main() -- Expose-the-Mayor lamp point entity: waits for stage 2, spawns the parent's CheckLampSlot thread, then until the hero has flashed the lights correctly waits for the hero to come within MaxFlashDistFromStables, waits for the hand lamp to go off and on again, spawns HeroFlashesLamp(5) and waits for a result or a lamp reset
 // Leaf: Main
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Naming wave 25: ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ 0x00F35B30 (Ego_r.pdb / FableWin.pdb: global class, const)
 //   is declared on the global CEntityScriptBase the entity derives from (the landed SetPredicate rows' empty-base model; the vptr /
 //   Game / Me fields stay on the entity: empty-base layout, bytes unchanged); was CV_ExposeMayorScript::CEM_FlashLightPoint::IsActiveThreadTerminating (non-const).
@@ -43,6 +45,7 @@ bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScrip
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 template <class T> struct CSpawnedFunc0 : CSpawnedFuncBase {
     void (T::*Func)();                                  // +0x34

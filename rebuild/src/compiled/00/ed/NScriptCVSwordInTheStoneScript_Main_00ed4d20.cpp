@@ -1,4 +1,6 @@
 // CV_SwordInTheStoneScript::Main() -- the Sword in the Stone quest main: bind SwordOfStrength / SwordCrowd, wait for a Witchwood region to load, play the guildmaster intro once, spawn WatchForSwordPickup, wait for the hero to take the sword, complete the quest and deactivate it once Witchwood3 unloads
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ED4D20, 0x3f2 bytes, plain `ret`.
 // Callees: operator new 0x00BFEA1A, CCharString() 0x0099E4B0 / (const char*, long) 0x0099EBF0 / copy 0x0099EC30 /
 //   ~ 0x0099EAE0, strstr 0x00BFEB3A, IsActiveThreadTerminating 0x00CB7940, AddEntityScriptBinding 0x00CB8230,
@@ -31,6 +33,7 @@ __forceinline bool NameContains(const CCharString& name, const char* text)
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 

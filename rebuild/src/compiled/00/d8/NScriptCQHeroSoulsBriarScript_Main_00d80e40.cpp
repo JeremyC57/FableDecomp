@@ -1,5 +1,7 @@
 // CQ_HeroSoulsBriarScript::Main() -- the Hero Souls (Briar Rose) quest's main: bind the BriarRose / BRIAR_ROSE_IMPOSTER / HSB_MagicBarrier entity scripts; on the first run wait for the intro cutscene, set the objective, activate Q_HeroSoulsMother, auto-save and fade in; wait while the Northern Wastes are loaded without the start screen; give Jack's second-soul line, set the objective, wait for the start screen, then fight Briar Rose (Jack taunts at boss phases 1 and 2), wait for her death, play the soul-3 intro, close the magic barrier quest, count the delivered soul, log, give the good-soul morality, set the next objective, complete the quest and fade in
 // Leaf: ?Main@CQ_HeroSoulsBriarScript@NScript@@
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D80E40, length 2016 bytes.
 // Callees: operator new 0x00BFEA1A, CCharString(const char*, long) 0x0099EBF0 / CCharString(const CCharString&) 0x0099EC30 /
 //   ~CCharString 0x0099EAE0, ~CScriptThing 0x004AA840, CScriptBase::IsActiveThreadTerminating 0x00CB7940 /
@@ -34,6 +36,7 @@ void __fastcall AddLogbookStoryEntryString(const CCharString& tag);   // 0x00CBE
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 class CScriptDataBase;

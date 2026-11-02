@@ -1,4 +1,6 @@
 // NScript::CQ_FireHeartScript::CheckCompletion() -- after a round: when every prophet has been freed or killed play the Fireheart outro and mark the mission succeeded, otherwise spawn the StartRound thread for the next round
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D3AD60, length 212 bytes, plain `ret`.
 // Identity: Ego_r.pdb `?CheckCompletion@CQ_FireHeartScript@NScript@@QAEXXZ`.
 // Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940; CQ_FireHeartScript::PlayCutscene(CCharString) 0x00D39330
@@ -29,6 +31,7 @@ void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 
 template <class T> struct CSpawnedFunc0 : CSpawnedFuncBase {

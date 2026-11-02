@@ -1,4 +1,6 @@
 // CV_MurderTwistScript::Main() -- the Murder Twist quest main: bind the leader / brothers / friends / buried-gem entity scripts and spawn the MagicRuneProcess and GemsFoundProcess threads
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EA8830, 0x3da bytes, plain `ret`.
 // Callees: operator new 0x00BFEA1A, CCharString 0x0099EBF0 / 0x0099EC30 / ~ 0x0099EAE0, AddEntityScriptBinding 0x00CB8230
 //   (binding vtable 0x012EE73C), CScriptBase::PostAddScriptedEntities 0x00CB8930, CSpawnedFuncBase 0x00CDD450 (spawn vtable
@@ -14,6 +16,7 @@ class CCharString { public:
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 

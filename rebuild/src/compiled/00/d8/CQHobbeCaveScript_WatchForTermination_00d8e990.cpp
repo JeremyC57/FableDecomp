@@ -1,5 +1,7 @@
 // CQ_HobbeCaveScript::WatchForTermination() -- switch the cave creature generators off until the mission ends, switch them back on, fail the quest with the granny/grandson reason or complete it, take the hexagon door key from the hero, wait for Granny's House to unload and deactivate the quest
 // Leaf: WatchForTermination
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D8E990, 1200 bytes (int3 padded).
 // Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0, CWideString(const wchar_t*) 0x0099B6B0 / ~ 0x0099B510,
 //   IsActiveThreadTerminating 0x00CB7940; CGameScriptInterface slots 7, 11 IsLevelLoaded, 70 GetHero, 125 TakeObjectFromHero,
@@ -29,6 +31,7 @@ class CWideString { public:
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 

@@ -1,5 +1,7 @@
 // NScript::CV_IntroductionToTrophiesScript::Main() -- the Introduction-to-Trophies quest main: bind the BriarRose, TrophiesIntroWatcher, TrophiesBriarTrophy and TrophiesIntroTable entity scripts, spawn the WatchForInsideTavern / WatchForCrowdVolume / WatchForQuestComplete threads, wait for QuestComplete, then activate V_TalentlessBard and deactivate the active quest
 // Leaf: ?Main@CV_IntroductionToTrophiesScript@NScript@@UAEXXZ
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E9C4B0, 926 bytes, thiscall, plain `ret`.
 // Identity (proven): slot 2 (Main) of the quest-script vtable 0x012ED558 [dtor 0x00E9FBA0, RegisterMain 0x00E9C410 (landed
 //   as NScript::CV_IntroductionToTrophiesScript::RegisterMain), Main 0x00E9C4B0, Init 0x00E9C3B0 (landed ...::Init),
@@ -35,6 +37,7 @@ void* __cdecl operator new(unsigned int bytes);         // 0x00BFEA1A (MSVCR71)
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 class CScriptThing;

@@ -1,5 +1,7 @@
 // CQ_EndGameBossBattleScript::Main() -- the end-game Jack of Blades boss battle main: bind the SwordVoid / EndGameSister / EndGameJackOfBladesBoss / TheRealGuildmaster entity scripts, give the Jack fight quest card, activate Q_EndGameBossBattleScenery and run the battle
 // Leaf: ?Main@CQ_EndGameBossBattleScript@NScript@@UAEXXZ
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D2F7F0, 0x23c bytes, plain `ret`.
 // Label: manifest "CV_GhostGrannyNecklaceScript::Main" is propagated; the class is CQ_EndGameBossBattleScript (vtable
 //   0x012CC60C, object size 0x6c = Ego_r 128 - 0x14, allocated at 0x00D34410; the binding names are its
@@ -22,6 +24,7 @@ class CCharString { public:
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 

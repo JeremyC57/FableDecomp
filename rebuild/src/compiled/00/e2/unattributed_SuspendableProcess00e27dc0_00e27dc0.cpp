@@ -1,5 +1,7 @@
 // CActiveEntityScript<NScript::CQS_GuardianTrophyDealerInfoScript>::SuspendableProcess() -- runs the entity script's Main, or calls the bound member function with a CScriptThing copy, then stops the process
 // Leaf: ?SuspendableProcess@?$CActiveEntityScript@VCQS_GuardianTrophyDealerInfoScript@NScript@@@@UAEXXZ
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: fable_string.h (CCharString) included before it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E27DC0, oracle length 68 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -27,6 +29,7 @@
 // Retail expands the CScriptThing copy for the by-value argument (CBaseClass vtable 0x01231710 then 0x01238C8C, PImp addref).
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 #include "engine/CEntityScriptBase.h"
+#include "fable_string.h"                               // CCharString for CSpawnedFuncBase::Name / AssociatedRegionName (header contract)
 #include "engine/CActiveEntityScript.h"
 namespace NScript { class __single_inheritance CQS_GuardianTrophyDealerInfoScript; }   // T: Func is a 4-byte member pointer (single inheritance)
 

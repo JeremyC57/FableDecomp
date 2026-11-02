@@ -1,5 +1,7 @@
 // CQ_WizardBattleScript::Main() -- the Hook Coast wizard (Maze) battle main: initialise, bind the screamer / Maze / EndGameBarrier entity scripts, cache music sets 0x33 and 0x34 and spawn WatchForTermination and DoMission
 // Leaf: ?Main@CQ_WizardBattleScript@NScript@@UAEXXZ
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E1A990, 0x397 bytes, plain `ret`.
 // Label: manifest "CV_MurderTwistScript::Main" is propagated; the class is CQ_WizardBattleScript (vtable 0x012E0F54,
 //   object size 0x80 = Ego_r 148 - 0x14, allocated at 0x00E1D9F0; HKC_* / Screamer / Maze binding names match its
@@ -22,6 +24,7 @@ class CCharString { public:
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 

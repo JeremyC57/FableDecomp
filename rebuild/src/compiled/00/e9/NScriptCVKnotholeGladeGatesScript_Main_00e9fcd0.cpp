@@ -1,4 +1,6 @@
 // CV_KnotholeGladeGatesScript::Main() -- reset the quest flags, bind the KGG_VillagerOutside / KGG_SurpriseBalverine entity scripts, then spawn WatchForTermination and DoMission in Knothole Glade
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E9FCD0, 493 bytes (496 with padding), plain `ret`.
 // Callees: the same-TU flag reset 0x00E9FEC0 (clears +0x48..+0x54, +0x58, +0x68; no Ego_r name, called here
 //   ResetMissionState; the manifest's "CMeleeApprentice::Init" is propagated), operator new 0x00BFEA1A,
@@ -28,6 +30,7 @@ void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 

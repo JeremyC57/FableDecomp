@@ -1,4 +1,6 @@
 // CV_SingingStonesScript::Main() -- the Singing Stones quest main: wait for the Witchwood2 region to load, bind the SingingStone / ManWithDoorName entity scripts and spawn the WatchForCompleteTune, WatchForSpokenToDemonDoors and WatchForRegionLeaving threads
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ED10A0, 0x2f9 bytes, plain `ret`.
 // Callees: CCharString 0x0099EBF0 / 0x0099EC30 / ~ 0x0099EAE0, IsActiveThreadTerminating 0x00CB7940, operator new 0x00BFEA1A,
 //   CSpawnedFuncBase 0x00CDD450 (CSpawnedFunc<CV_SingingStonesScript> vtable 0x012F2B20), AddSpawnedFunction 0x00CB7E50,
@@ -20,6 +22,7 @@ class CCharString { public:
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 

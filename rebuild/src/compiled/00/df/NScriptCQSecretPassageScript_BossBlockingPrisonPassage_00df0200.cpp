@@ -1,5 +1,7 @@
 // CQ_SecretPassageScript::BossBlockingPrisonPassage() -- each time the hero reaches the passage entrance with the exterior loaded: start the door switcher once, make the entrance unusable, spawn an undead lieutenant at every boss spawn point (each targeting the hero), block the doors until all of them are dead, then unblock and make the entrance usable again
 // Leaf: BossBlockingPrisonPassage
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DF0200, 1174 bytes (int3 padded to 1184).
 // Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0, IsActiveThreadTerminating 0x00CB7940, operator new 0x00BFEA1A,
 //   CSpawnedFuncBase 0x00CDD450 (spawn vtable 0x012DDC54), AddSpawnedFunction 0x00CB7E50, SwitchDoorsOnAndOff 0x00DEFB10,
@@ -25,6 +27,7 @@ class CWideString { public:
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 

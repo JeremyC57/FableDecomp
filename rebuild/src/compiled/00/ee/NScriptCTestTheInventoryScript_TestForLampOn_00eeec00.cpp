@@ -1,5 +1,7 @@
 // NScript::CTestTheInventoryScript::TestForLampOn() -- test script thread: wait (frame by frame) until the hero's hand lamp is lit; then show the lamp-on message for 3 seconds, pause 3 seconds and spawn the TestForLampOff thread
 // Leaf: ?TestForLampOn@CTestTheInventoryScript@NScript@@QAEXXZ
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EEEC00, 274 bytes, thiscall, plain `ret`.
 // Identity (proven): the row is referenced twice, both as the CSpawnedFunc member pointer stored at +0x34 next to the
 //   "TestForLampOn" thread name 0x012F59DC: in the landed CTestTheInventoryScript::Main 0x00EEEA90 (site 0x00EEEB6B) and in
@@ -31,6 +33,7 @@ public:
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 // CGameScriptInterfaceBase is the retail abstract script interface from the shared headers (FABLE_RETAIL_NSCRIPT

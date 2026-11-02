@@ -1,5 +1,7 @@
 // NScript::CV_RandomPopulationSimScript::Main() -- the random population sim's main: bind the "RandomPopulationVillager", "RandomPopulationGuard" and "RandomPopulationBandit" entity scripts (one shared Alloc), finish adding scripted entities, then spawn the ProcessAlbionPopulationSim and HighDetailPopulationSim threads
 // Leaf: Main
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EC1910, 592 bytes. Catalog label "CQ_TentacleKrakenBossFightScript::Main" is
 //   propagated: the row's only reference is the vtable at 0x012F12E0, its spawned threads are
 //   CV_RandomPopulationSimScript::ProcessAlbionPopulationSim 0x00EC2240 and HighDetailPopulationSim 0x00EC29F0.
@@ -22,6 +24,7 @@ void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 

@@ -1,4 +1,6 @@
 // CQ_CinemaTestScript::DoMission() -- the cinema test quest: set the first quest objective, wait for the ArenaHallOfHeroes level, spawn the WatchForLeaving thread, run phase one, and end the mission unless it failed
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F01EB0, length 372 bytes (+ int3 padding), plain `ret`.
 // Identity: Ego_r.pdb ?DoMission@CQ_CinemaTestScript@NScript@@QAEXXZ; the body is the CQ_TentacleKrakenBossFightScript
 // DoMission (0x00DF4E00) shape.
@@ -25,6 +27,7 @@ void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 

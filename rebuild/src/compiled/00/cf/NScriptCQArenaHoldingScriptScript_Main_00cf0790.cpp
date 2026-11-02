@@ -1,5 +1,7 @@
 // NScript::CQ_ArenaHoldingScriptScript::Main() -- Arena holding area: wait for the ArenaExterior region, bind the six entity scripts (entrance guards and the town fans, all flag 1), post the scripted entities, then make the ArenaExtToHallOfHeroes door unusable and persistent
 // Leaf: ?Main@CQ_ArenaHoldingScriptScript@NScript@@UAEXXZ
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CF0790, 960 bytes, thiscall, plain `ret`.
 // Identity: vtable slot 2 (Main) of 0x012C60A0 (reference .rdata 0x012C60A8), the vtable the landed ctor 0x00CF06A0
 //   NScript::CQ_ArenaHoldingScriptScript::CQ_ArenaHoldingScriptScript stores (slot 1 RegisterMain 0x00CF06F0, slot 3 Init
@@ -31,6 +33,7 @@ class CWideString { public:
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 

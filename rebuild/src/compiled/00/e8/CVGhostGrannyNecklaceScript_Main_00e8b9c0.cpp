@@ -1,4 +1,6 @@
 // CV_GhostGrannyNecklaceScript::Main() -- the Ghost Granny's Necklace quest main: bind the necklace / daughter-in-law / son entity scripts, spawn CreateBandit and GhostGrannyHints, wait for the necklace to be returned, complete the quest, then wait for the hero to leave OrchardFarm and deactivate it
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E8B9C0, 0x35d bytes, plain `ret`.
 // Callees: CCharString 0x0099EBF0 / 0x0099EC30 / ~ 0x0099EAE0, IsActiveThreadTerminating 0x00CB7940, operator new 0x00BFEA1A,
 //   CSpawnedFuncBase 0x00CDD450 (CSpawnedFunc<CV_GhostGrannyNecklaceScript> vtable 0x012EBA50), AddSpawnedFunction 0x00CB7E50,
@@ -16,6 +18,7 @@ class CCharString { public:
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 

@@ -1,5 +1,7 @@
 // CQ_OakValeBanditRaidScript::Main() -- wait for the bandit-camp path, set the objective, make the raid gate persistent, play the gate-start cut-scene with the hero cast, show the start screen, bind the raid bandits and restart marker, add the raid rumours and music, populate the level, spawn the level/gate/whistling watchers, show the raid tutorial once and idle until the thread ends
 // Leaf: Main
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DBF2D0, 1785 bytes (int3 padded to 1792).
 // Callees: CCharString 0x0099EBF0 / 0x0099EC30 / ~ 0x0099EAE0, ~CScriptThing 0x004AA840, IsActiveThreadTerminating 0x00CB7940,
 //   scripted-thing handle (CBaseObject 0x0099A380, vtable 0x0127094C, IsValid 0x00CD23B9, Release 0x00CD2770, operator=
@@ -36,6 +38,7 @@ class CScriptThing { public:                                   // 12 bytes {vptr
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 

@@ -1,5 +1,7 @@
 // CQ_SecretPassageScript::DoMission() -- wait until KrakenChamber is loaded, show the quest start screen once, spawn the WatchForLeaving and BossBlockingPrisonPassage threads, turn teleporting off, run PhaseOne and end the mission unless it failed
 // Leaf: DoMission
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DEFF60, 531 bytes (544 with int3 padding).
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~ 0x0099EAE0, CScriptBase::IsActiveThreadTerminating 0x00CB7940,
 //   operator new 0x00BFEA1A, CSpawnedFuncBase(const CCharString&, unsigned long) 0x00CDD450 (CSpawnedFunc vtable
@@ -28,6 +30,7 @@ class CCharString { public:                                     // 4 bytes: the 
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :

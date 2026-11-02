@@ -1,5 +1,7 @@
 // NScript::CV_FishingCompetitionScript::CFishCompOrganiser::OnPredicateFail() -- when the organiser was killed by the hero, fail the competition and spawn the parent script's EndCompetition thread
 // Leaf: OnPredicateFail
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E7F030, length 266 bytes, plain `ret`.
 // Identity: Ego_r.pdb ?OnPredicateFail@CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@EAEXXZ.
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, operator+(const CCharString&, const
@@ -36,6 +38,7 @@ class CScriptThing { public:
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 template <class T> struct CSpawnedFunc0 : CSpawnedFuncBase {   // vtable 0x012EA48C for CV_FishingCompetitionScript
     void (T::*Func)();                                  // +0x34

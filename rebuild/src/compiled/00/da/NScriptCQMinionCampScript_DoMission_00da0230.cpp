@@ -1,4 +1,6 @@
 // CQ_MinionCampScript::DoMission() -- the minion camp quest's mission thread: wait for Darkwood_5 and the intro, show the quest start screen, run phase one, wait for the portal or failure; on failure play CS_MINIONCAMP_FAILED (past stage 2) and fail the quest, otherwise complete it; then re-enable the Darkwood3 creature generators and deactivate the quest
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DA0230, length 925 bytes.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CWideString(const unsigned short*)
 //   0x0099B6B0 / ~CWideString 0x0099B510, CScriptBase::IsActiveThreadTerminating 0x00CB7940, PhaseOne 0x00DA05D0,
@@ -26,6 +28,7 @@ void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 

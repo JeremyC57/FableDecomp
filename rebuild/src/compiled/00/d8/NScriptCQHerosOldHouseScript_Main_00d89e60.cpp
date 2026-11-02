@@ -1,5 +1,7 @@
 // NScript::CQ_HerosOldHouseScript::Main() -- Hero's old house (Oakvale): wait for OakBay, bind the ghost fisherman, his wife and the extra booty, spawn WatchForBooty, then until the booty is dug up fail the quest once if the wife is attacked while the hero is helping; finally deactivate the quest
 // Leaf: ?Main@CQ_HerosOldHouseScript@NScript@@UAEXXZ
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D89E60, 976 bytes, thiscall, plain `ret`.
 // Identity: vtable slot 2 (Main) of 0x012D5018 (reference .rdata 0x012D5020), the vtable the landed ctor 0x00D89D70
 //   NScript::CQ_HerosOldHouseScript::CQ_HerosOldHouseScript stores (slot 1 RegisterMain 0x00D89DC0, slot 3 Init 0x00D89DA0
@@ -33,6 +35,7 @@ class CWideString { public:
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 

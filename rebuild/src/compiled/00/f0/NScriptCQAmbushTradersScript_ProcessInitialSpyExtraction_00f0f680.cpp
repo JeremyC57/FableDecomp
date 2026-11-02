@@ -1,5 +1,7 @@
 // NScript::CQ_AmbushTradersScript::ProcessInitialSpyExtraction(const CScriptThing&, CScriptGameResourceObjectScriptedThingBase&) -- the spy has made contact: update the quest card, release the spy from his scripted follow, make him follow the hero with a health bar, and spawn WatchForArcherSpawnConditions
 // Leaf: ProcessInitialSpyExtraction
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F0F680, length 644 bytes (padded to 656), ret 8.
 // Callees: IsActiveThreadTerminating 0x00CB7940; CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0;
 // CScriptGameResourceObjectScriptedThingBase::IsValid 0x00CD23B9 / Release 0x00CD2770 and vtable 0x0127094C slots
@@ -41,6 +43,7 @@ class CScriptGameResourceObjectScriptedThingBase { public:    // vtable 0x012709
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :

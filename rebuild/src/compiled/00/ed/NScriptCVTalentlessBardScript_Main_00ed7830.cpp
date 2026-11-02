@@ -1,5 +1,7 @@
 // NScript::CV_TalentlessBardScript::Main() -- the Talentless Bard quest main: bind the TB_BardSpawnPoint and TB_Bard entity scripts, post-add the scripted entities, spawn the WatchForCompletedQuests thread, wait until the bard is finished, then complete the active quest and deactivate it
 // Leaf: ?Main@CV_TalentlessBardScript@NScript@@UAEXXZ
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ED7830, 497 bytes, thiscall, plain `ret`.
 // Identity (proven): slot 2 (Main) of the quest-script vtable 0x012F3428 [dtor 0x00EDACF0, RegisterMain 0x00ED7790 (landed
 //   NScript::CV_TalentlessBardScript::RegisterMain), Main 0x00ED7830, Init 0x00ED83C0, OnPersist 0x00ED85A0 (landed)], which the
@@ -35,6 +37,7 @@ void* __cdecl operator new(unsigned int bytes);         // 0x00BFEA1A (MSVCR71)
 //   opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess : CBaseClassNonCopyable : CBaseClass,
 //   0x34 bytes, vtable 0x012C2F9C).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 class CScriptThing;

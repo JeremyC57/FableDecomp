@@ -1,5 +1,7 @@
 // NScript::CV_TrophyDealerScript::Main() -- the Trophy Dealer quest main: switch off Witchwood2's creature generators, bind the TrophyDealerInCave and DemonDoorFace entity scripts, activate V_SingingStones without loading resources, spawn HilightGuildTeleporter, wait for Witchwood1 to load, then set the quest card objective (FIND_TROPHY_DEALER_OBJECTIVE_02, Witchwood2) and kick off the V_TrophyDealer quest start screen
 // Leaf: ?Main@CV_TrophyDealerScript@NScript@@UAEXXZ
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EE6E90, 767 bytes, thiscall, plain `ret`.
 // Identity (proven): slot 2 (Main) of the quest-script vtable 0x012F51F4 [dtor 0x00EE80E0, RegisterMain 0x00EE6DF0 (landed as
 //   NScript::CV_TrophyDealerScript::RegisterMain), Main 0x00EE6E90, Init 0x00EE6D60 (landed ...::Init), OnPersist 0x00CBD4E0];
@@ -32,6 +34,7 @@ void* __cdecl operator new(unsigned int bytes);         // 0x00BFEA1A (MSVCR71)
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 class CScriptThing;

@@ -1,5 +1,7 @@
 // CTestTheInventoryScript::TestForLampOff() -- test script thread: wait (frame by frame) while the hero's hand lamp is lit; then show the lamp-off message for 3 seconds, pause 3 seconds and spawn the TestForLampOn thread
 // Leaf: ?TestForLampOff@CTestTheInventoryScript
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EEED20, 274 bytes (+14 int3), `ret`.
 // Callees: CScriptBase::IsActiveThreadTerminating @ 0x00CB7940, operator new @ 0x00BFEA1A, CSpawnedFuncBase::
 //   CSpawnedFuncBase(const CCharString&, unsigned long) @ 0x00CDD450, CScriptBase::AddSpawnedFunction(CSpawnedFuncBase*,
@@ -26,6 +28,7 @@ void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 
 template <class T> struct CSpawnedFunc0 : CSpawnedFuncBase {

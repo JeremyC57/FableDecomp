@@ -1,5 +1,7 @@
 // NScript::CEmptyScript::Main() -- the empty script: spawn Bum, then idle one script frame at a time until the thread terminates
 // Leaf: ?Main@CEmptyScript@NScript@@UAEXXZ
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EEE800, 170 bytes, thiscall, plain `ret`.
 // Identity (proven): slot 2 (Main) of the RTTI-less level-script vtable 0x012F5954, which the landed constructor NScript::CEmptyScript::CEmptyScript 0x00EEE730 stores;
 //   level-script slots are 0 dtor, 1 RegisterMain, 2 Main, 3 Init, 4 OnPersist (FableWin.pdb CScriptBase order, the landed
@@ -18,6 +20,7 @@ public:
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 void* operator new(unsigned int size);                  // 0x00BFEA1A

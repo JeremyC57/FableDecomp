@@ -1,5 +1,7 @@
 // NScript::CQ_PrisonWardenGameScript::Main() -- prison warden's office: bind the warden, the secret book, the office exit and the do-not-target marker, teleport the hero to WardensOfficeStart facing its angle, wait for PrisonOffice, then spawn WardenKeyMiniGame
 // Leaf: ?Main@CQ_PrisonWardenGameScript@NScript@@UAEXXZ
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DDDE20, 1021 bytes, thiscall, plain `ret` (ends 0x00DDE21C).
 // Identity: vtable slot 2 (Main) of 0x012DCB40, the vtable the landed ctor 0x00DDDC90 stores; Ego_r.pdb
 //   ?Main@CQ_PrisonWardenGameScript@NScript@@UAEXXZ (donor 0x00E182B0, beside ?RegisterMain@ 0x00E18180 and
@@ -28,6 +30,7 @@ class CWideString { public:
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 

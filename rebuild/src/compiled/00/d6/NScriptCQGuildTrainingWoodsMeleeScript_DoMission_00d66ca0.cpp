@@ -1,5 +1,7 @@
 // CQ_GuildTrainingWoodsMeleeScript::DoMission() -- give the hero the first objective, wait until GuildWoods is loaded, spawn the WatchForLeaving and TeleportOutHero threads, take a frame and run EndMission unless the mission failed
 // Leaf: DoMission
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D66CA0, 487 bytes (496 with padding), plain `ret`.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0 ("first objective" 0x012D19FC,
 //   "GuildWoods" 0x012CD7DC, "WatchForLeaving" 0x012D19EC, "TeleportOutHero" 0x012D19DC, "" 0x0122D70E),
@@ -28,6 +30,7 @@ class CCharString { public:                                     // 4 bytes: the 
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :

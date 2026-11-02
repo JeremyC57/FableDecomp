@@ -1,5 +1,7 @@
 // NScript::CGameflowAssistanceScript::Main() -- the gameflow assistance script's main thread: spawn the four tutorial watcher threads Tutorial_CombatMultiplier, Tutorial_LowHealth, Tutorial_LowMagic and Tutorial_RenownLevelIncrease (each a CSpawnedFunc<CGameflowAssistanceScript> with an empty region name)
 // Leaf: ?Main@CGameflowAssistanceScript@NScript@@UAEXXZ
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CEFAC0, 499 bytes, thiscall, plain `ret`. Slot 2 (Main) of the RTTI-less script vtable
 //   0x012C5DE0 (word 0x012C5DE8), whose slot 1 is the landed RegisterMain 0x00CEFA20 (it spawns this Main as the "Main" thread).
 // Identity (proven, two sources): (1) the vtable slot (CScriptBase slots: 0 dtor, 1 RegisterMain, 2 Main, 3 Init, 4 OnPersist;
@@ -26,6 +28,7 @@ void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 class CPersistContext;

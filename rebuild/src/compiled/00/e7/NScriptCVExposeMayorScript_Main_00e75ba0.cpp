@@ -1,5 +1,7 @@
 // NScript::CV_ExposeMayorScript::Main() -- the expose-the-mayor quest's main: bind five entity scripts ("EM_SuspiciousVillager", "EM_Sheriff", "EM_FlashLightPoint", "EM_Rhodri", "HH_CellarDoor"), finish adding scripted entities, activate the "V_ExposeMayorRhodri" quest, spawn DoMission and PreventConflictWithTCE, then declare the gossip categories
 // Leaf: Main
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E75BA0, 848 bytes. Catalog label "CQ_SummoningTheShipScript::Main" is propagated:
 //   the row's only reference is the vtable at 0x012E96D4, its strings are the EM_ (Expose Mayor) entities, and it
 //   ends in the landed DeclareGossipCategories 0x00E76040 (the mayor gossip categories; landed under the
@@ -24,6 +26,7 @@ void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 

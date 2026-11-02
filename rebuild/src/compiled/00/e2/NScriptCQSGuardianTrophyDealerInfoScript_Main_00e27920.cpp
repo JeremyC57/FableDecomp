@@ -1,5 +1,7 @@
 // NScript::CQS_GuardianTrophyDealerInfoScript::Main() -- the Guardian-trophy-dealer info quest main: bind the GTDI_Maze entity script, post-add the scripted entities, spawn the WaitForPieceOver thread, then set the quest card objective (TEXT_QUEST_GUARDIAN_TROPHY_DEALER_INFO_OBJECTIVE_01, HeroGuildComplexInside twice)
 // Leaf: ?Main@CQS_GuardianTrophyDealerInfoScript@NScript@@UAEXXZ
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E27920, 390 bytes, thiscall, plain `ret`.
 // Identity (proven): slot 2 (Main) of the quest-script vtable 0x012E2018 [dtor 0x00E28CE0, RegisterMain 0x00E27880 (landed
 //   NScript::CQS_GuardianTrophyDealerInfoScript::RegisterMain, which spawns slot 2 as "Main"), Main 0x00E27920, Init
@@ -32,6 +34,7 @@ void* __cdecl operator new(unsigned int bytes);         // 0x00BFEA1A (MSVCR71)
 //   opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess : CBaseClassNonCopyable : CBaseClass,
 //   0x34 bytes, vtable 0x012C2F9C).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 class CScriptThing;

@@ -1,5 +1,7 @@
 // CV_AssassinAttacksScript::Init() -- reset the assassin-attack state and the five region records (names and limits from the script def), then spawn the WatchForQuestComplete thread
 // Leaf: ?Init@CV_AssassinAttacksScript@NScript@@
+// Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
+//   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E39540, length 268 bytes.
 // Callees: CCharString::operator=(const char*) @ 0x0099EFE0, vector<long>::resize(size_t, const long&) @ 0x004428F0,
 // CCharString::operator=(const CCharString&) @ 0x0099EFB0, operator new @ 0x00BFEA1A, CSpawnedFuncBase::CSpawnedFuncBase(
@@ -31,6 +33,7 @@ void* __cdecl operator new(unsigned int size);          // 0x00BFEA1A
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CSpawnedFuncBase::PPredicate (header contract)
 #include "engine/CSpawnedFuncBase.h"
 
 template <class T> struct CSpawnedFunc0 : CSpawnedFuncBase {
