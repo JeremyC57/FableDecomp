@@ -281308,8 +281308,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00643fc8'
         Module = 'NPlayerGui::CDrawAbilityButtons'
-        Source = '00/64/NPlayerGuiCDrawAbilityButtons_GetSpecialMoveIndexForButton_00643fc8.cpp'
-        TestSource = '00/64/NPlayerGuiCDrawAbilityButtons_GetSpecialMoveIndexForButton_00643fc8_test.cpp'
+        Source = '00/64/NPlayerGuiCDrawAbilityButtons_GetAssignableSpecialMoveIndexForButtonDef_00643fc8.cpp'
+        TestSource = '00/64/NPlayerGuiCDrawAbilityButtons_GetAssignableSpecialMoveIndexForButtonDef_00643fc8_test.cpp'
         PassPattern = '00643fc8_TEST PASS'
     }
     [pscustomobject]@{
