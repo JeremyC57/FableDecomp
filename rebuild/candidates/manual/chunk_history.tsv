@@ -26047,3 +26047,13 @@ chunk	address	module	name	length
 703	005df750	CAnimComponentCombatMisc	Alloc	31
 703	005faee0	CTCInventory	OnKill	44
 703	0061a1f0	CTCInventory	OnKill	44
+704	006b1550	CCounter	operator=	44
+704	00747530	CTCStealth	vfunc_4	36
+704	00ca7310	CTCStealth	OnCreate	45
+704	007fc7a0	CTCKraken	StartHighAttackBeam	38
+704	007fc7d0	CTCKraken	StartHighAttackBeam	38
+704	00820b50	CMap	?Update@CMap@@MAEXXZ	36
+704	008424a0	CCreatureAction_ActivateZTarget	PerformAction	17
+704	008426e0	CCreatureAction_PlayAnimation	FrameUpdate	34
+704	00850640	CPhysicsLeaf<NCameraModes::CPhysicsTargetModelGoTo	FrameUpdate	44
+704	0085ca10	CPhysicsLeaf<NCameraModes::CPhysicsTargetModelGoTo	FrameUpdate	44
