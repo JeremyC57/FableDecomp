@@ -2,6 +2,8 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Leaf: ?CSFindThing@@
+// Naming wave 30 (family cst): the local non-virtual CScriptThing stand-in (??1CScriptThing@@QAE@XZ) is replaced by engine/CScriptThing.h's retail
+//   class: ~CScriptThing 0x004AA840 is virtual (RTTI CScriptThing : CBaseClass; Ego_r.pdb / FableWin.pdb ??1CScriptThing@@UAE@XZ)
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CBF9DE, 218 bytes, `__fastcall` global returning CScriptThing by value
@@ -68,16 +70,9 @@ public:
         return PStringData->Data == text;
     }
 };
-class CScriptThing {                            // 12 bytes, vtable 0x01238C8C
-public:
-    CScriptThing();                                     // 0x006E7B40
-    CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    ~CScriptThing();                                    // 0x004AA840
-    CScriptThing& operator=(const CScriptThing& other); // 0x008AB980
-    void* m_vtable;
-    void* m_pImpData;
-    void* m_pImpInfo;
-};
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CScriptThing::PImp (header contract)
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"                         // : CBaseClass, vtable 0x01238C8C; virtual ~CScriptThing 0x004AA840
 class CScriptGameResourceObjectScriptedThingBase {      // 0x10 bytes, vtable 0x0127094C
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();

@@ -1,10 +1,15 @@
 // NScript::CQ_EndGameFocalSitesScript::CBattleGuard::Main() -- guard stays villager while near hero, then fades out unless terminating.
 // Leaf: Main
+// Naming wave 30 (family cst): the invented second view ScriptThingCopy (??1ScriptThingCopy@@QAE@XZ) over the flattened engine/CScriptThing.h is dropped: engine/CScriptThing.h's retail
+//   class declares the out-of-line copy 0x004ABE90 and the virtual ~CScriptThing 0x004AA840 itself (Ego_r.pdb / FableWin.pdb
+//   ??0CScriptThing@@QAE@ABV0@@Z / ??1CScriptThing@@UAE@XZ)
 // Native00D2C530,273 bytes. RegistrationD2B006 stores allocatorD2C430 for BattleGuard; allocation stores VT12CC320 whose Main is D2C530.
 // Parent ctorD2A820 is CQ_EndGameFocalSitesScript; PDB nestedMainD36CB0. Predicate12C32F0 is genuine CIsThingAlive (operator()/Clone/dtor).
 #include "fable_string.h"
-#include "engine/CScriptThing.h"
 #include "engine/CGameScriptInterface.h"
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CScriptThing::PImp (header contract)
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"                         // : CBaseClass, vtable 0x01238C8C; virtual ~CScriptThing 0x004AA840
 #define CScriptGameResourceObjectScriptedThingBase CScriptedThingResource_PDB
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 #undef CScriptGameResourceObjectScriptedThingBase
@@ -13,10 +18,9 @@
 #define __fastcall
 #endif
 class C3DVector;
-struct ScriptThingCopy:CScriptThing {ScriptThingCopy(const CScriptThing&);~ScriptThingCopy();}; //004ABE90/004AA840 genuine copy/release, field-free native projection
 namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
-class CIsThingAlive:public CPredicateBase { public:ScriptThingCopy Thing;__forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}~CIsThingAlive(){}virtual bool operator()()const;virtual CPredicateBase* Clone()const;}; //CDF120/CDF130/implicitdtorCDF160, VT12C32F0
+class CIsThingAlive:public CPredicateBase { public:CScriptThing Thing;__forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}~CIsThingAlive(){}virtual bool operator()()const;virtual CPredicateBase* Clone()const;}; //CDF120/CDF130/implicitdtorCDF160, VT12C32F0
 }
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)

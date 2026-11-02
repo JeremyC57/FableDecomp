@@ -1,5 +1,7 @@
 // CQ_HeroSoulsThunderScript::Main() -- Hero Souls (Thunder): bind HeroThunder, wait for Knothole Glade; on first run open the KG gate, pick the start line, play the start cut-scene, switch the arena quests/sound themes/objective and fade in; have Jack speak once, wait for Thunder's defeat, then play the success cut-scene, give morality, log the story and complete the quest
 // Leaf: ?Main@CQ_HeroSoulsThunderScript@NScript@@
+// Naming wave 30 (family cst): the local non-virtual CScriptThing stand-in (??1CScriptThing@@QAE@XZ) is replaced by engine/CScriptThing.h's retail
+//   class: ~CScriptThing 0x004AA840 is virtual (RTTI CScriptThing : CBaseClass; Ego_r.pdb / FableWin.pdb ??1CScriptThing@@UAE@XZ)
 // Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
 //   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D7AE80, 1392 bytes (int3 padded).
@@ -20,12 +22,9 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
     const CCharString& operator=(const char* text);           // 0x0099EFE0
 };
-class CScriptThing { public:                                   // 12 bytes {vptr, PImp.Data, PImp.Info}
-    void* VTable;
-    void* PImpData;
-    void* PImpInfo;
-    ~CScriptThing();                                    // 0x004AA840
-};
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CScriptThing::PImp (header contract)
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"                         // : CBaseClass, vtable 0x01238C8C; virtual ~CScriptThing 0x004AA840
 // Layout: CSpawnedFuncBase is the retail polymorphic suspendable-process chain from the shared headers
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).

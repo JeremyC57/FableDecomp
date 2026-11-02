@@ -2,6 +2,8 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Leaf: ?CreateAndFadeInCreature@@
+// Naming wave 30 (family cst): the local non-virtual CScriptThing stand-in (??1CScriptThing@@QAE@XZ) is replaced by engine/CScriptThing.h's retail
+//   class: ~CScriptThing 0x004AA840 is virtual (RTTI CScriptThing : CBaseClass; Ego_r.pdb / FableWin.pdb ??1CScriptThing@@UAE@XZ)
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CBEF30, 145 bytes, `__fastcall` global returning CScriptThing by value
@@ -21,13 +23,9 @@ public:
 class C3DVector { public:
     float X, Y, Z;
 };
-class CScriptThing { public:
-    CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    ~CScriptThing();                                    // 0x004AA840
-    void* m_vtable;
-    void* m_pImpData;
-    void* m_pImpInfo;
-};
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CScriptThing::PImp (header contract)
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"                         // : CBaseClass, vtable 0x01238C8C; virtual ~CScriptThing 0x004AA840
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT

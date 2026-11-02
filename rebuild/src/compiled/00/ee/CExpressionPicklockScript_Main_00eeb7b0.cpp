@@ -1,5 +1,8 @@
 // CExpression_PicklockScript::Main() -- the hero "picklock" expression quest: register a conscious-hero predicate, mark the quest persistent, take the hero's targeted thing and quit unless it is pick-lockable and no movie is running; otherwise open a movie sequence and the picklock mini-game bar, scale the def's picklock time by the hero's skill level/max and the frame rate into a frame count, post a keep-searching-for-witnesses deed, start sneaking and face the lock, then each frame fail on releasing the d-pad button, being hit or being witnessed, update the bar with 1 - frames/time, finish when the bar is full (fail if the lock vanished) and count down; afterwards remove the deed, hide the bar and, unless failed, unlock the thing with progress% chance and apply the morality change; finally deactivate this quest later
 // Leaf: ?Main@CExpression_PicklockScript@@
+// Naming wave 30 (family cst): the local VSLOTS CScriptThing stand-in (non-virtual ??1CScriptThing@@QAE@XZ) and its CScriptThingImplementation pointee are
+//   replaced by engine/CScriptThing.h's retail class (virtual ~CScriptThing 0x004AA840, Ego_r.pdb / FableWin.pdb ??1CScriptThing@@UAE@XZ;
+//   the pointee is CScriptThing, whose slot 75 IsAlive the inline alive test calls)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EEB7B0, length 1272 bytes (+ int3 padding), no EH frame.
 // Callees: CScriptThing copy ctor 0x004ABE90 / dtor 0x004AA840 / IsAlive 0x004AB130 (virtual slot 75, called directly here once and
 //   expanded inline once), CScriptBase::SetPredicate 0x00CB7920 / IsActiveThreadTerminating 0x00CB7940, CBaseObject ctor 0x0099A380,
@@ -20,12 +23,6 @@
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-#define VSLOTS_THING VPAD16(t0) VPAD4(t1) VPAD1(t2) \
-    virtual bool MsgIsHitBy(const CCharString& name) const; \
-    VPAD32(t3) VPAD16(t4) VPAD4(t5) VPAD1(t6) \
-    virtual bool IsAlive() const;
-#define VSLOTS_IMPL VPAD64(i0) VPAD8(i1) VPAD2(i2) VPAD1(i3) \
-    virtual bool IsThingAlive() const;
 
 class CCharString { public:
     void* PStringData;
@@ -33,23 +30,13 @@ class CCharString { public:
     ~CCharString();                                        // 0x0099EAE0
 };
 
-struct CScriptThingImplementation;
-
-class CScriptThing { public:                                      // 12 bytes: vfptr + CCountedPointer PImp
-    VSLOTS_THING
-    CScriptThingImplementation* PImp_Data;                 // +0x04
-    void* PImp_Info;                                       // +0x08
-    CScriptThing(const CScriptThing& other);               // 0x004ABE90
-    ~CScriptThing();                                       // 0x004AA840
-};
-
-struct CScriptThingImplementation {
-    VSLOTS_IMPL
-};
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CScriptThing::PImp (header contract)
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"                         // : CBaseClass, vtable 0x01238C8C; virtual ~CScriptThing 0x004AA840
 
 __forceinline bool IsThingHandleAlive(const CScriptThing& thing)
 {
-    return thing.PImp_Data != 0 && thing.PImp_Data->IsThingAlive();
+    return thing.PImp.Data != 0 && thing.PImp.Data->IsAlive();
 }
 
 struct CIsThingConscious {                                 // vtable 0x012C2FE8

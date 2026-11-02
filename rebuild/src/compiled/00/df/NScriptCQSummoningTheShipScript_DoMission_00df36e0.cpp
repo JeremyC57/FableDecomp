@@ -1,5 +1,7 @@
 // CQ_SummoningTheShipScript::DoMission() -- set the first objective, wait for Hook Coast, prepare the lighthouse (summoner explosions spare the hero, no weapon-out crime, door and ships removed, village in limbo), play the pre-intro, start screen and fade in, wait for the lighthouse, play the intro, wait for the second wave or a failure, play the failed outro or wave two, wait for the summoners; let Briar Rose comment, then complete (outro + movie) or fail the quest, restore the village, crime and music, remove Briar Rose, teleport the hero to Lost Bay and deactivate the quest
 // Leaf: DoMission
+// Naming wave 30 (family cst): the local non-virtual CScriptThing stand-in (??1CScriptThing@@QAE@XZ) is replaced by engine/CScriptThing.h's retail
+//   class: ~CScriptThing 0x004AA840 is virtual (RTTI CScriptThing : CBaseClass; Ego_r.pdb / FableWin.pdb ??1CScriptThing@@UAE@XZ)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DF36E0, 1899 bytes (int3 padded to 1904).
 // Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0, CWideString 0x0099B6B0 / ~ 0x0099B510, IsActiveThreadTerminating
 //   0x00CB7940, ~CScriptThing 0x004AA840, CScriptThing::IsAlive 0x004AB130, PlayCutscene(CCharString) 0x00DF3E50; Game slots
@@ -21,13 +23,9 @@ class CWideString { public:
     CWideString(const unsigned short* text);            // 0x0099B6B0
     ~CWideString();                                     // 0x0099B510
 };
-class CScriptThing { public:                                   // 12 bytes {vptr, PImp.Data, PImp.Info}
-    void* VTable;
-    void* PImpData;
-    void* PImpInfo;
-    ~CScriptThing();                                    // 0x004AA840
-    bool IsAlive() const;                               // 0x004AB130
-};
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CScriptThing::PImp (header contract)
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"                         // : CBaseClass, vtable 0x01238C8C; virtual ~CScriptThing 0x004AA840
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT

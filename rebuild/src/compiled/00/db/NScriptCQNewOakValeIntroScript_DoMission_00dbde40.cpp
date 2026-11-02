@@ -1,5 +1,7 @@
 // CQ_NewOakValeIntroScript::DoMission() -- wait for StartOakVale; on first run fade out, turn the hero into a child, spawn the barrel/gold/marker threads, set up the intro (music, pre-attack quest, unkillable hero, stopped noon clock, no sleeping, money bag, hero's old house unlocked, start screen, intro music) and wait for the intro flag; then run the attack and post-attack phases, restore the hero, complete and deactivate the quest
 // Leaf: DoMission
+// Naming wave 30 (family cst): the local non-virtual CScriptThing stand-in (??1CScriptThing@@QAE@XZ) is replaced by engine/CScriptThing.h's retail
+//   class: ~CScriptThing 0x004AA840 is virtual (RTTI CScriptThing : CBaseClass; Ego_r.pdb / FableWin.pdb ??1CScriptThing@@UAE@XZ)
 // Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
 //   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DBDE40, 1172 bytes (int3 padded to 1184).
@@ -19,12 +21,9 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
     const CCharString& operator=(const char* text);           // 0x0099EFE0
 };
-class CScriptThing { public:                                   // 12 bytes {vptr, PImp.Data, PImp.Info}
-    void* VTable;
-    void* PImpData;
-    void* PImpInfo;
-    ~CScriptThing();                                    // 0x004AA840
-};
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CScriptThing::PImp (header contract)
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"                         // : CBaseClass, vtable 0x01238C8C; virtual ~CScriptThing 0x004AA840
 class CWideString { public:
     void* PStringData;
     CWideString(const unsigned short* text);            // 0x0099B6B0

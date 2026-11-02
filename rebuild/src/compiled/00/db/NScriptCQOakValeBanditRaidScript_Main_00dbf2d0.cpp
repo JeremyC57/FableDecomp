@@ -1,5 +1,7 @@
 // CQ_OakValeBanditRaidScript::Main() -- wait for the bandit-camp path, set the objective, make the raid gate persistent, play the gate-start cut-scene with the hero cast, show the start screen, bind the raid bandits and restart marker, add the raid rumours and music, populate the level, spawn the level/gate/whistling watchers, show the raid tutorial once and idle until the thread ends
 // Leaf: Main
+// Naming wave 30 (family cst): the local non-virtual CScriptThing stand-in (??1CScriptThing@@QAE@XZ) is replaced by engine/CScriptThing.h's retail
+//   class: ~CScriptThing 0x004AA840 is virtual (RTTI CScriptThing : CBaseClass; Ego_r.pdb / FableWin.pdb ??1CScriptThing@@UAE@XZ)
 // Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
 //   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DBF2D0, 1785 bytes (int3 padded to 1792).
@@ -28,12 +30,9 @@ class CWideString { public:
     CWideString(const unsigned short* text);            // 0x0099B6B0
     ~CWideString();                                     // 0x0099B510
 };
-class CScriptThing { public:                                   // 12 bytes {vptr, PImp.Data, PImp.Info}
-    void* VTable;
-    void* PImpData;
-    void* PImpInfo;
-    ~CScriptThing();                                    // 0x004AA840
-};
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CScriptThing::PImp (header contract)
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"                         // : CBaseClass, vtable 0x01238C8C; virtual ~CScriptThing 0x004AA840
 // Layout: CSpawnedFuncBase is the retail polymorphic suspendable-process chain from the shared headers
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).

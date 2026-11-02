@@ -3,17 +3,21 @@
 // installs nativeVT012E04FC. PDB corroborates QueenHornet registration and native factory.
 // Actual Thing, Game, Resource and BaseObject headers; named full-width PMFs for verified slots7/8.
 // Leaf: Main
+// Naming wave 30 (family cst): the invented second view ScriptThingCopy (??1ScriptThingCopy@@QAE@XZ) over the flattened engine/CScriptThing.h is dropped: engine/CScriptThing.h's retail
+//   class declares the out-of-line copy 0x004ABE90 and the virtual ~CScriptThing 0x004AA840 itself (Ego_r.pdb / FableWin.pdb
+//   ??0CScriptThing@@QAE@ABV0@@Z / ??1CScriptThing@@UAE@XZ)
 // Naming wave 26 (family pred): CEntityScriptBase is the global PDB class (Ego_r.pdb / FableWin.pdb) with
 //   ?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z 0x00F35B10 and the const
 //   ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ 0x00F35B30; the predicate parameter is an NScript::CPredicateBase.
 //   Was: SetPredicate declared on the entity class (?SetPredicate@CVtable012E04FC@@...).
-#include "engine/CScriptThing.h"
 #include "engine/CGameScriptInterface.h"
-struct ScriptThingCopy:CScriptThing {ScriptThingCopy(const CScriptThing&);~ScriptThingCopy();};
+#include "engine/CCountedPointer.h"                     // CCountedPointer<T> for CScriptThing::PImp (header contract)
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"                         // : CBaseClass, vtable 0x01238C8C; virtual ~CScriptThing 0x004AA840
 namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
 class CIsThingAlive:public CPredicateBase { public:
- ScriptThingCopy Thing;
+ CScriptThing Thing;
  __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
  virtual bool operator()()const;virtual CPredicateBase* Clone()const;
  ~CIsThingAlive(){} //inline native vptr reset then Thing destructor4AA840
