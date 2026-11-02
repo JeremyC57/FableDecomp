@@ -13,8 +13,8 @@ PDBs; the four `_Dest_val` labels were wrong. The agent stripped inherited `#pra
 Headers (hdr/README.md): new opt-in FABLE_RETAIL_CWORLD in engine/CWorld.h (bases CBaseClassNonCopyable + CIDrawWorld, vtable 0x012390F0,
 sizeof 0x198); ResetModes / GetPControlledCreature added to the FABLE_RETAIL_PLAYER branch of engine/CPlayer.h. Chunk 706 had added
 IsFirstPersonTargeting to that same branch after this chunk was cut: the coordinator merged both declaration sets (no overlap) and
-regraded the nine rows 9/9 against the merged headers (merged_header_regrade.log). Default text unchanged under `cpp`; the landed includers
-rechecked (includer_recheck_grades.tsv).
+regraded the nine rows 9/9 against the merged headers (merged_header_regrade.log). Default text unchanged under `cpp`; all 261 landed includers
+rechecked: 19 MATCH + 242 RELOCATION_MATCH, all PASS (includer_recheck_grades.tsv).
 
 Second spellings at landing, queued PRIORITY (NAME_FIXES_QUEUE.tsv, c709; each binder needs a class-model change): 0x0084DC10
 NCameraModes::CBase::FrameUpdate (two stand-in classes), 0x0049D8C0 (the landed AddGameEvent 0x0041649C uses a `CWorld_Methods` method shim),
