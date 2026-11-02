@@ -26151,3 +26151,13 @@ chunk	address	module	name	length
 713	0049ba20	CThingCreatureBase	EditWorldUpdate	65
 713	00681850	CTCCreatureOpinionOfHero	IsWillingToAttackHeroOnOpinion	80
 713	00702a50	CTCDExplosion	~CTCDExplosion	75
+714	00729ca0	CTCActionUseScriptedHook	GetRegionEntranceDisplayName	75
+714	00729a50	CTCActionUseScriptedHook	~CTCActionUseScriptedHook	54
+714	007a66f0	CTCGraphicAppearanceReplaceableMesh	~CTCGraphicAppearanceReplaceableMesh	79
+714	007cf0b0	CTCGraphicAppearanceReplaceableMesh	~CTCGraphicAppearanceReplaceableMesh	86
+714	007e1510	CTCGraphicAppearanceReplaceableMesh	~CTCGraphicAppearanceReplaceableMesh	95
+714	007adaa0	CTCTargetingBase	~CTCTargetingBase	73
+714	009bf500	CDisplayManager	PreDeviceReset	66
+714	00a628d0	CEnginePrimitiveRenderer	ResetVisibilityRatios	79
+714	00aa4170	C3DAnimationManager	~C3DAnimationManager	75
+714	00e01710	CDarkwoodTrader	~CDarkwoodTrader	65
