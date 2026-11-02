@@ -187,7 +187,12 @@ def run_tool(exe, args, e):
 
 def env():
     e=dict(os.environ)
-    inc=[VC/"include", ROOT/"rebuild"/"include"]
+    # FABLE_HDR_OVERLAY (optional, os.pathsep-separated): directories searched before rebuild/include, so a chunk agent can
+    # grade a row against a corrected copy of an engine header (e.g. <ws>/hdr/engine/CFoo.h) before the coordinator lands it.
+    # A repo header that includes the corrected one still resolves the repo copy (MSVC searches the including file's own
+    # directory first): put that includer in the overlay too.
+    ov=[Path(x) for x in os.environ.get("FABLE_HDR_OVERLAY","").split(os.pathsep) if x]
+    inc=[VC/"include"]+ov+[ROOT/"rebuild"/"include"]
     lib=[VC/"lib"]+[Path(x) for x in os.environ.get("FABLE_VC71_LIB","").split(os.pathsep) if x]
     if WINE:
         e["INCLUDE"]=";".join(wpath(x) for x in inc); e["LIB"]=";".join(wpath(x) for x in lib)

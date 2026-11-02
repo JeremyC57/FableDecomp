@@ -59,3 +59,11 @@ NAME_FIXES rows still go to NAME_FIXES_QUEUE.tsv (cNNN prefix) for the naming pa
 (land_chunk.sh is serial: it edits build_candidates.ps1 and the catalog). A landing that adds a second spelling for an address respells
 the old callers in the same commit (recheck them) or is queued with a PRIORITY note; check reloc_bindings by address, not only with
 bindings_multi_check.py.
+
+## Header corrections inside chunks (owner 2026-11-02: "make sure headers are correct while working any chunks if possible")
+Every chunk brief carries `CHUNK_BRIEF_headers_section.md` (agentNNN / chunk NNN substituted): an agent fixes a wrong engine header in
+`$S/w22/agentNNN/hdr/` and grades with `FABLE_HDR_OVERLAY=<that dir>` (verify_and_land.py searches it before rebuild/include), preferring an
+opt-in `FABLE_RETAIL_<CLASS>` branch. At landing: diff each hdr/ file against the repo header it was copied from (merge if the repo moved),
+copy it into rebuild/include, list every landed includer (real `#include` lines, transitively) and recheck them all with the chunk's rows
+before the commit; a failing includer means the change goes back to opt-in or out.
+
