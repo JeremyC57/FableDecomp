@@ -1,0 +1,3 @@
+0	landed source as-is, default leaf	DIFFER(40v30) = the ??_G scalar deleting dtor graded (largest symbol)
+0b	landed source as-is, leaf ??0CActionEventExplosion@...	RELOCATION_MATCH (vland --recheck-landed too)
+1	real CActionEventBase members (Ego_r) + Leaf line	RELOCATION_MATCH

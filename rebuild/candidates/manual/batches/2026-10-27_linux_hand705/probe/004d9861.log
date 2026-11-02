@@ -1,0 +1,3 @@
+0	landed source, leaf ??1CDefPointeeBase_Derived_004d9861	RELOCATION_MATCH (bytes fine; the name is invented)
+1	CFireheartMinigameDef : CSubDefClassBase (shared def headers), out-of-line ctor	RELOCATION_MATCH
+2	+ #pragma optimize("s", on) (TU also reproduces retail ??_G 0x004D9845 and ctor 0x004D6638)	RELOCATION_MATCH

@@ -1,0 +1,2 @@
+1	inline SetAsImmuneToAttack (FableWin) under ThingTypeFlags & 0x10, base call, __fastcall RevertOldTargetFlags tail	RELOCATION_MATCH
+2	CThing : CClass : CBaseObject shared-header chain	RELOCATION_MATCH

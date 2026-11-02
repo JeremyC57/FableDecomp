@@ -29190,13 +29190,6 @@ $catalog = @(
         PassPattern = 'FABLETLC_ATTACH_TEXTURE_TO_STAGE_BEHAVIOR PASS'
     }
     [pscustomobject]@{
-        Address = '009e1440'
-        Module = 'Render2DDrawList'
-        Source = '00/9e/Render2DDrawList_CopyBlock_009e1440.cpp'
-        TestSource = '00/9e/Render2DDrawList_CopyBlock_009e1440_test.cpp'
-        PassPattern = 'FABLETLC_RENDER2D_COPY_BLOCK_BEHAVIOR PASS'
-    }
-    [pscustomobject]@{
         Address = '009e3820'
         Module = 'CPixelFormat'
         Source = '00/9e/CPixelFormat_GetColourDepth_009e3820.cpp'
@@ -147432,13 +147425,6 @@ $catalog = @(
         PassPattern = '0090310e_TEST PASS'
     }
     [pscustomobject]@{
-        Address = '004d9861'
-        Module = '_unattributed'
-        Source = '00/4d/unattributed_CDefPointeeBaseDerived004d9861_004d9861.cpp'
-        TestSource = '00/4d/unattributed_CDefPointeeBaseDerived004d9861_004d9861_test.cpp'
-        PassPattern = '004d9861_TEST PASS'
-    }
-    [pscustomobject]@{
         Address = '0049bc70'
         Module = 'CGameJoystickManager'
         Source = '00/49/CGameJoystickManager_ScalarDeletingDestructor_0049bc70.cpp'
@@ -187390,20 +187376,6 @@ $catalog = @(
         Source = '00/a2/C3DAnimationInfoCAnimationData_CAnimationData_00a2d5f0.cpp'
         TestSource = '00/a2/C3DAnimationInfoCAnimationData_CAnimationData_00a2d5f0_test.cpp'
         PassPattern = '00a2d5f0_TEST PASS'
-    }
-    [pscustomobject]@{
-        Address = '00692230'
-        Module = 'NCreatureAction::CActionEventExplosion'
-        Source = '00/69/NCreatureActionCActionEventExplosion_CActionEventExplosion_00692230.cpp'
-        TestSource = '00/69/NCreatureActionCActionEventExplosion_CActionEventExplosion_00692230_test.cpp'
-        PassPattern = '00692230_TEST PASS'
-    }
-    [pscustomobject]@{
-        Address = '006922c0'
-        Module = 'NCreatureAction::CActionEventRemoveObject'
-        Source = '00/69/NCreatureActionCActionEventRemoveObject_CActionEventRemoveObject_006922c0.cpp'
-        TestSource = '00/69/NCreatureActionCActionEventRemoveObject_CActionEventRemoveObject_006922c0_test.cpp'
-        PassPattern = '006922c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009a4140'
@@ -375148,6 +375120,104 @@ $catalog = @(
         Source = '00/ca/CBaseVideoRenderer_CBaseVideoRenderer_00ca7310.cpp'
         TestSource = '00/ca/CBaseVideoRenderer_CBaseVideoRenderer_00ca7310_test.cpp'
         PassPattern = '00ca7310_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0087bbc0'
+        Module = 'NCameraModes::CScriptedControl'
+        Source = '00/87/NCameraModesCScriptedControl_Update_0087bbc0.cpp'
+        TestSource = '00/87/NCameraModesCScriptedControl_Update_0087bbc0_test.cpp'
+        PassPattern = '0087bbc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008b74a0'
+        Module = 'CCreatureAction_LeapLong'
+        Source = '00/8b/CCreatureActionLeapLong_FinishAction_008b74a0.cpp'
+        TestSource = '00/8b/CCreatureActionLeapLong_FinishAction_008b74a0_test.cpp'
+        PassPattern = '008b74a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c0b10'
+        Module = 'CCreatureAction_WhisperSommersaultForward'
+        Source = '00/8c/CCreatureActionWhisperSommersaultForward_FinishAction_008c0b10.cpp'
+        TestSource = '00/8c/CCreatureActionWhisperSommersaultForward_FinishAction_008c0b10_test.cpp'
+        PassPattern = '008c0b10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d6710'
+        Module = 'NCreatureMode::CModeUnderground'
+        Source = '00/8d/NCreatureModeCModeUnderground_OnDeactivate_008d6710.cpp'
+        TestSource = '00/8d/NCreatureModeCModeUnderground_OnDeactivate_008d6710_test.cpp'
+        PassPattern = '008d6710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008dbb00'
+        Module = 'NCreatureMode::CModeDragonFireBeam'
+        Source = '00/8d/NCreatureModeCModeDragonFireBeam_OnDeactivate_008dbb00.cpp'
+        TestSource = '00/8d/NCreatureModeCModeDragonFireBeam_OnDeactivate_008dbb00_test.cpp'
+        PassPattern = '008dbb00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0090f740'
+        Module = 'CAIStateGroup_MinionSitOnSeatBase'
+        Source = '00/90/CAIStateGroupMinionSitOnSeatBase_Update_0090f740.cpp'
+        TestSource = '00/90/CAIStateGroupMinionSitOnSeatBase_Update_0090f740_test.cpp'
+        PassPattern = '0090f740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00913f00'
+        Module = 'CAIStateGroup_BirdFlyToFood'
+        Source = '00/91/CAIStateGroupBirdFlyToFood_Update_00913f00.cpp'
+        TestSource = '00/91/CAIStateGroupBirdFlyToFood_Update_00913f00_test.cpp'
+        PassPattern = '00913f00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a3ebc0'
+        Module = 'CSoundManagerLH'
+        Source = '00/a3/CSoundManagerLH_StopAllSounds_00a3ebc0.cpp'
+        TestSource = '00/a3/CSoundManagerLH_StopAllSounds_00a3ebc0_test.cpp'
+        PassPattern = '00a3ebc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a75e00'
+        Module = 'CNavQuadTreeNode'
+        Source = '00/a7/CNavQuadTreeNode_RemoveNeighbours_00a75e00.cpp'
+        TestSource = '00/a7/CNavQuadTreeNode_RemoveNeighbours_00a75e00_test.cpp'
+        PassPattern = '00a75e00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b23cb0'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_GetEditorAnimation_00b23cb0.cpp'
+        TestSource = '00/b2/CEngine_GetEditorAnimation_00b23cb0_test.cpp'
+        PassPattern = '00b23cb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004d9861'
+        Module = 'CFireheartMinigameDef'
+        Source = '00/4d/CFireheartMinigameDef_CFireheartMinigameDef_004d9861.cpp'
+        TestSource = '00/4d/CFireheartMinigameDef_CFireheartMinigameDef_004d9861_test.cpp'
+        PassPattern = '004d9861_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00692230'
+        Module = 'NCreatureAction::CActionEventExplosion'
+        Source = '00/69/NCreatureActionCActionEventExplosion_CActionEventExplosion_00692230.cpp'
+        TestSource = '00/69/NCreatureActionCActionEventExplosion_CActionEventExplosion_00692230_test.cpp'
+        PassPattern = '00692230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006922c0'
+        Module = 'NCreatureAction::CActionEventRemoveObject'
+        Source = '00/69/NCreatureActionCActionEventRemoveObject_CActionEventRemoveObject_006922c0.cpp'
+        TestSource = '00/69/NCreatureActionCActionEventRemoveObject_CActionEventRemoveObject_006922c0_test.cpp'
+        PassPattern = '006922c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e1440'
+        Module = 'std::vector<CTVertexRHWColSpecTex1>'
+        Source = '00/9e/stdvectorCTVertexRHWColSpecTex1_erase_009e1440.cpp'
+        TestSource = '00/9e/stdvectorCTVertexRHWColSpecTex1_erase_009e1440_test.cpp'
+        PassPattern = '009e1440_TEST PASS'
     }
 )
 

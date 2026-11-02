@@ -1,0 +1,1 @@
+1	if (MoveToSeatAndSitDown(3)) while (DoNothing()==4 && IsStateGroupStillValid()); Terminate()	RELOCATION_MATCH

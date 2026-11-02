@@ -1,0 +1,2 @@
+1	sibling CModeGuildmasterPowerUpHeal::OnDeactivate model + private KillBeamEffect call	RELOCATION_MATCH
+2	CClass on engine/CBaseObject.h + CClass.h layout-rename	RELOCATION_MATCH

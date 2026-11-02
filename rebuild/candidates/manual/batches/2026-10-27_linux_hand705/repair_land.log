@@ -1,0 +1,17 @@
+addr       parity           behav  name
+004d9861   RELOCATION_MATCH PASS   ~CFireheartMinigameDef
+00692230   RELOCATION_MATCH PASS   CActionEventExplosion
+006922c0   RELOCATION_MATCH PASS   CActionEventRemoveObject
+009e1440   MATCH            PASS   erase
+
+WINS: 4
+  004d9861 RELOCATION_MATCH CFireheartMinigameDef::??1CFireheartMinigameDef@@UAE@XZ
+  00692230 RELOCATION_MATCH NCreatureAction::CActionEventExplosion::??0CActionEventExplosion@NCreatureAction@@QAE@XZ
+  006922c0 RELOCATION_MATCH NCreatureAction::CActionEventRemoveObject::??0CActionEventRemoveObject@NCreatureAction@@QAE@XZ
+  009e1440 MATCH std::vector<CTVertexRHWColSpecTex1>::?erase@?$vector@VCTVertexRHWColSpecTex1@@V?$allocator@VCTVertexRHWColSpecTex1@@@std@@@std@@QAEPAVCTVertexRHWColSpecTex1@@PAV3@0@Z
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CFireheartMinigameDef_CFireheartMinigameDef_004d9861
+  NCreatureActionCActionEventExplosion_CActionEventExplosion_00692230
+  NCreatureActionCActionEventRemoveObject_CActionEventRemoveObject_006922c0
+  stdvectorCTVertexRHWColSpecTex1_erase_009e1440

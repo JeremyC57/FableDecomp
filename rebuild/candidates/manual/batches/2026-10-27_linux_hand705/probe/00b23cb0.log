@@ -1,0 +1,3 @@
+1	index local + inline bank object	DIFFER(34v34) arg store before ecx loads
+2	one nested expression	DIFFER(34v34) same
+3	named const CMeshDataBank* bank local	RELOCATION_MATCH

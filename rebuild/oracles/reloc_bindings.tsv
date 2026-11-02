@@ -3617,9 +3617,7 @@ _g_f	013ba8b1	0068cb70
 ?IsEventButtonHeld@PhotoCapture@PhotoInput@@IBE_NABUInputEvent@2@@Z	00687a90	00691ae0
 ?IsEventGameAction@PhotoCapture@PhotoInput@@QBE_NW4EGameAction@2@ABUInputEvent@2@@Z	00687cf0	00691ae0
 ??_7CActionEventTriggerParticle@NCreatureAction@@6B@	0125c0d8	00692120
-??_7CActionEventExplosion@NCreatureAction@@6B@	0125c154	00692230
 ??_7CActionEventAddObject@NCreatureAction@@6B@	0125c178	00692270
-??_7CActionEventRemoveObject@NCreatureAction@@6B@	0125c1a0	006922c0
 ?RegisterAction@ActionRegistrar@@QAEXHPAX@Z	006f9720	00692380
 _GetActionRegistrar	006f90b0	00692380
 ?AnimHasEvent@CAnimManager_Calls@@QAE_NKABVCCharString@@@Z	006f9720	006923a0
@@ -35317,3 +35315,9 @@ _z_inflateEnd	00c038d0	00a3acc0
 ??_7CBaseVideoRenderer@@6BIBaseFilter@@@	012bf598	00ca7310
 ??_7CBaseVideoRenderer@@6BIQualProp@@@	012bf560	00ca7310
 ??_7CBaseVideoRenderer@@6BIQualityControl@@@	012bf54c	00ca7310
+?RevertOldTargetFlags@NCreatureMode@@YIXAAVCThing@@W4ETargetingType@@@Z	0085f880	008d6710
+?KillBeamEffect@CModeDragonFireBeam@NCreatureMode@@AAEXXZ	008dba90	008dbb00
+?MoveToSeatAndSitDown@CAIStateGroup_UsesSeat@@IAE_NW4EMovementType@@@Z	009387c0	0090f740
+?SetupEditorAnimation@CEngineResourceManager@@QAEKABVCWideString@@@Z	00b3bc90	00b23cb0
+??_7CActionEventExplosion@NCreatureAction@@6B@	0125c154	00692230
+??_7CActionEventRemoveObject@NCreatureAction@@6B@	0125c1a0	006922c0

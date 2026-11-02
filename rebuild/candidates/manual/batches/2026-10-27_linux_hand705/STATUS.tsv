@@ -1,0 +1,15 @@
+address	status	bytes	test	note
+0087bbc0	MATCH	11v11	PASS	NCameraModes::CScriptedControl::Update (vtable 0x0125C58C slot 1; Ego_r+FableWin); 1 probe
+008b74a0	RELOCATION_MATCH	47v47	PASS	CCreatureAction_LeapLong::FinishAction (slot 4; both PDBs); HasTC/RemoveTC(77 = CTCSolidToThing); 3 probes
+008c0b10	RELOCATION_MATCH	47v47	PASS	CCreatureAction_WhisperSommersaultForward::FinishAction (byte twin of 0x008B74A0, own vtable 0x01296754 slot 4); 3 probes
+008d6710	RELOCATION_MATCH	38v38	PASS	NCreatureMode::CModeUnderground::OnDeactivate (slot 6; both PDBs); 2 probes
+008dbb00	RELOCATION_MATCH	33v33	PASS	NCreatureMode::CModeDragonFireBeam::OnDeactivate (slot 6; both PDBs); 2 probes
+0090f740	RELOCATION_MATCH	47v47	PASS	CAIStateGroup_MinionSitOnSeatBase::Update (MAE, slot 12, inherited by 5 derived vtables); 1 probe
+00913f00	RELOCATION_MATCH	35v35	PASS	CAIStateGroup_BirdFlyToFood::Update (slot 12; both PDBs); 1 probe
+00a3ebc0	MATCH	41v41	PASS	CSoundManagerLH::StopAllSounds -- DESCRIPTIVE (slot 16 of CSoundManagerLH vtable 0x0129D2C4; catalog CNavigatorManager label wrong); extent ok (int3 to 0x00A3EBF0); 2 probes
+00a75e00	MATCH	36v36	PASS	CNavQuadTreeNode::RemoveNeighbours (MAE, slot 19; Ego_r donor order); extent ok (int3 to 0x00A75E30); 1 probe
+00b23cb0	RELOCATION_MATCH	34v34	PASS	CEngine::GetEditorAnimation (slot 35; Ego_r); named const bank local; 3 probes
+00692230	RELOCATION_MATCH	30v30	PASS	REPAIR: landed DIFFER(40v30) was the missing Leaf (??_G graded), not an EH frame; real CActionEventBase members
+006922c0	RELOCATION_MATCH	30v30	PASS	REPAIR: same cause as 0x00692230 (??_GCActionEventRemoveObject graded)
+004d9861	RELOCATION_MATCH	33v33	PASS	REPAIR: ~CFireheartMinigameDef (implicit dtor, vtable 0x0123E584 via ??_G 0x004D9845); invented class replaced; size-optimised TU
+009e1440	MATCH	79v79	PASS	REPAIR: std::vector<CTVertexRHWColSpecTex1>::erase (STLport); July-era test replaced (TCC_FAIL); CopyBlock label wrong

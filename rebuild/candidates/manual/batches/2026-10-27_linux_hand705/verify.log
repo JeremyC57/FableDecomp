@@ -1,0 +1,41 @@
+addr       parity           behav  name
+0087bbc0   MATCH            PASS   Update
+008b74a0   RELOCATION_MATCH PASS   FinishAction
+008c0b10   RELOCATION_MATCH PASS   FinishAction
+008d6710   RELOCATION_MATCH PASS   OnDeactivate
+008dbb00   RELOCATION_MATCH PASS   OnDeactivate
+0090f740   RELOCATION_MATCH PASS   Update
+00913f00   WARN SHARED_HEADER_AVAILABLE CWorld
+00913f00   WARN RELOC_NAME: ?AIAction_RandomFlyToPos@CAIStateGroup_FlyingThingBase@@IAE?AW4EAIActionReturn@@ABVC3DVector@@@Z -> 009130d0 labelled 'CAIStateGroup_FlyingThingBase::ExecuteFlyingPath'
+00913f00   RELOCATION_MATCH PASS   Update
+00a3ebc0   MATCH            PASS   StopAllSounds
+00a75e00   MATCH            PASS   RemoveNeighbours
+00b23cb0   WARN SHARED_HEADER_AVAILABLE CMeshDataBank
+00b23cb0   WARN SHARED_HEADER_AVAILABLE CEngineResourceManager
+00b23cb0   WARN SHARED_HEADER_AVAILABLE CEngine
+00b23cb0   WARN RELOC_NAME: ?SetupEditorAnimation@CEngineResourceManager@@QAEKABVCWideString@@@Z -> 00b3bc90 labelled 'CEngine::GetEditorAnimation'
+00b23cb0   RELOCATION_MATCH PASS   GetEditorAnimation
+
+WINS: 10
+  0087bbc0 MATCH NCameraModes::CScriptedControl::?Update@CScriptedControl@NCameraModes@@UAEXXZ
+  008b74a0 RELOCATION_MATCH CCreatureAction_LeapLong::?FinishAction@CCreatureAction_LeapLong@@UAEXXZ
+  008c0b10 RELOCATION_MATCH CCreatureAction_WhisperSommersaultForward::?FinishAction@CCreatureAction_WhisperSommersaultForward@@UAEXXZ
+  008d6710 RELOCATION_MATCH NCreatureMode::CModeUnderground::?OnDeactivate@CModeUnderground@NCreatureMode@@UAEXXZ
+  008dbb00 RELOCATION_MATCH NCreatureMode::CModeDragonFireBeam::?OnDeactivate@CModeDragonFireBeam@NCreatureMode@@UAEXXZ
+  0090f740 RELOCATION_MATCH CAIStateGroup_MinionSitOnSeatBase::?Update@CAIStateGroup_MinionSitOnSeatBase@@MAEXXZ
+  00913f00 RELOCATION_MATCH CAIStateGroup_BirdFlyToFood::?Update@CAIStateGroup_BirdFlyToFood@@UAEXXZ
+  00a3ebc0 MATCH CSoundManagerLH::?StopAllSounds@CSoundManagerLH@@UAEXXZ
+  00a75e00 MATCH CNavQuadTreeNode::?RemoveNeighbours@CNavQuadTreeNode@@MAEXXZ
+  00b23cb0 RELOCATION_MATCH CEngine::?GetEditorAnimation@CEngine@@UBEPBVC3DAnimationInfo@@ABVCWideString@@@Z
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  NCameraModesCScriptedControl_Update_0087bbc0
+  CCreatureActionLeapLong_FinishAction_008b74a0
+  CCreatureActionWhisperSommersaultForward_FinishAction_008c0b10
+  NCreatureModeCModeUnderground_OnDeactivate_008d6710
+  NCreatureModeCModeDragonFireBeam_OnDeactivate_008dbb00
+  CAIStateGroupMinionSitOnSeatBase_Update_0090f740
+  CAIStateGroupBirdFlyToFood_Update_00913f00
+  CSoundManagerLH_StopAllSounds_00a3ebc0
+  CNavQuadTreeNode_RemoveNeighbours_00a75e00
+  CEngine_GetEditorAnimation_00b23cb0

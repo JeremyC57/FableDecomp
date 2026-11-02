@@ -1,0 +1,1 @@
+1	FrameLastFoundFood = PeekWorld().GetFrame() (static through the object expression); AIAction_RandomFlyToPos(FoodPos); Terminate()	RELOCATION_MATCH
