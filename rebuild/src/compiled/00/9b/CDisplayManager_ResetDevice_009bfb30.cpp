@@ -160,8 +160,10 @@ class CDisplayManager { public:
     unsigned long CalculateD3DPresentationInterval(const CPresentationIntervalDesc& desc);   // 0x009BE2D0
     bool SetupDepthAndBackBufferTextures();        // 0x009BEE40
     void SetViewport(const C2DBoxI& box);          // 0x009BEF80
+private:
     void PreDeviceReset();                         // 0x009BF500
     bool PostDeviceReset();                        // 0x009BF550
+public:
     ECreateDeviceResult ResetDevice(const CCreateDeviceParameters& params);
 };
 

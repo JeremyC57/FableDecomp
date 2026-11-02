@@ -1,0 +1,1 @@
+1	GetRegionEntranceName shape (named first world-map local, nested outer calls) + CRegion layout-rename + local CWorldMap (RTTI bases, slots 0..19, 0xD8)	RELOCATION_MATCH (75v75)

@@ -1,7 +1,7 @@
 // CDisplayManager::PostDeviceReset() -- re-initialise the render manager on the recreated device when one is in use, give every registered device-reset callback a chance to veto, then tell the system manager
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009BF550, length 78 bytes.
 // Callees: CRenderManagerCore::Init(IDirect3DDevice9*) @ 0x00A0A940 (on PRenderManager), virtual slot 1 of each CDeviceResetCallback
-// (bool OnDeviceReset), the system manager's device-reset hook @ 0x009A52C0 (manifest label "CThingFilter_IsUnconscious::operator()" is propagated).
+// (bool OnDeviceReset), CSystemManager::OnPostDeviceReset @ 0x009A52C0 (PDB ?OnPostDeviceReset@CSystemManager@@QAE_NXZ; result unused).
 // PDB CDisplayManager (748 bytes): SystemManager +4, PRenderManager +8, D3DDevice +0x58, UsingRenderManager +0x1b0,
 // DeviceResetCallbacks (VC6 Dinkumware list<CDeviceResetCallback*>, one sentinel pointer) +0x264.
 // Shape: the list walk keeps the node in esi and re-reads the sentinel from the member after every virtual call (`cmp esi,[edi+264h]`;
@@ -14,7 +14,7 @@ struct CRenderManagerCore {
 };
 
 class CSystemManager { public:
-    void OnDisplayDeviceReset();                       // 0x009A52C0
+    bool OnPostDeviceReset();                          // 0x009A52C0
 };
 
 class CDeviceResetCallback { public:
@@ -37,6 +37,7 @@ class CDisplayManager { public:
     bool                UsingRenderManager;            // +0x1b0
     unsigned char       _pad1b1[0x264 - 0x1b1];
     CRetailCallbackList DeviceResetCallbacks;          // +0x264
+private:
     bool PostDeviceReset();
 };
 
@@ -48,6 +49,6 @@ bool CDisplayManager::PostDeviceReset()
         if (!n->value->OnDeviceReset())
             return false;
     }
-    SystemManager->OnDisplayDeviceReset();
+    SystemManager->OnPostDeviceReset();
     return true;
 }

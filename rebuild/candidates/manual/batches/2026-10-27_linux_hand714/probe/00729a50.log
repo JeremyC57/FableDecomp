@@ -1,0 +1,1 @@
+1	user dtor { RemoveFromGlobalTCs(); } on engine/CTCBase.h retail branch (hdr overlay) + fable_string.h CCharString + local CIntelligentPointer<CThing>	RELOCATION_MATCH (54v54)

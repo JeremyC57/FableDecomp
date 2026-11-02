@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00729a50	RELOCATION_MATCH	54v54	PASS	??1CTCActionUseScriptedHook@@UAE@XZ; user dtor { RemoveFromGlobalTCs(); }; engine/CTCBase.h retail branch
+00729ca0	RELOCATION_MATCH	75v75	PASS	?GetRegionEntranceDisplayName@CTCActionUseScriptedHook@@QBEABVCCharString@@XZ; needs hdr/ CTCBase.h overlay (PeekWorldMap)
+007a66f0	RELOCATION_MATCH	79v79	PASS	??1CTCGraphicAppearanceReplaceableMesh@NGraphicAppearance@@UAE@XZ; namespace added
+007cf0b0	RELOCATION_MATCH	86v86	PASS	??1CTCCreatureTintEffect@@UAE@XZ; catalog said ~CTCGraphicAppearanceReplaceableMesh
+007e1510	RELOCATION_MATCH	95v95	PASS	??1CTCGraphicAppearanceMultipleStaticMeshes@NGraphicAppearance@@UAE@XZ; catalog said ~CTCGraphicAppearanceReplaceableMesh
+007adaa0	RELOCATION_MATCH	73v73	PASS	??1CTCAIScratchpad@@UAE@XZ; implicit dtor; catalog said ~CTCTargetingBase
+009bf500	RELOCATION_MATCH	66v66	PASS	?PreDeviceReset@CDisplayManager@@AAEXXZ; private (landed caller spells QAE)
+00a628d0	RELOCATION_MATCH	79v79	PASS	??1CShaderBankEntry@@UAE@XZ; implicit dtor; catalog said CEnginePrimitiveRenderer::ResetVisibilityRatios
+00aa4170	RELOCATION_MATCH	75v75	PASS	??1C3DAnimationManager@@UAE@XZ; implicit dtor; needs hdr/ CSimpleMemoryPool.h overlay (FABLE_RETAIL_CSIMPLEMEMORYPOOL)
+00e01710	RELOCATION_MATCH	65v65	PASS	??1CDarkwoodTrader@CQ_TraderEscortScript@NScript@@UAE@XZ; implicit dtor; nested class

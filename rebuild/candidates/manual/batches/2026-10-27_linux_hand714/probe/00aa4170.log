@@ -1,0 +1,1 @@
+1	implicit dtor emitted by defining the PDB ctor; engine/CSimpleMemoryPool.h retail opt-in (hdr overlay, inline virtual dtor { ClearMemoryBlocks(); }), STLport vector under CArray	RELOCATION_MATCH (75v75)

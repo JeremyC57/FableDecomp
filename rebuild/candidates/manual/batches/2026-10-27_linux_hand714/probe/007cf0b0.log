@@ -1,0 +1,1 @@
+1	user empty dtor on engine/CTCBase.h + engine/CDefPointer.h, real STLport 4.6 vector<CIntelligentPointer<CThing> > (_Destroy loop, _Vector_base free)	RELOCATION_MATCH (86v86)

@@ -1,0 +1,1 @@
+1	PDB private member; boost::scoped_ptr get()/operator->, real STLport 4.6 list begin()/end() iterator loop, local CDisplayManager model (opaque members to 0x2C8)	RELOCATION_MATCH (66v66)

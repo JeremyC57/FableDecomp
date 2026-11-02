@@ -19,6 +19,10 @@
 // Retail opt-in addition (chunk 712): the public non-virtual RemoveFromGlobalTCs 0x00686DF0 (Ego_r.pdb / FableWin.pdb
 // ?RemoveFromGlobalTCs@CTCBase@@QAEXXZ; the landed body 0x00686DF0; called first in the user dtors of CTCPhotojournalCapture
 // 0x0055D590, CTCBoastUI 0x0056AC80, CTCRegionDisplay 0x0063A230). A declaration only: no layout or vtable change.
+// Retail opt-in addition (chunk 714): the protected non-virtual PeekWorldMap 0x00686D20 (Ego_r.pdb 0x006B2110 / FableWin.pdb 0x021914E0
+// ?PeekWorldMap@CTCBase@@IBEABVCWorldMap@@XZ; the retail run PeekWorldMap 0x00686D20 / RemoveFromGlobalTCs 0x00686DF0 / AddToGlobalTCs
+// 0x00686ED0 follows the PDB order 0x006B2110 / 0x006B21B0 / 0x006B2420; called by CTCActionUseScriptedHook::GetRegionEntranceName
+// 0x00729C50 / GetRegionEntranceDisplayName 0x00729CA0). A declaration only: no layout or vtable change.
 #ifdef FABLE_RETAIL_CTCBASE
 #include <stddef.h>
 #include "rebuild_abi.h"
@@ -29,6 +33,7 @@ class CPersistContext;
 class CTCParamsBase;
 class CThing;
 class CThingManager;
+class CWorldMap;
 namespace NTCMessages { class CMessageBase; }
 enum ETCInterfaceType;                                                   // MS forward enum (the row defines the enumerators it uses)
 
@@ -68,6 +73,7 @@ public:
     void RemoveFromGlobalTCs();                                          // 0x00686DF0 ?RemoveFromGlobalTCs@CTCBase@@QAEXXZ (chunk 712)
 protected:
     const CThingManager& GetThingManager() const;                        // 0x00686AF0 ?GetThingManager@CTCBase@@IBEABVCThingManager@@XZ
+    const CWorldMap& PeekWorldMap() const;                               // 0x00686D20 ?PeekWorldMap@CTCBase@@IBEABVCWorldMap@@XZ (chunk 714)
 public:
     CThing* ParentThing;                                                 // +0x04
     bool    ToBeRemoved;                                                 // +0x08

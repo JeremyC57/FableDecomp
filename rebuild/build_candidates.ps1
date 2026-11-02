@@ -375705,6 +375705,76 @@ $catalog = @(
         TestSource = '01/22/NProfileTimer_dynamicatexitdestructorforLogFile_0122a790_test.cpp'
         PassPattern = '0122a790_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00729a50'
+        Module = 'CTCActionUseScriptedHook'
+        Source = '00/72/CTCActionUseScriptedHook_CTCActionUseScriptedHook_00729a50.cpp'
+        TestSource = '00/72/CTCActionUseScriptedHook_CTCActionUseScriptedHook_00729a50_test.cpp'
+        PassPattern = '00729a50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00729ca0'
+        Module = 'CTCActionUseScriptedHook'
+        Source = '00/72/CTCActionUseScriptedHook_GetRegionEntranceDisplayName_00729ca0.cpp'
+        TestSource = '00/72/CTCActionUseScriptedHook_GetRegionEntranceDisplayName_00729ca0_test.cpp'
+        PassPattern = '00729ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a66f0'
+        Module = 'NGraphicAppearance::CTCGraphicAppearanceReplaceableMesh'
+        Source = '00/7a/NGraphicAppearanceCTCGraphicAppearanceReplaceableMesh_CTCGraphicAppearanceReplaceableMesh_007a66f0.cpp'
+        TestSource = '00/7a/NGraphicAppearanceCTCGraphicAppearanceReplaceableMesh_CTCGraphicAppearanceReplaceableMesh_007a66f0_test.cpp'
+        PassPattern = '007a66f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007adaa0'
+        Module = 'CTCAIScratchpad'
+        Source = '00/7a/CTCAIScratchpad_CTCAIScratchpad_007adaa0.cpp'
+        TestSource = '00/7a/CTCAIScratchpad_CTCAIScratchpad_007adaa0_test.cpp'
+        PassPattern = '007adaa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007cf0b0'
+        Module = 'CTCCreatureTintEffect'
+        Source = '00/7c/CTCCreatureTintEffect_CTCCreatureTintEffect_007cf0b0.cpp'
+        TestSource = '00/7c/CTCCreatureTintEffect_CTCCreatureTintEffect_007cf0b0_test.cpp'
+        PassPattern = '007cf0b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007e1510'
+        Module = 'NGraphicAppearance::CTCGraphicAppearanceMultipleStaticMeshes'
+        Source = '00/7e/NGraphicAppearanceCTCGraphicAppearanceMultipleStaticMeshes_CTCGraphicAppearanceMultipleStaticMeshes_007e1510.cpp'
+        TestSource = '00/7e/NGraphicAppearanceCTCGraphicAppearanceMultipleStaticMeshes_CTCGraphicAppearanceMultipleStaticMeshes_007e1510_test.cpp'
+        PassPattern = '007e1510_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009bf500'
+        Module = 'CDisplayManager'
+        Source = '00/9b/CDisplayManager_PreDeviceReset_009bf500.cpp'
+        TestSource = '00/9b/CDisplayManager_PreDeviceReset_009bf500_test.cpp'
+        PassPattern = '009bf500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a628d0'
+        Module = 'CShaderBankEntry'
+        Source = '00/a6/CShaderBankEntry_CShaderBankEntry_00a628d0.cpp'
+        TestSource = '00/a6/CShaderBankEntry_CShaderBankEntry_00a628d0_test.cpp'
+        PassPattern = '00a628d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aa4170'
+        Module = 'C3DAnimationManager'
+        Source = '00/aa/C3DAnimationManager_C3DAnimationManager_00aa4170.cpp'
+        TestSource = '00/aa/C3DAnimationManager_C3DAnimationManager_00aa4170_test.cpp'
+        PassPattern = '00aa4170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e01710'
+        Module = 'NScript::CQ_TraderEscortScript::CDarkwoodTrader'
+        Source = '00/e0/NScriptCQTraderEscortScriptCDarkwoodTrader_CDarkwoodTrader_00e01710.cpp'
+        TestSource = '00/e0/NScriptCQTraderEscortScriptCDarkwoodTrader_CDarkwoodTrader_00e01710_test.cpp'
+        PassPattern = '00e01710_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

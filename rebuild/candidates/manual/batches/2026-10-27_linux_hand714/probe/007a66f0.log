@@ -1,0 +1,1 @@
+1	user dtor with the landed CTCLook unregister body on engine/CTCBase.h + engine/CDefPointer.h, local CAGraphicAppearanceComponent (5 slots, inline non-virtual dtor), CThing opaque 0x98	RELOCATION_MATCH (79v79)

@@ -7278,7 +7278,7 @@ __imp__GetWindowRect@8	01440308	009bed10
 ?g_CSurfaceVTable@@3PAPAXA	0122f84c	009bf350
 ?g_DisplayRenderingEnabled@@3PAXA	013ca810	009bf350
 ?Init@CRenderManagerCore@@QAEXPAUIDirect3DDevice9@@@Z	00a0a940	009bf550
-?OnDisplayDeviceReset@CSystemManager@@QAEXXZ	009a52c0	009bf550
+?OnPostDeviceReset@CSystemManager@@QAE_NXZ	009a52c0	009bf550
 ?ResetDevice@CDisplayManager@@QAE?AW4ECreateDeviceSuccess@@PAUCCreateDeviceParameters@@@Z	009bfb30	009bfe70
 ?ChangePresentationInterval@CDisplayManager@@QAEXABUCPresentationIntervalDesc@@@Z	009bfe70	009bff10
 @FableBaseDtor_009c1ac0@4	0099b510	009c1ac0
@@ -15734,8 +15734,8 @@ __imp__ConvertThreadToFiber@4	0143fd68	009a6610
 ?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ	007e7360	00e11dc0
 ?CalculateD3DPresentationInterval@CDisplayManager@@QAEKABUCPresentationIntervalDesc@@@Z	009be2d0	009bfb30
 ?InitialiseFromPreallocatedSurface@CSurface@@QAEXPAUIDirect3DSurface9@@_N@Z	009f2ec0	009bfb30
-?PostDeviceReset@CDisplayManager@@QAE_NXZ	009bf550	009bfb30
-?PreDeviceReset@CDisplayManager@@QAEXXZ	009bf500	009bfb30
+?PostDeviceReset@CDisplayManager@@AAE_NXZ	009bf550	009bfb30
+?PreDeviceReset@CDisplayManager@@AAEXXZ	009bf500	009bfb30
 ?SetupDepthAndBackBufferTextures@CDisplayManager@@QAE_NXZ	009bee40	009bfb30
 __TI1?AUCD3DFailure@@	013692f8	009bfb30
 ?SetRotationAngle@CTCGraphicAppearanceSprite@@QAEXM@Z	0077c490	007032f0
@@ -35346,3 +35346,6 @@ _z_inflateEnd	00c038d0	00a3acc0
 ?Uninitialise@CInitBaseClass@@IAEXXZ	0099a360	009f4950
 ?KillAllDecalEmitters@CPSCUpdateNormal@NParticleEngine@@IAEXXZ	00b0c730	00b0ca90
 ?clear@?$_List_base@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@V?$allocator@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@std@@QAEXXZ	00b0f630	00b0ca90
+?OnPreDeviceReset@CSystemManager@@QAEXXZ	009a52b0	009bf500
+?OnPreDeviceReset@CVsyncCallbackTimer@@QAEXXZ	009f73a0	009bf500
+?Uninit@CRenderManagerCore@@QAEXXZ	00a0a9d0	009bf500
