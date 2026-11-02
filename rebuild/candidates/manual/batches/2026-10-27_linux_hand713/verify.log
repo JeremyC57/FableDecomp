@@ -1,0 +1,22 @@
+0049ba20   RELOCATION_MATCH PASS   Uninitialise
+00681850   WARN RELOC_UNCHECKED: no object block of the retail length (multi-block TU)
+00681850   RELOCATION_MATCH PASS   IsFactionEnemyToHeroOverriddenOnOpinion
+00702a50   RELOCATION_MATCH PASS   ~CTCQuestCard
+008e3720   RELOCATION_MATCH PASS   ~CModeJackOfBladesFlash
+008e37c0   RELOCATION_MATCH PASS   ~CModeScorpionKingTailPlunge
+00cb6e60   RELOCATION_MATCH PASS   _M_clear
+00e32310   RELOCATION_MATCH PASS   ~CV_AmbushScamScript
+00e398a0   RELOCATION_MATCH PASS   ~CV_AssassinAttacksScript
+00e542b0   RELOCATION_MATCH PASS   ~CV_BeardyBaldyScript
+00ed39f0   RELOCATION_MATCH PASS   ~CV_SingingStonesScript
+WINS: 10
+  0049ba20 RELOCATION_MATCH CFrameRateSmoother::?Uninitialise@CFrameRateSmoother@@QAEXXZ
+  00681850 RELOCATION_MATCH CTCCreatureOpinionOfHero::?IsFactionEnemyToHeroOverriddenOnOpinion@CTCCreatureOpinionOfHero@@QBE_NXZ
+  00702a50 RELOCATION_MATCH CTCQuestCard::??1CTCQuestCard@@UAE@XZ
+  008e3720 RELOCATION_MATCH NCreatureMode::CModeJackOfBladesFlash::??1CModeJackOfBladesFlash@NCreatureMode@@UAE@XZ
+  008e37c0 RELOCATION_MATCH NCreatureMode::CModeScorpionKingTailPlunge::??1CModeScorpionKingTailPlunge@NCreatureMode@@UAE@XZ
+  00cb6e60 RELOCATION_MATCH std::vector<pair<CCharString, CScriptInfo> >::?_M_clear@?$vector@U?$pair@VCCharString@@VCScriptInfo@@@std@@V?$allocator@U?$pair@VCCharString@@VCScriptInfo@@@std@@@2@@std@@IAEXXZ
+  00e32310 RELOCATION_MATCH NScript::CV_AmbushScamScript::??1CV_AmbushScamScript@NScript@@UAE@XZ
+  00e398a0 RELOCATION_MATCH NScript::CV_AssassinAttacksScript::??1CV_AssassinAttacksScript@NScript@@UAE@XZ
+  00e542b0 RELOCATION_MATCH NScript::CV_BeardyBaldyScript::??1CV_BeardyBaldyScript@NScript@@UAE@XZ
+  00ed39f0 RELOCATION_MATCH NScript::CV_SingingStonesScript::??1CV_SingingStonesScript@NScript@@UAE@XZ

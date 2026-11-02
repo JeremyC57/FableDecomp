@@ -1,0 +1,2 @@
+probe	lever	grade
+1	CModeJackOfBladesFlash on the chunk-710 CModeStandBase retail opt-in model (CAnimFilterOfGroup Filter +0x70, three CIntelligentPointer members +0x80/+0x88/+0x90), PDB ctor defined for emission (p1 = src)	RELOCATION_MATCH 59v59; objdump -r: 3x ??1CBaseIntelligentPointer, ??1CCharString, ??_7CAnimFilterBase, tail ??1CModeStandBase

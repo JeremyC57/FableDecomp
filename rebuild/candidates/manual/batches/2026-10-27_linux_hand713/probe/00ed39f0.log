@@ -1,0 +1,2 @@
+probe	lever	grade
+1	CV_SingingStonesScript, STLport vector<CScriptThing> (virtual element dtor through _Destroy) on engine/CScriptThing.h + engine/CCountedPointer.h, CCharString[4] +0x88 (= src)	RELOCATION_MATCH 89v89; objdump -r: ??1CCharString, _free, tail ??1CScriptBase

@@ -1,0 +1,2 @@
+probe	lever	grade
+1	CFrameRateSmoother::Uninitialise: if (IsValid()) Times.clear(); CInitBaseClass::Uninitialise(); with the real STLport erase/__copy_ptrs/__copy_trivial (= src)	RELOCATION_MATCH 65v65; objdump -r: ?IsValid@CInitBaseClass@@QBE_NXZ, _memmove, ?Uninitialise@CInitBaseClass@@IAEXXZ

@@ -1,0 +1,2 @@
+probe	lever	grade
+1	CV_AmbushScamScript on CLevelScriptBase<T> retail opt-in (implicit base dtor), inline ~CTimer = pDSTGame slot 88, CCharString[5] (p1 = src)	RELOCATION_MATCH 57v57; objdump -r: ??1CCharString, pDSTGame, tail ??1CScriptBase

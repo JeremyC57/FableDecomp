@@ -1,0 +1,2 @@
+probe	lever	grade
+1	CV_BeardyBaldyScript, CCharString[10] + CTimer + three strings, sizeof 0xA4 asserted (= src; the BeardyBaldyPhase enum later written as an empty unnamed enum, regraded)	RELOCATION_MATCH 81v81

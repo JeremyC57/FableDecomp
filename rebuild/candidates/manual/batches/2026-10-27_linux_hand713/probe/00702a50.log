@@ -1,0 +1,2 @@
+probe	lever	grade
+1	CTCQuestCard retail opt-in overlay (: CTCBase, CDefPointer PDef, five CCharStrings), PDB ctor defined (= src)	RELOCATION_MATCH 75v75; objdump -r: 5x ??1CCharString, call [eax+4], tail ??1CTCBase

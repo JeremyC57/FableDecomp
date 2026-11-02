@@ -23,6 +23,9 @@
 // ?PeekWorldMap@CTCBase@@IBEABVCWorldMap@@XZ; the retail run PeekWorldMap 0x00686D20 / RemoveFromGlobalTCs 0x00686DF0 / AddToGlobalTCs
 // 0x00686ED0 follows the PDB order 0x006B2110 / 0x006B21B0 / 0x006B2420; called by CTCActionUseScriptedHook::GetRegionEntranceName
 // 0x00729C50 / GetRegionEntranceDisplayName 0x00729CA0). A declaration only: no layout or vtable change.
+// Retail opt-in addition (chunk 713): the protected non-virtual PeekWorld 0x00686A80 (Ego_r.pdb 0x006B1E70 / FableWin.pdb 0x02190D60
+// ?PeekWorld@CTCBase@@IBEABVCWorld@@XZ; called by CTCCreatureOpinionOfHero::IsFactionEnemyToHeroOverriddenOnOpinion 0x00681850).
+// A declaration only: no layout or vtable change.
 #ifdef FABLE_RETAIL_CTCBASE
 #include <stddef.h>
 #include "rebuild_abi.h"
@@ -33,6 +36,7 @@ class CPersistContext;
 class CTCParamsBase;
 class CThing;
 class CThingManager;
+class CWorld;
 class CWorldMap;
 namespace NTCMessages { class CMessageBase; }
 enum ETCInterfaceType;                                                   // MS forward enum (the row defines the enumerators it uses)
@@ -73,6 +77,7 @@ public:
     void RemoveFromGlobalTCs();                                          // 0x00686DF0 ?RemoveFromGlobalTCs@CTCBase@@QAEXXZ (chunk 712)
 protected:
     const CThingManager& GetThingManager() const;                        // 0x00686AF0 ?GetThingManager@CTCBase@@IBEABVCThingManager@@XZ
+    const CWorld& PeekWorld() const;                                     // 0x00686A80 ?PeekWorld@CTCBase@@IBEABVCWorld@@XZ (Ego_r 0x006B1E70 + FableWin 0x02190D60; chunk 713)
     const CWorldMap& PeekWorldMap() const;                               // 0x00686D20 ?PeekWorldMap@CTCBase@@IBEABVCWorldMap@@XZ (chunk 714)
 public:
     CThing* ParentThing;                                                 // +0x04

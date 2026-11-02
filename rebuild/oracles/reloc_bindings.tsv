@@ -13210,7 +13210,7 @@ __CIasin	00bfedc4	009de2a0
 ?Release@CCountedPointer419108@@QAEXXZ	00419108	004175e5
 ?Release@CCountedPointer41915a@@QAEXXZ	0041915a	004175e5
 ?Set@CGameDefinitionManager@@SIXPAV1@@Z	0044c71f	004175e5
-?Shutdown@CEditWorld@@QAEXXZ	0049ba20	004175e5
+?Uninitialise@CFrameRateSmoother@@QAEXXZ	0049ba20	004175e5
 ?Shutdown@CSoundManager@@QAEXXZ	009918f0	004175e5
 ?StopMusic@CSoundManager@@QAEXXZ	00991750	004175e5
 ?UninitEventPackageLoading@CMainGameComponent@@QAEXXZ	004160a6	004175e5

@@ -1,0 +1,11 @@
+probe	lever	grade
+1	plain switch over the enum result, cases 6,12..17 return true, else return false	DIFFER(48v80): VC7.1 lowers 7 sparse cases to a compare chain
+2	all twelve cases 6..17 listed (7..11 return false), ParentThing and the manager as named locals	DIFFER(80v80): only `add eax,-6` v retail `sub eax,6` (3 bytes); table bytes and arm order already equal
+3	switch on (long) cast	DIFFER(80v80) same residue
+4	switch on (unsigned long) cast	DIFFER(80v80) same residue
+5	GetThingAttitudeToPlayer declared returning long	DIFFER(80v80) same residue
+6	named EOpinionAttitudeType local switched	DIFFER(80v80) same residue
+7	default: return false inside the switch	DIFFER(80v80) same residue
+8	result variable + break form	DIFFER(52v80): compare chain
+exp	tmp/exp/s1..s12 (one-file experiments, objdump of each variant): case order, default placement, const/reference locals, switch(g()-6), unsigned / char / short / enum (incl. 0xFFFFFFFF and negative enumerators), inline helper switch, if-range-then-switch, __assume default, /G5 /G6 /G7 /Oa /Ow /Op /Ob0 /Ob1 /Ox /Os /Ot /Og /Oi- /GS /EHsc /Zi /Z7 /arch:SSE(2) /QIfist /J /Za /Zp1 /Gy /GF, QFE 4035, /GL+LTCG (ltcg_grade.py), #pragma optimize variants	every optimised form gives `add eax,-N`; /Og- (frame + memory temps) gives `sub` but not retail's code; only `unsigned long i = v - 6; if (i > 11) return false; switch (i)` keeps `sub eax,6` (s11 d4, s12 e2)
+9	named unsigned index = attitude - 6, `if (index > 11) return false;`, 0-based switch, true arm first (= src)	RELOCATION_MATCH 80v80; objdump -r: table entry 0 = mov al,1 arm, entry 1 = xor al,al arm (retail 0x681885 / 0x681888); byte table equal

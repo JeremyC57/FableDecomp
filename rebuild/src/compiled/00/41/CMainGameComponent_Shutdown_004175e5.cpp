@@ -87,9 +87,9 @@ public:
     bool IsValid() const;                            // 0x0099A330
     void Uninitialise_004ae990();                             // 0x004AE990
 };
-class CEditWorld {
+class CFrameRateSmoother {
 public:
-    void Shutdown();                                 // 0x0049BA20
+    void Uninitialise();                             // 0x0049BA20
 };
 class CConsole {
 public:
@@ -119,7 +119,7 @@ public:
     CCountedPointer4057a0  ConsoleFont;              // +0x16144
     CCountedPointer4057a0  ConsoleFont2;             // +0x1614c
     unsigned char          _pad16154[0x16178 - 0x16154];
-    CEditWorld             EditWorld;                // +0x16178
+    CFrameRateSmoother     FrameRateSmoother;        // +0x16178
     unsigned char          _pad16179[0x161c8 - 0x16179];
     CCountedPointer419108  m_161c8;                  // +0x161c8
     unsigned char          _pad161d0[0x161e0 - 0x161d0];
@@ -146,7 +146,7 @@ void CMainGameComponent::Shutdown()
     g_GlobalCountedPointer.Clear();
     g_pGame = 0;
     ((CDisplayManager*)(((CLSocketServer*)GPDisplayManager)))->RemoveDeviceResetCallback((CDeviceResetCallback*)Socket);
-    EditWorld.Shutdown();
+    FrameRateSmoother.Uninitialise();
     if (InputSystem.IsValid())
         InputSystem.Uninitialise_004ae990();
     UninitEventPackageLoading();

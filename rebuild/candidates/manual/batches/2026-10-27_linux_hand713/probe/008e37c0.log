@@ -1,0 +1,2 @@
+probe	lever	grade
+1	CModeScorpionKingTailPlunge on the same model; pack(1) only on C3DVector and on CBaseIntelligentPointer/CIntelligentPointer (members +0xA1/+0xA9/+0xB1), sizeof 0xBC asserted (p1 = src)	RELOCATION_MATCH 59v59; objdump -r as 0x008E3720

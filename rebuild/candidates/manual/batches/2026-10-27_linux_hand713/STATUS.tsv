@@ -1,0 +1,11 @@
+address	status	bytes	test	probes	note
+0049ba20	RELOCATION_MATCH	65v65	PASS	1	CFrameRateSmoother::Uninitialise (QAE; caller CMainGameComponent::Shutdown, member +0x16178); real STLport clear/erase/__copy_ptrs; residue none
+00681850	RELOCATION_MATCH	80v80	PASS	9	CTCCreatureOpinionOfHero::IsFactionEnemyToHeroOverriddenOnOpinion (QBE); named unsigned index = attitude - 6 + range check gives retail sub eax,6 (12 extra one-file experiments s1..s12); jump table verified; residue none
+00702a50	RELOCATION_MATCH	75v75	PASS	1	CTCQuestCard::~CTCQuestCard (implicit; vtable 0x01264C44 slot-0 ??_G 0x00702A30; FableWin ??1); hdr overlay FABLE_RETAIL_CTCQUESTCARD; residue none
+008e3720	RELOCATION_MATCH	59v59	PASS	1	NCreatureMode::CModeJackOfBladesFlash::~CModeJackOfBladesFlash (implicit; vtable 0x012857A8, ??_G 0x008E3700; FableWin ??1 0x028496A0); residue none
+008e37c0	RELOCATION_MATCH	59v59	PASS	1	NCreatureMode::CModeScorpionKingTailPlunge::~CModeScorpionKingTailPlunge (implicit; vtable 0x01285860, ??_G 0x008E37A0; FableWin ??1 0x02853510); pack(1) members; residue none
+00cb6e60	RELOCATION_MATCH	57v57	PASS	1	std::vector<pair<CCharString,CScriptInfo>>::_M_clear (IAE STLport; callers _M_insert_overflow 0x00CB6FD0 / push_back 0x00CB7210); residue none
+00e32310	RELOCATION_MATCH	57v57	PASS	1	NScript::CV_AmbushScamScript::~CV_AmbushScamScript (implicit; vtable 0x012E2428, ctor 0x00E2AB60, Alloc 0x00E322C0, S_VAS); residue none
+00e398a0	RELOCATION_MATCH	66v66	PASS	2	NScript::CV_AssassinAttacksScript::~CV_AssassinAttacksScript (implicit; vtable 0x012E35B0, ctor 0x00E376D0, Alloc 0x00E39850, S_VAA); residue none
+00e542b0	RELOCATION_MATCH	81v81	PASS	1	NScript::CV_BeardyBaldyScript::~CV_BeardyBaldyScript (implicit; vtable 0x012E5790, ctor 0x00E4F5B0, Alloc 0x00E54260, S_VBB); residue none
+00ed39f0	RELOCATION_MATCH	89v89	PASS	1	NScript::CV_SingingStonesScript::~CV_SingingStonesScript (implicit; vtable 0x012F2B0C, ctor 0x00ED0E60, Alloc 0x00ED39A0, S_VSS); residue none
