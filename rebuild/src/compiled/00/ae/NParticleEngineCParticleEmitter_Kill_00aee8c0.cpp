@@ -1,6 +1,8 @@
 // CParticleEmitter::Kill() -- once (Dead bit clear): kill every particle system, clear the primitive group handle, set Dead, zero OldPos and Velocity, clear Initialised
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AEE8C0, length 117 bytes (padded to 128).
-// Leaf: Kill
+// Leaf: ?Kill@CParticleEmitter@NParticleEngine@@QAEXXZ
+// Naming wave 31 (family pek): Ego_r.pdb / FableWin.pdb ?Kill@CParticleEmitter@NParticleEngine@@QAEXXZ (was the global CParticleEmitter, bare Leaf "Kill");
+//   its callee is ?Kill@CParticleSystem@NParticleEngine@@QAEXXZ 0x00AF5870 (both PDBs; was the global CParticleSystem)
 // Callees: CParticleSystem::Kill() @ 0x00AF5870, the primitive's virtual slot 3 (last-handle notification) and slot 1 (Destroy).
 // Layout (retail, as the landed CParticleEmitter rows): ParticleSystems +0x08, PrimitiveGroupHandle +0x38, bit-field group
 // +0x40 (Dead bit 5, Initialised bit 8 = byte +0x41 bit 0), OldPos +0x46 and Velocity +0x52 (unaligned: pack(1)).
@@ -56,7 +58,8 @@ class C3DVector { public:
     float X, Y, Z;
     void Set(float x, float y, float z) { Z = z; Y = y; X = x; }
 };
-struct CParticleSystem;
+namespace NParticleEngine { class CParticleSystem; }
+using NParticleEngine::CParticleSystem;
 struct CParticleSystemPtr {                 // CCountedPointer<CParticleSystem> (8 bytes)
     CParticleSystem* m_pObject;
     void*            m_pCount;
@@ -67,7 +70,8 @@ struct CParticleSystemPtrVector {           // retail vector<CCountedPointer<CPa
     CParticleSystemPtr* m_end;
 };
 #pragma pack(push, 1)
-struct CParticleEmitter {
+namespace NParticleEngine {
+class CParticleEmitter { public:
     virtual void v00();
     unsigned char            _base4[4];                     // +0x04
     CParticleSystemPtrVector ParticleSystems;               // +0x08
@@ -101,11 +105,14 @@ struct CParticleEmitter {
     C3DVector                Velocity;                      // +0x52
     void Kill();
 };
+}
 #pragma pack(pop)
-struct CParticleSystem {
-    void Kill();                            // 0x00AF5870
+namespace NParticleEngine {
+class CParticleSystem { public:
+    void Kill();                            // 0x00AF5870 ?Kill@CParticleSystem@NParticleEngine@@QAEXXZ
 };
-void CParticleEmitter::Kill()
+}
+void NParticleEngine::CParticleEmitter::Kill()
 {
     if (!Dead) {
         for (CParticleSystemPtr* it = ParticleSystems.m_first; it != ParticleSystems.m_last; ++it)

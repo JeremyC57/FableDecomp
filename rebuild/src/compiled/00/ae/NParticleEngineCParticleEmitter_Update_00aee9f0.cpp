@@ -2,7 +2,10 @@
 // velocity is refreshed unless both the old position and the velocity are still near zero), disable particle creation
 // while waiting to sleep or when a 3D emitter is out of spawn range of the engine camera, update every active,
 // unfinished particle system, and kill the emitter once none is left running
-// Leaf: Update
+// Leaf: ?Update@CParticleEmitter@NParticleEngine@@QAEXXZ
+// Naming wave 31 (family pek): the class is NParticleEngine::CParticleEmitter (Ego_r.pdb / FableWin.pdb): own row ?Update@CParticleEmitter@NParticleEngine@@
+//   QAEXXZ (bare Leaf "Update" before), callees ?Initialise@CParticleEmitter@NParticleEngine@@QAE_NPAVCIEngine@@@Z 0x00AEE240 and
+//   ?Kill@CParticleEmitter@NParticleEngine@@QAEXXZ 0x00AEE8C0 (were the global-class spellings)
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AEE9F0, 0x1A3 bytes (padded to 432), plain `ret`.
 // Callees: CParticleEmitter::Initialise(CIEngine*) 0x00AEE240, the engine getter 0x00AEAB10 (returns the global at
@@ -51,6 +54,7 @@ public:
 CIEngine* GetParticleEngine();                                       // 0x00AEAB10
 class CMatrix3x4 { public: float M[9]; C3DVector Translation; };
 #pragma pack(push, 1)
+namespace NParticleEngine {
 class CParticleEmitter {
 public:
     void*                     __vftable;                            // +0x00
@@ -81,8 +85,9 @@ public:
     void Kill();                                                    // 0x00AEE8C0
     void Update();
 };
+}
 #pragma pack(pop)
-void CParticleEmitter::Update()
+void NParticleEngine::CParticleEmitter::Update()
 {
     if (!Initialised)
         Initialise(0);

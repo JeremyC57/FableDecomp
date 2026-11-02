@@ -1,5 +1,7 @@
 // NUISystem::CParticleEffect::`scalar deleting destructor'(unsigned int) -- destructor body inlined: the three vtables, the owned particle emitter killed and the pointer cleared, then the CChangingStateComponent base destructor; frees `this` when bit 0 of the flags is set
 // Leaf: ??_GCParticleEffect
+// Naming wave 31 (family pek): the held emitter is NParticleEngine::CParticleEmitter: ?Kill@CParticleEmitter@NParticleEngine@@QAEXXZ 0x00AEE8C0
+//   (Ego_r.pdb / FableWin.pdb; was the global ?Kill@CParticleEmitter@@QAEXXZ)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005440B0, length 77 bytes.
 // Callees: CParticleEmitter::Kill() @ 0x00AEE8C0 (on the held emitter),
 //          NUISystem::CChangingStateComponent::~CChangingStateComponent() @ 0x0052CCF0,
@@ -36,9 +38,12 @@ class CChangingStateComponent : public CComponentRoot, public IComponentA, publi
 
 } // namespace NUISystem
 
-struct CParticleEmitter {
-    void Kill();                                                          // 0x00AEE8C0
+namespace NParticleEngine {
+class CParticleEmitter { public:
+    void Kill();                                                          // 0x00AEE8C0 (Ego_r.pdb / FableWin.pdb)
 };
+}
+using NParticleEngine::CParticleEmitter;
 
 namespace NUISystem {
 

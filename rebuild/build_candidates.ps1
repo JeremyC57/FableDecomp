@@ -247603,9 +247603,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00aee8c0'
-        Module = 'CParticleEmitter'
-        Source = '00/ae/CParticleEmitter_Kill_00aee8c0.cpp'
-        TestSource = '00/ae/CParticleEmitter_Kill_00aee8c0_test.cpp'
+        Module = 'NParticleEngine::CParticleEmitter'
+        Source = '00/ae/NParticleEngineCParticleEmitter_Kill_00aee8c0.cpp'
+        TestSource = '00/ae/NParticleEngineCParticleEmitter_Kill_00aee8c0_test.cpp'
         PassPattern = '00aee8c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -263432,9 +263432,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00aee9f0'
-        Module = 'CParticleEmitter'
-        Source = '00/ae/CParticleEmitter_Update_00aee9f0.cpp'
-        TestSource = '00/ae/CParticleEmitter_Update_00aee9f0_test.cpp'
+        Module = 'NParticleEngine::CParticleEmitter'
+        Source = '00/ae/NParticleEngineCParticleEmitter_Update_00aee9f0.cpp'
+        TestSource = '00/ae/NParticleEngineCParticleEmitter_Update_00aee9f0_test.cpp'
         PassPattern = '00aee9f0_TEST PASS'
     }
     [pscustomobject]@{
