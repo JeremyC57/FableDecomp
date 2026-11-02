@@ -165651,9 +165651,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00731330'
-        Module = '_unattributed'
-        Source = '00/73/unattributed_CSharedOwner00731330_00731330.cpp'
-        TestSource = '00/73/unattributed_CSharedOwner00731330_00731330_test.cpp'
+        Module = 'CTCDoor'
+        Source = '00/73/CTCDoor_CTCDoor_00731330.cpp'
+        TestSource = '00/73/CTCDoor_CTCDoor_00731330_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '00731330_TEST PASS'
     }
