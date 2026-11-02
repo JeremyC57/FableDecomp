@@ -213659,9 +213659,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c74450'
-        Module = 'CVtable_012BF050'
-        Source = '00/c7/CVtable012BF050_CVtable012BF050_00c74450.cpp'
-        TestSource = '00/c7/CVtable012BF050_CVtable012BF050_00c74450_test.cpp'
+        Module = 'CVtable_012bf050'
+        Source = '00/c7/CVtable012bf050_CVtable012bf050_00c74450.cpp'
+        TestSource = '00/c7/CVtable012bf050_CVtable012bf050_00c74450_test.cpp'
         PassPattern = '00c74450_TEST PASS'
     }
     [pscustomobject]@{
@@ -308264,9 +308264,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c74420'
-        Module = 'CDspObject'
-        Source = '00/c7/CDspObject_CDspObject_00c74420.cpp'
-        TestSource = '00/c7/CDspObject_CDspObject_00c74420_test.cpp'
+        Module = 'CVtable_012bf050'
+        Source = '00/c7/CVtable012bf050_CVtable012bf050_00c74420.cpp'
+        TestSource = '00/c7/CVtable012bf050_CVtable012bf050_00c74420_test.cpp'
         PassPattern = '00c74420_TEST PASS'
     }
     [pscustomobject]@{

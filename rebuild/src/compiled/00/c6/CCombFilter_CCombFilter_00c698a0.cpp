@@ -1,5 +1,7 @@
-// CCombFilter::~CCombFilter() -- the compiler-generated destructor of a libpk reverb comb filter: nothing of its own, so only the CDspObject base (0x00C74450), reached by a tail jump
+// CCombFilter::~CCombFilter() -- the compiler-generated destructor of a libpk reverb comb filter: nothing of its own, so only the CVtable_012bf050 base (0x00C74450), reached by a tail jump
 // Leaf: ??1CCombFilter@@UAE@XZ
+// Naming wave 31 (family libpk): the reverb DSP base (vtable 0x012BF050; ctor 0x00C74420, virtual dtor 0x00C74450) is CVtable_012bf050 (DECISIONS_W30 D7:
+//   libpk has no PDB / RTTI, vtable-address convention; was the descriptive CDspObject, ??1CDspObject@@UAE@XZ)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C698A0, 5 bytes (`jmp 0x00C74450`, + int3 padding).
 // Identity (sweep1, 2026-10-25; follows FINDINGS chunk 444, the libpk reverb family):
 //   - the scalar deleting destructor 0x00C699F0 (the only slot of the comb vtable 0x012B9588, stored by the comb
@@ -12,13 +14,13 @@
 //   vptr). The array holder below is a TU device: destroying an array member makes the compiler pass the element
 //   destructor's address to the vector destructor iterator, which emits this COMDAT out of line (retail: the reverb's
 //   own +0x1f8 array).
-class CDspObject {                                      // vtable 0x012BF050: the reverb DSP parts' base
+class CVtable_012bf050 {                                      // vtable 0x012BF050: the reverb DSP parts' base
 public:
-    CDspObject();                                       // 0x00C74420
-    virtual ~CDspObject();                              // 0x00C74450
+    CVtable_012bf050();                                       // 0x00C74420
+    virtual ~CVtable_012bf050();                              // 0x00C74450
 };
 
-class CCombFilter : public CDspObject {                 // vtable 0x012B9588, 0x14 bytes (destructor compiler-generated)
+class CCombFilter : public CVtable_012bf050 {                 // vtable 0x012B9588, 0x14 bytes (destructor compiler-generated)
 public:
     CCombFilter();                                      // 0x00C69880
     unsigned char _pad04[0x0c];

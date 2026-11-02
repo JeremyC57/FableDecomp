@@ -1,5 +1,8 @@
-// CVtable_012BF050::~CVtable_012BF050() -- base destructor: drops one reference on the class-wide shared table and frees the table with the last reference
-// Leaf: ??1CVtable_012BF050
+// CVtable_012bf050::~CVtable_012bf050() -- base destructor: drops one reference on the class-wide shared table and frees the table with the last reference
+// Leaf: ??1CVtable_012bf050@@UAE@XZ
+// Naming wave 31 (family libpk): DECISIONS_W30 D7: the class is CVtable_012bf050 (class key `class`) and its destructor virtual (it stores vtable
+//   0x012BF050, whose slot 0 is the deleting dtor 0x00C74480): ??1CVtable_012bf050@@UAE@XZ, the spelling the reverb rows call (were
+//   ??1CVtable_012BF050@@QAE@XZ over a placeholder slot v00, and ??1CDspObject@@UAE@XZ in the callers)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C74450, length 39 bytes (+ int3 padding).
 // Callee: FreeSharedTable 0x00C763D0 (__cdecl; a `jmp` to the module's free hook 0x00C3C370).
 // Catalog label "CTCHeroStats::~CTCHeroStats" is propagated (byte-identical bodies). The class is a
@@ -12,14 +15,13 @@
 // `dec dword ptr [g] ; jne`; the pointer is cleared after the free.
 void __cdecl FreeSharedTable(void* table);     // 0x00C763D0
 
-struct CVtable_012BF050 {
-    virtual void v00();
-    ~CVtable_012BF050();
+class CVtable_012bf050 { public:                  // vtable 0x012BF050 (slot 0: the deleting dtor 0x00C74480)
+    virtual ~CVtable_012bf050();
     static void* s_pSharedTable;                // 0x0143CCDC
     static long  s_refCount;                    // 0x0143CCE0
 };
 
-CVtable_012BF050::~CVtable_012BF050()
+CVtable_012bf050::~CVtable_012bf050()
 {
     if (--s_refCount == 0) {
         FreeSharedTable(s_pSharedTable);

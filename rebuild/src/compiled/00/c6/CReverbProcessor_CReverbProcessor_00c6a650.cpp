@@ -1,5 +1,7 @@
 // CReverbProcessor::CReverbProcessor() -- EH-framed constructor of the libpk software reverb (vtable 0x012B9594): the settings-block base (0x00C77440, state 0), the 2-channel / 48 kHz format member (+0x28, state 1), input and output gains (+0x6c / +0x80), the tap bank (+0x94, 0x00C6A280), the diffuser (+0x144, 0x00C75980), the pre-delay (+0x1e0), four comb filters (+0x1f8, `__ehvec_ctor` 0x00C69880 / 0x00C698A0), the late delay (+0x248) and the stereo delay line (+0x25c, 0x00C75410); no pooled memory, not ready; settings blocks of 0x234 bytes
 // Leaf: ??0CReverbProcessor@@QAE@XZ
+// Naming wave 31 (family libpk): the reverb DSP base (vtable 0x012BF050; ctor 0x00C74420, virtual dtor 0x00C74450) is CVtable_012bf050 (DECISIONS_W30 D7:
+//   libpk has no PDB / RTTI, vtable-address convention; was the descriptive CDspObject, ??1CDspObject@@UAE@XZ)
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C6A650, 304 bytes, thiscall, returns `this`.
 // Identity (sweep1, 2026-10-25; FINDINGS chunk 444 "0xC6A650/0xC6A780/0xC69930/0xC69990 (CTCKraken) and 0xC75440 ... are
@@ -17,20 +19,20 @@
 //   The CTCKraken name is propagated (no audio in the Kraken boss); descriptive names (libpk: no PDB/RTTI).
 // Shape: the format member's root stores its vtable 0x012B89C4 in its inline constructor, then the derived store
 //   overwrites it: VC7.1 drops the dead root store, as for every inlined root constructor here. The gains, pre-delay and
-//   late delay are inline (CDspObject::CDspObject plus the vtable store); the trailing members are an initialiser list
+//   late delay are inline (CVtable_012bf050::CVtable_012bf050 plus the vtable store); the trailing members are an initialiser list
 //   and the block size a body assignment.
 class CPKObject {                                       // the libpk root: its allocator hooks
 public:
     static void __cdecl operator delete(void* p);       // 0x00C3C370
 };
 
-class CDspObject {                                      // vtable 0x012BF050: the reverb DSP parts' base
+class CVtable_012bf050 {                                      // vtable 0x012BF050: the reverb DSP parts' base
 public:
-    CDspObject();                                       // 0x00C74420 (shared kernel table: create or add a reference)
-    virtual ~CDspObject();                              // 0x00C74450 (drop the reference)
+    CVtable_012bf050();                                       // 0x00C74420 (shared kernel table: create or add a reference)
+    virtual ~CVtable_012bf050();                              // 0x00C74450 (drop the reference)
 };
 
-class CVtable_012bf0c8 : public CDspObject {            // vtable 0x012BF0C8: the DSP effects' settings-block base, 0x28 bytes
+class CVtable_012bf0c8 : public CVtable_012bf050 {            // vtable 0x012BF0C8: the DSP effects' settings-block base, 0x28 bytes
 public:
     CVtable_012bf0c8();                                 // 0x00C77440
     virtual ~CVtable_012bf0c8();                        // 0x00C775A0
@@ -64,7 +66,7 @@ public:
     ~CVtable_012b9584() { }
 };
 
-class CDspGain : public CDspObject {                    // vtable 0x012B9578, 0x14 bytes
+class CDspGain : public CVtable_012bf050 {                    // vtable 0x012B9578, 0x14 bytes
 public:
     CDspGain() { }                                      // out of line at 0x00C69660
     ~CDspGain() { }                                     // out of line at 0x00C69680
@@ -85,21 +87,21 @@ public:
     unsigned char _body[0x9c];
 };
 
-class CReverbPreDelay : public CDspObject {             // vtable 0x012B9580, 0x18 bytes
+class CReverbPreDelay : public CVtable_012bf050 {             // vtable 0x012B9580, 0x18 bytes
 public:
     CReverbPreDelay() { }
     ~CReverbPreDelay() { }                              // out of line at 0x00C697C0
     unsigned char _body[0x14];
 };
 
-class CCombFilter : public CDspObject {                 // vtable 0x012B9588, 0x14 bytes (destructor compiler-generated: 0x00C698A0)
+class CCombFilter : public CVtable_012bf050 {                 // vtable 0x012B9588, 0x14 bytes (destructor compiler-generated: 0x00C698A0)
 public:
     CCombFilter();                                      // 0x00C69880
     unsigned char _pad04[0x0c];
     long          m_mode;                               // +0x10
 };
 
-class CReverbDelay : public CDspObject {                // vtable 0x012B957C, 0x14 bytes
+class CReverbDelay : public CVtable_012bf050 {                // vtable 0x012B957C, 0x14 bytes
 public:
     CReverbDelay() { }
     ~CReverbDelay() { }                                 // out of line at 0x00C69740

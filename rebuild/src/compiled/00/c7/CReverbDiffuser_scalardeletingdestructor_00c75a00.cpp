@@ -1,5 +1,7 @@
 // CReverbDiffuser::`scalar deleting destructor'(unsigned int flags) -- compiler-generated: the destructor (0x00C6A340), then the CRT's operator delete (0x00BFE9BC) when bit 0 of the flags is set; returns `this`
 // Leaf: ??_GCReverbDiffuser@@UAEPAXI@Z
+// Naming wave 31 (family libpk): the reverb DSP base (vtable 0x012BF050; ctor 0x00C74420, virtual dtor 0x00C74450) is CVtable_012bf050 (DECISIONS_W30 D7:
+//   libpk has no PDB / RTTI, vtable-address convention; was the descriptive CDspObject, ??1CDspObject@@UAE@XZ)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C75A00, 28 bytes (+ int3 padding), thiscall `ret 4`.
 // Identity (sweep1, 2026-10-25; FINDINGS chunk 444 "0x12BF080 = CReverbDiffuser"): slot 0 of agent444's CReverbDiffuser
 //   vtable 0x012BF080 (stored by CReverbDiffuser::CReverbDiffuser 0x00C75980); it calls the compiler-generated
@@ -8,20 +10,20 @@
 //   placeholder; descriptive names (libpk: no PDB/RTTI).
 // Shape: the compiler-generated `??_G`, emitted with the vtable by the inline constructor and the factory below; the
 //   implicit destructor (two `eh vector` loops) stays an out-of-line call.
-class CDspObject {                                      // vtable 0x012BF050: the reverb DSP parts' base
+class CVtable_012bf050 {                                      // vtable 0x012BF050: the reverb DSP parts' base
 public:
-    CDspObject();                                       // 0x00C74420 (shared kernel table: create or add a reference)
-    virtual ~CDspObject();                              // 0x00C74450 (drop the reference)
+    CVtable_012bf050();                                       // 0x00C74420 (shared kernel table: create or add a reference)
+    virtual ~CVtable_012bf050();                              // 0x00C74450 (drop the reference)
 };
 
-class CDspGain : public CDspObject {                    // vtable 0x012B9578, 0x14 bytes
+class CDspGain : public CVtable_012bf050 {                    // vtable 0x012B9578, 0x14 bytes
 public:
     CDspGain() { }                                      // out of line at 0x00C69660
     ~CDspGain() { }                                     // out of line at 0x00C69680
     float m_gain[4];                                    // +0x04 running gains
 };
 
-class CReverbDiffuserStage : public CDspObject {        // vtable 0x012BF07C, 0x28 bytes
+class CReverbDiffuserStage : public CVtable_012bf050 {        // vtable 0x012BF07C, 0x28 bytes
 public:
     CReverbDiffuserStage();                             // 0x00C75530
     float*       m_data;                                // +0x04
@@ -33,7 +35,7 @@ public:
 
 struct CReverbConfig;
 
-class CReverbDiffuser : public CDspObject {             // vtable 0x012BF080, 0x9c bytes (destructor compiler-generated)
+class CReverbDiffuser : public CVtable_012bf050 {             // vtable 0x012BF080, 0x9c bytes (destructor compiler-generated)
 public:
     CReverbDiffuser() : m_pConfig(0) { }                // out of line at 0x00C75980
     CDspGain             m_gains[3];                    // +0x04

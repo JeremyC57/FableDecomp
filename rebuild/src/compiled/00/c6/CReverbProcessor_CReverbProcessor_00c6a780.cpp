@@ -1,5 +1,7 @@
 // CReverbProcessor::~CReverbProcessor() -- EH-framed destructor of the libpk software reverb: not ready any more (+0x294), the pooled delay memory (+0x280) freed through the library allocator (0x00C3C370), the settings blocks released (0x00C77470), the stereo delay line detached (0x00C75000), then the members in reverse order (states 8..0) and the settings-block base (0x00C775A0)
 // Leaf: ??1CReverbProcessor@@UAE@XZ
+// Naming wave 31 (family libpk): the reverb DSP base (vtable 0x012BF050; ctor 0x00C74420, virtual dtor 0x00C74450) is CVtable_012bf050 (DECISIONS_W30 D7:
+//   libpk has no PDB / RTTI, vtable-address convention; was the descriptive CDspObject, ??1CDspObject@@UAE@XZ)
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C6A780, 294 bytes, thiscall, plain `ret`.
 // Identity (sweep1, 2026-10-25; FINDINGS chunk 444 "0xC6A650/0xC6A780/0xC69930/0xC69990 (CTCKraken) and 0xC75440 ... are
@@ -13,20 +15,20 @@
 //   - the leading sequence is the reverb's Shutdown 0x00C6A3D0 (same four steps), and +0x294 is the ready byte Process
 //     0x00C6A5D0 tests.
 //   The CTCKraken / CTCInventoryClothing names are propagated; descriptive names (libpk: no PDB/RTTI).
-// Shape: the inline member destructors store their vtables before the out-of-line CDspObject destructor; the format
+// Shape: the inline member destructors store their vtables before the out-of-line CVtable_012bf050 destructor; the format
 //   member's own (derived) store is dropped as dead before its root's inline store of 0x012B89C4.
 class CPKObject {                                       // the libpk root: its allocator hooks
 public:
     static void __cdecl operator delete(void* p);       // 0x00C3C370
 };
 
-class CDspObject {                                      // vtable 0x012BF050: the reverb DSP parts' base
+class CVtable_012bf050 {                                      // vtable 0x012BF050: the reverb DSP parts' base
 public:
-    CDspObject();                                       // 0x00C74420 (shared kernel table: create or add a reference)
-    virtual ~CDspObject();                              // 0x00C74450 (drop the reference)
+    CVtable_012bf050();                                       // 0x00C74420 (shared kernel table: create or add a reference)
+    virtual ~CVtable_012bf050();                              // 0x00C74450 (drop the reference)
 };
 
-class CVtable_012bf0c8 : public CDspObject {            // vtable 0x012BF0C8: the DSP effects' settings-block base, 0x28 bytes
+class CVtable_012bf0c8 : public CVtable_012bf050 {            // vtable 0x012BF0C8: the DSP effects' settings-block base, 0x28 bytes
 public:
     CVtable_012bf0c8();                                 // 0x00C77440
     virtual ~CVtable_012bf0c8();                        // 0x00C775A0
@@ -60,7 +62,7 @@ public:
     ~CVtable_012b9584() { }
 };
 
-class CDspGain : public CDspObject {                    // vtable 0x012B9578, 0x14 bytes
+class CDspGain : public CVtable_012bf050 {                    // vtable 0x012B9578, 0x14 bytes
 public:
     CDspGain() { }                                      // out of line at 0x00C69660
     ~CDspGain() { }                                     // out of line at 0x00C69680
@@ -81,21 +83,21 @@ public:
     unsigned char _body[0x9c];
 };
 
-class CReverbPreDelay : public CDspObject {             // vtable 0x012B9580, 0x18 bytes
+class CReverbPreDelay : public CVtable_012bf050 {             // vtable 0x012B9580, 0x18 bytes
 public:
     CReverbPreDelay() { }
     ~CReverbPreDelay() { }                              // out of line at 0x00C697C0
     unsigned char _body[0x14];
 };
 
-class CCombFilter : public CDspObject {                 // vtable 0x012B9588, 0x14 bytes (destructor compiler-generated: 0x00C698A0)
+class CCombFilter : public CVtable_012bf050 {                 // vtable 0x012B9588, 0x14 bytes (destructor compiler-generated: 0x00C698A0)
 public:
     CCombFilter();                                      // 0x00C69880
     unsigned char _pad04[0x0c];
     long          m_mode;                               // +0x10
 };
 
-class CReverbDelay : public CDspObject {                // vtable 0x012B957C, 0x14 bytes
+class CReverbDelay : public CVtable_012bf050 {                // vtable 0x012B957C, 0x14 bytes
 public:
     CReverbDelay() { }
     ~CReverbDelay() { }                                 // out of line at 0x00C69740

@@ -1,12 +1,14 @@
-// CVtable_012bf0c8::~CVtable_012bf0c8() -- destructor of the libpk DSP effects' settings-block base: release the settings blocks (ReleaseBlock inlined), then ~CDspObject
+// CVtable_012bf0c8::~CVtable_012bf0c8() -- destructor of the libpk DSP effects' settings-block base: release the settings blocks (ReleaseBlock inlined), then ~CVtable_012bf050
 // Leaf: ??1CVtable_012bf0c8@@UAE@XZ
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C775A0, 54 bytes, thiscall, tail `jmp ~CDspObject`.
+// Naming wave 31 (family libpk): the reverb DSP base (vtable 0x012BF050; ctor 0x00C74420, virtual dtor 0x00C74450) is CVtable_012bf050 (DECISIONS_W30 D7:
+//   libpk has no PDB / RTTI, vtable-address convention; was the descriptive CDspObject, ??1CDspObject@@UAE@XZ)
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00C775A0, 54 bytes, thiscall, tail `jmp ~CVtable_012bf050`.
 // Identity: it stores vtable 0x012BF0C8 first (no RTTI: libpk), the vtable the landed ctor 0x00C77440 stores; its callers are
 //   that vtable's slot-0 `??_G` 0x00C77650, the landed ~CReverbProcessor 0x00C6A780 (its base-class tail) and two EH unwind
 //   funclets (0x012165B3 / 0x01216643) of derived constructors. The landed CReverbProcessor / CommitAndProcess sources declare
 //   it `virtual ~CVtable_012bf0c8();  // 0x00C775A0`; libpk has no PDB, so the class keeps the landed vtable name
 //   (descriptive). The catalog label "CTCInventoryItem::OnDie" is propagated.
-// Callees: CPKObject::operator delete 0x00C3C370 (the libpk free hook, ??3CPKObject@@SAXPAX@Z), CDspObject::~CDspObject
+// Callees: CPKObject::operator delete 0x00C3C370 (the libpk free hook, ??3CPKObject@@SAXPAX@Z), CVtable_012bf050::~CVtable_012bf050
 //   0x00C74450 (vtable 0x012BF050; the shared-table release).
 // Shape: user destructor `{ ReleaseBlock(); }` with ReleaseBlock a plain member defined above it in the same file: VC7.1 expands
 //   it here (0x00C77470 is its out-of-line copy, which this TU's COMDAT also grades RELOCATION_MATCH), scheduling the vptr store
@@ -18,13 +20,13 @@ public:
     static void __cdecl operator delete(void* p);       // 0x00C3C370
 };
 
-class CDspObject {                                      // vtable 0x012BF050: the reverb DSP parts' base
+class CVtable_012bf050 {                                      // vtable 0x012BF050: the reverb DSP parts' base
 public:
-    CDspObject();                                       // 0x00C74420
-    virtual ~CDspObject();                              // 0x00C74450
+    CVtable_012bf050();                                       // 0x00C74420
+    virtual ~CVtable_012bf050();                              // 0x00C74450
 };
 
-class CVtable_012bf0c8 : public CDspObject {            // vtable 0x012BF0C8: the DSP effects' settings-block base, 0x28 bytes
+class CVtable_012bf0c8 : public CVtable_012bf050 {            // vtable 0x012BF0C8: the DSP effects' settings-block base, 0x28 bytes
 public:
     CVtable_012bf0c8();                                 // 0x00C77440
     virtual ~CVtable_012bf0c8();

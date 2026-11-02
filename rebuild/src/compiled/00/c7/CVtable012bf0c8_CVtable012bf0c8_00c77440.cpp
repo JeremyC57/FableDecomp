@@ -5,13 +5,14 @@
 // manifest label "CGameJoystickManager::CGameJoystickManager" is propagated.
 // Shape: stores +0x10, +0x04, +0x08, +0x0c, byte +0x14, byte +0x24 in that order (not offset order) = body assignments in
 // source order; all before the vtable store.
-// Leaf: ??0CVtable_012bf0c8
+// Leaf: ??0CVtable_012bf0c8@@QAE@XZ
+// Naming wave 31 (family libpk): DECISIONS_W30 D7: class key `class` for CVtable_012bf0c8 (was struct); bare Leaf "??0CVtable_012bf0c8" -> the emitted symbol
 struct CVtable_012bf050 {
     virtual ~CVtable_012bf050();
     CVtable_012bf050();                             // 0x00C74420
 };
 
-struct CVtable_012bf0c8 : CVtable_012bf050 {
+class CVtable_012bf0c8 : public CVtable_012bf050 { public:
     long m_first;                                   // +0x04
     long m_second;                                  // +0x08
     long m_third;                                   // +0x0c

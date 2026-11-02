@@ -1,5 +1,7 @@
-// CReverbTapBank::CReverbTapBank() -- EH-framed constructor of the libpk reverb's filtered-tap bank: the CDspObject base (0x00C74420), the bank vtable 0x012B9590 (EH state 0), then its four CReverbFilterTaps at +4 through `__ehvec_ctor` (element 0x28 bytes, CReverbFilterTap::CReverbFilterTap 0x00C698D0 / ~CReverbFilterTap 0x00C69930)
+// CReverbTapBank::CReverbTapBank() -- EH-framed constructor of the libpk reverb's filtered-tap bank: the CVtable_012bf050 base (0x00C74420), the bank vtable 0x012B9590 (EH state 0), then its four CReverbFilterTaps at +4 through `__ehvec_ctor` (element 0x28 bytes, CReverbFilterTap::CReverbFilterTap 0x00C698D0 / ~CReverbFilterTap 0x00C69930)
 // Leaf: ??0CReverbTapBank@@QAE@XZ
+// Naming wave 31 (family libpk): the reverb DSP base (vtable 0x012BF050; ctor 0x00C74420, virtual dtor 0x00C74450) is CVtable_012bf050 (DECISIONS_W30 D7:
+//   libpk has no PDB / RTTI, vtable-address convention; was the descriptive CDspObject, ??1CDspObject@@UAE@XZ)
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C6A280, 88 bytes, thiscall, returns `this`.
 // Identity (sweep1, 2026-10-25; follows FINDINGS chunk 444, the libpk reverb family):
@@ -12,20 +14,20 @@
 //   The landed unattributed CArenaRoundDef is a propagated manifest label; descriptive names (libpk: no PDB/RTTI).
 // Shape: the base runs first, then the vtable store with EH state 0 (the base's destructor), then the array; the tail
 //   words (+0xa4..+0xac) are set later by the reverb's setup, not here.
-class CDspObject {                                      // vtable 0x012BF050: the reverb DSP parts' base
+class CVtable_012bf050 {                                      // vtable 0x012BF050: the reverb DSP parts' base
 public:
-    CDspObject();                                       // 0x00C74420 (shared kernel table: create or add a reference)
-    virtual ~CDspObject();                              // 0x00C74450 (drop the reference)
+    CVtable_012bf050();                                       // 0x00C74420 (shared kernel table: create or add a reference)
+    virtual ~CVtable_012bf050();                              // 0x00C74450 (drop the reference)
 };
 
-class CDspGain : public CDspObject {                    // vtable 0x012B9578, 0x14 bytes
+class CDspGain : public CVtable_012bf050 {                    // vtable 0x012B9578, 0x14 bytes
 public:
     CDspGain() { }                                      // out of line at 0x00C69660
     ~CDspGain() { }                                     // out of line at 0x00C69680
     float m_gain[4];                                    // +0x04 running gains
 };
 
-class CReverbFilterTap : public CDspObject {            // vtable 0x012B958C, 0x28 bytes
+class CReverbFilterTap : public CVtable_012bf050 {            // vtable 0x012B958C, 0x28 bytes
 public:
     CReverbFilterTap();                                 // 0x00C698D0
     CDspGain     m_gain;                                // +0x04
@@ -35,7 +37,7 @@ public:
     unsigned int m_index;                               // +0x24
 };
 
-class CReverbTapBank : public CDspObject {              // vtable 0x012B9590, 0xb0 bytes (destructor compiler-generated)
+class CReverbTapBank : public CVtable_012bf050 {              // vtable 0x012B9590, 0xb0 bytes (destructor compiler-generated)
 public:
     CReverbTapBank();
     CReverbFilterTap m_taps[4];                         // +0x04
