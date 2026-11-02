@@ -26007,3 +26007,13 @@ chunk	address	module	name	length
 699	00b0a160	CTCInventoryItem	OnDie	41
 699	00e81f30	CTCInventoryItem	OnDie	35
 699	008cc330	CTCInventoryItem	OnDie	50
+700	00671100	CTCInventoryItem	OnDie	75
+700	00b18780	CTCInventoryItem	OnDie	27
+700	006b7570	CTCInventoryItem	OnDie	33
+700	0085ad00	CTCInventoryItem	OnDie	36
+700	00a9d330	CTCInventoryItem	OnDie	33
+700	00aac4f0	CTCInventoryItem	OnDie	49
+700	009b5d50	CTCInventoryItem	OnDie	27
+700	007f5810	CVillageTaskCarryCrate	AssignCreatureToTask	71
+700	008abb50	CVillageTaskCarryCrate	AssignCreatureToTask	71
+700	008d73e0	CVillageTaskCarryCrate	AssignCreatureToTask	71
