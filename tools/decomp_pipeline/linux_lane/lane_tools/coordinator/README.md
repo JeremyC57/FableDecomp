@@ -52,3 +52,10 @@ After the labels file is written for a chunk or naming wave, run
 `functions.tsv` immediately (vland only renames the chunk's own rows). A landed row whose own Leaf spelling is wrong is re-synced
 from that Leaf, so it stays wrong until its NAME_FIXES_QUEUE row is respelled in the next naming wave -- queue rows are
 therefore landed in a naming wave right after every chunk round, not held.
+
+## Agent budget (owner 2026-11-02)
+After naming wave 32 lands: three concurrent chunk agents (agentNNN workspaces under $S/w22), no standing naming wave. Each chunk's
+NAME_FIXES rows still go to NAME_FIXES_QUEUE.tsv (cNNN prefix) for the naming pass after matching. Land hand-backs one at a time
+(land_chunk.sh is serial: it edits build_candidates.ps1 and the catalog). A landing that adds a second spelling for an address respells
+the old callers in the same commit (recheck them) or is queued with a PRIORITY note; check reloc_bindings by address, not only with
+bindings_multi_check.py.
