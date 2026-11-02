@@ -26171,3 +26171,13 @@ chunk	address	module	name	length
 715	009bdb40	CBankFileEntryUpdateData	~CBankFileEntryUpdateData	93
 715	00a2b630	CMeshData	~CMeshData	84
 715	00a3b970	CTextureRenderer	~CTextureRenderer	89
+716	00dcf700	CActionPerformExpression	~CActionPerformExpression	94
+716	0121df1c	_gapscan	sub_0121df1c	13
+716	0121f850	_gapscan	sub_0121f850	31
+716	00ca7ae0	_gapscan	sub_00ca7ae0	17
+716	00ca7c10	_gapscan	sub_00ca7c10	17
+716	00ca9060	_gapscan	sub_00ca9060	17
+716	00cad2e0	_gapscan	sub_00cad2e0	24
+716	00ce1090	_gapscan	sub_00ce1090	13
+716	01219e90	_gapscan	sub_01219e90	17
+716	01219f40	_gapscan	sub_01219f40	19
