@@ -1,0 +1,32 @@
+action	symbol	target	by_row	note
+KEEP	??1CScriptThing@@QAE@XZ	004aa840	00dbf2d0	still named by 1 unedited row(s) (index)
+RETIRE	??1Handle@Row00e15500@@QAE@XZ	004aa840	00e15500	no row names it after wave 30 (was: 00e15500; bound by 00e15500); the target is now ??1CScriptThing@@UAE@XZ
+RETIRE	??1Handle@Row00e1e530@@UAE@XZ	004aa840	00e1e530	no row names it after wave 30 (was: 00e1e530; bound by 00e1e530); the target is now ??1CScriptThing@@UAE@XZ
+KEEP	??1ScriptMethods@@UAE@XZ	004aa840	008976f0	still named by 13 unedited row(s) (index)
+RETIRE	??1ScriptThing@NScript@@QAE@XZ	004aa840	00d9c4a0	no row names it after wave 30 (was: 00d9c4a0; bound by 00d9c4a0); the target is now ??1CScriptThing@@UAE@XZ
+KEEP	??1ScriptThingCopy@@QAE@XZ	004aa840	00cdff50	still named by 3 unedited row(s) (index)
+KEEP	?IsAlive@CScriptThing@@QBE_NXZ	004ab130	00eea7c0	still named by 5 unedited row(s) (index)
+RETIRE	??0ScriptThing@NScript@@QAE@ABU01@@Z	004abe90	00d9c4a0	no row names it after wave 30 (was: 00d9c4a0; bound by 00d9c4a0); the target is now ??0CScriptThing@@QAE@ABV0@@Z
+KEEP	??0ScriptThingCopy@@QAE@ABVCScriptThing@@@Z	004abe90	00d2c530	still named by 6 unedited row(s) (index)
+KEEP	?GetScriptThing@CThingNative@@QAE?AUScriptMethods@@XZ	004c7e50	008976f0	still named by 1 unedited row(s) (index)
+RETIRE	?GetThingFromUID@CWorld@@QAEPAVCThing@@_K@Z	0051ed60	0057abd6	no row names it after wave 30 (was: 0057abd6,0057ae53; bound by 0057abd6); the target is now ?PeekPThingWithUID@CThingManager@@QBEPBVCThing@@_K@Z
+RETIRE	?Find@Map@@QAEPAUNode@@PAX@Z	00527d80	0051ed60	no row names it after wave 30 (was: 0051ed60; bound by 0051ed60); the target is now ?Find@Map@@QBEPAUNode@@PAX@Z
+RETIRE	??1CStateList@NUISystem@@QAE@XZ	0052d5c0	0052d770	no row names it after wave 30 (was: 0052d770; bound by 0052d770); the target is now ??1?$_List_base@W4EChangingStateComponentState@CChangingStateComponent@NUISystem@@V?$allocator@W4EChangingStateComponentState@CChangingStateComponent@NUISystem@@@std@@@std@@QAE@XZ
+RETIRE	??1CBlockVector@@QAE@XZ	00569940	00569c30	no row names it after wave 30 (was: 00569c30; bound by 00569c30); the target is now ??1?$vector@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE@XZ
+RETIRE	?vfunc_13@CTCBase@@UAEXXZ	006868e0	00713740	no row names it after wave 30 (was: 00713740; bound by 00713740); the target is now ?OnDie@CTCBase@@UAEXXZ
+RETIRE	@Dtor_node@4	006868e0	007f0890	no row names it after wave 30 (was: 007f0890; bound by 007f0890); the target is now ?OnDie@CTCBase@@UAEXXZ
+RETIRE	?GetThingManager@CTCHeroStats@@QBEPAVCWorld@@XZ	00686af0	0057ae53	no row names it after wave 30 (was: 0057ae53; bound by 0057ae53); the target is now ?GetThingManager@CTCHeroStats@@QBEABVCThingManager@@XZ / ?GetThingManager@CTCHeroStats_Retail@@QBEABVCThingManager@@XZ
+RETIRE	?GetWorld@CTCHeroStats_Retail@@QBEPAVCWorld@@XZ	00686af0	0057abd6	no row names it after wave 30 (was: 0057abd6; bound by 0057abd6); the target is now ?GetThingManager@CTCHeroStats@@QBEABVCThingManager@@XZ / ?GetThingManager@CTCHeroStats_Retail@@QBEABVCThingManager@@XZ
+RETIRE	?GetPrimarySlotThing@CarryingMethods@@QAEPAUCThingNative@@XZ	006a1440	008976f0	no row names it after wave 30 (was: 008976f0; bound by 008976f0); the target is now ?GetPrimarySlotThing@CarryingMethods@@QAEPAVCThing@@XZ
+RETIRE	@Dtor_first@4	007f07a0	007f0890	no row names it after wave 30 (was: 007f0890; bound by 007f0890); the target is now ?KillRippleFX@CTCKrakenTentacle@@AAEXXZ
+RETIRE	?CreateMarker@@YIPAUCThingNative@@JABVC3DVector@@ABVCCharString@@@Z	0083d460	0089faa0	no row names it after wave 30 (was: 0089faa0; bound by 0089faa0); the target is now ?CreateMarker@@YIPAVCThing@@JABVC3DVector@@ABVCCharString@@@Z
+RETIRE	?Clear@CBlockVectorOwner_00569c30@@QAEXXZ	0083fbc0	00569c30	no row names it after wave 30 (was: 00569c30; bound by 00569c30); the target is now ?Reset@LHHttpHeaders@LHNetworkLib@@QAEXXZ
+RETIRE	??4ScriptMethods@@QAEAAU0@ABU0@@Z	008ab980	008976f0	no row names it after wave 30 (was: 008976f0; bound by 008976f0); the target is now ??4CScriptThing@@QAEAAV0@ABV0@@Z
+RETIRE	?OnDie@BaseItem@@QAEXXZ	00aa8490	00a9d3a0	no row names it after wave 30 (was: 00a9d3a0; bound by 00a9d3a0); the target is now ??1CChunkedFileSuperChunk@@UAE@XZ
+KEEP	??_7ScriptMethods@@6B@	01238c8c	008976f0	still named by 12 unedited row(s) (index)
+ADD	?Find@Map@@QBEPAUNode@@PAX@Z	00527d80	0051ed60	wave-30 spelling (no PDB name: libpk / GameCODA / descriptive owner or compiler-derived instantiation), not yet bound; first named by 0051ed60
+ADD	?GetThingManager@CTCHeroStats_Retail@@QBEABVCThingManager@@XZ	00686af0	0057abd6	wave-30 spelling (no PDB name: libpk / GameCODA / descriptive owner or compiler-derived instantiation), not yet bound; first named by 0057abd6
+ADD	?GetThingManager@CTCHeroStats@@QBEABVCThingManager@@XZ	00686af0	0057ae53	wave-30 spelling (no PDB name: libpk / GameCODA / descriptive owner or compiler-derived instantiation), not yet bound; first named by 0057ae53
+ADD	?KillRippleFX@CTCKrakenTentacle@@AAEXXZ	007f07a0	007f0890	exact Ego_r/FableWin spelling, not yet bound; first named by 007f0890
+ADD	?GetPrimarySlotThing@CarryingMethods@@QAEPAVCThing@@XZ	006a1440	008976f0	wave-30 spelling (no PDB name: libpk / GameCODA / descriptive owner or compiler-derived instantiation), not yet bound; first named by 008976f0
+ADD	?CreateMarker@@YIPAVCThing@@JABVC3DVector@@ABVCCharString@@@Z	0083d460	0089faa0	wave-30 spelling (no PDB name: libpk / GameCODA / descriptive owner or compiler-derived instantiation), not yet bound; first named by 0089faa0

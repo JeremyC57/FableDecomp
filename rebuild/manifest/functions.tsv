@@ -23402,9 +23402,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007f0770	SetIsStriking	CTCKrakenTentacle	__thiscall	void	2	CTCKrakenTentacle *,bool	1	yes	accepted									
 007f07a0	KillRippleFX	CTCKrakenTentacle	__thiscall	void	1	CTCKraken *	1	yes	accepted									
 007f0810	RemoveObstruction	CTCKrakenTentacle	__thiscall	void	1	CTCKrakenTentacle *	1	yes	accepted									
-007f0890	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::CSymbolInfo>_>	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap	__fastcall	void	2	allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_> *,pair<CCharString,CSymbolMap::CSymbolInfo> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7f\DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_007f0890.cpp
+007f0890	OnDie	CTCKrakenTentacle	__fastcall	void	2	allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_> *,pair<CCharString,CSymbolMap::CSymbolInfo> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7f\DestvalstdallocatorstdpairCCharStringCSymbolMapCSymbolInfostdpairCCharStringCSym_CSymbolInfo_007f0890.cpp
 007f08b0	OnInitialActivate	CTCKrakenTentacle	__thiscall	void	1	CTCKrakenTentacle *	1	yes	accepted									
-007f0b10	CreateHeadEffect	CTCKraken	__thiscall	void	2	CTCKraken *,CCharString *	1	yes	accepted									
+007f0b10	DoDieFX	CTCKrakenTentacle	__thiscall	void	2	CTCKraken *,CCharString *	1	yes	accepted									
 007f0c70	TrackTarget	CTCKrakenTentacle	__thiscall	void	1	CTCKrakenTentacle *	1	yes	accepted									
 007f0f40	ReturnToDesiredPos	CTCKrakenTentacle	__thiscall	void	2	CTCKrakenTentacle *,bool	1	yes	accepted									
 007f1170	QueueStrikeDamage	CTCKrakenTentacle	__thiscall	void	1	CTCKrakenTentacle *	1	yes	accepted									
@@ -26977,7 +26977,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008974f0	IsEntityWieldingWeapon	CGameScriptInterface	__thiscall	bool	2	CGameScriptInterface *,CScriptThing const &	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\89\0x008974F0_global_IsEntityWieldingWeapon_CGameScriptInterface_UBE_NABVCScriptThing_Z.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\89\CGameScriptInterface_IsEntityWieldingWeapon_008974f0.cpp
 00897560	?GetPreviouslyWieldedMeleeWeaponName@CGameScriptInterface@@UBE_NAAVCCharString@@@Z	CGameScriptInterface	__thiscall	bool	2	CGameScriptInterface *,CCharString *	1	yes	accepted									
 00897630	?GetPreviouslyWieldedRangedWeaponName@CGameScriptInterface@@UBE_NAAVCCharString@@@Z	CGameScriptInterface	__thiscall	bool	2	CGameScriptInterface *,CCharString *	1	yes	accepted									
-008976f0	?EntityGetThingInPrimarySlot@CGameScriptInterface@@UBE?AVCScriptThing@@ABV2@@Z	CGameScriptInterface	__thiscall	CScriptThing	2	CGameScriptInterface *,CScriptThing *	1	yes	accepted									
+008976f0	EntityGetThingInPrimarySlot	CGameScriptInterface	__thiscall	CScriptThing	2	CGameScriptInterface *,CScriptThing *	1	yes	accepted									
 008977f0	ApplyHeroPenaltyForDeath	CGameScriptInterface	__thiscall	void	1	CGameScriptInterface *	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\89\0x008977F0_global_ApplyHeroPenaltyForDeath_CGameScriptInterface_UBEXXZ.cpp				
 00897880	GetHeroTitle	CGameScriptInterface	__thiscall	EHeroTitle	1	CGameScriptInterface *	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\89\0x00897880_global_GetHeroTitle_CGameScriptInterface_UBE_AW4EHeroTitle_XZ.cpp				
 008978e0	EntitySetAsAbleToRegionFollowWhenMarried	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing const &,bool	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\89\0x008978E0_global_EntitySetAsAbleToRegionFollowWhenMarried_CGameScriptInterface_UBEXABVCScriptThing__N_Z.cpp				
@@ -27188,7 +27188,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0089f4a0	TurnCreatureInto	CGameScriptInterface	__thiscall	CScriptThing	3	CGameScriptInterface *,CScriptThing *,CCharString *	1	yes	accepted									
 0089f910	CGameScriptInterface::CreateEffect	CGameScriptInterface	__thiscall	CScriptThing	7	CGameScriptInterface *,CCharString const &,CScriptThing const &,CCharString const &,CCharString const &,bool,bool	1	yes	accepted									
 0089f9e0	CGameScriptInterface::CreateEffect	CGameScriptInterface	__thiscall	CScriptThing	7	CGameScriptInterface *,CCharString const &,C3DVector const &,CCharString const &,float,bool,bool	1	yes	accepted									
-0089faa0	CGameScriptInterface::CreateLight	CGameScriptInterface	__thiscall	CScriptThing	7	CGameScriptInterface *,C3DVector const &,CRGBColour const &,CCharString const &,float,float,bool	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\89\0x0089FAA0_global_CreateLight_CGameScriptInterface_UBE_AVCScriptThing_ABVC3DVector_ABVCRGBColour_ABVCCharString_MM_N_Z.cpp				
+0089faa0	CreateLight	CGameScriptInterface	__thiscall	CScriptThing	7	CGameScriptInterface *,C3DVector const &,CRGBColour const &,CCharString const &,float,float,bool	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\89\0x0089FAA0_global_CreateLight_CGameScriptInterface_UBE_AVCScriptThing_ABVC3DVector_ABVCRGBColour_ABVCCharString_MM_N_Z.cpp				
 0089fbb0	CGameScriptInterface::CreateExperienceOrb	CGameScriptInterface	__thiscall	CScriptThing	3	CGameScriptInterface *,C3DVector const &,long	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\89\0x0089FBB0_global_CreateExperienceOrb_CGameScriptInterface_UBE_AVCScriptThing_ABVC3DVector_J_Z.cpp				
 0089fc80	CGameScriptInterface::CreateExplosion	CGameScriptInterface	__thiscall	CScriptThing	5	CGameScriptInterface *,CCharString const &,C3DVector const &,C3DVector const *,CCharString	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\89\0x0089FC80_global_CreateExplosion_CGameScriptInterface_UBE_AVCScriptThing_ABVCCharString_ABVC3DVector_PBV4_V3_Z.cpp				
 0089fd20	CGameScriptInterface::CreatePhysicalBarrier	CGameScriptInterface	__thiscall	CScriptThing	5	CGameScriptInterface *,float,C3DVector const &,C3DVector const *,CCharString	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\89\0x0089FD20_global_CreatePhysicalBarrier_CGameScriptInterface_UBE_AVCScriptThing_MABVC3DVector_PBV3_VCCharString_Z.cpp				
@@ -27258,14 +27258,14 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008a2100	?SetIgnoringPhrase@CGameScriptInterface@@UAEXVCScriptThing@@K@Z	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing,long	1	yes	accepted									
 008a21e0	?GetIgnoringPhrase@CGameScriptInterface@@UAEKVCScriptThing@@@Z	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing,long	1	yes	accepted									
 008a22d0	?ResetIgnoringPhrase@CGameScriptInterface@@UAEXVCScriptThing@@@Z	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
-008a23b0	CGameScriptInterface::SetWanderCentrePoint	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing,C3DVector	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\8a\0x008A23B0_global_SetWanderCentrePoint_CGameScriptInterface_UAEXVCScriptThing_VC3DVector_Z.cpp				
-008a24c0	?GetWanderCentrePoint@CGameScriptInterface@@UAE?AVC3DVector@@VCScriptThing@@@Z	CGameScriptInterface	__thiscall	C3DVector	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
-008a2590	?ResetWanderCentrePoint@CGameScriptInterface@@UAEXVCScriptThing@@@Z	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
+008a23b0	SetWanderCentrePoint	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing,C3DVector	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\8a\0x008A23B0_global_SetWanderCentrePoint_CGameScriptInterface_UAEXVCScriptThing_VC3DVector_Z.cpp				
+008a24c0	GetWanderCentrePoint	CGameScriptInterface	__thiscall	C3DVector	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
+008a2590	ResetWanderCentrePoint	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
 008a2690	?SetWanderMinDistance@CGameScriptInterface@@UAEXVCScriptThing@@M@Z	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing,long	1	yes	accepted									
-008a2770	?GetWanderMinDistance@CGameScriptInterface@@UAEMVCScriptThing@@@Z	CGameScriptInterface	__thiscall	float	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
+008a2770	GetWanderMinDistance	CGameScriptInterface	__thiscall	float	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
 008a2870	?ResetWanderMinDistance@CGameScriptInterface@@UAEXVCScriptThing@@@Z	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
 008a2950	?SetWanderMaxDistance@CGameScriptInterface@@UAEXVCScriptThing@@M@Z	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing,long	1	yes	accepted									
-008a2a30	?GetWanderMaxDistance@CGameScriptInterface@@UAEMVCScriptThing@@@Z	CGameScriptInterface	__thiscall	float	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
+008a2a30	GetWanderMaxDistance	CGameScriptInterface	__thiscall	float	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
 008a2b30	?ResetWanderMaxDistance@CGameScriptInterface@@UAEXVCScriptThing@@@Z	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
 008a2c10	?SetGossipCounter@CGameScriptInterface@@UAEXVCScriptThing@@J@Z	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing,long	1	yes	accepted									
 008a2cf0	?GetGossipCounter@CGameScriptInterface@@UAEJVCScriptThing@@@Z	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing,long	1	yes	accepted									
@@ -27283,25 +27283,25 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008a37b0	?GetScriptingStateGroup@CGameScriptInterface@@UAE?AW4EScriptingStateGroups@@VCScriptThing@@@Z	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing,long	1	yes	accepted									
 008a38a0	?ResetScriptingStateGroup@CGameScriptInterface@@UAEXVCScriptThing@@@Z	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
 008a3980	?SetMaxHeroReactionDistance@CGameScriptInterface@@UAEXVCScriptThing@@M@Z	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing,long	1	yes	accepted									
-008a3a60	?GetMaxHeroReactionDistance@CGameScriptInterface@@UAEMVCScriptThing@@@Z	CGameScriptInterface	__thiscall	float	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
+008a3a60	GetMaxHeroReactionDistance	CGameScriptInterface	__thiscall	float	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
 008a3b60	?ResetMaxHeroReactionDistance@CGameScriptInterface@@UAEXVCScriptThing@@@Z	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
 008a3c40	?SetActionFrequency@CGameScriptInterface@@UAEXVCScriptThing@@J@Z	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing,long	1	yes	accepted									
 008a3d20	?GetActionFrequency@CGameScriptInterface@@UAEJVCScriptThing@@@Z	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing,long	1	yes	accepted									
 008a3e10	?ResetActionFrequency@CGameScriptInterface@@UAEXVCScriptThing@@@Z	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
 008a3ef0	?SetActionFrequencyVariation@CGameScriptInterface@@UAEXVCScriptThing@@M@Z	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing,long	1	yes	accepted									
-008a3fd0	?GetActionFrequencyVariation@CGameScriptInterface@@UAEMVCScriptThing@@@Z	CGameScriptInterface	__thiscall	float	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
+008a3fd0	GetActionFrequencyVariation	CGameScriptInterface	__thiscall	float	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
 008a40d0	?ResetActionFrequencyVariation@CGameScriptInterface@@UAEXVCScriptThing@@@Z	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
 008a41b0	?SetAction@CGameScriptInterface@@UAEXVCScriptThing@@VCCharString@@@Z	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing,long	1	yes	accepted									
 008a42c0	GetAction	CGameScriptInterface	__thiscall	CCharString	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
-008a4390	?ResetAction@CGameScriptInterface@@UAEXVCScriptThing@@@Z	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
+008a4390	ResetAction	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
 008a4480	?SetFaceHeroForAction@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing,bool	1	yes	accepted									
 008a4560	GetFaceHeroForAction	CGameScriptInterface	__thiscall	bool	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
 008a4650	?ResetFaceHeroForAction@CGameScriptInterface@@UAEXVCScriptThing@@@Z	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing,long	1	yes	accepted									
 008a4730	?SetTargetName@CGameScriptInterface@@UAEXVCScriptThing@@VCCharString@@@Z	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing,long	1	yes	accepted									
 008a4840	GetTargetName	CGameScriptInterface	__thiscall	CCharString	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
-008a4910	?ResetTargetName@CGameScriptInterface@@UAEXVCScriptThing@@@Z	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
+008a4910	ResetTargetName	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
 008a4a00	?SetFollowDistance@CGameScriptInterface@@UAEXVCScriptThing@@M@Z	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing,long	1	yes	accepted									
-008a4ae0	?GetFollowDistance@CGameScriptInterface@@UAEMVCScriptThing@@@Z	CGameScriptInterface	__thiscall	float	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
+008a4ae0	GetFollowDistance	CGameScriptInterface	__thiscall	float	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
 008a4be0	?ResetFollowDistance@CGameScriptInterface@@UAEXVCScriptThing@@@Z	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
 008a4cc0	?SetAttackHeroOnSight@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing,bool	1	yes	accepted									
 008a4da0	GetAttackHeroOnSight	CGameScriptInterface	__thiscall	bool	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
@@ -27310,10 +27310,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008a5050	?GetTimeToSpendHarassingHero@CGameScriptInterface@@UAEJVCScriptThing@@@Z	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing,long	1	yes	accepted									
 008a5140	?ResetTimeToSpendHarassingHero@CGameScriptInterface@@UAEXVCScriptThing@@@Z	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
 008a5220	?SetCombatNearbyEnemyFleeingBreakOffRange@CGameScriptInterface@@UAEXVCScriptThing@@M@Z	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing,long	1	yes	accepted									
-008a5300	?GetCombatNearbyEnemyFleeingBreakOffRange@CGameScriptInterface@@UAEMVCScriptThing@@@Z	CGameScriptInterface	__thiscall	float	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
+008a5300	GetCombatNearbyEnemyFleeingBreakOffRange	CGameScriptInterface	__thiscall	float	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
 008a5400	?ResetCombatNearbyEnemyFleeingBreakOffRange@CGameScriptInterface@@UAEXVCScriptThing@@@Z	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
 008a54e0	?SetCombatNearbyBreakOffRange@CGameScriptInterface@@UAEXVCScriptThing@@M@Z	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing,long	1	yes	accepted									
-008a55c0	?GetCombatNearbyBreakOffRange@CGameScriptInterface@@UAEMVCScriptThing@@@Z	CGameScriptInterface	__thiscall	float	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
+008a55c0	GetCombatNearbyBreakOffRange	CGameScriptInterface	__thiscall	float	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
 008a56c0	?ResetCombatNearbyBreakOffRange@CGameScriptInterface@@UAEXVCScriptThing@@@Z	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
 008a57b0	?SetStealStealableItems@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing,bool	1	yes	accepted									
 008a5890	GetStealStealableItems	CGameScriptInterface	__thiscall	bool	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
@@ -27332,10 +27332,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008a6480	?ResetAllowedToFollow@CGameScriptInterface@@UAEXVCScriptThing@@@Z	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing,long	1	yes	accepted									
 008a6570	?SetTableName@CGameScriptInterface@@UAEXVCScriptThing@@VCCharString@@@Z	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing,long	1	yes	accepted									
 008a6680	GetTableName	CGameScriptInterface	__thiscall	CCharString	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
-008a6750	?ResetTableName@CGameScriptInterface@@UAEXVCScriptThing@@@Z	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
+008a6750	ResetTableName	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
 008a6840	?SetSeatName@CGameScriptInterface@@UAEXVCScriptThing@@VCCharString@@@Z	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing,long	1	yes	accepted									
 008a6950	GetSeatName	CGameScriptInterface	__thiscall	CCharString	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
-008a6a20	?ResetSeatName@CGameScriptInterface@@UAEXVCScriptThing@@@Z	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
+008a6a20	ResetSeatName	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
 008a6b10	?SetDisableHeadLooking@CGameScriptInterface@@UAEXVCScriptThing@@_N@Z	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing,bool	1	yes	accepted									
 008a6bf0	GetDisableHeadLooking	CGameScriptInterface	__thiscall	bool	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
 008a6ce0	?ResetDisableHeadLooking@CGameScriptInterface@@UAEXVCScriptThing@@@Z	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing,long	1	yes	accepted									
@@ -27349,8 +27349,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008a7430	GetAvoidRegionExits	CGameScriptInterface	__thiscall	bool	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
 008a7520	?ResetAvoidRegionExits@CGameScriptInterface@@UAEXVCScriptThing@@@Z	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing,long	1	yes	accepted									
 008a7610	?SetTargetingDistanceOffset@CGameScriptInterface@@UAEXVCScriptThing@@M@Z	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing,long	1	yes	accepted									
-008a76f0	?GetTargetingDistanceOffset@CGameScriptInterface@@UAEMVCScriptThing@@@Z	CGameScriptInterface	__thiscall	float	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
-008a77f0	?ResetTargetingDistanceOffset@CGameScriptInterface@@UAEXVCScriptThing@@@Z	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
+008a76f0	GetTargetingDistanceOffset	CGameScriptInterface	__thiscall	float	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
+008a77f0	ResetTargetingDistanceOffset	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,CScriptThing	1	yes	accepted									
 008a78e0	ClearActiveGossipCategories	CGameScriptInterface	__thiscall	void	1	CGameScriptInterface *	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\8a\0x008A78E0_global_ClearActiveGossipCategories_CGameScriptInterface_UAEXXZ.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8a\CGameScriptInterface_ClearActiveGossipCategories_008a78e0.cpp
 008a7930	ClearIsGossipForPlayer	CGameScriptInterface	__thiscall	void	1	CGameScriptInterface *	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\8a\0x008A7930_global_ClearIsGossipForPlayer_CGameScriptInterface_UAEXXZ.cpp	PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8a\CGameScriptInterface_ClearIsGossipForPlayer_008a7930.cpp
 008a7980	CGameScriptInterface::EntityStopFollowing	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,CScriptThing const &	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\8a\0x008A7980_global_EntityStopFollowing_CGameScriptInterface_UBEXABVCScriptThing_Z.cpp				

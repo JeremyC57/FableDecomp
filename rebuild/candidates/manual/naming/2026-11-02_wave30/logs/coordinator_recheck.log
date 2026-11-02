@@ -1,0 +1,125 @@
+addr       parity           behav  name
+0051ed60   RELOCATION_MATCH PASS   CThingManager::PeekPThingWithUID
+0052d5c0   RELOCATION_MATCH PASS   std::_List_base<NUISystem::CChangingStateComponent::EChangingStateComponentState, std::allocator<NUISystem::CChangingStateComponent::EChangingStateComponentState>>::~_List_base
+0052d770   RELOCATION_MATCH PASS   NUISystem::CChangingStateComponent::`scalar_deleting_destructor'
+00569940   RELOCATION_MATCH PASS   std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >::~vector
+00569c30   RELOCATION_MATCH PASS   LHNetworkLib::LHHttpHeaders::~LHHttpHeaders
+0057abd6   RELOCATION_MATCH PASS   CTCHeroStats::GetPMaritalHome
+0057ae53   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+0057ae53   WARN RELOC_NAME: ?push_back@CThingList@@QAEXABQAVCThingCreatureBase@@@Z -> 005805c9 labelled 'LinkedList_InsertNode_Wrapper'
+0057ae53   RELOCATION_MATCH PASS   CTCHeroStats::GetWivesInMarriageState
+006868e0   WARN SHARED_HEADER_AVAILABLE CTCBase
+006868e0   MATCH            PASS   CTCBase::OnDie
+00713740   WARN SHARED_HEADER_AVAILABLE CTCBase
+00713740   RELOCATION_MATCH PASS   CTCScriptedControl::OnDie
+007f0890   WARN SHARED_HEADER_AVAILABLE CTCBase
+007f0890   RELOCATION_MATCH PASS   CTCKrakenTentacle::OnDie
+007f0b10   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+007f0b10   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007f0b10   RELOCATION_MATCH PASS   CTCKrakenTentacle::DoDieFX
+008976f0   WARN RELOC_NAME: ?GetPrimarySlotThing@CarryingMethods@@QAEPAVCThing@@XZ -> 006a1440 labelled 'CTCCarrying::GetThingInPrimarySlot'
+008976f0   RELOCATION_MATCH PASS   CGameScriptInterface::EntityGetThingInPrimarySlot
+0089faa0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0089faa0   RELOCATION_MATCH PASS   CGameScriptInterface::CreateLight
+008a23b0   RELOCATION_MATCH PASS   CGameScriptInterface::SetWanderCentrePoint
+008a24c0   RELOCATION_MATCH PASS   CGameScriptInterface::GetWanderCentrePoint
+008a2590   RELOCATION_MATCH PASS   CGameScriptInterface::ResetWanderCentrePoint
+008a2770   RELOCATION_MATCH PASS   CGameScriptInterface::GetWanderMinDistance
+008a2a30   RELOCATION_MATCH PASS   CGameScriptInterface::GetWanderMaxDistance
+008a3a60   RELOCATION_MATCH PASS   CGameScriptInterface::GetMaxHeroReactionDistance
+008a3fd0   RELOCATION_MATCH PASS   CGameScriptInterface::GetActionFrequencyVariation
+008a4390   RELOCATION_MATCH PASS   CGameScriptInterface::ResetAction
+008a4910   RELOCATION_MATCH PASS   CGameScriptInterface::ResetTargetName
+008a4ae0   RELOCATION_MATCH PASS   CGameScriptInterface::GetFollowDistance
+008a5300   RELOCATION_MATCH PASS   CGameScriptInterface::GetCombatNearbyEnemyFleeingBreakOffRange
+008a55c0   RELOCATION_MATCH PASS   CGameScriptInterface::GetCombatNearbyBreakOffRange
+008a6750   RELOCATION_MATCH PASS   CGameScriptInterface::ResetTableName
+008a6a20   RELOCATION_MATCH PASS   CGameScriptInterface::ResetSeatName
+008a76f0   RELOCATION_MATCH PASS   CGameScriptInterface::GetTargetingDistanceOffset
+008a77f0   RELOCATION_MATCH PASS   CGameScriptInterface::ResetTargetingDistanceOffset
+00a9d3a0   RELOCATION_MATCH PASS   C3DMeshFilePrimitiveChunk::~C3DMeshFilePrimitiveChunk
+00b09e40   RELOCATION_MATCH PASS   std::_List_base<CEnginePrimitiveSpriteTrail::CSpriteTrailEntry, std::allocator<CEnginePrimitiveSpriteTrail::CSpriteTrailEntry>>::~_List_base
+00b43bb0   RELOCATION_MATCH PASS   std::_List_base<CEngineMap *, std::allocator<CEngineMap *>>::~_List_base
+00cbeed2   RELOCATION_MATCH PASS   _global::IsPlayerThreateningEntity
+00cbef30   RELOCATION_MATCH PASS   _global::CreateAndFadeInCreature
+00cbefc1   RELOCATION_MATCH PASS   _global::CreateAndFadeInObject
+00cbf9de   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00cbf9de   WARN RELOC_NAME: ?_M_find@?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QBEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@2@ABVCCharString@@@Z -> 00cd2b86 labelled '_global::FindRegisteredCutsceneActor'
+00cbf9de   RELOCATION_MATCH PASS   _global::CSFindThing
+00d2c530   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d2c530   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d2c530   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00d2c530   RELOCATION_MATCH PASS   CVtable_012cc320::vfunc_1
+00d7ae80   RELOCATION_MATCH PASS   NScript::CQ_HeroSoulsThunderScript::Main
+00d81820   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d81820   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d81820   RELOCATION_MATCH PASS   CBRIAR_ROSE_IMPOSTER::Main
+00d9c4a0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d9c4a0   RELOCATION_MATCH PASS   CHobbeBarrel::Main
+00dbde40   RELOCATION_MATCH PASS   NScript::CQ_NewOakValeIntroScript::DoMission
+00dbf2d0   WARN RELOC_NAME: ?Construct@CCutsceneCastMap@@QAEXXZ -> 00cdbf70 labelled 'std::_Rb_tree<T_node0x24_00cdbf70>::_Rb_tree'
+00dbf2d0   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00dbf2d0   WARN RELOC_NAME: ?Destroy@CCutsceneCastMap@@QAEXXZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00dbf2d0   RELOCATION_MATCH PASS   NScript::CQ_OakValeBanditRaidScript::Main
+00df36e0   RELOCATION_MATCH PASS   NScript::CQ_SummoningTheShipScript::DoMission
+00e11bb0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00e11bb0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e11bb0   WARN RELOC_NAME: ??1ScriptResource@@QAE@XZ -> 007e74d0 labelled 'CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase'
+00e11bb0   RELOCATION_MATCH PASS   CVtable_012e04fc::vfunc_1
+00e15500   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e15500   RELOCATION_MATCH PASS   _global::CScriptGameResourceObjectScriptedThingBase_HandleWhiteBalverineQuestObjective
+00e1e530   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e1e530   RELOCATION_MATCH PASS   CQR_EscortTraderScript::Main
+00eeb7b0   WARN SHARED_HEADER_AVAILABLE CIsThingConscious
+00eeb7b0   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00eeb7b0   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00eeb7b0   RELOCATION_MATCH PASS   CExpression_PicklockScript::Main
+
+WINS: 47
+  0051ed60 RELOCATION_MATCH CThingManager::?PeekPThingWithUID@CThingManager@@QBEPBVCThing@@_K@Z
+  0052d5c0 RELOCATION_MATCH std::_List_base<NUISystem::CChangingStateComponent::EChangingStateComponentState,std::allocator<NUISystem::CChangingStateComponent::EChangingStateComponentState> >::??1?$_List_base@W4EChangingStateComponentState@CChangingStateComponent@NUISystem@@V?$allocator@W4EChangingStateComponentState@CChangingStateComponent@NUISystem@@@std@@@std@@QAE@XZ
+  0052d770 RELOCATION_MATCH NUISystem::CChangingStateComponent::??_GCChangingStateComponent
+  00569940 RELOCATION_MATCH std::vector<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char> > > >::??1?$vector@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DV?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@QAE@XZ
+  00569c30 RELOCATION_MATCH LHNetworkLib::LHHttpHeaders::??1LHHttpHeaders@LHNetworkLib@@QAE@XZ
+  0057abd6 RELOCATION_MATCH CTCHeroStats::GetPMaritalHome
+  0057ae53 RELOCATION_MATCH CTCHeroStats::GetWivesInMarriageState
+  006868e0 MATCH CTCBase::?OnDie@CTCBase@@UAEXXZ
+  00713740 RELOCATION_MATCH CTCScriptedControl::?OnDie@CTCScriptedControl@@UAEXXZ
+  007f0890 RELOCATION_MATCH CTCKrakenTentacle::?OnDie@CTCKrakenTentacle@@UAEXXZ
+  007f0b10 RELOCATION_MATCH CTCKrakenTentacle::?DoDieFX@CTCKrakenTentacle@@QAEXXZ
+  008976f0 RELOCATION_MATCH CGameScriptInterface::?EntityGetThingInPrimarySlot@CGameScriptInterface@@UBE?AVCScriptThing@@ABV2@@Z
+  0089faa0 RELOCATION_MATCH CGameScriptInterface::?CreateLight@CGameScriptInterface@@UBE?AVCScriptThing@@ABVC3DVector@@ABVCRGBColour@@ABVCCharString@@MM_N@Z
+  008a23b0 RELOCATION_MATCH CGameScriptInterface::?SetWanderCentrePoint@CGameScriptInterface@@UAEXVCScriptThing@@VC3DVector@@@Z
+  008a24c0 RELOCATION_MATCH CGameScriptInterface::?GetWanderCentrePoint@CGameScriptInterface@@UAE?AVC3DVector@@VCScriptThing@@@Z
+  008a2590 RELOCATION_MATCH CGameScriptInterface::?ResetWanderCentrePoint@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+  008a2770 RELOCATION_MATCH CGameScriptInterface::?GetWanderMinDistance@CGameScriptInterface@@UAEMVCScriptThing@@@Z
+  008a2a30 RELOCATION_MATCH CGameScriptInterface::?GetWanderMaxDistance@CGameScriptInterface@@UAEMVCScriptThing@@@Z
+  008a3a60 RELOCATION_MATCH CGameScriptInterface::?GetMaxHeroReactionDistance@CGameScriptInterface@@UAEMVCScriptThing@@@Z
+  008a3fd0 RELOCATION_MATCH CGameScriptInterface::?GetActionFrequencyVariation@CGameScriptInterface@@UAEMVCScriptThing@@@Z
+  008a4390 RELOCATION_MATCH CGameScriptInterface::?ResetAction@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+  008a4910 RELOCATION_MATCH CGameScriptInterface::?ResetTargetName@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+  008a4ae0 RELOCATION_MATCH CGameScriptInterface::?GetFollowDistance@CGameScriptInterface@@UAEMVCScriptThing@@@Z
+  008a5300 RELOCATION_MATCH CGameScriptInterface::?GetCombatNearbyEnemyFleeingBreakOffRange@CGameScriptInterface@@UAEMVCScriptThing@@@Z
+  008a55c0 RELOCATION_MATCH CGameScriptInterface::?GetCombatNearbyBreakOffRange@CGameScriptInterface@@UAEMVCScriptThing@@@Z
+  008a6750 RELOCATION_MATCH CGameScriptInterface::?ResetTableName@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+  008a6a20 RELOCATION_MATCH CGameScriptInterface::?ResetSeatName@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+  008a76f0 RELOCATION_MATCH CGameScriptInterface::?GetTargetingDistanceOffset@CGameScriptInterface@@UAEMVCScriptThing@@@Z
+  008a77f0 RELOCATION_MATCH CGameScriptInterface::?ResetTargetingDistanceOffset@CGameScriptInterface@@UAEXVCScriptThing@@@Z
+  00a9d3a0 RELOCATION_MATCH C3DMeshFilePrimitiveChunk::??1C3DMeshFilePrimitiveChunk@@UAE@XZ
+  00b09e40 RELOCATION_MATCH std::_List_base<CEnginePrimitiveSpriteTrail::CSpriteTrailEntry,std::allocator<CEnginePrimitiveSpriteTrail::CSpriteTrailEntry> >::??1?$_List_base@VCSpriteTrailEntry@CEnginePrimitiveSpriteTrail@@V?$allocator@VCSpriteTrailEntry@CEnginePrimitiveSpriteTrail@@@std@@@std@@QAE@XZ
+  00b43bb0 RELOCATION_MATCH std::_List_base<CEngineMap*,std::allocator<CEngineMap*> >::??1?$_List_base@PAVCEngineMap@@V?$allocator@PAVCEngineMap@@@std@@@std@@QAE@XZ
+  00cbeed2 RELOCATION_MATCH _global::?IsPlayerThreateningEntity@@
+  00cbef30 RELOCATION_MATCH _global::?CreateAndFadeInCreature@@
+  00cbefc1 RELOCATION_MATCH _global::?CreateAndFadeInObject@@
+  00cbf9de RELOCATION_MATCH _global::?CSFindThing@@
+  00d2c530 RELOCATION_MATCH CVtable_012cc320::Main
+  00d7ae80 RELOCATION_MATCH NScript::CQ_HeroSoulsThunderScript::?Main@CQ_HeroSoulsThunderScript@NScript@@
+  00d81820 RELOCATION_MATCH CBRIAR_ROSE_IMPOSTER::Main
+  00d9c4a0 RELOCATION_MATCH NScript::CHobbeBarrel::Main
+  00dbde40 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::DoMission
+  00dbf2d0 RELOCATION_MATCH NScript::CQ_OakValeBanditRaidScript::Main
+  00df36e0 RELOCATION_MATCH NScript::CQ_SummoningTheShipScript::DoMission
+  00e11bb0 RELOCATION_MATCH CVtable_012e04fc::Main
+  00e15500 RELOCATION_MATCH _global::HandleWhiteBalverineQuestObjective
+  00e1e530 RELOCATION_MATCH CQR_EscortTraderScript::HandleTraderEscortQuestEnd
+  00eeb7b0 RELOCATION_MATCH CExpression_PicklockScript::?Main@CExpression_PicklockScript@@
