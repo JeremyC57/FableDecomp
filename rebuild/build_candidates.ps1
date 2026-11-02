@@ -63390,16 +63390,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004da967'
-        Module = 'C3DAnimationBlendState'
-        Source = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004da967.cpp'
-        TestSource = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004da967_test.cpp'
+        Module = 'CTCActionUseBase'
+        Source = '00/4d/CTCActionUseBase_CTCActionUseBase_004da967.cpp'
+        TestSource = '00/4d/CTCActionUseBase_CTCActionUseBase_004da967_test.cpp'
         PassPattern = 'BLENDSTATE_DTOR_OK'
     }
     [pscustomobject]@{
         Address = '004db004'
-        Module = 'C3DAnimationBlendState'
-        Source = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004db004.cpp'
-        TestSource = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004db004_test.cpp'
+        Module = 'CTCSmashableBase'
+        Source = '00/4d/CTCSmashableBase_CTCSmashableBase_004db004.cpp'
+        TestSource = '00/4d/CTCSmashableBase_CTCSmashableBase_004db004_test.cpp'
         PassPattern = 'BLENDSTATE_DTOR_OK'
     }
     [pscustomobject]@{
@@ -63425,9 +63425,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004dc7c8'
-        Module = 'C3DAnimationBlendState'
-        Source = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004dc7c8.cpp'
-        TestSource = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004dc7c8_test.cpp'
+        Module = 'CTCExpression'
+        Source = '00/4d/CTCExpression_CTCExpression_004dc7c8.cpp'
+        TestSource = '00/4d/CTCExpression_CTCExpression_004dc7c8_test.cpp'
         PassPattern = 'BLENDDTOR_OK'
     }
     [pscustomobject]@{
@@ -63439,16 +63439,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004dcbce'
-        Module = 'C3DAnimationBlendState'
-        Source = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004dcbce.cpp'
-        TestSource = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004dcbce_test.cpp'
+        Module = 'CTCDecapitation'
+        Source = '00/4d/CTCDecapitation_CTCDecapitation_004dcbce.cpp'
+        TestSource = '00/4d/CTCDecapitation_CTCDecapitation_004dcbce_test.cpp'
         PassPattern = 'PARITY_OK_004dcbce'
     }
     [pscustomobject]@{
         Address = '004dccd2'
-        Module = 'C3DAnimationBlendState'
-        Source = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004dccd2.cpp'
-        TestSource = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004dccd2_test.cpp'
+        Module = 'CTCResurrectionItem'
+        Source = '00/4d/CTCResurrectionItem_CTCResurrectionItem_004dccd2.cpp'
+        TestSource = '00/4d/CTCResurrectionItem_CTCResurrectionItem_004dccd2_test.cpp'
         PassPattern = 'BLENDSTATE_DTOR_OK'
     }
     [pscustomobject]@{
@@ -63460,16 +63460,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004dcdfd'
-        Module = 'C3DAnimationBlendState'
-        Source = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004dcdfd.cpp'
-        TestSource = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004dcdfd_test.cpp'
+        Module = 'CTCDRumble'
+        Source = '00/4d/CTCDRumble_CTCDRumble_004dcdfd.cpp'
+        TestSource = '00/4d/CTCDRumble_CTCDRumble_004dcdfd_test.cpp'
         PassPattern = 'DTOR_BLEND_OK'
     }
     [pscustomobject]@{
         Address = '004dcf4e'
-        Module = 'C3DAnimationBlendState'
-        Source = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004dcf4e.cpp'
-        TestSource = '00/4d/C3DAnimationBlendState_C3DAnimationBlendState_004dcf4e_test.cpp'
+        Module = 'CTCHasName'
+        Source = '00/4d/CTCHasName_CTCHasName_004dcf4e.cpp'
+        TestSource = '00/4d/CTCHasName_CTCHasName_004dcf4e_test.cpp'
         PassPattern = 'BLENDSTATE_DTOR_OK'
     }
     [pscustomobject]@{
@@ -165611,9 +165611,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005dae40'
-        Module = '_unattributed'
-        Source = '00/5d/unattributed_CSharedOwner005dae40_005dae40.cpp'
-        TestSource = '00/5d/unattributed_CSharedOwner005dae40_005dae40_test.cpp'
+        Module = 'CTCWeapon'
+        Source = '00/5d/CTCWeapon_CTCWeapon_005dae40.cpp'
+        TestSource = '00/5d/CTCWeapon_CTCWeapon_005dae40_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '005dae40_TEST PASS'
     }
@@ -165659,41 +165659,41 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00732cb0'
-        Module = '_unattributed'
-        Source = '00/73/unattributed_CSharedOwner00732cb0_00732cb0.cpp'
-        TestSource = '00/73/unattributed_CSharedOwner00732cb0_00732cb0_test.cpp'
+        Module = 'CTCClock'
+        Source = '00/73/CTCClock_CTCClock_00732cb0.cpp'
+        TestSource = '00/73/CTCClock_CTCClock_00732cb0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '00732cb0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00746d00'
-        Module = '_unattributed'
-        Source = '00/74/unattributed_CSharedOwner00746d00_00746d00.cpp'
-        TestSource = '00/74/unattributed_CSharedOwner00746d00_00746d00_test.cpp'
+        Module = 'CTCBed'
+        Source = '00/74/CTCBed_CTCBed_00746d00.cpp'
+        TestSource = '00/74/CTCBed_CTCBed_00746d00_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '00746d00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0078afc0'
-        Module = '_unattributed'
-        Source = '00/78/unattributed_CSharedOwner0078afc0_0078afc0.cpp'
-        TestSource = '00/78/unattributed_CSharedOwner0078afc0_0078afc0_test.cpp'
+        Module = 'CTCHeroRangedAttacks'
+        Source = '00/78/CTCHeroRangedAttacks_CTCHeroRangedAttacks_0078afc0.cpp'
+        TestSource = '00/78/CTCHeroRangedAttacks_CTCHeroRangedAttacks_0078afc0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '0078afc0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007dfca0'
-        Module = '_unattributed'
-        Source = '00/7d/unattributed_CSharedOwner007dfca0_007dfca0.cpp'
-        TestSource = '00/7d/unattributed_CSharedOwner007dfca0_007dfca0_test.cpp'
+        Module = 'CTCFish'
+        Source = '00/7d/CTCFish_CTCFish_007dfca0.cpp'
+        TestSource = '00/7d/CTCFish_CTCFish_007dfca0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '007dfca0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '007e48e0'
-        Module = '_unattributed'
-        Source = '00/7e/unattributed_CSharedOwner007e48e0_007e48e0.cpp'
-        TestSource = '00/7e/unattributed_CSharedOwner007e48e0_007e48e0_test.cpp'
+        Module = 'CTCWillResponse'
+        Source = '00/7e/CTCWillResponse_CTCWillResponse_007e48e0.cpp'
+        TestSource = '00/7e/CTCWillResponse_CTCWillResponse_007e48e0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /Oa'
         PassPattern = '007e48e0_TEST PASS'
     }
