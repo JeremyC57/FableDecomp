@@ -1,5 +1,7 @@
 // CTCHeroStats::GetWivesInMarriageState(std::list<CThingCreatureBase*>&, EMarriageState) const -- collects the living wives whose marriage is in the given state (0 = any)
 // Leaf: GetWivesInMarriageState
+// Naming wave 30 (family c699): the UID lookup is the const PDB pair CTCBase::GetThingManager() const 0x00686AF0 (const CThingManager&) and
+//   ?PeekPThingWithUID@CThingManager@@QBEPBVCThing@@_K@Z 0x0051ED60 (both PDBs); was CWorld::GetThingFromUID
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057AE53, 97 bytes; frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`).
 // Callees: std::list<CThingCreatureBase*>::clear() @ 0x0057F5E1 (manifest "CGuiControlTreePane::SortTreeRecursively" is
@@ -29,8 +31,8 @@ struct CThingList {                                  // std::list<CThingCreature
     void push_back(CThingCreatureBase* const& wife); // 0x005805C9
 };
 
-class CWorld { public:
-    CThing* GetThingFromUID(unsigned __int64 uid);   // 0x0051ED60
+class CThingManager { public:
+    const CThing* PeekPThingWithUID(unsigned __int64 uid) const;   // 0x0051ED60 (Ego_r.pdb / FableWin.pdb)
 };
 
 struct CHeroMarriageInfoNode {
@@ -48,7 +50,7 @@ class CTCHeroStats { public:
     unsigned char          _pad_0x08[0x1D0];
     CHeroMarriageInfoNode* Marriages_Head;           // +0x1D8 list sentinel (PDB +0x1F0)
 
-    CWorld* GetThingManager() const;                 // 0x00686AF0 (CTCBase)
+    const CThingManager& GetThingManager() const;    // 0x00686AF0 (Ego_r.pdb / FableWin.pdb: CTCBase, protected, const)
     void GetWivesInMarriageState(CThingList& wives, long state) const;
 };
 
@@ -58,9 +60,9 @@ void CTCHeroStats::GetWivesInMarriageState(CThingList& wives, long state) const
     CHeroMarriageInfoNode* head = Marriages_Head;
     for (CHeroMarriageInfoNode* node = head->Next; node != head; node = node->Next) {
         if (state == 0 || node->State == state) {
-            CThing* wife = GetThingManager()->GetThingFromUID(node->WifeUID);
+            const CThing* wife = GetThingManager().PeekPThingWithUID(node->WifeUID);
             if (wife && wife->ThingType == 1)
-                wives.push_back(static_cast<CThingCreatureBase*>(wife));
+                wives.push_back((CThingCreatureBase*)wife);
         }
     }
 }

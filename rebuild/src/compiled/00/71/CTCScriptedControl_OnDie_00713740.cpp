@@ -1,5 +1,7 @@
-// CTCScriptedControl::OnRemove() (vtable slot 13) -- tell the thing's interface-7 component its state group is gone, flag the CTCAnimationComplex animation (interface 0x5A) as changed, then the empty CTCBase slot-13 base
-// Leaf: vfunc_13
+// CTCScriptedControl::OnDie() (vtable slot 13) -- tell the thing's interface-7 component its state group is gone, flag the CTCAnimationComplex animation (interface 0x5A) as changed, then the empty CTCBase slot-13 base
+// Leaf: ?OnDie@CTCScriptedControl@@UAEXXZ
+// Naming wave 30 (family c699): the slot-13 pair is OnDie: own row ?OnDie@CTCScriptedControl@@UAEXXZ and the empty base ?OnDie@CTCBase@@UAEXXZ
+//   0x006868E0 (Ego_r.pdb / FableWin.pdb; slot 13 = OnDie in the CTCBase order). Was the placeholder slot-13 Leaf / catalog "OnRemove".
 // Retail: Fable.exe 0x00713740, 135 bytes (plain `ret`). Vtable 0x012658E4 (CTCScriptedControl) slot 13 (manifest
 // "CTCScriptedControl::vfunc_13"; the slot's CTCBase body @ 0x006868E0 is a bare `ret`, manifest "$E2" is wrong).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (x2, the inline GetInterface of the landed
@@ -55,16 +57,16 @@ class CTCBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12();
-    virtual void vfunc_13();                // slot 13: 0x006868E0 (empty)
+    virtual void OnDie();                // slot 13: 0x006868E0 (empty)
     CThing* ParentThing;                    // +0x04
     bool    ToBeRemoved;                    // +0x08
     bool    IsInGlobalUpdateTCs;            // +0x09
 };
 class CTCScriptedControl : public CTCBase { public:       // vtable 0x012658E4
-    virtual void vfunc_13();
+    virtual void OnDie();
 };
 
-void CTCScriptedControl::vfunc_13()
+void CTCScriptedControl::OnDie()
 {
     if (ParentThing->HasInterface(7)) {
         long type = 7;
@@ -85,5 +87,5 @@ void CTCScriptedControl::vfunc_13()
             animation.m_changed = 1;
         }
     }
-    CTCBase::vfunc_13();
+    CTCBase::OnDie();
 }

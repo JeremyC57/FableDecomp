@@ -48129,9 +48129,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a9d3a0'
-        Module = 'CTCInventoryItem'
-        Source = '00/a9/CTCInventoryItem_OnDie_00a9d3a0.cpp'
-        TestSource = '00/a9/CTCInventoryItem_OnDie_00a9d3a0_test.cpp'
+        Module = 'C3DMeshFilePrimitiveChunk'
+        Source = '00/a9/C3DMeshFilePrimitiveChunk_C3DMeshFilePrimitiveChunk_00a9d3a0.cpp'
+        TestSource = '00/a9/C3DMeshFilePrimitiveChunk_C3DMeshFilePrimitiveChunk_00a9d3a0_test.cpp'
         PassPattern = 'ONDIE_OK'
     }
     [pscustomobject]@{
@@ -63481,9 +63481,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0051ed60'
-        Module = 'CStopWatch'
-        Source = '00/51/CStopWatch_GetTicks_0051ed60.cpp'
-        TestSource = '00/51/CStopWatch_GetTicks_0051ed60_test.cpp'
+        Module = 'CThingManager'
+        Source = '00/51/CThingManager_PeekPThingWithUID_0051ed60.cpp'
+        TestSource = '00/51/CThingManager_PeekPThingWithUID_0051ed60_test.cpp'
         PassPattern = 'BEHAVIOUR_OK'
     }
     [pscustomobject]@{
@@ -248319,8 +248319,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00713740'
         Module = 'CTCScriptedControl'
-        Source = '00/71/CTCScriptedControl_OnRemove_00713740.cpp'
-        TestSource = '00/71/CTCScriptedControl_OnRemove_00713740_test.cpp'
+        Source = '00/71/CTCScriptedControl_OnDie_00713740.cpp'
+        TestSource = '00/71/CTCScriptedControl_OnDie_00713740_test.cpp'
         PassPattern = '00713740_TEST PASS'
     }
     [pscustomobject]@{

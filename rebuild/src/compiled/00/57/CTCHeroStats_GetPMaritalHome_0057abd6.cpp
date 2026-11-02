@@ -1,4 +1,6 @@
 // CTCHeroStats::GetPMaritalHome(const CThing*) const -- the building the hero shares with this spouse (first marriage record naming her whose home still exists as a building), else null
+// Naming wave 30 (family c699): the UID lookup is the const PDB pair CTCBase::GetThingManager() const 0x00686AF0 (const CThingManager&) and
+//   ?PeekPThingWithUID@CThingManager@@QBEPBVCThing@@_K@Z 0x0051ED60 (both PDBs); was CWorld::GetThingFromUID through GetWorld()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057ABD6, 83 bytes.
 // Callees: CTCBase::GetWorld() @ 0x00686AF0 (returns the world global @ 0x013B8A1C),
 //          CWorld::GetThingFromUID(unsigned __int64) @ 0x0051ED60 (thing map at +0x58; manifest label
@@ -22,8 +24,8 @@ class CThing { public:
     unsigned __int64 UniqueID;                 // +0x18
 };
 
-class CWorld { public:
-    CThing* GetThingFromUID(unsigned __int64 uid);   // 0x0051ED60
+class CThingManager { public:
+    const CThing* PeekPThingWithUID(unsigned __int64 uid) const;   // 0x0051ED60 (Ego_r.pdb / FableWin.pdb)
 };
 
 struct CHeroMarriageInfoNode {                 // std::list<CHeroMarriageInfo> node
@@ -39,7 +41,7 @@ struct CTCHeroStats_Retail {
     unsigned char          _pad_0x00[0x1D8];
     CHeroMarriageInfoNode* Marriages_Head;     // +0x1D8 (PDB +0x1F0)
 
-    CWorld* GetWorld() const;                  // 0x00686AF0
+    const CThingManager& GetThingManager() const; // 0x00686AF0 (Ego_r.pdb / FableWin.pdb: CTCBase, protected, const)
     CThing* GetPMaritalHome(const CThing* wife) const;
 };
 
@@ -48,9 +50,9 @@ CThing* CTCHeroStats_Retail::GetPMaritalHome(const CThing* wife) const
     CHeroMarriageInfoNode* head = Marriages_Head;
     for (CHeroMarriageInfoNode* node = head->Next; node != head; node = node->Next) {
         if (node->WifeUID == wife->UniqueID) {
-            CThing* home = GetWorld()->GetThingFromUID(node->MaritalHomeUID);
+            const CThing* home = GetThingManager().PeekPThingWithUID(node->MaritalHomeUID);
             if (home && home->ThingType == 3)
-                return home;
+                return (CThing*)home;
         }
     }
     return 0;
