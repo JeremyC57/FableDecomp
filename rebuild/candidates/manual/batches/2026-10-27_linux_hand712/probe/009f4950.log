@@ -1,0 +1,1 @@
+1	nested-if: IsValid() then if (Buffer) { delete[] Buffer; Buffer = 0; }, CInitBaseClass::Uninitialise() last	RELOCATION_MATCH (relocs IsValid QBE, ??_V import, Uninitialise IAE)

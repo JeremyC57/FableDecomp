@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+009f4950	RELOCATION_MATCH	43v43	PASS	CScratchBuffer::Uninitialise (?Uninitialise@CScratchBuffer@@QAEXXZ); 1 probe; local CInitBaseClass/CScratchBuffer over engine/CBaseClass.h (no header exists)
+00a23ad0	RELOCATION_MATCH	37v37	PASS	CMeshDataBank::FrameEnd (label _Dest_val<...> wrong); 1 probe; hdr/ overlay FABLE_RETAIL_CMESHDATABANK + new engine/CResourceBank.h
+0122a790	RELOCATION_MATCH	40v40	PASS	NProfileTimer::`dynamic atexit destructor for 'LogFile'' (_$E2 of the landed 0x01224100 TU; label wrong); 3 probes (header-policy refinements, all matched)
+00a9d270	RELOCATION_MATCH	43v43	PASS	C3DMeshFileEngineMaterialChunk::~C3DMeshFileEngineMaterialChunk implicit (label wrong); 3 probes: probe 1 DIFFER(46v43) reloaded Object, fixed by the named-local Release (GOTCHAS 656)
+00e839f0	RELOCATION_MATCH	45v45	PASS	NScript::CV_FisticuffsClubScript::CFisticuffsMember::~CFisticuffsMember implicit (label wrong); 1 probe
+006a5d50	RELOCATION_MATCH	62v62	PASS	CThingPhysical::~CThingPhysical (label CTCFishingSpot wrong); 1 probe
+007b0300	RELOCATION_MATCH	46v46	PASS	CTCFishingSpot::~CTCFishingSpot (label right); 1 probe
+00719c70	RELOCATION_MATCH	54v54	PASS	CTCScriptedControl::~CTCScriptedControl implicit (label CExclusiveAssert wrong); 1 probe
+0055d590	RELOCATION_MATCH	54v54	PASS	CTCPhotojournalCapture::~CTCPhotojournalCapture (label CExclusiveAssert wrong); 1 probe; hdr/ CTCBase.h RemoveFromGlobalTCs declaration
+00b0ca90	RELOCATION_MATCH	60v60	PASS	NParticleEngine::CPSCUpdateNormal::~CPSCUpdateNormal (label CExclusiveAssert wrong); 2 probes

@@ -1,0 +1,3 @@
+1	implicit dtor; CIVCountedPointer dtor -> Release() reading Object member twice (if (Object) { if (Object->Release()==0) Object->Delete(); Object=0; })	DIFFER(46v43): eax for the test, Object reloaded into ecx after the dec
+2	same, Object copied into a named local first in Release() (GOTCHAS chunk 656)	RELOCATION_MATCH
+3	same, engine/C3DMeshFileEngineMaterialChunk.h included under a layout name + sizeof assert	RELOCATION_MATCH

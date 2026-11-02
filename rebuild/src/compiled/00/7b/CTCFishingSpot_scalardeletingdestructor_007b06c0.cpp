@@ -38,7 +38,9 @@ class CTCFishingSpot : public CTCBase { public:                  // vtable 0x012
     CBaseIntelligentPointer PParticle2;                // +0x14
     CBaseIntelligentPointer PParticleFish;             // +0x1c
     bool                Enabled;                   // +0x24
-    void RemoveParticles();                        // 0x007B01C0
+protected:
+    void RemoveParticles();                        // 0x007B01C0  // protected (?RemoveParticles@CTCFishingSpot@@IAEXXZ, Ego_r + FableWin; respelled at the chunk 712 landing)
+public:
     CTCFishingSpot(CThing& owner) : CTCBase(owner) { }
     __forceinline virtual ~CTCFishingSpot() { RemoveParticles(); }
 };

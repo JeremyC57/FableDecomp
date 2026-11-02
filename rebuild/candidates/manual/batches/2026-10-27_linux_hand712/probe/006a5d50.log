@@ -1,0 +1,1 @@
+1	user dtor { GetThingManager().RemoveFromPhysicalList(*this); } over FABLE_RETAIL_CCLASS + local CThing (opaque members), CThingPhysical.h layout-rename + sizeof assert, real STLport list text	RELOCATION_MATCH (relocs vtable, PCurrentThingManager, RemoveFromPhysicalList, ~CBaseIntelligentPointer x2, ~_List_base<CHealthOverTimeHelper>, ~CThing)

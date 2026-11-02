@@ -1,0 +1,1 @@
+1	user dtor { RemoveParticles(); } out of line over FABLE_RETAIL_CTCBASE, CIntelligentPointer<CThing> members with no own dtor	RELOCATION_MATCH (relocs vtable, RemoveParticles IAE, ~CBaseIntelligentPointer x3, ~CTCBase)

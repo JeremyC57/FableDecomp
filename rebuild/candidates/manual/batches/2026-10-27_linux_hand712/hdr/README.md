@@ -1,0 +1,14 @@
+# Chunk 712 header overlays (hdr/engine/)
+
+Three files. Two edits are opt-in (new macro or an existing opt-in branch); one header is new. The default (flattened) text of
+every existing header is unchanged.
+
+| header | kind | used by | change |
+|---|---|---|---|
+| engine/CMeshDataBank.h | new opt-in macro FABLE_RETAIL_CMESHDATABANK | 0x00A23AD0 | Under the macro the four resource banks (+0x170 MeshResourceBank, +0x1ec MeshStatsResourceBank, +0x268 AnimationResourceBank, +0x2e4 PhysicsMeshResourceBank) are typed `CResourceBank` (from the new engine/CResourceBank.h) instead of `unsigned char[0x7c]`, and the PDB member `void FrameEnd();` (?FrameEnd@CMeshDataBank@@QAEXXZ, retail 0x00A23AD0) is declared. Offsets, sizeof 0x460 and the static asserts are unchanged; the banner line now reads "then hand-corrected to retail (RETAIL_MARK below)" and a `// Retail opt-in (chunk 712)` evidence block was added so gen_class_headers.py keeps the edit. No landed source defines the macro (grep over rebuild/: 0 hits), so the 13 landed includers preprocess to the same text. The vptr stays flattened (`__vftable` data member): the retail base chain CMeshDataBank : CBankFileAsync : CBankFile (RTTI of vtable 0x0129CE94) needs engine/CBankFile.h, which is on HOLD -- header debt. |
+| engine/CResourceBank.h | new header (no generated header existed) | 0x00A23AD0 (through CMeshDataBank.h) | `class CResourceBank : public CBaseClassNonCopyable` (RTTI .?AVCResourceBank@@ : CBaseClassNonCopyable : CBaseClass, vtable 0x0129C814 with one slot, ??_G 0x009FC750), members ResourceList (CResourceList, engine/CResourceList.h, 0x3c) +0x04 and LoadingQueue +0x40, sizeof 0x7c asserted. Member functions = the Ego_r.pdb / FableWin.pdb set (ctor, virtual dtor, AddResource, RemoveResource, AddToLoadingQueue, ProcessLoadingQueue(bool, double) 0x009FC410, FrameEnd 0x009FC430). Evidence: FrameEnd 0x009FC430 increments +0x30 and +0x6c (CurrentFrame +0x2c of each list) and clears +0x3c / +0x78; ProcessLoadingQueue works on this+0x40; CMeshDataBank's banks are 0x7c apart. Carries a `// Retail layout` line (RETAIL_MARK). |
+| engine/CTCBase.h | one declaration inside the existing FABLE_RETAIL_CTCBASE branch | 0x0055D590 | Adds `void RemoveFromGlobalTCs();` (public, non-virtual: ?RemoveFromGlobalTCs@CTCBase@@QAEXXZ in Ego_r and FableWin; landed body 0x00686DF0) plus a three-line evidence comment. No layout or vtable change. Rechecked: all 36 landed rows that select the retail branch (34 direct, 2 through engine/CTCDoor.h) grade MATCH / RELOCATION_MATCH + PASS with the overlay (INCLUDERS_CTCBase.txt). |
+
+Overlay use was proven for each consumer: 0x00A23AD0 without the overlay fails with C2039 ('FrameEnd' is not a member of
+'CMeshDataBank'), 0x0055D590 without it fails with C3861 ('RemoveFromGlobalTCs' not found); with the overlay both grade
+RELOCATION_MATCH. Agents 709 / 711 may touch CTCBase.h in parallel: this edit is one added line inside the retail branch.

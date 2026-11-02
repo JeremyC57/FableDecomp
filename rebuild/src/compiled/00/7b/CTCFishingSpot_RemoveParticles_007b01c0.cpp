@@ -66,7 +66,9 @@ class CTCFishingSpot : public CTCBase { public:                           // vta
             particle = CIntelligentPointer<CThing>(0);
         }
     }
-    void RemoveParticles();
+protected:
+    void RemoveParticles();  // protected (?RemoveParticles@CTCFishingSpot@@IAEXXZ, Ego_r + FableWin; respelled at the chunk 712 landing)
+public:
 };
 
 void CTCFishingSpot::RemoveParticles()

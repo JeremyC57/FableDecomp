@@ -16,6 +16,9 @@
 // between IsSerialisableForHeroState and IsComponentSerialisable). Slots 21 / 22 are _purecall 0x00BFEA08: GetInterfaceType /
 // GetClassTypeName, the two pure virtuals every CTC override pair fills (chunk 695: CTCAssassinRush 0x0126CF2C slots 21 / 22;
 // 259 / 323 FableWin.pdb overrides). Signatures are the PDB spellings. The flattened layout below stays the landed default.
+// Retail opt-in addition (chunk 712): the public non-virtual RemoveFromGlobalTCs 0x00686DF0 (Ego_r.pdb / FableWin.pdb
+// ?RemoveFromGlobalTCs@CTCBase@@QAEXXZ; the landed body 0x00686DF0; called first in the user dtors of CTCPhotojournalCapture
+// 0x0055D590, CTCBoastUI 0x0056AC80, CTCRegionDisplay 0x0063A230). A declaration only: no layout or vtable change.
 #ifdef FABLE_RETAIL_CTCBASE
 #include <stddef.h>
 #include "rebuild_abi.h"
@@ -62,6 +65,7 @@ public:
     virtual bool IsCopyable() const;                                     // 25 0x00686990
     virtual void GlobalUpdate(bool);                                     // 26 0x006869A0
     virtual void HandleMessage(const NTCMessages::CMessageBase&);        // 27 0x006869B0
+    void RemoveFromGlobalTCs();                                          // 0x00686DF0 ?RemoveFromGlobalTCs@CTCBase@@QAEXXZ (chunk 712)
 protected:
     const CThingManager& GetThingManager() const;                        // 0x00686AF0 ?GetThingManager@CTCBase@@IBEABVCThingManager@@XZ
 public:

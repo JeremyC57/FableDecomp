@@ -90,7 +90,9 @@ namespace NParticleEngine {
 class CPSCUpdateNormal { public:
     unsigned char                _pad00[0x9c];
     CRetailList<CEmitterPointer> DecalEmitterList;     // +0x9c
-    void KillAllDecalEmitters();
+protected:
+    void KillAllDecalEmitters();  // protected (?KillAllDecalEmitters@CPSCUpdateNormal@NParticleEngine@@IAEXXZ, Ego_r + FableWin; respelled at the chunk 712 landing)
+public:
 };
 
 void CPSCUpdateNormal::KillAllDecalEmitters()

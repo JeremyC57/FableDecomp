@@ -4701,7 +4701,7 @@ _FableUninit_79e500@4	0079ddb0	0079e500
 ??_7CTCBoss@@6B@	0126d494	007aefd0
 ?ClearEffects@CTCBoss@@QAEXXZ	007aef60	007aefd0
 ??_7CTCFishingSpot@@6B@	0126d51c	007b0150
-?RemoveParticles@CTCFishingSpot@@QAEXXZ	007b01c0	007b06c0
+?RemoveParticles@CTCFishingSpot@@IAEXXZ	007b01c0	007b06c0
 ??_7CTCFishing@@6B@	0126d5cc	007b0800
 ?Method@CClass_007b0cc0@@QAEXJ@Z	007b0950	007b0cc0
 ?AddMode@CPlayer@@QAEXJ_N@Z	006345c0	007b1eb0
@@ -8387,7 +8387,7 @@ _g_GFPreMainMemoryUsed	013d2e0c	00aeaab0
 ??_7CParticleUpdateParamDesc@@6B@	0125fee4	00b0f310
 ??_7CPSCUpdateNormal@NParticleEngine@@6B@	0129fc1c	00b0f990
 ?DestroyElements@CDecalEmitterArray@NParticleEngine@@QAEXXZ	00b0f630	00b0f990
-?KillAllDecalEmitters@CPSCUpdateNormal@NParticleEngine@@QAEXXZ	00b0c730	00b0f990
+?KillAllDecalEmitters@CPSCUpdateNormal@NParticleEngine@@IAEXXZ	00b0c730	00b0f990
 ?GetDrawableObject@@YIPAUIDrawableBase@@PAUCThingTrackNode@@@Z	00af7ed0	00b15b00
 ??0CPSCBase@NParticleEngine@@QAE@XZ	00af2620	00b18020
 ??_7CPSCAttractor@NParticleEngine@@6B@	012a04ac	00b18020
@@ -35339,3 +35339,10 @@ _z_inflateEnd	00c038d0	00a3acc0
 ?UpdateIdleParticles@CTCHeroMorph@@AAEXXZ	0071c9f0	0071cd30
 ?Close@CCachedFile@@UAEXXZ	00a5afa0	00826380
 ?FrameUpdate@CBase@NCameraModes@@QAEXXZ	0084dc10	00873db0
+??1?$_List_base@VCHealthOverTimeHelper@CThingPhysical@@V?$allocator@VCHealthOverTimeHelper@CThingPhysical@@@std@@@std@@QAE@XZ	005283c0	006a5d50
+?RemoveFromPhysicalList@CThingManager@@QAEXAAVCThingPhysical@@@Z	0051dfe0	006a5d50
+??1?$_List_base@U?$pair@JW4EConversationAttitude@@@std@@V?$allocator@U?$pair@JW4EConversationAttitude@@@std@@@2@@std@@QAE@XZ	00718ec0	00719c70
+?RemoveParticles@CTCFishingSpot@@IAEXXZ	007b01c0	007b0300
+?Uninitialise@CInitBaseClass@@IAEXXZ	0099a360	009f4950
+?KillAllDecalEmitters@CPSCUpdateNormal@NParticleEngine@@IAEXXZ	00b0c730	00b0ca90
+?clear@?$_List_base@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@V?$allocator@V?$CIntelligentPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@std@@QAEXXZ	00b0f630	00b0ca90

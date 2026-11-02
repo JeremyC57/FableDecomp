@@ -46,7 +46,9 @@ class CPSCUpdateNormal : public CBaseClassNonCopyable { public:                 
     CCharString        m_name;                     // +0x14
     unsigned char      _pad_0x18[0x84];            // +0x18
     CDecalEmitterArray m_decalEmitters;            // +0x9c
-    void KillAllDecalEmitters();                   // 0x00B0C730
+protected:
+    void KillAllDecalEmitters();                   // 0x00B0C730  // protected (?KillAllDecalEmitters@CPSCUpdateNormal@NParticleEngine@@IAEXXZ, Ego_r + FableWin; respelled at the chunk 712 landing)
+public:
     CPSCUpdateNormal() { }
     __forceinline virtual ~CPSCUpdateNormal() { KillAllDecalEmitters(); }
 };

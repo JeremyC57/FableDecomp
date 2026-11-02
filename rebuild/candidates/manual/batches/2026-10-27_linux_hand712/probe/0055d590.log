@@ -1,0 +1,1 @@
+1	user dtor { RemoveFromGlobalTCs(); } on FABLE_RETAIL_CTCBASE (+ overlay declaration), STLport vector + two CWideStrings	RELOCATION_MATCH (overlay proven: without it C3861)

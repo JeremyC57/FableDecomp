@@ -1,0 +1,1 @@
+1	real STLport 4.6 list text (clear() out of class, ~list(){}, ~_List_base inline), implicit dtor + DestroyOne	RELOCATION_MATCH (relocs ~_List_base<pair<long,EConversationAttitude>>, clear<CCountedPointer<CActionBase>> (landed spelling), _free, ~CBaseIntelligentPointer, ~CTCBase)

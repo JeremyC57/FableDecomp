@@ -375635,6 +375635,76 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '009eea50_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0055d590'
+        Module = 'CTCPhotojournalCapture'
+        Source = '00/55/CTCPhotojournalCapture_CTCPhotojournalCapture_0055d590.cpp'
+        TestSource = '00/55/CTCPhotojournalCapture_CTCPhotojournalCapture_0055d590_test.cpp'
+        PassPattern = '0055d590_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006a5d50'
+        Module = 'CThingPhysical'
+        Source = '00/6a/CThingPhysical_CThingPhysical_006a5d50.cpp'
+        TestSource = '00/6a/CThingPhysical_CThingPhysical_006a5d50_test.cpp'
+        PassPattern = '006a5d50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00719c70'
+        Module = 'CTCScriptedControl'
+        Source = '00/71/CTCScriptedControl_CTCScriptedControl_00719c70.cpp'
+        TestSource = '00/71/CTCScriptedControl_CTCScriptedControl_00719c70_test.cpp'
+        PassPattern = '00719c70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b0300'
+        Module = 'CTCFishingSpot'
+        Source = '00/7b/CTCFishingSpot_CTCFishingSpot_007b0300.cpp'
+        TestSource = '00/7b/CTCFishingSpot_CTCFishingSpot_007b0300_test.cpp'
+        PassPattern = '007b0300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009f4950'
+        Module = 'CScratchBuffer'
+        Source = '00/9f/CScratchBuffer_Uninitialise_009f4950.cpp'
+        TestSource = '00/9f/CScratchBuffer_Uninitialise_009f4950_test.cpp'
+        PassPattern = '009f4950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a23ad0'
+        Module = 'CMeshDataBank'
+        Source = '00/a2/CMeshDataBank_FrameEnd_00a23ad0.cpp'
+        TestSource = '00/a2/CMeshDataBank_FrameEnd_00a23ad0_test.cpp'
+        PassPattern = '00a23ad0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a9d270'
+        Module = 'C3DMeshFileEngineMaterialChunk'
+        Source = '00/a9/C3DMeshFileEngineMaterialChunk_C3DMeshFileEngineMaterialChunk_00a9d270.cpp'
+        TestSource = '00/a9/C3DMeshFileEngineMaterialChunk_C3DMeshFileEngineMaterialChunk_00a9d270_test.cpp'
+        PassPattern = '00a9d270_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b0ca90'
+        Module = 'NParticleEngine::CPSCUpdateNormal'
+        Source = '00/b0/NParticleEngineCPSCUpdateNormal_CPSCUpdateNormal_00b0ca90.cpp'
+        TestSource = '00/b0/NParticleEngineCPSCUpdateNormal_CPSCUpdateNormal_00b0ca90_test.cpp'
+        PassPattern = '00b0ca90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e839f0'
+        Module = 'NScript::CV_FisticuffsClubScript::CFisticuffsMember'
+        Source = '00/e8/NScriptCVFisticuffsClubScriptCFisticuffsMember_CFisticuffsMember_00e839f0.cpp'
+        TestSource = '00/e8/NScriptCVFisticuffsClubScriptCFisticuffsMember_CFisticuffsMember_00e839f0_test.cpp'
+        PassPattern = '00e839f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0122a790'
+        Module = 'NProfileTimer'
+        Source = '01/22/NProfileTimer_dynamicatexitdestructorforLogFile_0122a790.cpp'
+        TestSource = '01/22/NProfileTimer_dynamicatexitdestructorforLogFile_0122a790_test.cpp'
+        PassPattern = '0122a790_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

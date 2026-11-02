@@ -1,0 +1,37 @@
+addr       parity           behav  name
+0055d590   RELOCATION_MATCH PASS   ~CTCPhotojournalCapture
+006a5d50   WARN RELOC_NAME: ??1?$_List_base@VCHealthOverTimeHelper@CThingPhysical@@V?$allocator@VCHealthOverTimeHelper@CThingPhysical@@@std@@@std@@QAE@XZ -> 005283c0 labelled '_global::StdList_Clear_005283c0'
+006a5d50   RELOCATION_MATCH PASS   ~CThingPhysical
+00719c70   WARN RELOC_NAME: ??1?$_List_base@U?$pair@JW4EConversationAttitude@@@std@@V?$allocator@U?$pair@JW4EConversationAttitude@@@std@@@2@@std@@QAE@XZ -> 00718ec0 labelled '_global::StdList_Clear_00718ec0'
+00719c70   RELOCATION_MATCH PASS   ~CTCScriptedControl
+007b0300   RELOCATION_MATCH PASS   ~CTCFishingSpot
+009f4950   RELOCATION_MATCH PASS   Uninitialise
+00a23ad0   RELOCATION_MATCH PASS   FrameEnd
+00a9d270   RELOCATION_MATCH PASS   ~C3DMeshFileEngineMaterialChunk
+00b0ca90   RELOCATION_MATCH PASS   ~CPSCUpdateNormal
+00e839f0   RELOCATION_MATCH PASS   ~CFisticuffsMember
+0122a790   RELOCATION_MATCH PASS   `dynamic atexit destructor for 'LogFile''
+
+WINS: 10
+  0055d590 RELOCATION_MATCH CTCPhotojournalCapture::??1CTCPhotojournalCapture@@UAE@XZ
+  006a5d50 RELOCATION_MATCH CThingPhysical::??1CThingPhysical@@UAE@XZ
+  00719c70 RELOCATION_MATCH CTCScriptedControl::??1CTCScriptedControl@@UAE@XZ
+  007b0300 RELOCATION_MATCH CTCFishingSpot::??1CTCFishingSpot@@UAE@XZ
+  009f4950 RELOCATION_MATCH CScratchBuffer::?Uninitialise@CScratchBuffer@@QAEXXZ
+  00a23ad0 RELOCATION_MATCH CMeshDataBank::?FrameEnd@CMeshDataBank@@QAEXXZ
+  00a9d270 RELOCATION_MATCH C3DMeshFileEngineMaterialChunk::??1C3DMeshFileEngineMaterialChunk@@UAE@XZ
+  00b0ca90 RELOCATION_MATCH NParticleEngine::CPSCUpdateNormal::??1CPSCUpdateNormal@NParticleEngine@@UAE@XZ
+  00e839f0 RELOCATION_MATCH NScript::CV_FisticuffsClubScript::CFisticuffsMember::??1CFisticuffsMember@CV_FisticuffsClubScript@NScript@@UAE@XZ
+  0122a790 RELOCATION_MATCH NProfileTimer::_$E2
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  CTCPhotojournalCapture_CTCPhotojournalCapture_0055d590
+  CThingPhysical_CThingPhysical_006a5d50
+  CTCScriptedControl_CTCScriptedControl_00719c70
+  CTCFishingSpot_CTCFishingSpot_007b0300
+  CScratchBuffer_Uninitialise_009f4950
+  CMeshDataBank_FrameEnd_00a23ad0
+  C3DMeshFileEngineMaterialChunk_C3DMeshFileEngineMaterialChunk_00a9d270
+  NParticleEngineCPSCUpdateNormal_CPSCUpdateNormal_00b0ca90
+  NScriptCVFisticuffsClubScriptCFisticuffsMember_CFisticuffsMember_00e839f0
+  NProfileTimer_dynamicatexitdestructorforLogFile_0122a790

@@ -1,0 +1,10 @@
+# engine/CTCBase.h (chunk 712 edit: one declaration added inside the existing FABLE_RETAIL_CTCBASE branch; the default
+# flattened branch is unchanged). Every landed source that selects the retail branch -- 34 that #define FABLE_RETAIL_CTCBASE
+# plus the FABLE_RETAIL_CTCDOOR rows that reach it through engine/CTCDoor.h (36 rows total) -- was rechecked read-only with
+# FABLE_HDR_OVERLAY holding this CTCBase.h and an unchanged copy of CTCDoor.h (so the transitive include resolves the overlay):
+#   vland.py --recheck-landed, LANDVERIFY_WORK under the agent directory (deleted after). Logs: tmp/recheck_ctcbase.log (26 rows:
+#   MATCH/RELOCATION_MATCH + PASS) and tmp/recheck_ctcbase2.log (the 10 rows whose landed tests print a custom pass pattern, rerun
+#   with their build_candidates.ps1 PassPattern: all RELOCATION_MATCH/MATCH + PASS). Result: 36/36 MATCH or RELOCATION_MATCH + PASS.
+004c8ba0 0057abd6 0057ae53 005dae40 0071cd30 00713740 00732cb0 0073b0d0 00731330 007305a0 00746d00 00749a70
+00740420 00741390 00759970 00778d20 0078afc0 007ca630 007dfca0 007e3420 007e0b20 007e48e0 00802610 008ac4d0
+008d6690 008e31a0 004da967 004dcdfd 004dcbce 004dc7c8 004dcf4e 004dccd2 004db004 006868e0 007ce370 007f0890
