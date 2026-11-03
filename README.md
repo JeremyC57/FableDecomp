@@ -97,7 +97,7 @@ parity, coverage, and naming reports:
 | Reconstruction | Landed byte-matching genuine C++, original catalog | **46,419** (93.65%) |
 | Reconstruction | Landed byte-matching genuine C++, all 57,609 known functions | 53,903 (93.57%) |
 | Reconstruction | Retail function bytes reproduced by genuine C++ | 5,517,352 (53.93%) |
-| Reconstruction | — landed rows using retail inline asm (grade `retail_asm`, counted as genuine) | 101 |
+| Reconstruction | — landed rows using retail inline asm (grade `retail_asm`, counted as genuine) | 181 |
 | Reconstruction | — landed rows that are toolchain/vendor library bytes (grade `toolchain_library`, counted as genuine) | 441 |
 | Reconstruction | — landed VC7.1 compiles of vendor CRT source (`// Library:` line, counted as genuine) | 8 |
 | Reconstruction | — landed hand-written asm bakes (grade `asm_bake`, **not** counted as reconstruction) | 13 |

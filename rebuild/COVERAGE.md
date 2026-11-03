@@ -1,6 +1,6 @@
 # Full-decompilation coverage dashboard
 
-Generated: `2026-11-03T07:22:41+00:00`
+Generated: `2026-11-03T08:29:16+00:00`
 
 ## Landed reconstruction (live)
 
@@ -12,7 +12,7 @@ From `rebuild/oracles/auto-re-candidates.tsv` and `rebuild/build_candidates.ps1`
 | All known functions landed, genuine C++ | 53,903 | 57,609 | 93.567% | Adds the gap-scan and boundary functions found later |
 | Retail function bytes reproduced, genuine C++ | 5,517,352 | 10,230,444 | 53.931% | Landed row lengths over landed + unlanded (unlanded sized to the next function start, capped at 64 KB) |
 | Retail `.text` bytes reproduced, genuine C++ | 5,517,352 | 14,858,408 | 37.133% | Against the whole `.text` section (includes padding and inline data) |
-| Landed rows using retail inline asm (grade `retail_asm`) | 101 | 53,916 | — | Counted as genuine: retail itself ran the asm (owner rule 2026-10-24) |
+| Landed rows using retail inline asm (grade `retail_asm`) | 181 | 53,916 | — | Counted as genuine: retail itself ran the asm (owner rule 2026-10-24) |
 | Landed rows that are toolchain/vendor library bytes (grade `toolchain_library`) | 441 | 53,916 | — | Counted as genuine: the bytes are a VC7.1 library member's (msvcrt.lib CRT object or linker import thunk) and the build links that library (owner rule 2026-10-30; `docs/pipeline/LIBRARY_SIGNATURES.md`) |
 | Landed rows that are VC7.1 compiles of vendor CRT source (`// Library:` line) | 8 | 53,916 | — | Genuine compiles whose bytes equal the library object retail linked (crtexew, atonexit, initsect, fp8, ehvecdtr); vendor code, not Fable logic |
 | Landed rows that are hand-written asm bakes | 13 | 53,916 | — | Byte-exact oracles, **not** reconstruction; excluded above (`toolchain_library` rows are not asm bakes) |

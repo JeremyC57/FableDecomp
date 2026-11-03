@@ -30186,8 +30186,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00494410'
         Module = 'CFrontendGameComponent'
-        Source = '00/49/global_DispatchFrontendInputAction_00494410.cpp'
-        TestSource = '00/49/global_DispatchFrontendInputAction_00494410_test.cpp'
+        Source = '00/49/CFrontendGameComponent_LoadProfile_00494410.cpp'
+        TestSource = '00/49/CFrontendGameComponent_LoadProfile_00494410_test.cpp'
         PassPattern = 'global_DispatchFrontendInputAction_00494410_test PASS'
     }
     [pscustomobject]@{
@@ -40008,9 +40008,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '009fd100'
-        Module = 'CLandscapeBackgroundSubNode'
-        Source = '00/9f/CLandscapeBackgroundSubNode_OnPostParentRelocation_009fd100.cpp'
-        TestSource = '00/9f/CLandscapeBackgroundSubNode_OnPostParentRelocation_009fd100_test.cpp'
+        Module = 'CGraphicDataBank'
+        Source = '00/9f/CGraphicDataBank_SetReduceSizeFrameDelay_009fd100.cpp'
+        TestSource = '00/9f/CGraphicDataBank_SetReduceSizeFrameDelay_009fd100_test.cpp'
         PassPattern = 'OPPR_009fd100_OK'
     }
     [pscustomobject]@{
@@ -193446,9 +193446,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0055a9c0'
-        Module = 'CDraggable'
-        Source = '00/55/CDraggable_CDraggable_0055a9c0.cpp'
-        TestSource = '00/55/CDraggable_CDraggable_0055a9c0_test.cpp'
+        Module = 'NUISystem::CDraggable'
+        Source = '00/55/NUISystemCDraggable_CDraggable_0055a9c0.cpp'
+        TestSource = '00/55/NUISystemCDraggable_CDraggable_0055a9c0_test.cpp'
         PassPattern = '0055a9c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -194819,9 +194819,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00558b90'
-        Module = 'CNavButton'
-        Source = '00/55/CNavButton_CNavButton_00558b90.cpp'
-        TestSource = '00/55/CNavButton_CNavButton_00558b90_test.cpp'
+        Module = 'NUISystem::CNavButton'
+        Source = '00/55/NUISystemCNavButton_CNavButton_00558b90.cpp'
+        TestSource = '00/55/NUISystemCNavButton_CNavButton_00558b90_test.cpp'
         PassPattern = '00558b90_TEST PASS'
     }
     [pscustomobject]@{
@@ -207384,9 +207384,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00ac39c0'
-        Module = 'SBinaryTreeNode_00ac39c0'
-        Source = '00/ac/SBinaryTreeNode00ac39c0_scalardeletingdestructor_00ac39c0.cpp'
-        TestSource = '00/ac/SBinaryTreeNode00ac39c0_scalardeletingdestructor_00ac39c0_test.cpp'
+        Module = 'C3DMeshPartitionBuilderElement'
+        Source = '00/ac/C3DMeshPartitionBuilderElement_scalardeletingdestructor_00ac39c0.cpp'
+        TestSource = '00/ac/C3DMeshPartitionBuilderElement_scalardeletingdestructor_00ac39c0_test.cpp'
         PassPattern = '00ac39c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -219955,9 +219955,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0041a4c0'
-        Module = 'CUserProfileManager'
-        Source = '00/41/CUserProfileManager_GetAutoSaveCheckPointFileName_0041a4c0.cpp'
-        TestSource = '00/41/CUserProfileManager_GetAutoSaveCheckPointFileName_0041a4c0_test.cpp'
+        Module = 'NResourceDirectoryNames'
+        Source = '00/41/NResourceDirectoryNames_GetUserDataDir_0041a4c0.cpp'
+        TestSource = '00/41/NResourceDirectoryNames_GetUserDataDir_0041a4c0_test.cpp'
         PassPattern = '0041a4c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -287412,9 +287412,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00404440'
-        Module = 'CFileInstallerSingleton'
-        Source = '00/40/CFileInstallerSingleton_Get_00404440.cpp'
-        TestSource = '00/40/CFileInstallerSingleton_Get_00404440_test.cpp'
+        Module = 'CTBaseSingleton<CFileInstaller>'
+        Source = '00/40/CTBaseSingletonCFileInstaller_Get_00404440.cpp'
+        TestSource = '00/40/CTBaseSingletonCFileInstaller_Get_00404440_test.cpp'
         PassPattern = '00404440_TEST PASS'
     }
     [pscustomobject]@{
@@ -287545,9 +287545,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00415260'
-        Module = '_global'
-        Source = '00/41/global_GetFontBankName_00415260.cpp'
-        TestSource = '00/41/global_GetFontBankName_00415260_test.cpp'
+        Module = 'NLocalisation'
+        Source = '00/41/NLocalisation_GetTextBankName_00415260.cpp'
+        TestSource = '00/41/NLocalisation_GetTextBankName_00415260_test.cpp'
         PassPattern = '00415260_TEST PASS'
     }
     [pscustomobject]@{
@@ -344195,9 +344195,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0055a890'
-        Module = 'NUISystem::CClickable'
-        Source = '00/55/NUISystemCClickable_GetDataFromDef_0055a890.cpp'
-        TestSource = '00/55/NUISystemCClickable_GetDataFromDef_0055a890_test.cpp'
+        Module = 'NUISystem::CDraggable'
+        Source = '00/55/NUISystemCDraggable_GetDataFromDef_0055a890.cpp'
+        TestSource = '00/55/NUISystemCDraggable_GetDataFromDef_0055a890_test.cpp'
         PassPattern = '0055a890_TEST PASS'
     }
     [pscustomobject]@{

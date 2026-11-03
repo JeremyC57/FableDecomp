@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-03T07:22:41+00:00",
+  "generated_at": "2026-11-03T08:29:16+00:00",
   "catalog_functions": 49568,
   "manifest_rows": 57097,
   "modules": 3433,
@@ -40,8 +40,8 @@
   "landed_original": 46432,
   "landed_genuine_known": 53903,
   "landed_genuine_original": 46419,
-  "landed_genuine": 53361,
-  "landed_retail_asm": 101,
+  "landed_genuine": 53281,
+  "landed_retail_asm": 181,
   "landed_toolchain_library": 441,
   "landed_asm_bake": 13,
   "landed_library_source": 8,
