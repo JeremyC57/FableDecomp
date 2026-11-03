@@ -41,11 +41,16 @@ protected:
     unsigned char CombatDebugGraphics[12];
     CIntelligentPointer<CThing> PItemToUnsheatheAfterCutscene;
     char* DebugText;
+public:
+    // chunk 719: the flag bytes are public data in the retail class: CreateRelevantPersonAndUpdateStats 0x004FF750 (a free
+    // function) sets FollowHeroThroughTeleporters (`or byte [creature+15Ch],40h`) directly, and neither PDB name set has a setter
+    // for it (FableWin.pdb emits every inline accessor a TU uses). Access only; no layout change.
     bool CurrentlyFrameUpdating:1,Blinking:1,MeleeAttacker:1,MeleeAttacked:1,
         LeaveDeadBodyOverride:1,LeaveExperienceOrbsOverride:1,FollowHeroThroughTeleporters:1,HeadPosCached:1;
     bool UseMovementInActions:1,UpdateMovementVectorThisFrame:1,AbortingCurrentAction:1,DemonDoor:1,
         Oracle:1,HadFacingAngleYZSetByBodyOrientation:1,UnderInfluenceOfEpicSpell:1,HiddenOnMiniMap:1;
     bool IsShowingDebugInfo:1;
+protected:
     void ReactToGenericStrike(const CHitParameters&);
     // FableWin-only ?PeekDefinition@CThingCreatureBase@@IBEABVCThingCreatureDef@@XZ (0x01D6DD10; inline in Ego_r and retail): the body
     // `return *PDef;` needs the complete CThingCreatureDef, so it is defined inline below once both classes are complete.
@@ -61,6 +66,11 @@ public:
     }
     virtual void OnHit(CHitParameters&);
     bool SetCurrentAction(const CCreatureActionBase&);
+    // Retail opt-in (2026-11-03, chunk 720 row 0x0065B854): FableWin.pdb ?GetProperty@CThingCreatureBase@@QBEKXZ, out of line in retail
+    // at 0x00662010 (mov eax,[ecx+0E0h]; mov eax,[eax+0F0h]: the PDef pointee's Property, Ego_r CThingCreatureDef +0xF8 less the two
+    // STLport vector shrinks; the virtual CThingAICreature::GetProperties 0x00830140, slot 48, has the same body).
+    // AddThingToVillage compares it with 3 to count guards. Declaration only: no layout change.
+    unsigned long GetProperty() const;                                   // 0x00662010
 };
 FABLE_STATIC_ASSERT(sizeof(CThingCreatureBase)==0x160);
 #ifdef FABLE_ENGINE_CTHINGCREATUREDEF_H

@@ -15,8 +15,16 @@ public:
     explicit CArray(unsigned int n) : std::vector<T>(n,T()) { }
 #endif
     CArray(unsigned int n,const T& x) : std::vector<T>(n,x) { }
+#ifdef FABLE_RETAIL_CARRAY
+    // Retail opt-in (chunk 723, row 0x00BC14E0): the index operators go through begin() like STLport's vector::operator[]; the
+    // element offset then folds into the addressing mode of the inlined CVertexShader::operator= (`[esi+0Ch]`), where the
+    // `_M_start[i]` form materialises the element address first (`add esi,8`).
+    T& operator[](unsigned int i) { return *(this->begin() + i); }
+    const T& operator[](unsigned int i) const { return *(this->begin() + i); }
+#else
     T& operator[](unsigned int i) { return this->_M_start[i]; }
     const T& operator[](unsigned int i) const { return this->_M_start[i]; }
+#endif
     T* GetAsCArray() { return this->size()>0 ? &this->front() : GetZeroSizeArray(); }
     const T* GetAsCArray() const { return this->size()>0 ? this->_M_start : (const T*)this; }
 private:

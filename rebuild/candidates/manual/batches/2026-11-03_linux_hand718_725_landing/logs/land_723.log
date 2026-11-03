@@ -1,0 +1,29 @@
+keypayload: 3 texts changed
+addr       parity           behav  name
+00b36ec0   RELOCATION_MATCH PASS   ~CEnginePrimitiveRendererSharedData
+00b67920   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00b67920   RELOCATION_MATCH PASS   ~CEngineLandscapeRenderer
+00b6d6d0   WARN RELOC_NAME: ?WorldFrameUpdate@CEngineWaterSettings@@QAEX_N@Z -> 00be95f0 labelled 'CEngineWaterSettings::UpdateWorldFrameState'
+00b6d6d0   RELOCATION_MATCH PASS   WorldFrameUpdate
+00b71880   RELOCATION_MATCH PASS   ~CEngineWaterRenderer
+00bc14e0   RELOCATION_MATCH PASS   CEnginePrimitiveManagerParticleSpriteGroup
+00c2a890   WARN RELOC_NAME: ?SendMessage012b4168@CNavigatorSwitch@@QAEXXZ -> 00c2a700 labelled '_unattributed::OnActivate_00c2a700'
+00c2a890   WARN RELOC_NAME: ?SendMessage012b4170@CNavigatorSwitch@@QAEXXZ -> 00c2a750 labelled '_unattributed::OnActivate_00c2a750'
+00c2a890   RELOCATION_MATCH PASS   SendStateAndReset
+
+WINS: 6
+  00b36ec0 RELOCATION_MATCH CEnginePrimitiveRendererSharedData::??1CEnginePrimitiveRendererSharedData@@UAE@XZ
+  00b67920 RELOCATION_MATCH CEngineLandscapeRenderer::??1CEngineLandscapeRenderer@@UAE@XZ
+  00b6d6d0 RELOCATION_MATCH CEngineWaterRenderer::?WorldFrameUpdate@CEngineWaterRenderer@@UAEX_N@Z
+  00b71880 RELOCATION_MATCH CEngineWaterRenderer::??1CEngineWaterRenderer@@UAE@XZ
+  00bc14e0 RELOCATION_MATCH CEnginePrimitiveManagerParticleSpriteGroup::??0CEnginePrimitiveManagerParticleSpriteGroup@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z
+  00c2a890 RELOCATION_MATCH CNavigatorSwitch::?SendStateAndReset@CNavigatorSwitch@@QAEXXZ
+
+LANDED 6 wins into src/compiled + tests + catalog + oracle
+  CEnginePrimitiveRendererSharedData_CEnginePrimitiveRendererSharedData_00b36ec0
+  CEngineLandscapeRenderer_CEngineLandscapeRenderer_00b67920
+  CEngineWaterRenderer_WorldFrameUpdate_00b6d6d0
+  CEngineWaterRenderer_CEngineWaterRenderer_00b71880
+  CEnginePrimitiveManagerParticleSpriteGroup_CEnginePrimitiveManagerParticleSpriteGroup_00bc14e0
+  CNavigatorSwitch_SendStateAndReset_00c2a890
+vland rc=0

@@ -87,10 +87,10 @@ public:
     _Tp* _M_start;
     _Tp* _M_finish;
     _Tp* _M_end_of_storage;
-    void push_back(const _Tp& __x);               // 0x0074FAE0 for vector<CThing*> (out of line)
+    void push_back(const _Tp& __x);               // 0x0074FAE0 for vector<CThingObject*> (out of line)
 };
 #pragma auto_inline(off)
-// Same-TU stand-in for vector<CThing*>::push_back 0x0074FAE0 (reads the element, never keeps its address): with it VC7.1
+// Same-TU stand-in for vector<CThingObject*>::push_back 0x0074FAE0 (reads the element, never keeps its address): with it VC7.1
 // treats `seat` as uncaptured, keeps it in esi with its home in the push-ecx slot and puts the LowerBound key in the dead
 // `thing` slot, as retail.
 template <class _Tp, class _Alloc>
@@ -102,16 +102,19 @@ __declspec(noinline) void vector<_Tp, _Alloc>::push_back(const _Tp& __x)
 #pragma auto_inline(on)
 }
 
+// CThingObject derives CThing (RTTI); Ego_r.pdb / FableWin.pdb ??0CAddFreeSeatToList@@QAE@AAV?$vector@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@@Z:
+// the functor fills a vector<CThingObject*> (landing 2026-11-03: was vector<CThing*>, whose push_back is 0x00436C80, not 0x0074FAE0).
+class CThingObject : public CThing { };
 class CAddFreeSeatToList {
 public:
-    std::vector<CThing*>* m_pSeats;                       // +0x00
+    std::vector<CThingObject*>* m_pSeats;                       // +0x00
     void operator()(const CIntelligentPointer<CThing>& thing) const;
 };
 void CAddFreeSeatToList::operator()(const CIntelligentPointer<CThing>& thing) const
 {
     if (!thing.GetPItem() || thing.GetPItem()->m_thingType != 5)
         return;
-    CThing* seat = thing.GetPItem();
+    CThingObject* seat = static_cast<CThingObject*>(thing.GetPItem());
     if (((unsigned char)(seat->GetStateFlags() >> 16) & 1) || ((unsigned char)(seat->GetStateFlags() >> 17) & 1)) {
         CTCUserActionPointBase* actionPoint;
         if (seat->GetInterfaceConst(0x2d, &actionPoint) && actionPoint->IsActionPointFree())
@@ -202,8 +205,8 @@ static CIntelligentPointer<CThing> Ptr(CThing* t) { CIntelligentPointer<CThing> 
 int main()
 {
     int ok = 1;
-    static CThing* store[8];
-    std::vector<CThing*> seats; seats._M_start = seats._M_finish = store; seats._M_end_of_storage = store + 8;
+    static CThingObject* store[8];
+    std::vector<CThingObject*> seats; seats._M_start = seats._M_finish = store; seats._M_end_of_storage = store + 8;
     CAddFreeSeatToList f; f.m_pSeats = &seats;
     STestActionPoint apFree; apFree.Free = true;
     STestActionPoint apBusy; apBusy.Free = false;
@@ -218,9 +221,9 @@ int main()
     f(Ptr(freeSeat16)); f(Ptr(busySeat17)); f(Ptr(notSeat)); f(Ptr(notObject)); f(Ptr(noAP)); f(Ptr(freeSeat17));
     long n = (long)(seats._M_finish - seats._M_start);
     if (1) {
-        if (n != 2 || store[0] != freeSeat16 || store[1] != freeSeat17) ok = 0;
+        if (n != 2 || (CThing*)store[0] != freeSeat16 || (CThing*)store[1] != freeSeat17) ok = 0;
     } else {
-        if (n != 1 || store[0] != busySeat17) ok = 0;
+        if (n != 1 || (CThing*)store[0] != busySeat17) ok = 0;
     }
     printf("00938db0_TEST %s\n", ok ? "PASS" : "FAIL");
     return ok ? 0 : 1;

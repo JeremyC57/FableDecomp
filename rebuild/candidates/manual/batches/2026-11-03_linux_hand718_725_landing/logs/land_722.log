@@ -1,0 +1,137 @@
+keypayload: 0 texts changed
+addr       parity           behav  name
+00b23b80   WARN SHARED_HEADER_AVAILABLE CEngineCamera
+00b23b80   WARN RELOC_NAME: ?SetGameWindow@CEngineCamera@@QAEXPBVC2DBoxF@@@Z -> 00b2fc00 labelled '_global::SetMember_dword0x10_00b2fc00'
+00b23b80   RELOCATION_MATCH PASS   SetWindow
+00b23bb0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer
+00b23bb0   RELOCATION_MATCH PASS   AddPrimitive
+00b23be0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer
+00b23be0   RELOCATION_MATCH PASS   SetPrimitiveAnimation
+00b23bf0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer
+00b23bf0   RELOCATION_MATCH PASS   SetPrimitivePosition
+00b23c20   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer
+00b23c20   RELOCATION_MATCH PASS   AddChildPrimitive
+00b23c30   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer
+00b23c30   RELOCATION_MATCH PASS   SetChildPrimitive
+00b23c40   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer
+00b23c40   RELOCATION_MATCH PASS   GetChildPrimitiveHandle
+00b23c50   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer
+00b23c50   RELOCATION_MATCH PASS   SetChildPrimitive
+00b23c60   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer
+00b23c60   RELOCATION_MATCH PASS   ClearChildPrimitive
+00b23c70   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer
+00b23c70   RELOCATION_MATCH PASS   ClearAllChildPrimitives
+00b23c80   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveAttachmentManager
+00b23c80   RELOCATION_MATCH PASS   SetAttachedPrimitive
+00b23c90   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer
+00b23c90   RELOCATION_MATCH PASS   CollectPrimitiveStatsForArea
+00b23ca0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer
+00b23ca0   RELOCATION_MATCH PASS   ProcessPrimitiveStats
+00b23ce0   WARN SHARED_HEADER_AVAILABLE CEngineSurfaceCompositionManager
+00b23ce0   RELOCATION_MATCH PASS   AddCustomMorphTexture
+00b23db0   WARN SHARED_HEADER_AVAILABLE CEngineWorldMap
+00b23db0   RELOCATION_MATCH PASS   CloseStaticMapFile
+00b23dc0   WARN SHARED_HEADER_AVAILABLE CEngineWorldMap
+00b23dc0   RELOCATION_MATCH PASS   SetStaticMapFileForUse
+00b23e00   WARN SHARED_HEADER_AVAILABLE CEngineWorldMap
+00b23e00   RELOCATION_MATCH PASS   SetWorld
+00b23e10   WARN SHARED_HEADER_AVAILABLE CEngineWorldMap
+00b23e10   RELOCATION_MATCH PASS   AddMap
+00b23e20   WARN SHARED_HEADER_AVAILABLE CEngineWorldMap
+00b23e20   RELOCATION_MATCH PASS   RemoveMap
+00b23e30   WARN SHARED_HEADER_AVAILABLE CEngineWorldMap
+00b23e30   WARN RELOC_NAME: ?OnGameMapLoaded@CEngineWorldMap@@QAEXJ@Z -> 00b401e0 labelled 'CEngineMapManager::MapState_SetLoaded'
+00b23e30   RELOCATION_MATCH PASS   SetMapAsLoaded
+00b23e40   WARN SHARED_HEADER_AVAILABLE CEngineWorldMap
+00b23e40   RELOCATION_MATCH PASS   SetMapVisibility
+00b23e50   WARN SHARED_HEADER_AVAILABLE CEngineWorldMap
+00b23e50   RELOCATION_MATCH PASS   SetMapVisibilityAllMaps
+00b23e60   WARN SHARED_HEADER_AVAILABLE CEngineWorldMap
+00b23e60   WARN RELOC_NAME: ?OnGameMapUnloaded@CEngineWorldMap@@QAEXJ@Z -> 00b40230 labelled 'CEngineMapManager::MapState_SetUnloaded'
+00b23e60   RELOCATION_MATCH PASS   SetMapAsUnloaded
+00b23ea0   WARN SHARED_HEADER_AVAILABLE CEngineLightingManager
+00b23ea0   RELOCATION_MATCH PASS   SetGlobalLightingParameters
+00b23eb0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer2D
+00b23eb0   WARN RELOC_NAME: ?SetLightingParameters@CEnginePrimitiveRenderer2D@@QAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z -> 00b4a5f0 labelled 'CEnginePrimitiveRenderer2D::Set2DLighting'
+00b23eb0   RELOCATION_MATCH PASS   Set2DPrimitiveLightingParameters
+00b23f40   WARN SHARED_HEADER_AVAILABLE CEngineResourceManager
+00b23f40   WARN RELOC_NAME: ?AllocateExternalTextureFromResourcePools@CEngineResourceManager@@QAEPAVCTexture@@KABVC2DExtentsI@@JABVCPixelFormat@@@Z -> 00b3b1f0 labelled 'CEngineResourceManager::AllocateTexture'
+00b23f40   RELOCATION_MATCH PASS   AllocateTextureFromEngineResourcePools
+00b23f50   WARN SHARED_HEADER_AVAILABLE CEngineResourceManager
+00b23f50   WARN RELOC_NAME: ?FreeExternalTextureFromResourcePools@CEngineResourceManager@@QAEXPAVCTexture@@@Z -> 00b3b5b0 labelled 'CEngineResourceManager::FreeTexture'
+00b23f50   RELOCATION_MATCH PASS   FreeTextureFromEngineResourcePools
+00b23f70   WARN SHARED_HEADER_AVAILABLE CEngineShadowRenderer
+00b23f70   RELOCATION_MATCH PASS   DeallocateShadowBuffer
+00b23f80   WARN SHARED_HEADER_AVAILABLE CEngineShadowRenderer
+00b23f80   RELOCATION_MATCH PASS   ReallocateShadowBuffer
+00b24010   WARN SHARED_HEADER_AVAILABLE CEngineWeatherRenderer
+00b24010   RELOCATION_MATCH PASS   OverrideRain
+00b24020   WARN SHARED_HEADER_AVAILABLE CEngineWeatherRenderer
+00b24020   RELOCATION_MATCH PASS   OverrideSnow
+
+WINS: 31
+  00b23b80 RELOCATION_MATCH CEngine::?SetWindow@CEngine@@UAEXPBVC2DBoxF@@@Z
+  00b23bb0 RELOCATION_MATCH CEngine::?AddPrimitive@CEngine@@UAEXABVCEnginePrimitive@@@Z
+  00b23be0 RELOCATION_MATCH CEngine::?SetPrimitiveAnimation@CEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitiveAnimation@@@Z
+  00b23bf0 RELOCATION_MATCH CEngine::?SetPrimitivePosition@CEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitivePosition@@@Z
+  00b23c20 RELOCATION_MATCH CEngine::?AddChildPrimitive@CEngine@@UAEKAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z
+  00b23c30 RELOCATION_MATCH CEngine::?SetChildPrimitive@CEngine@@UAEXAAVCEnginePrimitiveHandle@@K0ABVCEnginePrimitive@@K@Z
+  00b23c40 RELOCATION_MATCH CEngine::?GetChildPrimitiveHandle@CEngine@@UAEXAAVCEnginePrimitiveHandle@@K0@Z
+  00b23c50 RELOCATION_MATCH CEngine::?SetChildPrimitive@CEngine@@UAEXAAVCEnginePrimitiveHandle@@KABVCEnginePrimitive@@K@Z
+  00b23c60 RELOCATION_MATCH CEngine::?ClearChildPrimitive@CEngine@@UAEXAAVCEnginePrimitiveHandle@@K@Z
+  00b23c70 RELOCATION_MATCH CEngine::?ClearAllChildPrimitives@CEngine@@UAEXAAVCEnginePrimitiveHandle@@@Z
+  00b23c80 RELOCATION_MATCH CEngine::?SetAttachedPrimitive@CEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@ABVCEnginePrimitiveAttachmentInfo@@ABV2@JK@Z
+  00b23c90 RELOCATION_MATCH CEngine::?CollectPrimitiveStatsForArea@CEngine@@UBEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@ABVC2DBoxF@@W4EEnginePrimitiveStatIndex@@K@Z
+  00b23ca0 RELOCATION_MATCH CEngine::?ProcessPrimitiveStats@CEngine@@UBEXABV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@W4EEnginePrimitiveStatIndex@@AAKAAV?$CArray@VCCharString@@@@@Z
+  00b23ce0 RELOCATION_MATCH CEngine::?AddCustomMorphTexture@CEngine@@UBEKAAVCTexture@@ABVCCharString@@@Z
+  00b23db0 RELOCATION_MATCH CEngine::?CloseStaticMapFile@CEngine@@UAEXXZ
+  00b23dc0 RELOCATION_MATCH CEngine::?SetStaticMapFileForUse@CEngine@@UAEXABVCWideString@@@Z
+  00b23e00 RELOCATION_MATCH CEngine::?SetWorld@CEngine@@UAEXPBVCIDrawWorld@@@Z
+  00b23e10 RELOCATION_MATCH CEngine::?AddMap@CEngine@@UAEXJJ@Z
+  00b23e20 RELOCATION_MATCH CEngine::?RemoveMap@CEngine@@UAEXJ@Z
+  00b23e30 RELOCATION_MATCH CEngine::?SetMapAsLoaded@CEngine@@UAEXJ@Z
+  00b23e40 RELOCATION_MATCH CEngine::?SetMapVisibility@CEngine@@UAEXJ_N@Z
+  00b23e50 RELOCATION_MATCH CEngine::?SetMapVisibilityAllMaps@CEngine@@UAEX_N@Z
+  00b23e60 RELOCATION_MATCH CEngine::?SetMapAsUnloaded@CEngine@@UAEXJ@Z
+  00b23ea0 RELOCATION_MATCH CEngine::?SetGlobalLightingParameters@CEngine@@UAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z
+  00b23eb0 RELOCATION_MATCH CEngine::?Set2DPrimitiveLightingParameters@CEngine@@UAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z
+  00b23f40 RELOCATION_MATCH CEngine::?AllocateTextureFromEngineResourcePools@CEngine@@UAEPAVCTexture@@KABVC2DExtentsI@@JABVCPixelFormat@@@Z
+  00b23f50 RELOCATION_MATCH CEngine::?FreeTextureFromEngineResourcePools@CEngine@@UAEXPAVCTexture@@@Z
+  00b23f70 RELOCATION_MATCH CEngine::?DeallocateShadowBuffer@CEngine@@UAE_NXZ
+  00b23f80 RELOCATION_MATCH CEngine::?ReallocateShadowBuffer@CEngine@@UAEXXZ
+  00b24010 RELOCATION_MATCH CEngine::?OverrideRain@CEngine@@UAEXM@Z
+  00b24020 RELOCATION_MATCH CEngine::?OverrideSnow@CEngine@@UAEXM@Z
+
+LANDED 31 wins into src/compiled + tests + catalog + oracle
+  CEngine_SetWindow_00b23b80
+  CEngine_AddPrimitive_00b23bb0
+  CEngine_SetPrimitiveAnimation_00b23be0
+  CEngine_SetPrimitivePosition_00b23bf0
+  CEngine_AddChildPrimitive_00b23c20
+  CEngine_SetChildPrimitive_00b23c30
+  CEngine_GetChildPrimitiveHandle_00b23c40
+  CEngine_SetChildPrimitive_00b23c50
+  CEngine_ClearChildPrimitive_00b23c60
+  CEngine_ClearAllChildPrimitives_00b23c70
+  CEngine_SetAttachedPrimitive_00b23c80
+  CEngine_CollectPrimitiveStatsForArea_00b23c90
+  CEngine_ProcessPrimitiveStats_00b23ca0
+  CEngine_AddCustomMorphTexture_00b23ce0
+  CEngine_CloseStaticMapFile_00b23db0
+  CEngine_SetStaticMapFileForUse_00b23dc0
+  CEngine_SetWorld_00b23e00
+  CEngine_AddMap_00b23e10
+  CEngine_RemoveMap_00b23e20
+  CEngine_SetMapAsLoaded_00b23e30
+  CEngine_SetMapVisibility_00b23e40
+  CEngine_SetMapVisibilityAllMaps_00b23e50
+  CEngine_SetMapAsUnloaded_00b23e60
+  CEngine_SetGlobalLightingParameters_00b23ea0
+  CEngine_Set2DPrimitiveLightingParameters_00b23eb0
+  CEngine_AllocateTextureFromEngineResourcePools_00b23f40
+  CEngine_FreeTextureFromEngineResourcePools_00b23f50
+  CEngine_DeallocateShadowBuffer_00b23f70
+  CEngine_ReallocateShadowBuffer_00b23f80
+  CEngine_OverrideRain_00b24010
+  CEngine_OverrideSnow_00b24020
+vland rc=0

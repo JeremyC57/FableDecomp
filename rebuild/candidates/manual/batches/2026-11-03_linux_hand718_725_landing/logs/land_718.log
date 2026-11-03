@@ -1,0 +1,45 @@
+keypayload: 0 texts changed
+addr       parity           behav  name
+008914f0   RELOCATION_MATCH PASS   SetQuestCardGoldReward
+00891500   RELOCATION_MATCH PASS   SetQuestCardRenownReward
+00892f20   RELOCATION_MATCH PASS   PrepareQuestsWhenFinalQuestIsActivated
+00892f30   WARN RELOC_NAME: ?PrepareQuestsWhenFinalQuestIsCompleted@CQuestManager@@QAEXXZ -> 004af270 labelled 'CGameScriptInterface::DontPopulateNextLoadedRegion'
+00892f30   RELOCATION_MATCH PASS   PrepareQuestsWhenFinalQuestIsCompleted
+0088e970   RELOCATION_MATCH PASS   StopProgressDisplay
+0088e0f0   MATCH            PASS   SetDebugCameraType
+00487dc0   RELOCATION_MATCH PASS   GetPControlledCreature
+00487dd0   RELOCATION_MATCH PASS   PeekPControlledCreature
+00487b70   RELOCATION_MATCH PASS   GetPPlayerCharacterThing
+0089e190   WARN RELOC_NAME: ?IsRelativeCoordTranslation@CTCCameraPointDefinitionBase@@QBE_NXZ -> 0075c160 labelled 'CASuspendableProcess::CheckTermination'
+0089e190   WARN RELOC_NAME: ?IsRelativeCoordOrientation@CTCCameraPointDefinitionBase@@QBE_NXZ -> 0075c170 labelled 'CASuspendableProcess::CheckTermination'
+0089e190   WARN RELOC_NAME: ?GetLookDirectionEnd@CTCCameraPointScripted@@QBE?AVC3DVector@@PBVCRightHandedSet@@@Z -> 0075ccf0 labelled 'CEnvironmentSpellEffectInterface::GetRenderFrameInterpolatedScreenFilterParameters_0075ccf0'
+0089e190   RELOCATION_MATCH PASS   CameraUseCameraPoint
+00487570   WARN RELOC_NAME: ?Sprintf@CWideString@@QAAXPBGZZ -> 0099ba70 labelled 'CWideString::Format'
+00487570   RELOCATION_MATCH PASS   DrawFreeCamDebug
+
+WINS: 11
+  008914f0 RELOCATION_MATCH CGameScriptInterface::?SetQuestCardGoldReward@CGameScriptInterface@@UBEXABVCCharString@@J@Z
+  00891500 RELOCATION_MATCH CGameScriptInterface::?SetQuestCardRenownReward@CGameScriptInterface@@UBEXABVCCharString@@J@Z
+  00892f20 RELOCATION_MATCH CGameScriptInterface::?PrepareQuestsWhenFinalQuestIsActivated@CGameScriptInterface@@UBEXABVCCharString@@@Z
+  00892f30 RELOCATION_MATCH CGameScriptInterface::?PrepareQuestsWhenFinalQuestIsCompleted@CGameScriptInterface@@UBEXXZ
+  0088e970 RELOCATION_MATCH CGameScriptInterface::?StopProgressDisplay@CGameScriptInterface@@UBEXXZ
+  0088e0f0 MATCH CGameScriptInterface::?SetDebugCameraType@CGameScriptInterface@@UBEXJ@Z
+  00487dc0 RELOCATION_MATCH CPlayer::?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ
+  00487dd0 RELOCATION_MATCH CPlayer::?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ
+  00487b70 RELOCATION_MATCH CPlayer::?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ
+  0089e190 RELOCATION_MATCH CGameScriptInterface::?CameraUseCameraPoint@CGameScriptInterface@@UBEXABVCScriptThing@@PBVC3DVector@@PBVCRightHandedSet@@MJJ@Z
+  00487570 RELOCATION_MATCH CPlayer::?DrawFreeCamDebug@CPlayer@@QBEXPBVC2DBoxF@@ABVCFontBank@@@Z
+
+LANDED 11 wins into src/compiled + tests + catalog + oracle
+  CGameScriptInterface_SetQuestCardGoldReward_008914f0
+  CGameScriptInterface_SetQuestCardRenownReward_00891500
+  CGameScriptInterface_PrepareQuestsWhenFinalQuestIsActivated_00892f20
+  CGameScriptInterface_PrepareQuestsWhenFinalQuestIsCompleted_00892f30
+  CGameScriptInterface_StopProgressDisplay_0088e970
+  CGameScriptInterface_SetDebugCameraType_0088e0f0
+  CPlayer_GetPControlledCreature_00487dc0
+  CPlayer_PeekPControlledCreature_00487dd0
+  CPlayer_GetPPlayerCharacterThing_00487b70
+  CGameScriptInterface_CameraUseCameraPoint_0089e190
+  CPlayer_DrawFreeCamDebug_00487570
+vland rc=0

@@ -113,9 +113,21 @@ template<class I,class O> inline O __uninitialized_copy(I first,I last,O result,
 template<class T> inline T* __uninitialized_copy(const T* first,const T* last,T* result,const __true_type&) {
     return (T*)__copy_trivial(first,last,result);
 }
+#ifdef FABLE_STLP_OUTOFLINE_UNINIT_FILL_N
+// Opt-in (2026-11-03, chunk 719 row 0x00501150): the retail TU keeps this instantiation out of line as a __fastcall COMDAT
+// (0x00513570 ??$__uninitialized_fill_n@PAVCLevelFiles@CObject@CLevelLoader@@IV123@@std@@YI...ABU__false_type@0@@Z, called
+// from the inlined vector(n) with the tag homed in a dead argument slot); the same-TU noinline body gives that shape (EXTRA_RULES
+// chunk 422 / GOTCHAS 0xB3EA70: inlined, the fill makes vector(n) too large and VC7.1 calls the whole ctor instead).
+#pragma auto_inline(off)
+template<class I,class N,class T> __declspec(noinline) I __fastcall __uninitialized_fill_n(I first,N n,const T& x,const __false_type&) {
+    I cur=first;for(;n>0;--n,++cur) _Construct(&*cur,x);return cur;
+}
+#pragma auto_inline(on)
+#else
 template<class I,class N,class T> inline I __uninitialized_fill_n(I first,N n,const T& x,const __false_type&) {
     I cur=first;for(;n>0;--n,++cur) _Construct(&*cur,x);return cur;
 }
+#endif
 template<class I,class N,class T> inline I __uninitialized_fill_n(I first,N n,const T& x,const __true_type&) {
     return std::fill_n(first,n,x);
 }

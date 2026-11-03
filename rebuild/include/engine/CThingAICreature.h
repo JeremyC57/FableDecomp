@@ -8,12 +8,25 @@
 // CTCTavernGame::FrameUpdate tests its game master through CIntelligentPointer<CThingAICreature> (IS_THING_ALIVE: GetPItem 0x00A01B50,
 // then CThing::Dead, bit 0 of +0x91).
 #include "engine/CThingCreatureBase.h"
+class C3DVector; class CThingAICreatureInit;
 class CThingAICreature : public CThingCreatureBase {
 public:
     // Header wave 2026-11-03 (row 0x00522A20): Ego_r.pdb ?Alloc@CThingAICreature@@SIPAVCClass@@XZ.
     static CClass* __fastcall Alloc();
+    // chunk 719 (row 0x004FF750): Ego_r.pdb ?Create@CThingAICreature@@SIPAV1@JABVC3DVector@@JABVCThingAICreatureInit@@@Z (retail
+    // 0x00833800), ?AutoSetupSexuality@CThingAICreature@@QAEXM@Z (0x008330D0) and FableWin's inline
+    // ?SetAsAllowedToFollowHero@CThingAICreature@@QAEX_N@Z (emitted beside the CWorldMap TU's statics in FableWin; retail expands it:
+    // bit 0 of +0x1C9, as CGameScriptInterface::EntitySetAsAllowedToFollowHero 0x0088DE90 shows).
+    static CThingAICreature* __fastcall Create(long defIndex, const C3DVector& pos, long, const CThingAICreatureInit& init);   // 0x00833800
+    void AutoSetupSexuality(float probabilityOfHomosexuality);           // 0x008330D0
+    void SetAsAllowedToFollowHero(bool allowed) { AllowedToFollowHero = allowed; }
 private:
-    unsigned char _pad_0x160[0x78];                                      // +0x160 RelationshipsInit .. Suspenders (Ego_r.pdb members, opaque)
+    unsigned char _pad_0x160[0x68];                                      // +0x160 RelationshipsInit .. MaxFlyingSpeed (Ego_r.pdb members, opaque)
+    bool PerformingVillageTaskFlag:1, AISuspended:1, HasInformation:1, WanderWithInformation:1,
+        WaveWithInformation:1, ContinueAIWithInformation:1, ImmuneToAttack:1, EnableCreatureAutoPlacing:1;   // +0x1C8 (Ego_r 0x1F8)
+    bool AllowedToFollowHero:1, RegionFollowingOverriddenFromScript:1, RespondingToFollowAndWait:1,
+        CanBeCourted:1, CanBeMarried:1;                                  // +0x1C9 (Ego_r 0x1F9; CanBeCourted bit 3 / CanBeMarried bit 4 landed)
+    unsigned char _pad_0x1ca[0xe];                                       // +0x1CA Suspenders (opaque)
 };
 FABLE_STATIC_ASSERT(sizeof(CThingAICreature) == 0x1d8);
 #else

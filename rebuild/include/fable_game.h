@@ -93,6 +93,9 @@ protected:
 public:
     static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // FableWin.pdb ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
+    // Retail opt-in (chunk 718, row 0x0089E190): Ego_r.pdb / FableWin.pdb ?ConvertSecondsToWF@CMainGameComponent@@SIJM@Z, expanded
+    // in place in retail (`fild dword ptr [ConstantFPS] ; fmul ; call __ftol2`, as the landed CameraMoveBetweenLookingAt 0x00892530).
+    static long __fastcall ConvertSecondsToWF(float seconds) { return (long)(GetConstantFPS() * seconds); }
     CMainGameComponent(CGame&,const CMainGameComponentInit&);
     static void FABLE_FASTCALL GenerateMetFilesFromLugFiles();
     virtual ~CMainGameComponent();

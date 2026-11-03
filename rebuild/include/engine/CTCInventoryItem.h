@@ -8,6 +8,32 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CTCINVENTORYITEM
+// Retail opt-in (2026-11-03, chunk 720 rows 0x005C552C / 0x005C36C2): the real base. CTCInventoryItem derives CTCBase (the
+// flattened default spells the base's vptr / ParentThing / flags as __vftable / slot / field8), so CThing::GetTC<CTCInventoryItem>
+// can cast to it. Members after the base are the default's, at the same offsets (sizeof 0x28).
+// ReturnToInventory 0x005D8E50: Ego_r.pdb / FableWin.pdb ?ReturnToInventory@CTCInventoryItem@@QAEXXZ -- the body calls
+// PInventory's vtable slot 83 (+0x14C, CTCInventoryWeapons::OnItemReturnedToInventory(CThing&) in Ego_r member order) with
+// *ParentThing; the bound spelling ?OnShowEnded@CTCShowableItem@@QAEXXZ names no PDB member.
+#include "engine/CTCBase.h"
+#include "engine/ETCInterfaceType.h"
+class CDefPointeeBase;
+namespace NInventory { class CTCInventoryBase; }
+#pragma pack(push, 1)
+class CTCInventoryItem : public CTCBase {
+public:
+    static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_INVENTORY_ITEM; }   // ?StatGetInterfaceType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@XZ
+    void ReturnToInventory();                                 // 0x005D8E50
+    CDefPointeeBase*  PDef_Object;                           // +0x0c CDefPointer<CInventoryItemDef_const_>::Object
+    NInventory::CTCInventoryBase* PInventory;                // +0x10
+    long              call;                                  // +0x14 retail-only long (previous header)
+    unsigned __int64  InventoryUIDToAttachTo;                // +0x18
+    bool              DefaultItem;                           // +0x20
+    unsigned char     _pad_0x21[0x7];                        // +0x21
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CTCInventoryItem) == 0x28);
+#else
 class CDefPointeeBase;
 struct CTCInventoryBase;
 
@@ -35,5 +61,7 @@ FABLE_STATIC_ASSERT(offsetof(CTCInventoryItem, PInventory) == 0x10);
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryItem, call) == 0x14);
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryItem, InventoryUIDToAttachTo) == 0x18);
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryItem, DefaultItem) == 0x20);
+
+#endif // FABLE_RETAIL_CTCINVENTORYITEM
 
 #endif // FABLE_ENGINE_CTCINVENTORYITEM_H

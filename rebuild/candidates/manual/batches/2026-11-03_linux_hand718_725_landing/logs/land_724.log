@@ -1,0 +1,18 @@
+keypayload: 0 texts changed
+addr       parity           behav  name
+00b1bda0   RELOCATION_MATCH PASS   InterpolateTo
+0087aa10   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0087aa10   RELOCATION_MATCH PASS   GetRootsNumerically<CTanMethod>
+0087aff0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0087aff0   RELOCATION_MATCH PASS   GetRootsNumerically<CCotMethod>
+
+WINS: 3
+  00b1bda0 RELOCATION_MATCH NParticleEngine::CPSCDecalRenderer::?InterpolateTo@CPSCDecalRenderer@NParticleEngine@@UAEXABVCPSCBase@2@M@Z
+  0087aa10 RELOCATION_MATCH NMaths::??$GetRootsNumerically@VCTanMethod@?A0x
+  0087aff0 RELOCATION_MATCH NMaths::??$GetRootsNumerically@VCCotMethod@?A0x
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  NParticleEngineCPSCDecalRenderer_InterpolateTo_00b1bda0
+  NMaths_GetRootsNumericallyCTanMethod_0087aa10
+  NMaths_GetRootsNumericallyCCotMethod_0087aff0
+vland rc=0

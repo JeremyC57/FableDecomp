@@ -41,6 +41,9 @@ class CMusicManager;
 class CNavigatorManager;
 class COpinionReactionManager;
 class CPlayerManager;
+#ifdef FABLE_RETAIL_CWORLD
+class CPlayer;
+#endif
 class CScriptConversationManager;
 class CScriptInfoManager;
 class CThingManager;
@@ -106,6 +109,19 @@ public:
     CThingSearchTools& GetThingSearchTools() { return *PThingSearchTools_ptr; }
     const CThingSearchTools& PeekThingSearchTools() const { return *PThingSearchTools_ptr; }
     bool IsSerialisingHeroState() const { return SerialisingHeroState; }
+    // Retail opt-in addition (chunk 718): the inline game-camera accessors, FableWin.pdb ?GetGameCamera@CWorld@@QAEPAVCAIGameCameraBase@@XZ
+    // (0x01ACC440) / ?PeekGameCamera@CWorld@@QBEPBVCAIGameCameraBase@@XZ (0x018A7070), expanded by Ego_r and retail: they read
+    // PCurrentGameCamera (+0x34; 0x0088E0F0 `mov eax,[ecx+4] ; mov ecx,[eax+34h]`, landed 0x00892410 / 0x007A9B10). No layout change.
+    CAIGameCameraBase* GetGameCamera() { return PCurrentGameCamera; }
+    const CAIGameCameraBase* PeekGameCamera() const { return PCurrentGameCamera; }
+    // Retail opt-in (2026-11-03, chunk 720 rows 0x0065B854 / 0x00659800): FableWin.pdb ?PeekGameTimeManager@CWorld@@QBEABVCGameTimeManager@@XZ
+    // (0x01E6B1B6) and ?GetGameTimeManager@CWorld@@QAEAAVCGameTimeManager@@XZ (0x01C87B00), inline in Ego_r and retail
+    // (AddThingToVillage 0x0065BBF3: `call PeekWorld; mov ecx,[eax+1Ch]; call IsDay`). No layout change.
+    const CGameTimeManager& PeekGameTimeManager() const { return *PGameTimeManager_ptr; }
+    CGameTimeManager& GetGameTimeManager() { return *PGameTimeManager_ptr; }
+    // Ego_r.pdb / FableWin.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ, out of line in retail at 0x0049D9D0 (CalculateSecuritySweepTasks
+    // 0x006598D0 on CMainGameComponent::Get()->PeekWorld()). Declaration only.
+    const CPlayer* PeekMyPlayer() const;                         // 0x0049D9D0
 protected:
     const CGameEventDispatch* GetEventDispatchTableEntry(long type) const;   // 0x0049D8E0 ?GetEventDispatchTableEntry@CWorld@@IBEPBVCGameEventDispatch@@J@Z
 public:

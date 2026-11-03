@@ -1,5 +1,159 @@
 #ifndef FABLE_ENGINE_CENGINELANDSCAPERENDERER_H
 #define FABLE_ENGINE_CENGINELANDSCAPERENDERER_H
+#ifdef FABLE_RETAIL_CENGINELANDSCAPERENDERER
+// Retail opt-in (chunk 723): CEngineLandscapeRenderer : CEngineComponent (RTTI), vtable 0x012A2B54, sizeof 0x6B4 (operator new 0x6B4).
+// Members: Ego_r.pdb names at the retail offsets, typed so that the destructor 0x00B67920 destroys them in retail's reverse order.
+// Two corrections to the default model below, both from that destructor: GPUUpdateQueue is 4 bytes (+0x0C, no TaskList) and
+// MeshBuilder starts at +0x10 (0x488 bytes; `lea ecx,[esi+10h] ; call ~CEngineLandscapeMeshBuilder 0x00BE2B20`). Nested structs:
+// CLandscapeSettings (U, ?GetSettings@CEngineLandscapeRenderer@@QAEABUCLandscapeSettings@1@XZ), CSubPatchSorterEntry /
+// CBackgroundLoadingOcclusionBoxTask (U, 8 bytes, Ego_r bitfields), CFastForegroundTextureLoadInfo (three CArrays, retail 0x24).
+#ifndef FABLE_RETAIL_CENGINECOMPONENT
+#define FABLE_RETAIL_CENGINECOMPONENT
+#endif
+#ifndef FABLE_RETAIL_CINDEXBUFFER
+#define FABLE_RETAIL_CINDEXBUFFER
+#endif
+#ifndef FABLE_RETAIL_CVERTEXSHADER
+#define FABLE_RETAIL_CVERTEXSHADER
+#endif
+#ifndef FABLE_RETAIL_CTEXTURE
+#define FABLE_RETAIL_CTEXTURE
+#endif
+#ifndef FABLE_RETAIL_CLANDSCAPEPATCHTESSELATOR
+#define FABLE_RETAIL_CLANDSCAPEPATCHTESSELATOR
+#endif
+#include <stddef.h>
+#include "rebuild_abi.h"
+#include "engine/CArray.h"
+#include "engine/CEngineComponent.h"
+#include "engine/CLandscapeGPUUpdateQueue.h"
+#include "engine/CEngineLandscapeMeshBuilder.h"
+#include "engine/CIndexBuffer.h"
+#include "engine/CTexture.h"
+#include "engine/CVertexShader.h"
+#include "engine/CPixelShader.h"
+#include "engine/CLandscapePatchTesselator.h"
+class CEngineLandscapeMemoryManager;
+class CEngineMemoryInit;
+class CLandscapeBackgroundPatch;
+class CLandscapeBackgroundTreeNode;
+enum EWaterType;                                                         // MS forward enum
+struct CLandscapeTheme {                                                 // Ego_r.pdb, 0x38 bytes
+    long       BaseTexture;                                              // +0x00
+    long       BackgroundBaseTexture;                                    // +0x04
+    long       CliffTexture;                                             // +0x08
+    long       BackgroundCliffTexture;                                   // +0x0c
+    long       BaseBumpMap;                                              // +0x10
+    long       CliffBumpMap;                                             // +0x14
+    long       BaseTextureMinMipMap;                                     // +0x18
+    long       CliffTextureMinMipMap;                                    // +0x1c
+    long       BaseBumpMapMinMipMap;                                     // +0x20
+    long       CliffBumpMapMinMipMap;                                    // +0x24
+    float      BaseSelfIllumination;                                     // +0x28
+    float      CliffSelfIllumination;                                    // +0x2c
+    EWaterType WaterType;                                                // +0x30
+    float      WaterHeight;                                              // +0x34
+};
+class CEngineLandscapeRenderer : public CEngineComponent {
+public:
+    struct CLandscapeSettings {                                          // Ego_r.pdb, 0x4c bytes
+        CLandscapeSettings();                                            // ??0CLandscapeSettings@CEngineLandscapeRenderer@@QAE@XZ
+        float         MeshDetailLevel;                                   // +0x00
+        float         ProceduralTextureDetail;                           // +0x04
+        bool          DrawForeground;                                    // +0x08
+        bool          DrawBackground;                                    // +0x09
+        bool          DrawBackgroundWater;                               // +0x0a
+        float         ForegroundFadeStart;                               // +0x0c
+        float         ForegroundFadeEnd;                                 // +0x10
+        unsigned char ForegroundFadeTransform[0x10];                     // +0x14 C4DVector
+        unsigned char BackgroundFadeTransform[0x10];                     // +0x24 C4DVector
+        bool          EnableUpdate;                                      // +0x34
+        bool          FogEnable;                                         // +0x35
+        bool          StaticMapOcclusionEnable;                          // +0x36
+        bool          BumpMappingEnabled;                                // +0x37
+        float         LODUpdateMaxTime;                                  // +0x38
+        float         ForegroundMaxPixelsPerTexel;                       // +0x3c
+        bool          EnableForegroundWithoutGameMap;                    // +0x40
+        bool          DrawDebugDisplay;                                  // +0x41
+        long          MinimumFileBlockSize;                              // +0x44
+        bool          UpdateTesselation;                                 // +0x48
+    };
+    struct CSubPatchSorterEntry {                                        // Ego_r.pdb, 8 bytes
+        CLandscapeBackgroundPatch* Patch;                                // +0x00
+        long AddedThisFrame : 1;                                         // +0x04
+        long IsOcclusionBox : 1;
+        long OcclusionID : 30;
+    };
+    struct CBackgroundLoadingOcclusionBoxTask {                          // Ego_r.pdb, 8 bytes
+        CLandscapeBackgroundTreeNode* Node;                              // +0x00
+        long Visible : 1;                                                // +0x04
+        long VisibilityFlagValid : 1;
+        long OcclusionID : 30;
+    };
+    class CFastForegroundTextureLoadInfo {                               // Ego_r.pdb; retail 0x24 (three 12-byte CArrays)
+    public:
+        CFastForegroundTextureLoadInfo();                                // ??0CFastForegroundTextureLoadInfo@CEngineLandscapeRenderer@@QAE@XZ
+        CArray<unsigned long> TexturesUsedThisFrame;                     // +0x00
+        CArray<float>         TextureIDToMinPatchDistanceSquared;        // +0x0c
+        CArray<unsigned char> CurrentTextureLODLevels;                   // +0x18
+    };
+    CEngineLandscapeRenderer(const CEngineMemoryInit& init);             // ??0CEngineLandscapeRenderer@@QAE@ABVCEngineMemoryInit@@@Z
+    virtual ~CEngineLandscapeRenderer();                                 // ??1CEngineLandscapeRenderer@@UAE@XZ 0x00B67920
+    CLandscapeGPUUpdateQueue       GPUUpdateQueue;                       // +0x00c
+    CEngineLandscapeMeshBuilder    MeshBuilder;                          // +0x010
+    float                          LODZBandsZ[8];                        // +0x498
+    CArray<CLandscapeTheme>        LandscapeThemes;                      // +0x4b8
+    CVertexShader                  BackgroundVertexShader;               // +0x4c4
+    CVertexShader                  BackgroundAlphaVertexShader;          // +0x4cc
+    CVertexShader                  ForegroundBlackoutVertexShader;       // +0x4d4
+    CArray<CVertexShader>          ForegroundVertexShaders;              // +0x4dc
+    CArray<CVertexShader>          ForegroundSpotLightVertexShaders;     // +0x4e8
+    CArray<CVertexShader>          ForegroundDepthBufferShadowedVertexShaders;      // +0x4f4
+    CArray<CVertexShader>          ForegroundBumpDepthBufferShadowedVertexShaders;  // +0x500
+    CArray<CVertexShader>          ForegroundSpotDepthBufferShadowedVertexShaders;  // +0x50c
+    CVertexShader                  ProcTextureVertexShader;              // +0x518
+    CArray<CVertexShader>          ForegroundColourBufferShadowedVertexShaders;     // +0x520
+    CArray<CVertexShader>          ForegroundBumpColourBufferShadowedVertexShaders; // +0x52c
+    CArray<CVertexShader>          ForegroundSpotColourBufferShadowedVertexShaders; // +0x538
+    CArray<CVertexShader>*         ForegroundShadowedVertexShaders;      // +0x544
+    CArray<CVertexShader>*         ForegroundBumpShadowedVertexShaders;  // +0x548
+    CArray<CVertexShader>*         ForegroundSpotShadowedVertexShaders;  // +0x54c
+    CVertexShader                  ShadowProjectionVertexShader;         // +0x550
+    CVertexShader                  ShadowRenderVertexShader;             // +0x558
+    CPixelShader                   BackgroundPixelShader;                // +0x560
+    CPixelShader                   ForegroundPixelShader;                // +0x568
+    CPixelShader                   ForegroundBlackoutPixelShader;        // +0x570
+    CPixelShader                   ForegroundDepthBufferShadowedPixelShader;        // +0x578
+    CPixelShader                   ForegroundBumpDepthBufferShadowedPixelShader;    // +0x580
+    CPixelShader                   ForegroundColourBufferShadowedPixelShader;       // +0x588
+    CPixelShader                   ForegroundBumpColourBufferShadowedPixelShader;   // +0x590
+    CPixelShader                   ProcTexturePixelShader;               // +0x598
+    CPixelShader*                  ForegroundShadowedPixelShader;        // +0x5a0
+    CPixelShader*                  ForegroundBumpShadowedPixelShader;    // +0x5a4
+    CIndexBuffer                   ForegroundBasePatchIndexBuffer;       // +0x5a8
+    CTexture                       ForegroundBlendTables[5];             // +0x5bc
+    CArray<CSubPatchSorterEntry>   SortedSubPatchList;                   // +0x5e4
+    CArray<CBackgroundLoadingOcclusionBoxTask> BackgroundLoadingOcclusionTests;     // +0x5f0
+    CArray<long>                   FreeBackgroundLoadingOcclusionHandles;           // +0x5fc
+    CLandscapeSettings             Settings;                             // +0x608
+    CArray<unsigned short>         TesselationOverflowIndexBuffer;       // +0x654
+    CArray<CTVertexLandscapeBackground> TesselationOverflowVertexBuffer; // +0x660
+    CLandscapePatchTesselator      Tesselator;                           // +0x66c
+    CFastForegroundTextureLoadInfo FastForegroundTextureLoadInfo;        // +0x68c
+    CEngineLandscapeMemoryManager* MemoryManager;                        // +0x6b0
+};
+FABLE_STATIC_ASSERT(sizeof(CEngineLandscapeRenderer) == 0x6b4);
+FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, MeshBuilder) == 0x10);
+FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, LODZBandsZ) == 0x498);
+FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, BackgroundVertexShader) == 0x4c4);
+FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ForegroundShadowedVertexShaders) == 0x544);
+FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ForegroundBasePatchIndexBuffer) == 0x5a8);
+FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ForegroundBlendTables) == 0x5bc);
+FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, Settings) == 0x608);
+FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, Tesselator) == 0x66c);
+FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, FastForegroundTextureLoadInfo) == 0x68c);
+FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, MemoryManager) == 0x6b0);
+#else // flattened Ego_r layout (the landed default, unchanged)
 // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
 // Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CEngineLandscapeRenderer = 0xf5c.
 // Container layout: retail STLport 4.6 (list 4, vector/map/set/string/CArray 0xc, deque 0x28, CVectorMap 0x10, bases from Fable.exe RTTI): sizeof CEngineLandscapeRenderer = 0x6b4.
@@ -109,5 +263,6 @@ FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, TesselationOverflowVertex
 FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, Tesselator) == 0x66c);
 FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, FastForegroundTextureLoadInfo) == 0x68c);
 FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, MemoryManager) == 0x6b0);
+#endif // FABLE_RETAIL_CENGINELANDSCAPERENDERER
 
 #endif // FABLE_ENGINE_CENGINELANDSCAPERENDERER_H

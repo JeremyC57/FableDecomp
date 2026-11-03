@@ -8,9 +8,17 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CVILLAGETASKPATROL
+class CThingTrackNode;
+#endif
 #pragma pack(push, 1)
 class CVillageTaskPatrol {
 public:
+#ifdef FABLE_RETAIL_CVILLAGETASKPATROL
+    // Retail opt-in (2026-11-03, chunk 720 rows 0x0065B854 / 0x00659800): the constructor (Ego_r.pdb + FableWin.pdb, out of line in
+    // retail: 0x0065EE66 ??0CVillageTaskPatrol@@QAE@ABVCThingTrackNode@@@Z; the CTCVillage callers allocate the task with operator new and call it). Declaration only: no layout change.
+    CVillageTaskPatrol(const CThingTrackNode& patrolStart);
+#endif
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char PatrolStart[0x8];                          // +0x08 CIntelligentPointer<CThingTrackNode_const_>

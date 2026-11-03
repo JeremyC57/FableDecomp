@@ -1,0 +1,21 @@
+NEW 00c1eb10 ??1CVtable_012b3404@@UAE@XZ 
+    others: {'??1CUIComponentBase_00c1e180@@QAE@XZ': ['00c1e180']} 
+    landed leaf: [('global_operatornew_00c1eb10.cpp', 'operator_new')]
+NEW 00c426e0 ?Close@CVtable_012b4f9c@@UAEXXZ 
+    others: {'??1CBase_00c426e0@@QAE@XZ': ['00c34710'], '?Close@CWADFile_00c347b0@@QAEXXZ': ['00c347b0']} 
+    landed leaf: [('Close_Close_00c426e0.cpp', 'Close')]
+NEW 00c4cf40 ??1CVtable_012B8778@@UAE@XZ 
+    others: {'??1CAIStateGroupBase_00c3cf40@@QAE@XZ': ['00c3cf40'], '?dtor@RM@@QAEXXZ': ['00c3d7b0'], '??1CListNode@@UAE@XZ': ['00c3f3d0']} 
+    landed leaf: []
+NEW 012b32a0 ??_7CVtable_012b32a0@@6B@ 
+    others: {'??_7CDisplayElement_00c1d880@@6B@': ['00c1d880']} 
+    landed leaf: []
+NEW 012b33a4 ??_7CVtable_012b33a4@@6B@ 
+    others: {'??_7CUIComponent_00c1e050@@6B@': ['00c1e050']} 
+    landed leaf: []
+LEAF 00434a10 ?PreChangeResolution@CDisplayEngine@@QAEXXZ <- other spellings bound by {'?OnExclusiveModeChange@CDisplayHolder@@QAEXXZ': ['004163b7']}
+LEAF 006cb6b0 ?InterruptNavigation@CTCCreatureNavigation@@QAEXXZ <- other spellings bound by {'?ResetNavigator@CTCCreatureNavigation@@QAEXXZ': ['00665df0'], '?OnStateGroupRemoved@CTCBase@@QAEXXZ': ['008fd050'], '?OnStateGroupRemoved@CTCBaseAny@@QAEXXZ': ['00713740'], '?Reset@CTCType7@@QAEXXZ': ['0089bdf0'], '?ResetNavigation@CTCNavigator@@QAEXXZ': ['00714730'], '?Reset@CTCWalk@@QAEXXZ': ['0089b780']}
+LEAF 006cb8e0 ?GetNearestNavigablePosTo@CTCCreatureNavigation@@QBE_NABVC3DVector@@MA <- other spellings bound by {'?FindNearestWalkablePos@CTCWalk@@QAE_NABVC3DVector@@MPAV2@@Z': ['0089b780']}
+LEAF 006cb9b0 ?CalculateRouteFromTo@CTCCreatureNavigation@@QBEXABVC3DVector@@0AAV?$v <- other spellings bound by {'?CalculateRouteFromTo@CTCNavigationBase@@QAEXABVC3DVector@@0AAUCRoute@@@Z': ['00800540']}
+LEAF 006cb9c0 ?InitialiseFromPreCalculatedRoute@CTCCreatureNavigation@@QAEXABVC3DVec <- other spellings bound by {'?SetUpRoute@CTCNavigation@@QAEXABVC3DVector@@00@Z': ['0097f5b0']}
+LEAF 00aa75c0 ??1CChunkedFileChunk@@UAE@XZ <- other spellings bound by {'?BaseOnDie@CTCInventoryItemBase@@QAEXXZ': ['00aa71f0'], '??1CChunkedFileChunk@@QAE@XZ': ['00aa7370'], '?BaseOnDie_00aa75c0@CTCInventoryItem@@QAEXXZ': ['00aa49b0']}

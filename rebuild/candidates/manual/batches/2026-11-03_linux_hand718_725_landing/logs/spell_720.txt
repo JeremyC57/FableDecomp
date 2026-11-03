@@ -1,0 +1,29 @@
+NEW 00436c80 ?push_back@?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@QAEXABQAVCThing@@@Z 
+    others: {'?push_back@CThingVector@@QAEXABQAVCThing@@@Z': ['005252b0'], '?push_back@CThingVector@NDust008f7950@@QAEXABQAUCThing@2@@Z': ['008f7950']} 
+    landed leaf: []
+NEW 004c7e70 ?HasScriptThing@CThing@@QBE_NXZ 
+    others: {'?GFHasScriptThing@@YI_NPAVCThing@@@Z': ['0065c36e']} 
+    landed leaf: []
+NEW 005d8e50 ?ReturnToInventory@CTCInventoryItem@@QAEXXZ 
+    others: {'?Notify@CTCInterface1A@@QAEXXZ': ['007eddf0'], '?OnShowEnded@CTCShowableItem@@QAEXXZ': ['008116d0'], '?OnUseFailed@CTCInterface1A@@QAEXXZ': ['007ed170'], '?OnNotCarried@CTC1A@@QAEXXZ': ['0069f9e0']} 
+    landed leaf: [('CTCInventoryItem_ReturnToInventory_005d8e50.cpp', 'ReturnToInventory@CTCInventoryItem')]
+NEW 006604eb ?push_back@?$list@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligent 
+    others: {'?push_back@CAICreaturePointerList@@QAEXABUCIntelligentPointerAICreature@@@Z': ['006d50c0'], '?push_back@?$CResultList@V?$CIntelligentPointer@VCThingAICreature@@@@@@QAEXABV?$': ['006dfa50']} 
+    landed leaf: []
+NEW 00662010 ?GetProperty@CThingCreatureBase@@QBEKXZ 
+    others: {'?GetLifeState@CThingCreatureState@@QAEJXZ': ['00936ba0'], '?GetLifeState@CThingCreatureBase@@QAEJXZ': ['009378f0'], '?GetVillagerState@CThing@@QAEJXZ': ['0065c781'], '?GetCurrentStateGroupType@CThingAICreature@@QBE?AW4EAIStateGroupType@@XZ': ['008648a0']} 
+    landed leaf: [('CPixelShader_CountReferences_00662010.cpp', 'CountReferences')]
+NEW 006a1060 ?IsCarryingThing@CTCCarrying@@QBE_NABVCThing@@@Z 
+    others: {'?IsCarryingThing@CTCCarrying@@QAE_NPAVCThing@@@Z': ['006647f0'], '?IsCarryingThing@CTCCarrying@@QBE_NPAVCThing@@@Z': ['005c3a95']} 
+    landed leaf: []
+NEW 006a1120 ?GetCarriedThing@CTCCarrying@@QBEPAVCThing@@J@Z 
+    others: {'?GetCarriedThing@CTCCarrying@@QAEPAVCThing@@J@Z': ['006648d0']} 
+    landed leaf: []
+NEW 006a1490 ?IsCarriedThingInPrimarySlot@CTCCarrying@@QBE_NABVCThing@@@Z 
+    others: {'?IsCarriedThingInPrimarySlot@CTCCarrying@@QBE_NPAVCThing@@@Z': ['005c3a95']} 
+    landed leaf: []
+NEW 006a19b0 ?RemoveThing@CTCCarrying@@QAEXAAVCThing@@@Z 
+    others: {'?RemoveThing@CTCCarrying@@QAEXPAVCThing@@@Z': ['006648d0']} 
+    landed leaf: []
+LEAF 005c552c ?RemoveWeaponsFromSheathes@CTCInventoryWeapons@@QAEXXZ <- other spellings bound by {'?TakeWeaponsOutOfSheathes@CTCInventoryWeapons@@QAEXXZ': ['005c9962'], '?PrepareWeaponSheathing@CTCInventoryWeapons@@QAEXXZ': ['0069f9e0']}
+LEAF 0065b854 ?AddThingToVillage@CTCVillage@@QAEXAAVCThing@@@Z <- other spellings bound by {'?AddThingToVillage@CTCVillage_Retail@@QAEXPAUCThing_Retail@@@Z': ['0089d3a0'], '?AddThingToVillage@CTCVillage@@QAEXPAVCThing@@@Z': ['00730070']}

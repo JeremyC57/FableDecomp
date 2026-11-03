@@ -1,0 +1,2664 @@
+################ engine/C2DBoxI.h
+9a10
+> <<<<<<< merged
+13a15,21
+> =======
+> // Retail opt-in (2026-11-03, chunk 719 row 0x00509A20, agent719c): Ego_r.pdb / FableWin.pdb inline accessors (no out-of-line
+> // copy bound in Fable.exe; 0x00509A20 expands ContainsPoint as TLX, BRX, TLY, BRY compares). No layout change.
+> long GetWidth() const { return BRX-TLX; }
+> long GetHeight() const { return BRY-TLY; }
+> bool ContainsPoint(const C2DCoordI& p) const { return p.X>=TLX && p.X<BRX && p.Y>=TLY && p.Y<BRY; }
+> >>>>>>> c719
+################ NEW engine/C2DExtentsF.h
+################ engine/C2DExtentsI.h
+5a6,11
+> #ifdef FABLE_RETAIL_C2DEXTENTSI
+>  // Retail opt-in (2026-11-03, chunk 719 row 0x0040CEC0): FableWin.pdb ??0C2DExtentsI@@QAE@ABV0@@Z (the user copy ctor: a
+>  // by-value C2DExtentsI argument is built in place, sub esp,8 / mov eax,esp / two stores) and ?Initialise@C2DExtentsI@@QAEXJJ@Z.
+>  C2DExtentsI(const C2DExtentsI& other):X(other.X),Y(other.Y){}
+>  void Initialise(long x,long y){X=x;Y=y;}
+> #endif
+################ NEW engine/C2DLineF.h
+################ engine/C2DVector.h
+7a8
+> #include <math.h>
+12a14
+> #include "engine/C3DVector.h"
+19a22,24
+>     // Retail opt-in addition (2026-11-03, chunk 719 row 0x00509A20, agent719c): Ego_r.pdb / FableWin.pdb ??0C2DVector@@QAE@ABVC3DVector@@@Z,
+>     // inline (0x00509A20 copies the helper point's X / Y dwords from the returned C3DVector temporary).
+>     C2DVector(const C3DVector& v) : X(v.X),Y(v.Y) { }
+26a32,33
+> <<<<<<< merged
+> <<<<<<< merged
+29a37,47
+> =======
+> =======
+> >>>>>>> c721
+>     // Ego_r.pdb / FableWin.pdb ?GetMagnitude@C2DVector@@QBEMXZ, inline in retail: CNavigatorAStar::UpdateGoal 0x00A1E030 squares
+>     // Y then X, adds, and runs fsqrt through the float overload (`fsqrt ; fstp st(2) ; fstp st(0)`, the dead difference
+>     // vector popped under the result), which `(float)sqrt(X*X+Y*Y)` does not give (it stores before popping).
+>     float GetMagnitude() const { return sqrtf(X*X+Y*Y); }
+> <<<<<<< merged
+> >>>>>>> c720
+> =======
+> >>>>>>> c721
+################ engine/C3DBoundingBox.h
+8a9,35
+> #ifdef FABLE_RETAIL_C3DBOUNDINGBOX
+> // Retail branch (opt-in): the members are read directly by the inlined accessors below.
+> // GetCenter: Ego_r/FableWin `?GetCenter@C3DBoundingBox@@QBE?AVC3DVector@@XZ`; retail GetLightsInArea 0x00B46600..0x00B46645
+> //   adds Min.X + Max.X but Max.Y + Min.Y / Max.Z + Min.Z, then scales by 0.5f (0x0122F59C), which VC7.1 gives for
+> //   (MaxCoord + MinCoord) * 0.5f.
+> // CalcShortestDistanceToPointSquared: Ego_r `?CalcShortestDistanceToPointSquared@C3DBoundingBox@@QBEMABVC3DVector@@@Z`;
+> //   declared only -- its body carries the engine's hand-SSE kernel, so each retail_asm row that expands it defines it
+> //   (see landed 0x00BF7DF0 and 0x00B46280).
+> <<<<<<< merged
+> =======
+> class C3DBoundingBox {
+> public:
+>     C3DVector MinCoord;
+>     C3DVector MaxCoord;
+>     const C3DVector GetCenter() const { return (MaxCoord + MinCoord) * 0.5f; }
+>     float CalcShortestDistanceToPointSquared(const C3DVector& point) const;
+> };
+> #else
+> >>>>>>> c721
+> class C3DBoundingBox {
+> public:
+>     C3DVector MinCoord;
+>     C3DVector MaxCoord;
+>     const C3DVector GetCenter() const { return (MaxCoord + MinCoord) * 0.5f; }
+>     float CalcShortestDistanceToPointSquared(const C3DVector& point) const;
+> };
+> #else
+23a51
+> #endif
+################ engine/C3DTriangle2.h
+3,4c3,5
+< // C3DTriangle2 (Ego_r class V): unsigned short VertexIndex[3] at +0, size 6 (0x00AE0710 / 0x00AC2BE0 index the records with
+< // stride 6, movzx word). GetVertexIndex: FableWin ?GetVertexIndex@C3DTriangle2@@QBEKK@Z 0x02EBE3D0, inline in retail.
+---
+> // Hand-written (chunk 723): C3DTriangle2, three 16-bit vertex indices (Ego_r.pdb: unsigned short VertexIndex[3], 6 bytes). Members
+> // from Ego_r.pdb / FableWin.pdb publics; all inline in retail (0x00B6EDF0 writes the indices as immediate word stores).
+> #include "rebuild_abi.h"
+7,9c8,23
+<     unsigned long GetVertexIndex(unsigned long index) const { return VertexIndex[index]; }
+< private:
+<     unsigned short VertexIndex[3];
+---
+>     C3DTriangle2() { }                                                   // ??0C3DTriangle2@@QAE@XZ
+>     C3DTriangle2(unsigned short a, unsigned short b, unsigned short c)   // ??0C3DTriangle2@@QAE@GGG@Z
+>     {
+>         VertexIndex[0] = a;
+>         VertexIndex[1] = b;
+>         VertexIndex[2] = c;
+>     }
+>     unsigned long GetA() const { return VertexIndex[0]; }                // ?GetA@C3DTriangle2@@QBEKXZ
+>     unsigned long GetB() const { return VertexIndex[1]; }                // ?GetB@C3DTriangle2@@QBEKXZ
+>     unsigned long GetC() const { return VertexIndex[2]; }                // ?GetC@C3DTriangle2@@QBEKXZ
+>     unsigned long GetVertexIndex(unsigned long i) const { return VertexIndex[i]; }   // ?GetVertexIndex@C3DTriangle2@@QBEKK@Z
+>     void SetA(unsigned long v) { VertexIndex[0] = (unsigned short)v; }   // ?SetA@C3DTriangle2@@QAEXK@Z
+>     void SetB(unsigned long v) { VertexIndex[1] = (unsigned short)v; }   // ?SetB@C3DTriangle2@@QAEXK@Z
+>     void SetC(unsigned long v) { VertexIndex[2] = (unsigned short)v; }   // ?SetC@C3DTriangle2@@QAEXK@Z
+>     void SetVertexIndex(unsigned long i, unsigned short v) { VertexIndex[i] = v; }   // ?SetVertexIndex@C3DTriangle2@@QAEXKG@Z
+>     unsigned short VertexIndex[3];                                       // +0x00
+11c25,27
+< #endif
+---
+> FABLE_STATIC_ASSERT(sizeof(C3DTriangle2) == 6);
+> 
+> #endif // FABLE_ENGINE_C3DTRIANGLE2_H
+################ engine/C3DVector.h
+13a14,28
+> #ifdef FABLE_RETAIL_C3DVECTOR_NORMALISE
+> // Retail opt-in (2026-11-03, chunk 720 row 0x00659800 CTCVillage::CalculateSecuritySweepTasks): the fast inverse square root
+> // and the members retail expands from it. Ego_r.pdb public ?GFastOneOverSqrtTable@@3PAKA (0x013CE558, 128 mantissas) and
+> // FableWin.pdb ?GFFastOneOverSqrt@@YIMM@Z (__fastcall, out of line only in the debug build): exponent (0x17C - e) / 2, the
+> // table mantissa, one Newton step (3 - x r r) r / 2 -- the body the landed rows 0x007AF0F0 / 0x007A6E20 spell. Retail expands
+> // it in place (0x00659A42..0x00659A99). Declarations and inline bodies only: no layout change.
+> extern unsigned long GFastOneOverSqrtTable[128];                         // 0x013CE558
+> __forceinline float __fastcall GFFastOneOverSqrt(float value)
+> {
+>     unsigned long bits = *reinterpret_cast<unsigned long*>(&value);
+>     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) | (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
+>     float r = *reinterpret_cast<float*>(&estimate);
+>     return (3.0f - r * r * value) * r * 0.5f;
+> }
+> #endif
+50a66,82
+> #ifdef FABLE_RETAIL_C3DVECTOR_NORMALISE
+> <<<<<<< merged
+>     // Retail opt-in (chunk 718, row 0x0088EDC0 CameraDoConversation): FableWin.pdb ?Normalise@C3DVector@@QAEAAV1@XZ (no Ego_r.pdb
+>     // copy: the release build expands it) -- the table-driven fast 1/sqrt (GFastOneOverSqrtTable 0x013CE558, exponent (380 - e) / 2,
+>     // one Newton step `(3 - r*r*lenSq) * r * 0.5`), as the landed C2DVector::Normalise 0x00A14540 and the expanded copies in
+>     // CTCAssassinRush::SetupFacingDirection 0x007A6E20; and FableWin.pdb ??ZC3DVector@@QAEABV0@ABV0@@Z (operator-=).
+>     FABLE_VECTOR_INLINE const C3DVector& operator-=(const C3DVector& v){X-=v.X;Y-=v.Y;Z-=v.Z;return *this;}
+>     FABLE_VECTOR_INLINE C3DVector& Normalise();
+>     void Rotate(float angleXY, float angleZ);                            // 0x00A14260 ?Rotate@C3DVector@@QAEXMM@Z (Ego_r 0x00B81BF0)
+> =======
+>     // FableWin.pdb ?Normalise@C3DVector@@QAEAAV1@XZ / ?GetMagnitude2D@C3DVector@@QBEMXZ (inline in retail) and
+>     // ?RotateXY@C3DVector@@QAEXM@Z (Ego_r 0x00B81930 / FableWin; out of line in retail at 0x00A14040).
+>     FABLE_VECTOR_INLINE C3DVector& Normalise(){float factor=GFFastOneOverSqrt(X*X+Y*Y+Z*Z);X*=factor;Y*=factor;Z*=factor;return *this;}
+>     FABLE_VECTOR_INLINE float GetMagnitude2D()const{return (float)sqrt(GetSquaredMagnitude2D());}
+>     void RotateXY(float angle);                                          // 0x00A14040
+> >>>>>>> c720
+> #endif
+52a85,100
+> #ifdef FABLE_RETAIL_C3DVECTOR_NORMALISE
+> extern unsigned long GFastOneOverSqrtTable[128];                      // 0x013CE558 ?GFastOneOverSqrtTable@@3PAKA (Ego_r public)
+> FABLE_VECTOR_INLINE C3DVector& C3DVector::Normalise()
+> {
+>     float lengthSquared = X * X + Y * Y + Z * Z;
+>     unsigned long bits = *(unsigned long*)&lengthSquared;
+>     unsigned long estimate = (((0x17c - ((bits >> 23) & 0xff)) >> 1) << 23) |
+>                              (GFastOneOverSqrtTable[(bits >> 17) & 0x7f] << 15);
+>     float r = *(float*)&estimate;
+>     r = (3.0f - r * r * lengthSquared) * r * 0.5f;
+>     X *= r;
+>     Y *= r;
+>     Z *= r;
+>     return *this;
+> }
+> #endif
+################ engine/CAIGameCameraBase.h
+9a10,54
+> // Retail opt-in (chunk 718): define FABLE_RETAIL_CAIGAMECAMERABASE before the include for the polymorphic retail class.
+> // RTTI .?AVCAIGameCameraBase@@ (no bases, ghidra_out/rtti_bases.tsv); vtable 0x0125C1F4, 25 slots read from Fable.exe:
+> // 0..1 _purecall 0x00BFEA08 (named from the CGameCameraManager overrides at the same slots of 0x0125C754: 0 Update 0x0069B790,
+> // 1 GetRenderCamera(float) 0x00697F30, FableWin ?Update@CGameCameraManager@@UAEXXZ / ?GetRenderCamera@CGameCameraManager@@UBE?AVCCamera@@M@Z),
+> // 2..23 the FableWin.pdb ?X@CAIGameCameraBase@@ bodies 0x00697030..0x00697180 in PDB order (the two GetCameraManager overloads are
+> // declared const first; VC7.1 lays an overload group out in reverse declaration order, so slot 9 0x006970C0 is the non-const one
+> // and slot 10 0x006970B0 the const one, matching the PDB address order of their bodies), 24 the deleting dtor 0x006971A0 (the
+> // destructor is declared last and is inline and empty: 72 retail copies of the ??_G). sizeof 4 (the vptr only).
+> #ifdef FABLE_RETAIL_CAIGAMECAMERABASE
+> class C3DVector;
+> class CCamera;
+> class CEnginePrimitivePrepareInfo;
+> class CGameCameraManager;
+> class CThingGameObject;
+> 
+> class CAIGameCameraBase {
+> public:
+>     virtual void Update() = 0;                                                                   //  0 (pure)
+>     virtual CCamera GetRenderCamera(float interpolation) const = 0;                              //  1 (pure)
+>     virtual void PreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) const;   //  2 0x00697030
+>     virtual bool IsPosInViewingFrustrum(const C3DVector& pos) const;                             //  3 0x00697040
+>     virtual bool Is2DAreaInViewingFrustrum(const C3DVector& pos, float radius) const;            //  4 0x00697050
+>     virtual bool IsVolumeInViewingFrustrum(const C3DVector& pos, float radius) const;            //  5 0x00697060
+>     virtual bool IsLineOfSightToPos(const C3DVector& pos) const;                                 //  6 0x00697070
+>     virtual float GetControlAngleXY() const;                                                     //  7 0x00697080
+>     virtual void SetChangeInControlDirection();                                                  //  8 0x006970A0
+>     virtual bool GetCameraManager(const CGameCameraManager** manager) const;                     // 10 0x006970B0
+>     virtual bool GetCameraManager(CGameCameraManager** manager);                                 //  9 0x006970C0
+>     virtual const C3DVector PeekCurrentPos() const;                                              // 11 0x0069C1B0
+>     virtual bool IsFreeLookMode() const;                                                         // 12 0x006970D0
+>     virtual bool IsOverridingMainAngleXY() const;                                                // 13 0x006970E0
+>     virtual void ScriptEnd();                                                                    // 14 0x006970F0
+>     virtual void ScriptStart();                                                                  // 15 0x00697100
+>     virtual void ScriptMoveToPosAndLookAtPos(const C3DVector& pos, const C3DVector& lookAt, float speed);   // 16 0x00697110
+>     virtual void ScriptMoveToPosAndLookAtThing(const CThingGameObject& thing, const C3DVector& pos, float speed);   // 17 0x00697120
+>     virtual void ScriptMoveToThingAndLookAtPos(const CThingGameObject& thing, const C3DVector& offset, const C3DVector& lookAt, float speed, bool relative);   // 18 0x00697130
+>     virtual void ScriptMoveToThingAndLookAtThing(const CThingGameObject& thing, const CThingGameObject& lookAt, const C3DVector& offset, float speed, bool relative);   // 19 0x00697140
+>     virtual void ScriptSetRotationSpeed(float speed);                                            // 20 0x00697150
+>     virtual void SetDebugCameraType(long type);                                                  // 21 0x00697160
+>     virtual void SetLookaroundVector(const C3DVector& vector);                                   // 22 0x00697170
+>     virtual void CyclePlayerViewType();                                                          // 23 0x00697180
+>     virtual ~CAIGameCameraBase() { }                                                             // 24 ??_G 0x006971A0
+> };
+> FABLE_STATIC_ASSERT(sizeof(CAIGameCameraBase) == 0x4);
+> #else
+20a66
+> #endif // FABLE_RETAIL_CAIGAMECAMERABASE
+################ engine/CANavQuadTreeNode.h
+2a3,38
+> #ifdef FABLE_RETAIL_CANAVQUADTREENODE
+> // Retail opt-in (2026-11-03, chunk 721 row 0x00A1CEB0 CNavigatorAStar::Initialise): the polymorphic retail class. RTTI
+> // .?AVCANavQuadTreeNode@@ vtable 0x0129CBBC. Slots as the landed CNavNavigableLeafNode rows (0x00A76490, 0x00A76B90): 0 dtor,
+> // 1/2 GetNeighbours (overloads in reverse order), 3 HasNeighbours, 4 IsNeighbourOf, 5 GetRegionID (+0x14), 6 GetNodeType
+> // (+0x18; Ego_r ?GetNodeType@...@@UBE?AW4ENavQuadTreeNodeType@@XZ), 7 GetRegion, 8 GetPreferabilityCost. Members: Ego_r names
+> // and offsets (Position +4, QuadTreeLevel +0xc, NavLayer +0xd, LeafNode +0xe, Blocked +0xf), sizeof 0x10.
+> #include <stddef.h>
+> #include "rebuild_abi.h"
+> #include "engine/C2DVector.h"
+> class CNavRegion;
+> template <class T, int N> class CSmallVector;
+> enum ENavQuadTreeNodeType {                          // Ego_r enum; enumerator names descriptive (values from the landed rows)
+>     NAV_NODE_QUADTREE = 0, NAV_NODE_NAVIGABLE = 1, NAV_NODE_BLOCKED = 2, NAV_NODE_SWITCHABLE = 3
+> };
+> class CANavQuadTreeNode {
+> public:
+>     virtual ~CANavQuadTreeNode();                                                        // slot 0
+>     virtual const CSmallVector<const CANavQuadTreeNode*, 8>* GetNeighbours() const;      // slot 2
+>     virtual CSmallVector<const CANavQuadTreeNode*, 8>* GetNeighbours();                  // slot 1
+>     virtual bool HasNeighbours() const;                                                  // slot 3
+>     virtual bool IsNeighbourOf(const CANavQuadTreeNode*) const;                          // slot 4
+>     virtual long GetRegionID() const;                                                    // slot 5 (+0x14)
+>     virtual ENavQuadTreeNodeType GetNodeType() const;                                    // slot 6 (+0x18)
+>     virtual const CNavRegion* GetRegion() const;                                         // slot 7
+>     virtual unsigned char GetPreferabilityCost() const;                                  // slot 8
+>     bool operator==(const CANavQuadTreeNode&) const;                                     // 0x00A763F0 ??8CANavQuadTreeNode@@QBE_NABV0@@Z
+>     const C2DVector& GetPosition() const { return Position; }                            // Ego_r ?GetPosition@CANavQuadTreeNode@@QBEABVC2DVector@@XZ
+>     C2DVector     Position;                                                              // +0x04
+>     unsigned char QuadTreeLevel;                                                         // +0x0c
+>     unsigned char NavLayer;                                                              // +0x0d
+>     bool          LeafNode;                                                              // +0x0e
+>     bool          Blocked;                                                               // +0x0f
+> };
+> FABLE_STATIC_ASSERT(sizeof(CANavQuadTreeNode) == 0x10);
+> FABLE_STATIC_ASSERT(offsetof(CANavQuadTreeNode, NavLayer) == 0xd);
+> #else // flattened Ego_r layout (the landed default, unchanged)
+32a69
+> #endif // FABLE_RETAIL_CANAVQUADTREENODE
+################ engine/CArray.h
+17a18,24
+> #ifdef FABLE_RETAIL_CARRAY
+>     // Retail opt-in (chunk 723, row 0x00BC14E0): the index operators go through begin() like STLport's vector::operator[]; the
+>     // element offset then folds into the addressing mode of the inlined CVertexShader::operator= (`[esi+0Ch]`), where the
+>     // `_M_start[i]` form materialises the element address first (`add esi,8`).
+>     T& operator[](unsigned int i) { return *(this->begin() + i); }
+>     const T& operator[](unsigned int i) const { return *(this->begin() + i); }
+> #else
+19a27
+> #endif
+################ NEW engine/CCamera.h
+################ engine/CDataInputStream.h
+8a9,11
+> #ifdef FABLE_RETAIL_CDATAINPUTSTREAM_READERS
+> class CRGBColour;
+> #endif
+10a14,22
+> #ifdef FABLE_RETAIL_CDATAINPUTSTREAM_READERS
+> // Chunk 724: a row with 33 straight-line reads (CPSCDecalRenderer::ReadBinary 0x00B1C880) expands every one; plain `inline`
+> // leaves calls under VC7.1's inline budget, so the opt-in forces Read / ReadType (no out-of-line copy in either PDB name set).
+> #define FABLE_CDIS_INLINE __forceinline
+> #define FABLE_CDIS_TINLINE __forceinline
+> #else
+> #define FABLE_CDIS_INLINE inline
+> #define FABLE_CDIS_TINLINE
+> #endif
+21a34,37
+> <<<<<<< merged
+> #ifdef FABLE_RETAIL_CDATAINPUTSTREAM_READTYPE
+>     __forceinline void Read(void* buffer,long size) {
+> #else
+22a39,42
+> #endif
+> =======
+>     FABLE_CDIS_INLINE void Read(void* buffer,long size) {
+> >>>>>>> c724
+33a54,62
+> <<<<<<< merged
+> #ifdef FABLE_RETAIL_CDATAINPUTSTREAM_READTYPE
+>     // Chunk 719 opt-in (0x00409730 CUserProfileManager::VerifySignature: three ReadULONG and two variable-size Read, none
+>     // out of line): retail expands Read / ReadType<T> / ReadULONG at every call site (also the traits reader 0x0040FE60), and
+>     // retail holds no out-of-line copy of any of the three. VC7.1 expands the plain-inline bodies only inside a loop
+>     // (LoadHeroStateBinary 0x00520670) or for a tiny caller; in a straight-line caller it calls the COMDATs unless they are
+>     // __forceinline (Read, ReadType and ReadULONG / ReadSLONG are the forceinline set; see the matching Read branch above).
+>     template<class T> __forceinline T ReadType() { T val; Read(&val,sizeof(T)); return val; }
+> #else
+34a64,68
+> #endif
+> #ifdef FABLE_RETAIL_CDATAINPUTSTREAM_READTYPE
+>     __forceinline unsigned long ReadULONG() { return ReadType<unsigned long>(); }
+>     __forceinline long ReadSLONG() { return ReadType<long>(); }
+> #else
+36a71,83
+> =======
+>     template<class T> FABLE_CDIS_TINLINE T ReadType() { T val; Read(&val,sizeof(T)); return val; }
+>     FABLE_CDIS_INLINE unsigned long ReadULONG() { return ReadType<unsigned long>(); }
+>     FABLE_CDIS_INLINE long ReadSLONG() { return ReadType<long>(); }
+> #ifdef FABLE_RETAIL_CDATAINPUTSTREAM_READERS
+>     // Chunk 724 opt-in: the FableWin.pdb readers retail expands inline (CPSCDecalRenderer::ReadBinary 0x00B1C880: one inlined
+>     // Read per value, the bool as a byte tested `setne`), and the out-of-line ReadColour 0x009945E0.
+>     __forceinline float ReadFloat() { return ReadType<float>(); }               // ?ReadFloat@CDataInputStream@@QAEMXZ
+>     __forceinline unsigned char ReadUBYTE() { return ReadType<unsigned char>(); }   // ?ReadUBYTE@CDataInputStream@@QAEEXZ
+>     __forceinline bool ReadEBOOL() { return ReadUBYTE() != 0; }                 // ?ReadEBOOL@CDataInputStream@@QAE_NXZ
+>     CRGBColour ReadColour();                                                    // 0x009945E0 ?ReadColour@CDataInputStream@@QAE?AVCRGBColour@@XZ
+> >>>>>>> c724
+> #endif
+################ engine/CDefString.h
+13a14,22
+> #ifdef FABLE_RETAIL_CDEFSTRING_GETSTRING
+>  // Retail opt-in (2026-11-03, chunk 720 row 0x0065B854 CTCVillage::AddThingToVillage): GetString is out of line in retail
+>  // (0x00415DD0 ?GetString@CDefString@@QBE?AVCCharString@@XZ; FableWin.pdb donor order puts ??B 0x018C20E0 = retail 0x00415D70
+>  // before GetString 0x018C2120 = 0x00415DD0, the Codex pass 12 respell), and the inline conversion forwards to it: the track-name
+>  // compare (the track node's TrackName against the def's PatrolTrackName) builds the conversion temporary at [ebp-4], calls 0x00415DD0 and re-reads
+>  // the temporary from its slot (0x0065B951..0x0065B95C), the implicit-conversion shape; an explicit GetString() call reuses eax.
+>  operator CCharString()const{return GetString();}
+>  CCharString GetString()const;                                       // 0x00415DD0
+> #else
+15a25
+> #endif
+################ engine/CDiskFileWin32.h
+0a1,33
+> #if defined(FABLE_RETAIL_CDISKFILEWIN32)
+> #ifndef FABLE_ENGINE_CDISKFILEWIN32_H
+> #define FABLE_ENGINE_CDISKFILEWIN32_H
+> #include "engine/CAFile.h"
+> // Layout: Ego_r CDiskFileWin32 0x1c; native ctor stores fields at +4,+8,+c,+10,+14,+18.
+> class CDiskFileWin32 : public CAFile {
+> public:
+>     CDiskFileWin32(const CWideString&,FileAccessType,unsigned long);
+>     virtual ~CDiskFileWin32() { Close(); }
+>     virtual void Open(const CWideString&,FileAccessType,unsigned long);
+>     virtual void Close();
+>     virtual void Read(void*,long,CASuspendableProcess* = 0);
+>     virtual void Write(const void*,long,CASuspendableProcess*);
+>     virtual void SetPosition(long);
+>     virtual void MovePosition(long);
+>     virtual long GetPosition() const { return Position; }
+>     virtual long GetLength() const { return Length; }
+>     virtual void SetLength(long);
+>     virtual bool IsOpen() const;
+>     virtual CWideString GetPathname() const;
+>     virtual CFileInformation GetFileInformation();
+>     virtual CAFile* Clone() const;
+> private:
+>     FileAccessType AccessType;
+>     long Position;
+>     long Length;
+>     void* WinFileHandle;
+>     bool Opened;
+>     CWideString Pathname;
+> };
+> FABLE_STATIC_ASSERT(sizeof(CDiskFileWin32)==0x1c);
+> #endif
+> #else
+36a70
+> #endif
+################ engine/CDisplayEngine.h
+23a24,31
+> #ifdef FABLE_RETAIL_CDISPLAYENGINE
+>     // Retail opt-in (chunk 725): FableWin.pdb members, retail addresses. Both are the Engine3D forwards of
+>     // CMainGameComponent::PreChangeResolution (inlined in SetExclusiveMode 0x004163B7 / SetDisplayMode / AppReinitFunc) and
+>     // CMainGameComponent::PostChangeResolution 0x00416365 (ecx = PDisplayEngine +0x28). Define FABLE_RETAIL_CIENGINE for the
+>     // polymorphic Engine3D.
+>     void PreChangeResolution();                                         // 0x00434A10 ?PreChangeResolution@CDisplayEngine@@QAEXXZ
+>     void PostChangeResolution(unsigned long, unsigned long, unsigned long);   // 0x00434A20 ?PostChangeResolution@CDisplayEngine@@QAEXKKK@Z
+> #endif
+################ engine/CDisplayManager.h
+17a18
+> class CDisplayModeDesc;
+41a43,47
+>  // Retail opt-in additions (2026-11-03, chunk 719 row 0x0040CEC0 the CUserProfileManager ctor): Ego_r.pdb
+>  // ?EnumerateDisplayModes@CDisplayManager@@QAEXAAV?$CArray@VCDisplayModeDesc@@@@VC2DExtentsI@@1@Z (retail 0x009C02D0) and
+>  // ?AddDeviceResetCallback@CDisplayManager@@QAEXPAVCDeviceResetCallback@@@Z (retail 0x009C0190).
+>  void EnumerateDisplayModes(CArray<CDisplayModeDesc>& modes,C2DExtentsI minDimensions,C2DExtentsI maxDimensions);
+>  void AddDeviceResetCallback(CDeviceResetCallback* callback);
+################ engine/CEngineComponent.h
+36a37,75
+> #ifdef FABLE_RETAIL_CENGINECOMPONENT
+> // Retail opt-in (chunk 723, 0x00B6D6D0): the polymorphic root of every engine component. RTTI .?AVCEngineComponent@@ has no
+> // bases; the 12 bytes are the vptr, GlobalPointerAddress (+0x04, Ego_r void**) and the two flags (+0x08 / +0x09).
+> // Virtual slots (CEngineWaterRenderer vtable 0x012A3364 and the other component vtables; the base bodies are
+> // CEngineComponent::LoadNewScene 0x00B28C40, PreLayerRender 0x00B28C60, PostLayerRender 0x00B28C70,
+> // PausedWorldFrameUpdate 0x00B28C90, OnReleaseDefaultPoolResources 0x00B28CC0, OnRestoreDefaultPoolResources 0x00B28CD0);
+> // the signatures are the Ego_r.pdb / FableWin.pdb overrides (?FrameStart@X@@UAEXABVCEngineComponentParams@@@Z x31,
+> // ?WorldFrameUpdate@X@@UAEX_N@Z x15, ?LoadNewScene@X@@UAE_NABVCEngineComponentLoadNewSceneParams@@@Z x11, ...), declared in
+> // slot order because VC7.1 numbers virtuals by declaration.
+> #include "rebuild_abi.h"
+> class CCharString;
+> class CEngineComponentLoadNewSceneParams;
+> class CEngineComponentParams;
+> class CEngineComponentRenderParams;
+> class CEngineVideoOptionsDef;
+> class CEngineComponent {
+> public:
+>     virtual ~CEngineComponent();                                                          // slot 0
+>     virtual void FrameStart(const CEngineComponentParams& params);                        // slot 1
+>     virtual void FrameEnd(const CEngineComponentParams& params);                          // slot 2
+>     virtual bool LoadNewScene(const CEngineComponentLoadNewSceneParams& params);          // slot 3  0x00B28C40
+>     virtual void Render(const CEngineComponentRenderParams& params);                      // slot 4
+>     virtual void PreLayerRender(const CEngineComponentRenderParams& params);              // slot 5  0x00B28C60
+>     virtual void PostLayerRender(const CEngineComponentRenderParams& params);             // slot 6  0x00B28C70
+>     virtual void WorldFrameUpdate(bool force);                                            // slot 7
+>     virtual void PausedWorldFrameUpdate();                                                // slot 8  0x00B28C90
+>     virtual CCharString GetConsoleEnableFunctionName();                                   // slot 9
+>     virtual unsigned long PeekSceneFilterFlags() const;                                   // slot 10
+>     virtual void OnReleaseDefaultPoolResources();                                         // slot 11 0x00B28CC0
+>     virtual bool OnRestoreDefaultPoolResources();                                         // slot 12 0x00B28CD0
+>     virtual bool SetEffectQuality(const CEngineVideoOptionsDef& def);                     // slot 13
+>     void SetGlobalComponentPointer(void** address);                                       // ?SetGlobalComponentPointer@CEngineComponent@@QAEXPAPAX@Z
+>     void SetupEnableConsoleVariable();                                                    // ?SetupEnableConsoleVariable@CEngineComponent@@QAEXXZ
+>     void**        GlobalPointerAddress;                                                   // +0x04
+>     bool          RenderEnabled;                                                          // +0x08
+>     unsigned char KeepAlive;                                                              // +0x09
+> };
+> FABLE_STATIC_ASSERT(sizeof(CEngineComponent) == 0xc);
+> #else // flattened Ego_r layout (the landed default, unchanged)
+60a100
+> #endif // FABLE_RETAIL_CENGINECOMPONENT
+################ NEW engine/CEngineLandscapeMeshBuilder.h
+################ engine/CEngineLandscapeRenderer.h
+2a3,156
+> #ifdef FABLE_RETAIL_CENGINELANDSCAPERENDERER
+> // Retail opt-in (chunk 723): CEngineLandscapeRenderer : CEngineComponent (RTTI), vtable 0x012A2B54, sizeof 0x6B4 (operator new 0x6B4).
+> // Members: Ego_r.pdb names at the retail offsets, typed so that the destructor 0x00B67920 destroys them in retail's reverse order.
+> // Two corrections to the default model below, both from that destructor: GPUUpdateQueue is 4 bytes (+0x0C, no TaskList) and
+> // MeshBuilder starts at +0x10 (0x488 bytes; `lea ecx,[esi+10h] ; call ~CEngineLandscapeMeshBuilder 0x00BE2B20`). Nested structs:
+> // CLandscapeSettings (U, ?GetSettings@CEngineLandscapeRenderer@@QAEABUCLandscapeSettings@1@XZ), CSubPatchSorterEntry /
+> // CBackgroundLoadingOcclusionBoxTask (U, 8 bytes, Ego_r bitfields), CFastForegroundTextureLoadInfo (three CArrays, retail 0x24).
+> #ifndef FABLE_RETAIL_CENGINECOMPONENT
+> #define FABLE_RETAIL_CENGINECOMPONENT
+> #endif
+> #ifndef FABLE_RETAIL_CINDEXBUFFER
+> #define FABLE_RETAIL_CINDEXBUFFER
+> #endif
+> #ifndef FABLE_RETAIL_CVERTEXSHADER
+> #define FABLE_RETAIL_CVERTEXSHADER
+> #endif
+> #ifndef FABLE_RETAIL_CTEXTURE
+> #define FABLE_RETAIL_CTEXTURE
+> #endif
+> #ifndef FABLE_RETAIL_CLANDSCAPEPATCHTESSELATOR
+> #define FABLE_RETAIL_CLANDSCAPEPATCHTESSELATOR
+> #endif
+> #include <stddef.h>
+> #include "rebuild_abi.h"
+> #include "engine/CArray.h"
+> #include "engine/CEngineComponent.h"
+> #include "engine/CLandscapeGPUUpdateQueue.h"
+> #include "engine/CEngineLandscapeMeshBuilder.h"
+> #include "engine/CIndexBuffer.h"
+> #include "engine/CTexture.h"
+> #include "engine/CVertexShader.h"
+> #include "engine/CPixelShader.h"
+> #include "engine/CLandscapePatchTesselator.h"
+> class CEngineLandscapeMemoryManager;
+> class CEngineMemoryInit;
+> class CLandscapeBackgroundPatch;
+> class CLandscapeBackgroundTreeNode;
+> enum EWaterType;                                                         // MS forward enum
+> struct CLandscapeTheme {                                                 // Ego_r.pdb, 0x38 bytes
+>     long       BaseTexture;                                              // +0x00
+>     long       BackgroundBaseTexture;                                    // +0x04
+>     long       CliffTexture;                                             // +0x08
+>     long       BackgroundCliffTexture;                                   // +0x0c
+>     long       BaseBumpMap;                                              // +0x10
+>     long       CliffBumpMap;                                             // +0x14
+>     long       BaseTextureMinMipMap;                                     // +0x18
+>     long       CliffTextureMinMipMap;                                    // +0x1c
+>     long       BaseBumpMapMinMipMap;                                     // +0x20
+>     long       CliffBumpMapMinMipMap;                                    // +0x24
+>     float      BaseSelfIllumination;                                     // +0x28
+>     float      CliffSelfIllumination;                                    // +0x2c
+>     EWaterType WaterType;                                                // +0x30
+>     float      WaterHeight;                                              // +0x34
+> };
+> class CEngineLandscapeRenderer : public CEngineComponent {
+> public:
+>     struct CLandscapeSettings {                                          // Ego_r.pdb, 0x4c bytes
+>         CLandscapeSettings();                                            // ??0CLandscapeSettings@CEngineLandscapeRenderer@@QAE@XZ
+>         float         MeshDetailLevel;                                   // +0x00
+>         float         ProceduralTextureDetail;                           // +0x04
+>         bool          DrawForeground;                                    // +0x08
+>         bool          DrawBackground;                                    // +0x09
+>         bool          DrawBackgroundWater;                               // +0x0a
+>         float         ForegroundFadeStart;                               // +0x0c
+>         float         ForegroundFadeEnd;                                 // +0x10
+>         unsigned char ForegroundFadeTransform[0x10];                     // +0x14 C4DVector
+>         unsigned char BackgroundFadeTransform[0x10];                     // +0x24 C4DVector
+>         bool          EnableUpdate;                                      // +0x34
+>         bool          FogEnable;                                         // +0x35
+>         bool          StaticMapOcclusionEnable;                          // +0x36
+>         bool          BumpMappingEnabled;                                // +0x37
+>         float         LODUpdateMaxTime;                                  // +0x38
+>         float         ForegroundMaxPixelsPerTexel;                       // +0x3c
+>         bool          EnableForegroundWithoutGameMap;                    // +0x40
+>         bool          DrawDebugDisplay;                                  // +0x41
+>         long          MinimumFileBlockSize;                              // +0x44
+>         bool          UpdateTesselation;                                 // +0x48
+>     };
+>     struct CSubPatchSorterEntry {                                        // Ego_r.pdb, 8 bytes
+>         CLandscapeBackgroundPatch* Patch;                                // +0x00
+>         long AddedThisFrame : 1;                                         // +0x04
+>         long IsOcclusionBox : 1;
+>         long OcclusionID : 30;
+>     };
+>     struct CBackgroundLoadingOcclusionBoxTask {                          // Ego_r.pdb, 8 bytes
+>         CLandscapeBackgroundTreeNode* Node;                              // +0x00
+>         long Visible : 1;                                                // +0x04
+>         long VisibilityFlagValid : 1;
+>         long OcclusionID : 30;
+>     };
+>     class CFastForegroundTextureLoadInfo {                               // Ego_r.pdb; retail 0x24 (three 12-byte CArrays)
+>     public:
+>         CFastForegroundTextureLoadInfo();                                // ??0CFastForegroundTextureLoadInfo@CEngineLandscapeRenderer@@QAE@XZ
+>         CArray<unsigned long> TexturesUsedThisFrame;                     // +0x00
+>         CArray<float>         TextureIDToMinPatchDistanceSquared;        // +0x0c
+>         CArray<unsigned char> CurrentTextureLODLevels;                   // +0x18
+>     };
+>     CEngineLandscapeRenderer(const CEngineMemoryInit& init);             // ??0CEngineLandscapeRenderer@@QAE@ABVCEngineMemoryInit@@@Z
+>     virtual ~CEngineLandscapeRenderer();                                 // ??1CEngineLandscapeRenderer@@UAE@XZ 0x00B67920
+>     CLandscapeGPUUpdateQueue       GPUUpdateQueue;                       // +0x00c
+>     CEngineLandscapeMeshBuilder    MeshBuilder;                          // +0x010
+>     float                          LODZBandsZ[8];                        // +0x498
+>     CArray<CLandscapeTheme>        LandscapeThemes;                      // +0x4b8
+>     CVertexShader                  BackgroundVertexShader;               // +0x4c4
+>     CVertexShader                  BackgroundAlphaVertexShader;          // +0x4cc
+>     CVertexShader                  ForegroundBlackoutVertexShader;       // +0x4d4
+>     CArray<CVertexShader>          ForegroundVertexShaders;              // +0x4dc
+>     CArray<CVertexShader>          ForegroundSpotLightVertexShaders;     // +0x4e8
+>     CArray<CVertexShader>          ForegroundDepthBufferShadowedVertexShaders;      // +0x4f4
+>     CArray<CVertexShader>          ForegroundBumpDepthBufferShadowedVertexShaders;  // +0x500
+>     CArray<CVertexShader>          ForegroundSpotDepthBufferShadowedVertexShaders;  // +0x50c
+>     CVertexShader                  ProcTextureVertexShader;              // +0x518
+>     CArray<CVertexShader>          ForegroundColourBufferShadowedVertexShaders;     // +0x520
+>     CArray<CVertexShader>          ForegroundBumpColourBufferShadowedVertexShaders; // +0x52c
+>     CArray<CVertexShader>          ForegroundSpotColourBufferShadowedVertexShaders; // +0x538
+>     CArray<CVertexShader>*         ForegroundShadowedVertexShaders;      // +0x544
+>     CArray<CVertexShader>*         ForegroundBumpShadowedVertexShaders;  // +0x548
+>     CArray<CVertexShader>*         ForegroundSpotShadowedVertexShaders;  // +0x54c
+>     CVertexShader                  ShadowProjectionVertexShader;         // +0x550
+>     CVertexShader                  ShadowRenderVertexShader;             // +0x558
+>     CPixelShader                   BackgroundPixelShader;                // +0x560
+>     CPixelShader                   ForegroundPixelShader;                // +0x568
+>     CPixelShader                   ForegroundBlackoutPixelShader;        // +0x570
+>     CPixelShader                   ForegroundDepthBufferShadowedPixelShader;        // +0x578
+>     CPixelShader                   ForegroundBumpDepthBufferShadowedPixelShader;    // +0x580
+>     CPixelShader                   ForegroundColourBufferShadowedPixelShader;       // +0x588
+>     CPixelShader                   ForegroundBumpColourBufferShadowedPixelShader;   // +0x590
+>     CPixelShader                   ProcTexturePixelShader;               // +0x598
+>     CPixelShader*                  ForegroundShadowedPixelShader;        // +0x5a0
+>     CPixelShader*                  ForegroundBumpShadowedPixelShader;    // +0x5a4
+>     CIndexBuffer                   ForegroundBasePatchIndexBuffer;       // +0x5a8
+>     CTexture                       ForegroundBlendTables[5];             // +0x5bc
+>     CArray<CSubPatchSorterEntry>   SortedSubPatchList;                   // +0x5e4
+>     CArray<CBackgroundLoadingOcclusionBoxTask> BackgroundLoadingOcclusionTests;     // +0x5f0
+>     CArray<long>                   FreeBackgroundLoadingOcclusionHandles;           // +0x5fc
+>     CLandscapeSettings             Settings;                             // +0x608
+>     CArray<unsigned short>         TesselationOverflowIndexBuffer;       // +0x654
+>     CArray<CTVertexLandscapeBackground> TesselationOverflowVertexBuffer; // +0x660
+>     CLandscapePatchTesselator      Tesselator;                           // +0x66c
+>     CFastForegroundTextureLoadInfo FastForegroundTextureLoadInfo;        // +0x68c
+>     CEngineLandscapeMemoryManager* MemoryManager;                        // +0x6b0
+> };
+> FABLE_STATIC_ASSERT(sizeof(CEngineLandscapeRenderer) == 0x6b4);
+> FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, MeshBuilder) == 0x10);
+> FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, LODZBandsZ) == 0x498);
+> FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, BackgroundVertexShader) == 0x4c4);
+> FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ForegroundShadowedVertexShaders) == 0x544);
+> FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ForegroundBasePatchIndexBuffer) == 0x5a8);
+> FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, ForegroundBlendTables) == 0x5bc);
+> FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, Settings) == 0x608);
+> FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, Tesselator) == 0x66c);
+> FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, FastForegroundTextureLoadInfo) == 0x68c);
+> FABLE_STATIC_ASSERT(offsetof(CEngineLandscapeRenderer, MemoryManager) == 0x6b0);
+> #else // flattened Ego_r layout (the landed default, unchanged)
+111a266
+> #endif // FABLE_RETAIL_CENGINELANDSCAPERENDERER
+################ engine/CEngineMap.h
+26a27,32
+> #ifdef FABLE_RETAIL_CENGINEMAP
+>     // Retail opt-in (chunk 723): the inline LandscapeMap accessors (Ego_r.pdb / FableWin.pdb ?GetLandscapeMap@CEngineMap@@QBEPAVCEngineLandscapeMap@@XZ,
+>     // ?SetLandscapeMap@CEngineMap@@QAEXPAVCEngineLandscapeMap@@@Z); ~CEngineLandscapeRenderer 0x00B67920 expands both on +0x00.
+>     CEngineLandscapeMap* GetLandscapeMap() const { return LandscapeMap; }
+>     void SetLandscapeMap(CEngineLandscapeMap* map) { LandscapeMap = map; }
+> #endif
+################ NEW engine/CEnginePrimitiveManager.h
+################ engine/CEnginePrimitiveManagerParticleSpriteGroup.h
+2a3,66
+> #ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLESPRITEGROUP
+> // Retail opt-in (chunk 723): CEnginePrimitiveManagerParticleSpriteGroup : CEnginePrimitiveManager (Fable.exe RTTI), vtable 0x012A6140,
+> // 0x328 bytes. Members typed at the retail offsets the constructor 0x00BC14E0 writes (Ego_r.pdb names and order; the three CArray
+> // members are retail 0xC). Functions: Ego_r.pdb / FableWin.pdb publics; virtual overrides from the PDB (UAE/UBE).
+> #include <stddef.h>
+> #include "rebuild_abi.h"
+> #ifndef FABLE_RETAIL_CVERTEXSHADER
+> #define FABLE_RETAIL_CVERTEXSHADER
+> #endif
+> #ifndef FABLE_RETAIL_CVERTEXBUFFERWIN32
+> #define FABLE_RETAIL_CVERTEXBUFFERWIN32
+> #endif
+> #ifndef FABLE_RETAIL_CINDEXBUFFER
+> #define FABLE_RETAIL_CINDEXBUFFER
+> #endif
+> #include "engine/CArray.h"
+> #include "engine/CVertexShader.h"
+> #include "engine/CPixelShader.h"
+> #include "engine/CVertexBufferWin32.h"
+> #include "engine/CIndexBuffer.h"
+> #include "engine/CEnginePrimitiveManager.h"
+> class CEngineParticleConstantBlock {                                     // Ego_r.pdb, 0x10 bytes, no constructor
+> public:
+>     float X;                                                             // +0x00
+>     float Y;                                                             // +0x04
+>     float Z;                                                             // +0x08
+>     float W;                                                             // +0x0C
+> };
+> class CEnginePrimitiveManagerParticleSpriteGroup : public CEnginePrimitiveManager {
+> public:
+>     CEnginePrimitiveManagerParticleSpriteGroup(CArray<CEngineScene*>& scenes);                               // 0x00BC14E0
+>     virtual CEngineInternalPrimitiveBase* CreateInternalPrimitive(EEnginePrimitiveType type);                 // UAE
+>     virtual void GetSupportedTypes(CEnginePrimitiveTypeList& types) const;                                    // UBE
+>     virtual void RenderSubPrimitive(CEngineSubPrimitiveBase& sub, ERenderPassType pass);                      // UAE
+>     virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase& prim, EEngineRenderLayer layer, CEngineSubPrimitiveChain& chain);   // UAE
+>     void RenderSingleSprite(CEngineSubPrimitiveBase& sub, ERenderPassType pass);                              // 0x00BC04F0 QAE
+> private:
+>     void BuildBuffers();                                                 // 0x00BBF380 ?BuildBuffers@CEnginePrimitiveManagerParticleSpriteGroup@@AAEXXZ
+>     void ApplyBillboardDisplacementVertexShader();                       // AAE
+>     void ApplyBillboardPointLightVertexShader(unsigned long lights);     // AAE
+>     void ApplyCrossedSpriteDisplacementVertexShader();                   // AAE
+>     void ApplyCrossedSpritePointLightVertexShader(unsigned long lights); // AAE
+> public:
+>     CArray<CVertexShader> VertexShadersBillboardSpritePointLights;       // +0x0c
+>     CArray<CVertexShader> VertexShadersCrossedSpritePointLights;         // +0x18
+>     CArray<CVertexShader> VertexShaders3DFaceMeSpritePointLights;        // +0x24
+>     CVertexShader         VertexShadersBillboardSpriteDisplacement;      // +0x30
+>     CVertexShader         VertexShadersCrossedSpriteDisplacement;        // +0x38
+>     CVertexShader         VertexShaders3DFaceMeSpriteDisplacement;       // +0x40
+>     CPixelShader          PixelShader;                                   // +0x48
+>     CPixelShader          PixelShaderStipple;                            // +0x50
+>     CPixelShader          PixelShaderDisplacement;                       // +0x58
+>     CVertexBufferWin32    VertexBuffer;                                  // +0x60
+>     CIndexBuffer          IndexBuffer;                                   // +0x94
+>     CEngineParticleConstantBlock ConstantBlock[40];                      // +0xa8
+> };
+> FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManagerParticleSpriteGroup) == 0x328);
+> FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteGroup, VertexShadersBillboardSpritePointLights) == 0xc);
+> FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteGroup, VertexShadersBillboardSpriteDisplacement) == 0x30);
+> FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteGroup, PixelShader) == 0x48);
+> FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteGroup, VertexBuffer) == 0x60);
+> FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteGroup, IndexBuffer) == 0x94);
+> FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteGroup, ConstantBlock) == 0xa8);
+> #else // flattened Ego_r layout (the landed default, unchanged)
+46a111,112
+> 
+> #endif // FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLESPRITEGROUP
+################ NEW engine/CEnginePrimitiveRenderUtil.h
+################ engine/CEngineResourceManager.h
+56a57,140
+> #ifdef FABLE_RETAIL_CENGINERESOURCEMANAGER
+> // Retail opt-in (chunk 723): the flattened Ego_r layout below is 0x230 bytes long from VShaderBanks on. Retail CShaderDataBank is
+> // 0x128 bytes (Ego_r 0x13C; 28 banks x 0x14 = 0x230), so VShaderResources sits at +0x29C0 and ShaderResourcePixel at +0x2A98
+> // (0x00BC14E0 / 0x00B8B630 read bank 21 at +0x2A68 and the pixel resource at +0x2A98) and GPUScratchBufferTextureManager at +0x3190
+> // (0x00B71880 / 0x00B6D630 / 0x00B23F60). Members after VShaderBanks keep their Ego_r names and order, shifted by -0x230.
+> // Inlines (FableWin.pdb): ?GetVShaderResource@CEngineResourceManager@@QBEPBVCShaderResource@@W4EShaderBankNo@@@Z,
+> // ?GetPShaderResource@CEngineResourceManager@@QBEPBVCShaderResource@@XZ; the scratch manager accessor is the Ego_r member read.
+> #include <stddef.h>
+> #include "rebuild_abi.h"
+> #include "engine/CCountedPointer.h"
+> 
+> class CCPPointerInfo;
+> class CFontBank;
+> class CGraphicDataBank;
+> class CLoadingMemoryFailureHandler;
+> class CMeshDataBank;
+> class CMovableResourceMemoryPool;
+> class CWideStringData;
+> class CShaderResource;
+> class CGPUScratchBufferTextureManager;
+> enum EShaderBankNo;                                                      // MS forward enum (no enumerator name recovered)
+> enum EIndexBufferPool;                                                   // MS forward enums
+> enum EVertexBufferPool;
+> 
+> class CEngineResourceManager {
+> public:
+>     void*                         __vftable;                 // +0x00
+>     unsigned char                 _pad_0x04[0x4];            // +0x04
+>     unsigned char                 _pad_0x08[0x4];            // +0x08
+>     unsigned char                 _pad_0x0c[0x4];            // +0x0c
+>     CMeshDataBank*                MeshBanks[3];              // +0x10
+>     CMeshDataBank*                MainMeshBank;              // +0x1c
+>     unsigned char                 EditorMeshBank[0x460];     // +0x20 CMeshDataBank
+>     unsigned char                 EngineMeshBank[0x460];     // +0x480 CMeshDataBank
+>     CMovableResourceMemoryPool*   LoadingMemoryPool_Data;    // +0x8e0
+>     CCPPointerInfo*               LoadingMemoryPool_Info;    // +0x8e4
+>     CLoadingMemoryFailureHandler* LoadingMemoryFailureHandler_Data; // +0x8e8
+>     CCPPointerInfo*               LoadingMemoryFailureHandler_Info; // +0x8ec
+>     CMovableResourceMemoryPool*   AnimationMemoryPool_Data;  // +0x8f0
+>     CCPPointerInfo*               AnimationMemoryPool_Info;  // +0x8f4
+>     CMovableResourceMemoryPool*   ClothMemoryPool_Data;      // +0x8f8
+>     CCPPointerInfo*               ClothMemoryPool_Info;      // +0x8fc
+>     CMovableResourceMemoryPool*   MeshDataMemoryPool_Data;   // +0x900
+>     CCPPointerInfo*               MeshDataMemoryPool_Info;   // +0x904
+>     unsigned char                 AnimationManager[0x4c];    // +0x908 C3DAnimationManager
+>     CGraphicDataBank*             GraphicBanks[1];           // +0x954
+>     CGraphicDataBank*             MainGraphicBank;           // +0x958
+>     CFontBank*                    EngineFont;                // +0x95c
+>     unsigned char                 VShaderBanks[27 * 0x128];  // +0x960 CShaderDataBank[27] (retail 0x128 each)
+>     unsigned char                 ShaderBankPixel[0x128];    // +0x2898 CShaderDataBank
+>     CCountedPointer<CShaderResource> VShaderResources[27];   // +0x29c0
+>     CCountedPointer<CShaderResource> ShaderResourcePixel;    // +0x2a98
+>     double                        MaxLoadingTime;            // +0x2aa0
+>     unsigned long                 VertexBufferUsageFlags;    // +0x2aa8
+>     unsigned char                 StipleFadeTexture[0x8];    // +0x2aac CTexture
+>     unsigned char                 HWInverseStipplePatterns[0xc];  // +0x2ab4 CArray<unsigned_long>
+>     unsigned char                 DitherTextureList[0xc];    // +0x2ac0 CArray<CTexture>
+>     CWideStringData*              EngineCachePath_PStringData; // +0x2acc CWideString::PStringData
+>     CWideStringData*              WriteableEngineCachePath_PStringData; // +0x2ad0 CWideString::PStringData
+>     unsigned char                 ZeroRGBATexture[0x8];      // +0x2ad4 CTexture
+>     unsigned char                 SatRGBATexture[0x8];       // +0x2adc CTexture
+>     unsigned char                 VSConstantLayoutBasic[0x14c]; // +0x2ae4 CEngineVSConstantLayoutBasic
+>     unsigned char                 VSConstantLayoutLights[0x14c]; // +0x2c30 CEngineVSConstantLayoutLights
+>     unsigned char                 VSConstantLayoutLightsBones[0x14c]; // +0x2d7c CEngineVSConstantLayoutLightsBones
+>     unsigned char                 VSConstantLayoutRepeatedMesh[0x17c]; // +0x2ec8 CEngineVSConstantLayoutRepeatedMesh
+>     unsigned char                 VSConstantLayoutParticles[0x14c]; // +0x3044 CEngineVSConstantLayoutParticles
+>     unsigned char                 GPUScratchBufferTextureManager[0x44]; // +0x3190 CGPUScratchBufferTextureManager
+>     unsigned char                 ExternalTexturesAllocatedFromEnginePools[0xc];  // +0x31d4 map<CTexture*,CExternalTextureAllocationInfo>
+> 
+>     EIndexBufferPool GetIndexBufferMemPool();                            // 0x00B3B0A0 ?GetIndexBufferMemPool@CEngineResourceManager@@QAE?AW4EIndexBufferPool@@XZ
+>     unsigned long GetIndexBufferUsage();                                 // 0x00B3B060 ?GetIndexBufferUsage@CEngineResourceManager@@QAEKXZ
+>     unsigned long GetVertexBufferUsage();                                // 0x00B3B030 ?GetVertexBufferUsage@CEngineResourceManager@@QAEKXZ
+>     const CShaderResource* GetVShaderResource(EShaderBankNo bank) const { return VShaderResources[bank].Get(); }
+>     const CShaderResource* GetPShaderResource() const { return ShaderResourcePixel.Get(); }
+>     CGPUScratchBufferTextureManager& GetGPUScratchBufferTextureManager()
+>     {
+>         return *(CGPUScratchBufferTextureManager*)GPUScratchBufferTextureManager;
+>     }
+> };
+> FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, VShaderResources) == 0x29c0);
+> FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, ShaderResourcePixel) == 0x2a98);
+> FABLE_STATIC_ASSERT(offsetof(CEngineResourceManager, GPUScratchBufferTextureManager) == 0x3190);
+> FABLE_STATIC_ASSERT(sizeof(CEngineResourceManager) == 0x31e0);
+> #else // flattened Ego_r layout (the landed default, unchanged)
+162a247,248
+> 
+> #endif // FABLE_RETAIL_CENGINERESOURCEMANAGER
+################ engine/CEngineWaterRenderer.h
+2a3,165
+> #ifdef FABLE_RETAIL_CENGINEWATERRENDERER
+> // Retail opt-in (chunk 723): the polymorphic retail class. RTTI .?AVCEngineWaterRenderer@@ : CEngineComponent; vtable 0x012A3364:
+> // slot 0 ??_G 0x00B7EE60, 1 FrameStart 0x00B71FB0, 2 FrameEnd 0x00B6D500, 4 Render 0x00B783F0, 7 WorldFrameUpdate 0x00B6D6D0,
+> // 9 GetConsoleEnableFunctionName 0x00B7ED80, 10 PeekSceneFilterFlags 0x00B7ED70, 13 SetEffectQuality 0x00B6D6A0 (the other slots
+> // are CEngineComponent's own bodies). Members: Ego_r.pdb names at the retail offsets of the default model below (12-byte STLport
+> // CArrays), typed: the destructor 0x00B71880 destroys them in exactly this reverse order (CCountedPointer pair, CCharString,
+> // both tesselators, Settings, two CCharStrings, ten render lists, the shader members and the three CArray<CVertexShader>, the two
+> // vertex and three index buffers) and ends in ~CEngineComponent 0x00B59730. Settings: engine/CEngineWaterSettings.h
+> // (WorldFrameUpdate 0x00B6D6D0 = `add ecx,280h ; jmp CEngineWaterSettings::WorldFrameUpdate`). Functions: Ego_r.pdb / FableWin.pdb.
+> // Needs FABLE_RETAIL_CENGINECOMPONENT / CINDEXBUFFER / CVERTEXBUFFERWIN32 / CVERTEXSHADER (switched on here) and the new
+> // CEngineWaterSettings / CPixelShader / CWaterPatchTesselatorBase headers.
+> #ifndef FABLE_RETAIL_CENGINECOMPONENT
+> #define FABLE_RETAIL_CENGINECOMPONENT
+> #endif
+> #ifndef FABLE_RETAIL_CINDEXBUFFER
+> #define FABLE_RETAIL_CINDEXBUFFER
+> #endif
+> #ifndef FABLE_RETAIL_CVERTEXBUFFERWIN32
+> #define FABLE_RETAIL_CVERTEXBUFFERWIN32
+> #endif
+> #ifndef FABLE_RETAIL_CVERTEXSHADER
+> #define FABLE_RETAIL_CVERTEXSHADER
+> #endif
+> #include <stddef.h>
+> #include "rebuild_abi.h"
+> #include "fable_string.h"
+> #include "engine/CArray.h"
+> #include "engine/CCountedPointer.h"
+> #include "engine/C3DBoundingBox.h"
+> #include "engine/CEngineComponent.h"
+> #include "engine/CIndexBuffer.h"
+> #include "engine/CVertexBufferWin32.h"
+> #include "engine/CVertexShader.h"
+> #include "engine/CPixelShader.h"
+> #include "engine/CEngineWaterSettings.h"
+> #include "engine/CWaterPatchTesselatorBase.h"
+> class CBankFileAsyncData;
+> class CBankFileAsyncEntry;
+> class CStaticMapBankFile;
+> class CTexture;
+> class CWaterGenerator;
+> class CWaterPatchMesh;
+> class CEngineWaterBackgroundSubPatch;
+> class CEngineInit;
+> class CEngineComponentParams;
+> class CEngineComponentRenderParams;
+> class CEngineVideoOptionsDef;
+> class CTVertexWaterBackground { public: unsigned char Bytes[0x38]; };   // GetSizeOfVertex 0x00B7EC30 returns 0x38 (layout not modelled)
+> class CTVertexSeaBackground { public: unsigned char Bytes[0xc]; };      // GetSizeOfVertex 0x00B7ECE0 returns 0xC (layout not modelled)
+> class CEngineWaterRenderer : public CEngineComponent {
+> public:
+>     CEngineWaterRenderer(const CEngineInit& init);                       // ??0CEngineWaterRenderer@@QAE@ABVCEngineInit@@@Z
+>     virtual ~CEngineWaterRenderer();                                     // slot 0 (??_G 0x00B7EE60; ??1 0x00B71880)
+>     virtual void FrameStart(const CEngineComponentParams& params);       // slot 1  0x00B71FB0
+>     virtual void FrameEnd(const CEngineComponentParams& params);         // slot 2  0x00B6D500
+>     virtual void Render(const CEngineComponentRenderParams& params);     // slot 4  0x00B783F0
+>     virtual void WorldFrameUpdate(bool force);                           // slot 7  0x00B6D6D0
+>     virtual CCharString GetConsoleEnableFunctionName();                  // slot 9  0x00B7ED80
+>     virtual unsigned long PeekSceneFilterFlags() const;                  // slot 10 0x00B7ED70
+>     virtual bool SetEffectQuality(const CEngineVideoOptionsDef& def);    // slot 13 0x00B6D6A0
+>     void ReleaseSeaBuffers();                                            // 0x00B6D480 ?ReleaseSeaBuffers@CEngineWaterRenderer@@QAEXXZ
+> private:
+>     void BuildConstantBuffers();                                         // 0x00B6EDF0 ?BuildConstantBuffers@CEngineWaterRenderer@@AAEXXZ
+>     void DeleteConstantBuffers();                                        // 0x00B6D4B0 ?DeleteConstantBuffers@CEngineWaterRenderer@@AAEXXZ
+>     void UninitialiseDynamicTextures();                                  // ?UninitialiseDynamicTextures@CEngineWaterRenderer@@AAEXXZ
+>     void FinishUsingDynamicTextures();                                   // 0x00B6D630 ?FinishUsingDynamicTextures@CEngineWaterRenderer@@AAEXXZ
+>     void RenderSeaBackground(float time);                                // ?RenderSeaBackground@CEngineWaterRenderer@@AAEXM@Z
+>     void RenderEnvironmentMap();                                         // ?RenderEnvironmentMap@CEngineWaterRenderer@@AAEXXZ
+>     void RenderIceForeground(float time);                                // ?RenderIceForeground@CEngineWaterRenderer@@AAEXM@Z
+>     void RenderForeground(float time);                                   // ?RenderForeground@CEngineWaterRenderer@@AAEXM@Z
+>     void RenderSeaReflectiveForeground(float time);                      // ?RenderSeaReflectiveForeground@CEngineWaterRenderer@@AAEXM@Z
+> public:
+>     CIndexBuffer         ForegroundIndexBuffers;                         // +0x00c
+>     CIndexBuffer         ForegroundTextureIndexBuffers;                  // +0x020
+>     CVertexBufferWin32   ForegroundTextureVertexBuffers;                 // +0x034
+>     CIndexBuffer         SeaBackgroundIndexBuffer;                       // +0x068
+>     CVertexBufferWin32   SeaBackgroundVertexBuffer;                      // +0x07c
+>     long                 SeaBackgroundVertexCount;                       // +0x0b0
+>     long                 SeaBackgroundPolyCount;                         // +0x0b4
+>     long                 WaterForegroundPolyCount;                       // +0x0b8
+>     CVertexShader        SeaBackgroundVertexShader;                      // +0x0bc
+>     CPixelShader         SeaBackgroundPixelShader;                       // +0x0c4
+>     CVertexShader        SeaForegroundReflectiveVertexShader;            // +0x0cc
+>     CPixelShader         SeaForegroundReflectivePixelShader;             // +0x0d4
+>     CVertexShader        SeaForegroundNonReflectiveVertexShader;         // +0x0dc
+>     CPixelShader         SeaForegroundNonReflectivePixelShader;          // +0x0e4
+>     CVertexShader        ForegroundVertexShader;                         // +0x0ec
+>     CPixelShader         ForegroundPixelShader;                          // +0x0f4
+>     CPixelShader         RefractionForegroundPixelShader;                // +0x0fc
+>     CVertexShader        BackgroundVertexShader;                         // +0x104
+>     CPixelShader         BackgroundPixelShader;                          // +0x10c
+>     CVertexShader        SeaBackgroundLowEndVertexShader;                // +0x114
+>     CVertexShader        WaterBackgroundLowEndVertexShader;              // +0x11c
+>     CPixelShader         WaterLowEndPixelShader;                         // +0x124
+>     CArray<CVertexShader> IceForegroundVertexShader;                     // +0x12c
+>     CArray<CVertexShader> IceForegroundShadowedVertexShader;             // +0x138
+>     CArray<CVertexShader> IceForegroundColbuffShadowedVertexShader;      // +0x144
+>     CVertexShader        IceBackgroundVertexShader;                      // +0x150
+>     CPixelShader         IceForegroundPixelShader;                       // +0x158
+>     CPixelShader         IceForegroundShadowedPixelShader;               // +0x160
+>     CPixelShader         IceForegroundColbuffShadowedPixelShader;        // +0x168
+>     CPixelShader         IceBackgroundPixelShader;                       // +0x170
+>     CVertexShader        BumpmapVertexShader;                            // +0x178
+>     CPixelShader         BumpmapPixelShader;                             // +0x180
+>     CVertexShader        IceBumpmapVertexShader;                         // +0x188
+>     CPixelShader         IceBumpmapPixelShader;                          // +0x190
+>     CVertexShader        BumpmapRainVertexShader;                        // +0x198
+>     CPixelShader         BumpmapRainPixelShader;                         // +0x1a0
+>     CVertexShader        EnvironmentMapVertexShader;                     // +0x1a8
+>     CPixelShader         EnvironmentMapPixelShader;                      // +0x1b0
+>     CVertexShader        SkyMapVertexShader;                             // +0x1b8
+>     CPixelShader         SkyMapPixelShader;                              // +0x1c0
+>     CVertexShader        EnvMapOverlayVertexShader;                      // +0x1c8
+>     CPixelShader         EnvMapOverlayPixelShader;                       // +0x1d0
+>     long                 DynamicTexturePageHandle;                       // +0x1d8
+>     long                 EnvironmentMapHandle;                           // +0x1dc
+>     CTexture*            EnvironmentMap;                                 // +0x1e0
+>     long                 SeaBumpMapHandle;                               // +0x1e4
+>     CTexture*            SeaBumpMap;                                     // +0x1e8
+>     long                 WaterBumpMapHandle;                             // +0x1ec
+>     CTexture*            WaterBumpMap;                                   // +0x1f0
+>     long                 IceBumpMapHandle;                               // +0x1f4
+>     CTexture*            IceBumpMap;                                     // +0x1f8
+>     CArray<CWaterPatchMesh*> ForegroundRenderList;                       // +0x1fc
+>     CArray<CEngineWaterBackgroundSubPatch*> BackgroundRenderList;        // +0x208
+>     CArray<CEngineWaterBackgroundSubPatch*> AlphaedBackgroundRenderList; // +0x214
+>     CArray<std::pair<C3DBoundingBox, CWaterPatchMesh*> > IceForegroundRenderList;   // +0x220
+>     CArray<CEngineWaterBackgroundSubPatch*> IceBackgroundRenderList;     // +0x22c
+>     CArray<CEngineWaterBackgroundSubPatch*> IceAlphaedBackgroundRenderList;   // +0x238
+>     CArray<CWaterPatchMesh*> SeaReflectiveForegroundRenderList;          // +0x244
+>     CArray<CWaterPatchMesh*> SeaNonReflectiveForegroundRenderList;       // +0x250
+>     CArray<CEngineWaterBackgroundSubPatch*> SeaMidgroundRenderList;      // +0x25c
+>     CArray<CEngineWaterBackgroundSubPatch*> SeaAlphaedMidgroundRenderList;   // +0x268
+>     bool                 HighendWaterEnabled;                            // +0x274
+>     bool                 HighendWaterSupported;                          // +0x275
+>     bool                 HaveBackgroundSea;                              // +0x276
+>     CCharString          LoadedOrLoadingSeaBodyID;                       // +0x278
+>     CCharString          RequestedSeaBodyID;                             // +0x27c
+>     CEngineWaterSettings Settings;                                       // +0x280
+>     CWaterPatchTesselatorBase<CTVertexWaterBackground> Tesselator;       // +0x564
+>     CWaterPatchTesselatorBase<CTVertexSeaBackground> SeaTesselator;      // +0x584
+>     CWaterGenerator*     WaterGenerator;                                 // +0x5a4
+>     CStaticMapBankFile*  StaticMapBankFile;                              // +0x5a8
+>     CCharString          StaticMapSeaEntryPrefix;                        // +0x5ac
+>     CCountedPointer<CBankFileAsyncEntry> LoadingSeaEntry;                // +0x5b0
+>     CCountedPointer<CBankFileAsyncData> LoadingSea;                      // +0x5b8
+>     float                WaterBumpFactor;                                // +0x5c0
+> };
+> FABLE_STATIC_ASSERT(sizeof(CEngineWaterRenderer) == 0x5c4);
+> FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, ForegroundIndexBuffers) == 0xc);
+> FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, SeaBackgroundVertexShader) == 0xbc);
+> FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, IceForegroundVertexShader) == 0x12c);
+> FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, DynamicTexturePageHandle) == 0x1d8);
+> FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, ForegroundRenderList) == 0x1fc);
+> FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, HighendWaterEnabled) == 0x274);
+> FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, LoadedOrLoadingSeaBodyID) == 0x278);
+> FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, Settings) == 0x280);
+> FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, Tesselator) == 0x564);
+> FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, SeaTesselator) == 0x584);
+> FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, StaticMapSeaEntryPrefix) == 0x5ac);
+> FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, LoadingSea) == 0x5b8);
+> FABLE_STATIC_ASSERT(offsetof(CEngineWaterRenderer, WaterBumpFactor) == 0x5c0);
+> #else // flattened Ego_r layout (the landed default, unchanged)
+185a349
+> #endif // FABLE_RETAIL_CENGINEWATERRENDERER
+################ NEW engine/CEngineWaterSettings.h
+################ engine/CEngineWorldMap.h
+2a3,61
+> #ifdef FABLE_RETAIL_CENGINEWORLDMAP
+> // Retail opt-in (chunk 723): CEngineWorldMap : CEngineComponent (RTTI); members from +0x0C as the default model below, MapList typed
+> // (CArray<CEngineMap*>, retail +0x20) with the inline count / index accessors (Ego_r.pdb / FableWin.pdb
+> // ?GetMapCount@CEngineWorldMap@@QBEJXZ, ?GetMap@CEngineWorldMap@@QBEPAVCEngineMap@@J@Z): ~CEngineLandscapeRenderer 0x00B67920 loops
+> // `i < GetMapCount()` as a signed pointer difference (`sub ; sar 2 ; cmp ; jl`) and reads `MapList[i]`. Other members opaque.
+> #ifndef FABLE_RETAIL_CENGINECOMPONENT
+> #define FABLE_RETAIL_CENGINECOMPONENT
+> #endif
+> #include <stddef.h>
+> #include "rebuild_abi.h"
+> #include "engine/CArray.h"
+> #include "engine/CEngineComponent.h"
+> class CEngineMap;
+> class CIDrawWorld;
+> class CIDrawWorldMap;
+> class CWideStringData;
+> class CEngineWorldMap : public CEngineComponent {
+> public:
+>     virtual ~CEngineWorldMap();                                          // ??1CEngineWorldMap@@UAE@XZ
+>     long GetMapCount() const { return MapList.size(); }
+>     CEngineMap* GetMap(long index) const { return MapList[index]; }
+>     short*           Map;                                    // +0x0c
+>     long             MapArrayWidth;                          // +0x10
+>     long             MapArrayHeight;                         // +0x14
+>     long             MapOffsetX;                             // +0x18
+>     long             MapOffsetY;                             // +0x1c
+>     CArray<CEngineMap*> MapList;                             // +0x20
+>     unsigned char    VisibleMapList[0x4];                    // +0x2c list<CEngineMap_*,std::allocator<CEngineMap_*>_>
+>     CWideStringData* StaticMapBankName_PStringData;          // +0x30 CWideString::PStringData
+>     unsigned char    StaticMapFile[0x164];                   // +0x34 CStaticMapBankFile
+>     CIDrawWorld*     GameWorld;                              // +0x198
+>     CIDrawWorldMap*  GameWorldMap;                           // +0x19c
+>     long             StaticMapQuality;                       // +0x1a0
+>     bool             EnableMinimumStaticMapRebuild;          // +0x1a4
+>     bool             FirstWorldUpdate;                       // +0x1a5
+>     unsigned char    _pad_0x1a6[0x2];                        // +0x1a6
+>     unsigned char    StaticMapOpenState[0x4];                // +0x1a8 STATIC_MAP_OPEN_STATE
+>     bool             DynamicUpdateEnabled;                   // +0x1ac
+>     bool             BuildRetailStaticMaps;                  // +0x1ad
+>     unsigned char    _pad_0x1ae[0x2];                        // +0x1ae
+>     unsigned char    StaticMapBuildStatus[0x4];              // +0x1b0 STATIC_MAP_BUILD_STATUS
+>     unsigned char    ChangedAreas[0xc];                      // +0x1b4 CArray<C2DBoxI>
+>     unsigned char    IntermidiateStaticMapFile[0x164];       // +0x1c0 CStaticMapBankFile
+>     bool             GlobalMapDataLoaded;                    // +0x324
+>     unsigned char    _pad_0x325[0x3];                        // +0x325
+>     float            StaticMapGenerationEstimatedMaxCameraHeightAboveLandscape; // +0x328
+>     bool             StaticMapGlobalOptimizationsEnabled;    // +0x32c
+>     unsigned char    _pad_0x32d[0x1];                        // +0x32d
+>     unsigned char    _pad_0x32e[0x2];                        // +0x32e
+>     unsigned char    ForcedMapUpdateList[0xc];               // +0x330 CArray<CCharString>
+>     unsigned char    CommonHeaderStream[0x18];               // +0x33c CMemoryDataOutputStream
+>     unsigned char    CommonHeaderPosLookupTable[0xc];        // +0x354 map<CCharString,long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,long>_>_>
+> };
+> FABLE_STATIC_ASSERT(sizeof(CEngineWorldMap) == 0x360);
+> FABLE_STATIC_ASSERT(offsetof(CEngineWorldMap, MapList) == 0x20);
+> FABLE_STATIC_ASSERT(offsetof(CEngineWorldMap, GameWorld) == 0x198);
+> FABLE_STATIC_ASSERT(offsetof(CEngineWorldMap, StaticMapOpenState) == 0x1a8);
+> FABLE_STATIC_ASSERT(offsetof(CEngineWorldMap, CommonHeaderPosLookupTable) == 0x354);
+> #else // flattened Ego_r layout (the landed default, unchanged)
+83a143
+> #endif // FABLE_RETAIL_CENGINEWORLDMAP
+################ engine/CFileDataInputStream.h
+0a1,22
+> #if defined(FABLE_RETAIL_CFILEDATAINPUTSTREAM)
+> #ifndef FABLE_ENGINE_CFILEDATAINPUTSTREAM_H
+> #define FABLE_ENGINE_CFILEDATAINPUTSTREAM_H
+> #include "engine/CDataInputStream.h"
+> class CAFile;
+> // Layout: native CFileDataInputStream constructor confirms all PDB offsets and0x24 size.
+> class CFileDataInputStream : public CDataInputStream {
+> public:
+>     CFileDataInputStream(CAFile&,unsigned long);
+>     virtual ~CFileDataInputStream();
+>     virtual void Close();
+> private:
+>     virtual void InternalReadNextSourceChunk(const unsigned char*&,long&);
+>     virtual bool NeedsBufferedRead(long);
+>     virtual void InternalReadUnbuffered(unsigned char*,long);
+>     CAFile* File;
+>     unsigned char* Buffer;
+>     long BufferSize;
+> };
+> FABLE_STATIC_ASSERT(sizeof(CFileDataInputStream)==0x24);
+> #endif
+> #else
+34a57
+> #endif
+################ NEW engine/CFilter_Bind3.h
+################ engine/CFontBank.h
+10a11,47
+> #ifdef FABLE_RETAIL_CFONTBANK
+> // Retail opt-in (chunk 718, row 0x00487570 CPlayer::DrawFreeCamDebug): the polymorphic retail class. Vtable 0x0129AB38
+> // (rtti-vtables.tsv): slot 0 the deleting dtor 0x009A0B30, slot 4 Preload 0x009A0B20, slots 1 / 2 / 3 / 5 pure (filled by
+> // CStreamingFontBank 0x0129AB54 / CStaticFontBank 0x0129EAD4 in the FableWin.pdb order GetStringExtents, GetFontMaxHeight,
+> // PrepareToRender, Preload, Render: ?GetStringExtents@CStreamingFontBank@@UBE?AVC2DExtentsF@@PB_W_N@Z, ?GetFontMaxHeight@..@@UBEMXZ,
+> // ?PrepareToRender@..@@UBEX_N@Z, ?Preload@CFontBank@@UBE_NABVCWideString@@_N@Z, ?Render@..@@UBEXABVCWideString@@ABVC3DVector@@MABVCRGBColour@@KPBVCTexture@@@Z).
+> // The FableWin.pdb inline helpers GetVFontMaxHeight / GetVStringExtents (Ego_r.pdb keeps GetVStringExtents out of line at 0x0044FA80;
+> // DrawFreeCamDebug expands both): the actual-to-virtual conversions GFAXToVX 0x009E1DA0 / GFAYToVY 0x009E1DD0 (Ego_r / FableWin
+> // ?GFAXToVX@@YIMM@Z / ?GFAYToVY@@YIMM@Z, __fastcall with the float on the stack). Members: Ego_r.pdb (FontHeight +4, Name +8, PManager +0xC).
+> #include "fable_string.h"
+> #include "engine/C2DExtentsF.h"
+> class C3DVector; class CRGBColour; class CTexture; class CFontManager;
+> float __fastcall GFAXToVX(float x);                                      // 0x009E1DA0
+> float __fastcall GFAYToVY(float y);                                      // 0x009E1DD0
+> class CFontBank {
+> public:
+>     virtual ~CFontBank();                                                // slot 0 (??_G 0x009A0B30)
+>     virtual C2DExtentsF GetStringExtents(const wchar_t* text, bool) const = 0;   // slot 1
+>     virtual float GetFontMaxHeight() const = 0;                          // slot 2
+>     virtual void PrepareToRender(bool) const = 0;                        // slot 3
+>     virtual bool Preload(const CWideString& text, bool) const;           // slot 4 0x009A0B20
+>     virtual void Render(const CWideString& text, const C3DVector& pos, float scale, const CRGBColour& colour, unsigned long flags, const CTexture* texture) const = 0;   // slot 5
+>     float GetVFontMaxHeight() const { return GFAYToVY(GetFontMaxHeight()); }
+>     C2DExtentsF GetVStringExtents(const CWideString& text) const
+>     {
+>         C2DExtentsF extents = GetStringExtents(text.GetAsCharArray(), false);
+>         extents.X = GFAXToVX(extents.X);
+>         extents.Y = GFAYToVY(extents.Y);
+>         return extents;
+>     }
+> protected:
+>     unsigned long FontHeight;                                            // +0x04
+>     CCharString Name;                                                    // +0x08
+>     CFontManager* PManager;                                              // +0x0C
+> };
+> FABLE_STATIC_ASSERT(sizeof(CFontBank) == 0x10);
+> #else
+28a66
+> #endif // FABLE_RETAIL_CFONTBANK
+################ engine/CGameCameraManager.h
+12a13,16
+> #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER
+> #include "engine/CCountedPointer.h"
+> namespace NCameraModes { class CBase; enum EMode; }
+> #endif
+16a21,27
+> #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER
+> // Retail opt-in (chunk 718, row 0x0089E190 CameraUseCameraPoint): the public non-virtual SetScriptedCameraMode 0x00699E60
+> // (Ego_r.pdb 0x006C1080 / reloc_bindings ?SetScriptedCameraMode@CGameCameraManager@@QAEXV?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@@Z;
+> // the counted pointer travels by value). A declaration only: no layout change.
+> namespace NCameraModes { class CScriptModuleBase; }
+> template <class T> class CCountedPointer;
+> #endif
+20a32,41
+> #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER
+> <<<<<<< merged
+>     void SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase> mode);   // 0x00699E60
+> =======
+>     // Retail opt-in (chunk 725): FableWin.pdb members at their retail addresses. CurrentMode is the real
+>     // CCountedPointer<NCameraModes::CBase> (engine/NCameraModes_CBase.h for the mode's vtable).
+>     NCameraModes::EMode GetCameraModeType() const;           // 0x00697AB0 ?GetCameraModeType@CGameCameraManager@@QBE?AW4EMode@NCameraModes@@XZ
+>     bool HasCameraMode(NCameraModes::EMode) const;           // 0x00697AC0 ?HasCameraMode@CGameCameraManager@@QBE_NW4EMode@NCameraModes@@@Z
+> >>>>>>> c725
+> #endif
+25a47,49
+> #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER
+>     CCountedPointer<NCameraModes::CBase> CurrentMode;        // +0x98 (Data, Info)
+> #else
+27a52
+> #endif
+92a118,120
+> #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER
+> FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, CurrentMode) == 0x98);
+> #else
+94a123
+> #endif
+################ engine/CHeroCombatDef.h
+6a7,19
+> #ifdef FABLE_RETAIL_CHEROCOMBATDEF
+> // Retail opt-in (w22 agent720c, row 0x005C90FC CTCInventoryWeapons::ConstructWeaponDescriptionContainer): HeavyWeapons, the
+> // CHeroAbilityStatPackage (Ego_r.pdb: one member, map<EHeroTrainableStatType,long> StatThresholds) at Ego_r +0x164, retail
+> // +0x13C (the eight CHeroAbilityStatWeight maps and the two vectors before it are 4 bytes narrower each in STLport). The
+> // container row walks StatThresholds (`mov eax,[esi+13Ch]` header, begin = header->_M_left) against
+> // CTCHeroExperience::GetTrainableStatLevel. The bytes in between keep their pad (sizeof unchanged, 0x148).
+> #include "stlport/fable_map.h"
+> enum EHeroTrainableStatType;
+> class CHeroAbilityStatPackage {
+> public:
+>     std::map<EHeroTrainableStatType, long> StatThresholds;              // +0x00
+> };
+> #endif
+10a24,27
+> #ifdef FABLE_RETAIL_CHEROCOMBATDEF
+>     unsigned char _pad_0xf0[0x4c];
+>     CHeroAbilityStatPackage HeavyWeapons;                               // +0x13c (Ego_r +0x164)
+> #else
+11a29
+> #endif
+################ engine/CIEngine.h
+2a3,48
+> #ifdef FABLE_RETAIL_CIENGINE
+> // Retail opt-in (chunk 725): the polymorphic engine interface. RTTI .?AVCIEngine@@ : CInitBaseClass : CBaseClass, vtable
+> // 0x012A0D24 (implementation CEngine 0x012A0F3C). Slots 0-16 below; the rest are not modelled yet. Names: FableWin.pdb
+> // CIEngine / CEngine members, placed by the retail vtables (CIEngine's own bodies 0x00B232D0.. and CEngine's overrides,
+> // catalog-named) and their `ret N`: 2 Initialise 0x00B232D0, 3 Release 0x00B232E0, 4 SetCamera (CEngine 0x00B23B50,
+> // ret 4), 5 SetWindow (CEngine 0x00B23B80, ret 4; FableWin declares it right after SetCamera), 6
+> // SetEnvironmentalEffectsAlwaysUpdate 0x00B232F0, 7 SetWorld 0x00B23300, 9 WorldFrameUpdate 0x00B23310, 10
+> // PausedWorldFrameUpdate 0x00B23320, 14 SetVideoOptions 0x00B23330, 15 PreChangeResolution / 16 PostChangeResolution
+> // (_purecall here; CEngine 0x00B2AA20 / 0x00B2AA30 = FableWin ?PreChangeResolution@CEngine@@UAE_NXZ /
+> // ?PostChangeResolution@CEngine@@UAE_NKKK@Z; called by CDisplayEngine 0x00434A10 / 0x00434A20). Slots 8, 11, 12, 13 are
+> // pure here and their CEngine overrides are unnamed (ret 8 / ret 8 / ret 0xC / ret 8): descriptive `VirtualNN_<CEngine body>`.
+> // Layout: CInitBaseClass (vptr, Valid +4), Active +8; sizeof 0xC (Ego_r).
+> #include <stddef.h>
+> #include "rebuild_abi.h"
+> #include "engine/CInitBaseClass.h"
+> class C2DBoxF;
+> class C2DVector;
+> class C3DVector;
+> class CCamera;
+> class CEngineInit;
+> class CEngineVideoOptions;
+> class CIDrawWorld;
+> class CIEngine : public CInitBaseClass {
+> public:
+>     virtual ~CIEngine();                                                   //  0 ??_G 0x00B23770
+>     // slot 1: CInitBaseClass::Validate 0x0099A340 (not declared by CInitBaseClass.h; modelled here at its slot)
+>     virtual void Validate() const;                                        //  1
+>     virtual bool Initialise(const CEngineInit&);                          //  2 0x00B232D0
+>     virtual void Release();                                               //  3 0x00B232E0
+>     virtual void SetCamera(const CCamera*) = 0;                           //  4
+>     virtual void SetWindow(const C2DBoxF*) = 0;                           //  5
+>     virtual void SetEnvironmentalEffectsAlwaysUpdate(bool);               //  6 0x00B232F0
+>     virtual void SetWorld(const CIDrawWorld*);                            //  7 0x00B23300
+>     virtual void Virtual08_00b27d90() = 0;                                //  8 (CEngine 0x00B27D90, ret 8)
+>     virtual void WorldFrameUpdate(bool);                                  //  9 0x00B23310
+>     virtual void PausedWorldFrameUpdate();                                // 10 0x00B23320
+>     virtual void Virtual11_00b23cf0() = 0;                                // 11 (CEngine 0x00B23CF0, ret 8)
+>     virtual void Virtual12_00b24400() = 0;                                // 12 (CEngine 0x00B24400, ret 0xC)
+>     virtual void Virtual13_00b242d0() = 0;                                // 13 (CEngine 0x00B242D0, ret 8)
+>     virtual bool SetVideoOptions(const CEngineVideoOptions&);             // 14 0x00B23330
+>     virtual bool PreChangeResolution() = 0;                               // 15 (CEngine 0x00B2AA20)
+>     virtual bool PostChangeResolution(unsigned long, unsigned long, unsigned long) = 0;   // 16 (CEngine 0x00B2AA30)
+>     bool Active;                                                          // +0x08
+> };
+> FABLE_STATIC_ASSERT(sizeof(CIEngine) == 0xc);
+> #else
+24a71
+> #endif // FABLE_RETAIL_CIENGINE
+################ engine/CIntelligentPointer.h
+29a30
+> <<<<<<< merged
+35a37,45
+> =======
+> #ifdef FABLE_RETAIL_CINTELLIGENTPOINTER_CTOR
+>     // Retail opt-in (2026-11-03, chunk 720 row 0x0065B854): the converting constructor from the pointee, out of line in retail
+>     // (one COMDAT per instantiation: ??0?$CIntelligentPointer@VCThing@@@@QAE@PAVCThing@@@Z 0x004A96F0, <CThingBuilding> 0x0050F380,
+>     // <CThingAICreature> 0x0050F3F0, <CThingObject> 0x0065E133, <CThingTrackNode> 0x0065E15D, <CThingMarker> 0x0065E21E; every
+>     // caller pushes the pointer and calls it). Declaration only: no layout change.
+>     CIntelligentPointer(T* item);
+> #endif
+> >>>>>>> c720
+################ NEW engine/CLandscapeGPUUpdateQueue.h
+################ engine/CLandscapePatchTesselator.h
+2a3,22
+> #ifdef FABLE_RETAIL_CLANDSCAPEPATCHTESSELATOR
+> // Retail opt-in (chunk 723): CLandscapePatchTesselator : CLandscapeTesselatorBase (RTTI), vtable 0x012A2B3C (slot 0 TesselateEdge
+> // 0x00BE3970, 1 0x00B6C990, 2 0x00B6C9B0, 3 0x00B6C980, 4 SetBridgeVertexBufferSize 0x00B6CCF0 -- the base's five private slots).
+> // BridgeVertexBuffer (CArray<CTVertexLandscapeBackground>, 0x18-byte vertices, Ego_r.pdb) at +0x14; sizeof 0x20. The destructor is
+> // the implicit one (Ego_r.pdb ??1CLandscapePatchTesselator@@QAE@XZ): ~CEngineLandscapeRenderer 0x00B67920 frees +0x14 then +0x04.
+> #include "rebuild_abi.h"
+> #include "engine/CLandscapeTesselatorBase.h"
+> class CTVertexLandscapeBackground { public: unsigned char Bytes[0x18]; };   // Ego_r.pdb sizeof 24 (layout not modelled)
+> class CLandscapePatchTesselator : public CLandscapeTesselatorBase {
+> private:
+>     virtual void TesselateEdge(CPatchTesselationEdgeStrip* strip, long a, long b, bool c, bool d, LANDSCAPE_EDGE_STRIP_SIDE side, unsigned short* indices);   // slot 0
+>     virtual long GetBridgeVertexBufferSize();                            // slot 1
+>     virtual unsigned char* GetBridgeVertexBufferAsCArray();              // slot 2
+>     virtual long GetSizeOfVertex();                                      // slot 3
+>     virtual void SetBridgeVertexBufferSize(long size);                   // slot 4  0x00B6CCF0
+> public:
+>     CArray<CTVertexLandscapeBackground> BridgeVertexBuffer;              // +0x14
+> };
+> FABLE_STATIC_ASSERT(sizeof(CLandscapePatchTesselator) == 0x20);
+> #else // flattened Ego_r layout (the landed default, unchanged)
+23a44
+> #endif // FABLE_RETAIL_CLANDSCAPEPATCHTESSELATOR
+################ NEW engine/CLandscapeTesselatorBase.h
+################ engine/CLevelLoader.h
+2a3,49
+> #ifdef FABLE_RETAIL_CLEVELLOADER
+> // Retail opt-in (2026-11-03, chunk 719 row 0x00501150 CWorldMap::LoadLevelFromFiles): the polymorphic retail class.
+> // Base: Ego_r.pdb CLevelLoader members start at +0x14 after the CSuspendableProcessMicrothread base (0x14 bytes); the loop in
+> // 0x00501150 calls vtable slot 1 (RunSuspendableProcess) on it. Nested CObject / CObject::CLevelFiles: Ego_r.pdb member names
+> // at retail STLport sizes (set 0xc, vector 0xc): CObject 0x20 (LoadableSections +0x0, PLevelLoader +0xc, RegionLevelFiles
+> // +0x10, RegionIndex +0x1c; the inline default ctor zeroes PLevelLoader and builds the two containers, RegionIndex is left),
+> // CLevelFiles 0x1c (LevelID, PTopologyFile, PNavigationFile, PThingFile; ??1CLevelFiles 0x0050F980 out of line, the default
+> // ctor inline and leaving LevelID). Methods: Ego_r.pdb / Fable.exe bindings (SetAsLoading 0x006C27A0, Add 0x006C2120,
+> // IsBusy 0x006C20A0).
+> #include "engine/CSuspendableProcessMicrothread.h"
+> #include "engine/CCountedPointer.h"
+> #include "stlport/fable_containers.h"
+> #include "stlport/fable_map.h"
+> #include "fable_string.h"
+> class CAFile; class CThingManager; class CWorld; class CWorldMap;
+> class CLevelLoader : public CSuspendableProcessMicrothread {
+> public:
+>     class CObject {
+>     public:
+>         class CLevelFiles {
+>         public:
+>             ~CLevelFiles();                                              // 0x0050F980
+>             long                    LevelID;                             // +0x00
+>             CCountedPointer<CAFile> PTopologyFile;                       // +0x04
+>             CCountedPointer<CAFile> PNavigationFile;                     // +0x0c
+>             CCountedPointer<CAFile> PThingFile;                          // +0x14
+>         };
+>         CObject() : PLevelLoader(0) { }
+>         void SetAsLoading(const std::vector<CLevelFiles>& levelFiles, const std::set<CCharString>& loadableSections, long regionIndex);   // 0x006C27A0
+>     private:
+>         std::set<CCharString>    LoadableSections;                      // +0x00
+>         CLevelLoader*            PLevelLoader;                          // +0x0c
+>         std::vector<CLevelFiles> RegionLevelFiles;                      // +0x10
+>         long                     RegionIndex;                           // +0x1c
+>     };
+>     bool IsBusy() const;                                                 // 0x006C20A0
+>     void Add(const CCountedPointer<CObject>& object);                    // 0x006C2120
+> private:
+>     std::list<CCountedPointer<CObject> > ObjectList;                     // +0x14
+>     CThingManager*                       ThingManager;                   // +0x18
+>     CWorldMap*                           WorldMap;                       // +0x1c
+>     CWorld*                              World;                          // +0x20
+> };
+> FABLE_STATIC_ASSERT(sizeof(CLevelLoader) == 0x24);
+> FABLE_STATIC_ASSERT(sizeof(CLevelLoader::CObject) == 0x20);
+> FABLE_STATIC_ASSERT(sizeof(CLevelLoader::CObject::CLevelFiles) == 0x1c);
+> #else // flattened Ego_r layout (the landed default)
+36a84,85
+> 
+> #endif // FABLE_RETAIL_CLEVELLOADER
+################ engine/CMap.h
+3,4c3,7
+< #include "engine/CBaseClassNonCopyable.h"
+< #include "engine/C2DBoxI.h"
+---
+> #ifdef FABLE_RETAIL_CMAP
+> // Retail opt-in (2026-11-03, chunk 719 row 0x00509A20, agent719c): the generated layout plus the two const queries this row calls (Ego_r.pdb + FableWin.pdb
+> // spellings, Ego_r 0x00679FE0/0x0067A0B0; reloc bindings 0x0081F3D0 / 0x0081F4B0). No layout change.
+> #include <stddef.h>
+> #include "rebuild_abi.h"
+6,30c9,68
+< #ifndef FABLE_RETAIL_CIDRAWMAP
+< #define FABLE_RETAIL_CIDRAWMAP
+< #endif
+< #include "engine/CIDrawMap.h"
+< class CGameDefinitionManager;class CWorld;
+< class CAFile;class CScriptedMapBrush;class CScriptedMapBrushInit;
+< // Retail class (header wave 2026-11-03, Codex pass 12 row 0x00821010): RTTI .?AVCMap@@ : CIDrawMap@0, CBaseClassNonCopyable@4
+< // (ghidra_out/rtti_bases.tsv); every Ego_r.pdb data member in order (struct_layouts_egor.tsv), composites without a shared header
+< // opaque at retail STLport sizes; sizeof 0x1D40.
+< class CMap:public CIDrawMap,public CBaseClassNonCopyable {
+< protected:
+<     unsigned char CachedVolumes[4],ScriptedMapBrushes[4],ScriptedMapBrushUpdateAreas[12];
+<     const CGameDefinitionManager& DefinitionManager;
+<     CWorld& World;
+<     unsigned long* WorldSeed;
+<     float RippleBuffer[41][41];
+<     unsigned char ThemePaletteEntryList[12],GameMap[4],HeightMap[4];
+<     C2DBoxI ChangedHeightAreas[20],ChangedGameAreas[20];
+<     long NoChangedHeightAreas,NoChangedGameAreas;
+<     float SeaLevel;
+<     long WorldSizeX,WorldSizeY,HeightMapSizeX,HeightMapSizeY,GameMapSizeX,GameMapSizeY;
+<     C2DCoordI WorldPos;
+<     unsigned long MapUID;
+<     unsigned __int64 ThingUIDCount;
+<     bool InitialisePassabilityFromThemes;
+---
+> class CCachedVolumes;
+> class CGameDefinitionManager;
+> class CGameMap;
+> class CHeightMap;
+> class CWorld;
+> #pragma pack(push, 1)
+> class CMap {
+> public:
+>     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
+>     unsigned char           _pad_0x04[0x4];                  // +0x04
+>     CCachedVolumes*         CachedVolumes_ptr;               // +0x08 scoped_ptr<CCachedVolumes>::ptr
+>     unsigned char           ScriptedMapBrushes[0x4];         // +0x0c list<CScriptedMapBrush,std::allocator<CScriptedMapBrush>_>
+>     unsigned char           ScriptedMapBrushUpdateAreas[0xc]; // +0x10 vector<CMap::CScriptedMapBrushUpdateArea,std::allocator<CMap::CScriptedMapBrushUpdateArea>_>
+>     CGameDefinitionManager* DefinitionManager;               // +0x1c
+>     CWorld*                 World;                           // +0x20
+>     void*                   WorldSeed;                       // +0x24 ulong *
+>     unsigned char           RippleBuffer[0x1a44];            // +0x28 float[41][41]
+>     unsigned char           ThemePaletteEntryList[0xc];      // +0x1a6c vector<CThemePaletteEntry,std::allocator<CThemePaletteEntry>_>
+>     CGameMap*               GameMap_ptr;                     // +0x1a78 scoped_ptr<CGameMap>::ptr
+>     CHeightMap*             HeightMap_ptr;                   // +0x1a7c scoped_ptr<CHeightMap>::ptr
+>     unsigned char           ChangedHeightAreas[0x140];       // +0x1a80 C2DBoxI[20]
+>     unsigned char           ChangedGameAreas[0x140];         // +0x1bc0 C2DBoxI[20]
+>     long                    NoChangedHeightAreas;            // +0x1d00
+>     long                    NoChangedGameAreas;              // +0x1d04
+>     float                   SeaLevel;                        // +0x1d08
+>     long                    WorldSizeX;                      // +0x1d0c
+>     long                    WorldSizeY;                      // +0x1d10
+>     long                    HeightMapSizeX;                  // +0x1d14
+>     long                    HeightMapSizeY;                  // +0x1d18
+>     long                    GameMapSizeX;                    // +0x1d1c
+>     long                    GameMapSizeY;                    // +0x1d20
+>     long                    WorldPos_X;                      // +0x1d24 C2DCoordI::X
+>     long                    WorldPos_Y;                      // +0x1d28 C2DCoordI::Y
+>     unsigned long           MapUID;                          // +0x1d2c
+>     unsigned __int64        ThingUIDCount;                   // +0x1d30
+>     bool                    InitialisePassabilityFromThemes; // +0x1d38
+>     unsigned char           _pad_0x1d39[0x7];                // +0x1d39
+>     bool IsPassableAt(const C2DCoordI& pos) const;   // 0x0081F3D0 ?IsPassableAt@CMap@@QBE_NABVC2DCoordI@@@Z
+>     bool IsPrefNavAt(const C2DCoordI& pos) const;    // 0x0081F4B0 ?IsPrefNavAt@CMap@@QBE_NABVC2DCoordI@@@Z
+> };
+> #pragma pack(pop)
+> FABLE_STATIC_ASSERT(sizeof(CMap) == 0x1d40);
+> #else
+> // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
+> // Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CMap = 0x1d50.
+> // Container layout: retail STLport 4.6 (list 4, vector/map/set/string/CArray 0xc, deque 0x28, CVectorMap 0x10, bases from Fable.exe RTTI): sizeof CMap = 0x1d40.
+> // Retail evidence: 0 trusted landed function(s); reconciliation clean.
+> // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
+> // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+> #include <stddef.h>
+> #include "rebuild_abi.h"
+> 
+> class CCachedVolumes;
+> class CGameDefinitionManager;
+> class CGameMap;
+> class CHeightMap;
+> class CWorld;
+> 
+> #pragma pack(push, 1)
+> class CMap {
+32,35c70,98
+<     void LoadBrushesFromFile(CAFile&);
+<     CScriptedMapBrush& CreateScriptedMapBrush(const CScriptedMapBrushInit&);
+<     bool IsPassableAt(const C2DCoordI&)const;
+<     bool IsPrefNavAt(const C2DCoordI&)const;
+---
+>     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
+>     unsigned char           _pad_0x04[0x4];                  // +0x04
+>     CCachedVolumes*         CachedVolumes_ptr;               // +0x08 scoped_ptr<CCachedVolumes>::ptr
+>     unsigned char           ScriptedMapBrushes[0x4];         // +0x0c list<CScriptedMapBrush,std::allocator<CScriptedMapBrush>_>
+>     unsigned char           ScriptedMapBrushUpdateAreas[0xc]; // +0x10 vector<CMap::CScriptedMapBrushUpdateArea,std::allocator<CMap::CScriptedMapBrushUpdateArea>_>
+>     CGameDefinitionManager* DefinitionManager;               // +0x1c
+>     CWorld*                 World;                           // +0x20
+>     void*                   WorldSeed;                       // +0x24 ulong *
+>     unsigned char           RippleBuffer[0x1a44];            // +0x28 float[41][41]
+>     unsigned char           ThemePaletteEntryList[0xc];      // +0x1a6c vector<CThemePaletteEntry,std::allocator<CThemePaletteEntry>_>
+>     CGameMap*               GameMap_ptr;                     // +0x1a78 scoped_ptr<CGameMap>::ptr
+>     CHeightMap*             HeightMap_ptr;                   // +0x1a7c scoped_ptr<CHeightMap>::ptr
+>     unsigned char           ChangedHeightAreas[0x140];       // +0x1a80 C2DBoxI[20]
+>     unsigned char           ChangedGameAreas[0x140];         // +0x1bc0 C2DBoxI[20]
+>     long                    NoChangedHeightAreas;            // +0x1d00
+>     long                    NoChangedGameAreas;              // +0x1d04
+>     float                   SeaLevel;                        // +0x1d08
+>     long                    WorldSizeX;                      // +0x1d0c
+>     long                    WorldSizeY;                      // +0x1d10
+>     long                    HeightMapSizeX;                  // +0x1d14
+>     long                    HeightMapSizeY;                  // +0x1d18
+>     long                    GameMapSizeX;                    // +0x1d1c
+>     long                    GameMapSizeY;                    // +0x1d20
+>     long                    WorldPos_X;                      // +0x1d24 C2DCoordI::X
+>     long                    WorldPos_Y;                      // +0x1d28 C2DCoordI::Y
+>     unsigned long           MapUID;                          // +0x1d2c
+>     unsigned __int64        ThingUIDCount;                   // +0x1d30
+>     bool                    InitialisePassabilityFromThemes; // +0x1d38
+>     unsigned char           _pad_0x1d39[0x7];                // +0x1d39
+37c100,130
+< FABLE_STATIC_ASSERT(sizeof(CMap)==0x1d40);
+---
+> #pragma pack(pop)
+> 
+> FABLE_STATIC_ASSERT(sizeof(CMap) == 0x1d40);
+> FABLE_STATIC_ASSERT(offsetof(CMap, __vftable) == 0x0);
+> FABLE_STATIC_ASSERT(offsetof(CMap, CachedVolumes_ptr) == 0x8);
+> FABLE_STATIC_ASSERT(offsetof(CMap, ScriptedMapBrushes) == 0xc);
+> FABLE_STATIC_ASSERT(offsetof(CMap, ScriptedMapBrushUpdateAreas) == 0x10);
+> FABLE_STATIC_ASSERT(offsetof(CMap, DefinitionManager) == 0x1c);
+> FABLE_STATIC_ASSERT(offsetof(CMap, World) == 0x20);
+> FABLE_STATIC_ASSERT(offsetof(CMap, WorldSeed) == 0x24);
+> FABLE_STATIC_ASSERT(offsetof(CMap, RippleBuffer) == 0x28);
+> FABLE_STATIC_ASSERT(offsetof(CMap, ThemePaletteEntryList) == 0x1a6c);
+> FABLE_STATIC_ASSERT(offsetof(CMap, GameMap_ptr) == 0x1a78);
+> FABLE_STATIC_ASSERT(offsetof(CMap, HeightMap_ptr) == 0x1a7c);
+> FABLE_STATIC_ASSERT(offsetof(CMap, ChangedHeightAreas) == 0x1a80);
+> FABLE_STATIC_ASSERT(offsetof(CMap, ChangedGameAreas) == 0x1bc0);
+> FABLE_STATIC_ASSERT(offsetof(CMap, NoChangedHeightAreas) == 0x1d00);
+> FABLE_STATIC_ASSERT(offsetof(CMap, NoChangedGameAreas) == 0x1d04);
+> FABLE_STATIC_ASSERT(offsetof(CMap, SeaLevel) == 0x1d08);
+> FABLE_STATIC_ASSERT(offsetof(CMap, WorldSizeX) == 0x1d0c);
+> FABLE_STATIC_ASSERT(offsetof(CMap, WorldSizeY) == 0x1d10);
+> FABLE_STATIC_ASSERT(offsetof(CMap, HeightMapSizeX) == 0x1d14);
+> FABLE_STATIC_ASSERT(offsetof(CMap, HeightMapSizeY) == 0x1d18);
+> FABLE_STATIC_ASSERT(offsetof(CMap, GameMapSizeX) == 0x1d1c);
+> FABLE_STATIC_ASSERT(offsetof(CMap, GameMapSizeY) == 0x1d20);
+> FABLE_STATIC_ASSERT(offsetof(CMap, WorldPos_X) == 0x1d24);
+> FABLE_STATIC_ASSERT(offsetof(CMap, WorldPos_Y) == 0x1d28);
+> FABLE_STATIC_ASSERT(offsetof(CMap, MapUID) == 0x1d2c);
+> FABLE_STATIC_ASSERT(offsetof(CMap, ThingUIDCount) == 0x1d30);
+> FABLE_STATIC_ASSERT(offsetof(CMap, InitialisePassabilityFromThemes) == 0x1d38);
+> #endif
+################ engine/CNavBlockedQuadTreeNode.h
+2a3,17
+> #ifdef FABLE_RETAIL_CNAVBLOCKEDQUADTREENODE
+> // Retail opt-in (2026-11-03, chunk 721 row 0x00A1CEB0): RTTI .?AVCNavBlockedQuadTreeNode@@ : CANavQuadTreeNode, vtable 0x0129DD3C,
+> // sizeof 0x10 (no members of its own). Ego_r ??0CNavBlockedQuadTreeNode@@QAE@EE@Z 0x00A768C0 (CNavigatorAStar's ctor builds three)
+> // and the user ??4CNavBlockedQuadTreeNode@@QAEABV0@ABV0@@Z 0x00A76240 (landed: skips self-assignment, copies +4..+0xd).
+> #ifndef FABLE_RETAIL_CANAVQUADTREENODE
+> #define FABLE_RETAIL_CANAVQUADTREENODE
+> #endif
+> #include "engine/CANavQuadTreeNode.h"
+> class CNavBlockedQuadTreeNode : public CANavQuadTreeNode {
+> public:
+>     CNavBlockedQuadTreeNode(unsigned char, unsigned char);                               // 0x00A768C0
+>     const CNavBlockedQuadTreeNode& operator=(const CNavBlockedQuadTreeNode&);            // 0x00A76240
+> };
+> FABLE_STATIC_ASSERT(sizeof(CNavBlockedQuadTreeNode) == 0x10);
+> #else // flattened Ego_r layout (the landed default, unchanged)
+21a37
+> #endif // FABLE_RETAIL_CNAVBLOCKEDQUADTREENODE
+################ NEW engine/CNavigationAreaUpdate.h
+################ NEW engine/CNavigationPosition.h
+################ NEW engine/CNavigationTransitionPoint.h
+################ engine/CNavigatorManager.h
+2a3,40
+> #ifdef FABLE_RETAIL_CNAVIGATORMANAGER
+> // Retail opt-in (2026-11-03, chunk 721 row 0x00A1CEB0): the members the A* navigator reaches. Retail QueueManager is at +0x2c
+> // (Ego_r +0x40 with Dinkumware lists; InitialiseFromPreCalculatedRoute 0x00A1E370 and Initialise 0x00A1CEB0 both call on
+> // manager+0x2c). CNavigatorQueueManager (Ego_r: one member, Navigators = list<pair<long, const CNavigatorBase*> >) has no
+> // engine header; it lives here with its PDB members: RemoveNavigatorFromQueue (inline in retail: the list's remove_if<CIsNavigator>
+> // 0x00A155C0, FableWin ??$remove_if@VCIsNavigator@@@?$list@U?$pair@JPBVCNavigatorBase@@@std@@...) and AddNavigatorToQueue 0x00A154D0.
+> #include <stddef.h>
+> #include "rebuild_abi.h"
+> #include "stlport/fable_containers.h"
+> class CNavigatorBase;
+> class C2DVector;
+> class CANavQuadTreeNode;
+> class CNavigatorManagerExternalInterface;
+> class CIsNavigator {                                  // Ego_r: CNavigatorBase* Navigator (4 bytes), passed by value
+> public:
+>     CIsNavigator(const CNavigatorBase* navigator) : Navigator(navigator) { }
+>     const CNavigatorBase* Navigator;
+> };
+> class CNavigatorQueueManager {
+> public:
+>     void AddNavigatorToQueue(const CNavigatorBase&, bool, float);                        // 0x00A154D0
+>     void RemoveNavigatorFromQueue(const CNavigatorBase& navigator) { Navigators.remove_if(CIsNavigator(&navigator)); }
+>     std::list<std::pair<long, const CNavigatorBase*> > Navigators;                      // +0x00
+> };
+> class CNavigatorManager {
+> public:
+>     const CANavQuadTreeNode* GetNodeAt(const C2DVector&, unsigned char) const;           // 0x00A14F70 ?GetNodeAt@CNavigatorManager@@QBEPBVCANavQuadTreeNode@@ABVC2DVector@@E@Z
+>     CNavigatorQueueManager& GetNavigatorQueueManager() { return QueueManager; }          // Ego_r ?GetNavigatorQueueManager@CNavigatorManager@@QAEAAVCNavigatorQueueManager@@XZ
+>     unsigned char                       _pad_0x00[0x1c];      // +0x00 vptr and the unmodelled leading members
+>     unsigned long*                      Seed;                 // +0x1c
+>     long                                NumberOfNodeExaminationsLeftThisFrame; // +0x20
+>     unsigned char                       QuadTrees[0x4];       // +0x24 list<CNavQuadTreeMap> (STLport, one word)
+>     CNavigatorManagerExternalInterface* PInterface;           // +0x28
+>     CNavigatorQueueManager              QueueManager;         // +0x2c
+> };
+> FABLE_STATIC_ASSERT(sizeof(CNavigatorManager) == 0x30);
+> FABLE_STATIC_ASSERT(offsetof(CNavigatorManager, QueueManager) == 0x2c);
+> #else // flattened Ego_r layout (the landed default, unchanged)
+37a76
+> #endif // FABLE_RETAIL_CNAVIGATORMANAGER
+################ engine/CPhysicsMeshObject.h
+3a4,6
+> #ifdef FABLE_RETAIL_CPHYSICSMESHOBJECT
+> #include "stlport/fable_containers.h"
+> #endif
+16a20,25
+> #ifdef FABLE_RETAIL_CPHYSICSMESHOBJECT
+>     // Retail opt-in additions (2026-11-03, chunk 719 row 0x00509A20, agent719c): declarations only (Ego_r.pdb 0x00B7F2C0 /
+>     // 0x00B7F200, FableWin.pdb 0x031D19C0 / 0x031D1900); no layout change.
+>     void GetAllHelperPointNames(std::vector<CCharString>& names) const;                 // 0x00A11820 ?GetAllHelperPointNames@CPhysicsMeshObject@@QBEXAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z
+>     C3DVector GetHelperPointPositionStatic(const CCharString& name, long index) const;   // 0x00A11760 ?GetHelperPointPositionStatic@CPhysicsMeshObject@@QBE?AVC3DVector@@ABVCCharString@@J@Z
+> #endif
+################ NEW engine/CPixelShader.h
+################ engine/CPlayer.h
+91a92,99
+> class CThing;                                                   // chunk 718: GetPPlayerCharacterThing's return type
+> class C2DBoxF; class CFontBank;                               // chunk 718: DrawFreeCamDebug's parameter types
+> #ifdef FABLE_RETAIL_CCAMERA
+> #include "engine/CCamera.h"                                     // chunk 718: the three camera members' real type (below)
+> #endif
+> #ifdef FABLE_RETAIL_CINTELLIGENTPOINTER
+> #include "engine/CIntelligentPointer.h"                         // chunk 718: the two pointer members' real type (below)
+> #endif
+114a123,130
+>     // Retail opt-in (chunk 718): the three character getters, out of line in Ego_r.pdb and retail, in donor order (Ego_r
+>     // 0x004933F0 / 0x00493650 / 0x00493660 = retail 0x00487B70 / 0x00487DC0 / 0x00487DD0, the neighbours SetPlayerCharacter
+>     // 0x00493400 / SetControlledCreature 0x00493570 between them in both): ?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ
+>     // (`add ecx,34h ; jmp GetPItem`: PlayerCharacter), ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ (+0x2c).
+>     CThing* GetPPlayerCharacterThing() const;                    // 0x00487B70
+>     const CThingPlayerCreature* PeekPControlledCreature() const; // 0x00487DD0
+>     // Retail opt-in (chunk 718): Ego_r.pdb / FableWin.pdb ?DrawFreeCamDebug@CPlayer@@QBEXPBVC2DBoxF@@ABVCFontBank@@@Z (retail 0x00487570).
+>     void DrawFreeCamDebug(const C2DBoxF* box, const CFontBank& font) const;   // 0x00487570
+128a145,150
+> #if defined(FABLE_RETAIL_PLAYER) && defined(FABLE_RETAIL_CINTELLIGENTPOINTER)
+>     // Retail opt-in (chunk 718): with the retail (packed, 8-byte) CIntelligentPointer model the two members carry their Ego_r.pdb
+>     // type; same offsets and size as the opaque bytes below.
+>     CIntelligentPointer<CThingPlayerCreature>                    ControlledCreature; // +0x2c
+>     CIntelligentPointer<CThingPlayerCreature>                    PlayerCharacter; // +0x34
+> #else
+130a153
+> #endif
+131a155,161
+> #if defined(FABLE_RETAIL_PLAYER) && defined(FABLE_RETAIL_CCAMERA)
+>     // Retail opt-in (chunk 718, row 0x00487570): the three cameras carry their Ego_r.pdb type (engine/CCamera.h, sizeof 0x38);
+>     // same offsets and size as the opaque bytes below.
+>     CCamera                                                      CurrentFreeCamera; // +0x40
+>     CCamera                                                      FreeCamera; // +0x78
+>     CCamera                                                      OldFreeCamera; // +0xb0
+> #else
+134a165
+> #endif
+################ engine/CPlayerGui.h
+16c16,20
+<     unsigned char _pad_0x138[0x200];                                     // +0x138 PFont .. DisplayBottomHalfGUI
+---
+>     unsigned char _pad_0x138[0x186];                                     // +0x138 PFont .. TradeDisplay
+>     // 2026-11-03 (chunk 720 row 0x005CACB9): Ego_r.pdb bool LiveGuiMode, retail +0x2BE (PDB +0x2CE; the landed rows
+>     // 0x005EE288 and 0x00438310 read the byte there); FableWin ?IsLiveGUIMode@CPlayerGui@@QBE_NXZ is its inline getter.
+>     bool LiveGuiMode;                                                    // +0x2be
+>     unsigned char _pad_0x2bf[0x79];                                      // +0x2bf .. DisplayBottomHalfGUI
+17a22
+>     bool IsLiveGUIMode() const { return LiveGuiMode; }
+################ engine/CRGBColour.h
+12a13,20
+> #ifdef FABLE_RETAIL_CRGBCOLOUR
+>     // Retail opt-in (chunk 724): the PDB's Initialise(r, g, b, a) (?Initialise@CRGBColour@@QAEXEEEE@Z) and the copy constructor
+>     // built on it: all four channel bytes are read (as Initialise's arguments) before any is stored, the byte-by-byte copy
+>     // retail emits where a CRGBColour is passed by value (CPSCDecalRenderer::InterpolateTo 0x00B1BDA0 into
+>     // GFGetInterpolatedColour; GOTCHAS: the landed rows spell the setter `Set`, which neither PDB has).
+>     void Initialise(unsigned char r,unsigned char g,unsigned char b,unsigned char a) { R=r; G=g; B=b; A=a; }
+>     CRGBColour(const CRGBColour& colour) { Initialise(colour.R,colour.G,colour.B,colour.A); }
+> #else
+13a22
+> #endif
+################ engine/CRenderManager2D.h
+13a14,17
+> #ifdef FABLE_RETAIL_CRENDERMANAGER2D_TEXT
+> #include "fable_string.h"
+> class C2DVector; class CFontBank;
+> #endif
+21a26,30
+> #ifdef FABLE_RETAIL_CRENDERMANAGER2D_TEXT
+>     // Retail opt-in (chunk 718, row 0x00487570 CPlayer::DrawFreeCamDebug): FableWin.pdb ?Draw2DText@CRenderManager2D@@QAE_NABVC2DVector@@VCWideString@@ABVCFontBank@@ABVCRGBColour@@K@Z
+>     // (the landed body 0x009DD8F0, `ret 14h`; the string travels by value, built in its argument slot). A declaration only.
+>     bool Draw2DText(const C2DVector&,CWideString,const CFontBank&,const CRGBColour&,unsigned long);   // 0x009DD8F0
+> #endif
+################ NEW engine/CShaderBase.h
+################ NEW engine/CShaderResource.h
+################ engine/CStartupDefinitionManager.h
+2a3,14
+> #ifdef FABLE_RETAIL_CSTARTUPDEFINITIONMANAGER
+> // Retail opt-in (2026-11-03, chunk 719 rows 0x004084B0..0x004085A0 via CUserProfileManager::GetConfigOptionsDefaultsDef
+> // 0x004083E0): the real base, as engine/CGameDefinitionManager.h models its sibling. Fable.exe RTTI and Ego_r/FableWin give
+> // CStartupDefinitionManager a public CDefinitionManager base; both are 0xd0 bytes in retail, so the class adds no storage.
+> // Get is FableWin ?Get@CStartupDefinitionManager@@SIAAV1@XZ (retail 0x0043368D, bound __fastcall like CGameDefinitionManager::Get).
+> #include "engine/CDefinitionManager.h"
+> class CStartupDefinitionManager : public CDefinitionManager {
+> public:
+>     static CStartupDefinitionManager& __fastcall Get();
+> };
+> FABLE_STATIC_ASSERT(sizeof(CStartupDefinitionManager)==0xd0);
+> #else // flattened Ego_r layout (the landed default)
+28a41,42
+> 
+> #endif // FABLE_RETAIL_CSTARTUPDEFINITIONMANAGER
+################ engine/CStockItemDef.h
+7a8,36
+> #ifdef FABLE_RETAIL_CSTOCKITEMDEF
+> // Retail opt-in (w22 agent720c, row 0x005C6B26 CTCInventoryWeapons::ConstructWeaponDescription): the polymorphic retail def.
+> // RTTI .?AVCStockItemDef@@ : CSubDefClassBase (ghidra_out/rtti_bases.tsv); GetSizeofClass 0x004D4110 `push 40h; pop eax`
+> // (sizeof 0x40: no containers, so the Ego_r.pdb offsets hold). StatGetTypeName is inline (Ego_r/FableWin spelling; the
+> // GetSubDef<CStockItemDef> COMDAT 0x0059350C builds the literal in place). ConstructWeaponDescription reads DefaultPrice +0x28.
+> // Needs FABLE_RETAIL_DEF_CLASS_BASE (and FABLE_RETAIL_CCHARSTRING for StatGetTypeName).
+> #include <stddef.h>
+> #include "rebuild_abi.h"
+> #include "fable_string.h"
+> #include "engine/CSubDefClassBase.h"
+> class CPersistContext;
+> class CStockItemDef : public CSubDefClassBase {
+> public:
+>     static CCharString __fastcall StatGetTypeName() { return CCharString("CStockItemDef", -1); }   // ?StatGetTypeName@CStockItemDef@@SI?AVCCharString@@XZ (inline)
+>     virtual void Transfer(CPersistContext&);                             // 0x004DE4B2 ?Transfer@CStockItemDef@@UAEXAAVCPersistContext@@@Z
+>     virtual void Copy(const CDefClassBase*);                             // 0x004E0707 ?Copy@CStockItemDef@@UAEXPBVCDefClassBase@@@Z
+>     virtual unsigned long GetSizeofClass();                              // 0x004D4110 ?GetSizeofClass@CStockItemDef@@UAEKXZ
+>     long          DefaultPrice;                              // +0x28
+>     bool          DefaultIsStealable;                        // +0x2c
+>     bool          CanOnlyBeSoldToPlayer;                     // +0x2d
+>     unsigned long SellersBanter;                             // +0x30
+>     unsigned long BuyersPhrase;                              // +0x34
+>     float         ChanceOfBecomingAvailable;                 // +0x38
+>     bool          CanBeDisplayedInShop;                      // +0x3c
+> };
+> FABLE_STATIC_ASSERT(sizeof(CStockItemDef) == 0x40);
+> FABLE_STATIC_ASSERT(offsetof(CStockItemDef, DefaultPrice) == 0x28);
+> FABLE_STATIC_ASSERT(offsetof(CStockItemDef, CanBeDisplayedInShop) == 0x3c);
+> #else // flattened Ego_r layout (the landed default)
+44a74
+> #endif // FABLE_RETAIL_CSTOCKITEMDEF
+################ engine/CStringParser.h
+21a22
+> <<<<<<< merged
+35a37,41
+> =======
+>     // Retail opt-in additions (2026-11-03, chunk 719 row 0x00509A20, agent719c): declarations only (Ego_r.pdb / FableWin.pdb).
+>     bool FindKeyword(const CCharString&);                                       // 0x009B9BA0 ?FindKeyword@CStringParser@@QAE_NABVCCharString@@@Z
+>     long ReadAsInteger();                                                       // 0x009BA540 ?ReadAsInteger@CStringParser@@QAEJXZ
+> >>>>>>> c719
+################ engine/CTCBase.h
+92a93,98
+> #ifdef FABLE_RETAIL_CTCBASE_GETWORLD
+>     // Retail opt-in (2026-11-03, chunk 720 row 0x00659800): ?GetWorld@CTCBase@@IBEAAVCWorld@@XZ (Ego_r.pdb / FableWin.pdb; const,
+>     // returning the non-const world), out of line in retail at 0x00686A70 (CalculateSecuritySweepTasks 0x00659900 reads the
+>     // thing search tools +0x20 off its result). Declaration only.
+>     CWorld& GetWorld() const;                                            // 0x00686A70
+> #endif
+################ engine/CTCCreatureNavigation.h
+4a5,13
+> #ifdef FABLE_RETAIL_CTCCREATURENAVIGATION
+> class C2DVector;
+> class C3DVector;
+> namespace std {
+> template <class _Tp> class allocator;
+> template <class _Tp, class _Alloc> class vector;
+> template <class _T1, class _T2> struct pair;
+> }
+> #endif
+21a31,35
+> #ifdef FABLE_RETAIL_CTCCREATURENAVIGATION
+>     // Retail opt-in (2026-11-03, chunk 720 row 0x00659800): FableWin.pdb ?StatGetInterfaceType@CTCCreatureNavigation@@SI?AW4ETCInterfaceType@@XZ,
+>     // inline (TCI_NAVIGATION = 7 folds into CalculateSecuritySweepTasks' GetTC lookup at 0x00659860). No layout change.
+>     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_NAVIGATION; }
+> #endif
+24a39,50
+> #ifdef FABLE_RETAIL_CTCCREATURENAVIGATION
+>     // Retail opt-in (chunk 725): FableWin.pdb members that retail compiles to PNavigator vtable forwards (CNavigatorBase
+>     // slots, engine/CNavigatorBase.h FABLE_RETAIL_CNAVIGATORBASE): InterruptNavigation 0x006CB6B0 (slot 18 Interrupt),
+>     // GetNearestNavigablePosTo 0x006CB8E0 (slot 8), IsNewDestinationGoingToResetNavigation 0x006CB990 (slot 11),
+>     // GetCurrentDestination 0x006CB9A0 (slot 12), CalculateRouteFromTo 0x006CB9B0 (slot 14), InitialiseFromPreCalculatedRoute
+>     // 0x006CB9C0 (slot 15), CalculateNavigableWidthOfLine 0x006CBA10 (slot 19).
+>     bool IsNewDestinationGoingToResetNavigation(const C3DVector&,float) const;
+>     const C3DVector& GetCurrentDestination() const;
+>     void CalculateRouteFromTo(const C3DVector&,const C3DVector&,std::vector<std::pair<C2DVector,unsigned char>,std::allocator<std::pair<C2DVector,unsigned char> > >&) const;
+>     void InitialiseFromPreCalculatedRoute(const C3DVector&,const std::vector<std::pair<C2DVector,unsigned char>,std::allocator<std::pair<C2DVector,unsigned char> > >&,const C3DVector&);
+>     void CalculateNavigableWidthOfLine(const C3DVector&,const C3DVector&,float&,float&);
+> #endif
+################ NEW engine/CTCGraphicAppearance.h
+################ engine/CTCHeroExperience.h
+8a9,11
+> #ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_STATS
+> enum EHeroTrainableStatType;
+> #endif
+14a18,25
+> #ifdef FABLE_RETAIL_CTCHEROEXPERIENCE_STATS
+>     // Retail opt-in (w22 agent720c, row 0x005C90FC): GetPHeroCombatDef is inline (FableWin.pdb only,
+>     // ?GetPHeroCombatDef@CTCHeroExperience@@QBE?AV?$CDefPointer@$$CBVCHeroCombatDef@@@@XZ; the container row copies PHeroCombatDef +0x58
+>     // in place); GetTrainableStatLevel 0x006D6520 (Ego_r ?GetTrainableStatLevel@CTCHeroExperience@@QBEJW4EHeroTrainableStatType@@@Z;
+>     // manifest label "CTCInventoryAbilities::GetAbilityLevel").
+>     CDefPointer<const CHeroCombatDef> GetPHeroCombatDef() const { return PHeroCombatDef; }
+>     long GetTrainableStatLevel(EHeroTrainableStatType) const;
+> #endif
+################ engine/CTCInventoryItem.h
+10a11,36
+> #ifdef FABLE_RETAIL_CTCINVENTORYITEM
+> // Retail opt-in (2026-11-03, chunk 720 rows 0x005C552C / 0x005C36C2): the real base. CTCInventoryItem derives CTCBase (the
+> // flattened default spells the base's vptr / ParentThing / flags as __vftable / slot / field8), so CThing::GetTC<CTCInventoryItem>
+> // can cast to it. Members after the base are the default's, at the same offsets (sizeof 0x28).
+> // ReturnToInventory 0x005D8E50: Ego_r.pdb / FableWin.pdb ?ReturnToInventory@CTCInventoryItem@@QAEXXZ -- the body calls
+> // PInventory's vtable slot 83 (+0x14C, CTCInventoryWeapons::OnItemReturnedToInventory(CThing&) in Ego_r member order) with
+> // *ParentThing; the bound spelling ?OnShowEnded@CTCShowableItem@@QAEXXZ names no PDB member.
+> #include "engine/CTCBase.h"
+> #include "engine/ETCInterfaceType.h"
+> class CDefPointeeBase;
+> namespace NInventory { class CTCInventoryBase; }
+> #pragma pack(push, 1)
+> class CTCInventoryItem : public CTCBase {
+> public:
+>     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_INVENTORY_ITEM; }   // ?StatGetInterfaceType@CTCInventoryItem@@SI?AW4ETCInterfaceType@@XZ
+>     void ReturnToInventory();                                 // 0x005D8E50
+>     CDefPointeeBase*  PDef_Object;                           // +0x0c CDefPointer<CInventoryItemDef_const_>::Object
+>     NInventory::CTCInventoryBase* PInventory;                // +0x10
+>     long              call;                                  // +0x14 retail-only long (previous header)
+>     unsigned __int64  InventoryUIDToAttachTo;                // +0x18
+>     bool              DefaultItem;                           // +0x20
+>     unsigned char     _pad_0x21[0x7];                        // +0x21
+> };
+> #pragma pack(pop)
+> FABLE_STATIC_ASSERT(sizeof(CTCInventoryItem) == 0x28);
+> #else
+37a64,65
+> 
+> #endif // FABLE_RETAIL_CTCINVENTORYITEM
+################ engine/CTCPhysicsBase.h
+109,110c109,111
+<     virtual C3DVector GetFacingVector(float) const;
+< public:
+---
+>     // Retail order (chunk 718, row 0x0088EDC0): the no-argument overload is declared first, so VC7.1's reversed overload group
+>     // puts it at slot 70 (+0x118; CTCPhysicsBase vtable 0x0125D2C4: slot 69 0x006B1430 `ret 8` takes the float, slot 70
+>     // 0x006B1410 `ret 4` the hidden result only). Ego_r.pdb defines the bodies in the same order (0x006EE000 XZ, 0x006EE020 M@Z).
+111a113,114
+> public:
+>     virtual C3DVector GetFacingVector(float) const;
+################ engine/CTCShop.h
+29a30,38
+> #ifdef FABLE_RETAIL_CTCSHOP
+>     // Retail opt-in (w22 agent720c, row 0x005C6B26): StatGetInterfaceType is inline (FableWin.pdb
+>     // ?StatGetInterfaceType@CTCShop@@SI?AW4ETCInterfaceType@@XZ; GetTC<CTCShop> keys the lookup on 0x53 in place);
+>     // IsValidStockItem is Ego_r.pdb ?IsValidStockItem@CTCShop@@QBE_NJ@Z (Ego_r 0x0077F3D0 sits between FindDefaultStockItem
+>     // 0x0077F200 and IsShopKeeperNearerThan 0x0077F3F0; retail 0x007723D0 sits between FindDefaultStockItem 0x00772250 and
+>     // IsShopKeeperNearerThan 0x007723F0, the same +0x1D0 / +0x20 spacing; manifest label "HasDefaultStockItem").
+>     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_SHOP; }
+>     bool IsValidStockItem(long) const;                                   // 0x007723D0
+> #endif
+################ engine/CTCThingOwner.h
+12a13,17
+> #ifdef FABLE_RETAIL_CTCTHINGOWNER
+>     // Retail opt-in (2026-11-03, chunk 720 row 0x0065B854): FableWin.pdb ?StatGetInterfaceType@CTCThingOwner@@SI?AW4ETCInterfaceType@@XZ,
+>     // inline (TCI_THING_OWNER = 0x21 folds into AddThingToVillage's GetTC lookup at 0x0065BC57). No layout change.
+>     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_THING_OWNER; }
+> #endif
+################ engine/CTCVillage.h
+2a3,260
+> #ifdef FABLE_RETAIL_CTCVILLAGE
+> // Retail opt-in (2026-11-03, chunk 719 row 0x004FF750 CreateRelevantPersonAndUpdateStats): the real base. Retail
+> // CTCVillage derives CTCBase (Fable.exe RTTI; the flattened default spells the base's vptr/ParentThing/flags as
+> // __vftable/_pad_0x04/_pad_0x08), so code that reads village->ParentThing and calls CTCVillage methods needs the
+> // class with its base. The members after the base are the generated ones, byte for byte at the same offsets.
+> #include "engine/CTCBase.h"
+> class CThing;
+> <<<<<<< merged
+> <<<<<<< merged
+> =======
+> #ifdef FABLE_RETAIL_CTCVILLAGE_MEMBERS
+> // Retail opt-in (2026-11-03, chunk 720 rows 0x0065B854 AddThingToVillage / 0x00659800 CalculateSecuritySweepTasks): the
+> // container and def members typed as Ego_r.pdb types them (struct_layouts_egor.tsv; STLport 4.6 list = one node pointer, so the
+> // retail offsets are the ones below, as the landed siblings read them: VillageTorches +0x30 0x006592E2, CrateTasks +0x60
+> // 0x00659C7E), and FableWin.pdb's inline ?GetPDef@CTCVillage@@QBE?AV?$CDefPointer@$$CBVCVillageDef@@@@XZ (by value: retail's
+> // two add-ref copies of +0x94 at 0x0065BD59). Same offsets and sizes as the opaque members of the branch below.
+> #include "stlport/fable_containers.h"
+> #include "engine/CIntelligentPointer.h"
+> #include "engine/CCountedPointer.h"
+> #include "engine/CDefPointer.h"
+> #include "engine/C3DVector.h"
+> class CThingBuilding; class CThingAICreature; class CThingObject; class CThingTrackNode; class CThingMarker; class CVillageDef;
+> class CVillageTaskTorch; class CVillageTaskHorn; class CVillageTaskPatrol; class CVillageTaskPickCrops;
+> class CVillageTaskSecuritySweep; class CVillageTaskCarryCrate;
+> #endif
+> >>>>>>> c720
+> =======
+> >>>>>>> c721
+> #pragma pack(push, 1)
+> class CTCVillage : public CTCBase {
+> public:
+>     void AddThingToVillage(CThing& thing);                   // 0x0065B854 ?AddThingToVillage@CTCVillage@@QAEXAAVCThing@@@Z
+> <<<<<<< merged
+> <<<<<<< merged
+> =======
+> >>>>>>> c721
+>     long             TorchTasksUpdateFrame;                  // +0x0c
+>     long             FrameStartedSecuritySweep;              // +0x10
+>     float            PositionPlayerWasInWhenSecuritySweepCalculated_X; // +0x14 C3DVector::X
+>     float            PositionPlayerWasInWhenSecuritySweepCalculated_Y; // +0x18 C3DVector::Y
+>     float            PositionPlayerWasInWhenSecuritySweepCalculated_Z; // +0x1c C3DVector::Z
+>     long             LastAweCrowdEventFrame;                 // +0x20
+>     long             LastLynchCrowdEventFrame;               // +0x24
+> <<<<<<< merged
+> =======
+> #ifdef FABLE_RETAIL_CTCVILLAGE_MEMBERS
+>     __forceinline CDefPointer<const CVillageDef> GetPDef() const { return PDef; }   // FableWin ?GetPDef@CTCVillage@@QBE?AV?$CDefPointer@$$CBVCVillageDef@@@@XZ (inline)
+> private:
+>     void CalculateSecuritySweepTasks();                      // 0x00659800 ?CalculateSecuritySweepTasks@CTCVillage@@AAEXXZ
+> public:
+> #endif
+>     long             TorchTasksUpdateFrame;                  // +0x0c
+>     long             FrameStartedSecuritySweep;              // +0x10
+> #ifdef FABLE_RETAIL_CTCVILLAGE_MEMBERS
+>     C3DVector        PositionPlayerWasInWhenSecuritySweepCalculated;  // +0x14
+> #else
+>     float            PositionPlayerWasInWhenSecuritySweepCalculated_X; // +0x14 C3DVector::X
+>     float            PositionPlayerWasInWhenSecuritySweepCalculated_Y; // +0x18 C3DVector::Y
+>     float            PositionPlayerWasInWhenSecuritySweepCalculated_Z; // +0x1c C3DVector::Z
+> #endif
+>     long             LastAweCrowdEventFrame;                 // +0x20
+>     long             LastLynchCrowdEventFrame;               // +0x24
+> #ifdef FABLE_RETAIL_CTCVILLAGE_MEMBERS
+>     std::list<CIntelligentPointer<CThingBuilding> > VillageBuildings; // +0x28
+>     std::list<CIntelligentPointer<CThingAICreature> > VillagePeople; // +0x2c
+>     std::list<CIntelligentPointer<CThing> > VillageTorches; // +0x30
+>     std::list<CIntelligentPointer<CThing> > VillageHorns; // +0x34
+>     std::list<CIntelligentPointer<CThing> > VillageGates; // +0x38
+>     std::list<CIntelligentPointer<CThingObject> > VillageCrops; // +0x3c
+>     std::list<CIntelligentPointer<CThing> > VillageCages; // +0x40
+>     std::list<CIntelligentPointer<CThing> > VillageCampfires; // +0x44
+>     std::list<CIntelligentPointer<CThingTrackNode> > VillagePatrols; // +0x48
+>     std::list<CCountedPointer<CVillageTaskTorch> > TorchTasks; // +0x4c
+>     std::list<CCountedPointer<CVillageTaskHorn> > HornTasks; // +0x50
+>     std::list<CCountedPointer<CVillageTaskPatrol> > PatrolTasks; // +0x54
+>     std::list<CCountedPointer<CVillageTaskPickCrops> > CropTasks; // +0x58
+>     std::list<CCountedPointer<CVillageTaskSecuritySweep> > SecuritySweepTasks; // +0x5c
+>     std::list<CCountedPointer<CVillageTaskCarryCrate> > CrateTasks; // +0x60
+> #else
+> >>>>>>> c720
+> =======
+> >>>>>>> c721
+>     unsigned char    VillageBuildings[0x4];                  // +0x28 list<CIntelligentPointer<CThingBuilding>,std::allocator<CIntelligentPointer<CThingBuilding>_>_>
+>     unsigned char    VillagePeople[0x4];                     // +0x2c list<CIntelligentPointer<CThingAICreature>,std::allocator<CIntelligentPointer<CThingAICreature>_>_>
+>     unsigned char    VillageTorches[0x4];                    // +0x30 list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+>     unsigned char    VillageHorns[0x4];                      // +0x34 list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+>     unsigned char    VillageGates[0x4];                      // +0x38 list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+>     unsigned char    VillageCrops[0x4];                      // +0x3c list<CIntelligentPointer<CThingObject>,std::allocator<CIntelligentPointer<CThingObject>_>_>
+>     unsigned char    VillageCages[0x4];                      // +0x40 list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+>     unsigned char    VillageCampfires[0x4];                  // +0x44 list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+>     unsigned char    VillagePatrols[0x4];                    // +0x48 list<CIntelligentPointer<CThingTrackNode>,std::allocator<CIntelligentPointer<CThingTrackNode>_>_>
+>     unsigned char    TorchTasks[0x4];                        // +0x4c list<CCountedPointer<CVillageTaskTorch>,std::allocator<CCountedPointer<CVillageTaskTorch>_>_>
+>     unsigned char    HornTasks[0x4];                         // +0x50 list<CCountedPointer<CVillageTaskHorn>,std::allocator<CCountedPointer<CVillageTaskHorn>_>_>
+>     unsigned char    PatrolTasks[0x4];                       // +0x54 list<CCountedPointer<CVillageTaskPatrol>,std::allocator<CCountedPointer<CVillageTaskPatrol>_>_>
+>     unsigned char    CropTasks[0x4];                         // +0x58 list<CCountedPointer<CVillageTaskPickCrops>,std::allocator<CCountedPointer<CVillageTaskPickCrops>_>_>
+>     unsigned char    SecuritySweepTasks[0x4];                // +0x5c list<CCountedPointer<CVillageTaskSecuritySweep>,std::allocator<CCountedPointer<CVillageTaskSecuritySweep>_>_>
+>     unsigned char    CrateTasks[0x4];                        // +0x60 list<CCountedPointer<CVillageTaskCarryCrate>,std::allocator<CCountedPointer<CVillageTaskCarryCrate>_>_>
+> <<<<<<< merged
+> <<<<<<< merged
+>     unsigned char    PlayersCrimes[0xc];                     // +0x64 set<long,std::less<long>,std::allocator<long>_>
+>     unsigned char    VillageMarkers[0x4];                    // +0x70 list<CIntelligentPointer<CThingMarker>,std::allocator<CIntelligentPointer<CThingMarker>_>_>
+>     unsigned char    VillageDummies[0x4];                    // +0x74 list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+> =======
+> #endif
+>     unsigned char    PlayersCrimes[0xc];                     // +0x64 set<long,std::less<long>,std::allocator<long>_>
+> #ifdef FABLE_RETAIL_CTCVILLAGE_MEMBERS
+>     std::list<CIntelligentPointer<CThingMarker> > VillageMarkers;    // +0x70
+>     std::list<CIntelligentPointer<CThing> > VillageDummies;          // +0x74
+> #else
+>     unsigned char    VillageMarkers[0x4];                    // +0x70 list<CIntelligentPointer<CThingMarker>,std::allocator<CIntelligentPointer<CThingMarker>_>_>
+>     unsigned char    VillageDummies[0x4];                    // +0x74 list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+> #endif
+> >>>>>>> c720
+> =======
+>     unsigned char    PlayersCrimes[0xc];                     // +0x64 set<long,std::less<long>,std::allocator<long>_>
+>     unsigned char    VillageMarkers[0x4];                    // +0x70 list<CIntelligentPointer<CThingMarker>,std::allocator<CIntelligentPointer<CThingMarker>_>_>
+>     unsigned char    VillageDummies[0x4];                    // +0x74 list<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+> >>>>>>> c721
+>     bool             Initialised;                            // +0x78
+>     bool             InitiallyPopulated;                     // +0x79
+>     bool             HasBeenInitiallyPopulated;              // +0x7a
+>     bool             HornTasksAdded;                         // +0x7b
+>     bool             IsEnemyBecauseOfCrime;                  // +0x7c
+>     unsigned char    _pad_0x7d[0x3];                         // +0x7d
+>     long             FramePlayerLastSeenByGuard;             // +0x80
+>     bool             InCurfew;                               // +0x84
+>     unsigned char    _pad_0x85[0x3];                         // +0x85
+>     long             NumGuards;                              // +0x88
+>     long             HouseCurrentlyChecking;                 // +0x8c
+>     bool             TimeIsPaused;                           // +0x90
+>     unsigned char    _pad_0x91[0x3];                         // +0x91
+> <<<<<<< merged
+> <<<<<<< merged
+>     CDefPointeeBase* PDef_Object;                            // +0x94 CDefPointer<CVillageDef_const_>::Object
+> =======
+> #ifdef FABLE_RETAIL_CTCVILLAGE_MEMBERS
+>     CDefPointer<const CVillageDef> PDef;                     // +0x94
+> #else
+>     CDefPointeeBase* PDef_Object;                            // +0x94 CDefPointer<CVillageDef_const_>::Object
+> #endif
+> >>>>>>> c720
+> =======
+>     CDefPointeeBase* PDef_Object;                            // +0x94 CDefPointer<CVillageDef_const_>::Object
+> >>>>>>> c721
+>     unsigned char    StanceToHero[0x4];                      // +0x98 EVillageStanceToHero
+>     long             TimeStopIndex;                          // +0x9c
+>     long             AmountOfFineAlreadyPaid;                // +0xa0
+>     long             NextGuardRespawn;                       // +0xa4
+>     long             FrameBribeEnds;                         // +0xa8
+>     long             FrameForNextGuardGreeting;              // +0xac
+>     bool             WorkTimeAccordingToCrier;               // +0xb0
+>     bool             CurfewTimeAccordingToCrier;             // +0xb1
+>     bool             Limbo;                                  // +0xb2
+>     bool             LaggyLimbo;                             // +0xb3
+>     bool             SecuritySweepUrgent;                    // +0xb4
+>     unsigned char    _pad_0xb5[0x3];                         // +0xb5
+>     float            InitialSecuritySweepRadius;             // +0xb8
+>     bool             TeacherTeaching;                        // +0xbc
+>     unsigned char    GuardFollowingPlayer[0xb];              // +0xbd CIntelligentPointer<CThingAICreature>
+>     long             NextFrameToFollowPlayer;                // +0xc8
+>     bool             LightActiveStateToChange;               // +0xcc
+>     unsigned char    _pad_0xcd[0x3];                         // +0xcd
+>     long             MaxFrameToAssignTask;                   // +0xd0
+>     long             HeroEnemyOfGuardsUntil;                 // +0xd4
+>     long             LastFrameApologised;                    // +0xd8
+>     unsigned char    GuardWarningHero[0x8];                  // +0xdc CIntelligentPointer<CThingAICreature>
+>     bool             CurrentIsHeroCriminal;                  // +0xe4
+>     unsigned char    _pad_0xe5[0x3];                         // +0xe5
+> };
+> #pragma pack(pop)
+> FABLE_STATIC_ASSERT(sizeof(CTCVillage) == 0xe8);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, TorchTasksUpdateFrame) == 0xc);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, FrameStartedSecuritySweep) == 0x10);
+> <<<<<<< merged
+> <<<<<<< merged
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, PositionPlayerWasInWhenSecuritySweepCalculated_X) == 0x14);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, PositionPlayerWasInWhenSecuritySweepCalculated_Y) == 0x18);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, PositionPlayerWasInWhenSecuritySweepCalculated_Z) == 0x1c);
+> =======
+> #ifdef FABLE_RETAIL_CTCVILLAGE_MEMBERS
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, PositionPlayerWasInWhenSecuritySweepCalculated) == 0x14);
+> #else
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, PositionPlayerWasInWhenSecuritySweepCalculated_X) == 0x14);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, PositionPlayerWasInWhenSecuritySweepCalculated_Y) == 0x18);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, PositionPlayerWasInWhenSecuritySweepCalculated_Z) == 0x1c);
+> #endif
+> >>>>>>> c720
+> =======
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, PositionPlayerWasInWhenSecuritySweepCalculated_X) == 0x14);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, PositionPlayerWasInWhenSecuritySweepCalculated_Y) == 0x18);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, PositionPlayerWasInWhenSecuritySweepCalculated_Z) == 0x1c);
+> >>>>>>> c721
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, LastAweCrowdEventFrame) == 0x20);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, LastLynchCrowdEventFrame) == 0x24);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, VillageBuildings) == 0x28);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, VillagePeople) == 0x2c);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, VillageTorches) == 0x30);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, VillageHorns) == 0x34);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, VillageGates) == 0x38);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, VillageCrops) == 0x3c);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, VillageCages) == 0x40);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, VillageCampfires) == 0x44);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, VillagePatrols) == 0x48);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, TorchTasks) == 0x4c);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, HornTasks) == 0x50);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, PatrolTasks) == 0x54);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, CropTasks) == 0x58);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, SecuritySweepTasks) == 0x5c);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, CrateTasks) == 0x60);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, PlayersCrimes) == 0x64);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, VillageMarkers) == 0x70);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, VillageDummies) == 0x74);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, Initialised) == 0x78);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, InitiallyPopulated) == 0x79);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, HasBeenInitiallyPopulated) == 0x7a);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, HornTasksAdded) == 0x7b);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, IsEnemyBecauseOfCrime) == 0x7c);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, FramePlayerLastSeenByGuard) == 0x80);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, InCurfew) == 0x84);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, NumGuards) == 0x88);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, HouseCurrentlyChecking) == 0x8c);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, TimeIsPaused) == 0x90);
+> <<<<<<< merged
+> <<<<<<< merged
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, PDef_Object) == 0x94);
+> =======
+> #ifdef FABLE_RETAIL_CTCVILLAGE_MEMBERS
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, PDef) == 0x94);
+> #else
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, PDef_Object) == 0x94);
+> #endif
+> >>>>>>> c720
+> =======
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, PDef_Object) == 0x94);
+> >>>>>>> c721
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, StanceToHero) == 0x98);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, TimeStopIndex) == 0x9c);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, AmountOfFineAlreadyPaid) == 0xa0);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, NextGuardRespawn) == 0xa4);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, FrameBribeEnds) == 0xa8);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, FrameForNextGuardGreeting) == 0xac);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, WorkTimeAccordingToCrier) == 0xb0);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, CurfewTimeAccordingToCrier) == 0xb1);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, Limbo) == 0xb2);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, LaggyLimbo) == 0xb3);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, SecuritySweepUrgent) == 0xb4);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, InitialSecuritySweepRadius) == 0xb8);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, TeacherTeaching) == 0xbc);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, GuardFollowingPlayer) == 0xbd);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, NextFrameToFollowPlayer) == 0xc8);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, LightActiveStateToChange) == 0xcc);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, MaxFrameToAssignTask) == 0xd0);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, HeroEnemyOfGuardsUntil) == 0xd4);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, LastFrameApologised) == 0xd8);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, GuardWarningHero) == 0xdc);
+> FABLE_STATIC_ASSERT(offsetof(CTCVillage, CurrentIsHeroCriminal) == 0xe4);
+> #else // flattened Ego_r layout (the landed default)
+> 
+144a403,404
+> 
+> #endif // FABLE_RETAIL_CTCVILLAGE
+################ engine/CTCWeapon.h
+2a3,31
+> #ifdef FABLE_RETAIL_CTCWEAPON
+> // Retail opt-in (2026-11-03, chunk 720 rows 0x005CACB9 / 0x005C6B26 / 0x005C90FC): the polymorphic retail component. Interface
+> // type TCI_WEAPON (0x48, GetInterfaceType slot 21); members at the Ego_r offsets (WeaponDef +0x0C .. Wielded +0x24, sizeof 0x28).
+> // GetDamage 0x005DAAA0 (Ego_r ?GetDamage@CTCWeapon@@QBEMXZ: reads CWeaponDef::Damage +0x44 -- the landed spelling
+> // GetAnimationSpeedValue reads AnimationSpeedVal +0x40 in the PDB layout, so it is the wrong one, NAME_FIXES.tsv) and the
+> // static IsMeleeWeaponClass 0x005DA510 (?IsMeleeWeaponClass@CTCWeapon@@SI_NW4EWeaponClass@@@Z).
+> #include <stddef.h>
+> #include "rebuild_abi.h"
+> #include "engine/CTCBase.h"
+> #include "engine/EWeaponClass.h"
+> #include "engine/CDefPointer.h"
+> class CWeaponDef;
+> class CTCWeapon : public CTCBase {
+> public:
+>     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_WEAPON; }   // ?StatGetInterfaceType@CTCWeapon@@SI?AW4ETCInterfaceType@@XZ
+>     static bool __fastcall IsMeleeWeaponClass(EWeaponClass weaponClass);                // 0x005DA510
+>     float GetDamage() const;                                                            // 0x005DAAA0
+>     CDefPointer<const CWeaponDef>    WeaponDef;                                         // +0x0c
+>     bool                             ProjectileWeaponLoaded;                            // +0x10
+>     long                             AimingTime;                                        // +0x14
+>     bool                             AimingTimeOverride;                                // +0x18
+>     long                             NumThingsKilled;                                   // +0x1c
+>     long                             TimeWielded;                                       // +0x20
+>     bool                             Wielded;                                           // +0x24
+> };
+> FABLE_STATIC_ASSERT(sizeof(CTCWeapon) == 0x28);                                         // CTCBase is 0xc in retail
+> FABLE_STATIC_ASSERT(offsetof(CTCWeapon, WeaponDef) == 0xc);
+> FABLE_STATIC_ASSERT(offsetof(CTCWeapon, Wielded) == 0x24);
+> #else // flattened Ego_r layout (the landed default, unchanged)
+41a71
+> #endif // FABLE_RETAIL_CTCWEAPON
+################ engine/CThing.h
+139a140,143
+> <<<<<<< merged
+> <<<<<<< merged
+> <<<<<<< merged
+> <<<<<<< merged
+142a147,187
+> =======
+>     // Retail opt-in (2026-11-03, chunk 718 row 0x008A93A0): FableWin.pdb ?GetTypeFlags@CThing@@QBEKXZ (inline in retail:
+>     // EntityWillTeleportToArea tests the +0x6C flags in place). A declaration with its body only: no layout change.
+>     unsigned long GetTypeFlags() const { return ThingTypeFlags; }
+>     // Retail opt-in (2026-11-03, chunk 718 row 0x0088EDC0): FableWin.pdb ?GetTCGraphicAppearance@CThing@@QAEPAVCTCGraphicAppearance@NGraphicAppearance@@XZ
+>     // and the const QBE twin (inline in retail: CameraDoConversation reads PTCGraphicAppearance +0x64 in place). Bodies only: no layout change.
+>     NGraphicAppearance::CTCGraphicAppearance* GetTCGraphicAppearance() { return PTCGraphicAppearance; }
+>     const NGraphicAppearance::CTCGraphicAppearance* GetTCGraphicAppearance() const { return PTCGraphicAppearance; }
+> >>>>>>> c718
+> =======
+>     // Retail opt-in addition (2026-11-03, chunk 719 row 0x00509A20, agent719c): FableWin.pdb
+>     // ?GetTCGraphicAppearance@CThing@@QBEPBVCTCGraphicAppearance@NGraphicAppearance@@XZ (0x01C903D0, beside
+>     // GetMapNavigationAreaUpdateInfo); inline in retail (0x00509A20 reads [thing+64h] in place). No layout change.
+>     const NGraphicAppearance::CTCGraphicAppearance* GetTCGraphicAppearance() const { return PTCGraphicAppearance; }
+> >>>>>>> c719
+> =======
+> =======
+> >>>>>>> c721
+>     // Retail opt-in (2026-11-03, chunk 718 row 0x008A93A0): FableWin.pdb ?GetTypeFlags@CThing@@QBEKXZ (inline in retail:
+>     // EntityWillTeleportToArea tests the +0x6C flags in place). A declaration with its body only: no layout change.
+>     unsigned long GetTypeFlags() const { return ThingTypeFlags; }
+>     // Retail opt-in (2026-11-03, chunk 720 rows 0x005C552C / 0x005C36C2): Ego_r.pdb / FableWin.pdb
+>     // ?GetTCGraphicAppearance@CThing@@QAEPAVCTCGraphicAppearance@NGraphicAppearance@@XZ (and the QBE const twin), inline in
+>     // retail (`mov ecx,[esi+64h]` straight off the thing before SetScale). Declarations with bodies only: no layout change.
+>     NGraphicAppearance::CTCGraphicAppearance* GetTCGraphicAppearance() { return PTCGraphicAppearance; }
+>     const NGraphicAppearance::CTCGraphicAppearance* GetTCGraphicAppearance() const { return PTCGraphicAppearance; }
+>     // ?GetPlayerNumber@CThing@@QBEKXZ (Ego_r.pdb / FableWin.pdb), inline in retail (`movsx eax,byte ptr [ecx+90h]`, 0x005C37CC).
+>     unsigned long GetPlayerNumber() const { return PlayerNumber; }
+>     void SetInLimbo(bool);                                       // 0x004C8CF0 ?SetInLimbo@CThing@@QAEX_N@Z (Ego_r.pdb / FableWin.pdb)
+> <<<<<<< merged
+> #ifdef FABLE_RETAIL_CTHING_VILLAGE
+>     // Retail opt-in (2026-11-03, chunk 720 row 0x0065B854 CTCVillage::AddThingToVillage): ?HasScriptThing@CThing@@QBE_NXZ (Ego_r.pdb
+>     // 0x004C9A30; out of line in retail at 0x004C7E70, `mov ecx,esi; call`) and FableWin.pdb's inline
+>     // ?SetPersistOnUnloadWhenInLimbo@CThing@@QAEX_N@Z (0x0215EDB0, emitted in the CTCVillage TU right after AddThingToVillage;
+>     // retail `or byte ptr [esi+92h],40h` = bit 14 of the +0x91 bitfield run). Declarations with bodies only: no layout change.
+>     bool HasScriptThing() const;                                 // 0x004C7E70
+>     void SetPersistOnUnloadWhenInLimbo(bool persist) { PersistOnUnloadWhenInLimbo = persist; }
+> #endif
+> >>>>>>> c720
+> =======
+> >>>>>>> c721
+################ engine/CThingAICreature.h
+10a11
+> class C3DVector; class CThingAICreatureInit;
+12a14
+> <<<<<<< merged
+14a17,25
+> =======
+>     // chunk 719 (row 0x004FF750): Ego_r.pdb ?Create@CThingAICreature@@SIPAV1@JABVC3DVector@@JABVCThingAICreatureInit@@@Z (retail
+>     // 0x00833800), ?AutoSetupSexuality@CThingAICreature@@QAEXM@Z (0x008330D0) and FableWin's inline
+>     // ?SetAsAllowedToFollowHero@CThingAICreature@@QAEX_N@Z (emitted beside the CWorldMap TU's statics in FableWin; retail expands it:
+>     // bit 0 of +0x1C9, as CGameScriptInterface::EntitySetAsAllowedToFollowHero 0x0088DE90 shows).
+>     static CThingAICreature* __fastcall Create(long defIndex, const C3DVector& pos, long, const CThingAICreatureInit& init);   // 0x00833800
+>     void AutoSetupSexuality(float probabilityOfHomosexuality);           // 0x008330D0
+>     void SetAsAllowedToFollowHero(bool allowed) { AllowedToFollowHero = allowed; }
+> >>>>>>> c719
+16c27,32
+<     unsigned char _pad_0x160[0x78];                                      // +0x160 RelationshipsInit .. Suspenders (Ego_r.pdb members, opaque)
+---
+>     unsigned char _pad_0x160[0x68];                                      // +0x160 RelationshipsInit .. MaxFlyingSpeed (Ego_r.pdb members, opaque)
+>     bool PerformingVillageTaskFlag:1, AISuspended:1, HasInformation:1, WanderWithInformation:1,
+>         WaveWithInformation:1, ContinueAIWithInformation:1, ImmuneToAttack:1, EnableCreatureAutoPlacing:1;   // +0x1C8 (Ego_r 0x1F8)
+>     bool AllowedToFollowHero:1, RegionFollowingOverriddenFromScript:1, RespondingToFollowAndWait:1,
+>         CanBeCourted:1, CanBeMarried:1;                                  // +0x1C9 (Ego_r 0x1F9; CanBeCourted bit 3 / CanBeMarried bit 4 landed)
+>     unsigned char _pad_0x1ca[0xe];                                       // +0x1CA Suspenders (opaque)
+################ engine/CThingBuilding.h
+7a8,14
+> #ifdef FABLE_RETAIL_CTHINGBUILDING
+>     // Retail opt-in (2026-11-03, chunk 720 row 0x0065B854 CTCVillage::AddThingToVillage): Ego_r.pdb types the member `bool:1`
+>     // (struct_layouts_egor.tsv CThingBuilding +0xEC bool:1), and retail sets it with `or byte ptr [esi+0D4h],1`
+>     // (0x0065BC42) through FableWin.pdb's inline ?SetOverrideAutomaticLocking@CThingBuilding@@QAEX_N@Z (0x0215ED7D, emitted
+>     // in the CTCVillage TU right after AddThingToVillage). Same offset and size as the default bool.
+>     bool OverrideAutomaticLocking : 1;
+> #else
+8a16
+> #endif
+15a24,27
+> #ifdef FABLE_RETAIL_CTHINGBUILDING
+>     void SetOverrideAutomaticLocking(bool value) { OverrideAutomaticLocking = value; }   // FableWin ?SetOverrideAutomaticLocking@CThingBuilding@@QAEX_N@Z (inline)
+>     void LockAllDoors(bool lock, bool immediately);                  // 0x0082DB00 ?LockAllDoors@CThingBuilding@@QAEX_N0@Z (Ego_r / FableWin)
+> #endif
+################ engine/CThingCreatureBase.h
+43a44,47
+> public:
+>     // chunk 719: the flag bytes are public data in the retail class: CreateRelevantPersonAndUpdateStats 0x004FF750 (a free
+>     // function) sets FollowHeroThroughTeleporters (`or byte [creature+15Ch],40h`) directly, and neither PDB name set has a setter
+>     // for it (FableWin.pdb emits every inline accessor a TU uses). Access only; no layout change.
+48a53
+> protected:
+63a69,75
+> #ifdef FABLE_RETAIL_CTHINGCREATUREBASE_PROPERTY
+>     // Retail opt-in (2026-11-03, chunk 720 row 0x0065B854): FableWin.pdb ?GetProperty@CThingCreatureBase@@QBEKXZ, out of line in retail
+>     // at 0x00662010 (mov eax,[ecx+0E0h]; mov eax,[eax+0F0h]: the PDef pointee's Property, Ego_r CThingCreatureDef +0xF8 less the two
+>     // STLport vector shrinks; the virtual CThingAICreature::GetProperties 0x00830140, slot 48, has the same body).
+>     // AddThingToVillage compares it with 3 to count guards. Declaration only: no layout change.
+>     unsigned long GetProperty() const;                                   // 0x00662010
+> #endif
+################ NEW engine/CThingFilter_HasNavigationInformation.h
+################ NEW engine/CThingFilter_IsInQuestOrNullQuest.h
+################ NEW engine/CThingFilter_OverlappingArea.h
+################ engine/CThingManager.h
+27a28,32
+> #ifdef FABLE_RETAIL_CTHINGMANAGER_PEEK
+>     // Retail opt-in (chunk 718, row 0x0089E190): Ego_r.pdb / FableWin.pdb ?PeekPThingWithUID@CThingManager@@QBEPBVCThing@@_K@Z,
+>     // the landed body 0x0051ED60 (the only spelling bound to it). A declaration only: no layout change.
+>     const CThing* PeekPThingWithUID(unsigned __int64 uid) const;        // 0x0051ED60
+> #endif
+################ engine/CThingPhysical.h
+31a32,35
+>     // Retail opt-in additions (2026-11-03, chunk 719 row 0x00509A20, agent719c): declarations only (Ego_r.pdb 0x00683F90 /
+>     // 0x00683FE0, FableWin.pdb 0x01F21C70 / 0x01F21D20).
+>     long GetNoNavCollisionLineLists() const;                                   // 0x006A4F10 ?GetNoNavCollisionLineLists@CThingPhysical@@QBEJXZ
+>     void GetNavCollisionLineList(std::vector<C2DLineF>& lines, long index) const;   // 0x006A4F60 ?GetNavCollisionLineList@CThingPhysical@@QBEXAAV?$vector@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@J@Z
+################ engine/CThingSearchTools.h
+33a34,40
+> #ifdef FABLE_RETAIL_CTHINGSEARCHTOOLS_BEST
+>     // Retail opt-in (2026-11-03, chunk 720 row 0x00659800): the GetPBestThing member template (Ego_r.pdb
+>     // ??$GetPBestThing@V?$binary_compose@U?$logical_or@_N@std@@VCThingFilter_HasTC@@V3@@std@@VCThingCompare_Nearest@@VCThing@@@
+>     // CThingSearchTools@@QBE_N.. and ..@VCThingFilter_HasTC@@VCThingCompare_Nearest@@VCThingAICreature@@@..), out of line in retail
+>     // (0x0065F6DA / 0x0065F744, both landed). Declaration only.
+>     template<class Filter,class Compare,class T> bool GetPBestThing(const Filter& filter,const Compare& compare,T** out) const;
+> #endif
+37a45,48
+>     // Retail opt-in addition (2026-11-03, chunk 719 row 0x00509A20, agent719c): declaration only; the CWorldMap TU's
+>     // instantiation is 0x00516200 (Ego_r.pdb 0x004E4B60 ??$GetAllThings@VCThingPhysical@@V?$list@PBVCThingPhysical@@...).
+>     template<class T,class Container,class Filter>
+>     void GetAllThings(const Filter&,Container&) const;
+################ engine/CTriangleStripifier2.h
+2a3,23
+> #ifdef FABLE_RETAIL_CTRIANGLESTRIPIFIER2
+> // Retail opt-in (chunk 723): Fable.exe RTTI CTriangleStripifier2 : CTriangleStripifierBase : CBaseClassNonCopyable : CBaseClass, no
+> // data (4 bytes). vtable 0x012A331C: slot 0 ??_G 0x00B7AE00 (no vtable stores, so both destructors are the implicit ones), slot 1
+> // the C3DTriangle2 GenerateTriangleListAndStrip 0x00F3F3A0. The index-array overload is non-virtual (FableWin.pdb
+> // ?GenerateTriangleListAndStrip@CTriangleStripifier2@@QAEXAAV?$CArray@G@@00@Z, 0x00F3EA50; caller 0x00B6EDF0).
+> #include "engine/CArray.h"
+> #include "engine/CBaseClassNonCopyable.h"
+> class C3DTriangle2;
+> class CTriangleStripifierBase : public CBaseClassNonCopyable {
+> public:
+>     virtual void GenerateTriangleListAndStrip(const CArray<C3DTriangle2>&, CArray<C3DTriangle2>&, CArray<unsigned short>&) = 0;
+> };
+> class CTriangleStripifier2 : public CTriangleStripifierBase {
+> public:
+>     virtual void GenerateTriangleListAndStrip(const CArray<C3DTriangle2>&, CArray<C3DTriangle2>&, CArray<unsigned short>&);   // 0x00F3F3A0
+>     void GenerateTriangleListAndStrip(CArray<unsigned short>& polys, CArray<unsigned short>& list, CArray<unsigned short>& strip);   // 0x00F3EA50
+> private:
+>     void FillInPolygons(const CArray<unsigned short>&,const CArray<CArray<long> >&,const CArray<unsigned short>&,const CArray<bool>&,CArray<long>&,CArray<unsigned short>&,bool);
+>     void GetMeshIslandSubsection(const CArray<unsigned short>&,const CArray<bool>&,const CArray<CArray<long> >&,CArray<unsigned short>&,CArray<long>&);
+> };
+> #else // the landed default (unchanged)
+18a40
+> #endif // FABLE_RETAIL_CTRIANGLESTRIPIFIER2
+################ engine/CVectorMap.h
+18a19,24
+> #ifdef FABLE_RETAIL_CVECTORMAP_FORCEINLINE_FIND
+>     // Retail opt-in (2026-11-03, chunk 720, the size-optimised CTCInventoryWeapons TU): retail expands Find inside the
+>     // forced-inline CThing::GetTC there (`call LowerBound; mov esi,[esi+4]; cmp eax,esi; je; cmp [eax],ebx; jle`); under
+>     // optimize("s") a plain inline Find is called out of line instead (0x005C552C, 0x005C36C2).
+>     __forceinline
+> #endif
+22a29,31
+> #ifdef FABLE_RETAIL_CVECTORMAP_FORCEINLINE_FIND
+>     __forceinline
+> #endif
+################ NEW engine/CVertexBufferBase.h
+################ engine/CVertexBufferWin32.h
+2a3,30
+> #ifdef FABLE_RETAIL_CVERTEXBUFFERWIN32
+> // Retail opt-in (chunk 723): CVertexBufferWin32 : CVertexBufferBase : CBaseClassNonCopyable : CBaseClass (RTTI), vtable 0x0129BA20:
+> // slot 0 ??_G 0x009E2890, 1 DoLock 0x00A63240, 2 DoUnlock 0x00A63120, 3 DoIsBusy 0x00A63130, 4 DoSizeof 0x00A63140 (Ego_r.pdb /
+> // FableWin.pdb ?DoLock@CVertexBufferWin32@@EAEPAEKKK@Z ... private virtuals). No own members (Ego_r 0x34 = the base). The destructor
+> // is `~CVertexBufferWin32() { Uninitialise(); }`: owners expand it as the 0x0129BA20 store, `call Uninitialise 0x00A63200`, then the
+> // base chain (CVertexBufferBase's implicit dtor stores nothing) as `call ~CBaseClassNonCopyable 0x0099A300` (0x00B71880).
+> #include "rebuild_abi.h"
+> #include "engine/CVertexBufferBase.h"
+> enum EVertexBufferPool;                                                  // MS forward enum
+> class CVertexBufferWin32 : public CVertexBufferBase {
+> public:
+>     CVertexBufferWin32()                                                 // ??0CVertexBufferWin32@@QAE@XZ (inline, 0x00BC14E0: after the
+>     {                                                                    // vtable store, as retail)
+>         PVertexBuffer = 0;
+>         Stride = 0;
+>     }
+>     virtual ~CVertexBufferWin32() { Uninitialise(); }                    // slot 0  ??_G 0x009E2890
+>     bool Initialise(EVertexType type, long count, long stride, unsigned long usage, EVertexBufferPool pool);   // 0x00A63150
+>                                                                          // ?Initialise@CVertexBufferWin32@@QAE_NW4EVertexType@@JJKW4EVertexBufferPool@@@Z
+>     void Uninitialise();                                                 // 0x00A63200 ?Uninitialise@CVertexBufferWin32@@QAEXXZ
+> private:
+>     virtual unsigned char* DoLock(unsigned long offset, unsigned long size, unsigned long flags);   // slot 1  0x00A63240
+>     virtual void DoUnlock();                                             // slot 2  0x00A63120
+>     virtual bool DoIsBusy() const;                                       // slot 3  0x00A63130
+>     virtual unsigned long DoSizeof() const;                              // slot 4  0x00A63140
+> };
+> FABLE_STATIC_ASSERT(sizeof(CVertexBufferWin32) == 0x34);
+> #else // flattened Ego_r layout (the landed default, unchanged)
+20a49
+> #endif // FABLE_RETAIL_CVERTEXBUFFERWIN32
+################ NEW engine/CVertexCompressionParams.h
+################ engine/CVertexShader.h
+2a3,59
+> #ifdef FABLE_RETAIL_CVERTEXSHADER
+> // Retail opt-in (chunk 723): CVertexShader : CShaderBase (RTTI), vtable 0x0129B3D0: slot 0 ??_G 0x009C1AE0, slot 1 GetDebugName
+> // 0x00987CF0, slot 2 CountReferences 0x009BE210. 8 bytes: vptr + CVertexShaderData* Data (+0x04). The destructor is the
+> // CPixelShader one with the count at +0x10 (Ego_r.pdb CVertexShaderData: VertexDeclaration +4, VertexShader +8, FormatDecl +0xC,
+> // ReferenceCount +0x10): expanded in 0x00B71880 / 0x00B67920 (`dec dword ptr [ecx+10h]`).
+> #include "rebuild_abi.h"
+> #include "engine/CShaderBase.h"
+> struct IDirect3DVertexDeclaration9;
+> struct IDirect3DVertexShader9;
+> struct _D3DVERTEXELEMENT9;
+> class CVertexShader;
+> class CVertexShaderData {
+>     friend class CVertexShader;
+>     virtual ~CVertexShaderData();                                        // slot 0 (deleting dtor called with 1); ??1 EAE (private)
+> public:
+>     IDirect3DVertexDeclaration9* VertexDeclaration;                      // +0x04
+>     IDirect3DVertexShader9*      VertexShader;                           // +0x08
+>     _D3DVERTEXELEMENT9*          FormatDecl;                             // +0x0C
+>     unsigned long                ReferenceCount;                         // +0x10
+> private:
+>     void AddReference() { ++ReferenceCount; }                            // ?AddReference@CVertexShaderData@@AAEXXZ
+>     unsigned long CountReferences() const { return ReferenceCount; }     // ?CountReferences@CVertexShaderData@@ABEKXZ
+>     void Release() { --ReferenceCount; if (CountReferences() == 0) delete this; }   // ?Release@CVertexShaderData@@AAEXXZ
+> };
+> FABLE_STATIC_ASSERT(sizeof(CVertexShaderData) == 0x14);
+> class CVertexShader : public CShaderBase {
+> public:
+>     CVertexShader();                                                     // 0x00A62FB0 ??0CVertexShader@@QAE@XZ
+>     // operator= (??4CVertexShader@@QAEABV0@ABV0@@Z, inline): drops the old reference through a local copy of Data
+>     // (`mov ecx,[x+4] ; test ; dec [ecx+10h]`, 0x00BC14E0 / 0x00B8B630), then shares the other's data.
+>     const CVertexShader& operator=(const CVertexShader& other)
+>     {
+>         CVertexShaderData* data = Data;
+>         if (data) {
+>             if (--data->ReferenceCount == 0)
+>                 delete data;
+>         }
+>         Data = other.Data;
+>         Data->AddReference();
+>         return *this;
+>     }
+>     // The destructor releases through CVertexShaderData::Release: by-value temporaries expand it as
+>     // `mov esi,[eax+10h] ; dec esi ; mov [eax+10h],esi` (0x00BC14E0); out of line at 0x009BE1E0.
+>     virtual ~CVertexShader()                                             // slot 0  ??_G 0x009C1AE0
+>     {
+>         if (Data)
+>             Data->Release();
+>     }
+>     virtual CCharString GetDebugName() const;                            // slot 1  ?GetDebugName@CVertexShader@@UBE?AVCCharString@@XZ
+>     IDirect3DVertexShader9* GetD3DVertexShader() const;                  // ?GetD3DVertexShader@CVertexShader@@QBEPAUIDirect3DVertexShader9@@XZ
+> private:
+>     virtual unsigned long CountReferences();                             // slot 2  0x009BE210 ?CountReferences@CVertexShader@@EAEKXZ
+> public:
+>     CVertexShaderData* Data;                                             // +0x04
+> };
+> FABLE_STATIC_ASSERT(sizeof(CVertexShader) == 0x8);
+> #else // flattened Ego_r layout (the landed default, unchanged)
+23a81
+> #endif // FABLE_RETAIL_CVERTEXSHADER
+################ engine/CVillageTaskPatrol.h
+10a11,13
+> #ifdef FABLE_RETAIL_CVILLAGETASKPATROL_CTOR
+> class CThingTrackNode;
+> #endif
+13a17,21
+> #ifdef FABLE_RETAIL_CVILLAGETASKPATROL_CTOR
+>     // Retail opt-in (2026-11-03, chunk 720 rows 0x0065B854 / 0x00659800): the constructor (Ego_r.pdb + FableWin.pdb, out of line in
+>     // retail: 0x0065EE66 ??0CVillageTaskPatrol@@QAE@ABVCThingTrackNode@@@Z; the CTCVillage callers allocate the task with operator new and call it). Declaration only: no layout change.
+>     CVillageTaskPatrol(const CThingTrackNode& patrolStart);
+> #endif
+################ engine/CVillageTaskPickCrops.h
+10a11,13
+> #ifdef FABLE_RETAIL_CVILLAGETASKPICKCROPS_CTOR
+> class CThingObject;
+> #endif
+13a17,21
+> #ifdef FABLE_RETAIL_CVILLAGETASKPICKCROPS_CTOR
+>     // Retail opt-in (2026-11-03, chunk 720 rows 0x0065B854 / 0x00659800): the constructor (Ego_r.pdb + FableWin.pdb, out of line in
+>     // retail: 0x0065EEFF ??0CVillageTaskPickCrops@@QAE@AAVCThingObject@@@Z; the CTCVillage callers allocate the task with operator new and call it). Declaration only: no layout change.
+>     CVillageTaskPickCrops(CThingObject& crop);
+> #endif
+################ engine/CVillageTaskSecuritySweep.h
+10a11,13
+> #ifdef FABLE_RETAIL_CVILLAGETASKSECURITYSWEEP_CTOR
+> class C3DVector;
+> #endif
+13a17,21
+> #ifdef FABLE_RETAIL_CVILLAGETASKSECURITYSWEEP_CTOR
+>     // Retail opt-in (2026-11-03, chunk 720 rows 0x0065B854 / 0x00659800): the constructor (Ego_r.pdb + FableWin.pdb, out of line in
+>     // retail: 0x0065DCE8 ??0CVillageTaskSecuritySweep@@QAE@ABVC3DVector@@M0M@Z; the CTCVillage callers allocate the task with operator new and call it). Declaration only: no layout change.
+>     CVillageTaskSecuritySweep(const C3DVector& positionToGoTo, float radiusAroundThePositionToStay, const C3DVector& positionToLookTowards, float angleToLookTowards);
+> #endif
+################ NEW engine/CWaterPatchTesselatorBase.h
+################ engine/CWorld.h
+43a44,46
+> #ifdef FABLE_RETAIL_CWORLD_GAMETIME
+> class CPlayer;
+> #endif
+108a112,129
+> <<<<<<< merged
+>     // Retail opt-in addition (chunk 718): the inline game-camera accessors, FableWin.pdb ?GetGameCamera@CWorld@@QAEPAVCAIGameCameraBase@@XZ
+>     // (0x01ACC440) / ?PeekGameCamera@CWorld@@QBEPBVCAIGameCameraBase@@XZ (0x018A7070), expanded by Ego_r and retail: they read
+>     // PCurrentGameCamera (+0x34; 0x0088E0F0 `mov eax,[ecx+4] ; mov ecx,[eax+34h]`, landed 0x00892410 / 0x007A9B10). No layout change.
+>     CAIGameCameraBase* GetGameCamera() { return PCurrentGameCamera; }
+>     const CAIGameCameraBase* PeekGameCamera() const { return PCurrentGameCamera; }
+> =======
+> #ifdef FABLE_RETAIL_CWORLD_GAMETIME
+>     // Retail opt-in (2026-11-03, chunk 720 rows 0x0065B854 / 0x00659800): FableWin.pdb ?PeekGameTimeManager@CWorld@@QBEABVCGameTimeManager@@XZ
+>     // (0x01E6B1B6) and ?GetGameTimeManager@CWorld@@QAEAAVCGameTimeManager@@XZ (0x01C87B00), inline in Ego_r and retail
+>     // (AddThingToVillage 0x0065BBF3: `call PeekWorld; mov ecx,[eax+1Ch]; call IsDay`). No layout change.
+>     const CGameTimeManager& PeekGameTimeManager() const { return *PGameTimeManager_ptr; }
+>     CGameTimeManager& GetGameTimeManager() { return *PGameTimeManager_ptr; }
+>     // Ego_r.pdb / FableWin.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ, out of line in retail at 0x0049D9D0 (CalculateSecuritySweepTasks
+>     // 0x006598D0 on CMainGameComponent::Get()->PeekWorld()). Declaration only.
+>     const CPlayer* PeekMyPlayer() const;                         // 0x0049D9D0
+> #endif
+> >>>>>>> c720
+################ engine/CWorldMap.h
+12c12
+< class CASuspendableProcess; class CMap; class C2DCoordI; class C2DBoxI; class C3DVector; class CDrawMapInfo; class CCharString;
+---
+> class CASuspendableProcess; class CMap; class CNavigationAreaUpdate; class CThing; class C2DCoordI; class C2DBoxI; class C3DVector; class CDrawMapInfo; class CCharString;
+63a64,71
+>     // Retail opt-in additions (2026-11-03, chunk 719 rows 0x00501150 / 0x00509A20): Ego_r.pdb CWorldMap::ELoadType (nested; the
+>     // enumerator names are not in the PDB, 0 is the synchronous load: 0x00501150 runs the level loader to completion for it) and
+>     // the protected ?LoadLevelFromFiles@CWorldMap@@IAEXJV?$CCountedPointer@VCAFile@@@@00W4ELoadType@1@@Z (Ego_r 0x004D55C0).
+>     enum ELoadType { };
+> protected:
+>     void LoadLevelFromFiles(long levelID, CCountedPointer<CAFile> topologyFile, CCountedPointer<CAFile> navigationFile,
+>                             CCountedPointer<CAFile> thingFile, ELoadType loadType);
+> public:
+69a78,82
+>     // Retail opt-in additions (2026-11-03, chunk 719 row 0x00509A20, agent719c): Ego_r.pdb / FableWin.pdb spellings.
+>     void GetMapNavigationAreaUpdateInfo(long map, const C2DBoxI& area, const CCharString& section,
+>                                         CNavigationAreaUpdate& update) const;   // 0x00509A20 ?GetMapNavigationAreaUpdateInfo@CWorldMap@@QBEXJABVC2DBoxI@@ABVCCharString@@AAVCNavigationAreaUpdate@@@Z
+>     long GetNavigationLayerAt(const C3DVector& pos, const CThing* thing) const;   // 0x0063E590 ?GetNavigationLayerAt@CWorldMap@@QBEJABVC3DVector@@PBVCThing@@@Z
+>     C2DBoxI ClipAndConvertWorldMapAreaToLocalArea(long map, const C2DBoxI& area) const;   // 0x004FC4D0 ?ClipAndConvertWorldMapAreaToLocalArea@CWorldMap@@QBE?AVC2DBoxI@@JABV2@@Z
+################ NEW engine/NCameraModes_CBase.h
+################ engine/NInventory_CTCInventoryBase.h
+8a9,11
+> #ifdef FABLE_RETAIL_NINVENTORY_CTCINVENTORYBASE
+> class CPerItemData;
+> #endif
+11a15,21
+> #ifdef FABLE_RETAIL_NINVENTORY_CTCINVENTORYBASE
+>  // Retail opt-in (w22 agent720c): Ego_r.pdb ?GetPerItemDataForItem@CTCInventoryBase@NInventory@@QBEPBVCPerItemData@2@J@Z;
+>  // retail 0x005BE8D3 (manifest label "CTCInventoryBase::GetBoughtPrice"; the real GetBoughtPrice is 0x005BEAD5 above): it
+>  // returns the first stack's per-item data pointer, which ConstructWeaponDescription 0x005C6B26 reads Augmentations /
+>  // NumberOfKills through.
+>  const CPerItemData* GetPerItemDataForItem(long defIndex) const; // 0x005BE8D3
+> #endif
+################ fable_definition_table.h
+################ fable_game.h
+95a96,100
+> #ifdef FABLE_RETAIL_CMAINGAMECOMPONENT_WF
+>     // Retail opt-in (chunk 718, row 0x0089E190): Ego_r.pdb / FableWin.pdb ?ConvertSecondsToWF@CMainGameComponent@@SIJM@Z, expanded
+>     // in place in retail (`fild dword ptr [ConstantFPS] ; fmul ; call __ftol2`, as the landed CameraMoveBetweenLookingAt 0x00892530).
+>     static long __fastcall ConvertSecondsToWF(float seconds) { return (long)(GetConstantFPS() * seconds); }
+> #endif
+################ fable_game_text_bank.h
+25a26,29
+> #ifdef FABLE_RETAIL_NGAMETEXT_CDATABANK
+> class CWideString;
+> class CCharString;
+> #endif
+37a42,46
+> #ifdef FABLE_RETAIL_NGAMETEXT_CDATABANK
+>         // Retail opt-in (2026-11-03, chunk 720): Ego_r ?GetTextBySymbol@CDataBank@NGameText@@QBE?BVCWideString@@ABVCCharString@@@Z
+>         // 0x009C95E0 (const return by value; landed callers 0x005C770C bind this spelling).
+>         const CWideString GetTextBySymbol(const CCharString& symbol) const;
+> #endif
+################ fable_string.h
+7a8,11
+> <<<<<<< merged
+> =======
+> #pragma intrinsic(strcmp)
+> >>>>>>> c719
+47a52,57
+> #ifdef FABLE_RETAIL_CBASICSTRING_EQ_OUTOFLINE
+>     // Retail opt-in (2026-11-03, chunk 720 row 0x0065B854): the CTCVillage TU calls ??8?$CBasicString@D@@QBE_NABV0@@Z out of line
+>     // (0x004A93C0: the other PStringData pushed, ecx = this PStringData) from an inlined CCharString::operator== (0x0065B956..71);
+>     // with the in-class body VC7.1 folds it into CCharString::operator== and calls that instead. Declaration only.
+>     bool operator==(const CBasicString& other) const;                 // 0x004A93C0 (CBasicString<char>)
+> #else
+48a59,60
+> <<<<<<< merged
+> <<<<<<< merged
+50a63,66
+> =======
+>     // Retail opt-in addition (2026-11-03, chunk 719 row 0x00509A20, agent719c): the out-of-line ??8?$CBasicString@D@@QBE_NPBD@Z 0x004115A0
+>     // (Ego_r.pdb / FableWin.pdb; its body inlines Compare), called by the inline CCharString::operator==(const char*) below.
+> >>>>>>> c719
+51a68,70
+> =======
+> #endif
+> >>>>>>> c720
+158a178,182
+> #ifdef FABLE_RETAIL_CBASICSTRING_EQ_OUTOFLINE
+>     // (same opt-in) retail expands CCharString::operator== in place around the CBasicString call even in the size-optimised
+>     // CTCVillage TU (0x0065B956..0x0065B97A), where plain inline is called out of line.
+>     __forceinline
+> #endif
+169a194
+> <<<<<<< merged
+180a206,223
+> =======
+>     // The null test is negated in retail (2026-11-03, chunk 719 row 0x00509A20, agent719c): `jne` over the zero arm when the length is
+>     // stored (0x00509FE4) and the zero reused from the null pointer in a compare (0x0050A00D); the `p ? len : 0` form gives neither.
+>     long GetLength() const { return !PStringData ? 0 : (long)PStringData->Data.GetLength(); }
+>     bool IsEmpty() const { return GetLength() == 0; }
+>     // Retail opt-in additions (2026-11-03, chunk 719 row 0x00509A20, agent719c): ?GetSubString@CCharString@@QBE?AV1@KK@Z 0x0099EC70
+>     // (Ego_r.pdb / FableWin.pdb), and ??8CCharString@@QBE_NPBD@Z inline (no out-of-line copy bound in Fable.exe): the null-data arm is
+>     // the intrinsic `strcmp(text, "")` (`repe cmpsb` against "" with the literal's length + 1, 0x00509E13; landed 0x0083BF90 has the
+>     // same arm), the other calls CBasicString<char>::operator==(const char*) 0x004115A0.
+>     CCharString GetSubString(unsigned long start, unsigned long length) const;   // 0x0099EC70
+>     bool operator==(const char* text) const {
+>         if(PStringData==0) {
+>             if(strcmp(text,"")==0)return true;
+>             return false;
+>         }
+>         return PStringData->Data==text;
+>     }
+> >>>>>>> c719
+################ fable_user_profile.h
+19a20,47
+> class CConfigOptionsDefaultsDef;                                         // chunk 719: GetConfigOptionsDefaultsDef's def type
+> #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_MEMBERS
+> #include "stlport/fable_containers.h"
+> class CTexture;
+> // Ego_r.pdb CActionInputControl (0x1C): the vectors of it need the complete element (the member dtors are instantiated).
+> enum EGameAction { }; enum EControllerType { }; enum EInputKey { }; enum EXboxControllerButton { }; enum EMouseButtonControl { };
+> class CActionInputControl {
+> public:
+>     EGameAction           GameAction;                                    // +0x00
+>     EControllerType       ControllerType;                                // +0x04
+>     EInputKey             KeyboardKey;                                   // +0x08
+>     EXboxControllerButton XboxButton;                                    // +0x0C
+>     EMouseButtonControl   MouseButton;                                   // +0x10
+>     float                 ControlDirection[2];                           // +0x14 C2DVector (X, Y)
+> };
+> enum ETutorialCategory { };
+> // Ego_r.pdb CDisplayModeDesc (16 bytes): Dimensions, BitsPerPixel, RefreshRate; FableWin.pdb ??0 (default / copy) user ctors.
+> #include "engine/C2DExtentsI.h"
+> class CDisplayModeDesc {
+> public:
+>     CDisplayModeDesc() { }
+>     CDisplayModeDesc(const CDisplayModeDesc& other) : Dimensions(other.Dimensions), BitsPerPixel(other.BitsPerPixel), RefreshRate(other.RefreshRate) { }
+>     C2DExtentsI Dimensions;                                              // +0x00
+>     long        BitsPerPixel;                                            // +0x08
+>     long        RefreshRate;                                             // +0x0C
+> };
+> #endif
+> template <class T> class CDefPointer;                                    // engine/CDefPointer.h (by-value return: complete at the definition)
+25a54,55
+>     // Chunk 719: Ego_r.pdb + FableWin.pdb ?VerifySignature@CUserProfileManager@@SI_NABVCWideString@@@Z (public static __fastcall).
+>     static bool FABLE_FASTCALL VerifySignature(const CWideString& filename);   // 0x00409730
+30a61,70
+>     // Retail opt-in addition (chunk 719): the config-options defaults def (landed 0x004083E0) and the four detail caps that read it,
+>     // Ego_r.pdb / FableWin.pdb QBE members in Ego_r order (0x00406D40 / D80 / DC0 / E00 = retail 0x004084B0 / 0x00408500 /
+>     // 0x00408550 / 0x004085A0; fields MaxEffectsDetail +0x70, MaxTextureDetail +0x58, MaxShadowDetail +0x60, MaxMeshDetail +0x68).
+>     CDefPointer<const CConfigOptionsDefaultsDef> GetConfigOptionsDefaultsDef() const;   // 0x004083E0
+>     float GetMaxEffectsDetail() const;                                   // 0x004084B0
+>     float GetMaxTextureDetail() const;                                   // 0x00408500
+>     float GetMaxShadowDetail() const;                                    // 0x00408550
+>     float GetMaxMeshDetail() const;                                      // 0x004085A0
+>     void SetDefaultValues();                                             // 0x0040C790 (Ego_r / FableWin ?SetDefaultValues@CUserProfileManager@@QAEXXZ)
+>     void SetDefaultValuesForNewProfile();                                // 0x00409B70
+69a110,126
+> #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_MEMBERS
+>     // Opt-in (2026-11-03, chunk 719 row 0x0040CEC0 the ctor): the members of the opaque blocks, Ego_r.pdb names and types at
+>     // retail offsets (STLport vector 0xC, queue<deque> 0x28). The ctor zeroes the two input vectors, DisplayModes and
+>     // GivenTutorialCategories, builds the deque map (_M_initialize_map(0), 0x0040F4A0) and SaveGameNames(50).
+>     std::vector<CActionInputControl> AssignedInputsPassive;              // +0x54
+>     std::vector<CActionInputControl> AssignedInputsAggressive;           // +0x60
+>     bool          ShowTargetingStatus;                                   // +0x6C
+>     float         EffectsDetail;                                         // +0x70
+>     unsigned long ScreenAspectRatio;                                     // +0x74
+>     bool          NewProfileToUseWASD;                                   // +0x78
+>     bool          CameraResetting;                                       // +0x79
+>     float         CameraSensitivity;                                     // +0x7C
+>     std::vector<CDisplayModeDesc> DisplayModes;                          // +0x80
+>     std::vector<ETutorialCategory> GivenTutorialCategories;             // +0x8C
+>     std::queue<ETutorialCategory> PendingTutorialCategories;            // +0x98
+>     std::vector<CWideString> SaveGameNames;                              // +0xC0
+> #else
+70a128
+> #endif
+94a153,171
+> #ifdef FABLE_RETAIL_CUSERPROFILEMANAGER_MEMBERS
+>     float         MeshDetailNewProfile;                                  // +0x100
+>     unsigned long ResolutionNewProfile;                                  // +0x104
+>     unsigned long RefreshRateNewProfile;                                 // +0x108
+>     bool          VerticalSyncEnabledNewProfile;                         // +0x10C
+>     bool          StereoReversedNewProfile;                              // +0x10D
+>     CWideString   ScoreBoardUserName;                                    // +0x110
+>     CWideString   ScoreBoardPassword;                                    // +0x114
+>     CWideString   ScoreBoardProxyIp;                                     // +0x118
+>     long          ScoreBoardProxyPort;                                   // +0x11C
+>     long          ScoreBoardServerPort;                                  // +0x120
+>     float         EffectsDetailNewProfile;                               // +0x124
+>     unsigned long ScreenAspectRatioNewProfile;                           // +0x128
+>     bool          CameraResettingNewProfile;                             // +0x12C
+>     float         CameraSensitivityNewProfile;                           // +0x130
+>     bool          ShowTargetingStatusNewProfile;                         // +0x134
+>     CTexture*     PBackBufferTexture;                                    // +0x138
+>     bool          VideoChangesAccepted;                                  // +0x13C
+> #else
+95a173
+> #endif
+################ stlport/fable_containers.h
+109a110,119
+> #ifdef FABLE_STLP_OUTOFLINE_UNINIT_COPY
+> // Opt-in (2026-11-03, chunk 719 row 0x0040CEC0): the retail TU keeps this instantiation out of line as a __fastcall COMDAT
+> // (0x0040DDC0 ??$__uninitialized_copy@PAVCDisplayModeDesc@@PAV1@@std@@YI...ABU__false_type@0@@Z, called from the inlined
+> // vector growth with the tag homed in a dead slot); the same-TU noinline body gives that shape (GOTCHAS 0xB3EA70).
+> #pragma auto_inline(off)
+> template<class I,class O> __declspec(noinline) O __fastcall __uninitialized_copy(I first,I last,O result,const __false_type&) {
+>     O cur=result;for(;first!=last;++first,++cur) _Construct(&*cur,*first);return cur;
+> }
+> #pragma auto_inline(on)
+> #else
+112a123
+> #endif
+115a127,137
+> #ifdef FABLE_STLP_OUTOFLINE_UNINIT_FILL_N
+> // Opt-in (2026-11-03, chunk 719 row 0x00501150): the retail TU keeps this instantiation out of line as a __fastcall COMDAT
+> // (0x00513570 ??$__uninitialized_fill_n@PAVCLevelFiles@CObject@CLevelLoader@@IV123@@std@@YI...ABU__false_type@0@@Z, called
+> // from the inlined vector(n) with the tag homed in a dead argument slot); the same-TU noinline body gives that shape (EXTRA_RULES
+> // chunk 422 / GOTCHAS 0xB3EA70: inlined, the fill makes vector(n) too large and VC7.1 calls the whole ctor instead).
+> #pragma auto_inline(off)
+> template<class I,class N,class T> __declspec(noinline) I __fastcall __uninitialized_fill_n(I first,N n,const T& x,const __false_type&) {
+>     I cur=first;for(;n>0;--n,++cur) _Construct(&*cur,x);return cur;
+> }
+> #pragma auto_inline(on)
+> #else
+118a141
+> #endif
+376a400,409
+> #ifdef FABLE_RETAIL_STLP_LIST_MEMBERS
+>     // Opt-in (2026-11-03, chunk 721 row 0x00A1CEB0): STLport 4.6 _list.h members -- size() is the distance() walk, front(),
+>     // push_front (insert at begin), and the out-of-line member template remove_if (0x00A155C0 for CIsNavigator).
+>     size_t size() const { size_t __result = 0; for (_List_node_base* n = this->_M_node._M_data->_M_next; n != this->_M_node._M_data; n = n->_M_next) ++__result; return __result; }
+>     _Tp& front() { return *begin(); }
+>     const _Tp& front() const { return *begin(); }
+>     _Tp& back() { return ((_List_node<_Tp>*)this->_M_node._M_data->_M_prev)->_M_data; }
+>     void push_front(const _Tp& x) { insert(begin(),x); }
+>     template<class _Predicate> void remove_if(_Predicate __pred);
+> #endif
+377a411,431
+> #ifdef FABLE_STLP_BACK_INSERTER
+> // Opt-in (2026-11-03, chunk 719 row 0x00509A20, agent719c): STLport 4.6 _iterator.h back_insert_iterator / back_inserter and
+> // _algobase.h copy over a pointer range into a non-pointer output iterator (__copy_aux(.., __false_type) -> __copy with the
+> // random-access tag and the (ptrdiff_t*)0 distance tag; retail 0x00509BE7 calls __copy<C2DLineF*, back_insert_iterator<
+> // list<C2DLineF> >, int> 0x00517480 with `push 0` / the tag).
+> template<class _Container> class back_insert_iterator {
+> protected:
+>     _Container* container;
+> public:
+>     explicit back_insert_iterator(_Container& x) : container(&x) { }
+>     back_insert_iterator<_Container>& operator=(const typename _Container::value_type& val) { container->push_back(val); return *this; }
+>     back_insert_iterator<_Container>& operator*() { return *this; }
+>     back_insert_iterator<_Container>& operator++() { return *this; }
+>     back_insert_iterator<_Container>& operator++(int) { return *this; }
+> };
+> template<class _Container> inline back_insert_iterator<_Container> back_inserter(_Container& x) { return back_insert_iterator<_Container>(x); }
+> template<class I,class O> inline O __copy_aux(I first,I last,O result,const __false_type&) {
+>     return __copy(first,last,result,random_access_iterator_tag(),(ptrdiff_t*)0);
+> }
+> template<class T,class O> inline O copy(T* first,T* last,O result) { return __copy_aux(first,last,result,__false_type()); }
+> #endif
+408a463,492
+> #ifdef FABLE_STLP_DEQUE
+> // Opt-in (2026-11-03, chunk 719 row 0x0040CEC0): STLport 4.6 _deque.h / _queue.h, the members the rows use. Layout 0x28: two
+> // 4-word iterators, the map pointer and the map size (both _STLP_alloc_proxy); the base ctor builds the map out of line
+> // (_M_initialize_map, retail 0x0040F4A0 for ETutorialCategory) after the member ctors zero all ten words.
+> template<class _Tp> struct _Deque_iterator {
+>     _Tp* _M_cur; _Tp* _M_first; _Tp* _M_last; _Tp** _M_node;
+>     _Deque_iterator() : _M_cur(0), _M_first(0), _M_last(0), _M_node(0) { }
+> };
+> template<class _Tp,class _Alloc> class _Deque_base {
+> public:
+>     _Deque_base(const _Alloc& a,size_t numElements)
+>         : _M_start(), _M_finish(), _M_map(allocator<_Tp*>(),(_Tp**)0), _M_map_size(a,(size_t)0) { _M_initialize_map(numElements); }
+> protected:
+>     void _M_initialize_map(size_t);
+>     _Deque_iterator<_Tp> _M_start;
+>     _Deque_iterator<_Tp> _M_finish;
+>     _STLP_alloc_proxy<_Tp**,_Tp*,allocator<_Tp*> > _M_map;
+>     _STLP_alloc_proxy<size_t,_Tp,_Alloc> _M_map_size;
+> };
+> template<class _Tp,class _Alloc=allocator<_Tp> > class deque : public _Deque_base<_Tp,_Alloc> {
+> public:
+>     explicit deque(const _Alloc& a=_Alloc()) : _Deque_base<_Tp,_Alloc>(a,0) { }
+> };
+> template<class _Tp,class _Sequence=deque<_Tp> > class queue {
+> public:
+>     queue() : c() { }
+> protected:
+>     _Sequence c;
+> };
+> #endif
+################ stlport/fable_map.h
+152a153,159
+> #ifdef FABLE_RETAIL_STLP_TREE_ERASE_KEY
+>     // Opt-in (2026-11-03, chunk 720 row 0x005CACB9): STLport 4.6 _tree.h erase(const key_type&) (the landed 0x005CC31B for
+>     // map<NUISystem::CComponent*, long>: equal_range 0x005CC2D6, distance, erase(first, last) 0x005CC292).
+>     pair<iterator,iterator> equal_range(const K&);
+>     void erase(iterator,iterator);
+>     size_t erase(const K&);
+> #endif
+194a202,204
+> #ifdef FABLE_RETAIL_STLP_TREE_ERASE_KEY
+>     size_t erase(const K& key){return _M_t.erase(key);}
+> #endif

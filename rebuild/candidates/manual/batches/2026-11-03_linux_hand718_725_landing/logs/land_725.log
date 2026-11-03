@@ -1,0 +1,81 @@
+keypayload: 2 texts changed
+addr       parity           behav  name
+00434a10   MATCH            PASS   PreChangeResolution
+00434a20   MATCH            PASS   PostChangeResolution
+00697ab0   MATCH            PASS   GetCameraModeType
+006cb6b0   MATCH            PASS   InterruptNavigation
+006cb8e0   MATCH            PASS   GetNearestNavigablePosTo
+006cb990   MATCH            PASS   IsNewDestinationGoingToResetNavigation
+006cb9a0   MATCH            PASS   GetCurrentDestination
+006cb9b0   MATCH            PASS   CalculateRouteFromTo
+006cb9c0   MATCH            PASS   InitialiseFromPreCalculatedRoute
+006cba10   MATCH            PASS   CalculateNavigableWidthOfLine
+00836790   MATCH            PASS   SetSpecificSamplePitch
+008367a0   MATCH            PASS   SetSpecificSampleVolume
+009bc8f0   RELOCATION_MATCH PASS   ~CXMVPlayerBuffers
+00aa75c0   RELOCATION_MATCH PASS   ~CChunkedFileChunk
+00c1d8b0   WARN RELOC_NAME: ??1CVtable_012b3404@@UAE@XZ -> 00c1eb10 labelled 'CVtable_012b3404::CVtable_012b3404'
+00c1d8b0   RELOCATION_MATCH PASS   ~CVtable_012b32a0
+00c1e080   WARN RELOC_NAME: ??1CVtable_012b3404@@UAE@XZ -> 00c1eb10 labelled 'CVtable_012b3404::CVtable_012b3404'
+00c1e080   RELOCATION_MATCH PASS   ~CVtable_012b33a4
+00c34780   WARN RELOC_NAME: ?Close@CVtable_012b4f9c@@UAEXXZ -> 00c426e0 labelled 'CVtable_012b4f9c::vfunc_2'
+00c34780   RELOCATION_MATCH PASS   ~CVtable_012b4f9c
+00c3c5c0   RELOCATION_MATCH PASS   ~CVtable_012b5860
+00c56d60   WARN RELOC_NAME: ??1CVtable_012b8df8@@UAE@XZ -> 00c57310 labelled 'CDisplayManager::~CDisplayManager'
+00c56d60   RELOCATION_MATCH PASS   ~CVtable_012b8d98
+00c57410   WARN RELOC_NAME: ??1CVtable_012b8ed4@@UAE@XZ -> 00c577b0 labelled '_unattributed::~CActionParamCountedPointer_00c577b0'
+00c57410   RELOCATION_MATCH PASS   ~CVtable_012b8e20
+00c6cac0   RELOCATION_MATCH PASS   ~CVtable_012bed7c
+00c6da30   RELOCATION_MATCH PASS   ~CVtable_012bed90
+00c6e780   RELOCATION_MATCH PASS   ~CVtable_012bedb8
+
+WINS: 23
+  00434a10 MATCH CDisplayEngine::?PreChangeResolution@CDisplayEngine@@QAEXXZ
+  00434a20 MATCH CDisplayEngine::?PostChangeResolution@CDisplayEngine@@QAEXKKK@Z
+  00697ab0 MATCH CGameCameraManager::?GetCameraModeType@CGameCameraManager@@QBE?AW4EMode@NCameraModes@@XZ
+  006cb6b0 MATCH CTCCreatureNavigation::?InterruptNavigation@CTCCreatureNavigation@@QAEXXZ
+  006cb8e0 MATCH CTCCreatureNavigation::?GetNearestNavigablePosTo@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@@Z
+  006cb990 MATCH CTCCreatureNavigation::?IsNewDestinationGoingToResetNavigation@CTCCreatureNavigation@@QBE_NABVC3DVector@@M@Z
+  006cb9a0 MATCH CTCCreatureNavigation::?GetCurrentDestination@CTCCreatureNavigation@@QBEABVC3DVector@@XZ
+  006cb9b0 MATCH CTCCreatureNavigation::?CalculateRouteFromTo@CTCCreatureNavigation@@QBEXABVC3DVector@@0AAV?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@@Z
+  006cb9c0 MATCH CTCCreatureNavigation::?InitialiseFromPreCalculatedRoute@CTCCreatureNavigation@@QAEXABVC3DVector@@ABV?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@0@Z
+  006cba10 MATCH CTCCreatureNavigation::?CalculateNavigableWidthOfLine@CTCCreatureNavigation@@QAEXABVC3DVector@@0AAM1@Z
+  00836790 MATCH CThingSoundEmitter::?SetSpecificSamplePitch@CThingSoundEmitter@@QAEXKM@Z
+  008367a0 MATCH CThingSoundEmitter::?SetSpecificSampleVolume@CThingSoundEmitter@@QAEXKM@Z
+  009bc8f0 RELOCATION_MATCH CXMVPlayerBuffers::??1CXMVPlayerBuffers@@UAE@XZ
+  00aa75c0 RELOCATION_MATCH CChunkedFileChunk::??1CChunkedFileChunk@@UAE@XZ
+  00c1d8b0 RELOCATION_MATCH CVtable_012b32a0::??1CVtable_012b32a0@@UAE@XZ
+  00c1e080 RELOCATION_MATCH CVtable_012b33a4::??1CVtable_012b33a4@@UAE@XZ
+  00c34780 RELOCATION_MATCH CVtable_012b4f9c::??1CVtable_012b4f9c@@UAE@XZ
+  00c3c5c0 RELOCATION_MATCH CVtable_012b5860::??1CVtable_012b5860@@UAE@XZ
+  00c56d60 RELOCATION_MATCH CVtable_012b8d98::??1CVtable_012b8d98@@UAE@XZ
+  00c57410 RELOCATION_MATCH CVtable_012b8e20::??1CVtable_012b8e20@@UAE@XZ
+  00c6cac0 RELOCATION_MATCH CVtable_012bed7c::??1CVtable_012bed7c@@UAE@XZ
+  00c6da30 RELOCATION_MATCH CVtable_012bed90::??1CVtable_012bed90@@UAE@XZ
+  00c6e780 RELOCATION_MATCH CVtable_012bedb8::??1CVtable_012bedb8@@UAE@XZ
+
+LANDED 23 wins into src/compiled + tests + catalog + oracle
+  CDisplayEngine_PreChangeResolution_00434a10
+  CDisplayEngine_PostChangeResolution_00434a20
+  CGameCameraManager_GetCameraModeType_00697ab0
+  CTCCreatureNavigation_InterruptNavigation_006cb6b0
+  CTCCreatureNavigation_GetNearestNavigablePosTo_006cb8e0
+  CTCCreatureNavigation_IsNewDestinationGoingToResetNavigation_006cb990
+  CTCCreatureNavigation_GetCurrentDestination_006cb9a0
+  CTCCreatureNavigation_CalculateRouteFromTo_006cb9b0
+  CTCCreatureNavigation_InitialiseFromPreCalculatedRoute_006cb9c0
+  CTCCreatureNavigation_CalculateNavigableWidthOfLine_006cba10
+  CThingSoundEmitter_SetSpecificSamplePitch_00836790
+  CThingSoundEmitter_SetSpecificSampleVolume_008367a0
+  CXMVPlayerBuffers_CXMVPlayerBuffers_009bc8f0
+  CChunkedFileChunk_CChunkedFileChunk_00aa75c0
+  CVtable012b32a0_CVtable012b32a0_00c1d8b0
+  CVtable012b33a4_CVtable012b33a4_00c1e080
+  CVtable012b4f9c_CVtable012b4f9c_00c34780
+  CVtable012b5860_CVtable012b5860_00c3c5c0
+  CVtable012b8d98_CVtable012b8d98_00c56d60
+  CVtable012b8e20_CVtable012b8e20_00c57410
+  CVtable012bed7c_CVtable012bed7c_00c6cac0
+  CVtable012bed90_CVtable012bed90_00c6da30
+  CVtable012bedb8_CVtable012bedb8_00c6e780
+vland rc=0

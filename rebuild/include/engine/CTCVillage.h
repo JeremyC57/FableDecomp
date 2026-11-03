@@ -1,5 +1,155 @@
 #ifndef FABLE_ENGINE_CTCVILLAGE_H
 #define FABLE_ENGINE_CTCVILLAGE_H
+#ifdef FABLE_RETAIL_CTCVILLAGE
+// Retail opt-in (2026-11-03, chunk 719 row 0x004FF750 CreateRelevantPersonAndUpdateStats): the real base. Retail
+// CTCVillage derives CTCBase (Fable.exe RTTI; the flattened default spells the base's vptr/ParentThing/flags as
+// __vftable/_pad_0x04/_pad_0x08), so code that reads village->ParentThing and calls CTCVillage methods needs the
+// class with its base. The members after the base are the generated ones, byte for byte at the same offsets.
+#include "engine/CTCBase.h"
+class CThing;
+// Retail (2026-11-03, chunk 720 rows 0x0065B854 AddThingToVillage / 0x00659800 CalculateSecuritySweepTasks; was FABLE_RETAIL_CTCVILLAGE_MEMBERS,
+// folded into this class branch at landing): the
+// container and def members typed as Ego_r.pdb types them (struct_layouts_egor.tsv; STLport 4.6 list = one node pointer, so the
+// retail offsets are the ones below, as the landed siblings read them: VillageTorches +0x30 0x006592E2, CrateTasks +0x60
+// 0x00659C7E), and FableWin.pdb's inline ?GetPDef@CTCVillage@@QBE?AV?$CDefPointer@$$CBVCVillageDef@@@@XZ (by value: retail's
+// two add-ref copies of +0x94 at 0x0065BD59). Same offsets and sizes as the opaque members of the branch below.
+#include "stlport/fable_containers.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CDefPointer.h"
+#include "engine/C3DVector.h"
+class CThingBuilding; class CThingAICreature; class CThingObject; class CThingTrackNode; class CThingMarker; class CVillageDef;
+class CVillageTaskTorch; class CVillageTaskHorn; class CVillageTaskPatrol; class CVillageTaskPickCrops;
+class CVillageTaskSecuritySweep; class CVillageTaskCarryCrate;
+#pragma pack(push, 1)
+class CTCVillage : public CTCBase {
+public:
+    void AddThingToVillage(CThing& thing);                   // 0x0065B854 ?AddThingToVillage@CTCVillage@@QAEXAAVCThing@@@Z
+    __forceinline CDefPointer<const CVillageDef> GetPDef() const { return PDef; }   // FableWin ?GetPDef@CTCVillage@@QBE?AV?$CDefPointer@$$CBVCVillageDef@@@@XZ (inline)
+private:
+    void CalculateSecuritySweepTasks();                      // 0x00659800 ?CalculateSecuritySweepTasks@CTCVillage@@AAEXXZ
+public:
+    long             TorchTasksUpdateFrame;                  // +0x0c
+    long             FrameStartedSecuritySweep;              // +0x10
+    C3DVector        PositionPlayerWasInWhenSecuritySweepCalculated;  // +0x14
+    long             LastAweCrowdEventFrame;                 // +0x20
+    long             LastLynchCrowdEventFrame;               // +0x24
+    std::list<CIntelligentPointer<CThingBuilding> > VillageBuildings; // +0x28
+    std::list<CIntelligentPointer<CThingAICreature> > VillagePeople; // +0x2c
+    std::list<CIntelligentPointer<CThing> > VillageTorches; // +0x30
+    std::list<CIntelligentPointer<CThing> > VillageHorns; // +0x34
+    std::list<CIntelligentPointer<CThing> > VillageGates; // +0x38
+    std::list<CIntelligentPointer<CThingObject> > VillageCrops; // +0x3c
+    std::list<CIntelligentPointer<CThing> > VillageCages; // +0x40
+    std::list<CIntelligentPointer<CThing> > VillageCampfires; // +0x44
+    std::list<CIntelligentPointer<CThingTrackNode> > VillagePatrols; // +0x48
+    std::list<CCountedPointer<CVillageTaskTorch> > TorchTasks; // +0x4c
+    std::list<CCountedPointer<CVillageTaskHorn> > HornTasks; // +0x50
+    std::list<CCountedPointer<CVillageTaskPatrol> > PatrolTasks; // +0x54
+    std::list<CCountedPointer<CVillageTaskPickCrops> > CropTasks; // +0x58
+    std::list<CCountedPointer<CVillageTaskSecuritySweep> > SecuritySweepTasks; // +0x5c
+    std::list<CCountedPointer<CVillageTaskCarryCrate> > CrateTasks; // +0x60
+    unsigned char    PlayersCrimes[0xc];                     // +0x64 set<long,std::less<long>,std::allocator<long>_>
+    std::list<CIntelligentPointer<CThingMarker> > VillageMarkers;    // +0x70
+    std::list<CIntelligentPointer<CThing> > VillageDummies;          // +0x74
+    bool             Initialised;                            // +0x78
+    bool             InitiallyPopulated;                     // +0x79
+    bool             HasBeenInitiallyPopulated;              // +0x7a
+    bool             HornTasksAdded;                         // +0x7b
+    bool             IsEnemyBecauseOfCrime;                  // +0x7c
+    unsigned char    _pad_0x7d[0x3];                         // +0x7d
+    long             FramePlayerLastSeenByGuard;             // +0x80
+    bool             InCurfew;                               // +0x84
+    unsigned char    _pad_0x85[0x3];                         // +0x85
+    long             NumGuards;                              // +0x88
+    long             HouseCurrentlyChecking;                 // +0x8c
+    bool             TimeIsPaused;                           // +0x90
+    unsigned char    _pad_0x91[0x3];                         // +0x91
+    CDefPointer<const CVillageDef> PDef;                     // +0x94
+    unsigned char    StanceToHero[0x4];                      // +0x98 EVillageStanceToHero
+    long             TimeStopIndex;                          // +0x9c
+    long             AmountOfFineAlreadyPaid;                // +0xa0
+    long             NextGuardRespawn;                       // +0xa4
+    long             FrameBribeEnds;                         // +0xa8
+    long             FrameForNextGuardGreeting;              // +0xac
+    bool             WorkTimeAccordingToCrier;               // +0xb0
+    bool             CurfewTimeAccordingToCrier;             // +0xb1
+    bool             Limbo;                                  // +0xb2
+    bool             LaggyLimbo;                             // +0xb3
+    bool             SecuritySweepUrgent;                    // +0xb4
+    unsigned char    _pad_0xb5[0x3];                         // +0xb5
+    float            InitialSecuritySweepRadius;             // +0xb8
+    bool             TeacherTeaching;                        // +0xbc
+    unsigned char    GuardFollowingPlayer[0xb];              // +0xbd CIntelligentPointer<CThingAICreature>
+    long             NextFrameToFollowPlayer;                // +0xc8
+    bool             LightActiveStateToChange;               // +0xcc
+    unsigned char    _pad_0xcd[0x3];                         // +0xcd
+    long             MaxFrameToAssignTask;                   // +0xd0
+    long             HeroEnemyOfGuardsUntil;                 // +0xd4
+    long             LastFrameApologised;                    // +0xd8
+    unsigned char    GuardWarningHero[0x8];                  // +0xdc CIntelligentPointer<CThingAICreature>
+    bool             CurrentIsHeroCriminal;                  // +0xe4
+    unsigned char    _pad_0xe5[0x3];                         // +0xe5
+};
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CTCVillage) == 0xe8);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, TorchTasksUpdateFrame) == 0xc);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, FrameStartedSecuritySweep) == 0x10);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, PositionPlayerWasInWhenSecuritySweepCalculated) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, LastAweCrowdEventFrame) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, LastLynchCrowdEventFrame) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, VillageBuildings) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, VillagePeople) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, VillageTorches) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, VillageHorns) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, VillageGates) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, VillageCrops) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, VillageCages) == 0x40);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, VillageCampfires) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, VillagePatrols) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, TorchTasks) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, HornTasks) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, PatrolTasks) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, CropTasks) == 0x58);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, SecuritySweepTasks) == 0x5c);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, CrateTasks) == 0x60);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, PlayersCrimes) == 0x64);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, VillageMarkers) == 0x70);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, VillageDummies) == 0x74);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, Initialised) == 0x78);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, InitiallyPopulated) == 0x79);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, HasBeenInitiallyPopulated) == 0x7a);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, HornTasksAdded) == 0x7b);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, IsEnemyBecauseOfCrime) == 0x7c);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, FramePlayerLastSeenByGuard) == 0x80);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, InCurfew) == 0x84);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, NumGuards) == 0x88);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, HouseCurrentlyChecking) == 0x8c);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, TimeIsPaused) == 0x90);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, PDef) == 0x94);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, StanceToHero) == 0x98);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, TimeStopIndex) == 0x9c);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, AmountOfFineAlreadyPaid) == 0xa0);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, NextGuardRespawn) == 0xa4);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, FrameBribeEnds) == 0xa8);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, FrameForNextGuardGreeting) == 0xac);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, WorkTimeAccordingToCrier) == 0xb0);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, CurfewTimeAccordingToCrier) == 0xb1);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, Limbo) == 0xb2);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, LaggyLimbo) == 0xb3);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, SecuritySweepUrgent) == 0xb4);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, InitialSecuritySweepRadius) == 0xb8);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, TeacherTeaching) == 0xbc);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, GuardFollowingPlayer) == 0xbd);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, NextFrameToFollowPlayer) == 0xc8);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, LightActiveStateToChange) == 0xcc);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, MaxFrameToAssignTask) == 0xd0);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, HeroEnemyOfGuardsUntil) == 0xd4);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, LastFrameApologised) == 0xd8);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, GuardWarningHero) == 0xdc);
+FABLE_STATIC_ASSERT(offsetof(CTCVillage, CurrentIsHeroCriminal) == 0xe4);
+#else // flattened Ego_r layout (the landed default)
+
 // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
 // Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CTCVillage = 0x174.
 // Container layout: retail STLport 4.6 (list 4, vector/map/set/string/CArray 0xc, deque 0x28, CVectorMap 0x10, bases from Fable.exe RTTI): sizeof CTCVillage = 0xe8.
@@ -142,5 +292,7 @@ FABLE_STATIC_ASSERT(offsetof(CTCVillage, HeroEnemyOfGuardsUntil) == 0xd4);
 FABLE_STATIC_ASSERT(offsetof(CTCVillage, LastFrameApologised) == 0xd8);
 FABLE_STATIC_ASSERT(offsetof(CTCVillage, GuardWarningHero) == 0xdc);
 FABLE_STATIC_ASSERT(offsetof(CTCVillage, CurrentIsHeroCriminal) == 0xe4);
+
+#endif // FABLE_RETAIL_CTCVILLAGE
 
 #endif // FABLE_ENGINE_CTCVILLAGE_H

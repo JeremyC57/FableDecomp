@@ -16,10 +16,19 @@ public:
     typedef const value_type* const_iterator;
     iterator LowerBound(const K&);
     const_iterator LowerBound(const K&) const;
+#ifdef FABLE_RETAIL_CVECTORMAP_FORCEINLINE_FIND
+    // Retail opt-in (2026-11-03, chunk 720, the size-optimised CTCInventoryWeapons TU): retail expands Find inside the
+    // forced-inline CThing::GetTC there (`call LowerBound; mov esi,[esi+4]; cmp eax,esi; je; cmp [eax],ebx; jle`); under
+    // optimize("s") a plain inline Find is called out of line instead (0x005C552C, 0x005C36C2).
+    __forceinline
+#endif
     iterator Find(const K& key) {
         iterator i=LowerBound(key);
         return i==this->end() || key<i->first ? this->end() : i;
     }
+#ifdef FABLE_RETAIL_CVECTORMAP_FORCEINLINE_FIND
+    __forceinline
+#endif
     const_iterator Find(const K& key) const {
         const_iterator i=LowerBound(key);
         return i==this->end() || key<i->first ? this->end() : i;

@@ -1,0 +1,7 @@
+NEW 00b6cbd0 ?resize@?$vector@VCVertexShader@@V?$allocator@VCVertexShader@@@std@@@std@@QAEXI@Z 
+    others: {'?resize@CVertexShaderArray@@QAEXI@Z': ['00bbeaf0']} 
+    landed leaf: []
+NEW 00c2a7a0 ?SendState@CNavigatorSwitch@@QAEXE@Z 
+    others: {} 
+    landed leaf: [('CNavigatorSwitch_SendState_00c2a7a0.cpp', 'SendState')]
+LEAF 00c2a890 ?SendStateAndReset@CNavigatorSwitch@@QAEXXZ <- other spellings bound by {'?Update@CFirst_00c14dd0@@QAEXXZ': ['00c14dd0']}

@@ -61,6 +61,14 @@ protected:
     virtual void LoadScriptBrushesFromFile(long, CCountedPointer<CAFile>);
     virtual long AllocateNewMap();
 public:
+    // Retail opt-in additions (2026-11-03, chunk 719 row 0x00501150): Ego_r.pdb CWorldMap::ELoadType (nested; the
+    // enumerator names are not in the PDB, 0 is the synchronous load: 0x00501150 runs the level loader to completion for it) and
+    // the protected ?LoadLevelFromFiles@CWorldMap@@IAEXJV?$CCountedPointer@VCAFile@@@@00W4ELoadType@1@@Z (Ego_r 0x004D55C0).
+    enum ELoadType { };
+protected:
+    void LoadLevelFromFiles(long levelID, CCountedPointer<CAFile> topologyFile, CCountedPointer<CAFile> navigationFile,
+                            CCountedPointer<CAFile> thingFile, ELoadType loadType);
+public:
     unsigned long GetMapUID(long map) const;                 // 0x004FCE00 ?GetMapUID@CWorldMap@@QBEKJ@Z
     long GetRegionNumberFromName(const CCharString&) const;      // these five: callees of 0x00606300 / 0x0074A5D0
     CRegion& GetRegion(long);

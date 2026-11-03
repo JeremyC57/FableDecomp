@@ -1,0 +1,26 @@
+addr       parity           behav  name
+005c552c   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005c552c   WARN RELOC_CONFLICT: ?push_back@?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@QAEXABQAVCThing@@@Z -> 00436c80 here, 0074fae0 in landed 00938db0
+005c552c   WARN RELOC_NAME: ?ReturnToInventory@CTCInventoryItem@@QAEXXZ -> 005d8e50 labelled 'CTCShowableItem::OnShowEnded'
+005c552c   RELOCATION_MATCH PASS   RemoveWeaponsFromSheathes
+005c36c2   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005c36c2   WARN RELOC_NAME: ?ReturnToInventory@CTCInventoryItem@@QAEXXZ -> 005d8e50 labelled 'CTCShowableItem::OnShowEnded'
+005c36c2   RELOCATION_MATCH PASS   PutSheatheObjectInCarrySlot
+0065b854   WARN RELOC_NAME: ?push_back@?$list@V?$CIntelligentPointer@VCThingMarker@@@@V?$allocator@V?$CIntelligentPointer@VCThingMarker@@@@@std@@@std@@QAEXABV?$CIntelligentPointer@VCThingMarker@@@@@Z -> 006605bb labelled 'AddThingToVillage_LuaClosure3'
+0065b854   WARN RELOC_NAME: ??$find@PBW4EVillageTaskType@@W41@@std@@YIPBW4EVillageTaskType@@PBW41@0ABW41@@Z -> 0065e5a4 labelled 'std::vector<EWeaponClass,std::allocator<EWeaponClass>_>::_Umove<EWeaponClass*>'
+0065b854   WARN RELOC_NAME: ?push_back@?$list@V?$CIntelligentPointer@VCThingTrackNode@@@@V?$allocator@V?$CIntelligentPointer@VCThingTrackNode@@@@@std@@@std@@QAEXABV?$CIntelligentPointer@VCThingTrackNode@@@@@Z -> 00660fc9 labelled 'AddThingToVillage_LuaClosure4'
+0065b854   WARN RELOC_NAME: ?push_back@?$list@V?$CCountedPointer@VCVillageTaskPatrol@@@@V?$allocator@V?$CCountedPointer@VCVillageTaskPatrol@@@@@std@@@std@@QAEXABV?$CCountedPointer@VCVillageTaskPatrol@@@@@Z -> 00660553 labelled 'AddThingToVillage_LuaClosure1'
+0065b854   WARN RELOC_NAME: ??1?$CCountedPointer@VCVillageTaskPatrol@@@@QAE@XZ -> 0065d507 labelled '_global::CCountedPointer_Release_0065d507'
+0065b854   WARN RELOC_NAME: ?push_back@?$list@V?$CIntelligentPointer@VCThingObject@@@@V?$allocator@V?$CIntelligentPointer@VCThingObject@@@@@std@@@std@@QAEXABV?$CIntelligentPointer@VCThingObject@@@@@Z -> 00660505 labelled 'LuaBinding_CreateCClosure_2'
+0065b854   WARN RELOC_NAME: ?push_back@?$list@V?$CCountedPointer@VCVillageTaskPickCrops@@@@V?$allocator@V?$CCountedPointer@VCVillageTaskPickCrops@@@@@std@@@std@@QAEXABV?$CCountedPointer@VCVillageTaskPickCrops@@@@@Z -> 0066056d labelled 'AddThingToVillage_LuaClosure2'
+0065b854   WARN RELOC_NAME: ??1?$CCountedPointer@VCVillageTaskPickCrops@@@@QAE@XZ -> 0065d533 labelled '_global::CCountedPointer_Release_0065d533'
+0065b854   WARN RELOC_NAME: ?push_back@?$list@V?$CIntelligentPointer@VCThingBuilding@@@@V?$allocator@V?$CIntelligentPointer@VCThingBuilding@@@@@std@@@std@@QAEXABV?$CIntelligentPointer@VCThingBuilding@@@@@Z -> 006604d1 labelled 'LuaBinding_CreateCClosure'
+0065b854   WARN RELOC_NAME: ?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z -> 006bb390 labelled '`anonymousnamespace'::Game_IsTimeOfDayInRange'
+0065b854   WARN RELOC_NAME: ?push_back@?$list@V?$CIntelligentPointer@VCThingAICreature@@@@V?$allocator@V?$CIntelligentPointer@VCThingAICreature@@@@@std@@@std@@QAEXABV?$CIntelligentPointer@VCThingAICreature@@@@@Z -> 006604eb labelled 'InsertIntoListWrapper'
+0065b854   WARN RELOC_NAME: ?GetProperty@CThingCreatureBase@@QBEKXZ -> 00662010 labelled 'CThingCreatureBase::GetLifeState'
+0065b854   RELOCATION_MATCH PASS   AddThingToVillage
+
+WINS: 3
+  005c552c RELOCATION_MATCH CTCInventoryWeapons::?RemoveWeaponsFromSheathes@CTCInventoryWeapons@@QAEXXZ
+  005c36c2 RELOCATION_MATCH _global::?PutSheatheObjectInCarrySlot@
+  0065b854 RELOCATION_MATCH CTCVillage::?AddThingToVillage@CTCVillage@@QAEXAAVCThing@@@Z

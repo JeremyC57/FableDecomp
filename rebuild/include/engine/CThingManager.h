@@ -25,6 +25,9 @@ public:
     void LoadEntitiesBinary(CMemoryDataInputStream&,long,long,const std::set<CCharString>&,CASuspendableProcess*,long,std::vector<CThing*>&); // 0x00521240
     void RuntimeLoadEntities(long,const std::set<CCharString>&,std::vector<CThing*>&); // 0x00522720
     unsigned __int64 RemapUIDForSerialisation(bool,bool,unsigned long,unsigned __int64) const;
+    // Retail (chunk 718, row 0x0089E190; the FABLE_RETAIL_CTHINGMANAGER_PEEK opt-in folded into the retail-only class at landing): Ego_r.pdb / FableWin.pdb ?PeekPThingWithUID@CThingManager@@QBEPBVCThing@@_K@Z,
+    // the landed body 0x0051ED60 (the only spelling bound to it). A declaration only: no layout change.
+    const CThing* PeekPThingWithUID(unsigned __int64 uid) const;        // 0x0051ED60
 protected:
     virtual void OnCreateClass(CClass&);
     virtual void OnDeleteClass(CClass&);

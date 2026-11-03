@@ -8,9 +8,17 @@
 #include <stddef.h>
 #include "rebuild_abi.h"
 
+#ifdef FABLE_RETAIL_CVILLAGETASKPICKCROPS
+class CThingObject;
+#endif
 #pragma pack(push, 1)
 class CVillageTaskPickCrops {
 public:
+#ifdef FABLE_RETAIL_CVILLAGETASKPICKCROPS
+    // Retail opt-in (2026-11-03, chunk 720 rows 0x0065B854 / 0x00659800): the constructor (Ego_r.pdb + FableWin.pdb, out of line in
+    // retail: 0x0065EEFF ??0CVillageTaskPickCrops@@QAE@AAVCThingObject@@@Z; the CTCVillage callers allocate the task with operator new and call it). Declaration only: no layout change.
+    CVillageTaskPickCrops(CThingObject& crop);
+#endif
     void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char _pad_0x04[0x4];                            // +0x04
     unsigned char Crop[0x8];                                 // +0x08 CIntelligentPointer<CThingObject>

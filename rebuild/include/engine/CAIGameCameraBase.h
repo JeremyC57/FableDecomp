@@ -7,6 +7,51 @@
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 #include <stddef.h>
 #include "rebuild_abi.h"
+// Retail opt-in (chunk 718): define FABLE_RETAIL_CAIGAMECAMERABASE before the include for the polymorphic retail class.
+// RTTI .?AVCAIGameCameraBase@@ (no bases, ghidra_out/rtti_bases.tsv); vtable 0x0125C1F4, 25 slots read from Fable.exe:
+// 0..1 _purecall 0x00BFEA08 (named from the CGameCameraManager overrides at the same slots of 0x0125C754: 0 Update 0x0069B790,
+// 1 GetRenderCamera(float) 0x00697F30, FableWin ?Update@CGameCameraManager@@UAEXXZ / ?GetRenderCamera@CGameCameraManager@@UBE?AVCCamera@@M@Z),
+// 2..23 the FableWin.pdb ?X@CAIGameCameraBase@@ bodies 0x00697030..0x00697180 in PDB order (the two GetCameraManager overloads are
+// declared const first; VC7.1 lays an overload group out in reverse declaration order, so slot 9 0x006970C0 is the non-const one
+// and slot 10 0x006970B0 the const one, matching the PDB address order of their bodies), 24 the deleting dtor 0x006971A0 (the
+// destructor is declared last and is inline and empty: 72 retail copies of the ??_G). sizeof 4 (the vptr only).
+#ifdef FABLE_RETAIL_CAIGAMECAMERABASE
+class C3DVector;
+class CCamera;
+class CEnginePrimitivePrepareInfo;
+class CGameCameraManager;
+class CThingGameObject;
+
+class CAIGameCameraBase {
+public:
+    virtual void Update() = 0;                                                                   //  0 (pure)
+    virtual CCamera GetRenderCamera(float interpolation) const = 0;                              //  1 (pure)
+    virtual void PreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) const;   //  2 0x00697030
+    virtual bool IsPosInViewingFrustrum(const C3DVector& pos) const;                             //  3 0x00697040
+    virtual bool Is2DAreaInViewingFrustrum(const C3DVector& pos, float radius) const;            //  4 0x00697050
+    virtual bool IsVolumeInViewingFrustrum(const C3DVector& pos, float radius) const;            //  5 0x00697060
+    virtual bool IsLineOfSightToPos(const C3DVector& pos) const;                                 //  6 0x00697070
+    virtual float GetControlAngleXY() const;                                                     //  7 0x00697080
+    virtual void SetChangeInControlDirection();                                                  //  8 0x006970A0
+    virtual bool GetCameraManager(const CGameCameraManager** manager) const;                     // 10 0x006970B0
+    virtual bool GetCameraManager(CGameCameraManager** manager);                                 //  9 0x006970C0
+    virtual const C3DVector PeekCurrentPos() const;                                              // 11 0x0069C1B0
+    virtual bool IsFreeLookMode() const;                                                         // 12 0x006970D0
+    virtual bool IsOverridingMainAngleXY() const;                                                // 13 0x006970E0
+    virtual void ScriptEnd();                                                                    // 14 0x006970F0
+    virtual void ScriptStart();                                                                  // 15 0x00697100
+    virtual void ScriptMoveToPosAndLookAtPos(const C3DVector& pos, const C3DVector& lookAt, float speed);   // 16 0x00697110
+    virtual void ScriptMoveToPosAndLookAtThing(const CThingGameObject& thing, const C3DVector& pos, float speed);   // 17 0x00697120
+    virtual void ScriptMoveToThingAndLookAtPos(const CThingGameObject& thing, const C3DVector& offset, const C3DVector& lookAt, float speed, bool relative);   // 18 0x00697130
+    virtual void ScriptMoveToThingAndLookAtThing(const CThingGameObject& thing, const CThingGameObject& lookAt, const C3DVector& offset, float speed, bool relative);   // 19 0x00697140
+    virtual void ScriptSetRotationSpeed(float speed);                                            // 20 0x00697150
+    virtual void SetDebugCameraType(long type);                                                  // 21 0x00697160
+    virtual void SetLookaroundVector(const C3DVector& vector);                                   // 22 0x00697170
+    virtual void CyclePlayerViewType();                                                          // 23 0x00697180
+    virtual ~CAIGameCameraBase() { }                                                             // 24 ??_G 0x006971A0
+};
+FABLE_STATIC_ASSERT(sizeof(CAIGameCameraBase) == 0x4);
+#else
 
 #pragma pack(push, 1)
 class CAIGameCameraBase {
@@ -18,4 +63,5 @@ public:
 FABLE_STATIC_ASSERT(sizeof(CAIGameCameraBase) == 0x4);
 FABLE_STATIC_ASSERT(offsetof(CAIGameCameraBase, __vftable) == 0x0);
 
+#endif // FABLE_RETAIL_CAIGAMECAMERABASE
 #endif // FABLE_ENGINE_CAIGAMECAMERABASE_H

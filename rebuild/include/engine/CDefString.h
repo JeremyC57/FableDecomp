@@ -11,7 +11,12 @@ class CDefString {
 public:
  CDefString():TablePos(-1){}
  CDefString(const CCharString&);
- operator CCharString()const{return GDefStringTable.GetString(TablePos);}
+ // Retail (landing 2026-11-03, chunks 718-725): the conversion forwards to GetString, both inline. Retail keeps two identical
+ // out-of-line bodies (??B 0x00415D70, GetString 0x00415DD0 -- FableWin donor order ??B 0x018C20E0 before GetString 0x018C2120;
+ // both `push [ecx]; call CDefStringTable::GetString 0x009D49B0`), a TU that inlines both expands the table call
+ // (CTCShop::OnSerialise 0x00775C60), and the size-optimised CTCVillage TU inlines the forwarder and calls GetString
+ // 0x00415DD0 (AddThingToVillage 0x0065B951..0x0065B95C, the conversion temporary at [ebp-4]).
+ operator CCharString()const{return GetString();}
  CCharString GetString()const{return GDefStringTable.GetString(TablePos);}
 private:
  long TablePos;

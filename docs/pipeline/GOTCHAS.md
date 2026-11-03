@@ -1825,3 +1825,9 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - 2026-11-03: CRenderManagerCore stage/texture/buffer helpers (AttachTextureToStage, SelectVertexBuffer, SelectIndexBuffer) and CShaderRenderManager::SetPixelShaderConstant must be `__forceinline` in the big render passes, or they stay out of line (2267v2531).
 - 2026-11-03: retail `CEnvironmentDef` graphic indices sit 4 bytes below Ego_r (IceTexture +0xCC, WaterEdgeAlphaMap +0xD0, WaterSurfMap +0xD4).
 - 2026-11-03: for the CGraphicDataBank double lookup declare the index before the bank and write `GetGraphicInfo(i) ? GetGraphicInfo(i)->Frames : 0` to get retail's `cmp/sbb/and` select; read `Bank->CurrentFrame` twice rather than through a local.
+- 2026-11-03 (landing 718-725): `hdrcheck2.py` writes stubs into the tracked `coordinator/stubinc/`, which is first in `-I`, so they shadow real headers; clean with `git clean -fq tools/decomp_pipeline/linux_lane/lane_tools/coordinator/stubinc` before grading.
+- 2026-11-03: CDefString needs one model with `operator CCharString()` forwarding to `GetString()`: a GetString-only model breaks 0x00775C60, the old model breaks 0x0065B854.
+- 2026-11-03: `vector<T*>::push_back` COMDAT identity comes from the PDB constructor's parameter types (0x00938DB0 binds `vector<CThingObject*>`, not `vector<CThing*>`), not from what the body passes on.
+- 2026-11-03: a namespace-scope `const double TWO_PI` binds as `_TWO_PI` under VC7.1; `extern` without an initialiser changes the codegen.
+- 2026-11-03: per-TU inline opt-ins (`CBASICSTRING_EQ_OUTOFLINE`, `CVECTORMAP_FORCEINLINE_FIND`, `STLP_OUTOFLINE_UNINIT_FILL_N`) stay separate macros; folding them into the class branch changes landed bytes.
+- 2026-11-03: `repair_remove.py` takes a bare address (`00938db0`); `vland --land` refuses a row that is still landed.

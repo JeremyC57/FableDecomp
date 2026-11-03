@@ -45,7 +45,14 @@ protected:
 public:
     const T* PeekData() const { return PData; }
     unsigned long GetLength() const { return StringLength; }
+#ifdef FABLE_RETAIL_CBASICSTRING_EQ_OUTOFLINE
+    // Retail opt-in (2026-11-03, chunk 720 row 0x0065B854): the CTCVillage TU calls ??8?$CBasicString@D@@QBE_NABV0@@Z out of line
+    // (0x004A93C0: the other PStringData pushed, ecx = this PStringData) from an inlined CCharString::operator== (0x0065B956..71);
+    // with the in-class body VC7.1 folds it into CCharString::operator== and calls that instead. Declaration only.
+    bool operator==(const CBasicString& other) const;                 // 0x004A93C0 (CBasicString<char>)
+#else
     bool operator==(const CBasicString& other) const { if(StringLength!=other.StringLength)return false; return !Compare(PData,other.PData); }
+#endif
     // Ego_r 0x0040C910 / FableWin 0x01899D90 ??8?$CBasicString@D@@QBE_NPBD@Z (retail out-of-line copy 0x004115A0; a TU that holds
     // the template body expands it, 0x009BC120).
     bool operator==(const T* text) const;
@@ -156,6 +163,11 @@ public:
     CCharString(const char* text, long length = -1);           // 0x0099EBF0
     // Retail opt-in (Codex pass 11 consolidation): further Ego_r CCharString members used inline by retail callers.
     unsigned long GetCRC() const;                              // 0x00404310 (Ego_r 0x00403C00)
+#ifdef FABLE_RETAIL_CBASICSTRING_EQ_OUTOFLINE
+    // (same opt-in) retail expands CCharString::operator== in place around the CBasicString call even in the size-optimised
+    // CTCVillage TU (0x0065B956..0x0065B97A), where plain inline is called out of line.
+    __forceinline
+#endif
     bool operator==(const CCharString& other) const {
         if(PStringData==other.PStringData)return true;
         if(!PStringData||!other.PStringData)return false;

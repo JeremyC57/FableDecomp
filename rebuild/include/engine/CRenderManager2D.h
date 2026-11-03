@@ -11,6 +11,10 @@
 #endif
 #include "engine/CRenderManagerCore.h"
 class C2DBoxF; class CUVBox; class CRGBColour; class CTexture;
+#ifdef FABLE_RETAIL_CRENDERMANAGER2D
+#include "fable_string.h"
+class C2DVector; class CFontBank;
+#endif
 class CRenderManager2D : public CRenderManagerCore {
 private:
     unsigned char _pad_0x3d20[0x3ea4 - 0x3d20];                          // +0x3D20 own members (opaque)
@@ -19,6 +23,11 @@ public:
     void Render2DDrawList(bool);                                         // 0x009DA9F0 ?Render2DDrawList@CRenderManager2D@@QAEX_N@Z
     bool Draw2DTexture(const C2DBoxF&,const CUVBox&,const CRGBColour&,CTexture&,unsigned long);
                                                                          // 0x009DC870 ?Draw2DTexture@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCUVBox@@ABVCRGBColour@@AAVCTexture@@K@Z
+#ifdef FABLE_RETAIL_CRENDERMANAGER2D
+    // Retail opt-in (chunk 718, row 0x00487570 CPlayer::DrawFreeCamDebug): FableWin.pdb ?Draw2DText@CRenderManager2D@@QAE_NABVC2DVector@@VCWideString@@ABVCFontBank@@ABVCRGBColour@@K@Z
+    // (the landed body 0x009DD8F0, `ret 14h`; the string travels by value, built in its argument slot). A declaration only.
+    bool Draw2DText(const C2DVector&,CWideString,const CFontBank&,const CRGBColour&,unsigned long);   // 0x009DD8F0
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CRenderManager2D) == 0x3ea4);
 #endif // FABLE_ENGINE_CRENDERMANAGER2D_H

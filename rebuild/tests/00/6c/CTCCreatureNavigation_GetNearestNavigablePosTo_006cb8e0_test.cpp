@@ -1,0 +1,21 @@
+// Behaviour test for 0x006CB8E0: the member forwards its arguments unchanged to the owned object's virtual GetNearestNavigablePosTo (slot 8)
+// and returns what it returns.
+#include <cstdio>
+static int g_calls = 0; static double g_sum = 0;
+struct Target {
+    virtual ~Target() { }
+    virtual int GetNearestNavigablePosTo(int a, float b, int c) { ++g_calls; g_sum = 0 + a + b + c; return 42; }
+};
+struct Owner {
+    Target* p;
+    int Forward(int a, float b, int c) { return p->GetNearestNavigablePosTo(a, b, c); }
+};
+int main()
+{
+    Target t; Owner o; o.p = &t;
+    int r = o.Forward(11, 2.5f, 33);
+    double expect = 0 + 11 + 2.5 + 33;
+    if (g_calls != 1 || r != 42 || g_sum < expect - 0.001 || g_sum > expect + 0.001) { std::printf("006cb8e0_TEST FAIL\n"); return 1; }
+    std::printf("006cb8e0_TEST PASS\n");
+    return 0;
+}

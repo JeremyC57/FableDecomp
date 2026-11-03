@@ -1,0 +1,3 @@
+NEW 00512fe0 ??$GetSubDef@VCVillagePeopleDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCVillagePeople 
+    others: {'?GetSubDef_00512fe0@CDefClassBase@@QAE_NAAUCDefPointer@@@Z': ['00658fa2'], '?GetSubDef@CThingDef@@QAE_NPAV?$CDefPointer@VCVillagePeopleDef@@@@@Z': ['00659164'], '?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@UCCrowdDef@@@@@Z': ['00783380']} 
+    landed leaf: []

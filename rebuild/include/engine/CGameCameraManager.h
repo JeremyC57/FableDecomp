@@ -10,21 +10,43 @@
 #include "rebuild_abi.h"
 
 struct CBase;
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER
+#include "engine/CCountedPointer.h"
+namespace NCameraModes { class CBase; enum EMode; }
+#endif
 class CCPPointerInfo;
 class CDefPointeeBase;
 struct CScriptModuleBase;
 class CWorld;
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER
+// Retail opt-in (chunk 718, row 0x0089E190 CameraUseCameraPoint): the public non-virtual SetScriptedCameraMode 0x00699E60
+// (Ego_r.pdb 0x006C1080 / reloc_bindings ?SetScriptedCameraMode@CGameCameraManager@@QAEXV?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@@Z;
+// the counted pointer travels by value). A declaration only: no layout change.
+namespace NCameraModes { class CScriptModuleBase; }
+template <class T> class CCountedPointer;
+#endif
 
 #pragma pack(push, 1)
 class CGameCameraManager {
 public:
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER
+    void SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase> mode);   // 0x00699E60
+    // Retail opt-in (chunk 725): FableWin.pdb members at their retail addresses. CurrentMode is the real
+    // CCountedPointer<NCameraModes::CBase> (engine/NCameraModes_CBase.h for the mode's vtable).
+    NCameraModes::EMode GetCameraModeType() const;           // 0x00697AB0 ?GetCameraModeType@CGameCameraManager@@QBE?AW4EMode@NCameraModes@@XZ
+    bool HasCameraMode(NCameraModes::EMode) const;           // 0x00697AC0 ?HasCameraMode@CGameCameraManager@@QBE_NW4EMode@NCameraModes@@@Z
+#endif
     void*              __vftable;                            // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char      Camera[0x38];                         // +0x04 CCamera
     unsigned char      OldCamera[0x38];                      // +0x3c CCamera
     CWorld*            World;                                // +0x74
     unsigned char      CamTools[0x20];                       // +0x78 CTools
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER
+    CCountedPointer<NCameraModes::CBase> CurrentMode;        // +0x98 (Data, Info)
+#else
     CBase*             CurrentMode_Data;                     // +0x98 CCountedPointer<NCameraModes::CBase>::Data
     CCPPointerInfo*    CurrentMode_Info;                     // +0x9c CCountedPointer<NCameraModes::CBase>::Info
+#endif
     CBase*             PendingMode_Data;                     // +0xa0 CCountedPointer<NCameraModes::CBase>::Data
     CCPPointerInfo*    PendingMode_Info;                     // +0xa4 CCountedPointer<NCameraModes::CBase>::Info
     bool               NewAutoMode;                          // +0xa8
@@ -90,8 +112,12 @@ FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, Camera) == 0x4);
 FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, OldCamera) == 0x3c);
 FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, World) == 0x74);
 FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, CamTools) == 0x78);
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER
+FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, CurrentMode) == 0x98);
+#else
 FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, CurrentMode_Data) == 0x98);
 FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, CurrentMode_Info) == 0x9c);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, PendingMode_Data) == 0xa0);
 FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, PendingMode_Info) == 0xa4);
 FABLE_STATIC_ASSERT(offsetof(CGameCameraManager, NewAutoMode) == 0xa8);

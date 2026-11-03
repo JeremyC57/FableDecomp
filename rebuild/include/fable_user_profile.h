@@ -17,17 +17,31 @@
 // expands them; other callers call the COMDAT copies).
 #include "engine/CBaseClassNonCopyable.h"
 #include "engine/CDeviceResetCallback.h"
+class CConfigOptionsDefaultsDef;                                         // chunk 719: GetConfigOptionsDefaultsDef's def type
+template <class T> class CDefPointer;                                    // engine/CDefPointer.h (by-value return: complete at the definition)
 class CUserProfileManager : public CBaseClassNonCopyable, public CDeviceResetCallback
 {
 public:
     CUserProfileManager();
     virtual ~CUserProfileManager();
     static CUserProfileManager& FABLE_FASTCALL Get();                    // 0x0040D2A0
+    // Chunk 719: Ego_r.pdb + FableWin.pdb ?VerifySignature@CUserProfileManager@@SI_NABVCWideString@@@Z (public static __fastcall).
+    static bool FABLE_FASTCALL VerifySignature(const CWideString& filename);   // 0x00409730
     void SetProfileName(const CWideString& profileName, bool loadProfile);
     bool IsSubtitlingEnabled() const { return UseNewProfileValues ? SubtitlingEnabledNewProfile : SubtitlingEnabled; }
     float GetSoundVolume() const { return UseNewProfileValues ? SoundVolumeNewProfile : SoundVolume; }         // COMDAT 0x0047CFC2
     float GetMusicVolume() const { return UseNewProfileValues ? MusicVolumeNewProfile : MusicVolume; }         // COMDAT 0x0054A4F0
     float GetDialogueVolume() const { return UseNewProfileValues ? DialogueVolumeNewProfile : DialogueVolume; } // COMDAT 0x0047CFD3
+    // Retail opt-in addition (chunk 719): the config-options defaults def (landed 0x004083E0) and the four detail caps that read it,
+    // Ego_r.pdb / FableWin.pdb QBE members in Ego_r order (0x00406D40 / D80 / DC0 / E00 = retail 0x004084B0 / 0x00408500 /
+    // 0x00408550 / 0x004085A0; fields MaxEffectsDetail +0x70, MaxTextureDetail +0x58, MaxShadowDetail +0x60, MaxMeshDetail +0x68).
+    CDefPointer<const CConfigOptionsDefaultsDef> GetConfigOptionsDefaultsDef() const;   // 0x004083E0
+    float GetMaxEffectsDetail() const;                                   // 0x004084B0
+    float GetMaxTextureDetail() const;                                   // 0x00408500
+    float GetMaxShadowDetail() const;                                    // 0x00408550
+    float GetMaxMeshDetail() const;                                      // 0x004085A0
+    void SetDefaultValues();                                             // 0x0040C790 (Ego_r / FableWin ?SetDefaultValues@CUserProfileManager@@QAEXXZ)
+    void SetDefaultValuesForNewProfile();                                // 0x00409B70
 protected:
     virtual void OnPreDeviceReset();                                     // ?OnPreDeviceReset@CUserProfileManager@@MAEXXZ
     virtual bool OnPostDeviceReset();                                    // ?OnPostDeviceReset@CUserProfileManager@@MAE_NXZ

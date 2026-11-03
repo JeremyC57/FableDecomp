@@ -3,7 +3,7 @@
 // Grade: RELOCATION_MATCH -- chunk-422 recipe: push_back(const T&) 0x0074FAE0 receives `seat`'s address; a same-TU noinline stand-in that never keeps it lets VC7.1 keep `seat` in esi (home: the push-ecx slot) and the LowerBound key in the dead `thing` slot, as retail. Earlier forms (inner scope, function scope, inline/forceinline helper, F88 tail, LowerBound stand-in) stayed 163v159.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00938DB0, 159 bytes, `ret 4`. Caller: the for_each at 0x00938E90 (landed caller of
 // the for_each: CAIStateGroup_UsesSeat::GetRandomFreeSeatInBuilding 0x00938BF0). Callees: GetPItem @ 0x00A01B50, LowerBound @
-// 0x004365B0, IsActionPointFree @ 0x007FEBF0, vector<CThing*>::push_back(const T&) @ 0x0074FAE0.
+// 0x004365B0, IsActionPointFree @ 0x007FEBF0, vector<CThingObject*>::push_back(const T&) @ 0x0074FAE0.
 // Tried: seat in an inner scope, seat at function scope after early returns, an inline (then __forceinline) Consider(CThing* seat)
 // helper with a by-value parameter -- all give the same 163-byte body.
 class CTCBase;
@@ -95,10 +95,10 @@ public:
     _Tp* _M_start;
     _Tp* _M_finish;
     _Tp* _M_end_of_storage;
-    void push_back(const _Tp& __x);               // 0x0074FAE0 for vector<CThing*> (out of line)
+    void push_back(const _Tp& __x);               // 0x0074FAE0 for vector<CThingObject*> (out of line)
 };
 #pragma auto_inline(off)
-// Same-TU stand-in for vector<CThing*>::push_back 0x0074FAE0 (reads the element, never keeps its address): with it VC7.1
+// Same-TU stand-in for vector<CThingObject*>::push_back 0x0074FAE0 (reads the element, never keeps its address): with it VC7.1
 // treats `seat` as uncaptured, keeps it in esi with its home in the push-ecx slot and puts the LowerBound key in the dead
 // `thing` slot, as retail.
 template <class _Tp, class _Alloc>
@@ -110,16 +110,19 @@ __declspec(noinline) void vector<_Tp, _Alloc>::push_back(const _Tp& __x)
 #pragma auto_inline(on)
 }
 
+// CThingObject derives CThing (RTTI); Ego_r.pdb / FableWin.pdb ??0CAddFreeSeatToList@@QAE@AAV?$vector@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@@Z:
+// the functor fills a vector<CThingObject*> (landing 2026-11-03: was vector<CThing*>, whose push_back is 0x00436C80, not 0x0074FAE0).
+class CThingObject : public CThing { };
 class CAddFreeSeatToList {
 public:
-    std::vector<CThing*>* m_pSeats;                       // +0x00
+    std::vector<CThingObject*>* m_pSeats;                       // +0x00
     void operator()(const CIntelligentPointer<CThing>& thing) const;
 };
 void CAddFreeSeatToList::operator()(const CIntelligentPointer<CThing>& thing) const
 {
     if (!thing.GetPItem() || thing.GetPItem()->m_thingType != 5)
         return;
-    CThing* seat = thing.GetPItem();
+    CThingObject* seat = static_cast<CThingObject*>(thing.GetPItem());
     if (((unsigned char)(seat->GetStateFlags() >> 16) & 1) || ((unsigned char)(seat->GetStateFlags() >> 17) & 1)) {
         CTCUserActionPointBase* actionPoint;
         if (seat->GetInterfaceConst(0x2d, &actionPoint) && actionPoint->IsActionPointFree())

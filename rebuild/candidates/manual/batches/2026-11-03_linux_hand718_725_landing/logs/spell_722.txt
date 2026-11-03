@@ -1,0 +1,48 @@
+NEW 00b2c4e0 ?AddCustomMorphTexture@CEngineSurfaceCompositionManager@@QAEKAAVCTexture@@ABVCCharString@@ 
+    others: {} 
+    landed leaf: [('CEngineSurfaceCompositionManager_AddCustomMorphTexture_00b2c4e0.cpp', 'AddCustomMorphTexture')]
+NEW 00b2fc00 ?SetGameWindow@CEngineCamera@@QAEXPBVC2DBoxF@@@Z 
+    others: {} 
+    landed leaf: [('AddExclusiveObserver_AddExclusiveObserver_00b2fc00.cpp', 'AddExclusiveObserver')]
+NEW 00b31e90 ?SetPrimitiveAnimation@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@ABVCEngine 
+    others: {} 
+    landed leaf: [('CEnginePrimitiveRenderer_SetPrimitiveAnimation_00b31e90.cpp', 'SetPrimitiveAnimation')]
+NEW 00b31ec0 ?SetPrimitivePosition@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@ABVCEngineP 
+    others: {} 
+    landed leaf: [('CEnginePrimitiveRenderer_SetPrimitivePosition_00b31ec0.cpp', 'SetPrimitivePosition')]
+NEW 00b31ef0 ?AddChildPrimitive@CEnginePrimitiveRenderer@@QAEKAAVCEnginePrimitiveHandle@@ABVCEnginePrim 
+    others: {} 
+    landed leaf: [('CEnginePrimitiveRenderer_AddChildPrimitive_00b31ef0.cpp', 'AddChildPrimitive')]
+NEW 00b31f20 ?SetChildPrimitive@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@K0ABVCEnginePr 
+    others: {} 
+    landed leaf: [('CEnginePrimitiveRenderer_SetChildPrimitive_00b31f20.cpp', '?SetChildPrimitive@CEnginePrimitiveRenderer_Methods@@QAEXAAVCEnginePrimitiveHandle@@K0ABVCEnginePrimitive@@K@Z')]
+NEW 00b31f50 ?GetChildPrimitiveHandle@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@K0@Z 
+    others: {} 
+    landed leaf: [('CEnginePrimitiveRenderer_GetChildPrimitiveHandle_00b31f50.cpp', 'GetChildPrimitiveHandle')]
+NEW 00b31f70 ?SetChildPrimitive@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@KABVCEnginePri 
+    others: {} 
+    landed leaf: [('CEnginePrimitiveRenderer_SetChildPrimitive_00b31f70.cpp', '?SetChildPrimitive@CEnginePrimitiveRenderer_Methods@@QAEXAAVCEnginePrimitiveHandle@@KABVCEnginePrimitive@@K@Z')]
+NEW 00b31fa0 ?ClearChildPrimitive@CEnginePrimitiveRenderer@@QAEXAAVCEnginePrimitiveHandle@@K@Z 
+    others: {} 
+    landed leaf: [('CEnginePrimitiveRenderer_ClearChildPrimitive_00b31fa0.cpp', 'ClearChildPrimitive')]
+NEW 00b3a180 ?SetAttachedPrimitive@CEnginePrimitiveAttachmentManager@@QAEXAAVCEnginePrimitiveHandle@@AB 
+    others: {} 
+    landed leaf: [('CEnginePrimitiveAttachmentManager_SetAttachedPrimitive_00b3a180.cpp', 'SetAttachedPrimitive')]
+NEW 00b3b1f0 ?AllocateExternalTextureFromResourcePools@CEngineResourceManager@@QAEPAVCTexture@@KABVC2DE 
+    others: {} 
+    landed leaf: [('CEngineResourceManager_AllocateTexture_00b3b1f0.cpp', '?AllocateTexture@CEngineResourceManager')]
+NEW 00b3b5b0 ?FreeExternalTextureFromResourcePools@CEngineResourceManager@@QAEXPAVCTexture@@@Z 
+    others: {} 
+    landed leaf: [('CEngineResourceManager_FreeTexture_00b3b5b0.cpp', '?FreeTexture@CEngineResourceManager')]
+NEW 00b423b0 ?SetMapVisibilityAllMaps@CEngineWorldMap@@QAEX_N@Z 
+    others: {} 
+    landed leaf: [('CMapOwner00b423b0_SetMapVisibility_00b423b0.cpp', 'SetMapVisibility')]
+NEW 01436e60 ?g_pEngineShadowRenderer@@3PAVCEngineShadowRenderer@@A 
+    others: {'?g_pRenderSettings_01436e60@@3PAUSRenderSettings_01436e60@@A': ['00b99b50'], '?g_pShadowRenderer_01436e60@@3PAUCEngineShadowRendererView@@A': ['00b32660'], '?g_pOcclusionRenderer@@3PAUCEngineOcclusionRenderer@@A': ['00b33010'], '?g_pShadowRenderer_01436e60@@3PAVCEngineShadowRenderer@@A': ['00b444f0']} 
+    landed leaf: []
+NEW 01436e80 ?g_pEnginePrimitiveRenderer@@3PAVCEnginePrimitiveRenderer@@A 
+    others: {'?g_target@@3PAUCGlobalTarget@@A': ['00b23bc0'], '?g_pViewRecord_01436e80@@3PAUSViewRecord_01436e80@@A': ['00b23d00'], '?g_pViewRecord_01436E80@@3PAUSViewRecord_01436E80@@A': ['00b991d0'], '?g_PrimitiveRenderer@@3PAUCLocalDetailRenderer@@A': ['00bf9cc0'], '?g_pEngine_01436e80@@3PAUCEngine_01436e80@@A': ['00bfa8a0'], '?g_pMeshDetailManager@@3PAUCEngineMeshDetailManager@@A': ['00b24690'], '?g_pEngineRender_01436e80@@3PAUCEngineRenderGlobals@@A': ['00bcebe0'], '?g_pEnginePrimitiveRendererSharedData@@3PAUCEnginePrimitiveRendererSharedData@@A': ['00baa460'], '?g_pPrimitiveRenderer_01436e80@@3PAVCEnginePrimitiveRenderer@@A': ['00b9e950'], '?g_pPrimitiveRenderer_01436e80@@3PAUCEnginePrimitiveRendererSharedData@@A': ['00ba9360']} 
+    landed leaf: []
+NEW 01436eac ?g_pEngineSurfaceCompositionManager@@3PAVCEngineSurfaceCompositionManager@@A 
+    others: {'?g_pSurfaceComposition_01436eac@@3PAVCEngineSurfaceCompositionManager@@A': ['00b3b4f0'], '?g_pResourceBank_01436eac@@3PAVCResourceBank@@A': ['00becba0']} 
+    landed leaf: []

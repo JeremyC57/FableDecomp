@@ -16,6 +16,14 @@ class C3DBoundingBox {
 public:
     void BuildFromPoints(const std::vector<C3DVector>&);
     const C3DVector GetCenter() const { return (MaxCoord + MinCoord) * 0.5f; }
+    // CalcShortestDistanceToPointSquared: Ego_r `?CalcShortestDistanceToPointSquared@C3DBoundingBox@@QBEMABVC3DVector@@@Z`;
+    //   declared only -- its body carries the engine's hand-SSE kernel, so each retail_asm row that expands it defines it
+    //   (landed 0x00BF7DF0, chunk 721 0x00B46280).
+    float CalcShortestDistanceToPointSquared(const C3DVector& point) const;
+    // FableWin ?PeekMinCoord@C3DBoundingBox@@QBEABVC3DVector@@XZ / ?PeekMaxCoord@..: inline (no out-of-line copy in Fable.exe); the
+    // members are private, so callers that read the corners (GetLightsInArea 0x00B46280) go through them.
+    const C3DVector& PeekMinCoord() const { return MinCoord; }
+    const C3DVector& PeekMaxCoord() const { return MaxCoord; }
 #endif
 private:
     C3DVector MinCoord;

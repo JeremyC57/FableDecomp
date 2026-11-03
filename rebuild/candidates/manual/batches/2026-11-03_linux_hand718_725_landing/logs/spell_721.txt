@@ -1,0 +1,9 @@
+NEW 00a20970 ?SetGoal@CSteeringAgent@@QAEXABVC2DVector@@0@Z 
+    others: {'?SetGoal@CSteeringAgent@@QAEXABVCNavWayPoint@@0@Z': ['00a1e370']} 
+    landed leaf: []
+NEW 00b44fe0 ?ClipLightCountAndBuildLightArray@CEngineLightingManager@@AAEPAVCEngineLocalLightArray@@PA 
+    others: {} 
+    landed leaf: [('CEngineLightingManager_ClipLightCountAndBuildLightArray_00b44fe0.cpp', 'ClipLightCountAndBuildLightArray')]
+NEW 00b48f20 ?CreateMoreBlocks@?$CDynamicObjectHeap@$0M@$0BA@@@AAEXXZ 
+    others: {'?CreateMoreBlocks@?$CDynamicObjectHeap@$0M@$0BA@@@QAEXXZ': ['00b495c0']} 
+    landed leaf: [('CDynamicObjectHeap1216_CreateMoreBlocks_00b48f20.cpp', 'CreateMoreBlocks')]

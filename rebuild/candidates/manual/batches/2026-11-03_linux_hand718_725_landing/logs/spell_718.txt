@@ -1,0 +1,18 @@
+NEW 0075cd30 ?GetStartPos@CTCCameraPointScripted@@QBE?AVC3DVector@@PBV2@PBVCRightHandedSet@@@Z 
+    others: {} 
+    landed leaf: [('CTCCameraPointScripted_GetStartPos_0075cd30.cpp', 'GetStartPos')]
+NEW 0075cd90 ?GetEndPos@CTCCameraPointScripted@@QBE?AVC3DVector@@PBV2@PBVCRightHandedSet@@@Z 
+    others: {} 
+    landed leaf: [('CTCCameraPointScripted_GetEndPos_0075cd90.cpp', 'GetEndPos')]
+NEW 00851d30 ?SetCoordAxis@CScriptModuleBase@NCameraModes@@QAEXABVCRightHandedSet@@@Z 
+    others: {} 
+    landed leaf: [('NCameraModesCScriptModuleBase_SetCoordAxis_00851d30.cpp', 'SetCoordAxis')]
+NEW 009dd8f0 ?Draw2DText@CRenderManager2D@@QAE_NABVC2DVector@@VCWideString@@ABVCFontBank@@ABVCRGBColour 
+    others: {} 
+    landed leaf: [('CRenderManager2D_Draw2DText_009dd8f0.cpp', 'Draw2DText')]
+NEW 013b8384 ?PRenderManager@@3PAVCRenderManager@@A 
+    others: {'?g_FableDisplayPrimitive_013B8384@@3PAUFableDisplayPrimitive@@A': ['004022b0'], '?g_pDisplayCaps@@3PAUCDisplayCaps@@A': ['004179ee'], '?g_RenderManagerCore_013b8384@@3PAUCRenderManagerCore@@A': ['0069e980'], '?g_pRenderManager2D@@3PAVCRenderManager2D@@A': ['005bcafe']} 
+    landed leaf: []
+LEAF 00487b70 ?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ <- other spellings bound by {'?GetC@C@@QAEPAU1@XZ': ['0047db73'], '?GetPlayerCharacter@CPlayer@@QAEPAVCThing@@XZ': ['0047d9e3']}
+LEAF 00487dc0 ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ <- other spellings bound by {'?GetHeroThing@CPlayerView@@QAEPAVCThing@@XZ': ['00927c80']}
+LEAF 00487dd0 ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ <- other spellings bound by {'?GetControlledCreature@CPlayer@NCondition00935160@@QAEPAUCThing@2@XZ': ['00935160'], '?GetPlayerCharacter@CPlayerManager@@QAEPAVCThing@@XZ': ['00957f20'], '?GetControlledCreature@CPlayer@@QAEPAVCThing@@XZ': ['005a45f6']}

@@ -1,0 +1,46 @@
+{
+ "00b1bda0": [
+  [
+   "// Retail: Fable.exe (TLC, VC7.1) @ 0x00B1BDA0, 2770 bytes, `ret 8`.\n",
+   "// Retail: Fable.exe (TLC, VC7.1) @ 0x00B1BDA0, 2770 bytes, `ret 8`.\n// Retail-asm: 0x00B1BEAB `fistp dword ptr [esp+14h]` (and every later GFInterpolate rounding of this body) -- the engine's inline-asm\n//   float-to-long helper; VC7.1 emits no bare dword fistp from C++.\n// Helper (landing 2026-11-03): the retail inline-asm block is the shared engine/GFFloatToLongNear.h (two-path: the byte-matching asm,\n//   and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.\n"
+  ]
+ ],
+ "00b46280": [
+  [
+   "(box.MinCoord.X - LookupGridWorldX)",
+   "(box.PeekMinCoord().X - LookupGridWorldX)"
+  ],
+  [
+   "(box.MinCoord.Y - LookupGridWorldY)",
+   "(box.PeekMinCoord().Y - LookupGridWorldY)"
+  ],
+  [
+   "(box.MaxCoord.X - LookupGridWorldX)",
+   "(box.PeekMaxCoord().X - LookupGridWorldX)"
+  ],
+  [
+   "(box.MaxCoord.Y - LookupGridWorldY)",
+   "(box.PeekMaxCoord().Y - LookupGridWorldY)"
+  ]
+ ],
+ "0087aa10": [
+  [
+   "static const double TWO_PI=6.283185482025146484375;",
+   "const double TWO_PI=6.283185482025146484375;             // 0x0124F2B8 ?TWO_PI@@3NB (ESTABLISHED_SPELLINGS.tsv): a namespace-scope const (internal linkage, decorated name)"
+  ],
+  [
+   "TWO_PI made internal (static) so the row defines no external data.",
+   "TWO_PI is a namespace-scope const (internal linkage,\n//   decorated ?TWO_PI@@3NB, the established spelling; landing 2026-11-03: the `static` form bound a second name `_TWO_PI`)."
+  ]
+ ],
+ "0087aff0": [
+  [
+   "static const double TWO_PI=6.283185482025146484375;",
+   "const double TWO_PI=6.283185482025146484375;             // 0x0124F2B8 ?TWO_PI@@3NB (ESTABLISHED_SPELLINGS.tsv): a namespace-scope const (internal linkage, decorated name)"
+  ],
+  [
+   "TWO_PI made internal (static) so the row defines no external data.",
+   "TWO_PI is a namespace-scope const (internal linkage,\n//   decorated ?TWO_PI@@3NB, the established spelling; landing 2026-11-03: the `static` form bound a second name `_TWO_PI`)."
+  ]
+ ]
+}

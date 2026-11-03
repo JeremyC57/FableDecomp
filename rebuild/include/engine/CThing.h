@@ -140,6 +140,23 @@ public:
     void SetAsActivated(bool);                                   // Ego_r.pdb ?SetAsActivated@CThing@@QAEX_N@Z (row 0x00821010)
     // Header wave 2026-11-03 (row 0x00522A20 InitThingTypes registers it): Ego_r.pdb ?Alloc@CThing@@SIPAVCClass@@XZ.
     static CClass* __fastcall Alloc();
+    // Retail opt-in (2026-11-03, chunk 718 row 0x008A93A0): FableWin.pdb ?GetTypeFlags@CThing@@QBEKXZ (inline in retail:
+    // EntityWillTeleportToArea tests the +0x6C flags in place). A declaration with its body only: no layout change.
+    unsigned long GetTypeFlags() const { return ThingTypeFlags; }
+    // Retail opt-in (2026-11-03, chunk 720 rows 0x005C552C / 0x005C36C2): Ego_r.pdb / FableWin.pdb
+    // ?GetTCGraphicAppearance@CThing@@QAEPAVCTCGraphicAppearance@NGraphicAppearance@@XZ (and the QBE const twin), inline in
+    // retail (`mov ecx,[esi+64h]` straight off the thing before SetScale). Declarations with bodies only: no layout change.
+    NGraphicAppearance::CTCGraphicAppearance* GetTCGraphicAppearance() { return PTCGraphicAppearance; }
+    const NGraphicAppearance::CTCGraphicAppearance* GetTCGraphicAppearance() const { return PTCGraphicAppearance; }
+    // ?GetPlayerNumber@CThing@@QBEKXZ (Ego_r.pdb / FableWin.pdb), inline in retail (`movsx eax,byte ptr [ecx+90h]`, 0x005C37CC).
+    unsigned long GetPlayerNumber() const { return PlayerNumber; }
+    void SetInLimbo(bool);                                       // 0x004C8CF0 ?SetInLimbo@CThing@@QAEX_N@Z (Ego_r.pdb / FableWin.pdb)
+    // Retail (2026-11-03, chunk 720 row 0x0065B854 CTCVillage::AddThingToVillage; was FABLE_RETAIL_CTHING_VILLAGE, folded into this class branch at landing): ?HasScriptThing@CThing@@QBE_NXZ (Ego_r.pdb
+    // 0x004C9A30; out of line in retail at 0x004C7E70, `mov ecx,esi; call`) and FableWin.pdb's inline
+    // ?SetPersistOnUnloadWhenInLimbo@CThing@@QAEX_N@Z (0x0215EDB0, emitted in the CTCVillage TU right after AddThingToVillage;
+    // retail `or byte ptr [esi+92h],40h` = bit 14 of the +0x91 bitfield run). Declarations with bodies only: no layout change.
+    bool HasScriptThing() const;                                 // 0x004C7E70
+    void SetPersistOnUnloadWhenInLimbo(bool persist) { PersistOnUnloadWhenInLimbo = persist; }
 #endif
 protected:
     CWorld& GetWorld();

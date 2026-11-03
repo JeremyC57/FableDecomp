@@ -1,0 +1,29 @@
+addr       parity           behav  name
+004fc6b0   RELOCATION_MATCH PASS   DrawIsPosInMap
+0051cdf0   WARN SHARED_HEADER_AVAILABLE C3DVector
+0051cdf0   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+0051cdf0   WARN SHARED_HEADER_AVAILABLE C2DCoordI
+0051cdf0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+0051cdf0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0051cdf0   WARN SHARED_HEADER_AVAILABLE CMapInfo
+0051cdf0   WARN SHARED_HEADER_AVAILABLE CRegion
+0051cdf0   WARN SHARED_HEADER_AVAILABLE CThingMapManager
+0051cdf0   WARN RELOC_NAME: ??_ECWorldMap@@UAEPAXI@Z -> 0051d1e0 labelled 'CWorldMap::`scalar_deleting_destructor''
+0051cdf0   RELOCATION_MATCH PASS   `vector deleting destructor'
+004084b0   RELOCATION_MATCH PASS   GetMaxEffectsDetail
+00408500   RELOCATION_MATCH PASS   GetMaxTextureDetail
+00408550   RELOCATION_MATCH PASS   GetMaxShadowDetail
+004085a0   RELOCATION_MATCH PASS   GetMaxMeshDetail
+004ff750   RELOCATION_MATCH PASS   CreateRelevantPersonAndUpdateStats
+00501150   WARN RELOC_NAME: ??$__uninitialized_fill_n@PAVCLevelFiles@CObject@CLevelLoader@@IV123@@std@@YIPAVCLevelFiles@CObject@CLevelLoader@@PAV123@IABV123@ABU__false_type@0@@Z -> 00513570 labelled 'std::__uninitialized_fill_n<CLevelLoader::CObject::CLevelFiles*,unsigned int,CLevelLoader::CObject::CLevelFiles>'
+00501150   RELOCATION_MATCH PASS   LoadLevelFromFiles
+
+WINS: 8
+  004fc6b0 RELOCATION_MATCH CWorldMap::?DrawIsPosInMap@CWorldMap@@UBE_NABVC3DVector@@@Z
+  0051cdf0 RELOCATION_MATCH CWorldMap::??_ECWorldMap@@W3AEPAXI@Z
+  004084b0 RELOCATION_MATCH CUserProfileManager::?GetMaxEffectsDetail@CUserProfileManager@@QBEMXZ
+  00408500 RELOCATION_MATCH CUserProfileManager::?GetMaxTextureDetail@CUserProfileManager@@QBEMXZ
+  00408550 RELOCATION_MATCH CUserProfileManager::?GetMaxShadowDetail@CUserProfileManager@@QBEMXZ
+  004085a0 RELOCATION_MATCH CUserProfileManager::?GetMaxMeshDetail@CUserProfileManager@@QBEMXZ
+  004ff750 RELOCATION_MATCH _global::?CreateRelevantPersonAndUpdateStats@@YIPAVCThingAICreature@@MMJJAAJ0ABVC3DVector@@ABVCThingAICreatureInit@@PAVCTCVillage@@AAV?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@4_N@Z
+  00501150 RELOCATION_MATCH CWorldMap::?LoadLevelFromFiles@CWorldMap@@IAEXJV?$CCountedPointer@VCAFile@@@@00W4ELoadType@1@@Z

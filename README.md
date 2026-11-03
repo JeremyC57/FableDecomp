@@ -70,13 +70,13 @@ a worklist, not the intended end state.
 | Snapshot | Current result |
 |---|---:|
 | Catalogued retail functions | **49,568** |
-| Landed byte-matching C++ (genuine) | **46,428 · 93.67%** |
-| Retail function bytes reproduced | **5,536,043 · 54.12%** |
+| Landed byte-matching C++ (genuine) | **46,518 · 93.85%** |
+| Retail function bytes reproduced | **5,559,826 · 54.35%** |
 | Accepted analysis naming quality | **99.211%** |
 | Runnable milestone | **Boot movies + interactive frontend, Saved Games, and Options screens** |
 
-Landed byte-matching C++ covers **93.67%** of the 49,564-function catalog by count
-and **54.12%** of retail function bytes: the functions still to do are the large ones.
+Landed byte-matching C++ covers **93.85%** of the 49,564-function catalog by count
+and **54.35%** of retail function bytes: the functions still to do are the large ones.
 The first 5% byte-match milestone has been passed.
 
 <details>
@@ -93,11 +93,11 @@ parity, coverage, and naming reports:
 | Analysis DB | Usable reconstruction/navigation names | 99.913% |
 | Analysis DB | Calling convention known | 77.746% |
 | Analysis DB | Complete non-`undefined` prototype | 69.174% |
-| Reconstruction | Landed rows (VC7.1 MATCH or RELOCATION_MATCH **and** behaviour-gated) | **53,927** |
-| Reconstruction | Landed byte-matching genuine C++, original catalog | **46,428** (93.67%) |
-| Reconstruction | Landed byte-matching genuine C++, all 57,609 known functions | 53,914 (93.59%) |
-| Reconstruction | Retail function bytes reproduced by genuine C++ | 5,536,043 (54.12%) |
-| Reconstruction | — landed rows using retail inline asm (grade `retail_asm`, counted as genuine) | 181 |
+| Reconstruction | Landed rows (VC7.1 MATCH or RELOCATION_MATCH **and** behaviour-gated) | **54,018** |
+| Reconstruction | Landed byte-matching genuine C++, original catalog | **46,518** (93.85%) |
+| Reconstruction | Landed byte-matching genuine C++, all 57,609 known functions | 54,005 (93.74%) |
+| Reconstruction | Retail function bytes reproduced by genuine C++ | 5,559,826 (54.35%) |
+| Reconstruction | — landed rows using retail inline asm (grade `retail_asm`, counted as genuine) | 187 |
 | Reconstruction | — landed rows that are toolchain/vendor library bytes (grade `toolchain_library`, counted as genuine) | 441 |
 | Reconstruction | — landed VC7.1 compiles of vendor CRT source (`// Library:` line, counted as genuine) | 8 |
 | Reconstruction | — landed hand-written asm bakes (grade `asm_bake`, **not** counted as reconstruction) | 13 |
@@ -117,7 +117,7 @@ analysis rows from `rebuild/manifest/status.json`, `rebuild/compile-gate/retail-
 naming-quality reports (rows marked 2026-09 snapshot are not refreshed by the Linux landing lane).
 
 Generated agent output is tracked separately and is never counted merely
-because a structural checker accepted it. The 93.67% figure is intentionally the strict,
+because a structural checker accepted it. The 93.85% figure is intentionally the strict,
 whole-executable denominator; the byte figure sizes each unlanded function to the next function start, an upper bound. Boot-path figures are a separate view of
 the 3,952-byte `GFMain` coordinator, not an estimate of total engineering time.
 The C++23 startup figure is deliberately separate too: exact x86 parity and

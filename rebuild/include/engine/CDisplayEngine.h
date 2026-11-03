@@ -21,6 +21,14 @@ class CWorld;
 #pragma pack(push, 1)
 class CDisplayEngine {
 public:
+#ifdef FABLE_RETAIL_CDISPLAYENGINE
+    // Retail opt-in (chunk 725): FableWin.pdb members, retail addresses. Both are the Engine3D forwards of
+    // CMainGameComponent::PreChangeResolution (inlined in SetExclusiveMode 0x004163B7 / SetDisplayMode / AppReinitFunc) and
+    // CMainGameComponent::PostChangeResolution 0x00416365 (ecx = PDisplayEngine +0x28). Define FABLE_RETAIL_CIENGINE for the
+    // polymorphic Engine3D.
+    void PreChangeResolution();                                         // 0x00434A10 ?PreChangeResolution@CDisplayEngine@@QAEXXZ
+    void PostChangeResolution(unsigned long, unsigned long, unsigned long);   // 0x00434A20 ?PostChangeResolution@CDisplayEngine@@QAEXKKK@Z
+#endif
     void*                   __vftable;                       // +0x00 vptr, or first dword of a flattened base subobject
     unsigned long           EnginePreloadFlags;              // +0x04
     CMainGameComponent*     Component;                       // +0x08

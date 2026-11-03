@@ -5,6 +5,7 @@
 // Retail opt-in (Codex pass11): original lib_coord.hpp100..103,314..322;
 // user copy ctor and arithmetic confirmed by UI hidden-result call sites.
 #ifdef FABLE_RETAIL_C2DVECTOR
+#include <math.h>
 // Retail opt-in (retry11b, row 0x00631C60): C2DVector is declared byte-packed (alignment 1). Evidence: retail
 // NUISystem::CUIDef::Transfer 0x00631C60 transfers PositionOffset.X/.Y at +0x142/+0x146 (`lea eax,[esi+142h]`,
 // `lea ecx,[esi+146h]` -> Transfer<float> 0x00431061) right after Inverted at +0x141; Ego_r.pdb places the same member
@@ -27,6 +28,10 @@ public:
     // FableWin ?GetSquaredMagnitude@C2DVector@@QBEMXZ (0x021ED350), inline in retail (0x00B3BE10 BuildAlphaStippleTexture
     // expands it; X*X+Y*Y, (X*X+Y*Y) and Y*Y+X*X give the same bytes there).
     float GetSquaredMagnitude() const { return X*X+Y*Y; }
+    // Ego_r.pdb / FableWin.pdb ?GetMagnitude@C2DVector@@QBEMXZ, inline in retail: CNavigatorAStar::UpdateGoal 0x00A1E030 squares
+    // Y then X, adds, and runs fsqrt through the float overload (`fsqrt ; fstp st(2) ; fstp st(0)`, the dead difference
+    // vector popped under the result), which `(float)sqrt(X*X+Y*Y)` does not give (it stores before popping).
+    float GetMagnitude() const { return sqrtf(X*X+Y*Y); }
 };
 #pragma pack(pop)
 #else

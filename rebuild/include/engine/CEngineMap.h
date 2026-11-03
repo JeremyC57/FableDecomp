@@ -24,6 +24,12 @@ public:
     };
     CEngineMap(const CIDrawMap*,long,long,long,long,long,CCharString,bool);
     ~CEngineMap();
+#ifdef FABLE_RETAIL_CENGINEMAP
+    // Retail opt-in (chunk 723): the inline LandscapeMap accessors (Ego_r.pdb / FableWin.pdb ?GetLandscapeMap@CEngineMap@@QBEPAVCEngineLandscapeMap@@XZ,
+    // ?SetLandscapeMap@CEngineMap@@QAEXPAVCEngineLandscapeMap@@@Z); ~CEngineLandscapeRenderer 0x00B67920 expands both on +0x00.
+    CEngineLandscapeMap* GetLandscapeMap() const { return LandscapeMap; }
+    void SetLandscapeMap(CEngineLandscapeMap* map) { LandscapeMap = map; }
+#endif
 private:
     // Layout: original nested struct TPI 0x5a920/complete record. Every
     // destination offset is directly checked against this row's stores.

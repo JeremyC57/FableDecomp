@@ -89,6 +89,14 @@ class CWorldMap;
 #ifdef FABLE_RETAIL_PLAYER
 class CThingPlayerCreature;                                     // chunk 709: GetPControlledCreature's return type
 enum EPlayerMode;                                               // MS forward enum (2026-11-03): GetCurrentMode / AddMode
+class CThing;                                                   // chunk 718: GetPPlayerCharacterThing's return type
+class C2DBoxF; class CFontBank;                               // chunk 718: DrawFreeCamDebug's parameter types
+#ifdef FABLE_RETAIL_CCAMERA
+#include "engine/CCamera.h"                                     // chunk 718: the three camera members' real type (below)
+#endif
+#ifdef FABLE_RETAIL_CINTELLIGENTPOINTER
+#include "engine/CIntelligentPointer.h"                         // chunk 718: the two pointer members' real type (below)
+#endif
 #endif
 #pragma pack(push, 1)
 class CPlayer {
@@ -112,6 +120,14 @@ public:
     // ...QAEJXZ / ...QAEXJ_N@Z spellings are long-typed stand-ins.
     EPlayerMode GetCurrentMode() const;                          // 0x00633BE0
     void AddMode(EPlayerMode mode, bool);                        // 0x006345C0
+    // Retail opt-in (chunk 718): the three character getters, out of line in Ego_r.pdb and retail, in donor order (Ego_r
+    // 0x004933F0 / 0x00493650 / 0x00493660 = retail 0x00487B70 / 0x00487DC0 / 0x00487DD0, the neighbours SetPlayerCharacter
+    // 0x00493400 / SetControlledCreature 0x00493570 between them in both): ?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ
+    // (`add ecx,34h ; jmp GetPItem`: PlayerCharacter), ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ (+0x2c).
+    CThing* GetPPlayerCharacterThing() const;                    // 0x00487B70
+    const CThingPlayerCreature* PeekPControlledCreature() const; // 0x00487DD0
+    // Retail opt-in (chunk 718): Ego_r.pdb / FableWin.pdb ?DrawFreeCamDebug@CPlayer@@QBEXPBVC2DBoxF@@ABVCFontBank@@@Z (retail 0x00487570).
+    void DrawFreeCamDebug(const C2DBoxF* box, const CFontBank& font) const;   // 0x00487570
 #endif // FABLE_RETAIL_PLAYER
     void*                                                        __vftable; // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                                                _pad_0x04[0x4]; // +0x04
@@ -126,12 +142,27 @@ public:
     CThingManager*                                               ThingManager; // +0x20
     CWorldMap*                                                   PWorldMap; // +0x24
     long                                                         Number; // +0x28
+#if defined(FABLE_RETAIL_PLAYER) && defined(FABLE_RETAIL_CINTELLIGENTPOINTER)
+    // Retail opt-in (chunk 718): with the retail (packed, 8-byte) CIntelligentPointer model the two members carry their Ego_r.pdb
+    // type; same offsets and size as the opaque bytes below.
+    CIntelligentPointer<CThingPlayerCreature>                    ControlledCreature; // +0x2c
+    CIntelligentPointer<CThingPlayerCreature>                    PlayerCharacter; // +0x34
+#else
     unsigned char                                                ControlledCreature[0x8]; // +0x2c CIntelligentPointer<CThingPlayerCreature>
     unsigned char                                                PlayerCharacter[0x8]; // +0x34 CIntelligentPointer<CThingPlayerCreature>
+#endif
     long                                                         PlayerRespawnDelay; // +0x3c
+#if defined(FABLE_RETAIL_PLAYER) && defined(FABLE_RETAIL_CCAMERA)
+    // Retail opt-in (chunk 718, row 0x00487570): the three cameras carry their Ego_r.pdb type (engine/CCamera.h, sizeof 0x38);
+    // same offsets and size as the opaque bytes below.
+    CCamera                                                      CurrentFreeCamera; // +0x40
+    CCamera                                                      FreeCamera; // +0x78
+    CCamera                                                      OldFreeCamera; // +0xb0
+#else
     unsigned char                                                CurrentFreeCamera[0x38]; // +0x40 CCamera
     unsigned char                                                FreeCamera[0x38]; // +0x78 CCamera
     unsigned char                                                OldFreeCamera[0x38]; // +0xb0 CCamera
+#endif
     unsigned char                                                RespawnInfo[0x10]; // +0xe8 CThingRespawnInfo
     CHeroLogBook*                                                PHeroLogBook_Data; // +0xf8 CCountedPointer<CHeroLogBook>::Data
     CCPPointerInfo*                                              PHeroLogBook_Info; // +0xfc CCountedPointer<CHeroLogBook>::Info

@@ -13,12 +13,30 @@
 #include "engine/CEngineComponent.h"
 #include "engine/CAsyncLoadingProcessCallback.h"
 #include "engine/CArray.h"
+#include "engine/CCountedPointer.h"
 class CMeshDataBank; class CGraphicDataBank; class CFontBank;
+class CShaderResource; class CGPUScratchBufferTextureManager;
+enum EShaderBankNo;                                          // MS forward enums (chunk 723; no enumerator name recovered)
+enum EIndexBufferPool;
 class CEngineResourceManager : public CEngineComponent, public CAsyncLoadingProcessCallback {
 public:
     virtual ~CEngineResourceManager();
     virtual void ProcessLoading();
     virtual unsigned long PeekSceneFilterFlags() const;
+    // Chunk 723 (rows 0x00BC14E0 / 0x00B71880; folded into this branch at landing): FableWin.pdb inlines
+    // ?GetVShaderResource@CEngineResourceManager@@QBEPBVCShaderResource@@W4EShaderBankNo@@@Z (0x00BC14E0 reads bank 21 at +0x2A68),
+    // ?GetPShaderResource@CEngineResourceManager@@QBEPBVCShaderResource@@XZ (+0x2A98) and the scratch-manager member read
+    // (+0x3190: 0x00B71880 / 0x00B6D630 / 0x00B23F60); Ego_r.pdb / FableWin.pdb out-of-line GetIndexBufferMemPool 0x00B3B0A0,
+    // GetIndexBufferUsage 0x00B3B060, GetVertexBufferUsage 0x00B3B030.
+    EIndexBufferPool GetIndexBufferMemPool();                            // 0x00B3B0A0
+    unsigned long GetIndexBufferUsage();                                 // 0x00B3B060
+    unsigned long GetVertexBufferUsage();                                // 0x00B3B030
+    const CShaderResource* GetVShaderResource(EShaderBankNo bank) const { return VShaderResources[bank].Get(); }
+    const CShaderResource* GetPShaderResource() const { return ShaderResourcePixel.Get(); }
+    CGPUScratchBufferTextureManager& GetGPUScratchBufferTextureManager()
+    {
+        return *(CGPUScratchBufferTextureManager*)GPUScratchBufferTextureManager;
+    }
 private:
     void BuildAlphaStippleTexture(long,CArray<unsigned char>&);
     CMeshDataBank* MeshBanks[3];                             // +0x10
@@ -33,7 +51,8 @@ private:
     CGraphicDataBank* MainGraphicBank;
     const CFontBank* EngineFont;
     unsigned char VShaderBanks[27*0x128],ShaderBankPixel[0x128];   // CShaderDataBank
-    unsigned char VShaderResources[27*8],ShaderResourcePixel[8];   // CCountedPointer<CShaderResource>
+    CCountedPointer<CShaderResource> VShaderResources[27];  // +0x29C0 (chunk 723: 0x00BC14E0 bank 21 at +0x2A68)
+    CCountedPointer<CShaderResource> ShaderResourcePixel;    // +0x2A98
     double MaxLoadingTime;
     unsigned long VertexBufferUsageFlags;
     unsigned char StipleFadeTexture[8];                      // CTexture
