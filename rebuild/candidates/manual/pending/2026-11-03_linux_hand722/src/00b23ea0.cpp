@@ -1,0 +1,29 @@
+// CEngine::SetGlobalLightingParameters(const C3DVector& lightDirection, const CRGBFloatColour& diffuse, const CRGBFloatColour& ambient, const CRGBFloatColour& backlight) -- set the global light direction and colours on the lighting manager (a CIEngine interface forwarder)
+// Leaf: ?SetGlobalLightingParameters@CEngine@@UAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z
+// Flags: none
+// Grade: RELOCATION_MATCH (q.py, cl 13.10.3077, no flags)
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00B23EA0, length 11 bytes: `mov ecx,[0x01436E9C] ; jmp 0x00B47280`.
+// Identity: slot 66 of the CEngine vtable 0x012A0F3C (RTTI CEngine : CIEngine) points here; Ego_r.pdb and FableWin.pdb both carry
+//   ?SetGlobalLightingParameters@CEngine@@UAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z (the virtual CIEngine method, `this` never read).
+// Callee: CEngineLightingManager::SetGlobalLightingParameters @ 0x00B47280, Ego_r + FableWin ?SetGlobalLightingParameters@CEngineLightingManager@@QAEXABVC3DVector@@ABVCRGBFloatColour@@11@Z;
+//   its `ret 10h` pops the same 4 stack arguments, so VC7.1 passes them through untouched and tail-jumps.
+// Global: the engine component pointer 0x01436E9C (CEngineLightingManager*) under its landed spelling g_pEngineLightingManager; it has no PDB data symbol
+//   (CEngine::AddEngineComponent<T>(T*, T*&, unsigned char) publishes each component into its own global).
+// Shape: a virtual member of a local CEngine model: the shared engine/CEngine.h carries the vptr as a data member, so it cannot
+//   declare the CIEngine virtual (same model as the landed siblings 0x00B239C0 / 0x00B23CB0 / 0x00B25D20).
+class C3DVector;
+class CRGBFloatColour;
+
+class CEngineLightingManager { public:
+    void SetGlobalLightingParameters(const C3DVector& lightDirection, const CRGBFloatColour& diffuse, const CRGBFloatColour& ambient, const CRGBFloatColour& backlight);   // 0x00B47280
+};
+extern CEngineLightingManager* g_pEngineLightingManager;   // 0x01436E9C
+
+class CEngine { public:                      // vtable 0x012A0F3C, slot 66
+    virtual void SetGlobalLightingParameters(const C3DVector& lightDirection, const CRGBFloatColour& diffuse, const CRGBFloatColour& ambient, const CRGBFloatColour& backlight);
+};
+
+void CEngine::SetGlobalLightingParameters(const C3DVector& lightDirection, const CRGBFloatColour& diffuse, const CRGBFloatColour& ambient, const CRGBFloatColour& backlight)
+{
+    g_pEngineLightingManager->SetGlobalLightingParameters(lightDirection, diffuse, ambient, backlight);
+}

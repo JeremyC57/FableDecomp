@@ -1,0 +1,29 @@
+address	name	evidence
+0x00B36EC0	CEnginePrimitiveRendererSharedData::~CEnginePrimitiveRendererSharedData	Ego_r + FableWin ??1CEnginePrimitiveRendererSharedData@@UAE@XZ; called by its ??_G 0x00B37410 and ~CEnginePrimitiveRenderer 0x00B33520; destroys the 40 Ego_r CPixelShader members +0xDC..+0x214
+0x00B67920	CEngineLandscapeRenderer::~CEngineLandscapeRenderer	Ego_r + FableWin ??1CEngineLandscapeRenderer@@UAE@XZ; stores vtable 0x012A2B54 first (RTTI CEngineLandscapeRenderer : CEngineComponent)
+0x00B6D6D0	CEngineWaterRenderer::WorldFrameUpdate	slot 7 of CEngineWaterRenderer vtable 0x012A3364; Ego_r + FableWin ?WorldFrameUpdate@CEngineWaterRenderer@@UAEX_N@Z; forwards to Settings (+0x280)
+0x00B6EDF0	CEngineWaterRenderer::BuildConstantBuffers	Ego_r + FableWin ?BuildConstantBuffers@CEngineWaterRenderer@@AAEXXZ; sole caller the ctor 0x00B73760; fills exactly the three buffers DeleteConstantBuffers 0x00B6D4B0 releases
+0x00B71880	CEngineWaterRenderer::~CEngineWaterRenderer	Ego_r + FableWin ??1CEngineWaterRenderer@@UAE@XZ; stores vtable 0x012A3364 first; only caller ??_G 0x00B7EE60 (slot 0)
+0x00BC14E0	CEnginePrimitiveManagerParticleSpriteGroup::CEnginePrimitiveManagerParticleSpriteGroup	Ego_r + FableWin ??0CEnginePrimitiveManagerParticleSpriteGroup@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z; stores vtable 0x012A6140 after the CEnginePrimitiveManager base ctor; member offsets = Ego_r order with 12-byte CArrays
+0x00C2A890	CNavigatorSwitch::SendStateAndReset	descriptive (libpk, no PDB/RTTI): calls the landed CNavigatorSwitch::SendState 0x00C2A7A0 between two message senders; catalog "CEngineWaterRenderer::LoadSea" is propagated
+0x00B6D4B0	CEngineWaterRenderer::DeleteConstantBuffers	Ego_r + FableWin ?DeleteConstantBuffers@CEngineWaterRenderer@@AAEXXZ; body = the three Uninitialise calls inlined in 0x00B71880
+0x00BE95F0	CEngineWaterSettings::WorldFrameUpdate	Ego_r + FableWin ?WorldFrameUpdate@CEngineWaterSettings@@QAEX_N@Z; tail target of 0x00B6D6D0 on this+0x280, `ret 4`
+0x00F37030	CGPUScratchBufferTextureManager::FreeMemoryPage	Ego_r + FableWin ?FreeMemoryPage@CGPUScratchBufferTextureManager@@QAEXJ@Z; called on resource manager +0x3190 with the water dynamic page handle (0x00B71880, 0x00B6D630)
+0x00BACDB0	CEnginePrimitiveManager::CEnginePrimitiveManager	Ego_r + FableWin ??0CEnginePrimitiveManager@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z; base ctor of 0x00BC14E0, `ret 4`
+0x00B6CBD0	std::vector<CVertexShader>::resize	STLport 4.6 vector::resize(size_type) (constructs a default CVertexShader 0x00A62FB0 then inserts/erases); called with 5 on the three CArray<CVertexShader> of 0x00BC14E0
+0x00A5D5F0	CShaderResource::GetVertexShader	FableWin ?GetVertexShader@CShaderResource@@QBE?AVCVertexShader@@ABVCCharString@@@Z; by-value result (hidden pointer + name), called on VShaderResources[21] (0x00BC14E0) / [1] (0x00B8B630)
+0x00A5D720	CShaderResource::GetPixelShader	FableWin ?GetPixelShader@CShaderResource@@QBE?AVCPixelShader@@ABVCCharString@@@Z; called on ShaderResourcePixel (+0x2A98)
+0x00987E50	CPixelShader::operator=	Ego_r + FableWin ??4CPixelShader@@QAEXABV0@@Z (returns void, as the body: eax is not `this`); same sequence inlined in 0x00BC14E0
+0x00F3EA50	CTriangleStripifier2::GenerateTriangleListAndStrip	FableWin ?GenerateTriangleListAndStrip@CTriangleStripifier2@@QAEXAAV?$CArray@G@@00@Z (non-virtual index-array overload); 0x00B6EDF0 passes three CArray<unsigned short>
+0x00B7AE00	CTriangleStripifier2::`scalar deleting destructor'	slot 0 of vtable 0x012A331C (RTTI CTriangleStripifier2 : CTriangleStripifierBase : CBaseClassNonCopyable); body = ~CBaseClassNonCopyable 0x0099A300 + delete
+0x00AC1EC0	CIndexBuffer::CIndexBuffer	Ego_r + FableWin ??0CIndexBuffer@@QAE@XZ; member ctor at +0x94 in 0x00BC14E0
+0x00AC1F70	CIndexBuffer::Initialise	Ego_r + FableWin ?Initialise@CIndexBuffer@@QAEXKKW4EIndexBufferFormat@@W4EIndexBufferPool@@W4EPrimitiveType@@@Z; 5 args (bytes, usage, 0x65 INDEX16, pool, primitive type)
+0x00AC1FB0	CIndexBuffer::Lock	Ego_r + FableWin ?Lock@CIndexBuffer@@QAEPAEKKK@Z
+0x00AC1F00	CIndexBuffer::Unlock	Ego_r + FableWin ?Unlock@CIndexBuffer@@QAEXXZ; IDirect3DIndexBuffer9::Unlock (slot 12, +0x30) on +0x04; catalog "CVertexBufferWin32::DoUnlock" wrong
+0x00AC1F10	CIndexBuffer::GetSize	Ego_r ?GetSize@CIndexBuffer@@QBEJXZ; IDirect3DIndexBuffer9::GetDesc (+0x34) and returns D3DINDEXBUFFER_DESC.Size
+0x00A63150	CVertexBufferWin32::Initialise	Ego_r + FableWin ?Initialise@CVertexBufferWin32@@QAE_NW4EVertexType@@JJKW4EVertexBufferPool@@@Z; 5 args in 0x00B6EDF0
+0x00AC20A0	CVertexBufferBase::Lock	Ego_r + FableWin ?Lock@CVertexBufferBase@@QAEPAEKKK@Z; body `jmp [vtbl+4]` = DoLock slot 1 of the CVertexBufferBase hierarchy
+0x00AC20B0	CVertexBufferBase::Unlock	Ego_r + FableWin ?Unlock@CVertexBufferBase@@QAEXXZ; body `jmp [vtbl+8]` = DoUnlock slot 2
+0x00B3B0A0	CEngineResourceManager::GetIndexBufferMemPool	Ego_r + FableWin ?GetIndexBufferMemPool@CEngineResourceManager@@QAE?AW4EIndexBufferPool@@XZ; returns 1, passed as the pool argument of CIndexBuffer::Initialise
+0x00B3B060	CEngineResourceManager::GetIndexBufferUsage	Ego_r + FableWin ?GetIndexBufferUsage@CEngineResourceManager@@QAEKXZ; passed as the usage argument of CIndexBuffer::Initialise
+0x00B3B030	CEngineResourceManager::GetVertexBufferUsage	Ego_r + FableWin ?GetVertexBufferUsage@CEngineResourceManager@@QAEKXZ; passed as the usage argument of CVertexBufferWin32::Initialise (catalog "GetIndexBufferUsage" wrong)

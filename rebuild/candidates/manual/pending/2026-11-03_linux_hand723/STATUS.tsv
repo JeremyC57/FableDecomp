@@ -1,0 +1,14 @@
+address	attempts	grade	residue	lever
+00b36ec0	3	RELOCATION_MATCH	-	implicit destructor emitted out of line by defining the PDB constructor in the TU (a user `~X(){}` adds the vtable store, 1351v1345); members from the hand-back CPixelShader.h; test PASS; needs hdr overlay
+00b67920	3	RELOCATION_MATCH	-	CEngineWorldMap::GetMapCount() as `MapList.size()` (finish loaded first; `end()-begin()` gave 1296v1294); retail branches CENGINELANDSCAPERENDERER / CENGINEWORLDMAP / CENGINEMAP; test PASS; needs hdr overlay
+00b6d6d0	2	RELOCATION_MATCH	-	virtual slot 7 forwarding to the embedded Settings (+0x280) CEngineWaterSettings::WorldFrameUpdate; test PASS; needs hdr overlay
+00b6edf0	18	DIFFER	3144v3144: 8 store-order swaps (outer-loop head y*17 vs x=0 store; 7 vertex-field stores of the 14-vertex quad fill)	parked in differ/; C3DTriangle2::SetVertexIndex per index and CGenericVertex setters (position, UV, colour) closed 64 of 72 diff lines
+00b70230	0	NOT_DRAFTED	render-state heavy float renderer (2138 bytes); see NOTES	-
+00b70a90	0	NOT_DRAFTED	render-state heavy float renderer (3567 bytes); see NOTES	-
+00b71880	2	RELOCATION_MATCH	-	implicit member destruction under the typed FABLE_RETAIL_CENGINEWATERRENDERER branch; scratch manager through FABLE_RETAIL_CENGINERESOURCEMANAGER (+0x3190); test PASS; needs hdr overlay
+00b751f0	0	NOT_DRAFTED	render-state heavy float renderer (2722 bytes); see NOTES	-
+00b761d0	0	NOT_DRAFTED	render-state heavy float renderer (2531 bytes); see NOTES	-
+00b77370	0	NOT_DRAFTED	render-state + inline graphic-bank texture fetches (2734 bytes); see NOTES	-
+00bc04f0	0	NOT_DRAFTED	render-state heavy sprite renderer (3751 bytes); see NOTES	-
+00bc14e0	3	RELOCATION_MATCH	-	CArray index operators through begin() (FABLE_RETAIL_CARRAY) fold the element offset into the inlined operator=; CVertexBufferWin32 ctor clears PVertexBuffer/Stride after its vtable store; test PASS; needs hdr overlay
+00c2a890	1	RELOCATION_MATCH	-	libpk member (descriptive name), unsigned char state argument; test PASS

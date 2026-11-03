@@ -1,0 +1,33 @@
+address	probe	change	grade	note
+00c2a890	g1	draft: SendMessage012b4168(); SendState(m_state); m_state=0; SendMessage012b4170()	RELOCATION_MATCH	no overlay
+00b6d6d0	g1	Settings.WorldFrameUpdate(force) on the typed retail branch	RELOCATION_MATCH	overlay
+00b6d6d0	g2	regrade with the final hdr overlay	RELOCATION_MATCH	-
+00b36ec0	g1	user `~CEnginePrimitiveRendererSharedData(){}`	DIFFER(1351v1345)	extra vtable store
+00b36ec0	g2	implicit dtor + defined PDB ctor in the TU	RELOCATION_MATCH	-
+00b36ec0	g3	local CPixelShader model replaced by hdr/engine/CPixelShader.h (Release/AddReference)	RELOCATION_MATCH	-
+00b71880	g1	DeleteConstantBuffers + UninitialiseDynamicTextures inline, implicit members	RELOCATION_MATCH	local resource-manager model
+00b71880	g2	local CEngineResourceManager replaced by FABLE_RETAIL_CENGINERESOURCEMANAGER branch	RELOCATION_MATCH	-
+00b67920	g1	GetMapCount(){return end()-begin();}	DIFFER(1296v1294)	begin kept across loop
+00b67920	g2	GetMapCount(){return MapList.size();}	RELOCATION_MATCH	-
+00b67920	g3	regrade with the final hdr overlay	RELOCATION_MATCH	-
+00bc14e0	g1	draft with typed retail branches, Release() dtors	DIFFER(3008v2970)	`add esi,8` per element; VB ctor store order
+00bc14e0	g2	VB: base ctor Length/Type, Win32 ctor PVertexBuffer/Stride; element [2] through vector::operator[] (probe)	DIFFER(3005v2970)	probe element folds
+00bc14e0	g3	CArray::operator[] via *(begin()+i) under FABLE_RETAIL_CARRAY	RELOCATION_MATCH	3 landed FABLE_RETAIL_CARRAY rows still RELOCATION_MATCH
+00b6edf0	g1	first draft (y*17+x, p[i]=v indices, field-order vertices)	DIFFER(3144v3144)	add order + store scheduling
+00b6edf0	g2	x + y*17, vertex X,Y,Z,U,V,Colour	DIFFER(3144v3144)	74 diff lines
+00b6edf0	g3	*indices++ / ++v pointer walks	DIFFER(3105v3144)	304 lines, worse
+00b6edf0	g4	triangles[i] = C3DTriangle2(a,b,c)	DIFFER(3268v3144)	temporaries, worse
+00b6edf0	g5	C3DTriangle2 SetA/SetB/SetC	DIFFER(3144v3144)	74 lines
+00b6edf0	g6	probe /G7	DIFFER(3130v3144)	113 lines (flag probe only)
+00b6edf0	g7	probe /G6	DIFFER(3144v3144)	74 lines (= default)
+00b6edf0	g8	probe /G5	DIFFER(3144v3144)	74 lines (= default)
+00b6edf0	g9	rowBase = y*17 local, x + rowBase	DIFFER(3144v3144)	72 lines (add order fixed, loop-head stores swap)
+00b6edf0	g10	x + 17*y	DIFFER(3144v3144)	74 lines
+00b6edf0	g11	index = x; index += y*17	DIFFER(3144v3144)	74 lines
+00b6edf0	g12	C3DTriangle2::SetVertexIndex(i, v)	DIFFER(3144v3144)	40 lines: index block now exact
+00b6edf0	g13	CGenericVertex SetPosition / SetDiffuseColour / SetU1V1	DIFFER(3144v3144)	44 lines
+00b6edf0	g14	setter order position, UV, colour	DIFFER(3144v3144)	18 lines
+00b6edf0	g15	17*y + x	DIFFER(3144v3144)	18 lines
+00b6edf0	g16	rowBase declared before `for (x = 0; ...)`	DIFFER(3144v3144)	16 lines (best, kept in differ/)
+00b6edf0	g17	x = 0 declared before rowBase	DIFFER(3144v3144)	18 lines
+00b6edf0	g18	rowBase + x	DIFFER(3144v3144)	18 lines; parked (last three moved nothing)
