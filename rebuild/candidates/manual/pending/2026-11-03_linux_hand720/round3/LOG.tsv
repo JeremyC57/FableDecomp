@@ -1,0 +1,11 @@
+005c552c	1	DIFFER(536v546)	536v546	dl=86	a1 skeleton 
+005c552c	2	DIFFER(516v546)	516v546	dl=20	a2 extern LowerBound + same-TU IS_THING_ALIVE/GetSubDef bodies 
+005c552c	3	DIFFER(552v546)	552v546	dl=18	a3 forceinline Find + != 0 
+005c552c	4	RELOCATION_MATCH	?v?	dl=?	a4 forceinline Find, LowerBound body kept 
+005c552c	5	RELOCATION_MATCH	?v?	dl=?	a5 PDB GetTCGraphicAppearance + MainGraphic.RenderSizeX 
+005c552c	6	RELOCATION_MATCH	?v?	dl=?	a6 PDB spellings (const CThing&, ReturnToInventory) 
+005c36c2	1	SRC_FAIL	?v?	dl=?	a1 skeleton 
+005c36c2	2	RELOCATION_MATCH	?v?	dl=?	a2 skeleton compiles 
+005c552c	7		?v?	dl=?	recheck with final hdr/ 
+005c36c2	3	RELOCATION_MATCH	?v?	dl=?	recheck with final hdr/ 
+005c552c	8	RELOCATION_MATCH	?v?	dl=?	recheck with final hdr/ (retry after empty run) 

@@ -1,0 +1,66 @@
+32
+--- 
++++ 
+@@ -3,3 +3,3 @@
+ sub esp, 0x94
+-mov eax, dword ptr [X]
++mov eax, dword ptr [0]
+ test eax, eax
+@@ -66,3 +66,3 @@
+ and ecx, 0x7f
+-mov ecx, dword ptr [ecx*4 + X]
++mov ecx, dword ptr [ecx*4]
+ shl esi, 0x16
+@@ -74,8 +74,9 @@
+ fmul dword ptr [ebp - 4]
++lea edx, [ebp - 0x94]
++push edx
+ lea esi, [ebx + 0x30]
+-lea edx, [ebp - 0x94]
+ fmul dword ptr [ebp - 8]
+-fsubr dword ptr [X]
++fsubr dword ptr [0]
+ fmul dword ptr [ebp - 4]
+-fmul dword ptr [X]
++fmul dword ptr [0]
+ fld st(0)
+@@ -89,3 +90,2 @@
+ mov ecx, dword ptr [edi + 0x58]
+-push edx
+ sub ecx, dword ptr [edi + 0x54]
+@@ -287,8 +287,8 @@
+ mov dword ptr [ebx + 0xd8], 0xf
+-mov ecx, dword ptr [X]
++mov ecx, dword ptr [0]
+ fld dword ptr [ecx + 0x54]
+ mov dword ptr [ebp - 4], X
+-fsub dword ptr [X]
++fsub dword ptr [0]
+ mov dword ptr [ebp - 8], X
+-fmul dword ptr [X]
++fmul dword ptr [0]
+ fstp dword ptr [ebp - 0x14]
+@@ -311,6 +311,6 @@
+ fstp dword ptr [ebx + 0xb8]
+-mov eax, dword ptr [X]
++mov eax, dword ptr [0]
+ fld dword ptr [eax + 0x58]
+-fsub dword ptr [X]
+-fmul dword ptr [X]
++fsub dword ptr [0]
++fmul dword ptr [0]
+ fstp dword ptr [ebp - 8]
+@@ -350,4 +350,4 @@
+ jne X
+-mov edx, dword ptr [X]
+-mov ecx, dword ptr [X]
++mov edx, dword ptr [0]
++mov ecx, dword ptr [0]
+ add esi, 0x4698
+@@ -365,4 +365,4 @@
+ jne X
+-mov eax, dword ptr [X]
+-mov ecx, dword ptr [X]
++mov eax, dword ptr [0]
++mov ecx, dword ptr [0]
+ add esi, 0x4698

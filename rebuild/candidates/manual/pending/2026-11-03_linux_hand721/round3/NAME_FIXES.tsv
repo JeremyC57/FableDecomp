@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00989830	?InitialiseLight@CShaderRenderManager@@QAEXKABVCShaderLight@@@Z	Ego_r / FableWin take const CShaderLight& (the CShaderGenericLight overload is the other one)	?InitialiseLight@CShaderRenderManager@@QAEXKPAVCShaderLight@@@Z

@@ -1,0 +1,8 @@
+address	name	evidence
+0x00B46C80	CEngineLightingManager::UpdateGlobalLightingStates	Ego_r.pdb ?UpdateGlobalLightingStates@CEngineLightingManager@@QAEXXZ (catalog name); body = the StateUpdateFlags bit 0/1/3 consumers (SetupShaderPointLights-style shader calls)
+0x00B49950	CShaderDirectionalLight::CShaderDirectionalLight	Ego_r ??0CShaderDirectionalLight@@QAE@ABVC3DVector@@ABVCRGBFloatColour@@1@Z; pushes (&PrimitiveBacklightColour, &PrimitiveDiffuseColour, &DiffuseVector) into a 0x3C local (Ego_r size 60)
+0x00989830	CShaderRenderManager::InitialiseLight	Ego_r ?InitialiseLight@CShaderRenderManager@@QAEXKABVCShaderLight@@@Z (index 0, the directional light)
+0x0098B2C0	CShaderRenderManager::SetLightGlobal	Ego_r ?SetLightGlobal@CShaderRenderManager@@QAEXKABVC4DVector@@@Z (catalog name)
+0x00988680	CShaderRenderManager::SetAmbientColour	Ego_r ?SetAmbientColour@CShaderRenderManager@@QAEXABVCRGBFloatColour@@@Z (catalog name)
+0x00989960	CShaderRenderManager::SetShadowFadeFactors	Ego_r ?SetShadowFadeFactors@CShaderRenderManager@@QAEXMMM@Z (catalog name)
+0x0099A300	CBaseClassNonCopyable::~CBaseClassNonCopyable	reloc_bindings ??1CBaseClassNonCopyable@@MAE@XZ; the directional light's inline destructor chain ends there
