@@ -1,0 +1,697 @@
+addr       parity           behav  name
+0047f58b   RELOCATION_MATCH PASS   CTCInGameMenu::AddRegionAndTimeInfo
+004b05c0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+004b05c0   RELOCATION_MATCH PASS   CQuestManager::TransferBoasts
+00520670   RELOCATION_MATCH PASS   CThingManager::LoadHeroStateBinary
+00521620   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@PAV123@@std@@YIPAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@PAV123@00ABU__false_type@0@@Z -> 005269b0 labelled 'std::__uninitialized_copy<NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *>'
+00521620   RELOCATION_MATCH PASS   NThingManager::CEntityRuntimePersistence::SaveToGameStateBinary
+00522720   RELOCATION_MATCH PASS   CThingManager::RuntimeLoadEntities
+00597228   RELOCATION_MATCH PASS   NUISystem::CFrontEndManager::AddRegionAndTimeInfo
+006d2bd0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+006d2bd0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z -> 00433530 labelled 'std::vector::std::vector::Reallocate'
+006d2bd0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@U?$pair@VCCharString@@J@std@@V?$allocator@U?$pair@VCCharString@@J@std@@@2@@std@@IAEXPAU?$pair@VCCharString@@J@2@ABU32@ABU__false_type@2@I_N@Z -> 006d4750 labelled 'STL::Vector8_string8::InsertGrow_006d4750'
+006d2bd0   RELOCATION_MATCH PASS   CTCWife::OnSerialise
+00989cb0   RELOCATION_MATCH PASS   CShaderRenderManager::UpdateObjectSpaceLighting
+0098acf0   WARN RELOC_NAME: ?Initialise@CShaderResource@@QAEXAAVCShaderRenderManager@@@Z -> 00a5d4d0 labelled '_global::SetMember_dword0x14_00a5d4d0'
+0098acf0   RELOCATION_MATCH PASS   CShaderRenderManager::Initialise
+009da9f0   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+009da9f0   WARN RELOC_NAME: ?SetAWindow@CRenderManagerCore@@QAEXABVC2DBoxF@@@Z -> 00a0aa80 labelled '_global::Forward_SetViewport_via0x3a3c_00a0aa80'
+009da9f0   WARN RELOC_NAME: ?erase@?$vector@VCQuickDrawTriInfo@@V?$allocator@VCQuickDrawTriInfo@@@std@@@std@@QAEPAVCQuickDrawTriInfo@@PAV3@0@Z -> 009e15e0 labelled 'TextureCache_MoveAndCleanup'
+009da9f0   RELOCATION_MATCH PASS   CRenderManager2D::Render2DDrawList
+00a4fe60   WARN RELOC_NAME: ??1?$CCountedPointer@VC3DAnimFileXAllocationSizeChunk@@@@QAE@XZ -> 00a52f40 labelled '_global::CCountedPointer_Release_00a52f40'
+00a4fe60   WARN RELOC_NAME: ?HasMovementTrack@C3DAnimFileMovementVectorChunk@@QBE_NXZ -> 00aae920 labelled 'C3DAnimFileRootChunk::HasSequences'
+00a4fe60   WARN RELOC_NAME: ?InitialiseFromFileData@C3DAnimationSequenceData@@QAE_NABVC3DAnimFileSequenceChunk@@AAVCSimpleMemoryPool@@@Z -> 00a4efc0 labelled 'C3DKeyframe_InitialiseAsConstant'
+00a4fe60   RELOCATION_MATCH PASS   C3DAnimation2::InitialiseSharedAnimation
+00aef1f0   WARN RELOC_NAME: ?WriteString@CPersistContext@@QAEXABVCCharString@@@Z -> 009bab50 labelled '_global::Forward_operator___via0x20_009bab50'
+00aef1f0   WARN RELOC_NAME: ?DatabaseSerialise@CParticleSystem@NParticleEngine@@QAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@2@@Z -> 00af4900 labelled 'CParticleSystem::SerializeComponents'
+00aef1f0   WARN RELOC_NAME: ?GetMaxSpawnDistance@NParticleEngine@@YIMXZ -> 00aeaa60 labelled '_global::GetConstFloat_48_00aeaa60'
+00aef1f0   WARN RELOC_NAME: ?GetMaxDrawDistance@NParticleEngine@@YIMXZ -> 00aeaa50 labelled '_global::GetConstFloat_60_00aeaa50'
+00aef1f0   WARN RELOC_NAME: ?GetFadeOutStartDistance@NParticleEngine@@YIMXZ -> 00aeaa20 labelled '_global::GetConstFloat_48_00aeaa20'
+00aef1f0   WARN RELOC_NAME: ?GetFadeInEndDistance@NParticleEngine@@YIMXZ -> 00aeaa30 labelled '_global::GetConstFloat_0_00aeaa30'
+00aef1f0   WARN RELOC_NAME: ?GetFadeInStartDistance@NParticleEngine@@YIMXZ -> 00aeaa40 labelled '_global::GetConstFloat_0_00aeaa40'
+00aef1f0   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCParticleSystem@NParticleEngine@@@@SIXPAX@Z -> 00af0710 labelled '_global::DeleteViaVtable0_00af0710'
+00aef1f0   RELOCATION_MATCH PASS   NParticleEngine::CParticleEmitter::DatabaseSerialise
+00af2620   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00af2620   RELOCATION_MATCH PASS   NParticleEngine::CPSCBase::CPSCBase
+00af2780   WARN SHARED_HEADER_AVAILABLE C3DVector
+00af2780   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00af2780   WARN SHARED_HEADER_AVAILABLE CParticleSystem
+00af2780   RELOCATION_MATCH PASS   NParticleEngine::CPSCBase::GetCurrentPositionLocal
+00af28c0   WARN SHARED_HEADER_AVAILABLE CVectorMap
+00af28c0   RELOCATION_MATCH PASS   NParticleEngine::CPSCManager::AllocatePSC
+00af29c0   MATCH            PASS   NParticleEngine::CPSCBase::StartUpdate
+00af29d0   MATCH            PASS   NParticleEngine::CPSCBase::Update
+00af2a30   MATCH            PASS   NParticleEngine::CPSCBase::AddToBoundingSphere
+00af2ab0   MATCH            PASS   NParticleEngine::CPSCBase::Initialise
+00af2ac0   MATCH            PASS   NParticleEngine::CPSCBase::ClearAllPrimitives
+  WARN leaf 'vfunc_31' matches no symbol in 00af2ae0.obj; graded the largest function
+  WARN leaf 'vfunc_31' matches no symbol in 00af2ae0.obj; graded the largest function
+00af2ae0   RELOCATION_MATCH PASS   NParticleEngine::CPSCBase::vfunc_31
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00af2af0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00af2af0.obj; graded the largest function
+00af2af0   WARN RELOC_NAME: ?Dtor@CPSCBase@@QAEXXZ -> 0099a300 labelled 'CBaseClassNonCopyable::~CBaseClassNonCopyable'
+00af2af0   RELOCATION_MATCH PASS   NParticleEngine::CPSCBase::`scalar_deleting_destructor'
+00af7d10   RELOCATION_MATCH PASS   NParticleEngine::CPSCRenderSprite::Alloc
+00af7d80   RELOCATION_MATCH PASS   NParticleEngine::CPSCRenderMesh::Alloc
+00af7df0   RELOCATION_MATCH PASS   NParticleEngine::CPSCSingleSprite::Alloc
+00af7e60   RELOCATION_MATCH PASS   NParticleEngine::CPSCUpdateNormal::Alloc
+00af7ed0   RELOCATION_MATCH PASS   NParticleEngine::CPSCEmitterGeneric::Alloc
+00af7f40   RELOCATION_MATCH PASS   NParticleEngine::CPSCOrbit::Alloc
+00af7fb0   RELOCATION_MATCH PASS   NParticleEngine::CPSCAttractor::Alloc
+00af8020   RELOCATION_MATCH PASS   NParticleEngine::CPSCLight::Alloc
+00af8090   RELOCATION_MATCH PASS   NParticleEngine::CPSCSpline::Alloc
+00af8100   RELOCATION_MATCH PASS   NParticleEngine::CPSCDecalRenderer::Alloc
+00af8170   RELOCATION_MATCH PASS   NParticleEngine::CPSCManager::RegisterPSCs
+00af90c0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00af90c0   WARN SHARED_HEADER_AVAILABLE CParticleSystem
+00af90c0   RELOCATION_MATCH PASS   NParticleEngine::CPSCRenderSprite::GetComponentCost
+00af9310   WARN SHARED_HEADER_AVAILABLE CIEngine
+00af9310   MATCH            PASS   NParticleEngine::CPSCRenderSprite::Initialise
+00af9410   WARN SHARED_HEADER_AVAILABLE CRGBColour
+  WARN leaf 'vfunc_18' matches no symbol in 00af9410.obj; graded the largest function
+  WARN leaf 'vfunc_18' matches no symbol in 00af9410.obj; graded the largest function
+00af9410   MATCH            PASS   NParticleEngine::CPSCRenderSprite::vfunc_18
+00af9620   WARN SHARED_HEADER_AVAILABLE C3DVector
+00af9620   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00af9620   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle
+00af9620   RELOCATION_MATCH PASS   NParticleEngine::CPSCRenderSprite::WriteBinary
+00afadc0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+00afadc0   MATCH            PASS   NParticleEngine::CPSCRenderSprite::ClearAllPrimitives
+00afb7c0   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00afb7c0   RELOCATION_MATCH PASS   NParticleEngine::CPSCRenderSprite::CPSCRenderSprite
+00afbbd0   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase
+00afbbd0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+00afbbd0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00afbbd0   RELOCATION_MATCH PASS   NParticleEngine::CPSCRenderSprite::~CPSCRenderSprite
+00afe440   RELOCATION_MATCH PASS   NParticleEngine::CPSCRenderSprite::GetClassTypeName
+00afe580   WARN RELOC_NAME: ?GetDrawableObject@@YIPAUIDrawableObj@@PAVCPSCRenderSprite@NParticleEngine@@@Z -> 00af7d10 labelled 'NParticleEngine::CPSCRenderSprite::Alloc'
+00afe580   RELOCATION_MATCH PASS   NParticleEngine::CPSCRenderSprite::DatabaseClone
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00afe5a0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00afe5a0.obj; graded the largest function
+00afe5a0   RELOCATION_MATCH PASS   NParticleEngine::CPSCRenderSprite::`scalar_deleting_destructor'
+00afeb90   WARN SHARED_HEADER_AVAILABLE CRGBColour
+  WARN leaf 'vfunc_18' matches no symbol in 00afeb90.obj; graded the largest function
+  WARN leaf 'vfunc_18' matches no symbol in 00afeb90.obj; graded the largest function
+00afeb90   MATCH            PASS   NParticleEngine::CPSCRenderMesh::vfunc_18
+00afee00   WARN SHARED_HEADER_AVAILABLE C3DVector
+00afee00   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00afee00   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle
+00afee00   RELOCATION_MATCH PASS   NParticleEngine::CPSCRenderMesh::WriteBinary
+00aff0a0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00aff0a0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00aff0a0   WARN SHARED_HEADER_AVAILABLE CIEngine
+00aff0a0   WARN RELOC_NAME: ??0SMeshCreateInfo@@QAE@JABVCMatrix3x4@@KK@Z -> 00afead0 labelled 'CEnginePrimitiveParticleMeshGroup::CEnginePrimitiveParticleMeshGroup'
+00aff0a0   RELOCATION_MATCH PASS   NParticleEngine::CPSCRenderMesh::Initialise
+00b00db0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b00db0   WARN SHARED_HEADER_AVAILABLE CParticleSystem
+00b00db0   WARN RELOC_NAME: ?GetMeshBank@NParticleEngine@@YIABVCMeshDataBank@@XZ -> 00aeaab0 labelled '_global::GetGlobal_013d2e0c_00aeaab0'
+00b00db0   RELOCATION_MATCH PASS   NParticleEngine::CPSCRenderMesh::GetComponentCost
+00b01250   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+00b01250   MATCH            PASS   NParticleEngine::CPSCRenderMesh::ClearAllPrimitives
+00b017f0   WARN SHARED_HEADER_AVAILABLE CEnginePersistentPrimitiveBase
+00b017f0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+00b017f0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00b017f0   RELOCATION_MATCH PASS   NParticleEngine::CPSCRenderMesh::~CPSCRenderMesh
+00b05a50   RELOCATION_MATCH PASS   NParticleEngine::CPSCRenderMesh::GetClassTypeName
+00b05a90   RELOCATION_MATCH PASS   NParticleEngine::CPSCRenderMesh::GetGUIName
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00b05ad0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00b05ad0.obj; graded the largest function
+00b05ad0   WARN RELOC_NAME: ?Dtor@CPSCRenderMesh@@QAEXXZ -> 00b017f0 labelled 'NParticleEngine::CPSCRenderMesh::~CPSCRenderMesh'
+00b05ad0   RELOCATION_MATCH PASS   NParticleEngine::CPSCRenderMesh::`scalar_deleting_destructor'
+  WARN leaf 'vfunc_18' matches no symbol in 00b05ea0.obj; graded the largest function
+  WARN leaf 'vfunc_18' matches no symbol in 00b05ea0.obj; graded the largest function
+00b05ea0   RELOCATION_MATCH PASS   NParticleEngine::CPSCSingleSprite::vfunc_18
+00b06060   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b06060   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00b06060   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle
+00b06060   RELOCATION_MATCH PASS   NParticleEngine::CPSCSingleSprite::WriteBinary
+00b07570   WARN SHARED_HEADER_AVAILABLE CArray
+00b07570   MATCH            PASS   NParticleEngine::CPSCSingleSprite::ClearAllPrimitives
+00b081a0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b081a0   RELOCATION_MATCH PASS   NParticleEngine::CPSCSingleSprite::AddTrailPosition
+00b09360   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00b09360   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b09360   WARN SHARED_HEADER_AVAILABLE CArray
+00b09360   RELOCATION_MATCH PASS   NParticleEngine::CPSCSingleSprite::CPSCSingleSprite
+00b094b0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b094b0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitive
+00b094b0   WARN SHARED_HEADER_AVAILABLE CIEngine
+00b094b0   WARN SHARED_HEADER_AVAILABLE CParticleSystem
+00b094b0   RELOCATION_MATCH PASS   NParticleEngine::CPSCSingleSprite::Initialise
+00b0a060   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b0a060   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::~CPSCSplineBase
+00b0a0d0   RELOCATION_MATCH PASS   NParticleEngine::CPSCSingleSprite::GetClassTypeName
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00b0a140.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00b0a140.obj; graded the largest function
+00b0a140   RELOCATION_MATCH PASS   NParticleEngine::CPSCSingleSprite::`scalar_deleting_destructor'
+00b0a160   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b0a160   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00b0a160   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00b0a160   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveThemeChannelDesc
+00b0a160   WARN SHARED_HEADER_AVAILABLE CEnginePrimitive
+00b0a160   RELOCATION_MATCH PASS   NParticleEngine::CPSCSingleSprite::~CPSCSingleSprite
+00b0a190   WARN RELOC_NAME: ?GetDrawableObject_00af7df0@@YIPAUIDrawableObj@@PAVCPSCSingleSprite@NParticleEngine@@@Z -> 00af7df0 labelled 'NParticleEngine::CPSCSingleSprite::Alloc'
+00b0a190   RELOCATION_MATCH PASS   NParticleEngine::CPSCSingleSprite::DatabaseClone
+00b0a6d0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00b0a6d0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b0a6d0   MATCH            PASS   NParticleEngine::CPSCUpdateNormal::GetUpdateParam
+00b0a710   WARN SHARED_HEADER_AVAILABLE CParticleSystem
+00b0a710   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00b0a710   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b0a710   MATCH            PASS   NParticleEngine::CPSCUpdateNormal::Initialise
+00b0a750   WARN RELOC_NAME: ?GetParticleClock@@YAMXZ -> 00aeaa00 labelled '_global::GetConstFloat_0_0666667_00aeaa00'
+00b0a750   RELOCATION_MATCH PASS   NParticleEngine::CPSCUpdateNormal::GetCurrentFadeValue
+00b0b370   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b0b370   RELOCATION_MATCH PASS   NParticleEngine::CPSCUpdateNormal::DatabaseCopy
+00b0b5c0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b0b5c0   RELOCATION_MATCH PASS   NParticleEngine::CPSCUpdateNormal::WriteBinary
+00b0c730   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+00b0c730   RELOCATION_MATCH PASS   NParticleEngine::CPSCUpdateNormal::KillAllDecalEmitters
+00b0c7b0   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+00b0c7b0   RELOCATION_MATCH PASS   NParticleEngine::CPSCUpdateNormal::GetComponentCost
+00b0c830   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+00b0c830   RELOCATION_MATCH PASS   NParticleEngine::CPSCUpdateNormal::GetParticleCount
+00b0c8a0   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+00b0c8a0   RELOCATION_MATCH PASS   NParticleEngine::CPSCUpdateNormal::GetDecalCount
+00b0c910   WARN SHARED_HEADER_AVAILABLE CEnginePrimitivePrepareInfo
+00b0c910   WARN SHARED_HEADER_AVAILABLE CParticleEmitter
+00b0c910   RELOCATION_MATCH PASS   NParticleEngine::CPSCUpdateNormal::PreparePrimitives
+00b0c9c0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b0c9c0   RELOCATION_MATCH PASS   NParticleEngine::CPSCUpdateNormal::CPSCUpdateNormal
+00b0ca90   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b0ca90   RELOCATION_MATCH PASS   NParticleEngine::CPSCUpdateNormal::~CPSCUpdateNormal
+00b0f210   WARN SHARED_HEADER_AVAILABLE CVectorMap
+00b0f210   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b0f210   RELOCATION_MATCH PASS   NParticleEngine::CPSCUpdateNormal::CollectUpdateParameters
+00b0f880   RELOCATION_MATCH PASS   NParticleEngine::CPSCUpdateNormal::GetClassTypeName
+00b0f8e0   RELOCATION_MATCH PASS   NParticleEngine::CPSCUpdateNormal::GetParticleLifeSecs
+00b0f970   WARN RELOC_NAME: ?GetDrawableObject_00af7e60@@YIPAUIDrawableObj@@PAVCPSCUpdateNormal@NParticleEngine@@@Z -> 00af7e60 labelled 'NParticleEngine::CPSCUpdateNormal::Alloc'
+00b0f970   RELOCATION_MATCH PASS   NParticleEngine::CPSCUpdateNormal::DatabaseClone
+00b0f990   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00b0f990   WARN RELOC_NAME: ?DestroyElements@CDecalEmitterArray@NParticleEngine@@QAEXXZ -> 00b0f630 labelled 'std::_List_base<CIntelligentPointer<NParticleEngine::CParticleEmitter>, std::allocator<CIntelligentPointer<NParticleEngine::CParticleEmitter>>>::clear'
+00b0f990   RELOCATION_MATCH PASS   NParticleEngine::CPSCUpdateNormal::`scalar_deleting_destructor'
+00b0fbe0   MATCH            PASS   NParticleEngine::CPSCEmitterGeneric::GetComponentCost
+00b0fbf0   RELOCATION_MATCH PASS   NParticleEngine::CPSCEmitterGeneric::GetNumberOfParticles
+00b0ffc0   RELOCATION_MATCH PASS   NParticleEngine::CPSCEmitterGeneric::GetNumberOfDecals
+00b102c0   WARN RELOC_ALIAS: __CIpow -> 00bfeb40 is the import thunk 'MSVCR71.DLL::_CIpow'
+00b102c0   RELOCATION_MATCH PASS   NParticleEngine::CPSCEmitterGeneric::GetRandomRadius
+00b10360   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b10360   MATCH            PASS   NParticleEngine::CPSCEmitterGeneric::ChangeOrientation
+00b109b0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b109b0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+  WARN leaf 'vfunc_31' matches no symbol in 00b109b0.obj; graded the largest function
+  WARN leaf 'vfunc_31' matches no symbol in 00b109b0.obj; graded the largest function
+00b109b0   RELOCATION_MATCH PASS   NParticleEngine::CPSCEmitterGeneric::vfunc_31
+00b12ef0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b12ef0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00b12ef0   WARN RELOC_NAME: ??0CPointVector@@QAE@ABU0@@Z -> 006f0810 labelled 'std::vector<C3DVector>::vector'
+00b12ef0   RELOCATION_MATCH PASS   NParticleEngine::CPSCEmitterGeneric::WriteBinary
+00b158a0   WARN SHARED_HEADER_AVAILABLE CVectorMap
+00b158a0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b158a0   RELOCATION_MATCH PASS   NParticleEngine::CPSCEmitterGeneric::CollectUpdateParameters
+00b15a90   RELOCATION_MATCH PASS   NParticleEngine::CPSCEmitterGeneric::GetClassTypeName
+00b15af0   MATCH            PASS   NParticleEngine::CPSCEmitterGeneric::EnterTimelineEnd
+00b15b00   WARN RELOC_NAME: ?GetDrawableObject@@YIPAUIDrawableBase@@PAVCPSCEmitterGeneric@NParticleEngine@@@Z -> 00af7ed0 labelled 'NParticleEngine::CPSCEmitterGeneric::Alloc'
+00b15b00   RELOCATION_MATCH PASS   NParticleEngine::CPSCEmitterGeneric::DatabaseClone
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00b15b20.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00b15b20.obj; graded the largest function
+00b15b20   WARN RELOC_NAME: ?DestructFirstMember_0075f2b0@@YIXPAX@Z -> 0075f2b0 labelled 'CCountedPointer<CCardinalSpline>::Release'
+00b15b20   WARN RELOC_NAME: ?CPSCEmitterGeneric_Destruct@@YIXPAX@Z -> 0099a300 labelled 'CBaseClassNonCopyable::~CBaseClassNonCopyable'
+00b15b20   RELOCATION_MATCH PASS   NParticleEngine::CPSCEmitterGeneric::`scalar_deleting_destructor'
+00b16210   MATCH            PASS   NParticleEngine::CPSCOrbit::GetComponentCost
+00b163a0   MATCH            PASS   NParticleEngine::CPSCOrbit::DatabaseCopy
+00b163e0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00b163e0   RELOCATION_MATCH PASS   NParticleEngine::CPSCOrbit::WriteBinary
+00b16d50   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b16d50   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00b16d50   WARN RELOC_NAME: ?GetParticleFrameTime@@YAMXZ -> 00aeaa00 labelled '_global::GetConstFloat_0_0666667_00aeaa00'
+00b16d50   WARN RELOC_NAME: ?GetParticleRandomSeed@@YAPAKXZ -> 00aeaad0 labelled '_global::GetStaticAddr_013d2e10_00aeaad0'
+00b16d50   RELOCATION_MATCH PASS   NParticleEngine::CPSCOrbit::StartUpdate
+00b16eb0   RELOCATION_MATCH PASS   NParticleEngine::CPSCOrbit::CPSCOrbit
+00b16f60   RELOCATION_MATCH PASS   NParticleEngine::CPSCOrbit::ReadBinary
+00b177c0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b177c0   RELOCATION_MATCH PASS   NParticleEngine::CPSCOrbit::COrbitState::GetSplinePosition
+00b178d0   RELOCATION_MATCH PASS   NParticleEngine::CPSCOrbit::GetClassTypeName
+00b17910   RELOCATION_MATCH PASS   NParticleEngine::CPSCOrbit::GetGUIName
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00b17930.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00b17930.obj; graded the largest function
+00b17930   WARN RELOC_NAME: ?CPSCOrbit_dtor@@YIXPAUCPSCOrbit@@@Z -> 0099a300 labelled 'CBaseClassNonCopyable::~CBaseClassNonCopyable'
+00b17930   RELOCATION_MATCH PASS   NParticleEngine::CPSCOrbit::`scalar_deleting_destructor'
+00b17950   WARN RELOC_NAME: ?GetDrawableObject_00af7f40@@YIPAUIDrawableObj@@PAVCPSCOrbit@NParticleEngine@@@Z -> 00af7f40 labelled 'NParticleEngine::CPSCOrbit::Alloc'
+00b17950   RELOCATION_MATCH PASS   NParticleEngine::CPSCOrbit::DatabaseClone
+00b17990   MATCH            PASS   NParticleEngine::CPSCAttractor::GetComponentCost
+00b179a0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b179a0   WARN SHARED_HEADER_AVAILABLE CVectorMap
+00b179a0   WARN SHARED_HEADER_AVAILABLE CParticleSystem
+00b179a0   WARN RELOC_ALIAS: __CIpow -> 00bfeb40 is the import thunk 'MSVCR71.DLL::_CIpow'
+00b179a0   RELOCATION_MATCH PASS   NParticleEngine::CPSCAttractor::Update
+00b17f70   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b17f70   WARN SHARED_HEADER_AVAILABLE CArray
+00b17f70   RELOCATION_MATCH PASS   NParticleEngine::CPSCAttractor::WriteBinary
+00b18020   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b18020   RELOCATION_MATCH PASS   NParticleEngine::CPSCAttractor::CPSCAttractor
+00b18060   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b18060   RELOCATION_MATCH PASS   NParticleEngine::CPSCAttractor::DatabaseCopy
+00b18110   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b18110   WARN SHARED_HEADER_AVAILABLE CPersistContext
+00b18110   RELOCATION_MATCH PASS   NParticleEngine::CPSCAttractor::DatabaseSerialise
+00b18390   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b18390   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00b18390   RELOCATION_MATCH PASS   NParticleEngine::CPSCAttractor::ReadBinary
+00b186e0   RELOCATION_MATCH PASS   NParticleEngine::CPSCAttractor::GetClassTypeName
+00b18720   RELOCATION_MATCH PASS   NParticleEngine::CPSCAttractor::GetGUIName
+00b18740   WARN RELOC_NAME: ?CreateInternalPrimitive@@YIPAUIDrawableObj@@PAVCPSCAttractor@NParticleEngine@@@Z -> 00af7fb0 labelled 'NParticleEngine::CPSCAttractor::Alloc'
+00b18740   RELOCATION_MATCH PASS   NParticleEngine::CPSCAttractor::DatabaseClone
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00b18760.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00b18760.obj; graded the largest function
+00b18760   RELOCATION_MATCH PASS   NParticleEngine::CPSCAttractor::`scalar_deleting_destructor'
+00b18780   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b18780   RELOCATION_MATCH PASS   NParticleEngine::CPSCAttractor::~CPSCAttractor
+00b187d0   WARN SHARED_HEADER_AVAILABLE CParticleSystem
+00b187d0   RELOCATION_MATCH PASS   NParticleEngine::CPSCLight::GetComponentCost
+00b18950   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00b18950   RELOCATION_MATCH PASS   NParticleEngine::CPSCLight::WriteBinary
+00b18af0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b18af0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00b18af0   WARN SHARED_HEADER_AVAILABLE C3DBoundingSphere
+00b18af0   WARN SHARED_HEADER_AVAILABLE CParticleSystem
+00b18af0   WARN RELOC_NAME: ?GetParticleFrameRate@@YAJXZ -> 00aea9f0 labelled 'NParticleEngine::GetParticleUpdateRate'
+00b18af0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00b18af0   RELOCATION_MATCH PASS   NParticleEngine::CPSCLight::AddToBoundingSphere
+00b19c20   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00b19c20   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+00b19c20   MATCH            PASS   NParticleEngine::CPSCLight::Kill
+00b1a640   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+00b1a640   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00b1a640   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b1a640   WARN SHARED_HEADER_AVAILABLE CArray
+00b1a640   RELOCATION_MATCH PASS   NParticleEngine::CPSCLight::CPSCLight
+00b1a700   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b1a700   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00b1a700   RELOCATION_MATCH PASS   NParticleEngine::CPSCLight::DatabaseCopy
+00b1ae00   WARN SHARED_HEADER_AVAILABLE C3DMeshFileXBoundingSphereChunk
+  WARN leaf 'GetClassTypeName' matches no symbol in 00b1ae00.obj; graded the largest function
+  WARN leaf 'GetClassTypeName' matches no symbol in 00b1ae00.obj; graded the largest function
+00b1ae00   RELOCATION_MATCH PASS   NParticleEngine::CPSCLight::GetClassTypeName
+00b1ae60   MATCH            PASS   NParticleEngine::CPSCLight::EnterTimelineEnd
+00b1ae70   WARN RELOC_NAME: ?CreatePrim@@YIPAUCPrim@@PAVCPSCLight@NParticleEngine@@@Z -> 00af8020 labelled 'NParticleEngine::CPSCLight::Alloc'
+00b1ae70   RELOCATION_MATCH PASS   NParticleEngine::CPSCLight::DatabaseClone
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00b1ae90.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00b1ae90.obj; graded the largest function
+00b1ae90   RELOCATION_MATCH PASS   NParticleEngine::CPSCLight::`scalar_deleting_destructor'
+00b1aeb0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00b1aeb0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+00b1aeb0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b1aeb0   WARN SHARED_HEADER_AVAILABLE CArray
+00b1aeb0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00b1aeb0   RELOCATION_MATCH PASS   NParticleEngine::CPSCLight::~CPSCLight
+00b1af40   WARN RELOC_NAME: _ForwardTarget_00b202c0 -> 00b202c0 labelled 'NParticleEngine::CPSCSplineBase::GetComponentCost'
+00b1af40   RELOCATION_MATCH PASS   NParticleEngine::CPSCSpline::GetComponentCost
+00b1af50   RELOCATION_MATCH PASS   NParticleEngine::CPSCSpline::InterpolateTo
+00b1afc0   RELOCATION_MATCH PASS   NParticleEngine::CPSCSpline::DatabaseCopy
+00b1aff0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00b1aff0   RELOCATION_MATCH PASS   NParticleEngine::CPSCSpline::WriteBinary
+00b1b030   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b1b030   WARN RELOC_NAME: ?GetParticleFrameTime_00aeaa00@@YAMXZ -> 00aeaa00 labelled '_global::GetConstFloat_0_0666667_00aeaa00'
+00b1b030   RELOCATION_MATCH PASS   NParticleEngine::CPSCSpline::GetUpdateParam
+00b1b0c0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b1b0c0   WARN RELOC_NAME: ?GetParticleFrameTime_00aeaa00@@YAMXZ -> 00aeaa00 labelled '_global::GetConstFloat_0_0666667_00aeaa00'
+00b1b0c0   RELOCATION_MATCH PASS   NParticleEngine::CPSCSpline::StartUpdate
+  WARN leaf 'vfunc_15' matches no symbol in 00b1b1b0.obj; graded the largest function
+  WARN leaf 'vfunc_15' matches no symbol in 00b1b1b0.obj; graded the largest function
+00b1b1b0   RELOCATION_MATCH PASS   NParticleEngine::CPSCSpline::vfunc_15
+00b1b2e0   WARN SHARED_HEADER_AVAILABLE CPersistContext
+00b1b2e0   RELOCATION_MATCH PASS   NParticleEngine::CPSCSpline::DatabaseSerialise
+00b1b350   RELOCATION_MATCH PASS   NParticleEngine::CPSCSpline::CPSCSpline
+00b1b380   WARN SHARED_HEADER_AVAILABLE CVectorMap
+00b1b380   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b1b380   RELOCATION_MATCH PASS   NParticleEngine::CPSCSpline::CollectUpdateParameters
+00b1b430   RELOCATION_MATCH PASS   NParticleEngine::CPSCSpline::GetClassTypeName
+00b1b470   RELOCATION_MATCH PASS   NParticleEngine::CPSCSpline::GetGUIName
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00b1b490.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00b1b490.obj; graded the largest function
+00b1b490   WARN RELOC_NAME: ?CPSCSpline_dtor@@YIXPAUCPSCSpline@@@Z -> 00b0a060 labelled 'NParticleEngine::CPSCSplineBase::~CPSCSplineBase'
+00b1b490   RELOCATION_MATCH PASS   NParticleEngine::CPSCSpline::`scalar deleting destructor'
+00b1b4b0   WARN RELOC_NAME: ?GetDrawableObject_00af8090@@YIPAUIDrawableObj@@PAVCPSCSpline@NParticleEngine@@@Z -> 00af8090 labelled 'NParticleEngine::CPSCSpline::Alloc'
+00b1b4b0   RELOCATION_MATCH PASS   NParticleEngine::CPSCSpline::DatabaseClone
+00b1b710   WARN SHARED_HEADER_AVAILABLE CParticleSystem
+00b1b710   WARN SHARED_HEADER_AVAILABLE CEnginePrimitive
+  WARN leaf 'vfunc_28' matches no symbol in 00b1b710.obj; graded the largest function
+  WARN leaf 'vfunc_28' matches no symbol in 00b1b710.obj; graded the largest function
+00b1b710   WARN RELOC_NAME: ??0CEnginePrimitiveParticleDecalGroup@@QAE@J_NW4EEnginePrimitiveBlendMode@@W4EEnginePrimitiveBlendOp@@MK@Z -> 00b1b4d0 labelled 'SDecalRequest::SDecalRequest'
+00b1b710   RELOCATION_MATCH PASS   NParticleEngine::CPSCDecalRenderer::vfunc_28
+00b1b810   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00b1b810   MATCH            PASS   NParticleEngine::CPSCDecalRenderer::DatabaseCopy
+00b1ba10   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00b1ba10   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle
+00b1ba10   RELOCATION_MATCH PASS   NParticleEngine::CPSCDecalRenderer::WriteBinary
+00b1bda0   RELOCATION_MATCH PASS   NParticleEngine::CPSCDecalRenderer::InterpolateTo
+00b1db00   WARN SHARED_HEADER_AVAILABLE CDecal
+00b1db00   WARN SHARED_HEADER_AVAILABLE CParticleSystem
+00b1db00   WARN RELOC_NAME: ?GetUpdateRate_00aea9f0@@YAJXZ -> 00aea9f0 labelled 'NParticleEngine::GetParticleUpdateRate'
+00b1db00   RELOCATION_MATCH PASS   NParticleEngine::CPSCDecalRenderer::Update
+00b1dbe0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+00b1dbe0   MATCH            PASS   NParticleEngine::CPSCDecalRenderer::ClearAllPrimitives
+00b1ff10   RELOCATION_MATCH PASS   NParticleEngine::CPSCDecalRenderer::GetClassTypeName
+00b1ff80   WARN RELOC_NAME: ?GetDrawableObject_00af8100@@YIPAUIDrawableObj@@PAVCPSCDecalRenderer@NParticleEngine@@@Z -> 00af8100 labelled 'NParticleEngine::CPSCDecalRenderer::Alloc'
+00b1ff80   RELOCATION_MATCH PASS   NParticleEngine::CPSCDecalRenderer::DatabaseClone
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00b1ffa0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00b1ffa0.obj; graded the largest function
+00b1ffa0   RELOCATION_MATCH PASS   NParticleEngine::CPSCDecalRenderer::`scalar_deleting_destructor'
+00b202c0   MATCH            PASS   NParticleEngine::CPSCSplineBase::GetComponentCost
+00b20630   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b20630   WARN SHARED_HEADER_AVAILABLE CArray
+00b20630   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00b20630   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::WriteBinary
+  WARN leaf 'vfunc_31' matches no symbol in 00b209c0.obj; graded the largest function
+  WARN leaf 'vfunc_31' matches no symbol in 00b209c0.obj; graded the largest function
+00b209c0   RELOCATION_MATCH PASS   NParticleEngine::CPSCSingleSprite::vfunc_31
+00b20fd0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b20fd0   WARN SHARED_HEADER_AVAILABLE CArray
+00b20fd0   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::GetPointAtPos
+00b21090   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b21090   WARN SHARED_HEADER_AVAILABLE CArray
+00b21090   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::GetPointAtIndex
+00b21160   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b21160   WARN SHARED_HEADER_AVAILABLE CArray
+00b21160   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::Update
+00b21530   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b21530   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00b21530   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::CPSCSplineBase
+00b215e0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b215e0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00b215e0   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::StartUpdate
+00b21630   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b21630   WARN SHARED_HEADER_AVAILABLE CArray
+00b21630   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00b21630   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00b21630   WARN RELOC_NAME: ??0?$CArray@VC3DVector@@@@QAE@ABV0@@Z -> 006f0810 labelled 'std::vector<C3DVector>::vector'
+00b21630   WARN RELOC_NAME: ?WriteBinary@CSplinePosParamData@NParticleEngine@@QAEXAAVCDataOutputStream@@@Z -> 00b20b10 labelled 'CSplinePosParamData::WriteToFile'
+00b21630   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::WriteBinary
+00b216f0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b216f0   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::CSplinePosParamData::GetScaleFactor
+00b21850   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b21850   WARN SHARED_HEADER_AVAILABLE CArray
+00b21850   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::CSplinePosParamData::TransformFromPosition
+00b218b0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b218b0   WARN SHARED_HEADER_AVAILABLE CArray
+00b218b0   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::CSplinePosParamData::TransformFromIndex
+00b21940   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b21940   WARN SHARED_HEADER_AVAILABLE CArray
+00b21940   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00b21940   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::GetPointAtPos
+00b219a0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b219a0   WARN SHARED_HEADER_AVAILABLE CArray
+00b219a0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00b219a0   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::GetPointAtIndex
+00b21a00   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b21a00   WARN SHARED_HEADER_AVAILABLE CArray
+00b21a00   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::CSplinePosParamData::CSplinePosParamData
+00b21c90   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00b21c90   WARN SHARED_HEADER_AVAILABLE CArray
+00b21c90   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::CSplinePosParamData::ReadBinary
+00b21dd0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b21dd0   WARN SHARED_HEADER_AVAILABLE CArray
+00b21dd0   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::CSplineRandomOffsetData
+00b21e90   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b21e90   WARN SHARED_HEADER_AVAILABLE CPersistContext
+00b21e90   WARN SHARED_HEADER_AVAILABLE CArray
+00b21e90   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00b21e90   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::DatabaseSerialise
+00b22100   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b22100   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00b22100   WARN SHARED_HEADER_AVAILABLE CArray
+00b22100   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::ReadBinary
+00b22310   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b22310   WARN SHARED_HEADER_AVAILABLE CArray
+00b22310   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00b22310   WARN RELOC_NAME: ??0?$CArray@VC3DVector@@@@QAE@ABV0@@Z -> 006f0810 labelled 'std::vector<C3DVector>::vector'
+00b22310   WARN RELOC_NAME: ??$GFInterpolateArray@VC3DVector@@@@YI?AV?$CArray@VC3DVector@@@@ABV0@0MABVC3DVector@@@Z -> 00b15bd0 labelled 'InterpolateAnimationSequence'
+00b22310   WARN RELOC_NAME: ??4CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAEAAV012@ABV012@@Z -> 00b20b60 labelled 'CSplineData_00b20b60::CopyFrom'
+00b22310   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::InterpolateTo
+00b22530   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b22530   WARN SHARED_HEADER_AVAILABLE CArray
+00b22530   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00b22530   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::DatabaseCopy
+00b22b40   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b22b40   WARN SHARED_HEADER_AVAILABLE CArray
+00b22b40   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00b22b40   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00b22b40   WARN RELOC_NAME: ??0?$CArray@VC3DVector@@@@QAE@K@Z -> 007c2ab0 labelled 'CSTLportVector<C3DVector>::CSTLportVector'
+00b22b40   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::ReadBinary
+00b22ee0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b22ee0   WARN SHARED_HEADER_AVAILABLE CArray
+00b22ee0   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::~CSplineRandomOffsetData
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00b230c0.obj; graded the largest function
+  WARN leaf "`scalar deleting destructor'" matches no symbol in 00b230c0.obj; graded the largest function
+00b230c0   RELOCATION_MATCH PASS   NParticleEngine::CPSCSingleSprite::`scalar deleting destructor'
+00b23110   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b23110   WARN SHARED_HEADER_AVAILABLE CArray
+00b23110   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::`scalar deleting destructor'
+00b26360   WARN RELOC_NAME: ?GetPDefFromClassIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@J@Z -> 009ade10 labelled 'CDefinitionManager::GetPDefFromGlobalIndex'
+00b26360   WARN RELOC_CONFLICT: ??0CEnginePrimitiveTypeInfo@@QAE@XZ -> 00b8faa0 here, 00a02d20 in landed 00a148d0
+00b26360   RELOCATION_MATCH PASS   CEngine::Initialise
+00b32230   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+00b32230   WARN RELOC_NAME: ?g_pRenderStateManager_01436e18@@3PAVCRenderStateManager@@A -> 01436e18 labelled 'g_pRenderManagerCore'
+00b32230   WARN RELOC_NAME: ?g_pLightingManager@@3PAUCEngineLightingManager_Methods@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00b32230   RELOCATION_MATCH PASS   CEnginePrimitiveRenderer::PostRenderLayer
+00b3efa0   RELOCATION_MATCH PASS   CEngineMap::ReadMapInfoBlock
+00b44820   MATCH            PASS   CEngineLightingManager::CalcSWLightingNoClipVector
+00b44a60   MATCH            PASS   CEngineLightingManager::CalcSWLightingNoClipSeparateMainLightVector
+00b45fb0   WARN SHARED_HEADER_AVAILABLE C3DBoundingSphere
+00b45fb0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveThemeChannelDesc
+00b45fb0   WARN SHARED_HEADER_AVAILABLE CRGBFloatColour
+00b45fb0   RELOCATION_MATCH PASS   CEngineLightingManager::GetLightsInSphere
+00b46280   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveThemeChannelDesc
+00b46280   WARN SHARED_HEADER_AVAILABLE CRGBFloatColour
+00b46280   RELOCATION_MATCH PASS   CEngineLightingManager::GetLightsInArea
+00b46660   WARN SHARED_HEADER_AVAILABLE CRGBFloatColour
+00b46660   RELOCATION_MATCH PASS   CEngineLightingManager::AddLightsToLookupGrid
+00b46a30   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b46a30   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox
+00b46a30   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveThemeChannelDesc
+00b46a30   RELOCATION_MATCH PASS   CEngineLightingManager::LookupSmallObjectLightCache
+00b46b90   WARN SHARED_HEADER_AVAILABLE C3DBoundingSphere
+00b46b90   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveThemeChannelDesc
+00b46b90   RELOCATION_MATCH PASS   CEngineLightingManager::GetLightsInSphereFast
+00b671a0   WARN RELOC_NAME: ?g_pLightingManager@@3PAVCEngineLightingManager@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00b671a0   RELOCATION_MATCH PASS   CEngineLandscapeRenderer::SetupBackgroundStates
+00b67510   WARN SHARED_HEADER_AVAILABLE IDirect3DDevice9
+00b67510   WARN SHARED_HEADER_AVAILABLE CVertexBufferWin32
+00b67510   WARN SHARED_HEADER_AVAILABLE CIndexBuffer
+00b67510   WARN SHARED_HEADER_AVAILABLE CTexture
+00b67510   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveThemeChannelDesc
+00b67510   RELOCATION_MATCH PASS   CEngineLandscapeRenderer::PostRenderClearRenderStates
+00b9e950   WARN SHARED_HEADER_AVAILABLE C3DMeshInfo
+00b9e950   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitive2DStaticMesh
+00b9e950   WARN SHARED_HEADER_AVAILABLE CDisplayManager
+00b9e950   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveTypeInfo
+00b9e950   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer2D
+00b9e950   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer
+00b9e950   WARN SHARED_HEADER_AVAILABLE CEngineSubPrimitiveRenderer
+00b9e950   WARN RELOC_NAME: ?SetLoadPriority@C3DMeshInfo@@QAEXJ@Z -> 00a23c50 labelled '_global::Nop_ret4_00a23c50'
+00b9e950   WARN RELOC_NAME: ?g_pLightingManager@@3PAVCEngineLightingManager@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00b9e950   WARN RELOC_NAME: ??1CCountedMeshPointer@@QAE@XZ -> 00a36ec0 labelled 'CCountedPointer<const C3DMesh2>::~CCountedPointer'
+00b9e950   RELOCATION_MATCH PASS   CEnginePrimitiveManager2DStaticMeshes::Render2DPrimitive
+00bd1f70   WARN SHARED_HEADER_AVAILABLE C3DMeshInfo
+00bd1f70   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00bd1f70   WARN SHARED_HEADER_AVAILABLE C3DVector
+00bd1f70   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitive2DAnimatedMesh
+00bd1f70   WARN SHARED_HEADER_AVAILABLE CDisplayManager
+00bd1f70   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveTypeInfo
+00bd1f70   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer2D
+00bd1f70   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer
+00bd1f70   WARN SHARED_HEADER_AVAILABLE CEngineSubPrimitiveRenderer
+00bd1f70   WARN RELOC_NAME: ?SetLoadPriority@C3DMeshInfo@@QAEXJ@Z -> 00a23c50 labelled '_global::Nop_ret4_00a23c50'
+00bd1f70   WARN RELOC_NAME: ?g_pLightingManager@@3PAVCEngineLightingManager@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00bd1f70   RELOCATION_MATCH PASS   CEnginePrimitiveManager2DAnimatedMeshes::Render2DPrimitive
+
+WINS: 188
+  0047f58b RELOCATION_MATCH CTCInGameMenu::?AddRegionAndTimeInfo@CTCInGameMenu@@AAEXABVCWideString@@@Z
+  004b05c0 RELOCATION_MATCH CQuestManager::?TransferBoasts@CQuestManager@@QAEXAAVCPersistContext@@@Z
+  00520670 RELOCATION_MATCH CThingManager::?LoadHeroStateBinary@CThingManager@@QAEXAAVCPersistContext@@@Z
+  00521620 RELOCATION_MATCH NThingManager::CEntityRuntimePersistence::?SaveToGameStateBinary@CEntityRuntimePersistence@NThingManager@@QAEXAAVCPersistContext@@@Z
+  00522720 RELOCATION_MATCH CThingManager::?RuntimeLoadEntities@CThingManager@@QAEXJABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@3@@Z
+  00597228 RELOCATION_MATCH NUISystem::CFrontEndManager::?AddRegionAndTimeInfo@CFrontEndManager@NUISystem@@IAEXABVCWideString@@@Z
+  006d2bd0 RELOCATION_MATCH CTCWife::?OnSerialise@CTCWife@@UAEXAAVCPersistContext@@_N@Z
+  00989cb0 RELOCATION_MATCH CShaderRenderManager::?UpdateObjectSpaceLighting@CShaderRenderManager@@AAEXK@Z
+  0098acf0 RELOCATION_MATCH CShaderRenderManager::?Initialise@CShaderRenderManager@@QAEXPAVCRenderManager@@PAUIDirect3DDevice9@@@Z
+  009da9f0 RELOCATION_MATCH CRenderManager2D::?Render2DDrawList@CRenderManager2D@@QAEX_N@Z
+  00a4fe60 RELOCATION_MATCH C3DAnimation2::?InitialiseSharedAnimation@C3DAnimation2@@QAE_NABVC3DAnimFile@@W4EAnimationType@@@Z
+  00aef1f0 RELOCATION_MATCH NParticleEngine::CParticleEmitter::?DatabaseSerialise@CParticleEmitter@NParticleEngine@@QAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@2@@Z
+  00af2620 RELOCATION_MATCH NParticleEngine::CPSCBase::??0CPSCBase@NParticleEngine@@QAE@XZ
+  00af2780 RELOCATION_MATCH _global::?GetCurrentPositionLocal@CPSCBase@NParticleEngine@@QBE?AVC3DVector@@ABV?$CParticleUpdateParameters@KK@2@ABKM_NK@Z
+  00af28c0 RELOCATION_MATCH NParticleEngine::CPSCManager::?AllocatePSC@CPSCManager@NParticleEngine@@QAEPAVCPSCBase@2@ABVCCharString@@@Z
+  00af29c0 MATCH NParticleEngine::CPSCBase::StartUpdate
+  00af29d0 MATCH NParticleEngine::CPSCBase::Update
+  00af2a30 MATCH NParticleEngine::CPSCBase::AddToBoundingSphere
+  00af2ab0 MATCH NParticleEngine::CPSCBase::?Initialise@CPSCBase@NParticleEngine@@UAE_NPAVCIEngine@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z
+  00af2ac0 MATCH NParticleEngine::CPSCBase::ClearAllPrimitives
+  00af2ae0 RELOCATION_MATCH NParticleEngine::CPSCBase::vfunc_31
+  00af2af0 RELOCATION_MATCH NParticleEngine::CPSCBase::`scalar_deleting_destructor'
+  00af7d10 RELOCATION_MATCH NParticleEngine::CPSCRenderSprite::Alloc
+  00af7d80 RELOCATION_MATCH NParticleEngine::CPSCRenderMesh::Alloc
+  00af7df0 RELOCATION_MATCH NParticleEngine::CPSCSingleSprite::Alloc
+  00af7e60 RELOCATION_MATCH NParticleEngine::CPSCUpdateNormal::Alloc
+  00af7ed0 RELOCATION_MATCH NParticleEngine::CPSCEmitterGeneric::Alloc
+  00af7f40 RELOCATION_MATCH NParticleEngine::CPSCOrbit::Alloc
+  00af7fb0 RELOCATION_MATCH NParticleEngine::CPSCAttractor::Alloc
+  00af8020 RELOCATION_MATCH NParticleEngine::CPSCLight::Alloc
+  00af8090 RELOCATION_MATCH NParticleEngine::CPSCSpline::Alloc
+  00af8100 RELOCATION_MATCH NParticleEngine::CPSCDecalRenderer::Alloc
+  00af8170 RELOCATION_MATCH NParticleEngine::CPSCManager::RegisterPSCs
+  00af90c0 RELOCATION_MATCH NParticleEngine::CPSCRenderSprite::?GetComponentCost@CPSCRenderSprite@NParticleEngine@@UAEXAAVCParticleSystemCost@2@ABVCParticleSystem@2@MM@Z
+  00af9310 MATCH NParticleEngine::CPSCRenderSprite::Initialise
+  00af9410 MATCH NParticleEngine::CPSCRenderSprite::vfunc_18
+  00af9620 RELOCATION_MATCH NParticleEngine::CPSCRenderSprite::WriteBinary
+  00afadc0 MATCH NParticleEngine::CPSCRenderSprite::?ClearAllPrimitives@CPSCRenderSprite@NParticleEngine@@UAEXPAVCIEngine@@AAVCEnginePrimitiveHandle@@@Z
+  00afb7c0 RELOCATION_MATCH NParticleEngine::CPSCRenderSprite::??0CPSCRenderSprite@NParticleEngine@@QAE@XZ
+  00afbbd0 RELOCATION_MATCH NParticleEngine::CPSCRenderSprite::??1CPSCRenderSprite
+  00afe440 RELOCATION_MATCH NParticleEngine::CPSCRenderSprite::GetClassTypeName
+  00afe580 RELOCATION_MATCH NParticleEngine::CPSCRenderSprite::?DatabaseClone@CPSCRenderSprite@NParticleEngine@@
+  00afe5a0 RELOCATION_MATCH NParticleEngine::CPSCRenderSprite::`scalar_deleting_destructor'
+  00afeb90 MATCH NParticleEngine::CPSCRenderMesh::vfunc_18
+  00afee00 RELOCATION_MATCH NParticleEngine::CPSCRenderMesh::WriteBinary
+  00aff0a0 RELOCATION_MATCH NParticleEngine::CPSCRenderMesh::Initialise
+  00b00db0 RELOCATION_MATCH NParticleEngine::CPSCRenderMesh::?GetComponentCost@CPSCRenderMesh@NParticleEngine@@UAEXAAVCParticleSystemCost@2@ABVCParticleSystem@2@MM@Z
+  00b01250 MATCH NParticleEngine::CPSCRenderMesh::?ClearAllPrimitives@CPSCRenderMesh@NParticleEngine@@UAEXPAVCIEngine@@AAVCEnginePrimitiveHandle@@@Z
+  00b017f0 RELOCATION_MATCH NParticleEngine::CPSCRenderMesh::??1CPSCRenderMesh
+  00b05a50 RELOCATION_MATCH NParticleEngine::CPSCRenderMesh::GetClassTypeName
+  00b05a90 RELOCATION_MATCH NParticleEngine::CPSCRenderMesh::?GetGUIName@CPSCRenderMesh@NParticleEngine@@
+  00b05ad0 RELOCATION_MATCH NParticleEngine::CPSCRenderMesh::`scalar_deleting_destructor'
+  00b05ea0 RELOCATION_MATCH NParticleEngine::CPSCSingleSprite::vfunc_18
+  00b06060 RELOCATION_MATCH NParticleEngine::CPSCSingleSprite::WriteBinary
+  00b07570 MATCH NParticleEngine::CPSCSingleSprite::ClearAllPrimitives
+  00b081a0 RELOCATION_MATCH NParticleEngine::CPSCSingleSprite::?AddTrailPosition@CPSCSingleSprite@NParticleEngine@@IAEXABVC3DVector@@M@Z
+  00b09360 RELOCATION_MATCH NParticleEngine::CPSCSingleSprite::??0CPSCSingleSprite
+  00b094b0 RELOCATION_MATCH NParticleEngine::CPSCSingleSprite::?Initialise@CPSCSingleSprite@NParticleEngine@@UAE_NPAVCIEngine@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z
+  00b0a060 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::??1CPSCSplineBase@NParticleEngine@@UAE@XZ
+  00b0a0d0 RELOCATION_MATCH NParticleEngine::CPSCSingleSprite::GetClassTypeName
+  00b0a140 RELOCATION_MATCH NParticleEngine::CPSCSingleSprite::`scalar_deleting_destructor'
+  00b0a160 RELOCATION_MATCH NParticleEngine::CPSCSingleSprite::??1CPSCSingleSprite@NParticleEngine@@UAE@XZ
+  00b0a190 RELOCATION_MATCH NParticleEngine::CPSCSingleSprite::?DatabaseClone@CPSCSingleSprite@NParticleEngine@@
+  00b0a6d0 MATCH NParticleEngine::CPSCUpdateNormal::?GetUpdateParam@CPSCUpdateNormal@NParticleEngine@@UAE_NAAVC3DVector@@KM_NABV?$CParticleUpdateParameters@KK@2@K@Z
+  00b0a710 MATCH NParticleEngine::CPSCUpdateNormal::?Initialise@CPSCUpdateNormal@NParticleEngine@@UAE_NPAVCIEngine@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z
+  00b0a750 RELOCATION_MATCH NParticleEngine::CPSCUpdateNormal::GetCurrentFadeValue
+  00b0b370 RELOCATION_MATCH NParticleEngine::CPSCUpdateNormal::DatabaseCopy
+  00b0b5c0 RELOCATION_MATCH NParticleEngine::CPSCUpdateNormal::WriteBinary
+  00b0c730 RELOCATION_MATCH NParticleEngine::CPSCUpdateNormal::KillAllDecalEmitters
+  00b0c7b0 RELOCATION_MATCH NParticleEngine::CPSCUpdateNormal::GetComponentCost
+  00b0c830 RELOCATION_MATCH NParticleEngine::CPSCUpdateNormal::?GetParticleCount@CPSCUpdateNormal@NParticleEngine@@UAEJXZ
+  00b0c8a0 RELOCATION_MATCH NParticleEngine::CPSCUpdateNormal::?GetDecalCount@CPSCUpdateNormal@NParticleEngine@@UAEJXZ
+  00b0c910 RELOCATION_MATCH NParticleEngine::CPSCUpdateNormal::?PreparePrimitives@CPSCUpdateNormal@NParticleEngine@@UAEXMABVCEnginePrimitivePrepareInfo@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z
+  00b0c9c0 RELOCATION_MATCH NParticleEngine::CPSCUpdateNormal::??0CPSCUpdateNormal
+  00b0ca90 RELOCATION_MATCH NParticleEngine::CPSCUpdateNormal::??1CPSCUpdateNormal@NParticleEngine@@UAE@XZ
+  00b0f210 RELOCATION_MATCH NParticleEngine::CPSCUpdateNormal::?CollectUpdateParameters@CPSCUpdateNormal@NParticleEngine@@UAEXAAV?$CParticleUpdateParameters@KK@2@ABK@Z
+  00b0f880 RELOCATION_MATCH NParticleEngine::CPSCUpdateNormal::GetClassTypeName
+  00b0f8e0 RELOCATION_MATCH NParticleEngine::CPSCUpdateNormal::GetParticleLifeSecs
+  00b0f970 RELOCATION_MATCH NParticleEngine::CPSCUpdateNormal::?DatabaseClone@CPSCUpdateNormal@NParticleEngine@@
+  00b0f990 RELOCATION_MATCH NParticleEngine::CPSCUpdateNormal::??_GCPSCUpdateNormal
+  00b0fbe0 MATCH NParticleEngine::CPSCEmitterGeneric::GetComponentCost
+  00b0fbf0 RELOCATION_MATCH NParticleEngine::CPSCEmitterGeneric::?GetNumberOfParticles@CPSCEmitterGeneric@NParticleEngine@@UAE_NAAMM@Z
+  00b0ffc0 RELOCATION_MATCH NParticleEngine::CPSCEmitterGeneric::?GetNumberOfDecals@CPSCEmitterGeneric@NParticleEngine@@UAE_NAAMM@Z
+  00b102c0 RELOCATION_MATCH NParticleEngine::CPSCEmitterGeneric::GetRandomRadius
+  00b10360 MATCH NParticleEngine::CPSCEmitterGeneric::?ChangeOrientation@CPSCEmitterGeneric@NParticleEngine@@AAE?AVC3DVector@@ABV3@@Z
+  00b109b0 RELOCATION_MATCH NParticleEngine::CPSCEmitterGeneric::vfunc_31
+  00b12ef0 RELOCATION_MATCH NParticleEngine::CPSCEmitterGeneric::WriteBinary
+  00b158a0 RELOCATION_MATCH NParticleEngine::CPSCEmitterGeneric::?CollectUpdateParameters@CPSCEmitterGeneric@NParticleEngine@@UAEXAAV?$CParticleUpdateParameters@KK@2@ABK@Z
+  00b15a90 RELOCATION_MATCH NParticleEngine::CPSCEmitterGeneric::GetClassTypeName
+  00b15af0 MATCH NParticleEngine::CPSCEmitterGeneric::?EnterTimelineEnd@CPSCEmitterGeneric@NParticleEngine@@UAEXXZ
+  00b15b00 RELOCATION_MATCH NParticleEngine::CPSCEmitterGeneric::?DatabaseClone@CPSCEmitterGeneric@NParticleEngine@@
+  00b15b20 RELOCATION_MATCH NParticleEngine::CPSCEmitterGeneric::`scalar_deleting_destructor'
+  00b16210 MATCH NParticleEngine::CPSCOrbit::GetComponentCost
+  00b163a0 MATCH NParticleEngine::CPSCOrbit::?DatabaseCopy@CPSCOrbit@NParticleEngine@@UAEXABVCPSCBase@2@@Z
+  00b163e0 RELOCATION_MATCH NParticleEngine::CPSCOrbit::WriteBinary
+  00b16d50 RELOCATION_MATCH NParticleEngine::CPSCOrbit::StartUpdate
+  00b16eb0 RELOCATION_MATCH NParticleEngine::CPSCOrbit::CPSCOrbit
+  00b16f60 RELOCATION_MATCH NParticleEngine::CPSCOrbit::ReadBinary
+  00b177c0 RELOCATION_MATCH NParticleEngine::CPSCOrbit::COrbitState::?GetSplinePosition@COrbitState@CPSCOrbit@NParticleEngine@@QBE?AVC3DVector@@M@Z
+  00b178d0 RELOCATION_MATCH NParticleEngine::CPSCOrbit::GetClassTypeName
+  00b17910 RELOCATION_MATCH NParticleEngine::CPSCOrbit::?GetGUIName@CPSCOrbit@NParticleEngine@@
+  00b17930 RELOCATION_MATCH NParticleEngine::CPSCOrbit::`scalar_deleting_destructor'
+  00b17950 RELOCATION_MATCH NParticleEngine::CPSCOrbit::?DatabaseClone@CPSCOrbit@NParticleEngine@@
+  00b17990 MATCH NParticleEngine::CPSCAttractor::GetComponentCost
+  00b179a0 RELOCATION_MATCH NParticleEngine::CPSCAttractor::?Update@CPSCAttractor@NParticleEngine@@UAEXAAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AA_N@Z
+  00b17f70 RELOCATION_MATCH NParticleEngine::CPSCAttractor::WriteBinary
+  00b18020 RELOCATION_MATCH NParticleEngine::CPSCAttractor::??0CPSCAttractor
+  00b18060 RELOCATION_MATCH NParticleEngine::CPSCAttractor::DatabaseCopy
+  00b18110 RELOCATION_MATCH NParticleEngine::CPSCAttractor::DatabaseSerialise
+  00b18390 RELOCATION_MATCH NParticleEngine::CPSCAttractor::ReadBinary
+  00b186e0 RELOCATION_MATCH NParticleEngine::CPSCAttractor::GetClassTypeName
+  00b18720 RELOCATION_MATCH NParticleEngine::CPSCAttractor::?GetGUIName@CPSCAttractor@NParticleEngine@@
+  00b18740 RELOCATION_MATCH NParticleEngine::CPSCAttractor::?DatabaseClone@CPSCAttractor@NParticleEngine@@
+  00b18760 RELOCATION_MATCH NParticleEngine::CPSCAttractor::`scalar_deleting_destructor'
+  00b18780 RELOCATION_MATCH NParticleEngine::CPSCAttractor::??1CPSCAttractor@NParticleEngine@@UAE@XZ
+  00b187d0 RELOCATION_MATCH NParticleEngine::CPSCLight::?GetComponentCost@CPSCLight@NParticleEngine@@UAEXAAVCParticleSystemCost@2@ABVCParticleSystem@2@MM@Z
+  00b18950 RELOCATION_MATCH NParticleEngine::CPSCLight::WriteBinary
+  00b18af0 RELOCATION_MATCH NParticleEngine::CPSCLight::AddToBoundingSphere
+  00b19c20 MATCH NParticleEngine::CPSCLight::?Kill@CPSCLight@NParticleEngine@@UAEXXZ
+  00b1a640 RELOCATION_MATCH NParticleEngine::CPSCLight::??0CPSCLight
+  00b1a700 RELOCATION_MATCH NParticleEngine::CPSCLight::DatabaseCopy
+  00b1ae00 RELOCATION_MATCH NParticleEngine::CPSCLight::GetClassTypeName
+  00b1ae60 MATCH NParticleEngine::CPSCLight::?EnterTimelineEnd@CPSCLight@NParticleEngine@@UAEXXZ
+  00b1ae70 RELOCATION_MATCH NParticleEngine::CPSCLight::?DatabaseClone@CPSCLight@NParticleEngine@@
+  00b1ae90 RELOCATION_MATCH NParticleEngine::CPSCLight::`scalar_deleting_destructor'
+  00b1aeb0 RELOCATION_MATCH NParticleEngine::CPSCLight::??1CPSCLight@NParticleEngine@@UAE@XZ
+  00b1af40 RELOCATION_MATCH NParticleEngine::CPSCSpline::GetComponentCost
+  00b1af50 RELOCATION_MATCH NParticleEngine::CPSCSpline::?InterpolateTo@CPSCSpline@NParticleEngine@@UAEXABVCPSCBase@2@M@Z
+  00b1afc0 RELOCATION_MATCH NParticleEngine::CPSCSpline::?DatabaseCopy@CPSCSpline@NParticleEngine@@UAEXABVCPSCBase@2@@Z
+  00b1aff0 RELOCATION_MATCH NParticleEngine::CPSCSpline::WriteBinary
+  00b1b030 RELOCATION_MATCH NParticleEngine::CPSCSpline::?GetUpdateParam@CPSCSpline@NParticleEngine
+  00b1b0c0 RELOCATION_MATCH NParticleEngine::CPSCSpline::?StartUpdate@CPSCSpline@NParticleEngine@@UAEXABV?$CParticleUpdateParameters@KK@2@@Z
+  00b1b1b0 RELOCATION_MATCH NParticleEngine::CPSCSpline::vfunc_15
+  00b1b2e0 RELOCATION_MATCH NParticleEngine::CPSCSpline::?DatabaseSerialise@CPSCSpline@NParticleEngine@@UAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@2@@Z
+  00b1b350 RELOCATION_MATCH NParticleEngine::CPSCSpline::??0CPSCSpline
+  00b1b380 RELOCATION_MATCH NParticleEngine::CPSCSpline::?CollectUpdateParameters@CPSCSpline@NParticleEngine@@UAEXAAV?$CParticleUpdateParameters@KK@2@ABK@Z
+  00b1b430 RELOCATION_MATCH NParticleEngine::CPSCSpline::GetClassTypeName
+  00b1b470 RELOCATION_MATCH NParticleEngine::CPSCSpline::?GetGUIName@CPSCSpline@NParticleEngine@@
+  00b1b490 RELOCATION_MATCH NParticleEngine::CPSCSpline::`scalar deleting destructor'
+  00b1b4b0 RELOCATION_MATCH NParticleEngine::CPSCSpline::?DatabaseClone@CPSCSpline@NParticleEngine@@
+  00b1b710 RELOCATION_MATCH NParticleEngine::CPSCDecalRenderer::vfunc_28
+  00b1b810 MATCH NParticleEngine::CPSCDecalRenderer::DatabaseCopy
+  00b1ba10 RELOCATION_MATCH NParticleEngine::CPSCDecalRenderer::WriteBinary
+  00b1bda0 RELOCATION_MATCH NParticleEngine::CPSCDecalRenderer::?InterpolateTo@CPSCDecalRenderer@NParticleEngine@@UAEXABVCPSCBase@2@M@Z
+  00b1db00 RELOCATION_MATCH NParticleEngine::CPSCDecalRenderer::?Update@CPSCDecalRenderer
+  00b1dbe0 MATCH NParticleEngine::CPSCDecalRenderer::?ClearAllPrimitives@CPSCDecalRenderer@NParticleEngine@@UAEXPAVCIEngine@@AAVCEnginePrimitiveHandle@@@Z
+  00b1ff10 RELOCATION_MATCH NParticleEngine::CPSCDecalRenderer::GetClassTypeName
+  00b1ff80 RELOCATION_MATCH NParticleEngine::CPSCDecalRenderer::?DatabaseClone@CPSCDecalRenderer@NParticleEngine@@
+  00b1ffa0 RELOCATION_MATCH NParticleEngine::CPSCDecalRenderer::`scalar_deleting_destructor'
+  00b202c0 MATCH NParticleEngine::CPSCSplineBase::GetComponentCost
+  00b20630 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::WriteBinary
+  00b209c0 RELOCATION_MATCH NParticleEngine::CPSCSingleSprite::vfunc_31
+  00b20fd0 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::GetPointAtPos
+  00b21090 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::GetPointAtIndex
+  00b21160 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::Update
+  00b21530 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::??0CPSCSplineBase
+  00b215e0 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::?StartUpdate@CPSCSplineBase@NParticleEngine@@UAEXABV?$CParticleUpdateParameters@KK@2@@Z
+  00b21630 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::WriteBinary
+  00b216f0 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::CSplinePosParamData::?GetScaleFactor@CSplinePosParamData@CPSCSplineBase@NParticleEngine@@QAEMABV?$CParticleUpdateParameters@KK@3@M@Z
+  00b21850 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::CSplinePosParamData::?TransformFromPosition@CSplinePosParamData@CPSCSplineBase@NParticleEngine@@QAEXABV?$CParticleUpdateParameters@KK@3@AAVC3DVector@@M@Z
+  00b218b0 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::CSplinePosParamData::?TransformFromIndex@CSplinePosParamData@CPSCSplineBase@NParticleEngine@@QAEXABV?$CParticleUpdateParameters@KK@3@AAVC3DVector@@J@Z
+  00b21940 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::?GetPointAtPos@CPSCSplineBase@NParticleEngine@@QAEXABV?$CParticleUpdateParameters@KK@2@AAVC3DVector@@MM@Z
+  00b219a0 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::?GetPointAtIndex@CPSCSplineBase@NParticleEngine@@QAEXABV?$CParticleUpdateParameters@KK@2@AAVC3DVector@@JM@Z
+  00b21a00 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::CSplinePosParamData::??0CSplinePosParamData
+  00b21c90 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::CSplinePosParamData::ReadBinary@CSplinePosParamData
+  00b21dd0 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::??0CSplineRandomOffsetData
+  00b21e90 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::DatabaseSerialise@CSplineRandomOffsetData
+  00b22100 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::ReadBinary@CSplineRandomOffsetData
+  00b22310 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::InterpolateTo
+  00b22530 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::DatabaseCopy
+  00b22b40 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::ReadBinary
+  00b22ee0 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::??1CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAE@XZ
+  00b230c0 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::`scalar deleting destructor'
+  00b23110 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::??_GCSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAEPAXI@Z
+  00b26360 RELOCATION_MATCH CEngine::?Initialise@CEngine@@UAE_NABVCEngineInit@@@Z
+  00b32230 RELOCATION_MATCH CEnginePrimitiveRenderer::PostRenderLayer
+  00b3efa0 RELOCATION_MATCH CEngineMap::?ReadMapInfoBlock@CEngineMap@@CIXAAUCStaticMapInfoBlock@1@AAVCDataInputStream@@@Z
+  00b44820 MATCH CEngineLightingManager::?CalcSWLightingNoClipVector@CEngineLightingManager@@QAEXPAVCRGBFloatColour@@PBVC4DVector@@PBM22JABVCEngineLocalLightArray@@@Z
+  00b44a60 MATCH CEngineLightingManager::?CalcSWLightingNoClipSeparateMainLightVector@CEngineLightingManager@@QAEXPAVCRGBFloatColour@@0PBVC4DVector@@PBM22JABVCEngineLocalLightArray@@@Z
+  00b45fb0 RELOCATION_MATCH CEngineLightingManager::?GetLightsInSphere@CEngineLightingManager@@QAEPAVCEngineLocalLightArray@@ABVC3DBoundingSphere@@JABVCEnginePrimitiveThemeChannelDesc@@@Z
+  00b46280 RELOCATION_MATCH CEngineLightingManager::?GetLightsInArea@CEngineLightingManager@@QAEPAVCEngineLocalLightArray@@ABVC3DBoundingBox@@JABVCEnginePrimitiveThemeChannelDesc@@@Z
+  00b46660 RELOCATION_MATCH CEngineLightingManager::?AddLightsToLookupGrid@CEngineLightingManager@@AAEXXZ
+  00b46a30 RELOCATION_MATCH CEngineLightingManager::?LookupSmallObjectLightCache@CEngineLightingManager@@AAEPAVCEngineLocalLightArray@@MMJ@Z
+  00b46b90 RELOCATION_MATCH CEngineLightingManager::GetLightsInSphereFast
+  00b671a0 RELOCATION_MATCH CEngineLandscapeRenderer::?SetupBackgroundStates@CEngineLandscapeRenderer@@AAEXXZ
+  00b67510 RELOCATION_MATCH CEngineLandscapeRenderer::?PostRenderClearRenderStates@CEngineLandscapeRenderer@@AAEXXZ
+  00b9e950 RELOCATION_MATCH CEnginePrimitiveManager2DStaticMeshes::Render2DPrimitive
+  00bd1f70 RELOCATION_MATCH CEnginePrimitiveManager2DAnimatedMeshes::Render2DPrimitive

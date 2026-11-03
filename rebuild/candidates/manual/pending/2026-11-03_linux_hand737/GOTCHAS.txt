@@ -1,0 +1,8 @@
+- (chunk 737) Retail CPSCSingleSprite offsets are the Ego_r.pdb offsets minus 4 (retail CPSCSplineBase is 0x34: STLport CArray inside CCardinalSpline), and inside CEnginePrimitiveSpriteTrail the STLport list is 4 bytes, so UpdateExisting is +0x10 (PDB +0x18): TrailUpdatePrimitive +0xAC, PrimIDList +0x12C.
+- (chunk 737) VC7.1 folds `1.0f / (a * b) * c` into `c / (a * b)`; retail's `fdivr 1.0 ; fmul c` (0x00B088C0) needs `c * (1.0f / (a * b))`.
+- (chunk 737) A function-scope CMatrix3x4 local keeps its 0x30 bytes for the whole frame; retail lets the later 0x48-byte sprite temporary reuse them (0x00B087C0 frame 0x110 -> 0xE0 with a block-scoped matrix).
+- (chunk 737) `cond ? lvalueColour : CRGBColour(255,255,255,255)` gives retail's pointer-select (no copy); the CRGBFloatColour built from it reads bytes through the selected pointer.
+- (chunk 737) The inline CParticleUpdateParameters::GetUpdateParam needs the same-TU noinline LowerBound body (as the landed GetUpdateParamDesc 0x00B15B50) for the key to stay in ebx across the call, and __forceinline in a 2.9 KB row.
+- (chunk 737) CEnginePrimitiveHandle.h's inline destructor needs FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE and FABLE_RETAIL_DEF_CLASS_BASE in the includer (C2039 GetRefCount / C2118 negative subscript otherwise), even in a row that never destroys a handle.
+- (chunk 737) CEngineLightingManager.h and CShaderRenderManager.h auto-define FABLE_RETAIL_CMATRIX3X4: the CMatrix3x4 retail branch has landed users through them (they all still match with the X-form TransformPoint), but landed 0x00AE0070 ApplyTransform needs the default (accumulated) form.
+- (chunk 737) vland.py takes `--recheck-landed` only after the two positional arguments.

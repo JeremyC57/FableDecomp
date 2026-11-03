@@ -1,0 +1,189 @@
+address	name	parity	behaviour	headers_reached	source
+0x0047F58B	CTCInGameMenu::AddRegionAndTimeInfo	RELOCATION_MATCH	PASS	 (FABLE_RETAIL_CDATAINPUTSTREAM)	00/47/CTCInGameMenu_AddRegionAndTimeInfo_0047f58b.cpp
+0x004B05C0	CQuestManager::TransferBoasts	RELOCATION_MATCH	PASS	 (FABLE_RETAIL_CDATAINPUTSTREAM)	00/4b/CQuestManager_TransferBoasts_004b05c0.cpp
+0x00520670	CThingManager::LoadHeroStateBinary	RELOCATION_MATCH	PASS	 (FABLE_RETAIL_CDATAINPUTSTREAM)	00/52/CThingManager_LoadHeroStateBinary_00520670.cpp
+0x00521620	NThingManager::CEntityRuntimePersistence::SaveToGameStateBinary	RELOCATION_MATCH	PASS	 (FABLE_RETAIL_CDATAINPUTSTREAM)	00/52/NThingManagerCEntityRuntimePersistence_SaveToGameStateBinary_00521620.cpp
+0x00522720	CThingManager::RuntimeLoadEntities	RELOCATION_MATCH	PASS	 (FABLE_RETAIL_CDATAINPUTSTREAM)	00/52/CThingManager_RuntimeLoadEntities_00522720.cpp
+0x00597228	NUISystem::CFrontEndManager::AddRegionAndTimeInfo	RELOCATION_MATCH	PASS	 (FABLE_RETAIL_CDATAINPUTSTREAM)	00/59/NUISystemCFrontEndManager_AddRegionAndTimeInfo_00597228.cpp
+0x006D2BD0	CTCWife::OnSerialise	RELOCATION_MATCH	PASS	 (FABLE_RETAIL_CDATAINPUTSTREAM)	00/6d/CTCWife_OnSerialise_006d2bd0.cpp
+0x00989CB0	CShaderRenderManager::UpdateObjectSpaceLighting	RELOCATION_MATCH	PASS	CShaderRenderManager (default)	00/98/CShaderRenderManager_UpdateObjectSpaceLighting_00989cb0.cpp
+0x0098ACF0	CShaderRenderManager::Initialise	RELOCATION_MATCH	PASS	CShaderRenderManager (default)	00/98/CShaderRenderManager_Initialise_0098acf0.cpp
+0x009DA9F0	CRenderManager2D::Render2DDrawList	RELOCATION_MATCH	PASS	CScopedShadersEnable,CScopedVertexShaderConstantLayout,CShaderRenderManager (default)	00/9d/CRenderManager2D_Render2DDrawList_009da9f0.cpp
+0x00A4FE60	C3DAnimation2::InitialiseSharedAnimation	RELOCATION_MATCH	PASS	 (FABLE_RETAIL_CDATAINPUTSTREAM)	00/a4/C3DAnimation2_InitialiseSharedAnimation_00a4fe60.cpp
+0x00AEF1F0	NParticleEngine::CParticleEmitter::DatabaseSerialise	RELOCATION_MATCH	PASS	CParticleSystem (default)	00/ae/NParticleEngineCParticleEmitter_DatabaseSerialise_00aef1f0.cpp
+0x00AF2620	NParticleEngine::CPSCBase::CPSCBase	RELOCATION_MATCH	PASS	 (default)	00/af/NParticleEngineCPSCBase_CPSCBase_00af2620.cpp
+0x00AF2780	NParticleEngine::CPSCBase::GetCurrentPositionLocal	RELOCATION_MATCH	PASS	 (default)	00/af/NParticleEngineCPSCBase_GetCurrentPositionLocal_00af2780.cpp
+0x00AF28C0	NParticleEngine::CPSCManager::AllocatePSC	RELOCATION_MATCH	PASS	 (default)	00/af/NParticleEngineCPSCManager_AllocatePSC_00af28c0.cpp
+0x00AF29C0	NParticleEngine::CPSCBase::StartUpdate	MATCH	PASS	 (default)	00/af/NParticleEngineCPSCBase_StartUpdate_00af29c0.cpp
+0x00AF29D0	NParticleEngine::CPSCBase::Update	MATCH	PASS	 (default)	00/af/NParticleEngineCPSCBase_Update_00af29d0.cpp
+0x00AF2A30	NParticleEngine::CPSCBase::AddToBoundingSphere	MATCH	PASS	 (default)	00/af/NParticleEngineCPSCBase_AddToBoundingSphere_00af2a30.cpp
+0x00AF2AB0	NParticleEngine::CPSCBase::Initialise	MATCH	PASS	 (default)	00/af/NParticleEngineCPSCBase_Initialise_00af2ab0.cpp
+0x00AF2AC0	NParticleEngine::CPSCBase::ClearAllPrimitives	MATCH	PASS	 (default)	00/af/NParticleEngineCPSCBase_ClearAllPrimitives_00af2ac0.cpp
+0x00AF2AE0	NParticleEngine::CPSCBase::vfunc_31	RELOCATION_MATCH	PASS	 (default)	00/af/NParticleEngineCPSCBase_vfunc31_00af2ae0.cpp
+0x00AF2AF0	NParticleEngine::CPSCBase::`scalar_deleting_destructor'	RELOCATION_MATCH	PASS	 (default)	00/af/NParticleEngineCPSCBase_scalardeletingdestructor_00af2af0.cpp
+0x00AF7D10	NParticleEngine::CPSCRenderSprite::Alloc	RELOCATION_MATCH	PASS	 (default)	00/af/NParticleEngineCPSCRenderSprite_Alloc_00af7d10.cpp
+0x00AF7D80	NParticleEngine::CPSCRenderMesh::Alloc	RELOCATION_MATCH	PASS	 (default)	00/af/NParticleEngineCPSCRenderMesh_Alloc_00af7d80.cpp
+0x00AF7DF0	NParticleEngine::CPSCSingleSprite::Alloc	RELOCATION_MATCH	PASS	 (default)	00/af/NParticleEngineCPSCSingleSprite_Alloc_00af7df0.cpp
+0x00AF7E60	NParticleEngine::CPSCUpdateNormal::Alloc	RELOCATION_MATCH	PASS	 (default)	00/af/NParticleEngineCPSCUpdateNormal_Alloc_00af7e60.cpp
+0x00AF7ED0	NParticleEngine::CPSCEmitterGeneric::Alloc	RELOCATION_MATCH	PASS	 (default)	00/af/NParticleEngineCPSCEmitterGeneric_Alloc_00af7ed0.cpp
+0x00AF7F40	NParticleEngine::CPSCOrbit::Alloc	RELOCATION_MATCH	PASS	 (default)	00/af/NParticleEngineCPSCOrbit_Alloc_00af7f40.cpp
+0x00AF7FB0	NParticleEngine::CPSCAttractor::Alloc	RELOCATION_MATCH	PASS	 (default)	00/af/NParticleEngineCPSCAttractor_Alloc_00af7fb0.cpp
+0x00AF8020	NParticleEngine::CPSCLight::Alloc	RELOCATION_MATCH	PASS	 (default)	00/af/NParticleEngineCPSCLight_Alloc_00af8020.cpp
+0x00AF8090	NParticleEngine::CPSCSpline::Alloc	RELOCATION_MATCH	PASS	 (default)	00/af/NParticleEngineCPSCSpline_Alloc_00af8090.cpp
+0x00AF8100	NParticleEngine::CPSCDecalRenderer::Alloc	RELOCATION_MATCH	PASS	 (default)	00/af/NParticleEngineCPSCDecalRenderer_Alloc_00af8100.cpp
+0x00AF8170	NParticleEngine::CPSCManager::RegisterPSCs	RELOCATION_MATCH	PASS	 (default)	00/af/NParticleEngineCPSCManager_RegisterPSCs_00af8170.cpp
+0x00AF90C0	NParticleEngine::CPSCRenderSprite::GetComponentCost	RELOCATION_MATCH	PASS	 (default)	00/af/NParticleEngineCPSCRenderSprite_GetComponentCost_00af90c0.cpp
+0x00AF9310	NParticleEngine::CPSCRenderSprite::Initialise	MATCH	PASS	 (default)	00/af/NParticleEngineCPSCRenderSprite_Initialise_00af9310.cpp
+0x00AF9410	NParticleEngine::CPSCRenderSprite::vfunc_18	MATCH	PASS	 (default)	00/af/NParticleEngineCPSCRenderSprite_vfunc18_00af9410.cpp
+0x00AF9620	NParticleEngine::CPSCRenderSprite::WriteBinary	RELOCATION_MATCH	PASS	 (default)	00/af/NParticleEngineCPSCRenderSprite_WriteBinary_00af9620.cpp
+0x00AFADC0	NParticleEngine::CPSCRenderSprite::ClearAllPrimitives	MATCH	PASS	 (default)	00/af/NParticleEngineCPSCRenderSprite_ClearAllPrimitives_00afadc0.cpp
+0x00AFB7C0	NParticleEngine::CPSCRenderSprite::CPSCRenderSprite	RELOCATION_MATCH	PASS	 (default)	00/af/NParticleEngineCPSCRenderSprite_CPSCRenderSprite_00afb7c0.cpp
+0x00AFBBD0	NParticleEngine::CPSCRenderSprite::~CPSCRenderSprite	RELOCATION_MATCH	PASS	 (default)	00/af/NParticleEngineCPSCRenderSprite_CPSCRenderSprite_00afbbd0.cpp
+0x00AFE440	NParticleEngine::CPSCRenderSprite::GetClassTypeName	RELOCATION_MATCH	PASS	 (default)	00/af/NParticleEngineCPSCRenderSprite_GetClassTypeName_00afe440.cpp
+0x00AFE580	NParticleEngine::CPSCRenderSprite::DatabaseClone	RELOCATION_MATCH	PASS	 (default)	00/af/NParticleEngineCPSCRenderSprite_DatabaseClone_00afe580.cpp
+0x00AFE5A0	NParticleEngine::CPSCRenderSprite::`scalar_deleting_destructor'	RELOCATION_MATCH	PASS	 (default)	00/af/NParticleEngineCPSCRenderSprite_scalardeletingdestructor_00afe5a0.cpp
+0x00AFEB90	NParticleEngine::CPSCRenderMesh::vfunc_18	MATCH	PASS	 (default)	00/af/NParticleEngineCPSCRenderMesh_vfunc18_00afeb90.cpp
+0x00AFEE00	NParticleEngine::CPSCRenderMesh::WriteBinary	RELOCATION_MATCH	PASS	 (default)	00/af/NParticleEngineCPSCRenderMesh_WriteBinary_00afee00.cpp
+0x00AFF0A0	NParticleEngine::CPSCRenderMesh::Initialise	RELOCATION_MATCH	PASS	 (default)	00/af/NParticleEngineCPSCRenderMesh_Initialise_00aff0a0.cpp
+0x00B00DB0	NParticleEngine::CPSCRenderMesh::GetComponentCost	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCRenderMesh_GetComponentCost_00b00db0.cpp
+0x00B01250	NParticleEngine::CPSCRenderMesh::ClearAllPrimitives	MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCRenderMesh_ClearAllPrimitives_00b01250.cpp
+0x00B017F0	NParticleEngine::CPSCRenderMesh::~CPSCRenderMesh	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCRenderMesh_CPSCRenderMesh_00b017f0.cpp
+0x00B05A50	NParticleEngine::CPSCRenderMesh::GetClassTypeName	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCRenderMesh_GetClassTypeName_00b05a50.cpp
+0x00B05A90	NParticleEngine::CPSCRenderMesh::GetGUIName	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCRenderMesh_GetGUIName_00b05a90.cpp
+0x00B05AD0	NParticleEngine::CPSCRenderMesh::`scalar_deleting_destructor'	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCRenderMesh_scalardeletingdestructor_00b05ad0.cpp
+0x00B05EA0	NParticleEngine::CPSCSingleSprite::vfunc_18	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCSingleSprite_vfunc18_00b05ea0.cpp
+0x00B06060	NParticleEngine::CPSCSingleSprite::WriteBinary	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCSingleSprite_WriteBinary_00b06060.cpp
+0x00B07570	NParticleEngine::CPSCSingleSprite::ClearAllPrimitives	MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCSingleSprite_ClearAllPrimitives_00b07570.cpp
+0x00B081A0	NParticleEngine::CPSCSingleSprite::AddTrailPosition	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCSingleSprite_AddTrailPosition_00b081a0.cpp
+0x00B09360	NParticleEngine::CPSCSingleSprite::CPSCSingleSprite	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCSingleSprite_CPSCSingleSprite_00b09360.cpp
+0x00B094B0	NParticleEngine::CPSCSingleSprite::Initialise	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCSingleSprite_Initialise_00b094b0.cpp
+0x00B0A060	NParticleEngine::CPSCSplineBase::~CPSCSplineBase	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCSplineBase_CPSCSplineBase_00b0a060.cpp
+0x00B0A0D0	NParticleEngine::CPSCSingleSprite::GetClassTypeName	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCSingleSprite_GetClassTypeName_00b0a0d0.cpp
+0x00B0A140	NParticleEngine::CPSCSingleSprite::`scalar_deleting_destructor'	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCSingleSprite_scalardeletingdestructor_00b0a140.cpp
+0x00B0A160	NParticleEngine::CPSCSingleSprite::~CPSCSingleSprite	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCSingleSprite_CPSCSingleSprite_00b0a160.cpp
+0x00B0A190	NParticleEngine::CPSCSingleSprite::DatabaseClone	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCSingleSprite_DatabaseClone_00b0a190.cpp
+0x00B0A6D0	NParticleEngine::CPSCUpdateNormal::GetUpdateParam	MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCUpdateNormal_GetUpdateParam_00b0a6d0.cpp
+0x00B0A710	NParticleEngine::CPSCUpdateNormal::Initialise	MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCUpdateNormal_Initialise_00b0a710.cpp
+0x00B0A750	NParticleEngine::CPSCUpdateNormal::GetCurrentFadeValue	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCUpdateNormal_GetCurrentFadeValue_00b0a750.cpp
+0x00B0B370	NParticleEngine::CPSCUpdateNormal::DatabaseCopy	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCUpdateNormal_DatabaseCopy_00b0b370.cpp
+0x00B0B5C0	NParticleEngine::CPSCUpdateNormal::WriteBinary	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCUpdateNormal_WriteBinary_00b0b5c0.cpp
+0x00B0C730	NParticleEngine::CPSCUpdateNormal::KillAllDecalEmitters	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCUpdateNormal_KillAllDecalEmitters_00b0c730.cpp
+0x00B0C7B0	NParticleEngine::CPSCUpdateNormal::GetComponentCost	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCUpdateNormal_GetComponentCost_00b0c7b0.cpp
+0x00B0C830	NParticleEngine::CPSCUpdateNormal::GetParticleCount	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCUpdateNormal_GetParticleCount_00b0c830.cpp
+0x00B0C8A0	NParticleEngine::CPSCUpdateNormal::GetDecalCount	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCUpdateNormal_GetDecalCount_00b0c8a0.cpp
+0x00B0C910	NParticleEngine::CPSCUpdateNormal::PreparePrimitives	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCUpdateNormal_PreparePrimitives_00b0c910.cpp
+0x00B0C9C0	NParticleEngine::CPSCUpdateNormal::CPSCUpdateNormal	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCUpdateNormal_CPSCUpdateNormal_00b0c9c0.cpp
+0x00B0CA90	NParticleEngine::CPSCUpdateNormal::~CPSCUpdateNormal	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCUpdateNormal_CPSCUpdateNormal_00b0ca90.cpp
+0x00B0F210	NParticleEngine::CPSCUpdateNormal::CollectUpdateParameters	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCUpdateNormal_CollectUpdateParameters_00b0f210.cpp
+0x00B0F880	NParticleEngine::CPSCUpdateNormal::GetClassTypeName	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCUpdateNormal_GetClassTypeName_00b0f880.cpp
+0x00B0F8E0	NParticleEngine::CPSCUpdateNormal::GetParticleLifeSecs	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCUpdateNormal_GetParticleLifeSecs_00b0f8e0.cpp
+0x00B0F970	NParticleEngine::CPSCUpdateNormal::DatabaseClone	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCUpdateNormal_DatabaseClone_00b0f970.cpp
+0x00B0F990	NParticleEngine::CPSCUpdateNormal::`scalar_deleting_destructor'	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCUpdateNormal_scalardeletingdestructor_00b0f990.cpp
+0x00B0FBE0	NParticleEngine::CPSCEmitterGeneric::GetComponentCost	MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCEmitterGeneric_GetComponentCost_00b0fbe0.cpp
+0x00B0FBF0	NParticleEngine::CPSCEmitterGeneric::GetNumberOfParticles	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCEmitterGeneric_GetNumberOfParticles_00b0fbf0.cpp
+0x00B0FFC0	NParticleEngine::CPSCEmitterGeneric::GetNumberOfDecals	RELOCATION_MATCH	PASS	 (default)	00/b0/NParticleEngineCPSCEmitterGeneric_GetNumberOfDecals_00b0ffc0.cpp
+0x00B102C0	NParticleEngine::CPSCEmitterGeneric::GetRandomRadius	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCEmitterGeneric_GetRandomRadius_00b102c0.cpp
+0x00B10360	NParticleEngine::CPSCEmitterGeneric::ChangeOrientation	MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCEmitterGeneric_ChangeOrientation_00b10360.cpp
+0x00B109B0	NParticleEngine::CPSCEmitterGeneric::vfunc_31	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCEmitterGeneric_vfunc31_00b109b0.cpp
+0x00B12EF0	NParticleEngine::CPSCEmitterGeneric::WriteBinary	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCEmitterGeneric_WriteBinary_00b12ef0.cpp
+0x00B158A0	NParticleEngine::CPSCEmitterGeneric::CollectUpdateParameters	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCEmitterGeneric_CollectUpdateParameters_00b158a0.cpp
+0x00B15A90	NParticleEngine::CPSCEmitterGeneric::GetClassTypeName	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCEmitterGeneric_GetClassTypeName_00b15a90.cpp
+0x00B15AF0	NParticleEngine::CPSCEmitterGeneric::EnterTimelineEnd	MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCEmitterGeneric_EnterTimelineEnd_00b15af0.cpp
+0x00B15B00	NParticleEngine::CPSCEmitterGeneric::DatabaseClone	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCEmitterGeneric_DatabaseClone_00b15b00.cpp
+0x00B15B20	NParticleEngine::CPSCEmitterGeneric::`scalar_deleting_destructor'	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCEmitterGeneric_scalardeletingdestructor_00b15b20.cpp
+0x00B16210	NParticleEngine::CPSCOrbit::GetComponentCost	MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCOrbit_GetComponentCost_00b16210.cpp
+0x00B163A0	NParticleEngine::CPSCOrbit::DatabaseCopy	MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCOrbit_DatabaseCopy_00b163a0.cpp
+0x00B163E0	NParticleEngine::CPSCOrbit::WriteBinary	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCOrbit_WriteBinary_00b163e0.cpp
+0x00B16D50	NParticleEngine::CPSCOrbit::StartUpdate	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCOrbit_StartUpdate_00b16d50.cpp
+0x00B16EB0	NParticleEngine::CPSCOrbit::CPSCOrbit	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCOrbit_CPSCOrbit_00b16eb0.cpp
+0x00B16F60	NParticleEngine::CPSCOrbit::ReadBinary	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCOrbit_ReadBinary_00b16f60.cpp
+0x00B177C0	NParticleEngine::CPSCOrbit::COrbitState::GetSplinePosition	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCOrbitCOrbitState_GetSplinePosition_00b177c0.cpp
+0x00B178D0	NParticleEngine::CPSCOrbit::GetClassTypeName	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCOrbit_GetClassTypeName_00b178d0.cpp
+0x00B17910	NParticleEngine::CPSCOrbit::GetGUIName	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCOrbit_GetGUIName_00b17910.cpp
+0x00B17930	NParticleEngine::CPSCOrbit::`scalar_deleting_destructor'	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCOrbit_scalardeletingdestructor_00b17930.cpp
+0x00B17950	NParticleEngine::CPSCOrbit::DatabaseClone	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCOrbit_DatabaseClone_00b17950.cpp
+0x00B17990	NParticleEngine::CPSCAttractor::GetComponentCost	MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCAttractor_GetComponentCost_00b17990.cpp
+0x00B179A0	NParticleEngine::CPSCAttractor::Update	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCAttractor_Update_00b179a0.cpp
+0x00B17F70	NParticleEngine::CPSCAttractor::WriteBinary	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCAttractor_WriteBinary_00b17f70.cpp
+0x00B18020	NParticleEngine::CPSCAttractor::CPSCAttractor	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCAttractor_CPSCAttractor_00b18020.cpp
+0x00B18060	NParticleEngine::CPSCAttractor::DatabaseCopy	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCAttractor_DatabaseCopy_00b18060.cpp
+0x00B18110	NParticleEngine::CPSCAttractor::DatabaseSerialise	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCAttractor_DatabaseSerialise_00b18110.cpp
+0x00B18390	NParticleEngine::CPSCAttractor::ReadBinary	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCAttractor_ReadBinary_00b18390.cpp
+0x00B186E0	NParticleEngine::CPSCAttractor::GetClassTypeName	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCAttractor_GetClassTypeName_00b186e0.cpp
+0x00B18720	NParticleEngine::CPSCAttractor::GetGUIName	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCAttractor_GetGUIName_00b18720.cpp
+0x00B18740	NParticleEngine::CPSCAttractor::DatabaseClone	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCAttractor_DatabaseClone_00b18740.cpp
+0x00B18760	NParticleEngine::CPSCAttractor::`scalar_deleting_destructor'	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCAttractor_scalardeletingdestructor_00b18760.cpp
+0x00B18780	NParticleEngine::CPSCAttractor::~CPSCAttractor	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCAttractor_CPSCAttractor_00b18780.cpp
+0x00B187D0	NParticleEngine::CPSCLight::GetComponentCost	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCLight_GetComponentCost_00b187d0.cpp
+0x00B18950	NParticleEngine::CPSCLight::WriteBinary	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCLight_WriteBinary_00b18950.cpp
+0x00B18AF0	NParticleEngine::CPSCLight::AddToBoundingSphere	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCLight_AddToBoundingSphere_00b18af0.cpp
+0x00B19C20	NParticleEngine::CPSCLight::Kill	MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCLight_Kill_00b19c20.cpp
+0x00B1A640	NParticleEngine::CPSCLight::CPSCLight	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCLight_CPSCLight_00b1a640.cpp
+0x00B1A700	NParticleEngine::CPSCLight::DatabaseCopy	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCLight_vfunc18_00b1a700.cpp
+0x00B1AE00	NParticleEngine::CPSCLight::GetClassTypeName	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCLight_GetClassTypeName_00b1ae00.cpp
+0x00B1AE60	NParticleEngine::CPSCLight::EnterTimelineEnd	MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCLight_EnterTimelineEnd_00b1ae60.cpp
+0x00B1AE70	NParticleEngine::CPSCLight::DatabaseClone	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCLight_DatabaseClone_00b1ae70.cpp
+0x00B1AE90	NParticleEngine::CPSCLight::`scalar_deleting_destructor'	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCLight_scalardeletingdestructor_00b1ae90.cpp
+0x00B1AEB0	NParticleEngine::CPSCLight::~CPSCLight	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCLight_CPSCLight_00b1aeb0.cpp
+0x00B1AF40	NParticleEngine::CPSCSpline::GetComponentCost	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCSpline_GetComponentCost_00b1af40.cpp
+0x00B1AF50	NParticleEngine::CPSCSpline::InterpolateTo	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCSpline_InterpolateTo_00b1af50.cpp
+0x00B1AFC0	NParticleEngine::CPSCSpline::DatabaseCopy	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCSpline_DatabaseCopy_00b1afc0.cpp
+0x00B1AFF0	NParticleEngine::CPSCSpline::WriteBinary	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCSpline_WriteBinary_00b1aff0.cpp
+0x00B1B030	NParticleEngine::CPSCSpline::GetUpdateParam	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCSpline_GetUpdateParam_00b1b030.cpp
+0x00B1B0C0	NParticleEngine::CPSCSpline::StartUpdate	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCSpline_StartUpdate_00b1b0c0.cpp
+0x00B1B1B0	NParticleEngine::CPSCSpline::vfunc_15	RELOCATION_MATCH	PASS	CDataInputStream (default)	00/b1/NParticleEngineCPSCSpline_vfunc15_00b1b1b0.cpp
+0x00B1B2E0	NParticleEngine::CPSCSpline::DatabaseSerialise	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCSpline_DatabaseSerialise_00b1b2e0.cpp
+0x00B1B350	NParticleEngine::CPSCSpline::CPSCSpline	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCSpline_CPSCSpline_00b1b350.cpp
+0x00B1B380	NParticleEngine::CPSCSpline::CollectUpdateParameters	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCSpline_CollectUpdateParameters_00b1b380.cpp
+0x00B1B430	NParticleEngine::CPSCSpline::GetClassTypeName	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCSpline_GetClassTypeName_00b1b430.cpp
+0x00B1B470	NParticleEngine::CPSCSpline::GetGUIName	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCSpline_GetGUIName_00b1b470.cpp
+0x00B1B490	NParticleEngine::CPSCSpline::`scalar deleting destructor'	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCSpline_scalardeletingdestructor_00b1b490.cpp
+0x00B1B4B0	NParticleEngine::CPSCSpline::DatabaseClone	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCSpline_DatabaseClone_00b1b4b0.cpp
+0x00B1B710	NParticleEngine::CPSCDecalRenderer::vfunc_28	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCDecalRenderer_vfunc28_00b1b710.cpp
+0x00B1B810	NParticleEngine::CPSCDecalRenderer::DatabaseCopy	MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCDecalRenderer_DatabaseCopy_00b1b810.cpp
+0x00B1BA10	NParticleEngine::CPSCDecalRenderer::WriteBinary	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCDecalRenderer_WriteBinary_00b1ba10.cpp
+0x00B1BDA0	NParticleEngine::CPSCDecalRenderer::InterpolateTo	RELOCATION_MATCH	PASS	CEnginePrimitiveHandle (default)	00/b1/NParticleEngineCPSCDecalRenderer_InterpolateTo_00b1bda0.cpp
+0x00B1DB00	NParticleEngine::CPSCDecalRenderer::Update	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCDecalRenderer_Update_00b1db00.cpp
+0x00B1DBE0	NParticleEngine::CPSCDecalRenderer::ClearAllPrimitives	MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCDecalRenderer_ClearAllPrimitives_00b1dbe0.cpp
+0x00B1FF10	NParticleEngine::CPSCDecalRenderer::GetClassTypeName	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCDecalRenderer_GetClassTypeName_00b1ff10.cpp
+0x00B1FF80	NParticleEngine::CPSCDecalRenderer::DatabaseClone	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCDecalRenderer_DatabaseClone_00b1ff80.cpp
+0x00B1FFA0	NParticleEngine::CPSCDecalRenderer::`scalar_deleting_destructor'	RELOCATION_MATCH	PASS	 (default)	00/b1/NParticleEngineCPSCDecalRenderer_scalardeletingdestructor_00b1ffa0.cpp
+0x00B202C0	NParticleEngine::CPSCSplineBase::GetComponentCost	MATCH	PASS	 (default)	00/b2/NParticleEngineCPSCSplineBase_GetComponentCost_00b202c0.cpp
+0x00B20630	NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::WriteBinary	RELOCATION_MATCH	PASS	 (default)	00/b2/NParticleEngineCPSCSplineBaseCSplineRandomOffsetData_WriteBinary_00b20630.cpp
+0x00B209C0	NParticleEngine::CPSCSingleSprite::vfunc_31	RELOCATION_MATCH	PASS	 (default)	00/b2/NParticleEngineCPSCSingleSprite_vfunc31_00b209c0.cpp
+0x00B20FD0	NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::GetPointAtPos	RELOCATION_MATCH	PASS	 (default)	00/b2/NParticleEngineCPSCSplineBaseCSplineRandomOffsetData_GetPointAtPos_00b20fd0.cpp
+0x00B21090	NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::GetPointAtIndex	RELOCATION_MATCH	PASS	 (default)	00/b2/NParticleEngineCPSCSplineBaseCSplineRandomOffsetData_GetPointAtIndex_00b21090.cpp
+0x00B21160	NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::Update	RELOCATION_MATCH	PASS	 (default)	00/b2/NParticleEngineCPSCSplineBaseCSplineRandomOffsetData_Update_00b21160.cpp
+0x00B21530	NParticleEngine::CPSCSplineBase::CPSCSplineBase	RELOCATION_MATCH	PASS	 (default)	00/b2/NParticleEngineCPSCSplineBase_CPSCSplineBase_00b21530.cpp
+0x00B215E0	NParticleEngine::CPSCSplineBase::StartUpdate	RELOCATION_MATCH	PASS	 (default)	00/b2/NParticleEngineCPSCSplineBase_StartUpdate_00b215e0.cpp
+0x00B21630	NParticleEngine::CPSCSplineBase::WriteBinary	RELOCATION_MATCH	PASS	 (default)	00/b2/NParticleEngineCPSCSplineBase_WriteBinary_00b21630.cpp
+0x00B216F0	NParticleEngine::CPSCSplineBase::CSplinePosParamData::GetScaleFactor	RELOCATION_MATCH	PASS	 (default)	00/b2/NParticleEngineCPSCSplineBaseCSplinePosParamData_GetScaleFactor_00b216f0.cpp
+0x00B21850	NParticleEngine::CPSCSplineBase::CSplinePosParamData::TransformFromPosition	RELOCATION_MATCH	PASS	 (default)	00/b2/NParticleEngineCPSCSplineBaseCSplinePosParamData_TransformFromPosition_00b21850.cpp
+0x00B218B0	NParticleEngine::CPSCSplineBase::CSplinePosParamData::TransformFromIndex	RELOCATION_MATCH	PASS	 (default)	00/b2/NParticleEngineCPSCSplineBaseCSplinePosParamData_TransformFromIndex_00b218b0.cpp
+0x00B21940	NParticleEngine::CPSCSplineBase::GetPointAtPos	RELOCATION_MATCH	PASS	 (default)	00/b2/NParticleEngineCPSCSplineBase_GetPointAtPos_00b21940.cpp
+0x00B219A0	NParticleEngine::CPSCSplineBase::GetPointAtIndex	RELOCATION_MATCH	PASS	 (default)	00/b2/NParticleEngineCPSCSplineBase_GetPointAtIndex_00b219a0.cpp
+0x00B21A00	NParticleEngine::CPSCSplineBase::CSplinePosParamData::CSplinePosParamData	RELOCATION_MATCH	PASS	 (default)	00/b2/NParticleEngineCPSCSplineBaseCSplinePosParamData_CSplinePosParamData_00b21a00.cpp
+0x00B21C90	NParticleEngine::CPSCSplineBase::CSplinePosParamData::ReadBinary	RELOCATION_MATCH	PASS	 (default)	00/b2/NParticleEngineCPSCSplineBaseCSplinePosParamData_ReadBinary_00b21c90.cpp
+0x00B21DD0	NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::CSplineRandomOffsetData	RELOCATION_MATCH	PASS	 (default)	00/b2/NParticleEngineCPSCSplineBaseCSplineRandomOffsetData_CSplineRandomOffsetData_00b21dd0.cpp
+0x00B21E90	NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::DatabaseSerialise	RELOCATION_MATCH	PASS	 (default)	00/b2/NParticleEngineCPSCSplineBaseCSplineRandomOffsetData_DatabaseSerialise_00b21e90.cpp
+0x00B22100	NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::ReadBinary	RELOCATION_MATCH	PASS	 (default)	00/b2/NParticleEngineCPSCSplineBaseCSplineRandomOffsetData_ReadBinary_00b22100.cpp
+0x00B22310	NParticleEngine::CPSCSplineBase::InterpolateTo	RELOCATION_MATCH	PASS	 (default)	00/b2/NParticleEngineCPSCSplineBase_InterpolateTo_00b22310.cpp
+0x00B22530	NParticleEngine::CPSCSplineBase::DatabaseCopy	RELOCATION_MATCH	PASS	 (default)	00/b2/NParticleEngineCPSCSplineBase_DatabaseCopy_00b22530.cpp
+0x00B22B40	NParticleEngine::CPSCSplineBase::ReadBinary	RELOCATION_MATCH	PASS	 (default)	00/b2/NParticleEngineCPSCSplineBase_ReadBinary_00b22b40.cpp
+0x00B22EE0	NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::~CSplineRandomOffsetData	RELOCATION_MATCH	PASS	 (default)	00/b2/NParticleEngineCPSCSplineBaseCSplineRandomOffsetData_CSplineRandomOffsetData_00b22ee0.cpp
+0x00B230C0	NParticleEngine::CPSCSingleSprite::`scalar deleting destructor'	RELOCATION_MATCH	PASS	 (default)	00/b2/NParticleEngineCPSCSplineBase_scalardeletingdestructor_00b230c0.cpp
+0x00B23110	NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::`scalar deleting destructor'	RELOCATION_MATCH	PASS	 (default)	00/b2/NParticleEngineCPSCSplineBaseCSplineRandomOffsetData_scalardeletingdestructor_00b23110.cpp
+0x00B26360	CEngine::Initialise	RELOCATION_MATCH	PASS	CEngineLightingManager,CShaderRenderManager (default)	00/b2/CEngine_Initialise_00b26360.cpp
+0x00B32230	CEnginePrimitiveRenderer::PostRenderLayer	RELOCATION_MATCH	PASS	CEngineLightingManager (default)	00/b3/CEnginePrimitiveRenderer_PostRenderLayer_00b32230.cpp
+0x00B3EFA0	CEngineMap::ReadMapInfoBlock	RELOCATION_MATCH	PASS	CDataInputStream (FABLE_RETAIL_CDATAINPUTSTREAM)	00/b3/CEngineMap_ReadMapInfoBlock_00b3efa0.cpp
+0x00B44820	CEngineLightingManager::CalcSWLightingNoClipVector	MATCH	PASS	CEngineLightingManager (default)	00/b4/CEngineLightingManager_CalcSWLightingNoClipVector_00b44820.cpp
+0x00B44A60	CEngineLightingManager::CalcSWLightingNoClipSeparateMainLightVector	MATCH	PASS	CEngineLightingManager (default)	00/b4/CEngineLightingManager_CalcSWLightingNoClipSeparateMainLightVector_00b44a60.cpp
+0x00B45FB0	CEngineLightingManager::GetLightsInSphere	RELOCATION_MATCH	PASS	CEngineLightingManager (default)	00/b4/CEngineLightingManager_GetLightsInSphere_00b45fb0.cpp
+0x00B46280	CEngineLightingManager::GetLightsInArea	RELOCATION_MATCH	PASS	CEngineLightingManager (default)	00/b4/CEngineLightingManager_GetLightsInArea_00b46280.cpp
+0x00B46660	CEngineLightingManager::AddLightsToLookupGrid	RELOCATION_MATCH	PASS	CEngineLightingManager (default)	00/b4/CEngineLightingManager_AddLightsToLookupGrid_00b46660.cpp
+0x00B46A30	CEngineLightingManager::LookupSmallObjectLightCache	RELOCATION_MATCH	PASS	CEngineLightingManager (default)	00/b4/CEngineLightingManager_LookupSmallObjectLightCache_00b46a30.cpp
+0x00B46B90	CEngineLightingManager::GetLightsInSphereFast	RELOCATION_MATCH	PASS	CEngineLightingManager (default)	00/b4/CEngineLightingManager_GetLightsInSphereFast_00b46b90.cpp
+0x00B671A0	CEngineLandscapeRenderer::SetupBackgroundStates	RELOCATION_MATCH	PASS	CEngineLightingManager (default)	00/b6/CEngineLandscapeRenderer_SetupBackgroundStates_00b671a0.cpp
+0x00B67510	CEngineLandscapeRenderer::PostRenderClearRenderStates	RELOCATION_MATCH	PASS	CEngineLightingManager (default)	00/b6/CEngineLandscapeRenderer_PostRenderClearRenderStates_00b67510.cpp
+0x00B9E950	CEnginePrimitiveManager2DStaticMeshes::Render2DPrimitive	RELOCATION_MATCH	PASS	CEngineLightingManager (default)	00/b9/CEnginePrimitiveManager2DStaticMeshes_Render2DPrimitive_00b9e950.cpp
+0x00BD1F70	CEnginePrimitiveManager2DAnimatedMeshes::Render2DPrimitive	RELOCATION_MATCH	PASS	CEngineLightingManager (default)	00/bd/CEnginePrimitiveManager2DAnimatedMeshes_Render2DPrimitive_00bd1f70.cpp

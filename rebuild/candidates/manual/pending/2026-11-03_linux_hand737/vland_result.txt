@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00b062a0   RELOCATION_MATCH PASS   InterpolateTo
+00b068f0   RELOCATION_MATCH PASS   ReadBinary
+00b18c60   RELOCATION_MATCH PASS   InterpolateTo
+00b193d0   RELOCATION_MATCH PASS   ReadBinary
+
+WINS: 4

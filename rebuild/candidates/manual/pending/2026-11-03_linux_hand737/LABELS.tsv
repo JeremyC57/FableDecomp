@@ -1,0 +1,10 @@
+address	name	evidence
+0x00B062A0	?InterpolateTo@CPSCSingleSprite@NParticleEngine@@UAEXABVCPSCBase@2@M@Z	matched (RELOCATION_MATCH); slot 14 of 0x0129FB84 + FableWin.pdb
+0x00B068F0	?ReadBinary@CPSCSingleSprite@NParticleEngine@@UAEXAAVCDataInputStream@@@Z	matched (RELOCATION_MATCH); slot 15 of 0x0129FB84 + FableWin.pdb
+0x00B087C0	?PreparePrimitives@CPSCSingleSprite@NParticleEngine@@UAEXMABVCEnginePrimitivePrepareInfo@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z	parked; slot 13 of 0x0129FB84 + FableWin.pdb; `ret 14h`; catalog "vfunc_13"
+0x00B18C60	?InterpolateTo@CPSCLight@NParticleEngine@@UAEXABVCPSCBase@2@M@Z	matched (RELOCATION_MATCH); slot 14 of 0x012A0624 + FableWin.pdb
+0x00B193D0	?ReadBinary@CPSCLight@NParticleEngine@@UAEXAAVCDataInputStream@@@Z	matched (RELOCATION_MATCH); slot 15 of 0x012A0624 + FableWin.pdb
+0x00B19C60	?PreparePrimitives@CPSCLight@NParticleEngine@@UAEXMABVCEnginePrimitivePrepareInfo@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z	parked; slot 13 of 0x012A0624 + FableWin.pdb; `ret 14h`; catalog "vfunc_13"
+0x00B08250	?SetTrailPositionsFromSpline@CPSCSingleSprite@NParticleEngine@@IAEXAAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@MM@Z	FableWin.pdb + engine_api.tsv name SetTrailPositionsFromSpline (5-arg thiscall); called first by 0x00B087C0 when SplineRandomOffsetData is set
+0x00B219A0	?GetPointAtIndex@CPSCSplineBase@NParticleEngine@@QAEXABV?$CParticleUpdateParameters@KK@2@AAVC3DVector@@JM@Z	FableWin.pdb + catalog CPSCSplineBase::GetPointAtIndex; `ret 10h`
+0x00A013E0	?GetNoFramesInGraphic@CGraphicDataBank@@UBEKK@Z	slot 20 of the CGraphicDataBank vtable 0x0129C8CC + catalog + FableWin.pdb

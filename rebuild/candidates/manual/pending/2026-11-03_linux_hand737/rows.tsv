@@ -1,0 +1,7 @@
+address	module	name	length	group	anchor	gap_to_next_start
+00b062a0	NParticleEngine::CPSCSingleSprite	InterpolateTo	1607	G00b05c60	CPSCLight	1616
+00b068f0	CPSCSingleSprite	ReadBinary	3185	G00b05c60	CPSCLight	3200
+00b087c0	NParticleEngine::CPSCSingleSprite::NParticleEngine::CPSCSingleSprite	vfunc_13	2967	G00b05c60	CPSCLight	2976
+00b18c60	NParticleEngine::CPSCLight	InterpolateTo	1903	G00b05c60	CPSCLight	1904
+00b193d0	CPSCLight	ReadBinary	2119	G00b05c60	CPSCLight	2128
+00b19c60	NParticleEngine::CPSCLight::NParticleEngine::CPSCLight	vfunc_13	2516	G00b05c60	CPSCLight	2528
