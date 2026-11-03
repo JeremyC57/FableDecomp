@@ -1,0 +1,5 @@
+addr       parity           behav  name
+005eb9e0   RELOCATION_MATCH PASS   CTCTavernGame::FrameUpdate
+
+WINS: 1
+  005eb9e0 RELOCATION_MATCH CTCTavernGame::?FrameUpdate@CTCTavernGame@@UAEXXZ

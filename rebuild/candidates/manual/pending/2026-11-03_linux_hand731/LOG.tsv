@@ -1,0 +1,23 @@
+row	attempt	change	result
+00b573a0	1	shared CRenderStateManager setters on NEngineInternal::GPRenderManager; texture op/arg setters forceinline in header overlay	RELOCATION_MATCH
+00b57860	1	twin constant swap (MODULATE_2X)	RELOCATION_MATCH
+00b57d20	1	twin constant swap (ONE/ONE)	RELOCATION_MATCH
+00b581e0	1	twin constant swap (ONE/INV_SRC_COLOR)	RELOCATION_MATCH
+00b24850	1	first skeleton, CEngine/CEngineLightingManager/CRenderStateManager branches	DIFFER(4346v4344) 10 lines
+00b24850	2	TextureTransformMode stage 0 inside loop (retail fixed offset 0x3664)	DIFFER(4344v4344) 6 lines: bookmark test/or order at the TextureTransformMode block only
+00b24850	3	unused local transformStage	DIFFER 20 lines (scheduling perturbed)
+00b24850	4	int stage	DIFFER 6 lines
+00b24850	5	loop-2 own counter + alias	DIFFER 20 lines
+00b24850	6	stage++ in loop 2	DIFFER 6 lines
+00b24850	7	transform index spellings stage-stage / (TEXTURE_TRANSFORM_MODE)0 / 0L / stage*0 / false (5 grades)	DIFFER 6 lines each
+00b24850	8	loop 2 counter i (block-scope and for-init forms, 2 grades)	DIFFER 20 lines
+00b24850	9	header experiment: SetRenderState mask operands swapped (& and |=, 2 grades; not kept)	DIFFER 6 lines (operand order in source is inert)
+00b24850	10	flags /Oa /Ow /G6 /G7 /GB (5 grades)	/G6 /GB 6 lines; others worse
+00b26360	1	full skeleton, explicit CCharString("ENGINE") temporaries	DIFFER(5151v5174)	explicit temp passed via ctor-return eax and def pointer pushed before the ctor; retail re-leas the temp
+00b26360	2	implicit const char* -> const CCharString& conversion at the six GetDef calls	RELOCATION_MATCH	kept
+00b24850	11	header experiment: SetTextureTransformMode binds a CStateInfo& local before SetRenderState (not kept)	DIFFER 6 lines (same block)
+00b24850	12	final-overlay regrade (CEngine.h with def pointers, CEngineStateBlocks full model)	DIFFER(4344v4344) 6 lines
+00b573a0	2	final-overlay regrade	RELOCATION_MATCH
+00b57860	2	final-overlay regrade	RELOCATION_MATCH
+00b57d20	2	final-overlay regrade	RELOCATION_MATCH
+00b581e0	2	final-overlay regrade	RELOCATION_MATCH

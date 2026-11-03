@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00b26360   WARN RELOC_NAME: ?GetPDefFromClassIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@J@Z -> 009ade10 labelled 'CDefinitionManager::GetPDefFromGlobalIndex'
+00b26360   WARN RELOC_CONFLICT: ??0CEnginePrimitiveTypeInfo@@QAE@XZ -> 00b8faa0 here, 00a02d20 in landed 00a148d0
+00b26360   RELOCATION_MATCH PASS   CEngine::Initialise
+
+WINS: 1
+  00b26360 RELOCATION_MATCH CEngine::?Initialise@CEngine@@UAE_NABVCEngineInit@@@Z

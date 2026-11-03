@@ -1,0 +1,7 @@
+- Def lookups by name: write `GetDef("ENGINE", 1, &PDef)` (implicit const char* -> const CCharString&); an explicit `CCharString("ENGINE")` argument passes the ctor's eax and pushes the def pointer before the ctor (0x00B26360, 5151v5174 -> match).
+- CEngine::SetDefaultRenderStates (0x00B24850) sets TextureTransformMode for stage 0 inside the 8-stage loop (retail quirk: constant 0x3664 offset, no ebp index).
+- CEngine's first own virtual, Uninitialise, is vtable slot 85 (+0x154): CIEngine's retail branch needs all 85 slots (0..84) before a CEngine branch can call it.
+- Retail CEngineWorldMap is 0x1C0 bytes (`push 0x1C0` before ??0CEngineWorldMap@@QAE@ABVCEngineInit@@@Z in 0x00B26360), not the 0x360 the tree's retail branch asserted.
+- vland on landed rows: pass --recheck-landed and 0x-prefixed upper-case addresses, or it silently grades nothing (`WINS: 0`, rc 0).
+- 0x00A02D20 is ??0CHandleBasedMemoryPool@@QAE@XZ (CAsyncLoadingMemoryPool's base, RTTI 0x0129CA6C); the CEnginePrimitiveTypeInfo ctor is 0x00B8FAA0.
+- The 1208-byte CEngineStateBlock<Mode>::Apply twins are pure inline CRenderStateManager setters on NEngineInternal::GPRenderManager; only the constants differ.

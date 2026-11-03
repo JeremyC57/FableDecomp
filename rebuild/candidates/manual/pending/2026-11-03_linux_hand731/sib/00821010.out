@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00821010   RELOCATION_MATCH PASS   CMap::LoadBrushesFromFile
+
+WINS: 1
+  00821010 RELOCATION_MATCH CMap::?LoadBrushesFromFile@CMap@@QAEXAAVCAFile@@@Z

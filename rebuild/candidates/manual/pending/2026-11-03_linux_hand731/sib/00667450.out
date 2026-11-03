@@ -1,0 +1,12 @@
+addr       parity           behav  name
+00667450   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00667450   WARN RELOC_NAME: ?GetHitKnockdownDeathActionType@CHitLocation@NHitLocations@@QBE?AW4EActionRegisteredType@@XZ -> 008152b0 labelled '_global::GetMember_dword0x4_deref0x54_008152b0'
+00667450   WARN RELOC_NAME: ??1?$CCountedPointer@VCCreatureActionBase@@@@QAE@XZ -> 0048c5c0 labelled '_global::CCountedPointer_Release_0048c5c0'
+00667450   WARN RELOC_NAME: ?GetHitKnockdownActionType@CHitLocation@NHitLocations@@QBE?AW4EActionRegisteredType@@XZ -> 008152a0 labelled '_global::GetMember_dword0x4_deref0x50_008152a0'
+00667450   WARN RELOC_NAME: ?GetHitResponseActionType@CHitLocation@NHitLocations@@QBE?AW4EActionRegisteredType@@XZ -> 00815290 labelled '_global::GetMember_dword0x4_deref0x48_00815290'
+00667450   WARN RELOC_NAME: ??1CCombatAction_GenericResponseToExplosion@@UAE@XZ -> 0066a670 labelled '_global::Dtor_CCombatActionBaseBase_0066a670'
+00667450   WARN RELOC_NAME: ??1CCombatAction_GenericStrikeResponseBase@@UAE@XZ -> 0066a510 labelled '_global::Dtor_CCombatActionBaseBase_0066a510'
+00667450   RELOCATION_MATCH PASS   CThingCreatureBase::ReactToGenericStrike
+
+WINS: 1
+  00667450 RELOCATION_MATCH CThingCreatureBase::?ReactToGenericStrike@CThingCreatureBase@@IAEXABVCHitParameters@@@Z

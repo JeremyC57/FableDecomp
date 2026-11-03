@@ -1,0 +1,6 @@
+addr       parity           behav  name
+00b67920   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00b67920   RELOCATION_MATCH PASS   CEngineLandscapeRenderer::~CEngineLandscapeRenderer
+
+WINS: 1
+  00b67920 RELOCATION_MATCH CEngineLandscapeRenderer::??1CEngineLandscapeRenderer@@UAE@XZ

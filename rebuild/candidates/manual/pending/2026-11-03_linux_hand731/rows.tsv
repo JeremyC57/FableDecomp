@@ -1,0 +1,7 @@
+address	module	name	length
+00b573a0	CEngineStateBlockAlpha	Apply	1208
+00b57860	CEngineStateBlockAlpha2X	Apply	1208
+00b57d20	CEngineStateBlockAdditiveAlpha	Apply	1208
+00b581e0	CEngineStateBlockAddSmoothAlpha	Apply	1208
+00b24850	CEngine	SetDefaultRenderStates	4344
+00b26360	CEngine	Initialise	5174

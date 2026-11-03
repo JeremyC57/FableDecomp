@@ -1,0 +1,8 @@
+addr       parity           behav  name
+009da9f0   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+009da9f0   WARN RELOC_NAME: ?SetAWindow@CRenderManagerCore@@QAEXABVC2DBoxF@@@Z -> 00a0aa80 labelled '_global::Forward_SetViewport_via0x3a3c_00a0aa80'
+009da9f0   WARN RELOC_NAME: ?erase@?$vector@VCQuickDrawTriInfo@@V?$allocator@VCQuickDrawTriInfo@@@std@@@std@@QAEPAVCQuickDrawTriInfo@@PAV3@0@Z -> 009e15e0 labelled 'TextureCache_MoveAndCleanup'
+009da9f0   RELOCATION_MATCH PASS   CRenderManager2D::Render2DDrawList
+
+WINS: 1
+  009da9f0 RELOCATION_MATCH CRenderManager2D::?Render2DDrawList@CRenderManager2D@@QAEX_N@Z

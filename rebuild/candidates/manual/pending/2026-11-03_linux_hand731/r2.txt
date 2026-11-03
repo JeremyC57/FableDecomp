@@ -1,0 +1,1080 @@
+sub esp, 8
+mov eax, dword ptr [ABS]
+push ebx
+push ebp
+push esi
+push edi
+mov dword ptr [esp + 0x10], ecx
+xor ebp, ebp
+mov ebx, 1
+jmp X
+lea esp, [esp]
+mov edi, dword ptr [ABS]
+mov esi, dword ptr [eax + ebp + 0x32a8]
+cmp esi, edi
+lea edx, [eax + ebp + 0x32a4]
+mov ecx, eax
+je X
+mov eax, dword ptr [eax + 0x2814]
+mov esi, dword ptr [edx + 8]
+test esi, eax
+jne X
+or eax, esi
+mov dword ptr [edx + 8], eax
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], edi
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov edi, dword ptr [ABS]
+mov esi, dword ptr [eax + ebp + 0x3348]
+cmp esi, edi
+lea edx, [eax + ebp + 0x3344]
+mov ecx, eax
+je X
+mov eax, dword ptr [eax + 0x2814]
+mov esi, dword ptr [edx + 8]
+test esi, eax
+jne X
+or eax, esi
+mov dword ptr [edx + 8], eax
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], edi
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov edi, dword ptr [ABS]
+mov esi, dword ptr [eax + ebp + 0x33e8]
+cmp esi, edi
+lea edx, [eax + ebp + 0x33e4]
+mov ecx, eax
+je X
+mov eax, dword ptr [eax + 0x2814]
+mov esi, dword ptr [edx + 8]
+test esi, eax
+jne X
+or eax, esi
+mov dword ptr [edx + 8], eax
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], edi
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov edi, dword ptr [ABS]
+mov esi, dword ptr [eax + ebp + 0x3488]
+cmp esi, edi
+lea edx, [eax + ebp + 0x3484]
+mov ecx, eax
+je X
+mov eax, dword ptr [eax + 0x2814]
+mov esi, dword ptr [edx + 8]
+test eax, esi
+jne X
+or esi, eax
+mov dword ptr [edx + 8], esi
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], edi
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov edi, dword ptr [ABS]
+mov esi, dword ptr [eax + ebp + 0x3528]
+cmp esi, edi
+lea edx, [eax + ebp + 0x3524]
+mov ecx, eax
+je X
+mov eax, dword ptr [eax + 0x2814]
+mov esi, dword ptr [edx + 8]
+test eax, esi
+jne X
+or esi, eax
+mov dword ptr [edx + 8], esi
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], edi
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+add ebp, 0x14
+cmp ebp, 0xa0
+jl X
+mov esi, dword ptr [ABS]
+mov ebp, dword ptr [eax + 0x28a8]
+cmp ebp, esi
+lea edx, [eax + 0x28a4]
+mov ecx, eax
+mov edi, esi
+je X
+mov eax, dword ptr [eax + 0x2814]
+mov esi, dword ptr [edx + 8]
+test eax, esi
+jne X
+or esi, eax
+mov dword ptr [edx + 8], esi
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], edi
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov esi, dword ptr [ABS]
+mov ebp, dword ptr [eax + 0x281c]
+cmp ebp, esi
+lea edx, [eax + 0x2818]
+mov ecx, eax
+mov edi, esi
+je X
+mov eax, dword ptr [eax + 0x2814]
+mov esi, dword ptr [edx + 8]
+test eax, esi
+jne X
+or esi, eax
+mov dword ptr [edx + 8], esi
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], edi
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov esi, dword ptr [ABS]
+mov ebp, dword ptr [eax + 0x2830]
+cmp ebp, esi
+lea edx, [eax + 0x282c]
+mov ecx, eax
+mov edi, esi
+je X
+mov eax, dword ptr [eax + 0x2814]
+mov esi, dword ptr [edx + 8]
+test eax, esi
+jne X
+or esi, eax
+mov dword ptr [edx + 8], esi
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], edi
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov esi, dword ptr [ABS]
+mov ebp, dword ptr [eax + 0x2894]
+cmp ebp, esi
+lea edx, [eax + 0x2890]
+mov ecx, eax
+mov edi, esi
+je X
+mov eax, dword ptr [eax + 0x2814]
+mov esi, dword ptr [edx + 8]
+test eax, esi
+jne X
+or esi, eax
+mov dword ptr [edx + 8], esi
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], edi
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov esi, dword ptr [eax + 0x2858]
+cmp esi, ebx
+lea edx, [eax + 0x2854]
+mov ecx, eax
+je X
+mov eax, dword ptr [eax + 0x2814]
+mov esi, dword ptr [edx + 8]
+test eax, esi
+jne X
+or esi, eax
+mov dword ptr [edx + 8], esi
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], ebx
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov esi, dword ptr [ABS]
+mov ebp, dword ptr [eax + 0x2880]
+cmp ebp, esi
+lea edx, [eax + 0x287c]
+mov ecx, eax
+mov edi, esi
+je X
+mov eax, dword ptr [eax + 0x2814]
+mov esi, dword ptr [edx + 8]
+test eax, esi
+jne X
+or esi, eax
+mov dword ptr [edx + 8], esi
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], edi
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov esi, dword ptr [eax + 0x286c]
+cmp esi, ebx
+lea edx, [eax + 0x2868]
+mov ecx, eax
+je X
+mov eax, dword ptr [eax + 0x2814]
+mov esi, dword ptr [edx + 8]
+test eax, esi
+jne X
+or esi, eax
+mov dword ptr [edx + 8], esi
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], ebx
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov esi, dword ptr [eax + 0x2948]
+lea edx, [eax + 0x2944]
+xor ebp, ebp
+cmp esi, ebp
+mov ecx, eax
+je X
+mov eax, dword ptr [eax + 0x2814]
+mov esi, dword ptr [edx + 8]
+test eax, esi
+jne X
+or esi, eax
+mov dword ptr [edx + 8], esi
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], ebp
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov esi, dword ptr [eax + 0x295c]
+lea edx, [eax + 0x2958]
+mov edi, 0xffffff
+cmp esi, edi
+mov ecx, eax
+je X
+mov eax, dword ptr [eax + 0x2814]
+mov esi, dword ptr [edx + 8]
+test eax, esi
+jne X
+or esi, eax
+mov dword ptr [edx + 8], esi
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], edi
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov esi, dword ptr [eax + 0x2970]
+mov dword ptr [esp + 0x14], 0
+mov edi, dword ptr [esp + 0x14]
+cmp esi, edi
+lea edx, [eax + 0x296c]
+mov ecx, eax
+je X
+mov eax, dword ptr [eax + 0x2814]
+mov esi, dword ptr [edx + 8]
+test eax, esi
+jne X
+or esi, eax
+mov dword ptr [edx + 8], esi
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], edi
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov esi, dword ptr [eax + 0x2984]
+mov dword ptr [esp + 0x14], 0x3f800000
+mov edi, dword ptr [esp + 0x14]
+cmp esi, edi
+lea edx, [eax + 0x2980]
+mov ecx, eax
+je X
+mov eax, dword ptr [eax + 0x2814]
+mov esi, dword ptr [edx + 8]
+test eax, esi
+jne X
+or esi, eax
+mov dword ptr [edx + 8], esi
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], edi
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov esi, dword ptr [eax + 0x28e4]
+lea edx, [eax + 0x28e0]
+mov edi, 0x80
+cmp esi, edi
+mov ecx, eax
+je X
+mov eax, dword ptr [eax + 0x2814]
+mov esi, dword ptr [edx + 8]
+test eax, esi
+jne X
+or esi, eax
+mov dword ptr [edx + 8], esi
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], edi
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov esi, dword ptr [eax + 0x29e8]
+cmp esi, ebp
+lea edx, [eax + 0x29e4]
+mov ecx, eax
+je X
+mov eax, dword ptr [eax + 0x2814]
+mov esi, dword ptr [edx + 8]
+test eax, esi
+jne X
+or esi, eax
+mov dword ptr [edx + 8], esi
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], ebp
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov esi, dword ptr [eax + 0x2a10]
+cmp esi, ebx
+lea edx, [eax + 0x2a0c]
+mov ecx, eax
+je X
+mov eax, dword ptr [eax + 0x2814]
+mov esi, dword ptr [edx + 8]
+test eax, esi
+jne X
+or esi, eax
+mov dword ptr [edx + 8], esi
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], ebx
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov dword ptr [esp + 0x14], 0
+mov ebx, dword ptr [esp + 0x14]
+mov ecx, dword ptr [esp + 0x10]
+mov edi, dword ptr [ecx + 0x158]
+mov esi, dword ptr [eax + ebp + 0x2d08]
+cmp esi, edi
+lea edx, [eax + ebp + 0x2d04]
+mov ecx, eax
+je X
+mov eax, dword ptr [eax + 0x2814]
+mov esi, dword ptr [edx + 8]
+test eax, esi
+jne X
+or esi, eax
+mov dword ptr [edx + 8], esi
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], edi
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov esi, dword ptr [eax + ebp + 0x2da8]
+cmp esi, ebx
+lea edx, [eax + ebp + 0x2da4]
+mov ecx, eax
+je X
+mov eax, dword ptr [eax + 0x2814]
+mov esi, dword ptr [edx + 8]
+test eax, esi
+jne X
+or esi, eax
+mov dword ptr [edx + 8], esi
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], ebx
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov edi, dword ptr [ABS]
+mov esi, dword ptr [eax + ebp + 0x2e48]
+cmp esi, edi
+lea edx, [eax + ebp + 0x2e44]
+mov ecx, eax
+je X
+mov eax, dword ptr [eax + 0x2814]
+mov esi, dword ptr [edx + 8]
+test eax, esi
+jne X
+or esi, eax
+mov dword ptr [edx + 8], esi
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], edi
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov edi, dword ptr [ABS]
+mov esi, dword ptr [eax + ebp + 0x30c8]
+cmp esi, edi
+lea edx, [eax + ebp + 0x30c4]
+mov ecx, eax
+je X
+mov eax, dword ptr [eax + 0x2814]
+mov esi, dword ptr [edx + 8]
+test eax, esi
+jne X
+or esi, eax
+mov dword ptr [edx + 8], esi
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], edi
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov edi, dword ptr [ABS]
+mov esi, dword ptr [eax + ebp + 0x3168]
+cmp esi, edi
+lea edx, [eax + ebp + 0x3164]
+mov ecx, eax
+je X
+mov eax, dword ptr [eax + 0x2814]
+mov esi, dword ptr [edx + 8]
+test eax, esi
+jne X
+or esi, eax
+mov dword ptr [edx + 8], esi
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], edi
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov edi, dword ptr [ABS]
+mov esi, dword ptr [eax + ebp + 0x2ee8]
+cmp esi, edi
+lea edx, [eax + ebp + 0x2ee4]
+mov ecx, eax
+je X
+mov eax, dword ptr [eax + 0x2814]
+mov esi, dword ptr [edx + 8]
+test eax, esi
+jne X
+or esi, eax
+mov dword ptr [edx + 8], esi
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], edi
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov edi, dword ptr [ABS]
+mov esi, dword ptr [eax + ebp + 0x2f88]
+cmp esi, edi
+lea edx, [eax + ebp + 0x2f84]
+mov ecx, eax
+je X
+mov eax, dword ptr [eax + 0x2814]
+mov esi, dword ptr [edx + 8]
+test eax, esi
+jne X
+or esi, eax
+mov dword ptr [edx + 8], esi
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], edi
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov edi, dword ptr [ABS]
+mov esi, dword ptr [eax + ebp + 0x3028]
+cmp esi, edi
+lea edx, [eax + ebp + 0x3024]
+mov ecx, eax
+je X
+mov eax, dword ptr [eax + 0x2814]
+mov esi, dword ptr [edx + 8]
+test eax, esi
+jne X
+or esi, eax
+mov dword ptr [edx + 8], esi
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], edi
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov edi, dword ptr [ABS]
+mov esi, dword ptr [eax + 0x3668]
+cmp esi, edi
+lea edx, [eax + 0x3664]
+mov ecx, eax
+je X
+mov eax, dword ptr [eax + 0x2814]
+mov esi, dword ptr [edx + 8]
+test esi, eax
+jne X
+or eax, esi
+mov dword ptr [edx + 8], eax
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], edi
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+add ebp, 0x14
+cmp ebp, 0xa0
+jl X
+mov esi, dword ptr [ABS]
+mov ebx, dword ptr [eax + 0x2920]
+cmp ebx, esi
+lea edx, [eax + 0x291c]
+mov ecx, eax
+mov edi, esi
+je X
+mov eax, dword ptr [eax + 0x2814]
+mov esi, dword ptr [edx + 8]
+test esi, eax
+jne X
+or eax, esi
+mov dword ptr [edx + 8], eax
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], edi
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov esi, dword ptr [ABS]
+mov ebx, dword ptr [eax + 0x2934]
+cmp ebx, esi
+lea edx, [eax + 0x2930]
+mov ecx, eax
+mov edi, esi
+je X
+mov eax, dword ptr [eax + 0x2814]
+mov esi, dword ptr [edx + 8]
+test esi, eax
+jne X
+or eax, esi
+mov dword ptr [edx + 8], eax
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], edi
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov edi, dword ptr [ABS]
+mov esi, dword ptr [eax + 0x321c]
+cmp esi, edi
+lea edx, [eax + 0x3218]
+mov ecx, eax
+je X
+mov eax, dword ptr [eax + 0x2814]
+mov esi, dword ptr [edx + 8]
+test esi, eax
+jne X
+or eax, esi
+mov dword ptr [edx + 8], eax
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], edi
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov edi, dword ptr [ABS]
+mov esi, dword ptr [eax + 0x32bc]
+cmp esi, edi
+lea edx, [eax + 0x32b8]
+mov ecx, eax
+je X
+mov esi, dword ptr [edx + 8]
+mov eax, dword ptr [eax + 0x2814]
+test esi, eax
+jne X
+or eax, esi
+mov dword ptr [edx + 8], eax
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], edi
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov esi, dword ptr [ABS]
+mov ebx, dword ptr [eax + 0x3208]
+cmp ebx, esi
+lea edx, [eax + 0x3204]
+mov ecx, eax
+mov edi, esi
+je X
+mov esi, dword ptr [edx + 8]
+mov eax, dword ptr [eax + 0x2814]
+test esi, eax
+jne X
+or eax, esi
+mov dword ptr [edx + 8], eax
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], edi
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov esi, dword ptr [ABS]
+mov ebx, dword ptr [eax + 0x32a8]
+cmp ebx, esi
+lea edx, [eax + 0x32a4]
+mov ecx, eax
+mov edi, esi
+je X
+mov esi, dword ptr [edx + 8]
+mov eax, dword ptr [eax + 0x2814]
+test esi, eax
+jne X
+or eax, esi
+mov dword ptr [edx + 8], eax
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], edi
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov eax, dword ptr [ABS]
+mov ebx, dword ptr [esp + 0x10]
+mov cl, byte ptr [ebx + 0x13]
+mov byte ptr [eax + 0x3a57], cl
+mov eax, dword ptr [ABS]
+mov edx, dword ptr [eax + 0x28bc]
+lea ecx, [eax + 0x28b8]
+xor ebp, ebp
+cmp edx, ebp
+je X
+mov esi, dword ptr [ecx + 8]
+mov edx, dword ptr [eax + 0x2814]
+test esi, edx
+jne X
+or edx, esi
+mov dword ptr [ecx + 8], edx
+mov edx, dword ptr [eax + 0x2808]
+mov dword ptr [eax + edx*8 + 8], ecx
+mov edx, dword ptr [eax + 0x2808]
+mov esi, dword ptr [ecx + 4]
+mov dword ptr [eax + edx*8 + 0xc], esi
+inc dword ptr [eax + 0x2808]
+mov dl, byte ptr [ecx + 0x10]
+test dl, dl
+mov dword ptr [ecx + 4], ebp
+jne X
+mov byte ptr [ecx + 0x10], 1
+mov edx, dword ptr [eax + 0x280c]
+mov dword ptr [eax + edx*4 + 0x2008], ecx
+inc dword ptr [eax + 0x280c]
+mov eax, dword ptr [ABS]
+mov edx, dword ptr [eax + 0x2a24]
+lea ecx, [eax + 0x2a20]
+mov edi, 1
+cmp edx, edi
+je X
+mov esi, dword ptr [ecx + 8]
+mov edx, dword ptr [eax + 0x2814]
+test esi, edx
+jne X
+or edx, esi
+mov dword ptr [ecx + 8], edx
+mov edx, dword ptr [eax + 0x2808]
+mov dword ptr [eax + edx*8 + 8], ecx
+mov edx, dword ptr [eax + 0x2808]
+mov esi, dword ptr [ecx + 4]
+mov dword ptr [eax + edx*8 + 0xc], esi
+inc dword ptr [eax + 0x2808]
+mov dl, byte ptr [ecx + 0x10]
+test dl, dl
+mov dword ptr [ecx + 4], edi
+jne X
+mov byte ptr [ecx + 0x10], 1
+mov edx, dword ptr [eax + 0x280c]
+mov dword ptr [eax + edx*4 + 0x2008], ecx
+inc dword ptr [eax + 0x280c]
+mov eax, dword ptr [ABS]
+mov esi, dword ptr [eax + 0x2a38]
+cmp esi, ebp
+lea edx, [eax + 0x2a34]
+mov ecx, eax
+je X
+mov esi, dword ptr [edx + 8]
+mov eax, dword ptr [eax + 0x2814]
+test esi, eax
+jne X
+or eax, esi
+mov dword ptr [edx + 8], eax
+mov eax, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + eax*8 + 8], edx
+mov eax, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [edx + 4]
+mov dword ptr [ecx + eax*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov al, byte ptr [edx + 0x10]
+test al, al
+mov dword ptr [edx + 4], ebp
+jne X
+mov byte ptr [edx + 0x10], 1
+mov eax, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + eax*4 + 0x2008], edx
+inc dword ptr [ecx + 0x280c]
+mov ecx, dword ptr [ABS]
+call X
+mov ecx, dword ptr [ABS]
+push 3
+call X
+mov ecx, dword ptr [ABS]
+push ebp
+call X
+mov ecx, dword ptr [ABS]
+push edi
+call X
+mov ecx, dword ptr [ABS]
+call X
+mov ecx, dword ptr [ABS]
+push X
+push X
+push X
+push X
+call X
+mov al, byte ptr [ebx + 0x10]
+test al, al
+je X
+mov ecx, dword ptr [ABS]
+mov edx, dword ptr [ABS]
+mov esi, dword ptr [ecx + 0x2830]
+cmp esi, edx
+lea eax, [ecx + 0x282c]
+mov edi, edx
+je X
+mov esi, dword ptr [eax + 8]
+mov edx, dword ptr [ecx + 0x2814]
+test esi, edx
+jne X
+or edx, esi
+mov dword ptr [eax + 8], edx
+mov edx, dword ptr [ecx + 0x2808]
+mov dword ptr [ecx + edx*8 + 8], eax
+mov edx, dword ptr [ecx + 0x2808]
+mov esi, dword ptr [eax + 4]
+mov dword ptr [ecx + edx*8 + 0xc], esi
+inc dword ptr [ecx + 0x2808]
+mov dl, byte ptr [eax + 0x10]
+test dl, dl
+mov dword ptr [eax + 4], edi
+jne X
+mov byte ptr [eax + 0x10], 1
+mov edx, dword ptr [ecx + 0x280c]
+mov dword ptr [ecx + edx*4 + 0x2008], eax
+inc dword ptr [ecx + 0x280c]
+pop edi
+pop esi
+pop ebp
+pop ebx
+add esp, 8
+ret 

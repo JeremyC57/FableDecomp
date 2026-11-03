@@ -1,0 +1,5 @@
+addr       parity           behav  name
+005e9b20   RELOCATION_MATCH PASS   CTCTavernGame::SetState
+
+WINS: 1
+  005e9b20 RELOCATION_MATCH CTCTavernGame::?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z

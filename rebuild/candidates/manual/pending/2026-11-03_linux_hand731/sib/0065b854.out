@@ -1,0 +1,6 @@
+addr       parity           behav  name
+0065b854   WARN RELOC_NAME: ?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z -> 006bb390 labelled '`anonymousnamespace'::Game_IsTimeOfDayInRange'
+0065b854   RELOCATION_MATCH PASS   CTCVillage::AddThingToVillage
+
+WINS: 1
+  0065b854 RELOCATION_MATCH CTCVillage::?AddThingToVillage@CTCVillage@@QAEXAAVCThing@@@Z

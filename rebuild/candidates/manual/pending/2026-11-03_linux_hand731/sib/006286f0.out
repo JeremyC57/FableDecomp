@@ -1,0 +1,9 @@
+addr       parity           behav  name
+006286f0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+006286f0   WARN RELOC_NAME: ?SetEnabled25_009915e0@CASoundManager@@QAEX_N@Z -> 009915e0 labelled 'CWorld::SetMiniMapEnabled'
+006286f0   WARN RELOC_NAME: ?SetEnabled26_00991620@CASoundManager@@QAEX_N@Z -> 00991620 labelled 'CTCDParticleEmitter::func_00991620'
+006286f0   WARN RELOC_NAME: ?Sprintf@CWideString@@QAAXPBGZZ -> 0099ba70 labelled 'CWideString::Format'
+006286f0   RELOCATION_MATCH PASS   GFPlayFullScreenXBoxMovie
+
+WINS: 1
+  006286f0 RELOCATION_MATCH _global::?GFPlayFullScreenXBoxMovie@@YI_NABVCCharString@@KKKKPBVCDataBank@NGameText@@PAVCIEngine@@_NMP6I_NXZPAVCXMVPlayerBuffers@@PAVCWideString@@@Z

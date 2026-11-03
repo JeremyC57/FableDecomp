@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00b573a0   RELOCATION_MATCH PASS   CEngineStateBlockAlpha::Apply
+
+WINS: 1
+  00b573a0 RELOCATION_MATCH CEngineStateBlockAlpha::?Apply@CEngineStateBlockAlpha@@UAEXXZ

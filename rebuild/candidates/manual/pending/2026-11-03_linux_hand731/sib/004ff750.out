@@ -1,0 +1,5 @@
+addr       parity           behav  name
+004ff750   RELOCATION_MATCH PASS   CreateRelevantPersonAndUpdateStats
+
+WINS: 1
+  004ff750 RELOCATION_MATCH _global::?CreateRelevantPersonAndUpdateStats@@YIPAVCThingAICreature@@MMJJAAJ0ABVC3DVector@@ABVCThingAICreatureInit@@PAVCTCVillage@@AAV?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@4_N@Z

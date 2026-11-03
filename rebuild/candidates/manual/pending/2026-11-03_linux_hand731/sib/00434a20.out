@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00434a20   MATCH            PASS   CDisplayEngine::PostChangeResolution
+
+WINS: 1
+  00434a20 MATCH CDisplayEngine::?PostChangeResolution@CDisplayEngine@@QAEXKKK@Z

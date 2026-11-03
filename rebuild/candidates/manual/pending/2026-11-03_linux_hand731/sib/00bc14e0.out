@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00bc14e0   RELOCATION_MATCH PASS   CEnginePrimitiveManagerParticleSpriteGroup::CEnginePrimitiveManagerParticleSpriteGroup
+
+WINS: 1
+  00bc14e0 RELOCATION_MATCH CEnginePrimitiveManagerParticleSpriteGroup::??0CEnginePrimitiveManagerParticleSpriteGroup@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z

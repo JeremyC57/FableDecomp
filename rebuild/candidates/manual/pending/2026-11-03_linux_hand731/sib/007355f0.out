@@ -1,0 +1,5 @@
+addr       parity           behav  name
+007355f0   RELOCATION_MATCH PASS   CTCCombat::SetCombatType
+
+WINS: 1
+  007355f0 RELOCATION_MATCH CTCCombat::?SetCombatType@CTCCombat@@QAEXABV?$CDefPointer@$$CBVCCombatTypeDef@@@@@Z

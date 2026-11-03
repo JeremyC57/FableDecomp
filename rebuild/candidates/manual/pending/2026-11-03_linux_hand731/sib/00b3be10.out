@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00b3be10   RELOCATION_MATCH PASS   CEngineResourceManager::BuildAlphaStippleTexture
+
+WINS: 1
+  00b3be10 RELOCATION_MATCH CEngineResourceManager::?BuildAlphaStippleTexture@CEngineResourceManager@@AAEXJAAV?$CArray@E@@@Z

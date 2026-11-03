@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00408500   RELOCATION_MATCH PASS   CUserProfileManager::GetMaxTextureDetail
+
+WINS: 1
+  00408500 RELOCATION_MATCH CUserProfileManager::?GetMaxTextureDetail@CUserProfileManager@@QBEMXZ

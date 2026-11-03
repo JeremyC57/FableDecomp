@@ -1,0 +1,6 @@
+addr       parity           behav  name
+00487570   WARN RELOC_NAME: ?Sprintf@CWideString@@QAAXPBGZZ -> 0099ba70 labelled 'CWideString::Format'
+00487570   RELOCATION_MATCH PASS   CPlayer::DrawFreeCamDebug
+
+WINS: 1
+  00487570 RELOCATION_MATCH CPlayer::?DrawFreeCamDebug@CPlayer@@QBEXPBVC2DBoxF@@ABVCFontBank@@@Z

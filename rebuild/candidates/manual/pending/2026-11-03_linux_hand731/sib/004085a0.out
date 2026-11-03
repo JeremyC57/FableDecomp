@@ -1,0 +1,5 @@
+addr       parity           behav  name
+004085a0   RELOCATION_MATCH PASS   CUserProfileManager::GetMaxMeshDetail
+
+WINS: 1
+  004085a0 RELOCATION_MATCH CUserProfileManager::?GetMaxMeshDetail@CUserProfileManager@@QBEMXZ

@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00408550   RELOCATION_MATCH PASS   CUserProfileManager::GetMaxShadowDetail
+
+WINS: 1
+  00408550 RELOCATION_MATCH CUserProfileManager::?GetMaxShadowDetail@CUserProfileManager@@QBEMXZ

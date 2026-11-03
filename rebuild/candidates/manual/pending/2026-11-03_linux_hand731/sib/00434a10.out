@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00434a10   MATCH            PASS   CDisplayEngine::PreChangeResolution
+
+WINS: 1
+  00434a10 MATCH CDisplayEngine::?PreChangeResolution@CDisplayEngine@@QAEXXZ

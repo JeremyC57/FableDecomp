@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00775c60   WARN RELOC_NAME: ?OnSerialise@CTCBase@@MAEXAAVCPersistContext@@_N@Z -> 00686960 labelled 'CTCBase::vfunc_1'
+00775c60   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z -> 00433530 labelled 'std::vector::std::vector::Reallocate'
+00775c60   WARN RELOC_NAME: ??$TransferVector@M@CPersistContext@@QAEXPBDAAV?$vector@MV?$allocator@M@std@@@std@@@Z -> 00569fe0 labelled 'CPersistContext::Transfer<CQuestScoreRecord>'
+00775c60   RELOCATION_MATCH PASS   CTCShop::OnSerialise
+
+WINS: 1
+  00775c60 RELOCATION_MATCH CTCShop::?OnSerialise@CTCShop@@UAEXAAVCPersistContext@@_N@Z

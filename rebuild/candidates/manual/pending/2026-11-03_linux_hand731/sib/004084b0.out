@@ -1,0 +1,5 @@
+addr       parity           behav  name
+004084b0   RELOCATION_MATCH PASS   CUserProfileManager::GetMaxEffectsDetail
+
+WINS: 1
+  004084b0 RELOCATION_MATCH CUserProfileManager::?GetMaxEffectsDetail@CUserProfileManager@@QBEMXZ

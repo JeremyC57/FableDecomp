@@ -1,0 +1,7 @@
+address	name	grade	attempts	residue
+00b573a0	CEngineStateBlockAlpha::Apply	RELOCATION_MATCH	2	none (src/00b573a0.cpp; vland PASS on the final mirror)
+00b57860	CEngineStateBlockAlpha2X::Apply	RELOCATION_MATCH	2	none (src/00b57860.cpp; vland PASS)
+00b57d20	CEngineStateBlockAdditiveAlpha::Apply	RELOCATION_MATCH	2	none (src/00b57d20.cpp; vland PASS)
+00b581e0	CEngineStateBlockAddSmoothAlpha::Apply	RELOCATION_MATCH	2	none (src/00b581e0.cpp; vland PASS)
+00b26360	CEngine::Initialise	RELOCATION_MATCH	2	none (src/00b26360.cpp; vland PASS; warnings RELOC_NAME 0x009ADE10 and RELOC_CONFLICT 0x00A02D20 are name fixes for other rows, see NAME_FIXES.tsv)
+00b24850	CEngine::SetDefaultRenderStates	DIFFER(4344v4344)	12 logged (~25 grades)	6 diff lines: bookmark `test esi,eax ; or eax,esi` operand order of the one SetTextureTransformMode(0) block in loop 2 (documented VC7.1 lane gap); differ/00b24850.cpp

@@ -1,0 +1,23 @@
+address	name	evidence
+0x00B573A0	?Apply@CEngineStateBlockAlpha@@UAEXXZ	PDB exact symbol; the CEngineStateBlockAlpha vtable slot; SRC_ALPHA / INV_SRC_ALPHA, stage 0 MODULATE; RELOCATION_MATCH
+0x00B57860	?Apply@CEngineStateBlockAlpha2X@@UAEXXZ	PDB exact symbol; vtable slot of CEngineStateBlockAlpha2X; stage 0 MODULATE_2X; RELOCATION_MATCH
+0x00B57D20	?Apply@CEngineStateBlockAdditiveAlpha@@UAEXXZ	PDB exact symbol; vtable slot of CEngineStateBlockAdditiveAlpha; ONE / ONE; RELOCATION_MATCH
+0x00B581E0	?Apply@CEngineStateBlockAddSmoothAlpha@@UAEXXZ	PDB exact symbol; vtable slot of CEngineStateBlockAddSmoothAlpha; ONE / INV_SRC_COLOR; RELOCATION_MATCH
+0x00B26360	?Initialise@CEngine@@UAE_NABVCEngineInit@@@Z	PDB exact symbol; CEngine vtable slot 2; RELOCATION_MATCH
+0x00B24850	?SetDefaultRenderStates@CEngine@@AAEXXZ	Ego_r + FableWin private symbol; parked DIFFER(4344v4344)
+0x00988630	?SetTextureTransformCount@CShaderRenderManager@@QAEXJ@Z	see NAME_FIXES.tsv
+0x00988730	?SetUVCompressionVertexShaderConstant@CShaderRenderManager@@QAEXMMMM@Z	see NAME_FIXES.tsv
+0x00A0AA20	?EnableXBoxShaderConstants@CRenderManagerCore@@QAEX_N@Z	see NAME_FIXES.tsv
+0x009BEDE0	?GetVertexShaderVersion@CDisplayManager@@QBEKXZ	see NAME_FIXES.tsv
+0x009C0190	?AddDeviceResetCallback@CDisplayManager@@QAEXPAVCDeviceResetCallback@@@Z	Ego_r/FableWin symbol; 0x00B26360 passes `this + 0xC` (the CDeviceResetCallback base) on g_pDisplayManager_01436e1c
+0x00B28E40	??$GetDef@VCEngineVideoOptionsDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCEngineVideoOptionsDef@@@@@Z	see NAME_FIXES.tsv
+0x00B8FAA0	??0CEnginePrimitiveTypeInfo@@QAE@XZ	see NAME_FIXES.tsv
+0x00B8FBF0	??0CDefaultEngineMemoryInit@@QAE@XZ	Ego_r/FableWin symbol; 0x00B26360 builds the local at esp+.. then calls ApplyCustomSettings
+0x00B8FC40	?ApplyCustomSettings@CDefaultEngineMemoryInit@@QAEXABVCEngineMemoryInit@@@Z	Ego_r/FableWin symbol; called with init.MemoryInit (CEngineInit +0x34)
+0x00B28BC0	??0CEngineStateBlocks@@QAE@XZ	Ego_r/FableWin symbol; 0x00B26360 news 0x34 bytes and calls it
+0x00B482A0	??0CEngineLightingManager@@QAE@XZ	Ego_r/FableWin symbol; 0x00B26360 news 0x46D0 bytes and calls it
+0x00B47630	?SetupDefaultFogStates@CEngineLightingManager@@QAEXXZ	Ego_r/FableWin symbol; called by 0x00B24850 on g_pEngineLightingManager
+0x00B3CB30	??0CEngineResourceManager@@QAE@ABVCEngineInit@@ABVCEngineMemoryInit@@@Z	Ego_r/FableWin symbol; 0x00B26360 news 0x31E0 bytes, passes init and the CDefaultEngineMemoryInit local
+0x00B423F0	??0CEngineWorldMap@@QAE@ABVCEngineInit@@@Z	Ego_r/FableWin symbol; 0x00B26360 news 0x1C0 bytes
+0x00B59B60	??0CEngineLocalDetailGenerator@@QAE@_N@Z	Ego_r/FableWin symbol; 0x00B26360 news 0x7C bytes and passes (InitFlags & 4) != 0
+0x009ADA40	?GetPDefFromInstantiationName@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@@Z	Ego_r/FableWin symbol; the out-of-line GetDef<CEngineVideoOptionsDef> 0x00B28E40 calls it

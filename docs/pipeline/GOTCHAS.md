@@ -1877,3 +1877,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - 2026-11-03: `!IsDead()` and `IsAlive()` compile to different code; an inline accessor used as the object expression is evaluated before the arguments; a block at the end of a retail function usually means an inverted if/else.
 - 2026-11-03: CTCWife is 0xEC bytes in retail (Alloc 0x004D32A7 `push 0ECh`, ctor 0x006CF040 stores); Ego_r's 0xF4 comes from 0x10-byte map/set (retail 0xC).
 - 2026-11-03: hdrcheck2.py now writes its stubs to $HDRCHECK_STUBS or $S/stubinc when the lane scratch is set, so agents no longer write into the repo or need `git clean`.
+- 2026-11-03 (chunk 731): def lookups by name take the string literal and let it convert at the call (`GetDef("ENGINE", 1, &PEngineDef)`); an explicit `CCharString("...")` argument moves the def-pointer push ahead of the ctor (5151v5174).
+- 2026-11-03: CEngine::Uninitialise is vtable slot 85 (+0x154), so CIEngine needs all 85 slots; retail CEngineWorldMap is 0x1C0 (the `new` in CEngine::Initialise), not the tree's asserted 0x360.
+- 2026-11-03: vland on landed rows needs `--recheck-landed` and 0x-prefixed upper-case addresses; otherwise it grades nothing and still exits 0 with `WINS: 0`.

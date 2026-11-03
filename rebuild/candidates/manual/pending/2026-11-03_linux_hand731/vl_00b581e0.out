@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00b581e0   RELOCATION_MATCH PASS   CEngineStateBlockAddSmoothAlpha::Apply
+
+WINS: 1
+  00b581e0 RELOCATION_MATCH CEngineStateBlockAddSmoothAlpha::?Apply@CEngineStateBlockAddSmoothAlpha@@UAEXXZ
