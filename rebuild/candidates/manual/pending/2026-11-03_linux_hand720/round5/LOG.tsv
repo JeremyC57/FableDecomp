@@ -1,0 +1,33 @@
+0065b854	1	DIFFER(1460v1502)	1460v1502	dl=369	v1 skeleton: retail headers + TU models 
+0065b854	2	SRC_FAIL	?v?	dl=?	v2 named IP locals, bool-cast bits, if/else SetActive, CBasicString== out of line 
+0065b854	3	SRC_FAIL	?v?	dl=?	v2 named IP locals, bool-cast bits, if/else SetActive, CBasicString== same-TU noinline 
+0065b854	4	DIFFER(1441v1502)	1441v1502	dl=392	v2 named IP locals, bool-cast bits, if/else SetActive 
+0065b854	5	DIFFER(1509v1502)	1509v1502	dl=437	v3 implicit-conversion IP temporaries 
+0065b854	6	DIFFER(1509v1502)	1509v1502	dl=437	v4 CBasicString== declaration-only (overlay fable_string.h) 
+0065b854	7	DIFFER(1534v1502)	1534v1502	dl=307	v5 + forceinline CCharString== 
+0065b854	8	DIFFER(1537v1502)	1537v1502	dl=316	v6 implicit operator CCharString conversion for the track name 
+0065b854	9	DIFFER(1496v1502)	1496v1502	dl=2	v7 __forceinline GetPDef 
+0065b854	10	DIFFER(1496v1502)	1496v1502	dl=2	v8 default first in switch source 
+0065b854	11	RELOCATION_MATCH	?v?	dl=?	v9 case 5 as if/break chain 
+0065b854	12	RELOCATION_MATCH	?v?	dl=?	v10 CDefString::operator CCharString inline over out-of-line GetString (name fix) 
+0065b854	13	RELOCATION_MATCH	?v?	dl=?	v11 names: GetProperty 0x662010, IsTimeBetween 0x6BB390 
+00659800	1	DIFFER(1079v1074)	1079v1074	dl=340	v1 skeleton from the decoded control flow 
+00659800	2	DIFFER(1067v1074)	1067v1074	dl=332	v2 named predicate local, guard pointer local, exit after the position copy 
+00659800	3	DIFFER(1037v1074)	1037v1074	dl=345	v3 while(!Get(candidate)) with a found flag, named candidate 
+00659800	4	DIFFER(1091v1074)	1091v1074	dl=330	v5 pre-loop computations in a block (slot packing hypothesis) 
+00659800	5	DIFFER(1067v1074)	1067v1074	dl=316	v6 exit=0 before copy, distance via vector subtract, >= angle tests 
+00659800	6	DIFFER(1065v1074)	1065v1074	dl=231	v7 goto loop form with >= tests 
+00659800	7	DIFFER(1065v1074)	1065v1074	dl=165	v8 v7 + predicate/iterator block and nearestGuard block (scope packing) 
+00659800	8	DIFFER(1065v1074)	1065v1074	dl=119	v9 single-site while(!Get(rotated+Pos)) loop, goto nextGuard 
+00659800	9	DIFFER(1074v1074)	1074v1074	dl=206	v10 named distanceSquared local (x87 spill of X/Y like retail); HasGuardProperty operator() PDB signature 
+00659800	10	DIFFER(1074v1074)	1074v1074	dl=202	v11 player position by const ref, exit=0 between GetPos call and the copy (retail order) 
+00659800	11	DIFFER(1074v1074)	1074v1074	dl=202	v12 predicate at function scope, iterator block only 
+00659800	12	DIFFER(1074v1074)	1074v1074	dl=8	v13 exit search scoped to a block (exit position pointer out): frame 0x50, step/normalise temp share exit's slot 
+00659800	13	DIFFER(1074v1074)	1074v1074	dl=8	v14 navigation zeroed and GetTC inside the iterator block 
+00659800	14	DIFFER(1074v1074)	1074v1074	dl=8	v15 predicate as a const reference to a temporary 
+00659800	15	DIFFER(1074v1074)	1074v1074	dl=8	v16 predicate and count at function scope, iterator block only 
+0065b854	14	RELOCATION_MATCH	?v?	dl=?	recheck of the best source against the final merged hdr overlay 
+0065b854	15	RELOCATION_MATCH	?v?	dl=?	final src/0065b854.cpp (header comment added) 
+00659800	16	DIFFER(1074v1074)	1074v1074	dl=8	parked source differ/00659800.cpp (recheck) 
+0065b854	16	RELOCATION_MATCH	?v?	dl=?	final recheck src/0065b854.cpp on the final hdr 
+00659800	17	DIFFER(1074v1074)	1074v1074	dl=8	final recheck differ/00659800.cpp on the final hdr 

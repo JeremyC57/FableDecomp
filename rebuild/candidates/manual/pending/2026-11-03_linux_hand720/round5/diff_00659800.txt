@@ -1,0 +1,24 @@
+8
+--- 
++++ 
+@@ -6,3 +6,3 @@
+ push edi
+-push dword ptr [ebp - 0x1c]
++push dword ptr [ebp - 0x18]
+ mov ebx, ecx
+@@ -19,4 +19,4 @@
+ call X
+-push dword ptr [ebp - 0x1c]
+ mov dword ptr [ebp - 0x18], eax
++push dword ptr [ebp - 0x18]
+ push ecx
+@@ -46,3 +46,3 @@
+ je X
+-lea eax, [ebp - 0x14]
++lea eax, [ebp - 0xc]
+ add esi, 0x44
+@@ -50,3 +50,3 @@
+ mov ecx, esi
+-mov dword ptr [ebp - 0x14], edi
++mov dword ptr [ebp - 0xc], edi
+ call X
