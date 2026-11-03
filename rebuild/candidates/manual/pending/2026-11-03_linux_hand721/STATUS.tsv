@@ -1,0 +1,13 @@
+address	attempts	grade	residue	lever
+00b44820	1	MATCH (retail_asm)	-	C++ shell (`count /= 4`, `this` homed) around the transcribed retail SSE block 0x00B44839..0x00B44A52
+00b44a60	1	MATCH (retail_asm)	-	same shell, 8 arguments, block 0x00B44A79..0x00B44CC9
+00b45fb0	28	RELOCATION_MATCH (retail_asm)	-	GFFloatToLongFloor asm helper x4; `bool inTheme = inChannel0 | (blend > 0 && mask & bit1)` (int-context && = retail `mov eax,1`); C3DVector::GetSquaredMagnitude product order; `link->Light->AlreadyFoundFlag = true` before the re-link
+00b46280	3	RELOCATION_MATCH (retail_asm, needs hdr/engine/C3DBoundingBox.h)	-	GetLightsInSphere model + C3DBoundingBox::CalcShortestDistanceToPointSquared (hand-SSE kernel of landed 0x00BF7DF0) + GetCenter = (MaxCoord + MinCoord) * 0.5f
+00b46660	3	RELOCATION_MATCH (retail_asm)	-	floor helper x4 + pool operator new (CDynamicObjectHeap::Alloc inline); name LocalLightList at each use (a local CArray reference lets VC carry _M_start across the loop)
+00b46c80	0	not attempted	-	(1531-byte x87 theme-channel colour blend + CShaderRenderManager calls; out of time)
+00b47bc0	0	not attempted	-	(1028 bytes; out of time)
+00b484b0	0	not attempted	-	(1177 bytes; out of time)
+00a1a7e0	13	DIFFER(862v862) parked	one x87 scheduling swap at 0x00A1A9F6 (retail `test ah,5` before the hoisted second fcomp [DELTA_NOTIONAL_ZERO])	(float)fabs(..) < DELTA_NOTIONAL_ZERO; named C2DVector first/second; named offset1/offset2; if/else-if chain; -(GetSize()*0.5f) - distance
+00a1ad40	14	DIFFER(366v370) parked	current/last frame slots swapped; ebx pushed late (shrink-wrapped); loop-break fstp block inline v after ret; last + g_Offset x87 operand order	C3DVector current(pos.X,pos.Y,pos.Z); last(current); C3DVector::operator+=(const C2DVector&) (PDB)
+00a1ceb0	0	not attempted	-	(992 bytes, STL-heavy; out of time)
+00a1e030	28	RELOCATION_MATCH (needs hdr/engine/C2DVector.h)	-	bind the two best-distance references before length and radius; sqrtf overload; next goal as one ternary; faithful STLport list size()/distance

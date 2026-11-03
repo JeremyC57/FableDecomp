@@ -1,0 +1,14 @@
+address	module	name	length	group	anchor	gap_to_next_start
+00659800	CTCVillage	CalculateSecuritySweepTasks	1074	G00659625	CTCVillage	1074
+0065b854	CTCVillage	AddThingToVillage	1502	G00659625	CTCVillage	1502
+00660ae2	CTCVillage	RemoveThingFromTask<CVillageTaskPickCrops>	123	G00659625	CTCVillage	123
+00660b5d	CTCVillage	RemoveThingFromTask<CVillageTaskPickCrops>	123	G00659625	CTCVillage	123
+00660bd8	CTCVillage	RemoveThingFromTask<CVillageTaskPickCrops>	123	G00659625	CTCVillage	123
+00660c53	CTCVillage	RemoveThingFromTask<CVillageTaskPickCrops>	123	G00659625	CTCVillage	123
+00660cce	CTCVillage	RemoveThingFromTask<CVillageTaskPickCrops>	123	G00659625	CTCVillage	123
+00660d49	CTCVillage	RemoveThingFromTask<CVillageTaskPickCrops>	123	G00659625	CTCVillage	143
+005c36c2	_global	PutSheatheObjectInCarrySlot	645	G005c36c2	CTCInventoryWeapons	645
+005c552c	_global	CTCCarryable_PrepareWeaponSheathing	546	G005c36c2	CTCInventoryWeapons	546
+005c6b26	CTCInventoryWeapons	ConstructWeaponDescription	1668	G005c36c2	CTCInventoryWeapons	1668
+005c90fc	CTCInventoryWeapons	ConstructWeaponDescriptionContainer	2150	G005c36c2	CTCInventoryWeapons	2150
+005cacb9	CTCInventoryWeapons	RefreshWeaponDescriptions	1135	G005c36c2	CTCInventoryWeapons	1135

@@ -1,0 +1,23 @@
+address	probe	change	grade	note
+00660ae2	rt1	erase(find_if(begin,end,CIsTask(*task))) one expression	DIFFER(115v123)	find result elided into erase arg slot; retail computes into [ebp+10h] then copies
+00660ae2	rt2	named it = find_if(...); erase(it) in own block	DIFFER(123v123)	only residue: erase hidden result [ebp+14h] v retail [ebp+10h]
+00660ae2	rt3	it = erase(it)	DIFFER(123v123)	same
+00660ae2	rt4	named erase result	DIFFER(124v123)	frame slot
+00660ae2	rt5	it at function scope = end()	DIFFER(122v123)	
+00660ae2	rt6	explicit iterator(find_if()) cast	DIFFER(123v123)	mov eax,[eax] copy, result [ebp-8]
+00660ae2	rt7	const iterator& it = find_if	DIFFER(123v123)	= rt2
+00660ae2	rt8	it = begin(); it = find_if(it,...)	DIFFER(124v123)	
+00660ae2	rt9	first/last locals	DIFFER(117v123)	
+00660ae2	rt10	iterator dtor (diagnostic)	DIFFER(115v123)	still elided
+00660ae2	rt11	default-ctor it; it = find_if()	DIFFER(122v123)	find temp [ebp+10h], erase temp [ebp+10h] (matches retail!) but copy reads through eax (mov eax,[eax])
+00660ae2	rt12	if (it != end)	SRC_FAIL	
+00660ae2	rt13	early returns	DIFFER(124v123)	
+00660ae2	rt14-16	assign forms (function-scope it, it=erase(it), it=begin first)	DIFFER(122v123)	= rt11
+00660ae2	rt*gr	/Gr	same as without	
+00660ae2	rtp	optimize t/a/w/p	no	
+00660ae2	rt1e/rt2e	erase body in TU	same	erase stays out of line
+00660ae2	rt1f/rt2f	find_if body in TU	same	
+00660ae2	rt18	named CIsTask pred	DIFFER(115v123)	
+00660ae2	rt19	second iterator copy	= rt2	
+00660ae2	rt20	const iterator it	= rt2	
+00660ae2	rt21/22	cast to iterator& / const&	= rt1	

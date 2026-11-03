@@ -1,0 +1,41 @@
+address	probe	change	grade	note
+00a1e030	ug1	first model, no agent local, (float)sqrt	DIFFER(215v217)	agent reloaded after the vcall; length stored before popping the diff
+00a1e030	ug2	CSteeringAgent* agent local	DIFFER(213v217)	
+00a1e030	ug3	sqrtf (float overload)	DIFFER(213v217)	fixes fstp st(2)/fstp st(0) order
+00a1e030	ug4-6	named diff / declare order / split assignment	no change	
+00a1e030	ug7	real STLport list template	DIFFER(213v217)	else-branch front() still CSE'd
+00a1e030	ug8/9	next goal as one ternary	DIFFER(216v217)	tail-duplicated SetGoal like retail
+00a1e030	ug10-25	GetRadius this via mov eax,edi: SteeringAgent member, ref local, GetSteeringAgent(), Peek accessors, nested accessor	DIFFER(216v217)	
+00a1e030	ug26	bind the two best-distance references BEFORE length and radius	RELOCATION_MATCH	
+00a1e030	ugF/ugG	engine headers (C2DVector retail branch + GetMagnitude, CNavigatorBase retail), faithful STLport distance	RELOCATION_MATCH	needs hdr/engine/C2DVector.h overlay
+00a1ad40	gp1	first model (public; leaf missed)	DIFFER	
+00a1ad40	gp2	dx/dy floats, size local	DIFFER(343v370)	
+00a1ad40	gp3	step C2DVector + C2DVector(dx,dy).GetSquaredMagnitude	DIFFER(357v370)	
+00a1ad40	gp4/gp6	C3DVector current(pos.X,pos.Y,pos.Z); last(current)	DIFFER(370v370)	X,Y copies through x87 as retail
+00a1ad40	gp5/7/12/13/14	other init orders	worse	
+00a1ad40	gp8	distance*distance inline	DIFFER(360v370)	
+00a1ad40	gp9/10	commuted adds	no/worse	
+00a1ad40	gp11	current += direction * (GetSize()*0.5f) via PDB C3DVector::operator+=(const C2DVector&)	DIFFER(366v370)	adds now fadd [mem] as retail; left: cur/last slots swapped, ebx pushed late (shrink-wrapped), break block inline, last+offset operand order
+00a1a7e0	ip1	first model: C2DBoxF(centre,radius) boxes, pair of temporaries, extern DELTA_NOTIONAL_ZERO	DIFFER(788v862)	epsilon hoisted into the FPU
+00a1a7e0	ip2/ip3	literal eps / (float)fabs(..) < DELTA_NOTIONAL_ZERO	DIFFER(792v862)	(float) cast gives retail fcomp [eps] + test ah,5
+00a1a7e0	ip4	named C2DVector first/second locals per return	DIFFER(867v862)	equal-case blocks match (left-to-right evaluation)
+00a1a7e0	ip5	named float offset1/offset2 in slope branches	DIFFER(806v862)	slope blocks match, tails over-merged
+00a1a7e0	ip6	if / else-if chain with if/else in each arm	DIFFER(858v862)	block layout = retail
+00a1a7e0	ip7	single exit	DIFFER(1013v862)	
+00a1a7e0	ip8	-(GetSize()*0.5f) - distance (fchs, not a -0.5 constant)	DIFFER(862v862)	one scheduling swap: retail `test ah,5` before the hoisted second fcomp
+00a1a7e0	ip9-13	compare spellings / bool local / nested else / AreEqual helper	no better	
+00b44820	cv1	C++ shell (count /= 4, this home) around the transcribed retail SSE block	MATCH	retail_asm
+00b44a60	sm1	same shape, 8 arguments	MATCH	retail_asm
+00b45fb0	gs1	first model: GFFloatToLongFloor asm helper x4, named in0/in1 bools, dx/dy/dz floats	DIFFER(715v714)	
+00b45fb0	gs2	count before lights; in0 | in1; store order; dz+dx+dy	DIFFER(711v714)	init order fixed
+00b45fb0	gs3-5	sum/store orders (graded in parallel: collided, rerun)	DIFFER(711v714)	
+00b45fb0	gs6/gs7	C3DVector diff + GetSquaredMagnitude (X*X+Z*Z+Y*Y)	DIFFER(711v714)	product order and loop-exit reloads now retail
+00b45fb0	gs8-22	in1 as long / || / != 0 / if-assign / ternaries / uchar / inline helpers	no better	retail `mov eax,1/xor eax,eax` for in1
+00b45fb0	gs23-27	re-link store orders; link->Light->AlreadyFoundFlag	gs25 DIFFER(711v714)	flag store placed as retail
+00b45fb0	gs28	bool inTheme = inChannel0 | (blend > 0 && mask & bit1)	RELOCATION_MATCH	int-context && gives mov eax,1
+00b46280	ga1	GetLightsInSphere model + C3DBoundingBox::CalcShortestDistanceToPointSquared (landed 0x00BF7DF0 SSE kernel) + GetCenter (Min+Max)*0.5f	DIFFER(982v982)	centre X add order
+00b46280	ga2	GetCenter as (MaxCoord + MinCoord) * 0.5f	RELOCATION_MATCH	
+00b46280	ga3	engine/C3DBoundingBox.h FABLE_RETAIL_C3DBOUNDINGBOX branch (GetCenter inline, CalcShortestDistanceToPointSquared declared, defined in the row)	RELOCATION_MATCH	needs hdr overlay
+00b46660	al1	floor helper x4 + CArray<CManagerLocalLight*> local reference + pool operator new (landed CDynamicObjectHeap::Alloc)	DIFFER(556v557)	_M_start carried across the loop
+00b46660	al2	name LocalLightList at each use (no local reference)	RELOCATION_MATCH	
+00b46660	al3	*(begin() + i)	DIFFER(556v557)	
