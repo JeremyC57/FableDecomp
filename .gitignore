@@ -88,3 +88,6 @@ imgui.ini
 /imgui.ini
 /out_dat.txt
 /[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f]*
+
+# hdrcheck2.py writes throwaway stub headers here; they shadow real headers (GOTCHAS 2026-11-03). Tracked stubs stay tracked.
+/tools/decomp_pipeline/linux_lane/lane_tools/coordinator/stubinc/
