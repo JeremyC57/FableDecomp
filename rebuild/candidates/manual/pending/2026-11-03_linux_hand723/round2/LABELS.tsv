@@ -1,0 +1,16 @@
+address	name	evidence
+0x00B70230	CEngineWaterRenderer::RenderSeaBackground	Ego_r.pdb ?RenderSeaBackground@CEngineWaterRenderer@@AAEXM@Z; catalog name; body binds the Sea* members (+0x68 / +0x7C / +0xB0 / +0xB4 / +0xBC / +0xC4 / +0x114 / +0x124)
+0x00B761D0	CEngineWaterRenderer::RenderForeground	Ego_r.pdb ?RenderForeground@CEngineWaterRenderer@@AAEXM@Z; catalog name; expands SetupForegroundShaderConstantsAndFog (out-of-line copy 0x00B7EEC0) and walks ForegroundRenderList +0x1FC
+0x00B77370	CEngineWaterRenderer::RenderSeaReflectiveForeground	Ego_r.pdb ?RenderSeaReflectiveForeground@CEngineWaterRenderer@@AAEXM@Z; catalog name; walks SeaReflectiveForegroundRenderList +0x244 with the reflective sea shaders +0xCC / +0xD4
+0x00B7C510	CEngineWaterRenderer::SetupSeaBackgroundShaderConstantsAndFog	byte-identical to the block 0x00B70230 expands (see NAME_FIXES.tsv); Ego_r.pdb + FableWin.pdb ?SetupSeaBackgroundShaderConstantsAndFog@CEngineWaterRenderer@@AAEXXZ
+0x0041BDF0	CGraphicFrameData::`scalar deleting destructor'	called with `push 1` by 0x00B77370 for the last frame-data release; body = inline ~CGraphicFrameData (Uninitialise 0x009FCBA0 when IsInitialised, CCountedPointer<CTexture> release) + operator delete on flag 1; Ego_r.pdb ??_GCGraphicFrameData@@QAEPAXI@Z
+0x013CB508	CRenderStateCaptureBlock::StateManager	static read by every RAII capture block ctor / dtor (StartCaptureBlock / RestoreCaptureBlock 0x00A05840); cleared by ~CRenderStateManager 0x00A044B0; Ego_r.pdb static member
+0x01436E18	g_pRenderManagerCore	CRenderManagerCore* (state setters at +0x2814 / +0x2808, CurrentlySelectedTextures +0x3D00, PD3DDevice +0x3CF0) in every water pass; existing binding
+0x01436E14	g_pShaderRenderManager	CShaderRenderManager* (ApplyVertexShader / SetUserVertexShaderConstant this); existing binding
+0x01436E98	g_pResourceManager	CEngineResourceManager* (GraphicBanks[0] +0x954); no PDB name: kept as bound
+0x01436E24	g_pEngineEnvironmentDef	descriptive: the engine's current CEnvironmentDef (graphic indices IceTexture +0xCC, WaterEdgeAlphaMap +0xD0, WaterSurfMap +0xD4 in retail, 4 below Ego_r)
+0x01396DC8	g_textureUVModeToD3D	descriptive: TEXTURE_UV_MODE -> D3DTEXTUREADDRESS table {1,2,3,4}; SetTextureUVModeU/V/W (Ego_r.pdb, W4TEXTURE_UV_MODE) read [table + 4*mode] (0x00B70230, 0x00B761D0, 0x00B77370, 0x00B677D0)
+0x0139A838	g_seaBackgroundMipmapLODBias	descriptive: -4.0f, read once by 0x00B70230 as the stage-0 SetTextureMipmapLODBias argument
+0x00B751F0	CEngineWaterRenderer::RenderIceForeground	Ego_r.pdb ?RenderIceForeground@CEngineWaterRenderer@@AAEXM@Z; catalog name; expands SetupIceForegroundShaderConstantsAndFog (out-of-line copy 0x00B7F3B0) and walks IceForegroundRenderList +0x220
+0x01436E60	g_pShadowRenderer_01436e60	CEngineShadowRenderer* (RenderingTechnique +0x334, SetupShadowFuncRenderStates 0x00B50510 this); majority landed spelling kept (also bound as g_pRenderSettings_01436e60 / g_pOcclusionRenderer)
+0x01436E9C	g_pEngineLightingManager	CEngineLightingManager* (ThemeChannels +0x3C, GetLightsInArea / SetupShaderPointLights / DisablePointLights this); majority landed spelling (also g_pLightingManager)

@@ -1,0 +1,8 @@
+address	attempts	grade	residue	lever
+00b70230	25	DIFFER(2138v2138)	3 of 7 SetRenderState bookmark test/or operand swaps (lane gap)	forceinline same-TU helpers; const-ref then enum-table setters; chained SetIdentity; named const CIDrawEnvironmentParams&; parked in differ/
+00b761d0	14	DIFFER(2531v2531)	6 of 8 test/or swaps (lane gap)	forceinline core helpers; index-then-bank locals; double CurrentFrame read; CGraphicFrame dtor model; parked in differ/
+00b77370	11	DIFFER(2798v2734)	(231 diff lines; 247 on the final no-mask-local header) retail calls ??_GCGraphicFrameData 0x0041BDF0 for the last of three frame releases (VC7.1 here inlines all three); knock-on frame/register diffs	CGraphicFrame dtor model (null test dropped after deref); parked in differ/
+00b751f0	10	DIFFER(2722v2722)	6 of 7 test/or swaps (lane gap)	box-then-mesh locals, channel desc zeroed last; SetRenderState without mask local; parked in differ/
+00b70a90	0	NOT_ATTEMPTED	out of session budget	-
+00bc04f0	0	NOT_ATTEMPTED	out of session budget	-
+00b6edf0	0	NOT_ATTEMPTED	task 3 (hand723 parked it at 3144v3144)	-

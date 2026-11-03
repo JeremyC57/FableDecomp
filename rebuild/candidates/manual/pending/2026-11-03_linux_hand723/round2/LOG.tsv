@@ -1,0 +1,62 @@
+address	attempt	change	grade	difflines
+00b70230	g1	first draft on the new headers: RAII CRenderStateCaptureBlock, SetSeaBackgroundTexturesAndUVModes + SetupSeaBackgroundShaderConstantsAndFog as same-TU members	DIFFER(265v2138)	-
+00b70230	g2	both helpers `inline`	DIFFER(265v2138)	528
+00b70230	g3	both helpers `__forceinline`	DIFFER(1549v2138)	638
+00b70230	g4	CRenderStateManager setters/SetRenderState/StartCaptureBlock __forceinline in the header (plain inline ran out of budget)	DIFFER(2140v2138)	113
+00b70230	g5	SelectIndexBuffer if/else whole calls; ThemeChannels[0]; CMatrix3x4 12-float ctor in reverse	DIFFER(2140v2138)	89
+00b70230	g6	CMatrix3x4::SetIdentity (two chained assignments) + SetTranslateOnly	DIFFER(2140v2138)	89 (matrix stores now exact)
+00b70230	g7	ThemeChannels.begin()->	DIFFER(2140v2138)	89
+00b70230	g8	product operands swapped	DIFFER(2140v2138)	89
+00b70230	g9	probe: non-const PeekInterpolatedParams	DIFFER(2140v2138)	89 (probe, reverted)
+00b70230	g10	probe: raw struct for ThemeChannels	DIFFER(2140v2138)	89 (probe, reverted: not the vector)
+00b70230	g11	probe: _M_start direct	SRC_FAIL	protected
+00b70230	g12	SetRenderState reads the bookmark mask into a local	DIFFER(2140v2138)	65
+00b70230	g13	setter binds the CStateInfo& to a local first	DIFFER(2140v2138)	65
+00b70230	g14	UV setters take the D3D value by const reference	DIFFER(2140v2138)	47 (copy order fixed)
+00b70230	g15	const& without the mask local	DIFFER(2140v2138)	59
+00b70230	g16	test written state-first	DIFFER(2140v2138)	59
+00b70230	g17	or written as state|mask	DIFFER(2140v2138)	47
+00b70230	g18	`const CIDrawEnvironmentParams& params = ...` named local	DIFFER(2138v2138)	40 (theme load folded, fld order exact)
+00b70230	g19	g18 without the mask local	DIFFER(2138v2138)	48
+00b70230	g20	!(state & mask)	DIFFER(2138v2138)	40
+00b70230	g21	SetRenderState value by const&	DIFFER(2164v2138)	174
+00b70230	g22	all table-value setters const& (header cleanup), = g18	DIFFER(2138v2138)	40
+00b70230	g23	probe /Oa	DIFFER(2039v2138)	555
+00b70230	g24	PDB setter signature SetTextureUVModeU/V(long, TEXTURE_UV_MODE) mapping through the 0x01396DC8 table (header); same residue: 2 test/or blocks (qdiff2: 16 lines, addend display normalised)	DIFFER(2138v2138)	16
+00b761d0	g1	first draft: RAII capture block, same-TU __forceinline SetForegroundTexturesAndUVModes / SetupForegroundShaderConstantsAndFog, GetFrame (landed 0x0041C260 body) + GetGraphicInfo projection	DIFFER(2267v2531)	856
+00b761d0	g2	CRenderManagerCore AttachTextureToStage / AttachD3DTextureToStage / SelectVertexBuffer / SelectIndexBuffer and CShaderRenderManager SetPixelShaderConstant / SetBoneMatrixCount __forceinline (were emitted out of line)	DIFFER(2531v2531)	138
+00b761d0	g3	FABLE_RETAIL_CARRAY (begin()-based operator[])	DIFFER(2531v2531)	138
+00b761d0	g4	no bank local: g_pResourceManager->GraphicBanks[0]->GetGraphicInfo twice	DIFFER(2531v2531)	132
+00b761d0	g5	const bank local + unsigned long index local: the second GetGraphicInfo becomes retail's cmp/sbb/and select	DIFFER(2531v2531)	100
+00b761d0	g6	SetRenderState without the mask local (hdr variant)	DIFFER(2531v2531)	100
+00b761d0	g7_1	SetRenderState test as (state.BookmarkMask & mask) (hdr variant)	DIFFER(2531v2531)	100
+00b761d0	g7_3	test (state & mask) + `BookmarkMask = mask | BookmarkMask` (hdr variant); g7_2 void (run concurrently, overwritten)	DIFFER(2531v2531)	100
+00b761d0	g8	index local declared before the bank local: fixes the global-load registers	DIFFER(2531v2531)	92
+00b761d0	g9	GetFrame touch reads GraphicInfo->Bank->CurrentFrame twice (no frame local): only the test/or blocks remain	DIFFER(2531v2531)	48
+00b761d0	g10	UV setters as PDB (long, TEXTURE_UV_MODE) through the 0x01396DC8 table (hdr variant)	DIFFER(2531v2531)	48
+00b761d0	g11	g9 + no-mask-local SetRenderState (hdr variant)	DIFFER(2531v2531)	48
+00b761d0	g12	g9 on the adopted enum header, TouchResource / TouchTexture PDB spellings, full comment; parked: 6 of 8 test/or blocks	DIFFER(2531v2531)	48
+00b761d0	g13	CGraphicFrame ctor/dtor/ReleaseData + CGraphicFrameData::Release (`delete this`) model shared with 0x00B77370 (the end release has no null test: VC7.1 drops it after the stage-3 dereference); best, parked	DIFFER(2531v2531)	48
+00b77370	g1	first draft from the 0x00B761D0 model: two frames (WaterSurfMap +0xD4, WaterEdgeAlphaMap +0xD0), explicit releases, CGraphicFrameData::Release = `delete this`, same-TU __forceinline helpers	DIFFER(2798v2734)	231
+00b77370	g2	~CGraphicFrameData plain inline	DIFFER(2798v2734)	231
+00b77370	g3	Release plain inline (not inlined anywhere: budget spent)	DIFFER(2606v2734)	267
+00b77370	g4	GetFrame plain inline (not inlined)	DIFFER(2256v2734)	868
+00b77370	g5	surf release null-checked too: VC7.1 drops the test after the stage-3 dereference (identical code)	DIFFER(2798v2734)	231
+00b77370	g6	CGraphicFrame ctor / dtor / private ReleaseData (FableWin.pdb), no explicit releases	DIFFER(2798v2734)	231
+00b77370	g7	ReleaseData plain inline (called out of line)	DIFFER(2606v2734)	261
+00b77370	g8	~CGraphicFrame plain inline (called out of line)	DIFFER(2606v2734)	261
+00b77370	g9	~CGraphicFrameData and ~CTexturePointer plain inline: the deleting dtor is still inlined at all three releases	DIFFER(2798v2734)	231
+00b77370	g10	AddReference / GetTexture (FableWin.pdb) for operator= and the stage-3 texture	DIFFER(2798v2734)	231
+00b77370	g11	const-ref operator= (PDB), full comment; parked: retail calls ??_GCGraphicFrameData 0x0041BDF0 for the last release, every other diff follows	DIFFER(2798v2734)	231
+00b70230	g25	SetRenderState without the mask local (adopted header form: fixes 0x00B751F0 SetSpecularEnable load order); 3 test/or blocks (U0 / V0 / U1) instead of 2; best on the adopted header, parked	DIFFER(2138v2138)	24
+00b751f0	g1	first draft: 0x00B761D0 model + CEngineShadowRenderer / CEngineLightingManager retail branches, SetSpecularEnable, technique switch, box local	DIFFER(2714v2722)	242
+00b751f0	g2	whole-pair copy `entry = *it` (size right, mesh slot wrong)	DIFFER(2722v2722)	188
+00b751f0	g3	mesh local + box local (frame slots right)	DIFFER(2722v2722)	78
+00b751f0	g4	box copied before the mesh (copy order right)	DIFFER(2722v2722)	52
+00b751f0	g5	theme-channel desc zeroed after the copies (mesh store above the byte stores)	DIFFER(2722v2722)	50
+00b751f0	g6	SetRenderState without the mask local (hdr variant): SetSpecularEnable's state-first load order right; adopted in hdr/	DIFFER(2722v2722)	48
+00b751f0	g7	aggregate-initialised CColorBufferDepthPackParameters (same code)	DIFFER(2722v2722)	48
+00b751f0	g8	named `bool shadowed` local (worse: 2737)	DIFFER(2737v2722)	181
+00b751f0	g9	switch `default: break;` (same code)	DIFFER(2722v2722)	48
+00b751f0	g10	g7 + full comment; parked: 6 of 7 test/or blocks (lane gap)	DIFFER(2722v2722)	48
+(final overlay regrade) all four differ rows re-graded: 00b70230 24, 00b751f0 48, 00b761d0 48, 00b77370 247 diff lines	-	-	-	-
