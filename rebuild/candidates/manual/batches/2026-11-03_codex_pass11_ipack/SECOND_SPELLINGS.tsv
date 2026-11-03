@@ -1,0 +1,4 @@
+address	new_spelling	existing_spellings	reason
+0x005E9B20	?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z	?SetState@CTCTavernGame@@QAEXJ@Z (+7 stand-ins, NAME_FIXES.tsv)	PDB spelling (enum parameter); existing bindings are long-typed or subclass/stand-in spellings proven wrong
+0x005EB080	?SetStateAfterOK@CTCTavernGame@@IAEXVCWideString@@0W4ETavernGameStates@1@@Z	?SetStateAfterOK@CTCTavernGame@@QAEXVCWideString@@0J@Z,?SetStateAfterOK@CTCTavernGameCardPairs@@QAEXVCWideString@@0J@Z	PDB spelling (protected IAE, enum parameter)
+0x005EA950	?PlaySoundW@CTCTavernGame@@IAEKABVCCharString@@@Z	?PlaySound@CTCTavernGame@@QAEKABVCCharString@@@Z (+4 subclass variants)	PDB spelling (W from the windows.h macro, protected IAE)

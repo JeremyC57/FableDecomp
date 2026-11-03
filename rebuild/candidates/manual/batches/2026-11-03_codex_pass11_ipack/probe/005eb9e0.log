@@ -1,0 +1,13 @@
+a01	first draft: shared-header retail models, SetState body in TU, IS_THING_ALIVE gm check with early return	DIFFER(1468v1472) masked -178 +184: gm-dead quit block laid out on the fall-through; quit tail shape differs
+a02	gm check as if(IS_THING_ALIVE){..} else {SetState(47); return;}	DIFFER(1460v1472) masked -91 +96: layout fixed; left: inlined SetState(47) quit tails (2 sites), case 4/5 temp slots
+a03	case 5 sound as a named CCharString local in its own block	DIFFER(1464v1472) masked -79 +85: case 4/5 temp slots fixed; left: inlined SetState(47) quit tails
+a04	SetState body: the quit request maps the state to 47 (state = 47) instead of an early LeaveGame return	RELOCATION_MATCH (q harness)
+a04c	a04 with cleaned indentation + full header comments (no code change)	RELOCATION_MATCH; all 58 call targets and 16 data relocations paired one-to-one with retail
+a05	GetSubDef<CTavernGameDef> definition without __declspec(noinline)	RELOCATION_MATCH: noinline is not needed, VC7.1 keeps the 182-byte body out of line on its own
+a06	case 2 clamp as CurrentMoney ? CurrentMoney : def->MinBet	DIFFER(1468v1472) masked -67 +72: the inverted test flips the clamp's branch/arm order
+a07	case 8 reaction as one nested conditional expression	RELOCATION_MATCH: same code as the if/else chain
+a08	game-master check as if(!IS_THING_ALIVE) { SetState(47); return; } with the a04 SetState	DIFFER(1464v1472) masked -197 +204: dead-master quit laid on the fall-through again (as a01); the if/else is the retail form
+a09	switch cases in numeric order (6 before 7, 11/12 before 14)	DIFFER(1480v1472) masked -71 +78: case source order sets the block order; retail order is 1,2,3,4,5,7,6,8,9,10,14,11,12
+a10	case 5 sound as an unnamed temporary PlaySoundW(CCharString(..))	DIFFER(1468v1472) masked -72 +78: temp slot/dtor placement differs (named block local is the retail form, GOTCHAS 313)
+a11	game-master test spelled out (PGameMaster.Get() && !PGameMaster->IsDead()) instead of IS_THING_ALIVE	RELOCATION_MATCH: same code; kept IS_THING_ALIVE (the Ego_r template)
+a12	final: a05 (no noinline) + a07 (conditional reaction), cleaned comments = $W/src/005eb9e0.cpp	RELOCATION_MATCH

@@ -31,6 +31,9 @@
 // 0x00775C60), the non-const GetThingManager (Ego_r 0x006B1ED0 / FableWin 0x02191640 ?GetThingManager@CTCBase@@IAEAAVCThingManager@@XZ)
 // and GetWorldMap (Ego_r 0x006B2120 / FableWin 0x02191500 ?GetWorldMap@CTCBase@@IAEAAVCWorldMap@@XZ; both called by
 // CTCInventoryMap::OnSerialise 0x00606300). Declarations only: no layout or vtable change.
+// Retail opt-in addition (2026-11-03, row 0x005EB9E0 CTCTavernGame::FrameUpdate): the protected non-virtual GetPlayerManager
+// 0x00686D40 (Ego_r.pdb / FableWin.pdb ?GetPlayerManager@CTCBase@@IAEAAVCPlayerManager@@XZ, the only spelling bound to 0x00686D40;
+// called out of line with ecx = this at 0x005EBA60). A declaration only: no layout or vtable change.
 #ifdef FABLE_RETAIL_CTCBASE
 #include <stddef.h>
 #include "rebuild_abi.h"
@@ -39,6 +42,7 @@ class CCharString;
 class CEnginePrimitivePrepareInfo;
 class CGameDefinitionManager;
 class CPersistContext;
+class CPlayerManager;
 class CTCParamsBase;
 class CThing;
 class CThingManager;
@@ -88,6 +92,7 @@ protected:
     CWorldMap& GetWorldMap();                                            // 0x00686D30 ?GetWorldMap@CTCBase@@IAEAAVCWorldMap@@XZ (Ego_r 0x006B2120)
     const CWorld& PeekWorld() const;                                     // 0x00686A80 ?PeekWorld@CTCBase@@IBEABVCWorld@@XZ (Ego_r 0x006B1E70 + FableWin 0x02190D60; chunk 713)
     const CWorldMap& PeekWorldMap() const;                               // 0x00686D20 ?PeekWorldMap@CTCBase@@IBEABVCWorldMap@@XZ (chunk 714)
+    CPlayerManager& GetPlayerManager();                                  // 0x00686D40 ?GetPlayerManager@CTCBase@@IAEAAVCPlayerManager@@XZ
 public:
     CThing* ParentThing;                                                 // +0x04
     bool    ToBeRemoved;                                                 // +0x08

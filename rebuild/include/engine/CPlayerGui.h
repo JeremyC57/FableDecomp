@@ -3,12 +3,19 @@
 #ifdef FABLE_RETAIL_CPLAYERGUI
 // Retail opt-in (Codex pass 11 consolidation 2): the retail CPlayerGui model (row 0x00667D30 CThingCreatureBase::OnHit); see below.
 #include "engine/CTBaseSingletonNoDefaultAlloc.h"
+#include "engine/CSubtitleRenderer.h"
 class CThing;class C3DVector;
 // TPI0xbf85 original singleton base; native437990 forwards through PDrawCombatMultiplier+150.
-// Complete original members World through DisplayBottomHalfGUI retained opaque.
+// Complete original members World through DisplayBottomHalfGUI retained opaque, except SubtitleRenderer (2026-11-03, row 0x005EB9E0):
+// Ego_r.pdb CSubtitleRenderer SubtitleRenderer at +0x18 (after World, PlayerManager, InputInterface, Component, Graphics), 0x120
+// bytes in retail; FableWin.pdb ?GetSubtitleRenderer@CPlayerGui@@QAEAAVCSubtitleRenderer@@XZ is inline in Ego_r.pdb and retail
+// (CTCTavernGame::FrameUpdate reads the singleton's byte +0xFD = +0x18 + DisplayingText +0xE5 in place, 0x005EBA74).
 class CPlayerGui : public CTBaseSingletonNoDefaultAlloc<CPlayerGui> {
-private: unsigned char _pad_0x04[0x334];
+private: unsigned char _pad_0x04[0x14];                              // +0x04 World .. Graphics
+    CSubtitleRenderer SubtitleRenderer;                                  // +0x18
+    unsigned char _pad_0x138[0x200];                                     // +0x138 PFont .. DisplayBottomHalfGUI
 public: void AddHitByMelee(CThing&,CThing&,const C3DVector&);
+    CSubtitleRenderer& GetSubtitleRenderer() { return SubtitleRenderer; }
 };
 FABLE_STATIC_ASSERT(sizeof(CPlayerGui)==0x338);
 

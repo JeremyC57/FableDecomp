@@ -88,6 +88,7 @@ class CWorldMap;
 
 #ifdef FABLE_RETAIL_PLAYER
 class CThingPlayerCreature;                                     // chunk 709: GetPControlledCreature's return type
+enum EPlayerMode;                                               // MS forward enum (2026-11-03): GetCurrentMode / AddMode
 #endif
 #pragma pack(push, 1)
 class CPlayer {
@@ -105,6 +106,12 @@ public:
     // Retail opt-in (Codex pass 11 consolidation 2): FableWin-only ?GetPlayerHeroLogBook@CPlayer@@QBEAAVCHeroLogBook@@XZ
     // (0x0187F0C0; inline in Ego_r and retail: CTCInventoryMap::OnSerialise 0x00606300 reads PHeroLogBook_Data +0xF8).
     CHeroLogBook& GetPlayerHeroLogBook() const { return *PHeroLogBook_Data; }
+    // Retail opt-in (2026-11-03, row 0x005EB9E0 CTCTavernGame::FrameUpdate): ?GetCurrentMode@CPlayer@@QBE?AW4EPlayerMode@@XZ (Ego_r
+    // 0x00554600; retail 0x00633BE0 `mov eax,[ecx+210h]; mov ecx,[eax+4]; mov eax,[ecx+8]; ret`: PlayerModes.back(), the list node's _M_prev then its data) and
+    // ?AddMode@CPlayer@@QAEXW4EPlayerMode@@_N@Z (Ego_r 0x00554BE0; retail 0x006345C0, `ret 8`). Both in both PDBs; the bound
+    // ...QAEJXZ / ...QAEXJ_N@Z spellings are long-typed stand-ins.
+    EPlayerMode GetCurrentMode() const;                          // 0x00633BE0
+    void AddMode(EPlayerMode mode, bool);                        // 0x006345C0
 #endif // FABLE_RETAIL_PLAYER
     void*                                                        __vftable; // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                                                _pad_0x04[0x4]; // +0x04

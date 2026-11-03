@@ -132,6 +132,12 @@ public:
     const CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }
     const C3DVector& GetPos() const;
     C3DVector GetPhysPos() const;
+#ifdef FABLE_RETAIL_CTHING
+    // Retail opt-in (2026-11-03, row 0x005EB9E0): the public non-virtual SetAsRenderedThisFrame 0x004C7590 (Ego_r.pdb / FableWin.pdb
+    // ?SetAsRenderedThisFrame@CThing@@QAEXK@Z, the only spelling bound to 0x004C7590; `push 4; call` with ecx = the TC's ParentThing
+    // at 0x005EBF44). A declaration only: no layout change.
+    void SetAsRenderedThisFrame(unsigned long);                  // 0x004C7590
+#endif
 protected:
     CWorld& GetWorld();
     const CWorld& PeekWorld() const;

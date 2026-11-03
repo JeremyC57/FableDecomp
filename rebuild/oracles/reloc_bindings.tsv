@@ -35625,3 +35625,11 @@ _optionSafe	013d28d0	0099dcb0
 ??A?$map@JVCShopItem@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJVCShopItem@@@std@@@3@@std@@QAEAAVCShopItem@@ABJ@Z	00778280	00775c60
 ?FindDefaultStockItem@CTCShop@@QBEPBVCShopItem@@J@Z	00772250	00775c60
 ?OnSerialise@CTCBase@@MAEXAAVCPersistContext@@_N@Z	00686960	00775c60
+?GetTextWithNarrator@CTCTavernGame@@QAE?AVCWideString@@K@Z	005eb3a0	005eb9e0
+?PlaySoundW@CTCTavernGame@@IAEKABVCCharString@@@Z	005ea950	005eb9e0
+?PlayerHasBeenHit@CTCTavernGame@@QAE_NXZ	005eb510	005eb9e0
+?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z	005e9b20	005eb9e0
+?SetStateAfterInstructions@CTCTavernGame@@IAEXKVCWideString@@W4ETavernGameStates@1@@Z	005eb180	005eb9e0
+?SetStateAfterOK@CTCTavernGame@@IAEXVCWideString@@0W4ETavernGameStates@1@@Z	005eb080	005eb9e0
+?SetStateAfterYesNo@CTCTavernGame@@IAEXVCWideString@@0W4ETavernGameStates@1@01@Z	005eaf30	005eb9e0
+?SetStateAfterYesNoAlt@CTCTavernGame@@IAEXVCWideString@@0W4ETavernGameStates@1@0101@Z	005eadc0	005eb9e0

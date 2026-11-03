@@ -376488,6 +376488,13 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /Gr'
         PassPattern = '005269f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005eb9e0'
+        Module = 'CTCTavernGame'
+        Source = '00/5e/CTCTavernGame_FrameUpdate_005eb9e0.cpp'
+        TestSource = '00/5e/CTCTavernGame_FrameUpdate_005eb9e0_test.cpp'
+        PassPattern = '005eb9e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

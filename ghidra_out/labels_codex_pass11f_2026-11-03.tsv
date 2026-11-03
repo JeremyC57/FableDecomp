@@ -1,0 +1,10 @@
+address	name	evidence
+005eb9e0	CTCTavernGame::FrameUpdate	Codex pass 11 ipack: FableWin + Ego_r ?FrameUpdate@CTCTavernGame@@UAEXXZ; RELOCATION_MATCH with the packed CIntelligentPointer branch
+005e9b20	CTCTavernGame::SetState	FableWin + Ego_r name sets; body in the 0x005EB9E0 TU grades RELOCATION_MATCH against 0x005E9B20
+005eb080	CTCTavernGame::SetStateAfterOK	FableWin + Ego_r name sets; paired call in 0x005EB9E0
+005ea950	CTCTavernGame::PlaySoundW	FableWin + Ego_r name sets; paired call in 0x005EB9E0
+005e9e70	CTCTavernGame::GetText	FableWin + Ego_r name sets; paired call in 0x005EB9E0
+005eb3a0	CTCTavernGame::GetTextWithNarrator	FableWin + Ego_r name sets; paired call in 0x005EB9E0
+005eaf30	CTCTavernGame::SetStateAfterYesNo	FableWin + Ego_r name sets; paired call in 0x005EB9E0
+005eb180	CTCTavernGame::SetStateAfterInstructions	FableWin + Ego_r name sets; paired call in 0x005EB9E0
+005eb510	CTCTavernGame::PlayerHasBeenHit	FableWin + Ego_r name sets; paired call in 0x005EB9E0

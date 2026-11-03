@@ -67,6 +67,10 @@ namespace NGameText { class CDataBank; }
 class CMainGameComponent : public CGameComponent {
 protected:
     static CMainGameComponent* PMainGameComponent;
+    // ConstantFPS 0x01375550 (2026-11-03, row 0x005EB9E0): the protected static long ?ConstantFPS@CMainGameComponent@@1JA
+    // (NAME_FIXES_QUEUE codex50 / c654 / cg10: Ego_r static member, read only through the inline static accessor
+    // ?GetConstantFPS@CMainGameComponent@@SIJXZ in FableWin.pdb; retail `fild dword ptr [01375550h]` in place).
+    static long ConstantFPS;
     CASoundBank* PSampleBank;                                            // +0x10
     CCountedPointer<NGameText::CDataBank> PTextBank;                     // +0x14
     boost::scoped_ptr<CPlayerManager> PPlayerManager;                    // +0x1C
@@ -88,6 +92,7 @@ protected:
     unsigned char _pad_0x70[0x16178]; // All original members LastInterpolationInfo through DebugNoFramesUnableToRender.
 public:
     static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }
+    static long __fastcall GetConstantFPS() { return ConstantFPS; }   // FableWin.pdb ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
     CMainGameComponent(CGame&,const CMainGameComponentInit&);
     static void FABLE_FASTCALL GenerateMetFilesFromLugFiles();
     virtual ~CMainGameComponent();

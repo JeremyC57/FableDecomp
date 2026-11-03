@@ -67,6 +67,12 @@ public:
     bool              UpdateTimer;                           // +0xe7
     unsigned char     SkipCutsceneTimer[0x1c];               // +0xe8 CFadeInFadeOutBase
     unsigned char     ButtonPulseTimer[0x1c];                // +0x104 CFadeInFadeOutBase
+#ifdef FABLE_RETAIL_CSUBTITLERENDERER
+    // Retail opt-in (2026-11-03, row 0x005EB9E0): FableWin.pdb ?IsDisplayingText@CSubtitleRenderer@@QBE_NXZ, inline in Ego_r.pdb and
+    // retail (CTCTavernGame::FrameUpdate reads the byte +0xFD of the CPlayerGui singleton = SubtitleRenderer +0x18 + DisplayingText
+    // +0xE5 in place). Member functions only: the layout is unchanged on both paths.
+    bool IsDisplayingText() const { return DisplayingText; }
+#endif
 };
 #pragma pack(pop)
 
