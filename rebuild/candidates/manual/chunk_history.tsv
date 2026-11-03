@@ -26385,3 +26385,8 @@ chunk	address	module	name	length
 734	004a6e30	CWorld	Init	2259
 735	0047f58b	CFrontEndManager	AddRegionAndTimeInfo	2296
 735	00597228	CFrontEndManager	AddRegionAndTimeInfo	2296
+735	00570332	CTCInventoryExperience	ConstructAbilityUI	3918
+735	00571280	CTCInventoryExperience	ConstructAbilityUIPC	3962
+735	005729d8	CTCInventoryExperience	AddStatToList	3514
+735	00573792	CTCInventoryExperience	AddStatToListPC	3556
+735	00577ac0	CTCInventoryExperience	vfunc_87	2157
