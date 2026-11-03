@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00430900   WARN RELOC_NAME: ??$TransferMap@KK@CPersistContext@@QAEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@@Z -> 00431242 labelled '_global::PersistTransfer_00431242'
+00430900   WARN RELOC_NAME: ??$Transfer@W4EMusicSetType@@@CPersistContext@@QAEXAAW4EMusicSetType@@@Z -> 0043119e labelled 'CEngineLightingManager::UpdateShadowScene'
+00430900   WARN RELOC_NAME: ??$TransferMap@JVCCharString@@@CPersistContext@@QAEXAAV?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@@Z -> 00431493 labelled '_global::PersistTransfer_00431493'
+00430900   RELOCATION_MATCH PASS   NUISystem::CUIMiscThingsDef::Transfer
+
+WINS: 1
+  00430900 RELOCATION_MATCH NUISystem::CUIMiscThingsDef::?Transfer@CUIMiscThingsDef@NUISystem@@UAEXAAVCPersistContext@@@Z

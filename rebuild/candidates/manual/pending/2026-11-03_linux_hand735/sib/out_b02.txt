@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00520670   RELOCATION_MATCH PASS   CThingManager::LoadHeroStateBinary
+
+WINS: 1
+  00520670 RELOCATION_MATCH CThingManager::?LoadHeroStateBinary@CThingManager@@QAEXAAVCPersistContext@@@Z

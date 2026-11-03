@@ -1,0 +1,16 @@
+rebuild/src/compiled/00/b3/CEngineMap_ReadMapInfoBlock_00b3efa0.cpp
+rebuild/src/compiled/00/a4/C3DAnimation2_InitialiseSharedAnimation_00a4fe60.cpp
+rebuild/src/compiled/00/63/NUISystemCUIDef_Transfer_00631c60.cpp
+rebuild/src/compiled/00/4b/CQuestManager_TransferBoasts_004b05c0.cpp
+rebuild/src/compiled/00/6d/CTCWife_OnSerialise_006d2bd0.cpp
+rebuild/src/compiled/00/9b/CPersistContext_TransferVectorLoadText_009bb110.cpp
+rebuild/src/compiled/00/ae/NParticleEngineCParticleEmitterDatabase_Load_00ae8d50.cpp
+rebuild/src/compiled/00/53/NUISystemCList_ScrollDown_005392fc.cpp
+rebuild/src/compiled/00/53/NUISystemCList_ChangeState_0053a0a1.cpp
+rebuild/src/compiled/00/53/NUISystemCList_ScrollUp_005385ae.cpp
+rebuild/src/compiled/00/52/CThingManager_LoadHeroStateBinary_00520670.cpp
+rebuild/src/compiled/00/52/NThingManagerCEntityRuntimePersistence_SaveToGameStateBinary_00521620.cpp
+rebuild/src/compiled/00/52/CThingManager_RuntimeLoadEntities_00522720.cpp
+rebuild/src/compiled/00/66/CThingCreatureBase_OnHit_00667d30.cpp
+rebuild/src/compiled/00/43/NUISystemCUIMiscThingsDef_Transfer_00430900.cpp
+rebuild/src/compiled/00/cd/NScriptCQSunnyvaleMasterData_OnPersist_00cdc070.cpp

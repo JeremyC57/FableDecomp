@@ -1,0 +1,14 @@
+addr       parity           behav  name
+00573792   WARN RELOC_NAME: ?GetTrainableStatLevel@CTCHeroExperience@@QBEJW4EHeroTrainableStatType@@@Z -> 006d6520 labelled 'CTCInventoryAbilities::GetAbilityLevel'
+00573792   WARN RELOC_NAME: ?CreateFromCharString@CWideString@@SI?AV1@ABVCCharString@@@Z -> 0099b6a0 labelled 'NScript::operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>'
+00573792   WARN RELOC_NAME: ?GetTrainableStatPossibleLevelUpAmount@CTCHeroExperience@@QAEJW4EHeroTrainableStatType@@AAM@Z -> 006d6fa0 labelled 'Experience_GetLevelAndFraction'
+00573792   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+00573792   WARN RELOC_NAME: ?GetStatExperience@CTCHeroExperience@@QBEJW4EHeroExperienceStatCategory@@@Z -> 006d6510 labelled 'CTCInventoryAbilities::GetAbilityLevel'
+00573792   WARN RELOC_NAME: ??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ -> 00429160 labelled '_global::CCountedPointer_Release_00429160'
+00573792   WARN RELOC_NAME: ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ -> 004291de labelled '_global::CCountedPointer_Release_004291de'
+00573792   WARN RELOC_NAME: ??1?$CCountedPointer@VCList@NUISystem@@@@QAE@XZ -> 00429288 labelled '_global::CCountedPointer_Release_00429288'
+00573792   WARN RELOC_NAME: ??1?$CCountedPointer@VCText@NUISystem@@@@QAE@XZ -> 0042925c labelled '_global::CCountedPointer_Release_0042925c'
+00573792   RELOCATION_MATCH PASS   AddStatToListPC
+
+WINS: 1
+  00573792 RELOCATION_MATCH CTCInventoryExperience::?AddStatToListPC@CTCInventoryExperience@@AAEXPAVCComponent@NUISystem@@W4EHeroTrainableStatType@@PAVCList@3@_NPAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z

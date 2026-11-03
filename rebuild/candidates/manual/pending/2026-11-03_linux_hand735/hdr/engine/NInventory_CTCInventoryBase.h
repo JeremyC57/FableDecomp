@@ -1,0 +1,66 @@
+#ifndef FABLE_ENGINE_NINVENTORY_CTCINVENTORYBASE_H
+#define FABLE_ENGINE_NINVENTORY_CTCINVENTORYBASE_H
+#include "engine/CTCBase.h"
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE
+#include "stlport/fable_containers.h"
+namespace NUISystem { class CComponent; }
+#endif
+// Layout: original donor328, native304 after the six vector reductions.
+// Every original data member is retained; unused composite fields keep their
+// original names and complete native storage. Native map secondary base is130.
+class CGraphicDataBank;
+namespace NInventory {
+class CTCInventoryBase : public CTCBase {
+public:
+ long GetBoughtPrice(long) const; // original const member, native005bead5
+ enum EInventorySelectionState { INVENTORY_SELECTION_STATE_CATEGORIES=0,INVENTORY_SELECTION_STATE_ITEMS=1,INVENTORY_SELECTION_STATE_MAX_STATES=2 };
+ enum ESelectionState { SELECTION_STATE_NONE=0,SELECTION_STATE_OFF=1,SELECTION_STATE_ON=2,SELECTION_STATE_SEL=3,SELECTION_STATE_MAX=4 };
+protected:
+ virtual void OnSerialise(CPersistContext&,bool);
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE
+ // Retail opt-in (chunk 735, row 0x00577AC0 CTCInventoryExperience::OpenInventoryInternalPC): Ego_r.pdb
+ // ?OpenInventory@CTCInventoryBase@NInventory@@UAEXXZ (public virtual, out of line at 0x005BD4EA; the row calls it qualified)
+ // and the Components member typed as its PDB vector<NUISystem::CComponent*> (STLport 12 bytes; push_back(const T&) out of
+ // line at 0x00486024, as the landed CTCInventoryTrade::OpenInventoryPC 0x005AE86B also calls it).
+public:
+ virtual void OpenInventory();
+protected:
+ std::vector<NUISystem::CComponent*> Components;
+#else
+ unsigned char Components[12];
+#endif
+ bool FirstRenderFrame;
+ EInventorySelectionState InventorySelectionState;
+ unsigned char Categories[12];
+ long HighlightedItemNumOwned,HighlightedItemMaxOwned;
+ bool CanItemBeQuickAssigned,CanItemBeUsed;
+ ESelectionState MenuArrowHighlightsCategoryUp,MenuArrowHighlightsCategoryDn;
+ ESelectionState MenuArrowHighlightsItemUp,MenuArrowHighlightsItemDn;
+ ESelectionState TriggerStateLeft,TriggerStateRight;
+ double LastRenderTime;
+ bool InventoryOpen;
+ unsigned char _pad_after_InventoryOpen[3];
+ unsigned char OldIntervalDesc[8];
+ bool OldIntervalDescInitialised;
+ unsigned char _pad_after_OldIntervalDescInitialised[3];
+private:
+ unsigned char PDef[4];
+ long GlobalDefIndex,SelectedCategoryIndex;
+ const CGraphicDataBank* GraphicManager;
+ unsigned char SerialisedItems[8],SerialisedSelectedItems[8];
+ bool Dying,CategoryMoving;
+ float CategoryMovement,CategoryMovementDirection;
+ unsigned char MenuDisplayListItem[12],MenuDisplayListCategory[12],ConfiscatedItems[12];
+ CThing* pBuildingThing;
+ unsigned char InventoryAnimRenderBox[16];
+ unsigned char InventoryAnimCurrentRHSet[24],InventoryAnimLastRHSet[24];
+ float InventoryAnimCurrentXRotationAngle,InventoryAnimLastXRotationAngle;
+ float InventoryAnimCurrentYRotationAngle,InventoryAnimLastYRotationAngle;
+ float InventoryAnimCurrentZRotationAngle,InventoryAnimLastZRotationAngle;
+ float InventoryAnimXRotationAngleGain,InventoryAnimYRotationAngleGain,InventoryAnimZRotationAngleGain;
+ bool EnableAnimXAxis,EnableAnimZAxis;
+ long InventoryAnimThingDefIndex,RHSetInvItemDefIndex,ParentMapNumber;
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NInventory::CTCInventoryBase)==0x130);
+#endif

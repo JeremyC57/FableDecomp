@@ -1,0 +1,741 @@
+0047f58b push ebp
+0047f58c lea ebp, [esp - 0x74]
+0047f590 sub esp, 0x190
+0047f596 mov eax, dword ptr [0x139c8a8] ; f=-0.00294341 d=1.55215e-314 dw=0xbb40e64e
+0047f59b push ebx
+0047f59c push esi
+0047f59d push edi
+0047f59e mov esi, ecx
+0047f5a0 push -1
+0047f5a2 mov ebx, 0x122d70e ; f=3392 d=6.50688e+35 dw=0x45540000
+0047f5a7 push ebx
+0047f5a8 lea ecx, [ebp + 0xc]
+0047f5ab mov dword ptr [ebp + 0x70], eax
+0047f5ae mov dword ptr [ebp], esi
+0047f5b1 call 0x99ebf0 ; CCharString::CCharString
+0047f5b6 push -1
+0047f5b8 push ebx
+0047f5b9 lea ecx, [ebp + 4]
+0047f5bc call 0x99ebf0 ; CCharString::CCharString
+0047f5c1 mov edx, dword ptr [ebp + 0x7c]
+0047f5c4 and dword ptr [ebp + 8], 0
+0047f5c8 push 0x1236a74 ; f=9.55096e-39 d=2.44033e-312 dw=0x68002e
+0047f5cd lea ecx, [ebp + 0x1c]
+0047f5d0 call 0x99bf30 ; operator+
+0047f5d5 lea eax, [ebp + 0x1c]
+0047f5d8 push eax
+0047f5d9 mov ecx, esi
+0047f5db mov byte ptr [ebp + 0x5b], 0
+0047f5df call 0x47ed0a ; CTCInGameMenu::VerifySignatureCached
+0047f5e4 test al, al
+0047f5e6 je 0x47f8f4
+0047f5ec lea ecx, [ebp + 0x1c]
+0047f5ef call 0x999230 ; CAFile::PathExists
+0047f5f4 test al, al
+0047f5f6 je 0x47f8f4
+0047f5fc push 2
+0047f5fe push 1
+0047f600 lea eax, [ebp + 0x1c]
+0047f603 push eax
+0047f604 lea ecx, [ebp - 0x20]
+0047f607 call 0x99ad80 ; CDiskFileWin32::CDiskFileWin32
+0047f60c push 0
+0047f60e push 8
+0047f610 lea eax, [ebp + 0x5c]
+0047f613 push eax
+0047f614 lea ecx, [ebp - 0x20]
+0047f617 call 0x99a960 ; CDiskFileWin32::Read
+0047f61c push 8
+0047f61e xor eax, eax
+0047f620 pop ecx
+0047f621 mov edi, 0x122e24c ; "FableSav"
+0047f626 lea esi, [ebp + 0x5c]
+0047f629 repe cmpsb byte ptr [esi], byte ptr es:[edi]
+0047f62b mov dword ptr [ebp + 0x4c], eax
+0047f62e je 0x47f637
+0047f630 sbb esi, esi
+0047f632 sbb esi, -1
+0047f635 jmp 0x47f63a
+0047f637 mov esi, dword ptr [ebp + 0x4c]
+0047f63a xor edi, edi
+0047f63c lea ecx, [ebp - 0x3c]
+0047f63f mov dword ptr [ebp + 0x64], edi
+0047f642 mov dword ptr [ebp + 0x68], edi
+0047f645 mov dword ptr [ebp + 0x6c], edi
+0047f648 call 0x485400 ; CMemoryDataInputStream::CMemoryDataInputStream
+0047f64d lea ecx, [ebp + 0x48]
+0047f650 call 0x99e4b0 ; CCharString::CCharString
+0047f655 lea ecx, [ebp - 0xd8]
+0047f65b call 0x485c90 ; CStringParser::CStringParser
+0047f660 cmp esi, edi
+0047f662 jne 0x47f7d7
+0047f668 push 0x4000
+0047f66d lea eax, [ebp - 0x20]
+0047f670 push eax
+0047f671 lea ecx, [ebp + 0x24]
+0047f674 call 0x994700 ; CFileDataInputStream::CFileDataInputStream
+0047f679 mov eax, dword ptr [ebp + 0x28]
+0047f67c xor ecx, ecx
+0047f67e add eax, 4
+0047f681 cmp ecx, edi
+0047f683 jl 0x47f6ba
+0047f685 jg 0x47f68b
+0047f687 cmp eax, edi
+0047f689 jb 0x47f6ba
+0047f68b cmp ecx, edi
+0047f68d jg 0x47f6ba
+0047f68f jl 0x47f698
+0047f691 cmp eax, 0x7fffffff
+0047f696 ja 0x47f6ba
+0047f698 push 4
+0047f69a pop esi
+0047f69b cmp dword ptr [ebp + 0x38], esi
+0047f69e jl 0x47f6ab
+0047f6a0 add dword ptr [ebp + 0x30], esi
+0047f6a3 sub dword ptr [ebp + 0x38], esi
+0047f6a6 mov dword ptr [ebp + 0x28], eax
+0047f6a9 jmp 0x47f6bd
+0047f6ab push esi
+0047f6ac lea eax, [ebp + 0x20]
+0047f6af push eax
+0047f6b0 lea ecx, [ebp + 0x24]
+0047f6b3 call 0x993ca0 ; CDataInputStream::ReadWithSrcChunkOverflow
+0047f6b8 jmp 0x47f6bd
+0047f6ba push 4
+0047f6bc pop esi
+0047f6bd mov eax, dword ptr [ebp + 0x28]
+0047f6c0 xor ecx, ecx
+0047f6c2 add eax, 4
+0047f6c5 cmp ecx, edi
+0047f6c7 jl 0x47f6f9
+0047f6c9 jg 0x47f6cf
+0047f6cb cmp eax, edi
+0047f6cd jb 0x47f6f9
+0047f6cf cmp ecx, edi
+0047f6d1 jg 0x47f6f9
+0047f6d3 jl 0x47f6dc
+0047f6d5 cmp eax, 0x7fffffff
+0047f6da ja 0x47f6f9
+0047f6dc cmp dword ptr [ebp + 0x38], esi
+0047f6df jl 0x47f6ec
+0047f6e1 add dword ptr [ebp + 0x30], esi
+0047f6e4 sub dword ptr [ebp + 0x38], esi
+0047f6e7 mov dword ptr [ebp + 0x28], eax
+0047f6ea jmp 0x47f6f9
+0047f6ec push esi
+0047f6ed lea eax, [ebp + 0x20]
+0047f6f0 push eax
+0047f6f1 lea ecx, [ebp + 0x24]
+0047f6f4 call 0x993ca0 ; CDataInputStream::ReadWithSrcChunkOverflow
+0047f6f9 mov eax, dword ptr [ebp + 0x28]
+0047f6fc xor ecx, ecx
+0047f6fe add eax, 4
+0047f701 cmp ecx, edi
+0047f703 jl 0x47f743
+0047f705 jg 0x47f70b
+0047f707 cmp eax, edi
+0047f709 jb 0x47f743
+0047f70b cmp ecx, edi
+0047f70d jg 0x47f743
+0047f70f jl 0x47f718
+0047f711 cmp eax, 0x7fffffff
+0047f716 ja 0x47f743
+0047f718 cmp dword ptr [ebp + 0x38], esi
+0047f71b jl 0x47f736
+0047f71d mov esi, dword ptr [ebp + 0x30]
+0047f720 lea edi, [ebp + 0x50]
+0047f723 movsd dword ptr es:[edi], dword ptr [esi]
+0047f724 add dword ptr [ebp + 0x30], 4
+0047f728 sub dword ptr [ebp + 0x38], 4
+0047f72c push 4
+0047f72e mov dword ptr [ebp + 0x28], eax
+0047f731 pop esi
+0047f732 xor edi, edi
+0047f734 jmp 0x47f743
+0047f736 push esi
+0047f737 lea eax, [ebp + 0x50]
+0047f73a push eax
+0047f73b lea ecx, [ebp + 0x24]
+0047f73e call 0x993ca0 ; CDataInputStream::ReadWithSrcChunkOverflow
+0047f743 mov eax, dword ptr [ebp + 0x28]
+0047f746 xor ecx, ecx
+0047f748 add eax, 4
+0047f74b cmp ecx, edi
+0047f74d jl 0x47f77f
+0047f74f jg 0x47f755
+0047f751 cmp eax, edi
+0047f753 jb 0x47f77f
+0047f755 cmp ecx, edi
+0047f757 jg 0x47f77f
+0047f759 jl 0x47f762
+0047f75b cmp eax, 0x7fffffff
+0047f760 ja 0x47f77f
+0047f762 cmp dword ptr [ebp + 0x38], esi
+0047f765 jl 0x47f772
+0047f767 add dword ptr [ebp + 0x30], esi
+0047f76a sub dword ptr [ebp + 0x38], esi
+0047f76d mov dword ptr [ebp + 0x28], eax
+0047f770 jmp 0x47f77f
+0047f772 push esi
+0047f773 lea eax, [ebp + 0x20]
+0047f776 push eax
+0047f777 lea ecx, [ebp + 0x24]
+0047f77a call 0x993ca0 ; CDataInputStream::ReadWithSrcChunkOverflow
+0047f77f push dword ptr [ebp + 0x50]
+0047f782 lea ecx, [ebp + 0x64]
+0047f785 call 0x4861df ; std::vector<EWeaponClass,std::allocator<EWeaponClass>_>::_Umove<EWeaponClass*>
+0047f78a mov ecx, dword ptr [ebp + 0x68]
+0047f78d mov eax, dword ptr [ebp + 0x64]
+0047f790 sub ecx, eax
+0047f792 jne 0x47f797
+0047f794 lea eax, [ebp + 0x64]
+0047f797 push dword ptr [ebp + 0x50]
+0047f79a lea ecx, [ebp + 0x24]
+0047f79d push eax
+0047f79e call 0x996230 ; CDataInputStream::ReadZlibCompressed
+0047f7a3 mov ecx, dword ptr [ebp + 0x68]
+0047f7a6 mov eax, dword ptr [ebp + 0x64]
+0047f7a9 sub ecx, eax
+0047f7ab jne 0x47f7b0
+0047f7ad lea eax, [ebp + 0x64]
+0047f7b0 push dword ptr [ebp + 0x50]
+0047f7b3 lea ecx, [ebp - 0x3c]
+0047f7b6 push eax
+0047f7b7 call 0x994570 ; CMemoryDataInputStream::OpenMemorySource
+0047f7bc push 1
+0047f7be lea eax, [ebp - 0x3c]
+0047f7c1 push eax
+0047f7c2 lea ecx, [ebp - 0x104]
+0047f7c8 call 0x9baa30 ; CPersistContext::CPersistContext
+0047f7cd lea ecx, [ebp + 0x24]
+0047f7d0 call 0x994780 ; _global::Dtor_CBaseBase_00994780
+0047f7d5 jmp 0x47f82c
+0047f7d7 push edi
+0047f7d8 lea ecx, [ebp - 0x20]
+0047f7db call 0x99abf0 ; CDiskFileWin32::SetPosition
+0047f7e0 push -1
+0047f7e2 push edi
+0047f7e3 lea eax, [ebp - 0x20]
+0047f7e6 push eax
+0047f7e7 lea ecx, [ebp + 0x48]
+0047f7ea call 0x99f2e0 ; CCharString::LoadFromFile
+0047f7ef push edi
+0047f7f0 push -1
+0047f7f2 push ebx
+0047f7f3 lea ecx, [ebp + 0x4c]
+0047f7f6 call 0x99ebf0 ; CCharString::CCharString
+0047f7fb push eax
+0047f7fc push edi
+0047f7fd lea eax, [ebp + 0x48]
+0047f800 push eax
+0047f801 lea ecx, [ebp - 0xd8]
+0047f807 call 0x403c20 ; CStringParser::Init
+0047f80c lea ecx, [ebp + 0x4c]
+0047f80f call 0x99eae0 ; CCharString::~CCharString
+0047f814 push edi
+0047f815 push edi
+0047f816 push edi
+0047f817 push 1
+0047f819 push edi
+0047f81a lea eax, [ebp - 0xd8]
+0047f820 push eax
+0047f821 lea ecx, [ebp - 0x104]
+0047f827 call 0x9ba9d0 ; CPersistContext::Init
+0047f82c lea ecx, [ebp - 0xb0]
+0047f832 call 0x485cd2 ; CPersistContextReadSection::CPersistContextReadSection
+0047f837 push -1
+0047f839 push 0x1236cb8 ; "HEADER"
+0047f83e lea ecx, [ebp + 0x50]
+0047f841 call 0x99ebf0 ; CCharString::CCharString
+0047f846 lea eax, [ebp + 0x50]
+0047f849 push eax
+0047f84a lea eax, [ebp - 0xb0]
+0047f850 push eax
+0047f851 lea ecx, [ebp - 0x104]
+0047f857 call 0x9bae70 ; CPersistContext::ReadSection
+0047f85c lea ecx, [ebp + 0x50]
+0047f85f mov bl, al
+0047f861 call 0x99eae0 ; CCharString::~CCharString
+0047f866 test bl, bl
+0047f868 je 0x47f8a9
+0047f86a lea ecx, [ebp + 0x50]
+0047f86d call 0x99e4b0 ; CCharString::CCharString
+0047f872 lea eax, [ebp + 0x50]
+0047f875 push eax
+0047f876 push 0x1236cac ; "WorldName"
+0047f87b lea ecx, [ebp - 0xb0]
+0047f881 call 0x411010 ; CPersistContext::Transfer
+0047f886 lea eax, [ebp + 0x4c]
+0047f889 push eax
+0047f88a lea eax, [ebp + 8]
+0047f88d push eax
+0047f88e push 0x1236ca0 ; "WorldFrame"
+0047f893 lea ecx, [ebp - 0xb0]
+0047f899 mov dword ptr [ebp + 0x4c], edi
+0047f89c call 0x410be0 ; CPersistContext::Transfer<long>
+0047f8a1 lea ecx, [ebp + 0x50]
+0047f8a4 call 0x99eae0 ; CCharString::~CCharString
+0047f8a9 lea ecx, [ebp - 0x20]
+0047f8ac mov byte ptr [ebp + 0x5b], 1
+0047f8b0 call 0x99a920 ; CDiskFileWin32::Close
+0047f8b5 lea ecx, [ebp - 0xb0]
+0047f8bb call 0x485cf1 ; CPersistContextReadSection::~CPersistContextReadSection
+0047f8c0 lea ecx, [ebp - 0xd8]
+0047f8c6 call 0x4047a0 ; CStringParser::~CStringParser
+0047f8cb lea ecx, [ebp + 0x48]
+0047f8ce call 0x99eae0 ; CCharString::~CCharString
+0047f8d3 lea ecx, [ebp - 0x3c]
+0047f8d6 call 0x993b10 ; CDataStream::~CDataStream
+0047f8db cmp dword ptr [ebp + 0x64], edi
+0047f8de je 0x47f8e9
+0047f8e0 push dword ptr [ebp + 0x64]
+0047f8e3 call 0xbfea14 ; MSVCR71.DLL::free
+0047f8e8 pop ecx
+0047f8e9 lea ecx, [ebp - 0x20]
+0047f8ec call 0x401630 ; CDiskFileWin32::~CDiskFileWin32
+0047f8f1 mov esi, dword ptr [ebp]
+0047f8f4 push dword ptr [ebp + 0x7c]
+0047f8f7 mov ecx, esi
+0047f8f9 call 0x47ed0a ; CTCInGameMenu::VerifySignatureCached
+0047f8fe test al, al
+0047f900 je 0x47fe2f
+0047f906 mov ecx, dword ptr [ebp + 0x7c]
+0047f909 call 0x999230 ; CAFile::PathExists
+0047f90e test al, al
+0047f910 je 0x47fe2f
+0047f916 push 2
+0047f918 push 1
+0047f91a push dword ptr [ebp + 0x7c]
+0047f91d lea ecx, [ebp - 0x20]
+0047f920 call 0x99ad80 ; CDiskFileWin32::CDiskFileWin32
+0047f925 push 0
+0047f927 push 8
+0047f929 lea eax, [ebp + 0x68]
+0047f92c push eax
+0047f92d lea ecx, [ebp - 0x20]
+0047f930 call 0x99a960 ; CDiskFileWin32::Read
+0047f935 push 8
+0047f937 pop ecx
+0047f938 mov edi, 0x122e24c ; "FableSav"
+0047f93d lea esi, [ebp + 0x68]
+0047f940 xor ebx, ebx
+0047f942 repe cmpsb byte ptr [esi], byte ptr es:[edi]
+0047f944 je 0x47f94b
+0047f946 sbb ebx, ebx
+0047f948 sbb ebx, -1
+0047f94b xor edi, edi
+0047f94d lea ecx, [ebp - 0x3c]
+0047f950 mov dword ptr [ebp + 0x10], edi
+0047f953 mov dword ptr [ebp + 0x14], edi
+0047f956 mov dword ptr [ebp + 0x18], edi
+0047f959 call 0x485400 ; CMemoryDataInputStream::CMemoryDataInputStream
+0047f95e lea ecx, [ebp + 0x48]
+0047f961 call 0x99e4b0 ; CCharString::CCharString
+0047f966 lea ecx, [ebp - 0xd8]
+0047f96c call 0x485c90 ; CStringParser::CStringParser
+0047f971 cmp ebx, edi
+0047f973 jne 0x47fae8
+0047f979 push 0x4000
+0047f97e lea eax, [ebp - 0x20]
+0047f981 push eax
+0047f982 lea ecx, [ebp + 0x24]
+0047f985 call 0x994700 ; CFileDataInputStream::CFileDataInputStream
+0047f98a mov eax, dword ptr [ebp + 0x28]
+0047f98d xor ecx, ecx
+0047f98f add eax, 4
+0047f992 cmp ecx, edi
+0047f994 jl 0x47f9cb
+0047f996 jg 0x47f99c
+0047f998 cmp eax, edi
+0047f99a jb 0x47f9cb
+0047f99c cmp ecx, edi
+0047f99e jg 0x47f9cb
+0047f9a0 jl 0x47f9a9
+0047f9a2 cmp eax, 0x7fffffff
+0047f9a7 ja 0x47f9cb
+0047f9a9 push 4
+0047f9ab pop esi
+0047f9ac cmp dword ptr [ebp + 0x38], esi
+0047f9af jl 0x47f9bc
+0047f9b1 add dword ptr [ebp + 0x30], esi
+0047f9b4 sub dword ptr [ebp + 0x38], esi
+0047f9b7 mov dword ptr [ebp + 0x28], eax
+0047f9ba jmp 0x47f9ce
+0047f9bc push esi
+0047f9bd lea eax, [ebp + 0x7c]
+0047f9c0 push eax
+0047f9c1 lea ecx, [ebp + 0x24]
+0047f9c4 call 0x993ca0 ; CDataInputStream::ReadWithSrcChunkOverflow
+0047f9c9 jmp 0x47f9ce
+0047f9cb push 4
+0047f9cd pop esi
+0047f9ce mov eax, dword ptr [ebp + 0x28]
+0047f9d1 xor ecx, ecx
+0047f9d3 add eax, 4
+0047f9d6 cmp ecx, edi
+0047f9d8 jl 0x47fa0a
+0047f9da jg 0x47f9e0
+0047f9dc cmp eax, edi
+0047f9de jb 0x47fa0a
+0047f9e0 cmp ecx, edi
+0047f9e2 jg 0x47fa0a
+0047f9e4 jl 0x47f9ed
+0047f9e6 cmp eax, 0x7fffffff
+0047f9eb ja 0x47fa0a
+0047f9ed cmp dword ptr [ebp + 0x38], esi
+0047f9f0 jl 0x47f9fd
+0047f9f2 add dword ptr [ebp + 0x30], esi
+0047f9f5 sub dword ptr [ebp + 0x38], esi
+0047f9f8 mov dword ptr [ebp + 0x28], eax
+0047f9fb jmp 0x47fa0a
+0047f9fd push esi
+0047f9fe lea eax, [ebp + 0x7c]
+0047fa01 push eax
+0047fa02 lea ecx, [ebp + 0x24]
+0047fa05 call 0x993ca0 ; CDataInputStream::ReadWithSrcChunkOverflow
+0047fa0a mov eax, dword ptr [ebp + 0x28]
+0047fa0d xor ecx, ecx
+0047fa0f add eax, 4
+0047fa12 cmp ecx, edi
+0047fa14 jl 0x47fa54
+0047fa16 jg 0x47fa1c
+0047fa18 cmp eax, edi
+0047fa1a jb 0x47fa54
+0047fa1c cmp ecx, edi
+0047fa1e jg 0x47fa54
+0047fa20 jl 0x47fa29
+0047fa22 cmp eax, 0x7fffffff
+0047fa27 ja 0x47fa54
+0047fa29 cmp dword ptr [ebp + 0x38], esi
+0047fa2c jl 0x47fa47
+0047fa2e mov esi, dword ptr [ebp + 0x30]
+0047fa31 lea edi, [ebp + 0x7c]
+0047fa34 movsd dword ptr es:[edi], dword ptr [esi]
+0047fa35 add dword ptr [ebp + 0x30], 4
+0047fa39 sub dword ptr [ebp + 0x38], 4
+0047fa3d push 4
+0047fa3f mov dword ptr [ebp + 0x28], eax
+0047fa42 xor edi, edi
+0047fa44 pop esi
+0047fa45 jmp 0x47fa54
+0047fa47 push esi
+0047fa48 lea eax, [ebp + 0x7c]
+0047fa4b push eax
+0047fa4c lea ecx, [ebp + 0x24]
+0047fa4f call 0x993ca0 ; CDataInputStream::ReadWithSrcChunkOverflow
+0047fa54 mov eax, dword ptr [ebp + 0x28]
+0047fa57 xor ecx, ecx
+0047fa59 add eax, 4
+0047fa5c cmp ecx, edi
+0047fa5e jl 0x47fa90
+0047fa60 jg 0x47fa66
+0047fa62 cmp eax, edi
+0047fa64 jb 0x47fa90
+0047fa66 cmp ecx, edi
+0047fa68 jg 0x47fa90
+0047fa6a jl 0x47fa73
+0047fa6c cmp eax, 0x7fffffff
+0047fa71 ja 0x47fa90
+0047fa73 cmp dword ptr [ebp + 0x38], esi
+0047fa76 jl 0x47fa83
+0047fa78 add dword ptr [ebp + 0x30], esi
+0047fa7b sub dword ptr [ebp + 0x38], esi
+0047fa7e mov dword ptr [ebp + 0x28], eax
+0047fa81 jmp 0x47fa90
+0047fa83 push esi
+0047fa84 lea eax, [ebp + 0x20]
+0047fa87 push eax
+0047fa88 lea ecx, [ebp + 0x24]
+0047fa8b call 0x993ca0 ; CDataInputStream::ReadWithSrcChunkOverflow
+0047fa90 push dword ptr [ebp + 0x7c]
+0047fa93 lea ecx, [ebp + 0x10]
+0047fa96 call 0x4861df ; std::vector<EWeaponClass,std::allocator<EWeaponClass>_>::_Umove<EWeaponClass*>
+0047fa9b mov ecx, dword ptr [ebp + 0x14]
+0047fa9e mov eax, dword ptr [ebp + 0x10]
+0047faa1 sub ecx, eax
+0047faa3 jne 0x47faa8
+0047faa5 lea eax, [ebp + 0x10]
+0047faa8 push dword ptr [ebp + 0x7c]
+0047faab lea ecx, [ebp + 0x24]
+0047faae push eax
+0047faaf call 0x996230 ; CDataInputStream::ReadZlibCompressed
+0047fab4 mov ecx, dword ptr [ebp + 0x14]
+0047fab7 mov eax, dword ptr [ebp + 0x10]
+0047faba sub ecx, eax
+0047fabc jne 0x47fac1
+0047fabe lea eax, [ebp + 0x10]
+0047fac1 push dword ptr [ebp + 0x7c]
+0047fac4 lea ecx, [ebp - 0x3c]
+0047fac7 push eax
+0047fac8 call 0x994570 ; CMemoryDataInputStream::OpenMemorySource
+0047facd push 1
+0047facf lea eax, [ebp - 0x3c]
+0047fad2 push eax
+0047fad3 lea ecx, [ebp - 0x104]
+0047fad9 call 0x9baa30 ; CPersistContext::CPersistContext
+0047fade lea ecx, [ebp + 0x24]
+0047fae1 call 0x994780 ; _global::Dtor_CBaseBase_00994780
+0047fae6 jmp 0x47fb41
+0047fae8 push edi
+0047fae9 lea ecx, [ebp - 0x20]
+0047faec call 0x99abf0 ; CDiskFileWin32::SetPosition
+0047faf1 push -1
+0047faf3 push edi
+0047faf4 lea eax, [ebp - 0x20]
+0047faf7 push eax
+0047faf8 lea ecx, [ebp + 0x48]
+0047fafb call 0x99f2e0 ; CCharString::LoadFromFile
+0047fb00 push edi
+0047fb01 push -1
+0047fb03 push 0x122d70e ; f=3392 d=6.50688e+35 dw=0x45540000
+0047fb08 lea ecx, [ebp + 0x7c]
+0047fb0b call 0x99ebf0 ; CCharString::CCharString
+0047fb10 push eax
+0047fb11 push edi
+0047fb12 lea eax, [ebp + 0x48]
+0047fb15 push eax
+0047fb16 lea ecx, [ebp - 0xd8]
+0047fb1c call 0x403c20 ; CStringParser::Init
+0047fb21 lea ecx, [ebp + 0x7c]
+0047fb24 call 0x99eae0 ; CCharString::~CCharString
+0047fb29 push edi
+0047fb2a push edi
+0047fb2b push edi
+0047fb2c push 1
+0047fb2e push edi
+0047fb2f lea eax, [ebp - 0xd8]
+0047fb35 push eax
+0047fb36 lea ecx, [ebp - 0x104]
+0047fb3c call 0x9ba9d0 ; CPersistContext::Init
+0047fb41 lea ecx, [ebp - 0xb0]
+0047fb47 call 0x485cd2 ; CPersistContextReadSection::CPersistContextReadSection
+0047fb4c push -1
+0047fb4e push 0x1236cb8 ; "HEADER"
+0047fb53 lea ecx, [ebp + 0x7c]
+0047fb56 call 0x99ebf0 ; CCharString::CCharString
+0047fb5b lea eax, [ebp + 0x7c]
+0047fb5e push eax
+0047fb5f lea eax, [ebp - 0xb0]
+0047fb65 push eax
+0047fb66 lea ecx, [ebp - 0x104]
+0047fb6c call 0x9bae70 ; CPersistContext::ReadSection
+0047fb71 lea ecx, [ebp + 0x7c]
+0047fb74 mov bl, al
+0047fb76 call 0x99eae0 ; CCharString::~CCharString
+0047fb7b test bl, bl
+0047fb7d je 0x47fde8
+0047fb83 lea ecx, [ebp + 0x4c]
+0047fb86 call 0x99e4b0 ; CCharString::CCharString
+0047fb8b lea ecx, [ebp - 4]
+0047fb8e call 0x99aed0 ; CWideString::CWideString
+0047fb93 lea eax, [ebp + 0x4c]
+0047fb96 push eax
+0047fb97 push 0x1236cac ; "WorldName"
+0047fb9c lea ecx, [ebp - 0xb0]
+0047fba2 call 0x411010 ; CPersistContext::Transfer
+0047fba7 cmp byte ptr [ebp + 0x5b], 0
+0047fbab lea eax, [ebp + 0x54]
+0047fbae push eax
+0047fbaf lea ecx, [ebp - 0xb0]
+0047fbb5 mov dword ptr [ebp + 0x54], edi
+0047fbb8 lea eax, [ebp + 8]
+0047fbbb je 0x47fbc0
+0047fbbd lea eax, [ebp + 0x50]
+0047fbc0 push eax
+0047fbc1 push 0x1236ca0 ; "WorldFrame"
+0047fbc6 call 0x410be0 ; CPersistContext::Transfer<long>
+0047fbcb lea eax, [ebp + 0x5b]
+0047fbce push eax
+0047fbcf lea eax, [ebp + 0x7f]
+0047fbd2 push eax
+0047fbd3 push 0x1236c8c ; "TeleportingEnabled"
+0047fbd8 lea ecx, [ebp - 0xb0]
+0047fbde mov byte ptr [ebp + 0x5b], 0
+0047fbe2 call 0x4045c0 ; CPersistContext::Transfer<bool>
+0047fbe7 lea eax, [ebp + 0x5b]
+0047fbea push eax
+0047fbeb lea eax, [ebp + 0x7f]
+0047fbee push eax
+0047fbef push 0x1236c7c ; "SavingEnabled"
+0047fbf4 lea ecx, [ebp - 0xb0]
+0047fbfa mov byte ptr [ebp + 0x5b], 0
+0047fbfe call 0x4045c0 ; CPersistContext::Transfer<bool>
+0047fc03 lea eax, [ebp + 0x5b]
+0047fc06 push eax
+0047fc07 lea eax, [ebp + 0x7f]
+0047fc0a push eax
+0047fc0b push 0x1236c60 ; "ExperienceSpendingEnabled"
+0047fc10 lea ecx, [ebp - 0xb0]
+0047fc16 mov byte ptr [ebp + 0x5b], 0
+0047fc1a call 0x4045c0 ; CPersistContext::Transfer<bool>
+0047fc1f lea eax, [ebp + 0x5b]
+0047fc22 push eax
+0047fc23 lea eax, [ebp + 0x7f]
+0047fc26 push eax
+0047fc27 push 0x1236c44 ; "CreatureGenerationEnabled"
+0047fc2c lea ecx, [ebp - 0xb0]
+0047fc32 mov byte ptr [ebp + 0x5b], 0
+0047fc36 call 0x4045c0 ; CPersistContext::Transfer<bool>
+0047fc3b lea eax, [ebp + 0x54]
+0047fc3e push eax
+0047fc3f lea eax, [ebp + 0x60]
+0047fc42 push eax
+0047fc43 push 0x1236c20 ; "CreatureGenerationDisabledGroups"
+0047fc48 lea ecx, [ebp - 0xb0]
+0047fc4e mov dword ptr [ebp + 0x54], edi
+0047fc51 call 0x4106f0 ; CPersistContext::Transfer<unsigned long>
+0047fc56 lea eax, [ebp + 0x5b]
+0047fc59 push eax
+0047fc5a lea eax, [ebp + 0x7f]
+0047fc5d push eax
+0047fc5e push 0x1236c0c ; "HeroSleepingEnabled"
+0047fc63 lea ecx, [ebp - 0xb0]
+0047fc69 mov byte ptr [ebp + 0x5b], 0
+0047fc6d call 0x4045c0 ; CPersistContext::Transfer<bool>
+0047fc72 lea eax, [ebp + 0x5b]
+0047fc75 push eax
+0047fc76 lea eax, [ebp + 0x7f]
+0047fc79 push eax
+0047fc7a push 0x1236bec ; "MapTableShowQuestCardsOnUsed"
+0047fc7f lea ecx, [ebp - 0xb0]
+0047fc85 mov byte ptr [ebp + 0x5b], 0
+0047fc89 call 0x4045c0 ; CPersistContext::Transfer<bool>
+0047fc8e lea eax, [ebp + 0x5b]
+0047fc91 push eax
+0047fc92 lea eax, [ebp + 0x7f]
+0047fc95 push eax
+0047fc96 push 0x1236bdc ; "MiniMapEnabled"
+0047fc9b lea ecx, [ebp - 0xb0]
+0047fca1 mov byte ptr [ebp + 0x5b], 0
+0047fca5 call 0x4045c0 ; CPersistContext::Transfer<bool>
+0047fcaa lea eax, [ebp + 0x5b]
+0047fcad push eax
+0047fcae lea eax, [ebp + 0x7f]
+0047fcb1 push eax
+0047fcb2 push 0x1236bc0 ; "MiniMapActiveBeforeDisabled"
+0047fcb7 lea ecx, [ebp - 0xb0]
+0047fcbd mov byte ptr [ebp + 0x5b], 0
+0047fcc1 call 0x4045c0 ; CPersistContext::Transfer<bool>
+0047fcc6 lea eax, [ebp + 0x5b]
+0047fcc9 push eax
+0047fcca lea eax, [ebp + 0x7f]
+0047fccd push eax
+0047fcce mov byte ptr [ebp + 0x5b], 0
+0047fcd2 push 0x1236ba4 ; "GuildMasterMessagesEnabled"
+0047fcd7 lea ecx, [ebp - 0xb0]
+0047fcdd call 0x4045c0 ; CPersistContext::Transfer<bool>
+0047fce2 lea eax, [ebp + 0x5b]
+0047fce5 push eax
+0047fce6 lea eax, [ebp + 0x7f]
+0047fce9 push eax
+0047fcea push 0x1236b80 ; "SummonerDeathExplosionAffectsHero"
+0047fcef lea ecx, [ebp - 0xb0]
+0047fcf5 mov byte ptr [ebp + 0x5b], 0
+0047fcf9 call 0x4045c0 ; CPersistContext::Transfer<bool>
+0047fcfe lea eax, [ebp + 0x54]
+0047fd01 push eax
+0047fd02 lea eax, [ebp + 0x50]
+0047fd05 push eax
+0047fd06 push 0x1236b6c ; "MostRecentSaveType"
+0047fd0b lea ecx, [ebp - 0xb0]
+0047fd11 mov dword ptr [ebp + 0x54], edi
+0047fd14 call 0x410be0 ; CPersistContext::Transfer<long>
+0047fd19 lea eax, [ebp + 0x54]
+0047fd1c push eax
+0047fd1d lea eax, [ebp + 0x50]
+0047fd20 push eax
+0047fd21 push 0x1236b48 ; "MostRecentSaveTypeBeforeManualSave"
+0047fd26 lea ecx, [ebp - 0xb0]
+0047fd2c mov dword ptr [ebp + 0x54], edi
+0047fd2f call 0x410be0 ; CPersistContext::Transfer<long>
+0047fd34 lea eax, [ebp - 4]
+0047fd37 push eax
+0047fd38 push 0x1236b2c ; "MostRecentManualSaveName"
+0047fd3d lea ecx, [ebp - 0xb0]
+0047fd43 call 0x411060 ; CPersistContext::Transfer
+0047fd48 lea eax, [ebp - 0x110]
+0047fd4e push eax
+0047fd4f push 0x1236b18 ; "SaveGameMarkerPos"
+0047fd54 lea ecx, [ebp - 0xb0]
+0047fd5a call 0x485b44 ; CPersistContext::Transfer
+0047fd5f fldz 
+0047fd61 lea eax, [ebp + 0x54]
+0047fd64 fstp dword ptr [ebp + 0x54]
+0047fd67 push eax
+0047fd68 lea eax, [ebp + 0x20]
+0047fd6b push eax
+0047fd6c push 0x1236b00 ; "SaveGameMarkerAngleXY"
+0047fd71 lea ecx, [ebp - 0xb0]
+0047fd77 call 0x410620 ; CPersistContext::Transfer<float>
+0047fd7c lea eax, [ebp - 0x11c]
+0047fd82 push eax
+0047fd83 push 0x1236aec ; "GuildSealRecallPos"
+0047fd88 lea ecx, [ebp - 0xb0]
+0047fd8e call 0x485b44 ; CPersistContext::Transfer
+0047fd93 fldz 
+0047fd95 lea eax, [ebp + 0x54]
+0047fd98 fstp dword ptr [ebp + 0x54]
+0047fd9b push eax
+0047fd9c lea eax, [ebp + 0x20]
+0047fd9f push eax
+0047fda0 push 0x1236ad4 ; "GuildSealRecallAngleXY"
+0047fda5 lea ecx, [ebp - 0xb0]
+0047fdab call 0x410620 ; CPersistContext::Transfer<float>
+0047fdb0 lea eax, [ebp + 0xc]
+0047fdb3 push eax
+0047fdb4 push 0x1236ac0 ; "CurrentRegionName"
+0047fdb9 lea ecx, [ebp - 0xb0]
+0047fdbf call 0x411010 ; CPersistContext::Transfer
+0047fdc4 lea eax, [ebp + 4]
+0047fdc7 push eax
+0047fdc8 push 0x1236aa0 ; "CurrentRegionMinimapGraphicName"
+0047fdcd lea ecx, [ebp - 0xb0]
+0047fdd3 call 0x411010 ; CPersistContext::Transfer
+0047fdd8 lea ecx, [ebp - 4]
+0047fddb call 0x99b510 ; CWideString::~CWideString
+0047fde0 lea ecx, [ebp + 0x4c]
+0047fde3 call 0x99eae0 ; CCharString::~CCharString
+0047fde8 lea ecx, [ebp - 0x20]
+0047fdeb call 0x99a920 ; CDiskFileWin32::Close
+0047fdf0 lea ecx, [ebp - 0xb0]
+0047fdf6 call 0x485cf1 ; CPersistContextReadSection::~CPersistContextReadSection
+0047fdfb lea ecx, [ebp - 0xd8]
+0047fe01 call 0x4047a0 ; CStringParser::~CStringParser
+0047fe06 lea ecx, [ebp + 0x48]
+0047fe09 call 0x99eae0 ; CCharString::~CCharString
+0047fe0e lea ecx, [ebp - 0x3c]
+0047fe11 call 0x993b10 ; CDataStream::~CDataStream
+0047fe16 cmp dword ptr [ebp + 0x10], edi
+0047fe19 je 0x47fe24
+0047fe1b push dword ptr [ebp + 0x10]
+0047fe1e call 0xbfea14 ; MSVCR71.DLL::free
+0047fe23 pop ecx
+0047fe24 lea ecx, [ebp - 0x20]
+0047fe27 call 0x401630 ; CDiskFileWin32::~CDiskFileWin32
+0047fe2c mov esi, dword ptr [ebp]
+0047fe2f lea eax, [ebp + 0xc]
+0047fe32 push eax
+0047fe33 lea ecx, [esi + 0x78]
+0047fe36 call 0x44bff0 ; std::vector::push_back
+0047fe3b lea eax, [ebp + 4]
+0047fe3e push eax
+0047fe3f lea ecx, [esi + 0x84]
+0047fe45 call 0x44bff0 ; std::vector::push_back
+0047fe4a lea eax, [ebp + 8]
+0047fe4d push eax
+0047fe4e lea ecx, [esi + 0x90]
+0047fe54 call 0x485ff3 ; std::vector<long, std::allocator<long>>::push_back
+0047fe59 lea ecx, [ebp + 0x1c]
+0047fe5c call 0x99b510 ; CWideString::~CWideString
+0047fe61 lea ecx, [ebp + 4]
+0047fe64 call 0x99eae0 ; CCharString::~CCharString
+0047fe69 lea ecx, [ebp + 0xc]
+0047fe6c call 0x99eae0 ; CCharString::~CCharString
+0047fe71 mov ecx, dword ptr [ebp + 0x70]
+0047fe74 pop edi
+0047fe75 pop esi
+0047fe76 pop ebx
+0047fe77 call 0xbfe9f9 ; __security_check_cookie
+0047fe7c add ebp, 0x74
+0047fe7f leave 
+0047fe80 ret 4

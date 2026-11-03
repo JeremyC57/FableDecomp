@@ -1,0 +1,43 @@
+address	name	evidence
+0x0047F58B	CTCInGameMenu::AddRegionAndTimeInfo	Ego_r.pdb; matched row
+0x00597228	NUISystem::CFrontEndManager::AddRegionAndTimeInfo	Ego_r.pdb; matched row
+0x00570332	CTCInventoryExperience::AddAbilityToList	Ego_r.pdb; ability twin of 0x005729D8
+0x00571280	CTCInventoryExperience::AddAbilityToListPC	Ego_r.pdb; PC twin
+0x00577AC0	CTCInventoryExperience::OpenInventoryInternalPC	Ego_r.pdb virtual (vfunc_87)
+0x0056FF3D	CTCInventoryExperience::GetTCHeroExperience	Ego_r.pdb private; landed
+0x005759BF	CTCInventoryExperience::ConstructCategoryStrengthPC	FableWin/Ego_r ?ConstructCategoryStrengthPC@CTCInventoryExperience@@AAEXPAVCList@NUISystem@@@Z; manifest
+0x006D6520	CTCHeroExperience::GetTrainableStatLevel	Ego_r.pdb; stat rows
+0x006D6510	CTCHeroExperience::GetStatExperience	Ego_r.pdb + binding
+0x006D6FA0	CTCHeroExperience::GetTrainableStatPossibleLevelUpAmount	Ego_r.pdb; stat rows
+0x006D7B80	CTCHeroExperience::GetAbilityPossibleLevelUpAmount	Ego_r.pdb; ability rows
+0x0099B6A0	CWideString::CreateFromCharString	Ego_r.pdb static; (dis annotation shows a propagated NScript::operator&& label)
+0x009BAA30	CPersistContext::Init(CMemoryDataInputStream&,bool)	Ego_r.pdb
+0x009BAE70	CPersistContext::ReadSection	Ego_r.pdb; AddRegionAndTimeInfo twins
+0x004861DF	std::vector<unsigned char>::resize	STLport; twins
+0x00994780	CFileDataInputStream::~CFileDataInputStream	Ego_r.pdb; twins
+0x00429160	CCountedPointer<NUISystem::CAction>::~CCountedPointer	stat rows
+0x004291DE	CCountedPointer<NUISystem::CComponent>::~CCountedPointer	stat rows
+0x00429288	CCountedPointer<NUISystem::CList>::~CCountedPointer	stat rows
+0x0042925C	CCountedPointer<NUISystem::CText>::~CCountedPointer	stat rows
+0x0042ABCA	std::list<NUISystem::CComponent*>::~list	CDeletion AssociatedParents dtor
+0x0042920A	CCountedPointer<NUISystem::CComponent>::ShareData	stat rows
+0x00429486	CCountedPointer<NUISystem::CList>::ShareData	stat rows
+0x00578C2A	CCountedPointer<NUISystem::CComponentContainer>::ShareData	ability rows (SetStaticCast)
+0x00578A8D	CCountedPointer<NUISystem::CComponentContainer>::~CCountedPointer	ability rows
+0x00579114	std::map<EHeroTrainableStatType,SExpSpendUndo>::_M_find	UndoableStatBuys find
+0x0057914C	std::map<EHeroAbility,SExpSpendUndo>::_M_find	UndoableAbilityBuys find
+0x00579958	std::map<EHeroTrainableStatType,NUISystem::CComponent*>::insert_unique	UpgradableStats
+0x005EDE7F	CTCInventoryAbilities::GetAbilityGraphicIndex	Ego_r.pdb QBE
+0x00437CD0	CPlayerGui::GetPHeroInfoScreensManager	see NAME_FIXES
+0x0066E799	NHeroInformationScreens::CManager::SelectScreenOfType	CANDIDATE (one PDB name + signature fit: ret 4 thiscall storing its EScreenType at +0x28, called with INVENTORY_EXPERIENCE_SCREEN); landed label CObservable::AddExclusiveObserver does not fit; needs a second source before relabelling
+0x0041CC14	NUISystem::CUIScreenUnitConverter::GetBackBufferWidth	see NAME_FIXES
+0x0041CC2B	NUISystem::CUIScreenUnitConverter::GetBackBufferHeight	see NAME_FIXES
+0x0042B646	std::list<NUISystem::CActionParam*>::push_back	see NAME_FIXES
+0x0056E545	CSliderAnimator::CSliderAnimator	see NAME_FIXES
+0x0057955A	std::list<CSliderAnimator>::push_back	see NAME_FIXES
+0x0057953E	std::list<CSliderAnimator>::push_front	FableWin.pdb
+0x00578FCE	std::list<CSliderAnimator>::clear	see NAME_FIXES
+0x005798C8	std::vector<NUISystem::CComponent*>::operator=	STLport _vector.c; ExpSliders assignment
+0x00579EA3	std::map<EHeroTrainableStatType,SExpSpendUndo>::clear	see NAME_FIXES
+0x00579ECC	std::map<EHeroAbility,SExpSpendUndo>::clear	see NAME_FIXES
+0x0042D131	std::map<CCharString,unsigned long>::operator[]	TutorialSoundHandles (+0x134)

@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00522720   RELOCATION_MATCH PASS   CThingManager::RuntimeLoadEntities
+
+WINS: 1
+  00522720 RELOCATION_MATCH CThingManager::?RuntimeLoadEntities@CThingManager@@QAEXJABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@3@@Z

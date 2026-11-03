@@ -1,0 +1,5 @@
+addr       parity           behav  name
+0053a0a1   RELOCATION_MATCH PASS   NUISystem::CList::ChangeState
+
+WINS: 1
+  0053a0a1 RELOCATION_MATCH NUISystem::CList::?ChangeState@CList@NUISystem@@UAEXK@Z

@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00631c60   WARN RELOC_NAME: ??$TransferVector@J@CPersistContext@@QAEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z -> 00466a47 labelled 'CPersistContext::TransferBinary_00466a47'
+00631c60   WARN RELOC_NAME: ??$TransferVector@K@CPersistContext@@QAEXAAV?$vector@KV?$allocator@K@std@@@std@@@Z -> 00464841 labelled 'CPersistContext::TransferBinary_00464841'
+00631c60   WARN RELOC_NAME: ??$TransferMap@KK@CPersistContext@@QAEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@@Z -> 00431242 labelled '_global::PersistTransfer_00431242'
+00631c60   WARN RELOC_NAME: ??$TransferVector@M@CPersistContext@@QAEXAAV?$vector@MV?$allocator@M@std@@@std@@@Z -> 00464cbf labelled 'CPersistContext::TransferBinary_00464cbf'
+00631c60   RELOCATION_MATCH PASS   NUISystem::CUIDef::Transfer
+
+WINS: 1
+  00631c60 RELOCATION_MATCH NUISystem::CUIDef::?Transfer@CUIDef@NUISystem@@UAEXAAVCPersistContext@@@Z

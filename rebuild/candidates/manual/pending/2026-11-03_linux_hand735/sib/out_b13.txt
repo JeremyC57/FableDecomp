@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00ae8d50   WARN RELOC_NAME: ??$__copy@PAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@PAU12@H@std@@YIPAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z -> 00ae9cb0 labelled 'std::__copy<std::pair<long, CCountedPointer<NParticleEngine::CParticleEmitter>> *, std::pair<long, CCountedPointer<NParticleEngine::CParticleEmitter>> *, int>'
+00ae8d50   WARN RELOC_NAME: ??$__destroy_aux@PAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@std@@YIXPAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@0@0ABU__false_type@0@@Z -> 00ae9d50 labelled 'std::__destroy_aux<std::pair<long, CCountedPointer<NParticleEngine::CParticleEmitter>> *>'
+00ae8d50   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00ae8d50   RELOCATION_MATCH PASS   NParticleEngine::CParticleEmitterDatabase::Load
+
+WINS: 1
+  00ae8d50 RELOCATION_MATCH NParticleEngine::CParticleEmitterDatabase::?Load@CParticleEmitterDatabase@NParticleEngine@@IAEXAAVCAFile@@ABVCEmitterDatabaseSerialiseInfo@2@@Z

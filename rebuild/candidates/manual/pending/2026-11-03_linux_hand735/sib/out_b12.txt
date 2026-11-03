@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00a4fe60   WARN RELOC_NAME: ??1?$CCountedPointer@VC3DAnimFileXAllocationSizeChunk@@@@QAE@XZ -> 00a52f40 labelled '_global::CCountedPointer_Release_00a52f40'
+00a4fe60   WARN RELOC_NAME: ?HasMovementTrack@C3DAnimFileMovementVectorChunk@@QBE_NXZ -> 00aae920 labelled 'C3DAnimFileRootChunk::HasSequences'
+00a4fe60   WARN RELOC_NAME: ?InitialiseFromFileData@C3DAnimationSequenceData@@QAE_NABVC3DAnimFileSequenceChunk@@AAVCSimpleMemoryPool@@@Z -> 00a4efc0 labelled 'C3DKeyframe_InitialiseAsConstant'
+00a4fe60   RELOCATION_MATCH PASS   C3DAnimation2::InitialiseSharedAnimation
+
+WINS: 1
+  00a4fe60 RELOCATION_MATCH C3DAnimation2::?InitialiseSharedAnimation@C3DAnimation2@@QAE_NABVC3DAnimFile@@W4EAnimationType@@@Z

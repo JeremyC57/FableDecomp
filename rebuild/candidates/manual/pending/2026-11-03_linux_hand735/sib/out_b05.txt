@@ -1,0 +1,5 @@
+addr       parity           behav  name
+005385ae   RELOCATION_MATCH PASS   NUISystem::CList::ScrollUp
+
+WINS: 1
+  005385ae RELOCATION_MATCH NUISystem::CList::?ScrollUp@CList@NUISystem@@MAEXKK_N00@Z

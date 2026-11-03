@@ -1,0 +1,2728 @@
+
+${S}/w22/chunk735/att/ab04.x.obj:     file format pe-i386
+
+
+Disassembly of section .text:
+
+00000000 <?__stl_throw_out_of_range@std@@YAXPBD@Z>:
+   0:	push   DWORD PTR [esp+0x4]
+   4:	call   9 <?__stl_throw_out_of_range@std@@YAXPBD@Z+0x9>
+			5: DISP32	_puts
+   9:	pop    ecx
+   a:	jmp    f <@feat.00+0xe>
+			b: DISP32	_abort
+
+Disassembly of section .text:
+
+00000000 <?StatGetInterfaceType@CTCHeroExperience@@SI?AW4ETCInterfaceType@@XZ>:
+   0:	push   0x68
+   2:	pop    eax
+   3:	ret
+
+Disassembly of section .text:
+
+00000000 <??0CRGBColour@@QAE@EEEE@Z>:
+   0:	mov    eax,ecx
+   2:	mov    cl,BYTE PTR [esp+0x4]
+   6:	mov    BYTE PTR [eax+0x2],cl
+   9:	mov    cl,BYTE PTR [esp+0x8]
+   d:	mov    BYTE PTR [eax+0x1],cl
+  10:	mov    cl,BYTE PTR [esp+0xc]
+  14:	mov    BYTE PTR [eax],cl
+  16:	mov    cl,BYTE PTR [esp+0x10]
+  1a:	mov    BYTE PTR [eax+0x3],cl
+  1d:	.byte 0xc2
+  1e:	.byte 0x10
+
+0000001f <$L13210>:
+	...
+
+Disassembly of section .text:
+
+00000000 <??0CCPPointerInfo@@QAE@KP6IXPAX@Z0@Z>:
+   0:	mov    eax,ecx
+   2:	mov    ecx,DWORD PTR [esp+0x4]
+   6:	mov    DWORD PTR [eax],ecx
+   8:	mov    ecx,DWORD PTR [esp+0x8]
+   c:	mov    DWORD PTR [eax+0x4],ecx
+   f:	mov    ecx,DWORD PTR [esp+0xc]
+  13:	mov    DWORD PTR [eax+0x8],ecx
+  16:	ret    0xc
+
+Disassembly of section .text:
+
+00000000 <??0CActionParam@NUISystem@@QAE@W4EActionParamType@1@@Z>:
+   0:	mov    eax,ecx
+   2:	mov    ecx,DWORD PTR [esp+0x4]
+   6:	mov    DWORD PTR [eax],0x0
+			8: dir32	??_7CActionParam@NUISystem@@6B@
+   c:	mov    DWORD PTR [eax+0x4],ecx
+   f:	ret    0x4
+
+Disassembly of section .text:
+
+00000000 <??1CActionParam@NUISystem@@UAE@XZ>:
+   0:	mov    DWORD PTR [ecx],0x0
+			2: dir32	??_7CActionParam@NUISystem@@6B@
+   6:	ret
+
+Disassembly of section .text:
+
+00000000 <??_GCActionParam@NUISystem@@UAEPAXI@Z>:
+   0:	test   BYTE PTR [esp+0x4],0x1
+   5:	push   esi
+   6:	mov    esi,ecx
+   8:	mov    DWORD PTR [esi],0x0
+			a: dir32	??_7CActionParam@NUISystem@@6B@
+   e:	je     17 <??_GCActionParam@NUISystem@@UAEPAXI@Z+0x17>
+  10:	push   esi
+  11:	call   16 <??_GCActionParam@NUISystem@@UAEPAXI@Z+0x16>
+			12: DISP32	??3@YAXPAX@Z
+  16:	pop    ecx
+  17:	mov    eax,esi
+  19:	pop    esi
+  1a:	ret    0x4
+
+Disassembly of section .text:
+
+00000000 <??8_Rb_tree_base_iterator@std@@QBE_NABU01@@Z>:
+   0:	mov    eax,DWORD PTR [ecx]
+   2:	mov    ecx,DWORD PTR [esp+0x4]
+   6:	sub    eax,DWORD PTR [ecx]
+   8:	neg    eax
+   a:	sbb    eax,eax
+   c:	inc    eax
+   d:	ret    0x4
+
+Disassembly of section .text:
+
+00000000 <??9_Rb_tree_base_iterator@std@@QBE_NABU01@@Z>:
+   0:	mov    eax,DWORD PTR [ecx]
+   2:	mov    edx,DWORD PTR [esp+0x4]
+   6:	xor    ecx,ecx
+   8:	cmp    eax,DWORD PTR [edx]
+   a:	setne  cl
+   d:	mov    al,cl
+   f:	ret    0x4
+
+Disassembly of section .text:
+
+00000000 <?StatGetInterfaceType@CTCHeroStats@@SI?AW4ETCInterfaceType@@XZ>:
+   0:	push   0x4
+   2:	pop    eax
+   3:	ret
+
+Disassembly of section .text:
+
+00000000 <?StatGetInterfaceType@CTCInventoryAbilities@@SA?AW4ETCInterfaceType@@XZ>:
+   0:	push   0x6f
+   2:	pop    eax
+   3:	ret
+
+Disassembly of section .text:
+
+00000000 <??0C2DCoordI@@QAE@JJ@Z>:
+   0:	mov    eax,ecx
+   2:	mov    ecx,DWORD PTR [esp+0x4]
+   6:	mov    DWORD PTR [eax],ecx
+   8:	mov    ecx,DWORD PTR [esp+0x8]
+   c:	mov    DWORD PTR [eax+0x4],ecx
+   f:	ret    0x8
+
+Disassembly of section .text:
+
+00000000 <??0CActionParamSLONG@NUISystem@@QAE@J@Z>:
+   0:	mov    eax,ecx
+   2:	mov    ecx,DWORD PTR [esp+0x4]
+   6:	mov    DWORD PTR [eax+0x4],0x3
+   d:	mov    DWORD PTR [eax],0x0
+			f: dir32	??_7CActionParamSLONG@NUISystem@@6B@
+  13:	mov    DWORD PTR [eax+0x8],ecx
+  16:	ret    0x4
+
+Disassembly of section .text:
+
+00000000 <??_GCActionParamSLONG@NUISystem@@UAEPAXI@Z>:
+   0:	push   esi
+   1:	mov    esi,ecx
+   3:	call   8 <??_GCActionParamSLONG@NUISystem@@UAEPAXI@Z+0x8>
+			4: DISP32	??1CActionParamSLONG@NUISystem@@UAE@XZ
+   8:	test   BYTE PTR [esp+0x8],0x1
+   d:	je     16 <??_GCActionParamSLONG@NUISystem@@UAEPAXI@Z+0x16>
+   f:	push   esi
+  10:	call   15 <??_GCActionParamSLONG@NUISystem@@UAEPAXI@Z+0x15>
+			11: DISP32	??3@YAXPAX@Z
+  15:	pop    ecx
+  16:	mov    eax,esi
+  18:	pop    esi
+  19:	ret    0x4
+
+Disassembly of section .text:
+
+00000000 <??0CRGBFloatColour@@QAE@XZ>:
+   0:	mov    eax,ecx
+   2:	ret
+
+Disassembly of section .text:
+
+00000000 <??0CRGBFloatColour@@QAE@MMMM@Z>:
+   0:	mov    eax,ecx
+   2:	mov    ecx,DWORD PTR [esp+0x4]
+   6:	mov    DWORD PTR [eax],ecx
+   8:	mov    ecx,DWORD PTR [esp+0x8]
+   c:	mov    DWORD PTR [eax+0x4],ecx
+   f:	mov    ecx,DWORD PTR [esp+0xc]
+  13:	mov    DWORD PTR [eax+0x8],ecx
+  16:	mov    ecx,DWORD PTR [esp+0x10]
+  1a:	mov    DWORD PTR [eax+0xc],ecx
+  1d:	.byte 0xc2
+  1e:	.byte 0x10
+
+0000001f <$L13210>:
+	...
+
+Disassembly of section .text:
+
+00000000 <?Get@CMainGameComponent@@SIPAV1@XZ>:
+   0:	mov    eax,ds:0x0
+			1: dir32	?PMainGameComponent@CMainGameComponent@@1PAV1@A
+   5:	ret
+
+Disassembly of section .text:
+
+00000000 <??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ>:
+   0:	mov    eax,ecx
+   2:	and    DWORD PTR [eax],0x0
+   5:	and    DWORD PTR [eax+0x4],0x0
+   9:	ret
+
+Disassembly of section .text:
+
+00000000 <??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ>:
+   0:	push   esi
+   1:	mov    esi,ecx
+   3:	mov    eax,DWORD PTR [esi+0x4]
+   6:	test   eax,eax
+   8:	je     23 <??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ+0x23>
+   a:	dec    DWORD PTR [eax]
+   c:	mov    eax,DWORD PTR [esi+0x4]
+   f:	cmp    DWORD PTR [eax],0x0
+  12:	jne    23 <??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ+0x23>
+  14:	mov    ecx,DWORD PTR [eax+0x8]
+  17:	call   DWORD PTR [eax+0x4]
+  1a:	push   DWORD PTR [esi+0x4]
+  1d:	.byte 0xe8
+	...
+			1e: DISP32	??3@YAXPAX@Z
+
+0000001f <$L13210>:
+  1f:	add    BYTE PTR [eax],al
+  21:	add    BYTE PTR [ecx-0x7d],bl
+  24:	add    BYTE PTR es:[ebx+0x5e000466],al
+  2b:	ret
+
+Disassembly of section .text:
+
+00000000 <??C?$CCountedPointer@VCComponent@NUISystem@@@@QBEPAVCComponent@NUISystem@@XZ>:
+   0:	mov    eax,DWORD PTR [ecx]
+   2:	ret
+
+Disassembly of section .text:
+
+00000000 <?Get@?$CCountedPointer@VCComponent@NUISystem@@@@QBEPAVCComponent@NUISystem@@XZ>:
+   0:	mov    eax,DWORD PTR [ecx]
+   2:	ret
+
+Disassembly of section .text:
+
+00000000 <??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ>:
+   0:	push   esi
+   1:	mov    esi,ecx
+   3:	mov    eax,DWORD PTR [esi+0x4]
+   6:	test   eax,eax
+   8:	je     23 <??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ+0x23>
+   a:	dec    DWORD PTR [eax]
+   c:	mov    eax,DWORD PTR [esi+0x4]
+   f:	cmp    DWORD PTR [eax],0x0
+  12:	jne    23 <??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ+0x23>
+  14:	mov    ecx,DWORD PTR [eax+0x8]
+  17:	call   DWORD PTR [eax+0x4]
+  1a:	push   DWORD PTR [esi+0x4]
+  1d:	.byte 0xe8
+	...
+			1e: DISP32	??3@YAXPAX@Z
+
+0000001f <$L13210>:
+  1f:	add    BYTE PTR [eax],al
+  21:	add    BYTE PTR [ecx-0x7d],bl
+  24:	add    BYTE PTR es:[ebx+0x5e000466],al
+  2b:	ret
+
+Disassembly of section .text:
+
+00000000 <??C?$CCountedPointer@VCAction@NUISystem@@@@QBEPAVCAction@NUISystem@@XZ>:
+   0:	mov    eax,DWORD PTR [ecx]
+   2:	ret
+
+Disassembly of section .text:
+
+00000000 <??D?$CCountedPointer@VCDataBank@NGameText@@@@QBEAAVCDataBank@NGameText@@XZ>:
+   0:	mov    eax,DWORD PTR [ecx]
+   2:	ret
+
+Disassembly of section .text:
+
+00000000 <??0?$CCountedPointer@VCComponentContainer@NUISystem@@@@QAE@XZ>:
+   0:	mov    eax,ecx
+   2:	and    DWORD PTR [eax],0x0
+   5:	and    DWORD PTR [eax+0x4],0x0
+   9:	ret
+
+Disassembly of section .text:
+
+00000000 <??1?$CCountedPointer@VCComponentContainer@NUISystem@@@@QAE@XZ>:
+   0:	push   esi
+   1:	mov    esi,ecx
+   3:	mov    eax,DWORD PTR [esi+0x4]
+   6:	test   eax,eax
+   8:	je     23 <??1?$CCountedPointer@VCComponentContainer@NUISystem@@@@QAE@XZ+0x23>
+   a:	dec    DWORD PTR [eax]
+   c:	mov    eax,DWORD PTR [esi+0x4]
+   f:	cmp    DWORD PTR [eax],0x0
+  12:	jne    23 <??1?$CCountedPointer@VCComponentContainer@NUISystem@@@@QAE@XZ+0x23>
+  14:	mov    ecx,DWORD PTR [eax+0x8]
+  17:	call   DWORD PTR [eax+0x4]
+  1a:	push   DWORD PTR [esi+0x4]
+  1d:	.byte 0xe8
+	...
+			1e: DISP32	??3@YAXPAX@Z
+
+0000001f <$L13210>:
+  1f:	add    BYTE PTR [eax],al
+  21:	add    BYTE PTR [ecx-0x7d],bl
+  24:	add    BYTE PTR es:[ebx+0x5e000466],al
+  2b:	ret
+
+Disassembly of section .text:
+
+00000000 <??C?$CCountedPointer@VCComponentContainer@NUISystem@@@@QBEPAVCComponentContainer@NUISystem@@XZ>:
+   0:	mov    eax,DWORD PTR [ecx]
+   2:	ret
+
+Disassembly of section .text:
+
+00000000 <??0?$CCountedPointer@VCList@NUISystem@@@@QAE@XZ>:
+   0:	mov    eax,ecx
+   2:	and    DWORD PTR [eax],0x0
+   5:	and    DWORD PTR [eax+0x4],0x0
+   9:	ret
+
+Disassembly of section .text:
+
+00000000 <??1?$CCountedPointer@VCList@NUISystem@@@@QAE@XZ>:
+   0:	push   esi
+   1:	mov    esi,ecx
+   3:	mov    eax,DWORD PTR [esi+0x4]
+   6:	test   eax,eax
+   8:	je     23 <??1?$CCountedPointer@VCList@NUISystem@@@@QAE@XZ+0x23>
+   a:	dec    DWORD PTR [eax]
+   c:	mov    eax,DWORD PTR [esi+0x4]
+   f:	cmp    DWORD PTR [eax],0x0
+  12:	jne    23 <??1?$CCountedPointer@VCList@NUISystem@@@@QAE@XZ+0x23>
+  14:	mov    ecx,DWORD PTR [eax+0x8]
+  17:	call   DWORD PTR [eax+0x4]
+  1a:	push   DWORD PTR [esi+0x4]
+  1d:	.byte 0xe8
+	...
+			1e: DISP32	??3@YAXPAX@Z
+
+0000001f <$L13210>:
+  1f:	add    BYTE PTR [eax],al
+  21:	add    BYTE PTR [ecx-0x7d],bl
+  24:	add    BYTE PTR es:[ebx+0x5e000466],al
+  2b:	ret
+
+Disassembly of section .text:
+
+00000000 <??C?$CCountedPointer@VCList@NUISystem@@@@QBEPAVCList@NUISystem@@XZ>:
+   0:	mov    eax,DWORD PTR [ecx]
+   2:	ret
+
+Disassembly of section .text:
+
+00000000 <?end@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@2@XZ>:
+   0:	mov    eax,DWORD PTR [ecx+0x4]
+   3:	ret
+
+Disassembly of section .text:
+
+00000000 <?begin@?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEPAPAVCComponent@NUISystem@@XZ>:
+   0:	mov    eax,DWORD PTR [ecx]
+   2:	ret
+
+Disassembly of section .text:
+
+00000000 <?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z>:
+   0:	test   ecx,ecx
+   2:	je     a <?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z+0xa>
+   4:	mov    eax,DWORD PTR [ecx]
+   6:	push   0x1
+   8:	call   DWORD PTR [eax]
+   a:	ret
+
+Disassembly of section .text:
+
+00000000 <??_GCAction@NUISystem@@QAEPAXI@Z>:
+   0:	push   esi
+   1:	mov    esi,ecx
+   3:	call   8 <??_GCAction@NUISystem@@QAEPAXI@Z+0x8>
+			4: DISP32	??1CAction@NUISystem@@QAE@XZ
+   8:	test   BYTE PTR [esp+0x8],0x1
+   d:	je     16 <??_GCAction@NUISystem@@QAEPAXI@Z+0x16>
+   f:	push   esi
+  10:	call   15 <??_GCAction@NUISystem@@QAEPAXI@Z+0x15>
+			11: DISP32	??3@YAXPAX@Z
+  15:	pop    ecx
+  16:	mov    eax,esi
+  18:	pop    esi
+  19:	ret    0x4
+
+Disassembly of section .text:
+
+00000000 <?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ>:
+   0:	push   esi
+   1:	mov    esi,ecx
+   3:	mov    eax,DWORD PTR [esi+0x4]
+   6:	test   eax,eax
+   8:	je     23 <?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ+0x23>
+   a:	dec    DWORD PTR [eax]
+   c:	mov    eax,DWORD PTR [esi+0x4]
+   f:	cmp    DWORD PTR [eax],0x0
+  12:	jne    23 <?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ+0x23>
+  14:	mov    ecx,DWORD PTR [eax+0x8]
+  17:	call   DWORD PTR [eax+0x4]
+  1a:	push   DWORD PTR [esi+0x4]
+  1d:	.byte 0xe8
+	...
+			1e: DISP32	??3@YAXPAX@Z
+
+0000001f <$L13210>:
+  1f:	add    BYTE PTR [eax],al
+  21:	add    BYTE PTR [ecx-0x7d],bl
+  24:	data16 add al,0x0
+  27:	and    DWORD PTR [esi],0x0
+  2a:	pop    esi
+  2b:	ret
+
+Disassembly of section .text:
+
+00000000 <??1?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ>:
+   0:	ret
+
+Disassembly of section .text:
+
+00000000 <?deallocate@?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAEXPAU?$_List_node@PAVCComponent@NUISystem@@@2@I@Z>:
+   0:	cmp    DWORD PTR [esp+0x4],0x0
+   5:	je     11 <?deallocate@?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAEXPAU?$_List_node@PAVCComponent@NUISystem@@@2@I@Z+0x11>
+   7:	push   DWORD PTR [esp+0x4]
+   b:	call   10 <?deallocate@?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@std@@QAEXPAU?$_List_node@PAVCComponent@NUISystem@@@2@I@Z+0x10>
+			c: DISP32	_free
+  10:	pop    ecx
+  11:	ret    0x8
+
+Disassembly of section .text:
+
+00000000 <??0?$_Rb_tree_iterator@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@2@@std@@QAE@PAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@1@@Z>:
+   0:	mov    eax,ecx
+   2:	mov    ecx,DWORD PTR [esp+0x4]
+   6:	mov    DWORD PTR [eax],ecx
+   8:	ret    0x4
+
+Disassembly of section .text:
+
+00000000 <?_S_whichword@?$_Base_bitset@$08@std@@SAII@Z>:
+   0:	mov    eax,DWORD PTR [esp+0x4]
+   4:	shr    eax,0x5
+   7:	ret
+
+Disassembly of section .text:
+
+00000000 <?_S_whichbit@?$_Base_bitset@$08@std@@SAII@Z>:
+   0:	mov    eax,DWORD PTR [esp+0x4]
+   4:	and    eax,0x1f
+   7:	ret
+
+Disassembly of section .text:
+
+00000000 <?begin@?$vector@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@V?$allocator@U?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@@2@@std@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@2@XZ>:
+   0:	mov    eax,DWORD PTR [ecx]
+   2:	ret
+
+Disassembly of section .text:
+
+00000000 <?_M_root@?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@@std@@IBEAAPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@2@XZ>:
+   0:	mov    eax,DWORD PTR [ecx]
+   2:	add    eax,0x4
+   5:	ret
+
+Disassembly of section .text:
+
+00000000 <?_S_left@?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@@std@@KIAAPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@2@PAU32@@Z>:
+   0:	lea    eax,[ecx+0x8]
+   3:	ret
+
+Disassembly of section .text:
+
+00000000 <?_S_right@?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@@std@@KIAAPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@2@PAU32@@Z>:
+   0:	lea    eax,[ecx+0xc]
+   3:	ret
+
+Disassembly of section .text:
+
+00000000 <??R?$less@W4EHeroAbility@@@std@@QBE_NABW4EHeroAbility@@0@Z>:
+   0:	mov    eax,DWORD PTR [esp+0x4]
+   4:	mov    eax,DWORD PTR [eax]
+   6:	mov    edx,DWORD PTR [esp+0x8]
+   a:	xor    ecx,ecx
+   c:	cmp    eax,DWORD PTR [edx]
+   e:	setl   cl
+  11:	mov    al,cl
+  13:	ret    0x8
+
+Disassembly of section .text:
+
+00000000 <?_S_value@?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@@std@@KIAAU?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@2@PAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@2@@Z>:
+   0:	lea    eax,[ecx+0x10]
+   3:	ret
+
+Disassembly of section .text:
+
+00000000 <?ReleaseData@?$CCountedPointer@VCComponentContainer@NUISystem@@@@QAEXXZ>:
+   0:	push   esi
+   1:	mov    esi,ecx
+   3:	mov    eax,DWORD PTR [esi+0x4]
+   6:	test   eax,eax
+   8:	je     23 <?ReleaseData@?$CCountedPointer@VCComponentContainer@NUISystem@@@@QAEXXZ+0x23>
+   a:	dec    DWORD PTR [eax]
+   c:	mov    eax,DWORD PTR [esi+0x4]
+   f:	cmp    DWORD PTR [eax],0x0
+  12:	jne    23 <?ReleaseData@?$CCountedPointer@VCComponentContainer@NUISystem@@@@QAEXXZ+0x23>
+  14:	mov    ecx,DWORD PTR [eax+0x8]
+  17:	call   DWORD PTR [eax+0x4]
+  1a:	push   DWORD PTR [esi+0x4]
+  1d:	.byte 0xe8
+	...
+			1e: DISP32	??3@YAXPAX@Z
+
+0000001f <$L13210>:
+  1f:	add    BYTE PTR [eax],al
+  21:	add    BYTE PTR [ecx-0x7d],bl
+  24:	data16 add al,0x0
+  27:	and    DWORD PTR [esi],0x0
+  2a:	pop    esi
+  2b:	ret
+
+Disassembly of section .text:
+
+00000000 <?ReleaseData@?$CCountedPointer@VCList@NUISystem@@@@QAEXXZ>:
+   0:	push   esi
+   1:	mov    esi,ecx
+   3:	mov    eax,DWORD PTR [esi+0x4]
+   6:	test   eax,eax
+   8:	je     23 <?ReleaseData@?$CCountedPointer@VCList@NUISystem@@@@QAEXXZ+0x23>
+   a:	dec    DWORD PTR [eax]
+   c:	mov    eax,DWORD PTR [esi+0x4]
+   f:	cmp    DWORD PTR [eax],0x0
+  12:	jne    23 <?ReleaseData@?$CCountedPointer@VCList@NUISystem@@@@QAEXXZ+0x23>
+  14:	mov    ecx,DWORD PTR [eax+0x8]
+  17:	call   DWORD PTR [eax+0x4]
+  1a:	push   DWORD PTR [esi+0x4]
+  1d:	.byte 0xe8
+	...
+			1e: DISP32	??3@YAXPAX@Z
+
+0000001f <$L13210>:
+  1f:	add    BYTE PTR [eax],al
+  21:	add    BYTE PTR [ecx-0x7d],bl
+  24:	data16 add al,0x0
+  27:	and    DWORD PTR [esi],0x0
+  2a:	pop    esi
+  2b:	ret
+
+Disassembly of section .text:
+
+00000000 <??R?$_Select1st@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@std@@QBEABW4EHeroAbility@@ABU?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@1@@Z>:
+   0:	mov    eax,DWORD PTR [esp+0x4]
+   4:	ret    0x4
+
+Disassembly of section .text:
+
+00000000 <??$GFDebugPDynamicCast@PAVCTCBase@@PAVCTCHeroStats@@@@YIPAVCTCHeroStats@@PAVCTCBase@@PAV0@@Z>:
+   0:	mov    eax,ecx
+   2:	ret
+
+Disassembly of section .text:
+
+00000000 <??$GFDebugPDynamicCast@PAVCTCBase@@PAVCTCHeroExperience@@@@YIPAVCTCHeroExperience@@PAVCTCBase@@PAV0@@Z>:
+   0:	mov    eax,ecx
+   2:	ret
+
+Disassembly of section .text:
+
+00000000 <??$GFDebugPDynamicCast@PAVCTCBase@@PAVCTCInventoryAbilities@@@@YIPAVCTCInventoryAbilities@@PAVCTCBase@@PAV0@@Z>:
+   0:	mov    eax,ecx
+   2:	ret
+
+Disassembly of section .text:
+
+00000000 <?GetTextBank@CMainGameComponent@@QBEABVCDataBank@NGameText@@XZ>:
+   0:	mov    eax,DWORD PTR [ecx+0x14]
+   3:	ret
+
+Disassembly of section .text:
+
+00000000 <??A?$vector@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEAAPAVCComponent@NUISystem@@I@Z>:
+   0:	mov    eax,DWORD PTR [ecx]
+   2:	mov    ecx,DWORD PTR [esp+0x4]
+   6:	lea    eax,[eax+ecx*4]
+   9:	ret    0x4
+
+Disassembly of section .text:
+
+00000000 <??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z>:
+   0:	mov    eax,DWORD PTR [esp+0x4]
+   4:	test   eax,eax
+   6:	push   esi
+   7:	mov    esi,ecx
+   9:	mov    DWORD PTR [esi],eax
+   b:	je     34 <??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z+0x34>
+   d:	push   0xc
+   f:	call   14 <??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z+0x14>
+			10: DISP32	??2@YAPAXI@Z
+  14:	test   eax,eax
+  16:	pop    ecx
+  17:	je     2d <??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z+0x2d>
+  19:	mov    ecx,DWORD PTR [esi]
+  1b:	.byte 0xc7
+  1c:	add    BYTE PTR [ecx],al
+	...
+
+0000001f <$L13210>:
+  1f:	add    BYTE PTR [eax],al
+  21:	mov    DWORD PTR [eax+0x4],0x0
+			24: dir32	?DeleteData@?$CCountedPointer@VCComponent@NUISystem@@@@SIXPAX@Z
+  28:	mov    DWORD PTR [eax+0x8],ecx
+  2b:	jmp    2f <??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z+0x2f>
+  2d:	xor    eax,eax
+  2f:	mov    DWORD PTR [esi+0x4],eax
+  32:	jmp    38 <??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z+0x38>
+  34:	and    DWORD PTR [esi+0x4],0x0
+  38:	mov    eax,esi
+  3a:	pop    esi
+  3b:	ret    0x4
+
+Disassembly of section .text:
+
+00000000 <?end@?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@2@@2@XZ>:
+   0:	mov    ecx,DWORD PTR [ecx]
+   2:	mov    eax,DWORD PTR [esp+0x4]
+   6:	mov    DWORD PTR [eax],ecx
+   8:	ret    0x4
+
+Disassembly of section .text:
+
+00000000 <?ShareData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@PAVCCPPointerInfo@@@Z>:
+   0:	push   esi
+   1:	push   edi
+   2:	mov    edi,DWORD PTR [esp+0x10]
+   6:	mov    esi,ecx
+   8:	cmp    DWORD PTR [esi+0x4],edi
+   b:	je     21 <?ShareData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@PAVCCPPointerInfo@@@Z+0x21>
+   d:	call   12 <?ShareData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@PAVCCPPointerInfo@@@Z+0x12>
+			e: DISP32	?ReleaseData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXXZ
+  12:	test   edi,edi
+  14:	mov    eax,DWORD PTR [esp+0xc]
+  18:	mov    DWORD PTR [esi],eax
+  1a:	mov    DWORD PTR [esi+0x4],edi
+  1d:	je     21 <?ShareData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@PAVCCPPointerInfo@@@Z+0x21>
+
+0000001f <$L13210>:
+  1f:	inc    DWORD PTR [edi]
+  21:	pop    edi
+  22:	pop    esi
+  23:	ret    0x8
+
+Disassembly of section .text:
+
+00000000 <?DeleteData@?$CCountedPointer@VCAction@NUISystem@@@@SIXPAX@Z>:
+   0:	push   esi
+   1:	mov    esi,ecx
+   3:	test   esi,esi
+   5:	je     13 <?DeleteData@?$CCountedPointer@VCAction@NUISystem@@@@SIXPAX@Z+0x13>
+   7:	call   c <?DeleteData@?$CCountedPointer@VCAction@NUISystem@@@@SIXPAX@Z+0xc>
+			8: DISP32	??1CAction@NUISystem@@QAE@XZ
+   c:	push   esi
+   d:	call   12 <?DeleteData@?$CCountedPointer@VCAction@NUISystem@@@@SIXPAX@Z+0x12>
+			e: DISP32	??3@YAXPAX@Z
+  12:	pop    ecx
+  13:	pop    esi
+  14:	ret
+
+Disassembly of section .text:
+
+00000000 <??1?$_STLP_alloc_proxy@PAU?$_List_node@PAVCComponent@NUISystem@@@std@@U12@V?$allocator@U?$_List_node@PAVCComponent@NUISystem@@@std@@@2@@std@@QAE@XZ>:
+   0:	ret
+
+Disassembly of section .text:
+
+00000000 <?_S_maskbit@?$_Base_bitset@$08@std@@SAKI@Z>:
+   0:	mov    ecx,DWORD PTR [esp+0x4]
+   4:	xor    eax,eax
+   6:	and    ecx,0x1f
+   9:	inc    eax
+   a:	shl    eax,cl
+   c:	ret
+
+Disassembly of section .text:
+
+00000000 <?_M_getword@?$_Base_bitset@$08@std@@QBEKI@Z>:
+   0:	mov    eax,DWORD PTR [esp+0x4]
+   4:	shr    eax,0x5
+   7:	mov    eax,DWORD PTR [ecx+eax*4]
+   a:	ret    0x4
+
+Disassembly of section .text:
+
+00000000 <?clear@?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXXZ>:
+   0:	push   esi
+   1:	push   edi
+   2:	mov    edi,ecx
+   4:	mov    eax,DWORD PTR [edi]
+   6:	mov    esi,DWORD PTR [eax]
+   8:	cmp    esi,eax
+   a:	je     1b <?clear@?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXXZ+0x1b>
+   c:	mov    eax,esi
+   e:	mov    esi,DWORD PTR [esi]
+  10:	push   eax
+  11:	call   16 <?clear@?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXXZ+0x16>
+			12: DISP32	_free
+  16:	cmp    esi,DWORD PTR [edi]
+  18:	pop    ecx
+  19:	jne    c <?clear@?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXXZ+0xc>
+  1b:	mov    eax,DWORD PTR [edi]
+  1d:	mov    DWORD PTR [eax],eax
+
+0000001f <$L13210>:
+  1f:	mov    edi,DWORD PTR [edi]
+  21:	mov    DWORD PTR [edi+0x4],edi
+  24:	pop    edi
+  25:	pop    esi
+  26:	ret
+
+Disassembly of section .text:
+
+00000000 <?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z>:
+   0:	push   esi
+   1:	mov    esi,DWORD PTR [ecx]
+   3:	mov    ecx,DWORD PTR [ecx+0x4]
+   6:	sub    ecx,esi
+   8:	sar    ecx,0x3
+   b:	test   ecx,ecx
+   d:	jle    37 <?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z+0x37>
+   f:	mov    eax,DWORD PTR [esp+0x8]
+  13:	push   edi
+  14:	mov    edi,DWORD PTR [eax]
+  16:	mov    eax,ecx
+  18:	cdq
+  19:	sub    eax,edx
+  1b:	sar    eax,1
+  1d:	.byte 0x8d
+  1e:	.byte 0x14
+
+0000001f <$L13210>:
+  1f:	(bad)
+  20:	cmp    DWORD PTR [edx],edi
+  22:	jge    30 <?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z+0x30>
+  24:	lea    esi,[edx+0x8]
+  27:	or     edx,0xffffffff
+  2a:	sub    edx,eax
+  2c:	add    ecx,edx
+  2e:	jmp    32 <?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z+0x32>
+  30:	mov    ecx,eax
+  32:	test   ecx,ecx
+  34:	jg     16 <?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z+0x16>
+  36:	pop    edi
+  37:	mov    eax,esi
+  39:	pop    esi
+  3a:	ret    0x4
+
+Disassembly of section .text:
+
+00000000 <?_S_key@?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@@std@@KIABW4EHeroAbility@@PAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@2@@Z>:
+   0:	lea    eax,[ecx+0x10]
+   3:	ret
+
+Disassembly of section .text:
+
+00000000 <?ShareData@?$CCountedPointer@VCComponentContainer@NUISystem@@@@QAEXPAVCComponentContainer@NUISystem@@PAVCCPPointerInfo@@@Z>:
+   0:	push   esi
+   1:	push   edi
+   2:	mov    edi,DWORD PTR [esp+0x10]
+   6:	mov    esi,ecx
+   8:	cmp    DWORD PTR [esi+0x4],edi
+   b:	je     21 <?ShareData@?$CCountedPointer@VCComponentContainer@NUISystem@@@@QAEXPAVCComponentContainer@NUISystem@@PAVCCPPointerInfo@@@Z+0x21>
+   d:	call   12 <?ShareData@?$CCountedPointer@VCComponentContainer@NUISystem@@@@QAEXPAVCComponentContainer@NUISystem@@PAVCCPPointerInfo@@@Z+0x12>
+			e: DISP32	?ReleaseData@?$CCountedPointer@VCComponentContainer@NUISystem@@@@QAEXXZ
+  12:	test   edi,edi
+  14:	mov    eax,DWORD PTR [esp+0xc]
+  18:	mov    DWORD PTR [esi],eax
+  1a:	mov    DWORD PTR [esi+0x4],edi
+  1d:	je     21 <?ShareData@?$CCountedPointer@VCComponentContainer@NUISystem@@@@QAEXPAVCComponentContainer@NUISystem@@PAVCCPPointerInfo@@@Z+0x21>
+
+0000001f <$L13210>:
+  1f:	inc    DWORD PTR [edi]
+  21:	pop    edi
+  22:	pop    esi
+  23:	ret    0x8
+
+Disassembly of section .text:
+
+00000000 <?ShareData@?$CCountedPointer@VCList@NUISystem@@@@QAEXPAVCList@NUISystem@@PAVCCPPointerInfo@@@Z>:
+   0:	push   esi
+   1:	push   edi
+   2:	mov    edi,DWORD PTR [esp+0x10]
+   6:	mov    esi,ecx
+   8:	cmp    DWORD PTR [esi+0x4],edi
+   b:	je     21 <?ShareData@?$CCountedPointer@VCList@NUISystem@@@@QAEXPAVCList@NUISystem@@PAVCCPPointerInfo@@@Z+0x21>
+   d:	call   12 <?ShareData@?$CCountedPointer@VCList@NUISystem@@@@QAEXPAVCList@NUISystem@@PAVCCPPointerInfo@@@Z+0x12>
+			e: DISP32	?ReleaseData@?$CCountedPointer@VCList@NUISystem@@@@QAEXXZ
+  12:	test   edi,edi
+  14:	mov    eax,DWORD PTR [esp+0xc]
+  18:	mov    DWORD PTR [esi],eax
+  1a:	mov    DWORD PTR [esi+0x4],edi
+  1d:	je     21 <?ShareData@?$CCountedPointer@VCList@NUISystem@@@@QAEXPAVCList@NUISystem@@PAVCCPPointerInfo@@@Z+0x21>
+
+0000001f <$L13210>:
+  1f:	inc    DWORD PTR [edi]
+  21:	pop    edi
+  22:	pop    esi
+  23:	ret    0x8
+
+Disassembly of section .text:
+
+00000000 <?Find@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z>:
+   0:	push   esi
+   1:	push   edi
+   2:	mov    edi,DWORD PTR [esp+0xc]
+   6:	push   edi
+   7:	mov    esi,ecx
+   9:	call   e <?Find@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z+0xe>
+			a: DISP32	?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+   e:	mov    esi,DWORD PTR [esi+0x4]
+  11:	cmp    eax,esi
+  13:	je     1b <?Find@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z+0x1b>
+  15:	mov    ecx,DWORD PTR [edi]
+  17:	cmp    ecx,DWORD PTR [eax]
+  19:	jge    1d <?Find@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z+0x1d>
+  1b:	mov    eax,esi
+  1d:	pop    edi
+  1e:	pop    esi
+
+0000001f <$L13210>:
+  1f:	ret    0x4
+
+Disassembly of section .text:
+
+00000000 <?end@?$map@W4EHeroAbility@@USExpSpendUndo@@U?$less@W4EHeroAbility@@@std@@V?$allocator@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@2@@2@XZ>:
+   0:	mov    ecx,DWORD PTR [ecx]
+   2:	mov    eax,DWORD PTR [esp+0x4]
+   6:	mov    DWORD PTR [eax],ecx
+   8:	ret    0x4
+
+Disassembly of section .text:
+
+00000000 <??4?$CCountedPointer@VCComponent@NUISystem@@@@QAEAAV0@ABV0@@Z>:
+   0:	mov    eax,DWORD PTR [esp+0x4]
+   4:	push   esi
+   5:	push   DWORD PTR [eax+0x4]
+   8:	mov    esi,ecx
+   a:	push   DWORD PTR [eax]
+   c:	call   11 <??4?$CCountedPointer@VCComponent@NUISystem@@@@QAEAAV0@ABV0@@Z+0x11>
+			d: DISP32	?ShareData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@PAVCCPPointerInfo@@@Z
+  11:	mov    eax,esi
+  13:	pop    esi
+  14:	ret    0x4
+
+Disassembly of section .text:
+
+00000000 <??0?$CCountedPointer@VCAction@NUISystem@@@@QAE@PAVCAction@NUISystem@@@Z>:
+   0:	mov    eax,DWORD PTR [esp+0x4]
+   4:	test   eax,eax
+   6:	push   esi
+   7:	mov    esi,ecx
+   9:	mov    DWORD PTR [esi],eax
+   b:	je     34 <??0?$CCountedPointer@VCAction@NUISystem@@@@QAE@PAVCAction@NUISystem@@@Z+0x34>
+   d:	push   0xc
+   f:	call   14 <??0?$CCountedPointer@VCAction@NUISystem@@@@QAE@PAVCAction@NUISystem@@@Z+0x14>
+			10: DISP32	??2@YAPAXI@Z
+  14:	test   eax,eax
+  16:	pop    ecx
+  17:	je     2d <??0?$CCountedPointer@VCAction@NUISystem@@@@QAE@PAVCAction@NUISystem@@@Z+0x2d>
+  19:	mov    ecx,DWORD PTR [esi]
+  1b:	.byte 0xc7
+  1c:	add    BYTE PTR [ecx],al
+	...
+
+0000001f <$L13210>:
+  1f:	add    BYTE PTR [eax],al
+  21:	mov    DWORD PTR [eax+0x4],0x0
+			24: dir32	?DeleteData@?$CCountedPointer@VCAction@NUISystem@@@@SIXPAX@Z
+  28:	mov    DWORD PTR [eax+0x8],ecx
+  2b:	jmp    2f <??0?$CCountedPointer@VCAction@NUISystem@@@@QAE@PAVCAction@NUISystem@@@Z+0x2f>
+  2d:	xor    eax,eax
+  2f:	mov    DWORD PTR [esi+0x4],eax
+  32:	jmp    38 <??0?$CCountedPointer@VCAction@NUISystem@@@@QAE@PAVCAction@NUISystem@@@Z+0x38>
+  34:	and    DWORD PTR [esi+0x4],0x0
+  38:	mov    eax,esi
+  3a:	pop    esi
+  3b:	ret    0x4
+
+Disassembly of section .text:
+
+00000000 <?_Unchecked_test@?$bitset@$0BBC@@std@@QBE_NI@Z>:
+   0:	mov    edx,DWORD PTR [esp+0x4]
+   4:	xor    eax,eax
+   6:	push   esi
+   7:	mov    esi,ecx
+   9:	inc    eax
+   a:	mov    ecx,edx
+   c:	and    ecx,0x1f
+   f:	shl    eax,cl
+  11:	shr    edx,0x5
+  14:	and    eax,DWORD PTR [esi+edx*4]
+  17:	pop    esi
+  18:	neg    eax
+  1a:	sbb    eax,eax
+  1c:	neg    eax
+  1e:	.byte 0xc2
+
+0000001f <$L13210>:
+  1f:	add    al,0x0
+
+Disassembly of section .text:
+
+00000000 <??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ>:
+   0:	push   esi
+   1:	mov    esi,ecx
+   3:	call   8 <??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ+0x8>
+			4: DISP32	?clear@?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAEXXZ
+   8:	mov    esi,DWORD PTR [esi]
+   a:	test   esi,esi
+   c:	je     15 <??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ+0x15>
+   e:	push   esi
+   f:	call   14 <??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ+0x14>
+			10: DISP32	_free
+  14:	pop    ecx
+  15:	pop    esi
+  16:	ret
+
+Disassembly of section .text:
+
+00000000 <??$SetStaticCast@VCComponent@NUISystem@@@?$CCountedPointer@VCComponentContainer@NUISystem@@@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z>:
+   0:	mov    eax,DWORD PTR [esp+0x4]
+   4:	push   DWORD PTR [eax+0x4]
+   7:	push   DWORD PTR [eax]
+   9:	call   e <??$SetStaticCast@VCComponent@NUISystem@@@?$CCountedPointer@VCComponentContainer@NUISystem@@@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z+0xe>
+			a: DISP32	?ShareData@?$CCountedPointer@VCComponentContainer@NUISystem@@@@QAEXPAVCComponentContainer@NUISystem@@PAVCCPPointerInfo@@@Z
+   e:	ret    0x4
+
+Disassembly of section .text:
+
+00000000 <??$SetStaticCast@VCComponent@NUISystem@@@?$CCountedPointer@VCList@NUISystem@@@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z>:
+   0:	mov    eax,DWORD PTR [esp+0x4]
+   4:	push   DWORD PTR [eax+0x4]
+   7:	push   DWORD PTR [eax]
+   9:	call   e <??$SetStaticCast@VCComponent@NUISystem@@@?$CCountedPointer@VCList@NUISystem@@@@QAEXABV?$CCountedPointer@VCComponent@NUISystem@@@@@Z+0xe>
+			a: DISP32	?ShareData@?$CCountedPointer@VCList@NUISystem@@@@QAEXPAVCList@NUISystem@@PAVCCPPointerInfo@@@Z
+   e:	ret    0x4
+
+Disassembly of section .text:
+
+00000000 <??$_M_find@W4EHeroAbility@@@?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@1@ABW4EHeroAbility@@@Z>:
+   0:	mov    edx,DWORD PTR [ecx]
+   2:	mov    ecx,DWORD PTR [edx+0x4]
+   5:	test   ecx,ecx
+   7:	push   edi
+   8:	mov    edi,DWORD PTR [esp+0x8]
+   c:	mov    eax,edx
+   e:	je     27 <??$_M_find@W4EHeroAbility@@@?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@1@ABW4EHeroAbility@@@Z+0x27>
+  10:	push   esi
+  11:	mov    esi,DWORD PTR [edi]
+  13:	cmp    DWORD PTR [ecx+0x10],esi
+  16:	jl     1f <??$_M_find@W4EHeroAbility@@@?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@1@ABW4EHeroAbility@@@Z+0x1f>
+  18:	mov    eax,ecx
+  1a:	mov    ecx,DWORD PTR [ecx+0x8]
+  1d:	jmp    22 <??$_M_find@W4EHeroAbility@@@?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@1@ABW4EHeroAbility@@@Z+0x22>
+
+0000001f <$L13210>:
+  1f:	mov    ecx,DWORD PTR [ecx+0xc]
+  22:	test   ecx,ecx
+  24:	jne    13 <??$_M_find@W4EHeroAbility@@@?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@1@ABW4EHeroAbility@@@Z+0x13>
+  26:	pop    esi
+  27:	cmp    eax,edx
+  29:	je     32 <??$_M_find@W4EHeroAbility@@@?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@1@ABW4EHeroAbility@@@Z+0x32>
+  2b:	mov    ecx,DWORD PTR [edi]
+  2d:	cmp    ecx,DWORD PTR [eax+0x10]
+  30:	jge    34 <??$_M_find@W4EHeroAbility@@@?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@1@ABW4EHeroAbility@@@Z+0x34>
+  32:	mov    eax,edx
+  34:	pop    edi
+  35:	ret    0x4
+
+Disassembly of section .text:
+
+00000000 <?test@?$bitset@$0BBC@@std@@QBE_NI@Z>:
+   0:	cmp    DWORD PTR [esp+0x4],0x112
+   8:	jb     1a <?test@?$bitset@$0BBC@@std@@QBE_NI@Z+0x1a>
+   a:	push   0x0
+			b: dir32	??_C@_06CBNGNPJL@bitset?$AA@
+   f:	call   14 <?test@?$bitset@$0BBC@@std@@QBE_NI@Z+0x14>
+			10: DISP32	_puts
+  14:	pop    ecx
+  15:	call   1a <?test@?$bitset@$0BBC@@std@@QBE_NI@Z+0x1a>
+			16: DISP32	_abort
+  1a:	jmp    1f <$L13210>
+			1b: DISP32	?_Unchecked_test@?$bitset@$0BBC@@std@@QBE_NI@Z
+
+Disassembly of section .text:
+
+00000000 <??1?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ>:
+   0:	jmp    5 <@feat.00+0x4>
+			1: DISP32	??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ
+
+Disassembly of section .text:
+
+00000000 <?find@?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@2@@2@ABW4EHeroAbility@@@Z>:
+   0:	push   DWORD PTR [esp+0x8]
+   4:	call   9 <?find@?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@2@@2@ABW4EHeroAbility@@@Z+0x9>
+			5: DISP32	??$_M_find@W4EHeroAbility@@@?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@1@ABW4EHeroAbility@@@Z
+   9:	mov    ecx,DWORD PTR [esp+0x4]
+   d:	mov    DWORD PTR [ecx],eax
+   f:	mov    eax,ecx
+  11:	ret    0x8
+
+Disassembly of section .text:
+
+00000000 <?HasTC@CThing@@QBE_NW4ETCInterfaceType@@@Z>:
+   0:	add    ecx,0x20
+   3:	jmp    8 <@feat.00+0x7>
+			4: DISP32	?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+
+Disassembly of section .text:
+
+00000000 <??1CDeletion@NUISystem@@QAE@XZ>:
+   0:	add    ecx,0x4
+   3:	jmp    8 <@feat.00+0x7>
+			4: DISP32	??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ
+
+Disassembly of section .text:
+
+00000000 <?find@?$map@W4EHeroAbility@@USExpSpendUndo@@U?$less@W4EHeroAbility@@@std@@V?$allocator@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@2@@2@ABW4EHeroAbility@@@Z>:
+   0:	push   DWORD PTR [esp+0x8]
+   4:	call   9 <?find@?$map@W4EHeroAbility@@USExpSpendUndo@@U?$less@W4EHeroAbility@@@std@@V?$allocator@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@4@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@2@@2@ABW4EHeroAbility@@@Z+0x9>
+			5: DISP32	??$_M_find@W4EHeroAbility@@@?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@1@ABW4EHeroAbility@@@Z
+   9:	mov    ecx,DWORD PTR [esp+0x4]
+   d:	mov    DWORD PTR [ecx],eax
+   f:	mov    eax,ecx
+  11:	ret    0x8
+
+Disassembly of section .text:
+
+00000000 <??$GetTC@VCTCHeroStats@@@CThing@@QAE_NPAPAVCTCHeroStats@@@Z>:
+   0:	push   ebp
+   1:	mov    ebp,esp
+   3:	push   ecx
+   4:	push   esi
+   5:	mov    esi,ecx
+   7:	push   0x4
+   9:	lea    ecx,[esi+0x20]
+   c:	call   11 <??$GetTC@VCTCHeroStats@@@CThing@@QAE_NPAPAVCTCHeroStats@@@Z+0x11>
+			d: DISP32	?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+  11:	test   al,al
+  13:	je     44 <??$GetTC@VCTCHeroStats@@@CThing@@QAE_NPAPAVCTCHeroStats@@@Z+0x44>
+  15:	lea    eax,[ebp-0x4]
+  18:	add    esi,0x44
+  1b:	push   eax
+  1c:	mov    ecx,esi
+  1e:	.byte 0xc7
+
+0000001f <$L13210>:
+  1f:	inc    ebp
+  20:	cld
+  21:	add    al,0x0
+  23:	add    BYTE PTR [eax],al
+  25:	call   2a <??$GetTC@VCTCHeroStats@@@CThing@@QAE_NPAPAVCTCHeroStats@@@Z+0x2a>
+			26: DISP32	?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+  2a:	mov    esi,DWORD PTR [esi+0x4]
+  2d:	cmp    eax,esi
+  2f:	je     36 <??$GetTC@VCTCHeroStats@@@CThing@@QAE_NPAPAVCTCHeroStats@@@Z+0x36>
+  31:	cmp    DWORD PTR [eax],0x4
+  34:	jle    38 <??$GetTC@VCTCHeroStats@@@CThing@@QAE_NPAPAVCTCHeroStats@@@Z+0x38>
+  36:	mov    eax,esi
+  38:	mov    eax,DWORD PTR [eax+0x4]
+  3b:	mov    ecx,DWORD PTR [ebp+0x8]
+  3e:	mov    DWORD PTR [ecx],eax
+  40:	mov    al,0x1
+  42:	jmp    46 <??$GetTC@VCTCHeroStats@@@CThing@@QAE_NPAPAVCTCHeroStats@@@Z+0x46>
+  44:	xor    al,al
+  46:	pop    esi
+  47:	leave
+  48:	ret    0x4
+
+Disassembly of section .text:
+
+00000000 <??$GetTC@VCTCHeroExperience@@@CThing@@QAE_NPAPAVCTCHeroExperience@@@Z>:
+   0:	push   ebp
+   1:	mov    ebp,esp
+   3:	push   ecx
+   4:	push   esi
+   5:	mov    esi,ecx
+   7:	push   0x68
+   9:	lea    ecx,[esi+0x20]
+   c:	call   11 <??$GetTC@VCTCHeroExperience@@@CThing@@QAE_NPAPAVCTCHeroExperience@@@Z+0x11>
+			d: DISP32	?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+  11:	test   al,al
+  13:	je     44 <??$GetTC@VCTCHeroExperience@@@CThing@@QAE_NPAPAVCTCHeroExperience@@@Z+0x44>
+  15:	lea    eax,[ebp-0x4]
+  18:	add    esi,0x44
+  1b:	push   eax
+  1c:	mov    ecx,esi
+  1e:	.byte 0xc7
+
+0000001f <$L13210>:
+  1f:	inc    ebp
+  20:	cld
+  21:	push   0xe8000000
+  26:	add    BYTE PTR [eax],al
+			26: DISP32	?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+  28:	add    BYTE PTR [eax],al
+  2a:	mov    esi,DWORD PTR [esi+0x4]
+  2d:	cmp    eax,esi
+  2f:	je     36 <??$GetTC@VCTCHeroExperience@@@CThing@@QAE_NPAPAVCTCHeroExperience@@@Z+0x36>
+  31:	cmp    DWORD PTR [eax],0x68
+  34:	jle    38 <??$GetTC@VCTCHeroExperience@@@CThing@@QAE_NPAPAVCTCHeroExperience@@@Z+0x38>
+  36:	mov    eax,esi
+  38:	mov    eax,DWORD PTR [eax+0x4]
+  3b:	mov    ecx,DWORD PTR [ebp+0x8]
+  3e:	mov    DWORD PTR [ecx],eax
+  40:	mov    al,0x1
+  42:	jmp    46 <??$GetTC@VCTCHeroExperience@@@CThing@@QAE_NPAPAVCTCHeroExperience@@@Z+0x46>
+  44:	xor    al,al
+  46:	pop    esi
+  47:	leave
+  48:	ret    0x4
+
+Disassembly of section .text:
+
+00000000 <??$GetTC@VCTCInventoryAbilities@@@CThing@@QAE_NPAPAVCTCInventoryAbilities@@@Z>:
+   0:	push   ebp
+   1:	mov    ebp,esp
+   3:	push   ecx
+   4:	push   esi
+   5:	mov    esi,ecx
+   7:	push   0x6f
+   9:	lea    ecx,[esi+0x20]
+   c:	call   11 <??$GetTC@VCTCInventoryAbilities@@@CThing@@QAE_NPAPAVCTCInventoryAbilities@@@Z+0x11>
+			d: DISP32	?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+  11:	test   al,al
+  13:	je     44 <??$GetTC@VCTCInventoryAbilities@@@CThing@@QAE_NPAPAVCTCInventoryAbilities@@@Z+0x44>
+  15:	lea    eax,[ebp-0x4]
+  18:	add    esi,0x44
+  1b:	push   eax
+  1c:	mov    ecx,esi
+  1e:	.byte 0xc7
+
+0000001f <$L13210>:
+  1f:	inc    ebp
+  20:	cld
+  21:	outs   dx,DWORD PTR ds:[esi]
+  22:	add    BYTE PTR [eax],al
+  24:	add    al,ch
+  26:	add    BYTE PTR [eax],al
+			26: DISP32	?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+  28:	add    BYTE PTR [eax],al
+  2a:	mov    esi,DWORD PTR [esi+0x4]
+  2d:	cmp    eax,esi
+  2f:	je     36 <??$GetTC@VCTCInventoryAbilities@@@CThing@@QAE_NPAPAVCTCInventoryAbilities@@@Z+0x36>
+  31:	cmp    DWORD PTR [eax],0x6f
+  34:	jle    38 <??$GetTC@VCTCInventoryAbilities@@@CThing@@QAE_NPAPAVCTCInventoryAbilities@@@Z+0x38>
+  36:	mov    eax,esi
+  38:	mov    eax,DWORD PTR [eax+0x4]
+  3b:	mov    ecx,DWORD PTR [ebp+0x8]
+  3e:	mov    DWORD PTR [ecx],eax
+  40:	mov    al,0x1
+  42:	jmp    46 <??$GetTC@VCTCInventoryAbilities@@@CThing@@QAE_NPAPAVCTCInventoryAbilities@@@Z+0x46>
+  44:	xor    al,al
+  46:	pop    esi
+  47:	leave
+  48:	ret    0x4
+
+Disassembly of section .text:
+
+00000000 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z>:
+   0:	push   ebp
+   1:	lea    ebp,[esp-0x6c]
+   5:	sub    esp,0xd4
+   b:	mov    eax,ds:0x0
+			c: dir32	?PMainGameComponent@CMainGameComponent@@1PAV1@A
+  10:	mov    eax,DWORD PTR [eax+0x14]
+  13:	push   ebx
+  14:	push   esi
+  15:	push   edi
+  16:	mov    ebx,ecx
+  18:	mov    esi,DWORD PTR [ebx+0x4]
+  1b:	push   0x4
+  1d:	pop    edi
+  1e:	push   edi
+
+0000001f <$L13210>:
+  1f:	lea    ecx,[esi+0x20]
+  22:	mov    DWORD PTR [ebp-0x2c],eax
+  25:	call   2a <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x2a>
+			26: DISP32	?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+  2a:	test   al,al
+  2c:	je     52 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x52>
+  2e:	lea    eax,[ebp+0x68]
+  31:	add    esi,0x44
+  34:	push   eax
+  35:	mov    ecx,esi
+  37:	mov    DWORD PTR [ebp+0x68],edi
+  3a:	call   3f <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x3f>
+			3b: DISP32	?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+  3f:	mov    esi,DWORD PTR [esi+0x4]
+  42:	cmp    eax,esi
+  44:	je     4a <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x4a>
+  46:	cmp    DWORD PTR [eax],edi
+  48:	jle    4c <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x4c>
+  4a:	mov    eax,esi
+  4c:	mov    eax,DWORD PTR [eax+0x4]
+  4f:	mov    DWORD PTR [ebp+0x28],eax
+  52:	call   57 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x57>
+			53: DISP32	?GetInstance@CManager@NUISystem@@SIPAV12@XZ
+  57:	push   DWORD PTR [ebp+0x74]
+  5a:	mov    DWORD PTR [ebp+0x40],eax
+  5d:	lea    eax,[ebp+0xc]
+  60:	push   eax
+  61:	mov    ecx,ebx
+  63:	call   68 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x68>
+			64: DISP32	?GetExperienceAbilityName@CTCInventoryExperience@@QAE?AVCWideString@@J@Z
+  68:	mov    esi,DWORD PTR [ebx+0x4]
+  6b:	push   0x68
+  6d:	pop    edi
+  6e:	push   edi
+  6f:	lea    ecx,[esi+0x20]
+  72:	call   77 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x77>
+			73: DISP32	?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+  77:	test   al,al
+  79:	je     9f <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x9f>
+  7b:	lea    eax,[ebp+0x68]
+  7e:	add    esi,0x44
+  81:	push   eax
+  82:	mov    ecx,esi
+  84:	mov    DWORD PTR [ebp+0x68],edi
+  87:	call   8c <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x8c>
+			88: DISP32	?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+  8c:	mov    esi,DWORD PTR [esi+0x4]
+  8f:	cmp    eax,esi
+  91:	je     97 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x97>
+  93:	cmp    DWORD PTR [eax],edi
+  95:	jle    99 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x99>
+  97:	mov    eax,esi
+  99:	mov    eax,DWORD PTR [eax+0x4]
+  9c:	mov    DWORD PTR [ebp+0x54],eax
+  9f:	mov    esi,DWORD PTR [ebx+0x4]
+  a2:	push   0x6f
+  a4:	pop    edi
+  a5:	push   edi
+  a6:	lea    ecx,[esi+0x20]
+  a9:	call   ae <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xae>
+			aa: DISP32	?test@?$bitset@$0BBC@@std@@QBE_NI@Z
+  ae:	test   al,al
+  b0:	je     d6 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xd6>
+  b2:	lea    eax,[ebp+0x68]
+  b5:	add    esi,0x44
+  b8:	push   eax
+  b9:	mov    ecx,esi
+  bb:	mov    DWORD PTR [ebp+0x68],edi
+  be:	call   c3 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xc3>
+			bf: DISP32	?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z
+  c3:	mov    esi,DWORD PTR [esi+0x4]
+  c6:	cmp    eax,esi
+  c8:	je     ce <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xce>
+  ca:	cmp    DWORD PTR [eax],edi
+  cc:	jle    d0 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xd0>
+  ce:	mov    eax,esi
+  d0:	mov    eax,DWORD PTR [eax+0x4]
+  d3:	mov    DWORD PTR [ebp+0x58],eax
+  d6:	push   DWORD PTR [ebp+0x74]
+  d9:	mov    ecx,DWORD PTR [ebp+0x58]
+  dc:	call   e1 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xe1>
+			dd: DISP32	?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z
+  e1:	push   DWORD PTR [ebp+0x74]
+  e4:	mov    ecx,DWORD PTR [ebp+0x58]
+  e7:	mov    esi,eax
+  e9:	inc    esi
+  ea:	inc    esi
+  eb:	mov    DWORD PTR [ebp+0x68],esi
+  ee:	call   f3 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xf3>
+			ef: DISP32	?GetAbilityMaximumLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z
+  f3:	push   DWORD PTR [ebp+0x74]
+  f6:	mov    ecx,DWORD PTR [ebp+0x58]
+  f9:	mov    DWORD PTR [ebp+0x64],eax
+  fc:	call   101 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x101>
+			fd: DISP32	?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z
+ 101:	mov    ecx,DWORD PTR [ebp+0x64]
+ 104:	or     edi,0xffffffff
+ 107:	cmp    ecx,eax
+ 109:	jle    158 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x158>
+ 10b:	push   edi
+ 10c:	push   0x0
+			10d: dir32	??_C@_02EOIDJNGE@?5?$CL?$AA@
+ 111:	lea    ecx,[ebp+0x60]
+ 114:	call   119 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x119>
+			115: DISP32	??0CCharString@@QAE@PBDJ@Z
+ 119:	lea    edx,[ebp+0x60]
+ 11c:	lea    ecx,[ebp+0x64]
+ 11f:	call   124 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x124>
+			120: DISP32	?CreateFromCharString@CWideString@@SI?AV1@ABVCCharString@@@Z
+ 124:	push   eax
+ 125:	lea    ecx,[ebp+0xc]
+ 128:	call   12d <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x12d>
+			129: DISP32	??YCWideString@@QAEABV0@ABV0@@Z
+ 12d:	lea    ecx,[ebp+0x64]
+ 130:	call   135 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x135>
+			131: DISP32	??1CWideString@@QAE@XZ
+ 135:	lea    ecx,[ebp+0x60]
+ 138:	call   13d <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x13d>
+			139: DISP32	??1CCharString@@QAE@XZ
+ 13d:	mov    edx,esi
+ 13f:	lea    ecx,[ebp+0x64]
+ 142:	call   147 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x147>
+			143: DISP32	?GFIntToWideString@@YI?AVCWideString@@J@Z
+ 147:	push   eax
+ 148:	lea    ecx,[ebp+0xc]
+ 14b:	call   150 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x150>
+			14c: DISP32	??YCWideString@@QAEABV0@ABV0@@Z
+ 150:	lea    ecx,[ebp+0x64]
+ 153:	call   158 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x158>
+			154: DISP32	??1CWideString@@QAE@XZ
+ 158:	push   edi
+ 159:	push   0x0
+			15a: dir32	??_C@_0CJ@IGKMLEAL@UI_WEAPON_MENU_ENTRY_BRANCH_TEMP@
+ 15e:	lea    ecx,[ebp+0x60]
+ 161:	call   166 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x166>
+			162: DISP32	??0CCharString@@QAE@PBDJ@Z
+ 166:	push   ecx
+ 167:	mov    ecx,esp
+ 169:	push   edi
+ 16a:	push   0x0
+			16b: dir32	??_C@_0BC@NNOGNHJ@PC_BUTTON_BASTARD?$AA@
+ 16f:	call   174 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x174>
+			170: DISP32	??0CCharString@@QAE@PBDJ@Z
+ 174:	fldz
+ 176:	push   ecx
+ 177:	push   ecx
+ 178:	fstp   DWORD PTR [esp+0x4]
+ 17c:	mov    ecx,esp
+ 17e:	push   edi
+ 17f:	push   0x0
+			180: dir32	??_C@_00CNPNBAHC@?$AA@
+ 184:	call   189 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x189>
+			185: DISP32	??0CCharString@@QAE@PBDJ@Z
+ 189:	fldz
+ 18b:	push   ecx
+ 18c:	fstp   DWORD PTR [esp]
+ 18f:	lea    eax,[ebp+0x60]
+ 192:	fldz
+ 194:	push   eax
+ 195:	push   ecx
+ 196:	push   ecx
+ 197:	mov    ecx,DWORD PTR [ebp+0x40]
+ 19a:	fstp   DWORD PTR [esp+0x4]
+ 19e:	fldz
+ 1a0:	lea    eax,[ebp+0xc]
+ 1a3:	fstp   DWORD PTR [esp]
+ 1a6:	push   eax
+ 1a7:	call   1ac <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x1ac>
+			1a8: DISP32	?CreateMenuEntryComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@MMABVCCharString@@MV5@MV5@@Z
+ 1ac:	push   eax
+ 1ad:	lea    ecx,[ebp+0x14]
+ 1b0:	call   1b5 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x1b5>
+			1b1: DISP32	??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z
+ 1b5:	lea    ecx,[ebp+0x60]
+ 1b8:	call   1bd <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x1bd>
+			1b9: DISP32	??1CCharString@@QAE@XZ
+ 1bd:	push   edi
+ 1be:	push   0x0
+			1bf: dir32	??_C@_08LHDKCEKL@UI_MOVIE?$AA@
+ 1c3:	lea    ecx,[ebp+0x60]
+ 1c6:	call   1cb <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x1cb>
+			1c7: DISP32	??0CCharString@@QAE@PBDJ@Z
+ 1cb:	mov    ecx,DWORD PTR [ebp+0x40]
+ 1ce:	push   0x0
+ 1d0:	lea    eax,[ebp+0x60]
+ 1d3:	push   eax
+ 1d4:	call   1d9 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x1d9>
+			1d5: DISP32	?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z
+ 1d9:	push   eax
+ 1da:	lea    ecx,[ebp-0x48]
+ 1dd:	call   1e2 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x1e2>
+			1de: DISP32	??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z
+ 1e2:	lea    ecx,[ebp+0x60]
+ 1e5:	call   1ea <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x1ea>
+			1e6: DISP32	??1CCharString@@QAE@XZ
+ 1ea:	push   DWORD PTR [ebp+0x74]
+ 1ed:	mov    esi,DWORD PTR [ebp-0x48]
+ 1f0:	lea    eax,[ebp-0x38]
+ 1f3:	push   eax
+ 1f4:	mov    ecx,ebx
+ 1f6:	call   1fb <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x1fb>
+			1f7: DISP32	?GetExperienceAbilityMovieName@CTCInventoryExperience@@QAE?AVCWideString@@W4EHeroAbility@@@Z
+ 1fb:	mov    eax,DWORD PTR [esi]
+ 1fd:	lea    ecx,[ebp-0x38]
+ 200:	push   ecx
+ 201:	mov    ecx,esi
+ 203:	call   DWORD PTR [eax+0x238]
+ 209:	mov    ecx,DWORD PTR [ebp+0x14]
+ 20c:	mov    eax,DWORD PTR [ecx]
+ 20e:	lea    edx,[ebp-0x48]
+ 211:	push   edx
+ 212:	call   DWORD PTR [eax+0xec]
+ 218:	mov    ecx,DWORD PTR [ebx+0x1d8]
+ 21e:	test   ecx,ecx
+ 220:	je     22d <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x22d>
+ 222:	push   DWORD PTR [ebp-0x48]
+ 225:	mov    eax,DWORD PTR [ecx]
+ 227:	call   DWORD PTR [eax+0x238]
+ 22d:	push   edi
+ 22e:	push   0x0
+			22f: dir32	??_C@_0BE@EMNHECIF@UI_STAT_DESCRIPTION?$AA@
+ 233:	lea    ecx,[ebp+0x60]
+ 236:	call   23b <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x23b>
+			237: DISP32	??0CCharString@@QAE@PBDJ@Z
+ 23b:	mov    ecx,DWORD PTR [ebp+0x40]
+ 23e:	push   0x0
+ 240:	lea    eax,[ebp+0x60]
+ 243:	push   eax
+ 244:	call   249 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x249>
+			245: DISP32	?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z
+ 249:	push   eax
+ 24a:	lea    ecx,[ebp-0x34]
+ 24d:	call   252 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x252>
+			24e: DISP32	??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z
+ 252:	lea    ecx,[ebp+0x60]
+ 255:	call   25a <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x25a>
+			256: DISP32	??1CCharString@@QAE@XZ
+ 25a:	mov    ecx,DWORD PTR [ebp+0x14]
+ 25d:	mov    eax,DWORD PTR [ecx]
+ 25f:	lea    edx,[ebp-0x34]
+ 262:	push   edx
+ 263:	call   DWORD PTR [eax+0xec]
+ 269:	mov    ecx,DWORD PTR [ebx+0x1dc]
+ 26f:	test   ecx,ecx
+ 271:	je     27e <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x27e>
+ 273:	push   DWORD PTR [ebp-0x34]
+ 276:	mov    eax,DWORD PTR [ecx]
+ 278:	call   DWORD PTR [eax+0x238]
+ 27e:	push   DWORD PTR [ebp-0x30]
+ 281:	and    DWORD PTR [ebp-0x40],0x0
+ 285:	push   DWORD PTR [ebp-0x34]
+ 288:	and    DWORD PTR [ebp-0x3c],0x0
+ 28c:	lea    ecx,[ebp-0x40]
+ 28f:	call   294 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x294>
+			290: DISP32	?ShareData@?$CCountedPointer@VCComponentContainer@NUISystem@@@@QAEXPAVCComponentContainer@NUISystem@@PAVCCPPointerInfo@@@Z
+ 294:	push   DWORD PTR [ebp+0x74]
+ 297:	mov    ecx,DWORD PTR [ebp+0x58]
+ 29a:	call   29f <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x29f>
+			29b: DISP32	?GetAbilityMaximumLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z
+ 29f:	push   DWORD PTR [ebp+0x74]
+ 2a2:	mov    ecx,DWORD PTR [ebp+0x58]
+ 2a5:	mov    esi,eax
+ 2a7:	call   2ac <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x2ac>
+			2a8: DISP32	?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z
+ 2ac:	cmp    esi,eax
+ 2ae:	mov    esi,DWORD PTR [ebp-0x40]
+ 2b1:	jle    608 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x608>
+ 2b7:	push   0x0
+			2b8: dir32	??_C@_13HOIJIPNN@?$AA?5?$AA?$AA@
+ 2bc:	lea    ecx,[ebp+0x8]
+ 2bf:	call   2c4 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x2c4>
+			2c0: DISP32	??0CWideString@@QAE@PBG@Z
+ 2c4:	mov    ecx,DWORD PTR [ebp+0x58]
+ 2c7:	push   0x1
+ 2c9:	push   0x1
+ 2cb:	push   DWORD PTR [ebp+0x74]
+ 2ce:	call   2d3 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x2d3>
+			2cf: DISP32	?GetExperienceCostToUpgradeAbility@CTCInventoryAbilities@@QBEJW4EHeroAbility@@J_N@Z
+ 2d3:	push   0xffffffff
+ 2d5:	push   0x0
+			2d6: dir32	??_C@_0BI@MHKGDJKO@TEXT_GUI_MENU_EXP_LEVEL?$AA@
+ 2da:	lea    ecx,[ebp+0x5c]
+ 2dd:	mov    edi,eax
+ 2df:	call   2e4 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x2e4>
+			2e0: DISP32	??0CCharString@@QAE@PBDJ@Z
+ 2e4:	push   0x0
+			2e5: dir32	??_C@_13LBAGMAIH@?$AA?6?$AA?$AA@
+ 2e9:	lea    ecx,[ebp+0x4c]
+ 2ec:	call   2f1 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x2f1>
+			2ed: DISP32	??0CWideString@@QAE@PBG@Z
+ 2f1:	mov    edx,DWORD PTR [ebp+0x68]
+ 2f4:	push   eax
+ 2f5:	lea    ecx,[ebp+0x48]
+ 2f8:	call   2fd <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x2fd>
+			2f9: DISP32	?GFIntToWideString@@YI?AVCWideString@@J@Z
+ 2fd:	mov    ecx,DWORD PTR [ebp-0x2c]
+ 300:	push   eax
+ 301:	lea    eax,[ebp+0x8]
+ 304:	push   eax
+ 305:	lea    eax,[ebp+0x5c]
+ 308:	push   eax
+ 309:	lea    eax,[ebp+0x20]
+ 30c:	push   eax
+ 30d:	call   312 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x312>
+			30e: DISP32	?GetTextBySymbol@CDataBank@NGameText@@QBE?BVCWideString@@ABVCCharString@@@Z
+ 312:	push   eax
+ 313:	lea    eax,[ebp+0x8]
+ 316:	push   eax
+ 317:	push   DWORD PTR [ebp+0x74]
+ 31a:	lea    eax,[ebp+0x4]
+ 31d:	push   eax
+ 31e:	mov    ecx,ebx
+ 320:	call   325 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x325>
+			321: DISP32	?GetExperienceAbilityName@CTCInventoryExperience@@QAE?AVCWideString@@J@Z
+ 325:	mov    edx,eax
+ 327:	lea    ecx,[ebp-0x4]
+ 32a:	call   32f <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x32f>
+			32b: DISP32	??H@YI?AVCWideString@@ABV0@0@Z
+ 32f:	mov    edx,eax
+ 331:	lea    ecx,[ebp-0xc]
+ 334:	call   339 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x339>
+			335: DISP32	??H@YI?AVCWideString@@ABV0@0@Z
+ 339:	mov    edx,eax
+ 33b:	lea    ecx,[ebp-0x24]
+ 33e:	call   343 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x343>
+			33f: DISP32	??H@YI?AVCWideString@@ABV0@0@Z
+ 343:	mov    edx,eax
+ 345:	lea    ecx,[ebp+0x64]
+ 348:	call   34d <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x34d>
+			349: DISP32	??H@YI?AVCWideString@@ABV0@0@Z
+ 34d:	mov    edx,eax
+ 34f:	lea    ecx,[ebp+0x60]
+ 352:	call   357 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x357>
+			353: DISP32	??H@YI?AVCWideString@@ABV0@0@Z
+ 357:	lea    ecx,[ebp+0x64]
+ 35a:	call   35f <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x35f>
+			35b: DISP32	??1CWideString@@QAE@XZ
+ 35f:	lea    ecx,[ebp-0x24]
+ 362:	call   367 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x367>
+			363: DISP32	??1CWideString@@QAE@XZ
+ 367:	lea    ecx,[ebp-0xc]
+ 36a:	call   36f <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x36f>
+			36b: DISP32	??1CWideString@@QAE@XZ
+ 36f:	lea    ecx,[ebp-0x4]
+ 372:	call   377 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x377>
+			373: DISP32	??1CWideString@@QAE@XZ
+ 377:	lea    ecx,[ebp+0x4]
+ 37a:	call   37f <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x37f>
+			37b: DISP32	??1CWideString@@QAE@XZ
+ 37f:	lea    ecx,[ebp+0x20]
+ 382:	call   387 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x387>
+			383: DISP32	??1CWideString@@QAE@XZ
+ 387:	lea    ecx,[ebp+0x48]
+ 38a:	call   38f <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x38f>
+			38b: DISP32	??1CWideString@@QAE@XZ
+ 38f:	lea    ecx,[ebp+0x4c]
+ 392:	call   397 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x397>
+			393: DISP32	??1CWideString@@QAE@XZ
+ 397:	lea    ecx,[ebp+0x5c]
+ 39a:	call   39f <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x39f>
+			39b: DISP32	??1CCharString@@QAE@XZ
+ 39f:	push   0xffffffff
+ 3a1:	push   0x0
+			3a2: dir32	??_C@_0BO@CKCDEIB@TEXT_GUI_MENU_EXPERIENCE_COST?$AA@
+ 3a6:	lea    ecx,[ebp+0x5c]
+ 3a9:	call   3ae <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x3ae>
+			3aa: DISP32	??0CCharString@@QAE@PBDJ@Z
+ 3ae:	mov    eax,ds:0x0
+			3af: dir32	?PMainGameComponent@CMainGameComponent@@1PAV1@A
+ 3b3:	mov    eax,DWORD PTR [eax+0x14]
+ 3b6:	mov    edx,edi
+ 3b8:	lea    ecx,[ebp-0xc]
+ 3bb:	mov    DWORD PTR [ebp+0x4c],eax
+ 3be:	call   3c3 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x3c3>
+			3bf: DISP32	?GFIntToWideString@@YI?AVCWideString@@J@Z
+ 3c3:	push   eax
+ 3c4:	push   0x0
+			3c5: dir32	??_C@_15ELOONFKJ@?$AA?3?$AA?5?$AA?$AA@
+ 3c9:	lea    ecx,[ebp-0x4]
+ 3cc:	call   3d1 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x3d1>
+			3cd: DISP32	??0CWideString@@QAE@PBG@Z
+ 3d1:	mov    ecx,DWORD PTR [ebp+0x4c]
+ 3d4:	push   eax
+ 3d5:	lea    eax,[ebp+0x5c]
+ 3d8:	push   eax
+ 3d9:	lea    eax,[ebp+0x4]
+ 3dc:	push   eax
+ 3dd:	call   3e2 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x3e2>
+			3de: DISP32	?GetTextBySymbol@CDataBank@NGameText@@QBE?BVCWideString@@ABVCCharString@@@Z
+ 3e2:	mov    edx,eax
+ 3e4:	lea    ecx,[ebp+0x20]
+ 3e7:	call   3ec <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x3ec>
+			3e8: DISP32	??H@YI?AVCWideString@@ABV0@0@Z
+ 3ec:	mov    edx,eax
+ 3ee:	lea    ecx,[ebp+0x48]
+ 3f1:	call   3f6 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x3f6>
+			3f2: DISP32	??H@YI?AVCWideString@@ABV0@0@Z
+ 3f6:	push   eax
+ 3f7:	lea    ecx,[ebp+0x60]
+ 3fa:	call   3ff <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x3ff>
+			3fb: DISP32	??YCWideString@@QAEABV0@ABV0@@Z
+ 3ff:	lea    ecx,[ebp+0x48]
+ 402:	call   407 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x407>
+			403: DISP32	??1CWideString@@QAE@XZ
+ 407:	lea    ecx,[ebp+0x20]
+ 40a:	call   40f <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x40f>
+			40b: DISP32	??1CWideString@@QAE@XZ
+ 40f:	lea    ecx,[ebp+0x4]
+ 412:	call   417 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x417>
+			413: DISP32	??1CWideString@@QAE@XZ
+ 417:	lea    ecx,[ebp-0x4]
+ 41a:	call   41f <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x41f>
+			41b: DISP32	??1CWideString@@QAE@XZ
+ 41f:	lea    ecx,[ebp-0xc]
+ 422:	call   427 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x427>
+			423: DISP32	??1CWideString@@QAE@XZ
+ 427:	lea    ecx,[ebp+0x5c]
+ 42a:	call   42f <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x42f>
+			42b: DISP32	??1CCharString@@QAE@XZ
+ 42f:	push   DWORD PTR [ebp+0x74]
+ 432:	lea    eax,[ebp-0x20]
+ 435:	push   eax
+ 436:	mov    ecx,ebx
+ 438:	call   43d <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x43d>
+			439: DISP32	?GetExperienceAbilityColour@CTCInventoryExperience@@QAE?AVCRGBFloatColour@@W4EHeroAbility@@@Z
+ 43d:	mov    ecx,DWORD PTR [ebp+0x58]
+ 440:	push   0xd2
+ 445:	push   DWORD PTR [ebp+0x74]
+ 448:	call   44d <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x44d>
+			449: DISP32	?GetAbilityGraphicIndex@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z
+ 44d:	fld    DWORD PTR ds:0x0
+			44f: dir32	__real@437f0000
+ 453:	fld    DWORD PTR [ebp-0x14]
+ 456:	push   eax
+ 457:	fmul   st,st(1)
+ 459:	call   45e <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x45e>
+			45a: DISP32	__ftol2
+ 45e:	fld    DWORD PTR [ebp-0x18]
+ 461:	fmul   st,st(1)
+ 463:	mov    BYTE PTR [ebp+0x2c],al
+ 466:	call   46b <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x46b>
+			467: DISP32	__ftol2
+ 46b:	fld    DWORD PTR [ebp-0x1c]
+ 46e:	fmul   st,st(1)
+ 470:	mov    BYTE PTR [ebp+0x34],al
+ 473:	call   478 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x478>
+			474: DISP32	__ftol2
+ 478:	fld    DWORD PTR [ebp-0x20]
+ 47b:	fmul   st,st(1)
+ 47d:	mov    BYTE PTR [ebp+0x30],al
+ 480:	call   485 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x485>
+			481: DISP32	__ftol2
+ 485:	fstp   st(0)
+ 487:	push   ecx
+ 488:	mov    ecx,esp
+ 48a:	mov    BYTE PTR [ecx+0x2],al
+ 48d:	mov    al,BYTE PTR [ebp+0x30]
+ 490:	mov    BYTE PTR [ecx+0x1],al
+ 493:	mov    al,BYTE PTR [ebp+0x34]
+ 496:	mov    BYTE PTR [ecx],al
+ 498:	mov    al,BYTE PTR [ebp+0x2c]
+ 49b:	mov    BYTE PTR [ecx+0x3],al
+ 49e:	mov    eax,DWORD PTR [esi]
+ 4a0:	lea    ecx,[ebp+0x60]
+ 4a3:	push   ecx
+ 4a4:	mov    ecx,esi
+ 4a6:	call   DWORD PTR [eax+0x23c]
+ 4ac:	mov    ecx,DWORD PTR [ebp+0x58]
+ 4af:	push   0x0
+ 4b1:	push   0x1
+ 4b3:	push   DWORD PTR [ebp+0x74]
+ 4b6:	call   4bb <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x4bb>
+			4b7: DISP32	?GetExperienceCostToUpgradeAbility@CTCInventoryAbilities@@QBEJW4EHeroAbility@@J_N@Z
+ 4bb:	sub    edi,eax
+ 4bd:	je     5af <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x5af>
+ 4c3:	mov    edx,edi
+ 4c5:	lea    ecx,[ebp+0x5c]
+ 4c8:	call   4cd <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x4cd>
+			4c9: DISP32	?GFIntToWideString@@YI?AVCWideString@@J@Z
+ 4cd:	test   edi,edi
+ 4cf:	jle    505 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x505>
+ 4d1:	lea    eax,[ebp+0x5c]
+ 4d4:	push   eax
+ 4d5:	push   0x0
+			4d6: dir32	??_C@_13KJIIAINM@?$AA?$CL?$AA?$AA@
+ 4da:	lea    ecx,[ebp+0x48]
+ 4dd:	call   4e2 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x4e2>
+			4de: DISP32	??0CWideString@@QAE@PBG@Z
+ 4e2:	mov    edx,eax
+ 4e4:	lea    ecx,[ebp+0x4c]
+ 4e7:	call   4ec <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x4ec>
+			4e8: DISP32	??H@YI?AVCWideString@@ABV0@0@Z
+ 4ec:	push   eax
+ 4ed:	lea    ecx,[ebp+0x5c]
+ 4f0:	call   4f5 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x4f5>
+			4f1: DISP32	??4CWideString@@QAEABV0@ABV0@@Z
+ 4f5:	lea    ecx,[ebp+0x4c]
+ 4f8:	call   4fd <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x4fd>
+			4f9: DISP32	??1CWideString@@QAE@XZ
+ 4fd:	lea    ecx,[ebp+0x48]
+ 500:	call   505 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x505>
+			501: DISP32	??1CWideString@@QAE@XZ
+ 505:	push   0xffffffff
+ 507:	push   0x0
+			508: dir32	??_C@_0CB@IGGICOHH@TEXT_GUI_MENU_ALIGNMENT_MODIFIER@
+ 50c:	lea    ecx,[ebp+0x64]
+ 50f:	call   514 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x514>
+			510: DISP32	??0CCharString@@QAE@PBDJ@Z
+ 514:	mov    ecx,DWORD PTR [ebp-0x2c]
+ 517:	lea    eax,[ebp+0x5c]
+ 51a:	push   eax
+ 51b:	lea    eax,[ebp+0x8]
+ 51e:	push   eax
+ 51f:	lea    eax,[ebp+0x64]
+ 522:	push   eax
+ 523:	lea    eax,[ebp+0x20]
+ 526:	push   eax
+ 527:	call   52c <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x52c>
+			528: DISP32	?GetTextBySymbol@CDataBank@NGameText@@QBE?BVCWideString@@ABVCCharString@@@Z
+ 52c:	mov    edx,eax
+ 52e:	lea    ecx,[ebp+0x48]
+ 531:	call   536 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x536>
+			532: DISP32	??H@YI?AVCWideString@@ABV0@0@Z
+ 536:	mov    edx,eax
+ 538:	lea    ecx,[ebp+0x4c]
+ 53b:	call   540 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x540>
+			53c: DISP32	??H@YI?AVCWideString@@ABV0@0@Z
+ 540:	push   eax
+ 541:	lea    ecx,[ebp+0x5c]
+ 544:	call   549 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x549>
+			545: DISP32	??4CWideString@@QAEABV0@ABV0@@Z
+ 549:	lea    ecx,[ebp+0x4c]
+ 54c:	call   551 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x551>
+			54d: DISP32	??1CWideString@@QAE@XZ
+ 551:	lea    ecx,[ebp+0x48]
+ 554:	call   559 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x559>
+			555: DISP32	??1CWideString@@QAE@XZ
+ 559:	lea    ecx,[ebp+0x20]
+ 55c:	call   561 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x561>
+			55d: DISP32	??1CWideString@@QAE@XZ
+ 561:	lea    ecx,[ebp+0x64]
+ 564:	call   569 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x569>
+			565: DISP32	??1CCharString@@QAE@XZ
+ 569:	mov    ecx,DWORD PTR [ebp+0x28]
+ 56c:	call   571 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x571>
+			56d: DISP32	?GetMoralityPercentage@CTCHeroStats@@QBEMXZ
+ 571:	fstp   st(0)
+ 573:	push   0xf0
+ 578:	push   ecx
+ 579:	mov    ecx,esp
+ 57b:	push   0xffffffff
+ 57d:	push   0x0
+			57e: dir32	??_C@_00CNPNBAHC@?$AA@
+ 582:	call   587 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x587>
+			583: DISP32	??0CCharString@@QAE@PBDJ@Z
+ 587:	push   ecx
+ 588:	mov    eax,esp
+ 58a:	lea    ecx,[ebp+0x5c]
+ 58d:	mov    BYTE PTR [eax+0x2],0xff
+ 591:	mov    BYTE PTR [eax+0x1],0xff
+ 595:	mov    BYTE PTR [eax],0xff
+ 598:	mov    BYTE PTR [eax+0x3],0xff
+ 59c:	mov    eax,DWORD PTR [esi]
+ 59e:	push   ecx
+ 59f:	mov    ecx,esi
+ 5a1:	call   DWORD PTR [eax+0x238]
+ 5a7:	lea    ecx,[ebp+0x5c]
+ 5aa:	call   5af <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x5af>
+			5ab: DISP32	??1CWideString@@QAE@XZ
+ 5af:	push   0xf0
+ 5b4:	push   ecx
+ 5b5:	mov    ecx,esp
+ 5b7:	push   0xffffffff
+ 5b9:	push   0x0
+			5ba: dir32	??_C@_00CNPNBAHC@?$AA@
+ 5be:	call   5c3 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x5c3>
+			5bf: DISP32	??0CCharString@@QAE@PBDJ@Z
+ 5c3:	push   ecx
+ 5c4:	mov    eax,esp
+ 5c6:	mov    BYTE PTR [eax+0x2],0x0
+ 5ca:	mov    BYTE PTR [eax+0x1],0x0
+ 5ce:	mov    BYTE PTR [eax],0x0
+ 5d1:	mov    BYTE PTR [eax+0x3],0xff
+ 5d5:	mov    edi,DWORD PTR [esi]
+ 5d7:	push   0x0
+			5d8: dir32	??_C@_11LOCGONAA@?$AA?$AA@
+ 5dc:	lea    ecx,[ebp+0x28]
+ 5df:	call   5e4 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x5e4>
+			5e0: DISP32	??0CWideString@@QAE@PBG@Z
+ 5e4:	push   eax
+ 5e5:	mov    ecx,esi
+ 5e7:	call   DWORD PTR [edi+0x238]
+ 5ed:	lea    ecx,[ebp+0x28]
+ 5f0:	call   5f5 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x5f5>
+			5f1: DISP32	??1CWideString@@QAE@XZ
+ 5f5:	lea    ecx,[ebp+0x60]
+ 5f8:	call   5fd <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x5fd>
+			5f9: DISP32	??1CWideString@@QAE@XZ
+ 5fd:	lea    ecx,[ebp+0x8]
+ 600:	call   605 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x605>
+			601: DISP32	??1CWideString@@QAE@XZ
+ 605:	or     edi,0xffffffff
+ 608:	push   0xf0
+ 60d:	push   ecx
+ 60e:	mov    ecx,esp
+ 610:	push   edi
+ 611:	push   0x0
+			612: dir32	??_C@_00CNPNBAHC@?$AA@
+ 616:	call   61b <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x61b>
+			617: DISP32	??0CCharString@@QAE@PBDJ@Z
+ 61b:	push   ecx
+ 61c:	mov    eax,esp
+ 61e:	mov    BYTE PTR [eax+0x2],0xff
+ 622:	mov    BYTE PTR [eax+0x1],0xff
+ 626:	mov    BYTE PTR [eax],0xff
+ 629:	mov    BYTE PTR [eax+0x3],0xff
+ 62d:	mov    eax,DWORD PTR [ebp+0x68]
+ 630:	mov    edi,DWORD PTR [esi]
+ 632:	dec    eax
+ 633:	push   eax
+ 634:	push   DWORD PTR [ebp+0x74]
+ 637:	lea    eax,[ebp+0x28]
+ 63a:	push   eax
+ 63b:	mov    ecx,ebx
+ 63d:	call   642 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x642>
+			63e: DISP32	?GetExperienceAbilityDescription@CTCInventoryExperience@@QAE?AVCWideString@@JJ@Z
+ 642:	push   eax
+ 643:	mov    ecx,esi
+ 645:	call   DWORD PTR [edi+0x238]
+ 64b:	lea    ecx,[ebp+0x28]
+ 64e:	call   653 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x653>
+			64f: DISP32	??1CWideString@@QAE@XZ
+ 653:	fldz
+ 655:	mov    ecx,DWORD PTR [ebp+0x54]
+ 658:	fstp   DWORD PTR [ebp+0x10]
+ 65b:	lea    eax,[ebp+0x10]
+ 65e:	push   eax
+ 65f:	push   DWORD PTR [ebp+0x74]
+ 662:	call   667 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x667>
+			663: DISP32	?GetAbilityPossibleLevelUpAmount@CTCHeroExperience@@QAEJW4EHeroAbility@@AAM@Z
+ 667:	push   DWORD PTR [ebp+0x74]
+ 66a:	mov    ecx,DWORD PTR [ebp+0x58]
+ 66d:	mov    esi,eax
+ 66f:	mov    DWORD PTR [ebp+0x60],esi
+ 672:	call   677 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x677>
+			673: DISP32	?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z
+ 677:	lea    eax,[eax+esi*1+0x1]
+ 67b:	mov    DWORD PTR [ebp+0x54],eax
+ 67e:	fild   DWORD PTR [ebp+0x54]
+ 681:	fadd   DWORD PTR [ebp+0x10]
+ 684:	fst    DWORD PTR [ebp+0x10]
+ 687:	fcomp  DWORD PTR ds:0x0
+			689: dir32	__real@00000000
+ 68d:	fnstsw ax
+ 68f:	test   ah,0x5
+ 692:	jp     699 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x699>
+ 694:	fldz
+ 696:	fstp   DWORD PTR [ebp+0x10]
+ 699:	push   DWORD PTR [ebp+0x74]
+ 69c:	mov    ecx,DWORD PTR [ebp+0x58]
+ 69f:	mov    BYTE PTR [ebp+0x64],0x1
+ 6a3:	call   6a8 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x6a8>
+			6a4: DISP32	?GetAbilityMoralityCostFactor@CTCInventoryAbilities@@QAEMW4EHeroAbility@@@Z
+ 6a8:	fld    DWORD PTR ds:0x0
+			6aa: dir32	?DELTA_NOTIONAL_ZERO@@3MB
+ 6ae:	fchs
+ 6b0:	fld    st(1)
+ 6b2:	fcompp
+ 6b4:	fnstsw ax
+ 6b6:	test   ah,0x5
+ 6b9:	jp     6df <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x6df>
+ 6bb:	fstp   st(0)
+ 6bd:	fld1
+ 6bf:	fstp   DWORD PTR [ebp-0x20]
+ 6c2:	fldz
+ 6c4:	fstp   DWORD PTR [ebp-0x1c]
+ 6c7:	fldz
+ 6c9:	fstp   DWORD PTR [ebp-0x18]
+ 6cc:	mov    DWORD PTR [ebp-0x14],0x3ecccccd
+ 6d3:	lea    esi,[ebp-0x20]
+ 6d6:	lea    edi,[ebp-0x68]
+ 6d9:	movs   DWORD PTR es:[edi],DWORD PTR ds:[esi]
+ 6da:	movs   DWORD PTR es:[edi],DWORD PTR ds:[esi]
+ 6db:	movs   DWORD PTR es:[edi],DWORD PTR ds:[esi]
+ 6dc:	movs   DWORD PTR es:[edi],DWORD PTR ds:[esi]
+ 6dd:	jmp    6fe <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x6fe>
+ 6df:	fcomp  DWORD PTR ds:0x0
+			6e1: dir32	?DELTA_NOTIONAL_ZERO@@3MB
+ 6e5:	fnstsw ax
+ 6e7:	test   ah,0x41
+ 6ea:	jne    6fa <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x6fa>
+ 6ec:	fldz
+ 6ee:	fstp   DWORD PTR [ebp-0x20]
+ 6f1:	fldz
+ 6f3:	fstp   DWORD PTR [ebp-0x1c]
+ 6f6:	fld1
+ 6f8:	jmp    6c9 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x6c9>
+ 6fa:	mov    BYTE PTR [ebp+0x64],0x0
+ 6fe:	push   0xffffffff
+ 700:	push   0x0
+			701: dir32	??_C@_0CG@JLJKPDLK@UI_EXPERIENCE_SPENDING_TICK_CONT@
+ 705:	lea    ecx,[ebp+0x68]
+ 708:	call   70d <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x70d>
+			709: DISP32	??0CCharString@@QAE@PBDJ@Z
+ 70d:	mov    ecx,DWORD PTR [ebp+0x40]
+ 710:	xor    edi,edi
+ 712:	push   edi
+ 713:	lea    eax,[ebp+0x68]
+ 716:	push   eax
+ 717:	call   71c <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x71c>
+			718: DISP32	?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z
+ 71c:	push   eax
+ 71d:	lea    ecx,[ebp-0x50]
+ 720:	call   725 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x725>
+			721: DISP32	??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z
+ 725:	lea    ecx,[ebp+0x68]
+ 728:	call   72d <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x72d>
+			729: DISP32	??1CCharString@@QAE@XZ
+ 72d:	fld    DWORD PTR ds:0x0
+			72f: dir32	__real@42480000
+ 733:	mov    esi,DWORD PTR [ebp+0x74]
+ 736:	push   ecx
+ 737:	fstp   DWORD PTR [esp]
+ 73a:	lea    eax,[ebp-0x68]
+ 73d:	fld    DWORD PTR ds:0x0
+			73f: dir32	__real@439b0000
+ 743:	push   eax
+ 744:	push   DWORD PTR [ebp+0x64]
+ 747:	lea    eax,[ebp-0x20]
+ 74a:	push   edi
+ 74b:	push   ecx
+ 74c:	push   ecx
+ 74d:	fstp   DWORD PTR [esp+0x4]
+ 751:	mov    ecx,ebx
+ 753:	fld    DWORD PTR [ebp+0x10]
+ 756:	mov    DWORD PTR [ebp+0x24],edi
+ 759:	fstp   DWORD PTR [esp]
+ 75c:	push   esi
+ 75d:	push   eax
+ 75e:	mov    DWORD PTR [ebp+0x28],edi
+ 761:	call   766 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x766>
+			762: DISP32	?GetExperienceAbilityColour@CTCInventoryExperience@@QAE?AVCRGBFloatColour@@W4EHeroAbility@@@Z
+ 766:	mov    ecx,DWORD PTR [ebp+0x58]
+ 769:	push   eax
+ 76a:	push   esi
+ 76b:	call   770 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x770>
+			76c: DISP32	?GetAbilityMaximumLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z
+ 770:	mov    ecx,DWORD PTR [ebp+0x58]
+ 773:	inc    eax
+ 774:	push   eax
+ 775:	push   esi
+ 776:	call   77b <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x77b>
+			777: DISP32	?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z
+ 77b:	inc    eax
+ 77c:	push   eax
+ 77d:	lea    eax,[ebp+0x24]
+ 780:	push   eax
+ 781:	push   esi
+ 782:	lea    eax,[ebp+0x54]
+ 785:	push   eax
+ 786:	mov    ecx,ebx
+ 788:	call   78d <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x78d>
+			789: DISP32	?GetExperienceAbilityName@CTCInventoryExperience@@QAE?AVCWideString@@J@Z
+ 78d:	mov    ecx,DWORD PTR [ebp+0x40]
+ 790:	push   eax
+ 791:	call   796 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x796>
+			792: DISP32	?CreateTickSlider@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@ABVC2DCoordI@@JJABVCRGBFloatColour@@MM_N32M@Z
+ 796:	push   eax
+ 797:	lea    ecx,[ebp-0x58]
+ 79a:	call   79f <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x79f>
+			79b: DISP32	??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z
+ 79f:	lea    ecx,[ebp+0x54]
+ 7a2:	call   7a7 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x7a7>
+			7a3: DISP32	??1CWideString@@QAE@XZ
+ 7a7:	mov    ecx,DWORD PTR [ebp-0x50]
+ 7aa:	mov    eax,DWORD PTR [ecx]
+ 7ac:	lea    edx,[ebp-0x58]
+ 7af:	push   edx
+ 7b0:	call   DWORD PTR [eax+0xec]
+ 7b6:	mov    ecx,DWORD PTR [ebp+0x14]
+ 7b9:	mov    eax,DWORD PTR [ecx]
+ 7bb:	lea    edx,[ebp-0x50]
+ 7be:	push   edx
+ 7bf:	call   DWORD PTR [eax+0xec]
+ 7c5:	push   0x10
+ 7c7:	call   7cc <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x7cc>
+			7c8: DISP32	??2@YAPAXI@Z
+ 7cc:	cmp    eax,edi
+ 7ce:	pop    ecx
+ 7cf:	je     7da <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x7da>
+ 7d1:	mov    ecx,eax
+ 7d3:	call   7d8 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x7d8>
+			7d4: DISP32	??0CAction@NUISystem@@QAE@XZ
+ 7d8:	jmp    7dc <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x7dc>
+ 7da:	xor    eax,eax
+ 7dc:	push   eax
+ 7dd:	lea    ecx,[ebp+0x38]
+ 7e0:	call   7e5 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x7e5>
+			7e1: DISP32	??0?$CCountedPointer@VCAction@NUISystem@@@@QAE@PAVCAction@NUISystem@@@Z
+ 7e5:	mov    eax,DWORD PTR [ebp+0x38]
+ 7e8:	push   ecx
+ 7e9:	mov    DWORD PTR [eax],0xd5
+ 7ef:	mov    eax,DWORD PTR [ebx+0x23c]
+ 7f5:	mov    esi,DWORD PTR [eax]
+ 7f7:	mov    edi,DWORD PTR [esi]
+ 7f9:	mov    ecx,esp
+ 7fb:	push   0xffffffff
+ 7fd:	push   0x0
+			7fe: dir32	??_C@_0BH@EIKENHHE@UI_LEVEL_SLIDER_NUMBER?$AA@
+ 802:	call   807 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x807>
+			803: DISP32	??0CCharString@@QAE@PBDJ@Z
+ 807:	mov    ecx,esi
+ 809:	call   DWORD PTR [edi+0xc]
+ 80c:	lea    ecx,[ebp+0x38]
+ 80f:	push   ecx
+ 810:	mov    ecx,eax
+ 812:	add    eax,0x18
+ 815:	neg    ecx
+ 817:	sbb    ecx,ecx
+ 819:	and    ecx,eax
+ 81b:	push   ecx
+ 81c:	mov    ecx,DWORD PTR [ebp+0x38]
+ 81f:	call   824 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x824>
+			820: DISP32	?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@AAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
+ 824:	push   0xc
+ 826:	call   82b <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x82b>
+			827: DISP32	??2@YAPAXI@Z
+ 82b:	test   eax,eax
+ 82d:	pop    ecx
+ 82e:	je     843 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x843>
+ 830:	or     DWORD PTR [eax+0x8],0xffffffff
+ 834:	mov    DWORD PTR [eax+0x4],0x3
+ 83b:	mov    DWORD PTR [eax],0x0
+			83d: dir32	??_7CActionParamSLONG@NUISystem@@6B@
+ 841:	jmp    845 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x845>
+ 843:	xor    eax,eax
+ 845:	mov    ecx,DWORD PTR [ebp+0x38]
+ 848:	push   eax
+ 849:	call   84e <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x84e>
+			84a: DISP32	?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@@Z
+ 84e:	mov    eax,DWORD PTR [ebx+0x23c]
+ 854:	mov    eax,DWORD PTR [eax+0x4]
+ 857:	mov    esi,DWORD PTR [eax]
+ 859:	push   ecx
+ 85a:	mov    ecx,esp
+ 85c:	push   0xffffffff
+ 85e:	mov    edi,0x0
+			85f: dir32	??_C@_0BH@EIKENHHE@UI_LEVEL_SLIDER_NUMBER?$AA@
+ 863:	push   edi
+ 864:	mov    DWORD PTR [ebp+0x54],eax
+ 867:	call   86c <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x86c>
+			868: DISP32	??0CCharString@@QAE@PBDJ@Z
+ 86c:	mov    ecx,DWORD PTR [ebp+0x54]
+ 86f:	call   DWORD PTR [esi+0xc]
+ 872:	lea    ecx,[ebp+0x38]
+ 875:	push   ecx
+ 876:	mov    ecx,eax
+ 878:	add    eax,0x18
+ 87b:	neg    ecx
+ 87d:	sbb    ecx,ecx
+ 87f:	and    ecx,eax
+ 881:	push   ecx
+ 882:	mov    ecx,DWORD PTR [ebp+0x38]
+ 885:	call   88a <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x88a>
+			886: DISP32	?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@AAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
+ 88a:	push   0xc
+ 88c:	call   891 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x891>
+			88d: DISP32	??2@YAPAXI@Z
+ 891:	test   eax,eax
+ 893:	pop    ecx
+ 894:	je     8a9 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x8a9>
+ 896:	or     DWORD PTR [eax+0x8],0xffffffff
+ 89a:	mov    DWORD PTR [eax+0x4],0x3
+ 8a1:	mov    DWORD PTR [eax],0x0
+			8a3: dir32	??_7CActionParamSLONG@NUISystem@@6B@
+ 8a7:	jmp    8ab <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x8ab>
+ 8a9:	xor    eax,eax
+ 8ab:	mov    ecx,DWORD PTR [ebp+0x38]
+ 8ae:	push   eax
+ 8af:	call   8b4 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x8b4>
+			8b0: DISP32	?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@@Z
+ 8b4:	mov    eax,DWORD PTR [ebx+0x23c]
+ 8ba:	mov    eax,DWORD PTR [eax+0x8]
+ 8bd:	mov    esi,DWORD PTR [eax]
+ 8bf:	push   ecx
+ 8c0:	mov    ecx,esp
+ 8c2:	push   0xffffffff
+ 8c4:	push   edi
+ 8c5:	mov    DWORD PTR [ebp+0x54],eax
+ 8c8:	call   8cd <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x8cd>
+			8c9: DISP32	??0CCharString@@QAE@PBDJ@Z
+ 8cd:	mov    ecx,DWORD PTR [ebp+0x54]
+ 8d0:	call   DWORD PTR [esi+0xc]
+ 8d3:	lea    ecx,[ebp+0x38]
+ 8d6:	push   ecx
+ 8d7:	mov    ecx,eax
+ 8d9:	add    eax,0x18
+ 8dc:	neg    ecx
+ 8de:	sbb    ecx,ecx
+ 8e0:	and    ecx,eax
+ 8e2:	push   ecx
+ 8e3:	mov    ecx,DWORD PTR [ebp+0x38]
+ 8e6:	call   8eb <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x8eb>
+			8e7: DISP32	?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@AAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
+ 8eb:	push   0xc
+ 8ed:	call   8f2 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x8f2>
+			8ee: DISP32	??2@YAPAXI@Z
+ 8f2:	test   eax,eax
+ 8f4:	pop    ecx
+ 8f5:	je     90a <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x90a>
+ 8f7:	or     DWORD PTR [eax+0x8],0xffffffff
+ 8fb:	mov    DWORD PTR [eax+0x4],0x3
+ 902:	mov    DWORD PTR [eax],0x0
+			904: dir32	??_7CActionParamSLONG@NUISystem@@6B@
+ 908:	jmp    90c <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x90c>
+ 90a:	xor    eax,eax
+ 90c:	mov    ecx,DWORD PTR [ebp+0x38]
+ 90f:	push   eax
+ 910:	call   915 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x915>
+			911: DISP32	?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@@Z
+ 915:	mov    eax,DWORD PTR [ebx+0x23c]
+ 91b:	mov    esi,DWORD PTR [eax+0xc]
+ 91e:	mov    eax,DWORD PTR [esi]
+ 920:	push   ecx
+ 921:	mov    ecx,esp
+ 923:	push   0xffffffff
+ 925:	push   edi
+ 926:	mov    DWORD PTR [ebp+0x54],eax
+ 929:	call   92e <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x92e>
+			92a: DISP32	??0CCharString@@QAE@PBDJ@Z
+ 92e:	mov    eax,DWORD PTR [ebp+0x54]
+ 931:	mov    ecx,esi
+ 933:	call   DWORD PTR [eax+0xc]
+ 936:	lea    ecx,[ebp+0x38]
+ 939:	push   ecx
+ 93a:	mov    ecx,eax
+ 93c:	add    eax,0x18
+ 93f:	neg    ecx
+ 941:	sbb    ecx,ecx
+ 943:	and    ecx,eax
+ 945:	push   ecx
+ 946:	mov    ecx,DWORD PTR [ebp+0x38]
+ 949:	call   94e <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x94e>
+			94a: DISP32	?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@AAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
+ 94e:	push   0xc
+ 950:	call   955 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x955>
+			951: DISP32	??2@YAPAXI@Z
+ 955:	test   eax,eax
+ 957:	pop    ecx
+ 958:	je     96d <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x96d>
+ 95a:	or     DWORD PTR [eax+0x8],0xffffffff
+ 95e:	mov    DWORD PTR [eax+0x4],0x3
+ 965:	mov    DWORD PTR [eax],0x0
+			967: dir32	??_7CActionParamSLONG@NUISystem@@6B@
+ 96b:	jmp    96f <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x96f>
+ 96d:	xor    eax,eax
+ 96f:	mov    ecx,DWORD PTR [ebp+0x38]
+ 972:	push   eax
+ 973:	call   978 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x978>
+			974: DISP32	?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@@Z
+ 978:	mov    ecx,DWORD PTR [ebp+0x14]
+ 97b:	mov    eax,DWORD PTR [ecx]
+ 97d:	lea    edx,[ebp+0x38]
+ 980:	push   edx
+ 981:	call   DWORD PTR [eax+0x10c]
+ 987:	mov    ecx,DWORD PTR [ebp+0x14]
+ 98a:	mov    eax,DWORD PTR [ecx]
+ 98c:	lea    edx,[ebp+0x38]
+ 98f:	push   edx
+ 990:	call   DWORD PTR [eax+0x110]
+ 996:	lea    esi,[ebx+0x14c]
+ 99c:	lea    eax,[ebp+0x74]
+ 99f:	push   eax
+ 9a0:	mov    ecx,esi
+ 9a2:	mov    DWORD PTR [ebp+0x28],esi
+ 9a5:	call   9aa <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x9aa>
+			9a6: DISP32	??$_M_find@W4EHeroAbility@@@?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@1@ABW4EHeroAbility@@@Z
+ 9aa:	cmp    DWORD PTR [ebp+0x60],0x0
+ 9ae:	mov    edi,eax
+ 9b0:	mov    DWORD PTR [ebp+0x4c],edi
+ 9b3:	jg     a18 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xa18>
+ 9b5:	cmp    edi,DWORD PTR [esi]
+ 9b7:	jne    a18 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xa18>
+ 9b9:	mov    eax,DWORD PTR [ebp+0x14]
+ 9bc:	mov    edi,DWORD PTR [eax]
+ 9be:	push   ecx
+ 9bf:	mov    ecx,esp
+ 9c1:	push   0xffffffff
+ 9c3:	push   0x0
+			9c4: dir32	??_C@_0BJ@LFBNCFDC@UI_SELECTION_ARROW_RIGHT?$AA@
+ 9c8:	mov    esi,eax
+ 9ca:	call   9cf <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x9cf>
+			9cb: DISP32	??0CCharString@@QAE@PBDJ@Z
+ 9cf:	mov    ecx,esi
+ 9d1:	call   DWORD PTR [edi+0xc]
+ 9d4:	mov    esi,eax
+ 9d6:	test   esi,esi
+ 9d8:	je     a08 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xa08>
+ 9da:	lea    ecx,[ebp+0x50]
+ 9dd:	call   9e2 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x9e2>
+			9de: DISP32	??0CDeletion@NUISystem@@QAE@XZ
+ 9e2:	mov    edi,DWORD PTR [esi]
+ 9e4:	push   ecx
+ 9e5:	push   ecx
+ 9e6:	lea    eax,[ebp+0x50]
+ 9e9:	mov    ecx,esp
+ 9eb:	push   eax
+ 9ec:	mov    DWORD PTR [ebp+0x50],0x1
+ 9f3:	call   9f8 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0x9f8>
+			9f4: DISP32	??0CDeletion@NUISystem@@QAE@ABV01@@Z
+ 9f8:	mov    ecx,esi
+ 9fa:	call   DWORD PTR [edi+0xf8]
+ a00:	lea    ecx,[ebp+0x54]
+ a03:	call   a08 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xa08>
+			a04: DISP32	??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ
+ a08:	mov    ecx,DWORD PTR [ebp+0x14]
+ a0b:	mov    eax,DWORD PTR [ecx]
+ a0d:	call   DWORD PTR [eax+0x170]
+ a13:	jmp    ed5 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xed5>
+ a18:	push   0xffffffff
+ a1a:	push   0x0
+			a1b: dir32	??_C@_0M@HGIPBKAG@UI_SUB_LIST?$AA@
+ a1f:	lea    ecx,[ebp+0x68]
+ a22:	call   a27 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xa27>
+			a23: DISP32	??0CCharString@@QAE@PBDJ@Z
+ a27:	mov    ecx,DWORD PTR [ebp+0x40]
+ a2a:	push   0x0
+ a2c:	lea    eax,[ebp+0x68]
+ a2f:	push   eax
+ a30:	call   a35 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xa35>
+			a31: DISP32	?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCCharString@@_N@Z
+ a35:	push   eax
+ a36:	lea    ecx,[ebp-0x28]
+ a39:	call   a3e <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xa3e>
+			a3a: DISP32	??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z
+ a3e:	lea    ecx,[ebp+0x68]
+ a41:	call   a46 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xa46>
+			a42: DISP32	??1CCharString@@QAE@XZ
+ a46:	xor    eax,eax
+ a48:	cmp    DWORD PTR [ebp+0x60],eax
+ a4b:	mov    DWORD PTR [ebp+0x1c],eax
+ a4e:	mov    DWORD PTR [ebp+0x20],eax
+ a51:	mov    DWORD PTR [ebp+0x68],0x1
+ a58:	jle    a65 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xa65>
+ a5a:	cmp    edi,DWORD PTR [esi]
+ a5c:	je     a65 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xa65>
+ a5e:	mov    DWORD PTR [ebp+0x68],0x2
+ a65:	push   DWORD PTR [ebp-0x24]
+ a68:	lea    ecx,[ebp+0x1c]
+ a6b:	push   DWORD PTR [ebp-0x28]
+ a6e:	call   a73 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xa73>
+			a6f: DISP32	?ShareData@?$CCountedPointer@VCList@NUISystem@@@@QAEXPAVCList@NUISystem@@PAVCCPPointerInfo@@@Z
+ a73:	mov    edi,DWORD PTR [ebp+0x1c]
+ a76:	push   DWORD PTR [ebp+0x68]
+ a79:	mov    eax,DWORD PTR [edi]
+ a7b:	mov    ecx,edi
+ a7d:	call   DWORD PTR [eax+0x270]
+ a83:	mov    ecx,DWORD PTR [ebp+0x14]
+ a86:	mov    eax,DWORD PTR [ecx]
+ a88:	lea    edx,[ebp-0x28]
+ a8b:	push   edx
+ a8c:	call   DWORD PTR [eax+0xec]
+ a92:	cmp    DWORD PTR [ebp+0x60],0x0
+ a96:	jle    d9d <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xd9d>
+ a9c:	inc    DWORD PTR [ebx+0x218]
+ aa2:	or     esi,0xffffffff
+ aa5:	push   esi
+ aa6:	push   0x0
+			aa7: dir32	??_C@_0BC@GNABNGLG@TEXT_GUI_MENU_BUY?$AA@
+ aab:	lea    ecx,[ebp+0x68]
+ aae:	call   ab3 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xab3>
+			aaf: DISP32	??0CCharString@@QAE@PBDJ@Z
+ ab3:	lea    eax,[ebp+0x68]
+ ab6:	push   eax
+ ab7:	lea    eax,[ebp+0x64]
+ aba:	push   eax
+ abb:	mov    eax,ds:0x0
+			abc: dir32	?PMainGameComponent@CMainGameComponent@@1PAV1@A
+ ac0:	mov    ecx,DWORD PTR [eax+0x14]
+ ac3:	call   ac8 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xac8>
+			ac4: DISP32	?GetTextBySymbol@CDataBank@NGameText@@QBE?BVCWideString@@ABVCCharString@@@Z
+ ac8:	lea    ecx,[ebp+0x68]
+ acb:	call   ad0 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xad0>
+			acc: DISP32	??1CCharString@@QAE@XZ
+ ad0:	push   esi
+ ad1:	push   0x0
+			ad2: dir32	??_C@_0CJ@ICLGAEBN@UI_WEAPON_MENU_ENTRY_ACTION_TEMP@
+ ad6:	lea    ecx,[ebp+0x68]
+ ad9:	call   ade <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xade>
+			ada: DISP32	??0CCharString@@QAE@PBDJ@Z
+ ade:	push   ecx
+ adf:	mov    ecx,esp
+ ae1:	push   esi
+ ae2:	push   0x0
+			ae3: dir32	??_C@_0BC@NNOGNHJ@PC_BUTTON_BASTARD?$AA@
+ ae7:	call   aec <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xaec>
+			ae8: DISP32	??0CCharString@@QAE@PBDJ@Z
+ aec:	fldz
+ aee:	push   ecx
+ aef:	push   ecx
+ af0:	fstp   DWORD PTR [esp+0x4]
+ af4:	mov    ecx,esp
+ af6:	push   esi
+ af7:	push   0x0
+			af8: dir32	??_C@_00CNPNBAHC@?$AA@
+ afc:	call   b01 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xb01>
+			afd: DISP32	??0CCharString@@QAE@PBDJ@Z
+ b01:	fldz
+ b03:	push   ecx
+ b04:	fstp   DWORD PTR [esp]
+ b07:	lea    eax,[ebp+0x68]
+ b0a:	fld1
+ b0c:	push   eax
+ b0d:	push   ecx
+ b0e:	push   ecx
+ b0f:	mov    ecx,DWORD PTR [ebp+0x40]
+ b12:	fstp   DWORD PTR [esp+0x4]
+ b16:	fldz
+ b18:	lea    eax,[ebp+0x64]
+ b1b:	fstp   DWORD PTR [esp]
+ b1e:	push   eax
+ b1f:	call   b24 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xb24>
+			b20: DISP32	?CreateMenuEntryComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@MMABVCCharString@@MV5@MV5@@Z
+ b24:	push   eax
+ b25:	lea    ecx,[ebp-0x8]
+ b28:	call   b2d <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xb2d>
+			b29: DISP32	??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z
+ b2d:	lea    ecx,[ebp+0x68]
+ b30:	call   b35 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xb35>
+			b31: DISP32	??1CCharString@@QAE@XZ
+ b35:	push   DWORD PTR [ebp-0x4]
+ b38:	and    DWORD PTR [ebp-0x10],0x0
+ b3c:	push   DWORD PTR [ebp-0x8]
+ b3f:	and    DWORD PTR [ebp-0xc],0x0
+ b43:	lea    ecx,[ebp-0x10]
+ b46:	call   b4b <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xb4b>
+			b47: DISP32	?ShareData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@PAVCCPPointerInfo@@@Z
+ b4b:	mov    esi,DWORD PTR [ebp-0x8]
+ b4e:	push   ecx
+ b4f:	mov    ecx,esp
+ b51:	push   0xffffffff
+ b53:	push   0x0
+			b54: dir32	??_C@_0CM@GOCDOEG@SND_TEXT_QST_TUTORIAL_GUI_EXPSPE@
+ b58:	call   b5d <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xb5d>
+			b59: DISP32	??0CCharString@@QAE@PBDJ@Z
+ b5d:	push   esi
+ b5e:	mov    ecx,ebx
+ b60:	call   b65 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xb65>
+			b61: DISP32	?AddSoundAction@CTCInventoryExperience@@AAEXPAVCComponent@NUISystem@@VCCharString@@@Z
+ b65:	push   0x10
+ b67:	call   b6c <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xb6c>
+			b68: DISP32	??2@YAPAXI@Z
+ b6c:	test   eax,eax
+ b6e:	pop    ecx
+ b6f:	je     b7a <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xb7a>
+ b71:	mov    ecx,eax
+ b73:	call   b78 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xb78>
+			b74: DISP32	??0CAction@NUISystem@@QAE@XZ
+ b78:	jmp    b7c <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xb7c>
+ b7a:	xor    eax,eax
+ b7c:	push   eax
+ b7d:	lea    ecx,[ebp+0x0]
+ b80:	call   b85 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xb85>
+			b81: DISP32	??0?$CCountedPointer@VCAction@NUISystem@@@@QAE@PAVCAction@NUISystem@@@Z
+ b85:	mov    eax,DWORD PTR [ebp+0x0]
+ b88:	push   0xc
+ b8a:	mov    DWORD PTR [eax],0x8
+ b90:	call   b95 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xb95>
+			b91: DISP32	??2@YAPAXI@Z
+ b95:	test   eax,eax
+ b97:	pop    ecx
+ b98:	je     baf <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xbaf>
+ b9a:	mov    ecx,DWORD PTR [ebp+0x74]
+ b9d:	mov    DWORD PTR [eax+0x4],0x3
+ ba4:	mov    DWORD PTR [eax],0x0
+			ba6: dir32	??_7CActionParamSLONG@NUISystem@@6B@
+ baa:	mov    DWORD PTR [eax+0x8],ecx
+ bad:	jmp    bb1 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xbb1>
+ baf:	xor    eax,eax
+ bb1:	mov    ecx,DWORD PTR [ebp+0x0]
+ bb4:	push   eax
+ bb5:	call   bba <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xbba>
+			bb6: DISP32	?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@@Z
+ bba:	push   0xc
+ bbc:	call   bc1 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xbc1>
+			bbd: DISP32	??2@YAPAXI@Z
+ bc1:	mov    esi,eax
+ bc3:	test   esi,esi
+ bc5:	pop    ecx
+ bc6:	je     bef <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xbef>
+ bc8:	push   0x1
+ bca:	push   0x1
+ bcc:	push   DWORD PTR [ebp+0x74]
+ bcf:	mov    ecx,ebx
+ bd1:	call   bd6 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xbd6>
+			bd2: DISP32	?GetTCInventoryAbilities@CTCInventoryExperience@@AAEPAVCTCInventoryAbilities@@XZ
+ bd6:	mov    ecx,eax
+ bd8:	call   bdd <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xbdd>
+			bd9: DISP32	?GetExperienceCostToUpgradeAbility@CTCInventoryAbilities@@QBEJW4EHeroAbility@@J_N@Z
+ bdd:	mov    DWORD PTR [esi+0x4],0x3
+ be4:	mov    DWORD PTR [esi],0x0
+			be6: dir32	??_7CActionParamSLONG@NUISystem@@6B@
+ bea:	mov    DWORD PTR [esi+0x8],eax
+ bed:	jmp    bf1 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xbf1>
+ bef:	xor    esi,esi
+ bf1:	mov    ecx,DWORD PTR [ebp+0x0]
+ bf4:	push   esi
+ bf5:	call   bfa <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xbfa>
+			bf6: DISP32	?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@@Z
+ bfa:	mov    ecx,DWORD PTR [ebp-0x10]
+ bfd:	mov    eax,DWORD PTR [ecx]
+ bff:	lea    edx,[ebp+0x0]
+ c02:	push   edx
+ c03:	call   DWORD PTR [eax+0x108]
+ c09:	mov    eax,DWORD PTR [edi]
+ c0b:	lea    ecx,[ebp-0x8]
+ c0e:	push   ecx
+ c0f:	mov    ecx,edi
+ c11:	call   DWORD PTR [eax+0x260]
+ c17:	push   0x1
+ c19:	push   0x1
+ c1b:	push   DWORD PTR [ebp+0x74]
+ c1e:	mov    ecx,ebx
+ c20:	call   c25 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xc25>
+			c21: DISP32	?GetTCInventoryAbilities@CTCInventoryExperience@@AAEPAVCTCInventoryAbilities@@XZ
+ c25:	mov    ecx,eax
+ c27:	call   c2c <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xc2c>
+			c28: DISP32	?GetExperienceCostToUpgradeAbility@CTCInventoryAbilities@@QBEJW4EHeroAbility@@J_N@Z
+ c2c:	push   0x2
+ c2e:	mov    ecx,ebx
+ c30:	mov    DWORD PTR [ebp+0x5c],eax
+ c33:	call   c38 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xc38>
+			c34: DISP32	?GetTCHeroExperience@CTCInventoryExperience@@AAEPAVCTCHeroExperience@@XZ
+ c38:	mov    ecx,eax
+ c3a:	call   c3f <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xc3f>
+			c3b: DISP32	?GetStatExperience@CTCHeroExperience@@QBEJW4EHeroExperienceStatCategory@@@Z
+ c3f:	mov    esi,eax
+ c41:	push   0x10
+ c43:	mov    DWORD PTR [ebp+0x54],esi
+ c46:	call   c4b <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xc4b>
+			c47: DISP32	??2@YAPAXI@Z
+ c4b:	test   eax,eax
+ c4d:	pop    ecx
+ c4e:	je     c59 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xc59>
+ c50:	mov    ecx,eax
+ c52:	call   c57 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xc57>
+			c53: DISP32	??0CAction@NUISystem@@QAE@XZ
+ c57:	jmp    c5b <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xc5b>
+ c59:	xor    eax,eax
+ c5b:	push   eax
+ c5c:	lea    ecx,[ebp+0x44]
+ c5f:	call   c64 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xc64>
+			c60: DISP32	??0?$CCountedPointer@VCAction@NUISystem@@@@QAE@PAVCAction@NUISystem@@@Z
+ c64:	test   esi,esi
+ c66:	mov    eax,DWORD PTR [ebp+0x44]
+ c69:	mov    DWORD PTR [eax],0xd5
+ c6f:	jle    cf8 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xcf8>
+ c75:	mov    eax,DWORD PTR [ebx+0x23c]
+ c7b:	mov    esi,DWORD PTR [eax+0xc]
+ c7e:	mov    edi,DWORD PTR [esi]
+ c80:	push   ecx
+ c81:	mov    ecx,esp
+ c83:	push   0xffffffff
+ c85:	push   0x0
+			c86: dir32	??_C@_0BH@EIKENHHE@UI_LEVEL_SLIDER_NUMBER?$AA@
+ c8a:	call   c8f <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xc8f>
+			c8b: DISP32	??0CCharString@@QAE@PBDJ@Z
+ c8f:	mov    ecx,esi
+ c91:	call   DWORD PTR [edi+0xc]
+ c94:	lea    ecx,[ebp+0x44]
+ c97:	push   ecx
+ c98:	mov    ecx,eax
+ c9a:	add    eax,0x18
+ c9d:	neg    ecx
+ c9f:	sbb    ecx,ecx
+ ca1:	and    ecx,eax
+ ca3:	push   ecx
+ ca4:	mov    ecx,DWORD PTR [ebp+0x44]
+ ca7:	call   cac <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xcac>
+			ca8: DISP32	?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@AAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
+ cac:	mov    esi,DWORD PTR [ebp+0x54]
+ caf:	mov    edi,DWORD PTR [ebp+0x5c]
+ cb2:	push   0xc
+ cb4:	call   cb9 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xcb9>
+			cb5: DISP32	??2@YAPAXI@Z
+ cb9:	cmp    esi,edi
+ cbb:	pop    ecx
+ cbc:	jg     cd4 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xcd4>
+ cbe:	test   eax,eax
+ cc0:	je     cea <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xcea>
+ cc2:	mov    DWORD PTR [eax+0x4],0x3
+ cc9:	mov    DWORD PTR [eax],0x0
+			ccb: dir32	??_7CActionParamSLONG@NUISystem@@6B@
+ ccf:	mov    DWORD PTR [eax+0x8],esi
+ cd2:	jmp    cec <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xcec>
+ cd4:	test   eax,eax
+ cd6:	je     cea <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xcea>
+ cd8:	mov    DWORD PTR [eax+0x4],0x3
+ cdf:	mov    DWORD PTR [eax],0x0
+			ce1: dir32	??_7CActionParamSLONG@NUISystem@@6B@
+ ce5:	mov    DWORD PTR [eax+0x8],edi
+ ce8:	jmp    cec <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xcec>
+ cea:	xor    eax,eax
+ cec:	mov    ecx,DWORD PTR [ebp+0x44]
+ cef:	push   eax
+ cf0:	call   cf5 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xcf5>
+			cf1: DISP32	?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@@Z
+ cf5:	mov    edi,DWORD PTR [ebp+0x1c]
+ cf8:	sub    DWORD PTR [ebp+0x5c],esi
+ cfb:	cmp    DWORD PTR [ebp+0x5c],0x0
+ cff:	jle    d63 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xd63>
+ d01:	mov    eax,DWORD PTR [ebx+0x23c]
+ d07:	mov    esi,DWORD PTR [eax]
+ d09:	mov    ebx,DWORD PTR [esi]
+ d0b:	push   ecx
+ d0c:	mov    ecx,esp
+ d0e:	push   0xffffffff
+ d10:	push   0x0
+			d11: dir32	??_C@_0BH@EIKENHHE@UI_LEVEL_SLIDER_NUMBER?$AA@
+ d15:	call   d1a <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xd1a>
+			d16: DISP32	??0CCharString@@QAE@PBDJ@Z
+ d1a:	mov    ecx,esi
+ d1c:	call   DWORD PTR [ebx+0xc]
+ d1f:	lea    ecx,[ebp+0x44]
+ d22:	push   ecx
+ d23:	mov    ecx,eax
+ d25:	add    eax,0x18
+ d28:	neg    ecx
+ d2a:	sbb    ecx,ecx
+ d2c:	and    ecx,eax
+ d2e:	push   ecx
+ d2f:	mov    ecx,DWORD PTR [ebp+0x44]
+ d32:	call   d37 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xd37>
+			d33: DISP32	?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@AAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
+ d37:	push   0xc
+ d39:	call   d3e <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xd3e>
+			d3a: DISP32	??2@YAPAXI@Z
+ d3e:	test   eax,eax
+ d40:	pop    ecx
+ d41:	je     d58 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xd58>
+ d43:	mov    ecx,DWORD PTR [ebp+0x5c]
+ d46:	mov    DWORD PTR [eax+0x4],0x3
+ d4d:	mov    DWORD PTR [eax],0x0
+			d4f: dir32	??_7CActionParamSLONG@NUISystem@@6B@
+ d53:	mov    DWORD PTR [eax+0x8],ecx
+ d56:	jmp    d5a <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xd5a>
+ d58:	xor    eax,eax
+ d5a:	mov    ecx,DWORD PTR [ebp+0x44]
+ d5d:	push   eax
+ d5e:	call   d63 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xd63>
+			d5f: DISP32	?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@@Z
+ d63:	mov    ecx,DWORD PTR [ebp+0x14]
+ d66:	mov    eax,DWORD PTR [ecx]
+ d68:	lea    edx,[ebp+0x44]
+ d6b:	push   edx
+ d6c:	call   DWORD PTR [eax+0x10c]
+ d72:	lea    ecx,[ebp+0x44]
+ d75:	call   d7a <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xd7a>
+			d76: DISP32	??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ
+ d7a:	lea    ecx,[ebp+0x0]
+ d7d:	call   d82 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xd82>
+			d7e: DISP32	??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ
+ d82:	lea    ecx,[ebp-0x10]
+ d85:	call   d8a <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xd8a>
+			d86: DISP32	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+ d8a:	lea    ecx,[ebp-0x8]
+ d8d:	call   d92 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xd92>
+			d8e: DISP32	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+ d92:	lea    ecx,[ebp+0x64]
+ d95:	call   d9a <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xd9a>
+			d96: DISP32	??1CWideString@@QAE@XZ
+ d9a:	mov    esi,DWORD PTR [ebp+0x28]
+ d9d:	mov    eax,DWORD PTR [ebp+0x4c]
+ da0:	cmp    eax,DWORD PTR [esi]
+ da2:	je     ec5 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xec5>
+ da8:	or     esi,0xffffffff
+ dab:	push   esi
+ dac:	push   0x0
+			dad: dir32	??_C@_0BM@JFHNNNCG@TEXT_GUI_MENU_UNDO_LEVEL_UP?$AA@
+ db1:	lea    ecx,[ebp+0x68]
+ db4:	call   db9 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xdb9>
+			db5: DISP32	??0CCharString@@QAE@PBDJ@Z
+ db9:	lea    eax,[ebp+0x68]
+ dbc:	push   eax
+ dbd:	lea    eax,[ebp+0x64]
+ dc0:	push   eax
+ dc1:	mov    eax,ds:0x0
+			dc2: dir32	?PMainGameComponent@CMainGameComponent@@1PAV1@A
+ dc6:	mov    ecx,DWORD PTR [eax+0x14]
+ dc9:	call   dce <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xdce>
+			dca: DISP32	?GetTextBySymbol@CDataBank@NGameText@@QBE?BVCWideString@@ABVCCharString@@@Z
+ dce:	lea    ecx,[ebp+0x68]
+ dd1:	call   dd6 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xdd6>
+			dd2: DISP32	??1CCharString@@QAE@XZ
+ dd6:	push   esi
+ dd7:	push   0x0
+			dd8: dir32	??_C@_0CJ@ICLGAEBN@UI_WEAPON_MENU_ENTRY_ACTION_TEMP@
+ ddc:	lea    ecx,[ebp+0x68]
+ ddf:	call   de4 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xde4>
+			de0: DISP32	??0CCharString@@QAE@PBDJ@Z
+ de4:	push   ecx
+ de5:	mov    ecx,esp
+ de7:	push   esi
+ de8:	push   0x0
+			de9: dir32	??_C@_0BC@NNOGNHJ@PC_BUTTON_BASTARD?$AA@
+ ded:	call   df2 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xdf2>
+			dee: DISP32	??0CCharString@@QAE@PBDJ@Z
+ df2:	fldz
+ df4:	push   ecx
+ df5:	push   ecx
+ df6:	fstp   DWORD PTR [esp+0x4]
+ dfa:	mov    ecx,esp
+ dfc:	push   esi
+ dfd:	push   0x0
+			dfe: dir32	??_C@_00CNPNBAHC@?$AA@
+ e02:	call   e07 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xe07>
+			e03: DISP32	??0CCharString@@QAE@PBDJ@Z
+ e07:	fldz
+ e09:	push   ecx
+ e0a:	fstp   DWORD PTR [esp]
+ e0d:	lea    eax,[ebp+0x68]
+ e10:	fld1
+ e12:	push   eax
+ e13:	push   ecx
+ e14:	push   ecx
+ e15:	mov    ecx,DWORD PTR [ebp+0x40]
+ e18:	fstp   DWORD PTR [esp+0x4]
+ e1c:	fldz
+ e1e:	lea    eax,[ebp+0x64]
+ e21:	fstp   DWORD PTR [esp]
+ e24:	push   eax
+ e25:	call   e2a <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xe2a>
+			e26: DISP32	?CreateMenuEntryComponent@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@MMABVCCharString@@MV5@MV5@@Z
+ e2a:	push   eax
+ e2b:	lea    ecx,[ebp+0x24]
+ e2e:	call   e33 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xe33>
+			e2f: DISP32	??0?$CCountedPointer@VCComponent@NUISystem@@@@QAE@PAVCComponent@NUISystem@@@Z
+ e33:	lea    ecx,[ebp+0x68]
+ e36:	call   e3b <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xe3b>
+			e37: DISP32	??1CCharString@@QAE@XZ
+ e3b:	mov    eax,DWORD PTR [edi]
+ e3d:	lea    ecx,[ebp+0x24]
+ e40:	push   ecx
+ e41:	mov    ecx,edi
+ e43:	call   DWORD PTR [eax+0x260]
+ e49:	push   0x10
+ e4b:	call   e50 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xe50>
+			e4c: DISP32	??2@YAPAXI@Z
+ e50:	test   eax,eax
+ e52:	pop    ecx
+ e53:	je     e5e <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xe5e>
+ e55:	mov    ecx,eax
+ e57:	call   e5c <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xe5c>
+			e58: DISP32	??0CAction@NUISystem@@QAE@XZ
+ e5c:	jmp    e60 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xe60>
+ e5e:	xor    eax,eax
+ e60:	push   eax
+ e61:	lea    ecx,[ebp+0x50]
+ e64:	call   e69 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xe69>
+			e65: DISP32	??0?$CCountedPointer@VCAction@NUISystem@@@@QAE@PAVCAction@NUISystem@@@Z
+ e69:	mov    eax,DWORD PTR [ebp+0x50]
+ e6c:	push   0xc
+ e6e:	mov    DWORD PTR [eax],0xc8
+ e74:	call   e79 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xe79>
+			e75: DISP32	??2@YAPAXI@Z
+ e79:	test   eax,eax
+ e7b:	pop    ecx
+ e7c:	je     e93 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xe93>
+ e7e:	mov    ecx,DWORD PTR [ebp+0x74]
+ e81:	mov    DWORD PTR [eax+0x4],0x3
+ e88:	mov    DWORD PTR [eax],0x0
+			e8a: dir32	??_7CActionParamSLONG@NUISystem@@6B@
+ e8e:	mov    DWORD PTR [eax+0x8],ecx
+ e91:	jmp    e95 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xe95>
+ e93:	xor    eax,eax
+ e95:	mov    ecx,DWORD PTR [ebp+0x50]
+ e98:	push   eax
+ e99:	call   e9e <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xe9e>
+			e9a: DISP32	?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@@Z
+ e9e:	mov    ecx,DWORD PTR [ebp+0x24]
+ ea1:	mov    eax,DWORD PTR [ecx]
+ ea3:	lea    edx,[ebp+0x50]
+ ea6:	push   edx
+ ea7:	call   DWORD PTR [eax+0x108]
+ ead:	lea    ecx,[ebp+0x50]
+ eb0:	call   eb5 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xeb5>
+			eb1: DISP32	??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ
+ eb5:	lea    ecx,[ebp+0x24]
+ eb8:	call   ebd <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xebd>
+			eb9: DISP32	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+ ebd:	lea    ecx,[ebp+0x64]
+ ec0:	call   ec5 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xec5>
+			ec1: DISP32	??1CWideString@@QAE@XZ
+ ec5:	lea    ecx,[ebp+0x1c]
+ ec8:	call   ecd <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xecd>
+			ec9: DISP32	??1?$CCountedPointer@VCList@NUISystem@@@@QAE@XZ
+ ecd:	lea    ecx,[ebp-0x28]
+ ed0:	call   ed5 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xed5>
+			ed1: DISP32	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+ ed5:	cmp    BYTE PTR [ebp+0x7c],0x0
+ ed9:	mov    ecx,DWORD PTR [ebp+0x78]
+ edc:	mov    eax,DWORD PTR [ecx]
+ ede:	lea    edx,[ebp+0x14]
+ ee1:	push   edx
+ ee2:	je     eec <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xeec>
+ ee4:	call   DWORD PTR [eax+0x264]
+ eea:	jmp    ef2 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xef2>
+ eec:	call   DWORD PTR [eax+0x260]
+ ef2:	lea    ecx,[ebp+0x38]
+ ef5:	call   efa <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xefa>
+			ef6: DISP32	??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ
+ efa:	lea    ecx,[ebp-0x58]
+ efd:	call   f02 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xf02>
+			efe: DISP32	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+ f02:	lea    ecx,[ebp-0x50]
+ f05:	call   f0a <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xf0a>
+			f06: DISP32	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+ f0a:	lea    ecx,[ebp-0x40]
+ f0d:	call   f12 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xf12>
+			f0e: DISP32	??1?$CCountedPointer@VCComponentContainer@NUISystem@@@@QAE@XZ
+ f12:	lea    ecx,[ebp-0x34]
+ f15:	call   f1a <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xf1a>
+			f16: DISP32	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+ f1a:	lea    ecx,[ebp-0x38]
+ f1d:	call   f22 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xf22>
+			f1e: DISP32	??1CWideString@@QAE@XZ
+ f22:	lea    ecx,[ebp-0x48]
+ f25:	call   f2a <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xf2a>
+			f26: DISP32	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+ f2a:	lea    ecx,[ebp+0x14]
+ f2d:	call   f32 <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xf32>
+			f2e: DISP32	??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ
+ f32:	lea    ecx,[ebp+0xc]
+ f35:	call   f3a <?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z+0xf3a>
+			f36: DISP32	??1CWideString@@QAE@XZ
+ f3a:	pop    edi
+ f3b:	pop    esi
+ f3c:	pop    ebx
+ f3d:	add    ebp,0x6c
+ f40:	leave
+ f41:	ret    0xc

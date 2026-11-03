@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00b3efa0   RELOCATION_MATCH PASS   CEngineMap::ReadMapInfoBlock
+
+WINS: 1
+  00b3efa0 RELOCATION_MATCH CEngineMap::?ReadMapInfoBlock@CEngineMap@@CIXAAUCStaticMapInfoBlock@1@AAVCDataInputStream@@@Z

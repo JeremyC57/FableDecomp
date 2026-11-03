@@ -1,0 +1,6 @@
+addr       parity           behav  name
+009bb110   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+009bb110   RELOCATION_MATCH PASS   CPersistContext::TransferVectorLoadText
+
+WINS: 1
+  009bb110 RELOCATION_MATCH CPersistContext::?TransferVectorLoadText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableVectorGenericType@@@Z

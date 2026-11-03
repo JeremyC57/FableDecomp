@@ -1,0 +1,6 @@
+addr       parity           behav  name
+004b05c0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+004b05c0   RELOCATION_MATCH PASS   CQuestManager::TransferBoasts
+
+WINS: 1
+  004b05c0 RELOCATION_MATCH CQuestManager::?TransferBoasts@CQuestManager@@QAEXAAVCPersistContext@@@Z

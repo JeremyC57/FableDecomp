@@ -1,0 +1,6 @@
+addr       parity           behav  name
+00521620   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@PAV123@@std@@YIPAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@PAV123@00ABU__false_type@0@@Z -> 005269b0 labelled 'std::__uninitialized_copy<NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *>'
+00521620   RELOCATION_MATCH PASS   NThingManager::CEntityRuntimePersistence::SaveToGameStateBinary
+
+WINS: 1
+  00521620 RELOCATION_MATCH NThingManager::CEntityRuntimePersistence::?SaveToGameStateBinary@CEntityRuntimePersistence@NThingManager@@QAEXAAVCPersistContext@@@Z

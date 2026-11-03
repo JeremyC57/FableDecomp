@@ -1,0 +1,8 @@
+addr       parity           behav  name
+0047f58b   WARN RELOC_NAME: ?resize@?$vector@EV?$allocator@E@std@@@std@@QAEXI@Z -> 004861df labelled 'std::vector<EWeaponClass,std::allocator<EWeaponClass>_>::_Umove<EWeaponClass*>'
+0047f58b   WARN RELOC_NAME: ?Init@CPersistContext@@QAEXAAVCMemoryDataInputStream@@_N@Z -> 009baa30 labelled 'CPersistContext::CPersistContext'
+0047f58b   WARN RELOC_NAME: ??1CFileDataInputStream@@UAE@XZ -> 00994780 labelled '_global::Dtor_CBaseBase_00994780'
+0047f58b   RELOCATION_MATCH PASS   AddRegionAndTimeInfo
+
+WINS: 1
+  0047f58b RELOCATION_MATCH CTCInGameMenu::?AddRegionAndTimeInfo@CTCInGameMenu@@AAEXABVCWideString@@@Z

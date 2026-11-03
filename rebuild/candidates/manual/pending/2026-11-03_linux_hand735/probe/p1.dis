@@ -1,0 +1,60 @@
+
+${S}/w22/chunk735/probe/p1.obj:     file format pe-i386
+
+
+Disassembly of section .text:
+
+00000000 <?f1@@YAXPAVCList@NUISystem@@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z>:
+   0:	mov    ecx,DWORD PTR [esp+0x4]
+   4:	mov    edx,DWORD PTR [esp+0x8]
+   8:	mov    eax,DWORD PTR [ecx]
+   a:	push   edx
+   b:	call   DWORD PTR [eax+0x260]
+  11:	ret
+
+Disassembly of section .text:
+
+00000000 <?f2@@YAXPAVCList@NUISystem@@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z>:
+   0:	mov    ecx,DWORD PTR [esp+0x4]
+   4:	mov    edx,DWORD PTR [esp+0x8]
+   8:	mov    eax,DWORD PTR [ecx]
+   a:	push   edx
+   b:	call   DWORD PTR [eax+0x240]
+  11:	ret
+
+Disassembly of section .text:
+
+00000000 <?f3@@YAXPAVCList@NUISystem@@AAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z>:
+   0:	mov    ecx,DWORD PTR [esp+0x4]
+   4:	mov    edx,DWORD PTR [esp+0x8]
+   8:	mov    eax,DWORD PTR [ecx]
+   a:	push   edx
+   b:	call   DWORD PTR [eax+0x244]
+  11:	ret
+
+Disassembly of section .text:
+
+00000000 <?f4@@YAXPAVCList@NUISystem@@@Z>:
+   0:	mov    ecx,DWORD PTR [esp+0x4]
+   4:	mov    eax,DWORD PTR [ecx]
+   6:	push   0x1
+   8:	call   DWORD PTR [eax+0x270]
+   e:	ret
+
+Disassembly of section .text:
+
+00000000 <?f5@@YAXPAVCList@NUISystem@@@Z>:
+   0:	mov    ecx,DWORD PTR [esp+0x4]
+   4:	mov    eax,DWORD PTR [ecx]
+   6:	push   0x1
+   8:	call   DWORD PTR [eax+0x278]
+   e:	ret
+
+Disassembly of section .text:
+
+00000000 <?f6@@YAXPAVCList@NUISystem@@@Z>:
+   0:	mov    ecx,DWORD PTR [esp+0x4]
+   4:	mov    eax,DWORD PTR [ecx]
+   6:	push   0x1
+   8:	call   DWORD PTR [eax+0x284]
+   e:	ret

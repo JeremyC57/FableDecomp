@@ -1,0 +1,12 @@
+addr       parity           behav  name
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@W4EGameflowPosition@@@CPersistContext@@KI?AW4EGameflowPosition@@XZ -> 00cdca40 labelled 'sub_00cdca40'
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@_N@CPersistContext@@KI_NXZ -> 0040e240 labelled 'sub_0040e240'
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@J@CPersistContext@@KIJXZ -> 0040e160 labelled '_global::ReturnZero_ret0_0040e160'
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@W4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@@CPersistContext@@KI?AW4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@XZ -> 00cdca50 labelled 'sub_00cdca50'
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@W4EPlaceInHeroSouls@@@CPersistContext@@KI?AW4EPlaceInHeroSouls@@XZ -> 00cdca60 labelled 'sub_00cdca60'
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@K@CPersistContext@@KIKXZ -> 0040e260 labelled 'sub_0040e260'
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@M@CPersistContext@@KIMXZ -> 0040e250 labelled '_global::GetConstFloat_0_0040e250'
+00cdc070   RELOCATION_MATCH PASS   NScript::CQ_SunnyvaleMasterData::OnPersist
+
+WINS: 1
+  00cdc070 RELOCATION_MATCH NScript::CQ_SunnyvaleMasterData::?OnPersist@CQ_SunnyvaleMasterData@NScript@@UAEXAAVCPersistContext@@@Z

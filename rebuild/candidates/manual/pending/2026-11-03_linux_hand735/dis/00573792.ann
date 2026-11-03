@@ -1,0 +1,1168 @@
+00573792 push ebp
+00573793 lea ebp, [esp - 0x64]
+00573797 sub esp, 0xb0
+0057379d push ebx
+0057379e push esi
+0057379f push edi
+005737a0 push -1
+005737a2 mov esi, ecx
+005737a4 push 0x124e9e4 ; "SND_TEXT_QST_TUTORIAL_GUI_EXPSPEND_BUY_"
+005737a9 lea ecx, [ebp + 0x48]
+005737ac call 0x99ebf0 ; CCharString::CCharString
+005737b1 mov edi, dword ptr [ebp + 0x70]
+005737b4 cmp edi, 2
+005737b7 jne 0x5737c6
+005737b9 push 0x124e9d8 ; "TOUGHNESS"
+005737be lea ecx, [ebp + 0x48]
+005737c1 call 0x99f100 ; CCharString::operator+=
+005737c6 test edi, edi
+005737c8 jne 0x5737d7
+005737ca push 0x124e9cc ; "PHYSIQUE"
+005737cf lea ecx, [ebp + 0x48]
+005737d2 call 0x99f100 ; CCharString::operator+=
+005737d7 cmp edi, 1
+005737da jne 0x5737e9
+005737dc push 0x124e9c4 ; "HEALTH"
+005737e1 lea ecx, [ebp + 0x48]
+005737e4 call 0x99f100 ; CCharString::operator+=
+005737e9 cmp edi, 3
+005737ec jne 0x5737fb
+005737ee push 0x124e9bc ; "SPEED"
+005737f3 lea ecx, [ebp + 0x48]
+005737f6 call 0x99f100 ; CCharString::operator+=
+005737fb cmp edi, 4
+005737fe jne 0x57380d
+00573800 push 0x124e9b0 ; "ACCURACY"
+00573805 lea ecx, [ebp + 0x48]
+00573808 call 0x99f100 ; CCharString::operator+=
+0057380d cmp edi, 5
+00573810 jne 0x57381f
+00573812 push 0x124e9a8 ; "GUILE"
+00573817 lea ecx, [ebp + 0x48]
+0057381a call 0x99f100 ; CCharString::operator+=
+0057381f cmp edi, 9
+00573822 jne 0x573831
+00573824 push 0x124e99c ; "MAGICPOWER"
+00573829 lea ecx, [ebp + 0x48]
+0057382c call 0x99f100 ; CCharString::operator+=
+00573831 mov eax, dword ptr [0x13b86a0]
+00573836 mov eax, dword ptr [eax + 0x14]
+00573839 mov dword ptr [ebp - 0x14], eax
+0057383c call 0x41e5f2 ; NUISystem::CManager::GetInstance
+00573841 mov dword ptr [ebp + 0x44], eax
+00573844 push edi
+00573845 lea eax, [ebp + 0x28]
+00573848 push eax
+00573849 mov ecx, esi
+0057384b call 0x56f26f ; CTCInventoryExperience::GetExperienceStatName
+00573850 mov ebx, dword ptr [esi + 4]
+00573853 push 0x68
+00573855 lea ecx, [ebx + 0x20]
+00573858 call 0x410de0 ; std::bitset<274>::test
+0057385d test al, al
+0057385f je 0x57388a
+00573861 lea eax, [ebp + 0x60]
+00573864 add ebx, 0x44
+00573867 push eax
+00573868 mov ecx, ebx
+0057386a mov dword ptr [ebp + 0x60], 0x68
+00573871 call 0x40f020 ; CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> >::LowerBound
+00573876 mov ebx, dword ptr [ebx + 4]
+00573879 cmp eax, ebx
+0057387b je 0x573882
+0057387d cmp dword ptr [eax], 0x68
+00573880 jle 0x573884
+00573882 mov eax, ebx
+00573884 mov eax, dword ptr [eax + 4]
+00573887 mov dword ptr [ebp + 0x5c], eax
+0057388a mov ecx, dword ptr [ebp + 0x5c]
+0057388d push edi
+0057388e call 0x6d6770 ; CTCHeroExperience::GetTrainableStatMaxLevel
+00573893 mov ecx, dword ptr [ebp + 0x5c]
+00573896 push edi
+00573897 mov ebx, eax
+00573899 call 0x6d6520 ; CTCInventoryAbilities::GetAbilityLevel
+0057389e cmp eax, ebx
+005738a0 jge 0x573900
+005738a2 push -1
+005738a4 push 0x124e8a0 ; f=1.54703e-41 d=1.51178e+26 dw=0x2b20
+005738a9 lea ecx, [ebp + 0x60]
+005738ac call 0x99ebf0 ; CCharString::CCharString
+005738b1 lea edx, [ebp + 0x60]
+005738b4 lea ecx, [ebp + 0x40]
+005738b7 call 0x99b6a0 ; NScript::operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>
+005738bc push eax
+005738bd lea ecx, [ebp + 0x28]
+005738c0 call 0x99b8d0 ; CWideString::operator+=
+005738c5 lea ecx, [ebp + 0x40]
+005738c8 call 0x99b510 ; CWideString::~CWideString
+005738cd lea ecx, [ebp + 0x60]
+005738d0 call 0x99eae0 ; CCharString::~CCharString
+005738d5 push edi
+005738d6 mov ecx, esi
+005738d8 call 0x56ff3d ; CTCInventoryExperience::GetTCHeroExperience
+005738dd mov ecx, eax
+005738df call 0x6d6520 ; CTCInventoryAbilities::GetAbilityLevel
+005738e4 mov edx, eax
+005738e6 inc edx
+005738e7 lea ecx, [ebp + 0x40]
+005738ea call 0x405f00 ; _global::GFIntToWideString
+005738ef push eax
+005738f0 lea ecx, [ebp + 0x28]
+005738f3 call 0x99b8d0 ; CWideString::operator+=
+005738f8 lea ecx, [ebp + 0x40]
+005738fb call 0x99b510 ; CWideString::~CWideString
+00573900 push -1
+00573902 push 0x1236ee4 ; "PC_MENU_ENTRY_BRANCH_TEMPLATE"
+00573907 lea ecx, [ebp + 0x60]
+0057390a call 0x99ebf0 ; CCharString::CCharString
+0057390f push ecx
+00573910 mov ecx, esp
+00573912 push -1
+00573914 push 0x1236ed0 ; "PC_BUTTON_BASTARD"
+00573919 call 0x99ebf0 ; CCharString::CCharString
+0057391e fldz 
+00573920 push ecx
+00573921 push ecx
+00573922 fstp dword ptr [esp + 4]
+00573926 mov ecx, esp
+00573928 push -1
+0057392a push 0x122d70e ; f=3392 d=6.50688e+35 dw=0x45540000
+0057392f call 0x99ebf0 ; CCharString::CCharString
+00573934 fldz 
+00573936 push ecx
+00573937 fstp dword ptr [esp]
+0057393a lea eax, [ebp + 0x60]
+0057393d fldz 
+0057393f push eax
+00573940 push ecx
+00573941 push ecx
+00573942 mov ecx, dword ptr [ebp + 0x44]
+00573945 fstp dword ptr [esp + 4]
+00573949 fldz 
+0057394b lea eax, [ebp + 0x28]
+0057394e fstp dword ptr [esp]
+00573951 push eax
+00573952 call 0x428494
+00573957 push eax
+00573958 lea ecx, [ebp + 0x38]
+0057395b call 0x429c15 ; CCountedPointer_00428b10::CCountedPointer_00428b10
+00573960 lea ecx, [ebp + 0x60]
+00573963 call 0x99eae0 ; CCharString::~CCharString
+00573968 mov ebx, dword ptr [ebp + 0x38]
+0057396b push ecx
+0057396c lea eax, [ebp + 0x48]
+0057396f mov ecx, esp
+00573971 push eax
+00573972 call 0x99ec30 ; CCharString::CCharString
+00573977 push ebx
+00573978 mov ecx, esi
+0057397a call 0x56f615 ; CTCInventoryExperience::AddSoundAction
+0057397f mov eax, dword ptr [ebp + 0x38]
+00573982 mov dword ptr [ebp + 4], eax
+00573985 lea eax, [ebp]
+00573988 push eax
+00573989 lea eax, [ebp + 0x54]
+0057398c push eax
+0057398d lea ecx, [esi + 0x224]
+00573993 mov dword ptr [ebp], edi
+00573996 call 0x579958 ; std::_Rb_tree<CUnprovenKey_005794a1,CUnprovenValue_005794a1,CUnprovenKeyOfValue_005794a1,std::less<CUnprovenKey_005794a1>,std::allocator<CUnprovenValue_005794a1> >::insert_unique
+0057399b push -1
+0057399d push 0x124e8e0 ; "PC_MOVIE"
+005739a2 lea ecx, [ebp + 0x60]
+005739a5 call 0x99ebf0 ; CCharString::CCharString
+005739aa mov ecx, dword ptr [ebp + 0x44]
+005739ad push 0
+005739af lea eax, [ebp + 0x60]
+005739b2 push eax
+005739b3 call 0x41db1d ; NUISystem::CManager::CreateComponent
+005739b8 push eax
+005739b9 lea ecx, [ebp - 0x28]
+005739bc call 0x429c15 ; CCountedPointer_00428b10::CCountedPointer_00428b10
+005739c1 lea ecx, [ebp + 0x60]
+005739c4 call 0x99eae0 ; CCharString::~CCharString
+005739c9 mov ebx, dword ptr [ebp - 0x28]
+005739cc lea eax, [ebp - 0x2c]
+005739cf push eax
+005739d0 push edi
+005739d1 lea eax, [ebp + 0x40]
+005739d4 push eax
+005739d5 mov ecx, esi
+005739d7 call 0x56e6b6 ; CTCInventoryExperience::GetExperienceStatMovieName
+005739dc mov ecx, eax
+005739de call 0x99e480 ; CCharString::ToWideString
+005739e3 lea ecx, [ebp + 0x40]
+005739e6 call 0x99eae0 ; CCharString::~CCharString
+005739eb mov eax, dword ptr [ebx]
+005739ed lea ecx, [ebp - 0x2c]
+005739f0 push ecx
+005739f1 mov ecx, ebx
+005739f3 call dword ptr [eax + 0x238]
+005739f9 mov ecx, dword ptr [ebp + 0x38]
+005739fc mov eax, dword ptr [ecx]
+005739fe lea edx, [ebp - 0x28]
+00573a01 push edx
+00573a02 call dword ptr [eax + 0xec]
+00573a08 mov ecx, dword ptr [esi + 0x1d8]
+00573a0e test ecx, ecx
+00573a10 je 0x573a1d
+00573a12 push dword ptr [ebp - 0x28]
+00573a15 mov eax, dword ptr [ecx]
+00573a17 call dword ptr [eax + 0x238]
+00573a1d mov ecx, dword ptr [ebp + 0x6c]
+00573a20 push dword ptr [ebp - 0x28]
+00573a23 mov eax, dword ptr [ecx]
+00573a25 call dword ptr [eax + 0x1f0]
+00573a2b push -1
+00573a2d push 0x124ea0c ; "PC_TEXT_EXPERIENCE_STAT_NAME"
+00573a32 lea ecx, [ebp + 0x60]
+00573a35 call 0x99ebf0 ; CCharString::CCharString
+00573a3a mov ecx, dword ptr [ebp + 0x44]
+00573a3d xor ebx, ebx
+00573a3f push ebx
+00573a40 lea eax, [ebp + 0x60]
+00573a43 push eax
+00573a44 call 0x41db1d ; NUISystem::CManager::CreateComponent
+00573a49 push eax
+00573a4a lea ecx, [ebp - 0x10]
+00573a4d call 0x429c15 ; CCountedPointer_00428b10::CCountedPointer_00428b10
+00573a52 lea ecx, [ebp + 0x60]
+00573a55 call 0x99eae0 ; CCharString::~CCharString
+00573a5a push dword ptr [ebp - 0xc]
+00573a5d lea ecx, [ebp]
+00573a60 push dword ptr [ebp - 0x10]
+00573a63 mov dword ptr [ebp], ebx
+00573a66 mov dword ptr [ebp + 4], ebx
+00573a69 call 0x429460 ; CCountedPointer<NUISystem::CAction>::ShareData
+00573a6e push 0x122d820 ; f=4.48416e-44 d=2.07369e+98 dw=0x20
+00573a73 lea ecx, [ebp + 0x10]
+00573a76 call 0x99b6b0 ; CWideString::CWideString
+00573a7b lea ecx, [ebp + 0x34]
+00573a7e call 0x99aed0 ; CWideString::CWideString
+00573a83 mov ecx, dword ptr [ebp + 0x5c]
+00573a86 push edi
+00573a87 call 0x6d6770 ; CTCHeroExperience::GetTrainableStatMaxLevel
+00573a8c mov ecx, dword ptr [ebp + 0x5c]
+00573a8f push edi
+00573a90 mov ebx, eax
+00573a92 call 0x6d6520 ; CTCInventoryAbilities::GetAbilityLevel
+00573a97 cmp eax, ebx
+00573a99 jge 0x573c40
+00573a9f push -1
+00573aa1 push 0x124e868 ; "TEXT_GUI_MENU_EXP_LEVEL"
+00573aa6 lea ecx, [ebp + 0x60]
+00573aa9 call 0x99ebf0 ; CCharString::CCharString
+00573aae push 0x1231728 ; f=1.4013e-44 d=6.41417e-110 dw=0xa
+00573ab3 lea ecx, [ebp + 0x58]
+00573ab6 call 0x99b6b0 ; CWideString::CWideString
+00573abb push eax
+00573abc push edi
+00573abd mov ecx, esi
+00573abf call 0x56ff3d ; CTCInventoryExperience::GetTCHeroExperience
+00573ac4 mov ecx, eax
+00573ac6 call 0x6d6520 ; CTCInventoryAbilities::GetAbilityLevel
+00573acb mov edx, eax
+00573acd inc edx
+00573ace lea ecx, [ebp + 0x30]
+00573ad1 call 0x405f00 ; _global::GFIntToWideString
+00573ad6 mov ecx, dword ptr [ebp - 0x14]
+00573ad9 push eax
+00573ada lea eax, [ebp + 0x10]
+00573add push eax
+00573ade lea eax, [ebp + 0x60]
+00573ae1 push eax
+00573ae2 lea eax, [ebp + 0x50]
+00573ae5 push eax
+00573ae6 call 0x9c95e0 ; NGameText::CDataBank::GetTextBySymbol
+00573aeb push eax
+00573aec lea eax, [ebp + 0x10]
+00573aef push eax
+00573af0 push edi
+00573af1 lea eax, [ebp + 0x24]
+00573af4 push eax
+00573af5 mov ecx, esi
+00573af7 call 0x56f26f ; CTCInventoryExperience::GetExperienceStatName
+00573afc mov edx, eax
+00573afe lea ecx, [ebp - 0x30]
+00573b01 call 0x99be70 ; operator+
+00573b06 mov edx, eax
+00573b08 lea ecx, [ebp + 0xc]
+00573b0b call 0x99be70 ; operator+
+00573b10 mov edx, eax
+00573b12 lea ecx, [ebp - 4]
+00573b15 call 0x99be70 ; operator+
+00573b1a mov edx, eax
+00573b1c lea ecx, [ebp - 0x1c]
+00573b1f call 0x99be70 ; operator+
+00573b24 mov edx, eax
+00573b26 lea ecx, [ebp + 0x40]
+00573b29 call 0x99be70 ; operator+
+00573b2e push eax
+00573b2f lea ecx, [ebp + 0x34]
+00573b32 call 0x99b7d0 ; CWideString::operator=
+00573b37 lea ecx, [ebp + 0x40]
+00573b3a call 0x99b510 ; CWideString::~CWideString
+00573b3f lea ecx, [ebp - 0x1c]
+00573b42 call 0x99b510 ; CWideString::~CWideString
+00573b47 lea ecx, [ebp - 4]
+00573b4a call 0x99b510 ; CWideString::~CWideString
+00573b4f lea ecx, [ebp + 0xc]
+00573b52 call 0x99b510 ; CWideString::~CWideString
+00573b57 lea ecx, [ebp - 0x30]
+00573b5a call 0x99b510 ; CWideString::~CWideString
+00573b5f lea ecx, [ebp + 0x24]
+00573b62 call 0x99b510 ; CWideString::~CWideString
+00573b67 lea ecx, [ebp + 0x50]
+00573b6a call 0x99b510 ; CWideString::~CWideString
+00573b6f lea ecx, [ebp + 0x30]
+00573b72 call 0x99b510 ; CWideString::~CWideString
+00573b77 lea ecx, [ebp + 0x58]
+00573b7a call 0x99b510 ; CWideString::~CWideString
+00573b7f lea ecx, [ebp + 0x60]
+00573b82 call 0x99eae0 ; CCharString::~CCharString
+00573b87 push -1
+00573b89 push 0x124e848 ; "TEXT_GUI_MENU_EXPERIENCE_COST"
+00573b8e lea ecx, [ebp + 0x60]
+00573b91 call 0x99ebf0 ; CCharString::CCharString
+00573b96 mov eax, dword ptr [0x13b86a0]
+00573b9b mov ebx, dword ptr [eax + 0x14]
+00573b9e push edi
+00573b9f mov ecx, esi
+00573ba1 call 0x56ff3d ; CTCInventoryExperience::GetTCHeroExperience
+00573ba6 mov ecx, eax
+00573ba8 call 0x6d67b0 ; CTCHeroExperience::GetCostToUpgradeTrainableStat
+00573bad mov edx, eax
+00573baf lea ecx, [ebp - 0x30]
+00573bb2 call 0x405f00 ; _global::GFIntToWideString
+00573bb7 push eax
+00573bb8 push 0x1236a50 ; f=2.93882e-39 d=1.03616e-317 dw=0x20003a
+00573bbd lea ecx, [ebp + 0x24]
+00573bc0 call 0x99b6b0 ; CWideString::CWideString
+00573bc5 push eax
+00573bc6 lea eax, [ebp + 0x60]
+00573bc9 push eax
+00573bca lea eax, [ebp + 0x50]
+00573bcd push eax
+00573bce mov ecx, ebx
+00573bd0 call 0x9c95e0 ; NGameText::CDataBank::GetTextBySymbol
+00573bd5 mov edx, eax
+00573bd7 lea ecx, [ebp + 0x30]
+00573bda call 0x99be70 ; operator+
+00573bdf mov edx, eax
+00573be1 lea ecx, [ebp + 0x58]
+00573be4 call 0x99be70 ; operator+
+00573be9 push eax
+00573bea lea ecx, [ebp + 0x34]
+00573bed call 0x99b8d0 ; CWideString::operator+=
+00573bf2 lea ecx, [ebp + 0x58]
+00573bf5 call 0x99b510 ; CWideString::~CWideString
+00573bfa lea ecx, [ebp + 0x30]
+00573bfd call 0x99b510 ; CWideString::~CWideString
+00573c02 lea ecx, [ebp + 0x50]
+00573c05 call 0x99b510 ; CWideString::~CWideString
+00573c0a lea ecx, [ebp + 0x24]
+00573c0d call 0x99b510 ; CWideString::~CWideString
+00573c12 lea ecx, [ebp - 0x30]
+00573c15 call 0x99b510 ; CWideString::~CWideString
+00573c1a lea ecx, [ebp + 0x60]
+00573c1d call 0x99eae0 ; CCharString::~CCharString
+00573c22 push 0x1249f28 ; f=9.18369e-40 d=3.23796e-318 dw=0xa000a
+00573c27 lea ecx, [ebp + 0x58]
+00573c2a call 0x99b6b0 ; CWideString::CWideString
+00573c2f push eax
+00573c30 lea ecx, [ebp + 0x34]
+00573c33 call 0x99b8d0 ; CWideString::operator+=
+00573c38 lea ecx, [ebp + 0x58]
+00573c3b call 0x99b510 ; CWideString::~CWideString
+00573c40 mov ecx, dword ptr [ebp + 0x5c]
+00573c43 push edi
+00573c44 call 0x6d6520 ; CTCInventoryAbilities::GetAbilityLevel
+00573c49 inc eax
+00573c4a push eax
+00573c4b push edi
+00573c4c lea eax, [ebp + 0x58]
+00573c4f push eax
+00573c50 mov ecx, esi
+00573c52 call 0x56fdc3 ; CTCInventoryExperience::GetExperienceStatDescription
+00573c57 push eax
+00573c58 lea ecx, [ebp + 0x34]
+00573c5b call 0x99b8d0 ; CWideString::operator+=
+00573c60 lea ecx, [ebp + 0x58]
+00573c63 call 0x99b510 ; CWideString::~CWideString
+00573c68 mov ecx, dword ptr [ebp]
+00573c6b mov eax, dword ptr [ecx]
+00573c6d push 1
+00573c6f push 1
+00573c71 lea edx, [ebp + 0x34]
+00573c74 push edx
+00573c75 call dword ptr [eax + 0x240]
+00573c7b mov ecx, dword ptr [ebp + 0x38]
+00573c7e mov eax, dword ptr [ecx]
+00573c80 lea edx, [ebp - 0x10]
+00573c83 push edx
+00573c84 call dword ptr [eax + 0xec]
+00573c8a mov ecx, dword ptr [ebp + 0x6c]
+00573c8d push dword ptr [ebp - 0x10]
+00573c90 mov eax, dword ptr [ecx]
+00573c92 call dword ptr [eax + 0x1f0]
+00573c98 mov ecx, dword ptr [esi + 0x1dc]
+00573c9e test ecx, ecx
+00573ca0 je 0x573cad
+00573ca2 push dword ptr [ebp - 0x10]
+00573ca5 mov eax, dword ptr [ecx]
+00573ca7 call dword ptr [eax + 0x238]
+00573cad mov ebx, dword ptr [esi + 4]
+00573cb0 push 0x68
+00573cb2 lea ecx, [ebx + 0x20]
+00573cb5 call 0x410de0 ; std::bitset<274>::test
+00573cba test al, al
+00573cbc je 0x573ce7
+00573cbe lea eax, [ebp + 0x58]
+00573cc1 add ebx, 0x44
+00573cc4 push eax
+00573cc5 mov ecx, ebx
+00573cc7 mov dword ptr [ebp + 0x58], 0x68
+00573cce call 0x40f020 ; CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> >::LowerBound
+00573cd3 mov ebx, dword ptr [ebx + 4]
+00573cd6 cmp eax, ebx
+00573cd8 je 0x573cdf
+00573cda cmp dword ptr [eax], 0x68
+00573cdd jle 0x573ce1
+00573cdf mov eax, ebx
+00573ce1 mov eax, dword ptr [eax + 4]
+00573ce4 mov dword ptr [ebp + 0x5c], eax
+00573ce7 mov ecx, dword ptr [ebp + 0x5c]
+00573cea fldz 
+00573cec push edi
+00573ced fstp dword ptr [ebp + 0x14]
+00573cf0 call 0x6d6520 ; CTCInventoryAbilities::GetAbilityLevel
+00573cf5 mov ecx, dword ptr [ebp + 0x5c]
+00573cf8 push edi
+00573cf9 mov ebx, eax
+00573cfb call 0x6d6770 ; CTCHeroExperience::GetTrainableStatMaxLevel
+00573d00 mov ecx, dword ptr [ebp + 0x5c]
+00573d03 mov dword ptr [ebp + 0x30], eax
+00573d06 lea eax, [ebp + 0x14]
+00573d09 push eax
+00573d0a push edi
+00573d0b call 0x6d6fa0
+00573d10 mov dword ptr [ebp + 0x5c], eax
+00573d13 add eax, ebx
+00573d15 mov dword ptr [ebp + 0x58], eax
+00573d18 fild dword ptr [ebp + 0x58]
+00573d1b push -1
+00573d1d push 0x124e8a4 ; "PC_EXPERIENCE_SPENDING_TICK_CONTAINER"
+00573d22 fadd dword ptr [ebp + 0x14]
+00573d25 lea ecx, [ebp + 0x60]
+00573d28 fstp dword ptr [ebp + 0x14]
+00573d2b call 0x99ebf0 ; CCharString::CCharString
+00573d30 mov ecx, dword ptr [ebp + 0x44]
+00573d33 push 0
+00573d35 lea eax, [ebp + 0x60]
+00573d38 push eax
+00573d39 call 0x41db1d ; NUISystem::CManager::CreateComponent
+00573d3e push eax
+00573d3f lea ecx, [ebp - 0x44]
+00573d42 call 0x429c15 ; CCountedPointer_00428b10::CCountedPointer_00428b10
+00573d47 lea ecx, [ebp + 0x60]
+00573d4a call 0x99eae0 ; CCharString::~CCharString
+00573d4f fldz 
+00573d51 fstp dword ptr [ebp + 0x18]
+00573d54 push ecx
+00573d55 fldz 
+00573d57 xor eax, eax
+00573d59 fstp dword ptr [ebp + 0x1c]
+00573d5c lea ecx, [ebp + 0x18]
+00573d5f fldz 
+00573d61 mov dword ptr [ebp + 0x4c], eax
+00573d64 mov dword ptr [ebp + 0x50], eax
+00573d67 fstp dword ptr [ebp + 0x20]
+00573d6a fldz 
+00573d6c fstp dword ptr [ebp + 0x24]
+00573d6f fld dword ptr [0x124e978] ; f=40 d=2.6731e+98 dw=0x42200000
+00573d75 fstp dword ptr [esp]
+00573d78 fld dword ptr [0x1238868] ; f=310 d=5.98134e+14 dw=0x439b0000
+00573d7e push ecx
+00573d7f push eax
+00573d80 push eax
+00573d81 push ecx
+00573d82 push ecx
+00573d83 fstp dword ptr [esp + 4]
+00573d87 lea eax, [ebp - 0x3c]
+00573d8a fld dword ptr [ebp + 0x14]
+00573d8d mov ecx, esi
+00573d8f fstp dword ptr [esp]
+00573d92 push edi
+00573d93 push eax
+00573d94 call 0x56ed74 ; CTCInventoryExperience::GetExperienceStatColour
+00573d99 push eax
+00573d9a push dword ptr [ebp + 0x30]
+00573d9d lea eax, [ebp + 0x4c]
+00573da0 push ebx
+00573da1 push eax
+00573da2 push edi
+00573da3 lea eax, [ebp + 0x58]
+00573da6 push eax
+00573da7 call 0x56f26f ; CTCInventoryExperience::GetExperienceStatName
+00573dac mov ecx, dword ptr [ebp + 0x44]
+00573daf push eax
+00573db0 call 0x427216
+00573db5 push eax
+00573db6 lea ecx, [ebp - 0x4c]
+00573db9 call 0x429c15 ; CCountedPointer_00428b10::CCountedPointer_00428b10
+00573dbe lea ecx, [ebp + 0x58]
+00573dc1 call 0x99b510 ; CWideString::~CWideString
+00573dc6 mov ecx, dword ptr [ebp - 0x44]
+00573dc9 mov eax, dword ptr [ecx]
+00573dcb lea edx, [ebp - 0x4c]
+00573dce push edx
+00573dcf call dword ptr [eax + 0xec]
+00573dd5 mov ecx, dword ptr [ebp + 0x38]
+00573dd8 mov eax, dword ptr [ecx]
+00573dda lea edx, [ebp - 0x44]
+00573ddd push edx
+00573dde call dword ptr [eax + 0xec]
+00573de4 mov ecx, dword ptr [ebp + 0x6c]
+00573de7 push dword ptr [ebp - 0x44]
+00573dea mov eax, dword ptr [ecx]
+00573dec call dword ptr [eax + 0x1f0]
+00573df2 lea edi, [esi + 0x140]
+00573df8 lea eax, [ebp + 0x70]
+00573dfb push eax
+00573dfc mov ecx, edi
+00573dfe mov dword ptr [ebp + 0x30], edi
+00573e01 call 0x579114 ; std::_Rb_tree::_M_find
+00573e06 cmp dword ptr [ebp + 0x5c], 0
+00573e0a mov dword ptr [ebp + 0x60], eax
+00573e0d jg 0x573e72
+00573e0f cmp eax, dword ptr [edi]
+00573e11 jne 0x573e72
+00573e13 mov eax, dword ptr [ebp + 0x38]
+00573e16 mov edi, dword ptr [eax]
+00573e18 push ecx
+00573e19 mov ecx, esp
+00573e1b push -1
+00573e1d push 0x1237150 ; "UI_SELECTION_ARROW_RIGHT"
+00573e22 mov esi, eax
+00573e24 call 0x99ebf0 ; CCharString::CCharString
+00573e29 mov ecx, esi
+00573e2b call dword ptr [edi + 0xc]
+00573e2e mov esi, eax
+00573e30 test esi, esi
+00573e32 je 0x573e62
+00573e34 lea ecx, [ebp + 0x54]
+00573e37 call 0x42bed4 ; NUISystem::CDeletion::CDeletion
+00573e3c mov edi, dword ptr [esi]
+00573e3e push ecx
+00573e3f push ecx
+00573e40 lea eax, [ebp + 0x54]
+00573e43 mov ecx, esp
+00573e45 push eax
+00573e46 mov dword ptr [ebp + 0x54], 1
+00573e4d call 0x42cd84 ; NUISystem::CDeletion::CDeletion
+00573e52 mov ecx, esi
+00573e54 call dword ptr [edi + 0xf8]
+00573e5a lea ecx, [ebp + 0x58]
+00573e5d call 0x42abca ; std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list
+00573e62 mov ecx, dword ptr [ebp + 0x38]
+00573e65 mov eax, dword ptr [ecx]
+00573e67 call dword ptr [eax + 0x170]
+00573e6d jmp 0x5744f7
+00573e72 push -1
+00573e74 push 0x12303f4 ; "PC_SUB_LIST"
+00573e79 lea ecx, [ebp + 0x6c]
+00573e7c call 0x99ebf0 ; CCharString::CCharString
+00573e81 mov ecx, dword ptr [ebp + 0x44]
+00573e84 xor ebx, ebx
+00573e86 push ebx
+00573e87 lea eax, [ebp + 0x6c]
+00573e8a push eax
+00573e8b call 0x41db1d ; NUISystem::CManager::CreateComponent
+00573e90 push eax
+00573e91 lea ecx, [ebp - 0x18]
+00573e94 call 0x429c15 ; CCountedPointer_00428b10::CCountedPointer_00428b10
+00573e99 lea ecx, [ebp + 0x6c]
+00573e9c call 0x99eae0 ; CCharString::~CCharString
+00573ea1 push dword ptr [ebp - 0x14]
+00573ea4 lea ecx, [ebp - 0x34]
+00573ea7 push dword ptr [ebp - 0x18]
+00573eaa mov dword ptr [ebp - 0x34], ebx
+00573ead mov dword ptr [ebp - 0x30], ebx
+00573eb0 call 0x429486 ; CCountedPointer<NUISystem::CAction>::ShareData
+00573eb5 cmp dword ptr [ebp + 0x7c], ebx
+00573eb8 mov ebx, dword ptr [ebp - 0x34]
+00573ebb je 0x573eca
+00573ebd push dword ptr [ebp + 0x7c]
+00573ec0 mov eax, dword ptr [ebx]
+00573ec2 mov ecx, ebx
+00573ec4 call dword ptr [eax + 0x244]
+00573eca xor eax, eax
+00573ecc inc eax
+00573ecd cmp dword ptr [ebp + 0x5c], 0
+00573ed1 jle 0x573edd
+00573ed3 mov ecx, dword ptr [ebp + 0x60]
+00573ed6 cmp ecx, dword ptr [edi]
+00573ed8 je 0x573edd
+00573eda push 2
+00573edc pop eax
+00573edd mov edx, dword ptr [ebx]
+00573edf push eax
+00573ee0 mov ecx, ebx
+00573ee2 call dword ptr [edx + 0x270]
+00573ee8 mov ecx, dword ptr [ebp + 0x38]
+00573eeb mov eax, dword ptr [ecx]
+00573eed lea edx, [ebp - 0x18]
+00573ef0 push edx
+00573ef1 call dword ptr [eax + 0xec]
+00573ef7 push 0x10
+00573ef9 call 0xbfea1a ; operator new
+00573efe test eax, eax
+00573f00 pop ecx
+00573f01 je 0x573f0c
+00573f03 mov ecx, eax
+00573f05 call 0x42be50 ; NUISystem::CAction::CAction
+00573f0a jmp 0x573f0e
+00573f0c xor eax, eax
+00573f0e push eax
+00573f0f lea ecx, [ebp + 0x4c]
+00573f12 call 0x42aa29 ; CCountedPointer_00429f43::CCountedPointer_00429f43
+00573f17 mov eax, dword ptr [ebp + 0x4c]
+00573f1a push ecx
+00573f1b mov dword ptr [eax], 0xd5
+00573f21 mov eax, dword ptr [esi + 0x23c]
+00573f27 mov eax, dword ptr [eax]
+00573f29 mov ebx, dword ptr [eax]
+00573f2b mov ecx, esp
+00573f2d push -1
+00573f2f mov edi, 0x12309a8 ; "UI_LEVEL_SLIDER_NUMBER"
+00573f34 push edi
+00573f35 mov dword ptr [ebp + 0x6c], eax
+00573f38 call 0x99ebf0 ; CCharString::CCharString
+00573f3d mov ecx, dword ptr [ebp + 0x6c]
+00573f40 call dword ptr [ebx + 0xc]
+00573f43 lea ecx, [ebp + 0x4c]
+00573f46 push ecx
+00573f47 mov ecx, eax
+00573f49 add eax, 0x18
+00573f4c neg ecx
+00573f4e sbb ecx, ecx
+00573f50 and ecx, eax
+00573f52 push ecx
+00573f53 mov ecx, dword ptr [ebp + 0x4c]
+00573f56 call 0x53fde0 ; NUISystem::CAction::AddParam
+00573f5b push 0xc
+00573f5d call 0xbfea1a ; operator new
+00573f62 test eax, eax
+00573f64 pop ecx
+00573f65 je 0x573f7a
+00573f67 or dword ptr [eax + 8], 0xffffffff
+00573f6b mov dword ptr [eax + 4], 3
+00573f72 mov dword ptr [eax], 0x12366f4 ; f=6.59448e-39 d=6.96101e-303 dw=0x47cebd
+00573f78 jmp 0x573f7c
+00573f7a xor eax, eax
+00573f7c mov ecx, dword ptr [ebp + 0x4c]
+00573f7f push eax
+00573f80 call 0x53fdb0 ; NUISystem::CAction::AddParam
+00573f85 mov eax, dword ptr [esi + 0x23c]
+00573f8b mov eax, dword ptr [eax + 4]
+00573f8e mov ebx, dword ptr [eax]
+00573f90 push ecx
+00573f91 mov ecx, esp
+00573f93 push -1
+00573f95 push edi
+00573f96 mov dword ptr [ebp + 0x6c], eax
+00573f99 call 0x99ebf0 ; CCharString::CCharString
+00573f9e mov ecx, dword ptr [ebp + 0x6c]
+00573fa1 call dword ptr [ebx + 0xc]
+00573fa4 lea ecx, [ebp + 0x4c]
+00573fa7 push ecx
+00573fa8 mov ecx, eax
+00573faa add eax, 0x18
+00573fad neg ecx
+00573faf sbb ecx, ecx
+00573fb1 and ecx, eax
+00573fb3 push ecx
+00573fb4 mov ecx, dword ptr [ebp + 0x4c]
+00573fb7 call 0x53fde0 ; NUISystem::CAction::AddParam
+00573fbc push 0xc
+00573fbe call 0xbfea1a ; operator new
+00573fc3 test eax, eax
+00573fc5 pop ecx
+00573fc6 je 0x573fdb
+00573fc8 or dword ptr [eax + 8], 0xffffffff
+00573fcc mov dword ptr [eax + 4], 3
+00573fd3 mov dword ptr [eax], 0x12366f4 ; f=6.59448e-39 d=6.96101e-303 dw=0x47cebd
+00573fd9 jmp 0x573fdd
+00573fdb xor eax, eax
+00573fdd mov ecx, dword ptr [ebp + 0x4c]
+00573fe0 push eax
+00573fe1 call 0x53fdb0 ; NUISystem::CAction::AddParam
+00573fe6 mov eax, dword ptr [esi + 0x23c]
+00573fec mov eax, dword ptr [eax + 8]
+00573fef mov ebx, dword ptr [eax]
+00573ff1 push ecx
+00573ff2 mov ecx, esp
+00573ff4 push -1
+00573ff6 push edi
+00573ff7 mov dword ptr [ebp + 0x6c], eax
+00573ffa call 0x99ebf0 ; CCharString::CCharString
+00573fff mov ecx, dword ptr [ebp + 0x6c]
+00574002 call dword ptr [ebx + 0xc]
+00574005 lea ecx, [ebp + 0x4c]
+00574008 push ecx
+00574009 mov ecx, eax
+0057400b add eax, 0x18
+0057400e neg ecx
+00574010 sbb ecx, ecx
+00574012 and ecx, eax
+00574014 push ecx
+00574015 mov ecx, dword ptr [ebp + 0x4c]
+00574018 call 0x53fde0 ; NUISystem::CAction::AddParam
+0057401d push 0xc
+0057401f call 0xbfea1a ; operator new
+00574024 test eax, eax
+00574026 pop ecx
+00574027 je 0x57403c
+00574029 or dword ptr [eax + 8], 0xffffffff
+0057402d mov dword ptr [eax + 4], 3
+00574034 mov dword ptr [eax], 0x12366f4 ; f=6.59448e-39 d=6.96101e-303 dw=0x47cebd
+0057403a jmp 0x57403e
+0057403c xor eax, eax
+0057403e mov ecx, dword ptr [ebp + 0x4c]
+00574041 push eax
+00574042 call 0x53fdb0 ; NUISystem::CAction::AddParam
+00574047 mov eax, dword ptr [esi + 0x23c]
+0057404d mov eax, dword ptr [eax + 0xc]
+00574050 mov ebx, dword ptr [eax]
+00574052 push ecx
+00574053 mov ecx, esp
+00574055 push -1
+00574057 push edi
+00574058 mov dword ptr [ebp + 0x6c], eax
+0057405b call 0x99ebf0 ; CCharString::CCharString
+00574060 mov ecx, dword ptr [ebp + 0x6c]
+00574063 call dword ptr [ebx + 0xc]
+00574066 lea ecx, [ebp + 0x4c]
+00574069 push ecx
+0057406a mov ecx, eax
+0057406c add eax, 0x18
+0057406f neg ecx
+00574071 sbb ecx, ecx
+00574073 and ecx, eax
+00574075 push ecx
+00574076 mov ecx, dword ptr [ebp + 0x4c]
+00574079 call 0x53fde0 ; NUISystem::CAction::AddParam
+0057407e push 0xc
+00574080 call 0xbfea1a ; operator new
+00574085 test eax, eax
+00574087 pop ecx
+00574088 je 0x57409d
+0057408a or dword ptr [eax + 8], 0xffffffff
+0057408e mov dword ptr [eax + 4], 3
+00574095 mov dword ptr [eax], 0x12366f4 ; f=6.59448e-39 d=6.96101e-303 dw=0x47cebd
+0057409b jmp 0x57409f
+0057409d xor eax, eax
+0057409f mov ecx, dword ptr [ebp + 0x4c]
+005740a2 push eax
+005740a3 call 0x53fdb0 ; NUISystem::CAction::AddParam
+005740a8 mov ecx, dword ptr [ebp + 0x38]
+005740ab mov eax, dword ptr [ecx]
+005740ad lea edx, [ebp + 0x4c]
+005740b0 push edx
+005740b1 call dword ptr [eax + 0x10c]
+005740b7 mov ecx, dword ptr [ebp + 0x38]
+005740ba mov eax, dword ptr [ecx]
+005740bc lea edx, [ebp + 0x4c]
+005740bf push edx
+005740c0 call dword ptr [eax + 0x110]
+005740c6 cmp dword ptr [ebp + 0x5c], 0
+005740ca jle 0x5743b3
+005740d0 inc dword ptr [esi + 0x218]
+005740d6 or ebx, 0xffffffff
+005740d9 push ebx
+005740da push 0x124e7e4 ; "TEXT_GUI_MENU_BUY"
+005740df lea ecx, [ebp + 0x6c]
+005740e2 call 0x99ebf0 ; CCharString::CCharString
+005740e7 lea eax, [ebp + 0x6c]
+005740ea push eax
+005740eb lea eax, [ebp + 0x5c]
+005740ee push eax
+005740ef mov eax, dword ptr [0x13b86a0]
+005740f4 mov ecx, dword ptr [eax + 0x14]
+005740f7 call 0x9c95e0 ; NGameText::CDataBank::GetTextBySymbol
+005740fc lea ecx, [ebp + 0x6c]
+005740ff call 0x99eae0 ; CCharString::~CCharString
+00574104 push ebx
+00574105 push 0x1236f04 ; "PC_MENU_ENTRY_TEMPLATE"
+0057410a lea ecx, [ebp + 0x6c]
+0057410d call 0x99ebf0 ; CCharString::CCharString
+00574112 push ecx
+00574113 mov ecx, esp
+00574115 push ebx
+00574116 push 0x1236ed0 ; "PC_BUTTON_BASTARD"
+0057411b call 0x99ebf0 ; CCharString::CCharString
+00574120 fldz 
+00574122 push ecx
+00574123 push ecx
+00574124 fstp dword ptr [esp + 4]
+00574128 mov ecx, esp
+0057412a push ebx
+0057412b push 0x122d70e ; f=3392 d=6.50688e+35 dw=0x45540000
+00574130 call 0x99ebf0 ; CCharString::CCharString
+00574135 fldz 
+00574137 push ecx
+00574138 fstp dword ptr [esp]
+0057413b lea eax, [ebp + 0x6c]
+0057413e fld1 
+00574140 push eax
+00574141 push ecx
+00574142 push ecx
+00574143 mov ecx, dword ptr [ebp + 0x44]
+00574146 fstp dword ptr [esp + 4]
+0057414a fldz 
+0057414c lea eax, [ebp + 0x5c]
+0057414f fstp dword ptr [esp]
+00574152 push eax
+00574153 call 0x428494
+00574158 push eax
+00574159 lea ecx, [ebp - 0x20]
+0057415c call 0x429c15 ; CCountedPointer_00428b10::CCountedPointer_00428b10
+00574161 lea ecx, [ebp + 0x6c]
+00574164 call 0x99eae0 ; CCharString::~CCharString
+00574169 push dword ptr [ebp - 0x1c]
+0057416c and dword ptr [ebp - 8], 0
+00574170 push dword ptr [ebp - 0x20]
+00574173 and dword ptr [ebp - 4], 0
+00574177 lea ecx, [ebp - 8]
+0057417a call 0x42920a ; CCountedPointer<NUISystem::CAction>::ShareData
+0057417f push 0x10
+00574181 call 0xbfea1a ; operator new
+00574186 test eax, eax
+00574188 pop ecx
+00574189 je 0x574194
+0057418b mov ecx, eax
+0057418d call 0x42be50 ; NUISystem::CAction::CAction
+00574192 jmp 0x574196
+00574194 xor eax, eax
+00574196 push eax
+00574197 lea ecx, [ebp + 8]
+0057419a call 0x42aa29 ; CCountedPointer_00429f43::CCountedPointer_00429f43
+0057419f mov eax, dword ptr [ebp + 8]
+005741a2 push 0xc
+005741a4 mov dword ptr [eax], 7
+005741aa call 0xbfea1a ; operator new
+005741af test eax, eax
+005741b1 pop ecx
+005741b2 je 0x5741c9
+005741b4 mov ecx, dword ptr [ebp + 0x70]
+005741b7 mov dword ptr [eax + 4], 3
+005741be mov dword ptr [eax], 0x12366f4 ; f=6.59448e-39 d=6.96101e-303 dw=0x47cebd
+005741c4 mov dword ptr [eax + 8], ecx
+005741c7 jmp 0x5741cb
+005741c9 xor eax, eax
+005741cb mov ecx, dword ptr [ebp + 8]
+005741ce push eax
+005741cf call 0x53fdb0 ; NUISystem::CAction::AddParam
+005741d4 push 0xc
+005741d6 call 0xbfea1a ; operator new
+005741db mov ebx, eax
+005741dd test ebx, ebx
+005741df pop ecx
+005741e0 je 0x574205
+005741e2 push dword ptr [ebp + 0x70]
+005741e5 mov ecx, esi
+005741e7 call 0x56ff3d ; CTCInventoryExperience::GetTCHeroExperience
+005741ec mov ecx, eax
+005741ee call 0x6d67b0 ; CTCHeroExperience::GetCostToUpgradeTrainableStat
+005741f3 mov dword ptr [ebx + 4], 3
+005741fa mov dword ptr [ebx], 0x12366f4 ; f=6.59448e-39 d=6.96101e-303 dw=0x47cebd
+00574200 mov dword ptr [ebx + 8], eax
+00574203 jmp 0x574207
+00574205 xor ebx, ebx
+00574207 mov ecx, dword ptr [ebp + 8]
+0057420a push ebx
+0057420b call 0x53fdb0 ; NUISystem::CAction::AddParam
+00574210 mov ecx, dword ptr [ebp - 8]
+00574213 mov eax, dword ptr [ecx]
+00574215 lea edx, [ebp + 8]
+00574218 push edx
+00574219 call dword ptr [eax + 0x108]
+0057421f mov ecx, dword ptr [ebp - 0x34]
+00574222 mov eax, dword ptr [ecx]
+00574224 lea edx, [ebp - 0x20]
+00574227 push edx
+00574228 call dword ptr [eax + 0x260]
+0057422e push dword ptr [ebp + 0x70]
+00574231 mov ecx, esi
+00574233 call 0x56ff3d ; CTCInventoryExperience::GetTCHeroExperience
+00574238 mov ecx, eax
+0057423a call 0x6d67b0 ; CTCHeroExperience::GetCostToUpgradeTrainableStat
+0057423f push dword ptr [ebp + 0x70]
+00574242 mov ecx, esi
+00574244 mov dword ptr [ebp + 0x7c], eax
+00574247 call 0x56ff3d ; CTCInventoryExperience::GetTCHeroExperience
+0057424c mov ecx, eax
+0057424e call 0x6d6850 ; CTCHeroExperience::GetCategoryTrainableStatIsIn
+00574253 mov ebx, eax
+00574255 push ebx
+00574256 mov ecx, esi
+00574258 call 0x56ff3d ; CTCInventoryExperience::GetTCHeroExperience
+0057425d mov ecx, eax
+0057425f call 0x6d6510 ; CTCInventoryAbilities::GetAbilityLevel
+00574264 push 0x10
+00574266 mov dword ptr [ebp + 0x6c], eax
+00574269 call 0xbfea1a ; operator new
+0057426e test eax, eax
+00574270 pop ecx
+00574271 je 0x57427c
+00574273 mov ecx, eax
+00574275 call 0x42be50 ; NUISystem::CAction::CAction
+0057427a jmp 0x57427e
+0057427c xor eax, eax
+0057427e push eax
+0057427f lea ecx, [ebp + 0x20]
+00574282 call 0x42aa29 ; CCountedPointer_00429f43::CCountedPointer_00429f43
+00574287 cmp dword ptr [ebp + 0x6c], 0
+0057428b mov eax, dword ptr [ebp + 0x20]
+0057428e mov dword ptr [eax], 0xd5
+00574294 jle 0x574311
+00574296 mov eax, dword ptr [esi + 0x23c]
+0057429c mov eax, dword ptr [eax + ebx*4 + 4]
+005742a0 mov ebx, dword ptr [eax]
+005742a2 push ecx
+005742a3 mov ecx, esp
+005742a5 push -1
+005742a7 push edi
+005742a8 mov dword ptr [ebp + 0x58], eax
+005742ab call 0x99ebf0 ; CCharString::CCharString
+005742b0 mov ecx, dword ptr [ebp + 0x58]
+005742b3 call dword ptr [ebx + 0xc]
+005742b6 lea ecx, [ebp + 0x20]
+005742b9 push ecx
+005742ba mov ecx, eax
+005742bc add eax, 0x18
+005742bf neg ecx
+005742c1 sbb ecx, ecx
+005742c3 and ecx, eax
+005742c5 push ecx
+005742c6 mov ecx, dword ptr [ebp + 0x20]
+005742c9 call 0x53fde0 ; NUISystem::CAction::AddParam
+005742ce mov eax, dword ptr [ebp + 0x7c]
+005742d1 cmp dword ptr [ebp + 0x6c], eax
+005742d4 push 0xc
+005742d6 jg 0x5742f7
+005742d8 call 0xbfea1a ; operator new
+005742dd test eax, eax
+005742df pop ecx
+005742e0 je 0x574306
+005742e2 mov ecx, dword ptr [ebp + 0x6c]
+005742e5 mov dword ptr [eax + 4], 3
+005742ec mov dword ptr [eax], 0x12366f4 ; f=6.59448e-39 d=6.96101e-303 dw=0x47cebd
+005742f2 mov dword ptr [eax + 8], ecx
+005742f5 jmp 0x574308
+005742f7 call 0xbfea1a ; operator new
+005742fc test eax, eax
+005742fe pop ecx
+005742ff je 0x574306
+00574301 mov ecx, dword ptr [ebp + 0x7c]
+00574304 jmp 0x5742e5
+00574306 xor eax, eax
+00574308 mov ecx, dword ptr [ebp + 0x20]
+0057430b push eax
+0057430c call 0x53fdb0 ; NUISystem::CAction::AddParam
+00574311 mov ebx, dword ptr [ebp + 0x7c]
+00574314 sub ebx, dword ptr [ebp + 0x6c]
+00574317 test ebx, ebx
+00574319 jle 0x57437c
+0057431b mov eax, dword ptr [esi + 0x23c]
+00574321 mov esi, dword ptr [eax]
+00574323 mov eax, dword ptr [esi]
+00574325 push ecx
+00574326 mov ecx, esp
+00574328 push -1
+0057432a push edi
+0057432b mov dword ptr [ebp + 0x6c], eax
+0057432e call 0x99ebf0 ; CCharString::CCharString
+00574333 mov eax, dword ptr [ebp + 0x6c]
+00574336 mov ecx, esi
+00574338 call dword ptr [eax + 0xc]
+0057433b lea ecx, [ebp + 0x20]
+0057433e push ecx
+0057433f mov ecx, eax
+00574341 add eax, 0x18
+00574344 neg ecx
+00574346 sbb ecx, ecx
+00574348 and ecx, eax
+0057434a push ecx
+0057434b mov ecx, dword ptr [ebp + 0x20]
+0057434e call 0x53fde0 ; NUISystem::CAction::AddParam
+00574353 push 0xc
+00574355 call 0xbfea1a ; operator new
+0057435a test eax, eax
+0057435c pop ecx
+0057435d je 0x574371
+0057435f mov dword ptr [eax + 4], 3
+00574366 mov dword ptr [eax], 0x12366f4 ; f=6.59448e-39 d=6.96101e-303 dw=0x47cebd
+0057436c mov dword ptr [eax + 8], ebx
+0057436f jmp 0x574373
+00574371 xor eax, eax
+00574373 mov ecx, dword ptr [ebp + 0x20]
+00574376 push eax
+00574377 call 0x53fdb0 ; NUISystem::CAction::AddParam
+0057437c mov ecx, dword ptr [ebp + 0x38]
+0057437f mov eax, dword ptr [ecx]
+00574381 lea edx, [ebp + 0x20]
+00574384 push edx
+00574385 call dword ptr [eax + 0x10c]
+0057438b lea ecx, [ebp + 0x20]
+0057438e call 0x429160 ; _global::CCountedPointer_Release_00429160
+00574393 lea ecx, [ebp + 8]
+00574396 call 0x429160 ; _global::CCountedPointer_Release_00429160
+0057439b lea ecx, [ebp - 8]
+0057439e call 0x4291de ; _global::CCountedPointer_Release_004291de
+005743a3 lea ecx, [ebp - 0x20]
+005743a6 call 0x4291de ; _global::CCountedPointer_Release_004291de
+005743ab lea ecx, [ebp + 0x5c]
+005743ae call 0x99b510 ; CWideString::~CWideString
+005743b3 mov eax, dword ptr [ebp + 0x60]
+005743b6 mov ecx, dword ptr [ebp + 0x30]
+005743b9 cmp eax, dword ptr [ecx]
+005743bb je 0x5744df
+005743c1 or esi, 0xffffffff
+005743c4 push esi
+005743c5 push 0x124e79c ; "TEXT_GUI_MENU_UNDO_LEVEL_UP"
+005743ca lea ecx, [ebp + 0x6c]
+005743cd call 0x99ebf0 ; CCharString::CCharString
+005743d2 lea eax, [ebp + 0x6c]
+005743d5 push eax
+005743d6 lea eax, [ebp + 0x7c]
+005743d9 push eax
+005743da mov eax, dword ptr [0x13b86a0]
+005743df mov ecx, dword ptr [eax + 0x14]
+005743e2 call 0x9c95e0 ; NGameText::CDataBank::GetTextBySymbol
+005743e7 lea ecx, [ebp + 0x6c]
+005743ea call 0x99eae0 ; CCharString::~CCharString
+005743ef push esi
+005743f0 push 0x1236f04 ; "PC_MENU_ENTRY_TEMPLATE"
+005743f5 lea ecx, [ebp + 0x6c]
+005743f8 call 0x99ebf0 ; CCharString::CCharString
+005743fd push ecx
+005743fe mov ecx, esp
+00574400 push esi
+00574401 push 0x1236ed0 ; "PC_BUTTON_BASTARD"
+00574406 call 0x99ebf0 ; CCharString::CCharString
+0057440b fldz 
+0057440d push ecx
+0057440e push ecx
+0057440f fstp dword ptr [esp + 4]
+00574413 mov ecx, esp
+00574415 push esi
+00574416 push 0x122d70e ; f=3392 d=6.50688e+35 dw=0x45540000
+0057441b call 0x99ebf0 ; CCharString::CCharString
+00574420 fldz 
+00574422 push ecx
+00574423 fstp dword ptr [esp]
+00574426 lea eax, [ebp + 0x6c]
+00574429 fld1 
+0057442b push eax
+0057442c push ecx
+0057442d push ecx
+0057442e mov ecx, dword ptr [ebp + 0x44]
+00574431 fstp dword ptr [esp + 4]
+00574435 fldz 
+00574437 lea eax, [ebp + 0x7c]
+0057443a fstp dword ptr [esp]
+0057443d push eax
+0057443e call 0x428494
+00574443 push eax
+00574444 lea ecx, [ebp + 0x2c]
+00574447 call 0x429c15 ; CCountedPointer_00428b10::CCountedPointer_00428b10
+0057444c lea ecx, [ebp + 0x6c]
+0057444f call 0x99eae0 ; CCharString::~CCharString
+00574454 mov ecx, dword ptr [ebp - 0x34]
+00574457 mov eax, dword ptr [ecx]
+00574459 lea edx, [ebp + 0x2c]
+0057445c push edx
+0057445d call dword ptr [eax + 0x260]
+00574463 push 0x10
+00574465 call 0xbfea1a ; operator new
+0057446a test eax, eax
+0057446c pop ecx
+0057446d je 0x574478
+0057446f mov ecx, eax
+00574471 call 0x42be50 ; NUISystem::CAction::CAction
+00574476 jmp 0x57447a
+00574478 xor eax, eax
+0057447a push eax
+0057447b lea ecx, [ebp + 0x54]
+0057447e call 0x42aa29 ; CCountedPointer_00429f43::CCountedPointer_00429f43
+00574483 mov eax, dword ptr [ebp + 0x54]
+00574486 push 0xc
+00574488 mov dword ptr [eax], 0xc9
+0057448e call 0xbfea1a ; operator new
+00574493 test eax, eax
+00574495 pop ecx
+00574496 je 0x5744ad
+00574498 mov ecx, dword ptr [ebp + 0x70]
+0057449b mov dword ptr [eax + 4], 3
+005744a2 mov dword ptr [eax], 0x12366f4 ; f=6.59448e-39 d=6.96101e-303 dw=0x47cebd
+005744a8 mov dword ptr [eax + 8], ecx
+005744ab jmp 0x5744af
+005744ad xor eax, eax
+005744af mov ecx, dword ptr [ebp + 0x54]
+005744b2 push eax
+005744b3 call 0x53fdb0 ; NUISystem::CAction::AddParam
+005744b8 mov ecx, dword ptr [ebp + 0x2c]
+005744bb mov eax, dword ptr [ecx]
+005744bd lea edx, [ebp + 0x54]
+005744c0 push edx
+005744c1 call dword ptr [eax + 0x108]
+005744c7 lea ecx, [ebp + 0x54]
+005744ca call 0x429160 ; _global::CCountedPointer_Release_00429160
+005744cf lea ecx, [ebp + 0x2c]
+005744d2 call 0x4291de ; _global::CCountedPointer_Release_004291de
+005744d7 lea ecx, [ebp + 0x7c]
+005744da call 0x99b510 ; CWideString::~CWideString
+005744df lea ecx, [ebp + 0x4c]
+005744e2 call 0x429160 ; _global::CCountedPointer_Release_00429160
+005744e7 lea ecx, [ebp - 0x34]
+005744ea call 0x429288 ; _global::CCountedPointer_Release_00429288
+005744ef lea ecx, [ebp - 0x18]
+005744f2 call 0x4291de ; _global::CCountedPointer_Release_004291de
+005744f7 cmp byte ptr [ebp + 0x78], 0
+005744fb mov ecx, dword ptr [ebp + 0x74]
+005744fe mov eax, dword ptr [ecx]
+00574500 lea edx, [ebp + 0x38]
+00574503 push edx
+00574504 je 0x57450e
+00574506 call dword ptr [eax + 0x264]
+0057450c jmp 0x574514
+0057450e call dword ptr [eax + 0x260]
+00574514 lea ecx, [ebp - 0x4c]
+00574517 call 0x4291de ; _global::CCountedPointer_Release_004291de
+0057451c lea ecx, [ebp - 0x44]
+0057451f call 0x4291de ; _global::CCountedPointer_Release_004291de
+00574524 lea ecx, [ebp + 0x34]
+00574527 call 0x99b510 ; CWideString::~CWideString
+0057452c lea ecx, [ebp + 0x10]
+0057452f call 0x99b510 ; CWideString::~CWideString
+00574534 lea ecx, [ebp]
+00574537 call 0x42925c ; _global::CCountedPointer_Release_0042925c
+0057453c lea ecx, [ebp - 0x10]
+0057453f call 0x4291de ; _global::CCountedPointer_Release_004291de
+00574544 lea ecx, [ebp - 0x2c]
+00574547 call 0x99b510 ; CWideString::~CWideString
+0057454c lea ecx, [ebp - 0x28]
+0057454f call 0x4291de ; _global::CCountedPointer_Release_004291de
+00574554 lea ecx, [ebp + 0x38]
+00574557 call 0x4291de ; _global::CCountedPointer_Release_004291de
+0057455c lea ecx, [ebp + 0x28]
+0057455f call 0x99b510 ; CWideString::~CWideString
+00574564 lea ecx, [ebp + 0x48]
+00574567 call 0x99eae0 ; CCharString::~CCharString
+0057456c pop edi
+0057456d pop esi
+0057456e pop ebx
+0057456f add ebp, 0x64
+00574572 leave 
+00574573 ret 0x14
