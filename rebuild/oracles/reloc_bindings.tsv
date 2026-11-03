@@ -7771,7 +7771,7 @@ __aulldiv	00bfee00	00a3add0
 ?WaitForState@CVideoSys@@QAEXJ@Z	00a3b0f0	00a3b1c0
 ?GetProgress@CVideoSys@@QAEMXZ	00a3b2a0	00a3b330
 ?Play@CVideoSys@@QAE_NXZ	00a3b130	00a3b430
-?Stop@CVideoSys@@QAEEXZ	00a3b1f0	00a3b430
+?Stop@CVideoSys@@QAE_NXZ	00a3b1f0	00a3b430
 ??_7CTextureRenderer@@6BIAMovieSetup@@@	0129d030	00a3b510
 ??_7CTextureRenderer@@6BIBaseFilter@@@	0129d04c	00a3b510
 ??_7CTextureRenderer@@6BIQualProp@@@	0129d008	00a3b510
@@ -15341,11 +15341,11 @@ __imp__waveOutPrepareHeader@12	01440484	00c5d7f0
 ?GetNoParticles@CParticleEmitter@NParticleEngine@@QAEJXZ	00aedca0	00aeac90
 ?__copy@@YIPAUCParticleSystemPtr@@PAU1@00ABUrandom_access_iterator_tag@@PAH@Z	00af0d00	00aeefe0
 ??_7CParticleEmitter@NParticleEngine@@6B@	0129f348	00af0380
-?GetDefaultFadeInEnd@CParticleEmitter@NParticleEngine@@SAMXZ	00aeaa30	00af0380
-?GetDefaultFadeInStart@CParticleEmitter@NParticleEngine@@SAMXZ	00aeaa40	00af0380
-?GetDefaultFadeOutStart@CParticleEmitter@NParticleEngine@@SAMXZ	00aeaa20	00af0380
-?GetDefaultMaxDrawDistance@CParticleEmitter@NParticleEngine@@SAMXZ	00aeaa50	00af0380
-?GetDefaultMaxSpawnDistance@CParticleEmitter@NParticleEngine@@SAMXZ	00aeaa60	00af0380
+?GetFadeInEndDistance@NParticleEngine@@YIMXZ	00aeaa30	00af0380
+?GetFadeInStartDistance@NParticleEngine@@YIMXZ	00aeaa40	00af0380
+?GetFadeOutStartDistance@NParticleEngine@@YIMXZ	00aeaa20	00af0380
+?GetMaxDrawDistance@NParticleEngine@@YIMXZ	00aeaa50	00af0380
+?GetMaxSpawnDistance@NParticleEngine@@YIMXZ	00aeaa60	00af0380
 ?SetDefault@CRightHandedSet@@QAEXXZ	00af07a0	00af0380
 ?CalcFadeAlpha@CParticleEmitter@NParticleEngine@@QBEMM@Z	00aecd70	00aed2f0
 ??1CStringParser@@UAE@XZ	004047a0	00463334
@@ -18051,7 +18051,7 @@ __imp__OpenMutexW@12	0143fe24	00403480
 ?__uninitialized_copy@std@@YIPAPAXPBQAX0PAPAXABU__true_type@1@@Z	0045efe5	00477428
 ??$__destroy_aux@PAVCHeroLogBookEntry@CHeroLogBook@@@std@@YIXPAVCHeroLogBookEntry@CHeroLogBook@@0ABU__false_type@0@@Z	0047baf0	0047c350
 ?_M_insert_overflow@?$vector@VCQuestObjectiveDesc@CHeroLogBook@@@std@@QAEXPAVCQuestObjectiveDesc@CHeroLogBook@@ABV34@ABU__false_type@2@I_N@Z	0047c030	0047c420
-?_M_insert_overflow@?$vector@VCHeroLogBookEntry@CHeroLogBook@@@std@@QAEXPAVCHeroLogBookEntry@CHeroLogBook@@ABV34@ABU__false_type@2@I_N@Z	0047c140	0047c470
+?_M_insert_overflow@?$vector@VCHeroLogBookEntry@CHeroLogBook@@V?$allocator@VCHeroLogBookEntry@CHeroLogBook@@@std@@@std@@IAEXPAVCHeroLogBookEntry@CHeroLogBook@@ABV34@ABU__false_type@2@I_N@Z	0047c140	0047c470
 ??0?$vector@VCHeroLogBookEntry@CHeroLogBook@@@std@@QAE@ABV01@@Z	0047bb90	0047c500
 ?insert_unique@?$_Rb_tree@W4ECategory@CHeroLogBookEntry@CHeroLogBook@@U?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@V?$vector@VCHeroLogBookEntry@CHeroLogBook@@@std@@@std@@U?$less@W4ECategory@CHeroLogBookEntry@CHeroLogBook@@@5@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@V?$vector@VCHeroLogBookEntry@CHeroLogBook@@@std@@@std@@@2@U32@ABU?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@V?$vector@VCHeroLogBookEntry@CHeroLogBook@@@std@@@2@@Z	0047c8c0	0047cb50
 ?_M_insert_overflow@?$vector@VCQuestDesc@CHeroLogBook@@@std@@QAEXPAVCQuestDesc@CHeroLogBook@@ABV34@ABU__false_type@2@I_N@Z	0047ccd0	0047cde0
@@ -18138,7 +18138,7 @@ __imp__OpenMutexW@12	0143fe24	00403480
 ?_M_clear@?$vector@VCCardDef@@@std@@QAEXXZ	004ec01c	004fa434
 ?MakePath@CAFile@@SI?AVCWideString@@ABV2@000@Z	00997780	004faff0
 ?SplitPath@CAFile@@SIXABVCWideString@@PAV2@111@Z	00997620	004faff0
-?HasContainmentVolume@CPhysicsMeshObject@@QAE_NABVCCharString@@@Z	00a128a0	004fb370
+?HasContainmentVolume@CPhysicsMeshObject@@QBE_NABVCCharString@@@Z	00a128a0	004fb370
 ?ApplyScriptedMapBrush@CMap@@QAEXABVCCharString@@_N@Z	00820b80	004fe550
 ?GetName@CScriptedMapBrush@@QBEABVCCharString@@XZ	0082e250	004fe550
 ?_M_find@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@QBEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@2@ABVCCharString@@@Z	0042b467	004fe550

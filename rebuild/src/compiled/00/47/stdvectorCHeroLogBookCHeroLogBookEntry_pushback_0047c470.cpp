@@ -28,15 +28,17 @@ public:
     _Value _M_data;
 };
 
-template <class _Tp> class vector {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector {
 public:
     typedef _Tp* pointer;
     _Tp* _M_start;                                       // +0x00
     _Tp* _M_finish;                                      // +0x04
     _STLP_alloc_proxy<_Tp*, _Tp> _M_end_of_storage;      // +0x08
-    void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, unsigned int __fill_len,
-                            bool __atend = false);       // 0x0047C140 for CHeroLogBookEntry
     void push_back(const _Tp& __x);
+protected:
+    void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, unsigned int __fill_len,
+                            bool __atend = false);       // 0x0047C140 for CHeroLogBookEntry (STLport: protected, IAE)
 };
 }
 
@@ -51,7 +53,7 @@ public:
 };
 
 namespace std {
-template <class _Tp> void vector<_Tp>::push_back(const _Tp& __x)
+template <class _Tp, class _Alloc> void vector<_Tp, _Alloc>::push_back(const _Tp& __x)
 {
     if (this->_M_finish != this->_M_end_of_storage._M_data) {
         _Construct(this->_M_finish, __x);

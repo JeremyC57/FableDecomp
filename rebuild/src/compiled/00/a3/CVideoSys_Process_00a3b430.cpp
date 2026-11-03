@@ -44,7 +44,7 @@ struct CVideoSys {                                 // engine/CVideoSys.h layout 
     long            State;                         // +0x28 (0 = nothing loaded, 1 playing, 2 paused, 3 stopped)
     void WaitForState(_FilterState state);         // 0x00A3B0F0
     bool Play();                                   // 0x00A3B130
-    unsigned char Stop();                          // 0x00A3B1F0
+    bool Stop();                                   // 0x00A3B1F0 (Ego_r + FableWin: QAE_NXZ)
     float GetCurTime()                             // 0x00A3B260 (landed; inline here)
     {
         if (MPosition == 0)

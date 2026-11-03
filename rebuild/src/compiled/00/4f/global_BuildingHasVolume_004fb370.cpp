@@ -25,7 +25,7 @@ public:
     float         Scale;                           // +0x38
     float         OO_Scale;                        // +0x3c
     virtual ~CPhysicsMeshObject();                         // 0x00A127D0
-    bool HasContainmentVolume(const CCharString& name);   // 0x00A128A0
+    bool HasContainmentVolume(const CCharString& name) const;   // 0x00A128A0 (Ego_r + FableWin: QBE)
 };
 
 #define FILL10(n) virtual void v##n##0(); virtual void v##n##1(); virtual void v##n##2(); virtual void v##n##3(); \

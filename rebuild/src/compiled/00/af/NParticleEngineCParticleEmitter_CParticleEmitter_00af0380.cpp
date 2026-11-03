@@ -75,6 +75,12 @@ class C3DPositionInterpolator : public CBaseClass { public:               // vta
     C3DVector EndPosition;                             // +0x10
 };
 namespace NParticleEngine {
+// Namespace-scope distance getters (PDB: ?Get...@NParticleEngine@@YIMXZ, __fastcall under /Gr; NAME_FIXES_QUEUE cx11):
+float __fastcall GetMaxSpawnDistance();                        // 0x00AEAA60
+float __fastcall GetMaxDrawDistance();                         // 0x00AEAA50
+float __fastcall GetFadeOutStartDistance();                    // 0x00AEAA20
+float __fastcall GetFadeInEndDistance();                       // 0x00AEAA30
+float __fastcall GetFadeInStartDistance();                     // 0x00AEAA40
 class CParticleEmitter : public CBaseObject {
 public:
     CVector<CParticleSystemPtr> ParticleSystems;       // +0x08
@@ -120,11 +126,6 @@ public:
     float                      FadeOutStart;                   // +0x160
     float                      FadeInStart;                    // +0x164
     float                      FadeInEnd;                      // +0x168
-    static float GetDefaultMaxSpawnDistance();                 // 0x00AEAA60
-    static float GetDefaultMaxDrawDistance();                  // 0x00AEAA50
-    static float GetDefaultFadeOutStart();                     // 0x00AEAA20
-    static float GetDefaultFadeInEnd();                        // 0x00AEAA30
-    static float GetDefaultFadeInStart();                      // 0x00AEAA40
     CParticleEmitter();
     virtual void e001();
 };
@@ -153,11 +154,11 @@ CParticleEmitter::CParticleEmitter()
     EnableDithering = true;
     CalcBoundingSphereOnceOnly = false;
     BoundingSphereValid = false;
-    MaxSpawnDistance = GetDefaultMaxSpawnDistance();
-    MaxDrawDistance = GetDefaultMaxDrawDistance();
-    FadeOutStart = GetDefaultFadeOutStart();
-    FadeInEnd = GetDefaultFadeInEnd();
-    FadeInStart = GetDefaultFadeInStart();
+    MaxSpawnDistance = GetMaxSpawnDistance();
+    MaxDrawDistance = GetMaxDrawDistance();
+    FadeOutStart = GetFadeOutStartDistance();
+    FadeInEnd = GetFadeInEndDistance();
+    FadeInStart = GetFadeInStartDistance();
     Priority = 0;
     Initialised = false;
     OrientationInterpolator.StartOrientation.SetDefault();
