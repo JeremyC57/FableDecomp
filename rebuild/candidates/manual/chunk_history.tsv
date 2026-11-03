@@ -26351,3 +26351,10 @@ chunk	address	module	name	length
 728	00c267e0	_global	UIManager_UpdateHeroEquipment	577
 729	005ff190	CTCInventoryMap	CreateMapMarkers	4176
 729	00603000	CTCInventoryMap	CreateMiniMapMarkers	9571
+730	00f3bdd0	CTriangleStripifier2	FillInTriStrip	2998
+730	00f3d980	CTriangleStripifier2	BuildRings	1947
+730	00f3e120	CTriangleStripifier2	FindBestStartVertex	1411
+730	00f3ea50	CTriangleStripifier2	GenerateStrips	2379
+730	00e2b090	CV_AmbushScamScript	Main	2357
+730	00e2ec30	CV_AmbushScamScript	GetTrickster	1336
+730	00e2f170	CV_AmbushScamScript	SpringAmbush	2781
