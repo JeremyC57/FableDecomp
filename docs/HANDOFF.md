@@ -1,4 +1,4 @@
-# Resume here (one page) — updated 2026-11-03 night (chunks 718-725 landed, chunks 723c/724c/726/727 running)
+# Resume here (one page) — updated 2026-11-03 night (Codex pass 13 landed, landing round b + chunks 728/729 running)
 
 **Overarching plan:** `docs/PLAN.md` (every known function by pool, the parked residue classes with their cheapest
 fixes, the naming debt, and the order of work). 2026-11-03 evening: `tools/sync_manifest_from_catalog.py` put the
@@ -19,13 +19,16 @@ problems: the 2026-11-02 / 2026-11-03 lines at the end of `docs/pipeline/GOTCHAS
 ## State
 - Branch `FullDecomp` (`JeremyC57/FableDecomp`), everything committed and pushed except the running agents' scratch.
 - Coverage (refresh with `tools/write_decomp_dashboard.py` then `tools/update_readme_progress.py`; never hand-edit):
-  46,518 of the 49,564-function catalog (93.85%), 54.35% of retail function bytes (after the chunks 718-725 landing,
-  `batches/2026-11-03_linux_hand718_725_landing/`: 91 rows, 41 headers consolidated, 15 new headers, 347 labels).
-- **Chunk launches resumed 2026-11-03 (owner: "once authoring agents are fully done with their current chunks, launch new
-  chunk agents after verifying and landing"; 10+ attempts per row).** Running at the time of writing: chunk 723 round 3
-  (3 rows), chunk 724 round 3 (4 rows), chunk 726 (NUISystem CList / CScrollingViewport, 9 rows), chunk 727
-  (C3DAnimationManager / shadow / weather / sky renderers, 14 rows). Each reports to `$S/w22/<chunk|agentNNNx>/`; stage into
-  `pending/2026-11-03_linux_handNNN[/roundN]`, commit, then land with the 718-725 procedure.
+  46,521 of the 49,564-function catalog (93.86%), 54,052 of 57,609 known functions, 55.41% of retail function bytes
+  (after the Codex pass 13 landing, `batches/2026-11-03_codex_pass13_landing/`: 47 of 51 verified rows; data names to check
+  with `cvdump` on the owner's PDBs are listed in its NAME_DECISIONS.tsv).
+- Codex pass 14 was never sent; its reservation is released (`pending/2026-11-02_codex_pass14/RELEASED.tsv`). Passes 12 and 13
+  have returned; pass 13's 49 unmatched rows are in `pending/2026-11-02_codex_pass13/unmatched/`.
+- **Owner 2026-11-03: at most 3 concurrent agents.** Chunk launches follow "verify and land, then launch" (10+ attempts per row).
+  Running at the time of writing: landing round b (`batches/2026-11-03_landing_b/`: chunk 726's 7 rows, 0x00AA5C80,
+  0x008771A0, the render-header merge for pass 13's held 0x00989CB0 / 0x0098ACF0 / 0x009DA9F0), chunk 728 (CTCWife /
+  CTCCreatureGenerator, 6 rows), chunk 729 (CTCInventoryMap marker builders, 2 rows). Staged-but-parked rounds: 723 r2/r3,
+  724 r3, 727 (sky ctor held on CDefPointer::SetDynamicCast, `pending/2026-11-03_linux_hand727/DECISION_00b625e0.md`).
 - Chunks are cut from the category A groups with `$S/cut_groups.py N <group ids>` (reads `pending/2026-11-03_groups/ROWS.tsv`,
   skips landed and chunk_history rows, writes `$S/w22/chunkN.tsv` + chunk_history); oracle via `oracle_from_exe.py $S/w22/chunkN.tsv chunkN`.
 
