@@ -1,0 +1,10 @@
+2
+--- 
++++ 
+@@ -96,5 +96,5 @@
+ mov ecx, dword ptr [X]
+-fstp dword ptr [esp + 0x2c]
+ mov eax, dword ptr [X]
+ inc ecx
++fstp dword ptr [esp + 0x2c]
+ lea edx, [esp + 0x1c]

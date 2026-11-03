@@ -1,0 +1,89 @@
+--- rebuild/include/stlport/fable_containers.h	2026-11-03 06:47:59.419851555 +0000
++++ /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/agent721c/hdr/stlport/fable_containers.h	2026-11-03 06:15:32.553901417 +0000
+@@ -108,13 +112,36 @@
+ }
+ // _uninitialized.h
++#ifdef FABLE_STLP_OUTOFLINE_UNINIT_COPY
++// Opt-in (2026-11-03, chunk 719 row 0x0040CEC0): the retail TU keeps this instantiation out of line as a __fastcall COMDAT
++// (0x0040DDC0 ??$__uninitialized_copy@PAVCDisplayModeDesc@@PAV1@@std@@YI...ABU__false_type@0@@Z, called from the inlined
++// vector growth with the tag homed in a dead slot); the same-TU noinline body gives that shape (GOTCHAS 0xB3EA70).
++#pragma auto_inline(off)
++template<class I,class O> __declspec(noinline) O __fastcall __uninitialized_copy(I first,I last,O result,const __false_type&) {
++    O cur=result;for(;first!=last;++first,++cur) _Construct(&*cur,*first);return cur;
++}
++#pragma auto_inline(on)
++#else
+ template<class I,class O> inline O __uninitialized_copy(I first,I last,O result,const __false_type&) {
+     O cur=result;for(;first!=last;++first,++cur) _Construct(&*cur,*first);return cur;
+ }
++#endif
+ template<class T> inline T* __uninitialized_copy(const T* first,const T* last,T* result,const __true_type&) {
+     return (T*)__copy_trivial(first,last,result);
+ }
++#ifdef FABLE_STLP_OUTOFLINE_UNINIT_FILL_N
++// Opt-in (2026-11-03, chunk 719 row 0x00501150): the retail TU keeps this instantiation out of line as a __fastcall COMDAT
++// (0x00513570 ??$__uninitialized_fill_n@PAVCLevelFiles@CObject@CLevelLoader@@IV123@@std@@YI...ABU__false_type@0@@Z, called
++// from the inlined vector(n) with the tag homed in a dead argument slot); the same-TU noinline body gives that shape (EXTRA_RULES
++// chunk 422 / GOTCHAS 0xB3EA70: inlined, the fill makes vector(n) too large and VC7.1 calls the whole ctor instead).
++#pragma auto_inline(off)
++template<class I,class N,class T> __declspec(noinline) I __fastcall __uninitialized_fill_n(I first,N n,const T& x,const __false_type&) {
++    I cur=first;for(;n>0;--n,++cur) _Construct(&*cur,x);return cur;
++}
++#pragma auto_inline(on)
++#else
+ template<class I,class N,class T> inline I __uninitialized_fill_n(I first,N n,const T& x,const __false_type&) {
+     I cur=first;for(;n>0;--n,++cur) _Construct(&*cur,x);return cur;
+ }
++#endif
+ template<class I,class N,class T> inline I __uninitialized_fill_n(I first,N n,const T& x,const __true_type&) {
+     return std::fill_n(first,n,x);
+@@ -348,4 +375,14 @@
+     }
+     void push_back(const _Tp& x) { insert(end(),x); }
++#ifdef FABLE_RETAIL_STLP_LIST_MEMBERS
++    // Opt-in (2026-11-03, chunk 721 row 0x00A1CEB0): STLport 4.6 _list.h members -- size() is the distance() walk, front(),
++    // push_front (insert at begin), and the out-of-line member template remove_if (0x00A155C0 for CIsNavigator).
++    size_t size() const { size_t __result = 0; for (_List_node_base* n = this->_M_node._M_data->_M_next; n != this->_M_node._M_data; n = n->_M_next) ++__result; return __result; }
++    _Tp& front() { return *begin(); }
++    const _Tp& front() const { return *begin(); }
++    _Tp& back() { return ((_List_node<_Tp>*)this->_M_node._M_data->_M_prev)->_M_data; }
++    void push_front(const _Tp& x) { insert(begin(),x); }
++    template<class _Predicate> void remove_if(_Predicate __pred);
++#endif
+ };
+ // _bitset.h / _range_errors.h (no-exceptions branch)
+@@ -380,4 +417,34 @@
+ template<class _RandomAccessIter,class _RandomNumberGenerator>
+ void __fastcall random_shuffle(_RandomAccessIter,_RandomAccessIter,_RandomNumberGenerator&);
++#ifdef FABLE_STLP_DEQUE
++// Opt-in (2026-11-03, chunk 719 row 0x0040CEC0): STLport 4.6 _deque.h / _queue.h, the members the rows use. Layout 0x28: two
++// 4-word iterators, the map pointer and the map size (both _STLP_alloc_proxy); the base ctor builds the map out of line
++// (_M_initialize_map, retail 0x0040F4A0 for ETutorialCategory) after the member ctors zero all ten words.
++template<class _Tp> struct _Deque_iterator {
++    _Tp* _M_cur; _Tp* _M_first; _Tp* _M_last; _Tp** _M_node;
++    _Deque_iterator() : _M_cur(0), _M_first(0), _M_last(0), _M_node(0) { }
++};
++template<class _Tp,class _Alloc> class _Deque_base {
++public:
++    _Deque_base(const _Alloc& a,size_t numElements)
++        : _M_start(), _M_finish(), _M_map(allocator<_Tp*>(),(_Tp**)0), _M_map_size(a,(size_t)0) { _M_initialize_map(numElements); }
++protected:
++    void _M_initialize_map(size_t);
++    _Deque_iterator<_Tp> _M_start;
++    _Deque_iterator<_Tp> _M_finish;
++    _STLP_alloc_proxy<_Tp**,_Tp*,allocator<_Tp*> > _M_map;
++    _STLP_alloc_proxy<size_t,_Tp,_Alloc> _M_map_size;
++};
++template<class _Tp,class _Alloc=allocator<_Tp> > class deque : public _Deque_base<_Tp,_Alloc> {
++public:
++    explicit deque(const _Alloc& a=_Alloc()) : _Deque_base<_Tp,_Alloc>(a,0) { }
++};
++template<class _Tp,class _Sequence=deque<_Tp> > class queue {
++public:
++    queue() : c() { }
++protected:
++    _Sequence c;
++};
++#endif
+ }
+ #endif

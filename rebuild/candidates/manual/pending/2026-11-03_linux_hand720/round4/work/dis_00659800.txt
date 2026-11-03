@@ -1,0 +1,368 @@
+00659800 push   ebp                               
+00659801 mov    ebp, esp                          
+00659803 sub    esp, 0x50                         
+00659806 push   ebx                               
+00659807 push   esi                               
+00659808 push   edi                               
+00659809 push   dword ptr [ebp - 0x1c]            
+0065980c mov    ebx, ecx                          
+0065980e push   ecx                               
+0065980f mov    ecx, dword ptr [ebx + 0x2c]       
+00659812 mov    eax, esp                          
+00659814 mov    dword ptr [eax], ecx              
+00659816 push   ecx                               
+00659817 mov    ecx, dword ptr [ebx + 0x2c]       
+0065981a mov    ecx, dword ptr [ecx]              
+0065981c mov    eax, esp                          
+0065981e mov    dword ptr [ebp - 0x10], ebx       
+00659821 mov    dword ptr [eax], ecx              
+00659823 call   0x65f6a6                           ; man:std::count_if
+00659828 push   dword ptr [ebp - 0x1c]            
+0065982b mov    dword ptr [ebp - 0x18], eax       
+0065982e push   ecx                               
+0065982f mov    ecx, dword ptr [ebx + 0x2c]       
+00659832 mov    eax, esp                          
+00659834 mov    dword ptr [eax], ecx              
+00659836 push   ecx                               
+00659837 mov    ecx, dword ptr [ebx + 0x2c]       
+0065983a mov    ecx, dword ptr [ecx]              
+0065983c mov    eax, esp                          
+0065983e mov    dword ptr [eax], ecx              
+00659840 lea    ecx, [ebp - 0x14]                 
+00659843 call   0x66000a                           ; man:_unattributed::Construct_CRangeString_0066000a
+00659848 mov    eax, dword ptr [ebp - 0x14]       
+0065984b cmp    eax, dword ptr [ebx + 0x2c]       
+0065984e je     0x659b84                          
+00659854 lea    ecx, [eax + 8]                    
+00659857 call   0xa01b50                           ; ?GetPItem@CBaseIntelligentPointer@@QBEPAVCThing@@XZ
+0065985c and    dword ptr [ebp - 0xc], 0          
+00659860 push   7                                 
+00659862 mov    esi, eax                          
+00659864 pop    edi                               
+00659865 push   edi                               
+00659866 lea    ecx, [esi + 0x20]                 
+00659869 call   0x410de0                           ; ?Do@D@@QAEXH@Z
+0065986e test   al, al                            
+00659870 je     0x659896                          
+00659872 lea    eax, [ebp - 0x14]                 
+00659875 add    esi, 0x44                         
+00659878 push   eax                               
+00659879 mov    ecx, esi                          
+0065987b mov    dword ptr [ebp - 0x14], edi       
+0065987e call   0x40f020                           ; ?LowerBound@ComponentMap@NativeInput@@QAEPAUComponentEntry@2@ABW4ETCInterfaceType@2@@Z
+00659883 mov    esi, dword ptr [esi + 4]          
+00659886 cmp    eax, esi                          
+00659888 je     0x65988e                          
+0065988a cmp    dword ptr [eax], edi              
+0065988c jle    0x659890                          
+0065988e mov    eax, esi                          
+00659890 mov    eax, dword ptr [eax + 4]          
+00659893 mov    dword ptr [ebp - 0xc], eax        
+00659896 mov    ecx, ebx                          
+00659898 call   0x686d40                           ; ?GetPlayerManager@CTCBase@@IAEAAVCPlayerManager@@XZ
+0065989d mov    ecx, eax                          
+0065989f call   0x449970                           ; ?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ
+006598a4 mov    ecx, eax                          
+006598a6 call   0x487dc0                           ; ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ
+006598ab test   eax, eax                          
+006598ad je     0x659b84                          
+006598b3 mov    ecx, eax                          
+006598b5 call   0x4c73d0                           ; ?GetPos@CThing@@QBEABVC3DVector@@XZ
+006598ba and    dword ptr [ebp - 8], 0            
+006598be add    ebx, 0x14                         
+006598c1 mov    esi, eax                          
+006598c3 mov    edi, ebx                          
+006598c5 movsd  dword ptr es:[edi], dword ptr [esi]
+006598c6 movsd  dword ptr es:[edi], dword ptr [esi]
+006598c7 movsd  dword ptr es:[edi], dword ptr [esi]
+006598c8 mov    eax, dword ptr [0x13b86a0]         ; ?g_13b86a0@@3PAUSlotA@@A
+006598cd mov    ecx, dword ptr [eax + 0x24]       
+006598d0 call   0x49d9d0                           ; ?GetCurrentPlayer@CWorld@@QBEPAVCPlayer@@XZ
+006598d5 mov    ecx, eax                          
+006598d7 call   0x487dc0                           ; ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ
+006598dc mov    eax, dword ptr [ebx]              
+006598de mov    esi, dword ptr [ebp - 0x10]       
+006598e1 mov    dword ptr [ebp - 0x44], eax       
+006598e4 mov    eax, dword ptr [ebx + 4]          
+006598e7 mov    dword ptr [ebp - 0x40], eax       
+006598ea mov    eax, dword ptr [ebx + 8]          
+006598ed mov    ecx, esi                          
+006598ef mov    dword ptr [ebp - 0x3c], eax       
+006598f2 mov    dword ptr [ebp - 0x34], 0x64      
+006598f9 mov    dword ptr [ebp - 0x30], 0xdd      
+00659900 call   0x686a70                           ; _helper_prep
+00659905 lea    ecx, [ebp - 8]                    
+00659908 push   ecx                               
+00659909 lea    ecx, [ebp - 0x44]                 
+0065990c push   ecx                               
+0065990d lea    ecx, [ebp - 0x38]                 
+00659910 push   ecx                               
+00659911 mov    ecx, dword ptr [eax + 0x20]       
+00659914 call   0x65f6da                           ; man:CThingSearchTools::GetPBestThing
+00659919 cmp    dword ptr [ebp - 8], 0            
+0065991d je     0x659b84                          
+00659923 mov    ecx, esi                          
+00659925 call   0x686a80                           ; ?PeekWorld@CTCBase@@IBEABVCWorld@@XZ
+0065992a mov    edi, dword ptr [0x1375550]         ; ?g_framesPerSecond@@3JA
+00659930 call   0x49d870                           ; ?GetFrame@CWorld@@SIJXZ
+00659935 sub    eax, dword ptr [esi + 0x10]       
+00659938 mov    ecx, esi                          
+0065993a cdq                                      
+0065993b idiv   edi                               
+0065993d mov    dword ptr [ebp - 0x14], eax       
+00659940 fild   dword ptr [ebp - 0x14]            
+00659943 mov    eax, dword ptr [ebx]              
+00659945 mov    dword ptr [ebp - 0x44], eax       
+00659948 fmul   dword ptr [0x125a318]             
+0065994e mov    eax, dword ptr [ebx + 4]          
+00659951 mov    dword ptr [ebp - 0x40], eax       
+00659954 mov    eax, dword ptr [ebx + 8]          
+00659957 fsubr  dword ptr [esi + 0xb8]            
+0065995d mov    dword ptr [ebp - 0x3c], eax       
+00659960 mov    dword ptr [ebp - 0x14], 0xb4      
+00659967 fstp   dword ptr [ebp - 4]               
+0065996a call   0x686a70                           ; _helper_prep
+0065996f mov    eax, dword ptr [eax + 0x20]       
+00659972 lea    ecx, [ebp - 0x1c]                 
+00659975 push   ecx                               
+00659976 lea    ecx, [ebp - 0x44]                 
+00659979 push   ecx                               
+0065997a lea    ecx, [ebp - 0x14]                 
+0065997d push   ecx                               
+0065997e mov    ecx, eax                          
+00659980 call   0x65f744                           ; ?GetPBestThing@CThingSearchTools@@QBE_NABVCThingFilter_HasTC@@ABVCThingCompare_Nearest@@PAPAVCThingAICreature@
+00659985 test   al, al                            
+00659987 je     0x6599cf                          
+00659989 mov    ecx, dword ptr [ebp - 0x1c]       
+0065998c call   0x4c73d0                           ; ?GetPos@CThing@@QBEABVC3DVector@@XZ
+00659991 fld    dword ptr [ebx]                   
+00659993 fsub   dword ptr [eax]                   
+00659995 fld    dword ptr [ebx + 4]               
+00659998 fsub   dword ptr [eax + 4]               
+0065999b fld    st(0)                             
+0065999d fmul   st(1)                             
+0065999f fld    st(2)                             
+006599a1 fmul   st(3)                             
+006599a3 faddp  st(1)                             
+006599a5 fsqrt                                    
+006599a7 fstp   st(2)                             
+006599a9 fstp   st(0)                             
+006599ab fld    dword ptr [ebp - 4]               
+006599ae fcomp  st(1)                             
+006599b0 fnstsw ax                                
+006599b2 test   ah, 0x41                          
+006599b5 jne    0x6599cd                          
+006599b7 fld    dword ptr [ebp - 4]               
+006599ba fsub   st(1)                             
+006599bc fsubr  dword ptr [esi + 0xb8]            
+006599c2 fstp   dword ptr [esi + 0xb8]            
+006599c8 fstp   dword ptr [ebp - 4]               
+006599cb jmp    0x6599cf                          
+006599cd fstp   st(0)                             
+006599cf cmp    byte ptr [esi + 0xb4], 0          
+006599d6 fld    dword ptr [0x125a828]             
+006599dc je     0x6599e1                          
+006599de fst    dword ptr [ebp - 4]               
+006599e1 fld    dword ptr [ebp - 4]               
+006599e4 fcomp  st(1)                             
+006599e6 fnstsw ax                                
+006599e8 test   ah, 5                             
+006599eb jp     0x6599f2                          
+006599ed fstp   dword ptr [ebp - 4]               
+006599f0 jmp    0x6599f4                          
+006599f2 fstp   st(0)                             
+006599f4 mov    ecx, dword ptr [ebp - 8]          
+006599f7 call   0x4c73d0                           ; ?GetPos@CThing@@QBEABVC3DVector@@XZ
+006599fc fld    dword ptr [eax + 8]               
+006599ff fsub   dword ptr [ebx + 8]               
+00659a02 fld    dword ptr [eax + 4]               
+00659a05 fsub   dword ptr [ebx + 4]               
+00659a08 fst    dword ptr [ebp - 0x1c]            
+00659a0b fld    dword ptr [eax]                   
+00659a0d fsub   dword ptr [ebx]                   
+00659a0f fstp   dword ptr [ebp - 0x2c]            
+00659a12 fld    st(0)                             
+00659a14 fmulp  st(1)                             
+00659a16 fld    dword ptr [ebp - 0x2c]            
+00659a19 fmul   dword ptr [ebp - 0x2c]            
+00659a1c fld    st(1)                             
+00659a1e fadd   st(1)                             
+00659a20 fld    dword ptr [ebp - 4]               
+00659a23 fmul   dword ptr [ebp - 4]               
+00659a26 fld    st(1)                             
+00659a28 fcompp                                   
+00659a2a fnstsw ax                                
+00659a2c test   ah, 5                             
+00659a2f jp     0x659a3e                          
+00659a31 fsqrt                                    
+00659a33 fmul   dword ptr [0x1254da8]             
+00659a39 fstp   dword ptr [ebp - 4]               
+00659a3c jmp    0x659a40                          
+00659a3e fstp   st(0)                             
+00659a40 fld    st(2)                             
+00659a42 mov    edx, 0x17c                        
+00659a47 fmul   st(3)                             
+00659a49 fadd   st(2)                             
+00659a4b fadd   st(1)                             
+00659a4d fstp   dword ptr [ebp - 0x14]            
+00659a50 mov    eax, dword ptr [ebp - 0x14]       
+00659a53 mov    ecx, eax                          
+00659a55 fstp   st(0)                             
+00659a57 shr    eax, 0x11                         
+00659a5a fstp   st(0)                             
+00659a5c shr    ecx, 0x17                         
+00659a5f and    ecx, 0xff                         
+00659a65 sub    edx, ecx                          
+00659a67 and    eax, 0x7f                         
+00659a6a mov    eax, dword ptr [eax*4 + 0x13ce558] ; ?g_InvSqrtMantissaTable@@3PAIA
+00659a71 shl    edx, 0x16                         
+00659a74 shl    eax, 0xf                          
+00659a77 and    edx, 0xff800000                   
+00659a7d or     edx, eax                          
+00659a7f mov    dword ptr [ebp - 8], edx          
+00659a82 fld    dword ptr [ebp - 8]               
+00659a85 fmul   dword ptr [ebp - 8]               
+00659a88 mov    eax, dword ptr [ebp - 0x18]       
+00659a8b test   eax, eax                          
+00659a8d fmul   dword ptr [ebp - 0x14]            
+00659a90 fsubr  dword ptr [0x122ded4]              ; ?g_three@@3MA
+00659a96 fmul   dword ptr [ebp - 8]               
+00659a99 fmul   dword ptr [0x122f59c]              ; ?g_scale@@3MA
+00659a9f fld    dword ptr [ebp - 0x2c]            
+00659aa2 fmul   st(1)                             
+00659aa4 fstp   dword ptr [ebp - 0x2c]            
+00659aa7 fld    dword ptr [ebp - 0x1c]            
+00659aaa fmul   st(1)                             
+00659aac fstp   dword ptr [ebp - 0x28]            
+00659aaf fld    st(1)                             
+00659ab1 fmul   st(1)                             
+00659ab3 fstp   st(2)                             
+00659ab5 fstp   st(0)                             
+00659ab7 fld    dword ptr [ebp - 0x2c]            
+00659aba fmul   dword ptr [ebp - 4]               
+00659abd fstp   dword ptr [ebp - 0x2c]            
+00659ac0 fld    dword ptr [ebp - 0x28]            
+00659ac3 fmul   dword ptr [ebp - 4]               
+00659ac6 fstp   dword ptr [ebp - 0x28]            
+00659ac9 fmul   dword ptr [ebp - 4]               
+00659acc fstp   dword ptr [ebp - 0x24]            
+00659acf fild   dword ptr [ebp - 0x18]            
+00659ad2 fdivr  dword ptr [0x122ded8]              ; ?CPlayerGui_UpdateTimer_00437500_Lower@@3MB
+00659ad8 fstp   dword ptr [ebp - 8]               
+00659adb jle    0x659b84                          
+00659ae1 mov    dword ptr [ebp - 0x18], eax       
+00659ae4 mov    eax, dword ptr [ebp - 0x2c]       
+00659ae7 fldz                                     
+00659ae9 fstp   dword ptr [ebp - 4]               
+00659aec mov    dword ptr [ebp - 0x38], eax       
+00659aef fld    dword ptr [ebp - 0x2c]            
+00659af2 mov    eax, dword ptr [ebp - 0x28]       
+00659af5 fadd   dword ptr [ebx]                   
+00659af7 mov    dword ptr [ebp - 0x34], eax       
+00659afa mov    eax, dword ptr [ebp - 0x24]       
+00659afd mov    dword ptr [ebp - 0x30], eax       
+00659b00 lea    eax, [ebp - 0x50]                 
+00659b03 fstp   dword ptr [ebp - 0x44]            
+00659b06 push   eax                               
+00659b07 fld    dword ptr [ebp - 0x28]            
+00659b0a push   ecx                               
+00659b0b fadd   dword ptr [ebx + 4]               
+00659b0e mov    ecx, dword ptr [ebp - 0xc]        
+00659b11 lea    eax, [ebp - 0x44]                 
+00659b14 fstp   dword ptr [ebp - 0x40]            
+00659b17 fld    dword ptr [ebp - 0x24]            
+00659b1a fadd   dword ptr [ebx + 8]               
+00659b1d fstp   dword ptr [ebp - 0x3c]            
+00659b20 fld    dword ptr [0x12462a8]             
+00659b26 fstp   dword ptr [esp]                   
+00659b29 push   eax                               
+00659b2a call   0x6cb8e0                           ; ?FindNearestWalkablePos@CTCWalk@@QAE_NABVC3DVector@@MPAV2@@Z
+00659b2f test   al, al                            
+00659b31 jne    0x659be3                          
+00659b37 fld    dword ptr [ebp - 4]               
+00659b3a lea    esi, [ebp - 0x2c]                 
+00659b3d fcomp  dword ptr [0x122dedc]              ; ?g_CombatMinDistance@@3MA
+00659b43 lea    edi, [ebp - 0x38]                 
+00659b46 movsd  dword ptr es:[edi], dword ptr [esi]
+00659b47 movsd  dword ptr es:[edi], dword ptr [esi]
+00659b48 fnstsw ax                                
+00659b4a test   ah, 1                             
+00659b4d movsd  dword ptr es:[edi], dword ptr [esi]
+00659b4e jne    0x659b89                          
+00659b50 fld    dword ptr [ebp - 8]               
+00659b53 fmul   dword ptr [0x12305a0]              ; ?g_bias_scale@@3MA
+00659b59 fadd   dword ptr [ebp - 4]               
+00659b5c fst    dword ptr [ebp - 4]               
+00659b5f fcomp  dword ptr [ebp - 8]               
+00659b62 fnstsw ax                                
+00659b64 test   ah, 1                             
+00659b67 jne    0x659b95                          
+00659b69 mov    esi, dword ptr [ebp - 0x10]       
+00659b6c fld    dword ptr [ebp - 8]               
+00659b6f push   ecx                               
+00659b70 lea    ecx, [ebp - 0x2c]                 
+00659b73 fstp   dword ptr [esp]                   
+00659b76 call   0xa14040                           ; ?RotateXY@C3DVector@@QAEXM@Z
+00659b7b dec    dword ptr [ebp - 0x18]            
+00659b7e jne    0x659ae4                          
+00659b84 pop    edi                               
+00659b85 pop    esi                               
+00659b86 pop    ebx                               
+00659b87 leave                                    
+00659b88 ret                                      
+00659b89 fld    dword ptr [ebp - 4]               
+00659b8c fmul   dword ptr [0x122dee0]              ; ?g_fMinusOne@@3MA
+00659b92 fstp   dword ptr [ebp - 4]               
+00659b95 fld    dword ptr [ebp - 4]               
+00659b98 push   ecx                               
+00659b99 lea    ecx, [ebp - 0x38]                 
+00659b9c fstp   dword ptr [esp]                   
+00659b9f call   0xa14040                           ; ?RotateXY@C3DVector@@QAEXM@Z
+00659ba4 fld    dword ptr [ebp - 0x38]            
+00659ba7 fadd   dword ptr [ebx]                   
+00659ba9 lea    eax, [ebp - 0x50]                 
+00659bac push   eax                               
+00659bad push   ecx                               
+00659bae mov    ecx, dword ptr [ebp - 0xc]        
+00659bb1 fstp   dword ptr [ebp - 0x44]            
+00659bb4 fld    dword ptr [ebp - 0x34]            
+00659bb7 lea    eax, [ebp - 0x44]                 
+00659bba fadd   dword ptr [ebx + 4]               
+00659bbd fstp   dword ptr [ebp - 0x40]            
+00659bc0 fld    dword ptr [ebp - 0x30]            
+00659bc3 fadd   dword ptr [ebx + 8]               
+00659bc6 fstp   dword ptr [ebp - 0x3c]            
+00659bc9 fld    dword ptr [0x12462a8]             
+00659bcf fstp   dword ptr [esp]                   
+00659bd2 push   eax                               
+00659bd3 call   0x6cb8e0                           ; ?FindNearestWalkablePos@CTCWalk@@QAE_NABVC3DVector@@MPAV2@@Z
+00659bd8 test   al, al                            
+00659bda je     0x659b37                          
+00659be0 mov    esi, dword ptr [ebp - 0x10]       
+00659be3 push   0x34                              
+00659be5 call   0xbfea1a                           ; ??2@YAPAXI@Z
+00659bea test   eax, eax                          
+00659bec pop    ecx                               
+00659bed je     0x659c11                          
+00659bef fld    dword ptr [0x123078c]              ; ?g_someConst@@3MA
+00659bf5 push   ecx                               
+00659bf6 fstp   dword ptr [esp]                   
+00659bf9 push   ebx                               
+00659bfa fld    dword ptr [0x12462a8]             
+00659c00 push   ecx                               
+00659c01 lea    ecx, [ebp - 0x50]                 
+00659c04 fstp   dword ptr [esp]                   
+00659c07 push   ecx                               
+00659c08 mov    ecx, eax                          
+00659c0a call   0x65dce8                           ; man:CVillageTaskSecuritySweep::CVillageTaskSecuritySweep
+00659c0f jmp    0x659c13                          
+00659c11 xor    eax, eax                          
+00659c13 push   eax                               
+00659c14 lea    ecx, [ebp - 0x20]                 
+00659c17 call   0x65e2e0                           ; man:CCountedPointer_0065d2b1::CCountedPointer_0065d2b1
+00659c1c push   eax                               
+00659c1d lea    ecx, [esi + 0x5c]                 
+00659c20 call   0x660587                           ; man:_global::CalculateSecuritySweepTasks_LuaClosure
+00659c25 lea    ecx, [ebp - 0x20]                 
+00659c28 call   0x65d5cc                           ; ??1CValue_0065d5cc@@QAE@XZ
+00659c2d jmp    0x659b6c                          

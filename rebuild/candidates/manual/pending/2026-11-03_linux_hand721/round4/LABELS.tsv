@@ -1,0 +1,6 @@
+address	name	evidence
+0x00A1CEB0	CNavigatorAStar::Initialise	DIFFER 2 lines; Ego_r.pdb ?Initialise@CNavigatorAStar@@AAEXPBVCANavQuadTreeNode@@0ABVC2DVector@@10ABVC3DVector@@_N3M@Z (private), leaf checked
+0x013D27B0	g_AStarSearchesInProgress	descriptive (no PDB data name found): decremented when the navigator held states, incremented on a new search
+0x013D27B8	CNavigatorAStar::CAStarState::NoOfStates	static counter the CAStarState ctor/copy ctor/dtor bump (round-3 model; PDB static member spelling)
+0x013D27BC	CNavigatorAStar::CAStarState::NoOfStatesOnOpenList	static counter bumped by SetOnOpen
+0x013D27C0	CNavigatorAStar::CAStarState::NoOfStatesOnClosedList	static counter

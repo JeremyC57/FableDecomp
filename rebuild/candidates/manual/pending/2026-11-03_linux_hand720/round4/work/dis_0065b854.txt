@@ -1,0 +1,484 @@
+0065b854 push   ebp                               
+0065b855 mov    ebp, esp                          
+0065b857 sub    esp, 0x7c                         
+0065b85a and    dword ptr [ebp - 8], 0            
+0065b85e push   ebx                               
+0065b85f push   esi                               
+0065b860 mov    esi, dword ptr [ebp + 8]          
+0065b863 push   edi                               
+0065b864 mov    edi, ecx                          
+0065b866 lea    ecx, [esi + 0x20]                 
+0065b869 push   0x23                              
+0065b86b mov    dword ptr [ebp + 8], ecx          
+0065b86e call   0x410de0                           ; ?Do@D@@QAEXH@Z
+0065b873 test   al, al                            
+0065b875 je     0x65b89f                          
+0065b877 lea    eax, [ebp - 0xc]                  
+0065b87a lea    ebx, [esi + 0x44]                 
+0065b87d push   eax                               
+0065b87e mov    ecx, ebx                          
+0065b880 mov    dword ptr [ebp - 0xc], 0x23       
+0065b887 call   0x40f020                           ; ?LowerBound@ComponentMap@NativeInput@@QAEPAUComponentEntry@2@ABW4ETCInterfaceType@2@@Z
+0065b88c mov    ebx, dword ptr [ebx + 4]          
+0065b88f cmp    eax, ebx                          
+0065b891 je     0x65b898                          
+0065b893 cmp    dword ptr [eax], 0x23             
+0065b896 jle    0x65b89a                          
+0065b898 mov    eax, ebx                          
+0065b89a mov    ebx, dword ptr [eax + 4]          
+0065b89d jmp    0x65b8a2                          
+0065b89f mov    ebx, dword ptr [ebp + 8]          
+0065b8a2 mov    ecx, ebx                          
+0065b8a4 call   0x7ee540                           ; ?GetPVillage@CTCVillageMember@@QBEPAVCTCVillage@@XZ
+0065b8a9 cmp    eax, edi                          
+0065b8ab je     0x65be2b                          
+0065b8b1 push   edi                               
+0065b8b2 mov    ecx, ebx                          
+0065b8b4 call   0x7ee270                           ; ?SetPVillage@CTCVillageMember@@QAEXPAVCTCVillage@@@Z
+0065b8b9 movzx  eax, byte ptr [esi + 0x10]        
+0065b8bd dec    eax                               
+0065b8be je     0x65bdca                          
+0065b8c4 push   2                                 
+0065b8c6 pop    ebx                               
+0065b8c7 sub    eax, ebx                          
+0065b8c9 je     0x65bc11                          
+0065b8cf sub    eax, ebx                          
+0065b8d1 je     0x65ba16                          
+0065b8d7 sub    eax, 5                            
+0065b8da je     0x65b938                          
+0065b8dc dec    eax                               
+0065b8dd je     0x65b91e                          
+0065b8df sub    eax, ebx                          
+0065b8e1 je     0x65be2b                          
+0065b8e7 mov    ecx, dword ptr [ebp + 8]          
+0065b8ea push   0xd6                              
+0065b8ef call   0x410de0                           ; ?Do@D@@QAEXH@Z
+0065b8f4 test   al, al                            
+0065b8f6 je     0x65be2b                          
+0065b8fc push   esi                               
+0065b8fd lea    ecx, [ebp - 0x1c]                 
+0065b900 call   0x4a96f0                           ; N_004a96f0
+0065b905 lea    eax, [ebp - 0x1c]                 
+0065b908 push   eax                               
+0065b909 lea    ecx, [edi + 0x74]                 
+0065b90c call   0x4ba4e0                           ; ?push_back@CThingList@@QAEXABUCIntelligentPointer@@@Z
+0065b911 lea    ecx, [ebp - 0x1c]                 
+0065b914 call   0xa01c10                           ; ??1CMember_00a01c10@@QAE@XZ
+0065b919 jmp    0x65be2b                          
+0065b91e push   esi                               
+0065b91f lea    ecx, [ebp - 0x24]                 
+0065b922 call   0x65e21e                           ; ??0?$CIntelligentPointer@VCThingMarker@@@@QAE@PAVCThingMarker@@@Z
+0065b927 lea    eax, [ebp - 0x24]                 
+0065b92a push   eax                               
+0065b92b lea    ecx, [edi + 0x70]                 
+0065b92e call   0x6605bb                           ; man:_global::AddThingToVillage_LuaClosure3
+0065b933 lea    ecx, [ebp - 0x24]                 
+0065b936 jmp    0x65b914                          
+0065b938 xor    ebx, ebx                          
+0065b93a inc    ebx                               
+0065b93b cmp    byte ptr [esi + 0xec], 0          
+0065b942 je     0x65b984                          
+0065b944 mov    ecx, dword ptr [edi + 0x94]       
+0065b94a lea    eax, [ebp - 4]                    
+0065b94d push   eax                               
+0065b94e add    ecx, 0x34                         
+0065b951 call   0x415dd0                           ; ?GetString@CDefString@@QBE?AVCCharString@@XZ
+0065b956 mov    ecx, dword ptr [esi + 0xe8]       
+0065b95c cmp    ecx, dword ptr [ebp - 4]          
+0065b95f mov    dword ptr [ebp - 8], ebx          
+0065b962 je     0x65b97e                          
+0065b964 test   ecx, ecx                          
+0065b966 je     0x65b978                          
+0065b968 cmp    dword ptr [ebp - 4], 0            
+0065b96c je     0x65b978                          
+0065b96e push   dword ptr [ebp - 4]               
+0065b971 call   0x4a93c0                           ; ??8?$CBasicString@D@@QBE_NABV0@@Z
+0065b976 jmp    0x65b97a                          
+0065b978 xor    al, al                            
+0065b97a test   al, al                            
+0065b97c je     0x65b984                          
+0065b97e mov    byte ptr [ebp + 0xb], 1           
+0065b982 jmp    0x65b988                          
+0065b984 mov    byte ptr [ebp + 0xb], 0           
+0065b988 test   byte ptr [ebp - 8], 1             
+0065b98c je     0x65b996                          
+0065b98e lea    ecx, [ebp - 4]                    
+0065b991 call   0x99eae0                           ; ??1CCharString@@QAE@XZ
+0065b996 cmp    byte ptr [ebp + 0xb], 0           
+0065b99a je     0x65be2b                          
+0065b9a0 mov    eax, dword ptr [edi + 0x94]       
+0065b9a6 mov    dword ptr [ebp + 8], ebx          
+0065b9a9 mov    ebx, dword ptr [eax + 0x2c]       
+0065b9ac lea    ecx, [ebp + 8]                    
+0065b9af push   ecx                               
+0065b9b0 mov    ecx, dword ptr [eax + 0x28]       
+0065b9b3 mov    edx, ebx                          
+0065b9b5 call   0x65e5a4                           ; man:std::vector<EWeaponClass,std::allocator<EWeaponClass>_>::_Umove<EWeaponClass*>
+0065b9ba cmp    eax, ebx                          
+0065b9bc je     0x65be2b                          
+0065b9c2 push   esi                               
+0065b9c3 lea    ecx, [ebp - 0x2c]                 
+0065b9c6 call   0x65e15d                           ; ??0?$CIntelligentPointer@VCThingTrackNode@@@@QAE@PAVCThingTrackNode@@@Z
+0065b9cb lea    eax, [ebp - 0x2c]                 
+0065b9ce push   eax                               
+0065b9cf lea    ecx, [edi + 0x48]                 
+0065b9d2 call   0x660fc9                           ; man:_global::AddThingToVillage_LuaClosure4
+0065b9d7 lea    ecx, [ebp - 0x2c]                 
+0065b9da call   0xa01c10                           ; ??1CMember_00a01c10@@QAE@XZ
+0065b9df push   0x1c                              
+0065b9e1 call   0xbfea1a                           ; ??2@YAPAXI@Z
+0065b9e6 test   eax, eax                          
+0065b9e8 pop    ecx                               
+0065b9e9 je     0x65b9f5                          
+0065b9eb push   esi                               
+0065b9ec mov    ecx, eax                          
+0065b9ee call   0x65ee66                           ; man:CVillageTaskPatrol::CVillageTaskPatrol
+0065b9f3 jmp    0x65b9f7                          
+0065b9f5 xor    eax, eax                          
+0065b9f7 push   eax                               
+0065b9f8 lea    ecx, [ebp - 0x74]                 
+0065b9fb call   0x65e198                           ; man:CCountedPointer_0065d258::CCountedPointer_0065d258
+0065ba00 push   eax                               
+0065ba01 lea    ecx, [edi + 0x54]                 
+0065ba04 call   0x660553                           ; man:_global::AddThingToVillage_LuaClosure1
+0065ba09 lea    ecx, [ebp - 0x74]                 
+0065ba0c call   0x65d507                           ; ??1CValue_0065d507@@QAE@XZ
+0065ba11 jmp    0x65be2b                          
+0065ba16 mov    eax, dword ptr [esi]              
+0065ba18 mov    ecx, esi                          
+0065ba1a call   dword ptr [eax + 0xc0]            
+0065ba20 shr    eax, 9                            
+0065ba23 test   al, 1                             
+0065ba25 jne    0x65bb8d                          
+0065ba2b mov    eax, dword ptr [esi]              
+0065ba2d mov    ecx, esi                          
+0065ba2f call   dword ptr [eax + 0xc0]            
+0065ba35 shr    eax, 8                            
+0065ba38 test   al, 1                             
+0065ba3a jne    0x65bb8d                          
+0065ba40 mov    eax, dword ptr [esi]              
+0065ba42 mov    ecx, esi                          
+0065ba44 call   dword ptr [eax + 0xc0]            
+0065ba4a shr    eax, 1                            
+0065ba4c test   al, 1                             
+0065ba4e je     0x65bac6                          
+0065ba50 push   esi                               
+0065ba51 lea    ecx, [ebp - 0x34]                 
+0065ba54 call   0x65e133                           ; ??0?$CIntelligentPointer@VCThingObject@@@@QAE@PAVCThingObject@@@Z
+0065ba59 lea    eax, [ebp - 0x34]                 
+0065ba5c push   eax                               
+0065ba5d lea    ecx, [edi + 0x3c]                 
+0065ba60 call   0x660505                           ; man:_global::LuaBinding_CreateCClosure_2
+0065ba65 lea    ecx, [ebp - 0x34]                 
+0065ba68 call   0xa01c10                           ; ??1CMember_00a01c10@@QAE@XZ
+0065ba6d mov    eax, dword ptr [edi + 0x94]       
+0065ba73 mov    dword ptr [ebp + 8], ebx          
+0065ba76 mov    ebx, dword ptr [eax + 0x2c]       
+0065ba79 lea    ecx, [ebp + 8]                    
+0065ba7c push   ecx                               
+0065ba7d mov    ecx, dword ptr [eax + 0x28]       
+0065ba80 mov    edx, ebx                          
+0065ba82 call   0x65e5a4                           ; man:std::vector<EWeaponClass,std::allocator<EWeaponClass>_>::_Umove<EWeaponClass*>
+0065ba87 cmp    eax, ebx                          
+0065ba89 je     0x65be2b                          
+0065ba8f push   0x18                              
+0065ba91 call   0xbfea1a                           ; ??2@YAPAXI@Z
+0065ba96 test   eax, eax                          
+0065ba98 pop    ecx                               
+0065ba99 je     0x65baa5                          
+0065ba9b push   esi                               
+0065ba9c mov    ecx, eax                          
+0065ba9e call   0x65eeff                           ; man:CVillageTaskPickCrops::CVillageTaskPickCrops
+0065baa3 jmp    0x65baa7                          
+0065baa5 xor    eax, eax                          
+0065baa7 push   eax                               
+0065baa8 lea    ecx, [ebp - 0x7c]                 
+0065baab call   0x65e1db                           ; man:CCountedPointer_0065d263::CCountedPointer_0065d263
+0065bab0 push   eax                               
+0065bab1 lea    ecx, [edi + 0x58]                 
+0065bab4 call   0x66056d                           ; man:_global::AddThingToVillage_LuaClosure2
+0065bab9 lea    ecx, [ebp - 0x7c]                 
+0065babc call   0x65d533                           ; ??1CValue_0065d533@@QAE@XZ
+0065bac1 jmp    0x65be2b                          
+0065bac6 mov    eax, dword ptr [esi]              
+0065bac8 mov    ecx, esi                          
+0065baca call   dword ptr [eax + 0xc0]            
+0065bad0 shr    eax, 0x18                         
+0065bad3 test   al, 1                             
+0065bad5 je     0x65baf4                          
+0065bad7 push   esi                               
+0065bad8 lea    ecx, [ebp - 0x3c]                 
+0065badb call   0x4a96f0                           ; N_004a96f0
+0065bae0 lea    eax, [ebp - 0x3c]                 
+0065bae3 push   eax                               
+0065bae4 lea    ecx, [edi + 0x34]                 
+0065bae7 call   0x4ba4e0                           ; ?push_back@CThingList@@QAEXABUCIntelligentPointer@@@Z
+0065baec lea    ecx, [ebp - 0x3c]                 
+0065baef jmp    0x65b914                          
+0065baf4 mov    eax, dword ptr [esi]              
+0065baf6 mov    ecx, esi                          
+0065baf8 call   dword ptr [eax + 0xc0]            
+0065bafe shr    eax, 0x1c                         
+0065bb01 test   al, 1                             
+0065bb03 je     0x65bb22                          
+0065bb05 push   esi                               
+0065bb06 lea    ecx, [ebp - 0x44]                 
+0065bb09 call   0x4a96f0                           ; N_004a96f0
+0065bb0e lea    eax, [ebp - 0x44]                 
+0065bb11 push   eax                               
+0065bb12 lea    ecx, [edi + 0x38]                 
+0065bb15 call   0x4ba4e0                           ; ?push_back@CThingList@@QAEXABUCIntelligentPointer@@@Z
+0065bb1a lea    ecx, [ebp - 0x44]                 
+0065bb1d jmp    0x65b914                          
+0065bb22 mov    eax, dword ptr [esi]              
+0065bb24 mov    ecx, esi                          
+0065bb26 call   dword ptr [eax + 0xc0]            
+0065bb2c shr    eax, 3                            
+0065bb2f test   al, 1                             
+0065bb31 je     0x65bb50                          
+0065bb33 push   esi                               
+0065bb34 lea    ecx, [ebp - 0x4c]                 
+0065bb37 call   0x4a96f0                           ; N_004a96f0
+0065bb3c lea    eax, [ebp - 0x4c]                 
+0065bb3f push   eax                               
+0065bb40 lea    ecx, [edi + 0x40]                 
+0065bb43 call   0x4ba4e0                           ; ?push_back@CThingList@@QAEXABUCIntelligentPointer@@@Z
+0065bb48 lea    ecx, [ebp - 0x4c]                 
+0065bb4b jmp    0x65b914                          
+0065bb50 mov    eax, dword ptr [esi]              
+0065bb52 mov    ecx, esi                          
+0065bb54 call   dword ptr [eax + 0xc0]            
+0065bb5a shr    eax, 0xe                          
+0065bb5d test   al, 1                             
+0065bb5f je     0x65bb7e                          
+0065bb61 push   esi                               
+0065bb62 lea    ecx, [ebp - 0x54]                 
+0065bb65 call   0x4a96f0                           ; N_004a96f0
+0065bb6a lea    eax, [ebp - 0x54]                 
+0065bb6d push   eax                               
+0065bb6e lea    ecx, [edi + 0x44]                 
+0065bb71 call   0x4ba4e0                           ; ?push_back@CThingList@@QAEXABUCIntelligentPointer@@@Z
+0065bb76 lea    ecx, [ebp - 0x54]                 
+0065bb79 jmp    0x65b914                          
+0065bb7e mov    eax, dword ptr [esi]              
+0065bb80 mov    ecx, esi                          
+0065bb82 call   dword ptr [eax + 0xc0]            
+0065bb88 jmp    0x65be2b                          
+0065bb8d push   esi                               
+0065bb8e lea    ecx, [ebp - 0x5c]                 
+0065bb91 call   0x4a96f0                           ; N_004a96f0
+0065bb96 lea    eax, [ebp - 0x5c]                 
+0065bb99 push   eax                               
+0065bb9a lea    ecx, [edi + 0x30]                 
+0065bb9d call   0x4ba4e0                           ; ?push_back@CThingList@@QAEXABUCIntelligentPointer@@@Z
+0065bba2 lea    ecx, [ebp - 0x5c]                 
+0065bba5 call   0xa01c10                           ; ??1CMember_00a01c10@@QAE@XZ
+0065bbaa test   byte ptr [esi + 0x91], 1          
+0065bbb1 jne    0x65be2b                          
+0065bbb7 mov    ecx, dword ptr [ebp + 8]          
+0065bbba push   0x27                              
+0065bbbc pop    ebx                               
+0065bbbd push   ebx                               
+0065bbbe call   0x410de0                           ; ?Do@D@@QAEXH@Z
+0065bbc3 test   al, al                            
+0065bbc5 je     0x65be2b                          
+0065bbcb lea    eax, [ebp + 8]                    
+0065bbce add    esi, 0x44                         
+0065bbd1 push   eax                               
+0065bbd2 mov    ecx, esi                          
+0065bbd4 mov    dword ptr [ebp + 8], ebx          
+0065bbd7 call   0x40f020                           ; ?LowerBound@ComponentMap@NativeInput@@QAEPAUComponentEntry@2@ABW4ETCInterfaceType@2@@Z
+0065bbdc mov    esi, dword ptr [esi + 4]          
+0065bbdf cmp    eax, esi                          
+0065bbe1 je     0x65bbe9                          
+0065bbe3 cmp    dword ptr [eax], ebx              
+0065bbe5 jg     0x65bbe9                          
+0065bbe7 mov    esi, eax                          
+0065bbe9 mov    esi, dword ptr [esi + 4]          
+0065bbec mov    ecx, edi                          
+0065bbee call   0x686a80                           ; ?PeekWorld@CTCBase@@IBEABVCWorld@@XZ
+0065bbf3 mov    ecx, dword ptr [eax + 0x1c]       
+0065bbf6 call   0x6bb2c0                           ; ?IsDay@CGameTimeManager@@QBE_NXZ
+0065bbfb test   al, al                            
+0065bbfd mov    ecx, esi                          
+0065bbff je     0x65bc0d                          
+0065bc01 push   0                                 
+0065bc03 call   0x6412b0                           ; ?SetActive@CTCLight@@QAEX_N@Z
+0065bc08 jmp    0x65be2b                          
+0065bc0d push   1                                 
+0065bc0f jmp    0x65bc03                          
+0065bc11 push   esi                               
+0065bc12 lea    ecx, [ebp - 0x64]                 
+0065bc15 call   0x50f380                           ; ??0?$CIntelligentPointer@VCThingBuilding@@@@QAE@PAVCThingBuilding@@@Z
+0065bc1a lea    eax, [ebp - 0x64]                 
+0065bc1d push   eax                               
+0065bc1e lea    ecx, [edi + 0x28]                 
+0065bc21 call   0x6604d1                           ; man:_global::LuaBinding_CreateCClosure
+0065bc26 lea    ecx, [ebp - 0x64]                 
+0065bc29 call   0xa01c10                           ; ??1CMember_00a01c10@@QAE@XZ
+0065bc2e mov    ecx, dword ptr [esi + 0x60]       
+0065bc31 mov    eax, dword ptr [ecx]              
+0065bc33 call   dword ptr [eax + 0x174]           
+0065bc39 cmp    byte ptr [edi + 0xb3], 0          
+0065bc40 je     0x65bc54                          
+0065bc42 or     byte ptr [esi + 0xd4], 1          
+0065bc49 push   0                                 
+0065bc4b push   1                                 
+0065bc4d mov    ecx, esi                          
+0065bc4f call   0x82db00                           ; ?LockAllDoors@CThingBuilding@@QAEX_N0@Z
+0065bc54 mov    ecx, dword ptr [ebp + 8]          
+0065bc57 push   0x21                              
+0065bc59 pop    ebx                               
+0065bc5a push   ebx                               
+0065bc5b call   0x410de0                           ; ?Do@D@@QAEXH@Z
+0065bc60 test   al, al                            
+0065bc62 je     0x65be2b                          
+0065bc68 lea    eax, [ebp - 0xc]                  
+0065bc6b add    esi, 0x44                         
+0065bc6e push   eax                               
+0065bc6f mov    ecx, esi                          
+0065bc71 mov    dword ptr [ebp - 0xc], ebx        
+0065bc74 call   0x40f020                           ; ?LowerBound@ComponentMap@NativeInput@@QAEPAUComponentEntry@2@ABW4ETCInterfaceType@2@@Z
+0065bc79 mov    esi, dword ptr [esi + 4]          
+0065bc7c cmp    eax, esi                          
+0065bc7e je     0x65bc84                          
+0065bc80 cmp    dword ptr [eax], ebx              
+0065bc82 jle    0x65bc86                          
+0065bc84 mov    eax, esi                          
+0065bc86 mov    eax, dword ptr [eax + 4]          
+0065bc89 mov    dword ptr [ebp - 0x14], eax       
+0065bc8c mov    eax, dword ptr [eax + 0xc]        
+0065bc8f mov    ecx, dword ptr [eax]              
+0065bc91 cmp    ecx, eax                          
+0065bc93 mov    dword ptr [ebp - 8], ecx          
+0065bc96 je     0x65be2b                          
+0065bc9c jmp    0x65bca1                          
+0065bc9e mov    ecx, dword ptr [ebp - 8]          
+0065bca1 lea    esi, [ecx + 8]                    
+0065bca4 mov    ecx, esi                          
+0065bca6 call   0x4cc340                           ; ?IS_THING_ALIVE@@YI_NABUCIntelligentPointer@@@Z
+0065bcab test   al, al                            
+0065bcad je     0x65bdb4                          
+0065bcb3 mov    ecx, esi                          
+0065bcb5 call   0xa01b50                           ; ?GetPItem@CBaseIntelligentPointer@@QBEPAVCThing@@XZ
+0065bcba cmp    byte ptr [eax + 0x10], 5          
+0065bcbe jne    0x65bdb4                          
+0065bcc4 mov    ecx, esi                          
+0065bcc6 call   0xa01b50                           ; ?GetPItem@CBaseIntelligentPointer@@QBEPAVCThing@@XZ
+0065bccb mov    esi, eax                          
+0065bccd push   0x27                              
+0065bccf lea    ecx, [esi + 0x20]                 
+0065bcd2 call   0x410de0                           ; ?Do@D@@QAEXH@Z
+0065bcd7 test   al, al                            
+0065bcd9 je     0x65bdb4                          
+0065bcdf lea    eax, [ebp - 0x10]                 
+0065bce2 lea    ebx, [esi + 0x44]                 
+0065bce5 push   eax                               
+0065bce6 mov    ecx, ebx                          
+0065bce8 mov    dword ptr [ebp - 0x10], 0x27      
+0065bcef call   0x40f020                           ; ?LowerBound@ComponentMap@NativeInput@@QAEPAUComponentEntry@2@ABW4ETCInterfaceType@2@@Z
+0065bcf4 mov    ebx, dword ptr [ebx + 4]          
+0065bcf7 cmp    eax, ebx                          
+0065bcf9 je     0x65bd00                          
+0065bcfb cmp    dword ptr [eax], 0x27             
+0065bcfe jle    0x65bd02                          
+0065bd00 mov    eax, ebx                          
+0065bd02 mov    eax, dword ptr [eax + 4]          
+0065bd05 mov    dword ptr [ebp - 0x10], eax       
+0065bd08 mov    eax, dword ptr [esi]              
+0065bd0a mov    ecx, esi                          
+0065bd0c call   dword ptr [eax + 0xc0]            
+0065bd12 shr    eax, 8                            
+0065bd15 test   al, 1                             
+0065bd17 jne    0x65bd2e                          
+0065bd19 mov    eax, dword ptr [esi]              
+0065bd1b mov    ecx, esi                          
+0065bd1d call   dword ptr [eax + 0xc0]            
+0065bd23 shr    eax, 9                            
+0065bd26 test   al, 1                             
+0065bd28 je     0x65bdb4                          
+0065bd2e mov    ecx, dword ptr [ebp + 8]          
+0065bd31 push   0xab                              
+0065bd36 call   0x410de0                           ; ?Do@D@@QAEXH@Z
+0065bd3b test   al, al                            
+0065bd3d je     0x65bd59                          
+0065bd3f mov    ecx, edi                          
+0065bd41 call   0x686a80                           ; ?PeekWorld@CTCBase@@IBEABVCWorld@@XZ
+0065bd46 mov    ecx, dword ptr [eax + 0x1c]       
+0065bd49 call   0x6bb2c0                           ; ?IsDay@CGameTimeManager@@QBE_NXZ
+0065bd4e neg    al                                
+0065bd50 sbb    al, al                            
+0065bd52 inc    al                                
+0065bd54 mov    byte ptr [ebp - 0xc], al          
+0065bd57 jmp    0x65bda9                          
+0065bd59 lea    eax, [edi + 0x94]                 
+0065bd5f mov    ebx, dword ptr [eax]              
+0065bd61 test   ebx, ebx                          
+0065bd63 je     0x65bd68                          
+0065bd65 inc    dword ptr [ebx + 4]               
+0065bd68 mov    esi, dword ptr [eax]              
+0065bd6a test   esi, esi                          
+0065bd6c je     0x65bd71                          
+0065bd6e inc    dword ptr [esi + 4]               
+0065bd71 mov    ecx, edi                          
+0065bd73 call   0x686a80                           ; ?PeekWorld@CTCBase@@IBEABVCWorld@@XZ
+0065bd78 push   dword ptr [ebx + 0xd0]            
+0065bd7e mov    eax, dword ptr [eax + 0x1c]       
+0065bd81 push   dword ptr [esi + 0xcc]            
+0065bd87 mov    ecx, eax                          
+0065bd89 call   0x6bb390                           ; ?Game_IsTimeOfDayInRange@?A0xa6a58310@@YI_NPAXJJ@Z
+0065bd8e dec    dword ptr [esi + 4]               
+0065bd91 mov    byte ptr [ebp - 0xc], al          
+0065bd94 jne    0x65bd9d                          
+0065bd96 mov    eax, dword ptr [esi]              
+0065bd98 mov    ecx, esi                          
+0065bd9a call   dword ptr [eax + 4]               
+0065bd9d dec    dword ptr [ebx + 4]               
+0065bda0 jne    0x65bda9                          
+0065bda2 mov    eax, dword ptr [ebx]              
+0065bda4 mov    ecx, ebx                          
+0065bda6 call   dword ptr [eax + 4]               
+0065bda9 push   dword ptr [ebp - 0xc]             
+0065bdac mov    ecx, dword ptr [ebp - 0x10]       
+0065bdaf call   0x6412b0                           ; ?SetActive@CTCLight@@QAEX_N@Z
+0065bdb4 mov    eax, dword ptr [ebp - 8]          
+0065bdb7 mov    eax, dword ptr [eax]              
+0065bdb9 mov    ecx, dword ptr [ebp - 0x14]       
+0065bdbc cmp    eax, dword ptr [ecx + 0xc]        
+0065bdbf mov    dword ptr [ebp - 8], eax          
+0065bdc2 jne    0x65bc9e                          
+0065bdc8 jmp    0x65be2b                          
+0065bdca push   esi                               
+0065bdcb lea    ecx, [ebp - 0x6c]                 
+0065bdce call   0x50f3f0                           ; ??0CIntelligentPointerCreature@@QAE@PAUCThing@@@Z
+0065bdd3 lea    eax, [ebp - 0x6c]                 
+0065bdd6 push   eax                               
+0065bdd7 lea    ecx, [edi + 0x2c]                 
+0065bdda call   0x6604eb                           ; ?push_back@CAICreaturePointerList@@QAEXABUCIntelligentPointerAICreature@@@Z
+0065bddf lea    ecx, [ebp - 0x6c]                 
+0065bde2 call   0xa01c10                           ; ??1CMember_00a01c10@@QAE@XZ
+0065bde7 mov    ecx, esi                          
+0065bde9 call   0x662010                           ; ?GetLifeState@CThingCreatureState@@QAEJXZ
+0065bdee cmp    eax, 3                            
+0065bdf1 jne    0x65bdf9                          
+0065bdf3 inc    dword ptr [edi + 0x88]            
+0065bdf9 cmp    byte ptr [edi + 0xb3], 0          
+0065be00 je     0x65be2b                          
+0065be02 mov    ecx, esi                          
+0065be04 call   0x4c7e70                           ; ?GFHasScriptThing@@YI_NPAVCThing@@@Z
+0065be09 test   al, al                            
+0065be0b je     0x65be1b                          
+0065be0d mov    ecx, dword ptr [ebp + 8]          
+0065be10 push   0x1f                              
+0065be12 call   0x410de0                           ; ?Do@D@@QAEXH@Z
+0065be17 test   al, al                            
+0065be19 jne    0x65be2b                          
+0065be1b push   1                                 
+0065be1d mov    ecx, esi                          
+0065be1f call   0x4c8cf0                           ; ?SetInLimbo@CThing@@QAEX_N@Z
+0065be24 or     byte ptr [esi + 0x92], 0x40       
+0065be2b pop    edi                               
+0065be2c pop    esi                               
+0065be2d pop    ebx                               
+0065be2e leave                                    
+0065be2f ret    4                                 

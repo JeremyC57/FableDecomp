@@ -1,0 +1,2 @@
+address	attempts	grade	residue	lever
+00a1ceb0	14	DIFFER(992v992) parked	2 lines: one x87 store scheduled one instruction late (retail fstp [esp+2Ch], the heuristic TotalCost, right after mov ecx,[NoOfStates]; ours after inc ecx)	named std::pair<map::iterator,bool> insert result (the open-list pointer is taken after the insert temporaries die); CAStarStateTotalGreaterThan deriving std::binary_function (no zero store of the comparator temporary); CNavBlockedQuadTreeNode copy into BlockedNodeAskedToGetTo through its operator= 0x00A76240

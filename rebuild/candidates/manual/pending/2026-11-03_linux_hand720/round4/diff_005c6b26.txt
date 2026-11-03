@@ -1,0 +1,9 @@
+2
+--- 
++++ 
+@@ -130,4 +130,4 @@
+ mov dword ptr [ebp - 0x14], edi
++dec dword ptr [esi + 4]
+ mov eax, dword ptr [esi + 0x54]
+-dec dword ptr [esi + 4]
+ mov dword ptr [ebp - 0x18], eax

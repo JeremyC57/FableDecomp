@@ -1,0 +1,14 @@
+00a1ceb0	1	SRC_FAIL	?v?	dl=?	a1 skeleton 
+00a1ceb0	2	DIFFER(995v992)	995v992	dl=12	a2 skeleton+back 
+00a1ceb0	3	DIFFER(992v992)	992v992	dl=2	a3 named insert result + binary_function comparator 
+00a1ceb0	4	DIFFER(992v992)	992v992	dl=2	a-c fstp probe 
+00a1ceb0	5	DIFFER(992v992)	992v992	dl=2	a-d fstp probe 
+00a1ceb0	6	DIFFER(992v992)	992v992	dl=6	a-e fstp probe 
+00a1ceb0	7	DIFFER(992v992)	992v992	dl=2	a-f fstp probe 
+00a1ceb0	8	DIFFER(992v992)	992v992	dl=2	a-g fstp probe 
+00a1ceb0	9	DIFFER(992v992)	992v992	dl=136	a-h fstp probe 
+00a1ceb0	10	DIFFER(992v992)	992v992	dl=2	a-q fstp probe 
+00a1ceb0	11	DIFFER(992v992)	992v992	dl=2	a-r fstp probe 
+00a1ceb0	12	DIFFER(992v992)	992v992	dl=2	a-t fstp probe 
+00a1ceb0	13	DIFFER(992v992)	992v992	dl=2	a-u fstp probe 
+00a1ceb0	14	DIFFER(992v992)	992v992	dl=2	b regrade after rebasing fable_containers.h (tag ctors default) 

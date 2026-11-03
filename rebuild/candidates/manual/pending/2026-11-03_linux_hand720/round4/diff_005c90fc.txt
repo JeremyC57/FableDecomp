@@ -1,0 +1,14 @@
+4
+--- 
++++ 
+@@ -80,4 +80,4 @@
+ mov dword ptr [ebp - 0x14], ebx
++dec dword ptr [esi + 4]
+ mov eax, dword ptr [esi + 0x54]
+-dec dword ptr [esi + 4]
+ mov dword ptr [ebp - 0x20], eax
+@@ -404,3 +404,3 @@
+ call dword ptr [eax + 0x240]
+-mov esi, X
++mov esi, 0
+ push esi

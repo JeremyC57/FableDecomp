@@ -1,0 +1,8 @@
+address	name	evidence
+0x005C6B26	CTCInventoryWeapons::ConstructWeaponDescription	DIFFER 2 lines; Ego_r ?ConstructWeaponDescription@CTCInventoryWeapons@@QBEXAAVCWideString@@JM_N@Z (ret 0x10), leaf checked
+0x005C90FC	CTCInventoryWeapons::ConstructWeaponDescriptionContainer	DIFFER 2 lines; Ego_r ?ConstructWeaponDescriptionContainer@CTCInventoryWeapons@@QBEXPAVCComponent@NUISystem@@JM@Z, leaf checked
+0x005CACB9	CTCInventoryWeapons::RefreshWeaponDescriptions	DIFFER 2 lines; Ego_r ?RefreshWeaponDescriptions@CTCInventoryWeapons@@QAEXXZ
+0x007661C0	CTCObjectAugmentations::GetDamageMultiplierFromAugmentationSet	landed; Ego_r ?GetDamageMultiplierFromAugmentationSet@CTCObjectAugmentations@@SIMABV?$vector@J..@std@@@Z (static fastcall, float in st0)
+0x00765F90	CTCObjectAugmentations::GetAugmentationName	landed; Ego_r ?GetAugmentationName@CTCObjectAugmentations@@SI?AVCWideString@@J@Z
+0x0042D5B1	std::map<unsigned long,NUISystem::CUIState>::operator[]	CComponent::GetStates() slot 82 returns that map; called with key 0 (bound name ??ACStateMap@NUISystem@@... is invented)
+0x004292C0	std::_Rb_global<bool>::_M_increment	STLport 4.6 tree iterator increment helper (cdecl, node in / node out) used by the StatThresholds walk

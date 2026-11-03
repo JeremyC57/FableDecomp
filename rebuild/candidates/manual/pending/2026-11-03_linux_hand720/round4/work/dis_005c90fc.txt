@@ -1,0 +1,697 @@
+005c90fc push   ebp                               
+005c90fd mov    ebp, esp                          
+005c90ff sub    esp, 0x34                         
+005c9102 push   ebx                               
+005c9103 push   esi                               
+005c9104 push   edi                               
+005c9105 mov    edi, ecx                          
+005c9107 mov    dword ptr [ebp - 0x18], edi       
+005c910a call   0x5c30d3                           ; ?RefreshActiveWeaponData@CTCInventoryWeapons@@QBEXXZ
+005c910f xor    ebx, ebx                          
+005c9111 lea    ecx, [ebp - 4]                    
+005c9114 mov    dword ptr [ebp - 0x34], ebx       
+005c9117 mov    dword ptr [ebp - 0x30], ebx       
+005c911a call   0x99aed0                           ; ??0CWideString@@QAE@XZ
+005c911f push   -1                                
+005c9121 push   0x1230018                          ; "UI_MISC_THINGS_DEF"
+005c9126 lea    ecx, [ebp - 0x1c]                 
+005c9129 mov    dword ptr [ebp - 0x10], ebx       
+005c912c call   0x99ebf0                           ; ??0CCharString@@QAE@PBDJ@Z
+005c9131 push   1                                 
+005c9133 lea    eax, [ebp - 0x1c]                 
+005c9136 push   eax                               
+005c9137 call   0x44c6b0                           ; ?Resolve@@YGPAXH@Z
+005c913c mov    ecx, eax                          
+005c913e call   0x9ad390                           ; ?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z
+005c9143 lea    ecx, [ebp - 0x1c]                 
+005c9146 mov    esi, eax                          
+005c9148 call   0x99eae0                           ; ??1CCharString@@QAE@XZ
+005c914d lea    eax, [ebp - 0x10]                 
+005c9150 push   eax                               
+005c9151 push   esi                               
+005c9152 call   0x44c6b0                           ; ?Resolve@@YGPAXH@Z
+005c9157 mov    ecx, eax                          
+005c9159 call   0x42b312                           ; ?GetDef@CDefinitionManager@@QBE_NJPAUCUIMiscThingsDefPointer@@@Z
+005c915e push   dword ptr [ebp + 0xc]             
+005c9161 lea    eax, [ebp - 8]                    
+005c9164 push   eax                               
+005c9165 mov    ecx, edi                          
+005c9167 call   0x6869d0                           ; ?GetBigObj@@YAPAUBigObj@@XZ
+005c916c mov    ecx, eax                          
+005c916e call   0x9ad9e0                           ; ?GetPDefFromGlobalIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@J@Z
+005c9173 mov    ecx, dword ptr [ebp - 8]          
+005c9176 lea    eax, [ebp - 0xc]                  
+005c9179 push   eax                               
+005c917a mov    dword ptr [ebp - 0xc], ebx        
+005c917d call   0x42b1a6                           ; ?GetSubDef@CDefClassBase@@QAE_NPAUCWeaponDefPointer@@@Z
+005c9182 push   dword ptr [ebp + 0xc]             
+005c9185 mov    ecx, edi                          
+005c9187 call   0x5be8d3                           ; man:CTCInventoryBase::GetBoughtPrice
+005c918c mov    esi, dword ptr [ebp - 0xc]        
+005c918f mov    ecx, dword ptr [esi + 0x2c]       
+005c9192 mov    dword ptr [ebp - 0x1c], eax       
+005c9195 call   0x5da510                           ; ?IsMeleeWeaponClass@@YI_NJ@Z
+005c919a test   al, al                            
+005c919c je     0x5c91a6                          
+005c919e mov    eax, dword ptr [esi + 0x44]       
+005c91a1 mov    dword ptr [ebp - 0x20], eax       
+005c91a4 jmp    0x5c91f3                          
+005c91a6 push   dword ptr [esi + 0xa0]            
+005c91ac lea    eax, [ebp - 0x14]                 
+005c91af push   eax                               
+005c91b0 mov    ecx, edi                          
+005c91b2 call   0x6869d0                           ; ?GetBigObj@@YAPAUBigObj@@XZ
+005c91b7 mov    ecx, eax                          
+005c91b9 call   0x9ad9e0                           ; ?GetPDefFromGlobalIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@J@Z
+005c91be mov    esi, dword ptr [eax]              
+005c91c0 cmp    esi, ebx                          
+005c91c2 je     0x5c91c7                          
+005c91c4 inc    dword ptr [esi + 4]               
+005c91c7 mov    eax, dword ptr [ebp - 0x14]       
+005c91ca cmp    eax, ebx                          
+005c91cc je     0x5c91e1                          
+005c91ce mov    ecx, eax                          
+005c91d0 add    eax, 4                            
+005c91d3 dec    dword ptr [eax]                   
+005c91d5 cmp    dword ptr [eax], ebx              
+005c91d7 jne    0x5c91de                          
+005c91d9 mov    eax, dword ptr [ecx]              
+005c91db call   dword ptr [eax + 4]               
+005c91de mov    dword ptr [ebp - 0x14], ebx       
+005c91e1 mov    eax, dword ptr [esi + 0x54]       
+005c91e4 dec    dword ptr [esi + 4]               
+005c91e7 mov    dword ptr [ebp - 0x20], eax       
+005c91ea jne    0x5c91f3                          
+005c91ec mov    eax, dword ptr [esi]              
+005c91ee mov    ecx, esi                          
+005c91f0 call   dword ptr [eax + 4]               
+005c91f3 mov    ecx, dword ptr [ebp - 0x1c]       
+005c91f6 call   0x7661c0                           ; man:CTCObjectAugmentations::GetDamageMultiplierFromAugmentationSet
+005c91fb fmul   dword ptr [ebp - 0x20]            
+005c91fe fmul   dword ptr [0x1237f0c]             
+005c9204 fstp   dword ptr [ebp - 0x20]            
+005c9207 fld    dword ptr [ebp - 0x20]            
+005c920a fistp  dword ptr [ebp - 0x14]            
+005c920d fld    dword ptr [ebp + 0x10]            
+005c9210 fmul   dword ptr [0x1237f0c]             
+005c9216 fstp   dword ptr [ebp + 0x10]            
+005c9219 fld    dword ptr [ebp + 0x10]            
+005c921c fistp  dword ptr [ebp - 0x20]            
+005c921f mov    eax, dword ptr [0x13b86a0]         ; ?g_13b86a0@@3PAUSlotA@@A
+005c9224 mov    eax, dword ptr [eax + 0x14]       
+005c9227 mov    esi, dword ptr [ebp - 0x14]       
+005c922a sub    esi, dword ptr [ebp - 0x20]       
+005c922d push   -1                                
+005c922f push   0x1254584                          ; "TEXT_GUI_MENU_DAMAGE"
+005c9234 lea    ecx, [ebp - 0x20]                 
+005c9237 mov    dword ptr [ebp + 0x10], eax       
+005c923a call   0x99ebf0                           ; ??0CCharString@@QAE@PBDJ@Z
+005c923f mov    ebx, dword ptr [ebp - 0x10]       
+005c9242 mov    ecx, dword ptr [ebp + 0x10]       
+005c9245 lea    edi, [ebx + 0x3c]                 
+005c9248 push   edi                               
+005c9249 lea    eax, [ebp - 0x20]                 
+005c924c push   eax                               
+005c924d lea    eax, [ebp - 0x28]                 
+005c9250 push   eax                               
+005c9251 call   0x9c95e0                           ; ?GetTextBySymbol@CDataBank@NGameText@@QBE?BVCWideString@@ABVCCharString@@@Z
+005c9256 mov    edx, eax                          
+005c9258 lea    ecx, [ebp - 0x24]                 
+005c925b call   0x99be70                           ; ?AddWide_0099be70@@YI?AUCWS@@PAUCWSraw@@0@Z
+005c9260 push   eax                               
+005c9261 lea    ecx, [ebp - 4]                    
+005c9264 call   0x99b8d0                           ; ??YCWideString@@QAEABV0@ABV0@@Z
+005c9269 lea    ecx, [ebp - 0x24]                 
+005c926c call   0x99b510                           ; ??1CWideString@@QAE@XZ
+005c9271 lea    ecx, [ebp - 0x28]                 
+005c9274 call   0x99b510                           ; ??1CWideString@@QAE@XZ
+005c9279 lea    ecx, [ebp - 0x20]                 
+005c927c call   0x99eae0                           ; ??1CCharString@@QAE@XZ
+005c9281 mov    edx, dword ptr [ebp - 0x14]       
+005c9284 push   edi                               
+005c9285 lea    ecx, [ebp - 0x24]                 
+005c9288 call   0x405f00                           ; ?GFIntToWideString@@YI?AVCWideString@@J@Z
+005c928d mov    edx, eax                          
+005c928f lea    ecx, [ebp - 0x28]                 
+005c9292 call   0x99be70                           ; ?AddWide_0099be70@@YI?AUCWS@@PAUCWSraw@@0@Z
+005c9297 push   eax                               
+005c9298 lea    ecx, [ebp - 4]                    
+005c929b call   0x99b8d0                           ; ??YCWideString@@QAEABV0@ABV0@@Z
+005c92a0 lea    ecx, [ebp - 0x28]                 
+005c92a3 call   0x99b510                           ; ??1CWideString@@QAE@XZ
+005c92a8 lea    ecx, [ebp - 0x24]                 
+005c92ab call   0x99b510                           ; ??1CWideString@@QAE@XZ
+005c92b0 lea    eax, [ebx + 0x4c]                 
+005c92b3 push   eax                               
+005c92b4 lea    ecx, [ebp - 4]                    
+005c92b7 call   0x99b8d0                           ; ??YCWideString@@QAEABV0@ABV0@@Z
+005c92bc test   esi, esi                          
+005c92be jle    0x5c92cc                          
+005c92c0 lea    eax, [ebx + 0x54]                 
+005c92c3 push   eax                               
+005c92c4 lea    ecx, [ebp - 4]                    
+005c92c7 call   0x99b8d0                           ; ??YCWideString@@QAEABV0@ABV0@@Z
+005c92cc lea    eax, [ebx + 0x50]                 
+005c92cf push   eax                               
+005c92d0 mov    edx, esi                          
+005c92d2 lea    ecx, [ebp - 0x24]                 
+005c92d5 call   0x405f00                           ; ?GFIntToWideString@@YI?AVCWideString@@J@Z
+005c92da mov    edx, eax                          
+005c92dc lea    ecx, [ebp - 0x28]                 
+005c92df call   0x99be70                           ; ?AddWide_0099be70@@YI?AUCWS@@PAUCWSraw@@0@Z
+005c92e4 push   eax                               
+005c92e5 lea    ecx, [ebp - 4]                    
+005c92e8 call   0x99b8d0                           ; ??YCWideString@@QAEABV0@ABV0@@Z
+005c92ed lea    ecx, [ebp - 0x28]                 
+005c92f0 call   0x99b510                           ; ??1CWideString@@QAE@XZ
+005c92f5 lea    ecx, [ebp - 0x24]                 
+005c92f8 call   0x99b510                           ; ??1CWideString@@QAE@XZ
+005c92fd push   0x13b8ba8                          ; _NEWLINE
+005c9302 lea    ecx, [ebp - 4]                    
+005c9305 call   0x99b8d0                           ; ??YCWideString@@QAEABV0@ABV0@@Z
+005c930a or     esi, 0xffffffff                    ; ??_7CVtable_ffffffff@@6B@
+005c930d push   esi                               
+005c930e push   0x1254568                          ; "TEXT_GUI_MENU_AUGMENTATIONS"
+005c9313 lea    ecx, [ebp - 0x20]                 
+005c9316 call   0x99ebf0                           ; ??0CCharString@@QAE@PBDJ@Z
+005c931b mov    ecx, dword ptr [ebp + 0x10]       
+005c931e push   edi                               
+005c931f lea    eax, [ebp - 0x20]                 
+005c9322 push   eax                               
+005c9323 lea    eax, [ebp - 0x24]                 
+005c9326 push   eax                               
+005c9327 call   0x9c95e0                           ; ?GetTextBySymbol@CDataBank@NGameText@@QBE?BVCWideString@@ABVCCharString@@@Z
+005c932c mov    edx, eax                          
+005c932e lea    ecx, [ebp - 0x28]                 
+005c9331 call   0x99be70                           ; ?AddWide_0099be70@@YI?AUCWS@@PAUCWSraw@@0@Z
+005c9336 push   eax                               
+005c9337 lea    ecx, [ebp - 4]                    
+005c933a call   0x99b8d0                           ; ??YCWideString@@QAEABV0@ABV0@@Z
+005c933f lea    ecx, [ebp - 0x28]                 
+005c9342 call   0x99b510                           ; ??1CWideString@@QAE@XZ
+005c9347 lea    ecx, [ebp - 0x24]                 
+005c934a call   0x99b510                           ; ??1CWideString@@QAE@XZ
+005c934f lea    ecx, [ebp - 0x20]                 
+005c9352 call   0x99eae0                           ; ??1CCharString@@QAE@XZ
+005c9357 mov    edi, dword ptr [ebp - 0x1c]       
+005c935a mov    ecx, dword ptr [edi]              
+005c935c mov    eax, dword ptr [edi + 4]          
+005c935f cmp    ecx, eax                          
+005c9361 je     0x5c93cc                          
+005c9363 sub    eax, ecx                          
+005c9365 sar    eax, 2                            
+005c9368 mov    dword ptr [ebp - 0x14], eax       
+005c936b xor    eax, eax                          
+005c936d xor    edx, edx                          
+005c936f cmp    dword ptr [ebp - 0x14], eax       
+005c9372 mov    dword ptr [ebp - 0x20], esi       
+005c9375 jle    0x5c93cc                          
+005c9377 cmp    dword ptr [ecx], 0                
+005c937a jle    0x5c9380                          
+005c937c inc    edx                               
+005c937d mov    dword ptr [ebp - 0x20], eax       
+005c9380 inc    eax                               
+005c9381 add    ecx, 4                            
+005c9384 cmp    eax, dword ptr [ebp - 0x14]       
+005c9387 jl     0x5c9377                          
+005c9389 test   edx, edx                          
+005c938b jle    0x5c93cc                          
+005c938d xor    esi, esi                          
+005c938f mov    eax, dword ptr [edi]              
+005c9391 cmp    dword ptr [eax + esi*4], 0        
+005c9395 jle    0x5c93c4                          
+005c9397 mov    edx, dword ptr [eax + esi*4]      
+005c939a lea    ecx, [ebp - 0x28]                 
+005c939d call   0x765f90                           ; man:CTCObjectAugmentations::GetAugmentationName
+005c93a2 push   eax                               
+005c93a3 lea    ecx, [ebp - 4]                    
+005c93a6 call   0x99b8d0                           ; ??YCWideString@@QAEABV0@ABV0@@Z
+005c93ab lea    ecx, [ebp - 0x28]                 
+005c93ae call   0x99b510                           ; ??1CWideString@@QAE@XZ
+005c93b3 cmp    esi, dword ptr [ebp - 0x20]       
+005c93b6 jge    0x5c93c4                          
+005c93b8 lea    eax, [ebx + 0x40]                 
+005c93bb push   eax                               
+005c93bc lea    ecx, [ebp - 4]                    
+005c93bf call   0x99b8d0                           ; ??YCWideString@@QAEABV0@ABV0@@Z
+005c93c4 inc    esi                               
+005c93c5 cmp    esi, dword ptr [ebp - 0x14]       
+005c93c8 jl     0x5c938f                          
+005c93ca jmp    0x5c9403                          
+005c93cc push   esi                               
+005c93cd lea    ecx, [ebp - 0x20]                 
+005c93d0 push   0x1254554                          ; "TEXT_GUI_MENU_NONE"
+005c93d5 call   0x99ebf0                           ; ??0CCharString@@QAE@PBDJ@Z
+005c93da mov    ecx, dword ptr [ebp + 0x10]       
+005c93dd lea    eax, [ebp - 0x20]                 
+005c93e0 push   eax                               
+005c93e1 lea    eax, [ebp - 0x28]                 
+005c93e4 push   eax                               
+005c93e5 call   0x9c95e0                           ; ?GetTextBySymbol@CDataBank@NGameText@@QBE?BVCWideString@@ABVCCharString@@@Z
+005c93ea lea    ecx, [ebp - 4]                    
+005c93ed push   eax                               
+005c93ee call   0x99b8d0                           ; ??YCWideString@@QAEABV0@ABV0@@Z
+005c93f3 lea    ecx, [ebp - 0x28]                 
+005c93f6 call   0x99b510                           ; ??1CWideString@@QAE@XZ
+005c93fb lea    ecx, [ebp - 0x20]                 
+005c93fe call   0x99eae0                           ; ??1CCharString@@QAE@XZ
+005c9403 push   0x13b8ba8                          ; _NEWLINE
+005c9408 lea    ecx, [ebp - 4]                    
+005c940b call   0x99b8d0                           ; ??YCWideString@@QAEABV0@ABV0@@Z
+005c9410 mov    ecx, dword ptr [ebp - 8]          
+005c9413 and    dword ptr [ebp - 0x20], 0         
+005c9417 lea    eax, [ebp - 0x20]                 
+005c941a push   eax                               
+005c941b call   0x59350c                           ; ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCTrophyDef@@@@@Z
+005c9420 mov    ebx, dword ptr [ebp - 0x20]       
+005c9423 mov    eax, dword ptr [ebx + 0x28]       
+005c9426 mov    dword ptr [ebp - 0x20], eax       
+005c9429 mov    eax, dword ptr [ebp - 0x18]       
+005c942c mov    esi, dword ptr [eax + 4]          
+005c942f push   0x75                              
+005c9431 pop    edi                               
+005c9432 push   edi                               
+005c9433 lea    ecx, [esi + 0x20]                 
+005c9436 call   0x410de0                           ; ?Do@D@@QAEXH@Z
+005c943b test   al, al                            
+005c943d je     0x5c94cb                          
+005c9443 lea    eax, [ebp - 0x28]                 
+005c9446 add    esi, 0x44                         
+005c9449 push   eax                               
+005c944a mov    ecx, esi                          
+005c944c mov    dword ptr [ebp - 0x28], edi       
+005c944f call   0x4365b0                           ; ?Find@Sub@@QAEPAUSubNode@@PAH@Z
+005c9454 mov    esi, dword ptr [esi + 4]          
+005c9457 cmp    eax, esi                          
+005c9459 je     0x5c945f                          
+005c945b cmp    dword ptr [eax], edi              
+005c945d jle    0x5c9461                          
+005c945f mov    eax, esi                          
+005c9461 mov    eax, dword ptr [eax + 4]          
+005c9464 lea    ecx, [eax + 0xc]                  
+005c9467 call   0xa01b50                           ; ?GetPItem@CBaseIntelligentPointer@@QBEPAVCThing@@XZ
+005c946c mov    esi, eax                          
+005c946e lea    ecx, [ebp - 0x28]                 
+005c9471 mov    dword ptr [ebp - 0x28], esi       
+005c9474 call   0x40dce0                           ; ??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z
+005c9479 test   al, al                            
+005c947b je     0x5c94cb                          
+005c947d push   0x53                              
+005c947f pop    edi                               
+005c9480 push   edi                               
+005c9481 lea    ecx, [esi + 0x20]                 
+005c9484 call   0x410de0                           ; ?Do@D@@QAEXH@Z
+005c9489 test   al, al                            
+005c948b je     0x5c94cb                          
+005c948d lea    eax, [ebp - 0x28]                 
+005c9490 add    esi, 0x44                         
+005c9493 push   eax                               
+005c9494 mov    ecx, esi                          
+005c9496 mov    dword ptr [ebp - 0x28], edi       
+005c9499 call   0x40f020                           ; ?LowerBound@ComponentMap@NativeInput@@QAEPAUComponentEntry@2@ABW4ETCInterfaceType@2@@Z
+005c949e mov    esi, dword ptr [esi + 4]          
+005c94a1 cmp    eax, esi                          
+005c94a3 je     0x5c94a9                          
+005c94a5 cmp    dword ptr [eax], edi              
+005c94a7 jle    0x5c94ab                          
+005c94a9 mov    eax, esi                          
+005c94ab mov    esi, dword ptr [eax + 4]          
+005c94ae push   dword ptr [ebp + 0xc]             
+005c94b1 mov    ecx, esi                          
+005c94b3 call   0x7723d0                           ; ?HasDefaultStockItem@CTCShop@@QAE_NJ@Z
+005c94b8 test   al, al                            
+005c94ba je     0x5c94cb                          
+005c94bc push   1                                 
+005c94be push   dword ptr [ebp + 0xc]             
+005c94c1 mov    ecx, esi                          
+005c94c3 call   0x7742c0                           ; ?GetCurrentBuyPrice@CTCShop@@QBEJJJ@Z
+005c94c8 mov    dword ptr [ebp - 0x20], eax       
+005c94cb or     edi, 0xffffffff                    ; ??_7CVtable_ffffffff@@6B@
+005c94ce push   edi                               
+005c94cf push   0x1254538                          ; "TEXT_GUI_MENU_WEAPON_VALUE"
+005c94d4 lea    ecx, [ebp + 0xc]                  
+005c94d7 call   0x99ebf0                           ; ??0CCharString@@QAE@PBDJ@Z
+005c94dc mov    edx, dword ptr [ebp - 0x20]       
+005c94df lea    ecx, [ebp - 0x2c]                 
+005c94e2 call   0x405f00                           ; ?GFIntToWideString@@YI?AVCWideString@@J@Z
+005c94e7 mov    ecx, dword ptr [ebp + 0x10]       
+005c94ea push   eax                               
+005c94eb mov    eax, dword ptr [ebp - 0x10]       
+005c94ee add    eax, 0x3c                         
+005c94f1 push   eax                               
+005c94f2 mov    dword ptr [ebp - 0x20], eax       
+005c94f5 lea    eax, [ebp + 0xc]                  
+005c94f8 push   eax                               
+005c94f9 lea    eax, [ebp - 0x14]                 
+005c94fc push   eax                               
+005c94fd call   0x9c95e0                           ; ?GetTextBySymbol@CDataBank@NGameText@@QBE?BVCWideString@@ABVCCharString@@@Z
+005c9502 mov    edx, eax                          
+005c9504 lea    ecx, [ebp - 0x24]                 
+005c9507 call   0x99be70                           ; ?AddWide_0099be70@@YI?AUCWS@@PAUCWSraw@@0@Z
+005c950c mov    edx, eax                          
+005c950e lea    ecx, [ebp - 0x28]                 
+005c9511 call   0x99be70                           ; ?AddWide_0099be70@@YI?AUCWS@@PAUCWSraw@@0@Z
+005c9516 push   eax                               
+005c9517 lea    ecx, [ebp - 4]                    
+005c951a call   0x99b8d0                           ; ??YCWideString@@QAEABV0@ABV0@@Z
+005c951f lea    ecx, [ebp - 0x28]                 
+005c9522 call   0x99b510                           ; ??1CWideString@@QAE@XZ
+005c9527 lea    ecx, [ebp - 0x24]                 
+005c952a call   0x99b510                           ; ??1CWideString@@QAE@XZ
+005c952f lea    ecx, [ebp - 0x14]                 
+005c9532 call   0x99b510                           ; ??1CWideString@@QAE@XZ
+005c9537 lea    ecx, [ebp - 0x2c]                 
+005c953a call   0x99b510                           ; ??1CWideString@@QAE@XZ
+005c953f lea    ecx, [ebp + 0xc]                  
+005c9542 call   0x99eae0                           ; ??1CCharString@@QAE@XZ
+005c9547 dec    dword ptr [ebx + 4]               
+005c954a jne    0x5c9553                          
+005c954c mov    eax, dword ptr [ebx]              
+005c954e mov    ecx, ebx                          
+005c9550 call   dword ptr [eax + 4]               
+005c9553 mov    eax, dword ptr [0x13b8790]         ; ?g_pGlobalGui@@3PAUGlobalGui@@A
+005c9558 cmp    byte ptr [eax + 0x2be], 0         
+005c955f lea    ecx, [ebp + 0xc]                  
+005c9562 push   edi                               
+005c9563 je     0x5c956c                          
+005c9565 push   0x12537d8                          ; "PC_TEXT_INSIDE_CONTAINER_TEMPLATE"
+005c956a jmp    0x5c9571                          
+005c956c push   0x1247d70                          ; "UI_TEXT_INSIDE_CONTAINER_TEMPLATE"
+005c9571 call   0x99ebf0                           ; ??0CCharString@@QAE@PBDJ@Z
+005c9576 lea    eax, [ebp + 0xc]                  
+005c9579 push   0                                 
+005c957b push   eax                               
+005c957c call   0x41e5f2                           ; ?GetInstance@CFrontEndManager_00404c00@@SIPAU1@XZ
+005c9581 mov    ecx, eax                          
+005c9583 call   0x41db1d                           ; ?CreateComponent@CManager@NUISystem@@QAEPAUCComponent@@ABVCCharString@@PAU3@@Z
+005c9588 lea    ecx, [ebp - 0x34]                 
+005c958b push   eax                               
+005c958c call   0x429c6f                           ; ?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+005c9591 lea    ecx, [ebp + 0xc]                  
+005c9594 call   0x99eae0                           ; ??1CCharString@@QAE@XZ
+005c9599 mov    ecx, dword ptr [ebp + 8]          
+005c959c mov    eax, dword ptr [ecx]              
+005c959e mov    esi, dword ptr [ebp - 0x34]       
+005c95a1 lea    edx, [ebp - 0x34]                 
+005c95a4 push   edx                               
+005c95a5 call   dword ptr [eax + 0xec]            
+005c95ab mov    eax, dword ptr [esi]              
+005c95ad push   1                                 
+005c95af push   1                                 
+005c95b1 lea    ecx, [ebp - 4]                    
+005c95b4 push   ecx                               
+005c95b5 mov    ecx, esi                          
+005c95b7 call   dword ptr [eax + 0x240]           
+005c95bd mov    esi, 0x13bca24                     ; ?g_EmptyWideString@@3VCWideString@@B
+005c95c2 push   esi                               
+005c95c3 lea    ecx, [ebp - 4]                    
+005c95c6 call   0x99b7d0                           ; ??4FrontEndWideString_00594f36@@QAEAAU0@ABU0@@Z
+005c95cb mov    ebx, dword ptr [ebp - 0xc]        
+005c95ce mov    ecx, dword ptr [ebx + 0x2c]       
+005c95d1 call   0x5da510                           ; ?IsMeleeWeaponClass@@YI_NJ@Z
+005c95d6 test   al, al                            
+005c95d8 je     0x5c9676                          
+005c95de push   edi                               
+005c95df push   0x125451c                          ; "TEXT_GUI_MENU_WEAPON_WEIGHT"
+005c95e4 lea    ecx, [ebp + 0xc]                  
+005c95e7 call   0x99ebf0                           ; ??0CCharString@@QAE@PBDJ@Z
+005c95ec push   dword ptr [ebp - 0x20]            
+005c95ef mov    ecx, dword ptr [ebp + 0x10]       
+005c95f2 lea    eax, [ebp + 0xc]                  
+005c95f5 push   eax                               
+005c95f6 lea    eax, [ebp - 0x28]                 
+005c95f9 push   eax                               
+005c95fa call   0x9c95e0                           ; ?GetTextBySymbol@CDataBank@NGameText@@QBE?BVCWideString@@ABVCCharString@@@Z
+005c95ff mov    edx, eax                          
+005c9601 lea    ecx, [ebp - 0x2c]                 
+005c9604 call   0x99be70                           ; ?AddWide_0099be70@@YI?AUCWS@@PAUCWSraw@@0@Z
+005c9609 push   eax                               
+005c960a lea    ecx, [ebp - 4]                    
+005c960d call   0x99b8d0                           ; ??YCWideString@@QAEABV0@ABV0@@Z
+005c9612 lea    ecx, [ebp - 0x2c]                 
+005c9615 call   0x99b510                           ; ??1CWideString@@QAE@XZ
+005c961a lea    ecx, [ebp - 0x28]                 
+005c961d call   0x99b510                           ; ??1CWideString@@QAE@XZ
+005c9622 lea    ecx, [ebp + 0xc]                  
+005c9625 call   0x99eae0                           ; ??1CCharString@@QAE@XZ
+005c962a mov    eax, dword ptr [ebx + 0x2c]       
+005c962d cmp    eax, 2                            
+005c9630 jne    0x5c963a                          
+005c9632 push   edi                               
+005c9633 push   0x1254508                          ; "TEXT_GUI_MENU_HEAVY"
+005c9638 jmp    0x5c9645                          
+005c963a cmp    eax, 1                            
+005c963d jne    0x5c9676                          
+005c963f push   edi                               
+005c9640 push   0x12544f4                          ; "TEXT_GUI_MENU_LIGHT"
+005c9645 lea    ecx, [ebp + 0xc]                  
+005c9648 call   0x99ebf0                           ; ??0CCharString@@QAE@PBDJ@Z
+005c964d mov    ecx, dword ptr [ebp + 0x10]       
+005c9650 lea    eax, [ebp + 0xc]                  
+005c9653 push   eax                               
+005c9654 lea    eax, [ebp - 0x2c]                 
+005c9657 push   eax                               
+005c9658 call   0x9c95e0                           ; ?GetTextBySymbol@CDataBank@NGameText@@QBE?BVCWideString@@ABVCCharString@@@Z
+005c965d lea    ecx, [ebp - 4]                    
+005c9660 push   eax                               
+005c9661 call   0x99b8d0                           ; ??YCWideString@@QAEABV0@ABV0@@Z
+005c9666 lea    ecx, [ebp - 0x2c]                 
+005c9669 call   0x99b510                           ; ??1CWideString@@QAE@XZ
+005c966e lea    ecx, [ebp + 0xc]                  
+005c9671 call   0x99eae0                           ; ??1CCharString@@QAE@XZ
+005c9676 mov    eax, dword ptr [0x13b8790]         ; ?g_pGlobalGui@@3PAUGlobalGui@@A
+005c967b cmp    byte ptr [eax + 0x2be], 0         
+005c9682 lea    ecx, [ebp + 0xc]                  
+005c9685 push   edi                               
+005c9686 je     0x5c968f                          
+005c9688 push   0x12537d8                          ; "PC_TEXT_INSIDE_CONTAINER_TEMPLATE"
+005c968d jmp    0x5c9694                          
+005c968f push   0x1247d70                          ; "UI_TEXT_INSIDE_CONTAINER_TEMPLATE"
+005c9694 call   0x99ebf0                           ; ??0CCharString@@QAE@PBDJ@Z
+005c9699 lea    eax, [ebp + 0xc]                  
+005c969c push   0                                 
+005c969e push   eax                               
+005c969f call   0x41e5f2                           ; ?GetInstance@CFrontEndManager_00404c00@@SIPAU1@XZ
+005c96a4 mov    ecx, eax                          
+005c96a6 call   0x41db1d                           ; ?CreateComponent@CManager@NUISystem@@QAEPAUCComponent@@ABVCCharString@@PAU3@@Z
+005c96ab lea    ecx, [ebp - 0x34]                 
+005c96ae push   eax                               
+005c96af call   0x429c6f                           ; ?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+005c96b4 lea    ecx, [ebp + 0xc]                  
+005c96b7 call   0x99eae0                           ; ??1CCharString@@QAE@XZ
+005c96bc mov    ecx, dword ptr [ebp + 8]          
+005c96bf mov    eax, dword ptr [ecx]              
+005c96c1 mov    edi, dword ptr [ebp - 0x34]       
+005c96c4 lea    edx, [ebp - 0x34]                 
+005c96c7 push   edx                               
+005c96c8 call   dword ptr [eax + 0xec]            
+005c96ce mov    eax, dword ptr [edi]              
+005c96d0 push   1                                 
+005c96d2 push   1                                 
+005c96d4 lea    ecx, [ebp - 4]                    
+005c96d7 push   ecx                               
+005c96d8 mov    ecx, edi                          
+005c96da call   dword ptr [eax + 0x240]           
+005c96e0 push   esi                               
+005c96e1 lea    ecx, [ebp - 4]                    
+005c96e4 call   0x99b7d0                           ; ??4FrontEndWideString_00594f36@@QAEAAU0@ABU0@@Z
+005c96e9 cmp    dword ptr [ebx + 0x2c], 2         
+005c96ed jne    0x5c981e                          
+005c96f3 mov    eax, dword ptr [ebp - 0x18]       
+005c96f6 mov    esi, dword ptr [eax + 4]          
+005c96f9 push   0x68                              
+005c96fb lea    ecx, [esi + 0x20]                 
+005c96fe call   0x410de0                           ; ?Do@D@@QAEXH@Z
+005c9703 test   al, al                            
+005c9705 je     0x5c981e                          
+005c970b lea    eax, [ebp + 0xc]                  
+005c970e add    esi, 0x44                         
+005c9711 push   eax                               
+005c9712 mov    ecx, esi                          
+005c9714 mov    dword ptr [ebp + 0xc], 0x68       
+005c971b call   0x4365b0                           ; ?Find@Sub@@QAEPAUSubNode@@PAH@Z
+005c9720 mov    esi, dword ptr [esi + 4]          
+005c9723 cmp    eax, esi                          
+005c9725 je     0x5c972c                          
+005c9727 cmp    dword ptr [eax], 0x68             
+005c972a jle    0x5c972e                          
+005c972c mov    eax, esi                          
+005c972e mov    esi, dword ptr [eax + 4]          
+005c9731 mov    eax, dword ptr [ebp - 0x18]       
+005c9734 mov    eax, dword ptr [eax + 4]          
+005c9737 push   0x16                              
+005c9739 lea    ecx, [eax + 0x20]                 
+005c973c mov    dword ptr [ebp - 0x2c], esi       
+005c973f call   0x410de0                           ; ?Do@D@@QAEXH@Z
+005c9744 test   al, al                            
+005c9746 je     0x5c981e                          
+005c974c mov    esi, dword ptr [esi + 0x58]       
+005c974f test   esi, esi                          
+005c9751 je     0x5c981e                          
+005c9757 inc    dword ptr [esi + 4]               
+005c975a inc    dword ptr [esi + 4]               
+005c975d dec    dword ptr [esi + 4]               
+005c9760 jne    0x5c9769                          
+005c9762 mov    eax, dword ptr [esi]              
+005c9764 mov    ecx, esi                          
+005c9766 call   dword ptr [eax + 4]               
+005c9769 mov    eax, dword ptr [esi + 0x13c]      
+005c976f mov    ebx, dword ptr [eax + 8]          
+005c9772 cmp    ebx, eax                          
+005c9774 mov    dword ptr [ebp + 0xc], ebx        
+005c9777 je     0x5c980f                          
+005c977d jmp    0x5c9782                          
+005c977f mov    ebx, dword ptr [ebp + 0xc]        
+005c9782 push   dword ptr [ebx + 0x10]            
+005c9785 mov    ecx, dword ptr [ebp - 0x2c]       
+005c9788 call   0x6d6520                           ; ?GetTrainableStatLevel@CTCHeroExperience@@QAEJJ@Z
+005c978d cmp    eax, dword ptr [ebx + 0x14]       
+005c9790 jge    0x5c97f9                          
+005c9792 and    dword ptr [ebp - 0x28], 0         
+005c9796 lea    eax, [ebp - 0x28]                 
+005c9799 push   eax                               
+005c979a mov    eax, dword ptr [edi]              
+005c979c mov    ecx, edi                          
+005c979e call   dword ptr [eax + 0x148]           
+005c97a4 mov    ecx, eax                          
+005c97a6 call   0x42d5b1                           ; ??ACStateMap@NUISystem@@QAEAAUSComponentState@1@ABK@Z
+005c97ab lea    ebx, [eax + 0x18]                 
+005c97ae movzx  eax, byte ptr [ebx]               
+005c97b1 mov    dword ptr [ebp - 0x28], eax       
+005c97b4 fild   dword ptr [ebp - 0x28]            
+005c97b7 fmul   dword ptr [0x122dedc]              ; ?g_CombatMinDistance@@3MA
+005c97bd call   0xbfea70                           ; __ftol2
+005c97c2 and    dword ptr [ebp - 0x28], 0         
+005c97c6 mov    byte ptr [ebx], al                
+005c97c8 lea    eax, [ebp - 0x28]                 
+005c97cb push   eax                               
+005c97cc mov    eax, dword ptr [edi]              
+005c97ce mov    ecx, edi                          
+005c97d0 call   dword ptr [eax + 0x148]           
+005c97d6 mov    ecx, eax                          
+005c97d8 call   0x42d5b1                           ; ??ACStateMap@NUISystem@@QAEAAUSComponentState@1@ABK@Z
+005c97dd lea    ebx, [eax + 0x19]                 
+005c97e0 movzx  eax, byte ptr [ebx]               
+005c97e3 mov    dword ptr [ebp - 0x28], eax       
+005c97e6 fild   dword ptr [ebp - 0x28]            
+005c97e9 fmul   dword ptr [0x122dedc]              ; ?g_CombatMinDistance@@3MA
+005c97ef call   0xbfea70                           ; __ftol2
+005c97f4 mov    byte ptr [ebx], al                
+005c97f6 mov    ebx, dword ptr [ebp + 0xc]        
+005c97f9 push   ebx                               
+005c97fa call   0x4292c0                           ; _Helper
+005c97ff cmp    eax, dword ptr [esi + 0x13c]      
+005c9805 pop    ecx                               
+005c9806 mov    dword ptr [ebp + 0xc], eax        
+005c9809 jne    0x5c977f                          
+005c980f dec    dword ptr [esi + 4]               
+005c9812 jne    0x5c981b                          
+005c9814 mov    eax, dword ptr [esi]              
+005c9816 mov    ecx, esi                          
+005c9818 call   dword ptr [eax + 4]               
+005c981b mov    ebx, dword ptr [ebp - 0xc]        
+005c981e push   -1                                
+005c9820 push   0x12544e0                          ; "TEXT_GUI_MENU_KILLS"
+005c9825 lea    ecx, [ebp + 0xc]                  
+005c9828 call   0x99ebf0                           ; ??0CCharString@@QAE@PBDJ@Z
+005c982d mov    edi, dword ptr [ebp - 0x10]       
+005c9830 mov    ecx, dword ptr [ebp + 0x10]       
+005c9833 lea    eax, [edi + 0x3c]                 
+005c9836 push   eax                               
+005c9837 lea    eax, [ebp + 0xc]                  
+005c983a push   eax                               
+005c983b lea    eax, [ebp - 0x28]                 
+005c983e push   eax                               
+005c983f call   0x9c95e0                           ; ?GetTextBySymbol@CDataBank@NGameText@@QBE?BVCWideString@@ABVCCharString@@@Z
+005c9844 mov    edx, eax                          
+005c9846 lea    ecx, [ebp - 0x2c]                 
+005c9849 call   0x99be70                           ; ?AddWide_0099be70@@YI?AUCWS@@PAUCWSraw@@0@Z
+005c984e push   eax                               
+005c984f lea    ecx, [ebp - 4]                    
+005c9852 call   0x99b8d0                           ; ??YCWideString@@QAEABV0@ABV0@@Z
+005c9857 lea    ecx, [ebp - 0x2c]                 
+005c985a call   0x99b510                           ; ??1CWideString@@QAE@XZ
+005c985f lea    ecx, [ebp - 0x28]                 
+005c9862 call   0x99b510                           ; ??1CWideString@@QAE@XZ
+005c9867 lea    ecx, [ebp + 0xc]                  
+005c986a call   0x99eae0                           ; ??1CCharString@@QAE@XZ
+005c986f mov    eax, dword ptr [ebp - 0x1c]       
+005c9872 mov    edx, dword ptr [eax + 0xc]        
+005c9875 lea    ecx, [ebp + 0xc]                  
+005c9878 call   0x405f00                           ; ?GFIntToWideString@@YI?AVCWideString@@J@Z
+005c987d push   eax                               
+005c987e lea    ecx, [ebp - 4]                    
+005c9881 call   0x99b8d0                           ; ??YCWideString@@QAEABV0@ABV0@@Z
+005c9886 lea    ecx, [ebp + 0xc]                  
+005c9889 call   0x99b510                           ; ??1CWideString@@QAE@XZ
+005c988e push   0x13b8ba8                          ; _NEWLINE
+005c9893 lea    ecx, [ebp - 4]                    
+005c9896 call   0x99b8d0                           ; ??YCWideString@@QAEABV0@ABV0@@Z
+005c989b mov    eax, dword ptr [0x13b8790]         ; ?g_pGlobalGui@@3PAUGlobalGui@@A
+005c98a0 cmp    byte ptr [eax + 0x2be], 0         
+005c98a7 lea    ecx, [ebp + 0xc]                  
+005c98aa push   -1                                
+005c98ac je     0x5c98b5                          
+005c98ae push   0x12537d8                          ; "PC_TEXT_INSIDE_CONTAINER_TEMPLATE"
+005c98b3 jmp    0x5c98ba                          
+005c98b5 push   0x1247d70                          ; "UI_TEXT_INSIDE_CONTAINER_TEMPLATE"
+005c98ba call   0x99ebf0                           ; ??0CCharString@@QAE@PBDJ@Z
+005c98bf lea    eax, [ebp + 0xc]                  
+005c98c2 push   0                                 
+005c98c4 push   eax                               
+005c98c5 call   0x41e5f2                           ; ?GetInstance@CFrontEndManager_00404c00@@SIPAU1@XZ
+005c98ca mov    ecx, eax                          
+005c98cc call   0x41db1d                           ; ?CreateComponent@CManager@NUISystem@@QAEPAUCComponent@@ABVCCharString@@PAU3@@Z
+005c98d1 lea    ecx, [ebp - 0x34]                 
+005c98d4 push   eax                               
+005c98d5 call   0x429c6f                           ; ?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z
+005c98da lea    ecx, [ebp + 0xc]                  
+005c98dd call   0x99eae0                           ; ??1CCharString@@QAE@XZ
+005c98e2 mov    ecx, dword ptr [ebp + 8]          
+005c98e5 mov    eax, dword ptr [ecx]              
+005c98e7 mov    esi, dword ptr [ebp - 0x34]       
+005c98ea lea    edx, [ebp - 0x34]                 
+005c98ed push   edx                               
+005c98ee call   dword ptr [eax + 0xec]            
+005c98f4 mov    eax, dword ptr [esi]              
+005c98f6 push   1                                 
+005c98f8 push   1                                 
+005c98fa lea    ecx, [ebp - 4]                    
+005c98fd push   ecx                               
+005c98fe mov    ecx, esi                          
+005c9900 call   dword ptr [eax + 0x240]           
+005c9906 push   0x13bca24                          ; ?g_EmptyWideString@@3VCWideString@@B
+005c990b lea    ecx, [ebp - 4]                    
+005c990e call   0x99b7d0                           ; ??4FrontEndWideString_00594f36@@QAEAAU0@ABU0@@Z
+005c9913 dec    dword ptr [ebx + 4]               
+005c9916 jne    0x5c991f                          
+005c9918 mov    eax, dword ptr [ebx]              
+005c991a mov    ecx, ebx                          
+005c991c call   dword ptr [eax + 4]               
+005c991f mov    eax, dword ptr [ebp - 8]          
+005c9922 test   eax, eax                          
+005c9924 je     0x5c993b                          
+005c9926 mov    ecx, eax                          
+005c9928 add    eax, 4                            
+005c992b dec    dword ptr [eax]                   
+005c992d cmp    dword ptr [eax], 0                
+005c9930 jne    0x5c9937                          
+005c9932 mov    eax, dword ptr [ecx]              
+005c9934 call   dword ptr [eax + 4]               
+005c9937 and    dword ptr [ebp - 8], 0            
+005c993b test   edi, edi                          
+005c993d je     0x5c994b                          
+005c993f dec    dword ptr [edi + 4]               
+005c9942 jne    0x5c994b                          
+005c9944 mov    eax, dword ptr [edi]              
+005c9946 mov    ecx, edi                          
+005c9948 call   dword ptr [eax + 4]               
+005c994b lea    ecx, [ebp - 4]                    
+005c994e call   0x99b510                           ; ??1CWideString@@QAE@XZ
+005c9953 lea    ecx, [ebp - 0x34]                 
+005c9956 call   0x4291de                           ; ??1SMember80@@QAE@XZ
+005c995b pop    edi                               
+005c995c pop    esi                               
+005c995d pop    ebx                               
+005c995e leave                                    
+005c995f ret    0xc                               
