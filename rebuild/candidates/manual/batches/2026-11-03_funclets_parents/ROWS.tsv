@@ -1,0 +1,610 @@
+address	name	ref_kind	funcinfo	parent	parent_name	parent_state	parent_source	parent_flags	cov_len	manifest_gap	block_base	offset	len	len_note	thunk	push_site	push_inside_parent
+00442d50	Catch@0047e8cc	none				unlanded			78	80							
+004430f0	Catch@0047e8cc	none				unlanded			78	80							
+004a1c41	Catch@004a1c41	catch	01369298	004a1840	Load	unlanded			69	77						004a1845	parent-unlanded
+0058771c	Unwind@00fbdab0	none				unlanded			45	45							
+005f8e6d	Unwind@00fbdab0	none				unlanded			34	34							
+005f8e8f	Unwind@00fbdab0	none				unlanded			34	49							
+006c9c60	Catch@004ab920	none				unlanded			106	240							
+0072dbe0	Catch@0047e8cc	none				unlanded			91	96							
+0072dc40	Unwind@00fbdab0	none				unlanded			35	48							
+00743600	Catch@0047e8cc	none				unlanded			121	128							
+008e3a20	Catch@0047e8cc	none				unlanded			112	128							
+008f92ef	Catch@008f92ef	catch	0136933c	008f8f50	Send	unlanded			14	14						008f8f55	parent-unlanded
+00ad7260	Catch@0040d88c	none				unlanded			81	96							
+00ae3510	Unwind@00fbdab0	none				unlanded			55	64							
+00af7b00	Unwind@00fbdab0	none				unlanded			55	64							
+00af7c50	Unwind@00fbdab0	none				unlanded			37	48							
+00b32010	Catch@0040d88c	none				unlanded			134	144							
+00c26260	Catch@0040d959	none				unlanded			22	32							
+00c29a30	Catch@00c29a30	catch	0136ce54	00c298d0	_Insert_n	unlanded			12	12						00c298d5	parent-unlanded
+00c29a3c	Catch@00c29a3c	catch	0136ce54	00c298d0	_Insert_n	unlanded			9	180						00c298d5	parent-unlanded
+00c32fa0	Catch@0042ae0a	none				unlanded			26	32							
+00c5e0c0	Unwind@00fbe57b	none				unlanded			22	112							
+00cdbc50	Catch@0040d88c	none				unlanded			64	64							
+01210a48	Unwind@01210a48	unwind	01369628	00c08ae0	WaitForSprite	landed	00/c0/CSoundSystem_WaitForSprite_00c08ae0.cpp	/O2 /Oy /W3 /EHsc	8	18	01210a48	0x0	8		01210a50	00c08ae8	yes
+01210a94	Unwind@01210a94	unwind	013696d4	00c08d40	LoadBank	unlanded			11	11	01210a94	0x0	11		01210b12	00c08d42	parent-unlanded
+01210a9f	Unwind@01210a9f	unwind	013696d4	00c08d40	LoadBank	unlanded			14	14	01210a94	0xb	14		01210b12	00c08d42	parent-unlanded
+01210aad	Unwind@01210aad	unwind	013696d4	00c08d40	LoadBank	unlanded			11	11	01210a94	0x19	11		01210b12	00c08d42	parent-unlanded
+01210ab8	Unwind@01210ab8	unwind	013696d4	00c08d40	LoadBank	unlanded			11	11	01210a94	0x24	11		01210b12	00c08d42	parent-unlanded
+01210ac3	Unwind@01210ac3	unwind	013696d4	00c08d40	LoadBank	unlanded			11	11	01210a94	0x2f	11		01210b12	00c08d42	parent-unlanded
+01210ace	Unwind@01210ace	unwind	013696d4	00c08d40	LoadBank	unlanded			34	34	01210a94	0x3a	34		01210b12	00c08d42	parent-unlanded
+01210af0	Unwind@01210af0	unwind	013696d4	00c08d40	LoadBank	unlanded			34	44	01210a94	0x5c	34		01210b12	00c08d42	parent-unlanded
+01210bae	Unwind@01210bae	unwind	01369840	00c094a0	CSoundSystem	landed	00/c0/CSoundSystem_CSoundSystem_00c094a0.cpp	/O2 /Oy /W3 /EHsc	8	8	01210bae	0x0	8		01210c1e	00c094a2	yes
+01210bb6	Unwind@01210bb6	unwind	01369840	00c094a0	CSoundSystem	landed	00/c0/CSoundSystem_CSoundSystem_00c094a0.cpp	/O2 /Oy /W3 /EHsc	8	8	01210bae	0x8	8		01210c1e	00c094a2	yes
+01210bbe	Unwind@01210bbe	unwind	01369840	00c094a0	CSoundSystem	landed	00/c0/CSoundSystem_CSoundSystem_00c094a0.cpp	/O2 /Oy /W3 /EHsc	11	11	01210bae	0x10	11		01210c1e	00c094a2	yes
+01210bc9	Unwind@01210bc9	unwind	01369840	00c094a0	CSoundSystem	landed	00/c0/CSoundSystem_CSoundSystem_00c094a0.cpp	/O2 /Oy /W3 /EHsc	11	11	01210bae	0x1b	11		01210c1e	00c094a2	yes
+01210bd4	Unwind@01210bd4	unwind	01369840	00c094a0	CSoundSystem	landed	00/c0/CSoundSystem_CSoundSystem_00c094a0.cpp	/O2 /Oy /W3 /EHsc	8	8	01210bae	0x26	8		01210c1e	00c094a2	yes
+01210bdc	Unwind@01210bdc	unwind	01369840	00c094a0	CSoundSystem	landed	00/c0/CSoundSystem_CSoundSystem_00c094a0.cpp	/O2 /Oy /W3 /EHsc	11	11	01210bae	0x2e	11		01210c1e	00c094a2	yes
+01210be7	Unwind@01210be7	unwind	01369840	00c094a0	CSoundSystem	landed	00/c0/CSoundSystem_CSoundSystem_00c094a0.cpp	/O2 /Oy /W3 /EHsc	11	11	01210bae	0x39	11		01210c1e	00c094a2	yes
+01210bf2	Unwind@01210bf2	unwind	01369840	00c094a0	CSoundSystem	landed	00/c0/CSoundSystem_CSoundSystem_00c094a0.cpp	/O2 /Oy /W3 /EHsc	11	11	01210bae	0x44	11		01210c1e	00c094a2	yes
+01210bfd	Unwind@01210bfd	unwind	01369840	00c094a0	CSoundSystem	landed	00/c0/CSoundSystem_CSoundSystem_00c094a0.cpp	/O2 /Oy /W3 /EHsc	11	11	01210bae	0x4f	11		01210c1e	00c094a2	yes
+01210c08	Unwind@01210c08	unwind	01369840	00c094a0	CSoundSystem	landed	00/c0/CSoundSystem_CSoundSystem_00c094a0.cpp	/O2 /Oy /W3 /EHsc	11	11	01210bae	0x5a	11		01210c1e	00c094a2	yes
+01210c13	Unwind@01210c13	unwind	01369840	00c094a0	CSoundSystem	landed	00/c0/CSoundSystem_CSoundSystem_00c094a0.cpp	/O2 /Oy /W3 /EHsc	11	21	01210bae	0x65	11		01210c1e	00c094a2	yes
+01210c28	Unwind@01210c28	unwind	01369864	00c096e0	CreateSoundSystem_00c096e0	landed	00/c0/global_CreateSoundSystem00c096e0_00c096e0.cpp	/O2 /Oy /W3 /EHsc	11	24	01210c28	0x0	11		01210c33	00c096e8	yes
+01210c40	Unwind@01210c40	unwind	01369888	00c09920	GetChecked	landed	00/c0/PKCAutoDeleteCUnprovenPKObject00c099f0_GetChecked_00c09920.cpp	/O2 /Oy /W3 /EHsc	8	32	01210c40	0x0	8		01210c48	00c09928	yes
+01210c60	Unwind@01210c60	unwind	013698ac	00c099f0	Release	landed	00/c0/PKCAutoDeleteCUnprovenPKObject00c099f0_Release_00c099f0.cpp	/O2 /Oy /W3 /EHsc	8	32	01210c60	0x0	8		01210c68	00c099f8	yes
+01210df0	Unwind@01210df0	unwind	01369a6c	00c0a9a0	~CAudioParamBlock	landed	00/c0/CAudioParamBlock_CAudioParamBlock_00c0a9a0.cpp	/O2 /Oy /W3 /EHsc	24	34	01210df0	0x0	24		01210e08	00c0a9a2	yes
+01210e95	Unwind@01210e95	unwind	01369b5c	00c0af90	sub_00c0af90	unlanded			8	18	01210e95	0x0	8		01210e9d	00c0af98	parent-unlanded
+01210ea7	Unwind@01210ea7	unwind	01369b80	00c0b060	ReadFirst	landed	00/c0/CUnprovenAudioChannelBank_ReadFirst_00c0b060.cpp	/O2 /Oy /W3 /EHsc	8	18	01210ea7	0x0	8		01210eaf	00c0b068	yes
+01210f20	Unwind@01210f20	unwind	01369c0c	00c0df50	Mid	landed	00/c0/CString_Mid_00c0df50.cpp	/O2 /Oy /W3 /EHsc	25	25	01210f20	0x0	25		01210f41	00c0df52	yes
+01210f39	Unwind@01210f39	unwind	01369c0c	00c0df50	Mid	landed	00/c0/CString_Mid_00c0df50.cpp	/O2 /Oy /W3 /EHsc	8	18	01210f20	0x19	8		01210f41	00c0df52	yes
+01210f76	Unwind@01210f76	unwind	01369c64	00c0e1f0	Left	unlanded			25	25	01210f76	0x0	25		01210f97	00c0e1f2	parent-unlanded
+01210f8f	Unwind@01210f8f	unwind	01369c64	00c0e1f0	Left	unlanded			8	18	01210f76	0x19	8		01210f97	00c0e1f2	parent-unlanded
+01211300	Unwind@01211300	unwind	0136a098	00c0ffe0	~PKCProtectionInstance	landed	00/c0/PKCProtectionInstance_PKCProtectionInstance_00c0ffe0.cpp	/O2 /Oy /W3 /EHsc	8	32	01211300	0x0	8		01211308	00c0ffe8	yes
+01211320	Unwind@01211320	unwind	0136a0bc	00c101d0	Find	landed	00/c1/CNamedSet_Find_00c101d0.cpp	/O2 /Oy /W3 /EHsc	25	35	01211320	0x0	25		01211339	00c101d2	yes
+0121138a	Unwind@0121138a	unwind	0136a160	00c10400	RunAllItems	landed	00/c1/CItemDispatcher_RunAllItems_00c10400.cpp	/O2 /Oy /W3 /EHsc	8	8	0121138a	0x0	8		012113aa	00c10408	yes
+01211392	Unwind@01211392	unwind	0136a160	00c10400	RunAllItems	landed	00/c1/CItemDispatcher_RunAllItems_00c10400.cpp	/O2 /Oy /W3 /EHsc	8	8	0121138a	0x8	8		012113aa	00c10408	yes
+0121139a	Unwind@0121139a	unwind	0136a160	00c10400	RunAllItems	landed	00/c1/CItemDispatcher_RunAllItems_00c10400.cpp	/O2 /Oy /W3 /EHsc	8	8	0121138a	0x10	8		012113aa	00c10408	yes
+012113a2	Unwind@012113a2	unwind	0136a160	00c10400	RunAllItems	landed	00/c1/CItemDispatcher_RunAllItems_00c10400.cpp	/O2 /Oy /W3 /EHsc	8	18	0121138a	0x18	8		012113aa	00c10408	yes
+012113b4	Unwind@012113b4	unwind	0136a1bc	00c104f0	Handle	landed	00/c1/CMemberHandler00c08940_Handle_00c104f0.cpp	/O2 /Oy /W3 /EHsc	8	8	012113b4	0x0	8		012113f4	00c104f2	yes
+012113bc	Unwind@012113bc	unwind	0136a1bc	00c104f0	Handle	landed	00/c1/CMemberHandler00c08940_Handle_00c104f0.cpp	/O2 /Oy /W3 /EHsc	8	8	012113b4	0x8	8		012113f4	00c104f2	yes
+012113c4	Unwind@012113c4	unwind	0136a1bc	00c104f0	Handle	landed	00/c1/CMemberHandler00c08940_Handle_00c104f0.cpp	/O2 /Oy /W3 /EHsc	8	8	012113b4	0x10	8		012113f4	00c104f2	yes
+012113cc	Unwind@012113cc	unwind	0136a1bc	00c104f0	Handle	landed	00/c1/CMemberHandler00c08940_Handle_00c104f0.cpp	/O2 /Oy /W3 /EHsc	8	8	012113b4	0x18	8		012113f4	00c104f2	yes
+012113d4	Unwind@012113d4	unwind	0136a1bc	00c104f0	Handle	landed	00/c1/CMemberHandler00c08940_Handle_00c104f0.cpp	/O2 /Oy /W3 /EHsc	8	8	012113b4	0x20	8		012113f4	00c104f2	yes
+012113dc	Unwind@012113dc	unwind	0136a1bc	00c104f0	Handle	landed	00/c1/CMemberHandler00c08940_Handle_00c104f0.cpp	/O2 /Oy /W3 /EHsc	8	8	012113b4	0x28	8		012113f4	00c104f2	yes
+012113e4	Unwind@012113e4	unwind	0136a1bc	00c104f0	Handle	landed	00/c1/CMemberHandler00c08940_Handle_00c104f0.cpp	/O2 /Oy /W3 /EHsc	8	8	012113b4	0x30	8		012113f4	00c104f2	yes
+012113ec	Unwind@012113ec	unwind	0136a1bc	00c104f0	Handle	landed	00/c1/CMemberHandler00c08940_Handle_00c104f0.cpp	/O2 /Oy /W3 /EHsc	8	20	012113b4	0x38	8		012113f4	00c104f2	yes
+012114f4	Unwind@012114f4	unwind	0136a390	00c11230	CTCHero_OnActionInterrupt	unlanded			8	18	012114f4	0x0	8		012114fc	00c11232	parent-unlanded
+0121154e	Unwind@0121154e	unwind	0136a444	00c11520	Inventory_ProcessNavigationItem	unlanded			8	18	0121154e	0x0	8		01211556	00c11522	parent-unlanded
+0121160a	Unwind@0121160a	unwind	0136a5b4	00c11ac0	FindFirstEntryState	landed	00/c1/CSoundEventManager_FindFirstEntryState_00c11ac0.cpp	/O2 /Oy /W3 /EHsc	8	18	0121160a	0x0	8		01211612	00c11ac2	yes
+0121162e	Unwind@0121162e	unwind	0136a624	00c11d00	CSoundEventManager	landed	00/c1/CSoundEventManager_CSoundEventManager_00c11d00.cpp	/O2 /Oy /W3 /EHsc	11	11	0121162e	0x0	11		01211673	00c11d02	yes
+01211639	Unwind@01211639	unwind	0136a624	00c11d00	CSoundEventManager	landed	00/c1/CSoundEventManager_CSoundEventManager_00c11d00.cpp	/O2 /Oy /W3 /EHsc	14	14	0121162e	0xb	14		01211673	00c11d02	yes
+01211647	Unwind@01211647	unwind	0136a624	00c11d00	CSoundEventManager	landed	00/c1/CSoundEventManager_CSoundEventManager_00c11d00.cpp	/O2 /Oy /W3 /EHsc	11	11	0121162e	0x19	11		01211673	00c11d02	yes
+01211652	Unwind@01211652	unwind	0136a624	00c11d00	CSoundEventManager	landed	00/c1/CSoundEventManager_CSoundEventManager_00c11d00.cpp	/O2 /Oy /W3 /EHsc	11	11	0121162e	0x24	11		01211673	00c11d02	yes
+0121165d	Unwind@0121165d	unwind	0136a624	00c11d00	CSoundEventManager	landed	00/c1/CSoundEventManager_CSoundEventManager_00c11d00.cpp	/O2 /Oy /W3 /EHsc	11	11	0121162e	0x2f	11		01211673	00c11d02	yes
+01211668	Unwind@01211668	unwind	0136a624	00c11d00	CSoundEventManager	landed	00/c1/CSoundEventManager_CSoundEventManager_00c11d00.cpp	/O2 /Oy /W3 /EHsc	11	21	0121162e	0x3a	11		01211673	00c11d02	yes
+012116c5	Unwind@012116c5	unwind	0136a6d8	00c12300	GetItemStatistics	landed	00/c1/CPanel_GetItemStatistics_00c12300.cpp	/O2 /Oy /W3 /EHsc	8	18	012116c5	0x0	8		012116cd	00c12302	yes
+012116d7	Unwind@012116d7	unwind	0136a6fc	00c123b0	Shutdown	landed	00/c1/CSoundEventManager_Shutdown_00c123b0.cpp	/O2 /Oy /W3 /EHsc	8	18	012116d7	0x0	8		012116df	00c123b2	yes
+0121171f	Unwind@0121171f	unwind	0136a78c	00c12680	CountPlayingEvents	landed	00/c1/CSoundEventManager_CountPlayingEvents_00c12680.cpp	/O2 /Oy /W3 /EHsc	8	18	0121171f	0x0	8		01211727	00c12682	yes
+01211731	Unwind@01211731	unwind	0136a7b0	00c12720	TraceEvents	landed	00/c1/CSoundEventManager_TraceEvents_00c12720.cpp	/O2 /Oy /W3 /EHsc	8	18	01211731	0x0	8		01211739	00c12722	yes
+01211743	Unwind@01211743	unwind	0136a7dc	00c127c0	TracePlaybacks	landed	00/c1/CSoundEventManager_TracePlaybacks_00c127c0.cpp	/O2 /Oy /W3 /EHsc	8	8	01211743	0x0	8		01211753	00c127c2	yes
+0121174b	Unwind@0121174b	unwind	0136a7dc	00c127c0	TracePlaybacks	landed	00/c1/CSoundEventManager_TracePlaybacks_00c127c0.cpp	/O2 /Oy /W3 /EHsc	8	18	01211743	0x8	8		01211753	00c127c2	yes
+0121176f	Unwind@0121176f	unwind	0136a824	00c12940	CTCHero_HandleCombatActions	unlanded			8	18	0121176f	0x0	8		01211777	00c12942	parent-unlanded
+012117a5	Unwind@012117a5	unwind	0136a898	00c12e50	Combat_ExecuteSequenceAction	unlanded			8	8	012117a5	0x0	8		012117b8	00c12e52	parent-unlanded
+012117ad	Unwind@012117ad	unwind	0136a898	00c12e50	Combat_ExecuteSequenceAction	unlanded			11	21	012117a5	0x8	11		012117b8	00c12e52	parent-unlanded
+012117d4	Unwind@012117d4	unwind	0136a8e0	00c131c0	PlaySoundList	landed	00/c1/CSoundSystem00c131c0_PlaySoundList_00c131c0.cpp	/O2 /Oy /W3 /EHsc	8	18	012117d4	0x0	8		012117dc	00c131c2	yes
+01211880	Unwind@01211880	unwind	0136aa44	00c13840	_Xlen	landed	00/c1/stdvector_Xlen_00c13840.cpp	/O2 /Oy /W3 /EHsc	9	9	01211880	0x0	9		01211892	00c13842	yes
+01211889	Unwind@01211889	unwind	0136aa44	00c13840	_Xlen	landed	00/c1/stdvector_Xlen_00c13840.cpp	/O2 /Oy /W3 /EHsc	9	23	01211880	0x9	9		01211892	00c13842	yes
+012118a0	Unwind@012118a0	unwind	0136aa70	00c138f0	_Xlen	landed	00/c1/stdvector_Xlen_00c138f0.cpp	/O2 /Oy /W3 /EHsc	9	9	012118a0	0x0	9		012118b2	00c138f2	yes
+012118a9	Unwind@012118a9	unwind	0136aa70	00c138f0	_Xlen	landed	00/c1/stdvector_Xlen_00c138f0.cpp	/O2 /Oy /W3 /EHsc	9	23	012118a0	0x9	9		012118b2	00c138f2	yes
+012118e0	Unwind@012118e0	unwind	0136aad0	00c14560	~PKCWorkerQueue_00c14560	landed	00/c1/PKCWorkerQueue00c14560_PKCWorkerQueue00c14560_00c14560.cpp	/O2 /Oy /W3 /EHsc	8	8	012118e0	0x0	8		01211906	00c14562	yes
+012118e8	Unwind@012118e8	unwind	0136aad0	00c14560	~PKCWorkerQueue_00c14560	landed	00/c1/PKCWorkerQueue00c14560_PKCWorkerQueue00c14560_00c14560.cpp	/O2 /Oy /W3 /EHsc	11	11	012118e0	0x8	11		01211906	00c14562	yes
+012118f3	Unwind@012118f3	unwind	0136aad0	00c14560	~PKCWorkerQueue_00c14560	landed	00/c1/PKCWorkerQueue00c14560_PKCWorkerQueue00c14560_00c14560.cpp	/O2 /Oy /W3 /EHsc	11	11	012118e0	0x13	11		01211906	00c14562	yes
+012118fe	Unwind@012118fe	unwind	0136aad0	00c14560	~PKCWorkerQueue_00c14560	landed	00/c1/PKCWorkerQueue00c14560_PKCWorkerQueue00c14560_00c14560.cpp	/O2 /Oy /W3 /EHsc	8	18	012118e0	0x1e	8		01211906	00c14562	yes
+01211910	Unwind@01211910	unwind	0136ab0c	00c14630	~PKCWorkerQueue_00c14630	landed	00/c1/PKCWorkerQueue00c14630_PKCWorkerQueue00c14630_00c14630.cpp	/O2 /Oy /W3 /EHsc	8	8	01211910	0x0	8		01211936	00c14632	yes
+01211918	Unwind@01211918	unwind	0136ab0c	00c14630	~PKCWorkerQueue_00c14630	landed	00/c1/PKCWorkerQueue00c14630_PKCWorkerQueue00c14630_00c14630.cpp	/O2 /Oy /W3 /EHsc	11	11	01211910	0x8	11		01211936	00c14632	yes
+01211923	Unwind@01211923	unwind	0136ab0c	00c14630	~PKCWorkerQueue_00c14630	landed	00/c1/PKCWorkerQueue00c14630_PKCWorkerQueue00c14630_00c14630.cpp	/O2 /Oy /W3 /EHsc	11	11	01211910	0x13	11		01211936	00c14632	yes
+0121192e	Unwind@0121192e	unwind	0136ab0c	00c14630	~PKCWorkerQueue_00c14630	landed	00/c1/PKCWorkerQueue00c14630_PKCWorkerQueue00c14630_00c14630.cpp	/O2 /Oy /W3 /EHsc	8	18	01211910	0x1e	8		01211936	00c14632	yes
+01211976	Unwind@01211976	unwind	0136ab9c	00c14b50	SetOptionCC	landed	00/c1/PKCDeferredBank_SetOptionCC_00c14b50.cpp	/O2 /Oy /W3 /EHsc	8	18	01211976	0x0	8		0121197e	00c14b52	yes
+01211988	Unwind@01211988	unwind	0136abc0	00c14bc0	SetOptionCD	landed	00/c1/PKCDeferredBank_SetOptionCD_00c14bc0.cpp	/O2 /Oy /W3 /EHsc	8	18	01211988	0x0	8		01211990	00c14bc2	yes
+012119f7	Unwind@012119f7	unwind	0136ace0	00c14e40	PKCDeferredBank	landed	00/c1/PKCDeferredBank_PKCDeferredBank_00c14e40.cpp	/O2 /Oy /W3 /EHsc	8	8	012119f7	0x0	8		01211a62	00c14e42	yes
+012119ff	Unwind@012119ff	unwind	0136ace0	00c14e40	PKCDeferredBank	landed	00/c1/PKCDeferredBank_PKCDeferredBank_00c14e40.cpp	/O2 /Oy /W3 /EHsc	8	8	012119f7	0x8	8		01211a62	00c14e42	yes
+01211a07	Unwind@01211a07	unwind	0136ace0	00c14e40	PKCDeferredBank	landed	00/c1/PKCDeferredBank_PKCDeferredBank_00c14e40.cpp	/O2 /Oy /W3 /EHsc	11	11	012119f7	0x10	11		01211a62	00c14e42	yes
+01211a12	Unwind@01211a12	unwind	0136ace0	00c14e40	PKCDeferredBank	landed	00/c1/PKCDeferredBank_PKCDeferredBank_00c14e40.cpp	/O2 /Oy /W3 /EHsc	8	8	012119f7	0x1b	8		01211a62	00c14e42	yes
+01211a1a	Unwind@01211a1a	unwind	0136ace0	00c14e40	PKCDeferredBank	landed	00/c1/PKCDeferredBank_PKCDeferredBank_00c14e40.cpp	/O2 /Oy /W3 /EHsc	11	11	012119f7	0x23	11		01211a62	00c14e42	yes
+01211a25	Unwind@01211a25	unwind	0136ace0	00c14e40	PKCDeferredBank	landed	00/c1/PKCDeferredBank_PKCDeferredBank_00c14e40.cpp	/O2 /Oy /W3 /EHsc	11	11	012119f7	0x2e	11		01211a62	00c14e42	yes
+01211a30	Unwind@01211a30	unwind	0136ace0	00c14e40	PKCDeferredBank	landed	00/c1/PKCDeferredBank_PKCDeferredBank_00c14e40.cpp	/O2 /Oy /W3 /EHsc	14	14	012119f7	0x39	14		01211a62	00c14e42	yes
+01211a3e	Unwind@01211a3e	unwind	0136ace0	00c14e40	PKCDeferredBank	landed	00/c1/PKCDeferredBank_PKCDeferredBank_00c14e40.cpp	/O2 /Oy /W3 /EHsc	14	14	012119f7	0x47	14		01211a62	00c14e42	yes
+01211a4c	Unwind@01211a4c	unwind	0136ace0	00c14e40	PKCDeferredBank	landed	00/c1/PKCDeferredBank_PKCDeferredBank_00c14e40.cpp	/O2 /Oy /W3 /EHsc	11	11	012119f7	0x55	11		01211a62	00c14e42	yes
+01211a57	Unwind@01211a57	unwind	0136ace0	00c14e40	PKCDeferredBank	landed	00/c1/PKCDeferredBank_PKCDeferredBank_00c14e40.cpp	/O2 /Oy /W3 /EHsc	11	21	012119f7	0x60	11		01211a62	00c14e42	yes
+01211a6c	Unwind@01211a6c	unwind	0136ad3c	00c14f90	~Unidentified	unlanded			8	8	01211a6c	0x0	8		01211ac1	00c14f92	parent-unlanded
+01211a74	Unwind@01211a74	unwind	0136ad3c	00c14f90	~Unidentified	unlanded			11	11	01211a6c	0x8	11		01211ac1	00c14f92	parent-unlanded
+01211a7f	Unwind@01211a7f	unwind	0136ad3c	00c14f90	~Unidentified	unlanded			11	11	01211a6c	0x13	11		01211ac1	00c14f92	parent-unlanded
+01211a8a	Unwind@01211a8a	unwind	0136ad3c	00c14f90	~Unidentified	unlanded			11	11	01211a6c	0x1e	11		01211ac1	00c14f92	parent-unlanded
+01211a95	Unwind@01211a95	unwind	0136ad3c	00c14f90	~Unidentified	unlanded			14	14	01211a6c	0x29	14		01211ac1	00c14f92	parent-unlanded
+01211aa3	Unwind@01211aa3	unwind	0136ad3c	00c14f90	~Unidentified	unlanded			14	14	01211a6c	0x37	14		01211ac1	00c14f92	parent-unlanded
+01211ab1	Unwind@01211ab1	unwind	0136ad3c	00c14f90	~Unidentified	unlanded			8	8	01211a6c	0x45	8		01211ac1	00c14f92	parent-unlanded
+01211ab9	Unwind@01211ab9	unwind	0136ad3c	00c14f90	~Unidentified	unlanded			8	23	01211a6c	0x4d	8		01211ac1	00c14f92	parent-unlanded
+01211c2a	Unwind@01211c2a	unwind	0136af34	00c15cd0	SetPlaybackValue	landed	00/c1/CSoundInstance00c15cd0_SetPlaybackValue_00c15cd0.cpp	/O2 /Oy /W3 /EHsc	8	18	01211c2a	0x0	8		01211c32	00c15cd2	yes
+01211ce4	Unwind@01211ce4	unwind	0136b088	00c165a0	CVtable012b2ab0	landed	00/c1/CVtable012b2ab0_CVtable012b2ab0_00c165a0.cpp	/O2 /Oy /W3 /EHsc	11	28	01211ce4	0x0	11		01211cef	00c165a8	yes
+01211d70	Unwind@01211d70	unwind	0136b144	00c16c10	HasBankSegments	landed	00/c1/global_HasBankSegments_00c16c10.cpp	/O2 /Oy /W3 /EHsc	25	25	01211d70	0x0	25		01211da2	00c16c12	yes
+01211d89	Unwind@01211d89	unwind	0136b144	00c16c10	HasBankSegments	landed	00/c1/global_HasBankSegments_00c16c10.cpp	/O2 /Oy /W3 /EHsc	25	35	01211d70	0x19	25		01211da2	00c16c12	yes
+01211dac	Unwind@01211dac	unwind	0136b168	00c16ce0	RunProcessor	landed	00/c1/global_RunProcessor_00c16ce0.cpp	/O2 /Oy /W3 /EHsc	11	21	01211dac	0x0	11		01211db7	00c16ce2	yes
+01211dc1	Unwind@01211dc1	unwind	0136b18c	00c16d90	ProcessEntry	landed	00/c1/global_ProcessEntry_00c16d90.cpp	/O2 /Oy /W3 /EHsc	8	18	01211dc1	0x0	8		01211dc9	00c16d92	yes
+01211dd3	Unwind@01211dd3	unwind	0136b1b0	00c16e10	ReadBankInfoCount	landed	00/c1/global_ReadBankInfoCount_00c16e10.cpp	/O2 /Oy /W3 /EHsc /GS	11	21	01211dd3	0x0	11		01211dde	00c16e12	yes
+01211de8	Unwind@01211de8	unwind	0136b1e4	00c16f00	LHAudioBank_ReadMurderTwistData	unlanded			11	11	01211de8	0x0	11		01211e09	00c16f02	parent-unlanded
+01211df3	Unwind@01211df3	unwind	0136b1e4	00c16f00	LHAudioBank_ReadMurderTwistData	unlanded			11	11	01211de8	0xb	11		01211e09	00c16f02	parent-unlanded
+01211dfe	Unwind@01211dfe	unwind	0136b1e4	00c16f00	LHAudioBank_ReadMurderTwistData	unlanded			11	21	01211de8	0x16	11		01211e09	00c16f02	parent-unlanded
+01211e13	Unwind@01211e13	unwind	0136b208	00c17260	LoadBank	landed	00/c1/global_LoadBank_00c17260.cpp	/O2 /Oy /W3 /EHsc	8	18	01211e13	0x0	8		01211e1b	00c17262	yes
+01211e25	Unwind@01211e25	unwind	0136b234	00c172f0	Process_00c172f0	landed	00/c1/global_Process00c172f0_00c172f0.cpp	/O2 /Oy /W3 /EHsc /GS	11	11	01211e25	0x0	11		01211e3b	00c172f2	yes
+01211e30	Unwind@01211e30	unwind	0136b234	00c172f0	Process_00c172f0	landed	00/c1/global_Process00c172f0_00c172f0.cpp	/O2 /Oy /W3 /EHsc /GS	11	21	01211e25	0xb	11		01211e3b	00c172f2	yes
+01211e45	Unwind@01211e45	unwind	0136b258	00c17400	DeleteTrackNodeCommand	landed	00/c1/global_DeleteTrackNodeCommand_00c17400.cpp	/O2 /Oy /W3 /EHsc	8	18	01211e45	0x0	8		01211e4d	00c17402	yes
+01211e57	Unwind@01211e57	unwind	0136b28c	00c174a0	BankFile_LoadAndValidateFormat	unlanded			11	11	01211e57	0x0	11		01211e78	00c174a2	parent-unlanded
+01211e62	Unwind@01211e62	unwind	0136b28c	00c174a0	BankFile_LoadAndValidateFormat	unlanded			11	11	01211e57	0xb	11		01211e78	00c174a2	parent-unlanded
+01211e6d	Unwind@01211e6d	unwind	0136b28c	00c174a0	BankFile_LoadAndValidateFormat	unlanded			11	21	01211e57	0x16	11		01211e78	00c174a2	parent-unlanded
+01211e82	Unwind@01211e82	unwind	0136b2b0	00c17640	Process_BankFileWithGraphicsSetup	unlanded			11	30	01211e82	0x0	11		01211e8d	00c17642	parent-unlanded
+01211ea0	Unwind@01211ea0	unwind	0136b2d4	00c17740	GetChecked	landed	00/c1/CAutoDeletePointer_GetChecked_00c17740.cpp	/O2 /Oy /W3 /EHsc	8	32	01211ea0	0x0	8		01211ea8	00c17748	yes
+01211ec0	Unwind@01211ec0	unwind	0136b2f8	00c17850	Release	landed	00/c1/PKCAutoDeleteCUnprovenPKObject00c17850_Release_00c17850.cpp	/O2 /Oy /W3 /EHsc	8	32	01211ec0	0x0	8		01211ec8	00c17858	yes
+01211ee0	Unwind@01211ee0	unwind	0136b334	00c17940	PKSerialiseLoad<CBankData>	landed	00/c1/global_PKSerialiseLoadCBankData_00c17940.cpp	/O2 /Oy /W3 /EHsc	8	8	01211ee0	0x0	8		01211f03	00c17942	yes
+01211ee8	Unwind@01211ee8	unwind	0136b334	00c17940	PKSerialiseLoad<CBankData>	landed	00/c1/global_PKSerialiseLoadCBankData_00c17940.cpp	/O2 /Oy /W3 /EHsc	11	11	01211ee0	0x8	11		01211f03	00c17942	yes
+01211ef3	Unwind@01211ef3	unwind	0136b334	00c17940	PKSerialiseLoad<CBankData>	landed	00/c1/global_PKSerialiseLoadCBankData_00c17940.cpp	/O2 /Oy /W3 /EHsc	8	8	01211ee0	0x13	8		01211f03	00c17942	yes
+01211efb	Unwind@01211efb	unwind	0136b334	00c17940	PKSerialiseLoad<CBankData>	landed	00/c1/global_PKSerialiseLoadCBankData_00c17940.cpp	/O2 /Oy /W3 /EHsc	8	21	01211ee0	0x1b	8		01211f03	00c17942	yes
+01211f22	Unwind@01211f22	unwind	0136b38c	00c17be0	MorphToTree	landed	00/c1/PKCTRMorphable_MorphToTree_00c17be0.cpp	/O2 /Oy /W3 /EHsc	8	8	01211f22	0x0	8		01211f3d	00c17be8	yes
+01211f2a	Unwind@01211f2a	unwind	0136b38c	00c17be0	MorphToTree	landed	00/c1/PKCTRMorphable_MorphToTree_00c17be0.cpp	/O2 /Oy /W3 /EHsc	11	11	01211f22	0x8	11		01211f3d	00c17be8	yes
+01211f35	Unwind@01211f35	unwind	0136b38c	00c17be0	MorphToTree	landed	00/c1/PKCTRMorphable_MorphToTree_00c17be0.cpp	/O2 /Oy /W3 /EHsc	8	18	01211f22	0x13	8		01211f3d	00c17be8	yes
+01211f47	Unwind@01211f47	unwind	0136b3b0	00c17d90	Slot4	landed	00/c1/CUnprovenMorphableHandle00C185B0_Slot4_00c17d90.cpp	/O2 /Oy /W3 /EHsc	8	18	01211f47	0x0	8		01211f4f	00c17d98	yes
+01211f59	Unwind@01211f59	unwind	0136b3d4	00c17e60	Slot05	landed	00/c1/CMorphableNode00c185b0_Slot05_00c17e60.cpp	/O2 /Oy /W3 /EHsc	8	18	01211f59	0x0	8		01211f61	00c17e68	yes
+01211f6b	Unwind@01211f6b	unwind	0136b3f8	00c17f30	Slot06	landed	00/c1/CMorphableNode00c185b0_Slot06_00c17f30.cpp	/O2 /Oy /W3 /EHsc	8	18	01211f6b	0x0	8		01211f73	00c17f38	yes
+01211f7d	Unwind@01211f7d	unwind	0136b41c	00c18000	Slot07	landed	00/c1/CMorphableNode00c185b0_Slot07_00c18000.cpp	/O2 /Oy /W3 /EHsc	8	18	01211f7d	0x0	8		01211f85	00c18008	yes
+01211f8f	Unwind@01211f8f	unwind	0136b440	00c180d0	Slot08	landed	00/c1/CMorphableNode00c185b0_Slot08_00c180d0.cpp	/O2 /Oy /W3 /EHsc	8	18	01211f8f	0x0	8		01211f97	00c180d8	yes
+01211fa1	Unwind@01211fa1	unwind	0136b464	00c181a0	Slot9	landed	00/c1/CUnprovenMorphableHandle00C185B0_Slot9_00c181a0.cpp	/O2 /Oy /W3 /EHsc	8	18	01211fa1	0x0	8		01211fa9	00c181a8	yes
+01211fb3	Unwind@01211fb3	unwind	0136b488	00c18270	Slot10	landed	00/c1/CMorphableNode00c185b0_Slot10_00c18270.cpp	/O2 /Oy /W3 /EHsc	8	18	01211fb3	0x0	8		01211fbb	00c18278	yes
+01211fc5	Unwind@01211fc5	unwind	0136b4ac	00c18340	Slot11	landed	00/c1/CMorphableNode00c185b0_Slot11_00c18340.cpp	/O2 /Oy /W3 /EHsc	8	18	01211fc5	0x0	8		01211fcd	00c18348	yes
+01211fd7	Unwind@01211fd7	unwind	0136b4d0	00c18410	Slot12	landed	00/c1/CMorphableNode00c185b0_Slot12_00c18410.cpp	/O2 /Oy /W3 /EHsc	8	18	01211fd7	0x0	8		01211fdf	00c18418	yes
+01211fe9	Unwind@01211fe9	unwind	0136b4f4	00c184e0	Slot13	landed	00/c1/CUnprovenMorphableHandle00C185B0_Slot13_00c184e0.cpp	/O2 /Oy /W3 /EHsc	8	18	01211fe9	0x0	8		01211ff1	00c184e8	yes
+0121202b	Unwind@0121202b	unwind	0136b554	00c186d0	Slot00	landed	00/c1/CMorphableNode00c185b0_Slot00_00c186d0.cpp	/O2 /Oy /W3 /EHsc	8	18	0121202b	0x0	8		01212033	00c186d8	yes
+0121203d	Unwind@0121203d	unwind	0136b578	00c187a0	Slot01	landed	00/c1/CMorphableNode00c185b0_Slot01_00c187a0.cpp	/O2 /Oy /W3 /EHsc	8	18	0121203d	0x0	8		01212045	00c187a8	yes
+0121204f	Unwind@0121204f	unwind	0136b5ac	00c18870	MorphToArray	landed	00/c1/PKCTRMorphable_MorphToArray_00c18870.cpp	/O2 /Oy /W3 /EHsc	8	8	0121204f	0x0	8		0121206a	00c18878	yes
+01212057	Unwind@01212057	unwind	0136b5ac	00c18870	MorphToArray	landed	00/c1/PKCTRMorphable_MorphToArray_00c18870.cpp	/O2 /Oy /W3 /EHsc	11	11	0121204f	0x8	11		0121206a	00c18878	yes
+01212062	Unwind@01212062	unwind	0136b5ac	00c18870	MorphToArray	landed	00/c1/PKCTRMorphable_MorphToArray_00c18870.cpp	/O2 /Oy /W3 /EHsc	8	30	0121204f	0x13	8		0121206a	00c18878	yes
+01212080	Unwind@01212080	unwind	0136b5d8	00c18e20	sub_00c18e20	unlanded			8	8	01212080	0x0	8		01212090	00c18e28	parent-unlanded
+01212088	Unwind@01212088	unwind	0136b5d8	00c18e20	sub_00c18e20	unlanded			8	18	01212080	0x8	8		01212090	00c18e28	parent-unlanded
+012120c6	Unwind@012120c6	unwind	0136b64c	00c19340	RedBlackTree_RemoveByKey	unlanded			8	18	012120c6	0x0	8		012120ce	00c19342	parent-unlanded
+01212100	Unwind@01212100	unwind	0136b69c	00c196a0	Find	landed	00/c1/CObjectMap00c196a0_Find_00c196a0.cpp	/O2 /Oy /W3 /EHsc	8	18	01212100	0x0	8		01212108	00c196ac	yes
+01212200	Unwind@01212200	unwind	0136b85c	00c1aec0	Push	landed	00/c1/PKCStaticQueueSFileRequest_Push_00c1aec0.cpp	/O2 /Oy /W3 /EHsc	8	32	01212200	0x0	8		01212208	00c1aec8	yes
+01212292	Unwind@01212292	unwind	0136b918	00c1a070	GetFileSize	landed	00/c1/PKCDefaultFileManager_GetFileSize_00c1a070.cpp	/O2 /Oy /W3 /EHsc	8	18	01212292	0x0	8		0121229a	00c1a078	yes
+012122a4	Unwind@012122a4	unwind	0136b93c	00c1a110	QueueRead	landed	00/c1/PKCDefaultFileManager_QueueRead_00c1a110.cpp	/O2 /Oy /W3 /EHsc	8	18	012122a4	0x0	8		012122ac	00c1a112	yes
+012122f1	Unwind@012122f1	unwind	0136b9b4	00c1a370	CloseFile	landed	00/c1/PKCDefaultFileManager_CloseFile_00c1a370.cpp	/O2 /Oy /W3 /EHsc	8	8	012122f1	0x0	8		01212309	00c1a372	yes
+012122f9	Unwind@012122f9	unwind	0136b9b4	00c1a370	CloseFile	landed	00/c1/PKCDefaultFileManager_CloseFile_00c1a370.cpp	/O2 /Oy /W3 /EHsc	8	8	012122f1	0x8	8		01212309	00c1a372	yes
+01212301	Unwind@01212301	unwind	0136b9b4	00c1a370	CloseFile	landed	00/c1/PKCDefaultFileManager_CloseFile_00c1a370.cpp	/O2 /Oy /W3 /EHsc	8	18	012122f1	0x10	8		01212309	00c1a372	yes
+01212313	Unwind@01212313	unwind	0136b9f8	00c1a510	FileManager_OpenFileByName	unlanded			8	8	01212313	0x0	8		0121233b	00c1a512	parent-unlanded
+0121231b	Unwind@0121231b	unwind	0136b9f8	00c1a510	FileManager_OpenFileByName	unlanded			8	8	01212313	0x8	8		0121233b	00c1a512	parent-unlanded
+01212323	Unwind@01212323	unwind	0136b9f8	00c1a510	FileManager_OpenFileByName	unlanded			8	8	01212313	0x10	8		0121233b	00c1a512	parent-unlanded
+0121232b	Unwind@0121232b	unwind	0136b9f8	00c1a510	FileManager_OpenFileByName	unlanded			8	8	01212313	0x18	8		0121233b	00c1a512	parent-unlanded
+01212333	Unwind@01212333	unwind	0136b9f8	00c1a510	FileManager_OpenFileByName	unlanded			8	18	01212313	0x20	8		0121233b	00c1a512	parent-unlanded
+01212345	Unwind@01212345	unwind	0136ba24	00c1a870	FileManager_CloseHandleOnException	unlanded			8	8	01212345	0x0	8		01212355	00c1a872	parent-unlanded
+0121234d	Unwind@0121234d	unwind	0136ba24	00c1a870	FileManager_CloseHandleOnException	unlanded			8	18	01212345	0x8	8		01212355	00c1a872	parent-unlanded
+0121235f	Unwind@0121235f	unwind	0136ba50	00c1a9c0	FileManager_AsyncReadThread	unlanded			8	8	0121235f	0x0	8		0121236f	00c1a9c2	parent-unlanded
+01212367	Unwind@01212367	unwind	0136ba50	00c1a9c0	FileManager_AsyncReadThread	unlanded			8	18	0121235f	0x8	8		0121236f	00c1a9c2	parent-unlanded
+01212400	Unwind@01212400	unwind	0136bb10	00c1b370	Pop	landed	00/c1/PKCStaticQueueSFileRequest_Pop_00c1b370.cpp	/O2 /Oy /W3 /EHsc	8	32	01212400	0x0	8		01212408	00c1b378	yes
+01212440	Unwind@01212440	unwind	0136bb58	00c1b8b0	Create	landed	00/c1/CVtable012b3224_Create_00c1b8b0.cpp	/O2 /Oy /W3 /EHsc	11	32	01212440	0x0	11		0121244b	00c1b8bc	yes
+01212472	Unwind@01212472	unwind	0136bba0	00c1c460	ParticleMorphs_UpdateEditor	unlanded			11	21	01212472	0x0	11		0121247d	00c1c468	parent-unlanded
+01212487	Unwind@01212487	unwind	0136bbc4	00c1c620	SetAsPaused	landed	00/c1/CWorld_SetAsPaused_00c1c620.cpp	/O2 /Oy /W3 /EHsc	8	18	01212487	0x0	8		0121248f	00c1c628	yes
+01212570	Unwind@01212570	unwind	0136bcec	00c1dd70	Pop	landed	00/c1/PKCOneShotQueueSFileReply_Pop_00c1dd70.cpp	/O2 /Oy /W3 /EHsc	8	32	01212570	0x0	8		01212578	00c1dd78	yes
+01212590	Unwind@01212590	unwind	0136bd10	00c1de50	Push	landed	00/c1/PKCOneShotQueueSFileReply_Push_00c1de50.cpp	/O2 /Oy /W3 /EHsc	8	32	01212590	0x0	8		01212598	00c1de58	yes
+01212612	Unwind@01212612	unwind	0136bdc4	00c1e300	Read	landed	00/c1/CVtable012b33f0_Read_00c1e300.cpp	/O2 /Oy /W3 /EHsc	8	18	01212612	0x0	8		0121261a	00c1e302	yes
+01212900	Unwind@01212900	unwind	0136c164	00c1ee60	CItemAction	landed	00/c1/CItemAction_CItemAction_00c1ee60.cpp	/O2 /Oy /W3 /EHsc	11	21	01212900	0x0	11		0121290b	00c1ee68	yes
+01212915	Unwind@01212915	unwind	0136c198	00c1eee0	CItemAction	landed	00/c1/CItemAction_CItemAction_00c1eee0.cpp	/O2 /Oy /W3 /EHsc	8	8	01212915	0x0	8		01212933	00c1eee8	yes
+0121291d	Unwind@0121291d	unwind	0136c198	00c1eee0	CItemAction	landed	00/c1/CItemAction_CItemAction_00c1eee0.cpp	/O2 /Oy /W3 /EHsc	11	11	01212915	0x8	11		01212933	00c1eee8	yes
+01212928	Unwind@01212928	unwind	0136c198	00c1eee0	CItemAction	landed	00/c1/CItemAction_CItemAction_00c1eee0.cpp	/O2 /Oy /W3 /EHsc	11	21	01212915	0x13	11		01212933	00c1eee8	yes
+0121293d	Unwind@0121293d	unwind	0136c214	00c1efc0	Create	landed	00/c1/CFactory_Create_00c1efc0.cpp	/O2 /Oy /W3 /EHsc	11	11	0121293d	0x0	11		012129c1	00c1efc2	yes
+01212948	Unwind@01212948	unwind	0136c214	00c1efc0	Create	landed	00/c1/CFactory_Create_00c1efc0.cpp	/O2 /Oy /W3 /EHsc	11	11	0121293d	0xb	11		012129c1	00c1efc2	yes
+01212953	Unwind@01212953	unwind	0136c214	00c1efc0	Create	landed	00/c1/CFactory_Create_00c1efc0.cpp	/O2 /Oy /W3 /EHsc	11	11	0121293d	0x16	11		012129c1	00c1efc2	yes
+0121295e	Unwind@0121295e	unwind	0136c214	00c1efc0	Create	landed	00/c1/CFactory_Create_00c1efc0.cpp	/O2 /Oy /W3 /EHsc	11	11	0121293d	0x21	11		012129c1	00c1efc2	yes
+01212969	Unwind@01212969	unwind	0136c214	00c1efc0	Create	landed	00/c1/CFactory_Create_00c1efc0.cpp	/O2 /Oy /W3 /EHsc	11	11	0121293d	0x2c	11		012129c1	00c1efc2	yes
+01212974	Unwind@01212974	unwind	0136c214	00c1efc0	Create	landed	00/c1/CFactory_Create_00c1efc0.cpp	/O2 /Oy /W3 /EHsc	11	11	0121293d	0x37	11		012129c1	00c1efc2	yes
+0121297f	Unwind@0121297f	unwind	0136c214	00c1efc0	Create	landed	00/c1/CFactory_Create_00c1efc0.cpp	/O2 /Oy /W3 /EHsc	11	11	0121293d	0x42	11		012129c1	00c1efc2	yes
+0121298a	Unwind@0121298a	unwind	0136c214	00c1efc0	Create	landed	00/c1/CFactory_Create_00c1efc0.cpp	/O2 /Oy /W3 /EHsc	11	11	0121293d	0x4d	11		012129c1	00c1efc2	yes
+01212995	Unwind@01212995	unwind	0136c214	00c1efc0	Create	landed	00/c1/CFactory_Create_00c1efc0.cpp	/O2 /Oy /W3 /EHsc	11	11	0121293d	0x58	11		012129c1	00c1efc2	yes
+012129a0	Unwind@012129a0	unwind	0136c214	00c1efc0	Create	landed	00/c1/CFactory_Create_00c1efc0.cpp	/O2 /Oy /W3 /EHsc	11	11	0121293d	0x63	11		012129c1	00c1efc2	yes
+012129ab	Unwind@012129ab	unwind	0136c214	00c1efc0	Create	landed	00/c1/CFactory_Create_00c1efc0.cpp	/O2 /Oy /W3 /EHsc	11	11	0121293d	0x6e	11		012129c1	00c1efc2	yes
+012129b6	Unwind@012129b6	unwind	0136c214	00c1efc0	Create	landed	00/c1/CFactory_Create_00c1efc0.cpp	/O2 /Oy /W3 /EHsc	11	26	0121293d	0x79	11		012129c1	00c1efc2	yes
+012129f0	Unwind@012129f0	unwind	0136c264	00c202f0	~CVtable_012b3420_Derived_00c202f0	landed	00/c2/CVtable012b3420Derived00c202f0_CVtable012b3420Derived00c202f0_00c202f0.cpp	/O2 /Oy /W3 /EHsc	8	32	012129f0	0x0	8		012129f8	00c202f2	yes
+01212a10	Unwind@01212a10	unwind	0136c2a0	00c21040	Describe	unlanded			8	8	01212a10	0x0	8		01212a39	00c21042	parent-unlanded
+01212a18	Unwind@01212a18	unwind	0136c2a0	00c21040	Describe	unlanded			8	8	01212a10	0x8	8		01212a39	00c21042	parent-unlanded
+01212a20	Unwind@01212a20	unwind	0136c2a0	00c21040	Describe	unlanded			25	35	01212a10	0x10	25		01212a39	00c21042	parent-unlanded
+01212a43	Unwind@01212a43	unwind	0136c2c4	00c21780	CInputProcessRebootGame_HandleInputEvent	unlanded			11	21	01212a43	0x0	11		01212a4e	00c21788	parent-unlanded
+01212a70	Unwind@01212a70	unwind	0136c30c	00c22840	Return	landed	00/c2/PKCFrallocStaticCUnprovenFrallocElement00C22840_Return_00c22840.cpp	/O2 /Oy /W3 /EHsc	8	32	01212a70	0x0	8		01212a78	00c22848	yes
+01212a90	Unwind@01212a90	unwind	0136c330	00c22920	Return	landed	00/c2/PKCFrallocStaticCUnprovenFrallocElement00C22920_Return_00c22920.cpp	/O2 /Oy /W3 /EHsc	8	32	01212a90	0x0	8		01212a98	00c22928	yes
+01212ab0	Unwind@01212ab0	unwind	0136c354	00c22a40	Return	landed	00/c2/PKCFrallocStaticCUnprovenFrallocElement00C22A40_Return_00c22a40.cpp	/O2 /Oy /W3 /EHsc	8	32	01212ab0	0x0	8		01212ab8	00c22a48	yes
+01212ad0	Unwind@01212ad0	unwind	0136c378	00c22b40	Push	landed	00/c2/PKCFrallocStatic_Push_00c22b40.cpp	/O2 /Oy /W3 /EHsc	8	32	01212ad0	0x0	8		01212ad8	00c22b48	yes
+01212b26	Unwind@01212b26	unwind	0136c408	00c22100	AllocateHandle	landed	00/c2/CSoundEventSet_AllocateHandle_00c22100.cpp	/O2 /Oy /W3 /EHsc	8	18	01212b26	0x0	8		01212b2e	00c22102	yes
+01212b38	Unwind@01212b38	unwind	0136c42c	00c22260	ApplyFilter	landed	00/c2/CUnprovenCollectionOwner00C22260_ApplyFilter_00c22260.cpp	/O2 /Oy /W3 /EHsc	8	18	01212b38	0x0	8		01212b40	00c22262	yes
+01212b4a	Unwind@01212b4a	unwind	0136c528	00c222d0	NScript_CEvent_Ctor	unlanded			8	8	01212b4a	0x0	8		01212ca2	00c222d2	parent-unlanded
+01212b52	Unwind@01212b52	unwind	0136c528	00c222d0	NScript_CEvent_Ctor	unlanded			8	8	01212b4a	0x8	8		01212ca2	00c222d2	parent-unlanded
+01212b5a	Unwind@01212b5a	unwind	0136c528	00c222d0	NScript_CEvent_Ctor	unlanded			11	11	01212b4a	0x10	11		01212ca2	00c222d2	parent-unlanded
+01212b65	Unwind@01212b65	unwind	0136c528	00c222d0	NScript_CEvent_Ctor	unlanded			11	11	01212b4a	0x1b	11		01212ca2	00c222d2	parent-unlanded
+01212b70	Unwind@01212b70	unwind	0136c528	00c222d0	NScript_CEvent_Ctor	unlanded			11	11	01212b4a	0x26	11		01212ca2	00c222d2	parent-unlanded
+01212b7b	Unwind@01212b7b	unwind	0136c528	00c222d0	NScript_CEvent_Ctor	unlanded			11	11	01212b4a	0x31	11		01212ca2	00c222d2	parent-unlanded
+01212b86	Unwind@01212b86	unwind	0136c528	00c222d0	NScript_CEvent_Ctor	unlanded			14	14	01212b4a	0x3c	14		01212ca2	00c222d2	parent-unlanded
+01212b94	Unwind@01212b94	unwind	0136c528	00c222d0	NScript_CEvent_Ctor	unlanded			14	14	01212b4a	0x4a	14		01212ca2	00c222d2	parent-unlanded
+01212ba2	Unwind@01212ba2	unwind	0136c528	00c222d0	NScript_CEvent_Ctor	unlanded			14	14	01212b4a	0x58	14		01212ca2	00c222d2	parent-unlanded
+01212bb0	Unwind@01212bb0	unwind	0136c528	00c222d0	NScript_CEvent_Ctor	unlanded			14	14	01212b4a	0x66	14		01212ca2	00c222d2	parent-unlanded
+01212bbe	Unwind@01212bbe	unwind	0136c528	00c222d0	NScript_CEvent_Ctor	unlanded			14	14	01212b4a	0x74	14		01212ca2	00c222d2	parent-unlanded
+01212bcc	Unwind@01212bcc	unwind	0136c528	00c222d0	NScript_CEvent_Ctor	unlanded			14	14	01212b4a	0x82	14		01212ca2	00c222d2	parent-unlanded
+01212bda	Unwind@01212bda	unwind	0136c528	00c222d0	NScript_CEvent_Ctor	unlanded			14	14	01212b4a	0x90	14		01212ca2	00c222d2	parent-unlanded
+01212be8	Unwind@01212be8	unwind	0136c528	00c222d0	NScript_CEvent_Ctor	unlanded			14	14	01212b4a	0x9e	14		01212ca2	00c222d2	parent-unlanded
+01212bf6	Unwind@01212bf6	unwind	0136c528	00c222d0	NScript_CEvent_Ctor	unlanded			14	14	01212b4a	0xac	14		01212ca2	00c222d2	parent-unlanded
+01212c04	Unwind@01212c04	unwind	0136c528	00c222d0	NScript_CEvent_Ctor	unlanded			14	14	01212b4a	0xba	14		01212ca2	00c222d2	parent-unlanded
+01212c12	Unwind@01212c12	unwind	0136c528	00c222d0	NScript_CEvent_Ctor	unlanded			14	14	01212b4a	0xc8	14		01212ca2	00c222d2	parent-unlanded
+01212c20	Unwind@01212c20	unwind	0136c528	00c222d0	NScript_CEvent_Ctor	unlanded			14	14	01212b4a	0xd6	14		01212ca2	00c222d2	parent-unlanded
+01212c2e	Unwind@01212c2e	unwind	0136c528	00c222d0	NScript_CEvent_Ctor	unlanded			8	8	01212b4a	0xe4	8		01212ca2	00c222d2	parent-unlanded
+01212c36	Unwind@01212c36	unwind	0136c528	00c222d0	NScript_CEvent_Ctor	unlanded			14	14	01212b4a	0xec	14		01212ca2	00c222d2	parent-unlanded
+01212c44	Unwind@01212c44	unwind	0136c528	00c222d0	NScript_CEvent_Ctor	unlanded			8	8	01212b4a	0xfa	8		01212ca2	00c222d2	parent-unlanded
+01212c4c	Unwind@01212c4c	unwind	0136c528	00c222d0	NScript_CEvent_Ctor	unlanded			14	14	01212b4a	0x102	14		01212ca2	00c222d2	parent-unlanded
+01212c5a	Unwind@01212c5a	unwind	0136c528	00c222d0	NScript_CEvent_Ctor	unlanded			8	8	01212b4a	0x110	8		01212ca2	00c222d2	parent-unlanded
+01212c62	Unwind@01212c62	unwind	0136c528	00c222d0	NScript_CEvent_Ctor	unlanded			14	14	01212b4a	0x118	14		01212ca2	00c222d2	parent-unlanded
+01212c70	Unwind@01212c70	unwind	0136c528	00c222d0	NScript_CEvent_Ctor	unlanded			8	8	01212b4a	0x126	8		01212ca2	00c222d2	parent-unlanded
+01212c78	Unwind@01212c78	unwind	0136c528	00c222d0	NScript_CEvent_Ctor	unlanded			14	14	01212b4a	0x12e	14		01212ca2	00c222d2	parent-unlanded
+01212c86	Unwind@01212c86	unwind	0136c528	00c222d0	NScript_CEvent_Ctor	unlanded			14	14	01212b4a	0x13c	14		01212ca2	00c222d2	parent-unlanded
+01212c94	Unwind@01212c94	unwind	0136c528	00c222d0	NScript_CEvent_Ctor	unlanded			14	24	01212b4a	0x14a	14		01212ca2	00c222d2	parent-unlanded
+01212cac	Unwind@01212cac	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	8	8	01212cac	0x0	8		01212e2e	00c22522	yes
+01212cb4	Unwind@01212cb4	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	11	11	01212cac	0x8	11		01212e2e	00c22522	yes
+01212cbf	Unwind@01212cbf	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	11	11	01212cac	0x13	11		01212e2e	00c22522	yes
+01212cca	Unwind@01212cca	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	11	11	01212cac	0x1e	11		01212e2e	00c22522	yes
+01212cd5	Unwind@01212cd5	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	11	11	01212cac	0x29	11		01212e2e	00c22522	yes
+01212ce0	Unwind@01212ce0	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	14	14	01212cac	0x34	14		01212e2e	00c22522	yes
+01212cee	Unwind@01212cee	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	14	14	01212cac	0x42	14		01212e2e	00c22522	yes
+01212cfc	Unwind@01212cfc	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	14	14	01212cac	0x50	14		01212e2e	00c22522	yes
+01212d0a	Unwind@01212d0a	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	14	14	01212cac	0x5e	14		01212e2e	00c22522	yes
+01212d18	Unwind@01212d18	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	14	14	01212cac	0x6c	14		01212e2e	00c22522	yes
+01212d26	Unwind@01212d26	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	14	14	01212cac	0x7a	14		01212e2e	00c22522	yes
+01212d34	Unwind@01212d34	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	14	14	01212cac	0x88	14		01212e2e	00c22522	yes
+01212d42	Unwind@01212d42	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	14	14	01212cac	0x96	14		01212e2e	00c22522	yes
+01212d50	Unwind@01212d50	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	14	14	01212cac	0xa4	14		01212e2e	00c22522	yes
+01212d5e	Unwind@01212d5e	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	14	14	01212cac	0xb2	14		01212e2e	00c22522	yes
+01212d6c	Unwind@01212d6c	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	14	14	01212cac	0xc0	14		01212e2e	00c22522	yes
+01212d7a	Unwind@01212d7a	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	14	14	01212cac	0xce	14		01212e2e	00c22522	yes
+01212d88	Unwind@01212d88	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	14	14	01212cac	0xdc	14		01212e2e	00c22522	yes
+01212d96	Unwind@01212d96	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	14	14	01212cac	0xea	14		01212e2e	00c22522	yes
+01212da4	Unwind@01212da4	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	14	14	01212cac	0xf8	14		01212e2e	00c22522	yes
+01212db2	Unwind@01212db2	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	14	14	01212cac	0x106	14		01212e2e	00c22522	yes
+01212dc0	Unwind@01212dc0	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	14	14	01212cac	0x114	14		01212e2e	00c22522	yes
+01212dce	Unwind@01212dce	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	8	8	01212cac	0x122	8		01212e2e	00c22522	yes
+01212dd6	Unwind@01212dd6	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	8	8	01212cac	0x12a	8		01212e2e	00c22522	yes
+01212dde	Unwind@01212dde	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	8	8	01212cac	0x132	8		01212e2e	00c22522	yes
+01212de6	Unwind@01212de6	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	8	8	01212cac	0x13a	8		01212e2e	00c22522	yes
+01212dee	Unwind@01212dee	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	8	8	01212cac	0x142	8		01212e2e	00c22522	yes
+01212df6	Unwind@01212df6	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	8	8	01212cac	0x14a	8		01212e2e	00c22522	yes
+01212dfe	Unwind@01212dfe	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	8	8	01212cac	0x152	8		01212e2e	00c22522	yes
+01212e06	Unwind@01212e06	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	8	8	01212cac	0x15a	8		01212e2e	00c22522	yes
+01212e0e	Unwind@01212e0e	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	8	8	01212cac	0x162	8		01212e2e	00c22522	yes
+01212e16	Unwind@01212e16	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	8	8	01212cac	0x16a	8		01212e2e	00c22522	yes
+01212e1e	Unwind@01212e1e	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	8	8	01212cac	0x172	8		01212e2e	00c22522	yes
+01212e26	Unwind@01212e26	unwind	0136c654	00c22520	~CEngineVSConstantBlockSet	landed	00/c2/CEngineVSConstantBlockSet_CEngineVSConstantBlockSet_00c22520.cpp	/O2 /Oy /W3 /EHsc	8	26	01212cac	0x17a	8		01212e2e	00c22522	yes
+01213250	Unwind@01213250	unwind	0136cb0c	00c25a50	InitiateShutdown	landed	00/c2/PKCTimerManager_InitiateShutdown_00c25a50.cpp	/O2 /Oy /W3 /EHsc	8	18	01213250	0x0	8		01213258	00c25a58	yes
+01213262	Unwind@01213262	unwind	0136cb38	00c25b10	CTimerHost	landed	00/c2/CTimerHost_CTimerHost_00c25b10.cpp	/O2 /Oy /W3 /EHsc	11	11	01213262	0x0	11		01213275	00c25b1c	yes
+0121326d	Unwind@0121326d	unwind	0136cb38	00c25b10	CTimerHost	landed	00/c2/CTimerHost_CTimerHost_00c25b10.cpp	/O2 /Oy /W3 /EHsc	8	19	01213262	0xb	8		01213275	00c25b1c	yes
+01213280	Unwind@01213280	unwind	0136cb64	00c267e0	UIManager_UpdateHeroEquipment	unlanded			8	8	01213280	0x0	8		01213293	00c267e2	parent-unlanded
+01213288	Unwind@01213288	unwind	0136cb64	00c267e0	UIManager_UpdateHeroEquipment	unlanded			11	24	01213280	0x8	11		01213293	00c267e2	parent-unlanded
+012132a0	Unwind@012132a0	unwind	0136cb88	00c26b20	ProcessNextRequest	landed	00/c2/PKCWorkerThread_ProcessNextRequest_00c26b20.cpp	/O2 /Oy /W3 /EHsc	8	32	012132a0	0x0	8		012132a8	00c26b22	yes
+01213300	Unwind@01213300	unwind	0136cbe8	00c26cd0	PostMessage	landed	00/c2/CMailboxQueue00c26cd0_PostMessage_00c26cd0.cpp	/O2 /Oy /W3 /EHsc	8	32	01213300	0x0	8		01213308	00c26cd2	yes
+01213340	Unwind@01213340	unwind	0136cc30	00c26f80	ProcessNextRequest	landed	00/c2/PKCStreamWorkerThread_ProcessNextRequest_00c26f80.cpp	/O2 /Oy /W3 /EHsc	8	32	01213340	0x0	8		01213348	00c26f82	yes
+012133a0	Unwind@012133a0	unwind	0136cc90	00c27130	PostMessage	landed	00/c2/CMailboxQueue00c27130_PostMessage_00c27130.cpp	/O2 /Oy /W3 /EHsc	8	32	012133a0	0x0	8		012133a8	00c27132	yes
+012133c0	Unwind@012133c0	unwind	0136ccb4	00c271f0	CTCInventory_OnItemEquippedHelper	unlanded			8	18	012133c0	0x0	8		012133c8	00c271f2	parent-unlanded
+012133d2	Unwind@012133d2	unwind	0136ccd8	00c27550	SetPosition	landed	00/c2/CCodaPlayback_SetPosition_00c27550.cpp	/O2 /Oy /W3 /EHsc	8	18	012133d2	0x0	8		012133da	00c27552	yes
+012133e4	Unwind@012133e4	unwind	0136ccfc	00c276b0	Update	landed	00/c2/CCodaPlayback_Update_00c276b0.cpp	/O2 /Oy /W3 /EHsc	8	18	012133e4	0x0	8		012133ec	00c276b8	yes
+01213429	Unwind@01213429	unwind	0136cd54	00c27890	GetPlayProgress	landed	00/c2/CCodaPlayback_GetPlayProgress_00c27890.cpp	/O2 /Oy /W3 /EHsc	8	18	01213429	0x0	8		01213431	00c27898	yes
+01213450	Unwind@01213450	unwind	0136cda4	00c28dc0	_Xlen	landed	00/c2/stdvector_Xlen_00c28dc0.cpp	/O2 /Oy /W3 /EHsc	9	9	01213450	0x0	9		01213462	00c28dc2	yes
+01213459	Unwind@01213459	unwind	0136cda4	00c28dc0	_Xlen	landed	00/c2/stdvector_Xlen_00c28dc0.cpp	/O2 /Oy /W3 /EHsc	9	23	01213450	0x9	9		01213462	00c28dc2	yes
+01213470	Unwind@01213470	unwind	0136cdd0	00c28e50	_Xlen	landed	00/c2/stdvector_Xlen_00c28e50.cpp	/O2 /Oy /W3 /EHsc	9	9	01213470	0x0	9		01213482	00c28e52	yes
+01213479	Unwind@01213479	unwind	0136cdd0	00c28e50	_Xlen	landed	00/c2/stdvector_Xlen_00c28e50.cpp	/O2 /Oy /W3 /EHsc	9	39	01213470	0x9	9		01213482	00c28e52	yes
+012134ab	Unwind@012134ab	unwind	0136ce88	00c287e0	~Stack<unsigned_long,64>	landed	00/c2/unattributed_CStackOwner00c287e0dtor_00c287e0.cpp	/O2 /Oy /W3 /EHsc	14	14	012134a0	0xb	14		012134c7	00c287e2	yes
+012134d1	Unwind@012134d1	unwind	0136ceac	00c28870	PartialDefragment	unlanded			8	18	012134d1	0x0	8		012134d9	00c28872	parent-unlanded
+012134e3	Unwind@012134e3	unwind	0136ced0	00c28ae0	CVtable_012b37fc	landed	00/c2/CHandleBasedMemoryPool_CHandleBasedMemoryPool_00c28ae0.cpp	/O2 /Oy /W3 /EHsc	11	29	012134e3	0x0	11		012134ee	00c28ae2	yes
+01213500	Unwind@01213500	unwind	0136cef4	00c29fc0	PKCSemaphore	landed	00/c2/PKCSemaphore_PKCSemaphore_00c29fc0.cpp	/O2 /Oy /W3 /EHsc	8	18	01213500	0x0	8		01213508	00c29fc8	yes
+01213512	Unwind@01213512	unwind	0136cf18	00c2a090	Wait	landed	00/c2/PKCSemaphore_Wait_00c2a090.cpp	/O2 /Oy /W3 /EHsc	8	18	01213512	0x0	8		0121351a	00c2a098	yes
+01213524	Unwind@01213524	unwind	0136cf3c	00c2a150	Release	landed	00/c2/PKCSemaphore_Release_00c2a150.cpp	/O2 /Oy /W3 /EHsc	8	28	01213524	0x0	8		0121352c	00c2a158	yes
+01213540	Unwind@01213540	unwind	0136cf60	00c2a3d0	Acquire	landed	00/c2/CSharedEntryTable_Acquire_00c2a3d0.cpp	/O2 /Oy /W3 /EHsc	11	21	01213540	0x0	11		0121354b	00c2a3d2	yes
+01213599	Unwind@01213599	unwind	0136cff8	00c2a7a0	SendState	landed	00/c2/CNavigatorSwitch_SendState_00c2a7a0.cpp	/O2 /Oy /W3 /EHsc	8	18	01213599	0x0	8		012135a1	00c2a7a2	yes
+012135ab	Unwind@012135ab	unwind	0136d01c	00c2a7f0	ApplyFilter	landed	00/c2/CUnprovenCollectionOwner00C2A7F0_ApplyFilter_00c2a7f0.cpp	/O2 /Oy /W3 /EHsc	8	18	012135ab	0x0	8		012135b3	00c2a7f2	yes
+012135bd	Unwind@012135bd	unwind	0136d040	00c2a840	ApplyFilter	landed	00/c2/CUnprovenCollectionOwner00C2A840_ApplyFilter_00c2a840.cpp	/O2 /Oy /W3 /EHsc	8	18	012135bd	0x0	8		012135c5	00c2a842	yes
+01213625	Unwind@01213625	unwind	0136d0e8	00c2a9b0	CVtable_012b1ab0	landed	00/c2/CTCDPhysicalObstruction_CTCDPhysicalObstructiondtor00c2a9b0_00c2a9b0.cpp	/O2 /Oy /W3 /EHsc	11	11	0121361a	0xb	11		0121365b	00c2a9b2	yes
+01213630	Unwind@01213630	unwind	0136d0e8	00c2a9b0	CVtable_012b1ab0	landed	00/c2/CTCDPhysicalObstruction_CTCDPhysicalObstructiondtor00c2a9b0_00c2a9b0.cpp	/O2 /Oy /W3 /EHsc	11	11	0121361a	0x16	11		0121365b	00c2a9b2	yes
+012137ff	Unwind@012137ff	unwind	0136d2e8	00c2bcf0	Register	landed	00/c2/CDispatcherB00c2c7e0_Register_00c2bcf0.cpp	/O2 /Oy /W3 /EHsc	8	18	012137ff	0x0	8		01213807	00c2bcf2	yes
+01213811	Unwind@01213811	unwind	0136d30c	00c2bd40	Handle	landed	00/c2/CAgentB00c2c8f0_Handle_00c2bd40.cpp	/O2 /Oy /W3 /EHsc	8	18	01213811	0x0	8		01213819	00c2bd42	yes
+012139db	Unwind@012139db	unwind	0136d5d4	00c2cbd0	CQ_GuildTrainingPreMeleeScript_Initialize	unlanded			8	8	012139db	0x0	8		01213a01	00c2cbd2	parent-unlanded
+012139e3	Unwind@012139e3	unwind	0136d5d4	00c2cbd0	CQ_GuildTrainingPreMeleeScript_Initialize	unlanded			8	8	012139db	0x8	8		01213a01	00c2cbd2	parent-unlanded
+012139eb	Unwind@012139eb	unwind	0136d5d4	00c2cbd0	CQ_GuildTrainingPreMeleeScript_Initialize	unlanded			11	11	012139db	0x10	11		01213a01	00c2cbd2	parent-unlanded
+012139f6	Unwind@012139f6	unwind	0136d5d4	00c2cbd0	CQ_GuildTrainingPreMeleeScript_Initialize	unlanded			11	21	012139db	0x1b	11		01213a01	00c2cbd2	parent-unlanded
+01213b0a	Unwind@01213b0a	unwind	0136d6f8	00c2d3b0	~CArtResourceSet_00c2d3b0	landed	00/c2/unattributed_CArtResourceSet00c2d3b0_00c2d3b0.cpp	/O2 /Oy /W3 /EHsc	14	24	01213af1	0x19	14		01213b18	00c2d3b2	yes
+01213ba0	Unwind@01213ba0	unwind	0136d7bc	00c2da20	CLiOnHeAdSegmentReader	unlanded			8	8	01213ba0	0x0	8		01213bbe	00c2da22	parent-unlanded
+01213ba8	Unwind@01213ba8	unwind	0136d7bc	00c2da20	CLiOnHeAdSegmentReader	unlanded			8	8	01213ba0	0x8	8		01213bbe	00c2da22	parent-unlanded
+01213bb0	Unwind@01213bb0	unwind	0136d7bc	00c2da20	CLiOnHeAdSegmentReader	unlanded			14	24	01213ba0	0x10	14		01213bbe	00c2da22	parent-unlanded
+01213c1a	Unwind@01213c1a	unwind	0136d85c	00c2e610	AnimationSet_ProcessEventTriggers	unlanded			8	18	01213c1a	0x0	8		01213c22	00c2e618	parent-unlanded
+01213c2c	Unwind@01213c2c	unwind	0136d880	00c2e8d0	AddEvent	landed	00/c2/CBankProcessor_AddEvent_00c2e8d0.cpp	/O2 /Oy /W3 /EHsc	8	18	01213c2c	0x0	8		01213c34	00c2e8d8	yes
+01213c3e	Unwind@01213c3e	unwind	0136d8ac	00c2e960	AddSubEvent	landed	00/c2/CBankProcessor_AddSubEvent_00c2e960.cpp	/O2 /Oy /W3 /EHsc	8	8	01213c3e	0x0	8		01213c4e	00c2e968	yes
+01213c46	Unwind@01213c46	unwind	0136d8ac	00c2e960	AddSubEvent	landed	00/c2/CBankProcessor_AddSubEvent_00c2e960.cpp	/O2 /Oy /W3 /EHsc	8	26	01213c3e	0x8	8		01213c4e	00c2e968	yes
+01213c80	Unwind@01213c80	unwind	0136d8f4	00c2f070	Release	landed	00/c2/PKCAutoDeleteCUnprovenPKObject00c2f070_Release_00c2f070.cpp	/O2 /Oy /W3 /EHsc	8	32	01213c80	0x0	8		01213c88	00c2f078	yes
+01213ca0	Unwind@01213ca0	unwind	0136d918	00c2f190	Release	landed	00/c2/PKCAutoDeleteCUnprovenPKObject00c2f190_Release_00c2f190.cpp	/O2 /Oy /W3 /EHsc	8	32	01213ca0	0x0	8		01213ca8	00c2f198	yes
+01213cc0	Unwind@01213cc0	unwind	0136d93c	00c2f2b0	Release	landed	00/c2/PKCAutoDeleteCUnprovenPKObject00c2f2b0_Release_00c2f2b0.cpp	/O2 /Oy /W3 /EHsc	8	32	01213cc0	0x0	8		01213cc8	00c2f2b8	yes
+01213ce0	Unwind@01213ce0	unwind	0136d970	00c2f7d0	Transfer	landed	00/c2/CUnprovenRecordList00c2f7d0_Transfer_00c2f7d0.cpp	/O2 /Oy /W3 /EHsc	11	11	01213ce0	0x0	11		01213cfb	00c2f7d8	yes
+01213ceb	Unwind@01213ceb	unwind	0136d970	00c2f7d0	Transfer	landed	00/c2/CUnprovenRecordList00c2f7d0_Transfer_00c2f7d0.cpp	/O2 /Oy /W3 /EHsc	8	8	01213ce0	0xb	8		01213cfb	00c2f7d8	yes
+01213cf3	Unwind@01213cf3	unwind	0136d970	00c2f7d0	Transfer	landed	00/c2/CUnprovenRecordList00c2f7d0_Transfer_00c2f7d0.cpp	/O2 /Oy /W3 /EHsc	8	29	01213ce0	0x13	8		01213cfb	00c2f7d8	yes
+01213d30	Unwind@01213d30	unwind	0136d9c8	00c2fa20	Transfer	landed	00/c2/CUnprovenRecordList00c2fa20_Transfer_00c2fa20.cpp	/O2 /Oy /W3 /EHsc	11	11	01213d30	0x0	11		01213d4b	00c2fa28	yes
+01213d3b	Unwind@01213d3b	unwind	0136d9c8	00c2fa20	Transfer	landed	00/c2/CUnprovenRecordList00c2fa20_Transfer_00c2fa20.cpp	/O2 /Oy /W3 /EHsc	8	8	01213d30	0xb	8		01213d4b	00c2fa28	yes
+01213d43	Unwind@01213d43	unwind	0136d9c8	00c2fa20	Transfer	landed	00/c2/CUnprovenRecordList00c2fa20_Transfer_00c2fa20.cpp	/O2 /Oy /W3 /EHsc	8	29	01213d30	0x13	8		01213d4b	00c2fa28	yes
+01213d80	Unwind@01213d80	unwind	0136da20	00c2fc70	Transfer	landed	00/c2/CUnprovenRecordList00c2fc70_Transfer_00c2fc70.cpp	/O2 /Oy /W3 /EHsc	11	11	01213d80	0x0	11		01213d9b	00c2fc78	yes
+01213d8b	Unwind@01213d8b	unwind	0136da20	00c2fc70	Transfer	landed	00/c2/CUnprovenRecordList00c2fc70_Transfer_00c2fc70.cpp	/O2 /Oy /W3 /EHsc	8	8	01213d80	0xb	8		01213d9b	00c2fc78	yes
+01213d93	Unwind@01213d93	unwind	0136da20	00c2fc70	Transfer	landed	00/c2/CUnprovenRecordList00c2fc70_Transfer_00c2fc70.cpp	/O2 /Oy /W3 /EHsc	8	29	01213d80	0x13	8		01213d9b	00c2fc78	yes
+01214030	Unwind@01214030	unwind	0136dd88	00c30e90	HasWaveBankSegments	landed	00/c3/global_HasWaveBankSegments_00c30e90.cpp	/O2 /Oy /W3 /EHsc	25	25	01214030	0x0	25		01214062	00c30e92	yes
+01214049	Unwind@01214049	unwind	0136dd88	00c30e90	HasWaveBankSegments	landed	00/c3/global_HasWaveBankSegments_00c30e90.cpp	/O2 /Oy /W3 /EHsc	25	35	01214030	0x19	25		01214062	00c30e92	yes
+0121406c	Unwind@0121406c	unwind	0136ddb4	00c30f60	ReadBankData	unlanded			11	11	0121406c	0x0	11		01214082	00c30f62	parent-unlanded
+01214077	Unwind@01214077	unwind	0136ddb4	00c30f60	ReadBankData	unlanded			11	25	0121406c	0xb	11		01214082	00c30f62	parent-unlanded
+012140d0	Unwind@012140d0	unwind	0136de30	00c31660	OnRecord	landed	00/c3/CSampleTableReader012b4d40_OnRecord_00c31660.cpp	/O2 /Oy /W3 /EHsc	8	32	012140d0	0x0	8		012140d8	00c31668	yes
+01214130	Unwind@01214130	unwind	0136dea4	00c31990	CValueHolder_00c31990	landed	00/c3/CValueHolder00c31990_CValueHolder00c31990_00c31990.cpp		8	18	01214130	0x0	8		01214138	00c319b8	no
+01214142	Unwind@01214142	unwind	0136dec8	00c31a70	ValidateWriter	landed	00/c3/PKSerialiseCParser_ValidateWriter_00c31a70.cpp	/O2 /Oy /W3 /EHsc	8	18	01214142	0x0	8		0121414a	00c31a78	yes
+01214154	Unwind@01214154	unwind	0136deec	00c31b90	TransferString	landed	00/c3/PKSerialiseCParser_TransferString_00c31b90.cpp	/O2 /Oy /W3 /EHsc	8	28	01214154	0x0	8		0121415c	00c31b98	yes
+01214170	Unwind@01214170	unwind	0136df10	00c31db0	GetChecked	landed	00/c3/PKCAutoFile_GetChecked_00c31db0.cpp	/O2 /Oy /W3 /EHsc	8	32	01214170	0x0	8		01214178	00c31db8	yes
+012141a2	Unwind@012141a2	unwind	0136df58	00c31f60	CMemoryStream	landed	00/c3/CMemoryStream_CMemoryStream_00c31f60.cpp	/O2 /Oy /W3 /EHsc	8	30	012141a2	0x0	8		012141aa	00c31f62	yes
+012141c0	Unwind@012141c0	unwind	0136df7c	00c32060	LoadDataFromRemote	landed	00/c3/CRemoteLoader_LoadDataFromRemote_00c32060.cpp	/O2 /Oy /W3 /EHsc	8	32	012141c0	0x0	8		012141c8	00c32062	yes
+012141e0	Unwind@012141e0	unwind	0136dfa8	00c322e0	RemoveValue	landed	00/c3/PKCTRArray_RemoveValue_00c322e0.cpp	/O2 /Oy /W3 /EHsc	8	8	012141e0	0x0	8		012141f0	00c322e8	yes
+012141e8	Unwind@012141e8	unwind	0136dfa8	00c322e0	RemoveValue	landed	00/c3/PKCTRArray_RemoveValue_00c322e0.cpp	/O2 /Oy /W3 /EHsc	8	18	012141e0	0x8	8		012141f0	00c322e8	yes
+0121420c	Unwind@0121420c	unwind	0136dff0	00c325f0	GetFirst	landed	00/c3/PKCTRArray_GetFirst_00c325f0.cpp	/O2 /Oy /W3 /EHsc	8	18	0121420c	0x0	8		01214214	00c325f8	yes
+0121421e	Unwind@0121421e	unwind	0136e014	00c326d0	GetLast	landed	00/c3/PKCTRArray_GetLast_00c326d0.cpp	/O2 /Oy /W3 /EHsc	8	18	0121421e	0x0	8		01214226	00c326d8	yes
+01214254	Unwind@01214254	unwind	0136e090	00c32950	ResizeAllocation	landed	00/c3/PKCTRArray_ResizeAllocation_00c32950.cpp	/O2 /Oy /W3 /EHsc	8	8	01214254	0x0	8		0121426c	00c32958	yes
+0121425c	Unwind@0121425c	unwind	0136e090	00c32950	ResizeAllocation	landed	00/c3/PKCTRArray_ResizeAllocation_00c32950.cpp	/O2 /Oy /W3 /EHsc	8	8	01214254	0x8	8		0121426c	00c32958	yes
+01214264	Unwind@01214264	unwind	0136e090	00c32950	ResizeAllocation	landed	00/c3/PKCTRArray_ResizeAllocation_00c32950.cpp	/O2 /Oy /W3 /EHsc	8	18	01214254	0x10	8		0121426c	00c32958	yes
+012142a2	Unwind@012142a2	unwind	0136e114	00c32cd0	sub_00c32cd0	unlanded			8	8	012142a2	0x0	8		012142ba	00c32cd8	parent-unlanded
+012142aa	Unwind@012142aa	unwind	0136e114	00c32cd0	sub_00c32cd0	unlanded			8	8	012142a2	0x8	8		012142ba	00c32cd8	parent-unlanded
+012142b2	Unwind@012142b2	unwind	0136e114	00c32cd0	sub_00c32cd0	unlanded			8	30	012142a2	0x10	8		012142ba	00c32cd8	parent-unlanded
+01214360	Unwind@01214360	unwind	0136e1ec	00c34b80	~CEntryList	landed	00/c3/CEntryList_CEntryList_00c34b80.cpp	/O2 /Oy /W3 /EHsc	8	32	01214360	0x0	8		01214368	00c34b82	yes
+01214380	Unwind@01214380	unwind	0136e218	00c34e60	~CRowTable	landed	00/c3/CRowTable_CRowTable_00c34e60.cpp	/O2 /Oy /W3 /EHsc	8	8	01214380	0x0	8		01214393	00c34e62	yes
+01214388	Unwind@01214388	unwind	0136e218	00c34e60	~CRowTable	landed	00/c3/CRowTable_CRowTable_00c34e60.cpp	/O2 /Oy /W3 /EHsc	11	21	01214380	0x8	11		01214393	00c34e62	yes
+0121439d	Unwind@0121439d	unwind	0136e23c	00c34f30	Insert	landed	00/c3/CItemGridTable012b501c_Insert_00c34f30.cpp	/O2 /Oy /W3 /EHsc	11	35	0121439d	0x0	11		012143a8	00c34f38	yes
+01214410	Unwind@01214410	unwind	0136e2d4	00c36180	AllocateFor	landed	00/c3/CResourceWorld_AllocateFor_00c36180.cpp	/O2 /Oy /W3 /EHsc	11	21	01214410	0x0	11		0121441b	00c36182	yes
+01214425	Unwind@01214425	unwind	0136e2f8	00c362f0	AllocateForAll	landed	00/c3/CResourceWorld_AllocateForAll_00c362f0.cpp	/O2 /Oy /W3 /EHsc	8	18	01214425	0x0	8		0121442d	00c362f2	yes
+0121445b	Unwind@0121445b	unwind	0136e364	00c363e0	Post	landed	00/c3/CUnprovenPKAgent00c363e0_Post_00c363e0.cpp	/O2 /Oy /W3 /EHsc	8	18	0121445b	0x0	8		01214463	00c363e2	yes
+01214534	Unwind@01214534	unwind	0136e494	00c36e00	Begin	landed	00/c3/CSequencePlayer00c36ea0_Begin_00c36e00.cpp	/O2 /Oy /W3 /EHsc	8	18	01214534	0x0	8		0121453c	00c36e02	yes
+01214558	Unwind@01214558	unwind	0136e4dc	00c36fb0	Post	landed	00/c3/CUnprovenPKAgent00c36fb0_Post_00c36fb0.cpp	/O2 /Oy /W3 /EHsc	8	18	01214558	0x0	8		01214560	00c36fb2	yes
+0121456a	Unwind@0121456a	unwind	0136e500	00c37000	GetMaxValue	landed	00/c3/CVoiceSet_GetMaxValue_00c37000.cpp	/O2 /Oy /W3 /EHsc	8	18	0121456a	0x0	8		01214572	00c37002	yes
+012145b6	Unwind@012145b6	unwind	0136e584	00c372c0	CResourceMap_00c372c0	landed	00/c3/CResourceMap00c372c0_CResourceMap00c372c0_00c372c0.cpp	/O2 /Oy /W3 /EHsc	8	8	012145b6	0x0	8		012145c9	00c372c2	yes
+012145be	Unwind@012145be	unwind	0136e584	00c372c0	CResourceMap_00c372c0	landed	00/c3/CResourceMap00c372c0_CResourceMap00c372c0_00c372c0.cpp	/O2 /Oy /W3 /EHsc	11	34	012145b6	0x8	11		012145c9	00c372c2	yes
+01214660	Unwind@01214660	unwind	0136e638	00c37990	CreateEntry	landed	00/c3/CEntryHost00c37990_CreateEntry_00c37990.cpp	/O2 /Oy /W3 /EHsc	11	21	01214660	0x0	11		0121466b	00c37992	yes
+01214687	Unwind@01214687	unwind	0136e680	00c37c40	CreateEntriesForSource	landed	00/c3/CSoundEmitter00c37c40_CreateEntriesForSource_00c37c40.cpp	/O2 /Oy /W3 /EHsc	8	18	01214687	0x0	8		0121468f	00c37c42	yes
+012146a4	Unwind@012146a4	unwind	0136e6b4	00c37c90	Constructor	landed	00/c3/CreatureOpinionState_COpinionState00c37c90ctor_00c37c90.cpp	/O2 /Oy /W3 /EHsc	8	8	01214699	0xb	8		012146b7	00c37c92	yes
+012146ac	Unwind@012146ac	unwind	0136e6b4	00c37c90	Constructor	landed	00/c3/CreatureOpinionState_COpinionState00c37c90ctor_00c37c90.cpp	/O2 /Oy /W3 /EHsc	11	21	01214699	0x13	11		012146b7	00c37c92	yes
+012146cc	Unwind@012146cc	unwind	0136e6e8	00c37da0	CTCActivationTrigger_DestroyPredicates	landed	00/c3/unattributed_CTCActivationTrigger00c37da0dtor_00c37da0.cpp	/O2 /Oy /W3 /EHsc	11	11	012146c1	0xb	11		012146df	00c37da2	yes
+0121477f	Unwind@0121477f	unwind	0136e7d0	00c38570	CConstraintRepeat_00c38470	landed	00/c3/CConstraintRepeat00c38470_CConstraintRepeat00c38470_00c38570.cpp	/O2 /Oy /W3 /EHsc	8	8	0121477f	0x0	8		01214792	00c38572	yes
+01214787	Unwind@01214787	unwind	0136e7d0	00c38570	CConstraintRepeat_00c38470	landed	00/c3/CConstraintRepeat00c38470_CConstraintRepeat00c38470_00c38570.cpp	/O2 /Oy /W3 /EHsc	11	21	0121477f	0x8	11		01214792	00c38572	yes
+01214a30	Unwind@01214a30	unwind	0136eb18	00c388a0	CheckFrameStreamer	landed	00/c3/CInstance00c388a0_CheckFrameStreamer_00c388a0.cpp	/O2 /Oy /W3 /EHsc	8	8	01214a30	0x0	8		01214a40	00c388a8	yes
+01214a38	Unwind@01214a38	unwind	0136eb18	00c388a0	CheckFrameStreamer	landed	00/c3/CInstance00c388a0_CheckFrameStreamer_00c388a0.cpp	/O2 /Oy /W3 /EHsc	8	18	01214a30	0x8	8		01214a40	00c388a8	yes
+01214aaa	Unwind@01214aaa	unwind	0136eba0	00c38d60	CTCActivationReceptorBase_HandleStateTransition	unlanded			11	11	01214aaa	0x0	11		01214ac5	00c38d68	parent-unlanded
+01214ab5	Unwind@01214ab5	unwind	0136eba0	00c38d60	CTCActivationReceptorBase_HandleStateTransition	unlanded			8	8	01214aaa	0xb	8		01214ac5	00c38d68	parent-unlanded
+01214abd	Unwind@01214abd	unwind	0136eba0	00c38d60	CTCActivationReceptorBase_HandleStateTransition	unlanded			8	18	01214aaa	0x13	8		01214ac5	00c38d68	parent-unlanded
+01214acf	Unwind@01214acf	unwind	0136ebec	00c39130	CActivationReceptor_00c38b20	landed	00/c3/CActivationReceptor00c38b20_CActivationReceptor00c38b20_00c39130.cpp	/O2 /Oy /W3 /EHsc	8	8	01214acf	0x0	8		01214b17	00c39132	yes
+01214ad7	Unwind@01214ad7	unwind	0136ebec	00c39130	CActivationReceptor_00c38b20	landed	00/c3/CActivationReceptor00c38b20_CActivationReceptor00c38b20_00c39130.cpp	/O2 /Oy /W3 /EHsc	11	11	01214acf	0x8	11		01214b17	00c39132	yes
+01214ae2	Unwind@01214ae2	unwind	0136ebec	00c39130	CActivationReceptor_00c38b20	landed	00/c3/CActivationReceptor00c38b20_CActivationReceptor00c38b20_00c39130.cpp	/O2 /Oy /W3 /EHsc	11	11	01214acf	0x13	11		01214b17	00c39132	yes
+01214aed	Unwind@01214aed	unwind	0136ebec	00c39130	CActivationReceptor_00c38b20	landed	00/c3/CActivationReceptor00c38b20_CActivationReceptor00c38b20_00c39130.cpp	/O2 /Oy /W3 /EHsc	14	14	01214acf	0x1e	14		01214b17	00c39132	yes
+01214afb	Unwind@01214afb	unwind	0136ebec	00c39130	CActivationReceptor_00c38b20	landed	00/c3/CActivationReceptor00c38b20_CActivationReceptor00c38b20_00c39130.cpp	/O2 /Oy /W3 /EHsc	14	14	01214acf	0x2c	14		01214b17	00c39132	yes
+01214b09	Unwind@01214b09	unwind	0136ebec	00c39130	CActivationReceptor_00c38b20	landed	00/c3/CActivationReceptor00c38b20_CActivationReceptor00c38b20_00c39130.cpp	/O2 /Oy /W3 /EHsc	14	39	01214acf	0x3a	14		01214b17	00c39132	yes
+01214bd0	Unwind@01214bd0	unwind	0136ecc4	00c39d50	Take	landed	00/c3/PKCOneShotQueueCUnprovenOneShotValue00C39D50_Take_00c39d50.cpp	/O2 /Oy /W3 /EHsc	8	32	01214bd0	0x0	8		01214bd8	00c39d58	yes
+01214bf0	Unwind@01214bf0	unwind	0136ece8	00c39e20	Put	landed	00/c3/PKCOneShotQueueCUnprovenOneShotValue00C39D50_Put_00c39e20.cpp	/O2 /Oy /W3 /EHsc	8	32	01214bf0	0x0	8		01214bf8	00c39e28	yes
+01214c10	Unwind@01214c10	unwind	0136ed0c	00c39f30	Take	landed	00/c3/PKCOneShotQueueCUnprovenOneShotValue00C39F30_Take_00c39f30.cpp	/O2 /Oy /W3 /EHsc	8	32	01214c10	0x0	8		01214c18	00c39f38	yes
+01214c30	Unwind@01214c30	unwind	0136ed30	00c3a010	Put	landed	00/c3/PKCOneShotQueueCUnprovenOneShotValue00C39F30_Put_00c3a010.cpp	/O2 /Oy /W3 /EHsc	8	32	01214c30	0x0	8		01214c38	00c3a018	yes
+01214c50	Unwind@01214c50	unwind	0136ed54	00c3a130	Take	landed	00/c3/PKCOneShotQueueCUnprovenOneShotValue00C3A130_Take_00c3a130.cpp	/O2 /Oy /W3 /EHsc	8	32	01214c50	0x0	8		01214c58	00c3a138	yes
+01214c70	Unwind@01214c70	unwind	0136ed78	00c3a210	Put	landed	00/c3/PKCOneShotQueueCUnprovenOneShotValue00C3A130_Put_00c3a210.cpp	/O2 /Oy /W3 /EHsc	8	32	01214c70	0x0	8		01214c78	00c3a218	yes
+01214c90	Unwind@01214c90	unwind	0136ed9c	00c3a330	Pop	landed	00/c3/PKCOneShotQueueCUnprovenItem012b54b4_Pop_00c3a330.cpp	/O2 /Oy /W3 /EHsc	8	32	01214c90	0x0	8		01214c98	00c3a338	yes
+01214cb0	Unwind@01214cb0	unwind	0136edc0	00c3a420	Push	landed	00/c3/PKCOneShotQueueCUnprovenItem012b54b4_Push_00c3a420.cpp	/O2 /Oy /W3 /EHsc	8	32	01214cb0	0x0	8		01214cb8	00c3a428	yes
+01214cd0	Unwind@01214cd0	unwind	0136ede4	00c3a540	Take	landed	00/c3/PKCOneShotQueueCUnprovenOneShotValue00C3A540_Take_00c3a540.cpp	/O2 /Oy /W3 /EHsc	8	32	01214cd0	0x0	8		01214cd8	00c3a548	yes
+01214cf0	Unwind@01214cf0	unwind	0136ee08	00c3a610	Put	landed	00/c3/PKCOneShotQueueCUnprovenOneShotValue00C3A540_Put_00c3a610.cpp	/O2 /Oy /W3 /EHsc	8	32	01214cf0	0x0	8		01214cf8	00c3a618	yes
+01214e60	Unwind@01214e60	unwind	0136eff4	00c3bb50	Load	landed	00/c3/AudioBankTableReader00c3bb50_Load_00c3bb50.cpp	/O2 /Oy /W3 /EHsc /GS	11	21	01214e60	0x0	11		01214e6b	00c3bb52	yes
+01214e75	Unwind@01214e75	unwind	0136f018	00c3bcb0	LoadCriteria (owner uncertain)	landed	00/c3/AudioCriteriaLoader00c3bcb0_LoadCriteria_00c3bcb0.cpp	/O2 /Oy /W3 /EHsc	8	27	01214e75	0x0	8		01214e7d	00c3bcb2	yes
+01214e90	Unwind@01214e90	unwind	0136f054	00c3bf30	CBankFile_ReadRemote	unlanded			8	8	01214e90	0x0	8		01214eb0	00c3bf32	parent-unlanded
+01214e98	Unwind@01214e98	unwind	0136f054	00c3bf30	CBankFile_ReadRemote	unlanded			8	8	01214e90	0x8	8		01214eb0	00c3bf32	parent-unlanded
+01214ea0	Unwind@01214ea0	unwind	0136f054	00c3bf30	CBankFile_ReadRemote	unlanded			8	8	01214e90	0x10	8		01214eb0	00c3bf32	parent-unlanded
+01214ea8	Unwind@01214ea8	unwind	0136f054	00c3bf30	CBankFile_ReadRemote	unlanded			8	24	01214e90	0x18	8		01214eb0	00c3bf32	parent-unlanded
+01214ee0	Unwind@01214ee0	unwind	0136f09c	00c3caa0	~CNodePool	landed	00/c3/CNodePool_CNodePool_00c3caa0.cpp	/O2 /Oy /W3 /EHsc	8	32	01214ee0	0x0	8		01214ee8	00c3caa2	yes
+01214f40	Unwind@01214f40	unwind	0136f104	00c3cd00	CreateCombatAction	landed	00/c3/CVtable012b4f84_CreateCombatAction_00c3cd00.cpp	/O2 /Oy /W3 /EHsc	11	32	01214f40	0x0	11		01214f4b	00c3cd02	yes
+01214fe0	Unwind@01214fe0	unwind	0136f1b4	00c3da60	CreateEnvironmentCombatAction	unlanded			11	32	01214fe0	0x0	11		01214feb	00c3da62	parent-unlanded
+01215000	Unwind@01215000	unwind	0136f1d8	00c3db80	CTCHeroStats::CreateIceTrollIcicleAction	unlanded			11	32	01215000	0x0	11		0121500b	00c3db88	parent-unlanded
+01215080	Unwind@01215080	unwind	0136f280	00c3dfd0	CTCHeroStats::InitializeVectorArrays	unlanded			11	11	01215080	0x0	11		012150ac	00c3dfd8	parent-unlanded
+0121508b	Unwind@0121508b	unwind	0136f280	00c3dfd0	CTCHeroStats::InitializeVectorArrays	unlanded			11	11	01215080	0xb	11		012150ac	00c3dfd8	parent-unlanded
+01215096	Unwind@01215096	unwind	0136f280	00c3dfd0	CTCHeroStats::InitializeVectorArrays	unlanded			11	11	01215080	0x16	11		012150ac	00c3dfd8	parent-unlanded
+012150a1	Unwind@012150a1	unwind	0136f280	00c3dfd0	CTCHeroStats::InitializeVectorArrays	unlanded			11	31	01215080	0x21	11		012150ac	00c3dfd8	parent-unlanded
+012151e0	Unwind@012151e0	unwind	0136f3f4	00c3f3d0	~CVtable_012B5C10	landed	00/c3/CVtable012B5C10_CVtable012B5C10_00c3f3d0.cpp	/O2 /Oy /W3 /EHsc	8	32	012151e0	0x0	8		012151e8	00c3f3d2	yes
+01215200	Unwind@01215200	unwind	0136f420	00c3f490	~CVtable_012b5c60	landed	00/c3/CVtable012b5c60_CVtable012b5c60_00c3f490.cpp	/O2 /Oy /W3 /EHsc	8	8	01215200	0x0	8		01215216	00c3f492	yes
+01215208	Unwind@01215208	unwind	0136f420	00c3f490	~CVtable_012b5c60	landed	00/c3/CVtable012b5c60_CVtable012b5c60_00c3f490.cpp	/O2 /Oy /W3 /EHsc	14	24	01215200	0x8	14		01215216	00c3f492	yes
+01215240	Unwind@01215240	unwind	0136f470	00c3f800	CTCHeroStats::InitializeActorArrays	unlanded			11	11	01215240	0x0	11		01215256	00c3f802	parent-unlanded
+0121524b	Unwind@0121524b	unwind	0136f470	00c3f800	CTCHeroStats::InitializeActorArrays	unlanded			11	21	01215240	0xb	11		01215256	00c3f802	parent-unlanded
+01215280	Unwind@01215280	unwind	0136f4d8	00c3f9d0	CTCHeroStats::InitializeCombatEnvironment	unlanded			14	14	01215280	0x0	14		012152c6	00c3f9d2	parent-unlanded
+0121528e	Unwind@0121528e	unwind	0136f4d8	00c3f9d0	CTCHeroStats::InitializeCombatEnvironment	unlanded			14	14	01215280	0xe	14		012152c6	00c3f9d2	parent-unlanded
+0121529c	Unwind@0121529c	unwind	0136f4d8	00c3f9d0	CTCHeroStats::InitializeCombatEnvironment	unlanded			14	14	01215280	0x1c	14		012152c6	00c3f9d2	parent-unlanded
+012152aa	Unwind@012152aa	unwind	0136f4d8	00c3f9d0	CTCHeroStats::InitializeCombatEnvironment	unlanded			14	14	01215280	0x2a	14		012152c6	00c3f9d2	parent-unlanded
+012152b8	Unwind@012152b8	unwind	0136f4d8	00c3f9d0	CTCHeroStats::InitializeCombatEnvironment	unlanded			14	24	01215280	0x38	14		012152c6	00c3f9d2	parent-unlanded
+012152d0	Unwind@012152d0	unwind	0136f4fc	00c425e0	Hero_ProcessExperienceBlockParry	unlanded			8	32	012152d0	0x0	8		012152d8	00c425e2	parent-unlanded
+01215310	Unwind@01215310	unwind	0136f544	00c42dd0	Open	landed	00/c4/CAudioObject_Open_00c42dd0.cpp	/O2 /Oy /W3 /EHsc	11	32	01215310	0x0	11		0121531b	00c42dd2	yes
+01215357	Unwind@01215357	unwind	0136f5b0	00c44e30	Finish	landed	00/c4/CAmbientEmitter_Finish_00c44e30.cpp	/O2 /Oy /W3 /EHsc	8	18	01215357	0x0	8		0121535f	00c44e32	yes
+01215374	Unwind@01215374	unwind	0136f5f4	00c44eb0	CAmbientEmitter	landed	00/c4/CAmbientEmitter_CAmbientEmitter_00c44eb0.cpp	/O2 /Oy /W3 /EHsc	11	11	01215369	0xb	11		012153a0	00c44eb2	yes
+0121537f	Unwind@0121537f	unwind	0136f5f4	00c44eb0	CAmbientEmitter	landed	00/c4/CAmbientEmitter_CAmbientEmitter_00c44eb0.cpp	/O2 /Oy /W3 /EHsc	8	8	01215369	0x16	8		012153a0	00c44eb2	yes
+01215387	Unwind@01215387	unwind	0136f5f4	00c44eb0	CAmbientEmitter	landed	00/c4/CAmbientEmitter_CAmbientEmitter_00c44eb0.cpp	/O2 /Oy /W3 /EHsc	11	11	01215369	0x1e	11		012153a0	00c44eb2	yes
+01215392	Unwind@01215392	unwind	0136f5f4	00c44eb0	CAmbientEmitter	landed	00/c4/CAmbientEmitter_CAmbientEmitter_00c44eb0.cpp	/O2 /Oy /W3 /EHsc	14	24	01215369	0x29	14		012153a0	00c44eb2	yes
+012153b5	Unwind@012153b5	unwind	0136f640	00c44f80	~CAmbientEmitter	landed	00/c4/CAmbientEmitter_CAmbientEmitter_00c44f80.cpp	/O2 /Oy /W3 /EHsc	11	11	012153aa	0xb	11		012153e9	00c44f82	yes
+012153c0	Unwind@012153c0	unwind	0136f640	00c44f80	~CAmbientEmitter	landed	00/c4/CAmbientEmitter_CAmbientEmitter_00c44f80.cpp	/O2 /Oy /W3 /EHsc	11	11	012153aa	0x16	11		012153e9	00c44f82	yes
+012153cb	Unwind@012153cb	unwind	0136f640	00c44f80	~CAmbientEmitter	landed	00/c4/CAmbientEmitter_CAmbientEmitter_00c44f80.cpp	/O2 /Oy /W3 /EHsc	14	14	012153aa	0x21	14		012153e9	00c44f82	yes
+012154e0	Unwind@012154e0	unwind	0136f7a0	00c45990	Render_CheckAmbientCubeLighting	unlanded			8	8	012154e0	0x0	8		01215528	00c45998	parent-unlanded
+012154e8	Unwind@012154e8	unwind	0136f7a0	00c45990	Render_CheckAmbientCubeLighting	unlanded			8	8	012154e0	0x8	8		01215528	00c45998	parent-unlanded
+012154f0	Unwind@012154f0	unwind	0136f7a0	00c45990	Render_CheckAmbientCubeLighting	unlanded			8	8	012154e0	0x10	8		01215528	00c45998	parent-unlanded
+012154f8	Unwind@012154f8	unwind	0136f7a0	00c45990	Render_CheckAmbientCubeLighting	unlanded			8	8	012154e0	0x18	8		01215528	00c45998	parent-unlanded
+01215500	Unwind@01215500	unwind	0136f7a0	00c45990	Render_CheckAmbientCubeLighting	unlanded			8	8	012154e0	0x20	8		01215528	00c45998	parent-unlanded
+01215508	Unwind@01215508	unwind	0136f7a0	00c45990	Render_CheckAmbientCubeLighting	unlanded			8	8	012154e0	0x28	8		01215528	00c45998	parent-unlanded
+01215510	Unwind@01215510	unwind	0136f7a0	00c45990	Render_CheckAmbientCubeLighting	unlanded			8	8	012154e0	0x30	8		01215528	00c45998	parent-unlanded
+01215518	Unwind@01215518	unwind	0136f7a0	00c45990	Render_CheckAmbientCubeLighting	unlanded			8	8	012154e0	0x38	8		01215528	00c45998	parent-unlanded
+01215520	Unwind@01215520	unwind	0136f7a0	00c45990	Render_CheckAmbientCubeLighting	unlanded			8	32	012154e0	0x40	8		01215528	00c45998	parent-unlanded
+01215540	Unwind@01215540	unwind	0136f7c4	00c46400	CRegionSnapshot	landed	00/c4/CRegionSnapshot_CRegionSnapshot_00c46400.cpp	/O2 /Oy /W3 /EHsc	8	32	01215540	0x0	8		01215548	00c46408	yes
+0121558a	Unwind@0121558a	unwind	0136f838	00c46860	~CRegionMap	landed	00/c4/CRegionMap_CRegionMap_00c46860.cpp	/O2 /Oy /W3 /EHsc	11	11	0121558a	0x0	11		0121559d	00c46862	yes
+01215595	Unwind@01215595	unwind	0136f838	00c46860	~CRegionMap	landed	00/c4/CRegionMap_CRegionMap_00c46860.cpp	/O2 /Oy /W3 /EHsc	8	27	0121558a	0xb	8		0121559d	00c46862	yes
+01215610	Unwind@01215610	unwind	0136f8c8	00c47050	CreateTriggers	landed	00/c4/CAmbientSource_CreateTriggers_00c47050.cpp	/O2 /Oy /W3 /EHsc	11	21	01215610	0x0	11		0121561b	00c47052	yes
+01215625	Unwind@01215625	unwind	0136f8ec	00c470e0	CreateChannels	landed	00/c4/CAmbientSource_CreateChannels_00c470e0.cpp	/O2 /Oy /W3 /EHsc	11	21	01215625	0x0	11		01215630	00c470e2	yes
+0121563a	Unwind@0121563a	unwind	0136f910	00c47210	UpdateChannels	landed	00/c4/CAmbientSource_UpdateChannels_00c47210.cpp	/O2 /Oy /W3 /EHsc	8	18	0121563a	0x0	8		01215642	00c47212	yes
+0121564c	Unwind@0121564c	unwind	0136f934	00c47260	UpdateTriggers	landed	00/c4/CAmbientSource_UpdateTriggers_00c47260.cpp	/O2 /Oy /W3 /EHsc	8	18	0121564c	0x0	8		01215654	00c47262	yes
+0121565e	Unwind@0121565e	unwind	0136f958	00c472b0	Finish	landed	00/c4/CAmbientSource_Finish_00c472b0.cpp	/O2 /Oy /W3 /EHsc	8	18	0121565e	0x0	8		01215666	00c472b2	yes
+012156ab	Unwind@012156ab	unwind	0136f9d0	00c473f0	~CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::~CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>	landed	00/c4/unattributed_CPredicateOwner00c473f0dtor_00c473f0.cpp	/O2 /Oy /W3 /EHsc	11	11	012156a0	0xb	11		012156c6	00c473f2	yes
+01215910	Unwind@01215910	unwind	0136fc80	00c47f10	CTCHeroStats_ProcessStateTransition	unlanded			8	8	01215910	0x0	8		01215939	00c47f18	parent-unlanded
+01215918	Unwind@01215918	unwind	0136fc80	00c47f10	CTCHeroStats_ProcessStateTransition	unlanded			8	8	01215910	0x8	8		01215939	00c47f18	parent-unlanded
+01215920	Unwind@01215920	unwind	0136fc80	00c47f10	CTCHeroStats_ProcessStateTransition	unlanded			11	11	01215910	0x10	11		01215939	00c47f18	parent-unlanded
+0121592b	Unwind@0121592b	unwind	0136fc80	00c47f10	CTCHeroStats_ProcessStateTransition	unlanded			14	24	01215910	0x1b	14		01215939	00c47f18	parent-unlanded
+01215a10	Unwind@01215a10	unwind	0136fe00	00c48e00	Pop	landed	00/c4/PKCStaticQueueSDecoderMessage_Pop_00c48e00.cpp	/O2 /Oy /W3 /EHsc	8	32	01215a10	0x0	8		01215a18	00c48e02	yes
+01215a30	Unwind@01215a30	unwind	0136fe24	00c48f80	PKCStaticQueue	landed	00/c4/PKCStaticQueue_PKCStaticQueue_00c48f80.cpp	/O2 /Oy /W3 /EHsc	11	32	01215a30	0x0	11		01215a3b	00c48f88	yes
+01215a50	Unwind@01215a50	unwind	0136fe48	00c49010	Push	landed	00/c4/PKCStaticQueueSDecoderMessage_Push_00c49010.cpp	/O2 /Oy /W3 /EHsc	8	32	01215a50	0x0	8		01215a58	00c49018	yes
+01215a70	Unwind@01215a70	unwind	0136fe7c	00c491e0	CFrame_ctor	unlanded			8	8	01215a70	0x0	8		01215a88	00c491e8	parent-unlanded
+01215a78	Unwind@01215a78	unwind	0136fe7c	00c491e0	CFrame_ctor	unlanded			8	8	01215a70	0x8	8		01215a88	00c491e8	parent-unlanded
+01215a80	Unwind@01215a80	unwind	0136fe7c	00c491e0	CFrame_ctor	unlanded			8	32	01215a70	0x10	8		01215a88	00c491e8	parent-unlanded
+01215b60	Unwind@01215b60	unwind	0136ff78	00c49d50	Push	landed	00/c4/CLockedRingBuffer_Push_00c49d50.cpp	/O2 /Oy /W3 /EHsc	8	32	01215b60	0x0	8		01215b68	00c49d52	yes
+01215b80	Unwind@01215b80	unwind	0136ffa4	00c49470	sub_00c49470	unlanded			8	8	01215b80	0x0	8		01215b90	00c49478	parent-unlanded
+01215b88	Unwind@01215b88	unwind	0136ffa4	00c49470	sub_00c49470	unlanded			8	18	01215b80	0x8	8		01215b90	00c49478	parent-unlanded
+01215bdd	Unwind@01215bdd	unwind	01370044	00c49820	CCodaFrameStreamer_Initialize	unlanded			8	8	01215bdd	0x0	8		01215c21	00c49822	parent-unlanded
+01215be5	Unwind@01215be5	unwind	01370044	00c49820	CCodaFrameStreamer_Initialize	unlanded			11	11	01215bdd	0x8	11		01215c21	00c49822	parent-unlanded
+01215bf0	Unwind@01215bf0	unwind	01370044	00c49820	CCodaFrameStreamer_Initialize	unlanded			11	11	01215bdd	0x13	11		01215c21	00c49822	parent-unlanded
+01215bfb	Unwind@01215bfb	unwind	01370044	00c49820	CCodaFrameStreamer_Initialize	unlanded			11	11	01215bdd	0x1e	11		01215c21	00c49822	parent-unlanded
+01215c06	Unwind@01215c06	unwind	01370044	00c49820	CCodaFrameStreamer_Initialize	unlanded			8	8	01215bdd	0x29	8		01215c21	00c49822	parent-unlanded
+01215c0e	Unwind@01215c0e	unwind	01370044	00c49820	CCodaFrameStreamer_Initialize	unlanded			11	11	01215bdd	0x31	11		01215c21	00c49822	parent-unlanded
+01215c19	Unwind@01215c19	unwind	01370044	00c49820	CCodaFrameStreamer_Initialize	unlanded			8	23	01215bdd	0x3c	8		01215c21	00c49822	parent-unlanded
+01215c30	Unwind@01215c30	unwind	01370068	00c49e30	Put	landed	00/c4/PKCStaticQueueCUnprovenStaticQueueWord00C49E30_Put_00c49e30.cpp	/O2 /Oy /W3 /EHsc	8	32	01215c30	0x0	8		01215c38	00c49e38	yes
+01215c50	Unwind@01215c50	unwind	0137008c	00c49f10	Take	landed	00/c4/PKCStaticQueueCUnprovenStaticQueueWord00C49E30_Take_00c49f10.cpp	/O2 /Oy /W3 /EHsc	8	32	01215c50	0x0	8		01215c58	00c49f18	yes
+01215cd0	Unwind@01215cd0	unwind	01370134	00c4a1a0	GetAvailableReadSize	landed	00/c4/PKCBufferedReader_GetAvailableReadSize_00c4a1a0.cpp	/O2 /Oy /W3 /EHsc	8	8	01215cd0	0x0	8		01215ce8	00c4a1a8	yes
+01215cd8	Unwind@01215cd8	unwind	01370134	00c4a1a0	GetAvailableReadSize	landed	00/c4/PKCBufferedReader_GetAvailableReadSize_00c4a1a0.cpp	/O2 /Oy /W3 /EHsc	8	8	01215cd0	0x8	8		01215ce8	00c4a1a8	yes
+01215ce0	Unwind@01215ce0	unwind	01370134	00c4a1a0	GetAvailableReadSize	landed	00/c4/PKCBufferedReader_GetAvailableReadSize_00c4a1a0.cpp	/O2 /Oy /W3 /EHsc	8	18	01215cd0	0x10	8		01215ce8	00c4a1a8	yes
+01215cf2	Unwind@01215cf2	unwind	01370188	00c4a3b0	PKCBufferedReader::PrimeBuffer	unlanded			8	8	01215cf2	0x0	8		01215d2a	00c4a3b8	parent-unlanded
+01215cfa	Unwind@01215cfa	unwind	01370188	00c4a3b0	PKCBufferedReader::PrimeBuffer	unlanded			8	8	01215cf2	0x8	8		01215d2a	00c4a3b8	parent-unlanded
+01215d02	Unwind@01215d02	unwind	01370188	00c4a3b0	PKCBufferedReader::PrimeBuffer	unlanded			8	8	01215cf2	0x10	8		01215d2a	00c4a3b8	parent-unlanded
+01215d0a	Unwind@01215d0a	unwind	01370188	00c4a3b0	PKCBufferedReader::PrimeBuffer	unlanded			8	8	01215cf2	0x18	8		01215d2a	00c4a3b8	parent-unlanded
+01215d12	Unwind@01215d12	unwind	01370188	00c4a3b0	PKCBufferedReader::PrimeBuffer	unlanded			8	8	01215cf2	0x20	8		01215d2a	00c4a3b8	parent-unlanded
+01215d1a	Unwind@01215d1a	unwind	01370188	00c4a3b0	PKCBufferedReader::PrimeBuffer	unlanded			8	8	01215cf2	0x28	8		01215d2a	00c4a3b8	parent-unlanded
+01215d22	Unwind@01215d22	unwind	01370188	00c4a3b0	PKCBufferedReader::PrimeBuffer	unlanded			8	18	01215cf2	0x30	8		01215d2a	00c4a3b8	parent-unlanded
+01215d46	Unwind@01215d46	unwind	013701d0	00c4ab90	OnReadComplete	landed	00/c4/PKCBufferedReader_OnReadComplete_00c4ab90.cpp	/O2 /Oy /W3 /EHsc	8	18	01215d46	0x0	8		01215d4e	00c4ab98	yes
+01215d58	Unwind@01215d58	unwind	01370204	00c4ac70	ReturnBuffer	landed	00/c4/PKCBufferedReader_ReturnBuffer_00c4ac70.cpp	/O2 /Oy /W3 /EHsc	8	8	01215d58	0x0	8		01215d70	00c4ac78	yes
+01215d60	Unwind@01215d60	unwind	01370204	00c4ac70	ReturnBuffer	landed	00/c4/PKCBufferedReader_ReturnBuffer_00c4ac70.cpp	/O2 /Oy /W3 /EHsc	8	8	01215d58	0x8	8		01215d70	00c4ac78	yes
+01215d68	Unwind@01215d68	unwind	01370204	00c4ac70	ReturnBuffer	landed	00/c4/PKCBufferedReader_ReturnBuffer_00c4ac70.cpp	/O2 /Oy /W3 /EHsc	8	18	01215d58	0x10	8		01215d70	00c4ac78	yes
+01215d7a	Unwind@01215d7a	unwind	01370228	00c4aeb0	WaitForSlot	unlanded			8	18	01215d7a	0x0	8		01215d82	00c4aeb8	parent-unlanded
+01215d8c	Unwind@01215d8c	unwind	0137024c	00c4b060	ReturnCompletedBuffers	landed	00/c4/PKCBufferedReader_ReturnCompletedBuffers_00c4b060.cpp	/O2 /Oy /W3 /EHsc	8	18	01215d8c	0x0	8		01215d94	00c4b068	yes
+01215d9e	Unwind@01215d9e	unwind	01370270	00c4b060	ReturnCompletedBuffers	landed	00/c4/PKCBufferedReader_ReturnCompletedBuffers_00c4b060.cpp	/O2 /Oy /W3 /EHsc	8	18	01215d9e	0x0	8		01215da6	00c4b168	no
+01215dbb	Unwind@01215dbb	unwind	013702a4	00c4b270	~PKCBufferedReader	landed	00/c4/PKCBufferedReader_PKCBufferedReader_00c4b270.cpp	/O2 /Oy /W3 /EHsc	11	11	01215db0	0xb	11		01215dce	00c4b272	yes
+01215dd8	Unwind@01215dd8	unwind	013702f0	00c4b300	PKCBufferedReader	unlanded			11	11	01215dd8	0x0	11		01215e0e	00c4b302	parent-unlanded
+01215de3	Unwind@01215de3	unwind	013702f0	00c4b300	PKCBufferedReader	unlanded			11	11	01215dd8	0xb	11		01215e0e	00c4b302	parent-unlanded
+01215dee	Unwind@01215dee	unwind	013702f0	00c4b300	PKCBufferedReader	unlanded			8	8	01215dd8	0x16	8		01215e0e	00c4b302	parent-unlanded
+01215df6	Unwind@01215df6	unwind	013702f0	00c4b300	PKCBufferedReader	unlanded			8	8	01215dd8	0x1e	8		01215e0e	00c4b302	parent-unlanded
+01215dfe	Unwind@01215dfe	unwind	013702f0	00c4b300	PKCBufferedReader	unlanded			8	8	01215dd8	0x26	8		01215e0e	00c4b302	parent-unlanded
+01215e06	Unwind@01215e06	unwind	013702f0	00c4b300	PKCBufferedReader	unlanded			8	18	01215dd8	0x2e	8		01215e0e	00c4b302	parent-unlanded
+01215e18	Unwind@01215e18	unwind	0137031c	00c4b640	NScript_CV_MurderTwistScript_InitializeRead	unlanded			8	8	01215e18	0x0	8		01215e28	00c4b642	parent-unlanded
+01215e20	Unwind@01215e20	unwind	0137031c	00c4b640	NScript_CV_MurderTwistScript_InitializeRead	unlanded			8	18	01215e18	0x8	8		01215e28	00c4b642	parent-unlanded
+01215e32	Unwind@01215e32	unwind	01370348	00c4b890	ReadBlock	unlanded			8	8	01215e32	0x0	8		01215e42	00c4b892	parent-unlanded
+01215e3a	Unwind@01215e3a	unwind	01370348	00c4b890	ReadBlock	unlanded			8	22	01215e32	0x8	8		01215e42	00c4b892	parent-unlanded
+01215e50	Unwind@01215e50	unwind	0137036c	00c4bb20	Put	landed	00/c4/PKCStaticQueueCUnprovenStaticQueueWord00C4BB20_Put_00c4bb20.cpp	/O2 /Oy /W3 /EHsc	8	32	01215e50	0x0	8		01215e58	00c4bb28	yes
+01215ef0	Unwind@01215ef0	unwind	01370428	00c4beb0	Take	landed	00/c4/PKCStaticQueueCUnprovenStaticQueueWord00C4BB20_Take_00c4beb0.cpp	/O2 /Oy /W3 /EHsc	8	32	01215ef0	0x0	8		01215ef8	00c4beb8	yes
+01215f10	Unwind@01215f10	unwind	0137044c	00c4c080	CRACBuffer	landed	00/c4/CRACBuffer_CRACBuffer_00c4c080.cpp	/O2 /Oy /W3 /EHsc	8	18	01215f10	0x0	8		01215f18	00c4c08c	yes
+01215f5d	Unwind@01215f5d	unwind	013704e0	00c4c440	PKRACMasterObject_VerifyAndNotify	unlanded			8	8	01215f5d	0x0	8		01215f85	00c4c442	parent-unlanded
+01215f65	Unwind@01215f65	unwind	013704e0	00c4c440	PKRACMasterObject_VerifyAndNotify	unlanded			8	8	01215f5d	0x8	8		01215f85	00c4c442	parent-unlanded
+01215f6d	Unwind@01215f6d	unwind	013704e0	00c4c440	PKRACMasterObject_VerifyAndNotify	unlanded			8	8	01215f5d	0x10	8		01215f85	00c4c442	parent-unlanded
+01215f75	Unwind@01215f75	unwind	013704e0	00c4c440	PKRACMasterObject_VerifyAndNotify	unlanded			8	8	01215f5d	0x18	8		01215f85	00c4c442	parent-unlanded
+01215f7d	Unwind@01215f7d	unwind	013704e0	00c4c440	PKRACMasterObject_VerifyAndNotify	unlanded			8	18	01215f5d	0x20	8		01215f85	00c4c442	parent-unlanded
+01215ff0	Unwind@01215ff0	unwind	013705b0	00c4cab0	PKRACDependency_OnFinalized	unlanded			8	8	01215ff0	0x0	8		01216013	00c4cab2	parent-unlanded
+01215ff8	Unwind@01215ff8	unwind	013705b0	00c4cab0	PKRACDependency_OnFinalized	unlanded			8	8	01215ff0	0x8	8		01216013	00c4cab2	parent-unlanded
+01216000	Unwind@01216000	unwind	013705b0	00c4cab0	PKRACDependency_OnFinalized	unlanded			11	11	01215ff0	0x10	11		01216013	00c4cab2	parent-unlanded
+0121600b	Unwind@0121600b	unwind	013705b0	00c4cab0	PKRACDependency_OnFinalized	unlanded			8	18	01215ff0	0x1b	8		01216013	00c4cab2	parent-unlanded
+01216140	Unwind@01216140	unwind	0137071c	00c54510	Initialise	landed	00/c5/CDecodedStream_Initialise_00c54510.cpp	/O2 /Oy /W3 /EHsc	8	32	01216140	0x0	8		01216148	00c54512	yes
+01216180	Unwind@01216180	unwind	013707a4	00c55270	CTCHeroStats_CreateSpellEffect	unlanded			11	11	01216180	0x0	11		012161d8	00c55278	parent-unlanded
+0121618b	Unwind@0121618b	unwind	013707a4	00c55270	CTCHeroStats_CreateSpellEffect	unlanded			11	11	01216180	0xb	11		012161d8	00c55278	parent-unlanded
+01216196	Unwind@01216196	unwind	013707a4	00c55270	CTCHeroStats_CreateSpellEffect	unlanded			11	11	01216180	0x16	11		012161d8	00c55278	parent-unlanded
+012161a1	Unwind@012161a1	unwind	013707a4	00c55270	CTCHeroStats_CreateSpellEffect	unlanded			11	11	01216180	0x21	11		012161d8	00c55278	parent-unlanded
+012161ac	Unwind@012161ac	unwind	013707a4	00c55270	CTCHeroStats_CreateSpellEffect	unlanded			11	11	01216180	0x2c	11		012161d8	00c55278	parent-unlanded
+012161b7	Unwind@012161b7	unwind	013707a4	00c55270	CTCHeroStats_CreateSpellEffect	unlanded			11	11	01216180	0x37	11		012161d8	00c55278	parent-unlanded
+012161c2	Unwind@012161c2	unwind	013707a4	00c55270	CTCHeroStats_CreateSpellEffect	unlanded			11	11	01216180	0x42	11		012161d8	00c55278	parent-unlanded
+012161cd	Unwind@012161cd	unwind	013707a4	00c55270	CTCHeroStats_CreateSpellEffect	unlanded			11	35	01216180	0x4d	11		012161d8	00c55278	parent-unlanded
+01216330	Unwind@01216330	unwind	01370960	00c5dd70	Audio_InitializeDriver	unlanded			8	8	01216330	0x0	8		01216348	00c5dd78	parent-unlanded
+01216338	Unwind@01216338	unwind	01370960	00c5dd70	Audio_InitializeDriver	unlanded			8	8	01216330	0x8	8		01216348	00c5dd78	parent-unlanded
+01216340	Unwind@01216340	unwind	01370960	00c5dd70	Audio_InitializeDriver	unlanded			8	32	01216330	0x10	8		01216348	00c5dd78	parent-unlanded
+012163d0	Unwind@012163d0	unwind	013709f4	00c60930	~CEaxContext	landed	00/c6/CEaxContext_CEaxContext_00c60930.cpp	/O2 /Oy /W3 /EHsc	8	32	012163d0	0x0	8		012163d8	00c60932	yes
+01216410	Unwind@01216410	unwind	01370a3c	00c61610	CShadowRendererSceneData	unlanded			8	32	01216410	0x0	8		01216418	00c61612	parent-unlanded
+01216430	Unwind@01216430	unwind	01370a60	00c62790	Read	landed	00/c6/CPKDecompressedStream_Read_00c62790.cpp	/O2 /Oy /W3 /EHsc	8	18	01216430	0x0	8		01216438	00c62798	yes
+01216442	Unwind@01216442	unwind	01370a84	00c62920	CAudioStreamOwner_00c62920	landed	00/c6/CAudioStreamOwner00c62920_CAudioStreamOwner00c62920_00c62920.cpp	/O2 /Oy /W3 /EHsc	11	30	01216442	0x0	11		0121644d	00c62928	yes
+01216460	Unwind@01216460	unwind	01370ab0	00c62a50	C16BitSamplePtr	landed	00/c6/C16BitSamplePtr_C16BitSamplePtr_00c62a50.cpp	/O2 /Oy /W3 /EHsc	8	8	01216460	0x0	8		01216470	00c62a58	yes
+01216468	Unwind@01216468	unwind	01370ab0	00c62a50	C16BitSamplePtr	landed	00/c6/C16BitSamplePtr_C16BitSamplePtr_00c62a50.cpp	/O2 /Oy /W3 /EHsc	8	24	01216460	0x8	8		01216470	00c62a58	yes
+012164c0	Unwind@012164c0	unwind	01370b2c	00c62e60	PassToSlave	landed	00/c6/PKRASlaveObject_PassToSlave_00c62e60.cpp	/O2 /Oy /W3 /EHsc	8	32	012164c0	0x0	8		012164c8	00c62e62	yes
+01216710	Unwind@01216710	unwind	01370d2c	00c6afc0	CSoundOutput00c6afc0	landed	00/c6/CSoundOutput00c6afc0_CSoundOutput00c6afc0_00c6afc0.cpp	/O2 /Oy /W3 /EHsc	14	32	01216710	0x0	14		0121671e	00c6afc2	yes
+01216762	Unwind@01216762	unwind	01370dc0	00c73af0	CreateDecoderStream_00c73af0	unlanded			11	11	01216762	0x0	11		012167ad	00c73af2	parent-unlanded
+0121676d	Unwind@0121676d	unwind	01370dc0	00c73af0	CreateDecoderStream_00c73af0	unlanded			14	14	01216762	0xb	14		012167ad	00c73af2	parent-unlanded
+0121677b	Unwind@0121677b	unwind	01370dc0	00c73af0	CreateDecoderStream_00c73af0	unlanded			11	11	01216762	0x19	11		012167ad	00c73af2	parent-unlanded
+01216786	Unwind@01216786	unwind	01370dc0	00c73af0	CreateDecoderStream_00c73af0	unlanded			14	14	01216762	0x24	14		012167ad	00c73af2	parent-unlanded
+01216794	Unwind@01216794	unwind	01370dc0	00c73af0	CreateDecoderStream_00c73af0	unlanded			11	11	01216762	0x32	11		012167ad	00c73af2	parent-unlanded
+0121679f	Unwind@0121679f	unwind	01370dc0	00c73af0	CreateDecoderStream_00c73af0	unlanded			14	24	01216762	0x3d	14		012167ad	00c73af2	parent-unlanded
+012167b7	Unwind@012167b7	unwind	01370de4	00c73d90	DestroyDecompressor	landed	00/c7/global_DestroyDecompressor_00c73d90.cpp	/O2 /Oy /W3 /EHsc	8	25	012167b7	0x0	8		012167bf	00c73d98	yes
+0121685d	Unwind@0121685d	unwind	01370eb0	00c88780	COggVorbisStream	landed	00/c8/COggVorbisStream_COggVorbisStream_00c88780.cpp	/O2 /Oy /W3 /EHsc	8	8	0121685d	0x0	8		01216870	00c88782	yes
+01216865	Unwind@01216865	unwind	01370eb0	00c88780	COggVorbisStream	landed	00/c8/COggVorbisStream_COggVorbisStream_00c88780.cpp	/O2 /Oy /W3 /EHsc	11	27	0121685d	0x8	11		01216870	00c88782	yes
+01216940	Unwind@01216940	unwind	01370fb4	00ca4f90	EndOfStream	landed	00/ca/CRendererInputPin_EndOfStream_00ca4f90.cpp	/O2 /Oy /W3 /EHsc	8	8	01216940	0x0	8		01216950	00ca4f92	yes
+01216948	Unwind@01216948	unwind	01370fb4	00ca4f90	EndOfStream	landed	00/ca/CRendererInputPin_EndOfStream_00ca4f90.cpp	/O2 /Oy /W3 /EHsc	8	24	01216940	0x8	8		01216950	00ca4f92	yes
+012169a0	Unwind@012169a0	unwind	01371030	00ca5f50	GetStdDev	landed	00/ca/CBaseVideoRenderer_GetStdDev_00ca5f50.cpp	/O2 /Oy /W3 /EHsc	8	32	012169a0	0x0	8		012169a8	00ca5f58	yes
+01216a50	Unwind@01216a50	unwind	013710e4	00ca6450	GetMediaPositionInterface	landed	00/ca/CBaseRenderer_GetMediaPositionInterface_00ca6450.cpp	/O2 /Oy /W3 /EHsc	8	8	01216a50	0x0	8		01216a63	00ca6452	yes
+01216a58	Unwind@01216a58	unwind	013710e4	00ca6450	GetMediaPositionInterface	landed	00/ca/CBaseRenderer_GetMediaPositionInterface_00ca6450.cpp	/O2 /Oy /W3 /EHsc	11	24	01216a50	0x8	11		01216a63	00ca6452	yes
+01216a70	Unwind@01216a70	unwind	01371108	00ca66d0	Stop	landed	00/ca/CBaseRenderer_Stop_00ca66d0.cpp	/O2 /Oy /W3 /EHsc	8	32	01216a70	0x0	8		01216a78	00ca66d8	yes
+01216a90	Unwind@01216a90	unwind	0137112c	00ca67b0	Pause	landed	00/ca/CBaseRenderer_Pause_00ca67b0.cpp	/O2 /Oy /W3 /EHsc	8	32	01216a90	0x0	8		01216a98	00ca67b2	yes
+01216ab0	Unwind@01216ab0	unwind	01371150	00ca68f0	Run	landed	00/ca/CBaseRenderer_Run_00ca68f0.cpp	/O2 /Oy /W3 /EHsc	8	32	01216ab0	0x0	8		01216ab8	00ca68f2	yes
+01216af0	Unwind@01216af0	unwind	013711a8	00ca6c40	PrepareReceive	landed	00/ca/CBaseRenderer_PrepareReceive_00ca6c40.cpp	/O2 /Oy /W3 /EHsc	8	8	01216af0	0x0	8		01216b00	00ca6c42	yes
+01216af8	Unwind@01216af8	unwind	013711a8	00ca6c40	PrepareReceive	landed	00/ca/CBaseRenderer_PrepareReceive_00ca6c40.cpp	/O2 /Oy /W3 /EHsc	8	24	01216af0	0x8	8		01216b00	00ca6c42	yes
+01216b10	Unwind@01216b10	unwind	013711e4	00ca6e10	Receive	landed	00/ca/CBaseRenderer_Receive_00ca6e10.cpp	/O2 /Oy /W3 /EHsc	8	8	01216b10	0x0	8		01216b30	00ca6e18	yes
+01216b18	Unwind@01216b18	unwind	013711e4	00ca6e10	Receive	landed	00/ca/CBaseRenderer_Receive_00ca6e10.cpp	/O2 /Oy /W3 /EHsc	8	8	01216b10	0x8	8		01216b30	00ca6e18	yes
+01216b20	Unwind@01216b20	unwind	013711e4	00ca6e10	Receive	landed	00/ca/CBaseRenderer_Receive_00ca6e10.cpp	/O2 /Oy /W3 /EHsc	8	8	01216b10	0x10	8		01216b30	00ca6e18	yes
+01216b28	Unwind@01216b28	unwind	013711e4	00ca6e10	Receive	landed	00/ca/CBaseRenderer_Receive_00ca6e10.cpp	/O2 /Oy /W3 /EHsc	8	24	01216b10	0x18	8		01216b30	00ca6e18	yes
+01216b80	Unwind@01216b80	unwind	01371258	00ca7210	Receive	landed	00/ca/CRendererInputPin_Receive_00ca7210.cpp	/O2 /Oy /W3 /EHsc	8	8	01216b80	0x0	8		01216b90	00ca721c	yes
+01216b88	Unwind@01216b88	unwind	01371258	00ca7210	Receive	landed	00/ca/CRendererInputPin_Receive_00ca7210.cpp	/O2 /Oy /W3 /EHsc	8	24	01216b80	0x8	8		01216b90	00ca721c	yes
+01216ba0	Unwind@01216ba0	unwind	0137127c	00ca7680	SetSyncSource	landed	00/ca/CBaseFilter_SetSyncSource_00ca7680.cpp	/O2 /Oy /W3 /EHsc	8	32	01216ba0	0x0	8		01216ba8	00ca7688	yes
+01216bc0	Unwind@01216bc0	unwind	013712a0	00ca76f0	GetSyncSource	landed	00/ca/CBaseFilter_GetSyncSource_00ca76f0.cpp	/O2 /Oy /W3 /EHsc	8	32	01216bc0	0x0	8		01216bc8	00ca76f8	yes
+01216be0	Unwind@01216be0	unwind	013712c4	00ca7850	JoinFilterGraph	landed	00/ca/CBaseFilter_JoinFilterGraph_00ca7850.cpp	/O2 /Oy /W3 /EHsc	8	32	01216be0	0x0	8		01216be8	00ca7858	yes
+01216c20	Unwind@01216c20	unwind	01371314	00ca7c80	~CBasePin	landed	00/ca/CBasePin_CBasePin_00ca7c80.cpp	/O2 /Oy /W3 /EHsc	8	8	01216c20	0x0	8		01216c33	00ca7c82	yes
+01216c40	Unwind@01216c40	unwind	01371338	00ca8120	ReceiveConnection	landed	00/ca/CBasePin_ReceiveConnection_00ca8120.cpp	/O2 /Oy /W3 /EHsc	8	32	01216c40	0x0	8		01216c48	00ca8128	yes
+01216c60	Unwind@01216c60	unwind	0137135c	00ca8370	ConnectionMediaType	landed	00/ca/CBasePin_ConnectionMediaType_00ca8370.cpp	/O2 /Oy /W3 /EHsc	8	32	01216c60	0x0	8		01216c68	00ca8378	yes
+01216ca0	Unwind@01216ca0	unwind	013713a4	00ca89f0	GetAllocator	landed	00/ca/CBaseInputPin_GetAllocator_00ca89f0.cpp	/O2 /Oy /W3 /EHsc	8	32	01216ca0	0x0	8		01216ca8	00ca89f8	yes
+01216cc0	Unwind@01216cc0	unwind	013713c8	00ca8ac0	NotifyAllocator	landed	00/ca/CBaseInputPin_NotifyAllocator_00ca8ac0.cpp	/O2 /Oy /W3 /EHsc	8	32	01216cc0	0x0	8		01216cc8	00ca8ac8	yes
+01216ce0	Unwind@01216ce0	unwind	013713ec	00ca9710	Release	landed	00/ca/CDynamicOutputPin_Release_00ca9710.cpp		8	32	01216ce0	0x0	8		01216ce8	00ca97a8	no
+01216d20	Unwind@01216d20	unwind	0137143c	00ca9d00	~CBaseAllocator	landed	00/ca/CBaseAllocator_CBaseAllocator_00ca9d00.cpp	/O2 /Oy /W3 /EHsc	8	8	01216d20	0x0	8		01216d4f	00ca9d02	yes
+01216d28	Unwind@01216d28	unwind	0137143c	00ca9d00	~CBaseAllocator	landed	00/ca/CBaseAllocator_CBaseAllocator_00ca9d00.cpp	/O2 /Oy /W3 /EHsc	39	56	01216d20	0x8	39		01216d4f	00ca9d02	yes
+01216d60	Unwind@01216d60	unwind	01371460	00ca9fc0	SetNotify	landed	00/ca/CBaseAllocator_SetNotify_00ca9fc0.cpp	/O2 /Oy /W3 /EHsc	8	32	01216d60	0x0	8		01216d68	00ca9fc8	yes
+01216d80	Unwind@01216d80	unwind	01371484	00caa0a0	Commit	landed	00/ca/CBaseAllocator_Commit_00caa0a0.cpp	/O2 /Oy /W3 /EHsc	8	32	01216d80	0x0	8		01216d88	00caa0a8	yes
+01216da0	Unwind@01216da0	unwind	013714a8	00caa160	Decommit	landed	00/ca/CBaseAllocator_Decommit_00caa160.cpp	/O2 /Oy /W3 /EHsc	8	32	01216da0	0x0	8		01216da8	00caa168	yes
+01216dc0	Unwind@01216dc0	unwind	013714cc	00caa410	~CVtable_012bf83c	landed	00/ca/CVtable012bf83c_CVtable012bf83c_00caa410.cpp	/O2 /Oy /W3 /EHsc	8	32	01216dc0	0x0	8		01216dc8	00caa412	yes
+01216de0	Unwind@01216de0	unwind	013714f0	00caa790	~CVolume_00caa790	landed	00/ca/unattributed_CVolume00caa790_00caa790.cpp	/O2 /Oy /W3 /EHsc	8	32	01216de0	0x0	8		01216de8	00caa792	yes
+01216e00	Unwind@01216e00	unwind	01371514	00caa790	~CVolume_00caa790	landed	00/ca/unattributed_CVolume00caa790_00caa790.cpp	/O2 /Oy /W3 /EHsc	8	32	01216e00	0x0	8		01216e08	00caa868	no
+01216e20	Unwind@01216e20	unwind	01371538	00caa790	~CVolume_00caa790	landed	00/ca/unattributed_CVolume00caa790_00caa790.cpp	/O2 /Oy /W3 /EHsc	8	32	01216e20	0x0	8		01216e28	00caa8d8	no
+01216e40	Unwind@01216e40	unwind	0137155c	00caa790	~CVolume_00caa790	landed	00/ca/unattributed_CVolume00caa790_00caa790.cpp	/O2 /Oy /W3 /EHsc	8	32	01216e40	0x0	8		01216e48	00caa9c8	no
+01216e60	Unwind@01216e60	unwind	01371580	00caaac0	~CBaseFilter	landed	00/ca/CJoystickDX_CJoystickDX_00caaac0.cpp	/O2 /Oy /W3 /EHsc	8	32	01216e60	0x0	8		01216e68	00caaac2	yes
+01216ec0	Unwind@01216ec0	unwind	013715ec	00caaca0	Run	landed	00/ca/CBaseFilter_Run_00caaca0.cpp	/O2 /Oy /W3 /EHsc	8	32	01216ec0	0x0	8		01216ec8	00caaca2	yes
+01216ee0	Unwind@01216ee0	unwind	01371610	00caadb0	FindPin	landed	00/ca/CBaseFilter_FindPin_00caadb0.cpp	/O2 /Oy /W3 /EHsc	8	32	01216ee0	0x0	8		01216ee8	00caadb2	yes
+01216f00	Unwind@01216f00	unwind	01371634	00cab160	Next	landed	00/ca/CEnumMediaTypes_Next_00cab160.cpp	/O2 /Oy /W3 /EHsc /GS	8	32	01216f00	0x0	8		01216f08	00cab162	yes
+01216f20	Unwind@01216f20	unwind	01371658	00cab2b0	Skip	landed	00/ca/CEnumMediaTypes_Skip_00cab2b0.cpp	/O2 /Oy /W3 /EHsc /GS	8	32	01216f20	0x0	8		01216f28	00cab2b2	yes
+01216f40	Unwind@01216f40	unwind	01371684	00cab370	CEntry_Constructor	landed	00/ca/CBasePin_CEntryConstructor_00cab370.cpp	/O2 /Oy /W3 /GX	8	8	01216f40	0x0	8		01216f53	00cab372	yes
+01216f48	Unwind@01216f48	unwind	01371684	00cab370	CEntry_Constructor	landed	00/ca/CBasePin_CEntryConstructor_00cab370.cpp	/O2 /Oy /W3 /GX	11	24	01216f40	0x8	11		01216f53	00cab372	yes
+01216f60	Unwind@01216f60	unwind	013716a8	00cab470	Connect	landed	00/ca/CBasePin_Connect_00cab470.cpp	/O2 /Oy /W3 /EHsc	8	32	01216f60	0x0	8		01216f68	00cab478	yes
+01216f80	Unwind@01216f80	unwind	013716cc	00cab580	Disconnect	landed	00/ca/CBasePin_Disconnect_00cab580.cpp	/O2 /Oy /W3 /EHsc	8	32	01216f80	0x0	8		01216f88	00cab588	yes
+01216fa0	Unwind@01216fa0	unwind	013716f8	00cab770	CDynamicOutputPin	landed	00/ca/CDynamicOutputPin_CDynamicOutputPin_00cab770.cpp	/O2 /Oy /W3 /EHsc	8	8	01216fa0	0x0	8		01216fb6	00cab772	yes
+01216fa8	Unwind@01216fa8	unwind	013716f8	00cab770	CDynamicOutputPin	landed	00/ca/CDynamicOutputPin_CDynamicOutputPin_00cab770.cpp	/O2 /Oy /W3 /EHsc	14	24	01216fa0	0x8	14		01216fb6	00cab772	yes
+01217000	Unwind@01217000	unwind	01371764	00cabb70	ReleaseBuffer	landed	00/ca/CBaseAllocator_ReleaseBuffer_00cabb70.cpp	/O2 /Oy /W3 /EHsc	8	32	01217000	0x0	8		01217008	00cabb78	yes
+01217040	Unwind@01217040	unwind	013717ac	00cabed0	Clone	landed	00/ca/CEnumPins_Clone_00cabed0.cpp	/O2 /Oy /W3 /EHsc	11	32	01217040	0x0	11		0121704b	00cabed8	yes
+01217060	Unwind@01217060	unwind	013717d0	00cabfd0	Clone	landed	00/ca/CEnumMediaTypes_Clone_00cabfd0.cpp	/O2 /Oy /W3 /EHsc	11	32	01217060	0x0	11		0121706b	00cabfd8	yes
+01217080	Unwind@01217080	unwind	013717fc	00cac070	CBasePin	landed	00/ca/CBasePin_CBasePin_00cac070.cpp	/O2 /Oy /W3 /EHsc	8	8	01217080	0x0	8		01217093	00cac072	yes
+01217088	Unwind@01217088	unwind	013717fc	00cac070	CBasePin	landed	00/ca/CBasePin_CBasePin_00cac070.cpp	/O2 /Oy /W3 /EHsc	11	24	01217080	0x8	11		01217093	00cac072	yes
+012170a0	Unwind@012170a0	unwind	01371820	00cac170	EnumMediaTypes	landed	00/ca/CBasePin_EnumMediaTypes_00cac170.cpp	/O2 /Oy /W3 /EHsc	11	32	012170a0	0x0	11		012170ab	00cac178	yes
+012170c0	Unwind@012170c0	unwind	0137184c	00cac300	Initialize	landed	00/ca/CDynamicOutputPin_Initialize_00cac300.cpp	/O2 /Oy /W3 /GX	8	8	012170c0	0x0	8		012170d6	00cac302	yes
+012170c8	Unwind@012170c8	unwind	0137184c	00cac300	Initialize	landed	00/ca/CDynamicOutputPin_Initialize_00cac300.cpp	/O2 /Oy /W3 /GX	14	24	012170c0	0x8	14		012170d6	00cac302	yes
+012170e0	Unwind@012170e0	unwind	01371870	00cac4a0	OnRenderEffect	landed	00/ca/global_GradeRELOCATIONMATCHwithcl13103077_00cac4a0.cpp	/O2 /Oy /W3 /EHsc /GS	8	32	012170e0	0x0	8		012170e8	00cac4a2	yes
+01217100	Unwind@01217100	unwind	01371894	00cac640	Alloc	landed	00/ca/CMemAllocator_Alloc_00cac640.cpp	/O2 /Oy /W3 /EHsc	8	32	01217100	0x0	8		01217108	00cac648	yes
+01217120	Unwind@01217120	unwind	013718b8	00cac890	EnumPins	landed	00/ca/CBaseFilter_EnumPins_00cac890.cpp	/O2 /Oy /W3 /EHsc	11	32	01217120	0x0	11		0121712b	00cac898	yes
+01217140	Unwind@01217140	unwind	013718dc	00cac9d0	CreateInstance	landed	00/ca/CMemAllocator_CreateInstance_00cac9d0.cpp	/O2 /Oy /W3 /EHsc	11	32	01217140	0x0	11		0121714b	00cac9d2	yes
+012171a0	Unwind@012171a0	unwind	01371948	00caefb0	~CBase_00caefb0	landed	00/ca/CBase00caefb0_CBase00caefb0_00caefb0.cpp	/O2 /Oy /W3 /EHsc	39	64	012171a0	0x0	39		012171c7	00caefb2	yes
+012171e0	Unwind@012171e0	unwind	0137197c	00caf230	CDeferredCommand	landed	00/ca/CDeferredCommand_CDeferredCommand_00caf230.cpp	/O2 /Oy /W3 /EHsc	8	8	012171e0	0x0	8		012171fe	00caf232	yes
+012171e8	Unwind@012171e8	unwind	0137197c	00caf230	CDeferredCommand	landed	00/ca/CDeferredCommand_CDeferredCommand_00caf230.cpp	/O2 /Oy /W3 /EHsc	11	11	012171e0	0x8	11		012171fe	00caf232	yes
+012171f3	Unwind@012171f3	unwind	0137197c	00caf230	CDeferredCommand	landed	00/ca/CDeferredCommand_CDeferredCommand_00caf230.cpp	/O2 /Oy /W3 /EHsc	11	29	012171e0	0x13	11		012171fe	00caf232	yes
+01217210	Unwind@01217210	unwind	013719a8	00caf480	~CVtable_012bf8d4	landed	00/ca/CVtable012bf8d4_CVtable012bf8d4_00caf480.cpp	/O2 /Oy /W3 /EHsc	8	8	01217210	0x0	8		01217223	00caf482	yes
+01217218	Unwind@01217218	unwind	013719a8	00caf480	~CVtable_012bf8d4	landed	00/ca/CVtable012bf8d4_CVtable012bf8d4_00caf480.cpp	/O2 /Oy /W3 /EHsc	11	24	01217210	0x8	11		01217223	00caf482	yes
+01217230	Unwind@01217230	unwind	013719dc	00caf500	CCmdQueue	landed	00/ca/CCmdQueue_CCmdQueue_00caf500.cpp	/O2 /Oy /W3 /EHsc	11	11	01217230	0x0	11		01217251	00caf502	yes
+0121723b	Unwind@0121723b	unwind	013719dc	00caf500	CCmdQueue	landed	00/ca/CCmdQueue_CCmdQueue_00caf500.cpp	/O2 /Oy /W3 /EHsc	11	11	01217230	0xb	11		01217251	00caf502	yes
+01217246	Unwind@01217246	unwind	013719dc	00caf500	CCmdQueue	landed	00/ca/CCmdQueue_CCmdQueue_00caf500.cpp	/O2 /Oy /W3 /EHsc	11	26	01217230	0x16	11		01217251	00caf502	yes
+01217260	Unwind@01217260	unwind	01371a18	00caf580	~CCmdQueue	landed	00/ca/CCmdQueue_CCmdQueue_00caf580.cpp	/O2 /Oy /W3 /EHsc	11	11	01217260	0x0	11		0121728c	00caf582	yes
+0121726b	Unwind@0121726b	unwind	01371a18	00caf580	~CCmdQueue	landed	00/ca/CCmdQueue_CCmdQueue_00caf580.cpp	/O2 /Oy /W3 /EHsc	11	11	01217260	0xb	11		0121728c	00caf582	yes
+01217276	Unwind@01217276	unwind	01371a18	00caf580	~CCmdQueue	landed	00/ca/CCmdQueue_CCmdQueue_00caf580.cpp	/O2 /Oy /W3 /EHsc	11	11	01217260	0x16	11		0121728c	00caf582	yes
+01217281	Unwind@01217281	unwind	01371a18	00caf580	~CCmdQueue	landed	00/ca/CCmdQueue_CCmdQueue_00caf580.cpp	/O2 /Oy /W3 /EHsc	11	31	01217260	0x21	11		0121728c	00caf582	yes
+012172c0	Unwind@012172c0	unwind	01371a68	00caf820	Set	landed	00/ca/CLockedUpdater00caf820_Set_00caf820.cpp	/O2 /Oy /W3 /EHsc	8	32	012172c0	0x0	8		012172c8	00caf822	yes
+01217300	Unwind@01217300	unwind	01371ab0	00caf8f0	GetDueCommand	landed	00/ca/CCmdQueue_GetDueCommand_00caf8f0.cpp	/O2 /Oy /W3 /EHsc	8	32	01217300	0x0	8		01217308	00caf8f2	yes
+01217320	Unwind@01217320	unwind	01371ad4	00cafa10	GetCommandDueFor	landed	00/ca/CCmdQueue_GetCommandDueFor_00cafa10.cpp	/O2 /Oy /W3 /EHsc	8	32	01217320	0x0	8		01217328	00cafa12	yes
+01217340	Unwind@01217340	unwind	01371af8	00cafe90	InsertTrackNodeSorted	landed	00/ca/CEditControlCentre_InsertTrackNodeSorted_00cafe90.cpp	/O2 /Oy /W3 /EHsc	8	32	01217340	0x0	8		01217348	00cafe92	yes
+012173e0	Unwind@012173e0	unwind	01371bb4	00cb1890	~CEngineLandscapePatch_00cb1890	landed	00/cb/unattributed_CEngineLandscapePatch00cb1890_00cb1890.cpp	/O2 /Oy /W3 /EHsc	11	10928	012173e0	0x0	11		012173eb	00cb1892	yes

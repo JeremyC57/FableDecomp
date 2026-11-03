@@ -1,0 +1,10 @@
+// EH unwind funclet @ 0x01214AFB of CActivationReceptor_00c38b20::CActivationReceptor_00c38b20 (parent @ 0x00C39130): VC7.1 emits the
+// unwind funclets and the __ehhandler thunk of an EH-framed function as one block after the function;
+// the linker placed Fable's blocks at 0x0121xxxx. This funclet is 14 bytes at +0x2c of the parent's
+// block and is produced by the parent's translation unit, included below (no code of its own).
+// Parent evidence: retail FuncInfo 0x0136EBEC lists 0x01214AFB in its unwind map; its __ehhandler thunk
+// 0x01214B17 (mov eax, FuncInfo) is pushed by the parent's EH prologue at 0x00C39130.
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x01214AFB, oracle length 14 bytes.
+// Grade: landed -- byte-exact (the parent's object, funclet block offset 0x2c) and the parent's
+//        behaviour test PASS under the Linux lane (Wine + cl 13.10.3077).
+#include "../src/compiled/00/c3/CActivationReceptor00c38b20_CActivationReceptor00c38b20_00c39130.cpp"

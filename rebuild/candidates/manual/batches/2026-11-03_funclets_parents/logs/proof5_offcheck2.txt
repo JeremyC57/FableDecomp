@@ -1,0 +1,5 @@
+01210a48 OK $L322 __ehhandler$?WaitForSprite@CSoundSystem@@QAEXXZ 18 leaf-ok
+01210bb6 OK $L634 __ehhandler$??0CSoundSystem@@QAE@PAUCSoundSystemSetup@@PAUCSteeringWorldEntry@@@Z 122 leaf-ok
+01211a25 OK $L595 __ehhandler$??0PKCDeferredBank@@QAE@PAVCThing@@PBUCDiceGameSetup@@J@Z 117 leaf-ok
+01214388 OK $L495 __ehhandler$??1CRowTable@@UAE@XZ 29 leaf-none
+01216f48 OK $L1179 __ehhandler$??0CBasePin@@QAE@PBGPAUCBaseFilter@@PAUCCritSec@@PAJ0W4PIN_DIRECTION@@@Z 29 leaf-none
