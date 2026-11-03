@@ -1,0 +1,13 @@
+CDecalBankFrameInfo* Frame; }* Data; unsigned long _pad2; };
+===
+CDecalBankFrameInfo* Frame; }* Data; };
+%%%
+        CEnginePrimitiveParticleDecalGroup landscape(DecalBankIndex, true, blendMode, blendOp, StencilCubeWidth, Flags);
+        info.Engine->SetChildPrimitive(handle, LandscapeDecalsChildPrimIndex, LandscapeDecalsPrimHandle, landscape, 0);
+        CEnginePrimitiveParticleDecalGroup mesh(DecalBankIndex, false, blendMode, blendOp, StencilCubeWidth, Flags);
+        info.Engine->SetChildPrimitive(handle, MeshDecalsChildPrimIndex, MeshDecalsPrimHandle, mesh, 0);
+===
+        info.Engine->SetChildPrimitive(handle, LandscapeDecalsChildPrimIndex, LandscapeDecalsPrimHandle,
+            CEnginePrimitiveParticleDecalGroup(DecalBankIndex, true, blendMode, blendOp, StencilCubeWidth, Flags), 0);
+        info.Engine->SetChildPrimitive(handle, MeshDecalsChildPrimIndex, MeshDecalsPrimHandle,
+            CEnginePrimitiveParticleDecalGroup(DecalBankIndex, false, blendMode, blendOp, StencilCubeWidth, Flags), 0);

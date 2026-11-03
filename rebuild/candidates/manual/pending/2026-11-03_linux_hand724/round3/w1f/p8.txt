@@ -1,0 +1,4 @@
+            CRGBColour colour = GFGetInterpolatedColour(colours[colourPos >> 8], colours[(colourPos >> 8) + 1], colourPos & 0xff);
+===
+            unsigned long colourIndex = colourPos >> 8;
+            CRGBColour colour = GFGetInterpolatedColour(colours[colourIndex], colours[colourIndex + 1], colourPos & 0xff);

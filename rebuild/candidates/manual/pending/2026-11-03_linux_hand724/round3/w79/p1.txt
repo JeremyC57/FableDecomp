@@ -1,0 +1,29 @@
+    if (target && !target->IsDead() && rangedAttacks->ProjectileWeaponZLockPressure > 0.0f && target->HasTC(TCI_HIT_LOCATIONS)) {
+        const CTCHitLocations* hitLocations;
+        target->PeekTC(&hitLocations);
+        C3DVector centre;
+===
+    const CTCHitLocations* hitLocations;
+    if (target && !target->IsDead() && rangedAttacks->ProjectileWeaponZLockPressure > 0.0f && target->PeekTC(&hitLocations)) {
+        C3DVector centre;
+%%%
+        C3DVector targetPos = centre;
+        float distanceToTarget = (centre - GetObservedThing()->GetPos()).GetMagnitude();
+===
+        float distanceToTarget = (centre - GetObservedThing()->GetPos()).GetMagnitude();
+        C3DVector targetPos = centre;
+%%%
+    C3DVector observedPos(GetObservedThing()->GetPos().X, GetObservedThing()->GetPos().Y, position.Z);
+    std::vector<const CThing*> nearby;
+    const CThingGameObject* observed = GetObservedThing();
+    C2DBoxI box(C2DCoordI((long)positionXY.X, (long)positionXY.Y), 2);
+    GetWorld().PeekThingSearchTools().GetAllThingsInRoughArea<const CThing>(box, CThingFilter_IsNot(*observed), nearby);
+===
+    const C3DVector& observedThingPos = GetObservedThing()->GetPos();
+    C3DVector observedPos(observedThingPos.X, observedThingPos.Y, position.Z);
+    std::vector<const CThing*> nearby;
+    CThingFilter_IsNot notObserved(*GetObservedThing());
+    long x = (long)positionXY.X;
+    long y = (long)positionXY.Y;
+    C2DBoxI box(C2DCoordI(x, y), 2);
+    GetWorld().PeekThingSearchTools().GetAllThingsInRoughArea<const CThing>(box, notObserved, nearby);

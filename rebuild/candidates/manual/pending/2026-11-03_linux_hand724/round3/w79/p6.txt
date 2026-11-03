@@ -1,0 +1,6 @@
+        C3DVector sideOffset = side * radius;
+        C3DVector upOffset = C3DVector(0.0f, 0.0f, 1.0f) * radius;
+===
+        C3DVector sideOffset = side * radius;
+        C3DVector up(0.0f, 0.0f, 1.0f);
+        C3DVector upOffset = up * radius;

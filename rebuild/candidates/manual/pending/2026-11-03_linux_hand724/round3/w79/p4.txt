@@ -1,0 +1,13 @@
+    if (!fovZoom) {
+        distance -= zoomOffset;
+        zoom += lookDirection * distance;
+    }
+===
+    if (!fovZoom)
+        zoom += lookDirection * (distance - zoomOffset);
+%%%
+    const C3DVector& observedThingPos = GetObservedThing()->GetPos();
+    C3DVector observedPos(observedThingPos.X, observedThingPos.Y, position.Z);
+===
+    C3DVector observedPos = GetObservedThing()->GetPos();
+    observedPos.Z = position.Z;

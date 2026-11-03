@@ -1,0 +1,11 @@
+address	name	evidence
+0x008771A0	?GetThingPointIntersectionFromTo@CTools@NCameraModes@@QBE_NABV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@ABVC3DVector@@1AAV5@2PAPBVCThing@@_NW4ELOSTest@12@@Z	Ego_r/FableWin exact symbol; ret 20h = 8 args; RELOCATION_MATCH this round
+0x00879900	?Update@CProjectileWeapon@NCameraModes@@UAEXXZ	FableWin.pdb symbol; slot 1 of vtable 0x01277804 (RTTI CProjectileWeapon)
+0x00B1E380	?DatabaseSerialise@CPSCDecalRenderer@NParticleEngine@@UAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@2@@Z	FableWin.pdb symbol; slot 17 of vtable 0x012A09BC; field names/strings match the PDB layout
+0x00B1F200	?PreparePrimitives@CPSCDecalRenderer@NParticleEngine@@UAEXMABVCEnginePrimitivePrepareInfo@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z	FableWin.pdb symbol; slot 13 of 0x012A09BC; ret 14h = 5 args
+0x00877840	?IsLineOfSight@CTools@NCameraModes@@QBE_NABV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@ABVC3DVector@@1AAV5@2AAMPAPBVCThing@@W4ELOSTest@12@_N@Z	Ego_r symbol (landed 0x00877C40 header names it); 0x00879900 calls it twice with 9 pushes
+0x00802390	?GetMaxTargetingDistance@CTCTargetingPlayer@@QBEMXZ	FableWin symbol + +0x48 MaxTargetingDistance
+0x00789A50	?GetProjectileTargetingZoomParameter@CTCHeroRangedAttacks@@QBEMXZ	FableWin symbol + +0x40 ProjectileWeaponZoomParameter
+0x00879680	?GetPhiForPosition@CProjectileWeapon@NCameraModes@@ABEMABVC3DVector@@@Z	FableWin private const member; usage in 0x00879900 (proposed, one name source)
+0x013BAF98	g_CUnprovenCameraInputFlag_013baf98	landed CameraState::ResetCameraInputFlag 0x00878A50 spelling (reused, not renamed); 0x00879900 negates stick.Y when set
+0x0129BA3C	?DELTA_NOTIONAL_ZERO@@3MB	landed naming wave 18 (NParticleEngineCPSCLight_AddToBoundingSphere_00b18af0.cpp); 0x00879900 squares it at run time (extern const, not folded)

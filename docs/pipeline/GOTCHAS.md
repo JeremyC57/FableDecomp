@@ -1831,3 +1831,8 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - 2026-11-03: a namespace-scope `const double TWO_PI` binds as `_TWO_PI` under VC7.1; `extern` without an initialiser changes the codegen.
 - 2026-11-03: per-TU inline opt-ins (`CBASICSTRING_EQ_OUTOFLINE`, `CVECTORMAP_FORCEINLINE_FIND`, `STLP_OUTOFLINE_UNINIT_FILL_N`) stay separate macros; folding them into the class branch changes landed bytes.
 - 2026-11-03: `repair_remove.py` takes a bare address (`00938db0`); `vland --land` refuses a row that is still landed.
+- 2026-11-03 (chunk 724 round 3): a `const char*` implicitly converted to a class argument is constructed before the other call arguments are evaluated; spell the conversion where retail builds it.
+- 2026-11-03: `(x * c1) * c2` keeps two multiplies; `x * c1 * c2` folds the constants into one.
+- 2026-11-03: a quoted `#include` inside a repo header resolves next to that header first, so it skips the overlay copy; overlay the includer too.
+- 2026-11-03: an accept-flag version and an if/else version of the same logic compile differently; 0x008771A0 matched with `if (cc || able) { if (retest) copy; } else copy;` and one shared `bool hit`.
+- 2026-11-03: `extern const float DELTA_NOTIONAL_ZERO` is not constant-folded; retail's folded uses need the defined const.

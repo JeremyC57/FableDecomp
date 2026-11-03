@@ -1,0 +1,5 @@
+address	name	status	attempts	note
+008771a0	NCameraModes::CTools::GetThingPointIntersectionFromTo	RELOCATION_MATCH	15	src/008771a0.cpp; vland RELOCATION_MATCH + test PASS; levers: unnamed (to-from) squared magnitude before the direction local, named retest start local, one bool hit for all paths, no accept flag (if(cc||able){if(retest) copy} else copy), hit=true first in the mesh branch
+00b1e380	NParticleEngine::CPSCDecalRenderer::DatabaseSerialise	DIFFER(3698v3698) dl=11	17	differ/00b1e380.cpp; residue: SizeFadeMinimum top-bitfield store register order (and edx after shl -> 1-byte shift -> loop padding) + PoolIncreaseSizeEnable merge scheduling
+00879900	NCameraModes::CProjectileWeapon::Update	DIFFER(3403v3415) dl=295	11	differ/00879900.cpp; structdiff 196->55; residue: frame 0x164 v 0x130, sphere-corner block temps, zoom block distance spill, else-branch operand order
+00b1f200	NParticleEngine::CPSCDecalRenderer::PreparePrimitives	DIFFER(3178v3195) dl=439	11	differ/00b1f200.cpp; structdiff 589->243; residue: life-fraction CSE, colour index addressing, register/slot choice, handle Release double null store

@@ -1,0 +1,13 @@
+        Phi += LockDeltaPhi;
+        HeightParam = LockDeltaHeightParam + HeightParam;
+        LockDeltaPhi = 0.0f;
+        LockDeltaHeightParam = 0.0f;
+        DeltaLockDeltaPhi = 0.0f;
+        DeltaLockDeltaHeightParam = 0.0f;
+===
+        Phi += LockDeltaPhi;
+        LockDeltaPhi = 0.0f;
+        DeltaLockDeltaPhi = 0.0f;
+        DeltaLockDeltaHeightParam = 0.0f;
+        HeightParam += LockDeltaHeightParam;
+        LockDeltaHeightParam = 0.0f;

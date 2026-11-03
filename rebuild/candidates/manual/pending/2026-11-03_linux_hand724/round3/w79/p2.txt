@@ -1,0 +1,24 @@
+        C3DVector leftPos = targetPos + sideOffset - upOffset;
+        C3DVector rightPos = targetPos - sideOffset + upOffset;
+===
+        C3DVector leftPos = targetPos + upOffset - sideOffset;
+        C3DVector rightPos = targetPos - upOffset + sideOffset;
+%%%
+        HeightParam += LockDeltaHeightParam;
+        LockDeltaPhi = 0.0f;
+===
+        HeightParam = LockDeltaHeightParam + HeightParam;
+        LockDeltaPhi = 0.0f;
+%%%
+    float heightParam = HeightParam + LockDeltaHeightParam;
+===
+    float heightParam = LockDeltaHeightParam + HeightParam;
+%%%
+    if (lookDirection.GetSquaredMagnitude() > 0.0001f * 0.0001f) {
+===
+    if (lookDirection.GetSquaredMagnitude() > DELTA_NOTIONAL_ZERO * DELTA_NOTIONAL_ZERO) {
+%%%
+extern bool g_CUnprovenCameraInputFlag_013baf98;           // 0x013BAF98 (landed CameraState::ResetCameraInputFlag 0x00878A50)
+===
+extern bool g_CUnprovenCameraInputFlag_013baf98;           // 0x013BAF98 (landed CameraState::ResetCameraInputFlag 0x00878A50)
+extern const float DELTA_NOTIONAL_ZERO;                    // 0x0129BA3C ?DELTA_NOTIONAL_ZERO@@3MB

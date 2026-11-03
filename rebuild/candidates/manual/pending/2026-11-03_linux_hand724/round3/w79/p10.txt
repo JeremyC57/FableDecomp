@@ -1,0 +1,12 @@
+        C3DVector centre;
+        float radius;
+        hitLocations->GetBoundingSphere(centre, radius, true);
+        float distanceToTarget = (centre - GetObservedThing()->GetPos()).GetMagnitude();
+        C3DVector targetPos = centre;
+        distance = distanceToTarget;
+===
+        C3DVector targetPos;
+        float radius;
+        hitLocations->GetBoundingSphere(targetPos, radius, true);
+        float distanceToTarget = (targetPos - GetObservedThing()->GetPos()).GetMagnitude();
+        distance = distanceToTarget;

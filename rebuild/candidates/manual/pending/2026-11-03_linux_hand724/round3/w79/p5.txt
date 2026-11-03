@@ -1,0 +1,7 @@
+        C3DVector sideOffset = side * radius;
+        C3DVector upOffset = C3DVector(0.0f, 0.0f, 1.0f) * radius;
+        C3DVector leftPos = targetPos + upOffset - sideOffset;
+        C3DVector rightPos = targetPos - upOffset + sideOffset;
+===
+        C3DVector leftPos = targetPos + C3DVector(0.0f, 0.0f, 1.0f) * radius - side * radius;
+        C3DVector rightPos = targetPos - C3DVector(0.0f, 0.0f, 1.0f) * radius + side * radius;

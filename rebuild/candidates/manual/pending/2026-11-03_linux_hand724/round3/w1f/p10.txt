@@ -1,0 +1,15 @@
+            float lifeFraction;
+            if (age / maxLife < decal->MinLife)
+                lifeFraction = decal->MinLife;
+            else if (age / maxLife > 1.0f)
+                lifeFraction = 1.0f;
+            else
+                lifeFraction = age / maxLife;
+===
+            float lifeFraction;
+            if (age / decal->MaxLife < decal->MinLife)
+                lifeFraction = decal->MinLife;
+            else if (age / decal->MaxLife > 1.0f)
+                lifeFraction = 1.0f;
+            else
+                lifeFraction = age / decal->MaxLife;

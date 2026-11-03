@@ -1,0 +1,8 @@
+    if (!fovZoom)
+        zoom += lookDirection * (distance - zoomOffset);
+===
+    if (!fovZoom) {
+        distance -= zoomOffset;
+        C3DVector translation = lookDirection * distance;
+        zoom += translation;
+    }

@@ -1,0 +1,19 @@
+            float lifeFraction;
+            if (age / maxLife < decal->MinLife) lifeFraction = decal->MinLife;
+            else if (age / maxLife > 1.0f) lifeFraction = 1.0f;
+            else lifeFraction = age / maxLife;
+===
+            float lifeFraction = decal->MinLife > age / maxLife ? decal->MinLife : (age / maxLife > 1.0f ? 1.0f : age / maxLife);
+%%%
+            long colourPos = GFFloatToLongNear(lifeFraction * 511.0f);
+===
+            unsigned long colourPos = GFFloatToLongNear(lifeFraction * 511.0f);
+%%%
+                    frame = GFFloatToLongNear(decal->GraphicFrame);
+===
+                    frame = GFFastFloatToLong(decal->GraphicFrame);
+%%%
+#include "engine/GFFloatToLongFloor.h"
+===
+#include "engine/GFFloatToLongFloor.h"
+#include "engine/GFFastFloatToLong.h"

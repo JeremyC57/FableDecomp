@@ -1,0 +1,35 @@
+static inline float CosineFade(float t)                     // 0.5 - 0.5*table lerp (inline in retail)
+{
+    float scaled = t * 0.5f * 1024.0f;
+    long index = GFFloatToLongNear(scaled - 0.5f);
+===
+static __forceinline float CosineFade(float t)              // 0.5 - 0.5*table lerp (inline in retail)
+{
+    float scaled = t * 0.5f * 1024.0f;
+    long index = GFFloatToLongNear(scaled - 0.5f);
+%%%
+    CRGBColour white(255, 255, 255, 255);
+    CRGBColour colours[3];
+    colours[0] = UseStartColour ? StartColour : UseMidColour ? MidColour : UseEndColour ? EndColour : white;
+    colours[2] = UseEndColour ? EndColour : UseMidColour ? MidColour : UseStartColour ? StartColour : white;
+===
+    CRGBColour colours[3];
+    colours[0] = UseStartColour ? StartColour : UseMidColour ? MidColour : UseEndColour ? EndColour : CRGBColour(255, 255, 255, 255);
+    colours[2] = UseEndColour ? EndColour : UseMidColour ? MidColour : UseStartColour ? StartColour : CRGBColour(255, 255, 255, 255);
+%%%
+                colour.A = (unsigned char)GFFloatToLongNear(maxAlpha < alpha ? maxAlpha : alpha);
+===
+                colour.A = (unsigned char)GFFloatToLongNear(std::min(alpha, maxAlpha));
+%%%
+                frame = lastFrame < frame ? lastFrame : frame;
+===
+                frame = std::min(frame, lastFrame);
+%%%
+                    size.X = MaxPoolSize < poolSize ? MaxPoolSize : poolSize;
+===
+                    size.X = std::min(poolSize, MaxPoolSize);
+%%%
+                        decal->ParentHandleList[0] = *parent;
+===
+                        decal->ParentHandleList[0].Clear();
+                        decal->ParentHandleList[0] = *parent;

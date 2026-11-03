@@ -1,0 +1,11 @@
+#define FABLE_RETAIL_CARRAY
+===
+#define FABLE_RETAIL_CARRAY
+#define FABLE_RETAIL_CIVCOUNTEDPOINTER
+%%%
+                    if (decal->PrimIDList.size() && decal->PrimIDList[0].size() && decal->PrimIDList[0][0] >= 0) {
+                        info.Engine->SetChildPrimitive(*parent, decal->PrimIDList[0][0],
+===
+                    long primID;
+                    if (GetFirstPrimID(*decal, primID)) {
+                        info.Engine->SetChildPrimitive(*parent, primID,

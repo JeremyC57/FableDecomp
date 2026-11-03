@@ -1,0 +1,55 @@
+address	attempt	grade	difflines	lever
+008771a0	a1	DIFFER(1240v1264)	dl=246	first full draft from disassembly
+008771a0	a2	DIFFER(1270v1264)	dl=253	named start local; direction assigned
+008771a0	a3	DIFFER(1258v1264)	dl=164	dir variant p3
+008771a0	a4	DIFFER(1254v1264)	dl=166	dir variant p4
+008771a0	a5	DIFFER(1240v1264)	dl=246	dir variant p5
+008771a0	a6	DIFFER(1258v1264)	dl=124	p3 + named start local
+008771a0	a7	DIFFER(1263v1264)	dl=67	restructured: bool hit for all paths, nested ifs
+008771a0	a8	DIFFER(1263v1264)	dl=67	pos/normal at function scope
+008771a0	a9	DIFFER(1263v1264)	dl=67	swap locationPos/Normal decl order
+008771a0	s0	DIFFER(1263v1264)	dl=67	gen base
+008771a0	a10	DIFFER(1264v1264)	dl=2	no accept flag: if(cc||able){if(Get(start,end)) copy} else copy
+008771a0	a10b	DIFFER(1264v1264)	dl=2	regrade a10 alone
+008771a0	a11	RELOCATION_MATCH	dl=	hit=true position 1
+008771a0	a12	RELOCATION_MATCH	dl=	hit=true position 2
+008771a0	fin	RELOCATION_MATCH	dl=	final src
+00b1e380	a1	DIFFER(3494v3698)	dl=982	first full draft
+00b1e380	a2	DIFFER(3494v3698)	dl=1183	each transfer value in its own block
+00b1e380	a3	DIFFER(3494v3698)	dl=1183	probe: __forceinline 2-arg Transfer
+00b1e380	a4	DIFFER(3654v3698)	dl=1312	include engine/CPersistContext.h directly (fable_persist_context.h resolved the repo copy)
+00b1e380	a5	DIFFER(3649v3698)	dl=461	implicit const char* -> CCharString in FindFirstSymbolWithVal
+00b1e380	a6	DIFFER(3649v3698)	dl=98	legacy bools in own scopes; reciprocal*(max-min)+min conversions
+00b1e380	a7	SRC_FAIL	dl=	parenthesised (v*(1/N))*(max-min)+min keeps two fmuls
+00b1e380	a8	DIFFER(3698v3698)	dl=83	parenthesised (v*(1/N))*(max-min)+min keeps two fmuls (fixed parens)
+00b1e380	a9	DIFFER(3698v3698)	dl=38	save SpriteFlags 2-arg; legacy bools explicit false default
+00b1e380	a10	DIFFER(3698v3698)	dl=33	save-path SpriteFlags in own block
+00b1e380	a11	DIFFER(3698v3698)	dl=11	legacy: one reused bool + function-scope alignment
+00b1e380	a12i1	DIFFER(3698v3698)	dl=11	SizeFadeMinimum store variant i1
+00b1e380	a12i2	DIFFER(3698v3698)	dl=11	SizeFadeMinimum store variant i2
+00b1e380	a12i3	DIFFER(3699v3698)	dl=16	SizeFadeMinimum store variant i3
+00b1e380	a13j1	DIFFER(3698v3698)	dl=11	SizeFadeMinimum store variant j1
+00b1e380	a13j2	DIFFER(3698v3698)	dl=11	SizeFadeMinimum store variant j2
+00879900	a1	DIFFER(3392v3415)	dl=446	first full draft
+00879900	a2	DIFFER(3346v3415)	dl=302	PeekTC in condition; targetPos after distance; one GetPos at end; named IsNot filter; x/y longs
+00879900	a3	DIFFER(3354v3415)	dl=334	left=t+up-side right=t-up+side; Lock+Height order; DELTA_NOTIONAL_ZERO
+00879900	a4	DIFFER(3354v3415)	dl=331	zoom += lookDir*(distance-offset); observedPos copy then Z
+00879900	a5	DIFFER(3403v3415)	dl=295	b4 + left/right inline unnamed offsets
+00879900	a6	DIFFER(3354v3415)	dl=331	b4 + named up(0,0,1)
+00879900	a7	DIFFER(3403v3415)	dl=295	b5 + distance-=offset; named translation temp
+00879900	a8	DIFFER(3403v3415)	dl=295	b5 + named sway float
+00879900	a9	DIFFER(3403v3415)	dl=295	b5 + else-branch interleaved zeroing
+00879900	a10	DIFFER(3358v3415)	dl=341	b5 + no centre copy (sphere into targetPos)
+00b1f200	a1	DIFFER(2916v3195)	dl=588	first full draft
+00b1f200	a2	DIFFER(3102v3195)	dl=473	forceinline fade; white temp in ternaries; std::min x3; handle Clear then assign
+00b1f200	a3	DIFFER(3060v3195)	dl=481	CIVCountedPointer operator= retail branch; GetFirstPrimID helper (setge)
+00b1f200	a4	DIFFER(3176v3195)	dl=472	forceinline GetFirstPrimID; handle operator= (retail branch, forceinline)
+00b1f200	a5	DIFFER(3182v3195)	dl=515	CIVCountedPointer::Release retail form (store inside if)
+00b1f200	a6	DIFFER(3184v3195)	dl=443	clamp as one ?: expression; unsigned colourPos; GFFastFloatToLong GraphicFrame
+00b1f200	a7	DIFFER(3181v3195)	dl=441	bank entry 0x2c; group descs as temporaries
+00b1f200	a8	DIFFER(3178v3195)	dl=439	named colourIndex
+00b1f200	a9	DIFFER(3178v3195)	dl=439	c8 + lifeFraction if/else chain
+00b1f200	a10	DIFFER(3181v3195)	dl=524	c9 + divisions read decal->MaxLife
+00b1e380	fin	DIFFER(3698v3698)	dl=11	final differ source regrade (final overlay)
+00879900	fin	DIFFER(3403v3415)	dl=295	final differ source regrade (final overlay)
+00b1f200	fin	DIFFER(3178v3195)	dl=439	final differ source regrade (final overlay)
