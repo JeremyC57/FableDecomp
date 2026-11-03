@@ -44,7 +44,7 @@ struct CSpendInfoVector {                          // vector<ExperienceSpendInfo
 enum EHeroTrainableStatType { EHeroTrainableStatType_Force32 = 0x7fffffff };
 enum EHeroExperienceStatCategory { EHeroExperienceStatCategory_Force32 = 0x7fffffff };
 class CTCHeroExperience { public:
-    EHeroExperienceStatCategory GetCategoryTrainableStatIsIn(EHeroTrainableStatType stat);   // 0x006D6850
+    EHeroExperienceStatCategory GetCategoryTrainableStatIsIn(EHeroTrainableStatType stat) const;   // 0x006D6850 (Ego_r/FableWin QBE)
 };
 
 class CTCInventoryExperience { public:

@@ -2,7 +2,7 @@
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00570161, length 121 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: std::bitset::test @ 0x00410DE0, CVectorMap::LowerBound @ 0x0040F020 (the inline CThing::GetInterface for
-// interface 0x68, the hero experience component), CTCHeroExperience::GetStatExperience(long) @ 0x006D6510 (manifest
+// interface 0x68, the hero experience component), CTCHeroExperience::GetStatExperience(EHeroExperienceStatCategory) const @ 0x006D6510 (manifest
 // "CTCInventoryAbilities::GetAbilityLevel", propagated label).
 // Shape: no argument slot to borrow, so the GetInterface key is the one frame word [ebp-4]; the component stays in edi.
 // Layout: local model. Retail CTCInventoryBase ParentThing +0x04; the four count-down values sit at +0x260..+0x26C
@@ -47,11 +47,11 @@ class CThing { public:
         return false;
     }
 };
-enum EHeroTrainableStatType { STAT_STRENGTH = 0, STAT_SKILL = 1, STAT_WILL = 2 };
+enum EHeroExperienceStatCategory { HERO_STAT_STRENGTH = 0, HERO_STAT_SKILL = 1, HERO_STAT_WILL = 2 };
 class CTCHeroExperience { public:                           // interface type 0x68
     unsigned char _pad_0x00[0x14];
     long GeneralExperience;                          // +0x14
-    long GetStatExperience(long stat);               // 0x006D6510
+    long GetStatExperience(EHeroExperienceStatCategory category) const;   // 0x006D6510 Ego_r/FableWin ?GetStatExperience@CTCHeroExperience@@QBEJW4EHeroExperienceStatCategory@@@Z
 };
 
 class CTCInventoryExperience { public:
@@ -70,8 +70,8 @@ void CTCInventoryExperience::SaveExperienceValuesForCountDown()
     CTCHeroExperience* experience;
     if (ParentThing->GetInterface(&experience, 0x68)) {
         PointsGeneral = experience->GeneralExperience;
-        PointsStrength = experience->GetStatExperience(STAT_STRENGTH);
-        PointsSkill = experience->GetStatExperience(STAT_SKILL);
-        PointsWill = experience->GetStatExperience(STAT_WILL);
+        PointsStrength = experience->GetStatExperience(HERO_STAT_STRENGTH);
+        PointsSkill = experience->GetStatExperience(HERO_STAT_SKILL);
+        PointsWill = experience->GetStatExperience(HERO_STAT_WILL);
     }
 }

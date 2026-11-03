@@ -1,0 +1,47 @@
+catalog  0041cc14 CTCLook::GetHeadAngularVelocityMaxXY -> NUISystem::CUIScreenUnitConverter::GetBackBufferWidth
+catalog  0099b6a0 NScript::operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive> -> CWideString::CreateFromCharString
+catalog  006d64a0 CTCInventoryAbilities::GetAbilityLevel -> CTCHeroExperience::GetExperienceSpentOnStat
+catalog  006d6510 CTCInventoryAbilities::GetAbilityLevel -> CTCHeroExperience::GetStatExperience
+catalog  006d6520 CTCInventoryAbilities::GetAbilityLevel -> CTCHeroExperience::GetTrainableStatLevel
+catalog  004861df std::vector<EWeaponClass,std::allocator<EWeaponClass>_>::_Umove<EWeaponClass*> -> std::vector<unsigned char>::resize
+catalog  0042920a CCountedPointer<NUISystem::CAction>::ShareData -> CCountedPointer<NUISystem::CComponent>::ShareData
+catalog  00429486 CCountedPointer<NUISystem::CAction>::ShareData -> CCountedPointer<NUISystem::CList>::ShareData
+catalog  00578c2a CCountedPointer<NUISystem::CAction>::ShareData -> CCountedPointer<NUISystem::CComponentContainer>::ShareData
+catalog  00429160 _global::CCountedPointer_Release_00429160 -> CCountedPointer<NUISystem::CAction>::~CCountedPointer
+catalog  004291de _global::CCountedPointer_Release_004291de -> CCountedPointer<NUISystem::CComponent>::~CCountedPointer
+catalog  0042925c _global::CCountedPointer_Release_0042925c -> CCountedPointer<NUISystem::CText>::~CCountedPointer
+catalog  00578fce _global::StdList_Clear_00578fce -> std::list<CSliderAnimator>::clear
+catalog  00429288 _global::CCountedPointer_Release_00429288 -> CCountedPointer<NUISystem::CList>::~CCountedPointer
+catalog  00578a8d _global::CCountedPointer_Release_00578a8d -> CCountedPointer<NUISystem::CComponentContainer>::~CCountedPointer
+catalog  0041cc2b CTCLook::GetHeadAngularVelocityMaxXY -> NUISystem::CUIScreenUnitConverter::GetBackBufferHeight
+catalog  0042b646 CUIState::operator= -> std::list<NUISystem::CActionParam*>::push_back
+catalog  0057955a CCreatureAction_SheatheItemToInventory_ForDivineWrath_constructor -> std::list<CSliderAnimator>::push_back
+catalog  00994780 _global::Dtor_CBaseBase_00994780 -> CFileDataInputStream::~CFileDataInputStream
+catalog  009baa30 CPersistContext::CPersistContext -> CPersistContext::Init
+manifest 0041cc14 CTCLook::GetHeadAngularVelocityMaxXY -> NUISystem::CUIScreenUnitConverter::GetBackBufferWidth
+manifest 0041cc2b CTCLook::GetHeadAngularVelocityMaxXY -> NUISystem::CUIScreenUnitConverter::GetBackBufferHeight
+manifest 00429160 _global::CCountedPointer_Release_00429160 -> CCountedPointer<NUISystem::CAction>::~CCountedPointer
+manifest 004291de _global::CCountedPointer_Release_004291de -> CCountedPointer<NUISystem::CComponent>::~CCountedPointer
+manifest 0042920a CCountedPointer<NUISystem::CAction>::ShareData -> CCountedPointer<NUISystem::CComponent>::ShareData
+manifest 0042925c _global::CCountedPointer_Release_0042925c -> CCountedPointer<NUISystem::CText>::~CCountedPointer
+manifest 00429288 _global::CCountedPointer_Release_00429288 -> CCountedPointer<NUISystem::CList>::~CCountedPointer
+manifest 00429486 CCountedPointer<NUISystem::CAction>::ShareData -> CCountedPointer<NUISystem::CList>::ShareData
+manifest 0042b646 CUIState::operator= -> std::list<NUISystem::CActionParam*>::push_back
+manifest 0047f58b CFrontEndManager::AddRegionAndTimeInfo -> CTCInGameMenu::AddRegionAndTimeInfo
+manifest 004861df std::vector<EWeaponClass,std::allocator<EWeaponClass>_>::_Umove<EWeaponClass*> -> std::vector<unsigned char>::resize
+manifest 00570332 CTCInventoryExperience::CTCInventoryExperience::ConstructAbilityUI -> CTCInventoryExperience::AddAbilityToList
+manifest 00571280 CTCInventoryExperience::CTCInventoryExperience::ConstructAbilityUIPC -> CTCInventoryExperience::AddAbilityToListPC
+manifest 00577ac0 CTCInventoryExperience::CTCInventoryExperience::vfunc_87 -> CTCInventoryExperience::OpenInventoryInternalPC
+manifest 00578a8d _global::CCountedPointer_Release_00578a8d -> CCountedPointer<NUISystem::CComponentContainer>::~CCountedPointer
+manifest 00578c2a CCountedPointer<NUISystem::CAction>::ShareData -> CCountedPointer<NUISystem::CComponentContainer>::ShareData
+manifest 00578fce _global::StdList_Clear_00578fce -> std::list<CSliderAnimator>::clear
+manifest 0057955a _global::CCreatureAction_SheatheItemToInventory_ForDivineWrath_constructor -> std::list<CSliderAnimator>::push_back
+manifest 00597228 CFrontEndManager::AddRegionAndTimeInfo -> NUISystem::CFrontEndManager::AddRegionAndTimeInfo
+manifest 006d64a0 CTCInventoryAbilities::GetAbilityLevel -> CTCHeroExperience::GetExperienceSpentOnStat
+manifest 006d6510 CTCInventoryAbilities::GetAbilityLevel -> CTCHeroExperience::GetStatExperience
+manifest 006d6520 CTCInventoryAbilities::GetAbilityLevel -> CTCHeroExperience::GetTrainableStatLevel
+manifest 006d6fa0 _global::Experience_GetLevelAndFraction -> CTCHeroExperience::GetTrainableStatPossibleLevelUpAmount
+manifest 00994780 _global::Dtor_CBaseBase_00994780 -> CFileDataInputStream::~CFileDataInputStream
+manifest 0099b6a0 NScript::operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive> -> CWideString::CreateFromCharString
+manifest 009baa30 CPersistContext::CPersistContext -> CPersistContext::Init
+labels 33  catalog renamed 20  manifest renamed 26

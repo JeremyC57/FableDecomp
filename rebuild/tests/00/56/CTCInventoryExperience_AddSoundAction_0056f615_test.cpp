@@ -5,23 +5,23 @@ struct CActionParamString { char text[32]; CActionParamString(const char* t) { s
 struct CAction {
     long ActionType; CActionParamString* params[4]; int count;
     CAction() : ActionType(0), count(0) {}
-    void AddUIActionParam(CActionParamString* p) { params[count++] = p; }
+    void AddParam(CActionParamString* p) { params[count++] = p; }
 };
-struct CGUIElement {
+struct CComponent {
     CAction* last;
-    CGUIElement() : last(0) {}
+    CComponent() : last(0) {}
     void AddAction(CAction* a) { last = a; }
 };
-static void AddSoundAction(CGUIElement* element, const char* soundName)
+static void AddSoundAction(CComponent* element, const char* soundName)
 {
     CAction* action = new CAction;
     action->ActionType = 0xBBB;
-    action->AddUIActionParam(new CActionParamString(soundName));
+    action->AddParam(new CActionParamString(soundName));
     element->AddAction(action);
 }
 int main()
 {
-    CGUIElement e;
+    CComponent e;
     AddSoundAction(&e, "SND_CLICK");
     bool ok = e.last && e.last->ActionType == 3003 && e.last->count == 1 && std::strcmp(e.last->params[0]->text, "SND_CLICK") == 0;
     if (!ok) { std::printf("0056f615_TEST FAIL\n"); return 1; }

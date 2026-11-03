@@ -24,6 +24,18 @@ public:
         : R(colour.R * (1.0f / 255.0f)), G(colour.G * (1.0f / 255.0f)), B(colour.B * (1.0f / 255.0f)), A(colour.A * (1.0f / 255.0f)) { }
     void Initialise(float r, float g, float b, float a) { R = r; G = g; B = b; A = a; }
     CRGBFloatColour& operator*=(const CRGBFloatColour& other) { R *= other.R; G *= other.G; B *= other.B; A *= other.A; return *this; }
+#ifdef FABLE_RETAIL_CRGBFLOATCOLOUR
+    // ?GetRGBColour@CRGBFloatColour@@QBE?AVCRGBColour@@XZ (FableWin.pdb; out-of-line COMDAT 0x00429880, landed): inline here so
+    // a caller that passes `colour.GetRGBColour()` by value expands it in its argument list (CTCInventoryExperience::
+    // AddAbilityToList 0x00570332: the four __ftol2 calls on the returned colour's pointer, A first, after the later arguments).
+    // __forceinline, not plain inline: retail expands it in that /Os TU (calls 0x00570785..0x005707AB to __ftol2 0x00BFEA70, no
+    // call to 0x00429880) while the out-of-line COMDAT exists; plain in-class inline is called out of line under /Os.
+    __forceinline CRGBColour GetRGBColour() const
+    {
+        return CRGBColour((unsigned char)(R * 255.0f), (unsigned char)(G * 255.0f), (unsigned char)(B * 255.0f),
+                          (unsigned char)(A * 255.0f));
+    }
+#endif
     float R;                                                             // +0x00
     float G;                                                             // +0x04
     float B;                                                             // +0x08

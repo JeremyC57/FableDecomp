@@ -1,0 +1,103 @@
+addr       parity           behav  name
+0091d8c0   WARN SHARED_HEADER_AVAILABLE CThing
+0091d8c0   WARN SHARED_HEADER_AVAILABLE CCombatManager
+0091d8c0   RELOCATION_MATCH PASS   CAIStateGroup_EnemyCreatureBase::OnActivate
+0094feb0   WARN SHARED_HEADER_AVAILABLE C3DVector
+0094feb0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+0094feb0   WARN SHARED_HEADER_AVAILABLE CWorld
+0094feb0   WARN RELOC_NAME: ?FramesPerSecond@@3JA -> 01375550 labelled 'CMainGameComponent::ConstantFPS'
+0094feb0   RELOCATION_MATCH PASS   CAIStateGroup_JackDragon::StayIdleAndTurnToFace
+00989ab0   WARN SHARED_HEADER_AVAILABLE IDirect3DDevice9
+00989ab0   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange
+00989ab0   WARN SHARED_HEADER_AVAILABLE C4DVector
+00989ab0   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+00989ab0   MATCH            PASS   CShaderRenderManager::SetUserVertexShaderConstant
+009ad6e0   WARN SHARED_HEADER_AVAILABLE CResource
+009ad6e0   WARN SHARED_HEADER_AVAILABLE CResourceList
+009ad6e0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+009ad6e0   WARN SHARED_HEADER_AVAILABLE CPersistContext
+009ad6e0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+009ad6e0   WARN RELOC_NAME: ?FindClassInfo@CDefinitionManager@@QAEPAUCDefClassInfo@@ABVCCharString@@@Z -> 009ad2e0 labelled 'CFactionDatabase::FindFactionBySymbolName'
+009ad6e0   WARN RELOC_NAME: ?Init@CPersistContext@@QAEXAAVCMemoryDataInputStream@@_N@Z -> 009baa30 labelled 'CPersistContext::CPersistContext'
+009ad6e0   WARN RELOC_NAME: ??1CMemoryDataInputStream@@UAE@XZ -> 00993b10 labelled 'CDataStream::~CDataStream'
+009ad6e0   RELOCATION_MATCH PASS   CDefinitionManager::LoadDef
+009bb110   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+009bb110   RELOCATION_MATCH PASS   CPersistContext::TransferVectorLoadText
+009c8340   WARN SHARED_HEADER_AVAILABLE CResourceBank
+009c8340   WARN SHARED_HEADER_AVAILABLE CBankFile
+009c8340   RELOCATION_MATCH PASS   BeginLoading
+00a4fe60   WARN RELOC_NAME: ??1?$CCountedPointer@VC3DAnimFileXAllocationSizeChunk@@@@QAE@XZ -> 00a52f40 labelled '_global::CCountedPointer_Release_00a52f40'
+00a4fe60   WARN RELOC_NAME: ?HasMovementTrack@C3DAnimFileMovementVectorChunk@@QBE_NXZ -> 00aae920 labelled 'C3DAnimFileRootChunk::HasSequences'
+00a4fe60   WARN RELOC_NAME: ?InitialiseFromFileData@C3DAnimationSequenceData@@QAE_NABVC3DAnimFileSequenceChunk@@AAVCSimpleMemoryPool@@@Z -> 00a4efc0 labelled 'C3DKeyframe_InitialiseAsConstant'
+00a4fe60   RELOCATION_MATCH PASS   C3DAnimation2::InitialiseSharedAnimation
+00a99e30   RELOCATION_MATCH PASS   C3DAnimFileRootChunk::GetChunkDescription
+00ae8d50   WARN RELOC_NAME: ??$__copy@PAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@PAU12@H@std@@YIPAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z -> 00ae9cb0 labelled 'std::__copy<std::pair<long, CCountedPointer<NParticleEngine::CParticleEmitter>> *, std::pair<long, CCountedPointer<NParticleEngine::CParticleEmitter>> *, int>'
+00ae8d50   WARN RELOC_NAME: ??$__destroy_aux@PAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@std@@YIXPAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@0@0ABU__false_type@0@@Z -> 00ae9d50 labelled 'std::__destroy_aux<std::pair<long, CCountedPointer<NParticleEngine::CParticleEmitter>> *>'
+00ae8d50   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00ae8d50   RELOCATION_MATCH PASS   NParticleEngine::CParticleEmitterDatabase::Load
+00afe480   RELOCATION_MATCH PASS   _global::GetName_SpriteRenderer
+00b3efa0   RELOCATION_MATCH PASS   CEngineMap::ReadMapInfoBlock
+00b5ead0   RELOCATION_MATCH PASS   CEngineScreenEffectRadialBlurRenderer::GetConsoleEnableFunctionName
+00b91f50   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b91f50   WARN SHARED_HEADER_AVAILABLE C3DBoundingSphere
+00b91f50   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox
+00b91f50   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00b91f50   WARN SHARED_HEADER_AVAILABLE C2DBoxF
+00b91f50   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveHandle
+00b91f50   RELOCATION_MATCH PASS   PreloadPrimitives
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@W4EGameflowPosition@@@CPersistContext@@KI?AW4EGameflowPosition@@XZ -> 00cdca40 labelled 'sub_00cdca40'
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@_N@CPersistContext@@KI_NXZ -> 0040e240 labelled 'sub_0040e240'
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@J@CPersistContext@@KIJXZ -> 0040e160 labelled '_global::ReturnZero_ret0_0040e160'
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@W4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@@CPersistContext@@KI?AW4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@XZ -> 00cdca50 labelled 'sub_00cdca50'
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@W4EPlaceInHeroSouls@@@CPersistContext@@KI?AW4EPlaceInHeroSouls@@XZ -> 00cdca60 labelled 'sub_00cdca60'
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@K@CPersistContext@@KIKXZ -> 0040e260 labelled 'sub_0040e260'
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@M@CPersistContext@@KIMXZ -> 0040e250 labelled '_global::GetConstFloat_0_0040e250'
+00cdc070   RELOCATION_MATCH PASS   NScript::CQ_SunnyvaleMasterData::OnPersist
+00ce11b0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00ce11b0   RELOCATION_MATCH PASS   CActiveEntityScript<NScript::CPersonalScript_GlobalThingsScript>::SuspendableProcess
+00d7c3f0   RELOCATION_MATCH PASS   CActiveEntityScript<NScript::CQ_HeroSoulsThunderScript>::SuspendableProcess
+00e0e980   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CQ_WaspBossScript>::`scalar deleting destructor'
+00e63890   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00e63890   RELOCATION_MATCH PASS   NScript::CV_ChickenKickingScript::CSpectator::Main
+00ed0ff0   RELOCATION_MATCH PASS   CSpawnedFunc<NScript::CV_SingingStonesScript>::`scalar deleting destructor'
+00efef60   RELOCATION_MATCH PASS   CActiveEntityScript<NScript::CBenTestScriptsScript>::SuspendableProcess
+  WARN leaf 'g_CCharString_013b8b78' matches no symbol in 0121a9e3.obj; graded the largest function
+  WARN leaf 'g_CCharString_013b8b78' matches no symbol in 0121a9e3.obj; graded the largest function
+0121a9e3   WARN RELOC_CONFLICT: _$E2 -> 01228f61 here, 01228930 in landed 01219f00
+0121a9e3   WARN RELOC_NAME: _$E2 -> 01228f61 labelled '_global::AtexitDtor_CCharString_at_013b8b78_01228f61'
+0121a9e3   RELOCATION_MATCH PASS   _static_init::g_CCharString_013b8b78
+  WARN leaf 'g_CCharString_013bacd8' matches no symbol in 0121eb40.obj; graded the largest function
+  WARN leaf 'g_CCharString_013bacd8' matches no symbol in 0121eb40.obj; graded the largest function
+0121eb40   WARN RELOC_CONFLICT: _$E2 -> 012298f0 here, 01228930 in landed 01219f00
+0121eb40   WARN RELOC_NAME: _$E2 -> 012298f0 labelled '_global::AtexitDtor_CCharString_at_013bacd8_012298f0'
+0121eb40   RELOCATION_MATCH PASS   _static_init::g_CCharString_013bacd8
+  WARN leaf 'g_CCharString_013bb6c0' matches no symbol in 012219c0.obj; graded the largest function
+  WARN leaf 'g_CCharString_013bb6c0' matches no symbol in 012219c0.obj; graded the largest function
+012219c0   WARN RELOC_CONFLICT: _$E2 -> 0122a300 here, 01228930 in landed 01219f00
+012219c0   WARN RELOC_NAME: _$E2 -> 0122a300 labelled '_global::AtexitDtor_CCharString_at_013bb6c0_0122a300'
+012219c0   RELOCATION_MATCH PASS   _static_init::g_CCharString_013bb6c0
+
+WINS: 23
+  0091d8c0 RELOCATION_MATCH CAIStateGroup_EnemyCreatureBase::?OnActivate@CAIStateGroup_EnemyCreatureBase@@UAEXXZ
+  0094feb0 RELOCATION_MATCH CAIStateGroup_JackDragon::StayIdleAndTurnToFace
+  00989ab0 MATCH CShaderRenderManager::?SetUserVertexShaderConstant@CShaderRenderManager@@QAEXJPBVC4DVector@@@Z
+  009ad6e0 RELOCATION_MATCH CDefinitionManager::LoadDef
+  009bb110 RELOCATION_MATCH CPersistContext::?TransferVectorLoadText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableVectorGenericType@@@Z
+  009c8340 RELOCATION_MATCH NGameText::CDataBankTextEntry::BeginLoading
+  00a4fe60 RELOCATION_MATCH C3DAnimation2::?InitialiseSharedAnimation@C3DAnimation2@@QAE_NABVC3DAnimFile@@W4EAnimationType@@@Z
+  00a99e30 RELOCATION_MATCH C3DAnimFileRootChunk::GetChunkDescription
+  00ae8d50 RELOCATION_MATCH NParticleEngine::CParticleEmitterDatabase::?Load@CParticleEmitterDatabase@NParticleEngine@@IAEXAAVCAFile@@ABVCEmitterDatabaseSerialiseInfo@2@@Z
+  00afe480 RELOCATION_MATCH _global::GetName_SpriteRenderer
+  00b3efa0 RELOCATION_MATCH CEngineMap::?ReadMapInfoBlock@CEngineMap@@CIXAAUCStaticMapInfoBlock@1@AAVCDataInputStream@@@Z
+  00b5ead0 RELOCATION_MATCH CEngineScreenEffectRadialBlurRenderer::GetConsoleEnableFunctionName
+  00b91f50 RELOCATION_MATCH CEngineSceneGrid::PreloadPrimitives
+  00cdc070 RELOCATION_MATCH NScript::CQ_SunnyvaleMasterData::?OnPersist@CQ_SunnyvaleMasterData@NScript@@UAEXAAVCPersistContext@@@Z
+  00ce11b0 RELOCATION_MATCH _unattributed::?SuspendableProcess@?$CActiveEntityScript@VCPersonalScript_GlobalThingsScript@NScript@@@@UAEXXZ
+  00d7c3f0 RELOCATION_MATCH _unattributed::?SuspendableProcess@?$CActiveEntityScript@VCQ_HeroSoulsThunderScript@NScript@@@@UAEXXZ
+  00e0e980 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_WaspBossScript>::??_G?$CSpawnedFunc@VCQ_WaspBossScript@NScript@@@@UAEPAXI@Z
+  00e63890 RELOCATION_MATCH NScript::CV_ChickenKickingScript::CSpectator::?Main@CSpectator@CV_ChickenKickingScript@NScript@@EAEXXZ
+  00ed0ff0 RELOCATION_MATCH CSpawnedFunc<NScript::CV_SingingStonesScript>::??_G?$CSpawnedFunc@VCV_SingingStonesScript@NScript@@@@UAEPAXI@Z
+  00efef60 RELOCATION_MATCH _unattributed::?SuspendableProcess@?$CActiveEntityScript@VCBenTestScriptsScript@NScript@@@@UAEXXZ
+  0121a9e3 RELOCATION_MATCH _static_init::g_CCharString_013b8b78
+  0121eb40 RELOCATION_MATCH _static_init::g_CCharString_013bacd8
+  012219c0 RELOCATION_MATCH _static_init::g_CCharString_013bb6c0

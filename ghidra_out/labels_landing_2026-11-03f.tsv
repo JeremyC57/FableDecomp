@@ -1,0 +1,34 @@
+address	name	evidence
+0047f58b	CTCInGameMenu::AddRegionAndTimeInfo	landing 2026-11-03f (chunk 735): RELOCATION_MATCH; Ego_r+FableWin ?AddRegionAndTimeInfo@CTCInGameMenu@@AAEXABVCWideString@@@Z; called 3x from CTCInGameMenu::GetFileNameList 0x0047FE83
+00597228	NUISystem::CFrontEndManager::AddRegionAndTimeInfo	landing 2026-11-03f (chunk 735): RELOCATION_MATCH; Ego_r+FableWin ?AddRegionAndTimeInfo@CFrontEndManager@NUISystem@@IAEXABVCWideString@@@Z; called 3x from CFrontEndManager::GetSavedGameNames 0x00597DF7
+005729d8	CTCInventoryExperience::AddStatToList	landing 2026-11-03f (chunk 735): RELOCATION_MATCH; Ego_r+FableWin; called 7x from ConstructCategoryStrength 0x00574885
+00573792	CTCInventoryExperience::AddStatToListPC	landing 2026-11-03f (chunk 735): RELOCATION_MATCH; Ego_r+FableWin; called 7x from ConstructCategoryStrengthPC 0x005759BF
+00b3efa0	CEngineMap::ReadMapInfoBlock	landing 2026-11-03f: re-landed with the ReadSLONG/ReadULONG spelling under the CDataInputStream retail branch, RELOCATION_MATCH; name unchanged
+00570332	CTCInventoryExperience::AddAbilityToList	chunk 735 (parked): Ego_r+FableWin ?AddAbilityToList@CTCInventoryExperience@@AAEXW4EHeroAbility@@PAVCList@NUISystem@@_N@Z; called 18x from ConstructCategoryStrength 0x00574885 (ability twin of AddStatToList)
+00571280	CTCInventoryExperience::AddAbilityToListPC	chunk 735 (parked): Ego_r+FableWin ?AddAbilityToListPC@...; called 18x from ConstructCategoryStrengthPC 0x005759BF
+00577ac0	CTCInventoryExperience::OpenInventoryInternalPC	chunk 735 (parked): Ego_r+FableWin ?OpenInventoryInternalPC@CTCInventoryExperience@@UAEX_N@Z; CTCInventoryExperience vtable 0x0124F11C slot 87 (0x0124F278)
+005759bf	CTCInventoryExperience::ConstructCategoryStrengthPC	chunk 735: Ego_r+FableWin ?ConstructCategoryStrengthPC@CTCInventoryExperience@@AAEXPAVCList@NUISystem@@@Z; calls AddStatToListPC 7x / AddAbilityToListPC 18x
+006d6510	CTCHeroExperience::GetStatExperience	chunk 735: Ego_r+FableWin QBE (EHeroExperienceStatCategory); body reads StatExperiencePoints._M_start (+0x18); bound by 0x005729D8 / 0x00570161 / 0x0064A060
+006d6520	CTCHeroExperience::GetTrainableStatLevel	chunk 735: Ego_r+FableWin QBE; body reads TrainableStatLevels._M_start (+0x24, retail 12-byte vectors); bound by 0x005729D8 / 0x00573792
+006d64a0	CTCHeroExperience::GetExperienceSpentOnStat	landing 2026-11-03f (lander): Ego_r+FableWin ?GetExperienceSpentOnStat@CTCHeroExperience@@QBEJW4EHeroTrainableStatType@@@Z; body reads ExperienceSpentOnStats._M_start (+0x44 in the retail layout); Ego_r donor order SpentOnStat < GetStatExperience < GetTrainableStatLevel as retail 0x006D64A0 < 0x006D6510 < 0x006D6520
+006d6fa0	CTCHeroExperience::GetTrainableStatPossibleLevelUpAmount	chunk 735: Ego_r+FableWin ?GetTrainableStatPossibleLevelUpAmount@CTCHeroExperience@@QAEJW4EHeroTrainableStatType@@AAM@Z; bound by 0x005729D8 / 0x00573792
+006d7b80	CTCHeroExperience::GetAbilityPossibleLevelUpAmount	chunk 735: Ego_r+FableWin; called from AddAbilityToList 0x00570332 / PC 0x00571280 and CTCInventoryStats::AddHeroAbility
+0099b6a0	CWideString::CreateFromCharString	chunk 735: Ego_r+FableWin ?CreateFromCharString@CWideString@@SI?AV1@ABVCCharString@@@Z; bound by 0x005729D8 / 0x00573792
+009baa30	CPersistContext::Init	chunk 735: Ego_r+FableWin ?Init@CPersistContext@@QAEXAAVCMemoryDataInputStream@@_N@Z; body returns no `this` (xor eax,eax), ret 8; bound by 0x0047F58B / 0x00597228 / 0x009AD6E0
+004861df	std::vector<unsigned char>::resize	chunk 735 (spelling corrected at landing): Ego_r ?resize@?$vector@EV?$allocator@E@std@@@std@@QAEXI@Z; body pushes a zeroed byte temporary's address and calls resize(n, const T&) 0x00486189; bound by 0x0047F58B / 0x00597228
+00994780	CFileDataInputStream::~CFileDataInputStream	chunk 735: Ego_r+FableWin ??1CFileDataInputStream@@UAE@XZ; bound by 0x0047F58B / 0x00597228
+00429160	CCountedPointer<NUISystem::CAction>::~CCountedPointer	chunk 735: FableWin ??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ; bound by 0x005729D8 / 0x00573792
+004291de	CCountedPointer<NUISystem::CComponent>::~CCountedPointer	chunk 735: Ego_r+FableWin; bound by 0x005729D8 / 0x00573792
+00429288	CCountedPointer<NUISystem::CList>::~CCountedPointer	chunk 735: FableWin; bound by 0x005729D8 / 0x00573792
+0042925c	CCountedPointer<NUISystem::CText>::~CCountedPointer	chunk 735: FableWin; bound by 0x005729D8 / 0x00573792
+0042920a	CCountedPointer<NUISystem::CComponent>::ShareData	chunk 735: FableWin ?ShareData@?$CCountedPointer@VCComponent@NUISystem@@@@...; bound by 0x005729D8 / 0x00573792
+00429486	CCountedPointer<NUISystem::CList>::ShareData	chunk 735: FableWin ?ShareData@?$CCountedPointer@VCList@NUISystem@@@@...; bound by 0x005729D8 / 0x00573792
+00578c2a	CCountedPointer<NUISystem::CComponentContainer>::ShareData	chunk 735: FableWin; called from AddAbilityToList 0x00570332 / PC 0x00571280 (SetStaticCast)
+00578a8d	CCountedPointer<NUISystem::CComponentContainer>::~CCountedPointer	chunk 735: FableWin; called from AddAbilityToList 0x00570332 / PC 0x00571280 and ShareData 0x00578C2A
+0041cc14	NUISystem::CUIScreenUnitConverter::GetBackBufferWidth	chunk 735: Ego_r+FableWin ?GetBackBufferWidth@CUIScreenUnitConverter@NUISystem@@SIMXZ; body tests IsUsingRelativeCoords 0x013B8768 then loads BackBufferWidth 0x013B876C (the landed SetIsUsingRelativeCoords 0x004299A8 globals); GetUIScale compares it with 1024
+0041cc2b	NUISystem::CUIScreenUnitConverter::GetBackBufferHeight	chunk 735: Ego_r+FableWin ?GetBackBufferHeight@...@@SIMXZ; body loads BackBufferHeight 0x013B8770; GetUIScale compares it with 768
+0042b646	std::list<NUISystem::CActionParam*>::push_back	chunk 735: FableWin ?push_back@?$list@PAVCActionParam@NUISystem@@...; body inserts before the sentinel (mov edx,[ecx]) = push_back (push_front 0x0057953E reads sentinel->next); called on CAction+4 UIActionParams
+0057955a	std::list<CSliderAnimator>::push_back	chunk 735: FableWin ?push_back@?$list@VCSliderAnimator@@...; body inserts before the sentinel; called 4x each from 0x00577216 / OpenInventoryInternalPC 0x00577AC0 on Animators
+00578fce	std::list<CSliderAnimator>::clear	chunk 735: FableWin ?clear@?$list@VCSliderAnimator@@...@@QAEXXZ; body frees every node (free 0x00BFEA14) and resets the sentinel; called on Animators from 0x00577216 / 0x00577AC0
+0041cf47	NUISystem::CManager::GetUIScale	landing 2026-11-03f respell: Ego_r+FableWin ?GetUIScale@CManager@NUISystem@@QBE?AVC2DVector@@XZ (const); RELOCATION_MATCH after respell
+0056f69f	CTCInventoryExperience::AddMagicCategoryToList	landing 2026-11-03f respell: Ego_r+FableWin private (AAE); RELOCATION_MATCH after respell

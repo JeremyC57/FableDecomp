@@ -6,6 +6,9 @@ class CGraphicDataBank;class CMeshDataBank;class CInputManager;class CTCHeroExpe
 class CTCInventoryAbilities;class CTCInventoryWeapons;class CTCInventoryMap;class CTCInventoryQuests;
 class CTCInventoryExperience;class CTCInventory;class CTCInventoryClothing;class CTCInventoryTrade;
 class CThing;class CDefinitionManager;class CWideString;
+#ifdef FABLE_RETAIL_CMANAGER
+class C2DCoordI;class CRGBFloatColour;
+#endif
 
 enum EEngine2DLayer { ENGINE_2D_RANGE_SIZE=16,ENGINE_2D_RANGE_0_START=0,ENGINE_2D_RANGE_1_START=16,ENGINE_2D_RANGE_2_START=32,ENGINE_2D_RANGE_3_START=48,ENGINE_2D_RANGE_4_START=64,ENGINE_2D_LAYER_M3=64,ENGINE_2D_LAYER_M2=65,ENGINE_2D_LAYER_M1=66,ENGINE_2D_LAYER_0=67,ENGINE_2D_LAYER_1=68,ENGINE_2D_LAYER_2=69,ENGINE_2D_LAYER_3=70,ENGINE_2D_LAYER_4=71,ENGINE_2D_MESH_LAYER=72,ENGINE_2D_LAYER_5=73,ENGINE_2D_LAYER_6=74,ENGINE_2D_LAYER_7=75,ENGINE_2D_LAYER_8=76,ENGINE_2D_LAYER_9=77,ENGINE_2D_LAYER_10=78,ENGINE_2D_LAYER_11=79,ENGINE_2D_LAYER_12=80,ENGINE_2D_LAYER_13=81,ENGINE_2D_LAYER_SPELLS=82,ENGINE_NUM_2D_LAYERS=83,ENGINE_2D_NULL_LAYER=-1,ENGINE_2D_LAYER_FIRST=0 };
 namespace NUISystem {
@@ -22,6 +25,10 @@ public: static NUISystem::CManager * __fastcall GetInstance();
 // Retail branch (chunk 726): Ego_r.pdb ?GetUIScale@CManager@NUISystem@@QBE?AVC2DVector@@XZ, out of line at 0x0041CF47
 // (CList::ComputeChildrenVisibility 0x005379F5 and CScrollingViewport::Update 0x0053F1C0 call it with a hidden result).
 public: C2DVector GetUIScale() const;
+// Chunk 735 (rows 0x005729D8 / 0x00573792 CTCInventoryExperience::AddStatToList(PC)): Ego_r.pdb / FableWin.pdb
+// ?CreateTickSlider@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@ABVC2DCoordI@@JJABVCRGBFloatColour@@MM_N32M@Z,
+// out of line at 0x00427216 (also called by the landed CTCInventoryStats::AddHeroAbility 0x005D64DD). Parameter names unknown.
+public: NUISystem::CComponent * CreateTickSlider(const CWideString &,const C2DCoordI &,long,long,const CRGBFloatColour &,float,float,bool,bool,const CRGBFloatColour &,float);
 #endif
 public: virtual bool GetMouseDisabled();
 public: NUISystem::CComponent * CreateComponent(const CCharString &,bool);

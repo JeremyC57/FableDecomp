@@ -5,6 +5,7 @@
 #include "engine/CTBaseSingletonNoDefaultAlloc.h"
 #include "engine/CSubtitleRenderer.h"
 class CThing;class C3DVector;
+namespace NHeroInformationScreens { class CManager; }
 // TPI0xbf85 original singleton base; native437990 forwards through PDrawCombatMultiplier+150.
 // Complete original members World through DisplayBottomHalfGUI retained opaque, except SubtitleRenderer (2026-11-03, row 0x005EB9E0):
 // Ego_r.pdb CSubtitleRenderer SubtitleRenderer at +0x18 (after World, PlayerManager, InputInterface, Component, Graphics), 0x120
@@ -20,6 +21,10 @@ public: void AddHitByMelee(CThing&,CThing&,const C3DVector&);
     void Update(bool paused);                                            // 0x0043A080
     void UpdateMiniMapMarkers(bool);                                     // 0x004378C0
     CSubtitleRenderer& GetSubtitleRenderer() { return SubtitleRenderer; }
+    // Chunk 735 (row 0x00577AC0 CTCInventoryExperience::OpenInventoryInternalPC): Ego_r.pdb / FableWin.pdb
+    // ?GetPHeroInfoScreensManager@CPlayerGui@@QBEPAVCManager@NHeroInformationScreens@@XZ, out of line at 0x00437CD0 (it reads
+    // PHeroInfoScreensManager's scoped_ptr word at +0x32C).
+    NHeroInformationScreens::CManager* GetPHeroInfoScreensManager() const;  // 0x00437CD0
 };
 FABLE_STATIC_ASSERT(sizeof(CPlayerGui)==0x338);
 

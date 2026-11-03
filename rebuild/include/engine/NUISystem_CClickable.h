@@ -71,7 +71,15 @@ class CAction {
 public:
     CAction();
     ~CAction();
+#ifdef FABLE_RETAIL_CACTION
+    // Retail opt-in (chunk 735): both Ego_r.pdb AddParam overloads are out of line in retail: ?AddParam@CAction@NUISystem@@
+    // QAEXPAVCActionParam@2@@Z 0x0053FDB0 (labels_familypass7 M088) and ?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@
+    // AAV?$CCountedPointer@VCAction@NUISystem@@@@@Z 0x0053FDE0 (the component parameter, which also learns the action).
+    void AddParam(CActionParam* param);
+    void AddParam(CActionParam* param, CCountedPointer<CAction>& action);
+#else
     void AddParam(CActionParam* param) { UIActionParams.push_back(param); }
+#endif
     EActionType ActionType;
     std::list<CActionParam*> UIActionParams;
     std::list<long> ThingActionParams;

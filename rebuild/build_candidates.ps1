@@ -375837,13 +375837,6 @@ $catalog = @(
         PassPattern = '00aef1f0_TEST PASS'
     }
     [pscustomobject]@{
-        Address = '00b3efa0'
-        Module = 'CEngineMap'
-        Source = '00/b3/CEngineMap_ReadMapInfoBlock_00b3efa0.cpp'
-        TestSource = '00/b3/CEngineMap_ReadMapInfoBlock_00b3efa0_test.cpp'
-        PassPattern = '00b3efa0_TEST PASS'
-    }
-    [pscustomobject]@{
         Address = '00cb7310'
         Module = 'std'
         Source = '00/cb/std_pairCCharStringCScriptInfointCKeyPairCompareLess_00cb7310.cpp'
@@ -381066,6 +381059,43 @@ $catalog = @(
         Source = '00/dd/CPrisonEscapeGuard_Main_00dd6440.cpp'
         TestSource = '00/dd/CPrisonEscapeGuard_Main_00dd6440_test.cpp'
         PassPattern = '00dd6440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047f58b'
+        Module = 'CTCInGameMenu'
+        Source = '00/47/CTCInGameMenu_AddRegionAndTimeInfo_0047f58b.cpp'
+        TestSource = '00/47/CTCInGameMenu_AddRegionAndTimeInfo_0047f58b_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '0047f58b_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00597228'
+        Module = 'NUISystem::CFrontEndManager'
+        Source = '00/59/NUISystemCFrontEndManager_AddRegionAndTimeInfo_00597228.cpp'
+        TestSource = '00/59/NUISystemCFrontEndManager_AddRegionAndTimeInfo_00597228_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00597228_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005729d8'
+        Module = 'CTCInventoryExperience'
+        Source = '00/57/CTCInventoryExperience_AddStatToList_005729d8.cpp'
+        TestSource = '00/57/CTCInventoryExperience_AddStatToList_005729d8_test.cpp'
+        PassPattern = '005729d8_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00573792'
+        Module = 'CTCInventoryExperience'
+        Source = '00/57/CTCInventoryExperience_AddStatToListPC_00573792.cpp'
+        TestSource = '00/57/CTCInventoryExperience_AddStatToListPC_00573792_test.cpp'
+        PassPattern = '00573792_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b3efa0'
+        Module = 'CEngineMap'
+        Source = '00/b3/CEngineMap_ReadMapInfoBlock_00b3efa0.cpp'
+        TestSource = '00/b3/CEngineMap_ReadMapInfoBlock_00b3efa0_test.cpp'
+        PassPattern = '00b3efa0_TEST PASS'
     }
 )
 

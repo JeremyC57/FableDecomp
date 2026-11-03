@@ -1,6 +1,10 @@
 #ifndef FABLE_ENGINE_NINVENTORY_CTCINVENTORYBASE_H
 #define FABLE_ENGINE_NINVENTORY_CTCINVENTORYBASE_H
 #include "engine/CTCBase.h"
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE
+#include "stlport/fable_containers.h"
+namespace NUISystem { class CComponent; }
+#endif
 // Layout: original donor328, native304 after the six vector reductions.
 // Every original data member is retained; unused composite fields keep their
 // original names and complete native storage. Native map secondary base is130.
@@ -13,7 +17,18 @@ public:
  enum ESelectionState { SELECTION_STATE_NONE=0,SELECTION_STATE_OFF=1,SELECTION_STATE_ON=2,SELECTION_STATE_SEL=3,SELECTION_STATE_MAX=4 };
 protected:
  virtual void OnSerialise(CPersistContext&,bool);
+#ifdef FABLE_RETAIL_CTCINVENTORYBASE
+ // Retail opt-in (chunk 735, row 0x00577AC0 CTCInventoryExperience::OpenInventoryInternalPC): Ego_r.pdb
+ // ?OpenInventory@CTCInventoryBase@NInventory@@UAEXXZ (public virtual, out of line at 0x005BD4EA; the row calls it qualified)
+ // and the Components member typed as its PDB vector<NUISystem::CComponent*> (STLport 12 bytes; push_back(const T&) out of
+ // line at 0x00486024, as the landed CTCInventoryTrade::OpenInventoryPC 0x005AE86B also calls it).
+public:
+ virtual void OpenInventory();
+protected:
+ std::vector<NUISystem::CComponent*> Components;
+#else
  unsigned char Components[12];
+#endif
  bool FirstRenderFrame;
  EInventorySelectionState InventorySelectionState;
  unsigned char Categories[12];

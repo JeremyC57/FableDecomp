@@ -1,0 +1,41 @@
+addr       parity           behav  name
+0047f58b   WARN RELOC_NAME: ?resize@?$vector@EV?$allocator@E@std@@@std@@QAEXI@Z -> 004861df labelled 'std::vector<EWeaponClass,std::allocator<EWeaponClass>_>::_Umove<EWeaponClass*>'
+0047f58b   WARN RELOC_NAME: ?Init@CPersistContext@@QAEXAAVCMemoryDataInputStream@@_N@Z -> 009baa30 labelled 'CPersistContext::CPersistContext'
+0047f58b   WARN RELOC_NAME: ??1CFileDataInputStream@@UAE@XZ -> 00994780 labelled '_global::Dtor_CBaseBase_00994780'
+0047f58b   RELOCATION_MATCH PASS   AddRegionAndTimeInfo
+00597228   WARN RELOC_NAME: ?resize@?$vector@EV?$allocator@E@std@@@std@@QAEXI@Z -> 004861df labelled 'std::vector<EWeaponClass,std::allocator<EWeaponClass>_>::_Umove<EWeaponClass*>'
+00597228   WARN RELOC_NAME: ?Init@CPersistContext@@QAEXAAVCMemoryDataInputStream@@_N@Z -> 009baa30 labelled 'CPersistContext::CPersistContext'
+00597228   WARN RELOC_NAME: ??1CFileDataInputStream@@UAE@XZ -> 00994780 labelled '_global::Dtor_CBaseBase_00994780'
+00597228   RELOCATION_MATCH PASS   AddRegionAndTimeInfo
+005729d8   WARN RELOC_NAME: ?GetTrainableStatLevel@CTCHeroExperience@@QBEJW4EHeroTrainableStatType@@@Z -> 006d6520 labelled 'CTCInventoryAbilities::GetAbilityLevel'
+005729d8   WARN RELOC_NAME: ?CreateFromCharString@CWideString@@SI?AV1@ABVCCharString@@@Z -> 0099b6a0 labelled 'NScript::operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>'
+005729d8   WARN RELOC_NAME: ?GetTrainableStatPossibleLevelUpAmount@CTCHeroExperience@@QAEJW4EHeroTrainableStatType@@AAM@Z -> 006d6fa0 labelled 'Experience_GetLevelAndFraction'
+005729d8   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+005729d8   WARN RELOC_NAME: ?GetStatExperience@CTCHeroExperience@@QBEJW4EHeroExperienceStatCategory@@@Z -> 006d6510 labelled 'CTCInventoryAbilities::GetAbilityLevel'
+005729d8   WARN RELOC_NAME: ??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ -> 00429160 labelled '_global::CCountedPointer_Release_00429160'
+005729d8   WARN RELOC_NAME: ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ -> 004291de labelled '_global::CCountedPointer_Release_004291de'
+005729d8   WARN RELOC_NAME: ??1?$CCountedPointer@VCList@NUISystem@@@@QAE@XZ -> 00429288 labelled '_global::CCountedPointer_Release_00429288'
+005729d8   WARN RELOC_NAME: ??1?$CCountedPointer@VCText@NUISystem@@@@QAE@XZ -> 0042925c labelled '_global::CCountedPointer_Release_0042925c'
+005729d8   RELOCATION_MATCH PASS   AddStatToList
+00573792   WARN RELOC_NAME: ?GetTrainableStatLevel@CTCHeroExperience@@QBEJW4EHeroTrainableStatType@@@Z -> 006d6520 labelled 'CTCInventoryAbilities::GetAbilityLevel'
+00573792   WARN RELOC_NAME: ?CreateFromCharString@CWideString@@SI?AV1@ABVCCharString@@@Z -> 0099b6a0 labelled 'NScript::operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>'
+00573792   WARN RELOC_NAME: ?GetTrainableStatPossibleLevelUpAmount@CTCHeroExperience@@QAEJW4EHeroTrainableStatType@@AAM@Z -> 006d6fa0 labelled 'Experience_GetLevelAndFraction'
+00573792   WARN RELOC_NAME: ??1?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@XZ -> 0042abca labelled 'std::list<NUISystem::CComponent *, std::allocator<NUISystem::CComponent *>>::~list'
+00573792   WARN RELOC_NAME: ?GetStatExperience@CTCHeroExperience@@QBEJW4EHeroExperienceStatCategory@@@Z -> 006d6510 labelled 'CTCInventoryAbilities::GetAbilityLevel'
+00573792   WARN RELOC_NAME: ??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ -> 00429160 labelled '_global::CCountedPointer_Release_00429160'
+00573792   WARN RELOC_NAME: ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ -> 004291de labelled '_global::CCountedPointer_Release_004291de'
+00573792   WARN RELOC_NAME: ??1?$CCountedPointer@VCList@NUISystem@@@@QAE@XZ -> 00429288 labelled '_global::CCountedPointer_Release_00429288'
+00573792   WARN RELOC_NAME: ??1?$CCountedPointer@VCText@NUISystem@@@@QAE@XZ -> 0042925c labelled '_global::CCountedPointer_Release_0042925c'
+00573792   RELOCATION_MATCH PASS   AddStatToListPC
+
+WINS: 4
+  0047f58b RELOCATION_MATCH CTCInGameMenu::?AddRegionAndTimeInfo@CTCInGameMenu@@AAEXABVCWideString@@@Z
+  00597228 RELOCATION_MATCH NUISystem::CFrontEndManager::?AddRegionAndTimeInfo@CFrontEndManager@NUISystem@@IAEXABVCWideString@@@Z
+  005729d8 RELOCATION_MATCH CTCInventoryExperience::?AddStatToList@CTCInventoryExperience@@AAEXW4EHeroTrainableStatType@@PAVCList@NUISystem@@_NPAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z
+  00573792 RELOCATION_MATCH CTCInventoryExperience::?AddStatToListPC@CTCInventoryExperience@@AAEXPAVCComponent@NUISystem@@W4EHeroTrainableStatType@@PAVCList@3@_NPAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CTCInGameMenu_AddRegionAndTimeInfo_0047f58b
+  NUISystemCFrontEndManager_AddRegionAndTimeInfo_00597228
+  CTCInventoryExperience_AddStatToList_005729d8
+  CTCInventoryExperience_AddStatToListPC_00573792

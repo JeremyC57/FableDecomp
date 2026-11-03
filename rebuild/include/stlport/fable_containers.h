@@ -192,6 +192,11 @@ public:
         this->_M_finish=__uninitialized_copy((const _Tp*)x._M_start,(const _Tp*)x._M_finish,this->_M_start,typename __type_traits<_Tp>::is_POD_type());
     }
     ~vector() { _Destroy(this->_M_start,this->_M_finish); }
+#ifdef FABLE_RETAIL_STLP_VECTOR_ASSIGN
+    // Retail branch (chunk 735, row 0x00577AC0): STLport 4.6 _vector.c operator=(const vector&), defined out of class (not
+    // inline): retail calls its vector<NUISystem::CComponent*> instance at 0x005798C8 for `ExpSliders = ...`.
+    vector& operator=(const vector& x);
+#endif
     _Alloc get_allocator() const { return _Alloc(this->_M_end_of_storage); }
     iterator begin() { return this->_M_start; }
     const_iterator begin() const { return this->_M_start; }

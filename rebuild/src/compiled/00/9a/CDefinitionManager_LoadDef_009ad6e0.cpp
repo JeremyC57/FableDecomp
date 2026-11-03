@@ -7,7 +7,8 @@
 //          @ 0x00993B20, CDefinitionManager::DecompressDefinitionData(CMemoryDataInputStream*, ulong) @ 0x009AD5F0,
 //          CDefStringTable::GetString(long) @ 0x009D49B0 (the global string table @ 0x013CA828), the class-info lookup
 //          @ 0x009AD2E0, CResourceList::MakeFreeSpace @ 0x009FC4F0, CResourceList::FrameEnd @ 0x009FC150,
-//          CPersistContext::CPersistContext(CDataInputStream*, bool) @ 0x009BAA30, CResource::SetResourceSize
+//          CPersistContext::Init(CMemoryDataInputStream&, bool) @ 0x009BAA30 (Ego_r / FableWin
+//          ?Init@CPersistContext@@QAEXAAVCMemoryDataInputStream@@_N@Z: no `this` return, so not a ctor), CResource::SetResourceSize
 //          @ 0x009FBF20, CResourceList::AddResource @ 0x009FBFE0, ~CMemoryDataInputStream @ 0x00993B10.
 // Layout: CDefinitionManager is a CResourceList at +0 (MakeFreeSpace/FrameEnd/AddResource on `this`), InstantiatedDefs
 //   +0xa4 (the landed GetPDefFromGlobalIndex 0x009ADE10), the persist flag byte +0xc0; CInstantiatedDefInfo {ClassName,
@@ -80,7 +81,7 @@ class CMemoryDataInputStream : public CDataInputStream { public:           // vt
 };
 class CPersistContext { public:
     unsigned char _body[0x2c];
-    CPersistContext(CDataInputStream* stream, bool flag);    // 0x009BAA30
+    void Init(CMemoryDataInputStream& stream, bool binary);  // 0x009BAA30
 };
 
 class CDefinitionManager;
@@ -163,7 +164,8 @@ void CDefinitionManager::LoadDef(unsigned long globalIndex)
         created->GlobalIndex = globalIndex;
         created->Load(stream);
         NProgressDisplay::DisplayProgress("CDefinitionManager::LoadDef 2", -1.0f, false, false);
-        CPersistContext context(&stream, PersistFlag);
+        CPersistContext context;
+        context.Init(stream, PersistFlag);
         info->PDef->Persist(context);
         info->PDef->SetResourceSize(size);
         AddResource(info->PDef.Object);

@@ -1,13 +1,16 @@
-// CTCInventoryExperience::AddSoundAction(NUISystem::CGUIElement* element, CCharString soundName) -- gives a UI element a "play sound" action (type 3003) carrying the sound name as a wide-string parameter
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0056F615, length 138 bytes (`ret 8`; `this` unused).
+// CTCInventoryExperience::AddSoundAction(NUISystem::CComponent* element, CCharString soundName) -- gives a UI element a "play sound" action (type 3003) carrying the sound name as a wide-string parameter
+// Leaf: ?AddSoundAction@CTCInventoryExperience@@AAEXPAVCComponent@NUISystem@@VCCharString@@@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x0056F615, length 138 bytes (`ret 8`; `this` unused). Identity: Ego_r.pdb / FableWin.pdb
+//   ?AddSoundAction@CTCInventoryExperience@@AAEXPAVCComponent@NUISystem@@VCCharString@@@Z (private; landing 2026-11-03f respelled the
+//   public CGUIElement stand-in and the AddUIActionParam(CActionParamString*) callee spelling).
 // Frame-pointer size TU: optimize("y",off) + ("s",on) (`leave`, `pop ecx` after operator new).
 // Callees: operator new @ 0x00BFEA1A, NUISystem::CAction::CAction @ 0x0042BE50 (manifest "CRumbleDef", propagated),
 // CCountedPointer<NUISystem::CAction>(CAction*) @ 0x0042AA29 / its dtor @ 0x00429160 (manifest a propagated _Dest_val),
-// CCharString::ToWideString @ 0x0099E480, CActionParamString(const CWideString&) @ 0x0054DAE0, CAction::AddUIActionParam
-// @ 0x0053FDB0 (an inlined list push_back on UIActionParams, `this` = the action), element virtual slot 66 (+0x108,
+// CCharString::ToWideString @ 0x0099E480, CActionParamString(const CWideString&) @ 0x0054DAE0, CAction::AddParam(CActionParam*)
+// @ 0x0053FDB0 (Ego_r / FableWin ?AddParam@CAction@NUISystem@@QAEXPAVCActionParam@2@@Z) (an inlined list push_back on UIActionParams, `this` = the action), element virtual slot 66 (+0x108,
 // AddAction(const CCountedPointer<CAction>&)), ~CWideString @ 0x0099B510, ~CCharString @ 0x0099EAE0.
 // Shape: the counted pointer's inline operator-> reads the object word ([ebp-0Ch]) for both the type store and the
-// AddUIActionParam call; locals destroy in reverse order, then the by-value string argument.
+// AddParam call; locals destroy in reverse order, then the by-value string argument.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
@@ -22,9 +25,12 @@ class CCharString { public:
 };
 
 namespace NUISystem {
-class CActionParam;
-class CActionParamString { public:
-    unsigned char _body[0x0C];
+class CActionParam { public:                                         // +0x00 vptr, +0x04 type
+    virtual ~CActionParam();
+    long ActionParamType;
+};
+class CActionParamString : public CActionParam { public:             // sizeof 0x0C (operator new(0xC))
+    unsigned char _body[0x04];
     CActionParamString(const CWideString& text);                  // 0x0054DAE0
 };
 class CAction { public:                                                  // retail 0x10 bytes
@@ -33,7 +39,7 @@ class CAction { public:                                                  // reta
     void* ThingActionParams;                                      // +0x08
     bool  Valid;                                                  // +0x0C
     CAction();                                                    // 0x0042BE50
-    void AddUIActionParam(CActionParamString* param);             // 0x0053FDB0
+    void AddParam(CActionParam* param);                           // 0x0053FDB0
 };
 }
 
@@ -46,7 +52,7 @@ template<class T> class CCountedPointer { public:
 };
 
 namespace NUISystem {
-struct CGUIElement {
+class CComponent { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -119,15 +125,15 @@ struct CGUIElement {
 
 enum { UI_ACTION_PLAY_SOUND = 0xBBB };
 
-class CTCInventoryExperience { public:
-    void AddSoundAction(NUISystem::CGUIElement* element, CCharString soundName);
+class CTCInventoryExperience {
+    void AddSoundAction(NUISystem::CComponent* element, CCharString soundName);   // private (AAE)
 };
 
-void CTCInventoryExperience::AddSoundAction(NUISystem::CGUIElement* element, CCharString soundName)
+void CTCInventoryExperience::AddSoundAction(NUISystem::CComponent* element, CCharString soundName)
 {
     CCountedPointer<NUISystem::CAction> action(new NUISystem::CAction);
     action->ActionType = UI_ACTION_PLAY_SOUND;
     CWideString wideName = soundName.ToWideString();
-    action->AddUIActionParam(new NUISystem::CActionParamString(wideName));
+    action->AddParam(new NUISystem::CActionParamString(wideName));
     element->AddAction(action);
 }

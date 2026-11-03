@@ -1,3 +1,120 @@
+#ifdef FABLE_RETAIL_CTCINVENTORYEXPERIENCE
+#ifndef FABLE_ENGINE_CTCINVENTORYEXPERIENCE_H
+#define FABLE_ENGINE_CTCINVENTORYEXPERIENCE_H
+// Retail opt-in (chunk 735, rows 0x005729D8 AddStatToList / 0x00573792 AddStatToListPC / 0x00570332 AddAbilityToList /
+// 0x00571280 AddAbilityToListPC / 0x00577AC0 OpenInventoryInternalPC): the thing component on its two RTTI bases
+// (.?AVCTCInventoryExperience@@: NInventory::CTCInventoryBase at +0, sizeof 0x130, and NHeroInformationScreens::CBase at
+// +0x130 = 304, rtti_bases.tsv), the members at the generated retail offsets below with their Ego_r.pdb names and types
+// (STLport 4.6 sizes: map / vector 12 bytes, list 4). Members the rows touch are typed; the rest keep the generated opaque
+// storage. Methods: Ego_r.pdb spellings and access (the A-prefixed private ones are private, Q public). Define
+// FABLE_RETAIL_CTCBASE (polymorphic CTCBase) with it.
+#include "engine/NInventory_CTCInventoryBase.h"
+#include "engine/NHeroInformationScreens_CBase.h"
+#include "engine/NUISystem_CComponent.h"
+#include "engine/EHeroAbility.h"
+#include "engine/EHeroExperienceStatCategory.h"
+#include "fable_string.h"
+#include "stlport/fable_containers.h"
+#include "stlport/fable_map.h"
+#include "engine/CSliderAnimator.h"
+enum EHeroTrainableStatType;                                            // MS forward enum
+class CRGBFloatColour;
+class CTCHeroExperience;
+class CTCHeroStats;
+class CTCInventoryAbilities;
+namespace NUISystem { class CYesNo; }
+namespace NUISystem { class CList; class CViewport; }
+// Ego_r.pdb SExpSpendUndo (global struct, 84 bytes there; four STLport lists of 4 bytes in retail): the per-stat / per-ability
+// undo record of the experience-spending screen.
+struct SExpSpendUndo {
+    void SaveBefore(CTCHeroExperience*);
+    void SaveAfter(CTCHeroExperience*);
+    void RevertExperiencePoints(CTCHeroExperience*);
+    std::list<long> Generals;
+    std::list<long> Strengths;
+    std::list<long> Skills;
+    std::list<long> Wills;
+    long Levels;
+    long General;
+    long Strength;
+    long Skill;
+    long Will;
+    long aGeneral;
+    long aStrength;
+    long aSkill;
+    long aWill;
+};
+class CTCInventoryExperience : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {
+public:
+    CWideString GetExperienceStatName(long);                                        // 0x0056F26F
+    CCharString GetExperienceStatMovieName(EHeroTrainableStatType);                 // 0x0056E6B6
+    CWideString GetExperienceStatDescription(long,long);                            // 0x0056FDC3
+    CRGBFloatColour GetExperienceStatColour(EHeroTrainableStatType);                // 0x0056ED74
+    CWideString GetExperienceAbilityName(long);                                     // 0x0056F2BD
+    CWideString GetExperienceAbilityMovieName(EHeroAbility);                        // 0x0056E75F
+    CWideString GetExperienceAbilityDescription(long,long);                         // 0x0056FE7C
+    CRGBFloatColour GetExperienceAbilityColour(EHeroAbility);                       // 0x0056EDD2
+    virtual void OpenInventoryInternalPC(bool);                                     // 0x00577AC0
+    long GetOriginalExperience(long);                                               // 0x0056EA9A
+    void SaveExperienceValuesForCountDown();                                        // 0x00570161
+private:
+    void AddSoundAction(NUISystem::CComponent*,CCharString);                        // 0x0056F615
+    CTCHeroExperience* GetTCHeroExperience();                                       // 0x0056FF3D
+    CTCHeroStats* GetTCHeroStats();                                                 // 0x0056FF81
+    CTCInventoryAbilities* GetTCInventoryAbilities();                               // 0x0056FFC5
+    void AddStatToList(EHeroTrainableStatType,NUISystem::CList*,bool,CCountedPointer<NUISystem::CComponent>*);
+    void AddStatToListPC(NUISystem::CComponent*,EHeroTrainableStatType,NUISystem::CList*,bool,CCountedPointer<NUISystem::CComponent>*);
+    void AddAbilityToList(EHeroAbility,NUISystem::CList*,bool);
+    void AddAbilityToListPC(NUISystem::CComponent*,EHeroAbility,NUISystem::CList*,bool);
+    void ConstructCategoryStrengthPC(NUISystem::CList*);                            // 0x005759BF
+public:
+    std::map<CCharString,unsigned long> TutorialSoundHandles;        // +0x134
+    std::map<EHeroTrainableStatType,SExpSpendUndo> UndoableStatBuys; // +0x140
+    std::map<EHeroAbility,SExpSpendUndo> UndoableAbilityBuys;        // +0x14c
+    unsigned char ExperiencePrimitiveHandles[0xc];                   // +0x158 vector<CEnginePrimitiveHandle>
+    unsigned char ExperienceStrengthPrimitiveHandles[0xc];           // +0x164
+    unsigned char ExperienceSkillPrimitiveHandles[0xc];              // +0x170
+    unsigned char ExperienceWeaponMagicPrimitiveHandles[0xc];        // +0x17c
+    unsigned char ExperienceAbilityMagicPrimitiveHandles[0xc];       // +0x188
+    unsigned char ExperiencePureMagicPrimitiveHandles[0xc];          // +0x194
+    bool OpenedExperienceSpending;                                   // +0x1a0
+    std::list<CSliderAnimator> Animators;                            // +0x1a4
+    std::list<CSliderAnimator>::iterator AnimIt;                     // +0x1a8
+    long OrigGeneral;                                                // +0x1ac
+    long OrigStrength;                                               // +0x1b0
+    long OrigSkill;                                                  // +0x1b4
+    long OrigWill;                                                   // +0x1b8
+    long statIndicatorPos;                                           // +0x1bc
+    long statIndicatorMax;                                           // +0x1c0
+    NUISystem::CYesNo* pYesNo;                                       // +0x1c4 (RTTI .?AVCYesNo@NUISystem@@)
+    unsigned char ExperienceSpendAdd[0x8];                           // +0x1c8 ExperienceSpendEvent
+    unsigned char ExperienceSpendRemove[0x8];                        // +0x1d0 ExperienceSpendEvent
+    NUISystem::CViewport* pViewport;                                 // +0x1d8
+    NUISystem::CViewport* pTextViewport;                             // +0x1dc
+    unsigned char ExperienceSpendValuesPool[0xc];                    // +0x1e0 vector<ExperienceSpendInfo>
+    unsigned char ExperienceSpendValuesStats[0xc];                   // +0x1ec
+    unsigned char ExperienceSpendValuesAbility[0xc];                 // +0x1f8
+    long ExperienceSpendMagnitude;                                   // +0x204
+    unsigned char MenuDisplayListExperienceItem[0xc];                // +0x208 vector<long>
+    bool CreateBecauseOfUndo;                                        // +0x214
+    long NumItems;                                                   // +0x218
+    bool DestroyEverything;                                          // +0x21c
+    NHeroInformationScreens::EScreenType PreviousScreenType;         // +0x220
+    std::map<EHeroTrainableStatType,NUISystem::CComponent*> UpgradableStats;   // +0x224
+    std::map<EHeroAbility,NUISystem::CComponent*> UpgradableAbilities;         // +0x230
+    std::vector<NUISystem::CComponent*> ExpSliders;                  // +0x23c
+    std::vector<CCharString> TutorialsPlayed;                        // +0x248
+    float AccumFadeTime;                                             // +0x254
+    NUISystem::CComponent* PMousePointer;                            // +0x258
+    float Counter;                                                   // +0x25c
+    long PointsGeneral;                                              // +0x260
+    long PointsStrength;                                             // +0x264
+    long PointsSkill;                                                // +0x268
+    long PointsWill;                                                 // +0x26c
+};
+FABLE_STATIC_ASSERT(sizeof(CTCInventoryExperience) == 0x270);
+#endif
+#else
 #ifndef FABLE_ENGINE_CTCINVENTORYEXPERIENCE_H
 #define FABLE_ENGINE_CTCINVENTORYEXPERIENCE_H
 // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
@@ -184,3 +301,4 @@ FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, PointsSkill) == 0x268);
 FABLE_STATIC_ASSERT(offsetof(CTCInventoryExperience, PointsWill) == 0x26c);
 
 #endif // FABLE_ENGINE_CTCINVENTORYEXPERIENCE_H
+#endif

@@ -10,7 +10,7 @@
 //   CCountedPointer<CAction>(CAction*) 0x0042AA29, CAction 0x0053FDE0 (descriptive SetTarget; manifest "list::push_back"),
 //   SetScroll 0x00555A90 (descriptive), operator new 0x00BFEA1A, malloc 0x00BFEA0E (list node), operator delete 0x00BFE9BC,
 //   _ftol 0x00BFEA70; component slots 43 Initialise, 51/52 SetParent/GetParent, 59 AddChild, 80 (+0x140) AddAction,
-//   108 GetDef; CActionParamLong vtable 0x012366F4 (type 3).
+//   108 GetDef; CActionParamSLONG vtable 0x012366F4 (type 3).
 // Layout: the landed CRedefinerList::Initialise 0x005566A0 model (component slots, counted-pointer count block, CDefPointer
 //   over a ref-count base at +4, CAction 0x10 bytes as the landed AddSoundAction 0x0056F615); the def is 2-packed (item gap
 //   +0x142, item height +0x146); list members +0x15c..+0x174 and the action-target subobject at +0x18 are descriptive.
@@ -53,9 +53,10 @@ class CActionParam { public:
     CActionParam(long type) : Type(type) {}
     virtual void v00();
 };
-struct CActionParamLong : CActionParam {                // vtable 0x012366F4
+class CActionParamSLONG : public CActionParam { public:   // RTTI .?AVCActionParamSLONG@NUISystem@@ at the vtable; Ego_r/FableWin ??0CActionParamSLONG@NUISystem@@QAE@J@Z
+                   // vtable 0x012366F4
     long Value;                                         // +0x08
-    CActionParamLong(long value) : CActionParam(3), Value(value) {}
+    CActionParamSLONG(long value) : CActionParam(3), Value(value) {}
     virtual void v00();
 };
 struct SParamNode {
@@ -293,7 +294,7 @@ void CScrollableList::Initialise()
         arrow->Initialise();
         CActionPointer action(new CAction);
         action->ActionType = 0x123;
-        action->AddUIActionParam(new CActionParamLong(0x10));
+        action->AddUIActionParam(new CActionParamSLONG(0x10));
         action->SetTarget(&ActionTarget, action);
         arrow->AddAction(action);
     }
@@ -305,7 +306,7 @@ void CScrollableList::Initialise()
         arrow->Initialise();
         CActionPointer action(new CAction);
         action->ActionType = 0x123;
-        action->AddUIActionParam(new CActionParamLong(0x11));
+        action->AddUIActionParam(new CActionParamSLONG(0x11));
         action->SetTarget(&ActionTarget, action);
         arrow->AddAction(action);
     }

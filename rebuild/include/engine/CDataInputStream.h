@@ -19,11 +19,10 @@ public:
     unsigned long GetLength() const { return StreamSize; }
     virtual unsigned long GetPosition() const { return StreamPos; }
     virtual void SetPosition(unsigned long);
-    inline void Read(void* buffer,long size) {
+    __forceinline void Read(void* buffer,long size) {
         if(size<=0)return;
         __int64 newPosition=(__int64)(StreamPos+size);
-        bool valid=newPosition>=0 && newPosition<=0x7fffffff;
-        if(!valid)return;
+        if(newPosition<0 || newPosition>0x7fffffff)return;
         if(size<=SourceChunkBytesRemaining) {
             memcpy(buffer,CurrentSourcePtr,size);
             CurrentSourcePtr+=size;
@@ -31,9 +30,9 @@ public:
             StreamPos+=size;
         } else ReadWithSrcChunkOverflow((unsigned char*)buffer,size);
     }
-    template<class T> T ReadType() { T val; Read(&val,sizeof(T)); return val; }
-    inline unsigned long ReadULONG() { return ReadType<unsigned long>(); }
-    inline long ReadSLONG() { return ReadType<long>(); }
+    template<class T> __forceinline T ReadType() { T val; Read(&val,sizeof(T)); return val; }
+    __forceinline unsigned long ReadULONG() { return ReadType<unsigned long>(); }
+    __forceinline long ReadSLONG() { return ReadType<long>(); }
     virtual void ReadCompressed(void*,long);
     virtual void ReadZlibCompressed(void*,long);
     virtual CCharString ReadNullTerminatedString();

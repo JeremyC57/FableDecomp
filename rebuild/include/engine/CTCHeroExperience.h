@@ -6,12 +6,29 @@
 #include "engine/CDefPointer.h"
 #include "engine/CHeroCombatDef.h"
 #include "engine/EHeroExperienceStatCategory.h"
+enum EHeroTrainableStatType;                                             // MS forward enum (chunk 735)
+#include "engine/EHeroAbility.h"
 class CHeroCombatDef;class CThingCreatureBase;class CHeroExperienceDef;class CHeroStatsDef;
 class CTCHeroExperience:public CTCBase{
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType(){return TCI_HERO_EXPERIENCE;}
     const CHeroCombatDef& PeekHeroCombatDef()const{return *PHeroCombatDef;}
     void AddTrainableStatExperience(EHeroExperienceStatCategory,long);
+    // Chunk 735 (CTCInventoryExperience rows 0x005729D8 / 0x00573792): the trainable-stat queries, out of line (Ego_r.pdb /
+    // FableWin.pdb spellings): GetTrainableStatLevel 0x006D6520 (QBE), GetTrainableStatMaxLevel 0x006D6770 (QBE),
+    // GetCostToUpgradeTrainableStat 0x006D67B0 (QBE), GetCategoryTrainableStatIsIn 0x006D6850 (QBE), GetStatExperience
+    // 0x006D6510 (QBE), GetTrainableStatPossibleLevelUpAmount 0x006D6FA0 (QAE, the fraction by reference).
+    long GetTrainableStatLevel(EHeroTrainableStatType)const;
+    long GetTrainableStatMaxLevel(EHeroTrainableStatType)const;
+    long GetCostToUpgradeTrainableStat(EHeroTrainableStatType)const;
+    EHeroExperienceStatCategory GetCategoryTrainableStatIsIn(EHeroTrainableStatType)const;
+    long GetStatExperience(EHeroExperienceStatCategory)const;
+    long GetTrainableStatPossibleLevelUpAmount(EHeroTrainableStatType,float&);
+    // Chunk 735 (AddAbilityToList(PC)): ?GetAbilityPossibleLevelUpAmount@CTCHeroExperience@@QAEJW4EHeroAbility@@AAM@Z 0x006D7B80.
+    long GetAbilityPossibleLevelUpAmount(EHeroAbility,float&);
+    // Chunk 735 (row 0x00577AC0): ?GetExperiencePointsAvailableToSpend@CTCHeroExperience@@QBEJXZ (Ego_r.pdb / FableWin.pdb),
+    // inline in retail (OpenInventoryInternalPC reads +0x14 in place).
+    long GetExperiencePointsAvailableToSpend() const { return ExperiencePointsAvailableToSpend; }
 public: virtual ETCInterfaceType GetInterfaceType() const;
 public: virtual CCharString GetClassTypeName() const;
 public: virtual void OnCreate();

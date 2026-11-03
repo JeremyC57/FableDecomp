@@ -16,6 +16,7 @@ class CPersistContext_TransferableComponentGenericType;
 #ifdef FABLE_RETAIL_CPERSISTCONTEXT
 class CPersistContext_TransferableVectorOfSubComponentsGenericType;
 class CPersistContext_TransferableSubComponentGenericType;
+class CPersistContextReadSection;
 #endif
 class CPersistContextWriteSection;
 template<class T> class CPersistTraits;
@@ -41,6 +42,11 @@ public:
     // ??0CPersistContext@@QAE@AAVCDataOutputStream@@_N@Z) and the PSaveStream accessor (inline in retail).
     CPersistContext(CDataOutputStream&,bool);
     CDataOutputStream* GetPSaveStream() { return PSaveStream; }
+    // Chunk 735 (rows 0x0047F58B CTCInGameMenu / 0x00597228 NUISystem::CFrontEndManager AddRegionAndTimeInfo): the binary-load Init
+    // 0x009BAA30 (Ego_r.pdb / FableWin.pdb ?Init@CPersistContext@@QAEXAAVCMemoryDataInputStream@@_N@Z, `ret 8`: stream +0x24, Mode
+    // MODE_LOAD_BINARY) and ReadSection 0x009BAE70 (?ReadSection@CPersistContext@@QAE_NAAVCPersistContextReadSection@@ABVCCharString@@@Z, landed).
+    void Init(CMemoryDataInputStream&,bool);
+    bool ReadSection(CPersistContextReadSection&,const CCharString&);
     // pass 12 header wave (0x009BC120): Ego_r / FableWin ?PersistError@CPersistContext@@QBEXABVCStringParser@@ABVCCharString@@@Z,
     // ?CheckUnknownSymbols@CPersistContext@@QAEXXZ (out of line: 0x009BAA90 / 0x009BBBF0); SetAsSingleTransfer has no copy in
     // either PDB name set (inline: 0x009BC120 stores SingleTransfer=true on its nested context).

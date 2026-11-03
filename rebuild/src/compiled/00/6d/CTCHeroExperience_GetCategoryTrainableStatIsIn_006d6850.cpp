@@ -1,4 +1,6 @@
-// CTCHeroExperience::GetCategoryTrainableStatIsIn @ 006d6850
+// CTCHeroExperience::GetCategoryTrainableStatIsIn(EHeroTrainableStatType) const @ 006d6850
+// Leaf: ?GetCategoryTrainableStatIsIn@CTCHeroExperience@@QBE?AW4EHeroExperienceStatCategory@@W4EHeroTrainableStatType@@@Z
+// Identity: Ego_r.pdb / FableWin.pdb const (QBE); landing 2026-11-03f respell (was QAE).
 
 enum EHeroTrainableStatType { };
 enum EHeroExperienceStatCategory { };
@@ -17,10 +19,10 @@ struct StatTable {
 class CTCHeroExperience { public:
     char pad0[0x5c];        // 0x00..0x5b
     StatTable* table;       // 0x5c
-    EHeroExperienceStatCategory GetCategoryTrainableStatIsIn(EHeroTrainableStatType stat);
+    EHeroExperienceStatCategory GetCategoryTrainableStatIsIn(EHeroTrainableStatType stat) const;
 };
 
-EHeroExperienceStatCategory CTCHeroExperience::GetCategoryTrainableStatIsIn(EHeroTrainableStatType stat)
+EHeroExperienceStatCategory CTCHeroExperience::GetCategoryTrainableStatIsIn(EHeroTrainableStatType stat) const
 {
     return (EHeroExperienceStatCategory)this->table->entries[(int)stat].category;
 }

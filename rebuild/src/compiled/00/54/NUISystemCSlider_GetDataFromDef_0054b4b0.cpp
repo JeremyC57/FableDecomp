@@ -9,7 +9,7 @@
 //   operator new 0x00BFEA1A, malloc 0x00BFEA0E (list nodes), operator delete 0x00BFE9BC, CAction::CAction 0x0042BE50,
 //   CCountedPointer<CAction>(CAction*) 0x0042AA29 (deleter 0x00429F43), CAction::AddUIActionParam(CActionParam*, const CCountedPointer<CAction>&)
 //   0x0053FDE0, STLport vector<CCountedPointer<CAction> >::_M_insert_overflow 0x0054A2A0, CFrontEndManager::GetInstance 0x0041E5F2,
-//   CManager::CreateComponent(long) 0x0041D21B; parameter vtables CActionParamLONG 0x012366F4 (type 3), CActionParamFLOAT 0x01248CD0 (type 6).
+//   CManager::CreateComponent(long) 0x0041D21B; parameter vtables CActionParamSLONG 0x012366F4 (type 3), CActionParamFLOAT 0x01248CD0 (type 6).
 // Layout: retail CSlider = Ego_r.pdb minus 0x30 (landed ctor 0x0054C050): Min +0x18c, Max +0x194, Step +0x19c, Value +0x1a4, Move +0x1ac,
 //   OldValue +0x1ad, StartValue +0x1b5, Actions +0x1c0, PDefAction +0x1d4, PLeftArrow +0x1d8, PRightArrow +0x1dc, PreviousValue +0x1e0;
 //   the slider's CActionParam base sits at +0x18.
@@ -58,9 +58,10 @@ class CActionParam { public:
     CActionParam(long type) : Type(type) { }
     virtual void v00();
 };
-struct CActionParamLONG : CActionParam {               // vtable 0x012366F4
+class CActionParamSLONG : public CActionParam { public:   // RTTI .?AVCActionParamSLONG@NUISystem@@ at the vtable; Ego_r/FableWin ??0CActionParamSLONG@NUISystem@@QAE@J@Z
+                  // vtable 0x012366F4
     long Value;
-    CActionParamLONG(long value) : CActionParam(3), Value(value) { }
+    CActionParamSLONG(long value) : CActionParam(3), Value(value) { }
     virtual void v00();
 };
 struct CActionParamFLOAT : CActionParam {              // vtable 0x01248CD0
@@ -254,7 +255,7 @@ void CSlider::GetDataFromDef()
         PRightArrow = CFrontEndManager::GetInstance()->CreateComponent(def->RightArrowDef);
         CCountedPointer<CAction> action(new CAction);
         action->ActionType = 0x123;
-        action->AddUIActionParam(new CActionParamLONG(0x15));
+        action->AddUIActionParam(new CActionParamSLONG(0x15));
         action->AddUIActionParam(&m_actionParamBase, action);
         PRightArrow->AddClickAction(action);
     }
@@ -262,7 +263,7 @@ void CSlider::GetDataFromDef()
         PLeftArrow = CFrontEndManager::GetInstance()->CreateComponent(def->LeftArrowDef);
         CCountedPointer<CAction> action(new CAction);
         action->ActionType = 0x123;
-        action->AddUIActionParam(new CActionParamLONG(0x14));
+        action->AddUIActionParam(new CActionParamSLONG(0x14));
         action->AddUIActionParam(&m_actionParamBase, action);
         PLeftArrow->AddClickAction(action);
     }

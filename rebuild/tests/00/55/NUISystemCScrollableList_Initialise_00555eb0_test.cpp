@@ -52,9 +52,9 @@ class CActionParam { public:
     CActionParam(long type) : Type(type) {}
     virtual void v00() {}
 };
-struct CActionParamLong : CActionParam {                // vtable 0x012366F4
+class CActionParamSLONG : public CActionParam { public:                // vtable 0x012366F4
     long Value;                                         // +0x08
-    CActionParamLong(long value) : CActionParam(3), Value(value) {}
+    CActionParamSLONG(long value) : CActionParam(3), Value(value) {}
     virtual void v00() {}
 };
 struct SParamNode {
@@ -292,7 +292,7 @@ void CScrollableList::Initialise()
         arrow->Initialise();
         CActionPointer action(new CAction);
         action->ActionType = 0x123;
-        action->AddUIActionParam(new CActionParamLong(0x10));
+        action->AddUIActionParam(new CActionParamSLONG(0x10));
         action->SetTarget(&ActionTarget, action);
         arrow->AddAction(action);
     }
@@ -304,7 +304,7 @@ void CScrollableList::Initialise()
         arrow->Initialise();
         CActionPointer action(new CAction);
         action->ActionType = 0x123;
-        action->AddUIActionParam(new CActionParamLong(0x11));
+        action->AddUIActionParam(new CActionParamSLONG(0x11));
         action->SetTarget(&ActionTarget, action);
         arrow->AddAction(action);
     }
@@ -336,7 +336,7 @@ void CComponent::AddAction(const CActionPointer& action)
 {
     g_actionOwner[g_actions] = this; g_actionType[g_actions] = action->ActionType;
     SParamNode* first = action->UIActionParams->_M_next;
-    g_paramType[g_actions] = first->_M_data->Type; g_paramValue[g_actions] = ((CActionParamLong*)first->_M_data)->Value;
+    g_paramType[g_actions] = first->_M_data->Type; g_paramValue[g_actions] = ((CActionParamSLONG*)first->_M_data)->Value;
     if (first->_M_next != action->UIActionParams) g_paramType[g_actions] = -1;
     g_actions++;
 }

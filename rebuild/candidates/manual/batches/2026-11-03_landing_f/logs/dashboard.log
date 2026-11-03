@@ -1,0 +1,23 @@
+{
+  "catalog_rows": 54094,
+  "known_functions": 57609,
+  "original_functions": 49564,
+  "landed_known": 54094,
+  "landed_original": 46561,
+  "landed_genuine_known": 54081,
+  "landed_genuine_original": 46548,
+  "genuine": 53453,
+  "retail_asm": 187,
+  "toolchain_library": 441,
+  "asm_bake": 13,
+  "library_source": 8,
+  "missing_source": 0,
+  "matched_bytes": 5723580,
+  "matched_bytes_genuine": 5719711,
+  "unlanded_bytes_estimate": 4508444,
+  "unlanded_gap_cap": 65536,
+  "unlanded_gaps_capped": 1,
+  "text_bytes": 14858408
+}
+wrote /home/user/FableDecomp/rebuild/COVERAGE.md
+readme_progress=updated catalog=49568 compiled=18604 agent=1066/1053

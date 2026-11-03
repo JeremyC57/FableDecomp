@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00b3efa0   RELOCATION_MATCH PASS   CEngineMap::ReadMapInfoBlock
+
+WINS: 1
+  00b3efa0 RELOCATION_MATCH CEngineMap::?ReadMapInfoBlock@CEngineMap@@CIXAAUCStaticMapInfoBlock@1@AAVCDataInputStream@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CEngineMap_ReadMapInfoBlock_00b3efa0

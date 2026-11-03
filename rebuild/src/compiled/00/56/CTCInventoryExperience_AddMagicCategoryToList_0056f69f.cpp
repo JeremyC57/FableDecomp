@@ -1,4 +1,5 @@
 // CTCInventoryExperience::AddMagicCategoryToList(CList* list, CWideString title, CCharString definition, CList* subList, CWideString description, CCharString icon) -- adds a magic-category branch entry (title, sub-list, category description and subtitle) to the experience-spending list
+// Leaf: ?AddMagicCategoryToList@CTCInventoryExperience@@AAEXPAVCList@NUISystem@@VCWideString@@VCCharString@@012@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0056F69F, 517 bytes, `ret 18h`; frame-pointer size TU
 // (`optimize("y", off)` + `("s", on)`, as the landed AddSoundAction 0x0056F615 of the same TU).
 // Callees: CManager::GetInstance 0x0041E5F2 (__fastcall), CManager::CreateMenuEntryComponent 0x00428494
@@ -71,7 +72,10 @@ class CTCInventoryExperience { public:
     void*                 __vftable;                  // +0x00
     unsigned char         _pad_0x04[0x1D8];
     NUISystem::CViewport* pTextViewport;              // +0x1DC
+private:
+    // Ego_r.pdb / FableWin.pdb ?AddSoundAction@CTCInventoryExperience@@AAEXPAVCComponent@NUISystem@@VCCharString@@@Z (private); landing 2026-11-03f respell (was public QAE).
     void AddSoundAction(NUISystem::CComponent* element, CCharString soundName);   // 0x0056F615
+    // Ego_r.pdb / FableWin.pdb ?AddMagicCategoryToList@CTCInventoryExperience@@AAE... (private, as the row itself).
     void AddMagicCategoryToList(NUISystem::CList* list, CWideString title, CCharString definition, NUISystem::CList* subList,
                                 CWideString description, CCharString icon);
 };

@@ -1,0 +1,12 @@
+addr       parity           behav  name
+006d6850   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience
+006d6850   MATCH            PASS   CTCHeroExperience::GetCategoryTrainableStatIsIn
+
+WINS: 1
+  006d6850 MATCH CTCHeroExperience::GetCategoryTrainableStatIsIn
+addr       parity           behav  name
+006d6850   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience
+006d6850   MATCH            PASS   CTCHeroExperience::GetCategoryTrainableStatIsIn
+
+WINS: 1
+  006d6850 MATCH CTCHeroExperience::?GetCategoryTrainableStatIsIn@CTCHeroExperience@@QBE?AW4EHeroExperienceStatCategory@@W4EHeroTrainableStatType@@@Z

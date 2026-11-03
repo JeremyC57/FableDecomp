@@ -22,6 +22,12 @@ public:
     static ETCInterfaceType StatGetInterfaceType() { return (ETCInterfaceType)111; }
     long GetAbilityLevel(EHeroAbility) const;
     long GetAbilityMaximumLevel(EHeroAbility) const;
+    // Chunk 735 (CTCInventoryExperience::AddAbilityToList(PC) 0x00570332 / 0x00571280): Ego_r.pdb spellings, out of line in
+    // retail: GetAbilityGraphicIndex 0x005EDE7F, GetAbilityMoralityCostFactor 0x005EDFF7, GetExperienceCostToUpgradeAbility
+    // 0x005EE77C (ability, levels, bool).
+    long GetAbilityGraphicIndex(EHeroAbility) const;
+    float GetAbilityMoralityCostFactor(EHeroAbility);
+    long GetExperienceCostToUpgradeAbility(EHeroAbility,long,bool) const;
 private:
     EHeroAbility SpellToAssign;
     long SpellSlotToSwap;

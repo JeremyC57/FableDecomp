@@ -1,0 +1,95 @@
+addr       parity           behav  name
+00597228   WARN RELOC_NAME: ?resize@?$vector@EV?$allocator@E@std@@@std@@QAEXI@Z -> 004861df labelled 'std::vector<EWeaponClass,std::allocator<EWeaponClass>_>::_Umove<EWeaponClass*>'
+00597228   WARN RELOC_NAME: ?Init@CPersistContext@@QAEXAAVCMemoryDataInputStream@@_N@Z -> 009baa30 labelled 'CPersistContext::CPersistContext'
+00597228   WARN RELOC_NAME: ??1CFileDataInputStream@@UAE@XZ -> 00994780 labelled '_global::Dtor_CBaseBase_00994780'
+00597228   RELOCATION_MATCH PASS   NUISystem::CFrontEndManager::AddRegionAndTimeInfo
+005a3581   WARN SHARED_HEADER_AVAILABLE CThing
+005a3581   WARN SHARED_HEADER_AVAILABLE CPlayer
+005a3581   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+005a3581   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+005a3581   WARN SHARED_HEADER_AVAILABLE CItem
+005a3581   WARN SHARED_HEADER_AVAILABLE CCategory
+005a3581   WARN SHARED_HEADER_AVAILABLE CTCShop
+005a3581   WARN RELOC_NAME: ?GetOwner@CTCInventoryBase@@QBEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+005a3581   WARN RELOC_NAME: ?GetCurrentBuyPrice_007743b0@CTCShop@@QBEJJJ@Z -> 007743b0 labelled 'CTCShop::GetCurrentSellPrice'
+005a3581   WARN RELOC_NAME: ?CanAddItem@CTCInventoryBase@@QBE_NJ@Z -> 005bf2ed labelled 'NInventory::CTCInventoryBase::GetItemDescription'
+005a3581   RELOCATION_MATCH PASS   CTCInventoryTrade::BuyHighlightedItem
+005eb9e0   RELOCATION_MATCH PASS   CTCTavernGame::FrameUpdate
+006286f0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+006286f0   WARN RELOC_NAME: ?SetEnabled25_009915e0@CASoundManager@@QAEX_N@Z -> 009915e0 labelled 'CWorld::SetMiniMapEnabled'
+006286f0   WARN RELOC_NAME: ?SetEnabled26_00991620@CASoundManager@@QAEX_N@Z -> 00991620 labelled 'CTCDParticleEmitter::func_00991620'
+006286f0   WARN RELOC_NAME: ?Sprintf@CWideString@@QAAXPBGZZ -> 0099ba70 labelled 'CWideString::Format'
+006286f0   RELOCATION_MATCH PASS   GFPlayFullScreenXBoxMovie
+00631c60   WARN RELOC_NAME: ??$TransferVector@J@CPersistContext@@QAEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z -> 00466a47 labelled 'CPersistContext::TransferBinary_00466a47'
+00631c60   WARN RELOC_NAME: ??$TransferVector@K@CPersistContext@@QAEXAAV?$vector@KV?$allocator@K@std@@@std@@@Z -> 00464841 labelled 'CPersistContext::TransferBinary_00464841'
+00631c60   WARN RELOC_NAME: ??$TransferMap@KK@CPersistContext@@QAEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@@Z -> 00431242 labelled '_global::PersistTransfer_00431242'
+00631c60   WARN RELOC_NAME: ??$TransferVector@M@CPersistContext@@QAEXAAV?$vector@MV?$allocator@M@std@@@std@@@Z -> 00464cbf labelled 'CPersistContext::TransferBinary_00464cbf'
+00631c60   RELOCATION_MATCH PASS   NUISystem::CUIDef::Transfer
+00667d30   WARN RELOC_NAME: ?SetLifeTime@CTCFlashOnHit@@QAEXJ@Z -> 007e33a0 labelled 'OnPostParentRelocation'
+00667d30   WARN RELOC_NAME: ?IsMeleeStrike@CHitParameters@@QBE_NXZ -> 00868860 labelled 'CStateMapOwner_00868860::HasStateZeroOrOne'
+00667d30   WARN RELOC_NAME: ?AddHitByMelee@CPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z -> 00437990 labelled '_global::Forward_InitParticleEmitter_via0x150_00437990'
+00667d30   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00667d30   RELOCATION_MATCH PASS   CThingCreatureBase::OnHit
+00692460   MATCH            PASS   CCreatureActionBase::GetAnimDelayTime
+006c8d00   RELOCATION_MATCH PASS   CTCHeroOpinionDeedLog::GetClassTypeName
+006d2bd0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+006d2bd0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z -> 00433530 labelled 'std::vector::std::vector::Reallocate'
+006d2bd0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@U?$pair@VCCharString@@J@std@@V?$allocator@U?$pair@VCCharString@@J@std@@@2@@std@@IAEXPAU?$pair@VCCharString@@J@2@ABU32@ABU__false_type@2@I_N@Z -> 006d4750 labelled 'STL::Vector8_string8::InsertGrow_006d4750'
+006d2bd0   RELOCATION_MATCH PASS   CTCWife::OnSerialise
+006d6850   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience
+006d6850   MATCH            PASS   CTCHeroExperience::GetCategoryTrainableStatIsIn
+006d7cb0   WARN SHARED_HEADER_AVAILABLE CThing
+006d7cb0   WARN SHARED_HEADER_AVAILABLE CTCInventoryAbilities
+006d7cb0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+006d7cb0   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience
+006d7cb0   RELOCATION_MATCH PASS   CTCHeroExperience::IsReadyToLevelUp
+00718df0   RELOCATION_MATCH PASS   CActionPickUpGenericBox::GetTypeAsString
+0074a5d0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0074a5d0   RELOCATION_MATCH PASS   NCreatureHiding::GetValidPositions
+00782670   WARN SHARED_HEADER_AVAILABLE CThing
+00782670   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC
+00782670   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+00782670   WARN RELOC_NAME: ??$?RVCThingCreatureBase@@@CThingCompare_Nearest@@QBEPAVCThingCreatureBase@@PAV1@0@Z -> 00782560 labelled 'CThingCompare_Nearest::operator()<CThingCreatureBase>'
+00782670   RELOCATION_MATCH PASS   CThingSearchTools::GetPBestThing<CThingFilter_HasTC, CThingCompare_Nearest, CThingCreatureBase>
+007cbd50   RELOCATION_MATCH PASS   CTCHeroReceiveItems::GetClassTypeName
+007edff0   RELOCATION_MATCH PASS   _global::Dtor_CCreatureActionBaseBase_007edff0
+00844410   WARN SHARED_HEADER_AVAILABLE CThingPhysical
+00844410   RELOCATION_MATCH PASS   CCreatureAction_PlayerInteractionFlirt::PerformAction
+00895c30   WARN SHARED_HEADER_AVAILABLE CPlayer
+00895c30   RELOCATION_MATCH PASS   CGameScriptInterface::HasHeroWonOracleMinigame
+008b95a0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase
+008b95a0   RELOCATION_MATCH PASS   CCreatureAction_CastWillTurncoatSpell::PerformAction
+008cbd90   WARN SHARED_HEADER_AVAILABLE CCombatActionBase
+008cbd90   RELOCATION_MATCH PASS   CCreatureAction_SummonerLightningOrbInto::CCreatureAction_SummonerLightningOrbInto
+008e7cf0   WARN SHARED_HEADER_AVAILABLE C3DVector
+008e7cf0   WARN SHARED_HEADER_AVAILABLE CThing
+008e7cf0   WARN RELOC_NAME: ?GetBriar@NativeDefinition@@QBE_NPAUBriarDefinitionPointer@@@Z -> 008e7790 labelled 'CDefClassBase::GetSubDef<CBriarRoseDef>'
+008e7cf0   WARN RELOC_NAME: ?GetWorld@ModeBriar@@QBEAAVCWorld@@XZ -> 0073a680 labelled '_global::GetGlobal_013b8a1c_deref0x24_0073a680'
+008e7cf0   RELOCATION_MATCH PASS   NCreatureMode::CModeBriarRoseTeleportIntangible::OnDeactivate
+008edff0   RELOCATION_MATCH PASS   CWillButtonHelperTimer::CWillButtonHelperTimer
+008f5c20   RELOCATION_MATCH PASS   NHeroStatModifierEvent::CKilledThing::ModifyHeroStats
+
+WINS: 23
+  00597228 RELOCATION_MATCH NUISystem::CFrontEndManager::?AddRegionAndTimeInfo@CFrontEndManager@NUISystem@@IAEXABVCWideString@@@Z
+  005a3581 RELOCATION_MATCH CTCInventoryTrade::BuyHighlightedItem
+  005eb9e0 RELOCATION_MATCH CTCTavernGame::?FrameUpdate@CTCTavernGame@@UAEXXZ
+  006286f0 RELOCATION_MATCH _global::?GFPlayFullScreenXBoxMovie@@YI_NABVCCharString@@KKKKPBVCDataBank@NGameText@@PAVCIEngine@@_NMP6I_NXZPAVCXMVPlayerBuffers@@PAVCWideString@@@Z
+  00631c60 RELOCATION_MATCH NUISystem::CUIDef::?Transfer@CUIDef@NUISystem@@UAEXAAVCPersistContext@@@Z
+  00667d30 RELOCATION_MATCH CThingCreatureBase::?OnHit@CThingCreatureBase@@UAEXAAVCHitParameters@@@Z
+  00692460 MATCH CCreatureActionBase::GetAnimDelayTime
+  006c8d00 RELOCATION_MATCH CTCHeroOpinionDeedLog::GetClassTypeName
+  006d2bd0 RELOCATION_MATCH CTCWife::?OnSerialise@CTCWife@@UAEXAAVCPersistContext@@_N@Z
+  006d6850 MATCH CTCHeroExperience::?GetCategoryTrainableStatIsIn@CTCHeroExperience@@QBE?AW4EHeroExperienceStatCategory@@W4EHeroTrainableStatType@@@Z
+  006d7cb0 RELOCATION_MATCH CTCHeroExperience::IsReadyToLevelUp
+  00718df0 RELOCATION_MATCH CActionPickUpGenericBox::GetTypeAsString
+  0074a5d0 RELOCATION_MATCH NCreatureHiding::?GetValidPositions@NCreatureHiding@@YIXAAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@ABVCWorldMap@@ABVCThingSearchTools@@ABVC3DVector@@M_NPBVCTCShapeManager@@@Z
+  00782670 RELOCATION_MATCH CThingSearchTools::GetPBestThing
+  007cbd50 RELOCATION_MATCH CTCHeroReceiveItems::GetClassTypeName
+  007edff0 RELOCATION_MATCH _global::DestroyMembers
+  00844410 RELOCATION_MATCH CCreatureAction_PlayerInteractionFlirt::?PerformAction@CCreatureAction_PlayerInteractionFlirt@@UAEXXZ
+  00895c30 RELOCATION_MATCH CGameScriptInterface::HasHeroWonOracleMinigame
+  008b95a0 RELOCATION_MATCH CCreatureAction_CastWillTurncoatSpell::PerformAction
+  008cbd90 RELOCATION_MATCH CCreatureAction_SummonerLightningOrbInto::CCreatureAction_SummonerLightningOrbInto
+  008e7cf0 RELOCATION_MATCH NCreatureMode::CModeBriarRoseTeleportIntangible::OnDeactivate
+  008edff0 RELOCATION_MATCH CWillButtonHelperTimer::??0CWillButtonHelperTimer@@QAE@W4EHeroAbility@@AAVCThing@@@Z
+  008f5c20 RELOCATION_MATCH NHeroStatModifierEvent::CKilledThing::ModifyHeroStats

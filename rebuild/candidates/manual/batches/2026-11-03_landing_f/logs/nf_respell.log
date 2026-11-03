@@ -1,0 +1,62 @@
+addr       parity           behav  name
+0056f69f   WARN SHARED_HEADER_AVAILABLE CManager
+0056f69f   WARN SHARED_HEADER_AVAILABLE CTCInventoryExperience
+0056f69f   WARN RELOC_NAME: ??0CComponentPointer@@QAE@PAVCComponent@NUISystem@@@Z -> 00429c15 labelled 'CCountedPointer_00428b10::CCountedPointer_00428b10'
+0056f69f   WARN RELOC_NAME: ??1CComponentPointer@@QAE@XZ -> 004291de labelled '_global::CCountedPointer_Release_004291de'
+0056f69f   RELOCATION_MATCH PASS   CTCInventoryExperience::AddMagicCategoryToList
+0057229b   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience
+0057229b   WARN SHARED_HEADER_AVAILABLE CTCInventoryExperience
+0057229b   RELOCATION_MATCH PASS   CTCInventoryExperience::UpdateExperienceSpendStat
+006d7cb0   WARN SHARED_HEADER_AVAILABLE CThing
+006d7cb0   WARN SHARED_HEADER_AVAILABLE CTCInventoryAbilities
+006d7cb0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+006d7cb0   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience
+006d7cb0   RELOCATION_MATCH PASS   CTCHeroExperience::IsReadyToLevelUp
+0041cf47   WARN SHARED_HEADER_AVAILABLE C2DVector
+0041cf47   WARN SHARED_HEADER_AVAILABLE CManager
+0041cf47   WARN RELOC_NAME: ?g_pEngine@@3PAVCEngine@@A -> 013b86a0 labelled 'CMainGameComponent::PMainGameComponent'
+0041cf47   WARN RELOC_NAME: ?GetBackBufferWidth@CUIScreenUnitConverter@NUISystem@@SIMXZ -> 0041cc14 labelled 'CTCLook::GetHeadAngularVelocityMaxXY'
+0041cf47   WARN RELOC_NAME: ?GetBackBufferHeight@CUIScreenUnitConverter@NUISystem@@SIMXZ -> 0041cc2b labelled 'CTCLook::GetHeadAngularVelocityMaxXY'
+0041cf47   RELOCATION_MATCH PASS   NUISystem::CManager::GetUIScale
+0054b4b0   WARN SHARED_HEADER_AVAILABLE C2DVector
+0054b4b0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0054b4b0   WARN SHARED_HEADER_AVAILABLE CManager
+0054b4b0   WARN RELOC_NAME: ?DestroyAction@NUISystem@@YIXPAX@Z -> 00429f43 labelled 'CTCMapwho::OnDie'
+0054b4b0   WARN RELOC_NAME: ?AddUIActionParam@CAction@NUISystem@@QAEXPAVCActionParam@2@ABV?$CCountedPointer@VCAction@NUISystem@@@@@Z -> 0053fde0 labelled 'NUISystem::CAction::AddParam'
+0054b4b0   RELOCATION_MATCH PASS   NUISystem::CSlider::GetDataFromDef
+00555eb0   WARN SHARED_HEADER_AVAILABLE C2DVector
+00555eb0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00555eb0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00555eb0   WARN SHARED_HEADER_AVAILABLE CManager
+00555eb0   WARN RELOC_NAME: ??0CActionPointer@NUISystem@@QAE@PAVCAction@1@@Z -> 0042aa29 labelled 'CCountedPointer_00429f43::CCountedPointer_00429f43'
+00555eb0   WARN RELOC_NAME: ?SetTarget@CAction@NUISystem@@QAEXPAUCActionTarget@2@ABUCActionPointer@2@@Z -> 0053fde0 labelled 'NUISystem::CAction::AddParam'
+00555eb0   RELOCATION_MATCH PASS   NUISystem::CScrollableList::Initialise
+00570161   WARN SHARED_HEADER_AVAILABLE CThing
+00570161   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience
+00570161   WARN SHARED_HEADER_AVAILABLE CTCInventoryExperience
+00570161   WARN RELOC_NAME: ?GetStatExperience@CTCHeroExperience@@QBEJW4EHeroExperienceStatCategory@@@Z -> 006d6510 labelled 'CTCInventoryAbilities::GetAbilityLevel'
+00570161   RELOCATION_MATCH PASS   CTCInventoryExperience::SaveExperienceValuesForCountDown
+0056f615   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0056f615   WARN SHARED_HEADER_AVAILABLE CTCInventoryExperience
+0056f615   WARN RELOC_NAME: ??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ -> 00429160 labelled '_global::CCountedPointer_Release_00429160'
+0056f615   RELOCATION_MATCH PASS   CTCInventoryExperience::AddSoundAction
+009ad6e0   WARN SHARED_HEADER_AVAILABLE CResource
+009ad6e0   WARN SHARED_HEADER_AVAILABLE CResourceList
+009ad6e0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+009ad6e0   WARN SHARED_HEADER_AVAILABLE CPersistContext
+009ad6e0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+009ad6e0   WARN RELOC_NAME: ?FindClassInfo@CDefinitionManager@@QAEPAUCDefClassInfo@@ABVCCharString@@@Z -> 009ad2e0 labelled 'CFactionDatabase::FindFactionBySymbolName'
+009ad6e0   WARN RELOC_NAME: ?Init@CPersistContext@@QAEXAAVCMemoryDataInputStream@@_N@Z -> 009baa30 labelled 'CPersistContext::CPersistContext'
+009ad6e0   WARN RELOC_NAME: ??1CMemoryDataInputStream@@UAE@XZ -> 00993b10 labelled 'CDataStream::~CDataStream'
+009ad6e0   RELOCATION_MATCH PASS   CDefinitionManager::LoadDef
+
+WINS: 9
+  0056f69f RELOCATION_MATCH CTCInventoryExperience::?AddMagicCategoryToList@CTCInventoryExperience@@AAEXPAVCList@NUISystem@@VCWideString@@VCCharString@@012@Z
+  0057229b RELOCATION_MATCH CTCInventoryExperience::UpdateExperienceSpendStat
+  006d7cb0 RELOCATION_MATCH CTCHeroExperience::IsReadyToLevelUp
+  0041cf47 RELOCATION_MATCH NUISystem::CManager::?GetUIScale@CManager@NUISystem@@QBE?AVC2DVector@@XZ
+  0054b4b0 RELOCATION_MATCH NUISystem::CSlider::GetDataFromDef
+  00555eb0 RELOCATION_MATCH NUISystem::CScrollableList::?Initialise@CScrollableList@NUISystem@@UAEXXZ
+  00570161 RELOCATION_MATCH CTCInventoryExperience::SaveExperienceValuesForCountDown
+  0056f615 RELOCATION_MATCH CTCInventoryExperience::?AddSoundAction@CTCInventoryExperience@@AAEXPAVCComponent@NUISystem@@VCCharString@@@Z
+  009ad6e0 RELOCATION_MATCH CDefinitionManager::LoadDef
