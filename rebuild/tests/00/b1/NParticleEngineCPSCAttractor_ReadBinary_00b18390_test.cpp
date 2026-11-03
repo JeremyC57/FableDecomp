@@ -19,7 +19,7 @@ static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 
 // ---- final.cpp verbatim ----
-// NParticleEngine::CPSCAttractor::ReadBinary(CDataInputStream*) -- read the attractor settings and its user points back (the mirror of WriteBinary 0x00B17F70; the position-param name word is skipped)
+// NParticleEngine::CPSCAttractor::ReadBinary(CDataInputStream&) -- read the attractor settings and its user points back (the mirror of WriteBinary 0x00B17F70; the position-param name word is skipped)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B18390, 785 bytes (vtable slot 15 of CPSCAttractor, 0x012A04AC).
 // Callees: CDataInputStream::ReadWithSrcChunkOverflow 0x00993CA0 (every read is the inlined CDataInputStream::Read,
 //   as in the landed CPSCOrbit::ReadBinary 0x00B16F60), CArray<C3DVector>::resize(n, const C3DVector&) 0x0075C040
@@ -77,21 +77,21 @@ class CPSCAttractor { public:
     float AttractorInfluenceRadius;                     // +0x1c
     float AttractorInfluenceForce;                      // +0x20
     CVector3D AttractorUserPointsArray;                 // +0x24
-    void ReadBinary(CDataInputStream* in);
+    void ReadBinary(CDataInputStream& in);
 };
-void CPSCAttractor::ReadBinary(CDataInputStream* in)
+void CPSCAttractor::ReadBinary(CDataInputStream& in)
 {
-    AttractorEnabled = in->ReadBool();
-    AttractorUseParamPosition = in->ReadBool();
-    AttractorInfluenceFallOff = in->ReadLong();
-    AttractorPositionParam = in->ReadULong();
-    in->ReadULong();
-    AttractorInfluenceRadius = in->ReadFloat();
-    AttractorInfluenceForce = in->ReadFloat();
-    unsigned long count = in->ReadULong();
+    AttractorEnabled = in.ReadBool();
+    AttractorUseParamPosition = in.ReadBool();
+    AttractorInfluenceFallOff = in.ReadLong();
+    AttractorPositionParam = in.ReadULong();
+    in.ReadULong();
+    AttractorInfluenceRadius = in.ReadFloat();
+    AttractorInfluenceForce = in.ReadFloat();
+    unsigned long count = in.ReadULong();
     AttractorUserPointsArray.resize(count);
     for (unsigned long i = 0; i < count; ++i)
-        AttractorUserPointsArray[i] = in->Read3DVector();
+        AttractorUserPointsArray[i] = in.Read3DVector();
 }
 }
 
@@ -152,7 +152,7 @@ static bool Run(long chunkBytes, unsigned char enabled, unsigned char useParam, 
     static NParticleEngine::CPSCAttractor a;
     std::memset(&a, 0, sizeof(a));
     a.AttractorUseParamPosition = true;    // bit 1 preset: the flag read must clear it when the byte is zero
-    a.ReadBinary(&in);
+    a.ReadBinary(in);
     bool ok = true;
     ok = ok && a.AttractorEnabled == (enabled != 0) && a.AttractorUseParamPosition == (useParam != 0);
     ok = ok && a.AttractorInfluenceFallOff == 7 && a.AttractorPositionParam == 0x11 && a.AttractorPositionParamName == 0;

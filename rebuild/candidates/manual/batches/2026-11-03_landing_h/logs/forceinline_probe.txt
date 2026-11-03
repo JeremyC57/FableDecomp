@@ -1,0 +1,19 @@
+# forceinline probe (landing h): parked differ/ sources compiled with cl RTM on full mirrors; call relocations (objdump -dr, DISP32 under call)
+# T = merged tree (__forceinline), A = CRGBFloatColour Interpolate/GetRGBColourClamped plain inline, B = CMatrix3x4 retail TransformPoint plain inline
+== 00b19c60_T
+  (other calls unchanged)
+== 00b19c60_A
+      1 ?GetRGBColourClamped@CRGBFloatColour@@QBE?AVCRGBColour@@XZ
+      2 ?Interpolate@CRGBFloatColour@@QBE?AV1@ABV1@M@Z
+  (other calls unchanged)
+== 00b19c60_B
+      2 ?TransformPoint@CMatrix3x4@@QBEXAAVC3DVector@@@Z
+  (other calls unchanged)
+== 00b087c0_T
+  (other calls unchanged)
+== 00b087c0_A
+      1 ?GetRGBColourClamped@CRGBFloatColour@@QBE?AVCRGBColour@@XZ
+      2 ?Interpolate@CRGBFloatColour@@QBE?AV1@ABV1@M@Z
+  (other calls unchanged)
+== 00b087c0_B
+  (other calls unchanged)

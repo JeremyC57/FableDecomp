@@ -13,15 +13,33 @@ public:
     CIVCountedPointer(const CIVCountedPointer& other) : Object(other.Object) { if (Object) Object->AddRef(); }
 #endif
     ~CIVCountedPointer() { Release(); }
+#ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER
+    // Chunk 737 (CPSCLight::PreparePrimitives 0x00B19C60, as the landed CPSCLight::Kill 0x00B19C20 / ~CPSCLight 0x00B1AEB0): FableWin.pdb
+    // ?Reset@?$CIVCountedPointer@..@@QAEXPAV1@@Z and ?Release@?$CIVCountedPointer@..@@QAEXXZ, inline in retail. Release clears the
+    // pointer inside its null test and Reset stores the new one after it: CEnginePrimitiveHandle::Clear's `Data.Reset(0)` gives
+    // retail's `mov [esi+4],0` on the release path plus the unconditional second store (0x00B1A623 / 0x00B1A626).
+    void Reset(T* object) { Release(); Object = object; if (Object) Object->AddRef(); }
+#else
     void Reset(T* object);
+#endif
     T* operator->() const { return static_cast<T*>(Object); }
     bool IsNull() const { return Object == 0; }
     unsigned long GetRefCount() const { return Object ? Object->GetRefCount() : 0; }
+#ifdef FABLE_RETAIL_CIVCOUNTEDPOINTER
+    void Release() {
+        CIVCountedPointeeBase* object = Object;
+        if (object) {
+            if (object->Release() == 0) object->Delete();
+            Object = 0;
+        }
+    }
+#else
     void Release() {
         CIVCountedPointeeBase* object = Object;
         if (object && object->Release() == 0) object->Delete();
         Object = 0;
     }
+#endif
 private:
     CIVCountedPointeeBase* Object;
 };

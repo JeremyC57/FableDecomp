@@ -38,7 +38,7 @@ class C3DBoundingSphere { public:
 
 inline float Lerp(float a, float b, float t) { return (b - a) * t + a; }
 
-long GetParticleFrameRate();                    // 0x00AEA9F0
+namespace NParticleEngine { long __fastcall GetTickRate(); }   // 0x00AEA9F0, FableWin.pdb ?GetTickRate@NParticleEngine@@YIJXZ
 
 namespace NParticleEngine {
 
@@ -106,7 +106,7 @@ bool CPSCLight::AddToBoundingSphere(C3DBoundingSphere& sphere, float timeOffset,
             pos.Z += m.E13 * x;
             pos.Z += m.E43;
         }
-        float frameRate = (float)GetParticleFrameRate();
+        float frameRate = (float)NParticleEngine::GetTickRate();
         float t = 0.0f;
         if (LightUseLifeSecs) {
             t = ((float)LightLifeTimer + timeOffset) / (frameRate * LightLifeSecs);

@@ -1,9 +1,10 @@
-// NParticleEngine::CParticleSystem::ScaleParticleDimensions(long&) const -- when ScaleParticles is set, scale an integer dimension by the largest component of the system scale (truncated)
+// NParticleEngine::CParticleSystem::ScaleParticleDimensions(unsigned long&) const -- when ScaleParticles is set, scale an integer dimension by the largest component of the system scale (truncated)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B05B80, length 117 bytes (padded to 128).
-// Leaf: ScaleParticleDimensions
+// Leaf: ?ScaleParticleDimensions@CParticleSystem@NParticleEngine@@QBEXAAK@Z
 // Callees: _ftol @ 0x00BFEA70.
 // Identity: the integer twin of 0x00AF8F00 (same layout and MAX(MAX(x, y), z) shape); its only caller is 0x00B09241. The
-// overload's parameter type is inferred from the `imul ecx,[eax] ; mov [eax],ecx` store.
+// overload is FableWin.pdb / Ego_r.pdb ?ScaleParticleDimensions@CParticleSystem@NParticleEngine@@QBEXAAK@Z (the AAVC2DVector / AAK /
+// AAM / AAVC3DVector set); the caller passes &TrailUpdatePrimitive.MaxLength, an unsigned long (+0xC0). `imul ecx,[eax] ; mov [eax],ecx`.
 // Shape: `dimension *= (long)MAX(...)` -- the float maximum truncated through _ftol, then multiplied into the reference.
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 class C3DVector { public:
@@ -27,9 +28,9 @@ class CParticleSystem { public:
     float         FadeAlpha;                   // +0x58
     float         NormalisedTime;              // +0x5c
     C3DVector     Scale;                       // +0x60
-    void ScaleParticleDimensions(long& dimension) const;
+    void ScaleParticleDimensions(unsigned long& dimension) const;
 };
-void CParticleSystem::ScaleParticleDimensions(long& dimension) const
+void CParticleSystem::ScaleParticleDimensions(unsigned long& dimension) const
 {
     if (ScaleParticles)
         dimension *= (long)MAX(MAX(Scale.X, Scale.Y), Scale.Z);

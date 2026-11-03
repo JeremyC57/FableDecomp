@@ -54,19 +54,15 @@ void CV_BeardyBaldyScript::WatchForBarberLadyDeath()
         if (IsActiveThreadTerminating())
             return;
     }
-#pragma inline_depth(0)
     if (IsActiveThreadTerminating())
         return;
-#pragma inline_depth()
     while (!IsActiveThreadTerminating()) {
         if (barber.MsgIsKilledBy("")) {
             if (!IsActiveThreadTerminating()) {
                 if (!IsActiveThreadTerminating())
                     BarberLadyKilled = true;
             }
-#pragma inline_depth(0)
             return;
-#pragma inline_depth()
         }
         GSI->NewScriptFrame();
     }

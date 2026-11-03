@@ -1,7 +1,7 @@
 // CEnginePrimitiveLight::CEnginePrimitiveLight(unsigned __int64, const C3DVector&, const CRGBColour&, float, float, EEngineInterpolationSet, unsigned long) -- primitive type 0x0f: world position, colour, radius, spot radius and lighting channel mask
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00642000, length 108 bytes. No callees.
 // Label correction: the catalog calls this CEnginePrimitiveShadowedSpotLight (propagated); the body is the
-// CEnginePrimitiveLight constructor: Ego_r.pdb ??0CEnginePrimitiveLight@@QAE@_KABVC3DVector@@ABVCRGBColour@@MMW4EEngineInterpolationSet@@K@Z
+// CEnginePrimitiveLight constructor: FableWin.pdb ??0CEnginePrimitiveLight@@QAE@_KABVC3DVector@@ABVCRGBColour@@MMW4EEngineInterpolationSet@@K@Z
 // has exactly these 8 stack words (`ret 20h`) and its layout (0x28) matches every store: WorldPos +0xc,
 // Colour +0x18, Radius +0x1c, SpotRadius +0x20, LightingChannelMask +0x24 (the ShadowedSpotLight constructor
 // takes a second vector and three floats, 10 words). The 64-bit primitive handle is not stored.
@@ -9,6 +9,8 @@
 // copied memberwise, the colour through the inline Set(r, g, b, a) copy (bytes loaded A, B, G, R with B spilled
 // into the dead interpolation-set slot, stored R, G, B, A).
 // Leaf: ??0CEnginePrimitiveLight
+// Name (landing 2026-11-03h): the interpolation-set parameter is the enum (W4EEngineInterpolationSet@@), as the FableWin.pdb name set
+//   spells the constructor (the earlier note said Ego_r.pdb; the Ego_r name set has no entry); `ret 20h` = 8 stack words.
 
 class C3DVector { public:                                       // memberwise user copy constructor: one register per dword
     float X, Y, Z;
@@ -24,6 +26,7 @@ class CRGBColour { public:                                      // the union's c
     CRGBColour(const CRGBColour& other) { Set(other.R, other.G, other.B, other.A); }
 };
 
+enum EEngineInterpolationSet;                                  // engine/CEnginePrimitive.h
 class CEnginePrimitiveThemeChannelDesc { public:                // 4 bytes (PDB)
     unsigned char ChannelIndex0, ChannelIndex1, ChannelBlendFactor, Pad;
     CEnginePrimitiveThemeChannelDesc() : ChannelIndex0(0), ChannelIndex1(0), ChannelBlendFactor(0) { }
@@ -42,12 +45,12 @@ struct CEnginePrimitiveLight : CEnginePrimitive {
     float         SpotRadius;                            // +0x20
     unsigned long LightingChannelMask;                   // +0x24   sizeof == 0x28
     CEnginePrimitiveLight(unsigned __int64 handle, const C3DVector& worldPos, const CRGBColour& colour, float radius,
-                          float spotRadius, long interpolationSet, unsigned long lightingChannelMask);
+                          float spotRadius, EEngineInterpolationSet interpolationSet, unsigned long lightingChannelMask);
 };
 
 CEnginePrimitiveLight::CEnginePrimitiveLight(unsigned __int64 handle, const C3DVector& worldPos,
                                              const CRGBColour& colour, float radius, float spotRadius,
-                                             long interpolationSet, unsigned long lightingChannelMask)
+                                             EEngineInterpolationSet interpolationSet, unsigned long lightingChannelMask)
     : CEnginePrimitive(0x0f, interpolationSet)           // ENGINE_PRIMITIVE_LIGHT
     , WorldPos(worldPos)
     , Colour(colour)

@@ -1,7 +1,7 @@
 #include <cstdio>
 struct CPSCEmitterGeneric { unsigned char _pad00[0x28]; long m_particlesGenerated; unsigned char _pad2c[4]; unsigned long m_flags; unsigned char _pad34[0xc]; unsigned long m_packedLifetime; bool CalcIsFinishedGeneratingParticles() const; };
 static long g_clock = 0;
-long GetParticleClock_00aea9f0() { return g_clock; }
+namespace NParticleEngine { long __fastcall GetTickRate() { return g_clock; } }
 #include "engine/GFFloatToLongNear.h"
 static __forceinline float RoundToDecimals(float value, long decimals)
 {
@@ -12,7 +12,7 @@ static __forceinline float RoundToDecimals(float value, long decimals)
 }
 bool CPSCEmitterGeneric::CalcIsFinishedGeneratingParticles() const
 {
-    float elapsed = (float)GetParticleClock_00aea9f0();
+    float elapsed = (float)NParticleEngine::GetTickRate();
     if (m_flags & 0x800000)
     {
         float unpacked = (float)(m_packedLifetime & 0x7fff) * (1.0f / 32767.0f);

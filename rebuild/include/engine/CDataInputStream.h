@@ -6,6 +6,7 @@
 #pragma intrinsic(memcpy)
 class CCharString;
 class CWideString;
+class CRGBColour;
 // Retail opt-in (Codex pass 11 consolidation): polymorphic CDataStream base (vptr +0), original CDataInputStream fields
 // +4,+8,+c,+10,+14, size 0x18; Read is the inline bounds-checked chunk copy (0x00B3EFA0, 0x00A4FE60).
 class CDataInputStream : public CDataStream {
@@ -33,6 +34,13 @@ public:
     template<class T> __forceinline T ReadType() { T val; Read(&val,sizeof(T)); return val; }
     __forceinline unsigned long ReadULONG() { return ReadType<unsigned long>(); }
     __forceinline long ReadSLONG() { return ReadType<long>(); }
+    // Chunk 737 (CPSCLight / CPSCSingleSprite::ReadBinary 0x00B193D0 / 0x00B068F0): FableWin.pdb ?ReadFloat@CDataInputStream@@QAEMXZ
+    // and ?ReadEBOOL@CDataInputStream@@QAE_NXZ, expanded in retail (a 4-byte read stored as a float; a 1-byte read, `test ; setne`,
+    // as the landed CPSCAttractor::ReadBinary 0x00B18390 model's ReadBool); ?ReadColour@CDataInputStream@@QAE?AVCRGBColour@@XZ
+    // stays out of line (0x009945E0, hidden result pointer).
+    __forceinline float ReadFloat() { return ReadType<float>(); }
+    __forceinline bool ReadEBOOL() { return ReadType<unsigned char>() != 0; }
+    CRGBColour ReadColour();
     virtual void ReadCompressed(void*,long);
     virtual void ReadZlibCompressed(void*,long);
     virtual CCharString ReadNullTerminatedString();

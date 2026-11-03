@@ -1,0 +1,224 @@
+address	parity	behaviour	name	sets	previous (chunk 737 SIBLINGS on its overlay / landing h baseline before the respells / HEAD headers)
+0x00403EB0	RELOCATION_MATCH	PASS	CPersistTraits<bool>::TransferBinaryIn	sample	RELOCATION_MATCH (HEAD headers)
+0x00416832	RELOCATION_MATCH	PASS	CMainGameComponent::InitialiseText	sample	RELOCATION_MATCH (HEAD headers)
+0x004595A3	RELOCATION_MATCH	PASS	CPersistContext::Transfer<CRGBColour>	respelled	RELOCATION_MATCH
+0x0045E37F	RELOCATION_MATCH	PASS	_global::GFSerialiseMapBinaryIn	sample	RELOCATION_MATCH (HEAD headers)
+0x00464D23	RELOCATION_MATCH	PASS	_global::GFSerialiseVectorBinaryIn<float>	sample	RELOCATION_MATCH (HEAD headers)
+0x00469381	RELOCATION_MATCH	PASS	_global::GFSerialiseMapBinaryIn	sample	RELOCATION_MATCH (HEAD headers)
+0x0046B9B0	RELOCATION_MATCH	PASS	_global::GFSerialiseVectorBinaryIn	sample	RELOCATION_MATCH (HEAD headers)
+0x00475AA6	RELOCATION_MATCH	PASS	_global::GFSerialiseMapBinaryIn	sample	RELOCATION_MATCH (HEAD headers)
+0x0047F58B	RELOCATION_MATCH	PASS	CTCInGameMenu::AddRegionAndTimeInfo	siblings,ppdiff	RELOCATION_MATCH
+0x004B05C0	RELOCATION_MATCH	PASS	CQuestManager::TransferBoasts	siblings,ppdiff	RELOCATION_MATCH
+0x004E5673	RELOCATION_MATCH	PASS	GFSerialiseMapBinaryIn<long, EClothingSuitPart, std::less<EClothingSuitPart>>	sample	RELOCATION_MATCH (HEAD headers)
+0x004E9642	RELOCATION_MATCH	PASS	CPersistTraits<CObjectAugmentationParticleSet>::TransferBinaryIn	sample	RELOCATION_MATCH (HEAD headers)
+0x00520670	RELOCATION_MATCH	PASS	CThingManager::LoadHeroStateBinary	siblings,ppdiff	RELOCATION_MATCH
+0x00521620	RELOCATION_MATCH	PASS	NThingManager::CEntityRuntimePersistence::SaveToGameStateBinary	siblings,ppdiff	RELOCATION_MATCH
+0x00522720	RELOCATION_MATCH	PASS	CThingManager::RuntimeLoadEntities	siblings,ppdiff	RELOCATION_MATCH
+0x00569B30	RELOCATION_MATCH	PASS	_global::GFSerialiseVectorBinaryIn<CQuestActivityRecord>	sample	RELOCATION_MATCH (HEAD headers)
+0x00597228	RELOCATION_MATCH	PASS	NUISystem::CFrontEndManager::AddRegionAndTimeInfo	siblings,ppdiff	RELOCATION_MATCH
+0x00619620	RELOCATION_MATCH	PASS	_global::GFSerialiseVectorBinaryIn<long>	sample	RELOCATION_MATCH (HEAD headers)
+0x00642000	MATCH	PASS	CEnginePrimitiveLight::CEnginePrimitiveLight	respelled	MATCH
+0x006C8780	RELOCATION_MATCH	PASS	CPersistTraits<CIntelligentPointer<CThing>>::TransferBinaryIn	sample	RELOCATION_MATCH (HEAD headers)
+0x006D2BD0	RELOCATION_MATCH	PASS	CTCWife::OnSerialise	siblings,ppdiff	RELOCATION_MATCH
+0x0074AB00	RELOCATION_MATCH	PASS	CTCCreatureGenerator::Destroy	sample	RELOCATION_MATCH (HEAD headers)
+0x007E39D0	RELOCATION_MATCH	PASS	CPersistContext::Transfer<CDefString>	sample	RELOCATION_MATCH (HEAD headers)
+0x008A9020	RELOCATION_MATCH	PASS	CGameScriptInterface::CreatureGeneratorSetFamily	sample	RELOCATION_MATCH (HEAD headers)
+0x00989CB0	RELOCATION_MATCH	PASS	CShaderRenderManager::UpdateObjectSpaceLighting	siblings,ppdiff	RELOCATION_MATCH
+0x0098ACF0	RELOCATION_MATCH	PASS	CShaderRenderManager::Initialise	siblings,ppdiff	RELOCATION_MATCH
+0x009945E0	RELOCATION_MATCH	PASS	CDataInputStream::ReadColour	ppdiff,respelled	RELOCATION_MATCH
+0x00994F60	RELOCATION_MATCH	PASS	CDataInputStream::ReadWhiteSpace	sample	RELOCATION_MATCH (HEAD headers)
+0x009C80F0	RELOCATION_MATCH	PASS	BeginLoading	sample	RELOCATION_MATCH (HEAD headers)
+0x009DA9F0	RELOCATION_MATCH	PASS	CRenderManager2D::Render2DDrawList	siblings,ppdiff	RELOCATION_MATCH
+0x00A4FE60	RELOCATION_MATCH	PASS	C3DAnimation2::InitialiseSharedAnimation	siblings,ppdiff	RELOCATION_MATCH
+0x00AA5030	RELOCATION_MATCH	PASS	C3DMeshFileXBoundingBoxChunk::ReadFromFile	sample	RELOCATION_MATCH (HEAD headers)
+0x00AEA9F0	RELOCATION_MATCH	PASS	NParticleEngine::GetTickRate	respelled	RELOCATION_MATCH
+0x00AEF1F0	RELOCATION_MATCH	PASS	NParticleEngine::CParticleEmitter::DatabaseSerialise	siblings,sample	RELOCATION_MATCH
+0x00AF2620	RELOCATION_MATCH	PASS	NParticleEngine::CPSCBase::CPSCBase	siblings	RELOCATION_MATCH
+0x00AF2780	RELOCATION_MATCH	PASS	NParticleEngine::CPSCBase::GetCurrentPositionLocal	siblings	RELOCATION_MATCH
+0x00AF28C0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCManager::AllocatePSC	siblings	RELOCATION_MATCH
+0x00AF29C0	MATCH	PASS	NParticleEngine::CPSCBase::StartUpdate	siblings	MATCH
+0x00AF29D0	MATCH	PASS	NParticleEngine::CPSCBase::Update	siblings	MATCH
+0x00AF2A30	MATCH	PASS	NParticleEngine::CPSCBase::AddToBoundingSphere	siblings	MATCH
+0x00AF2AB0	MATCH	PASS	NParticleEngine::CPSCBase::Initialise	siblings	MATCH
+0x00AF2AC0	MATCH	PASS	NParticleEngine::CPSCBase::ClearAllPrimitives	siblings	MATCH
+0x00AF2AE0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCBase::vfunc_31	siblings	RELOCATION_MATCH
+0x00AF2AF0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCBase::`scalar_deleting_destructor'	siblings	RELOCATION_MATCH
+0x00AF7D10	RELOCATION_MATCH	PASS	NParticleEngine::CPSCRenderSprite::Alloc	siblings	RELOCATION_MATCH
+0x00AF7D80	RELOCATION_MATCH	PASS	NParticleEngine::CPSCRenderMesh::Alloc	siblings	RELOCATION_MATCH
+0x00AF7DF0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSingleSprite::Alloc	siblings	RELOCATION_MATCH
+0x00AF7E60	RELOCATION_MATCH	PASS	NParticleEngine::CPSCUpdateNormal::Alloc	siblings	RELOCATION_MATCH
+0x00AF7ED0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCEmitterGeneric::Alloc	siblings	RELOCATION_MATCH
+0x00AF7F40	RELOCATION_MATCH	PASS	NParticleEngine::CPSCOrbit::Alloc	siblings	RELOCATION_MATCH
+0x00AF7FB0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCAttractor::Alloc	siblings	RELOCATION_MATCH
+0x00AF8020	RELOCATION_MATCH	PASS	NParticleEngine::CPSCLight::Alloc	siblings	RELOCATION_MATCH
+0x00AF8090	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSpline::Alloc	siblings	RELOCATION_MATCH
+0x00AF8100	RELOCATION_MATCH	PASS	NParticleEngine::CPSCDecalRenderer::Alloc	siblings	RELOCATION_MATCH
+0x00AF8170	RELOCATION_MATCH	PASS	NParticleEngine::CPSCManager::RegisterPSCs	siblings	RELOCATION_MATCH
+0x00AF90C0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCRenderSprite::GetComponentCost	siblings	RELOCATION_MATCH
+0x00AF9310	MATCH	PASS	NParticleEngine::CPSCRenderSprite::Initialise	siblings	MATCH
+0x00AF9410	MATCH	PASS	NParticleEngine::CPSCRenderSprite::vfunc_18	siblings	MATCH
+0x00AF9620	RELOCATION_MATCH	PASS	NParticleEngine::CPSCRenderSprite::WriteBinary	siblings	RELOCATION_MATCH
+0x00AFADC0	MATCH	PASS	NParticleEngine::CPSCRenderSprite::ClearAllPrimitives	siblings	MATCH
+0x00AFB7C0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCRenderSprite::CPSCRenderSprite	siblings	RELOCATION_MATCH
+0x00AFBBD0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCRenderSprite::~CPSCRenderSprite	siblings	RELOCATION_MATCH
+0x00AFE440	RELOCATION_MATCH	PASS	NParticleEngine::CPSCRenderSprite::GetClassTypeName	siblings	RELOCATION_MATCH
+0x00AFE580	RELOCATION_MATCH	PASS	NParticleEngine::CPSCRenderSprite::DatabaseClone	siblings	RELOCATION_MATCH
+0x00AFE5A0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCRenderSprite::`scalar_deleting_destructor'	siblings	RELOCATION_MATCH
+0x00AFEB90	MATCH	PASS	NParticleEngine::CPSCRenderMesh::vfunc_18	siblings	MATCH
+0x00AFEE00	RELOCATION_MATCH	PASS	NParticleEngine::CPSCRenderMesh::WriteBinary	siblings	RELOCATION_MATCH
+0x00AFF0A0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCRenderMesh::Initialise	siblings	RELOCATION_MATCH
+0x00B00DB0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCRenderMesh::GetComponentCost	siblings	RELOCATION_MATCH
+0x00B01250	MATCH	PASS	NParticleEngine::CPSCRenderMesh::ClearAllPrimitives	siblings	MATCH
+0x00B017F0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCRenderMesh::~CPSCRenderMesh	siblings	RELOCATION_MATCH
+0x00B05840	RELOCATION_MATCH	PASS	NParticleEngine::CParticleSystem::GetUnscaledWorldTransform	respelled	RELOCATION_MATCH
+0x00B05980	RELOCATION_MATCH	PASS	NParticleEngine::CParticleSystem::GetParticleWorldTransform	respelled	RELOCATION_MATCH
+0x00B05A50	RELOCATION_MATCH	PASS	NParticleEngine::CPSCRenderMesh::GetClassTypeName	siblings	RELOCATION_MATCH
+0x00B05A90	RELOCATION_MATCH	PASS	NParticleEngine::CPSCRenderMesh::GetGUIName	siblings	RELOCATION_MATCH
+0x00B05AD0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCRenderMesh::`scalar_deleting_destructor'	siblings	RELOCATION_MATCH
+0x00B05B80	RELOCATION_MATCH	PASS	NParticleEngine::CParticleSystem::ScaleParticleDimensions	respelled	RELOCATION_MATCH
+0x00B05EA0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSingleSprite::vfunc_18	siblings	RELOCATION_MATCH
+0x00B06060	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSingleSprite::WriteBinary	siblings	RELOCATION_MATCH
+0x00B062A0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSingleSprite::InterpolateTo	new	new
+0x00B068F0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSingleSprite::ReadBinary	ppdiff,new	new
+0x00B07570	MATCH	PASS	NParticleEngine::CPSCSingleSprite::ClearAllPrimitives	siblings	MATCH
+0x00B081A0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSingleSprite::AddTrailPosition	siblings	RELOCATION_MATCH
+0x00B09360	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSingleSprite::CPSCSingleSprite	siblings	RELOCATION_MATCH
+0x00B094B0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSingleSprite::Initialise	siblings	RELOCATION_MATCH
+0x00B0A060	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSplineBase::~CPSCSplineBase	siblings	RELOCATION_MATCH
+0x00B0A0D0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSingleSprite::GetClassTypeName	siblings	RELOCATION_MATCH
+0x00B0A140	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSingleSprite::`scalar_deleting_destructor'	siblings	RELOCATION_MATCH
+0x00B0A160	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSingleSprite::~CPSCSingleSprite	siblings	RELOCATION_MATCH
+0x00B0A190	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSingleSprite::DatabaseClone	siblings	RELOCATION_MATCH
+0x00B0A6D0	MATCH	PASS	NParticleEngine::CPSCUpdateNormal::GetUpdateParam	siblings	MATCH
+0x00B0A710	MATCH	PASS	NParticleEngine::CPSCUpdateNormal::Initialise	siblings	MATCH
+0x00B0A750	RELOCATION_MATCH	PASS	NParticleEngine::CPSCUpdateNormal::GetCurrentFadeValue	siblings	RELOCATION_MATCH
+0x00B0B370	RELOCATION_MATCH	PASS	NParticleEngine::CPSCUpdateNormal::DatabaseCopy	siblings	RELOCATION_MATCH
+0x00B0B5C0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCUpdateNormal::WriteBinary	siblings	RELOCATION_MATCH
+0x00B0C730	RELOCATION_MATCH	PASS	NParticleEngine::CPSCUpdateNormal::KillAllDecalEmitters	siblings	RELOCATION_MATCH
+0x00B0C7B0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCUpdateNormal::GetComponentCost	siblings	RELOCATION_MATCH
+0x00B0C830	RELOCATION_MATCH	PASS	NParticleEngine::CPSCUpdateNormal::GetParticleCount	siblings	RELOCATION_MATCH
+0x00B0C8A0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCUpdateNormal::GetDecalCount	siblings	RELOCATION_MATCH
+0x00B0C910	RELOCATION_MATCH	PASS	NParticleEngine::CPSCUpdateNormal::PreparePrimitives	siblings	RELOCATION_MATCH
+0x00B0C9C0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCUpdateNormal::CPSCUpdateNormal	siblings	RELOCATION_MATCH
+0x00B0CA90	RELOCATION_MATCH	PASS	NParticleEngine::CPSCUpdateNormal::~CPSCUpdateNormal	siblings	RELOCATION_MATCH
+0x00B0F210	RELOCATION_MATCH	PASS	NParticleEngine::CPSCUpdateNormal::CollectUpdateParameters	siblings	RELOCATION_MATCH
+0x00B0F880	RELOCATION_MATCH	PASS	NParticleEngine::CPSCUpdateNormal::GetClassTypeName	siblings	RELOCATION_MATCH
+0x00B0F8E0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCUpdateNormal::GetParticleLifeSecs	siblings	RELOCATION_MATCH
+0x00B0F970	RELOCATION_MATCH	PASS	NParticleEngine::CPSCUpdateNormal::DatabaseClone	siblings	RELOCATION_MATCH
+0x00B0F990	RELOCATION_MATCH	PASS	NParticleEngine::CPSCUpdateNormal::`scalar_deleting_destructor'	siblings	RELOCATION_MATCH
+0x00B0FBE0	MATCH	PASS	NParticleEngine::CPSCEmitterGeneric::GetComponentCost	siblings	MATCH
+0x00B0FBF0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCEmitterGeneric::GetNumberOfParticles	siblings	RELOCATION_MATCH
+0x00B0FFC0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCEmitterGeneric::GetNumberOfDecals	siblings	RELOCATION_MATCH
+0x00B10220	RELOCATION_MATCH	PASS	CPSCEmitterGeneric::CalcIsFinishedGeneratingParticles	respelled	RELOCATION_MATCH
+0x00B102C0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCEmitterGeneric::GetRandomRadius	siblings	RELOCATION_MATCH
+0x00B10360	MATCH	PASS	NParticleEngine::CPSCEmitterGeneric::ChangeOrientation	siblings	MATCH
+0x00B109B0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCEmitterGeneric::vfunc_31	siblings	RELOCATION_MATCH
+0x00B12EF0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCEmitterGeneric::WriteBinary	siblings	RELOCATION_MATCH
+0x00B158A0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCEmitterGeneric::CollectUpdateParameters	siblings	RELOCATION_MATCH
+0x00B15A90	RELOCATION_MATCH	PASS	NParticleEngine::CPSCEmitterGeneric::GetClassTypeName	siblings	RELOCATION_MATCH
+0x00B15AF0	MATCH	PASS	NParticleEngine::CPSCEmitterGeneric::EnterTimelineEnd	siblings	MATCH
+0x00B15B00	RELOCATION_MATCH	PASS	NParticleEngine::CPSCEmitterGeneric::DatabaseClone	siblings	RELOCATION_MATCH
+0x00B15B20	RELOCATION_MATCH	PASS	NParticleEngine::CPSCEmitterGeneric::`scalar_deleting_destructor'	siblings	RELOCATION_MATCH
+0x00B16210	MATCH	PASS	NParticleEngine::CPSCOrbit::GetComponentCost	siblings	MATCH
+0x00B163A0	MATCH	PASS	NParticleEngine::CPSCOrbit::DatabaseCopy	siblings	MATCH
+0x00B163E0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCOrbit::WriteBinary	siblings	RELOCATION_MATCH
+0x00B16D50	RELOCATION_MATCH	PASS	NParticleEngine::CPSCOrbit::StartUpdate	siblings	RELOCATION_MATCH
+0x00B16EB0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCOrbit::CPSCOrbit	siblings	RELOCATION_MATCH
+0x00B16F60	RELOCATION_MATCH	PASS	NParticleEngine::CPSCOrbit::ReadBinary	siblings	RELOCATION_MATCH
+0x00B177C0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCOrbit::COrbitState::GetSplinePosition	siblings	RELOCATION_MATCH
+0x00B178D0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCOrbit::GetClassTypeName	siblings	RELOCATION_MATCH
+0x00B17910	RELOCATION_MATCH	PASS	NParticleEngine::CPSCOrbit::GetGUIName	siblings	RELOCATION_MATCH
+0x00B17930	RELOCATION_MATCH	PASS	NParticleEngine::CPSCOrbit::`scalar_deleting_destructor'	siblings	RELOCATION_MATCH
+0x00B17950	RELOCATION_MATCH	PASS	NParticleEngine::CPSCOrbit::DatabaseClone	siblings	RELOCATION_MATCH
+0x00B17990	MATCH	PASS	NParticleEngine::CPSCAttractor::GetComponentCost	siblings	MATCH
+0x00B179A0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCAttractor::Update	siblings	RELOCATION_MATCH
+0x00B17F70	RELOCATION_MATCH	PASS	NParticleEngine::CPSCAttractor::WriteBinary	siblings	RELOCATION_MATCH
+0x00B18020	RELOCATION_MATCH	PASS	NParticleEngine::CPSCAttractor::CPSCAttractor	siblings	RELOCATION_MATCH
+0x00B18060	RELOCATION_MATCH	PASS	NParticleEngine::CPSCAttractor::DatabaseCopy	siblings	RELOCATION_MATCH
+0x00B18110	RELOCATION_MATCH	PASS	NParticleEngine::CPSCAttractor::DatabaseSerialise	siblings	RELOCATION_MATCH
+0x00B18390	RELOCATION_MATCH	PASS	NParticleEngine::CPSCAttractor::ReadBinary	siblings,respelled	RELOCATION_MATCH
+0x00B186E0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCAttractor::GetClassTypeName	siblings	RELOCATION_MATCH
+0x00B18720	RELOCATION_MATCH	PASS	NParticleEngine::CPSCAttractor::GetGUIName	siblings	RELOCATION_MATCH
+0x00B18740	RELOCATION_MATCH	PASS	NParticleEngine::CPSCAttractor::DatabaseClone	siblings	RELOCATION_MATCH
+0x00B18760	RELOCATION_MATCH	PASS	NParticleEngine::CPSCAttractor::`scalar_deleting_destructor'	siblings	RELOCATION_MATCH
+0x00B18780	RELOCATION_MATCH	PASS	NParticleEngine::CPSCAttractor::~CPSCAttractor	siblings	RELOCATION_MATCH
+0x00B187D0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCLight::GetComponentCost	siblings	RELOCATION_MATCH
+0x00B18950	RELOCATION_MATCH	PASS	NParticleEngine::CPSCLight::WriteBinary	siblings	RELOCATION_MATCH
+0x00B18AF0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCLight::AddToBoundingSphere	siblings,respelled	RELOCATION_MATCH
+0x00B18C60	RELOCATION_MATCH	PASS	NParticleEngine::CPSCLight::InterpolateTo	new	new
+0x00B193D0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCLight::ReadBinary	ppdiff,new	new
+0x00B19C20	MATCH	PASS	NParticleEngine::CPSCLight::Kill	siblings	MATCH
+0x00B1A640	RELOCATION_MATCH	PASS	NParticleEngine::CPSCLight::CPSCLight	siblings	RELOCATION_MATCH
+0x00B1A700	RELOCATION_MATCH	PASS	NParticleEngine::CPSCLight::DatabaseCopy	siblings	RELOCATION_MATCH
+0x00B1AE00	RELOCATION_MATCH	PASS	NParticleEngine::CPSCLight::GetClassTypeName	siblings	RELOCATION_MATCH
+0x00B1AE60	MATCH	PASS	NParticleEngine::CPSCLight::EnterTimelineEnd	siblings	MATCH
+0x00B1AE70	RELOCATION_MATCH	PASS	NParticleEngine::CPSCLight::DatabaseClone	siblings	RELOCATION_MATCH
+0x00B1AE90	RELOCATION_MATCH	PASS	NParticleEngine::CPSCLight::`scalar_deleting_destructor'	siblings	RELOCATION_MATCH
+0x00B1AEB0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCLight::~CPSCLight	siblings	RELOCATION_MATCH
+0x00B1AF40	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSpline::GetComponentCost	siblings	RELOCATION_MATCH
+0x00B1AF50	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSpline::InterpolateTo	siblings,respelled	RELOCATION_MATCH
+0x00B1AFC0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSpline::DatabaseCopy	siblings	RELOCATION_MATCH
+0x00B1AFF0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSpline::WriteBinary	siblings	RELOCATION_MATCH
+0x00B1B030	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSpline::GetUpdateParam	siblings	RELOCATION_MATCH
+0x00B1B0C0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSpline::StartUpdate	siblings	RELOCATION_MATCH
+0x00B1B1B0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSpline::ReadBinary	siblings,ppdiff,respelled	RELOCATION_MATCH
+0x00B1B2E0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSpline::DatabaseSerialise	siblings	RELOCATION_MATCH
+0x00B1B350	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSpline::CPSCSpline	siblings	RELOCATION_MATCH
+0x00B1B380	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSpline::CollectUpdateParameters	siblings	RELOCATION_MATCH
+0x00B1B430	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSpline::GetClassTypeName	siblings	RELOCATION_MATCH
+0x00B1B470	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSpline::GetGUIName	siblings	RELOCATION_MATCH
+0x00B1B490	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSpline::`scalar deleting destructor'	siblings	RELOCATION_MATCH
+0x00B1B4B0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSpline::DatabaseClone	siblings	RELOCATION_MATCH
+0x00B1B710	RELOCATION_MATCH	PASS	NParticleEngine::CPSCDecalRenderer::vfunc_28	siblings	RELOCATION_MATCH
+0x00B1B810	MATCH	PASS	NParticleEngine::CPSCDecalRenderer::DatabaseCopy	siblings	MATCH
+0x00B1BA10	RELOCATION_MATCH	PASS	NParticleEngine::CPSCDecalRenderer::WriteBinary	siblings	RELOCATION_MATCH
+0x00B1BDA0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCDecalRenderer::InterpolateTo	siblings	RELOCATION_MATCH
+0x00B1DB00	RELOCATION_MATCH	PASS	NParticleEngine::CPSCDecalRenderer::Update	siblings,respelled	RELOCATION_MATCH
+0x00B1DBE0	MATCH	PASS	NParticleEngine::CPSCDecalRenderer::ClearAllPrimitives	siblings	MATCH
+0x00B1FF10	RELOCATION_MATCH	PASS	NParticleEngine::CPSCDecalRenderer::GetClassTypeName	siblings	RELOCATION_MATCH
+0x00B1FF80	RELOCATION_MATCH	PASS	NParticleEngine::CPSCDecalRenderer::DatabaseClone	siblings	RELOCATION_MATCH
+0x00B1FFA0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCDecalRenderer::`scalar_deleting_destructor'	siblings	RELOCATION_MATCH
+0x00B202C0	MATCH	PASS	NParticleEngine::CPSCSplineBase::GetComponentCost	siblings	MATCH
+0x00B20630	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::WriteBinary	siblings	RELOCATION_MATCH
+0x00B209C0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSingleSprite::vfunc_31	siblings	RELOCATION_MATCH
+0x00B20FD0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::GetPointAtPos	siblings	RELOCATION_MATCH
+0x00B21090	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::GetPointAtIndex	siblings	RELOCATION_MATCH
+0x00B21160	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::Update	siblings	RELOCATION_MATCH
+0x00B21530	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSplineBase::CPSCSplineBase	siblings	RELOCATION_MATCH
+0x00B215E0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSplineBase::StartUpdate	siblings	RELOCATION_MATCH
+0x00B21630	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSplineBase::WriteBinary	siblings	RELOCATION_MATCH
+0x00B216F0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSplineBase::CSplinePosParamData::GetScaleFactor	siblings	RELOCATION_MATCH
+0x00B21850	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSplineBase::CSplinePosParamData::TransformFromPosition	siblings	RELOCATION_MATCH
+0x00B218B0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSplineBase::CSplinePosParamData::TransformFromIndex	siblings	RELOCATION_MATCH
+0x00B21940	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSplineBase::GetPointAtPos	siblings	RELOCATION_MATCH
+0x00B219A0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSplineBase::GetPointAtIndex	siblings	RELOCATION_MATCH
+0x00B21A00	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSplineBase::CSplinePosParamData::CSplinePosParamData	siblings	RELOCATION_MATCH
+0x00B21C90	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSplineBase::CSplinePosParamData::ReadBinary	siblings	RELOCATION_MATCH
+0x00B21DD0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::CSplineRandomOffsetData	siblings	RELOCATION_MATCH
+0x00B21E90	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::DatabaseSerialise	siblings	RELOCATION_MATCH
+0x00B22100	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::ReadBinary	siblings	RELOCATION_MATCH
+0x00B22310	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSplineBase::InterpolateTo	siblings,respelled	RELOCATION_MATCH
+0x00B22530	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSplineBase::DatabaseCopy	siblings	RELOCATION_MATCH
+0x00B22B40	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSplineBase::ReadBinary	siblings,respelled	RELOCATION_MATCH
+0x00B22EE0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::~CSplineRandomOffsetData	siblings	RELOCATION_MATCH
+0x00B230C0	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSingleSprite::`scalar deleting destructor'	siblings	RELOCATION_MATCH
+0x00B23110	RELOCATION_MATCH	PASS	NParticleEngine::CPSCSplineBase::CSplineRandomOffsetData::`scalar deleting destructor'	siblings	RELOCATION_MATCH
+0x00B26360	RELOCATION_MATCH	PASS	CEngine::Initialise	siblings,ppdiff	RELOCATION_MATCH
+0x00B32230	RELOCATION_MATCH	PASS	CEnginePrimitiveRenderer::PostRenderLayer	siblings	RELOCATION_MATCH
+0x00B3EFA0	RELOCATION_MATCH	PASS	CEngineMap::ReadMapInfoBlock	siblings,ppdiff	RELOCATION_MATCH
+0x00B44820	MATCH	PASS	CEngineLightingManager::CalcSWLightingNoClipVector	siblings	MATCH
+0x00B44A60	MATCH	PASS	CEngineLightingManager::CalcSWLightingNoClipSeparateMainLightVector	siblings	MATCH
+0x00B45FB0	RELOCATION_MATCH	PASS	CEngineLightingManager::GetLightsInSphere	siblings	RELOCATION_MATCH
+0x00B46280	RELOCATION_MATCH	PASS	CEngineLightingManager::GetLightsInArea	siblings	RELOCATION_MATCH
+0x00B46660	RELOCATION_MATCH	PASS	CEngineLightingManager::AddLightsToLookupGrid	siblings	RELOCATION_MATCH
+0x00B46A30	RELOCATION_MATCH	PASS	CEngineLightingManager::LookupSmallObjectLightCache	siblings	RELOCATION_MATCH
+0x00B46B90	RELOCATION_MATCH	PASS	CEngineLightingManager::GetLightsInSphereFast	siblings,sample	RELOCATION_MATCH
+0x00B671A0	RELOCATION_MATCH	PASS	CEngineLandscapeRenderer::SetupBackgroundStates	siblings	RELOCATION_MATCH
+0x00B67510	RELOCATION_MATCH	PASS	CEngineLandscapeRenderer::PostRenderClearRenderStates	siblings	RELOCATION_MATCH
+0x00B9E950	RELOCATION_MATCH	PASS	CEnginePrimitiveManager2DStaticMeshes::Render2DPrimitive	siblings	RELOCATION_MATCH
+0x00BD1F70	RELOCATION_MATCH	PASS	CEnginePrimitiveManager2DAnimatedMeshes::Render2DPrimitive	siblings	RELOCATION_MATCH
+0x00D99A30	RELOCATION_MATCH	PASS	NScript::CQ_HobbeCaveScript::CheckIfGotTreasure	redo	RELOCATION_MATCH (HEAD headers)
+0x00E504C0	RELOCATION_MATCH	PASS	NScript::CV_BeardyBaldyScript::WatchForBarberLadyDeath	redo	RELOCATION_MATCH (HEAD headers)
+0x00E6AF20	RELOCATION_MATCH	PASS	CV_ChapelOfEvilScript::WatchForAcolyteHit	redo	RELOCATION_MATCH (HEAD headers)
+0x00EDCB80	RELOCATION_MATCH	PASS	NScript::CV_TempleOfLightScript::WatchForAcolyteHit	redo	RELOCATION_MATCH (HEAD headers)
+0x00EF5200	RELOCATION_MATCH	PASS	NScript::CPersonalScript_EmptyScript::CheckForHeroActions	redo	RELOCATION_MATCH (HEAD headers)

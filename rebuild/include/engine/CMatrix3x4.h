@@ -48,6 +48,24 @@ public:
         E43 = -(E13 * m.E41 + E23 * m.E42 + E33 * m.E43);
     }
 #endif
+#ifdef FABLE_RETAIL_CMATRIX3X4
+    // Chunk 737 (CPSCLight::PreparePrimitives 0x00B19C60, through CParticleSystem::TransformPosIfWorld): every row in the X row's
+    // form, `E1k*xx+(E2k*yy+E3k*zz)+E4k`, gives retail's E3k*z, E2k*y, E1k*x term order in all three rows (0x00B1A43A..0x00B1A4C0:
+    // `fld E3k ; fmul z ; fld E2k ; fmul y ; faddp ; fld E1k ; fmul x ; faddp ; fadd E4k`, matrix at esp+0x84);
+    // the default accumulated Y / Z rows put E12*xx first there, but are the form the landed 0x00AE0070 ApplyTransform needs (it
+    // differs with this one, 1090v1090). Open: one retail body, two contexts (and the parked 0x00B087C0 orders its Z row E33, E13, E23).
+    // __forceinline (owner 2026-11-01 helper rule): retail expands it in place in both PreparePrimitives rows and Fable.exe has no
+    // out-of-line ?TransformPoint@CMatrix3x4@@QBEXAAVC3DVector@@@Z (the catalog has none; only the debug PDBs carry a copy); with
+    // plain inline VC7.1 calls it out of line twice in 0x00B19C60 (landing 2026-11-03h probe).
+    __forceinline void TransformPoint(C3DVector& point) const {
+        const float xx=point.X;
+        const float yy=point.Y;
+        const float zz=point.Z;
+        point.X=E11*xx+(E21*yy+E31*zz)+E41;
+        point.Y=E12*xx+(E22*yy+E32*zz)+E42;
+        point.Z=E13*xx+(E23*yy+E33*zz)+E43;
+    }
+#else
     void TransformPoint(C3DVector& point) const {
         const float xx=point.X;
         const float yy=point.Y;
@@ -62,6 +80,7 @@ public:
         point.Z+=E23*yy;
         point.Z+=E43;
     }
+#endif
     void TransformPoint(const C3DVector& pSource,C3DVector& destination) const {
         destination.X=E11*pSource.X+(E21*pSource.Y+E31*pSource.Z)+E41;
         destination.Y=E12*pSource.X;

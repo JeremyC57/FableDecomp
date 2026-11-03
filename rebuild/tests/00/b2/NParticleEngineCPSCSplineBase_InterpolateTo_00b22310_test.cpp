@@ -55,12 +55,12 @@ struct CPSCSplineBase : CPSCBase {
     CCardinalSpline                          Spline;
     CCountedPointer<CSplineRandomOffsetData> SplineRandomOffsetData;
     CCountedPointer<CSplinePosParamData>     SplinePosParamData;
-    void InterpolateTo(const CPSCBase* other, float t);
+    void InterpolateTo(const CPSCBase& other, float t);
 };
 
-void CPSCSplineBase::InterpolateTo(const CPSCBase* other, float t)
+void CPSCSplineBase::InterpolateTo(const CPSCBase& other, float t)
 {
-    const CPSCSplineBase* source = (const CPSCSplineBase*)other;
+    const CPSCSplineBase* source = static_cast<const CPSCSplineBase*>(&other);
     Spline.Tension = (1.0f - t) * Spline.Tension + t * source->Spline.Tension;
     Spline.ControlPoints = GFInterpolateArray(Spline.GetControlPoints(), source->Spline.GetControlPoints(), t, C3DVector(0.0f, 0.0f, 0.0f));
 
@@ -103,29 +103,29 @@ int main()
     b.SplineRandomOffsetData->Amount = 2.0f;
     b.SplinePosParamData.Reset(new CSplinePosParamData(&b.Spline));
     b.SplinePosParamData->MaintainSplineShape = true;
-    a.InterpolateTo(&b, 0.25f);
+    a.InterpolateTo(b, 0.25f);
     ok &= a.Spline.Tension == 0.25f && a.Spline.ControlPoints.size() == 2;
     ok &= a.Spline.ControlPoints[0].X == 1 && a.Spline.ControlPoints[0].Y == 2 && a.Spline.ControlPoints[0].Z == 3;
     ok &= a.Spline.ControlPoints[1].X == 1;
     ok &= a.SplineRandomOffsetData.Data == 0 && a.SplinePosParamData.Data == 0;
 
     // t = 0.75: both blocks are created as copies bound to a's spline.
-    a.InterpolateTo(&b, 0.75f);
+    a.InterpolateTo(b, 0.75f);
     ok &= a.SplineRandomOffsetData.Data && a.SplineRandomOffsetData->Amount == 2.0f && a.SplineRandomOffsetData->InitialSpline == &a.Spline;
     ok &= a.SplinePosParamData.Data && a.SplinePosParamData->MaintainSplineShape && a.SplinePosParamData->Spline == &a.Spline;
 
     // Both present: interpolated, not replaced.
     b.SplineRandomOffsetData->Amount = 4.0f;
-    a.InterpolateTo(&b, 0.5f);
+    a.InterpolateTo(b, 0.5f);
     ok &= a.SplineRandomOffsetData->Amount == 3.0f && a.SplineRandomOffsetData->Interpolations == 1;
     ok &= a.SplinePosParamData->Interpolations == 1;
 
     // Other has none: kept at t <= 0.5, released past it.
     b.SplineRandomOffsetData.Clear();
     b.SplinePosParamData.Clear();
-    a.InterpolateTo(&b, 0.5f);
+    a.InterpolateTo(b, 0.5f);
     ok &= a.SplineRandomOffsetData.Data != 0 && a.SplinePosParamData.Data != 0;
-    a.InterpolateTo(&b, 0.6f);
+    a.InterpolateTo(b, 0.6f);
     ok &= a.SplineRandomOffsetData.Data == 0 && a.SplinePosParamData.Data == 0 && g_live == 0;
 
     printf("00b22310_TEST %s\n", ok ? "PASS" : "FAIL");

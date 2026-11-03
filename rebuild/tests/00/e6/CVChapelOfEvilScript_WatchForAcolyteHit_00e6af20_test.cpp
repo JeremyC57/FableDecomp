@@ -101,16 +101,12 @@ void CV_ChapelOfEvilScript::WatchForAcolyteHit(CScriptThing acolyte)
     while (!IsActiveThreadTerminating()) {
         bool hit = acolyte.MsgIsHitBy("SCRIPT_NAME_HERO") || acolyte.MsgIsHitByAnyAggressiveSpecialAbilityFrom("SCRIPT_NAME_HERO");
         if (hit) {
-#pragma inline_depth(0)
             if (IsActiveThreadTerminating())
                 return;
-#pragma inline_depth()
             AttackedByHero = true;
             if (!AcolyteAttackMessageComplete && altar.IsAlive()) {
-#pragma inline_depth(0)
                 if (IsActiveThreadTerminating())
                     return;
-#pragma inline_depth()
                 long conversation = Game->AddNewConversation(altar, false, false);
                 Game->AddPersonToConversation(conversation, Game->GetHero());
                 Game->AddLineToConversation(conversation, "TEXT_QST_019_WEAPON_02", false, altar, Game->GetHero());

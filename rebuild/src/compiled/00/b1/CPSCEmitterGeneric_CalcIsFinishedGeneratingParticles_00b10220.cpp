@@ -19,7 +19,7 @@ struct CPSCEmitterGeneric {
     bool CalcIsFinishedGeneratingParticles() const;
 };
 
-long GetParticleClock_00aea9f0();           // 0x00AEA9F0
+namespace NParticleEngine { long __fastcall GetTickRate(); }   // 0x00AEA9F0, FableWin.pdb ?GetTickRate@NParticleEngine@@YIJXZ
 
 // the engine's inline-assembly float-to-long helper, expanded in place (the by-value parameter is homed in a dead slot)
 #include "engine/GFFloatToLongNear.h"
@@ -37,7 +37,7 @@ static __forceinline float RoundToDecimals(float value, long decimals)
 
 bool CPSCEmitterGeneric::CalcIsFinishedGeneratingParticles() const
 {
-    float elapsed = (float)GetParticleClock_00aea9f0();
+    float elapsed = (float)NParticleEngine::GetTickRate();
     if (m_flags & 0x800000)
     {
         float unpacked = (float)(m_packedLifetime & 0x7fff) * (1.0f / 32767.0f);   // separate statements: VC7.1 would fold the two constants

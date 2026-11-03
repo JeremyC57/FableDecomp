@@ -40088,7 +40088,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00aea880	Sort_SElement12_00aea880	_global	unknown	undefined	0		0	yes	accepted									
 00aea8e0	Sort	CVectorMap<T_12_00aea8e0>	__thiscall	void	1	CGuiVarTransferBool *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\CGuiVarTransferBool_TransferToGui_00aea8e0.cpp
 00aea900	CVectorMap_SortIfDirty_00aea900	_global	__thiscall	void	1	CTCVillage *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\CTCVillage_OnInitialActivate_00aea900.cpp
-00aea9f0	GetParticleUpdateRate	NParticleEngine	__fastcall	long	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GFGetPreMainMemoryUsed_00aea9f0.cpp
+00aea9f0	GetTickRate	NParticleEngine	__fastcall	long	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GFGetPreMainMemoryUsed_00aea9f0.cpp
 00aeaa00	GetConstFloat_0_0666667_00aeaa00	_global	__fastcall	float	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GetMaxDrawDistance_00aeaa00.cpp
 00aeaa20	GetConstFloat_48_00aeaa20	_global	__thiscall	float	1	CAIStateGroup_EnemyCreatureBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\CAIStateGroupEnemyCreatureBase_GetCombatMinDistance_00aeaa20.cpp
 00aeaa30	GetConstFloat_0_00aeaa30	_global	__thiscall	float	1	CAIStateGroup_EnemyCreatureBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\CAIStateGroupEnemyCreatureBase_GetCombatMinDistance_00aeaa30.cpp
@@ -40097,7 +40097,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00aeaa60	GetConstFloat_48_00aeaa60	_global	__fastcall	float	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GetMaxDrawDistance_00aeaa60.cpp
 00aeaa80	SetCurrentThingManager	_global	__fastcall	void	1	CThingManager *	1	yes	accepted									
 00aeaa90	SetCurrentThingManager	_global	__fastcall	void	1	CThingManager *	1	yes	accepted									
-00aeaaa0	GetGlobal_013d2e08_00aeaaa0	_global	__fastcall	long	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GFGetPreMainMemoryUsed_00aeaaa0.cpp
+00aeaaa0	GetGraphicBank	NParticleEngine	__fastcall	long	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GFGetPreMainMemoryUsed_00aeaaa0.cpp
 00aeaab0	GetGlobal_013d2e0c_00aeaab0	_global	__fastcall	long	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GFGetPreMainMemoryUsed_00aeaab0.cpp
 00aeaad0	GetStaticAddr_013d2e10_00aeaad0	_global	__thiscall	ulong	3	CEngineInternalPrimitiveBase *,CEnginePrimitive *,ulong	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_AddChildPrimitive_00aeaad0.cpp
 00aeaae0	GetGlobal_013d2e14_00aeaae0	_global	__fastcall	long	0		1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\ae\global_GFGetPreMainMemoryUsed_00aeaae0.cpp
@@ -40484,10 +40484,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b027d0	DatabaseSerialise	CPSCRenderMesh	__thiscall	void	3	CPSCRenderMesh *,CPersistContext *,CEmitterDatabaseSerialiseInfo *	1	yes	accepted									
 00b03ca0	NParticleEngine::CPSCRenderMesh::vfunc_13	NParticleEngine::CPSCRenderMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00b05620	GetInterpolatedOrientation	NParticleEngine::CParticle	unknown	undefined	0		0	yes	accepted									
-00b05840	GetUnscaledWorldTransform	CParticleSystem	__thiscall	void	2	CParticleSystem *,CMatrix3x4 *	1	yes	accepted									
+00b05840	GetUnscaledWorldTransform	NParticleEngine::CParticleSystem	__thiscall	void	2	CParticleSystem *,CMatrix3x4 *	1	yes	accepted									
 00b05890	CVectorMap<unsigned_long::LowerBound	_global	__thiscall	_Vector_const_iterator<std::_Vector_val<std::pair<unsigned_long,C3DMeshVolume>,std::allocator<std::pair<unsigned_long,C3DMeshVolume>_>_>_>	2	CVectorMap<unsigned_long,C3DMeshVolume,CKeyPairCompareLess<unsigned_long,C3DMeshVolume>_> *,ulong *	1	yes	accepted									
 00b058e0	CEnginePrimitiveParticleMesh	CEnginePrimitiveParticleMesh	__thiscall	undefined	7	CEnginePrimitiveParticleMesh *,__uint64,C3DVector *,CRightHandedSet *,C3DVector *,CRGBColour *,EEngineInterpolationSet	0	yes	accepted									
-00b05980	GetParticleWorldTransform	CParticleSystem	__thiscall	void	2	CParticleSystem *,CMatrix3x4 *	1	yes	accepted									
+00b05980	GetParticleWorldTransform	NParticleEngine::CParticleSystem	__thiscall	void	2	CParticleSystem *,CMatrix3x4 *	1	yes	accepted									
 00b059f0	GetVectorParam	NParticleEngine::CParticleUpdateParameters<unsigned long,unsigned long>	unknown	undefined	0		0	yes	accepted									
 00b05a50	GetClassTypeName	NParticleEngine::CPSCRenderMesh	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
 00b05a70	vfunc_4	NParticleEngine::CPSCRenderMesh	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -40499,18 +40499,18 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b05b80	ScaleParticleDimensions	NParticleEngine::CParticleSystem	__thiscall	void	2	CParticleSystem *,float *	1	yes	accepted									
 00b05c20	GFInterpolate	NParticleEngine	__fastcall	long	3	long,long,float	1	yes	accepted									
 00b05c60	GetComponentCost	NParticleEngine::CPSCSingleSprite	__thiscall	void	5	CPSCSingleSprite *,CParticleSystemCost *,CParticleSystem *,float,float	1	yes	accepted									
-00b05e10	SmoothFadeValue	CPSCLight	__thiscall	float	2	CPSCLight *,float	1	yes	accepted									
+00b05e10	SmoothFadeValue	NParticleEngine::CPSCSingleSprite	__thiscall	float	2	CPSCLight *,float	1	yes	accepted									
 00b05ea0	vfunc_18	NParticleEngine::CPSCSingleSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00b06060	WriteBinary	NParticleEngine::CPSCSingleSprite	__thiscall	void	2	CPSCSingleSprite *,CDataOutputStream *	1	yes	accepted									
 00b062a0	InterpolateTo	NParticleEngine::CPSCSingleSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00b068f0	ReadBinary	CPSCSingleSprite	__thiscall	void	2	CPSCSingleSprite *,CDataInputStream *	1	yes	accepted									
+00b068f0	ReadBinary	NParticleEngine::CPSCSingleSprite	__thiscall	void	2	CPSCSingleSprite *,CDataInputStream *	1	yes	accepted									
 00b07570	ClearAllPrimitives	NParticleEngine::CPSCSingleSprite	__thiscall	void	3	CPSCSingleSprite *,CIEngine *,CEnginePrimitiveHandle *	1	yes	accepted									
 00b075d0	AddToBoundingSphere	CPSCSingleSprite	__thiscall	bool	5	CPSCSingleSprite *,C3DBoundingSphere *,float,CParticleSystem *,CParticleUpdateParameters<unsigned_long,unsigned_long> *	1	yes	accepted									
 00b079b0	DatabaseSerialise	CPSCSingleSprite	__thiscall	void	3	CPSCSingleSprite *,CPersistContext *,CEmitterDatabaseSerialiseInfo *	1	yes	accepted									
 00b081a0	AddTrailPosition	NParticleEngine::CPSCSingleSprite	unknown	undefined	0		0	yes	accepted									
-00b08250	SetTrailPositionsFromSpline	CPSCSingleSprite	__thiscall	void	5	CPSCSingleSprite *,CParticleSystem *,CParticleUpdateParameters<unsigned_long,unsigned_long> *,float,float	1	yes	accepted									
+00b08250	SetTrailPositionsFromSpline	NParticleEngine::CPSCSingleSprite	__thiscall	void	5	CPSCSingleSprite *,CParticleSystem *,CParticleUpdateParameters<unsigned_long,unsigned_long> *,float,float	1	yes	accepted									
 00b08530	Update	CPSCSingleSprite	__thiscall	void	4	CPSCSingleSprite *,CParticleSystem *,CParticleUpdateParameters<unsigned_long,unsigned_long> *,bool *	1	yes	accepted									
-00b087c0	NParticleEngine::CPSCSingleSprite::vfunc_13	NParticleEngine::CPSCSingleSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00b087c0	PreparePrimitives	NParticleEngine::CPSCSingleSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00b09360	CPSCSingleSprite	NParticleEngine::CPSCSingleSprite	__thiscall	undefined	1	CPSCSingleSprite *	0	yes	accepted									
 00b094b0	Initialise	NParticleEngine::CPSCSingleSprite	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00b09830	CCountedPointer_Release_00b09830	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b0\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00b09830.cpp
@@ -40638,9 +40638,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b18950	WriteBinary	NParticleEngine::CPSCLight	__thiscall	void	2	CPSCLight *,CDataOutputStream *	1	yes	accepted									
 00b18af0	AddToBoundingSphere	NParticleEngine::CPSCLight	__thiscall	bool	5	CPSCLight *,C3DBoundingSphere *,float,CParticleSystem *,CParticleUpdateParameters<unsigned_long,unsigned_long> *	1	yes	accepted									
 00b18c60	InterpolateTo	NParticleEngine::CPSCLight	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00b193d0	ReadBinary	CPSCLight	__thiscall	void	2	CPSCLight *,CDataInputStream *	1	yes	accepted									
+00b193d0	ReadBinary	NParticleEngine::CPSCLight	__thiscall	void	2	CPSCLight *,CDataInputStream *	1	yes	accepted									
 00b19c20	Kill	NParticleEngine::CPSCLight	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00b19c60	NParticleEngine::CPSCLight::vfunc_13	NParticleEngine::CPSCLight	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00b19c60	PreparePrimitives	NParticleEngine::CPSCLight	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00b1a640	CPSCLight	NParticleEngine::CPSCLight	__thiscall	undefined	1	CPSCLight *	0	yes	accepted									
 00b1a700	DatabaseCopy	NParticleEngine::CPSCLight	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00b1a870	DatabaseSerialise	CPSCLight	__thiscall	void	3	CPSCLight *,CPersistContext *,CEmitterDatabaseSerialiseInfo *	1	yes	accepted									
@@ -40659,7 +40659,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b1aff0	WriteBinary	NParticleEngine::CPSCSpline	__thiscall	void	2	CPSCSpline *,CDataOutputStream *	1	yes	accepted									
 00b1b030	GetUpdateParam	NParticleEngine::CPSCSpline	__thiscall	bool	7	CPSCSpline *,C3DVector *,ulong,float,bool,CParticleUpdateParameters<unsigned_long,unsigned_long> *,ulong	1	yes	accepted									
 00b1b0c0	StartUpdate	NParticleEngine::CPSCSpline	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00b1b1b0	vfunc_15	NParticleEngine::CPSCSpline	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+00b1b1b0	ReadBinary	NParticleEngine::CPSCSpline	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00b1b2e0	DatabaseSerialise	NParticleEngine::CPSCSpline	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00b1b350	CPSCSpline	NParticleEngine::CPSCSpline	__thiscall	undefined	1	CGameJoystickManager *	0	yes	accepted									
 00b1b380	CollectUpdateParameters	NParticleEngine::CPSCSpline	unknown	undefined	0		0	yes	accepted									

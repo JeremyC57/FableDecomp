@@ -1,5 +1,4 @@
 // NScript::CPersonalScript_EmptyScript::CheckForHeroActions() -- debug watcher: each script frame, while the hero is alive, fetch the things the hero killed and show "You killed <n> things, of types: <t1>, <t2>." as a screen message
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: CheckForHeroActions
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EF5200, 592 bytes, plain `ret`.
 // Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940; CGameScriptInterface slots 70 (+0x118) GetHero (by reference),
@@ -12,11 +11,12 @@
 // Layout: CScriptBase is 0x40 bytes with the interface pointer at +0x40 (landed 0x00EF8BC0 ChangeAlpha model); CScriptThing
 //   {vptr 0x01238C8C, PImp.Data, PImp.Info} (engine/CScriptThing.h is the flat data view; the virtual interface is modelled
 //   locally). Strings: 0x012F65C8 "You killed ", 0x012F65D4 " things, of types: ", 0x01238794 ".", 0x012397CC ", ".
-// Shape: GOTCHAS b18 recipe -- __forceinline ~CScriptThing with an in-body `#pragma inline_depth(0)` region around the one
-//   exit retail destroys the hero out of line (0x004AA840). That exit frees the vector INLINE first, so it leaves the
-//   vector's block by `goto` (the vector dtor expands at the goto) and the depth-0 `return` sits after the block (hero
-//   only). The hero is scoped inside the loop body so its dtor runs before NewScriptFrame; MsgGetThingsKilled's inline
-//   body is `if (Data) return ...; return false;` (`cmp al,bl` on the zero register; the `&&` form gives `test al,al`).
+// Shape (pragma3, 2026-11-03): pragma-free; the vector and CScriptThing dtors are plain in-class inline. The killed-things
+//   exit is a plain `if (IsActiveThreadTerminating()) return;` inside the vector's block: c2 rates it the coldest exit, so
+//   there the vector's free expands but the hero's ~CScriptThing is called out of line (0x004AA840), while every other exit
+//   expands both. (The earlier landing reached this with a `goto` to a depth-0 `return` after the block.) The hero is scoped
+//   inside the loop body so its dtor runs before NewScriptFrame; MsgGetThingsKilled's inline body is
+//   `if (Data) return ...; return false;` (`cmp al,bl` on the zero register; the `&&` form gives `test al,al`).
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 void operator delete(void* p);                         // 0x00BFE9BC
 class CCharString { public:
@@ -35,7 +35,7 @@ template <class T> struct vector {                     // STLport vector<unsigne
     T* _M_finish;
     T* _M_end_of_storage;
     vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    __forceinline ~vector() { if (_M_start) free(_M_start); }
+    ~vector() { if (_M_start) free(_M_start); }
     unsigned int size() const { return _M_finish - _M_start; }
     T& operator[](unsigned int i) { return _M_start[i]; }
 };
@@ -45,7 +45,7 @@ template <class T> struct vector {                     // STLport vector<unsigne
 class CScriptThing : public CBaseClass { public:                     // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThing> PImp;                // +0x04 Data, +0x08 Info
     CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
-    __forceinline virtual ~CScriptThing() { }          // out of line 0x004AA840
+    virtual ~CScriptThing() { }                        // out of line 0x004AA840
     virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const;
     virtual void v005() const; virtual void v006() const; virtual void v007() const; virtual void v008() const;
     virtual void v009() const; virtual void v010() const; virtual void v011() const; virtual void v012() const;
@@ -126,7 +126,7 @@ void CPersonalScript_EmptyScript::CheckForHeroActions()
                     std::vector<unsigned long> killed;
                     if (hero.MsgGetThingsKilled(killed)) {
                         if (IsActiveThreadTerminating())
-                            goto terminating;
+                            return;
                         CCharString text = "You killed " + GFIntToCharString(killed.size()) + " things, of types: ";
                         for (unsigned int i = 0; i < killed.size(); ++i) {
                             text += GFUIntToCharString(killed[i]);
@@ -138,12 +138,6 @@ void CPersonalScript_EmptyScript::CheckForHeroActions()
                         GSI->AddScreenMessage(text, 0);
                     }
                 }
-            }
-            if (false) {
-terminating:
-#pragma inline_depth(0)
-                return;
-#pragma inline_depth()
             }
         }
         GSI->NewScriptFrame();

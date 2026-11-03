@@ -1,0 +1,15 @@
+addr       parity           behav  name
+00e504c0   RELOCATION_MATCH PASS   WatchForBarberLadyDeath
+00e6af20   RELOCATION_MATCH PASS   WatchForAcolyteHit
+00edcb80   RELOCATION_MATCH PASS   WatchForAcolyteHit
+00d99a30   RELOCATION_MATCH PASS   CheckIfGotTreasure
+00ef5200   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00ef5200   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00ef5200   RELOCATION_MATCH PASS   CheckForHeroActions
+
+WINS: 5
+  00e504c0 RELOCATION_MATCH NScript::CV_BeardyBaldyScript::WatchForBarberLadyDeath
+  00e6af20 RELOCATION_MATCH CV_ChapelOfEvilScript::WatchForAcolyteHit
+  00edcb80 RELOCATION_MATCH NScript::CV_TempleOfLightScript::?WatchForAcolyteHit@CV_TempleOfLightScript@NScript@@QAEXVCScriptThing@@@Z
+  00d99a30 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::?CheckIfGotTreasure@CQ_HobbeCaveScript@NScript@@QAEXXZ
+  00ef5200 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CheckForHeroActions

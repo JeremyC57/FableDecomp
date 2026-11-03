@@ -1,4 +1,7 @@
-// CParticleSystem::GetUnscaledWorldTransform(CMatrix3x4*) -- copies the parent emitter's transform when the system stays with its emitter, else writes the identity transform
+// NParticleEngine::CParticleSystem::GetUnscaledWorldTransform(CMatrix3x4& result) const -- copies the parent emitter's transform when the system stays with its emitter, else writes the identity transform
+// Leaf: ?GetUnscaledWorldTransform@CParticleSystem@NParticleEngine@@QBEXAAVCMatrix3x4@@@Z
+// Name: FableWin.pdb / Ego_r.pdb ?GetUnscaledWorldTransform@CParticleSystem@NParticleEngine@@QBEXAAVCMatrix3x4@@@Z (namespace, const,
+//   reference); the callers 0x00B05980 and 0x00B087C0 pass the matrix address (`ret 4`).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B05840, 80 bytes (`ret 4`).
 // Callees: CParticleSystem::GetSystemTransform @ 0x00AF3D80 (returns &PParentEmitter->Transform, emitter +0xb0;
 // labelled "CVertexBufferWin32::DoSizeof", propagated).
@@ -11,7 +14,8 @@ class CMatrix3x4 { public:
     float m[12];                                     // 3x3 rotation (rows) then the translation
 };
 
-struct CParticleSystem {
+namespace NParticleEngine {
+class CParticleSystem { public:
     unsigned char m_pad00[0x50];
     bool          Initialised : 1;                   // +0x50 bit 0
     bool          Enabled : 1;
@@ -22,16 +26,17 @@ struct CParticleSystem {
     bool          StayWithEmitter : 1;               // bit 6
     bool          ScaleParticles : 1;
     const CMatrix3x4* GetSystemTransform() const;    // 0x00AF3D80
-    void GetUnscaledWorldTransform(CMatrix3x4* result);
+    void GetUnscaledWorldTransform(CMatrix3x4& result) const;
 };
 
-void CParticleSystem::GetUnscaledWorldTransform(CMatrix3x4* result)
+void CParticleSystem::GetUnscaledWorldTransform(CMatrix3x4& result) const
 {
     if (StayWithEmitter) {
-        *result = *GetSystemTransform();
+        result = *GetSystemTransform();
     } else {
-        result->m[1] = result->m[2] = result->m[3] = result->m[5] = result->m[6] = result->m[7] =
-            result->m[9] = result->m[10] = result->m[11] = 0.0f;
-        result->m[0] = result->m[4] = result->m[8] = 1.0f;
+        result.m[1] = result.m[2] = result.m[3] = result.m[5] = result.m[6] = result.m[7] =
+            result.m[9] = result.m[10] = result.m[11] = 0.0f;
+        result.m[0] = result.m[4] = result.m[8] = 1.0f;
     }
+}
 }

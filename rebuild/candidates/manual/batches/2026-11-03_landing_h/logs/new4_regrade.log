@@ -1,0 +1,11 @@
+addr       parity           behav  name
+00b062a0   RELOCATION_MATCH PASS   InterpolateTo
+00b068f0   RELOCATION_MATCH PASS   ReadBinary
+00b18c60   RELOCATION_MATCH PASS   InterpolateTo
+00b193d0   RELOCATION_MATCH PASS   ReadBinary
+
+WINS: 4
+  00b062a0 RELOCATION_MATCH NParticleEngine::CPSCSingleSprite::?InterpolateTo@CPSCSingleSprite@NParticleEngine@@UAEXABVCPSCBase@2@M@Z
+  00b068f0 RELOCATION_MATCH NParticleEngine::CPSCSingleSprite::?ReadBinary@CPSCSingleSprite@NParticleEngine@@UAEXAAVCDataInputStream@@@Z
+  00b18c60 RELOCATION_MATCH NParticleEngine::CPSCLight::?InterpolateTo@CPSCLight@NParticleEngine@@UAEXABVCPSCBase@2@M@Z
+  00b193d0 RELOCATION_MATCH NParticleEngine::CPSCLight::?ReadBinary@CPSCLight@NParticleEngine@@UAEXAAVCDataInputStream@@@Z

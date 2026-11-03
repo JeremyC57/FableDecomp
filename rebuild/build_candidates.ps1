@@ -267832,13 +267832,6 @@ $catalog = @(
         PassPattern = '00e32080_TEST PASS'
     }
     [pscustomobject]@{
-        Address = '00e504c0'
-        Module = 'NScript::CV_BeardyBaldyScript'
-        Source = '00/e5/NScriptCVBeardyBaldyScript_WatchForBarberLadyDeath_00e504c0.cpp'
-        TestSource = '00/e5/NScriptCVBeardyBaldyScript_WatchForBarberLadyDeath_00e504c0_test.cpp'
-        PassPattern = '00e504c0_TEST PASS'
-    }
-    [pscustomobject]@{
         Address = '00d91740'
         Module = 'NScript::CQ_HobbeCaveScript'
         Source = '00/d9/NScriptCQHobbeCaveScript_RescuedBandit_00d91740.cpp'
@@ -269239,13 +269232,6 @@ $catalog = @(
         Source = '00/b2/NParticleEngineCPSCSplineBase_InterpolateTo_00b22310.cpp'
         TestSource = '00/b2/NParticleEngineCPSCSplineBase_InterpolateTo_00b22310_test.cpp'
         PassPattern = '00b22310_TEST PASS'
-    }
-    [pscustomobject]@{
-        Address = '00ef5200'
-        Module = 'NScript::CPersonalScript_EmptyScript'
-        Source = '00/ef/NScriptCPersonalScriptEmptyScript_CheckForHeroActions_00ef5200.cpp'
-        TestSource = '00/ef/NScriptCPersonalScriptEmptyScript_CheckForHeroActions_00ef5200_test.cpp'
-        PassPattern = '00ef5200_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00efc500'
@@ -272229,13 +272215,6 @@ $catalog = @(
         PassPattern = '00e5db30_TEST PASS'
     }
     [pscustomobject]@{
-        Address = '00e6af20'
-        Module = 'CV_ChapelOfEvilScript'
-        Source = '00/e6/CVChapelOfEvilScript_WatchForAcolyteHit_00e6af20.cpp'
-        TestSource = '00/e6/CVChapelOfEvilScript_WatchForAcolyteHit_00e6af20_test.cpp'
-        PassPattern = '00e6af20_TEST PASS'
-    }
-    [pscustomobject]@{
         Address = '00e9a5c0'
         Module = 'NScript::CV_HeroDuelScript::CThunder'
         Source = '00/e9/NScriptCVHeroDuelScriptCThunder_Main_00e9a5c0.cpp'
@@ -272479,13 +272458,6 @@ $catalog = @(
         Source = '00/ed/NScriptCVSwordInTheStoneScript_Main_00ed4d20.cpp'
         TestSource = '00/ed/NScriptCVSwordInTheStoneScript_Main_00ed4d20_test.cpp'
         PassPattern = '00ed4d20_TEST PASS'
-    }
-    [pscustomobject]@{
-        Address = '00edcb80'
-        Module = 'NScript::CV_TempleOfLightScript'
-        Source = '00/ed/NScriptCVTempleOfLightScript_WatchForAcolyteHit_00edcb80.cpp'
-        TestSource = '00/ed/NScriptCVTempleOfLightScript_WatchForAcolyteHit_00edcb80_test.cpp'
-        PassPattern = '00edcb80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00ee2a80'
@@ -363405,13 +363377,6 @@ $catalog = @(
         PassPattern = '00bdbb70_TEST PASS'
     }
     [pscustomobject]@{
-        Address = '00d99a30'
-        Module = 'NScript::CQ_HobbeCaveScript'
-        Source = '00/d9/NScriptCQHobbeCaveScript_CheckIfGotTreasure_00d99a30.cpp'
-        TestSource = '00/d9/NScriptCQHobbeCaveScript_CheckIfGotTreasure_00d99a30_test.cpp'
-        PassPattern = '00d99a30_TEST PASS'
-    }
-    [pscustomobject]@{
         Address = '00ece460'
         Module = 'NScript::CV_SickChildScript'
         Source = '00/ec/NScriptCVSickChildScript_PlayCutscene_00ece460.cpp'
@@ -381124,6 +381089,69 @@ $catalog = @(
         Source = '00/a7/CNavQuadTree_IsAreaClear_00a78e20.cpp'
         TestSource = '00/a7/CNavQuadTree_IsAreaClear_00a78e20_test.cpp'
         PassPattern = '00a78e20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b062a0'
+        Module = 'NParticleEngine::CPSCSingleSprite'
+        Source = '00/b0/NParticleEngineCPSCSingleSprite_InterpolateTo_00b062a0.cpp'
+        TestSource = '00/b0/NParticleEngineCPSCSingleSprite_InterpolateTo_00b062a0_test.cpp'
+        PassPattern = '00b062a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b068f0'
+        Module = 'NParticleEngine::CPSCSingleSprite'
+        Source = '00/b0/NParticleEngineCPSCSingleSprite_ReadBinary_00b068f0.cpp'
+        TestSource = '00/b0/NParticleEngineCPSCSingleSprite_ReadBinary_00b068f0_test.cpp'
+        PassPattern = '00b068f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b18c60'
+        Module = 'NParticleEngine::CPSCLight'
+        Source = '00/b1/NParticleEngineCPSCLight_InterpolateTo_00b18c60.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCLight_InterpolateTo_00b18c60_test.cpp'
+        PassPattern = '00b18c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b193d0'
+        Module = 'NParticleEngine::CPSCLight'
+        Source = '00/b1/NParticleEngineCPSCLight_ReadBinary_00b193d0.cpp'
+        TestSource = '00/b1/NParticleEngineCPSCLight_ReadBinary_00b193d0_test.cpp'
+        PassPattern = '00b193d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e504c0'
+        Module = 'NScript::CV_BeardyBaldyScript'
+        Source = '00/e5/NScriptCVBeardyBaldyScript_WatchForBarberLadyDeath_00e504c0.cpp'
+        TestSource = '00/e5/NScriptCVBeardyBaldyScript_WatchForBarberLadyDeath_00e504c0_test.cpp'
+        PassPattern = '00e504c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e6af20'
+        Module = 'CV_ChapelOfEvilScript'
+        Source = '00/e6/CVChapelOfEvilScript_WatchForAcolyteHit_00e6af20.cpp'
+        TestSource = '00/e6/CVChapelOfEvilScript_WatchForAcolyteHit_00e6af20_test.cpp'
+        PassPattern = '00e6af20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00edcb80'
+        Module = 'NScript::CV_TempleOfLightScript'
+        Source = '00/ed/NScriptCVTempleOfLightScript_WatchForAcolyteHit_00edcb80.cpp'
+        TestSource = '00/ed/NScriptCVTempleOfLightScript_WatchForAcolyteHit_00edcb80_test.cpp'
+        PassPattern = '00edcb80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d99a30'
+        Module = 'NScript::CQ_HobbeCaveScript'
+        Source = '00/d9/NScriptCQHobbeCaveScript_CheckIfGotTreasure_00d99a30.cpp'
+        TestSource = '00/d9/NScriptCQHobbeCaveScript_CheckIfGotTreasure_00d99a30_test.cpp'
+        PassPattern = '00d99a30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef5200'
+        Module = 'NScript::CPersonalScript_EmptyScript'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScript_CheckForHeroActions_00ef5200.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScript_CheckForHeroActions_00ef5200_test.cpp'
+        PassPattern = '00ef5200_TEST PASS'
     }
 )
 

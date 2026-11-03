@@ -1,0 +1,15 @@
+action	symbol	target	by_row	note
+RETIRE	?GetUpdateRate_00aea9f0@@YAJXZ	00aea9f0		GetTickRate respell (0x00B1DB00)
+RETIRE	?GetParticleFrameRate@@YAJXZ	00aea9f0		GetTickRate respell (0x00B18AF0)
+RETIRE	?GetParticleClock_00aea9f0@@YAJXZ	00aea9f0		GetTickRate respell (0x00B10220)
+ADD	?GetTickRate@NParticleEngine@@YIJXZ	00aea9f0	00b1db00	FableWin / Ego_r; binders 0x00B1DB00, 0x00B18AF0, 0x00B10220
+RETIRE	?InterpolateTo@CPSCSplineBase@NParticleEngine@@QAEXPBVCPSCBase@2@M@Z	00b22310		virtual, const CPSCBase& (0x00B1AF50 respell; 0x00B062A0 already binds the right one)
+RETIRE	?ReadBinary@CPSCSplineBase@NParticleEngine@@QAEXAAUInputCalls@@@Z	00b22b40		0x00B1B1B0 re-model (0x00B068F0 already binds the right one)
+RETIRE	?ReadBinary@CSplinePosParamData@CPSCSplineBase@NParticleEngine@@QAEXPAVCDataInputStream@@@Z	00b21c90		reference, as FableWin and the landed definition (0x00B22B40 respell)
+ADD	?ReadBinary@CSplinePosParamData@CPSCSplineBase@NParticleEngine@@QAEXAAVCDataInputStream@@@Z	00b21c90	00b22b40	FableWin / Ego_r
+RETIRE	?ReadBinary@CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAEXPAVCDataInputStream@@@Z	00b22100		reference, as FableWin and the landed definition (0x00B22B40 respell)
+ADD	?ReadBinary@CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAEXAAVCDataInputStream@@@Z	00b22100	00b22b40	FableWin / Ego_r
+RETIRE	?ReadColour@CDataInputStream@@QAEAAVCRGBColour@@AAV2@@Z	009945e0		hidden result (0x004595A3 respell; 0x00AC0010 already binds the right one)
+RETIRE	?GetSystemTransform@CParticleSystem@@QBEPBVCMatrix3x4@@XZ	00af3d80		namespace NParticleEngine, as 0x00B201D0 binds it (0x00B05840 respell); the name itself is queued
+RETIRE	?GetUnscaledWorldTransform@CParticleSystem@@QAEXPAVCMatrix3x4@@@Z	00b05840		namespace, const, reference (0x00B05980 respell)
+ADD	?GetUnscaledWorldTransform@CParticleSystem@NParticleEngine@@QBEXAAVCMatrix3x4@@@Z	00b05840	00b05980	FableWin / Ego_r

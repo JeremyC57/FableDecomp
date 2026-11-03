@@ -1,5 +1,5 @@
 // NScript::CQ_HobbeCaveScript::CheckIfGotTreasure() -- the Hobbe Cave quest's "CheckIfGotTreasure" spawned thread: each time the main chamber region is loaded, look up the two treasure chests HC_Treasure1 / HC_Treasure2 and, while the region stays loaded, count every chest the hero uses (GotTreasure) and have the sacrificial bandit comment on it (TEXT_QST_036_BANDIT_GOT_TREASURE_ONE / _TWO); runs until the thread is terminated
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
+// Inline-split: exits wrapped individually; retail's construct is unproven
 // Leaf: ?CheckIfGotTreasure@CQ_HobbeCaveScript@NScript@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D99A30, 911 bytes, thiscall, plain `ret`.
 // Identity: Ego_r.pdb ?CheckIfGotTreasure@CQ_HobbeCaveScript@NScript@@QAEXXZ (0x00DB72C0); the HobbeCave spawner stores
@@ -13,8 +13,10 @@
 // Data: "HobbeCaveMainChamber" 0x012D55EC, "HC_Treasure1" 0x012D65BC, "HC_Treasure2" 0x012D65AC, "SCRIPT_NAME_HERO"
 //   0x0125D1C8, "BanditSacrifice" 0x012D5788, "TEXT_QST_036_BANDIT_GOT_TREASURE_ONE" 0x012D6584, "..._TWO" 0x012D655C.
 // Layout (retail = Ego_r.pdb - 0x14): Game +0x40, GotTreasure +0x58 (Ego_r +0x6C), BanditComment +0x54.
-// Shape: ~CScriptThing is __forceinline (the GetThingWithScriptName temporary expands it); the two named chests are
-//   destroyed out of line at every exit and at the end of their block, written under `#pragma inline_depth(0)`.
+// Shape (pragma3, 2026-11-03): no pragma, plain inline ~CScriptThing. The outer polling loop is `for (;;)` with its head terminate check
+//   written as `do { if (IsActiveThreadTerminating()) return; } while (0);`, and so is the check after the inner region wait loop
+//   (end of the chests' block); every other check is plain. c2 counts each do-while(0) as an inner loop, so those two exits are hot
+//   and expand ~CScriptThing (the GetThingWithScriptName temporary expands it too) while the remaining exits call 0x004AA840.
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -63,7 +65,8 @@ public:
 
 void NScript::CQ_HobbeCaveScript::CheckIfGotTreasure()
 {
-    while (!IsActiveThreadTerminating()) {
+    for (;;) {
+        do { if (IsActiveThreadTerminating()) return; } while (0);
         while (!Game->IsRegionLoaded("HobbeCaveMainChamber")) {
             Game->NewScriptFrame();
             if (IsActiveThreadTerminating())
@@ -77,31 +80,22 @@ void NScript::CQ_HobbeCaveScript::CheckIfGotTreasure()
             while (Game->IsRegionLoaded("HobbeCaveMainChamber")) {
                 Game->NewScriptFrame();
                 if (IsActiveThreadTerminating())
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 if (treasure1.MsgIsUsedBy("SCRIPT_NAME_HERO")) {
                     if (IsActiveThreadTerminating())
-#pragma inline_depth(0)
                         return;
-#pragma inline_depth()
                     ++GotTreasure;
                     MakeBanditComment("TEXT_QST_036_BANDIT_GOT_TREASURE_ONE", Game->GetThingWithScriptName("BanditSacrifice"));
                 }
                 if (treasure2.MsgIsUsedBy("SCRIPT_NAME_HERO")) {
                     if (IsActiveThreadTerminating())
-#pragma inline_depth(0)
                         return;
-#pragma inline_depth()
                     ++GotTreasure;
                     MakeBanditComment("TEXT_QST_036_BANDIT_GOT_TREASURE_TWO", Game->GetThingWithScriptName("BanditSacrifice"));
                 }
             }
-            if (IsActiveThreadTerminating())
-#pragma inline_depth(0)
-                return;
+            do { if (IsActiveThreadTerminating()) return; } while (0);
         }
-#pragma inline_depth()
         Game->NewScriptFrame();
     }
 }

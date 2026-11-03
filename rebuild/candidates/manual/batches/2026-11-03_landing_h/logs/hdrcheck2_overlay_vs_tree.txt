@@ -1,0 +1,7 @@
+CHANGED engine/CDataInputStream.h default=same[30] FABLE_RETAIL_CDATAINPUTSTREAM=same[78]
+CHANGED engine/CEnginePrimitiveHandle.h default=same[68] FABLE_RETAIL_CENGINEPRIMITIVEHANDLE=same[68] FABLE_RETAIL_CIVCOUNTEDPOINTER=same[71]
+CHANGED engine/CEnginePrimitiveLight.h default=same[83]
+CHANGED engine/CIVCountedPointer.h default=same[36] FABLE_RETAIL_CIVCOUNTEDPOINTER=same[39]
+CHANGED engine/CMatrix3x4.h default=same[66] FABLE_RETAIL_CMATRIX3X4=same[90]
+CHANGED engine/CParticleSystem.h default=same[91] FABLE_RETAIL_CMATRIX3X4=same[91] FABLE_RETAIL_CPARTICLESYSTEM=same[165]
+CHANGED engine/CRGBFloatColour.h default=same[83] FABLE_RETAIL_C4DVECTOR=same[83] FABLE_RETAIL_CRGBFLOATCOLOUR=same[111]

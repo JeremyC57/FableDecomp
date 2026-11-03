@@ -1,0 +1,19 @@
+catalog  00aea9f0 NParticleEngine::GetParticleUpdateRate -> NParticleEngine::GetTickRate
+catalog  00aeaaa0 _global::GetGlobal_013d2e08_00aeaaa0 -> NParticleEngine::GetGraphicBank
+catalog  00b05840 CParticleSystem::GetUnscaledWorldTransform -> NParticleEngine::CParticleSystem::GetUnscaledWorldTransform
+catalog  00b05980 CParticleSystem::GetParticleWorldTransform -> NParticleEngine::CParticleSystem::GetParticleWorldTransform
+catalog  00b1b1b0 NParticleEngine::CPSCSpline::vfunc_15 -> NParticleEngine::CPSCSpline::ReadBinary
+catalog  00b068f0 CPSCSingleSprite::ReadBinary -> NParticleEngine::CPSCSingleSprite::ReadBinary
+catalog  00b193d0 CPSCLight::ReadBinary -> NParticleEngine::CPSCLight::ReadBinary
+manifest 00aea9f0 NParticleEngine::GetParticleUpdateRate -> NParticleEngine::GetTickRate
+manifest 00aeaaa0 _global::GetGlobal_013d2e08_00aeaaa0 -> NParticleEngine::GetGraphicBank
+manifest 00b05840 CParticleSystem::GetUnscaledWorldTransform -> NParticleEngine::CParticleSystem::GetUnscaledWorldTransform
+manifest 00b05980 CParticleSystem::GetParticleWorldTransform -> NParticleEngine::CParticleSystem::GetParticleWorldTransform
+manifest 00b05e10 CPSCLight::SmoothFadeValue -> NParticleEngine::CPSCSingleSprite::SmoothFadeValue
+manifest 00b068f0 CPSCSingleSprite::ReadBinary -> NParticleEngine::CPSCSingleSprite::ReadBinary
+manifest 00b08250 CPSCSingleSprite::SetTrailPositionsFromSpline -> NParticleEngine::CPSCSingleSprite::SetTrailPositionsFromSpline
+manifest 00b087c0 NParticleEngine::CPSCSingleSprite::NParticleEngine::CPSCSingleSprite::vfunc_13 -> NParticleEngine::CPSCSingleSprite::PreparePrimitives
+manifest 00b193d0 CPSCLight::ReadBinary -> NParticleEngine::CPSCLight::ReadBinary
+manifest 00b19c60 NParticleEngine::CPSCLight::NParticleEngine::CPSCLight::vfunc_13 -> NParticleEngine::CPSCLight::PreparePrimitives
+manifest 00b1b1b0 NParticleEngine::CPSCSpline::vfunc_15 -> NParticleEngine::CPSCSpline::ReadBinary
+labels 22  catalog renamed 7  manifest renamed 11

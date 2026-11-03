@@ -1,5 +1,7 @@
-// NParticleEngine::CPSCSplineBase::InterpolateTo(const CPSCBase* other, float t) -- blend this spline component towards another: lerp the tension, interpolate the control points (GFInterpolateArray over copies of both point arrays), and blend the random-offset and position-parameter data (interpolated when both exist; otherwise past the halfway point the own data is released or a copy of the other's is created)
-// Leaf: InterpolateTo
+// NParticleEngine::CPSCSplineBase::InterpolateTo(const CPSCBase& other, float t) -- vtable slot 14: blend this spline component towards another: lerp the tension, interpolate the control points (GFInterpolateArray over copies of both point arrays), and blend the random-offset and position-parameter data (interpolated when both exist; otherwise past the halfway point the own data is released or a copy of the other's is created)
+// Leaf: ?InterpolateTo@CPSCSplineBase@NParticleEngine@@UAEXABVCPSCBase@2@M@Z
+// Name: FableWin.pdb / Ego_r.pdb ?InterpolateTo@CPSCSplineBase@NParticleEngine@@UAEXABVCPSCBase@2@M@Z; slot 14 of the CPSCSplineBase
+//   vtable 0x012A0B14 (rtti-vtables.tsv); called non-virtually with `const CPSCBase&` by 0x00B062A0 / 0x00B1AF50.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B22310, 537 bytes (+ int3 padding), `ret 8` (virtual).
 // Callees: CArray<C3DVector> copy 0x006F0810 / operator= 0x0075B8D0, GFInterpolateArray<C3DVector> 0x00B15BD0 (__fastcall,
 //   hidden result in ecx, first array in edx), free 0x00BFEA14, operator new 0x00BFEA1A / delete 0x00BFE9BC,
@@ -89,12 +91,12 @@ class CPSCSplineBase : public CPSCBase { public:
     CCardinalSpline                          Spline;                   // +0x10
     CCountedPointer<CSplineRandomOffsetData> SplineRandomOffsetData;   // +0x24
     CCountedPointer<CSplinePosParamData>     SplinePosParamData;       // +0x2c
-    void InterpolateTo(const CPSCBase* other, float t);
+    virtual void InterpolateTo(const CPSCBase& other, float t);
 };
 
-void CPSCSplineBase::InterpolateTo(const CPSCBase* other, float t)
+void CPSCSplineBase::InterpolateTo(const CPSCBase& other, float t)
 {
-    const CPSCSplineBase* source = (const CPSCSplineBase*)other;
+    const CPSCSplineBase* source = static_cast<const CPSCSplineBase*>(&other);
     Spline.Tension = (1.0f - t) * Spline.Tension + t * source->Spline.Tension;
     Spline.ControlPoints = GFInterpolateArray(Spline.GetControlPoints(), source->Spline.GetControlPoints(), t, C3DVector(0.0f, 0.0f, 0.0f));
 

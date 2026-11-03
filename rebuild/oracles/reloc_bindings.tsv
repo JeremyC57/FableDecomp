@@ -11472,7 +11472,6 @@ __imp__ShowCursor@4	01440350	00ab5d00
 ??0?$map@KMU?$less@K@std@@U?$allocator@U?$pair@$$CBKM@std@@@2@@std@@QAE@ABU01@@Z	00ad4210	00ad77f0
 ??0?$set@KU?$less@K@std@@U?$allocator@K@2@@std@@QAE@ABU01@@Z	00ad3a10	00ad77f0
 ?DeleteDecal@CParticleSystem@@QAE?AU?$_List_iterator@PAUCDecal@@@@AAU2@@Z	00af5690	00b1db00
-?GetUpdateRate_00aea9f0@@YAJXZ	00aea9f0	00b1db00
 ?PoolDecal@CPSCDecalRenderer@@QAE_NPAVCParticleSystem@@AAU?$_List_iterator@PAUCDecal@@@@@Z	00b1d790	00b1db00
 ??0CBankFileAsync@@QAE@XZ	009d5f80	00b423f0
 ??_7CEngineWorldMap@@6B@	012a1f50	00b423f0
@@ -13111,7 +13110,6 @@ __CIasin	00bfedc4	009de2a0
 ?GetParticleRandomSeed@@YAPAKXZ	00aeaad0	00b16d50
 ?Initialise@COrbitState@NParticleEngine@@QAEXABUCOrbitSettings@2@PAK@Z	00b161a0	00b16d50
 ?Update@COrbitState@NParticleEngine@@QAEXABUCOrbitSettings@2@AAVCMatrix3x4@@M@Z	00b16410	00b16d50
-?GetParticleFrameRate@@YAJXZ	00aea9f0	00b18af0
 ?ScaleParticleDimensions@CParticleSystem@NParticleEngine@@QAEXAAM@Z	00af8f80	00b18af0
 ?RenderUIBackground@CUserProfileManager@@QAEXM@Z	004075c0	005bc6d6
 ??1CMember_00caebb0@@QAE@XZ	00caebb0	00caf480
@@ -16130,7 +16128,6 @@ _g_FableImeSymbolTranslucence_013B7CF1	013b7cf1	00405350
 ?Zero_0122dedc@@3MB	0122dedc	00b109b0
 ?reserve@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXI@Z	00920ff0	00b1a700
 ?resize@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXIABVC3DVector@@@Z	0075c040	00b1a700
-?ReadBinary@CPSCSplineBase@NParticleEngine@@QAEXAAUInputCalls@@@Z	00b22b40	00b1b1b0
 ??0CEnginePrimitiveParticleDecalGroup@@QAE@J_NW4EEnginePrimitiveBlendMode@@W4EEnginePrimitiveBlendOp@@MK@Z	00b1b4d0	00b1b710
 ?Backend_0143ccdc@@3PAUBackend@@A	0143ccdc	00c6a080
 ?Blend@StageOne@@QAEXPAX0PBMPAMKK@Z	00c770b0	00c6a080
@@ -17649,7 +17646,6 @@ __imp__SHGetFolderPathW@20	01440280	0041a430
 ?__linear_insert@@YIXPAUCSortElement@@0U1@UCSortLess@@@Z	00b85870	00b85b30
 ?__linear_insert@@YIXPAUPairCharStringScriptInfo@@0U1@UCCompareScriptName@@@Z	00cb6ce0	00cb6ea0
 ?__linear_insert@@YIXPAUSKeyedNameRecord@@0U1@UCKeyPairCompareLess@@@Z	00cbb920	00cbbe50
-?GetParticleClock_00aea9f0@@YAJXZ	00aea9f0	00b10220
 ?GetParticleClock@@YAMXZ	00aeaa00	00b0a750
 ?g_cosTable@@3QBMB	013cd550	00b0a750
 ?g_cosTableScale@@3MB	0122f59c	00b0a750
@@ -22913,7 +22909,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?TransferBinaryOut@?$CPersistTraits@VCPhysicalPrimitiveInit@@@@QAEXPAVCDataOutputStream@@PBVCPhysicalPrimitiveInit@@@Z	0067f7d0	00458833
 ??$Transfer@VCFloatRange@@@CPersistContext@@QAEXAAVCFloatRange@@@Z	00458f2b	00458d6f
 ?TransferBinaryIn@CFloatRangeReader_00458f89@@QAEXPAVCDataInputStream@@PAVCFloatRange@@@Z	00458f89	00458f2b
-?ReadColour@CDataInputStream@@QAEAAVCRGBColour@@AAV2@@Z	009945e0	004595a3
 ?WriteColour@CDataOutputStream@@QAEXABVCRGBColour@@@Z	00993f30	004595a3
 ??$_Construct@VCRGBColour@@V1@@std@@YIXPAVCRGBColour@@ABV1@@Z	0045bb8f	0045baaa
 ?_M_allocate_and_copy@?$vector@VCRGBColour@@@std@@QAEPAVCRGBColour@@IPBV3@0@Z	0045bbc5	0045baaa
@@ -27645,14 +27640,11 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?Helper_af8780@@YIXPAVCInputProcessManager@@@Z	00af8780	00af89a0
 ?SubCleanup@@YIXPAVCInputProcessManager@@@Z	00af8860	00af89f0
 ??0SMeshCreateInfo@@QAE@JABVCMatrix3x4@@KK@Z	00afead0	00aff0a0
-?GetSystemTransform@CParticleSystem@@QBEPBVCMatrix3x4@@XZ	00af3d80	00b05840
-?GetUnscaledWorldTransform@CParticleSystem@@QAEXPAVCMatrix3x4@@@Z	00b05840	00b05980
 ?DatabaseCopy@CPSCSplineBase@NParticleEngine@@QAEXABVCPSCBase@2@@Z	00b22530	00b05ea0
 ?GetEmitterCost@CParticleEmitter@NParticleEngine@@QAEXAAVCParticleSystemCost@2@@Z	00aed020	00b0c7b0
 ?PreparePrimitives@CParticleEmitter@NParticleEngine@@QAEXMPBVCEnginePrimitivePrepareInfo@@@Z	00aee560	00b0c910
 ?AddToBounds@C3DBoundingSphere@@QAEXABVC3DVector@@M@Z	00addd80	00b18af0
 ??$__copy@PAVC3DVector@@PAV1@H@std@@YIPAVC3DVector@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z	0074ca20	00b1a640
-?InterpolateTo@CPSCSplineBase@NParticleEngine@@QAEXPBVCPSCBase@2@M@Z	00b22310	00b1af50
 ?DatabaseCopy@CPSCSplineBase@NParticleEngine@@QAEXPBVCPSCBase@2@@Z	00b22530	00b1afc0
 ?WriteBinary@CPSCSplineBase@NParticleEngine@@QAEXPAVCDataOutputStream@@@Z	00b21630	00b1aff0
 ?GetPointAtPos@CPSCSplineBase@NParticleEngine@@QAEXAAUCParticleUpdateParameters@@PAVC3DVector@@MM@Z	00b21940	00b1b030
@@ -27673,8 +27665,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?Reset@?$CCountedPointer@VCSplinePosParamData@CPSCSplineBase@NParticleEngine@@@@QAEXPAVCSplinePosParamData@CPSCSplineBase@NParticleEngine@@@Z	00b23170	00b22530
 ?Reset@?$CCountedPointer@VCSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@@@QAEXPAVCSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@@Z	00b23240	00b22530
 ??0?$CArray@VC3DVector@@@@QAE@K@Z	007c2ab0	00b22b40
-?ReadBinary@CSplinePosParamData@CPSCSplineBase@NParticleEngine@@QAEXPAVCDataInputStream@@@Z	00b21c90	00b22b40
-?ReadBinary@CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAEXPAVCDataInputStream@@@Z	00b22100	00b22b40
 ?AddExclusiveObserver@CEngineCamera@@QAEXPAVCCamera@@@Z	00b2fbf0	00b23b50
 ?RealSet@CGlobalTarget@@QAEXPAVCEnginePrimitiveHandle@@PAVCEnginePrimitive@@KH@Z	00b324a0	00b23bc0
 ?CalculateMatrix@C3DBoundingBox@@QBEXPAVCMatrix3x4@@@Z	00adebc0	00b242a0
@@ -28208,7 +28198,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??0CAliveScriptThing@@QAE@ABVCScriptThing@@@Z	004abe90	00eed6b0
 ?FollowPreCalculatedRoute@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@W4EScriptEntityMoveType@@_N2@Z	007e7310	00ef3aa0
 ?MoveToThing@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@MW4EScriptEntityMoveType@@_N222@Z	007e7300	00ef3aa0
-?GFUIntToCharString@@YI?AVCCharString@@K@Z	0099f8b0	00ef5200
 ??0CPredicate_And@NScript@@QAE@ABUCIsThing@1@ABVCIsThingAlive@1@@Z	00ef7b50	00ef7800
 ??0CActiveEntityScriptBase@HenchmenBinding@@QAE@PAVCScriptThing@@III@Z	00ce1110	00efa210
 ??0CActiveEntityScriptBase@EntityScriptBinding_00efad80@@QAE@PAVCScriptThing@@III@Z	00ce1110	00efad80
@@ -36159,3 +36148,10 @@ _GVertexShaderConstantLayoutEmpty	013ca8a8	009da9f0
 ?IsAreaBlockedByLines@CNavQuadTree@@ABE_NABVC2DBoxF@@ABV?$vector@PBV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@V?$allocator@PBV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@2@@std@@@Z	00a76f30	00a78e20
 ?_M_insert_overflow@?$vector@PBV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@V?$allocator@PBV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@2@@std@@IAEXPAPBV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@2@ABQBV32@ABU__true_type@2@I_N@Z	00a81590	00a78e20
 ?GetNodeAt@CNavQuadTree@@QBEPBVCANavQuadTreeNode@@ABVC2DVector@@J@Z	00a770b0	00a14f70
+?InterpolateTo@CPSCSplineBase@NParticleEngine@@UAEXABVCPSCBase@2@M@Z	00b22310	00b062a0
+?ReadBinary@CPSCSplineBase@NParticleEngine@@UAEXAAVCDataInputStream@@@Z	00b22b40	00b068f0
+?GetTickRate@NParticleEngine@@YIJXZ	00aea9f0	00b1db00
+?ReadBinary@CSplinePosParamData@CPSCSplineBase@NParticleEngine@@QAEXAAVCDataInputStream@@@Z	00b21c90	00b22b40
+?ReadBinary@CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAEXAAVCDataInputStream@@@Z	00b22100	00b22b40
+?GetUnscaledWorldTransform@CParticleSystem@NParticleEngine@@QBEXAAVCMatrix3x4@@@Z	00b05840	00b05980
+?GFUIntToCharString@@YI?AVCCharString@@K@Z	0099f8b0	00ef5200

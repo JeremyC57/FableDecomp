@@ -1,4 +1,7 @@
-// NParticleEngine::CPSCAttractor::ReadBinary(CDataInputStream*) -- read the attractor settings and its user points back (the mirror of WriteBinary 0x00B17F70; the position-param name word is skipped)
+// NParticleEngine::CPSCAttractor::ReadBinary(CDataInputStream& in) -- vtable slot 15: read the attractor settings and its user points back (the mirror of WriteBinary 0x00B17F70; the position-param name word is skipped)
+// Leaf: ?ReadBinary@CPSCAttractor@NParticleEngine@@UAEXAAVCDataInputStream@@@Z
+// Name: FableWin.pdb / Ego_r.pdb ?ReadBinary@CPSCAttractor@NParticleEngine@@UAEXAAVCDataInputStream@@@Z; slot 15 of the CPSCAttractor vtable
+//   0x012A04AC (rtti-vtables.tsv), the reference parameter of every CPSC ReadBinary.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B18390, 785 bytes (vtable slot 15 of CPSCAttractor, 0x012A04AC).
 // Callees: CDataInputStream::ReadWithSrcChunkOverflow 0x00993CA0 (every read is the inlined CDataInputStream::Read,
 //   as in the landed CPSCOrbit::ReadBinary 0x00B16F60), CArray<C3DVector>::resize(n, const C3DVector&) 0x0075C040
@@ -47,8 +50,14 @@ struct CVector3D {                                      // STLport vector<C3DVec
     void resize(unsigned int newSize, const C3DVector& value = C3DVector());   // 0x0075C040
 };
 namespace NParticleEngine {
-class CPSCAttractor { public:
-    unsigned char _base[0xc];                           // CPSCBase
+class CParticleSystem;
+class CPSCBase { public:                                // vptr +0 (slot 15 = ReadBinary; the other slots are not modelled)
+    virtual void ReadBinary(CDataInputStream& in) = 0;
+    CParticleSystem* ParticleSystem;                    // +0x04
+    bool UpdateStarted : 1;                             // +0x08
+    bool Initialised : 1;
+};
+class CPSCAttractor : public CPSCBase { public:
     bool AttractorEnabled : 1;                          // +0x0c bit 0
     bool AttractorUseParamPosition : 1;                 // +0x0c bit 1
     long AttractorInfluenceFallOff;                     // +0x10
@@ -57,20 +66,20 @@ class CPSCAttractor { public:
     float AttractorInfluenceRadius;                     // +0x1c
     float AttractorInfluenceForce;                      // +0x20
     CVector3D AttractorUserPointsArray;                 // +0x24
-    void ReadBinary(CDataInputStream* in);
+    virtual void ReadBinary(CDataInputStream& in);
 };
-void CPSCAttractor::ReadBinary(CDataInputStream* in)
+void CPSCAttractor::ReadBinary(CDataInputStream& in)
 {
-    AttractorEnabled = in->ReadBool();
-    AttractorUseParamPosition = in->ReadBool();
-    AttractorInfluenceFallOff = in->ReadLong();
-    AttractorPositionParam = in->ReadULong();
-    in->ReadULong();
-    AttractorInfluenceRadius = in->ReadFloat();
-    AttractorInfluenceForce = in->ReadFloat();
-    unsigned long count = in->ReadULong();
+    AttractorEnabled = in.ReadBool();
+    AttractorUseParamPosition = in.ReadBool();
+    AttractorInfluenceFallOff = in.ReadLong();
+    AttractorPositionParam = in.ReadULong();
+    in.ReadULong();
+    AttractorInfluenceRadius = in.ReadFloat();
+    AttractorInfluenceForce = in.ReadFloat();
+    unsigned long count = in.ReadULong();
     AttractorUserPointsArray.resize(count);
     for (unsigned long i = 0; i < count; ++i)
-        AttractorUserPointsArray[i] = in->Read3DVector();
+        AttractorUserPointsArray[i] = in.Read3DVector();
 }
 }

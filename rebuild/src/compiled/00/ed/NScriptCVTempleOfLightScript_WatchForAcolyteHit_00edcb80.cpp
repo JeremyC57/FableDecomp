@@ -1,5 +1,5 @@
 // CV_TempleOfLightScript::WatchForAcolyteHit(CScriptThing acolyte) -- with an is-alive predicate on the acolyte, every frame he is hit by the hero flag the attack and, the first time while the altar lives, have the altar speak TEXT_QST_064_WEAPON_02 to the hero
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
+// Inline-split: exits wrapped individually; retail's construct is unproven
 // Leaf: ?WatchForAcolyteHit@CV_TempleOfLightScript@NScript@@QAEXVCScriptThing@@@Z
 // Label: (catalog says CV_ChapelOfEvilScript, a
 //   propagated label: the body writes +0x5b/+0x5c = Ego_r CV_TempleOfLightScript AttackedByHero / AcolyteAttackMessageComplete
@@ -10,7 +10,10 @@
 //   0x00BFE9BC, ~CScriptThing 0x004AA840 (out of line at the in-branch exits); Game slots 7 NewScriptFrame, 70 GetHero,
 //   72 GetThingWithScriptName, 364 AddNewConversation, 365 AddPersonToConversation, 366 AddLineToConversation; the thing's
 //   slots 21 MsgIsHitBy, 43 MsgIsHitByAnyAggressiveSpecialAbilityFrom, 75 IsAlive behind the null-safe wrappers.
-// Shape: the 0x00ED7320 WatchForDeathDuringSwordPull model (b18 by-value thing, inline_depth(0) in-branch exits).
+// Shape: the 0x00ED7320 WatchForDeathDuringSwordPull model (b18 by-value thing). Shape (pragma3, 2026-11-03): no pragma, plain inline ~CScriptThing. The polling loop is `for (;;)` whose first statement is the
+//   terminate check written as the statement macro `do { if (IsActiveThreadTerminating()) return; } while (0);` (the other checks
+//   plain). c2's static frequency estimate counts the do-while(0) as an inner loop, so the loop-head exit is hot and expands the
+//   destructor while the other in-loop exits stay cold and call 0x004AA840. Only the loop-head check is wrapped.
 // Layout (retail = Ego_r.pdb - 0x14): Game +0x40, AttackedByHero +0x5b, AcolyteAttackMessageComplete +0x5c.
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
@@ -28,7 +31,7 @@ void operator delete(void* p);                              // 0x00BFE9BC (MSVCR
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline CScriptThing::~CScriptThing() {}
+inline CScriptThing::~CScriptThing() {}
 inline bool CScriptThing::IsAlive() const { if (!PImp.Data) return false; return PImp.Data->IsAlive(); }
 inline bool CScriptThing::MsgIsKilledBy(const CCharString& killer) const { if (!PImp.Data) return false; return PImp.Data->MsgIsKilledBy(killer); }
 inline bool CScriptThing::MsgIsHitBy(const CCharString& attacker) const { if (!PImp.Data) return false; return PImp.Data->MsgIsHitBy(attacker); }
@@ -79,18 +82,15 @@ void NScript::CV_TempleOfLightScript::WatchForAcolyteHit(CScriptThing acolyte)
         return;
     CScriptThing altar = Game->GetThingWithScriptName("M_SoundAltar");
     AcolyteAttackMessageComplete = false;
-    while (!IsActiveThreadTerminating()) {
+    for (;;) {
+        do { if (IsActiveThreadTerminating()) return; } while (0);
         if (acolyte.MsgIsHitBy("SCRIPT_NAME_HERO") || acolyte.MsgIsHitByAnyAggressiveSpecialAbilityFrom("SCRIPT_NAME_HERO")) {
-#pragma inline_depth(0)
             if (IsActiveThreadTerminating())
                 return;
-#pragma inline_depth()
             AttackedByHero = true;
             if (!AcolyteAttackMessageComplete && altar.IsAlive()) {
-#pragma inline_depth(0)
                 if (IsActiveThreadTerminating())
                     return;
-#pragma inline_depth()
                 long conversation = Game->AddNewConversation(altar, false, false);
                 Game->AddPersonToConversation(conversation, Game->GetHero());
                 Game->AddLineToConversation(conversation, "TEXT_QST_064_WEAPON_02", false, altar, Game->GetHero());

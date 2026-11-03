@@ -1,5 +1,5 @@
 // CV_ChapelOfEvilScript::WatchForAcolyteHit(CScriptThing acolyte) -- with an is-alive predicate on the acolyte, flag AttackedByHero whenever the hero hits him and, the first time, have the sound altar deliver the TEXT_QST_019_WEAPON_02 warning
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
+// Inline-split: exits wrapped individually; retail's construct is unproven
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E6AF20, length 725 bytes, `ret 0Ch` (the by-value CScriptThing).
 // Callees: CScriptThing(const CScriptThing&) 0x004ABE90 (the predicate's copy), CScriptBase::SetPredicate 0x00CB7920,
 //   ~CIsThingAlive 0x00E241B0, CScriptBase::IsActiveThreadTerminating 0x00CB7940, CCharString(const char*, long) 0x0099EBF0 /
@@ -11,8 +11,10 @@
 // Layout: Ego_r.pdb CV_ChapelOfEvilScript minus 0x14 (retail CScriptBase): AttackedByHero +0x5a,
 //   AcolyteAttackMessageComplete +0x5b. CScriptThing and its wrappers as the landed
 //   CV_TalentlessBardScript::WatchForAttack 0x00ED9790.
-// Shape: generated script code; ~CScriptThing is __forceinline and the two in-loop terminate returns sit under
-//   `#pragma inline_depth(0)` (out-of-line destructor), the prologue return and the loop exit expand it.
+// Shape: generated script code. Shape (pragma3, 2026-11-03): no pragma, plain inline ~CScriptThing. The polling loop is `for (;;)` whose first statement is the
+//   terminate check written as the statement macro `do { if (IsActiveThreadTerminating()) return; } while (0);` (the other checks
+//   plain). c2's static frequency estimate counts the do-while(0) as an inner loop, so the loop-head exit is hot and expands the
+//   destructor while the other in-loop exits stay cold and call 0x004AA840. Only the loop-head check is wrapped.
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
@@ -25,7 +27,7 @@ void operator delete(void* p);                              // 0x00BFE9BC (MSVCR
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline CScriptThing::~CScriptThing() {}
+inline CScriptThing::~CScriptThing() {}
 inline bool CScriptThing::IsAlive() const { if (!PImp.Data) return false; return PImp.Data->IsAlive(); }
 inline bool CScriptThing::MsgIsKilledBy(const CCharString& killer) const { if (!PImp.Data) return false; return PImp.Data->MsgIsKilledBy(killer); }
 inline bool CScriptThing::MsgIsHitBy(const CCharString& attacker) const { if (!PImp.Data) return false; return PImp.Data->MsgIsHitBy(attacker); }
@@ -120,19 +122,16 @@ void CV_ChapelOfEvilScript::WatchForAcolyteHit(CScriptThing acolyte)
         return;
     CScriptThing altar = Game->GetThingWithScriptName("M_SoundAltar");
     AcolyteAttackMessageComplete = false;
-    while (!IsActiveThreadTerminating()) {
+    for (;;) {
+        do { if (IsActiveThreadTerminating()) return; } while (0);
         bool hit = acolyte.MsgIsHitBy("SCRIPT_NAME_HERO") || acolyte.MsgIsHitByAnyAggressiveSpecialAbilityFrom("SCRIPT_NAME_HERO");
         if (hit) {
-#pragma inline_depth(0)
             if (IsActiveThreadTerminating())
                 return;
-#pragma inline_depth()
             AttackedByHero = true;
             if (!AcolyteAttackMessageComplete && altar.IsAlive()) {
-#pragma inline_depth(0)
                 if (IsActiveThreadTerminating())
                     return;
-#pragma inline_depth()
                 long conversation = Game->AddNewConversation(altar, false, false);
                 Game->AddPersonToConversation(conversation, Game->GetHero());
                 Game->AddLineToConversation(conversation, "TEXT_QST_019_WEAPON_02", false, altar, Game->GetHero());

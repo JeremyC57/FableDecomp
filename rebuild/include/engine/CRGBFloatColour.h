@@ -14,6 +14,9 @@
 #endif
 #include "engine/C4DVector.h"
 #include "engine/CRGBColour.h"
+#ifdef FABLE_RETAIL_CRGBFLOATCOLOUR
+#include "engine/GFFloatToLongNear.h"
+#endif
 class CRGBFloatColour {
 public:
     CRGBFloatColour() { }
@@ -34,6 +37,30 @@ public:
     {
         return CRGBColour((unsigned char)(R * 255.0f), (unsigned char)(G * 255.0f), (unsigned char)(B * 255.0f),
                           (unsigned char)(A * 255.0f));
+    }
+    // Chunk 737 (CPSCLight::PreparePrimitives 0x00B19C60, CPSCSingleSprite::PreparePrimitives 0x00B087C0): FableWin.pdb
+    // ??HCRGBFloatColour@@QBE?AV0@ABV0@@Z / ??GCRGBFloatColour@@QBE?AV0@ABV0@@Z / ??DCRGBFloatColour@@QBE?AV0@M@Z (no retail copy),
+    // ?Interpolate@CRGBFloatColour@@QBE?AV1@ABV1@M@Z (out-of-line copy 0x00B09B90, landed; expanded in both rows) and
+    // ?GetRGBColourClamped@CRGBFloatColour@@QBE?AVCRGBColour@@XZ (out-of-line copy 0x00B09AA0, landed; expanded in both rows), with
+    // the landed bodies. __forceinline is the form those rows need (owner 2026-11-01: an out-of-line copy exists, so plain inline
+    // would be preferred if the bytes held): retail calls neither 0x00B09B90 nor 0x00B09AA0 from 0x00B19C60 / 0x00B087C0 (it expands
+    // them: the four `fistp dword` roundings from 0x00B1A4DA), while with plain inline VC7.1 calls Interpolate twice and
+    // GetRGBColourClamped once out of line in each row (landing 2026-11-03h probe).
+    CRGBFloatColour operator+(const CRGBFloatColour& c) const { return CRGBFloatColour(R + c.R, G + c.G, B + c.B, A + c.A); }
+    CRGBFloatColour operator-(const CRGBFloatColour& c) const { return CRGBFloatColour(R - c.R, G - c.G, B - c.B, A - c.A); }
+    CRGBFloatColour operator*(float f) const { return CRGBFloatColour(R * f, G * f, B * f, A * f); }
+    __forceinline CRGBFloatColour Interpolate(const CRGBFloatColour& colour, float t) const { return *this * (1.0f - t) + colour * t; }
+    __forceinline CRGBColour GetRGBColourClamped() const
+    {
+        long r = GFFloatToLongNear(R * 255.0f);
+        long g = GFFloatToLongNear(G * 255.0f);
+        long b = GFFloatToLongNear(B * 255.0f);
+        long a = GFFloatToLongNear(A * 255.0f);
+        if (r < 0) r = 0; else if (r > 255) r = 255;
+        if (g < 0) g = 0; else if (g > 255) g = 255;
+        if (b < 0) b = 0; else if (b > 255) b = 255;
+        if (a < 0) a = 0; else if (a > 255) a = 255;
+        return CRGBColour((unsigned char)r, (unsigned char)g, (unsigned char)b, (unsigned char)a);
     }
 #endif
     float R;                                                             // +0x00

@@ -18,7 +18,7 @@ static int g_ok = 1;
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B1AF50, 111 bytes (+1 int3 padding).
 // Name: FableWin.pdb ?InterpolateTo@CPSCSpline@NParticleEngine@@UAEXABVCPSCBase@2@M@Z; slot 14 of the vtable 0x012A0934
 // (rtti-vtables.tsv).
-// Callees: CPSCSplineBase::InterpolateTo(const CPSCBase*, float) @ 0x00B22310 (landed; non-virtual, pointer argument).
+// Callees: CPSCSplineBase::InterpolateTo(const CPSCBase&, float) @ 0x00B22310 (landed; FableWin.pdb ?InterpolateTo@CPSCSplineBase@NParticleEngine@@UAEXABVCPSCBase@2@M@Z, slot 14 of the CPSCSplineBase vtable 0x012A0B14; called non-virtually).
 // Constants: 1.0f @ 0x0122DED8 and 0.5f @ 0x0122F59C (compiler literals).
 // Layout: as the landed CPSCSpline::WriteBinary 0x00B1AFF0: SplineBounce +0x39, ScaleSplineSpeed +0x3A,
 // SplineAnimSpeed +0x3C.
@@ -38,7 +38,7 @@ class CPSCBase { public:
 
 class CPSCSplineBase : public CPSCBase { public:
     unsigned char _body[0x34 - 0x0c];       // +0x0c SplineAnimSpeed, Spline, the two counted data pointers
-    void InterpolateTo(const CPSCBase* other, float t);   // 0x00B22310
+    virtual void InterpolateTo(const CPSCBase& other, float t);   // 0x00B22310
 };
 
 class CPSCSpline : public CPSCSplineBase { public:        // vtable 0x012A0934
@@ -53,7 +53,7 @@ class CPSCSpline : public CPSCSplineBase { public:        // vtable 0x012A0934
 void CPSCSpline::InterpolateTo(const CPSCBase& other, float t)
 {
     const CPSCSpline& source = static_cast<const CPSCSpline&>(other);
-    CPSCSplineBase::InterpolateTo(&other, t);
+    CPSCSplineBase::InterpolateTo(other, t);
     SplineAnimSpeed = (1.0f - t) * SplineAnimSpeed + t * source.SplineAnimSpeed;
     SplineBounce = t > 0.5f ? source.SplineBounce : SplineBounce;
     ScaleSplineSpeed = t > 0.5f ? source.ScaleSplineSpeed : ScaleSplineSpeed;
@@ -68,7 +68,7 @@ void NParticleEngine::CPSCBase::v00() {}
 static int g_baseCalls = 0;
 static const NParticleEngine::CPSCBase* g_baseOther = 0;
 static float g_baseT = 0.0f;
-void NParticleEngine::CPSCSplineBase::InterpolateTo(const CPSCBase* other, float t) { ++g_baseCalls; g_baseOther = other; g_baseT = t; }
+void NParticleEngine::CPSCSplineBase::InterpolateTo(const CPSCBase& other, float t) { ++g_baseCalls; g_baseOther = &other; g_baseT = t; }
 
 static void run()
 {

@@ -43,7 +43,7 @@ public:
     CDecalIterator DeleteDecal(CDecalIterator& it)
     { ++deleted; _List_node<CDecal*>* n = it._M_node; n->_M_prev->_M_next = n->_M_next; n->_M_next->_M_prev = n->_M_prev; return CDecalIterator(n->_M_next); }
 };
-long GetUpdateRate_00aea9f0() { return 30; }
+namespace NParticleEngine { long __fastcall GetTickRate() { return 30; } }
 class CPSCDecalRenderer {
 public:
     void*         __vftable;                       // +0x00
@@ -61,7 +61,7 @@ public:
 
 void CPSCDecalRenderer::Update(CParticleSystem* system, float timeDelta, bool& anyAlive)
 {
-    long lifeFrames = (long)(GetUpdateRate_00aea9f0() * DecalLifeSecs);
+    long lifeFrames = (long)(NParticleEngine::GetTickRate() * DecalLifeSecs);
     for (CDecalIterator it(system->Decals->_M_next); it._M_node != system->Decals; ) {
         CDecal* decal = *it;
         if (decal->MaxLife < 0) {

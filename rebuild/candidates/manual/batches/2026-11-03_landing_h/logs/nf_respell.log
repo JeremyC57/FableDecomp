@@ -1,0 +1,72 @@
+addr       parity           behav  name
+00aea9f0   RELOCATION_MATCH PASS   NParticleEngine::GetParticleUpdateRate
+00b1db00   WARN SHARED_HEADER_AVAILABLE CDecal
+00b1db00   WARN SHARED_HEADER_AVAILABLE CParticleSystem
+00b1db00   WARN RELOC_NAME: ?GetTickRate@NParticleEngine@@YIJXZ -> 00aea9f0 labelled 'NParticleEngine::GetParticleUpdateRate'
+00b1db00   RELOCATION_MATCH PASS   NParticleEngine::CPSCDecalRenderer::Update
+00b18af0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b18af0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00b18af0   WARN SHARED_HEADER_AVAILABLE C3DBoundingSphere
+00b18af0   WARN SHARED_HEADER_AVAILABLE CParticleSystem
+00b18af0   WARN RELOC_NAME: ?GetTickRate@NParticleEngine@@YIJXZ -> 00aea9f0 labelled 'NParticleEngine::GetParticleUpdateRate'
+00b18af0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00b18af0   RELOCATION_MATCH PASS   NParticleEngine::CPSCLight::AddToBoundingSphere
+00b10220   WARN RELOC_NAME: ?GetTickRate@NParticleEngine@@YIJXZ -> 00aea9f0 labelled 'NParticleEngine::GetParticleUpdateRate'
+00b10220   RELOCATION_MATCH PASS   CPSCEmitterGeneric::CalcIsFinishedGeneratingParticles
+00b22310   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b22310   WARN SHARED_HEADER_AVAILABLE CArray
+00b22310   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00b22310   WARN RELOC_NAME: ??0?$CArray@VC3DVector@@@@QAE@ABV0@@Z -> 006f0810 labelled 'std::vector<C3DVector>::vector'
+00b22310   WARN RELOC_NAME: ??$GFInterpolateArray@VC3DVector@@@@YI?AV?$CArray@VC3DVector@@@@ABV0@0MABVC3DVector@@@Z -> 00b15bd0 labelled 'InterpolateAnimationSequence'
+00b22310   WARN RELOC_NAME: ??4CSplineRandomOffsetData@CPSCSplineBase@NParticleEngine@@QAEAAV012@ABV012@@Z -> 00b20b60 labelled 'CSplineData_00b20b60::CopyFrom'
+00b22310   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::InterpolateTo
+00b1af50   RELOCATION_MATCH TCC_FAIL NParticleEngine::CPSCSpline::InterpolateTo
+00b22b40   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b22b40   WARN SHARED_HEADER_AVAILABLE CArray
+00b22b40   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00b22b40   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00b22b40   WARN RELOC_NAME: ??0?$CArray@VC3DVector@@@@QAE@K@Z -> 007c2ab0 labelled 'CSTLportVector<C3DVector>::CSTLportVector'
+00b22b40   RELOCATION_MATCH PASS   NParticleEngine::CPSCSplineBase::ReadBinary
+00b1b1b0   RELOCATION_MATCH PASS   NParticleEngine::CPSCSpline::vfunc_15
+009945e0   WARN SHARED_HEADER_AVAILABLE CRGBColour
+009945e0   RELOCATION_MATCH PASS   CDataInputStream::ReadColour
+004595a3   WARN SHARED_HEADER_AVAILABLE CRGBColour
+004595a3   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+004595a3   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004595a3   WARN SHARED_HEADER_AVAILABLE CPersistContext
+004595a3   RELOCATION_MATCH PASS   CPersistContext::Transfer<CRGBColour>
+00642000   WARN SHARED_HEADER_AVAILABLE C3DVector
+00642000   WARN SHARED_HEADER_AVAILABLE C2DVector
+00642000   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00642000   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveThemeChannelDesc
+00642000   MATCH            PASS   CEnginePrimitiveLight::CEnginePrimitiveLight
+00b18390   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b18390   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00b18390   RELOCATION_MATCH PASS   NParticleEngine::CPSCAttractor::ReadBinary
+00b05b80   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b05b80   WARN SHARED_HEADER_AVAILABLE CParticleSystem
+00b05b80   RELOCATION_MATCH PASS   NParticleEngine::CParticleSystem::ScaleParticleDimensions
+00b05840   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00b05840   WARN SHARED_HEADER_AVAILABLE CParticleSystem
+00b05840   WARN RELOC_NAME: ?GetSystemTransform@CParticleSystem@NParticleEngine@@QBEPBVCMatrix3x4@@XZ -> 00af3d80 labelled 'CVertexBufferWin32::DoSizeof'
+00b05840   RELOCATION_MATCH PASS   CParticleSystem::GetUnscaledWorldTransform
+00b05980   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b05980   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00b05980   WARN SHARED_HEADER_AVAILABLE CParticleSystem
+00b05980   RELOCATION_MATCH PASS   CParticleSystem::GetParticleWorldTransform
+
+WINS: 14
+  00aea9f0 RELOCATION_MATCH NParticleEngine::?GetTickRate@NParticleEngine@@YIJXZ
+  00b1db00 RELOCATION_MATCH NParticleEngine::CPSCDecalRenderer::?Update@CPSCDecalRenderer
+  00b18af0 RELOCATION_MATCH NParticleEngine::CPSCLight::AddToBoundingSphere
+  00b10220 RELOCATION_MATCH CPSCEmitterGeneric::CalcIsFinishedGeneratingParticles
+  00b22310 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::?InterpolateTo@CPSCSplineBase@NParticleEngine@@UAEXABVCPSCBase@2@M@Z
+  00b22b40 RELOCATION_MATCH NParticleEngine::CPSCSplineBase::?ReadBinary@CPSCSplineBase@NParticleEngine@@UAEXAAVCDataInputStream@@@Z
+  00b1b1b0 RELOCATION_MATCH NParticleEngine::CPSCSpline::?ReadBinary@CPSCSpline@NParticleEngine@@UAEXAAVCDataInputStream@@@Z
+  009945e0 RELOCATION_MATCH CDataInputStream::?ReadColour@CDataInputStream@@QAE?AVCRGBColour@@XZ
+  004595a3 RELOCATION_MATCH CPersistContext::??$Transfer@VCRGBColour@@@CPersistContext@@QAEXAAVCRGBColour@@@Z
+  00642000 MATCH CEnginePrimitiveLight::??0CEnginePrimitiveLight
+  00b18390 RELOCATION_MATCH NParticleEngine::CPSCAttractor::?ReadBinary@CPSCAttractor@NParticleEngine@@UAEXAAVCDataInputStream@@@Z
+  00b05b80 RELOCATION_MATCH NParticleEngine::CParticleSystem::?ScaleParticleDimensions@CParticleSystem@NParticleEngine@@QBEXAAK@Z
+  00b05840 RELOCATION_MATCH CParticleSystem::?GetUnscaledWorldTransform@CParticleSystem@NParticleEngine@@QBEXAAVCMatrix3x4@@@Z
+  00b05980 RELOCATION_MATCH CParticleSystem::?GetParticleWorldTransform@CParticleSystem@NParticleEngine@@QBEXAAVCMatrix3x4@@@Z

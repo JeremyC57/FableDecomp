@@ -1,6 +1,10 @@
 // CV_BeardyBaldyScript::WatchForBarberLadyDeath() -- find the barber nearest the hero, wait until she is alive, then until she is killed (by anyone), and record BarberLadyKilled
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
-// Levers: ~CScriptThing __forceinline; IsAlive in if-form; depth 0 around the post-first-loop terminating return; killed block `if (!Term) { if (!Term) BarberLadyKilled = true; }` then one depth-0 `return;` (the merged out-of-line exit)
+// Inline-split: exits wrapped individually; retail's construct is unproven
+// Levers: plain inline ~CScriptThing; IsAlive in if-form; killed block `if (!Term) { if (!Term) BarberLadyKilled = true; }` then `return;`
+// Shape (pragma3, 2026-11-03): no pragma, plain inline ~CScriptThing. The polling loop is `for (;;)` whose first statement is the
+//   terminate check written as the statement macro `do { if (IsActiveThreadTerminating()) return; } while (0);` (the other checks
+//   plain). c2's static frequency estimate counts the do-while(0) as an inner loop, so the loop-head exit is hot and expands the
+//   destructor while the other in-loop exits stay cold and call 0x004AA840. Only the loop-head check is wrapped.
 // Leaf: WatchForBarberLadyDeath
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E504C0, 400 bytes.
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~ @ 0x0099EAE0, CScriptBase::IsActiveThreadTerminating
@@ -27,7 +31,7 @@ void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline CScriptThing::~CScriptThing() {}
+inline CScriptThing::~CScriptThing() {}
 inline bool CScriptThing::MsgIsKilledBy(const CCharString& killer) const { if (!PImp.Data) return false; return PImp.Data->MsgIsKilledBy(killer); }
 inline bool CScriptThing::IsAlive() const { if (!PImp.Data) return false; return PImp.Data->IsAlive(); }
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
@@ -62,19 +66,16 @@ void NScript::CV_BeardyBaldyScript::WatchForBarberLadyDeath()
         if (IsActiveThreadTerminating())
             return;
     }
-#pragma inline_depth(0)
     if (IsActiveThreadTerminating())
         return;
-#pragma inline_depth()
-    while (!IsActiveThreadTerminating()) {
+    for (;;) {
+        do { if (IsActiveThreadTerminating()) return; } while (0);
         if (barber.MsgIsKilledBy("")) {
             if (!IsActiveThreadTerminating()) {
                 if (!IsActiveThreadTerminating())
                     BarberLadyKilled = true;
             }
-#pragma inline_depth(0)
             return;
-#pragma inline_depth()
         }
         GSI->NewScriptFrame();
     }

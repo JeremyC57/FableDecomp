@@ -1,0 +1,22 @@
+{
+  "catalog_rows": 54102,
+  "known_functions": 57609,
+  "original_functions": 49564,
+  "landed_known": 54102,
+  "landed_original": 46567,
+  "landed_genuine_known": 54089,
+  "landed_genuine_original": 46554,
+  "genuine": 53458,
+  "retail_asm": 190,
+  "toolchain_library": 441,
+  "asm_bake": 13,
+  "library_source": 8,
+  "missing_source": 0,
+  "matched_bytes": 5733529,
+  "matched_bytes_genuine": 5729660,
+  "unlanded_bytes_estimate": 4498396,
+  "unlanded_gap_cap": 65536,
+  "unlanded_gaps_capped": 1,
+  "text_bytes": 14858408
+}
+wrote rebuild/COVERAGE.md

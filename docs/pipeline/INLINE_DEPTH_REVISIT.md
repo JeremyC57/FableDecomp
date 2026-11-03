@@ -18,7 +18,7 @@ and one with the out-of-line copy 0x004ABE90 and dtor 0x004AA840. Retail had one
 
 ## How they are marked
 Line 2 of every such source is a marker comment, so the list stays correct through renames:
-- `// Revisit: inline-depth -- ...` (129 rows when marked; 90 after landing 2026-11-03d redid 39 pragma-free; 70 after landing 2026-11-03e redid 20 more)
+- `// Revisit: inline-depth -- ...` (129 rows when marked; 90 after landing 2026-11-03d redid 39 pragma-free; 70 after landing 2026-11-03e redid 20 more; 65 after landing 2026-11-03h redid 5 more)
 - `// Revisit: two-view-CScriptThing -- ...` (17 rows)
 
 List them at any time with `grep -rl '^// Revisit: inline-depth' rebuild/src` (or `two-view-CScriptThing`). The tables below are the snapshot taken
@@ -30,7 +30,7 @@ when the markers were added (rechecked with the markers in place: all 146 RELOCA
 - Five sources mention `inline_depth` only in comments (0x00A64910, 0x00DD1AF0, 0x00E1CFD0, 0x00E9BBC0, 0x00F34160). Migration wave 8 or a parked
   note left the word there. They carry no directive and are not marked.
 
-## inline-depth rows still marked (70 of the original 129)
+## inline-depth rows still marked (65 of the original 129)
 | Address | Function | Source |
 |---|---|---|
 | 0x005518E0 | `005518e0 NUISystem::CTable::ConstructHorizontalLine.` | `rebuild/src/compiled/00/55/NUISystemCTable_ConstructHorizontalLine_005518e0.cpp` |
@@ -53,7 +53,6 @@ when the markers were added (rechecked with the markers in place: all 146 RELOCA
 | 0x00D8F040 | `NScript::CQ_HobbeCaveScript::WatchForGrannysRegion()` | `rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScript_WatchForGrannysRegion_00d8f040.cpp` |
 | 0x00D91740 | `CQ_HobbeCaveScript::RescuedBandit()` | `rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScript_RescuedBandit_00d91740.cpp` |
 | 0x00D97170 | `Levers: for(;;) with the terminating return first; in-body `#pragma inline_depth(0)` around the hit-block term` | `rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScript_CheckJamesKilled_00d97170.cpp` |
-| 0x00D99A30 | `NScript::CQ_HobbeCaveScript::CheckIfGotTreasure()` | `rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScript_CheckIfGotTreasure_00d99a30.cpp` |
 | 0x00D9F270 | `NScript::CQ_MinionCampScript::CMC_Minion::Main()` | `rebuild/src/compiled/00/d9/NScriptCQMinionCampScriptCMCMinion_Main_00d9f270.cpp` |
 | 0x00D9F6C0 | `CFadeinSummoner::Main()` | `rebuild/src/compiled/00/d9/CFadeinSummoner_Main_00d9f6c0.cpp` |
 | 0x00DA4E30 | `CMagicBarrier::Main()` | `rebuild/src/compiled/00/da/CMagicBarrier_Main_00da4e30.cpp` |
@@ -79,16 +78,12 @@ when the markers were added (rechecked with the markers in place: all 146 RELOCA
 | 0x00E36390 | `Levers: ~CScriptThing __forceinline; for(;;) with the terminating return first, the dead branch first, then th` | `rebuild/src/compiled/00/e3/NScriptCVArcheryCompetitionScript_WatchForAttack_00e36390.cpp` |
 | 0x00E386E0 | `NScript::CV_AssassinAttacksScript::CChestHidingAssassin::Main() (0x00E386E0)` | `rebuild/src/compiled/00/e3/CMeleeThunder_Main_00e386e0.cpp` |
 | 0x00E39140 | `NScript::CV_AssassinAttacksScript::WatchForAssassinDead(CScriptThing assassin)` | `rebuild/src/compiled/00/e3/NScriptCVAssassinAttacksScript_WatchForAssassinDead_00e39140.cpp` |
-| 0x00E504C0 | `CV_BeardyBaldyScript::WatchForBarberLadyDeath()` | `rebuild/src/compiled/00/e5/NScriptCVBeardyBaldyScript_WatchForBarberLadyDeath_00e504c0.cpp` |
 | 0x00E53D90 | `Levers: ~CScriptThing __forceinline; for(;;) with the terminating return first, the dead branch (`if (term) re` | `rebuild/src/compiled/00/e5/NScriptCVBeardyBaldyScript_WatchForAttack_00e53d90.cpp` |
-| 0x00E6AF20 | `CV_ChapelOfEvilScript::WatchForAcolyteHit(CScriptThing acolyte)` | `rebuild/src/compiled/00/e6/CVChapelOfEvilScript_WatchForAcolyteHit_00e6af20.cpp` |
 | 0x00E7BD60 | `NScript::CV_FishermanScript::CFisherman::Init()` | `rebuild/src/compiled/00/e7/NScriptCVFishermanScriptCFisherman_Init_00e7bd60.cpp` |
 | 0x00E82950 | `CFisticuffsClubRing::Main()` | `rebuild/src/compiled/00/e8/CFisticuffsClubRing_Main_00e82950.cpp` |
 | 0x00E9DC80 | `CV_IntroductionToTrophiesScript::WatchForAttack(CScriptThing briar)` | `rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScript_WatchForAttack_00e9dc80.cpp` |
-| 0x00EDCB80 | `CV_TempleOfLightScript::WatchForAcolyteHit(CScriptThing acolyte)` | `rebuild/src/compiled/00/ed/NScriptCVTempleOfLightScript_WatchForAcolyteHit_00edcb80.cpp` |
 | 0x00EE6A40 | `Levers: vector dtor __forceinline with the finish pointer cached in a local (`last`, edi); for(;;) with the te` | `rebuild/src/compiled/00/ee/NScriptCVTourGuideScript_WatchForNoFollowers_00ee6a40.cpp` |
 | 0x00EF12F0 | `NScript::CPersonalScript_EmptyScript::CCrateDeathMarker::Main()` | `rebuild/src/compiled/00/ef/CCrateDeathMarker_Main_00ef12f0.cpp` |
-| 0x00EF5200 | `NScript::CPersonalScript_EmptyScript::CheckForHeroActions()` | `rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScript_CheckForHeroActions_00ef5200.cpp` |
 | 0x00EF7800 | `COpinionMan::Main()` | `rebuild/src/compiled/00/ef/COpinionMan_Main_00ef7800.cpp` |
 | 0x00EF87D0 | `NScript::CPersonalScript_EmptyScript::CUndeadFellow::Main()` | `rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCUndeadFellow_Main_00ef87d0.cpp` |
 | 0x00EFAB40 | `Cwelcome_guy::Main()` | `rebuild/src/compiled/00/ef/Cwelcomeguy_Main_00efab40.cpp` |
@@ -181,7 +176,21 @@ first: all 20 RELOCATION_MATCH + PASS, then `repair_remove.py` + `vland --land`)
 | 0x00EE7A20 | `CDemonDoorFace::Main()` | `rebuild/src/compiled/00/ee/CDemonDoorFace_Main_00ee7a20.cpp` |
 | 0x00EF6FE0 | `NScript::CPredicate_And<CPredicate_And<CPredicate_And<CIsThingAlive,CIsThingAlive>,CIsThingAlive>,CIsThingAliv` | `rebuild/src/compiled/00/ef/NScriptCPredicateAndCPredicateAndCPredicateAndCIsThingAliveCIsThingAliveCIsThing_CPredicateAnd_00ef6fe0.cpp` |
 
-Remaining list at any time: `grep -rl 'Revisit: inline-depth' rebuild/src/compiled` (70 after landing 2026-11-03e).
+Remaining list at any time: `grep -rl 'Revisit: inline-depth' rebuild/src/compiled` (65 after landing 2026-11-03h).
+
+## Redone pragma-free in landing 2026-11-03h (5 rows)
+`rebuild/candidates/manual/batches/2026-11-03_landing_h/` (sources `batches/2026-11-03_inline_revisit3/out/`, whose mirror predates landing round g;
+regraded on the then-current tree first: all 5 RELOCATION_MATCH + PASS, then `repair_remove.py` + `vland --land`, every test PASS). The
+`#pragma inline_depth` lines that the tests of 0x00E504C0 and 0x00E6AF20 copied were dropped. Count recounted from `rebuild/src/compiled`
+(line-start marker, not comment mentions): 65 marked rows, and they are exactly the 65 sources that still carry a `#pragma inline_depth` directive.
+
+| Address | Lever | Function | Source |
+|---|---|---|---|
+| 0x00D99A30 | loop-head macro + one do-while(0) on the check after the inner wait loop + line-2 note | `NScript::CQ_HobbeCaveScript::CheckIfGotTreasure()` | `rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScript_CheckIfGotTreasure_00d99a30.cpp` |
+| 0x00E504C0 | loop-head macro (lever "r") + line-2 `// Inline-split:` note | `CV_BeardyBaldyScript::WatchForBarberLadyDeath()` | `rebuild/src/compiled/00/e5/NScriptCVBeardyBaldyScript_WatchForBarberLadyDeath_00e504c0.cpp` |
+| 0x00E6AF20 | loop-head macro (lever "r") + line-2 `// Inline-split:` note | `CV_ChapelOfEvilScript::WatchForAcolyteHit(CScriptThing acolyte)` | `rebuild/src/compiled/00/e6/CVChapelOfEvilScript_WatchForAcolyteHit_00e6af20.cpp` |
+| 0x00EDCB80 | loop-head macro (lever "r") + line-2 `// Inline-split:` note | `CV_TempleOfLightScript::WatchForAcolyteHit(CScriptThing acolyte)` | `rebuild/src/compiled/00/ed/NScriptCVTempleOfLightScript_WatchForAcolyteHit_00edcb80.cpp` |
+| 0x00EF5200 | plain `return;` replaces the `goto terminating` device; marker dropped, no wrapping | `NScript::CPersonalScript_EmptyScript::CheckForHeroActions()` | `rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScript_CheckForHeroActions_00ef5200.cpp` |
 
 ## two-view-CScriptThing rows (17)
 | Address | Function | Source |
@@ -218,5 +227,5 @@ pragma. Levers, in order of preference:
 3. Wrapping only the exits retail inlines (3 rows: 0x00E2E520, 0x00E9CB20, 0x00ED9790; 10 more in landing 2026-11-03e). Retail's construct there is unproven;
    such rows carry a line-2 note saying so.
 Loop guards (`if (!v.empty())` around a `for`) move the frequency of the code after the loop (0x0074BC20 DrawDebugInfo's split).
-`/d2inlT<N>` and the other `-inl*` c2 knobs are diagnostics only, never landing flags. The remaining 90 rows (before landing 2026-11-03e; 70 after it): 66 need per-row
+`/d2inlT<N>` and the other `-inl*` c2 knobs are diagnostics only, never landing flags. The remaining 90 rows (before landing 2026-11-03e; 70 after it, 65 after landing 2026-11-03h): 66 need per-row
 shape work on their returns, 18 have the pragma around temporaries / Reset / assignments, 6 use other depths.

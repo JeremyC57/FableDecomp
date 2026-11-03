@@ -5,7 +5,7 @@ class C3DVector { public: float X, Y, Z; };
 class CMatrix3x4 { public: float E11, E12, E13, E21, E22, E23, E31, E32, E33, E41, E42, E43; };
 static float g_ParticleEpsilon = 0.0001f;
 static long g_frameRate = 30;
-long GetParticleFrameRate() { return g_frameRate; }
+namespace NParticleEngine { long __fastcall GetTickRate() { return g_frameRate; } }
 inline float Lerp(float a, float b, float t) { return (b - a) * t + a; }
 
 class C3DBoundingSphere { public:
@@ -40,7 +40,7 @@ bool CPSCLight::AddToBoundingSphere(C3DBoundingSphere& sphere, float timeOffset,
             pos.Y = m.E32 * z; pos.Y += m.E12 * x; pos.Y += m.E22 * y; pos.Y += m.E42;
             pos.Z = m.E33 * z; pos.Z += m.E23 * y; pos.Z += m.E13 * x; pos.Z += m.E43;
         }
-        float frameRate = (float)GetParticleFrameRate();
+        float frameRate = (float)NParticleEngine::GetTickRate();
         float t = 0.0f;
         if (LightUseLifeSecs) {
             t = ((float)LightLifeTimer + timeOffset) / (frameRate * LightLifeSecs);

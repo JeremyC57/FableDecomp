@@ -48,7 +48,7 @@ public:
     _List_node<CDecal*>*    Decals;                // +0x20 list<CDecal*> header node
     CDecalIterator DeleteDecal(CDecalIterator& it);   // 0x00AF5690
 };
-long GetUpdateRate_00aea9f0();                     // 0x00AEA9F0
+namespace NParticleEngine { long __fastcall GetTickRate(); }   // 0x00AEA9F0, FableWin.pdb ?GetTickRate@NParticleEngine@@YIJXZ
 class CPSCDecalRenderer {
 public:
     void*         __vftable;                       // +0x00
@@ -66,7 +66,7 @@ public:
 
 void CPSCDecalRenderer::Update(CParticleSystem* system, float timeDelta, bool& anyAlive)
 {
-    long lifeFrames = (long)(GetUpdateRate_00aea9f0() * DecalLifeSecs);
+    long lifeFrames = (long)(NParticleEngine::GetTickRate() * DecalLifeSecs);
     for (CDecalIterator it(system->Decals->_M_next); it._M_node != system->Decals; ) {
         CDecal* decal = *it;
         if (decal->MaxLife < 0) {
