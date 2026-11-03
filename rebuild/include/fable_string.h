@@ -159,6 +159,10 @@ public:
     bool operator!=(const char*) const;
     const CCharString& operator+=(const char*);
     const CCharString& operator+=(const CCharString&);
+    // Inline in retail (no out-of-line copy is bound): ?GetLength@CCharString@@QBEJXZ (Ego_r + FableWin), ?IsEmpty@CCharString@@QBE_NXZ
+    // (FableWin 0x01D34B90); 0x00522720 tests '!PStringData || !StringLength' in place.
+    long GetLength() const { return PStringData ? (long)PStringData->Data.GetLength() : 0; }
+    bool IsEmpty() const { return GetLength() == 0; }
 #else
     CCharString(const char* text, long length);
 #endif

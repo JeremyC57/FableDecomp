@@ -9,11 +9,16 @@
 #include "engine/NThingManager_CEntityRuntimePersistence.h"
 class CMainGameComponent; class CPersistContext; class CThing; class CGameDefinitionManager;
 class CWorld; class CWorldMap; class CPlayerManager; class CNavigatorManager; class CEnvironment;
+class CMemoryDataInputStream; class CASuspendableProcess;
 class CThingManager : public CClassFactory {
 public:
     CThingManager(const CMainGameComponent&,const CGameDefinitionManager&,CWorld&,CPlayerManager&,CNavigatorManager&,unsigned long*,unsigned long,unsigned long,unsigned long);
     virtual ~CThingManager();
     void LoadHeroStateBinary(CPersistContext&);
+    // Ego_r + FableWin signatures (2026-11-03, row 0x00522720): the name set and thing vector are references.
+    void LoadEntitiesFromScript(const CCharString&,long,long,const std::set<CCharString>&,CASuspendableProcess*,long,std::vector<CThing*>&); // 0x00520D00
+    void LoadEntitiesBinary(CMemoryDataInputStream&,long,long,const std::set<CCharString>&,CASuspendableProcess*,long,std::vector<CThing*>&); // 0x00521240
+    void RuntimeLoadEntities(long,const std::set<CCharString>&,std::vector<CThing*>&); // 0x00522720
     unsigned __int64 RemapUIDForSerialisation(bool,bool,unsigned long,unsigned __int64) const;
 protected:
     virtual void OnCreateClass(CClass&);

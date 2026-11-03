@@ -255857,13 +255857,6 @@ $catalog = @(
         PassPattern = '0051e2f0_TEST PASS'
     }
     [pscustomobject]@{
-        Address = '00522720'
-        Module = 'CThingManager'
-        Source = '00/52/CThingManager_RuntimeLoadEntities_00522720.cpp'
-        TestSource = '00/52/CThingManager_RuntimeLoadEntities_00522720_test.cpp'
-        PassPattern = '00522720_TEST PASS'
-    }
-    [pscustomobject]@{
         Address = '00661b40'
         Module = 'CThingCreatureBase'
         Source = '00/66/CThingCreatureBase_GetHeadPos_00661b40.cpp'
@@ -376501,6 +376494,13 @@ $catalog = @(
         Source = '00/52/NThingManagerCEntityRuntimePersistence_GetGamePersistentSaveData_00522530.cpp'
         TestSource = '00/52/NThingManagerCEntityRuntimePersistence_GetGamePersistentSaveData_00522530_test.cpp'
         PassPattern = '00522530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00522720'
+        Module = 'CThingManager'
+        Source = '00/52/CThingManager_RuntimeLoadEntities_00522720.cpp'
+        TestSource = '00/52/CThingManager_RuntimeLoadEntities_00522720_test.cpp'
+        PassPattern = '00522720_TEST PASS'
     }
 )
 

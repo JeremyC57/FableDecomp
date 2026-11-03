@@ -100,6 +100,16 @@ public:
     virtual void ChangeTextureColourDepth(long);
     virtual void OnPreDeviceReset();
     virtual bool OnPostDeviceReset();
+    virtual void Init();                                                  // ?Init@CMainGameComponent@@UAEXXZ (Ego_r + FableWin; slot 1, 0x004184BD)
+    virtual void SetQuit();                                               // ?SetQuit@CMainGameComponent@@UAEXXZ (FableWin; slot 4)
+    // New virtuals, retail vtable 0x0122F180 slots 5..9 in PDB order (2026-11-03, row 0x00522720 calls slot 9):
+protected:
+    virtual void Update();                                                // slot 5 0x00418289 ?Update@CMainGameComponent@@MAEXXZ (Ego_r + FableWin)
+    virtual void GetInputs();                                             // slot 6 0x00416E78 (Ego_r + FableWin)
+    virtual void Render();                                                // slot 7 0x00417001 (Ego_r + FableWin)
+    virtual void PostInit();                                              // slot 8 0x00416953 (Ego_r + FableWin)
+public:
+    virtual bool IsEditorActive() const;                                  // slot 9 0x004197B0 ?IsEditorActive@CMainGameComponent@@UBE_NXZ (FableWin 0x018A1210)
     CPlayerManager& GetPlayerManager() { return *PPlayerManager; }
     const NGameText::CDataBank& GetTextBank() const { return *PTextBank; }   // FableWin ?GetTextBank@CMainGameComponent@@QBEABVCDataBank@NGameText@@XZ (inline; 0x006286F0 reads PTextBank +0x14 in place)
     const CWorld& PeekWorld() const { return *PWorld; }

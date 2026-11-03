@@ -23825,9 +23825,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?ReadAsStringUntilStringInclusive@CStringParser@@QAE?AVCCharString@@ABV2@@Z	009ba330	00520570
 ?LoadEntitiesFromScript@CThingManager@@QAEXABVCCharString@@JJABUCCharStringSet@@PAVCASuspendableProcess@@JAAUCThingVector@@@Z	00520d00	00521ae0
 ?SaveThingList@CThingManager@@QAEXAAVCCharString@@JAAU?$CRetailVector@PAVCThing@@@@PAUCStringVector@@@Z	00521eb0	00522600
-?GetGamePersistentSaveData@CEntityRuntimePersistence@@QAE_NJAAV?$CArray@E@@@Z	00522530	00522720
-?LoadEntitiesBinary@CThingManager@@QAEXAAVCMemoryDataInputStream@@JJPAU?$set@VCCharString@@@@PAVCASuspendableProcess@@JPAU?$vector@PAVCThing@@@@@Z	00521240	00522720
-?LoadEntitiesFromScript@CThingManager@@QAEXABVCCharString@@JJPAU?$set@VCCharString@@@@PAVCASuspendableProcess@@JPAU?$vector@PAVCThing@@@@@Z	00520d00	00522720
 ?SaveThingList@CThingManager@@QAEXAAVCCharString@@JAAU?$CRetailPtrVector@PAVCThing@@@@PAU?$CRetailVector@VCCharString@@@@@Z	00521eb0	00522880
 ?InternalCompress@CCompressorZlibNative@@QAEKPBXKAAV?$CArray@E@@@Z	00a3add0	00523860
 ?_M_insert_overflow@?$CResultVector@PAVCThingAICreature@@@@QAEXPAPAVCThingAICreature@@ABQAV2@ABU__true_type@@K_N@Z	00515cc0	0052b270
@@ -35639,3 +35636,6 @@ _optionSafe	013d28d0	0099dcb0
 ?SetVolume@CVideoSys@@QAEXM@Z	00a3b920	006286f0
 ?Stop@CVideoSys@@QAE_NXZ	00a3b1f0	006286f0
 ?Update@CSystemManager@@QAE?AW4ESystemReturn@@XZ	009a6460	006286f0
+?GetGamePersistentSaveData@CEntityRuntimePersistence@NThingManager@@QBE_NJAAV?$CArray@E@@@Z	00522530	00522720
+?LoadEntitiesBinary@CThingManager@@QAEXAAVCMemoryDataInputStream@@JJABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@PAVCASuspendableProcess@@JAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@4@@Z	00521240	00522720
+?LoadEntitiesFromScript@CThingManager@@QAEXABVCCharString@@JJABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@PAVCASuspendableProcess@@JAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@4@@Z	00520d00	00522720
