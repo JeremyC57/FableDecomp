@@ -1,0 +1,13 @@
+address	wrong_spelling(s)	right_spelling	evidence
+0054EAC0	??1CViewport@@UAE@XZ (global-namespace class in rebuild/src/compiled/00/53/NUISystemCScrollingViewport_scalardeletingdestructor_0053fc30.cpp)	??1CViewport@NUISystem@@UAE@XZ	PDB class NUISystem::CViewport (Ego_r TPI); tail-jumped from ~CScrollingViewport 0x0053E950 (RELOCATION_MATCH here)
+00558AA0	??1CKeyList_00558b30@NUISystem@@QAE@XZ (NUISystemCKeyRedefiner_scalardeletingdestructor_00558b30.cpp); catalog _global::StdList_Clear_00558aa0	??1?$_List_base@W4EGameAction@@V?$allocator@W4EGameAction@@@std@@@std@@QAE@XZ	PDB member CKeyRedefiner::Actions is std::list<EGameAction> at +0x19C; ~CKeyRedefiner 0x00558660 calls it with ecx=this+0x19C (RELOCATION_MATCH here)
+0055B760	~CFrontEndControl_0055b760 (one landed source; others already ??1CClickable)	??1CClickable@NUISystem@@UAE@XZ	base of CKeyRedefiner (PDB); tail target of ~CKeyRedefiner 0x00558660
+0041CF47	C2DVector GetUIScale() declared non-const (?GetUIScale@CManager@NUISystem@@QAE?AVC2DVector@@XZ) in landed callers	?GetUIScale@CManager@NUISystem@@QBE?AVC2DVector@@XZ	FableWin.pdb public symbol (const member); hdr CManager retail branch declares it const
+0053CA3C	catalog std::list<CUnprovenComponent_0053ca3c *>::push_front	?push_front@?$list@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@QAEXABQAVCList@NUISystem@@@Z	the list is CList::GPreviousSelected (chunk 717 label, Ego_r dynamic initializer); called by ChangeState 0x0053A0A1 with ecx=0x013B8A98 (RELOCATION_MATCH)
+005379F5	catalog NUISystem::CList::vfunc_185	?ComputeChildrenVisibility@CList@NUISystem@@MAEXXZ	CList vtable 0x012462E4 slot 185 = the PDB virtual (header order compiles to +0x2E4)
+0053F1C0	catalog NUISystem::CScrollingViewport::vfunc_1	?Update@CScrollingViewport@NUISystem@@UAEXM@Z	vtable 0x012468D4 slot 1 = CUIInterface::Update override; ends in CChangingStateComponent::Update 0x0052C7E0
+0053FC10	catalog CScrollingViewport::vfunc_0	??_ECScrollingViewport@NUISystem@@W3AEPAXI@Z	slot 0 of the CObserver secondary vtable 0x012468AC; the compiler's own symbol for the this-4 thunk (RELOCATION_MATCH)
+0053FC20	catalog CScrollingViewport::vfunc_0	??_ECScrollingViewport@NUISystem@@WBI@AEPAXI@Z	slot 0 of the CActionParam secondary vtable 0x012468A4; this-0x18 thunk (RELOCATION_MATCH)
+00558660	catalog CScrollingViewport::~CScrollingViewport	??1CKeyRedefiner@NUISystem@@UAE@XZ	stores CKeyRedefiner vtables 0x0124ADBC/0x0124AD98/0x0124AD90; called by the landed ??_G 0x00558B30
+005385AE	catalog CList::ScrollUp	?ScrollUp@CList@NUISystem@@MAEXKK_N00@Z	the protected five-argument overload (PDB), slot 165, ret 14h
+005392FC	catalog CList::ScrollDown	?ScrollDown@CList@NUISystem@@MAEXKK_N00@Z	the protected five-argument overload (PDB), slot 167, ret 14h

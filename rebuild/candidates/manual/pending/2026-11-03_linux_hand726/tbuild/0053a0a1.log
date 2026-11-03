@@ -1,0 +1,2 @@
+0053a0a1_test.cpp
+LINK : warning LNK4078: multiple '.rdata' sections found with different attributes (C0000040)

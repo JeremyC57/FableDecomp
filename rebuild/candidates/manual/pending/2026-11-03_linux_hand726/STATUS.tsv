@@ -1,0 +1,10 @@
+address	name	grade	attempts	residue
+005379f5	NUISystem::CList::ComputeChildrenVisibility	DIFFER(2126v2102)	7 graded + 11 box-shape object probes	view-area C2DBoxF: retail fetches the 8 LoadAndReturnDef() pointers right to left then converts TLX..BRY left to right into the box; frame 4 bytes smaller (41 masked lines)
+005385ae	NUISystem::CList::ScrollUp (protected, KK_N00)	RELOCATION_MATCH	13	-
+005392fc	NUISystem::CList::ScrollDown (protected, KK_N00)	RELOCATION_MATCH	12	-
+0053a0a1	NUISystem::CList::ChangeState	RELOCATION_MATCH	12	-
+0053e950	NUISystem::CScrollingViewport::~CScrollingViewport	RELOCATION_MATCH	3	-
+0053f1c0	NUISystem::CScrollingViewport::Update	DIFFER(1601v1601)	26	x87: retail fstp [ratio] ; fmul [ratio] (window height consumed), ours fst [ratio] ; fmul st(1) and a later fstp st(0) (4 masked lines)
+0053fc10	NUISystem::CScrollingViewport::??_E adjustor thunk (this-4)	RELOCATION_MATCH	1	-
+0053fc20	NUISystem::CScrollingViewport::??_E adjustor thunk (this-0x18)	RELOCATION_MATCH	1	-
+00558660	NUISystem::CKeyRedefiner::~CKeyRedefiner	RELOCATION_MATCH	1	-

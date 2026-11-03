@@ -1,0 +1,13 @@
+address	name	evidence
+005379f5	NUISystem::CList::ComputeChildrenVisibility	CList vtable 0x012462E4 slot 185; PDB ?ComputeChildrenVisibility@CList@NUISystem@@MAEXXZ; body reads ScrollingChildrenVisibility (+0x1C8)
+005385ae	NUISystem::CList::ScrollUp(unsigned long,unsigned long,bool,bool,bool)	slot 165; PDB ?ScrollUp@CList@NUISystem@@MAEXKK_N00@Z; RELOCATION_MATCH
+005392fc	NUISystem::CList::ScrollDown(unsigned long,unsigned long,bool,bool,bool)	slot 167; PDB ?ScrollDown@CList@NUISystem@@MAEXKK_N00@Z; RELOCATION_MATCH
+0053a0a1	NUISystem::CList::ChangeState	slot 48; PDB ?ChangeState@CList@NUISystem@@UAEXK@Z; RELOCATION_MATCH
+0053e950	NUISystem::CScrollingViewport::~CScrollingViewport	stores vtables 0x012468D4/0x012468AC/0x012468A4; RELOCATION_MATCH
+0053f1c0	NUISystem::CScrollingViewport::Update	vtable 0x012468D4 slot 1; PDB ?Update@CScrollingViewport@NUISystem@@UAEXM@Z
+0053fc10	??_ECScrollingViewport@NUISystem@@W3AEPAXI@Z	adjustor thunk (sub ecx,4) into ??_G 0x0053FC30; RELOCATION_MATCH
+0053fc20	??_ECScrollingViewport@NUISystem@@WBI@AEPAXI@Z	adjustor thunk (sub ecx,18h) into ??_G 0x0053FC30; RELOCATION_MATCH
+00558660	NUISystem::CKeyRedefiner::~CKeyRedefiner	stores CKeyRedefiner vtables 0x0124ADBC/0x0124AD98/0x0124AD90; RELOCATION_MATCH
+00558aa0	std::_List_base<EGameAction,std::allocator<EGameAction> >::~_List_base	called on CKeyRedefiner::Actions (+0x19C) by 0x00558660
+0053ca3c	std::list<NUISystem::CList*>::push_front	called on CList::GPreviousSelected 0x013B8A98 by 0x0053A0A1
+0042d5b1	std::map<unsigned long,NUISystem::CUIState>::operator[]	out of line, called by ScrollUp/ScrollDown/ChangeState (matches with the in-class STLport body visible)

@@ -1,0 +1,5 @@
+address	name	grade_with_overlay	note
+006286f0	GFPlayFullScreenXBoxMovie	RELOCATION_MATCH	defines FABLE_RETAIL_C2DBOXF
+00487570	CPlayer::DrawFreeCamDebug	RELOCATION_MATCH	defines FABLE_RETAIL_C2DBOXF
+00626e40	CTCQuickAccessMenu::ConstructItemCategoryList	RELOCATION_MATCH	includes NUISystem_CList.h (default path)
+00e0a820	NScript::CQ_TraderEscortScript::TurnToBalv	RELOCATION_MATCH	defines FABLE_RETAIL_STLP_MAP and uses map::operator[] (the new in-class body)

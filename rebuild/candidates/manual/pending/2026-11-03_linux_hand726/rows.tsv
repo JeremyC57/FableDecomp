@@ -1,0 +1,10 @@
+address	module	name	length	group	anchor	gap_to_next_start
+005379f5	NUISystem::CList::NUISystem::CList	vfunc_185	2102	G00537776	CList	1147
+005385ae	CList	ScrollUp	3406	G00537776	CList	3406
+005392fc	CList	ScrollDown	3493	G00537776	CList	3493
+0053a0a1	CList	ChangeState	3174	G00537776	CList	3174
+0053e950	CScrollingViewport	~CScrollingViewport	66	G0053e950	NUISystem::CScrollingViewport::NUISystem::CScrollingViewport	80
+0053f1c0	NUISystem::CScrollingViewport::NUISystem::CScrollingViewport	vfunc_1	1601	G0053e950	NUISystem::CScrollingViewport::NUISystem::CScrollingViewport	1616
+0053fc10	NUISystem::CScrollingViewport::NUISystem::CScrollingViewport	vfunc_0	8	G0053e950	NUISystem::CScrollingViewport::NUISystem::CScrollingViewport	16
+0053fc20	NUISystem::CScrollingViewport::NUISystem::CScrollingViewport	vfunc_0	8	G0053e950	NUISystem::CScrollingViewport::NUISystem::CScrollingViewport	16
+00558660	CScrollingViewport	~CScrollingViewport	60	G0053e950	NUISystem::CScrollingViewport::NUISystem::CScrollingViewport	64

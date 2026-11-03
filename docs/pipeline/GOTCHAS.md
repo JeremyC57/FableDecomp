@@ -1842,3 +1842,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - 2026-11-03: `PeekGraphicBank(static_cast<EGraphicBankNo>(0))` gives retail's bank load order where indexing `GraphicBanks[0]` does not.
 - 2026-11-03: a point-light index clamp matches as `unsigned long index = lights; if (lights > n - 1) index = n - 1;`.
 - 2026-11-03: `verify_and_land.py` reads oracle columns from the first data row, so a header-only oracle (no matched rows) fails with "missing required columns" before grading.
+- 2026-11-03 (chunk 726): key-store scheduling and hoisting around STLport `map::operator[]` needs its in-class body visible (FABLE_RETAIL_STLP_MAP); with a declaration only VC7.1 assumes the call may write the key temporary (ScrollUp/ScrollDown 200+ diff lines -> match).
+- 2026-11-03: `if (v.size())` folds to `test eax,0FFFFFFFCh`; `if (v.size() > 0)` keeps `sar eax,2 ; je`.
+- 2026-11-03: testing a member flag (`if (RecomputeOffsets)`) keeps retail's spilled flag and re-test; testing a copied local lets VC7.1 thread the jump.
+- 2026-11-03: `??_E` is an alias of the `??_G` body in VC7.1, so a vland RELOC_NAME warning for both names at one thunk address is not a second spelling.
