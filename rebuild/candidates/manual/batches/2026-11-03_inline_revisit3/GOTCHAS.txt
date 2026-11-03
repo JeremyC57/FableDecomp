@@ -1,0 +1,8 @@
+Inline split: a function-final `while (!IsActiveThreadTerminating()) {}` written `for (;;) { do { if (IsActiveThreadTerminating()) return; } while (0); ... }` makes the loop exit hot (expanded dtor) while other in-loop returns stay cold (call) -- 0x00E504C0/0x00E6AF20/0x00EDCB80/0x00D99A30.
+Inline split: exits of one loop do NOT share frequency equally in general; measure per-site T* with marker calls (MkX() before each return) and /d2inlT sweeps (diagnostic only).
+Inline split: retail calls CScriptThing copy/dtor out of line inside inline-expanded special members of classes holding a CScriptThing (filters, CSpawnedFunc1) but expands them elsewhere; plain VC7.1 expands both -- unsolved, /d2inlT55-65 reproduces 9 rows (diagnostic only).
+Inline split: ~CTimer is below the always-inline size; its single retail out-of-line call (0x00CEF3B0) is not a frequency effect.
+Transform gotcha: de-forcing an out-of-class `__forceinline X::~X()` must give `inline X::~X()`, not ` X::~X()` (a non-inline strong definition).
+Lane gotcha: grade parallel variants of one row in separate work dirs (qq.py QQTAG), or the .obj files race (SRC_FAIL / OBJDUMP_ERR / wrong grade).
+c2 gotcha: /d2<knob><N> for knobs other than inlT (inluserinl, inlS, inld, inlld, inlcrmax, ...) changed no grade; c2's INL: debug prints are POGO-only.
+Inline split: undo pragma-recipe goto / `if (false) { label: return; }` devices first -- a plain `return;` in place matched 0x00EF5200 pragma-free (the goto form did not).

@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00ef5200   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00ef5200   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00ef5200   RELOCATION_MATCH PASS   CheckForHeroActions
+
+WINS: 1
+  00ef5200 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CheckForHeroActions

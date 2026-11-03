@@ -1,0 +1,157 @@
+// NScript::CQ_MinionCampScript::CMC_Minion::Main() -- minion: target Briar Rose (2 in 3, while she lives) or the hero; then,
+// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
+//   every frame, retarget the hero whenever the hero hits Me (directly, or with any special ability other than 14) and is
+//   not already the target
+// Leaf: ?Main@CMC_Minion@CQ_MinionCampScript@NScript@@EAEXXZ
+// Naming wave 27 (family main, DECISIONS_W26 D1): Ego_r.pdb / FableWin.pdb nest the entity in its script class and spell
+//   Main a private virtual (?Main@CMC_Minion@CQ_MinionCampScript@NScript@@EAEXXZ); the local CEntityScriptBase carries the retail slot list of vtable 0x012C3224
+//   (engine/CEntityScriptBase.h). Was: public non-virtual ?Main@CMC_Minion@CQ_MinionCampScript@NScript@@QAEXXZ.
+// Naming wave 26 (family pred): CEntityScriptBase is the global PDB class (Ego_r.pdb / FableWin.pdb) with
+//   ?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z 0x00F35B10 and the const
+//   ?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ 0x00F35B30; the predicate parameter is an NScript::CPredicateBase.
+//   Was: NScript::CEntityScriptBase (non-PDB scope) with SetPredicate on the local CIsThingConscious.
+// Retail: Fable.exe @ 0x00D9F270, 823 bytes (+ int3 padding), plain `ret`.
+// Callees: CIsThingConscious predicate (vtable 0x012C2FE8, CScriptThing copy 0x004ABE90, out-of-line ~CScriptThing
+//   0x004AA840), SetPredicate 0x00F35B10, IsActiveThreadTerminating 0x00F35B30, CBaseClass ctor 0x0099A2D0 / dtor 0x0099A2E0,
+//   CScriptThing::operator= 0x008AB980 (out-of-line copy), rand 0x00BFEB16, operator delete 0x00BFE9BC, CCharString
+//   0x0099EBF0 / 0x0099EAE0; GameCalls slots 7 NewScriptFrame, 70 GetHero, 72 GetThingWithScriptName, 451
+//   GiveThingBestEnemyTarget; CScriptThing slots 21 MsgIsHitBy, 41 MsgIsHitBySpecialAbilityFrom, 42
+//   MsgIsHitByAnySpecialAbilityFrom, 75 IsAlive; the thing implementation's slot 78 (+0x138, descriptive IsSameThing).
+//   Strings "BriarRose" 0x012D42EC, "SCRIPT_NAME_HERO" 0x0125D1C8.
+// Layout: the landed CBanditAttacker::Main 0x00D1F610 model (CScriptThing over CBase with a counted-pointer PImp, inline
+//   destructor and inline operator=; the filter class under inline_depth(0) keeps its member destruction out of line).
+//   Ego_r.pdb CMC_Minion (28 bytes): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14, PMasterData +0x18.
+// Shape:  ~CScriptThing with in-body inline_depth(0) around the two arm returns and the in-loop return
+//   (out-of-line 0x004AA840); the loop-top `if (Term()) return;` keeps the inline expansion; Info read before Data
+//   in the inline operator=; operator!= loads the other Data first. Expands the inline operator= at one site and
+//   calls the out-of-line copies elsewhere,
+//   as retail does.
+class C3DVector { public: float X, Y, Z; };
+class CCharString { public:
+    void* PStringData;
+    CCharString(const char* text, long length = -1);   // 0x0099EBF0
+    ~CCharString();                                    // 0x0099EAE0
+};
+void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
+extern "C" int __cdecl rand();                                     // 0x00BFEB16
+#include "engine/CCountedPointer.h"
+struct CScriptThingImpl {
+    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
+    virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
+    virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
+    virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023();
+    virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
+    virtual void v030(); virtual void v031(); virtual void v032(); virtual void v033(); virtual void v034(); virtual void v035();
+    virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039(); virtual void v040(); virtual void v041();
+    virtual void v042(); virtual void v043(); virtual void v044(); virtual void v045(); virtual void v046(); virtual void v047();
+    virtual void v048(); virtual void v049(); virtual void v050(); virtual void v051(); virtual void v052(); virtual void v053();
+    virtual void v054(); virtual void v055(); virtual void v056(); virtual void v057(); virtual void v058(); virtual void v059();
+    virtual void v060(); virtual void v061(); virtual void v062(); virtual void v063(); virtual void v064(); virtual void v065();
+    virtual void v066(); virtual void v067(); virtual void v068(); virtual void v069(); virtual void v070(); virtual void v071();
+    virtual void v072(); virtual void v073(); virtual void v074(); virtual void v075(); virtual void v076(); virtual void v077();
+    virtual bool IsSameThing(const CScriptThingImpl* other) const;   // slot 78 (+0x138)
+};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
+class CScriptThing : public CBaseClass { public:                           // vtable 0x01238C8C, 12 bytes
+     virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
+    virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
+    virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
+    virtual void v018(); virtual void v019(); virtual void v020();
+    virtual bool MsgIsHitBy(const CCharString& name) const;   // slot 21 (+0x54)
+    virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027();
+    virtual void v028(); virtual void v029(); virtual void v030(); virtual void v031(); virtual void v032(); virtual void v033();
+    virtual void v034(); virtual void v035(); virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039();
+    virtual void v040();
+    virtual bool MsgIsHitBySpecialAbilityFrom(long ability, const CCharString& name) const;   // slot 41 (+0xa4)
+    virtual bool MsgIsHitByAnySpecialAbilityFrom(const CCharString& name) const;   // slot 42 (+0xa8)
+    virtual void v043(); virtual void v044(); virtual void v045(); virtual void v046(); virtual void v047(); virtual void v048();
+    virtual void v049(); virtual void v050(); virtual void v051(); virtual void v052(); virtual void v053(); virtual void v054();
+    virtual void v055(); virtual void v056(); virtual void v057(); virtual void v058(); virtual void v059(); virtual void v060();
+    virtual void v061(); virtual void v062(); virtual void v063(); virtual void v064(); virtual void v065(); virtual void v066();
+    virtual void v067(); virtual void v068(); virtual void v069(); virtual void v070(); virtual void v071(); virtual void v072();
+    virtual void v073(); virtual void v074();
+    virtual bool IsAlive() const;   // slot 75 (+0x12c)
+    CCountedPointer<CScriptThingImpl> PImp;             // +0x04
+    CScriptThing() {}
+    CScriptThing(const CScriptThing& other);            // 0x004ABE90
+     ~CScriptThing() {}                    // inline here; out-of-line copy 0x004AA840
+    CScriptThing& operator=(const CScriptThing& other);   // 0x008AB980
+    __forceinline void AssignInline(const CScriptThing& other) { PImp = other.PImp; }
+    bool operator!=(const CScriptThing& other) const { const CScriptThingImpl* otherData = other.PImp.Data; return !PImp.Data->IsSameThing(otherData); }
+};
+// CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
+//   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CGameScriptInterface.h"
+#include "engine/CPredicateBase.h"
+namespace NScript {
+class CIsThingConscious : public CPredicateBase { public:      // vtable 0x012C2FE8 (engine/CIsThingConscious.h; the destructor inline here)
+    virtual bool operator()() const;                    // slot 0  0x00CDDAB0
+    virtual CPredicateBase* Clone() const;              // slot 1  0x00CDDAE0
+    CScriptThing Thing;                                 // +0x04
+    CIsThingConscious(const CScriptThing& thing);
+    virtual ~CIsThingConscious() { }                    // slot 2; out of line 0x00EF7AB0
+};
+// the constructor outside the inline_depth(0) region: retail expands the CPredicateBase constructor inside it
+inline CIsThingConscious::CIsThingConscious(const CScriptThing& thing) : Thing(thing) { }
+}
+class CScriptBase; class CPersistContext;
+class CEntityScriptBase { public:                       // global PDB class, retail 0x14 bytes
+    virtual ~CEntityScriptBase();                       // slot 0  0x00F35B40
+    virtual void Main() = 0;                            // slot 1 (vtable 0x012C3224, engine/CEntityScriptBase.h)
+    virtual void Init();                                // slot 2  0x00CDEBB0
+    virtual CScriptBase* GetParentScript() const = 0;   // slot 3
+    virtual void OnPersist(CPersistContext&);           // slot 4  0x00CDEBC0
+    virtual void OnPredicateFail();                     // slot 5  0x00CDEBD0
+    virtual void OnInterrupted();                       // slot 6  0x00CDEBE0
+    CGameScriptInterface* Game;                         // +0x04
+    CScriptThing          Me;                           // +0x08
+    void SetPredicate(const NScript::CPredicateBase& predicate);   // 0x00F35B10
+    bool IsActiveThreadTerminating() const;             // 0x00F35B30
+};
+namespace NScript {
+class CQ_MinionCampScript { public:
+struct CMC_Minion : CEntityScriptBase {                 // Ego_r.pdb: nested in CQ_MinionCampScript
+    CQ_MinionCampScript* ParentClass;                   // +0x14
+    void*                PMasterData;                   // +0x18 CQ_SunnyvaleMasterData*
+private:
+    virtual void Main();                                // private virtual (Ego_r / FableWin EAEXXZ)
+};
+};
+
+void CQ_MinionCampScript::CMC_Minion::Main()
+{
+    SetPredicate(CIsThingConscious(Me));
+    Game->NewScriptFrame();
+    if (IsActiveThreadTerminating())
+        return;
+    const CScriptThing& briar = Game->GetThingWithScriptName("BriarRose");
+    CScriptThing target;
+    if (briar.IsAlive() && rand() % 3 != 0) {
+        if (IsActiveThreadTerminating()) {
+            return;
+        }
+        target = briar;
+    } else {
+        if (IsActiveThreadTerminating()) {
+            return;
+        }
+        target.AssignInline(Game->GetHero());
+    }
+    Game->GiveThingBestEnemyTarget(Me, target);
+    for (;;) {
+        do { if (IsActiveThreadTerminating()) return; } while (0);
+        if ((Me.MsgIsHitBy("SCRIPT_NAME_HERO")
+             || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO") && !Me.MsgIsHitBySpecialAbilityFrom(14, "SCRIPT_NAME_HERO")))
+            && target != Game->GetHero()) {
+            if (IsActiveThreadTerminating()) {
+                return;
+            }
+            target = Game->GetHero();
+            Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
+        }
+        Game->NewScriptFrame();
+    }
+}
+
+}

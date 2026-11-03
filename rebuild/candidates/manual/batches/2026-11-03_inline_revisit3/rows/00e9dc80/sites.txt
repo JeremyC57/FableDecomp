@@ -1,0 +1,6 @@
+0	0	IsActiveThreadTerminating()
+1	0	IsActiveThreadTerminating()
+2	0	IsActiveThreadTerminating()
+3	1	IsActiveThreadTerminating()
+4	1	IsActiveThreadTerminating()
+5	1	IsActiveThreadTerminating()
