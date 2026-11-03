@@ -2,6 +2,9 @@
 #define FABLE_RETAIL_HEADER_CAFILE
 #include "engine/CBaseClassNonCopyable.h"
 #include "fable_string.h"
+#ifdef FABLE_RETAIL_CAFILE
+#include "engine/CArray.h"
+#endif
 class CCharString;
 class CASuspendableProcess;
 class CFileInformation;
@@ -18,6 +21,21 @@ public:
     // hidden return slot in ecx, the path in edx). The PDBs' CCharString overload (SI?AVCCharString@@ABV2@@Z) and the
     // bool (SI_NABVCWideString@@AAV2@@Z) overload are not used by a retail row of this branch.
     static CWideString __fastcall ConvertPathToFullPath(const CWideString&);
+    // 0x00AE8D50: Ego_r / FableWin ?GetAbsoluteFilePath@CAFile@@SI?AVCCharString@@ABV2@0@Z (the CCharString overload).
+    static CCharString __fastcall GetAbsoluteFilePath(const CCharString&,const CCharString&);
+    // Header wave 2026-11-03 (row 0x00821010, the length/version prefix of each file record): FableWin.pdb
+    // ??$ReadVar@K@CAFile@@QAEXAAKPAVCASuspendableProcess@@@Z / ??$ReadVar@E@.. (no out-of-line copy in Fable.exe): an aligned
+    // file reads through a rounded CArray<unsigned char> buffer.
+    template<class T> void ReadVar(T& var,CASuspendableProcess* psuspendable) {
+        if(GetAlignment()<=1) Read(&var,sizeof(T),psuspendable);
+        else {
+            unsigned long buffer_length=GetAlignment();
+            buffer_length=((sizeof(T)+buffer_length-1)/buffer_length)*buffer_length;
+            CArray<unsigned char> buffer(buffer_length);
+            Read(&buffer[0],sizeof(T),psuspendable);
+            var=*(T*)&buffer[0];
+        }
+    }
 #endif
     virtual void Open(const CWideString&,FileAccessType,unsigned long)=0;
     virtual void Close()=0;

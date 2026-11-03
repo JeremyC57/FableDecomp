@@ -24,6 +24,9 @@ public:
     const C2DVector operator*(float scalar) const { return C2DVector(X*scalar,Y*scalar); }
     const C2DVector& operator+=(const C2DVector& vector) { X+=vector.X; Y+=vector.Y; return *this; }
     float Dot(const C2DVector& vector) const { return X*vector.X+Y*vector.Y; }
+    // FableWin ?GetSquaredMagnitude@C2DVector@@QBEMXZ (0x021ED350), inline in retail (0x00B3BE10 BuildAlphaStippleTexture
+    // expands it; X*X+Y*Y, (X*X+Y*Y) and Y*Y+X*X give the same bytes there).
+    float GetSquaredMagnitude() const { return X*X+Y*Y; }
 };
 #pragma pack(pop)
 #else

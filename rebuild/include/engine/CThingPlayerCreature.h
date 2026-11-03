@@ -6,6 +6,10 @@
 class CThingPlayerCreature:public CThingCreatureBase {
 private: unsigned char _pad_0x160[0xa8];
 public: CThingPlayerCreature();
+#ifdef FABLE_RETAIL_CTHINGPLAYERCREATURE
+    // Header wave 2026-11-03 (row 0x00522A20): Ego_r.pdb ?Alloc@CThingPlayerCreature@@SIPAVCClass@@XZ.
+    static CClass* __fastcall Alloc();
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CThingPlayerCreature)==0x208);
 #endif

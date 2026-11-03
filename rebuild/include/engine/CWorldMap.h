@@ -30,8 +30,11 @@ public:
     virtual const C2DBoxI& GetDimensions() const;
     virtual CMap& GetMapAt(const C2DCoordI&);
     virtual const CMap& PeekMapAt(const C2DCoordI&) const;
-    virtual long GetMapNumberAt(const C3DVector&) const;
+    // Header wave 2026-11-03: retail vtable 0x01244AEC holds GetMapNumberAt(const C3DVector&) 0x004FC0C0 in slot 16 and
+    // GetMapNumberAt(const C2DCoordI&) 0x004FC080 in slot 17 (0x00821010 calls [vtbl+0x44] for the C2DCoordI form); VC7.1 lays an
+    // overload pair out in reverse declaration order, so the C2DCoordI form is declared first.
     virtual long GetMapNumberAt(const C2DCoordI&) const;
+    virtual long GetMapNumberAt(const C3DVector&) const;
     virtual CMap& GetMap(long);
     virtual const CMap& PeekMap(long) const;
     virtual void GetAllMapsInArea(const C2DBoxI&, std::vector<unsigned long, std::allocator<unsigned long> >&) const;

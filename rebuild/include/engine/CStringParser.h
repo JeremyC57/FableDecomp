@@ -19,6 +19,20 @@ public:
     CCharString ReadAsStringUntilString(const CCharString&);
     long SkipPastNewline();
     bool AtEnd(){return String[CursorPos.StringPos]==0;}
+    // pass 12 header wave (0x009BC120): Ego_r / FableWin ??0CStringParser@@QAE@ABV0@@Z, ?SkipPastWholeString@CStringParser@@QAE_NABVCCharString@@@Z,
+    // ?ReadAsStringUntilPastString@CStringParser@@QAE?AVCCharString@@ABV2@@Z (out of line); ?GetStringPos@CStringParser@@QBEKXZ,
+    // ?GetFilename@CStringParser@@QBEABVCCharString@@XZ, ?GetErrorCallback@CStringParser@@QBEP6IXABVCCharString@@@ZXZ (inline in retail).
+    CStringParser(const CStringParser&);
+    bool SkipPastWholeString(const CCharString&);
+    CCharString ReadAsStringUntilPastString(const CCharString&);
+    unsigned long GetStringPos() const { return CursorPos.StringPos; }
+    const CCharString& GetFilename() const { return Filename; }
+    void (__fastcall *GetErrorCallback() const)(const CCharString&) { return ErrorCallback; }
+    // pass 12 header wave (0x00AE8D50): Ego_r / FableWin ?Init@CStringParser@@QAEXPBDP6IXABVCCharString@@@Z1J@Z,
+    // ?SetStringPos@CStringParser@@QAEXK@Z, ?SkipWhitespace@CStringParser@@QAEJXZ (out of line).
+    void Init(const char*,void (__fastcall*)(const CCharString&),const CCharString&,long);
+    void SetStringPos(unsigned long);
+    long SkipWhitespace();
     CCharString ReadAsSymbol();
     CCharString ReadAsString();
     class CCursorPos {

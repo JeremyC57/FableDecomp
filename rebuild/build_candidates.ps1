@@ -379839,6 +379839,88 @@ $catalog = @(
         TestSource = '00/c7/CSalOpenALReverb_Update_00c71870_test.cpp'
         PassPattern = '00c71870_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00ac2be0'
+        Module = 'C3DMeshPartitionBuilderElement'
+        Source = '00/ac/C3DMeshPartitionBuilderElement_PartitionSpace_00ac2be0.cpp'
+        TestSource = '00/ac/C3DMeshPartitionBuilderElement_PartitionSpace_00ac2be0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00ac2be0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006932b0'
+        Module = 'CCreatureActionBase'
+        Source = '00/69/CCreatureActionBase_RegisterActionEventTypes_006932b0.cpp'
+        TestSource = '00/69/CCreatureActionBase_RegisterActionEventTypes_006932b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '006932b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae0710'
+        Module = 'CParticleProgram'
+        Source = '00/ae/CParticleProgram_CalculateAveragePatchSize_00ae0710.cpp'
+        TestSource = '00/ae/CParticleProgram_CalculateAveragePatchSize_00ae0710_test.cpp'
+        PassPattern = '00ae0710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae0070'
+        Module = 'CParticleProgram'
+        Source = '00/ae/CParticleProgram_ApplyTransform_00ae0070.cpp'
+        TestSource = '00/ae/CParticleProgram_ApplyTransform_00ae0070_test.cpp'
+        PassPattern = '00ae0070_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae8d50'
+        Module = 'NParticleEngine::CParticleEmitterDatabase'
+        Source = '00/ae/NParticleEngineCParticleEmitterDatabase_Load_00ae8d50.cpp'
+        TestSource = '00/ae/NParticleEngineCParticleEmitterDatabase_Load_00ae8d50_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00ae8d50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b3be10'
+        Module = 'CEngineResourceManager'
+        Source = '00/b3/CEngineResourceManager_BuildAlphaStippleTexture_00b3be10.cpp'
+        TestSource = '00/b3/CEngineResourceManager_BuildAlphaStippleTexture_00b3be10_test.cpp'
+        PassPattern = '00b3be10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e5ebd0'
+        Module = 'NScript::CV_BodyGuardScript'
+        Source = '00/e5/NScriptCVBodyGuardScript_MakeHenchmanComment_00e5ebd0.cpp'
+        TestSource = '00/e5/NScriptCVBodyGuardScript_MakeHenchmanComment_00e5ebd0_test.cpp'
+        PassPattern = '00e5ebd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e0a820'
+        Module = 'NScript::CQ_TraderEscortScript'
+        Source = '00/e0/NScriptCQTraderEscortScript_TurnToBalv_00e0a820.cpp'
+        TestSource = '00/e0/NScriptCQTraderEscortScript_TurnToBalv_00e0a820_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00e0a820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008edff0'
+        Module = 'CWillButtonHelperTimer'
+        Source = '00/8e/CWillButtonHelperTimer_CWillButtonHelperTimer_008edff0.cpp'
+        TestSource = '00/8e/CWillButtonHelperTimer_CWillButtonHelperTimer_008edff0_test.cpp'
+        PassPattern = '008edff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00522a20'
+        Module = 'CThingManager'
+        Source = '00/52/CThingManager_InitThingTypes_00522a20.cpp'
+        TestSource = '00/52/CThingManager_InitThingTypes_00522a20_test.cpp'
+        PassPattern = '00522a20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00821010'
+        Module = 'CMap'
+        Source = '00/82/CMap_LoadBrushesFromFile_00821010.cpp'
+        TestSource = '00/82/CMap_LoadBrushesFromFile_00821010_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00821010_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

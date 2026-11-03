@@ -7,6 +7,9 @@
 #include "engine/CClassFactory.h"
 #include "fable_string.h"
 #include "engine/NThingManager_CEntityRuntimePersistence.h"
+#include "engine/CThingTypeInfo.h"
+#include "engine/CThingTypeInit.h"
+#include "engine/ThingLList.h"
 class CMainGameComponent; class CPersistContext; class CThing; class CGameDefinitionManager;
 class CWorld; class CWorldMap; class CPlayerManager; class CNavigatorManager; class CEnvironment;
 class CMemoryDataInputStream; class CASuspendableProcess;
@@ -14,6 +17,8 @@ class CThingManager : public CClassFactory {
 public:
     CThingManager(const CMainGameComponent&,const CGameDefinitionManager&,CWorld&,CPlayerManager&,CNavigatorManager&,unsigned long*,unsigned long,unsigned long,unsigned long);
     virtual ~CThingManager();
+    void InitThingTypes();                                              // 0x00522A20 (Ego_r.pdb ?InitThingTypes@CThingManager@@QAEXXZ)
+    CThing* GetPThingWithUID(unsigned __int64);                         // Ego_r.pdb ?GetPThingWithUID@CThingManager@@QAEPAVCThing@@_K@Z (0x00821010)
     void LoadHeroStateBinary(CPersistContext&);
     // Ego_r + FableWin signatures (2026-11-03, row 0x00522720): the name set and thing vector are references.
     void LoadEntitiesFromScript(const CCharString&,long,long,const std::set<CCharString>&,CASuspendableProcess*,long,std::vector<CThing*>&); // 0x00520D00
@@ -24,6 +29,13 @@ protected:
     virtual void OnCreateClass(CClass&);
     virtual void OnDeleteClass(CClass&);
 private:
+    // Ego_r.pdb ?AddNewThingType@CThingManager@@AAEXABVCThingTypeInit@@@Z (out of line at 0x005282A0 in Ego_r); retail expands it in
+    // InitThingTypes 0x00522A20 (the AddNewClassType virtual call, then the two ThingTypeInfo stores).
+    void AddNewThingType(const CThingTypeInit& init) {
+        CClassFactory::AddNewClassType(init);
+        ThingTypeInfo[init.TypeID].ThingTypeFlags=init.ThingTypeFlags;
+        ThingTypeInfo[init.TypeID].DefClassType=init.DefClassType;
+    }
     CThing* LoadSingleThing(CPersistContext&,long);
     const CMainGameComponent& Component;
     const CGameDefinitionManager& DefinitionManager;
@@ -33,7 +45,7 @@ private:
     CPlayerManager& PlayerManager;
     CNavigatorManager& NavigationManager;
     const CEnvironment* PEnvironment;
-    unsigned long ThingTypeInfo[3]; // std::vector<CThingTypeInfo> +3c
+    std::vector<CThingTypeInfo> ThingTypeInfo;                          // +3c
     unsigned long DeadThingList[3]; // std::vector<CThing*> +48
     bool NonScriptedEntitesPauseMode;
     bool AllEntitesPauseMode;
@@ -46,7 +58,7 @@ private:
     long MaxThingDrawDist;
     unsigned long GlobalThingLoadingBehaviour; // CThingManager::EGlobalThingLoadingBehaviour +80
     unsigned long RenderList[2]; // ThingLList +84
-    unsigned long UpdateLists[3]; // std::vector<ThingLList> +8c
+    std::vector<ThingLList> UpdateLists;                                // +8c
     bool UseMapSpecificUIDs;
     bool UpdateAndRenderAllFlag;
     bool SerialisingGameState;

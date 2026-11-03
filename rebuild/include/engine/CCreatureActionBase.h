@@ -8,11 +8,22 @@
 #include "fable_string.h"
 #include "engine/EActionRegisteredType.h"
 class CThing;class CThingCreatureBase;class CTCWeaponTrail;
+#include "stlport/fable_map.h"
+namespace NCreatureAction { class CActionEventBase; }
 // Original Ego_r TPI0x221c9; native factories and calls prove vtable slots40-42.
 // Complete native sizea8 after the three retail container reductions.
 class CCreatureActionBase : public CBaseObject {
 public:
     static CCountedPointer<CCreatureActionBase> __fastcall GetPActionFromEnum(EActionRegisteredType,CThingCreatureBase&);
+    // RegisterActionEventTypes 0x006932B0 (Ego_r 0x00519CE0 / FableWin 0x01DB27E0 ?RegisterActionEventTypes@CCreatureActionBase@@SIXXZ).
+    static void __fastcall RegisterActionEventTypes();
+private:
+    // Static members (both PDBs: `dynamic initializer for 'CCreatureActionBase::RegisteredActionEvents'`); retail 0x013BA8BC
+    // ?RegisteredActionEvents@CCreatureActionBase@@0V?$map@VCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@...
+    // (private static, keyed by GetHook()); DebugEventTrace is the bool 0x006932B0 clears last.
+    static std::map<CCharString,CCountedPointer<NCreatureAction::CActionEventBase> > RegisteredActionEvents;
+    static bool DebugEventTrace;
+public:
 public:
     virtual ~CCreatureActionBase();
 public:

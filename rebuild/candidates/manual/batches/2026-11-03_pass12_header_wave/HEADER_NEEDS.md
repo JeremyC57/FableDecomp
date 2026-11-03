@@ -1,0 +1,19 @@
+# Header needs of the rows this wave holds (2026-11-03 pass 12 header wave)
+
+Rows graded on our headers are in STATUS.tsv / README.md. Each row below stays in
+`rebuild/candidates/manual/pending/2026-11-02_codex_pass12/verified_pending/<addr>/` with the exact gap.
+
+| Row | Function | What is missing on our headers |
+|---|---|---|
+| 0x009BC120 | CPersistContext::TransferVectorOfSubComponentsLoadText | One-model conflict on CCharString::GetAsCharArray: this row's inlined CleanOutLine needs the select form (`result=&NullChar; if(P) result=P->Data.PeekData();`), 0x00AE8D50 and the landed local models need the branch/ternary form; DIFFER 1639v1639 (SIB operand order). 14 variants tried. |
+| 0x00AE2E20 | CParticleProgram (spring builder) | STLport set const_iterator/begin/end, _Rb_tree copy ctor (_M_copy), vector::swap, CArray(n,x); retail calls CArray<set<ulong>>(n) 0x00AE7880, __destroy_aux<set*> 0x00AE76E0, sort<pair<long,ulong>*> 0x00AE7DC0 out of line. |
+| 0x00CA2BB0 | floor1_encode (libvorbis floor1.c) | Grades RELOCATION_MATCH as /TC, but the file-local `static int ilog` gets the COFF name `@ilog@4`, already bound to 0x00C9FE70 (res0.c); C has no per-file spelling. The landed per-file convention (0x00C9EC40 mapping0_pack: C++ anonymous namespace, `?ilog@?A0x...@@YIHI@Z`) needs a C++ compile, and engine/Vorbis.h is C-only (vorbis_func_residue member `class`), so it cannot be included from C++ without respelling a vendor member. Needs the owner's per-TU static binding rule (queue cx12 / retry1 ilog2). |
+| 0x00402510 | GFMain | engine/CSystemManagerInit.h and the CSystemManager / CAFile (GetProjectPath, SetCurrentPath, error callbacks) / CFileInstaller retail members; GFMain's helpers are GF*.h (owned by the asm-twins wave this session), not attempted. |
+| 0x0041D21B | NUISystem::CManager::CreateComponent | 37 new NUISystem component headers (CSprite .. CEditBox, ctor(long) + sizeof each), CDefinitionManager::GetDefNameFromGlobalIndex with typed InstantiatedDefs (CArray<CInstantiatedDefInfo*>), CDefString/CDefStringTable, CMainGameComponent::GetDisplayEngine, CMovie ctor. |
+| 0x0057E2F1 | CTCHeroStats::OnSerialise | engine/CHeroStatsDef.h and the CTCHeroStats retail class (std::map members, GetDefinitionManager). |
+| 0x0058E99F | CTCInventory::OpenInventoryShortcut | engine/NUISystem_CMenuEntry.h and the CTCInventory / CTCBase retail members (Components, CArray members). |
+| 0x009CF3A0 | CBankFile::WriteSymbolHeaderFile | engine/CBankFileManager.h, CBankFileEntryUpdateData, CPackedUIntArray and a CBankFile retail class (ours is the generated layout); Codex's closure swaps STLport for a bespoke excerpt (stlport46/bank_symbols.h: malloc-backed allocator, noinline _M_insert_overflow, map::operator[] out of line) that has to be rebased onto stlport/fable_containers.h / fable_map.h member by member. |
+| 0x00A9BBE0 | C3DMeshFileLoader::C3DMeshFileLoader | engine/C3DMeshFileLoader.h and about 20 chunk-type headers (C3DMeshFile*Chunk, CChunkedFileLoader, C3DMeshFileRootChunk). |
+| 0x00520D00 | CThingManager::LoadEntitiesFromScript (STLport) | CBasicString operator< (Compare), CStringParser ctor/SkipPastString on the CSTRINGPARSER branch for this TU, CThingManager/CClassFactory AddNewClassType access, CGameDefinitionManager layout assert under its includes; member templates _M_find per D1 not yet rebased. |
+| 0x0051FD80 | CThingManager::LoadSingleThing (STLport) | CThing (SerialiseThingInfo, SetSerialisationSectionName, SetInLimbo, OnInitialActivate), CThingBaseDef::IsLoadableGlobal, CPersistContext::IsBinary, CMemoryDataInputStream::ReadNullTerminatedString, CStringParser ReadAsStringUntilString / SkipWhitespace; 61 errors on first compile. |
+| 0x00B2D9F0 | CEngineSurfaceCompositionManager (STLport find) | engine/CGraphicInfo.h and 21 modified headers of the CEngineSurfaceCompositionManager closure. |

@@ -1,0 +1,50 @@
+addr       parity           behav  name
+00ac2be0   WARN RELOC_NAME: ??_GC3DMeshPartitionBuilderElement@@QAEPAXI@Z -> 00ac39c0 labelled 'C3DMeshPartitionBuilderElement::`scalar deleting destructor''
+00ac2be0   RELOCATION_MATCH PASS   PartitionSpace
+006932b0   RELOCATION_MATCH PASS   RegisterActionEventTypes
+00ae0710   RELOCATION_MATCH PASS   CalculateAveragePatchSize
+00ae0070   RELOCATION_MATCH PASS   ApplyTransform
+00ae8d50   WARN RELOC_NAME: ??$__copy@PAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@PAU12@H@std@@YIPAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z -> 00ae9cb0 labelled 'std::__copy<std::pair<long, CCountedPointer<NParticleEngine::CParticleEmitter>> *, std::pair<long, CCountedPointer<NParticleEngine::CParticleEmitter>> *, int>'
+00ae8d50   WARN RELOC_NAME: ??$__destroy_aux@PAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@std@@YIXPAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@0@0ABU__false_type@0@@Z -> 00ae9d50 labelled 'std::__destroy_aux<std::pair<long, CCountedPointer<NParticleEngine::CParticleEmitter>> *>'
+00ae8d50   WARN RELOC_NAME: ?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z -> 009b9ba0 labelled 'CStringParser::FindKeyword'
+00ae8d50   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00ae8d50   RELOCATION_MATCH PASS   Load
+00b3be10   RELOCATION_MATCH PASS   BuildAlphaStippleTexture
+00e5ebd0   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00e5ebd0   RELOCATION_MATCH PASS   MakeHenchmanComment
+00e0a820   WARN RELOC_NAME: ??0?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbf70 labelled 'std::_Rb_tree<T_node0x24_00cdbf70>::_Rb_tree'
+00e0a820   WARN RELOC_NAME: ??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00e0a820   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00e0a820   RELOCATION_MATCH PASS   TurnToBalv
+008edff0   RELOCATION_MATCH PASS   CWillButtonHelperTimer
+00522a20   RELOCATION_MATCH PASS   InitThingTypes
+00821010   WARN RELOC_NAME: ?SetThingToDelete@CScriptedMapBrush@@QAEX_K@Z -> 0082e8f0 labelled 'CTCLook::IsTurningBody'
+00821010   WARN RELOC_NAME: ?SetThingToAdd@CScriptedMapBrush@@QAEX_K@Z -> 0082e9a0 labelled 'CTCLook::IsTurningBody'
+00821010   WARN RELOC_NAME: ?SetAsActivated@CThing@@QAEX_N@Z -> 004c7770 labelled 'CThing::SetAsGameStatePersisted'
+00821010   RELOCATION_MATCH PASS   LoadBrushesFromFile
+
+WINS: 11
+  00ac2be0 RELOCATION_MATCH C3DMeshPartitionBuilderElement::?PartitionSpace@C3DMeshPartitionBuilderElement@@AAEJPBVC3DVertex2@@JM@Z
+  006932b0 RELOCATION_MATCH CCreatureActionBase::?RegisterActionEventTypes@CCreatureActionBase@@SIXXZ
+  00ae0710 RELOCATION_MATCH CParticleProgram::?CalculateAveragePatchSize@CParticleProgram@@AAEXABVCParticleSimulation@@@Z
+  00ae0070 RELOCATION_MATCH CParticleProgram::?ApplyTransform@CParticleProgram@@QAEXABVCMatrix3x4@@@Z
+  00ae8d50 RELOCATION_MATCH NParticleEngine::CParticleEmitterDatabase::?Load@CParticleEmitterDatabase@NParticleEngine@@IAEXAAVCAFile@@ABVCEmitterDatabaseSerialiseInfo@2@@Z
+  00b3be10 RELOCATION_MATCH CEngineResourceManager::?BuildAlphaStippleTexture@CEngineResourceManager@@AAEXJAAV?$CArray@E@@@Z
+  00e5ebd0 RELOCATION_MATCH NScript::CV_BodyGuardScript::?MakeHenchmanComment@CV_BodyGuardScript@NScript@@QAE_NABVCCharString@@JW4EHENCHMAN_COMMENT@12@ABVCScriptThing@@@Z
+  00e0a820 RELOCATION_MATCH NScript::CQ_TraderEscortScript::?TurnToBalv@CQ_TraderEscortScript@NScript@@QAEXVCScriptThing@@@Z
+  008edff0 RELOCATION_MATCH CWillButtonHelperTimer::??0CWillButtonHelperTimer@@QAE@W4EHeroAbility@@AAVCThing@@@Z
+  00522a20 RELOCATION_MATCH CThingManager::?InitThingTypes@CThingManager@@QAEXXZ
+  00821010 RELOCATION_MATCH CMap::?LoadBrushesFromFile@CMap@@QAEXAAVCAFile@@@Z
+
+LANDED 11 wins into src/compiled + tests + catalog + oracle
+  C3DMeshPartitionBuilderElement_PartitionSpace_00ac2be0
+  CCreatureActionBase_RegisterActionEventTypes_006932b0
+  CParticleProgram_CalculateAveragePatchSize_00ae0710
+  CParticleProgram_ApplyTransform_00ae0070
+  NParticleEngineCParticleEmitterDatabase_Load_00ae8d50
+  CEngineResourceManager_BuildAlphaStippleTexture_00b3be10
+  NScriptCVBodyGuardScript_MakeHenchmanComment_00e5ebd0
+  NScriptCQTraderEscortScript_TurnToBalv_00e0a820
+  CWillButtonHelperTimer_CWillButtonHelperTimer_008edff0
+  CThingManager_InitThingTypes_00522a20
+  CMap_LoadBrushesFromFile_00821010

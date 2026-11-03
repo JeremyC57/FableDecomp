@@ -27,8 +27,16 @@ private:
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
+    // Header wave 2026-11-03 (Codex pass 12 row 0x008EDFF0 constructs PCreature(&creature) inline, SetPItem 0x00A01B90 call):
+    // FableWin ??0?$CIntelligentPointer@VCThing@@@@QAE@XZ / QAE@PAVCThing@@@Z, ?Set@..QAEXPAVCThing@@@Z and the private
+    // ?SetPointer@?$CIntelligentPointer@$$CBVCThing@@@@AAEXPBVCThing@@@Z.
+    CIntelligentPointer() { }
+    CIntelligentPointer(T* pointer) { SetPointer(pointer); }
+    void Set(T* pointer) { SetPointer(pointer); }
     T* Get() const { return static_cast<T*>(GetPItem()); }             // FableWin ?Get@?$CIntelligentPointer@..@@QBEPAV..@XZ
     T* operator->() const { return Get(); }                             // FableWin ??C?$CIntelligentPointer@..@@QBEPAV..@XZ
+private:
+    void SetPointer(const T* pointer) { SetPItem(const_cast<CBaseObject*>(static_cast<const CBaseObject*>(pointer))); }
 };
 #pragma pack(pop)
 FABLE_STATIC_ASSERT(sizeof(CBaseIntelligentPointer)==8);

@@ -257,6 +257,33 @@ template<class _Tp,class _Alloc> void vector<_Tp,_Alloc>::_M_insert_overflow(ite
     if(!atEnd) newFinish=(_Tp*)__copy_trivial(position,this->_M_finish,newFinish);
     _M_clear();_M_set(newStart,newFinish,newStart+len);
 }
+#ifdef FABLE_RETAIL_STLP_VECTOR
+// Retail branch (pass 12 header wave): STLport 4.6 _vector.h includes _vector.c, so every retail TU that calls resize() /
+// insert(pos, n, x) saw _M_fill_insert's body (stl/_vector.c lines 61-86, reproduced here) and VC7.1 still kept the call out of
+// line. The visible body changes the caller's register allocation: 0x00AC2BE0 PartitionSpace matches only with it (2775v2791
+// declaration-only; retail's _M_fill_insert<bool> is 0x004676EF).
+template<class _Tp,class _Alloc> void vector<_Tp,_Alloc>::_M_fill_insert(iterator position,size_type n,const _Tp& x) {
+    if(n!=0) {
+        if(size_type(this->_M_end_of_storage._M_data-this->_M_finish)>=n) {
+            _Tp x_copy=x;
+            const size_type elems_after=this->_M_finish-position;
+            _Tp* old_finish=this->_M_finish;
+            if(elems_after>n) {
+                __uninitialized_copy(this->_M_finish-n,this->_M_finish,this->_M_finish,_IsPODType());
+                this->_M_finish+=n;
+                __copy_backward_ptrs(position,old_finish-n,old_finish,_IsPODType());
+                fill(position,position+n,x_copy);
+            } else {
+                uninitialized_fill_n(this->_M_finish,n-elems_after,x_copy);
+                this->_M_finish+=n-elems_after;
+                __uninitialized_copy(position,old_finish,this->_M_finish,_IsPODType());
+                this->_M_finish+=elems_after;
+                fill(position,old_finish,x_copy);
+            }
+        } else _M_insert_overflow(position,x,_IsPODType(),n,false);
+    }
+}
+#endif
 // _pair.h
 template<class _T1,class _T2> struct pair {
     typedef _T1 first_type;

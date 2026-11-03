@@ -9,6 +9,9 @@
 // then CThing::Dead, bit 0 of +0x91).
 #include "engine/CThingCreatureBase.h"
 class CThingAICreature : public CThingCreatureBase {
+public:
+    // Header wave 2026-11-03 (row 0x00522A20): Ego_r.pdb ?Alloc@CThingAICreature@@SIPAVCClass@@XZ.
+    static CClass* __fastcall Alloc();
 private:
     unsigned char _pad_0x160[0x78];                                      // +0x160 RelationshipsInit .. Suspenders (Ego_r.pdb members, opaque)
 };

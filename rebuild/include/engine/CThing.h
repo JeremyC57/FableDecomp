@@ -137,6 +137,9 @@ public:
     // ?SetAsRenderedThisFrame@CThing@@QAEXK@Z, the only spelling bound to 0x004C7590; `push 4; call` with ecx = the TC's ParentThing
     // at 0x005EBF44). A declaration only: no layout change.
     void SetAsRenderedThisFrame(unsigned long);                  // 0x004C7590
+    void SetAsActivated(bool);                                   // Ego_r.pdb ?SetAsActivated@CThing@@QAEX_N@Z (row 0x00821010)
+    // Header wave 2026-11-03 (row 0x00522A20 InitThingTypes registers it): Ego_r.pdb ?Alloc@CThing@@SIPAVCClass@@XZ.
+    static CClass* __fastcall Alloc();
 #endif
 protected:
     CWorld& GetWorld();

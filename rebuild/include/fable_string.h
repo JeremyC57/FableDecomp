@@ -3,6 +3,9 @@
 #include <stddef.h>
 
 #include "rebuild_abi.h"
+#ifdef FABLE_RETAIL_CCHARSTRING
+#include <string.h>
+#endif
 
 #ifdef FABLE_RETAIL_CWIDESTRING
 // Retail CWideStringData (Ego_r TPI: protected Data, public NoRefs at +0x0C, const operator==); the STLport
@@ -43,6 +46,9 @@ public:
     const T* PeekData() const { return PData; }
     unsigned long GetLength() const { return StringLength; }
     bool operator==(const CBasicString& other) const { if(StringLength!=other.StringLength)return false; return !Compare(PData,other.PData); }
+    // Ego_r 0x0040C910 / FableWin 0x01899D90 ??8?$CBasicString@D@@QBE_NPBD@Z (retail out-of-line copy 0x004115A0; a TU that holds
+    // the template body expands it, 0x009BC120).
+    bool operator==(const T* text) const;
 };
 class CCharStringData
 { public:
@@ -161,8 +167,17 @@ public:
     const CCharString& operator+=(const CCharString&);
     // Inline in retail (no out-of-line copy is bound): ?GetLength@CCharString@@QBEJXZ (Ego_r + FableWin), ?IsEmpty@CCharString@@QBE_NXZ
     // (FableWin 0x01D34B90); 0x00522720 tests '!PStringData || !StringLength' in place.
-    long GetLength() const { return PStringData ? (long)PStringData->Data.GetLength() : 0; }
+    // GetLength: the null test as `PStringData==0 ? 0 : ...` lets VC7.1 reuse the zero register (0x00E5EBD0 `test; je; mov eax,[eax+4];
+    // dec eax`; the `PStringData ? ... : 0` form adds `jmp; xor eax,eax`, 1068v1064); 0x00521620 / 0x00522720 are byte-identical either way.
+    long GetLength() const { return PStringData==0 ? 0 : (long)PStringData->Data.GetLength(); }
     bool IsEmpty() const { return GetLength() == 0; }
+    // Ego_r 0x004037B0 / FableWin 0x0186C770 ?GetAsCharArray@CCharString@@QBEPBDXZ and FableWin 0x01899D30
+    // ??8CCharString@@QBE_NPBD@Z, both inline in retail (0x00AE8D50 expands GetAsCharArray: `test; jne; mov eax,offset NullChar; jmp; mov eax,[eax]`;
+    // the landed local models spell the same ternary). NullChar is 0x0129AAF4 (static data member per the Ego_r TPI as Codex pass 12 read it).
+    const char* GetAsCharArray() const { return PStringData==0 ? &NullChar : PStringData->Data.PeekData(); }
+    bool operator==(const char* text) const { if(!PStringData) { if(strcmp(text,"")==0) return true; return false; } return PStringData->Data==text; }
+    void Truncate(unsigned long);                              // 0x0099F2A0 ?Truncate@CCharString@@QAEXK@Z (Ego_r 0x00AFAB00 / FableWin 0x02F61D70)
+    void LoadFromFile(class CAFile&,class CASuspendableProcess*,long);   // ?LoadFromFile@CCharString@@QAEXAAVCAFile@@PAVCASuspendableProcess@@J@Z (Ego_r)
 #else
     CCharString(const char* text, long length);
 #endif
@@ -181,6 +196,7 @@ protected:
 
 #ifdef FABLE_RETAIL_CCHARSTRING
     static long NoStrings;
+    static const char NullChar;                                // Ego_r TPI CCharString (protected static); GetAsCharArray's empty result
     CCharStringData* PStringData;                              // +0x00 (Ego_r TPI 0x27dc: protected PStringData)
 #else
 private:

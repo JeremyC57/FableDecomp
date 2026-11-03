@@ -170,7 +170,15 @@ private:
 public:
     typedef typename _Rep_type::const_iterator const_iterator;
     typedef typename _Rep_type::iterator iterator;
+#ifdef FABLE_RETAIL_STLP_MAP
+    // Retail branch (pass 12 header wave, 0x00E0A820): STLport 4.6 _map.h declares the no-argument constructor separately
+    // (`map() : _M_t(_Compare(), allocator_type()) {}` and `explicit map(const _Compare&, const allocator_type& = ...)`), so a
+    // default-constructed local passes no argument temporaries: retail calls ??0?$map@...@QAE@XZ (0x00CDBF70) with only `this`.
+    map():_M_t(Compare(),A()){}
+    explicit map(const Compare& c,const A& a=A()):_M_t(c,a){}
+#else
     explicit map(const Compare& c=Compare(),const A& a=A()):_M_t(c,a){}
+#endif
     iterator begin(){return _M_t.begin();}
     const_iterator begin()const{return _M_t.begin();}
     iterator end(){return _M_t.end();}

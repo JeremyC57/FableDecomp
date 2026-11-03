@@ -11,7 +11,9 @@ public:
     CGameDefinitionManager();
     virtual ~CGameDefinitionManager();
     virtual void InitAndCompile();
+#ifndef FABLE_RETAIL_CGAMEDEFINITIONMANAGER
     template<class T> bool GetDef(long,CDefPointer<T>&) const;
+#endif // retail: no CGameDefinitionManager::GetDef in Ego_r.pdb / FableWin.pdb; callers reach CDefinitionManager::GetDef(long,CDefPointer<const T>*) (0x008EDFF0)
 private:
     unsigned char _pad_0xd0[16];
 };

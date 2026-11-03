@@ -8,6 +8,10 @@ protected:
     bool OverrideAutomaticLocking;
 public:
     static long __fastcall StatGetType() { return 3; }
+#ifdef FABLE_RETAIL_CTHINGBUILDING
+    // Header wave 2026-11-03 (row 0x00522A20): Ego_r.pdb ?Alloc@CThingBuilding@@SIPAVCClass@@XZ.
+    static CClass* __fastcall Alloc();
+#endif
     bool IsPointInside(const C3DVector&) const;
 };
 FABLE_STATIC_ASSERT(sizeof(CThingBuilding)==0xd8);

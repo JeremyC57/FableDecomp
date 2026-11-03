@@ -13,6 +13,9 @@ namespace std { template<class T> class allocator; template<class A,class B> str
 // Mode+18, PLoadStream+24 and PSaveStream+28. All original fields retained.
 class CPersistContext_TransferableVectorGenericType;
 class CPersistContext_TransferableComponentGenericType;
+#ifdef FABLE_RETAIL_CPERSISTCONTEXT
+class CPersistContext_TransferableVectorOfSubComponentsGenericType;
+#endif
 class CPersistContextWriteSection;
 template<class T> class CPersistTraits;
 class CPersistContext {
@@ -32,6 +35,12 @@ public:
     // ??0CPersistContext@@QAE@AAVCDataOutputStream@@_N@Z) and the PSaveStream accessor (inline in retail).
     CPersistContext(CDataOutputStream&,bool);
     CDataOutputStream* GetPSaveStream() { return PSaveStream; }
+    // pass 12 header wave (0x009BC120): Ego_r / FableWin ?PersistError@CPersistContext@@QBEXABVCStringParser@@ABVCCharString@@@Z,
+    // ?CheckUnknownSymbols@CPersistContext@@QAEXXZ (out of line: 0x009BAA90 / 0x009BBBF0); SetAsSingleTransfer has no copy in
+    // either PDB name set (inline: 0x009BC120 stores SingleTransfer=true on its nested context).
+    void PersistError(const CStringParser&,const CCharString&) const;
+    void CheckUnknownSymbols();
+    void SetAsSingleTransfer() { SingleTransfer=true; }
 #endif
     template<class T> void Transfer(T&);
     template<class T> void Transfer(const char*,T&);
@@ -40,6 +49,12 @@ public:
     template<class T> void TransferVectorOfSubComponents(std::vector<T,std::allocator<T> >&);
 protected:
     void CheckCRC(const char*);
+#ifdef FABLE_RETAIL_CPERSISTCONTEXT
+    // Protected in both PDBs: ?TransferVectorOfSubComponentsLoadText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableVectorOfSubComponentsGenericType@@@Z
+    // (0x009BC120) and ?CleanOutLine@CPersistContext@@IAEXJJ@Z (0x009BB0D0, out of line).
+    void TransferVectorOfSubComponentsLoadText(const char*,CPersistContext_TransferableVectorOfSubComponentsGenericType&);
+    void CleanOutLine(long,long);
+#endif
     const CDefinitionManager* PDefinitionManager;
     const CSymbolMap* PSymbolMap;
     CStringParser* PParser;

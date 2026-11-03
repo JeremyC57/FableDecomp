@@ -1,0 +1,7 @@
+address	name	evidence
+0082e8f0	CScriptedMapBrush::SetThingToDelete	Ego_r.pdb ?SetThingToDelete@CScriptedMapBrush@@QAEX_K@Z; 0x00821010 calls it in the delete loop with the brush as ecx; body inserts into ThingsToDelete (`add ecx,0x14`, Ego_r member order); landed source still CTCLook::IsTurningBody (queued hdr1103)
+0082e9a0	CScriptedMapBrush::SetThingToAdd	Ego_r.pdb ?SetThingToAdd@CScriptedMapBrush@@QAEX_K@Z; 0x00821010 add loop; body inserts into ThingsToAdd (+0x2c); landed source still CTCLook::IsTurningBody (queued hdr1103)
+004c7770	CThing::SetAsActivated	Ego_r.pdb ?SetAsActivated@CThing@@QAEX_N@Z; 0x00821010 `pthing->SetAsActivated(false)`; already bound to 0x004C7770 by landed 0x00820790
+009b9ba0	CStringParser::SkipPastString	Ego_r.pdb ?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z (Ego_r 0x00B0E710, donor order with SkipPastWholeString 0x009B9C00); 0x00AE8D50 call graded RELOCATION_MATCH (queue sec5b)
+00cdbf70	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::map	FableWin ??0?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@...@std@@QAE@XZ (0x03B0B190); STLport separate map() ctor, 0x00E0A820 graded RELOCATION_MATCH
+006e7ab0	CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer	0x00E0A820 binds ??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ (out-of-line specialization, graded RELOCATION_MATCH)

@@ -5,6 +5,7 @@
 // CBaseClassNonCopyable (vptr +0), the base of CThingManager; original
 // ClassTypeInfo vector12, two counters, ClassList list4, full size28.
 #include "engine/CBaseClassNonCopyable.h"
+#include "engine/CClassTypeInfo.h"
 class CClassTypeInit;
 class CClass;
 class CClassFactory : public CBaseClassNonCopyable {
@@ -14,7 +15,7 @@ protected:
     virtual void AddNewClassType(const CClassTypeInit&);
     virtual void OnCreateClass(CClass&);
     virtual void OnDeleteClass(CClass&);
-    unsigned long ClassTypeInfo[3]; // std::vector<CClassTypeInfo> +4
+    std::vector<CClassTypeInfo> ClassTypeInfo;                          // +4 (header wave 2026-11-03: typed for row 0x00522A20, ClassTypeInfo.size())
     unsigned long MaxClassTypeID;
     unsigned long NoAllocatedClasses;
     unsigned long ClassList[1]; // std::list<CClass*> +18
