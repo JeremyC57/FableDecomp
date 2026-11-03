@@ -1,0 +1,42 @@
+address	name	evidence
+00c01750	deflate_slow	Codex pass 12 wave A: RELOCATION_MATCH; zlib 1.2.1 deflate.c static deflate_slow (vendor, cdecl leaf _deflate_slow)
+00ca4160	vorbis_lpc_to_lsp	Codex pass 12 wave A: RELOCATION_MATCH; libvorbis lsp.c vorbis_lpc_to_lsp (leaf @vorbis_lpc_to_lsp@12)
+00c9f8c0	mapping0_inverse	Codex pass 12 wave A: RELOCATION_MATCH; libvorbis mapping0.c static mapping0_inverse (leaf @mapping0_inverse@8)
+00cb38e0	ImeUi_RenderUI	Codex pass 12 wave B: RELOCATION_MATCH; DXUT ImeUi.cpp ImeUi_RenderUI (Ego_r + FableWin public ?ImeUi_RenderUI@@YIX_N0@Z)
+00cb48a0	ImeUi_ProcessMessage	Codex pass 12 wave B: RELOCATION_MATCH; DXUT ImeUi.cpp ImeUi_ProcessMessage (Ego_r + FableWin public)
+00cb2ee0	ImeUi_SetScreenDimension	cx12 respell of landed SetCurrentPair00cb2ee0: Ego_r 0x00C94D30 + FableWin 0x03581520 ?ImeUi_SetScreenDimension@@YIXII@Z; body stores g_screenWidth/g_screenHeight under g_bInitialized; RELOCATION_MATCH after respell
+00cb26b0	SendControlKeys	cx12: Ego_r 0x00C92A80 + FableWin 0x0357e630 SendControlKeys (DXUT ImeUi.cpp file static, fastcall ?SendControlKeys@@YIXII@Z); RELOCATION_MATCH after respell
+0052cc50	NUISystem::CChangingStateComponent::CChangingStateComponent	cx12: Ego_r + FableWin ??0CChangingStateComponent@NUISystem@@QAE@J@Z; base ctor called by NUISystem::CSprite::CSprite 0x0041B800 (was local CDraggableInto)
+00415dd0	CDefString::GetString	cx12: Ego_r + FableWin ?GetString@CDefString@@QBE?AVCCharString@@XZ; called by CQuestManager::ActivateQuestCard 0x004B4AA0 (by-value return into a named local)
+0143cd2c	g_CaretInfo	cx12 ImeUi respell: DXUT ImeUi.cpp CompStringAttribute g_CaretInfo; ImeUi_SetCaretPosition 0x00CB2860 writes caretX/caretY
+0143cd54	g_screenWidth	cx12 ImeUi respell: DXUT ImeUi.cpp; ImeUi_SetScreenDimension 0x00CB2EE0 (Ego_r public ?g_screenWidth@@3IA)
+0143cd60	g_screenHeight	cx12 ImeUi respell: DXUT ImeUi.cpp; ImeUi_SetScreenDimension 0x00CB2EE0 (Ego_r public ?g_screenHeight@@3IA)
+0143cd64	ImeUiCallback_DrawRect	cx12 ImeUi respell: DXUT ImeUi.h callback pointer, set by CIME::Initialise 0x00405650
+0143e630	ImeUiCallback_OnChar	cx12 ImeUi respell: DXUT ImeUi.h callback pointer, set by CIME::Initialise 0x00405650
+0143cf10	g_szCompositionString	cx12 ImeUi respell: DXUT ImeUi.cpp WCHAR g_szCompositionString[256]; ImeUi_GetCaretStatus 0x00CB2EC0
+0143e890	g_bImeEnabled	cx12 ImeUi respell: DXUT ImeUi.cpp; ImeUi_IsEnabled 0x00CB28E0
+0143e8ae	g_bInitialized	cx12 ImeUi respell: DXUT ImeUi.cpp; ImeUi_SetCaretPosition / GetCaretStatus / SetScreenDimension guard
+0143e8af	g_bCandList	cx12 ImeUi respell: DXUT ImeUi.cpp file static (undecorated _g_bCandList proven by alias-analysis bytes in 0x00CB2B90)
+0143e8b8	g_hklCurrent	cx12 ImeUi respell: DXUT ImeUi.cpp file static HKL (undecorated _g_hklCurrent; extern spelling DIFFERs in 9 rows)
+0143e688	g_dwCount	cx12 ImeUi respell: DXUT ImeUi.cpp file static (0x00CB4340)
+0143e618	g_dwSelection	cx12 ImeUi respell: DXUT ImeUi.cpp file static (0x00CB4340)
+0143cd50	g_uCandPageSize	cx12 ImeUi respell: DXUT ImeUi.cpp file static (0x00CB4340)
+0143e8bc	g_uCodePage	cx12 ImeUi respell: DXUT ImeUi.cpp g_uCodePage (0x00CB4340)
+0143cf0c	g_hwndCurr	cx12 ImeUi respell: DXUT ImeUi.cpp g_hwndCurr (SetImeApi 0x00CB36E0)
+0143e684	_GetReadingString	cx12 ImeUi respell: DXUT ImeUi.cpp function pointer _GetReadingString (SetImeApi 0x00CB36E0)
+0143ce00	_ShowReadingWindow	cx12 ImeUi respell: DXUT ImeUi.cpp function pointer _ShowReadingWindow (SetImeApi 0x00CB36E0)
+00cf9610	NScript::CQ_AmbushTradersScript::OnPersist	Codex pass 12 wave D: RELOCATION_MATCH on our headers; Ego_r + FableWin
+00d13130	NScript::CQ_BountyHuntScript::OnPersist	Codex pass 12 wave D: RELOCATION_MATCH on our headers; Ego_r + FableWin
+00d27460	NScript::CQ_EndGameScript::Main	Codex pass 12 wave D: RELOCATION_MATCH on our headers; Ego_r + FableWin
+00e247f0	NScript::CQR_EscortTraderScript::Init	Codex pass 12 wave D: RELOCATION_MATCH on our headers; Ego_r + FableWin
+00e377d0	NScript::CV_AssassinAttacksScript::Main	Codex pass 12 wave D: RELOCATION_MATCH on our headers; Ego_r + FableWin
+00e39b40	NScript::CV_BordelloScript::Main	Codex pass 12 wave D: RELOCATION_MATCH on our headers; Ego_r + FableWin
+00e92a50	NScript::CV_HiddenBootyScript::Main	Codex pass 12 wave D: RELOCATION_MATCH on our headers; Ego_r + FableWin
+00e9b690	NScript::CV_HeroDuelScript::DoMission	Codex pass 12 wave D: RELOCATION_MATCH on our headers; Ego_r + FableWin
+00ee42a0	NScript::CV_TourGuideScript::Init	Codex pass 12 wave D: RELOCATION_MATCH on our headers; Ego_r + FableWin
+00ef71e0	NScript::CPersonalScript_EmptyScript::CArcherMan::Main	Codex pass 12 wave D: RELOCATION_MATCH on our headers; Ego_r + FableWin
+00ef7be0	NScript::CPersonalScript_EmptyScript::CChatter1::Main	Codex pass 12 wave D: RELOCATION_MATCH on our headers; Ego_r + FableWin
+00ef80a0	NScript::CPersonalScript_EmptyScript::CChatter2::Main	Codex pass 12 wave D: RELOCATION_MATCH on our headers; Ego_r + FableWin
+00e63890	NScript::CV_ChickenKickingScript::CSpectator::Main	Codex pass 12 wave D: RELOCATION_MATCH on our headers; Ego_r + FableWin
+00e8a2b0	NScript::CV_FisticuffsClubScript::CTyler::FightWarmupRounds	Codex pass 12 wave D: RELOCATION_MATCH on our headers; Ego_r + FableWin
+00f29530	CScriptDef::~CScriptDef	Codex pass 12 wave D: RELOCATION_MATCH on our headers; compiler-generated base dtor path (FABLE_RETAIL_CPARENTDEFCLASSBASE)

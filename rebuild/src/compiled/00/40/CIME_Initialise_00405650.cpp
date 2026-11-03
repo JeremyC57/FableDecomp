@@ -36,11 +36,11 @@ public:
 struct NativeCIME : CIME { void Reset(); }; //004051C0
 }
 struct IMEUI_VERTEX;
-extern void (FABLE_FASTCALL *g_ImeDrawRect)(int,int,int,int,unsigned long); //0143CD64
+extern void (FABLE_FASTCALL *ImeUiCallback_DrawRect)(int,int,int,int,unsigned long); //0143CD64 (DXUT ImeUi.h; was g_ImeDrawRect, Codex pass 12 respell)
 extern void* (FABLE_FASTCALL *ImeUiCallback_Malloc)(unsigned int); //0143E514 (DirectX SDK ImeUi.cpp; as 0x00CB2310 / 0x00CB2670)
 extern void (FABLE_FASTCALL *ImeUiCallback_Free)(void*); //0143CF08 (DirectX SDK ImeUi.cpp; as 0x00CB2310)
 extern void (FABLE_FASTCALL *ImeUiCallback_DrawFans)(const IMEUI_VERTEX*,unsigned int); //0143CDFC (SDK ImeUi.cpp callback pointer, chunk 685; naming wave 19)
-extern void (FABLE_FASTCALL *g_ImeOnChar)(wchar_t); //0143E630
+extern void (FABLE_FASTCALL *ImeUiCallback_OnChar)(wchar_t); //0143E630 (DXUT ImeUi.h; was g_ImeOnChar, Codex pass 12 respell)
 void FABLE_FASTCALL Callback_DrawRect(int,int,int,int,unsigned long); //00404D50
 void* FABLE_FASTCALL Callback_malloc(unsigned int); //00404A60, genuine malloc importBFEA0E
 void FABLE_FASTCALL Callback_free(void*); //00404A70, freeBFEA14
@@ -79,11 +79,11 @@ namespace NUISystem {
 void CIME::Initialise(HWND__* window) {
  static_cast<NativeCIME*>(this)->Reset();
  if(enableIme_) {
-  g_ImeDrawRect=Callback_DrawRect;
+  ImeUiCallback_DrawRect=Callback_DrawRect;
   ImeUiCallback_Malloc=Callback_malloc;
   ImeUiCallback_Free=Callback_free;
   ImeUiCallback_DrawFans=Callback_DrawFans;
-  g_ImeOnChar=Callback_OnChar;
+  ImeUiCallback_OnChar=Callback_OnChar;
   window_=window;
   initialised_=ImeUi_Initialize(window_,false);
   if(initialised_) {

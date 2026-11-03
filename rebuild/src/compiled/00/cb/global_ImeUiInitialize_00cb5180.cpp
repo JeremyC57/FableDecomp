@@ -90,7 +90,7 @@ void __fastcall ImeUi_EnableIme(bool bEnable);      // 0x00CB5130
 extern HWND          g_hwndMain;                    // 0x0143E510
 extern HWND          g_hwndCurr;                    // 0x0143CF0C
 extern HIMC          g_himcOrg;                     // 0x0143E634
-extern HKL           g_hklCurrent;                  // 0x0143E8B8
+static HKL           g_hklCurrent;                  // 0x0143E8B8 // ImeUi.cpp file static: SetImeApi 0x00CB36E0 differs 178v179 with it extern (Codex pass 12 landing 2026-11-03)
 extern bool          g_bInitialized;                // 0x0143E8AE
 extern unsigned long g_bDisableImeCompletely;       // 0x0143E89C
 extern OSVERSIONINFOA g_osi;                        // 0x0143CD68

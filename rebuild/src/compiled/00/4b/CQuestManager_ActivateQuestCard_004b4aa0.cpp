@@ -9,10 +9,10 @@ class CCharString { public:
     void* PStringData;
     ~CCharString();                                      // 0x0099EAE0
 };
-namespace N_00415dd0 { struct CDefString {
+class CDefString { public:                             // Codex pass 12 respell (2026-11-03): was N_00415dd0::CDefString::operator CCharString
     long m_index;
-    operator CCharString() const;                        // 0x00415DD0
-}; } using N_00415dd0::CDefString;
+    CCharString GetString() const;                       // 0x00415DD0 (FableWin donor order: ??B 0x018C20E0 = retail 0x00415D70, GetString 0x018C2120 = 0x00415DD0)
+};
 class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -158,7 +158,12 @@ bool CQuestManager::ActivateQuestCard(CThing* card, bool loadResources)
                         card->SetAsGameStatePersisted(true);
                         World->GuildSealRecallPos = C3DVector(0.0f, 0.0f, 0.0f);
                         World->GuildSealRecallAngleXY = 0.0f;
-                        RemoveAvailableQuestCardType(card->GetDefName());
+                        {
+                            // the def name is a named local (retail passes its frame address, `lea ecx,[esp+20h] ; push ecx`, not
+                            // GetString's eax): 0x00415DD0 is CDefString::GetString (Codex pass 12 respell, 2026-11-03)
+                            CCharString defName = card->GetDefName().GetString();
+                            RemoveAvailableQuestCardType(defName);
+                        }
                         CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UpdateMiniMapMarkers(false);
                         if (--def->RefCount == 0)
                             def->DeleteThis();

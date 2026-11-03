@@ -37,11 +37,15 @@ extern BOOL (__stdcall *_ImmUnlockIMC)(HIMC);
 extern void* (__stdcall *_ImmLockIMCC)(HIMCC);
 extern BOOL (__stdcall *_ImmUnlockIMCC)(HIMCC);
 extern WCHAR g_szCandidate[10][256];
-extern DWORD g_dwCount;
+// ImeUi.cpp file statics (DXUT `static DWORD g_dwSelection, g_dwCount; static UINT g_uCandPageSize;`): Codex pass 12's
+// ImeUi_ProcessMessage 0x00CB48A0 differs with g_uCandPageSize extern and needs /Oa with g_dwSelection extern, so retail
+// compiled them static; one spelling per address (`_g_x`) in every split row (2026-11-03).
+static DWORD g_dwCount;
 static DWORD g_dwSelection;
 extern bool g_bHorizontalReading,g_bReadingWindow;
 extern BYTE LeadByteTable[256];
-extern UINT g_uCodePage,g_uCandPageSize;
+extern UINT g_uCodePage;
+static UINT g_uCandPageSize;
 extern int g_iReadingError;
 extern WCHAR g_szReadingString[32];
 extern OSVERSIONINFOA g_osi;

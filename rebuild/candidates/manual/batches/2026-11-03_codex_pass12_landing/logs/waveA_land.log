@@ -1,0 +1,17 @@
+addr       parity           behav  name
+00c01750   RELOCATION_MATCH PASS   deflate_slow
+00ca4160   WARN RELOC_NAME: __alloca_probe -> 00bfea30 labelled '__chkstk'
+00ca4160   WARN RELOC_ALIAS: __CIacos -> 00bfeba2 is the import thunk 'MSVCR71.DLL::_CIacos'
+00ca4160   RELOCATION_MATCH PASS   vorbis_lpc_to_lsp
+00c9f8c0   WARN RELOC_NAME: __alloca_probe -> 00bfea30 labelled '__chkstk'
+00c9f8c0   RELOCATION_MATCH PASS   mapping0_inverse
+
+WINS: 3
+  00c01750 RELOCATION_MATCH _global::_deflate_slow
+  00ca4160 RELOCATION_MATCH _global::@vorbis_lpc_to_lsp@12
+  00c9f8c0 RELOCATION_MATCH _global::@mapping0_inverse@8
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  global_deflateslow_00c01750
+  global_vorbislpctolsp_00ca4160
+  global_mapping0inverse_00c9f8c0

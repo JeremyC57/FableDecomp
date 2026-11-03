@@ -1,11 +1,11 @@
 #include <cstdio>
-#include <cstring>
-#include <cmath>
-
-static bool g_enabled; static void* g_first; static void* g_second;
-void SetCurrentPair(void* a, void* b) { if (g_enabled) { g_first = a; g_second = b; } }
+// Links the source object: ImeUi_SetScreenDimension stores the size when g_bInitialized (DXUT ImeUi.cpp).
+bool g_bInitialized; unsigned int g_screenWidth; unsigned int g_screenHeight;
+void __fastcall ImeUi_SetScreenDimension(unsigned int width, unsigned int height);
 int main() {
-    int x, y; g_enabled = false; SetCurrentPair(&x, &y); if (g_first || g_second) { std::printf("00cb2ee0_TEST FAIL\n"); return 1; }
-    g_enabled = true; SetCurrentPair(&x, &y); if (g_first != &x || g_second != &y) { std::printf("00cb2ee0_TEST FAIL\n"); return 1; }
+    g_bInitialized = false; ImeUi_SetScreenDimension(640, 480);
+    if (g_screenWidth || g_screenHeight) { std::printf("00cb2ee0_TEST FAIL\n"); return 1; }
+    g_bInitialized = true; ImeUi_SetScreenDimension(640, 480);
+    if (g_screenWidth != 640 || g_screenHeight != 480) { std::printf("00cb2ee0_TEST FAIL\n"); return 1; }
     std::printf("00cb2ee0_TEST PASS\n"); return 0;
 }

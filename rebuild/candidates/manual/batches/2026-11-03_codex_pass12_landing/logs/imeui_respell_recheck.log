@@ -1,0 +1,68 @@
+addr       parity           behav  name
+00cb2860   RELOCATION_MATCH PASS   ImeUi_SetCaretPosition
+00cb2ee0   RELOCATION_MATCH PASS   SetCurrentPair_00cb2ee0
+00cb2ec0   RELOCATION_MATCH PASS   ImeUi_GetCaretStatus
+00cb28e0   RELOCATION_MATCH PASS   ImeUi_IsEnabled
+00cb36e0   WARN RELOC_ALIAS: _ImmGetIMEFileNameA@12 -> 00cb5528 is the import thunk 'IMM32.DLL::ImmGetIMEFileNameA'
+00cb36e0   WARN RELOC_ALIAS: _ImmGetContext@4 -> 00cb5540 is the import thunk 'IMM32.DLL::ImmGetContext'
+00cb36e0   WARN RELOC_ALIAS: _ImmReleaseContext@8 -> 00cb5534 is the import thunk 'IMM32.DLL::ImmReleaseContext'
+00cb36e0   RELOCATION_MATCH PASS   SetImeApi
+00cb4340   WARN RELOC_ALIAS: __except_handler3 -> 004013d8 is the import thunk 'MSVCR71.DLL::_except_handler3'
+00cb4340   WARN RELOC_ALIAS: _ImmGetContext@4 -> 00cb5540 is the import thunk 'IMM32.DLL::ImmGetContext'
+00cb4340   WARN RELOC_NAME: __alloca_probe -> 00bfea30 labelled '__chkstk'
+00cb4340   WARN RELOC_ALIAS: _ImmReleaseContext@8 -> 00cb5534 is the import thunk 'IMM32.DLL::ImmReleaseContext'
+00cb4340   RELOCATION_MATCH PASS   GetReadingString
+00cb2b90   WARN RELOC_ALIAS: _ImmGetVirtualKey@4 -> 00cb552e is the import thunk 'IMM32.DLL::ImmGetVirtualKey'
+00cb2b90   RELOCATION_MATCH PASS   ImeUi_IgnoreHotKey
+00405650   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+00405650   WARN RELOC_NAME: ?Reset@NativeCIME@NUISystem@@QAEXXZ -> 004051c0 labelled 'NUISystem::CIME::Shutdown'
+00405650   WARN RELOC_NAME: ?ImeUi_SetScreenDimension@@YIXII@Z -> 00cb2ee0 labelled '_global::SetCurrentPair_00cb2ee0'
+00405650   RELOCATION_MATCH PASS   Initialise
+00cb26b0   RELOCATION_MATCH PASS   SendControlKeys
+00cb2710   RELOCATION_MATCH PASS   CancelCompString
+00cb2d90   RELOCATION_MATCH PASS   SetSupportLevel
+00cb2f80   RELOCATION_MATCH PASS   DrawImeIndicator
+00cb3420   RELOCATION_MATCH PASS   GetReadingWindowOrientation
+00cb21a0   MATCH            PASS   _strtoul
+00cb37a0   RELOCATION_MATCH PASS   CheckInputLocale
+00cb47c0   WARN RELOC_ALIAS: _ImmIsIME@4 -> 00cb5558 is the import thunk 'IMM32.DLL::ImmIsIME'
+00cb47c0   WARN RELOC_ALIAS: _ImmGetContext@4 -> 00cb5540 is the import thunk 'IMM32.DLL::ImmGetContext'
+00cb47c0   WARN RELOC_ALIAS: _ImmGetConversionStatus@12 -> 00cb5552 is the import thunk 'IMM32.DLL::ImmGetConversionStatus'
+00cb47c0   WARN RELOC_ALIAS: _ImmReleaseContext@8 -> 00cb5534 is the import thunk 'IMM32.DLL::ImmReleaseContext'
+00cb47c0   WARN RELOC_ALIAS: _ImmGetOpenStatus@4 -> 00cb554c is the import thunk 'IMM32.DLL::ImmGetOpenStatus'
+00cb47c0   RELOCATION_MATCH PASS   CheckToggleState
+00cb5180   WARN RELOC_ALIAS: _ImmGetCompositionStringW@16 -> 00cb5570 is the import thunk 'IMM32.DLL::ImmGetCompositionStringW'
+00cb5180   WARN RELOC_ALIAS: _ImmGetCandidateListW@16 -> 00cb556a is the import thunk 'IMM32.DLL::ImmGetCandidateListW'
+00cb5180   WARN RELOC_ALIAS: _ImmGetCandidateListA@16 -> 00cb551c is the import thunk 'IMM32.DLL::ImmGetCandidateListA'
+00cb5180   WARN RELOC_ALIAS: _ImmGetContext@4 -> 00cb5540 is the import thunk 'IMM32.DLL::ImmGetContext'
+00cb5180   WARN RELOC_ALIAS: _ImmReleaseContext@8 -> 00cb5534 is the import thunk 'IMM32.DLL::ImmReleaseContext'
+00cb5180   RELOCATION_MATCH PASS   ImeUi_Initialize
+00cb38e0   RELOCATION_MATCH PASS   ImeUi_RenderUI
+00cb48a0   WARN RELOC_ALIAS: _ImmGetDefaultIMEWnd@4 -> 00cb5546 is the import thunk 'IMM32.DLL::ImmGetDefaultIMEWnd'
+00cb48a0   WARN RELOC_ALIAS: _ImmGetContext@4 -> 00cb5540 is the import thunk 'IMM32.DLL::ImmGetContext'
+00cb48a0   WARN RELOC_ALIAS: _ImmReleaseContext@8 -> 00cb5534 is the import thunk 'IMM32.DLL::ImmReleaseContext'
+00cb48a0   WARN RELOC_ALIAS: _ImmGetConversionStatus@12 -> 00cb5552 is the import thunk 'IMM32.DLL::ImmGetConversionStatus'
+00cb48a0   WARN RELOC_ALIAS: _ImmSetConversionStatus@12 -> 00cb555e is the import thunk 'IMM32.DLL::ImmSetConversionStatus'
+00cb48a0   WARN RELOC_NAME: ?ComposeCandidateLine@@YIXPAGHPBG@Z -> 00cb2590 labelled 'ImeUI_FormatCompStringDisplay'
+00cb48a0   RELOCATION_MATCH PASS   ImeUi_ProcessMessage
+
+WINS: 19
+  00cb2860 RELOCATION_MATCH CDrawMouseCursor::?ImeUi_SetCaretPosition@@YIXII@Z
+  00cb2ee0 RELOCATION_MATCH _global::?ImeUi_SetScreenDimension@@YIXII@Z
+  00cb2ec0 RELOCATION_MATCH _global::?ImeUi_GetCaretStatus@@YI_NXZ
+  00cb28e0 RELOCATION_MATCH CAIStateGroup_Freeze::?ImeUi_IsEnabled@@YI_NXZ
+  00cb36e0 RELOCATION_MATCH _global::?SetImeApi@@YIXXZ
+  00cb4340 RELOCATION_MATCH _global::?GetReadingString@@YGXPAUHWND__@@@Z
+  00cb2b90 RELOCATION_MATCH _global::?ImeUi_IgnoreHotKey@@YI_NPBUtagMSG@@@Z
+  00405650 RELOCATION_MATCH CIME::Initialise
+  00cb26b0 RELOCATION_MATCH _global::?SendControlKeys@@YIXII@Z
+  00cb2710 RELOCATION_MATCH _global::?CancelCompString@@YGXPAUHWND__@@_NH@Z
+  00cb2d90 RELOCATION_MATCH _global::?SetSupportLevel@@YAXK@Z
+  00cb2f80 RELOCATION_MATCH _global::?DrawImeIndicator@@YIXXZ
+  00cb3420 RELOCATION_MATCH _global::?GetReadingWindowOrientation@@YGXK@Z
+  00cb21a0 MATCH _global::?_strtoul@@YAKPBDPAPADH@Z
+  00cb37a0 RELOCATION_MATCH _global::?CheckInputLocale@@YIXXZ
+  00cb47c0 RELOCATION_MATCH _global::?CheckToggleState@@
+  00cb5180 RELOCATION_MATCH _global::?ImeUi_Initialize@@YI_NPAUHWND__@@_N@Z
+  00cb38e0 RELOCATION_MATCH _global::?ImeUi_RenderUI@@YIX_N0@Z
+  00cb48a0 RELOCATION_MATCH _global::?ImeUi_ProcessMessage@@YIJPAUHWND__@@IIJPA_N@Z

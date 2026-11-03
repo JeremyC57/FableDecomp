@@ -30,7 +30,7 @@ extern unsigned short g_szCompositionString[256];   // 0x0143CF10
 extern unsigned long  g_IMECursorChars;             // 0x0143E898
 extern bool           g_bInsertMode;                // 0x013AC749
 
-static __declspec(noinline) void SendControlKeys(unsigned int vk, unsigned int num)   // 0x00CB26B0
+static __declspec(noinline) void __fastcall SendControlKeys(unsigned int vk, unsigned int num)   // 0x00CB26B0 (__fastcall: ImeUi.cpp is a /Gr TU, PDB ?ImeUi_RenderUI@@YIX_N0@Z; one spelling with Codex pass 12 0x00CB48A0)
 {
     if (num == 0)
         return;

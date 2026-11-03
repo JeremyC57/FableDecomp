@@ -61,8 +61,8 @@ extern "C" unsigned int __stdcall ImmGetVirtualKey(HWND hwnd);                  
 extern "C" __declspec(dllimport) short __stdcall GetKeyState(int nVirtKey);      // IAT 0x014403C4
 
 extern bool       g_bInitialized;                   // 0x0143E8AE
-extern bool       g_bCandList;                      // 0x0143E8AF
-extern HKL        g_hklCurrent;                     // 0x0143E8B8
+static bool       g_bCandList;                      // 0x0143E8AF (ImeUi.cpp file static: Codex pass 12 0x00CB48A0 needs /Oa with it extern)
+static HKL        g_hklCurrent;                     // 0x0143E8B8 // ImeUi.cpp file static: SetImeApi 0x00CB36E0 differs 178v179 with it extern (Codex pass 12 landing 2026-11-03)
 extern SImeHotKey aHotKeys[22];                     // 0x013AC760
 
 #define COUNTOF(a)   (sizeof(a) / sizeof((a)[0]))

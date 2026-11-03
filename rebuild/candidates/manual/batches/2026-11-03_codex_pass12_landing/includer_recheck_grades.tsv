@@ -1,0 +1,22 @@
+address	name	reason	grade	log
+00cb2860	ImeUi_SetCaretPosition	ImeUi DXUT respell (statics/externs, SetScreenDimension, SendControlKeys)	RELOCATION_MATCH PASS	logs/imeui_respell_recheck.log
+00cb2ee0	SetCurrentPair_00cb2ee0	ImeUi DXUT respell (statics/externs, SetScreenDimension, SendControlKeys)	RELOCATION_MATCH PASS	logs/imeui_respell_recheck.log
+00cb2ec0	ImeUi_GetCaretStatus	ImeUi DXUT respell (statics/externs, SetScreenDimension, SendControlKeys)	RELOCATION_MATCH PASS	logs/imeui_respell_recheck.log
+00cb28e0	ImeUi_IsEnabled	ImeUi DXUT respell (statics/externs, SetScreenDimension, SendControlKeys)	RELOCATION_MATCH PASS	logs/imeui_respell_recheck.log
+00cb36e0	SetImeApi	ImeUi DXUT respell (statics/externs, SetScreenDimension, SendControlKeys)	RELOCATION_MATCH PASS	logs/imeui_respell_recheck.log
+00cb4340	GetReadingString	ImeUi DXUT respell (statics/externs, SetScreenDimension, SendControlKeys)	RELOCATION_MATCH PASS	logs/imeui_respell_recheck.log
+00cb2b90	ImeUi_IgnoreHotKey	ImeUi DXUT respell (statics/externs, SetScreenDimension, SendControlKeys)	RELOCATION_MATCH PASS	logs/imeui_respell_recheck.log
+00405650	Initialise	ImeUi DXUT respell (statics/externs, SetScreenDimension, SendControlKeys)	RELOCATION_MATCH PASS	logs/imeui_respell_recheck.log
+00cb26b0	SendControlKeys	ImeUi DXUT respell (statics/externs, SetScreenDimension, SendControlKeys)	RELOCATION_MATCH PASS	logs/imeui_respell_recheck.log
+00cb2710	CancelCompString	ImeUi DXUT respell (statics/externs, SetScreenDimension, SendControlKeys)	RELOCATION_MATCH PASS	logs/imeui_respell_recheck.log
+00cb2d90	SetSupportLevel	ImeUi DXUT respell (statics/externs, SetScreenDimension, SendControlKeys)	RELOCATION_MATCH PASS	logs/imeui_respell_recheck.log
+00cb2f80	DrawImeIndicator	ImeUi DXUT respell (statics/externs, SetScreenDimension, SendControlKeys)	RELOCATION_MATCH PASS	logs/imeui_respell_recheck.log
+00cb3420	GetReadingWindowOrientation	ImeUi DXUT respell (statics/externs, SetScreenDimension, SendControlKeys)	RELOCATION_MATCH PASS	logs/imeui_respell_recheck.log
+00cb21a0	_strtoul	ImeUi DXUT respell (statics/externs, SetScreenDimension, SendControlKeys)	MATCH PASS	logs/imeui_respell_recheck.log
+00cb37a0	CheckInputLocale	ImeUi DXUT respell (statics/externs, SetScreenDimension, SendControlKeys)	RELOCATION_MATCH PASS	logs/imeui_respell_recheck.log
+00cb47c0	CheckToggleState	ImeUi DXUT respell (statics/externs, SetScreenDimension, SendControlKeys)	RELOCATION_MATCH PASS	logs/imeui_respell_recheck.log
+00cb5180	ImeUi_Initialize	ImeUi DXUT respell (statics/externs, SetScreenDimension, SendControlKeys)	RELOCATION_MATCH PASS	logs/imeui_respell_recheck.log
+00cb38e0	ImeUi_RenderUI	ImeUi DXUT respell (statics/externs, SetScreenDimension, SendControlKeys)	RELOCATION_MATCH PASS	logs/imeui_respell_recheck.log
+00cb48a0	ImeUi_ProcessMessage	ImeUi DXUT respell (statics/externs, SetScreenDimension, SendControlKeys)	RELOCATION_MATCH PASS	logs/imeui_respell_recheck.log
+0041b800	CSprite	name fix (0x0052CC50 / 0x00415DD0)	RELOCATION_MATCH PASS	logs/name_fixes_recheck.log
+004b4aa0	ActivateQuestCard	name fix (0x0052CC50 / 0x00415DD0)	RELOCATION_MATCH PASS	logs/name_fixes_recheck.log

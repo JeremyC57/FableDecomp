@@ -30,7 +30,7 @@ extern "C" __declspec(dllimport) int __stdcall IsDBCSLeadByteEx(unsigned int Cod
 
 unsigned long __stdcall GetImeId(unsigned int uIndex = 0);   // 0x00CB28F0 (static in retail, private callee-pop convention)
 
-extern HKL                   g_hklCurrent;          // 0x0143E8B8
+static HKL                   g_hklCurrent;          // 0x0143E8B8 // ImeUi.cpp file static: SetImeApi 0x00CB36E0 differs 178v179 with it extern (Codex pass 12 landing 2026-11-03)
 extern bool                  g_bVerticalCand;       // 0x013AC748
 extern const unsigned short* g_aszIndicator[5];     // 0x013AC74C
 extern const unsigned short* g_pszIndicatior;       // 0x0143E8C0

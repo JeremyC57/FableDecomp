@@ -33,7 +33,7 @@ extern "C" __declspec(dllimport) LONG __stdcall RegCloseKey(HKEY hKey);         
 struct HWND__ { int unused; };  typedef HWND__* HWND;
 DWORD __stdcall GetImeId(unsigned int uIndex = 0);   // 0x00CB28F0 (static in retail, private callee-pop convention)
 
-extern HKL  g_hklCurrent;           // 0x0143E8B8
+static HKL  g_hklCurrent;           // 0x0143E8B8 // ImeUi.cpp file static: SetImeApi 0x00CB36E0 differs 178v179 with it extern (Codex pass 12 landing 2026-11-03)
 extern bool g_bHorizontalReading;   // 0x0143E8A1
 
 #define MAX_PATH                260

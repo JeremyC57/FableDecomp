@@ -24,12 +24,13 @@ extern "C" int __stdcall ImmReleaseContext(HWND hwnd, HIMC himc);               
 extern "C" __declspec(dllimport) HMODULE __stdcall LoadLibraryA(const char* lpLibFileName);              // IAT 0x0143FE40
 extern "C" __declspec(dllimport) FARPROC __stdcall GetProcAddress(HMODULE hModule, const char* lpProcName); // IAT 0x0143FE44
 
-// ImeUi.cpp file statics (defined in this TU as in the SDK source).
-static unsigned int (__stdcall* _GetReadingString)(HIMC himc, unsigned int uReadingBufLen, unsigned short* lpwReadingBuf,
+// ImeUi.cpp globals, spelled extern as the other split ImeUi rows bind them (Codex pass 12 landing 2026-11-03: one spelling per
+// address; was `static`, which gave 0x0143E684 / 0x0143E8B8 / 0x0143CF0C a second, undecorated spelling; queue 588 / 595).
+extern unsigned int (__stdcall* _GetReadingString)(HIMC himc, unsigned int uReadingBufLen, unsigned short* lpwReadingBuf,
                                                    int* pnErrorIndex, int* pfIsVertical, unsigned int* puMaxReadingLen);  // 0x0143E684
-static int (__stdcall* _ShowReadingWindow)(HIMC himc, int bShow);                         // 0x0143CE00
-static HKL  g_hklCurrent;                           // 0x0143E8B8
-static HWND g_hwndCurr;                             // 0x0143CF0C
+extern int (__stdcall* _ShowReadingWindow)(HIMC himc, int bShow);                         // 0x0143CE00
+static HKL  g_hklCurrent;                           // 0x0143E8B8 // ImeUi.cpp file static: SetImeApi 0x00CB36E0 differs 178v179 with it extern (Codex pass 12 landing 2026-11-03)
+extern HWND g_hwndCurr;                             // 0x0143CF0C
 
 void __fastcall SetImeApi()
 {

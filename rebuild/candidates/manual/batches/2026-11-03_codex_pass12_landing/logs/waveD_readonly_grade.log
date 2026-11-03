@@ -1,0 +1,51 @@
+addr       parity           behav  name
+00cf9610   RELOCATION_MATCH PASS   OnPersist
+
+WINS: 1
+  00cf9610 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::?OnPersist@CQ_AmbushTradersScript@NScript@@UAEXAAVCPersistContext@@@Z
+addr       parity           behav  name
+00d13130   RELOCATION_MATCH PASS   OnPersist
+00e39b40   RELOCATION_MATCH PASS   Main
+00ef71e0   RELOCATION_MATCH PASS   Main
+00e8a2b0   WARN RELOC_NAME: ??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00e8a2b0   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00e8a2b0   RELOCATION_MATCH PASS   FightWarmupRounds
+
+WINS: 4
+  00d13130 RELOCATION_MATCH NScript::CQ_BountyHuntScript::?OnPersist@CQ_BountyHuntScript@NScript@@UAEXAAVCPersistContext@@@Z
+  00e39b40 RELOCATION_MATCH NScript::CV_BordelloScript::?Main@CV_BordelloScript@NScript@@UAEXXZ
+  00ef71e0 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CArcherMan::?Main@CArcherMan@CPersonalScript_EmptyScript@NScript@@EAEXXZ
+  00e8a2b0 RELOCATION_MATCH NScript::CV_FisticuffsClubScript::CTyler::?FightWarmupRounds@CTyler@CV_FisticuffsClubScript@NScript@@AAEXXZ
+addr       parity           behav  name
+00d27460   WARN RELOC_NAME: ?CheckGuildEntering@CQ_EndGameScript@NScript@@QAEXXZ -> 00d27c00 labelled 'CV_ChapelOfEvilScript::EndMission'
+00d27460   RELOCATION_MATCH PASS   Main
+00e92a50   RELOCATION_MATCH PASS   Main
+00ef7be0   RELOCATION_MATCH PASS   Main
+00f29530   RELOCATION_MATCH PASS   ~CScriptDef
+
+WINS: 4
+  00d27460 RELOCATION_MATCH NScript::CQ_EndGameScript::?Main@CQ_EndGameScript@NScript@@UAEXXZ
+  00e92a50 RELOCATION_MATCH NScript::CV_HiddenBootyScript::?Main@CV_HiddenBootyScript@NScript@@UAEXXZ
+  00ef7be0 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CChatter1::?Main@CChatter1@CPersonalScript_EmptyScript@NScript@@EAEXXZ
+  00f29530 RELOCATION_MATCH CScriptDef::??1CScriptDef@@UAE@XZ
+addr       parity           behav  name
+00e247f0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z -> 00433530 labelled 'std::vector::std::vector::Reallocate'
+00e247f0   RELOCATION_MATCH PASS   Init
+00e9b690   RELOCATION_MATCH PASS   DoMission
+00ef80a0   RELOCATION_MATCH PASS   Main
+
+WINS: 3
+  00e247f0 RELOCATION_MATCH NScript::CQR_EscortTraderScript::?Init@CQR_EscortTraderScript@NScript@@UAEXXZ
+  00e9b690 RELOCATION_MATCH NScript::CV_HeroDuelScript::?DoMission@CV_HeroDuelScript@NScript@@QAEXXZ
+  00ef80a0 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CChatter2::?Main@CChatter2@CPersonalScript_EmptyScript@NScript@@EAEXXZ
+addr       parity           behav  name
+00e377d0   RELOCATION_MATCH PASS   Main
+00ee42a0   RELOCATION_MATCH PASS   Init
+00e63890   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00e63890   WARN RELOC_NAME: ??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00e63890   RELOCATION_MATCH PASS   Main
+
+WINS: 3
+  00e377d0 RELOCATION_MATCH NScript::CV_AssassinAttacksScript::?Main@CV_AssassinAttacksScript@NScript@@UAEXXZ
+  00ee42a0 RELOCATION_MATCH NScript::CV_TourGuideScript::?Init@CV_TourGuideScript@NScript@@UAEXXZ
+  00e63890 RELOCATION_MATCH NScript::CV_ChickenKickingScript::CSpectator::?Main@CSpectator@CV_ChickenKickingScript@NScript@@EAEXXZ

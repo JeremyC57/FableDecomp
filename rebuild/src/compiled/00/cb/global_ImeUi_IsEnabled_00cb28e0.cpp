@@ -8,8 +8,9 @@
 // Identity (naming wave 11): Ego_r.pdb 0x00C92E80 + FableWin.pdb 0x0357EE10 ?ImeUi_IsEnabled@@YI_NXZ (DXUT ImeUi.cpp, static
 // __fastcall here as in both PDBs); the only retail caller is NUISystem::CIME::IsIMEActive 0x00404C50. It was landed as
 // CAIStateGroup_Freeze::IsRunnable, a label propagated from the byte-identical body at 0x009224E0.
-extern unsigned char g_flag_0143e890;         // 0x0143E890 (the IME-enabled flag, a bool)
+// DXUT name g_bImeEnabled (Codex pass 12 respell 2026-11-03, was g_flag_0143e890; landed 0x00CB5130 binds it so).
+extern bool g_bImeEnabled;                    // 0x0143E890
 bool __fastcall ImeUi_IsEnabled()
 {
-    return *(bool*)&g_flag_0143e890;
+    return g_bImeEnabled;
 }

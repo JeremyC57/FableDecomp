@@ -1,0 +1,17 @@
+addr       parity           behav  name
+00cb38e0   RELOCATION_MATCH PASS   ImeUi_RenderUI
+00cb48a0   WARN RELOC_ALIAS: _ImmGetDefaultIMEWnd@4 -> 00cb5546 is the import thunk 'IMM32.DLL::ImmGetDefaultIMEWnd'
+00cb48a0   WARN RELOC_ALIAS: _ImmGetContext@4 -> 00cb5540 is the import thunk 'IMM32.DLL::ImmGetContext'
+00cb48a0   WARN RELOC_ALIAS: _ImmReleaseContext@8 -> 00cb5534 is the import thunk 'IMM32.DLL::ImmReleaseContext'
+00cb48a0   WARN RELOC_ALIAS: _ImmGetConversionStatus@12 -> 00cb5552 is the import thunk 'IMM32.DLL::ImmGetConversionStatus'
+00cb48a0   WARN RELOC_ALIAS: _ImmSetConversionStatus@12 -> 00cb555e is the import thunk 'IMM32.DLL::ImmSetConversionStatus'
+00cb48a0   WARN RELOC_NAME: ?ComposeCandidateLine@@YIXPAGHPBG@Z -> 00cb2590 labelled 'ImeUI_FormatCompStringDisplay'
+00cb48a0   RELOCATION_MATCH PASS   ImeUi_ProcessMessage
+
+WINS: 2
+  00cb38e0 RELOCATION_MATCH _global::?ImeUi_RenderUI@@YIX_N0@Z
+  00cb48a0 RELOCATION_MATCH _global::?ImeUi_ProcessMessage@@YIJPAUHWND__@@IIJPA_N@Z
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  global_ImeUiRenderUI_00cb38e0
+  global_ImeUiProcessMessage_00cb48a0

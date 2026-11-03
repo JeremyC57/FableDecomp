@@ -7,7 +7,7 @@
 // Globals: g_hklCurrent 0x0143E8B8, g_dwIMELevel 0x0143CD1C.
 struct HKL__ { int unused; };   typedef HKL__* HKL;
 
-extern HKL           g_hklCurrent;                  // 0x0143E8B8
+static HKL           g_hklCurrent;                  // 0x0143E8B8 // ImeUi.cpp file static: SetImeApi 0x00CB36E0 differs 178v179 with it extern (Codex pass 12 landing 2026-11-03)
 extern unsigned long g_dwIMELevel;                  // 0x0143CD1C
 
 void __fastcall ImeUi_FinalizeString(bool bSend);   // 0x00CB2C60

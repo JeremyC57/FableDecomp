@@ -1,6 +1,6 @@
 // SendControlKeys(unsigned int vk, unsigned int num) -- DXUT ImeUi.cpp: send `num` WM_KEYDOWNs of vk to the current window, then one WM_KEYUP
 // Shape (retry1): parked as an "LTCG custom convention" gap; ImeUi.cpp's file statics (FableWin.pdb local procs) are written as `static __declspec(noinline)` with a same-TU caller, and VC7.1 /O2 picks retail's private register convention itself. SendControlKeys: num in EAX, vk in EDI; CancelCompString (also in the TU) is its caller.
-// Leaf: ?SendControlKeys@@YAXII@Z
+// Leaf: ?SendControlKeys@@YIXII@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB26B0, 83 bytes. File-static in ImeUi.cpp (FableWin.pdb
 // "SendControlKeys"); callers 0x00CB273E / 0x00CB27C4 / 0x00CB27DC (CancelCompString) and 0x00CB4CA9. The manifest
 // label "ImeUi_SendCompositionEvents" is descriptive.
@@ -28,7 +28,7 @@ extern unsigned short g_szCompositionString[256];   // 0x0143CF10
 extern unsigned long  g_IMECursorChars;             // 0x0143E898
 extern bool           g_bInsertMode;                // 0x013AC749
 
-static __declspec(noinline) void SendControlKeys(unsigned int vk, unsigned int num)   // 0x00CB26B0
+static __declspec(noinline) void __fastcall SendControlKeys(unsigned int vk, unsigned int num)   // 0x00CB26B0 (__fastcall: ImeUi.cpp is a /Gr TU, PDB ?ImeUi_RenderUI@@YIX_N0@Z; one spelling with Codex pass 12 0x00CB48A0)
 {
     if (num == 0)
         return;

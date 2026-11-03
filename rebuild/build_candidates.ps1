@@ -379639,6 +379639,155 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '01217340_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00c01750'
+        Module = '_global'
+        Source = '00/c0/global_deflateslow_00c01750.cpp'
+        TestSource = '00/c0/global_deflateslow_00c01750_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /TC'
+        PassPattern = '00c01750_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca4160'
+        Module = '_global'
+        Source = '00/ca/global_vorbislpctolsp_00ca4160.cpp'
+        TestSource = '00/ca/global_vorbislpctolsp_00ca4160_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /TC /Gr'
+        PassPattern = '00ca4160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c9f8c0'
+        Module = '_global'
+        Source = '00/c9/global_mapping0inverse_00c9f8c0.cpp'
+        TestSource = '00/c9/global_mapping0inverse_00c9f8c0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /TC /Gr'
+        PassPattern = '00c9f8c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb38e0'
+        Module = '_global'
+        Source = '00/cb/global_ImeUiRenderUI_00cb38e0.cpp'
+        TestSource = '00/cb/global_ImeUiRenderUI_00cb38e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr /GS'
+        PassPattern = '00cb38e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cb48a0'
+        Module = '_global'
+        Source = '00/cb/global_ImeUiProcessMessage_00cb48a0.cpp'
+        TestSource = '00/cb/global_ImeUiProcessMessage_00cb48a0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr /GS'
+        PassPattern = '00cb48a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cf9610'
+        Module = 'NScript::CQ_AmbushTradersScript'
+        Source = '00/cf/NScriptCQAmbushTradersScript_OnPersist_00cf9610.cpp'
+        TestSource = '00/cf/NScriptCQAmbushTradersScript_OnPersist_00cf9610_test.cpp'
+        PassPattern = '00cf9610_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d13130'
+        Module = 'NScript::CQ_BountyHuntScript'
+        Source = '00/d1/NScriptCQBountyHuntScript_OnPersist_00d13130.cpp'
+        TestSource = '00/d1/NScriptCQBountyHuntScript_OnPersist_00d13130_test.cpp'
+        PassPattern = '00d13130_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d27460'
+        Module = 'NScript::CQ_EndGameScript'
+        Source = '00/d2/NScriptCQEndGameScript_Main_00d27460.cpp'
+        TestSource = '00/d2/NScriptCQEndGameScript_Main_00d27460_test.cpp'
+        PassPattern = '00d27460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e247f0'
+        Module = 'NScript::CQR_EscortTraderScript'
+        Source = '00/e2/NScriptCQREscortTraderScript_Init_00e247f0.cpp'
+        TestSource = '00/e2/NScriptCQREscortTraderScript_Init_00e247f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00e247f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e377d0'
+        Module = 'NScript::CV_AssassinAttacksScript'
+        Source = '00/e3/NScriptCVAssassinAttacksScript_Main_00e377d0.cpp'
+        TestSource = '00/e3/NScriptCVAssassinAttacksScript_Main_00e377d0_test.cpp'
+        PassPattern = '00e377d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e39b40'
+        Module = 'NScript::CV_BordelloScript'
+        Source = '00/e3/NScriptCVBordelloScript_Main_00e39b40.cpp'
+        TestSource = '00/e3/NScriptCVBordelloScript_Main_00e39b40_test.cpp'
+        PassPattern = '00e39b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e92a50'
+        Module = 'NScript::CV_HiddenBootyScript'
+        Source = '00/e9/NScriptCVHiddenBootyScript_Main_00e92a50.cpp'
+        TestSource = '00/e9/NScriptCVHiddenBootyScript_Main_00e92a50_test.cpp'
+        PassPattern = '00e92a50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9b690'
+        Module = 'NScript::CV_HeroDuelScript'
+        Source = '00/e9/NScriptCVHeroDuelScript_DoMission_00e9b690.cpp'
+        TestSource = '00/e9/NScriptCVHeroDuelScript_DoMission_00e9b690_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00e9b690_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee42a0'
+        Module = 'NScript::CV_TourGuideScript'
+        Source = '00/ee/NScriptCVTourGuideScript_Init_00ee42a0.cpp'
+        TestSource = '00/ee/NScriptCVTourGuideScript_Init_00ee42a0_test.cpp'
+        PassPattern = '00ee42a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef71e0'
+        Module = 'NScript::CPersonalScript_EmptyScript::CArcherMan'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCArcherMan_Main_00ef71e0.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCArcherMan_Main_00ef71e0_test.cpp'
+        PassPattern = '00ef71e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef7be0'
+        Module = 'NScript::CPersonalScript_EmptyScript::CChatter1'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCChatter1_Main_00ef7be0.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCChatter1_Main_00ef7be0_test.cpp'
+        PassPattern = '00ef7be0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef80a0'
+        Module = 'NScript::CPersonalScript_EmptyScript::CChatter2'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCChatter2_Main_00ef80a0.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCChatter2_Main_00ef80a0_test.cpp'
+        PassPattern = '00ef80a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e63890'
+        Module = 'NScript::CV_ChickenKickingScript::CSpectator'
+        Source = '00/e6/NScriptCVChickenKickingScriptCSpectator_Main_00e63890.cpp'
+        TestSource = '00/e6/NScriptCVChickenKickingScriptCSpectator_Main_00e63890_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00e63890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e8a2b0'
+        Module = 'NScript::CV_FisticuffsClubScript::CTyler'
+        Source = '00/e8/NScriptCVFisticuffsClubScriptCTyler_FightWarmupRounds_00e8a2b0.cpp'
+        TestSource = '00/e8/NScriptCVFisticuffsClubScriptCTyler_FightWarmupRounds_00e8a2b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00e8a2b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f29530'
+        Module = 'CScriptDef'
+        Source = '00/f2/CScriptDef_CScriptDef_00f29530.cpp'
+        TestSource = '00/f2/CScriptDef_CScriptDef_00f29530_test.cpp'
+        PassPattern = '00f29530_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

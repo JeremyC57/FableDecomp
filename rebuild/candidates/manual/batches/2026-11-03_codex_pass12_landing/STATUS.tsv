@@ -1,0 +1,54 @@
+address	wave	state	grade	note
+00c01750	A	LANDED	RELOCATION_MATCH PASS	_deflate_slow
+00ca4160	A	LANDED	RELOCATION_MATCH PASS	@vorbis_lpc_to_lsp@12
+00c9f8c0	A	LANDED	RELOCATION_MATCH PASS	@mapping0_inverse@8 + engine/Vorbis.h
+00ca2bb0	A	HELD	RELOCATION_MATCH (link timeout once)	per-TU static ilog: @ilog@4 bound to 00c9fe70; same shape as held ilog2 triplicate; source adds __declspec(noinline) on the vendor static
+00cb38e0	B	LANDED	RELOCATION_MATCH PASS	ImeUi_RenderUI; g_hklCurrent static
+00cb48a0	B	LANDED	RELOCATION_MATCH PASS	ImeUi_ProcessMessage; g_hklCurrent static
+IME17	B	RESPELLED	17/17 recheck RELOCATION_MATCH/MATCH PASS	ImeUi respell (imeR/verify2.log)
+00cf9610	D	LANDED	RELOCATION_MATCH PASS	our headers + new CQ_AmbushTradersScript.h; Transfer 3-arg explicit defaults; feature macros dropped
+00d13130	D	LANDED	RELOCATION_MATCH PASS	our headers only; Transfer 3-arg explicit defaults
+0041b800	N	RESPELLED	RELOCATION_MATCH PASS	base CChangingStateComponent 0x0052CC50
+004b4aa0	N	RESPELLED	RELOCATION_MATCH PASS	CDefString::GetString 0x00415DD0 (named local)
+00c5ffb0	C	HELD	RELOCATION_MATCH (Codex ctx)	CEAXListener::AddToChangesList: second model of the class pass 11 landed as CEaxContext (engine/CEaxContext.h, vtable 012b9340); unification = rewrite the 4 pass 11 rows + Codex headers on one SDK-member model
+00c60ff0	C	HELD	RELOCATION_MATCH (Codex ctx)	CEAXBuffer::Set3DBuffer: same (CEaxSource.h vs CEAXBuffer.h, vtable 012b9344)
+00c66330	C	HELD	RELOCATION_MATCH (Codex ctx)	CEAXListener::GetEAX4FXSlot: same
+00c66c90	C	HELD	RELOCATION_MATCH (Codex ctx)	CEAXBuffer::GetEAX4Source: same
+00c5e650	C	HELD	RELOCATION_MATCH (Codex ctx)	CSalOutputKS::CreateBuffer: CodaEnvironment.h CCodaObjectBase = pass 11 CPKObject (root 012b5868, second model); CodaMalloc/CodaFree + __uuidof KSDATAFORMAT GUID second spellings vs dozens of landed descriptive binders
+00c71870	C	HELD	RELOCATION_MATCH (Codex ctx)	"CSalOpenALReverb::Update: CCodaObjectBase second model; C++ ?SAL_EAX30_ListenerProperties@@3U_GUID@@B contradicts the extern ""C"" GUID decision; g_OpenAL vs g_AudioContext undecided"
+0051fd80	E	HELD	RELOCATION_MATCH (Codex ctx)	STLport _M_find configuration (Codex name_holds 00527d20/00527d80) + 39 modified headers
+00520d00	E	HELD	RELOCATION_MATCH (Codex ctx)	??$_M_find@ on 0x004B9370 = second spelling vs landed non-template ?_M_find@ (00bec8d0, 009c43e0, ...)
+00b2d9f0	E	HELD	RELOCATION_MATCH (Codex ctx)	STLport find configuration + 21 modified headers (CEngineSurfaceCompositionManager)
+00e0a820	D	HELD	DIFFER 1306v1304 (our headers)	CQ_AmbushTraders-family hanging-tree prelude: argument push/lea ordering around calls differs (retail pushes later); Codex inline prelude context not reproducible on our CScriptThing model
+00e5ebd0	D	HELD	DIFFER 1068v1064 (our headers)	needs CCharString::Truncate on fable_string.h FABLE_RETAIL_CCHARSTRING branch; 4-byte body diff remains, so the Truncate header edit was not applied
+00d27460	D	LANDED	RELOCATION_MATCH PASS	our headers + new CQ_EndGameScript.h; Game.->Game-> (pointer model)
+00e247f0	D	LANDED	RELOCATION_MATCH PASS	our headers + new NScript_CQR_EscortTraderScript.h; /Gr
+00e377d0	D	LANDED	RELOCATION_MATCH PASS	our headers + new CV_AssassinAttacksScript.h; FABLE_RETAIL_CDEFSTRINGTABLE
+00e39b40	D	LANDED	RELOCATION_MATCH PASS	our headers + new CV_BordelloScript.h
+00e92a50	D	LANDED	RELOCATION_MATCH PASS	our headers + new CV_HiddenBootyScript.h
+00e9b690	D	LANDED	RELOCATION_MATCH PASS	our headers + new NScript_CV_HeroDuelScript.h; /Gr
+00ee42a0	D	LANDED	RELOCATION_MATCH PASS	our headers + new CV_TourGuideScript.h
+00ef71e0	D	LANDED	RELOCATION_MATCH PASS	our headers + new CPersonalScript_EmptyScript.h
+00ef7be0	D	LANDED	RELOCATION_MATCH PASS	our headers + new CPersonalScript_EmptyScript.h (superset)
+00ef80a0	D	LANDED	RELOCATION_MATCH PASS	our headers + new CPersonalScript_EmptyScript.h
+00e63890	D	LANDED	RELOCATION_MATCH PASS	our headers + new NScript_CV_ChickenKickingScript.h; hanging-tree prelude inlined; (*Game); /Gr
+00e8a2b0	D	LANDED	RELOCATION_MATCH PASS	our headers + new NScript_CV_FisticuffsClubScript.h; hanging-tree prelude (Fisticuffs IsAlive form); /Gr
+00f29530	D	LANDED	RELOCATION_MATCH PASS	our headers + new CScriptDef.h; FABLE_RETAIL_CPARENTDEFCLASSBASE (= Codex UI_DEF_DTOR)
+00402510	E	HELD	compile-fail or DIFFER on our headers	GFMain: 102 errors on our headers (CSystemManager::DisplayCriticalMessage, CAFile, CFileInstaller singleton...); needs CSystemManager/CAFile branches + GFMain spelling (cx12 queue)
+0041d21b	E	HELD	compile-fail or DIFFER on our headers	NUISystem::CManager::CreateComponent: needs CDefinitionManager::GetDefNameFromGlobalIndex/GetGlobalIndexFromClassIndex on our CDefinitionManager + CDefString::GetString branch (24 errors)
+00522a20	E	HELD	compile-fail or DIFFER on our headers	CThingManager::InitThingTypes: CClass / std::vector usages need the CThingManager retail branch Codex modelled locally (9 errors, C1506)
+0057e2f1	E	HELD	compile-fail or DIFFER on our headers	CTCHeroStats::OnSerialise: >100 errors (std::map members, GetDefinitionManager) - needs CTCHeroStats retail branch
+0058e99f	E	HELD	compile-fail or DIFFER on our headers	CTCInventory::OpenInventoryShortcut: 92 errors (Components, CArray members) - needs CTCInventory/CTCBase retail members
+006932b0	E	HELD	compile-fail or DIFFER on our headers	CCreatureActionBase::RegisterActionEventTypes: 72 errors (cp_event, make_pair) - needs CCreatureActionBase event-type members
+00821010	E	HELD	compile-fail or DIFFER on our headers	CMap::LoadBrushesFromFile: 20 errors (CScriptedMapBrushInit, file-record structs need push(1)/pop in a FABLE_RETAIL_CFILEFORMATBRUSH branch that does not exist yet)
+008edff0	E	HELD	compile-fail or DIFFER on our headers	CWillButtonHelperTimer ctor: CGameDefinitionManager::GetGlobalIndexFromClassIndex + GetDef<CSpecialAbilitiesForcePush...> missing (14 errors)
+009bc120	E	HELD	compile-fail or DIFFER on our headers	CPersistContext::TransferVectorOfSubComponentsLoadText: PStringToClean and other CPersistContext retail members missing (17 errors)
+009cf3a0	E	HELD	compile-fail or DIFFER on our headers	CBankFile::WriteSymbolHeaderFile: 98 errors (CArray/CDataOutputStream members) - needs CBankFile retail branch
+00a9bbe0	E	HELD	compile-fail or DIFFER on our headers	C3DMeshFileLoader ctor: >100 errors (CCountedPointer members of C3DMeshFileLoader) - needs C3DMeshFileLoader header
+00ac2be0	E	HELD	compile-fail or DIFFER on our headers	C3DMeshPartitionBuilderElement::PartitionSpace: compiles with C3DVector LimitLower/LimitUpper + C3DBoundingBox BuildFromPoints/GetCenter branches (hdrcheck2 default=same) but DIFFERs 2775v2791: Codex C3DVector ctor variants (Initialise copy ctor) are a second C3DVector model
+00ae0070	E	HELD	compile-fail or DIFFER on our headers	CParticleProgram::ApplyTransform: 56 errors (pos1/pos2 locals of a missing CParticle constraint model)
+00ae0710	E	HELD	compile-fail or DIFFER on our headers	CParticleProgram::CalculateAveragePatchSize: 87 errors (GetVertexIndex/GetSquaredMagnitude on missing particle types)
+00ae2e20	E	HELD	compile-fail or DIFFER on our headers	CParticleProgram::OptimiseSpringOrder: CParticleDistanceConstraint model missing
+00ae8d50	E	HELD	compile-fail or DIFFER on our headers	CParticleEmitterDatabase::Load: CStringParser ctor signature differs from ours (C2511)
+00b3be10	E	HELD	compile-fail or DIFFER on our headers	CEngineResourceManager::BuildAlphaStippleTexture: 47 errors (point_order_list ... ) - needs CEngineResourceManager retail members
+00defb10	D	HELD	compile-fail or DIFFER on our headers	NScript::CQ_SecretPassageScript::SwitchDoorsOnAndOff: compiles on our headers but DIFFERs by one extra movb $0,0x27(%esp): STLport __false_type needs a user ctor in stlport/fable_containers.h default path (build-wide decision, refused here)

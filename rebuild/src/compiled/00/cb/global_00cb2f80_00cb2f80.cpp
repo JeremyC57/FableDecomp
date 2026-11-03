@@ -16,7 +16,7 @@ extern CompStringAttribute g_CaretInfo;
 extern UINT g_screenWidth,g_screenHeight;
 extern DWORD swirl;
 extern double lastSwirl;
-extern HKL g_hklCurrent;
+static HKL g_hklCurrent; // ImeUi.cpp file static: SetImeApi 0x00CB36E0 differs 178v179 with it extern (Codex pass 12 landing 2026-11-03)
 extern LPCTSTR g_pszIndicatior;
 extern LPCTSTR g_aszIndicator[];
 extern void (__fastcall *ImeUiCallback_DrawFans)(const IMEUI_VERTEX*,UINT);

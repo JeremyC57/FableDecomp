@@ -23,7 +23,7 @@ extern "C" int __stdcall ImmReleaseContext(HWND hwnd, HIMC himc);               
 
 void __fastcall CheckInputLocale();                 // 0x00CB37A0
 
-extern HKL           g_hklCurrent;                  // 0x0143E8B8
+static HKL           g_hklCurrent;                  // 0x0143E8B8 // ImeUi.cpp file static: SetImeApi 0x00CB36E0 differs 178v179 with it extern (Codex pass 12 landing 2026-11-03)
 extern bool          g_bIme;                        // 0x0143CD28 (descriptive name)
 extern bool          g_bChineseIME;                 // 0x0143CD29
 extern HWND          g_hwndCurr;                    // 0x0143CF0C
