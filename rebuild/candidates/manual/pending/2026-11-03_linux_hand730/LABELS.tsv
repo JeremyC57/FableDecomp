@@ -1,0 +1,8 @@
+address	label	source
+0x00F3EA50	CTriangleStripifier2::GenerateTriangleListAndStrip	PDB name sets + caller 0x00F3F3A0
+0x00E2BAC0	NScript::CV_AmbushScamScript::AssignMoralityEtcForGoodEnding	PDB order + Main call site
+0x00E2BB10	NScript::CV_AmbushScamScript::AssignMoralityEtcForEvilEnding	PDB order + Main call site
+0x00F3B640	std::vector<unsigned short>::operator=	??4?$vector@GV?$allocator@G@std@@@std@@QAEAAV01@ABV01@@Z, called by BuildRings for ring = section
+0x00A87090	CArray<unsigned short>::CArray(const CArray<unsigned short>&)	??0?$CArray@G@@QAE@ABV0@@Z, implicit copy ctor kept out of line (BuildRings rings.push_back)
+0x009B4A20	std::vector<unsigned short>::push_back	out-of-line copy, called by BuildRings for the section list
+0x00512630	std::vector<long>::vector(size_type, const long&, const allocator&)	bound as "CLongFillVector" (invented spelling); BuildRings / FillInTriStrip CArray<long>(n, value)

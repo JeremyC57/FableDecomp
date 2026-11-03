@@ -1,0 +1,8 @@
+address	class	name	result	best	attempts	residue
+00f3bdd0	CTriangleStripifier2	FillInTriStrip	DIFFER(2976v2998)	f6	10	register swap in the scoring loop (poly ebp / score edi in retail, reversed in the build) plus the store order it drags; logic and block layout match
+00f3d980	CTriangleStripifier2	BuildRings	DIFFER(2301v1947)	b7	10	per-site inlining: push_back 0x009B4A20 and CArray<unsigned short> copy ctor 0x00A87090 called out of line in retail, expanded in the build; retail strength-reduces level*12 (cmp 0xBFFF4)
+00f3e120	CTriangleStripifier2	FindBestStartVertex	DIFFER(1411v1411)	a17	20	register allocation only (this in ebx/home 0x24, vertex_to_poly_map in edi in retail)
+00f3ea50	CTriangleStripifier2	GenerateTriangleListAndStrip	DIFFER(2603v2379)	g4	10	per-site _M_insert_overflow (0x005135D0 called at joins and the strip append loop, expanded at the poly_list pushes); zero register ebx vs last_vertex in ebx
+00e2b090	NScript::CV_AmbushScamScript	Main	DIFFER(2183v2357)	m4	11	mixed ~CScriptThing (4 merged inline exits + out-of-line 0x004AA840 at the shared exit): inline_depth family, forbidden in this lane
+00e2ec30	NScript::CV_AmbushScamScript	GetTrickster	DIFFER(1053v1336)	c6	10	mixed ~CScriptThing / ~vector<CScriptThing> 0x008AC970 / copy ctor 0x004ABE90 / GetDataString 0x004AA900: inline_depth family
+00e2f170	NScript::CV_AmbushScamScript	SpringAmbush	DIFFER(2163v2781)	s4	10	mixed ~CScriptThing (expanded at loop-top exits and post-loop, called elsewhere): inline_depth family; control flow and layout match

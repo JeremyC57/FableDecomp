@@ -1,0 +1,2 @@
+address	source	result_on_full_mirror	header
+0x00F3D320	rebuild/src/compiled/00/f3/CTriangleStripifier2_GetMeshIslandSubsection_00f3d320.cpp	RELOCATION_MATCH	engine/CTriangleStripifier2.h (default path unchanged; hdrcheck2 default=same)
