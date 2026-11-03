@@ -1,5 +1,4 @@
 // CEndBriarRose::Main() -- end-game hero-souls companion: wait until the parent quest has played Jack's message, mark Me as informationless, unkillable and off the combo count, take scripted control of Me; then each frame, if the hero talks to Me speak the on-talk line, and if the hero hits Me (plainly, or with a special ability other than ability 14) speak the on-hit line and make Me and the hero allies
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D7A360, 1333 bytes (+ int3 padding), plain `ret`. Literals "TEXT_QST_B04_BRIAR_ONTALK" 0x012D3450, "TEXT_QST_B04_BRIAR_ONHIT" 0x012D3434.
 //   CEndScythe::Main 0x00D79D50 and CEndBriarRose::Main 0x00D7A360 are byte-identical apart from the literals (the catalog books both
@@ -15,7 +14,7 @@
 // Layout: Ego_r.pdb CEndBriarRose (28 bytes): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 (CV_DemonDoorsScript),
 //   PMasterData +0x18. CQ_HeroSoulsScript HeardJackMessage retail +0x4B (PDB +0x5F; quest-script base 0x14 smaller). Handle hierarchy as the landed
 //   CMeleeThunder::Main 0x00D58080.
-// Shape: the CMeleeThunder handle model (implicit handle dtor expanded only at the first return, inline_depth(0) elsewhere).
+// Shape: the CMeleeThunder handle model (plain inline; the movie ctor is the out-of-line COMDAT 0x006E7B60 in this TU, called at both movie sites).
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -32,7 +31,7 @@ template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
-    __forceinline ~CCountedPointer()
+     ~CCountedPointer()
     {
         if (Info) {
             --Info->RefCount;
@@ -90,7 +89,7 @@ using NScript::CIsThingAlive;
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
+     ~CScriptGameResourceObjectBase() { }
 };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
@@ -106,7 +105,7 @@ public:
 };
 class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // vtable 0x01260EF4, 0x10 bytes
     CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
-    CScriptGameResourceObjectMovieBase() { }
+    CScriptGameResourceObjectMovieBase();                // 0x006E7B60
     ~CScriptGameResourceObjectMovieBase();              // 0x006E7B80
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
@@ -147,16 +146,12 @@ void CEndBriarRose::Main()
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
             {
-#pragma inline_depth(0)
                 return;
-#pragma inline_depth()
             }
     }
     if (IsActiveThreadTerminating())
         {
-#pragma inline_depth(0)
             return;
-#pragma inline_depth()
         }
     Game->SetThingHasInformation(Me, false, false, false);
     Game->EntitySetAsKillable(Me, false, false);
@@ -167,28 +162,20 @@ void CEndBriarRose::Main()
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
             {
-#pragma inline_depth(0)
                 return;
-#pragma inline_depth()
             }
     }
     if (IsActiveThreadTerminating())
         {
-#pragma inline_depth(0)
             return;
-#pragma inline_depth()
         }
     while (!IsActiveThreadTerminating()) {
         if (Me.MsgIsTalkedToBy("SCRIPT_NAME_HERO")) {
             if (IsActiveThreadTerminating())
                 {
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
-#pragma inline_depth(0)
             CScriptGameResourceObjectMovieBase movie;
-#pragma inline_depth()
             Game->StartMovieSequence("", movie);
             CGameScriptInterface* game = Game;
             game->PauseAllNonScriptedEntities(true);
@@ -198,16 +185,12 @@ void CEndBriarRose::Main()
                     Game->NewScriptFrame();
                     if (IsActiveThreadTerminating()) {
                         game->PauseAllNonScriptedEntities(false);
-#pragma inline_depth(0)
                         return;
-#pragma inline_depth()
                     }
                 }
                 if (IsActiveThreadTerminating()) {
                     game->PauseAllNonScriptedEntities(false);
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
             }
             game->PauseAllNonScriptedEntities(false);
@@ -215,13 +198,9 @@ void CEndBriarRose::Main()
         if (Me.MsgIsHitBy("SCRIPT_NAME_HERO") || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO") && !Me.MsgIsHitBySpecialAbilityFrom(14, "SCRIPT_NAME_HERO"))) {
             if (IsActiveThreadTerminating())
                 {
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
-#pragma inline_depth(0)
             CScriptGameResourceObjectMovieBase movie;
-#pragma inline_depth()
             Game->StartMovieSequence("", movie);
             CGameScriptInterface* game = Game;
             game->PauseAllNonScriptedEntities(true);
@@ -231,16 +210,12 @@ void CEndBriarRose::Main()
                     Game->NewScriptFrame();
                     if (IsActiveThreadTerminating()) {
                         game->PauseAllNonScriptedEntities(false);
-#pragma inline_depth(0)
                         return;
-#pragma inline_depth()
                     }
                 }
                 if (IsActiveThreadTerminating()) {
                     game->PauseAllNonScriptedEntities(false);
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
             }
             Game->EntitySetThingAsAllyOfThing(Me, Game->GetHero());
@@ -249,6 +224,4 @@ void CEndBriarRose::Main()
         }
         Game->NewScriptFrame();
     }
-#pragma inline_depth(0)
 }
-#pragma inline_depth()

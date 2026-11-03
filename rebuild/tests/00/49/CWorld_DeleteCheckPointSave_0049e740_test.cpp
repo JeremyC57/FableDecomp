@@ -19,7 +19,7 @@ class CAFile { public: static bool PathExists(const CWideString& path) { return 
 class CUserProfileManager { public: CWideString GetAutoSaveCheckPointPathName() const { return CWideString("Saves\\Profile1\\CheckPoint.sav"); } };
 static CUserProfileManager g_profiles;
 class CDriveManager { public:
-    int DeleteFile(const CWideString& path)
+    int DeleteFileW(const CWideString& path)
     {
         ++g_deletes;
         int i = Find(path.s);
@@ -35,10 +35,10 @@ static void DeleteCheckPointSave()
 {
     CWideString path = g_profiles.GetAutoSaveCheckPointPathName();
     if (CAFile::PathExists(path)) {
-        g_drives.DeleteFile(path);
+        g_drives.DeleteFileW(path);
         CWideString hsPath = path + ".hs";
         if (CAFile::PathExists(hsPath))
-            g_drives.DeleteFile(hsPath);
+            g_drives.DeleteFileW(hsPath);
     }
 }
 

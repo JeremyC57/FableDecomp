@@ -166,7 +166,9 @@ public:
     // Codex pass 13: ?SaveToFile@CCharString@@QBEXAAVCAFile@@@Z (Ego_r + FableWin), ?EqualsCaseInsensitive@CCharString@@QBE_NABV1@@Z and
     // ??MCCharString@@QBE_NABV0@@Z (FableWin; ??M bound by a landed row); all out of line in retail.
     void SaveToFile(class CAFile&) const;
-    bool EqualsCaseInsensitive(const CCharString&) const;
+    // Chunk 734 (row 0x004A0D90 CWorld::LoadQuestsFromFile): the body is inline -- retail expands it there (`_stricmp` on the two
+    // GetAsCharArray results, 0x004A1028..0x004A105B; no out-of-line copy in Fable.exe or the manifest; FableWin's is the debug COMDAT).
+    bool EqualsCaseInsensitive(const CCharString& other) const { return _stricmp(GetAsCharArray(), other.GetAsCharArray()) == 0; }
     bool operator<(const CCharString&) const;
 #ifdef FABLE_RETAIL_CBASICSTRING_EQ_OUTOFLINE
     // (same opt-in) retail expands CCharString::operator== in place around the CBasicString call even in the size-optimised

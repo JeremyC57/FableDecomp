@@ -1,0 +1,94 @@
+addr       parity           behav  name
+004084b0   RELOCATION_MATCH PASS   CUserProfileManager::GetMaxEffectsDetail
+00408500   RELOCATION_MATCH PASS   CUserProfileManager::GetMaxTextureDetail
+00408550   RELOCATION_MATCH PASS   CUserProfileManager::GetMaxShadowDetail
+004085a0   RELOCATION_MATCH PASS   CUserProfileManager::GetMaxMeshDetail
+00430900   WARN RELOC_NAME: ??$TransferMap@KK@CPersistContext@@QAEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@@Z -> 00431242 labelled '_global::PersistTransfer_00431242'
+00430900   WARN RELOC_NAME: ??$Transfer@W4EMusicSetType@@@CPersistContext@@QAEXAAW4EMusicSetType@@@Z -> 0043119e labelled 'CEngineLightingManager::UpdateShadowScene'
+00430900   WARN RELOC_NAME: ??$TransferMap@JVCCharString@@@CPersistContext@@QAEXAAV?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@@Z -> 00431493 labelled '_global::PersistTransfer_00431493'
+00430900   RELOCATION_MATCH PASS   NUISystem::CUIMiscThingsDef::Transfer
+0047a9f0   WARN RELOC_NAME: ?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z -> 00403c60 labelled 'MemCmp_Unsigned16'
+0047a9f0   WARN RELOC_NAME: ??$__destroy_aux@PAVCHeroLogBookEntry@CHeroLogBook@@@std@@YIXPAVCHeroLogBookEntry@CHeroLogBook@@0ABU__false_type@0@@Z -> 0047baf0 labelled 'std::__destroy_aux<CHeroLogBook::CHeroLogBookEntry*>'
+0047a9f0   RELOCATION_MATCH PASS   CHeroLogBook::AddEntry
+00487570   WARN RELOC_NAME: ?Sprintf@CWideString@@QAAXPBGZZ -> 0099ba70 labelled 'CWideString::Format'
+00487570   RELOCATION_MATCH PASS   CPlayer::DrawFreeCamDebug
+00487b70   RELOCATION_MATCH PASS   CPlayer::GetPPlayerCharacterThing
+00487dc0   RELOCATION_MATCH PASS   CPlayer::GetPControlledCreature
+00487dd0   RELOCATION_MATCH PASS   CPlayer::PeekPControlledCreature
+0049d8c0   RELOCATION_MATCH PASS   CWorld::EventIsWorldEvent
+0049e270   WARN SHARED_HEADER_AVAILABLE CThingManager
+0049e270   RELOCATION_MATCH PASS   CWorld::Unload
+004b05c0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+004b05c0   RELOCATION_MATCH PASS   CQuestManager::TransferBoasts
+004fb990   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+004fb990   WARN RELOC_ALIAS: _strstr -> 00bfeb3a is the import thunk 'MSVCR71.DLL::strstr'
+004fb990   RELOCATION_MATCH PASS   CWorldMap::SaveMapsToString
+004fc6b0   RELOCATION_MATCH PASS   CWorldMap::DrawIsPosInMap
+004fd040   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+004fd040   WARN RELOC_ALIAS: _strstr -> 00bfeb3a is the import thunk 'MSVCR71.DLL::strstr'
+004fd040   RELOCATION_MATCH PASS   CWorldMap::SaveRegionsToString
+00501150   WARN RELOC_NAME: ??$__uninitialized_fill_n@PAVCLevelFiles@CObject@CLevelLoader@@IV123@@std@@YIPAVCLevelFiles@CObject@CLevelLoader@@PAV123@IABV123@ABU__false_type@0@@Z -> 00513570 labelled 'std::__uninitialized_fill_n<CLevelLoader::CObject::CLevelFiles*,unsigned int,CLevelLoader::CObject::CLevelFiles>'
+00501150   RELOCATION_MATCH PASS   CWorldMap::LoadLevelFromFiles
+00520670   RELOCATION_MATCH PASS   CThingManager::LoadHeroStateBinary
+00521620   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@PAV123@@std@@YIPAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@PAV123@00ABU__false_type@0@@Z -> 005269b0 labelled 'std::__uninitialized_copy<NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *>'
+00521620   RELOCATION_MATCH PASS   NThingManager::CEntityRuntimePersistence::SaveToGameStateBinary
+00522720   RELOCATION_MATCH PASS   CThingManager::RuntimeLoadEntities
+00522a20   RELOCATION_MATCH PASS   CThingManager::InitThingTypes
+005eb9e0   RELOCATION_MATCH PASS   CTCTavernGame::FrameUpdate
+00606300   WARN RELOC_NAME: ??$TransferVector@VCUIMiniMapMarker@CTCInventoryMap@@@CPersistContext@@QAEXPBDAAV?$vector@VCUIMiniMapMarker@CTCInventoryMap@@V?$allocator@VCUIMiniMapMarker@CTCInventoryMap@@@std@@@std@@@Z -> 00619710 labelled 'CPersistContext::Transfer<CUIMiniMapMarker>'
+00606300   WARN RELOC_NAME: ??$TransferVector@VCUIRegionInfo@CTCInventoryMap@@@CPersistContext@@QAEXPBDAAV?$vector@VCUIRegionInfo@CTCInventoryMap@@V?$allocator@VCUIRegionInfo@CTCInventoryMap@@@std@@@std@@@Z -> 006197d0 labelled 'CPersistContext::Transfer<CUIRegionInfo>'
+00606300   WARN RELOC_NAME: ??$TransferVector@_K@CPersistContext@@QAEXPBDAAV?$vector@_KV?$allocator@_K@std@@@std@@@Z -> 006192f0 labelled 'CPersistContext::Transfer<CTeleportUIDRecord>'
+00606300   WARN RELOC_NAME: ??1?$_List_base@PBVCThingMarker@@V?$allocator@PBVCThingMarker@@@std@@@std@@QAE@XZ -> 00615360 labelled '_global::StdList_Clear_00615360'
+00606300   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z -> 00433530 labelled 'std::vector::std::vector::Reallocate'
+00606300   RELOCATION_MATCH PASS   CTCInventoryMap::OnSerialise
+006286f0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+006286f0   WARN RELOC_NAME: ?SetEnabled25_009915e0@CASoundManager@@QAEX_N@Z -> 009915e0 labelled 'CWorld::SetMiniMapEnabled'
+006286f0   WARN RELOC_NAME: ?SetEnabled26_00991620@CASoundManager@@QAEX_N@Z -> 00991620 labelled 'CTCDParticleEmitter::func_00991620'
+006286f0   WARN RELOC_NAME: ?Sprintf@CWideString@@QAAXPBGZZ -> 0099ba70 labelled 'CWideString::Format'
+006286f0   RELOCATION_MATCH PASS   GFPlayFullScreenXBoxMovie
+0065b854   WARN RELOC_NAME: ?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z -> 006bb390 labelled '`anonymousnamespace'::Game_IsTimeOfDayInRange'
+0065b854   RELOCATION_MATCH PASS   CTCVillage::AddThingToVillage
+00666ef0   RELOCATION_MATCH PASS   CThingCreatureBase::AutoPlaceNearBuilding
+00667d30   WARN RELOC_NAME: ?SetLifeTime@CTCFlashOnHit@@QAEXJ@Z -> 007e33a0 labelled 'OnPostParentRelocation'
+00667d30   WARN RELOC_NAME: ?IsMeleeStrike@CHitParameters@@QBE_NXZ -> 00868860 labelled 'CStateMapOwner_00868860::HasStateZeroOrOne'
+00667d30   WARN RELOC_NAME: ?AddHitByMelee@CPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z -> 00437990 labelled '_global::Forward_InitParticleEmitter_via0x150_00437990'
+00667d30   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00667d30   RELOCATION_MATCH PASS   CThingCreatureBase::OnHit
+00681850   WARN RELOC_UNCHECKED: no object block of the retail length (multi-block TU)
+00681850   RELOCATION_MATCH PASS   CTCCreatureOpinionOfHero::IsFactionEnemyToHeroOverriddenOnOpinion
+006aa2e0   RELOCATION_MATCH PASS   CThingPlayerCreature::DrawPreparePrimitivesForRendering
+006aabe0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+006aabe0   WARN RELOC_NAME: ?GetTargetingPositionOnThing@NTargeting@@YI?AVC3DVector@@ABVCWorld@@ABVCThing@@M@Z -> 007ea2f0 labelled 'Creature::GetTargetFirePoint'
+006aabe0   RELOCATION_MATCH PASS   CThingPlayerCreature::SetActionForMelee
+
+WINS: 30
+  004084b0 RELOCATION_MATCH CUserProfileManager::?GetMaxEffectsDetail@CUserProfileManager@@QBEMXZ
+  00408500 RELOCATION_MATCH CUserProfileManager::?GetMaxTextureDetail@CUserProfileManager@@QBEMXZ
+  00408550 RELOCATION_MATCH CUserProfileManager::?GetMaxShadowDetail@CUserProfileManager@@QBEMXZ
+  004085a0 RELOCATION_MATCH CUserProfileManager::?GetMaxMeshDetail@CUserProfileManager@@QBEMXZ
+  00430900 RELOCATION_MATCH NUISystem::CUIMiscThingsDef::?Transfer@CUIMiscThingsDef@NUISystem@@UAEXAAVCPersistContext@@@Z
+  0047a9f0 RELOCATION_MATCH CHeroLogBook::?AddEntry@CHeroLogBook@@QAEXABVCWideString@@00W4ECategory@CHeroLogBookEntry@1@_N@Z
+  00487570 RELOCATION_MATCH CPlayer::?DrawFreeCamDebug@CPlayer@@QBEXPBVC2DBoxF@@ABVCFontBank@@@Z
+  00487b70 RELOCATION_MATCH CPlayer::?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ
+  00487dc0 RELOCATION_MATCH CPlayer::?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ
+  00487dd0 RELOCATION_MATCH CPlayer::?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ
+  0049d8c0 RELOCATION_MATCH CWorld::?EventIsWorldEvent@CWorld@@QBE_NPBVCGameEvent@@@Z
+  0049e270 RELOCATION_MATCH CWorld::?Unload@CWorld@@QAEXXZ
+  004b05c0 RELOCATION_MATCH CQuestManager::?TransferBoasts@CQuestManager@@QAEXAAVCPersistContext@@@Z
+  004fb990 RELOCATION_MATCH CWorldMap::?SaveMapsToString@CWorldMap@@IAEXAAVCCharString@@@Z
+  004fc6b0 RELOCATION_MATCH CWorldMap::?DrawIsPosInMap@CWorldMap@@UBE_NABVC3DVector@@@Z
+  004fd040 RELOCATION_MATCH CWorldMap::?SaveRegionsToString@CWorldMap@@IAEXAAVCCharString@@@Z
+  00501150 RELOCATION_MATCH CWorldMap::?LoadLevelFromFiles@CWorldMap@@IAEXJV?$CCountedPointer@VCAFile@@@@00W4ELoadType@1@@Z
+  00520670 RELOCATION_MATCH CThingManager::?LoadHeroStateBinary@CThingManager@@QAEXAAVCPersistContext@@@Z
+  00521620 RELOCATION_MATCH NThingManager::CEntityRuntimePersistence::?SaveToGameStateBinary@CEntityRuntimePersistence@NThingManager@@QAEXAAVCPersistContext@@@Z
+  00522720 RELOCATION_MATCH CThingManager::?RuntimeLoadEntities@CThingManager@@QAEXJABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@3@@Z
+  00522a20 RELOCATION_MATCH CThingManager::?InitThingTypes@CThingManager@@QAEXXZ
+  005eb9e0 RELOCATION_MATCH CTCTavernGame::?FrameUpdate@CTCTavernGame@@UAEXXZ
+  00606300 RELOCATION_MATCH CTCInventoryMap::?OnSerialise@CTCInventoryMap@@MAEXAAVCPersistContext@@_N@Z
+  006286f0 RELOCATION_MATCH _global::?GFPlayFullScreenXBoxMovie@@YI_NABVCCharString@@KKKKPBVCDataBank@NGameText@@PAVCIEngine@@_NMP6I_NXZPAVCXMVPlayerBuffers@@PAVCWideString@@@Z
+  0065b854 RELOCATION_MATCH CTCVillage::?AddThingToVillage@CTCVillage@@QAEXAAVCThing@@@Z
+  00666ef0 RELOCATION_MATCH CThingCreatureBase::?AutoPlaceNearBuilding@CThingCreatureBase@@QAE_NPBVCThingBuilding@@M@Z
+  00667d30 RELOCATION_MATCH CThingCreatureBase::?OnHit@CThingCreatureBase@@UAEXAAVCHitParameters@@@Z
+  00681850 RELOCATION_MATCH CTCCreatureOpinionOfHero::?IsFactionEnemyToHeroOverriddenOnOpinion@CTCCreatureOpinionOfHero@@QBE_NXZ
+  006aa2e0 RELOCATION_MATCH CThingPlayerCreature::?DrawPreparePrimitivesForRendering@CThingPlayerCreature@@UAE_NABVCEnginePrimitivePrepareInfo@@@Z
+  006aabe0 RELOCATION_MATCH CThingPlayerCreature::?SetActionForMelee@CThingPlayerCreature@@UAE_NABVCCreatureAbilityDef@@@Z

@@ -1,0 +1,17 @@
+catalog  00a14e20 _global::SetMemberConst_00a14e20 -> CNavigatorManager::FrameUpdate
+catalog  004c5e90 _global::Nop_ret0_004c5e90 -> CBulletTimeManager::FrameUpdate
+catalog  006b32a0 _global::Forward_FrameUpdate_via0x1960_006b32a0 -> CEnvironment::UpdateInterpolation
+catalog  00aeaaf0 NParticleEngine::CParticleEmitterManager::Get -> NParticleEngine::GetParticleEmitterManager
+catalog  004ab840 CDefinitionManager::GetDef_004ab840 -> CDefinitionManager::GetDef<CThingBuildingDef>
+catalog  009e4bc0 CDriveManager::DeleteFile -> CDriveManager::DeleteFileW
+catalog  00443f90 std::vector::Resize -> std::vector<CEnginePrimitiveHandle>::resize
+manifest 00443f90 std::vector::Resize -> std::vector<CEnginePrimitiveHandle>::resize
+manifest 004a5e90 CWorld::AutoLoadRegionLeaving -> CWorld::AutoLoadRespawn
+manifest 004ab840 CDefinitionManager::GetDef_004ab840 -> CDefinitionManager::GetDef<CThingBuildingDef>
+manifest 004c5e90 _global::Nop_ret0_004c5e90 -> CBulletTimeManager::FrameUpdate
+manifest 006b1d30 _global::Sound_SetThemeByName -> CAtmosProcess::SetAtmosSoundsAsMuted
+manifest 006b32a0 _global::Forward_FrameUpdate_via0x1960_006b32a0 -> CEnvironment::UpdateInterpolation
+manifest 009e4bc0 CDriveManager::DeleteFile -> CDriveManager::DeleteFileW
+manifest 00a14e20 _global::SetMemberConst_00a14e20 -> CNavigatorManager::FrameUpdate
+manifest 00aeaaf0 NParticleEngine::CParticleEmitterManager::Get -> NParticleEngine::GetParticleEmitterManager
+labels 37  catalog renamed 7  manifest renamed 9

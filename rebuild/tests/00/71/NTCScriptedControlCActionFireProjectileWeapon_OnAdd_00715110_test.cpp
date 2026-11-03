@@ -114,10 +114,8 @@ void CActionFireProjectileWeapon::OnAdd()
         }
     }
     if (PTargetThing.IsAlive() && hasMissileWeapon) {
-#pragma inline_depth(0)
         if (needsReload)
             Actions.Add(CCountedPointer(new CCreatureAction_ReloadMissileWeapon(creature)));
-#pragma inline_depth()
         Actions.Add(CCountedPointer(new CCreatureAction_AimMissileWeapon(creature)));
         Actions.Add(CCountedPointer(new CCreatureAction_FireMissileWeapon(creature, PTargetThing.GetThing())));
     }

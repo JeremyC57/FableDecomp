@@ -92,14 +92,10 @@ void CMK_HS2_SOUL::Main()
         if (IsDone())
             return;
         if (!effect.IsAlive()) {
-#pragma inline_depth(0)
             if (IsDone())
                 return;
-#pragma inline_depth()
             effect.PImp = Game->CreateEffect("DG_SOUL_TRAPPED", Me.GetPos(), "", Me.GetAngleXY(), false, false).PImp
-#pragma inline_depth(0)
             ;
-#pragma inline_depth()
         }
         Game->NewScriptFrame();
     }

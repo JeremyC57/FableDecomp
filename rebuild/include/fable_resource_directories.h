@@ -25,4 +25,8 @@ namespace NResourceDirectoryNames
 {
     CWideString FABLE_FASTCALL GetMyDocumentsDir();
     CWideString FABLE_FASTCALL GetSaveDir();
+#ifdef FABLE_RETAIL_NRESOURCEDIRECTORYNAMES
+    // Chunk 734 (row 0x004A5E90): Ego_r.pdb / FableWin.pdb ?GetDebugSaveDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ (landed 0x0041A1A0).
+    CWideString FABLE_FASTCALL GetDebugSaveDir();
+#endif
 }

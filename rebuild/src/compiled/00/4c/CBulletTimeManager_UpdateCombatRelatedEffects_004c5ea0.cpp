@@ -2,8 +2,8 @@
 // Naming wave 18: the global stand-in g_BulletTimeFramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004C5EA0, length 107 bytes.
-// Callees: CPlayerManager::GetMainPlayer @ 0x00449970 (landed name), CPlayer::IsInitialised @ 0x0099A330 (the shared
-// CInitBaseClass `mov al,[ecx+4]` query), CPlayer::GetPControlledCreature @ 0x00487DC0 (landed name),
+// Callees: CPlayerManager::GetMainPlayer @ 0x00449970 (landed name), CInitBaseClass::IsValid @ 0x0099A330 (Ego_r + FableWin
+// ?IsValid@CInitBaseClass@@QBE_NXZ, `mov al,[ecx+4]`), CPlayer::GetPControlledCreature @ 0x00487DC0 (landed name),
 // CThingCreatureBase::IsPerformingAnyAction @ 0x006622A0; virtual slot 15 (+0x3c) of the creature's object at +0x100
 // (a bool "doing a strike" query). Globals 0x01375550 and 0x01378D08 are multiplied for the countdown length.
 // Layout: rebuild/include/engine/CBulletTimeManager.h puts a 0x10-byte map first; retail reads PlayerManager at
@@ -39,8 +39,9 @@ class CThingPlayerCreature : public CThingCreatureBase { public:
     unsigned char _pad[0x100];
     CStrikeQuery* m_pStrikeQuery;             // +0x100
 };
-class CPlayer { public:
-    bool IsInitialised();                     // 0x0099A330
+#define FABLE_RETAIL_CINITBASECLASS
+#include "engine/CInitBaseClass.h"
+class CPlayer : public CInitBaseClass { public:   // RTTI CPlayer : CInitBaseClass; IsValid 0x0099A330 is the base's
     CThingPlayerCreature* GetPControlledCreature() const;// 0x00487DC0
 };
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
@@ -68,7 +69,7 @@ public:
 
 void CBulletTimeManager::UpdateCombatRelatedEffects()
 {
-    if (!PlayerManager->GetMainPlayer().IsInitialised())
+    if (!PlayerManager->GetMainPlayer().IsValid())
         return;
     CThingPlayerCreature* creature = PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (creature == 0 || !creature->IsPerformingAnyAction())

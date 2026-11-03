@@ -1,4 +1,4 @@
-# Resume here (one page) — updated 2026-11-03 night (pass 13 + landing rounds b and c landed; chunk 732 and the inlining study running)
+# Resume here (one page) — updated 2026-11-03 late night (landing round e: CWorld::UpdateFrame + 20 pragma-free inline-depth redos)
 
 **Overarching plan:** `docs/PLAN.md` (every known function by pool, the parked residue classes with their cheapest
 fixes, the naming debt, and the order of work). 2026-11-03 evening: `tools/sync_manifest_from_catalog.py` put the
@@ -19,15 +19,16 @@ problems: the 2026-11-02 / 2026-11-03 lines at the end of `docs/pipeline/GOTCHAS
 ## State
 - Branch `FullDecomp` (`JeremyC57/FableDecomp`), everything committed and pushed except the running agents' scratch.
 - Coverage (refresh with `tools/write_decomp_dashboard.py` then `tools/update_readme_progress.py`; never hand-edit):
-  46,539 of the 49,564-function catalog (93.90%), 55.74% of retail function bytes, after landing rounds b and c
-  (`batches/2026-11-03_landing_b/`, `_landing_c/`; their HEADER_NEEDS.md list what the parked rows of chunks 723-731 still need).
+  46,544 of the 49,564-function catalog (93.91%), 55.81% of retail function bytes, after landing round e
+  (`batches/2026-11-03_landing_e/`; earlier rounds `_landing_b/` to `_landing_d/`, whose HEADER_NEEDS.md list what parked rows still need).
 - Codex pass 13 landed 47 of 51 (`batches/2026-11-03_codex_pass13_landing/`; data names to check with `cvdump` on the owner's
   PDBs are in its NAME_DECISIONS.tsv); 0x00501450 is still held on CVectorMap::LowerBound. Pass 14 was never sent; its 100 rows
   are released to in-house chunks (`pending/2026-11-02_codex_pass14/RELEASED.tsv`).
 - **Owner 2026-11-03: at most 3 concurrent agents.** Verify and land, then launch (10+ attempts per row). Running at the time of
-  writing: chunk 732 (CThingPlayerCreature x5 + CQuestManager::TransferBoasts retry) and the VC7.1 per-call-site inlining study
-  (`$S/inlinesplit/`): retail expands an inline function at some call sites of one function and calls it at others; this parks
-  9+ rows of chunks 728-730 and is likely what the 129 `// Revisit: inline-depth` rows need for a pragma-free redo.
+  writing: chunk 735 (front end + CTCInventoryExperience) and the pragma-row agent on the 70 remaining `// Revisit: inline-depth`
+  rows (mechanism and levers: `docs/pipeline/INLINE_DEPTH_REVISIT.md`, `batches/2026-11-03_inline_revisit2/README.md`).
+- Landing round e left chunk 733's two rows (0x004075C0, 0x0040BCA0) unlanded: CUIScreenUnitConverter static access needs a
+  `cvdump` of the owner's PDB. Its README lists 9 PRIORITY re-model lines queued in NAME_FIXES_QUEUE.tsv (`land0311e`).
 - Parked with drafts, not landed: 723 r2/r3, 724 r3, 727 (sky ctor held on CDefPointer::SetDynamicCast, `pending/2026-11-03_linux_hand727/DECISION_00b625e0.md`),
   728 (DrawDebugInfo, CTCWife Global/FrameUpdate), 729, 730, 731 (SetDefaultRenderStates, bookmark operand-order gap).
 - Chunks are cut from the category A groups with `$S/cut_groups.py N <group ids>` (reads `pending/2026-11-03_groups/ROWS.tsv`,

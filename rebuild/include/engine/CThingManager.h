@@ -13,6 +13,9 @@
 class CMainGameComponent; class CPersistContext; class CThing; class CGameDefinitionManager;
 class CWorld; class CWorldMap; class CPlayerManager; class CNavigatorManager; class CEnvironment;
 class CMemoryDataInputStream; class CASuspendableProcess;
+#ifdef FABLE_RETAIL_CTHINGMANAGER
+class CEnginePrimitivePrepareInfo;                              // chunk 734: PreparePrimitivesForEngine's parameter
+#endif
 class CThingManager : public CClassFactory {
 public:
     CThingManager(const CMainGameComponent&,const CGameDefinitionManager&,CWorld&,CPlayerManager&,CNavigatorManager&,unsigned long*,unsigned long,unsigned long,unsigned long);
@@ -30,6 +33,17 @@ public:
     const CThing* PeekPThingWithUID(unsigned __int64 uid) const;        // 0x0051ED60
     // Codex pass 13 (row 0x004FB990): FableWin ?GetCurrentThingUID@CThingManager@@QBE_KXZ, inline in retail (reads CurrentUniqueID).
     unsigned __int64 GetCurrentThingUID() const { return CurrentUniqueID; }
+#ifdef FABLE_RETAIL_CTHINGMANAGER
+    // Chunk 734 (row 0x004A5A40 CWorld::UpdateFrame): Ego_r.pdb / FableWin.pdb ?WorldUpdateThings@CThingManager@@QAEXXZ (0x0051FCC0)
+    // and ?UpdateDeaths@CThingManager@@QAEXXZ (0x0051F070, landed), and the FableWin-only inline
+    // ?IsNonScriptedEntitesPauseMode@CThingManager@@QBE_NXZ (UpdateFrame reads +0x54 in place at 0x004A5D38). No layout change.
+    void WorldUpdateThings();                                           // 0x0051FCC0
+    void UpdateDeaths();                                                // 0x0051F070
+    bool IsNonScriptedEntitesPauseMode() const { return NonScriptedEntitesPauseMode; }
+    // Chunk 734 (row 0x004A1CB0): Ego_r.pdb / FableWin.pdb ?PreparePrimitivesForEngine@CThingManager@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
+    // (retail 0x0051EAB0, landed).
+    void PreparePrimitivesForEngine(const CEnginePrimitivePrepareInfo& info);   // 0x0051EAB0
+#endif
 protected:
     virtual void OnCreateClass(CClass&);
     virtual void OnDeleteClass(CClass&);

@@ -31,6 +31,9 @@ public: const CCharString& GetName() const { return Name; }
     const CCharString& GetDisplayName() const;
     const CCharString& GetRegionDefName() const { return RegionDefName; }
     bool IsOnWorldMap() const { return AppearOnWorldMap; }
+    // Chunk 734 (row 0x004A5A40): FableWin.pdb / Ego_r.pdb ?IsSoundThemesEnabled@CRegion@@QBE_NXZ, inline in retail (UpdateFrame
+    // reads +0x56 in place at 0x004A5C88).
+    bool IsSoundThemesEnabled() const { return SoundThemesEnabled; }
     const CCharString& GetMiniMapGraphic() const { return MiniMapGraphic; }
     float GetMiniMapScale() const { return MiniMapScale; }
     const C2DVector& GetMiniMapOffset() const { return MiniMapOffset; }

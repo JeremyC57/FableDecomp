@@ -55,6 +55,9 @@ enum ETCInterfaceType;                                                   // MS f
 class CTCBase : public CBaseClassNonCopyable {
 public:
     CTCBase(CThing&);                                                    // 0x00686800 ??0CTCBase@@QAE@AAVCThing@@@Z
+    // Chunk 734 (row 0x004A5A40 CWorld::UpdateFrame): Ego_r.pdb / FableWin.pdb ?UpdateGlobalTCs@CTCBase@@SIX_N@Z (public static
+    // __fastcall), retail 0x00686DC0 (landed): walks the static GlobalUpdateTCs list with `paused` in cl.
+    static void __fastcall UpdateGlobalTCs(bool paused);                 // 0x00686DC0
     virtual ~CTCBase();                                                  // slot 0  0x00687050 (scalar deleting); 0x00686830
 protected:
     virtual void OnSerialise(CPersistContext&, bool);                    //  1 0x00686960

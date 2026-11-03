@@ -1,0 +1,24 @@
+addr       parity           behav  name
+00d7a360   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00d7a360   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d7a360   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d7a360   RELOCATION_MATCH PASS   CEndBriarRose::Main
+00ef6fe0   WARN SHARED_HEADER_AVAILABLE CIsThingAlive
+00ef6fe0   WARN SHARED_HEADER_AVAILABLE CPredicate_And
+00ef6fe0   RELOCATION_MATCH PASS   NScript::CPredicate_And<CPredicate_And<CPredicate_And<CIsThingAlive,CIsThingAlive>,CIsThingAlive>,CIsThingAlive>::CPredicate_And
+00ce0920   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00ce0920   WARN SHARED_HEADER_AVAILABLE C3DVector
+00ce0920   WARN RELOC_NAME: ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z -> 00704580 labelled '_global::CCountedPointer_Set_00704580'
+00ce0920   RELOCATION_MATCH PASS   CMK_HS2_SOUL::Main
+00d151d0   WARN RELOC_NAME: ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z -> 00704580 labelled '_global::CCountedPointer_Set_00704580'
+00d151d0   RELOCATION_MATCH PASS   CQ_BountyHuntScript::WatchForEnableFisherCreekHutDoor
+00ec0ba0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00ec0ba0   WARN SHARED_HEADER_AVAILABLE CV_ParanoidWhispersScript
+00ec0ba0   RELOCATION_MATCH PASS   CSecretWhisperingFriend::Main
+
+WINS: 5
+  00d7a360 RELOCATION_MATCH CEndBriarRose::Main
+  00ef6fe0 RELOCATION_MATCH NScript::CPredicate_And<CPredicate_And<CPredicate_And<CIsThingAlive,CIsThingAlive>,CIsThingAlive>,CIsThingAlive>::CPredicate_And
+  00ce0920 RELOCATION_MATCH CMK_HS2_SOUL::Main
+  00d151d0 RELOCATION_MATCH CQ_BountyHuntScript::WatchForEnableFisherCreekHutDoor
+  00ec0ba0 RELOCATION_MATCH CSecretWhisperingFriend::Main

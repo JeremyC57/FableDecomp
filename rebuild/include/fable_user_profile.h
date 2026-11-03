@@ -42,6 +42,12 @@ public:
     float GetMaxMeshDetail() const;                                      // 0x004085A0
     void SetDefaultValues();                                             // 0x0040C790 (Ego_r / FableWin ?SetDefaultValues@CUserProfileManager@@QAEXXZ)
     void SetDefaultValuesForNewProfile();                                // 0x00409B70
+    // Chunk 734 (row 0x004A5E90 CWorld::AutoLoadRespawn): Ego_r.pdb / FableWin.pdb QBE save-name getters (hidden CWideString result).
+    CWideString GetAutoSaveFileName() const;                             // 0x00406690 ?GetAutoSaveFileName@CUserProfileManager@@QBE?AVCWideString@@XZ
+    CWideString GetAutoSaveQuestStartFileName() const;                   // 0x004066B0 ?GetAutoSaveQuestStartFileName@..
+    CWideString GetAutoSaveCheckPointFileName() const;                   // 0x004066F0 ?GetAutoSaveCheckPointFileName@..
+    CWideString GetAutoSaveCheckPointPathName() const;                   // 0x00408040 ?GetAutoSaveCheckPointPathName@..
+    CWideString GetPathNameFromFileName(const CWideString& fileName, bool b) const;   // 0x00408120 ?GetPathNameFromFileName@CUserProfileManager@@QBE?AVCWideString@@ABV2@_N@Z
 protected:
     virtual void OnPreDeviceReset();                                     // ?OnPreDeviceReset@CUserProfileManager@@MAEXXZ
     virtual bool OnPostDeviceReset();                                    // ?OnPostDeviceReset@CUserProfileManager@@MAE_NXZ

@@ -14,7 +14,7 @@
 // Callees: CThing::GetPosition() const @ 0x006A4D00 (this TU's out-of-line copy; declared on CThingPhysical so it does
 //   not share a symbol with the 0x004C73D0 copy), the const/non-const player-manager accessors @ 0x004C79F0 / 0x004C7A00
 //   (byte twins, `[[0x013B8A1C]+0x30]`), CPlayerManager::GetPlayer(long) const @ 0x00449910 and non-const @ 0x004498C0
-//   (byte twins), CInitBaseClass::IsInitialised() const @ 0x0099A330, CPlayer::GetHeroCreature @ 0x00487DC0,
+//   (byte twins), CInitBaseClass::IsValid() const @ 0x0099A330, CPlayer::GetHeroCreature @ 0x00487DC0,
 //   CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020, operator new @ 0x00BFEA1A,
 //   NEntityEvents::CEventTriggered(CThing*) @ 0x0083CF20, CTCEntityEvents::AddEvent @ 0x008113C0.
 // Layout (retail, as the landed CThingSwitch rows 0x0083BE90 / 0x0083C230): interface bitset +0x20, interface map
@@ -54,7 +54,7 @@ struct CInterfaceMap {
 };
 
 class CPlayer { public:
-    bool IsInitialised() const;                         // 0x0099A330 (CInitBaseClass)
+    bool IsValid() const;                         // 0x0099A330 (CInitBaseClass)
     CThing* GetHeroCreature();                          // 0x00487DC0
 };
 class CPlayerManager { public:
@@ -107,7 +107,7 @@ void CThingSwitch::SwitchTriggerPlayerOnlyMultipleTimesInArea()
     area.BRY = GetPosition().Y + TriggerRadius;
     for (long i = 0; i < 4; ++i) {
         const CThing* self = this;
-        if (self->GetPlayerManager()->GetPlayer(i)->IsInitialised()) {
+        if (self->GetPlayerManager()->GetPlayer(i)->IsValid()) {
             CThingPhysical* hero = static_cast<CThingPhysical*>(GetPlayerManager()->GetPlayer(i)->GetHeroCreature());
             if (hero && !hero->Dead && area.ContainsPoint(C2DVector(hero->GetPosition().X, hero->GetPosition().Y))) {
                 ++TimesTriggered;
@@ -134,7 +134,7 @@ const C3DVector& CThingPhysical::GetPosition() const
 { for (int i = 0; i < g_nPos; ++i) if (g_posThing[i] == this) return g_pos[i]; static C3DVector z; return z; }
 
 static CPlayer g_players[4]; static bool g_init[4]; static CThing* g_heroes[4];
-bool CPlayer::IsInitialised() const { return g_init[this - g_players]; }
+bool CPlayer::IsValid() const { return g_init[this - g_players]; }
 CThing* CPlayer::GetHeroCreature() { return g_heroes[this - g_players]; }
 static CPlayerManager g_pm;
 CPlayer* CPlayerManager::GetPlayer(long n) { return &g_players[n]; }

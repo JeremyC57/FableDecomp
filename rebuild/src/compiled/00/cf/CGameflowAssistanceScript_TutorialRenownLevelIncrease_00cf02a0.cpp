@@ -1,5 +1,5 @@
 // CGameflowAssistanceScript::Tutorial_RenownLevelIncrease() -- while assistance runs, whenever the player-controlled hero's renown level rises have the guildmaster announce levels one to seven and, from level two on, retire the placeholder quest cards
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
+// Inline-split: exits wrapped individually; retail's construct is unproven
 // Leaf: Tutorial_RenownLevelIncrease
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CF02A0, length 672 bytes (+ int3 padding; plain `ret`; no EH frame).
 // Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940, CCharString() 0x0099E4B0 / CCharString(const char*, long)
@@ -12,7 +12,8 @@
 //   SavedRenownLevel +0x60.
 // Shape: a local `CCharString messages[8]` aggregate-initialised with the seven level texts (the eighth default-built).
 //   Retail destroys the array with an inline countdown loop at four exits and through the vector destructor iterator at
-//   the three terminate exits inside the renown block: those three `return`s sit in `#pragma inline_depth(0)` regions.
+//   the three terminate exits inside the renown block (plain inline array dtor; the first and third renown-block checks are
+//   do-while(0) statements, VC7.1's per-site frequency rule does the rest).
 //   The entry terminate test guards the loop (`if (!IsActiveThreadTerminating()) for (;;)`) and the loop bottom is
 //   `if (!IsActiveThreadTerminating()) continue; break;`, so both share the closing-brace exit as in retail.
 class CCharString { public:
@@ -70,23 +71,15 @@ void CGameflowAssistanceScript::Tutorial_RenownLevelIncrease()
             if (IsActiveThreadTerminating())
                 return;
             if (renown > SavedRenownLevel) {
-#pragma inline_depth(0)
-                if (IsActiveThreadTerminating())
-                    return;
-#pragma inline_depth()
+                do { if (IsActiveThreadTerminating()) return; } while (0);
                 SavedRenownLevel = renown;
                 if (renown < 8) {
-#pragma inline_depth(0)
                     if (IsActiveThreadTerminating())
                         return;
-#pragma inline_depth()
                     GSI->HeroReceiveMessageFromGuildMaster(messages[renown - 1], "", true, true);
                 }
                 if (renown > 1) {
-#pragma inline_depth(0)
-                    if (IsActiveThreadTerminating())
-                        return;
-#pragma inline_depth()
+                    do { if (IsActiveThreadTerminating()) return; } while (0);
                     GSI->RemoveQuestCardFromGuild("DUMMY_QUEST_HAS_NO_SCRIPT");
                     GSI->RemoveQuestCardFromGuild("DUMMY_QUEST_HAS_NO_SCRIPT");
                     GSI->RemoveQuestCardFromGuild("DUMMY_QUEST_HAS_NO_SCRIPT");

@@ -1,5 +1,5 @@
 // std::_Construct(CVsyncCallbackTimer::CPendingQuery* p, const CVsyncCallbackTimer::CPendingQuery& val) -- STLport: placement-copy one 16-byte pending vsync query into a list node (unoptimised TU)
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
+// Flags: /Od
 // Leaf: ??$_Construct@UCPendingQuery@CVsyncCallbackTimer@@U12@@std@@YIXPAUCPendingQuery@CVsyncCallbackTimer@@ABU12@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009F7890, 82 bytes (+14 int3), `__fastcall` (p in ecx, &val in edx), `ret`.
 // Identity: CVsyncCallbackTimer (Ego_r.pdb) holds two list<CPendingQuery> (FreeQueoryObjects +0x04, PendingQueories +0x10);
@@ -9,14 +9,13 @@
 // Callees: placement operator new(unsigned int, void*) @ 0x00405C10 (out of line here: `mov eax,[esp+8] ; ret`).
 // Layout: CPendingQuery {four dwords}; member names are not in the PDB layouts (descriptive: the D3D query object and
 //   the frame it was issued for, plus two words).
-// Shape: this TU region (0x009F77xx-0x009F78xx, see the landed 0x009F77F0/0x009F7810) is built with optimisation off:
+// Shape: this TU region (0x009F77xx-0x009F78xx, see the landed 0x009F77F0/0x009F7810) is built with optimisation off (`// Flags: /Od`, the TU's own switch; /Od implies /Ob0):
 //   both register arguments are homed (edx to [ebp-0Ch], ecx to [ebp-8]), the placement new is a real call whose result
 //   is null-tested, the implicit copy constructor is the dword-by-dword block copy, and the new-expression's value is
 //   stored to a dead temporary. `#pragma optimize("", off)` alone still expands the inline placement new (the pragma
-//   does not reach /Ob); `inline_depth(0)` stands for the TU's /Ob0, which keeps the call. The /Gr calling convention is
-//   spelled `__fastcall`.
-#pragma optimize("", off)
-#pragma inline_depth(0)
+//   does not reach /Ob); the TU flag /Od keeps STLport's inline placement new a call, as retail's out-of-line 0x00405C10
+//   shows some TU did. The /Gr calling convention is spelled `__fastcall`. (Pragma-only alternative that also matches:
+//   keep `#pragma optimize("", off)` and declare the placement new without a body.)
 
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }   // 0x00405C10 (STLport <new>)
 

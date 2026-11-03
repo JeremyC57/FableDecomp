@@ -1,0 +1,35 @@
+addr       parity           behav  name
+00ee7a20   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00ee7a20   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00ee7a20   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData
+00ee7a20   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ee7a20   WARN RELOC_NAME: ?Construct@CCutsceneCastMap@@QAEXXZ -> 00cdbf70 labelled 'std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::map'
+00ee7a20   WARN RELOC_NAME: ?Destroy@CCutsceneCastMap@@QAEXXZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00ee7a20   RELOCATION_MATCH PASS   CDemonDoorFace::Main
+0066bd00   WARN SHARED_HEADER_AVAILABLE CThing
+0066bd00   WARN SHARED_HEADER_AVAILABLE CTCBase
+0066bd00   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0066bd00   WARN RELOC_NAME: ?GetPotentialCriteriaStrings@CTCSoundPlayer@@AAEXABVCCharString@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z -> 0066bc10 labelled 'Sound_AppendAbilityNameToDescription'
+0066bd00   RELOCATION_MATCH PASS   CTCSoundPlayer::PlayAttachedCriteria
+00ce0b00   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00ce0b00   WARN SHARED_HEADER_AVAILABLE C3DVector
+00ce0b00   WARN RELOC_NAME: ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z -> 00704580 labelled '_global::CCountedPointer_Set_00704580'
+00ce0b00   RELOCATION_MATCH PASS   CMK_HS2_SOUL::Main
+00dde230   WARN SHARED_HEADER_AVAILABLE C3DVector
+00dde230   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData
+00dde230   RELOCATION_MATCH PASS   NScript::CQ_PrisonWardenGameScript::WardenKeyMiniGame
+00dd6440   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00dd6440   WARN SHARED_HEADER_AVAILABLE C3DVector
+00dd6440   WARN SHARED_HEADER_AVAILABLE CIsThingAlive
+00dd6440   WARN SHARED_HEADER_AVAILABLE CQ_PrisonEscapeRescueMotherScript
+00dd6440   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00dd6440   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00dd6440   WARN RELOC_NAME: ?g_bScriptAnimationFlag@@3_NA -> 01375748 labelled 'NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations'
+00dd6440   RELOCATION_MATCH PASS   CPrisonEscapeGuard::Main
+
+WINS: 5
+  00ee7a20 RELOCATION_MATCH CDemonDoorFace::Main
+  0066bd00 RELOCATION_MATCH CTCSoundPlayer::?PlayAttachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@_N11J@Z
+  00ce0b00 RELOCATION_MATCH CMK_HS2_SOUL::Main
+  00dde230 RELOCATION_MATCH NScript::CQ_PrisonWardenGameScript::WardenKeyMiniGame
+  00dd6440 RELOCATION_MATCH CPrisonEscapeGuard::Main

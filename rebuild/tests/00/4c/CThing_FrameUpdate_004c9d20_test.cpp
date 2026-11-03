@@ -3,7 +3,7 @@
 class CBulletTimeManager { public:
     long m_bulletTimeInfoCount; bool Override; bool fullFrame;
     bool IsActive() const { return Override || m_bulletTimeInfoCount; }
-    bool IsTimeForFullUpdate() { return fullFrame; }
+    bool IsTimeForFullUpdate() const { return fullFrame; }
 };
 struct CWorldTime { CBulletTimeManager* m_pBulletTimeManager; };
 class CThingManager { public: CWorldTime* m_pWorldTime; };

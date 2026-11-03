@@ -119,6 +119,9 @@ protected:
 public:
     virtual bool IsEditorActive() const;                                  // slot 9 0x004197B0 ?IsEditorActive@CMainGameComponent@@UBE_NXZ (FableWin 0x018A1210)
     CPlayerManager& GetPlayerManager() { return *PPlayerManager; }
+    // Chunk 734 (row 0x004A5A40 CWorld::UpdateFrame): FableWin.pdb ?GetDisplayEngine@CMainGameComponent@@QAEAAVCDisplayEngine@@XZ, inline in
+    // retail (`mov eax,[esi+8] ; mov ecx,[eax+28h]` at 0x004A5C34).
+    CDisplayEngine& GetDisplayEngine() { return *PDisplayEngine; }
     const NGameText::CDataBank& GetTextBank() const { return *PTextBank; }   // FableWin ?GetTextBank@CMainGameComponent@@QBEABVCDataBank@NGameText@@XZ (inline; 0x006286F0 reads PTextBank +0x14 in place)
     const CWorld& PeekWorld() const { return *PWorld; }
     // Chunk 732 (row 0x006AA2E0): FableWin.pdb ?PeekDebugFont@CMainGameComponent@@QBEABVCFontBank@@XZ (0x018A3AC0), inline in retail

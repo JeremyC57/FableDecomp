@@ -1,5 +1,4 @@
 // CSoulInfoAcolyte::Main() -- Hero Souls guild acolyte: once the parent quest flags Me ready (+0x4a), take Me under scripted control; then each frame, if the hero talks to Me speak the acolyte line inside a paused movie sequence, and if the hero hits Me (plainly, or with a special ability other than ability 14) speak the on-hit line and make Me and the hero allies
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D86C30, 1296 bytes, plain `ret`; entity-script vtable slot 1 (Main).
 // Literals "SCRIPT_NAME_HERO" 0x0125D1C8, "" 0x0122D70E, "TEXT_QST_B04_GUILD_ACOLYTE" 0x012D4C5C, "TEXT_QST_B04_GUILD_ACOLYTE_HIT" 0x012D4C3C.
@@ -63,6 +62,7 @@ using NScript::CIsThingAlive;
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 #include "engine/CScriptGameResourceObjectBase.h"
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"
+#define FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR
 #include "engine/CScriptGameResourceObjectMovieBase.h"
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
@@ -119,9 +119,7 @@ void CSoulInfoAcolyte::Main()
         if (Me.MsgIsTalkedToBy("SCRIPT_NAME_HERO")) {
             if (IsActiveThreadTerminating())
                 return;
-#pragma inline_depth(0)
             CScriptGameResourceObjectMovieBase movie;
-#pragma inline_depth()
             Game->StartMovieSequence("", movie);
             CGameScriptInterface* game = Game;
             game->PauseAllNonScriptedEntities(true);
@@ -144,9 +142,7 @@ void CSoulInfoAcolyte::Main()
         if (Me.MsgIsHitBy("SCRIPT_NAME_HERO") || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO") && !Me.MsgIsHitBySpecialAbilityFrom(14, "SCRIPT_NAME_HERO"))) {
             if (IsActiveThreadTerminating())
                 return;
-#pragma inline_depth(0)
             CScriptGameResourceObjectMovieBase movie;
-#pragma inline_depth()
             Game->StartMovieSequence("", movie);
             CGameScriptInterface* game = Game;
             game->PauseAllNonScriptedEntities(true);

@@ -1,0 +1,113 @@
+addr       parity           behav  name
+008a9810   RELOCATION_MATCH PASS   CGameScriptInterface::GetIsGossipForPlayer
+008aa090   RELOCATION_MATCH PASS   CGameScriptInterface::AddGossip
+008e37c0   WARN SHARED_HEADER_AVAILABLE C3DVector
+008e37c0   RELOCATION_MATCH PASS   NCreatureMode::CModeScorpionKingTailPlunge::~CModeScorpionKingTailPlunge
+00989cb0   RELOCATION_MATCH PASS   CShaderRenderManager::UpdateObjectSpaceLighting
+0098acf0   WARN RELOC_NAME: ?Initialise@CShaderResource@@QAEXAAVCShaderRenderManager@@@Z -> 00a5d4d0 labelled '_global::SetMember_dword0x14_00a5d4d0'
+0098acf0   RELOCATION_MATCH PASS   CShaderRenderManager::Initialise
+009da9f0   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+009da9f0   WARN RELOC_NAME: ?SetAWindow@CRenderManagerCore@@QAEXABVC2DBoxF@@@Z -> 00a0aa80 labelled '_global::Forward_SetViewport_via0x3a3c_00a0aa80'
+009da9f0   WARN RELOC_NAME: ?erase@?$vector@VCQuickDrawTriInfo@@V?$allocator@VCQuickDrawTriInfo@@@std@@@std@@QAEPAVCQuickDrawTriInfo@@PAV3@0@Z -> 009e15e0 labelled 'TextureCache_MoveAndCleanup'
+009da9f0   RELOCATION_MATCH PASS   CRenderManager2D::Render2DDrawList
+00ac2be0   WARN RELOC_NAME: ??_GC3DMeshPartitionBuilderElement@@QAEPAXI@Z -> 00ac39c0 labelled 'C3DMeshPartitionBuilderElement::`scalar deleting destructor''
+00ac2be0   RELOCATION_MATCH PASS   C3DMeshPartitionBuilderElement::PartitionSpace
+00ae0070   RELOCATION_MATCH PASS   CParticleProgram::ApplyTransform
+00ae0710   RELOCATION_MATCH PASS   CParticleProgram::CalculateAveragePatchSize
+00ae8d50   WARN RELOC_NAME: ??$__copy@PAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@PAU12@H@std@@YIPAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z -> 00ae9cb0 labelled 'std::__copy<std::pair<long, CCountedPointer<NParticleEngine::CParticleEmitter>> *, std::pair<long, CCountedPointer<NParticleEngine::CParticleEmitter>> *, int>'
+00ae8d50   WARN RELOC_NAME: ??$__destroy_aux@PAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@std@@YIXPAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@0@0ABU__false_type@0@@Z -> 00ae9d50 labelled 'std::__destroy_aux<std::pair<long, CCountedPointer<NParticleEngine::CParticleEmitter>> *>'
+00ae8d50   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00ae8d50   RELOCATION_MATCH PASS   NParticleEngine::CParticleEmitterDatabase::Load
+00b26360   WARN RELOC_NAME: ?GetPDefFromClassIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@J@Z -> 009ade10 labelled 'CDefinitionManager::GetPDefFromGlobalIndex'
+00b26360   WARN RELOC_CONFLICT: ??0CEnginePrimitiveTypeInfo@@QAE@XZ -> 00b8faa0 here, 00a02d20 in landed 00a148d0
+00b26360   RELOCATION_MATCH PASS   CEngine::Initialise
+00cbe7aa   WARN SHARED_HEADER_AVAILABLE C3DVector
+00cbe7aa   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00cbe7aa   RELOCATION_MATCH PASS   _global::FadeInThing
+00ce0ce0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00ce0ce0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00ce0ce0   WARN RELOC_NAME: ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z -> 00704580 labelled '_global::CCountedPointer_Set_00704580'
+00ce0ce0   RELOCATION_MATCH PASS   CMK_HS2_SOUL::Main
+00ce63a0   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData
+00ce63a0   RELOCATION_MATCH PASS   NScript::CHeroBoastsScript::BoastTCGTimeLimit
+00d17e70   MATCH            PASS   NScript::CQ_BountyHuntScript::RemoveBoastQuestInfo
+00d17ea0   WARN SHARED_HEADER_AVAILABLE CScriptDef
+00d17ea0   RELOCATION_MATCH PASS   NScript::CQ_BountyHuntScript::AddBoastQuestInfo
+00d35ed0   RELOCATION_MATCH PASS   NScript::CQ_FireHeartScript::RunThemeOverriding
+00d38000   WARN SHARED_HEADER_AVAILABLE C3DVector
+00d38000   WARN RELOC_NAME: ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z -> 00704580 labelled '_global::CCountedPointer_Set_00704580'
+00d38000   RELOCATION_MATCH PASS   CPuzzleBlockMoon::TurnIntoASunSign
+00d6bfa0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00d6bfa0   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00d6bfa0   WARN SHARED_HEADER_AVAILABLE CScriptDef
+00d6bfa0   WARN RELOC_NAME: ?Introduction@CQ_HangingTreeEvilScript@NScript@@QAEXXZ -> 00d6d080 labelled 'CQ_HangingTreeEvil_Init'
+00d6bfa0   WARN RELOC_NAME: ?Conclusion@CQ_HangingTreeEvilScript@NScript@@QAEXXZ -> 00d6d670 labelled 'CQ_HangingTreeEvil_Execute'
+00d6bfa0   RELOCATION_MATCH PASS   NScript::CQ_HangingTreeEvilScript::DoMission
+00d76490   RELOCATION_MATCH PASS   NScript::CQ_HangingTreeGoodScript::WatchForHeroNearExit
+00d823a0   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00d823a0   RELOCATION_MATCH PASS   NScript::CQ_HeroSoulsBriarScript::PlayCutscene
+00d835d0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00d835d0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00d835d0   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData
+00d835d0   RELOCATION_MATCH PASS   NScript::CQ_HeroSoulsMotherScript::Main
+00d9bb50   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00d9bb50   RELOCATION_MATCH PASS   NScript::CQ_HobbeToothContestScript::WhisperKilledHobbe
+00d9fe40   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d9fe40   RELOCATION_MATCH PASS   CFadeinSummoner::GetAlphaChange
+00da0c40   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00da0c40   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00da0c40   RELOCATION_MATCH PASS   NScript::CQ_MinionCampScript::RunSpawnPointControl
+00daa260   WARN SHARED_HEADER_AVAILABLE C3DVector
+00daa260   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00daa260   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00daa260   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00daa260   WARN RELOC_NAME: ??0CCutsceneCastMap@@QAE@XZ -> 00cdbf70 labelled 'std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::map'
+00daa260   WARN RELOC_NAME: ??1CCutsceneCastMap@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00daa260   RELOCATION_MATCH PASS   CMinionFieldGenerator::Main
+00dc2170   WARN SHARED_HEADER_AVAILABLE CQ_OakValeBanditRaidScript
+00dc2170   MATCH            PASS   NScript::CQ_OakValeBanditRaidScript::CanThingSeeAnythingInVector
+00dccf30   RELOCATION_MATCH PASS   CQ_OrchardFarmRaidScript::WatchForExternalScriptDeactivation
+00deb000   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00deb000   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00deb000   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00deb000   WARN SHARED_HEADER_AVAILABLE CQ_RansomVictimScript
+  WARN leaf '?DealWithHeroHittingMe@CVictimsBrother@CQ_RansomVictimScript@NScript@@AAEXXZ' matches no symbol in 00deb000.obj; graded the largest function
+  WARN leaf '?DealWithHeroHittingMe@CVictimsBrother@CQ_RansomVictimScript@NScript@@AAEXXZ' matches no symbol in 00deb000.obj; graded the largest function
+00deb000   WARN RELOC_NAME: ?DestroyOutOfLine@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b80 labelled 'CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase'
+00deb000   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00deb000   WARN RELOC_NAME: ??1CBaseObjectDtor@@UAE@XZ -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+00deb000   RELOCATION_MATCH PASS   NScript::CQ_RansomVictimScript::CVictimsBrother::DealWithHeroHittingMe
+00dfa020   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00dfa020   RELOCATION_MATCH PASS   NScript::CQ_TraderConflictEvilScript::Alloc
+
+WINS: 30
+  008a9810 RELOCATION_MATCH CGameScriptInterface::?GetIsGossipForPlayer@CGameScriptInterface@@UAEPA_NVCCharString@@@Z
+  008aa090 RELOCATION_MATCH CGameScriptInterface::?AddGossip@CGameScriptInterface@@UAEXVCCharString@@0@Z
+  008e37c0 RELOCATION_MATCH NCreatureMode::CModeScorpionKingTailPlunge::??1CModeScorpionKingTailPlunge@NCreatureMode@@UAE@XZ
+  00989cb0 RELOCATION_MATCH CShaderRenderManager::?UpdateObjectSpaceLighting@CShaderRenderManager@@AAEXK@Z
+  0098acf0 RELOCATION_MATCH CShaderRenderManager::?Initialise@CShaderRenderManager@@QAEXPAVCRenderManager@@PAUIDirect3DDevice9@@@Z
+  009da9f0 RELOCATION_MATCH CRenderManager2D::?Render2DDrawList@CRenderManager2D@@QAEX_N@Z
+  00ac2be0 RELOCATION_MATCH C3DMeshPartitionBuilderElement::?PartitionSpace@C3DMeshPartitionBuilderElement@@AAEJPBVC3DVertex2@@JM@Z
+  00ae0070 RELOCATION_MATCH CParticleProgram::?ApplyTransform@CParticleProgram@@QAEXABVCMatrix3x4@@@Z
+  00ae0710 RELOCATION_MATCH CParticleProgram::?CalculateAveragePatchSize@CParticleProgram@@AAEXABVCParticleSimulation@@@Z
+  00ae8d50 RELOCATION_MATCH NParticleEngine::CParticleEmitterDatabase::?Load@CParticleEmitterDatabase@NParticleEngine@@IAEXAAVCAFile@@ABVCEmitterDatabaseSerialiseInfo@2@@Z
+  00b26360 RELOCATION_MATCH CEngine::?Initialise@CEngine@@UAE_NABVCEngineInit@@@Z
+  00cbe7aa RELOCATION_MATCH _global::?FadeInThing@@YIXAAVCScriptThing@@M@Z
+  00ce0ce0 RELOCATION_MATCH CMK_HS2_SOUL::Main
+  00ce63a0 RELOCATION_MATCH NScript::CHeroBoastsScript::BoastTCGTimeLimit
+  00d17e70 MATCH NScript::CQ_BountyHuntScript::?RemoveBoastQuestInfo@CQ_BountyHuntScript@NScript@@QAEXXZ
+  00d17ea0 RELOCATION_MATCH NScript::CQ_BountyHuntScript::AddBoastQuestInfo
+  00d35ed0 RELOCATION_MATCH NScript::CQ_FireHeartScript::RunThemeOverriding
+  00d38000 RELOCATION_MATCH CPuzzleBlockMoon::TurnIntoASunSign
+  00d6bfa0 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::?DoMission@CQ_HangingTreeEvilScript@NScript@@QAEXXZ
+  00d76490 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::WatchForHeroNearExit
+  00d823a0 RELOCATION_MATCH NScript::CQ_HeroSoulsBriarScript::?PlayCutscene@CQ_HeroSoulsBriarScript@NScript@@QAEXVCCharString@@@Z
+  00d835d0 RELOCATION_MATCH NScript::CQ_HeroSoulsMotherScript::Main
+  00d9bb50 RELOCATION_MATCH NScript::CQ_HobbeToothContestScript::WhisperKilledHobbe
+  00d9fe40 RELOCATION_MATCH CFadeinSummoner::GetAlphaChange
+  00da0c40 RELOCATION_MATCH NScript::CQ_MinionCampScript::RunSpawnPointControl
+  00daa260 RELOCATION_MATCH CMinionFieldGenerator::Main
+  00dc2170 MATCH NScript::CQ_OakValeBanditRaidScript::CanThingSeeAnythingInVector
+  00dccf30 RELOCATION_MATCH CQ_OrchardFarmRaidScript::WatchForExternalScriptDeactivation
+  00deb000 RELOCATION_MATCH CVictimsBrother::?DealWithHeroHittingMe@CVictimsBrother@CQ_RansomVictimScript@NScript@@AAEXXZ
+  00dfa020 RELOCATION_MATCH NScript::CQ_TraderConflictEvilScript::?Alloc@CQ_TraderConflictEvilScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterface@@@Z

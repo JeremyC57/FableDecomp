@@ -14,6 +14,12 @@ class CNavigatorManagerExternalInterface;
 #pragma pack(push, 1)
 class CNavigatorManager {
 public:
+#ifdef FABLE_RETAIL_CNAVIGATORMANAGER
+    // Retail opt-in (chunk 734, row 0x004A5A40 CWorld::UpdateFrame): member functions only, the layout below is unchanged.
+    // Ego_r.pdb / FableWin.pdb ?FrameUpdate@CNavigatorManager@@QAEXXZ, retail 0x00A14E20 (`mov [ecx+20h],320h ; ret`: resets
+    // NumberOfNodeExaminationsLeftThisFrame +0x20 to 800; the catalog's CGameEventPackage::Clear label is propagated).
+    void FrameUpdate();                                          // 0x00A14E20
+#endif
     void*                               __vftable;           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                       _pad_0x04[0xc];      // +0x04
     unsigned char                       _pad_0x10[0x4];      // +0x10

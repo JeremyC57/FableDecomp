@@ -13,9 +13,19 @@ class CDefPointeeBase;
 class CMainGameComponent;
 class CPlayerManager;
 
+#ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE
+enum EGameAction;                                            // MS forward enums (as engine/fable_nscript_forward.h)
+enum EInputButtonEventType;
+#endif
 #pragma pack(push, 1)
 class CGamePlayerInterface {
 public:
+#ifdef FABLE_RETAIL_CGAMEPLAYERINTERFACE
+    // Retail opt-in (chunk 734, row 0x004A5A40 CWorld::UpdateFrame): member functions only, the layout below is unchanged.
+    // Ego_r.pdb / FableWin.pdb ?IsGameActionEventInQueue@CGamePlayerInterface@@QBE_NW4EGameAction@@W4EInputButtonEventType@@J@Z,
+    // retail 0x00446B10 (`ret 0Ch`; landed callers CTCStealth::FrameUpdate 0x00747DA0 and the CGameScriptInterface button rows).
+    bool IsGameActionEventInQueue(EGameAction action, EInputButtonEventType type, long device) const;   // 0x00446B10
+#endif
     void*               __vftable;                           // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char       _pad_0x04[0x4];                      // +0x04
     unsigned char       _pad_0x08[0x4];                      // +0x08

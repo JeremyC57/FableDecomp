@@ -1,0 +1,130 @@
+addr       parity           behav  name
+00713740   WARN SHARED_HEADER_AVAILABLE CThing
+00713740   WARN RELOC_NAME: ?OnStateGroupRemoved@CTCBaseAny@@QAEXXZ -> 006cb6b0 labelled 'CTCCreatureNavigation::InterruptNavigation'
+00713740   RELOCATION_MATCH PASS   CTCScriptedControl::OnDie
+0074a5d0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0074a5d0   RELOCATION_MATCH PASS   NCreatureHiding::GetValidPositions
+0074b770   WARN RELOC_NAME: ??$GetAllThings@VCThingMarker@@V?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@VCThingFilter_HasDefGlobalIndex@@@CThingSearchTools@@QBEXABVCThingFilter_HasDefGlobalIndex@@AAV?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@@Z -> 0074d940 labelled 'CThingSearchTools::GetAllThings<CThingMarker, std::vector<CThingMarker *, std::allocator<CThingMarker *>>, CThingFilter_HasDefGlobalIndex>'
+0074b770   WARN RELOC_CONFLICT: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 004365b0 here, 0040f020 in landed 00635080
+0074b770   WARN RELOC_NAME: ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 labelled 'CTCBase::GetThingSearchTools'
+0074b770   WARN RELOC_NAME: ?DoNavCheck@CTCCreatureGenerator@@IAEXABVCThingCreatureBase@@@Z -> 0074a4e0 labelled 'VertexBuffer_FilterNavigableVertices'
+0074b770   RELOCATION_MATCH PASS   CTCCreatureGenerator::InitialiseCreatureGenerator
+00775c60   WARN RELOC_NAME: ?OnSerialise@CTCBase@@MAEXAAVCPersistContext@@_N@Z -> 00686960 labelled 'CTCBase::vfunc_1'
+00775c60   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z -> 00433530 labelled 'std::vector::std::vector::Reallocate'
+00775c60   WARN RELOC_NAME: ??$TransferVector@M@CPersistContext@@QAEXPBDAAV?$vector@MV?$allocator@M@std@@@std@@@Z -> 00569fe0 labelled 'CPersistContext::Transfer<CQuestScoreRecord>'
+00775c60   RELOCATION_MATCH PASS   CTCShop::OnSerialise
+00802610   WARN SHARED_HEADER_AVAILABLE C3DVector
+00802610   WARN SHARED_HEADER_AVAILABLE C2DVector
+00802610   WARN SHARED_HEADER_AVAILABLE CThing
+00802610   RELOCATION_MATCH PASS   CTCTargetingPlayer::GetPTargetedThing
+00821010   RELOCATION_MATCH PASS   CMap::LoadBrushesFromFile
+0088e0f0   MATCH            PASS   CGameScriptInterface::SetDebugCameraType
+0088e1c0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0088e1c0   RELOCATION_MATCH PASS   CGameScriptInterface::EntitySetMaxHealth
+0088ea20   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0088ea20   RELOCATION_MATCH PASS   CGameScriptInterface::EntitySetCutsceneBehaviour
+0088fd90   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0088fd90   RELOCATION_MATCH PASS   CGameScriptInterface::SetCreatureNotReload
+00891940   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+00891940   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00891940   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00891940   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00891940   WARN RELOC_NAME: ?g_pPlayerGui@@3PAVCPlayerGui@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+00891940   RELOCATION_MATCH PASS   CGameScriptInterface::SetQuestInfoName
+00891ad0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00891ad0   WARN RELOC_NAME: ?g_pGameUI_013b8790@@3PAUCGameUI_Retail@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+00891ad0   RELOCATION_MATCH PASS   CGameScriptInterface::AddQuestInfoBarHealth
+00892d80   WARN SHARED_HEADER_AVAILABLE CDefString
+00892d80   WARN SHARED_HEADER_AVAILABLE CPlayer
+00892d80   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00892d80   WARN SHARED_HEADER_AVAILABLE CRegion
+00892d80   WARN SHARED_HEADER_AVAILABLE CWorldMap
+00892d80   WARN SHARED_HEADER_AVAILABLE C3DVector
+00892d80   WARN RELOC_NAME: ?IsCreatureGenerationAllowed@CQuestManager_Retail@@QAE_NXZ -> 004afc60 labelled 'CQuestManager::IsCreatureGenerationEnabled'
+00892d80   RELOCATION_MATCH PASS   CGameScriptInterface::IsCreatureGenerationEnabledForRegion
+00892f20   RELOCATION_MATCH PASS   CGameScriptInterface::PrepareQuestsWhenFinalQuestIsActivated
+00893870   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+00893870   RELOCATION_MATCH PASS   CGameScriptInterface::MsgOnQuestAccepted
+00893ff0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+00893ff0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00893ff0   WARN SHARED_HEADER_AVAILABLE CThing
+00893ff0   RELOCATION_MATCH PASS   CGameScriptInterface::MsgOnHeroPickedPocket
+00894950   WARN SHARED_HEADER_AVAILABLE C3DVector
+00894950   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+00894950   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00894950   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00894950   WARN SHARED_HEADER_AVAILABLE CThing
+00894950   WARN RELOC_NAME: ??0CRightHandedSet@@QAE@ABVC3DVector@@@Z -> 00a229e0 labelled 'BuildEulerRotationMatrix'
+00894950   RELOCATION_MATCH PASS   CGameScriptInterface::CreateObject
+00896ee0   WARN SHARED_HEADER_AVAILABLE CThing
+00896ee0   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+00896ee0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00896ee0   RELOCATION_MATCH PASS   CGameScriptInterface::GetDeathRecoveryMarkerName
+008976f0   WARN SHARED_HEADER_AVAILABLE C3DVector
+008976f0   WARN SHARED_HEADER_AVAILABLE CThing
+008976f0   WARN SHARED_HEADER_AVAILABLE CTCCarrying
+008976f0   RELOCATION_MATCH PASS   CGameScriptInterface::EntityGetThingInPrimarySlot
+00899220   WARN SHARED_HEADER_AVAILABLE CThing
+00899220   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899220   RELOCATION_MATCH PASS   CGameScriptInterface::IncreaseHeroRenownLevel
+00899680   WARN SHARED_HEADER_AVAILABLE CThing
+00899680   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899680   RELOCATION_MATCH PASS   CGameScriptInterface::SetHeroAsApprentice
+0089c080   WARN SHARED_HEADER_AVAILABLE CVectorMap
+0089c080   WARN SHARED_HEADER_AVAILABLE CThing
+0089c080   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0089c080   RELOCATION_MATCH PASS   CGameScriptInterface::EntityUnsetThingAsEnemyOfThing
+0089e130   WARN SHARED_HEADER_AVAILABLE CVectorMap
+0089e130   WARN SHARED_HEADER_AVAILABLE CThing
+0089e130   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0089e130   RELOCATION_MATCH PASS   CGameScriptInterface::EntitySetMaxNumberOfAttackers
+0089e190   RELOCATION_MATCH PASS   CGameScriptInterface::CameraUseCameraPoint
+008a06c0   WARN SHARED_HEADER_AVAILABLE CVectorMap
+008a06c0   WARN SHARED_HEADER_AVAILABLE CThing
+008a06c0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+008a06c0   RELOCATION_MATCH PASS   CGameScriptInterface::EntitySetLightAsOn
+008a2870   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+008a2870   WARN SHARED_HEADER_AVAILABLE CThing
+008a2870   RELOCATION_MATCH PASS   CGameScriptInterface::ResetWanderMinDistance
+008a4f70   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+008a4f70   WARN SHARED_HEADER_AVAILABLE CThing
+008a4f70   RELOCATION_MATCH PASS   CGameScriptInterface::SetTimeToSpendHarassingHero
+008a5f00   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+008a5f00   WARN SHARED_HEADER_AVAILABLE CThing
+008a5f00   RELOCATION_MATCH PASS   CGameScriptInterface::ResetTakeStealableItemToRandomDestination
+008a6570   WARN SHARED_HEADER_AVAILABLE C3DVector
+008a6570   WARN SHARED_HEADER_AVAILABLE CThing
+008a6570   RELOCATION_MATCH PASS   CGameScriptInterface::SetTableName
+008a78e0   RELOCATION_MATCH PASS   CGameScriptInterface::ClearActiveGossipCategories
+
+WINS: 30
+  00713740 RELOCATION_MATCH CTCScriptedControl::?OnDie@CTCScriptedControl@@UAEXXZ
+  0074a5d0 RELOCATION_MATCH NCreatureHiding::?GetValidPositions@NCreatureHiding@@YIXAAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@ABVCWorldMap@@ABVCThingSearchTools@@ABVC3DVector@@M_NPBVCTCShapeManager@@@Z
+  0074b770 RELOCATION_MATCH CTCCreatureGenerator::?InitialiseCreatureGenerator@CTCCreatureGenerator@@QAEX_N@Z
+  00775c60 RELOCATION_MATCH CTCShop::?OnSerialise@CTCShop@@UAEXAAVCPersistContext@@_N@Z
+  00802610 RELOCATION_MATCH CTCTargetingPlayer::?GetPTargetedThing@CTCTargetingPlayer@@UBEPAVCThing@@XZ
+  00821010 RELOCATION_MATCH CMap::?LoadBrushesFromFile@CMap@@QAEXAAVCAFile@@@Z
+  0088e0f0 MATCH CGameScriptInterface::?SetDebugCameraType@CGameScriptInterface@@UBEXJ@Z
+  0088e1c0 RELOCATION_MATCH CGameScriptInterface::?EntitySetMaxHealth@CGameScriptInterface@@UBEXABVCScriptThing@@M_N@Z
+  0088ea20 RELOCATION_MATCH CGameScriptInterface::?EntitySetCutsceneBehaviour@CGameScriptInterface@@UBEXABVCScriptThing@@W4ECutsceneBehaviour@@@Z
+  0088fd90 RELOCATION_MATCH CGameScriptInterface::?SetCreatureNotReload@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+  00891940 RELOCATION_MATCH CGameScriptInterface::?SetQuestInfoName@CGameScriptInterface@@UBEXPBD@Z
+  00891ad0 RELOCATION_MATCH CGameScriptInterface::AddQuestInfoBarHealth
+  00892d80 RELOCATION_MATCH CGameScriptInterface::IsCreatureGenerationEnabledForRegion
+  00892f20 RELOCATION_MATCH CGameScriptInterface::?PrepareQuestsWhenFinalQuestIsActivated@CGameScriptInterface@@UBEXABVCCharString@@@Z
+  00893870 RELOCATION_MATCH CGameScriptInterface::MsgOnQuestAccepted
+  00893ff0 RELOCATION_MATCH CGameScriptInterface::MsgOnHeroPickedPocket
+  00894950 RELOCATION_MATCH CGameScriptInterface::?CreateObject@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@M0@Z
+  00896ee0 RELOCATION_MATCH CGameScriptInterface::?GetDeathRecoveryMarkerName@CGameScriptInterface@@UBE?AVCCharString@@XZ
+  008976f0 RELOCATION_MATCH CGameScriptInterface::?EntityGetThingInPrimarySlot@CGameScriptInterface@@UBE?AVCScriptThing@@ABV2@@Z
+  00899220 RELOCATION_MATCH CGameScriptInterface::IncreaseHeroRenownLevel@CGameScriptInterface
+  00899680 RELOCATION_MATCH CGameScriptInterface::SetHeroAsApprentice@CGameScriptInterface
+  0089c080 RELOCATION_MATCH CGameScriptInterface::?EntityUnsetThingAsEnemyOfThing@CGameScriptInterface@@UBEXABVCScriptThing@@0@Z
+  0089e130 RELOCATION_MATCH CGameScriptInterface::?EntitySetMaxNumberOfAttackers@CGameScriptInterface@@UBEXABVCScriptThing@@J@Z
+  0089e190 RELOCATION_MATCH CGameScriptInterface::?CameraUseCameraPoint@CGameScriptInterface@@UBEXABVCScriptThing@@PBVC3DVector@@PBVCRightHandedSet@@MJJ@Z
+  008a06c0 RELOCATION_MATCH CGameScriptInterface::?EntitySetLightAsOn@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  008a2870 RELOCATION_MATCH CGameScriptInterface::ResetWanderMinDistance
+  008a4f70 RELOCATION_MATCH CGameScriptInterface::SetTimeToSpendHarassingHero
+  008a5f00 RELOCATION_MATCH CGameScriptInterface::ResetTakeStealableItemToRandomDestination
+  008a6570 RELOCATION_MATCH CGameScriptInterface::?SetTableName@CGameScriptInterface@@UAEXVCScriptThing@@VCCharString@@@Z
+  008a78e0 RELOCATION_MATCH CGameScriptInterface::?ClearActiveGossipCategories@CGameScriptInterface@@UAEXXZ

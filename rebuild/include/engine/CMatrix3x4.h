@@ -10,6 +10,44 @@ class CMatrix3x4 {
 public:
     float E11,E12,E13,E21,E22,E23,E31,E32,E33,E41,E42,E43;
     CMatrix3x4() { }
+#ifdef FABLE_RETAIL_CMATRIX3X4
+    // Retail opt-in (chunk 734, row 0x004A1CB0 CWorld::PreparePrimitivesForEngine): FableWin.pdb inline members (no Ego_r.pdb or retail
+    // out-of-line copy) ?Set@CMatrix3x4@@QAEXABVC3DVector@@000@Z (the three axes as rows, then the translation; unused by the row's best source, which assigns E11..E43 directly),
+    // ?PreScale@CMatrix3x4@@QAEXM@Z (the 3x3 part only; the translation row is untouched) and ?SetInverse@CMatrix3x4@@QAEXABV1@@Z
+    // (the body of the landed 0x00B393D0 model: cofactors over the determinant, then the translation through the inverse).
+    // __forceinline as the owner's 2026-11-01 rule for Lionhead math helpers with no out-of-line copy in Ego_r.pdb or Fable.exe:
+    // plain inline leaves PreScale and SetInverse called out of line in PreparePrimitivesForEngine (934 v 1330 bytes).
+    __forceinline void Set(const C3DVector& x_axis,const C3DVector& y_axis,const C3DVector& z_axis,const C3DVector& translation) {
+        E11=x_axis.X; E12=x_axis.Y; E13=x_axis.Z;
+        E21=y_axis.X; E22=y_axis.Y; E23=y_axis.Z;
+        E31=z_axis.X; E32=z_axis.Y; E33=z_axis.Z;
+        E41=translation.X; E42=translation.Y; E43=translation.Z;
+    }
+    __forceinline void Set(float e11,float e12,float e13,float e21,float e22,float e23,float e31,float e32,float e33,float e41,float e42,float e43) {
+        E11=e11; E12=e12; E13=e13; E21=e21; E22=e22; E23=e23; E31=e31; E32=e32; E33=e33; E41=e41; E42=e42; E43=e43;
+    }
+    __forceinline void PreScale(float scale) {
+        E11*=scale; E12*=scale; E13*=scale;
+        E21*=scale; E22*=scale; E23*=scale;
+        E31*=scale; E32*=scale; E33*=scale;
+    }
+    __forceinline void SetInverse(const CMatrix3x4& m) {
+        float det = m.E11 * (m.E22 * m.E33 - m.E23 * m.E32) + m.E21 * (m.E32 * m.E13 - m.E33 * m.E12) + m.E31 * (m.E23 * m.E12 - m.E22 * m.E13);
+        float inv = 1.0f / det;
+        E11 = (m.E22 * m.E33 - m.E23 * m.E32) * inv;
+        E21 = (m.E23 * m.E31 - m.E21 * m.E33) * inv;
+        E31 = (m.E21 * m.E32 - m.E22 * m.E31) * inv;
+        E12 = (m.E32 * m.E13 - m.E33 * m.E12) * inv;
+        E22 = (m.E33 * m.E11 - m.E13 * m.E31) * inv;
+        E32 = (m.E31 * m.E12 - m.E32 * m.E11) * inv;
+        E13 = (m.E23 * m.E12 - m.E22 * m.E13) * inv;
+        E23 = (m.E21 * m.E13 - m.E23 * m.E11) * inv;
+        E33 = (m.E22 * m.E11 - m.E21 * m.E12) * inv;
+        E41 = -(E11 * m.E41 + E21 * m.E42 + E31 * m.E43);
+        E42 = -(E12 * m.E41 + E22 * m.E42 + E32 * m.E43);
+        E43 = -(E13 * m.E41 + E23 * m.E42 + E33 * m.E43);
+    }
+#endif
     void TransformPoint(C3DVector& point) const {
         const float xx=point.X;
         const float yy=point.Y;

@@ -16,6 +16,16 @@ class CGameDefinitionManager;
 #pragma pack(push, 1)
 class CEnvironment {
 public:
+#ifdef FABLE_RETAIL_CENVIRONMENT
+    // Retail opt-in (chunk 734, row 0x004A5A40 CWorld::UpdateFrame): member functions only, the layout below is unchanged.
+    // Ego_r.pdb / FableWin.pdb ?UpdateInterpolation@CEnvironment@@QAEXXZ (retail 0x006B32A0, the forward to +0x1960; the only public
+    // no-argument update of the PDB set) and ?Update@CEnvironment@@QAEXM@Z (0x006B3FF0, `ret 4`, fed CGameTimeManager::GetTime).
+    void UpdateInterpolation();                                  // 0x006B32A0
+    void Update(float time);                                     // 0x006B3FF0
+    // Chunk 734 (row 0x004A1CB0 CWorld::PreparePrimitivesForEngine): Ego_r.pdb / FableWin.pdb
+    // ?IsEnvironmentRequiringWeatherMasks@CEnvironment@@QBE_NXZ, retail 0x006B2C00 (landed).
+    bool IsEnvironmentRequiringWeatherMasks() const;             // 0x006B2C00
+#endif
     void*                                __vftable;          // +0x00 vptr, or first dword of a flattened base subobject
     CGameDefinitionManager*              DefinitionManager;  // +0x04
     float                                SunlightAttenuatorAngleFadeStart; // +0x08

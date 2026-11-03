@@ -1,5 +1,5 @@
 // CQ_BountyHuntScript::WatchForEnableFisherCreekHutDoor() -- watch thread: wait for the Fisherman region to load, then open the fisherman's hut door if it is still there
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
+// Inline-split: exits wrapped individually; retail's construct is unproven
 // Leaf: WatchForEnableFisherCreekHutDoor
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D151D0, 531 bytes (padded to 544), plain `ret`.
 // Callees: CCharString() 0x0099E4B0 / CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CBaseClass()
@@ -54,7 +54,7 @@ void operator delete(void* p);                              // 0x00BFE9BC (MSVCR
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
 inline CScriptThing::CScriptThing() { }
-__forceinline CScriptThing::~CScriptThing() {}
+ CScriptThing::~CScriptThing() {}
 inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 inline bool CScriptThing::IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
@@ -81,28 +81,21 @@ void CQ_BountyHuntScript::WatchForEnableFisherCreekHutDoor()
             return;
         while (!Game->MsgOnRegionLoaded(region)) {
             Game->NewScriptFrame();
-            if (IsActiveThreadTerminating())
-                return;
+            do { if (IsActiveThreadTerminating()) return; } while (0);
         }
-        if (IsActiveThreadTerminating())
-            return;
+        do { if (IsActiveThreadTerminating()) return; } while (0);
         if (region == "Fisherman")
             break;
         Game->NewScriptFrame();
     }
-#pragma inline_depth(0)
     if (IsActiveThreadTerminating())
         return;
     door.PImp = Game->GetThingWithScriptName("FishermanHutDoor").PImp;
-#pragma inline_depth()
     if (door.IsAlive()) {
-#pragma inline_depth(0)
         if (IsActiveThreadTerminating())
             return;
-#pragma inline_depth()
         Game->OpenDoor(door);
     }
-#pragma inline_depth(0)
     if (IsActiveThreadTerminating())
         return;
 }

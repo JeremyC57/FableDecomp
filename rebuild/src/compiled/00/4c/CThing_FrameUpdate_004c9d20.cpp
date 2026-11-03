@@ -13,7 +13,7 @@ class CBulletTimeManager { public:
     unsigned char _pad08[0x0c - 0x08];
     bool          Override;                          // +0x0c (PDB +0x10)
     bool IsActive() const { return Override || m_bulletTimeInfoCount; }
-    bool IsTimeForFullUpdate();                      // 0x004C6060
+    bool IsTimeForFullUpdate() const;                // 0x004C6060 ?IsTimeForFullUpdate@CBulletTimeManager@@QBE_NXZ
 };
 
 struct CWorldTime {

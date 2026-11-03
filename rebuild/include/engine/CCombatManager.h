@@ -20,6 +20,8 @@ public:
  CThingCreatureBase* GetBestEnemyForCombatant(const CThingCreatureBase&,const C3DVector&) const;                       // 0x006EB700
  bool IsTargetOverriddenByAttemptedFacingDirection(const CThingCreatureBase&,const CThing&,const C3DVector&) const;     // 0x006EA5F0
  ECombatZone GetDefenderZone(const CThingCreatureBase&,const CThingCreatureBase&,long) const;                          // 0x006E99B0
+ // Chunk 734 (row 0x004A5A40 CWorld::UpdateFrame): Ego_r.pdb / FableWin.pdb ?Update@CCombatManager@@QAEXXZ, retail 0x006ED200.
+ void Update();                                                                                                       // 0x006ED200
 #endif
 private:
  std::map<CCharString,CCombatSequenceBase* (__fastcall*)(CThingCreatureBase&,CThingCreatureBase&)> RegisteredCombatSequences;

@@ -1,5 +1,5 @@
 // CPrisonEscapeGuard::Main() -- a prison guard during the escape: whenever its alert timer has run out and it sees the hero or is hit by him (any hit except special ability 14), it raises the alarm once (take scripted control, face the hero, play ALARM, blow the race whistle, wait, then sound the bandit alarm on the quest) and shouts one of two "seen criminal" lines (picked at random once), restarting the 30-second timer
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
+// Inline-split: exits wrapped individually; retail's construct is unproven
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DD6440, length 1116 bytes (+ int3 padding), plain `ret`.
@@ -13,7 +13,8 @@
 //   (CQ_PrisonEscapeRescueMotherScript, retail = PDB - 0x14: AlarmSounded +0x79), PMasterData +0x18. Entity-script models
 //   of the landed CGuardOutsideWoods::Main 0x00D874F0; CTimer of the landed CHobbeLeader::Main 0x00D8FA30.
 // Shape: the CTimer destructor (DeregisterTimer) is inline at the exits outside the alarm block's IsPerformingScriptTask
-//   wait and out of line (0x00CD4470) from that wait on (in-body inline_depth(0)).
+//   wait and out of line (0x00CD4470) from that wait on: plain inline, every terminate check a do-while(0) statement except
+//   the two around the StartScriptingEntity wait, and VC7.1's per-site frequency rule gives the split.
 enum EHeroAbility { HERO_ABILITY_NONE };
 class CCharString { public:
     void* PStringData;
@@ -31,7 +32,7 @@ template <class T> class CCountedPointer { public:
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    __forceinline ~CCountedPointer()
+     ~CCountedPointer()
     {
         if (Info) {
             --Info->RefCount;
@@ -70,7 +71,7 @@ class CScriptThing : public CBase { public:                           // vtable 
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
+     ~CScriptGameResourceObjectBase() { }
 };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
@@ -132,11 +133,9 @@ void CPrisonEscapeGuard::Main()
         if (timer.GetTime() == 0
             && (Game->CanThingBe_Seen_ByOtherThing(Game->GetHero(), Me) || Me.MsgIsHitBy("SCRIPT_NAME_HERO")
                 || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO") && !Me.MsgIsHitBySpecialAbilityFrom((EHeroAbility)14, "SCRIPT_NAME_HERO")))) {
-            if (IsActiveThreadTerminating())
-                return;
+            do { if (IsActiveThreadTerminating()) return; } while (0);
             if (!ParentClass->AlarmSounded) {
-                if (IsActiveThreadTerminating())
-                    return;
+                do { if (IsActiveThreadTerminating()) return; } while (0);
                 CScriptGameResourceObjectScriptedThingBase guard;
                 if (guard.IsValid())
                     guard.Release();
@@ -153,26 +152,11 @@ void CPrisonEscapeGuard::Main()
                 Game->PlaySoundOnThing(Me, "SND_RACEWHISTLE");
                 while (guard.IsPerformingScriptTask()) {
                     Game->NewScriptFrame();
-                    if (IsActiveThreadTerminating())
-                        {
-#pragma inline_depth(0)
-                            return;
-#pragma inline_depth()
-                        }
+                    do { if (IsActiveThreadTerminating()) return; } while (0);
                 }
-                if (IsActiveThreadTerminating())
-                    {
-#pragma inline_depth(0)
-                        return;
-#pragma inline_depth()
-                    }
+                do { if (IsActiveThreadTerminating()) return; } while (0);
                 if (!ParentClass->AlarmSounded) {
-                    if (IsActiveThreadTerminating())
-                        {
-#pragma inline_depth(0)
-                            return;
-#pragma inline_depth()
-                        }
+                    do { if (IsActiveThreadTerminating()) return; } while (0);
                     ParentClass->AlarmSounded = true;
                     Game->Play2DSound("SND_BANDIT_ALARM");
                 }
@@ -181,12 +165,10 @@ void CPrisonEscapeGuard::Main()
             long conversation = Game->AddNewConversation(Me, false, false);
             Game->AddPersonToConversation(conversation, Game->GetHero());
             if (line == 1) {
-                if (IsActiveThreadTerminating())
-                    return;
+                do { if (IsActiveThreadTerminating()) return; } while (0);
                 Game->AddLineToConversation(conversation, "TEXT_AI_GUARD_SEEN_CRIMINAL", false, Me, Game->GetHero());
             } else {
-                if (IsActiveThreadTerminating())
-                    return;
+                do { if (IsActiveThreadTerminating()) return; } while (0);
                 Game->AddLineToConversation(conversation, "TEXT_AI_GUARD_SEEN_CRIMINAL_2", false, Me, Game->GetHero());
             }
         }

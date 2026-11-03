@@ -4,7 +4,7 @@
 // Callees: CThing::PeekPos() const @ 0x006A4D00 (this TU's out-of-line copy; declared on CThingPhysical so it does
 //   not share a symbol with the 0x004C73D0 copy), the const/non-const player-manager accessors @ 0x004C79F0 / 0x004C7A00
 //   (byte twins, `[[0x013B8A1C]+0x30]`), CPlayerManager::GetPlayer(long) const @ 0x00449910 and non-const @ 0x004498C0
-//   (byte twins), CInitBaseClass::IsInitialised() const @ 0x0099A330, CPlayer::GetPControlledCreature @ 0x00487DC0,
+//   (byte twins), CInitBaseClass::IsValid() const @ 0x0099A330, CPlayer::GetPControlledCreature @ 0x00487DC0,
 //   CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020, operator new @ 0x00BFEA1A,
 //   NEntityEvents::CEventTriggered(CThing*) @ 0x0083CF20, CTCEntityEvents::AddEvent @ 0x008113C0.
 // Layout (retail, as the landed CThingSwitch rows 0x0083BE90 / 0x0083C230): interface bitset +0x20, interface map
@@ -49,8 +49,9 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThingPlayerCreature;
-class CPlayer { public:
-    bool IsInitialised() const;                         // 0x0099A330 (CInitBaseClass)
+#define FABLE_RETAIL_CINITBASECLASS
+#include "engine/CInitBaseClass.h"
+class CPlayer : public CInitBaseClass { public:          // RTTI CPlayer : CInitBaseClass; IsValid 0x0099A330 is the base's
     CThingPlayerCreature* GetPControlledCreature() const;                          // 0x00487DC0
 };
 class CPlayerManager { public:
@@ -104,7 +105,7 @@ void CThingSwitch::SwitchTriggerPlayerOnlyMultipleTimesInArea()
     area.BRY = PeekPos().Y + TriggerRadius;
     for (long i = 0; i < 4; ++i) {
         const CThing* self = this;
-        if (self->GetPlayerManager()->GetPlayer(i)->IsInitialised()) {
+        if (self->GetPlayerManager()->GetPlayer(i)->IsValid()) {
             CThingPhysical* hero = static_cast<CThingPhysical*>(GetPlayerManager()->GetPlayer(i)->GetPControlledCreature());
             if (hero && !hero->Dead && area.ContainsPoint(C2DVector(hero->PeekPos().X, hero->PeekPos().Y))) {
                 ++TimesTriggered;

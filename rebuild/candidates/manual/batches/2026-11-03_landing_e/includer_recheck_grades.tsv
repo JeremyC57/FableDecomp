@@ -1,0 +1,120 @@
+address	name	parity	behaviour	why_selected
+0x004084B0	CUserProfileManager::GetMaxEffectsDetail	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x00408500	CUserProfileManager::GetMaxTextureDetail	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x00408550	CUserProfileManager::GetMaxShadowDetail	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x004085A0	CUserProfileManager::GetMaxMeshDetail	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x00430900	NUISystem::CUIMiscThingsDef::Transfer	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x0047A9F0	CHeroLogBook::AddEntry	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv; part D
+0x00487570	CPlayer::DrawFreeCamDebug	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x00487B70	CPlayer::GetPPlayerCharacterThing	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x00487DC0	CPlayer::GetPControlledCreature	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x00487DD0	CPlayer::PeekPControlledCreature	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x0049D8C0	CWorld::EventIsWorldEvent	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x0049E270	CWorld::Unload	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x004B05C0	CQuestManager::TransferBoasts	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x004FB990	CWorldMap::SaveMapsToString	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x004FC6B0	CWorldMap::DrawIsPosInMap	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x004FD040	CWorldMap::SaveRegionsToString	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x00501150	CWorldMap::LoadLevelFromFiles	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x00520670	CThingManager::LoadHeroStateBinary	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x00521620	NThingManager::CEntityRuntimePersistence::SaveToGameStateBinary	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x00522720	CThingManager::RuntimeLoadEntities	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x00522A20	CThingManager::InitThingTypes	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x005EB9E0	CTCTavernGame::FrameUpdate	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x00606300	CTCInventoryMap::OnSerialise	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x006286F0	GFPlayFullScreenXBoxMovie	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x0065B854	CTCVillage::AddThingToVillage	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x00666EF0	CThingCreatureBase::AutoPlaceNearBuilding	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x00667D30	CThingCreatureBase::OnHit	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x00681850	CTCCreatureOpinionOfHero::IsFactionEnemyToHeroOverriddenOnOpinion	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x006AA2E0	CThingPlayerCreature::DrawPreparePrimitivesForRendering	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x006AABE0	CThingPlayerCreature::SetActionForMelee	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x00713740	CTCScriptedControl::OnDie	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x0074A5D0	NCreatureHiding::GetValidPositions	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x0074B770	CTCCreatureGenerator::InitialiseCreatureGenerator	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x00775C60	CTCShop::OnSerialise	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x00802610	CTCTargetingPlayer::GetPTargetedThing	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x00821010	CMap::LoadBrushesFromFile	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x0088E0F0	CGameScriptInterface::SetDebugCameraType	MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x0088E1C0	CGameScriptInterface::EntitySetMaxHealth	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x0088EA20	CGameScriptInterface::EntitySetCutsceneBehaviour	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x0088FD90	CGameScriptInterface::SetCreatureNotReload	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x00891940	CGameScriptInterface::SetQuestInfoName	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x00891AD0	CGameScriptInterface::AddQuestInfoBarHealth	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x00892D80	CGameScriptInterface::IsCreatureGenerationEnabledForRegion	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x00892F20	CGameScriptInterface::PrepareQuestsWhenFinalQuestIsActivated	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x00893870	CGameScriptInterface::MsgOnQuestAccepted	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x00893FF0	CGameScriptInterface::MsgOnHeroPickedPocket	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x00894950	CGameScriptInterface::CreateObject	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x00896EE0	CGameScriptInterface::GetDeathRecoveryMarkerName	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x008976F0	CGameScriptInterface::EntityGetThingInPrimarySlot	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x00899220	CGameScriptInterface::IncreaseHeroRenownLevel	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x00899680	CGameScriptInterface::SetHeroAsApprentice	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x0089C080	CGameScriptInterface::EntityUnsetThingAsEnemyOfThing	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv; every-40th sample of declaration-only changes
+0x0089E130	CGameScriptInterface::EntitySetMaxNumberOfAttackers	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x0089E190	CGameScriptInterface::CameraUseCameraPoint	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x008A06C0	CGameScriptInterface::EntitySetLightAsOn	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x008A2870	CGameScriptInterface::ResetWanderMinDistance	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x008A4F70	CGameScriptInterface::SetTimeToSpendHarassingHero	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x008A5F00	CGameScriptInterface::ResetTakeStealableItemToRandomDestination	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x008A6570	CGameScriptInterface::SetTableName	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x008A78E0	CGameScriptInterface::ClearActiveGossipCategories	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x008A9810	CGameScriptInterface::GetIsGossipForPlayer	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x008AA090	CGameScriptInterface::AddGossip	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x008E37C0	NCreatureMode::CModeScorpionKingTailPlunge::~CModeScorpionKingTailPlunge	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x00989CB0	CShaderRenderManager::UpdateObjectSpaceLighting	RELOCATION_MATCH	PASS	nontrivial preprocessed change
+0x0098ACF0	CShaderRenderManager::Initialise	RELOCATION_MATCH	PASS	nontrivial preprocessed change
+0x009DA9F0	CRenderManager2D::Render2DDrawList	RELOCATION_MATCH	PASS	nontrivial preprocessed change
+0x00AC2BE0	C3DMeshPartitionBuilderElement::PartitionSpace	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x00AE0070	CParticleProgram::ApplyTransform	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x00AE0710	CParticleProgram::CalculateAveragePatchSize	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x00AE8D50	NParticleEngine::CParticleEmitterDatabase::Load	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x00B26360	CEngine::Initialise	RELOCATION_MATCH	PASS	nontrivial preprocessed change
+0x00CBE7AA	_global::FadeInThing	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x00CE0CE0	CMK_HS2_SOUL::Main	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x00CE63A0	NScript::CHeroBoastsScript::BoastTCGTimeLimit	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x00D17E70	NScript::CQ_BountyHuntScript::RemoveBoastQuestInfo	MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x00D17EA0	NScript::CQ_BountyHuntScript::AddBoastQuestInfo	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x00D35ED0	NScript::CQ_FireHeartScript::RunThemeOverriding	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x00D38000	CPuzzleBlockMoon::TurnIntoASunSign	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x00D6BFA0	NScript::CQ_HangingTreeEvilScript::DoMission	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x00D76490	NScript::CQ_HangingTreeGoodScript::WatchForHeroNearExit	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x00D823A0	NScript::CQ_HeroSoulsBriarScript::PlayCutscene	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x00D835D0	NScript::CQ_HeroSoulsMotherScript::Main	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x00D9BB50	NScript::CQ_HobbeToothContestScript::WhisperKilledHobbe	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x00D9FE40	CFadeinSummoner::GetAlphaChange	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x00DA0C40	NScript::CQ_MinionCampScript::RunSpawnPointControl	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x00DAA260	CMinionFieldGenerator::Main	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x00DC2170	NScript::CQ_OakValeBanditRaidScript::CanThingSeeAnythingInVector	MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x00DCCF30	CQ_OrchardFarmRaidScript::WatchForExternalScriptDeactivation	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x00DEB000	NScript::CQ_RansomVictimScript::CVictimsBrother::DealWithHeroHittingMe	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x00DFA020	NScript::CQ_TraderConflictEvilScript::Alloc	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x00DFA0E0	NScript::CQ_TraderConflictGoodScript::Init	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x00E0C350	CV_LostTraderScript::WatchForQuestFailureState	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x00E0EA40	NScript::CQ_WaspBossScript::Main	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x00E1FEB0	CV_AmbushScamScript::ResetRandomSpeechTime	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x00E24090	CQR_EscortTraderScript::ForceDisableFollow	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x00E292C0	CMeetSisterMessenger::Main	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x00E33120	NScript::CV_ArcheryCompetitionScript::WatchForSignpostConditions	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x00E369B0	CAC_DummyStatic::Main	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x00E4B430	NScript::CV_BanditTollScript::CM_TauntingBandit::Main	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x00E4E0E0	CTollBanditScript::HandleBanditToll	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x00E5E0C0	CM_BodyGuardRespawn::Main	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x00E63890	NScript::CV_ChickenKickingScript::CSpectator::Main	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x00E6F1C0	CDF_ThunderHelmet::Main	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x00E7BB30	CFishermanWasp::Main	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x00E7BCA0	NScript::CV_FishermanScript::CFishermanBulletinBoard::Main	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x00E98200	NScript::CV_HeroDollsScript::HeroHasAnyDolls	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x00EA12E0	NScript::CV_KnotholeGladeGatesScript::WatchForGates	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x00EAEE10	NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::OnPredicateFail	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x00EC5DE0	NScript::CV_SickChildScript::CSickChild::Main	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv
+0x00EC8230	NScript::CV_SickChildScript::CManInLove::OnPredicateFail	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x00ECCAD0	NScript::CV_SickChildScript::CTalkingTrader2::Main	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x00EDA0C0	NScript::CV_TalentlessBardScript::IsHeroDressedInWillRobe	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x00EE0A20	CTH_Trigger_Oakvale::Main	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x00EF34A0	CM_RestartMarker::Main	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x00EF5CB0	NScript::CPersonalScript_EmptyScript::CLookAtMe1::Main	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x00F07ED0	NScript::CQ_AmbushTradersScript::AskBanditHireQuestion	RELOCATION_MATCH	PASS	every-40th sample of declaration-only changes
+0x00F0A470	NScript::CQ_AmbushTradersScript::WatchForQuestSuccess	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x00F26B90	NScript::CQ_HeroSoulsArenaScript::Init	RELOCATION_MATCH	PASS	chunk 734 SIBLINGS.tsv
+0x0121AF20	CPlayer::`dynamic initializer for 'PlayerModeInfo'' (object symbol _$E1 of its TU)	RELOCATION_MATCH	PASS	nontrivial preprocessed change; chunk 734 SIBLINGS.tsv

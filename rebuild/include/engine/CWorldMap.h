@@ -84,6 +84,10 @@ public:
     unsigned long GetMapUID(long map) const;                 // 0x004FCE00 ?GetMapUID@CWorldMap@@QBEKJ@Z
     long GetRegionNumberFromName(const CCharString&) const;      // these five: callees of 0x00606300 / 0x0074A5D0
     CRegion& GetRegion(long);
+    // Chunk 734 (row 0x004A5A40 CWorld::UpdateFrame, on PeekWorldMap()): the const overload ?GetRegion@CWorldMap@@QBEABVCRegion@@J@Z
+    // (both PDBs; retail 0x004FC180) and ?GetLoadedRegion@CWorldMap@@QBEJXZ (both PDBs; retail 0x004FB150).
+    const CRegion& GetRegion(long) const;                    // 0x004FC180
+    long GetLoadedRegion() const;                            // 0x004FB150
     bool IsPosInMap(const C3DVector&) const;
     bool IsPosPassable(const C2DCoordI&) const;
     float GetGroundSizeZAt(const C3DVector&) const;

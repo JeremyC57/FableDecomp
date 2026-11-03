@@ -74,10 +74,8 @@ void CV_ChapelOfEvilScript::WatchForRegionEntry()
         if (IsActiveThreadTerminating())
             return;
         if (region == "DarkwoodChapel") {
-#pragma inline_depth(0)
             if (IsActiveThreadTerminating())
                 return;
-#pragma inline_depth()
             TeleportAcolytes(thing);
         }
         Game->NewScriptFrame();

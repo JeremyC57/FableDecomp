@@ -1,12 +1,11 @@
 // CTCSoundPlayer::PlayAttachedCriteria(const CCharString& criteria, bool a, bool b, bool c, long d) -- expand the criteria into its candidate sound-event names and play the first one that starts, attached to the owner; the invalid handle when sound is off or nothing plays
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?PlayAttachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@_N11J@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0066BD00, 229 bytes (+ int3 padding), thiscall `ret 14h`. Name: Ego_r.pdb
 //   `?PlayAttachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@_N11J@Z`; the catalog label "CSoundInfo::PlaySound" is a
 //   propagated name (landed callers declare this address as `PlaySound(const CCharString&, bool, long, long, long)`).
 // Grade: RELOCATION_MATCH (sweep1, 2026-10-25) -- re-modelled on the twin PlayUnattachedCriteria 0x0066BDF0 (hand902):
-//   the real STLport vector<CCharString> (_Vector_base + vector, __forceinline dtors, the found-handle `return` in
-//   `#pragma inline_depth(0)`), replacing the flat CCharStringVector whose dtor carried a dead `_M_start = 0` store to
+//   the real STLport vector<CCharString> (_Vector_base + vector, plain inline dtors, the walk guarded by
+//   `if (it != names.end())`), replacing the flat CCharStringVector whose dtor carried a dead `_M_start = 0` store to
 //   reach retail's inline band (FINDINGS near-miss pass 2: "flat vector + dead-store hack"). CCharString is a class (V),
 //   as Ego_r.pdb mangles it.
 // Callees: CThing::GetSampleBank() const @ 0x004C7A80 (PDB; reads the global sample bank), CTCSoundPlayer::
@@ -17,7 +16,8 @@
 // Globals: the sound-enabled byte @ 0x0137E974 (set by the `__fastcall` setter 0x0088D700), the game state @ 0x013B8394
 //   (no sound while it is null), the invalid sound handle @ 0x0129D25C.
 // Shape: the bank reference is fetched before the vector is built; the walk keeps the cursor in edi and re-reads end()
-//   after each call. The vector's destructor is inlined on the fall-through path (element loop re-reading _M_finish, then
+//   after each call; the cursor is taken before the empty test (`mov edi,esi` ahead of the `je`), and that guard halves the
+//   frequency of the found-handle exit, so VC7.1's per-site rule calls the vector dtor there and expands it at the end. The vector's destructor is inlined on the fall-through path (element loop re-reading _M_finish, then
 //   the null-tested free) and called out of line on the early return of the first handle that plays.
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
 class CCharString {
@@ -38,13 +38,13 @@ public:
     _Tp* _M_finish;
     _Tp* _M_end_of_storage;
     _Vector_base() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    __forceinline ~_Vector_base() { if (_M_start != 0) _Alloc().deallocate(_M_start, _M_end_of_storage - _M_start); }
+     ~_Vector_base() { if (_M_start != 0) _Alloc().deallocate(_M_start, _M_end_of_storage - _M_start); }
 };
 template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
 public:
     typedef _Tp* iterator;
     vector() { }
-    __forceinline ~vector() { _Destroy(this->_M_start, this->_M_finish); }
+     ~vector() { _Destroy(this->_M_start, this->_M_finish); }
     iterator begin() { return this->_M_start; }
     iterator end() { return this->_M_finish; }
 };
@@ -92,12 +92,13 @@ unsigned long CTCSoundPlayer::PlayAttachedCriteria(const CCharString& criteria, 
         CASoundBank& bank = ParentThing->GetSampleBank();
         std::vector<CCharString> names;
         GetPotentialCriteriaStrings(criteria, names);
-        for (std::vector<CCharString>::iterator it = names.begin(); it != names.end(); ++it) {
-            unsigned long handle = InternalPlaySoundEvent(bank, *it, a, b, c, d);
-            if (handle != g_InvalidSoundHandle) {
-#pragma inline_depth(0)
-                return handle;
-#pragma inline_depth()
+        std::vector<CCharString>::iterator it = names.begin();
+        if (it != names.end()) {
+            for (; it != names.end(); ++it) {
+                unsigned long handle = InternalPlaySoundEvent(bank, *it, a, b, c, d);
+                if (handle != g_InvalidSoundHandle) {
+                    return handle;
+                }
             }
         }
     }

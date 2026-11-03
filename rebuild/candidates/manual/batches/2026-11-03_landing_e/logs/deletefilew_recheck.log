@@ -1,0 +1,7 @@
+addr       parity           behav  name
+009e4bc0   WARN SHARED_HEADER_AVAILABLE CAFile
+009e4bc0   WARN RELOC_NAME: ??BCWideString@@QBEPBGXZ -> 0099af00 labelled 'CWideString::operator unsigned short const *'
+009e4bc0   RELOCATION_MATCH PASS   CDriveManager::DeleteFile
+
+WINS: 1
+  009e4bc0 RELOCATION_MATCH CDriveManager::?DeleteFileW@CDriveManager@@QAE?AW4EDriveReturn@@ABVCWideString@@@Z

@@ -6,7 +6,7 @@
 //   0x0040D2A0 + GetPathNameFromFileName 0x00408120, operator!=(const wchar16*) 0x0099B150, operator= 0x0099B7D0, the engine
 //   memory-pool getter (virtual slot 72, +0x120), CHandleBasedMemoryPool::BeginShutdown(float) 0x00A02220 / EndShutdown
 //   0x00A02370, CWorld::SaveGameStateInternal 0x0049F4C0, SaveHeroStateInternal 0x004A00E0, operator+(const CWideString&,
-//   const wchar16*) 0x0099BF30 (L".hs" 0x01236A74), PathExists 0x00999230, CDriveManager::DeleteFile 0x009E4BC0
+//   const wchar16*) 0x0099BF30 (L".hs" 0x01236A74), PathExists 0x00999230, CDriveManager::DeleteFileW 0x009E4BC0
 //   (g_pDriveManager 0x013CAA28), ~CWideString 0x0099B510. L"" 0x0122D70C.
 // Globals: two file-static save flags 0x013B89D0 / 0x013B89D1 (read by SaveGameStateInternal; descriptive names).
 typedef unsigned short wchar16;
@@ -46,9 +46,10 @@ public:
     static CUserProfileManager& __fastcall Get();       // 0x0040D2A0
     CWideString GetPathNameFromFileName(const CWideString& file, bool b) const;   // 0x00408120
 };
+enum EDriveReturn;                                      // MS forward enum (CDriveManager.h)
 class CDriveManager {
 public:
-    long DeleteFile(const CWideString& path);           // 0x009E4BC0
+    EDriveReturn DeleteFileW(const CWideString& path);   // 0x009E4BC0 ?DeleteFileW@CDriveManager@@QAE?AW4EDriveReturn@@ABVCWideString@@@Z (Ego_r + FableWin)
 };
 struct CDriveManagerPointer {
     CDriveManager* Object;
@@ -134,7 +135,7 @@ resolved:
     else {
         CWideString heroState = path + s_HeroStateExt;
         if (CAFile::PathExists(heroState))
-            g_pDriveManager->DeleteFile(heroState);
+            g_pDriveManager->DeleteFileW(heroState);
     }
     g_SavingHeroState = false;
     GFGetTime();

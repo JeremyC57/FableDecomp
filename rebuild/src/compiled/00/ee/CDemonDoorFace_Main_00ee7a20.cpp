@@ -1,5 +1,4 @@
 // CDemonDoorFace::Main() -- the Witchwood demon door (trophy-dealer quest): take scripted control of Me, add a core-quest minimap marker; while the stones are not in sync, each time the hero talks to the door say it is locked and (once) set the quest-card objective; once the master data's SingingStonesInSync is set, script the hero, play CS_TROPHY_DEALER_DOOR_OPENS with HERO and DOOR cast, move the objective on, make the DemonDoorDoor persistent, clear the flag and remove Me
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EE7A20, 1659 bytes (+ int3 padding), plain `ret`. Literals "HUD_ORB_QUEST_CORE" 0x01258AB0,
 //   "TEXT_QST_071_DOOR_LOCKED1" 0x012F53A4, "TEXT_QUEST_FIND_TROPHY_DEALER_OBJECTIVE_03" 0x012F5378 / _04 0x012F5330, "Witchwood2" 0x012DCEF8,
@@ -15,7 +14,7 @@
 // Layout: Ego_r.pdb CDemonDoorFace (32 bytes): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 (CV_TrophyDealerScript),
 //   PMasterData +0x18, TimesSpoken +0x1c. CQ_SunnyvaleMasterData TrophyDealerHeroSpokenToDemonDoors +0x7C, SingingStonesInSync +0x140 (PDB +0x144; one STLport vector earlier). Handle hierarchy as the landed
 //   CMeleeThunder::Main 0x00D58080.
-// Shape: the CMeleeThunder handle model (implicit handle dtor expanded only at the first return, inline_depth(0) elsewhere).
+// Shape: the CMeleeThunder handle model (plain inline; the movie ctor is the out-of-line COMDAT 0x006E7B60 in this TU, called at every movie site).
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -32,7 +31,7 @@ template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
-    __forceinline ~CCountedPointer()
+     ~CCountedPointer()
     {
         if (Info) {
             --Info->RefCount;
@@ -85,7 +84,7 @@ using NScript::CIsThingAlive;
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
+     ~CScriptGameResourceObjectBase() { }
 };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
@@ -102,7 +101,7 @@ public:
 };
 class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // vtable 0x01260EF4, 0x10 bytes
     CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
-    CScriptGameResourceObjectMovieBase() { }
+    CScriptGameResourceObjectMovieBase();                // 0x006E7B60
     ~CScriptGameResourceObjectMovieBase();              // 0x006E7B80
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
@@ -158,36 +157,26 @@ void CDemonDoorFace::Main()
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
             {
-#pragma inline_depth(0)
                 return;
-#pragma inline_depth()
             }
     }
     if (IsActiveThreadTerminating())
         {
-#pragma inline_depth(0)
             return;
-#pragma inline_depth()
         }
     Game->MiniMapAddMarker(Me, "HUD_ORB_QUEST_CORE");
     while (!IsActiveThreadTerminating()) {
         if (Me.MsgIsTalkedToBy("SCRIPT_NAME_HERO")) {
             if (IsActiveThreadTerminating())
                 {
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
             if (!PMasterData->SingingStonesInSync) {
                 if (IsActiveThreadTerminating())
                     {
-#pragma inline_depth(0)
                         return;
-#pragma inline_depth()
                     }
-#pragma inline_depth(0)
                 CScriptGameResourceObjectMovieBase movie;
-#pragma inline_depth()
                 Game->StartMovieSequence("", movie);
                 CGameScriptInterface* game = Game;
                 game->PauseAllNonScriptedEntities(true);
@@ -197,16 +186,12 @@ void CDemonDoorFace::Main()
                         Game->NewScriptFrame();
                         if (IsActiveThreadTerminating()) {
                             game->PauseAllNonScriptedEntities(false);
-#pragma inline_depth(0)
                             return;
-#pragma inline_depth()
                         }
                     }
                     if (IsActiveThreadTerminating()) {
                         game->PauseAllNonScriptedEntities(false);
-#pragma inline_depth(0)
                         return;
-#pragma inline_depth()
                     }
                 }
                 game->PauseAllNonScriptedEntities(false);
@@ -214,9 +199,7 @@ void CDemonDoorFace::Main()
             if (!PMasterData->TrophyDealerHeroSpokenToDemonDoors) {
                 if (IsActiveThreadTerminating())
                     {
-#pragma inline_depth(0)
                         return;
-#pragma inline_depth()
                     }
                 PMasterData->TrophyDealerHeroSpokenToDemonDoors = true;
                 Game->SetQuestCardObjective(Game->GetActiveQuestName(), "TEXT_QUEST_FIND_TROPHY_DEALER_OBJECTIVE_03", "Witchwood2", "");
@@ -225,14 +208,10 @@ void CDemonDoorFace::Main()
         if (PMasterData->SingingStonesInSync) {
             if (IsActiveThreadTerminating())
                 {
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
             {
-#pragma inline_depth(0)
                 CScriptGameResourceObjectScriptedThingBase hero;
-#pragma inline_depth()
                 Game->StartScriptingEntity(Game->GetHero(), hero, (EScriptAIPriority)4);
                 if (face.IsValid())
                     face.Release();
@@ -240,25 +219,19 @@ void CDemonDoorFace::Main()
                     Game->NewScriptFrame();
                     if (IsActiveThreadTerminating())
                         {
-#pragma inline_depth(0)
                             return;
-#pragma inline_depth()
                         }
                 }
                 if (IsActiveThreadTerminating())
                     {
-#pragma inline_depth(0)
                         return;
-#pragma inline_depth()
                     }
                 CCutsceneCastMap cast;
                 cast.Construct();
                 cast["HERO"] = hero;
                 cast["DOOR"] = face;
                 {
-#pragma inline_depth(0)
                     CScriptGameResourceObjectMovieBase movie;
-#pragma inline_depth()
                     Game->StartMovieSequence("", movie);
                     CGameScriptInterface* game = Game;
                     game->PauseAllNonScriptedEntities(true);
@@ -266,20 +239,14 @@ void CDemonDoorFace::Main()
                     game->PauseAllNonScriptedEntities(false);
                 }
                 cast.Destroy();
-#pragma inline_depth(0)
             }
-#pragma inline_depth()
             Game->SetQuestCardObjective(Game->GetActiveQuestName(), "TEXT_QUEST_FIND_TROPHY_DEALER_OBJECTIVE_04", "WitchwoodCavern", "");
             CScriptThing door = Game->GetThingWithScriptName("DemonDoorDoor");
             Game->SetThingPersistent(door, true);
             PMasterData->SingingStonesInSync = false;
             Game->RemoveThing(Me, false, true);
-#pragma inline_depth(0)
             return;
-#pragma inline_depth()
         }
         Game->NewScriptFrame();
     }
-#pragma inline_depth(0)
 }
-#pragma inline_depth()

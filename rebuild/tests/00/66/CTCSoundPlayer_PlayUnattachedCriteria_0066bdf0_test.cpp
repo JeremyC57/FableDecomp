@@ -85,9 +85,7 @@ unsigned long CTCSoundPlayer::PlayUnattachedCriteria(const CCharString& criteria
         for (std::vector<CCharString>::iterator it = names.begin(); it != names.end(); ++it) {
             unsigned long handle = InternalPlaySoundEventAtPos(bank, ParentThing->GetPosition(), *it, loop, attached);
             if (handle != g_InvalidSoundHandle) {
-#pragma inline_depth(0)
                 return handle;
-#pragma inline_depth()
             }
         }
     }

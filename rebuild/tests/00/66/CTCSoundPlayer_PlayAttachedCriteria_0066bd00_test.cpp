@@ -100,9 +100,7 @@ unsigned long CTCSoundPlayer::PlayAttachedCriteria(const CCharString& criteria, 
         for (std::vector<CCharString>::iterator it = names.begin(); it != names.end(); ++it) {
             unsigned long handle = InternalPlaySoundEvent(bank, *it, a, b, c, d);
             if (handle != g_InvalidSoundHandle) {
-#pragma inline_depth(0)
                 return handle;
-#pragma inline_depth()
             }
         }
     }

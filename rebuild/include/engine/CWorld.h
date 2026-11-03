@@ -53,6 +53,12 @@ class CWorldMap;
 
 #ifdef FABLE_RETAIL_CWORLD
 #include "engine/CBaseClassNonCopyable.h"
+#include "stlport/fable_containers.h"                        // chunk 734: WeatherMaskingPrimitiveHandles' real type
+#include "fable_string.h"                                    // chunk 734: SaveGamePathName / MostRecentManualSaveName' real type
+#include "engine/CArray.h"                                   // chunk 734: InitialActiveQuests
+#include "engine/CTestQuest.h"                               // chunk 734: ActiveTestQuests
+class CAFile;
+class CEnginePrimitiveHandle;
 class C3DVector;
 class CAFile;
 class CCamera;
@@ -64,6 +70,13 @@ class CIDrawEnvironment;
 class CIDrawWorldMap;
 class CInterpolationInfo;
 class CProceduralTexture;
+// Chunk 734: the enum-typed members' real types (Ego_r.pdb CWorld, ghidra_out/fable_types.h); MS forward enums (4 bytes), the
+// enumerator names are not in the PDB name sets, so the rows compare and store the values retail uses.
+enum EPlayerMode;
+enum ESaveGameLoadStatus;
+enum ERegionLoadStatus;
+enum EPlayerSpawnStatus;
+enum ESaveType;
 
 #ifndef FABLE_RETAIL_CIDRAWWORLD_DEFINED
 #define FABLE_RETAIL_CIDRAWWORLD_DEFINED
@@ -119,11 +132,40 @@ public:
     // (AddThingToVillage 0x0065BBF3: `call PeekWorld; mov ecx,[eax+1Ch]; call IsDay`). No layout change.
     const CGameTimeManager& PeekGameTimeManager() const { return *PGameTimeManager_ptr; }
     CGameTimeManager& GetGameTimeManager() { return *PGameTimeManager_ptr; }
+    // Chunk 734 (row 0x004A5A40): FableWin.pdb ?GetBulletTimeManager@CWorld@@QAEAAVCBulletTimeManager@@XZ, inline in retail
+    // (UpdateFrame holds the scoped_ptr's pointer in edi across IsBulletTimeActive / IsTimeForFullUpdate, 0x004A5D3F).
+    CBulletTimeManager& GetBulletTimeManager() { return *PBulletTimeManager_ptr; }
     // Ego_r.pdb / FableWin.pdb ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ, out of line in retail at 0x0049D9D0 (CalculateSecuritySweepTasks
     // 0x006598D0 on CMainGameComponent::Get()->PeekWorld()). Declaration only.
     const CPlayer* PeekMyPlayer() const;                         // 0x0049D9D0
+    // Chunk 734 (row 0x004A5A40 UpdateFrame): Ego_r.pdb / FableWin.pdb spellings of the CWorld members it calls.
+    void ResetToFrontEnd();                                      // 0x0049DCC0 ?ResetToFrontEnd@CWorld@@QAEXXZ
+    void OpenHeroInformationScreen(EPlayerMode mode);            // 0x0049F3F0 ?OpenHeroInformationScreen@CWorld@@QAEXW4EPlayerMode@@@Z
+    // Chunk 734 (row 0x004A5E90 AutoLoadRespawn): the save-game load entry points (QAE / QBE in both PDBs).
+    CWideString GetPathNameForFileName(const CWideString& fileName) const;   // 0x0049EF50 ?GetPathNameForFileName@CWorld@@QBE?AVCWideString@@ABV2@@Z
+    bool LoadGameState(const CWideString& name, bool loadNow);  // 0x004A3200 ?LoadGameState@CWorld@@QAE_NABVCWideString@@_N@Z
+    bool AutoLoadRespawn();                                      // 0x004A5E90 ?AutoLoadRespawn@CWorld@@QAE_NXZ
+    // Chunk 734 (row 0x004A0D90): ?LoadQuestsFromFile@CWorld@@QAEXAAVCAFile@@_N@Z and ?ClearRegisteredQuests@CWorld@@QAEXXZ (QAE in both PDBs).
+    void LoadQuestsFromFile(CAFile& file, bool clearRegisteredQuests);   // 0x004A0D90
+    void ClearRegisteredQuests();                                // 0x004A08D0
 protected:
     const CGameEventDispatch* GetEventDispatchTableEntry(long type) const;   // 0x0049D8E0 ?GetEventDispatchTableEntry@CWorld@@IBEPBVCGameEventDispatch@@J@Z
+    // Chunk 734: protected members (IAE in both PDBs). SetAsPaused is out of line at 0x0049D8F0 (`cmp al,[ecx+0A4h]; je; mov`) and
+    // expanded in UpdateFrame (0x004A5E64: `cmp byte ptr [esi+0A4h],1 ; je ; mov byte ptr [esi+0A4h],1`), so it is defined inline.
+    void SetAsPaused(bool paused) { if (Paused != paused) Paused = paused; }   // ?SetAsPaused@CWorld@@IAEX_N@Z
+    void UpdateFrame();                                          // 0x004A5A40 ?UpdateFrame@CWorld@@IAEXXZ
+    void UpdateSaveGameLoad();                                   // 0x004A2F10 ?UpdateSaveGameLoad@CWorld@@IAEXXZ
+    void UpdateRegionLoad();                                     // 0x004A3740 ?UpdateRegionLoad@CWorld@@IAEXXZ
+    void PrepareAtmosBanksForLoadedRegion();                     // 0x0049E5E0 ?PrepareAtmosBanksForLoadedRegion@CWorld@@IAEXXZ
+    void UpdateEnvironmentCameraPos(const C3DVector& pos);       // 0x0049E370 ?UpdateEnvironmentCameraPos@CWorld@@IAEXABVC3DVector@@@Z
+    bool IsHeroStateFileValid(const CWideString& name) const;    // 0x0049D4E0 ?IsHeroStateFileValid@CWorld@@IBE_NABVCWideString@@@Z
+    bool LoadGameStateInternal(const CWideString& pathName, bool b);   // 0x004A21F0 ?LoadGameStateInternal@CWorld@@IAE_NABVCWideString@@_N@Z
+    bool LoadHeroStateInternal(const CWideString& name);         // 0x004A2D70 ?LoadHeroStateInternal@CWorld@@IAE_NABVCWideString@@@Z
+    bool AutoLoadInternal(const CWideString& name, bool loadNow);   // 0x004A3730 ?AutoLoadInternal@CWorld@@IAE_NABVCWideString@@_N@Z
+private:
+    // The world frame counter behind the static GetFrame / SetFrame (0x013B89BC, read by 806 call sites). No PDB data symbol:
+    // descriptive name, as the landed GetFrame 0x0049D870.
+    static long Frame;                                           // 0x013B89BC
 public:
     CMainGameComponent*         Component;                   // +0x08
     CPlayerManager*             PlayerManager;               // +0x0c
@@ -169,9 +211,9 @@ public:
     bool                        ShowFPSText;                 // +0xa7
     bool                        ShowProfileText;             // +0xa8
     unsigned char               _pad_0xa9[0x3];              // +0xa9
-    unsigned char               InitialActiveQuests[0xc];    // +0xac CArray<CCharString>
-    unsigned char               RegisteredQuests[0xc];       // +0xb8 vector<CCharString,std::allocator<CCharString>_>
-    unsigned char               ActiveTestQuests[0xc];       // +0xc4 vector<CTestQuest,std::allocator<CTestQuest>_>
+    CArray<CCharString>         InitialActiveQuests;         // +0xac (chunk 734: typed)
+    std::vector<CCharString>    RegisteredQuests;            // +0xb8 (chunk 734: typed)
+    std::vector<CTestQuest>     ActiveTestQuests;            // +0xc4 (chunk 734: typed)
     unsigned long               CreatureGenerationDisabledGroups; // +0xd0
     bool                        CreatureGenerationEnabled;   // +0xd4
     bool                        TeleportingEnabled;          // +0xd5
@@ -189,18 +231,18 @@ public:
     bool                        SummonerDeathExplosionAffectsHero; // +0xe1
     bool                        WaitingForInventoryTutorialToFinish; // +0xe2
     unsigned char               _pad_0xe3[0x1];              // +0xe3
-    unsigned char               HeroInformationScreenModeAfterTutorial[0x4]; // +0xe4 EPlayerMode
+    EPlayerMode                 HeroInformationScreenModeAfterTutorial; // +0xe4 (chunk 734: typed)
     long                        FrameCachedLODCentre;        // +0xe8
     float                       CachedLODCentre_X;           // +0xec C3DVector::X
     float                       CachedLODCentre_Y;           // +0xf0 C3DVector::Y
     float                       CachedLODCentre_Z;           // +0xf4 C3DVector::Z
-    unsigned char               SaveGameLoadStatus[0x4];     // +0xf8 ESaveGameLoadStatus
-    CWideStringData*            SaveGamePathName_PStringData; // +0xfc CWideString::PStringData
+    ESaveGameLoadStatus         SaveGameLoadStatus;          // +0xf8 (chunk 734: typed)
+    CWideString                 SaveGamePathName;            // +0xfc (chunk 734: typed)
     bool                        AutoSaveLocked;              // +0x100
     bool                        SerialisingAboutToLoadHeroState; // +0x101
     bool                        SerialisingHeroState;        // +0x102
     bool                        SerialisingNonPersistentQuestItems; // +0x103
-    unsigned char               RegionLoadStatus[0x4];       // +0x104 ERegionLoadStatus
+    ERegionLoadStatus           RegionLoadStatus;            // +0x104 (chunk 734: typed)
     float                       RegionLoadStartPos_X;        // +0x108 C3DVector::X
     float                       RegionLoadStartPos_Y;        // +0x10c C3DVector::Y
     float                       RegionLoadStartPos_Z;        // +0x110 C3DVector::Z
@@ -216,9 +258,9 @@ public:
     bool                        RegionLoadScreenFullyFaded;  // +0x131
     bool                        RegionLoadScreenWasFadedOut; // +0x132
     bool                        WaitingForResetToFrontEndConfirmation; // +0x133
-    unsigned char               MostRecentSaveType[0x4];     // +0x134 ESaveType
-    unsigned char               MostRecentSaveTypeBeforeManualSave[0x4]; // +0x138 ESaveType
-    CWideStringData*            MostRecentManualSaveName_PStringData; // +0x13c CWideString::PStringData
+    ESaveType                   MostRecentSaveType;          // +0x134 (chunk 734: typed)
+    ESaveType                   MostRecentSaveTypeBeforeManualSave; // +0x138 (chunk 734: typed)
+    CWideString                 MostRecentManualSaveName;    // +0x13c (chunk 734: typed)
     bool                        AutoSaveCheckPointExists;    // +0x140
     unsigned char               SaveGameMarkerPos[0xf];      // +0x141 C3DVector
     float                       SaveGameMarkerAngleXY;       // +0x150
@@ -228,9 +270,9 @@ public:
     float                       GuildSealRecallAngleXY;      // +0x160
     bool                        WeatherMaskingPrimitivesSent; // +0x164
     unsigned char               _pad_0x165[0x3];             // +0x165
-    unsigned char               WeatherMaskingPrimitiveHandles[0xc];  // +0x168 vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
+    std::vector<CEnginePrimitiveHandle> WeatherMaskingPrimitiveHandles;   // +0x168 (chunk 734: typed; STLport 0xc; resized 0x00443F90)
     unsigned char               AtmosBanksWaitingToCopy[0x4]; // +0x174 list<CAtmosCopyInfo,std::allocator<CAtmosCopyInfo>_>
-    unsigned char               PlayerSpawnStatus[0x4];      // +0x178 EPlayerSpawnStatus
+    EPlayerSpawnStatus          PlayerSpawnStatus;           // +0x178 (chunk 734: typed)
     long                        VillagerReactionDebug;       // +0x17c
     double                      StartTime;                   // +0x180
     double                      TimePlayed;                  // +0x188
@@ -430,7 +472,11 @@ FABLE_STATIC_ASSERT(offsetof(CWorld, CachedLODCentre_X) == 0xec);
 FABLE_STATIC_ASSERT(offsetof(CWorld, CachedLODCentre_Y) == 0xf0);
 FABLE_STATIC_ASSERT(offsetof(CWorld, CachedLODCentre_Z) == 0xf4);
 FABLE_STATIC_ASSERT(offsetof(CWorld, SaveGameLoadStatus) == 0xf8);
+#ifdef FABLE_RETAIL_CWORLD
+FABLE_STATIC_ASSERT(offsetof(CWorld, SaveGamePathName) == 0xfc);
+#else
 FABLE_STATIC_ASSERT(offsetof(CWorld, SaveGamePathName_PStringData) == 0xfc);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CWorld, AutoSaveLocked) == 0x100);
 FABLE_STATIC_ASSERT(offsetof(CWorld, SerialisingAboutToLoadHeroState) == 0x101);
 FABLE_STATIC_ASSERT(offsetof(CWorld, SerialisingHeroState) == 0x102);
@@ -453,7 +499,11 @@ FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadScreenWasFadedOut) == 0x132);
 FABLE_STATIC_ASSERT(offsetof(CWorld, WaitingForResetToFrontEndConfirmation) == 0x133);
 FABLE_STATIC_ASSERT(offsetof(CWorld, MostRecentSaveType) == 0x134);
 FABLE_STATIC_ASSERT(offsetof(CWorld, MostRecentSaveTypeBeforeManualSave) == 0x138);
+#ifdef FABLE_RETAIL_CWORLD
+FABLE_STATIC_ASSERT(offsetof(CWorld, MostRecentManualSaveName) == 0x13c);
+#else
 FABLE_STATIC_ASSERT(offsetof(CWorld, MostRecentManualSaveName_PStringData) == 0x13c);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CWorld, AutoSaveCheckPointExists) == 0x140);
 FABLE_STATIC_ASSERT(offsetof(CWorld, SaveGameMarkerPos) == 0x141);
 FABLE_STATIC_ASSERT(offsetof(CWorld, SaveGameMarkerAngleXY) == 0x150);

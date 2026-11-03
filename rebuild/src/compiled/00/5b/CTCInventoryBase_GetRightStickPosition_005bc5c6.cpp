@@ -5,7 +5,7 @@
 // `mov eax` before the return).
 // Callees: CInputEvent::CInputEvent() @ 0x00A04410 / ~CInputEvent() @ 0x00A03B30 (0x34-byte frame object),
 //          CTCBase::GetPlayerManager() @ 0x00686D40, CPlayerManager::GetMainPlayer() @ 0x00449970,
-//          CPlayer::GetPlayerNumber() @ 0x00487510, CInputManager::IsJoystickEventInQueue(long type, long device,
+//          CPlayer::GetJoystickDeviceNumber() @ 0x00487510, CInputManager::IsJoystickEventInQueue(long type, long device,
 //          CInputEvent*, long player) @ 0x009F4C60 on the input manager global @ 0x013B8388 (event type 0x12),
 //          CInputEvent::GetAnalogueVector() @ 0x00A043A0 (C2DVector by hidden pointer).
 // Shape: the player number is computed before the manager load and the pushes (a call result in the argument
@@ -35,7 +35,7 @@ class CInputManager { public:
 extern CInputManager* PInputManager;               // 0x013B8388
 
 class CPlayer { public:
-    long GetPlayerNumber() const;                    // 0x00487510
+    long GetJoystickDeviceNumber() const;                    // 0x00487510 ?GetJoystickDeviceNumber@CPlayer@@QBEJXZ
 };
 
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
@@ -59,7 +59,7 @@ class CTCInventoryBase : public ::CTCBase { public:
 void CTCInventoryBase::GetRightStickPosition(C2DVector& out)
 {
     CInputEvent event;
-    if (PInputManager->IsJoystickEventInQueue(0x12, 0, &event, GetPlayerManager().GetMainPlayer().GetPlayerNumber()))
+    if (PInputManager->IsJoystickEventInQueue(0x12, 0, &event, GetPlayerManager().GetMainPlayer().GetJoystickDeviceNumber()))
         out = event.GetAnalogueVector();
     else {
         out.x = 0.0f;

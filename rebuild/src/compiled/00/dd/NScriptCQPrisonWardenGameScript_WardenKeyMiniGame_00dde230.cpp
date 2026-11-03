@@ -1,5 +1,5 @@
 // CQ_PrisonWardenGameScript::WardenKeyMiniGame() -- sparkles the prison cell key rack and keeps it targetable only while the hero is within 3 units, until the hero uses it; then marks the diary key taken, shows this race's diary code number (year one or two) and removes the sparkles
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
+// Inline-split: exits wrapped individually; retail's construct is unproven
 // Leaf: WardenKeyMiniGame
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DDE230, 1017 bytes, plain `ret`.
 // Callees: ~CScriptThing 0x004AA840 (out of line on the key-used path), ~CBaseClass 0x0099A2E0, operator delete
@@ -9,8 +9,8 @@
 //   108 RemoveThing, 115 DisplayGameInfo, 469 EntitySetTargetable.
 // Layout: HeroHasSecretDiaryKey +0x49 (retail = PDB - 0x14); master data PrisonRaceNumber +0xe8 (PDB offset).
 // Shape: for(;;) with the terminating return FIRST (rotated so the entry test and the loop-end test share one inline
-//   destructor copy); the key-used block is inside the loop and ends in a return, all of it under
-//   `#pragma inline_depth(0)` so its exits call ~CScriptThing out of line. Relocation targets checked (probe/rpair.py).
+//   destructor copy); the key-used block is inside the loop and ends in a return, its terminate checks are
+//   do-while(0) statements (the loop-top check is not), and the per-site rule calls ~CScriptThing out of line there. Relocation targets checked (probe/rpair.py).
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
@@ -32,7 +32,7 @@ extern C3DVector g_ZeroVector;                          // 0x0143E8E0
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline CScriptThing::~CScriptThing() {}
+ CScriptThing::~CScriptThing() {}
 inline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return g_ZeroVector; return PImp.Data->GetPos(); }
 inline bool CScriptThing::MsgIsUsedBy(const CCharString& user) const { if (!PImp.Data) return false; return PImp.Data->MsgIsUsedBy(user); }
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
@@ -74,46 +74,35 @@ void CQ_PrisonWardenGameScript::WardenKeyMiniGame()
         if (IsActiveThreadTerminating())
             return;
         if (IsDistanceBetweenThingsOver(GSI->GetHero(), keyRack, 3.0f)) {
-            if (IsActiveThreadTerminating())
-                return;
+            do { if (IsActiveThreadTerminating()) return; } while (0);
             GSI->EntitySetTargetable(keyRack, false);
         } else {
-            if (IsActiveThreadTerminating())
-                return;
+            do { if (IsActiveThreadTerminating()) return; } while (0);
             GSI->EntitySetTargetable(keyRack, true);
         }
         if (keyRack.MsgIsUsedBy("SCRIPT_NAME_HERO")) {
-#pragma inline_depth(0)
-            if (IsActiveThreadTerminating())
-                return;
+            do { if (IsActiveThreadTerminating()) return; } while (0);
             HeroHasSecretDiaryKey = true;
             GSI->EntitySetTargetable(keyRack, false);
             if (PMasterData->PrisonRaceNumber % 2 == 0) {
-                if (IsActiveThreadTerminating())
-                    return;
+                do { if (IsActiveThreadTerminating()) return; } while (0);
                 GSI->DisplayGameInfo("TEXT_QST_055_DIARY_CODE_NUMBER_YEAR_TWO");
                 while (!GSI->MsgIsGameInfoClickedPast()) {
                     GSI->NewScriptFrame();
-                    if (IsActiveThreadTerminating())
-                        return;
+                    do { if (IsActiveThreadTerminating()) return; } while (0);
                 }
-                if (IsActiveThreadTerminating())
-                    return;
+                do { if (IsActiveThreadTerminating()) return; } while (0);
             } else {
-                if (IsActiveThreadTerminating())
-                    return;
+                do { if (IsActiveThreadTerminating()) return; } while (0);
                 GSI->DisplayGameInfo("TEXT_QST_055_DIARY_CODE_NUMBER_YEAR_ONE");
                 while (!GSI->MsgIsGameInfoClickedPast()) {
                     GSI->NewScriptFrame();
-                    if (IsActiveThreadTerminating())
-                        return;
+                    do { if (IsActiveThreadTerminating()) return; } while (0);
                 }
-                if (IsActiveThreadTerminating())
-                    return;
+                do { if (IsActiveThreadTerminating()) return; } while (0);
             }
             GSI->RemoveThing(sparkles, false, true);
             return;
-#pragma inline_depth()
         }
         GSI->NewScriptFrame();
     }

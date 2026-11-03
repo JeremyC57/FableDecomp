@@ -1,0 +1,42 @@
+addr       parity           behav  name
+00dd6440   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00dd6440   WARN SHARED_HEADER_AVAILABLE C3DVector
+00dd6440   WARN SHARED_HEADER_AVAILABLE CIsThingAlive
+00dd6440   WARN SHARED_HEADER_AVAILABLE CQ_PrisonEscapeRescueMotherScript
+00dd6440   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00dd6440   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00dd6440   WARN RELOC_NAME: ?g_bScriptAnimationFlag@@3_NA -> 01375748 labelled 'NGlobalConsole::GDefaultToUsingPhysicsInCutsceneAnimations'
+00dd6440   RELOCATION_MATCH PASS   CPrisonEscapeGuard::Main
+00dde230   WARN SHARED_HEADER_AVAILABLE C3DVector
+00dde230   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData
+00dde230   RELOCATION_MATCH PASS   NScript::CQ_PrisonWardenGameScript::WardenKeyMiniGame
+00e02e50   WARN SHARED_HEADER_AVAILABLE C3DVector
+00e02e50   WARN SHARED_HEADER_AVAILABLE CDefString
+00e02e50   WARN SHARED_HEADER_AVAILABLE CScriptDef
+00e02e50   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e02e50   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00e02e50   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 labelled 'CDefString::operator CCharString'
+00e02e50   RELOCATION_MATCH PASS   CDarkwoodAssassinSpawn::Main
+00e6b750   RELOCATION_MATCH PASS   NScript::CV_ChapelOfEvilScript::WatchForRegionEntry
+00ec0ba0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00ec0ba0   WARN SHARED_HEADER_AVAILABLE CV_ParanoidWhispersScript
+00ec0ba0   RELOCATION_MATCH PASS   CSecretWhisperingFriend::Main
+00ee7a20   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00ee7a20   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00ee7a20   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData
+00ee7a20   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ee7a20   WARN RELOC_NAME: ?Construct@CCutsceneCastMap@@QAEXXZ -> 00cdbf70 labelled 'std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::map'
+00ee7a20   WARN RELOC_NAME: ?Destroy@CCutsceneCastMap@@QAEXXZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00ee7a20   RELOCATION_MATCH PASS   CDemonDoorFace::Main
+00ef6fe0   WARN SHARED_HEADER_AVAILABLE CIsThingAlive
+00ef6fe0   WARN SHARED_HEADER_AVAILABLE CPredicate_And
+00ef6fe0   RELOCATION_MATCH PASS   NScript::CPredicate_And<CPredicate_And<CPredicate_And<CIsThingAlive,CIsThingAlive>,CIsThingAlive>,CIsThingAlive>::CPredicate_And
+
+WINS: 7
+  00dd6440 RELOCATION_MATCH CPrisonEscapeGuard::Main
+  00dde230 RELOCATION_MATCH NScript::CQ_PrisonWardenGameScript::WardenKeyMiniGame
+  00e02e50 RELOCATION_MATCH CDarkwoodAssassinSpawn::?Main@CDarkwoodAssassinSpawn@@
+  00e6b750 RELOCATION_MATCH NScript::CV_ChapelOfEvilScript::?WatchForRegionEntry@CV_ChapelOfEvilScript@NScript@@QAEXXZ
+  00ec0ba0 RELOCATION_MATCH CSecretWhisperingFriend::Main
+  00ee7a20 RELOCATION_MATCH CDemonDoorFace::Main
+  00ef6fe0 RELOCATION_MATCH NScript::CPredicate_And<CPredicate_And<CPredicate_And<CIsThingAlive,CIsThingAlive>,CIsThingAlive>,CIsThingAlive>::CPredicate_And

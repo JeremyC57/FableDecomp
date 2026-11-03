@@ -1,5 +1,4 @@
-// Levers: in-body `#pragma inline_depth(0)` around the reload `Actions.Add(CCountedPointer(new ...))` keeps that temporary's ~CCountedPointer out of line (0x0048C5C0) while the aim/fire temporaries expand it; `hasMissileWeapon` declared before `needsReload` so its false store is an immediate byte (not the bl zero).
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
+// Levers: the local CCountedPointer dtor is retail's 0x0048C5C0 body (it zeroes Data/Info); with that cost VC7.1's per-site rule calls it for the reload temporary (two branches deep) and expands it for the aim/fire temporaries; `hasMissileWeapon` declared before `needsReload` so its false store is an immediate byte (not the bl zero).
 // NTCScriptedControl::CActionFireProjectileWeapon::OnAdd() -- queue reload (when needed), aim and fire creature actions for a creature holding a missile weapon
 // Layout: owning control at +4 (its +4 is the creature, as in the landed 0x007122D0); target CScriptThing at +0xC; the creature-action queue at +0x18.
 // Callees: CVectorMap LowerBound copy @ 0x004365B0, ReloadMissileWeapon ctor 0x00718710, aim ctor 0x00718650, fire ctor 0x008D5110,
@@ -29,6 +28,8 @@ struct CCountedPointer {
                 delete m_pCount;
             }
         }
+        m_pObject = 0;
+        m_pCount = 0;
     }
 };
 struct CCreatureActionQueue { void Add(const CCountedPointer& action); };   // 0x00719360
@@ -113,10 +114,8 @@ void CActionFireProjectileWeapon::OnAdd()
         }
     }
     if (PTargetThing.IsAlive() && hasMissileWeapon) {
-#pragma inline_depth(0)
         if (needsReload)
             Actions.Add(CCountedPointer(new CCreatureAction_ReloadMissileWeapon(creature)));
-#pragma inline_depth()
         Actions.Add(CCountedPointer(new CCreatureAction_AimMissileWeapon(creature)));
         Actions.Add(CCountedPointer(new CCreatureAction_FireMissileWeapon(creature, PTargetThing.GetThing())));
     }

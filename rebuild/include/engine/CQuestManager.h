@@ -60,6 +60,12 @@ public:
     const std::list<CIntelligentPointer<CThing> >& GetCompletedQuestCards() const { return CompletedQuestCards; }
     // Ego_r.pdb / FableWin.pdb ?TransferBoasts@CQuestManager@@QAEXAAVCPersistContext@@@Z (retail 0x004B05C0).
     void TransferBoasts(CPersistContext& context);
+    // Chunk 734 (row 0x004A5A40 CWorld::UpdateFrame): Ego_r.pdb / FableWin.pdb ?Update@CQuestManager@@QAEXXZ (retail 0x004B4490, landed).
+    void Update();                                           // 0x004B4490
+    // Chunk 734 (row 0x004A5E90 CWorld::AutoLoadRespawn): Ego_r.pdb / FableWin.pdb ?IsBetweenQuestStartAndFinishScreens@CQuestManager@@QBE_NXZ.
+    bool IsBetweenQuestStartAndFinishScreens() const;        // 0x004AF290
+    // Chunk 734 (row 0x004A0D90 CWorld::LoadQuestsFromFile): Ego_r.pdb / FableWin.pdb ?RegisterQuest@CQuestManager@@QAEXABVCCharString@@@Z.
+    void RegisterQuest(const CCharString& name);             // 0x004B2850
 private:
     unsigned char _pad_0x04[0x5c - 0x04];                    // +0x04 PGameScriptThingManager .. AvailableQuestCardTypes
     std::list<CIntelligentPointer<CThing> > ActiveQuestCards;    // +0x5c

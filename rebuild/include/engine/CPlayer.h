@@ -87,6 +87,8 @@ class CWorld;
 class CWorldMap;
 
 #ifdef FABLE_RETAIL_PLAYER
+#include "engine/CInitBaseClass.h"                              // chunk 734: RTTI CPlayer : CInitBaseClass (the vptr and Valid +0x04)
+class CGamePlayerInterface;
 class CThingPlayerCreature;                                     // chunk 709: GetPControlledCreature's return type
 enum EPlayerMode;                                               // MS forward enum (2026-11-03): GetCurrentMode / AddMode
 class CThing;                                                   // chunk 718: GetPPlayerCharacterThing's return type
@@ -100,9 +102,24 @@ class C2DBoxF; class CFontBank;                               // chunk 718: Draw
 #endif
 #endif
 #pragma pack(push, 1)
+#ifdef FABLE_RETAIL_PLAYER
+class CPlayer : public CInitBaseClass {
+#else
 class CPlayer {
+#endif
 public:
 #ifdef FABLE_RETAIL_PLAYER
+    // Retail opt-in (chunk 734, row 0x004A5A40 CWorld::UpdateFrame): the base is RTTI's (.?AVCPlayer@@ : CInitBaseClass@0 :
+    // CBaseClass@0, ghidra_out/rtti_bases.tsv), replacing the flattened vptr / +0x04 bytes of the default branch (same offsets:
+    // CBaseClass vptr +0x00, CInitBaseClass::Valid +0x04, sizeof 8). UpdateFrame calls CInitBaseClass::IsValid 0x0099A330 on each
+    // GetPlayer(i). Ego_r.pdb / FableWin.pdb members called there: ?Update@CPlayer@@QAEXXZ (retail 0x00488AB0, landed),
+    // ?UpdateFreeCamera@CPlayer@@QAEXXZ (0x004884D0, landed), ?GetJoystickDeviceNumber@CPlayer@@QBEJXZ (0x00487510, `mov eax,
+    // [ecx+228h]`, landed) and the FableWin-only inline ?GetPlayerInterface@CPlayer@@QAEPAVCGamePlayerInterface@@XZ (no
+    // out-of-line copy in Ego_r.pdb or retail: UpdateFrame reads +0x0C in place at 0x004A5B30).
+    void Update();                                               // 0x00488AB0
+    void UpdateFreeCamera();                                     // 0x004884D0
+    long GetJoystickDeviceNumber() const;                        // 0x00487510
+    CGamePlayerInterface* GetPlayerInterface() { return PlayerInterface; }
     // Retail opt-in (chunk 706): member functions only, the layout is unchanged on both paths. Ego_r.pdb and FableWin.pdb both
     // list ?IsFirstPersonTargeting@CPlayer@@QBE_NXZ; retail 0x004874D0 (called from CTCTargetingPlayer::GetPTargetedThing
     // 0x00802610 on CThing::PeekPlayer's const CPlayer&).
@@ -236,8 +253,10 @@ private:
     void UninitModeViewHero(EPlayerMode,CProcessedInput*);
 public:
 #endif // FABLE_RETAIL_PLAYER
+#ifndef FABLE_RETAIL_PLAYER
     void*                                                        __vftable; // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                                                _pad_0x04[0x4]; // +0x04
+#endif
     bool                                                         DrawingFreeCamDebug; // +0x08
     bool                                                         PlayerIsCharacter; // +0x09
     unsigned char                                                _pad_0x0a[0x2]; // +0x0a
@@ -367,7 +386,9 @@ public:
 #pragma pack(pop)
 
 FABLE_STATIC_ASSERT(sizeof(CPlayer) == 0x22c);
+#ifndef FABLE_RETAIL_PLAYER
 FABLE_STATIC_ASSERT(offsetof(CPlayer, __vftable) == 0x0);
+#endif
 FABLE_STATIC_ASSERT(offsetof(CPlayer, DrawingFreeCamDebug) == 0x8);
 FABLE_STATIC_ASSERT(offsetof(CPlayer, PlayerIsCharacter) == 0x9);
 FABLE_STATIC_ASSERT(offsetof(CPlayer, PlayerInterface) == 0xc);

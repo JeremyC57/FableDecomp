@@ -15,6 +15,15 @@ class CWorld;
 #pragma pack(push, 1)
 class CBulletTimeManager {
 public:
+#ifdef FABLE_RETAIL_CBULLETTIMEMANAGER
+    // Retail opt-in (chunk 734, row 0x004A5A40 CWorld::UpdateFrame): member functions only, the layout below is unchanged.
+    // Ego_r.pdb / FableWin.pdb spellings: ?IsBulletTimeActive@CBulletTimeManager@@QBE_NXZ 0x00419680 (landed),
+    // ?IsTimeForFullUpdate@CBulletTimeManager@@QBE_NXZ 0x004C6060 (landed; the bound QAE spelling drops the const) and
+    // ?FrameUpdate@CBulletTimeManager@@QAEXXZ 0x004C5E90 (an empty body in retail, a lone `ret`).
+    bool IsBulletTimeActive() const;                             // 0x00419680
+    bool IsTimeForFullUpdate() const;                            // 0x004C6060
+    void FrameUpdate();                                          // 0x004C5E90
+#endif
     unsigned char   BulletTimeInfoMap[0xc];                  // +0x00 map<void_*,CBulletTimeManager::CBulletTimeInfo,std::less<void_*>,std::allocator<std::pair<void_*_const,CBulletTimeManager::CBulletTimeInfo>_>_>
     bool            Override;                                // +0x0c
     bool            UseDefaultMultiplier;                    // +0x0d

@@ -10,9 +10,20 @@
 
 class CSystemManager;
 
+#ifdef FABLE_RETAIL_CDRIVEMANAGER
+class CWideString;
+enum EDriveReturn;                                           // MS forward enum
+#endif
 #pragma pack(push, 1)
 class CDriveManager {
 public:
+#ifdef FABLE_RETAIL_CDRIVEMANAGER
+    // Retail opt-in (chunk 734, row 0x004A5A40 CWorld::UpdateFrame): member functions only, the layout below is unchanged.
+    // Ego_r.pdb / FableWin.pdb ?DeleteFileW@CDriveManager@@QAE?AW4EDriveReturn@@ABVCWideString@@@Z: the source wrote DeleteFile and
+    // <windows.h>'s macro made it DeleteFileW in both PDBs (likewise CreateDirectoryW). Retail 0x009E4BC0 (landed as DeleteFile).
+    // Reached through CTBaseSingletonNoDefaultAlloc<CDriveManager>::Get() (PClass 0x013CAA28; Ego_r dynamic initializer).
+    EDriveReturn DeleteFileW(const CWideString& path);           // 0x009E4BC0
+#endif
     void*           __vftable;                               // +0x00 vptr, or first dword of a flattened base subobject
     CSystemManager* SystemManager;                           // +0x04
 };

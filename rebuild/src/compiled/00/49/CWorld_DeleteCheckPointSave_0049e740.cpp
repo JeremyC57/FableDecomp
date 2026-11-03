@@ -4,7 +4,7 @@
 //   PDB name ?DeleteCheckPointSave@CWorld@@SIXXZ.
 // Callees: 0x0040D2A0 CTBaseSingleton<CUserProfileManager>::Get (static, returns the manager reference), 0x00408040
 //   CUserProfileManager::GetAutoSaveCheckPointPathName() const (hidden CWideString result pushed first), 0x00999230
-//   CAFile::PathExists(const CWideString&) (static __fastcall), 0x009E4BC0 CDriveManager::DeleteFile(const CWideString&)
+//   CAFile::PathExists(const CWideString&) (static __fastcall), 0x009E4BC0 CDriveManager::DeleteFileW(const CWideString&)
 //   (__fastcall, result dropped), 0x0099BF30 operator+(const CWideString&, const wchar_t*) (__fastcall, hidden result in
 //   ecx), 0x0099B510 ~CWideString. String L".hs" 0x01236A74. Global 0x013CAA28 the system drive manager counted
 //   pointer (object word +0, as the landed CSystemManager::Uninitialise 0x009A60D0 models it).
@@ -38,7 +38,7 @@ struct CTBaseSingleton {
 
 enum EDriveReturn { DRIVE_OK };
 class CDriveManager { public:
-    EDriveReturn DeleteFile(const CWideString& path);                                  // 0x009E4BC0
+    EDriveReturn DeleteFileW(const CWideString& path);                                  // 0x009E4BC0
 };
 
 template <class T>
@@ -58,9 +58,9 @@ void __fastcall CWorld_Methods::DeleteCheckPointSave()
 {
     CWideString path = CUserProfileManager::Get().GetAutoSaveCheckPointPathName();
     if (CAFile::PathExists(path)) {
-        g_DriveManager->DeleteFile(path);
+        g_DriveManager->DeleteFileW(path);
         CWideString hsPath = path + (const wchar16*)L".hs";
         if (CAFile::PathExists(hsPath))
-            g_DriveManager->DeleteFile(hsPath);
+            g_DriveManager->DeleteFileW(hsPath);
     }
 }

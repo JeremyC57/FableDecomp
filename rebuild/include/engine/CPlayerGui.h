@@ -15,6 +15,10 @@ private: unsigned char _pad_0x04[0x14];                              // +0x04 Wo
     CSubtitleRenderer SubtitleRenderer;                                  // +0x18
     unsigned char _pad_0x138[0x200];                                     // +0x138 PFont .. DisplayBottomHalfGUI
 public: void AddHitByMelee(CThing&,CThing&,const C3DVector&);
+    // Chunk 734 (row 0x004A5A40 CWorld::UpdateFrame): Ego_r.pdb / FableWin.pdb ?Update@CPlayerGui@@QAEX_N@Z (retail 0x0043A080,
+    // landed) and ?UpdateMiniMapMarkers@CPlayerGui@@QAEX_N@Z (0x004378C0, the forward to PDrawMiniMap +0x160), both on Get().
+    void Update(bool paused);                                            // 0x0043A080
+    void UpdateMiniMapMarkers(bool);                                     // 0x004378C0
     CSubtitleRenderer& GetSubtitleRenderer() { return SubtitleRenderer; }
 };
 FABLE_STATIC_ASSERT(sizeof(CPlayerGui)==0x338);

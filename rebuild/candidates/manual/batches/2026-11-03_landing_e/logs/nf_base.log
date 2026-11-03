@@ -1,0 +1,65 @@
+addr       parity           behav  name
+006294a0   WARN SHARED_HEADER_AVAILABLE CWorld
+006294a0   WARN RELOC_NAME: ?CopyToBuffer@CEventPacket@@QAEJPAUSPacketBuffer@@@Z -> 009f17a0 labelled 'CGameEvent::GetData'
+006294a0   WARN RELOC_NAME: ?ReadBytes@SPacketBuffer@@QAEXJPAX@Z -> 009f18f0 labelled 'CircularBuffer_Read'
+006294a0   RELOCATION_MATCH PASS   CRenderManager2D::AddLineToDrawBuffer
+004a05c0   WARN SHARED_HEADER_AVAILABLE CAFile
+004a05c0   WARN SHARED_HEADER_AVAILABLE CDriveManager
+004a05c0   WARN SHARED_HEADER_AVAILABLE CHandleBasedMemoryPool
+004a05c0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+004a05c0   WARN SHARED_HEADER_AVAILABLE CWorld
+004a05c0   WARN RELOC_ALIAS: _wcscmp -> 00bfe94c is the import thunk 'MSVCR71.DLL::wcscmp'
+004a05c0   WARN RELOC_NAME: ?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z -> 00403c60 labelled 'MemCmp_Unsigned16'
+004a05c0   RELOCATION_MATCH PASS   CWorld::SaveGameState
+0049e740   WARN SHARED_HEADER_AVAILABLE CAFile
+0049e740   WARN SHARED_HEADER_AVAILABLE CDriveManager
+0049e740   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0049e740   RELOCATION_MATCH PASS   CWorld::DeleteCheckPointSave
+004c9d20   WARN SHARED_HEADER_AVAILABLE CBulletTimeManager
+004c9d20   WARN SHARED_HEADER_AVAILABLE CThingManager
+004c9d20   WARN SHARED_HEADER_AVAILABLE CThing
+004c9d20   RELOCATION_MATCH PASS   CThing::FrameUpdate
+005bc5c6   WARN SHARED_HEADER_AVAILABLE C2DVector
+005bc5c6   WARN SHARED_HEADER_AVAILABLE CInputEvent
+005bc5c6   WARN SHARED_HEADER_AVAILABLE CInputManager
+005bc5c6   WARN SHARED_HEADER_AVAILABLE CPlayer
+005bc5c6   WARN SHARED_HEADER_AVAILABLE CTCBase
+005bc5c6   WARN RELOC_NAME: ?GetPlayerNumber@CPlayer@@QBEJXZ -> 00487510 labelled 'CPlayer::GetJoystickDeviceNumber'
+005bc5c6   WARN RELOC_NAME: ?GetAnalogueVector@CInputEvent@@QBE?AVC2DVector@@XZ -> 00a043a0 labelled 'CInputEvent::GetJoystickPosition'
+005bc5c6   RELOCATION_MATCH PASS   CTCInventoryBase::GetRightStickPosition
+005ee99d   WARN SHARED_HEADER_AVAILABLE CThing
+005ee99d   WARN SHARED_HEADER_AVAILABLE CTCInventory
+005ee99d   WARN SHARED_HEADER_AVAILABLE CDefPointer
+005ee99d   WARN SHARED_HEADER_AVAILABLE CPlayer
+005ee99d   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+005ee99d   WARN SHARED_HEADER_AVAILABLE CGamePlayerInterface
+005ee99d   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+005ee99d   WARN SHARED_HEADER_AVAILABLE CTCBase
+005ee99d   WARN RELOC_NAME: ?GetPlayerNumber@CPlayer@@QAEJXZ -> 00487510 labelled 'CPlayer::GetJoystickDeviceNumber'
+005ee99d   WARN RELOC_NAME: ?IsAssignableSpecialMoveButtonInQueue@CGamePlayerInterface@@QAE_NJJJ@Z -> 004460c0 labelled 'CGamePlayerInterface::IsQuickAccessEventInQueue'
+005ee99d   RELOCATION_MATCH PASS   CTCInventoryAbilities::IsAbilityQuickAccessEventInQueue
+0083c690   WARN SHARED_HEADER_AVAILABLE C3DVector
+0083c690   WARN SHARED_HEADER_AVAILABLE C2DVector
+0083c690   WARN SHARED_HEADER_AVAILABLE C2DBoxF
+0083c690   WARN SHARED_HEADER_AVAILABLE CTCEntityEvents
+0083c690   WARN SHARED_HEADER_AVAILABLE CPlayer
+0083c690   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+0083c690   WARN SHARED_HEADER_AVAILABLE CThing
+0083c690   WARN RELOC_NAME: ?GetPlayerManager@CThing@@QBEPBVCPlayerManager@@XZ -> 004c79f0 labelled 'CThing::PeekPlayerManager'
+0083c690   WARN RELOC_NAME: ?IsInitialised@CPlayer@@QBE_NXZ -> 0099a330 labelled 'CInitBaseClass::IsValid'
+0083c690   RELOCATION_MATCH PASS   CThingSwitch::SwitchTriggerPlayerOnlyMultipleTimesInArea
+004c5ea0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+004c5ea0   WARN SHARED_HEADER_AVAILABLE CPlayer
+004c5ea0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+004c5ea0   WARN RELOC_NAME: ?IsInitialised@CPlayer@@QAE_NXZ -> 0099a330 labelled 'CInitBaseClass::IsValid'
+004c5ea0   RELOCATION_MATCH PASS   CBulletTimeManager::UpdateCombatRelatedEffects
+
+WINS: 8
+  006294a0 RELOCATION_MATCH CRenderManager2D::HandleLeaveWorldPacket
+  004a05c0 RELOCATION_MATCH CWorld::?SaveGameState@CWorld@@QAEXABVCWideString@@_N1@Z
+  0049e740 RELOCATION_MATCH CWorld::DeleteCheckPointSave
+  004c9d20 RELOCATION_MATCH CThing::FrameUpdate
+  005bc5c6 RELOCATION_MATCH CTCInventoryBase::GetRightStickPosition
+  005ee99d RELOCATION_MATCH CTCInventoryAbilities::IsAbilityQuickAccessEventInQueue
+  0083c690 RELOCATION_MATCH CThingSwitch::SwitchTriggerPlayerOnlyMultipleTimesInArea
+  004c5ea0 RELOCATION_MATCH CBulletTimeManager::UpdateCombatRelatedEffects

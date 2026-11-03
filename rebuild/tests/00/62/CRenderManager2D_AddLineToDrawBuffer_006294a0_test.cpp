@@ -21,7 +21,7 @@ struct CEventPacket {
 };
 
 class CWorld { public:
-    bool AutoLoadRegionLeaving();                  // 0x004A5E90
+    bool AutoLoadRespawn();                  // 0x004A5E90
     void ResetToFrontEnd();                        // 0x0049DCC0
     void HandleLeaveWorldPacket(CEventPacket* packet);
 };
@@ -33,7 +33,7 @@ void CWorld::HandleLeaveWorldPacket(CEventPacket* packet)
     bool autoLoad;
     buffer.ReadBytes(1, &autoLoad);
     if (autoLoad == true)
-        AutoLoadRegionLeaving();
+        AutoLoadRespawn();
     else
         ResetToFrontEnd();
 }
@@ -62,7 +62,7 @@ void SPacketBuffer::ReadBytes(long count, void* destination)
     g_readOk = count == 1 && this == g_copiedInto && m_a + count <= m_length;
     std::memcpy(destination, m_payload + m_a, count); m_a += count;
 }
-bool CWorld::AutoLoadRegionLeaving() { ++g_autoLoads; if (this != g_expectWorld) g_fail = 1; return true; }
+bool CWorld::AutoLoadRespawn() { ++g_autoLoads; if (this != g_expectWorld) g_fail = 1; return true; }
 void CWorld::ResetToFrontEnd() { ++g_resets; if (this != g_expectWorld) g_fail = 1; }
 
 static void reset() { g_copies = g_reads = g_autoLoads = g_resets = 0; g_initOk = g_readOk = false; g_copiedInto = 0; }

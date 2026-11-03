@@ -1,0 +1,12 @@
+addr       parity           behav  name
+004a5a40   WARN RELOC_NAME: ?SetAtmosSoundsAsMuted@CAtmosProcess@@QAEX_NM@Z -> 006b1d30 labelled 'Sound_SetThemeByName'
+004a5a40   WARN RELOC_NAME: ?UpdateInterpolation@CEnvironment@@QAEXXZ -> 006b32a0 labelled '_global::Forward_FrameUpdate_via0x1960_006b32a0'
+004a5a40   WARN RELOC_NAME: ?FrameUpdate@CNavigatorManager@@QAEXXZ -> 00a14e20 labelled '_global::SetMemberConst_00a14e20'
+004a5a40   WARN RELOC_NAME: ?FrameUpdate@CBulletTimeManager@@QAEXXZ -> 004c5e90 labelled '_global::Nop_ret0_004c5e90'
+004a5a40   RELOCATION_MATCH PASS   UpdateFrame
+
+WINS: 1
+  004a5a40 RELOCATION_MATCH CWorld::?UpdateFrame@CWorld@@IAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CWorld_UpdateFrame_004a5a40

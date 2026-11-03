@@ -23,6 +23,14 @@ public:
     static CWideString __fastcall ConvertPathToFullPath(const CWideString&);
     // 0x00AE8D50: Ego_r / FableWin ?GetAbsoluteFilePath@CAFile@@SI?AVCCharString@@ABV2@0@Z (the CCharString overload).
     static CCharString __fastcall GetAbsoluteFilePath(const CCharString&,const CCharString&);
+    // Chunk 734 (row 0x004A5E90): Ego_r.pdb CAFile::CFileScanInfo (8 bytes: Stopped +0, SearchHandle +4; no destructor) and
+    // ?StartFileScan@CAFile@@SI_NABVCWideString@@AAVCFileScanInfo@1@PA_W@Z (0x00999760: pattern in ecx, info in edx, buffer pushed).
+    class CFileScanInfo {
+    public:
+        bool Stopped;                                        // +0x00
+        long SearchHandle;                                   // +0x04
+    };
+    static bool __fastcall StartFileScan(const CWideString& pattern,CFileScanInfo& info,wchar_t* firstFile);   // 0x00999760
     // Header wave 2026-11-03 (row 0x00821010, the length/version prefix of each file record): FableWin.pdb
     // ??$ReadVar@K@CAFile@@QAEXAAKPAVCASuspendableProcess@@@Z / ??$ReadVar@E@.. (no out-of-line copy in Fable.exe): an aligned
     // file reads through a rounded CArray<unsigned char> buffer.

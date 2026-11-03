@@ -1,14 +1,14 @@
 #include <cstdio>
 struct CStrikeQuery { bool m_striking; virtual ~CStrikeQuery() { } virtual bool IsStriking() { return m_striking; } };
 class CThingPlayerCreature { public: CStrikeQuery* m_pStrikeQuery; bool m_busy; bool IsPerformingAnyAction() { return m_busy; } };
-class CPlayer { public: bool m_init; CThingPlayerCreature* m_creature; bool IsInitialised() { return m_init; } CThingPlayerCreature* GetPlayerCreature() { return m_creature; } };
+class CPlayer { public: bool m_init; CThingPlayerCreature* m_creature; bool IsValid() { return m_init; } CThingPlayerCreature* GetPlayerCreature() { return m_creature; } };
 class CPlayerManager { public: CPlayer* m_main; int m_calls; CPlayer* GetMainPlayer() { ++m_calls; return m_main; } };
 long g_BulletTimeStrikeSeconds = 3, g_BulletTimeFramesPerSecond = 10;
 class CBulletTimeManager { public:
     bool Override; bool UseDefaultMultiplier; long LastStrikeActionTick; CPlayerManager* PlayerManager;
     void UpdateCombatRelatedEffects()
     {
-        if (!PlayerManager->GetMainPlayer()->IsInitialised()) return;
+        if (!PlayerManager->GetMainPlayer()->IsValid()) return;
         CThingPlayerCreature* creature = PlayerManager->GetMainPlayer()->GetPlayerCreature();
         if (creature == 0 || !creature->IsPerformingAnyAction()) return;
         if (creature->m_pStrikeQuery->IsStriking()) { UseDefaultMultiplier = true; LastStrikeActionTick = g_BulletTimeStrikeSeconds * g_BulletTimeFramesPerSecond; }

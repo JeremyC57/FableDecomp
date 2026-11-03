@@ -7,7 +7,7 @@
 // Callees: GetAbilityPDef(EHeroAbility) const 0x005EDFD9 (counted CDefPointer by value, built in the dead `ability`
 // argument slot), std::bitset::test 0x00410DE0 + the const CVectorMap::LowerBound 0x004365B0 (inline GetInterface for the
 // inventory component 0x11), CTCBase::PeekPlayerManager() const 0x00686D50, CPlayerManager::GetMainPlayer() const
-// 0x00449960, CPlayer::GetPlayerNumber 0x00487510, the main game component's (0x013B86A0) game player interface
+// 0x00449960, CPlayer::GetJoystickDeviceNumber 0x00487510, the main game component's (0x013B86A0) game player interface
 // getter 0x00416359, CGamePlayerInterface::IsAssignableSpecialMoveButtonInQueue(long, EInputButtonEventType, long)
 // 0x004460C0, the def's slot 1 on release.
 // Shape: the def's quick-access item id (+0x98) must be positive; the inventory's quick-access slot vector (+0x148,
@@ -81,7 +81,7 @@ template <class T> class CDefPointer { public:
     T* operator->() const { return Object; }
 };
 class CPlayer { public:
-    long GetPlayerNumber();                          // 0x00487510
+    long GetJoystickDeviceNumber() const;            // 0x00487510 ?GetJoystickDeviceNumber@CPlayer@@QBEJXZ
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                  // 0x00449960
@@ -154,7 +154,7 @@ bool CTCInventoryAbilities::IsAbilityQuickAccessEventInQueue(EHeroAbility abilit
                         break;
                     if (data[i] == item &&
                         GetMainGameComponent()->GetGamePlayerInterface()->IsAssignableSpecialMoveButtonInQueue(
-                            i, 2, PeekPlayerManager().GetMainPlayer()->GetPlayerNumber()))
+                            i, 2, PeekPlayerManager().GetMainPlayer()->GetJoystickDeviceNumber()))
                         return true;
                 }
             }
