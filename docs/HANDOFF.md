@@ -24,8 +24,10 @@ problems: the 2026-11-02 / 2026-11-03 lines at the end of `docs/pipeline/GOTCHAS
 - Codex pass 13 landed 47 of 51 (`batches/2026-11-03_codex_pass13_landing/`; data names to check with `cvdump` on the owner's
   PDBs are in its NAME_DECISIONS.tsv); 0x00501450 is still held on CVectorMap::LowerBound. Pass 14 was never sent; its 100 rows
   are released to in-house chunks (`pending/2026-11-02_codex_pass14/RELEASED.tsv`).
+- **Owner 2026-11-03 (late): finish the running agents (pragma-row study, landing round g, chunk 737), land their finished
+  rows in one final landing round, then launch NO further agents until the owner says so.**
 - **Owner 2026-11-03: at most 3 concurrent agents.** Verify and land, then launch (10+ attempts per row). Running at the time of
-  writing: the pragma-row agent on the 70 remaining `// Revisit: inline-depth`
+  writing: landing round g (chunk 736), chunk 737 (CPSCSingleSprite / CPSCLight), and the pragma-row agent on the 70 remaining `// Revisit: inline-depth`
   rows (mechanism and levers: `docs/pipeline/INLINE_DEPTH_REVISIT.md`, `batches/2026-11-03_inline_revisit2/README.md`).
 - Landing round e left chunk 733's two rows (0x004075C0, 0x0040BCA0) unlanded: CUIScreenUnitConverter static access needs a
   `cvdump` of the owner's PDB. Its README lists 9 PRIORITY re-model lines queued in NAME_FIXES_QUEUE.tsv (`land0311e`); round f queued 17 more (`land0311f`). Chunk 735 parks AddAbilityToList(PC)
