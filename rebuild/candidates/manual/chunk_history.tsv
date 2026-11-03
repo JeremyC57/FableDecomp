@@ -26343,3 +26343,11 @@ chunk	address	module	name	length
 727	00b625e0	CEngineSkyRenderer	CEngineSkyRenderer	2604
 727	00b64550	CEngineSkyRenderer	RenderSunFlare	2631
 727	00b64fa0	CEngineSkyRenderer	RenderClouds	2688
+728	006d0830	CTCWife	GlobalUpdate	2584
+728	006d1e30	CTCWife	FrameUpdate	3484
+728	006d2bd0	CThingNPC::CThingNPC	TransferLoveState	1770
+728	0074b770	CTCCreatureGenerator	InitialiseCreatureGenerator	395
+728	0074bc20	CTCCreatureGenerator	DrawDebugInfo	1290
+728	00c267e0	_global	UIManager_UpdateHeroEquipment	577
+729	005ff190	CTCInventoryMap	CreateMapMarkers	4176
+729	00603000	CTCInventoryMap	CreateMiniMapMarkers	9571
