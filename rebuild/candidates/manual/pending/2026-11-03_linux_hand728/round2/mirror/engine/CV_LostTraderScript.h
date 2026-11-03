@@ -1,0 +1,81 @@
+#ifndef FABLE_ENGINE_CV_LOSTTRADERSCRIPT_H
+#define FABLE_ENGINE_CV_LOSTTRADERSCRIPT_H
+// PDB Ego_r TPI 0x11aaf and retail ctor 00ea2cf0: CLevelScriptBase<NScript::CQ_SunnyvaleMasterData>.
+// Layout: base 0x48; five flags 0x48..0x4c; DistanceForBrotherToReunite +0x50, ReasonForFailure +0x54; native Init 00ea2d20.
+// Native owner ctor 00ea2cf0 and registered factory confirm this layout; donor containers are larger.
+#include "fable_string.h"
+#include "stlport/fable_map.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
+#include "engine/CLevelScriptBase.h"
+#include "engine/CEntityScriptBase.h"
+#include "engine/CTimer.h"
+namespace NScript {
+class CQ_SunnyvaleMasterData;
+class CV_LostTraderScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {
+public:
+    virtual void RegisterMain();
+    virtual void Main();
+    virtual void Init();
+    virtual void OnPersist(CPersistContext&);
+    void WatchForQuestFailure();
+    bool g_bLostTraderKilled;
+    bool g_bTraderBrotherKilled;
+    bool g_bQuestFailed;
+    bool g_bTraderHit;
+    bool ReachedTrader;
+    long DistanceForBrotherToReunite;
+    long ReasonForFailure;
+    class CLostTraderBanditSpawn : public CEntityScriptBase {
+    public:
+        static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CV_LostTraderScript&, CScriptDataBase*, const CScriptThing&);
+        virtual CScriptBase* GetParentScript() const;
+    private:
+        virtual void Main();
+    protected:
+        NScript::CV_LostTraderScript & ParentClass;
+    protected:
+        NScript::CQ_SunnyvaleMasterData * PMasterData;
+    };
+    class CLostTraderBrother : public CEntityScriptBase {
+    public:
+        static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CV_LostTraderScript&, CScriptDataBase*, const CScriptThing&);
+        virtual CScriptBase* GetParentScript() const;
+    private:
+        virtual void Main();
+    protected:
+        NScript::CV_LostTraderScript & ParentClass;
+    protected:
+        NScript::CQ_SunnyvaleMasterData * PMasterData;
+    private:
+        long stateBrain;
+    private:
+        bool HasToldHeroWhereBrotherIs;
+    private:
+        long TalkCounter;
+    private:
+        bool DoneIntro;
+    };
+    class CLostTraderTrader : public CEntityScriptBase {
+    public:
+        static CCountedPointer<CEntityScriptBase> FABLE_FASTCALL Alloc(CV_LostTraderScript&, CScriptDataBase*, const CScriptThing&);
+        virtual CScriptBase* GetParentScript() const;
+    private:
+        virtual void Main();
+    protected:
+        NScript::CV_LostTraderScript & ParentClass;
+    protected:
+        NScript::CQ_SunnyvaleMasterData * PMasterData;
+    private:
+        long stateBrain;
+    private:
+        long YellForHelp;
+    private:
+        long YellAtHero;
+    private:
+        long RandomComment;
+    };
+};
+}
+FABLE_STATIC_ASSERT(sizeof(NScript::CV_LostTraderScript) == 0x58);
+#endif

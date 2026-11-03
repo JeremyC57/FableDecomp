@@ -1,0 +1,8 @@
+addr       parity           behav  name
+006d2bd0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+006d2bd0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z -> 00433530 labelled 'std::vector::std::vector::Reallocate'
+006d2bd0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@U?$pair@VCCharString@@J@std@@V?$allocator@U?$pair@VCCharString@@J@std@@@2@@std@@IAEXPAU?$pair@VCCharString@@J@2@ABU32@ABU__false_type@2@I_N@Z -> 006d4750 labelled 'STL::Vector8_string8::InsertGrow_006d4750'
+006d2bd0   RELOCATION_MATCH PASS   OnSerialise
+
+WINS: 1
+  006d2bd0 RELOCATION_MATCH CTCWife::?OnSerialise@CTCWife@@UAEXAAVCPersistContext@@_N@Z

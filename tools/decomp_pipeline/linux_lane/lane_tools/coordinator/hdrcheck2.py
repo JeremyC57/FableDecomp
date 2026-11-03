@@ -1,7 +1,14 @@
 # hdrcheck2.py <overlay>: like hdrcheck.py, but system headers are stubbed (empty) so cpp never stops early; reports
 # the line count compared so a truncated (vacuous) comparison is visible.
 import sys,subprocess,re,os,glob
-ov=sys.argv[1]; stub=os.path.join(os.path.dirname(os.path.abspath(__file__)),'stubinc')  # empty system-header stubs (coordinator/stubinc)
+ov=sys.argv[1]
+# Empty system-header stubs, created on demand. They go to $HDRCHECK_STUBS, else $S/stubinc when the lane scratch is set
+# (keeps agents' runs out of the repo), else the tracked coordinator/stubinc. A stub dir is first in -I, so never mix it
+# with real headers.
+_repo_stub=os.path.join(os.path.dirname(os.path.abspath(__file__)),'stubinc')
+stub=os.environ.get('HDRCHECK_STUBS') or (os.path.join(os.environ['S'],'stubinc') if os.environ.get('S') else _repo_stub)
+if stub!=_repo_stub and not os.path.isdir(stub):
+    import shutil; shutil.copytree(_repo_stub,stub)   # start from the tracked stubs
 def run(args,f):
     while True:
         r=subprocess.run(args+[f],capture_output=True,text=True)

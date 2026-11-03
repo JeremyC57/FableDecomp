@@ -1,0 +1,10 @@
+address	name	evidence
+0x006D2BD0	?OnSerialise@CTCWife@@UAEXAAVCPersistContext@@_N@Z	see NAME_FIXES.tsv
+0x00830130	?IsBrainUpdateZoneActiveThisFrame@CThingAICreature@@QBE_NXZ	see NAME_FIXES.tsv
+0x006D3E80	??$GetDef@VCBrainDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCBrainDef@@@@@Z	see NAME_FIXES.tsv
+0x00681E60	?SetPersonalityOverride@CTCCreatureOpinionOfHero@@QAEXJ_N@Z	FrameUpdate (FianceeOpinionPersonalityDef, false) on the wife's opinion TC; Ego_r + FableWin (manifest: SetPersonalityOverride_BuildOpinionTable, _global)
+0x00433530	?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z	vland RELOC_NAME on 0x006D2BD0 (labelled std::vector::std::vector::Reallocate)
+0x006D4750	?_M_insert_overflow@?$vector@U?$pair@VCCharString@@J@std@@V?$allocator@U?$pair@VCCharString@@J@std@@@2@@std@@IAEXPAU?$pair@VCCharString@@J@2@ABU32@ABU__false_type@2@I_N@Z	vland RELOC_NAME on 0x006D2BD0 (labelled STL::Vector8_string8::InsertGrow_006d4750)
+0x006D4680	?reserve@?$vector@U?$pair@VCCharString@@J@std@@V?$allocator@U?$pair@VCCharString@@J@std@@@2@@std@@QAEXI@Z	OnSerialise saving path (GiftsReceived.size()); no binding yet (callchk)
+0x006D4C00	??$TransferVector@U?$pair@VCCharString@@J@std@@@CPersistContext@@QAEXPBDAAV?$vector@U?$pair@VCCharString@@J@std@@V?$allocator@U?$pair@VCCharString@@J@std@@@2@@std@@@Z	OnSerialise ("GiftsReceived", both paths); no binding yet; spelling from the overlay template (verify against Ego_r before applying)
+0x0129D25C	INVALID_SAMPLE_ID (descriptive, unproven)	the invalid sound-sample id global GlobalUpdate / FrameUpdate compare PlayAttached* results with
