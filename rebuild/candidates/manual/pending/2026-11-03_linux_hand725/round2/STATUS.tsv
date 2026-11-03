@@ -1,0 +1,25 @@
+address	name	status	attempts	note
+00434a10	CDisplayEngine::PreChangeResolution	RELOCATION_MATCH	1	src/00434a10.cpp
+00434a20	CDisplayEngine::PostChangeResolution	RELOCATION_MATCH	1	src/00434a20.cpp
+00697ab0	CGameCameraManager::GetCameraModeType	RELOCATION_MATCH	1	src/00697ab0.cpp
+006cb6b0	CTCCreatureNavigation::InterruptNavigation	RELOCATION_MATCH	1	src/006cb6b0.cpp
+006cb8e0	CTCCreatureNavigation::GetNearestNavigablePosTo	RELOCATION_MATCH	1	src/006cb8e0.cpp
+006cb990	CTCCreatureNavigation::IsNewDestinationGoingToResetNavigation	RELOCATION_MATCH	1	src/006cb990.cpp
+006cb9a0	CTCCreatureNavigation::GetCurrentDestination	RELOCATION_MATCH	1	src/006cb9a0.cpp
+006cb9b0	CTCCreatureNavigation::CalculateRouteFromTo	RELOCATION_MATCH	1	src/006cb9b0.cpp
+006cb9c0	CTCCreatureNavigation::InitialiseFromPreCalculatedRoute	RELOCATION_MATCH	1	src/006cb9c0.cpp
+006cba10	CTCCreatureNavigation::CalculateNavigableWidthOfLine	RELOCATION_MATCH	1	src/006cba10.cpp
+00836790	CThingSoundEmitter::SetSpecificSamplePitch	RELOCATION_MATCH	1	src/00836790.cpp
+008367a0	CThingSoundEmitter::SetSpecificSampleVolume	RELOCATION_MATCH	1	src/008367a0.cpp
+009bc8f0	CXMVPlayerBuffers::~CXMVPlayerBuffers	RELOCATION_MATCH	1	src/009bc8f0.cpp
+00aa75c0	CChunkedFileChunk::~CChunkedFileChunk	RELOCATION_MATCH	1	src/00aa75c0.cpp
+00c1d8b0	CVtable_012b32a0::~CVtable_012b32a0	RELOCATION_MATCH	1	src/00c1d8b0.cpp
+00c1e080	CVtable_012b33a4::~CVtable_012b33a4	RELOCATION_MATCH	1	src/00c1e080.cpp
+00c34780	CVtable_012b4f9c::~CVtable_012b4f9c	RELOCATION_MATCH	1	src/00c34780.cpp
+00c3c5c0	CVtable_012b5860::~CVtable_012b5860	RELOCATION_MATCH	1	src/00c3c5c0.cpp
+00c56d60	CVtable_012b8d98::~CVtable_012b8d98	RELOCATION_MATCH	1	src/00c56d60.cpp
+00c57410	CVtable_012b8e20::~CVtable_012b8e20	RELOCATION_MATCH	1	src/00c57410.cpp
+00c6cac0	CVtable_012bed7c::~CVtable_012bed7c	RELOCATION_MATCH	1	src/00c6cac0.cpp
+00c6da30	CVtable_012bed90::~CVtable_012bed90	RELOCATION_MATCH	1	src/00c6da30.cpp
+00c6e780	CVtable_012bedb8::~CVtable_012bedb8	RELOCATION_MATCH	1	src/00c6e780.cpp
+00aa5c80	C3DMeshFileXLoader::C3DMeshFileXLoader	RELOCATION_MATCH	3	src/00aa5c80.cpp; levers: X chunk classes with implicit (no user) destructor; non-const GetAsSuperChunk declared before const (reverse virtual-overload layout -> slot 6); default-construct-then-assign CCountedPointer

@@ -1,0 +1,16 @@
+address	name	evidence
+0x00B1BDA0	?InterpolateTo@CPSCDecalRenderer@NParticleEngine@@UAEXABVCPSCBase@2@M@Z	FableWin.pdb exact symbol; slot 14 of vtable 0x012A09BC (RTTI CPSCDecalRenderer), as CPSCSpline::InterpolateTo 0x00B1AF50 is slot 14 of its vtable; ret 8 = (const CPSCBase&, float)
+0x00B1C880	?ReadBinary@CPSCDecalRenderer@NParticleEngine@@UAEXAAVCDataInputStream@@@Z	FableWin.pdb exact symbol; slot 15 of 0x012A09BC next to WriteBinary 0x00B1BA10 (slot 16); body reads the exact field sequence WriteBinary writes (catalog said vfunc_15)
+0x00B1F200	?PreparePrimitives@CPSCDecalRenderer@NParticleEngine@@UAEXMABVCEnginePrimitivePrepareInfo@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z	FableWin.pdb symbol; slot 13 of 0x012A09BC; ret 0x14 = the PDB's five arguments; reads CParticleUpdateParameters via GetParticleUpdateRate (catalog said vfunc_13)
+0x00B1E380	?DatabaseSerialise@CPSCDecalRenderer@NParticleEngine@@UAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@2@@Z	FableWin.pdb symbol; slot 17 of 0x012A09BC; calls CPersistContext::Transfer<...> (catalog agrees)
+0x0087AA10	??$GetRootsNumerically@VCTanMethod@?A0x0bcf170b@@@NMaths@@YI?AV?$vector@MV?$allocator@M@std@@@std@@MMABVCTanMethod@?A0x0bcf170b@@JJ@Z	FableWin.pdb exact symbol (029ccc70) + inlined CTanMethod::GetValue (fcos/fsin/fptan of the PDB members Tx,Ty,Rad,Ki); Leaf by ?A0x prefix
+0x0087AFF0	??$GetRootsNumerically@VCCotMethod@?A0x0bcf170b@@@NMaths@@YI?AV?$vector@MV?$allocator@M@std@@@std@@MMABVCCotMethod@?A0x0bcf170b@@JJ@Z	FableWin.pdb exact symbol (029cdc90) + inlined CCotMethod::GetValue (1/tan); Leaf by ?A0x prefix
+0x00A44250	?GFGetInterpolatedColour@@YA?AVCRGBColour@@V1@0K@Z	FableWin.pdb; called 3x by InterpolateTo with the 0..256 weight GFFloatToLongNear(t*256)
+0x009945E0	?ReadColour@CDataInputStream@@QAE?AVCRGBColour@@XZ	called 3x by ReadBinary in the slots WriteBinary writes the three colours; catalog name
+0x00875FB0	?DrawSquare@NCameraModes@@YIXABVCEnginePrimitivePrepareInfo@@ABVC3DVector@@1M@Z	Ego_r + FableWin exact symbol, PDB TU order
+0x008764E0	?DrawPyramid@NCameraModes@@YIXABVCEnginePrimitivePrepareInfo@@ABVC3DVector@@M@Z	Ego_r 0085d1f0 + FableWin; follows DrawSquare in PDB and retail order; ret 4
+0x00879070	?GetHeightParamForPostionWithPhi@CProjectileWeapon@NCameraModes@@ABEMABVC3DVector@@M@Z	Ego_r 00863420 + FableWin
+0x008771A0	?GetThingPointIntersectionFromTo@CTools@NCameraModes@@QBE_NABV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@ABVC3DVector@@1AAV5@2PAPBVCThing@@_NW4ELOSTest@12@@Z	Ego_r 0085dbb0 + FableWin; ret 20h = 8 dword args; body walks a vector<const CThing*>
+0x00879900	?Update@CProjectileWeapon@NCameraModes@@UAEXXZ	slot 1 of vtable 0x01277804 (CProjectileWeapon) + Ego_r 00863f50
+0x00B23340	?Refresh@CIEngine@@UAEXXZ	CIEngine vtable 0x012A0D24 slot 17 (non-pure default body); FableWin CIEngine member list order
+0x00B23370	?AddPrimitive@CIEngine@@UAEXABVCEnginePrimitive@@@Z	CIEngine vtable slot 20; DrawSquare/DrawPyramid call [eax+50h] with a CEnginePrimitiveLine; FableWin

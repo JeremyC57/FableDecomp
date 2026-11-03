@@ -1,0 +1,98 @@
+address	attempt	grade	note
+00434a10	1	RELOCATION_MATCH	first draft (gen.py for vtable dtors)
+00434a20	1	RELOCATION_MATCH	first draft (gen.py for vtable dtors)
+00697ab0	1	RELOCATION_MATCH	first draft (gen.py for vtable dtors)
+006cb6b0	1	RELOCATION_MATCH	first draft (gen.py for vtable dtors)
+006cb8e0	1	RELOCATION_MATCH	first draft (gen.py for vtable dtors)
+006cb990	1	RELOCATION_MATCH	first draft (gen.py for vtable dtors)
+006cb9a0	1	RELOCATION_MATCH	first draft (gen.py for vtable dtors)
+006cb9b0	1	RELOCATION_MATCH	first draft (gen.py for vtable dtors)
+006cb9c0	1	RELOCATION_MATCH	first draft (gen.py for vtable dtors)
+006cba10	1	RELOCATION_MATCH	first draft (gen.py for vtable dtors)
+00836790	1	RELOCATION_MATCH	first draft (gen.py for vtable dtors)
+008367a0	1	RELOCATION_MATCH	first draft (gen.py for vtable dtors)
+009bc8f0	1	RELOCATION_MATCH	first draft (gen.py for vtable dtors)
+00aa75c0	1	RELOCATION_MATCH	first draft (gen.py for vtable dtors)
+00c1d8b0	1	RELOCATION_MATCH	first draft (gen.py for vtable dtors)
+00c1e080	1	RELOCATION_MATCH	first draft (gen.py for vtable dtors)
+00c34780	1	RELOCATION_MATCH	first draft (gen.py for vtable dtors)
+00c3c5c0	1	RELOCATION_MATCH	first draft (gen.py for vtable dtors)
+00c56d60	1	RELOCATION_MATCH	first draft (gen.py for vtable dtors)
+00c57410	1	RELOCATION_MATCH	first draft (gen.py for vtable dtors)
+00c6cac0	1	RELOCATION_MATCH	first draft (gen.py for vtable dtors)
+00c6da30	1	RELOCATION_MATCH	first draft (gen.py for vtable dtors)
+00c6e780	1	RELOCATION_MATCH	first draft (gen.py for vtable dtors)
+00aa5c80	a1	SRC_FAIL	dl=
+00aa5c80	a1	DIFFER(2203v2144)	dl=522
+00aa5c80	a2	DIFFER(2144v2144)	dl=33
+00aa5c80	a3	RELOCATION_MATCH	dl=
+00434a10	rg	MATCH	dl=
+00434a20	rg	MATCH	dl=
+00697ab0	rg	MATCH	dl=
+006cb6b0	rg	MATCH	dl=
+006cb8e0	rg	MATCH	dl=
+006cb990	rg	MATCH	dl=
+006cb9a0	rg	MATCH	dl=
+006cb9b0	rg	MATCH	dl=
+006cb9c0	rg	MATCH	dl=
+006cba10	rg	MATCH	dl=
+00836790	rg	MATCH	dl=
+008367a0	rg	MATCH	dl=
+009bc8f0	rg	RELOCATION_MATCH	dl=
+00aa75c0	rg	RELOCATION_MATCH	dl=
+00c1d8b0	rg	RELOCATION_MATCH	dl=
+00c1e080	rg	RELOCATION_MATCH	dl=
+00c34780	rg	RELOCATION_MATCH	dl=
+00c3c5c0	rg	RELOCATION_MATCH	dl=
+00c56d60	rg	RELOCATION_MATCH	dl=
+00c57410	rg	RELOCATION_MATCH	dl=
+00c6cac0	rg	RELOCATION_MATCH	dl=
+00c6da30	rg	RELOCATION_MATCH	dl=
+00c6e780	rg	RELOCATION_MATCH	dl=
+00434a10	rg	MATCH	dl=
+00434a20	rg	MATCH	dl=
+00697ab0	rg	MATCH	dl=
+006cb6b0	rg	MATCH	dl=
+006cb8e0	rg	MATCH	dl=
+006cb990	rg	MATCH	dl=
+006cb9a0	rg	MATCH	dl=
+006cb9b0	rg	MATCH	dl=
+006cb9c0	rg	MATCH	dl=
+006cba10	rg	MATCH	dl=
+00836790	rg	MATCH	dl=
+008367a0	rg	MATCH	dl=
+009bc8f0	rg	RELOCATION_MATCH	dl=
+00aa75c0	rg	RELOCATION_MATCH	dl=
+00c1d8b0	rg	RELOCATION_MATCH	dl=
+00c1e080	rg	RELOCATION_MATCH	dl=
+00c34780	rg	RELOCATION_MATCH	dl=
+00c3c5c0	rg	RELOCATION_MATCH	dl=
+00c56d60	rg	RELOCATION_MATCH	dl=
+00c57410	rg	RELOCATION_MATCH	dl=
+00c6cac0	rg	RELOCATION_MATCH	dl=
+00c6da30	rg	RELOCATION_MATCH	dl=
+00c6e780	rg	RELOCATION_MATCH	dl=
+00434a10	rg	MATCH	dl=
+00434a20	rg	MATCH	dl=
+00697ab0	rg	MATCH	dl=
+006cb6b0	rg	MATCH	dl=
+006cb8e0	rg	MATCH	dl=
+006cb990	rg	MATCH	dl=
+006cb9a0	rg	MATCH	dl=
+006cb9b0	rg	MATCH	dl=
+006cb9c0	rg	MATCH	dl=
+006cba10	rg	MATCH	dl=
+00836790	rg	MATCH	dl=
+008367a0	rg	MATCH	dl=
+009bc8f0	rg	RELOCATION_MATCH	dl=
+00aa75c0	rg	RELOCATION_MATCH	dl=
+00c1d8b0	rg	RELOCATION_MATCH	dl=
+00c1e080	rg	RELOCATION_MATCH	dl=
+00c34780	rg	RELOCATION_MATCH	dl=
+00c3c5c0	rg	RELOCATION_MATCH	dl=
+00c56d60	rg	RELOCATION_MATCH	dl=
+00c57410	rg	RELOCATION_MATCH	dl=
+00c6cac0	rg	RELOCATION_MATCH	dl=
+00c6da30	rg	RELOCATION_MATCH	dl=
+00c6e780	rg	RELOCATION_MATCH	dl=
+00aa5c80	rg	RELOCATION_MATCH	dl=

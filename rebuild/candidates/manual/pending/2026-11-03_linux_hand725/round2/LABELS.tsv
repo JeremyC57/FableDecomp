@@ -1,0 +1,44 @@
+address	name	evidence
+00434a10	?PreChangeResolution@CDisplayEngine@@QAEXXZ	Identity: FableWin.pdb ?PreChangeResolution@CDisplayEngine@@QAEXXZ. FableWin orders the CDisplayEngine TU
+00434a20	?PostChangeResolution@CDisplayEngine@@QAEXKKK@Z	Identity: FableWin.pdb ?PostChangeResolution@CDisplayEngine@@QAEXKKK@Z. FableWin orders the CDisplayEngine TU
+00697ab0	?GetCameraModeType@CGameCameraManager@@QBE?AW4EMode@NCameraModes@@XZ	Identity: FableWin.pdb ?GetCameraModeType@CGameCameraManager@@QBE?AW4EMode@NCameraModes@@XZ. FableWin orders the TU
+006cb6b0	?InterruptNavigation@CTCCreatureNavigation@@QAEXXZ	Identity: FableWin.pdb ?InterruptNavigation@CTCCreatureNavigation@@QAEXXZ (Ego_r has the same member). Retail
+006cb8e0	?GetNearestNavigablePosTo@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@@Z	Identity: FableWin.pdb ?GetNearestNavigablePosTo@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@@Z (Ego_r has the same member). Retail
+006cb990	?IsNewDestinationGoingToResetNavigation@CTCCreatureNavigation@@QBE_NABVC3DVector@@M@Z	Identity: FableWin.pdb ?IsNewDestinationGoingToResetNavigation@CTCCreatureNavigation@@QBE_NABVC3DVector@@M@Z (Ego_r has the same member). Retail
+006cb9a0	?GetCurrentDestination@CTCCreatureNavigation@@QBEABVC3DVector@@XZ	Identity: FableWin.pdb ?GetCurrentDestination@CTCCreatureNavigation@@QBEABVC3DVector@@XZ (Ego_r has the same member). Retail
+006cb9b0	?CalculateRouteFromTo@CTCCreatureNavigation@@QBEXABVC3DVector@@0AAV?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@@Z	Identity: FableWin.pdb ?CalculateRouteFromTo@CTCCreatureNavigation@@QBEXABVC3DVector@@0AAV?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@@Z (Ego_r has the same member). Retail
+006cb9c0	?InitialiseFromPreCalculatedRoute@CTCCreatureNavigation@@QAEXABVC3DVector@@ABV?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@0@Z	Identity: FableWin.pdb ?InitialiseFromPreCalculatedRoute@CTCCreatureNavigation@@QAEXABVC3DVector@@ABV?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@0@Z (Ego_r has the same member). R
+006cba10	?CalculateNavigableWidthOfLine@CTCCreatureNavigation@@QAEXABVC3DVector@@0AAM1@Z	Identity: FableWin.pdb ?CalculateNavigableWidthOfLine@CTCCreatureNavigation@@QAEXABVC3DVector@@0AAM1@Z (Ego_r has the same member). Retail
+00836790	?SetSpecificSamplePitch@CThingSoundEmitter@@QAEXKM@Z	Identity: FableWin.pdb ?SetSpecificSamplePitch@CThingSoundEmitter@@QAEXKM@Z (16-byte body there too). FableWin orders the CThingSoundEmitter
+008367a0	?SetSpecificSampleVolume@CThingSoundEmitter@@QAEXKM@Z	Identity: FableWin.pdb ?SetSpecificSampleVolume@CThingSoundEmitter@@QAEXKM@Z (16-byte body there too). FableWin orders the CThingSoundEmitter
+009bc8f0	??1CXMVPlayerBuffers@@UAE@XZ	Identity: the stored vtable 0x01230C34 is RTTI .?AVCXMVPlayerBuffers@@ (rtti-vtables.tsv); its slot-0 deleting destructor
+00aa75c0	??1CChunkedFileChunk@@UAE@XZ	Identity: the stored vtable 0x0129E474 is RTTI .?AVCChunkedFileChunk@@ (rtti-vtables.tsv); its slot-0 deleting
+00c1d8b0	??1CVtable_012b32a0@@UAE@XZ	Identity: a destructor is named by the vtable it stores first. 0x012B32A0 has no complete-object locator (no-RTTI
+00c1e080	??1CVtable_012b33a4@@UAE@XZ	Identity: a destructor is named by the vtable it stores first. 0x012B33A4 has no complete-object locator (no-RTTI
+00c34780	??1CVtable_012b4f9c@@UAE@XZ	Identity: a destructor is named by the vtable it stores first. 0x012B4F9C has no complete-object locator (libpk, no PDB),
+00c3c5c0	??1CVtable_012b5860@@UAE@XZ	Identity: a destructor is named by the vtable it stores first. 0x012B5860 has no complete-object locator (no-RTTI
+00c56d60	??1CVtable_012b8d98@@UAE@XZ	Identity: a destructor is named by the vtable it stores first. 0x012B8D98 has no complete-object locator (no-RTTI
+00c57410	??1CVtable_012b8e20@@UAE@XZ	Identity: a destructor is named by the vtable it stores first. 0x012B8E20 has no complete-object locator (no-RTTI
+00c6cac0	??1CVtable_012bed7c@@UAE@XZ	Identity: a destructor is named by the vtable it stores first. 0x012BED7C has no complete-object locator (no-RTTI
+00c6da30	??1CVtable_012bed90@@UAE@XZ	Identity: a destructor is named by the vtable it stores first. 0x012BED90 has no complete-object locator (no-RTTI
+00c6e780	??1CVtable_012bedb8@@UAE@XZ	Identity: a destructor is named by the vtable it stores first. 0x012BEDB8 has no complete-object locator (no-RTTI
+0x00C426E0	CVtable_012b4f9c::Close	slot 2 of vtable 0x012B4F9C (vt.py); called from ~CVtable_012b4f9c 0x00C34780 body; one class, the libpk stream reader
+0x00C426C0	CVtable_012b4f9c::SetStreamInput	slot 1 of vtable 0x012B4F9C (vt.py)
+0x00C42720	CVtable_012b4f9c::Read	slot 3 of vtable 0x012B4F9C (vt.py)
+0x00C1EB10	CVtable_012b3404::~CVtable_012b3404	first vtable stored is 0x012B3404; tail-jumped by ~CVtable_012b32a0 0x00C1D8B0 and ~CVtable_012b33a4 0x00C1E080
+0x00C4CF40	CVtable_012B8778::~CVtable_012B8778	first vtable stored 0x012B8778 (CCodaObjectBase-derived); tail-jumped by 0x00C3C5C0
+0x00C57310	CVtable_012b8df8::~CVtable_012b8df8	first vtable stored 0x012B8DF8; tail-jumped by 0x00C56D60
+0x00C577B0	CVtable_012b8ed4::~CVtable_012b8ed4	first vtable stored 0x012B8ED4; tail-jumped by 0x00C57410
+0x00C6E630	CVtable_012beda4::~CVtable_012beda4	first vtable stored 0x012BEDA4; tail-jumped by 0x00C6CAC0/0x00C6DA30/0x00C6E780
+0x00AA7590	CChunkedFileChunk::CChunkedFileChunk	catalog + FableWin ??0CChunkedFileChunk; stores vtable 0x0129E474 (RTTI CChunkedFileChunk)
+0x00A9B840	C3DMeshFileLoader::RegisterRootSubChunkType	FableWin ?RegisterRootSubChunkType@C3DMeshFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z; catalog
+0x00AA5C80	??0C3DMeshFileXLoader@@QAE@XZ	FableWin.pdb exact symbol; stores vtable 0x0129E450 after base ctor C3DMeshFileLoader 0x00A9BBE0; registers the X chunk FOURCCs (RELOCATION_MATCH this chunk)
+0x00A99FF0	?DeleteData@?$CCountedPointer@VCChunkedFileChunk@@@@SIXPAX@Z	FableWin.pdb exact symbol + body (see NAME_FIXES)
+0x00A9B840	?RegisterRootSubChunkType@C3DMeshFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z	callee of 0x00AA5C80 (relocation pair); FableWin C3DMeshFileLoader member order Root/SubMesh/Primitive/Triangles/../Map
+0x00A9B870	?RegisterSubMeshSubChunkType@C3DMeshFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z	same
+0x00A9B8A0	?RegisterPrimitiveSubChunkType@C3DMeshFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z	same
+0x00A9B8D0	?RegisterTrianglesSubChunkType@C3DMeshFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z	same
+0x00A9BA10	?RegisterMapSubChunkType@C3DMeshFileLoader@@QAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@@Z	same
+0x00A9BBE0	??0C3DMeshFileLoader@@QAE@XZ	base ctor call of 0x00AA5C80; FableWin symbol
+0x00ABC860	??0C3DMeshFileTrianglesChunk@@QAE@XZ	new-expression ctor call in 0x00AA5C80; FableWin symbol
+0x00AA87E0	?RegisterSubChunkType@CChunkedFileSuperChunk@@QAEXABV?$CCountedPointer@VCChunkedFileChunk@@@@@Z	called after GetAsSuperChunk() slot 6 in 0x00AA5C80; FableWin symbol

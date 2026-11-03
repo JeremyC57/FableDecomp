@@ -1,0 +1,12 @@
+address	module	name	length	group	anchor	gap_to_next_start
+00875fb0	_global	EditorDrawHighlightPoints_Impl	1315	G00875b10	CTools	1328
+008764e0	_global	RenderParticleEmitter_4particles	1340	G00875b10	CTools	1984
+008771a0	CTools	GetThingPointIntersectionFromTo	1264	G00875b10	CTools	1408
+00879070	_global	ProjectileWeapon_CalcHeightForAngle	1251	G00875b10	CTools	1264
+00879900	NCameraModes::CProjectileWeapon	NCameraModes::CProjectileWeapon::vfunc_1	3415	G00875b10	CTools	3776
+0087aa10	NMaths	GetRootsNumerically<CTanMethod>	1504	G00875b10	CTools	1504
+0087aff0	NMaths	GetRootsNumerically<CCotMethod>	1522	G00875b10	CTools	1536
+00b1bda0	NParticleEngine::CPSCDecalRenderer	InterpolateTo	2770	G00441ee0	CPSCDecalRenderer	2784
+00b1c880	NParticleEngine::CPSCDecalRenderer	NParticleEngine::CPSCDecalRenderer::vfunc_15	3266	G00441ee0	CPSCDecalRenderer	3280
+00b1e380	CPSCDecalRenderer	DatabaseSerialise	3698	G00441ee0	CPSCDecalRenderer	3712
+00b1f200	NParticleEngine::CPSCDecalRenderer	NParticleEngine::CPSCDecalRenderer::vfunc_13	3195	G00441ee0	CPSCDecalRenderer	3200
