@@ -2083,13 +2083,6 @@ _FableHelp_515700@4	0042b467	00515700
 ?Compare_00411570@@YIHPBD0@Z	00411570	0051fc20
 ?insert@CUIDToThingMap@@QAE?AUSUIDMapInsertResult@@ABUSUIDMapValue@@@Z	0052a200	005202f0
 ?erase@CUIDToThingMap@@QAEKAB_K@Z	0052afb0	005215f0
-??0CACompressorNative@@QAE@J@Z	00a3aea0	00522530
-??1CCompressorZlibNative@@UAE@XZ	00a3acc0	00522530
-??_7CCompressorZlibNative@@6B@	01245974	00522530
-?GetZlibWorkspaceSize@@YAKXZ	00a3a7d0	00522530
-?Init@CCompressorZlibNative@@QAEXXZ	00a3aa10	00522530
-?InternalDecompress@CCompressorZlibNative@@QAEKPBXKPAXK@Z	00a3ab00	00522530
-?resize@?$CArray@E@@QAEXKABE@Z	00486189	00522530
 ?DeallocateMemory@CArray_EntityScriptInfo@NThingManager@@QAEXXZ	0052c580	005236f0
 ?Destroy_0052bd70@NThingManager@@YIXPAUCEntityScriptInfo@1@0ABUSAllocatorTag_005236f0@@@Z	0052bd70	005236f0
 ?Move_0052bd10@NThingManager@@YIPAUCEntityScriptInfo@1@PAU21@00ABUSMoveTag_005236f0@@_N@Z	0052bd10	005236f0

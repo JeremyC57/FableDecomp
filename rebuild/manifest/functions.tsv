@@ -8859,7 +8859,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00521eb0	Save_WriteEntityHierarchy	_global	unknown	undefined	0		0	yes	accepted									
 00522160	SavePersistentEntitiesInRegions	_global	unknown	undefined	0		0	yes	accepted									
 005223f0	LoadGlobalThingBatch	_global	unknown	undefined	0		0	yes	accepted									
-00522530	GetGamePersistentSaveData	CEntityRuntimePersistence	__thiscall	bool	3	CEntityRuntimePersistence *,long,CArray<unsigned_char> *	1	yes	accepted									
+00522530	GetGamePersistentSaveData	NThingManager::CEntityRuntimePersistence	__thiscall	bool	3	CEntityRuntimePersistence *,long,CArray<unsigned_char> *	1	yes	accepted									
 00522600	SaveToScript	CThingManager	__thiscall	void	4	CThingManager *,CCharString *,long,vector<CCharString,std::allocator<CCharString>_> *	1	yes	accepted									
 00522720	RuntimeLoadEntities	CThingManager	__thiscall	void	4	CThingManager *,long,set<CCharString,std::less<CCharString>,std::allocator<CCharString>_> *,vector<CThing*,std::allocator<CThing*>_> *	1	yes	accepted									
 00522880	SaveMainPlayerCreatureState	CThingManager	__thiscall	void	2	CThingManager *,CCharString *	1	yes	accepted									

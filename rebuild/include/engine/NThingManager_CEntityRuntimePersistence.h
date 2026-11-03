@@ -25,6 +25,8 @@ public:
     };
     void SaveToGameStateBinary(CPersistContext&);
     void LoadFromGameStateBinary(CPersistContext&);
+    bool GetGamePersistentSaveData(long,CArray<unsigned char>&) const; // 0x00522530 (Ego_r 0x005297A0, FableWin 0x01D437D0)
+    void SetGamePersistentSaveData(long,const void*,unsigned long);   // PDB: QAEXJPBXK
     const CCharString* GetGamePersistentScript(long level) const {
         if((unsigned long)level<GamePersistentEntityScripts.size() && GamePersistentEntityScripts[level].Valid)
             return &GamePersistentEntityScripts[level].Script;

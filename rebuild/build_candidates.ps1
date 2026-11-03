@@ -236742,13 +236742,6 @@ $catalog = @(
         PassPattern = '00513bf0_TEST PASS'
     }
     [pscustomobject]@{
-        Address = '00522530'
-        Module = 'CEntityRuntimePersistence'
-        Source = '00/52/CEntityRuntimePersistence_GetGamePersistentSaveData_00522530.cpp'
-        TestSource = '00/52/CEntityRuntimePersistence_GetGamePersistentSaveData_00522530_test.cpp'
-        PassPattern = '00522530_TEST PASS'
-    }
-    [pscustomobject]@{
         Address = '00523860'
         Module = 'CEntityRuntimePersistence'
         Source = '00/52/CEntityRuntimePersistence_SetGamePersistentSaveData_00523860.cpp'
@@ -376501,6 +376494,13 @@ $catalog = @(
         Source = '00/62/global_GFPlayFullScreenXBoxMovie_006286f0.cpp'
         TestSource = '00/62/global_GFPlayFullScreenXBoxMovie_006286f0_test.cpp'
         PassPattern = '006286f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00522530'
+        Module = 'NThingManager::CEntityRuntimePersistence'
+        Source = '00/52/NThingManagerCEntityRuntimePersistence_GetGamePersistentSaveData_00522530.cpp'
+        TestSource = '00/52/NThingManagerCEntityRuntimePersistence_GetGamePersistentSaveData_00522530_test.cpp'
+        PassPattern = '00522530_TEST PASS'
     }
 )
 
