@@ -12,6 +12,19 @@ namespace NVectorMath {
 void GFFinishPartialSlerp(CQuaternion* out, unsigned long outStride, const CQuaternion* in, unsigned long inStride,
                           const CQuaternion* weights, unsigned long weightStride, unsigned long count)
 {
+#ifdef FABLE_PORTABLE
+    for (unsigned long i = 0; i < count; ++i) {         // out = out * weights.X + in * weights.Y, lane by lane
+        float a = weights->X;
+        float b = weights->Y;
+        out->X = out->X * a + in->X * b;
+        out->Y = out->Y * a + in->Y * b;
+        out->Z = out->Z * a + in->Z * b;
+        out->W = out->W * a + in->W * b;
+        out = (CQuaternion*)((char*)out + outStride);
+        in = (const CQuaternion*)((const char*)in + inStride);
+        weights = (const CQuaternion*)((const char*)weights + weightStride);
+    }
+#else
     __asm {
         mov     eax, out
         mov     edx, in
@@ -37,5 +50,6 @@ void GFFinishPartialSlerp(CQuaternion* out, unsigned long outStride, const CQuat
         jne     next
     done:
     }
+#endif
 }
 }   // namespace NVectorMath

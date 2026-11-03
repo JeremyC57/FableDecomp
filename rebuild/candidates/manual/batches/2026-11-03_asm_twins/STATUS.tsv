@@ -1,0 +1,187 @@
+address	name	state	grade	note
+0048d940	_global::GFFloatToLongFloor	REWRITTEN	MATCH	calls engine/GFFloatToLongFloor.h; no asm in the row
+00497890	GFROR13	IN_ROW_TWO_PATH	MATCH	asm kept in the row under #ifndef FABLE_PORTABLE with the C++ twin beside it; the row IS the retail helper (out-of-line __fastcall, 315 callers)
+004fa9a0	CTCBulletTime::GetBulletTimeTicksFromAbilityLevel	REWRITTEN	MATCH	calls engine/GFFloatToLongCeil.h; no asm in the row
+0050ef30	CThingFilter_OverlappingArea::operator()	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongCeil.h; no asm in the row
+005115e0	CFilter_Bind3<CThingFilter_OverlappingArea,CThingFilter_HasNavigationInformation,CThingFilter_IsInQuestOrNullQuest>::operator()	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongCeil.h; no asm in the row
+00511710	CFilter_Bind2<CThingFilter_IsInQuestOrNullQuest, CThingFilter_OverlappingArea>::operator()<CThingBuilding>	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongCeil.h; no asm in the row
+00511810	CFilter_Bind2<CThingFilter_IsInQuestOrNullQuest, CThingFilter_OverlappingArea>::operator()<CThingObject>	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongCeil.h; no asm in the row
+00511910	CFilter_Bind2<CThingFilter_IsInQuestOrNullQuest, CThingFilter_OverlappingArea>::operator()<CThingVillage>	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongCeil.h; no asm in the row
+00511a10	CFilter_Bind2<CThingFilter_IsInQuestOrNullQuest,CThingFilter_OverlappingArea>::operator()	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongCeil.h; no asm in the row
+00516200	CThingSearchTools::GetAllThings	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongCeil.h; no asm in the row
+005163b0	CThingSearchTools::GetAllLeafThings<CThingBuilding, std::list<CThingPhysical const *, std::allocator<CThingPhysical const *>>, CFilter_Bind2<CThingFilter_IsInQuestOrNullQuest, CThingFilter_OverlappingArea>>	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongCeil.h; no asm in the row
+00516530	CThingSearchTools::GetAllLeafThings<CThingObject, std::list<CThingPhysical const *, std::allocator<CThingPhysical const *>>, CFilter_Bind2<CThingFilter_IsInQuestOrNullQuest, CThingFilter_OverlappingArea>>	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongCeil.h; no asm in the row
+005166b0	CThingSearchTools::GetAllLeafThings<CThingVillage, std::list<CThingPhysical const *, std::allocator<CThingPhysical const *>>, CFilter_Bind2<CThingFilter_IsInQuestOrNullQuest, CThingFilter_OverlappingArea>>	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongCeil.h; no asm in the row
+00516830	CThingSearchTools::GetAllLeafThings	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongCeil.h; no asm in the row
+0052f440	CUIState::CUIState	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+0057a60a	CTCHeroStats::GetFatnessReducingFrequencyInFrames	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongCeil.h; no asm in the row
+005bc3ed	GFGetGraphicFrame	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+005cc530	RoundToDecimalPlaces	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00643b9f	GFGetGraphicFrame	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00646010	NPlayerGui::CCrimeStatBar::DrawStatBarOnLeft	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongFloor.h; no asm in the row
+006472b2	NPlayerGui::CDrawDamage::AddDamageChange	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+006a68f0	CThingPhysical::ModifyHealth	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongCeil.h, engine/GFFloatToLongFloor.h; no asm in the row
+006c3b70	CTCFadeOutAndIn::FadeOut	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+006c3bd0	CTCFadeOutAndIn::FadeIn	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00747da0	CTCStealth::FrameUpdate	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongCeil.h; no asm in the row
+00766260	CTCObjectAugmentations::GetHealthToAddThisFrame	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongCeil.h; no asm in the row
+00766330	CTCObjectAugmentations::GetStaminaToAddThisFrame	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongCeil.h; no asm in the row
+007726b0	CTCShop::GetStockQuantity	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongCeil.h; no asm in the row
+00772720	CTCShop::GetMaxStock	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongCeil.h; no asm in the row
+00774610	CTCShop::GetStockList	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongCeil.h; no asm in the row
+00785b40	CTCVolumeContainmentTracker::FrameUpdate	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongCeil.h; no asm in the row
+0078bf00	CTCBerserk::SetLevel	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongCeil.h; no asm in the row
+0079c5f0	CTCBulletTime_Methods::GetBulletTimeTicksFromAbilityLevel	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongCeil.h; no asm in the row
+0079c680	CTCBulletTime_Methods::GetBulletTimeRemainingPercentage	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongCeil.h; no asm in the row
+0079c6d0	CTCBulletTime_Methods::GetBulletTimeElapsedTicks	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongCeil.h; no asm in the row
+007e2da0	CTCWobble::SetWobbleParameters	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongCeil.h; no asm in the row
+0081e550	FtoL	REWRITTEN	MATCH	calls engine/GFFastFloatToLong.h; no asm in the row
+0088f8d0	CGameScriptInterface::StartCountdownTimer	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+009bf490	CDisplayManager::SetViewport	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+009e1c70	GFGetFastSubFrameTimer	IN_ROW_TWO_PATH	RELOCATION_MATCH	asm kept in the row under #ifndef FABLE_PORTABLE with the C++ twin beside it (also calls engine/GFGetCycleCount.h); the GFGetCycleCount.h helper gave 59v58 (retail subtracts in place on the asm-written local: the helper result is a copy)
+009e24b0	GFRecalibrateFastSubFrameTimer	REWRITTEN	RELOCATION_MATCH	calls engine/GFGetCycleCount.h; no asm in the row
+009e2540	CEngineDebug::CPUAheadCounterCallback	REWRITTEN	MATCH	calls engine/GFGetCycleCount.h; no asm in the row
+00a13c20	C3DCoordI::operator-=	IN_ROW_TWO_PATH	RELOCATION_MATCH	asm kept in the row under #ifndef FABLE_PORTABLE with the C++ twin beside it
+00a13eb0	C2DVector::GetRandomUnitVector	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00a145c0	C3DVector::GetRandomUnitVector	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00a147e0	GFFastSin	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00a14840	GFFastCos	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00a22530	GFFastArcCos	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00a22590	CQuaternion::SetSlerp	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00a44250	_global::GFGetInterpolatedColour	IN_ROW_TWO_PATH	MATCH	asm kept in the row under #ifndef FABLE_PORTABLE with the C++ twin beside it
+00a4dea0	C3DAnimationSequenceData::GetKeyframeInterpolate	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongFloor.h; no asm in the row
+00a52650	C3DAnimation2::ConvertTimeToFrames	REWRITTEN	MATCH	calls engine/GFFloatToLongFloor.h; no asm in the row
+00a526d0	C3DAnimationSequenceData::ConvertTimeToFrames	REWRITTEN	MATCH	calls engine/GFFloatToLongFloor.h; no asm in the row
+00a5b850	NVectorMath::GFInitVectorMath	IN_ROW_TWO_PATH	RELOCATION_MATCH	asm kept in the row under #ifndef FABLE_PORTABLE with the C++ twin beside it
+00a5b870	NVectorMath::GFInterpolateVectors	IN_ROW_TWO_PATH	RELOCATION_MATCH	asm kept in the row under #ifndef FABLE_PORTABLE with the C++ twin beside it
+00a5bba0	NVectorMath::GFInterpolateVectors	IN_ROW_TWO_PATH	RELOCATION_MATCH	asm kept in the row under #ifndef FABLE_PORTABLE with the C++ twin beside it
+00a5bef0	NVectorMath::GFInterpolateVectors	IN_ROW_TWO_PATH	RELOCATION_MATCH	asm kept in the row under #ifndef FABLE_PORTABLE with the C++ twin beside it
+00a5c2b0	NVectorMath::GFFinishPartialSlerp	IN_ROW_TWO_PATH	MATCH	asm kept in the row under #ifndef FABLE_PORTABLE with the C++ twin beside it
+00a5c300	NVectorMath::GFClear4DVectors	IN_ROW_TWO_PATH	RELOCATION_MATCH	asm kept in the row under #ifndef FABLE_PORTABLE with the C++ twin beside it
+00a5cee0	CMatrix4x4::AlignedSetInterpolate	IN_ROW_TWO_PATH	RELOCATION_MATCH	asm kept in the row under #ifndef FABLE_PORTABLE with the C++ twin beside it
+00aa3390	CQuaternion::CalculateSlerpWeights	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00aa3560	CQuaternion::SetSlerpFromIdentity	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00ae0e60	CParticleProgram::TransformVertices	IN_ROW_TWO_PATH	RELOCATION_MATCH	asm kept in the row under #ifndef FABLE_PORTABLE with the C++ twin beside it
+00af8d50	GFPackFloat	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00af9000	NParticleEngine::GFSmoothFadeValue	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00af90c0	NParticleEngine::CPSCRenderSprite::GetComponentCost	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00afb7c0	NParticleEngine::CPSCRenderSprite::CPSCRenderSprite	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00afe380	NParticleEngine::CParticle::GetRecordedPos	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongCeil.h; no asm in the row
+00b00db0	NParticleEngine::CPSCRenderMesh::GetComponentCost	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00b05620	NParticleEngine::CParticle::GetInterpolatedOrientation	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00b05c20	NParticleEngine::GFInterpolate	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00b09aa0	CRGBFloatColour::GetRGBColourClamped	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00b0a420	NParticleEngine::CParticle::SetAngleChange	REWRITTEN	RELOCATION_MATCH	calls engine/GFFastFloatToLong.h; no asm in the row
+00b0a4a0	NParticleEngine::CParticle::SetCreationTime	REWRITTEN	RELOCATION_MATCH	calls engine/GFFastFloatToLong.h; no asm in the row
+00b0a750	NParticleEngine::CPSCUpdateNormal::GetCurrentFadeValue	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00b0fbf0	NParticleEngine::CPSCEmitterGeneric::GetNumberOfParticles	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00b0ffc0	NParticleEngine::CPSCEmitterGeneric::GetNumberOfDecals	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00b10220	CPSCEmitterGeneric::CalcIsFinishedGeneratingParticles	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00b102c0	NParticleEngine::CPSCEmitterGeneric::GetRandomRadius	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00b1b5e0	CSprite_00b1b5e0::GetHeight	REWRITTEN	MATCH	calls engine/GFFastFloatToLong.h; no asm in the row
+00b3b240	CEngineResourceManager::AllocatePools	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00b46a30	CEngineLightingManager::LookupSmallObjectLightCache	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongFloor.h; no asm in the row
+00b49810	C3DBoundingBox::CalcShortestDistanceToPointSquared	IN_ROW_TWO_PATH	RELOCATION_MATCH	asm kept in the row under #ifndef FABLE_PORTABLE with the C++ twin beside it
+00b4ced0	CShadowClipVolume::ClipBoundingBox	IN_ROW_TWO_PATH	RELOCATION_MATCH	asm kept in the row under #ifndef FABLE_PORTABLE with the C++ twin beside it
+00b52990	CEngineWeatherRenderer::UpdateBoxPositions	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongFloor.h; no asm in the row
+00b99bb0	CEngineInternalPrimitiveRepeatedStaticMesh::IsInsideFrustum	IN_ROW_TWO_PATH	RELOCATION_MATCH	asm kept in the row under #ifndef FABLE_PORTABLE with the C++ twin beside it
+00b9c2e0	CShadowClipVolume::ClipBoundingBox	IN_ROW_TWO_PATH	RELOCATION_MATCH	asm kept in the row under #ifndef FABLE_PORTABLE with the C++ twin beside it
+00b9c500	C3DBoundingBox::CalcShortestDistanceToPoint	IN_ROW_TWO_PATH	RELOCATION_MATCH	asm kept in the row under #ifndef FABLE_PORTABLE with the C++ twin beside it
+00ba7b30	CEngineInternalPrimitiveBase::GetAlphaIncludingDistanceFade	REWRITTEN	RELOCATION_MATCH	calls engine/GFFastFloatToLong.h; no asm in the row
+00be6790	CPackedNormalOwner_00be6790::PackVertexNormal	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00be6800	CLandscapeBackgroundPatch::GetPackedNormalFromTargetVertex	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00be8b50	CPackedNormalOwner_00be8b50::PackVertexNormal	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00be8df0	CPackedNormalOwner_00be8df0::PackVertexNormal	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00bf7df0	CLandscapeBackgroundTreeNode::GetDesiredLODBand	IN_ROW_TWO_PATH	RELOCATION_MATCH	asm kept in the row under #ifndef FABLE_PORTABLE with the C++ twin beside it
+00bfdf60	CPackedNormalOwner_00bfdf60::PackVertexNormal	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00bfdfd0	CLandscapeLayerMesh::GetPackedNormalFromTargetVertex	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00c3ff70	RoundHalfDownToLong	REWRITTEN	RELOCATION_MATCH	calls libpk/FtoL.h; no asm in the row
+00c3ff90	_global::LookupAzimuthElevation	REWRITTEN	RELOCATION_MATCH	calls libpk/FtoL.h; no asm in the row
+00c40e60	_global::Pow10_00c40e60	HELD	-	libpk 2^x block (frndint/fscale/f2xm1): a per-TU static libpk function with no PDB name, 9 of its 14 copies in the fenced 0x00C5-0x00C7 range; design its header + twin once with the libpk pass; unchanged
+00c40ee0	_global::MillibelsToAmplitude_00c40ee0	HELD	-	libpk 2^x block (frndint/fscale/f2xm1): a per-TU static libpk function with no PDB name, 9 of its 14 copies in the fenced 0x00C5-0x00C7 range; design its header + twin once with the libpk pass; unchanged
+00c40f50	AmplitudeToMillibels	REWRITTEN	RELOCATION_MATCH	calls libpk/FtoL.h; no asm in the row
+00c42c30	_global::Pow10_00c42c30	HELD	-	libpk 2^x block (frndint/fscale/f2xm1): a per-TU static libpk function with no PDB name, 9 of its 14 copies in the fenced 0x00C5-0x00C7 range; design its header + twin once with the libpk pass; unchanged
+00c42c90	_global::MillibelsToAmplitude_00c42c90	HELD	-	libpk 2^x block (frndint/fscale/f2xm1): a per-TU static libpk function with no PDB name, 9 of its 14 copies in the fenced 0x00C5-0x00C7 range; design its header + twin once with the libpk pass; unchanged
+00c42f50	CAudioObject::SetGain	REWRITTEN	RELOCATION_MATCH	calls libpk/FtoL.h; no asm in the row
+00c42fb0	CAudioObject::SetMillibels	HELD	-	libpk 2^x block (frndint/fscale/f2xm1): a per-TU static libpk function with no PDB name, 9 of its 14 copies in the fenced 0x00C5-0x00C7 range; design its header + twin once with the libpk pass; unchanged
+00c52a80	CEngineDebug::CPUAheadCounterCallback	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c52aa0	_global::IsCpuidSupported	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c52ce0	MeasureCpuFrequency	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c53b10	_global::Pow10	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c53b60	_global::MillibelsToAmplitude_00c53b60	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c54a80	_global::Pow10_00c54a80	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c54ae0	_global::MillibelsToAmplitude_00c54ae0	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c55da0	CAudioContext::GetPreferredDeviceName	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c57f20	CMixBuffer::MixAddFloat	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c57f60	CMixBuffer::MixAddFloatGain16	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c57fc0	CMixBuffer::MixAddFloatGain	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c593c0	CLimiter::Process	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c59b00	SecondsToMixBlocks	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c5a500	CSoftwareVoice::UpdateStep	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c5be20	_global::ScaleAccumulate16MMX_00c5be20	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c5bef0	_global::CUnprovenMixKernel_00c5bef0	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c5c0b0	_global::Pow10_00c5c0b0	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c5c130	_global::MillibelsToAmplitude_00c5c130	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c5d150	Row00c5d150::ScaleAccumulate16	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c5d1f0	ScaleAccumulate16Ramp	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c5d2e0	_global::AccumulateFloatBlockSSE2	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c5d370	_global::AddInt128Block	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c5d3f0	_global::AddInt128Block_00c5d3f0	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c5d4b0	_global::AddInt128Block_00c5d4b0	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6a460	CReverbProcessor::Allocate	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6aa10	_global::MixSamplesMMX	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6aae0	_global::CUnprovenMixKernel_00c6aae0	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6aef0	CVoiceEffect::Configure	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6b240	FtoL	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6b3a0	_global::ConvertInt128BlockToFloat	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6b490	ConvertFloat128BlockToIntInPlace	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6b5d0	_global::ConvertInt128BlockToFloatInPlace_00c6b5d0	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6b7c0	CStateVariableFilter::FilterRampedWithGain	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6b8c0	CStateVariableFilter::FilterRamped	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6bae0	CStateVariableFilter::Filter	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6bdc0	_global::GetFrequencyTableEntry	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6bf60	_global::Pow10_00c6bf60	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6c000	COnePoleLowPass::SetLevel	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6cef0	CVtable_012bed7c::ComputeTapGain	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6d370	_global::ScaleAccumulate16	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6d410	_global::MixSamplesRampSSE2	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6d560	CVtable_012b8a64::ClearHistory	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6d630	CVtable_012b8a64::Process	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6de60	CVtable_012bed90::ComputeGainRamp	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6dea0	CVtable_012bed90::RebuildGain	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6e1f0	Row00c6e1f0::ScaleAccumulate16	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6e290	ScaleAccumulate16Ramp	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6e410	CVtable_012b8a78::Process	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6eba0	CVtable_012bedb8::ComputeGainRamp	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6ecd0	Row00c6ecd0::ScaleAccumulate16	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6ed70	ScaleAccumulate16Ramp	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6f0f0	_global::ScaleAccumulate16MMX	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6f1a0	_global::CUnprovenMixKernel_00c6f1a0	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6f300	CVtable_012b8aa0::ClearHistory	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6f730	_global::ScaleAccumulate16MMX_00c6f730	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6f800	_global::CUnprovenMixKernel_00c6f800	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6f990	CVtable_012b8ab4::Process	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6fbb0	_global::ScaleAccumulate16MMX_00c6fbb0	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6fc80	_global::CUnprovenMixKernel_00c6fc80	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c6fe10	CVtable_012b8ac8::Process	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c70040	CPreTransposedBoneMatrix::Set	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c700d0	_global::ZeroBlock128MMX_00c700d0	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c701e0	CVtable_012bedcc::ClearScratch	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c705b0	CVtable_012bedcc::SetupVoice	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c70a60	CPreTransposedBoneMatrix::Set	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c70bc0	CVtable_012bede0::ClearScratch	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c70f80	CVtable_012bede0::SetupVoice	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c77690	_global::Pow10_00c77690	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c77700	_global::MillibelsToAmplitude	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c77fc0	CReverbProcessor::UpdateChorusLength	HELD	-	EAX/GameCODA range 0x00C5xxxx-0x00C7xxxx (decisions wave owns it); unchanged
+00c89be0	FtoL	IN_ROW_TWO_PATH	MATCH	asm kept in the row under #ifndef FABLE_PORTABLE with the C++ twin beside it
+00ca3b10	FtoL	IN_ROW_TWO_PATH	MATCH	asm kept in the row under #ifndef FABLE_PORTABLE with the C++ twin beside it
+00cb0160	_global::EnlargedUnsignedDivide	REWRITTEN	MATCH	calls strmbase/EnlargedUnsignedDivide.h; no asm in the row
+00cb0310	_global::memmoveInternal	IN_ROW_TWO_PATH	MATCH	asm kept in the row under #ifndef FABLE_PORTABLE with the C++ twin beside it
+00cb0700	Int64x32Div32	REWRITTEN	RELOCATION_MATCH	calls strmbase/EnlargedUnsignedDivide.h; no asm in the row
+00e81b40	NScript::CV_FishingCompetitionScript::CFishCompOrganiser::GetBiggestFishWeight	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongNear.h; no asm in the row
+00b44820	CEngineLightingManager::CalcSWLightingNoClipVector	HELD	MATCH	pending hand721 SSE vertex-lighting loop (the whole body is one asm block, rcpps reciprocal estimates): no twin written yet -- rcpps has no exact plain-C++ equivalent (Strategy C: _mm_rcp_ps), the scalar twin needs its own dual-path test; 00b44a60 evidence line now names movaps, mulps and rcpps (it read naked_asm before: no instruction on the Retail-asm line); regraded MATCH
+00b44a60	CEngineLightingManager::CalcSWLightingNoClipSeparateMainLightVector	HELD	MATCH	pending hand721 SSE vertex-lighting loop (the whole body is one asm block, rcpps reciprocal estimates): no twin written yet -- rcpps has no exact plain-C++ equivalent (Strategy C: _mm_rcp_ps), the scalar twin needs its own dual-path test; 00b44a60 evidence line now names movaps, mulps and rcpps (it read naked_asm before: no instruction on the Retail-asm line); regraded MATCH
+00b45fb0	CEngineLightingManager::GetLightsInSphere	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongFloor.h; no asm in the row; pending (not landed) source edited in place
+00b46280	CEngineLightingManager::GetLightsInArea	IN_ROW_TWO_PATH	RELOCATION_MATCH	asm kept in the row under #ifndef FABLE_PORTABLE with the C++ twin beside it (also calls engine/GFFloatToLongFloor.h); pending (not landed) source edited in place
+00b46660	CEngineLightingManager::AddLightsToLookupGrid	REWRITTEN	RELOCATION_MATCH	calls engine/GFFloatToLongFloor.h; no asm in the row; pending (not landed) source edited in place

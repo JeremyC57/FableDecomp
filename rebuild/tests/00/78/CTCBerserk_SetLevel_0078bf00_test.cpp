@@ -1,28 +1,10 @@
 #include <cstdio>
 #ifdef _MSC_VER
 #pragma optimize("y", off)
-__forceinline long CeilToLong(float value)
-{
-    long result; float one; float half; float back;
-    half = 0.5f; one = 1.0f;
-    __asm {
-        fld value
-        fadd half
-        fistp result
-        fild result
-        fsub one
-        fstp back
-        mov eax, value
-        cmp eax, back
-        jne done
-        dec result
-    done:
-    }
-    return result;
-}
+#include "engine/GFFloatToLongCeil.h"
 #else
 #include <math.h>
-inline long CeilToLong(float value) { return (long)ceil((double)value); }   // the FPU block is ceil() for the magnitudes used here
+inline long GFFloatToLongCeil(float value) { return (long)ceil((double)value); }   // the FPU block is ceil() for the magnitudes used here
 #endif
 class CSpecialAbilitiesBerserkDef { public:
     unsigned char _pad00[0x7c]; float* Duration; unsigned char _pad80[0x88 - 0x80]; float* DamageToEnemy; unsigned char _pad8c[0x98 - 0x8c]; float* DamageToMe;
@@ -37,7 +19,7 @@ class CTCBerserk { public:
     const CSpecialAbilitiesBerserkDef* GetDef() const { return PDef_Object; }
     void SetLevel()
     {
-        Timer = CeilToLong(g_FramesPerSecond * GetDef()->Duration[SpellLevel]);
+        Timer = GFFloatToLongCeil(g_FramesPerSecond * GetDef()->Duration[SpellLevel]);
         BerserkDamageToMe = GetDef()->DamageToMe[SpellLevel];
         BerserkDamageToEnemy = GetDef()->DamageToEnemy[SpellLevel];
         MaxIncreaseInStrength = GetDef()->MaxIncreaseInStrength[SpellLevel];

@@ -1,28 +1,10 @@
 #include <cstdio>
 #ifdef _MSC_VER
 #pragma optimize("y", off)
-__forceinline long CeilToLong(float value)
-{
-    long result; float one; float half; float back;
-    half = 0.5f; one = 1.0f;
-    __asm {
-        fld value
-        fadd half
-        fistp result
-        fild result
-        fsub one
-        fstp back
-        mov eax, value
-        cmp eax, back
-        jne done
-        dec result
-    done:
-    }
-    return result;
-}
+#include "engine/GFFloatToLongCeil.h"
 #else
 #include <math.h>
-inline long CeilToLong(float value) { return (long)ceil((double)value); }   // the FPU block is ceil() for the magnitudes used here
+inline long GFFloatToLongCeil(float value) { return (long)ceil((double)value); }   // the FPU block is ceil() for the magnitudes used here
 #endif
 class CShopItem { public: float Quantity; float PriceMultiplier; float MaxStock; long RestockPeriod; float RestockPeriodRandomness; float SalesPerDay; float SalesPerDayRandomness; };
 struct SStockNode { SStockNode* color_unused; SStockNode* parent; SStockNode* left; SStockNode* right; long Key; CShopItem Item; };
@@ -39,8 +21,8 @@ struct CStockMap {
 };
 class CTCShop { public:
     unsigned char _pad00[0x34]; CStockMap Stock;
-    long GetStockQuantity(long item) { CStockMap::iterator it = Stock.find(item); if (it.m_pNode != Stock.m_pHead) return CeilToLong(it.m_pNode->Item.Quantity); return 0; }
-    long GetMaxStock(long item) { CStockMap::iterator it = Stock.find(item); if (it.m_pNode != Stock.m_pHead) return CeilToLong(it.m_pNode->Item.MaxStock); return 0; }
+    long GetStockQuantity(long item) { CStockMap::iterator it = Stock.find(item); if (it.m_pNode != Stock.m_pHead) return GFFloatToLongCeil(it.m_pNode->Item.Quantity); return 0; }
+    long GetMaxStock(long item) { CStockMap::iterator it = Stock.find(item); if (it.m_pNode != Stock.m_pHead) return GFFloatToLongCeil(it.m_pNode->Item.MaxStock); return 0; }
 };
 static SStockNode g_head, g_n5, g_n9;
 static CTCShop* MakeShop()

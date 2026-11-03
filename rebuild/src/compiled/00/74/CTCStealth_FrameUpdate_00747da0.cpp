@@ -1,6 +1,7 @@
 // CTCStealth::FrameUpdate() -- decide whether the creature may keep (or start) sneaking this frame, post the "sneaking and moving" deed after four seconds of sneaking movement, then update viewability, hearability and danger
 // Grade: RELOCATION_MATCH (retry wave 2 sec2c, 9 grades): the four-second frame count goes through the engine's inline-assembly FPU ceiling helper (the landed CeilToLong of 0x0079C5F0), which also gives retail's ebp frame; the radius is taken at the temporary (pos + graphic offset) passed straight to the vslot; the sneak-keep tests clear canSneak in place (one removal block); the deed handle is read inside the !Sneaking block; PDB spellings for the callees
 // Retail-asm: 0x0074803F `fstp [ebp-8]` / 0x00748042 `fld [ebp-8]` + 0x00748045 `fadd [ebp-10h]` + 0x00748048 `fistp dword ptr [ebp-0Ch]` + 0x0074804B `fild` / 0x0074804E `fsub [ebp-14h]` / 0x00748054 `mov eax,[ebp-8] ; cmp eax,[ebp-18h] ; jne ; dec dword ptr [ebp-0Ch]` -- the engine's inline-assembly ceiling helper expanded in place (0.5f / 1.0f stored as frame constants at 0x0074802B / 0x00748032, a bare dword fistp into a named long). VC7.1 emits no bare dword fistp from C++ (`(long)x` calls __ftol2, /QIfist gives `fistp qword`); same 10-instruction block as the landed retail_asm 0x0079C5F0 / standalone 0x004FA9A0.
+// Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongCeil.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 // Name: CTCStealth::FrameUpdate is virtual (Ego_r.pdb ?FrameUpdate@CTCStealth@@UAEXXZ); 0x00747DA0 sits in the CTCStealth vtable at 0x01268A10 (RTTI COL 0x01343474 -> .?AVCTCStealth@@), next to HasFrameUpdate 0x00749410 (`mov al,1 ; ret`).
 // Leaf: FrameUpdate
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
@@ -147,29 +148,7 @@ public:
 extern bool g_sneakToggleOption;                        // 0x01375749
 
 // the engine's inline-assembly FPU ceiling helper (standalone copy 0x004FA9A0; landed inlined form 0x0079C5F0)
-__forceinline long CeilToLong(float value)
-{
-    long  result;
-    float one;
-    float half;
-    float back;
-    half = 0.5f;
-    one = 1.0f;
-    __asm {
-        fld   value
-        fadd  half
-        fistp result
-        fild  result
-        fsub  one
-        fstp  back
-        mov   eax, value
-        cmp   eax, back
-        jne   done
-        dec   result
-    done:
-    }
-    return result;
-}
+#include "engine/GFFloatToLongCeil.h"
 class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04
@@ -258,7 +237,7 @@ void CTCStealth::FrameUpdate()
                 FrameStartedSneakingAndMoving = GetWorld().GetFrame();
             else if (SneakingAndMovingDeedHandle == -1) {
                 GetWorld();
-                long frames = CeilToLong(CMainGameComponent::GetConstantFPS() * 4.0f);
+                long frames = GFFloatToLongCeil(CMainGameComponent::GetConstantFPS() * 4.0f);
                 if (CWorld::GetFrame() - FrameStartedSneakingAndMoving > frames && creature->HasTC(0x51)) {
                     CTCHeroOpinionDeedLog* log = creature->GetTC<CTCHeroOpinionDeedLog>(0x51);
                     SneakingAndMovingDeedHandle = log->PostDeed(0x49, creature->GetPos(), 0, 0, 2, 0, 1, 0, 0, 0);

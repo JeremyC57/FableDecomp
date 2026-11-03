@@ -1,28 +1,10 @@
 #include <cstdio>
 #ifdef _MSC_VER
 #pragma optimize("y", off)
-__forceinline long CeilToLong(float value)
-{
-    long result; float one; float half; float back;
-    half = 0.5f; one = 1.0f;
-    __asm {
-        fld value
-        fadd half
-        fistp result
-        fild result
-        fsub one
-        fstp back
-        mov eax, value
-        cmp eax, back
-        jne done
-        dec result
-    done:
-    }
-    return result;
-}
+#include "engine/GFFloatToLongCeil.h"
 #else
 #include <math.h>
-inline long CeilToLong(float value) { return (long)ceil((double)value); }   // the FPU block is ceil() for the magnitudes used here
+inline long GFFloatToLongCeil(float value) { return (long)ceil((double)value); }   // the FPU block is ceil() for the magnitudes used here
 #endif
 long g_framesPerSecond_01375550 = 15;
 const float g_minPositive_0129ba3c = 0.0001f;
@@ -34,7 +16,7 @@ class CTCHeroStats : public CTCBase { public:
     long GetFatnessReducingFrequencyInFrames() const
     {
         float rate = GetDefinitionManager().PHeroStatsDef->FatnessReductionRate;
-        if (rate > g_minPositive_0129ba3c) return CeilToLong(g_framesPerSecond_01375550 * rate * 60.0f);
+        if (rate > g_minPositive_0129ba3c) return GFFloatToLongCeil(g_framesPerSecond_01375550 * rate * 60.0f);
         return g_framesPerSecond_01375550 * 2440;
     }
 };

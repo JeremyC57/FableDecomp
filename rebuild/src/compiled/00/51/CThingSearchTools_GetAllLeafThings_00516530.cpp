@@ -15,6 +15,7 @@
 // Header debt: engine/CThingSearchTools.h declares no member functions, so the class is modelled locally with its Ego_r.pdb
 //   members (retail STLport 12-byte AreaMaps vector) to carry the member template's real name.
 // Retail-asm: 0x005165C8..0x005165E2 `fld [ebp-18h] ; fadd [ebp-14h] ; fistp dword ptr [ebp-0Ch] ; fild [ebp-0Ch] ; fsub [ebp-10h] ; fstp [ebp-1Ch] ; mov eax,[ebp-18h] ; cmp eax,[ebp-1Ch] ; jne ; dec dword ptr [ebp-0Ch]` -- the engine's inline-assembly ceiling helper expanded in place (a bare dword fistp, the bit compare and the memory decrement in one 10-instruction block; VC7.1 emits no bare dword fistp from C++), as in the landed 0x0050EF30.
+// Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongCeil.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 #pragma optimize("y", off)
 #include <stdlib.h>
 inline void* __cdecl operator new(unsigned int, void* where) { return where; }
@@ -55,29 +56,7 @@ public:
 };
 class CThingPhysical : public CThing { };
 class CThingObject : public CThingPhysical { public: enum { ThingListType = 5 }; };
-__forceinline long CeilToLong(float value)
-{
-    long result;
-    float one;
-    float half;
-    float back;
-    half = 0.5f;
-    one = 1.0f;
-    __asm {
-        fld   value
-        fadd  half
-        fistp result
-        fild  result
-        fsub  one
-        fstp  back
-        mov   eax, value
-        cmp   eax, back
-        jne   done
-        dec   result
-    done:
-    }
-    return result;
-}
+#include "engine/GFFloatToLongCeil.h"
 class CCharString { public: void* PStringData; };
 class CThingFilter_IsInQuestOrNullQuest {
 public:
@@ -92,7 +71,7 @@ public:
             float radius;
             C3DVector centre;
             thing.PhysicsTC->GetBoundingInfo(centre, radius);
-            radius = (float)CeilToLong(radius);
+            radius = (float)GFFloatToLongCeil(radius);
             C2DBoxI box = *Area;
             box.Grow(radius);
             long x = (long)centre.X;

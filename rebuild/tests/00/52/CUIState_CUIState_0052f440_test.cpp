@@ -3,18 +3,12 @@ class C2DVector { public: float x, y; };
 class CRGBFloatColour { public: float r, g, b, a; };
 class CRGBColour { public: unsigned char B, G, R, A; CRGBColour() { } CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; } };
 struct CUIStateDef { unsigned char _pad00[0x40]; unsigned long StateChangeFlag; long StateChangeType; C2DVector Position; C2DVector Zoom; CRGBFloatColour Colour; float UpdateTime; unsigned char _pad6c[0x0c]; bool LinearChange; };
-__forceinline long ROUND(float value)
-{
-    long result;
-    __asm fld value
-    __asm fistp result
-    return result;
-}
+#include "engine/GFFloatToLongNear.h"
 struct CUIState { unsigned long StateChangeFlag; long StateChangeType; C2DVector Position; C2DVector Zoom; CRGBColour Colour; float UpdateTime; bool LinearChange; CUIState(const CUIStateDef& def); };
 CUIState::CUIState(const CUIStateDef& def)
 {
     Position = def.Position; Zoom = def.Zoom;
-    long r = ROUND(def.Colour.r * 255.0f); long g = ROUND(def.Colour.g * 255.0f); long b = ROUND(def.Colour.b * 255.0f); long a = ROUND(def.Colour.a * 255.0f);
+    long r = GFFloatToLongNear(def.Colour.r * 255.0f); long g = GFFloatToLongNear(def.Colour.g * 255.0f); long b = GFFloatToLongNear(def.Colour.b * 255.0f); long a = GFFloatToLongNear(def.Colour.a * 255.0f);
     Colour = CRGBColour((unsigned char)r, (unsigned char)g, (unsigned char)b, (unsigned char)a);
     UpdateTime = def.UpdateTime; StateChangeType = def.StateChangeType; StateChangeFlag = def.StateChangeFlag; LinearChange = def.LinearChange;
 }

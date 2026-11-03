@@ -1,6 +1,7 @@
 // CTCShop::GetStockQuantity(long item) -- look the item up in the Stock map and return its Quantity rounded up to a whole unit (0 when the shop has no such item)
 // Leaf: GetStockQuantity
 // Retail-asm: 0x007726E7..0x007726F6 `fld [ebp-0Ch] ; fadd [ebp-8] ; fistp dword ptr [ebp+8] ; fild [ebp+8] ; fsub [ebp-4] ; fstp [ebp-10h]` -- the engine's inline-assembly ceiling helper expanded in place (the member copied into the by-value parameter word, 0.5f / 1.0f stored as frame constants, a bare dword fistp into a long homed in the dead `item` argument slot). VC7.1 emits no bare dword fistp from C++ (`(long)x` calls __ftol2, /QIfist gives `fistp qword`, /arch:SSE2 cvttss2si: rasm1 probe family (a)); the fix-up `mov eax,value ; cmp ; jne ; dec dword ptr [ebp+8]` is part of the same block (10 instructions, one jne: rasm1 family (b)), the result read back by C++.
+// Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongCeil.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007726B0, 101 bytes (`ret 4`, ebp frame from the inline asm). Twin of 0x00772720
 // (GetMaxStock, node +0x1c); the manifest label "GetMaxStock" on this row is propagated (it reads node +0x14 = Quantity:
 // ghidra_out/labels_fixnames_corrections_2026-10-24.tsv).
@@ -61,33 +62,11 @@ public:
 // place; the by-value parameter and the four locals become frame words, which is why the function carries an ebp frame.
 // The whole 10-instruction block is asm (the bit compare and the memory decrement included: rasm1 family (b)); the result
 // is read back by C++ after the block.
-__forceinline long CeilToLong(float value)
-{
-    long  result;
-    float one;
-    float half;
-    float back;
-    half = 0.5f;
-    one = 1.0f;
-    __asm {
-        fld   value
-        fadd  half
-        fistp result
-        fild  result
-        fsub  one
-        fstp  back
-        mov   eax, value
-        cmp   eax, back
-        jne   done
-        dec   result
-    done:
-    }
-    return result;
-}
+#include "engine/GFFloatToLongCeil.h"
 long CTCShop::GetStockQuantity(long item)
 {
     CStockMap::iterator it = Stock.find(item);
     if (it.m_pNode != Stock.m_pHead)
-        return CeilToLong(it.m_pNode->Item.Quantity);
+        return GFFloatToLongCeil(it.m_pNode->Item.Quantity);
     return 0;
 }

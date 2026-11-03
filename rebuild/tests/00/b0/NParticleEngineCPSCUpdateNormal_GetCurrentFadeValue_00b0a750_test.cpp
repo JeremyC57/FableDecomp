@@ -3,16 +3,10 @@
 float g_cosTable[1025]; const float g_fadeScale = 1.0f / 1023.0f; const float g_cosTableScale = 2048.0f;
 static float g_clock = 1.0f;
 float GetParticleClock() { return g_clock; }
-__forceinline long FloatToLong(float value)
-{
-    long result;
-    __asm fld value
-    __asm fistp result
-    return result;
-}
+#include "engine/GFFloatToLongNear.h"
 __forceinline float TableCos01(float x)
 {
-    float scaled = x * 0.5f * g_cosTableScale; long whole = FloatToLong(scaled - 0.5f); float frac = scaled - (float)whole; long index = whole & 0x3ff;
+    float scaled = x * 0.5f * g_cosTableScale; long whole = GFFloatToLongNear(scaled - 0.5f); float frac = scaled - (float)whole; long index = whole & 0x3ff;
     return 0.5f - ((1.0f - frac) * g_cosTable[index] + frac * g_cosTable[index + 1]) * 0.5f;
 }
 namespace NParticleEngine {

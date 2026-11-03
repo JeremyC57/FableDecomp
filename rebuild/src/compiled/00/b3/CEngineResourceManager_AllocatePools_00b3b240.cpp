@@ -6,15 +6,10 @@
 //   allocator ctor 0x009D5EB0 + Reset 0x00B3E510.
 // Layout: local model.
 // Retail-asm: 0x00B3B25C `fstp [esp+14h] ; fld [esp+14h] ; fistp dword ptr [esp+18h]` -- the engine's inline-assembly ROUND helper (the product is stored to the helper's by-value copy and reloaded for a bare dword fistp; VC7.1 C++ `(long)x` calls __ftol2 and /QIfist emits `fistp qword` without the reload).
+// Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongNear.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 // the engine's inline-assembly float-to-long helper, expanded in place (VC7.1 homes the by-value parameter in a frame
 // word, often a dead argument slot, and reloads it for the bare dword fistp)
-__forceinline long ROUND(float value)
-{
-    long result;
-    __asm fld value
-    __asm fistp result
-    return result;
-}
+#include "engine/GFFloatToLongNear.h"
 class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -72,7 +67,7 @@ void CEngineResourceManager::AllocatePools(bool allocateAll, const CEngineResour
 {
     if (allocateAll) {
         float scaled = sizes.TextureKB * sizes.ScratchFraction;
-        long kept = ROUND(scaled);
+        long kept = GFFloatToLongNear(scaled);
         long scratchBytes = (sizes.TextureKB - kept) << 10;
         ScratchPool.Reset(new CMemoryPool());
         ScratchPool.m_pObject->Initialise(scratchBytes, false, false);

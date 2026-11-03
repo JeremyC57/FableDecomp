@@ -1,6 +1,7 @@
 // LookupAzimuthElevation(float azimuth, float elevation) -- the libpk audio table entry for a direction: azimuth quantised to 3-degree steps near the horizon (|elevation| < 33), 6-degree steps up to |elevation| < 63 and 12-degree steps above, elevation to 6-degree steps, indexing a 121 x 31 table of unsigned shorts
 // Leaf: ?LookupAzimuthElevation@@YAJMM@Z
-// Retail-asm: 0x00C40026 `fld dword ptr [esp]` + 0x00C40029 `fistp dword ptr [esp+4]` (and 0x00C40062/0x00C40066, 0x00C4009E/0x00C400A2) -- libpk's inline-assembly float-to-long helper RoundHalfDownToLong (landed 0x00C3FF70, whose own body runs the same `fld`/`fistp dword` pair) expanded in place; VC7.1 C++ `(long)x` calls __ftol2 and /QIfist emits `fistp qword`, so the bare dword fistp is the original's `__asm`.
+// Retail-asm: 0x00C40026 `fld dword ptr [esp]` + 0x00C40029 `fistp dword ptr [esp+4]` (and 0x00C40062/0x00C40066, 0x00C4009E/0x00C400A2) -- libpk's inline-assembly float-to-long helper RoundHalfDownToLong (landed 0x00C3FF70, whose own body runs the same `fld`/`fistp dword` pair) expanded in place; VC7.1 C++ `(long)x` calls __ftol2 and /QIfist emits `fistp qword`, so the bare dword fistp is the original's inline-asm.
+// Helper (2026-11-03 asm twins): the retail inline-asm block is the shared libpk/FtoL.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C3FF90, 318 bytes, __cdecl, long in eax (the table word zero-extended).
 // Identity (descriptive; libpk has no PDB/RTTI): the only caller 0x00C4013D (in 0x00C400D0) scales the result by 0x34 into a
 //   pair of 52-byte filter records; the table at 0x012B5E10 is read only here. The catalog label
@@ -9,14 +10,12 @@
 //   same-TU body below is the landed source of that real retail callee).
 // Shape: the `>= 63 || < -63` / `>= 33 || < -33` tests are written with the wide band first; VC7.1 lays the 3-degree branch
 //   out first (`test ah,1 ; je` / `test ah,5 ; jnp`).
+#include "libpk/FtoL.h"
 extern const unsigned short g_DirectionFilterTable_012b5e10[];   // 0x012B5E10 (121 x 31 unsigned shorts; descriptive)
 
 long __cdecl RoundHalfDownToLong(float value)   // 0x00C3FF70: same-TU body of the landed retail callee (stand-in, not this row)
 {
-    long result;
-    value -= 0.5f;
-    __asm fld value
-    __asm fistp result
+    long result = FtoL(value - 0.5f);
     if (result < 0)
         ++result;
     return result;

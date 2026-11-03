@@ -6,6 +6,7 @@
 // ceiling helper and, being address-taken, is read back as a memory operand by the four box-edge conversions; the six `(long)`
 // casts are __ftol2 calls.
 // Retail-asm: 0x0050EF6A..0x0050EF84 `fld [ebp-10h] ; fadd [ebp-0Ch] ; fistp dword ptr [ebp-4] ; fild [ebp-4] ; fsub [ebp-8] ; fstp [ebp-14h] ; mov eax,[ebp-10h] ; cmp eax,[ebp-14h] ; jne ; dec dword ptr [ebp-4]` -- the engine's inline-assembly ceiling helper expanded in place (0.5f / 1.0f stored as frame constants, a bare dword fistp into a named long, the bit compare and `jne ; dec dword ptr` in the same 10-instruction block: rasm1 family (b)). VC7.1 emits no bare dword fistp from C++ (`(long)x` calls __ftol2, /QIfist gives `fistp qword`, /arch:SSE2 cvttss2si: rasm1 probe family (a)); the result is read back by C++ after the block.
+// Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongCeil.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 #pragma optimize("y", off)
 class C3DVector { public: float X, Y, Z; };
 class C2DBoxI { public:
@@ -40,36 +41,14 @@ public:
 // place; the by-value parameter and the four locals become frame words, which is why the function carries an ebp frame.
 // The whole 10-instruction block is asm (the bit compare and the memory decrement included: rasm1 family (b)); the result
 // is read back by C++ after the block.
-__forceinline long CeilToLong(float value)
-{
-    long  result;
-    float one;
-    float half;
-    float back;
-    half = 0.5f;
-    one = 1.0f;
-    __asm {
-        fld   value
-        fadd  half
-        fistp result
-        fild  result
-        fsub  one
-        fstp  back
-        mov   eax, value
-        cmp   eax, back
-        jne   done
-        dec   result
-    done:
-    }
-    return result;
-}
+#include "engine/GFFloatToLongCeil.h"
 bool CThingFilter_OverlappingArea::operator()(CThing* thing) const
 {
     if (thing->PhysicsTC) {
         float radius;
         C3DVector centre;
         thing->PhysicsTC->GetBoundingInfo(&centre, &radius);
-        radius = (float)CeilToLong(radius);          // rounded up in place: the address-taken out-value stays a memory operand
+        radius = (float)GFFloatToLongCeil(radius);          // rounded up in place: the address-taken out-value stays a memory operand
         C2DBoxI box = *Area;
         box.Grow(radius);
         long x = (long)centre.X;

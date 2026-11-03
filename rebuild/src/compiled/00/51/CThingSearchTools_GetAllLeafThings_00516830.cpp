@@ -1,6 +1,7 @@
 // CThingSearchTools::GetAllLeafThings(const CFilter_Bind2<IsInQuestOrNullQuest, OverlappingArea>& filter, list<const CThingPhysical*>& result) -- appends every scan-visible AI creature (the leaf type list 1) that is in the quest (or no quest) and whose ceil-rounded bounding circle overlaps the area
 // Grade: RELOCATION_MATCH retry1 (retail_asm) -- the landed engine CeilToLong asm helper for the radius, and the copied area grown IN PLACE (X1, X0, Y0, Y1) before the centre conversions
-// Retail-asm: 0x005168CB `fadd [ebp-14h]` + 0x005168CE `fistp dword ptr [ebp-0Ch]` -- the engine inline-assembly CeilToLong (landed 0x00772720 / 0x006A68F0); VC7.1 C++ (long)x calls _ftol.
+// Retail-asm: 0x005168CB `fadd [ebp-14h]` + 0x005168CE `fistp dword ptr [ebp-0Ch]` -- the engine inline-assembly GFFloatToLongCeil(landed 0x00772720 / 0x006A68F0); VC7.1 C++ (long)x calls _ftol.
+// Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongCeil.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 // Leaf: GetAllLeafThings
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00516830, 368 bytes (+ padding to 370), `ret 8`, ebp frame; one caller 0x0050AA06.
 // Callees: PeekTypeList(long) 0x0049C780, CThingFilter_IsInQuestOrNullQuest::operator() 0x006A7C60, CTCPhysicsBase::
@@ -112,29 +113,7 @@ public:
     void GetBoundingInfo(C3DVector& centre, float& radius) const;   // 0x006AF640 (Ego_r.pdb: const, by reference)
 };
 // the engine's inline-assembly ceil helper (the landed CTCShop::GetMaxStock 0x00772720 / CThingPhysical::ModifyHealth 0x006A68F0 CeilToLong, verbatim)
-__forceinline long CeilToLong(float value)
-{
-    long  result;
-    float one;
-    float half;
-    float back;
-    half = 0.5f;
-    one = 1.0f;
-    __asm {
-        fld   value
-        fadd  half
-        fistp result
-        fild  result
-        fsub  one
-        fstp  back
-        mov   eax, value
-        cmp   eax, back
-        jne   done
-        dec   result
-    done:
-    }
-    return result;
-}
+#include "engine/GFFloatToLongCeil.h"
 class CThingFilter_OverlappingArea {
 public:
     const C2DBoxI* Area;                              // +0x00
@@ -146,7 +125,7 @@ public:
         C3DVector centre;
         float radius;
         physics->GetBoundingInfo(centre, radius);
-        radius = (float)CeilToLong(radius);
+        radius = (float)GFFloatToLongCeil(radius);
         C2DBoxI area(*Area);
         area.X1 = (long)((float)area.X1 + radius);
         area.X0 = (long)((float)area.X0 - radius);

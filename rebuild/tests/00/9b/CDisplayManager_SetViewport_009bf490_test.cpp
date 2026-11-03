@@ -15,19 +15,13 @@ public:
     void SetViewport(const C2DBoxF& box);
 };
 #ifdef _MSC_VER
-static __forceinline long FtoL(float f) 
-{
-    long result;
-    __asm fld f
-    __asm fistp result
-    return result;
-}
+#include "engine/GFFloatToLongNear.h"
 #else
-static inline long FtoL(float f) { int r; __asm__("fistpl %0" : "=m"(r) : "t"(f) : "st"); return r; }
+static inline long GFFloatToLongNear(float f) { int r; __asm__("fistpl %0" : "=m"(r) : "t"(f) : "st"); return r; }
 #endif
 void CDisplayManager::SetViewport(const C2DBoxF& box)
 {
-    SetViewport(C2DBoxI(FtoL(box.TLX), FtoL(box.TLY), FtoL(box.BRX), FtoL(box.BRY)));
+    SetViewport(C2DBoxI(GFFloatToLongNear(box.TLX), GFFloatToLongNear(box.TLY), GFFloatToLongNear(box.BRX), GFFloatToLongNear(box.BRY)));
 }
 int main()
 {

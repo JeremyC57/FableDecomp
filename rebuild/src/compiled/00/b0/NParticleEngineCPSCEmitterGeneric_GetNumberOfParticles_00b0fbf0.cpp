@@ -2,6 +2,7 @@
 // Leaf: ?GetNumberOfParticles@CPSCEmitterGeneric@NParticleEngine@@UAE_NAAMM@Z
 // Flags: /O2 /Oy /W3
 // Retail-asm: 0x00B0FC36 `fld dword ptr [esp]` + 0x00B0FC39 `fistp dword ptr [esp+4]` -- the engine's inline-assembly float-to-long helper (landed FloatToLong, CPSCEmitterGeneric::GetRandomRadius 0x00B102C0); VC7.1 `(long)x` calls __ftol2.
+// Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongNear.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B0FBF0, 973 bytes, `ret 8` (no catalog length: extent from the retail bytes, BOUNDS_FIX.tsv).
 // Name: Ego_r.pdb + FableWin.pdb ?GetNumberOfParticles@CPSCEmitterGeneric@NParticleEngine@@UAE_NAAMM@Z (virtual, float& count, float time)
 //   + the manifest row (CPSCEmitterGeneric::GetNumberOfParticles). Layout: Ego_r.pdb bitfields (+0x30 NoParticlesToStart /
@@ -58,14 +59,8 @@ class CPSCEmitterGeneric : public CPSCBase { public:
     virtual bool GetNumberOfDecals(float& count, float time);
 };
 
-// the engine's inline-assembly float-to-long helper: VC7.1 expands a __forceinline function that contains __asm in place
-static __forceinline long FloatToLong(float value)
-{
-    long result;
-    __asm fld value
-    __asm fistp result
-    return result;
-}
+// the engine's inline-assembly float-to-long helper: VC7.1 expands a __forceinline function that contains inline-asm in place
+#include "engine/GFFloatToLongNear.h"
 static __forceinline float RoundToDecimals(float value, long decimals)
 {
     float scale = 1.0f;
@@ -74,7 +69,7 @@ static __forceinline float RoundToDecimals(float value, long decimals)
         scale *= 10.0f;
     while (--i);
     float scaled = value * scale;
-    return FloatToLong(scaled) / scale;
+    return GFFloatToLongNear(scaled) / scale;
 }
 
 #define EMIT_MIN(a, b) ((a) < (b) ? (a) : (b))

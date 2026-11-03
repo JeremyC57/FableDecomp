@@ -2,19 +2,13 @@
 struct CPSCEmitterGeneric { unsigned char _pad00[0x28]; long m_particlesGenerated; unsigned char _pad2c[4]; unsigned long m_flags; unsigned char _pad34[0xc]; unsigned long m_packedLifetime; bool CalcIsFinishedGeneratingParticles() const; };
 static long g_clock = 0;
 long GetParticleClock_00aea9f0() { return g_clock; }
-__forceinline long FloatToLong(float value)
-{
-    long result;
-    __asm fld value
-    __asm fistp result
-    return result;
-}
+#include "engine/GFFloatToLongNear.h"
 static __forceinline float RoundToDecimals(float value, long decimals)
 {
     float scale = 1.0f; long i = decimals;
     do scale *= 10.0f; while (--i);
     float scaled = value * scale;
-    return FloatToLong(scaled) / scale;
+    return GFFloatToLongNear(scaled) / scale;
 }
 bool CPSCEmitterGeneric::CalcIsFinishedGeneratingParticles() const
 {

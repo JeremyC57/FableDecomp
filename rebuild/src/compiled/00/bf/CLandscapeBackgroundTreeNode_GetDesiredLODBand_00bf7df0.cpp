@@ -1,6 +1,7 @@
 // CLandscapeBackgroundTreeNode::GetDesiredLODBand() -- the LOD band for the camera's shortest distance to the node's bounding box (the renderer's LOD Z bands), clamped to the node's [FirstBand, LastBand]
 // Leaf: ?GetDesiredLODBand@CLandscapeBackgroundTreeNode@@QAEJXZ
 // Retail-asm: 0x00BF7E1E..0x00BF7E58 `movss xmm0,[ecx+8] ; movhps xmm0,[ecx] ; ... ; maxps xmm2,xmm0 ; minps xmm2,xmm1 ; subps xmm2,xmm3 ; mulps xmm2,xmm2 ; shufps xmm2,xmm2,0B0h ; addps xmm2,xmm3 ; shufps xmm2,xmm2,3 ; addss xmm2,xmm3 ; movss [esp+0Ch],xmm2` -- C3DBoundingBox::CalcShortestDistanceToPointSquared's hand SSE kernel behind the g_SSEAvailable byte 0x013D2880 (the box and point pointers are spilled to [esp+8]/[esp+4] and reloaded because the asm names them; VC7.1 C++ emits no packed SSE: /arch:SSE only produces scalar ss code and the xmmintrin intrinsics would not reload the spilled pointers); the x87 branch is the C++ fallback.
+// Portable (2026-11-03 asm twins): the asm kernel is this function's own block (retail has no separate helper for it), so it stays here in two-path form: under FABLE_PORTABLE the #ifndef drops the SSE branch and the row runs retail's own non-SSE C++ path (Strategy B; equal to the SSE kernel up to float rounding order -- retail ran this path on CPUs without SSE).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BF7DF0, 379 bytes, thiscall, plain `ret`, long in eax.
 // Identity (proven): Ego_r.pdb ?GetDesiredLODBand@CLandscapeBackgroundTreeNode@@QAEJXZ (long, no arguments); `this` +0xa8 is
 //   BoundingBox and +0xe0/+0xe2 FirstBand/LastBand (Ego_r +0xb0/+0xe8/+0xea, retail 8 smaller), and the callers 0x00BF7FBE,
@@ -33,6 +34,7 @@ public:
     C3DVector MaxCoord;                                 // +0x0c
     __forceinline float CalcShortestDistanceToPointSquared(const C3DVector& point) const
     {
+#ifndef FABLE_PORTABLE   // portable build: the retail non-SSE C++ path below (the twin of the SSE asm kernel)
         if (g_SSEAvailable) {
             float result;
             __asm {
@@ -58,6 +60,7 @@ public:
             }
             return result;
         }
+#endif
         C3DVector closest(point);
         if (closest.X < MinCoord.X)
             closest.X = MinCoord.X;

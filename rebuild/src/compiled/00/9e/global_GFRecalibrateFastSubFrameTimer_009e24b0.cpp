@@ -1,7 +1,8 @@
 // GFRecalibrateFastSubFrameTimer() -- once at least a second has passed, re-measure the CPU cycles per second that the fast sub-frame timer divides by
-// Grade: RELOCATION_MATCH (2 grades: the delta written inline in the division) -- rasm1 retail_asm: C++ body + a minimal 5-instruction __asm (no control flow) + the Retail-asm evidence line
+// Grade: RELOCATION_MATCH (2 grades: the delta written inline in the division) -- rasm1 retail_asm: C++ body + a minimal 5-instruction inline-asm (no control flow) + the Retail-asm evidence line
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E24B0, length 139 bytes. PDB: ?GFRecalibrateFastSubFrameTimer@@YIXXZ (void __fastcall()).
 // Retail-asm: 0x009E24D5 `xor eax,eax` / 0x009E24D7 `xor edx,edx` / 0x009E24D9 `rdtsc` with edx:eax stored to the 8-byte local (0x009E24DB/0x009E24DF) and reloaded -- the PDB's GFGetCycleCount inlined, the same block as the landed CPUAheadCounterCallback (0x009E2540); VC7.1 (13.10.3077/4035) has no rdtsc intrinsic (__rdtsc/<intrin.h> arrived with VC8), so the original read the counter with inline asm.
+// Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFGetCycleCount.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 // Callees: GFGetTime @ 0x009E1BC0 (double). Globals: last recalibration time 0x013CAA20 (double), last recalibration cycle
 //   count 0x013CAA18 (64-bit), frame-start cycle count 0x013CA9F8 (64-bit), cycles per second 0x01396680 (double); 1.0 is the
 //   double pool constant 0x01237F00.
@@ -12,18 +13,7 @@ typedef unsigned __int64 UHUGE;
 
 double __fastcall GFGetTime();                            // 0x009E1BC0
 // the engine's cycle-counter read (expanded in place: zero edx:eax, rdtsc, spill to the 8-byte local)
-__forceinline UHUGE GFGetCycleCount()
-{
-    UHUGE counter;
-    __asm {
-        xor eax, eax
-        xor edx, edx
-        rdtsc
-        mov dword ptr counter, eax
-        mov dword ptr counter+4, edx
-    }
-    return counter;
-}
+#include "engine/GFGetCycleCount.h"
 
 extern double g_LastRecalibrateTime;                      // 0x013CAA20
 extern UHUGE g_LastRecalibrateCycleCount;                 // 0x013CAA18

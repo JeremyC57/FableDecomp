@@ -9,6 +9,7 @@
 //   and esp,-16` frame, a `movss`+`shufps` constant and a re-scheduled loop instead, so the block is the original's
 //   `__asm`. The C++ around it is compiler-emitted: the SSE flag test, the 16-aligned `one` vector (four immediate
 //   stores of 1.0f into [ebp-40h], the reason for the ebx/ebp realigned frame), and the whole x87 fallback.
+// Portable (2026-11-03 asm twins): the asm kernel is this function's own block (retail has no separate helper for it), so it stays here in two-path form: under FABLE_PORTABLE the #ifndef drops the SSE branch and the row runs retail's own non-SSE C++ path (Strategy B; equal to the SSE kernel up to float rounding order -- retail ran this path on CPUs without SSE).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A5BEF0, 946 bytes (+14 int3), __cdecl, plain `ret`, nine stack
 //   arguments read through ebx (the realigned frame). Ego_r.pdb names the overload
 //   ?GFInterpolateVectors@NVectorMath@@YAXPAVC4DVector@@KPBV2@K1KPBMKK@Z; donor order GFInitVectorMath, the (KKM),
@@ -42,6 +43,7 @@ void GFInterpolateVectors(C4DVector* out, unsigned long outStride, const C4DVect
                           const C4DVector* to, unsigned long toStride, const float* weights, unsigned long weightStride,
                           unsigned long count)
 {
+#ifndef FABLE_PORTABLE   // portable build: the retail non-SSE C++ path below (the twin of the SSE asm kernel)
     if (g_SSEAvailable) {
         __declspec(align(16)) C4DVector one(1.0f, 1.0f, 1.0f, 1.0f);
         __asm {
@@ -72,7 +74,9 @@ void GFInterpolateVectors(C4DVector* out, unsigned long outStride, const C4DVect
             jne     next
         done:
         }
-    } else {
+    } else
+#endif
+    {
         C4DVector* pOut = out;
         const C4DVector* pFrom = from;
         const C4DVector* pTo = to;

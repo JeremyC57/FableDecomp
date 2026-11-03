@@ -19,6 +19,19 @@ CRGBColour GFGetInterpolatedColour(CRGBColour a, CRGBColour b, unsigned long wei
     unsigned long zero;
     zero = 0;
     inverse = 256 - weight;
+#ifdef FABLE_PORTABLE
+    {   // the MMX lanes: per byte channel, 16-bit pmullw products (low words), a wrapping paddw, psrlw 8; packuswb never
+        // saturates (a value shifted right by 8 is at most 0xFF)
+        const unsigned char* pa = (const unsigned char*)&a;
+        const unsigned char* pb = (const unsigned char*)&b;
+        unsigned char* out = (unsigned char*)&blend;
+        unsigned int inv16 = (unsigned int)inverse & 0xFFFFu;
+        unsigned int w16 = (unsigned int)weight & 0xFFFFu;
+        for (int c = 0; c < 4; ++c)
+            out[c] = (unsigned char)(((((pa[c] * inv16) & 0xFFFFu) + ((pb[c] * w16) & 0xFFFFu)) & 0xFFFFu) >> 8);
+        (void)zero;
+    }
+#else
     __asm {
         movd      mm0, a
         movd      mm1, b
@@ -38,5 +51,6 @@ CRGBColour GFGetInterpolatedColour(CRGBColour a, CRGBColour b, unsigned long wei
         movd      blend, mm0
         emms
     }
+#endif
     return CRGBColour(blend.R, blend.G, blend.B, blend.A);
 }

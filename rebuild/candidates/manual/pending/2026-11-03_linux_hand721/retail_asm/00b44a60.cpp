@@ -2,7 +2,7 @@
 // Grade: MATCH (627 bytes)
 // Flags: none
 // Leaf: ?CalcSWLightingNoClipSeparateMainLightVector@CEngineLightingManager@@QAEXPAVCRGBFloatColour@@0PBVC4DVector@@PBM22JABVCEngineLocalLightArray@@@Z
-// Retail-asm: 0x00B44A79..0x00B44CC9 -- Lionhead's hand-written SSE block, as in CalcSWLightingNoClipVector 0x00B44820:
+// Retail-asm: 0x00B44A79..0x00B44CC9 (`movaps` / `mulps` / `rcpps` vertex loop) -- Lionhead's hand-written SSE block, as in CalcSWLightingNoClipVector 0x00B44820:
 //   `prefetcht0 [eax+esi+20h]` (0x00B44A94), `subps xmm1,xmm1` zeroing (0x00B44AC3), the `shufps` transposes into
 //   [ebp+0Ch] / [ebp+8] (0x00B44AF1..0x00B44B1D), `rsqrtps` / `rcpps` in the light loop and the in-block `push ebx` /
 //   `pop ebx` (0x00B44B55 / 0x00B44C88). VC7.1 emits no SSE from C++ (no intrinsic or /arch path gives prefetcht0 / rsqrtps /

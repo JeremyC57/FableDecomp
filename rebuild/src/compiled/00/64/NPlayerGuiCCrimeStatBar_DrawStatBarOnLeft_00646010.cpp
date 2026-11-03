@@ -1,8 +1,9 @@
 // NPlayerGui::CCrimeStatBar::DrawStatBarOnLeft(const CEnginePrimitivePrepareInfo& info, const CGraphicDataBank& bank, const C2DVector& pos, const C2DVector& textOffset, const CRGBColour& colour, unsigned char alpha, bool withText) -- the crime bar grows upward: round the bar end (lerped from the def's left offset by the fill fraction) to a whole pixel, flip it against the render-target height, draw the stat box with the value text, then centre the value text horizontally over the bar in the def's text colour when the bar is flagged
-// Grade: RELOCATION_MATCH (retail_asm grade: the FloorToLong __asm helper as the landed ModifyHealth 0x006A68F0)
+// Grade: RELOCATION_MATCH (retail_asm grade: the FloorToLong inline-asm helper as the landed ModifyHealth 0x006A68F0)
 // Leaf: DrawStatBarOnLeft@CCrimeStatBar
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail-asm: 0x00646044..0x0064605E `fld [ebp-0Ch] ; fsub [ebp-8] ; fistp dword ptr [ebp+10h] ; fild [ebp+10h] ; fadd [ebp-4] ; fstp [ebp-10h] ; mov eax,[ebp-0Ch] ; cmp eax,[ebp-10h] ; jne ; inc dword ptr [ebp+10h]` -- the engine's inline-assembly floor helper expanded in place (0.5f / 1.0f frame constants, a bare dword fistp; same block as GFFloatToLongFloor 0x0048D940, the landed CThingPhysical::ModifyHealth 0x006A68F0 and the sibling CStatBar::DrawStatBarOnLeft 0x00646762); VC7.1 emits no bare dword fistp from C++.
+// Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongFloor.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00646010, 399 bytes, `ret 1Ch`, frame-pointer TU (`leave`).
 // Signature: Ego_r.pdb ?DrawStatBarOnLeft@CCrimeStatBar@NPlayerGui@@UAEXABVCEnginePrimitivePrepareInfo@@ABVCGraphicDataBank@@ABVC2DVector@@2ABVCRGBColour@@E_N@Z.
 // Callees: CDisplayManager::GetRenderTargetDimensions 0x009BEDC0, CWideString from long 0x00405F00 (__fastcall), __ftol2,
@@ -15,29 +16,7 @@
 // the engine's inline-assembly FPU floor helper (standalone copy GFFloatToLongFloor 0x0048D940; same block as the landed
 // CThingPhysical::ModifyHealth 0x006A68F0 FloorToLong): VC7.1 expands the __forceinline body in place; the by-value
 // parameter and the four locals become frame words, which is why the function carries an ebp frame.
-__forceinline long FloorToLong(float value)
-{
-    long  result;
-    float one;
-    float half;
-    float next;
-    half = 0.5f;
-    one = 1.0f;
-    __asm {
-        fld   value
-        fsub  half
-        fistp result
-        fild  result
-        fadd  one
-        fstp  next
-        mov   eax, value
-        cmp   eax, next
-        jne   done
-        inc   result
-    done:
-    }
-    return result;
-}
+#include "engine/GFFloatToLongFloor.h"
 class C2DVector { public:
     float X, Y;
     C2DVector() {}
@@ -98,7 +77,7 @@ void CCrimeStatBar::DrawStatBarOnLeft(const CEnginePrimitivePrepareInfo& info, c
 {
     float left = -Def->BarLeftOffset;
     float y = (pos.Y - left) * Fraction + left;
-    long rounded = FloorToLong(y);
+    long rounded = GFFloatToLongFloor(y);
     C2DVector barEnd(pos.X, (float)rounded);
     barEnd.Y = (float)GPDisplayManager->GetRenderTargetDimensions().Height - barEnd.Y;
     DrawStatBox(info, bank, barEnd, StatType, Effect, Graphic, LongToWideString((long)Value), alpha, withText, true);

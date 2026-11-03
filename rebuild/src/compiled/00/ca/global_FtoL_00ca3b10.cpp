@@ -6,10 +6,15 @@
 // Callers 0x00CA3E6D / 0x00CA3EC3 / 0x00CA3F16 are libvorbis' table interpolators (vorbis_fromdBlook / vorbis_invsqlook /
 // vorbis_coslook family); the exe carries "Xiph.Org libVorbis I 20030909". The library was linked with link-time code
 // generation, hence the callee-pops `ret 8` (__stdcall here) on a static inline.
+#include "fable_x87_twins.h"
 extern "C" long __stdcall vorbis_ftoi(double f)
 {
+#ifdef FABLE_PORTABLE
+    return fable_portable::X87FistpNear(f);              // fistp dword under RC = nearest-even (fable_x87_twins.h)
+#else
     long i;
     __asm fld f
     __asm fistp i
     return i;
+#endif
 }

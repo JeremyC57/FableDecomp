@@ -1,6 +1,7 @@
 // CPSCEmitterGeneric::CalcIsFinishedGeneratingParticles() const -- a lifetime-limited emitter is finished once its emitted count reaches rate x elapsed: the 15-bit packed lifetime (0..300 s, rounded to 2 decimals) times the elapsed global time compared with the particles generated so far
 // Leaf: CalcIsFinishedGeneratingParticles
 // Retail-asm: 0x00B10286 `fld dword ptr [esp+4] ; fistp dword ptr [esp+8]` -- the engine's inline-assembly ROUND helper (the scaled value is stored to the helper's by-value copy and reloaded for a bare dword fistp; VC7.1 C++ `(long)x` calls __ftol2 and /QIfist emits `fistp qword` without the reload); the asm block also makes VC spill the elapsed time to [esp+10h] across it.
+// Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongNear.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B10220, length 148 bytes (padded to 160).
 // Callees: the global particle clock getter @ 0x00AEA9F0 (returns the long @ 0x01399504; manifest "GFGetPreMainMemoryUsed").
 // Globals: 4294967296.0f @ 0x0122DCB4 (unsigned fix-up), 1/32767 @ 0x0129C81C, 300.0f @ 0x01238808, 10.0f @ 0x01237F0C, 1.0f @ 0x0122DED8.
@@ -21,13 +22,7 @@ struct CPSCEmitterGeneric {
 long GetParticleClock_00aea9f0();           // 0x00AEA9F0
 
 // the engine's inline-assembly float-to-long helper, expanded in place (the by-value parameter is homed in a dead slot)
-__forceinline long FloatToLong(float value)
-{
-    long result;
-    __asm fld value
-    __asm fistp result
-    return result;
-}
+#include "engine/GFFloatToLongNear.h"
 
 static __forceinline float RoundToDecimals(float value, long decimals)
 {
@@ -37,7 +32,7 @@ static __forceinline float RoundToDecimals(float value, long decimals)
         scale *= 10.0f;
     while (--i);
     float scaled = value * scale;
-    return FloatToLong(scaled) / scale;
+    return GFFloatToLongNear(scaled) / scale;
 }
 
 bool CPSCEmitterGeneric::CalcIsFinishedGeneratingParticles() const

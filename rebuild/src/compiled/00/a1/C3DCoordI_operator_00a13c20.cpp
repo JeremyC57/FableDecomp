@@ -24,6 +24,8 @@ const C3DCoordI& C3DCoordI::operator-=(const C3DVector& v)
     X = (long)((float)X - v.X);
     Y = (long)((float)Y - v.Y);
     Z = (long)((float)Z + v.Z);
+#ifndef FABLE_PORTABLE   // the stray retail `maxps` touches only dead SSE registers: no effect to model
     __asm maxps xmm0, xmm1
+#endif
     return *this;
 }

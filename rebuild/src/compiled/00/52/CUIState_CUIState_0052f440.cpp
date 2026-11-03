@@ -1,5 +1,6 @@
 // CUIState::CUIState(const CUIStateDef& def) -- copy a UI state from its def: position, zoom, the float colour scaled to bytes, update time, change type/flag and the linear-change flag
 // Retail-asm: 0x0052F46A `fstp [esp+14h] ; fld [esp+14h] ; fistp dword ptr [esp]` (x4) -- the engine's inline-assembly ROUND helper: each scaled channel is homed in the dead `def` argument slot and reloaded for a bare dword fistp; VC7.1 C++ `(long)x` calls __ftol2 and /QIfist emits `fistp qword` without the reload.
+// Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongNear.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 // Leaf: ??0CUIState
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0052F440, length 183 bytes (`ret 4`; 192 with padding). Constant: 0x01230014 = 255.0f.
 // Layout: Ego_r.pdb CUIState (StateChangeFlag +0, StateChangeType +4, Position +8, Zoom +0x10, Colour +0x18, UpdateTime
@@ -25,13 +26,7 @@ struct CUIStateDef {
     bool            LinearChange;           // +0x78
 };
 // the engine's inline-assembly float-to-long helper, expanded in place (the by-value parameter is homed in a dead slot)
-__forceinline long ROUND(float value)
-{
-    long result;
-    __asm fld value
-    __asm fistp result
-    return result;
-}
+#include "engine/GFFloatToLongNear.h"
 struct CUIState {
     unsigned long StateChangeFlag;          // +0x00
     long          StateChangeType;          // +0x04
@@ -47,10 +42,10 @@ CUIState::CUIState(const CUIStateDef& def)
 {
     Position = def.Position;
     Zoom = def.Zoom;
-    long r = ROUND(def.Colour.r * 255.0f);
-    long g = ROUND(def.Colour.g * 255.0f);
-    long b = ROUND(def.Colour.b * 255.0f);
-    long a = ROUND(def.Colour.a * 255.0f);
+    long r = GFFloatToLongNear(def.Colour.r * 255.0f);
+    long g = GFFloatToLongNear(def.Colour.g * 255.0f);
+    long b = GFFloatToLongNear(def.Colour.b * 255.0f);
+    long a = GFFloatToLongNear(def.Colour.a * 255.0f);
     Colour = CRGBColour((unsigned char)r, (unsigned char)g, (unsigned char)b, (unsigned char)a);
     UpdateTime = def.UpdateTime;
     StateChangeType = def.StateChangeType;

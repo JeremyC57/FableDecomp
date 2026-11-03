@@ -12,6 +12,7 @@ namespace NVectorMath
 {
     void GFInitVectorMath()
     {
+#ifndef FABLE_PORTABLE   // portable build: g_SSEAvailable stays false, every NVectorMath kernel runs retail's C++ path
         __asm
         {
             mov     eax, 1
@@ -21,5 +22,6 @@ namespace NVectorMath
             mov     byte ptr [g_SSEAvailable], 1
         no_sse:
         }
+#endif
     }
 }

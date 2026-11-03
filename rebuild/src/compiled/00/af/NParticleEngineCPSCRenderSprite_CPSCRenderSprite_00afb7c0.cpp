@@ -2,6 +2,7 @@
 // Leaf: ??0CPSCRenderSprite@NParticleEngine@@QAE@XZ
 // Flags: /O2 /Oy /W3
 // Retail-asm: 0x00AFB841 `fld dword ptr [esp+0Ch]` + 0x00AFB845 `fistp dword ptr [esp+10h]` -- the engine's inline-assembly float-to-long helper (landed FloatToLong, CPSCEmitterGeneric::GetRandomRadius 0x00B102C0), 16 sites (round to two decimals, then pack); VC7.1 `(long)x` calls __ftol2.
+// Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongNear.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AFB7C0, 1038 bytes, plain `ret` (no catalog length: extent from the retail bytes, BOUNDS_FIX.tsv).
 // Name: Ego_r.pdb + FableWin.pdb ??0CPSCRenderSprite@NParticleEngine@@QAE@XZ + the manifest row; vtable 0x0129F67C.
 // Callees: CPSCBase::CPSCBase() 0x00AF2620 (FableWin.pdb ??0CPSCBase@NParticleEngine@@QAE@XZ), CBaseClass() 0x0099A2D0 (the two
@@ -14,7 +15,7 @@
 //   FlickerEnable / ForceAnimationTime; +0x3c PrimHandle, +0x44 ChildPrimIndex, +0x48 TrailPrimHandle, +0x50 ChildTrailPrimIndex).
 // Shape: every member, the bit fields included, is in the mem-initialiser list (the handles are built after the packed fields);
 //   the blend defaults are assigned in the body. The pack is round-to-2-decimals, `(r - min) * (1 / (max - min))` as one statement,
-//   then `* steps` into FloatToLong (one expression lets VC7.1 fold the two constants into one multiply). PackParam is a local
+//   then `* steps` into GFFloatToLongNear(one expression lets VC7.1 fold the two constants into one multiply). PackParam is a local
 //   helper for that database macro shape (unproven spelling; fully inlined, no symbol).
 // Constants: 10.0f 0x01237F0C, 1.0f 0x0122DED8, 0.0f 0x0122DEDC, -1.0f 0x0122DEE0, 0.1f 0x0122EE58, 0.5f 0x0122F59C, 255.0f 0x01230014,
 //   15.0f 0x0124E640, 0.05f 0x0125A15C, 127.0f 0x0125A160, 1/30 0x012856DC, 2047.0f 0x01288BE4, 1023.0f 0x0129EF90, 4095.0f 0x0129F668,
@@ -33,13 +34,7 @@ public:
     CEnginePrimitiveHandle() : Data(0) { }
 };
 
-static __forceinline long FloatToLong(float value)
-{
-    long result;
-    __asm fld value
-    __asm fistp result
-    return result;
-}
+#include "engine/GFFloatToLongNear.h"
 static __forceinline float RoundToDecimals(float value, long decimals)
 {
     float scale = 1.0f;
@@ -48,13 +43,13 @@ static __forceinline float RoundToDecimals(float value, long decimals)
         scale *= 10.0f;
     while (--i);
     float scaled = value * scale;
-    return FloatToLong(scaled) / scale;
+    return GFFloatToLongNear(scaled) / scale;
 }
 // the database parameter packing: round to two decimals, map [min, max] onto [0, steps]
 static __forceinline unsigned long PackParam(float value, float min, float max, float steps)
 {
     float normalised = (RoundToDecimals(value, 2) - min) * (1.0f / (max - min));
-    return FloatToLong(normalised * steps);
+    return GFFloatToLongNear(normalised * steps);
 }
 
 namespace NParticleEngine {

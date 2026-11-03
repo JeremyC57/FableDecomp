@@ -12,6 +12,7 @@
 //          CThing UID (unsigned __int64) +0x18.
 #pragma optimize("y", off)
 // Retail-asm: 0x00785B8E..0x00785BAE `fld [ebp - 0x10] ; fadd [ebp - 0xc] ; fistp [ebp - 4] ; fild [ebp - 4] ; fsub [ebp - 8] ; fstp [ebp - 0x14] ; mov eax, [ebp - 0x10] ; cmp eax, [ebp - 0x14] ; jne 0x785bab ; dec [ebp - 4] ; mov ecx, [ebp - 4] ; mov [ebp - 4], ecx` and 0x00785C1F..0x00785C3F `fld [ebp - 0xc] ; fadd [ebp - 0x10] ; fistp [ebp - 4] ; fild [ebp - 4] ; fsub [ebp - 0x14] ; fstp [ebp - 8] ; mov eax, [ebp - 0xc] ; cmp eax, [ebp - 8] ; jne 0x785c3c ; dec [ebp - 4] ; mov ecx, [ebp - 4] ; mov [ebp - 4], ecx` (the 5 s and 0.8 s intervals) -- the engine's inline-assembly ceiling helper expanded in place (0.5f / 1.0f stored as frame constants, a bare dword fistp into a named long, the bit compare and `jne ; dec dword ptr` in the same 10-instruction block: rasm1 family (b)). VC7.1 emits no bare dword fistp from C++ (`(long)x` calls __ftol2, /QIfist gives `fistp qword`, /arch:SSE2 cvttss2si: rasm1 probe family (a)); the result is read back by C++ after the block.
+// Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongCeil.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 class CThing;
 class C3DVector { public:
     float X, Y, Z;
@@ -47,29 +48,7 @@ struct CVolumeContainmentTrackerDef {
 // place; the by-value parameter and the four locals become frame words, which is why the function carries an ebp frame.
 // The whole 10-instruction block is asm (the bit compare and the memory decrement included: rasm1 family (b)); the result
 // is read back by C++ after the block.
-__forceinline long CeilToLong(float value)
-{
-    long  result;
-    float one;
-    float half;
-    float back;
-    half = 0.5f;
-    one = 1.0f;
-    __asm {
-        fld   value
-        fadd  half
-        fistp result
-        fild  result
-        fsub  one
-        fstp  back
-        mov   eax, value
-        cmp   eax, back
-        jne   done
-        dec   result
-    done:
-    }
-    return result;
-}
+#include "engine/GFFloatToLongCeil.h"
 
 class CTCBase { public:
     virtual ~CTCBase();                                           // slot 0 (0x00686830)
@@ -91,11 +70,11 @@ void CTCVolumeContainmentTracker::FrameUpdate()
     if (!g_bVolumeTrackingEnabled)
         return;
     if (!PDef->AlwaysUpdate && PreviouslyUpdated) {
-        long interval = CeilToLong(CMainGameComponent::GetConstantFPS() * 5.0f);
+        long interval = GFFloatToLongCeil(CMainGameComponent::GetConstantFPS() * 5.0f);
         CWorld* world = &GetWorld();
         const C3DVector& pos = ParentThing->GetPos();
         if ((world->GetCameraPosition() - pos).GetMagnitudeSquared() < 100.0f)
-            interval = CeilToLong(CMainGameComponent::GetConstantFPS() * 0.8f);
+            interval = GFFloatToLongCeil(CMainGameComponent::GetConstantFPS() * 0.8f);
         unsigned __int64 uid = ParentThing->UID;
         if ((uid + CWorld::GetFrame()) % interval != 0)
             return;

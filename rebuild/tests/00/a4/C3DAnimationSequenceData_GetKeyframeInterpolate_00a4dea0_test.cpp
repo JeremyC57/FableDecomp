@@ -1,28 +1,10 @@
 #include <cstdio>
 #ifdef _MSC_VER
 #pragma optimize("y", off)
-__forceinline long FloorToLong(float value)
-{
-    long result; float one; float half; float next;
-    half = 0.5f; one = 1.0f;
-    __asm {
-        fld value
-        fsub half
-        fistp result
-        fild result
-        fadd one
-        fstp next
-        mov eax, value
-        cmp eax, next
-        jne done
-        inc result
-    done:
-    }
-    return result;
-}
+#include "engine/GFFloatToLongFloor.h"
 #else
 #include <math.h>
-inline long FloorToLong(float value) { return (long)floor((double)value); }   // the FPU block is floor() for the magnitudes used here
+inline long GFFloatToLongFloor(float value) { return (long)floor((double)value); }   // the FPU block is floor() for the magnitudes used here
 #endif
 class C3DKeyframe { public: long frame; float fraction; };
 class C3DAnimationSequenceData { public:
@@ -31,7 +13,7 @@ class C3DAnimationSequenceData { public:
     void GetKeyframeInterpolate(C3DKeyframe* out, float time) const
     {
         float frames = time * SamplesPerSecond;
-        long whole = FloorToLong(frames);
+        long whole = GFFloatToLongFloor(frames);
         float fraction = frames - whole;
         long frame = whole % FrameCount;
         if (frame < 0) frame += FrameCount;

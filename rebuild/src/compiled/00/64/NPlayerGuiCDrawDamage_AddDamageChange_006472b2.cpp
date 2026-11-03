@@ -1,5 +1,6 @@
 // NPlayerGui::CDrawDamage::AddDamageChange(float change, bool hero) -- queue a positive health change for the damage display: the change scaled by ten and rounded, shown for one second's worth of frames, tagged with whether it hit the hero
-// Retail-asm: 0x006472D4 `fstp dword ptr [ebp+8]` / 0x006472D7 `fld dword ptr [ebp+8]` + 0x006472DA `fistp dword ptr [ebp-4]` -- the engine's inline-assembly ROUND helper (the scaled change stored to its by-value copy and reloaded for a bare dword fistp, then `fild` back to float). VC7.1 C++ `(long)x` calls __ftol2 and /QIfist emits `fistp qword`: no C/C++ form gives the bare dword fistp, so it is the original's `__asm` (same helper as the landed GFGetGraphicFrame 0x00643B9F in this GUI TU).
+// Retail-asm: 0x006472D4 `fstp dword ptr [ebp+8]` / 0x006472D7 `fld dword ptr [ebp+8]` + 0x006472DA `fistp dword ptr [ebp-4]` -- the engine's inline-assembly ROUND helper (the scaled change stored to its by-value copy and reloaded for a bare dword fistp, then `fild` back to float). VC7.1 C++ `(long)x` calls __ftol2 and /QIfist emits `fistp qword`: no C/C++ form gives the bare dword fistp, so it is the original's inline-asm (same helper as the landed GFGetGraphicFrame 0x00643B9F in this GUI TU).
+// Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongNear.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 // Leaf: ?AddDamageChange@CDrawDamage@NPlayerGui@@QAEXM_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006472B2, 86 bytes, thiscall, ebp frame, `leave ; ret 8`, /O1 TU.
 // Identity (proven): Ego_r.pdb ?AddDamageChange@CDrawDamage@NPlayerGui@@QAEXM_N@Z; its push_front 0x00655EB4 is the only caller of the
@@ -13,13 +14,7 @@
 //   bool Hero;} (Ego_r.pdb, 12 bytes).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-__forceinline long ROUND(float value)
-{
-    long result;
-    __asm fld value
-    __asm fistp result
-    return result;
-}
+#include "engine/GFFloatToLongNear.h"
 
 extern float g_fFramesPerSecond_013ba860;          // 0x013BA860
 
@@ -54,7 +49,7 @@ void CDrawDamage::AddDamageChange(float change, bool hero)
 {
     if (change > 0.0f) {
         change *= 10.0f;
-        long rounded = ROUND(change);
+        long rounded = GFFloatToLongNear(change);
         SDamageValue value;
         value.Duration = (long)g_fFramesPerSecond_013ba860;
         value.Change = (float)rounded;

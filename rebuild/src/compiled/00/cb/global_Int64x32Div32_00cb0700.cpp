@@ -1,6 +1,7 @@
 // Int64x32Div32(LONGLONG a, LONG b, LONG c, LONG d) -- DirectShow BaseClasses wxutil.cpp: (a * b + d) / c with 32-bit b, c, d, sign tracked separately, saturating to the LONGLONG limits on overflow or c == 0
 // Leaf: ?Int64x32Div32@@YG_J_JJJJ@Z
 // Retail-asm: 0x00CB0892..0x00CB08A4 `mov eax,[ebp-8] ; mov edx,[ebp-4] ; mov ecx,[ebp+18h] ; div dword ptr [ebp+14h] ; or ecx,ecx ; jz ; mov [ecx],edx ; mov [ebp+0Ch],eax` and 0x00CB08BA..0x00CB08CE `mov eax,[ebp+8] ; mov edx,[ebp+0Ch] ; mov ecx,0 ; div dword ptr [ebp+14h] ; or ecx,ecx ; jz ; mov [ecx],edx ; mov [ebp+18h],eax` -- the two inlined expansions of the DirectX 9 SDK wxutil.h `__inline` EnlargedUnsignedDivide, whose body is the published `_X86_` inline-assembler block (the out-of-line copy is the landed retail_asm row 0x00CB0160 with the same instructions). VC7.1 compiles a 64/32 `/` to the CRT __aulldiv helper, never to one `div`; the C++ around the block is the SDK text verbatim.
+// Helper (2026-11-03 asm twins): the retail inline-asm block is the shared strmbase/EnlargedUnsignedDivide.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB0700, 493 bytes, WINAPI (`__stdcall`, `ret 14h` = LONGLONG + 3 LONG), ebp frame 0x10, no /GS.
 // Identity: the published Int64x32Div32 of strmbase wxutil.cpp (USE_LARGEINT undefined is irrelevant here: this function always uses
 //   EnlargedUnsignedDivide): the 32x32 UInt32x32To64 products are `_allmul` 0x00BFEB50 calls on zero-extended words, the
@@ -26,26 +27,7 @@ typedef union _ULARGE_INTEGER {
 #define IN
 #define NULL 0
 
-__inline ULONG WINAPI EnlargedUnsignedDivide (
-    IN ULARGE_INTEGER Dividend,
-    IN ULONG Divisor,
-    IN ULONG* Remainder
-    )
-{
-    ULONG ulResult;
-    __asm {
-        mov eax, Dividend.LowPart
-        mov edx, Dividend.HighPart
-        mov ecx, Remainder
-        div Divisor
-        or  ecx, ecx
-        jz  short label
-        mov [ecx], edx
-label:
-        mov ulResult, eax
-    }
-    return ulResult;
-}
+#include "strmbase/EnlargedUnsignedDivide.h"
 
 /* Compute (a * b + rnd) / c */
 LONGLONG WINAPI Int64x32Div32(LONGLONG a, LONG b, LONG c, LONG d)

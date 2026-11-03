@@ -10,6 +10,7 @@
 //   CAugmentationDef (PDB = retail) frequency/increase +0x3c/+0x40.
 #pragma optimize("y", off)
 // Retail-asm: 0x007662CA..0x007662E4 `fld [ebp-8] ; fadd [ebp-14h] ; fistp dword ptr [ebp-0Ch] ; fild [ebp-0Ch] ; fsub [ebp-10h] ; fstp [ebp-18h] ; mov eax,[ebp-8] ; cmp eax,[ebp-18h] ; jne ; dec dword ptr [ebp-0Ch]` -- the engine's inline-assembly ceiling helper expanded in place (0.5f / 1.0f stored as frame constants, a bare dword fistp into a named long, the bit compare and `jne ; dec dword ptr` in the same 10-instruction block: rasm1 family (b)). VC7.1 emits no bare dword fistp from C++ (`(long)x` calls __ftol2, /QIfist gives `fistp qword`, /arch:SSE2 cvttss2si: rasm1 probe family (a)); the result is read back by C++ after the block.
+// Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongCeil.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 struct CDefVirtual {
     virtual void v00();
     virtual void Destroy();                             // slot 1
@@ -68,29 +69,7 @@ extern const float DELTA_NOTIONAL_ZERO;           // 0x0129BA3C
 // place; the by-value parameter and the four locals become frame words, which is why the function carries an ebp frame.
 // The whole 10-instruction block is asm (the bit compare and the memory decrement included: rasm1 family (b)); the result
 // is read back by C++ after the block.
-__forceinline long CeilToLong(float value)
-{
-    long  result;
-    float one;
-    float half;
-    float back;
-    half = 0.5f;
-    one = 1.0f;
-    __asm {
-        fld   value
-        fadd  half
-        fistp result
-        fild  result
-        fsub  one
-        fstp  back
-        mov   eax, value
-        cmp   eax, back
-        jne   done
-        dec   result
-    done:
-    }
-    return result;
-}
+#include "engine/GFFloatToLongCeil.h"
 class CTCObjectAugmentations { public:
     virtual void v00();
     unsigned char _pad04[0x14 - 0x04];
@@ -108,7 +87,7 @@ long CTCObjectAugmentations::GetHealthToAddThisFrame() const
             def->GetSubDef(slot);
             CAugmentationDef* aug = slot.Object;
             if (aug->FrequencyToAddHealthInSeconds > DELTA_NOTIONAL_ZERO) {
-                long period = CeilToLong(CMainGameComponent::GetConstantFPS() * aug->FrequencyToAddHealthInSeconds);
+                long period = GFFloatToLongCeil(CMainGameComponent::GetConstantFPS() * aug->FrequencyToAddHealthInSeconds);
                 if (CWorld::GetFrame() % period == 0)
                     total += aug->HealthToAddPerIncrease;
             }

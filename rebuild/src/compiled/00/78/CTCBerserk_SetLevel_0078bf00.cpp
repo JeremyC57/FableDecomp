@@ -10,6 +10,7 @@
 // after the asm barrier for the eight per-level copies (the def pointer in edx, level*4 in eax).
 #pragma optimize("y", off)
 // Retail-asm: 0x0078BF2A..0x0078BF44 `fld [ebp-10h] ; fadd [ebp-0Ch] ; fistp dword ptr [ebp-4] ; fild [ebp-4] ; fsub [ebp-8] ; fstp [ebp-14h] ; mov eax,[ebp-10h] ; cmp eax,[ebp-14h] ; jne ; dec dword ptr [ebp-4]` -- the engine's inline-assembly ceiling helper expanded in place (0.5f / 1.0f stored as frame constants, a bare dword fistp into a named long, the bit compare and `jne ; dec dword ptr` in the same 10-instruction block: rasm1 family (b)). VC7.1 emits no bare dword fistp from C++ (`(long)x` calls __ftol2, /QIfist gives `fistp qword`, /arch:SSE2 cvttss2si: rasm1 probe family (a)); the result is read back by C++ after the block.
+// Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongCeil.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 class CSpecialAbilitiesBerserkDef { public:
     unsigned char _pad00[0x7c];
     float* Duration;                            // +0x7c vector<float> first
@@ -45,32 +46,10 @@ struct CTCBerserk_Methods : CTCBerserk {         // the PDB layout header carrie
 // place; the by-value parameter and the four locals become frame words, which is why the function carries an ebp frame.
 // The whole 10-instruction block is asm (the bit compare and the memory decrement included: rasm1 family (b)); the result
 // is read back by C++ after the block.
-__forceinline long CeilToLong(float value)
-{
-    long  result;
-    float one;
-    float half;
-    float back;
-    half = 0.5f;
-    one = 1.0f;
-    __asm {
-        fld   value
-        fadd  half
-        fistp result
-        fild  result
-        fsub  one
-        fstp  back
-        mov   eax, value
-        cmp   eax, back
-        jne   done
-        dec   result
-    done:
-    }
-    return result;
-}
+#include "engine/GFFloatToLongCeil.h"
 void CTCBerserk_Methods::SetLevel()
 {
-    Timer = CeilToLong(CMainGameComponent::GetConstantFPS() * GetDef()->Duration[SpellLevel]);
+    Timer = GFFloatToLongCeil(CMainGameComponent::GetConstantFPS() * GetDef()->Duration[SpellLevel]);
     BerserkDamageToMe = GetDef()->DamageToMe[SpellLevel];
     BerserkDamageToEnemy = GetDef()->DamageToEnemy[SpellLevel];
     MaxIncreaseInStrength = GetDef()->MaxIncreaseInStrength[SpellLevel];

@@ -12,6 +12,7 @@
 //   `fld 1.0 ; fsub [ebx+1Ch] ; fstp [ebp-30h]`; a scalar aligned float gives a 0x58 frame with the locals on top,
 //   the 16-byte arrays the retail 0x48 frame with the fallback's Interpolate temporaries overlapping them) and the
 //   whole x87 fallback.
+// Portable (2026-11-03 asm twins): the asm kernel is this function's own block (retail has no separate helper for it), so it stays here in two-path form: under FABLE_PORTABLE the #ifndef drops the SSE branch and the row runs retail's own non-SSE C++ path (Strategy B; equal to the SSE kernel up to float rounding order -- retail ran this path on CPUs without SSE).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A5B870, 801 bytes (+15 int3), __cdecl, plain `ret`, six stack
 //   arguments read through ebx (the realigned frame). Ego_r.pdb names the overload
 //   ?GFInterpolateVectors@NVectorMath@@YAXPAVC4DVector@@KPBV2@KKM@Z (NVectorMath namespace; the catalog label and the
@@ -42,6 +43,7 @@ namespace NVectorMath {
 void GFInterpolateVectors(C4DVector* out, unsigned long outStride, const C4DVector* from, unsigned long fromStride,
                           unsigned long count, float t)
 {
+#ifndef FABLE_PORTABLE   // portable build: the retail non-SSE C++ path below (the twin of the SSE asm kernel)
     if (g_SSEAvailable) {
         __declspec(align(16)) float tt[4];
         __declspec(align(16)) float oneMinusT[4];
@@ -70,7 +72,9 @@ void GFInterpolateVectors(C4DVector* out, unsigned long outStride, const C4DVect
             jne     next
         done:
         }
-    } else {
+    } else
+#endif
+    {
         C4DVector* pOut = out;
         const C4DVector* pFrom = from;
         for (unsigned long i = 0; i < count; ++i) {

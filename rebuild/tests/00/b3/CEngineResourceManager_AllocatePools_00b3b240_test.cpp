@@ -1,13 +1,7 @@
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
-__forceinline long ROUND(float value)
-{
-    long result;
-    __asm fld value
-    __asm fistp result
-    return result;
-}
+#include "engine/GFFloatToLongNear.h"
 static char g_names[8][32]; static int g_nameCount = 0; static long g_init[8]; static int g_initCount = 0; static long g_budgets[4]; static int g_budgetCount = 0;
 class CCharString { public: void* m_pData; CCharString(const char* text, long length = -1) : m_pData((void*)text) { } ~CCharString() { } const CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; return *this; } };
 struct CMemoryPool { unsigned char _pad000[0x28]; long GrowSize; unsigned char _pad02c[0x34 - 0x2c]; void* Allocator; unsigned char _pad038[0x448 - 0x38]; CCharString Name; unsigned char _pad44c[0x464 - 0x44c];
@@ -23,7 +17,7 @@ void CEngineResourceManager::AllocatePools(bool allocateAll, const CEngineResour
 {
     if (allocateAll) {
         float scaled = sizes.TextureKB * sizes.ScratchFraction;
-        long kept = ROUND(scaled);
+        long kept = GFFloatToLongNear(scaled);
         long scratchBytes = (sizes.TextureKB - kept) << 10;
         ScratchPool.Reset(new CMemoryPool()); ScratchPool.m_pObject->Initialise(scratchBytes, false, false);
         { CCharString name("ScratchPool"); ScratchPool.m_pObject->Name = name; }

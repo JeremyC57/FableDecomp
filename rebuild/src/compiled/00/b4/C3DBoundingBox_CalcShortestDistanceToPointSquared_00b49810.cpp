@@ -4,6 +4,7 @@
 //   0x00BF7DF0 C3DBoundingBox model out of line (retail_asm SSE kernel + C++ x87 fallback). Parked 'inline-asm SSE lane
 //   gap' disproved.
 // Retail-asm: 0x00B4981F..0x00B49863 `movss xmm0,[ecx+8] ; movhps xmm0,[ecx] ; ... ; maxps xmm2,xmm0 ; minps xmm2,xmm1 ; subps xmm2,xmm3 ; mulps xmm2,xmm2 ; shufps xmm2,xmm2,0B0h ; addps xmm2,xmm3 ; shufps xmm2,xmm2,3 ; addss xmm2,xmm3 ; movss [esp+4],xmm2` -- the hand SSE kernel behind g_SSEAvailable 0x013D2880 (`this` spilled to [esp] and reloaded, the point reloaded from its argument slot, because the asm names them; VC7.1 C++ emits no packed SSE); the x87 branch is the C++ fallback. The same kernel as landed 0x00BF7DF0.
+// Portable (2026-11-03 asm twins): the asm kernel is this function's own block (retail has no separate helper for it), so it stays here in two-path form: under FABLE_PORTABLE the #ifndef drops the SSE branch and the row runs retail's own non-SSE C++ path (Strategy B; equal to the SSE kernel up to float rounding order -- retail ran this path on CPUs without SSE).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B49810, 282 bytes (`ret 4`, float in st0); the catalog's 319 runs over int3 padding into
 //   the next body (0x00B49930, a 16-byte copy): BOUNDS_FIX.tsv. Identity: Ego_r.pdb / FableWin.pdb
 //   ?CalcShortestDistanceToPointSquared@C3DBoundingBox@@QBEMABVC3DVector@@@Z (inline, emitted out of line here); no fsqrt
@@ -31,6 +32,7 @@ public:
 };
 float C3DBoundingBox::CalcShortestDistanceToPointSquared(const C3DVector& point) const
 {
+#ifndef FABLE_PORTABLE   // portable build: the retail non-SSE C++ path below (the twin of the SSE asm kernel)
     if (g_SSEAvailable) {
         float result;
         __asm {
@@ -56,6 +58,7 @@ float C3DBoundingBox::CalcShortestDistanceToPointSquared(const C3DVector& point)
         }
         return result;
     }
+#endif
     C3DVector closest(point);
     if (closest.X < MinCoord.X)
         closest.X = MinCoord.X;

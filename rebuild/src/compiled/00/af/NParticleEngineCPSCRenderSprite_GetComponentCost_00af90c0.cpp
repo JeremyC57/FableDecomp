@@ -2,6 +2,7 @@
 // Leaf: ?GetComponentCost@CPSCRenderSprite@NParticleEngine@@UAEXAAVCParticleSystemCost@2@ABVCParticleSystem@2@MM@Z
 // Flags: /O2 /Oy /W3
 // Retail-asm: 0x00AF9125 `fld dword ptr [esp+1Ch]` + 0x00AF9129 `fistp dword ptr [esp+18h]` -- the engine's inline-assembly float-to-long helper (the landed FloatToLong of CPSCEmitterGeneric::GetRandomRadius 0x00B102C0): the scaled size stored to the helper's by-value copy and reloaded for a bare dword fistp; VC7.1 `(long)x` calls __ftol2.
+// Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongNear.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF90C0, 588 bytes, `ret 10h` (no catalog length: extent from the retail bytes, BOUNDS_FIX.tsv).
 // Name: FableWin.pdb/Ego_r.pdb ?GetComponentCost@CPSCRenderSprite@NParticleEngine@@UAEXAAVCParticleSystemCost@2@ABVCParticleSystem@2@MM@Z
 //   (the slot-20 spelling of the landed CPSCLight/CPSCOrbit/CPSCSpline GetComponentCost) + the manifest row (CPSCRenderSprite::GetComponentCost).
@@ -89,14 +90,8 @@ class CPSCRenderSprite : public CPSCBase { public:
     virtual void GetComponentCost(CParticleSystemCost& cost, const CParticleSystem& system, float particleCount, float);
 };
 
-// the engine's inline-assembly float-to-long helper: VC7.1 expands a __forceinline function that contains __asm in place
-static __forceinline long FloatToLong(float value)
-{
-    long result;
-    __asm fld value
-    __asm fistp result
-    return result;
-}
+// the engine's inline-assembly float-to-long helper: VC7.1 expands a __forceinline function that contains inline-asm in place
+#include "engine/GFFloatToLongNear.h"
 static __forceinline float RoundToDecimals(float value, long decimals)
 {
     float scale = 1.0f;
@@ -105,7 +100,7 @@ static __forceinline float RoundToDecimals(float value, long decimals)
         scale *= 10.0f;
     while (--i);
     float scaled = value * scale;
-    return FloatToLong(scaled) / scale;
+    return GFFloatToLongNear(scaled) / scale;
 }
 
 void CPSCRenderSprite::GetComponentCost(CParticleSystemCost& cost, const CParticleSystem& system, float particleCount, float)

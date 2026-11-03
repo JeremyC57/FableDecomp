@@ -1,0 +1,169 @@
+subject	step	status	detail
+engine/GFFastFloatToLong.h	vc71-hdr-asm	OK	
+engine/GFFastFloatToLong.h	vc71-hdr-portable	OK	
+engine/GFFloatToLongCeil.h	vc71-hdr-asm	OK	
+engine/GFFloatToLongCeil.h	vc71-hdr-portable	OK	
+engine/GFFloatToLongFloor.h	vc71-hdr-asm	OK	
+engine/GFFloatToLongFloor.h	vc71-hdr-portable	OK	
+engine/GFFloatToLongNear.h	vc71-hdr-asm	OK	
+engine/GFFloatToLongNear.h	vc71-hdr-portable	OK	
+engine/GFGetCycleCount.h	vc71-hdr-asm	OK	
+engine/GFGetCycleCount.h	vc71-hdr-portable	OK	
+libpk/FtoL.h	vc71-hdr-asm	OK	
+libpk/FtoL.h	vc71-hdr-portable	OK	
+strmbase/EnlargedUnsignedDivide.h	vc71-hdr-asm	OK	
+strmbase/EnlargedUnsignedDivide.h	vc71-hdr-portable	OK	
+test_EnlargedUnsignedDivide.cpp	vc71-asm	PASS	test_EnlargedUnsignedDivide asm: PASS (14 cases)
+test_EnlargedUnsignedDivide.cpp	vc71-dual	PASS	test_EnlargedUnsignedDivide asm+portable: PASS (14 cases)
+test_EnlargedUnsignedDivide.cpp	vc71-portable	PASS	test_EnlargedUnsignedDivide portable: PASS (14 cases)
+test_FtoL.cpp	vc71-asm	PASS	test_FtoL asm: PASS (63 inputs)
+test_FtoL.cpp	vc71-dual	PASS	test_FtoL asm+portable: PASS (63 inputs)
+test_FtoL.cpp	vc71-portable	PASS	test_FtoL portable: PASS (63 inputs)
+test_GFFastFloatToLong.cpp	vc71-asm	PASS	test_GFFastFloatToLong asm: PASS (63 inputs)
+test_GFFastFloatToLong.cpp	vc71-dual	PASS	test_GFFastFloatToLong asm+portable: PASS (63 inputs)
+test_GFFastFloatToLong.cpp	vc71-portable	PASS	test_GFFastFloatToLong portable: PASS (63 inputs)
+test_GFFloatToLongCeil.cpp	vc71-asm	PASS	test_GFFloatToLongCeil asm: PASS (63 inputs)
+test_GFFloatToLongCeil.cpp	vc71-dual	PASS	test_GFFloatToLongCeil asm+portable: PASS (63 inputs)
+test_GFFloatToLongCeil.cpp	vc71-portable	PASS	test_GFFloatToLongCeil portable: PASS (63 inputs)
+test_GFFloatToLongFloor.cpp	vc71-asm	PASS	test_GFFloatToLongFloor asm: PASS (63 inputs)
+test_GFFloatToLongFloor.cpp	vc71-dual	PASS	test_GFFloatToLongFloor asm+portable: PASS (63 inputs)
+test_GFFloatToLongFloor.cpp	vc71-portable	PASS	test_GFFloatToLongFloor portable: PASS (63 inputs)
+test_GFFloatToLongNear.cpp	vc71-asm	PASS	test_GFFloatToLongNear asm: PASS (63 inputs)
+test_GFFloatToLongNear.cpp	vc71-dual	PASS	test_GFFloatToLongNear asm+portable: PASS (63 inputs)
+test_GFFloatToLongNear.cpp	vc71-portable	PASS	test_GFFloatToLongNear portable: PASS (63 inputs)
+test_GFGetCycleCount.cpp	vc71-asm	PASS	test_GFGetCycleCount asm: PASS (1000 interleaved reads, 0 out of order)
+test_GFGetCycleCount.cpp	vc71-dual	PASS	test_GFGetCycleCount asm+portable: PASS (1000 interleaved reads, 0 out of order)
+test_GFGetCycleCount.cpp	vc71-portable	PASS	test_GFGetCycleCount portable: PASS (1000 interleaved reads, 0 out of order)
+0048d940	vc71-row-portable	OK	
+00497890	vc71-row-portable	OK	
+004fa9a0	vc71-row-portable	OK	
+0050ef30	vc71-row-portable	OK	
+00511710	vc71-row-portable	OK	
+00511810	vc71-row-portable	OK	
+00511910	vc71-row-portable	OK	
+00511a10	vc71-row-portable	OK	
+005115e0	vc71-row-portable	OK	
+005163b0	vc71-row-portable	OK	
+00516530	vc71-row-portable	OK	
+005166b0	vc71-row-portable	OK	
+00516830	vc71-row-portable	OK	
+00516200	vc71-row-portable	OK	
+0052f440	vc71-row-portable	OK	
+0057a60a	vc71-row-portable	OK	
+005bc3ed	vc71-row-portable	OK	
+005cc530	vc71-row-portable	OK	
+00646010	vc71-row-portable	OK	
+006472b2	vc71-row-portable	OK	
+00643b9f	vc71-row-portable	OK	
+006a68f0	vc71-row-portable	OK	
+006c3bd0	vc71-row-portable	OK	
+006c3b70	vc71-row-portable	OK	
+00747da0	vc71-row-portable	OK	
+00766260	vc71-row-portable	OK	
+00766330	vc71-row-portable	OK	
+00772720	vc71-row-portable	OK	
+00774610	vc71-row-portable	OK	
+007726b0	vc71-row-portable	OK	
+0078bf00	vc71-row-portable	OK	
+00785b40	vc71-row-portable	OK	
+0079c6d0	vc71-row-portable	OK	
+0079c680	vc71-row-portable	OK	
+0079c5f0	vc71-row-portable	OK	
+007e2da0	vc71-row-portable	OK	
+0081e550	vc71-row-portable	OK	
+0088f8d0	vc71-row-portable	OK	
+009bf490	vc71-row-portable	OK	
+009e2540	vc71-row-portable	OK	
+009e1c70	vc71-row-portable	OK	
+009e24b0	vc71-row-portable	OK	
+00a13eb0	vc71-row-portable	OK	
+00a13c20	vc71-row-portable	OK	
+00a145c0	vc71-row-portable	OK	
+00a14840	vc71-row-portable	OK	
+00a147e0	vc71-row-portable	OK	
+00a22590	vc71-row-portable	OK	
+00a22530	vc71-row-portable	OK	
+00a4dea0	vc71-row-portable	OK	
+00a44250	vc71-row-portable	OK	
+00a52650	vc71-row-portable	OK	
+00a526d0	vc71-row-portable	OK	
+00a5cee0	vc71-row-portable	OK	
+00a5c300	vc71-row-portable	OK	
+00a5c2b0	vc71-row-portable	OK	
+00a5b870	vc71-row-portable	OK	
+00a5bba0	vc71-row-portable	OK	
+00a5bef0	vc71-row-portable	OK	
+00a5b850	vc71-row-portable	OK	
+00aa3390	vc71-row-portable	OK	
+00aa3560	vc71-row-portable	OK	
+00ae0e60	vc71-row-portable	OK	
+00afb7c0	vc71-row-portable	OK	
+00af90c0	vc71-row-portable	OK	
+00afe380	vc71-row-portable	OK	
+00af9000	vc71-row-portable	OK	
+00af8d50	vc71-row-portable	OK	
+00b09aa0	vc71-row-portable	OK	
+00b0ffc0	vc71-row-portable	OK	
+00b0fbf0	vc71-row-portable	OK	
+00b00db0	vc71-row-portable	OK	
+00b0a750	vc71-row-portable	OK	
+00b05620	vc71-row-portable	OK	
+00b0a420	vc71-row-portable	OK	
+00b0a4a0	vc71-row-portable	OK	
+00b05c20	vc71-row-portable	OK	
+00b10220	vc71-row-portable	OK	
+00b1b5e0	vc71-row-portable	OK	
+00b102c0	vc71-row-portable	OK	
+00b3b240	vc71-row-portable	OK	
+00b49810	vc71-row-portable	OK	
+00b46a30	vc71-row-portable	OK	
+00b4ced0	vc71-row-portable	OK	
+00b52990	vc71-row-portable	OK	
+00b9c500	vc71-row-portable	OK	
+00b99bb0	vc71-row-portable	OK	
+00b9c2e0	vc71-row-portable	OK	
+00ba7b30	vc71-row-portable	OK	
+00be6800	vc71-row-portable	OK	
+00be6790	vc71-row-portable	OK	
+00be8b50	vc71-row-portable	OK	
+00be8df0	vc71-row-portable	OK	
+00bf7df0	vc71-row-portable	OK	
+00bfdfd0	vc71-row-portable	OK	
+00bfdf60	vc71-row-portable	OK	
+00c3ff90	vc71-row-portable	OK	
+00c3ff70	vc71-row-portable	OK	
+00c42f50	vc71-row-portable	OK	
+00c40f50	vc71-row-portable	OK	
+00c89be0	vc71-row-portable	OK	
+00ca3b10	vc71-row-portable	OK	
+00cb0160	vc71-row-portable	OK	
+00cb0700	vc71-row-portable	OK	
+00cb0310	vc71-row-portable	OK	
+00e81b40	vc71-row-portable	OK	
+00497890_GFROR13_driver.cpp	vc71-row-dual	PASS	8 lines identical
+00a44250_GFGetInterpolatedColour_driver.cpp	vc71-row-dual	PASS	200 lines identical
+00a5c2b0_GFFinishPartialSlerp_driver.cpp	vc71-row-dual	PASS	6 lines identical
+00c89be0_FtoL_driver.cpp	vc71-row-dual	PASS	19 lines identical
+00ca3b10_vorbis_ftoi_driver.cpp	vc71-row-dual	PASS	19 lines identical
+00cb0310_memmoveInternal_driver.cpp	vc71-row-dual	PASS	8 lines identical
+engine/GFFastFloatToLong.h	gxx-hdr	OK	
+engine/GFFloatToLongCeil.h	gxx-hdr	OK	
+engine/GFFloatToLongFloor.h	gxx-hdr	OK	
+engine/GFFloatToLongNear.h	gxx-hdr	OK	
+engine/GFGetCycleCount.h	gxx-hdr	OK	
+libpk/FtoL.h	gxx-hdr	OK	
+strmbase/EnlargedUnsignedDivide.h	gxx-hdr	OK	
+test_EnlargedUnsignedDivide.cpp	gxx-portable	PASS	test_EnlargedUnsignedDivide portable: PASS (14 cases)
+test_EnlargedUnsignedDivide.cpp	gxx-m32-compile	SKIPPED	no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_FtoL.cpp	gxx-portable	PASS	test_FtoL portable: PASS (63 inputs)
+test_FtoL.cpp	gxx-m32-compile	SKIPPED	no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_GFFastFloatToLong.cpp	gxx-portable	PASS	test_GFFastFloatToLong portable: PASS (63 inputs)
+test_GFFastFloatToLong.cpp	gxx-m32-compile	SKIPPED	no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_GFFloatToLongCeil.cpp	gxx-portable	PASS	test_GFFloatToLongCeil portable: PASS (63 inputs)
+test_GFFloatToLongCeil.cpp	gxx-m32-compile	SKIPPED	no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_GFFloatToLongFloor.cpp	gxx-portable	PASS	test_GFFloatToLongFloor portable: PASS (63 inputs)
+test_GFFloatToLongFloor.cpp	gxx-m32-compile	SKIPPED	no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_GFFloatToLongNear.cpp	gxx-portable	PASS	test_GFFloatToLongNear portable: PASS (63 inputs)
+test_GFFloatToLongNear.cpp	gxx-m32-compile	SKIPPED	no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)
+test_GFGetCycleCount.cpp	gxx-portable	PASS	test_GFGetCycleCount portable: PASS (1000 interleaved reads, 0 out of order)
+test_GFGetCycleCount.cpp	gxx-m32-compile	SKIPPED	no 32-bit glibc headers on this host (the VC7.1 steps are the 32-bit build)

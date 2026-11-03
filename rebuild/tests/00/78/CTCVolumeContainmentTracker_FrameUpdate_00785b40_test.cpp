@@ -2,29 +2,11 @@
 // behaviour test of CTCVolumeContainmentTracker::FrameUpdate (0x00785B40): after the first update the tracker re-runs every ceil(5 fps) frames, or every ceil(0.8 fps) frames when within 10 units of the camera, staggered by the thing's UID
 #ifdef _MSC_VER
 #pragma optimize("y", off)
-__forceinline long CeilToLong(float value)
-{
-    long result; float one; float half; float back;
-    half = 0.5f; one = 1.0f;
-    __asm {
-        fld value
-        fadd half
-        fistp result
-        fild result
-        fsub one
-        fstp back
-        mov eax, value
-        cmp eax, back
-        jne done
-        dec result
-    done:
-    }
-    return result;
-}
+#include "engine/GFFloatToLongCeil.h"
 typedef unsigned __int64 Uid64;
 #else
 #include <math.h>
-inline long CeilToLong(float value) { return (long)ceil((double)value); }
+inline long GFFloatToLongCeil(float value) { return (long)ceil((double)value); }
 typedef unsigned long long Uid64;
 #endif
 class C3DVector { public:
@@ -51,11 +33,11 @@ class CTCVolumeContainmentTracker { public:
         if (!g_bVolumeTrackingEnabled)
             return;
         if (!PDef->AlwaysUpdate && PreviouslyUpdated) {
-            long interval = CeilToLong(g_framesPerSecond * 5.0f);
+            long interval = GFFloatToLongCeil(g_framesPerSecond * 5.0f);
             CWorldView* world = GetWorld();
             const C3DVector& pos = ParentThing->GetPosition();
             if ((world->GetCameraPosition() - pos).GetMagnitudeSquared() < 100.0f)
-                interval = CeilToLong(g_framesPerSecond * 0.8f);
+                interval = GFFloatToLongCeil(g_framesPerSecond * 0.8f);
             Uid64 uid = ParentThing->UID;
             if ((uid + CWorld::GetFrame()) % interval != 0)
                 return;

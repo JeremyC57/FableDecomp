@@ -1,6 +1,7 @@
 // EnlargedUnsignedDivide(ULARGE_INTEGER Dividend, ULONG Divisor, ULONG* Remainder) -- DirectShow BaseClasses (wxutil.h): 64-by-32-bit unsigned divide returning the quotient and, when asked, the remainder
 // Leaf: ?EnlargedUnsignedDivide@@
-// Retail-asm: 0x00CB0164..0x00CB0176 `mov eax,[ebp+8] ; mov edx,[ebp+0Ch] ; mov ecx,[ebp+14h] ; div dword ptr [ebp+10h] ; or ecx,ecx ; jz ; mov [ecx],edx ; mov [ebp-4],eax` -- the published `#ifdef _X86_` inline-assembler block of the DirectX 9 SDK wxutil.h (spelt `__asm` here so the purity check sees it; the SDK writes `_asm`) (8 instructions, one jz: rasm1 family (h)); VC7.1 compiles a 64/32 `/` and `%` to the CRT __aulldiv/__aullrem helpers, never to one `div`. The `return ulResult` is C++.
+// Retail-asm: 0x00CB0164..0x00CB0176 `mov eax,[ebp+8] ; mov edx,[ebp+0Ch] ; mov ecx,[ebp+14h] ; div dword ptr [ebp+10h] ; or ecx,ecx ; jz ; mov [ecx],edx ; mov [ebp-4],eax` -- the published `#ifdef _X86_` inline-assembler block of the DirectX 9 SDK wxutil.h (spelt inline-asm here so the purity check sees it; the SDK writes `_asm`) (8 instructions, one jz: rasm1 family (h)); VC7.1 compiles a 64/32 `/` and `%` to the CRT __aulldiv/__aullrem helpers, never to one `div`. The `return ulResult` is C++.
+// Helper (2026-11-03 asm twins): the retail inline-asm block is the shared strmbase/EnlargedUnsignedDivide.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB0160, 34 bytes (+14 int3), __stdcall (WINAPI), `ret 10h`; the asm over the local forces the
 // `push ebp ; mov ebp,esp ; push ecx` frame. Manifest label "EnlargedUnsignedDivide" is correct (the BaseClasses source names the
 // parameters Dividend, Divisor, Remainder and the local ulResult).
@@ -12,25 +13,11 @@ typedef union _ULARGE_INTEGER {
     struct { DWORD LowPart; DWORD HighPart; } u;
     ULONGLONG QuadPart;
 } ULARGE_INTEGER;
+// The out-of-line copy of wxutil.h's __inline EnlargedUnsignedDivide (no direct callers in retail): the TU takes its address
+// to emit it, as the landed 0x005BC3ED / 0x0048D940 rows do.
+#define WINAPI __stdcall
 #pragma optimize("y", off)
-ULONG __stdcall
-EnlargedUnsignedDivide (
-    ULARGE_INTEGER Dividend,
-    ULONG Divisor,
-    ULONG* Remainder
-    )
-{
-    ULONG ulResult;
-    __asm {
-        mov eax, Dividend.LowPart
-        mov edx, Dividend.HighPart
-        mov ecx, Remainder
-        div Divisor
-        or  ecx, ecx
-        jz  short label
-        mov [ecx], edx
-label:
-        mov ulResult, eax
-    }
-    return ulResult;
-}
+#include "strmbase/EnlargedUnsignedDivide.h"
+#ifndef FABLE_PORTABLE   // the retail out-of-line COMDAT; a portable build needs no copy
+ULONG (__stdcall *g_keepEnlargedUnsignedDivide_00CB0160)(ULARGE_INTEGER, ULONG, ULONG*) = &EnlargedUnsignedDivide;
+#endif

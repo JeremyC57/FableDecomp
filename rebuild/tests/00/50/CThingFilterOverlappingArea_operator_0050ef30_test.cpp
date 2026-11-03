@@ -2,28 +2,10 @@
 // behaviour test of CThingFilter_OverlappingArea::operator() (0x0050EF30): a thing with physics passes when its centre lies inside the area grown by the rounded-up bounding radius
 #ifdef _MSC_VER
 #pragma optimize("y", off)
-__forceinline long CeilToLong(float value)
-{
-    long result; float one; float half; float back;
-    half = 0.5f; one = 1.0f;
-    __asm {
-        fld value
-        fadd half
-        fistp result
-        fild result
-        fsub one
-        fstp back
-        mov eax, value
-        cmp eax, back
-        jne done
-        dec result
-    done:
-    }
-    return result;
-}
+#include "engine/GFFloatToLongCeil.h"
 #else
 #include <math.h>
-inline long CeilToLong(float value) { return (long)ceil((double)value); }
+inline long GFFloatToLongCeil(float value) { return (long)ceil((double)value); }
 #endif
 class C3DVector { public: float X, Y, Z; };
 class C2DBoxI { public:
@@ -49,7 +31,7 @@ public:
         if (thing->PhysicsTC) {
             float radius; C3DVector centre;
             thing->PhysicsTC->GetBoundingInfo(&centre, &radius);
-            radius = (float)CeilToLong(radius);
+            radius = (float)GFFloatToLongCeil(radius);
             C2DBoxI box = *Area;
             box.Grow(radius);
             long x = (long)centre.X; long y = (long)centre.Y;

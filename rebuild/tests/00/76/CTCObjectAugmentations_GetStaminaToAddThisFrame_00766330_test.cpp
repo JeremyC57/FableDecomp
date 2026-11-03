@@ -1,28 +1,10 @@
 #include <cstdio>
 #ifdef _MSC_VER
 #pragma optimize("y", off)
-__forceinline long CeilToLong(float value)
-{
-    long result; float one; float half; float back;
-    half = 0.5f; one = 1.0f;
-    __asm {
-        fld value
-        fadd half
-        fistp result
-        fild result
-        fsub one
-        fstp back
-        mov eax, value
-        cmp eax, back
-        jne done
-        dec result
-    done:
-    }
-    return result;
-}
+#include "engine/GFFloatToLongCeil.h"
 #else
 #include <math.h>
-inline long CeilToLong(float value) { return (long)ceil((double)value); }   // the FPU block is ceil() for the magnitudes used here
+inline long GFFloatToLongCeil(float value) { return (long)ceil((double)value); }   // the FPU block is ceil() for the magnitudes used here
 #endif
 struct CDefVirtual { virtual void v00() { } virtual void Destroy() { } };
 struct CDefBase : CDefVirtual { long m_refCount; };
@@ -50,7 +32,7 @@ class CTCObjectAugmentations { public:
             if (def) {
                 CDefPointer<CAugmentationDef> slot; def->GetSubDef(slot); CAugmentationDef* aug = slot.Object;
                 if (aug->FrequencyToAddHealthInSeconds > g_epsilon_0129ba3c) {
-                    long period = CeilToLong(g_framesPerSecond * aug->FrequencyToAddHealthInSeconds);
+                    long period = GFFloatToLongCeil(g_framesPerSecond * aug->FrequencyToAddHealthInSeconds);
                     if (CWorld::GetFrame() % period == 0) total += aug->HealthToAddPerIncrease;
                 }
                 ReleaseDef(aug);
@@ -66,7 +48,7 @@ class CTCObjectAugmentations { public:
             if (def) {
                 CDefPointer<CAugmentationDef> slot; def->GetSubDef(slot); CAugmentationDef* aug = slot.Object;
                 if (aug->FrequencyToAddStaminaInSeconds > g_epsilon_0129ba3c) {
-                    long period = CeilToLong(g_framesPerSecond * aug->FrequencyToAddStaminaInSeconds);
+                    long period = GFFloatToLongCeil(g_framesPerSecond * aug->FrequencyToAddStaminaInSeconds);
                     if (CWorld::GetFrame() % period == 0) total += aug->StaminaToAddPerIncrease;
                 }
                 ReleaseDef(aug);

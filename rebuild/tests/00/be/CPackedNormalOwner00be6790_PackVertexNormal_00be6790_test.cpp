@@ -1,16 +1,10 @@
 #include <cstdio>
 class C3DVector { public: float X, Y, Z; };
 struct CPackedNormalOwner_00be6790 { unsigned long PackVertexNormal(const C3DVector& normal); };
-__forceinline long ROUND(float value)
-{
-    long result;
-    __asm fld value
-    __asm fistp result
-    return result;
-}
+#include "engine/GFFloatToLongNear.h"
 unsigned long CPackedNormalOwner_00be6790::PackVertexNormal(const C3DVector& normal)
 {
-    long z = ROUND(normal.Z * 511.0f); long y = ROUND(normal.Y * 1023.0f); long x = ROUND(normal.X * 1023.0f);
+    long z = GFFloatToLongNear(normal.Z * 511.0f); long y = GFFloatToLongNear(normal.Y * 1023.0f); long x = GFFloatToLongNear(normal.X * 1023.0f);
     return (((y & 0x7ff) | (z << 11)) << 11) | (x & 0x7ff);
 }
 int main() {

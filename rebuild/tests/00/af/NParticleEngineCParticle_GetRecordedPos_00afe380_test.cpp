@@ -1,28 +1,10 @@
 #include <cstdio>
 #ifdef _MSC_VER
 #pragma optimize("y", off)
-__forceinline long CeilToLong(float value)
-{
-    long result; float one; float half; float back;
-    half = 0.5f; one = 1.0f;
-    __asm {
-        fld value
-        fadd half
-        fistp result
-        fild result
-        fsub one
-        fstp back
-        mov eax, value
-        cmp eax, back
-        jne done
-        dec result
-    done:
-    }
-    return result;
-}
+#include "engine/GFFloatToLongCeil.h"
 #else
 #include <math.h>
-inline long CeilToLong(float value) { return (long)ceil((double)value); }   // the FPU block is ceil() for the magnitudes used here
+inline long GFFloatToLongCeil(float value) { return (long)ceil((double)value); }   // the FPU block is ceil() for the magnitudes used here
 #endif
 class C3DVector { public:
     float X, Y, Z;
@@ -37,7 +19,7 @@ struct CParticle {
     C3DVector GetRecordedPos(float time, float offset) const
     {
         float pos = time + 1.0f - offset;
-        long index = CeilToLong(pos);
+        long index = GFFloatToLongCeil(pos);
         if (index < 1) index = 1; else if (index > 3) index = 3;
         float frac = (float)index - pos;
         const C3DVector& newer = PositionBuffer[index - 1];

@@ -1,6 +1,7 @@
 // CParticleProgram::TransformVertices(C4DVector* out, const C4DVector* in, unsigned long count, const CMatrix4x4* matrices,
 // Grade: RELOCATION_MATCH 457v457 (asm oracle; SSE retail_asm pending the owner -- the brief forbids landing SSE retail_asm). Names respelled to Ego_r.pdb: TransformVertices private const with const CArray<C3DGroup2>&, NVectorMath::GFClear4DVectors(..., const C4DVector&), static __fastcall CParticleProgram::GetGroupVectorBuffer, C3DGroup2::PeekVertexBlends, CMatrix4x4::AlignedTransformTransposedAssumeW const, g_SSEAvailable; this modelled on engine/CParticleProgram.h. Intrinsics best: differ/00ae0e60.cpp 445v457.
 // Retail-asm: 0x00AE0F86..0x00AE0FA3 `mov eax,[esp+10h] ; mov edx,[esp+1Ch] ; movaps xmm0,[eax] ; movaps xmm1,[edx] ; movaps xmm2,[esp+30h] ; shufps xmm2,xmm2,0 ; mulps xmm0,xmm2 ; addps xmm1,xmm0 ; movaps [edx],xmm1` -- source/target stored to frame slots before the SSE test and reloaded into fixed registers (an __asm block naming C locals); _mm_* intrinsics never reload a register-held pointer and pick their own xmm registers (probe: differ/00ae0e60.cpp, 445v457).
+// Portable (2026-11-03 asm twins): the asm kernel is this function's own block (retail has no separate helper for it), so it stays here in two-path form: under FABLE_PORTABLE the #ifndef drops the SSE branch and the row runs retail's own non-SSE C++ path (Strategy B; equal to the SSE kernel up to float rounding order -- retail ran this path on CPUs without SSE).
 // const CArray<C3DGroup2>& groups) const -- clear the output, then for every blend group gather its source vertices
 // into the shared group buffer, transform them by the group's matrix and accumulate each into its output vertex scaled
 // by the blend weight (SSE when the processor supports it, x87 otherwise)
@@ -78,6 +79,7 @@ void CParticleProgram::TransformVertices(C4DVector* out, const C4DVector* in, un
             const C3DVertexBlend2& blend = blends[k];
             const C4DVector* source = &buffer[k];
             C4DVector* target = &out[blend.VertexIndex];
+#ifndef FABLE_PORTABLE   // portable build: the retail non-SSE C++ path below (the twin of the SSE asm kernel)
             if (g_SSEAvailable) {
                 C4DVector weight;
                 weight.X = blend.BlendValue;
@@ -92,7 +94,9 @@ void CParticleProgram::TransformVertices(C4DVector* out, const C4DVector* in, un
                     addps   xmm1, xmm0
                     movaps  [edx], xmm1
                 }
-            } else {
+            } else
+#endif
+            {
                 *target += *source * blend.BlendValue;
             }
         }

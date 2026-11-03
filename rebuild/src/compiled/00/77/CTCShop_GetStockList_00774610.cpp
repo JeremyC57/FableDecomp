@@ -1,6 +1,7 @@
 // CTCShop::GetStockList() const -- copy the shop's stock into a map of item type to whole quantity (each float quantity rounded up to a long), returned by value
 // Grade: RELOCATION_MATCH retry1 -- the landed CeilToLong retail_asm helper (0x006A68F0 family) for the quantity round-up, and the STLport _Rb_tree default ctor spelled _M_key_compare(_Compare()) (value-init _M_key_compare() stores a zero byte retail lacks); the map copy ctor is the out-of-line 0x00778100
 // Retail-asm: 0x00774666 fld dword ptr [ebp-10h] ; fadd dword ptr [ebp-0Ch] ; fistp dword ptr [ebp-4] ; dec dword ptr [ebp-4] -- the landed CeilToLong helper
+// Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongCeil.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 // Leaf: ?GetStockList@CTCShop@@QBE?BV?$map@JJU?$less@J@std@@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00774610, length 282 bytes (thiscall, `ret 4`, ebp frame; result through the
 //   hidden pointer).
@@ -12,35 +13,13 @@
 // Layout: retail CTCShop Stock (map<long, CShopItem>) at +0x34 (Ego_r +0x3C less two 4-byte-shorter STLport vectors);
 //   node {color +0, parent +4, left +8, right +0x0C, key +0x10, CShopItem +0x14}; CShopItem.Quantity +0x00.
 // Shape: `map<long,long> stock; for (it = Stock.begin(); it != Stock.end(); ++it) stock[(*it).first] =
-//   CeilToLong((*it).second.Quantity); return stock;` -- the iterator increment is STLport's _M_increment inlined.
+//   GFFloatToLongCeil((*it).second.Quantity); return stock;` -- the iterator increment is STLport's _M_increment inlined.
 extern "C" void* __cdecl malloc(unsigned int size);                              // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);                                           // 0x00BFEA14
 
 // Retail rounds with inline asm (fld/fadd 0.5/fistp/fild/fsub 1.0/fstp + a bitwise compare): a ceiling to long.
 // the engine's inline-assembly ceil helper (the landed CTCShop::GetMaxStock 0x00772720 / CThingPhysical::ModifyHealth 0x006A68F0 CeilToLong, verbatim)
-__forceinline long CeilToLong(float value)
-{
-    long  result;
-    float one;
-    float half;
-    float back;
-    half = 0.5f;
-    one = 1.0f;
-    __asm {
-        fld   value
-        fadd  half
-        fistp result
-        fild  result
-        fsub  one
-        fstp  back
-        mov   eax, value
-        cmp   eax, back
-        jne   done
-        dec   result
-    done:
-    }
-    return result;
-}
+#include "engine/GFFloatToLongCeil.h"
 
 class CShopItem {                                       // 28 bytes (Ego_r.pdb)
 public:
@@ -199,6 +178,6 @@ const std::map<long, long> CTCShop::GetStockList() const
 {
     std::map<long, long> stock;
     for (std::map<long, CShopItem>::const_iterator it = Stock.begin(); it != Stock.end(); ++it)
-        stock[(*it).first] = CeilToLong((*it).second.Quantity);
+        stock[(*it).first] = GFFloatToLongCeil((*it).second.Quantity);
     return stock;
 }

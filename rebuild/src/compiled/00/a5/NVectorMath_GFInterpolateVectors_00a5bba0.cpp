@@ -9,6 +9,7 @@
 //   loop instead (the 0x00A5BEF0 probe log), so the block is the original's `__asm`. The C++ around it is
 //   compiler-emitted: the SSE flag test, the two 16-aligned weight locals (weight copied as a dword into [ebp-40h],
 //   1 - weight through the x87 into [ebp-30h]) and the whole x87 fallback.
+// Portable (2026-11-03 asm twins): the asm kernel is this function's own block (retail has no separate helper for it), so it stays here in two-path form: under FABLE_PORTABLE the #ifndef drops the SSE branch and the row runs retail's own non-SSE C++ path (Strategy B; equal to the SSE kernel up to float rounding order -- retail ran this path on CPUs without SSE).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A5BBA0, 840 bytes, __cdecl, plain `ret`, eight stack arguments read through ebx
 //   (the /Zi realigned frame: `push ebx ; mov ebx,esp ; sub esp,8 ; and esp,-16 ; add esp,4 ; push ebp ; mov ebp,[ebx+4] ;
 //   mov [esp+4],ebp ; mov ebp,esp`).
@@ -36,6 +37,7 @@ namespace NVectorMath {
 void GFInterpolateVectors(C4DVector* out, unsigned long outStride, const C4DVector* from, unsigned long fromStride,
                           const C4DVector* to, unsigned long toStride, unsigned long count, float weight)
 {
+#ifndef FABLE_PORTABLE   // portable build: the retail non-SSE C++ path below (the twin of the SSE asm kernel)
     if (g_SSEAvailable) {
         __declspec(align(16)) C4DVector w;
         __declspec(align(16)) C4DVector oneMinusW;
@@ -66,7 +68,9 @@ void GFInterpolateVectors(C4DVector* out, unsigned long outStride, const C4DVect
             jne     next
         done:
         }
-    } else {
+    } else
+#endif
+    {
         C4DVector* pOut = out;
         const C4DVector* pFrom = from;
         const C4DVector* pTo = to;

@@ -9,13 +9,18 @@
 // __movsb family arrived in VC8), and the DX9 SDK wxutil.cpp writes this function as `_asm { ... }` blocks under
 // `#ifdef _X86_`. dst stays in eax from the overlap test to the return because the blocks only touch
 // esi/edi/ecx/edx, so retail emits no `mov eax,[ebp+8]` for `return ret;`.
+#ifdef FABLE_PORTABLE
+#include <string.h>
+#endif
 #define MEMORY_ALIGNMENT_LOG2 2
 #define MEMORY_ALIGNMENT_MASK 3
 
 void* __stdcall memmoveInternal(void* dst, const void* src, unsigned int count)
 {
     void* ret = dst;
-
+#ifdef FABLE_PORTABLE
+    memmove(dst, src, count);                           // the same overlap-safe move (wxutil.cpp's non-_X86_ branch)
+#else
     if (dst <= src || (char*)dst >= ((char*)src + count)) {
         // Non-Overlapping Buffers: copy from lower addresses to higher addresses
         __asm {
@@ -48,6 +53,7 @@ memmove_done:
             cld
         }
     }
+#endif
 
     return ret;
 }

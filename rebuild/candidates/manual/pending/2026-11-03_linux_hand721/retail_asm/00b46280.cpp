@@ -3,6 +3,8 @@
 // Leaf: ?GetLightsInArea@CEngineLightingManager@@QAEPAVCEngineLocalLightArray@@ABVC3DBoundingBox@@JABVCEnginePrimitiveThemeChannelDesc@@@Z
 // Flags: none
 // Retail-asm: 0x00B462DE..0x00B462F8 `fld [ebp-10h] ; fsub [ebp-20h] ; fistp dword ptr [ebp-14h] ; fild [ebp-14h] ; fadd [ebp-24h] ; fstp [ebp-0Ch] ; mov eax,[ebp-10h] ; cmp eax,[ebp-0Ch] ; jne ; inc dword ptr [ebp-14h]` (x4: GFFloatToLongFloor, standalone 0x0048D940) and 0x00B464A2..0x00B464E2 `mov ecx,[ebp+8] ; mov edx,[ebp-2Ch] ; movss xmm0,[ecx+8] ; movhps xmm0,[ecx] ; ... ; maxps xmm2,xmm0 ; minps xmm2,xmm1 ; subps xmm2,xmm3 ; mulps xmm2,xmm2 ; shufps xmm2,xmm2,0B0h ; addps xmm2,xmm3 ; shufps xmm2,xmm2,3 ; addss xmm2,xmm3 ; movss [ebp-30h],xmm2` -- C3DBoundingBox::CalcShortestDistanceToPointSquared's hand SSE kernel behind g_SSEAvailable (0x013D2880), the same kernel as landed 0x00BF7DF0; VC7.1 emits neither a bare dword fistp nor packed SSE from C++. The x87 branch (0x00B464EF..) is the C++ fallback.
+// Portable (2026-11-03 asm twins): the floor block is the shared engine/GFFloatToLongFloor.h; the C3DBoundingBox::CalcShortestDistanceToPointSquared SSE kernel is this TU's own inline member (the landed 0x00B49810 / 0x00BF7DF0 rows carry it the same way), kept here in two-path form: under FABLE_PORTABLE the #ifndef drops the SSE branch and the member runs retail's own non-SSE C++ path.
+// Helper (2026-11-03 asm twins): the floor block is the shared engine/GFFloatToLongFloor.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); the SSE kernel stays in this row (see Portable).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B46280, length 982 bytes, ebp frame (0x48), `ret 0Ch`.
 // Name: Ego_r.pdb + FableWin.pdb `?GetLightsInArea@CEngineLightingManager@@QAEPAVCEngineLocalLightArray@@ABVC3DBoundingBox@@JABVCEnginePrimitiveThemeChannelDesc@@@Z`;
 //   called by LookupSmallObjectLightCache 0x00B46A30 (landed, `call 0xb46280`).
@@ -24,6 +26,7 @@ extern bool g_SSEAvailable;                             // 0x013D2880
 // the engine's C3DBoundingBox::CalcShortestDistanceToPointSquared (Ego_r QBEMABVC3DVector@@@Z), expanded in place
 __forceinline float C3DBoundingBox::CalcShortestDistanceToPointSquared(const C3DVector& point) const
 {
+#ifndef FABLE_PORTABLE   // portable build: the retail non-SSE C++ path below (the twin of the SSE asm kernel)
     if (g_SSEAvailable) {
         float result;
         __asm {
@@ -49,6 +52,7 @@ __forceinline float C3DBoundingBox::CalcShortestDistanceToPointSquared(const C3D
         }
         return result;
     }
+#endif
     C3DVector closest(point);
     if (closest.X < MinCoord.X)
         closest.X = MinCoord.X;
@@ -83,29 +87,7 @@ class CEngineLocalLightElement { public:
     unsigned long ChannelMask;
 };
 
-__forceinline long GFFloatToLongFloor(float value)
-{
-    long  result;
-    float one;
-    float half;
-    float next;
-    half = 0.5f;
-    one = 1.0f;
-    __asm {
-        fld   value
-        fsub  half
-        fistp result
-        fild  result
-        fadd  one
-        fstp  next
-        mov   eax, value
-        cmp   eax, next
-        jne   done
-        inc   result
-    done:
-    }
-    return result;
-}
+#include "engine/GFFloatToLongFloor.h"
 
 class CEngineLocalLightArray;
 

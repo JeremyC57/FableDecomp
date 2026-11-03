@@ -10,6 +10,7 @@
 //   the dead `offset` slot), the inline-asm operand convention.
 // Label: catalog "Audio_InterpolateFilterCoefficient" is a guess.
 // Retail-asm: 0x00AFE3A6..0x00AFE3C0 `fld [ebp-8] ; fadd [ebp-4] ; fistp dword ptr [ebp+0Ch] ; fild [ebp+0Ch] ; fsub [ebp+10h] ; fstp [ebp-0Ch] ; mov eax,[ebp-8] ; cmp eax,[ebp-0Ch] ; jne ; dec dword ptr [ebp+0Ch]` (1.0f and the result homed in the dead `offset` / `time` argument slots) -- the engine's inline-assembly ceiling helper expanded in place (0.5f / 1.0f stored as frame constants, a bare dword fistp into a named long, the bit compare and `jne ; dec dword ptr` in the same 10-instruction block: rasm1 family (b)). VC7.1 emits no bare dword fistp from C++ (`(long)x` calls __ftol2, /QIfist gives `fistp qword`, /arch:SSE2 cvttss2si: rasm1 probe family (a)); the result is read back by C++ after the block.
+// Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongCeil.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 #pragma optimize("y", off)
 
 class C3DVector {
@@ -26,29 +27,7 @@ public:
 // place; the by-value parameter and the four locals become frame words, which is why the function carries an ebp frame.
 // The whole 10-instruction block is asm (the bit compare and the memory decrement included: rasm1 family (b)); the result
 // is read back by C++ after the block.
-__forceinline long CeilToLong(float value)
-{
-    long  result;
-    float one;
-    float half;
-    float back;
-    half = 0.5f;
-    one = 1.0f;
-    __asm {
-        fld   value
-        fadd  half
-        fistp result
-        fild  result
-        fsub  one
-        fstp  back
-        mov   eax, value
-        cmp   eax, back
-        jne   done
-        dec   result
-    done:
-    }
-    return result;
-}
+#include "engine/GFFloatToLongCeil.h"
 
 namespace NParticleEngine {
 
@@ -64,7 +43,7 @@ public:
 C3DVector CParticle::GetRecordedPos(float time, float offset) const
 {
     float pos = time + 1.0f - offset;
-    long index = CeilToLong(pos);
+    long index = GFFloatToLongCeil(pos);
     if (index < 1)
         index = 1;
     else if (index > 3)

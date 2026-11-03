@@ -3,6 +3,7 @@
 // Leaf: ?GetLightsInSphere@CEngineLightingManager@@QAEPAVCEngineLocalLightArray@@ABVC3DBoundingSphere@@JABVCEnginePrimitiveThemeChannelDesc@@@Z
 // Flags: none
 // Retail-asm: 0x00B46011..0x00B4602B `fld [ebp-10h] ; fsub [ebp-1Ch] ; fistp dword ptr [ebp+8] ; fild [ebp+8] ; fadd [ebp-20h] ; fstp [ebp-0Ch] ; mov eax,[ebp-10h] ; cmp eax,[ebp-0Ch] ; jne ; inc dword ptr [ebp+8]` (and the same block at 0x00B46057, 0x00B4609C, 0x00B460E2) -- four expansions of the engine's inline-assembly floor helper GFFloatToLongFloor (standalone 0x0048D940; the same helper body as landed LookupSmallObjectLightCache 0x00B46A30). VC7.1 emits no bare dword fistp from C++.
+// Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongFloor.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B45FB0, length 714 bytes, ebp frame (0x28), `ret 0Ch`.
 // Name: Ego_r.pdb + FableWin.pdb `?GetLightsInSphere@CEngineLightingManager@@QAEPAVCEngineLocalLightArray@@ABVC3DBoundingSphere@@JABVCEnginePrimitiveThemeChannelDesc@@@Z`;
 //   called by GetLightsInSphereFast 0x00B46B90 (landed, binds this address).
@@ -44,29 +45,7 @@ class CEngineLocalLightElement { public:
     unsigned long ChannelMask;
 };
 
-__forceinline long GFFloatToLongFloor(float value)
-{
-    long  result;
-    float one;
-    float half;
-    float next;
-    half = 0.5f;
-    one = 1.0f;
-    __asm {
-        fld   value
-        fsub  half
-        fistp result
-        fild  result
-        fadd  one
-        fstp  next
-        mov   eax, value
-        cmp   eax, next
-        jne   done
-        inc   result
-    done:
-    }
-    return result;
-}
+#include "engine/GFFloatToLongFloor.h"
 
 class CEngineLocalLightArray;
 

@@ -2,6 +2,7 @@
 // Grade: RELOCATION_MATCH (350 bytes; parked 322v350): the box constructor ASSIGNS its members (`{ MinCoord = minCoord; MaxCoord = maxCoord; }` over a default C3DVector ctor) instead of member-initialising them, so VC7.1 keeps both C3DVector temporaries (frame 0x40, max at [ebp-28h] after min at [ebp-1Ch]) and copies them member-wise through edx/eax, exactly as retail
 // Leaf: ?LookupSmallObjectLightCache@CEngineLightingManager@@AAEPAVCEngineLocalLightArray@@MMJ@Z
 // Retail-asm: 0x00B46A56..0x00B46A70 and 0x00B46A93..0x00B46AAD `fld [ebp-0Ch] ; fsub [ebp-8] ; fistp dword ptr [ebp+8] ; fild [ebp+8] ; fadd [ebp-4] ; fstp [ebp-10h] ; mov eax,[ebp-0Ch] ; cmp eax,[ebp-10h] ; jne ; inc dword ptr [ebp+8]` -- two expansions of the engine's inline-assembly floor helper GFFloatToLongFloor (0.5f / 1.0f stored as frame constants, a bare dword fistp into a named long, the bit compare and `jne ; inc dword ptr` in one 10-instruction block; standalone copy landed at 0x0048D940). VC7.1 emits no bare dword fistp from C++ (`(long)x` calls __ftol2, /QIfist gives `fistp qword`, /arch:SSE2 cvttss2si); the results are read back by C++ after each block.
+// Helper (2026-11-03 asm twins): the retail inline-asm block is the shared engine/GFFloatToLongFloor.h (two-path: the byte-matching asm, and a FABLE_PORTABLE C++ twin); this row carries no asm of its own.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B46A30, length 350 bytes, ebp frame, `ret 0Ch`.
 // Name: Ego_r.pdb `?LookupSmallObjectLightCache@CEngineLightingManager@@AAEPAVCEngineLocalLightArray@@MMJ@Z` (private) -- donor
 //   order puts it right before GetLightsInSphereFast, its only caller (0x00B46B90 twice: `call 0xb46a30`).
@@ -38,29 +39,7 @@ class CEnginePrimitiveThemeChannelDesc { public:
 };
 
 // the engine's inline-assembly FPU floor helper (standalone copy 0x0048D940, ?GFFloatToLongFloor@@YIJM@Z): expanded in place
-__forceinline long GFFloatToLongFloor(float value)
-{
-    long  result;
-    float one;
-    float half;
-    float next;
-    half = 0.5f;
-    one = 1.0f;
-    __asm {
-        fld   value
-        fsub  half
-        fistp result
-        fild  result
-        fadd  one
-        fstp  next
-        mov   eax, value
-        cmp   eax, next
-        jne   done
-        inc   result
-    done:
-    }
-    return result;
-}
+#include "engine/GFFloatToLongFloor.h"
 
 class CEngineLocalLightArray;
 

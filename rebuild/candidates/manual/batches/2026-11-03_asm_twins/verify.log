@@ -1,0 +1,389 @@
+addr       parity           behav  name
+0048d940   MATCH            PASS   GFFloatToLongFloor
+005115e0   WARN SHARED_HEADER_AVAILABLE CThing
+005115e0   WARN SHARED_HEADER_AVAILABLE C3DVector
+005115e0   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+005115e0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+005115e0   RELOCATION_MATCH PASS   operator()
+00511a10   WARN SHARED_HEADER_AVAILABLE CThing
+00511a10   WARN SHARED_HEADER_AVAILABLE C3DVector
+00511a10   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+00511a10   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00511a10   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+00511a10   RELOCATION_MATCH PASS   operator()
+005166b0   WARN SHARED_HEADER_AVAILABLE C3DVector
+005166b0   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+005166b0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+005166b0   WARN SHARED_HEADER_AVAILABLE CThing
+005166b0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+005166b0   RELOCATION_MATCH PASS   allocator<CThingPhysical const *>>, CFilter_Bind2<CThingFilter_IsInQuestOrNullQuest, CThingFilter_OverlappingArea>>
+005bc3ed   RELOCATION_MATCH PASS   GFGetGraphicFrame
+006472b2   WARN RELOC_NAME: ?g_fFramesPerSecond_013ba860@@3MA -> 013ba860 labelled 'float NPlayerGui::VALUE_DISPLAY_DURATION'
+006472b2   WARN RELOC_NAME: ?push_front@?$list@VSDamageValue@CDrawDamage@NPlayerGui@@V?$allocator@VSDamageValue@CDrawDamage@NPlayerGui@@@std@@@std@@QAEXABVSDamageValue@CDrawDamage@NPlayerGui@@@Z -> 00655eb4 labelled 'CChangeLog_AddDamageChange_Thunk'
+006472b2   RELOCATION_MATCH PASS   AddDamageChange
+00747da0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00747da0   WARN SHARED_HEADER_AVAILABLE CGamePlayerInterface
+00747da0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00747da0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00747da0   WARN SHARED_HEADER_AVAILABLE CThing
+00747da0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+00747da0   WARN SHARED_HEADER_AVAILABLE CWorld
+00747da0   WARN SHARED_HEADER_AVAILABLE CTCBase
+00747da0   WARN RELOC_NAME: ?IsRunning@CScriptTask@@QAE_NXZ -> 007122c0 labelled 'CTCScriptedControl::IsActionListEmpty'
+00747da0   WARN RELOC_NAME: ?IsToggleSneak@CGamePlayerInterface@@QBE_NXZ -> 00445ba0 labelled '_global::GetMember_dword0x7a0_derefbyte0x4a_00445ba0'
+00747da0   RELOCATION_MATCH PASS   FrameUpdate
+00772720   WARN SHARED_HEADER_AVAILABLE CShopItem
+00772720   WARN SHARED_HEADER_AVAILABLE CTCShop
+00772720   RELOCATION_MATCH PASS   GetMaxStock
+0079c5f0   RELOCATION_MATCH PASS   GetBulletTimeTicksFromAbilityLevel
+0081e550   MATCH            PASS   FtoL
+009e24b0   RELOCATION_MATCH PASS   GFRecalibrateFastSubFrameTimer
+00a145c0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00a145c0   RELOCATION_MATCH PASS   GetRandomUnitVector
+00a22590   RELOCATION_MATCH PASS   SetSlerp
+00a526d0   WARN SHARED_HEADER_AVAILABLE C3DAnimationSequenceData
+00a526d0   MATCH            PASS   ConvertTimeToFrames
+00a5bef0   WARN RELOC_UNCHECKED: no object block of the retail length (multi-block TU)
+00a5bef0   RELOCATION_MATCH PASS   GFInterpolateVectors
+00aa3390   RELOCATION_MATCH PASS   CalculateSlerpWeights
+00af9000   RELOCATION_MATCH PASS   GFSmoothFadeValue
+00b00db0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b00db0   WARN SHARED_HEADER_AVAILABLE CParticleSystem
+00b00db0   WARN RELOC_NAME: ?GetMeshBank@NParticleEngine@@YIABVCMeshDataBank@@XZ -> 00aeaab0 labelled '_global::GetGlobal_013d2e0c_00aeaab0'
+00b00db0   RELOCATION_MATCH PASS   GetComponentCost
+00b0a420   RELOCATION_MATCH PASS   SetAngleChange
+00b0ffc0   RELOCATION_MATCH PASS   GetNumberOfDecals
+00b3b240   WARN SHARED_HEADER_AVAILABLE CResourceList
+00b3b240   WARN SHARED_HEADER_AVAILABLE CEngineResourceManager
+00b3b240   WARN RELOC_NAME: ??0CMemoryPool@@QAE@XZ -> 00a62e20 labelled 'CMovableResourceMemoryPool::CMovableResourceMemoryPool'
+00b3b240   WARN RELOC_NAME: ?SetMaximumMemory@CResourceList@@QAEXK@Z -> 009fc520 labelled 'CInputProcessGameBase::AddToInterface'
+00b3b240   WARN RELOC_NAME: ??0CPoolAllocator@@QAE@XZ -> 009d5eb0 labelled 'CLoadingMemoryFailureHandler::CLoadingMemoryFailureHandler'
+00b3b240   RELOCATION_MATCH PASS   AllocatePools
+00b52990   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b52990   WARN SHARED_HEADER_AVAILABLE CEngineWeatherRenderer
+00b52990   RELOCATION_MATCH PASS   UpdateBoxPositions
+00ba7b30   RELOCATION_MATCH PASS   GetAlphaIncludingDistanceFade
+00be8df0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00be8df0   RELOCATION_MATCH PASS   PackVertexNormal
+00c3ff70   RELOCATION_MATCH PASS   RoundHalfDownToLong
+00c89be0   MATCH            PASS   FtoL
+00cb0700   RELOCATION_MATCH PASS   Int64x32Div32
+
+WINS: 27
+  0048d940 MATCH _global::GFFloatToLongFloor
+  005115e0 RELOCATION_MATCH CFilter_Bind3<CThingFilter_OverlappingArea,CThingFilter_HasNavigationInformation,CThingFilter_IsInQuestOrNullQuest>::??$?RVCThing@@
+  00511a10 RELOCATION_MATCH CFilter_Bind2<CThingFilter_IsInQuestOrNullQuest,CThingFilter_OverlappingArea>::??$?RVCThing@@
+  005166b0 RELOCATION_MATCH CThingSearchTools::??$GetAllLeafThings@VCThingVillage@@V?$list@PBVCThingPhysical@@V?$allocator@PBVCThingPhysical@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_IsInQuestOrNullQuest@@VCThingFilter_OverlappingArea@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind2@VCThingFilter_IsInQuestOrNullQuest@@VCThingFilter_OverlappingArea@@@@AAV?$list@PBVCThingPhysical@@V?$allocator@PBVCThingPhysical@@@std@@@std@@@Z
+  005bc3ed RELOCATION_MATCH _global::?GFGetGraphicFrame@?A
+  006472b2 RELOCATION_MATCH NPlayerGui::CDrawDamage::?AddDamageChange@CDrawDamage@NPlayerGui@@QAEXM_N@Z
+  00747da0 RELOCATION_MATCH CTCStealth::FrameUpdate
+  00772720 RELOCATION_MATCH CTCShop::GetMaxStock
+  0079c5f0 RELOCATION_MATCH CTCBulletTime_Methods::GetBulletTimeTicksFromAbilityLevel
+  0081e550 MATCH _global::FtoL
+  009e24b0 RELOCATION_MATCH _global::?GFRecalibrateFastSubFrameTimer@@YIXXZ
+  00a145c0 RELOCATION_MATCH C3DVector::?GetRandomUnitVector@C3DVector@@SI?AV1@PAK@Z
+  00a22590 RELOCATION_MATCH CQuaternion::?SetSlerp@CQuaternion@@QAEXABV1@0M@Z
+  00a526d0 MATCH C3DAnimationSequenceData::ConvertTimeToFrames
+  00a5bef0 RELOCATION_MATCH NVectorMath::?GFInterpolateVectors@NVectorMath@@YAXPAVC4DVector@@KPBV2@K1KPBMKK@Z
+  00aa3390 RELOCATION_MATCH CQuaternion::?CalculateSlerpWeights@CQuaternion@@SIXAAV1@ABV1@1M@Z
+  00af9000 RELOCATION_MATCH NParticleEngine::?GFSmoothFadeValue@NParticleEngine@@YIMM@Z
+  00b00db0 RELOCATION_MATCH NParticleEngine::CPSCRenderMesh::?GetComponentCost@CPSCRenderMesh@NParticleEngine@@UAEXAAVCParticleSystemCost@2@ABVCParticleSystem@2@MM@Z
+  00b0a420 RELOCATION_MATCH NParticleEngine::CParticle::?SetAngleChange@CParticle@NParticleEngine@@QAEXM@Z
+  00b0ffc0 RELOCATION_MATCH NParticleEngine::CPSCEmitterGeneric::?GetNumberOfDecals@CPSCEmitterGeneric@NParticleEngine@@UAE_NAAMM@Z
+  00b3b240 RELOCATION_MATCH CEngineResourceManager::AllocatePools
+  00b52990 RELOCATION_MATCH CEngineWeatherRenderer::UpdateBoxPositions
+  00ba7b30 RELOCATION_MATCH CEngineInternalPrimitiveBase::?GetAlphaIncludingDistanceFade@CEngineInternalPrimitiveBase@@QAEEM@Z
+  00be8df0 RELOCATION_MATCH CPackedNormalOwner_00be8df0::PackVertexNormal
+  00c3ff70 RELOCATION_MATCH _global::?RoundHalfDownToLong@@
+  00c89be0 MATCH _global::FtoL
+  00cb0700 RELOCATION_MATCH _global::?Int64x32Div32@@YG_J_JJJJ@Z
+addr       parity           behav  name
+00497890   MATCH            PASS   GFROR13
+00511710   WARN SHARED_HEADER_AVAILABLE C3DVector
+00511710   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+00511710   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00511710   WARN SHARED_HEADER_AVAILABLE CThing
+00511710   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+00511710   RELOCATION_MATCH PASS   operator()<CThingBuilding>
+00516200   WARN SHARED_HEADER_AVAILABLE CThing
+00516200   WARN SHARED_HEADER_AVAILABLE C3DVector
+00516200   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+00516200   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00516200   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+00516200   RELOCATION_MATCH PASS   GetAllThings
+00516830   WARN SHARED_HEADER_AVAILABLE CThing
+00516830   WARN SHARED_HEADER_AVAILABLE C3DVector
+00516830   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+00516830   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00516830   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+00516830   RELOCATION_MATCH PASS   GetAllLeafThings
+005cc530   RELOCATION_MATCH PASS   RoundToDecimalPlaces
+006a68f0   WARN SHARED_HEADER_AVAILABLE CThingPhysical
+006a68f0   RELOCATION_MATCH PASS   ModifyHealth
+00766260   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00766260   WARN SHARED_HEADER_AVAILABLE CWorld
+00766260   WARN RELOC_CONFLICT: ??$GetSubDef@VCAugmentationDef@@@CDefClassBase@@QBE_NAAV?$CDefPointer@VCAugmentationDef@@@@@Z -> 0042b248 here, 0042af9e in landed 005bec92
+00766260   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00766260   RELOCATION_MATCH PASS   GetHealthToAddThisFrame
+00774610   WARN SHARED_HEADER_AVAILABLE CShopItem
+00774610   WARN SHARED_HEADER_AVAILABLE CTCShop
+00774610   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@JU?$pair@$$CBJJ@std@@U?$less@J@2@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@QAEXPAU?$_Rb_tree_node@U?$pair@$$CBJJ@std@@@2@@Z -> 004da2ac labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+00774610   RELOCATION_MATCH PASS   GetStockList
+0079c680   RELOCATION_MATCH PASS   GetBulletTimeRemainingPercentage
+0088f8d0   WARN SHARED_HEADER_AVAILABLE CWorld
+0088f8d0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+0088f8d0   RELOCATION_MATCH PASS   StartCountdownTimer
+009e2540   MATCH            PASS   CPUAheadCounterCallback
+00a147e0   RELOCATION_MATCH PASS   GFFastSin
+00a44250   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00a44250   MATCH            PASS   GFGetInterpolatedColour
+00a5b850   RELOCATION_MATCH PASS   GFInitVectorMath
+00a5c2b0   MATCH            PASS   GFFinishPartialSlerp
+00aa3560   RELOCATION_MATCH PASS   SetSlerpFromIdentity
+00af90c0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00af90c0   WARN SHARED_HEADER_AVAILABLE CParticleSystem
+00af90c0   RELOCATION_MATCH PASS   GetComponentCost
+00b05620   RELOCATION_MATCH PASS   GetInterpolatedOrientation
+00b0a4a0   RELOCATION_MATCH PASS   SetCreationTime
+00b10220   WARN RELOC_NAME: ?GetParticleClock_00aea9f0@@YAJXZ -> 00aea9f0 labelled 'NParticleEngine::GetParticleUpdateRate'
+00b10220   RELOCATION_MATCH PASS   CalcIsFinishedGeneratingParticles
+00b46a30   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b46a30   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox
+00b46a30   RELOCATION_MATCH PASS   LookupSmallObjectLightCache
+00b99bb0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b99bb0   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox
+00b99bb0   RELOCATION_MATCH PASS   IsInsideFrustum
+00be6790   WARN SHARED_HEADER_AVAILABLE C3DVector
+00be6790   RELOCATION_MATCH PASS   PackVertexNormal
+00bf7df0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00bf7df0   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox
+00bf7df0   WARN SHARED_HEADER_AVAILABLE CEngineCamera
+00bf7df0   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeRenderer
+00bf7df0   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundTreeNode
+00bf7df0   RELOCATION_MATCH PASS   GetDesiredLODBand
+00c3ff90   RELOCATION_MATCH PASS   LookupAzimuthElevation
+00ca3b10   MATCH            PASS   FtoL
+00e81b40   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00e81b40   WARN RELOC_NAME: ?PlayCutscene@CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@AAEXVCCharString@@@Z -> 00e80d60 labelled '_global::CTCCarryable_Initialize'
+00e81b40   RELOCATION_MATCH PASS   GetBiggestFishWeight
+
+WINS: 27
+  00497890 MATCH _global::GFROR13
+  00511710 RELOCATION_MATCH CFilter_Bind2<CThingFilter_IsInQuestOrNullQuest, CThingFilter_OverlappingArea>::??$?RVCThingBuilding@@@?$CFilter_Bind2@VCThingFilter_IsInQuestOrNullQuest@@VCThingFilter_OverlappingArea@@@@QBE_NABVCThingBuilding@@@Z
+  00516200 RELOCATION_MATCH CThingSearchTools::GetAllThings
+  00516830 RELOCATION_MATCH CThingSearchTools::GetAllLeafThings
+  005cc530 RELOCATION_MATCH _global::RoundToDecimalPlaces
+  006a68f0 RELOCATION_MATCH CThingPhysical::?ModifyHealth@CThingPhysical
+  00766260 RELOCATION_MATCH CTCObjectAugmentations::GetHealthToAddThisFrame
+  00774610 RELOCATION_MATCH CTCShop::?GetStockList@CTCShop@@QBE?BV?$map@JJU?$less@J@std@@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@XZ
+  0079c680 RELOCATION_MATCH CTCBulletTime_Methods::GetBulletTimeRemainingPercentage
+  0088f8d0 RELOCATION_MATCH CGameScriptInterface::?StartCountdownTimer@CGameScriptInterface@@UBEXM@Z
+  009e2540 MATCH _global::CPUAheadCounterCallback
+  00a147e0 RELOCATION_MATCH _global::?GFFastSin@@YIMM@Z
+  00a44250 MATCH _global::?GFGetInterpolatedColour@@YA?AVCRGBColour@@V1@0K@Z
+  00a5b850 RELOCATION_MATCH _global::?GFInitVectorMath@NVectorMath@@YAXXZ
+  00a5c2b0 MATCH NVectorMath::?GFFinishPartialSlerp@NVectorMath@@YAXPAVCQuaternion@@KPBV2@K1KK@Z
+  00aa3560 RELOCATION_MATCH CQuaternion::?SetSlerpFromIdentity@CQuaternion@@QAEXABV1@M@Z
+  00af90c0 RELOCATION_MATCH NParticleEngine::CPSCRenderSprite::?GetComponentCost@CPSCRenderSprite@NParticleEngine@@UAEXAAVCParticleSystemCost@2@ABVCParticleSystem@2@MM@Z
+  00b05620 RELOCATION_MATCH NParticleEngine::CParticle::?GetInterpolatedOrientation@CParticle@NParticleEngine@@QBE?AVCQuaternion@@M@Z
+  00b0a4a0 RELOCATION_MATCH NParticleEngine::CParticle::?SetCreationTime@CParticle@NParticleEngine@@QAEXM@Z
+  00b10220 RELOCATION_MATCH CPSCEmitterGeneric::CalcIsFinishedGeneratingParticles
+  00b46a30 RELOCATION_MATCH CEngineLightingManager::?LookupSmallObjectLightCache@CEngineLightingManager@@AAEPAVCEngineLocalLightArray@@MMJ@Z
+  00b99bb0 RELOCATION_MATCH CEngineInternalPrimitiveRepeatedStaticMesh::IsInsideFrustum
+  00be6790 RELOCATION_MATCH CPackedNormalOwner_00be6790::PackVertexNormal
+  00bf7df0 RELOCATION_MATCH CLandscapeBackgroundTreeNode::?GetDesiredLODBand@CLandscapeBackgroundTreeNode@@QAEJXZ
+  00c3ff90 RELOCATION_MATCH _global::?LookupAzimuthElevation@@YAJMM@Z
+  00ca3b10 MATCH _global::vorbis_ftoi
+  00e81b40 RELOCATION_MATCH NScript::CV_FishingCompetitionScript::CFishCompOrganiser::?GetBiggestFishWeight@CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@AAEMXZ
+addr       parity           behav  name
+004fa9a0   MATCH            PASS   GetBulletTimeTicksFromAbilityLevel
+00511810   WARN SHARED_HEADER_AVAILABLE C3DVector
+00511810   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+00511810   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00511810   WARN SHARED_HEADER_AVAILABLE CThing
+00511810   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+00511810   RELOCATION_MATCH PASS   operator()<CThingObject>
+005163b0   WARN SHARED_HEADER_AVAILABLE C3DVector
+005163b0   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+005163b0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+005163b0   WARN SHARED_HEADER_AVAILABLE CThing
+005163b0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+005163b0   RELOCATION_MATCH PASS   allocator<CThingPhysical const *>>, CFilter_Bind2<CThingFilter_IsInQuestOrNullQuest, CThingFilter_OverlappingArea>>
+0052f440   WARN SHARED_HEADER_AVAILABLE C2DVector
+0052f440   WARN SHARED_HEADER_AVAILABLE CRGBColour
+0052f440   RELOCATION_MATCH PASS   CUIState
+00643b9f   RELOCATION_MATCH PASS   GFGetGraphicFrame
+006c3b70   WARN SHARED_HEADER_AVAILABLE CThing
+006c3b70   RELOCATION_MATCH PASS   FadeOut
+00766330   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00766330   WARN SHARED_HEADER_AVAILABLE CWorld
+00766330   WARN RELOC_CONFLICT: ??$GetSubDef@VCAugmentationDef@@@CDefClassBase@@QBE_NAAV?$CDefPointer@VCAugmentationDef@@@@@Z -> 0042b248 here, 0042af9e in landed 005bec92
+00766330   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00766330   RELOCATION_MATCH PASS   GetStaminaToAddThisFrame
+00785b40   WARN SHARED_HEADER_AVAILABLE C3DVector
+00785b40   WARN SHARED_HEADER_AVAILABLE CWorld
+00785b40   WARN SHARED_HEADER_AVAILABLE CThing
+00785b40   WARN SHARED_HEADER_AVAILABLE CTCBase
+00785b40   WARN RELOC_CONFLICT: __aullrem -> 00bfec30 here, 00bfebb0 in landed 00770e80
+00785b40   WARN RELOC_NAME: __aullrem -> 00bfec30 labelled '__allrem'
+00785b40   RELOCATION_MATCH PASS   FrameUpdate
+0079c6d0   RELOCATION_MATCH PASS   GetBulletTimeElapsedTicks
+009bf490   WARN SHARED_HEADER_AVAILABLE C2DBoxF
+009bf490   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+009bf490   WARN SHARED_HEADER_AVAILABLE CDisplayManager
+009bf490   RELOCATION_MATCH PASS   SetViewport
+00a13c20   WARN SHARED_HEADER_AVAILABLE C3DVector
+00a13c20   RELOCATION_MATCH PASS   operator-=
+00a14840   RELOCATION_MATCH PASS   GFFastCos
+00a4dea0   WARN SHARED_HEADER_AVAILABLE C3DAnimationSequenceData
+00a4dea0   RELOCATION_MATCH PASS   GetKeyframeInterpolate
+00a5b870   WARN RELOC_UNCHECKED: no object block of the retail length (multi-block TU)
+00a5b870   RELOCATION_MATCH PASS   GFInterpolateVectors
+00a5c300   WARN RELOC_NAME: ?GFClear4DVectorsScalar@NVectorMath@@YIXPAVC4DVector@@KPBV2@@Z -> 00a5c510 labelled 'std::fill_n'
+00a5c300   RELOCATION_MATCH PASS   GFClear4DVectors
+00ae0e60   WARN SHARED_HEADER_AVAILABLE CArray
+00ae0e60   WARN RELOC_NAME: ?PeekVertexBlends@C3DGroup2@@QBEPBVC3DVertexBlend2@@XZ -> 00ac40a0 labelled 'C3DMeshFileGroupChunk::GetList'
+00ae0e60   RELOCATION_MATCH PASS   TransformVertices
+00afb7c0   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00afb7c0   RELOCATION_MATCH PASS   CPSCRenderSprite
+00b05c20   RELOCATION_MATCH PASS   GFInterpolate
+00b0a750   WARN RELOC_NAME: ?GetParticleClock@@YAMXZ -> 00aeaa00 labelled '_global::GetConstFloat_0_0666667_00aeaa00'
+00b0a750   RELOCATION_MATCH PASS   GetCurrentFadeValue
+00b102c0   WARN RELOC_ALIAS: __CIpow -> 00bfeb40 is the import thunk 'MSVCR71.DLL::_CIpow'
+00b102c0   RELOCATION_MATCH PASS   GetRandomRadius
+00b49810   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b49810   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox
+00b49810   RELOCATION_MATCH PASS   CalcShortestDistanceToPointSquared
+00b9c2e0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b9c2e0   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox
+00b9c2e0   RELOCATION_MATCH PASS   ClipBoundingBox
+00be6800   WARN SHARED_HEADER_AVAILABLE C3DVector
+00be6800   WARN SHARED_HEADER_AVAILABLE CLandscapeBackgroundPatch
+00be6800   RELOCATION_MATCH PASS   GetPackedNormalFromTargetVertex
+00bfdf60   WARN SHARED_HEADER_AVAILABLE C3DVector
+00bfdf60   RELOCATION_MATCH PASS   PackVertexNormal
+00c40f50   RELOCATION_MATCH PASS   AmplitudeToMillibels
+00cb0160   MATCH            PASS   EnlargedUnsignedDivide
+
+WINS: 26
+  004fa9a0 MATCH CTCBulletTime::GFFloatToLongCeil
+  00511810 RELOCATION_MATCH CFilter_Bind2<CThingFilter_IsInQuestOrNullQuest, CThingFilter_OverlappingArea>::??$?RVCThingObject@@@?$CFilter_Bind2@VCThingFilter_IsInQuestOrNullQuest@@VCThingFilter_OverlappingArea@@@@QBE_NABVCThingObject@@@Z
+  005163b0 RELOCATION_MATCH CThingSearchTools::??$GetAllLeafThings@VCThingBuilding@@V?$list@PBVCThingPhysical@@V?$allocator@PBVCThingPhysical@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_IsInQuestOrNullQuest@@VCThingFilter_OverlappingArea@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind2@VCThingFilter_IsInQuestOrNullQuest@@VCThingFilter_OverlappingArea@@@@AAV?$list@PBVCThingPhysical@@V?$allocator@PBVCThingPhysical@@@std@@@std@@@Z
+  0052f440 RELOCATION_MATCH CUIState::??0CUIState
+  00643b9f RELOCATION_MATCH _global::?GFGetGraphicFrame@?A
+  006c3b70 RELOCATION_MATCH CTCFadeOutAndIn::?FadeOut@CTCFadeOutAndIn@@QAEXM_N@Z
+  00766330 RELOCATION_MATCH CTCObjectAugmentations::GetStaminaToAddThisFrame
+  00785b40 RELOCATION_MATCH CTCVolumeContainmentTracker::?FrameUpdate@CTCVolumeContainmentTracker@@UAEXXZ
+  0079c6d0 RELOCATION_MATCH CTCBulletTime_Methods::GetBulletTimeElapsedTicks
+  009bf490 RELOCATION_MATCH CDisplayManager::?SetViewport@CDisplayManager@@QAEXABVC2DBoxF@@@Z
+  00a13c20 RELOCATION_MATCH C3DCoordI::??ZC3DCoordI@@QAEABV0@ABVC3DVector@@@Z
+  00a14840 RELOCATION_MATCH _global::?GFFastCos@@YIMM@Z
+  00a4dea0 RELOCATION_MATCH C3DAnimationSequenceData::?GetKeyframeInterpolate@C3DAnimationSequenceData@@QBEXPAVC3DKeyframe@@M@Z
+  00a5b870 RELOCATION_MATCH NVectorMath::?GFInterpolateVectors@NVectorMath@@YAXPAVC4DVector@@KPBV2@KKM@Z
+  00a5c300 RELOCATION_MATCH NVectorMath::?GFClear4DVectors@NVectorMath@@
+  00ae0e60 RELOCATION_MATCH CParticleProgram::?TransformVertices@CParticleProgram@@ABEXPAVC4DVector@@PBV2@KPBVCMatrix4x4@@ABV?$CArray@VC3DGroup2@@@@@Z
+  00afb7c0 RELOCATION_MATCH NParticleEngine::CPSCRenderSprite::??0CPSCRenderSprite@NParticleEngine@@QAE@XZ
+  00b05c20 RELOCATION_MATCH NParticleEngine::?GFInterpolate@NParticleEngine@@
+  00b0a750 RELOCATION_MATCH NParticleEngine::CPSCUpdateNormal::GetCurrentFadeValue
+  00b102c0 RELOCATION_MATCH NParticleEngine::CPSCEmitterGeneric::GetRandomRadius
+  00b49810 RELOCATION_MATCH C3DBoundingBox::?CalcShortestDistanceToPointSquared@C3DBoundingBox@@QBEMABVC3DVector@@@Z
+  00b9c2e0 RELOCATION_MATCH CShadowClipVolume::ClipBoundingBox
+  00be6800 RELOCATION_MATCH CLandscapeBackgroundPatch::?GetPackedNormalFromTargetVertex@CLandscapeBackgroundPatch@@SIKABVCTVertexLandscapeBackground@@@Z
+  00bfdf60 RELOCATION_MATCH CPackedNormalOwner_00bfdf60::PackVertexNormal
+  00c40f50 RELOCATION_MATCH _global::?AmplitudeToMillibels@@
+  00cb0160 MATCH _global::?EnlargedUnsignedDivide@@
+addr       parity           behav  name
+0050ef30   WARN SHARED_HEADER_AVAILABLE C3DVector
+0050ef30   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+0050ef30   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0050ef30   WARN SHARED_HEADER_AVAILABLE CThing
+  WARN leaf 'operator()' matches no symbol in 0050ef30.obj; graded the largest function
+  WARN leaf 'operator()' matches no symbol in 0050ef30.obj; graded the largest function
+0050ef30   RELOCATION_MATCH PASS   operator()
+00511910   WARN SHARED_HEADER_AVAILABLE C3DVector
+00511910   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+00511910   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00511910   WARN SHARED_HEADER_AVAILABLE CThing
+00511910   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+00511910   RELOCATION_MATCH PASS   operator()<CThingVillage>
+00516530   WARN SHARED_HEADER_AVAILABLE C3DVector
+00516530   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+00516530   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00516530   WARN SHARED_HEADER_AVAILABLE CThing
+00516530   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+00516530   RELOCATION_MATCH PASS   allocator<CThingPhysical const *>>, CFilter_Bind2<CThingFilter_IsInQuestOrNullQuest, CThingFilter_OverlappingArea>>
+0057a60a   WARN SHARED_HEADER_AVAILABLE CGameDefinitionManager
+0057a60a   WARN SHARED_HEADER_AVAILABLE CTCBase
+0057a60a   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0057a60a   RELOCATION_MATCH PASS   GetFatnessReducingFrequencyInFrames
+00646010   WARN SHARED_HEADER_AVAILABLE C2DVector
+00646010   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00646010   WARN SHARED_HEADER_AVAILABLE C2DExtentsI
+00646010   WARN SHARED_HEADER_AVAILABLE CDisplayManager
+00646010   WARN SHARED_HEADER_AVAILABLE CFontBank
+00646010   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00646010   WARN RELOC_NAME: ?LongToWideString@@YI?AVCWideString@@J@Z -> 00405f00 labelled '_global::GFIntToWideString'
+00646010   WARN RELOC_NAME: ?g_pGameUI@@3PAUCPlayerGui@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+00646010   RELOCATION_MATCH PASS   DrawStatBarOnLeft
+006c3bd0   WARN SHARED_HEADER_AVAILABLE CThing
+006c3bd0   RELOCATION_MATCH PASS   FadeIn
+007726b0   WARN SHARED_HEADER_AVAILABLE CShopItem
+007726b0   WARN SHARED_HEADER_AVAILABLE CTCShop
+007726b0   RELOCATION_MATCH PASS   GetStockQuantity
+0078bf00   RELOCATION_MATCH PASS   SetLevel
+007e2da0   RELOCATION_MATCH PASS   SetWobbleParameters
+009e1c70   RELOCATION_MATCH PASS   GFGetFastSubFrameTimer
+00a13eb0   WARN SHARED_HEADER_AVAILABLE C2DVector
+00a13eb0   RELOCATION_MATCH PASS   GetRandomUnitVector
+00a22530   RELOCATION_MATCH PASS   GFFastArcCos
+00a52650   MATCH            PASS   ConvertTimeToFrames
+00a5bba0   WARN RELOC_UNCHECKED: no object block of the retail length (multi-block TU)
+00a5bba0   RELOCATION_MATCH PASS   GFInterpolateVectors
+00a5cee0   RELOCATION_MATCH PASS   AlignedSetInterpolate
+00af8d50   RELOCATION_MATCH PASS   GFPackFloat
+00afe380   WARN SHARED_HEADER_AVAILABLE C3DVector
+00afe380   RELOCATION_MATCH PASS   GetRecordedPos
+00b09aa0   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00b09aa0   RELOCATION_MATCH PASS   GetRGBColourClamped
+00b0fbf0   RELOCATION_MATCH PASS   GetNumberOfParticles
+00b1b5e0   MATCH            PASS   GetHeight
+00b4ced0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b4ced0   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox
+00b4ced0   RELOCATION_MATCH PASS   ClipBoundingBox
+00b9c500   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b9c500   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox
+00b9c500   RELOCATION_MATCH PASS   CalcShortestDistanceToPoint
+00be8b50   WARN SHARED_HEADER_AVAILABLE C3DVector
+00be8b50   RELOCATION_MATCH PASS   PackVertexNormal
+00bfdfd0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00bfdfd0   RELOCATION_MATCH PASS   GetPackedNormalFromTargetVertex
+00c42f50   RELOCATION_MATCH PASS   SetGain
+00cb0310   MATCH            PASS   memmoveInternal
+
+WINS: 26
+  0050ef30 RELOCATION_MATCH CThingFilter_OverlappingArea::operator()
+  00511910 RELOCATION_MATCH CFilter_Bind2<CThingFilter_IsInQuestOrNullQuest, CThingFilter_OverlappingArea>::??$?RVCThingVillage@@@?$CFilter_Bind2@VCThingFilter_IsInQuestOrNullQuest@@VCThingFilter_OverlappingArea@@@@QBE_NABVCThingVillage@@@Z
+  00516530 RELOCATION_MATCH CThingSearchTools::??$GetAllLeafThings@VCThingObject@@V?$list@PBVCThingPhysical@@V?$allocator@PBVCThingPhysical@@@std@@@std@@V?$CFilter_Bind2@VCThingFilter_IsInQuestOrNullQuest@@VCThingFilter_OverlappingArea@@@@@CThingSearchTools@@QBEXABV?$CFilter_Bind2@VCThingFilter_IsInQuestOrNullQuest@@VCThingFilter_OverlappingArea@@@@AAV?$list@PBVCThingPhysical@@V?$allocator@PBVCThingPhysical@@@std@@@std@@@Z
+  0057a60a RELOCATION_MATCH CTCHeroStats::GetFatnessReducingFrequencyInFrames
+  00646010 RELOCATION_MATCH NPlayerGui::CCrimeStatBar::DrawStatBarOnLeft@CCrimeStatBar
+  006c3bd0 RELOCATION_MATCH CTCFadeOutAndIn::?FadeIn@CTCFadeOutAndIn@@QAEXM_N@Z
+  007726b0 RELOCATION_MATCH CTCShop::GetStockQuantity
+  0078bf00 RELOCATION_MATCH CTCBerserk::SetLevel
+  007e2da0 RELOCATION_MATCH CTCWobble::SetWobbleParameters
+  009e1c70 RELOCATION_MATCH _global::?GFGetFastSubFrameTimer@@YINXZ
+  00a13eb0 RELOCATION_MATCH C2DVector::?GetRandomUnitVector@C2DVector@@SI?AV1@PAK@Z
+  00a22530 RELOCATION_MATCH _global::?GFFastArcCos@@YIMM@Z
+  00a52650 MATCH C3DAnimation2::ConvertTimeToFrames
+  00a5bba0 RELOCATION_MATCH NVectorMath::?GFInterpolateVectors@NVectorMath@@YAXPAVC4DVector@@KPBV2@K1KKM@Z
+  00a5cee0 RELOCATION_MATCH CMatrix4x4::?AlignedSetInterpolate@CMatrix4x4@@QAEXABV1@0M@Z
+  00af8d50 RELOCATION_MATCH _global::?GFPackFloat@@YIKMKMMK@Z
+  00afe380 RELOCATION_MATCH NParticleEngine::CParticle::?GetRecordedPos@CParticle@NParticleEngine@@QBE?AVC3DVector@@MM@Z
+  00b09aa0 RELOCATION_MATCH CRGBFloatColour::?GetRGBColourClamped@CRGBFloatColour@@QBE?AVCRGBColour@@XZ
+  00b0fbf0 RELOCATION_MATCH NParticleEngine::CPSCEmitterGeneric::?GetNumberOfParticles@CPSCEmitterGeneric@NParticleEngine@@UAE_NAAMM@Z
+  00b1b5e0 MATCH CSprite_00b1b5e0::GetHeight
+  00b4ced0 RELOCATION_MATCH CShadowClipVolume::?ClipBoundingBox@CShadowClipVolume@@QBE_NABVC3DBoundingBox@@AA_N@Z
+  00b9c500 RELOCATION_MATCH C3DBoundingBox::?CalcShortestDistanceToPoint@C3DBoundingBox@@QBEMABVC3DVector@@@Z
+  00be8b50 RELOCATION_MATCH CPackedNormalOwner_00be8b50::PackVertexNormal
+  00bfdfd0 RELOCATION_MATCH CLandscapeLayerMesh::?GetPackedNormalFromTargetVertex@CLandscapeLayerMesh@@AAEKABVCTVertexLandscapeForeground@@@Z
+  00c42f50 RELOCATION_MATCH CAudioObject::?SetGain@CAudioObject@@QAEXM@Z
+  00cb0310 MATCH _global::?memmoveInternal@@
