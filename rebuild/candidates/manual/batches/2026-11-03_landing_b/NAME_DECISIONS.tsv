@@ -1,0 +1,22 @@
+address	symbol	decision	evidence	action
+0x0053E950 / 0x00558660 / 0x005385AE / 0x005392FC / 0x0053A0A1	Leafs as landed (NUISystem::CScrollingViewport / CKeyRedefiner / CList)	PDB spelling	both PDB name sets; chunk 726 vtable/RTTI evidence	catalog + manifest set from the Leafs (labels + sync_catalog_names)
+0x0053FC10 / 0x0053FC20	??_ECScrollingViewport@NUISystem@@W3AEPAXI@Z / ...WBI@AEPAXI@Z	compiler adjustor-thunk symbols	VC7.1 emits these for the CObserver (+4) and CActionParam (+0x18) secondary vtables; RELOCATION_MATCH	catalog name `vector deleting destructor'`adjustor{4|24}' via labels (undname output is not parsed by sync_catalog_names)
+0x0053FC30	??_E vs ??_G CScrollingViewport	REVIEW	thunks bind ??_E (both name sets list ??_E and ??_G); the landed 0x0053FC30 Leaf is ??_G	queued c726 REVIEW
+0x0054EAC0	??1CViewport@NUISystem@@UAE@XZ	PRIORITY	both PDB name sets; tail target of the landed 0x0053E950	label applied; landed 0x0053FC30 binds ??1CViewport@@UAE@XZ: queued c726 PRIORITY
+0x00558AA0	??1?$_List_base@W4EGameAction@@...@std@@QAE@XZ	REVIEW	CKeyRedefiner::Actions is std::list<EGameAction> at +0x19C (PDB member); not in the PDB name sets; a landed row at this address carries the bare Leaf SortTreeRecursively (possible identical-COMDAT fold)	no label; queued c726 REVIEW
+0x0055B760	??1CClickable@NUISystem@@UAE@XZ	PRIORITY	both PDB name sets; base of CKeyRedefiner	queued c726 PRIORITY
+0x0053CA3C	?push_front@?$list@PAVCList@NUISystem@@...	REVIEW	one PDB name set; landed row spells CUnprovenComponent_0053ca3c	queued c726 REVIEW
+0x012468A4/AC/D4, 0x0124AD90/98, 0x0124ADBC	CScrollingViewport / CKeyRedefiner vftables 6BCActionParam / 6BCObserver / 6BCUIInterface	REVIEW	RTTI base-class names; vftables are not in the PDB name sets; older rows bind placeholder spellings (IViewportPrimary etc.)	queued c726 REVIEW
+0x0129E1F8/238/2BC/2FC	C3DMeshFileX*Chunk vftables	REVIEW	RTTI class names; older rows bind ...ChunkRetail spellings	queued c725 REVIEW
+0x00A9BBE0	??0C3DMeshFileLoader@@QAE@XZ	label	both PDB name sets; called first by the landed 0x00AA5C80	label applied
+0x00816AA0 / 0x009E50C0 / 0x00802390 / 0x00789A50	chunk 724 round 3 NAME_FIXES	PRIORITY	FableWin exact symbol + body/offset evidence	queued c724 PRIORITY (0x00802390 / 0x00789A50 also carry a landed bare Leaf DrawGetSeaLevel, a wrong name for both getters)
+0x00879680 / 0x0087A7C0 / 0x00AEAAA0	chunk 724 round 3 NAME_FIXES	REVIEW	one name source / unproven mangling	queued c724 REVIEW
+0x00879900 / 0x00877840 / 0x00B1E380 / 0x00B1F200	chunk 724 round 3 LABELS	label	both PDB name sets + vtable slot / push count	labels applied
+0x00989A60 / 0x00989B00	SetUserVertexShaderConstant overloads (chunk 723 round 3)	PRIORITY	both PDB name sets + overload order matches address order	queued c723 PRIORITY
+0x00989B50	SetUserVertexShaderConstant(K, const CRGBFloatColour&)	REVIEW	conflicts with the c649 line (C4DVector overload)	queued c723 REVIEW
+0x01436E38	g_pDisplacementRenderer_01436e38	REVIEW	descriptive (no PDB data name); RTTI of the stored object	queued c723 REVIEW
+0x00B70A90 / 0x00B6EDF0 / 0x00BC04F0	chunk 723 round 3 LABELS	label	both PDB name sets	labels applied
+0x00989CB0 / 0x0098ACF0 / 0x009DA9F0	Codex pass 13 render rows	PDB spelling	both PDB name sets	landed; second spellings already queued (cx13 / cx11m); 0x009E1280 AAE binder already cx13
+0x009FA1C0	??4CTexture@@QAEABV0@ABV0@@Z (const return)	PRIORITY	both PDB name sets; CTexture.h retail branch now declares the const return	binder 0x0049ADD0 (CTexture& spelling) already queued cx13
+0x009A0CF0	?AttachTextureToStage@CRenderManagerCore@@QAEXJPBVCTexture@@@Z	PRIORITY	both PDB name sets; 0x009DA9F0 binds it	0x00F37170 CScratchRenderMethods spelling already queued c723
+0x01396DC8 ... 0x01396FB0, 0x01396510, 0x013BC470, 0x013CA8A8	CRenderStateManager D3D*Table / CRenderManager2D::LibraryStateBlockFunctions / CShaderRenderManager::SingletonInstance / GVertexShaderConstantLayoutEmpty	PDB data names (Codex citations)	bound by 0x009DA9F0; older descriptive spellings (g_renderStateValue_01396dc8, g_renderStateDefault_01396f9c, ...) already queued cx13	nothing new

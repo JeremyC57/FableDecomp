@@ -39,6 +39,9 @@ public:
  // FableWin.pdb ?GetRenderManager@CDisplayManager@@QAEAAVCRenderManager@@XZ (debug only: inline in release; 0x006286F0 reads
  // PRenderManager +0x08 in place).
  CRenderManager& GetRenderManager(){return *PRenderManager;}
+ // ?GetD3DDevice@CDisplayManager@@QAEPAUIDirect3DDevice9@@XZ (FableWin 0x030C99A0, debug only: inline in release; Codex pass 13
+ // row 0x009DA9F0 CRenderManager2D::Render2DDrawList reads D3DDevice in place for DrawPrimitiveUP).
+ IDirect3DDevice9* GetD3DDevice(){return D3DDevice;}
 #endif
 private:
  CSystemManager& SystemManager;

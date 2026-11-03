@@ -204,7 +204,20 @@ public:
     iterator begin(){return _M_t.begin();}
     const_iterator begin()const{return _M_t.begin();}
     iterator end(){return _M_t.end();}
+#ifdef FABLE_RETAIL_STLP_MAP
+    // Retail branch (chunk 726): STLport 4.6 _map.h defines operator[] in the class (lower_bound, then insert(i,
+    // value_type(k, V())) when the key is absent). VC7.1 keeps it out of line (0x0042D5B1 for map<unsigned long,CUIState>)
+    // but the visible body lets it see that the key temporary is only read, so it hoists the loop-invariant key stores
+    // (NUISystem::CList::ChangeState 0x0053A0A1) and schedules each key store right before its call (CList::ScrollUp
+    // 0x005385AE / ScrollDown 0x005392FC). Regraded: 0x00E0A820 (the only landed FABLE_RETAIL_STLP_MAP user) stays matched.
+    V& operator[](const K& k) {
+        iterator i=lower_bound(k);
+        if(i==end() || key_comp()(k,(*i).first)) i=insert(i,value_type(k,V()));
+        return (*i).second;
+    }
+#else
     V& operator[](const K&);
+#endif
     size_t size() const { return _M_t.size(); }
     void clear(){_M_t.clear();}
     iterator find(const K& key){return _M_t.find(key);}

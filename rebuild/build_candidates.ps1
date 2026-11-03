@@ -380890,6 +380890,90 @@ $catalog = @(
         TestSource = '00/4f/CWorldMap_SaveToFile_004fda60_test.cpp'
         PassPattern = '004fda60_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0053e950'
+        Module = 'NUISystem::CScrollingViewport'
+        Source = '00/53/NUISystemCScrollingViewport_CScrollingViewport_0053e950.cpp'
+        TestSource = '00/53/NUISystemCScrollingViewport_CScrollingViewport_0053e950_test.cpp'
+        PassPattern = '0053e950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053fc10'
+        Module = 'NUISystem::CScrollingViewport'
+        Source = '00/53/NUISystemCScrollingViewport_vectordeletingdestructor_0053fc10.cpp'
+        TestSource = '00/53/NUISystemCScrollingViewport_vectordeletingdestructor_0053fc10_test.cpp'
+        PassPattern = '0053fc10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053fc20'
+        Module = 'NUISystem::CScrollingViewport'
+        Source = '00/53/NUISystemCScrollingViewport_vectordeletingdestructor_0053fc20.cpp'
+        TestSource = '00/53/NUISystemCScrollingViewport_vectordeletingdestructor_0053fc20_test.cpp'
+        PassPattern = '0053fc20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00558660'
+        Module = 'NUISystem::CKeyRedefiner'
+        Source = '00/55/NUISystemCKeyRedefiner_CKeyRedefiner_00558660.cpp'
+        TestSource = '00/55/NUISystemCKeyRedefiner_CKeyRedefiner_00558660_test.cpp'
+        PassPattern = '00558660_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005385ae'
+        Module = 'NUISystem::CList'
+        Source = '00/53/NUISystemCList_ScrollUp_005385ae.cpp'
+        TestSource = '00/53/NUISystemCList_ScrollUp_005385ae_test.cpp'
+        PassPattern = '005385ae_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005392fc'
+        Module = 'NUISystem::CList'
+        Source = '00/53/NUISystemCList_ScrollDown_005392fc.cpp'
+        TestSource = '00/53/NUISystemCList_ScrollDown_005392fc_test.cpp'
+        PassPattern = '005392fc_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0053a0a1'
+        Module = 'NUISystem::CList'
+        Source = '00/53/NUISystemCList_ChangeState_0053a0a1.cpp'
+        TestSource = '00/53/NUISystemCList_ChangeState_0053a0a1_test.cpp'
+        PassPattern = '0053a0a1_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aa5c80'
+        Module = 'C3DMeshFileXLoader'
+        Source = '00/aa/C3DMeshFileXLoader_C3DMeshFileXLoader_00aa5c80.cpp'
+        TestSource = '00/aa/C3DMeshFileXLoader_C3DMeshFileXLoader_00aa5c80_test.cpp'
+        PassPattern = '00aa5c80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008771a0'
+        Module = 'NCameraModes::CTools'
+        Source = '00/87/NCameraModesCTools_GetThingPointIntersectionFromTo_008771a0.cpp'
+        TestSource = '00/87/NCameraModesCTools_GetThingPointIntersectionFromTo_008771a0_test.cpp'
+        PassPattern = '008771a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00989cb0'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_UpdateObjectSpaceLighting_00989cb0.cpp'
+        TestSource = '00/98/CShaderRenderManager_UpdateObjectSpaceLighting_00989cb0_test.cpp'
+        PassPattern = '00989cb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0098acf0'
+        Module = 'CShaderRenderManager'
+        Source = '00/98/CShaderRenderManager_Initialise_0098acf0.cpp'
+        TestSource = '00/98/CShaderRenderManager_Initialise_0098acf0_test.cpp'
+        PassPattern = '0098acf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009da9f0'
+        Module = 'CRenderManager2D'
+        Source = '00/9d/CRenderManager2D_Render2DDrawList_009da9f0.cpp'
+        TestSource = '00/9d/CRenderManager2D_Render2DDrawList_009da9f0_test.cpp'
+        PassPattern = '009da9f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

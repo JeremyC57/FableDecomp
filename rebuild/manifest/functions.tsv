@@ -9344,7 +9344,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0053753c	ScrollUpProcess	NUISystem::CList	__thiscall	void	1	CList *	1	yes	accepted									
 00537776	CanMove	CList	__thiscall	C2DVector	2	CList *,C2DVector *	1	yes	accepted									
 00537956	ChangePosition	NUISystem::CList	__thiscall	void	4	CList *,C2DVector *,float,bool	1	yes	accepted									
-005379f5	NUISystem::CList::vfunc_185	NUISystem::CList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+005379f5	ComputeChildrenVisibility	NUISystem::CList	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00537e70	ContainerUI_HandleMouseInput	_global	unknown	undefined	0		0	unmeasured	accepted									
 0053822b	GetDataFromDef	CList	__thiscall	void	1	CList *	1	yes	accepted									
 005383a4	AddChildDynamically	NUISystem::CList	__thiscall	void	2	CList *,CCountedPointer<NUISystem::CComponent> *	1	yes	accepted									
@@ -9354,9 +9354,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0053848f	AddActionOnInactive	CList	__thiscall	void	2	CList *,CCountedPointer<NUISystem::CAction> *	1	yes	accepted									
 005384dd	AddActionOnInactive	CList	__thiscall	void	2	CList *,CCountedPointer<NUISystem::CAction> *	1	yes	accepted									
 0053852b	SaveState	NUISystem::CList	__thiscall	CListState	1	CList *	1	yes	accepted									
-005385ae	ScrollUp	CList	__thiscall	void	6	CList *,ulong,ulong,bool,bool,bool	1	yes	accepted									
-005392fc	ScrollDown	CList	__thiscall	void	6	CList *,ulong,ulong,bool,bool,bool	1	yes	accepted									
-0053a0a1	ChangeState	CList	__thiscall	void	2	CList *,ulong	1	yes	accepted									
+005385ae	ScrollUp	NUISystem::CList	__thiscall	void	6	CList *,ulong,ulong,bool,bool,bool	1	yes	accepted									
+005392fc	ScrollDown	NUISystem::CList	__thiscall	void	6	CList *,ulong,ulong,bool,bool,bool	1	yes	accepted									
+0053a0a1	ChangeState	NUISystem::CList	__thiscall	void	2	CList *,ulong	1	yes	accepted									
 0053ad07	AddScrollingChildAndSetOffsets	NUISystem::CList	__thiscall	void	2	CList *,CCountedPointer<NUISystem::CComponent> *	1	yes	accepted									
 0053b0bf	ComputeScrollBarPosition	NUISystem::CList	__thiscall	void	1	CList *	1	yes	accepted									
 0053b321	RemoveChild	NUISystem::CList	__thiscall	void	2	CList *,ulong	1	yes	accepted									
@@ -9461,18 +9461,18 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0053e8c0	NUISystem::CMenuEntry::vfunc_0	NUISystem::CMenuEntry	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053e8d0	NUISystem::CMenuEntry::vfunc_0	NUISystem::CMenuEntry	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053e8e0	`scalar_deleting_destructor'	NUISystem::CMenuEntry	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\53\CLandscapeBackgroundPatch_vectordeletingdestructor_0053e8e0.cpp
-0053e950	~CScrollingViewport	CScrollingViewport	__thiscall	void	1	CScrollingViewport *	1	yes	accepted									
+0053e950	~CScrollingViewport	NUISystem::CScrollingViewport	__thiscall	void	1	CScrollingViewport *	1	yes	accepted									
 0053e9a0	NUISystem::CScrollingViewport::vfunc_1	NUISystem::CScrollingViewport	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053ebf0	ChangeState	NUISystem::CScrollingViewport	__thiscall	void	2	CScrollingViewport *,ulong	1	yes	accepted									
 0053ed40	GetDataFromDef	NUISystem::CScrollingViewport	__thiscall	void	1	CScrollingViewport *	1	yes	accepted									
 0053eda0	ScrollChildren	NUISystem::CScrollingViewport	__thiscall	void	2	CScrollingViewport *,bool	1	yes	accepted									
 0053f120	CScrollingViewport	NUISystem::CScrollingViewport	__thiscall	undefined	2	CMenuEntry *,long	0	yes	accepted									
-0053f1c0	NUISystem::CScrollingViewport::vfunc_1	NUISystem::CScrollingViewport	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0053f1c0	Update	NUISystem::CScrollingViewport	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053f810	Initialise	NUISystem::CScrollingViewport	unknown	undefined	0		0	yes	accepted									
 0053fbe0	GetDynamicSize	NUISystem::CViewport	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053fc00	vfunc_144	NUISystem::CScrollingViewport	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0053fc10	NUISystem::CScrollingViewport::vfunc_0	NUISystem::CScrollingViewport	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-0053fc20	NUISystem::CScrollingViewport::vfunc_0	NUISystem::CScrollingViewport	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0053fc10	`vector deleting destructor'`adjustor{4}'	NUISystem::CScrollingViewport	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
+0053fc20	`vector deleting destructor'`adjustor{24}'	NUISystem::CScrollingViewport	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053fc30	`scalar deleting destructor'	NUISystem::CScrollingViewport	__thiscall	void *	2	CScrollingViewport *,uint	1	yes	accepted									
 0053fc90	ClearHandle	NUISystem::CViewport	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 0053fcd0	AddFakeChild	NUISystem::CViewport	__thiscall	void	2	CViewport *,CComponent *	1	yes	accepted									
@@ -9946,7 +9946,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005580b0	ClearDuplicateDefinitions	CKeyRedefiner	__thiscall	void	2	CKeyRedefiner *,CActionInputControl *	1	yes	accepted									
 00558170	GetActionText	NUISystem::CKeyRedefiner	unknown	undefined	0		0	yes	accepted									
 00558540	CKeyRedefiner	NUISystem::CKeyRedefiner	__thiscall	undefined	2	CTCTavernGameCardBase *,CThing *	0	yes	accepted									
-00558660	~CScrollingViewport	CScrollingViewport	__thiscall	void	1	CScrollingViewport *	1	yes	accepted									
+00558660	~CKeyRedefiner	NUISystem::CKeyRedefiner	__thiscall	void	1	CScrollingViewport *	1	yes	accepted									
 005586a0	SetAction	NUISystem::CKeyRedefiner	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 00558770	Initialise	NUISystem::CKeyRedefiner	__thiscall	void	1	CKeyRedefiner *	1	yes	accepted									
 00558a50	StdList_Clear_00558a50	_global	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\55\CGuiControlTreePane_SortTreeRecursively_00558a50.cpp

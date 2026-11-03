@@ -1,22 +1,152 @@
 #ifndef FABLE_ENGINE_CRENDERMANAGERCORE_H
 #define FABLE_ENGINE_CRENDERMANAGERCORE_H
 #ifdef FABLE_RETAIL_CRENDERMANAGERCORE
-// Retail opt-in (movie row 0x006286F0): the retail class with its member functions. RTTI (vtable 0x0129C9A4)
-// CRenderManagerCore : CRenderStateManager : CBaseClassNonCopyable : CBaseClass, all at offset 0. Sizes from retail code:
-// the constructor 0x00A0AFE0 calls the CRenderStateManager constructor 0x00A05970, then stores its own first member at
-// +0x3A3C (the DisplayManager argument; = sizeof Ego_r CRenderStateManager, engine/CRenderStateManager.h) and +0x3A48 (-1);
-// CRenderManager2D's constructor 0x009D9A30 constructs its first member at +0x3D20 = sizeof(CRenderManagerCore) (= Ego_r).
-// The own members (Ego_r.pdb DisplayManager .. CurrentlySelectedTextures, the flattened default model below) are kept
-// opaque here: no retail row of this branch reads them.
+// Retail branch (one model, 2026-11-03: movie row 0x006286F0; typed own members and the inline device helpers from chunk 723b,
+// the water render passes; the out-of-line interface Codex pass 13 row 0x009DA9F0 needs; Codex's FABLE_RETAIL_RENDER2D_TYPES model
+// folded in). RTTI (vtable 0x0129C9A4) CRenderManagerCore : CRenderStateManager : CBaseClassNonCopyable : CBaseClass, all at
+// offset 0. Sizes from retail code: the constructor 0x00A0AFE0 calls the CRenderStateManager constructor 0x00A05970, then stores
+// its own first member at +0x3A3C (the DisplayManager argument; = sizeof CRenderStateManager, engine/CRenderStateManager.h) and
+// +0x3A48 (-1); CRenderManager2D's constructor 0x009D9A30 constructs its first member at +0x3D20 = sizeof(CRenderManagerCore) (= Ego_r).
+// Own members: Ego_r.pdb names at the Ego_r offsets (no container member, so retail = Ego_r; DisplayManager is a pointer in the
+// PDB); retail reads TextureStagesInUse +0x3CB8, PD3DDevice +0x3CF0, PSelectedIndexBuffer +0x3CF4 and CurrentlySelectedTextures
+// +0x3D00 (0x00B70230, 0x00A0AD40). Turns on FABLE_RETAIL_CRENDERSTATEMANAGER (the polymorphic base with the inline state setters).
+// Inline helpers (Ego_r.pdb / FableWin.pdb spellings): AttachTextureToStage through the private AttachD3DTextureToStage;
+// SelectVertexBuffer(stream, buffer) / SelectIndexBuffer(buffer, base) (no retail copy; expanded at 0x00B70698 / 0x00B706DA).
+// IDirect3DDevice9 slots: SetTexture 65 (+0x104), SetStreamSource 100 (+0x190), SetIndices 104 (+0x1A0) (engine/IDirect3DDevice9.h).
+#ifndef FABLE_RETAIL_CRENDERSTATEMANAGER
+#define FABLE_RETAIL_CRENDERSTATEMANAGER
+#endif
+#ifndef FABLE_RETAIL_CTEXTURE
+#define FABLE_RETAIL_CTEXTURE
+#endif
+#ifndef FABLE_RETAIL_CINDEXBUFFER
+#define FABLE_RETAIL_CINDEXBUFFER
+#endif
+#ifndef FABLE_RETAIL_CVERTEXBUFFERWIN32
+#define FABLE_RETAIL_CVERTEXBUFFERWIN32
+#endif
+#include <stddef.h>
+#include "rebuild_abi.h"
 #include "engine/CRenderStateManager.h"
+#include "engine/IDirect3DDevice9.h"
+#include "engine/CTexture.h"
+#include "engine/CIndexBuffer.h"
+#include "engine/CVertexBufferWin32.h"
 class C2DBoxF;
+class C2DBoxI;
+class CDisplayManager;
+class CVolumeTexture;
+class CMatrix3x4;
 class CRenderManagerCore : public CRenderStateManager {
-private:
-    unsigned char _pad_0x3a3c[0x3d20 - 0x3a3c];                          // +0x3A3C own members (opaque)
 public:
+    // The rest of the PDB interface (Ego_r.pdb / FableWin.pdb declarations, as Codex pass 13 cited them for 0x009DA9F0).
+    CRenderManagerCore(CDisplayManager& displayManager, unsigned long initFlags);   // 0x00A0AFE0
+    virtual ~CRenderManagerCore();
+    // ?GetDisplayManager@CRenderManagerCore@@QAEAAVCDisplayManager@@XZ (inline; 0x009DA9F0 reads +0x3A3C in place)
+    CDisplayManager& GetDisplayManager() { return *DisplayManager; }
+    void Init(IDirect3DDevice9*);
+    void Uninit();
+    void EnableFixedFunctionPipeline(bool);
+    bool BeginRender();
+    void EndRender();
+    void SetAWindow(const C2DBoxF&);                                     // 0x00A0AA80 ?SetAWindow@CRenderManagerCore@@QAEXABVC2DBoxF@@@Z
+    void SetAWindow(const C2DBoxI&);
+    const C2DBoxF& GetCurrentAWindow() const;
+    void SetTextureAsSelected(long, const CTexture*);
+    void ResetTextures();
+    void SetTextureEnable(bool);
+    void SetVertexFormat(unsigned long);
+    void FlushRender();
+    bool IsRendering();
     void SetVWindow(const C2DBoxF&);                                     // 0x00A0B560 ?SetVWindow@CRenderManagerCore@@QAEXABVC2DBoxF@@@Z
+    // ?AttachTextureToStage@CRenderManagerCore@@QAEXJPBVCTexture@@@Z: inline in the original header, with the out-of-line COMDAT copy
+    // 0x009A0CF0 that CRenderManager2D::Render2DDrawList 0x009DA9F0 calls three times; the big water passes (chunk 723b) expand it.
+    // The expanded form is the per-TU opt-in FABLE_RETAIL_CRENDERMANAGERCORE_FORCEINLINE_HELPERS (the expanded-here / called-there
+    // split, as FABLE_RETAIL_CBASICSTRING_EQ_OUTOFLINE); without it the TU sees the declaration and calls the copy.
+#ifdef FABLE_RETAIL_CRENDERMANAGERCORE_FORCEINLINE_HELPERS
+    __forceinline void AttachTextureToStage(long stage, const CTexture* texture)
+    {
+        AttachD3DTextureToStage(stage, texture ? (IDirect3DBaseTexture9*)texture->PD3DTexture : 0);
+    }
+#else
+    void AttachTextureToStage(long stage, const CTexture* texture);      // 0x009A0CF0
+#endif
+    void AttachVolumeTextureToStage(long stage, const CVolumeTexture* texture);   // ?AttachVolumeTextureToStage@CRenderManagerCore@@QAEXJPBVCVolumeTexture@@@Z
+    // ?SelectVertexBuffer@CRenderManagerCore@@QAEXKPAVCVertexBufferWin32@@@Z
+    __forceinline void SelectVertexBuffer(unsigned long stream, CVertexBufferWin32* buffer)
+    {
+        if (buffer)
+            PD3DDevice->SetStreamSource(stream, buffer->PVertexBuffer, 0, buffer->Stride);
+        else
+            PD3DDevice->SetStreamSource(stream, 0, 0, 0);
+    }
+    // ?SelectIndexBuffer@CRenderManagerCore@@QAEXPAVCIndexBuffer@@K@Z
+    __forceinline void SelectIndexBuffer(CIndexBuffer* buffer, unsigned long baseVertexIndex)
+    {
+        PSelectedIndexBuffer = buffer;
+        if (buffer)
+            PD3DDevice->SetIndices(buffer->PD3DIndexBuffer);
+        else
+            PD3DDevice->SetIndices(0);
+    }
+    void DrawCurrentBuffersAsIndexedTris(unsigned long minVertexIndex, unsigned long vertexCount,
+                                         unsigned long startIndex, unsigned long triangleCount);   // 0x00A0AC60 ?DrawCurrentBuffersAsIndexedTris@CRenderManagerCore@@QAEXKKKK@Z
+    void DrawCurrentBuffersIndexed(unsigned long minVertexIndex, unsigned long vertexCount,
+                                   unsigned long startIndex, unsigned long primitiveCount);        // 0x00A0AD40 ?DrawCurrentBuffersIndexed@CRenderManagerCore@@QAEXKKKK@Z
+    void DrawCurrentBuffersAsTris(unsigned long startVertex, unsigned long triangleCount);         // ?DrawCurrentBuffersAsTris@CRenderManagerCore@@QAEXKK@Z
+    void SetWorldTransform(const CMatrix3x4& matrix);                    // ?SetWorldTransform@CRenderManagerCore@@QAEXABVCMatrix3x4@@@Z
+    void SetTextureTransform(unsigned long stage, const CMatrix3x4& matrix);   // ?SetTextureTransform@CRenderManagerCore@@QAEXKABVCMatrix3x4@@@Z
+private:
+    // ?AttachD3DTextureToStage@CRenderManagerCore@@AAEXJPAUIDirect3DBaseTexture9@@@Z: device call only on a change; the
+    // stage-in-use high-water mark always.
+    __forceinline void AttachD3DTextureToStage(long stage, IDirect3DBaseTexture9* texture)
+    {
+        if (CurrentlySelectedTextures[stage] != texture) {
+            CurrentlySelectedTextures[stage] = texture;
+            PD3DDevice->SetTexture(stage, texture);
+        }
+        if (TextureStagesInUse < stage + 1)
+            TextureStagesInUse = stage + 1;
+    }
+public:
+    CDisplayManager*       DisplayManager;                               // +0x3a3c
+    float                  LastRenderEndTime;                            // +0x3a40
+    long                   NoTrisPerSecond;                              // +0x3a44
+    long                   ScreenPixelFormat_FormatIndex;                // +0x3a48 CPixelFormat::FormatIndex
+    unsigned char          SystemFont[0x8];                              // +0x3a4c CSystemFont
+    bool                   Rendering;                                    // +0x3a54
+    bool                   ResolutionReinit;                             // +0x3a55
+    bool                   ResolutionSet;                                // +0x3a56
+    bool                   TexturesEnabled;                              // +0x3a57
+    unsigned char          D3DDeviceCaps[0x130];                         // +0x3a58 _D3DCAPS9
+    unsigned char          D3DDeviceSoftwareCaps[0x130];                 // +0x3b88 _D3DCAPS9
+    long                   TextureStagesInUse;                           // +0x3cb8
+    unsigned long          NoZSortedPolys;                               // +0x3cbc
+    unsigned long          NoNonZSortedPolys;                            // +0x3cc0
+    unsigned long          NoRenderStateChanges;                         // +0x3cc4
+    unsigned long          NoPolys;                                      // +0x3cc8
+    long                   HighestMipmapToRender;                        // +0x3ccc
+    long                   NoTrisDrawn;                                  // +0x3cd0
+    long                   NoVerticesDrawn;                              // +0x3cd4
+    long                   NoDrawPrimCalls;                              // +0x3cd8
+    unsigned long          NoLastFrameZSortedPolys;                      // +0x3cdc
+    unsigned long          NoLastFrameNonZSortedPolys;                   // +0x3ce0
+    unsigned long          NoLastFramePolys;                             // +0x3ce4
+    unsigned long          NoLastFrameUncachedTextureUploads;            // +0x3ce8
+    unsigned long          NoLastFrameCachedTextureUploads;              // +0x3cec
+    IDirect3DDevice9*      PD3DDevice;                                   // +0x3cf0 (hides CRenderStateManager::PD3DDevice +0x04, as in Ego_r)
+    CIndexBuffer*          PSelectedIndexBuffer;                         // +0x3cf4
+    unsigned long          CurrentVertexFormat;                          // +0x3cf8
+    bool                   XBoxShaderConstantsEnabled;                   // +0x3cfc
+    bool                   FixedFunctionPipelineEnabled;                 // +0x3cfd
+    IDirect3DBaseTexture9* CurrentlySelectedTextures[8];                 // +0x3d00
 };
 FABLE_STATIC_ASSERT(sizeof(CRenderManagerCore) == 0x3d20);
+FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, DisplayManager) == 0x3a3c);
+FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, TextureStagesInUse) == 0x3cb8);
+FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, PD3DDevice) == 0x3cf0);
+FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, PSelectedIndexBuffer) == 0x3cf4);
+FABLE_STATIC_ASSERT(offsetof(CRenderManagerCore, CurrentlySelectedTextures) == 0x3d00);
 #else // flattened Ego_r layout (the landed default, unchanged)
 // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
 // Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CRenderManagerCore = 0x3d20.

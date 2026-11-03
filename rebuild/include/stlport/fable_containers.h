@@ -386,6 +386,15 @@ public:
         return iterator(tmp);
     }
     void push_back(const _Tp& x) { insert(end(),x); }
+#ifdef FABLE_RETAIL_STLP_LIST
+    // Retail branch (chunk 726): STLport 4.6 _list.h size() / front() / push_front(). size() is distance(begin(), end())
+    // with the input-iterator __distance loop inlined (NUISystem::CList::ChangeState 0x0053A0A1 counts the
+    // GPreviousSelected nodes in place: mov ecx,[ecx] ; inc edi ; cmp ecx,eax ; jne); push_front(x) is insert(begin(), x)
+    // (out of line in that TU at 0x0053CA3C).
+    size_t size() const { ptrdiff_t n=0; for(const_iterator first=begin(),last=end();first!=last;++first) ++n; return n; }
+    _Tp& front() { return *begin(); }
+    void push_front(const _Tp& x) { insert(begin(),x); }
+#endif
 };
 // _bitset.h / _range_errors.h (no-exceptions branch)
 template<size_t _Nw> struct _Base_bitset {

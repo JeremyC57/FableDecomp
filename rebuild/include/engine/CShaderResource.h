@@ -27,6 +27,7 @@ public:
     void SetVertexFormat(EVertexType type);                              // ?SetVertexFormat@CShaderResource@@QAEXW4EVertexType@@@Z
     void SetVertexShaderDeclaration(const _D3DVERTEXELEMENT9* decl);     // ?SetVertexShaderDeclaration@CShaderResource@@QAEXPBU_D3DVERTEXELEMENT9@@@Z
     void SetVertexShaderInput(const CVertexShaderInput& input);          // ?SetVertexShaderInput@CShaderResource@@QAEXABVCVertexShaderInput@@@Z
+    void Initialise(CShaderRenderManager& manager);                      // 0x00A5D4D0 ?Initialise@CShaderResource@@QAEXAAVCShaderRenderManager@@@Z (CShaderRenderManager::Initialise 0x0098ACF0)
 private:
     CShaderResource();                                                   // ??0CShaderResource@@AAE@XZ
 public:

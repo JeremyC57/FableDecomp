@@ -1,0 +1,24 @@
+address	name	evidence
+0053e950	NUISystem::CScrollingViewport::~CScrollingViewport	landing 2026-11-03b (chunk 726): RELOCATION_MATCH; Ego_r+FableWin ??1CScrollingViewport@NUISystem@@UAE@XZ; stores vtables 0x012468D4/0x012468AC/0x012468A4
+00558660	NUISystem::CKeyRedefiner::~CKeyRedefiner	landing 2026-11-03b (chunk 726): RELOCATION_MATCH; Ego_r+FableWin ??1CKeyRedefiner@NUISystem@@UAE@XZ; stores CKeyRedefiner vtables 0x0124ADBC/0x0124AD98/0x0124AD90
+005385ae	NUISystem::CList::ScrollUp	landing 2026-11-03b (chunk 726): RELOCATION_MATCH; Ego_r+FableWin ?ScrollUp@CList@NUISystem@@MAEXKK_N00@Z (protected five-argument overload, vtable slot 165)
+005392fc	NUISystem::CList::ScrollDown	landing 2026-11-03b (chunk 726): RELOCATION_MATCH; Ego_r+FableWin ?ScrollDown@CList@NUISystem@@MAEXKK_N00@Z (protected five-argument overload, vtable slot 167)
+0053a0a1	NUISystem::CList::ChangeState	landing 2026-11-03b (chunk 726): RELOCATION_MATCH; Ego_r+FableWin ?ChangeState@CList@NUISystem@@UAEXK@Z (vtable slot 48)
+00aa5c80	C3DMeshFileXLoader::C3DMeshFileXLoader	landing 2026-11-03b (chunk 725 round 2): RELOCATION_MATCH; Ego_r+FableWin ??0C3DMeshFileXLoader@@QAE@XZ; stores vtable 0x0129E450
+008771a0	NCameraModes::CTools::GetThingPointIntersectionFromTo	landing 2026-11-03b (chunk 724 round 3): RELOCATION_MATCH; Ego_r+FableWin exact symbol, ret 20h = 8 args
+00989cb0	CShaderRenderManager::UpdateObjectSpaceLighting	landing 2026-11-03b (Codex pass 13): RELOCATION_MATCH; Ego_r+FableWin ?UpdateObjectSpaceLighting@CShaderRenderManager@@AAEXK@Z (private)
+0098acf0	CShaderRenderManager::Initialise	landing 2026-11-03b (Codex pass 13): RELOCATION_MATCH; Ego_r+FableWin ?Initialise@CShaderRenderManager@@QAEXPAVCRenderManager@@PAUIDirect3DDevice9@@@Z
+009da9f0	CRenderManager2D::Render2DDrawList	landing 2026-11-03b (Codex pass 13): RELOCATION_MATCH; Ego_r+FableWin ?Render2DDrawList@CRenderManager2D@@QAEX_N@Z; RTTI CRenderManager : CRenderManager2D
+005379f5	NUISystem::CList::ComputeChildrenVisibility	landing 2026-11-03b (chunk 726 LABELS): Ego_r+FableWin ?ComputeChildrenVisibility@CList@NUISystem@@MAEXXZ; CList vtable 0x012462E4 slot 185; body reads ScrollingChildrenVisibility (+0x1C8)
+0053f1c0	NUISystem::CScrollingViewport::Update	landing 2026-11-03b (chunk 726 LABELS): Ego_r+FableWin ?Update@CScrollingViewport@NUISystem@@UAEXM@Z; vtable 0x012468D4 slot 1
+0054eac0	NUISystem::CViewport::~CViewport	landing 2026-11-03b (chunk 726 NAME_FIXES): Ego_r+FableWin ??1CViewport@NUISystem@@UAE@XZ; tail-jump target of the landed ~CScrollingViewport 0x0053E950
+00a9bbe0	C3DMeshFileLoader::C3DMeshFileLoader	landing 2026-11-03b (chunk 725 round 2 LABELS): Ego_r+FableWin ??0C3DMeshFileLoader@@QAE@XZ; base constructor called first by the landed 0x00AA5C80
+00879900	NCameraModes::CProjectileWeapon::Update	landing 2026-11-03b (chunk 724 round 3 LABELS): Ego_r+FableWin ?Update@CProjectileWeapon@NCameraModes@@UAEXXZ; slot 1 of vtable 0x01277804 (RTTI CProjectileWeapon)
+00877840	NCameraModes::CTools::IsLineOfSight	landing 2026-11-03b (chunk 724 round 3 LABELS): Ego_r+FableWin ?IsLineOfSight@CTools@NCameraModes@@QBE_NABV?$vector@PBVCThing@@...; 0x00879900 calls it with 9 pushes
+00b1e380	NParticleEngine::CPSCDecalRenderer::DatabaseSerialise	landing 2026-11-03b (chunk 724 round 3 LABELS): Ego_r+FableWin; slot 17 of vtable 0x012A09BC; field names/strings match the PDB layout
+00b1f200	NParticleEngine::CPSCDecalRenderer::PreparePrimitives	landing 2026-11-03b (chunk 724 round 3 LABELS): Ego_r+FableWin; slot 13 of vtable 0x012A09BC; ret 14h = 5 args
+00b70a90	CEngineWaterRenderer::RenderEnvironmentMap	landing 2026-11-03b (chunk 723 round 3 LABELS): Ego_r+FableWin ?RenderEnvironmentMap@CEngineWaterRenderer@@AAEXXZ; only caller is the water render path
+00b6edf0	CEngineWaterRenderer::BuildConstantBuffers	landing 2026-11-03b (chunk 723 round 3 LABELS): Ego_r+FableWin ?BuildConstantBuffers@CEngineWaterRenderer@@AAEXXZ
+00bc04f0	CEnginePrimitiveManagerParticleSpriteGroup::RenderSingleSprite	landing 2026-11-03b (chunk 723 round 3 LABELS): Ego_r+FableWin RenderSingleSprite(CEngineSubPrimitiveBase&, ERenderPassType); body reads CEngineInternalPrimitiveSprite members and the class's six Apply*Shader pickers
+0053fc10	NUISystem::CScrollingViewport::`vector deleting destructor'`adjustor{4}'	landing 2026-11-03b (chunk 726): RELOCATION_MATCH; compiler symbol ??_ECScrollingViewport@NUISystem@@W3AEPAXI@Z (sub ecx,4; CObserver secondary vtable 0x012468AC slot 0)
+0053fc20	NUISystem::CScrollingViewport::`vector deleting destructor'`adjustor{24}'	landing 2026-11-03b (chunk 726): RELOCATION_MATCH; compiler symbol ??_ECScrollingViewport@NUISystem@@WBI@AEPAXI@Z (sub ecx,18h; CActionParam secondary vtable 0x012468A4 slot 0)

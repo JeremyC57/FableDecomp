@@ -12,12 +12,42 @@
 #include "engine/CRenderManagerCore.h"
 class C2DBoxF; class CUVBox; class CRGBColour; class CTexture;
 #ifdef FABLE_RETAIL_CRENDERMANAGER2D
+// Retail branch members (2026-11-03 landing b, Codex pass 13 row 0x009DA9F0 Render2DDrawList; Codex's FABLE_RETAIL_RENDER2D_TYPES
+// model folded in): Ego_r.pdb names in Ego_r order with STLport sizes (vector 0xC, CShaderDataBank 0x128 in retail): VertexShaderBank
+// +0x3D20 (CShaderDataBank, opaque here: no landed row needs its type; Codex's typed CShaderDataBank / CBankFile models are listed
+// in batches/2026-11-03_landing_b/HEADER_NEEDS.md), VertexShaderResource +0x3E48, VertexShader2D +0x3E50, the six quick-draw
+// vectors +0x3E58..+0x3E94, AlternateRenderTargetClearEnabled +0x3EA0; the class statics FlipTable and
+// ?LibraryStateBlockFunctions@CRenderManager2D@@0PAPAVCStateBlockFunctionBase@@A (0x01396510, Codex's PDB DATA citation).
+#ifndef FABLE_RETAIL_CVERTEXSHADER
+#define FABLE_RETAIL_CVERTEXSHADER
+#endif
 #include "fable_string.h"
-class C2DVector; class CFontBank;
+#include "stlport/fable_containers.h"
+#include "engine/CCountedPointer.h"
+#include "engine/CVertexShader.h"
+#include "engine/CTVertexRHWColSpecTex1.h"
+#include "engine/CQuickDrawTriInfo.h"
+#include "engine/CStateBlockFunctionBase.h"
+class C2DVector; class C3DVector; class CFontBank; class CShaderResource; class CGraphicDataBank; class CSurface; class CGraphicFrame;
 #endif
 class CRenderManager2D : public CRenderManagerCore {
 private:
+#ifdef FABLE_RETAIL_CRENDERMANAGER2D
+    unsigned char VertexShaderBank[0x128];                               // +0x3D20 CShaderDataBank (opaque)
+    CCountedPointer<CShaderResource> VertexShaderResource;               // +0x3E48
+    CVertexShader VertexShader2D;                                        // +0x3E50
+    std::vector<CTVertexRHWColSpecTex1,std::allocator<CTVertexRHWColSpecTex1> > QuickDrawVertices;       // +0x3E58
+    std::vector<CQuickDrawTriInfo,std::allocator<CQuickDrawTriInfo> > QuickDrawTriInfo;                   // +0x3E64
+    std::vector<CTVertexRHWColSpecTex1,std::allocator<CTVertexRHWColSpecTex1> > QuickDrawAlphaVertices;  // +0x3E70
+    std::vector<CQuickDrawTriInfo,std::allocator<CQuickDrawTriInfo> > QuickDrawAlphaTriInfo;              // +0x3E7C
+    std::vector<CTVertexRHWColSpecTex1,std::allocator<CTVertexRHWColSpecTex1> > QuickDraw2DVertices;     // +0x3E88
+    std::vector<CQuickDrawTriInfo,std::allocator<CQuickDrawTriInfo> > QuickDraw2DTriInfo;                 // +0x3E94
+    static const unsigned long FlipTable[3][4];
+    static CStateBlockFunctionBase* LibraryStateBlockFunctions[7];       // 0x01396510
+    bool AlternateRenderTargetClearEnabled;                              // +0x3EA0
+#else
     unsigned char _pad_0x3d20[0x3ea4 - 0x3d20];                          // +0x3D20 own members (opaque)
+#endif
 public:
     void DrawBufferedPolys();                                            // 0x009D9C80 ?DrawBufferedPolys@CRenderManager2D@@QAEXXZ
     void Render2DDrawList(bool);                                         // 0x009DA9F0 ?Render2DDrawList@CRenderManager2D@@QAEX_N@Z

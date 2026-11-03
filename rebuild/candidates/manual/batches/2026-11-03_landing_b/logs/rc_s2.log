@@ -1,0 +1,22 @@
+addr       parity           behav  name
+00aa75c0   RELOCATION_MATCH PASS   ~CChunkedFileChunk
+00b67920   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00b67920   RELOCATION_MATCH PASS   ~CEngineLandscapeRenderer
+00bc14e0   RELOCATION_MATCH PASS   CEnginePrimitiveManagerParticleSpriteGroup
+00d51520   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00d51520   RELOCATION_MATCH PASS   Main
+00dc1770   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00dc1770   RELOCATION_MATCH PASS   Main
+00e0a820   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00e0a820   RELOCATION_MATCH PASS   TurnToBalv
+00e26e30   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00e26e30   RELOCATION_MATCH PASS   Main
+
+WINS: 7
+  00aa75c0 RELOCATION_MATCH CChunkedFileChunk::??1CChunkedFileChunk@@UAE@XZ
+  00b67920 RELOCATION_MATCH CEngineLandscapeRenderer::??1CEngineLandscapeRenderer@@UAE@XZ
+  00bc14e0 RELOCATION_MATCH CEnginePrimitiveManagerParticleSpriteGroup::??0CEnginePrimitiveManagerParticleSpriteGroup@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z
+  00d51520 RELOCATION_MATCH NScript::CQ_GuildTrainingPreMeleeScript::?Main@CQ_GuildTrainingPreMeleeScript@NScript@@UAEXXZ
+  00dc1770 RELOCATION_MATCH NScript::CQ_OakValeBanditRaidScript::COakValeBanditRaidBandit::?Main@COakValeBanditRaidBandit@CQ_OakValeBanditRaidScript@NScript@@EAEXXZ
+  00e0a820 RELOCATION_MATCH NScript::CQ_TraderEscortScript::?TurnToBalv@CQ_TraderEscortScript@NScript@@QAEXVCScriptThing@@@Z
+  00e26e30 RELOCATION_MATCH NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript::CMazeAtTavern::?Main@CMazeAtTavern@CQS_GuardianSisterInfo2_SisterInBanditCampScript@NScript@@EAEXXZ

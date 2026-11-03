@@ -1,0 +1,74 @@
+NEW 0053ca3c ?push_front@?$list@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@QAEXAB 
+    others: {} 
+    landed leaf: [('stdlistCUnprovenComponent0053ca3c_pushfront_0053ca3c.cpp', '?push_front@?$list@PAVCUnprovenComponent_0053ca3c@@V?$allocator@PAVCUnprovenComponent_0053ca3c@@@std@@@std@@QAEXABQAVCUnprovenComponent_0053ca3c@@@Z')]
+NEW 0053fc30 ??_ECScrollingViewport@NUISystem@@UAEPAXI@Z 
+    others: {} 
+    landed leaf: [('NUISystemCScrollingViewport_scalardeletingdestructor_0053fc30.cpp', '??_GCScrollingViewport@NUISystem@@UAEPAXI@Z')]
+NEW 0054eac0 ??1CViewport@NUISystem@@UAE@XZ 
+    others: {'??1CViewport@@UAE@XZ': ['0053fc30']} 
+    landed leaf: []
+NEW 00558aa0 ??1?$_List_base@W4EGameAction@@V?$allocator@W4EGameAction@@@std@@@std@@QAE@XZ 
+    others: {'??1CKeyList_00558b30@NUISystem@@QAE@XZ': ['00558b30']} 
+    landed leaf: [('CGuiControlTreePane_SortTreeRecursively_00558aa0.cpp', 'SortTreeRecursively')]
+NEW 007e30a0 ?GetCameraPhysicsMeshObject@CTCCameraCollision@@QBE?AVCPhysicsMeshObject@@XZ 
+    others: {} 
+    landed leaf: [('CTCCameraCollision_GetCameraPhysicsMeshObject_007e30a0.cpp', 'GetCameraPhysicsMeshObject')]
+NEW 00816aa0 ?GetPCombatFirstHitLocationIntersectionWithFiniteLine@CTCHitLocations@@QBEPBVCHitLocation@ 
+    others: {} 
+    landed leaf: [('CTCHitLocations_GetPCombatFirstHitLocationIntersectionWithFinite_00816aa0.cpp', 'GetPCombatFirstHitLocationIntersectionWithFiniteLine')]
+NEW 0098d870 ?resize@?$vector@PBVCVertexShaderConstantLayout@@V?$allocator@PBVCVertexShaderConstantLayo 
+    others: {'?erase_range@ListImpl@@QAEXHPAPAUListNode@@@Z': ['0098b280'], '?resize@CVertexShaderConstantLayoutVectorView@@QAEXIABQAVCVertexShaderConstantLa': ['0098b230']} 
+    landed leaf: []
+NEW 0098db20 ?push_back@?$CIndexedArray@VCCharString@@@@QAEXABVCCharString@@@Z 
+    others: {'?Add@CIndexedCharStringArray@@QAEXABVCCharString@@@Z': ['0098b390']} 
+    landed leaf: []
+NEW 009a0cf0 ?AttachTextureToStage@CRenderManagerCore@@QAEXJPBVCTexture@@@Z 
+    others: {'?AttachTextureToStage@CScratchRenderMethods@@QAEXHPAUCTexture@@@Z': ['00f37170']} 
+    landed leaf: []
+NEW 00a99ff0 ?DeleteData@?$CCountedPointer@VCChunkedFileChunk@@@@SIXPAX@Z 
+    others: {'?Destroy_00a99ff0@@YIXPAX@Z': ['00a9cf40']} 
+    landed leaf: [('global_DeleteData_00a99ff0.cpp', 'DeleteData')]
+NEW 012468a4 ??_7CScrollingViewport@NUISystem@@6BCActionParam@1@@ 
+    others: {'??_7CScrollingViewport@NUISystem@@6BIViewportSecondaryB_0053f120@@@': ['0053f120'], '??_7CScrollingViewport@NUISystem@@6BIViewportSecondaryB@@@': ['0053fc30']} 
+    landed leaf: []
+NEW 012468ac ??_7CScrollingViewport@NUISystem@@6BCObserver@1@@ 
+    others: {'??_7CScrollingViewport@NUISystem@@6BIViewportSecondaryA_0053f120@@@': ['0053f120'], '??_7CScrollingViewport@NUISystem@@6BCObserver@@@': ['0053fc30']} 
+    landed leaf: []
+NEW 012468d4 ??_7CScrollingViewport@NUISystem@@6BCUIInterface@1@@ 
+    others: {'??_7CScrollingViewport@NUISystem@@6BIViewportPrimary_0053f120@@@': ['0053f120'], '??_7CScrollingViewport@NUISystem@@6BIViewportPrimary@@@': ['0053fc30']} 
+    landed leaf: []
+NEW 0124ad90 ??_7CKeyRedefiner@NUISystem@@6BCActionParam@1@@ 
+    others: {'??_7CKeyRedefiner@NUISystem@@6BCHoverable@1@@': ['00558540'], '??_7CKeyRedefiner@NUISystem@@6BCHoverable_00558b30@1@@': ['00558b30']} 
+    landed leaf: []
+NEW 0124ad98 ??_7CKeyRedefiner@NUISystem@@6BCObserver@1@@ 
+    others: {'??_7CKeyRedefiner@NUISystem@@6BCGuiControl@1@@': ['00558540'], '??_7CKeyRedefiner@NUISystem@@6BCGuiControl_00558b30@1@@': ['00558b30']} 
+    landed leaf: []
+NEW 0124adbc ??_7CKeyRedefiner@NUISystem@@6BCUIInterface@1@@ 
+    others: {'??_7CKeyRedefiner@NUISystem@@6BCComponentRoot@1@@': ['00558540'], '??_7CKeyRedefiner@NUISystem@@6BCComponentRoot_00558b30@1@@': ['00558b30']} 
+    landed leaf: []
+NEW 0129e1f8 ??_7C3DMeshFileXTextureIndexChunk@@6B@ 
+    others: {'??_7C3DMeshFileXTextureIndexChunkRetail@@6B@': ['00aa4b00']} 
+    landed leaf: []
+NEW 0129e238 ??_7C3DMeshFileXMappingInfoChunk@@6B@ 
+    others: {'??_7C3DMeshFileXMappingInfoChunkRetail@@6B@': ['00aa4c30']} 
+    landed leaf: []
+NEW 0129e2bc ??_7C3DMeshFileXBoundingSphereChunk@@6B@ 
+    others: {'??_7C3DMeshFileXBoundingSphereChunkRetail@@6B@': ['00aa4fb0']} 
+    landed leaf: []
+NEW 0129e2fc ??_7C3DMeshFileXBoundingBoxChunk@@6B@ 
+    others: {'??_7C3DMeshFileXBoundingBoxChunkRetail@@6B@': ['00aa5250']} 
+    landed leaf: []
+NEW 01396dc8 ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA 
+    others: {'?g_renderStateValue_01396dc8@@3KA': ['00b75ca0']} 
+    landed leaf: []
+NEW 01396f9c ?D3DPolyShadeModeTable@CRenderStateManager@@0PAKA 
+    others: {'?g_renderStateDefault_01396f9c@@3KA': ['00bb8090']} 
+    landed leaf: []
+NEW 013bc470 ?SingletonInstance@CShaderRenderManager@@0V1@A 
+    others: {'?g_FableRenderStateStorage_013BC470@@3EA': ['004022b0'], '?g_ShaderRenderManager@@3UCShaderEnableState@@A': ['00b5e700'], '?g_ShaderRenderManager@@3UCShaderLayoutState@@A': ['00bad2e0'], '?g_ShaderRenderManager@@3VCShaderRenderManager@@A': ['009d8ad0'], '?g_CShaderRenderManager_013bc470@@3VCShaderRenderManager@@A': ['01223d00']} 
+    landed leaf: []
+NEW 013ca8a8 _GVertexShaderConstantLayoutEmpty 
+    others: {'?CUnprovenGlobal_013CA8A8@@3VCVertexShaderConstantLayoutEmpty@@A': ['01224140']} 
+    landed leaf: []
+LEAF 00989cb0 ?UpdateObjectSpaceLighting@CShaderRenderManager@@AAEXK@Z <- other spellings bound by {'?UpdateObjectSpaceLighting@CShaderRenderManager@@QAEXK@Z': ['009e1280']}
+LEAF 009da9f0 ?Render2DDrawList@CRenderManager2D@@QAEX_N@Z <- other spellings bound by {'?Flush@CRenderManager@@QAEX_N@Z': ['00499880'], '?Render2DDrawList@CRenderManager@@QAEX_N@Z': ['00499d90']}

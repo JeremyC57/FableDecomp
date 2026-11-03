@@ -1,0 +1,18 @@
+addr       parity           behav  name
+00989cb0   RELOCATION_MATCH PASS   UpdateObjectSpaceLighting
+0098acf0   WARN RELOC_NAME: ?Initialise@CShaderResource@@QAEXAAVCShaderRenderManager@@@Z -> 00a5d4d0 labelled '_global::SetMember_dword0x14_00a5d4d0'
+0098acf0   RELOCATION_MATCH PASS   Initialise
+009da9f0   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+009da9f0   WARN RELOC_NAME: ?SetAWindow@CRenderManagerCore@@QAEXABVC2DBoxF@@@Z -> 00a0aa80 labelled '_global::Forward_SetViewport_via0x3a3c_00a0aa80'
+009da9f0   WARN RELOC_NAME: ?erase@?$vector@VCQuickDrawTriInfo@@V?$allocator@VCQuickDrawTriInfo@@@std@@@std@@QAEPAVCQuickDrawTriInfo@@PAV3@0@Z -> 009e15e0 labelled 'TextureCache_MoveAndCleanup'
+009da9f0   RELOCATION_MATCH PASS   Render2DDrawList
+
+WINS: 3
+  00989cb0 RELOCATION_MATCH CShaderRenderManager::?UpdateObjectSpaceLighting@CShaderRenderManager@@AAEXK@Z
+  0098acf0 RELOCATION_MATCH CShaderRenderManager::?Initialise@CShaderRenderManager@@QAEXPAVCRenderManager@@PAUIDirect3DDevice9@@@Z
+  009da9f0 RELOCATION_MATCH CRenderManager2D::?Render2DDrawList@CRenderManager2D@@QAEX_N@Z
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CShaderRenderManager_UpdateObjectSpaceLighting_00989cb0
+  CShaderRenderManager_Initialise_0098acf0
+  CRenderManager2D_Render2DDrawList_009da9f0

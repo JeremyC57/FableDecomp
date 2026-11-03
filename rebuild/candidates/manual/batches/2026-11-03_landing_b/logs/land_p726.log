@@ -1,0 +1,29 @@
+addr       parity           behav  name
+0053e950   RELOCATION_MATCH PASS   ~CScrollingViewport
+0053fc10   WARN RELOC_NAME: ??_ECScrollingViewport@NUISystem@@UAEPAXI@Z -> 0053fc30 labelled 'NUISystem::CScrollingViewport::`scalar deleting destructor''
+0053fc10   RELOCATION_MATCH PASS   `vector deleting destructor'
+0053fc20   WARN RELOC_NAME: ??_ECScrollingViewport@NUISystem@@UAEPAXI@Z -> 0053fc30 labelled 'NUISystem::CScrollingViewport::`scalar deleting destructor''
+0053fc20   RELOCATION_MATCH PASS   `vector deleting destructor'
+00558660   WARN RELOC_NAME: ??1?$_List_base@W4EGameAction@@V?$allocator@W4EGameAction@@@std@@@std@@QAE@XZ -> 00558aa0 labelled '_global::StdList_Clear_00558aa0'
+00558660   RELOCATION_MATCH PASS   ~CKeyRedefiner
+005385ae   RELOCATION_MATCH PASS   ScrollUp
+005392fc   RELOCATION_MATCH PASS   ScrollDown
+0053a0a1   RELOCATION_MATCH PASS   ChangeState
+
+WINS: 7
+  0053e950 RELOCATION_MATCH NUISystem::CScrollingViewport::??1CScrollingViewport@NUISystem@@UAE@XZ
+  0053fc10 RELOCATION_MATCH NUISystem::CScrollingViewport::??_ECScrollingViewport@NUISystem@@W3AEPAXI@Z
+  0053fc20 RELOCATION_MATCH NUISystem::CScrollingViewport::??_ECScrollingViewport@NUISystem@@WBI@AEPAXI@Z
+  00558660 RELOCATION_MATCH NUISystem::CKeyRedefiner::??1CKeyRedefiner@NUISystem@@UAE@XZ
+  005385ae RELOCATION_MATCH NUISystem::CList::?ScrollUp@CList@NUISystem@@MAEXKK_N00@Z
+  005392fc RELOCATION_MATCH NUISystem::CList::?ScrollDown@CList@NUISystem@@MAEXKK_N00@Z
+  0053a0a1 RELOCATION_MATCH NUISystem::CList::?ChangeState@CList@NUISystem@@UAEXK@Z
+
+LANDED 7 wins into src/compiled + tests + catalog + oracle
+  NUISystemCScrollingViewport_CScrollingViewport_0053e950
+  NUISystemCScrollingViewport_vectordeletingdestructor_0053fc10
+  NUISystemCScrollingViewport_vectordeletingdestructor_0053fc20
+  NUISystemCKeyRedefiner_CKeyRedefiner_00558660
+  NUISystemCList_ScrollUp_005385ae
+  NUISystemCList_ScrollDown_005392fc
+  NUISystemCList_ChangeState_0053a0a1

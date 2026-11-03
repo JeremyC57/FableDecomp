@@ -1,0 +1,9 @@
+addr       parity           behav  name
+008771a0   WARN RELOC_NAME: ?GetPCombatFirstHitLocationIntersectionWithFiniteLine@CTCHitLocations@@QBEPBVCHitLocation@NHitLocations@@ABVC3DVector@@0AAV4@1M@Z -> 00816aa0 labelled '_global::TailJmp_GetPCombatFirstHitLocationIntersectionWi_00816aa0'
+008771a0   RELOCATION_MATCH PASS   GetThingPointIntersectionFromTo
+
+WINS: 1
+  008771a0 RELOCATION_MATCH NCameraModes::CTools::?GetThingPointIntersectionFromTo@CTools@NCameraModes@@QBE_NABV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@ABVC3DVector@@1AAV5@2PAPBVCThing@@_NW4ELOSTest@12@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NCameraModesCTools_GetThingPointIntersectionFromTo_008771a0

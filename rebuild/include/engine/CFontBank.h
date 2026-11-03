@@ -27,9 +27,11 @@ public:
     virtual ~CFontBank();                                                // slot 0 (??_G 0x009A0B30)
     virtual C2DExtentsF GetStringExtents(const wchar_t* text, bool) const = 0;   // slot 1
     virtual float GetFontMaxHeight() const = 0;                          // slot 2
-    virtual void PrepareToRender(bool) const = 0;                        // slot 3
+    // Default arguments (2026-11-03 landing b, Codex pass 13 row 0x009DA9F0): Render2DDrawList calls PrepareToRender() and the
+    // five-argument Render through the vtable with `true` / a null texture pushed (no forwarding helper exists in either PDB).
+    virtual void PrepareToRender(bool = true) const = 0;                 // slot 3
     virtual bool Preload(const CWideString& text, bool) const;           // slot 4 0x009A0B20
-    virtual void Render(const CWideString& text, const C3DVector& pos, float scale, const CRGBColour& colour, unsigned long flags, const CTexture* texture) const = 0;   // slot 5
+    virtual void Render(const CWideString& text, const C3DVector& pos, float scale, const CRGBColour& colour, unsigned long flags, const CTexture* texture = 0) const = 0;   // slot 5
     float GetVFontMaxHeight() const { return GFAYToVY(GetFontMaxHeight()); }
     C2DExtentsF GetVStringExtents(const CWideString& text) const
     {

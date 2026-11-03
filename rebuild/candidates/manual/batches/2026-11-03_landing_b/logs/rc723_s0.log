@@ -1,0 +1,49 @@
+addr       parity           behav  name
+006286f0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+006286f0   WARN RELOC_NAME: ?SetEnabled25_009915e0@CASoundManager@@QAEX_N@Z -> 009915e0 labelled 'CWorld::SetMiniMapEnabled'
+006286f0   WARN RELOC_NAME: ?SetEnabled26_00991620@CASoundManager@@QAEX_N@Z -> 00991620 labelled 'CTCDParticleEmitter::func_00991620'
+006286f0   WARN RELOC_NAME: ?Sprintf@CWideString@@QAAXPBGZZ -> 0099ba70 labelled 'CWideString::Format'
+006286f0   RELOCATION_MATCH PASS   GFPlayFullScreenXBoxMovie
+00b36ec0   RELOCATION_MATCH PASS   ~CEnginePrimitiveRendererSharedData
+00b677d0   WARN RELOC_NAME: ?g_renderStateValue_01396dc8@@3KA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+00b677d0   RELOCATION_MATCH PASS   SetupForegroundStates
+00b67920   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00b67920   RELOCATION_MATCH PASS   ~CEngineLandscapeRenderer
+00b6d420   WARN SHARED_HEADER_AVAILABLE CEngineWaterRenderer
+00b6d420   WARN RELOC_NAME: ??0CWaterSeaGenerator_00b6d420@@QAE@XZ -> 00be9140 labelled 'CFourierAnalysis::CFourierAnalysis'
+00b6d420   WARN RELOC_NAME: ??1CWaterSeaGenerator_00b6d420@@QAE@XZ -> 00be9150 labelled '_global::Nop_ret0_00be9150'
+00b6d420   RELOCATION_MATCH PASS   LoadSea
+00b6d480   WARN SHARED_HEADER_AVAILABLE CIndexBuffer
+00b6d480   WARN SHARED_HEADER_AVAILABLE CVertexBufferWin32
+00b6d480   WARN SHARED_HEADER_AVAILABLE CEngineWaterRenderer
+00b6d480   RELOCATION_MATCH PASS   ReleaseSeaBuffers
+00b6d4d0   WARN SHARED_HEADER_AVAILABLE CEngineWaterRenderer
+00b6d4d0   RELOCATION_MATCH PASS   OpenStaticMapForUse
+00b6d500   MATCH            PASS   FrameEnd
+00b6d630   WARN RELOC_NAME: ?g_pEngine_01436e98@@3PAUCEngineGlobal_01436e98@@A -> 01436e98 labelled 'g_pResourceManager'
+00b6d630   WARN RELOC_NAME: ?Release@CTexturePool_00f36f00@@QAEXPAX@Z -> 00f36f00 labelled '_global::Nop_ret4_00f36f00'
+00b6d630   RELOCATION_MATCH PASS   FinishUsingDynamicTextures
+00b6d6a0   MATCH            PASS   SetEffectQuality
+00b6d6d0   WARN RELOC_NAME: ?WorldFrameUpdate@CEngineWaterSettings@@QAEX_N@Z -> 00be95f0 labelled 'CEngineWaterSettings::UpdateWorldFrameState'
+00b6d6d0   RELOCATION_MATCH PASS   WorldFrameUpdate
+00b6d940   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00b6d940   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream
+00b6d940   WARN SHARED_HEADER_AVAILABLE CVertexBufferWin32
+00b6d940   WARN SHARED_HEADER_AVAILABLE CEngineResourceManager
+00b6d940   WARN SHARED_HEADER_AVAILABLE CEngineWaterRenderer
+00b6d940   WARN RELOC_NAME: ?g_pEngineResourceManager_01436e98@@3PAVCEngineResourceManager@@A -> 01436e98 labelled 'g_pResourceManager'
+00b6d940   RELOCATION_MATCH PASS   LoadCompressedBuffer
+
+WINS: 12
+  006286f0 RELOCATION_MATCH _global::?GFPlayFullScreenXBoxMovie@@YI_NABVCCharString@@KKKKPBVCDataBank@NGameText@@PAVCIEngine@@_NMP6I_NXZPAVCXMVPlayerBuffers@@PAVCWideString@@@Z
+  00b36ec0 RELOCATION_MATCH CEnginePrimitiveRendererSharedData::??1CEnginePrimitiveRendererSharedData@@UAE@XZ
+  00b677d0 RELOCATION_MATCH CEngineLandscapeRenderer::?SetupForegroundStates@CEngineLandscapeRenderer@@AAEXXZ
+  00b67920 RELOCATION_MATCH CEngineLandscapeRenderer::??1CEngineLandscapeRenderer@@UAE@XZ
+  00b6d420 RELOCATION_MATCH CEngineWaterRenderer::LoadSea
+  00b6d480 RELOCATION_MATCH CEngineWaterRenderer::ReleaseSeaBuffers
+  00b6d4d0 RELOCATION_MATCH CEngineWaterRenderer::OpenStaticMapForUse
+  00b6d500 MATCH CEngineWaterRenderer::FrameEnd
+  00b6d630 RELOCATION_MATCH CEngineWaterRenderer::FinishUsingDynamicTextures
+  00b6d6a0 MATCH CEngineWaterRenderer::SetEffectQuality
+  00b6d6d0 RELOCATION_MATCH CEngineWaterRenderer::?WorldFrameUpdate@CEngineWaterRenderer@@UAEX_N@Z
+  00b6d940 RELOCATION_MATCH CEngineWaterRenderer::LoadCompressedBuffer

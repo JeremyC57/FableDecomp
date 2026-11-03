@@ -1,5 +1,106 @@
 #ifndef FABLE_ENGINE_CVERTEXSHADERCONSTANTLAYOUT_H
 #define FABLE_ENGINE_CVERTEXSHADERCONSTANTLAYOUT_H
+#ifdef FABLE_RETAIL_CVERTEXSHADERCONSTANTLAYOUT
+// Retail branch (one model, merged 2026-11-03: chunk 723b CShaderRenderManager::PrepareForRender + Codex pass 13 0x00989CB0 /
+// 0x0098ACF0 / 0x009DA9F0; Codex's FABLE_RETAIL_SHADER_LIGHTING / _RENDER2D_TYPES variants folded in): the polymorphic class (RTTI : CBaseClass; ??1CVertexShaderConstantLayout@@UAE@XZ,
+// virtual PeekName) with typed members: Ego_r.pdb names and offsets (the 28 CShaderConstantRange members hold no container, so
+// retail = Ego_r up to ReservedPresets +0x140, a 12-byte STLport CArray<CVertexShaderConstant>: retail reads its start +0x140 and
+// finish +0x144, 0x00B709BB). sizeof 0x14C.
+#include <stddef.h>
+#include "rebuild_abi.h"
+#include "fable_string.h"
+#include "engine/CArray.h"
+#include "engine/CBaseClass.h"
+#include "engine/CShaderConstantRange.h"
+#include "engine/CVertexShaderConstant.h"
+class CVertexShaderConstantLayout : public CBaseClass {
+    friend class CShaderRenderManager;
+public:
+    CVertexShaderConstantLayout();                                       // ??0CVertexShaderConstantLayout@@QAE@XZ
+    virtual ~CVertexShaderConstantLayout();                              // ??1CVertexShaderConstantLayout@@UAE@XZ
+    virtual CCharString PeekName() const;                                // ?PeekName@CVertexShaderConstantLayout@@UBE?AVCCharString@@XZ
+    // Accessors (Ego_r.pdb / FableWin.pdb declarations, as Codex pass 13 cited them for 0x009DA9F0).
+    CShaderConstantRange GetReserved() const;
+    CShaderConstantRange GetUser() const;
+    CShaderConstantRange GetCompression() const;
+    CShaderConstantRange GetAmbient() const;
+    CShaderConstantRange GetFogColour() const;
+    CShaderConstantRange GetCameraPos() const;
+    unsigned long GetLightSize() const;                                  // ?GetLightSize@CVertexShaderConstantLayout@@QBEKXZ
+    CShaderConstantRange GetLightArray() const;
+    CShaderConstantRange GetLightGlobals() const;
+    CShaderConstantRange GetCombinedProjectionMatrix() const;
+    CShaderConstantRange GetWorldMatrix() const;
+    CShaderConstantRange GetSphereMapMatrix() const;
+    CShaderConstantRange GetFogTransform() const;
+    CShaderConstantRange GetTextureTransform(unsigned long) const;
+    CShaderConstantRange GetBoneMatrices() const;
+    CShaderConstantRange GetShadowTextureTransform();
+    CShaderConstantRange GetShadowFadeTransform();
+    CShaderConstantRange GetShadowFadeFactors();
+    CShaderConstantRange GetShadowedSpotlightFalloffTransform();
+    CShaderConstantRange GetShadowedSpotlightAttenuation();
+    CShaderConstantRange GetShadowedSpotlightColour();
+    CShaderConstantRange GetScreenSpaceTransformScale() const;
+    CShaderConstantRange GetScreenSpaceTransformOffset() const;
+    void SetReserved(const CShaderConstantRange&);
+    void SetUser(const CShaderConstantRange&);
+    void SetCompression(const CShaderConstantRange&);
+    void SetAmbient(const CShaderConstantRange&);
+    void SetFogColour(const CShaderConstantRange&);
+    void SetCameraPos(const CShaderConstantRange&);
+    void SetLightSize(unsigned long);
+    void SetLightArray(const CShaderConstantRange&);
+    void SetLightAttenuations(const CShaderConstantRange&);
+    void SetLightGlobals(const CShaderConstantRange&);
+    void SetCombinedProjectionMatrix(const CShaderConstantRange&);
+    void SetWorldMatrix(const CShaderConstantRange&);
+    void SetFogTransform(const CShaderConstantRange&);
+    void SetSphereMapMatrix(const CShaderConstantRange&);
+    void SetTextureTransform(unsigned long,const CShaderConstantRange&);
+    void SetBoneMatrices(const CShaderConstantRange&);
+    void SetShadowTextureTransform(const CShaderConstantRange&);
+    void SetShadowFadeTransform(const CShaderConstantRange&);
+    void SetShadowFadeFactors(const CShaderConstantRange&);
+    void SetShadowedSpotlightFalloffTransform(const CShaderConstantRange&);
+    void SetShadowedSpotlightAttenuation(const CShaderConstantRange&);
+    void SetShadowedSpotlightColour(const CShaderConstantRange&);
+    void SetScreenSpaceTransformScale(const CShaderConstantRange&);
+    void SetScreenSpaceTransformOffset(const CShaderConstantRange&);
+    void SetReservedPresets(const CArray<CVertexShaderConstant>&);
+    bool Validate(const CShaderConstantRange&) const;
+private:
+    bool RangeValidate(const CShaderConstantRange&,const CShaderConstantRange&,CArray<bool>&) const;
+    // Data: private in the PDB declarations; CShaderRenderManager (a friend) reads them in place (PrepareForRender,
+    // UpdateObjectSpaceLighting 0x00989CB0).
+    CShaderConstantRange Reserved;                          // +0x04
+    CShaderConstantRange User;                              // +0x10
+    CShaderConstantRange Compression;                       // +0x1c
+    CShaderConstantRange Ambient;                           // +0x28
+    CShaderConstantRange FogColour;                         // +0x34
+    CShaderConstantRange CameraPos;                         // +0x40
+    unsigned long        LightSize;                         // +0x4c
+    CShaderConstantRange LightArray;                        // +0x50
+    CShaderConstantRange LightGlobals;                      // +0x5c
+    CShaderConstantRange LightAttenuations;                 // +0x68
+    CShaderConstantRange CombinedProjectionMatrix;          // +0x74
+    CShaderConstantRange FogTransform;                      // +0x80
+    CShaderConstantRange WorldMatrix;                       // +0x8c
+    CShaderConstantRange SphereMapMatrix;                   // +0x98
+    CShaderConstantRange TextureTransform[4];               // +0xa4
+    CShaderConstantRange BoneMatrices;                      // +0xd4
+    CShaderConstantRange ShadowTextureTransform;            // +0xe0
+    CShaderConstantRange ShadowFadeTransform;               // +0xec
+    CShaderConstantRange ShadowFadeFactors;                 // +0xf8
+    CShaderConstantRange ShadowedSpotlightFalloffTransform; // +0x104
+    CShaderConstantRange ShadowedSpotlightAttenuation;      // +0x110
+    CShaderConstantRange ShadowedSpotlightColour;           // +0x11c
+    CShaderConstantRange ScreenSpaceTransformScale;         // +0x128
+    CShaderConstantRange ScreenSpaceTransformOffset;        // +0x134
+    CArray<CVertexShaderConstant> ReservedPresets;          // +0x140
+};
+FABLE_STATIC_ASSERT(sizeof(CVertexShaderConstantLayout) == 0x14c);
+#else // flattened Ego_r layout (the landed default, unchanged)
 // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
 // Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CVertexShaderConstantLayout = 0x150.
 // Container layout: retail STLport 4.6 (list 4, vector/map/set/string/CArray 0xc, deque 0x28, CVectorMap 0x10, bases from Fable.exe RTTI): sizeof CVertexShaderConstantLayout = 0x14c.
@@ -68,5 +169,7 @@ FABLE_STATIC_ASSERT(offsetof(CVertexShaderConstantLayout, ShadowedSpotlightColou
 FABLE_STATIC_ASSERT(offsetof(CVertexShaderConstantLayout, ScreenSpaceTransformScale) == 0x128);
 FABLE_STATIC_ASSERT(offsetof(CVertexShaderConstantLayout, ScreenSpaceTransformOffset) == 0x134);
 FABLE_STATIC_ASSERT(offsetof(CVertexShaderConstantLayout, ReservedPresets) == 0x140);
+
+#endif // FABLE_RETAIL_CVERTEXSHADERCONSTANTLAYOUT
 
 #endif // FABLE_ENGINE_CVERTEXSHADERCONSTANTLAYOUT_H

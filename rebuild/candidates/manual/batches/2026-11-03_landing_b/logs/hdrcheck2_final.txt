@@ -1,0 +1,57 @@
+CHANGED engine/C2DBoxF.h default=same[2] FABLE_RETAIL_C2DBOXF=DIFF[3]
+NEW    engine/C3DIndexedBoneWeight.h
+NEW    engine/C3DMeshFileLoader.h
+CHANGED engine/C3DMeshFileTrianglesChunk.h default=same[25] FABLE_RETAIL_C3DMESHFILETRIANGLESCHUNK=DIFF[25] FABLE_RETAIL_CCHUNKEDFILECHUNK=same[25] FABLE_RETAIL_CCHUNKEDFILESUPERCHUNK=same[25]
+NEW    engine/C3DMeshFileXAnimatedPrimitiveBlockChunk.h
+CHANGED engine/C3DMeshFileXAnimatedPrimitiveChunk.h default=same[27] FABLE_RETAIL_C3DMESHFILEXANIMATEDPRIMITIVECHUNK=DIFF[27] FABLE_RETAIL_CCHUNKEDFILECHUNK=same[27] FABLE_RETAIL_CCHUNKEDFILESUPERCHUNK=same[27]
+CHANGED engine/C3DMeshFileXBoundingBoxChunk.h default=same[33] FABLE_RETAIL_C3DMESHFILEXBOUNDINGBOXCHUNK=DIFF[33] FABLE_RETAIL_CCHUNKEDFILECHUNK=same[33]
+CHANGED engine/C3DMeshFileXBoundingSphereChunk.h default=same[29] FABLE_RETAIL_C3DMESHFILEXBOUNDINGSPHERECHUNK=DIFF[29] FABLE_RETAIL_CCHUNKEDFILECHUNK=same[29]
+NEW    engine/C3DMeshFileXLoader.h
+CHANGED engine/C3DMeshFileXMappingInfoChunk.h default=same[23] FABLE_RETAIL_C3DMESHFILEXMAPPINGINFOCHUNK=DIFF[23] FABLE_RETAIL_CCHUNKEDFILECHUNK=same[23]
+CHANGED engine/C3DMeshFileXTextureIndexChunk.h default=same[22] FABLE_RETAIL_C3DMESHFILEXTEXTUREINDEXCHUNK=DIFF[22] FABLE_RETAIL_CCHUNKEDFILECHUNK=same[22]
+CHANGED engine/C3DMeshFileXTriangleStripChunk.h default=same[23] FABLE_RETAIL_C3DMESHFILEXTRIANGLESTRIPCHUNK=DIFF[23] FABLE_RETAIL_CCHUNKEDFILECHUNK=same[23]
+CHANGED engine/C3DMeshFileXUVTangentChunk.h default=same[25] FABLE_RETAIL_C3DMESHFILEXUVTANGENTCHUNK=DIFF[25] FABLE_RETAIL_CCHUNKEDFILECHUNK=same[25]
+CHANGED engine/C3DMeshFileXVertexDataChunk.h default=same[47] FABLE_RETAIL_C3DMESHFILEXVERTEXDATACHUNK=DIFF[47] FABLE_RETAIL_CCHUNKEDFILECHUNK=same[47]
+CHANGED engine/C4DVector.h default=same[45] FABLE_RETAIL_C4DVECTOR=DIFF[45]
+CHANGED engine/CChunkedFileChunk.h default=same[24] FABLE_RETAIL_CCHUNKEDFILECHUNK=DIFF[227]
+NEW    engine/CChunkedFileLoader.h
+CHANGED engine/CChunkedFileSuperChunk.h default=same[27] FABLE_RETAIL_CCHUNKEDFILESUPERCHUNK=DIFF[43]
+CHANGED engine/CDisplayManager.h default=same[588] FABLE_RETAIL_CDISPLAYMANAGER=DIFF[595] FABLE_RETAIL_SCOPED_PTR=same[593]
+CHANGED engine/CFontBank.h default=same[26] FABLE_RETAIL_CFONTBANK=DIFF[128]
+NEW    engine/CIndexedArray.h
+NEW    engine/CMatrix4x4.h
+NEW    engine/CPreTransposedBoneMatrix.h
+NEW    engine/CQuickDrawTriInfo.h
+NEW    engine/CRGBFloatColour.h
+CHANGED engine/CRenderManager2D.h default=same[60] FABLE_RETAIL_CRENDERMANAGER2D=DIFF[148] FABLE_RETAIL_CRENDERMANAGERCORE=same[60] FABLE_RETAIL_CVERTEXSHADER=same[60] FABLE_RETAIL_RENDER2D_TYPES=same[60]
+CHANGED engine/CRenderManagerCore.h default=same[3810] FABLE_RETAIL_CBASICSTRING_EQ_OUTOFLINE=same[3810] FABLE_RETAIL_CINDEXBUFFER=same[3810] FABLE_RETAIL_CRENDERMANAGERCORE=DIFF[50] FABLE_RETAIL_CRENDERMANAGERCORE_FORCEINLINE_HELPERS=same[3810] FABLE_RETAIL_CRENDERSTATEMANAGER=same[3810] FABLE_RETAIL_CTEXTURE=same[3810] FABLE_RETAIL_CVERTEXBUFFERWIN32=same[3810] FABLE_RETAIL_RENDER2D_TYPES=same[3810]
+NEW    engine/CRenderStateCaptureBlock.h
+CHANGED engine/CRenderStateManager.h default=same[42] FABLE_RETAIL_CRENDERSTATEMANAGER=DIFF[42] FABLE_RETAIL_RENDER2D_TYPES=same[42] FABLE_RETAIL_RENDERSTATE_EXPAND_SET=same[42]
+NEW    engine/CScopedShadersEnable.h
+NEW    engine/CScopedVertexShaderConstantLayout.h
+NEW    engine/CShaderConstantRange.h
+NEW    engine/CShaderGenericLight.h
+NEW    engine/CShaderRenderManager.h
+CHANGED engine/CShaderResource.h default=DIFF[130]
+NEW    engine/CStateBlockFunctionBase.h
+NEW    engine/CTCCameraCollision.h
+NEW    engine/CTCHitLocations.h
+NEW    engine/CTVertexRHWColSpecTex1.h
+CHANGED engine/CTexture.h default=same[23] FABLE_RETAIL_CTEXTURE=DIFF[37]
+CHANGED engine/CThingPhysical.h default=same[60] FABLE_RETAIL_CCLASS=same[60] FABLE_RETAIL_CTHINGPHYSICAL=DIFF[1172] FABLE_RETAIL_DEF_CLASS_BASE=same[60]
+NEW    engine/CVertexGroupBlock.h
+NEW    engine/CVertexShaderConstant.h
+CHANGED engine/CVertexShaderConstantLayout.h default=same[68] FABLE_RETAIL_CVERTEXSHADERCONSTANTLAYOUT=DIFF[68] FABLE_RETAIL_SHADER_LIGHTING=same[68]
+NEW    engine/CVertexShaderConstantLayoutEmpty.h
+NEW    engine/EPrimitiveType.h
+NEW    engine/EVertexType.h
+NEW    engine/IDirect3DDevice9.h
+NEW    engine/NCameraModes_CTools.h
+NEW    engine/NUISystem_CKeyRedefiner.h
+CHANGED engine/NUISystem_CList.h default=same[1283] FABLE_RETAIL_CLIST=DIFF[1283]
+CHANGED engine/NUISystem_CManager.h default=same[1237] FABLE_RETAIL_CMANAGER=DIFF[1237]
+NEW    engine/NUISystem_CScrollingViewport.h
+NEW    engine/NUISystem_CViewport.h
+NEW    engine/RenderStateEnums.h
+CHANGED stlport/fable_containers.h default=same[350] FABLE_RETAIL_STLP_LIST=DIFF[350] FABLE_RETAIL_STLP_VECTOR=same[371]
+CHANGED stlport/fable_map.h default=same[567] FABLE_RETAIL_STLP_MAP=DIFF[586]

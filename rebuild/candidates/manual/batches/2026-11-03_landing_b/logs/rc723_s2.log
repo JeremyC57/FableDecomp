@@ -1,0 +1,93 @@
+addr       parity           behav  name
+00b7ed70   MATCH            PASS   PeekSceneFilterFlags
+00b7ed80   RELOCATION_MATCH PASS   GetConsoleEnableFunctionName
+00b7ee60   WARN SHARED_HEADER_AVAILABLE CEngineWaterRenderer
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00b7ee60.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00b7ee60.obj; graded the largest function
+00b7ee60   WARN RELOC_NAME: ?Dtor@CEngineWaterRenderer@@QAEXXZ -> 00b71880 labelled 'CEngineWaterRenderer::~CEngineWaterRenderer'
+00b7ee60   RELOCATION_MATCH PASS   `scalar_deleting_destructor'
+00b7eec0   WARN SHARED_HEADER_AVAILABLE C4DVector
+00b7eec0   WARN SHARED_HEADER_AVAILABLE CRGBFloatColour
+00b7eec0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00b7eec0   WARN SHARED_HEADER_AVAILABLE CPreTransposedBoneMatrix
+00b7eec0   WARN SHARED_HEADER_AVAILABLE CArray
+00b7eec0   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange
+00b7eec0   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout
+00b7eec0   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+00b7eec0   WARN SHARED_HEADER_AVAILABLE CEngineWaterSettings
+00b7eec0   WARN SHARED_HEADER_AVAILABLE CEngineWaterRenderer
+00b7eec0   WARN RELOC_NAME: ?UpdateBoneTransform@CShaderRenderManager@@AAEXXZ -> 0098a8e0 labelled 'CShaderRenderManager::UpdateBoneMatrices'
+00b7eec0   WARN RELOC_NAME: ?UpdateCameraPos@CShaderRenderManager@@AAEXXZ -> 00989700 labelled 'CShaderRenderManager::UpdateAmbient'
+00b7eec0   RELOCATION_MATCH PASS   SetupForegroundShaderConstantsAndFog
+00b7f0f0   WARN SHARED_HEADER_AVAILABLE C4DVector
+00b7f0f0   WARN SHARED_HEADER_AVAILABLE CRGBFloatColour
+00b7f0f0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00b7f0f0   WARN SHARED_HEADER_AVAILABLE CPreTransposedBoneMatrix
+00b7f0f0   WARN SHARED_HEADER_AVAILABLE CArray
+00b7f0f0   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange
+00b7f0f0   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout
+00b7f0f0   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+00b7f0f0   WARN SHARED_HEADER_AVAILABLE CEngineWaterSettings
+00b7f0f0   WARN SHARED_HEADER_AVAILABLE CEngineLightingManager
+00b7f0f0   WARN SHARED_HEADER_AVAILABLE CEngineWaterRenderer
+00b7f0f0   WARN RELOC_NAME: ?g_pLightingManager@@3PAVCEngineLightingManager@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00b7f0f0   WARN RELOC_NAME: ?UpdateBoneTransform@CShaderRenderManager@@AAEXXZ -> 0098a8e0 labelled 'CShaderRenderManager::UpdateBoneMatrices'
+00b7f0f0   WARN RELOC_NAME: ?UpdateCameraPos@CShaderRenderManager@@AAEXXZ -> 00989700 labelled 'CShaderRenderManager::UpdateAmbient'
+00b7f0f0   RELOCATION_MATCH PASS   SetupBackgroundShaderConstantsAndFog
+00b7f3b0   WARN SHARED_HEADER_AVAILABLE C4DVector
+00b7f3b0   WARN SHARED_HEADER_AVAILABLE CRGBFloatColour
+00b7f3b0   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00b7f3b0   WARN SHARED_HEADER_AVAILABLE CPreTransposedBoneMatrix
+00b7f3b0   WARN SHARED_HEADER_AVAILABLE CArray
+00b7f3b0   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange
+00b7f3b0   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout
+00b7f3b0   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+00b7f3b0   WARN SHARED_HEADER_AVAILABLE CEngineWaterSettings
+00b7f3b0   WARN SHARED_HEADER_AVAILABLE CEngineWaterRenderer
+00b7f3b0   WARN RELOC_NAME: ?UpdateBoneTransform@CShaderRenderManager@@AAEXXZ -> 0098a8e0 labelled 'CShaderRenderManager::UpdateBoneMatrices'
+00b7f3b0   WARN RELOC_NAME: ?UpdateCameraPos@CShaderRenderManager@@AAEXXZ -> 00989700 labelled 'CShaderRenderManager::UpdateAmbient'
+00b7f3b0   RELOCATION_MATCH PASS   SetupIceForegroundShaderConstantsAndFog
+00b7f600   WARN SHARED_HEADER_AVAILABLE C4DVector
+00b7f600   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00b7f600   WARN SHARED_HEADER_AVAILABLE CPreTransposedBoneMatrix
+00b7f600   WARN SHARED_HEADER_AVAILABLE CArray
+00b7f600   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange
+00b7f600   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout
+00b7f600   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+00b7f600   WARN SHARED_HEADER_AVAILABLE CEngineWaterSettings
+00b7f600   WARN RELOC_NAME: ?UpdateBoneTransform@CShaderRenderManager@@AAEXXZ -> 0098a8e0 labelled 'CShaderRenderManager::UpdateBoneMatrices'
+00b7f600   WARN RELOC_NAME: ?UpdateCameraPos@CShaderRenderManager@@AAEXXZ -> 00989700 labelled 'CShaderRenderManager::UpdateAmbient'
+00b7f600   RELOCATION_MATCH PASS   SetupBackgroundShaderConstants
+00b7fa20   WARN SHARED_HEADER_AVAILABLE C4DVector
+00b7fa20   WARN SHARED_HEADER_AVAILABLE CRGBFloatColour
+00b7fa20   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00b7fa20   WARN SHARED_HEADER_AVAILABLE CPreTransposedBoneMatrix
+00b7fa20   WARN SHARED_HEADER_AVAILABLE CArray
+00b7fa20   WARN SHARED_HEADER_AVAILABLE CShaderConstantRange
+00b7fa20   WARN SHARED_HEADER_AVAILABLE CVertexShaderConstantLayout
+00b7fa20   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+00b7fa20   WARN SHARED_HEADER_AVAILABLE CEngineWaterSettings
+00b7fa20   WARN SHARED_HEADER_AVAILABLE CEnvironment
+00b7fa20   WARN SHARED_HEADER_AVAILABLE CEngineWaterRenderer
+00b7fa20   WARN RELOC_NAME: ?UpdateBoneTransform@CShaderRenderManager@@AAEXXZ -> 0098a8e0 labelled 'CShaderRenderManager::UpdateBoneMatrices'
+00b7fa20   WARN RELOC_NAME: ?UpdateCameraPos@CShaderRenderManager@@AAEXXZ -> 00989700 labelled 'CShaderRenderManager::UpdateAmbient'
+00b7fa20   RELOCATION_MATCH PASS   SetupSeaNonReflectiveForegroundShaderConstantsAndFog
+00bc14e0   RELOCATION_MATCH PASS   CEnginePrimitiveManagerParticleSpriteGroup
+00bc9800   WARN SHARED_HEADER_AVAILABLE CRenderStateCaptureBlock
+00bc9800   RELOCATION_MATCH PASS   RenderPrimitive
+00c2a890   WARN RELOC_NAME: ?SendMessage012b4168@CNavigatorSwitch@@QAEXXZ -> 00c2a700 labelled '_unattributed::OnActivate_00c2a700'
+00c2a890   WARN RELOC_NAME: ?SendMessage012b4170@CNavigatorSwitch@@QAEXXZ -> 00c2a750 labelled '_unattributed::OnActivate_00c2a750'
+00c2a890   RELOCATION_MATCH PASS   SendStateAndReset
+
+WINS: 11
+  00b7ed70 MATCH CEngineWaterRenderer::PeekSceneFilterFlags
+  00b7ed80 RELOCATION_MATCH CEngineWaterRenderer::GetConsoleEnableFunctionName
+  00b7ee60 RELOCATION_MATCH CEngineWaterRenderer::`scalar_deleting_destructor'
+  00b7eec0 RELOCATION_MATCH CEngineWaterRenderer::SetupForegroundShaderConstantsAndFog
+  00b7f0f0 RELOCATION_MATCH CEngineWaterRenderer::SetupBackgroundShaderConstantsAndFog
+  00b7f3b0 RELOCATION_MATCH CEngineWaterRenderer::SetupIceForegroundShaderConstantsAndFog
+  00b7f600 RELOCATION_MATCH CEngineWaterRenderer::SetupBackgroundShaderConstants
+  00b7fa20 RELOCATION_MATCH CEngineWaterRenderer::SetupSeaNonReflectiveForegroundShaderConstantsAndFog
+  00bc14e0 RELOCATION_MATCH CEnginePrimitiveManagerParticleSpriteGroup::??0CEnginePrimitiveManagerParticleSpriteGroup@@QAE@AAV?$CArray@PAVCEngineScene@@@@@Z
+  00bc9800 RELOCATION_MATCH CEnginePrimitiveManagerLines::?RenderPrimitive@CEnginePrimitiveManagerLines@@UAE?AW4ERendered@@AAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@AAVCEngineSubPrimitiveChain@@@Z
+  00c2a890 RELOCATION_MATCH CNavigatorSwitch::?SendStateAndReset@CNavigatorSwitch@@QAEXXZ

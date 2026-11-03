@@ -1,0 +1,42 @@
+addr       parity           behav  name
+0065b854   WARN RELOC_NAME: ?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z -> 006bb390 labelled '`anonymousnamespace'::Game_IsTimeOfDayInRange'
+0065b854   RELOCATION_MATCH PASS   AddThingToVillage
+00666ef0   RELOCATION_MATCH PASS   AutoPlaceNearBuilding
+00667d30   WARN RELOC_NAME: ?SetLifeTime@CTCFlashOnHit@@QAEXJ@Z -> 007e33a0 labelled 'OnPostParentRelocation'
+00667d30   WARN RELOC_NAME: ?IsMeleeStrike@CHitParameters@@QBE_NXZ -> 00868860 labelled 'CStateMapOwner_00868860::HasStateZeroOrOne'
+00667d30   WARN RELOC_NAME: ?AddHitByMelee@CPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z -> 00437990 labelled '_global::Forward_InitParticleEmitter_via0x150_00437990'
+00667d30   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00667d30   RELOCATION_MATCH PASS   OnHit
+00667450   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00667450   WARN RELOC_NAME: ?GetHitKnockdownDeathActionType@CHitLocation@NHitLocations@@QBE?AW4EActionRegisteredType@@XZ -> 008152b0 labelled '_global::GetMember_dword0x4_deref0x54_008152b0'
+00667450   WARN RELOC_NAME: ??1?$CCountedPointer@VCCreatureActionBase@@@@QAE@XZ -> 0048c5c0 labelled '_global::CCountedPointer_Release_0048c5c0'
+00667450   WARN RELOC_NAME: ?GetHitKnockdownActionType@CHitLocation@NHitLocations@@QBE?AW4EActionRegisteredType@@XZ -> 008152a0 labelled '_global::GetMember_dword0x4_deref0x50_008152a0'
+00667450   WARN RELOC_NAME: ?GetHitResponseActionType@CHitLocation@NHitLocations@@QBE?AW4EActionRegisteredType@@XZ -> 00815290 labelled '_global::GetMember_dword0x4_deref0x48_00815290'
+00667450   WARN RELOC_NAME: ??1CCombatAction_GenericResponseToExplosion@@UAE@XZ -> 0066a670 labelled '_global::Dtor_CCombatActionBaseBase_0066a670'
+00667450   WARN RELOC_NAME: ??1CCombatAction_GenericStrikeResponseBase@@UAE@XZ -> 0066a510 labelled '_global::Dtor_CCombatActionBaseBase_0066a510'
+00667450   RELOCATION_MATCH PASS   ReactToGenericStrike
+007355f0   RELOCATION_MATCH PASS   SetCombatType
+  WARN leaf '?InitializeStreamingFontTextureCache@?A0xfe46a155@@YIXPAVCStreamingFontDataBank@@@Z' matches no symbol in 009a3640.obj; graded the largest function
+  WARN leaf '?InitializeStreamingFontTextureCache@?A0xfe46a155@@YIXPAVCStreamingFontDataBank@@@Z' matches no symbol in 009a3640.obj; graded the largest function
+009a3640   WARN RELOC_NAME: ?EnterSynchronisation@CMemoryAllocator@@KIXXZ -> 009f2000 labelled 'GFEnterAllocatorLock'
+009a3640   WARN RELOC_NAME: ?LeaveSynchronisation@CMemoryAllocator@@KIXXZ -> 009f2010 labelled 'GFLeaveAllocatorLock'
+009a3640   WARN RELOC_NAME: ?ReadData@CStreamingFontDataBank@@QAEXPAXKK@Z -> 00a5ef30 labelled 'std::vector<CCharString,std::allocator<CCharString>_>::_Ucopy<std::_Tree_const_iterator<std::_Tree_val<std::_Tset_traits<CCharString,std::less<CCharString>,std::allocator<CCharString>,0>_>_>_>'
+009a3640   RELOCATION_MATCH PASS   InitializeStreamingFontTextureCache
+009c0880   WARN RELOC_NAME: ??0CBusyResourceManager@@QAE@XZ -> 00a61880 labelled 'CDirectInputDeviceLists_00a61b10::CDirectInputDeviceLists_00a61b10'
+009c0880   RELOCATION_MATCH PASS   CDisplayManager
+00a3b970   RELOCATION_MATCH PASS   ~CTextureRenderer
+00a4fe60   WARN RELOC_NAME: ??1?$CCountedPointer@VC3DAnimFileXAllocationSizeChunk@@@@QAE@XZ -> 00a52f40 labelled '_global::CCountedPointer_Release_00a52f40'
+00a4fe60   WARN RELOC_NAME: ?HasMovementTrack@C3DAnimFileMovementVectorChunk@@QBE_NXZ -> 00aae920 labelled 'C3DAnimFileRootChunk::HasSequences'
+00a4fe60   WARN RELOC_NAME: ?InitialiseFromFileData@C3DAnimationSequenceData@@QAE_NABVC3DAnimFileSequenceChunk@@AAVCSimpleMemoryPool@@@Z -> 00a4efc0 labelled 'C3DKeyframe_InitialiseAsConstant'
+00a4fe60   RELOCATION_MATCH PASS   InitialiseSharedAnimation
+
+WINS: 9
+  0065b854 RELOCATION_MATCH CTCVillage::?AddThingToVillage@CTCVillage@@QAEXAAVCThing@@@Z
+  00666ef0 RELOCATION_MATCH CThingCreatureBase::?AutoPlaceNearBuilding@CThingCreatureBase@@QAE_NPBVCThingBuilding@@M@Z
+  00667d30 RELOCATION_MATCH CThingCreatureBase::?OnHit@CThingCreatureBase@@UAEXAAVCHitParameters@@@Z
+  00667450 RELOCATION_MATCH CThingCreatureBase::?ReactToGenericStrike@CThingCreatureBase@@IAEXABVCHitParameters@@@Z
+  007355f0 RELOCATION_MATCH CTCCombat::?SetCombatType@CTCCombat@@QAEXABV?$CDefPointer@$$CBVCCombatTypeDef@@@@@Z
+  009a3640 RELOCATION_MATCH _global (anon namespace)::?InitializeStreamingFontTextureCache@?A0xfe46a155@@YIXPAVCStreamingFontDataBank@@@Z
+  009c0880 RELOCATION_MATCH CDisplayManager::??0CDisplayManager@@QAE@AAVCSystemManager@@@Z
+  00a3b970 RELOCATION_MATCH CTextureRenderer::??1CTextureRenderer@@UAE@XZ
+  00a4fe60 RELOCATION_MATCH C3DAnimation2::?InitialiseSharedAnimation@C3DAnimation2@@QAE_NABVC3DAnimFile@@W4EAnimationType@@@Z

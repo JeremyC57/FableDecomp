@@ -29,9 +29,20 @@ public:
     bool Initialise(const C2DExtentsI&,long,const CPixelFormat&,unsigned long,ESurfacePool,bool,bool);
     CTexture(const CTexture& other);                                     // 0x009F9D00 ??0CTexture@@QAE@ABV0@@Z
     ~CTexture() { Uninitialise(); }                                      // inline (Ego_r lists no ??1CTexture)
-    CTexture& operator=(const CTexture& other);                          // 0x009FA1C0
+    // 0x009FA1C0: Ego_r.pdb ??4CTexture@@QAEABV0@ABV0@@Z returns a const reference (2026-11-03 landing b; was spelled
+    // CTexture& here, a second spelling of the address).
+    const CTexture& operator=(const CTexture& other);
     void Uninitialise();                                                 // 0x009F9F70 ?Uninitialise@CTexture@@QAEXXZ
     void CopyFromTexture(const CTexture&,unsigned long);                 // 0x009FA4E0 ?CopyFromTexture@CTexture@@QAEXABV1@K@Z (Ego_r + FableWin)
+    // 2026-11-03 landing b (Codex pass 13 row 0x009DA9F0 CRenderManager2D::Render2DDrawList; chunk 723c 0x00B70A90): Ego_r.pdb
+    // ??0CTexture@@QAE@PAUIDirect3DTexture9@@@Z (inline in retail: `CTexture(0)` temporaries are built in place and call
+    // ?InitialiseFromPreallocatedTexture@CTexture@@QAE_NPAUIDirect3DTexture9@@@Z), the inline IsValid / GetD3DTexture accessors
+    // and ?GetDimensions@CTexture@@QBE?AVC2DExtentsI@@K@Z 0x009F9DB0.
+    CTexture(IDirect3DTexture9* texture) : PD3DTexture(0), AllocationSource(0) { InitialiseFromPreallocatedTexture(texture); }
+    bool InitialiseFromPreallocatedTexture(IDirect3DTexture9* texture);
+    bool IsValid() const { return PD3DTexture != 0; }
+    IDirect3DTexture9* GetD3DTexture() const { return PD3DTexture; }
+    C2DExtentsI GetDimensions(unsigned long mipmapLevel) const;
     IDirect3DTexture9* PD3DTexture;                                      // +0x00
     unsigned long      ByteLength : 28;                                  // +0x04 bits 0..27
     unsigned long      AllocationSource : 4;                             // +0x04 bits 28..31

@@ -14,6 +14,7 @@ virtual ~CChunkedFileSuperChunk();
 virtual int IsSuperChunk() const;
 virtual const CChunkedFileSuperChunk* GetAsSuperChunk() const;
 virtual CChunkedFileSuperChunk* GetAsSuperChunk();
+void RegisterSubChunkType(const CCountedPointer<CChunkedFileChunk>&);   // 0x00AA87E0 (FableWin QAE; chunk 725b)
 CCountedPointer<CChunkedFileChunk> FindFirstSubChunkOfType(const char*);
 const CCountedPointer<CChunkedFileChunk> FindFirstSubChunkOfType(const char*) const;
 virtual void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&);

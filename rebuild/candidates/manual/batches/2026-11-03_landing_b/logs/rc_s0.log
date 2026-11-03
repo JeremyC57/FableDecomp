@@ -1,0 +1,35 @@
+addr       parity           behav  name
+0047a9f0   WARN RELOC_NAME: ?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z -> 00403c60 labelled 'MemCmp_Unsigned16'
+0047a9f0   WARN RELOC_NAME: ??$__destroy_aux@PAVCHeroLogBookEntry@CHeroLogBook@@@std@@YIXPAVCHeroLogBookEntry@CHeroLogBook@@0ABU__false_type@0@@Z -> 0047baf0 labelled 'std::__destroy_aux<CHeroLogBook::CHeroLogBookEntry*>'
+0047a9f0   RELOCATION_MATCH PASS   AddEntry
+00487570   WARN RELOC_NAME: ?Sprintf@CWideString@@QAAXPBGZZ -> 0099ba70 labelled 'CWideString::Format'
+00487570   RELOCATION_MATCH PASS   DrawFreeCamDebug
+00487dc0   RELOCATION_MATCH PASS   GetPControlledCreature
+00487b70   RELOCATION_MATCH PASS   GetPPlayerCharacterThing
+00487dd0   RELOCATION_MATCH PASS   PeekPControlledCreature
+004ff750   RELOCATION_MATCH PASS   CreateRelevantPersonAndUpdateStats
+00522a20   RELOCATION_MATCH PASS   InitThingTypes
+005eb9e0   RELOCATION_MATCH PASS   FrameUpdate
+00606300   WARN RELOC_NAME: ??$TransferVector@VCUIMiniMapMarker@CTCInventoryMap@@@CPersistContext@@QAEXPBDAAV?$vector@VCUIMiniMapMarker@CTCInventoryMap@@V?$allocator@VCUIMiniMapMarker@CTCInventoryMap@@@std@@@std@@@Z -> 00619710 labelled 'CPersistContext::Transfer<CUIMiniMapMarker>'
+00606300   WARN RELOC_NAME: ??$TransferVector@VCUIRegionInfo@CTCInventoryMap@@@CPersistContext@@QAEXPBDAAV?$vector@VCUIRegionInfo@CTCInventoryMap@@V?$allocator@VCUIRegionInfo@CTCInventoryMap@@@std@@@std@@@Z -> 006197d0 labelled 'CPersistContext::Transfer<CUIRegionInfo>'
+00606300   WARN RELOC_NAME: ??$TransferVector@_K@CPersistContext@@QAEXPBDAAV?$vector@_KV?$allocator@_K@std@@@std@@@Z -> 006192f0 labelled 'CPersistContext::Transfer<CTeleportUIDRecord>'
+00606300   WARN RELOC_NAME: ??1?$_List_base@PBVCThingMarker@@V?$allocator@PBVCThingMarker@@@std@@@std@@QAE@XZ -> 00615360 labelled '_global::StdList_Clear_00615360'
+00606300   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z -> 00433530 labelled 'std::vector::std::vector::Reallocate'
+00606300   RELOCATION_MATCH PASS   OnSerialise
+006286f0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+006286f0   WARN RELOC_NAME: ?SetEnabled25_009915e0@CASoundManager@@QAEX_N@Z -> 009915e0 labelled 'CWorld::SetMiniMapEnabled'
+006286f0   WARN RELOC_NAME: ?SetEnabled26_00991620@CASoundManager@@QAEX_N@Z -> 00991620 labelled 'CTCDParticleEmitter::func_00991620'
+006286f0   WARN RELOC_NAME: ?Sprintf@CWideString@@QAAXPBGZZ -> 0099ba70 labelled 'CWideString::Format'
+006286f0   RELOCATION_MATCH PASS   GFPlayFullScreenXBoxMovie
+
+WINS: 10
+  0047a9f0 RELOCATION_MATCH CHeroLogBook::?AddEntry@CHeroLogBook@@QAEXABVCWideString@@00W4ECategory@CHeroLogBookEntry@1@_N@Z
+  00487570 RELOCATION_MATCH CPlayer::?DrawFreeCamDebug@CPlayer@@QBEXPBVC2DBoxF@@ABVCFontBank@@@Z
+  00487dc0 RELOCATION_MATCH CPlayer::?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ
+  00487b70 RELOCATION_MATCH CPlayer::?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ
+  00487dd0 RELOCATION_MATCH CPlayer::?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ
+  004ff750 RELOCATION_MATCH _global::?CreateRelevantPersonAndUpdateStats@@YIPAVCThingAICreature@@MMJJAAJ0ABVC3DVector@@ABVCThingAICreatureInit@@PAVCTCVillage@@AAV?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@4_N@Z
+  00522a20 RELOCATION_MATCH CThingManager::?InitThingTypes@CThingManager@@QAEXXZ
+  005eb9e0 RELOCATION_MATCH CTCTavernGame::?FrameUpdate@CTCTavernGame@@UAEXXZ
+  00606300 RELOCATION_MATCH CTCInventoryMap::?OnSerialise@CTCInventoryMap@@MAEXAAVCPersistContext@@_N@Z
+  006286f0 RELOCATION_MATCH _global::?GFPlayFullScreenXBoxMovie@@YI_NABVCCharString@@KKKKPBVCDataBank@NGameText@@PAVCIEngine@@_NMP6I_NXZPAVCXMVPlayerBuffers@@PAVCWideString@@@Z

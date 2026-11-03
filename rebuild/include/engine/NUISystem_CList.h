@@ -83,7 +83,21 @@ protected: std::list<CCountedPointer<NUISystem::CAction>,std::allocator<CCounted
 protected: CCountedPointer<NUISystem::CAction> CPActionOnScrollUp;
 protected: CCountedPointer<NUISystem::CAction> CPActionOnScrollDown;
 protected: long DefaultChild;
+#ifdef FABLE_RETAIL_CLIST
+// Retail branch (chunk 726): the visibility flags are a 12-byte STLport vector<bool> with one byte per element (the
+// tree's vector<bool> is the primary template): ComputeChildrenVisibility 0x005379F5 reads begin +0x1C8 / end +0x1CC
+// and indexes bytes; every later member sits 4 below the default model: GetScrollBar 0x0053CE5F reads +0x1D8,
+// SetInitialPositionDummy 0x0053CE6D stores +0x1D4, SetRecomputeOffsets 0x0053CE7A +0x1E8, and the factory at
+// 0x0041D4AD allocates `push 1FCh` for the constructor 0x0053B63E.
+protected: std::vector<bool,std::allocator<bool> > ScrollingChildrenVisibility;
+// The static list of previously selected lists, 0x013B8A98: Ego_r.pdb names the dynamic initializer of
+// NUISystem::CList::GPreviousSelected and FableWin.pdb the accessor ?GetPreviousSelected@CList@NUISystem@@SIAAV?$list@PAVCList@NUISystem@@...
+// (the type); ChangeState 0x0053A0A1 walks it, reads its front and calls push_front 0x0053CA3C. Access is unproven
+// (the landed 0x005E41E0 clears it from outside the class), hence public.
+public: static std::list<NUISystem::CList *,std::allocator<NUISystem::CList *> > GPreviousSelected;
+#else
 protected: unsigned char ScrollingChildrenVisibility[16]; // actual STLport bit-vector, unused by this row.
+#endif
 protected: NUISystem::CComponent * PInitialPositionDummy;
 protected: NUISystem::CComponent * PScrollBar;
 protected: NUISystem::CComponent * PScrollBarOutside;
@@ -95,5 +109,9 @@ protected: C2DVector PDefPositionOffset;
 protected: unsigned char PDefAlphaOffset;
 };
 }
+#ifdef FABLE_RETAIL_CLIST
+FABLE_STATIC_ASSERT(sizeof(NUISystem::CList)==0x1fc);
+#else
 FABLE_STATIC_ASSERT(sizeof(NUISystem::CList)==0x200);
+#endif
 #endif

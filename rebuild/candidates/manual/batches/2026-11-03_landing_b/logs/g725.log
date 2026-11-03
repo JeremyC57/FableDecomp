@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00aa5c80   RELOCATION_MATCH PASS   C3DMeshFileXLoader
+
+WINS: 1
+  00aa5c80 RELOCATION_MATCH C3DMeshFileXLoader::??0C3DMeshFileXLoader@@QAE@XZ

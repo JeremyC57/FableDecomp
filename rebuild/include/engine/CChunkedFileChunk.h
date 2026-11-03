@@ -17,8 +17,11 @@ virtual const CCharString GetChunkDescription() const;
 virtual const CCharString GetChunkInfo() const;
 virtual int IsSuperChunk() const;
 virtual int IsUnknownType() const;
-virtual const CChunkedFileSuperChunk* GetAsSuperChunk() const;
+// GetAsSuperChunk overloads (chunk 725b): VC7.1 lays overloaded virtuals out in reverse declaration order and retail has the
+// non-const one at slot 6 (+0x18: C3DMeshFileXLoader ctor 0x00AA5C80 and CChunkedFileSuperChunk::InitNewInstance 0x00AA8460
+// call it on non-const chunks; 0x00AA7630 slot 6, 0x00AA7640 slot 5), so it is declared first.
 virtual CChunkedFileSuperChunk* GetAsSuperChunk();
+virtual const CChunkedFileSuperChunk* GetAsSuperChunk() const;
 virtual void ReadFromFile(CDataInputStream&,unsigned long,CChunkedFileLoader&)=0;
 virtual void WriteToFile(CDataOutputStream&,CChunkedFileSaver&) const=0;
 virtual CChunkedFileChunk* CreateNewInstance() const=0;

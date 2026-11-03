@@ -29,6 +29,9 @@ public:
     bool IsToRespondToHits() const { return RespondToHits; }
     bool IsKillable() const { return Killable; }
     bool IsDamageable() const { return Damageable; }
+    // Chunk 724 round 3 (row 0x008771A0): Ego_r.pdb ?IsThingAbleToComeBetweenCameraAndObservedThing@CThingPhysical@@QBE_NXZ,
+    // out of line at retail 0x006A5AB0 (catalog name; `mov ecx,edi ; call` in CTools::GetThingPointIntersectionFromTo).
+    bool IsThingAbleToComeBetweenCameraAndObservedThing() const;   // 0x006A5AB0
 };
 FABLE_STATIC_ASSERT(sizeof(CThingPhysical)==0xc0);
 #else
