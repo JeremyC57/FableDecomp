@@ -38,7 +38,7 @@ class CScriptThing { public:
     int Id;
     explicit CScriptThing(int id) : Id(id) { ++g_live; }
     CScriptThing(const CScriptThing& o) : Id(o.Id) { ++g_live; }
-    __forceinline ~CScriptThing() { --g_live; }
+    ~CScriptThing() { --g_live; }
     bool IsAlive() const { return g_frames < g_dieAt; }
     bool MsgIsHitBy(const CCharString& a) const { return HitCheck(a, 1); }
     bool MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& a) const { return HitCheck(a, 2); }
@@ -73,16 +73,12 @@ void CV_TalentlessBardScript::WatchForAttack(CScriptThing bard)
         if (IsActiveThreadTerminating())
             return;
         if (bard.IsAlive()) {
-#pragma inline_depth(0)
             if (IsActiveThreadTerminating())
                 return;
-#pragma inline_depth()
             bool hit = bard.MsgIsHitBy("SCRIPT_NAME_HERO") || bard.MsgIsHitByAnyAggressiveSpecialAbilityFrom("SCRIPT_NAME_HERO");
             if (hit) {
-#pragma inline_depth(0)
                 if (IsActiveThreadTerminating())
                     return;
-#pragma inline_depth()
                 AttackedByHero = true;
             }
         }

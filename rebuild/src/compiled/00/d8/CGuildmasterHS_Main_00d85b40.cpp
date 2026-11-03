@@ -1,5 +1,4 @@
 // CGuildmaster_HS::Main() -- the Hero Souls guildmaster: after the guildmaster cutscene, target the hero, become unpushable, and while guards remain in the woods speak one of six comments/taunts (one every 18 timer ticks, at most six) whenever the hero comes within 15 units; then heal back to full health and idle
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: Main
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
@@ -33,7 +32,7 @@ template <class T> class CCountedPointer { public:
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    __forceinline ~CCountedPointer()
+    ~CCountedPointer()
     {
         if (Info) {
             --Info->RefCount;
@@ -63,7 +62,7 @@ class CScriptThing : public CBase { public:                           // vtable 
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
+    ~CScriptGameResourceObjectBase() { }
 };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
@@ -180,14 +179,10 @@ void CGuildmaster_HS::Main()
     }
     if (IsActiveThreadTerminating())
         {
-#pragma inline_depth(0)
             return;
-#pragma inline_depth()
         }
     Game->ModifyThingHealth(Me, 1.0f - Game->GetHealth(Me), false);
     do {
         Game->NewScriptFrame();
     } while (!IsActiveThreadTerminating());
-#pragma inline_depth(0)
 }
-#pragma inline_depth()

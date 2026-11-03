@@ -1,5 +1,4 @@
 // CV_ChapelOfEvilScript::WatchForInsideChapel() -- track whether the (living) hero stands inside the evil chapel building: set InsideChapel on entering BUILDING_CHAPEL_EVIL, clear it once he stands in no building
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E6A0B0, length 650 bytes.
 // Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940; CBaseClass 0x0099A2D0 / ~CBaseClass 0x0099A2E0 (the inline
 //   CScriptThing copies), ~CScriptThing 0x004AA840 (the out-of-line copy at the in-branch returns), operator delete
@@ -10,9 +9,9 @@
 // Shape: the building is a function-scope CScriptThing reassigned each frame (inline counted-pointer operator=, then the
 //   by-value result destroyed inline); IsNull/GetDefName are inline virtuals called on the local, so VC devirtualises and
 //   inlines them; the GetDefName temporary is conditional (flag word in the frame). The two in-branch terminate returns use
-//   the out-of-line destructor (`#pragma inline_depth(0)` around them, as the landed WatchForRegionEntry 0x00E6B750 does).
+//   the out-of-line destructor (terminate checks as `do { if (...) return; } while (0);`; VC7.1's per-site frequency rule (docs/pipeline/INLINE_DEPTH_REVISIT.md)).
 //   The loop is `for (;;) { if (IsActiveThreadTerminating()) return; ... }`: a `while (!IsActiveThreadTerminating())` loop
-//   tail-merges the two inline destructor exits the other way round. ~CScriptThing is __forceinline (else VC calls 0x004AA840).
+//   tail-merges the two inline destructor exits the other way round. ~CScriptThing is plain inline.
 #include <string.h>
 #pragma intrinsic(strcmp)
 template <class T> class CBasicString { public:                       // Ego_r.pdb: the string base of CBasicStringChar (data and inline comparisons)
@@ -58,7 +57,7 @@ void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
 inline CCharString CScriptThing::GetDefName() const { if (!PImp.Data) return g_EmptyCharString; return PImp.Data->GetDefName(); }
 inline bool CScriptThing::IsNull() const { if (!PImp.Data) return true; return PImp.Data->IsNull(); }
 inline CScriptThing::CScriptThing() { }
-__forceinline CScriptThing::~CScriptThing() { }
+inline CScriptThing::~CScriptThing() { }
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 struct GameCalls {                                       // CGameScriptInterface, retail vtable 0x01260F0C
@@ -146,19 +145,15 @@ void CV_ChapelOfEvilScript::WatchForInsideChapel()
 {
     CScriptThing building;
     for (;;) {
-        if (IsActiveThreadTerminating()) return;
+        do { if (IsActiveThreadTerminating()) return; } while (0);
         if (Game->GetHero().IsAlive()) {
-            if (IsActiveThreadTerminating()) return;
+            do { if (IsActiveThreadTerminating()) return; } while (0);
             building = Game->EntityGetStandingInsideBuilding(Game->GetHero());
             if (!building.IsNull() && building.GetDefName() == "BUILDING_CHAPEL_EVIL" && !InsideChapel) {
-#pragma inline_depth(0)
-                if (IsActiveThreadTerminating()) return;
-#pragma inline_depth()
+                do { if (IsActiveThreadTerminating()) return; } while (0);
                 InsideChapel = true;
             } else if (building.IsNull() && InsideChapel) {
-#pragma inline_depth(0)
-                if (IsActiveThreadTerminating()) return;
-#pragma inline_depth()
+                do { if (IsActiveThreadTerminating()) return; } while (0);
                 InsideChapel = false;
             }
         }

@@ -14,6 +14,14 @@ public:
 template<class T> class CPersistTraits {
 public:
     T DefaultVal;
+#ifdef FABLE_RETAIL_CPERSISTTRAITS
+    // Retail opt-in (chunk 732, row 0x004B05C0 CQuestManager::TransferBoasts): the user default constructor that value-initialises
+    // DefaultVal. Ego_r.pdb names one per instantiation (??0?$CPersistTraits@H@@QAE@XZ, @J@, @K@, @_N@ ..., the same T set as
+    // ??$GetDefaultVal@<T>@CPersistContext@@KI..XZ); GetDefaultVal<T>() returns a traits object's DefaultVal, which is why retail
+    // builds the CCharString default as a constructed temporary copied into the argument slot (0x004B067C..0x004B0693) and stores
+    // a plain 0 for the scalar defaults.
+    CPersistTraits() : DefaultVal() {}
+#endif
     void TransferBinaryIn(CMemoryDataInputStream&,T&);
     void TransferBinaryOut(CDataOutputStream& stream,T value) { stream.WriteSLONG((long)value); }
     void TransferIn(CPersistContext& context,CStringParser& parser,T& value);

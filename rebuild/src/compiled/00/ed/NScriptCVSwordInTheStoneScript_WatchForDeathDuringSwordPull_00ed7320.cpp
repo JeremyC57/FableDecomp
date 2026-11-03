@@ -1,5 +1,4 @@
 // CV_SwordInTheStoneScript::WatchForDeathDuringSwordPull(CScriptThing puller) -- with an is-alive predicate on the crowd member pulling the sword, wait until he is killed or hit by the hero, then take scripting control of him, clear his commands, end the crowd pull, make the sword usable again and restart the crowd timer at 10..15
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ED7320, 0x258 bytes, `ret 0Ch` (the by-value CScriptThing).
@@ -11,7 +10,7 @@
 //   through pDSTGame 0x0143E8F8 slot 89 SetTimer; the thing's implementation slots 18 MsgIsKilledBy,
 //   21 MsgIsHitBy, 43 MsgIsHitByAnyAggressiveSpecialAbilityFrom behind the null-safe wrappers.
 // Shape: the landed CV_TalentlessBardScript::WatchForAttack 0x00ED9790 predicate/by-value-thing model (b18 recipe:
-//   __forceinline ~CScriptThing, in-body inline_depth(0) around the exits retail calls out of line); handle model from
+//   plain-inline ~CScriptThing, every terminate check `do { if (...) return; } while (0);`); handle model from
 //   the landed CMeleeThunder::Main 0x00D58080.
 // Layout (retail = Ego_r.pdb - 0x14): Game +0x40, CrowdAttemptingToPullSword +0x4d, CrowdSwordPullActive +0x4e,
 //   CrowdSwordTimer +0x7c.
@@ -30,7 +29,7 @@ void operator delete(void* p);                              // 0x00BFE9BC (MSVCR
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline CScriptThing::~CScriptThing() {}
+inline CScriptThing::~CScriptThing() {}
 inline bool CScriptThing::IsAlive() const { if (!PImp.Data) return false; return PImp.Data->IsAlive(); }
 inline bool CScriptThing::MsgIsKilledBy(const CCharString& killer) const { if (!PImp.Data) return false; return PImp.Data->MsgIsKilledBy(killer); }
 inline bool CScriptThing::MsgIsHitBy(const CCharString& attacker) const { if (!PImp.Data) return false; return PImp.Data->MsgIsHitBy(attacker); }
@@ -86,16 +85,11 @@ void NScript::CV_SwordInTheStoneScript::WatchForDeathDuringSwordPull(CScriptThin
 {
     SetPredicate(CIsThingAlive(puller));
     Game->NewScriptFrame();
-    if (IsActiveThreadTerminating())
-        return;
+    do { if (IsActiveThreadTerminating()) return; } while (0);
     for (;;) {
-        if (IsActiveThreadTerminating())
-            return;
+        do { if (IsActiveThreadTerminating()) return; } while (0);
         if (puller.MsgIsKilledBy("") || puller.MsgIsHitBy("SCRIPT_NAME_HERO") || puller.MsgIsHitByAnyAggressiveSpecialAbilityFrom("SCRIPT_NAME_HERO")) {
-#pragma inline_depth(0)
-            if (IsActiveThreadTerminating())
-                return;
-#pragma inline_depth()
+            do { if (IsActiveThreadTerminating()) return; } while (0);
             CScriptGameResourceObjectScriptedThingBase handle;
             Game->StartScriptingEntity(puller, handle, (EScriptAIPriority)4);
             handle.ClearCommands();
@@ -104,9 +98,7 @@ void NScript::CV_SwordInTheStoneScript::WatchForDeathDuringSwordPull(CScriptThin
             CScriptThing sword = Game->GetThingWithScriptName("SwordOfStrength");
             Game->SetThingAsUsable(sword, true);
             CrowdSwordTimer = rand() % 6 + 10;
-#pragma inline_depth(0)
             return;
-#pragma inline_depth()
         }
         Game->NewScriptFrame();
     }

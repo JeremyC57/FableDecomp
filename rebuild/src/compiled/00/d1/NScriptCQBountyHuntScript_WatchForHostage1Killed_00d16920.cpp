@@ -1,5 +1,4 @@
 // NScript::CQ_BountyHuntScript::WatchForHostage1Killed(CScriptThing thing) -- Watch the hostage death message until cancellation.
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?WatchForHostage1Killed@CQ_BountyHuntScript@NScript@@QAEXVCScriptThing@@@Z
 // Identity: Own CBH_Hostage1 Init builds spawned member callback00d16865 with literal WatchForHostage1Killed and ParentClass., passes parent+20; original PDB CQ_BountyHuntScript public method(CScriptThing by value). Real flag84 reconciles typed script base. CScriptThing MsgIsKilledBy const slot18, Game NewScriptFrame const slot7, CScriptBase IsActiveThreadTerminating00cb7940.
 // Layout: real typed script/level/container/handle ancestry; parent Game64 and flags84/85. Original CScriptThing vtable and counted-pointer destructor/copy semantics, no synthetic dispatch. Unused virtual slots descriptive. Shared headers aliased for real hierarchy.
@@ -46,10 +45,8 @@ namespace NScript{class CRuntimeScriptedEntityPersist{public:class CPersistInfo;
 class CGameScriptInterfaceBase;
 class CGameScriptInterfaceBase:public CBaseClassNonCopyable{public:virtual void UnknownSlot1(){}virtual void UnknownSlot2(){}virtual void UnknownSlot3(){}virtual void UnknownSlot4(){}virtual void UnknownSlot5(){}virtual void UnknownSlot6(){}virtual void NewScriptFrame()const=0;};
 namespace NScript{class CQ_BountyHuntScript:public CLevelScriptBase<CQ_SunnyvaleMasterData>{public:bool QuestFailed;bool QuestSucceeded;bool QuestOver;bool QuestStarted;bool FishermanDeactivated;bool VillagerKilled;bool VillagerIntroDone;bool LeaderKilled;bool Deputy1Killed;bool Deputy2Killed;bool Deputy1IntroComplete;bool Deputy2IntroComplete;bool Hostage1Killed;bool Hostage2Killed;void WatchForHostage1Killed(CScriptThing);};void CQ_BountyHuntScript::WatchForHostage1Killed(CScriptThing thing){while(!thing.MsgIsKilledBy("")){Game->NewScriptFrame();if(IsActiveThreadTerminating())return;}
-#pragma inline_depth(0)
 if(IsActiveThreadTerminating())return;Hostage1Killed=true;
 return;
-#pragma inline_depth(255)
 }}
 #ifdef _MSC_VER
 typedef char FlagOffset[offsetof(NScript::CQ_BountyHuntScript,Hostage1Killed)==84?1:-1];

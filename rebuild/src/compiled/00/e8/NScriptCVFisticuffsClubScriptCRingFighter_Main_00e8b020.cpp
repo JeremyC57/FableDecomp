@@ -1,5 +1,4 @@
 // CRingFighter::Main() -- punch-club ring fighter: filter on Me alive while the crowd is not all attacking; wait for the round to start and target the hero; each frame let the crowd cheer when the hero lands a hit and boo when the ring fighter hits the hero, stop on a time-out; once Me's health falls to the def's losing threshold, take scripted control of Me and the hero, play the ROUNDWON cutscene, walk Me to the loser marker, flag the ring cleared and wait for the next round, then walk Me out to the marker and remove Me
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?Main@CRingFighter@CV_FisticuffsClubScript@NScript@@EAEXXZ
 // Naming wave 27 (family main, DECISIONS_W26 D1): Ego_r.pdb / FableWin.pdb nest the entity in its script class and spell
 //   Main a private virtual (?Main@CRingFighter@CV_FisticuffsClubScript@NScript@@EAEXXZ); the local CEntityScriptBase carries the retail slot list of vtable 0x012C3224
@@ -180,9 +179,7 @@ void CV_FisticuffsClubScript::CRingFighter::Main()
             CScriptThing loserPos = Game->GetThingWithScriptName("LoserFighterPos");
             ParentClass->RoundStarted = false;
             {
-#pragma inline_depth(0)
                 CScriptGameResourceObjectScriptedThingBase hero;
-#pragma inline_depth()
                 if (fighter.IsValid())
                     fighter.Release();
                 while (!Game->StartScriptingEntity(Me, fighter, (EScriptAIPriority)4)) {
@@ -196,9 +193,7 @@ void CV_FisticuffsClubScript::CRingFighter::Main()
                 CCutsceneCastMap cast;
                 cast["FIGHTER"] = fighter;
                 cast["HERO"] = hero;
-#pragma inline_depth(0)
                 CScriptGameResourceObjectMovieBase movie;
-#pragma inline_depth()
                 Game->StartMovieSequence("", movie);
                 CGameScriptInterface* game = Game;
                 game->PauseAllNonScriptedEntities(true);

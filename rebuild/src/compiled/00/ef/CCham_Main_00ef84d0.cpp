@@ -1,5 +1,4 @@
-// Levers: inline CScriptThing model (CBaseClass + CCountedPointer, __forceinline dtor); the CAnd filter comes from an inline by-value `And(a, b)` factory (the argument address is re-taken, `lea eax,[esp+48h]`); in-body `#pragma inline_depth(0)` from after the scripted-object declaration to the end keeps every later ~CScriptThing out of line (merged with the scripted-object dtor tail), leaving the single inline expansion at the early terminate return.
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
+// Levers: inline CScriptThing model (CBaseClass + CCountedPointer, plain-inline dtor); the CAnd filter comes from an inline by-value `And(a, b)` factory (the argument address is re-taken, `lea eax,[esp+48h]`); VC7.1's per-site frequency rule (docs/pipeline/INLINE_DEPTH_REVISIT.md) keeps every ~CScriptThing after the scripted-object declaration out of line (merged with the scripted-object dtor tail), leaving the single inline expansion at the early terminate return.
 // CCham::Main() -- Cham's second entity script: filter on Me and the "Leader" marker, take Me under scripted control (priority 4), then run the scripted movement towards the leader until it finishes
 // Leaf: Main
 // Identity (naming wave 11): ?Main@CFollower@CPersonalScript_EmptyScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012F646C slot 1 is stored by the factory 0x00EF4130 registered as "Follower"
@@ -102,7 +101,6 @@ void NScript::CPersonalScript_EmptyScript::CFollower::Main()
     if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase scripted;
-#pragma inline_depth(0)
     if (scripted.IsValid())
         scripted.Release();
     while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)4)) {
@@ -121,4 +119,3 @@ void NScript::CPersonalScript_EmptyScript::CFollower::Main()
     if (IsActiveThreadTerminating())
         return;
 }
-#pragma inline_depth()

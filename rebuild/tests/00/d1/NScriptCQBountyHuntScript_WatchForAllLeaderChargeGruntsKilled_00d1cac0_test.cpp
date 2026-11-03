@@ -37,7 +37,7 @@ struct CScriptThingVector {
     CScriptThing* _M_finish;
     CScriptThing* _M_end_of_storage;
     CScriptThingVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    __forceinline ~CScriptThingVector()
+    ~CScriptThingVector()
     {
         Destroy(_M_start, _M_finish);
         if (_M_start)
@@ -83,12 +83,10 @@ void CQ_BountyHuntScript::WatchForAllLeaderChargeGruntsKilled()
         if (IsActiveThreadTerminating())
             return;
     }
-#pragma inline_depth(0)
     if (IsActiveThreadTerminating())
         return;
     AllLeaderChargeGruntsKilled = true;
 }
-#pragma inline_depth()
 
 static void Run(CQ_BountyHuntScript& s, int termAt, int stopFrame, int deadFrame, int count)
 {

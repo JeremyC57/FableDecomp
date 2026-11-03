@@ -1,0 +1,58 @@
+address	name	evidence
+004b05c0	CQuestManager::TransferBoasts	landing 2026-11-03d (chunk 732): RELOCATION_MATCH; Ego_r+FableWin ?TransferBoasts@CQuestManager@@QAEXAAVCPersistContext@@@Z
+006aa2e0	CThingPlayerCreature::DrawPreparePrimitivesForRendering	landing 2026-11-03d (chunk 732): RELOCATION_MATCH; Ego_r+FableWin ?DrawPreparePrimitivesForRendering@CThingPlayerCreature@@UAE_NABVCEnginePrimitivePrepareInfo@@@Z
+006aabe0	CThingPlayerCreature::SetActionForMelee	landing 2026-11-03d (chunk 732): RELOCATION_MATCH; Ego_r+FableWin ?SetActionForMelee@CThingPlayerCreature@@UAE_NABVCCreatureAbilityDef@@@Z
+00e2b090	NScript::CV_AmbushScamScript::Main	landing 2026-11-03d (chunk 730 parked row, inline-split research): RELOCATION_MATCH; Ego_r+FableWin ?Main@CV_AmbushScamScript@NScript@@UAEXXZ; vtable 0x012E2428 slot 2
+006aa720	CThingPlayerCreature::SetPlayerCreatureActionForMelee	landing 2026-11-03d (chunk 732 LABELS; row parked): Ego_r+FableWin ?SetPlayerCreatureActionForMelee@CThingPlayerCreature@@IAEXW4ECombatZone@@ABVC3DVector@@PAVCThing@@ABVCCreatureAbilityDef@@@Z; called by 0x006AABE0
+007ea2f0	NTargeting::GetTargetingPositionOnThing	landing 2026-11-03d (chunk 732 LABELS): Ego_r+FableWin ?GetTargetingPositionOnThing@NTargeting@@YI?AVC3DVector@@ABVCWorld@@ABVCThing@@M@Z; called by 0x006AABE0 (was Creature::GetTargetFirePoint)
+00a14040	C3DVector::RotateXY	landing 2026-11-03d (chunk 732 LABELS): Ego_r+FableWin ?RotateXY@C3DVector@@QAEXM@Z; called by 0x006AABE0
+006a9640	CThingPlayerCreature::GetCurrentRelativeMovementAngleXY	landing 2026-11-03d (chunk 732 LABELS): Ego_r+FableWin ?GetCurrentRelativeMovementAngleXY@CThingPlayerCreature@@QBEMXZ; called by 0x006AABE0
+004b8d70	CPersistContext::Transfer<int>	landing 2026-11-03d (chunk 732 NAME_FIXES): Ego_r+FableWin ??$Transfer@H@CPersistContext@@QAEXPBDAAHABH@Z; component vtable RTTI CPersistContext_TransferableComponent<int> (was Transfer<ENumAcceptedBoasts>, in no PDB)
+00661d20	CThingCreatureBase::GetNavigationLevelAt	landing 2026-11-03d (chunk 732 NAME_FIXES): Ego_r+FableWin ?GetNavigationLevelAt@CThingCreatureBase@@QBEJABVC3DVector@@@Z; called by 0x006AA2E0
+004c3120	CEnginePrimitiveText::CEnginePrimitiveText	landing 2026-11-03d (chunk 732 NAME_FIXES): Ego_r+FableWin ??0CEnginePrimitiveText@@QAE@_KABVC3DVector@@MABVCWideString@@ABVCFontBank@@ABVCRGBColour@@_NW4EEngineInterpolationSet@@@Z
+00415d90	CDefString::ToWideString	landing 2026-11-03d (chunk 732 NAME_FIXES): Ego_r+FableWin ?ToWideString@CDefString@@QBE?AVCWideString@@XZ
+004c7a70	CThing::PeekComponent	landing 2026-11-03d (chunk 732 NAME_FIXES): Ego_r+FableWin ?PeekComponent@CThing@@QBEABVCMainGameComponent@@XZ
+004c7a30	CThing::GetPlayer	landing 2026-11-03d (chunk 732 NAME_FIXES): Ego_r+FableWin ?GetPlayer@CThing@@QAEAAVCPlayer@@XZ
+00733480	CTCCombat::GetPMeleeFlourishAbility	landing 2026-11-03d (chunk 732 NAME_FIXES): Ego_r+FableWin ?GetPMeleeFlourishAbility@CTCCombat@@QBE?AV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@XZ
+0087fd20	CCombatAction_KickThingOnGround::CCombatAction_KickThingOnGround	landing 2026-11-03d (chunk 732 NAME_FIXES): Ego_r+FableWin ??0CCombatAction_KickThingOnGround@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z
+006e99b0	CCombatManager::GetDefenderZone	landing 2026-11-03d (chunk 732 NAME_FIXES): Ego_r+FableWin ?GetDefenderZone@CCombatManager@@QBE?AW4ECombatZone@@ABVCThingCreatureBase@@0J@Z; called by 0x006AABE0
+006eb700	CCombatManager::GetBestEnemyForCombatant	landing 2026-11-03d (chunk 732 NAME_FIXES): Ego_r+FableWin ?GetBestEnemyForCombatant@CCombatManager@@QBEPAVCThingCreatureBase@@ABV2@ABVC3DVector@@@Z; called by 0x006AABE0
+005bb190	std::_List_base<CDefPointer<CAppearanceModifierDef const>, std::allocator<CDefPointer<CAppearanceModifierDef const>>>::clear	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+006c8270	std::map<long, COpinionDeed *, std::less<long>, std::allocator<std::pair<long const, COpinionDeed *>>>::~map	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00894500	CGameScriptInterface::CreateCreatureOnEntity	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+009ac130	std::map<CCharString, NBankFileManager::CContainedBank, std::less<CCharString>, std::allocator<std::pair<CCharString const, NBankFileManager::CContainedBank>>>::~map	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00c0c270	CString::ConcatInPlace	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00cbaba0	std::__push_heap<std::pair<unsigned __int64, CCountedPointer<CActiveEntityScriptBase>> *, int, std::pair<unsigned __int64, CCountedPointer<CActiveEntityScriptBase>>, CKeyPairCompareLess<unsigned __int64, CCountedPointer<CActiveEntityScriptBase>>>	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00cffb60	CFinalTabletSarcophagus::Main	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00d16920	NScript::CQ_BountyHuntScript::WatchForHostage1Killed	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00d16d00	NScript::CQ_BountyHuntScript::WatchForHostage2Killed	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00d1cac0	NScript::CQ_BountyHuntScript::WatchForAllLeaderChargeGruntsKilled	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00d2c810	CEndGameThunder::Main	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00d58080	CMeleeThunder::Main	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00d643a0	NScript::CQ_GuildTrainingWoodsDepartureScript::CScorpionHome::Main	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00d85b40	CGuildmaster_HS::Main	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00d9b420	NScript::CQ_HobbeToothContestScript::DisplayTimer	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00da0820	NScript::CQ_MinionCampScript::RunFirstWaveControl	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00da8970	NScript::CQ_MinionClifftopChaseScript::GuardComment	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00da9c70	CMinionWarningGuard::Main	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00dbe4e0	NScript::CQ_NewOakValeIntroScript::ManageQuestCoreMarkers	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00e06050	NScript::CQ_TraderEscortScript::WatchForSurprisingBalverines	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00e1c580	NScript::CQ_WizardBattleScript::PhaseTwo	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00e1fcf0	CQR_EscortTraderScript::WatchForExpressionFollow	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00e1fef0	CQR_EscortTraderScript::WatchForExpressionWait	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00e2e520	NScript::CV_AmbushScamScript::WatchForHeroAttack	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00e4e0e0	CTollBanditScript::HandleBanditToll	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00e5f8f0	CHenchmanRegionExitComment::Main	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00e6a0b0	CV_ChapelOfEvilScript::WatchForInsideChapel	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00e6ea30	CDF_ShineLight::Main	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00e71980	CDF_GiveGift::Main	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00e8b020	NScript::CV_FisticuffsClubScript::CRingFighter::Main	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00e9cb20	NScript::CV_IntroductionToTrophiesScript::WatchForInsideTavern	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00ec1ef0	CRandomPopulationCreature::Main	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00ed7320	NScript::CV_SwordInTheStoneScript::WatchForDeathDuringSwordPull	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00ed9790	NScript::CV_TalentlessBardScript::WatchForAttack	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00edbd80	NScript::CV_TempleOfLightScript::WatchForInsideTemple	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00ef5cb0	NScript::CPersonalScript_EmptyScript::CLookAtMe1::Main	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00ef84d0	CCham::Main	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00f061e0	NScript::CQ_AmbushTradersScript::WatchForHeroAttackOnBandit	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged
+00f07ed0	NScript::CQ_AmbushTradersScript::AskBanditHireQuestion	landing 2026-11-03d (inline-depth redo): RELOCATION_MATCH pragma-free, name unchanged

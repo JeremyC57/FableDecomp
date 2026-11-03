@@ -6,11 +6,21 @@
 #include "engine/CombatDialogueManager.h"
 #include "fable_string.h"
 class CWorld;
+#ifdef FABLE_RETAIL_CCOMBATMANAGER
+class C3DVector; class CThing; enum ECombatZone;
+#endif
 class CCombatManager:public CBaseClassNonCopyable {
 public:
  void RegisterCombatant(CThingCreatureBase&,CThingCreatureBase&,bool);
  void DeregisterCombatant(CThingCreatureBase&);
  const CCombatantInfo& GetCombatantInfo(const CThingCreatureBase&)const;
+#ifdef FABLE_RETAIL_CCOMBATMANAGER
+ // Chunk 732 (CThingPlayerCreature melee rows): Ego_r.pdb spellings, out of line in retail. (FableWin's inline
+ // GetProximityForNavigation is left out: only the parked 0x006AA720 uses it, pending the owner's access-level decision.)
+ CThingCreatureBase* GetBestEnemyForCombatant(const CThingCreatureBase&,const C3DVector&) const;                       // 0x006EB700
+ bool IsTargetOverriddenByAttemptedFacingDirection(const CThingCreatureBase&,const CThing&,const C3DVector&) const;     // 0x006EA5F0
+ ECombatZone GetDefenderZone(const CThingCreatureBase&,const CThingCreatureBase&,long) const;                          // 0x006E99B0
+#endif
 private:
  std::map<CCharString,CCombatSequenceBase* (__fastcall*)(CThingCreatureBase&,CThingCreatureBase&)> RegisteredCombatSequences;
  std::map<unsigned __int64,CCombatantInfo> Combatants;bool CombatStrafeTurningEnabled;CWorld& World;

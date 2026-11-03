@@ -209,9 +209,7 @@ template<class I,class D,class T,class C>inline void __fastcall __push_heap(I fi
  while(hole>top&&compare(*(first+parent),value)){
   *(first+hole)=*(first+parent);hole=parent;parent=(hole-1)/2;
  }
-#pragma inline_depth(0)
  *(first+hole)=value;
-#pragma inline_depth(255)
 }
 typedef pair<unsigned __int64,CCountedPointer<CActiveEntityScriptBase> > Entry;
 typedef CKeyPairCompareLess<unsigned __int64,CCountedPointer<CActiveEntityScriptBase> > Compare;

@@ -86,54 +86,38 @@ void CV_AmbushScamScript::WatchForHeroAttack(CScriptThing target)
             if (IsActiveThreadTerminating())
                 return;
             if (Game->GetHealth(target) > 0.0001f) {
-#pragma inline_depth(0)
                 if (IsActiveThreadTerminating())
                     return;
-#pragma inline_depth()
                 ++HitCount;
                 if (target.GetDataString() == "AS_Trickster") {
-#pragma inline_depth(0)
                     if (IsActiveThreadTerminating())
                         return;
-#pragma inline_depth()
                     if (DoAmbush) {
-#pragma inline_depth(0)
                         if (IsActiveThreadTerminating())
                             return;
-#pragma inline_depth()
                         if (HitCount > 2) {
-#pragma inline_depth(0)
                             if (IsActiveThreadTerminating())
                                 return;
                             HeroAttackOnTricksterAfterAmbush = true;
                             IsActiveThreadTerminating();
                             return;
-#pragma inline_depth()
                         }
-#pragma inline_depth(0)
                         if (IsActiveThreadTerminating())
                             return;
-#pragma inline_depth()
                         HeroAttachOnTricksterWarning = true;
                     } else {
-#pragma inline_depth(0)
                         if (IsActiveThreadTerminating())
                             return;
-#pragma inline_depth()
                         HeroAttackOnTricksterBeforeAmbush = true;
                     }
                 } else if (target.GetDataString() == "AS_Buddy") {
-#pragma inline_depth(0)
                     if (IsActiveThreadTerminating())
                         return;
-#pragma inline_depth()
                     HeroAttackOnBuddy = true;
                 }
             } else if (HitCount == 0) {
-#pragma inline_depth(0)
                 if (IsActiveThreadTerminating())
                     return;
-#pragma inline_depth()
                 HeroAttackOnTricksterKillingBlow = true;
             }
         }

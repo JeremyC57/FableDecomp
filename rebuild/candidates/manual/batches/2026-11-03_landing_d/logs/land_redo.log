@@ -1,0 +1,207 @@
+addr       parity           behav  name
+005bb190   WARN RELOC_NAME: ??_G?$CDefPointer@$$CBVCAppearanceModifierDef@@@@QAEPAXI@Z -> 005baa41 labelled 'CDefPointer<CUnprovenDef_005baa41 const>::`scalar deleting destructor''
+005bb190   RELOCATION_MATCH PASS   std::_List_base<CDefPointer<CAppearanceModifierDef const>, std::allocator<CDefPointer<CAppearanceModifierDef const>>>::clear
+006c8270   RELOCATION_MATCH PASS   std::map<long, COpinionDeed *, std::less<long>, std::allocator<std::pair<long const, COpinionDeed *>>>::~map
+00894500   WARN SHARED_HEADER_AVAILABLE C3DVector
+00894500   RELOCATION_MATCH PASS   CGameScriptInterface::CreateCreatureOnEntity
+009ac130   RELOCATION_MATCH PASS   std::map<CCharString, NBankFileManager::CContainedBank, std::less<CCharString>, std::allocator<std::pair<CCharString const, NBankFileManager::CContainedBank>>>::~map
+00c0c270   WARN SHARED_HEADER_AVAILABLE CString
+00c0c270   RELOCATION_MATCH PASS   CString::ConcatInPlace
+00cbaba0   RELOCATION_MATCH PASS   std::__push_heap<std::pair<unsigned __int64, CCountedPointer<CActiveEntityScriptBase>> *, int, std::pair<unsigned __int64, CCountedPointer<CActiveEntityScriptBase>>, CKeyPairCompareLess<unsigned __int64, CCountedPointer<CActiveEntityScriptBase>>>
+00cffb60   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00cffb60   WARN SHARED_HEADER_AVAILABLE C3DVector
+00cffb60   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00cffb60   RELOCATION_MATCH PASS   CFinalTabletSarcophagus::Main
+00d16920   WARN SHARED_HEADER_AVAILABLE CVectorMap
+00d16920   WARN SHARED_HEADER_AVAILABLE CRuntimeScriptedEntityPersist
+00d16920   RELOCATION_MATCH PASS   NScript::CQ_BountyHuntScript::WatchForHostage1Killed
+00d16d00   WARN SHARED_HEADER_AVAILABLE CVectorMap
+00d16d00   WARN SHARED_HEADER_AVAILABLE CRuntimeScriptedEntityPersist
+00d16d00   RELOCATION_MATCH PASS   NScript::CQ_BountyHuntScript::WatchForHostage2Killed
+00d1cac0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00d1cac0   RELOCATION_MATCH PASS   NScript::CQ_BountyHuntScript::WatchForAllLeaderChargeGruntsKilled
+00d2c810   WARN SHARED_HEADER_AVAILABLE C3DVector
+00d2c810   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00d2c810   WARN SHARED_HEADER_AVAILABLE CIsThingAlive
+00d2c810   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00d2c810   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d2c810   RELOCATION_MATCH PASS   CEndGameThunder::Main
+00d58080   WARN SHARED_HEADER_AVAILABLE C3DVector
+00d58080   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00d58080   RELOCATION_MATCH PASS   CMeleeThunder::Main
+00d643a0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00d643a0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00d643a0   WARN SHARED_HEADER_AVAILABLE CScriptDef
+00d643a0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d643a0   WARN RELOC_NAME: ??4?$CCountedPointer@UCScriptThingImpl@@@@QAEAAV0@ABV0@@Z -> 00704580 labelled '_global::CCountedPointer_Set_00704580'
+00d643a0   RELOCATION_MATCH PASS   NScript::CQ_GuildTrainingWoodsDepartureScript::CScorpionHome::Main
+00d85b40   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00d85b40   WARN SHARED_HEADER_AVAILABLE C3DVector
+00d85b40   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d85b40   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d85b40   RELOCATION_MATCH PASS   CGuildmaster_HS::Main
+00d9b420   WARN SHARED_HEADER_AVAILABLE CScriptDef
+00d9b420   RELOCATION_MATCH PASS   NScript::CQ_HobbeToothContestScript::DisplayTimer
+00da0820   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00da0820   RELOCATION_MATCH PASS   NScript::CQ_MinionCampScript::RunFirstWaveControl
+00da8970   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00da8970   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00da8970   RELOCATION_MATCH PASS   NScript::CQ_MinionClifftopChaseScript::GuardComment
+00da9c70   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00da9c70   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00da9c70   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00da9c70   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00da9c70   WARN RELOC_NAME: ??0CCutsceneCastMap@@QAE@XZ -> 00cdbf70 labelled 'std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::map'
+00da9c70   WARN RELOC_NAME: ??1CCutsceneCastMap@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00da9c70   RELOCATION_MATCH PASS   CMinionWarningGuard::Main
+00dbe4e0   RELOCATION_MATCH PASS   NScript::CQ_NewOakValeIntroScript::ManageQuestCoreMarkers
+00e06050   WARN SHARED_HEADER_AVAILABLE C3DVector
+00e06050   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00e06050   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00e06050   RELOCATION_MATCH PASS   NScript::CQ_TraderEscortScript::WatchForSurprisingBalverines
+00e1c580   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00e1c580   WARN SHARED_HEADER_AVAILABLE C3DVector
+00e1c580   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00e1c580   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00e1c580   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00e1c580   RELOCATION_MATCH PASS   NScript::CQ_WizardBattleScript::PhaseTwo
+00e1fcf0   WARN RELOC_NAME: ?RestartRandomSpeechTimer@CQR_EscortTraderScript@@QAEXXZ -> 00e1feb0 labelled 'CV_AmbushScamScript::ResetRandomSpeechTime'
+00e1fcf0   RELOCATION_MATCH PASS   CQR_EscortTraderScript::WatchForExpressionFollow
+00e1fef0   WARN RELOC_NAME: ?RestartRandomSpeechTimer@CQR_EscortTraderScript@@QAEXXZ -> 00e1feb0 labelled 'CV_AmbushScamScript::ResetRandomSpeechTime'
+00e1fef0   RELOCATION_MATCH PASS   CQR_EscortTraderScript::WatchForExpressionWait
+00e2e520   RELOCATION_MATCH PASS   NScript::CV_AmbushScamScript::WatchForHeroAttack
+00e4e0e0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00e4e0e0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e4e0e0   RELOCATION_MATCH PASS   CTollBanditScript::HandleBanditToll
+00e5f8f0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00e5f8f0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00e5f8f0   WARN SHARED_HEADER_AVAILABLE CHeroLogBook
+00e5f8f0   WARN SHARED_HEADER_AVAILABLE CV_BodyGuardScript
+00e5f8f0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e5f8f0   RELOCATION_MATCH PASS   CHenchmanRegionExitComment::Main
+00e6a0b0   RELOCATION_MATCH PASS   CV_ChapelOfEvilScript::WatchForInsideChapel
+00e6ea30   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00e6ea30   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00e6ea30   WARN SHARED_HEADER_AVAILABLE CScriptDef
+00e6ea30   WARN SHARED_HEADER_AVAILABLE CV_DemonDoorsScript
+00e6ea30   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e6ea30   RELOCATION_MATCH PASS   CDF_ShineLight::Main
+00e71980   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00e71980   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00e71980   WARN SHARED_HEADER_AVAILABLE CV_DemonDoorsScript
+00e71980   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e71980   RELOCATION_MATCH PASS   CDF_GiveGift::Main
+00e8b020   WARN SHARED_HEADER_AVAILABLE C3DVector
+00e8b020   WARN SHARED_HEADER_AVAILABLE CScriptDef
+00e8b020   WARN RELOC_NAME: ??0CAndPredicate@@QAE@ABVCIsThingAlive@NScript@@ABUCIsFlagFalse@@@Z -> 00e7e020 labelled 'NScript::CPredicate_And<NScript::CIsThingAlive, NScript::CIsVariableFalse>::CPredicate_And'
+00e8b020   WARN RELOC_NAME: ??0CCutsceneCastMap@@QAE@XZ -> 00cdbf70 labelled 'std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::map'
+00e8b020   WARN RELOC_NAME: ??1CCutsceneCastMap@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00e8b020   RELOCATION_MATCH PASS   NScript::CV_FisticuffsClubScript::CRingFighter::Main
+00e9cb20   RELOCATION_MATCH PASS   NScript::CV_IntroductionToTrophiesScript::WatchForInsideTavern
+00ec1ef0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00ec1ef0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00ec1ef0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00ec1ef0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00ec1ef0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ec1ef0   RELOCATION_MATCH PASS   CRandomPopulationCreature::Main
+00ed7320   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00ed7320   RELOCATION_MATCH PASS   NScript::CV_SwordInTheStoneScript::WatchForDeathDuringSwordPull
+00ed9790   RELOCATION_MATCH PASS   NScript::CV_TalentlessBardScript::WatchForAttack
+00edbd80   RELOCATION_MATCH PASS   NScript::CV_TempleOfLightScript::WatchForInsideTemple
+00ef5cb0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00ef5cb0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00ef5cb0   WARN SHARED_HEADER_AVAILABLE CPersonalScript_EmptyScript
+00ef5cb0   RELOCATION_MATCH PASS   NScript::CPersonalScript_EmptyScript::CLookAtMe1::Main
+00ef84d0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00ef84d0   WARN SHARED_HEADER_AVAILABLE CPersonalScript_EmptyScript
+00ef84d0   WARN RELOC_NAME: ??0CAnd@@QAE@ABUCIsThing@@0@Z -> 00ef8740 labelled 'NScript::CPredicate_And<NScript::CIsThingConscious, NScript::CIsThingConscious>::CPredicate_And'
+00ef84d0   WARN RELOC_NAME: ??1CIsThing@@QAE@XZ -> 00ef7ab0 labelled 'CScriptThingFunctor_00ef7ab0::~CScriptThingFunctor_00ef7ab0'
+00ef84d0   RELOCATION_MATCH PASS   CCham::Main
+00f061e0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00f061e0   RELOCATION_MATCH PASS   NScript::CQ_AmbushTradersScript::WatchForHeroAttackOnBandit
+00f07ed0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00f07ed0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00f07ed0   WARN SHARED_HEADER_AVAILABLE CScriptDef
+00f07ed0   RELOCATION_MATCH PASS   NScript::CQ_AmbushTradersScript::AskBanditHireQuestion
+
+WINS: 39
+  005bb190 RELOCATION_MATCH std::_List_base<CDefPointer<const CAppearanceModifierDef>,std::allocator<CDefPointer<const CAppearanceModifierDef>>>::?clear@?$_List_base@V?$CDefPointer@$$CBVCAppearanceModifierDef@@@@V?$allocator@V?$CDefPointer@$$CBVCAppearanceModifierDef@@@@@std@@@std@@QAEXXZ
+  006c8270 RELOCATION_MATCH std::map<long,COpinionDeed*>::??1?$map@JPAVCOpinionDeed@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@3@@std@@QAE@XZ
+  00894500 RELOCATION_MATCH CGameScriptInterface::?CreateCreatureOnEntity@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABV2@0@Z
+  009ac130 RELOCATION_MATCH std::map<CCharString,NBankFileManager::CContainedBank>::??1?$map@VCCharString@@VCContainedBank@NBankFileManager@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@5@@std@@QAE@XZ
+  00c0c270 RELOCATION_MATCH CString::?ConcatInPlace@CString@@QAEXHPBD@Z
+  00cbaba0 RELOCATION_MATCH std::??$__push_heap@PAU?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@std@@HU12@V?$CKeyPairCompareLess@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@@@std@@YIXPAU?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@0@HHU10@V?$CKeyPairCompareLess@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@@@Z
+  00cffb60 RELOCATION_MATCH CFinalTabletSarcophagus::Main
+  00d16920 RELOCATION_MATCH NScript::CQ_BountyHuntScript::?WatchForHostage1Killed@CQ_BountyHuntScript@NScript@@QAEXVCScriptThing@@@Z
+  00d16d00 RELOCATION_MATCH NScript::CQ_BountyHuntScript::?WatchForHostage2Killed@CQ_BountyHuntScript@NScript@@QAEXVCScriptThing@@@Z
+  00d1cac0 RELOCATION_MATCH NScript::CQ_BountyHuntScript::WatchForAllLeaderChargeGruntsKilled
+  00d2c810 RELOCATION_MATCH CEndGameThunder::Main
+  00d58080 RELOCATION_MATCH CMeleeThunder::?Main@CMeleeThunder@
+  00d643a0 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsDepartureScript::CScorpionHome::?Main@CScorpionHome@CQ_GuildTrainingWoodsDepartureScript@NScript@@EAEXXZ
+  00d85b40 RELOCATION_MATCH CGuildmaster_HS::Main
+  00d9b420 RELOCATION_MATCH NScript::CQ_HobbeToothContestScript::?DisplayTimer@CQ_HobbeToothContestScript@NScript@@QAEXXZ
+  00da0820 RELOCATION_MATCH NScript::CQ_MinionCampScript::RunFirstWaveControl
+  00da8970 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::GuardComment
+  00da9c70 RELOCATION_MATCH CMinionWarningGuard::Main
+  00dbe4e0 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::ManageQuestCoreMarkers
+  00e06050 RELOCATION_MATCH NScript::CQ_TraderEscortScript::WatchForSurprisingBalverines
+  00e1c580 RELOCATION_MATCH NScript::CQ_WizardBattleScript::PhaseTwo
+  00e1fcf0 RELOCATION_MATCH CQR_EscortTraderScript::?WatchForExpressionFollow@CQR_EscortTraderScript@@
+  00e1fef0 RELOCATION_MATCH CQR_EscortTraderScript::?WatchForExpressionWait@CQR_EscortTraderScript@@
+  00e2e520 RELOCATION_MATCH NScript::CV_AmbushScamScript::WatchForHeroAttack
+  00e4e0e0 RELOCATION_MATCH CTollBanditScript::HandleBanditToll
+  00e5f8f0 RELOCATION_MATCH CHenchmanRegionExitComment::Main
+  00e6a0b0 RELOCATION_MATCH CV_ChapelOfEvilScript::WatchForInsideChapel
+  00e6ea30 RELOCATION_MATCH CDF_ShineLight::?Main@CDF_ShineLight@@
+  00e71980 RELOCATION_MATCH CDF_GiveGift::Main
+  00e8b020 RELOCATION_MATCH NScript::CV_FisticuffsClubScript::CRingFighter::?Main@CRingFighter@CV_FisticuffsClubScript@NScript@@EAEXXZ
+  00e9cb20 RELOCATION_MATCH NScript::CV_IntroductionToTrophiesScript::WatchForInsideTavern
+  00ec1ef0 RELOCATION_MATCH CRandomPopulationCreature::Main
+  00ed7320 RELOCATION_MATCH NScript::CV_SwordInTheStoneScript::WatchForDeathDuringSwordPull
+  00ed9790 RELOCATION_MATCH NScript::CV_TalentlessBardScript::?WatchForAttack@CV_TalentlessBardScript@NScript@@QAEXVCScriptThing@@@Z
+  00edbd80 RELOCATION_MATCH NScript::CV_TempleOfLightScript::?WatchForInsideTemple@CV_TempleOfLightScript@NScript@@QAEXXZ
+  00ef5cb0 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CLookAtMe1::?Main@CLookAtMe1@CPersonalScript_EmptyScript@NScript
+  00ef84d0 RELOCATION_MATCH CCham::Main
+  00f061e0 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::WatchForHeroAttackOnBandit
+  00f07ed0 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::?AskBanditHireQuestion@CQ_AmbushTradersScript@NScript@@QAE_NABVCScriptThing@@AAVCScriptGameResourceObjectScriptedThingBase@@@Z
+
+LANDED 39 wins into src/compiled + tests + catalog + oracle
+  stdListbaseCDefPointerconstCAppearanceModifierDefstdallocatorCDefPointerconstCAp_clear_005bb190
+  stdmaplongCOpinionDeed_map_006c8270
+  CGameScriptInterface_CreateCreatureOnEntity_00894500
+  stdmapCCharStringNBankFileManagerCContainedBank_map_009ac130
+  CString_ConcatInPlace_00c0c270
+  std_pairunsignedint64CCountedPointerCActiveEntityScr_00cbaba0
+  CFinalTabletSarcophagus_Main_00cffb60
+  NScriptCQBountyHuntScript_WatchForHostage1Killed_00d16920
+  NScriptCQBountyHuntScript_WatchForHostage2Killed_00d16d00
+  NScriptCQBountyHuntScript_WatchForAllLeaderChargeGruntsKilled_00d1cac0
+  CEndGameThunder_Main_00d2c810
+  CMeleeThunder_Main_00d58080
+  NScriptCQGuildTrainingWoodsDepartureScriptCScorpionHome_Main_00d643a0
+  CGuildmasterHS_Main_00d85b40
+  NScriptCQHobbeToothContestScript_DisplayTimer_00d9b420
+  NScriptCQMinionCampScript_RunFirstWaveControl_00da0820
+  NScriptCQMinionClifftopChaseScript_GuardComment_00da8970
+  CMinionWarningGuard_Main_00da9c70
+  NScriptCQNewOakValeIntroScript_ManageQuestCoreMarkers_00dbe4e0
+  NScriptCQTraderEscortScript_WatchForSurprisingBalverines_00e06050
+  NScriptCQWizardBattleScript_PhaseTwo_00e1c580
+  CQREscortTraderScript_WatchForExpressionFollow_00e1fcf0
+  CQREscortTraderScript_WatchForExpressionWait_00e1fef0
+  NScriptCVAmbushScamScript_WatchForHeroAttack_00e2e520
+  CTollBanditScript_HandleBanditToll_00e4e0e0
+  CHenchmanRegionExitComment_Main_00e5f8f0
+  CVChapelOfEvilScript_WatchForInsideChapel_00e6a0b0
+  CDFShineLight_Main_00e6ea30
+  CDFGiveGift_Main_00e71980
+  NScriptCVFisticuffsClubScriptCRingFighter_Main_00e8b020
+  NScriptCVIntroductionToTrophiesScript_WatchForInsideTavern_00e9cb20
+  CRandomPopulationCreature_Main_00ec1ef0
+  NScriptCVSwordInTheStoneScript_WatchForDeathDuringSwordPull_00ed7320
+  NScriptCVTalentlessBardScript_WatchForAttack_00ed9790
+  NScriptCVTempleOfLightScript_WatchForInsideTemple_00edbd80
+  NScriptCPersonalScriptEmptyScriptCLookAtMe1_Main_00ef5cb0
+  CCham_Main_00ef84d0
+  NScriptCQAmbushTradersScript_WatchForHeroAttackOnBandit_00f061e0
+  NScriptCQAmbushTradersScript_AskBanditHireQuestion_00f07ed0

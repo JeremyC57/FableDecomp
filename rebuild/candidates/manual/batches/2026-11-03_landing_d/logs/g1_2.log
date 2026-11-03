@@ -1,0 +1,58 @@
+addr       parity           behav  name
+00894500   WARN SHARED_HEADER_AVAILABLE C3DVector
+00894500   RELOCATION_MATCH PASS   CGameScriptInterface::CreateCreatureOnEntity
+00cbaba0   RELOCATION_MATCH PASS   std::__push_heap<std::pair<unsigned __int64, CCountedPointer<CActiveEntityScriptBase>> *, int, std::pair<unsigned __int64, CCountedPointer<CActiveEntityScriptBase>>, CKeyPairCompareLess<unsigned __int64, CCountedPointer<CActiveEntityScriptBase>>>
+00d16d00   WARN SHARED_HEADER_AVAILABLE CVectorMap
+00d16d00   WARN SHARED_HEADER_AVAILABLE CRuntimeScriptedEntityPersist
+00d16d00   RELOCATION_MATCH PASS   NScript::CQ_BountyHuntScript::WatchForHostage2Killed
+00d58080   WARN SHARED_HEADER_AVAILABLE C3DVector
+00d58080   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00d58080   RELOCATION_MATCH PASS   CMeleeThunder::Main
+00d9b420   WARN SHARED_HEADER_AVAILABLE CScriptDef
+00d9b420   RELOCATION_MATCH PASS   NScript::CQ_HobbeToothContestScript::DisplayTimer
+00da9c70   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00da9c70   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00da9c70   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00da9c70   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00da9c70   WARN RELOC_NAME: ??0CCutsceneCastMap@@QAE@XZ -> 00cdbf70 labelled 'std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::map'
+00da9c70   WARN RELOC_NAME: ??1CCutsceneCastMap@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00da9c70   RELOCATION_MATCH PASS   CMinionWarningGuard::Main
+00e1c580   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00e1c580   WARN SHARED_HEADER_AVAILABLE C3DVector
+00e1c580   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00e1c580   WARN SHARED_HEADER_AVAILABLE CScriptBase
+00e1c580   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00e1c580   RELOCATION_MATCH PASS   NScript::CQ_WizardBattleScript::PhaseTwo
+00e2e520   RELOCATION_MATCH PASS   NScript::CV_AmbushScamScript::WatchForHeroAttack
+00e6a0b0   RELOCATION_MATCH PASS   CV_ChapelOfEvilScript::WatchForInsideChapel
+00e8b020   WARN SHARED_HEADER_AVAILABLE C3DVector
+00e8b020   WARN SHARED_HEADER_AVAILABLE CScriptDef
+00e8b020   WARN RELOC_NAME: ??0CAndPredicate@@QAE@ABVCIsThingAlive@NScript@@ABUCIsFlagFalse@@@Z -> 00e7e020 labelled 'NScript::CPredicate_And<NScript::CIsThingAlive, NScript::CIsVariableFalse>::CPredicate_And'
+00e8b020   WARN RELOC_NAME: ??0CCutsceneCastMap@@QAE@XZ -> 00cdbf70 labelled 'std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::map'
+00e8b020   WARN RELOC_NAME: ??1CCutsceneCastMap@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00e8b020   RELOCATION_MATCH PASS   NScript::CV_FisticuffsClubScript::CRingFighter::Main
+00ed7320   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00ed7320   RELOCATION_MATCH PASS   NScript::CV_SwordInTheStoneScript::WatchForDeathDuringSwordPull
+00ef5cb0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00ef5cb0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00ef5cb0   WARN SHARED_HEADER_AVAILABLE CPersonalScript_EmptyScript
+00ef5cb0   RELOCATION_MATCH PASS   NScript::CPersonalScript_EmptyScript::CLookAtMe1::Main
+00f07ed0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00f07ed0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00f07ed0   WARN SHARED_HEADER_AVAILABLE CScriptDef
+00f07ed0   RELOCATION_MATCH PASS   NScript::CQ_AmbushTradersScript::AskBanditHireQuestion
+
+WINS: 13
+  00894500 RELOCATION_MATCH CGameScriptInterface::?CreateCreatureOnEntity@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABV2@0@Z
+  00cbaba0 RELOCATION_MATCH std::??$__push_heap@PAU?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@std@@HU12@V?$CKeyPairCompareLess@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@@@std@@YIXPAU?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@0@HHU10@V?$CKeyPairCompareLess@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@@@Z
+  00d16d00 RELOCATION_MATCH NScript::CQ_BountyHuntScript::?WatchForHostage2Killed@CQ_BountyHuntScript@NScript@@QAEXVCScriptThing@@@Z
+  00d58080 RELOCATION_MATCH CMeleeThunder::?Main@CMeleeThunder@
+  00d9b420 RELOCATION_MATCH NScript::CQ_HobbeToothContestScript::?DisplayTimer@CQ_HobbeToothContestScript@NScript@@QAEXXZ
+  00da9c70 RELOCATION_MATCH CMinionWarningGuard::Main
+  00e1c580 RELOCATION_MATCH NScript::CQ_WizardBattleScript::PhaseTwo
+  00e2e520 RELOCATION_MATCH NScript::CV_AmbushScamScript::WatchForHeroAttack
+  00e6a0b0 RELOCATION_MATCH CV_ChapelOfEvilScript::WatchForInsideChapel
+  00e8b020 RELOCATION_MATCH NScript::CV_FisticuffsClubScript::CRingFighter::?Main@CRingFighter@CV_FisticuffsClubScript@NScript@@EAEXXZ
+  00ed7320 RELOCATION_MATCH NScript::CV_SwordInTheStoneScript::WatchForDeathDuringSwordPull
+  00ef5cb0 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CLookAtMe1::?Main@CLookAtMe1@CPersonalScript_EmptyScript@NScript
+  00f07ed0 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::?AskBanditHireQuestion@CQ_AmbushTradersScript@NScript@@QAE_NABVCScriptThing@@AAVCScriptGameResourceObjectScriptedThingBase@@@Z

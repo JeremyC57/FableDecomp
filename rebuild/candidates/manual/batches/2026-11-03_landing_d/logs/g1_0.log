@@ -1,0 +1,52 @@
+addr       parity           behav  name
+005bb190   WARN RELOC_NAME: ??_G?$CDefPointer@$$CBVCAppearanceModifierDef@@@@QAEPAXI@Z -> 005baa41 labelled 'CDefPointer<CUnprovenDef_005baa41 const>::`scalar deleting destructor''
+005bb190   RELOCATION_MATCH PASS   std::_List_base<CDefPointer<CAppearanceModifierDef const>, std::allocator<CDefPointer<CAppearanceModifierDef const>>>::clear
+009ac130   RELOCATION_MATCH PASS   std::map<CCharString, NBankFileManager::CContainedBank, std::less<CCharString>, std::allocator<std::pair<CCharString const, NBankFileManager::CContainedBank>>>::~map
+00cffb60   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00cffb60   WARN SHARED_HEADER_AVAILABLE C3DVector
+00cffb60   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00cffb60   RELOCATION_MATCH PASS   CFinalTabletSarcophagus::Main
+00d1cac0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00d1cac0   RELOCATION_MATCH PASS   NScript::CQ_BountyHuntScript::WatchForAllLeaderChargeGruntsKilled
+00d643a0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00d643a0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00d643a0   WARN SHARED_HEADER_AVAILABLE CScriptDef
+00d643a0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d643a0   WARN RELOC_NAME: ??4?$CCountedPointer@UCScriptThingImpl@@@@QAEAAV0@ABV0@@Z -> 00704580 labelled '_global::CCountedPointer_Set_00704580'
+00d643a0   RELOCATION_MATCH PASS   NScript::CQ_GuildTrainingWoodsDepartureScript::CScorpionHome::Main
+00da0820   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00da0820   RELOCATION_MATCH PASS   NScript::CQ_MinionCampScript::RunFirstWaveControl
+00dbe4e0   RELOCATION_MATCH PASS   NScript::CQ_NewOakValeIntroScript::ManageQuestCoreMarkers
+00e1fcf0   WARN RELOC_NAME: ?RestartRandomSpeechTimer@CQR_EscortTraderScript@@QAEXXZ -> 00e1feb0 labelled 'CV_AmbushScamScript::ResetRandomSpeechTime'
+00e1fcf0   RELOCATION_MATCH PASS   CQR_EscortTraderScript::WatchForExpressionFollow
+00e4e0e0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00e4e0e0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e4e0e0   RELOCATION_MATCH PASS   CTollBanditScript::HandleBanditToll
+00e6ea30   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00e6ea30   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00e6ea30   WARN SHARED_HEADER_AVAILABLE CScriptDef
+00e6ea30   WARN SHARED_HEADER_AVAILABLE CV_DemonDoorsScript
+00e6ea30   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e6ea30   RELOCATION_MATCH PASS   CDF_ShineLight::Main
+00e9cb20   RELOCATION_MATCH PASS   NScript::CV_IntroductionToTrophiesScript::WatchForInsideTavern
+00ed9790   RELOCATION_MATCH PASS   NScript::CV_TalentlessBardScript::WatchForAttack
+00ef84d0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00ef84d0   WARN SHARED_HEADER_AVAILABLE CPersonalScript_EmptyScript
+00ef84d0   WARN RELOC_NAME: ??0CAnd@@QAE@ABUCIsThing@@0@Z -> 00ef8740 labelled 'NScript::CPredicate_And<NScript::CIsThingConscious, NScript::CIsThingConscious>::CPredicate_And'
+00ef84d0   WARN RELOC_NAME: ??1CIsThing@@QAE@XZ -> 00ef7ab0 labelled 'CScriptThingFunctor_00ef7ab0::~CScriptThingFunctor_00ef7ab0'
+00ef84d0   RELOCATION_MATCH PASS   CCham::Main
+
+WINS: 13
+  005bb190 RELOCATION_MATCH std::_List_base<CDefPointer<const CAppearanceModifierDef>,std::allocator<CDefPointer<const CAppearanceModifierDef>>>::?clear@?$_List_base@V?$CDefPointer@$$CBVCAppearanceModifierDef@@@@V?$allocator@V?$CDefPointer@$$CBVCAppearanceModifierDef@@@@@std@@@std@@QAEXXZ
+  009ac130 RELOCATION_MATCH std::map<CCharString,NBankFileManager::CContainedBank>::??1?$map@VCCharString@@VCContainedBank@NBankFileManager@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@5@@std@@QAE@XZ
+  00cffb60 RELOCATION_MATCH CFinalTabletSarcophagus::Main
+  00d1cac0 RELOCATION_MATCH NScript::CQ_BountyHuntScript::WatchForAllLeaderChargeGruntsKilled
+  00d643a0 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsDepartureScript::CScorpionHome::?Main@CScorpionHome@CQ_GuildTrainingWoodsDepartureScript@NScript@@EAEXXZ
+  00da0820 RELOCATION_MATCH NScript::CQ_MinionCampScript::RunFirstWaveControl
+  00dbe4e0 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::ManageQuestCoreMarkers
+  00e1fcf0 RELOCATION_MATCH CQR_EscortTraderScript::?WatchForExpressionFollow@CQR_EscortTraderScript@@
+  00e4e0e0 RELOCATION_MATCH CTollBanditScript::HandleBanditToll
+  00e6ea30 RELOCATION_MATCH CDF_ShineLight::?Main@CDF_ShineLight@@
+  00e9cb20 RELOCATION_MATCH NScript::CV_IntroductionToTrophiesScript::WatchForInsideTavern
+  00ed9790 RELOCATION_MATCH NScript::CV_TalentlessBardScript::?WatchForAttack@CV_TalentlessBardScript@NScript@@QAEXVCScriptThing@@@Z
+  00ef84d0 RELOCATION_MATCH CCham::Main

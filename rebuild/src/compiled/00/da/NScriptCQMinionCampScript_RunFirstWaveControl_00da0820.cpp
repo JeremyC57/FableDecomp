@@ -1,5 +1,4 @@
 // CQ_MinionCampScript::RunFirstWaveControl() -- during the first wave, whenever neither hero attacker is alive, pick the two minion guards nearest the hero that are not already attacking and assign them as the new hero attackers
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DA0820, length 776 bytes; spawned by CQ_MinionCampScript::PhaseOne 0x00DA05D0.
 // Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940, CCharString(const char*, long) 0x0099EBF0 / ~CCharString
 //   0x0099EAE0, IsAssignedAsHeroAttacker 0x00D9EC50, GetSquaredDistanceBetweenThings 0x00CBE583 (__fastcall), AddNewHeroAttacker
@@ -10,7 +9,7 @@
 // Layout (retail = Ego_r.pdb - 0x14, as the landed ctor 0x00D9E210): CurrentStage +0x74, HeroAttackerOne +0x78,
 //   HeroAttackerTwo +0x84.
 // Shape: vector model of the landed CQ_BountyHuntScript::WatchForAllLeaderChargeGruntsKilled 0x00D1CAC0; `#pragma
-//   inline_depth(0)` regions pick the return sites that call the out-of-line vector destructor.
+//   plain-inline destructor: VC7.1's per-site frequency rule (docs/pipeline/INLINE_DEPTH_REVISIT.md) picks the return sites that call the out-of-line vector destructor.
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (struct->class; already NScript). Same bytes.
@@ -35,7 +34,7 @@ struct CScriptThingVector {                             // STLport vector<CScrip
     CScriptThing* _M_finish;
     CScriptThing* _M_end_of_storage;
     CScriptThingVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    __forceinline ~CScriptThingVector()
+    ~CScriptThingVector()
     {
         Destroy(_M_start, _M_finish);
         if (_M_start)
@@ -100,26 +99,20 @@ void CQ_MinionCampScript::RunFirstWaveControl()
                 if (IsActiveThreadTerminating())
                     return;
                 if (IsAssignedAsHeroAttacker(guards[i])) {
-#pragma inline_depth(0)
                     if (IsActiveThreadTerminating())
                         return;
-#pragma inline_depth()
                 } else {
                     float distance = GetSquaredDistanceBetweenThings(guards[i], Game->GetHero());
                     if (distance < nearestDistance || nearestDistance == -1.0f) {
-#pragma inline_depth(0)
                         if (IsActiveThreadTerminating())
                             return;
-#pragma inline_depth()
                         second = nearest;
                         secondDistance = nearestDistance;
                         nearest = &guards[i];
                         nearestDistance = distance;
                     } else if (distance < secondDistance || secondDistance == -1.0f) {
-#pragma inline_depth(0)
                         if (IsActiveThreadTerminating())
                             return;
-#pragma inline_depth()
                         second = &guards[i];
                         secondDistance = distance;
                     }
@@ -128,17 +121,13 @@ void CQ_MinionCampScript::RunFirstWaveControl()
             if (IsActiveThreadTerminating())
                 return;
             if (nearest) {
-#pragma inline_depth(0)
                 if (IsActiveThreadTerminating())
                     return;
-#pragma inline_depth()
                 AddNewHeroAttacker(*nearest);
             }
             if (second) {
-#pragma inline_depth(0)
                 if (IsActiveThreadTerminating())
                     return;
-#pragma inline_depth()
                 AddNewHeroAttacker(*second);
             }
         }

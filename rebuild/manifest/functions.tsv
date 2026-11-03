@@ -4898,7 +4898,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004b8c00	clear	list	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted									
 004b8c50	clear	std::list<CQuestManager::CObjective>	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted									
 004b8d30	CCountedPointer_Release_004b8d30	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4b\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_004b8d30.cpp
-004b8d70	Transfer<ENumAcceptedBoasts>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
+004b8d70	Transfer<int>	CPersistContext	__thiscall	void	4	CPersistContext *,char *,char *,char *	1	yes	accepted									
 004b8e40	__find<CCharString*, CCharString>	std	unknown	undefined	0		0	yes	accepted									
 004b8ff0	__find<const CCharString*, CCharString>	std	unknown	undefined	0		0	yes	accepted									
 004b91a0	remove_if	std::list	__thiscall	void	2	list<CQuestManager::CQuestCard,std::allocator<CQuestManager::CQuestCard>_> *,CIsQuestCardWithFeatIndex	1	yes	accepted									
@@ -23247,7 +23247,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007ea290	IsZTargetable	CTCTargeted	__thiscall	bool	1	CTCTargeted *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7e\CTCTargeted_IsZTargetable_007ea290.cpp
 007ea2b0	ReturnToDefaultTargetingFlags	CTCTargeted	__thiscall	void	1	CTCTargeted *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7e\CTCTargeted_ReturnToDefaultTargetingFlags_007ea2b0.cpp
 007ea2d0	GetNumTargetPoints	CTCTargeted	__thiscall	long	1	CTCTargeted *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7e\CTCTargeted_GetNumTargetPoints_007ea2d0.cpp
-007ea2f0	Creature::GetTargetFirePoint	Creature	unknown	undefined	0		0	yes	accepted									
+007ea2f0	GetTargetingPositionOnThing	NTargeting	unknown	undefined	0		0	yes	accepted									
 007ea490	GetTargetPoint	CTCTargeted	__thiscall	C3DVector	3	CTCTargeted *,long,float	1	yes	accepted									
 007ea510	OnCreate	CTCTargeted	__thiscall	void	1	CTCTargeted *	1	yes	accepted									
 007ea550	vfunc_1	CTCTargeted	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
@@ -52335,7 +52335,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00e2ad20	vfunc_4	CVtable_012e24b4	__thiscall	void	1	CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e2\CSpawnedFuncNScriptCQRansomVictimChiefsHouseScript_SuspendableProcess_00e2ad20.cpp
 00e2ad30	`scalar deleting destructor'	CSpawnedFunc<NScript::CV_AmbushScamScript>	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\e2\CLandscapeBackgroundPatch_vectordeletingdestructor_00e2ad30.cpp
 00e2ad50	OnPersist	NScript::CV_AmbushScamScript	unknown	undefined	0		0			discovered	gapscan							
-00e2b090	Main	CV_AmbushScamScript	__thiscall	void	1	CV_AmbushScamScript *	1	yes	accepted									
+00e2b090	Main	NScript::CV_AmbushScamScript	__thiscall	void	1	CV_AmbushScamScript *	1	yes	accepted									
 00e2ba50	WatchForQuestFinished	CV_AmbushScamScript	__thiscall	void	1	CV_AmbushScamScript *	1	yes	accepted									
 00e2bab0	sub_00e2bab0	_global	unknown	undefined	0		0			discovered	gapscan							
 00e2bac0	AssignMoralityEtcForEvilEnding	CV_AmbushScamScript	__thiscall	void	1	CV_AmbushScamScript *	1	yes	accepted									

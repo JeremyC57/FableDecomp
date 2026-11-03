@@ -1,0 +1,42 @@
+addr       parity           behav  name
+004085a0   RELOCATION_MATCH PASS   GetMaxMeshDetail
+0047a9f0   WARN RELOC_NAME: ?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z -> 00403c60 labelled 'MemCmp_Unsigned16'
+0047a9f0   WARN RELOC_NAME: ??$__destroy_aux@PAVCHeroLogBookEntry@CHeroLogBook@@@std@@YIXPAVCHeroLogBookEntry@CHeroLogBook@@0ABU__false_type@0@@Z -> 0047baf0 labelled 'std::__destroy_aux<CHeroLogBook::CHeroLogBookEntry*>'
+0047a9f0   RELOCATION_MATCH PASS   AddEntry
+00487b70   RELOCATION_MATCH PASS   GetPPlayerCharacterThing
+004ff750   RELOCATION_MATCH PASS   CreateRelevantPersonAndUpdateStats
+00522720   RELOCATION_MATCH PASS   RuntimeLoadEntities
+005c36c2   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005c36c2   RELOCATION_MATCH PASS   PutSheatheObjectInCarrySlot
+00606300   WARN RELOC_NAME: ??$TransferVector@VCUIMiniMapMarker@CTCInventoryMap@@@CPersistContext@@QAEXPBDAAV?$vector@VCUIMiniMapMarker@CTCInventoryMap@@V?$allocator@VCUIMiniMapMarker@CTCInventoryMap@@@std@@@std@@@Z -> 00619710 labelled 'CPersistContext::Transfer<CUIMiniMapMarker>'
+00606300   WARN RELOC_NAME: ??$TransferVector@VCUIRegionInfo@CTCInventoryMap@@@CPersistContext@@QAEXPBDAAV?$vector@VCUIRegionInfo@CTCInventoryMap@@V?$allocator@VCUIRegionInfo@CTCInventoryMap@@@std@@@std@@@Z -> 006197d0 labelled 'CPersistContext::Transfer<CUIRegionInfo>'
+00606300   WARN RELOC_NAME: ??$TransferVector@_K@CPersistContext@@QAEXPBDAAV?$vector@_KV?$allocator@_K@std@@@std@@@Z -> 006192f0 labelled 'CPersistContext::Transfer<CTeleportUIDRecord>'
+00606300   WARN RELOC_NAME: ??1?$_List_base@PBVCThingMarker@@V?$allocator@PBVCThingMarker@@@std@@@std@@QAE@XZ -> 00615360 labelled '_global::StdList_Clear_00615360'
+00606300   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z -> 00433530 labelled 'std::vector::std::vector::Reallocate'
+00606300   RELOCATION_MATCH PASS   OnSerialise
+00666ef0   RELOCATION_MATCH PASS   AutoPlaceNearBuilding
+00697ab0   MATCH            PASS   GetCameraModeType
+0074a5d0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0074a5d0   RELOCATION_MATCH PASS   GetValidPositions
+008771a0   WARN RELOC_NAME: ?GetPCombatFirstHitLocationIntersectionWithFiniteLine@CTCHitLocations@@QBEPBVCHitLocation@NHitLocations@@ABVC3DVector@@0AAV4@1M@Z -> 00816aa0 labelled '_global::TailJmp_GetPCombatFirstHitLocationIntersectionWi_00816aa0'
+008771a0   RELOCATION_MATCH PASS   GetThingPointIntersectionFromTo
+00ac2be0   WARN RELOC_NAME: ??_GC3DMeshPartitionBuilderElement@@QAEPAXI@Z -> 00ac39c0 labelled 'C3DMeshPartitionBuilderElement::`scalar deleting destructor''
+00ac2be0   RELOCATION_MATCH PASS   PartitionSpace
+00ec5de0   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00ec5de0   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 labelled 'CDefString::operator CCharString'
+00ec5de0   RELOCATION_MATCH PASS   Main
+
+WINS: 13
+  004085a0 RELOCATION_MATCH CUserProfileManager::?GetMaxMeshDetail@CUserProfileManager@@QBEMXZ
+  0047a9f0 RELOCATION_MATCH CHeroLogBook::?AddEntry@CHeroLogBook@@QAEXABVCWideString@@00W4ECategory@CHeroLogBookEntry@1@_N@Z
+  00487b70 RELOCATION_MATCH CPlayer::?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ
+  004ff750 RELOCATION_MATCH _global::?CreateRelevantPersonAndUpdateStats@@YIPAVCThingAICreature@@MMJJAAJ0ABVC3DVector@@ABVCThingAICreatureInit@@PAVCTCVillage@@AAV?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@4_N@Z
+  00522720 RELOCATION_MATCH CThingManager::?RuntimeLoadEntities@CThingManager@@QAEXJABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@3@@Z
+  005c36c2 RELOCATION_MATCH _global::?PutSheatheObjectInCarrySlot@
+  00606300 RELOCATION_MATCH CTCInventoryMap::?OnSerialise@CTCInventoryMap@@MAEXAAVCPersistContext@@_N@Z
+  00666ef0 RELOCATION_MATCH CThingCreatureBase::?AutoPlaceNearBuilding@CThingCreatureBase@@QAE_NPBVCThingBuilding@@M@Z
+  00697ab0 MATCH CGameCameraManager::?GetCameraModeType@CGameCameraManager@@QBE?AW4EMode@NCameraModes@@XZ
+  0074a5d0 RELOCATION_MATCH NCreatureHiding::?GetValidPositions@NCreatureHiding@@YIXAAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@ABVCWorldMap@@ABVCThingSearchTools@@ABVC3DVector@@M_NPBVCTCShapeManager@@@Z
+  008771a0 RELOCATION_MATCH NCameraModes::CTools::?GetThingPointIntersectionFromTo@CTools@NCameraModes@@QBE_NABV?$vector@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@ABVC3DVector@@1AAV5@2PAPBVCThing@@_NW4ELOSTest@12@@Z
+  00ac2be0 RELOCATION_MATCH C3DMeshPartitionBuilderElement::?PartitionSpace@C3DMeshPartitionBuilderElement@@AAEJPBVC3DVertex2@@JM@Z
+  00ec5de0 RELOCATION_MATCH NScript::CV_SickChildScript::CSickChild::?Main@CSickChild@CV_SickChildScript@NScript@@EAEXXZ

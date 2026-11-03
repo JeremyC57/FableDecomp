@@ -3,6 +3,9 @@
 // Ego_r TPI CDefString class, size4, private TablePos+0; native parent-def
 // constructors initialise this member at +25 to -1.
 class CCharString;
+#ifdef FABLE_RETAIL_CDEFSTRING
+class CWideString;
+#endif
 #ifndef FABLE_RETAIL_CDEFSTRINGTABLE
 #error engine/CDefString.h needs the retail CDefStringTable: define FABLE_RETAIL_CDEFSTRINGTABLE (and FABLE_RETAIL_CCHARSTRING) before including it
 #endif
@@ -24,6 +27,11 @@ public:
  operator CCharString()const{return GetString();}
 #endif
  CCharString GetString()const{return GDefStringTable.GetString(TablePos);}
+#ifdef FABLE_RETAIL_CDEFSTRING
+ // Chunk 732 (row 0x006AA2E0): Ego_r.pdb / FableWin.pdb ?ToWideString@CDefString@@QBE?AVCWideString@@XZ, out of line in retail
+ // (0x00415D90: GetString through GDefStringTable, then CCharString::ToWideString 0x0099E480). Declaration only.
+ CWideString ToWideString()const;
+#endif
 private:
  long TablePos;
 };

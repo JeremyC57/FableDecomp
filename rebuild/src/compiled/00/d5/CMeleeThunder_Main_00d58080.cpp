@@ -1,5 +1,4 @@
 // NScript::CQ_GuildTrainingMeleeScript::CMeleeThunder::Main() (0x00D58080) -- the Thunder fight: wait for the parent's stage 4, take scripted control
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 //   (priority 4) and hold it while the stage stays 4; then wait for stage 6, take control again and hold it while the stage
 //   stays 6; release the scripted-thing handle and idle until the script is done
 // Leaf: ?Main@CMeleeThunder@
@@ -13,8 +12,8 @@
 //   CScriptGameResourceObjectBase (vtable 0x0126008C) <- CScriptGameResourceObjectScriptedThingBase (vtable 0x0127094C,
 //   counted PImp at +0x08/+0x0c).
 // Shape: IMPLICIT handle destructor (a user-written one stores the 0x0127094C vptr at entry, retail does not) over
-//   __forceinline CCountedPointer / base destructors; it expands only at the first wait loop's return, every later exit (and the
-//   function end) sits under in-body inline_depth(0) and calls 0x007E74D0.
+//   plain-inline CCountedPointer / base destructors; it expands only at the first wait loop's return, every later exit (and the
+//   function end) calls 0x007E74D0 by VC7.1's per-site frequency rule (docs/pipeline/INLINE_DEPTH_REVISIT.md).
 class C3DVector { public: float X, Y, Z; };
 class CCharString { public:
     void* PStringData;
@@ -32,7 +31,7 @@ template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
-    __forceinline ~CCountedPointer()
+    ~CCountedPointer()
     {
         if (Info) {
             --Info->RefCount;
@@ -52,13 +51,13 @@ struct CScriptThingImpl;
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
 inline CScriptThing::CScriptThing() {}
-__forceinline CScriptThing::~CScriptThing() {}
+inline CScriptThing::~CScriptThing() {}
 inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
+    ~CScriptGameResourceObjectBase() { }
 };
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
@@ -105,9 +104,7 @@ void NScript::CQ_GuildTrainingMeleeScript::CMeleeThunder::Main()
     }
     if (IsActiveThreadTerminating())
         {
-#pragma inline_depth(0)
             return;
-#pragma inline_depth()
         }
     if (scripted.IsValid())
         scripted.Release();
@@ -115,31 +112,23 @@ void NScript::CQ_GuildTrainingMeleeScript::CMeleeThunder::Main()
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
             {
-#pragma inline_depth(0)
                 return;
-#pragma inline_depth()
             }
     }
     if (IsActiveThreadTerminating())
         {
-#pragma inline_depth(0)
             return;
-#pragma inline_depth()
         }
     while (ParentClass->Stage == 4) {
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
             {
-#pragma inline_depth(0)
                 return;
-#pragma inline_depth()
             }
     }
     if (IsActiveThreadTerminating())
         {
-#pragma inline_depth(0)
             return;
-#pragma inline_depth()
         }
     if (scripted.IsValid())
         scripted.Release();
@@ -147,16 +136,12 @@ void NScript::CQ_GuildTrainingMeleeScript::CMeleeThunder::Main()
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
             {
-#pragma inline_depth(0)
                 return;
-#pragma inline_depth()
             }
     }
     if (IsActiveThreadTerminating())
         {
-#pragma inline_depth(0)
             return;
-#pragma inline_depth()
         }
     if (scripted.IsValid())
         scripted.Release();
@@ -164,37 +149,27 @@ void NScript::CQ_GuildTrainingMeleeScript::CMeleeThunder::Main()
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
             {
-#pragma inline_depth(0)
                 return;
-#pragma inline_depth()
             }
     }
     if (IsActiveThreadTerminating())
         {
-#pragma inline_depth(0)
             return;
-#pragma inline_depth()
         }
     while (ParentClass->Stage == 6) {
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
             {
-#pragma inline_depth(0)
                 return;
-#pragma inline_depth()
             }
     }
     if (IsActiveThreadTerminating())
         {
-#pragma inline_depth(0)
             return;
-#pragma inline_depth()
         }
     if (scripted.IsValid())
         scripted.Release();
     do {
         Game->NewScriptFrame();
     } while (!IsActiveThreadTerminating());
-#pragma inline_depth(0)
 }
-#pragma inline_depth()

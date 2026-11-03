@@ -92,14 +92,10 @@ void CV_ChapelOfEvilScript::WatchForInsideChapel()
             if (IsActiveThreadTerminating()) return;
             building = Game->EntityGetStandingInsideBuilding(Game->GetHero());
             if (!building.IsNull() && building.GetDefName() == "BUILDING_CHAPEL_EVIL" && !InsideChapel) {
-#pragma inline_depth(0)
                 if (IsActiveThreadTerminating()) return;
-#pragma inline_depth()
                 InsideChapel = true;
             } else if (building.IsNull() && InsideChapel) {
-#pragma inline_depth(0)
                 if (IsActiveThreadTerminating()) return;
-#pragma inline_depth()
                 InsideChapel = false;
             }
         }

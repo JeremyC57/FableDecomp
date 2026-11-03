@@ -1,6 +1,5 @@
 // CString::ConcatInPlace(int nSrcLen, const char* lpszSrcData) -- MFC-style in-place append: no-op for an empty source; when the buffer is shared or too small concatenate into a new buffer (ConcatCopy) and release the old one, otherwise copy the text after the current end, bump the length, assert it fits and terminate
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
-// Grade: RELOCATION_MATCH (433 bytes; parked 383v433): GetData is __forceinline and the fast path's memcpy offset / `+=` and its terminator sit in `#pragma inline_depth(0)` regions, so exactly retail's three sites call the out-of-line GetData 0x00C0B8C0 while the condition's three, the grow path's two and the ASSERT pair expand inline
+// Grade: RELOCATION_MATCH (433 bytes; parked 383v433): GetData is plain inline and LIB_ASSERT is written as MFC writes ASSERT (`do { ... } while (0)`), so by VC7.1's per-site frequency rule exactly retail's three sites (the fast path's memcpy offset / `+=` and its terminator) call the out-of-line GetData 0x00C0B8C0 while the condition's three, the grow path's two and the ASSERT pair expand inline
 // Leaf: ?ConcatInPlace@CString@@QAEXHPBD@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C0C270, 433 bytes, thiscall `ret 8`.
 // Identity (probable): libpk MFC-style CString (landed GetData 0x00C0B8C0, ConcatCopy 0x00C0C220, Release 0x00C0B9F0); MFC's
@@ -18,7 +17,7 @@ struct CDebugBreak {                            // empty temporary whose constru
 };
 
 #define LIB_ASSERT(cond) \
-    if (!(cond)) { if (g_pfnAssertHook) g_pfnAssertHook(#cond "\n"); CDebugBreak(); }
+    do { if (!(cond)) { if (g_pfnAssertHook) g_pfnAssertHook(#cond "\n"); CDebugBreak(); } } while (0)
 
 struct CStringData {                            // the 12-byte header in front of the characters
     long nRefs;
@@ -30,9 +29,9 @@ struct CStringData {                            // the 12-byte header in front o
 class CString {
 public:
     char* m_pchData;                            // +0x00
-    __forceinline CStringData* GetData() const
+    CStringData* GetData() const
     {
-        LIB_ASSERT(m_pchData != NULL)
+        LIB_ASSERT(m_pchData != NULL);
         return ((CStringData*)m_pchData) - 1;
     }
     static void __stdcall Release(CStringData* pData);   // 0x00C0B9F0
@@ -49,16 +48,12 @@ void CString::ConcatInPlace(int nSrcLen, const char* lpszSrcData)
     if (GetData()->nRefs > 1 || GetData()->nDataLength + nSrcLen > GetData()->nAllocLength) {
         CStringData* pOldData = GetData();
         ConcatCopy(GetData()->nDataLength, m_pchData, nSrcLen, lpszSrcData);
-        LIB_ASSERT(pOldData != NULL)
+        LIB_ASSERT(pOldData != NULL);
         CString::Release(pOldData);
     } else {
-#pragma inline_depth(0)
         memcpy(m_pchData + GetData()->nDataLength, lpszSrcData, nSrcLen * sizeof(char));
         GetData()->nDataLength += nSrcLen;
-#pragma inline_depth()
-        LIB_ASSERT(GetData()->nDataLength <= GetData()->nAllocLength)
-#pragma inline_depth(0)
+        LIB_ASSERT(GetData()->nDataLength <= GetData()->nAllocLength);
         m_pchData[GetData()->nDataLength] = 0;
-#pragma inline_depth()
     }
 }

@@ -1,5 +1,4 @@
 // CHenchmanRegionExitComment::Main() -- body-guard henchman comment on leaving a region: collects the "BodyGuard" things; waits until none is within 30 units, then every frame asks the body-guard script for a region-exit comment from the first henchman within 10 units, stopping once one is made
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E5F8F0, length 649 bytes (+ int3 padding).
 // Callees: IsActiveThreadTerminating 0x00F35B30, IsDistanceBetweenThingsUnder 0x00CBE2FF (__fastcall), CCharString(const
@@ -10,7 +9,7 @@
 // Layout: Ego_r.pdb CHenchmanRegionExitComment (40 bytes): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14,
 //   PMasterData +0x18, HenchmanVector +0x1c (retail STLport vector, 12 bytes).
 // Shape: the empty CScriptThing passed to MakeHenchmanComment is a temporary whose ~CScriptThing is expanded inline
-//   (__forceinline dtor, CBaseClass ctor/dtor out of line).
+//   (plain-inline dtor, CBaseClass ctor/dtor out of line).
 class CCharString;
 class C3DVector;
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
@@ -22,7 +21,7 @@ template <class T> class CCountedPointer { public:                              
  CCountedPointer() : Data(0), Info(0) { }
  CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->References; }
  CCountedPointer& operator=(const CCountedPointer& other);   // 0x00704580 (folded with CCountedPointer<CDiskFileWin32>::operator=)
- __forceinline ~CCountedPointer()
+ ~CCountedPointer()
  {
   if (Info) {
    --Info->References;
@@ -52,7 +51,7 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
  CScriptThing() { }
  CScriptThing(const CScriptThing& other);               // 0x004ABE90 (the out-of-line copy)
  CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
- __forceinline ~CScriptThing() { }                      // out of line 0x004AA840
+ ~CScriptThing() { }                      // out of line 0x004AA840
  CScriptThing& operator=(const CScriptThing& other);    // 0x008AB980
 };
 #include "engine/CGameScriptInterface.h"
@@ -65,9 +64,7 @@ class CIsThingAlive:public CPredicateBase { public:
  ~CIsThingAlive();
 };
 }
-#pragma inline_depth(0)
 inline NScript::CIsThingAlive::~CIsThingAlive() { }
-#pragma inline_depth()
 class C2DCoordI;
 class C2DVector;
 class C3DVector;

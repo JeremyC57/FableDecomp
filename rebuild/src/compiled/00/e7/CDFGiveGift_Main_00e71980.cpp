@@ -1,5 +1,4 @@
 // CDF_GiveGift::Main() -- demon-door face (give a gift): take scripted control of Me, make it persistent and immune, find the nearest REGION_EXIT_POINT and shut it; then each frame -- if Me is presented with a romantic gift, speak the opening line, fade the face out, open the door and reactivate the exit; else if the hero talks to the face, speak the intro line
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E71980, 1201 bytes (+ int3 padding), plain `ret`. Literals "TEXT_QST_088_GIVE_GIFT_INTRO" 0x012E9088,
 //   "TEXT_QST_088_GIVE_GIFT_OPENING" 0x012E9068, "DD_GiveGift" 0x012E905C (sibling of the matched CDF_CombatMult::Main 0x00E6F710).
@@ -14,7 +13,7 @@
 // Layout: Ego_r.pdb CDF_GiveGift (28 bytes): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 (CV_DemonDoorsScript),
 //   PMasterData +0x18. Handle hierarchy as the landed
 //   CMeleeThunder::Main 0x00D58080.
-// Shape: the CMeleeThunder handle model (implicit handle dtor expanded only at the first return, inline_depth(0) elsewhere).
+// Shape: the CMeleeThunder handle model (implicit handle dtor expanded only at the first return, by VC7.1's per-site frequency rule (docs/pipeline/INLINE_DEPTH_REVISIT.md)).
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -32,7 +31,7 @@ template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
-    __forceinline ~CCountedPointer()
+    ~CCountedPointer()
     {
         if (Info) {
             --Info->RefCount;
@@ -87,7 +86,7 @@ using NScript::CIsThingAlive;
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
+    ~CScriptGameResourceObjectBase() { }
 };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
@@ -145,16 +144,12 @@ void CDF_GiveGift::Main()
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
             {
-#pragma inline_depth(0)
                 return;
-#pragma inline_depth()
             }
     }
     if (IsActiveThreadTerminating())
         {
-#pragma inline_depth(0)
             return;
-#pragma inline_depth()
         }
     Game->SetThingPersistent(Me, true);
     Game->EntitySetAsDamageable(Me, false);
@@ -168,13 +163,9 @@ void CDF_GiveGift::Main()
         if (Me.MsgIsPresentedWithItem(gift) && Game->IsGiftRomantic(gift)) {
             if (IsActiveThreadTerminating())
                 {
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
-#pragma inline_depth(0)
             CScriptGameResourceObjectMovieBase movie;
-#pragma inline_depth()
             Game->StartMovieSequence("", movie);
             CGameScriptInterface* game = Game;
             game->PauseAllNonScriptedEntities(true);
@@ -184,16 +175,12 @@ void CDF_GiveGift::Main()
                     Game->NewScriptFrame();
                     if (IsActiveThreadTerminating()) {
                         game->PauseAllNonScriptedEntities(false);
-#pragma inline_depth(0)
                         return;
-#pragma inline_depth()
                     }
                 }
                 if (IsActiveThreadTerminating()) {
                     game->PauseAllNonScriptedEntities(false);
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
             }
             {
@@ -202,15 +189,11 @@ void CDF_GiveGift::Main()
             }
             Game->SetRegionExitAsActive(exitPoint, true);
             game->PauseAllNonScriptedEntities(false);
-#pragma inline_depth(0)
             return;
-#pragma inline_depth()
         } else if (Me.MsgIsTalkedToBy("SCRIPT_NAME_HERO")) {
             if (IsActiveThreadTerminating())
                 {
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
             CScriptGameResourceObjectMovieBase movie;
             Game->StartMovieSequence("", movie);
@@ -222,16 +205,12 @@ void CDF_GiveGift::Main()
                     Game->NewScriptFrame();
                     if (IsActiveThreadTerminating()) {
                         game->PauseAllNonScriptedEntities(false);
-#pragma inline_depth(0)
                         return;
-#pragma inline_depth()
                     }
                 }
                 if (IsActiveThreadTerminating()) {
                     game->PauseAllNonScriptedEntities(false);
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
             }
             game->PauseAllNonScriptedEntities(false);
@@ -239,6 +218,4 @@ void CDF_GiveGift::Main()
         }
         Game->NewScriptFrame();
     }
-#pragma inline_depth(0)
 }
-#pragma inline_depth()

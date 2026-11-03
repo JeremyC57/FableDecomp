@@ -1,6 +1,5 @@
 // CQ_AmbushTradersScript::WatchForHeroAttackOnBandit(CScriptThing bandit) -- watch thread: frame by frame, whenever the hero hits the hired bandit (by weapon or an aggressive special ability) and the bandit still has health, flag the attack and count it
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
-// Levers: ~CScriptThing __forceinline; CCountedPointer dtor zero order `Data = 0; Info = 0;`; for(;;) with in-body `#pragma inline_depth(0)` around the third terminating return (after the health test), the one exit retail calls 0x004AA840 at
+// Levers: plain-inline ~CScriptThing; CCountedPointer dtor zero order `Data = 0; Info = 0;`; for(;;) with every terminating return written `do { if (...) return; } while (0);`; by VC7.1's per-site frequency rule (docs/pipeline/INLINE_DEPTH_REVISIT.md) the third (after the health test) is the one exit retail calls 0x004AA840 at
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F061E0, length 395 bytes (+ int3 padding), `ret 0Ch` (the 12-byte
 // CScriptThing is passed by value and destroyed here).
 // Identity: Ego_r.pdb ?WatchForHeroAttackOnBandit@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z (spawned as
@@ -55,7 +54,7 @@ template <class T> class CCountedPointer { public:                     // CCount
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline CScriptThing::~CScriptThing() {}
+inline CScriptThing::~CScriptThing() {}
 inline bool CScriptThing::MsgIsHitBy(const CCharString& attacker) const { if (PImp.Data) return PImp.Data->MsgIsHitBy(attacker); return false; }
 inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { if (PImp.Data) return PImp.Data->MsgIsHitByAnyAggressiveSpecialAbilityFrom(attacker); return false; }
 inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
@@ -86,18 +85,13 @@ public:
 void CQ_AmbushTradersScript::WatchForHeroAttackOnBandit(CScriptThing bandit)
 {
     for (;;) {
-        if (IsActiveThreadTerminating())
-            return;
+        do { if (IsActiveThreadTerminating()) return; } while (0);
         bool attacked = bandit.MsgIsHitBy("SCRIPT_NAME_HERO") ||
                         bandit.MsgIsHitByAnyAggressiveSpecialAbilityFrom("SCRIPT_NAME_HERO");
         if (attacked) {
-            if (IsActiveThreadTerminating())
-                return;
+            do { if (IsActiveThreadTerminating()) return; } while (0);
             if (GSI->GetHealth(bandit) > 0.0001f) {
-#pragma inline_depth(0)
-                if (IsActiveThreadTerminating())
-                    return;
-#pragma inline_depth()
+                do { if (IsActiveThreadTerminating()) return; } while (0);
                 BanditAttackedByHero = true;
                 ++BanditAttackByHeroCount;
             }

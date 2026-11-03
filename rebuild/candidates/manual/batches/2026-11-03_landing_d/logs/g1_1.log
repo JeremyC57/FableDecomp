@@ -1,0 +1,62 @@
+addr       parity           behav  name
+006c8270   RELOCATION_MATCH PASS   std::map<long, COpinionDeed *, std::less<long>, std::allocator<std::pair<long const, COpinionDeed *>>>::~map
+00c0c270   WARN SHARED_HEADER_AVAILABLE CString
+00c0c270   RELOCATION_MATCH PASS   CString::ConcatInPlace
+00d16920   WARN SHARED_HEADER_AVAILABLE CVectorMap
+00d16920   WARN SHARED_HEADER_AVAILABLE CRuntimeScriptedEntityPersist
+00d16920   RELOCATION_MATCH PASS   NScript::CQ_BountyHuntScript::WatchForHostage1Killed
+00d2c810   WARN SHARED_HEADER_AVAILABLE C3DVector
+00d2c810   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00d2c810   WARN SHARED_HEADER_AVAILABLE CIsThingAlive
+00d2c810   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00d2c810   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d2c810   RELOCATION_MATCH PASS   CEndGameThunder::Main
+00d85b40   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00d85b40   WARN SHARED_HEADER_AVAILABLE C3DVector
+00d85b40   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d85b40   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d85b40   RELOCATION_MATCH PASS   CGuildmaster_HS::Main
+00da8970   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00da8970   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00da8970   RELOCATION_MATCH PASS   NScript::CQ_MinionClifftopChaseScript::GuardComment
+00e06050   WARN SHARED_HEADER_AVAILABLE C3DVector
+00e06050   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00e06050   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00e06050   RELOCATION_MATCH PASS   NScript::CQ_TraderEscortScript::WatchForSurprisingBalverines
+00e1fef0   WARN RELOC_NAME: ?RestartRandomSpeechTimer@CQR_EscortTraderScript@@QAEXXZ -> 00e1feb0 labelled 'CV_AmbushScamScript::ResetRandomSpeechTime'
+00e1fef0   RELOCATION_MATCH PASS   CQR_EscortTraderScript::WatchForExpressionWait
+00e5f8f0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00e5f8f0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00e5f8f0   WARN SHARED_HEADER_AVAILABLE CHeroLogBook
+00e5f8f0   WARN SHARED_HEADER_AVAILABLE CV_BodyGuardScript
+00e5f8f0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e5f8f0   RELOCATION_MATCH PASS   CHenchmanRegionExitComment::Main
+00e71980   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00e71980   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00e71980   WARN SHARED_HEADER_AVAILABLE CV_DemonDoorsScript
+00e71980   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e71980   RELOCATION_MATCH PASS   CDF_GiveGift::Main
+00ec1ef0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00ec1ef0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00ec1ef0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00ec1ef0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00ec1ef0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ec1ef0   RELOCATION_MATCH PASS   CRandomPopulationCreature::Main
+00edbd80   RELOCATION_MATCH PASS   NScript::CV_TempleOfLightScript::WatchForInsideTemple
+00f061e0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00f061e0   RELOCATION_MATCH PASS   NScript::CQ_AmbushTradersScript::WatchForHeroAttackOnBandit
+
+WINS: 13
+  006c8270 RELOCATION_MATCH std::map<long,COpinionDeed*>::??1?$map@JPAVCOpinionDeed@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@3@@std@@QAE@XZ
+  00c0c270 RELOCATION_MATCH CString::?ConcatInPlace@CString@@QAEXHPBD@Z
+  00d16920 RELOCATION_MATCH NScript::CQ_BountyHuntScript::?WatchForHostage1Killed@CQ_BountyHuntScript@NScript@@QAEXVCScriptThing@@@Z
+  00d2c810 RELOCATION_MATCH CEndGameThunder::Main
+  00d85b40 RELOCATION_MATCH CGuildmaster_HS::Main
+  00da8970 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::GuardComment
+  00e06050 RELOCATION_MATCH NScript::CQ_TraderEscortScript::WatchForSurprisingBalverines
+  00e1fef0 RELOCATION_MATCH CQR_EscortTraderScript::?WatchForExpressionWait@CQR_EscortTraderScript@@
+  00e5f8f0 RELOCATION_MATCH CHenchmanRegionExitComment::Main
+  00e71980 RELOCATION_MATCH CDF_GiveGift::Main
+  00ec1ef0 RELOCATION_MATCH CRandomPopulationCreature::Main
+  00edbd80 RELOCATION_MATCH NScript::CV_TempleOfLightScript::?WatchForInsideTemple@CV_TempleOfLightScript@NScript@@QAEXXZ
+  00f061e0 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::WatchForHeroAttackOnBandit

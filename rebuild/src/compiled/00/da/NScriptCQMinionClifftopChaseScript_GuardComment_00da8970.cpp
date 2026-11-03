@@ -1,5 +1,4 @@
 // CQ_MinionClifftopChaseScript::GuardComment(CCharString comment) -- one of the hero's followers (picked at random) speaks the TEXT_QST_067_<data string>_<comment> line, when that text entry exists, in a new conversation with the hero
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: GuardComment
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DA8970, 624 bytes, `ret 4` (the by-value comment is destroyed here).
 // Callees: CScriptThing::GetDataString 0x004AA900 (inline at the first call, out of line at the second), ~CScriptThing
@@ -7,7 +6,7 @@
 //   0x0099F690 / 0x0099F600 / 0x0099F570, CCharString copy 0x0099EC30 from g_EmptyString 0x0143E8EC, rand 0x00BFEB16,
 //   free 0x00BFEA14; through the quest's interface (+0x40): GetHero (70), GetFollowingEntityList (231),
 //   TextEntryExists (358), AddNewConversation (364), AddPersonToConversation (365), AddLineToConversation (366).
-// Shape: the RestartMarker vector model (forceinline destructor, DestroyRange + free) with `#pragma inline_depth(0)` on the
+// Shape: the RestartMarker vector model (plain-inline destructor, DestroyRange + free); VC7.1's per-site frequency rule (docs/pipeline/INLINE_DEPTH_REVISIT.md) decides the
 //   two terminating returns; CScriptThing has an implicit copy constructor (no CBaseClass ctor call) and an inline virtual
 //   GetDataString that VC7.1 inlines at the first site only, as retail. Relocation targets checked (probe/rpair.py).
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
@@ -65,7 +64,7 @@ template<class T> __forceinline void DestroyRange(T* first, T* last)
 struct CScriptThingVector {                             // vector<CScriptThing> (STLport, 12 bytes)
     CScriptThing* _M_start; CScriptThing* _M_finish; CScriptThing* _M_end_of_storage;
     __forceinline CScriptThingVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-    __forceinline ~CScriptThingVector()                 // out of line: 0x008AC970
+    ~CScriptThingVector()                 // out of line: 0x008AC970
     {
         DestroyRange(_M_start, _M_finish);
         if (_M_start)
@@ -149,16 +148,12 @@ void CQ_MinionClifftopChaseScript::GuardComment(CCharString comment)
     CScriptThingVector followers;
     GSI->GetFollowingEntityList(GSI->GetHero(), followers);
     if (followers.size() != 0) {
-#pragma inline_depth(0)
         if (IsActiveThreadTerminating())
             return;
-#pragma inline_depth()
         CScriptThing guard = followers[rand() % followers.size()];
         if (GSI->TextEntryExists("TEXT_QST_067_" + guard.GetDataString() + "_" + comment)) {
-#pragma inline_depth(0)
             if (IsActiveThreadTerminating())
                 return;
-#pragma inline_depth()
             long conversation = GSI->AddNewConversation(guard, false, false);
             GSI->AddPersonToConversation(conversation, GSI->GetHero());
             GSI->AddLineToConversation(conversation, "TEXT_QST_067_" + guard.GetDataString() + "_" + comment, false, guard, GSI->GetHero());

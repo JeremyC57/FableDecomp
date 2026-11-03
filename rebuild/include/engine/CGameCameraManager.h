@@ -12,6 +12,7 @@
 struct CBase;
 #ifdef FABLE_RETAIL_CGAMECAMERAMANAGER
 #include "engine/CCountedPointer.h"
+#include "engine/CCamera.h"
 namespace NCameraModes { class CBase; enum EMode; }
 #endif
 class CCPPointerInfo;
@@ -35,9 +36,18 @@ public:
     // CCountedPointer<NCameraModes::CBase> (engine/NCameraModes_CBase.h for the mode's vtable).
     NCameraModes::EMode GetCameraModeType() const;           // 0x00697AB0 ?GetCameraModeType@CGameCameraManager@@QBE?AW4EMode@NCameraModes@@XZ
     bool HasCameraMode(NCameraModes::EMode) const;           // 0x00697AC0 ?HasCameraMode@CGameCameraManager@@QBE_NW4EMode@NCameraModes@@@Z
+    // Chunk 732 (row 0x006AABE0 CThingPlayerCreature::SetActionForMelee): FableWin.pdb ?GetCamera@CGameCameraManager@@QAEAAVCCamera@@XZ
+    // (0x01DF0CD0) / ?GetCamera@CGameCameraManager@@QBEABVCCamera@@XZ (0x01DF4D10), no Ego_r.pdb copy: expanded in retail (the row
+    // reads the camera's view direction at manager +0x1C / +0x20 = Camera +0x18 = RHSet.Forward X / Y). Camera is the real CCamera.
+    CCamera& GetCamera() { return Camera; }
+    const CCamera& GetCamera() const { return Camera; }
 #endif
     void*              __vftable;                            // +0x00 vptr, or first dword of a flattened base subobject
+#ifdef FABLE_RETAIL_CGAMECAMERAMANAGER
+    CCamera            Camera;                               // +0x04
+#else
     unsigned char      Camera[0x38];                         // +0x04 CCamera
+#endif
     unsigned char      OldCamera[0x38];                      // +0x3c CCamera
     CWorld*            World;                                // +0x74
     unsigned char      CamTools[0x20];                       // +0x78 CTools

@@ -1,0 +1,1 @@
+CHANGED engine/CV_AmbushScamScript.h: NEW (hdrcheck2 run after install; no repo default to compare; its only includer is the new row 0x00E2B090)

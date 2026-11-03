@@ -1,5 +1,4 @@
 // CRandomPopulationCreature::Main() -- a randomly populated creature: register an alive-filter over Me; the first time through, attach Me to its village ("PopulationVillageEvil" for type 2, "PopulationVillageGood" for types 0/1) when that village is alive; make Me non-persistent, take it under scripted control and walk it to its exit point until within 2 units; then (non-evil types) lower the current region's population scale by 0.05 clamped to [0,1], remove Me and idle
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EC1EF0, length 836 bytes, plain `ret`.
 // Callees: CIsThingAlive (vtable 0x012C32F0) over the CScriptThing copy ctor 0x004ABE90, ~CIsThingAlive 0x00E241B0,
@@ -16,7 +15,7 @@
 // PMasterData +0x18, Exit +0x1c, MyType +0x28, AttachedToVillage +0x2c; CV_RandomPopulationSimScript is retail = PDB
 // - 0x14: CurrentPopulationScale[4] +0x48, CurrentPopulationRegion +0x5c.
 // Shape: the two village arms are identical apart from the literal and VC7.1 cross-jumps them; the landed
-// CHTG_FreedomFighter::Main 0x00D701C0 walk loop; the village ~CScriptThing exits sit under `#pragma inline_depth(0)`.
+// CHTG_FreedomFighter::Main 0x00D701C0 walk loop; the village ~CScriptThing exits call it out of line by VC7.1's per-site frequency rule (docs/pipeline/INLINE_DEPTH_REVISIT.md).
 namespace NScript { class CPredicateBase; }
 class C3DVector { public: float X, Y, Z; };
 class CCharString { public:
@@ -30,7 +29,7 @@ struct CCountBlock { long References; void (__fastcall* DeleteFunc)(void* data);
 struct CCountedPointer {                                // CCountedPointer<CScriptThing>: {Data, Info}
     void* Data;
     CCountBlock* Info;
-    __forceinline ~CCountedPointer()
+    ~CCountedPointer()
     {
         if (Info) {
             --Info->References;
@@ -59,7 +58,7 @@ class CScriptThing : public CBaseClass { public:                      // 12 byte
     virtual bool IsAlive() const;                       // slot 75 (+0x12c) 0x004AB130
     CCountedPointer PImp;
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    __forceinline ~CScriptThing() { }                   // out of line 0x004AA840
+    ~CScriptThing() { }                   // out of line 0x004AA840
 };
 namespace NScript {
 class CPredicateBase
@@ -143,7 +142,6 @@ void CRandomPopulationCreature::Main()
         if (IsActiveThreadTerminating())
             return;
         AttachedToVillage = true;
-#pragma inline_depth(0)
         if (MyType == 2) {
             if (IsActiveThreadTerminating())
                 return;
@@ -163,7 +161,6 @@ void CRandomPopulationCreature::Main()
                 Game->EntityAttachToVillage(Me, village);
             }
         }
-#pragma inline_depth()
     }
     Game->SetThingPersistent(Me, false);
     CScriptGameResourceObjectScriptedThingBase handle;

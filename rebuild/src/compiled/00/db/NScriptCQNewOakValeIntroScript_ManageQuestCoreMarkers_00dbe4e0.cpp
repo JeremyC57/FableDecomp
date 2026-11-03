@@ -1,5 +1,4 @@
 // NScript::CQ_NewOakValeIntroScript::ManageQuestCoreMarkers() -- walk the hero through the Oakvale intro's quest-core minimap markers: father first; once the hero has 3+ gold and control, move the marker to the book trader (after the tutorial if it shows), once the sweets are given to Theresa, and once the chocolates are given back to the father
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ManageQuestCoreMarkers
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DBE4E0, 944 bytes.
 // Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940, CCharString(const char*, long) 0x0099EBF0 /
@@ -12,7 +11,7 @@
 //   0x01258AB0.
 // Layout (retail = Ego_r PDB -0x14): GivenSweets +0x94, GivenTheresaChocs +0x95.
 // Shape: the by-value CScriptThing model of the landed WatchForPickpocketing/CheckVictimHit; every wait is the rotated
-//   script idiom; ~CScriptThing is __forceinline and `#pragma inline_depth(0)` opens after the first wait, so only
+//   script idiom; ~CScriptThing is plain inline and VC7.1's per-site frequency rule (docs/pipeline/INLINE_DEPTH_REVISIT.md) expands it only before the first wait, so only
 //   that wait's return expands the three destructors inline and every later exit calls 0x004AA840.
 class CCharString { public:
     void* PStringData;
@@ -49,7 +48,7 @@ struct CCountedPointerScriptThing {                     // CCountedPointer<CScri
 
 class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     CCountedPointerScriptThing PImp;                    // +0x04
-    virtual __forceinline ~CScriptThing() {}            // slot 0; out of line: 0x004AA840
+    virtual ~CScriptThing() {}            // slot 0; out of line: 0x004AA840
     virtual void v001();    virtual void v002();    virtual void v003();    virtual void v004();    virtual void v005();    virtual void v006();    virtual void v007();    virtual void v008();
     virtual void v009();    virtual void v010();    virtual void v011();    virtual void v012();    virtual void v013();    virtual void v014();    virtual void v015();    virtual void v016();
     virtual void v017();
@@ -105,7 +104,6 @@ void CQ_NewOakValeIntroScript::ManageQuestCoreMarkers()
         if (IsActiveThreadTerminating())
             return;
     }
-#pragma inline_depth(0)
     if (IsActiveThreadTerminating())
         return;
     while (!GSI->IsHeroControlledByPlayer()) {
@@ -147,5 +145,4 @@ void CQ_NewOakValeIntroScript::ManageQuestCoreMarkers()
     GSI->MiniMapRemoveMarker(theresa);
     GSI->MiniMapAddMarker(father, "HUD_ORB_QUEST_CORE");
 }
-#pragma inline_depth()
 }

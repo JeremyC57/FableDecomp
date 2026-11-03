@@ -1,5 +1,4 @@
 // CEndGameThunder::Main() -- end-game Thunder: make Me undamageable, unkillable, a villager and off the combo count; unless the fight is already over, walk Me up to the hero, open a conversation (married / not married to Lady Grey line, then two more lines); then until the fight is over, ally Me with the hero whenever the hero hits Me, and whenever the hero strays beyond 8 units walk Me back to within 4
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D2C810, 1901 bytes, plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: CBaseIntelligentPointer ctor 0x0099A380 / dtor 0x0099A430, scripted-thing handle IsValid 0x00CD23B9 / Release
@@ -11,7 +10,7 @@
 // Layout: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 (fight-over flag +0x81), PMasterData +0x18 (two
 //   married flags +0x74 / +0xD7; +0xD7 is HeroMarriedLadyGrey as in CDF_MarryLadyGrey 0x00E73410); flag names descriptive.
 // Shape: no alive filter; the CMeleeThunder handle model with the implicit handle dtor expanded inline only at the return
-//   in the second StartScriptingEntity retry loop (every other exit is under inline_depth(0)); the closing
+//   in the second StartScriptingEntity retry loop (every other exit calls it, by VC7.1's per-site frequency rule (docs/pipeline/INLINE_DEPTH_REVISIT.md)); the closing
 //   `if (IsActiveThreadTerminating()) return;` keeps the call with its test folded away.
 class C3DVector { public: float X, Y, Z; };
 class CCharString { public:
@@ -29,7 +28,7 @@ template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
-    __forceinline ~CCountedPointer()
+    ~CCountedPointer()
     {
         if (Info) {
             --Info->RefCount;
@@ -80,7 +79,7 @@ struct CIsThingAlive {                                  // vtable 0x012C32F0
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
+    ~CScriptGameResourceObjectBase() { }
 };
 enum EScriptEntityMoveType { };
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
@@ -146,9 +145,7 @@ void CEndGameThunder::Main()
     if (!ParentClass->ThunderFightOver) {
         if (IsActiveThreadTerminating())
             {
-#pragma inline_depth(0)
                 return;
-#pragma inline_depth()
             }
         if (face.IsValid())
             face.Release();
@@ -156,58 +153,44 @@ void CEndGameThunder::Main()
             Game->NewScriptFrame();
             if (IsActiveThreadTerminating())
                 {
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
         }
         if (IsActiveThreadTerminating())
             {
-#pragma inline_depth(0)
                 return;
-#pragma inline_depth()
             }
         face.MoveToPosition(Game->GetHero().GetPos(), 2.0f, (EScriptEntityMoveType)1, false, true);
         while (IsDistanceBetweenThingsOver(Game->GetHero(), Me, 4.0f)) {
             Game->NewScriptFrame();
             if (IsActiveThreadTerminating())
                 {
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
             if (!face.IsPerformingScriptTask()) {
                 if (IsActiveThreadTerminating())
                     {
-#pragma inline_depth(0)
                         return;
-#pragma inline_depth()
                     }
                 face.MoveToPosition(Game->GetHero().GetPos(), 2.0f, (EScriptEntityMoveType)1, false, true);
             }
         }
         if (IsActiveThreadTerminating())
             {
-#pragma inline_depth(0)
                 return;
-#pragma inline_depth()
             }
         long conversation = Game->AddNewConversation(Me, false, false);
         Game->AddPersonToConversation(conversation, Game->GetHero());
         if (!PMasterData->HeroMarriedFlag74 && !PMasterData->HeroMarriedLadyGrey) {
             if (IsActiveThreadTerminating())
                 {
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
             Game->AddLineToConversation(conversation, "TEXT_QST_001_THUNDER_MARRIED_LADY_10", false, Me, Game->GetHero());
         } else {
             if (IsActiveThreadTerminating())
                 {
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
             Game->AddLineToConversation(conversation, "TEXT_QST_001_THUNDER_NOT_MARRIED_LADY_10", false, Me, Game->GetHero());
         }
@@ -220,16 +203,12 @@ void CEndGameThunder::Main()
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
             {
-#pragma inline_depth(0)
                 return;
-#pragma inline_depth()
             }
         if (Me.MsgIsHitBy("SCRIPT_NAME_HERO") || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO") && !Me.MsgIsHitBySpecialAbilityFrom(14, "SCRIPT_NAME_HERO"))) {
             if (IsActiveThreadTerminating())
                 {
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
             Game->EntitySetThingAsAllyOfThing(Me, Game->GetHero());
             Game->EntitySetThingAsAllyOfThing(Game->GetHero(), Me);
@@ -237,9 +216,7 @@ void CEndGameThunder::Main()
         if (IsDistanceBetweenThingsOver(Game->GetHero(), Me, 8.0f)) {
             if (IsActiveThreadTerminating())
                 {
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
             if (face.IsValid())
                 face.Release();
@@ -250,25 +227,19 @@ void CEndGameThunder::Main()
             }
             if (IsActiveThreadTerminating())
                 {
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
             face.MoveToPosition(Game->GetHero().GetPos(), 2.0f, (EScriptEntityMoveType)1, false, true);
             while (IsDistanceBetweenThingsOver(Game->GetHero(), Me, 4.0f)) {
                 Game->NewScriptFrame();
                 if (IsActiveThreadTerminating())
                     {
-#pragma inline_depth(0)
                         return;
-#pragma inline_depth()
                     }
                 if (Me.MsgIsHitBy("SCRIPT_NAME_HERO") || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO") && !Me.MsgIsHitBySpecialAbilityFrom(14, "SCRIPT_NAME_HERO"))) {
                     if (IsActiveThreadTerminating())
                         {
-#pragma inline_depth(0)
                             return;
-#pragma inline_depth()
                         }
                     Game->EntitySetThingAsAllyOfThing(Me, Game->GetHero());
                     Game->EntitySetThingAsAllyOfThing(Game->GetHero(), Me);
@@ -276,33 +247,25 @@ void CEndGameThunder::Main()
                 if (ParentClass->ThunderFightOver) {
                     if (IsActiveThreadTerminating())
                         {
-#pragma inline_depth(0)
                             return;
-#pragma inline_depth()
                         }
                     if (face.IsValid())
                         face.Release();
                     {
-#pragma inline_depth(0)
                         return;
-#pragma inline_depth()
                     }
                 }
                 if (!face.IsPerformingScriptTask()) {
                     if (IsActiveThreadTerminating())
                         {
-#pragma inline_depth(0)
                             return;
-#pragma inline_depth()
                         }
                     face.MoveToPosition(Game->GetHero().GetPos(), 2.0f, (EScriptEntityMoveType)1, false, true);
                 }
             }
             if (IsActiveThreadTerminating())
                 {
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
             if (face.IsValid())
                 face.Release();
@@ -310,10 +273,6 @@ void CEndGameThunder::Main()
     }
     if (IsActiveThreadTerminating())
         {
-#pragma inline_depth(0)
             return;
-#pragma inline_depth()
         }
-#pragma inline_depth(0)
 }
-#pragma inline_depth()

@@ -1,5 +1,5 @@
 // CV_AmbushScamScript::WatchForHeroAttack(CScriptThing target) -- each time the hero hits the target: while it survives count the hit and flag an attack on the trickster (before the ambush; after it, a warning or, past two hits, the real attack) or on the buddy; a first hit that kills it flags the killing blow
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
+// Inline-split: exits wrapped individually; retail's construct is unproven
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E2E520, length 726 bytes, `ret 0Ch` (the by-value CScriptThing).
 // Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940, CCharString(const char*, long) 0x0099EBF0 / ~CCharString
 //   0x0099EAE0, Compare 0x00411570 (the inlined CCharString == const char*) and the empty string global 0x0143E8EC,
@@ -11,8 +11,8 @@
 //   HeroAttackOnTricksterBeforeAmbush +0x65, HeroAttackOnTricksterAfterAmbush +0x66, HeroAttackOnTricksterKillingBlow
 //   +0x67, HeroAttachOnTricksterWarning +0x69, HitCount +0x74. CScriptThing as the landed
 //   CV_TalentlessBardScript::WatchForAttack 0x00ED9790; the string == as CV_ChapelOfEvilScript::WatchForInsideChapel.
-// Shape: generated script code; `for (;;)` with the terminate return first; ~CScriptThing is __forceinline with
-//   `#pragma inline_depth(0)` around the in-loop returns except the first (two inline exit copies, as retail). Compare has
+// Shape: generated script code; `for (;;)` with the terminate return first; ~CScriptThing is plain inline and the two
+//   terminate checks are `do { if (...) return; } while (0);`, so VC7.1's per-site frequency rule (docs/pipeline/INLINE_DEPTH_REVISIT.md) expands exactly retail's two exit copies. Compare has
 //   its landed body in this TU under auto_inline(off) (as CTCCameraPointScriptedSpline::HasMessage 0x0075D2B0), so the
 //   thing's data pointer stays in ebp across it. The killed-after-ambush arm calls IsActiveThreadTerminating and returns
 //   either way (VC merges the two out-of-line exits).
@@ -118,7 +118,7 @@ struct CScriptThingImpl {                                   // the game-side thi
 class CScriptThing : public CBaseClass { public:                          // vtable 0x01238C8C, 12 bytes
     CCountedPointer<CScriptThingImpl> PImp;                 // +0x04 Data, +0x08 Info
     CScriptThing(const CScriptThing& other);                // 0x004ABE90
-    __forceinline ~CScriptThing() {}                                      // out of line 0x004AA840
+    ~CScriptThing() {}                                      // out of line 0x004AA840
     const CCharString& GetDataString() const
     {
         if (!PImp.Data)
@@ -215,60 +215,42 @@ using NScript::CV_AmbushScamScript;
 void NScript::CV_AmbushScamScript::WatchForHeroAttack(CScriptThing target)
 {
     for (;;) {
-        if (IsActiveThreadTerminating())
-            return;
+        do { if (IsActiveThreadTerminating()) return; } while (0);
         if (target.MsgIsHitBy("SCRIPT_NAME_HERO") || target.MsgIsHitByAnyAggressiveSpecialAbilityFrom("SCRIPT_NAME_HERO")) {
-            if (IsActiveThreadTerminating())
-                return;
+            do { if (IsActiveThreadTerminating()) return; } while (0);
             if (Game->GetHealth(target) > 0.0001f) {
-#pragma inline_depth(0)
                 if (IsActiveThreadTerminating())
                     return;
-#pragma inline_depth()
                 ++HitCount;
                 if (target.GetDataString() == "AS_Trickster") {
-#pragma inline_depth(0)
                     if (IsActiveThreadTerminating())
                         return;
-#pragma inline_depth()
                     if (DoAmbush) {
-#pragma inline_depth(0)
                         if (IsActiveThreadTerminating())
                             return;
-#pragma inline_depth()
                         if (HitCount > 2) {
-#pragma inline_depth(0)
                             if (IsActiveThreadTerminating())
                                 return;
                             HeroAttackOnTricksterAfterAmbush = true;
                             IsActiveThreadTerminating();
                             return;
-#pragma inline_depth()
                         }
-#pragma inline_depth(0)
                         if (IsActiveThreadTerminating())
                             return;
-#pragma inline_depth()
                         HeroAttachOnTricksterWarning = true;
                     } else {
-#pragma inline_depth(0)
                         if (IsActiveThreadTerminating())
                             return;
-#pragma inline_depth()
                         HeroAttackOnTricksterBeforeAmbush = true;
                     }
                 } else if (target.GetDataString() == "AS_Buddy") {
-#pragma inline_depth(0)
                     if (IsActiveThreadTerminating())
                         return;
-#pragma inline_depth()
                     HeroAttackOnBuddy = true;
                 }
             } else if (HitCount == 0) {
-#pragma inline_depth(0)
                 if (IsActiveThreadTerminating())
                     return;
-#pragma inline_depth()
                 HeroAttackOnTricksterKillingBlow = true;
             }
         }

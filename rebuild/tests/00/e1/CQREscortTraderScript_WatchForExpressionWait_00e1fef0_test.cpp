@@ -41,7 +41,7 @@ class CScriptThing { public:
     int Id;
     explicit CScriptThing(int id) : Id(id) { ++g_live; }
     CScriptThing(const CScriptThing& o) : Id(o.Id) { ++g_live; }
-    __forceinline ~CScriptThing() { --g_live; }
+    ~CScriptThing() { --g_live; }
     bool IsAlive() const { return g_frames < g_dieAt; }
     bool MsgExpressionPerformedTo(CCharString& expression) const
     {
@@ -72,10 +72,8 @@ void CQR_EscortTraderScript::WatchForExpressionWait(CScriptThing trader)
             if (IsActiveThreadTerminating())
                 return;
             if (trader.MsgExpressionPerformedTo(expression) && expression == "EXPRESSION_WAIT") {
-#pragma inline_depth(0)
                 if (IsActiveThreadTerminating())
                     return;
-#pragma inline_depth()
                 RestartRandomSpeechTimer();
                 ExpressionDetectedWait = true;
             }

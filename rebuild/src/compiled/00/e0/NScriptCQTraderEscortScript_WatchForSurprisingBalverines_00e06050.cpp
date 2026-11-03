@@ -1,7 +1,6 @@
 //   IsAlive wait loop tests it through reinterpret_cast<const CScriptThingView&>(balverine).Thing(); VC7.1 then hoists `lea ecx,[esp+34h]`
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 //   above the terminate jne into the shared ~CScriptThing call (0xE063F5) as retail does (was DIFFER(1007v1007)). The view alone stays 1007v1007,
-//   the value alone is 991v1007; dropping the loop's inline_depth(0) pragma regresses to 1048 bytes.
+//   the value alone is 991v1007; the plain-inline destructor's expanded / called exits follow VC7.1's per-site frequency rule (docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // CQ_TraderEscortScript::WatchForSurprisingBalverines() -- thread: while balverine ambushes are still needed, every two seconds finds an M_BalverineSurprise marker the camera cannot see, spawns a CREATURE_BALVERINE_EASY there facing the hero, has a trader comment, sets it on the nearest Darkwood trader (one time in five) or the hero, and waits for it to die
 // Leaf: WatchForSurprisingBalverines
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
@@ -36,7 +35,7 @@ template<class T> __forceinline void DestroyRange(T* first, T* last)
 struct CScriptThingVector {                             // vector<CScriptThing> (STLport, 12 bytes)
     CScriptThing* _M_start; CScriptThing* _M_finish; CScriptThing* _M_end_of_storage;
     __forceinline CScriptThingVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
-    __forceinline ~CScriptThingVector()                 // out of line: 0x008AC970
+    ~CScriptThingVector()                 // out of line: 0x008AC970
     {
         DestroyRange(_M_start, _M_finish);
         if (_M_start)
@@ -175,39 +174,29 @@ void CQ_TraderEscortScript::WatchForSurprisingBalverines()
                 if (IsActiveThreadTerminating())
                     return;
                 if (BalverinesToSurpriseHeroNeeded > 0 && !GSI->IsCameraPosOnScreen(markers[i].GetPos())) {
-#pragma inline_depth(0)
                     if (IsActiveThreadTerminating())
                         return;
-#pragma inline_depth()
                     CScriptThing balverine = GSI->CreateCreature("CREATURE_BALVERINE_EASY", markers[i].GetPos(), "SurpriseBalverine", true);
                     GSI->EntitySetCutsceneBehaviour(balverine, (ECutsceneBehaviour)1);
                     GSI->EntitySetFacingAngleTowardsThing(balverine, GSI->GetHero(), false);
                     CommentTimer = 0;
                     MakeTraderComment("BALVERINE_SURPRISE", GSI->GetNearestWithScriptName(balverine, "DarkwoodTrader"), (ETraderComment)0);
                     if (rand() % 5 == 0) {
-#pragma inline_depth(0)
                         if (IsActiveThreadTerminating())
                             return;
-#pragma inline_depth()
                         GSI->GiveThingBestEnemyTarget(balverine, GSI->GetNearestWithScriptName(balverine, "DarkwoodTrader"));
                     } else {
-#pragma inline_depth(0)
                         if (IsActiveThreadTerminating())
                             return;
-#pragma inline_depth()
                         GSI->GiveThingBestEnemyTarget(balverine, GSI->GetHero());
                     }
                     while (reinterpret_cast<const CScriptThingView&>(balverine).Thing().IsAlive()) {
                         GSI->NewScriptFrame();
-#pragma inline_depth(0)
                         if (IsActiveThreadTerminating())
                             return;
-#pragma inline_depth()
                     }
-#pragma inline_depth(0)
                     if (IsActiveThreadTerminating())
                         return;
-#pragma inline_depth()
                     --BalverinesToSurpriseHeroNeeded;
                     break;
                 }

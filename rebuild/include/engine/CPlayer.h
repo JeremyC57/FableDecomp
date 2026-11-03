@@ -107,6 +107,9 @@ public:
     // list ?IsFirstPersonTargeting@CPlayer@@QBE_NXZ; retail 0x004874D0 (called from CTCTargetingPlayer::GetPTargetedThing
     // 0x00802610 on CThing::PeekPlayer's const CPlayer&).
     bool IsFirstPersonTargeting() const;                         // 0x004874D0
+    // Chunk 732 (row 0x006AABE0 CThingPlayerCreature::SetActionForMelee): FableWin.pdb ?IsZTargeting@CPlayer@@QBE_NXZ (0x01AD0350;
+    // no Ego_r.pdb copy, expanded in retail: GetPlayer then a byte read of +0x20A at 0x006AAD4D / 0x006AADEF) reads ZTargeting.
+    bool IsZTargeting() const { return ZTargeting; }
     // Retail opt-in (chunk 709): ?ResetModes@CPlayer@@QAEXXZ (Ego_r 0x005579A0, FableWin 0x01F5AA20; retail 0x00634870, the
     // only binding in reloc_bindings) and ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ (Ego_r 0x00493650,
     // FableWin 0x01ACDE00; retail 0x00487DC0, 65 landed binders), both called by CWorld::Unload 0x0049E270.

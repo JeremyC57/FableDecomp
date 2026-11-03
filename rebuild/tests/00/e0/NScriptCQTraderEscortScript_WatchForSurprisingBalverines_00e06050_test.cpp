@@ -71,39 +71,29 @@ void CQ_TraderEscortScript::WatchForSurprisingBalverines()
                 if (IsActiveThreadTerminating())
                     return;
                 if (BalverinesToSurpriseHeroNeeded > 0 && !GSI->IsCameraPosOnScreen(markers[i].GetPos())) {
-#pragma inline_depth(0)
                     if (IsActiveThreadTerminating())
                         return;
-#pragma inline_depth()
                     CScriptThing balverine = GSI->CreateCreature("CREATURE_BALVERINE_EASY", markers[i].GetPos(), "SurpriseBalverine", true);
                     GSI->EntitySetCutsceneBehaviour(balverine, (ECutsceneBehaviour)1);
                     GSI->EntitySetFacingAngleTowardsThing(balverine, GSI->GetHero(), false);
                     CommentTimer.SetTime(0);
                     MakeTraderComment("BALVERINE_SURPRISE", GSI->GetNearestWithScriptName(balverine, "DarkwoodTrader"), (ETraderComment)0);
                     if (rand() % 5 == 0) {
-#pragma inline_depth(0)
                         if (IsActiveThreadTerminating())
                             return;
-#pragma inline_depth()
                         GSI->GiveThingBestEnemyTarget(balverine, GSI->GetNearestWithScriptName(balverine, "DarkwoodTrader"));
                     } else {
-#pragma inline_depth(0)
                         if (IsActiveThreadTerminating())
                             return;
-#pragma inline_depth()
                         GSI->GiveThingBestEnemyTarget(balverine, GSI->GetHero());
                     }
                     while (reinterpret_cast<const CScriptThingView&>(balverine).Thing().IsAlive()) {
                         GSI->NewScriptFrame();
-#pragma inline_depth(0)
                         if (IsActiveThreadTerminating())
                             return;
-#pragma inline_depth()
                     }
-#pragma inline_depth(0)
                     if (IsActiveThreadTerminating())
                         return;
-#pragma inline_depth()
                     --BalverinesToSurpriseHeroNeeded;
                     break;
                 }

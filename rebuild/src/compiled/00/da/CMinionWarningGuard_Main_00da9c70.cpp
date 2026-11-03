@@ -1,5 +1,4 @@
 // CMinionWarningGuard::Main() -- the minion-chase warning guard: alive filter on Me, take scripted control of Me (priority 4),
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 //   wait for BowerstoneJail to load; the first time play the "CS_MINIONCHASE_INTRO" cut-scene with the hero and Me cast; set
 //   the quest card objective, kick off the quest start screen once, release Me, have Me follow the hero (region following
 //   too), show Me's health bar, spawn the parent's GuardChatter on Me, wait for the mission to end and remove Me
@@ -21,7 +20,7 @@
 //   PMasterData +0x18, HealthBarID +0x1c.
 // Shape: the landed CCorneredGuard::Main 0x00DA7830 model (same TU and parent) plus the CDF_ShineLight handle classes; unlike
 //   CCorneredGuard the spawn argument Me goes through the out-of-line const copy 0x004ABE90 (no non-const inline copy ctor),
-//   and the hero handle's ctor is kept out of line with `inline_depth(0)`.
+//   and the hero handle's ctor stays out of line by VC7.1's per-site frequency rule (docs/pipeline/INLINE_DEPTH_REVISIT.md).
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -188,9 +187,7 @@ void CMinionWarningGuard::Main()
     if (!ParentClass->ShownIntroCutscene) {
         if (IsActiveThreadTerminating())
             return;
-#pragma inline_depth(0)
         CScriptGameResourceObjectScriptedThingBase hero;
-#pragma inline_depth()
         if (hero.IsValid())
             hero.Release();
         while (!Game->StartScriptingEntity(Game->GetHero(), hero, (EScriptAIPriority)4)) {

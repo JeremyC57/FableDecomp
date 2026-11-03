@@ -1,5 +1,4 @@
 // CFinalTabletSarcophagus::Main() -- the Necropolis sarcophagus holding the final Oracle tablet: unless tablet A is already taken, put up the magic-barrier forcefield, wait for three tablets, mark the sarcophagus, wait for the hero within 6 units of the barrier point, play the summoners cutscene once (re-raising the forcefield), wait for the final summoners to die, open the sarcophagus, give the hero expression A, take the tablet, have the hero comment twice and re-enable the Northern Wastes 2 creature generators
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CFFB60, 1252 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing dtor 0x004AA840 (inline copies at the first forcefield), CBaseClass dtor 0x0099A2E0, operator delete 0x00BFE9BC,
@@ -10,7 +9,7 @@
 //   (CQ_AwakeningTheOracleScript, retail = PDB - 0x14: TabletsCollected +0x4c, SpawnedFinalSpotsStuff +0x50,
 //   FinalSummonersAlive +0x60, GotA +0x70), PMasterData +0x18.
 // Shape: ~CScriptThing is a plain inline body (it expands for the first forcefield's discarded temporaries);
-//   inline_depth(0) on the second forcefield statement leaves those temporaries and every later exit out of line.
+//   by VC7.1's per-site frequency rule (docs/pipeline/INLINE_DEPTH_REVISIT.md) the second forcefield statement's temporaries and every later exit stay out of line (plain inline).
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -27,7 +26,7 @@ template <class T> class CCountedPointer { public:
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    __forceinline ~CCountedPointer()
+    ~CCountedPointer()
     {
         if (Info) {
             --Info->RefCount;
@@ -57,7 +56,7 @@ struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
 };
 class CScriptGameResourceObjectBase : public CBaseIntelligentPointer { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
+    ~CScriptGameResourceObjectBase() { }
 };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
@@ -121,9 +120,7 @@ void CFinalTabletSarcophagus::Main()
             return;
         ParentClass->SpawnedFinalSpotsStuff = true;
         ParentClass->PlayCutscene("CS_ORACLE_NECROPOLIS_SUMMONERS_APPEAR", true);
-#pragma inline_depth(0)
         Game->CreateObjectOnEntity("OBJECT_SCRIPT_PALISADE_FORCEFIELD", Game->GetThingWithScriptName("ATO_MagicBarrierHere"), "ATO_MagicBarrier");
-#pragma inline_depth()
     }
     Game->SetTeleportingAsActive(false);
     while (ParentClass->FinalSummonersAlive != 0) {

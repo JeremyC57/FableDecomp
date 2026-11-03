@@ -27,7 +27,7 @@ class CScriptThing { public:
     int Id;
     explicit CScriptThing(int id) : Id(id) { ++g_live; }
     CScriptThing(const CScriptThing& o) : Id(o.Id) { ++g_live; }
-    __forceinline ~CScriptThing() { --g_live; }
+    ~CScriptThing() { --g_live; }
     bool MsgIsHitBy(const CCharString& a) const { return HitCheck(a, 1); }
     bool MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& a) const { return HitCheck(a, 2); }
 };
@@ -56,10 +56,8 @@ void CQ_AmbushTradersScript::WatchForHeroAttackOnBandit(CScriptThing bandit)
             if (IsActiveThreadTerminating())
                 return;
             if (GSI->GetHealth(bandit) > 0.0001f) {
-#pragma inline_depth(0)
                 if (IsActiveThreadTerminating())
                     return;
-#pragma inline_depth()
                 BanditAttackedByHero = true;
                 ++BanditAttackByHeroCount;
             }

@@ -1,5 +1,4 @@
 // CQ_HobbeToothContestScript::DisplayTimer() -- run the contest clock: show the timer and the hero / Whisper tooth counters, and while the clock runs keep the counters current and, whenever the hero is away from Orchard Farm East, credit Whisper a tooth every 5 seconds; then wait for the hero to return and take the HUD elements down
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?DisplayTimer@CQ_HobbeToothContestScript@NScript@@QAEXXZ
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
@@ -104,7 +103,6 @@ void CQ_HobbeToothContestScript::DisplayTimer()
         if (IsActiveThreadTerminating())
             return;
     }
-#pragma inline_depth(0)
     if (IsActiveThreadTerminating())
         return;
     Game->RemoveQuestInfoElement(timerElement);
@@ -112,5 +110,4 @@ void CQ_HobbeToothContestScript::DisplayTimer()
     Game->RemoveQuestInfoElement(heroElement);
     Game->DisplayQuestInfo(false);
 }
-#pragma inline_depth()
 }

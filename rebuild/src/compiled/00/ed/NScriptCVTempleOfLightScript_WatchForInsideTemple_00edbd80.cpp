@@ -1,5 +1,4 @@
 // CV_TempleOfLightScript::WatchForInsideTemple() -- every frame the hero is alive, look up the building he is standing in; on entering BUILDING_CHAPEL_GOOD set the inside-temple flag, on standing in no building clear it
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?WatchForInsideTemple@CV_TempleOfLightScript@NScript@@QAEXXZ
 // Label: (catalog says CV_ChapelOfEvilScript::WatchForInsideChapel,
 //   propagated: that one is 0x00E6A0B0; +0x5a is Ego_r CV_TempleOfLightScript::InsideTemple at PDB 110, ChapelOfEvil's
@@ -10,7 +9,7 @@
 //   0x00411570 (the inlined CCharString == const char*), operator delete 0x00BFE9BC, ~CScriptThing 0x004AA840 (out of
 //   line at the in-branch exits); Game slots 7 NewScriptFrame, 70 GetHero, 504 EntityGetStandingInsideBuilding; the thing's
 //   virtual slots 2 GetDefName, 75 IsAlive, 77 IsNull.
-// Shape: the landed CV_ChapelOfEvilScript::WatchForRegionEntry 0x00E6B750 (string == and inline_depth(0) exits).
+// Shape: the landed CV_ChapelOfEvilScript::WatchForRegionEntry 0x00E6B750 (string ==); terminate checks `do { if (...) return; } while (0);`.
 // Layout (retail = Ego_r.pdb - 0x14): Game +0x40, InsideTemple +0x5a.
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
@@ -58,7 +57,7 @@ void operator delete(void* p);                              // 0x00BFE9BC (MSVCR
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
 inline CScriptThing::CScriptThing() { }
-__forceinline CScriptThing::~CScriptThing() {}
+inline CScriptThing::~CScriptThing() {}
 inline CCharString CScriptThing::GetDefName() const { if (!PImp.Data) return g_EmptyCharString; return PImp.Data->GetDefName(); }
 inline bool CScriptThing::IsAlive() const { if (!PImp.Data) return false; return PImp.Data->IsAlive(); }
 inline bool CScriptThing::IsNull() const { if (!PImp.Data) return true; return PImp.Data->IsNull(); }
@@ -88,23 +87,15 @@ void NScript::CV_TempleOfLightScript::WatchForInsideTemple()
 {
     CScriptThing building;
     for (;;) {
-        if (IsActiveThreadTerminating())
-            return;
+        do { if (IsActiveThreadTerminating()) return; } while (0);
         if (Game->GetHero().IsAlive()) {
-            if (IsActiveThreadTerminating())
-                return;
+            do { if (IsActiveThreadTerminating()) return; } while (0);
             building = Game->EntityGetStandingInsideBuilding(Game->GetHero());
             if (!building.IsNull() && building.GetDefName() == "BUILDING_CHAPEL_GOOD" && !InsideTemple) {
-#pragma inline_depth(0)
-                if (IsActiveThreadTerminating())
-                    return;
-#pragma inline_depth()
+                do { if (IsActiveThreadTerminating()) return; } while (0);
                 InsideTemple = true;
             } else if (building.IsNull() && InsideTemple) {
-#pragma inline_depth(0)
-                if (IsActiveThreadTerminating())
-                    return;
-#pragma inline_depth()
+                do { if (IsActiveThreadTerminating()) return; } while (0);
                 InsideTemple = false;
             }
         }

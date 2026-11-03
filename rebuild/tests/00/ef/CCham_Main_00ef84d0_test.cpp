@@ -31,7 +31,7 @@ class CScriptThing { public:
     int Id;
     explicit CScriptThing(int id) : Id(id) { ++g_live; }
     CScriptThing(const CScriptThing& o) : Id(o.Id) { ++g_live; }
-    __forceinline ~CScriptThing() { --g_live; }
+    ~CScriptThing() { --g_live; }
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 static int g_startFailures = 0, g_movingPolls = 0, g_moveAlongs = 0, g_releases = 0, g_scriptedLive = 0;
@@ -85,7 +85,6 @@ void CCham::Main()
     if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase scripted;
-#pragma inline_depth(0)
     if (scripted.IsScripting())
         scripted.Release();
     while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)4)) {
@@ -104,7 +103,6 @@ void CCham::Main()
     if (IsActiveThreadTerminating())
         return;
 }
-#pragma inline_depth()
 
 static void Run(int termAt, int startFailures, int movingPolls)
 {

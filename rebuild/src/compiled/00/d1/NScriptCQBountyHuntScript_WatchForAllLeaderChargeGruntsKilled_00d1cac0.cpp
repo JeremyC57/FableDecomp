@@ -1,6 +1,5 @@
 // CQ_BountyHuntScript::WatchForAllLeaderChargeGruntsKilled() -- collect every BH_GangGruntSpawn thing, wait until they are all dead, then (unless the thread is terminating) record AllLeaderChargeGruntsKilled
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
-// Levers: ~vector<CScriptThing> __forceinline over an STLport-style by-value Destroy(first, last) helper; `if (Term) return; flag = true; }` with depth 0 covering the end (closing-brace exit out of line, the in-loop return inline)
+// Levers: plain-inline ~vector<CScriptThing> over an STLport-style by-value Destroy(first, last) helper; every terminate check is `do { if (Term) return; } while (0);` (one statement-macro shape), so VC7.1's per-site frequency rule (docs/pipeline/INLINE_DEPTH_REVISIT.md) leaves the closing-brace exit out of line and the in-loop return inline
 // Leaf: WatchForAllLeaderChargeGruntsKilled
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D1CAC0, length 214 bytes.
 // Identity: the catalog label CV_AmbushScamScript::WatchForAllAmbushersDead is propagated from the twin 0x00D1C9E0
@@ -38,7 +37,7 @@ struct CScriptThingVector {                                 // STLport vector<CS
     CScriptThing* _M_finish;
     CScriptThing* _M_end_of_storage;
     CScriptThingVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    __forceinline ~CScriptThingVector()
+    ~CScriptThingVector()
     {
         Destroy(_M_start, _M_finish);
         if (_M_start)
@@ -86,12 +85,8 @@ void NScript::CQ_BountyHuntScript::WatchForAllLeaderChargeGruntsKilled()
     GSI->GetAllThingsWithScriptName("BH_GangGruntSpawn", grunts);
     while (!AreAllThingsInVectorDead(grunts)) {
         GSI->NewScriptFrame();
-        if (IsActiveThreadTerminating())
-            return;
+        do { if (IsActiveThreadTerminating()) return; } while (0);
     }
-#pragma inline_depth(0)
-    if (IsActiveThreadTerminating())
-        return;
+    do { if (IsActiveThreadTerminating()) return; } while (0);
     AllLeaderChargeGruntsKilled = true;
 }
-#pragma inline_depth()

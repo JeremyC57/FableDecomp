@@ -1,5 +1,4 @@
-// Levers: for(;;) with the terminating return first, then `if (alive) { ... } else { if (term) return; break; }` (the dead branch last, so its exits are laid out after the hit-block call); in-body `#pragma inline_depth(0)` around the hit-block terminate return gives the out-of-line ~CScriptThing; the CCharString == is the nested CBasicString<char>::operator== (result byte homed in the frame) with `strcmp(text, "")` in the null arm; IsAlive is the `Data ? Data->IsAlive() : false` ternary (test al,al).
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
+// Levers: for(;;) with the terminating return first, then `if (alive) { ... } else { if (term) return; break; }` (the dead branch last, so its exits are laid out after the hit-block call); every terminate check is `do { if (term) return; } while (0);` with a plain-inline ~CScriptThing, so VC7.1's per-site frequency rule (docs/pipeline/INLINE_DEPTH_REVISIT.md) leaves the hit-block exit out of line; the CCharString == is the nested CBasicString<char>::operator== (result byte homed in the frame) with `strcmp(text, "")` in the null arm; IsAlive is the `Data ? Data->IsAlive() : false` ternary (test al,al).
 // CQR_EscortTraderScript::WatchForExpressionFollow(CScriptThing trader) -- spawned per trader: each frame, stop when the trader dies; when the hero performs EXPRESSION_FOLLOW to it, restart the random-speech timer and set ExpressionDetectedFollow
 // Leaf: ?WatchForExpressionFollow@CQR_EscortTraderScript@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E1FCF0, 435 bytes, `ret 0Ch` (the by-value CScriptThing).
@@ -50,7 +49,7 @@ void operator delete(void* p);                              // 0x00BFE9BC (MSVCR
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline CScriptThing::~CScriptThing() {}
+inline CScriptThing::~CScriptThing() {}
 inline bool CScriptThing::MsgIsHitBy(const CCharString& attacker) const { if (!PImp.Data) return false; return PImp.Data->MsgIsHitBy(attacker); }
 inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { if (!PImp.Data) return false; return PImp.Data->MsgIsHitByAnyAggressiveSpecialAbilityFrom(attacker); }
 inline bool CScriptThing::MsgExpressionPerformedTo(CCharString& expression) const { if (!PImp.Data) return false; return PImp.Data->MsgExpressionPerformedTo(expression); }
@@ -78,22 +77,16 @@ void CQR_EscortTraderScript::WatchForExpressionFollow(CScriptThing trader)
 {
     CCharString expression;
     for (;;) {
-        if (IsActiveThreadTerminating())
-            return;
+        do { if (IsActiveThreadTerminating()) return; } while (0);
         if (trader.IsAlive()) {
-            if (IsActiveThreadTerminating())
-                return;
+            do { if (IsActiveThreadTerminating()) return; } while (0);
             if (trader.MsgExpressionPerformedTo(expression) && expression == "EXPRESSION_FOLLOW") {
-#pragma inline_depth(0)
-                if (IsActiveThreadTerminating())
-                    return;
-#pragma inline_depth()
+                do { if (IsActiveThreadTerminating()) return; } while (0);
                 RestartRandomSpeechTimer();
                 ExpressionDetectedFollow = true;
             }
         } else {
-            if (IsActiveThreadTerminating())
-                return;
+            do { if (IsActiveThreadTerminating()) return; } while (0);
             break;
         }
         Game->NewScriptFrame();

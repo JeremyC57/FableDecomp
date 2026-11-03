@@ -106,9 +106,13 @@ public:
 public:
     virtual void SetFacingAngleXZ(float);
 public:
-    virtual C3DVector GetFacingVector(float) const;
-public:
+    // Retail order (chunk 718 round 3 pending, row 0x0088EDC0; carried here for chunk 732 row 0x006AABE0): the no-argument overload
+    // is declared first, so VC7.1's reversed overload group puts it at slot 70 (+0x118; CTCPhysicsBase vtable 0x0125D2C4: slot 69
+    // 0x006B1430 `ret 8` takes the float, slot 70 0x006B1410 `ret 4` the hidden result only). Ego_r.pdb defines the bodies in the
+    // same order (0x006EE000 XZ, 0x006EE020 M@Z).
     virtual C3DVector GetFacingVector() const;
+public:
+    virtual C3DVector GetFacingVector(float) const;
 public:
     virtual const CRightHandedSet & GetRHSet() const;
 public:

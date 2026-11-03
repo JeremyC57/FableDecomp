@@ -855,9 +855,7 @@ void _List_base<_Tp, _Alloc>::clear()
         _List_node<_Tp>* __tmp = __cur;
         __cur = (_List_node<_Tp>*) __cur->_M_next;
 // Fidelity: suppress only the element destruction, leaving the list walk inlined.
-#pragma inline_depth(0)
         __tmp->_M_data.~_Tp();
-#pragma inline_depth(255)
         this->_M_node.deallocate(__tmp, 1);
     }
     this->_M_node._M_data->_M_next = this->_M_node._M_data;

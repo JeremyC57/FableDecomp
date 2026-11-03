@@ -62,7 +62,7 @@ typedef CFrontendGameComponentInit CNewFrontendGameComponentInit;
 // GenerateMetFilesFromLugFiles (static, 0x00418C3B): the stand-in declares it; kept so neither path loses a member.
 #include "boost/scoped_ptr.h"
 #include "engine/CCountedPointer.h"
-class CASoundBank; class CDisplayEngine; class CGamePlayerInterface; class CLUA; class CPlayerManager; class CWorld;
+class CASoundBank; class CDisplayEngine; class CGamePlayerInterface; class CLUA; class CPlayerManager; class CWorld; class CFontBank;
 namespace NGameText { class CDataBank; }
 class CMainGameComponent : public CGameComponent {
 protected:
@@ -89,7 +89,12 @@ protected:
     double CurrentFrameStartGameTime;                                    // +0x58
     double GameStartTime;                                                // +0x60
     double LastFrameRenderDuration;                                      // +0x68
-    unsigned char _pad_0x70[0x16178]; // All original members LastInterpolationInfo through DebugNoFramesUnableToRender.
+    unsigned char _pad_0x70[0x160D4]; // Original members LastInterpolationInfo through LocalSeed.
+    // Ego_r.pdb font pointers typed (chunk 728 round 2 / chunk 732): PDebugFont +0x16144 and PCutSceneMainFont +0x1614C, both
+    // CCountedPointer<CFontBank> (same offsets as engine/CMainGameComponent.h; layout and size unchanged).
+    CCountedPointer<CFontBank> PDebugFont;                               // +0x16144
+    CCountedPointer<CFontBank> PCutSceneMainFont;                        // +0x1614C
+    unsigned char _pad_0x16154[0x94]; // Original members EventPackageFile through DebugNoFramesUnableToRender.
 public:
     static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }
     static long __fastcall GetConstantFPS() { return ConstantFPS; }   // FableWin.pdb ?GetConstantFPS@CMainGameComponent@@SIJXZ (inline)
@@ -116,6 +121,9 @@ public:
     CPlayerManager& GetPlayerManager() { return *PPlayerManager; }
     const NGameText::CDataBank& GetTextBank() const { return *PTextBank; }   // FableWin ?GetTextBank@CMainGameComponent@@QBEABVCDataBank@NGameText@@XZ (inline; 0x006286F0 reads PTextBank +0x14 in place)
     const CWorld& PeekWorld() const { return *PWorld; }
+    // Chunk 732 (row 0x006AA2E0): FableWin.pdb ?PeekDebugFont@CMainGameComponent@@QBEABVCFontBank@@XZ (0x018A3AC0), inline in retail
+    // (`mov eax,[eax+16144h]` straight after PeekComponent).
+    const CFontBank& PeekDebugFont() const { return *PDebugFont; }
 };
 #else
 class CMainGameComponent : public CGameComponent

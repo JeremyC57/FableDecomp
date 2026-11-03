@@ -1,5 +1,4 @@
 // 005bb190 std::_List_base<CDefPointer<const CAppearanceModifierDef>,std::allocator<CDefPointer<const CAppearanceModifierDef> > >::clear
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?clear@?$_List_base@V?$CDefPointer@$$CBVCAppearanceModifierDef@@@@V?$allocator@V?$CDefPointer@$$CBVCAppearanceModifierDef@@@@@std@@@std@@QAEXXZ
 // Flags:
 #pragma optimize("s", on)
@@ -36,9 +35,7 @@ void _List_base<_Tp, _Alloc>::clear()
         _List_node<_Tp>* __tmp = __cur;
         __cur = (_List_node<_Tp>*) __cur->_M_next;
 // Fidelity: suppress only the element destruction, leaving the list walk inlined.
-#pragma inline_depth(0)
         __tmp->_M_data.~_Tp();
-#pragma inline_depth(255)
         this->_M_node.deallocate(__tmp, 1);
     }
     this->_M_node._M_data->_M_next = this->_M_node._M_data;

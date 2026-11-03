@@ -1,5 +1,5 @@
-// Levers: ~CScriptThing __forceinline; after the predicate + yield prologue a for(;;) with the terminating return first; in-body `#pragma inline_depth(0)` around both in-loop terminate returns (out-of-line ~CScriptThing), so only the prologue return and the loop-top return expand the dtor.
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
+// Levers: plain-inline ~CScriptThing; after the predicate + yield prologue a for(;;) with the terminating return first; the prologue and loop-top terminate checks are `do { if (...) return; } while (0);`, the two other in-loop terminate returns are plain `if`, so by VC7.1's per-site frequency rule (docs/pipeline/INLINE_DEPTH_REVISIT.md) only the prologue return and the loop-top return expand the dtor.
+// Inline-split: exits wrapped individually; retail's construct is unproven
 // CV_TalentlessBardScript::WatchForAttack(CScriptThing bard) -- with an is-alive predicate on the bard, flag the hero for hitting him while he lives
 // Leaf: ?WatchForAttack@CV_TalentlessBardScript@NScript@@QAEXVCScriptThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ED9790, 453 bytes, `ret 0Ch` (the by-value CScriptThing).
@@ -26,7 +26,7 @@ void operator delete(void* p);                              // 0x00BFE9BC (MSVCR
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline CScriptThing::~CScriptThing() {}
+inline CScriptThing::~CScriptThing() {}
 inline bool CScriptThing::IsAlive() const { if (!PImp.Data) return false; return PImp.Data->IsAlive(); }
 inline bool CScriptThing::MsgIsKilledBy(const CCharString& killer) const { if (!PImp.Data) return false; return PImp.Data->MsgIsKilledBy(killer); }
 inline bool CScriptThing::MsgIsHitBy(const CCharString& attacker) const { if (!PImp.Data) return false; return PImp.Data->MsgIsHitBy(attacker); }
@@ -70,22 +70,16 @@ void NScript::CV_TalentlessBardScript::WatchForAttack(CScriptThing bard)
 {
     SetPredicate(CIsThingAlive(bard));
     Game->NewScriptFrame();
-    if (IsActiveThreadTerminating())
-        return;
+    do { if (IsActiveThreadTerminating()) return; } while (0);
     for (;;) {
-        if (IsActiveThreadTerminating())
-            return;
+        do { if (IsActiveThreadTerminating()) return; } while (0);
         if (bard.IsAlive()) {
-#pragma inline_depth(0)
             if (IsActiveThreadTerminating())
                 return;
-#pragma inline_depth()
             bool hit = bard.MsgIsHitBy("SCRIPT_NAME_HERO") || bard.MsgIsHitByAnyAggressiveSpecialAbilityFrom("SCRIPT_NAME_HERO");
             if (hit) {
-#pragma inline_depth(0)
                 if (IsActiveThreadTerminating())
                     return;
-#pragma inline_depth()
                 AttackedByHero = true;
             }
         }

@@ -96,10 +96,8 @@ class CGameScriptInterfaceBase;
 template<class T>class CLevelScriptBase:public CScriptBase{public:CGameScriptInterfaceBase* Game;T* MasterScriptData;};
 class CGameScriptInterfaceBase:public CBaseClassNonCopyable{public:virtual void UnknownSlot1(){}virtual void UnknownSlot2(){}virtual void UnknownSlot3(){}virtual void UnknownSlot4(){}virtual void UnknownSlot5(){}virtual void UnknownSlot6(){}virtual void NewScriptFrame()const=0;};
 namespace NScript{class CQ_BountyHuntScript:public CLevelScriptBase<CQ_SunnyvaleMasterData>{public:bool QuestFailed;bool QuestSucceeded;bool QuestOver;bool QuestStarted;bool FishermanDeactivated;bool VillagerKilled;bool VillagerIntroDone;bool LeaderKilled;bool Deputy1Killed;bool Deputy2Killed;bool Deputy1IntroComplete;bool Deputy2IntroComplete;bool Hostage1Killed;bool Hostage2Killed;void WatchForHostage1Killed(CScriptThing);};void CQ_BountyHuntScript::WatchForHostage1Killed(CScriptThing thing){while(!thing.MsgIsKilledBy("")){Game->NewScriptFrame();if(IsActiveThreadTerminating())return;}
-#pragma inline_depth(0)
 if(IsActiveThreadTerminating())return;Hostage1Killed=true;
 return;
-#pragma inline_depth(255)
 }}
 #ifdef _MSC_VER
 typedef char FlagOffset[offsetof(NScript::CQ_BountyHuntScript,Hostage1Killed)==84?1:-1];

@@ -1,0 +1,43 @@
+addr       parity           behav  name
+004084b0   RELOCATION_MATCH PASS   GetMaxEffectsDetail
+00408500   RELOCATION_MATCH PASS   GetMaxTextureDetail
+00487dc0   RELOCATION_MATCH PASS   GetPControlledCreature
+0049e270   WARN SHARED_HEADER_AVAILABLE CThingManager
+0049e270   RELOCATION_MATCH PASS   Unload
+00520670   RELOCATION_MATCH PASS   LoadHeroStateBinary
+005c552c   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005c552c   RELOCATION_MATCH PASS   RemoveWeaponsFromSheathes
+005e9b20   RELOCATION_MATCH PASS   SetState
+0065b854   WARN RELOC_NAME: ?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z -> 006bb390 labelled '`anonymousnamespace'::Game_IsTimeOfDayInRange'
+0065b854   RELOCATION_MATCH PASS   AddThingToVillage
+00667450   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00667450   WARN RELOC_NAME: ?GetHitKnockdownDeathActionType@CHitLocation@NHitLocations@@QBE?AW4EActionRegisteredType@@XZ -> 008152b0 labelled '_global::GetMember_dword0x4_deref0x54_008152b0'
+00667450   WARN RELOC_NAME: ??1?$CCountedPointer@VCCreatureActionBase@@@@QAE@XZ -> 0048c5c0 labelled '_global::CCountedPointer_Release_0048c5c0'
+00667450   WARN RELOC_NAME: ?GetHitKnockdownActionType@CHitLocation@NHitLocations@@QBE?AW4EActionRegisteredType@@XZ -> 008152a0 labelled '_global::GetMember_dword0x4_deref0x50_008152a0'
+00667450   WARN RELOC_NAME: ?GetHitResponseActionType@CHitLocation@NHitLocations@@QBE?AW4EActionRegisteredType@@XZ -> 00815290 labelled '_global::GetMember_dword0x4_deref0x48_00815290'
+00667450   WARN RELOC_NAME: ??1CCombatAction_GenericResponseToExplosion@@UAE@XZ -> 0066a670 labelled '_global::Dtor_CCombatActionBaseBase_0066a670'
+00667450   WARN RELOC_NAME: ??1CCombatAction_GenericStrikeResponseBase@@UAE@XZ -> 0066a510 labelled '_global::Dtor_CCombatActionBaseBase_0066a510'
+00667450   RELOCATION_MATCH PASS   ReactToGenericStrike
+0074b770   WARN RELOC_NAME: ??$GetAllThings@VCThingMarker@@V?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@VCThingFilter_HasDefGlobalIndex@@@CThingSearchTools@@QBEXABVCThingFilter_HasDefGlobalIndex@@AAV?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@@Z -> 0074d940 labelled 'CThingSearchTools::GetAllThings<CThingMarker, std::vector<CThingMarker *, std::allocator<CThingMarker *>>, CThingFilter_HasDefGlobalIndex>'
+0074b770   WARN RELOC_CONFLICT: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 004365b0 here, 0040f020 in landed 00635080
+0074b770   WARN RELOC_NAME: ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 labelled 'CTCBase::GetThingSearchTools'
+0074b770   WARN RELOC_NAME: ?DoNavCheck@CTCCreatureGenerator@@IAEXABVCThingCreatureBase@@@Z -> 0074a4e0 labelled 'VertexBuffer_FilterNavigableVertices'
+0074b770   RELOCATION_MATCH PASS   InitialiseCreatureGenerator
+00821010   RELOCATION_MATCH PASS   LoadBrushesFromFile
+008edff0   RELOCATION_MATCH PASS   CWillButtonHelperTimer
+00ae0710   RELOCATION_MATCH PASS   CalculateAveragePatchSize
+
+WINS: 13
+  004084b0 RELOCATION_MATCH CUserProfileManager::?GetMaxEffectsDetail@CUserProfileManager@@QBEMXZ
+  00408500 RELOCATION_MATCH CUserProfileManager::?GetMaxTextureDetail@CUserProfileManager@@QBEMXZ
+  00487dc0 RELOCATION_MATCH CPlayer::?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ
+  0049e270 RELOCATION_MATCH CWorld::?Unload@CWorld@@QAEXXZ
+  00520670 RELOCATION_MATCH CThingManager::?LoadHeroStateBinary@CThingManager@@QAEXAAVCPersistContext@@@Z
+  005c552c RELOCATION_MATCH CTCInventoryWeapons::?RemoveWeaponsFromSheathes@CTCInventoryWeapons@@QAEXXZ
+  005e9b20 RELOCATION_MATCH CTCTavernGame::?SetState@CTCTavernGame@@QAEXW4ETavernGameStates@1@@Z
+  0065b854 RELOCATION_MATCH CTCVillage::?AddThingToVillage@CTCVillage@@QAEXAAVCThing@@@Z
+  00667450 RELOCATION_MATCH CThingCreatureBase::?ReactToGenericStrike@CThingCreatureBase@@IAEXABVCHitParameters@@@Z
+  0074b770 RELOCATION_MATCH CTCCreatureGenerator::?InitialiseCreatureGenerator@CTCCreatureGenerator@@QAEX_N@Z
+  00821010 RELOCATION_MATCH CMap::?LoadBrushesFromFile@CMap@@QAEXAAVCAFile@@@Z
+  008edff0 RELOCATION_MATCH CWillButtonHelperTimer::??0CWillButtonHelperTimer@@QAE@W4EHeroAbility@@AAVCThing@@@Z
+  00ae0710 RELOCATION_MATCH CParticleProgram::?CalculateAveragePatchSize@CParticleProgram@@AAEXABVCParticleSimulation@@@Z

@@ -1,5 +1,4 @@
 // CDF_ShineLight::Main() -- demon-door face (shine a light): take scripted control of Me, make it persistent and immune, shut the nearest REGION_EXIT_POINT; each frame -- if the hero is within the trigger distance with the hand lamp lit, play the opening (teleport the hero to MK_DD, wide camera, opening line), fade the face out, open the door and reactivate the exit; else if the hero talks to the face, play the intro (hide the hero, close camera, intro line)
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?Main@CDF_ShineLight@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E6EA30, 1537 bytes (+ int3 padding), plain `ret`. Literals "CAM_DD_CLOSE" 0x012E8CA4,
 //   "TEXT_QST_088_SHINE_LIGHT_INTRO" 0x012E8C84, "MK_DD" 0x012E8C7C, "CAM_DD_WIDE" 0x012E8C70, "TEXT_QST_088_SHINE_LIGHT_OPENING"
@@ -15,7 +14,7 @@
 // Layout: Ego_r.pdb CDF_ShineLight (28 bytes): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 (CV_DemonDoorsScript),
 //   PMasterData +0x18. CScriptDef DemonDoor_ShineLight_TriggerDistance at retail +0x1064. Handle hierarchy as the landed
 //   CMeleeThunder::Main 0x00D58080.
-// Shape: the CMeleeThunder handle model (implicit handle dtor expanded only at the first return, inline_depth(0) elsewhere).
+// Shape: the CMeleeThunder handle model (implicit handle dtor expanded only at the first return, by VC7.1's per-site frequency rule (docs/pipeline/INLINE_DEPTH_REVISIT.md)).
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -32,7 +31,7 @@ template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
-    __forceinline ~CCountedPointer()
+    ~CCountedPointer()
     {
         if (Info) {
             --Info->RefCount;
@@ -85,7 +84,7 @@ using NScript::CIsThingAlive;
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0x0126008C
     CScriptGameResourceObjectBase() { }
-    __forceinline ~CScriptGameResourceObjectBase() { }
+    ~CScriptGameResourceObjectBase() { }
 };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
@@ -149,16 +148,12 @@ void CDF_ShineLight::Main()
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
             {
-#pragma inline_depth(0)
                 return;
-#pragma inline_depth()
             }
     }
     if (IsActiveThreadTerminating())
         {
-#pragma inline_depth(0)
             return;
-#pragma inline_depth()
         }
     Game->SetThingPersistent(Me, true);
     Game->EntitySetAsDamageable(Me, false);
@@ -170,13 +165,9 @@ void CDF_ShineLight::Main()
         if (IsDistanceBetweenThingsUnder(Me, Game->GetHero(), pGlobalScriptDef->DemonDoor_ShineLight_TriggerDistance) && Game->IsHeroHandLampLit()) {
             if (IsActiveThreadTerminating())
                 {
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
-#pragma inline_depth(0)
             CScriptGameResourceObjectMovieBase movie;
-#pragma inline_depth()
             Game->StartMovieSequence("", movie);
             CGameScriptInterface* game = Game;
             game->PauseAllNonScriptedEntities(true);
@@ -189,16 +180,12 @@ void CDF_ShineLight::Main()
                     Game->NewScriptFrame();
                     if (IsActiveThreadTerminating()) {
                         game->PauseAllNonScriptedEntities(false);
-#pragma inline_depth(0)
                         return;
-#pragma inline_depth()
                     }
                 }
                 if (IsActiveThreadTerminating()) {
                     game->PauseAllNonScriptedEntities(false);
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
             }
             {
@@ -208,15 +195,11 @@ void CDF_ShineLight::Main()
             Game->SetRegionExitAsActive(exitPoint, true);
             Game->FixMovieSequenceCamera(false);
             game->PauseAllNonScriptedEntities(false);
-#pragma inline_depth(0)
             return;
-#pragma inline_depth()
         } else if (Me.MsgIsTalkedToBy("SCRIPT_NAME_HERO")) {
             if (IsActiveThreadTerminating())
                 {
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
             CScriptGameResourceObjectMovieBase movie;
             Game->StartMovieSequence("", movie);
@@ -231,16 +214,12 @@ void CDF_ShineLight::Main()
                     Game->NewScriptFrame();
                     if (IsActiveThreadTerminating()) {
                         game->PauseAllNonScriptedEntities(false);
-#pragma inline_depth(0)
                         return;
-#pragma inline_depth()
                     }
                 }
                 if (IsActiveThreadTerminating()) {
                     game->PauseAllNonScriptedEntities(false);
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
             }
             Game->EntitySetAsDrawable(Game->GetHero(), true);
@@ -249,6 +228,4 @@ void CDF_ShineLight::Main()
         }
         Game->NewScriptFrame();
     }
-#pragma inline_depth(0)
 }
-#pragma inline_depth()

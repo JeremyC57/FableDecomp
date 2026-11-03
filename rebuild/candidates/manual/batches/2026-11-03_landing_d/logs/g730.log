@@ -1,0 +1,6 @@
+addr       parity           behav  name
+00e2b090   WARN RELOC_NAME: ?AssignMoralityEtcForGoodEnding@CV_AmbushScamScript@NScript@@QAEXXZ -> 00e2bac0 labelled 'CV_AmbushScamScript::AssignMoralityEtcForEvilEnding'
+00e2b090   RELOCATION_MATCH PASS   Main
+
+WINS: 1
+  00e2b090 RELOCATION_MATCH NScript::CV_AmbushScamScript::?Main@CV_AmbushScamScript@NScript@@UAEXXZ

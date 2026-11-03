@@ -1,0 +1,5 @@
+catalog  004b8d70 CPersistContext::Transfer<ENumAcceptedBoasts> -> CPersistContext::Transfer<int>
+manifest 004b8d70 CPersistContext::Transfer<ENumAcceptedBoasts> -> CPersistContext::Transfer<int>
+manifest 007ea2f0 Creature::Creature::GetTargetFirePoint -> NTargeting::GetTargetingPositionOnThing
+manifest 00e2b090 CV_AmbushScamScript::Main -> NScript::CV_AmbushScamScript::Main
+labels 57  catalog renamed 1  manifest renamed 3

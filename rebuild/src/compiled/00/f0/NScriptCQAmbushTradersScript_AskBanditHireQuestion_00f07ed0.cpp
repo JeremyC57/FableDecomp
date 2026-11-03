@@ -1,5 +1,4 @@
 // NScript::CQ_AmbushTradersScript::AskBanditHireQuestion(const CScriptThing&, CScriptGameResourceObjectScriptedThingBase&) -- ask the hero whether to hire the bandit; on "yes" with enough gold pay him and return true, otherwise make the bandit say why not (if he still has health) and return false
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Leaf: ?AskBanditHireQuestion@CQ_AmbushTradersScript@NScript@@QAE_NABVCScriptThing@@AAVCScriptGameResourceObjectScriptedThingBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F07ED0, length 782 bytes (padded to 784), ret 8.
 // Callees: IsActiveThreadTerminating 0x00CB7940; CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0;
@@ -7,8 +6,8 @@
 // only), ~CBaseClass 0x0099A2E0, operator delete 0x00BFE9BC; CScriptGameResourceObjectScriptedThingBase vtable 0x0127094C
 // slots 12 GetScriptThing, 13 Speak, 26 IsPerformingScriptTask; CGameScriptInterface slots 7, 39, 70, 114, 126, 127, 264, 520.
 // Layout: Game +0x40 (Ego_r.pdb - 0x14); pGlobalScriptDef (0x0143E90C) AmbushTradersBanditHireCost is PDB 0xa7c, retail +0x9dc.
-// Shape: the "cash poor" health test destroys its CScriptThing temporary out of line (inline_depth(0) region) while the
-// "no hire" one inlines the destructor (__forceinline); the question's last literal reuses the bandit argument's slot.
+// Shape: the "cash poor" health test destroys its CScriptThing temporary out of line while the "no hire" one inlines the
+// plain-inline destructor (VC7.1's per-site frequency rule (docs/pipeline/INLINE_DEPTH_REVISIT.md)); the question's last literal reuses the bandit argument's slot.
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -23,7 +22,7 @@ class CCPPointerInfo { public:
 template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
-    __forceinline ~CCountedPointer()
+    ~CCountedPointer()
     {
         if (Info) {
             --Info->RefCount;
@@ -94,9 +93,7 @@ bool CQ_AmbushTradersScript::AskBanditHireQuestion(const CScriptThing& bandit, C
                 return true;
             }
             if (IsActiveThreadTerminating()) return false;
-#pragma inline_depth(0)
             bool alive = Game->GetHealth(banditObject.GetScriptThing()) > 0.0f;
-#pragma inline_depth()
             if (alive) {
                 banditObject.Speak(Game->GetHero(), "TEXT_QST_003_BANDIT_CASH_POOR", TEXT_GROUP_SELECTION_2, false, true, false);
                 while (banditObject.IsPerformingScriptTask()) {

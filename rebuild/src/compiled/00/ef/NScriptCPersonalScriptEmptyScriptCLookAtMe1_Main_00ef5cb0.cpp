@@ -1,5 +1,4 @@
 // NScript::CPersonalScript_EmptyScript::CLookAtMe1::Main() -- under "Me and WalkToHere are alive": fetch the
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 //   TriggerCrate, then repeatedly wait until the hero uses Me and make the hero wear OBJECT_HERO_NO_HAT
 // Leaf: ?Main@CLookAtMe1@CPersonalScript_EmptyScript@NScript
 // Retail: Fable.exe @ 0x00EF5CB0, 817 bytes (+ int3 padding), plain `ret`.
@@ -10,9 +9,9 @@
 //   Strings "WalkToHere" 0x012F6654, "TriggerCrate" 0x012F5EB0, "SCRIPT_NAME_HERO" 0x0125D1C8, "OBJECT_HERO_NO_HAT" 0x01250A68.
 // Layout: the landed 00d9f270 CMC_Minion model (CEntityScriptBase {vptr, Game +4, Me +8}); predicate classes from the
 //   landed 00e86e60 FisticuffsChallenge (CIsThingAlive vtable 0x012C32F0, CPredicate_And 0x012E1B70 over base 0x012C2FF4).
-// Shape: __forceinline ~CScriptThing; `for (;;) { if (Term()) return; ... }` outer loop (a `while` swaps the two inline
+// Shape: plain-inline ~CScriptThing; `for (;;) { if (Term()) return; ... }` outer loop (a `while` swaps the two inline
 //   copies' registers); the out-of-line exits (0x004AA840) are the two returns after the wait, under
-//   in-body inline_depth(0).
+//   terminate checks as `do { if (...) return; } while (0);`.
 class C3DVector { public: float X, Y, Z; };
 class CCharString { public:
     void* PStringData;
@@ -29,7 +28,7 @@ struct CScriptThingImpl;
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
 inline CScriptThing::CScriptThing() {}
-__forceinline CScriptThing::~CScriptThing() {}
+inline CScriptThing::~CScriptThing() {}
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
@@ -69,32 +68,24 @@ void CPersonalScript_EmptyScript::CLookAtMe1::Main()
     CScriptThing walkTo = Game->GetThingWithScriptName("WalkToHere");
     SetPredicate(CIsThingAlive(Me) && CIsThingAlive(walkTo));
     Game->NewScriptFrame();
-    if (IsActiveThreadTerminating())
-        return;
+    do { if (IsActiveThreadTerminating()) return; } while (0);
     CScriptThing crate = Game->GetThingWithScriptName("TriggerCrate");
     for (;;) {
-        if (IsActiveThreadTerminating())
-            return;
+        do { if (IsActiveThreadTerminating()) return; } while (0);
         while (!Me.MsgIsUsedBy("SCRIPT_NAME_HERO")) {
             Game->NewScriptFrame();
-            if (IsActiveThreadTerminating())
-                return;
+            do { if (IsActiveThreadTerminating()) return; } while (0);
         }
         if (IsActiveThreadTerminating()) {
-#pragma inline_depth(0)
             return;
-#pragma inline_depth()
         }
         Game->SetHeroAsWearing("OBJECT_HERO_NO_HAT");
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating()) {
-#pragma inline_depth(0)
             return;
-#pragma inline_depth()
         }
         Game->NewScriptFrame();
     }
 }
 
 }
-

@@ -1,5 +1,4 @@
-// Levers: twin of 0x00E1FCF0 (EXPRESSION_WAIT, ExpressionDetectedWait): for(;;) with the terminating return first, alive/else-dead branches, in-body `#pragma inline_depth(0)` around the hit-block terminate return, nested CBasicString<char>::operator==, ternary IsAlive.
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
+// Levers: twin of 0x00E1FCF0 (EXPRESSION_WAIT, ExpressionDetectedWait): for(;;) with the terminating return first, alive/else-dead branches, every terminate check `do { if (term) return; } while (0);` with a plain-inline ~CScriptThing, nested CBasicString<char>::operator==, ternary IsAlive.
 // CQR_EscortTraderScript::WatchForExpressionWait(CScriptThing trader) -- spawned per trader: each frame, stop when the trader dies; when the hero performs EXPRESSION_WAIT to it, restart the random-speech timer and set ExpressionDetectedWait
 // Leaf: ?WatchForExpressionWait@CQR_EscortTraderScript@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E1FEF0, 435 bytes, `ret 0Ch` (the by-value CScriptThing).
@@ -52,7 +51,7 @@ void operator delete(void* p);                              // 0x00BFE9BC (MSVCR
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
-__forceinline CScriptThing::~CScriptThing() {}
+inline CScriptThing::~CScriptThing() {}
 inline bool CScriptThing::MsgIsHitBy(const CCharString& attacker) const { if (!PImp.Data) return false; return PImp.Data->MsgIsHitBy(attacker); }
 inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { if (!PImp.Data) return false; return PImp.Data->MsgIsHitByAnyAggressiveSpecialAbilityFrom(attacker); }
 inline bool CScriptThing::MsgExpressionPerformedTo(CCharString& expression) const { if (!PImp.Data) return false; return PImp.Data->MsgExpressionPerformedTo(expression); }
@@ -80,22 +79,16 @@ void CQR_EscortTraderScript::WatchForExpressionWait(CScriptThing trader)
 {
     CCharString expression;
     for (;;) {
-        if (IsActiveThreadTerminating())
-            return;
+        do { if (IsActiveThreadTerminating()) return; } while (0);
         if (trader.IsAlive()) {
-            if (IsActiveThreadTerminating())
-                return;
+            do { if (IsActiveThreadTerminating()) return; } while (0);
             if (trader.MsgExpressionPerformedTo(expression) && expression == "EXPRESSION_WAIT") {
-#pragma inline_depth(0)
-                if (IsActiveThreadTerminating())
-                    return;
-#pragma inline_depth()
+                do { if (IsActiveThreadTerminating()) return; } while (0);
                 RestartRandomSpeechTimer();
                 ExpressionDetectedWait = true;
             }
         } else {
-            if (IsActiveThreadTerminating())
-                return;
+            do { if (IsActiveThreadTerminating()) return; } while (0);
             break;
         }
         Game->NewScriptFrame();

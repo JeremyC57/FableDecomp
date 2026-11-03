@@ -1,5 +1,4 @@
 // std::map<CCharString, NBankFileManager::CContainedBank >::~map() -- STLport 4.6 container destructor (implicit): the member _Rb_tree's destructor inlined -- clear(), then free the header node
-// Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009AC130, 66 bytes.
 // Identity (proven, chunk c667): ~CRetailBank 0x009AC7C0 calls _M_erase 0x009AA780 on ContainedBanks +0x18, Ego_r.pdb
 //   std::map<CCharString, NBankFileManager::CContainedBank> (the class's only tree); node 0x28 = 0x10 header + pair<const CCharString,
@@ -379,6 +378,4 @@ public:
 //   line; these emitters (not part of the graded body) make the TU emit that COMDAT: Use_ first generates the implicit
 //   destructor at full inlining (its body), Kill_ then calls it with inlining off (the out-of-line reference).
 void Use_009ac130(std::map<CCharString, NBankFileManager::CContainedBank >* m) { m->~map(); }
-#pragma inline_depth(0)
 void Kill_009ac130(std::map<CCharString, NBankFileManager::CContainedBank >* m) { m->~map(); }
-#pragma inline_depth()

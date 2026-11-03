@@ -15,6 +15,9 @@
 #include "engine/ETCInterfaceType.h"
 class C3DVector; class CTCPhysicsBase; class CTCBase; class CTCDriverBase;
 class CThingBaseDef; class CWorld; class CPlayerManager;class CTCParamsBase;
+#ifdef FABLE_RETAIL_CTHING
+class CMainGameComponent; class CPlayer;                        // chunk 732: PeekComponent / GetPlayer return types
+#endif
 namespace NGraphicAppearance { class CTCGraphicAppearance; }
 // FableWin GetTC<T> debug instantiations name this checked-cast template;
 // the release path is the identity-adjusted static cast observed in native lookups.
@@ -119,8 +122,16 @@ public:
         }
         return false;
     }
+#ifdef FABLE_RETAIL_CTHING
+    // Retail (chunk 732, row 0x006AA2E0): GetTC(ETCInterfaceType) is __forceinline like GetTC<T> / PeekTC<T> (owner decision
+    // 2026-11-01: no Ego_r.pdb copy, no out-of-line copy in Fable.exe; FableWin.pdb ?GetTC@CThing@@QAEAAVCTCBase@@W4ETCInterfaceType@@@Z
+    // is the debug copy). Plain inline is called out of line in the large CThingPlayerCreature draw pass (814 v 1080 bytes).
+    __forceinline CTCBase& GetTC(ETCInterfaceType type) { return *Components.Find(type)->second; }
+    __forceinline const CTCBase& GetTC(ETCInterfaceType type) const { return *Components.Find(type)->second; }
+#else
     CTCBase& GetTC(ETCInterfaceType type) { return *Components.Find(type)->second; }
     const CTCBase& GetTC(ETCInterfaceType type) const { return *Components.Find(type)->second; }
+#endif
     CTCPhysicsBase* GetPhysicsTC() { return PhysicsTC; }
     static void CheckRetailLayout() {
         FABLE_STATIC_ASSERT(offsetof(CThing,UniqueID)==0x18);
@@ -156,6 +167,11 @@ public:
     // ?SetPersistOnUnloadWhenInLimbo@CThing@@QAEX_N@Z (0x0215EDB0, emitted in the CTCVillage TU right after AddThingToVillage;
     // retail `or byte ptr [esi+92h],40h` = bit 14 of the +0x91 bitfield run). Declarations with bodies only: no layout change.
     bool HasScriptThing() const;                                 // 0x004C7E70
+    // Chunk 732 (row 0x006AA2E0): Ego_r.pdb / FableWin.pdb ?PeekComponent@CThing@@QBEABVCMainGameComponent@@XZ, out of line in
+    // retail at 0x004C7A70 (the only PDB spelling; the landed CMainGameComponentFontView / AUCMainGameComponent forms are invented).
+    const CMainGameComponent& PeekComponent() const;             // 0x004C7A70
+    // Chunk 732 (row 0x006AABE0): Ego_r.pdb ?GetPlayer@CThing@@QAEAAVCPlayer@@XZ, out of line in retail (0x004C7A30).
+    CPlayer& GetPlayer();                                        // 0x004C7A30
     void SetPersistOnUnloadWhenInLimbo(bool persist) { PersistOnUnloadWhenInLimbo = persist; }
 #endif
 protected:

@@ -9,6 +9,9 @@
 class CThingBuilding; class CThingCreatureDef; class CCreatureActionBase;
 class CCreatureInteraction; class CTCCreatureModeManager;
 class CHeroCombatDef;
+class CEnginePrimitivePrepareInfo;
+class CCombatManager;
+enum ESex;
 class CThingCreatureBase : public CThingGameObject {
 
 #ifdef FABLE_ONHIT_TEST_ACCESS
@@ -71,6 +74,16 @@ public:
     // STLport vector shrinks; the virtual CThingAICreature::GetProperties 0x00830140, slot 48, has the same body).
     // AddThingToVillage compares it with 3 to count guards. Declaration only: no layout change.
     unsigned long GetProperty() const;                                   // 0x00662010
+    // Chunk 732 (CThingPlayerCreature rows): Ego_r.pdb ?GetNavigationLevelAt@CThingCreatureBase@@QBEJABVC3DVector@@@Z (out of line,
+    // 0x00661D20: PeekWorldMap then CWorldMap::GetNavigationLayerAt) and the protected virtual
+    // ?DrawPreparePrimitivesForRendering@CThingCreatureBase@@MAE_NABVCEnginePrimitivePrepareInfo@@@Z (0x00663C40, vtable 0x0125AC0C
+    // slot 36; the derived CThingPlayerCreature override calls it directly). Declarations only: no layout change.
+    long GetNavigationLevelAt(const C3DVector& pos) const;               // 0x00661D20
+    // Ego_r.pdb ?GetCombatManager@CThingCreatureBase@@QAEAAVCCombatManager@@XZ (out of line, 0x00661ED0).
+    CCombatManager& GetCombatManager();                                  // 0x00661ED0
+protected:
+    virtual bool DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info);   // 0x00663C40
+public:
 };
 FABLE_STATIC_ASSERT(sizeof(CThingCreatureBase)==0x160);
 #ifdef FABLE_ENGINE_CTHINGCREATUREDEF_H
