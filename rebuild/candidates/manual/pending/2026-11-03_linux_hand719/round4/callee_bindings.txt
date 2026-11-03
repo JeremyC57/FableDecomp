@@ -1,0 +1,136 @@
+## 0122d70e
+      1 _DAT_0122d70e
+      1 ?kTag@@3QBDB
+      1 ?kEmptyDisplayNameTag@@3QBDB
+      1 ?g_shadowTag@@3HA
+      1 ?g_profileTag@@3QBDB
+## 01244db4
+## 01244db8
+## 013bac94
+      1 ?g_CCharString_013bac94@@3VCCharString@@A
+## 013bac9c
+      1 ?g_CCharString_013bac9c@@3VCCharString@@A
+## 00404720
+      1 ??0CStringParser@@QAE@ABVCCharString@@P6IX0@Z0J@Z
+## 00411570
+      1 @Thing_Compare@8
+      1 ?Compare_00411570@@YIJPBD0@Z
+      1 ?Compare_00411570@@YIHPBD0@Z
+      1 ?CompareText@@YIJPBD0@Z
+      1 ?CompareStrings@@YIJPBD0@Z
+## 004115a0
+      1 ?Equals@StringDataMethods@@QBE_NPBD@Z
+      1 ?Equal@CBasicString@N006d41f0@@QBE_NPBD@Z
+      1 ??8?$CBasicString@D@X_004fe630@@QBE_NPBD@Z
+      1 ??8?$CBasicString@D@@QBE_NPBD@Z
+## 00485f3a
+      1 ?insert@CByteVector@@QAEXPAEKABE@Z
+      1 ?_M_fill_insert@?$vector@EV?$allocator@E@std@@@std@@QAEXPAEIABE@Z
+## 004bdb40
+      1 ?GetAllDummyObjectNames@CTCGraphicAppearance@@QAEXAAUCCharStringVector@@@Z
+## 004c08c0
+      1 ?GetDummyObject@CTCGraphicAppearance@NGraphicAppearance@@QBE_NABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@M@Z
+      1 ?GetDummyObject@CTCGraphicAppearance@@QAE_NPBVCCharString@@JKPAVC3DVector@@PAVCRightHandedSet@@M@Z
+      1 ?GetDummyObject@CTCGraphicAppearance@@QAE_NABVCCharString@@JKPAVC3DVector@@PAVCRightHandedSet@@M@Z
+## 004c73d0
+     42 ?GetPos@CThing@@QBEABVC3DVector@@XZ
+      1 @Getter_d82ca0@4
+      1 ?GetPosition@CThingView@@QAEPAVC3DVector@@XZ
+      1 ?GetPosition@CThingPos@@QAEABVC3DVector@@XZ
+      1 ?GetPosition@CThingCreatureBase@NFoot008f7bd0@@QBEABUC3DVector@2@XZ
+## 004fc4d0
+      1 ?ClipAndConvertWorldMapAreaToLocalArea@CWorldMap@@QBE?AVC2DBoxI@@JABV2@@Z
+## 00510f60
+      1 ??$__uninitialized_copy@PAVCNavigationTransitionPoint@@PAV1@@std@@YIPAVCNavigationTransitionPoint@@PAV1@00ABU__false_type@0@@Z
+## 005152c0
+      1 ?_M_insert_dispatch@list@@QAEXU_List_iterator@@U_List_const_iterator@@1ABU__false_type@@@Z
+      1 ?_M_insert_dispatch@SList16_00a831d0@@QAEXU_List_iterator_00a831d0@@U_List_const_iterator_00a831d0@@1ABU__false_type@@@Z
+      1 ?_M_insert_dispatch@SList16_00a82730@@QAEXU_List_iterator_00a82730@@U_List_const_iterator_00a82730@@1ABU__false_type@@@Z
+      1 ?_M_insert_dispatch@?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@QAEXU?$_List_iterator@VC2DLineF@@@2@U?$_List_const_iterator@VC2DLineF@@@2@1ABU__false_type@2@@Z
+      1 ??$_M_insert_dispatch@U?$_List_iterator@VC2DLineF@@U?$_Const_traits@VC2DLineF@@@std@@@std@@@?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@QAEXU?$_List_iterator@VC2DLineF@@U?$_Nonconst_traits@VC2DLineF@@@std@@@1@U?$_List_iterator@VC2DLineF@@U?$_Const_traits@VC2DLineF@@@std@@@1@1ABV__false_type@1@@Z
+## 00516200
+## 00517480
+## 00517ba0
+## 005199e0
+## 00519ef0
+      1 ?__destroy_aux@std@@YIXPAVCSwitchableBlockage@CNavigationAreaUpdate@@0ABU__false_type@1@@Z
+      1 ?__destroy_aux@std@@YIXPAUCSwitchableBlockage@FableDestroy_0051cd80@@0ABU__false_type@@@Z
+      1 ??$__destroy_aux@PAVCSwitchableBlockage@CNavigationAreaUpdate@@@std@@YIXPAVCSwitchableBlockage@CNavigationAreaUpdate@@0ABU__false_type@0@@Z
+## 0051a810
+## 0051cae0
+      1 ??$__copy@PAVCNavigationLayerUpdate@CNavigationAreaUpdate@@PAV12@H@std@@YIPAVCNavigationLayerUpdate@CNavigationAreaUpdate@@PAV12@00ABUrandom_access_iterator_tag@0@PAH@Z
+## 0051cd80
+      1 ?DestroyRange_0051cd80@@YIXPAUSEntry_0051d530@@0ABUSScalarTag@@@Z
+      1 ?DestroyRange@@YIXPAUElement_0051d400@@0ABUTag_0051d400@@@Z
+      1 ??$__destroy_aux@PAVCNavigationLayerUpdate@CNavigationAreaUpdate@@@std@@YIXPAVCNavigationLayerUpdate@CNavigationAreaUpdate@@0ABU__false_type@0@@Z
+## 0051d870
+## 0063e590
+      1 ?GetNavigationLayerAt@CWorldMap@@QBEJABVC3DVector@@PBVCThing@@@Z
+## 006a4f10
+## 006a4f60
+## 006b0850
+      1 ?GetPhysicsMeshObject@CTCPhysicsBaseV@@QAE?AVCPhysicsMeshObject@@XZ
+      1 ?GetPhysicsMeshObject@CTCPhysicsBase@@QBE?AVCPhysicsMeshObject@@XZ
+## 0081f3d0
+      1 ?IsPassableAt@CMap@@QBE_NABVC2DCoordI@@@Z
+## 0081f4b0
+## 0099a2e0
+      1 ?OnDie@CInventoryItemBase@@QAEXXZ
+      1 ?BaseOnDie@CTCInventoryItem@@QAEXXZ
+      1 ??1CBase_0099a2e0@@QAE@XZ
+      1 ??1CBaseClass@ExternalRetry_00a91390@@UAE@XZ
+      1 ??1CBaseClass@ExternalRetry_00a90fc0@@UAE@XZ
+## 0099e4b0
+      1 ?Release@SubB@@QAE_JXZ
+      1 ?Initialise@CClass_009aa240@@QAEXXZ
+      1 ?Initialise@CClass_009a9930@@QAEXXZ
+      1 ?Init@SubInit@@QAEXXZ
+      1 ?HelperReset@C3DAnimationBlendState@@QAEXXZ
+## 0099e900
+      1 ?NotEqual@NativeStringValue@@QBE_NABVCCharString@@@Z
+      1 ??9CCharString@@QBE_NABV0@@Z
+## 0099eae0
+      3 ??1CCharString@@QAE@XZ
+      1 @dtorB@4
+      1 @Ring_reset@4
+      1 @MemberA48_dtor@4
+      1 @FableMemberDtor_00cd4fd0@4
+## 0099ebf0
+      2 ??0CCharString@@QAE@PBDJ@Z
+      1 ?m@GAN004d2d13@@QAEPAXPAXH@Z
+      1 ?m@GAN004d2d00@@QAEPAXPAXH@Z
+      1 ?m@GAN004d2ced@@QAEPAXPAXH@Z
+      1 ?m@GAN004d2cda@@QAEPAXPAXH@Z
+## 0099ec30
+      1 ?ctor@Str@@QAEXH@Z
+      1 ?ctor@Cat@@QAEXH@Z
+      1 ?copy@CCharString@@QAEXPBV1@@Z
+      1 ?CopyFrom@CCharString@@QAEXPBV1@@Z
+      1 ?CopyFrom@CCharString@@QAEXPAV1@@Z
+## 0099ec70
+      1 ?GetSubString@CCharString@@QBE?AV1@KK@Z
+## 0099efb0
+      1 ??4SymbolString@@QAEAAU0@ABU0@@Z
+      1 ??4CCharString@std@@QAEAAU01@ABU01@@Z
+      1 ??4CCharString@@QAEABV0@ABV0@@Z
+      1 ??4CCharString@@QAEAAV0@ABV0@@Z
+## 0099f600
+      1 ??H@YI?AVCCharString@@ABV0@PBD@Z
+## 009b9ba0
+      1 ?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z
+      1 ?NextItemIs@CStringParser@@QAE_NABVCCharString@@@Z
+      1 ?FindKeyword@CStringParser@@QAE_NABVCCharString@@@Z
+## 009ba540
+      1 ?ReadAsInteger@CStringParser@@QAEJXZ
+## 00a11760
+## 00a11820
+## 00a127d0
+      1 ??1CPhysicsMeshObject@@UAE@XZ
+## 00bfea0e
+      1 _malloc
+## 00bfea14
+      1 _free
+## 00bfea70
+      1 __ftol2
+## 00bfeae6
+      1 _memmove

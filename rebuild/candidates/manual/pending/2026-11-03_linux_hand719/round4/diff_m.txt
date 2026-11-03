@@ -1,0 +1,220 @@
+same_insns=871/937 built_insns=970 ratio=0.913
+== delete retail[1:2] built[1:1]
+ R  00509a26  8b4108                 mov eax, dword ptr [ecx + 8]
+== insert retail[5:5] built[4:6]
+ B  00509a29  8bd9                   mov ebx, ecx
+ B  00509a2b  8b4308                 mov eax, dword ptr [ebx + 8]
+== replace retail[8:9] built[9:10]
+ R  00509a32  894c2458               mov dword ptr [esp + 0x58], ecx
+ B  00509a34  895c245c               mov dword ptr [esp + 0x5c], ebx
+== replace retail[21:24] built[22:23]
+ R  00509a66  8b9c2440010000         mov ebx, dword ptr [esp + 0x140]
+ R  00509a6d  8d542428               lea edx, [esp + 0x28]
+ R  00509a71  89542474               mov dword ptr [esp + 0x74], edx
+ B  00509a68  8b942444010000         mov edx, dword ptr [esp + 0x144]
+== delete retail[25:26] built[24:24]
+ R  00509a79  8d542424               lea edx, [esp + 0x24]
+== replace retail[28:29] built[26:27]
+ R  00509a85  52                     push edx
+ B  00509a7b  894c2464               mov dword ptr [esp + 0x64], ecx
+== delete retail[30:31] built[28:28]
+ R  00509a8a  898c2480000000         mov dword ptr [esp + 0x80], ecx
+== insert retail[32:32] built[29:33]
+ B  00509a84  8d4c2464               lea ecx, [esp + 0x64]
+ B  00509a88  8954242c               mov dword ptr [esp + 0x2c], edx
+ B  00509a8c  8d54243c               lea edx, [esp + 0x3c]
+ B  00509a90  51                     push ecx
+== replace retail[33:34] built[34:35]
+ R  00509a94  895c2430               mov dword ptr [esp + 0x30], ebx
+ B  00509a93  89542470               mov dword ptr [esp + 0x70], edx
+== replace retail[96:98] built[97:98]
+ R  00509b6b  eb03                   jmp 0x509b70
+ R  00509b6d  8d4900                 lea ecx, [ecx]
+ B  00509b6a  8d9b00000000           lea ebx, [ebx]
+== replace retail[146:147] built[146:147]
+ R  00509c1e  8d7708                 lea esi, [edi + 8]
+ B  00509c1e  83c708                 add edi, 8
+== replace retail[148:149] built[148:149]
+ R  00509c23  c70600000000           mov dword ptr [esi], 0
+ B  00509c23  c70700000000           mov dword ptr [edi], 0
+== replace retail[153:154] built[153:154]
+ R  00509c36  8906                   mov dword ptr [esi], eax
+ B  00509c36  8907                   mov dword ptr [edi], eax
+== replace retail[157:159] built[157:159]
+ R  00509c40  8d7c2413               lea edi, [esp + 0x13]
+ R  00509c44  57                     push edi
+ B  00509c40  8d742413               lea esi, [esp + 0x13]
+ B  00509c44  56                     push esi
+== replace retail[164:165] built[164:165]
+ R  00509c4c  8bce                   mov ecx, esi
+ B  00509c4c  8bcf                   mov ecx, edi
+== insert retail[180:180] built[180:181]
+ B  00509c83  895c245c               mov dword ptr [esp + 0x5c], ebx
+== insert retail[199:199] built[200:228]
+ B  00509cc0  8b542440               mov edx, dword ptr [esp + 0x40]
+ B  00509cc4  8917                   mov dword ptr [edi], edx
+ B  00509cc6  8b442444               mov eax, dword ptr [esp + 0x44]
+ B  00509cca  894704                 mov dword ptr [edi + 4], eax
+ B  00509ccd  8d5f08                 lea ebx, [edi + 8]
+ B  00509cd0  6a18                   push 0x18
+ B  00509cd2  c70300000000           mov dword ptr [ebx], 0
+ B  00509cd8  e800000000             call 0x509cdd
+ B  00509cdd  8900                   mov dword ptr [eax], eax
+ B  00509cdf  894004                 mov dword ptr [eax + 4], eax
+ B  00509ce2  8903                   mov dword ptr [ebx], eax
+ B  00509ce4  8b00                   mov eax, dword ptr [eax]
+ B  00509ce6  8b4c244c               mov ecx, dword ptr [esp + 0x4c]
+ B  00509cea  8b11                   mov edx, dword ptr [ecx]
+ B  00509cec  83c404                 add esp, 4
+ B  00509cef  89442424               mov dword ptr [esp + 0x24], eax
+ B  00509cf3  8d442413               lea eax, [esp + 0x13]
+ B  00509cf7  50                     push eax
+ B  00509cf8  51                     push ecx
+ B  00509cf9  52                     push edx
+ B  00509cfa  51                     push ecx
+ B  00509cfb  8b4c2434               mov ecx, dword ptr [esp + 0x34]
+ B  00509cff  8bc4                   mov eax, esp
+ B  00509d01  8908                   mov dword ptr [eax], ecx
+ B  00509d03  8bcb                   mov ecx, ebx
+ B  00509d05  e800000000             call 0x509d0a
+ B  00509d0a  8b5c245c               mov ebx, dword ptr [esp + 0x5c]
+ B  00509d0e  8b4c2e0c               mov ecx, dword ptr [esi + ebp + 0xc]
+== insert retail[200:200] built[229:230]
+ B  00509d16  8d442e10               lea eax, [esi + ebp + 0x10]
+== replace retail[201:205] built[231:232]
+ R  00509cc1  8bcf                   mov ecx, edi
+ R  00509cc3  e818fd0000             call 0x5199e0
+ R  00509cc8  8b542e10               mov edx, dword ptr [esi + ebp + 0x10]
+ R  00509ccc  8b4c2e0c               mov ecx, dword ptr [esi + ebp + 0xc]
+ B  00509d1b  8b10                   mov edx, dword ptr [eax]
+== replace retail[206:210] built[233:234]
+ R  00509cd3  897c2424               mov dword ptr [esp + 0x24], edi
+ R  00509cd7  8d442413               lea eax, [esp + 0x13]
+ R  00509cdb  8d7c2e10               lea edi, [esi + ebp + 0x10]
+ R  00509cdf  50                     push eax
+ B  00509d20  89442460               mov dword ptr [esp + 0x60], eax
+== replace retail[223:224] built[247:248]
+ R  00509d0b  890f                   mov dword ptr [edi], ecx
+ B  00509d4f  8939                   mov dword ptr [ecx], edi
+== delete retail[235:236] built[259:259]
+ R  00509d2d  8d4900                 lea ecx, [ecx]
+== insert retail[265:265] built[288:290]
+ B  00509dc7  eb07                   jmp 0x509dd0
+ B  00509dc9  8da42400000000         lea esp, [esp]
+== insert retail[289:289] built[314:315]
+ B  00509e1e  8bff                   mov edi, edi
+== insert retail[452:452] built[478:479]
+ B  0050a049  8da42400000000         lea esp, [esp]
+== insert retail[730:730] built[757:758]
+ B  0050a40f  90                     nop 
+== replace retail[780:781] built[808:810]
+ R  0050a47f  90                     nop 
+ B  0050a4cb  eb03                   jmp 0x50a4d0
+ B  0050a4cd  8d4900                 lea ecx, [ecx]
+== replace retail[799:802] built[828:832]
+ R  0050a4c1  8b5304                 mov edx, dword ptr [ebx + 4]
+ R  0050a4c4  8b430c                 mov eax, dword ptr [ebx + 0xc]
+ R  0050a4c7  8b0b                   mov ecx, dword ptr [ebx]
+ B  0050a50e  8bb42444010000         mov esi, dword ptr [esp + 0x144]
+ B  0050a515  8b5604                 mov edx, dword ptr [esi + 4]
+ B  0050a518  8b460c                 mov eax, dword ptr [esi + 0xc]
+ B  0050a51b  8b0e                   mov ecx, dword ptr [esi]
+== replace retail[803:804] built[833:834]
+ R  0050a4cb  8b5308                 mov edx, dword ptr [ebx + 8]
+ B  0050a51f  8b5608                 mov edx, dword ptr [esi + 8]
+== replace retail[809:812] built[839:842]
+ R  0050a4dc  8bf1                   mov esi, ecx
+ R  0050a4de  2bf2                   sub esi, edx
+ R  0050a4e0  3bc6                   cmp eax, esi
+ B  0050a530  8bf9                   mov edi, ecx
+ B  0050a532  2bfa                   sub edi, edx
+ B  0050a534  3bc7                   cmp eax, edi
+== replace retail[817:820] built[847:850]
+ R  0050a4ef  8bf1                   mov esi, ecx
+ R  0050a4f1  2bf1                   sub esi, ecx
+ R  0050a4f3  56                     push esi
+ B  0050a543  8bf9                   mov edi, ecx
+ B  0050a545  2bf9                   sub edi, ecx
+ B  0050a547  57                     push edi
+== replace retail[824:825] built[854:855]
+ R  0050a4fe  03c6                   add eax, esi
+ B  0050a552  03c7                   add eax, edi
+== replace retail[828:830] built[858:860]
+ R  0050a507  8d742413               lea esi, [esp + 0x13]
+ R  0050a50b  56                     push esi
+ B  0050a55b  8d7c2413               lea edi, [esp + 0x13]
+ B  0050a55f  57                     push edi
+== insert retail[835:835] built[865:866]
+ B  0050a56b  56                     push esi
+== delete retail[836:838] built[867:867]
+ R  0050a51e  8b7c2454               mov edi, dword ptr [esp + 0x54]
+ R  0050a522  53                     push ebx
+== replace retail[841:842] built[870:871]
+ R  0050a529  8bcf                   mov ecx, edi
+ B  0050a579  8bcb                   mov ecx, ebx
+== replace retail[843:844] built[872:873]
+ R  0050a530  8b17                   mov edx, dword ptr [edi]
+ B  0050a580  8b13                   mov edx, dword ptr [ebx]
+== replace retail[845:846] built[874:875]
+ R  0050a533  8bcf                   mov ecx, edi
+ B  0050a583  8bcb                   mov ecx, ebx
+== insert retail[854:854] built[883:884]
+ B  0050a5a2  8b442448               mov eax, dword ptr [esp + 0x48]
+== replace retail[855:856] built[885:886]
+ R  0050a556  8b442448               mov eax, dword ptr [esp + 0x48]
+ B  0050a5aa  8d9b00000000           lea ebx, [ebx]
+== insert retail[859:859] built[889:890]
+ B  0050a5ba  8d9b00000000           lea ebx, [ebx]
+== insert retail[877:877] built[908:910]
+ B  0050a60a  7415                   je 0x50a621
+ B  0050a60c  8b4808                 mov ecx, dword ptr [eax + 8]
+== replace retail[878:880] built[911:912]
+ R  0050a5b0  8b4808                 mov ecx, dword ptr [eax + 8]
+ R  0050a5b3  7410                   je 0x50a5c5
+ B  0050a611  8b4500                 mov eax, dword ptr [ebp]
+== delete retail[881:882] built[913:913]
+ R  0050a5b7  8b5500                 mov edx, dword ptr [ebp]
+== replace retail[883:885] built[914:916]
+ R  0050a5bd  03ce                   add ecx, esi
+ R  0050a5bf  c6041100               mov byte ptr [ecx + edx], 0
+ B  0050a619  03c8                   add ecx, eax
+ B  0050a61b  c6043100               mov byte ptr [ecx + esi], 0
+== replace retail[886:891] built[917:924]
+ R  0050a5c5  2bca                   sub ecx, edx
+ R  0050a5c7  8b5500                 mov edx, dword ptr [ebp]
+ R  0050a5ca  0fafcf                 imul ecx, edi
+ R  0050a5cd  03ce                   add ecx, esi
+ R  0050a5cf  c6041180               mov byte ptr [ecx + edx], 0x80
+ B  0050a621  8b5008                 mov edx, dword ptr [eax + 8]
+ B  0050a624  8b08                   mov ecx, dword ptr [eax]
+ B  0050a626  8b4500                 mov eax, dword ptr [ebp]
+ B  0050a629  2bd1                   sub edx, ecx
+ B  0050a62b  0fafd7                 imul edx, edi
+ B  0050a62e  03d0                   add edx, eax
+ B  0050a630  c6043280               mov byte ptr [edx + esi], 0x80
+== insert retail[893:893] built[926:927]
+ B  0050a63d  8b4808                 mov ecx, dword ptr [eax + 8]
+== replace retail[894:895] built[928:929]
+ R  0050a5de  8b4808                 mov ecx, dword ptr [eax + 8]
+ B  0050a642  8b4500                 mov eax, dword ptr [ebp]
+== delete retail[896:897] built[930:930]
+ R  0050a5e3  8b5500                 mov edx, dword ptr [ebp]
+== replace retail[898:900] built[931:933]
+ R  0050a5e9  03ce                   add ecx, esi
+ R  0050a5eb  c60411ff               mov byte ptr [ecx + edx], 0xff
+ B  0050a64a  03c8                   add ecx, eax
+ B  0050a64c  c60431ff               mov byte ptr [ecx + esi], 0xff
+== replace retail[905:906] built[938:939]
+ R  0050a5fd  8b442414               mov eax, dword ptr [esp + 0x14]
+ B  0050a65e  8b5c2440               mov ebx, dword ptr [esp + 0x40]
+== replace retail[907:908] built[940:942]
+ R  0050a605  40                     inc eax
+ B  0050a666  8b54244c               mov edx, dword ptr [esp + 0x4c]
+ B  0050a66a  41                     inc ecx
+== replace retail[909:911] built[943:945]
+ R  0050a607  3bc1                   cmp eax, ecx
+ R  0050a609  89442414               mov dword ptr [esp + 0x14], eax
+ B  0050a66c  3bca                   cmp ecx, edx
+ B  0050a66e  894c2414               mov dword ptr [esp + 0x14], ecx
+== delete retail[917:918] built[951:951]
+ R  0050a61f  90                     nop 

@@ -1,0 +1,7 @@
+class	header	size	named_members	status	note
+C2DLineF	C2DLineF.h	16	4	OK	0 retail files
+CMap	CMap.h	7488	26	OK	0 retail files
+CNavigationAreaUpdate	CNavigationAreaUpdate.h	48	4	OK	0 retail files
+CNavigationPosition	CNavigationPosition.h	12	3	OK	0 retail files
+CNavigationTransitionPoint	CNavigationTransitionPoint.h	16	4	OK	0 retail files
+CTCGraphicAppearance	CTCGraphicAppearance.h	92	24	OK	0 retail files

@@ -1,0 +1,14 @@
+attempt	source	grade	size	summary	note
+1	a01.cpp	SRC_FAIL	?v?	same_insns=0/0 built_insns=0 ratio=1.000	first draft
+2	a01.cpp	DIFFER(3272v3120)	3272v3120	same_insns=725/937 built_insns=975 ratio=0.758	first draft (GetSubString added)
+3	a02.cpp	DIFFER(3272v3120)	3272v3120	same_insns=726/937 built_insns=974 ratio=0.760	GFFilter_Bind3 + unary_function filter bases
+4	a03.cpp	DIFFER(3248v3120)	3248v3120	same_insns=720/937 built_insns=971 ratio=0.755	+ GetAllThings same-TU noinline stand-in body
+5	a04.cpp	DIFFER(3232v3120)	3232v3120	same_insns=733/937 built_insns=965 ratio=0.771	no searchTools local; GetLength !p?0:len
+6	a05.cpp	DIFFER(3220v3120)	3220v3120	same_insns=754/937 built_insns=970 ratio=0.791	topology in a block scope
+7	a06.cpp	DIFFER(3220v3120)	3220v3120	same_insns=754/937 built_insns=970 ratio=0.791	plain bool switchable (control)
+8	a07.cpp	DIFFER(3220v3120)	3220v3120	same_insns=754/937 built_insns=970 ratio=0.791	CSwitchableBlockage user ctor/dtor
+9	a08.cpp	DIFFER(3220v3120)	3220v3120	same_insns=754/937 built_insns=970 ratio=0.791	local classes moved into overlay headers (CNavigationAreaUpdate, C2DLineF, CNavigationTransitionPoint, CNavigationPosition, CMap, CTCGraphicAppearance, filters, CFilter_Bind3)
+10	a09.cpp	DIFFER(3220v3120)	3220v3120	same_insns=754/937 built_insns=970 ratio=0.791	topology resize outside the block scope (only localArea/mapRef/loops in the block)
+11	a10.cpp	DIFFER(3220v3120)	3220v3120	same_insns=753/937 built_insns=970 ratio=0.790	topology counters i/j declared outside the for headers, incremented at body end
+12	a08.cpp	DIFFER(3220v3120)	3220v3120	same_insns=754/937 built_insns=970 ratio=0.791	overlay containers rebased on the repo's D2 tag-ctor default (a08 source)
+13	00509a20.cpp	DIFFER(3220v3120)	3220v3120	same_insns=754/937 built_insns=970 ratio=0.791	final parked source differ/00509a20.cpp (= a08 + grade header)
