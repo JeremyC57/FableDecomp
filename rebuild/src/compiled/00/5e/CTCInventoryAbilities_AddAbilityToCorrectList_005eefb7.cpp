@@ -17,12 +17,16 @@ class CCharString { public:
     ~CCharString();                               // 0x0099EAE0
 };
 
-struct CCharStringVector {                        // std::vector<CCharString>
+namespace std {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc> class vector;
+template <> class vector<CCharString, allocator<CCharString> > { public:   // STLport vector<CCharString> (12 bytes)
     CCharString* first;
     CCharString* last;
     CCharString* end_of_storage;
     void push_back(const CCharString& value);     // 0x0044BFF0
 };
+}
 
 struct SAbilityEntry {                            // pair<long, CDefPointer<const CHeroAbilityDef>>
     long  Level;                                  // +0x00 (-1 = not owned)
@@ -41,10 +45,10 @@ struct CTCInventoryAbilities_Retail {
     CAbilityEntryVector Abilities;                // +0x160 (PDB +0x180)
 
     CCharString GetAbilityInventoryThingName(long ability);   // 0x005EDD04
-    void AddAbilityToCorrectList(long ability, CCharStringVector* owned, CCharStringVector* notOwned);
+    void AddAbilityToCorrectList(long ability, std::vector<CCharString, std::allocator<CCharString> >* owned, std::vector<CCharString, std::allocator<CCharString> >* notOwned);
 };
 
-void CTCInventoryAbilities_Retail::AddAbilityToCorrectList(long ability, CCharStringVector* owned, CCharStringVector* notOwned)
+void CTCInventoryAbilities_Retail::AddAbilityToCorrectList(long ability, std::vector<CCharString, std::allocator<CCharString> >* owned, std::vector<CCharString, std::allocator<CCharString> >* notOwned)
 {
     if (Abilities[ability].Level >= 0)
         owned->push_back(GetAbilityInventoryThingName(ability));

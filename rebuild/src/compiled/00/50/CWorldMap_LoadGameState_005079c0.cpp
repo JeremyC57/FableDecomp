@@ -126,8 +126,8 @@ public:
     CCharString*            PStringToSaveTo;            // +0x20
     CMemoryDataInputStream* PLoadStream;                // +0x24
     CDataOutputStream*      PSaveStream;                // +0x28
-    CPersistContext(CStringParser* parser, void (*errorCallback)(CCharString*), bool useDefaults,
-                    CDefinitionManager* definitionManager, CSymbolMap* symbolMap, CCharString* stringToClean);   // 0x009BADD0
+    CPersistContext(CStringParser& parser, void (__fastcall* errorCallback)(const CCharString&), bool useDefaults,
+                    const CDefinitionManager* definitionManager, const CSymbolMap* symbolMap, CCharString* stringToClean);   // 0x009BADD0
     protected: void CheckCRC(const char* name); public:                    // 0x00404500
     template <class T> void Transfer(T& value);                  // 0x00431143
     bool IsBinary() const { return Mode == 2 || Mode == 3; }
@@ -197,7 +197,7 @@ void CWorldMap::LoadGameState(CPersistContext& context)
         if (index > 0) {
             CCharString body = parser->ReadUntilPastText("END_REGION");
             CStringParser regionParser(body, 0, CCharString(""), 0);
-            CPersistContext regionContext(&regionParser, 0, true, 0, 0, 0);
+            CPersistContext regionContext(regionParser, 0, true, 0, 0, 0);
             Regions[index].TransferGameState(regionContext);
         }
         else

@@ -195,7 +195,7 @@ public:
     bool          Finished;                                                            // +0x17
     long          Mode;                                                                // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
-    template <class T> void Transfer(const char* name, std::vector<T>& value);      // 0x00569F20 / 0x00569FE0
+    template <class T> void TransferVector(const char* name, std::vector<T>& value);   // 0x00569F20 / 0x00569FE0 (Ego_r / FableWin ??$TransferVector@M@)
 };
 
 class CTCHeroOnlineScoreboard {
@@ -221,14 +221,14 @@ void CTCHeroOnlineScoreboard::OnSerialise(CPersistContext& context, bool)
             activities.push_back(activity);
             scores.push_back(score);
         }
-        context.Transfer("ActivitiesVec", activities);
-        context.Transfer("ScoresVec", scores);
+        context.TransferVector("ActivitiesVec", activities);
+        context.TransferVector("ScoresVec", scores);
     }
     else {
         std::vector<EOnlineScoreboardActivity> activities;
         std::vector<float> scores;
-        context.Transfer("ActivitiesVec", activities);
-        context.Transfer("ScoresVec", scores);
+        context.TransferVector("ActivitiesVec", activities);
+        context.TransferVector("ScoresVec", scores);
         std::vector<float>::iterator score = scores.begin();
         for (std::vector<EOnlineScoreboardActivity>::iterator activity = activities.begin();
              activity != activities.end(); ++activity, ++score) {

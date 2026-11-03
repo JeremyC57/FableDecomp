@@ -8,7 +8,7 @@ struct CResourcePool_00a23ad0 {
 };
 
 class CGraphicDataBank { public:
-    void Reload(long flags);                       // 0x009FD100
+    void SetReduceSizeFrameDelay(unsigned long delay);   // 0x009FD100 (Ego_r / FableWin ?SetReduceSizeFrameDelay@CGraphicDataBank@@QAEXK@Z)
 };
 
 double __fastcall GFGetTime();                        // 0x009E1BC0
@@ -31,5 +31,5 @@ void CEngineResourceManager::FrameEnd()
         if (m_pPools[i])
             m_pPools[i]->Release();
     }
-    m_pDataBank->Reload(3);
+    m_pDataBank->SetReduceSizeFrameDelay(3);
 }

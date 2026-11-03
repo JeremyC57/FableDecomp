@@ -14,19 +14,19 @@
 // /Gr: first=ecx, hole=edx; `ret 0Ch` = top + val + the one-pointer comparator.
 #define FABLE_RETAIL_BANK_FILE
 #include "engine/CBankFile.h"
+struct CPackedUIntArray {                                 // Ego_r.pdb 16 bytes (global class: Ego_r / FableWin ??ACPackedUIntArray@@QBEKK@Z)
+    unsigned long* PackedInts;                            // +0x00
+    unsigned long  Size;                                  // +0x04
+    unsigned char  Bits;                                  // +0x08
+    unsigned long  Bias;                                  // +0x0C
+    unsigned long operator[](unsigned long index) const;  // 0x00A629F0
+};
 namespace N009d3040 {
 struct CRuntimeData {                                     // CBankFile::CRuntimeData, Ego_r.pdb 12 bytes
     unsigned long DataOffset;                             // +0x00
     unsigned long DataSize;                               // +0x04
     unsigned char DataType;                               // +0x08
     bool          Valid;                                  // +0x09
-};
-struct CPackedUIntArray {                                 // Ego_r.pdb 16 bytes
-    unsigned long* PackedInts;                            // +0x00
-    unsigned long  Size;                                  // +0x04
-    unsigned char  Bits;                                  // +0x08
-    unsigned long  Bias;                                  // +0x0C
-    unsigned long operator[](unsigned long index);        // 0x00A629F0
 };
 struct CRuntimeDataArray {                                // CArray<CBankFile::CRuntimeData>: first / last / end
     CRuntimeData* First;

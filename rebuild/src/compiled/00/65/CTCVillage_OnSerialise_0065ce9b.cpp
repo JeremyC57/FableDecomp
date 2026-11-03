@@ -95,7 +95,7 @@ public:
     //   instances here: bool 0x004107C0; long 0x004110B0
     template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
     //   instances here: bool 0x004045C0; long 0x00410BE0
-    void TransferVector(const char* name, std::vector<long>* value);           // 0x005815D6
+    template <class T> void TransferVector(const char* name, std::vector<T, std::allocator<T> >& value);   // 0x005815D6 <long> (Ego_r / FableWin ??$TransferVector@J@)
 };
 
 class CTCVillage {
@@ -125,12 +125,12 @@ void CTCVillage::OnSerialise(CPersistContext& context, bool fullSave)
         std::vector<long> crimes;
         crimes.reserve(PlayersCrimes.size());
         std::copy(PlayersCrimes.begin(), PlayersCrimes.end(), std::back_inserter(crimes));
-        context.TransferVector("PlayersCrimes", &crimes);
+        context.TransferVector("PlayersCrimes", crimes);
         long framesSinceSeen = FramePlayerLastSeenByGuard - CWorld::GetFrame();
         context.Transfer<long>("FramePlayerLastSeenByGuard", framesSinceSeen, 0);
     } else {
         std::vector<long> crimes;
-        context.TransferVector("PlayersCrimes", &crimes);
+        context.TransferVector("PlayersCrimes", crimes);
         std::vector<long>::iterator end = crimes.end();
         for (std::vector<long>::iterator it = crimes.begin(); it != end; ++it)
             PlayersCrimes.insert(*it);

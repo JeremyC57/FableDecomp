@@ -10,10 +10,10 @@ class CCharString { public:
     ~CCharString();                                      // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);    // 0x0099EFB0
 };
-namespace N_00415dd0 { struct CDefString {
+class CDefString { public:                             // naming wave 34: was N_00415dd0::CDefString::operator CCharString (as 0x004B4AA0, Codex pass 12)
     long m_index;
-    operator CCharString() const;                        // 0x00415DD0
-}; } using N_00415dd0::CDefString;
+    CCharString GetString() const;                       // 0x00415DD0 (FableWin ?GetString@CDefString@@QBE?AVCCharString@@XZ)
+};
 class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
@@ -52,7 +52,7 @@ class CThing { public:
     }
     void SetInLimbo(bool inLimbo);                       // 0x004C8CF0
     void SetAsGameStatePersisted(bool persisted);        // 0x004C7880
-    CDefString GetDefName();                             // 0x004C7CC0
+    CDefString GetDefName() const;                       // 0x004C7CC0 (Ego_r / FableWin ?GetDefName@CThing@@QBE?AVCDefString@@XZ)
     const C3DVector& GetPos() const;                // 0x004C73D0
 };
 class CThingPlayerCreature : public CThing { };
@@ -196,7 +196,11 @@ bool CQuestManager::ActivateTestQuestCard(const CCharString& questName, const CC
                             card->SetAsGameStatePersisted(true);
                             World->GuildSealRecallPos = C3DVector(0.0f, 0.0f, 0.0f);
                             World->GuildSealRecallAngleXY = 0.0f;
-                            RemoveAvailableQuestCardType(card->GetDefName());
+                            {
+                                // the def name is a named local (as the sibling ActivateQuestCard 0x004B4AA0)
+                                CCharString defName = card->GetDefName().GetString();
+                                RemoveAvailableQuestCardType(defName);
+                            }
                             CTBaseSingletonNoDefaultAlloc<CPlayerGui>::Get().UpdateMiniMapMarkers(false);
                             if (--def->RefCount == 0)
                                 def->DeleteThis();

@@ -7,7 +7,10 @@
 // `__stdcall` function with one argument (`ret 4`). Shape: each push_back's temporary is homed in the dead argument slot
 // (`mov [ebp+8],imm ; lea eax,[ebp+8]`), the vector pointer stays in esi. The sibling @ 0x0064D593 writes a different order; the
 // manifest label "CDrawAbilityButtons::GetAbilityButtonMapping" names the family (two PC/pad mappings).
-struct CRetailLongVector {                         // VC6 Dinkumware vector<long>: first, last, end
+namespace std {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector;
+template <> class vector<long, allocator<long> > { public:   // STLport vector<long> (12 bytes)
     long* m_pFirst;
     long* m_pLast;
     long* m_pEnd;
@@ -15,8 +18,9 @@ struct CRetailLongVector {                         // VC6 Dinkumware vector<long
     void push_back(const long& value);             // 0x00485FF3
     void clear() { erase(m_pFirst, m_pLast); }
 };
+}
 
-void __stdcall GetAbilityButtonMapping_0064d5e1(CRetailLongVector& mapping)
+void __stdcall GetAbilityButtonMapping_0064d5e1(std::vector<long>& mapping)
 {
     mapping.clear();
     mapping.push_back(3);

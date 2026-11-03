@@ -223,8 +223,8 @@ void CTCShop::OnSerialise(CPersistContext& context,bool in_game)
                 current_stock_item_defs_max_stock.push_back(it->second.MaxStock);
             }
             context.TransferVector("StockItemDefsKeys",current_stock_item_defs_keys);
-            context.Transfer("StockItemDefsQuantity",current_stock_item_defs_quantity);
-            context.Transfer("StockItemDefsMaxStock",current_stock_item_defs_max_stock);
+            context.TransferVector("StockItemDefsQuantity",current_stock_item_defs_quantity);
+            context.TransferVector("StockItemDefsMaxStock",current_stock_item_defs_max_stock);
             context.Transfer("DayLastChecked",DayLastChecked,0L);
             context.Transfer("GoldDonated",GoldDonated,0L);
             context.Transfer("SpecialItem",SpecialItem,-1L);
@@ -235,8 +235,8 @@ void CTCShop::OnSerialise(CPersistContext& context,bool in_game)
         std::vector<float> current_stock_item_defs_quantity;
         std::vector<float> current_stock_item_defs_max_stock;
         context.TransferVector("StockItemDefsKeys",current_stock_item_defs_keys);
-        context.Transfer("StockItemDefsQuantity",current_stock_item_defs_quantity);
-        context.Transfer("StockItemDefsMaxStock",current_stock_item_defs_max_stock);
+        context.TransferVector("StockItemDefsQuantity",current_stock_item_defs_quantity);
+        context.TransferVector("StockItemDefsMaxStock",current_stock_item_defs_max_stock);
         context.Transfer("DayLastChecked",DayLastChecked,0L);
         context.Transfer("GoldDonated",GoldDonated,0L);
         context.Transfer("SpecialItem",SpecialItem,-1L);

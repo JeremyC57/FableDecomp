@@ -24,7 +24,7 @@ struct CPackedUIntArray {                   // Ego_r.pdb 16 bytes
     unsigned long  Size;                    // +0x04
     unsigned char  Bits;                    // +0x08
     unsigned long  Bias;                    // +0x0C
-    unsigned long operator[](unsigned long index);   // 0x00A629F0
+    unsigned long operator[](unsigned long index) const;   // 0x00A629F0 (Ego_r / FableWin ??ACPackedUIntArray@@QBEKK@Z)
 };
 struct CRuntimeDataArray {                  // CArray<CBankFile::CRuntimeData>: first / last / end
     CRuntimeData* First;

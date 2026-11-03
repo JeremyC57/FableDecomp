@@ -65,7 +65,7 @@ struct CCursorPos {
 };
 
 class CParsedItem;
-typedef void (*TStringParserErrorCallback)(CCharString* message);
+typedef void (__fastcall* TStringParserErrorCallback)(const CCharString&);
 
 class CStringParser : public CBase {               // vtable 0x0122D874
 public:
@@ -77,7 +77,7 @@ public:
     TStringParserErrorCallback ErrorCallback;      // where parse errors go
     CCursorPos                 CursorPos;          // current position
     // The real initialiser: parses from a raw buffer the caller keeps alive.
-    void Init(char* text, TStringParserErrorCallback errorCallback, const CCharString& filename, long baseLineOffset);   // 0x009B9530
+    void Init(const char* text, TStringParserErrorCallback errorCallback, const CCharString& filename, long baseLineOffset);   // 0x009B9530
     void Init(const CCharString& text, TStringParserErrorCallback errorCallback, const CCharString& filename, long baseLineOffset);
 };
 

@@ -78,9 +78,9 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     // implicit destructor; out-of-line copy 0x007E74D0
     bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
-    CScriptThing GetScriptThing() const;                // 0x007E7490
-    void Speak(const CScriptThing& listener, const char* text, ETextGroupSelectionMethod method, bool a, bool b, bool c);   // 0x007E7390
-    bool IsPerformingScriptTask() const;                // 0x007E7450
+    virtual CScriptThing GetScriptThing() const;        // 0x007E7490 (Ego_r / FableWin UBE: virtual, called directly on the local)
+    virtual void Speak(const CScriptThing& listener, const char* text, ETextGroupSelectionMethod method, bool a, bool b, bool c);   // 0x007E7390 (Ego_r / FableWin UAE)
+    virtual bool IsPerformingScriptTask() const;        // 0x007E7450 (Ego_r / FableWin UBE)
 };
 struct CMovieImpPointer {
     void* Data;

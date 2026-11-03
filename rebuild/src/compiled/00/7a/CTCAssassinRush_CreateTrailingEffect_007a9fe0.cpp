@@ -142,7 +142,8 @@ inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
     }
     return false;
 }
-class CTCInventoryAbilities { public: long GetAbilityMaximumLevel(long ability); };   // 0x005EDEA3 (interface 0x6F)
+enum EHeroAbility { };
+class CTCInventoryAbilities { public: long GetAbilityMaximumLevel(EHeroAbility ability) const; };   // 0x005EDEA3 (interface 0x6F)
 class CTCDParticleEmitter {
 public:
     static CThing* __fastcall Create(long a0, C3DVector const&a1, bool a2);   // 0x006E0880 (Ego_r.pdb ?Create@CTCDParticleEmitter@@SIPAVCThing@@JABVC3DVector@@_N@Z)
@@ -195,7 +196,7 @@ void CTCAssassinRush::CreateTrailingEffect()
             const CThing* constParent = parent;
             CTCInventoryAbilities* abilities;
             if (constParent->GetInterface(&abilities, 0x6f)) {
-                long maxLevel = abilities->GetAbilityMaximumLevel(13);
+                long maxLevel = abilities->GetAbilityMaximumLevel((EHeroAbility)13);
                 scale = (float)SpellLevel / maxLevel;
             }
             AssassinTrail = CIntelligentPointer<CThing>(CreateScaledEffect(lowEffect, startEffect, scale, ParentThing->GetPos(), false));

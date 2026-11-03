@@ -26,7 +26,7 @@ public:
 CCharString __fastcall operator+(const char* a, const CCharString& b);    // 0x0099F690
 CCharString __fastcall operator+(const CCharString& a, const char* b);    // 0x0099F600
 
-typedef void (*TStringParserErrorCallback)(const char*);
+typedef void (__fastcall* TStringParserErrorCallback)(const CCharString&);
 class CStringParser {
 public:
     void* __vftable;                                   // +0x00
@@ -56,9 +56,9 @@ public:
 
 class CPersistContext { public:
     unsigned char _body[0x2c];
-    void Init(CCharString& data, CDefinitionManager* defs);                                                       // 0x009BAA10
-    void Init(CStringParser* parser, TStringParserErrorCallback callback, bool loading, CDefinitionManager* defs,
-              CSymbolMap* symbols = 0, CCharString* name = 0);                                             // 0x009BA9D0
+    void Init(CCharString& data, const CDefinitionManager* defs);                                                       // 0x009BAA10
+    void Init(CStringParser& parser, TStringParserErrorCallback callback, bool loading, const CDefinitionManager* defs,
+              const CSymbolMap* symbols = 0, CCharString* name = 0);                                             // 0x009BA9D0
 };
 
 class CTCBase {
@@ -87,7 +87,7 @@ bool CTCBase::BeginSerialising(bool saving, CCharString& data, CStringParser& pa
         if (parser.SkipPastWholeString(startTag)) {
             CCharString body = parser.ReadAsStringUntilString(endTag);
             parser.Init(body);
-            context.Init(&parser, 0, true, &CGameDefinitionManager::Get());
+            context.Init(parser, 0, true, &CGameDefinitionManager::Get());
             return true;
         }
         return false;

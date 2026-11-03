@@ -37,21 +37,22 @@ class CStringParser : public CBaseClass { public:                // retail 0x28 
     long                     CursorPos[3];         // +0x1c CCursorPos
     CStringParser(const CCharString& text, void (__fastcall* errorCallback)(const CCharString&), const CCharString& filename,
                   long baseLineOffset);            // 0x00404720
-    CCharString ReadAsStringUntilString_009ba3e0(const CCharString& terminator);            // 0x009BA3E0
-    CCharString ReadAsStringUntilStringInclusive(const CCharString& terminator);   // 0x009BA330
+    CCharString ReadAsStringUntilPastString(const CCharString& terminator);       // 0x009BA3E0 (Ego_r / FableWin)
+    CCharString ReadAsStringUntilString(const CCharString& terminator);           // 0x009BA330 (Ego_r / FableWin)
     long SkipWhitespace();                         // 0x009B9C60
 };
 class CDefinitionManager;
 class CSymbolMap;
 class CPersistContext { public:                           // retail 0x2c bytes, trivial destructor
     unsigned char _pad00[0x2c];
-    CPersistContext(CStringParser* parser, void (*errorCallback)(CCharString*), bool reportErrors,
-                    CDefinitionManager* definitions, CSymbolMap* symbols, CCharString* sourceText);   // 0x009BADD0
+    CPersistContext(CStringParser& parser, void (__fastcall* errorCallback)(const CCharString&), bool reportErrors,
+                    const CDefinitionManager* definitions, const CSymbolMap* symbols, CCharString* sourceText);   // 0x009BADD0
 };
 class CThing;
 class CThingManager {
+private:
+    CThing* LoadSingleThing(CPersistContext& context, long mode);   // 0x0051FD80 (Ego_r / FableWin: private, AAE)
 public:
-    CThing* LoadSingleThing(CPersistContext& context, long mode);   // 0x0051FD80
     void LoadHeroStateScript(CStringParser& parser);
 };
 
@@ -61,10 +62,10 @@ extern const char g_emptyString_0122d70e[];       // 0x0122D70E ("")
 
 void CThingManager::LoadHeroStateScript(CStringParser& parser)
 {
-    parser.ReadAsStringUntilString_009ba3e0(g_strNewThing);
-    CCharString heroState = parser.ReadAsStringUntilStringInclusive(g_strEndThingLevel);
+    parser.ReadAsStringUntilPastString(g_strNewThing);
+    CCharString heroState = parser.ReadAsStringUntilString(g_strEndThingLevel);
     CStringParser heroParser(heroState, 0, CCharString(g_emptyString_0122d70e, -1), 0);
     heroParser.SkipWhitespace();
-    CPersistContext context(&heroParser, 0, true, 0, 0, 0);
+    CPersistContext context(heroParser, 0, true, 0, 0, 0);
     LoadSingleThing(context, 1);
 }

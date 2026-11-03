@@ -26,16 +26,16 @@ template <class T> class CDefPointer { public:
     ~CDefPointer() { if (Object) { if (--Object->RefCount == 0) Object->Destroy(); } }
 };
 class CDefinitionManager { public:
-    template <class T> bool GetDef(long globalIndex, CDefPointer<T>* out);   // 0x0042AEDA
+    template <class T> bool GetDef(long globalIndex, CDefPointer<const T>* out) const;   // 0x0042AEDA (Ego_r / FableWin ??$GetDef@VCUIDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIDef@NUISystem@@@@@Z)
 };
 void* Lookup_CDefinitionManager_GetDef(const void* manager, long index);   // stand-in callee
 #pragma auto_inline(off)
-template <class T> __declspec(noinline) bool CDefinitionManager::GetDef(long globalIndex, CDefPointer<T>* out)
+template <class T> __declspec(noinline) bool CDefinitionManager::GetDef(long globalIndex, CDefPointer<const T>* out) const
 {
     void* found = Lookup_CDefinitionManager_GetDef(this, globalIndex);
     if (!found)
         return false;
-    out->Object = (T*)found;
+    out->Object = (const T*)found;
     return true;
 }
 #pragma auto_inline(on)

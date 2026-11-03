@@ -50,7 +50,7 @@ class CThing { public:
     }
     void SetInLimbo(bool inLimbo);                       // 0x004C8CF0
     void SetAsGameStatePersisted(bool persisted);        // 0x004C7880
-    CDefString GetDefName();                             // 0x004C7CC0
+    CDefString GetDefName() const;                       // 0x004C7CC0 (Ego_r / FableWin ?GetDefName@CThing@@QBE?AVCDefString@@XZ)
 };
 
 class CQuestCardDef { public:

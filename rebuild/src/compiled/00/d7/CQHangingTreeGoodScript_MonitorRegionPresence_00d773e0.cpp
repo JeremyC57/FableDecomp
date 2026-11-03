@@ -51,14 +51,19 @@ class CCharString { public:
     }
 };
 inline void* operator new(unsigned int, void* p) { return p; }
-struct __false_type { __false_type() { } };
-struct CCharStringVector {                      // std::vector<CCharString> (12 bytes in retail)
+namespace std { struct __false_type { __false_type() { } }; }
+namespace std {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc> class vector;
+template <> class vector<CCharString, allocator<CCharString> > { public:   // STLport vector<CCharString> (12 bytes)
     CCharString* _M_start;
     CCharString* _M_finish;
     CCharString* _M_end_of_storage;
     unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
     CCharString& operator[](unsigned int n) { return _M_start[n]; }
-    template <class Tag> void _M_insert_overflow(CCharString* pos, const CCharString& x, const Tag&, unsigned int fill_len, bool atend);   // 0x00433530
+protected:
+    void _M_insert_overflow(CCharString* pos, const CCharString& x, const __false_type&, unsigned int fill_len, bool atend);   // 0x00433530
+public:
     void push_back(const CCharString& x)
     {
         if (_M_finish != _M_end_of_storage) {
@@ -68,10 +73,11 @@ struct CCharStringVector {                      // std::vector<CCharString> (12 
             _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
     }
 };
+}
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);             // 0x00BFEA14
 // Same-TU body of vector<CCharString>::_M_insert_overflow 0x00433530 (tag unused).
-template <class Tag> __declspec(noinline) void CCharStringVector::_M_insert_overflow(CCharString* pos, const CCharString& x, const Tag&,
+__declspec(noinline) void std::vector<CCharString, std::allocator<CCharString> >::_M_insert_overflow(CCharString* pos, const CCharString& x, const std::__false_type&,
                                                                                     unsigned int fill_len, bool atend)
 {
     unsigned int oldSize = size();
@@ -130,7 +136,7 @@ class CQ_HangingTreeGoodScript : public CScriptBase { public:
     CCharString CurrentLevel;                               // +0x98
     CCharString ReasonForFailing;                           // +0x9c
     unsigned char _pada0[0xc4 - 0xa0];
-    CCharStringVector AreasSpawnedIn;                       // +0xc4
+    std::vector<CCharString, std::allocator<CCharString> > AreasSpawnedIn;                       // +0xc4
     void MonitorRegionPresence();
 };
 void CQ_HangingTreeGoodScript::MonitorRegionPresence()

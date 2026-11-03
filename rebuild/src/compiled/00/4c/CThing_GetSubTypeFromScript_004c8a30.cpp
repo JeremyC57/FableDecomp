@@ -72,7 +72,7 @@ struct CCursorPos {
     unsigned long StringPos;                           // +0x4
     unsigned long Line;                                // +0x8
 };
-typedef void (*TStringParserErrorCallback)(const char*);
+typedef void (__fastcall* TStringParserErrorCallback)(const CCharString&);
 class CStringParser : public CBaseClass {              // vtable 0x0122D874, retail 0x28 bytes
 public:
     char*                      String;                 // +0x04

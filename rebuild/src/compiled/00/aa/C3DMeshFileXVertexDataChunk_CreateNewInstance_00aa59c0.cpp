@@ -56,7 +56,9 @@ class CDataInputStream { public:
 // CChunkedFileChunk (0x10: vptr, ChunkType[5], Parent) is the base of the X* chunks.
 class CChunkedFileChunk { public:
     virtual void v0();
-    CChunkedFileChunk(const char* chunkType);           // 0x00AA7590
+    protected:
+    CChunkedFileChunk(const char* chunkType);           // 0x00AA7590 (Ego_r / FableWin: protected ??0...@@IAE@PBD@Z)
+    public:
     unsigned char _base_body[0x0c];                     // ChunkType[5] + pad + Parent  (sizeof == 0x10)
 };
 

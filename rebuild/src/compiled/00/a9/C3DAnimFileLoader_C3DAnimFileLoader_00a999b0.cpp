@@ -104,7 +104,9 @@ class CChunkedFileSuperChunk : public CChunkedFileChunk { public:   // 0x2c
     CArray<CCountedPointer<CChunkedFileChunk> > SubChunks;               // +0x10
     CArray<CCountedPointer<CChunkedFileChunk> > RegisteredSubChunkTypes; // +0x1c
     unsigned long CurrentChunkIndex;                                      // +0x28
-    CChunkedFileSuperChunk(const char* type);                             // 0x00AA8360
+    protected:
+    CChunkedFileSuperChunk(const char* type);                             // 0x00AA8360 (Ego_r / FableWin: protected ??0...@@IAE@PBD@Z)
+    public:
     virtual ~CChunkedFileSuperChunk();                                    // 0x00AA8490
 };
 class CMatrix3x4 { public: float m[12]; };

@@ -13,16 +13,20 @@ class CCharString { public:
 
 CCharString* __fastcall find(CCharString* first, CCharString* last, const CCharString& value);   // 0x004B9E20
 
-struct SCharStringVector {
+namespace std {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc> class vector;
+template <> class vector<CCharString, allocator<CCharString> > { public:   // STLport vector<CCharString> (12 bytes)
     CCharString* _M_start;
     CCharString* _M_finish;
     CCharString* _M_end_of_storage;
     void push_back(const CCharString& value);      // 0x0044BFF0
 };
+}
 
 class CTCInventoryExperience { public:
     unsigned char _pad_000[0x248];
-    SCharStringVector TutorialsPlayed;             // +0x248
+    std::vector<CCharString, std::allocator<CCharString> > TutorialsPlayed;             // +0x248
     unsigned char IsTutorialPlayed(const CCharString& name);
 };
 

@@ -35,18 +35,22 @@ __declspec(noinline) CCharString* __fastcall FindString_004b8e40(CCharString* fi
 }
 #pragma auto_inline(on)
 
-struct CCharStringVector {                         // retail vector<CCharString>: three words
+namespace std {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc> class vector;
+template <> class vector<CCharString, allocator<CCharString> > { public:   // STLport vector<CCharString> (12 bytes)
     CCharString* m_pFirst;
     CCharString* m_pLast;
     CCharString* m_pEnd;
     void         push_back(const CCharString& value);   // 0x0044BFF0
     CCharString* erase(CCharString* where);             // 0x004B8770
 };
+}
 void* FindRef_CCharStringVector_push_back_1();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it only writes a word through the reference parameter inline, so
 // VC7.1 knows the caller's address-taken local does not escape the call.
 #pragma auto_inline(off)
-__declspec(noinline) void CCharStringVector::push_back(const CCharString& value)
+__declspec(noinline) void std::vector<CCharString, std::allocator<CCharString> >::push_back(const CCharString& value)
 {
     void* p = FindRef_CCharStringVector_push_back_1();
     if (!p)
@@ -59,7 +63,7 @@ void* FindRef_CCharStringVector_erase_0();   // stand-in callee of the stand-in 
 // Stand-in body (the real one is out of line in retail): it only writes a word through the reference parameter inline, so
 // VC7.1 knows the caller's address-taken local does not escape the call.
 #pragma auto_inline(off)
-__declspec(noinline) CCharString* CCharStringVector::erase(CCharString* where)
+__declspec(noinline) CCharString* std::vector<CCharString, std::allocator<CCharString> >::erase(CCharString* where)
 {
     void* p = FindRef_CCharStringVector_erase_0();
     if (!p)
@@ -71,14 +75,14 @@ __declspec(noinline) CCharString* CCharStringVector::erase(CCharString* where)
 
 class CQuestManager { public:
     unsigned char     _pad_0x00[0x40];
-    CCharStringVector CreatureGenerationDisabledQuests;   // +0x40
+    std::vector<CCharString, std::allocator<CCharString> > CreatureGenerationDisabledQuests;   // +0x40
     void SetCreatureGenerationEnabledDuringScript(const CCharString& script, bool enabled);
 };
 
 void CQuestManager::SetCreatureGenerationEnabledDuringScript(const CCharString& script, bool enabled)
 {
     CCharString* last = CreatureGenerationDisabledQuests.m_pLast;
-    CCharStringVector* quests = &CreatureGenerationDisabledQuests;
+    std::vector<CCharString, std::allocator<CCharString> >* quests = &CreatureGenerationDisabledQuests;
     CCharString* it = FindString_004b8e40(quests->m_pFirst, last, script, SRandomAccessIteratorTag());
     if (it == last) {
         if (!enabled)

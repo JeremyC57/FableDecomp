@@ -13,12 +13,16 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CCharStringVector {                              // STLport vector<CCharString> (12 bytes in retail)
+namespace std {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc> class vector;
+template <> class vector<CCharString, allocator<CCharString> > { public:   // STLport vector<CCharString> (12 bytes)
     CCharString* _M_start;
     CCharString* _M_finish;
     CCharString* _M_end_of_storage;
     void push_back(const CCharString& x);               // 0x0044BFF0
 };
+}
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
@@ -29,7 +33,7 @@ class CV_TalentlessBardScript { public:
     CGameScriptInterface* Game;                         // +0x40
     void* Data;                                         // +0x44
     unsigned char _flags48[0x20];                       // +0x48 .. stBard, BardWanderTime
-    CCharStringVector SongItems;                        // +0x68
+    std::vector<CCharString, std::allocator<CCharString> > SongItems;                        // +0x68
     void ProcessSongsRenown();
 };
 void CV_TalentlessBardScript::ProcessSongsRenown()

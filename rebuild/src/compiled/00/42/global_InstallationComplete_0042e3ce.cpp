@@ -24,16 +24,16 @@ public:
     T*    Data;                                          // +0x00
     void* Info;                                          // +0x04
 };
-class CFileInstallerSingleton {
+template <class T> class CTBaseSingleton {
 public:
-    static CFileInstaller& __fastcall Get();             // 0x00404440
+    static T& __fastcall Get();                          // 0x00404440 for CFileInstaller (Ego_r / FableWin ?Get@?$CTBaseSingleton@VCFileInstaller@@@@SIAAVCFileInstaller@@XZ)
     static bool Exists() { return Instance.Data != 0; }
-    static CCountedPointer<CFileInstaller> Instance;     // 0x013CA818
+    static CCountedPointer<T> Instance;                  // 0x013CA818 (spelt as the landed 0x0098E320 / 0x00404440)
 };
 
 int __fastcall InstallationComplete()
 {
-    if (CFileInstallerSingleton::Exists() && !CFileInstallerSingleton::Get().IsComplete())
+    if (CTBaseSingleton<CFileInstaller>::Exists() && !CTBaseSingleton<CFileInstaller>::Get().IsComplete())
         return 0;
     return 1;
 }

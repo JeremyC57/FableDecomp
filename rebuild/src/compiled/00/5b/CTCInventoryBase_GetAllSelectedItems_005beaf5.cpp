@@ -14,7 +14,10 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 
-struct CLongVector {                                 // std::vector<long>
+namespace std {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector;
+template <> class vector<long, allocator<long> > { public:   // STLport vector<long> (12 bytes)
     long* _M_start;
     long* _M_finish;
     long* _M_end_of_storage;
@@ -24,6 +27,7 @@ struct CLongVector {                                 // std::vector<long>
     void clear() { erase(begin(), end()); }
     void push_back(const long& value);               // 0x00485FF3
 };
+}
 
 namespace NInventory {
 
@@ -47,10 +51,10 @@ class CTCInventoryBase { public:
     unsigned char _pad_0x08[0x18];
     CRetailVector<CCategory> Categories;             // +0x20
 
-    void GetAllSelectedItems(CLongVector& items) const;
+    void GetAllSelectedItems(std::vector<long>& items) const;
 };
 
-void CTCInventoryBase::GetAllSelectedItems(CLongVector& items) const
+void CTCInventoryBase::GetAllSelectedItems(std::vector<long>& items) const
 {
     items.clear();
     for (unsigned long i = 0; i < Categories.size(); ++i)

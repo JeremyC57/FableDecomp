@@ -1,0 +1,98 @@
+4023	c712	00a23ad0	NOGOOD	?FrameEnd@CMeshDataBank@@QAEXXZ	?Release@CResourcePool_00a23ad0@@QAEXXZ
+4046	c714	00686d20	PARTIAL	?PeekWorldMap@CTCBase@@IBEABVCWorldMap@@XZ	?ComputeFlushGround@CTCPhysicsStandard_Methods@@QAEPAUCFlushGroundHelper@@PAUCPh | ?GetRegionManager@CTCTeleporter@@QAEPAUCRegionManager@@XZ | ?GetWorld@CTCBase@@QAEPAVCWorld@@XZ
+4047	c714	004c73d0	PARTIAL	?GetPos@CThing@@QBEABVC3DVector@@XZ	?GetB@A@@QAEPAUB@@XZ | ?GetPosition@CThing@NCondition00935160@@QBEABUC3DVector@2@XZ | ?GetPosition@CThingAICreatureView@@QAEPAVC3DVector@@XZ | ?GetPosition@CThingCreatureBase@NDust008f7950@@QBEABUC3DVector@2@XZ
+4195	cx11	004046b0	PARTIAL	??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundar	??1?$list@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBou
+4213	cx11	00568850	DONE	?push_back@?$vector@MV?$allocator@M@std@@@std@@QAEXABM@Z	
+4214	cx11	009bab50	PARTIAL	?WriteString@CPersistContext@@QAEXABVCCharString@@@Z	?Transfer_009bab50@CPersistContext@@QAEXAAVCCharString@@@Z | ?WriteText@CPersistContext@@QAEXABVCCharString@@@Z
+4223	cx11	0143e8e0	PARTIAL	?NullCoord@CScriptThing@@1VC3DVector@@A	?g_ZeroPos@@3VC3DVector@@B | ?g_ZeroVector@@3VC3DVector@@A | ?g_ZeroVector@@3VC3DVector@@B | ?g_def_004aa980@@3HA
+4255	cx11c	005bfd5e	PARTIAL	?OnSerialise@CTCInventoryBase@NInventory@@MAEXAAVCPersistContext@@_N@Z	?BaseOnSerialise@CTCInventoryWeapons@@QAEXAAVCPersistContext@@J@Z | ?OnSerialise@CTCInventoryBase_Retail@@QAEXAAVCPersistContext@@_N@Z | ?OnSerialise@CTCInventoryBase_Retail@@QAEXPAVCPersistContext@@_N@Z
+4261	cx11c	006cb6b0	PARTIAL	?InterruptNavigation@CTCCreatureNavigation@@QAEXXZ	?OnStateGroupRemoved@CTCBase@@QAEXXZ | ?OnStateGroupRemoved@CTCBaseAny@@QAEXXZ | ?Reset@CTCType7@@QAEXXZ | ?Reset@CTCWalk@@QAEXXZ
+4270	cx11c	00772250	PARTIAL	?FindDefaultStockItem@CTCShop@@QBEPBVCShopItem@@J@Z	?FableAtexit_reg_007723d0@@YGHP6AXXZ@Z
+4271	cx11c	00778280	PARTIAL	??A?$map@JVCShopItem@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJVCShopItem@@@std@@@3@@std@@	??ACStockMap@@QAEAAVCShopItem@@ABJ@Z
+4278	cx11p	00449970	PARTIAL	?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ	?GetMainPlayer@CPlayerManager@@QAEPAVCPlayer@@XZ | ?GetPlayer@CPlayerManager@NCreatureMode@@QAEPAVCPlayer@@XZ | @FableHeroResolve_88df80@4 | @GSI_GetWorld@4
+4280	cx11p	0099be70	PARTIAL	??H@YI?AVCWideString@@ABV0@0@Z	?AddWide_0099be70@@YI?AUCWS@@PAUCWSraw@@0@Z
+4282	cx11m	00449970	PARTIAL	?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ	?GetMainPlayer@CPlayerManager@@QAEPAVCPlayer@@XZ | ?GetPlayer@CPlayerManager@NCreatureMode@@QAEPAVCPlayer@@XZ | @FableHeroResolve_88df80@4 | @GSI_GetWorld@4
+4283	cx11m	00487dc0	PARTIAL	?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	?GetHeroThing@CPlayerView@@QAEPAVCThing@@XZ
+4285	cx11m	0099b510	PARTIAL	??1CWideString@@QAE@XZ	??1CWideString@AFileSupport@@QAE@XZ | ??1CWideString@ExternalRetry_00999620@@QAE@XZ | ??1CWideString@N006bebf0@@QAE@XZ | ??1CWideString@N009ac5d0@@QAE@XZ
+4286	cx11m	0099b6b0	PARTIAL	??0CWideString@@QAE@PBG@Z	??0CWideString@@QAE@PB_W@Z | ??0CWideString@ExternalRetry_00999620@@QAE@PBG@Z | ??0CWideString@NGameText@@QAE@PBG@Z | ?N@S@@QAEXPBD@Z
+4289	cx11m	009a4ec0	PARTIAL	?GFGetSystemManager@@YIPAVCSystemManager@@XZ	?AddChildPrimitive@@YIPAUFableEngineRoot@@XZ | ?GFGetSystemManager@@YIPAUCSystemManagerNative@@XZ | ?GFGetSystemManager@NUISystem@@YIPAUCSystemManager@1@XZ | ?ResolveMousePrimitiveHierarchy@@YAPAUCMousePrimitiveHierarchy@@XZ
+4295	cx11m	009e1bc0	PARTIAL	?GFGetTime@@YINXZ	?Frontend_GetInterpTime_0042dbfa@@YAMXZ | ?GFGetTime@NUISystem@@YINXZ | ?GetFrontendInputTime_00494380@@YANXZ | ?ReadCurrentGameTime@@YINPAVCMainGameComponent@@@Z
+4313	cx11m	0040d2a0	PARTIAL	?Get@CUserProfileManager@@SIAAV1@XZ	?GFGetSaveGameDirectoryName@@YG?AVCWideString@@XZ | ?Get@?$CTBaseSingleton@VCUserProfileManager@@@@SIAAVCUserProfileManager@@XZ | ?Get@CUserProfileManager@@SAPAV1@XZ | ?GetSoundSystem@@YGPAUCSoundSys@@H@Z
+4318	cx12	00402510	DONE	?GFMain@@YIJPAUHINSTANCE__@@PADH@Z	
+4319	cx12	00404440	DONE	?Get@?$CTBaseSingleton@VCFileInstaller@@@@SIAAVCFileInstaller@@XZ	
+4320	cx12	0040d400	DONE	?SetProfileName@CUserProfileManager@@QAEXABVCWideString@@_N@Z	
+4321	cx12	004107c0	DONE	??$Transfer@_N@CPersistContext@@QAEXPBDAA_N@Z	
+4322	cx12	00411010	DONE	??$Transfer@VCCharString@@@CPersistContext@@QAEXPBDAAVCCharString@@@Z	
+4323	cx12	00415260	DONE	?GetTextBankName@NLocalisation@@YI?AVCCharString@@XZ	
+4324	cx12	0041a430	DONE	?GetMyDocumentsDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	
+4325	cx12	0041a4c0	DONE	?GetUserDataDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	
+4326	cx12	0041b800	DONE	??0CSprite@NUISystem@@QAE@J@Z	
+4327	cx12	0042aeda	DONE	??$GetDef@VCUIDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIDef@NUISy	
+4328	cx12	0044bff0	DONE	?push_back@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXABVCCharStrin	
+4329	cx12	00485ff3	DONE	?push_back@?$vector@JV?$allocator@J@std@@@std@@QAEXABJ@Z	
+4330	cx12	004afa60	DONE	?OnActivateEntity@CQuestManager@@QAEXAAVCThing@@@Z	
+4331	cx12	004c8cf0	DONE	?SetInLimbo@CThing@@QAEX_N@Z	
+4332	cx12	0050ee40	DONE	??0CFileLargeThemePalette@@QAE@XZ	
+4333	cx12	0051a240	DONE	?ReadFromFile@?$CReplaceSerialise@VCFileFormatLevel@@VCOldFileFormatLevel3@@@@QAEXAAVCAFil	
+4334	cx12	00528760	PARTIAL	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBV	?GetDef@CGameDefinitionManager@NFactory007f1b70@@QAEXABUCCharString@2@AAPAUCThin
+4335	cx12	0052cc50	PARTIAL	??0CChangingStateComponent@NUISystem@@QAE@J@Z	?InitializeChangingStateComponent@EditBoxBaseNative@@QAEXJ@Z
+4336	cx12	0054ea00	DONE	??0CViewport@NUISystem@@QAE@J@Z	
+4337	cx12	00555180	DONE	??0CScrollableList@NUISystem@@QAE@J@Z	
+4338	cx12	0055a9c0	DONE	??0CDraggable@NUISystem@@QAE@J@Z	
+4339	cx12	0055b460	DONE	??0CClickable@NUISystem@@QAE@J@Z	
+4340	cx12	0055ba20	DONE	??0CHoverable@NUISystem@@QAE@J@Z	
+4341	cx12	00569fe0	DONE	??$TransferVector@M@CPersistContext@@QAEXPBDAAV?$vector@MV?$allocator@M@std@@@std@@@Z	
+4342	cx12	0057a5dd	DONE	??0MirroredCriminalStatus@CTCHeroStats@@QAE@XZ	
+4343	cx12	005815d6	DONE	??$TransferVector@J@CPersistContext@@QAEXPBDAAV?$vector@JV?$allocator@J@std@@@std@@@Z	
+4344	cx12	00694ef0	DONE	?DeleteData@?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@SIXPAX@Z	
+4345	cx12	007e7490	DONE	?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ	
+4346	cx12	008abd10	PARTIAL	??4CScriptGameResourceObjectScriptedThingBase@@QAEAAV0@ABV0@@Z	?destroy@Pair@@QAEXPAUAlloc@@@Z
+4347	cx12	00994430	DONE	??1CFileDataOutputStream@@UAE@XZ	
+4348	cx12	0099cf10	DONE	??0CSystemRegistry@@QAE@ABVCWideString@@J@Z	
+4349	cx12	0099cf70	DONE	??1CSystemRegistry@@QAE@XZ	
+4350	cx12	0099d100	DONE	?WriteBOOL@CSystemRegistry@@QBEXABVCWideString@@H@Z	
+4351	cx12	0099e4c0	DONE	??BCCharString@@QBEPBDXZ	
+4352	cx12	0099f2e0	PARTIAL	?LoadFromFile@CCharString@@QAEXAAVCAFile@@PAVCASuspendableProcess@@J@Z	?LoadFromFile@CCharString@@QAEXPAVCAFile@@PAVCASuspendableProcess@@J@Z
+4353	cx12	009b9530	DONE	?Init@CStringParser@@QAEXPBDP6IXABVCCharString@@@Z1J@Z	
+4354	cx12	009ba3e0	DONE	?ReadAsStringUntilPastString@CStringParser@@QAE?AVCCharString@@ABV2@@Z	
+4355	cx12	009ba6f0	DONE	?ReadAsString@CStringParser@@QAE?AVCCharString@@XZ	
+4356	cx12	009badd0	DONE	??0CPersistContext@@QAE@AAVCStringParser@@P6IXABVCCharString@@@Z_NPBVCDefinitionManager@@P	
+4357	cx12	009c9070	PARTIAL	?GetPTextEntry@CDataBank@NGameText@@QBE?AV?$CIVCountedPointer@$$CBVCTextEntry@NGameText@@@	?GetPGroupEntry@CTextBank@@QAE?AUCGroupEntryRef@@J_N@Z
+4358	cx12	009e9390	PARTIAL	?Close@CMemoryFile@@UAEXXZ	?Cleanup_5d72d0@@YIXPAX@Z | @SomeCleanup@4
+4359	cx12	009fd100	DONE	?SetReduceSizeFrameDelay@CGraphicDataBank@@QAEXK@Z	
+4360	cx12	00a629f0	DONE	??ACPackedUIntArray@@QBEKK@Z	
+4362	cx12	00aa7590	DONE	??0CChunkedFileChunk@@IAE@PBD@Z	
+4363	cx12	00aa8360	PARTIAL	??0CChunkedFileSuperChunk@@IAE@PBD@Z	??0NativeSuperChunk@@QAE@PBD@Z
+4364	cx12	00ac39c0	DONE	??_GC3DMeshPartitionBuilderElement@@QAEPAXI@Z	
+4366	cx12	00aef1f0	DONE	?DatabaseSerialise@CParticleEmitter@NParticleEngine@@QAEXAAVCPersistContext@@ABVCEmitterDa	
+4367	cx12	00b2d9f0	DONE	?UpdateDiskCache@CEngineSurfaceCompositionManager@@QAEXABV?$CArray@VCEngineTextureMorph@@@	
+4368	cx12	00cdbf70	NOGOOD	??0?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@	??0CCutsceneCastMap@@QAE@XZ | ?Construct@CCutsceneCastMap@@QAEXXZ
+4369	cx12	00defb10	DONE	?SwitchDoorsOnAndOff@CQ_SecretPassageScript@NScript@@QAEXXZ	
+4370	cx12	00e01900	DONE	?MakeTraderComment@CQ_TraderEscortScript@NScript@@QAE_NABVCCharString@@ABVCScriptThing@@W4	
+4371	cx12	00e5ebd0	DONE	?MakeHenchmanComment@CV_BodyGuardScript@NScript@@QAE_NABVCCharString@@JW4EHENCHMAN_COMMENT	
+4372	cx12	00e82f80	DONE	?GetQuestText@CV_FisticuffsClubScript@NScript@@QAE?AVCCharString@@V3@@Z	
+4381	cx12	004c7cc0	DONE	?GetDefName@CThing@@QBE?AVCDefString@@XZ	
+4382	cx12	00e82f80	DONE	?GetQuestText@CV_FisticuffsClubScript@NScript@@QAE?AVCCharString@@V3@@Z	
+4408	c718	009e9f20	DONE	?StopProgress@NProgressDisplay@@YIX_N0@Z	
+4410	c718	00487b80	DONE	?SetPlayerCharacter@CPlayer@@QAEXPAVCThingPlayerCreature@@@Z	
+4419	c718	00852d90	DONE	??0CScriptModuleTransitionBetweenPoints@NCameraModes@@QAE@ABVCThing@@ABVC3DVector@@1JM@Z	
+4420	c718	008524c0	DONE	??0CScriptModuleTransitionBetweenPoints@NCameraModes@@QAE@ABVC3DVector@@00JM@Z	
+4443	c719	009a4ec0	PARTIAL	?GFGetSystemManager@@YIPAVCSystemManager@@XZ	?AddChildPrimitive@@YIPAUFableEngineRoot@@XZ | ?GFGetSystemManager@@YIPAUCSystemManagerNative@@XZ | ?GFGetSystemManager@NUISystem@@YIPAUCSystemManager@1@XZ | ?ResolveMousePrimitiveHierarchy@@YAPAUCMousePrimitiveHierarchy@@XZ
+4452	c719	00411570	PARTIAL	?Compare@?$CBasicString@D@@KIJPBD0@Z	?Compare@?$CBasicString@D@ComboStrikes@@SIHPBD0@Z | ?Compare@?$CBasicString@D@StrikeEvents@@SIHPBD0@Z | ?Compare@@YIJPBD0@Z | ?Compare@CBasicStringChar@@SIJPBD0@Z
+4453	c719	004115a0	PARTIAL	??8?$CBasicString@D@@QBE_NPBD@Z	??8?$CBasicString@D@X_004fe630@@QBE_NPBD@Z | ?Equal@CBasicString@N006d41f0@@QBE_NPBD@Z | ?Equals@StringDataMethods@@QBE_NPBD@Z
+4457	c719	0099e4b0	PARTIAL	??0CCharString@@QAE@XZ	??0CCharString@N006d41f0@@QAE@XZ | ??0CCharStringFmt@@QAE@XZ | ??0CCharStringMember@@QAE@XZ | ??0CMember_0099e4b0@@QAE@XZ
+4458	c719	0099e900	PARTIAL	??9CCharString@@QBE_NABV0@@Z	?NotEqual@NativeStringValue@@QBE_NABVCCharString@@@Z
+4459	c719	0099ec30	PARTIAL	??0CCharString@@QAE@ABV0@@Z	??0CCharString@@QAE@PBD@Z | ??0CCharString@FableCons_007696a0@@QAE@ABV01@@Z | ??0CCharString@FableCons_00786d60@@QAE@ABV01@@Z | ??0CCharString@FableCons_009edfe0@@QAE@ABV01@@Z
+4460	c719	0099efb0	PARTIAL	??4CCharString@@QAEABV0@ABV0@@Z	??4CCharString@@QAEAAV0@ABV0@@Z | ??4CCharString@std@@QAEAAU01@ABU01@@Z | ??4SymbolString@@QAEAAU0@ABU0@@Z
+4461	c719	0099a2e0	PARTIAL	??1CBaseClass@@UAE@XZ	??1CBase@@UAE@XZ | ??1CBase@NParticleEngine@@QAE@XZ | ??1CBaseClass@ExternalRetry_00a90fc0@@UAE@XZ | ??1CBaseClass@ExternalRetry_00a91390@@UAE@XZ
+4470	c720	006a1060	NOGOOD	?IsCarryingThing@CTCCarrying@@QBE_NABVCThing@@@Z	?IsCarryingThing@CTCCarrying@@QAE_NPAVCThing@@@Z | ?IsCarryingThing@CTCCarrying@@QBE_NPAVCThing@@@Z
+4471	c720	006a1490	NOGOOD	?IsCarriedThingInPrimarySlot@CTCCarrying@@QBE_NABVCThing@@@Z	?IsCarriedThingInPrimarySlot@CTCCarrying@@QBE_NPAVCThing@@@Z
+4477	c720	004c8cf0	DONE	?SetInLimbo@CThing@@QAEX_N@Z	
+4478	c720	00703210	PARTIAL	?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z	?Create@@YIPAVCThing@@JPBVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z | ?Create@CThingObject@@SIPAV1@JPBVC3DVector@@JPAVCRightHandedSet@@KABVCCharString | ?Create@CThingObject@@SIPAV1@JPBVC3DVector@@JPAXKABVCCharString@@@Z | ?CreateObject@@YIPAVCThingObject@@JPAVC3DVector@@JPAMKABVCCharString@@@Z
+4487	c720	006d6520	PARTIAL	?GetTrainableStatLevel@CTCHeroExperience@@QBEJW4EHeroTrainableStatType@@@Z	?GetTrainableStatLevel@CTCHeroExperience@@QAEJJ@Z | ?GetTrainableStatLevel@CTCHeroExperience@@QBEKJ@Z
+4493	c720	004cc340	PARTIAL	??$IS_THING_ALIVE@V?$CIntelligentPointer@VCThing@@@@@@YI_NABV?$CIntelligentPointer@VCThing	??$IS_THING_ALIVE@UCBaseIntelligentPointer@@@@YI_NABUCBaseIntelligentPointer@@@Z | ?IS_THING_ALIVE@@YI_NABUCIntelligentPointer@@@Z | ?IS_THING_ALIVE@@YI_NABUCIntelligentPointerThing@@@Z | ?IS_THING_ALIVE@@YI_NABUCIntelligentPointer_CThing@@@Z
+4495	c720	006cb8e0	PARTIAL	?GetNearestNavigablePosTo@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@@Z	?FindNearestWalkablePos@CTCWalk@@QAE_NABVC3DVector@@MPAV2@@Z
+4510	w34	00661ea0	NOGOOD	(unproven: a bool flag setter, toggles bit 1 of byte +0x15D)	?SetAsGameStatePersisted@CTeleportThing@@QAEX_N@Z
+4511	w34	005cc300	NOGOOD	(unproven: a CPersistContext::Transfer instantiation other than Transfer<long>)	?Transfer@CPersistContext@@QAEXPBDPAJ@Z
+4512	w34	00569f20	DONE	??$TransferVector@W4EOnlineScoreboardActivity@CTCHeroOnlineScoreboard@@@CPersistContext@@Q	
+4513	w34	00569fe0	DONE	??$TransferVector@M@CPersistContext@@QAEXPBDAAV?$vector@MV?$allocator@M@std@@@std@@@Z	

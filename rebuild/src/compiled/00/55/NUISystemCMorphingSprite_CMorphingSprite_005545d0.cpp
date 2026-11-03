@@ -1,9 +1,9 @@
-// NUISystem::CMorphingSprite::CMorphingSprite(void* def) -- the CSprite base (0x0041B800 with the def), the three vtables of this class, RenderCount = 0, an empty Handles list and GraphicIndices map, then GetDataFromDef()
+// NUISystem::CMorphingSprite::CMorphingSprite(long def) -- the CSprite base (0x0041B800 with the def), the three vtables of this class, RenderCount = 0, an empty Handles list and GraphicIndices map, then GetDataFromDef()
 // Leaf: ??0CMorphingSprite
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005545D0, 137 bytes (`ret 4`, returns `this`).
 // Label: the catalog's "CMorphingSprite::Initialize" is the constructor (eax = this, three vtable stores
 // 0x0124A49C / 0x0124A474 / 0x0124A46C = NUISystem::CMorphingSprite in rtti-vtables.tsv).
-// Callees: CSprite::CSprite(void*) @ 0x0041B800, malloc @ 0x00BFEA0E (list node 0x0c, tree header 0x18; one `add esp,8`),
+// Callees: CSprite::CSprite(long) @ 0x0041B800, malloc @ 0x00BFEA0E (list node 0x0c, tree header 0x18; one `add esp,8`),
 // CMorphingSprite::GetDataFromDef @ 0x005542F0.
 // Layout: engine/CMorphingSprite.h (Ego_r.pdb, 0x1d8) has RenderCount +0x1b4, Handles +0x1b8, GraphicIndices +0x1c4;
 // retail CSprite is 0x30 bytes smaller and the STLport list is one word, so `this` is modelled locally:
@@ -18,10 +18,12 @@ struct CObserver {                                 // the secondary base at +4 (
     unsigned char _pad04[0x10];
 };
 struct ISecondaryB_005545d0 { virtual void b00(); };
+namespace NUISystem {
 struct CSprite : IPrimary_005545d0, CObserver, ISecondaryB_005545d0 {   // retail 0x184 bytes
     unsigned char _body[0x184 - 0x1c];
-    CSprite(void* def);                            // 0x0041B800
+    CSprite(long def);                             // 0x0041B800
 };
+}
 
 class CEnginePrimitiveHandle;
 struct SListNode {
@@ -75,11 +77,11 @@ class CMorphingSprite : public CSprite { public:                 // vtables 0x01
     virtual void v00();
     virtual void a00();
     virtual void b00();
-    CMorphingSprite(void* def);
+    CMorphingSprite(long def);
     void GetDataFromDef();                         // 0x005542F0
 };
 
-CMorphingSprite::CMorphingSprite(void* def)
+CMorphingSprite::CMorphingSprite(long def)
     : CSprite(def)
     , RenderCount(0)
 {

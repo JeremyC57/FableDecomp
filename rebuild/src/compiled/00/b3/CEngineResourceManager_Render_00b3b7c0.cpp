@@ -13,7 +13,7 @@ class CSystemManager { public:
 CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0
 
 class CGraphicDataBank { public:
-    void Reload(long flags);                       // 0x009FD100
+    void SetReduceSizeFrameDelay(unsigned long delay);   // 0x009FD100 (Ego_r / FableWin ?SetReduceSizeFrameDelay@CGraphicDataBank@@QAEXK@Z)
 };
 
 struct SRenderRequest_00b3b7c0 {
@@ -31,6 +31,6 @@ void CEngineResourceManager::Render(SRenderRequest_00b3b7c0* request)
 {
     if (request->m_kind == 0x40000000) {
         GFGetSystemManager()->m_pOwner->Flush();
-        m_pDataBank->Reload(1);
+        m_pDataBank->SetReduceSizeFrameDelay(1);
     }
 }

@@ -12,7 +12,7 @@ class CCharString { public: void* m_pData; };
 class CPersistContext { public:
     unsigned char _pad00[0x18];
     long          Mode;                                  // +0x18 EMode
-    void Transfer(const char* name, CCharString* value); // 0x00411010
+    template <class T> void Transfer(const char* name, T& value);   // 0x00411010 <CCharString>
 };
 
 class CThingPhysical { public:
@@ -33,7 +33,7 @@ bool CThingPhysicalSwitch::SerialiseGameState(CPersistContext* context)
     {
         if (context->Mode != 1 && context->Mode != 3)
             Triggered = false;
-        context->Transfer("TriggerableObjectScriptName", &TriggerableObjectScriptName);
+        context->Transfer("TriggerableObjectScriptName", TriggerableObjectScriptName);
         return true;
     }
     return false;

@@ -5,7 +5,7 @@
 // "IsBinary"), vector<CCharString>::reserve(unsigned long) 0x004BA7A0, CTCBase::GetDefinitionManager 0x006869D0,
 // CDefinitionManager::GetDefNameFromGlobalIndex(long) 0x009ACCC0 (CDefString by hidden pointer), the CDefString ->
 // CCharString conversion 0x00415DD0 (a twin of the landed operator CCharString() 0x00415D70), vector<CCharString>::
-// push_back 0x0044BFF0, ~CCharString 0x0099EAE0, CPersistContext::Transfer(const char*, vector<CCharString>*) 0x0049B8D0,
+// push_back 0x0044BFF0, ~CCharString 0x0099EAE0, CPersistContext::TransferVector<CCharString>(const char*, vector<CCharString>&) 0x0049B8D0,
 // CDefinitionManager::GetDefGlobalIndexFromName(const CCharString&) 0x009AD410, ~vector<CCharString> 0x00414EA0.
 // Shape: `if (context->IsSaving()) { vector names; ... } else { vector names; ... }` -- ONE vector local per arm, with the
 // STLport ctor zeroing start, finish, end_of_storage in init-list order. VC7.1 hoists the two identical ctor store runs
@@ -33,18 +33,22 @@ template <class T> struct _STLP_alloc_proxy {          // the end-of-storage poi
     T _M_data;
     _STLP_alloc_proxy(const SAllocator&, T p) : _M_data(p) {}
 };
-struct CCharStringVector {                             // vector<CCharString> (12 bytes)
+namespace std {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc> class vector;
+template <> class vector<CCharString, allocator<CCharString> > { public:   // STLport vector<CCharString> (12 bytes)
     CCharString* _M_start;
     CCharString* _M_finish;
     _STLP_alloc_proxy<CCharString*> _M_end_of_storage;
-    CCharStringVector(const SAllocator& a = SAllocator()) : _M_start(0), _M_finish(0), _M_end_of_storage(a, 0) { }
-    ~CCharStringVector();                              // 0x00414EA0
+    vector(const SAllocator& a = SAllocator()) : _M_start(0), _M_finish(0), _M_end_of_storage(a, 0) { }
+    ~vector();                              // 0x00414EA0
     CCharString* begin() { return _M_start; }
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
     CCharString& operator[](unsigned long n) { return *(begin() + n); }
-    void reserve(unsigned long count);                 // 0x004BA7A0
+    void reserve(unsigned int count);                  // 0x004BA7A0
     void push_back(const CCharString& value);          // 0x0044BFF0
 };
+}
 struct CLongVector {
     long* _M_start;
     long* _M_finish;
@@ -55,7 +59,7 @@ struct CLongVector {
 };
 class CPersistContext { public:
     bool IsSaving();                                   // 0x004AEF50
-    void Transfer(const char* name, CCharStringVector* value);   // 0x0049B8D0
+    template <class T> void TransferVector(const char* name, std::vector<T, std::allocator<T> >& value);   // 0x0049B8D0 <CCharString>
 };
 class CDefinitionManager { public:
     CDefString GetDefNameFromGlobalIndex(long index);  // 0x009ACCC0
@@ -75,15 +79,15 @@ void CTCInventory::OnSerialise(CPersistContext* context, bool inGameSave)
 {
     CTCInventoryBase_Retail::OnSerialise(context, inGameSave);
     if (context->IsSaving()) {
-        CCharStringVector names;
+        std::vector<CCharString, std::allocator<CCharString> > names;
         names.reserve(QuickAccessItems.size());
         for (unsigned long i = 0; i < QuickAccessItems.size(); ++i)
             if (QuickAccessItems[i] > 0)
                 names.push_back(GetDefinitionManager()->GetDefNameFromGlobalIndex(QuickAccessItems[i]));
-        context->Transfer("QuickAccessItemNames", &names);
+        context->TransferVector("QuickAccessItemNames", names);
     } else {
-        CCharStringVector names;
-        context->Transfer("QuickAccessItemNames", &names);
+        std::vector<CCharString, std::allocator<CCharString> > names;
+        context->TransferVector("QuickAccessItemNames", names);
         for (unsigned long i = 0; i < names.size(); ++i)
             QuickAccessItems[i] = GetDefinitionManager()->GetDefGlobalIndexFromName(names[i]);
     }

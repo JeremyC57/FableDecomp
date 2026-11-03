@@ -8,7 +8,10 @@
 // Shape: an unsigned index over size() re-evaluated per iteration; the element is passed by reference
 //        (`lea eax,[eax+edi*4]`) and the output pointer re-read from its argument slot each time.
 
-struct CLongVector {
+namespace std {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector;
+template <> class vector<long, allocator<long> > { public:   // STLport vector<long> (12 bytes)
     long* first;                                  // +0x00
     long* last;                                   // +0x04
     long* end_of_storage;                         // +0x08
@@ -16,15 +19,16 @@ struct CLongVector {
     long& operator[](unsigned long n) { return first[n]; }
     void push_back(const long& value);            // 0x00485FF3
 };
+}
 
 struct CTCInventoryAbilities_Retail {
     unsigned char _pad_0x000[0x1BC];
-    CLongVector   ReceivedExpressionOrder;        // +0x1BC (PDB +0x1F8)
+    std::vector<long>   ReceivedExpressionOrder;        // +0x1BC (PDB +0x1F8)
 
-    void GetPrioritisedExpressionDefs(CLongVector* defs);
+    void GetPrioritisedExpressionDefs(std::vector<long>* defs);
 };
 
-void CTCInventoryAbilities_Retail::GetPrioritisedExpressionDefs(CLongVector* defs)
+void CTCInventoryAbilities_Retail::GetPrioritisedExpressionDefs(std::vector<long>* defs)
 {
     for (unsigned long i = 0; i < ReceivedExpressionOrder.size(); ++i)
         defs->push_back(ReceivedExpressionOrder[i]);

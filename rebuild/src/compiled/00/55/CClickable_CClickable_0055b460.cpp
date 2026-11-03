@@ -1,15 +1,17 @@
-// NUISystem::CClickable::CClickable(long) -- base CHoverable(owner), the three vtables, the click state/flags/action lists zeroed, then InitialiseInputDelay()
+// NUISystem::CClickable::CClickable(long) -- base CHoverable(owner), the three vtables, the click state/flags/action lists zeroed, then GetDataFromDef()
 // Leaf: ??0CClickable@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0055B460, length 93 bytes.
-// Callees: CHoverable::CHoverable(long) @ 0x0055BA20, CClickable::InitialiseInputDelay @ 0x0055B040 (reads
+// Callees: CHoverable::CHoverable(long) @ 0x0055BA20, CClickable::GetDataFromDef @ 0x0055B040 (reads
 // the owner's input delay into +0x18c). Vtables 0x0124BD2C / 0x0124BD08 / 0x0124BD00 = NUISystem::CClickable
 // (rtti-vtables.tsv). The argument is a pass-through push; all eight members are zeroed from one
 // register, the byte members through `al`.
 // Retail NUISystem component model (Ego_r.pdb minus 0x30: the retail CHoverable is 0x16c bytes, the
 // PDB's 0x19c; engine/CHoverable.h and engine/CObserver.h therefore disagree with the bytes, hence the
-// `_Retail` names). Three vtables are stored by every constructor in the chain: the primary
+// local models (retail names in NUISystem, the bytes' sizes). Three vtables are stored by every constructor in the chain: the primary
 // component interface at +0 (135 slots), the CObserver base at +4 (6 slots, then its 12-byte event
 // set and the PreventObservation flag -> 0x14 bytes) and a third 4-byte interface base at +0x18.
+namespace NUISystem {
+
 struct CComponentInterface {                                 // primary vtable (CClickable: 0x0124BD2C, CDraggable: 0x0124BA94)
     virtual void v000();
     virtual void v001();
@@ -166,19 +168,19 @@ struct CEventSinkInterface {                                 // vtable at +0x18 
 
 struct CActionList;                                          // std::list<CCountedPointer<NUISystem::CAction>>
 
-struct CHoverable_Retail : CComponentInterface, CObserver_Retail, CEventSinkInterface {
+struct CHoverable : CComponentInterface, CObserver_Retail, CEventSinkInterface {
     unsigned char _component[0x15c - 0x1c];                  // CComponent .. CChangingStateComponent state (+0x14c)
     long         StateBeforeHovered;                         // +0x15c
     bool         WasHovered;                                 // +0x160
     CActionList* PActionsOnHovered;                          // +0x164
     CActionList* PActionsOnUnhovered;                        // +0x168  (size 0x16c)
-    CHoverable_Retail(long owner);                           // 0x0055BA20
+    CHoverable(long owner);                           // 0x0055BA20
     void OnHovered();                                        // 0x0055BAE0
     void OnUnhovered();                                      // 0x0055B9A0
     void OnDeactivate();                                     // 0x0055BDE0
 };
 
-struct CClickable_Retail : CHoverable_Retail {               // retail 0x194 bytes (PDB 0x1c4)
+struct CClickable : CHoverable {               // retail 0x194 bytes (PDB 0x1c4)
     long         StateBeforeLeftClicked;                     // +0x16c
     bool         WasLeftClicked;                             // +0x170
     CActionList* PActionsOnLeftClicked;                      // +0x174
@@ -187,18 +189,20 @@ struct CClickable_Retail : CHoverable_Retail {               // retail 0x194 byt
     long         StateBeforeRightClicked;                    // +0x180
     bool         WasRightClicked;                            // +0x184
     CActionList* PActionsOnRightClicked;                     // +0x188
-    float        InputDelay;                                 // +0x18c (set by InitialiseInputDelay)
+    float        InputDelay;                                 // +0x18c (set by GetDataFromDef)
     float        LastInputTime;                              // +0x190
-    CClickable_Retail(long owner);                           // 0x0055B460
-    void InitialiseInputDelay();                             // 0x0055B040 (label "SetupRumbleAction_Strong" is an auto-name)
+    CClickable(long owner);                           // 0x0055B460
+    void GetDataFromDef();                             // 0x0055B040 (label "SetupRumbleAction_Strong" is an auto-name)
     void OnLeftUnclicked();                                  // 0x0055ACF0
     void OnHovered();                                        // 0x0055AEB0
     void OnUnhovered();                                      // 0x0055AEF0
     void OnDeactivate();                                     // 0x0055AF30
 };
 
-CClickable_Retail::CClickable_Retail(long owner)
-    : CHoverable_Retail(owner)
+}
+
+NUISystem::CClickable::CClickable(long owner)
+    : CHoverable(owner)
     , StateBeforeLeftClicked(0)
     , WasLeftClicked(false)
     , PActionsOnLeftClicked(0)
@@ -208,5 +212,5 @@ CClickable_Retail::CClickable_Retail(long owner)
     , WasRightClicked(false)
     , PActionsOnRightClicked(0)
 {
-    InitialiseInputDelay();
+    GetDataFromDef();
 }

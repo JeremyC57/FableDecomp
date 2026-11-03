@@ -10,9 +10,8 @@
 //   reward defaults pass the def fields' addresses (`mov edx,[esi+0Ch] ; add edx,48h`).
 class CCharString { public: void* PStringData; };
 class CPersistContext { public:
-    void Transfer(const char* name, bool& value, const bool& defaultValue);     // 0x004045C0 Transfer<bool>
-    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x00410BE0 <long>
-    void Transfer(const char* name, CCharString* value);                        // 0x00411010
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x004045C0 <bool> / 0x00410BE0 <long>
+    template <class T> void Transfer(const char* name, T& value);   // 0x00411010 <CCharString>
 };
 class CQuestCardDef { public:
     unsigned char _pad00[0x44];
@@ -50,11 +49,11 @@ void CTCQuestCard::OnSerialise(CPersistContext& context, bool flag)
         context.Transfer("Finished", Finished, false);
         context.Transfer("Replayable", Replayable, false);
         context.Transfer<long>("FeatIndex", FeatIndex, 0);
-        context.Transfer("QuestName", &QuestName);
-        context.Transfer("ObjectiveName", &ObjectiveName);
-        context.Transfer("RegionName", &RegionName);
-        context.Transfer("TeleporterRegionName", &TeleporterRegionName);
-        context.Transfer("ScriptQuestName", &ScriptQuestName);
+        context.Transfer("QuestName", QuestName);
+        context.Transfer("ObjectiveName", ObjectiveName);
+        context.Transfer("RegionName", RegionName);
+        context.Transfer("TeleporterRegionName", TeleporterRegionName);
+        context.Transfer("ScriptQuestName", ScriptQuestName);
         context.Transfer("GoldReward", GoldReward, PDef->GoldReward);
         context.Transfer("RenownReward", RenownReward, PDef->RenownReward);
     }

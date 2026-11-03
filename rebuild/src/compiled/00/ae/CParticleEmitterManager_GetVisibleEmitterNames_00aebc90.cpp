@@ -59,7 +59,10 @@ template <class It, class T, class Tag> __declspec(noinline) It __fastcall FindS
     return last;
 }
 
-struct CCharStringVector {                              // STLport vector<CCharString> (12 bytes)
+namespace std {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc> class vector;
+template <> class vector<CCharString, allocator<CCharString> > { public:   // STLport vector<CCharString> (12 bytes)
     CCharString* _M_start;
     CCharString* _M_finish;
     CCharString* _M_end_of_storage;
@@ -68,6 +71,7 @@ struct CCharStringVector {                              // STLport vector<CCharS
     CCharString& operator[](unsigned long n) { return *(begin() + n); }
     void push_back(const CCharString& value);           // 0x0044BFF0
 };
+}
 
 inline void* operator new(unsigned int, void* where) { return where; }
 namespace std {
@@ -157,10 +161,10 @@ struct CEmitterList {                                   // STLport list<CParticl
 
 struct CParticleEmitterManager {
     CEmitterList Emitters;                              // +0x00
-    long GetVisibleEmitterNames(CCharStringVector& names);
+    long GetVisibleEmitterNames(std::vector<CCharString, std::allocator<CCharString> >& names);
 };
 
-long CParticleEmitterManager::GetVisibleEmitterNames(CCharStringVector& names)
+long CParticleEmitterManager::GetVisibleEmitterNames(std::vector<CCharString, std::allocator<CCharString> >& names)
 {
     std::vector<long> counts;
     for (CEmitterListIterator it = Emitters.begin(); it != Emitters.end(); ++it) {

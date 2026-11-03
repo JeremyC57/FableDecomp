@@ -43,7 +43,7 @@ public:
 };
 } // namespace std
 struct CCursorPos { long Line, Column, Offset; };
-typedef void (__cdecl* TErrorCallback)(CCharString*);
+typedef void (__fastcall* TErrorCallback)(const CCharString&);
 class CStringParser : public CBaseClass { public:                        // vtable 0x0122D874
     char*          String;                                 // +0x04
     unsigned long  BaseLineOffset;                         // +0x08
@@ -52,11 +52,11 @@ class CStringParser : public CBaseClass { public:                        // vtab
     std::list<CStringParserCommentBoundaries> Comments;                               // +0x14
     TErrorCallback ErrorCallback;                          // +0x18
     CCursorPos     CursorPos;                              // +0x1c
-    CStringParser(char* text, TErrorCallback callback, const CCharString& filename, long baseLine)
+    CStringParser(const char* text, TErrorCallback callback, const CCharString& filename, long baseLine)
     {
         Init(text, callback, filename, baseLine);
     }
-    void Init(char* text, TErrorCallback callback, const CCharString& filename, long baseLine);   // 0x009B9530
+    void Init(const char* text, TErrorCallback callback, const CCharString& filename, long baseLine);   // 0x009B9530
     bool FindKeyword(const CCharString& keyword);          // 0x009B9BA0
 };
 struct SParseToken {                                       // 12 bytes: two POD words and the token text

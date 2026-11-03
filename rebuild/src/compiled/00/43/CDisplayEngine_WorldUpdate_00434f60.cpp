@@ -1,6 +1,6 @@
 // CDisplayEngine::WorldUpdate() -- count down the initial-fade readiness (stopping the progress display and clearing its two strings when it reaches zero), keep the about-to-run state while it is pending, and publish the engine's primitive draw-distance factor minus one
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00434F60, length 104 bytes.
-// Callees: StopProgress(bool, bool) @ 0x009E9F20 (`__fastcall`, cl/dl), CWideString::operator=(const wchar_t*) @ 0x0099B800 (on the
+// Callees: NProgressDisplay::StopProgress(bool, bool) @ 0x009E9F20 (`__fastcall`, cl/dl), CWideString::operator=(const wchar_t*) @ 0x0099B800 (on the
 // global strings @ 0x013B89D8 / 0x013B89DC, with the empty literal @ 0x0122D70C), CDisplayEngine::SetAboutToRun() @ 0x00434CD0,
 // CIEngine::GetPrimitiveDrawDistanceFactor (slot 19, `call [eax+4Ch]`). Globals: the float @ 0x013B8774; 1.0f @ 0x0122DED8.
 // Layout: engine/CDisplayEngine.h (PDB, fits the bytes): Engine3D +0x2c, InitialFadeReadynessCount +0xe8.
@@ -21,7 +21,7 @@ class CWideString { public:
     const CWideString& operator=(const unsigned short* text);   // 0x0099B800
 };
 
-void __fastcall StopProgress(bool stopNow, bool keepScreen);   // 0x009E9F20
+namespace NProgressDisplay { void __fastcall StopProgress(bool stopNow, bool keepScreen); }   // 0x009E9F20
 
 extern CWideString g_progressTitle;                // 0x013B89D8
 extern CWideString g_progressText;                 // 0x013B89DC
@@ -36,7 +36,7 @@ void CDisplayEngine_Methods::WorldUpdate()
 {
     if (InitialFadeReadynessCount > 0) {
         if (--InitialFadeReadynessCount == 0) {
-            StopProgress(true, false);
+            NProgressDisplay::StopProgress(true, false);
             g_progressTitle = (const unsigned short*)L"";
             g_progressText = (const unsigned short*)L"";
         }

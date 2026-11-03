@@ -68,6 +68,7 @@ struct CAbilityEntryVector {
     SAbilityEntry& operator[](unsigned long n) { return *(first + n); }
 };
 
+enum EHeroAbility { };
 class CTCInventoryAbilities { public:
     void* __vftable;
     CThing* ParentThing;                             // +0x04
@@ -75,8 +76,8 @@ class CTCInventoryAbilities { public:
     bool Initialised;                                // +0x141
     unsigned char _pad_0x142[0x160 - 0x142];
     CAbilityEntryVector Abilities;                   // +0x160
-    bool IsAbilityPotentiallyAvailable(long ability);   // 0x005EE02E
-    long GetAbilityMaximumLevel(long ability);          // 0x005EDEA3
+    bool IsAbilityPotentiallyAvailable(EHeroAbility ability) const;   // 0x005EE02E
+    long GetAbilityMaximumLevel(EHeroAbility ability) const;          // 0x005EDEA3
     void UpdateWillMorph();
 };
 
@@ -90,8 +91,8 @@ void CTCInventoryAbilities::UpdateWillMorph()
     long possible = 0;
     long reached = 0;
     for (unsigned long i = 0; i < Abilities.size(); ++i) {
-        if (IsAbilityPotentiallyAvailable(i)) {
-            possible += GetAbilityMaximumLevel(i) + 1;
+        if (IsAbilityPotentiallyAvailable((EHeroAbility)i)) {
+            possible += GetAbilityMaximumLevel((EHeroAbility)i) + 1;
             reached += Abilities[i].Level + 1;
         }
     }

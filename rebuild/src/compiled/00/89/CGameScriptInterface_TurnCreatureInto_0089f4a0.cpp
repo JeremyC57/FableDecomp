@@ -181,7 +181,7 @@ class CPlayerGui { public:
 };
 extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
 class CPlayer { public:
-    void SetPlayerCharacter_00487B80(CThingPlayerCreature* creature);   // 0x00487B80
+    void SetPlayerCharacter(CThingPlayerCreature* creature);   // 0x00487B80
     void SetControlledCreature(CThingPlayerCreature* creature);         // 0x00487CF0
 };
 // CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
@@ -242,7 +242,7 @@ CScriptThing CGameScriptInterface::TurnCreatureInto(const CScriptThing& thing, c
                         if (old->GetInterface(&tc, 0x12))
                             creature->CopyTCIfExists(tc);
                     }
-                    PlayerManager->GetMainPlayer().SetPlayerCharacter_00487B80(creature);
+                    PlayerManager->GetMainPlayer().SetPlayerCharacter(creature);
                     PlayerManager->GetMainPlayer().SetControlledCreature(creature);
                 }
             }

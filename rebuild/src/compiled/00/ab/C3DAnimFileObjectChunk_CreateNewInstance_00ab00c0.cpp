@@ -75,14 +75,18 @@ class CChunkedFileChunk { public:                  // PDB sizeof 0x10
     char ChunkType[5];                      // +0x04
     unsigned char _pad_0x09[3];
     CChunkedFileSuperChunk* Parent;         // +0x0c
-    CChunkedFileChunk(const char* type);    // 0x00AA7590
+    protected:
+    CChunkedFileChunk(const char* type);    // 0x00AA7590 (Ego_r / FableWin: protected ??0...@@IAE@PBD@Z)
+    public:
 };
 
 class CChunkedFileSuperChunk : public CChunkedFileChunk { public:   // retail sizeof 0x2c
     CArray<CCountedPointer<CChunkedFileChunk> > SubChunks;                 // +0x10
     CArray<CCountedPointer<CChunkedFileChunk> > RegisteredSubChunkTypes;   // +0x1c
     unsigned long CurrentChunkIndex;                                       // +0x28
-    CChunkedFileSuperChunk(const char* type);                              // 0x00AA8360
+    protected:
+    CChunkedFileSuperChunk(const char* type);                              // 0x00AA8360 (Ego_r / FableWin: protected ??0...@@IAE@PBD@Z)
+    public:
     virtual void WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const;   // 0x00AA78C0
     CCountedPointer<CChunkedFileChunk> FindFirstSubChunkOfType(const char* type) const; // 0x00AA7F40
 };

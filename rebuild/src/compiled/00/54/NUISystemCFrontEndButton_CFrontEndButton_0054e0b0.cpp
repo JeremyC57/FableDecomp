@@ -38,9 +38,9 @@ struct CEventSinkInterface {                 // vtable at +0x18
     virtual void v3();
 };
 
-struct CClickable_Retail : CComponentInterface, CObserver_Retail, CEventSinkInterface {   // retail 0x194 bytes
+struct CClickable : CComponentInterface, CObserver_Retail, CEventSinkInterface {   // retail 0x194 bytes
     unsigned char _body[0x194 - 0x1c];
-    CClickable_Retail(long owner);           // 0x0055B460
+    CClickable(long owner);           // 0x0055B460
 };
 
 template <class T>
@@ -82,7 +82,7 @@ struct CCountedPointerAction {               // CCountedPointer<CAction>
     void*    m_pCount;
 };
 
-class CFrontEndButton : public CClickable_Retail { public:             // vtables 0x01249554 / 0x01249530 / 0x01249528
+class CFrontEndButton : public CClickable { public:             // vtables 0x01249554 / 0x01249530 / 0x01249528
     float                                m_fLastInputTime;   // +0x194
     CRetailVector<CCountedPointerAction> Actions;            // +0x198
     CRetailVector<CCountedPointerAction> ActionsOnDelete;    // +0x1a4
@@ -95,7 +95,7 @@ class CFrontEndButton : public CClickable_Retail { public:             // vtable
 };
 
 CFrontEndButton::CFrontEndButton(long owner)
-    : CClickable_Retail(owner)
+    : CClickable(owner)
 {
     Initialize();
 }

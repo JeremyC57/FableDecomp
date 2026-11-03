@@ -13,8 +13,8 @@ class CCharString { public: void* m_pData; };
 class CPersistContext { public:
     unsigned char _pad00[0x18];
     long          Mode;                                  // +0x18 EMode
-    void Transfer(const char* name, float* value, const float& defaultValue);   // 0x00410620
-    void Transfer(const char* name, CCharString* value);                        // 0x00411010
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x00410620 <float>
+    template <class T> void Transfer(const char* name, T& value);   // 0x00411010 <CCharString>
 };
 class CThingPhysical { public:
     unsigned char _pad00[0xd0];
@@ -36,10 +36,10 @@ bool CThingSwitch::SerialiseGameState(CPersistContext* context)
     {
         if (context->Mode != 1 && context->Mode != 3)
             Triggered = false;
-        context->Transfer("TriggerRadius", &TriggerRadius, 0.0f);
-        context->Transfer("TimeToChangeEnvironmentDef", &TimeToChangeEnvironmentDef, 0.0f);
-        context->Transfer("TriggerableObjectScriptName", &TriggerableObjectScriptName);
-        context->Transfer("EnvironmentDef", &EnvironmentDef);
+        context->Transfer("TriggerRadius", TriggerRadius, 0.0f);
+        context->Transfer("TimeToChangeEnvironmentDef", TimeToChangeEnvironmentDef, 0.0f);
+        context->Transfer("TriggerableObjectScriptName", TriggerableObjectScriptName);
+        context->Transfer("EnvironmentDef", EnvironmentDef);
         return true;
     }
     return false;

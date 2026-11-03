@@ -12,7 +12,7 @@
 // No exception frame: the TU is built without /EHsc.
 class CWideString;
 
-struct CDiskFileCalls {
+class CAFile { public:                               // the bank's file object (CCountedPointer<CDiskFileWin32>, a CAFile)
     virtual void v00();
     virtual void Open(const CWideString& filename, unsigned long mode, unsigned long share);   // slot 1 (+0x04)
     virtual void Close();                                                                       // slot 2 (+0x08)
@@ -25,11 +25,10 @@ struct CDiskFileCalls {
 
 class CFileDataOutputStream {
 public:
-    void* m_pVtable;                                // +0x00
     void* m_name;                                   // +0x04 CCharString
-    CDiskFileCalls* m_pFile;                        // +0x08
-    CFileDataOutputStream(CDiskFileCalls* file);    // 0x00994400
-    ~CFileDataOutputStream();                       // 0x00994430
+    CAFile* m_pFile;                                // +0x08
+    CFileDataOutputStream(CAFile& file);            // 0x00994400 (Ego_r / FableWin ??0CFileDataOutputStream@@QAE@AAVCAFile@@@Z)
+    virtual ~CFileDataOutputStream();               // 0x00994430 (Ego_r / FableWin ??1CFileDataOutputStream@@UAE@XZ)
 };
 
 class CDataInputStream {
@@ -42,7 +41,7 @@ struct CBankFile_Retail {                        // the retail layout; engine/CB
     unsigned long             Size;                 // +0x04
     unsigned char             _arrays[0x70];        // +0x08 Symbols .. PackedValid
     unsigned long             OpenFlags;            // +0x78
-    CDiskFileCalls*           BankFile_Data;        // +0x7c CCountedPointer<CDiskFileWin32>::Data
+    CAFile*                   BankFile_Data;        // +0x7c CCountedPointer<CDiskFileWin32>::Data
     void*                     BankFile_Info;        // +0x80
     void*                     Filename_PStringData; // +0x84 CWideString
     void*                     BankHandle_PStringData; // +0x88 CCharString
@@ -68,7 +67,7 @@ void CBankFile_Retail::WriteEntryData(unsigned long position, CDataInputStream& 
 {
     MakeWritable();
     BankFile_Data->Seek(position);
-    CFileDataOutputStream out(BankFile_Data);
+    CFileDataOutputStream out(*BankFile_Data);
     source.CopyTo(out, size);
     WriteZeros(padding);
 }

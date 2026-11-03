@@ -71,7 +71,9 @@ struct CGameScriptInterface_Calls {
     virtual float GetHealth(const CScriptThing& thing) const;   // slot 264 (+0x420)
 };
 
-template <class T> struct CRetailVector {        // retail vector: begin, end, capacity
+namespace std {
+template <class T> class allocator;
+template <class T, class A = allocator<T> > class vector { public:   // STLport vector: begin, end, capacity
     T* m_pBegin;
     T* m_pEnd;
     T* m_pCapacity;
@@ -79,6 +81,7 @@ template <class T> struct CRetailVector {        // retail vector: begin, end, c
     T& operator[](unsigned long i) { return m_pBegin[i]; }
     void push_back(const T& value);              // 0x00568850 (float instance)
 };
+}
 
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
@@ -94,9 +97,9 @@ namespace NScript {
 class CQ_HangingTreeGoodScript : public CQuestScriptBase {
 public:
     unsigned char               _pad48[0xac - 0x48];
-    CRetailVector<CScriptThing> CurrentGuardVector;         // +0xac
+    std::vector<CScriptThing> CurrentGuardVector;         // +0xac
     unsigned char               _padb8[0xd0 - 0xb8];        // RegionsWhereSpawned, AreasSpawnedIn
-    CRetailVector<float>        GuardsHealthVector;         // +0xd0
+    std::vector<float>        GuardsHealthVector;         // +0xd0
     void StoreGuardsHealth();
 };
 } // namespace NScript

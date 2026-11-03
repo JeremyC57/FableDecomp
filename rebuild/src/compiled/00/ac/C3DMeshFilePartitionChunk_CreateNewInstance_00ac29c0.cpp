@@ -5,7 +5,9 @@
 #include "engine/C3DMeshFilePartitionChunk.h"   // PDB layout agrees with retail here (counted pointer at +0x10)
 class CChunkedFileChunk { public:
     virtual void v0();
-    CChunkedFileChunk(const char* chunkType);           // 0x00AA7590
+    protected:
+    CChunkedFileChunk(const char* chunkType);           // 0x00AA7590 (Ego_r / FableWin: protected ??0...@@IAE@PBD@Z)
+    public:
     unsigned char _base_body[0x0c];                     // ChunkType[5] + pad + Parent  (sizeof == 0x10)
 };
 class C3DMeshPartitionElement;

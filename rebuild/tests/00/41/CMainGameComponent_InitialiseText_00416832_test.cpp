@@ -18,7 +18,7 @@
 // Native data-bank sizeof214 agrees hand header; virtual prefix restored (OpenReadOnly slot1).
 // Actual generated CMainGameComponent header absent; native PTextBank+14 matches PDB.
 // Calls99EBF0/99EAE0 string;9E9F40 progress;BFEA1A scalar new;9C85A0 ctor;
-// 403E40 counted reset;415260 NLocalisation::GetFontBankName;9D56C0 OpenReadOnly.
+// 403E40 counted reset;415260 NLocalisation::GetTextBankName;9D56C0 OpenReadOnly.
 #pragma optimize("s", on)
 #pragma optimize("y", off)
 #include <new>
@@ -222,7 +222,7 @@ private:
 };
 }
 namespace NProgressDisplay { void __fastcall DisplayProgress(const CCharString&,float,bool,bool); } //009e9f40
-namespace NLocalisation { CCharString __fastcall GetFontBankName(); } //00415260
+namespace NLocalisation { CCharString __fastcall GetTextBankName(); } //00415260
 class CMainGameComponent { public:
     unsigned char BaseAndSampleBank[0x14];
     CCountedPointer<NGameText::CDataBank> PTextBank;
@@ -236,7 +236,7 @@ void CMainGameComponent::InitialiseText() {
     PTextBank.Reset(new NGameText::CDataBank);
     { CCharString text("Opening Text Bank",-1); NProgressDisplay::DisplayProgress(text,-1.0f,false,false); }
     NGameText::CDataBank* bank = PTextBank.Data;
-    bank->OpenReadOnly(NLocalisation::GetFontBankName(),0x100);
+    bank->OpenReadOnly(NLocalisation::GetTextBankName(),0x100);
 }
 
 
@@ -267,7 +267,7 @@ void __fastcall NProgressDisplay::DisplayProgress(const CCharString& s,float f,b
  if(strcmp(s.Data->text,expected)||f!=-1.0f||a||b)++failures;
  ++progress;
 }
-CCharString __fastcall NLocalisation::GetFontBankName(){mark('F');return CCharString("FixtureFont",-1);}
+CCharString __fastcall NLocalisation::GetTextBankName(){mark('F');return CCharString("FixtureFont",-1);}
 int main(){
  CMainGameComponent component;component.PTextBank.Data=0;component.PTextBank.Info=0;
  component.InitialiseText();

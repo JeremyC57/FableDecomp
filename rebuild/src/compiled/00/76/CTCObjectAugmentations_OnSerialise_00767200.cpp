@@ -89,9 +89,11 @@ struct CDefPointerVector {                              // STLport vector<CDefPo
     CDefPointer<const CThingBaseDef>& operator[](unsigned long n) { return *(begin() + n); }
     void resize(unsigned long n, const CDefPointer<const CThingBaseDef>& value);   // 0x0076BF80
 };
-class CGameDefinitionManager { public:
+class CDefinitionManager { public:
+    template <class T> bool GetDef(const CCharString& name, CDefPointer<const T>* out) const;   // 0x00528760 <CThingBaseDef> (Ego_r / FableWin ??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z)
+};
+class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();    // 0x0044C6B0
-    bool GetDef(const CCharString& name, CDefPointer<const CThingBaseDef>& out);   // 0x00528760
 };
 template <class T> inline const T& Min(const T& a, const T& b) { return b < a ? b : a; }
 class CThing;
@@ -129,7 +131,7 @@ void CTCObjectAugmentations::OnSerialise(CPersistContext& context, bool savedInG
             long n = Min(count, PDef->MaximumNumberOfSlots);
             Augmentations.resize(n, CDefPointer<const CThingBaseDef>());
             for (long i = 0; i < n; ++i)
-                CGameDefinitionManager::Get().GetDef(names[i], Augmentations[i]);
+                CGameDefinitionManager::Get().GetDef(names[i], &Augmentations[i]);
         }
     }
 }

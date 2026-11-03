@@ -1,4 +1,4 @@
-// NUISystem::CMouseCursor::CMouseCursor(void* def) -- the CSprite base (0x0041B800 with the def), the three vtables of this class (0x0124C22C at +0, 0x0124C208 at +4, 0x0124C200 at +0x18), then the cursor registers itself as an observer with the front-end manager (GetInstance @ 0x0041E5F2, its slot 2 with the CObserver sub-object at +4), observes event 0x19 (CObserver::ObserveEvent @ 0x0052DA20) and stores itself as the manager's cursor (+0xb8)
+// NUISystem::CMouseCursor::CMouseCursor(long def) -- the CSprite base (0x0041B800 with the def), the three vtables of this class (0x0124C22C at +0, 0x0124C208 at +4, 0x0124C200 at +0x18), then the cursor registers itself as an observer with the front-end manager (GetInstance @ 0x0041E5F2, its slot 2 with the CObserver sub-object at +4), observes event 0x19 (CObserver::ObserveEvent @ 0x0052DA20) and stores itself as the manager's cursor (+0xb8)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0055C650, length 76 bytes.
 // Vtables from rtti-vtables.tsv. Shape: `this` in esi, the observer sub-object in edi, `ret 4`.
 struct IPrimary_0055c650 { virtual void v00(); };
@@ -8,10 +8,12 @@ struct CObserver {                                 // the secondary base at +4 (
     void ObserveEvent(long event);                 // 0x0052DA20
 };
 struct ISecondaryB_0055c650 { virtual void b00(); };
+namespace NUISystem {
 struct CSprite : IPrimary_0055c650, CObserver, ISecondaryB_0055c650 {   // 0x18 + ...
-    CSprite(void* def);                            // 0x0041B800
-    ~CSprite();                                    // 0x0041AB40
+    CSprite(long def);                             // 0x0041B800
+    virtual ~CSprite();                            // 0x0041AB40
 };
+}
 namespace NUISystem { class CMouseCursor; }
 namespace NUISystem { class CManager { public:
     virtual void v000(); virtual void v001();
@@ -28,11 +30,11 @@ class CMouseCursor : public CSprite { public:                    // vtables 0x01
     virtual void v00();
     virtual void a00();
     virtual void b00();
-    CMouseCursor(void* def);
+    CMouseCursor(long def);
 };
 }
 
-NUISystem::CMouseCursor::CMouseCursor(void* def)
+NUISystem::CMouseCursor::CMouseCursor(long def)
     : CSprite(def)
 {
     NUISystem::CManager::GetInstance()->AddObserver(this);

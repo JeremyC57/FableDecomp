@@ -1,4 +1,4 @@
-// NUISystem::CKeyRedefiner::CKeyRedefiner(CComponentManager* manager) -- CClickable(manager), no action/key text, an empty action list, sub type 0 and a cleared input definition
+// NUISystem::CKeyRedefiner::CKeyRedefiner(long def) -- CClickable(manager), no action/key text, an empty action list, sub type 0 and a cleared input definition
 // Leaf: ??0CKeyRedefiner
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00558540, length 130 bytes (`ret 4`).
 // Label correction: the manifest calls this CTCTavernGameCardBase::CTCTavernGameCardBase (propagated); it stores NUISystem::CKeyRedefiner's
@@ -26,7 +26,7 @@ class CHoverable { public:                             // third base (vptr at +0
 };
 class CClickable : public CComponentRoot, public CGuiControl, public CHoverable { public:
     unsigned char _body[0x194 - 0x1c];          // +0x01c .. +0x193
-    CClickable(CComponentManager* manager);     // 0x0055B460
+    CClickable(long def);                       // 0x0055B460
     virtual ~CClickable();
 };
 struct CActionList {                            // std::list<EGameAction>: one sentinel pointer
@@ -62,12 +62,12 @@ class CKeyRedefiner : public CClickable { public:             // vtables 0x0124A
     CActionList Actions;                        // +0x19c
     long SubType;                               // +0x1a0 EGameActionSubType
     CActionInputControl Definition;             // +0x1a4
-    CKeyRedefiner(CComponentManager* manager);
+    CKeyRedefiner(long def);
     virtual ~CKeyRedefiner();
 };
 
-CKeyRedefiner::CKeyRedefiner(CComponentManager* manager)
-    : CClickable(manager)
+CKeyRedefiner::CKeyRedefiner(long def)
+    : CClickable(def)
     , PActionText(0)
     , PKeyText(0)
     , SubType(0)

@@ -22,10 +22,8 @@ class CTCParamsBase;
 class CPersistContext { public:
     unsigned char _pad00[0x18];
     long          Mode;                                 // +0x18
-    void Transfer(const char* name, unsigned __int64& value, const unsigned __int64& defaultValue);   // 0x0044BB00
-    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x00410BE0 <long>
-    void Transfer(const char* name, bool& value, const bool& defaultValue);                           // 0x004045C0
-    void Transfer(const char* name, CCharString* value);                                              // 0x00411010
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x0044BB00 <unsigned __int64> / 0x00410BE0 <long> / 0x004045C0 <bool>
+    template <class T> void Transfer(const char* name, T& value);   // 0x00411010 <CCharString>
 };
 
 class CThing { public:
@@ -56,13 +54,13 @@ bool CThingTrackNode::SerialiseGameState(CPersistContext* context)
     {
         if (context->Mode != 1 && context->Mode != 3)
             AddTC("CTCPhysicsStandard", false, 0);
-        context->Transfer("NextNodeUID", NextNodeUID, 0);
-        context->Transfer("PreviousNodeUID", PreviousNodeUID, 0);
+        context->Transfer<unsigned __int64>("NextNodeUID", NextNodeUID, 0);
+        context->Transfer<unsigned __int64>("PreviousNodeUID", PreviousNodeUID, 0);
         context->Transfer<long>("NextNodeThingFileID", NextNodeThingFileID, 0);
         context->Transfer<long>("PreviousNodeThingFileID", PreviousNodeThingFileID, 0);
         context->Transfer("IsStart", IsStart, false);
         context->Transfer("IsEnd", IsEnd, false);
-        context->Transfer("TrackName", &TrackName);
+        context->Transfer("TrackName", TrackName);
         return true;
     }
     return false;

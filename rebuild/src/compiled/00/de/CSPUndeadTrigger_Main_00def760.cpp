@@ -105,12 +105,15 @@ class CScriptBase { public:                                   // retail 0x40 byt
     unsigned char _body[0x40];
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
 };
-struct CQ_SecretPassageScript : CScriptBase {
+namespace NScript {
+class CQ_SecretPassageScript : public CScriptBase { public:   // NScript script class (both PDBs: class, namespace NScript)
     unsigned char _pad40[0x4c - 0x40];
     bool DoorsBlocked;                                 // +0x4C
     bool DoorsBeingDone;                               // +0x4D
     void SwitchDoorsOnAndOff();                        // 0x00DEFB10
 };
+}
+using NScript::CQ_SecretPassageScript;
 #define VPAD1(a) virtual void a() const;
 #define VPAD2(a) VPAD1(a##0) VPAD1(a##1)
 #define VPAD4(a) VPAD2(a##0) VPAD2(a##1)

@@ -1,5 +1,5 @@
 // CStringParser::CStringParser(char*, void (*)(CCharString*), const CCharString&, long) -- constructs the parser members and initialises it over the given text
-// Leaf: ??0CStringParser
+// Leaf: ??0CStringParser@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00414E30, 88 bytes. Callees: CBaseClass::CBaseClass @ 0x0099A2D0,
 // CCharString::CCharString() @ 0x0099E4B0 (Filename, TempCharString), malloc @ 0x00BFEA0E (the comment list's head
 // node), CStringParser::Init(char*, callback, const CCharString&, long) @ 0x009B9530. Manifest label
@@ -51,7 +51,7 @@ struct CCursorPos {
 };
 
 class CParsedItem;
-typedef void (*TStringParserErrorCallback)(CCharString* message);
+typedef void (__fastcall* TStringParserErrorCallback)(const CCharString&);
 
 class CStringParser : public CBaseClass {               // vtable 0x0122D874
 public:
@@ -62,11 +62,11 @@ public:
     CStringParserCommentList   Comments;           // +0x14
     TStringParserErrorCallback ErrorCallback;      // +0x18
     CCursorPos                 CursorPos;          // +0x1C
-    CStringParser(char* text, TStringParserErrorCallback errorCallback, const CCharString& filename, long baseLineOffset);
-    void Init(char* text, TStringParserErrorCallback errorCallback, const CCharString& filename, long baseLineOffset);   // 0x009B9530
+    CStringParser(const char* text, TStringParserErrorCallback errorCallback, const CCharString& filename, long baseLineOffset);
+    void Init(const char* text, TStringParserErrorCallback errorCallback, const CCharString& filename, long baseLineOffset);   // 0x009B9530
 };
 
-CStringParser::CStringParser(char* text, TStringParserErrorCallback errorCallback, const CCharString& filename, long baseLineOffset)
+CStringParser::CStringParser(const char* text, TStringParserErrorCallback errorCallback, const CCharString& filename, long baseLineOffset)
 {
     Init(text, errorCallback, filename, baseLineOffset);
 }

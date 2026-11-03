@@ -13,20 +13,25 @@
 // StatExperiencePoints +0x18, TrainableStatLevels +0x24 (PDB +0x28).
 class CThing;
 
-struct CLongVector {                                   // retail std::vector<long> {first, last, end}
-    long* _M_start;
-    long* _M_finish;
-    long* _M_end_of_storage;
-    unsigned long size() const { return _M_finish - _M_start; }
-    void resize(unsigned long n, const long& value);   // 0x004428F0
+namespace std {                                       // STLport 4.6 vector<long> (12 bytes: start, finish, end of storage)
+template <class _Tp> class allocator { };
+template <class _Tp, class _Alloc = allocator<_Tp> >
+class vector {
+public:
+    _Tp* _M_start;
+    _Tp* _M_finish;
+    _Tp* _M_end_of_storage;
+    unsigned int size() const { return _M_finish - _M_start; }
+    void resize(unsigned int __new_size, const _Tp& __x);   // 0x004428F0
 };
+}
 
 class CPersistContext { public:
     unsigned char _pad00[0x18];
     long Mode;                                          // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
     template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x00410BE0 <long>
-    void TransferVector(const char* name, CLongVector* value);              // 0x005815D6
+    template <class T> void TransferVector(const char* name, std::vector<T, std::allocator<T> >& value);   // 0x005815D6 <long> (Ego_r / FableWin ??$TransferVector@J@)
 };
 
 class CTCHeroExperience { public:
@@ -36,8 +41,8 @@ class CTCHeroExperience { public:
     long          FishingLevel;                         // +0x0C
     long          TotalExperiencePoints;                // +0x10
     long          ExperiencePointsAvailableToSpend;     // +0x14
-    CLongVector   StatExperiencePoints;                 // +0x18
-    CLongVector   TrainableStatLevels;                  // +0x24 (PDB +0x28)
+    std::vector<long> StatExperiencePoints;             // +0x18
+    std::vector<long> TrainableStatLevels;              // +0x24 (PDB +0x28)
 
     void UpdateAbilitiesForAllStats(bool notify);       // 0x006D8AD0
     void OnSerialise(CPersistContext& context, bool);
@@ -48,8 +53,8 @@ void CTCHeroExperience::OnSerialise(CPersistContext& context, bool)
     context.Transfer<long>("FishingLevel", FishingLevel, 0);
     context.Transfer<long>("TotalExperiencePoints", TotalExperiencePoints, 0);
     context.Transfer<long>("ExperiencePointsAvailableToSpend", ExperiencePointsAvailableToSpend, 0);
-    context.TransferVector("StatExperiencePoints", &StatExperiencePoints);
-    context.TransferVector("TrainableStatLevels", &TrainableStatLevels);
+    context.TransferVector("StatExperiencePoints", StatExperiencePoints);
+    context.TransferVector("TrainableStatLevels", TrainableStatLevels);
     if (StatExperiencePoints.size() != 3)
         StatExperiencePoints.resize(3, 0);
     if (TrainableStatLevels.size() != 10)

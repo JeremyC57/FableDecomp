@@ -20,13 +20,18 @@ class CCharString { public:
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
 };
-struct __false_type { __false_type() {} };
+namespace std { struct __false_type { __false_type() {} }; }
 inline void* operator new(unsigned int, void* where) { return where; }
-struct CCharStringVector {                              // STLport vector<CCharString> (12 bytes in retail)
+namespace std {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc> class vector;
+template <> class vector<CCharString, allocator<CCharString> > { public:   // STLport vector<CCharString> (12 bytes)
     CCharString* _M_start;
     CCharString* _M_finish;
     CCharString* _M_end_of_storage;
-    void _M_insert_overflow(CCharString* position, const CCharString& x, const __false_type&, unsigned long fill_len, bool atend);   // 0x00433530
+protected:
+    void _M_insert_overflow(CCharString* position, const CCharString& x, const __false_type&, unsigned int fill_len, bool atend);    // 0x00433530
+public:
     void push_back(const CCharString& x);              // 0x0044BFF0 (the out-of-line copy)
     __forceinline void push_back_inlined(const CCharString& x)   // the same STLport body, expanded at one site
     {
@@ -37,6 +42,7 @@ struct CCharStringVector {                              // STLport vector<CCharS
             _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
     }
 };
+}
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
@@ -52,7 +58,7 @@ namespace NScript {
 class CV_TalentlessBardScript : public CQuestScriptObject {
 public:
     unsigned char _flags48[0x20];                       // +0x48 .. stBard, BardWanderTime
-    CCharStringVector SongItems;                        // +0x68
+    std::vector<CCharString, std::allocator<CCharString> > SongItems;                        // +0x68
     void ProcessSongsMarriage();
 };
 } // namespace NScript

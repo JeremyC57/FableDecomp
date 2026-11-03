@@ -12,7 +12,7 @@ class C3DVector { public: float X, Y, Z; };
 class CCharString { public:
     void* m_data;
     ~CCharString();                                 // 0x0099EAE0
-    const char* ToConstChar() const;                // 0x0099E4C0
+    operator const char*() const;                   // 0x0099E4C0 (Ego_r / FableWin ??BCCharString@@QBEPBDXZ)
 };
 CCharString __fastcall GFIntToCharString(long value);                       // 0x0099F830
 CCharString __fastcall operator+(const char* a, const CCharString& b);       // 0x0099F690
@@ -96,9 +96,9 @@ void CTCPreCalculatedNavigationRoute::SaveRoute(CPersistContext* context)
         do
         {
             C2DVector pos = PeekWorldMap().ConvertWorldMapCoordsToLocalCoords(region, route._M_start[i].Pos);
-            SaveValue(context, ("NavPosition" + GFIntToCharString(i)).ToConstChar(), pos, defaultPos);
+            SaveValue(context, (const char*)("NavPosition" + GFIntToCharString(i)), pos, defaultPos);
             unsigned char layer = route._M_start[i].Layer;
-            SaveValue(context, ("NavLayer" + GFIntToCharString(i)).ToConstChar(), layer, defaultLayer);
+            SaveValue(context, (const char*)("NavLayer" + GFIntToCharString(i)), layer, defaultLayer);
         } while (++i < steps);
         }
     }

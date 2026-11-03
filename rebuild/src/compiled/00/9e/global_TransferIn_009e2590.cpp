@@ -22,10 +22,15 @@
 #include "engine/CStringParser.h"
 #undef CStringParser
 
+class CCharString;
+enum EParsedItemType { PARSED_ITEM_SYMBOL = 2 };              // Ego_r / FableWin global enum (enumerator name descriptive)
 class CStringParser : public CStringParserLayout
 {
 public:
-    long ReadAsInteger();   // 0x009BA540
+    long ReadAsInteger();                                      // 0x009BA540
+    EParsedItemType PeekNextItemType();                        // 0x009BA900 (Ego_r / FableWin)
+    CCharString ReadAsString();                                // 0x009BA6F0 (Ego_r / FableWin)
+    bool SkipPastNextItemIfIs(const CCharString& item);        // 0x009B9E00 (Ego_r / FableWin)
 };
 
 class CCharString { public:
@@ -36,11 +41,6 @@ class CCharString { public:
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690 (hidden result in ecx)
 extern const char g_msgUnableToFindSymbol_0122dfe8[];          // 0x0122DFE8 "Unable to find symbol "
 
-struct CStringParserMethods : CStringParser {
-    long PeekNextItemType();                                   // 0x009BA900 (EParsedItemType)
-    CCharString ReadAsString();                                // 0x009BA6F0
-    bool SkipPastNextItemIfIs(const CCharString& item);        // 0x009B9E00
-};
 
 class CSymbolMap {
 public:
@@ -55,11 +55,10 @@ class CPersistContext { public:                                       // Ego_r.p
     CSymbolMap* GetSymbolMap() const { return PSymbolMap; }
 };
 
-enum { PARSED_ITEM_SYMBOL = 2 };
 
 void __fastcall TransferIn(CPersistContext* context, CStringParser* parser, long* value)
 {
-    CStringParserMethods* p = static_cast<CStringParserMethods*>(parser);
+    CStringParser* p = parser;
     if (p->PeekNextItemType() == PARSED_ITEM_SYMBOL) {
         context->GetSymbolMap()->UpdateDirtyQuick();
         CCharString name = p->ReadAsString();

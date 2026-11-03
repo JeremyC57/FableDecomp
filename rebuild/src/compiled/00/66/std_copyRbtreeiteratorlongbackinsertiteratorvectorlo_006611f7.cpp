@@ -40,7 +40,8 @@ template <class _Value> struct _Rb_tree_iterator {
     bool operator!=(const _Rb_tree_iterator& __y) const { return _M_node != __y._M_node; }
 };
 
-template <class _Tp> class vector {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector {
 public:
     typedef _Tp value_type;
     _Tp* _M_start;                                // +0x00

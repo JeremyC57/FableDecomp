@@ -5,7 +5,7 @@
 // 0x0099BE70, ~CWideString 0x0099B510, __fastcall PathExists(const CWideString&) 0x00999230,
 // CDiskFileWin32::CDiskFileWin32(const CWideString&, FileAccessType, unsigned long) 0x0099AD80, operator new 0x00BFEA1A,
 // CCountedPointer<CRegionConnectionGraph>::Reset 0x0051CEA0, CCharString::CCharString() 0x0099E4B0,
-// CCharString::LoadFromFile(CAFile*, CASuspendableProcess*, long) 0x0099F2E0,
+// CCharString::LoadFromFile(CAFile&, CASuspendableProcess*, long) 0x0099F2E0,
 // CRegionConnectionGraph::InitialiseGraph(const CCharString&, const CWorldMap&) 0x00828710, ~CCharString 0x0099EAE0,
 // and the inlined virtual ~CDiskFileWin32 (vtable 0x0122D06C, Close 0x0099A920, ~CAFile 0x0099A300).
 // Retail offsets: CWorldMap PRegionGraph {Data +0x44, Info +0x48} (PDB +0x54). CRegionConnectionGraph (16 bytes):
@@ -49,7 +49,7 @@ class CCharString { public:
     CCharStringData* PStringData;
     CCharString();                                           // 0x0099E4B0
     ~CCharString();                                          // 0x0099EAE0
-    void LoadFromFile(CAFile* file, CASuspendableProcess* process, long length);   // 0x0099F2E0
+    void LoadFromFile(CAFile& file, CASuspendableProcess* process, long length);   // 0x0099F2E0
 };
 
 struct CKeyPairCompareLess { };
@@ -90,7 +90,7 @@ void CWorldMap::LoadRegionGraph(const CWideString& name)
         if (!PRegionGraph.Data)
             PRegionGraph.Reset(new CRegionConnectionGraph);
         CCharString text;
-        text.LoadFromFile(&file, 0, -1);
+        text.LoadFromFile(file, 0, -1);
         PRegionGraph->InitialiseGraph(text, *this);
     }
 }

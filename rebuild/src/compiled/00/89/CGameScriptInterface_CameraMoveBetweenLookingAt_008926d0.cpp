@@ -22,10 +22,10 @@ class CScriptModuleBase {
 public:
     virtual ~CScriptModuleBase();
 };
-class CScriptModuleMoveBetweenLookingAt : public CScriptModuleBase {
+class CScriptModuleTransitionBetweenPoints : public CScriptModuleBase {
 public:
     unsigned char _pad04[0x90 - 4];
-    CScriptModuleMoveBetweenLookingAt(const CThing& lookAt, const C3DVector& from, const C3DVector& to, long frames, float f);   // 0x00852D90
+    CScriptModuleTransitionBetweenPoints(const CThing& lookAt, const C3DVector& from, const C3DVector& to, long frames, float f);   // 0x00852D90
 };
 }
 template <class T> class CCountedPointer {
@@ -76,6 +76,6 @@ void CGameScriptInterface::CameraMoveBetweenLookingAt(const C3DVector& from, con
         World->PCurrentGameCamera->GetCameraManager(&manager);
         if (f == -1.0f) f = 0.2f;
         manager->SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase>(
-            new NCameraModes::CScriptModuleMoveBetweenLookingAt(*t, from, to, CMainGameComponent::ConvertSecondsToWF(time), f)));
+            new NCameraModes::CScriptModuleTransitionBetweenPoints(*t, from, to, CMainGameComponent::ConvertSecondsToWF(time), f)));
     }
 }

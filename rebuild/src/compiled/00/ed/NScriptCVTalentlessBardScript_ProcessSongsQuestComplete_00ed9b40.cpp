@@ -15,12 +15,16 @@ class CCharString { public:
     CCharString(const CCharString& other);         // 0x0099EC30
     ~CCharString();                                // 0x0099EAE0
 };
-struct CCharStringVector {                         // std::vector<CCharString> (12 bytes in retail)
+namespace std {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc> class vector;
+template <> class vector<CCharString, allocator<CCharString> > { public:   // STLport vector<CCharString> (12 bytes)
     CCharString* _M_start;
     CCharString* _M_finish;
     CCharString* _M_end_of_storage;
     void push_back(const CCharString& value);      // 0x0044BFF0
 };
+}
 struct CBoolVector {                               // SongThingAvailable: one byte per entry in retail
     bool* _M_start;
     bool* _M_finish;
@@ -44,7 +48,7 @@ namespace NScript {
 class CV_TalentlessBardScript : public CQuestScriptObject {
 public:
     unsigned char     _flags48[0x20];              // +0x48 bHurtBard .. BardFollowing, stBard +0x54, BardWanderTime +0x64
-    CCharStringVector SongItems;                   // +0x68
+    std::vector<CCharString, std::allocator<CCharString> > SongItems;                   // +0x68
     QuestData         QuestInfo[12];               // +0x74
     CBoolVector       SongThingAvailable;          // +0xd4
     void ProcessSongsQuestComplete();

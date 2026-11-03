@@ -19,14 +19,19 @@ class CCharString { public:
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
 };
-struct __false_type { __false_type() {} };
+namespace std { struct __false_type { __false_type() {} }; }
 inline void* operator new(unsigned int, void* where) { return where; }
-struct CCharStringVector {                              // STLport vector<CCharString> (12 bytes in retail)
+namespace std {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc> class vector;
+template <> class vector<CCharString, allocator<CCharString> > { public:   // STLport vector<CCharString> (12 bytes)
     CCharString* _M_start;
     CCharString* _M_finish;
     CCharString* _M_end_of_storage;
+protected:
     void _M_insert_overflow(CCharString* position, const CCharString& x, const __false_type&,
-                            unsigned long fill_len, bool atend);   // 0x00433530
+                            unsigned int fill_len, bool atend);    // 0x00433530
+public:
     void push_back(const CCharString& x);               // 0x0044BFF0 (out of line)
     __forceinline void push_back_inline(const CCharString& x)   // the same STLport body, expanded at the first site
     {
@@ -38,6 +43,7 @@ struct CCharStringVector {                              // STLport vector<CCharS
             _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
     }
 };
+}
 class CScriptDef { public:
     unsigned char _pad[0x7d8];
     long BardHeroAgeHigh;                               // +0x7d8
@@ -54,7 +60,7 @@ class CV_TalentlessBardScript { public:
     CGameScriptInterface* Game;                         // +0x40
     void* Data;                                         // +0x44
     unsigned char _flags48[0x20];                       // +0x48 .. stBard, BardWanderTime
-    CCharStringVector SongItems;                        // +0x68
+    std::vector<CCharString, std::allocator<CCharString> > SongItems;                        // +0x68
     void ProcessSongsAge();
 };
 void CV_TalentlessBardScript::ProcessSongsAge()

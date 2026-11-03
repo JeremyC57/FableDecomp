@@ -15,10 +15,13 @@
 #undef CStringParser
 class CCharString;
 
+enum EParsedItemType { PARSED_ITEM_SYMBOL = 2 };              // Ego_r / FableWin global enum (enumerator name descriptive)
 class CStringParser : public CStringParserLayout
 {
 public:
-    CCharString ReadAsString();   // 0x009BA6F0
+    CCharString ReadAsString();                                // 0x009BA6F0
+    EParsedItemType PeekNextItemType();                        // 0x009BA900 (Ego_r / FableWin ?PeekNextItemType@CStringParser@@QAE?AW4EParsedItemType@@XZ)
+    float ReadAsFloat();                                       // 0x009BA650
 };
 
 class CCharString { public:
@@ -28,10 +31,6 @@ class CCharString { public:
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690 (hidden result in ecx)
 extern const char g_msgUnknownSymbol_0122dfe8[];               // 0x0122DFE8
 
-struct CStringParserMethods : CStringParser {
-    long PeekNextItemType();                                   // 0x009BA900 (EParsedItemType)
-    float ReadAsFloat();                                       // 0x009BA650
-};
 
 class CSymbolMap { public:
     bool Lookup(const CCharString& name, long* value) const;   // 0x009E5170
@@ -44,7 +43,6 @@ class CPersistContext { public:                                       // Ego_r.p
     CSymbolMap* GetSymbolMap() const { return PSymbolMap; }
 };
 
-enum { PARSED_ITEM_SYMBOL = 2 };
 
 template <class T> struct CPersistTraits {
     T DefaultVal;
@@ -53,7 +51,7 @@ template <class T> struct CPersistTraits {
 
 template <> void CPersistTraits<float>::TransferIn(CPersistContext& context, CStringParser& parser, float* out) const
 {
-    CStringParserMethods& p = static_cast<CStringParserMethods&>(parser);
+    CStringParser& p = parser;
     if (p.PeekNextItemType() == PARSED_ITEM_SYMBOL) {
         CCharString name = p.ReadAsString();
         long value;

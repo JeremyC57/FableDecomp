@@ -41,8 +41,10 @@ void __fastcall CopyFileW(CDiskFileWin32& from, CDiskFileWin32& to);   // 0x0099
 namespace NProgressDisplay {
 void __fastcall DisplayProgress(const CCharString& text, float progress, bool a, bool b);   // 0x009E9F40
 }
-void __fastcall LoadingStage(const CCharString& stage, long level);     // 0x009D8240
-void __fastcall LoadingStageDone(long level);                           // 0x009D8250
+namespace NProfileTimer {
+void __fastcall StartProfile(const CCharString& name, long level);      // 0x009D8240
+void __fastcall EndProfile(long level);                                 // 0x009D8250
+}
 class CCPPointerInfo;
 template <class T> class CCountedPointer { public:                    // engine/CCountedPointer.h shape: Data +0, Info +4
     T* Data;
@@ -135,10 +137,10 @@ void CMainGameComponent::PostInit()
             return;
         }
         PWorld->PostLoad(0);
-        LoadingStage("Activate Initial Quests", 0);
+        NProfileTimer::StartProfile("Activate Initial Quests", 0);
         if (InitStructure.InitialQuest != "")
             CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().ActivateQuest(InitStructure.InitialQuest, false, true);
-        LoadingStageDone(0);
+        NProfileTimer::EndProfile(0);
     }
     Register(&g_Registration);
 }

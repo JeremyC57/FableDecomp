@@ -40,8 +40,8 @@ class CDefinitionManager;
 class CSymbolMap;
 class CPersistContext { public:                           // retail 0x2c bytes, trivial destructor
     unsigned char _pad00[0x2c];
-    CPersistContext(CStringParser* parser, void (*errorCallback)(CCharString*), bool reportErrors,
-                    CDefinitionManager* definitions, CSymbolMap* symbols, CCharString* sourceName);   // 0x009BADD0
+    CPersistContext(CStringParser& parser, void (__fastcall* errorCallback)(const CCharString&), bool reportErrors,
+                    const CDefinitionManager* definitions, const CSymbolMap* symbols, CCharString* sourceName);   // 0x009BADD0
 };
 extern const char g_emptyString_0122d70e[];       // 0x0122D70E ("")
 class CGameTimeManager { public:
@@ -53,6 +53,6 @@ class CGameTimeManager { public:
 void CGameTimeManager::Load(const CCharString& text)
 {
     CStringParser parser(text, 0, CCharString(g_emptyString_0122d70e, -1), 0);
-    CPersistContext context(&parser, 0, true, 0, 0, 0);
+    CPersistContext context(parser, 0, true, 0, 0, 0);
     Load(context);
 }

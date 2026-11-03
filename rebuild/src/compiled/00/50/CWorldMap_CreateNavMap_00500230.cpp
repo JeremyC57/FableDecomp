@@ -65,15 +65,21 @@ class CMemoryFile : public CAFile { public:                                    /
 };
 
 #pragma pack(push, 1)
-class CFileFormatLevel { public:
-    unsigned long ByteLength;                                    // +0x00 CReplaceSerialise
-    unsigned char SerialiseVersionNumber;                        // +0x04
+class CFileFormatLevel;
+class COldFileFormatLevel3;
+template <class TNew, class TOld> class CReplaceSerialise { public:
+    unsigned long ByteLength;                          // +0x00
+    unsigned char SerialiseVersionNumber;              // +0x04
+    void ReadFromFile(CAFile& file, CASuspendableProcess* process);  // 0x0051A240 (<CFileFormatLevel,COldFileFormatLevel3>)
+};
+
+class CFileFormatLevel : public CReplaceSerialise<CFileFormatLevel, COldFileFormatLevel3>
+{ public:
     long          MapDataOffset;                                 // +0x05
     long          ThingDataOffset;                               // +0x09
     long          BrushDataOffset;                               // +0x0D
     long          NavigationDataOffset;                          // +0x11
     long          NavigationSectionsOffset;                      // +0x15
-    void ReadFromFile(CAFile* file, CASuspendableProcess* process);   // 0x0051A240
 };
 #pragma pack(pop)
 
@@ -114,7 +120,7 @@ void CWorldMap::CreateNavMap(long map, const CCharStringSet& sections, CAFile& f
 {
     file.Seek(0);
     CFileFormatLevel level;
-    level.ReadFromFile(&file, &process);
+    level.ReadFromFile(file, &process);
     CNavigatorManager* navigator = World->NavigatorManager;
     if (level.NavigationSectionsOffset != 0) {
         file.Seek(level.NavigationSectionsOffset);

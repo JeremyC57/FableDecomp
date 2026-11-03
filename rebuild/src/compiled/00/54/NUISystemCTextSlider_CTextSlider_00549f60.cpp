@@ -1,7 +1,7 @@
 // NUISystem::CTextSlider::CTextSlider(long id) -- construct a text slider: draggable base, empty action vector, null pointers, then Initialize()
 // Leaf: ??0CTextSlider@NUISystem@@QAE@J@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00549F60, 114 bytes. __fastcall, `ret 4`.
-// Callees: NUISystem::CDraggableInto::CDraggableInto(long) 0x0052CC50; NUISystem::CTextSlider::Initialize() 0x00549B20.
+// Callees: NUISystem::CChangingStateComponent::CChangingStateComponent(long) 0x0052CC50; NUISystem::CTextSlider::Initialize() 0x00549B20.
 //          Vtables 0x01248A8C / 0x01248A68 / 0x01248A60 (.?AVCTextSlider@NUISystem@@) at +0 / +4 / +0x18.
 // Shape: one `xor eax,eax` shared by the init-list zeroes in declaration order: Actions (3 words), PActionsOnBack,
 //        PActionsOnSelect, InputDelay, PDefAction, PLeftArrow, PRightArrow, PAcceptButton, MaxChild (the selection words,
@@ -36,11 +36,11 @@ struct CDrawableInterface {
 struct CDraggableInterface {
     virtual void v000();
 };
-class CDraggableInto : public CComponentInterface, public CDrawableInterface, public CDraggableInterface { public:
+class CChangingStateComponent : public CComponentInterface, public CDrawableInterface, public CDraggableInterface { public:
     unsigned char _pad1c[0x15c - 0x1c];
-    CDraggableInto(long id);                     // 0x0052CC50
+    CChangingStateComponent(long id);                     // 0x0052CC50
 };
-class CTextSlider : public CDraggableInto { public:            // vtables 0x01248A8C / 0x01248A68 / 0x01248A60 (.?AVCTextSlider@NUISystem@@)
+class CTextSlider : public CChangingStateComponent { public:            // vtables 0x01248A8C / 0x01248A68 / 0x01248A60 (.?AVCTextSlider@NUISystem@@)
     unsigned long SelectedChild;                 // +0x15c
     unsigned long PreviouslySelectedChild;       // +0x160
     unsigned long StartSelectedChild;            // +0x164
@@ -64,7 +64,7 @@ class CTextSlider : public CDraggableInto { public:            // vtables 0x0124
 }
 namespace NUISystem {
 CTextSlider::CTextSlider(long id)
-    : CDraggableInto(id), PActionsOnBack(0), PActionsOnSelect(0), InputDelay(0), PDefAction(0), PLeftArrow(0),
+    : CChangingStateComponent(id), PActionsOnBack(0), PActionsOnSelect(0), InputDelay(0), PDefAction(0), PLeftArrow(0),
       PRightArrow(0), PAcceptButton(0), MaxChild(0)
 {
     Initialize();

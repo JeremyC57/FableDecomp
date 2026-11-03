@@ -92,10 +92,14 @@ class CRGBColour { public:
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-struct CLongVector {                                     // STLport vector<long>
+namespace std {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector;
+template <> class vector<long, allocator<long> > { public:   // STLport vector<long> (12 bytes)
     long* _M_start; long* _M_finish; long* _M_end_of_storage;
     void push_back(const long& value);                   // 0x00485FF3
 };
+}
 
 namespace NPlayerGui {
 template <class T> struct CCountedPointer {
@@ -121,7 +125,7 @@ struct CQuestInfoElementMiniGameBar : CQuestInfoElement {   // retail 0x40 bytes
     CRGBColour    FadeColour;                      // +0x28
     bool          Updatable;                       // +0x2c
     long          Graphic;                         // +0x30
-    CLongVector   ExtraElements;                   // +0x34
+    std::vector<long>   ExtraElements;                   // +0x34
     CQuestInfoElementMiniGameBar(EMiniGameType type);   // 0x00656CAA
 };
 struct CQuestInfoElementCounter : CQuestInfoElement {   // retail 0x2c bytes

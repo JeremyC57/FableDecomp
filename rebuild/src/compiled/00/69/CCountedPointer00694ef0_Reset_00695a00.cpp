@@ -11,13 +11,16 @@
 // allocating a fresh block (operator new @ 0x00BFEA1A, null-checked; delete @ 0x00BFE9BC). The
 // instantiation is named from the manifest label when unique, else from the destroy function.
 // One of 74 bodies of this shape.
-void __fastcall Destroy_00694ef0(void* object);   // 0x00694EF0: the per-type deleter stored in the block
+namespace NCreatureAction { class CActionEventBase; }
+template <class T> class CCountedPointer { public:
+    static void __fastcall DeleteData(void* object);   // 0x00694EF0 for CActionEventBase: the per-type deleter stored in the block
+};                                                     // (naming wave 34: Ego_r / FableWin ?DeleteData@?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@SIXPAX@Z)
 
 struct SCountBlock {
     long m_references;                     // +0
     void (__fastcall* m_pfnDestroy)(void*);// +4
     void* m_pObject;                       // +8
-    SCountBlock(void* object) : m_references(1), m_pfnDestroy(Destroy_00694ef0), m_pObject(object) { }
+    SCountBlock(void* object) : m_references(1), m_pfnDestroy(CCountedPointer<NCreatureAction::CActionEventBase>::DeleteData), m_pObject(object) { }
 };
 
 struct CCountedPointer_00694ef0 {

@@ -85,8 +85,8 @@ class CPersistContext { public:                               // 0x2c bytes
     CCharString*        PStringToSaveTo;
     void*               PLoadStream;
     void*               PSaveStream;
-    CPersistContext(CStringParser* parser, void (*callback)(CCharString*), bool reportErrors,
-                    CDefinitionManager* definitions, CSymbolMap* symbols, CCharString* text);   // 0x009BADD0
+    CPersistContext(CStringParser& parser, void (__fastcall* callback)(const CCharString&), bool reportErrors,
+                    const CDefinitionManager* definitions, const CSymbolMap* symbols, CCharString* text);   // 0x009BADD0
 };
 void __fastcall TransferInLong_009e2590(CPersistContext* context, CStringParser* parser, long* value);   // 0x009E2590
 class CCRCSymbolMap { public:
@@ -148,7 +148,7 @@ bool CCRCSymbolMap::ParseEnum(CStringParser& parser, const CCharString& wantedNa
                 Error(CurrentFilename, parser.CursorLine, "Expecting ';' in enum");
             break;
         } else if (item.Type == 1 && item.GetSymbol() == "=") {
-            CPersistContext context(&parser, 0, true, 0, 0, 0);
+            CPersistContext context(parser, 0, true, 0, 0, 0);
             long read;
             TransferInLong_009e2590(&context, &parser, &read);
             value = read;

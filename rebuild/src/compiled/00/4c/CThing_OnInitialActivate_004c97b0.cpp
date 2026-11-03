@@ -37,7 +37,7 @@ public:
     static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
 };
 class CQuestManager { public:
-    void OnActivateEntity(CThing* thing);        // 0x004AFA60
+    void OnActivateEntity(CThing& thing);        // 0x004AFA60 (Ego_r / FableWin ?OnActivateEntity@CQuestManager@@QAEXAAVCThing@@@Z)
 };
 class CThingManager { public:
     void AddToRenderList(CThing* thing);         // 0x0051DF80
@@ -86,7 +86,7 @@ public:
 };
 void CThing::OnInitialActivate()
 {
-    CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().OnActivateEntity(this);
+    CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().OnActivateEntity(*this);
     InitialisationStage++;
     CInterfaceVector components(Components);
     for (CInterfaceEntry* it = components.begin(); it != components.end(); ++it) {

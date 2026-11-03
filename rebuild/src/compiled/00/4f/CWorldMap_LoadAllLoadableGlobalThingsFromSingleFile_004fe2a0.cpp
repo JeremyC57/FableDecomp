@@ -31,7 +31,7 @@ class CCharString { public:
     CCharString();                                     // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
-    void LoadFromFile(CAFile* file, CASuspendableProcess* process, long length);   // 0x0099F2E0
+    void LoadFromFile(CAFile& file, CASuspendableProcess* process, long length);   // 0x0099F2E0
     const char* c_str() const { if (!PStringData) return g_EmptyText; return PStringData->Data; }
     long length() const { if (!PStringData) return 0; return PStringData->Length; }
 };
@@ -144,7 +144,7 @@ void CWorldMap::LoadAllLoadableGlobalThingsFromSingleFile(const CWideString& fil
 {
     CCharString text;
     CDiskFileWin32 file(filename, FILE_ACCESS_READ, 2);
-    text.LoadFromFile((CAFile*)&file, 0, -1);
+    text.LoadFromFile(*(CAFile*)&file, 0, -1);
     CStringParser parser(text, 0, CCharString(""), 0);
     while (parser.FindKeyword("NEWMAP")) {
         long map = parser.ReadAsInteger();

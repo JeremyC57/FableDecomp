@@ -140,7 +140,10 @@ struct CCameraOwner {
     VPAD8(a) VPAD1(b)                              // 0..8
     virtual bool GetCameraManager(CGameCameraManager** out);   // slot 9 (+0x24)
 };
-struct CTeleportThing {
+struct CTeleportThing {                            // 0x00661EA0 toggles bit 1 of +0x15D (CThing::SetAsGameStatePersisted 0x004C7880 is +0x92 bit 5): name unproven
+    void SetAsGameStatePersisted(bool persisted);  // 0x00661EA0
+};
+class CThing { public:                             // the thing view the teleport code calls (SetInLimbo is a CThing member, Ego_r / FableWin)
     unsigned char   _pad[0xc];
     unsigned char   Type;                          // +0x10
     unsigned char   _pad11[0xf];
@@ -156,7 +159,6 @@ struct CTeleportThing {
     signed char     PlayerNumber;                  // +0x90
     VPAD64(a) VPAD8(b) VPAD4(c) VPAD1(d)           // 0..76
     virtual bool IsCreature();                     // slot 77 (+0x134)
-    void SetAsGameStatePersisted(bool persisted);  // 0x00661EA0
     void SetInLimbo(bool limbo);                   // 0x004C8CF0
 };
 class CWorld { public:
@@ -177,7 +179,7 @@ class CGameScriptInterface { public:
     virtual void SetThingHeading(const CScriptThing& thing, float angle, bool immediate) const;   // slot 474 (+0x768)
     virtual void EntityTeleportToPosition(const CScriptThing& thing, const C3DVector& pos, float angle, bool keepOnGround, bool fade) const;
 };
-#define T(x) ((CTeleportThing*)(x))
+#define T(x) ((CThing*)(x))
 
 void CGameScriptInterface::EntityTeleportToPosition(const CScriptThing& thing, const C3DVector& pos, float angle, bool keepOnGround, bool fade) const
 {
@@ -209,7 +211,7 @@ void CGameScriptInterface::EntityTeleportToPosition(const CScriptThing& thing, c
             walk = (CTCWalk*)object->m_tcs.FindPick(7);
             walk->Reset();
         }
-        T(object)->SetAsGameStatePersisted(false);
+        ((CTeleportThing*)object)->SetAsGameStatePersisted(false);
         bool creature = T(object)->IsCreature();
         if (creature) {
             T(object)->SetInLimbo(true);

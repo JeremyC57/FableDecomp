@@ -39,7 +39,7 @@ public:
     unsigned char    _pad270[0x10];
     CTextureManager* m_pTextureManager;                  // +0x280
     void ChangeScene();                                  // 0x009FD0C0
-    void SetLevel(long level);                           // 0x009FD100
+    void SetReduceSizeFrameDelay(unsigned long delay);   // 0x009FD100 (Ego_r / FableWin ?SetReduceSizeFrameDelay@CGraphicDataBank@@QAEXK@Z)
 };
 class CEngineSurfaceCompositionManager {
 public:
@@ -63,8 +63,8 @@ bool CEngineResourceManager::ResizeHiresTextureMemory(long sizeKB)
     format.Initialise(D3DFMT_DXT1);
     long textureSize = CTextureManager::CalculateTextureSize(0x200, 0x200, true, format);
     long level = m_pMainGraphicBank->m_level;
-    m_pMainGraphicBank->SetLevel(0);
+    m_pMainGraphicBank->SetReduceSizeFrameDelay(0);
     bool result = m_pMainGraphicBank->m_pTextureManager->ResizePoolByFormat(textureSize, (sizeKB << 10) / textureSize);
-    m_pMainGraphicBank->SetLevel(level);
+    m_pMainGraphicBank->SetReduceSizeFrameDelay(level);
     return result;
 }

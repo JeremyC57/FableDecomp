@@ -14,6 +14,14 @@
 // Shape: VC7.1 <algorithm> `_Adjust_heap`; GetEntryDataOffset inlined twice (right child first, its
 // result parked in the comparator's own argument slot `[esp+24h]`), the unsigned `jae`; `top` and
 // `hole` live in the two `sub esp,8` frame words.
+struct CPackedUIntArray {                          // 16 bytes (global class: Ego_r / FableWin ??ACPackedUIntArray@@QBEKK@Z)
+    unsigned long* PackedInts;                     // +0x00
+    unsigned long  Size;                           // +0x04 (0: not packed, use RuntimeData)
+    unsigned char  Bits;                           // +0x08
+    unsigned long  Bias;                           // +0x0C
+    unsigned long operator[](unsigned long index) const;   // 0x00A629F0
+    bool IsPacked() const { return Size != 0; }
+};
 namespace FableHeap_009d3750 {
 
 template <class T> struct CArray {                 // retail CArray: 12 bytes
@@ -30,14 +38,6 @@ struct CRuntimeData {                              // CBankFile::CRuntimeData, 1
     bool          Valid;                           // +0x09
 };
 
-struct CPackedUIntArray {                          // 16 bytes
-    unsigned long* PackedInts;                     // +0x00
-    unsigned long  Size;                           // +0x04 (0: not packed, use RuntimeData)
-    unsigned char  Bits;                           // +0x08
-    unsigned long  Bias;                           // +0x0C
-    unsigned long operator[](unsigned long index) const;   // 0x00A629F0
-    bool IsPacked() const { return Size != 0; }
-};
 
 struct CBankFile_Retail {                          // the retail layout (engine/CBankFile.h disagrees with the bytes)
     void*                     __vftable;           // +0x00

@@ -45,7 +45,7 @@ struct CCursorPos {
     unsigned long StringPos;
     unsigned long Line;
 };
-typedef void (__cdecl* TErrorCallback)(CCharString*);
+typedef void (__fastcall* TErrorCallback)(const CCharString&);
 class CStringParser : public CBaseClass {          // vtable 0x0122D874
 public:
     char*                    String;               // +0x04

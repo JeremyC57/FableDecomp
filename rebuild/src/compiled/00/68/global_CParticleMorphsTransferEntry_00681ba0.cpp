@@ -17,13 +17,13 @@ struct Data {char* text;int size;unsigned capacity;bool fast;int refs;};
 class CCharString { public: Data* data;CCharString();CCharString(const char*,long=-1);CCharString(const CCharString&);~CCharString();void AppendCharacter(char);const char* Text()const{return !data?EmptyString:data->text;}int Size()const{return data?data->size:0;} CCharString Mutate();};
 Data* MakeData(const char*,int);Data* ShareData(Data*);void DropData(Data*);
 
-class CPersistContext { public:char pad[24];int mode;void Write(const char*,CCharString&,CCharString&);void Read(const char*,CCharString&);};
+class CPersistContext { public:char pad[24];int mode;void Write(const char*,CCharString&,CCharString&);template<class T> void Transfer(const char*,T&);};  // 0x00411010 Transfer<CCharString> (Ego_r / FableWin ??$Transfer@VCCharString@@@...AAVCCharString@@@Z);
 namespace std {template<class T>struct vector {T* first;T* last;T* end;};}
 typedef std::vector<bool> BoolVector;
 __forceinline CCharString DefaultString(){CCharString s;return s;}
 struct CPersistTraits {void Transfer(CPersistContext*,CCharString*,BoolVector*);};
 void CPersistTraits::Transfer(CPersistContext* ctx,CCharString* name,BoolVector* arr){
  bool writing=ctx->mode==1||ctx->mode==3;if(writing){CCharString value("");for(bool* p=arr->first,*end=arr->last;p!=end;++p)value.AppendCharacter(*p?'T':'F');const char* key=name->Text();ctx->Write(key,value,DefaultString());return;}
-{CCharString value("");ctx->Read(name->Text(),value);if(value.data&&value.data->size>0&&value.data->size==arr->last-arr->first){const char* p=value.data->text;int n=arr->last-arr->first;for(int i=0;i<n;++i)arr->first[i]=p[i]=='T';}}
+{CCharString value("");ctx->Transfer(name->Text(),value);if(value.data&&value.data->size>0&&value.data->size==arr->last-arr->first){const char* p=value.data->text;int n=arr->last-arr->first;for(int i=0;i<n;++i)arr->first[i]=p[i]=='T';}}
 
 }

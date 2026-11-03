@@ -1,0 +1,33 @@
+step	state	note
+T1	DONE	00578797 005c3a95 00403480: Transfer<bool>/<long>/<CCharString> member templates, TransferVector<CCharString>, C++ GFMain; recheck 3/3 RELOCATION_MATCH PASS
+T2	DONE	00681ba0 006e2cb0 00702720 00729cf0 00837ce0 0083c230 0083d940: CPersistContext::Transfer member templates (bool/long/float/unsigned __int64/CCharString); recheck 7/7 RELOCATION_MATCH PASS
+T3	DONE	006d8e30 0065ce9b 00560720 00775c60: TransferVector<long/float/enum> member templates (STLport vector<long> model replaces CLongVector); 4/4 PASS
+T4	DONE	004c97b0 0051e5a0 0089b780 009cd330 008006d0 00def760 00e06050 00e5f2b0 00e5f8f0 00e5f6b0 00e82950 00d37530 00daa260 00e7e640: OnActivateEntity(CThing&), CThing::SetInLimbo/SetAsGameStatePersisted, CFileDataOutputStream(CAFile&)+virtual dtor, operator const char*, NScript script classes + nested enums, virtual GetScriptThing/IsPerformingScriptTask/Speak; 14/14 PASS
+T5	DONE	parser family 004b3760 005079c0 006ba8b0 006bbba0 00a38670 00cb7cb0 00cb7da0 00403c20 00414e30 009bae70 009e5ad0 004c88e0 004c8a30 00686b00 009ade90 00a38e50 00520570: CPersistContext ctor/Init + CStringParser Init/ctor spellings (fastcall const CCharString& callback, const pointers), ReadAsStringUntil(Past)String, private LoadSingleThing; 17/17 PASS
+T6	DONE	0040f7e0 009e2590: CStringParser PeekNextItemType (EParsedItemType) / ReadAsString / SkipPastNextItemIfIs / ReadAsFloat on CStringParser (CStringParserMethods retired); 2/2 PASS
+T7	DONE	0041a4c0 (rename -> NResourceDirectoryNames::GetUserDataDir) 004067c0 (re-authored IsEnoughSpaceForProfile, CAFile::IsRoomForFile) 00415260 (rename -> NLocalisation::GetTextBankName) 004023f0 00416832; 5/5 PASS
+T8	DONE	00401780 (re-authored GFClearBadExitFlag on CSystemRegistry) 00494410 (re-authored as CFrontendGameComponent::LoadProfile, rename) 00695a00 (CCountedPointer<CActionEventBase>::DeleteData); PASS
+T9	DONE	00b3b7c0 00b3b870 00b3b4f0 SetReduceSizeFrameDelay; 009fd100 definer re-authored + rename; PASS
+T10	DONE	009cc640 009d3040 009d3750 CPackedUIntArray::operator[] const (global class); PASS
+T11	DONE	00530ec0 00767200 GetDef member templates (const, CDefPointer<const T>*); PASS
+T12	DONE	00404440 (CTBaseSingleton<CFileInstaller>::Get template, rename) 00599e3f 0042e3ce; PASS
+T13-15	DONE	CChunkedFileChunk / CChunkedFileSuperChunk protected ctors: 16 + 27 (C3DMeshFileChunk stand-in -> CChunkedFileSuperChunk) + 5 (CBase_00aa8360 / long type codes -> literals); 48/48 PASS; 00ac0c00 deferred (header)
+T16	DONE	004b4c50 004b4aa0 008d02c0 CThing::GetDefName const (+ CDefString::GetString named local); PASS
+T17	DONE	00ac39c0 ??_GC3DMeshPartitionBuilderElement (rename); PASS
+T18	DONE	00ae8810 DatabaseSerialise(CPersistContext&, const CEmitterDatabaseSerialiseInfo&); PASS
+T19	DONE	00b239c0 re-authored CEngine::UpdateTextureMorphCache (virtual, 4 args) -> UpdateDiskCache; PASS
+T20	DONE	NUISystem component ctors (cx12 4326 4335-4340): 16 rows, local CSprite / CViewport / CDraggableInto / CScrollableList / *_Retail bases -> NUISystem::C*(long); own ctors -> (long); 0x0055A890 / 0x0055B040 -> GetDataFromDef; 16/16 PASS; 005407b0 deferred
+T21	DONE	004fe2a0 00506d40 CCharString::LoadFromFile(CAFile&, ...); PASS; 004fe630 / 00521ae0 deferred
+T22	DONE	00500230 00506bb0 00506c40 CReplaceSerialise<CFileFormatLevel,COldFileFormatLevel3>::ReadFromFile(CAFile&, ...) as the 5-byte CRTP base; PASS
+T23	DONE	7 rows: 0x0050EE40 = CFileLargeThemePalette::CFileLargeThemePalette(); PASS
+T24	DONE	7 rows: std::vector<long>::push_back (CLongVector / CRetailLongVector stand-ins -> explicit specialisation, vecspec.py); 005eedcf test rewritten; PASS
+T25	DONE	12 rows: std::vector<CCharString>::push_back (vecspec2.py); 00591a66 also TransferVector<CCharString> / reserve(unsigned int) / ~vector; PASS
+T26	DONE	0057f616 0057f17a CTCHeroStats::MirroredCriminalStatus ctor; PASS
+T27	DONE	pass-12 small rows: NProfileTimer::StartProfile/EndProfile (0049f180), GetAbilityMaximumLevel const (EHeroAbility) (005eeee6 005eef84), RemapUIDForSerialisation const (005fae90), TransferVector<CCharString> + vector(size_type) (00706f40); PASS
+T28	DONE	008adf90 vector<CScriptThing> allocator parameter + protected _M_insert_overflow; 00d77340 std::vector<float>::push_back; PASS
+T29	DONE	c718 rows: NProgressDisplay::StopProgress (00434f60), CPlayer::SetPlayerCharacter (0089f4a0), NCameraModes::CScriptModuleTransitionBetweenPoints ctors (008926d0 00892530); PASS
+T30	DONE	0055a890 respelled + renamed NUISystem::CDraggable::GetDataFromDef (was CClickable; CClickable's is 0x0055B040); PASS
+T31	DONE	collision fix: 0x005CC300 (not Transfer<long>) and 0x00661EA0 (not CThing::SetAsGameStatePersisted) keep their established spellings in 005c3a95 / 0089b780; queued w34; PASS
+T32	DONE	vector<CCharString>::_M_insert_overflow protected + std::__false_type + size_t in 00d6cdc0 00d773e0 00eda8c0 00edaba0; PASS
+T33	DONE	KEEP follow-ups: 00416953 NProfileTimer; 007a9fe0 005ee887 005f3e7d CTCInventoryAbilities const / EHeroAbility; PASS
+END	DONE	final recheck 186 respelled rows = 185 RELOCATION_MATCH + 1 MATCH, all PASS (+357 unchanged binders rechecked for emission: 357 PASS); BINDINGS 132 RETIRE / 37 ADD, bindings_multi_check 0; 9 renames; 15 labels; queue 55 done / 10 partial; c718-c721 added (103 rows)

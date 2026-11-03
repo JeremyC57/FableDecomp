@@ -31,8 +31,10 @@ class CCharString { public:
     ~CCharString();                                      // 0x0099EAE0
 };
 template<class T> class CArray { public: T* First; T* Last; T* End; long Pad; };
-void __fastcall LoadingStage(const CCharString& stage, long level);     // 0x009D8240 (empty in retail)
-void __fastcall LoadingStageDone(long level);                           // 0x009D8250 (empty in retail)
+namespace NProfileTimer {
+void __fastcall StartProfile(const CCharString& name, long level);      // 0x009D8240 (empty in retail)
+void __fastcall EndProfile(long level);                                 // 0x009D8250 (empty in retail)
+}
 class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char Dead : 1;                              // +0x91 bit 0
@@ -101,17 +103,17 @@ class CWorld : public CWorld_PDB { public:
 };
 void CWorld::ActivateWorld(bool loadedGame)
 {
-    LoadingStage("Init Characters", 0);
+    NProfileTimer::StartProfile("Init Characters", 0);
     CThing* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (!hero || hero->Dead)
         PlayerManager->InitPlayerCharacter(loadedGame);
     PEnvironment_ptr->SpellEffectInterpolator->RefreshScreenEffects();
-    LoadingStage("Init GUI", 0);
+    NProfileTimer::StartProfile("Init GUI", 0);
     g_pPlayerGui->InitialActivate();
-    LoadingStage("Init Quests", 0);
+    NProfileTimer::StartProfile("Init Quests", 0);
     CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().ActivateMultipleQuests((CArray<CCharString>*)InitialActiveQuests, false, true);
     CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().PostBoastTransfer();
-    LoadingStageDone(0);
+    NProfileTimer::EndProfile(0);
     CGameEvent event(GAME_EVENT_WORLD_ACTIVATED);
     event.Add(false);
     event.Player = (signed char)((CPlayerManager*)PlayerManager)->GetMainPlayerNumber();

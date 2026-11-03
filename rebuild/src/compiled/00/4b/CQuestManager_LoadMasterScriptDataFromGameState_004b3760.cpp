@@ -52,8 +52,8 @@ public:
 class CSymbolMap;
 class CPersistContext { public:                             // retail 0x2c bytes, trivial destructor
     unsigned char _pad00[0x2c];
-    CPersistContext(CStringParser* parser, void (*errorCallback)(CCharString*), bool reportErrors,
-                    CDefinitionManager* definitions, CSymbolMap* symbols, CCharString* sourceText);   // 0x009BADD0
+    CPersistContext(CStringParser& parser, void (__fastcall* errorCallback)(const CCharString&), bool reportErrors,
+                    const CDefinitionManager* definitions, const CSymbolMap* symbols, CCharString* sourceText);   // 0x009BADD0
 };
 extern const char g_emptyString_0122d70e[];         // 0x0122D70E ("")
 
@@ -86,7 +86,7 @@ void CQuestManager::LoadMasterScriptDataFromGameState(CScriptDataBase& script_da
     if (persisted) {
         CCharString text(*persisted);
         CStringParser parser(text, 0, CCharString(g_emptyString_0122d70e, -1), 0);
-        CPersistContext context(&parser, 0, true, &CGameDefinitionManager::Get(), 0, &text);
+        CPersistContext context(parser, 0, true, &CGameDefinitionManager::Get(), 0, &text);
         script_data.OnPersist(context);
     }
 }

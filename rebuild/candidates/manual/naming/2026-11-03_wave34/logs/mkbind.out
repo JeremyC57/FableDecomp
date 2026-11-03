@@ -1,0 +1,36 @@
+retire 98 keep 35 add 33
+KEEP 009b9530 ?Init@CStringParser@@QAEXPADP6AXPAVCCharString@@@ZABV2@J@Z <- 00/40/CStringParser_CStringParser_00404720.cpp 00/9a/CDefinitionManager_CompileString_009af1e0.cpp
+KEEP 0055b460 ??0CClickable@NUISystem@@QAE@PAUCComponentManager@1@@Z <- 00/53/NUISystemCMenuEntry_CMenuEntry_0053dfe0.cpp
+KEEP 00414ea0 ??1CCharStringVector@@QAE@XZ <- 00/85/CCombatActionBase_SetupCombatStrikeEvents_00859a70.cpp 00/ce/CThingSwitch_vectordeletingdestructor_00cef9a0.cpp 00/5f/CTCInventoryAbilities_OpenInventory_005f05e5.cpp
+KEEP 004045c0 ?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z <- 00/74/CTCCreatureGenerator_Persist_0074b900.cpp 00/cf/unattributed_PersistTransferAlreadyDugHere00cfdfd0_00cfdfd0.cpp 00/ec/unattributed_PersistTransfer200ecd960_00ecd960.cpp
+KEEP 005edea3 ?GetAbilityMaximumLevel@CTCInventoryAbilities@@QAEJJ@Z <- 00/6d/CTCHeroExperience_IsReadyToLevelUp_006d7cb0.cpp 00/56/CTCInventoryExperience_GetExperienceAbilityDescription_0056fe7c.cpp 00/5e/CTCInventoryAbilities_UpdateWillMorph_005ee887.cpp
+KEEP 005edea3 ?GetAbilityMaximumLevel@CTCInventoryAbilities_Retail@@QAEJJ@Z <- 00/5f/CTCInventoryAbilities_ForceAllAbilitiesToMaxLevel_005f3e7d.cpp
+KEEP 00994430 ??1CFileDataOutputStream@@QAE@XZ <- 00/9a/CBankFileManager_CreateRetailBank_009a7720.cpp 00/9d/CDefStringTable_SaveTable_009d4ce0.cpp 00/9c/CBankFile_WriteRecoveryFile_009cdf50.cpp
+KEEP 00aa7590 ??0CChunkedFileChunk@@QAE@PBD@Z <- 00/aa/C3DAnimFileXAllocationSizeChunk_CreateNewInstance_00aa4530.cpp 00/ac/C3DMeshFileMaterialExtChunk_CreateNewInstance_00ac03b0.cpp
+KEEP 00aa8360 ??0CChunkedFileSuperChunk@@QAE@PBD@Z <- 00/aa/C3DAnimFileHelpersChunk_CreateNewInstance_00aae0b0.cpp 00/aa/C3DMeshFileHelpersChunk_CreateNewInstance_00aa9670.cpp 00/ab/C3DMeshFileMaterialListChunk_CreateNewInstance_00abfbb0.cpp
+KEEP 00aa7590 ??0CChunkedFileChunk@@QAE@J@Z <- 00/ab/C3DMeshFileVerticesChunk_C3DMeshFileVerticesChunk_00abc780.cpp 00/aa/C3DAnimFileXAllocationSizeChunk_CreateNewInstance_00aa4530.cpp 00/ab/C3DMeshFileUniqueVerticesChunk_C3DMeshFileUniqueVerticesChunk_00abc560.cpp
+KEEP 005815d6 ?TransferVector@CPersistContext@@QAEXPBDPAUCLongVector@@@Z <- 00/60/CTCInventoryMap_OnSerialise_00606300.cpp 00/e3/NScriptCVAssassinAttacksScript_OnPersist_00e39780.cpp
+KEEP 0049b8d0 ?Transfer@CPersistContext@@QAEXPBDAAUCCharStringVector@@@Z <- 00/e5/CConversation_Transfer_00e579e0.cpp 00/8e/CTCContainer_OnSerialise_008ed2b0.cpp 00/60/CTCInventoryMap_OnSerialise_00606300.cpp
+KEEP 009d8250 ?LoadingStageDone@@YIXJ@Z <- 00/43/CDisplayEngine_SetAboutToRun_00434cd0.cpp
+KEEP 0049b8d0 ?Transfer@CPersistContext@@QAEXPBDPAUCCharStringVector@@@Z <- 00/e5/CConversation_Transfer_00e579e0.cpp 00/8e/CTCContainer_OnSerialise_008ed2b0.cpp 00/60/CTCInventoryMap_OnSerialise_00606300.cpp
+KEEP 009b9530 ?Init@CStringParser@@QAEXPBDP6AXPAVCCharString@@@ZABV2@J@Z <- 00/40/CStringParser_CStringParser_00404720.cpp 00/9a/CDefinitionManager_CompileString_009af1e0.cpp
+KEEP 007e7450 ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ <- 00/d2/CKGChiefBreakSiege_Main_00d22880.cpp 00/ee/CDemonDoorFace_Main_00ee7a20.cpp 00/e8/NScriptCVFisticuffsClubScriptCRingFighter_Main_00e8b020.cpp
+KEEP 00defb10 ?SwitchDoorsOnAndOff@CQ_SecretPassageScript@@QAEXXZ <- 00/df/NScriptCQSecretPassageScript_BossBlockingPrisonPassage_00df0200.cpp
+KEEP 009b9530 ?Init@CStringParser@@QAEXPBDP6AX0@ZABVCCharString@@J@Z <- 00/40/CStringParser_CStringParser_00404720.cpp 00/9a/CDefinitionManager_CompileString_009af1e0.cpp
+KEEP 009accc0 ?GetDefNameFromGlobalIndex@CGameDefinitionManager@@QAE?AUCDefString@@J@Z <- 00/8d/NCreatureModeCModeCreatureIsProjectile_OnDeactivate_008d90b0.cpp 00/89/CGameScriptInterface_MsgOnExpressionPerformed_00893b00.cpp 00/82/CThingBuilding_DrawGetEditDrawInfo_0082d0d0.cpp
+KEEP 004107c0 ?Transfer@CPersistContext@@QAEXPBDPA_N@Z <- 00/5b/CTCInventoryClothing_OnSerialise_005b369a.cpp
+KEEP 0050ee40 ??0CLayer@@QAE@XZ <- 00/51/CReplaceSerialiseCOldFileFormatMapHeader7COldFileFormatMapHeader6_ConvertPreviousUnknownVersionUp_0051b0a0.cpp 00/51/CReplaceSerialiseCOldFileFormatMapHeader4COldFileFormatMapHeader3_ConvertPreviousUnknownVersionUp_00518040.cpp 00/51/CReplaceSerialiseCOldFileFormatMapHeader5COldFileFormatMapHeader4_ConvertPreviousUnknownVersionUp_005196e0.cpp
+KEEP 00404440 ?Get@CFileInstallerSingleton@@SIAAVCFileInstaller@@XZ <- 00/98/CThreadedFileManager_OnFileReadCompletion_0098e320.cpp
+KEEP 00485ff3 ?push_back@?$vector@J@std@@QAEXABJ@Z <- 00/57/CTCHeroStats_GetStatsStatus_0057cb2a.cpp
+KEEP 008ad5f0 ?_M_insert_overflow@?$vector@VCScriptThing@@@std@@QAEXPAVCScriptThing@@ABV3@ABU__false_type@2@I_N@Z <- 00/ea/NScriptCVMurderTwistScriptCMurderTwistBuriedGem_Init_00eae820.cpp 00/8a/CGameScriptInterface_GetAllThingsWithDefName_008a8890.cpp 00/8a/CGameScriptInterface_GetAllThingsWithScriptName_008a8570.cpp
+KEEP 005815d6 ?TransferVector@CPersistContext@@QAEXPBDPAV?$vector@JV?$allocator@J@std@@@std@@@Z <- 00/60/CTCInventoryMap_OnSerialise_00606300.cpp 00/e3/NScriptCVAssassinAttacksScript_OnPersist_00e39780.cpp
+KEEP 0099f2e0 ?LoadFromFile@CCharString@@QAEXPAVCAFile@@PAVCASuspendableProcess@@J@Z <- 00/4f/CWorldMap_GetNavigationSectionOffsetInFile_004fe630.cpp 00/52/CThingManager_LoadFromFile_00521ae0.cpp 00/99/CCharString_CCharString_0099fa50.cpp
+KEEP 0051fd80 ?LoadSingleThing@CThingManager@@QAEPAVCThing@@AAVCPersistContext@@J@Z <- 00/52/CThingManager_LoadHeroStateBinary_00520670.cpp 00/52/CThingManager_LoadEntitiesBinary_00521240.cpp
+KEEP 00404440 ?Get@CFileInstaller@@SIPAV1@XZ <- 00/98/CThreadedFileManager_OnFileReadCompletion_0098e320.cpp 00/9c/CFileInstaller_StartReadingFile_009c3590.cpp 00/59/CFrontEndManager_Action_0059a238.cpp
+KEEP 00411010 ?Read@CPersistContext@@QAEXPBDAAVCCharString@@@Z <- 00/ae/NParticleEngineCParticleEmitter_DatabaseSerialise_00aef1f0.cpp
+KEEP 00411010 ?Transfer@CPersistContext@@QAEXPBDPAVCCharString@@@Z <- 00/ae/NParticleEngineCParticleEmitter_DatabaseSerialise_00aef1f0.cpp 00/6e/CTCDParticleEmitter_OnSerialise_006e0730.cpp
+KEEP 00528760 ?GetDef@CGameDefinitionManager@@QAE_NABVCCharString@@AAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z <- 00/7f/global_Create_007f1b70.cpp
+KEEP 007e7490 ?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@QBE?AVCScriptThing@@XZ <- 00/ee/CDemonDoorFace_Main_00ee7a20.cpp 00/e8/NScriptCVFisticuffsClubScriptCRingFighter_Main_00e8b020.cpp 00/e6/NScriptCVChickenKickingScriptCSpectator_Main_00e63890.cpp
+KEEP 00e01900 ?MakeTraderComment@CQ_TraderEscortScript@NScript@@QAE_NABVCCharString@@ABVCScriptThing@@W4ETraderCom <- 00/e0/NScriptCQTraderEscortScriptCTraderComment_Main_00e05360.cpp 00/e0/NScriptCQTraderEscortScriptCDarkwoodTrader_OnPredicateFail_00e01760.cpp
+KEEP 00e82f80 ?GetQuestText@CV_FisticuffsClubScript@@QAE?AVCCharString@@V2@@Z <- 00/e8/NScriptCVFisticuffsClubScriptCTyler_FightWarmupRounds_00e8a2b0.cpp
+KEEP 004c7cc0 ?GetDefName@CThing@@QAE?AVCDefString@@XZ <- 00/6a/CThingFilterHasDefName_operator_006a7be0.cpp 00/7d/CTCTavernGameCoinGolf_GetBestScore_007d2a00.cpp 00/85/global_IsCreatureButNotHero_0085ee10.cpp

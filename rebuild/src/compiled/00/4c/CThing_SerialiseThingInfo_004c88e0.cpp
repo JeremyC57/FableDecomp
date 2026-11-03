@@ -50,7 +50,7 @@ struct CCursorPos {
     unsigned long StringPos;                           // +0x4
     unsigned long Line;                                // +0x8
 };
-typedef void (*TStringParserErrorCallback)(const char*);
+typedef void (__fastcall* TStringParserErrorCallback)(const CCharString&);
 class CStringParser : public CBaseClass {              // vtable 0x0122D874, retail 0x28 bytes
 public:
     char*                      String;                 // +0x04
@@ -75,9 +75,9 @@ class CSymbolMap;
 class CDefinitionManager;
 class CPersistContext { public:                               // Ego_r.pdb, 0x2C bytes, no destructor
     unsigned char _body[0x2c];
-    void Init(CCharString& data, CDefinitionManager* defs);                                                       // 0x009BAA10
-    void Init(CStringParser* parser, TStringParserErrorCallback callback, bool loading, CDefinitionManager* defs,
-              CSymbolMap* symbols = 0, CCharString* name = 0);                                             // 0x009BA9D0
+    void Init(CCharString& data, const CDefinitionManager* defs);                                                       // 0x009BAA10
+    void Init(CStringParser& parser, TStringParserErrorCallback callback, bool loading, const CDefinitionManager* defs,
+              const CSymbolMap* symbols = 0, CCharString* name = 0);                                             // 0x009BA9D0
 };
 
 class CThing {
@@ -100,7 +100,7 @@ void __fastcall CThing::SerialiseThingInfo(bool saving, CCharString& data, CSeri
         context.Init(data, 0);
     else {
         parser.Init(data);
-        context.Init(&parser, 0, true, 0);
+        context.Init(parser, 0, true, 0);
     }
     SerialiseThingInfo(context, info);
     if (!saving) {

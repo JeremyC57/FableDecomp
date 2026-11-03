@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005C3A95, 1020 bytes, `ret 8`. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: RefreshActiveWeaponData 0x005C30D3, CTCInventoryBase::OnSerialise 0x005BFD5E, CPersistContext saving test 0x004AEF50
 //   (labelled IsBinary) / Transfer<bool>(name, value, default) 0x004045C0 / Transfer(name, bool*) 0x004107C0 / Transfer<CCharString>
-//   0x00411010 / Transfer<long> 0x005CC300, IS_THING_ALIVE 0x004CC340, CBaseIntelligentPointer::GetPItem 0x00A01B50, bitset test
+//   0x00411010 / Transfer(name, long*) 0x005CC300 (name unproven), IS_THING_ALIVE 0x004CC340, CBaseIntelligentPointer::GetPItem 0x00A01B50, bitset test
 //   0x00410DE0, const LowerBound 0x004365B0 (carrying 0x46), CTCCarrying::IsCarryingThing 0x006A1060 / IsCarriedThingInPrimarySlot
 //   0x006A1490, CGameDefinitionManager::Get 0x0044C6B0 / GetDefNameFromGlobalIndex 0x009ACCC0 / GetDefGlobalIndexFromName 0x009AD410,
 //   CDefString::operator CCharString 0x00415DD0, CCharString 0x0099E4B0 / = 0x0099EFB0 / != 0x0099E960 / ~ 0x0099EAE0.
@@ -51,10 +51,9 @@ struct CIntelligentPointer {
 bool __fastcall IS_THING_ALIVE(const CIntelligentPointer& p);   // 0x004CC340
 class CPersistContext { public:
     bool IsSaving() const;                              // 0x004AEF50
-    void Transfer(const char* name, bool& value, const bool& defaultValue);   // 0x004045C0
-    void Transfer(const char* name, bool* value);       // 0x004107C0
-    void Transfer(const char* name, CCharString* value);   // 0x00411010
-    void Transfer(const char* name, long* value);       // 0x005CC300
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x004045C0 <bool>
+    template <class T> void Transfer(const char* name, T& value);   // 0x004107C0 <bool> / 0x00411010 <CCharString>
+    void Transfer(const char* name, long* value);       // 0x005CC300: not Transfer<long> 0x004110B0 (separate COMDAT); name unproven
 };
 class CTCCarrying { public:
     bool IsCarryingThing(CThing* thing) const;          // 0x006A1060
@@ -146,29 +145,29 @@ void CTCInventoryWeapons::OnSerialise(CPersistContext& context, long version)
         CCharString rangedName;
         if (ConfiscatedRanged > 0)
             rangedName = CGameDefinitionManager::Get().GetDefNameFromGlobalIndex(ConfiscatedRanged);
-        context.Transfer("ConfiscatedMeleeWeaponDefName", &meleeName);
-        context.Transfer("ConfiscatedRangedWeaponDefName", &rangedName);
+        context.Transfer("ConfiscatedMeleeWeaponDefName", meleeName);
+        context.Transfer("ConfiscatedRangedWeaponDefName", rangedName);
         if (PreviousMelee > 0)
             meleeName = CGameDefinitionManager::Get().GetDefNameFromGlobalIndex(PreviousMelee);
         if (PreviousRanged > 0)
             rangedName = CGameDefinitionManager::Get().GetDefNameFromGlobalIndex(PreviousRanged);
-        context.Transfer("PreviouslyWieldedMeleeWeaponDefName", &meleeName);
-        context.Transfer("PreviouslyWieldedRangedWeaponDefName", &rangedName);
+        context.Transfer("PreviouslyWieldedMeleeWeaponDefName", meleeName);
+        context.Transfer("PreviouslyWieldedRangedWeaponDefName", rangedName);
     } else {
-        context.Transfer("MeleeWeaponCarried", &MeleeCarried);
-        context.Transfer("RangedWeaponCarried", &RangedCarried);
+        context.Transfer("MeleeWeaponCarried", MeleeCarried);
+        context.Transfer("RangedWeaponCarried", RangedCarried);
         CCharString meleeName;
-        context.Transfer("ConfiscatedMeleeWeaponDefName", &meleeName);
+        context.Transfer("ConfiscatedMeleeWeaponDefName", meleeName);
         if (meleeName != "")
             ConfiscatedMelee = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(meleeName);
         CCharString rangedName;
-        context.Transfer("ConfiscatedRangedWeaponDefName", &rangedName);
+        context.Transfer("ConfiscatedRangedWeaponDefName", rangedName);
         if (rangedName != "")
             ConfiscatedRanged = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(rangedName);
-        context.Transfer("PreviouslyWieldedMeleeWeaponDefName", &meleeName);
+        context.Transfer("PreviouslyWieldedMeleeWeaponDefName", meleeName);
         if (meleeName != "")
             PreviousMelee = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(meleeName);
-        context.Transfer("PreviouslyWieldedRangedWeaponDefName", &rangedName);
+        context.Transfer("PreviouslyWieldedRangedWeaponDefName", rangedName);
         if (rangedName != "")
             PreviousRanged = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(rangedName);
     }

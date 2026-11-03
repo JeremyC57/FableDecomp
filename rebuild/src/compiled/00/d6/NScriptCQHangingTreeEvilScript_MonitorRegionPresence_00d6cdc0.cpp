@@ -56,8 +56,11 @@ class CCharString { public:
     }
 };
 inline void* operator new(unsigned int, void* p) { return p; }
-struct __false_type { __false_type() { } };
-struct CCharStringVector {                      // std::vector<CCharString> (12 bytes in retail)
+namespace std { struct __false_type { __false_type() { } }; }
+namespace std {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc> class vector;
+template <> class vector<CCharString, allocator<CCharString> > { public:   // STLport vector<CCharString> (12 bytes)
     CCharString* _M_start;
     CCharString* _M_finish;
     CCharString* _M_end_of_storage;
@@ -65,7 +68,9 @@ struct CCharStringVector {                      // std::vector<CCharString> (12 
     CCharString& operator[](unsigned int n) { return _M_start[n]; }
     CCharString* end() { return _M_finish; }
     CCharString& back() { return *(end() - 1); }
+protected:
     void _M_insert_overflow(CCharString* pos, const CCharString& x, const __false_type&, unsigned int fill_len, bool atend);   // 0x00433530
+public:
     void push_back(const CCharString& x)
     {
         if (_M_finish != _M_end_of_storage) {
@@ -75,6 +80,7 @@ struct CCharStringVector {                      // std::vector<CCharString> (12 
             _M_insert_overflow(_M_finish, x, __false_type(), 1, true);
     }
 };
+}
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 void operator delete(void* p);                              // 0x00BFE9BC (MSVCR71)
 #include "engine/CCountedPointer.h"
@@ -112,7 +118,7 @@ public:
     unsigned char _pad60[0xa8 - 0x60];
     CCharString CurrentLevel;                               // +0xa8
     unsigned char _padac[0xc4 - 0xac];
-    CCharStringVector AreasSpawnedIn;                       // +0xc4
+    std::vector<CCharString, std::allocator<CCharString> > AreasSpawnedIn;                       // +0xc4
     void MonitorRegionPresence();
 };
 void CQ_HangingTreeEvilScript::MonitorRegionPresence()

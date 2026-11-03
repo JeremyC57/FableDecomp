@@ -24,20 +24,22 @@ struct CAbilityEntryVector {
     SAbilityEntry& operator[](unsigned long n) { return first[n]; }
 };
 
-struct CTCInventoryAbilities_Retail {
+enum EHeroAbility { };
+
+struct CTCInventoryAbilities {
     unsigned char       _pad_0x000[0x160];
     CAbilityEntryVector Abilities;                // +0x160 (PDB +0x180)
 
-    bool IsAbilityPotentiallyAvailable(long ability);     // 0x005EE02E
-    void ForceAbilityLevelTo(long ability, long level);   // 0x005EEF84
-    long GetAbilityMaximumLevel(long ability);            // 0x005EDEA3
+    bool IsAbilityPotentiallyAvailable(EHeroAbility ability) const;   // 0x005EE02E
+    void ForceAbilityLevelTo(EHeroAbility ability, long level);       // 0x005EEF84
+    long GetAbilityMaximumLevel(EHeroAbility ability) const;          // 0x005EDEA3
     void ForceAllAbilitiesToMaxLevel();
 };
 
-void CTCInventoryAbilities_Retail::ForceAllAbilitiesToMaxLevel()
+void CTCInventoryAbilities::ForceAllAbilitiesToMaxLevel()
 {
     for (long ability = 0; ability < Abilities.size(); ++ability) {
-        if (IsAbilityPotentiallyAvailable(ability))
-            ForceAbilityLevelTo(ability, GetAbilityMaximumLevel(ability));
+        if (IsAbilityPotentiallyAvailable((EHeroAbility)ability))
+            ForceAbilityLevelTo((EHeroAbility)ability, GetAbilityMaximumLevel((EHeroAbility)ability));
     }
 }

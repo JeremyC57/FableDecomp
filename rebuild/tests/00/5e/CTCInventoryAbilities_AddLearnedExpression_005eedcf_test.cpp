@@ -1,18 +1,23 @@
 #include "rebuild_abi.h"
 #include <cstdio>
 static void* g_this = 0; static long g_val = 0;
-struct FableAddLearned_005eedcf_sub
-{
-    void helper(long* parg);
+namespace std {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc = allocator<_Tp> > class vector { public:
+    _Tp* _M_start;
+    _Tp* _M_finish;
+    _Tp* _M_end_of_storage;
+    void push_back(const _Tp& value);
 };
-void FableAddLearned_005eedcf_sub::helper(long* parg)
+template <> void vector<long, allocator<long> >::push_back(const long& value)
 {
-    g_this = (void*)this; g_val = *parg;
+    g_this = (void*)this; g_val = value;
+}
 }
 struct FableAddLearned_005eedcf
 {
     char pad[0x1bc];
-    FableAddLearned_005eedcf_sub sub;
+    std::vector<long> m_1bc;
     void AddLearnedExpression(long arg);
 };
 int main()

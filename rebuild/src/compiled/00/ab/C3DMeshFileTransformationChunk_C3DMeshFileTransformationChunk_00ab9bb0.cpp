@@ -1,10 +1,10 @@
 // C3DMeshFileTransformationChunk::C3DMeshFileTransformationChunk(const CMatrix3x4&) -- base chunk "TRFM", Transform copied (rep movsd 12 dwords)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AB9BB0, length 48 bytes.
-// Callees: 0x00AA8360 C3DMeshFileChunk ctor
+// Callees: 0x00AA8360 CChunkedFileSuperChunk ctor
 //
 // ---- shared retail model for the C3DMeshFile*Chunk family (TLC Fable.exe) -----------------------
 // The PDB header rebuild/include/engine/<Class>.h comes from Ego_r.pdb, a later build in which the
-// C3DMeshFileChunk base is 0x34 bytes and CArray<T> is 0x10 bytes; in retail TLC the base is 0x2c
+// CChunkedFileSuperChunk base is 0x34 bytes and CArray<T> is 0x10 bytes; in retail TLC the base is 0x2c
 // (every derived member sits 8 bytes lower, the vtable slots are the same) and CArray<T> is three
 // pointers (0x0c: the XUVTangent factory allocates 0x28 bytes for two CArrays behind a 0x10 base).
 // The bytes decide, so this file models the retail layout with the PDB member names and says so here
@@ -54,9 +54,9 @@ class CChunkedFileChunk { public:
     unsigned char _base_body[0x0c];                     // ChunkType[5] + pad + Parent  (sizeof == 0x10)
 };
 
-// CChunkedFileChunk (0x10) -> CChunkedFileSuperChunk -> C3DMeshFileChunk (0x2c in retail).
-struct C3DMeshFileChunk {
-    virtual ~C3DMeshFileChunk();                                 // slot 0 (scalar deleting dtor)
+// CChunkedFileChunk (0x10) -> CChunkedFileSuperChunk -> CChunkedFileSuperChunk (0x2c in retail).
+class CChunkedFileSuperChunk { public:      // RTTI direct base of the mesh/anim chunks (was the invented CChunkedFileSuperChunk)
+    virtual ~CChunkedFileSuperChunk();                                 // slot 0 (scalar deleting dtor)
     virtual void v1();
     virtual CCharString GetChunkInfo() const;                    // slot 2
     virtual void v3();
@@ -65,7 +65,9 @@ struct C3DMeshFileChunk {
     virtual void v6();
     virtual void ReadFromFile(CDataInputStream& in, unsigned long chunkSize, CChunkedFileLoader& loader);   // slot 7, 0x00AA8830 (CChunkedFileSuperChunk)
     virtual void WriteToFile(CDataOutputStream& out, CChunkedFileSaver& saver) const;  // slot 8, 0x00AA78C0 (CChunkedFileSuperChunk)
-    C3DMeshFileChunk(const char* chunkType);                     // 0x00AA8360
+    protected:
+    CChunkedFileSuperChunk(const char* chunkType);                     // 0x00AA8360 (Ego_r / FableWin protected IAE)
+    public:
     unsigned char _base_body[0x28];                              // +0x04 .. +0x2b (chunk type, parent, child list)
 };
 
@@ -79,7 +81,7 @@ struct CChunkedFileChunkFactory {
 };
 // ------------------------------------------------------------------------------------------------
 
-class C3DMeshFileTransformationChunk : public C3DMeshFileChunk { public:
+class C3DMeshFileTransformationChunk : public CChunkedFileSuperChunk { public:
     CMatrix3x4 Transform;          // +0x2c (PDB +0x34)   sizeof == 0x5c
     C3DMeshFileTransformationChunk();
     C3DMeshFileTransformationChunk(const CMatrix3x4& transform);
@@ -88,6 +90,6 @@ class C3DMeshFileTransformationChunk : public C3DMeshFileChunk { public:
 };
 
 C3DMeshFileTransformationChunk::C3DMeshFileTransformationChunk(const CMatrix3x4& transform)
-    : C3DMeshFileChunk("TRFM"), Transform(transform)
+    : CChunkedFileSuperChunk("TRFM"), Transform(transform)
 {
 }

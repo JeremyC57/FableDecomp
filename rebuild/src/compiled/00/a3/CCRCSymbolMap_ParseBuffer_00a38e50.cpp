@@ -47,7 +47,7 @@ public:
 };
 } // namespace std
 struct CCursorPos { long Line, Column, Offset; };
-typedef void (__cdecl* TErrorCallback)(CCharString*);
+typedef void (__fastcall* TErrorCallback)(const CCharString&);
 class CStringParser : public CBaseClass { public:                        // vtable 0x0122D874
     char*          String;                                 // +0x04
     unsigned long  BaseLineOffset;                         // +0x08

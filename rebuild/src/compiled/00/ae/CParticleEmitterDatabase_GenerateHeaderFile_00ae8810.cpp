@@ -1,4 +1,4 @@
-// CParticleEmitterDatabase::GenerateHeaderFile(const CCharString& filename, long options) -- write the particle database's header text file: the header file name (relative to the .par file), then a BEGIN_EMITTER/END_EMITTER block per emitter (each emitter writes its own entry) inside BEGIN_DATABASE/END_DATABASE, and save the text to the given file
+// CParticleEmitterDatabase::GenerateHeaderFile(const CCharString& filename, const CEmitterDatabaseSerialiseInfo& info) -- write the particle database's header text file: the header file name (relative to the .par file), then a BEGIN_EMITTER/END_EMITTER block per emitter (each emitter writes its own entry) inside BEGIN_DATABASE/END_DATABASE, and save the text to the given file
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AE8810, length 368 bytes, `ret 8`.
 // Callees: CCharString() 0x0099E4B0 / CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0,
 // CPersistContext::CPersistContext(CCharString&) 0x009BAE10 (saving into the string; trivial destructor, as the landed
@@ -29,8 +29,9 @@ class CPersistContext { public:                               // retail 0x2c byt
 };
 
 namespace NParticleEngine {
+class CEmitterDatabaseSerialiseInfo;
 class CParticleEmitter { public:
-    void GenerateHeader(CPersistContext& context, long options);   // 0x00AEF1F0
+    void DatabaseSerialise(CPersistContext& context, const CEmitterDatabaseSerialiseInfo& info);   // 0x00AEF1F0 (Ego_r / FableWin ?DatabaseSerialise@CParticleEmitter@NParticleEngine@@QAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@2@@Z)
 };
 }
 
@@ -48,10 +49,10 @@ struct CParticleEmitterDatabase {
     unsigned char  _pad34[0x44 - 0x34];
     CCharString    ParFilename;                        // +0x44 (PDB +0x50)
     CCharString    HeaderFilename;                     // +0x48 (PDB +0x54)
-    void GenerateHeaderFile(const CCharString& filename, long options);
+    void GenerateHeaderFile(const CCharString& filename, const NParticleEngine::CEmitterDatabaseSerialiseInfo& info);
 };
 
-void CParticleEmitterDatabase::GenerateHeaderFile(const CCharString& filename, long options)
+void CParticleEmitterDatabase::GenerateHeaderFile(const CCharString& filename, const NParticleEngine::CEmitterDatabaseSerialiseInfo& info)
 {
     CCharString text;
     CPersistContext context(text);
@@ -73,7 +74,7 @@ void CParticleEmitterDatabase::GenerateHeaderFile(const CCharString& filename, l
             CCharString line("BEGIN_EMITTER\r\n");
             context.Transfer_009bab50(line);
         }
-        it->Emitter->GenerateHeader(context, options);
+        it->Emitter->DatabaseSerialise(context, info);
         {
             CCharString line("END_EMITTER\r\n");
             context.Transfer_009bab50(line);

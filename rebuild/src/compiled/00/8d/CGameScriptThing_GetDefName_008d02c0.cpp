@@ -21,7 +21,7 @@ class CDefStringTable { public:
     CCharString GetString(CDefString name);        // 0x009D49B0
 };
 extern CDefStringTable GDefStringTable;   // 0x013CA828 ?GDefStringTable@@3VCDefStringTable@@A (ESTABLISHED; naming wave 21)           // 0x013CA828
-class CThing_Retail { public:
+class CThing { public:
     unsigned char  _pad00[0x91];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
@@ -46,7 +46,7 @@ public:
 class CGameScriptThing { public:
     virtual void v00();
     unsigned char           _pad04[8];
-    CIntelligentPointer<CThing_Retail> PThing;                // +0x0c CIntelligentPointer<CThing>
+    CIntelligentPointer<CThing> PThing;                // +0x0c CIntelligentPointer<CThing>
     virtual CCharString GetDefName() const;
 };
 

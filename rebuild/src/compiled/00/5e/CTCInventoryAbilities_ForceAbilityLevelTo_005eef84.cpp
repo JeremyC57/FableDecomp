@@ -25,21 +25,23 @@ struct SAbilityEntry { long Level; const CHeroAbilityDef* PDef; };
 struct CAbilityEntryVector {
     SAbilityEntry* first; SAbilityEntry* last; SAbilityEntry* end_of_storage;
     SAbilityEntry& operator[](unsigned long n) { return first[n]; }
+    const SAbilityEntry& operator[](unsigned long n) const { return first[n]; }
 };
+enum EHeroAbility { };
 template <class T> inline const T& Min(const T& left, const T& right) { return right < left ? right : left; }
 static const long MAX_ABILITY_LEVEL = 3;
 
-struct CTCInventoryAbilities_Retail {
+struct CTCInventoryAbilities {
     unsigned char       _pad_0x000[0x160];
     CAbilityEntryVector Abilities;                // +0x160
 
-    long GetAbilityMaximumLevel(long ability);    // 0x005EDEA3 (defined below)
+    long GetAbilityMaximumLevel(EHeroAbility ability) const;   // 0x005EDEA3 (defined below)
     void UpdateWillMorph();                       // 0x005EE887
-    void ForceAbilityLevelTo(long ability, long level);
+    void ForceAbilityLevelTo(EHeroAbility ability, long level);
 };
 
 #pragma optimize("y", off)
-long CTCInventoryAbilities_Retail::GetAbilityMaximumLevel(long ability)
+long CTCInventoryAbilities::GetAbilityMaximumLevel(EHeroAbility ability) const
 {
     if (ability != 0) {
         const CHeroAbilityDef* def = Abilities[ability].PDef;
@@ -54,7 +56,7 @@ long CTCInventoryAbilities_Retail::GetAbilityMaximumLevel(long ability)
 }
 #pragma optimize("y", on)
 
-void CTCInventoryAbilities_Retail::ForceAbilityLevelTo(long ability, long level)
+void CTCInventoryAbilities::ForceAbilityLevelTo(EHeroAbility ability, long level)
 {
     long maximum = GetAbilityMaximumLevel(ability);
     if (level < 0)

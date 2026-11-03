@@ -13,7 +13,9 @@ extern "C" int __cdecl _wcsicmp(const unsigned short* a, const unsigned short* b
 double __fastcall GFGetTime();                             // 0x009E1BC0
 class CFileInstaller { public:
     void Unpause();                                        // 0x009C3250
-    static CFileInstaller* __fastcall Get();               // 0x00404440 (folded CTBaseSingleton<>::Get)
+};
+template <class T> class CTBaseSingleton { public:
+    static T& __fastcall Get();                            // 0x00404440 for CFileInstaller (Ego_r / FableWin ?Get@?$CTBaseSingleton@VCFileInstaller@@@@SIAAVCFileInstaller@@XZ)
 };
 extern void* g_pFileInstallerActive;                       // 0x013CA818
 struct SComponentStatus {
@@ -248,7 +250,7 @@ void CFrontEndManager::Update(float dt)
 {
     double now = GFGetTime();
     if (now - InstallerPauseTime >= 2.0 && InstallerPaused && g_pFileInstallerActive) {
-        CFileInstaller::Get()->Unpause();
+        CTBaseSingleton<CFileInstaller>::Get().Unpause();
         InstallerPaused = false;
     }
     if (KeyboardActive && ScreenStack.Top()) {
@@ -309,7 +311,7 @@ void CFrontEndManager::Update(float dt)
     if (MessageBox && (MessageBox->IsFinished() || !MessageBox->GetStatus().Active) && CanLoad) {
         MessageBox = 0;
         if (InstallerPaused && g_pFileInstallerActive) {
-            CFileInstaller::Get()->Unpause();
+            CTBaseSingleton<CFileInstaller>::Get().Unpause();
             InstallerPaused = false;
             InstallerResumed = true;
         }
@@ -320,7 +322,7 @@ void CFrontEndManager::Update(float dt)
     if (LoadBox && (LoadBox->IsFinished() || !LoadBox->GetStatus().Active)) {
         LoadBox = 0;
         if (InstallerPaused && g_pFileInstallerActive) {
-            CFileInstaller::Get()->Unpause();
+            CTBaseSingleton<CFileInstaller>::Get().Unpause();
             InstallerPaused = false;
             InstallerResumed = true;
         }

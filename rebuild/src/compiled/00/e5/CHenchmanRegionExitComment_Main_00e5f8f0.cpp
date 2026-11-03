@@ -957,10 +957,13 @@ public:
  CScriptThing& operator[](unsigned int n) { return *(begin() + n); }
 };
 }
-typedef long EHENCHMAN_COMMENT;
-struct CV_BodyGuardScript {
+namespace NScript {
+class CV_BodyGuardScript { public:                     // NScript script class (both PDBs)
+ enum EHENCHMAN_COMMENT { };                           // nested comment kind (Ego_r / FableWin W4EHENCHMAN_COMMENT@CV_BodyGuardScript@NScript@@)
  bool MakeHenchmanComment(const CCharString& text, long priority, EHENCHMAN_COMMENT type, const CScriptThing& target);   // 0x00E5EBD0
 };
+}
+using NScript::CV_BodyGuardScript;
 class CEntityScriptBase
 {
 public:
@@ -1001,7 +1004,7 @@ void CHenchmanRegionExitComment::Main()
    if (IsActiveThreadTerminating()) return;
    if (IsDistanceBetweenThingsUnder(Me, HenchmanVector[i], 10.0f)) {
     if (IsActiveThreadTerminating()) return;
-    if (ParentClass->MakeHenchmanComment(Me.GetDataString(), 2, 2, CScriptThing())) {
+    if (ParentClass->MakeHenchmanComment(Me.GetDataString(), 2, (CV_BodyGuardScript::EHENCHMAN_COMMENT)2, CScriptThing())) {
      IsActiveThreadTerminating();
      return;
     }

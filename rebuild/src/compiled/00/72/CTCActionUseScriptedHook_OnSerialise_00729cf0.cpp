@@ -34,10 +34,8 @@ class CPersistContext { public:
     long Mode;                                  // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
     bool IsLoading() const { return Mode == 2 || Mode == 3; }
-    void Transfer(const char* name, bool& value, const bool& defaultValue);                         // 0x004045C0
-    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x00410BE0 <long>
-    void Transfer(const char* name, unsigned __int64& value, const unsigned __int64& defaultValue); // 0x0044BB00
-    void Transfer(const char* name, CCharString* value);                                            // 0x00411010
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x004045C0 <bool> / 0x00410BE0 <long> / 0x0044BB00 <unsigned __int64>
+    template <class T> void Transfer(const char* name, T& value);   // 0x00411010 <CCharString>
 };
 struct CIntelligentPointerThing { int _padding_; CThing* PData; };
 
@@ -74,11 +72,11 @@ void CTCActionUseScriptedHook::OnSerialise(CPersistContext& context, bool)
         context.Transfer("ForceConfirmation", ForceConfirmation, false);
         context.Transfer("TeleportToRegionEntrance", TeleportToRegionEntrance, false);
         if (EntranceConnectedToUID != 0 || context.IsLoading())
-            context.Transfer("EntranceConnectedToUID", EntranceConnectedToUID, 0);
+            context.Transfer<unsigned __int64>("EntranceConnectedToUID", EntranceConnectedToUID, 0);
         if (CameraTrackUID != 0 || context.IsLoading())
-            context.Transfer("CameraTrackUID", CameraTrackUID, 0);
-        context.Transfer("SoundName", &SoundName);
-        context.Transfer("AnimationName", &AnimationName);
+            context.Transfer<unsigned __int64>("CameraTrackUID", CameraTrackUID, 0);
+        context.Transfer("SoundName", SoundName);
+        context.Transfer("AnimationName", AnimationName);
         context.Transfer<long>("ReplacementObject", ReplacementObject, 0);
     } else {
         long version;
@@ -87,14 +85,14 @@ void CTCActionUseScriptedHook::OnSerialise(CPersistContext& context, bool)
             return;
         context.Transfer("ForceConfirmation", ForceConfirmation, false);
         context.Transfer("TeleportToRegionEntrance", TeleportToRegionEntrance, false);
-        context.Transfer("EntranceConnectedToUID", EntranceConnectedToUID, 0);
+        context.Transfer<unsigned __int64>("EntranceConnectedToUID", EntranceConnectedToUID, 0);
         if (EntranceConnectedToUID != 0)
             EntranceConnectedToUID = GetThingManager().RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->m_level, EntranceConnectedToUID);
-        context.Transfer("CameraTrackUID", CameraTrackUID, 0);
+        context.Transfer<unsigned __int64>("CameraTrackUID", CameraTrackUID, 0);
         if (CameraTrackUID != 0)
             CameraTrackUID = GetThingManager().RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->m_level, CameraTrackUID);
-        context.Transfer("SoundName", &SoundName);
-        context.Transfer("AnimationName", &AnimationName);
+        context.Transfer("SoundName", SoundName);
+        context.Transfer("AnimationName", AnimationName);
         context.Transfer<long>("ReplacementObject", ReplacementObject, 0);
     }
 }

@@ -9,7 +9,7 @@
 // ConvertSecondsToWF (Ego_r ?ConvertSecondsToWF@CMainGameComponent@@SIJM@Z) inlines as (long)(WFPS * seconds):
 // fild 0x01375550; fmul; _ftol.
 // Layout: as the matched 0x00892410 (CWorld::PCurrentGameCamera +0x34; CCountedPointer 8 bytes object/info).
-// Names: the mode class name is not recovered (RTTI not read); CScriptModuleMoveBetweenLookingAt is descriptive.
+// Names: the mode class is NCameraModes::CScriptModuleTransitionBetweenPoints (Ego_r.pdb 0x00827D10 ctor, naming wave 34).
 // Shape: 0x00892410 model: __forceinline CCountedPointer(T*) handing the info block the Object member.
 // Opt: /O2.
 class C3DVector;
@@ -18,10 +18,10 @@ class CScriptModuleBase {
 public:
     virtual ~CScriptModuleBase();
 };
-class CScriptModuleMoveBetweenLookingAt : public CScriptModuleBase {
+class CScriptModuleTransitionBetweenPoints : public CScriptModuleBase {
 public:
     unsigned char _pad04[0x90 - 4];
-    CScriptModuleMoveBetweenLookingAt(const C3DVector& lookAt, const C3DVector& from, const C3DVector& to, long frames, float f);   // 0x008524C0
+    CScriptModuleTransitionBetweenPoints(const C3DVector& lookAt, const C3DVector& from, const C3DVector& to, long frames, float f);   // 0x008524C0
 };
 }
 class CCPPointerInfo { public:
@@ -79,5 +79,5 @@ void CGameScriptInterface::CameraMoveBetweenLookingAt(const C3DVector& from, con
     CGameCameraManager* manager;
     World->PCurrentGameCamera->GetCameraManager(&manager);
     manager->SetScriptedCameraMode(CCountedPointer<NCameraModes::CScriptModuleBase>(
-        new NCameraModes::CScriptModuleMoveBetweenLookingAt(lookAt, from, to, CMainGameComponent::ConvertSecondsToWF(time), f)));
+        new NCameraModes::CScriptModuleTransitionBetweenPoints(lookAt, from, to, CMainGameComponent::ConvertSecondsToWF(time), f)));
 }

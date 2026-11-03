@@ -18,7 +18,6 @@ class CCharString { public:
 extern "C" int __cdecl rand();                          // 0x00BFEB16
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 enum ECutsceneBehaviour { CUTSCENE_BEHAVIOUR_NONE };
-enum ETraderComment { TRADER_COMMENT_NONE };
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
@@ -156,6 +155,7 @@ public:
     CTimer                CommentTimer;                 // +0x48
     long                  BalverinesToSurpriseHeroNeeded;   // +0x4c
     void WatchForSurprisingBalverines();
+    enum ETraderComment { TRADER_COMMENT_NONE };       // nested in the script class (Ego_r / FableWin W4ETraderComment@CQ_TraderEscortScript@NScript@@)
     bool MakeTraderComment(const CCharString& comment, const CScriptThing& trader, ETraderComment type);   // 0x00E01900
 };
 

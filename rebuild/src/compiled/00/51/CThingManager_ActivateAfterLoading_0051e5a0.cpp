@@ -40,7 +40,7 @@ public:
     static T& __fastcall Get() { return *PClass; }                   // Ego_r / FableWin ?Get@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@SIAAVCQuestManager@@XZ (inline)
 };
 class CQuestManager { public:
-    void OnActivateEntity(CThing* thing);       // 0x004AFA60
+    void OnActivateEntity(CThing& thing);       // 0x004AFA60 (Ego_r / FableWin ?OnActivateEntity@CQuestManager@@QAEXAAVCThing@@@Z)
 };
 struct SThingListNode {                         // STLport list<CThing*> node
     SThingListNode* _M_next;
@@ -63,7 +63,7 @@ void CThingManager::ActivateAfterLoading(long level)
         CThing* thing = node->_M_data;
         if (thing && !thing->m_dead && !(thing->m_flags93 & 0xc) && thing->m_level == level) {
             thing->SetInLimbo(false);
-            CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().OnActivateEntity(thing);
+            CTBaseSingletonNoDefaultAlloc<CQuestManager>::Get().OnActivateEntity(*thing);
         }
     }
 }

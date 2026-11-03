@@ -1,4 +1,4 @@
-// C3DMeshFileMaterialExtChunk::C3DMeshFileMaterialExtChunk() -- base CChunkedFileChunk(19525068) then this class's vtable
+// C3DMeshFileMaterialExtChunk::C3DMeshFileMaterialExtChunk() -- base CChunkedFileChunk("MTLE") then this class's vtable
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AC02B0, oracle length 23 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -9,7 +9,9 @@
 // (0x0129EE90, named through rtti-vtables.tsv). One of 11 bodies of this shape.
 class CChunkedFileChunk { public:
     virtual void v00();
-    CChunkedFileChunk(long typeCode);              // 0x00AA7590
+protected:
+    CChunkedFileChunk(const char* type);           // 0x00AA7590 (Ego_r / FableWin protected ??0CChunkedFileChunk@@IAE@PBD@Z)
+public:
 };
 
 class C3DMeshFileMaterialExtChunk : public CChunkedFileChunk { public:
@@ -18,6 +20,6 @@ class C3DMeshFileMaterialExtChunk : public CChunkedFileChunk { public:
 };
 
 C3DMeshFileMaterialExtChunk::C3DMeshFileMaterialExtChunk()
-    : CChunkedFileChunk(19525068)
+    : CChunkedFileChunk("MTLE")
 {
 }

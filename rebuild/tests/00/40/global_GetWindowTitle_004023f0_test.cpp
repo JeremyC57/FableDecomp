@@ -54,7 +54,7 @@ template <class T> struct auto_ptr {
     void reset(T* q) { if (q != p) delete p; p = q; }
     T* operator->() const { return p; }
 };
-static CCharString GetFontBankName() { return CCharString("text.big"); }
+static CCharString GetTextBankName() { return CCharString("text.big"); }
 
 // the function under test (shape of 0x004023F0)
 static CWideString GetWindowTitle()
@@ -63,7 +63,7 @@ static CWideString GetWindowTitle()
     auto_ptr<CDataBank> bank;
     CCharString tag("TEXT_GUI_WINDOW_TITLE");
     bank.reset(new CDataBank);
-    bank->OpenReadOnly(GetFontBankName(), 0x100);
+    bank->OpenReadOnly(GetTextBankName(), 0x100);
     unsigned long index = bank->LookupValue(crc(0, tag.GetString(), tag.Length()));
     if (index > 0) {
         CIVCountedPointer<CGroupEntry> entry = bank->GetPGroupEntry(index, true);

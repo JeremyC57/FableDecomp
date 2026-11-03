@@ -45,7 +45,7 @@ public:
 };
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 struct CBase { virtual ~CBase(); };
-typedef void (__cdecl* TErrorCallback)(CCharString*);
+typedef void (__fastcall* TErrorCallback)(const CCharString&);
 struct CCursorPos {
     bool InQuotes;
     long StringPos;
@@ -59,7 +59,7 @@ class CStringParser : public CBase { public:                         // retail 0
     void*          Comments;                           // +0x14 STLport list head
     TErrorCallback ErrorCallback;                      // +0x18
     CCursorPos     CursorPos;                          // +0x1c
-    void Init(char* text, TErrorCallback errorCallback, const CCharString& filename, long baseLineOffset);   // 0x009B9530
+    void Init(const char* text, TErrorCallback errorCallback, const CCharString& filename, long baseLineOffset);   // 0x009B9530
     bool FindKeyword(const CCharString& keyword);      // 0x009B9BA0
     long SkipPastNewline();                            // 0x009B9D70
     CCharString ReadAsStringUntilString(const CCharString& end);   // 0x009BA330

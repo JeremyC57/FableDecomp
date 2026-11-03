@@ -47,10 +47,13 @@ bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScrip
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-enum EHENCHMAN_COMMENT { HENCHMAN_COMMENT_REGION_ENTRANCE = 2 };
-struct CV_BodyGuardScript {
+namespace NScript {
+class CV_BodyGuardScript { public:                     // NScript script class (both PDBs)
+    enum EHENCHMAN_COMMENT { HENCHMAN_COMMENT_REGION_ENTRANCE = 2 };   // nested (Ego_r / FableWin W4EHENCHMAN_COMMENT@CV_BodyGuardScript@NScript@@); enumerator name descriptive
     bool MakeHenchmanComment(const CCharString& text, long priority, EHENCHMAN_COMMENT comment, const CScriptThing& about = CScriptThing());   // 0x00E5EBD0
 };
+}
+using NScript::CV_BodyGuardScript;
 struct CQ_SunnyvaleMasterData;
 
 class CEntityScriptBase
@@ -75,7 +78,7 @@ public:
             if (IsDistanceBetweenThingsUnder(Me, HenchmanVector[i], 10.0f)) {
                 if (IsActiveThreadTerminating())
                     return;
-                if (ParentClass->MakeHenchmanComment(Me.GetDataString(), 2, HENCHMAN_COMMENT_REGION_ENTRANCE))
+                if (ParentClass->MakeHenchmanComment(Me.GetDataString(), 2, CV_BodyGuardScript::HENCHMAN_COMMENT_REGION_ENTRANCE))
                     break;
             }
         }

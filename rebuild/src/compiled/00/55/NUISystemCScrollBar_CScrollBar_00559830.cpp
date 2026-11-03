@@ -36,12 +36,12 @@ struct C2DVector {
     float X, Y;
 };
 
-struct CDraggable_Retail : CComponentInterface, CObserver_Retail, CEventSinkInterface {   // retail 0x1AC bytes
+struct CDraggable : CComponentInterface, CObserver_Retail, CEventSinkInterface {   // retail 0x1AC bytes
     unsigned char _body[0x1ac - 0x1c];
-    CDraggable_Retail(long owner);               // 0x0055A9C0
+    CDraggable(long owner);               // 0x0055A9C0
 };
 
-class CScrollBar : public CDraggable_Retail { public:          // vtables 0x0124B7E4 / 0x0124B7BC / 0x0124B7B4
+class CScrollBar : public CDraggable { public:          // vtables 0x0124B7E4 / 0x0124B7BC / 0x0124B7B4
     virtual void v000();
     virtual void ProcessEvent();
     virtual void v0();
@@ -59,7 +59,7 @@ class CScrollBar : public CDraggable_Retail { public:          // vtables 0x0124
 };
 
 CScrollBar::CScrollBar(long owner)
-    : CDraggable_Retail(owner)
+    : CDraggable(owner)
     , PActionsOnDraggedUp(0)
     , PActionsOnDraggedDown(0)
     , AmountActionsUp(0)

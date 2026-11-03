@@ -1,0 +1,5 @@
+retire 33 keep 4 add 0
+KEEP 00414ea0 ??1CCharStringVector@@QAE@XZ <- 00/5f/CTCInventoryAbilities_OpenInventory_005f05e5.cpp 00/85/CCombatActionBase_SetupCombatStrikeEvents_00859a70.cpp
+KEEP 004045c0 ?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z <- 00/67/CThingBaseDef_Transfer_00676be0.cpp
+KEEP 007e7450 ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ <- 00/dd/CPrisonEscapeGuard_Main_00dd6440.cpp 00/d2/CEndGameThunder_Main_00d2c810.cpp 00/dd/CPrisonRacer_Main_00ddc980.cpp
+KEEP 0099f2e0 ?LoadFromFile@CCharString@@QAEXPAVCAFile@@PAVCASuspendableProcess@@J@Z <- 00/52/CThingManager_LoadFromFile_00521ae0.cpp

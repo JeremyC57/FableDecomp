@@ -1,4 +1,4 @@
-// NUISystem::CSlider::CSlider(void* def) -- front-end slider: CSprite base from the def, this class's three vtables, the action vector and the action-list / arrow / accept-button pointers zeroed, then Initialize()
+// NUISystem::CSlider::CSlider(long def) -- front-end slider: CSprite base from the def, this class's three vtables, the action vector and the action-list / arrow / accept-button pointers zeroed, then Initialize()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0054C050, length 102 bytes (`ret 4`).
 // Callees: CSprite::CSprite(def) @ 0x0041B800, CSlider::Initialize @ 0x0054B4B0. Vtables (rtti-vtables.tsv NUISystem::CSlider):
 // 0x01248D04 at +0, 0x01248CE0 at +4 (CObserver sub-object), 0x01248CD8 at +0x18.
@@ -12,9 +12,11 @@ struct CObserver {                                 // the secondary base at +4 (
     unsigned char _pad04[0x10];
 };
 struct ISecondaryB_0054c050 { virtual void b00(); };
+namespace NUISystem {
 struct CSprite : IPrimary_0054c050, CObserver, ISecondaryB_0054c050 {
-    CSprite(void* def);                            // 0x0041B800
+    CSprite(long def);                             // 0x0041B800
 };
+}
 
 namespace NUISystem {
 class CAction;
@@ -42,12 +44,12 @@ class CSlider : public CSprite { public:                         // vtables 0x01
     virtual void v00();
     virtual void a00();
     virtual void b00();
-    CSlider(void* def);
+    CSlider(long def);
     void Initialize();                             // 0x0054B4B0
 };
 }
 
-NUISystem::CSlider::CSlider(void* def)
+NUISystem::CSlider::CSlider(long def)
     : CSprite(def),
       PActionsOnBack(0),
       PActionsOnSelect(0),

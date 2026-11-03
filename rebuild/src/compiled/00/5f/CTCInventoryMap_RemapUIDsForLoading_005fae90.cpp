@@ -11,7 +11,7 @@
 // container is the retail 12-byte vector (first/last/end), modelled locally. CThing has no engine header.
 #include "engine/CTCBase.h"
 class CThingManager { public:
-    unsigned __int64 RemapUIDForSerialisation(bool saving, bool levelLess, long level, unsigned __int64 uid);   // 0x0051E210
+    unsigned __int64 RemapUIDForSerialisation(bool saving, bool levelLess, unsigned long level, unsigned __int64 uid) const;   // 0x0051E210
 };
 
 class CThing { public:

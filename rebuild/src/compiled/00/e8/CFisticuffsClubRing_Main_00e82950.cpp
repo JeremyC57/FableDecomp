@@ -90,7 +90,8 @@ class CScriptDef { public:
 extern CScriptDef* pGlobalScriptDef;                       // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);    // 0x00CBE3EA
-struct CV_FisticuffsClubScript {
+namespace NScript {
+class CV_FisticuffsClubScript { public:               // NScript script class (both PDBs)
     unsigned char _pad0[0x4c];
     bool  FighterOneInRing;                             // +0x4c
     bool  FighterTwoInRing;                             // +0x4d
@@ -114,6 +115,8 @@ struct CV_FisticuffsClubScript {
     void InitialiseVariables();                         // 0x00E82650
     CCharString GetQuestText(CCharString suffix);       // 0x00E82F80
 };
+}
+using NScript::CV_FisticuffsClubScript;
 inline void ClampMeter(float& meter)
 {
     if (meter < 0.0f)

@@ -5,7 +5,7 @@
 // Callees: vector<CCharString>(size_type) @ 0x0057FCDD, CTCBase::GetDefinitionManager @ 0x006869D0, CDefinitionManager::
 // GetDefNameFromGlobalIndex(long) @ 0x009ACCC0 (CDefString by hidden pointer), CDefStringTable::GetString @ 0x009D49B0 on
 // GDefStringTable @ 0x013CA828, CCharString::operator=(const CCharString&) @ 0x0099EFB0, ~CCharString @ 0x0099EAE0,
-// CPersistContext::Transfer(const char*, vector<CCharString>&) @ 0x0049B8D0 (shared COMDAT body; manifest TransferSignedChar),
+// CPersistContext::TransferVector<CCharString>(const char*, vector<CCharString>&) @ 0x0049B8D0 (shared COMDAT body; manifest TransferSignedChar),
 // CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410, AddAppearanceModifierWithReplace(long) @ 0x00706950, free @ 0x00BFEA14.
 // Layout: as the landed RemoveAllAppearanceModifiers 0x00706640 (AppearanceModifiers +0x30, element 0 = the hair list; the
 // AppearanceModifiersLoaded bit at +0x14 bit 2); CPersistContext mode +0x18.
@@ -25,13 +25,16 @@ inline void DestroyRange(CCharString* first, CCharString* last)
     for (; first != last; ++first)
         first->~CCharString();
 }
-struct CCharStringVector {                              // STLport vector<CCharString>
+namespace std {
+template <class _Tp> class allocator;
+template <class _Tp, class _Alloc> class vector;
+template <> class vector<CCharString, allocator<CCharString> > { public:   // STLport vector<CCharString> (12 bytes)
     CCharString* _M_start;
     CCharString* _M_finish;
     CCharString* _M_end_of_storage;
-    CCharStringVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
-    explicit CCharStringVector(unsigned long count);    // 0x0057FCDD
-    ~CCharStringVector()
+    vector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) { }
+    explicit vector(unsigned int count);    // 0x0057FCDD
+    ~vector()
     {
         DestroyRange(_M_start, _M_finish);
         if (_M_start)
@@ -40,6 +43,7 @@ struct CCharStringVector {                              // STLport vector<CCharS
     unsigned long size() const { return _M_finish - _M_start; }
     CCharString& operator[](unsigned long n) { return *(_M_start + n); }
 };
+}
 class CDefString { public:
     long ID;
 };
@@ -57,7 +61,7 @@ class CGameDefinitionManager : public CDefinitionManager
 class CPersistContext { public:
     unsigned char _pad00[0x18];
     long Mode;                                          // +0x18
-    void Transfer(const char* name, CCharStringVector& value);   // 0x0049B8D0
+    template <class T> void TransferVector(const char* name, std::vector<T, std::allocator<T> >& value);   // 0x0049B8D0 <CCharString>
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
 };
 struct CModifierEntry {
@@ -105,15 +109,15 @@ void CTCHeroAttachableAppearanceModifiers::OnSerialise(CPersistContext& context,
         return;
     if (context.IsSaving()) {
         CModifierVector& hair = AppearanceModifiers[0];
-        CCharStringVector names(hair.size());
+        std::vector<CCharString, std::allocator<CCharString> > names(hair.size());
         for (unsigned long i = 0; i < hair.size(); ++i) {
             CCharString name = GDefStringTable.GetString(GetDefinitionManager().GetDefNameFromGlobalIndex(hair[i].DefIndex));
             names[i] = name;
         }
-        context.Transfer("HairModifierNames", names);
+        context.TransferVector("HairModifierNames", names);
     } else {
-        CCharStringVector names;
-        context.Transfer("HairModifierNames", names);
+        std::vector<CCharString, std::allocator<CCharString> > names;
+        context.TransferVector("HairModifierNames", names);
         for (unsigned long i = 0; i < names.size(); ++i) {
             long defIndex = GetDefinitionManager().GetDefGlobalIndexFromName(names[i]);
             if (defIndex > 0)

@@ -31,7 +31,7 @@ namespace MicroThread {
     void __fastcall SetStack(unsigned char* stackTop, unsigned long stackSize);   // 0x009D86B0
 }
 
-extern "C" long __fastcall GFMain(HINSTANCE instance, char* commandLine, int showCommand);   // 0x00402510
+long __fastcall GFMain(HINSTANCE instance, char* commandLine, int showCommand);   // 0x00402510 (Ego_r / FableWin ?GFMain@@YIJPAUHINSTANCE__@@PADH@Z)
 
 extern unsigned char* g_MicroThreadStackTop;      // 0x013B7C84
 extern unsigned char* g_MicroThreadStackBottom;   // 0x013B7C88

@@ -60,20 +60,23 @@ public:
 namespace std {
 struct __false_type { __false_type() { } };
 
-template <class _Tp>
+template <class _Tp> class allocator;
+
+template <class _Tp, class _Alloc = allocator<_Tp> >
 class vector {
 public:
     _Tp* _M_start;                                      // +0x00
     _Tp* _M_finish;                                     // +0x04
     _Tp* _M_end_of_storage;                             // +0x08
-    void _M_insert_overflow(_Tp* __position, const _Tp& __x, const __false_type&, unsigned int __fill_len, bool __atend);
     void push_back(const _Tp& __x);
+protected:
+    void _M_insert_overflow(_Tp* __position, const _Tp& __x, const __false_type&, unsigned int __fill_len, bool __atend);
 };
 
 // Same-TU stand-in for the growth member 0x008AD5F0 (reads x through its reference only, never the tag).
 #pragma auto_inline(off)
-template <class _Tp>
-__declspec(noinline) void vector<_Tp>::_M_insert_overflow(_Tp* __position, const _Tp& __x, const __false_type&, unsigned int __fill_len, bool __atend)
+template <class _Tp, class _Alloc>
+__declspec(noinline) void vector<_Tp, _Alloc>::_M_insert_overflow(_Tp* __position, const _Tp& __x, const __false_type&, unsigned int __fill_len, bool __atend)
 {
     if (*(void* const*)&__x != (void*)__position)
         return;
@@ -81,8 +84,8 @@ __declspec(noinline) void vector<_Tp>::_M_insert_overflow(_Tp* __position, const
 }
 #pragma auto_inline(on)
 
-template <class _Tp>
-void vector<_Tp>::push_back(const _Tp& __x)
+template <class _Tp, class _Alloc>
+void vector<_Tp, _Alloc>::push_back(const _Tp& __x)
 {
     if (_M_finish != _M_end_of_storage) {
         new (_M_finish) _Tp(__x);

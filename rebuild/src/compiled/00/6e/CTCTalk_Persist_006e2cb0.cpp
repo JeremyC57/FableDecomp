@@ -10,8 +10,8 @@
 class CCharString { public: void* m_pData; };
 
 class CPersistContext { public:
-    void Transfer(const char* name, bool& value, const bool& defaultValue);   // 0x004045C0
-    void Transfer(const char* name, CCharString* value);                     // 0x00411010
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x004045C0 <bool>
+    template <class T> void Transfer(const char* name, T& value);   // 0x00411010 <CCharString>
 };
 
 class CTCTalk { public:
@@ -29,6 +29,6 @@ void CTCTalk::Persist(CPersistContext* context, bool flag)
 {
     if (flag) {
         context->Transfer("IsPureAISpeaker", IsPureAISpeaker, true);
-        context->Transfer("DialogueVoice", &DialogueVoice);
+        context->Transfer("DialogueVoice", DialogueVoice);
     }
 }
