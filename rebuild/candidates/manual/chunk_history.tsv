@@ -26397,3 +26397,9 @@ chunk	address	module	name	length
 736	00c1ee30	CMap	GetWorldMapNumber	15
 736	00c5a1f0	CMap	Update	29
 736	00c5a2a0	CMap	Update	49
+737	00b062a0	NParticleEngine::CPSCSingleSprite	InterpolateTo	1607
+737	00b068f0	CPSCSingleSprite	ReadBinary	3185
+737	00b087c0	NParticleEngine::CPSCSingleSprite::NParticleEngine::CPSCSingleSprite	vfunc_13	2967
+737	00b18c60	NParticleEngine::CPSCLight	InterpolateTo	1903
+737	00b193d0	CPSCLight	ReadBinary	2119
+737	00b19c60	NParticleEngine::CPSCLight::NParticleEngine::CPSCLight	vfunc_13	2516
