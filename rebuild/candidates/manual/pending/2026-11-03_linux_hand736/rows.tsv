@@ -1,0 +1,8 @@
+address	module	name	length	group	anchor	gap_to_next_start
+00821a80	CMap	LoadFromFile	2648	G0081f240	CMap	2656
+00a78e20	_global	CNavQuadTree_InitializeLeafNode	1042	G0081f240	CMap	1056
+00a7a0a0	_global	CNavQuadTree_InitializeWithEvents	1222	G0081f240	CMap	1232
+00a7af60	CNavQuadTree	LoadFromFile	2503	G0081f240	CMap	2512
+00c1ee30	CMap	GetWorldMapNumber	15	G0081f240	CMap	48
+00c5a1f0	CMap	Update	29	G0081f240	CMap	32
+00c5a2a0	CMap	Update	49	G0081f240	CMap	64

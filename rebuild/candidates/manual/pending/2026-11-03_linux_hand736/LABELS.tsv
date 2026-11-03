@@ -1,0 +1,10 @@
+address	name	evidence
+0x00C1EE30	?GetDriverCount@CEventTriggerRef@@QAEKXZ	matched (MATCH); bound spelling from CBankProcessor::AddNumberTriggers 0x00C2E4D0 (count passed to InsertDriver). Class name open: the same 8-byte {dispatcher,item} object is CItemAction in the 0x00C1EE00..0x00C1F4E0 rows (NAME_FIXES_QUEUE row 590, "pick ONE name at landing")
+0x00C5A1F0	?Stop@CSoftwareVoice@@UAEXXZ	matched (RELOCATION_MATCH); vtable 0x012B5C60 slot 2 (NAME_FIXES)
+0x00C5A2A0	?Reset@CSoftwareVoice@@UAEXXZ	matched (RELOCATION_MATCH); vtable 0x012B5C60 slot 17 (NAME_FIXES)
+0x00A78E20	?IsAreaClear@CNavQuadTree@@QBE_NPBVCANavQuadTreeNode@@AA_NAAV?$vector@_KV?$allocator@_K@std@@@std@@@Z	matched (RELOCATION_MATCH, grade retail_asm); Ego_r.pdb name + signature (bool& cleared first, u64 ids, bool result tested at 0x00A79B81 in CNavQuadTreeNode::Initialise)
+0x00A7A0A0	?SetUpRegions@CNavQuadTree@@AAEXJ@Z	parked DIFFER(1270v1222); Ego_r.pdb name + signature (one long, CNavRegion pushes, RegionSeeds walk), sole caller CNavQuadTree::Initialise 0x00A7AED7
+0x00A7AF60	?LoadFromFile@CNavQuadTree@@QAE_NAAVCAFile@@JABVC2DBoxI@@AAVCASuspendableProcess@@@Z	catalog name kept (Ego_r.pdb signature; [ebp+0xc] stored to MapIndex +0x18, box at [ebp+0x10] converted to MapPos, process at [ebp+0x14] vslot 4 Update); not attempted
+0x00821A80	?LoadFromFile@CMap@@QAEXAAVCAFile@@PAVCASuspendableProcess@@@Z	catalog name kept (Ego_r.pdb signature; caller 0x00822630); not attempted
+0x00A81590	?_M_insert_overflow@?$vector@PBV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@V?$allocator@PBV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@2@@std@@IAEXPAPBV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@2@ABQBV32@ABU__true_type@2@I_N@Z	callee of 0x00A78E20 (both push_backs of the line-list pointer vectors); STLport 4.6 _vector.c, protected; new binding
+0x00A83110	??0CNavRegion@@QAE@ABV0@@Z	callee of 0x00A7A0A0 / 0x00A7AF60: the implicit copy ctor (RegionID, Connections copy via _M_insert_dispatch 0x00A80E90, MostRecentSearchID); FableWin.pdb names it

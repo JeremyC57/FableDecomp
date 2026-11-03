@@ -1,0 +1,38 @@
+address	name	parity	behaviour	headers_reached	source
+0x0047F58B	CTCInGameMenu::AddRegionAndTimeInfo	RELOCATION_MATCH	PASS	fable_containers.h(default, sample)	CTCInGameMenu_AddRegionAndTimeInfo_0047f58b.cpp
+0x004B05C0	CQuestManager::TransferBoasts	RELOCATION_MATCH	PASS	fable_containers.h(FABLE_RETAIL_STLP_LIST)	CQuestManager_TransferBoasts_004b05c0.cpp
+0x00522530	NThingManager::CEntityRuntimePersistence::GetGamePersistentSaveData	RELOCATION_MATCH	PASS	fable_containers.h(default, sample)	NThingManagerCEntityRuntimePersistence_GetGamePersistentSaveData_00522530.cpp
+0x005269B0	std::__uninitialized_copy<NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *>	MATCH	PASS	fable_containers.h(default, sample)	std_uninitializedcopy_005269b0.cpp
+0x005269F0	std::__uninitialized_fill_n<NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *, unsigned int, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity>	MATCH	PASS	fable_containers.h(default, sample)	std_uninitializedfilln_005269f0.cpp
+0x0052B030	std::vector<NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity>::_M_insert_overflow	RELOCATION_MATCH	PASS	fable_containers.h(default, sample)	stdvector_Minsertoverflow_0052b030.cpp
+0x005385AE	NUISystem::CList::ScrollUp	RELOCATION_MATCH	PASS	fable_containers.h(FABLE_RETAIL_STLP_LIST)	NUISystemCList_ScrollUp_005385ae.cpp
+0x005392FC	NUISystem::CList::ScrollDown	RELOCATION_MATCH	PASS	fable_containers.h(FABLE_RETAIL_STLP_LIST)	NUISystemCList_ScrollDown_005392fc.cpp
+0x0053A0A1	NUISystem::CList::ChangeState	RELOCATION_MATCH	PASS	fable_containers.h(FABLE_RETAIL_STLP_LIST)	NUISystemCList_ChangeState_0053a0a1.cpp
+0x0087AFF0	NMaths::GetRootsNumerically<class `anonymous namespace'::CCotMethod>	RELOCATION_MATCH	PASS	fable_containers.h(default, sample)	NMaths_GetRootsNumericallyCCotMethod_0087aff0.cpp
+0x009C0880	CDisplayManager::CDisplayManager	RELOCATION_MATCH	PASS	fable_containers.h(default, sample)	CDisplayManager_CDisplayManager_009c0880.cpp
+0x00A14E50	CNavigatorManager::SaveNavigationMapToFile	RELOCATION_MATCH	PASS	CNavQuadTree.h(default)	CNavigatorManager_SaveNavigationMapToFile_00a14e50.cpp
+0x00A19B90	CANavQuadTreeNode::GetPreferabilityCost	MATCH	PASS	CANavQuadTreeNode.h(default)	CANavQuadTreeNode_GetPreferabilityCost_00a19b90.cpp
+0x00A19BB0	CANavQuadTreeNode::IsSwitchableOn	MATCH	PASS	CANavQuadTreeNode.h(default)	CANavQuadTreeNode_IsSwitchableOn_00a19bb0.cpp
+0x00A1AF00	CNavigatorAStar::IsNavLineOfSightClear	RELOCATION_MATCH	PASS	CANavQuadTreeNode.h(default)	CNavigatorAStar_IsNavLineOfSightClear_00a1af00.cpp
+0x00A471D0	IsAnyPartOfNodeWithinDistOfPos	RELOCATION_MATCH	PASS	CANavQuadTreeNode.h(default)	CNavigatorBase_IsAnyPartOfNodeWithinDistOfPos_00a471d0.cpp
+0x00A472F0	CNavigatorBase::GetNextNeighbour	RELOCATION_MATCH	PASS	CANavQuadTreeNode.h(default)	CNavigatorBase_GetNextNeighbour_00a472f0.cpp
+0x00A75C20	CNavQuadTreeNode::~CNavQuadTreeNode	RELOCATION_MATCH	PASS	CNavQuadTree.h(default),CANavQuadTreeNode.h(default)	CNavQuadTreeNode_CNavQuadTreeNode_00a75c20.cpp
+0x00A75E30	CNavQuadTreeNode::SetUpNeighbours	RELOCATION_MATCH	PASS	CANavQuadTreeNode.h(default)	CNavQuadTreeNode_SetUpNeighbours_00a75e30.cpp
+0x00A76240	CNavBlockedQuadTreeNode::operator=	MATCH	PASS	CNavBlockedQuadTreeNode.h(default)	CNavBlockedQuadTreeNode_operator_00a76240.cpp
+0x00A76280	CNavBlockedQuadTreeNode::AddToIndexTable	MATCH	PASS	CNavBlockedQuadTreeNode.h(default)	CNavBlockedQuadTreeNode_AddToIndexTable_00a76280.cpp
+0x00A76370	CANavQuadTreeNode::CANavQuadTreeNode	RELOCATION_MATCH	PASS	CANavQuadTreeNode.h(default)	CANavQuadTreeNode_CANavQuadTreeNode_00a76370.cpp
+0x00A76C30	CNavNavigableLeafNode::IsNeighbourOf	RELOCATION_MATCH	PASS	CANavQuadTreeNode.h(default)	CNavNavigableLeafNode_IsNeighbourOf_00a76c30.cpp
+0x00A76C70	CNavSwitchableLeafNode::IsNeighbourOf	RELOCATION_MATCH	PASS	CANavQuadTreeNode.h(default)	CNavSwitchableLeafNode_IsNeighbourOf_00a76c70.cpp
+0x00A76CC0	CNavQuadTree::IsAreaAllSamePreferability	RELOCATION_MATCH	PASS	CNavQuadTree.h(default)	CNavQuadTree_IsAreaAllSamePreferability_00a76cc0.cpp
+0x00A76F30	CNavQuadTree::IsAreaBlockedByLines	RELOCATION_MATCH	PASS	CNavQuadTree.h(default)	CNavQuadTree_IsAreaBlockedByLines_00a76f30.cpp
+0x00A77420	CNavSwitchableLeafNode::Unlock	RELOCATION_MATCH	PASS	CANavQuadTreeNode.h(default)	CNavSwitchableLeafNode_Unlock_00a77420.cpp
+0x00A778D0	CANavQuadTreeNode::SaveToFile	RELOCATION_MATCH	PASS	CANavQuadTreeNode.h(default)	CANavQuadTreeNode_SaveToFile_00a778d0.cpp
+0x00A77E80	CNavQuadTree::GetMemoryUsage	MATCH	PASS	CNavQuadTree.h(default)	CNavQuadTree_GetMemoryUsage_00a77e80.cpp
+0x00A78DD0	CNavQuadTree::UnblockAllSwitchableNodes	RELOCATION_MATCH	PASS	CANavQuadTreeNode.h(default)	CNavQuadTree_UnblockAllSwitchableNodes_00a78dd0.cpp
+0x00A79240	CNavQuadTree::SetSwitchableNodesAsBlocked	RELOCATION_MATCH	PASS	CANavQuadTreeNode.h(default)	CNavQuadTree_SetSwitchableNodesAsBlocked_00a79240.cpp
+0x00A7D950	CNavBlockedQuadTreeNode::MakeRegion	MATCH	PASS	CNavBlockedQuadTreeNode.h(default)	CNavBlockedQuadTreeNode_MakeRegion_00a7d950.cpp
+0x00A7D960	CNavBlockedQuadTreeNode::AddNavigableNodeNeighbouringSwitchableNodeToRegion	MATCH	PASS	CNavBlockedQuadTreeNode.h(default)	CNavBlockedQuadTreeNode_AddNavigableNodeNeighbouringSwitchableNodeToRegi_00a7d960.cpp
+0x00A85560	std::__uninitialized_fill_n<CNavQuadTree::CNavigationLayer *, unsigned int, CNavQuadTree::CNavigationLayer>	RELOCATION_MATCH	PASS	CNavQuadTree.h(default)	std_uninitializedfilln_00a85560.cpp
+0x00A85B90	std::vector<CNavQuadTree::CNavigationLayer, std::allocator<CNavQuadTree::CNavigationLayer>>::_M_insert_overflow	RELOCATION_MATCH	PASS	CNavQuadTree.h(default)	stdvectorCNavQuadTreeCNavigationLayer_Minsertoverflow_00a85b90.cpp
+0x00A85CC0	std::vector<CNavQuadTree::CNavigationLayer, std::allocator<CNavQuadTree::CNavigationLayer>>::_M_fill_insert	RELOCATION_MATCH	PASS	CNavQuadTree.h(default)	stdvectorCNavQuadTreeCNavigationLayer_Mfillinsert_00a85cc0.cpp
+0x00E2B090	NScript::CV_AmbushScamScript::Main	RELOCATION_MATCH	PASS	fable_containers.h(default, sample)	NScriptCVAmbushScamScript_Main_00e2b090.cpp

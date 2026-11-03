@@ -1,0 +1,133 @@
+addr       parity           behav  name
+0047f58b   RELOCATION_MATCH PASS   CTCInGameMenu::AddRegionAndTimeInfo
+004b05c0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+004b05c0   RELOCATION_MATCH PASS   CQuestManager::TransferBoasts
+00522530   RELOCATION_MATCH PASS   NThingManager::CEntityRuntimePersistence::GetGamePersistentSaveData
+005269b0   MATCH            PASS   std::__uninitialized_copy<NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *>
+005269f0   MATCH            PASS   std::__uninitialized_fill_n<NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *, unsigned int, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity>
+0052b030   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@PAV123@@std@@YIPAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@PAV123@00ABU__false_type@0@@Z -> 005269b0 labelled 'std::__uninitialized_copy<NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *>'
+0052b030   WARN RELOC_NAME: ??$__uninitialized_fill_n@PAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@IV123@@std@@YIPAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@PAV123@IABV123@ABU__false_type@0@@Z -> 005269f0 labelled 'std::__uninitialized_fill_n<NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *, unsigned int, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity>'
+0052b030   RELOCATION_MATCH PASS   std::vector<NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity>::_M_insert_overflow
+005385ae   RELOCATION_MATCH PASS   NUISystem::CList::ScrollUp
+005392fc   RELOCATION_MATCH PASS   NUISystem::CList::ScrollDown
+0053a0a1   RELOCATION_MATCH PASS   NUISystem::CList::ChangeState
+0087aff0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0087aff0   RELOCATION_MATCH PASS   NMaths::GetRootsNumerically<class `anonymous namespace'::CCotMethod>
+009c0880   WARN RELOC_NAME: ??0CBusyResourceManager@@QAE@XZ -> 00a61880 labelled 'CDirectInputDeviceLists_00a61b10::CDirectInputDeviceLists_00a61b10'
+009c0880   RELOCATION_MATCH PASS   CDisplayManager::CDisplayManager
+00a14e50   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+00a14e50   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00a14e50   RELOCATION_MATCH PASS   CNavigatorManager::SaveNavigationMapToFile
+00a19b90   MATCH            PASS   CANavQuadTreeNode::GetPreferabilityCost
+  WARN leaf 'IsSwitchableOn' matches no symbol in 00a19bb0.obj; graded the largest function
+  WARN leaf 'IsSwitchableOn' matches no symbol in 00a19bb0.obj; graded the largest function
+00a19bb0   MATCH            PASS   CANavQuadTreeNode::IsSwitchableOn
+00a1af00   WARN SHARED_HEADER_AVAILABLE C3DVector
+00a1af00   WARN SHARED_HEADER_AVAILABLE C2DVector
+00a1af00   RELOCATION_MATCH PASS   CNavigatorAStar::IsNavLineOfSightClear
+00a471d0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00a471d0   WARN SHARED_HEADER_AVAILABLE C2DVector
+00a471d0   RELOCATION_MATCH PASS   IsAnyPartOfNodeWithinDistOfPos
+00a472f0   WARN SHARED_HEADER_AVAILABLE C2DVector
+00a472f0   WARN SHARED_HEADER_AVAILABLE CNavigatorManager
+00a472f0   WARN RELOC_NAME: ?GetSmallestNodeSize@@YAMXZ -> 00a76320 labelled '_global::GetConstFloat_0_5_00a76320'
+00a472f0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00a472f0   RELOCATION_MATCH PASS   CNavigatorBase::GetNextNeighbour
+00a75c20   WARN SHARED_HEADER_AVAILABLE C2DVector
+00a75c20   RELOCATION_MATCH PASS   CNavQuadTreeNode::~CNavQuadTreeNode
+00a75e30   WARN SHARED_HEADER_AVAILABLE C2DVector
+00a75e30   RELOCATION_MATCH PASS   CNavQuadTreeNode::SetUpNeighbours
+  WARN leaf 'operator=' matches no symbol in 00a76240.obj; graded the largest function
+  WARN leaf 'operator=' matches no symbol in 00a76240.obj; graded the largest function
+00a76240   MATCH            PASS   CNavBlockedQuadTreeNode::operator=
+00a76280   WARN SHARED_HEADER_AVAILABLE C2DVector
+00a76280   MATCH            PASS   CNavBlockedQuadTreeNode::AddToIndexTable
+00a76370   WARN SHARED_HEADER_AVAILABLE C2DVector
+00a76370   RELOCATION_MATCH PASS   CANavQuadTreeNode::CANavQuadTreeNode
+00a76c30   WARN SHARED_HEADER_AVAILABLE C2DVector
+00a76c30   RELOCATION_MATCH PASS   CNavNavigableLeafNode::IsNeighbourOf
+00a76c70   WARN SHARED_HEADER_AVAILABLE C2DVector
+00a76c70   RELOCATION_MATCH PASS   CNavSwitchableLeafNode::IsNeighbourOf
+00a76cc0   WARN SHARED_HEADER_AVAILABLE C2DVector
+00a76cc0   WARN SHARED_HEADER_AVAILABLE C2DBoxF
+00a76cc0   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode
+00a76cc0   RELOCATION_MATCH PASS   CNavQuadTree::IsAreaAllSamePreferability
+00a76f30   WARN SHARED_HEADER_AVAILABLE C2DVector
+00a76f30   WARN SHARED_HEADER_AVAILABLE C2DBoxF
+  WARN leaf '?IsAreaBlockedByLines@ (Ego_r.pdb ?IsAreaBlockedByLines@CNavQuadTree@@ABE_NABVC2DBoxF@@ABV?$vector@PBV?$list@VC2DLineF@@...@std@@@Z; modelled through CNavQuadTree_Methods)' matches no symbol in 00a76f30.obj; graded the largest function
+  WARN leaf '?IsAreaBlockedByLines@ (Ego_r.pdb ?IsAreaBlockedByLines@CNavQuadTree@@ABE_NABVC2DBoxF@@ABV?$vector@PBV?$list@VC2DLineF@@...@std@@@Z; modelled through CNavQuadTree_Methods)' matches no symbol in 00a76f30.obj; graded the largest function
+00a76f30   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00a76f30   RELOCATION_MATCH PASS   CNavQuadTree::IsAreaBlockedByLines
+00a77420   WARN SHARED_HEADER_AVAILABLE C2DVector
+00a77420   RELOCATION_MATCH PASS   CNavSwitchableLeafNode::Unlock
+00a778d0   WARN SHARED_HEADER_AVAILABLE C2DVector
+00a778d0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00a778d0   RELOCATION_MATCH PASS   CANavQuadTreeNode::SaveToFile
+00a77e80   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode
+00a77e80   MATCH            PASS   CNavQuadTree::GetMemoryUsage
+00a78dd0   WARN SHARED_HEADER_AVAILABLE CNavQuadTree
+00a78dd0   RELOCATION_MATCH PASS   CNavQuadTree::UnblockAllSwitchableNodes
+00a79240   WARN SHARED_HEADER_AVAILABLE CVectorMap
+00a79240   WARN SHARED_HEADER_AVAILABLE CNavQuadTree
+00a79240   RELOCATION_MATCH PASS   CNavQuadTree::SetSwitchableNodesAsBlocked
+  WARN leaf 'MakeRegion' matches no symbol in 00a7d950.obj; graded the largest function
+  WARN leaf 'MakeRegion' matches no symbol in 00a7d950.obj; graded the largest function
+00a7d950   MATCH            PASS   CNavBlockedQuadTreeNode::MakeRegion
+  WARN leaf 'AddNavigableNodeNeighbouringSwitchableNodeToRegion' matches no symbol in 00a7d960.obj; graded the largest function
+  WARN leaf 'AddNavigableNodeNeighbouringSwitchableNodeToRegion' matches no symbol in 00a7d960.obj; graded the largest function
+00a7d960   MATCH            PASS   CNavBlockedQuadTreeNode::AddNavigableNodeNeighbouringSwitchableNodeToRegion
+00a85560   WARN SHARED_HEADER_AVAILABLE C2DVector
+00a85560   WARN SHARED_HEADER_AVAILABLE CVectorMap
+00a85560   WARN RELOC_NAME: ??$__uninitialized_copy@PBV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@PAV12@@std@@YIPAV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@0@PBV10@0PAV10@ABU__false_type@0@@Z -> 00a82730 labelled 'std::__uninitialized_copy<std::list<C2DLineF, std::allocator<C2DLineF>> const *, std::list<C2DLineF, std::allocator<C2DLineF>> *>'
+00a85560   WARN RELOC_NAME: ??$__uninitialized_copy@PBU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@std@@PAU12@@std@@YIPAU?$pair@_KV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@0@PBU10@0PAU10@ABU__false_type@0@@Z -> 00a83340 labelled 'std::__uninitialized_copy<std::pair<unsigned __int64, std::list<C2DLineF, std::allocator<C2DLineF>>> const *, std::pair<unsigned __int64, std::list<C2DLineF, std::allocator<C2DLineF>>> *>'
+00a85560   RELOCATION_MATCH PASS   std::__uninitialized_fill_n<CNavQuadTree::CNavigationLayer *, unsigned int, CNavQuadTree::CNavigationLayer>
+00a85b90   WARN SHARED_HEADER_AVAILABLE C2DVector
+00a85b90   WARN SHARED_HEADER_AVAILABLE CVectorMap
+00a85b90   WARN RELOC_NAME: ??$__uninitialized_fill_n@PAVCNavigationLayer@CNavQuadTree@@IV12@@std@@YIPAVCNavigationLayer@CNavQuadTree@@PAV12@IABV12@ABU__false_type@0@@Z -> 00a85560 labelled 'std::__uninitialized_fill_n<CNavQuadTree::CNavigationLayer *, unsigned int, CNavQuadTree::CNavigationLayer>'
+00a85b90   RELOCATION_MATCH PASS   std::vector<CNavQuadTree::CNavigationLayer, std::allocator<CNavQuadTree::CNavigationLayer>>::_M_insert_overflow
+00a85cc0   WARN SHARED_HEADER_AVAILABLE C2DVector
+00a85cc0   WARN SHARED_HEADER_AVAILABLE CVectorMap
+00a85cc0   WARN RELOC_NAME: ??$__uninitialized_fill_n@PAVCNavigationLayer@CNavQuadTree@@IV12@@std@@YIPAVCNavigationLayer@CNavQuadTree@@PAV12@IABV12@ABU__false_type@0@@Z -> 00a85560 labelled 'std::__uninitialized_fill_n<CNavQuadTree::CNavigationLayer *, unsigned int, CNavQuadTree::CNavigationLayer>'
+00a85cc0   WARN RELOC_NAME: ??1CNavigationLayer@CNavQuadTree@@QAE@XZ -> 00a851e0 labelled 'CVectorTriple_00a851e0::~CVectorTriple_00a851e0'
+00a85cc0   RELOCATION_MATCH PASS   std::vector<CNavQuadTree::CNavigationLayer, std::allocator<CNavQuadTree::CNavigationLayer>>::_M_fill_insert
+00e2b090   WARN RELOC_NAME: ?AssignMoralityEtcForGoodEnding@CV_AmbushScamScript@NScript@@QAEXXZ -> 00e2bac0 labelled 'CV_AmbushScamScript::AssignMoralityEtcForEvilEnding'
+00e2b090   RELOCATION_MATCH PASS   NScript::CV_AmbushScamScript::Main
+
+WINS: 37
+  0047f58b RELOCATION_MATCH CTCInGameMenu::?AddRegionAndTimeInfo@CTCInGameMenu@@AAEXABVCWideString@@@Z
+  004b05c0 RELOCATION_MATCH CQuestManager::?TransferBoasts@CQuestManager@@QAEXAAVCPersistContext@@@Z
+  00522530 RELOCATION_MATCH NThingManager::CEntityRuntimePersistence::?GetGamePersistentSaveData@CEntityRuntimePersistence@NThingManager@@QBE_NJAAV?$CArray@E@@@Z
+  005269b0 MATCH std::??$__uninitialized_copy@PAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@PAV123@@std@@YIPAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@PAV123@00ABU__false_type@0@@Z
+  005269f0 MATCH std::??$__uninitialized_fill_n@PAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@IV123@@std@@YIPAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@PAV123@IABV123@ABU__false_type@0@@Z
+  0052b030 RELOCATION_MATCH std::vector::?_M_insert_overflow@
+  005385ae RELOCATION_MATCH NUISystem::CList::?ScrollUp@CList@NUISystem@@MAEXKK_N00@Z
+  005392fc RELOCATION_MATCH NUISystem::CList::?ScrollDown@CList@NUISystem@@MAEXKK_N00@Z
+  0053a0a1 RELOCATION_MATCH NUISystem::CList::?ChangeState@CList@NUISystem@@UAEXK@Z
+  0087aff0 RELOCATION_MATCH NMaths::??$GetRootsNumerically@VCCotMethod@?A0x
+  009c0880 RELOCATION_MATCH CDisplayManager::??0CDisplayManager@@QAE@AAVCSystemManager@@@Z
+  00a14e50 RELOCATION_MATCH CNavigatorManager::?SaveNavigationMapToFile@CNavigatorManager@@QBEXJAAVCAFile@@@Z
+  00a19b90 MATCH CANavQuadTreeNode::?GetPreferabilityCost@CANavQuadTreeNode@@UBEEXZ
+  00a19bb0 MATCH CANavQuadTreeNode::IsSwitchableOn
+  00a1af00 RELOCATION_MATCH CNavigatorAStar::?IsNavLineOfSightClear@CNavigatorAStar@@UBE_NABVC3DVector@@0@Z
+  00a471d0 RELOCATION_MATCH CNavigatorBase::IsAnyPartOfNodeWithinDistOfPos
+  00a472f0 RELOCATION_MATCH CNavigatorBase::GetNextNeighbour
+  00a75c20 RELOCATION_MATCH CNavQuadTreeNode::??1CNavQuadTreeNode@@UAE@XZ
+  00a75e30 RELOCATION_MATCH CNavQuadTreeNode::?SetUpNeighbours@CNavQuadTreeNode@@MAEXW4ENavQuadTreeNeighbours@@PAVCANavQuadTreeNode@@@Z
+  00a76240 MATCH CNavBlockedQuadTreeNode::operator=
+  00a76280 MATCH CNavBlockedQuadTreeNode::?AddToIndexTable@CNavBlockedQuadTreeNode@@MBEXAAJAAV?$map@PBVCANavQuadTreeNode@@JU?$less@PBVCANavQuadTreeNode@@@std@@V?$allocator@U?$pair@QBVCANavQuadTreeNode@@J@std@@@3@@std@@@Z
+  00a76370 RELOCATION_MATCH CANavQuadTreeNode::CANavQuadTreeNode
+  00a76c30 RELOCATION_MATCH CNavNavigableLeafNode::?IsNeighbourOf@CNavNavigableLeafNode@@UBE_NPBVCANavQuadTreeNode@@@Z
+  00a76c70 RELOCATION_MATCH CNavSwitchableLeafNode::?IsNeighbourOf@CNavSwitchableLeafNode@@UBE_NPBVCANavQuadTreeNode@@@Z
+  00a76cc0 RELOCATION_MATCH CNavQuadTree::IsAreaAllSamePreferability
+  00a76f30 RELOCATION_MATCH CNavQuadTree::?IsAreaBlockedByLines@ (Ego_r.pdb ?IsAreaBlockedByLines@CNavQuadTree@@ABE_NABVC2DBoxF@@ABV?$vector@PBV?$list@VC2DLineF@@...@std@@@Z; modelled through CNavQuadTree_Methods)
+  00a77420 RELOCATION_MATCH CNavSwitchableLeafNode::?Unlock@CNavSwitchableLeafNode@@AAEXPBVCNavRegion@@@Z
+  00a778d0 RELOCATION_MATCH CANavQuadTreeNode::SaveToFile
+  00a77e80 MATCH CNavQuadTree::?GetMemoryUsage@CNavQuadTree
+  00a78dd0 RELOCATION_MATCH CNavQuadTree::UnblockAllSwitchableNodes
+  00a79240 RELOCATION_MATCH CNavQuadTree::?SetSwitchableNodesAsBlocked@CNavQuadTree@@QAEX_K_N@Z
+  00a7d950 MATCH CNavBlockedQuadTreeNode::MakeRegion
+  00a7d960 MATCH CNavBlockedQuadTreeNode::AddNavigableNodeNeighbouringSwitchableNodeToRegion
+  00a85560 RELOCATION_MATCH std::??$__uninitialized_fill_n@PAVCNavigationLayer@CNavQuadTree@@IV12@@std@@YIPAVCNavigationLayer@CNavQuadTree@@PAV12@IABV12@ABU__false_type@0@@Z
+  00a85b90 RELOCATION_MATCH std::vector<CNavQuadTree::CNavigationLayer>::?_M_insert_overflow@?$vector@VCNavigationLayer@CNavQuadTree@@V?$allocator@VCNavigationLayer@CNavQuadTree@@@std@@@std@@IAEXPAVCNavigationLayer@CNavQuadTree@@ABV34@ABU__false_type@2@I_N@Z
+  00a85cc0 RELOCATION_MATCH std::vector<CNavQuadTree::CNavigationLayer>::?_M_fill_insert@?$vector@VCNavigationLayer@CNavQuadTree@@V?$allocator@VCNavigationLayer@CNavQuadTree@@@std@@@std@@QAEXPAVCNavigationLayer@CNavQuadTree@@IABV34@@Z
+  00e2b090 RELOCATION_MATCH NScript::CV_AmbushScamScript::?Main@CV_AmbushScamScript@NScript@@UAEXXZ

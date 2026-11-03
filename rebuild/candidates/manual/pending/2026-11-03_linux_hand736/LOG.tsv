@@ -1,0 +1,29 @@
+address	attempt	source	result	note
+0x00C5A1F0	1	draft/00c5a1f0.cpp	RELOCATION_MATCH	ring Clear, buffer = 0, qualified CCodaVoice::Stop tail call
+0x00C5A1F0	2	src/00c5a1f0.cpp	RELOCATION_MATCH	final; vland RELOCATION_MATCH PASS
+0x00C5A2A0	1	draft/00c5a2a0.cpp	RELOCATION_MATCH	base Reset, three zero stores (one zero register), g_monoRing / g_mixRing Flush
+0x00C5A2A0	2	src/00c5a2a0.cpp	RELOCATION_MATCH	final (ring typed as CAudioRingBuffer, slot names); vland RELOCATION_MATCH PASS
+0x00C1EE30	1	draft/00c1ee30.cpp	MATCH	m_pTrigger->GetDrivers()->GetCount()
+0x00C1EE30	2	src/00c1ee30.cpp	MATCH	final; vland MATCH PASS
+0x00A78E20	1	draft/00a78e20_a1.cpp	DIFFER(1238v1042)	local model; the header's _M_insert_overflow<__true_type> bodies were expanded at both push_backs
+0x00A78E20	2	draft/00a78e20_a2.cpp	DIFFER(1043v1042)	growth paths as same-TU explicit specialisations under auto_inline(off): node in esi (retail ebx), finish reloaded after the element store
+0x00A78E20	3	draft/00a78e20_a3.cpp	DIFFER(1043v1042)	lines declared before the lineLists reference: no change
+0x00A78E20	4	draft/00a78e20_a4.cpp	DIFFER(1043v1042)	cell bounds declared first, assigned later: no change
+0x00A78E20	5	draft/00a78e20_a5.cpp	DIFFER(1043v1042)	cell bounds declared in reverse order: no change
+0x00A78E20	6	draft/00a78e20_a6.cpp	RELOCATION_MATCH	same-TU IsAreaBlockedByLines body (the landed 0x00A76F30 logic): vector does not escape, esi keeps finish
+0x00A78E20	7	src/00a78e20.cpp	RELOCATION_MATCH	ported to engine/CNavQuadTree.h FABLE_RETAIL_CNAVQUADTREE + CANavQuadTreeNode.h branch
+0x00A78E20	8	src/00a78e20.cpp	RELOCATION_MATCH	after the C2DBoxF include-order fix in the CNavQuadTree branch; vland RELOCATION_MATCH PASS (grade retail_asm via GFFloatToLongFloor)
+0x00A7A0A0	1	draft/00a7a0a0_s1.cpp	SRC_FAIL	CNavBlockedQuadTreeNode abstract (pure node slots)
+0x00A7A0A0	2	draft/00a7a0a0_s1.cpp	DIFFER(1270v1222)	structure right; xor id (retail or); seed-loop push expands the CNavRegion copy ctor (retail calls 0x00A83110)
+0x00A7A0A0	3	draft/00a7a0a0_s2.cpp	DIFFER(1270v1222)	`|` in the id: `or eax,1` / `or eax,esi` now match; copy-ctor split unchanged
+0x00A7A0A0	4	draft/00a7a0a0_s3.cpp	DIFFER(1334v1222)	early `continue` in the seed loop: more expansion (worse)
+0x00A7A0A0	5	draft/00a7a0a0_s4.cpp	DIFFER(1270v1222)	`++regionIndex` inside the push_back argument: no change
+0x00A7A0A0	6	draft/00a7a0a0_s5.cpp	DIFFER(1270v1222)	explicit out-of-class (auto-inlinable) copy ctor: no change
+0x00A7A0A0	7	draft/00a7a0a0_s6.cpp	DIFFER(1270v1222)	explicit in-class inline copy ctor: no change
+0x00A7A0A0	8	draft/00a7a0a0_s7.cpp	DIFFER(1270v1222)	separate for-scoped counters in parts 2 / 3: dl 132 -> 128 (best)
+0x00A7A0A0	9	draft/00a7a0a0_s8.cpp	DIFFER(1270v1222)	`node != 0` / `== true` spellings: no change
+0x00A7A0A0	10	draft/00a7a0a0_s9.cpp	DIFFER(1270v1222)	`!= false` / `== true` on the virtual results: no change
+0x00A7A0A0	11	differ/00a7a0a0.cpp	SRC_FAIL	header port: C2DBoxF included before FABLE_RETAIL_C2DBOXF (fixed in the CNavQuadTree branch)
+0x00A7A0A0	12	differ/00a7a0a0.cpp	DIFFER(1270v1222)	header port of s7; parked
+0x00A7AF60	0	-	NOT_ATTEMPTED	read + callee map only (NOTES); budget
+0x00821A80	0	-	NOT_ATTEMPTED	read + callee map only (NOTES); budget

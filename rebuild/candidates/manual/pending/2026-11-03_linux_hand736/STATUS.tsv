@@ -1,0 +1,8 @@
+address	name	status	attempts	note
+0x00C1EE30	CEventTriggerRef::GetDriverCount	MATCH	2	src + test; payload; vland MATCH PASS. Catalog "CMap::GetWorldMapNumber" is propagated (libpk)
+0x00C5A1F0	CSoftwareVoice::Stop	RELOCATION_MATCH	2	src + test; payload; vland RELOCATION_MATCH PASS. Catalog "CMap::Update" is propagated (GameCODA vtable slot 2)
+0x00C5A2A0	CSoftwareVoice::Reset	RELOCATION_MATCH	2	src + test; payload; vland RELOCATION_MATCH PASS. Catalog "CMap::Update" is propagated (GameCODA vtable slot 17)
+0x00A78E20	CNavQuadTree::IsAreaClear	RELOCATION_MATCH	8	src + test; payload; vland RELOCATION_MATCH PASS; grade retail_asm (calls engine/GFFloatToLongFloor.h, Retail-asm line). Catalog "CNavQuadTree_InitializeLeafNode" is propagated
+0x00A7A0A0	CNavQuadTree::SetUpRegions	DIFFER(1270v1222)	12	differ/00a7a0a0.cpp + test/00a7a0a0.test.cpp. Seed-loop region push expands CNavRegion's implicit copy ctor (retail calls 0x00A83110); register/slot rotation follows. Next idea: find the statement shape that lowers that site's block frequency (per-site inline split, coordinator note 2026-11-03)
+0x00A7AF60	CNavQuadTree::LoadFromFile	NOT_ATTEMPTED	0	read + callee map (NOTES); 2503 B, map<long,node*> index, layer resize, per-type node ctors from the CCachedFile; budget
+0x00821A80	CMap::LoadFromFile	NOT_ATTEMPTED	0	read + callee map (NOTES); 2648 B /GS, CCachedFile + CReplaceSerialise readers, theme palette defs, height/game map cells; budget
