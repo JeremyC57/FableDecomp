@@ -1,5 +1,5 @@
 // CEAXManager::SetVoiceProperty(unsigned long id, void* data, unsigned long size, CEAXVoice* voice) -- write an EAX property of a voice through its effect object and, when that succeeds, queue the deferred commit of the changed-settings flags it reports (-4 when the voice is missing)
-// Leaf: ?SetVoiceProperty@CEAXManager@@
+// Leaf: ?SetVoiceProperty@CEAXManager@@QAEJKPAXKPAUCEAXVoice@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C51F00, length 76 bytes (+ int3 padding); `ret 10h`; thiscall on the
 // global EAX manager @ 0x0143BB70.
 // Callees: the effect's SetProperty 0x00C68510 (switch on `id & 0x7FFFFFFF`; manifest "CDrawGuildSeal_SetProperty" is
@@ -10,13 +10,15 @@
 // Shape: the result accumulator puts `mov eax,-4` ahead of the `je` (the failure exit skips the esi restore); the dirty
 // flags are homed in the dead `voice` argument slot.
 
-struct CEAXEffect {
-    long SetProperty(unsigned long id, void* data, unsigned long size, unsigned long* dirty);       // 0x00C68510
+struct _CHANGES;
+class CEAXBuffer {
+public:
+    long SetSourceProperty_00c68510(unsigned long property, const void* value, unsigned long size, _CHANGES** changes);   // 0x00C68510
 };
 
 struct CEAXVoice {
     unsigned char _pad[0x1f0];
-    CEAXEffect*   m_pEffect;                                // +0x1f0
+    CEAXBuffer*   m_pEffect;                                // +0x1f0
 };
 
 struct CEAXManager {
@@ -29,7 +31,7 @@ long CEAXManager::SetVoiceProperty(unsigned long id, void* data, unsigned long s
     long result = -4;
     if (voice) {
         unsigned long dirty;
-        result = voice->m_pEffect->SetProperty(id, data, size, &dirty);
+        result = voice->m_pEffect->SetSourceProperty_00c68510(id, data, size, (_CHANGES**)&dirty);
         if (!result)
             QueueCommit(dirty, voice);
     }

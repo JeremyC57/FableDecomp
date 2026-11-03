@@ -20,3 +20,22 @@ address	symbol	evidence
 0x0049D870	?GetFrame@CWorld@@SIJXZ	Ego_r/FableWin static __fastcall (the SA spelling is a stand-in); target of 0x004167C8; 2026-11-01
 0x013B8BA8	?NEWLINE@?A0x<TU hash>@@3VCWideString@@B	DECIDED 2026-11-01 (chunk 660, owner delegation): `anonymous namespace'::NEWLINE, a const CWideString(L"\n") in the CTCInventoryWeapons TU (both PDBs list the file's dynamic initializers in retail order; donor hash ?A0x0a34196c); file-local, so only same-TU rows reference it -- bind under the PDB spelling with our TU hash (anonymous-namespace policy); the bound g_NewLineWideString was descriptive. Respell the callers in naming wave 15.
 0x0139C8FC	?_NullString@@3PAUCStringData@@A	libpk CString nil data pointer; retail assert text "stringSrc.GetData() != _NullString" (naming wave 25)
+(form)	??$_M_find@<K>@?$_Rb_tree@<K>@<V>@<KoV>@<less>@<allocator>@std@@ABEPAU?$_Rb_tree_node@<V>@1@AB<K>@Z	DECIDED 2026-11-03 (owner, D1): STLport 4.6.1 _tree.h 461 `template <class _KT> _Rb_tree_node<_Value>* _M_find(const _KT&) const` (private); 28 landed definers + their binders respelled (naming/2026-11-03_decisions)
+(form)	??$find@<K>@?$_Rb_tree@...@std@@QAE?AU?$_Rb_tree_iterator@<V>@U?$_Nonconst_traits@<V>@std@@@1@AB<K>@Z / QBE ... _Const_traits	DECIDED 2026-11-03 (owner, D1): STLport 4.6.1 _tree.h 458-459 member-template find (hidden iterator result); map/set::find stay non-template
+(class)	CEAXListener	DECIDED 2026-11-03 (owner, D3): GameCODA 2.10 EAXListener.obj / EAX4Translation.obj class (vtable 0x012B9340, alloc 0x4f0); was CEaxContext / CEAXContext; engine/CEAXListener.h
+(class)	CEAXBuffer	DECIDED 2026-11-03 (owner, D3): GameCODA 2.10 EAXBuffer.obj class (vtable 0x012B9344, alloc 0x3c0); was CEaxSource; engine/CEAXBuffer.h
+(class)	CEAXBufferList	DECIDED 2026-11-03 (owner, D3): GameCODA listener buffer-list node (vtable 0x012B9338, ctor 0x00C5FF50); was CEaxSourceNode
+(class)	CCodaObjectBase	DECIDED 2026-11-03 (owner, D3): GameCODA root (vtable 0x012B5868, dtor 0x00C3C830); was CPKObject; operator new/delete inline -> _CodaMalloc / _CodaFree; engine/CCodaObjectBase.h
+(struct)	_CHANGES	DECIDED 2026-11-03 (owner, D3): GameCODA EAXListener.obj notification packet (0x98 bytes native); was SEaxEvent
+0x00C3C360	_CodaMalloc	DECIDED 2026-11-03 (owner, D3): GameCODA 2.10 Memory.obj, byte-identical after ?CODA_MemAlloc@@3P6GPAXI@ZA (0x0139C97C)
+0x00C3C370	_CodaFree	DECIDED 2026-11-03 (owner, D3): GameCODA 2.10 Memory.obj, byte-identical after ?CODA_MemFree@@3P6GXPAX@ZA (0x0139C980)
+0x0139C97C	?CODA_MemAlloc@@3P6GPAXI@ZA	DECIDED 2026-11-03 (owner, D3): Memory.obj CodaMalloc relocation
+0x0139C980	?CODA_MemFree@@3P6GXPAX@ZA	DECIDED 2026-11-03 (owner, D3): Memory.obj CodaFree relocation
+0x00C5FFB0	?AddToChangesList@CEAXListener@@QAEXW4IDENTIFIER@@KPAXJ@Z	DECIDED 2026-11-03 (owner, D3): EAXListener.obj symbol + debug type
+0x00C60FF0	?Set3DBuffer@CEAXBuffer@@AAEHKPAXK@Z	DECIDED 2026-11-03 (owner, D3): EAXBuffer.obj private member
+0x00C65A00	?CommitEAX3@CEAXBuffer@@QAEHXZ	DECIDED 2026-11-03 (owner, D3): EAXBuffer.obj Set3DBuffer tail-call relocation
+0x00C66330	?GetEAX4FXSlot@CEAXListener@@QAEHKKPAXKPAK@Z	DECIDED 2026-11-03 (owner, D3): EAX4Translation.obj, same 2008-byte extent
+0x00C66C90	?GetEAX4Source@CEAXBuffer@@QAEHKPAXKPAK@Z	DECIDED 2026-11-03 (owner, D3): EAX4Translation.obj
+0x00C60B30	?IsNaN@@YA_NABU_D3DVECTOR@@@Z	DECIDED 2026-11-03 (owner, D3): EAXBuffer.obj, 76-byte body byte-identical after three _isnan relocations; was IsAnyNaN
+(form)	_<EAX GUID name>	DECIDED 2026-11-03 (owner, D3): EAX 4.0 GUIDs are extern "C" (DEFINE_GUID = EXTERN_C; EAX4Translation.obj relocates _EAX_REVERB_EFFECT): _EAX_NULL_GUID 0x012B9438, _EAX_PrimaryFXSlotID 0x012B9458, _EAXPROPERTYID_EAX40_FXSlot0..3 0x012B9468/78/88/98, _EAX_REVERB_EFFECT 0x012B94B8
+0x012BEE90	?SAL_EAX30_ListenerProperties@@3U_GUID@@B	DECIDED 2026-11-03 (D3 evidence rule): the original GameCODA SAL Update object relocates this C++ symbol (CSalOpenALReverb::Update 0x00C71870 byte-identical); was DSPROPSETID_EAX30_ListenerProperties / g_eaxListenerGuid

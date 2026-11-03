@@ -2,8 +2,8 @@
 #include <cstdio>
 #include <new>
 static int g_root = 0;
-class CPKObject { public: virtual ~CPKObject() { ++g_root; } };
-class CMixBuffer : public CPKObject {
+class CCodaObjectBase { public: virtual ~CCodaObjectBase() { ++g_root; } };
+class CMixBuffer : public CCodaObjectBase {
 public:
     CMixBuffer() : m_active(1), m_numChannels(6) { }
     virtual ~CMixBuffer() { }

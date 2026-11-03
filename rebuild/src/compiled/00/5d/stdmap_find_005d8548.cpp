@@ -84,9 +84,9 @@ public:
     public:
     typedef _Rb_tree_iterator<_Value, _Nonconst_traits<_Value> > iterator;
     private:
-    _Rb_tree_node<_Value>* _M_find(const _Key& __k) const;        // 0x005D83B3
+    template <class _KT> _Rb_tree_node<_Value>* _M_find(const _KT& __k) const;        // 0x005D83B3
     public:
-    iterator find(const _Key& __k) { return iterator(_M_find(__k)); }
+    template <class _KT> iterator find(const _KT& __k) { return iterator(_M_find(__k)); }
 };
 
 template <class _Key, class _Tp, class _Compare = less<_Key>, class _Alloc = allocator<pair<const _Key, _Tp> > >

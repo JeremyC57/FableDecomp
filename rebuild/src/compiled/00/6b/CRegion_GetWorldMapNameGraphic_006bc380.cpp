@@ -24,7 +24,7 @@ struct _Rb_tree_base_iterator{_Rb_tree_node_base*_M_node;};
 template<class T>struct _Const_traits{typedef const T*pointer;typedef const T&reference;};
 template<class T,class Traits>struct _Rb_tree_iterator:public _Rb_tree_base_iterator{_Rb_tree_iterator(){} _Rb_tree_iterator(_Rb_tree_node_base*p){_M_node=p;} typename Traits::pointer operator->()const{return &static_cast<_Rb_tree_node<T>*>(_M_node)->_M_value_field;}};
 template<class V,class A>struct _Rb_tree_base{protected:_STLP_alloc_proxy<_Rb_tree_node<V>*,_Rb_tree_node<V>,allocator<_Rb_tree_node<V> > >_M_header;};
-template<class K,class V,class Select,class Compare,class A>class _Rb_tree:public _Rb_tree_base<V,A>{protected:unsigned long _M_node_count;Compare _M_key_compare;public:typedef _Rb_tree_iterator<V,_Const_traits<V> >const_iterator;__declspec(noinline)const_iterator find(const K&k)const{
+template<class K,class V,class Select,class Compare,class A>class _Rb_tree:public _Rb_tree_base<V,A>{protected:unsigned long _M_node_count;Compare _M_key_compare;public:typedef _Rb_tree_iterator<V,_Const_traits<V> >const_iterator;template<class _KT> __declspec(noinline)const_iterator find(const _KT&k)const{
  _Rb_tree_node_base*y=this->_M_header._M_data;_Rb_tree_node_base*x=y->_M_parent;
  while(x){if(!_M_key_compare(Select()(static_cast<_Rb_tree_node<V>*>(x)->_M_value_field),k)){y=x;x=x->_M_left;}else x=x->_M_right;}
  if(y==this->_M_header._M_data||_M_key_compare(k,Select()(static_cast<_Rb_tree_node<V>*>(y)->_M_value_field)))return end();

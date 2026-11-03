@@ -1,5 +1,5 @@
 // std::_Rb_tree::_M_find(const key_type& k) const -- (map<unsigned long, long> (CTCInventoryStats::CreaturesKilled)) STLport exact-key lookup over an unsigned 32-bit key: walk from the root keeping the last node whose key is not less than k, then return it unless it is the header or k is less than its key (then the header, i.e. end())
-// Leaf: ?_M_find@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBKJ@std@@@2@ABK@Z
+// Leaf: ??$_M_find@K@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBKJ@std@@@1@ABK@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005D83B3, 54 bytes (unaligned entry, size-optimised TU), thiscall, `ret 4`;
 //   returns the node pointer (header node pointer = end()).
 // Identity (proven): map<unsigned long, long> (CTCInventoryStats::CreaturesKilled); evidence: the landed CTCInventoryStats::SetCreatureAsKilled 0x005D66BA and FrameUpdate 0x005CDCCB call it on this+0x134 and increment the node's long: CreaturesKilled (Ego_r.pdb map<unsigned long, long>; the unsigned `jb` compare agrees, where the landed header's map<long, long> would compare signed).
@@ -63,12 +63,13 @@ public:
     _Link_type _M_root() const { return (_Link_type)this->_M_header._M_data->_M_parent; }
     public:
     private:
-    _Rb_tree_node<_Value>* _M_find(const _Key& __k) const;
+    template <class _KT> _Rb_tree_node<_Value>* _M_find(const _KT& __k) const;
     public:
 };
 
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
-_Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_find(const _Key& __k) const
+template <class _KT>
+_Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_find(const _KT& __k) const
 {
     _Link_type __y = this->_M_header._M_data;      // last node which is not less than __k
     _Link_type __x = _M_root();                    // current node
@@ -85,5 +86,6 @@ _Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M
 typedef unsigned long _TreeKey;
 typedef pair<const _TreeKey, long > _TreeValue;
 template class _Rb_tree<_TreeKey, _TreeValue, _Select1st<_TreeValue>, less<_TreeKey>, allocator<_TreeValue> >;
+template _Rb_tree_node<_TreeValue >* _Rb_tree<_TreeKey, _TreeValue, _Select1st<_TreeValue>, less<_TreeKey>, allocator<_TreeValue> >::_M_find<_TreeKey >(const _TreeKey&) const;
 
 } // namespace std

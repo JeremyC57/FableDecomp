@@ -1,5 +1,5 @@
 // std::_Rb_tree::_M_find(const key_type& k) const -- (map<CCharString, unsigned long>) STLport exact-key lookup over CCharString keys: walk from the root keeping the last node whose key is not less than k, then return it unless it is the header or k is less than its key (then the header, i.e. end())
-// Leaf: ?_M_find@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@K@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@K@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@K@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@K@std@@@2@ABVCCharString@@@Z
+// Leaf: ??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@K@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@K@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@K@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@K@std@@@1@ABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D2DD0, 112 bytes (+ int3 padding), thiscall, `ret 4`; returns the node pointer.
 // Identity: `map<CCharString, unsigned long>`; evidence: the landed CBankFile::FindIndexBySymbol 0x009CCDC0 calls it on SymbolIndices (Ego_r CBankFile map<CCharString, unsigned long>; FilenameIndices is the multimap of the same tree type) and CBankFile::AddEntryMultipleFiles 0x009CE5E0 also calls it; CCodeSectionManager's name maps share the type.
 //   Family F012 (17 byte-identical bodies, one COMDAT per tree type): the manifest label "StringMap_FindNode" is behavioural.
@@ -119,12 +119,13 @@ public:
     _Link_type _M_root() const { return (_Link_type)this->_M_header._M_data->_M_parent; }
     public:
     private:
-    _Rb_tree_node<_Value>* _M_find(const _Key& __k) const;
+    template <class _KT> _Rb_tree_node<_Value>* _M_find(const _KT& __k) const;
     public:
 };
 
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
-_Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_find(const _Key& __k) const
+template <class _KT>
+_Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_find(const _KT& __k) const
 {
     _Link_type __y = this->_M_header._M_data;      // last node which is not less than __k
     _Link_type __x = _M_root();                    // current node
@@ -140,5 +141,7 @@ _Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M
 
 template class _Rb_tree<CCharString, pair<const CCharString, unsigned long>, _Select1st<pair<const CCharString, unsigned long> >, less<CCharString>,
                         allocator<pair<const CCharString, unsigned long> > >;
+template _Rb_tree_node<pair<const CCharString, unsigned long> >* _Rb_tree<CCharString, pair<const CCharString, unsigned long>, _Select1st<pair<const CCharString, unsigned long> >, less<CCharString>,
+                        allocator<pair<const CCharString, unsigned long> > >::_M_find<CCharString >(const CCharString&) const;
 
 } // namespace std

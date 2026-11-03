@@ -75,7 +75,7 @@ protected:
     _Compare     _M_key_compare;
 public:
     iterator end() { return iterator(this->_M_header._M_data); }
-    iterator find(const _Key& __k);                                                                   // 0x005937E1
+    template <class _KT> iterator find(const _KT& __k);                                                                   // 0x005937E1
     void erase(iterator __position)
     {
         _Link_type __y = (_Link_type)_Rb_global_inst::_Rebalance_for_erase(__position._M_node,

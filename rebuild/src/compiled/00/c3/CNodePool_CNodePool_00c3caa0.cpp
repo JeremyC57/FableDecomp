@@ -1,4 +1,4 @@
-// CNodePool::~CNodePool() -- EH-framed destructor of the libpk 20-byte node pool: its own vtable (0x012B586C), Clear (0x00C3C930) when the pool still has active nodes or recycling is enabled, then the CPKObject root vtable (0x012B5868) from its inlined empty destructor
+// CNodePool::~CNodePool() -- EH-framed destructor of the libpk 20-byte node pool: its own vtable (0x012B586C), Clear (0x00C3C930) when the pool still has active nodes or recycling is enabled, then the CCodaObjectBase root vtable (0x012B5868) from its inlined empty destructor
 // Leaf: ??1CNodePool@@UAE@XZ
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C3CAA0, length 86 bytes, thiscall, plain `ret`.
@@ -14,14 +14,14 @@
 //   recycling disabled), active count +0x10.
 // Shape: `mov [esp+4],esi` saves `this` for the unwind; EH state 0 (the root sub-object) is stored between the count
 //   load and its test; `m_activeCount != 0 || m_freeCount >= 0` as two branches to the call.
-class CPKObject {                                   // vtable 0x012B5868: the library's root class
+class CCodaObjectBase {                                   // vtable 0x012B5868: the library's root class
 public:
-    virtual ~CPKObject() { }
+    virtual ~CCodaObjectBase() { }
 };
 
 class CPooledNode;
 
-class CNodePool : public CPKObject {                // vtable 0x012B586C, 0x14 bytes: an active chain and a free chain
+class CNodePool : public CCodaObjectBase {                // vtable 0x012B586C, 0x14 bytes: an active chain and a free chain
 public:
     ~CNodePool();
     bool IsRecycling() const { return m_freeCount >= 0; }

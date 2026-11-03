@@ -32769,16 +32769,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c3c360'
-        Module = 'CPKObject'
-        Source = '00/c3/CPKObject_operatornew_00c3c360.cpp'
-        TestSource = '00/c3/CPKObject_operatornew_00c3c360_test.cpp'
+        Module = '_global'
+        Source = '00/c3/global_CodaMalloc_00c3c360.cpp'
+        TestSource = '00/c3/global_CodaMalloc_00c3c360_test.cpp'
         PassPattern = '00c3c360_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c3c370'
-        Module = 'CPKObject'
-        Source = '00/c3/CPKObject_operatordelete_00c3c370.cpp'
-        TestSource = '00/c3/CPKObject_operatordelete_00c3c370_test.cpp'
+        Module = '_global'
+        Source = '00/c3/global_CodaFree_00c3c370.cpp'
+        TestSource = '00/c3/global_CodaFree_00c3c370_test.cpp'
         PassPattern = '00c3c370_TEST PASS'
     }
     [pscustomobject]@{
@@ -41163,9 +41163,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c60fe0'
-        Module = 'CEaxSource'
-        Source = '00/c6/CEaxSource_MarkAllDirty_00c60fe0.cpp'
-        TestSource = '00/c6/CEaxSource_MarkAllDirty_00c60fe0_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_MarkAllDirty_00c60fe0.cpp'
+        TestSource = '00/c6/CEAXBuffer_MarkAllDirty_00c60fe0_test.cpp'
         PassPattern = '00c60fe0_TEST PASS'
     }
     [pscustomobject]@{
@@ -55962,23 +55962,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c60a00'
-        Module = 'CEaxSourceNode'
-        Source = '00/c6/CEaxSourceNode_scalardeletingdestructor_00c60a00.cpp'
-        TestSource = '00/c6/CEaxSourceNode_scalardeletingdestructor_00c60a00_test.cpp'
+        Module = 'CEAXBufferList'
+        Source = '00/c6/CEAXBufferList_scalardeletingdestructor_00c60a00.cpp'
+        TestSource = '00/c6/CEAXBufferList_scalardeletingdestructor_00c60a00_test.cpp'
         PassPattern = '00c60a00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c60ad0'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_scalardeletingdestructor_00c60ad0.cpp'
-        TestSource = '00/c6/CEaxContext_scalardeletingdestructor_00c60ad0_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_scalardeletingdestructor_00c60ad0.cpp'
+        TestSource = '00/c6/CEAXListener_scalardeletingdestructor_00c60ad0_test.cpp'
         PassPattern = '00c60ad0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c61b20'
-        Module = 'CEaxSource'
-        Source = '00/c6/CEaxSource_scalardeletingdestructor_00c61b20.cpp'
-        TestSource = '00/c6/CEaxSource_scalardeletingdestructor_00c61b20_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_scalardeletingdestructor_00c61b20.cpp'
+        TestSource = '00/c6/CEAXBuffer_scalardeletingdestructor_00c61b20_test.cpp'
         PassPattern = '00c61b20_TEST PASS'
     }
     [pscustomobject]@{
@@ -62816,9 +62816,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '005937e1'
-        Module = 'CRegion'
-        Source = '00/59/CRegion_SetMiniMapRegionExitTextOffsetX_005937e1.cpp'
-        TestSource = '00/59/CRegion_SetMiniMapRegionExitTextOffsetX_005937e1_test.cpp'
+        Module = 'std::_Rb_tree<long, std::pair<long const, long>, std::_Select1st<std::pair<long const, long>>, std::less<long>, std::allocator<std::pair<long const, long>>>'
+        Source = '00/59/stdRbtreelongstdpairlongconstlongstdSelect1ststdpairlongconstlongstdlesslongstda_find_005937e1.cpp'
+        TestSource = '00/59/stdRbtreelongstdpairlongconstlongstdSelect1ststdpairlongconstlongstdlesslongstda_find_005937e1_test.cpp'
         PassPattern = 'BEHAVIOUR_OK'
     }
     [pscustomobject]@{
@@ -122113,9 +122113,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c3c830'
-        Module = '_global'
-        Source = '00/c3/CBase_CBase_00c3c830.cpp'
-        TestSource = '00/c3/CBase_CBase_00c3c830_test.cpp'
+        Module = 'CCodaObjectBase'
+        Source = '00/c3/CCodaObjectBase_CCodaObjectBase_00c3c830.cpp'
+        TestSource = '00/c3/CCodaObjectBase_CCodaObjectBase_00c3c830_test.cpp'
         PassPattern = 'PASS_00c3c830'
     }
     [pscustomobject]@{
@@ -122330,9 +122330,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c60a20'
-        Module = 'CEaxSourceNode'
-        Source = '00/c6/CEaxSourceNode_CEaxSourceNode_00c60a20.cpp'
-        TestSource = '00/c6/CEaxSourceNode_CEaxSourceNode_00c60a20_test.cpp'
+        Module = 'CEAXBufferList'
+        Source = '00/c6/CEAXBufferList_CEAXBufferList_00c60a20.cpp'
+        TestSource = '00/c6/CEAXBufferList_CEAXBufferList_00c60a20_test.cpp'
         PassPattern = '00c60a20_TEST PASS'
     }
     [pscustomobject]@{
@@ -153371,9 +153371,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00a7f880'
-        Module = 'CRetailTree_longkey'
-        Source = '00/a7/CRetailTreelongkey_find_00a7f880.cpp'
-        TestSource = '00/a7/CRetailTreelongkey_find_00a7f880_test.cpp'
+        Module = 'std::_Rb_tree<long, std::pair<long const, CANavQuadTreeNode *>, std::_Select1st<std::pair<long const, CANavQuadTreeNode *>>, std::less<long>, std::allocator<std::pair<long const, CANavQuadTreeNode *>>>'
+        Source = '00/a7/stdRbtreelongstdpairlongconstCANavQuadTreeNodestdSelect1ststdpairlongconstCANavQ_find_00a7f880.cpp'
+        TestSource = '00/a7/stdRbtreelongstdpairlongconstCANavQuadTreeNodestdSelect1ststdpairlongconstCANavQ_find_00a7f880_test.cpp'
         PassPattern = '00a7f880_TEST PASS'
     }
     [pscustomobject]@{
@@ -153448,9 +153448,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006bd0f0'
-        Module = 'std::_Rb_tree<CUnprovenKey_006bd0f0,CUnprovenValue_006bd0f0,CUnprovenKeyOfValue_006bd0f0,std::less<CUnprovenKey_006bd0f0>,std::allocator<CUnprovenValue_006bd0f0> >'
-        Source = '00/6b/stdRbtreeCUnprovenKey006bd0f0CUnprovenValue006bd0f0CUnprovenKeyOfValue006bd0f0st_find_006bd0f0.cpp'
-        TestSource = '00/6b/stdRbtreeCUnprovenKey006bd0f0CUnprovenValue006bd0f0CUnprovenKeyOfValue006bd0f0st_find_006bd0f0_test.cpp'
+        Module = 'std::_Rb_tree<EWorldMapNameGraphic, std::pair<EWorldMapNameGraphic const, unsigned long>, std::_Select1st<std::pair<EWorldMapNameGraphic const, unsigned long>>, std::less<EWorldMapNameGraphic>, std::allocator<std::pair<EWorldMapNameGraphic const, unsigned long>>>'
+        Source = '00/6b/stdRbtreeEWorldMapNameGraphicstdpairEWorldMapNameGraphicconstunsignedlongstdSele_find_006bd0f0.cpp'
+        TestSource = '00/6b/stdRbtreeEWorldMapNameGraphicstdpairEWorldMapNameGraphicconstunsignedlongstdSele_find_006bd0f0_test.cpp'
         PassPattern = '006bd0f0_TEST PASS'
     }
     [pscustomobject]@{
@@ -153462,9 +153462,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '006dab90'
-        Module = 'CRetailTree_longkey'
-        Source = '00/6d/CRetailTreelongkey_find_006dab90.cpp'
-        TestSource = '00/6d/CRetailTreelongkey_find_006dab90_test.cpp'
+        Module = 'std::_Rb_tree<EDamageAttribute, std::pair<EDamageAttribute const, float>, std::_Select1st<std::pair<EDamageAttribute const, float>>, std::less<EDamageAttribute>, std::allocator<std::pair<EDamageAttribute const, float>>>'
+        Source = '00/6d/stdRbtreeEDamageAttributestdpairEDamageAttributeconstfloatstdSelect1ststdpairEDa_find_006dab90.cpp'
+        TestSource = '00/6d/stdRbtreeEDamageAttributestdpairEDamageAttributeconstfloatstdSelect1ststdpairEDa_find_006dab90_test.cpp'
         PassPattern = '006dab90_TEST PASS'
     }
     [pscustomobject]@{
@@ -159091,9 +159091,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c5ff50'
-        Module = 'CVtable_012b9338'
-        Source = '00/c5/CVtable012b9338_CVtable012b9338_00c5ff50.cpp'
-        TestSource = '00/c5/CVtable012b9338_CVtable012b9338_00c5ff50_test.cpp'
+        Module = 'CEAXBufferList'
+        Source = '00/c5/CEAXBufferList_CEAXBufferList_00c5ff50.cpp'
+        TestSource = '00/c5/CEAXBufferList_CEAXBufferList_00c5ff50_test.cpp'
         PassPattern = '00c5ff50_TEST PASS'
     }
     [pscustomobject]@{
@@ -168019,9 +168019,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00990320'
-        Module = 'CRetailTree_ulongkey'
-        Source = '00/99/CRetailTreeulongkey_find_00990320.cpp'
-        TestSource = '00/99/CRetailTreeulongkey_find_00990320_test.cpp'
+        Module = 'std::_Rb_tree<unsigned long, std::pair<unsigned long const, CThreadedFileManager::CFileObject *>, std::_Select1st<std::pair<unsigned long const, CThreadedFileManager::CFileObject *>>, std::less<unsigned long>, std::allocator<std::pair<unsigned long const, CThreadedFileManager::CFileObject *>>>'
+        Source = '00/99/stdRbtreeunsignedlongstdpairunsignedlongconstCThreadedFileManagerCFileObjectstdS_find_00990320.cpp'
+        TestSource = '00/99/stdRbtreeunsignedlongstdpairunsignedlongconstCThreadedFileManagerCFileObjectstdS_find_00990320_test.cpp'
         PassPattern = '00990320_TEST PASS'
     }
     [pscustomobject]@{
@@ -184405,9 +184405,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c60b90'
-        Module = 'CEaxSource'
-        Source = '00/c6/CEaxSource_CEaxSource_00c60b90.cpp'
-        TestSource = '00/c6/CEaxSource_CEaxSource_00c60b90_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_CEAXBuffer_00c60b90.cpp'
+        TestSource = '00/c6/CEAXBuffer_CEAXBuffer_00c60b90_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c60b90_TEST PASS'
     }
@@ -195393,9 +195393,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c60af0'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_Reset_00c60af0.cpp'
-        TestSource = '00/c6/CEaxContext_Reset_00c60af0_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_Reset_00c60af0.cpp'
+        TestSource = '00/c6/CEAXListener_Reset_00c60af0_test.cpp'
         PassPattern = '00c60af0_TEST PASS'
     }
     [pscustomobject]@{
@@ -198635,16 +198635,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c60410'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_ClearEvents_00c60410.cpp'
-        TestSource = '00/c6/CEaxContext_ClearEvents_00c60410_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_ClearEvents_00c60410.cpp'
+        TestSource = '00/c6/CEAXListener_ClearEvents_00c60410_test.cpp'
         PassPattern = '00c60410_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c67470'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetSlotLock_00c67470.cpp'
-        TestSource = '00/c6/CEaxContext_SetSlotLock_00c67470_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetSlotLock_00c67470.cpp'
+        TestSource = '00/c6/CEAXListener_SetSlotLock_00c67470_test.cpp'
         PassPattern = '00c67470_TEST PASS'
     }
     [pscustomobject]@{
@@ -224445,9 +224445,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c689b0'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetSlotProperty_00c689b0.cpp'
-        TestSource = '00/c6/CEaxContext_SetSlotProperty_00c689b0_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetSlotProperty_00c689b0.cpp'
+        TestSource = '00/c6/CEAXListener_SetSlotProperty_00c689b0_test.cpp'
         PassPattern = '00c689b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -225559,16 +225559,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c647b0'
-        Module = 'CEaxSource'
-        Source = '00/c6/CEaxSource_SetObstructionParameters_00c647b0.cpp'
-        TestSource = '00/c6/CEaxSource_SetObstructionParameters_00c647b0_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_SetObstructionParameters_00c647b0.cpp'
+        TestSource = '00/c6/CEAXBuffer_SetObstructionParameters_00c647b0_test.cpp'
         PassPattern = '00c647b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c64940'
-        Module = 'CEaxSource'
-        Source = '00/c6/CEaxSource_SetExclusionParameters_00c64940.cpp'
-        TestSource = '00/c6/CEaxSource_SetExclusionParameters_00c64940_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_SetExclusionParameters_00c64940.cpp'
+        TestSource = '00/c6/CEAXBuffer_SetExclusionParameters_00c64940_test.cpp'
         PassPattern = '00c64940_TEST PASS'
     }
     [pscustomobject]@{
@@ -227417,30 +227417,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c631e0'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetEnvironmentDiffusion_00c631e0.cpp'
-        TestSource = '00/c6/CEaxContext_SetEnvironmentDiffusion_00c631e0_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetEnvironmentDiffusion_00c631e0.cpp'
+        TestSource = '00/c6/CEAXListener_SetEnvironmentDiffusion_00c631e0_test.cpp'
         PassPattern = '00c631e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c63270'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetRoom_00c63270.cpp'
-        TestSource = '00/c6/CEaxContext_SetRoom_00c63270_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetRoom_00c63270.cpp'
+        TestSource = '00/c6/CEAXListener_SetRoom_00c63270_test.cpp'
         PassPattern = '00c63270_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c632e0'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetRoomHF_00c632e0.cpp'
-        TestSource = '00/c6/CEaxContext_SetRoomHF_00c632e0_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetRoomHF_00c632e0.cpp'
+        TestSource = '00/c6/CEAXListener_SetRoomHF_00c632e0_test.cpp'
         PassPattern = '00c632e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c63350'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetRoomLF_00c63350.cpp'
-        TestSource = '00/c6/CEaxContext_SetRoomLF_00c63350_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetRoomLF_00c63350.cpp'
+        TestSource = '00/c6/CEAXListener_SetRoomLF_00c63350_test.cpp'
         PassPattern = '00c63350_TEST PASS'
     }
     [pscustomobject]@{
@@ -239663,9 +239663,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c64840'
-        Module = 'CAudioOcclusionState'
-        Source = '00/c6/CAudioOcclusionState_SetVectorPropertyXYZW_00c64840.cpp'
-        TestSource = '00/c6/CAudioOcclusionState_SetVectorPropertyXYZW_00c64840_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_SetOcclusionParameters_00c64840.cpp'
+        TestSource = '00/c6/CEAXBuffer_SetOcclusionParameters_00c64840_test.cpp'
         PassPattern = '00c64840_TEST PASS'
     }
     [pscustomobject]@{
@@ -246179,9 +246179,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c630d0'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetSlotEnabled_00c630d0.cpp'
-        TestSource = '00/c6/CEaxContext_SetSlotEnabled_00c630d0_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetSlotEnabled_00c630d0.cpp'
+        TestSource = '00/c6/CEAXListener_SetSlotEnabled_00c630d0_test.cpp'
         PassPattern = '00c630d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -252455,9 +252455,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c65870'
-        Module = 'CEntity'
-        Source = '00/c6/CEntity_SetGuidListProperty_00c65870.cpp'
-        TestSource = '00/c6/CEntity_SetGuidListProperty_00c65870_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_SetActiveFXSlotID_00c65870.cpp'
+        TestSource = '00/c6/CEAXBuffer_SetActiveFXSlotID_00c65870_test.cpp'
         PassPattern = '00c65870_TEST PASS'
     }
     [pscustomobject]@{
@@ -257855,16 +257855,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c64fb0'
-        Module = 'CEntity'
-        Source = '00/c6/CEntity_SetMeshComponentsProperty_00c64fb0.cpp'
-        TestSource = '00/c6/CEntity_SetMeshComponentsProperty_00c64fb0_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_SetSendParameters_00c64fb0.cpp'
+        TestSource = '00/c6/CEAXBuffer_SetSendParameters_00c64fb0_test.cpp'
         PassPattern = '00c64fb0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c65690'
-        Module = 'CEntity'
-        Source = '00/c6/CEntity_SetVFXComponentsProperty_00c65690.cpp'
-        TestSource = '00/c6/CEntity_SetVFXComponentsProperty_00c65690_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_SetExclusionSendParameters_00c65690.cpp'
+        TestSource = '00/c6/CEAXBuffer_SetExclusionSendParameters_00c65690_test.cpp'
         PassPattern = '00c65690_TEST PASS'
     }
     [pscustomobject]@{
@@ -268229,16 +268229,16 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c65170'
-        Module = 'CEntity'
-        Source = '00/c6/CEntity_SetLightComponentsProperty_00c65170.cpp'
-        TestSource = '00/c6/CEntity_SetLightComponentsProperty_00c65170_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_SetAllSendParameters_00c65170.cpp'
+        TestSource = '00/c6/CEAXBuffer_SetAllSendParameters_00c65170_test.cpp'
         PassPattern = '00c65170_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c65450'
-        Module = 'CEntity'
-        Source = '00/c6/CEntity_SetSoundComponentsProperty_00c65450.cpp'
-        TestSource = '00/c6/CEntity_SetSoundComponentsProperty_00c65450_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_SetOcclusionSendParameters_00c65450.cpp'
+        TestSource = '00/c6/CEAXBuffer_SetOcclusionSendParameters_00c65450_test.cpp'
         PassPattern = '00c65450_TEST PASS'
     }
     [pscustomobject]@{
@@ -307191,52 +307191,52 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c5ff60'
-        Module = 'CEaxContext'
-        Source = '00/c5/CEaxContext_RemoveSource_00c5ff60.cpp'
-        TestSource = '00/c5/CEaxContext_RemoveSource_00c5ff60_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c5/CEAXListener_RemoveSource_00c5ff60.cpp'
+        TestSource = '00/c5/CEAXListener_RemoveSource_00c5ff60_test.cpp'
         PassPattern = '00c5ff60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c60450'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_ClampFloatProperty_00c60450.cpp'
-        TestSource = '00/c6/CEaxContext_ClampFloatProperty_00c60450_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_ClampFloatProperty_00c60450.cpp'
+        TestSource = '00/c6/CEAXListener_ClampFloatProperty_00c60450_test.cpp'
         PassPattern = '00c60450_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c60930'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_CEaxContext_00c60930.cpp'
-        TestSource = '00/c6/CEaxContext_CEaxContext_00c60930_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_CEAXListener_00c60930.cpp'
+        TestSource = '00/c6/CEAXListener_CEAXListener_00c60930_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /EHsc'
         PassPattern = '00c60930_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c609a0'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_AddSource_00c609a0.cpp'
-        TestSource = '00/c6/CEaxContext_AddSource_00c609a0_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_AddSource_00c609a0.cpp'
+        TestSource = '00/c6/CEAXListener_AddSource_00c609a0_test.cpp'
         PassPattern = '00c609a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c60a30'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_InvalidateAll_00c60a30.cpp'
-        TestSource = '00/c6/CEaxContext_InvalidateAll_00c60a30_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_InvalidateAll_00c60a30.cpp'
+        TestSource = '00/c6/CEAXListener_InvalidateAll_00c60a30_test.cpp'
         PassPattern = '00c60a30_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c60b30'
         Module = '_global'
-        Source = '00/c6/global_IsAnyNaN_00c60b30.cpp'
-        TestSource = '00/c6/global_IsAnyNaN_00c60b30_test.cpp'
+        Source = '00/c6/global_IsNaN_00c60b30.cpp'
+        TestSource = '00/c6/global_IsNaN_00c60b30_test.cpp'
         PassPattern = '00c60b30_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c61b40'
-        Module = 'CEaxSource'
-        Source = '00/c6/CEaxSource_Set_00c61b40.cpp'
-        TestSource = '00/c6/CEaxSource_Set_00c61b40_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_Set_00c61b40.cpp'
+        TestSource = '00/c6/CEAXBuffer_Set_00c61b40_test.cpp'
         PassPattern = '00c61b40_TEST PASS'
     }
     [pscustomobject]@{
@@ -307291,122 +307291,122 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c62ff0'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_GetPropertyHandler_00c62ff0.cpp'
-        TestSource = '00/c6/CEaxContext_GetPropertyHandler_00c62ff0_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_GetPropertyHandler_00c62ff0.cpp'
+        TestSource = '00/c6/CEAXListener_GetPropertyHandler_00c62ff0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /GS'
         PassPattern = '00c62ff0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c633c0'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetDecayTime_00c633c0.cpp'
-        TestSource = '00/c6/CEaxContext_SetDecayTime_00c633c0_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetDecayTime_00c633c0.cpp'
+        TestSource = '00/c6/CEAXListener_SetDecayTime_00c633c0_test.cpp'
         PassPattern = '00c633c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c635c0'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetReflections_00c635c0.cpp'
-        TestSource = '00/c6/CEaxContext_SetReflections_00c635c0_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetReflections_00c635c0.cpp'
+        TestSource = '00/c6/CEAXListener_SetReflections_00c635c0_test.cpp'
         PassPattern = '00c635c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c63690'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetReflectionsDelay_00c63690.cpp'
-        TestSource = '00/c6/CEaxContext_SetReflectionsDelay_00c63690_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetReflectionsDelay_00c63690.cpp'
+        TestSource = '00/c6/CEAXListener_SetReflectionsDelay_00c63690_test.cpp'
         PassPattern = '00c63690_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c63750'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetReflectionsPan_00c63750.cpp'
-        TestSource = '00/c6/CEaxContext_SetReflectionsPan_00c63750_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetReflectionsPan_00c63750.cpp'
+        TestSource = '00/c6/CEAXListener_SetReflectionsPan_00c63750_test.cpp'
         PassPattern = '00c63750_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c63810'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetReverb_00c63810.cpp'
-        TestSource = '00/c6/CEaxContext_SetReverb_00c63810_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetReverb_00c63810.cpp'
+        TestSource = '00/c6/CEAXListener_SetReverb_00c63810_test.cpp'
         PassPattern = '00c63810_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c638e0'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetReverbDelay_00c638e0.cpp'
-        TestSource = '00/c6/CEaxContext_SetReverbDelay_00c638e0_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetReverbDelay_00c638e0.cpp'
+        TestSource = '00/c6/CEAXListener_SetReverbDelay_00c638e0_test.cpp'
         PassPattern = '00c638e0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c639a0'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetReverbPan_00c639a0.cpp'
-        TestSource = '00/c6/CEaxContext_SetReverbPan_00c639a0_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetReverbPan_00c639a0.cpp'
+        TestSource = '00/c6/CEAXListener_SetReverbPan_00c639a0_test.cpp'
         PassPattern = '00c639a0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c63a60'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetEchoTime_00c63a60.cpp'
-        TestSource = '00/c6/CEaxContext_SetEchoTime_00c63a60_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetEchoTime_00c63a60.cpp'
+        TestSource = '00/c6/CEAXListener_SetEchoTime_00c63a60_test.cpp'
         PassPattern = '00c63a60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c63bc0'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetModulationTime_00c63bc0.cpp'
-        TestSource = '00/c6/CEaxContext_SetModulationTime_00c63bc0_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetModulationTime_00c63bc0.cpp'
+        TestSource = '00/c6/CEAXListener_SetModulationTime_00c63bc0_test.cpp'
         PassPattern = '00c63bc0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c63d20'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetSlotAirAbsorptionHF_00c63d20.cpp'
-        TestSource = '00/c6/CEaxContext_SetSlotAirAbsorptionHF_00c63d20_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetSlotAirAbsorptionHF_00c63d20.cpp'
+        TestSource = '00/c6/CEAXListener_SetSlotAirAbsorptionHF_00c63d20_test.cpp'
         PassPattern = '00c63d20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c63f90'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetDecayTimeScale_00c63f90.cpp'
-        TestSource = '00/c6/CEaxContext_SetDecayTimeScale_00c63f90_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetDecayTimeScale_00c63f90.cpp'
+        TestSource = '00/c6/CEAXListener_SetDecayTimeScale_00c63f90_test.cpp'
         PassPattern = '00c63f90_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c64020'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetReflectionsScale_00c64020.cpp'
-        TestSource = '00/c6/CEaxContext_SetReflectionsScale_00c64020_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetReflectionsScale_00c64020.cpp'
+        TestSource = '00/c6/CEAXListener_SetReflectionsScale_00c64020_test.cpp'
         PassPattern = '00c64020_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c64380'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetModulationTimeScale_00c64380.cpp'
-        TestSource = '00/c6/CEaxContext_SetModulationTimeScale_00c64380_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetModulationTimeScale_00c64380.cpp'
+        TestSource = '00/c6/CEAXListener_SetModulationTimeScale_00c64380_test.cpp'
         PassPattern = '00c64380_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c645d0'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetDistanceFactor_00c645d0.cpp'
-        TestSource = '00/c6/CEaxContext_SetDistanceFactor_00c645d0_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetDistanceFactor_00c645d0.cpp'
+        TestSource = '00/c6/CEAXListener_SetDistanceFactor_00c645d0_test.cpp'
         PassPattern = '00c645d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c64630'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetAirAbsorptionHF_00c64630.cpp'
-        TestSource = '00/c6/CEaxContext_SetAirAbsorptionHF_00c64630_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetAirAbsorptionHF_00c64630.cpp'
+        TestSource = '00/c6/CEAXListener_SetAirAbsorptionHF_00c64630_test.cpp'
         PassPattern = '00c64630_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c646e0'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetHFReference_00c646e0.cpp'
-        TestSource = '00/c6/CEaxContext_SetHFReference_00c646e0_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetHFReference_00c646e0.cpp'
+        TestSource = '00/c6/CEAXListener_SetHFReference_00c646e0_test.cpp'
         PassPattern = '00c646e0_TEST PASS'
     }
     [pscustomobject]@{
@@ -307418,65 +307418,65 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c649c0'
-        Module = 'CEaxSource'
-        Source = '00/c6/CEaxSource_SetDirect_00c649c0.cpp'
-        TestSource = '00/c6/CEaxSource_SetDirect_00c649c0_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_SetDirect_00c649c0.cpp'
+        TestSource = '00/c6/CEAXBuffer_SetDirect_00c649c0_test.cpp'
         PassPattern = '00c649c0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c64a00'
-        Module = 'CEaxSource'
-        Source = '00/c6/CEaxSource_SetDirectHF_00c64a00.cpp'
-        TestSource = '00/c6/CEaxSource_SetDirectHF_00c64a00_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_SetDirectHF_00c64a00.cpp'
+        TestSource = '00/c6/CEAXBuffer_SetDirectHF_00c64a00_test.cpp'
         PassPattern = '00c64a00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c64a40'
-        Module = 'CEaxSource'
-        Source = '00/c6/CEaxSource_SetRoom_00c64a40.cpp'
-        TestSource = '00/c6/CEaxSource_SetRoom_00c64a40_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_SetRoom_00c64a40.cpp'
+        TestSource = '00/c6/CEAXBuffer_SetRoom_00c64a40_test.cpp'
         PassPattern = '00c64a40_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c64ac0'
-        Module = 'CEaxSource'
-        Source = '00/c6/CEaxSource_SetObstruction_00c64ac0.cpp'
-        TestSource = '00/c6/CEaxSource_SetObstruction_00c64ac0_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_SetObstruction_00c64ac0.cpp'
+        TestSource = '00/c6/CEAXBuffer_SetObstruction_00c64ac0_test.cpp'
         PassPattern = '00c64ac0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c64d70'
-        Module = 'CEaxSource'
-        Source = '00/c6/CEaxSource_SetOutsideVolumeHF_00c64d70.cpp'
-        TestSource = '00/c6/CEaxSource_SetOutsideVolumeHF_00c64d70_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_SetOutsideVolumeHF_00c64d70.cpp'
+        TestSource = '00/c6/CEAXBuffer_SetOutsideVolumeHF_00c64d70_test.cpp'
         PassPattern = '00c64d70_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c64f70'
-        Module = 'CEaxSource'
-        Source = '00/c6/CEaxSource_SetFlags_00c64f70.cpp'
-        TestSource = '00/c6/CEaxSource_SetFlags_00c64f70_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_SetFlags_00c64f70.cpp'
+        TestSource = '00/c6/CEAXBuffer_SetFlags_00c64f70_test.cpp'
         PassPattern = '00c64f70_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c67430'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetSlotFlags_00c67430.cpp'
-        TestSource = '00/c6/CEaxContext_SetSlotFlags_00c67430_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetSlotFlags_00c67430.cpp'
+        TestSource = '00/c6/CEAXListener_SetSlotFlags_00c67430_test.cpp'
         PassPattern = '00c67430_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c67720'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetSlotVolume_00c67720.cpp'
-        TestSource = '00/c6/CEaxContext_SetSlotVolume_00c67720_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetSlotVolume_00c67720.cpp'
+        TestSource = '00/c6/CEAXListener_SetSlotVolume_00c67720_test.cpp'
         PassPattern = '00c67720_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c67a10'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetReverbFlags_00c67a10.cpp'
-        TestSource = '00/c6/CEaxContext_SetReverbFlags_00c67a10_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetReverbFlags_00c67a10.cpp'
+        TestSource = '00/c6/CEAXListener_SetReverbFlags_00c67a10_test.cpp'
         PassPattern = '00c67a10_TEST PASS'
     }
     [pscustomobject]@{
@@ -329320,51 +329320,51 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c63480'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetDecayHFRatio_00c63480.cpp'
-        TestSource = '00/c6/CEaxContext_SetDecayHFRatio_00c63480_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetDecayHFRatio_00c63480.cpp'
+        TestSource = '00/c6/CEAXListener_SetDecayHFRatio_00c63480_test.cpp'
         PassPattern = '00c63480_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c63520'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetDecayLFRatio_00c63520.cpp'
-        TestSource = '00/c6/CEaxContext_SetDecayLFRatio_00c63520_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetDecayLFRatio_00c63520.cpp'
+        TestSource = '00/c6/CEAXListener_SetDecayLFRatio_00c63520_test.cpp'
         PassPattern = '00c63520_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c63b20'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetEchoDepth_00c63b20.cpp'
-        TestSource = '00/c6/CEaxContext_SetEchoDepth_00c63b20_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetEchoDepth_00c63b20.cpp'
+        TestSource = '00/c6/CEAXListener_SetEchoDepth_00c63b20_test.cpp'
         PassPattern = '00c63b20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c63c80'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetModulationDepth_00c63c80.cpp'
-        TestSource = '00/c6/CEaxContext_SetModulationDepth_00c63c80_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetModulationDepth_00c63c80.cpp'
+        TestSource = '00/c6/CEAXListener_SetModulationDepth_00c63c80_test.cpp'
         PassPattern = '00c63c80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c63db0'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetSlotHFReference_00c63db0.cpp'
-        TestSource = '00/c6/CEaxContext_SetSlotHFReference_00c63db0_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetSlotHFReference_00c63db0.cpp'
+        TestSource = '00/c6/CEAXListener_SetSlotHFReference_00c63db0_test.cpp'
         PassPattern = '00c63db0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c63e50'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetLFReference_00c63e50.cpp'
-        TestSource = '00/c6/CEaxContext_SetLFReference_00c63e50_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetLFReference_00c63e50.cpp'
+        TestSource = '00/c6/CEAXListener_SetLFReference_00c63e50_test.cpp'
         PassPattern = '00c63e50_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c63ef0'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetRoomRolloffFactor_00c63ef0.cpp'
-        TestSource = '00/c6/CEaxContext_SetRoomRolloffFactor_00c63ef0_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetRoomRolloffFactor_00c63ef0.cpp'
+        TestSource = '00/c6/CEAXListener_SetRoomRolloffFactor_00c63ef0_test.cpp'
         PassPattern = '00c63ef0_TEST PASS'
     }
     [pscustomobject]@{
@@ -337721,72 +337721,72 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c640b0'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetReflectionsDelayScale_00c640b0.cpp'
-        TestSource = '00/c6/CEaxContext_SetReflectionsDelayScale_00c640b0_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetReflectionsDelayScale_00c640b0.cpp'
+        TestSource = '00/c6/CEAXListener_SetReflectionsDelayScale_00c640b0_test.cpp'
         PassPattern = '00c640b0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c64140'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetReverbScale_00c64140.cpp'
-        TestSource = '00/c6/CEaxContext_SetReverbScale_00c64140_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetReverbScale_00c64140.cpp'
+        TestSource = '00/c6/CEAXListener_SetReverbScale_00c64140_test.cpp'
         PassPattern = '00c64140_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c641d0'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetReverbDelayScale_00c641d0.cpp'
-        TestSource = '00/c6/CEaxContext_SetReverbDelayScale_00c641d0_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetReverbDelayScale_00c641d0.cpp'
+        TestSource = '00/c6/CEAXListener_SetReverbDelayScale_00c641d0_test.cpp'
         PassPattern = '00c641d0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c64260'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetDecayHFLimit_00c64260.cpp'
-        TestSource = '00/c6/CEaxContext_SetDecayHFLimit_00c64260_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetDecayHFLimit_00c64260.cpp'
+        TestSource = '00/c6/CEAXListener_SetDecayHFLimit_00c64260_test.cpp'
         PassPattern = '00c64260_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c642f0'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetEchoTimeScale_00c642f0.cpp'
-        TestSource = '00/c6/CEaxContext_SetEchoTimeScale_00c642f0_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetEchoTimeScale_00c642f0.cpp'
+        TestSource = '00/c6/CEAXListener_SetEchoTimeScale_00c642f0_test.cpp'
         PassPattern = '00c642f0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c64b00'
-        Module = 'CEaxSource'
-        Source = '00/c6/CEaxSource_SetObstructionLFRatio_00c64b00.cpp'
-        TestSource = '00/c6/CEaxSource_SetObstructionLFRatio_00c64b00_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_SetObstructionLFRatio_00c64b00.cpp'
+        TestSource = '00/c6/CEAXBuffer_SetObstructionLFRatio_00c64b00_test.cpp'
         PassPattern = '00c64b00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c64db0'
-        Module = 'CEaxSource'
-        Source = '00/c6/CEaxSource_SetDopplerFactor_00c64db0.cpp'
-        TestSource = '00/c6/CEaxSource_SetDopplerFactor_00c64db0_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_SetDopplerFactor_00c64db0.cpp'
+        TestSource = '00/c6/CEAXBuffer_SetDopplerFactor_00c64db0_test.cpp'
         PassPattern = '00c64db0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c64e20'
-        Module = 'CEaxSource'
-        Source = '00/c6/CEaxSource_SetRolloffFactor_00c64e20.cpp'
-        TestSource = '00/c6/CEaxSource_SetRolloffFactor_00c64e20_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_SetRolloffFactor_00c64e20.cpp'
+        TestSource = '00/c6/CEAXBuffer_SetRolloffFactor_00c64e20_test.cpp'
         PassPattern = '00c64e20_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c64e90'
-        Module = 'CEaxSource'
-        Source = '00/c6/CEaxSource_SetRoomRolloffFactor_00c64e90.cpp'
-        TestSource = '00/c6/CEaxSource_SetRoomRolloffFactor_00c64e90_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_SetRoomRolloffFactor_00c64e90.cpp'
+        TestSource = '00/c6/CEAXBuffer_SetRoomRolloffFactor_00c64e90_test.cpp'
         PassPattern = '00c64e90_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c64f00'
-        Module = 'CEaxSource'
-        Source = '00/c6/CEaxSource_SetAirAbsorptionFactor_00c64f00.cpp'
-        TestSource = '00/c6/CEaxSource_SetAirAbsorptionFactor_00c64f00_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_SetAirAbsorptionFactor_00c64f00.cpp'
+        TestSource = '00/c6/CEAXBuffer_SetAirAbsorptionFactor_00c64f00_test.cpp'
         PassPattern = '00c64f00_TEST PASS'
     }
     [pscustomobject]@{
@@ -341685,30 +341685,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c64bb0'
-        Module = 'CEaxSource'
-        Source = '00/c6/CEaxSource_SetOcclusionLFRatio_00c64bb0.cpp'
-        TestSource = '00/c6/CEaxSource_SetOcclusionLFRatio_00c64bb0_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_SetOcclusionLFRatio_00c64bb0.cpp'
+        TestSource = '00/c6/CEAXBuffer_SetOcclusionLFRatio_00c64bb0_test.cpp'
         PassPattern = '00c64bb0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c64c10'
-        Module = 'CEaxSource'
-        Source = '00/c6/CEaxSource_SetOcclusionRoomRatio_00c64c10.cpp'
-        TestSource = '00/c6/CEaxSource_SetOcclusionRoomRatio_00c64c10_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_SetOcclusionRoomRatio_00c64c10.cpp'
+        TestSource = '00/c6/CEAXBuffer_SetOcclusionRoomRatio_00c64c10_test.cpp'
         PassPattern = '00c64c10_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c64c70'
-        Module = 'CEaxSource'
-        Source = '00/c6/CEaxSource_SetOcclusionDirectRatio_00c64c70.cpp'
-        TestSource = '00/c6/CEaxSource_SetOcclusionDirectRatio_00c64c70_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_SetOcclusionDirectRatio_00c64c70.cpp'
+        TestSource = '00/c6/CEAXBuffer_SetOcclusionDirectRatio_00c64c70_test.cpp'
         PassPattern = '00c64c70_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c64d10'
-        Module = 'CEaxSource'
-        Source = '00/c6/CEaxSource_SetExclusionLFRatio_00c64d10.cpp'
-        TestSource = '00/c6/CEaxSource_SetExclusionLFRatio_00c64d10_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_SetExclusionLFRatio_00c64d10.cpp'
+        TestSource = '00/c6/CEAXBuffer_SetExclusionLFRatio_00c64d10_test.cpp'
         PassPattern = '00c64d10_TEST PASS'
     }
     [pscustomobject]@{
@@ -358250,23 +358250,23 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c64a80'
-        Module = 'CEaxSource'
-        Source = '00/c6/CEaxSource_SetRoomHF_00c64a80.cpp'
-        TestSource = '00/c6/CEaxSource_SetRoomHF_00c64a80_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_SetRoomHF_00c64a80.cpp'
+        TestSource = '00/c6/CEAXBuffer_SetRoomHF_00c64a80_test.cpp'
         PassPattern = '00c64a80_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c64b70'
-        Module = 'CEaxSource'
-        Source = '00/c6/CEaxSource_SetOcclusion_00c64b70.cpp'
-        TestSource = '00/c6/CEaxSource_SetOcclusion_00c64b70_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_SetOcclusion_00c64b70.cpp'
+        TestSource = '00/c6/CEAXBuffer_SetOcclusion_00c64b70_test.cpp'
         PassPattern = '00c64b70_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c64cd0'
-        Module = 'CEaxSource'
-        Source = '00/c6/CEaxSource_SetExclusion_00c64cd0.cpp'
-        TestSource = '00/c6/CEaxSource_SetExclusion_00c64cd0_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_SetExclusion_00c64cd0.cpp'
+        TestSource = '00/c6/CEAXBuffer_SetExclusion_00c64cd0_test.cpp'
         PassPattern = '00c64cd0_TEST PASS'
     }
     [pscustomobject]@{
@@ -365030,9 +365030,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c67ae0'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetAllParameters_00c67ae0.cpp'
-        TestSource = '00/c6/CEaxContext_SetAllParameters_00c67ae0_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetAllParameters_00c67ae0.cpp'
+        TestSource = '00/c6/CEAXListener_SetAllParameters_00c67ae0_test.cpp'
         PassPattern = '00c67ae0_TEST PASS'
     }
     [pscustomobject]@{
@@ -372985,9 +372985,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c683c0'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetContextProperty_00c683c0.cpp'
-        TestSource = '00/c6/CEaxContext_SetContextProperty_00c683c0_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetContextProperty_00c683c0.cpp'
+        TestSource = '00/c6/CEAXListener_SetContextProperty_00c683c0_test.cpp'
         PassPattern = '00c683c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -373840,9 +373840,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c677c0'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetEnvironmentSize_00c677c0.cpp'
-        TestSource = '00/c6/CEaxContext_SetEnvironmentSize_00c677c0_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetEnvironmentSize_00c677c0.cpp'
+        TestSource = '00/c6/CEAXListener_SetEnvironmentSize_00c677c0_test.cpp'
         PassPattern = '00c677c0_TEST PASS'
     }
     [pscustomobject]@{
@@ -373883,9 +373883,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c674b0'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetSlotLoadEffect_00c674b0.cpp'
-        TestSource = '00/c6/CEaxContext_SetSlotLoadEffect_00c674b0_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetSlotLoadEffect_00c674b0.cpp'
+        TestSource = '00/c6/CEAXListener_SetSlotLoadEffect_00c674b0_test.cpp'
         PassPattern = '00c674b0_TEST PASS'
     }
     [pscustomobject]@{
@@ -373943,9 +373943,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c68a50'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetEnvironment_00c68a50.cpp'
-        TestSource = '00/c6/CEaxContext_SetEnvironment_00c68a50_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetEnvironment_00c68a50.cpp'
+        TestSource = '00/c6/CEAXListener_SetEnvironment_00c68a50_test.cpp'
         PassPattern = '00c68a50_TEST PASS'
     }
     [pscustomobject]@{
@@ -373995,9 +373995,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c68d70'
-        Module = 'CEaxContext'
-        Source = '00/c6/CEaxContext_SetReverbAllParameters_00c68d70.cpp'
-        TestSource = '00/c6/CEaxContext_SetReverbAllParameters_00c68d70_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetReverbAllParameters_00c68d70.cpp'
+        TestSource = '00/c6/CEAXListener_SetReverbAllParameters_00c68d70_test.cpp'
         PassPattern = '00c68d70_TEST PASS'
     }
     [pscustomobject]@{
@@ -374073,9 +374073,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c67c00'
-        Module = 'CEaxSource'
-        Source = '00/c6/CEaxSource_SetAllParameters_00c67c00.cpp'
-        TestSource = '00/c6/CEaxSource_SetAllParameters_00c67c00_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_SetAllParameters_00c67c00.cpp'
+        TestSource = '00/c6/CEAXBuffer_SetAllParameters_00c67c00_test.cpp'
         PassPattern = '00c67c00_TEST PASS'
     }
     [pscustomobject]@{
@@ -376032,30 +376032,30 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c65a00'
-        Module = '_global'
-        Source = '00/c6/global_00c65a00_00c65a00.cpp'
-        TestSource = '00/c6/global_00c65a00_00c65a00_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_CommitEAX3_00c65a00.cpp'
+        TestSource = '00/c6/CEAXBuffer_CommitEAX3_00c65a00_test.cpp'
         PassPattern = '00c65a00_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c67f60'
-        Module = '_global'
-        Source = '00/c6/global_00c67f60_00c67f60.cpp'
-        TestSource = '00/c6/global_00c67f60_00c67f60_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_CommitDeferredSettings_00c67f60.cpp'
+        TestSource = '00/c6/CEAXListener_CommitDeferredSettings_00c67f60_test.cpp'
         PassPattern = '00c67f60_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c68510'
-        Module = '_global'
-        Source = '00/c6/global_00c68510_00c68510.cpp'
-        TestSource = '00/c6/global_00c68510_00c68510_test.cpp'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_SetSourceProperty00c68510_00c68510.cpp'
+        TestSource = '00/c6/CEAXBuffer_SetSourceProperty00c68510_00c68510_test.cpp'
         PassPattern = '00c68510_TEST PASS'
     }
     [pscustomobject]@{
         Address = '00c68f90'
-        Module = '_global'
-        Source = '00/c6/global_00c68f90_00c68f90.cpp'
-        TestSource = '00/c6/global_00c68f90_00c68f90_test.cpp'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_SetEffectProperty00c68f90_00c68f90.cpp'
+        TestSource = '00/c6/CEAXListener_SetEffectProperty00c68f90_00c68f90_test.cpp'
         PassPattern = '00c68f90_TEST PASS'
     }
     [pscustomobject]@{
@@ -379787,6 +379787,57 @@ $catalog = @(
         Source = '00/f2/CScriptDef_CScriptDef_00f29530.cpp'
         TestSource = '00/f2/CScriptDef_CScriptDef_00f29530_test.cpp'
         PassPattern = '00f29530_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00defb10'
+        Module = 'NScript::CQ_SecretPassageScript'
+        Source = '00/de/NScriptCQSecretPassageScript_SwitchDoorsOnAndOff_00defb10.cpp'
+        TestSource = '00/de/NScriptCQSecretPassageScript_SwitchDoorsOnAndOff_00defb10_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00defb10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5ffb0'
+        Module = 'CEAXListener'
+        Source = '00/c5/CEAXListener_AddToChangesList_00c5ffb0.cpp'
+        TestSource = '00/c5/CEAXListener_AddToChangesList_00c5ffb0_test.cpp'
+        PassPattern = '00c5ffb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c60ff0'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_Set3DBuffer_00c60ff0.cpp'
+        TestSource = '00/c6/CEAXBuffer_Set3DBuffer_00c60ff0_test.cpp'
+        PassPattern = '00c60ff0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c66330'
+        Module = 'CEAXListener'
+        Source = '00/c6/CEAXListener_GetEAX4FXSlot_00c66330.cpp'
+        TestSource = '00/c6/CEAXListener_GetEAX4FXSlot_00c66330_test.cpp'
+        PassPattern = '00c66330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c66c90'
+        Module = 'CEAXBuffer'
+        Source = '00/c6/CEAXBuffer_GetEAX4Source_00c66c90.cpp'
+        TestSource = '00/c6/CEAXBuffer_GetEAX4Source_00c66c90_test.cpp'
+        PassPattern = '00c66c90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5e650'
+        Module = 'CSalOutputKS'
+        Source = '00/c5/CSalOutputKS_CreateBuffer_00c5e650.cpp'
+        TestSource = '00/c5/CSalOutputKS_CreateBuffer_00c5e650_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
+        PassPattern = '00c5e650_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c71870'
+        Module = 'CSalOpenALReverb'
+        Source = '00/c7/CSalOpenALReverb_Update_00c71870.cpp'
+        TestSource = '00/c7/CSalOpenALReverb_Update_00c71870_test.cpp'
+        PassPattern = '00c71870_TEST PASS'
     }
 )
 

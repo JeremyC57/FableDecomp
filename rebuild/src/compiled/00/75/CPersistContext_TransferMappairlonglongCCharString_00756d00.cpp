@@ -155,9 +155,9 @@ public:
     pair<iterator, bool> insert_unique(const value_type& __x);   // 0x00756250
     size_type erase(const key_type& __x);              // 0x00756C60
     void clear();                                      // 0x007563E0 (out of line)
-    iterator find(const key_type& __x) { return iterator(_M_find(__x)); }
+    template <class _KT> iterator find(const _KT& __x) { return iterator(_M_find(__x)); }
 private:
-    _Rb_tree_node<_Value>* _M_find(const key_type& __k) const;   // 0x00756350
+    template <class _KT> _Rb_tree_node<_Value>* _M_find(const _KT& __k) const;   // 0x00756350
 };
 template <class _Key, class _Tp, class _Compare = less<_Key>, class _Alloc = allocator<pair<const _Key, _Tp> > >
 class map {

@@ -1,0 +1,13 @@
+step	state	note
+D1.respell	DONE	86 rows (28 definers + 58 binders, 5 definers rewritten from invented stand-ins and renamed); recheck 86/86 RELOCATION_MATCH|MATCH PASS; labels + catalog applied
+D1.bindings	DONE	RETIRE 35 / ADD 28; bindings_multi_check 0
+D1.land3	HELD	0x00520D00 0x0051FD80 0x00B2D9F0: _M_find spelling resolved (Codex ??$_M_find on 0x004B9370 == canonical); remaining blocker = 42/39/21 modified shared headers (does not compile on our headers)
+D2.header	DONE	stlport/fable_containers.h default path: __true_type/__false_type empty user ctors (hand721 FABLE_RETAIL_STLP_TAG_CTORS folded in, macro never defined in the tree); full-mirror recheck of 2263 transitive includers: 61 MATCH + 2202 RELOCATION_MATCH, all PASS, 0 regressions
+D2.land	DONE	0x00DEFB10 landed (pass 12 wave D rebased source + new engine/NScript_CQ_SecretPassageScript.h): RELOCATION_MATCH PASS
+D2.migration	DONE	MIGRATION_TAGS.tsv: 2464 rows declare a local user-ctor tag (brief estimate 558 was low), 630 rows declare a local tag without ctor; untouched
+D3.headers	DONE	engine/CEaxContext.h -> CEAXListener.h, CEaxSource.h -> CEAXBuffer.h, CPKObject.h -> CCodaObjectBase.h (git mv, one merged SDK-member model each); new CodaEnvironment.h, CodaMemory.h, EAXNativeTypes.h, DSound3D.h, KernelStreaming.h, CSalOutputKS.h, CSalOpenAL.h, CSalOpenALReverb.h; EAX40.h + 4 extern "C" FXSlot GUIDs
+D3.respell	DONE	136 landed rows respelled (4 pass 11 rows onto the SDK members, 95 files renamed, 39 Leafs completed or corrected, 8 mislabeled definers renamed onto CEAXBuffer / CEAXBufferList / CCodaObjectBase / CodaMalloc / CodaFree / IsNaN); baseline 133/133 PASS; final recheck 142/142 (27 MATCH + 115 RELOCATION_MATCH, all PASS)
+D3.bindings	DONE	RETIRE 122 (119 old spellings + 3 stale entries) / ADD 104 respelled + 16 recorded by the landing; bindings_multi_check 0
+D3.land6	DONE	0x00C5FFB0 0x00C60FF0 0x00C66330 0x00C66C90 0x00C5E650 0x00C71870 landed, all RELOCATION_MATCH PASS on the merged headers
+D3.queue	DONE	33 queue rows closed, 3 annotated (partial), 8 dec1103 rows added (CodaMalloc / CodaFree / root-vtable invented spellings, 0x00C68F90 and 0x00C5FF60 local binders, KSDATAFORMAT_SUBTYPE_PCM, CSalOpenAL vs CAudioContext)
+END.sync	DONE	sync_catalog_names (1 catalog rename), sync_manifest_from_catalog --labels (472 manifest updates), write_decomp_dashboard, update_readme_progress (46,419 genuine landed, 53.93% of retail function bytes)

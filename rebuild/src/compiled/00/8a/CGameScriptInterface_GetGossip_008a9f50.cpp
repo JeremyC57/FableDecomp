@@ -63,8 +63,10 @@ public:
     unsigned int _M_node_count;                                                    // +0x04
     _Compare _M_key_compare;                                                       // +0x08
     iterator end() { return iterator(this->_M_header._M_data); }
-    iterator find(const _Key& __k) { return iterator(_M_find(__k)); }
-    _Link_type _M_find(const _Key& __k) const;                                     // 0x008AC200 for this tree
+    template <class _KT> iterator find(const _KT& __k) { return iterator(_M_find(__k)); }
+private:
+    template <class _KT> _Link_type _M_find(const _KT& __k) const;                                     // 0x008AC200 for this tree
+public:
 };
 template <class _Key, class _Tp, class _Compare = less<_Key>, class _Alloc = allocator<pair<const _Key, _Tp> > >
 class map {

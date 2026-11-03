@@ -105,13 +105,13 @@ public:
     unsigned int _M_node_count;                         // +0x04
     _Compare _M_key_compare;                            // +0x08 (empty)
     private:
-    _Rb_tree_node<_Value>* _M_find(const _Key& __k) const;          // out of line (_tree.c); private in STLport 4.6 _tree.h
+    template <class _KT> _Rb_tree_node<_Value>* _M_find(const _KT& __k) const;          // out of line (_tree.c); private in STLport 4.6 _tree.h
 public:
     // unique-key count: the found node against the header node (the header word is read after the _M_find call)
     unsigned int count(const _Key& __x) const { return _M_find(__x) == _M_header._M_data ? 0 : 1; }
 private:
     public:
-    const_iterator find(const _Key& __k) const { return const_iterator(_M_find(__k)); }
+    template <class _KT> const_iterator find(const _KT& __k) const { return const_iterator(_M_find(__k)); }
     const_iterator end() const { return const_iterator(this->_M_header._M_data); }
 };
 

@@ -1,5 +1,5 @@
 // CAudioContextEAX::WriteOutput(short* output) -- copy the 128-sample 32-bit mix block of the base into the 16-bit output, saturating each sample to the short range
-// Leaf: ?WriteOutput@CAudioContextEAX
+// Leaf: ?WriteOutput@CAudioContextEAX@@QAEXPAF@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C71750, length 203 bytes (+ int3 padding), `ret 4`.
 // Module: libpk's OpenAL EAX 3.0 environment (vtable 0x012BEDF4; landed as CAudioContextEAX by its destructor
 //   0x00C71CF0, which mutes the listener through EAXSet with DSPROPSETID_EAX30_ListenerProperties 0x012BEE90). This

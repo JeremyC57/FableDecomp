@@ -13,13 +13,15 @@
 typedef void* (__cdecl* PFN_alGetProcAddress)(const char* name);
 typedef long (__cdecl* PFN_EAXSet)(const void* propertySetGuid, unsigned long property, unsigned long source, void* value, unsigned long size);
 
-struct GUID {
+typedef struct _GUID {
     unsigned long  Data1;
     unsigned short Data2;
     unsigned short Data3;
     unsigned char  Data4[8];
-};
-extern const GUID DSPROPSETID_EAX30_ListenerProperties;   // 0x012BEE90
+} GUID;
+// 0x012BEE90 (owner decision 2026-11-03 D3): the original GameCODA 2.10 SAL object CSalOpenALReverb::Update relocates the C++
+//   ?SAL_EAX30_ListenerProperties@@3U_GUID@@B here (byte-identical 1115-byte body, Codex pass 12 SDK_COMPARISON 00c71870).
+extern const GUID SAL_EAX30_ListenerProperties;   // 0x012BEE90
 
 struct CAudioContext {                              // the OpenAL wrapper (landed model of 0x00C558A0; global 0x0143BDB0)
     void*                __vftable;
@@ -48,6 +50,6 @@ void CAudioContextEAX::DisableReverb()
     long room = -10000;
     if (!g_AudioContext.pfnEAXSet)
         g_AudioContext.pfnEAXSet = (PFN_EAXSet)g_AudioContext.GetProcAddress("EAXSet");
-    g_AudioContext.pfnEAXSet(&DSPROPSETID_EAX30_ListenerProperties, 5, 0, &room, 4);
+    g_AudioContext.pfnEAXSet(&SAL_EAX30_ListenerProperties, 5, 0, &room, 4);
     m_enabled = false;
 }

@@ -1,5 +1,5 @@
 // std::_Rb_tree<long, pair<const long, CScriptConversation>, _Select1st<pair<const long, CScriptConversation> >, less<long>, allocator<pair<const long, CScriptConversation> > >::find(const long& k) -- the script conversation map's lookup: lower-bound walk from the root, end() unless the found node's id equals k
-// Leaf: ?find@?$_Rb_tree@JU?$pair@$$CBJVCScriptConversation@@@std@@U?$_Select1st@U?$pair@$$CBJVCScriptConversation@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCScriptConversation@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJVCScriptConversation@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJVCScriptConversation@@@std@@@2@@2@ABJ@Z
+// Leaf: ??$find@J@?$_Rb_tree@JU?$pair@$$CBJVCScriptConversation@@@std@@U?$_Select1st@U?$pair@$$CBJVCScriptConversation@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCScriptConversation@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJVCScriptConversation@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJVCScriptConversation@@@std@@@2@@1@ABJ@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E6990, 71 bytes, thiscall, `ret 8` (hidden iterator result + key reference).
 // Identity (sweep1, 2026-10-25): FINDINGS (near-miss pass 2, hand902): "CRetailTreelongkey_find_006e6990 ... use invented
 //   classes (STLport ... _Rb_tree::find)". Its four callers are CScriptConversationManager members: the landed
@@ -66,13 +66,16 @@ public:
     static _Link_type& _S_right(_Base_ptr __x) { return (_Link_type&)(__x->_M_right); }
     static const _Key& _S_key(_Base_ptr __x) { return _KeyOfValue()(((_Link_type)__x)->_M_value_field); }
 
-    _Link_type _M_find(const key_type& __k) const;
-    iterator find(const key_type& __x) { return iterator(_M_find(__x)); }
+private:
+    template <class _KT> _Link_type _M_find(const _KT& __k) const;
+public:
+    template <class _KT> iterator find(const _KT& __x) { return iterator(_M_find(__x)); }
 };
 
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
+template <class _KT>
 typename _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_Link_type
-_Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_find(const key_type& __k) const
+_Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_find(const _KT& __k) const
 {
     _Link_type __y = _M_header._M_data;                 // last node which is not less than k
     _Link_type __x = _M_root();                         // current node

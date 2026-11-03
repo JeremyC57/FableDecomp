@@ -10,14 +10,14 @@
 // 0x00C5D570 makes) before DeleteCriticalSection, and the inlined empty base destructor stores
 // 0x012B5868 last. The constructor is @ 0x00C6E6A0 (same layout: lock +0x04, float volume +0x20, byte
 // +0x24). The destructor is virtual: slot 0 of 0x012BEDA4 is the scalar deleting destructor 0x00C6E6D0 around this
-// body (freeing through the root's CPKObject::operator delete 0x00C3C370), and 0x012B5868 is the libpk CPKObject root
+// body (freeing through the root's CCodaObjectBase::operator delete 0x00C3C370), and 0x012B5868 is the libpk CCodaObjectBase root
 // (its own deleting destructor 0x00C3C840), so the root is modelled with its inline virtual destructor (sweep1 fix).
 // The manifest label "CConsoleCommandParameters" is propagated and rejected.
 struct _RTL_CRITICAL_SECTION;
 extern "C" __declspec(dllimport) void __stdcall DeleteCriticalSection(_RTL_CRITICAL_SECTION* section);
 
-struct CPKObject {                             // vtable 0x012B5868: the libpk root
-    virtual ~CPKObject() { }
+struct CCodaObjectBase {                             // vtable 0x012B5868: the libpk root
+    virtual ~CCodaObjectBase() { }
 };
 
 struct CCriticalSectionOwner_012B8FC8 {        // vtable 0x012B8FC8
@@ -29,7 +29,7 @@ struct CCriticalSectionOwner_012B8FC8 {        // vtable 0x012B8FC8
     }
 };
 
-struct CVtable_012beda4 : CPKObject {             // vtable 0x012BEDA4
+struct CVtable_012beda4 : CCodaObjectBase {             // vtable 0x012BEDA4
     CCriticalSectionOwner_012B8FC8 m_lock;     // +0x04
     float         m_volume;                    // +0x20 (read as a float by the mixer effects)
     unsigned char m_flag;                      // +0x24

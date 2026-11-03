@@ -92,7 +92,9 @@ public:
     _STLP_alloc_proxy<_Node*, _Node, allocator<_Node> > _M_header;   // +0x00
 };
 
-template <class _Key, class _Value, class _Compare, class _Alloc = allocator<_Value> >
+template <class _Pair> struct _Select1st { };  // STLport 4.6 _function.h (KeyOfValue of map's tree)
+template <class _Tp> struct _Identity { };     // STLport 4.6 _function.h (KeyOfValue of set's tree)
+template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc = allocator<_Value> >
 class _Rb_tree : public _Rb_tree_base<_Value, _Alloc> {
 public:
     typedef _Rb_tree_node<_Value>* _Link_type;
@@ -125,9 +127,9 @@ public:
     }
     iterator end() { return iterator(this->_M_header._M_data); }
     private:
-    _Link_type _M_find(const _Key& k) const;                // 0x0082EEB0 (map) / 0x0082EF20 (set): the node in eax
+    template <class _KT> _Link_type _M_find(const _KT& k) const;                // 0x0082EEB0 (map) / 0x0082EF20 (set): the node in eax
     public:
-    iterator find(const _Key& k) { return iterator(_M_find(k)); }
+    template <class _KT> iterator find(const _KT& k) { return iterator(_M_find(k)); }
     void erase(iterator position)
     {
         _Link_type y = (_Link_type)_Rb_global_inst::_Rebalance_for_erase(position._M_node,
@@ -139,7 +141,7 @@ public:
 
 template <class _Key, class _Compare = less<_Key>, class _Alloc = allocator<_Key> > class set {
 public:
-    typedef _Rb_tree<_Key, _Key, _Compare, _Alloc> _Rep_type;
+    typedef _Rb_tree<_Key, _Key, _Identity<_Key>, _Compare, _Alloc> _Rep_type;
     typedef typename _Rep_type::iterator iterator;
     _Rep_type _M_t;
     set() : _M_t(_Compare(), _Alloc()) { }
@@ -150,7 +152,7 @@ public:
 template <class _Key, class _Tp, class _Compare = less<_Key>, class _Alloc = allocator<pair<const _Key, _Tp> > > class map {
 public:
     typedef pair<const _Key, _Tp> value_type;
-    typedef _Rb_tree<_Key, value_type, _Compare, _Alloc> _Rep_type;
+    typedef _Rb_tree<_Key, value_type, _Select1st<value_type>, _Compare, _Alloc> _Rep_type;
     typedef typename _Rep_type::iterator iterator;
     _Rep_type _M_t;
     map() : _M_t(_Compare(), _Alloc()) { }

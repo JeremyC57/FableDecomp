@@ -17,9 +17,9 @@
 struct _RTL_CRITICAL_SECTION;
 extern "C" __declspec(dllimport) void __stdcall InitializeCriticalSection(_RTL_CRITICAL_SECTION* section);
 
-struct CPKObject {                             // vtable 0x012B5868: the libpk root
-    CPKObject() { }
-    virtual ~CPKObject() { }
+struct CCodaObjectBase {                             // vtable 0x012B5868: the libpk root
+    CCodaObjectBase() { }
+    virtual ~CCodaObjectBase() { }
 };
 
 struct CCriticalSectionOwner_012B8FC8 {        // vtable 0x012B8FC8
@@ -31,7 +31,7 @@ struct CCriticalSectionOwner_012B8FC8 {        // vtable 0x012B8FC8
     }
 };
 
-struct CVtable_012beda4 : CPKObject {             // vtable 0x012BEDA4
+struct CVtable_012beda4 : CCodaObjectBase {             // vtable 0x012BEDA4
     CCriticalSectionOwner_012B8FC8 m_lock;     // +0x04
     float         m_volume;                    // +0x20 (read as a float by the mixer effects)
     unsigned char m_flag;                      // +0x24
@@ -40,6 +40,6 @@ struct CVtable_012beda4 : CPKObject {             // vtable 0x012BEDA4
 };
 
 CVtable_012beda4::CVtable_012beda4()
-    : CPKObject(), m_lock(), m_volume(0.0f), m_flag(0)
+    : CCodaObjectBase(), m_lock(), m_volume(0.0f), m_flag(0)
 {
 }

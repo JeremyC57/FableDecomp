@@ -1,0 +1,279 @@
+addr       parity           behav  name
+0042b467   RELOCATION_MATCH PASS   _M_find
+0047ed0a   WARN SHARED_HEADER_AVAILABLE CTCInGameMenu
+0047ed0a   WARN RELOC_NAME: ??$?0VCWideString@@_N@?$pair@$$CBVCWideString@@_N@std@@QAE@ABU?$pair@VCWideString@@_N@1@@Z -> 00485125 labelled 'CTavernTableDef::operator='
+0047ed0a   RELOCATION_MATCH PASS   VerifySignatureCached
+004856cd   RELOCATION_MATCH PASS   _M_find
+004b9370   RELOCATION_MATCH PASS   _M_find
+004baa30   RELOCATION_MATCH PASS   find
+004fe550   WARN SHARED_HEADER_AVAILABLE CScriptedMapBrush
+004fe550   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+004fe550   WARN SHARED_HEADER_AVAILABLE CWorldMap
+004fe550   WARN RELOC_NAME: ?GetName@CScriptedMapBrush@@QBEABVCCharString@@XZ -> 0082e250 labelled 'CScriptedMapBrush::GetBrushName'
+004fe550   RELOCATION_MATCH PASS   ApplyScriptedMapBrush
+004fe5b0   WARN SHARED_HEADER_AVAILABLE CScriptedMapBrush
+004fe5b0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+004fe5b0   WARN SHARED_HEADER_AVAILABLE CWorldMap
+004fe5b0   WARN RELOC_NAME: ?GetName@CScriptedMapBrush@@QBEABVCCharString@@XZ -> 0082e250 labelled 'CScriptedMapBrush::GetBrushName'
+004fe5b0   RELOCATION_MATCH PASS   DeregisterScriptedMapBrush
+004fe630   WARN SHARED_HEADER_AVAILABLE CAFile
+004fe630   RELOCATION_MATCH PASS   GetNavigationSectionOffsetInFile
+0051f040   WARN SHARED_HEADER_AVAILABLE CThingManager
+0051f040   RELOCATION_MATCH PASS   GetNameForThing_OnlyCalledFromTCHasName
+00521240   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00521240   WARN SHARED_HEADER_AVAILABLE CASuspendableProcess
+00521240   WARN SHARED_HEADER_AVAILABLE CPersistContext
+00521240   WARN SHARED_HEADER_AVAILABLE CLevelLoader
+00521240   WARN SHARED_HEADER_AVAILABLE CThingManager
+00521240   WARN RELOC_NAME: ??1CMemoryDataInputStream@@UAE@XZ -> 00993b10 labelled 'CDataStream::~CDataStream'
+00521240   RELOCATION_MATCH PASS   LoadEntitiesBinary
+00527e00   MATCH            PASS   _M_find
+0058ef79   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0058ef79   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0058ef79   RELOCATION_MATCH PASS   ContructItemLists
+00590198   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00590198   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00590198   RELOCATION_MATCH PASS   ContructItemListsPC
+00592f92   MATCH            PASS   _M_find
+005937e1   RELOCATION_MATCH PASS   SetMiniMapRegionExitTextOffsetX
+005957d9   WARN SHARED_HEADER_AVAILABLE CFrontEndManager
+005957d9   WARN RELOC_NAME: ??$?0VCWideString@@_N@?$pair@$$CBVCWideString@@_N@std@@QAE@ABU?$pair@VCWideString@@_N@1@@Z -> 00485125 labelled 'CTavernTableDef::operator='
+005957d9   RELOCATION_MATCH PASS   VerifySignatureCached
+005d83b3   MATCH            PASS   _M_find
+005d8548   RELOCATION_MATCH PASS   find
+0064a37b   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0064a37b   RELOCATION_MATCH PASS   GetScriptSpriteBySymbol
+006b9460   RELOCATION_MATCH PASS   IsAlliedWithFaction
+006b94c0   RELOCATION_MATCH PASS   IsEnemyOfFaction
+006bc350   WARN SHARED_HEADER_AVAILABLE C2DVector
+006bc350   RELOCATION_MATCH PASS   GetMiniMapRegionExitTextOffset
+
+WINS: 22
+  0042b467 RELOCATION_MATCH std::_Rb_tree<CCharString,std::pair<const CCharString,long>,std::_Select1st<std::pair<const CCharString,long> >,std::less<CCharString>,std::allocator<std::pair<const CCharString,long> > >::??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@J@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@1@ABVCCharString@@@Z
+  0047ed0a RELOCATION_MATCH CTCInGameMenu::?VerifySignatureCached@CTCInGameMenu@@QAE_NABVCWideString@@@Z
+  004856cd RELOCATION_MATCH std::_Rb_tree<CWideString, pair<const CWideString, bool>, _Select1st, less<CWideString> >::??$_M_find@VCWideString@@@?$_Rb_tree@VCWideString@@U?$pair@$$CBVCWideString@@_N@std@@U?$_Select1st@U?$pair@$$CBVCWideString@@_N@std@@@3@U?$less@VCWideString@@@3@V?$allocator@U?$pair@$$CBVCWideString@@_N@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCWideString@@_N@std@@@1@ABVCWideString@@@Z
+  004b9370 RELOCATION_MATCH std::_Rb_tree::??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@ABEPAU?$_Rb_tree_node@VCCharString@@@1@ABVCCharString@@@Z
+  004baa30 RELOCATION_MATCH std::set<CCharString>::?find@?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@QBE?AU?$_Rb_tree_iterator@VCCharString@@U?$_Const_traits@VCCharString@@@std@@@2@ABVCCharString@@@Z
+  004fe550 RELOCATION_MATCH CWorldMap::?ApplyScriptedMapBrush@CWorldMap@@
+  004fe5b0 RELOCATION_MATCH CWorldMap::?DeregisterScriptedMapBrush@CWorldMap@@QAEXABVCScriptedMapBrush@@@Z
+  004fe630 RELOCATION_MATCH CWorldMap::GetNavigationSectionOffsetInFile
+  0051f040 RELOCATION_MATCH CThingManager::?GetNameForThing_OnlyCalledFromTCHasName@CThingManager@@QAE?AVCWideString@@_K@Z
+  00521240 RELOCATION_MATCH CThingManager::?LoadEntitiesBinary@CThingManager@@QAEXAAVCMemoryDataInputStream@@JJABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@PAVCASuspendableProcess@@JAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@4@@Z
+  00527e00 MATCH std::_Rb_tree<unsigned __int64, std::pair<const unsigned __int64, std::pair<CCharString, CWideString>>, ...>::??$_M_find@_K@?$_Rb_tree@_KU?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@U?$_Select1st@U?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@@1@AB_K@Z
+  0058ef79 RELOCATION_MATCH CTCInventory::ContructItemLists@CTCInventory
+  00590198 RELOCATION_MATCH CTCInventory::ContructItemListsPC@CTCInventory
+  00592f92 MATCH std::_Rb_tree::??$_M_find@J@?$_Rb_tree@JU?$pair@$$CBJJ@std@@U?$_Select1st@U?$pair@$$CBJJ@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBJJ@std@@@1@ABJ@Z
+  005937e1 RELOCATION_MATCH CRegion::??$find@J@?$_Rb_tree@JU?$pair@$$CBJJ@std@@U?$_Select1st@U?$pair@$$CBJJ@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJJ@std@@U?$_Nonconst_traits@U?$pair@$$CBJJ@std@@@2@@1@ABJ@Z
+  005957d9 RELOCATION_MATCH NUISystem::CFrontEndManager::?VerifySignatureCached@CFrontEndManager@NUISystem@@QAE_NABVCWideString@@@Z
+  005d83b3 MATCH std::_Rb_tree::??$_M_find@K@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBKJ@std@@@1@ABK@Z
+  005d8548 RELOCATION_MATCH std::map::?find@?$map@KJU?$less@K@std@@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKJ@std@@U?$_Nonconst_traits@U?$pair@$$CBKJ@std@@@2@@2@ABK@Z
+  0064a37b RELOCATION_MATCH NPlayerGui::CDrawQuestInfo::?GetScriptSpriteBySymbol@CDrawQuestInfo@NPlayerGui@@QBEJABVCCharString@@@Z
+  006b9460 RELOCATION_MATCH CFaction::?IsAlliedWithFaction@CFaction@@QBE_NABV1@@Z
+  006b94c0 RELOCATION_MATCH CFaction::?IsEnemyOfFaction@CFaction@@QBE_NABV1@@Z
+  006bc350 RELOCATION_MATCH CRegion::?GetMiniMapRegionExitTextOffset@CRegion@@QBE_NABVCCharString@@AAVC2DVector@@@Z
+22 rows
+addr       parity           behav  name
+006bc380   RELOCATION_MATCH PASS   GetWorldMapNameGraphic
+006bcf50   WARN SHARED_HEADER_AVAILABLE C2DVector
+006bcf50   RELOCATION_MATCH PASS   _M_find
+006bd0f0   MATCH            PASS   find
+006dab90   MATCH            PASS   find
+006e5990   WARN SHARED_HEADER_AVAILABLE CScriptConversation
+006e5990   WARN RELOC_NAME: ??1CScriptConversation@@QAE@XZ -> 004ae0e0 labelled 'SHandleAndTextLists::~SHandleAndTextLists'
+006e5990   RELOCATION_MATCH PASS   RemoveConversation
+006e6990   WARN SHARED_HEADER_AVAILABLE CScriptConversation
+006e6990   MATCH            PASS   find
+006e7690   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+006e7690   WARN RELOC_NAME: ??$find@J@?$_Rb_tree@JU?$pair@$$CBJJ@std@@U?$_Select1st@U?$pair@$$CBJJ@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJJ@std@@U?$_Nonconst_traits@U?$pair@$$CBJJ@std@@@2@@1@ABJ@Z -> 005937e1 labelled 'CRegion::SetMiniMapRegionExitTextOffsetX'
+006e7690   RELOCATION_MATCH PASS   DeregisterTimer
+006e77f0   RELOCATION_MATCH PASS   GetScriptSpriteBySymbol
+006ed030   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+006ed030   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+006ed030   WARN SHARED_HEADER_AVAILABLE CThing
+006ed030   WARN SHARED_HEADER_AVAILABLE C2DVector
+006ed030   WARN SHARED_HEADER_AVAILABLE CAttackingCombatantInfo
+006ed030   WARN SHARED_HEADER_AVAILABLE CDefendingCombatantInfo
+006ed030   WARN SHARED_HEADER_AVAILABLE CCombatantInfo
+006ed030   WARN SHARED_HEADER_AVAILABLE CCombatManager
+006ed030   WARN RELOC_NAME: ?UpdateDefenderAttackPattern@CCombatManager@@AAEXAAUCCombatantInfo@@@Z -> 006ea0c0 labelled 'CDefendingCombatantInfo::InitializeDefenderFromCreature'
+006ed030   WARN RELOC_NAME: ?SetupDefenderPlacementWheel@CCombatManager@@AAEXAAUCCombatantInfo@@_N@Z -> 006ecea0 labelled 'CDefendingCombatantInfo::UpdateCombatState'
+006ed030   RELOCATION_MATCH PASS   UpdateAttackingCombatantsList
+006ed8c0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+006ed8c0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+006ed8c0   WARN SHARED_HEADER_AVAILABLE CDefendingCombatantInfo
+006ed8c0   WARN SHARED_HEADER_AVAILABLE CCombatantInfo
+006ed8c0   WARN SHARED_HEADER_AVAILABLE CCombatManager
+006ed8c0   RELOCATION_MATCH PASS   DeregisterAttackedCombatant
+006f0250   WARN SHARED_HEADER_AVAILABLE CCombatantInfo
+006f0250   MATCH            PASS   _M_find
+00756350   RELOCATION_MATCH PASS   _M_find
+00756d00   WARN SHARED_HEADER_AVAILABLE CPersistContext
+00756d00   WARN SHARED_HEADER_AVAILABLE CPersistTraits
+00756d00   RELOCATION_MATCH PASS   pair<long, long>, CCharString>
+007acc90   RELOCATION_MATCH PASS   _M_find
+007adb30   RELOCATION_MATCH PASS   find
+007ae3d0   WARN SHARED_HEADER_AVAILABLE CPersistTraits
+007ae3d0   WARN SHARED_HEADER_AVAILABLE CPersistContext
+007ae3d0   WARN RELOC_NAME: ??E?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@_N@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@_N@std@@@2@@std@@QAEAAU01@XZ -> 007ab8a0 labelled 'CRetailTreeIterator::Increment'
+007ae3d0   RELOCATION_MATCH PASS   TransferMap<bool,CCharString>
+0082e500   WARN SHARED_HEADER_AVAILABLE C3DVector
+0082e500   WARN SHARED_HEADER_AVAILABLE C2DBoxI
+0082e500   RELOCATION_MATCH PASS   RemoveThing
+0082eeb0   WARN SHARED_HEADER_AVAILABLE C3DVector
+0082eeb0   WARN SHARED_HEADER_AVAILABLE CScriptedMapBrush
+0082eeb0   MATCH            PASS   _M_find
+0082ef20   MATCH            PASS   _M_find
+008688c0   WARN SHARED_HEADER_AVAILABLE CHitParameters
+008688c0   RELOCATION_MATCH PASS   IsShotStrike
+008688f0   WARN SHARED_HEADER_AVAILABLE CHitParameters
+008688f0   RELOCATION_MATCH PASS   IsExplosionStrike
+00868920   WARN SHARED_HEADER_AVAILABLE CHitParameters
+00868920   RELOCATION_MATCH PASS   IsDrainStrike
+
+WINS: 22
+  006bc380 RELOCATION_MATCH CRegion::?GetWorldMapNameGraphic@CRegion@@QBEKXZ
+  006bcf50 RELOCATION_MATCH std::_Rb_tree::??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VC2DVector@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VC2DVector@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VC2DVector@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VC2DVector@@@std@@@1@ABVCCharString@@@Z
+  006bd0f0 MATCH std::_Rb_tree<CUnprovenKey_006bd0f0,CUnprovenValue_006bd0f0,CUnprovenKeyOfValue_006bd0f0,std::less<CUnprovenKey_006bd0f0>,std::allocator<CUnprovenValue_006bd0f0> >::??$find@W4EWorldMapNameGraphic@@@?$_Rb_tree@W4EWorldMapNameGraphic@@U?$pair@$$CBW4EWorldMapNameGraphic@@K@std@@U?$_Select1st@U?$pair@$$CBW4EWorldMapNameGraphic@@K@std@@@3@U?$less@W4EWorldMapNameGraphic@@@3@V?$allocator@U?$pair@$$CBW4EWorldMapNameGraphic@@K@std@@@3@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4EWorldMapNameGraphic@@K@std@@U?$_Const_traits@U?$pair@$$CBW4EWorldMapNameGraphic@@K@std@@@2@@1@ABW4EWorldMapNameGraphic@@@Z
+  006dab90 MATCH CRetailTree_longkey::??$find@W4EDamageAttribute@@@?$_Rb_tree@W4EDamageAttribute@@U?$pair@$$CBW4EDamageAttribute@@M@std@@U?$_Select1st@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@U?$less@W4EDamageAttribute@@@3@V?$allocator@U?$pair@$$CBW4EDamageAttribute@@M@std@@@3@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBW4EDamageAttribute@@M@std@@U?$_Const_traits@U?$pair@$$CBW4EDamageAttribute@@M@std@@@2@@1@ABW4EDamageAttribute@@@Z
+  006e5990 RELOCATION_MATCH CScriptConversationManager::?RemoveConversation@CScriptConversationManager@@QAEXJ_N@Z
+  006e6990 MATCH std::_Rb_tree<long,pair<const long,CScriptConversation>,_Select1st<pair<const long,CScriptConversation> >,less<long>,allocator<pair<const long,CScriptConversation> > >::??$find@J@?$_Rb_tree@JU?$pair@$$CBJVCScriptConversation@@@std@@U?$_Select1st@U?$pair@$$CBJVCScriptConversation@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCScriptConversation@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJVCScriptConversation@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJVCScriptConversation@@@std@@@2@@1@ABJ@Z
+  006e7690 RELOCATION_MATCH CGameScriptInterface::?DeregisterTimer@CGameScriptInterface@@UAEXJ@Z
+  006e77f0 RELOCATION_MATCH CGameScriptInterface::?GetScriptSpriteBySymbol@CGameScriptInterface@@QBEJABVCCharString@@@Z
+  006ed030 RELOCATION_MATCH CCombatManager::?UpdateAttackingCombatantsList@CCombatManager@@AAEXAAUCCombatantInfo@@_N@Z
+  006ed8c0 RELOCATION_MATCH CCombatManager::?DeregisterAttackedCombatant@CCombatManager
+  006f0250 MATCH std::_Rb_tree<unsigned __int64, std::pair<const unsigned __int64, CCombatantInfo>, ...>::??$_M_find@_K@?$_Rb_tree@_KU?$pair@$$CB_KUCCombatantInfo@@@std@@U?$_Select1st@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KUCCombatantInfo@@@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CB_KUCCombatantInfo@@@std@@@1@AB_K@Z
+  00756350 RELOCATION_MATCH std::_Rb_tree::??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@1@ABVCCharString@@@Z
+  00756d00 RELOCATION_MATCH CPersistContext::??$TransferMap@U?$pair@JJ@std@@VCCharString@@@CPersistContext@@QAEXPBDAAV?$map@VCCharString@@U?$pair@JJ@std@@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@@std@@ABU?$pair@JJ@2@@Z
+  007acc90 RELOCATION_MATCH std::_Rb_tree::??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@_N@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@_N@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@_N@std@@@1@ABVCCharString@@@Z
+  007adb30 RELOCATION_MATCH std::map<CCharString,bool>::?find@?$map@VCCharString@@_NU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@_N@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@_N@std@@@2@@2@ABVCCharString@@@Z
+  007ae3d0 RELOCATION_MATCH CPersistContext::??$TransferMap@_NVCCharString@@@CPersistContext@@QAEXPBDAAV?$map@VCCharString@@_NU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@std@@AB_N@Z
+  0082e500 RELOCATION_MATCH CScriptedMapBrush::?RemoveThing@CScriptedMapBrush@@QAEX_K@Z
+  0082eeb0 MATCH std::_Rb_tree<unsigned __int64, std::pair<const unsigned __int64, CScriptedMapBrush::CThingPosAndOrientation>, ...>::??$_M_find@_K@?$_Rb_tree@_KU?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@U?$_Select1st@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CB_KVCThingPosAndOrientation@CScriptedMapBrush@@@std@@@1@AB_K@Z
+  0082ef20 MATCH std::_Rb_tree<unsigned __int64, unsigned __int64, _Identity<unsigned __int64>, ...>::??$_M_find@_K@?$_Rb_tree@_K_KU?$_Identity@_K@std@@U?$less@_K@2@V?$allocator@_K@2@@std@@ABEPAU?$_Rb_tree_node@_K@1@AB_K@Z
+  008688c0 RELOCATION_MATCH CHitParameters::?IsShotStrike@CHitParameters@@QBE_NXZ
+  008688f0 RELOCATION_MATCH CHitParameters::?IsExplosionStrike@CHitParameters@@QBE_NXZ
+  00868920 RELOCATION_MATCH CHitParameters::?IsDrainStrike@CHitParameters@@QBE_NXZ
+22 rows
+addr       parity           behav  name
+00868950   WARN SHARED_HEADER_AVAILABLE CHitParameters
+00868950   RELOCATION_MATCH PASS   IsDrainHealStrike
+008689b0   WARN SHARED_HEADER_AVAILABLE CHitParameters
+008689b0   RELOCATION_MATCH PASS   IsLightningStrike
+008689e0   WARN SHARED_HEADER_AVAILABLE CHitParameters
+008689e0   RELOCATION_MATCH PASS   IsDivineWrathStrike
+00868a10   WARN SHARED_HEADER_AVAILABLE CHitParameters
+00868a10   RELOCATION_MATCH PASS   IsUnholyPowerStrike
+008a9760   RELOCATION_MATCH PASS   GetActiveGossipCategories
+008a9810   RELOCATION_MATCH PASS   GetIsGossipForPlayer
+008a9f50   RELOCATION_MATCH PASS   GetGossip
+008aa1b0   RELOCATION_MATCH PASS   GetGossipVillages
+008aa410   RELOCATION_MATCH PASS   GetGossipFactions
+008ac200   RELOCATION_MATCH PASS   _M_find
+008ae510   RELOCATION_MATCH PASS   GetGossip
+008ae660   RELOCATION_MATCH PASS   AddGossip
+008ae890   RELOCATION_MATCH PASS   AddGossipVillages
+008ae970   RELOCATION_MATCH PASS   GetGossipFactions
+008aeac0   RELOCATION_MATCH PASS   AddGossipFactions
+0098e590   RELOCATION_MATCH PASS   IsObjectFinished
+00990320   MATCH            PASS   find
+009a7d40   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+009a7d40   WARN RELOC_ALIAS: __CxxThrowException@8 -> 00bfeb84 is the import thunk 'MSVCR71.DLL::_CxxThrowException'
+009a7d40   RELOCATION_MATCH PASS   GetRetailBankFilePath
+009a7f80   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+009a7f80   RELOCATION_MATCH PASS   FindContainedBank
+009a8090   RELOCATION_MATCH PASS   RegisterBank
+009aa4c0   RELOCATION_MATCH PASS   _M_find
+
+WINS: 21
+  00868950 RELOCATION_MATCH CHitParameters::?IsDrainHealStrike@CHitParameters@@QBE_NXZ
+  008689b0 RELOCATION_MATCH CHitParameters::?IsLightningStrike@CHitParameters@@QBE_NXZ
+  008689e0 RELOCATION_MATCH CHitParameters::?IsDivineWrathStrike@CHitParameters@@QBE_NXZ
+  00868a10 RELOCATION_MATCH CHitParameters::?IsUnholyPowerStrike@CHitParameters@@QBE_NXZ
+  008a9760 RELOCATION_MATCH CGameScriptInterface::?GetActiveGossipCategories@CGameScriptInterface@@UAEPA_NVCCharString@@@Z
+  008a9810 RELOCATION_MATCH CGameScriptInterface::?GetIsGossipForPlayer@CGameScriptInterface@@UAEPA_NVCCharString@@@Z
+  008a9f50 RELOCATION_MATCH CGameScriptInterface::?GetGossip@CGameScriptInterface@@UAEPBV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@VCCharString@@@Z
+  008aa1b0 RELOCATION_MATCH CGameScriptInterface::?GetGossipVillages@CGameScriptInterface@@UAEPBV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@VCCharString@@@Z
+  008aa410 RELOCATION_MATCH CGameScriptInterface::?GetGossipFactions@CGameScriptInterface@@UAEPBV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@VCCharString@@@Z
+  008ac200 RELOCATION_MATCH std::_Rb_tree::??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@std@@@1@ABVCCharString@@@Z
+  008ae510 RELOCATION_MATCH CTCAIScratchpad::?GetGossip@CTCAIScratchpad@@
+  008ae660 RELOCATION_MATCH CTCAIScratchpad::?AddGossip@CTCAIScratchpad@@SIXVCCharString@@@Z
+  008ae890 RELOCATION_MATCH CTCAIScratchpad::?AddGossipVillages@CTCAIScratchpad@@SIXVCCharString@@@Z
+  008ae970 RELOCATION_MATCH CTCAIScratchpad::?GetGossipFactions@CTCAIScratchpad@@
+  008aeac0 RELOCATION_MATCH CTCAIScratchpad::?AddGossipFactions@CTCAIScratchpad@@SIXVCCharString@@@Z
+  0098e590 RELOCATION_MATCH CThreadedFileManager::?IsObjectFinished@CThreadedFileManager@@QBE_NK@Z
+  00990320 MATCH CRetailTree_ulongkey::??$find@K@?$_Rb_tree@KU?$pair@$$CBKPAVCFileObject@CThreadedFileManager@@@std@@U?$_Select1st@U?$pair@$$CBKPAVCFileObject@CThreadedFileManager@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKPAVCFileObject@CThreadedFileManager@@@std@@@2@@std@@QBE?AU?$_Rb_tree_iterator@U?$pair@$$CBKPAVCFileObject@CThreadedFileManager@@@std@@U?$_Const_traits@U?$pair@$$CBKPAVCFileObject@CThreadedFileManager@@@std@@@2@@1@ABK@Z
+  009a7d40 RELOCATION_MATCH CBankFileManager::?GetRetailBankFilePath@CBankFileManager@@QAE?AVCWideString@@ABVCCharString@@@Z
+  009a7f80 RELOCATION_MATCH CBankFileManager::?FindContainedBank@CBankFileManager@@QAE_NABVCCharString@@AAVCContainedBank@NBankFileManager@@AAV?$CCountedPointer@VCRetailBank@NBankFileManager@@@@@Z
+  009a8090 RELOCATION_MATCH CBankFileManager::?RegisterBank@CBankFileManager@@QAEXABVCCharString@@PAVCBankFile@@@Z
+  009aa4c0 RELOCATION_MATCH std::_Rb_tree<CWideString, CWideString, _Identity<CWideString>, less<CWideString> >::??$_M_find@VCWideString@@@?$_Rb_tree@VCWideString@@V1@U?$_Identity@VCWideString@@@std@@U?$less@VCWideString@@@3@V?$allocator@VCWideString@@@3@@std@@ABEPAU?$_Rb_tree_node@VCWideString@@@1@ABVCWideString@@@Z
+21 rows
+addr       parity           behav  name
+009ab4f0   RELOCATION_MATCH PASS   _M_find
+009ab560   RELOCATION_MATCH PASS   _M_find
+009ab5d0   RELOCATION_MATCH PASS   _M_find
+009c43e0   WARN SHARED_HEADER_AVAILABLE CCriticalSectionLock
+009c43e0   RELOCATION_MATCH PASS   IsFileCompleted
+009ccdc0   RELOCATION_MATCH PASS   FindIndexBySymbol
+009d2dd0   RELOCATION_MATCH PASS   _M_find
+00a26530   WARN SHARED_HEADER_AVAILABLE CArray
+00a26530   WARN SHARED_HEADER_AVAILABLE CMeshDataBank
+00a26530   RELOCATION_MATCH PASS   FindLipSyncAnimation
+00a2b240   WARN SHARED_HEADER_AVAILABLE CMeshDataBank
+00a2b240   RELOCATION_MATCH PASS   _M_find
+00a4eac0   WARN SHARED_HEADER_AVAILABLE C3DAnimationStats
+00a4eac0   RELOCATION_MATCH PASS   HasEvent
+00a4eae0   WARN SHARED_HEADER_AVAILABLE C3DAnimationStats
+00a4eae0   RELOCATION_MATCH PASS   GetEventTime
+00a54310   RELOCATION_MATCH PASS   _M_find
+00a77ca0   WARN SHARED_HEADER_AVAILABLE C2DVector
+00a77ca0   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode
+00a77ca0   RELOCATION_MATCH PASS   ConvertIndexesToPointers
+00a7f880   MATCH            PASS   find
+00a80500   RELOCATION_MATCH PASS   find
+00aca0c0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00aca0c0   WARN SHARED_HEADER_AVAILABLE COptimisedPrimitive
+00aca0c0   WARN RELOC_NAME: ?GetAsLowerCase@CCharString@@QBE?AV1@XZ -> 0099ed10 labelled 'CCharString::ToLower'
+00aca0c0   RELOCATION_MATCH PASS   RemoveBones
+00b41e50   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00b41e50   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b41e50   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox
+00b41e50   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00b41e50   WARN SHARED_HEADER_AVAILABLE CEngineStaticMapFileBlockManager
+00b41e50   WARN SHARED_HEADER_AVAILABLE CEngineMap
+00b41e50   RELOCATION_MATCH PASS   OpenRetailStaticMap
+00be0420   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00be0420   WARN SHARED_HEADER_AVAILABLE CEngineStaticMapFileBlockManager
+00be0420   RELOCATION_MATCH PASS   SetBlockToHighPriority
+00be08e0   WARN SHARED_HEADER_AVAILABLE CEngineStaticMapFileBlockManager
+00be08e0   MATCH            PASS   find
+00bec8d0   WARN SHARED_HEADER_AVAILABLE CArray
+00bec8d0   RELOCATION_MATCH PASS   InitialiseHiddenMaterials
+00cbf9de   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00cbf9de   WARN RELOC_NAME: ??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@1@ABVCCharString@@@Z -> 00cd2b86 labelled '_global::FindRegisteredCutsceneActor'
+00cbf9de   RELOCATION_MATCH PASS   CSFindThing
+00cd2b86   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00cd2b86   RELOCATION_MATCH PASS   FindRegisteredCutsceneActor
+
+WINS: 21
+  009ab4f0 RELOCATION_MATCH std::_Rb_tree::??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCContainedBank@NBankFileManager@@@std@@@1@ABVCCharString@@@Z
+  009ab560 RELOCATION_MATCH std::_Rb_tree::??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCBankInfo@CBankFileManager@@@std@@@1@ABVCCharString@@@Z
+  009ab5d0 RELOCATION_MATCH std::_Rb_tree::??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V1@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V1@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V1@@std@@@1@ABVCCharString@@@Z
+  009c43e0 RELOCATION_MATCH CFileInstaller::?IsFileCompleted@CFileInstaller@@QBE_NABVCCharString@@@Z
+  009ccdc0 RELOCATION_MATCH CBankFile::?FindIndexBySymbol@CBankFile@@QBEKABVCCharString@@@Z
+  009d2dd0 RELOCATION_MATCH std::_Rb_tree::??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@K@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@K@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@K@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@K@std@@@1@ABVCCharString@@@Z
+  00a26530 RELOCATION_MATCH CMeshDataBank::?FindLipSyncAnimation@CMeshDataBank@@QBEKABVCCharString@@0@Z
+  00a2b240 RELOCATION_MATCH std::_Rb_tree::??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CArray@VCLipSyncEntry@CMeshDataBank@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CArray@VCLipSyncEntry@CMeshDataBank@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CArray@VCLipSyncEntry@CMeshDataBank@@@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CArray@VCLipSyncEntry@CMeshDataBank@@@@@std@@@1@ABVCCharString@@@Z
+  00a4eac0 RELOCATION_MATCH C3DAnimationStats::?HasEvent@C3DAnimationStats@@QBE_NABVCCharString@@@Z
+  00a4eae0 RELOCATION_MATCH C3DAnimationStats::?GetEventTime@C3DAnimationStats@@QBEMABVCCharString@@@Z
+  00a54310 RELOCATION_MATCH std::_Rb_tree::??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@M@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@M@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@M@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@M@std@@@1@ABVCCharString@@@Z
+  00a77ca0 RELOCATION_MATCH CNavQuadTreeNode::ConvertIndexesToPointers
+  00a7f880 MATCH CRetailTree_longkey::??$find@J@?$_Rb_tree@JU?$pair@$$CBJPAVCANavQuadTreeNode@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCANavQuadTreeNode@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJPAVCANavQuadTreeNode@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJPAVCANavQuadTreeNode@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJPAVCANavQuadTreeNode@@@std@@@2@@1@ABJ@Z
+  00a80500 RELOCATION_MATCH std::map<long,CANavQuadTreeNode*>::?find@?$map@JPAVCANavQuadTreeNode@@U?$less@J@std@@V?$allocator@U?$pair@$$CBJPAVCANavQuadTreeNode@@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJPAVCANavQuadTreeNode@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJPAVCANavQuadTreeNode@@@std@@@2@@2@ABJ@Z
+  00aca0c0 RELOCATION_MATCH QuadricOptimiserInternals::COptimisedMesh::?RemoveBones@COptimisedMesh@QuadricOptimiserInternals@@UAEXABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@@Z
+  00b41e50 RELOCATION_MATCH CEngineMap::?OpenRetailStaticMap@CEngineMap@@QAEXAAVCStaticMapBankFile@@AAVCDataInputStream@@AAV?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@@Z
+  00be0420 RELOCATION_MATCH CEngineStaticMapFileBlockManager::?SetBlockToHighPriority@CEngineStaticMapFileBlockManager@@QAEXJ@Z
+  00be08e0 MATCH std::_Rb_tree<long,std::pair<const long, CEngineStaticMapFileBlockManager::CFileBlock >,std::_Select1st<std::pair<const long, CEngineStaticMapFileBlockManager::CFileBlock > >,std::less<long >,std::allocator<std::pair<const long, CEngineStaticMapFileBlockManager::CFileBlock > > >::??$find@J@?$_Rb_tree@JU?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Select1st@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJUCFileBlock@CEngineStaticMapFileBlockManager@@@std@@@2@@1@ABJ@Z
+  00bec8d0 RELOCATION_MATCH CEngineInternalPrimitiveMorphInfo::?InitialiseHiddenMaterials@CEngineInternalPrimitiveMorphInfo@@QAEXABVC3DMesh2@@@Z
+  00cbf9de RELOCATION_MATCH _global::?CSFindThing@@YI?AVCScriptThing@@ABVCCharString@@AAV?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@@Z
+  00cd2b86 RELOCATION_MATCH std::_Rb_tree<CCharString, pair<const CCharString, CScriptGameResourceObjectScriptedThingBase>, ...>::??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@1@ABVCCharString@@@Z
+21 rows

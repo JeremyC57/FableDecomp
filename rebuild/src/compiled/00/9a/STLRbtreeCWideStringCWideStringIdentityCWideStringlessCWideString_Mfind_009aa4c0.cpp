@@ -1,5 +1,5 @@
 // std::_Rb_tree<CWideString, CWideString, _Identity<CWideString>, less<CWideString> >::_M_find(const CWideString& k) const -- set<CWideString> lookup: lower-bound walk, then the header unless the found key equals k
-// Leaf: ?_M_find@
+// Leaf: ??$_M_find@VCWideString@@@?$_Rb_tree@VCWideString@@V1@U?$_Identity@VCWideString@@@std@@U?$less@VCWideString@@@3@V?$allocator@VCWideString@@@3@@std@@ABEPAU?$_Rb_tree_node@VCWideString@@@1@ABVCWideString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009AA4C0, 83 bytes, thiscall `ret 4`, the node pointer in eax. Catalog name
 // "BinaryTree_FindByComparator" (descriptive). Callers: CBankFileManager 0x009A7D9B (CreatedRetailBanks, the
 // set<CWideString> at +0x28) and the two find() wrappers 0x009AA9C0 / 0x009AAF50 (identical bodies for this tree).
@@ -23,6 +23,8 @@ template <class _Tp> struct _Identity {
     const _Tp& operator()(const _Tp& __x) const { return __x; }
 };
 
+template <class _Tp> class allocator { };
+
 template <class _Value, class _Tp> class _STLP_alloc_proxy {
 public:
     _Value _M_data;
@@ -39,7 +41,7 @@ template <class _Value> struct _Rb_tree_node : public _Rb_tree_node_base {
     _Value _M_value_field;                                  // +0x10
 };
 
-template <class _Key, class _Value, class _KeyOfValue, class _Compare> class _Rb_tree {
+template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc> class _Rb_tree {
 public:
     typedef _Rb_tree_node<_Value>* _Link_type;
 
@@ -51,11 +53,14 @@ public:
     static _Link_type _S_left(_Link_type __x) { return (_Link_type)__x->_M_left; }
     static _Link_type _S_right(_Link_type __x) { return (_Link_type)__x->_M_right; }
     _Link_type _M_root() const { return (_Link_type)this->_M_header._M_data->_M_parent; }
-    _Link_type _M_find(const _Key& __k) const;
+private:
+    template <class _KT> _Link_type _M_find(const _KT& __k) const;
+public:
 };
 
-template <class _Key, class _Value, class _KeyOfValue, class _Compare>
-_Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare>::_M_find(const _Key& __k) const
+template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
+template <class _KT>
+_Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_find(const _KT& __k) const
 {
     _Link_type __y = this->_M_header._M_data;               // last node which is not less than __k
     _Link_type __x = _M_root();                             // current node
@@ -70,5 +75,5 @@ _Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare>::_M_find(co
 }
 
 template _Rb_tree_node<CWideString>*
-_Rb_tree<CWideString, CWideString, _Identity<CWideString>, less<CWideString> >::_M_find(const CWideString&) const;
+_Rb_tree<CWideString, CWideString, _Identity<CWideString>, less<CWideString>, allocator<CWideString> >::_M_find<CWideString>(const CWideString&) const;
 }

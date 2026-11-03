@@ -5,7 +5,7 @@
 static char g_seq[128] = "";
 static void Log(const char* s) { std::strcat(g_seq, s); }
 static int g_freed = 0;
-class CPKObject { public: static void operator delete(void* p) { ++g_freed; std::free(p); } };
+class CCodaObjectBase { public: static void operator delete(void* p) { ++g_freed; std::free(p); } };
 class CDspObject { public: CDspObject() { } virtual ~CDspObject() { } };
 class CVtable_012bf0c8 : public CDspObject {
 public:
@@ -33,7 +33,7 @@ struct SReverbRing { float* m_data; unsigned long m_length; unsigned long m_posi
 class CReverbProcessor : public CVtable_012bf0c8 {
 public:
     CReverbProcessor() : m_pMemory(0), m_memoryBytes(0), m_bWasActive(false), m_bReady(false) { m_settingsSize = 0x234; }
-    virtual ~CReverbProcessor() { m_bReady = false; if (m_pMemory) { CPKObject::operator delete(m_pMemory); m_pMemory = 0; } ReleaseBlock(); m_stereoDelay.Detach(); }
+    virtual ~CReverbProcessor() { m_bReady = false; if (m_pMemory) { CCodaObjectBase::operator delete(m_pMemory); m_pMemory = 0; } ReleaseBlock(); m_stereoDelay.Detach(); }
     CVtable_012b9584 m_format; unsigned char _pad44[0x54 - 0x44]; SReverbRing m_combLine; unsigned char _pad60[0x6c - 0x60];
     CDspGain m_inputGain; CDspGain m_outputGain; CReverbTapBank m_taps; CReverbDiffuser m_diffuser; CReverbPreDelay m_preDelay;
     CCombFilter m_combs[4]; CReverbDelay m_delay; CStereoDelayLine m_stereoDelay;

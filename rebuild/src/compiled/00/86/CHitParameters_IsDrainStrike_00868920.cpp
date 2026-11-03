@@ -87,7 +87,7 @@ public:
     _Compare     _M_key_compare;                                   // +0x08
 
     const_iterator end() const { return const_iterator(this->_M_header._M_data); }
-    const_iterator find(const key_type& __x) const;                // 0x006DAB90 (out of line)
+    template <class _KT> const_iterator find(const _KT& __x) const;                // 0x006DAB90 (out of line)
 };
 
 template <class _Key, class _Tp, class _Compare = less<_Key>, class _Alloc = allocator<pair<const _Key, _Tp> > >

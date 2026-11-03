@@ -2,7 +2,7 @@
 struct _RTL_CRITICAL_SECTION;
 static _RTL_CRITICAL_SECTION* g_initialised = 0;
 extern "C" void __stdcall InitializeCriticalSection(_RTL_CRITICAL_SECTION* section) { g_initialised = section; }
-struct CPKObject { CPKObject() { } virtual ~CPKObject() { } };
+struct CCodaObjectBase { CCodaObjectBase() { } virtual ~CCodaObjectBase() { } };
 struct CCriticalSectionOwner_012B8FC8 {
     virtual void v00() { }
     unsigned char CriticalSection[0x18];
@@ -11,7 +11,7 @@ struct CCriticalSectionOwner_012B8FC8 {
         InitializeCriticalSection(reinterpret_cast<_RTL_CRITICAL_SECTION*>(&this->CriticalSection[0]));
     }
 };
-struct CVtable_012beda4 : CPKObject {
+struct CVtable_012beda4 : CCodaObjectBase {
     CCriticalSectionOwner_012B8FC8 m_lock;
     float         m_volume;
     unsigned char m_flag;
@@ -19,7 +19,7 @@ struct CVtable_012beda4 : CPKObject {
     CVtable_012beda4();
 };
 CVtable_012beda4::CVtable_012beda4()
-    : CPKObject(), m_lock(), m_volume(0.0f), m_flag(0)
+    : CCodaObjectBase(), m_lock(), m_volume(0.0f), m_flag(0)
 {
 }
 int main()

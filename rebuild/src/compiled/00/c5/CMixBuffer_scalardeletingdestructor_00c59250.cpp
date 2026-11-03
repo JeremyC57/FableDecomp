@@ -1,4 +1,4 @@
-// CMixBuffer::`scalar deleting destructor'(unsigned int flags) -- compiler-generated: the destructor (0x00C57EF0), then the library's CPKObject::operator delete (0x00C3C370) when bit 0 of the flags is set; returns `this`
+// CMixBuffer::`scalar deleting destructor'(unsigned int flags) -- compiler-generated: the destructor (0x00C57EF0), then the library's CCodaObjectBase::operator delete (0x00C3C370) when bit 0 of the flags is set; returns `this`
 // Leaf: ??_GCMixBuffer@@UAEPAXI@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C59250, 30 bytes (+ int3 padding), thiscall `ret 4`.
 // Identity (sweep1, 2026-10-25; follows FINDINGS chunk 441 "CMixBuffer ctor + mix kernels"): slot 0 of the CMixBuffer
@@ -8,14 +8,16 @@
 //   deleting destructor is a propagated label over a `T::VecDel` placeholder.
 // Shape: the compiler-generated `??_G`; the vtable (and so `??_G`) is emitted by the out-of-line factory below, the
 //   destructor stays an out-of-line call (VC7.1 does not inline it into `??_G` here).
-class CPKObject {                                       // vtable 0x012B5868: the library's root class
+extern "C" void* __cdecl CodaMalloc(unsigned int size);   // 0x00C3C360 (GameCODA Memory.obj)
+extern "C" void __cdecl CodaFree(void* p);                // 0x00C3C370
+class CCodaObjectBase {                                       // vtable 0x012B5868: the library's root class
 public:
-    virtual ~CPKObject() { }
-    static void* __cdecl operator new(unsigned int size);   // 0x00C3C360
-    static void __cdecl operator delete(void* p);           // 0x00C3C370
+    virtual ~CCodaObjectBase() { }
+    static void* __cdecl operator new(unsigned int size) { return CodaMalloc(size); }   // 0x00C3C360
+    static void __cdecl operator delete(void* p) { CodaFree(p); }           // 0x00C3C370
 };
 
-class CMixBuffer : public CPKObject {                   // vtable 0x012B8F38, 0xC34 bytes
+class CMixBuffer : public CCodaObjectBase {                   // vtable 0x012B8F38, 0xC34 bytes
 public:
     CMixBuffer() { }                                    // out of line at 0x00C591F0
     virtual ~CMixBuffer();                              // 0x00C57EF0

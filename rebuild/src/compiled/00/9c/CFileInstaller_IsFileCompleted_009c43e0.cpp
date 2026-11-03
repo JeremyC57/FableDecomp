@@ -42,17 +42,33 @@ template <class _Value> struct _Rb_tree_const_iterator {
     bool operator!=(const _Rb_tree_const_iterator& y) const { return _M_node != y._M_node; }
 };
 
-template <class _Key, class _Compare = less<_Key> >
-class set {
+template <class _Tp> struct _Identity { };     // STLport 4.6 _function.h (set's KeyOfValue)
+template <class _Tp> class allocator { };
+template <class _Value> struct _Rb_tree_node : public _Rb_tree_node_base {
+    _Value _M_value_field;                      // +0x10
+};
+// STLport 4.6.1 _tree.h: find / _M_find are member templates (owner decision 2026-11-03), _M_find private.
+template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
+class _Rb_tree {
 public:
-    typedef _Rb_tree_const_iterator<_Key> const_iterator;
+    typedef _Rb_tree_const_iterator<_Value> const_iterator;
     const_iterator end() const { return const_iterator(_M_header); }
-    const_iterator find(const _Key& k) const { return const_iterator(_M_find(k)); }
-    _Rb_tree_node_base* _M_find(const _Key& k) const;   // 0x004B9370
+    template <class _KT> const_iterator find(const _KT& k) const { return const_iterator(_M_find(k)); }
 private:
+    template <class _KT> _Rb_tree_node<_Value>* _M_find(const _KT& k) const;   // 0x004B9370
     _Rb_tree_node_base* _M_header;              // +0x00
     unsigned int        _M_node_count;          // +0x04
     _Compare            _M_key_compare;         // +0x08
+};
+template <class _Key, class _Compare = less<_Key> >
+class set {
+public:
+    typedef _Rb_tree<_Key, _Key, _Identity<_Key>, _Compare, allocator<_Key> > _Rep_type;
+    typedef typename _Rep_type::const_iterator const_iterator;
+    const_iterator end() const { return _M_t.end(); }
+    const_iterator find(const _Key& k) const { return _M_t.find(k); }
+private:
+    _Rep_type _M_t;
 };
 }
 

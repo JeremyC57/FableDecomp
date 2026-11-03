@@ -15,16 +15,18 @@
 //     0x00C3F030), the product stored at +0x58 of its owner.
 //   The CParticleSet name is a propagated manifest label; CLimitedMixBuffer is descriptive (GameCODA: no PDB/RTTI) --
 //   the "output device" of the finding is the owner of the +0x58 mixer, not this class.
-// Shape: CMixBuffer is a CPKObject (its deleting destructor 0x00C59250 frees through CPKObject::operator delete
+// Shape: CMixBuffer is a CCodaObjectBase (its deleting destructor 0x00C59250 frees through CCodaObjectBase::operator delete
 //   0x00C3C370); the destructor of this class is compiler-generated (0x00C3F030, no vptr store).
-class CPKObject {                                       // vtable 0x012B5868: the library's root class
+extern "C" void* __cdecl CodaMalloc(unsigned int size);   // 0x00C3C360 (GameCODA Memory.obj)
+extern "C" void __cdecl CodaFree(void* p);                // 0x00C3C370
+class CCodaObjectBase {                                       // vtable 0x012B5868: the library's root class
 public:
-    virtual ~CPKObject() { }
-    static void* __cdecl operator new(unsigned int size);   // 0x00C3C360
-    static void __cdecl operator delete(void* p);           // 0x00C3C370
+    virtual ~CCodaObjectBase() { }
+    static void* __cdecl operator new(unsigned int size) { return CodaMalloc(size); }   // 0x00C3C360
+    static void __cdecl operator delete(void* p) { CodaFree(p); }           // 0x00C3C370
 };
 
-class CMixBuffer : public CPKObject {                   // vtable 0x012B8F38, 0xC34 bytes
+class CMixBuffer : public CCodaObjectBase {                   // vtable 0x012B8F38, 0xC34 bytes
 public:
     CMixBuffer();                                       // 0x00C591F0
     virtual ~CMixBuffer();                              // 0x00C57EF0

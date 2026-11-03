@@ -62,7 +62,7 @@ public:
     _Rb_tree_node<_Value>* _M_header;                       // +0x00 (alloc proxy)
     unsigned int _M_node_count;                             // +0x04
     _Compare _M_key_compare;                                // +0x08
-    const_iterator find(const _Key& __x) const;             // 0x00990320
+    template <class _KT> const_iterator find(const _KT& __x) const;             // 0x00990320
     const_iterator end() const { const_iterator __it; __it._M_node = _M_header; return __it; }
 };
 template <class _Key, class _Tp, class _Compare = less<_Key>, class _Alloc = allocator<pair<const _Key, _Tp> > > class map {

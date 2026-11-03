@@ -1,0 +1,56 @@
+addr       parity           behav  name
+00c5ffb0   WARN RELOC_NAME: _CodaMalloc -> 00c3c360 labelled 'CPKObject::operator new'
+00c5ffb0   RELOCATION_MATCH PASS   AddToChangesList
+00c60ff0   WARN RELOC_NAME: ?IsNaN@@YA_NABU_D3DVECTOR@@@Z -> 00c60b30 labelled '_global::IsAnyNaN'
+00c60ff0   WARN RELOC_NAME: ?AddToChangesList@CEAXListener@@QAEXW4IDENTIFIER@@KPAXJ@Z -> 00c5ffb0 labelled 'CTCHeroStats::AddEventData'
+00c60ff0   WARN RELOC_NAME: ?CommitEAX3@CEAXBuffer@@QAEHXZ -> 00c65a00 labelled 'CEaxSource::CommitDeferredSettings'
+00c60ff0   RELOCATION_MATCH PASS   Set3DBuffer
+00c66330   RELOCATION_MATCH PASS   GetEAX4FXSlot
+00c66c90   RELOCATION_MATCH PASS   GetEAX4Source
+00c5e650   WARN RELOC_NAME: ?Attach@CSalFile@@QAEXPAX@Z -> 00c5e3f0 labelled 'CVtable_012b90d4_00c5ec50::Reset'
+00c5e650   WARN RELOC_NAME: _CodaMalloc -> 00c3c360 labelled 'CPKObject::operator new'
+00c5e650   WARN RELOC_NAME: _CodaFree -> 00c3c370 labelled 'CPKObject::operator delete'
+00c5e650   WARN RELOC_NAME: ?Close@CSalFile@@QAEXXZ -> 00c5e3d0 labelled 'CLandscapeBackgroundPatch::ClearTextures'
+00c5e650   RELOCATION_MATCH PASS   CreateBuffer
+00c71870   WARN RELOC_NAME: ?g_OpenAL@@3VCSalOpenAL@@A -> 0143bdb0 labelled 'g_AudioContext'
+00c71870   RELOCATION_MATCH PASS   Update
+
+WINS: 6
+  00c5ffb0 RELOCATION_MATCH CEAXListener::?AddToChangesList@CEAXListener@@QAEXW4IDENTIFIER@@KPAXJ@Z
+  00c60ff0 RELOCATION_MATCH CEAXBuffer::?Set3DBuffer@CEAXBuffer@@AAEHKPAXK@Z
+  00c66330 RELOCATION_MATCH CEAXListener::?GetEAX4FXSlot@CEAXListener@@QAEHKKPAXKPAK@Z
+  00c66c90 RELOCATION_MATCH CEAXBuffer::?GetEAX4Source@CEAXBuffer@@QAEHKPAXKPAK@Z
+  00c5e650 RELOCATION_MATCH CSalOutputKS::?CreateBuffer@CSalOutputKS@@UAE_NII@Z
+  00c71870 RELOCATION_MATCH CSalOpenALReverb::?Update@CSalOpenALReverb@@UAEXPBVCCodaEnvironment@@@Z
+addr       parity           behav  name
+00c5ffb0   WARN RELOC_NAME: _CodaMalloc -> 00c3c360 labelled 'CPKObject::operator new'
+00c5ffb0   RELOCATION_MATCH PASS   AddToChangesList
+00c60ff0   WARN RELOC_NAME: ?IsNaN@@YA_NABU_D3DVECTOR@@@Z -> 00c60b30 labelled '_global::IsAnyNaN'
+00c60ff0   WARN RELOC_NAME: ?AddToChangesList@CEAXListener@@QAEXW4IDENTIFIER@@KPAXJ@Z -> 00c5ffb0 labelled 'CTCHeroStats::AddEventData'
+00c60ff0   WARN RELOC_NAME: ?CommitEAX3@CEAXBuffer@@QAEHXZ -> 00c65a00 labelled 'CEaxSource::CommitDeferredSettings'
+00c60ff0   RELOCATION_MATCH PASS   Set3DBuffer
+00c66330   RELOCATION_MATCH PASS   GetEAX4FXSlot
+00c66c90   RELOCATION_MATCH PASS   GetEAX4Source
+00c5e650   WARN RELOC_NAME: ?Attach@CSalFile@@QAEXPAX@Z -> 00c5e3f0 labelled 'CVtable_012b90d4_00c5ec50::Reset'
+00c5e650   WARN RELOC_NAME: _CodaMalloc -> 00c3c360 labelled 'CPKObject::operator new'
+00c5e650   WARN RELOC_NAME: _CodaFree -> 00c3c370 labelled 'CPKObject::operator delete'
+00c5e650   WARN RELOC_NAME: ?Close@CSalFile@@QAEXXZ -> 00c5e3d0 labelled 'CLandscapeBackgroundPatch::ClearTextures'
+00c5e650   RELOCATION_MATCH PASS   CreateBuffer
+00c71870   WARN RELOC_NAME: ?g_OpenAL@@3VCSalOpenAL@@A -> 0143bdb0 labelled 'g_AudioContext'
+00c71870   RELOCATION_MATCH PASS   Update
+
+WINS: 6
+  00c5ffb0 RELOCATION_MATCH CEAXListener::?AddToChangesList@CEAXListener@@QAEXW4IDENTIFIER@@KPAXJ@Z
+  00c60ff0 RELOCATION_MATCH CEAXBuffer::?Set3DBuffer@CEAXBuffer@@AAEHKPAXK@Z
+  00c66330 RELOCATION_MATCH CEAXListener::?GetEAX4FXSlot@CEAXListener@@QAEHKKPAXKPAK@Z
+  00c66c90 RELOCATION_MATCH CEAXBuffer::?GetEAX4Source@CEAXBuffer@@QAEHKPAXKPAK@Z
+  00c5e650 RELOCATION_MATCH CSalOutputKS::?CreateBuffer@CSalOutputKS@@UAE_NII@Z
+  00c71870 RELOCATION_MATCH CSalOpenALReverb::?Update@CSalOpenALReverb@@UAEXPBVCCodaEnvironment@@@Z
+
+LANDED 6 wins into src/compiled + tests + catalog + oracle
+  CEAXListener_AddToChangesList_00c5ffb0
+  CEAXBuffer_Set3DBuffer_00c60ff0
+  CEAXListener_GetEAX4FXSlot_00c66330
+  CEAXBuffer_GetEAX4Source_00c66c90
+  CSalOutputKS_CreateBuffer_00c5e650
+  CSalOpenALReverb_Update_00c71870

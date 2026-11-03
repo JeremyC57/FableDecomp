@@ -8,7 +8,7 @@
 // x = right(x); if (y == header || comp(k, key(y))) y = header; return y;` -- the header re-read for the result.
 // Size TU (the while loop enters at its bottom test); the functor is `__forceinline` (the size TU calls it otherwise).
 // Label correction: catalog "RBTree_FindNode_Iterator" is a guess.
-// Leaf: _M_find
+// Leaf: ??$_M_find@VCWideString@@@?$_Rb_tree@VCWideString@@U?$pair@$$CBVCWideString@@_N@std@@U?$_Select1st@U?$pair@$$CBVCWideString@@_N@std@@@3@U?$less@VCWideString@@@3@V?$allocator@U?$pair@$$CBVCWideString@@_N@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCWideString@@_N@std@@@1@ABVCWideString@@@Z
 #pragma optimize("s", on)
 
 class CWideString {
@@ -27,6 +27,9 @@ template <class _T1, class _T2> struct pair {
     _T2 second;                                             // +0x04
 };
 
+template <class _Pair> struct _Select1st { };                // STLport 4.6 _function.h (map's KeyOfValue)
+template <class _Tp> class allocator { };
+
 template <class _Value, class _Tp> class _STLP_alloc_proxy {
 public:
     _Value _M_data;
@@ -43,7 +46,7 @@ template <class _Value> struct _Rb_tree_node : public _Rb_tree_node_base {
     _Value _M_value_field;                                  // +0x10
 };
 
-template <class _Key, class _Value, class _Compare> class _Rb_tree {
+template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc> class _Rb_tree {
 public:
     typedef _Rb_tree_node<_Value>* _Link_type;
 
@@ -55,11 +58,14 @@ public:
     static _Link_type _S_left(_Link_type __x) { return (_Link_type)__x->_M_left; }
     static _Link_type _S_right(_Link_type __x) { return (_Link_type)__x->_M_right; }
     _Link_type _M_root() const { return (_Link_type)this->_M_header._M_data->_M_parent; }
-    _Link_type _M_find(const _Key& __k) const;
+private:
+    template <class _KT> _Link_type _M_find(const _KT& __k) const;
+public:
 };
 
-template <class _Key, class _Value, class _Compare>
-_Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _Compare>::_M_find(const _Key& __k) const
+template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
+template <class _KT>
+_Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_find(const _KT& __k) const
 {
     _Link_type __y = this->_M_header._M_data;               // last node which is not less than __k
     _Link_type __x = _M_root();                             // current node
@@ -74,5 +80,6 @@ _Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _Compare>::_M_find(const _Key& __k
 }
 
 template _Rb_tree_node<pair<const CWideString, bool> >*
-_Rb_tree<CWideString, pair<const CWideString, bool>, less<CWideString> >::_M_find(const CWideString&) const;
+_Rb_tree<CWideString, pair<const CWideString, bool>, _Select1st<pair<const CWideString, bool> >, less<CWideString>,
+         allocator<pair<const CWideString, bool> > >::_M_find<CWideString>(const CWideString&) const;
 }

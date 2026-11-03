@@ -1,5 +1,5 @@
 // std::_Rb_tree<CCharString, pair<const CCharString, CScriptGameResourceObjectScriptedThingBase>, ...>::_M_find(const CCharString& k) const -- STLport exact-key lookup: the last node whose key is not less than k, unless it is the header or k is less than its key (then the header)
-// Leaf: ?_M_find@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@
+// Leaf: ??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@1@ABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CD2B86, 92 bytes, thiscall `ret 4`, frame pointer (size TU); returns the node.
 // Identity (proven): reloc_bindings names this ?_M_find@?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@... (the cutscene cast map); caller 0x00CBF9DE (GetCutsceneActorScriptThing).
 // Callees: std::less<CCharString>::operator() 0x0042AAB3 (out of line in this TU, `this` = the tree's comparator at +8).
@@ -62,12 +62,13 @@ public:
     _Link_type _M_root() const { return (_Link_type)this->_M_header._M_data->_M_parent; }
     public:
     private:
-    _Rb_tree_node<_Value>* _M_find(const _Key& __k) const;
+    template <class _KT> _Rb_tree_node<_Value>* _M_find(const _KT& __k) const;
     public:
 };
 
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
-_Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_find(const _Key& __k) const
+template <class _KT>
+_Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_find(const _KT& __k) const
 {
     _Link_type __y = this->_M_header._M_data;      // last node which is not less than __k
     _Link_type __x = _M_root();                    // current node

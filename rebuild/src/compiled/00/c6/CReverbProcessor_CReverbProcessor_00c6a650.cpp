@@ -21,9 +21,11 @@
 //   overwrites it: VC7.1 drops the dead root store, as for every inlined root constructor here. The gains, pre-delay and
 //   late delay are inline (CVtable_012bf050::CVtable_012bf050 plus the vtable store); the trailing members are an initialiser list
 //   and the block size a body assignment.
-class CPKObject {                                       // the libpk root: its allocator hooks
+extern "C" void* __cdecl CodaMalloc(unsigned int size);   // 0x00C3C360 (GameCODA Memory.obj)
+extern "C" void __cdecl CodaFree(void* p);                // 0x00C3C370
+class CCodaObjectBase {                                       // the libpk root: its allocator hooks
 public:
-    static void __cdecl operator delete(void* p);       // 0x00C3C370
+    static void __cdecl operator delete(void* p) { CodaFree(p); }       // 0x00C3C370
 };
 
 class CVtable_012bf050 {                                      // vtable 0x012BF050: the reverb DSP parts' base

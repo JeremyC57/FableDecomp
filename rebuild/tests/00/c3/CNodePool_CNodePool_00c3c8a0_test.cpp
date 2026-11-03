@@ -1,7 +1,7 @@
 // Behaviour test for 00c3c8a0: CNodePool::CNodePool -- an idle pool (empty chains, free count -1, active count 0)
 #include <cstdio>
-class CPKObject { public: virtual ~CPKObject() { } };
-class CNodePool : public CPKObject {
+class CCodaObjectBase { public: virtual ~CCodaObjectBase() { } };
+class CNodePool : public CCodaObjectBase {
 public:
     void* m_pActiveHead; void* m_pFreeHead; long m_freeCount; long m_activeCount;
     CNodePool() : m_pActiveHead(0), m_pFreeHead(0), m_freeCount(-1), m_activeCount(0) { }

@@ -1,8 +1,8 @@
 // Behaviour test for 00c3caa0: CNodePool::~CNodePool -- Clear runs only when nodes are active or recycling is on
 #include <cstdio>
 static int g_clears = 0;
-class CPKObject { public: virtual ~CPKObject() { } };
-class CNodePool : public CPKObject {
+class CCodaObjectBase { public: virtual ~CCodaObjectBase() { } };
+class CNodePool : public CCodaObjectBase {
 public:
     void* m_pActiveHead; void* m_pFreeHead; long m_freeCount; long m_activeCount;
     bool IsRecycling() const { return m_freeCount >= 0; }

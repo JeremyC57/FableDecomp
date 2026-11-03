@@ -39,8 +39,10 @@ public:
     unsigned int _M_node_count;
     _Compare     _M_key_compare;
     __forceinline const_iterator end() const { return const_iterator(_M_header._M_data); }
-    __forceinline const_iterator find(const _Key& __x) const { return const_iterator(_M_find(__x)); }
-    _Rb_tree_node<_Value>* _M_find(const _Key& __k) const;   // 0x0042B467
+    template <class _KT> __forceinline const_iterator find(const _KT& __x) const { return const_iterator(_M_find(__x)); }
+private:
+    template <class _KT> _Rb_tree_node<_Value>* _M_find(const _KT& __k) const;   // 0x0042B467
+public:
 };
 template <class _Key, class _Tp, class _Compare = less<_Key>, class _Alloc = allocator<pair<const _Key, _Tp> > >
 class map {

@@ -9,15 +9,17 @@
 //   (3) it sits in that class's TU between the ctor 0x00C77440 and slot 1 SetSettings 0x00C774A0, and touches exactly the three
 //   settings pointers CommitAndProcess 0x00C774F0 / SetSettings use. Not a destructor (no vtable store) and not
 //   CLandscapeBackgroundPatch::ClearTextures (the forge label is propagated; no engine class is involved).
-// Callee: CPKObject::operator delete 0x00C3C370 (`push [esp+4] ; call [0x0139C980]`, the libpk free hook; the spelling the landed
+// Callee: CCodaObjectBase::operator delete 0x00C3C370 (`push [esp+4] ; call [0x0139C980]`, the libpk free hook; the spelling the landed
 //   ~CVtable_012bf0c8 0x00C775A0 binds after naming wave 31, descriptive).
 // Shape: a plain non-inline member defined in the class's file (VC7.1 inlines it into the dtor on its own, chunk 699); this
 //   source is that file's class block: ctor/virtuals declared, ReleaseBlock and the user dtor `{ ReleaseBlock(); }` defined.
 // Layout: the landed CommitAndProcess 0x00C774F0 / ~CVtable_012bf0c8 0x00C775A0 model (+0x04 settings, +0x08 target, +0x0C pending,
 //   +0x10 size, +0x14 blending, +0x18 step, +0x1C countdown, +0x20 step count, +0x24 dirty; 0x28 bytes).
-class CPKObject {                                       // the libpk root: its allocator hooks
+extern "C" void* __cdecl CodaMalloc(unsigned int size);   // 0x00C3C360 (GameCODA Memory.obj)
+extern "C" void __cdecl CodaFree(void* p);                // 0x00C3C370
+class CCodaObjectBase {                                       // the libpk root: its allocator hooks
 public:
-    static void __cdecl operator delete(void* p);       // 0x00C3C370
+    static void __cdecl operator delete(void* p) { CodaFree(p); }       // 0x00C3C370
 };
 
 class CVtable_012bf050 {                                      // vtable 0x012BF050: the reverb DSP parts' base
@@ -49,7 +51,7 @@ public:
 void CVtable_012bf0c8::ReleaseBlock()
 {
     if (m_pSettings) {
-        CPKObject::operator delete(m_pSettings);
+        CodaFree(m_pSettings);
         m_pSettings = 0;
         m_pTargetSettings = 0;
         m_pPendingSettings = 0;

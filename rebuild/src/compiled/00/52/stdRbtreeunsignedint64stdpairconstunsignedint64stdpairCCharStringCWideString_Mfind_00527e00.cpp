@@ -1,5 +1,5 @@
 // std::_Rb_tree<unsigned __int64, std::pair<const unsigned __int64, std::pair<CCharString, CWideString>>, ...>::_M_find(const unsigned __int64& k) const -- STLport map lookup: walk to the first node whose key is not less than k, return it if k is not less than its key, else the header (end)
-// Leaf: ?_M_find@?$_Rb_tree@_KU?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@U?$_Select1st@U?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@@2@@std@@QBEPAU_Rb_tree_node_base@2@AB_K@Z
+// Leaf: ??$_M_find@_K@?$_Rb_tree@_KU?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@U?$_Select1st@U?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@@1@AB_K@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00527e00, 84 bytes, thiscall, `ret 4`.
 // Identity (proven): bound ?_M_find@?$_Rb_tree@_KU?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@...QBEPAU_Rb_tree_node_base@2@AB_K@Z (the landed caller CThingManager::GetNameForThing_OnlyCalledFromTCHasName 0x0051F040 looks up Ego_r.pdb CThingManager::NPCNameMap, map<unsigned __int64, pair<CCharString, CWideString> >); also called by CThingManager::SetNameForThing 0x00521A90; this row keeps that binding's _Rb_tree_node_base* return.
 // Callees: none.
@@ -73,12 +73,13 @@ public:
     _Link_type _M_root() const { return (_Link_type)this->_M_header._M_data->_M_parent; }
     public:
     private:
-    _Rb_tree_node_base* _M_find(const _Key& __k) const;
+    template <class _KT> _Rb_tree_node<_Value>* _M_find(const _KT& __k) const;
     public:
 };
 
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
-_Rb_tree_node_base* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_find(const _Key& __k) const
+template <class _KT>
+_Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_find(const _KT& __k) const
 {
     _Link_type __y = this->_M_header._M_data;      // last node which is not less than __k
     _Link_type __x = _M_root();                    // current node
@@ -94,4 +95,6 @@ _Rb_tree_node_base* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_fi
 
 template class _Rb_tree<unsigned __int64, pair<const unsigned __int64, std::pair<CCharString, CWideString> >, _Select1st<pair<const unsigned __int64, std::pair<CCharString, CWideString> > >,
                         less<unsigned __int64>, allocator<pair<const unsigned __int64, std::pair<CCharString, CWideString> > > >;
+template _Rb_tree_node<pair<const unsigned __int64, std::pair<CCharString, CWideString> > >* _Rb_tree<unsigned __int64, pair<const unsigned __int64, std::pair<CCharString, CWideString> >, _Select1st<pair<const unsigned __int64, std::pair<CCharString, CWideString> > >,
+                        less<unsigned __int64>, allocator<pair<const unsigned __int64, std::pair<CCharString, CWideString> > > >::_M_find<unsigned __int64 >(const unsigned __int64&) const;
 } // namespace std

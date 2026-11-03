@@ -113,11 +113,15 @@ public:
     _Rb_tree_node<V>* _M_header;
     unsigned long     _M_node_count;
     unsigned long     _M_key_compare;
-    __declspec(noinline) _Rb_tree_node<V>* _M_find(const K& key) const      // 0x006F0250
+    struct iterator { _Rb_tree_node<V>* _M_node; iterator(_Rb_tree_node<V>* n) : _M_node(n) { } V& operator*() const { return _M_node->_M_value_field; } };
+    template <class _KT> iterator find(const _KT& key) { return iterator(_M_find(key)); }
+private:
+    template <class _KT> __declspec(noinline) _Rb_tree_node<V>* _M_find(const _KT& key) const      // 0x006F0250 (private in STLport 4.6 _tree.h)
     {
         long r = TmplSink_s7_0(this, 0 + *(const long*)&key);
         return (_Rb_tree_node<V>*)r;
     }
+public:
     __declspec(noinline) unsigned int erase(const K& key)                   // 0x006F50B0
     {
         long r = TmplSink_s7_1(this, 0 + *(const long*)&key);
@@ -148,7 +152,7 @@ __declspec(noinline) void CCombatManager::DeregisterAttackingCombatant(CThingCre
 
 void CCombatManager::DeregisterAttackedCombatant(CThingCreatureBase* attacked)
 {
-    CCombatantInfo* info = &Combatants._M_find(attacked->GetUID())->_M_value_field.second;
+    CCombatantInfo* info = &(*Combatants.find(attacked->GetUID())).second;
     long count = info->DefenderInfo.Attackers.size();
     while (count > 0) {
         DeregisterAttackingCombatant(info->DefenderInfo.Attackers.begin()->second);

@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C3F030, 92 bytes, thiscall, plain `ret`.
 // Identity (sweep1, 2026-10-25; follows FINDINGS chunk 441 "0xC3EFA0 = GameCODA output device (six CLimiters at +0xC34)"):
 //   - the scalar deleting destructor 0x00C3F090 (slot 0 of the CLimitedMixBuffer vtable 0x012B5BE0) calls this and then
-//     CPKObject::operator delete 0x00C3C370; the destructors of the two derived mixers (vtables 0x012B5D40 / 0x012B5DE0,
+//     CCodaObjectBase::operator delete 0x00C3C370; the destructors of the two derived mixers (vtables 0x012B5D40 / 0x012B5DE0,
 //     0x00C3F680 / 0x00C3F7F0) store their vtable and tail-jump here;
 //   - it tears down what the constructor 0x00C3EFA0 builds: the six 0x17C-byte CLimiters at +0xC34 (`__ehvec_dtor` with
 //     their destructor 0x00C592C0) and the CMixBuffer base (0x00C57EF0, the base destructor 0x00C59250 also calls).
@@ -13,15 +13,17 @@
 //   not because the class is `novtable` -- its constructor 0x00C3EFA0 does store 0x012B5BE0. The factory below emits the
 //   vtable and with it the `??_G` that references this COMDAT. CMixBuffer's own destructor is user-declared out of line:
 //   0x00C57EF0 is `CMixBuffer::~CMixBuffer() { }`, whose CMixBuffer vptr store VC7.1 drops as dead before the inlined
-//   CPKObject store of 0x012B5868.
-class CPKObject {                                       // vtable 0x012B5868: the library's root class
+//   CCodaObjectBase store of 0x012B5868.
+extern "C" void* __cdecl CodaMalloc(unsigned int size);   // 0x00C3C360 (GameCODA Memory.obj)
+extern "C" void __cdecl CodaFree(void* p);                // 0x00C3C370
+class CCodaObjectBase {                                       // vtable 0x012B5868: the library's root class
 public:
-    virtual ~CPKObject() { }
-    static void* __cdecl operator new(unsigned int size);   // 0x00C3C360
-    static void __cdecl operator delete(void* p);           // 0x00C3C370
+    virtual ~CCodaObjectBase() { }
+    static void* __cdecl operator new(unsigned int size) { return CodaMalloc(size); }   // 0x00C3C360
+    static void __cdecl operator delete(void* p) { CodaFree(p); }           // 0x00C3C370
 };
 
-class CMixBuffer : public CPKObject {                   // vtable 0x012B8F38, 0xC34 bytes
+class CMixBuffer : public CCodaObjectBase {                   // vtable 0x012B8F38, 0xC34 bytes
 public:
     CMixBuffer();                                       // 0x00C591F0
     virtual ~CMixBuffer();                              // 0x00C57EF0

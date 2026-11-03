@@ -5,12 +5,12 @@
 //   0x00C59240 in the landed CMixBuffer model); the landed CLimiter::Clear 0x00C592D0 names this as its caller over the six
 //   0x17C-byte limiters the constructor 0x00C3EFA0 builds. Descriptive (GameCODA: no PDB/RTTI).
 // Shape: `for (i = 0; i < 6; ++i)` becomes a down-counter (edi = 6) and a pointer stride of 0x17C.
-class CPKObject {                                       // vtable 0x012B5868: the library's root class
+class CCodaObjectBase {                                       // vtable 0x012B5868: the library's root class
 public:
-    virtual ~CPKObject() { }
+    virtual ~CCodaObjectBase() { }
 };
 
-class CMixBuffer : public CPKObject {                   // vtable 0x012B8F38, 0xC34 bytes
+class CMixBuffer : public CCodaObjectBase {                   // vtable 0x012B8F38, 0xC34 bytes
 public:
     virtual ~CMixBuffer();                              // 0x00C57EF0
     virtual void Reset();                               // slot 1 (0x00C59240)

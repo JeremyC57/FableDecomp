@@ -11,8 +11,12 @@
 #include <stdio.h>
 #include <string.h>
 namespace std {
-struct __true_type { };
-struct __false_type { };
+// Owner decision 2026-11-03 (D2, "faithfully recreate what retail did"): the dispatch tags carry an empty user constructor, so a
+// tag temporary (push_back's _IsPODType() argument, the __destroy / __uninitialized_* dispatch) is never zero-filled -- retail passes
+// the tag's address without storing to it (UpdateShadowedSpotLights 0x00B47F82..0x00B47F91, SwitchDoorsOnAndOff 0x00DEFB10;
+// 558 landed rows declared the tags this way locally before the default path did).
+struct __true_type { __true_type() { } };
+struct __false_type { __false_type() { } };
 struct input_iterator_tag { };
 struct forward_iterator_tag : public input_iterator_tag { forward_iterator_tag() { } };
 struct bidirectional_iterator_tag : public forward_iterator_tag { };

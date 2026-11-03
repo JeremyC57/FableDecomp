@@ -2,13 +2,13 @@
 #include <cstdio>
 #include <cstdlib>
 static int g_dtor = 0, g_free = 0;
-class CPKObject {
+class CCodaObjectBase {
 public:
-    virtual ~CPKObject() { }
+    virtual ~CCodaObjectBase() { }
     static void* operator new(unsigned int size) { return std::malloc(size); }
     static void operator delete(void* p) { ++g_free; std::free(p); }
 };
-class CMixBuffer : public CPKObject {
+class CMixBuffer : public CCodaObjectBase {
 public:
     CMixBuffer() { }
     virtual ~CMixBuffer() { ++g_dtor; }
@@ -16,7 +16,7 @@ public:
 };
 int main()
 {
-    CPKObject* p = new CMixBuffer;
+    CCodaObjectBase* p = new CMixBuffer;
     delete p;
     int ok = g_dtor == 1 && g_free == 1;
     std::printf(ok ? "00c59250_TEST PASS\n" : "00c59250_TEST FAIL\n");

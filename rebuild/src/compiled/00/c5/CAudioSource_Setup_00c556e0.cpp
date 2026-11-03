@@ -18,12 +18,12 @@ struct CStreamDesc_00c556e0 : CVoiceDesc_00c556e0 {
     void* m_pSource;                                    // +0x1cc
 };
 
-class CPKObject {                                       // vtable 0x012B5868: the library's root class
+class CCodaObjectBase {                                       // vtable 0x012B5868: the library's root class
 public:
-    virtual ~CPKObject() { }
+    virtual ~CCodaObjectBase() { }
 };
 
-class CAudioRingBuffer : public CPKObject {             // vtable 0x012B8FC4, 0x20 bytes
+class CAudioRingBuffer : public CCodaObjectBase {             // vtable 0x012B8FC4, 0x20 bytes
 public:
     unsigned char* m_pData;                             // +0x04
     unsigned long  m_capacity;                          // +0x08

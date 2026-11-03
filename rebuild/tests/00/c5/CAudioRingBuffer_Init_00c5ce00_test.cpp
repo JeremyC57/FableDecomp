@@ -1,7 +1,7 @@
 // Behaviour test for 00c5ce00: CAudioRingBuffer::Init -- fields stored, write cursor = (read + queued) % capacity
 #include <cstdio>
-class CPKObject { public: virtual ~CPKObject() { } };
-class CAudioRingBuffer : public CPKObject {
+class CCodaObjectBase { public: virtual ~CCodaObjectBase() { } };
+class CAudioRingBuffer : public CCodaObjectBase {
 public:
     unsigned char* m_pData; unsigned long m_capacity, m_frameBytes, m_channels, m_readPos, m_writePos, m_queued;
     void Init(unsigned char* data, unsigned long capacity, unsigned long frameBytes, unsigned long channels, unsigned long readPos, unsigned long queued)

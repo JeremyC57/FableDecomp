@@ -1,0 +1,1 @@
+EDITS = [("rebuild/src/compiled/00/6b/CRegion_GetWorldMapNameGraphic_006bc380.cpp", "__declspec(noinline)const_iterator find(const K&k)const{", "template<class _KT> __declspec(noinline)const_iterator find(const _KT&k)const{")]

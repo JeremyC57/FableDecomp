@@ -10,8 +10,8 @@
 //   +0x100) whose vtable 0x012B8C18 this destructor stores (global instance 0x0143BDB0). Descriptive names (no PDB covers libpk).
 // Label correction: the landed row was CEngineWaterRenderer::~CEngineWaterRenderer (catalog _global::CEngineWaterRenderer_Destructor,
 //   a forge auto-name); the same callees, typed as the audio context's.
-// Virtual: slot 0 of 0x012B8C18 is the scalar deleting destructor 0x00C565D0 (this body, then CPKObject::operator delete
-//   0x00C3C370), so the destructor is virtual through the libpk root CPKObject (vtable 0x012B5868), whose inline
+// Virtual: slot 0 of 0x012B8C18 is the scalar deleting destructor 0x00C565D0 (this body, then CCodaObjectBase::operator delete
+//   0x00C3C370), so the destructor is virtual through the libpk root CCodaObjectBase (vtable 0x012B5868), whose inline
 //   destructor's store of 0x012B5868 ends the body.
 // Shape: the state 1 -> 0 store is a byte store in retail; the OpenAL function pointers are cdecl.
 extern "C" __declspec(dllimport) void* __stdcall GetProcAddress(void* module, const char* name);   // IAT 0x0143FE44
@@ -20,8 +20,8 @@ extern "C" __declspec(dllimport) long __stdcall FreeLibrary(void* module);      
 typedef unsigned char (__cdecl* PFN_alcMakeContextCurrent)(void* context);
 typedef void (__cdecl* PFN_alcDestroyContext)(void* context);
 
-struct CPKObject {                         // vtable 0x012B5868: the libpk root (inline virtual destructor)
-    virtual ~CPKObject() { }
+struct CCodaObjectBase {                         // vtable 0x012B5868: the libpk root (inline virtual destructor)
+    virtual ~CCodaObjectBase() { }
 };
 
 struct CMixerHandle {                      // the +0x110 member (catalog Audio_MixerHandle_Close)
@@ -29,7 +29,7 @@ struct CMixerHandle {                      // the +0x110 member (catalog Audio_M
     ~CMixerHandle();                       // 0x00C716C0
 };
 
-struct CAudioContext : CPKObject {         // vtable 0x012B8C18
+struct CAudioContext : CCodaObjectBase {         // vtable 0x012B8C18
     void*                     Module;                    // +0x04
     void*                     pfnOpenDevice;             // +0x08
     void*                     pfnCreateContext;          // +0x0c

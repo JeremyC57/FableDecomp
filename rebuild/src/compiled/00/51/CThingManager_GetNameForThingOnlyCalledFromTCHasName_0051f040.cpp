@@ -58,7 +58,8 @@ template <class _Value> struct _Rb_tree_iterator {
     _Value& operator*() const { return ((_Rb_tree_node<_Value>*)_M_node)->_M_value_field; }
 };
 
-template <class _Key, class _Value, class _Compare, class _Alloc>
+template <class _Pair> struct _Select1st { };  // STLport 4.6 _function.h (KeyOfValue of map's tree)
+template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
 class _Rb_tree {
 public:
     typedef _Rb_tree_iterator<_Value> iterator;
@@ -66,15 +67,17 @@ public:
     unsigned int        _M_node_count;                      // +0x04
     _Compare            _M_key_compare;                     // +0x08
 
-    _Rb_tree_node_base* _M_find(const _Key& __k) const;     // 0x00527E00 for the NPC name map
-    iterator find(const _Key& __k) { return iterator(_M_find(__k)); }
+private:
+    template <class _KT> _Rb_tree_node<_Value>* _M_find(const _KT& __k) const;     // 0x00527E00 for the NPC name map
+public:
+    template <class _KT> iterator find(const _KT& __k) { return iterator(_M_find(__k)); }
 };
 
 template <class _Key, class _Tp, class _Compare = less<_Key>, class _Alloc = allocator<pair<const _Key, _Tp> > >
 class map {
 public:
     typedef pair<const _Key, _Tp> value_type;
-    typedef _Rb_tree<_Key, value_type, _Compare, _Alloc> _Rep_type;
+    typedef _Rb_tree<_Key, value_type, _Select1st<value_type>, _Compare, _Alloc> _Rep_type;
     typedef typename _Rep_type::iterator iterator;
     _Rep_type _M_t;
     iterator find(const _Key& __x) { return _M_t.find(__x); }

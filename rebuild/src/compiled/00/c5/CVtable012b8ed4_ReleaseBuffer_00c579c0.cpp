@@ -5,14 +5,14 @@
 // Identity (descriptive: libpk / GameCODA have no PDB or RTTI): the class is the landed OpenAL streaming buffer
 //   CVtable_012b8ed4 (IsChunkReady 0x00C57AF0 = slot 6: source +0x608, buffer count +0x618); slot 5 of its DirectSound
 //   counterpart 0x012B8D98 is the landed ReleaseBuffer 0x00C57040 (stop and release the DirectSound buffer), so this slot
-//   gets the same method name. The deleting destructor (slot 0, 0x00C57D60) frees through CPKObject::operator delete
+//   gets the same method name. The deleting destructor (slot 0, 0x00C57D60) frees through CCodaObjectBase::operator delete
 //   0x00C3C370, the libpk root's, which is also what frees the buffer-name array here. The manifest label
 //   "CAudioSource_Cleanup" is a guess.
 // Callees: CAudioContext::SourceStop 0x00C57640 (out of line), the inline CAudioContext::Sourcei / DeleteSources /
 //   DeleteBuffers wrappers (Sourcei / DeleteSources have landed out-of-line copies 0x00C57550 / 0x00C57500; each wrapper resolves
 //   "alSourcei" 0x012B8E58 / "alDeleteSources" 0x012B8E48 / "alDeleteBuffers" 0x012B87C8 on first use through
 //   CAudioContext::GetProcAddress 0x00C4D740 or the GetProcAddress import 0x0143FE44, then call the cdecl entry point),
-//   all on the global context 0x0143BDB0; CPKObject::operator delete 0x00C3C370. AL_BUFFER = 0x1009.
+//   all on the global context 0x0143BDB0; CCodaObjectBase::operator delete 0x00C3C370. AL_BUFFER = 0x1009.
 // Shape: the three wrappers are inline members of the context (the entry point stays in eax for the call); SourceStop is
 //   a call; the source name is read after it, the delete-buffers arguments before the resolve.
 extern "C" __declspec(dllimport) void* __stdcall GetProcAddress(void* module, const char* name);   // IAT 0x0143FE44
@@ -60,14 +60,16 @@ struct CAudioContext {
 };
 extern CAudioContext g_AudioContext;                // 0x0143BDB0
 
-struct CPKObject {                                  // vtable 0x012B5868: the libpk root
-    virtual ~CPKObject() { }
-    static void __cdecl operator delete(void* p);   // 0x00C3C370
+extern "C" void* __cdecl CodaMalloc(unsigned int size);   // 0x00C3C360 (GameCODA Memory.obj)
+extern "C" void __cdecl CodaFree(void* p);                // 0x00C3C370
+struct CCodaObjectBase {                                  // vtable 0x012B5868: the libpk root
+    virtual ~CCodaObjectBase() { }
+    static void __cdecl operator delete(void* p) { CodaFree(p); }   // 0x00C3C370
 };
 
 // The OpenAL streaming buffer of the libpk audio driver (vtable 0x012B8ED4, no RTTI; the landed IsChunkReady model):
 // the OpenAL counterpart of the DirectSound CDSoundStreamBuffer (vtable 0x012B8D98), slot for slot.
-class CVtable_012b8ed4 : public CPKObject {
+class CVtable_012b8ed4 : public CCodaObjectBase {
 public:
     virtual bool Initialize(const void* device, void* window, bool multithreaded);   // slot 1: 0x00C57460
     virtual void v02();
@@ -99,7 +101,7 @@ void CVtable_012b8ed4::ReleaseBuffer()
         m_buffersCreated = false;
     }
     if (m_pBuffers) {
-        operator delete(m_pBuffers);                             // CPKObject::operator delete
+        operator delete(m_pBuffers);                             // CCodaObjectBase::operator delete
         m_pBuffers = 0;
     }
     m_bufferCount = 0;

@@ -219,5 +219,9 @@ typedef enum
 } EAXREVERB_PROPERTY;
 extern const GUID EAX_REVERB_EFFECT;
 extern const GUID EAX_PrimaryFXSlotID;
+extern const GUID EAXPROPERTYID_EAX40_FXSlot0;
+extern const GUID EAXPROPERTYID_EAX40_FXSlot1;
+extern const GUID EAXPROPERTYID_EAX40_FXSlot2;
+extern const GUID EAXPROPERTYID_EAX40_FXSlot3;
 }
 #endif

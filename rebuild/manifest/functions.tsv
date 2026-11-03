@@ -927,7 +927,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0042b374	GetDef_0042b374	CDefinitionManager	__thiscall	bool	3	CDefinitionManager *,long,CDefPointer<CSpecialAbilitiesDrunkennessDef_const_> *	1	yes	accepted									
 0042b402	find	std::map	__thiscall	void	3	CRegion *,CCharString *,float	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CRegion_SetMiniMapRegionExitTextOffsetX_0042b402.cpp
 0042b44a	GetCellBoundingBox	CEngineSceneGrid	__thiscall	bool	4	CEngineSceneGrid *,C3DBoundingBox *,ulong,ulong	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\CEngineSceneGrid_GetCellBoundingBox_0042b44a.cpp
-0042b467	_M_find	std::_Rb_tree<CCharString,std::pair<const CCharString,long>,std::_Select1st<std::pair<const CCharString,long> >,std::less<CCharString>,std::allocator<std::pair<const CCharString,long> > >	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\42\0x0042B467_global_StdMap_FindLE.cpp				
+0042b467	_M_find<CCharString>	std::_Rb_tree<CCharString, std::pair<CCharString const, long>, std::_Select1st<std::pair<CCharString const, long>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, long>>>	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\42\0x0042B467_global_StdMap_FindLE.cpp				
 0042b4c3	_M_insert_dispatch	std::list<NUISystem::CComponent*>	__thiscall	void	5	list<CClass*,std::allocator<CClass*>_> *,_List_const_iterator<std::_List_val<CClass*,std::allocator<CClass*>_>_>,_List_const_iterator<std::_List_val<CClass*,std::allocator<CClass*>_>_>,_List_const_iterator<std::_List_val<CClass*,std::allocator<CClass*>_>_>,forward_iterator_tag	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\42\InsertstdListconstiteratorstdListvalCClassstd_allocatorCClass_0042b4c3.cpp
 0042b4f3	_M_find	std::_Rb_tree<NUISystem::CComponent *, std::pair<NUISystem::CComponent *const, std::pair<long, long>>, std::_Select1st<std::pair<NUISystem::CComponent *const, std::pair<long, long>>>, std::less<NUISystem::CComponent *>, std::allocator<std::pair<NUISystem::CComponent *const, std::pair<long, long>>>>	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\42\0x0042B4F3_global_BinarySearchTree_FindLessOrEqual_Copy.cpp				
 0042b52b	BinarySearchTree_LowerBound	_global	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\42\0x0042B52B_global_BinarySearchTree_LowerBound.cpp				
@@ -3850,7 +3850,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0048563d	__copy_backward_ptrs<CDateAndTime*,CDateAndTime*>	std	__thiscall	undefined	2	CCombatAction_GenericResponseToDecapitation *,CThingCreatureBase *	0	yes	accepted									
 00485657	CIVCountedPointer_Attach_00485657	_global	__thiscall	bool	2	CEngineInternalPrimitiveMeshBase *,CIVCountedPointer<CEngineMeshEffect> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\48\CEngineInternalPrimitiveMeshBase_GetMeshEffect_00485657.cpp
 00485686	CIVCountedPointer_Attach_00485686	_global	__thiscall	bool	2	CEngineInternalPrimitiveMeshBase *,CIVCountedPointer<CEngineMeshEffect> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\48\CEngineInternalPrimitiveMeshBase_GetMeshEffect_00485686.cpp
-004856cd	_M_find	std::_Rb_tree<CWideString, pair<const CWideString, bool>, _Select1st, less<CWideString> >	unknown	undefined	0		0	yes	accepted									
+004856cd	_M_find<CWideString>	std::_Rb_tree<CWideString, std::pair<CWideString const, bool>, std::_Select1st<std::pair<CWideString const, bool>>, std::less<CWideString>, std::allocator<std::pair<CWideString const, bool>>>	unknown	undefined	0		0	yes	accepted									
 0048573d	CUnprovenForwarder_0048573d	_global	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted									
 00485779	_Vector_base	std::_Vector_base	unknown	undefined	0		0	yes	accepted									
 004857bc	ListNode_AllocateCircularNode	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\48\global_ListNodeAllocateCircularNode_004857bc.cpp
@@ -4906,7 +4906,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004b9250	remove_if	std::list	__thiscall	void	2	list<CQuestManager::CQuestCard,std::allocator<CQuestManager::CQuestCard>_> *,CIsQuestCardWithDefName	1	yes	accepted									
 004b92d0	_M_insert_dispatch	std::list	unknown	undefined	0		0	yes	accepted									
 004b9320	`scalar deleting destructor'	CUnprovenCountedRecord_004b9320	__fastcall	void	2	allocator<std::pair<unsigned_long,CCountedPointer<CFaction>_>_> *,pair<unsigned_long,CCountedPointer<CFaction>_> *	1	yes	accepted									
-004b9370	_M_find	std::_Rb_tree<CCharString, CCharString, std::_Identity<CCharString>, std::less<CCharString>, std::allocator<CCharString>>	unknown	undefined	0		0	yes	accepted									
+004b9370	_M_find<CCharString>	std::_Rb_tree<CCharString, CCharString, std::_Identity<CCharString>, std::less<CCharString>, std::allocator<CCharString>>	unknown	undefined	0		0	yes	accepted									
 004b93e0	_Destroy	std::vector<std::pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>,std::allocator<std::pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>_>_>	__thiscall	void	3	vector<std::pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>,std::allocator<std::pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>_>_> *,pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo> *,pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\4b\vectorstdpairCCharString_Destroy_004b93e0.cpp
 004b9480	__unguarded_linear_insert	std	unknown	undefined	0		0	yes	accepted									
 004b9540	_Push_heap	_global	__fastcall	void	5	pair<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo> *,int,int,pair<class_CCharString,class_NQuestManager::CRuntimeQuestPersistence::CPersistInfo> *,CKeyPairCompareLess<CCharString,NQuestManager::CRuntimeQuestPersistence::CPersistInfo>	1	yes	accepted									
@@ -8923,7 +8923,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00527d20	_M_find	std::_Rb_tree<unsigned __int64, std::pair<unsigned __int64 const, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity>, std::_Select1st<std::pair<unsigned __int64 const, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity>>, std::less<unsigned __int64>, std::allocator<std::pair<unsigned __int64 const, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity>>>	unknown	undefined	0		0	yes	accepted									
 00527d80	_M_find	std::_Rb_tree<unsigned __int64, std::pair<unsigned __int64 const, CThing *>, std::_Select1st<std::pair<unsigned __int64 const, CThing *>>, std::less<unsigned __int64>, std::allocator<std::pair<unsigned __int64 const, CThing *>>>	unknown	undefined	0		0	yes	accepted									
 00527de0	CNarrowWideStringPair_00527de0	CNarrowWideStringPair_00527de0	__thiscall	undefined	1	QuestData *	0	yes	accepted									
-00527e00	_M_find	std::_Rb_tree<unsigned __int64, std::pair<unsigned __int64 const, std::pair<CCharString, CWideString>>, std::_Select1st<std::pair<unsigned __int64 const, std::pair<CCharString, CWideString>>>, std::less<unsigned __int64>, std::allocator<std::pair<unsigned __int64 const, std::pair<CCharString, CWideString>>>>	unknown	undefined	0		0	yes	accepted									
+00527e00	_M_find<unsigned __int64>	std::_Rb_tree<unsigned __int64, std::pair<unsigned __int64 const, std::pair<CCharString, CWideString>>, std::_Select1st<std::pair<unsigned __int64 const, std::pair<CCharString, CWideString>>>, std::less<unsigned __int64>, std::allocator<std::pair<unsigned __int64 const, std::pair<CCharString, CWideString>>>>	unknown	undefined	0		0	yes	accepted									
 00527e60	__distance<std::_Rb_tree_iterator<CUnprovenValue_00527e60,CUnprovenTraits_00527e60<CUnprovenValue_00527e60> > >	std	unknown	undefined	0		0	yes	accepted									
 00527eb0	__copy<CThingTypeInfo *, CThingTypeInfo *, int>	std	__fastcall	CEngineTextureMorph *	4	CEngineTextureMorph *,CEngineTextureMorph *,CEngineTextureMorph *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00527fc0	__uninitialized_copy	_global	unknown	undefined	0		0	yes	accepted									
@@ -11022,7 +11022,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00592ee3	CIVCountedPointer_Attach_00592ee3	_global	__thiscall	bool	2	CEngineInternalPrimitiveMeshBase *,CIVCountedPointer<CEngineMeshEffect> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\CEngineInternalPrimitiveMeshBase_GetMeshEffect_00592ee3.cpp
 00592f12	CIVCountedPointer_Attach_00592f12	_global	__thiscall	bool	2	CEngineInternalPrimitiveMeshBase *,CIVCountedPointer<CEngineMeshEffect> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\CEngineInternalPrimitiveMeshBase_GetMeshEffect_00592f12.cpp
 00592f41	CIVCountedPointer_Attach_00592f41	_global	__thiscall	bool	2	CEngineInternalPrimitiveMeshBase *,CIVCountedPointer<CEngineMeshEffect> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\CEngineInternalPrimitiveMeshBase_GetMeshEffect_00592f41.cpp
-00592f92	_M_find	std::_Rb_tree	unknown	undefined	0		0	yes	accepted									
+00592f92	_M_find<long>	std::_Rb_tree<long, std::pair<long const, long>, std::_Select1st<std::pair<long const, long>>, std::less<long>, std::allocator<std::pair<long const, long>>>	unknown	undefined	0		0	yes	accepted									
 00592fd5	UninitFillN_CFadeInFadeOutBase_00592fd5	_global	__fastcall	void	3	ulong *,uint,ulong *	1	yes	accepted									
 00592ffb	__median<CPriorityDefPair, CContextSensitivePriorityCompare>	std	unknown	undefined	0		0	yes	accepted									
 0059308a	operator=	std::pair<long, CDefPointer<CContextSensitiveItemDef const>>	__thiscall	pair<long,class_CDefPointer<class_CContextSensitiveItemDef_const_>_> *	2	pair<long,CDefPointer<CContextSensitiveItemDef_const_>_> *,pair<long,class_CDefPointer<class_CContextSensitiveItemDef_const_>_> *	1	yes	accepted									
@@ -11052,7 +11052,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005936c2	GetSubDef<CAbilityDef>	CDefClassBase	__thiscall	bool	2	CDefClassBase *,CDefPointer<CAbilityDef_const_> *	1	yes	accepted									
 00593764	clear	CRetailList_CValue_00591f62	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted									
 00593795	BuildTreeArray	LTextBinTree<LTextGroup*>::LTextTreeWalkThrough	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\LTextTreeWalkThrough_BuildTreeArray_00593795.cpp
-005937e1	SetMiniMapRegionExitTextOffsetX	CRegion	__thiscall	void	3	CRegion *,CCharString *,float	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\CRegion_SetMiniMapRegionExitTextOffsetX_005937e1.cpp
+005937e1	find<long>	std::_Rb_tree<long, std::pair<long const, long>, std::_Select1st<std::pair<long const, long>>, std::less<long>, std::allocator<std::pair<long const, long>>>	__thiscall	void	3	CRegion *,CCharString *,float	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\59\CRegion_SetMiniMapRegionExitTextOffsetX_005937e1.cpp
 00593800	UninitCopy_CElement8_00592dfb_00593800	_global	__fastcall	CArray<CRandomAppearanceMorph::CBodyPartMesh> *	5	CArray<class_CRandomAppearanceMorph::CBodyPartMesh> *,CArray<class_CRandomAppearanceMorph::CBodyPartMesh> *,CArray<class_CRandomAppearanceMorph::CBodyPartMesh> *,allocator<CArray<CRandomAppearanceMorph::CBodyPartMesh>_> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 0059382b	UninitFillN_CElement8_00592dfb_0059382b	_global	__fastcall	void	3	ulong *,uint,ulong *	1	yes	accepted									
 00593851	UninitCopy_CFadeInFadeOutBase_00593851	_global	__fastcall	CArray<CRandomAppearanceMorph::CBodyPartMesh> *	5	CArray<class_CRandomAppearanceMorph::CBodyPartMesh> *,CArray<class_CRandomAppearanceMorph::CBodyPartMesh> *,CArray<class_CRandomAppearanceMorph::CBodyPartMesh> *,allocator<CArray<CRandomAppearanceMorph::CBodyPartMesh>_> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
@@ -12067,7 +12067,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 005d82bd	RbTreeIterator_PreIncrement_005d82bd	_global	__thiscall	void	3	CRegion *,CCharString *,float	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\CRegion_SetMiniMapRegionExitTextOffsetX_005d82bd.cpp
 005d82f3	_Vector_base	std::_Vector_base	unknown	undefined	0		0	yes	accepted									
 005d839d	RBTree_Iterator_SetToMaxNode_005d839d	_global	unknown	undefined	0		0	yes	review-medium						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\global_RBTreeIteratorSetToMaxNode005d839d_005d839d.cpp
-005d83b3	_M_find	std::_Rb_tree<unsigned long, std::pair<unsigned long const, long>, std::_Select1st<std::pair<unsigned long const, long>>, std::less<unsigned long>, std::allocator<std::pair<unsigned long const, long>>>	unknown	undefined	0		0	yes	accepted									
+005d83b3	_M_find<unsigned long>	std::_Rb_tree<unsigned long, std::pair<unsigned long const, long>, std::_Select1st<std::pair<unsigned long const, long>>, std::less<unsigned long>, std::allocator<std::pair<unsigned long const, long>>>	unknown	undefined	0		0	yes	accepted									
 005d8417	CMemoryAllocator_RemoveEntry	_global	unknown	undefined	0		0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\global_CMemoryAllocatorRemoveEntry_005d8417.cpp
 005d8446	_M_upper_bound	std::_Rb_tree<unsigned long, std::pair<unsigned long const, long>, std::_Select1st<std::pair<unsigned long const, long>>, std::less<unsigned long>, std::allocator<std::pair<unsigned long const, long>>>	unknown	undefined	0		0	yes	accepted									
 005d847a	GetCellBoundingBox	CEngineSceneGrid	__thiscall	bool	4	CEngineSceneGrid *,C3DBoundingBox *,ulong,ulong	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\5d\CEngineSceneGrid_GetCellBoundingBox_005d847a.cpp
@@ -16679,10 +16679,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006bcd20	operator++	std::_Rb_tree_iterator<std::pair<CCharString const, C2DVector>, std::_Nonconst_traits<std::pair<CCharString const, C2DVector>>>	unknown	undefined	0		0	yes	accepted									
 006bcdf0	operator--	std::_Rb_tree_iterator<std::pair<CCharString const, C2DVector>, std::_Nonconst_traits<std::pair<CCharString const, C2DVector>>>	unknown	undefined	0		0	yes	accepted									
 006bcec0	_Lbound	std::_Tree<std::_Tmap_traits<CCharString,float,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,float>_>,1>_>	__thiscall	_Node *	2	_Tree<std::_Tmap_traits<CCharString,float,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,float>_>,1>_> *,CCharString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6b\TreestdTmaptraitsCCharString_Lbound_006bcec0.cpp
-006bcf50	_M_find	std::_Rb_tree<CCharString, std::pair<CCharString const, C2DVector>, std::_Select1st<std::pair<CCharString const, C2DVector>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, C2DVector>>>	unknown	undefined	0		0	yes	accepted									
+006bcf50	_M_find<CCharString>	std::_Rb_tree<CCharString, std::pair<CCharString const, C2DVector>, std::_Select1st<std::pair<CCharString const, C2DVector>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, C2DVector>>>	unknown	undefined	0		0	yes	accepted									
 006bd000	_Rb_tree	std::_Rb_tree<CUnprovenKey_006bd000,CUnprovenValue_006bd000,CUnprovenKeyOfValue_006bd000,std::less<CUnprovenKey_006bd000>,std::allocator<CUnprovenValue_006bd000> >	unknown	undefined	0		0	yes	accepted									
 006bd060	GetDef_006bd060	CDefinitionManager	__thiscall	bool	3	CDefinitionManager *,long,CDefPointer<CThingPhysicalSwitchDef_const_> *	1	yes	accepted									
-006bd0f0	find	std::_Rb_tree<CUnprovenKey_006bd0f0, CUnprovenValue_006bd0f0, CUnprovenKeyOfValue_006bd0f0, std::less<CUnprovenKey_006bd0f0>, std::allocator<CUnprovenValue_006bd0f0>>	unknown	undefined	0		0	yes	accepted									
+006bd0f0	find<EWorldMapNameGraphic>	std::_Rb_tree<EWorldMapNameGraphic, std::pair<EWorldMapNameGraphic const, unsigned long>, std::_Select1st<std::pair<EWorldMapNameGraphic const, unsigned long>>, std::less<EWorldMapNameGraphic>, std::allocator<std::pair<EWorldMapNameGraphic const, unsigned long>>>	unknown	undefined	0		0	yes	accepted									
 006bd140	_M_insert	std::_Rb_tree	unknown	undefined	0		0	yes	accepted									
 006bd240	insert_unique	std::_Rb_tree<CCharString, std::pair<CCharString const, C2DVector>, std::_Select1st<std::pair<CCharString const, C2DVector>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, C2DVector>>>	unknown	undefined	0		0	yes	accepted									
 006bd3a0	insert_unique	std::_Rb_tree<CCharString, std::pair<CCharString const, C2DVector>, std::_Select1st<std::pair<CCharString const, C2DVector>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, C2DVector>>>	unknown	undefined	0		0	yes	accepted									
@@ -17262,7 +17262,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006da9a0	StdList_Clear_006da9a0	_global	__thiscall	void	2	CGuiControlTreePane *,list<CGuiControlTreeNode,std::allocator<CGuiControlTreeNode>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6d\CGuiControlTreePane_SortTreeRecursively_006da9a0.cpp
 006daa40	_Rb_tree_base	std::_Rb_tree_base<node0x18_006daa40>	unknown	undefined	0		0	yes	accepted									
 006daa90	GetSubDef<CHeroExperienceDef>	CDefClassBase	__thiscall	bool	2	CDefClassBase *,CDefPointer<CAICreatureWillPowerIndicatorDef_const_> *	1	yes	accepted									
-006dab90	find	CRetailTree_longkey	unknown	undefined	0		0	yes	accepted									
+006dab90	find<EDamageAttribute>	std::_Rb_tree<EDamageAttribute, std::pair<EDamageAttribute const, float>, std::_Select1st<std::pair<EDamageAttribute const, float>>, std::less<EDamageAttribute>, std::allocator<std::pair<EDamageAttribute const, float>>>	unknown	undefined	0		0	yes	accepted									
 006dabe0	__find_if<std::reverse_iterator<const long*>,`anonymous namespace'::CPredIsFallbackMultiplierForMultiplier>	std	unknown	undefined	0		0	yes	accepted									
 006dadd0	__find_if<const long*, binder2nd<greater<long> > >	std	unknown	undefined	0		0	yes	accepted									
 006dae40	GFSerialiseMapBinaryOut<CDefString, long, std::less<long>>	_global	unknown	undefined	0		0	yes	accepted									
@@ -17512,7 +17512,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006e68a0	__uninitialized_copy	std	__fastcall	uint *	5	_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,uint *,allocator<unsigned_int> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 006e6930	CRetailBlock0x40	CRetailBlock0x40	unknown	undefined	0		0	yes	review-low									
 006e6950	find<CIntelligentPointer<CThing> *, CThing *>	std	unknown	undefined	0		0			discovered	gapscan							
-006e6990	find	std::_Rb_tree<long, std::pair<long const, CScriptConversation>, std::_Select1st<std::pair<long const, CScriptConversation>>, std::less<long>, std::allocator<std::pair<long const, CScriptConversation>>>	unknown	undefined	0		0	yes	accepted									
+006e6990	find<long>	std::_Rb_tree<long, std::pair<long const, CScriptConversation>, std::_Select1st<std::pair<long const, CScriptConversation>>, std::less<long>, std::allocator<std::pair<long const, CScriptConversation>>>	unknown	undefined	0		0	yes	accepted									
 006e69e0	find	CRetailTree_longkey	unknown	undefined	0		0	yes	accepted									
 006e6a30	vector	std::vector<CScriptConversation::CConversationLine, std::allocator<CScriptConversation::CConversationLine>>	unknown	undefined	0		0	yes	accepted									
 006e6ae0	_Rb_tree	std::_Rb_tree<CUnprovenKey_006e6ae0,CUnprovenValue_006e6ae0,CUnprovenKeyOfValue_006e6ae0,std::less<CUnprovenKey_006e6ae0>,std::allocator<CUnprovenValue_006e6ae0> >	unknown	undefined	0		0	yes	review-medium									
@@ -17688,7 +17688,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006f0030	operator--	std::_Rb_tree_iterator<CUnprovenValue_006f0030,CUnprovenTraits_006f0030<CUnprovenValue_006f0030> >	unknown	undefined	0		0	yes	accepted									
 006f0080	operator--	std::_Rb_tree_iterator<CUnprovenValue_006f0080,CUnprovenTraits_006f0080<CUnprovenValue_006f0080> >	unknown	undefined	0		0	yes	accepted									
 006f00f0	Decrement	CRetailTreeIterator	unknown	undefined	0		0	yes	accepted									
-006f0250	_M_find	std::_Rb_tree<unsigned __int64, std::pair<unsigned __int64 const, CCombatantInfo>, std::_Select1st<std::pair<unsigned __int64 const, CCombatantInfo>>, std::less<unsigned __int64>, std::allocator<std::pair<unsigned __int64 const, CCombatantInfo>>>	unknown	undefined	0		0	yes	accepted									
+006f0250	_M_find<unsigned __int64>	std::_Rb_tree<unsigned __int64, std::pair<unsigned __int64 const, CCombatantInfo>, std::_Select1st<std::pair<unsigned __int64 const, CCombatantInfo>>, std::less<unsigned __int64>, std::allocator<std::pair<unsigned __int64 const, CCombatantInfo>>>	unknown	undefined	0		0	yes	accepted									
 006f0300	__distance<std::_Rb_tree_iterator<CUnprovenValue_006f0300,CUnprovenTraits_006f0300<CUnprovenValue_006f0300> > >	std	unknown	undefined	0		0	yes	accepted									
 006f0350	__distance<std::_Rb_tree_iterator<CUnprovenValue_006f0350,CUnprovenTraits_006f0350<CUnprovenValue_006f0350> > >	std	unknown	undefined	0		0	yes	accepted									
 006f03a0	__distance<std::_Rb_tree_iterator<CUnprovenValue_006f03a0,CUnprovenTraits_006f03a0<CUnprovenValue_006f03a0> > >	std	unknown	undefined	0		0	yes	accepted									
@@ -20240,7 +20240,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00756100	_Lbound	std::_Tree<std::_Tmap_traits<CCharString,float,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,float>_>,1>_>	__thiscall	_Node *	2	_Tree<std::_Tmap_traits<CCharString,float,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,float>_>,1>_> *,CCharString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\75\TreestdTmaptraitsCCharString_Lbound_00756100.cpp
 00756150	_M_insert	std::_Rb_tree	unknown	undefined	0		0	yes	accepted									
 00756250	insert_unique	X_00756250::std::_Rb_tree	unknown	undefined	0		0	yes	accepted									
-00756350	_M_find	std::_Rb_tree<CCharString, std::pair<CCharString const, std::pair<long, long>>, std::_Select1st<std::pair<CCharString const, std::pair<long, long>>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, std::pair<long, long>>>>	unknown	undefined	0		0	yes	accepted									
+00756350	_M_find<CCharString>	std::_Rb_tree<CCharString, std::pair<CCharString const, std::pair<long, long>>, std::_Select1st<std::pair<CCharString const, std::pair<long, long>>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, std::pair<long, long>>>>	unknown	undefined	0		0	yes	accepted									
 007563e0	RbTree_Clear_007563e0	_global	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\75\CTCCarryable_OnKill_007563e0.cpp
 00756420	erase	std::_Rb_tree_CrimeMap	unknown	undefined	0		0	yes	accepted									
 007564f0	_M_upper_bound	std::_Rb_tree<CCharString, std::pair<CCharString const, std::pair<long, long>>, std::_Select1st<std::pair<CCharString const, std::pair<long, long>>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, std::pair<long, long>>>>	__thiscall	_Node *	2	_Tree<std::_Tmap_traits<CCharString,unsigned_long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,unsigned_long>_>,1>_> *,CCharString *	1	yes	accepted									
@@ -21972,7 +21972,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007acbb0	_Lbound	std::_Tree<std::_Tmap_traits<CCharString,float,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,float>_>,1>_>	__thiscall	_Node *	2	_Tree<std::_Tmap_traits<CCharString,float,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,float>_>,1>_> *,CCharString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7a\TreestdTmaptraitsCCharString_Lbound_007acbb0.cpp
 007acc00	_Lbound	std::_Tree<std::_Tmap_traits<CCharString,float,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,float>_>,1>_>	__thiscall	_Node *	2	_Tree<std::_Tmap_traits<CCharString,float,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,float>_>,1>_> *,CCharString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\7a\TreestdTmaptraitsCCharString_Lbound_007acc00.cpp
 007acc50	_M_erase	std::_Rb_tree<CCharString, std::pair<CCharString const, bool>, std::_Select1st<std::pair<CCharString const, bool>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, bool>>>	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
-007acc90	_M_find	std::_Rb_tree<CCharString, std::pair<CCharString const, bool>, std::_Select1st<std::pair<CCharString const, bool>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, bool>>>	unknown	undefined	0		0	yes	accepted									
+007acc90	_M_find<CCharString>	std::_Rb_tree<CCharString, std::pair<CCharString const, bool>, std::_Select1st<std::pair<CCharString const, bool>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, bool>>>	unknown	undefined	0		0	yes	accepted									
 007acd30	_M_upper_bound	CCharStringMap_007acd30	__thiscall	_Node *	2	_Tree<std::_Tmap_traits<CCharString,unsigned_long,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,unsigned_long>_>,1>_> *,CCharString *	1	yes	accepted									
 007acda0	GetInterfaceType	CTCAIScratchpad	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
 007acdb0	GetClassTypeName	CTCAIScratchpad	__thiscall	CCharString	1	CActionDoCreatureAction *	1	yes	accepted									
@@ -24581,8 +24581,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0082ebe0	operator++	std::_Rb_tree_iterator<std::pair<unsigned __int64 const, CScriptedMapBrush::CThingPosAndOrientation>, std::_Nonconst_traits<std::pair<unsigned __int64 const, CScriptedMapBrush::CThingPosAndOrientation>>>	unknown	undefined	0		0	yes	accepted									
 0082ee10	operator--	std::_Rb_tree_iterator<std::pair<unsigned __int64 const, CScriptedMapBrush::CThingPosAndOrientation>, std::_Nonconst_traits<std::pair<unsigned __int64 const, CScriptedMapBrush::CThingPosAndOrientation>>>	unknown	undefined	0		0	yes	accepted									
 0082ee60	operator--	std::_Rb_tree_iterator<CUnprovenValue_0082ee60,CUnprovenTraits_0082ee60<CUnprovenValue_0082ee60> >	unknown	undefined	0		0	yes	accepted									
-0082eeb0	_M_find	std::_Rb_tree<unsigned __int64, std::pair<unsigned __int64 const, CScriptedMapBrush::CThingPosAndOrientation>, std::_Select1st<std::pair<unsigned __int64 const, CScriptedMapBrush::CThingPosAndOrientation>>, std::less<unsigned __int64>, std::allocator<std::pair<unsigned __int64 const, CScriptedMapBrush::CThingPosAndOrientation>>>	unknown	undefined	0		0	yes	accepted									
-0082ef20	_M_find	std::_Rb_tree<unsigned __int64, unsigned __int64, std::_Identity<unsigned __int64>, std::less<unsigned __int64>, std::allocator<unsigned __int64>>	unknown	undefined	0		0	yes	accepted									
+0082eeb0	_M_find<unsigned __int64>	std::_Rb_tree<unsigned __int64, std::pair<unsigned __int64 const, CScriptedMapBrush::CThingPosAndOrientation>, std::_Select1st<std::pair<unsigned __int64 const, CScriptedMapBrush::CThingPosAndOrientation>>, std::less<unsigned __int64>, std::allocator<std::pair<unsigned __int64 const, CScriptedMapBrush::CThingPosAndOrientation>>>	unknown	undefined	0		0	yes	accepted									
+0082ef20	_M_find<unsigned __int64>	std::_Rb_tree<unsigned __int64, unsigned __int64, std::_Identity<unsigned __int64>, std::less<unsigned __int64>, std::allocator<unsigned __int64>>	unknown	undefined	0		0	yes	accepted									
 0082efe0	Remove_0082efe0	_unattributed	unknown	undefined	0		0	yes	accepted									
 0082f020	Remove_0082f020	_unattributed	unknown	undefined	0		0	yes	accepted									
 0082f0d0	_M_lower_bound	std::_Rb_tree<unsigned __int64, std::pair<unsigned __int64 const, CScriptedMapBrush::CThingPosAndOrientation>, std::_Select1st<std::pair<unsigned __int64 const, CScriptedMapBrush::CThingPosAndOrientation>>, std::less<unsigned __int64>, std::allocator<std::pair<unsigned __int64 const, CScriptedMapBrush::CThingPosAndOrientation>>>	unknown	undefined	0		0	yes	accepted									
@@ -27481,7 +27481,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008ac120	_Cons_val<std::allocator<CScriptThing>,CScriptThing,CScriptThing>	std	__fastcall	void	3	allocator<CScriptThing> *,CScriptThing *,CScriptThing *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8a\Consvalstd_allocatorCScriptThingCScriptThingCScriptThing_008ac120.cpp
 008ac140	UninitCopy_CScriptThing_008ac140	_global	__fastcall	CScriptThing *	5	_Vector_const_iterator<std::_Vector_val<CScriptThing,std::allocator<CScriptThing>_>_>,_Vector_const_iterator<std::_Vector_val<CScriptThing,std::allocator<CScriptThing>_>_>,CScriptThing *,allocator<CScriptThing> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 008ac180	UninitFillN_CScriptThing_008ac180	_global	__fastcall	void	6	pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_> *,uint,pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_> *,allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_> *,pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
-008ac200	_M_find	std::_Rb_tree<CCharString, std::pair<CCharString const, std::vector<CCharString, std::allocator<CCharString>>>, std::_Select1st<std::pair<CCharString const, std::vector<CCharString, std::allocator<CCharString>>>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, std::vector<CCharString, std::allocator<CCharString>>>>>	unknown	undefined	0		0	yes	accepted									
+008ac200	_M_find<CCharString>	std::_Rb_tree<CCharString, std::pair<CCharString const, std::vector<CCharString, std::allocator<CCharString>>>, std::_Select1st<std::pair<CCharString const, std::vector<CCharString, std::allocator<CCharString>>>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, std::vector<CCharString, std::allocator<CCharString>>>>>	unknown	undefined	0		0	yes	accepted									
 008ac2a0	__copy	std	__fastcall	CScriptThing *	4	CScriptThing *,CScriptThing *,CScriptThing *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 008ac330	`scalar_deleting_destructor'	CCreatureAction_SitDown	__thiscall	void *	2	C3DMeshFilePartitionChunk *,uint	1	yes	accepted									
 008ac3c0	CModeSitFloor	NCreatureMode::CModeSitFloor	__thiscall	undefined	3	CConsoleCommandBase *,CCharString *,CConsoleCommandParameters *	0	yes	accepted									
@@ -33156,7 +33156,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00990190	Remove_00990190	_unattributed	unknown	undefined	0		0	yes	accepted									
 009901d0	_M_lower_bound	std::_Rb_tree<CThreadedFileManager::CPendingObjectSortKey,std::pair<CThreadedFileManager::CPendingObjectSortKey const,CThreadedFileManager::CFileObject*>,std::_Select1st<std::pair<CThreadedFileManager::CPendingObjectSortKey const,CThreadedFileManager::CFileObject*> >,std::less<CThreadedFileManager::CPendingObjectSortKey>,std::allocator<std::pair<CThreadedFileManager::CPendingObjectSortKey const,CThreadedFileManager::CFileObject*> > >	__thiscall	_Node *	2	_Tree<std::_Tmap_traits<CThreadedFileManager::CPendingObjectSortKey,CThreadedFileManager::CFileObject*,std::less<CThreadedFileManager::CPendingObjectSortKey>,std::allocator<std::pair<CThreadedFileManager::CPendingObjectSortKey_const_,CThreadedFileManager::CFileObject*>_>,0>_> *,CPendingObjectSortKey *	1	yes	accepted									
 009902d0	find	std::_Rb_tree<unsigned long, std::pair<unsigned long const, CThreadedFileManager::CFileObject *>, std::_Select1st<std::pair<unsigned long const, CThreadedFileManager::CFileObject *>>, std::less<unsigned long>, std::allocator<std::pair<unsigned long const, CThreadedFileManager::CFileObject *>>>	unknown	undefined	0		0	yes	accepted									
-00990320	find	CRetailTree_ulongkey	unknown	undefined	0		0			discovered	gapscan							
+00990320	find<unsigned long>	std::_Rb_tree<unsigned long, std::pair<unsigned long const, CThreadedFileManager::CFileObject *>, std::_Select1st<std::pair<unsigned long const, CThreadedFileManager::CFileObject *>>, std::less<unsigned long>, std::allocator<std::pair<unsigned long const, CThreadedFileManager::CFileObject *>>>	unknown	undefined	0		0			discovered	gapscan							
 00990430	Remove_00990430	_unattributed	unknown	undefined	0		0	yes	accepted									
 009904b0	_Rb_tree	std::_Rb_tree<CUnprovenKey_0098fd40,CUnprovenValue_0098fd40,CUnprovenKeyOfValue_0098fd40,std::less<CUnprovenKey_0098fd40>,std::allocator<CUnprovenValue_0098fd40> >	unknown	undefined	0		0	yes	accepted									
 009904f0	~CRetailTree_erase0098fd40	CRetailTree_erase0098fd40	unknown	undefined	0		0	yes	accepted									
@@ -33744,7 +33744,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009aa3e0	operator--	std::_Rb_tree_iterator<CWideString,std::_Nonconst_traits<CWideString >>	unknown	undefined	0		0	yes	accepted									
 009aa440	~CAIStateGroup_CarryCrateAndFollow	CAIStateGroup_CarryCrateAndFollow	__thiscall	void	1	CAIStateGroup_CarryCrateAndFollow *	1	yes	accepted									
 009aa470	Dtor_CCharStringBase_009aa470	_global	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9a\DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusi_CRegisteredMusicEntry_009aa470.cpp
-009aa4c0	_M_find	std::_Rb_tree<CWideString, CWideString, _Identity<CWideString>, less<CWideString> >	unknown	undefined	0		0	yes	accepted									
+009aa4c0	_M_find<CWideString>	std::_Rb_tree<CWideString, CWideString, std::_Identity<CWideString>, std::less<CWideString>, std::allocator<CWideString>>	unknown	undefined	0		0	yes	accepted									
 009aa520	_Construct<std::pair<CCharString const, NBankFileManager::CContainedBank>, std::pair<CCharString const, NBankFileManager::CContainedBank>>	std	__fastcall	void	3	allocator<std::pair<CCharString_const_,NBankFileManager::CContainedBank>_> *,pair<CCharString_const_,NBankFileManager::CContainedBank> *,pair<class_CCharString_const_,class_NBankFileManager::CContainedBank> *	1	yes	accepted									
 009aa570	_Cons_val<std::allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_>,std::pair<CCharString_const_,CArray<unsigned_long>_>,std::pair<class_CCharString_const_,class_CArray<unsigned_long>_>_>	std	__fastcall	void	3	allocator<std::pair<CCharString_const_,CArray<unsigned_long>_>_> *,pair<CCharString_const_,CArray<unsigned_long>_> *,pair<class_CCharString_const_,class_CArray<unsigned_long>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9a\ConsvalstdallocatorstdpairCCharStringconstCArrayunsignedlongstdpairCCharStringco_pairclassCCharStringconstclassCArrayunsignedlong_009aa570.cpp
 009aa690	list	std::list<T_0x8_009aa690>	unknown	undefined	0		0	yes	review-medium									
@@ -33780,9 +33780,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009ab1f0	insert_unique	std::_Rb_tree	unknown	undefined	0		0	yes	accepted									
 009ab2f0	_M_insert	std::_Rb_tree<CCharString, std::pair<CCharString const, CCharString>, std::_Select1st<std::pair<CCharString const, CCharString>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, CCharString>>>	unknown	undefined	0		0	yes	accepted									
 009ab3f0	insert_unique	std::_Rb_tree	unknown	undefined	0		0	yes	accepted									
-009ab4f0	_M_find	std::_Rb_tree<CCharString, std::pair<CCharString const, NBankFileManager::CContainedBank>, std::_Select1st<std::pair<CCharString const, NBankFileManager::CContainedBank>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, NBankFileManager::CContainedBank>>>	unknown	undefined	0		0	yes	accepted									
-009ab560	_M_find	std::_Rb_tree<CCharString, std::pair<CCharString const, CBankFileManager::CBankInfo>, std::_Select1st<std::pair<CCharString const, CBankFileManager::CBankInfo>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, CBankFileManager::CBankInfo>>>	unknown	undefined	0		0	yes	accepted									
-009ab5d0	_M_find	std::_Rb_tree<CCharString, std::pair<CCharString const, CCharString>, std::_Select1st<std::pair<CCharString const, CCharString>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, CCharString>>>	unknown	undefined	0		0	yes	accepted									
+009ab4f0	_M_find<CCharString>	std::_Rb_tree<CCharString, std::pair<CCharString const, NBankFileManager::CContainedBank>, std::_Select1st<std::pair<CCharString const, NBankFileManager::CContainedBank>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, NBankFileManager::CContainedBank>>>	unknown	undefined	0		0	yes	accepted									
+009ab560	_M_find<CCharString>	std::_Rb_tree<CCharString, std::pair<CCharString const, CBankFileManager::CBankInfo>, std::_Select1st<std::pair<CCharString const, CBankFileManager::CBankInfo>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, CBankFileManager::CBankInfo>>>	unknown	undefined	0		0	yes	accepted									
+009ab5d0	_M_find<CCharString>	std::_Rb_tree<CCharString, std::pair<CCharString const, CCharString>, std::_Select1st<std::pair<CCharString const, CCharString>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, CCharString>>>	unknown	undefined	0		0	yes	accepted									
 009ab640	RbTree_Clear_009ab640	_global	__thiscall	void	1	CTCCarryable *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9a\CTCCarryable_OnKill_009ab640.cpp
 009ab6b0	~_Rb_tree	std::_Rb_tree<CCharString, std::pair<CCharString const, NBankFileManager::CContainedBank>, std::_Select1st<std::pair<CCharString const, NBankFileManager::CContainedBank>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, NBankFileManager::CContainedBank>>>	unknown	undefined	0		0	yes	accepted									
 009ab700	~CRetailTree_erase009aa7c0	CRetailTree_erase009aa7c0	unknown	undefined	0		0	yes	accepted									
@@ -34539,7 +34539,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 009d2ba0	_Lbound	std::_Tree<std::_Tmap_traits<CCharString,float,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,float>_>,1>_>	__thiscall	_Node *	2	_Tree<std::_Tmap_traits<CCharString,float,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,float>_>,1>_> *,CCharString *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\9d\TreestdTmaptraitsCCharString_Lbound_009d2ba0.cpp
 009d2c10	_M_insert_overflow	std::vector	unknown	undefined	0		0	yes	accepted									
 009d2d00	_M_copy	std::_Rb_tree	unknown	undefined	0		0	yes	accepted									
-009d2dd0	_M_find	std::_Rb_tree<CCharString, std::pair<CCharString const, unsigned long>, std::_Select1st<std::pair<CCharString const, unsigned long>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, unsigned long>>>	unknown	undefined	0		0	yes	accepted									
+009d2dd0	_M_find<CCharString>	std::_Rb_tree<CCharString, std::pair<CCharString const, unsigned long>, std::_Select1st<std::pair<CCharString const, unsigned long>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, unsigned long>>>	unknown	undefined	0		0	yes	accepted									
 009d2e40	__median<unsigned long, CompareDataOffset>	std	unknown	undefined	0		0	yes	accepted									
 009d2ed0	__unguarded_partition	std	unknown	undefined	0		0	yes	accepted									
 009d2fc0	__unguarded_linear_insert	_global	unknown	undefined	0		0	yes	accepted									
@@ -36348,7 +36348,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a2b180	Dtor_CountedPtrAt0x8_00a2b180	_global	__fastcall	void	2	allocator<std::pair<unsigned_long,CCountedPointer<CFaction>_>_> *,pair<unsigned_long,CCountedPointer<CFaction>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a2\DestvalstdallocatorstdpairunsignedlongCCountedPointerCFactionstd_pairunsignedlongCCountedPointerCFaction_00a2b180.cpp
 00a2b1c0	Sizeof	CUnprovenMeshRecord_00a2b1c0	__thiscall	ulong	1	C3DMeshLODInfo *	1	yes	accepted									
 00a2b200	Sizeof	CUnprovenMeshRecord_00a2b200	__thiscall	ulong	1	C3DMeshLODInfo *	1	yes	accepted									
-00a2b240	_M_find	std::_Rb_tree<CCharString, std::pair<CCharString const, CArray<CMeshDataBank::CLipSyncEntry>>, std::_Select1st<std::pair<CCharString const, CArray<CMeshDataBank::CLipSyncEntry>>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, CArray<CMeshDataBank::CLipSyncEntry>>>>	unknown	undefined	0		0	yes	accepted									
+00a2b240	_M_find<CCharString>	std::_Rb_tree<CCharString, std::pair<CCharString const, CArray<CMeshDataBank::CLipSyncEntry>>, std::_Select1st<std::pair<CCharString const, CArray<CMeshDataBank::CLipSyncEntry>>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, CArray<CMeshDataBank::CLipSyncEntry>>>>	unknown	undefined	0		0	yes	accepted									
 00a2b340	Move_CountedPointer_00a2b340	_global	__fastcall	CCountedPointer<CGuiVarTransferBase> *	4	CCountedPointer<class_CGuiVarTransferBase> *,CCountedPointer<class_CGuiVarTransferBase> *,CCountedPointer<class_CGuiVarTransferBase> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00a2b3c0	operator=	C3DMeshInfo	__thiscall	CAnimationEntry *	2	CAnimationEntry *,CAnimationEntry *	1	yes	accepted									
 00a2b4e0	operator=	C3DAnimationInfo	__thiscall	CAnimationEntry *	2	CAnimationEntry *,CAnimationEntry *	1	yes	accepted									
@@ -37217,7 +37217,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a54130	~list	std::list<T_00a54130>	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a5\CActiveFile_OnReadFinished_00a54130.cpp
 00a54160	_Rb_tree_base	std::_Rb_tree_base<node0x18_00a54160>	unknown	undefined	0		0	yes	review-low									
 00a54240	_M_erase	std::_Rb_tree<CCharString, std::pair<CCharString const, float>, std::_Select1st<std::pair<CCharString const, float>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, float>>>	__thiscall	void	2	LTextTreeWalkThrough *,LTextBinNode *	1	yes	accepted									
-00a54310	_M_find	std::_Rb_tree<CCharString, std::pair<CCharString const, float>, std::_Select1st<std::pair<CCharString const, float>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, float>>>	unknown	undefined	0		0	yes	accepted									
+00a54310	_M_find<CCharString>	std::_Rb_tree<CCharString, std::pair<CCharString const, float>, std::_Select1st<std::pair<CCharString const, float>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, float>>>	unknown	undefined	0		0	yes	accepted									
 00a544a0	list	std::list<T_0x8_00a544a0>	unknown	undefined	0		0	yes	accepted									
 00a544c0	~list	std::list<T_00a544c0>	__thiscall	void	1	CActiveFile *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a5\CActiveFile_OnReadFinished_00a544c0.cpp
 00a544e0	_Rb_tree	std::_Rb_tree<CUnprovenKey_00a544e0,CUnprovenValue_00a544e0,CUnprovenKeyOfValue_00a544e0,std::less<CUnprovenKey_00a544e0>,std::allocator<CUnprovenValue_00a544e0> >	unknown	undefined	0		0	yes	accepted									
@@ -38133,7 +38133,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00a7f6f0	_Rb_tree_base	std::_Rb_tree_base<node0x18_00a7f6f0>	unknown	undefined	0		0	yes	review-low									
 00a7f7d0	CCountedPointer_Release_00a7f7d0	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a7\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00a7f7d0.cpp
 00a7f830	find	CRetailTree_ulongkey	unknown	undefined	0		0	yes	accepted									
-00a7f880	find	CRetailTree_longkey	unknown	undefined	0		0	yes	accepted									
+00a7f880	find<long>	std::_Rb_tree<long, std::pair<long const, CANavQuadTreeNode *>, std::_Select1st<std::pair<long const, CANavQuadTreeNode *>>, std::less<long>, std::allocator<std::pair<long const, CANavQuadTreeNode *>>>	unknown	undefined	0		0	yes	accepted									
 00a7f920	__uninitialized_copy<std::pair<long,CCountedPointer<CNavConnectorNode> >*,std::pair<long,CCountedPointer<CNavConnectorNode> >*>	std	__fastcall	pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_> *	5	_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,_Vector_const_iterator<std::_Vector_val<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>,std::allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>_>_>,pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_> *,allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\a7\UninitcopystdVectorconstiteratorstdVectorvalstdpairunsignedint64CCountedPointerC_pairunsignedint64CCountedPointerCActiveEntityScr_00a7f920.cpp
 00a7f960	__uninitialized_fill_n<std::pair<long, CCountedPointer<CNavConnectorNode>> *, unsigned int, std::pair<long, CCountedPointer<CNavConnectorNode>>>	std	__fastcall	void	6	pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_> *,uint,pair<unsigned___int64,class_CCountedPointer<class_CActiveEntityScriptBase>_> *,allocator<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_> *,pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_> *,_Nonscalar_ptr_iterator_tag	1	yes	accepted									
 00a7f9b0	UninitCopy_SElement16_00a7f9b0	_global	__fastcall	C2DLineF *	3	C2DLineF *,C2DLineF *,C2DLineF *	1	yes	accepted									
@@ -43004,7 +43004,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00be05d0	Reset	CEngineStaticMapFileBlockManager	unknown	undefined	0		0	yes	accepted									
 00be06b0	AddRequest	CEngineStaticMapFileBlockManager	__thiscall	void	4	CEngineStaticMapFileBlockManager *,long,long,bool	1	yes	accepted									
 00be0810	~CUnprovenRecord_00be0810	CUnprovenRecord_00be0810	__fastcall	void	2	allocator<std::pair<unsigned_long,CCountedPointer<CFaction>_>_> *,pair<unsigned_long,CCountedPointer<CFaction>_> *	1	yes	accepted									
-00be08e0	find	std::_Rb_tree<long, std::pair<long const, CEngineStaticMapFileBlockManager::CFileBlock>, std::_Select1st<std::pair<long const, CEngineStaticMapFileBlockManager::CFileBlock>>, std::less<long>, std::allocator<std::pair<long const, CEngineStaticMapFileBlockManager::CFileBlock>>>	unknown	undefined	0		0	yes	accepted									
+00be08e0	find<long>	std::_Rb_tree<long, std::pair<long const, CEngineStaticMapFileBlockManager::CFileBlock>, std::_Select1st<std::pair<long const, CEngineStaticMapFileBlockManager::CFileBlock>>, std::less<long>, std::allocator<std::pair<long const, CEngineStaticMapFileBlockManager::CFileBlock>>>	unknown	undefined	0		0	yes	accepted									
 00be0930	find	std::_Rb_tree<long, std::pair<long const, CEngineStaticMapFileBlockManager::CFileBlock>, std::_Select1st<std::pair<long const, CEngineStaticMapFileBlockManager::CFileBlock>>, std::less<long>, std::allocator<std::pair<long const, CEngineStaticMapFileBlockManager::CFileBlock>>>	unknown	undefined	0		0	yes	accepted									
 00be0a50	erase	std::_Rb_tree	unknown	undefined	0		0	yes	accepted									
 00be0ac0	_M_create_node	std::_Rb_tree<long, std::pair<long const, SEntry_00be0ac0>, std::_Select1st<std::pair<long const, SEntry_00be0ac0>>, std::less<long>, std::allocator<std::pair<long const, SEntry_00be0ac0>>>	__thiscall	CPredicateBase *	1	CPredicate_And<NScript::CIsThingAlive,NScript::CIsVariableFalse> *	1	yes	accepted									
@@ -46019,8 +46019,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c3bb50	Load	AudioBankTableReader_00c3bb50	unknown	undefined	0		0	yes	accepted									
 00c3bcb0	LoadCriteria (owner uncertain)	AudioCriteriaLoader_00c3bcb0	unknown	undefined	0		0	yes	accepted									
 00c3bf30	CBankFile_ReadRemote	_global	unknown	undefined	0		0	yes	accepted									
-00c3c360	operator new	CPKObject	__thiscall	void	2	CTCHeroStats *,CBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CTCHeroStats_CTCHeroStatsInformOfEventa_00c3c360.cpp
-00c3c370	operator delete	CPKObject	__thiscall	void	2	CTCHeroStats *,CBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CTCHeroStats_CTCHeroStatsInformOfEventb_00c3c370.cpp
+00c3c360	CodaMalloc	_global	__thiscall	void	2	CTCHeroStats *,CBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CTCHeroStats_CTCHeroStatsInformOfEventa_00c3c360.cpp
+00c3c370	CodaFree	_global	__thiscall	void	2	CTCHeroStats *,CBase *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CTCHeroStats_CTCHeroStatsInformOfEventb_00c3c370.cpp
 00c3c380	operator_new	CEngineSubPrimitiveBase	__fastcall	void *	1	uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\global_operatornew_00c3c380.cpp
 00c3c390	operator_new	_global	__fastcall	void *	1	uint	1	yes	accepted									
 00c3c3b0	CVtable_012b4f74	CVtable_012b4f74	__thiscall	undefined	1	CShopItemDef *	0	yes	accepted									
@@ -46041,7 +46041,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c3c750	CreateHardwareBuffer	CSoundBuffer_00c3c750	unknown	undefined	0		0	yes	accepted									
 00c3c7a0	SetupEventNotification	CVtable_012b4f84	unknown	undefined	0		0	yes	accepted									
 00c3c810	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CLandscapeBackgroundPatch_vectordeletingdestructor_00c3c810.cpp
-00c3c830	SetMemberConst_00c3c830	_global	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CBase_CBase_00c3c830.cpp
+00c3c830	~CCodaObjectBase	CCodaObjectBase	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c3\CBase_CBase_00c3c830.cpp
 00c3c840	ScalarDeletingDestructor	CVtable_012b5868	unknown	undefined	0		0			discovered	gapscan							
 00c3c8a0	CNodePool	CNodePool	__thiscall	undefined	1	CVsyncCallbackTimerInfo *	0	yes	accepted									
 00c3c8c0	Init	CNodePool	unknown	undefined	0		0	yes	accepted									
@@ -47032,7 +47032,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c5e4a0	`scalar deleting destructor'	CMutex_00c5eca0	__thiscall	void *	2	CWaterPatchMesh *,uint	1	yes	accepted									
 00c5e4e0	sub_00c5e4e0	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00c5e630	Shutdown	CHandleOwner_00c5e630	__thiscall	void	1	CLandscapeBackgroundPatch *	1	yes	accepted									
-00c5e650	sub_00c5e650	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c5e650	CreateBuffer	CSalOutputKS	unknown	undefined	0		0			discovered	gapscan							
 00c5ead0	Kill	CWound_00c5eca0	__thiscall	void	2	CWound *,CTCTextureDecal *	1	yes	accepted									
 00c5ebd0	~CVtable_012b90d4_00c5ebd0	CVtable_012b90d4_00c5ebd0	__thiscall	void	1	CLandscapeBackgroundPatch *	1	yes	accepted									
 00c5ec00	`scalar deleting destructor'	CVtable_012b90d4_00c5ec50	__thiscall	void *	2	CWaterPatchMesh *,uint	1	yes	accepted									
@@ -47067,26 +47067,26 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c5f7f0	DecodeS16	CImaAdpcmCodec	unknown	undefined	0		0	yes	accepted									
 00c5f9e0	Initialize	CImaAdpcmCodec	unknown	undefined	0		0	yes	accepted									
 00c5fa50	Convert	CImaAdpcmCodec	unknown	undefined	0		0	yes	accepted									
-00c5ff50	CVtable_012b9338	CVtable_012b9338	__thiscall	undefined	1	CBase *	0	yes	accepted									
-00c5ff60	RemoveSource	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c5ffb0	CTCHeroStats::AddEventData	CTCHeroStats	unknown	undefined	0		0	yes	accepted									
-00c60410	ClearEvents	CEaxContext	__thiscall	void	1	CDrawGuildSeal *	1	yes	accepted									
-00c60450	ClampFloatProperty	CEaxContext	unknown	undefined	0		0	yes	accepted									
+00c5ff50	CEAXBufferList	CEAXBufferList	__thiscall	undefined	1	CBase *	0	yes	accepted									
+00c5ff60	RemoveSource	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c5ffb0	AddToChangesList	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c60410	ClearEvents	CEAXListener	__thiscall	void	1	CDrawGuildSeal *	1	yes	accepted									
+00c60450	ClampFloatProperty	CEAXListener	unknown	undefined	0		0	yes	accepted									
 00c604e0	CEnvironmentSpellEffectInterface	CEnvironmentSpellEffectInterface	__thiscall	undefined	2	CEnvironmentSpellEffectInterface *,CEnvironment *	0	yes	accepted									
-00c60930	~CEaxContext	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c609a0	AddSource	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c60a00	`scalar deleting destructor'	CEaxSourceNode	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CLandscapeBackgroundPatch_vectordeletingdestructor_00c60a00.cpp
-00c60a20	~CEaxSourceNode	CEaxSourceNode	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CBase_CBase_00c60a20.cpp
-00c60a30	InvalidateAll	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c60ad0	`scalar deleting destructor'	CEaxContext	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CLandscapeBackgroundPatch_vectordeletingdestructor_00c60ad0.cpp
-00c60af0	Reset	CEaxContext	__thiscall	void	1	CCreatureAction_BanditKingLunge *	1	yes	accepted									
-00c60b30	IsAnyNaN	_global	unknown	undefined	0		0	yes	accepted									
-00c60b90	~CEaxSource	CEaxSource	__thiscall	undefined	3	CConsoleVariable *,CCharString *,long *	0	yes	accepted									
-00c60fe0	MarkAllDirty	CEaxSource	__thiscall	void	1	CShaderRenderManager *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CShaderRenderManager_OnPostViewportChanged_00c60fe0.cpp
-00c60ff0	CTCHeroStats_ProcessEventData	_global	unknown	undefined	0		0	yes	accepted									
+00c60930	~CEAXListener	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c609a0	AddSource	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c60a00	`scalar deleting destructor'	CEAXBufferList	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CLandscapeBackgroundPatch_vectordeletingdestructor_00c60a00.cpp
+00c60a20	~CEAXBufferList	CEAXBufferList	__thiscall	undefined	1	CBase *	0	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CBase_CBase_00c60a20.cpp
+00c60a30	InvalidateAll	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c60ad0	`scalar deleting destructor'	CEAXListener	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CLandscapeBackgroundPatch_vectordeletingdestructor_00c60ad0.cpp
+00c60af0	Reset	CEAXListener	__thiscall	void	1	CCreatureAction_BanditKingLunge *	1	yes	accepted									
+00c60b30	IsNaN	_global	unknown	undefined	0		0	yes	accepted									
+00c60b90	~CEAXBuffer	CEAXBuffer	__thiscall	undefined	3	CConsoleVariable *,CCharString *,long *	0	yes	accepted									
+00c60fe0	MarkAllDirty	CEAXBuffer	__thiscall	void	1	CShaderRenderManager *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CShaderRenderManager_OnPostViewportChanged_00c60fe0.cpp
+00c60ff0	Set3DBuffer	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
 00c61610	CShadowRendererSceneData	CShadowRendererSceneData	__thiscall	undefined	2	CShadowRendererSceneData *,CShadowRendererSceneData *	0	yes	accepted									
-00c61b20	`scalar deleting destructor'	CEaxSource	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CLandscapeBackgroundPatch_vectordeletingdestructor_00c61b20.cpp
-00c61b40	Set	CEaxSource	unknown	undefined	0		0	yes	accepted									
+00c61b20	`scalar deleting destructor'	CEAXBuffer	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CLandscapeBackgroundPatch_vectordeletingdestructor_00c61b20.cpp
+00c61b40	Set	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
 00c61b90	CPKArray	CPKArray	unknown	undefined	0		0	yes	accepted									
 00c61bc0	GetCapacity	CPKArray	__thiscall	EInputKey	1	CInputEvent *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CInputEvent_GetKey_00c61bc0.cpp
 00c61bd0	ReleaseMember_00c61bd0	_unattributed	unknown	undefined	0		0	yes	accepted									
@@ -47143,85 +47143,85 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c62e60	PassToSlave	PKRASlaveObject	unknown	undefined	0		0	yes	accepted									
 00c62f30	`scalar deleting destructor'	CVtable_012b93d4	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CLandscapeBackgroundPatch_vectordeletingdestructor_00c62f30.cpp
 00c62fb0	GainToMillibels	_global	unknown	undefined	0		0	yes	accepted									
-00c62ff0	GetPropertyHandler	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c630d0	SetSlotEnabled	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c631e0	SetEnvironmentDiffusion	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c63270	SetRoom	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c632e0	SetRoomHF	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c63350	SetRoomLF	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c633c0	SetDecayTime	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c63480	SetDecayHFRatio	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c63520	SetDecayLFRatio	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c635c0	SetReflections	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c63690	SetReflectionsDelay	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c63750	SetReflectionsPan	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c63810	SetReverb	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c638e0	SetReverbDelay	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c639a0	SetReverbPan	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c63a60	SetEchoTime	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c63b20	SetEchoDepth	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c63bc0	SetModulationTime	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c63c80	SetModulationDepth	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c63d20	SetSlotAirAbsorptionHF	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c63db0	SetSlotHFReference	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c63e50	SetLFReference	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c63ef0	SetRoomRolloffFactor	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c63f90	SetDecayTimeScale	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c64020	SetReflectionsScale	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c640b0	SetReflectionsDelayScale	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c64140	SetReverbScale	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c641d0	SetReverbDelayScale	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c64260	SetDecayHFLimit	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c642f0	SetEchoTimeScale	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c64380	SetModulationTimeScale	CEaxContext	unknown	undefined	0		0	yes	accepted									
+00c62ff0	GetPropertyHandler	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c630d0	SetSlotEnabled	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c631e0	SetEnvironmentDiffusion	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c63270	SetRoom	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c632e0	SetRoomHF	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c63350	SetRoomLF	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c633c0	SetDecayTime	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c63480	SetDecayHFRatio	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c63520	SetDecayLFRatio	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c635c0	SetReflections	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c63690	SetReflectionsDelay	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c63750	SetReflectionsPan	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c63810	SetReverb	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c638e0	SetReverbDelay	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c639a0	SetReverbPan	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c63a60	SetEchoTime	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c63b20	SetEchoDepth	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c63bc0	SetModulationTime	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c63c80	SetModulationDepth	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c63d20	SetSlotAirAbsorptionHF	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c63db0	SetSlotHFReference	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c63e50	SetLFReference	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c63ef0	SetRoomRolloffFactor	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c63f90	SetDecayTimeScale	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c64020	SetReflectionsScale	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c640b0	SetReflectionsDelayScale	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c64140	SetReverbScale	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c641d0	SetReverbDelayScale	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c64260	SetDecayHFLimit	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c642f0	SetEchoTimeScale	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c64380	SetModulationTimeScale	CEAXListener	unknown	undefined	0		0	yes	accepted									
 00c64420	SetPrimaryFXSlotID	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c645d0	SetDistanceFactor	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c64630	SetAirAbsorptionHF	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c646e0	SetHFReference	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c647b0	SetObstructionParameters	CEaxSource	unknown	undefined	0		0	yes	accepted									
-00c64840	SetVectorProperty_XYZW	CEntity	unknown	undefined	0		0	yes	accepted									
-00c64940	SetExclusionParameters	CEaxSource	unknown	undefined	0		0	yes	accepted									
-00c649c0	SetDirect	CEaxSource	unknown	undefined	0		0	yes	accepted									
-00c64a00	SetDirectHF	CEaxSource	unknown	undefined	0		0	yes	accepted									
-00c64a40	SetRoom	CEaxSource	unknown	undefined	0		0	yes	accepted									
-00c64a80	SetRoomHF	CEaxSource	unknown	undefined	0		0	yes	accepted									
-00c64ac0	SetObstruction	CEaxSource	unknown	undefined	0		0	yes	accepted									
-00c64b00	SetObstructionLFRatio	CEaxSource	unknown	undefined	0		0	yes	accepted									
-00c64b70	SetOcclusion	CEaxSource	unknown	undefined	0		0	yes	accepted									
-00c64bb0	SetOcclusionLFRatio	CEaxSource	unknown	undefined	0		0	yes	accepted									
-00c64c10	SetOcclusionRoomRatio	CEaxSource	unknown	undefined	0		0	yes	accepted									
-00c64c70	SetOcclusionDirectRatio	CEaxSource	unknown	undefined	0		0	yes	accepted									
-00c64cd0	SetExclusion	CEaxSource	unknown	undefined	0		0	yes	accepted									
-00c64d10	SetExclusionLFRatio	CEaxSource	unknown	undefined	0		0	yes	accepted									
-00c64d70	SetOutsideVolumeHF	CEaxSource	unknown	undefined	0		0	yes	accepted									
-00c64db0	SetDopplerFactor	CEaxSource	unknown	undefined	0		0	yes	accepted									
-00c64e20	SetRolloffFactor	CEaxSource	unknown	undefined	0		0	yes	accepted									
-00c64e90	SetRoomRolloffFactor	CEaxSource	unknown	undefined	0		0	yes	accepted									
-00c64f00	SetAirAbsorptionFactor	CEaxSource	unknown	undefined	0		0	yes	accepted									
-00c64f70	SetFlags	CEaxSource	unknown	undefined	0		0	yes	accepted									
-00c64fb0	SetMeshComponentsProperty	CEntity	unknown	undefined	0		0	yes	accepted									
-00c65170	SetLightComponentsProperty	CEntity	unknown	undefined	0		0	yes	accepted									
-00c65450	SetSoundComponentsProperty	CEntity	unknown	undefined	0		0	yes	accepted									
-00c65690	SetVFXComponentsProperty	CEntity	unknown	undefined	0		0	yes	accepted									
-00c65870	SetGuidListProperty	CEntity	unknown	undefined	0		0	yes	accepted									
-00c65a00	CommitDeferredSettings	CEaxSource	unknown	undefined	0		0	yes	accepted									
-00c66330	sub_00c66330	_gapscan	unknown	undefined	0		0			discovered	gapscan							
-00c66c90	ScriptEvent_DispatchByID	_global	unknown	undefined	0		0	yes	accepted									
-00c67430	SetSlotFlags	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c67470	SetSlotLock	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c674b0	SetSlotLoadEffect	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c67720	SetSlotVolume	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c677c0	SetEnvironmentSize	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c67a10	SetReverbFlags	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c67ae0	SetAllParameters	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c67c00	SetAllParameters	CEaxSource	unknown	undefined	0		0	yes	accepted									
-00c67f60	CommitDeferredSettings	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c683c0	SetContextProperty	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c68510	SetSourceProperty_00c68510	CEaxSource	unknown	undefined	0		0	yes	accepted									
-00c689b0	SetSlotProperty	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c68a50	SetEnvironment	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c68d70	SetReverbAllParameters	CEaxContext	unknown	undefined	0		0	yes	accepted									
-00c68f90	SetEffectProperty_00c68f90	CEaxContext	unknown	undefined	0		0	yes	accepted									
+00c645d0	SetDistanceFactor	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c64630	SetAirAbsorptionHF	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c646e0	SetHFReference	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c647b0	SetObstructionParameters	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
+00c64840	SetOcclusionParameters	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
+00c64940	SetExclusionParameters	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
+00c649c0	SetDirect	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
+00c64a00	SetDirectHF	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
+00c64a40	SetRoom	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
+00c64a80	SetRoomHF	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
+00c64ac0	SetObstruction	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
+00c64b00	SetObstructionLFRatio	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
+00c64b70	SetOcclusion	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
+00c64bb0	SetOcclusionLFRatio	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
+00c64c10	SetOcclusionRoomRatio	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
+00c64c70	SetOcclusionDirectRatio	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
+00c64cd0	SetExclusion	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
+00c64d10	SetExclusionLFRatio	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
+00c64d70	SetOutsideVolumeHF	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
+00c64db0	SetDopplerFactor	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
+00c64e20	SetRolloffFactor	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
+00c64e90	SetRoomRolloffFactor	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
+00c64f00	SetAirAbsorptionFactor	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
+00c64f70	SetFlags	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
+00c64fb0	SetSendParameters	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
+00c65170	SetAllSendParameters	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
+00c65450	SetOcclusionSendParameters	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
+00c65690	SetExclusionSendParameters	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
+00c65870	SetActiveFXSlotID	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
+00c65a00	CommitEAX3	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
+00c66330	GetEAX4FXSlot	CEAXListener	unknown	undefined	0		0			discovered	gapscan							
+00c66c90	GetEAX4Source	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
+00c67430	SetSlotFlags	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c67470	SetSlotLock	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c674b0	SetSlotLoadEffect	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c67720	SetSlotVolume	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c677c0	SetEnvironmentSize	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c67a10	SetReverbFlags	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c67ae0	SetAllParameters	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c67c00	SetAllParameters	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
+00c67f60	CommitDeferredSettings	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c683c0	SetContextProperty	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c68510	SetSourceProperty_00c68510	CEAXBuffer	unknown	undefined	0		0	yes	accepted									
+00c689b0	SetSlotProperty	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c68a50	SetEnvironment	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c68d70	SetReverbAllParameters	CEAXListener	unknown	undefined	0		0	yes	accepted									
+00c68f90	SetEffectProperty_00c68f90	CEAXListener	unknown	undefined	0		0	yes	accepted									
 00c69660	CDspGain	CDspGain	__thiscall	undefined	1	C3DAnimationUtil *	0	yes	accepted									
 00c69680	~CDspGain	CDspGain	__thiscall	void	1	CChunkedFileChunk *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CChunkedFileChunk_CChunkedFileChunk_00c69680.cpp
 00c696a0	`scalar deleting destructor'	CDspGain	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c6\CLandscapeBackgroundPatch_vectordeletingdestructor_00c696a0.cpp
@@ -47395,9 +47395,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c71740	sub_00c71740	_global	unknown	undefined	0		0			discovered	gapscan							
 00c71750	WriteOutput	CAudioContextEAX	unknown	undefined	0		0	yes	accepted									
 00c71820	DisableReverb	CAudioContextEAX	unknown	undefined	0		0			discovered	gapscan							
-00c71870	sub_00c71870	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+00c71870	Update	CSalOpenALReverb	unknown	undefined	0		0			discovered	gapscan							
 00c71cd0	vfunc_0	CVtable_012bedf4	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c7\CLandscapeBackgroundPatch_vectordeletingdestructor_00c71cd0.cpp
-00c71cf0	Initialize	CAudioContextEAX::CAudioContextEAX	unknown	undefined	0		0	yes	accepted									
+00c71cf0	~CAudioContextEAX	CAudioContextEAX	unknown	undefined	0		0	yes	accepted									
 00c71e00	sub_00c71e00	_global	unknown	undefined	0		0			discovered	gapscan							
 00c71e10	sub_00c71e10	_gapscan	unknown	undefined	0		0			discovered	gapscan							
 00c71e90	sub_00c71e90	_gapscan	unknown	undefined	0		0			discovered	gapscan							
@@ -48885,7 +48885,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00cd2afd	ForEachElem0x10_operator__00cd2afd	_global	__fastcall	void	3	pair<unsigned_long,CAnimationEntry> *,pair<unsigned_long,CAnimationEntry> *,allocator<std::pair<unsigned_long,CAnimationEntry>_> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cd\Destroyrangestdallocatorstd_pairunsignedlongCAnimationEntry_00cd2afd.cpp
 00cd2b1c	CDefStringTable_RBTree_Find	_global	unknown	undefined	0		0	yes	accepted									
 00cd2b78	CClass_00cd2b78	_unattributed	__thiscall	undefined	1	list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *	0	yes	accepted									
-00cd2b86	FindRegisteredCutsceneActor	_global	unknown	undefined	0		0	yes	accepted									
+00cd2b86	_M_find<CCharString>	std::_Rb_tree<CCharString, std::pair<CCharString const, CScriptGameResourceObjectScriptedThingBase>, std::_Select1st<std::pair<CCharString const, CScriptGameResourceObjectScriptedThingBase>>, std::less<CCharString>, std::allocator<std::pair<CCharString const, CScriptGameResourceObjectScriptedThingBase>>>	unknown	undefined	0		0	yes	accepted									
 00cd2bf1	__copy<CScriptGameResourceObjectScriptedThingBase *, CScriptGameResourceObjectScriptedThingBase *, int>	std	__fastcall	CArray<CRandomAppearanceMorph::CBodyPartMesh> *	3	CArray<class_CRandomAppearanceMorph::CBodyPartMesh> *,CArray<class_CRandomAppearanceMorph::CBodyPartMesh> *,CArray<class_CRandomAppearanceMorph::CBodyPartMesh> *	1	yes	accepted									
 00cd2c1e	ScalarDeletingDtor_00cd2c1e	_global	__thiscall	void *	2	CAssoc *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\cd\CAssoc_scalardeletingdestructor_00cd2c1e.cpp
 00cd2c3a	RbTree_CreateNode_sz0x18_00cd2c3a	_global	__fastcall	CScriptDataBase *	0		1	yes	accepted									
@@ -51630,7 +51630,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00def720	sub_00def720	_global	unknown	undefined	0		0			discovered	gapscan							
 00def730	`scalar deleting destructor'	CVtable_012ddf3c	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\de\CThingSwitch_vectordeletingdestructor_00def730.cpp
 00def760	Main	CSP_UndeadTrigger	__thiscall	void	1	CSP_UndeadTrigger *	1	yes	accepted									
-00defb10	SwitchDoorsOnAndOff	CQ_SecretPassageScript	unknown	undefined	0		0	yes	accepted									
+00defb10	SwitchDoorsOnAndOff	NScript::CQ_SecretPassageScript	unknown	undefined	0		0	yes	accepted									
 00deff60	DoMission	NScript::CQ_SecretPassageScript	__thiscall	void	1	CQ_SecretPassageScript *	1	yes	accepted									
 00df0180	WatchForLeaving	NScript::CQ_SecretPassageScript	__thiscall	void	1	CGlobal_WatchForHeroDeathScript *	1	yes	accepted									
 00df0200	BossBlockingPrisonPassage	NScript::CQ_SecretPassageScript	__thiscall	void	1	CQ_SecretPassageScript *	1	yes	accepted									

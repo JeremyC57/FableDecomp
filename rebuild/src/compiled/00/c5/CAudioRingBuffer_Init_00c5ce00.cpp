@@ -8,12 +8,12 @@
 //     channel over 0x0143CBC0) and 0x0143BF68 (six channels over 0x0143C5C0), 0x80 frames of 2 bytes, cursors 0.
 //   The landed CAudioRingBuffer00c5ce00 row had +0 as a data word: it is the vtable pointer. Descriptive names
 //   (GameCODA: no PDB/RTTI), agent441's field names.
-class CPKObject {                                       // vtable 0x012B5868: the library's root class
+class CCodaObjectBase {                                       // vtable 0x012B5868: the library's root class
 public:
-    virtual ~CPKObject() { }
+    virtual ~CCodaObjectBase() { }
 };
 
-class CAudioRingBuffer : public CPKObject {             // vtable 0x012B8FC4, 0x20 bytes
+class CAudioRingBuffer : public CCodaObjectBase {             // vtable 0x012B8FC4, 0x20 bytes
 public:
     unsigned char* m_pData;                             // +0x04 sample memory
     unsigned long  m_capacity;                          // +0x08 frames

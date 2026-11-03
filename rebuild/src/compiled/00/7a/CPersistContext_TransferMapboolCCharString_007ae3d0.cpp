@@ -197,11 +197,11 @@ public:
     unsigned int _M_node_count;                        // +0x04
     _Compare _M_key_compare;                           // +0x08 (empty)
     private:
-    _Rb_tree_node<_Value>* _M_find(const _Key& __k) const;          // 0x007ACC90 (out of line)
+    template <class _KT> _Rb_tree_node<_Value>* _M_find(const _KT& __k) const;          // 0x007ACC90 (out of line)
     public:
     iterator begin() { return iterator(this->_M_header._M_data->_M_left); }
     iterator end() { return iterator(this->_M_header._M_data); }
-    iterator find(const _Key& __k) { return iterator(_M_find(__k)); }
+    template <class _KT> iterator find(const _KT& __k) { return iterator(_M_find(__k)); }
     pair<iterator, bool> insert_unique(const value_type& __x);     // 0x007AD060
     size_type erase(const key_type& __x);                          // 0x007ADE60
     void clear();                                                  // 0x007ADAF0

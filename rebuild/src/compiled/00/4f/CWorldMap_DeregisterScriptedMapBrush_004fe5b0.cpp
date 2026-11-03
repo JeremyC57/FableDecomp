@@ -96,16 +96,19 @@ template <class V> struct _Rb_tree_iterator {
     bool operator!=(const _Rb_tree_iterator& y) const { return _M_node != y._M_node; }
 };
 
-template <class K, class V, class Compare, class Alloc> class _Rb_tree {
+template <class _Pair> struct _Select1st { };  // STLport 4.6 _function.h (KeyOfValue of map's tree)
+template <class K, class V, class KeyOfValue, class Compare, class Alloc> class _Rb_tree {
 public:
     typedef _Rb_tree_node<V> _Node;
     typedef _Rb_tree_iterator<V> iterator;
     _STLP_alloc_proxy<_Node*, allocator<_Node> > _M_header;   // +0x00
     unsigned int _M_node_count;                    // +0x04
     Compare _M_key_compare;                        // +0x08
-    _Node* _M_find(const K& k) const;              // 0x0042B467 (manifest "StdMap_FindLE" is descriptive)
+private:
+    template <class _KT> _Node* _M_find(const _KT& k) const;              // 0x0042B467 (manifest "StdMap_FindLE" is descriptive)
+public:
     iterator end() { return iterator(_M_header._M_data); }
-    iterator find(const K& k) { return iterator(_M_find(k)); }
+    template <class _KT> iterator find(const _KT& k) { return iterator(_M_find(k)); }
     static __forceinline void deallocate(_Node* p, unsigned int) { if (p != 0) free(p); }
     void erase(iterator position)
     {
@@ -119,7 +122,7 @@ public:
 
 template <class K, class T, class Compare = less<K>, class Alloc = allocator<pair<const K, T> > > class map {
 public:
-    typedef _Rb_tree<K, pair<const K, T>, Compare, Alloc> _Rep_type;
+    typedef _Rb_tree<K, pair<const K, T>, _Select1st<pair<const K, T> >, Compare, Alloc> _Rep_type;
     typedef typename _Rep_type::iterator iterator;
     _Rep_type _M_t;
     iterator end() { return _M_t.end(); }

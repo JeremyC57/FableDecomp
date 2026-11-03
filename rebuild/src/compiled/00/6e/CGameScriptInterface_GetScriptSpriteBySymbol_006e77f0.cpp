@@ -38,10 +38,10 @@ template<class V,class A> struct _Rb_tree_base { protected: _STLP_alloc_proxy<_R
 template<class K,class V,class GetKey,class C,class A> class _Rb_tree : public _Rb_tree_base<V,A> {
     unsigned int _M_node_count;
     C _M_key_compare;
-    _Rb_tree_node<V>* _M_find(const K&) const;
+    template <class _KT> _Rb_tree_node<V>* _M_find(const _KT&) const;
 public:
     typedef _Rb_tree_iterator<V,_Const_traits<V> > const_iterator;
-    const_iterator find(const K& k) const { return const_iterator(_M_find(k)); }
+    template <class _KT> const_iterator find(const _KT& k) const { return const_iterator(_M_find(k)); }
     const_iterator end() const { return const_iterator(this->_M_header._M_data); }
 };
 template<class K,class T,class C=less<K>,class A=allocator<pair<const K,T> > > class map {

@@ -69,16 +69,29 @@ template <class _Value> struct _Rb_tree_iterator {
 };
 template <class _Value>
 inline bool operator!=(const _Rb_tree_iterator<_Value>& __x, const _Rb_tree_iterator<_Value>& __y) { return __x._M_node != __y._M_node; }
-template <class _Key, class _Tp> class map {                       // STLport map, 12 bytes
+template <class _Tp> struct less { };                              // STLport 4.6 _function.h
+template <class _Pair> struct _Select1st { };                      // (map's KeyOfValue)
+template <class _Tp> class allocator { };
+// STLport 4.6.1 _tree.h: find / _M_find are member templates (owner decision 2026-11-03), _M_find private.
+template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc> class _Rb_tree {
 public:
-    typedef pair<const _Key, _Tp> value_type;
-    typedef _Rb_tree_iterator<value_type> const_iterator;
+    typedef _Rb_tree_iterator<_Value> const_iterator;
     _Rb_tree_node_base* _M_header;
     unsigned long       _M_node_count;
-    unsigned long       _M_key_compare;
-    _Rb_tree_node_base* _M_find(const _Key& __k) const;           // 0x00A2B240
-    const_iterator find(const _Key& __k) const { return const_iterator(_M_find(__k)); }
+    _Compare            _M_key_compare;
+    template <class _KT> const_iterator find(const _KT& __k) const { return const_iterator(_M_find(__k)); }
     const_iterator end() const { return const_iterator(_M_header); }
+private:
+    template <class _KT> _Rb_tree_node<_Value>* _M_find(const _KT& __k) const;   // 0x00A2B240
+};
+template <class _Key, class _Tp, class _Compare = less<_Key>, class _Alloc = allocator<pair<const _Key, _Tp> > > class map {   // STLport map, 12 bytes
+public:
+    typedef pair<const _Key, _Tp> value_type;
+    typedef _Rb_tree<_Key, value_type, _Select1st<value_type>, _Compare, _Alloc> _Rep_type;
+    typedef typename _Rep_type::const_iterator const_iterator;
+    _Rep_type _M_t;
+    const_iterator find(const _Key& __k) const { return _M_t.find(__k); }
+    const_iterator end() const { return _M_t.end(); }
 };
 }
 

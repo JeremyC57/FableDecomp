@@ -2,8 +2,8 @@
 #include <cstdio>
 #include <cstring>
 #include <new>
-class CPKObject { public: virtual ~CPKObject() { } };
-class CAudioRingBuffer : public CPKObject {
+class CCodaObjectBase { public: virtual ~CCodaObjectBase() { } };
+class CAudioRingBuffer : public CCodaObjectBase {
 public:
     CAudioRingBuffer() : m_pData(0), m_capacity(0), m_frameBytes(0), m_channels(0), m_readPos(0), m_writePos(0), m_queued(0) { }
     unsigned char* m_pData; unsigned long m_capacity, m_frameBytes, m_channels, m_readPos, m_writePos, m_queued;

@@ -167,9 +167,9 @@ public:
 protected:
     _Link_type _M_root() const { return (_Link_type)this->_M_header._M_data->_M_parent; }
 private:
-    _Rb_tree_node<_Value>* _M_find(const _Key& __k) const;   // 0x004B9370
+    template <class _KT> _Rb_tree_node<_Value>* _M_find(const _KT& __k) const;   // 0x004B9370
 public:
-    const_iterator find(const _Key& __k) const { return const_iterator(_M_find(__k)); }
+    template <class _KT> const_iterator find(const _KT& __k) const { return const_iterator(_M_find(__k)); }
     const_iterator end() const { return const_iterator(this->_M_header._M_data); }
 };
 template <class _Key, class _Compare = less<_Key>, class _Alloc = allocator<_Key> >
@@ -185,7 +185,8 @@ public:
 // Same-TU body of 0x004B9370 (STLport 4.6 _tree.c), as landed.
 #pragma auto_inline(off)
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
-__declspec(noinline) _Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_find(const _Key& __k) const
+template <class _KT>
+__declspec(noinline) _Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_find(const _KT& __k) const
 {
     _Link_type __y = this->_M_header._M_data;
     _Link_type __x = _M_root();

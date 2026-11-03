@@ -10,12 +10,12 @@
 //   saturated to 16 bits at a stride of m_numChannels samples, so +0x1C is the output shift (the landed models call it
 //   m_active). The manifest label `_gapscan::sub_00c591c0` is a placeholder.
 // Shape: arguments pushed right to left (+0x1C first), `imul eax,17Ch` for the limiter index.
-class CPKObject {                                       // vtable 0x012B5868: the library's root class
+class CCodaObjectBase {                                       // vtable 0x012B5868: the library's root class
 public:
-    virtual ~CPKObject() { }
+    virtual ~CCodaObjectBase() { }
 };
 
-class CMixBuffer : public CPKObject {                   // vtable 0x012B8F38, 0xC34 bytes
+class CMixBuffer : public CCodaObjectBase {                   // vtable 0x012B8F38, 0xC34 bytes
 public:
     virtual ~CMixBuffer();                              // 0x00C57EF0
     virtual void Reset();                               // slot 1

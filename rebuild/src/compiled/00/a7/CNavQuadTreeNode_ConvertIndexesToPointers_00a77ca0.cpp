@@ -11,7 +11,7 @@ class C2DVector { public: float X, Y; };
 class CANavQuadTreeNode;
 namespace std {
 template <class T> struct less { };
-template <class T> struct allocator { };
+template <class T> class allocator { };
 template <class T1, class T2> struct pair { T1 first; T2 second; };
 struct _Rb_tree_node_base {
     unsigned char       _M_color;                  // +0x00
@@ -22,17 +22,19 @@ struct _Rb_tree_node_base {
 template <class V> struct _Rb_tree_node : _Rb_tree_node_base {
     V _M_value_field;                              // +0x10
 };
-template <class V> struct _Rb_tree_iterator {
+template <class T> struct _Nonconst_traits { };
+template <class V, class Traits> struct _Rb_tree_iterator {
     _Rb_tree_node_base* _M_node;
     _Rb_tree_iterator(_Rb_tree_node_base* n) : _M_node(n) {}
     _Rb_tree_iterator(const _Rb_tree_iterator& it) : _M_node(it._M_node) {}
     V* operator->() const { return &((_Rb_tree_node<V>*)_M_node)->_M_value_field; }
 };
-template <class K, class V, class KoV, class C, class A> struct _Rb_tree {
-    typedef _Rb_tree_iterator<V> iterator;
+template <class K, class V, class KoV, class C, class A> class _Rb_tree {
+public:
+    typedef _Rb_tree_iterator<V, _Nonconst_traits<V> > iterator;
     _Rb_tree_node_base* _M_header;
     unsigned long       _M_node_count;
-    iterator find(const K& key);                   // 0x00A7F880 for map<long, CANavQuadTreeNode*>
+    template <class _KT> iterator find(const _KT& key);                   // 0x00A7F880 for map<long, CANavQuadTreeNode*>
 };
 template <class P> struct _Select1st { };
 template <class K, class V, class C = less<K>, class A = allocator<pair<const K, V> > > class map {

@@ -10,12 +10,12 @@
 // Shape: EH state 0 is entered before the first member exists (the inlined root constructor's vtable store of
 //   0x012B5868 is dropped by VC7.1 because the derived store overwrites it; the root's inline empty destructor is what
 //   the destructor 0x00C3E2A0 ends with), then one state per constructed pool.
-class CPKObject {                                   // vtable 0x012B5868: the library's root class
+class CCodaObjectBase {                                   // vtable 0x012B5868: the library's root class
 public:
-    virtual ~CPKObject() { }
+    virtual ~CCodaObjectBase() { }
 };
 
-class CNodePool : public CPKObject {                // vtable 0x012B586C, 0x14 bytes
+class CNodePool : public CCodaObjectBase {                // vtable 0x012B586C, 0x14 bytes
 public:
     CNodePool();                                    // 0x00C3C8A0
     ~CNodePool();                                   // 0x00C3CAA0
@@ -25,7 +25,7 @@ public:
     long  m_activeCount;                            // +0x10
 };
 
-class CAudioPlatform : public CPKObject {           // vtable 0x012B5B80
+class CAudioPlatform : public CCodaObjectBase {           // vtable 0x012B5B80
 public:
     CAudioPlatform();
     ~CAudioPlatform();                              // 0x00C3E2A0 (slot 0: deleting destructor 0x00C3E380)

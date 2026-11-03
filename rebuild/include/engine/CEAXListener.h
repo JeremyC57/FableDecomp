@@ -1,52 +1,35 @@
-#ifndef FABLE_CEAXCONTEXT_H
-#define FABLE_CEAXCONTEXT_H
-#include "EAX40.h"
-#include "CPKObject.h"
-// Layout: context vtable 012b9340, derived from root 012b5868. Allocation at
-// 00c4e307 is 0x4f0 bytes; constructor 00c604e0 initializes this complete span.
-// Class/member names are descriptive; native EAX protocol roles are documented.
-struct SEaxEvent {
- unsigned long m_flags,m_type,m_environment;
- unsigned char Opaque0c[0x88];
- SEaxEvent* m_pNext;
-};
-class CEaxSource;
-// Layout: node vtable 012b9338; constructor 00c5ff50 has next+4 and source+8.
-class CEaxSourceNode : public CPKObject {
+#ifndef FABLE_CEAXLISTENER_H
+#define FABLE_CEAXLISTENER_H
+#include "EAXNativeTypes.h"
+#include "CCodaObjectBase.h"
+// GameCODA 2.10 EAX translation listener (owner decision 2026-11-03 D3; pass 11 spelled it CEaxContext). Class, member and
+// access names: the original EAXListener.obj / EAX4Translation.obj debug types (Codex pass 12 SDK_COMPARISON). Native layout:
+// allocation 0x00C4E307 = 0x4f0 bytes, ctor 0x00C604E0, vtable 0x012B9340; the later SDK's EAX1/2 conversion state is absent.
+// Offsets proven by both models (pass 11 descriptive name in brackets): m_ListenerSlotID +0x004 [m_primarySlot],
+// m_lpBufferList +0x008 [m_pSources], m_Listener.flDistanceFactor +0x03c [m_distanceFactor], m_Source.eax4FXSlot +0x084
+// [m_slots], m_Source.eax4LPSlot +0x0f4 [m_reverb], m_Source.eax4Context +0x2b4 [m_context], m_Source.eax3LP +0x2d0
+// [m_defaultReverb], m_Dest.eax3LP +0x340 [m_committed], m_Dest.flDistanceFactor +0x3b0 [m_effectiveDistanceFactor],
+// m_dwEAX3Changes +0x3bc [m_dirty], lpChanges +0x3c4 [m_pEvents], m_lEAX4ErrorCode +0x3d4 [m_lastError],
+// m_flEAX4Unsized* +0x3d8..0x4b7 [m_decayTimeBase..m_modulationTimeSize], m_flEAX3Unsized* +0x4b8..0x4ef.
+class CEAXBuffer;
+// Layout: vtable 0x012B9338; ctor 0x00C5FF50 (pass 11 CEaxSourceNode): next +4, buffer +8.
+class CEAXBufferList:public CCodaObjectBase {
 public:
- virtual ~CEaxSourceNode();
- CEaxSourceNode* m_pNext;
- CEaxSource* m_pSource;
+ CEAXBufferList(); // 0x00C5FF50
+ virtual ~CEAXBufferList();
+ CEAXBufferList* lpNext;
+ CEAXBuffer* lpEAXBuffer;
 };
-class CEaxContext : public CPKObject {
+class CEAXListener:public CCodaObjectBase {
 public:
- virtual ~CEaxContext();
- long m_primarySlot;
- CEaxSourceNode* m_pSources;
- unsigned char Opaque00c[0x30];
- float m_distanceFactor;
- unsigned char Opaque040[0x44];
- EAXFXSLOTPROPERTIES m_slots[4];
- EAXREVERBPROPERTIES m_reverb[4];
- EAXCONTEXTPROPERTIES m_context;
- EAXREVERBPROPERTIES m_defaultReverb;
- EAXREVERBPROPERTIES m_committed;
- float m_effectiveDistanceFactor;
- unsigned char Opaque3b4[8];
- unsigned long m_dirty;
- unsigned char Opaque3c0[4];
- SEaxEvent* m_pEvents;
- unsigned char Opaque3c8[0x0c];
- long m_lastError;
- float m_decayTimeBase[4],m_decayTimeSize[4],m_reflectionsBase[4],m_reflectionsSize[4];
- float m_reflectionsDelayBase[4],m_reflectionsDelaySize[4],m_reverbBase[4],m_reverbSize[4];
- float m_reverbDelayBase[4],m_reverbDelaySize[4],m_echoTimeBase[4],m_echoTimeSize[4];
- float m_modulationTimeBase[4],m_modulationTimeSize[4];
- unsigned char Opaque4b8[0x38];
- SEaxEvent* QueueEvent_00c5ffb0(unsigned long,unsigned long,const void*,unsigned long);
- void ClearEvents();
- long CommitDeferredSettings();
- long SetEffectProperty_00c68f90(unsigned long,unsigned long,const void*,unsigned long,SEaxEvent**);
+ virtual ~CEAXListener();
+ int GetEAX4FXSlot(unsigned long,unsigned long,void*,unsigned long,unsigned long*); // 0x00C66330
+ void AddToChangesList(IDENTIFIER,unsigned long,void*,long); // 0x00C5FFB0
+ void SetEAX4ErrorCode(long code){m_lEAX4ErrorCode=code;}
+ // No SDK record yet for the rows below: pass 11 descriptive method names, class respelled.
+ void ClearEvents(); // 00c60410
+ long CommitDeferredSettings(); // 00c67f60
+ long SetEffectProperty_00c68f90(unsigned long,unsigned long,const void*,unsigned long,_CHANGES**);
  long SetReverbAllParameters(unsigned long,const EAXREVERBPROPERTIES*); // 00c68d70
  long SetEnvironment(unsigned long,unsigned long); // 00c68a50
  long SetEnvironmentSize(unsigned long,float); // 00c677c0
@@ -77,5 +60,31 @@ public:
  long SetSlotVolume(unsigned long,long); // 00c67720
  long SetSlotLock(unsigned long,long); // 00c67470
  long SetSlotFlags(unsigned long,unsigned long); // 00c67430
+ unsigned long m_ListenerSlotID;
+ CEAXBufferList* m_lpBufferList;
+ LISTENER m_Listener,m_Listener_Defer;
+ SOURCE m_Source;
+ DESTINATION m_Dest;
+ unsigned long m_dwFlags,m_dwFlags_Defer,m_dwEAX3Changes,m_dwEAX3Changes_Defer;
+ _CHANGES* lpChanges;
+ float m_flDecayHFFactor;
+ bool m_bEnsoniq;
+ EAXVERSION m_EAXVersion;
+private:
+ long m_lEAX4ErrorCode;
+ float m_flEAX4UnsizedDecayTime[4],m_flEAX4UnsizedDecayTimeSize[4];
+ float m_flEAX4UnsizedReflections[4],m_flEAX4UnsizedReflectionsSize[4];
+ float m_flEAX4UnsizedReflectionsDelay[4],m_flEAX4UnsizedReflectionsDelaySize[4];
+ float m_flEAX4UnsizedReverb[4],m_flEAX4UnsizedReverbSize[4];
+ float m_flEAX4UnsizedReverbDelay[4],m_flEAX4UnsizedReverbDelaySize[4];
+ float m_flEAX4UnsizedEchoTime[4],m_flEAX4UnsizedEchoTimeSize[4];
+ float m_flEAX4UnsizedModulationTime[4],m_flEAX4UnsizedModulationTimeSize[4];
+ float m_flEAX3UnsizedDecayTime,m_flEAX3UnsizedDecayTimeSize;
+ float m_flEAX3UnsizedReflections,m_flEAX3UnsizedReflectionsSize;
+ float m_flEAX3UnsizedReflectionsDelay,m_flEAX3UnsizedReflectionsDelaySize;
+ float m_flEAX3UnsizedReverb,m_flEAX3UnsizedReverbSize;
+ float m_flEAX3UnsizedReverbDelay,m_flEAX3UnsizedReverbDelaySize;
+ float m_flEAX3UnsizedEchoTime,m_flEAX3UnsizedEchoTimeSize;
+ float m_flEAX3UnsizedModulationTime,m_flEAX3UnsizedModulationTimeSize;
 };
 #endif

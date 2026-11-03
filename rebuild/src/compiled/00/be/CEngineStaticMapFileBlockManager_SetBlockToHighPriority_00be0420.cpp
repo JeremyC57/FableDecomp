@@ -66,7 +66,7 @@ public:
     _STLP_alloc_proxy<_Node*, _Node, allocator<_Node> > _M_header;   // +0x00
     unsigned int _M_node_count;                                       // +0x04
     _Compare _M_key_compare;                                          // +0x08
-    iterator find(const _Key& __k);                                   // 0x00BE08E0 (out of line)
+    template <class _KT> iterator find(const _KT& __k);                                   // 0x00BE08E0 (out of line)
 };
 template <class _Pair> struct _Select1st { };
 

@@ -83,7 +83,7 @@ public:
     unsigned int _M_node_count;                                       // +0x04
     _Compare _M_key_compare;                                          // +0x08
     iterator end() { return iterator(_M_header._M_data); }
-    iterator find(const _Key& __k);                                   // 0x006E6990 (out of line)
+    template <class _KT> iterator find(const _KT& __k);                                   // 0x006E6990 (out of line)
     void erase(iterator __position)
     {
         _Link_type __y = (_Link_type)_Rb_global_inst::_Rebalance_for_erase(__position._M_node,

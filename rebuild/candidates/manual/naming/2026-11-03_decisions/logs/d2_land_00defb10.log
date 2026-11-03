@@ -1,0 +1,15 @@
+addr       parity           behav  name
+00defb10   WARN RELOC_NAME: ??$_Construct@VCScriptThing@@V1@@std@@YIXPAVCScriptThing@@ABV1@@Z -> 008ac120 labelled 'std::_Cons_val<std::allocator<CScriptThing>,CScriptThing,CScriptThing>'
+00defb10   RELOCATION_MATCH PASS   SwitchDoorsOnAndOff
+
+WINS: 1
+  00defb10 RELOCATION_MATCH NScript::CQ_SecretPassageScript::?SwitchDoorsOnAndOff@CQ_SecretPassageScript@NScript@@QAEXXZ
+addr       parity           behav  name
+00defb10   WARN RELOC_NAME: ??$_Construct@VCScriptThing@@V1@@std@@YIXPAVCScriptThing@@ABV1@@Z -> 008ac120 labelled 'std::_Cons_val<std::allocator<CScriptThing>,CScriptThing,CScriptThing>'
+00defb10   RELOCATION_MATCH PASS   SwitchDoorsOnAndOff
+
+WINS: 1
+  00defb10 RELOCATION_MATCH NScript::CQ_SecretPassageScript::?SwitchDoorsOnAndOff@CQ_SecretPassageScript@NScript@@QAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NScriptCQSecretPassageScript_SwitchDoorsOnAndOff_00defb10

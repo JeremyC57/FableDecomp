@@ -13,8 +13,10 @@
 // Shape: the wrappers are defined (not declared) in the TU, as in retail's, so VC7.1 inlines all five calls.
 extern "C" __declspec(dllimport) void* __stdcall GetProcAddress(void* module, const char* name);   // IAT 0x0143FE44
 
-struct GUID { unsigned long Data1; unsigned short Data2; unsigned short Data3; unsigned char Data4[8]; };
-extern const GUID DSPROPSETID_EAX30_ListenerProperties;   // 0x012BEE90
+typedef struct _GUID { unsigned long Data1; unsigned short Data2; unsigned short Data3; unsigned char Data4[8]; } GUID;
+// 0x012BEE90 (owner decision 2026-11-03 D3): the original GameCODA 2.10 SAL object CSalOpenALReverb::Update relocates the C++
+//   ?SAL_EAX30_ListenerProperties@@3U_GUID@@B here (byte-identical 1115-byte body, Codex pass 12 SDK_COMPARISON 00c71870).
+extern const GUID SAL_EAX30_ListenerProperties;   // 0x012BEE90
 
 typedef void (__cdecl* PFN_alDistanceModel)(long value);
 typedef void (__cdecl* PFN_alListener3f)(long param, float v1, float v2, float v3);
@@ -27,14 +29,14 @@ typedef long (__cdecl* PFN_EAXSet)(const GUID* propertySetGuid, unsigned long pr
 #define DSPROPERTY_EAXLISTENER_ROOMROLLOFFFACTOR 24
 #define DSPROPERTY_EAXLISTENER_DEFERRED        0x80000000
 
-class CPKObject {                                        // vtable 0x012B5868: the libpk root (inline virtual destructor)
+class CCodaObjectBase {                                        // vtable 0x012B5868: the libpk root (inline virtual destructor)
 public:
-    virtual ~CPKObject() { }
+    virtual ~CCodaObjectBase() { }
 };
 
 // Retail OpenAL wrapper (layout of the landed CAudioContext rows): DLL module +0x04, lazily resolved entry points, the
 // alGetProcAddress routing flag +0x104.
-class CAudioContext : public CPKObject {
+class CAudioContext : public CCodaObjectBase {
 public:
     void*               Module;                          // +0x04
     unsigned char       _pad0[0x90];
@@ -83,7 +85,7 @@ void CAudioContext::InitialiseListener()
     Listener3f(AL_VELOCITY, 0.0f, 0.0f, 0.0f);
 
     long room = -10000;
-    EAXSet(&DSPROPSETID_EAX30_ListenerProperties, DSPROPERTY_EAXLISTENER_ROOM | DSPROPERTY_EAXLISTENER_DEFERRED, 0, &room, sizeof(room));
+    EAXSet(&SAL_EAX30_ListenerProperties, DSPROPERTY_EAXLISTENER_ROOM | DSPROPERTY_EAXLISTENER_DEFERRED, 0, &room, sizeof(room));
     float roomRolloffFactor = 0.0f;
-    EAXSet(&DSPROPSETID_EAX30_ListenerProperties, DSPROPERTY_EAXLISTENER_ROOMROLLOFFFACTOR | DSPROPERTY_EAXLISTENER_DEFERRED, 0, &roomRolloffFactor, sizeof(roomRolloffFactor));
+    EAXSet(&SAL_EAX30_ListenerProperties, DSPROPERTY_EAXLISTENER_ROOMROLLOFFFACTOR | DSPROPERTY_EAXLISTENER_DEFERRED, 0, &roomRolloffFactor, sizeof(roomRolloffFactor));
 }

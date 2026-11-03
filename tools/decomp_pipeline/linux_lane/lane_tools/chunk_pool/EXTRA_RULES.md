@@ -122,3 +122,45 @@ header (member offsets that natural alignment cannot give), include the SDK's ow
 `#include <pshpack1.h>` ... `#include <poppack.h>` (rebuild/include/pshpack1.h / poppack.h, directive text only). Cite the offsets in the
 header comment. This is not a licence for authored `#pragma pack`: no packing without byte evidence (first use: CImaAdpcmCodec 0x00C5FA50,
 mmreg.h's tWAVEFORMATEX / ima_adpcmwaveformat_tag).
+
+## Owner decisions, 2026-11-03 ("faithfully recreate what retail did"; override anything above that disagrees)
+- **D1 -- STLport `_Rb_tree::find` / `_M_find` are member templates.** Stock STLport 4.6.1 `stl/_tree.h` lines 457-467 declare
+  `template <class _KT> iterator find(const _KT&)`, the const twin, and the private `template <class _KT> _Rb_tree_node<_Value>* _M_find(const _KT&) const`
+  whenever `_STLP_MEMBER_TEMPLATES` is set (VC7.1: yes). Spell them so: `??$_M_find@<K>@?$_Rb_tree@...@std@@ABEPAU?$_Rb_tree_node@...@1@AB<K>@Z`
+  (private `ABE`, node return, never `_Rb_tree_node_base*`, never a member of `map`/`set`) and `??$find@<K>@?$_Rb_tree@...` (`QAE` iterator /
+  `QBE` const_iterator, hidden result). `map::find` / `set::find` stay non-template wrappers over `_M_t.find(k)`. The tree always has the five
+  STLport arguments (`_Select1st` / `_Identity`, `less`, `class allocator`). A definer instantiates the member template explicitly
+  (`template ... _Rb_tree<...>::_M_find<K>(const K&) const;` -- `template class _Rb_tree<...>;` does not instantiate member templates).
+  `stlport/fable_map.h` already models it. Records: `rebuild/candidates/manual/naming/2026-11-03_decisions/`.
+- **D2: STLport dispatch tags have an empty user constructor.** `stlport/fable_containers.h` declares `struct __true_type {
+  __true_type() { } };` / `struct __false_type { __false_type() { } };` on the default path (the old opt-in
+  `FABLE_RETAIL_STLP_TAG_CTORS` branch is gone). Retail never zero-fills a tag temporary: it passes the tag's address without a
+  store (UpdateShadowedSpotLights 0x00B47F82..91, SwitchDoorsOnAndOff 0x00DEFB10). Include the shared header; do not declare the
+  tags locally. Rows that still do are listed in `rebuild/candidates/manual/naming/2026-11-03_decisions/MIGRATION_TAGS.tsv` (2,464
+  with a local user ctor, 630 without; untouched, migrate in a wave). All 2,263 landed includers rechecked byte-identical.
+- **D3: GameCODA 2.10 EAX translation uses the SDK names.** Class `CEAXListener` (vtable 0x012B9340, was `CEaxContext`),
+  `CEAXBuffer` (0x012B9344, was `CEaxSource`), `CEAXBufferList` (0x012B9338, was `CEaxSourceNode`), root `CCodaObjectBase`
+  (0x012B5868, was `CPKObject`); the notification packet is `_CHANGES` (was `SEaxEvent`). One model each:
+  `engine/CEAXListener.h`, `engine/CEAXBuffer.h`, `engine/CCodaObjectBase.h` (+ `EAXNativeTypes.h`, `CodaEnvironment.h`,
+  `CodaMemory.h`, `DSound3D.h`); SDK member names with the offsets listed in the headers. Memory is the SDK's extern "C"
+  `CodaMalloc` / `CodaFree` (0x00C3C360 / 0x00C3C370); `CCodaObjectBase`'s operator new / delete are inline forwarders to them,
+  never a `??2`/`??3` symbol. SDK-proven method names: `AddToChangesList` 0x00C5FFB0, `Set3DBuffer` (private) 0x00C60FF0,
+  `CommitEAX3` 0x00C65A00, `GetEAX4FXSlot` 0x00C66330, `GetEAX4Source` 0x00C66C90, `IsNaN(const _D3DVECTOR&)` 0x00C60B30;
+  the rest keep their descriptive names on the new class. EAX 4.0 GUIDs are extern "C" (`DEFINE_GUID` = `EXTERN_C`;
+  GameCODA EAX4Translation.obj relocates `_EAX_REVERB_EFFECT`): `_EAX_NULL_GUID` 0x012B9438, `_EAX_PrimaryFXSlotID`
+  0x012B9458, `_EAXPROPERTYID_EAX40_FXSlot0..3` 0x012B9468.., `_EAX_REVERB_EFFECT` 0x012B94B8 (all in `engine/EAX40.h`).
+  Exception by the same evidence rule: the SAL module's own copy at 0x012BEE90 is the C++ `?SAL_EAX30_ListenerProperties@@3U_GUID@@B`
+  (the original GameCODA Update object relocates it; CSalOpenALReverb::Update 0x00C71870 is byte-identical). Local models spell
+  the SDK struct tags (`_GUID`, `_EAXVECTOR`, `_EAXREVERBPROPERTIES`, ...), never `SGuid` / `EAXVECTOR` tags.
+  Records: `rebuild/candidates/manual/naming/2026-11-03_decisions/`.
+
+## Owner decision, 2026-11-03 (portable C++): asm only in shared helper headers
+The end goal is a port with identical game logic, so no row source may contain `__asm`. Where retail itself ran an
+inline-asm helper (bare `fistp`, `fnstcw`/`fldcw`, `rdtsc`, `cpuid`, `frndint`/`fscale`, the SSE vertex kernels, the libpk
+MMX mixers), that helper lives in ONE shared header under its PDB name with two paths: the byte-matching `__forceinline`
+`__asm` body (with the `// Retail-asm: <retail address, instruction>` line; grade `retail_asm` is unchanged) and, under
+`#ifdef FABLE_PORTABLE`, plain C++ with identical semantics -- a compiler intrinsic only where plain C++ provably cannot
+reproduce them. The rounding mode the asm depends on is stated in the header (a bare `fistp` rounds per the control word,
+it is not floor). Every helper has a dual-path test (rebuild/tests/portable/) that runs both paths on the same inputs and
+asserts equal results; a row that needs a helper calls it and is otherwise ordinary C++. Agents hand back new helpers as
+headers, never as asm in the row.

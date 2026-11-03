@@ -15,12 +15,12 @@
 //   - the global rings: 0x0143BF88 gets 1 channel over 0x0143CBC0 (0x100 bytes), 0x0143BF68 gets 6 channels over
 //     0x0143C5C0 (0x600 bytes, ending at 0x0143CBC0) -- agent441's g_mixRing is the planar 0x0143BF68.
 //   The CLandscapeBackgroundTree name is a propagated manifest label; descriptive names (GameCODA: no PDB/RTTI).
-class CPKObject {
+class CCodaObjectBase {
 public:
-    virtual ~CPKObject();
+    virtual ~CCodaObjectBase();
 };
 
-class CAudioRingBuffer : public CPKObject {             // vtable 0x012B8FC4, 0x20 bytes
+class CAudioRingBuffer : public CCodaObjectBase {             // vtable 0x012B8FC4, 0x20 bytes
 public:
     CAudioRingBuffer();                                 // 0x00C5D0A0
     unsigned char* m_pData;                             // +0x04

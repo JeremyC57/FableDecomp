@@ -5,7 +5,7 @@
 static int g_freeCalls = 0;
 static void* g_lastFreed = 0;
 
-class CPKObject {
+class CCodaObjectBase {
 public:
     static void operator delete(void* p) { ++g_freeCalls; g_lastFreed = p; }
 };
@@ -22,7 +22,7 @@ public:
 void CVtable_012bf0c8::ReleaseBlock()
 {
     if (m_pSettings) {
-        CPKObject::operator delete(m_pSettings);
+        CCodaObjectBase::operator delete(m_pSettings);
         m_pSettings = 0;
         m_pTargetSettings = 0;
         m_pPendingSettings = 0;

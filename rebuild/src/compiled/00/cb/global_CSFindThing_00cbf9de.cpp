@@ -101,24 +101,36 @@ struct _Rb_tree_node_base {
 template <class V> struct _Rb_tree_node : _Rb_tree_node_base {
     V _M_value_field;                                   // +0x10
 };
-template <class K, class T, class C = less<K>, class A = allocator<pair<const K, T> > >
-class map {
+template <class P> struct _Select1st { };              // STLport 4.6 _function.h (map's KeyOfValue)
+// STLport 4.6.1 _tree.h: find / _M_find are member templates (owner decision 2026-11-03), _M_find private.
+template <class K, class V, class KoV, class C, class A>
+class _Rb_tree {
 public:
-    typedef pair<const K, T> value_type;
-    typedef _Rb_tree_node<value_type> _Node;
+    typedef _Rb_tree_node<V> _Node;
     struct iterator {
         _Node* _M_node;
         iterator(_Node* node) : _M_node(node) { }
         bool operator==(const iterator& other) const { return _M_node == other._M_node; }
         bool operator!=(const iterator& other) const { return _M_node != other._M_node; }
-        value_type* operator->() const { return &_M_node->_M_value_field; }
+        V* operator->() const { return &_M_node->_M_value_field; }
     };
     _Node*       _M_header;                             // +0x00
     unsigned int _M_node_count;                         // +0x04
     C            _M_key_compare;                        // +0x08
-    _Node* _M_find(const K& key) const;                 // 0x00CD2B86 (map<CCharString, CScriptGameResourceObjectScriptedThingBase>)
-    iterator find(const K& key) { return iterator(_M_find(key)); }
+    template <class _KT> iterator find(const _KT& key) { return iterator(_M_find(key)); }
     iterator end() { return iterator(_M_header); }
+private:
+    template <class _KT> _Node* _M_find(const _KT& key) const;   // 0x00CD2B86 (map<CCharString, CScriptGameResourceObjectScriptedThingBase>)
+};
+template <class K, class T, class C = less<K>, class A = allocator<pair<const K, T> > >
+class map {
+public:
+    typedef pair<const K, T> value_type;
+    typedef _Rb_tree<K, value_type, _Select1st<value_type>, C, A> _Rep_type;
+    typedef typename _Rep_type::iterator iterator;
+    _Rep_type _M_t;
+    iterator find(const K& key) { return _M_t.find(key); }
+    iterator end() { return _M_t.end(); }
 };
 }
 typedef std::map<CCharString, CScriptGameResourceObjectScriptedThingBase> CActorMap;

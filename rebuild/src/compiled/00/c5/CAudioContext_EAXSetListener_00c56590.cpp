@@ -1,4 +1,5 @@
 // CAudioContext::EAXSetListener(unsigned long property, void* value, unsigned long size) -- EAXSet on the listener property set (the GUID constant @ 0x012BEE90, no source): resolve the entry point on first use and call it
+// Leaf: ?EAXSetListener@CAudioContext@@QAEJKPAXK@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C56590, length 64 bytes.
 // Callees: CAudioContext::GetProcAddress @ 0x00C4D740 ("EAXSet" @ 0x012B8B80), the resolved entry point (cdecl, five arguments, `add esp,14h`;
 // the GUID address is pushed as an immediate, `push 0` is the source). `ret 0Ch`: three arguments. The manifest label is propagated.
@@ -39,11 +40,14 @@ struct CAudioContext {
     void CloseDevice();                                  // 0x00C56290
 };
 
-extern const unsigned char g_eaxListenerPropertySetGuid_012bee90[16];   // 0x012BEE90
+struct _GUID { unsigned long Data1; unsigned short Data2; unsigned short Data3; unsigned char Data4[8]; };
+// 0x012BEE90 (owner decision 2026-11-03 D3): the original GameCODA 2.10 SAL object CSalOpenALReverb::Update relocates the C++
+//   ?SAL_EAX30_ListenerProperties@@3U_GUID@@B here (byte-identical 1115-byte body, Codex pass 12 SDK_COMPARISON 00c71870).
+extern const _GUID SAL_EAX30_ListenerProperties;   // 0x012BEE90 {A8FA6882-B476-11D3-BDB9-00C0F02DDF87}
 
 long CAudioContext::EAXSetListener(unsigned long property, void* value, unsigned long size)
 {
     if (!pfnEAXSet)
         pfnEAXSet = (PFN_EAXSet)GetProcAddress("EAXSet");
-    return pfnEAXSet(g_eaxListenerPropertySetGuid_012bee90, property, 0, value, size);
+    return pfnEAXSet(&SAL_EAX30_ListenerProperties, property, 0, value, size);
 }

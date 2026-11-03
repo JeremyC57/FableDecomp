@@ -9,9 +9,11 @@
 //   - callers 0x00C53B06 (a jump), 0x00C54179 and 0x00C6AEBE (inside 0x00C6AE90, the destructor of the object the landed
 //     0x00C6AFC0 constructor builds, whose reverb member sits at +0x28c) stop the reverb without destroying it.
 //   The landed CTCKraken_00c6a780::Shutdown is a propagated class name; descriptive names (libpk: no PDB/RTTI).
-class CPKObject {                                       // the libpk root: its allocator hooks
+extern "C" void* __cdecl CodaMalloc(unsigned int size);   // 0x00C3C360 (GameCODA Memory.obj)
+extern "C" void __cdecl CodaFree(void* p);                // 0x00C3C370
+class CCodaObjectBase {                                       // the libpk root: its allocator hooks
 public:
-    static void __cdecl operator delete(void* p);       // 0x00C3C370
+    static void __cdecl operator delete(void* p) { CodaFree(p); }       // 0x00C3C370
 };
 
 class CDspObject {                                      // vtable 0x012BF050: the reverb DSP parts' base
@@ -148,7 +150,7 @@ void CReverbProcessor::Shutdown()
 {
     m_bReady = false;
     if (m_pMemory) {
-        CPKObject::operator delete(m_pMemory);
+        CodaFree(m_pMemory);
         m_pMemory = 0;
     }
     ReleaseBlock();

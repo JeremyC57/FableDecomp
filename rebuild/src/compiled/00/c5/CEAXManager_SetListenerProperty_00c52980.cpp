@@ -1,5 +1,5 @@
 // CEAXManager::SetListenerProperty(const void* set, unsigned long id, void* data, unsigned long size) -- write a global (listener) EAX property: in software mode create the listener state on first use (from the manager's block), set the property on the listener effect and queue the commit of the flags it reports; in hardware mode forward to the hardware EAX object; 0 for any other mode
-// Leaf: ?SetListenerProperty@CEAXManager@@
+// Leaf: ?SetListenerProperty@CEAXManager@@QAEJPBXKPAXK@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C52980, length 134 bytes (+ int3 padding); `ret 10h`; thiscall on the
 // EAX manager (the class of this chunk's 0x00C4E380 / 0x00C51F00; global @ 0x0143BB70). No direct callers (a vtable or
 // pointer use).
@@ -29,8 +29,10 @@ struct CHardwareEAX {
 };
 extern CHardwareEAX* g_pHardwareEAX;                // 0x0143BB5C
 
-struct CEAXListenerEffect {
-    long SetProperty(void* voice, unsigned long id, void* data, unsigned long size, unsigned long* dirty);   // 0x00C68F90
+struct _CHANGES;
+class CEAXListener {
+public:
+    long SetEffectProperty_00c68f90(unsigned long slot, unsigned long property, const void* value, unsigned long size, _CHANGES** changes);   // 0x00C68F90
 };
 
 struct CEAXVoice;
@@ -40,7 +42,7 @@ struct CEAXManager {
     CListenerState*     m_pListenerState;           // +0x04
     SListenerBlock      m_listenerBlock;            // +0x08
     unsigned char       _pad74[0xe4 - 0x74];
-    CEAXListenerEffect* m_pListenerEffect;          // +0xe4
+    CEAXListener*       m_pListenerEffect;          // +0xe4
     long                m_mode;                     // +0xe8 (0: software EAX, 1: hardware)
     void QueueCommit(unsigned long dirty, CEAXVoice* voice);   // 0x00C51A20
     long SetListenerProperty(const void* set, unsigned long id, void* data, unsigned long size);
@@ -57,7 +59,7 @@ long CEAXManager::SetListenerProperty(const void* set, unsigned long id, void* d
             m_pListenerState->Refresh();
         }
         unsigned long dirty = 0;
-        result = m_pListenerEffect->SetProperty(0, id, data, size, &dirty);
+        result = m_pListenerEffect->SetEffectProperty_00c68f90(0, id, data, size, (_CHANGES**)&dirty);
         QueueCommit(dirty, 0);
         break;
     }

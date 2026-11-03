@@ -8,16 +8,18 @@
 //   funclets (0x012165B3 / 0x01216643) of derived constructors. The landed CReverbProcessor / CommitAndProcess sources declare
 //   it `virtual ~CVtable_012bf0c8();  // 0x00C775A0`; libpk has no PDB, so the class keeps the landed vtable name
 //   (descriptive). The catalog label "CTCInventoryItem::OnDie" is propagated.
-// Callees: CPKObject::operator delete 0x00C3C370 (the libpk free hook, ??3CPKObject@@SAXPAX@Z), CVtable_012bf050::~CVtable_012bf050
+// Callees: CCodaObjectBase::operator delete 0x00C3C370 (the libpk free hook, ??3CCodaObjectBase@@SAXPAX@Z), CVtable_012bf050::~CVtable_012bf050
 //   0x00C74450 (vtable 0x012BF050; the shared-table release).
 // Shape: user destructor `{ ReleaseBlock(); }` with ReleaseBlock a plain member defined above it in the same file: VC7.1 expands
 //   it here (0x00C77470 is its out-of-line copy, which this TU's COMDAT also grades RELOCATION_MATCH), scheduling the vptr store
 //   between the member test and its branch.
 // Layout: the landed CommitAndProcess 0x00C774F0 model (+0x04 settings, +0x08 target, +0x0C pending, +0x10 size, +0x14 blending,
 //   +0x18 step, +0x1C countdown, +0x20 step count, +0x24 dirty).
-class CPKObject {                                       // the libpk root: its allocator hooks
+extern "C" void* __cdecl CodaMalloc(unsigned int size);   // 0x00C3C360 (GameCODA Memory.obj)
+extern "C" void __cdecl CodaFree(void* p);                // 0x00C3C370
+class CCodaObjectBase {                                       // the libpk root: its allocator hooks
 public:
-    static void __cdecl operator delete(void* p);       // 0x00C3C370
+    static void __cdecl operator delete(void* p) { CodaFree(p); }       // 0x00C3C370
 };
 
 class CVtable_012bf050 {                                      // vtable 0x012BF050: the reverb DSP parts' base
@@ -49,7 +51,7 @@ public:
 void CVtable_012bf0c8::ReleaseBlock()
 {
     if (m_pSettings) {
-        CPKObject::operator delete(m_pSettings);
+        CodaFree(m_pSettings);
         m_pSettings = 0;
         m_pTargetSettings = 0;
         m_pPendingSettings = 0;

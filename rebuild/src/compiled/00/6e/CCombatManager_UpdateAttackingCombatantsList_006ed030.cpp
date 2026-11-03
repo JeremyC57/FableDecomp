@@ -188,9 +188,9 @@ public:
     iterator begin() { return iterator((_Link_type)_M_header._M_data->_M_left); }
     iterator end() { return iterator(_M_header._M_data); }
     bool empty() const { return _M_node_count == 0; }
-    iterator find(const _Key& __x) { return iterator(_M_find(__x)); }
+    template <class _KT> iterator find(const _KT& __x) { return iterator(_M_find(__x)); }
 private:
-    _Rb_tree_node<_Value>* _M_find(const _Key& __k) const;                                      // 0x006F0250 (Combatants)
+    template <class _KT> _Rb_tree_node<_Value>* _M_find(const _KT& __k) const;                                      // 0x006F0250 (Combatants)
 };
 template <class _Key, class _Tp, class _Compare = less<_Key>, class _Alloc = allocator<pair<const _Key, _Tp> > >
 class map {

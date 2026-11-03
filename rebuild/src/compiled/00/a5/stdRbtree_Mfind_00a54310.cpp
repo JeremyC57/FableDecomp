@@ -1,5 +1,5 @@
 // std::_Rb_tree::_M_find(const key_type& k) const -- (multimap<CCharString, float>) STLport exact-key lookup over CCharString keys: walk from the root keeping the last node whose key is not less than k, then return it unless it is the header or k is less than its key (then the header, i.e. end())
-// Leaf: ?_M_find@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@M@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@M@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@M@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@M@std@@@2@ABVCCharString@@@Z
+// Leaf: ??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@M@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@M@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@M@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@M@std@@@1@ABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A54310, 112 bytes (+ int3 padding), thiscall, `ret 4`; returns the node pointer.
 // Identity: `multimap<CCharString, float>`; evidence: its callers 0x00A4EAC0 and 0x00A4EAE0 run it on this+0x20 and read the found float (node +0x14); they are C3DAnimationStats' event queries (callers CManager::AnimHasEmbeddedEvent 0x006F90D0, GetEmbeddedEventTime 0x006F9130, C3DMeshObject::GetEventTime 0x00A36DF0), and Ego_r C3DAnimationStats +32 is TimingEvents, multimap<CCharString, float>.
 //   Family F012 (17 byte-identical bodies, one COMDAT per tree type): the manifest label "BinarySearchTree_Find" is behavioural.
@@ -119,12 +119,13 @@ public:
     _Link_type _M_root() const { return (_Link_type)this->_M_header._M_data->_M_parent; }
     public:
     private:
-    _Rb_tree_node<_Value>* _M_find(const _Key& __k) const;
+    template <class _KT> _Rb_tree_node<_Value>* _M_find(const _KT& __k) const;
     public:
 };
 
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
-_Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_find(const _Key& __k) const
+template <class _KT>
+_Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_find(const _KT& __k) const
 {
     _Link_type __y = this->_M_header._M_data;      // last node which is not less than __k
     _Link_type __x = _M_root();                    // current node
@@ -140,5 +141,7 @@ _Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M
 
 template class _Rb_tree<CCharString, pair<const CCharString, float>, _Select1st<pair<const CCharString, float> >, less<CCharString>,
                         allocator<pair<const CCharString, float> > >;
+template _Rb_tree_node<pair<const CCharString, float> >* _Rb_tree<CCharString, pair<const CCharString, float>, _Select1st<pair<const CCharString, float> >, less<CCharString>,
+                        allocator<pair<const CCharString, float> > >::_M_find<CCharString >(const CCharString&) const;
 
 } // namespace std

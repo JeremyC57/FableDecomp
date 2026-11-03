@@ -1,5 +1,5 @@
 // std::_Rb_tree<unsigned __int64, unsigned __int64, _Identity<unsigned __int64>, ...>::_M_find(const unsigned __int64& k) const -- STLport tree lookup: walk to the first node whose key is not less than k, return it if k is not less than its key, else the header (end)
-// Leaf: ?_M_find@?$_Rb_tree@_K_KU?$_Identity@_K@std@@U?$less@_K@2@V?$allocator@_K@2@@std@@ABEPAU?$_Rb_tree_node@_K@2@AB_K@Z
+// Leaf: ??$_M_find@_K@?$_Rb_tree@_K_KU?$_Identity@_K@std@@U?$less@_K@2@V?$allocator@_K@2@@std@@ABEPAU?$_Rb_tree_node@_K@1@AB_K@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0082ef20, 84 bytes, thiscall, `ret 4`.
 // Identity (proven): bound (reloc_bindings) as ?_M_find@?$_Rb_tree@_K_KU?$less@_K@std@@V?$allocator@_K@2@@std@@QBEPAU?$_Rb_tree_node@_K@2@AB_K@Z (without the _Identity argument); the set<unsigned __int64> of CScriptedMapBrush (Ego_r.pdb ThingsToDelete), whose insert_unique 0x0082F4B0 (family L009) and _M_insert 0x0082F150 call it, as does CScriptedMapBrush::RemoveThing 0x0082E500.
 // Callees: none.
@@ -66,12 +66,13 @@ public:
     _Link_type _M_root() const { return (_Link_type)this->_M_header._M_data->_M_parent; }
     public:
     private:
-    _Rb_tree_node<_Value>* _M_find(const _Key& __k) const;
+    template <class _KT> _Rb_tree_node<_Value>* _M_find(const _KT& __k) const;
     public:
 };
 
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
-_Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_find(const _Key& __k) const
+template <class _KT>
+_Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_find(const _KT& __k) const
 {
     _Link_type __y = this->_M_header._M_data;      // last node which is not less than __k
     _Link_type __x = _M_root();                    // current node
@@ -86,4 +87,5 @@ _Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M
 }
 
 template class _Rb_tree<unsigned __int64, unsigned __int64, _Identity<unsigned __int64>, less<unsigned __int64>, allocator<unsigned __int64> >;
+template _Rb_tree_node<unsigned __int64 >* _Rb_tree<unsigned __int64, unsigned __int64, _Identity<unsigned __int64>, less<unsigned __int64>, allocator<unsigned __int64> >::_M_find<unsigned __int64 >(const unsigned __int64&) const;
 } // namespace std

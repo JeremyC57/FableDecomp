@@ -61,14 +61,16 @@ public:
     _Rb_tree_node_base* _M_header;                 // +0 (end node)
     unsigned int        _M_node_count;             // +4
     C                   _M_key_compare;            // +8
-    _Rb_tree_node_base* _M_find(const K& key) const;   // 0x004B9370
-    iterator find(const K& key) { return iterator(_M_find(key)); }
+    template <class _KT> iterator find(const _KT& key) { return iterator(_M_find(key)); }
     iterator end() { return iterator(_M_header); }
+private:
+    template <class _KT> _Rb_tree_node<V>* _M_find(const _KT& key) const;   // 0x004B9370 (private in STLport 4.6 _tree.h)
 };
 // Same-TU stand-in body of the out-of-line lookup 0x004B9370 (read-only lower-bound walk; only its visibility matters).
 #pragma auto_inline(off)
 template <class K, class V, class KoV, class C, class A>
-__declspec(noinline) _Rb_tree_node_base* _Rb_tree<K, V, KoV, C, A>::_M_find(const K& key) const
+template <class _KT>
+__declspec(noinline) _Rb_tree_node<V>* _Rb_tree<K, V, KoV, C, A>::_M_find(const _KT& key) const
 {
     _Rb_tree_node_base* y = _M_header;
     _Rb_tree_node_base* x = _M_header->_M_parent;
@@ -81,7 +83,7 @@ __declspec(noinline) _Rb_tree_node_base* _Rb_tree<K, V, KoV, C, A>::_M_find(cons
     }
     if (y == _M_header || key.m_pData < ((_Rb_tree_node<V>*)y)->_M_value_field.m_pData)
         y = _M_header;
-    return y;
+    return (_Rb_tree_node<V>*)y;
 }
 #pragma auto_inline(on)
 template <class K, class C, class A> class set {

@@ -9,17 +9,17 @@
 //   SVtableRecord_00c3c8a0 name and the catalog's "CVsyncCallbackTimerInfo::CVsyncCallbackTimerInfo" are propagated;
 //   descriptive name, as in the CNodePool renames.
 // Shape: `xor ecx,ecx` before the vtable store, then the members in order with -1 as an immediate: a plain initialiser
-//   list. The library root CPKObject (vtable 0x012B5868) has an inline empty virtual destructor (its destructors store
+//   list. The library root CCodaObjectBase (vtable 0x012B5868) has an inline empty virtual destructor (its destructors store
 //   0x012B5868, e.g. CNodePool::~CNodePool 0x00C3CAA0); VC7.1 drops the inlined root constructor's vtable store, which
 //   the derived store overwrites, so no store of 0x012B5868 appears here.
-class CPKObject {                                   // vtable 0x012B5868: the library's root class
+class CCodaObjectBase {                                   // vtable 0x012B5868: the library's root class
 public:
-    virtual ~CPKObject() { }
+    virtual ~CCodaObjectBase() { }
 };
 
 class CPooledNode;
 
-class CNodePool : public CPKObject {                // vtable 0x012B586C, 0x14 bytes: an active chain and a free chain
+class CNodePool : public CCodaObjectBase {                // vtable 0x012B586C, 0x14 bytes: an active chain and a free chain
 public:
     CNodePool();
     ~CNodePool();                                   // 0x00C3CAA0
