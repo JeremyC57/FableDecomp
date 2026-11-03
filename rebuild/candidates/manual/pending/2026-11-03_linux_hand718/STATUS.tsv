@@ -8,7 +8,7 @@ address	attempts	grade	residue	lever
 00487dc0	1	RELOCATION_MATCH	-	CPlayer members as CIntelligentPointer<CThingPlayerCreature> under FABLE_RETAIL_PLAYER+FABLE_RETAIL_CINTELLIGENTPOINTER (hdr/)
 00487dd0	1	RELOCATION_MATCH	-	CPlayer members as CIntelligentPointer<CThingPlayerCreature> under FABLE_RETAIL_PLAYER+FABLE_RETAIL_CINTELLIGENTPOINTER (hdr/)
 00487b70	1	RELOCATION_MATCH	-	CPlayer members as CIntelligentPointer<CThingPlayerCreature> under FABLE_RETAIL_PLAYER+FABLE_RETAIL_CINTELLIGENTPOINTER (hdr/)
-0088edc0	0	NOT_ATTEMPTED	1564 bytes; CameraDoConversation	budget: chunk time went to the 16 matched rows + 0x005029A0; needs CScriptThing/CThingCameraPoint/CAIGameCameraConversation shapes
-0089e190	0	NOT_ATTEMPTED	803 bytes; CameraUseCameraPoint	budget; needs CRightHandedSet + game-camera ScriptCamera API (retail-branch slots past 23 unproven)
-008a93a0	0	NOT_ATTEMPTED	620 bytes; EntityWillTeleportToArea	budget
-00487570	0	NOT_ATTEMPTED	1305 bytes; DrawFreeCamDebug	budget; debug text formatting with CWideString/CFontBank
+0088edc0	0	NOT_ATTEMPTED	1564 bytes; CameraDoConversation	not drafted (size)
+0089e190	0	NOT_ATTEMPTED	803 bytes; CameraUseCameraPoint(const CScriptThing&, const C3DVector*, const CRightHandedSet*, float, long, long)	analysed only: camera-point TC (interface 0x3F) lookup, CCharString temp, camera-manager calls 0x0075C160..0x0075CD90, operator new(0x90) camera object; needs the camera-manager / CAICameraPoint models
+008a93a0	10	DIFFER(618v620)	register colouring only: retail keeps this in ebx and spills the thing; here the thing is in ebx and this is spilled (35 lines)	parked differ/008a93a0.cpp; targetPos=pos local + named CDistancePredicate + early-empty return/while(size) took it 548->618; CThing.h FABLE_RETAIL_CTHING GetTypeFlags (hdr/)
+00487570	0	NOT_ATTEMPTED	1305 bytes; CPlayer::DrawFreeCamDebug(const C2DBoxF*, const CFontBank&) const	analysed only: 8-aligned frame, eleven CRenderManagerCore text draws 0x009DD8F0 with by-value CWideString / colour args, GFFloatToWideString 0x00486C40 x6, GFAYToVY / GFVXToAX, CEngineCamera FOV 0x00A0BE90

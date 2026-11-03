@@ -1,0 +1,9 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x004AF270	?PrepareQuestsWhenFinalQuestIsCompleted@CQuestManager@@QAEXXZ	0x00892F30 CGameScriptInterface::PrepareQuestsWhenFinalQuestIsCompleted tail-jumps here with the CQuestManager singleton in ecx; Ego_r CQuestManager method list has the same name; the body sets World->MapTableShowQuestCardsOnUsed (+0xDA)	(unlabelled FUN_004af270)
+0x009E9F20	?StopProgress@NProgressDisplay@@YIX_N0@Z	Ego_r PDB puts StopProgress in namespace NProgressDisplay; the call site passes (dl=0, cl=1) fastcall, and 0x0088E970 RELOCATION_MATCHes with the namespaced spelling	?StopProgress@@YIX_N0@Z
+0x00487B70	?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ	Ego_r CPlayer member list (GetPPlayerCharacterThing const, returns CThing*); body is PlayerCharacter (+0x34) CIntelligentPointer::Get, the twin of GetPControlledCreature at +0x2C	?GetPlayerCharacter@CPlayer@@QAEPAVCThing@@XZ
+0x00487B80	?SetPlayerCharacter@CPlayer@@QAEXPAVCThingPlayerCreature@@@Z	next to 0x00487B70 in the same TU, writes the +0x34 CIntelligentPointer; Ego_r CPlayer::SetPlayerCharacter	(unlabelled)
+0x008BCF20	??0CCreatureAction_TeleportOut@@QAE@AAVCThingCreatureBase@@AAVC3DVector@@_N@Z	Ego_r.pdb ctor overload (creature, target pos, bool); writes TargetPos +0x114 / Instant +0x120, vtable 0x0127E344; called from 0x008A93A0 with (thing, &pos, false)	(unlabelled)
+0x0062E900	??1CCombatActionBase@@UAE@XZ	the temporary TeleportOut action's destructor call in 0x008A93A0 (implicit derived dtor inlined to the base)	??1CRetailBanditKingLungeAction@@QAE@XZ / ??1CIceCombatAction@@UAE@XZ (stand-in bindings)
+0x006644F0	?SetCurrentAction@CThingCreatureBase@@QAE_NABVCCreatureActionBase@@@Z	Ego_r.pdb 0x00542800; called on the creature in 0x008A93A0	?SetCurrentAction@Creature@@QAE_NABVCCreatureActionBase@@@Z
+0x00497890	?GFROR13@@YIJK@Z	Ego_r.pdb 0x004183B0 (returns long)	?GFROR13@@YIKK@Z

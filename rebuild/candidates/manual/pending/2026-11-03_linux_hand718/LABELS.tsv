@@ -1,0 +1,14 @@
+address	name	evidence
+008914f0	CGameScriptInterface::SetQuestCardGoldReward	RELOCATION_MATCH; Ego_r CGameScriptInterface + FSE manifest
+00891500	CGameScriptInterface::SetQuestCardRenownReward	RELOCATION_MATCH; Ego_r CGameScriptInterface + FSE manifest
+00892f20	CGameScriptInterface::PrepareQuestsWhenFinalQuestIsActivated	RELOCATION_MATCH; Ego_r
+00892f30	CGameScriptInterface::PrepareQuestsWhenFinalQuestIsCompleted	RELOCATION_MATCH; Ego_r
+0088e970	CGameScriptInterface::StopProgressDisplay	RELOCATION_MATCH; Ego_r
+0088e0f0	CGameScriptInterface::SetDebugCameraType	MATCH; Ego_r; vtable slot 21 of CAIGameCameraBase
+00487dc0	CPlayer::GetPControlledCreature	RELOCATION_MATCH; Ego_r CPlayer
+00487dd0	CPlayer::PeekPControlledCreature	RELOCATION_MATCH; Ego_r CPlayer
+00487b70	CPlayer::GetPPlayerCharacterThing	RELOCATION_MATCH; Ego_r CPlayer (oracle had GetPlayerCharacter)
+00487b80	CPlayer::SetPlayerCharacter	same TU, +0x34 writer; Ego_r CPlayer
+004af270	CQuestManager::PrepareQuestsWhenFinalQuestIsCompleted	tail target of 0x00892F30; Ego_r CQuestManager
+009e9f20	NProgressDisplay::StopProgress	callee of 0x0088E970; Ego_r namespace NProgressDisplay
+008bcf20	CCreatureAction_TeleportOut::CCreatureAction_TeleportOut(CThingCreatureBase&, C3DVector&, bool)	callee of 0x008A93A0; Ego_r.pdb 0x008F5570

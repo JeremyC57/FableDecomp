@@ -48,3 +48,16 @@ The frame is 0x158 and has no EH prologue, so the TU has no unwind state at this
 
 ## Gotchas
 - VC7.1 lays overloaded virtuals out in reverse declaration order. The CAIGameCameraBase const/non-const GetCameraManager pair proves it against the 0x0088E0F0 slot.
+
+## Round 2 (coordinator follow-up, 2026-11-03)
+- 0x008A93A0 EntityWillTeleportToArea is parked at DIFFER(618v620) after 10 attempts. The source is `differ/008a93a0.cpp`.
+  - Everything matches but one register swap: retail keeps `this` in ebx and spills the thing to [esp+20h]; ours does the reverse.
+  - The landed sibling 0x008C1600 GetValidRushPosition was the model.
+  - What moved it:
+    - `C3DVector targetPos = pos;` at the top, reassigned to the chosen position. Retail copies pos into the action's target slot early.
+    - A named `CDistancePredicate` local.
+    - `if (positions.size() == 0) return false;` followed by a `while (positions.size() != 0)` loop with `GFRandom(positions.size(), seed)`. This keeps retail's zero test inside GFRandom.
+  - What moved nothing: variable order, a CThingCreatureBase-typed thing, nested ifs, a cached `CWorld*`.
+  - Header: `hdr/engine/CThing.h` gets `GetTypeFlags()` in the FABLE_RETAIL_CTHING branch (FableWin ?GetTypeFlags@CThing@@QBEKXZ). hdrcheck2: default path same.
+  - Callee names are in NAME_FIXES.tsv. The TeleportOut ctor 0x008BCF20 is the (CThingCreatureBase&, C3DVector&, bool) overload.
+- 0x0089E190, 0x0088EDC0 and 0x00487570 were analysed (see STATUS.tsv) but not drafted. The camera rows need models for the camera-manager and camera-point TC; DrawFreeCamDebug needs the CRenderManagerCore text API.
