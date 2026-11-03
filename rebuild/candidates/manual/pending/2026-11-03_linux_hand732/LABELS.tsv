@@ -1,0 +1,12 @@
+address	name	evidence
+0x004B05C0	?TransferBoasts@CQuestManager@@QAEXAAVCPersistContext@@@Z	landed row (RELOCATION_MATCH)
+0x006AA2E0	?DrawPreparePrimitivesForRendering@CThingPlayerCreature@@UAE_NABVCEnginePrimitivePrepareInfo@@@Z	landed row (RELOCATION_MATCH)
+0x006AABE0	?SetActionForMelee@CThingPlayerCreature@@UAE_NABVCCreatureAbilityDef@@@Z	landed row (RELOCATION_MATCH)
+0x006AA720	?SetPlayerCreatureActionForMelee@CThingPlayerCreature@@IAEXW4ECombatZone@@ABVC3DVector@@PAVCThing@@ABVCCreatureAbilityDef@@@Z	Ego_r 0x00548730 + FableWin; called by 0x006AABE0
+0x006AE260	??$GetSubDef@VCKickableDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCKickableDef@@@@@Z	Ego_r member-template spelling; called by 0x006AA720 right after the kickable def pointer
+0x007EA2F0	?GetTargetingPositionOnThing@NTargeting@@YI?AVC3DVector@@ABVCWorld@@ABVCThing@@M@Z	Ego_r 0x007E4530 + FableWin; called by 0x006AABE0 (ecx result, edx world)
+0x00A14040	?RotateXY@C3DVector@@QAEXM@Z	Ego_r 0x00B81930 + FableWin; catalog C3DVector::RotateXY
+0x006A9640	?GetCurrentRelativeMovementAngleXY@CThingPlayerCreature@@QBEMXZ	Ego_r + FableWin; called by 0x006AABE0 before RotateXY
+0x01375750	g_MeleeUsesCameraDirection	DESCRIPTIVE (no PDB data name on disk): a console bool (initialised 1) read only by 0x006AABE0
+0x013B8640	g_DebugDrawHeroNavigationLevel	DESCRIPTIVE: debug bool read by 0x006AA2E0
+0x013B8A80	g_DebugDrawStealth	DESCRIPTIVE: debug bool read by 0x006AA2E0

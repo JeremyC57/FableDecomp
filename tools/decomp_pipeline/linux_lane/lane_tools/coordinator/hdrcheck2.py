@@ -22,7 +22,7 @@ for h in sorted(glob.glob(ov+'/**/*.h',recursive=True)):
     macs=[None]+sorted(set(re.findall(r'FABLE_RETAIL_\w+',open(repo,errors='replace').read()+open(h,errors='replace').read())))
     res=[]
     for m in macs:
-        args=['cpp','-P','-nostdinc','-undef','-D_MSC_VER=1310','-D_M_IX86=600','-D_WIN32','-I',stub,'-I','rebuild/include']+([f'-D{m}'] if m else [])
+        args=['cpp','-P','-nostdinc','-undef','-D_MSC_VER=1310','-D_M_IX86=600','-D_WIN32','-I','rebuild/include','-I',stub]+([f'-D{m}'] if m else [])
         ra=run(args,repo); rb=run(args,h)
         norm=lambda s:[re.sub(r'fable_static_assert_\d+','SA',l) for l in s.splitlines() if l.strip()]
         a=norm(ra.stdout); b=norm(rb.stdout)

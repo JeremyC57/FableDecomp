@@ -1,0 +1,7 @@
+address	module	name	length
+006aa2e0	CThingPlayerCreature	DrawPreparePrimitivesForRendering	1080
+006aa720	CThingPlayerCreature	SetPlayerCreatureActionForMelee	1212
+006aabe0	CThingPlayerCreature	SetActionForMelee	1278
+006ab820	CThingPlayerCreature	ResolveFacingDirection	2328
+006aca30	CThingPlayerCreature	OnCollisionWithObject	2026
+004b05c0	CQuestManager	TransferBoasts	1126

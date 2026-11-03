@@ -1,0 +1,17 @@
+addr       parity           behav  name
+006cb990   MATCH            PASS   IsNewDestinationGoingToResetNavigation
+006cb9c0   MATCH            PASS   InitialiseFromPreCalculatedRoute
+006cb9b0   MATCH            PASS   CalculateRouteFromTo
+006cba10   MATCH            PASS   CalculateNavigableWidthOfLine
+006cb8e0   MATCH            PASS   GetNearestNavigablePosTo
+006cb6b0   MATCH            PASS   InterruptNavigation
+006cb9a0   MATCH            PASS   GetCurrentDestination
+
+WINS: 7
+  006cb990 MATCH CTCCreatureNavigation::?IsNewDestinationGoingToResetNavigation@CTCCreatureNavigation@@QBE_NABVC3DVector@@M@Z
+  006cb9c0 MATCH CTCCreatureNavigation::?InitialiseFromPreCalculatedRoute@CTCCreatureNavigation@@QAEXABVC3DVector@@ABV?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@0@Z
+  006cb9b0 MATCH CTCCreatureNavigation::?CalculateRouteFromTo@CTCCreatureNavigation@@QBEXABVC3DVector@@0AAV?$vector@U?$pair@VC2DVector@@E@std@@V?$allocator@U?$pair@VC2DVector@@E@std@@@2@@std@@@Z
+  006cba10 MATCH CTCCreatureNavigation::?CalculateNavigableWidthOfLine@CTCCreatureNavigation@@QAEXABVC3DVector@@0AAM1@Z
+  006cb8e0 MATCH CTCCreatureNavigation::?GetNearestNavigablePosTo@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@@Z
+  006cb6b0 MATCH CTCCreatureNavigation::?InterruptNavigation@CTCCreatureNavigation@@QAEXXZ
+  006cb9a0 MATCH CTCCreatureNavigation::?GetCurrentDestination@CTCCreatureNavigation@@QBEABVC3DVector@@XZ
