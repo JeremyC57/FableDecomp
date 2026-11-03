@@ -1,5 +1,5 @@
 // CRegionConnectionNode::GetNextNodeOnWayToRegion(long toRegion, const CRegionConnectionGraph& graph) const -- breadth-first search over the region connection graph from this node: returns the first region to step into on the way to toRegion (toRegion itself when it is a direct neighbour, -1 when this is the target or it cannot be reached)
-// Leaf: ?GetNextNodeOnWayToRegion@CRegionConnectionNode
+// Leaf: ?GetNextNodeOnWayToRegion@CRegionConnectionNode@@QBEJJABVCRegionConnectionGraph@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00828360, 555 bytes, thiscall `ret 8`.
 // Identity: Ego_r.pdb ?GetNextNodeOnWayToRegion@CRegionConnectionNode@@QBEJJABVCRegionConnectionGraph@@@Z (the debug
 //   build's 0x00731060); the only caller is CRegionConnectionGraph::GetNextRegionOnWayToRegion 0x00828590 (landed). The

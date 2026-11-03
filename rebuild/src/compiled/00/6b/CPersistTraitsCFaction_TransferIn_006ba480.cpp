@@ -1,5 +1,5 @@
 // CPersistTraits<CFaction>::TransferIn(CPersistContext& context, CStringParser& parser, CFaction& value) -- text persist read of a faction: "Name <string>", "NumberOfAllies <n>" then n "Ally <string>" entries into the allied set, "NumberOfEnemies <n>" then n "Enemy <string>" entries into the enemy set, then "EndFaction"; a missing keyword stops the read
-// Leaf: ?TransferIn@?$CPersistTraits@VCFaction@@
+// Leaf: ?TransferIn@?$CPersistTraits@VCFaction@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCFaction@@@Z
 // Name (2026-10-31, hand621 NAME_FIXES): the callee 0x0040E510 is ?TransferIn@?$CPersistTraits@VCCharString@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCCharString@@@Z
 //   (Ego_r.pdb 0x0040C1F0 / FableWin.pdb 0x0189E580: reference parameters; was the pointer form). Bytes unchanged.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006BA480, 584 bytes (+ int3 padding), `ret 0Ch`, ebp frame aligned to 8.

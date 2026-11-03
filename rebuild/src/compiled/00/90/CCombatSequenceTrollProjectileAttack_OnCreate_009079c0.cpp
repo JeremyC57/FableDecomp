@@ -1,5 +1,5 @@
 // CCombatSequence_TrollProjectileAttack::OnCreate() -- queue the two troll projectile attacks (PROJECTILE_ATTACK_FIRST / _SECOND), then the base OnCreate
-// Leaf: ?OnCreate@CCombatSequence_TrollProjectileAttack
+// Leaf: ?OnCreate@CCombatSequence_TrollProjectileAttack@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009079C0, 288 bytes (incl. int3 padding).
 // Callees: operator new 0x00BFEA1A, CCharString(const char*, long) 0x0099EBF0, ~CCharString 0x0099EAE0,
 //          CCreatureAction_TrollProjectileAttack(owner, target, const CCharString&) 0x009080B0 (0x11c bytes),

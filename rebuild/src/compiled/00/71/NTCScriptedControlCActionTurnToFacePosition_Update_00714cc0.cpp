@@ -1,5 +1,5 @@
 // NTCScriptedControl::CActionTurnToFacePosition::Update() -- make the thing look at the stored position and finish once it lies inside the view cone (or at once when the thing has no look component)
-// Leaf: ?Update@CActionTurnToFacePosition@
+// Leaf: ?Update@CActionTurnToFacePosition@NTCScriptedControl@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00714CC0, 100 bytes (+12 int3 padding); vtable 0x01265534 slot 1.
 // FableWin.pdb: ?Update@CActionTurnToFacePosition@NTCScriptedControl@@UAEXXZ; ctor
 //          ??0CActionTurnToFacePosition@NTCScriptedControl@@QAE@ABVC3DVector@@M@Z (position, angle).

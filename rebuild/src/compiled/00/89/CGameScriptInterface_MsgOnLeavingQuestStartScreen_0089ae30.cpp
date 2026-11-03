@@ -1,5 +1,5 @@
 // CGameScriptInterface::MsgOnLeavingQuestStartScreen(CCharString& questName) const -- whether a "leaving quest start screen" message (type 0x49) seen or heard this frame targets a live thing whose quest component (TC 0xFC) names this quest
-// Leaf: ?MsgOnLeavingQuestStartScreen@CGameScriptInterface
+// Leaf: ?MsgOnLeavingQuestStartScreen@CGameScriptInterface@@UBE_NAAVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0089AE30, length 250 bytes (+ int3 padding), `ret 4`.
 // Signature from Ego_r.pdb: ?MsgOnLeavingQuestStartScreen@CGameScriptInterface@@UBE_NAAVCCharString@@@Z.
 // Callees: the message frame getters 0x006E7510 / 0x006E7530 (landed MsgOn* family), CMessageEventManager::

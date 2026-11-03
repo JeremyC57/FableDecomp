@@ -1,5 +1,5 @@
 // CAIStateGroup_OpinionReactionRoot::SetGreetedThingReactingTo() -- when the reaction is to the player, mark the creature's opinion-of-hero component as interacted with and greeted
-// Leaf: ?SetGreetedThingReactingTo@CAIStateGroup_OpinionReactionRoot
+// Leaf: ?SetGreetedThingReactingTo@CAIStateGroup_OpinionReactionRoot@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0095F830, 101 bytes, plain `ret`.
 // Callees: CVectorMap LowerBound @ 0x0040F020 (the inlined GetInterface of type 0x4F = CTCCreatureOpinionOfHero: bit 15
 //   of the bitset word +0x28, tested as `test ch,ch ; jns`).

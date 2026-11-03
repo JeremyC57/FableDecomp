@@ -1,5 +1,5 @@
 // CQ_RansomVictimScript::MakeNPCComment(name, npc, comment) -- if the NPC is alive and the comment timer has run out, start a conversation between the NPC and the hero with the NPC's pre- or post-rescue line for this comment; for the father's-guard comment also let the other NPC (the victim when the guard is speaking, else the guard) answer with its response line when it is alive, different from the speaker and the line exists; restart the comment timer and report that a comment was made
-// Leaf: ?MakeNPCComment@CQ_RansomVictimScript@NScript@@
+// Leaf: ?MakeNPCComment@CQ_RansomVictimScript@NScript@@QAE_NABVCCharString@@ABVCScriptThing@@W4ENPCComment@@@Z
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DE3F90, 1263 bytes (int3 padded to 1264); `ret 0Ch`.

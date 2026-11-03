@@ -1,6 +1,6 @@
 // CScriptBase::OnRegionLoaded(const CCharString& region) -- un-pauses every spawned thread associated with the region that has just loaded
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB7B00, length 87 bytes.
-// Leaf: ?OnRegionLoaded@CScriptBase
+// Leaf: ?OnRegionLoaded@CScriptBase@@QAEXABVCCharString@@@Z
 // Retail bytes: push ebp ; mov ebp,ecx ; mov eax,[ebp+4] ; push esi ; mov esi,[eax] ; cmp esi,eax ; je E ; push ebx ; mov ebx,[esp+10h] ; push edi ; L: mov edi,[esi+8] ;
 //               mov eax,[edi+24h] ; mov ecx,[ebx] ; cmp eax,ecx ; je M ; (null/length tests, Compare, neg/sbb/inc) ; je N ; M: push 0 ; mov ecx,edi ; call SetFuncAsPaused ;
 //               N: mov esi,[esi] ; cmp esi,[ebp+4] ; jne L ; ... ret 4

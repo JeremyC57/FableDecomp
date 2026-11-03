@@ -1,6 +1,6 @@
 // CBankFileAsync::OpenFileReadOnly(const CWideString& filename, unsigned long flags) -- open the bank through the base CBankFile, then create the threaded (asynchronous) reader on the same path and re-enable async reads
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009D5820, 122 bytes (+6 int3), __fastcall, ret 8 (virtual override).
-// Leaf: ?OpenFileReadOnly@CBankFileAsync@@
+// Leaf: ?OpenFileReadOnly@CBankFileAsync@@UAE_NABVCWideString@@K@Z
 // Callees: CBankFile::OpenFileReadOnly 0x009D1090 (qualified base call), operator new 0x00BFEA1A,
 // CThreadedFile::CThreadedFile 0x0098DFD0, CCountedPointer<CThreadedFile>::Reset 0x009A9C80 (landed),
 // CBankFile::GetBankPathname() 0x009CBF10 (CWideString by hidden pointer, landed), CThreadedFile::Open(const

@@ -1,5 +1,5 @@
 // CEngineScene::CEngineScene(float mapSize, unsigned long maxMapLevels, float maxPrimitiveCellSizeRatio, float maxAveragePrimitivesPerCell, const CCharString& name) -- construct an engine scene: empty map list and render-stats map, zeroed update stats, the map size and its reciprocal, the level count, the cell-size limits, the default occlusion grouping and the scene name
-// Leaf: ??0CEngineScene@@
+// Leaf: ??0CEngineScene@@QAE@MKMMABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B94A80, 196 bytes (+12 int3 padding), `ret 14h`.
 // Name: FableWin.pdb ??0CEngineScene@@QAE@MKMMABVCCharString@@@Z. The catalog label NHeroInformationScreens::CBase::Init is a
 // propagated label: the body stores vtable 0x012A3E68 = RTTI CEngineScene (rtti-vtables.tsv) and takes the PDB ctor's five

@@ -1,5 +1,5 @@
 // CTCVillage::ClearCrimes() -- forget every crime the hero's deed log still knows (RemoveCrime on each handle), then reset the fines paid and the crime-enemy flag
-// Leaf: ?ClearCrimes@CTCVillage
+// Leaf: ?ClearCrimes@CTCVillage@@QAEXXZ
 // Naming wave 18: the interface-presence stand-in CBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).

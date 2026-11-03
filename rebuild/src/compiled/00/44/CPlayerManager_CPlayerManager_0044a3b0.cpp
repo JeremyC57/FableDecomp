@@ -1,5 +1,5 @@
 // CPlayerManager::CPlayerManager(CMainGameComponent&, const CGameDefinitionManager&) -- the non-copyable base, the component and definition-manager pointers, an empty player list, then the four hero-swap player script names ("hero_swap_1.tng" .. "hero_swap_4.tng")
-// Leaf: ??0CPlayerManager@@QAE@
+// Leaf: ??0CPlayerManager@@QAE@AAVCMainGameComponent@@ABVCGameDefinitionManager@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0044A3B0, 382 bytes (padded to 384), `ret 8`, returns `this`; one caller
 //   CMainGameComponent::InitPlayerManager 0x0041732A (landed: `new CPlayerManager(*this, CGameDefinitionManager::Get())`).
 // Label: the catalog name HeroSwapState::Initialize is wrong: the vptr stored is 0x01231CD0 (.?AVCPlayerManager@@, slot 0 =

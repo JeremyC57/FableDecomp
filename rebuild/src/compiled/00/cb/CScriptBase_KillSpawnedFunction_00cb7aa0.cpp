@@ -1,6 +1,6 @@
 // CScriptBase::KillSpawnedFunction(const CCharString& name, unsigned long id) -- flags every spawned thread with this name and ID to terminate
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB7AA0, length 92 bytes.
-// Leaf: ?KillSpawnedFunction@CScriptBase
+// Leaf: ?KillSpawnedFunction@CScriptBase@@QAEXABVCCharString@@K@Z
 // Retail bytes: push ebx ; mov ebx,ecx ; mov eax,[ebx+4] ; push edi ; mov edi,[eax] ; cmp edi,eax ; je E ; push ebp ; mov ebp,[esp+10h] ; push esi ; L: mov esi,[edi+8] ;
 //               mov eax,[esi+20h] ; mov ecx,[ebp] ; cmp eax,ecx ; je M ; (null/length tests, Compare, neg/sbb/inc) ; je N ; M: mov eax,[esp+18h] ; cmp [esi+14h],eax ;
 //               jne N ; mov byte ptr [esi+5],1 ; N: mov edi,[edi] ; cmp edi,[ebx+4] ; jne L ; ... ret 8

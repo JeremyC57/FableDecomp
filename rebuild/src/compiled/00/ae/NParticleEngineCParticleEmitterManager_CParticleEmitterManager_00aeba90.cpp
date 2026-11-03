@@ -1,5 +1,5 @@
 // NParticleEngine::CParticleEmitterManager::CParticleEmitterManager() -- the particle engine's emitter manager: an empty active-emitter list capped at 128, the Perlin noise table seeded with 0, 32 visible emitters, decals enabled, no engine yet
-// Leaf: ??0CParticleEmitterManager@NParticleEngine@@
+// Leaf: ??0CParticleEmitterManager@NParticleEngine@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AEBA90, 93 bytes, __fastcall, returns this.
 // Identity: Ego_r.pdb `??0CParticleEmitterManager@NParticleEngine@@QAE@XZ`; the only caller is NParticleEngine::Initialise
 //   0x00AEBE57 (`new CParticleEmitterManager`, operator new(0x1018)).

@@ -15,7 +15,7 @@
 // +0x1AC -> +0x178); CUIDef minus 0x1C (TextWindow PDB +0xC0 -> +0xA4, ScrollingSpeed +0xDC -> +0xC0: the
 // PDB vectors are 16 bytes, the retail ones 12). Engine headers carry the PDB offsets, so the classes are
 // modelled locally with their real member names.
-// Leaf: ?GetDataFromDef@CScrollingViewport
+// Leaf: ?GetDataFromDef@CScrollingViewport@NUISystem@@QAEXXZ
 struct CRefCounted {                             // second base of CDefBase: the count at +4 behind the vptr
     long m_count;
     void DecRef() { --m_count; }

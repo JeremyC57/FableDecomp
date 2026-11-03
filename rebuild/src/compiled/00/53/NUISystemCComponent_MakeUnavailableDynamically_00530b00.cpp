@@ -1,5 +1,5 @@
 // NUISystem::CComponent::MakeUnavailableDynamically() -- darken every UI state's colour (the inline MakeUnavailable loop: R, G, B of each CUIState scaled by 0.75), then darken the live colour fade too: target, initial and current colour
-// Leaf: ?MakeUnavailableDynamically@CComponent
+// Leaf: ?MakeUnavailableDynamically@CComponent@NUISystem@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00530B00, 480 bytes, `__fastcall`, plain `ret`; virtual, CComponent vtable 0x0124608C
 //   slot 93 (and the 40 derived NUISystem vtables). Label correction: the manifest's "DynamicListEntry::MakeUnavailableDynamic"
 //   is propagated; Ego_r.pdb has ?MakeUnavailableDynamically@CComponent@NUISystem@@UAEXXZ (vtable neighbour of

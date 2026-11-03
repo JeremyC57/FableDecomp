@@ -1,5 +1,5 @@
 // CCombatAction_RecoverFromStunned::Initialise() -- resumes a player creature's suspended animation, resets its physics component (slot 44), removes mode 29 from its mode manager, then runs the knockdown-recover base Initialise
-// Leaf: ?Initialise@CCombatAction_RecoverFromStunned
+// Leaf: ?Initialise@CCombatAction_RecoverFromStunned@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00866CE0, 160-byte slot (157 bytes of code). Initialise is vtable slot 12.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8, four times through one `lea esi,[edi+8]`),
 //          CThingAICreature::SuspendAI(bool, long) @ 0x00833A10, the physics component's virtual slot 44

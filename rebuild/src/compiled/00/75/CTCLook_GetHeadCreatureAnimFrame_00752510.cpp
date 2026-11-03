@@ -1,6 +1,6 @@
 // CTCLook::GetHeadCreatureAnimFrame(ECreatureAnim anim) const -- the head-turn animation frame (0..1, 0.5 = centred) for the horizontal (anim 11, XY) or vertical (anim 12, YZ) head-turn animation, from the head angle over the look def's turn range
 // Grade: RELOCATION_MATCH (retry wave 2 sec2: GetHeadTurnRangeXY is the half range `0.5f * (range * 1/360)`, the same getter body that matches ChangeHeadAngleXY 0x00752120, and keeps the 1/360 and 0.5 multiplies apart; FableWin/Ego_r spell the getters and the leaf private ABE). Was DIFFER(159v165): retail multiplies the def range by 1/360 and then by 0.5 (`fmul [0x1238E00] ; fmul [0x122F59C]`), VC7.1 here folds (range * k) * 0.5 into one `fmul` by the pre-multiplied constant (6 bytes short; every other byte, the YZ arm and the clamp tail, matches). Tried: getter `range * k`, getter `k * range`, `range / 2.0f`, `0.5f * range`.
-// Leaf: ?GetHeadCreatureAnimFrame@
+// Leaf: ?GetHeadCreatureAnimFrame@CTCLook@@ABEMW4ECreatureAnim@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00752510, 165 bytes (+11 int3), __fastcall `ret 4`, float in st(0).
 // Name: FableWin.pdb `?GetHeadCreatureAnimFrame@CTCLook@@ABEMW4ECreatureAnim@@@Z` (name set); the only caller is
 //   CTCLook::UpdateHeadCreatureAnim 0x00752F30 (call at 0x00752FE3), which ImplementHeadSettings 0x00753BA0 drives with

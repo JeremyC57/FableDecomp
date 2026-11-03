@@ -1,5 +1,5 @@
 // CEngineLocalDetailLayerDef::~CEngineLocalDetailLayerDef() -- destroy the layer's Objects vector (range destroy of the 0x88-byte detail-object defs, then the storage) and its SpacingFromLayer float vector, then the def base destructor as the tail jump
-// Leaf: ??1CEngineLocalDetailLayerDef@@
+// Leaf: ??1CEngineLocalDetailLayerDef@@UAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0047747C, 47 bytes, thiscall; size-optimised def TU (`pop ecx` after free).
 // Identity: the only callers are CEngineLocalDetailLayerDef's scalar deleting destructor 0x00477460 (landed under that
 //   name) and 0x00479974 / 0x00479B89; Ego_r.pdb CEngineLocalDetailLayerDef has vector<float> SpacingFromLayer (+0x40,

@@ -1,5 +1,5 @@
 // CTCInGameMenu::ConstructSaveGameFileDescription(CWideString& description, long index) -- build the load/save screen text for save slot `index`: when the save (and its "." companion file, if present) verify, "<profile name label>:<profile name>\n<date><separator><time>\n<region label>:<region display name>\n<time spent in game>"; otherwise the TEXT_GUI_MENU_INVALID_SAVE text with the file name substituted
-// Leaf: ?ConstructSaveGameFileDescription@CTCInGameMenu
+// Leaf: ?ConstructSaveGameFileDescription@CTCInGameMenu@@QAEXAAVCWideString@@J@Z
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).

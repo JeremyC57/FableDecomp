@@ -1,5 +1,5 @@
 // CVideoSys::TogglePause(bool pause) -- pause a loaded movie (Pause, wait for State_Paused, state 2) or resume it (retry Run until it succeeds, wait for State_Running, state 1)
-// Leaf: ?TogglePause@CVideoSys@@
+// Leaf: ?TogglePause@CVideoSys@@QAEX_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A3B4A0, length 96 bytes (padded to 112), `ret 4`.
 // Callees: IMediaControl::Pause (slot 8, +0x20) and Run (slot 7, +0x1c), CVideoSys::WaitForState(_FilterState) @ 0x00A3B0F0.
 // Model: engine/CVideoSys.h layout with stdcall COM vtables (landed CVideoSys rows); MControl +4, MPosition +8, State +0x28.

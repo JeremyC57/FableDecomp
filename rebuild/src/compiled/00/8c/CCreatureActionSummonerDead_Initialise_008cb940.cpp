@@ -1,5 +1,5 @@
 // CCreatureAction_SummonerDead::Initialise() -- play FALL_TO_KNEES_OUT_OF, base Initialise, stop mode 0x5c and kill the summoner; when its CSummonerDef names a death object, create it at the summoner and (when it lives and the world is not loading) make the hero its owner; then spawn the summoner's MESH_EXPLODE effect at its position
-// Leaf: ?Initialise@CCreatureAction_SummonerDead
+// Leaf: ?Initialise@CCreatureAction_SummonerDead@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CB940, length 580 bytes, plain `ret` (virtual).
 // Callees: CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0, CCombatActionBase::SetCombatAnimation @ 0x008574D0 / Initialise
 //          @ 0x00857520, CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020,

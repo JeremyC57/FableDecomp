@@ -1,6 +1,6 @@
 // CTCCoopSpirit::UpdateHeightAboveGround() -- push the spirit's physics up or down towards its hover height above the ground below it, with an acceleration that grows as exp(2.25 d^2) - 1 (capped at 1) in the gap d
 // Grade: RELOCATION_MATCH (agent902, 3rd grade) -- the sign as a named float local (`float direction = (float)sign;`) and the clamped term as a float `e`: VC7.1 keeps both on the x87 stack (fild early, popped at scope end), stores the gap with `fst` and re-reads it for the square, compares e against the dword 1.0f, as retail.
-// Leaf: ?UpdateHeightAboveGround@CTCCoopSpirit
+// Leaf: ?UpdateHeightAboveGround@CTCCoopSpirit@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00670470, 228 bytes (+ int3 padding to 240), thiscall `ret`. Name: Ego_r.pdb
 //   `?UpdateHeightAboveGround@CTCCoopSpirit@@AAEXXZ` (private void; the only caller 0x00670A6E is the spirit's update
 //   sequence after UpdateAppliedMovement-style members; the landed CTCCoopSpirit::UpdateAppliedMovement is 0x006702E0).

@@ -1,5 +1,5 @@
 // std::pair<long,C3DMeshVolume>::~pair() -- destroy an indexed mesh volume entry: release the volume's counted convex volume, then destroy its name
-// Leaf: ??1?$pair@JVC3DMeshVolume
+// Leaf: ??1?$pair@JVC3DMeshVolume@@@std@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A326D0, length 61 bytes, `jmp` tail. Callers: 0x00A350BA / 0x00A35114 in the
 // vector insert helper 0x00A35010, both on a 0x10-byte stack temporary (`lea ecx,[esp+0x10]`, `add esp,0x10`) -- the
 // element of a vector<pair<long,C3DMeshVolume>> (the neighbouring 0x00A70320 is its _Pop_heap). The manifest label

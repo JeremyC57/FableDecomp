@@ -1,5 +1,5 @@
 // NEntityEvents::CEventTalkedToAnyone::CEventTalkedToAnyone(CThing&) -- the event starts at world frame 0 and its PThingTalkedTo intelligent pointer is pointed at the argument
-// Leaf: ??0CEventTalkedToAnyone@NEntityEvents@@QAE@
+// Leaf: ??0CEventTalkedToAnyone@NEntityEvents@@QAE@AAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0084B100, 52 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity: NEntityEvents::CEventTalkedToAnyone::CEventTalkedToAnyone(CThing&) -- proven; evidence: it stores vtable 0x01274270 whose RTTI is
 //   .?AVCEventTalkedToAnyone@NEntityEvents@@ : CEventBase@NEntityEvents; FableWin.pdb name set holds ??0CEventTalkedToAnyone@NEntityEvents@@QAE@AAVCThing@@@Z;

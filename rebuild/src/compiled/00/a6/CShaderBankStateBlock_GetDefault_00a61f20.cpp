@@ -9,7 +9,7 @@
 // Layout = Ego_r.pdb CShaderBankStateBlock (12 bytes): CBankStateBlock (vptr) + CStateBlock State +4
 // {EShaderTarget ShaderTarget +0, bool EnableShaderOptimisation +4}. The block argument is the base class
 // reference, cast down to the shader block. No engine header exists for CShaderBankStateBlock.
-// Leaf: ?GetDefault@CShaderBankStateBlock
+// Leaf: ?GetDefault@CShaderBankStateBlock@@UAEXAAVCBankStateBlock@@@Z
 #include <string.h>
 
 enum EShaderTarget {

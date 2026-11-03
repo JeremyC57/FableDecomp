@@ -1,5 +1,5 @@
 // CTCObjectAugmentations::SetupAugmentationSounds() -- rebuild the component's sound tables: clear them, and unless the owner is in limbo copy each def sound whose augmentation type is fitted into InitSounds / LoopingSounds as a resolved sound name
-// Leaf: ?SetupAugmentationSounds@
+// Leaf: ?SetupAugmentationSounds@CTCObjectAugmentations@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00766C00, length 368 bytes (thiscall, plain `ret`; 0x168 bytes + int3 pad).
 // Identity: Ego_r.pdb ?SetupAugmentationSounds@CTCObjectAugmentations@@AAEXXZ (private); the catalog label
 //   "CTCObjectAugmentations_UpdateParticleMorphs" (and the landed OnSetInLimbo 0x00768310 comment that repeats it) is

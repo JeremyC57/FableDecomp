@@ -1,5 +1,5 @@
 // CCreatureAction_BriarRoseShotFarOutof::PerformAction() -- fetch the creature's weapon sub-def and its shot def, create the shot thing at the creature's WEAPON_FOCUS_01 dummy, keep it in PShot, add its named shot TC and Init it (shooter = creature, target = PTarget, the creature's shot accuracy), then release both defs
-// Leaf: ?PerformAction@CCreatureAction_BriarRoseShotFarOutof
+// Leaf: ?PerformAction@CCreatureAction_BriarRoseShotFarOutof@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C0900, length 513 bytes (+ int3 padding), virtual (vtable 0x012807A4 slot 3), plain `ret`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CDefClassBase::GetSubDef<CWeaponDef> @ 0x0042B1A6 (the body pushes
 //   "CWeaponDef"; same-TU out-only stand-in here), CCreatureActionBase::GetPWorld @ 0x00692940 (manifest "_Dest_val<...>" label is

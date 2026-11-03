@@ -1,5 +1,5 @@
 // _global::GFLogMemoryUse() -- when memory logging is on, at most every 300 seconds: note the time, measure the physical memory in use (MB) and ask the global allocator to dump a numbered Memlog%4d.log
-// Leaf: ?GFLogMemoryUse@@
+// Leaf: ?GFLogMemoryUse@@YIXXZ
 // Flags: /GS /Gr
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00415E85, 311 bytes, plain `ret`; a /Os TU (unaligned entry, `push 6 ; pop edx`)
 // with /GS (cookie 0x0139C8A8 around the 256-byte file-name buffer, check 0x00BFE9F9).

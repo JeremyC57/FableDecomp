@@ -1,5 +1,5 @@
 // CThingVillage::ConstructFromParams(long, const C3DVector&, long) -- base CThingGameObject construction with an empty script name, no creators and the final flag set
-// Leaf: ?ConstructFromParams@CThingVillage
+// Leaf: ?ConstructFromParams@CThingVillage@@IAE_NJABVC3DVector@@J@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0083B340, 75 bytes, `ret 0Ch`, bool in al.
 // Identity: ?ConstructFromParams@CThingVillage@@IAE_NJABVC3DVector@@J@Z (Ego_r.pdb); called only by CThingVillage::Create
 //   0x0083B7F0. The manifest label "CThingGameObject_ConstructorEmpty" is descriptive.

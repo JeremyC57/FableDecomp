@@ -1,5 +1,5 @@
 // CScriptConversation::AddLineToConversation(const CThing& speaker, const CThing* listener, const CCharString& line, bool showSubtitle) -- append a line (speaker index, listener index or -1, text, subtitle flag) when the speaker is in the conversation
-// Leaf: ?AddLineToConversation@CScriptConversation@@
+// Leaf: ?AddLineToConversation@CScriptConversation@@QAEXABVCThing@@PBV2@ABVCCharString@@_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E58A0, 163 bytes (176 with int3 padding), thiscall, `ret 10h`.
 // Identity: Ego_r.pdb name set `?AddLineToConversation@CScriptConversation@@QAEXABVCThing@@PBV2@ABVCCharString@@_N@Z`;
 //   the landed CScriptConversationManager::AddLineToConversation 0x006E5950 forwards to this address on &it->second.

@@ -1,5 +1,5 @@
 // CLocalDetailCacheMap::CObjectTypeCollectionPalette::GetIndexFromType(const CLocalDetailObjectCollectionType*) -- index of an object type in the palette, appending it when it is not there yet
-// Leaf: ?GetIndexFromType@CObjectTypeCollectionPalette
+// Leaf: ?GetIndexFromType@CObjectTypeCollectionPalette@CLocalDetailCacheMap@@QAEJPBVCLocalDetailObjectCollectionType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BDEF40, 121 bytes (+ int3 padding; `ret 4`).
 // Callees: STLport vector<const CLocalDetailObjectCollectionType*>::_M_insert_overflow(pointer, const T&, const __true_type&,
 //   size_type, bool) @ 0x00BDFC00.

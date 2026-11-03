@@ -1,5 +1,5 @@
 // NScript::CRuntimeScriptedEntityPersist::SetEntityPersistScript(unsigned __int64 entityID, const CCharString& script) -- record the persisted script text of a scripted entity: overwrite the entry for the UID when there is one, else append a new (UID, info) pair and re-sort the map
-// Leaf: ?SetEntityPersistScript@
+// Leaf: ?SetEntityPersistScript@CRuntimeScriptedEntityPersist@NScript@@QAEX_KABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB82F0, 213 bytes (`ret 0Ch`, thiscall: this + u64 + const CCharString&).
 // Identity: Ego_r.pdb `?SetEntityPersistScript@CRuntimeScriptedEntityPersist@NScript@@...`; called from
 //   CScriptBase::SaveEntityScript (0x00CB8422). The manifest label "ScriptEntity_InsertOrUpdatePersist" is descriptive.

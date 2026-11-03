@@ -1,5 +1,5 @@
 // CThingBuilding::IsDoorBlockedBy(CThing* thing) -- true when a live occupant registered with the building's door component is standing, moving or pushing (its state component says so) within 1.5 units of the thing
-// Leaf: ?IsDoorBlockedBy@CThingBuilding
+// Leaf: ?IsDoorBlockedBy@CThingBuilding@@QAE_NPAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0082D9C0, 306 bytes (+14 int3), `ret 4`, bool in al.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (two inlined GetInterface lookups: type 0x21 on
 //   the building = bit 1 of bitset word +0x24, type 0x26 on the occupant = bit 6 of +0x24), CBaseIntelligentPointer::

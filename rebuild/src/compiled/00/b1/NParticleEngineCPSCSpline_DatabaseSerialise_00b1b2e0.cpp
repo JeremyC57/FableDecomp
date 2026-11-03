@@ -1,5 +1,5 @@
 // NParticleEngine::CPSCSpline::DatabaseSerialise(CPersistContext& context, const CEmitterDatabaseSerialiseInfo& info) -- vtable slot 17: persist the spline base, then the speed-scaling and bounce flags and the anim speed by name
-// Leaf: ?DatabaseSerialise@CPSCSpline@
+// Leaf: ?DatabaseSerialise@CPSCSpline@NParticleEngine@@UAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@2@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B1B2E0, 105 bytes (+7 int3 padding).
 // Name: FableWin.pdb ?DatabaseSerialise@CPSCSpline@NParticleEngine@@UAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@2@@Z;
 // slot 17 of the vtable 0x012A0934 (rtti-vtables.tsv).

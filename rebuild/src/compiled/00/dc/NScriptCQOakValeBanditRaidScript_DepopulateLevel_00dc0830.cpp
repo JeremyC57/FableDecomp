@@ -1,5 +1,5 @@
 // NScript::CQ_OakValeBanditRaidScript::DepopulateLevel() -- gather every "OakValeBanditRaidBandit" thing and remove them all (no fade)
-// Leaf: ?DepopulateLevel@
+// Leaf: ?DepopulateLevel@CQ_OakValeBanditRaidScript@NScript@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DC0830, 141 bytes, `__fastcall`, no arguments, plain `ret`.
 //   FableWin symbol ?DepopulateLevel@CQ_OakValeBanditRaidScript@NScript@@QAEXXZ. Caller: PopulateLevel @ 0x00DC0300
 //   (call at 0x00DC05D5).

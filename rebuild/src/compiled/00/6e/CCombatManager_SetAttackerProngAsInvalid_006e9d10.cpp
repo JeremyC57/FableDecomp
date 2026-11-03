@@ -1,5 +1,5 @@
 // CCombatManager::SetAttackerProngAsInvalid(CThingCreatureBase& attacker) -- for a combat-eligible attacker that holds a ring on its victim's combat wheel, block its prong there and take it off the wheel
-// Leaf: ?SetAttackerProngAsInvalid@CCombatManager@@
+// Leaf: ?SetAttackerProngAsInvalid@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E9D10, 115 bytes (128 with int3 padding), thiscall, `ret 4`.
 // Identity: Ego_r.pdb name set `?SetAttackerProngAsInvalid@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z`; the body is a
 //   guarded call of CCombatWheel::SetAttackerProngAsBlocked 0x006E9200 (this chunk) on the victim's wheel. The catalog's

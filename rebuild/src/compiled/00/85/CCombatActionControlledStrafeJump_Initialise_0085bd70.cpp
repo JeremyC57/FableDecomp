@@ -1,5 +1,5 @@
 // CCombatAction_ControlledStrafeJump::Initialise() -- levels the creature onto its original facing, measures the signed turn to the required facing, picks the MOVEMENT_STRAFE_JUMP_[BLOCK_]BACK/LEFT/RIGHT/FORWARD animation, optionally turns the creature by the remaining offset, runs the base Initialise and adds the roll creature mode
-// Leaf: ?Initialise@CCombatAction_ControlledStrafeJump
+// Leaf: ?Initialise@CCombatAction_ControlledStrafeJump@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0085BD70, 830 bytes, plain `ret`; virtual Initialise of CCombatAction_ControlledStrafeJump.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8), the physics component's virtual slots 32 (+0x80,
 //   ResetRHSet(const CRightHandedSet&), CTCPhysicsStandard 0x00723980), 66 (+0x108, SetFacingAngle), 70 (+0x118, the facing

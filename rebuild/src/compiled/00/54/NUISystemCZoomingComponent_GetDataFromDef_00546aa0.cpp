@@ -1,5 +1,5 @@
 // NUISystem::CZoomingComponent::GetDataFromDef() -- fetch the component's UI def, copy its InputDelay and ScrollingSpeed, clear the Panning / Zooming flags, then release the def
-// Leaf: ?GetDataFromDef@CZoomingComponent
+// Leaf: ?GetDataFromDef@CZoomingComponent@NUISystem@@QAEXXZ
 // Retail: Fable.exe @ 0x00546AA0, 84 bytes (+ int3 padding). Called by the landed CZoomingComponent constructor 0x00546B00.
 // Callees: CComponent::LoadAndReturnDef() const (primary vtable slot 108, +0x1B0; CDefPointer<const CUIDef> returned
 // through the hidden pointer = the `push ecx` frame slot), the def's virtual slot 1 (destroy) on the last release.

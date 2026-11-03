@@ -7,7 +7,7 @@
 // Globals: g_CCharStringInstanceCount @ 0x013BD800. Literal "%d" @ 0x01265DE8.
 // Shape: the landed GFUHUGEToCharString (0x0099F930, catalog "CCharString::FromUInt64") with a 32-bit argument: named
 // local default-constructed, formatted, copied out through the inline copy constructor (no NRVO) and destroyed.
-// Leaf: ?GFIntToCharString@@
+// Leaf: ?GFIntToCharString@@YI?AVCCharString@@J@Z
 class CCharStringData;
 extern long g_CCharStringInstanceCount;        // 0x013BD800
 

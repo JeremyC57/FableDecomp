@@ -1,5 +1,5 @@
 // NCameraModes::CPhysicsCoordCartesian::FrameUpdate() -- integrates the camera physics state for one frame: velocity += acceleration * dt with each component clamped to +-100, then position += velocity * dt; a culled state instead snaps to its first attractor and stops
-// Leaf: ?FrameUpdate@CPhysicsCoordCartesian
+// Leaf: ?FrameUpdate@CPhysicsCoordCartesian@NCameraModes@@UAEXXZ
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008FA3B0, 460 bytes, plain `ret`; vtable slot 0. Ego_r.pdb

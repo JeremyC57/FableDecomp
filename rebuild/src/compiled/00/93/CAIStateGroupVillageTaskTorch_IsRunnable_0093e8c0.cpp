@@ -1,5 +1,5 @@
 // CAIStateGroup_VillageTaskTorch::IsRunnable() -- clear the task, ask the creature's village for a torch task; keep it only when the task's torch exists and its graphic appearance has the torch dummy object (else clear it again); runnable when a task remains
-// Leaf: ?IsRunnable@CAIStateGroup_VillageTaskTorch
+// Leaf: ?IsRunnable@CAIStateGroup_VillageTaskTorch@@UAE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093E8C0, length 318 bytes (plain `ret`, virtual).
 // Callees: CBaseIntelligentPointer ctor 0x00A01B10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 / dtor 0x00A01C10 (PTask
 //          assignments through CIntelligentPointer<CVillageTaskTorch> temporaries, vtable 0x0128B088), GFGetPVillageInterface

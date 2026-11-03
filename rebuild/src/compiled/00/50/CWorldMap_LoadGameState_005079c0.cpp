@@ -1,5 +1,5 @@
 // CWorldMap::LoadGameState(CPersistContext& context) -- restore the region game state: binary modes read the region count, resize Regions and transfer each region (from the second) by name; text modes parse REGION "name" ... END_REGION blocks, each known region loading its block through a nested text context (unknown regions are skipped)
-// Leaf: ?LoadGameState@CWorldMap@@
+// Leaf: ?LoadGameState@CWorldMap@@QAEXAAVCPersistContext@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005079C0, 612 bytes (+ int3 padding), `ret 4`. PDB ?LoadGameState@CWorldMap@@QAEXAAVCPersistContext@@@Z
 //   (the counterpart of the landed CWorldMap::SaveGameState 0x004FDE80).
 // Callees: CPersistContext::CheckCRC 0x00404500, CDataOutputStream::WriteSLONG 0x00993EB0, CPersistTraits<unsigned

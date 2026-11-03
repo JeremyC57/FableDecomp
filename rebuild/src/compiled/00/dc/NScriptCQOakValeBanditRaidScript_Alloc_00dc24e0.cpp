@@ -1,5 +1,5 @@
 // NScript::CQ_OakValeBanditRaidScript::Alloc(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- script factory of the Q_OakValeBanditRaid quest: `new CQ_OakValeBanditRaidScript(data, game)` with the constructor inlined
-// Leaf: ?Alloc@CQ_OakValeBanditRaidScript
+// Leaf: ?Alloc@CQ_OakValeBanditRaidScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DC24E0, 90 bytes, static __fastcall (data in ecx, game in edx), plain
 //   `ret`. It is the pAllocFunc of the "Q_OakValeBanditRaid" CScriptInfo record (section "S_QOVBR") stored by 0x00CD6EEE;
 //   the quest registry names it NScript::CQ_OakValeBanditRaidScript::Alloc.

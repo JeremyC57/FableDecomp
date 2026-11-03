@@ -1,5 +1,5 @@
 // NTCScriptedControl::CActionPickUpGenericBox::Update() -- refresh the box handle; once the pick-up action is plugged in, finish when the creature is idle or runs another action; otherwise hand the creature a pick-up-generic-box action (finishing at once when the box is dead), and when the creature refuses it put the box straight into the carry slot named by its carryable def, add the carrying mode (34) and finish
-// Leaf: ?Update@CActionPickUpGenericBox@NTCScriptedControl@@
+// Leaf: ?Update@CActionPickUpGenericBox@NTCScriptedControl@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007153B0, 424 bytes (+ int3 padding), plain `ret`. Slot 1 of the action vtable
 //   (Ego_r.pdb ?Update@CActionPickUpGenericBox@NTCScriptedControl@@UAEXXZ).
 // Callees: CScriptThing virtual slots 77 IsValid (+0x134), 71 Refresh (+0x11C), 75 IsAlive (+0x12C) and 11 GetPThing

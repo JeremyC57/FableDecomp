@@ -1,5 +1,5 @@
 // C3DSkeletalMorph::C3DSkeletalMorph() -- CBase(), this class's vtable, empty MorphParameters array and empty CombinedMorph pointer
-// Leaf: ??0C3DSkeletalMorph@
+// Leaf: ??0C3DSkeletalMorph@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A44E80, oracle length 35 bytes.
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0 (landed). Vtable 0x0129D498 = C3DSkeletalMorph (rtti-vtables.tsv).
 //

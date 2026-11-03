@@ -1,5 +1,5 @@
 // CParticleMorphs::Add(const CParticleMorphs::CEntry& entry) -- append (entry.MorphType, entry) to the particle-morph map's vector, then re-sort the map by morph type
-// Leaf: ?Add@CParticleMorphs@@
+// Leaf: ?Add@CParticleMorphs@@QAEXABVCEntry@1@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0081B490, 122 bytes (+int3 pad), `ret 4`. Ego_r.pdb `?Add@CParticleMorphs@@QAEXABVCEntry@1@@Z`.
 //   No direct caller or reference (an out-of-line copy; the def loader inlines it).
 // Callees: vector<pair<EHeroMorphType, CEntry> >::_M_insert_overflow(pos, const T&, const __false_type&, size_type, bool)

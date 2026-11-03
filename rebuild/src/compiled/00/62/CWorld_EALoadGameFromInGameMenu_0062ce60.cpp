@@ -1,5 +1,5 @@
 // CWorld::EALoadGameFromInGameMenu(const CGameEvent* event) -- game-event action: if the event player's hero is alive, copy the save-game name list from the hero's interface 0xC6, read the chosen index from the event data and load that save
-// Leaf: ?EALoadGameFromInGameMenu@
+// Leaf: ?EALoadGameFromInGameMenu@CWorld@@QAEXPBVCGameEvent@@@Z
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0062CE60, 290 bytes (+ int3 padding to 304), thiscall `ret 4`, /GS (cookie
 //   0x0139C8A8, __security_check_cookie 0x00BFE9F9). Ego_r.pdb name set: ?EALoadGameFromInGameMenu@CWorld@@QAEXPBVCGameEvent@@@Z;

@@ -1,5 +1,5 @@
 // CCreatureAction_BriarRoseInvulnerableTeleport::Initialise() -- animation "INVULNERABLE_OUT_OF", base Initialise; push a teleport-intangible mode (living enemy); pop the TELEPORT_POP special effect at the creature and play its TELEPORT_AWAY_WANK sound
-// Leaf: ?Initialise@CCreatureAction_BriarRoseInvulnerableTeleport
+// Leaf: ?Initialise@CCreatureAction_BriarRoseInvulnerableTeleport@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C1F70, 712 bytes (+ int3 padding), virtual Initialise, plain `ret`.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CCombatActionBase::SetCombatAnimation
 //   0x008574D0, CCombatActionBase::Initialise 0x00857520 (direct), CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature

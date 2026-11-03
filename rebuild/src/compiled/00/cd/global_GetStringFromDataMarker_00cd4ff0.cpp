@@ -1,5 +1,5 @@
 // GetStringFromDataMarker(const CCharString& marker, CCharString& out, const CDataMarkerOutput& data) -- copy the DataAsString of every element whose VariableName equals the marker into out
-// Leaf: ?GetStringFromDataMarker@@
+// Leaf: ?GetStringFromDataMarker@@YIXABVCCharString@@AAV1@ABVCDataMarkerOutput@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CD4FF0, 160 bytes, `__fastcall` global (marker in ecx, the out reference in
 //   edx, the data marker output on the stack: `ret 4`) (PDB ?GetStringFromDataMarker@@YIXABVCCharString@@AAV1@ABVCDataMarkerOutput@@@Z).
 // Callees: Compare(const char*, const char*) @ 0x00411570 (`__fastcall`, inside the inlined CCharString::operator==), CCharString::operator= @ 0x0099EFB0.

@@ -1,7 +1,7 @@
 // CCreatureAction_LeapLong::Initialise() -- leap 3 units back along the facing when that point is in navigable line of
 // sight (MOVEMENT_LONG_BACK), else 3 units forward (MOVEMENT_LONG_FORWARD, made non-solid to the combat target), else
 // SPECIAL_IDLE with the leap flag set; then the base Initialise
-// Leaf: ?Initialise@CCreatureAction_LeapLong
+// Leaf: ?Initialise@CCreatureAction_LeapLong@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008B76B0, length 624 bytes, plain `ret` (virtual).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, CVectorMap::LowerBound (const copy) 0x004365B0, interface 2's
 //   GetFacing (slot 70, +0x118, C3DVector by hidden pointer), CThing::GetPos 0x004C73D0,

@@ -1,5 +1,5 @@
 // NParticleEngine::CPSCEmitterGeneric::ChangeOrientation(const C3DVector& v) -- remaps an emitter-space direction for the XZ or YZ emitter orientation (swapping axes and negating Z), unchanged for the default XY orientation
-// Leaf: ?ChangeOrientation@CPSCEmitterGeneric@NParticleEngine@@
+// Leaf: ?ChangeOrientation@CPSCEmitterGeneric@NParticleEngine@@AAE?AVC3DVector@@ABV3@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B10360, length 136 bytes, thiscall `ret 8` (hidden result pointer, &v),
 //   the result pointer returned in eax.
 // Signature from Ego_r.pdb: ?ChangeOrientation@CPSCEmitterGeneric@NParticleEngine@@AAE?AVC3DVector@@ABV3@@Z (private).

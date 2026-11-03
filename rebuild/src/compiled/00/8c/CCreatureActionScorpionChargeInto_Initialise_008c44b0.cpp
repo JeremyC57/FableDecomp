@@ -1,7 +1,7 @@
 // CCreatureAction_ScorpionChargeInto::Initialise() -- animation CHARGE_INTO, base Initialise; turn a live target's 0x93
 // component toward the scorpion; then create the charge obstruction one willpower-indicator radius (+0.2) ahead of the
 // scorpion and keep it in PObstruction
-// Leaf: ?Initialise@CCreatureAction_ScorpionChargeInto
+// Leaf: ?Initialise@CCreatureAction_ScorpionChargeInto@@UAEXXZ
 // Layout: retail CCombatActionBase is 0x114 (Ego_r.pdb +0x18), so ChargeDistance +0x114 and PObstruction +0x118 (PDB
 //   +0x12c/+0x130); PTarget +0xa8; CThing def pointer +0x70, interface bitset +0x20, map +0x44, physics +0x60.
 // Shape: GetSubDef<CAICreatureWillPowerIndicatorDef> (0x008C5A50) sits in this TU, so it has a same-TU noinline stand-in

@@ -1,7 +1,7 @@
 // CV_FisticuffsClubScript::InitialiseVariables() -- reset the fight state, re-arm both fighter timers with the
 // script-def fighter delay, recount the fights, mark the club active unless only-at-night applies, and name the four
 // club regions
-// Leaf: ?InitialiseVariables@CV_FisticuffsClubScript@NScript@@
+// Leaf: ?InitialiseVariables@CV_FisticuffsClubScript@NScript@@QAEXXZ
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E82650, 333 bytes (padded to 336).

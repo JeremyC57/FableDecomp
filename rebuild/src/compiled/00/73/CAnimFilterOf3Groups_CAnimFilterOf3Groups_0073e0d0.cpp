@@ -1,5 +1,5 @@
 // CAnimFilterOf3Groups::CAnimFilterOf3Groups(const CCharString& group1, const CCharString& group2, const CCharString& group3) -- copy the three group names and cache their CRCs
-// Leaf: ??0CAnimFilterOf3Groups@
+// Leaf: ??0CAnimFilterOf3Groups@@QAE@ABVCCharString@@00@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0073E0D0, 178 bytes (+14 int3), __fastcall `ret 0Ch`.
 // Callees: CCharString::CCharString(const CCharString&) @ 0x0099EC30 (x3), Calc @ 0x004014A0 (x3, the CRC-32 kernel; the
 //   shared empty literal 0x0129AAF4 stands in for a name with no data block). Vtable 0x01267480 = CAnimFilterOf3Groups

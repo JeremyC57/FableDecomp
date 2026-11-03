@@ -1,5 +1,5 @@
 // GetNumberFromDataMarker(const CCharString& marker, unsigned long& out, const CDataMarkerOutput& data) -- store the DataAsULONG of every element whose VariableName equals the marker into out
-// Leaf: ?GetNumberFromDataMarker@@
+// Leaf: ?GetNumberFromDataMarker@@YIXABVCCharString@@AAKABVCDataMarkerOutput@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CD5090, 145 bytes, `__fastcall` global (marker in ecx, the out reference in
 //   edx, the data marker output on the stack: `ret 4`) (PDB ?GetNumberFromDataMarker@@YIXABVCCharString@@AAKABVCDataMarkerOutput@@@Z).
 // Callees: Compare(const char*, const char*) @ 0x00411570 (`__fastcall`, inside the inlined CCharString::operator==).

@@ -1,5 +1,5 @@
 // NGameText::CDataBank::GetEnumerationType(unsigned long type) const -- name of a bank enumeration type: 0 "EGameText", 1 "ETextGroup", else ""
-// Leaf: ?GetEnumerationType@CDataBank@
+// Leaf: ?GetEnumerationType@CDataBank@NGameText@@MBE?AVCCharString@@K@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C79E0, 82 bytes (+14 int3 padding), `ret 8` (hidden CCharString return slot + type).
 // Name: FableWin.pdb ?GetEnumerationType@CDataBank@NGameText@@MBE?AVCCharString@@K@Z (protected virtual, catalog vfunc_19).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 (three times, one per arm).

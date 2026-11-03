@@ -8,7 +8,7 @@
 // the entry is a CScreenFilterEntry (CStackEntry 0x10 bytes, then its CScreenFilterParams at +0x10).
 // Shape: the call result assigned straight to the member: the 0x20-byte POD (implicit copy) moves as an 8-dword `rep movsd`
 // from the pointer the call returns in eax into the re-read member address.
-// Leaf: ?Process@CScreenFilterProcess
+// Leaf: ?Process@CScreenFilterProcess@CScreenEffectPriorityStack@NScreenEffect@@UAEXMPBUCStackEntry@23@@Z
 class CRGBFloatColour { public:
     float R, G, B, A;
 };

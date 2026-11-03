@@ -1,5 +1,5 @@
 // CNavigatorExternalInterface::RemoveAgentListFromLists(vector<const CSteeringAgent*>* agentList) -- unregister an agent list: find it in the registered lists and erase its node
-// Leaf: ?RemoveAgentListFromLists@CNavigatorExternalInterface@@
+// Leaf: ?RemoveAgentListFromLists@CNavigatorExternalInterface@@SIXPAV?$vector@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A47D80, length 77 bytes (+3 int3 pad), static `__fastcall` (the list in ecx,
 //   plain `ret`).
 // Name: Ego_r.pdb `?RemoveAgentListFromLists@CNavigatorExternalInterface@@SIXPAV?$vector@PBVCSteeringAgent@@...@Z` (name set).

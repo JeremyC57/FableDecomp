@@ -1,5 +1,5 @@
 // CQ_HobbeToothContestScript::Init() -- register the quest region, reset the contest state and the master-data boast flag, register the quest's four boasts and reset the Whisper comment timer
-// Leaf: ?Init@CQ_HobbeToothContestScript@NScript@@
+// Leaf: ?Init@CQ_HobbeToothContestScript@NScript@@UAEXXZ
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D99E80, length 530 bytes.

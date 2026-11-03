@@ -1,5 +1,5 @@
 // RenderOutputPins(IGraphBuilder* pGB, IBaseFilter* pFilter) -- DirectShow SDK helper: enumerate the filter's pins and Render every unconnected output pin; stops at the first failure and returns its HRESULT
-// Leaf: ?RenderOutputPins@@
+// Leaf: ?RenderOutputPins@@YIJPAUIGraphBuilder@@PAUIBaseFilter@@@Z
 // Retail: Fable.exe @ 0x00A3B000, 225 bytes (+ int3 padding), plain `ret`; __fastcall (pGB in ecx, pFilter in edx --
 //   the CVideoSys TU is /Gr). No rel32 caller in TLC (kept, unreferenced).
 // Callees: COM vtable calls only -- IBaseFilter::EnumPins (+0x28), IEnumPins::Next (+0x0C), IPin::ConnectedTo (+0x18),

@@ -1,5 +1,5 @@
 // NCreatureMode::IsAvailableForHeroSprint(const CThing& thing) -- sprinting is available to the idle main-player hero in movement state 3 whose special-movement component allows it, in a stand (1), weapon-stand (4) or berserk (0x24) mode, not casting lightning and not carrying a too-heavy weapon
-// Leaf: ?IsAvailableForHeroSprint@NCreatureMode@@
+// Leaf: ?IsAvailableForHeroSprint@NCreatureMode@@YI_NABVCThing@@@Z
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085F470, length 236 bytes. `__fastcall` free function (ecx = the thing), bool in al.

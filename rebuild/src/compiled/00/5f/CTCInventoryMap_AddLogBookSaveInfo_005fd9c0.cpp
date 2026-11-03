@@ -1,5 +1,5 @@
 // CTCInventoryMap::AddLogBookSaveInfo(const CWideString& name, const CWideString& abbreviatedName, const CWideString& text, CHeroLogBook::CHeroLogBookEntry::ECategory category) -- append one log-book entry to the four parallel save-info vectors (name, abbreviated name, text, category)
-// Leaf: ?AddLogBookSaveInfo@
+// Leaf: ?AddLogBookSaveInfo@CTCInventoryMap@@QAEXABVCWideString@@00W4ECategory@CHeroLogBookEntry@CHeroLogBook@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005FD9C0, 272 bytes (269 without padding), thiscall `ret 10h`.
 // Identity: Ego_r.pdb `?AddLogBookSaveInfo@CTCInventoryMap@@QAEXABVCWideString@@00W4ECategory@CHeroLogBookEntry@
 //   CHeroLogBook@@@Z`; the four vectors sit at +0x150/+0x15C/+0x168/+0x174, the retail offsets of LogBookNameTag,

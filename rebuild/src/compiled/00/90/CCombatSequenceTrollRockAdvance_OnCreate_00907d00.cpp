@@ -1,5 +1,5 @@
 // CCombatSequence_TrollRockAdvance::OnCreate() -- queue walk-into, troll-pursue and walk-out-of actions, then the base OnCreate
-// Leaf: ?OnCreate@CCombatSequence_TrollRockAdvance
+// Leaf: ?OnCreate@CCombatSequence_TrollRockAdvance@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00907D00, 256 bytes (incl. int3 padding).
 // Callees: operator new 0x00BFEA1A, CCreatureAction_WalkInto ctor 0x00908400,
 //          CCreatureAction_TrollPursue ctor 0x00908340, CCreatureAction_WalkOutOf ctor 0x009083A0, CCountedPointer::Reset 0x00905FD0,

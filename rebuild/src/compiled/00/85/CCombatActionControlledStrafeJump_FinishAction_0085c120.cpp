@@ -1,5 +1,5 @@
 // CCombatAction_ControlledStrafeJump::FinishAction() -- base FinishAction, then if the jump added the roll mode, remove mode 70 from the creature's mode manager and clear the flag
-// Leaf: ?FinishAction@CCombatAction_ControlledStrafeJump
+// Leaf: ?FinishAction@CCombatAction_ControlledStrafeJump@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0085C120, 112-byte slot (97 bytes of code). FinishAction is vtable slot 4 (protected).
 // Callees: CCombatActionBase::FinishAction @ 0x00859A20 (direct base call), CBaseIntelligentPointer::GetPItem @ 0x00A01B50
 //          (PCreature at +8), CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface for type 0x31 = bit 17 of the

@@ -1,5 +1,5 @@
 // CQ_HeroSoulsMotherScript::CreateScreamers() -- start the super-screamer timer, gather the ScreamerHere points, show the quest bar and, until the bar is full, keep creating screamers at random points while fewer than the allowed number are alive; then remove the bar and record the mother's soul as collected
-// Leaf: ?CreateScreamers@CQ_HeroSoulsMotherScript@NScript@@
+// Leaf: ?CreateScreamers@CQ_HeroSoulsMotherScript@NScript@@QAEXXZ
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D84630, length 662 bytes.

@@ -1,6 +1,6 @@
 // CGameScriptInterface::MsgOnTavernGameFinished(const CScriptThing& winner) const -- whether a "tavern game finished"
 // message (type 0x40) seen or heard this frame names the given (alive) thing as its target
-// Leaf: ?MsgOnTavernGameFinished@CGameScriptInterface
+// Leaf: ?MsgOnTavernGameFinished@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008941A0, length 176 bytes, `ret 4`.
 // Callees: GetMinWorldFrameForMessages @ 0x006E7510, GetMaxWorldFrameForMessages @ 0x006E7530,
 // CMessageEventManager::FindMostRecentMessage<CFilter_Bind2<IsOfType, CanBeSeenOrHeard>> @ 0x008ABED0 (CWorld+0x60),

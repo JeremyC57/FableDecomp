@@ -1,6 +1,6 @@
 // NCameraModes::CStringAndCage::CStringAndCageInit::Alloc(CGameCameraManager&, const CDefPointer<const CCameraModeDef>&) const -- allocate a CStringAndCage camera mode set up from the def's string length, cage radius, height offset and FOV
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00873160, 74 bytes, `ret 8`.
-// Leaf: ?Alloc@CStringAndCageInit
+// Leaf: ?Alloc@CStringAndCageInit@CStringAndCage@NCameraModes@@UBEPAVCBase@3@AAVCGameCameraManager@@ABV?$CDefPointer@$$CBVCCameraModeDef@@@@@Z
 // Name: vtable 0x0125C2A4 slot 0; FableWin.pdb ?Alloc@CStringAndCageInit@CStringAndCage@NCameraModes@@UBEPAVCBase@3@AAVCGameCameraManager@@ABV?$CDefPointer@$$CBVCCameraModeDef@@@@@Z.
 // Callees: operator new @ 0x00BFEA1A (0xd0 bytes), NCameraModes::CStringAndCage::CStringAndCage(CGameCameraManager&, const CDefPointer<const CCameraModeDef>&,
 //          float stringLength, float cageRadius, float heightOffset, bool autoGoBehind, float autoGoBehindTime, float defaultFOV)

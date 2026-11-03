@@ -1,5 +1,5 @@
 // _global::GetWindowTitle() -- the main window's title: the TEXT_GUI_WINDOW_TITLE entry of a freshly opened text bank (default "Fable - The Lost Chapters") followed by a space
-// Leaf: ?GetWindowTitle@@
+// Leaf: ?GetWindowTitle@@YI?AVCWideString@@XZ
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004023F0, 274 bytes (+14 int3), plain `ret`; CWideString by hidden pointer in ecx
 // (/Gr link-time __fastcall).  Replaces the landed asm_bake bootstrap with compiler-emitted C++.

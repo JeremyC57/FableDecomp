@@ -1,5 +1,5 @@
 // CDateAndTime::ToString() const -- format the date and time as "[dd/mm/yy hh:mm:ss]" (day, month, year, hour, minute, second) into a zeroed 1 KB heap buffer and return it as a CCharString
-// Leaf: ?ToString@CDateAndTime
+// Leaf: ?ToString@CDateAndTime@@QBE?AVCCharString@@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E9E30, length 125 bytes (`ret 4`: the hidden result pointer). PDB:
 //   ?ToString@CDateAndTime@@QBE?AVCCharString@@XZ; CDateAndTime = {long Year; ulong Month, Day, Hour, Minute, Second, Millisecond}.
 // Label correction: the catalog's "Format_DateTimeString" is CDateAndTime::ToString.

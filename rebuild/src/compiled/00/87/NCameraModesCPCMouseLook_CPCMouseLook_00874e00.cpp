@@ -1,5 +1,5 @@
 // NCameraModes::CPCMouseLook::CPCMouseLook(CGameCameraManager&, const CDefPointer<const CCameraModeDef>&) -- PC mouse-look camera mode: base mode, empty mouse-input list, current-state recentre timer -1
-// Leaf: ??0CPCMouseLook@NCameraModes@@QAE@
+// Leaf: ??0CPCMouseLook@NCameraModes@@QAE@AAVCGameCameraManager@@ABV?$CDefPointer@$$CBVCCameraModeDef@@@@@Z
 // Retail 0x00874E00, 0x49 bytes (+ int3 padding), thiscall `ret 8`. Manifest label "CActionParam_Constructor" is a propagated
 // auto label; the only caller is NCameraModes::CPCMouseLook::CPCMouseLookInit::Alloc 0x00874770 (landed: `new(0x10C)` then a
 // sibling jmp here) and FableWin.pdb names ??0CPCMouseLook@NCameraModes@@QAE@AAVCGameCameraManager@@ABV?$CDefPointer@$$CBVCCameraModeDef@@@@@Z.

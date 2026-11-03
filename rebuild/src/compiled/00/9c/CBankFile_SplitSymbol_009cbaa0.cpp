@@ -1,5 +1,5 @@
 // CBankFile::SplitSymbol(const CCharString& symbol, CCharString* pName, CCharString* pSuffix) -- split "name[suffix]": cut the text before '[' and between the brackets; without both brackets the name is the whole symbol and the suffix empty
-// Leaf: ?SplitSymbol@CBankFile@@
+// Leaf: ?SplitSymbol@CBankFile@@QAEXABVCCharString@@PAV2@1@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009CBAA0, length 212 bytes (+12 int3), ret 0xc (`this` unused).
 // Ego_r.pdb ?SplitSymbol@CBankFile@@QAEXABVCCharString@@PAV2@1@Z.
 // Callees: CCharString::FindCharPos(char) @ 0x0099E5A0, CCharString::CCharString() @ 0x0099E4B0,

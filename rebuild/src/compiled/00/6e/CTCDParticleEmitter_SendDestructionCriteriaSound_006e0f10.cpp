@@ -1,5 +1,5 @@
 // CTCDParticleEmitter::SendDestructionCriteriaSound(CThing& thing) -- when the emitter thing has a sound component (interface 16), play the positional sound "DESTROY_PARTICLE_" + the upper-cased emitter name of its particle-emitter driver
-// Leaf: ?SendDestructionCriteriaSound@CTCDParticleEmitter@@
+// Leaf: ?SendDestructionCriteriaSound@CTCDParticleEmitter@@CIXAAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E0F10, 130 bytes (+ int3 padding), private static `__fastcall` (ecx = thing), plain `ret`.
 // Identity: Ego_r.pdb name set `?SendDestructionCriteriaSound@CTCDParticleEmitter@@CIXAAVCThing@@@Z`; the catalog name is right;
 //   the twin of SendCreationCriteriaSound 0x006E0E80 (that one names the live emitter, this one the driver's EmitterName).

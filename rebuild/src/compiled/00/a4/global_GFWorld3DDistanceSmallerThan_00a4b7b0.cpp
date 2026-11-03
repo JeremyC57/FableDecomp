@@ -1,5 +1,5 @@
 // GFWorld3DDistanceSmallerThan(const C3DVector& a, const C3DVector& b, float distance) -- true when the two positions are strictly closer than the distance (squared lengths compared)
-// Leaf: ?GFWorld3DDistanceSmallerThan@@
+// Leaf: ?GFWorld3DDistanceSmallerThan@@YI_NABVC3DVector@@0M@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A4B7B0, length 68 bytes (+12 int3 pad), `__fastcall` (a ecx, b edx, the
 //   distance on the stack, `ret 4`), bool in eax.
 // Name: Ego_r.pdb / FableWin.pdb `?GFWorld3DDistanceSmallerThan@@YI_NABVC3DVector@@0M@Z` (name set).

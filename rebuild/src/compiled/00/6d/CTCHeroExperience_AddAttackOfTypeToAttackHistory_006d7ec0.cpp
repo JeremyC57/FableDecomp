@@ -1,5 +1,5 @@
 // CTCHeroExperience::AddAttackOfTypeToAttackHistory(EDamageAttribute type) -- drop the oldest attack record and append {type, current world frame} to the attack history
-// Leaf: ?AddAttackOfTypeToAttackHistory@
+// Leaf: ?AddAttackOfTypeToAttackHistory@CTCHeroExperience@@AAEXW4EDamageAttribute@@@Z
 // Grade: RELOCATION_MATCH (agent902, 1 grade this pass) -- the parked `std` list (raw sentinel pointer, one-parameter
 //        iterator, pair without its copy ctor) coloured `type` into edi; the real STLport 4.6 list in std (alloc-proxy
 //        sentinel, _List_iterator<T, _Nonconst_traits<T> > with its declared copy ctor, erase with _Destroy + deallocate,

@@ -1,5 +1,5 @@
 // CThing::SerialiseThingInfo(bool saving, CCharString& data, CSerialiseInfo& info) -- serialise a thing's identity record to or from a text block: saving points a persist context at the string, loading parses it; the shared context overload does the fields, then a load also picks up an optional DefinitionSubType item into DefinitionType
-// Leaf: ?SerialiseThingInfo@CThing@@SIX_N
+// Leaf: ?SerialiseThingInfo@CThing@@SIX_NAAVCCharString@@AAVCSerialiseInfo@1@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C88E0, 330 bytes, static __fastcall (saving in cl, data in edx, info on the
 //   stack), `ret 4`. Ego_r.pdb `?SerialiseThingInfo@CThing@@SIX_NAAVCCharString@@AAVCSerialiseInfo@1@@Z`.
 // Callees: CBaseClass ctor 0x0099A2D0 / dtor 0x0099A2E0, CCharString() 0x0099E4B0, (const char*, long) 0x0099EBF0,

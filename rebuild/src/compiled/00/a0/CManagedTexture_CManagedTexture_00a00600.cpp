@@ -1,5 +1,5 @@
 // CManagedTexture::CManagedTexture() -- base CBase_0099a2d0(), this vtable, then 1 members zeroed
-// Leaf: ??0CManagedTexture@
+// Leaf: ??0CManagedTexture@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A00600, oracle length 25 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.

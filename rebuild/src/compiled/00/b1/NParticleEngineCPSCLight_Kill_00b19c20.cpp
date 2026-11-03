@@ -1,5 +1,5 @@
 // NParticleEngine::CPSCLight::Kill() -- vtable slot 32: kill the light: clear its engine primitive handle (the primitive is told when this was its last handle, then the counted pointer is released)
-// Leaf: ?Kill@CPSCLight@
+// Leaf: ?Kill@CPSCLight@NParticleEngine@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B19C20, 58 bytes (+6 int3 padding).
 // Name: FableWin.pdb ?Kill@CPSCLight@NParticleEngine@@UAEXXZ (the only no-argument void virtual CPSCLight adds beyond
 // EnterTimelineEnd, slot 25 0x00B1AE60); slot 32 of the vtable 0x012A0624 (rtti-vtables.tsv).

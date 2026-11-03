@@ -1,5 +1,5 @@
 // CVertexShaderInput::AddStream(unsigned long streamIndex, const CVertexStreamFormat& format, bool generateDeclaration) -- append a {stream index, format copy} description to the input's stream list (+4), then optionally rebuild the D3D declaration
-// Leaf: ?AddStream@CVertexShaderInput
+// Leaf: ?AddStream@CVertexShaderInput@@QAEXKABVCVertexStreamFormat@@_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AB3B40, length 160 bytes, `ret 0Ch`.
 // Callees: CArray<CVertexStreamFormat::CDataElement>::CArray(const CArray&) @ 0x00A5E0A0 (twice: the temporary and the
 //   placement copy), vector<CStreamInfo>::_M_insert_overflow @ 0x00AB4540 (landed), CRT free @ 0x00BFEA14 (the

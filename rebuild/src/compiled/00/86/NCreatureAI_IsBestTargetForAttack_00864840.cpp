@@ -1,5 +1,5 @@
 // NCreatureAI::IsBestTargetForAttack(const CThingAICreature&, const CThingCreatureBase*) -- true when the target is alive and is the creature's targeting AI's best enemy for attack
-// Leaf: ?IsBestTargetForAttack@
+// Leaf: ?IsBestTargetForAttack@NCreatureAI@@YI_NABVCThingAICreature@@PBVCThingCreatureBase@@@Z
 // Retail 0x00864840, 0x56 bytes (+ int3 padding), __fastcall (creature in ecx, target in edx). PDB (Ego_r):
 // ?IsBestTargetForAttack@NCreatureAI@@YI_NABVCThingAICreature@@PBVCThingCreatureBase@@@Z. Callers 0x00864D32/0x00864D92
 // (same TU) and CAIStateGroup_CreatureRangedCombat2::IsRunnable 0x0091EB60 (landed, calls it __fastcall).

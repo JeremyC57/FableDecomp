@@ -1,5 +1,5 @@
 // NParticleEngine::CParticleUpdateParameters<unsigned long,unsigned long>::GetUpdateParamDesc(CParticleUpdateParamDesc<unsigned long,unsigned long>& desc, const unsigned long& key) const -- looks up the update-parameter descriptor registered for a (non-zero) key; copies it out and returns true, else clears desc.Callback and returns false
-// Leaf: ?GetUpdateParamDesc@
+// Leaf: ?GetUpdateParamDesc@?$CParticleUpdateParameters@KK@NParticleEngine@@QBE_NAAV?$CParticleUpdateParamDesc@KK@2@ABK@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B15B50, length 86 bytes, `ret 8`.
 // Signature from Ego_r.pdb: ?GetUpdateParamDesc@?$CParticleUpdateParameters@KK@NParticleEngine@@QBE_NAAV?$CParticleUpdate
 //   ParamDesc@KK@2@ABK@Z.

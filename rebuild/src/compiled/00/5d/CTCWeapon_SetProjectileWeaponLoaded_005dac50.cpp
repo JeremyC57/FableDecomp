@@ -1,5 +1,5 @@
 // CTCWeapon::SetProjectileWeaponLoaded(bool loaded, CThing* ammo) -- tell the ammo's augmentations component to copy the weapon thing's augmentation data, record the loaded flag, then a weapon whose def needs loading and is not loaded stops aiming (AimingTime -1, override cleared) while any other restarts an unset (-1) aiming timer at 0
-// Leaf: ?SetProjectileWeaponLoaded@CTCWeapon@@
+// Leaf: ?SetProjectileWeaponLoaded@CTCWeapon@@QAEX_NPAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005DAC50, 156 bytes (+4 int3), __fastcall `ret 8`.
 // Identity: both PDB name sets hold CTCWeapon::SetProjectileWeaponLoaded (catalog row). Callees:
 //   CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (landed spelling, inlined GetInterface for interface

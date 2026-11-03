@@ -1,5 +1,5 @@
 // NScript::CGameflowScript::Alloc(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- script factory of the "Gameflow" quest: `new CGameflowScript(data, game)` with the constructor inlined
-// Leaf: ?Alloc@CGameflowScript
+// Leaf: ?Alloc@CGameflowScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CEF950, 77 bytes, static __fastcall (data in ecx, game in edx), plain
 //   `ret`. It is the pAllocFunc of the "Gameflow" CScriptInfo record (section "S_GF") stored by 0x00CD55AA; the quest
 //   registry names it NScript::CGameflowScript::Alloc.

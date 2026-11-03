@@ -1,6 +1,6 @@
 // CNavigatorAStar::GetNearestNavigablePosTo(const C3DVector&, float, C3DVector&) const -- the position itself when its quad-tree node is open, else the centre of the nearest navigable node within the radius (Z from the external interface); false when there is no node at all or none in reach
 // Grade: RELOCATION_MATCH -- the nearest node's position is copied into a named C2DVector local through a user memberwise copy constructor and then handed to SetXY: the copy sends both floats through the FPU (Y loaded first), the plain member read moved X as a dword
-// Leaf: ?GetNearestNavigablePosTo@CNavigatorAStar
+// Leaf: ?GetNearestNavigablePosTo@CNavigatorAStar@@UBE_NABVC3DVector@@MAAV2@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A1AB40, 164 bytes (+ int3 padding; `ret 0Ch`). Public virtual const (UBE).
 // Callees: the external interface's (+0x14) virtual slots 16 GetLayerAt (+0x40) and 4 FindPosZAt (+0x10, float on the x87
 //   stack, called with `true`); CNavigatorManager::GetNodeAt(const C2DVector&, bool) 0x00A14F70 on NavigationManager (+0x1c);

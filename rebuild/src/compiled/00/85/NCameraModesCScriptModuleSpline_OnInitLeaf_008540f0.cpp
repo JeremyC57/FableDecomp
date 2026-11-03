@@ -1,6 +1,6 @@
 // NCameraModes::CScriptModuleSpline::OnInitLeaf() -- set the camera point's spline to the module's node range and start the spline index at the start node's fraction, then run one Update without letting it advance the index
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008540F0, 143 bytes, plain `ret`.
-// Leaf: ?OnInitLeaf@CScriptModuleSpline
+// Leaf: ?OnInitLeaf@CScriptModuleSpline@NCameraModes@@UAEXXZ
 // Name: vtable 0x01275A6C slot 8 (CScriptModuleBase::OnInitLeaf); FableWin.pdb ?OnInitLeaf@CScriptModuleSpline@NCameraModes@@UAEXXZ.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCamPoint, no null test), CVectorMap<ETCInterfaceType, CTCBase*>::
 //          LowerBound(const long*) @ 0x0040F020 (the inlined GetTC<CTCCameraPointScriptedSpline> for type 0x3f, bit 31 of the

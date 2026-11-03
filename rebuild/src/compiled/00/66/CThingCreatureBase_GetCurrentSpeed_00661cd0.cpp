@@ -1,5 +1,5 @@
 // CThingCreatureBase::GetCurrentSpeed() const -- distance the creature moved since the last frame: |PhysicsTC->Position - PhysicsTC->OldPosition|
-// Leaf: ?GetCurrentSpeed@CThingCreatureBase
+// Leaf: ?GetCurrentSpeed@CThingCreatureBase@@QBEMXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00661CD0, 46 bytes + 2 int3, thiscall `ret`, float in st(0). Name: Ego_r.pdb
 // `?GetCurrentSpeed@CThingCreatureBase@@QBEMXZ` (name set); the landed caller NTCScriptedControl::CActionFollowCreature::
 // Update 0x00713EE0 already calls 0x00661CD0 as GetCurrentSpeed (also CTCCreatureNavigation::FrameUpdate 0x006CC88B /

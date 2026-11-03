@@ -1,5 +1,5 @@
 // NAnimationEvents::InitialiseManagers(const CMeshDataBank& bank) -- create the game and sound animation-event managers over the mesh bank, each loading its event symbols from Data\Defs\game_animation_events.h / sound_animation_events.h
-// Leaf: ?InitialiseManagers@NAnimationEvents@@
+// Leaf: ?InitialiseManagers@NAnimationEvents@@YIXABVCMeshDataBank@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006FAA90, 346 bytes, __fastcall (bank in ecx), plain `ret`.
 // PDB: ?InitialiseManagers@NAnimationEvents@@YIXABVCMeshDataBank@@@Z.
 // Callees: operator new 0x00BFEA1A (0x40 bytes), NResourceDirectoryNames::GetDefDir() 0x0041A080 (hidden result in ecx),

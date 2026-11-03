@@ -1,5 +1,5 @@
 // CCombatAction_ControlledStrafeJump::FrameUpdate() -- base FrameUpdate, then once the action is ready for interruption, drop the roll mode (70) the jump added and clear the flag
-// Leaf: ?FrameUpdate@CCombatAction_ControlledStrafeJump
+// Leaf: ?FrameUpdate@CCombatAction_ControlledStrafeJump@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0085C0B0, 112-byte slot (108 bytes of code). FrameUpdate is vtable slot 56.
 // Callees: CCombatActionBase::FrameUpdate @ 0x00859D80 (direct base call), virtual IsActionReadyForInterruption
 //          (slot 27, `call [eax+6Ch]`, CCombatActionBase @ 0x00856170), CBaseIntelligentPointer::GetPItem @ 0x00A01B50

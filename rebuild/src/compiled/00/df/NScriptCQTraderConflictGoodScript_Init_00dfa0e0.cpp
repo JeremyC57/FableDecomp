@@ -1,5 +1,5 @@
 // CQ_TraderConflictGoodScript::Init() -- reset the good trader-conflict quest state, register its two bandit-camp quest regions and five boasts, then arm the kill-no-bandits boast flags in the master data
-// Leaf: ?Init@CQ_TraderConflictGoodScript@NScript@@
+// Leaf: ?Init@CQ_TraderConflictGoodScript@NScript@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DFA0E0, 681 bytes (688 with int3 padding).
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0; through the script's interface (+0x40):
 //   AddQuestRegion (slot 271, +0x43c) and AddBoast (slot 303, +0x4bc) -- slot names of the landed

@@ -1,5 +1,5 @@
 // CCreatureDef::~CCreatureDef() -- the creature definition's destructor: free the radius-weight map, the DialogueVoices vector, the PhonemeAnim map and the two action/modifier vectors, release the PStats / PExpressions / PRandomAppearanceMorph / PWoundMorphs counted pointers, then run the CDefPointeeBase / CResource base destructors
-// Leaf: ??1CCreatureDef@
+// Leaf: ??1CCreatureDef@@UAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006768F0, 352 bytes (349 without padding), thiscall, ends in `jmp` to the base dtor.
 //   Vtables: CCreatureDef 0x0125B43C (rtti-vtables.tsv; slot 0 is the landed scalar deleting dtor 0x006768D0, which
 //   calls this), CDefPointeeBase 0x01230BA0 (the inline base dtor's store; CDefClassBase's store is dead and dropped).

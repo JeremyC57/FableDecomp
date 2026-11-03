@@ -1,5 +1,5 @@
 // CThingSwitch::OnThingWithScriptNameApplied(const CCharString& name, const C3DVector& position, CThingCreatureBase& creature) -- a switch of trigger type 6 that is not yet triggered fires when the applied thing's script name is its TriggerableObjectScriptName and the thing is within the trigger radius (2D): queue a CEventTriggered for the creature (component 0x42) and latch Triggered
-// Leaf: ?OnThingWithScriptNameApplied@CThingSwitch
+// Leaf: ?OnThingWithScriptNameApplied@CThingSwitch@@UAEXABVCCharString@@ABVC3DVector@@AAVCThingCreatureBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0083CC10, length 340 bytes (`ret 0Ch`); CThingSwitch vtable 0x012453FC slot 71.
 //   Name and signature from Ego_r.pdb (`?OnThingWithScriptNameApplied@CThingSwitch@@UAEXABVCCharString@@ABVC3DVector@@AAVCThingCreatureBase@@@Z`);
 //   the catalog calls it "CThingSwitch::vfunc_71".

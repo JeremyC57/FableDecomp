@@ -1,5 +1,5 @@
 // CAIStateGroup_MinionFindPersonalSpace::IsRunnable() -- when the creature's personal space is being invaded, search the rough box of the personal-space radius around it for the invader and latch the first one found
-// Leaf: ?IsRunnable@CAIStateGroup_MinionFindPersonalSpace@@
+// Leaf: ?IsRunnable@CAIStateGroup_MinionFindPersonalSpace@@UAE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0092E950, length 308 bytes (+ int3 padding).
 // Callees: IsSpaceInvader(CThingCreatureBase*) @ 0x0092E890, the creature's physics-info accessor @ 0x006A4D00
 // (+0x60 sub-object + 0xc; manifest "DoSizeof" is propagated), the static radius getter @ 0x00661CC0 (`fld [g] ; ret`,

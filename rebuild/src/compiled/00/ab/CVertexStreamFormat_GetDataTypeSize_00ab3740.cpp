@@ -1,5 +1,5 @@
 // CVertexStreamFormat::GetDataTypeSize(EVertexStreamDataType type) -- byte size of one vertex-stream element of the given data type (0 for an unknown type)
-// Leaf: ?GetDataTypeSize@CVertexStreamFormat
+// Leaf: ?GetDataTypeSize@CVertexStreamFormat@@SIKW4EVertexStreamDataType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AB3740, length 108 bytes (51 code + 1 nop + the 14-entry jump table)
 //   (+4 int3), static __fastcall (type in ecx), plain `ret`.
 // Identity: Ego_r.pdb `?GetDataTypeSize@CVertexStreamFormat@@SIKW4EVertexStreamDataType@@@Z` (static, __fastcall,

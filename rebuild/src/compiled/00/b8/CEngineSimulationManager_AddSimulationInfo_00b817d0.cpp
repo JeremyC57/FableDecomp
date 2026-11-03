@@ -1,5 +1,5 @@
 // CEngineSimulationManager::AddSimulationInfo(const CIVCountedPointer<CEnginePrimitiveSimulationInfo>& info, bool paused, bool fullUpdateOnly) -- queue a primitive's simulation info on the paused, full-update-only or always-update list
-// Leaf: ?AddSimulationInfo@CEngineSimulationManager@@
+// Leaf: ?AddSimulationInfo@CEngineSimulationManager@@QAEXABV?$CIVCountedPointer@VCEnginePrimitiveSimulationInfo@@@@_N1@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B817D0, 79 bytes. __fastcall, `ret 0Ch`.
 // Callees: malloc (CRT import thunk) @ 0x00BFEA0E (the STLport malloc allocator's node allocate).
 // Callers: CEngineInternalPrimitiveStaticMesh::InitialiseSimulation 0x00B9DE90, CEngineInternalPrimitiveAnimatedMesh::

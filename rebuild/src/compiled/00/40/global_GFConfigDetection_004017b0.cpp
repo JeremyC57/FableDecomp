@@ -1,5 +1,5 @@
 // _global::GFConfigDetection() -- load ConfigDetect.dll, detect the video card and import its recommended settings into the display/detail globals (software-safe defaults when it asks for software mode); false when the DLL or its exports fail
-// Leaf: ?GFConfigDetection@@
+// Leaf: ?GFConfigDetection@@YI_NXZ
 // Flags: /GS /Gr
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004017B0, 875 bytes (+5 int3), plain `ret`, /GS cookie (0x0139C8A8, check
 // 0x00BFE9F9) around the 260-byte error-text buffer.  Replaces the landed asm_bake bootstrap with compiler-emitted C++.

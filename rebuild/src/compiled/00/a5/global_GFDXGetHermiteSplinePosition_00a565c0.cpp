@@ -1,5 +1,5 @@
 // GFDXGetHermiteSplinePosition(C3DVector& out, const C3DVector& p0, const C3DVector& t0, const C3DVector& p1, const C3DVector& t1, float s) -- Hermite spline position through D3DX: copy the points and tangents into D3DXVECTOR3s, call D3DXVec3Hermite and copy the result back
-// Leaf: ?GFDXGetHermiteSplinePosition@@
+// Leaf: ?GFDXGetHermiteSplinePosition@@YIXAAVC3DVector@@ABV1@111M@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A565C0, 172 bytes (+4 int3), `ret 10h` (PDB
 //   ?GFDXGetHermiteSplinePosition@@YIXAAVC3DVector@@ABV1@111M@Z: `__fastcall`, out in ecx, p0 in edx, the rest on the stack).
 // Callees: D3DXVec3Hermite (d3dx9_25.dll, called through the jmp thunk @ 0x00BFEFDA; __stdcall).

@@ -1,5 +1,5 @@
 // CPhysicsFacesSegmentBranch::CPhysicsFacesSegmentBranch(const CArray<C3DTriangle2>& triangles, const CArray<C3DVector>& vertices, const CPlane& plane, const CArray<unsigned short>& positive, const CArray<unsigned short>& negative, long depth) -- stores the dividing plane, then builds each child: a further branch when the face set splits again, otherwise a leaf holding the faces
-// Leaf: ??0CPhysicsFacesSegmentBranch@@
+// Leaf: ??0CPhysicsFacesSegmentBranch@@QAE@ABV?$CArray@VC3DTriangle2@@@@ABV?$CArray@VC3DVector@@@@ABVCPlane@@ABV?$CArray@G@@3J@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A86B30, 409 bytes, `ret 18h`; Ego_r.pdb
 //   ??0CPhysicsFacesSegmentBranch@@QAE@ABV?$CArray@VC3DTriangle2@@@@ABV?$CArray@VC3DVector@@@@ABVCPlane@@ABV?$CArray@G@@3J@Z.
 // Callees: CPhysicsFacesSegmentBranch::Calculate 0x00A868C0 (static `__fastcall`: triangles ecx, vertices edx), operator new

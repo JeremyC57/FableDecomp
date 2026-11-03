@@ -1,5 +1,5 @@
 // CCombatSequence_WillForcePushLongRange::OnCreate() -- queue the force-push "into" combat animation and the force-push release cast, then the base OnCreate
-// Leaf: ?OnCreate@CCombatSequence_WillForcePushLongRange
+// Leaf: ?OnCreate@CCombatSequence_WillForcePushLongRange@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00909520, 288 bytes (incl. int3 padding).
 // Callees: operator new 0x00BFEA1A, CCharString(const char*, long) 0x0099EBF0, ~CCharString 0x0099EAE0,
 //          CCreatureAction_PlayCombatAnimation(owner, target, const CCharString&, bool) 0x008B7F80 (0x118 bytes),

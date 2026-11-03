@@ -1,5 +1,5 @@
 // CBankFileAsyncData::~CBankFileAsyncData() -- unless aborted: under the bank's critical section, drop this request from the bank's instance and restart sets, spin (unlocking around Sleep(0)) until any outstanding threaded read has finished, and give the pool handle back; then return an internally allocated buffer to the global allocator (destroying the allocator when it empties and is flagged to die) and run the base destructors
-// Leaf: ??1CBankFileAsyncData@@
+// Leaf: ??1CBankFileAsyncData@@UAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D61F0, length 348 bytes (+ int3 padding), ebp frame aligned to 8, plain ret.
 // Callees: CCriticalSectionLock ctor @ 0x00A62920 / Unlock @ 0x00A62960 / Lock @ 0x00A62980 / dtor @ 0x00A629A0,
 //          set<CBankFileAsyncData*>::erase(const key&) @ 0x009D7F40 (_Rb_tree, twice), CThreadedFile::HasReadFinished(ulong)

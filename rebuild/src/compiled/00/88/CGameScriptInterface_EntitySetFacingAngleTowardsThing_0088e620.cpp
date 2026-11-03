@@ -1,7 +1,7 @@
 // CGameScriptInterface::EntitySetFacingAngleTowardsThing(const CScriptThing& entity, const CScriptThing& target, bool
 // immediate) const -- turn the entity to face the target: the XY bearing between their positions as a fraction of a
 // full turn, wrapped into [0, 1), handed to EntitySetFacingAngle
-// Leaf: ?EntitySetFacingAngleTowardsThing@CGameScriptInterface
+// Leaf: ?EntitySetFacingAngleTowardsThing@CGameScriptInterface@@UBEXABVCScriptThing@@0_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088E620, length 208 bytes, `ret 0Ch`.
 // Callees: CScriptThing virtual slot 75 IsValid (+0x12C) and slot 6 GetPos (+0x18, const C3DVector&), the CRT
 // `_CIfmod` @ 0x00BFEB28 (fmod intrinsic), CGameScriptInterface virtual slot 474 EntitySetFacingAngle (+0x768).

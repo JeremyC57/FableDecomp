@@ -1,5 +1,5 @@
 // N3DPrimitive::CVertexShaderInputStatic::~CVertexShaderInputStatic() -- empty destructor: the inlined CVertexShaderInput destructor (free the D3D declaration array, destroy and free the stream-info array) then the CBaseClass destructor
-// Leaf: ??1CVertexShaderInputStatic@N3DPrimitive
+// Leaf: ??1CVertexShaderInputStatic@N3DPrimitive@@UAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A98640, length 62 bytes (+ int3 padding).
 // Evidence: called on the stack local of the vertex-shader setup @ 0x00A91140 whose vtable 0x0129DFB8 is
 // N3DPrimitive::CVertexShaderInputStatic (rtti-vtables.tsv); the body is byte-identical to CVertexShaderInput::~CVertexShaderInput @ 0x00A5EB70.

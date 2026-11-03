@@ -1,6 +1,6 @@
 // NParticleEngine::CDecal::GetInterpolatedLifetimerInSeconds(float fraction) const -- the decal's age in seconds: (Lifetimer + fraction) times the global particle update period
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF8AB0, 21 bytes, `ret 4`.
-// Leaf: ?GetInterpolatedLifetimerInSeconds@CDecal
+// Leaf: ?GetInterpolatedLifetimerInSeconds@CDecal@NParticleEngine@@QBEMM@Z
 // Name: FableWin.pdb ?GetInterpolatedLifetimerInSeconds@CDecal@NParticleEngine@@QBEMM@Z; its sibling just before it, 0x00AF8AA0
 //       (`fild [ecx+28h] ; fadd [esp+4]`), is CDecal::GetInterpolatedLifetimer, and the CParticle pair is landed
 //       (GetInterpolatedLifetimerInSeconds 0x00AF85E0 multiplies the same getter in front). The catalog label

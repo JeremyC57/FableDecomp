@@ -1,5 +1,5 @@
 // CCreatureAction_IceTrollIcicleAssaultInto::Initialise() -- animation "ICICLE_ASSAULT_INTO", base Initialise, bump the boss phase when the creature is a boss, then (mode manager present, target alive) push a new CModeIceTrollGroundSmashIcicleAssault(owner, target)
-// Leaf: ?Initialise@CCreatureAction_IceTrollIcicleAssaultInto
+// Leaf: ?Initialise@CCreatureAction_IceTrollIcicleAssaultInto@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C7600, 292 bytes, virtual Initialise.
 // Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("ICICLE_ASSAULT_INTO" 0x012817DC), SetCombatAnimation 0x008574D0,
 //   CCombatActionBase::Initialise 0x00857520 (direct), CBaseIntelligentPointer::GetPItem 0x00A01B50, CVectorMap::LowerBound

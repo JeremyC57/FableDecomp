@@ -1,5 +1,5 @@
 // NCameraModes::IsThemeToBlockCameraBetween(const CWorldMap&, const C3DVector&, const C3DVector&, bool) -- camera ray-cast callback: blocked when the end position is not camera-passable
-// Leaf: ?IsThemeToBlockCameraBetween@
+// Leaf: ?IsThemeToBlockCameraBetween@NCameraModes@@YI_NABVCWorldMap@@ABVC3DVector@@1_N@Z
 // Retail 0x00874EE0, 0x29 bytes (+ int3 padding), __fastcall (map in ecx, from in edx, to and the flag on the stack, `ret 8`).
 // Manifest label "CWorldMap_AreBothPosCameraBlocked" is a descriptive auto label. Ego_r names the callback pair
 // ?IsThemeToBlockCameraBetween@NCameraModes@@YI_NABVCWorldMap@@ABVC3DVector@@1_N@Z and ?IsThemeToBlockPassabilityBetween@...

@@ -1,5 +1,5 @@
 // CAFile::ExpandPath(const CWideString& path, const CWideString& base) -- make a path absolute against a base directory: drive-rooted ("X:\") and UNC paths are kept, a root-relative path gets the base's drive letter, ".." paths are resolved, "." prefixes and plain relative paths are appended to the base
-// Leaf: ?ExpandPath@CAFile@@
+// Leaf: ?ExpandPath@CAFile@@SI?AVCWideString@@ABV2@0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00998C90, 474 bytes (+ int3 padding). FableWin.pdb `?ExpandPath@CAFile@@SI?AVCWideString@@ABV2@0@Z`:
 //   a static `__fastcall` returning CWideString through the hidden pointer in ecx (path in edx, base on the stack), `ret 4`.
 //   Callers: CAFile::IsRoomForFile 0x00999AB0 (this chunk), CAFile::CreateDirectoryForFile 0x00999620 (landed), others.

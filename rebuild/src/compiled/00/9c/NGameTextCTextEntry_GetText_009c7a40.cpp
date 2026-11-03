@@ -1,5 +1,5 @@
 // NGameText::CTextEntry::GetText() const -- returns a copy of the entry's wide text (CWideString member at +0x28) by value (hidden result pointer, out-of-line CWideString copy constructor)
-// Leaf: ?GetText@CTextEntry@NGameText@@
+// Leaf: ?GetText@CTextEntry@NGameText@@QBE?AVCWideString@@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C7A40, length 20 bytes.
 // Callees: CWideString::CWideString(const CWideString&) 0x0099B720.
 // Identity: the PDB name sets hold ?GetText@CTextEntry@NGameText@@QBE?AVCWideString@@XZ (CGroupEntry has no GetText;

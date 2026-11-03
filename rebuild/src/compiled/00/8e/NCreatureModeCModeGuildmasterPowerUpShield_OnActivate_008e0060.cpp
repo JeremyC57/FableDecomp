@@ -1,5 +1,5 @@
 // NCreatureMode::CModeGuildmasterPowerUpShield::OnActivate() -- guildmaster shield power-up: find nearby bodyguards, give each a physical-shield spell and a POWER_UP_BEAM effect
-// Leaf: ?OnActivate@CModeGuildmasterPowerUpShield
+// Leaf: ?OnActivate@CModeGuildmasterPowerUpShield@NCreatureMode@@UAEXXZ
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E0060, 839 bytes, frame 0x158.

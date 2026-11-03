@@ -1,5 +1,5 @@
 // CEnginePrimitiveManagerOcclusionBase::~CEnginePrimitiveManagerOcclusionBase() -- release the counted occlusion data at +0x14/+0x18 (the inlined CCountedPointer destructor), then the vertex shader at +0xc, then ~CBase
-// Leaf: ??1CEnginePrimitiveManagerOcclusionBase@
+// Leaf: ??1CEnginePrimitiveManagerOcclusionBase@@UAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B38590, length 92 bytes.
 // Callees: the count block's destroy (slot +4, the object at +8 in ecx), operator delete @ 0x00BFE9BC, the shared shader's virtual deleting destructor (slot 0,
 // flag 1), CBaseClassNonCopyable::~CBaseClassNonCopyable @ 0x0099A300 (a tail jump). Vtables 0x0129B3D0 = CVertexShader, 0x0129A030 = CShaderBase. Shape: members are destroyed in reverse

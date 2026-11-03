@@ -1,7 +1,7 @@
 // MoveAllThingsInVectorToPosition(const vector<CScriptThing>& things, const C3DVector& position) -- take every living script thing in the vector under scripted control and send it to the position
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-// Leaf: ?MoveAllThingsInVectorToPosition@@
+// Leaf: ?MoveAllThingsInVectorToPosition@@YIXABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@ABVC3DVector@@@Z
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CBF679, 99 bytes, `__fastcall` global (vector in ecx, position in edx),

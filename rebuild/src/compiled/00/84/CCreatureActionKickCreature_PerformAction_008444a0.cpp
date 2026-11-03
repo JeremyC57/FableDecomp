@@ -1,5 +1,5 @@
 // CCreatureAction_KickCreature::PerformAction() -- if the target creature is alive and within reach (both radii + 1.5m), notify it and, when it accepts, fetch the kicker's fire position/orientation
-// Leaf: ?PerformAction@CCreatureAction_KickCreature
+// Leaf: ?PerformAction@CCreatureAction_KickCreature@@UAEXXZ
 // Retry 10b (getsw sweep, FIXES B-15): the placement is read through an inline getter `GetPlacement()`; the plain member read gives the parked register/scheduling difference.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008444A0, 242 bytes (256 with padding), virtual PerformAction.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PTargetCreature +0xa8, PCreature +0x08), CThing::GetPosition

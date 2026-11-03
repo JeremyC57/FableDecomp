@@ -1,5 +1,5 @@
 // CGameScriptInterface::EntityTeleportToPosition(const CScriptThing& thing, const C3DVector& pos, float angle, bool keepOnGround, bool fade) const -- teleport a scripted thing: the hero across maps through a move-hero-to-region game event, otherwise place it directly (snapping a walker onto walkable ground, resetting perception and the camera) and set its heading
-// Leaf: ?EntityTeleportToPosition@CGameScriptInterface
+// Leaf: ?EntityTeleportToPosition@CGameScriptInterface@@UBEXABVCScriptThing@@ABVC3DVector@@M_N2@Z
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0089B780, 943 bytes, /GS (cookie 0x0139C8A8, __security_check_cookie 0x00BFE9F9), `ret 0x14`.
 // Callees: CWorldMap::GetRegionNumberMapIsIn 0x004FC190 / StartMovePlayerPos 0x00502500 / 0x005064B0 (manifest label propagated), CMemoryBuffer::Copy

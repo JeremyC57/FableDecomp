@@ -1,5 +1,5 @@
 // CSoundMap::GetPCriteriaString(const CCharString& name) const -- look the name's CRC up in the sorted criteria map; the entry's def string, or null when absent
-// Leaf: ?GetPCriteriaString@CSoundMap
+// Leaf: ?GetPCriteriaString@CSoundMap@@QBEPBVCDefString@@ABVCCharString@@@Z
 //
 // Retail 0x0069D090, 98 bytes (+ int3 padding to 112), thiscall `ret 4`.
 // Callees: CCRC::Calc(seed, data, length) @ 0x004014A0 (the inline CCharString::GetCRC), CVectorMap<unsigned long,

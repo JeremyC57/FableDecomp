@@ -1,5 +1,5 @@
 // CAIStateGroup_WanderAroundShops::Update() -- register as a shopper of the live shop, then for the configured number of browses: walk up to the pretty thing, look at it, keep looking at it for a random time, and pick the next pretty thing near the shop; terminates when anything dies or an action fails
-// Leaf: ?Update@CAIStateGroup_WanderAroundShops
+// Leaf: ?Update@CAIStateGroup_WanderAroundShops@@UAEXXZ
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009474F0, length 647 bytes (aligned `and esp,-8` frame for the

@@ -1,5 +1,5 @@
 // CTCTavernGameCardBlackjack::NewGame() -- card-base NewGame, then clear this round's winnings, the hands won and the draw flag
-// Leaf: ?NewGame@CTCTavernGameCardBlackjack
+// Leaf: ?NewGame@CTCTavernGameCardBlackjack@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DA050, length 30 bytes. CTCTavernGameCardBlackjack vtable slot 31;
 // Ego_r.pdb `?NewGame@CTCTavernGameCardBlackjack@@UAEXXZ`.
 // Callee: CTCTavernGameCardBase::NewGame() @ 0x008F0930 (called non-virtually).

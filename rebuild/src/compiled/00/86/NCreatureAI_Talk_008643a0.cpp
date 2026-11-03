@@ -1,5 +1,5 @@
 // NCreatureAI::Talk(CThingAICreature& creature, CThingCreatureBase& listener, const CCharString& sound_name, bool, bool tell_listener) -- play the creature's entity-sound for the name at the listener: needs the creature's sound player and entity-sound def and the listener's event component; with tell_listener, skip it while the listener already holds a type-0x12 event and post a CEventHeroHasBeenSpokenToByVillagers after playing
-// Leaf: ?Talk@NCreatureAI@@
+// Leaf: ?Talk@NCreatureAI@@YIXAAVCThingAICreature@@AAVCThingCreatureBase@@ABVCCharString@@_N3@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008643A0, 320 bytes incl. int3 padding, /Gr `__fastcall` (creature in ecx,
 //   listener in edx, the name, an unused bool and tell_listener on the stack), `ret 0Ch`.
 // Identity: the catalog's "Talk" (_global) is the PDB name set's

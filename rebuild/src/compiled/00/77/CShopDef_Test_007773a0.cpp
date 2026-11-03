@@ -1,5 +1,5 @@
 // CShopDef::Test() const -- the def's self-check: walks every entry of the attitude buy- and sell-price multiplier maps (the per-entry checks are compiled out of retail, so only the two tree walks remain)
-// Leaf: ?Test@CShopDef
+// Leaf: ?Test@CShopDef@@QBEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007773A0, 140 bytes (`ret`, `this` in ecx).
 // Name: FableWin.pdb `?Test@CShopDef@@QBEXXZ` (void CShopDef::Test() const); the one caller is CTCShop::CTCShop 0x007744A0
 //   (landed), which calls it on the shop def fetched with GetSubDef. Label correction: catalog "CTCShop_ClearLists" ->

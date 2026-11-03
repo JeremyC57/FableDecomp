@@ -1,6 +1,6 @@
 // KillAllThingsInVector(CGameScriptInterfaceBase& game, const vector<CScriptThing>& things, bool fade) -- remove every living script thing in the vector through the game script interface
 #pragma optimize("s", on)
-// Leaf: ?KillAllThingsInVector@@
+// Leaf: ?KillAllThingsInVector@@YIXAAVCGameScriptInterfaceBase@@ABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CBED82, 56 bytes, `__fastcall` global (interface in ecx, vector in
 //   edx, the bool on the stack: `ret 4`) (PDB ?KillAllThingsInVector@@YIXAAVCGameScriptInterfaceBase@@ABV?$vector@
 //   VCScriptThing@@...@@_N@Z). No frame although the bool sits on the stack: this body is built without the module's

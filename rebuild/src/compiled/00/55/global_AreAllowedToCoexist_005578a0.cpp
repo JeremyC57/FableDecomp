@@ -1,5 +1,5 @@
 // AreAllowedToCoexist(EGameAction action1, EGameAction action2) -- whether two game actions may share one input binding: special attack / run / first-person targeting with each other, attract experience orbs / spell mode with each other
-// Leaf: ?AreAllowedToCoexist@
+// Leaf: ?AreAllowedToCoexist@@YI_NW4EGameAction@@0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005578A0, 147 bytes: 56 bytes of code + the jump tables (dwords 0x005578D8, byte index 0x005578E4,
 //   0x4f entries), plain `ret` (Ego_r.pdb `?AreAllowedToCoexist@@YI_NW4EGameAction@@0@Z`: a free __fastcall, the
 //   actions in ecx / edx).

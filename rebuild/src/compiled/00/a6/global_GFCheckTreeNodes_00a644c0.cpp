@@ -1,5 +1,5 @@
 // GFCheckTreeNodes(CMemoryAllocatorVariableSize::CMemoryArea* node) -- debug walk of the variable-size allocator's free-area red-black tree: recurse into the left then the right child of every node and report the tree as valid
-// Leaf: ?GFCheckTreeNodes@@
+// Leaf: ?GFCheckTreeNodes@@YI_NPAVCMemoryArea@CMemoryAllocatorVariableSize@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A644C0, 35 bytes, plain `ret` (PDB ?GFCheckTreeNodes@@YI_NPAVCMemoryArea@CMemoryAllocatorVariableSize@@@Z:
 //   `bool __fastcall`, the node in ecx). Callees: itself (twice).
 // Layout: Ego_r.pdb CMemoryAllocatorVariableSize::CMemoryArea (32 bytes): PNextArea +0, PRightChild +4, PPreviousArea +8,

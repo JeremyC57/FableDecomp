@@ -1,7 +1,7 @@
 // CV_BodyGuardScript::HenchmanDeductWages() -- script thread: while henchmen are hired and the bodyguards are neither
 // told to wait nor in limbo, charge the hero the total wages each pay period; when he cannot pay, flag it until the
 // henchmen leave; whenever the list is empty re-arm the freaked-out timer for 180; one script frame per pass
-// Leaf: ?HenchmanDeductWages@CV_BodyGuardScript@NScript@@
+// Leaf: ?HenchmanDeductWages@CV_BodyGuardScript@NScript@@QAEXXZ
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E5D9A0, 385 bytes (padded to 400).

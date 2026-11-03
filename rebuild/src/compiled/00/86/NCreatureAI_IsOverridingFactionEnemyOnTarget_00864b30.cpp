@@ -1,5 +1,5 @@
 // NCreatureAI::IsOverridingFactionEnemyOnTarget(const CThingAICreature* creature, const CThing* target) -- whether a village member may treat the target as an enemy despite faction: never for creature group 4 or while scripted control holds it; yes when the target's opinion source overrides faction for this witness or the target keeps a hero deed log and the creature's opinion of the hero overrides the faction enmity
-// Leaf: ?IsOverridingFactionEnemyOnTarget@NCreatureAI@@
+// Leaf: ?IsOverridingFactionEnemyOnTarget@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00864B30, 384 bytes incl. int3 padding, /Gr `__fastcall` (creature in
 //   ecx, target in edx), plain `ret`.
 // Identity: Ego_r/FableWin PDB name set `?IsOverridingFactionEnemyOnTarget@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@@Z`;

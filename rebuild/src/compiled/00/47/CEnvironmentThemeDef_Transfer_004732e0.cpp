@@ -1,5 +1,5 @@
 // CEnvironmentThemeDef::Transfer(CPersistContext& context) -- persist every environment-theme member in declaration order: time of day, the moon-lit flag, fog range, the sky and cloud-layer textures/blends/speeds, the water, weather, glow and shadow factors
-// Leaf: ?Transfer@CEnvironmentThemeDef
+// Leaf: ?Transfer@CEnvironmentThemeDef@@UAEXAAVCPersistContext@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004732E0, length 438 bytes, `ret 4` (vtable slot of CEnvironmentThemeDef).
 // Callees: CPersistContext::Transfer(float&) @ 0x00431061, Transfer(bool&) @ 0x0043314A, Transfer(long&) @ 0x00431102
 // (the overload of each call follows the member type; the parent def's Transfer is NOT called).

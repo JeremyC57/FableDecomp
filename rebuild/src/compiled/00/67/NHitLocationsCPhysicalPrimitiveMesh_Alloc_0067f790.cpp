@@ -1,5 +1,5 @@
 // NHitLocations::CPhysicalPrimitiveMesh::Alloc() const -- vtable slot 1: returns a freshly constructed (empty) mesh primitive
-// Leaf: ?Alloc@CPhysicalPrimitiveMesh@
+// Leaf: ?Alloc@CPhysicalPrimitiveMesh@NHitLocations@@UBEPAVCPhysicalPrimitiveBase@2@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0067F790, 24 bytes (+8 int3 padding).
 // Name: FableWin.pdb ?Alloc@CPhysicalPrimitiveMesh@NHitLocations@@UBEPAVCPhysicalPrimitiveBase@2@XZ; slot 1 of the
 // vtable 0x0125B9B0 (rtti-vtables.tsv: slot 0 the deleting dtor 0x0067F7B0, slot 2 GetToken, slot 3 GetType).

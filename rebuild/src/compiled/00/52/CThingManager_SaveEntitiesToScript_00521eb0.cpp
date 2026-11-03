@@ -1,5 +1,5 @@
 // CThingManager::SaveEntitiesToScript(CCharString& script, long version, const vector& things, vector& names) -- writes the things as script text: the set of their serialisation section names (copied into names), then per section an "XXXSectionStart <name>;" block of "NewThing <type>; ... EndThing;" records (each thing's virtual Save) closed by "XXXSectionEnd;"
-// Leaf: ?SaveEntitiesToScript@CThingManager@@
+// Leaf: ?SaveEntitiesToScript@CThingManager@@QAEXAAVCCharString@@JABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@4@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00521EB0, 682 bytes (0x2AA + int3 padding to 688), thiscall `ret 10h`, /O2 esp
 //   frame (sub esp,18h). Identity: Ego_r.pdb ?SaveEntitiesToScript@CThingManager@@QAEXAAVCCharString@@JABV?$vector@
 //   PAVCThing@@...@std@@AAV?$vector@VCCharString@@...@Z (the catalog's "Save_WriteEntityHierarchy" is descriptive).

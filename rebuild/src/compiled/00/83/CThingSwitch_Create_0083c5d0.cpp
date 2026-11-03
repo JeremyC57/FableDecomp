@@ -1,5 +1,5 @@
 // CThingSwitch::Create(long, const C3DVector&, float, CCharString) -- allocate a switch thing, construct it from the def index / position / radius / script name (passed on by value), place its physics component at the position with the identity axes, and activate it; null on any failure
-// Leaf: ?Create@CThingSwitch
+// Leaf: ?Create@CThingSwitch@@SIPAV1@JABVC3DVector@@MVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0083C5D0, 184 bytes, static __fastcall (ecx = def index, edx = position), `ret 8`.
 // Identity: ?Create@CThingSwitch@@SIPAV1@JABVC3DVector@@MVCCharString@@@Z (Ego_r.pdb). Allocates 0xE8 bytes and runs
 //   the out-of-line constructor 0x00529B00 (manifest label "CMapFilenames" is propagated), then CThingSwitch::

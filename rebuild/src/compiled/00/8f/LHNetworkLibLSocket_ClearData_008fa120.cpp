@@ -1,5 +1,5 @@
 // LHNetworkLib::LSocket::ClearData() -- reset a socket's state: no protocol, no pending activity, both addresses cleared, the byte counters zeroed, the socket information wiped, INVALID_SOCKET, both byte queues emptied, not listening
-// Leaf: ?ClearData@LSocket@LHNetworkLib@@
+// Leaf: ?ClearData@LSocket@LHNetworkLib@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008FA120, 352 bytes (+ int3 padding), thiscall, plain `ret`.
 // Identity: Ego_r.pdb `?ClearData@LSocket@LHNetworkLib@@AAEXXZ` (private); the catalog's "Socket_ReceiveDataAndBuffer"
 //   is descriptive. Callers: LSocket::LSocket 0x008F8A80 (this chunk) and LSocket::Close 0x008F8C70 (landed).

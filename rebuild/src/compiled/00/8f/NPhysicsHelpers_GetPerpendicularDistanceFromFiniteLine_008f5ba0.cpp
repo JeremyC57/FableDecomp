@@ -1,5 +1,5 @@
 // NPhysicsHelpers::GetPerpendicularDistanceFromFiniteLine(const C3DVector&, const C3DVector&, const C3DVector&) -- distance from the point to the closest point on the segment
-// Leaf: ?GetPerpendicularDistanceFromFiniteLine@
+// Leaf: ?GetPerpendicularDistanceFromFiniteLine@NPhysicsHelpers@@YIMABVC3DVector@@00@Z
 // Retail 0x008F5BA0, 0x4A bytes, __fastcall float (lineStart in ecx, lineEnd in edx, point on the stack, `ret 4`).
 //   Manifest label "Geometry_DistancePointToLineSegment" (_global) is descriptive; the PDB name set has
 //   `?GetPerpendicularDistanceFromFiniteLine@NPhysicsHelpers@@YIMABVC3DVector@@00@Z` (the address-adjacent

@@ -8,7 +8,7 @@
 // last member's address is formed in place (`add esi,0A4h`). The array elements are transferred one call each (written
 // out, as the retail source order is not the member order: the level/damage block first, then the camera block).
 // Size-optimised def module (`#pragma optimize("s", on)`): speed picks ecx for each `lea` (ecx is dead before `mov ecx,edi`).
-// Leaf: ?Transfer@CSpecialAbilitiesEnflameDef
+// Leaf: ?Transfer@CSpecialAbilitiesEnflameDef@@UAEXAAVCPersistContext@@@Z
 #pragma optimize("s", on)
 class CPersistContext;
 

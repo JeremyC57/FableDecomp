@@ -1,5 +1,5 @@
 // CEnvironmentSpellEffectInterface::CScreenFilterParams::LerpTo(const CScreenFilterParams& to, float t) -- clamp t to [0, 1] and return the screen-filter parameters blended from this towards `to` (the four scalars and the tint colour)
-// Leaf: ?LerpTo@CScreenFilterParams@CEnvironmentSpellEffectInterface@@
+// Leaf: ?LerpTo@CScreenFilterParams@CEnvironmentSpellEffectInterface@@QAE?AU12@ABU12@M@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00882FE0, 316 bytes incl. int3 padding, thiscall with a hidden result
 //   pointer (`ret 0Ch`: result, to, t), returns the result pointer in eax.
 // Identity: the catalog's "InterpolateRadialBlurParams" is propagated. Ego_r/FableWin PDB name set:

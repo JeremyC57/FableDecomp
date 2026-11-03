@@ -1,5 +1,5 @@
 // CTCDExperienceOrb::SetExperiencePoints(long points) -- store the orb's experience points and scale its appearance by the def's particle scale for the highest experience threshold not above the points (1.0 below the first threshold)
-// Leaf: ?SetExperiencePoints@CTCDExperienceOrb
+// Leaf: ?SetExperiencePoints@CTCDExperienceOrb@@QAEXJ@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00779E10, 128 bytes (`ret 4` through the tail jump).
 // Name: FableWin.pdb `?SetExperiencePoints@CTCDExperienceOrb@@QAEXJ@Z`; the landed CTCDExperienceOrb::
 //   CombineWithExperienceOrb 0x0077A130 calls it at this address, as do CTCDExperienceOrb::Create 0x0077A890 and

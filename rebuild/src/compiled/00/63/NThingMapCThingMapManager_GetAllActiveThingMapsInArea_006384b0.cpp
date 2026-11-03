@@ -1,5 +1,5 @@
 // NThingMap::CThingMapManager::GetAllActiveThingMapsInArea(const C2DBoxI& area, std::vector<CThingMap*>& maps) const -- collect every active thing map whose area overlaps the given box
-// Leaf: ?GetAllActiveThingMapsInArea@
+// Leaf: ?GetAllActiveThingMapsInArea@CThingMapManager@NThingMap@@QBEXABVC2DBoxI@@AAV?$vector@PAVCThingMap@NThingMap@@V?$allocator@PAVCThingMap@NThingMap@@@std@@@std@@@Z
 // Grade: RELOCATION_MATCH (no /Oa) -- same-TU noinline stand-ins: a read-only C2DBoxI::Overlapping (VC7.1 then keeps info->PThingMap in edi across the call, as retail; this was the /Oa effect) and vector::resize(n, x) (the null temporary's address no longer escapes), with the real _M_insert_overflow body. Earlier: /Oa 133v132 with ebx/ebp swapped, plain 127v132.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006384B0, 132 bytes (+ int3 padding), `ret 8`.
 // Identity: Ego_r.pdb `?GetAllActiveThingMapsInArea@CThingMapManager@NThingMap@@QBEXABVC2DBoxI@@AAV?$vector@PAVCThingMap@

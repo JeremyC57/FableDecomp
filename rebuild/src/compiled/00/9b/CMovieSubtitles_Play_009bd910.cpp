@@ -1,5 +1,5 @@
 // CMovieSubtitles::Play(float time, bool display) -- per-frame movie subtitle update: lay the subtitle window out in the bottom of the render target (10% side margins, 300..30 pixels up) in virtual pixels; when the front subtitle's start time is reached format its text into the window and play its "SND_" sample, when its end time is reached drop it; draw the current text centred when asked; count the frame
-// Leaf: ?Play@CMovieSubtitles@@
+// Leaf: ?Play@CMovieSubtitles@@QAEXM_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009BD910, 496 bytes, thiscall `ret 8`. PDB ?Play@CMovieSubtitles@@QAEXM_N@Z;
 //   single caller 0x00628C56 (the movie player, subtitles at +0x30). Catalog label
 //   "CEngineInternalPrimitiveBase_UpdateSubtitleDisplay" is descriptive.

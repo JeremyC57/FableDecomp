@@ -1,5 +1,5 @@
 // CEnginePrimitiveManagerLines::~CEnginePrimitiveManagerLines() -- release the vertex shader held at +0xc (its inlined destructor: the CVertexShader vtable, drop the shared shader's count and delete it at zero, the CShaderBase vtable), then ~CBase
-// Leaf: ??1CEnginePrimitiveManagerLines@
+// Leaf: ??1CEnginePrimitiveManagerLines@@UAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BC9A00, length 43 bytes.
 // Callees: the shared shader's virtual deleting destructor (slot 0, flag 1), CBaseClassNonCopyable::~CBaseClassNonCopyable @ 0x0099A300 (a tail jump). Vtables 0x0129B3D0 = CVertexShader,
 // 0x0129A030 = CShaderBase (rtti-vtables.tsv). Shape: no vtable store of this class's own (`__declspec(novtable)`: the manager base is abstract), the member

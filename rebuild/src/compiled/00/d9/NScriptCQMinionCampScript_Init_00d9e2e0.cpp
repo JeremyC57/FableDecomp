@@ -1,5 +1,5 @@
 // CQ_MinionCampScript::Init() -- reset the mission state and both timers, copy the minion spawn periods from the script def, register the quest region and the quest's four boasts
-// Leaf: ?Init@CQ_MinionCampScript@NScript@@
+// Leaf: ?Init@CQ_MinionCampScript@NScript@@UAEXXZ
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D9E2E0, length 571 bytes.

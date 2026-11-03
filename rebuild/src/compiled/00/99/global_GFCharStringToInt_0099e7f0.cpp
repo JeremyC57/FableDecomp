@@ -6,7 +6,7 @@
 // `je` on a null block plus `jae` against StringLength); value = value * 10 + (c - '0') is the `lea` pair; the
 // negative flag lives in a frame byte (ebx/esi/edi/ebp hold c, i, value, &text).
 // Layout (landed CCharString model): CCharStringData = CBasicString<char> {PData +0, StringLength +4, ...}.
-// Leaf: ?GFCharStringToInt@@
+// Leaf: ?GFCharStringToInt@@YIJABVCCharString@@@Z
 extern "C" int __cdecl isdigit(int c);                  // 0x00BFEDA6
 
 struct CBasicStringChar {

@@ -1,5 +1,5 @@
 // CCombatActionBase::Initialise() -- resets the combat state, plays the combat animation the creature picks from the candidates, runs the base Initialise and, for a strike action, advances the creature's combo chain
-// Leaf: ?Initialise@CCombatActionBase
+// Leaf: ?Initialise@CCombatActionBase@@UAEXXZ
 // Naming wave 28 (family d4): 0x00666B50 is ?GetAppropriateCombatAnimationFromList@CThingCreatureBase@@QBEJABV?$vector@PBVCAnimationEntry@@..@Z
 //   (Ego_r.pdb / FableWin.pdb const member, DECISIONS_W27 D4) over the STLport vector<const CAnimationEntry*>. Was CThing::..(const CAnimationEntryVector&) (QAE); PCreature is the Ego_r
 //   CIntelligentPointer<CThingCreatureBase>.

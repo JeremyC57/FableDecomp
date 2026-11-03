@@ -1,5 +1,5 @@
 // CThingManager::SaveEntitiesBinary(CMemoryDataOutputStream& stream, long version, const vector& things, vector& names) -- writes the things as binary: the set of their serialisation section names (copied into names), then per section its name and a length-prefixed section stream of (type name + SaveBinary) records for the things in it, closed by a 0
-// Leaf: ?SaveEntitiesBinary@CThingManager@@
+// Leaf: ?SaveEntitiesBinary@CThingManager@@QAEXAAVCMemoryDataOutputStream@@JABV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@4@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00522160, 653 bytes (0x28D + int3 padding to 656), thiscall `ret 10h`, /O2 esp
 //   frame (sub esp,44h). Identity: Ego_r.pdb ?SaveEntitiesBinary@CThingManager@@QAEXAAVCMemoryDataOutputStream@@JABV?$vector@
 //   PAVCThing@@...@std@@AAV?$vector@VCCharString@@...@Z (the catalog's "SavePersistentEntitiesInRegions" is descriptive).

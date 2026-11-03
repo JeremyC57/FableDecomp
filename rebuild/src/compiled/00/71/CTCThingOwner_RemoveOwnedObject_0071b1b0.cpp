@@ -1,5 +1,5 @@
 // CTCThingOwner::RemoveOwnedObject(CThing&) -- removes the thing from the owned-object list
-// Leaf: ?RemoveOwnedObject@CTCThingOwner@@AAEX
+// Leaf: ?RemoveOwnedObject@CTCThingOwner@@AAEXAAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0071B1B0, 66 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity: CTCThingOwner::RemoveOwnedObject(CThing&) -- proven; evidence: it sits in the CTCThingOwner module (before CTCThingOwner::OnKill 0x0071B200 / ClearDeadEntries 0x0071B240);
 //   Ego_r.pdb CTCThingOwner::ObjectList is the list<CIntelligentPointer<CThing> > at +0xC; its one caller is

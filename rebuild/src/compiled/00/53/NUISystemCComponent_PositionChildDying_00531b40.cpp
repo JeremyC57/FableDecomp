@@ -1,5 +1,5 @@
 // NUISystem::CComponent::PositionChildDying(CComponent* child) -- drop a dying child from the position-children set
-// Leaf: ?PositionChildDying@CComponent
+// Leaf: ?PositionChildDying@CComponent@NUISystem@@UAEXPAV12@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00531B40, 92 bytes (96 with padding), virtual, `ret 4`.
 // Vtable 0x0122F5D4 (NUISystem::CSprite, inherited from CComponent) slot 127, after the landed AddPositionChild
 // (slot 124, 0x00531BA0) and SetPositionParent (slot 125); Ego_r.pdb declares

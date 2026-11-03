@@ -1,6 +1,6 @@
 // CGamePlayerInterface::GetGameEvent(CGameEvent& event) const -- hand out the next game event of the current processed
 // input, refilling it from the queued inputs or from the input processes when it is used up
-// Leaf: ?GetGameEvent@CGamePlayerInterface
+// Leaf: ?GetGameEvent@CGamePlayerInterface@@UBE_NAAVCGameEvent@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00446A30, length 224 bytes, `ret 4`.
 // Callees: CGamePlayerInterface::GetInputProcessEvent(CProcessedInput&) @ 0x00446330,
 // GetInputProcessEventFromUpdate(CProcessedInput&) @ 0x00446220, CProcessedInput::GetGameEvent(unsigned long) const

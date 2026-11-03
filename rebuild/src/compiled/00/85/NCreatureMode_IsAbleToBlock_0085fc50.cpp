@@ -1,5 +1,5 @@
 // NCreatureMode::IsAbleToBlock(const CThing& thing) -- false while incapacitated, sitting or lying down, or in the Vulnerable (0x53) or BriarRoseConcentrate (0x3F) mode
-// Leaf: ?IsAbleToBlock@NCreatureMode@@
+// Leaf: ?IsAbleToBlock@NCreatureMode@@YI_NABVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085FC50, length 116 bytes. `__fastcall` free function (ecx = the thing), bool in al.
 // Mangled (Ego_r.pdb): ?IsAbleToBlock@NCreatureMode@@YI_NABVCThing@@@Z.
 // Callees: NCreatureMode::IsIncapacitated 0x0085F0C0, IsSitting 0x0085F310, IsLyingDown 0x0085F2B0 (same TU), CVectorMap

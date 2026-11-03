@@ -1,5 +1,5 @@
 // CQ_TraderConflictEvilScript::Init() -- reset the evil trader-conflict quest state, start the scream-out timer, register the BarrowFields quest region and the five boasts, then arm the bandit-follower boast flags in the master data
-// Leaf: ?Init@CQ_TraderConflictEvilScript@NScript@@
+// Leaf: ?Init@CQ_TraderConflictEvilScript@NScript@@UAEXXZ
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DF5CD0, 625 bytes (640 with int3 padding).

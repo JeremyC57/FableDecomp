@@ -1,5 +1,5 @@
 // NCreatureMode::GetRandomAnimationFromCreature(const CCharString& name, const CThingCreatureBase& creature, const CAnimFilterBase& filter, unsigned long* seed) -- pick a random animation entry filed under the name in the creature's appearance def: one passing the filter when any does, else one of any group (CAnimFilterNoGroup); a null counted pointer when the def is missing or no entry qualifies
-// Leaf: ?GetRandomAnimationFromCreature@NCreatureMode@@
+// Leaf: ?GetRandomAnimationFromCreature@NCreatureMode@@YI?AV?$CCountedPointer@VCAnimEntryLite@NAnimationEntryBodge@@@@ABVCCharString@@ABVCThingCreatureBase@@ABVCAnimFilterBase@@PAK@Z
 // Flags: /Oa
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00861E60, 832 bytes incl. int3 padding, /Gr `__fastcall` (hidden result in
 //   ecx, the name in edx, creature/filter/seed on the stack), `ret 0Ch`.

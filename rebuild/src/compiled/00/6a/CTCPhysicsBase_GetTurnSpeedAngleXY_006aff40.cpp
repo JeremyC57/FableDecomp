@@ -1,6 +1,6 @@
 // CTCPhysicsBase::GetTurnSpeedAngleXY() const -- the change of facing in the XY plane between the old and the last orientation, in turns
 // Grade: RELOCATION_MATCH (retry wave 2 sec2b): the difference goes through a named result local, which keeps the second bearing on the x87 stack and joins every path on one fsubr [esp]
-// Leaf: ?GetTurnSpeedAngleXY@CTCPhysicsBase@@
+// Leaf: ?GetTurnSpeedAngleXY@CTCPhysicsBase@@QBEMXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006AFF40, length 212 bytes (+ int3 padding), thiscall, plain `ret`,
 //   float result on st0.
 // Callees: the TC's virtual GetLastRHSet() const (slot 72, +0x120, named by the landed CThingCreatureBase::OnDie

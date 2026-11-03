@@ -1,7 +1,7 @@
 // CTCShop::GetStockList() const -- copy the shop's stock into a map of item type to whole quantity (each float quantity rounded up to a long), returned by value
 // Grade: RELOCATION_MATCH retry1 -- the landed CeilToLong retail_asm helper (0x006A68F0 family) for the quantity round-up, and the STLport _Rb_tree default ctor spelled _M_key_compare(_Compare()) (value-init _M_key_compare() stores a zero byte retail lacks); the map copy ctor is the out-of-line 0x00778100
 // Retail-asm: 0x00774666 fld dword ptr [ebp-10h] ; fadd dword ptr [ebp-0Ch] ; fistp dword ptr [ebp-4] ; dec dword ptr [ebp-4] -- the landed CeilToLong helper
-// Leaf: ?GetStockList@CTCShop@
+// Leaf: ?GetStockList@CTCShop@@QBE?BV?$map@JJU?$less@J@std@@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00774610, length 282 bytes (thiscall, `ret 4`, ebp frame; result through the
 //   hidden pointer).
 // Identity: Ego_r.pdb ?GetStockList@CTCShop@@QBE?BV?$map@JJU?$less@J@std@@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@XZ

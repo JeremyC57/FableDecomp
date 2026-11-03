@@ -1,5 +1,5 @@
 // GFGetSystemManager() -- returns the address of the engine's static system manager object GSystemManager (0x013CA618)
-// Leaf: ?GFGetSystemManager@@
+// Leaf: ?GFGetSystemManager@@YIPAVCSystemManager@@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009A4EC0, 6 bytes (`mov eax, offset GSystemManager; ret`).
 // Identity: the PDB name sets hold ?GFGetSystemManager@@YIPAVCSystemManager@@XZ (__fastcall) and the
 // `dynamic initializer` / `dynamic atexit destructor` for 'GSystemManager'; the object at 0x013CA618 is destroyed

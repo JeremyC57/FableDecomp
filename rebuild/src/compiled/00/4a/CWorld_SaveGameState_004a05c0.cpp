@@ -1,5 +1,5 @@
 // CWorld::SaveGameState(const CWideString& name, bool questScreens, bool flag) -- save the world to the profile path for name (the hero state as well while between quest screens, else the stale .hs companion is deleted) with the memory pool shut down around it
-// Leaf: ?SaveGameState@CWorld@@
+// Leaf: ?SaveGameState@CWorld@@QAEXABVCWideString@@_N1@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004A05C0, 448 bytes, `ret 0Ch` (FableWin.pdb ?SaveGameState@CWorld@@QAEXABVCWideString@@_N1@Z).
 // Callees: GFGetTime 0x009E1BC0 (__fastcall double, discarded), CWideString(const CWideString&) 0x0099B720, CWideString()
 //   0x0099AED0, SplitPath 0x00997620 (__fastcall), wcscmp 0x00BFE94C, __char_traits_base<wchar_t, wint_t>::compare 0x00403C60, CUserProfileManager::Get

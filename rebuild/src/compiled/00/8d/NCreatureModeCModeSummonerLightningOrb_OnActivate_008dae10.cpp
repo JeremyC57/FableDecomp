@@ -1,5 +1,5 @@
 // NCreatureMode::CModeSummonerLightningOrb::OnActivate() -- stand-mode activation; suspend a player's animation; spawn the orb-charge effect (attached to the summoner's LIGHTNING_ORB_FOCUS bone through its particle emitter) and the charge effect; give the summoner an electrocute-on-touch component; arm the timer
-// Leaf: ?OnActivate@CModeSummonerLightningOrb
+// Leaf: ?OnActivate@CModeSummonerLightningOrb@NCreatureMode@@UAEXXZ
 // Naming wave 18: the global stand-in g_LightningOrbChargeSeconds (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DAE10, 541 bytes (`ret`).

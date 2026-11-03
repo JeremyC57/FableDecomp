@@ -1,6 +1,6 @@
 // NCameraModes::CFixedDolly::GetPhysicsMode() -- the fixed dolly's physics: a rigid go-to physics leaf owned through a new counted pointer
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0087B770, 106 bytes, `ret 4` (CCountedPointer returned through the hidden pointer).
-// Leaf: ?GetPhysicsMode@CFixedDolly
+// Leaf: ?GetPhysicsMode@CFixedDolly@NCameraModes@@UAE?AV?$CCountedPointer@VCSubComponentBase@NCameraModes@@@@XZ
 // Name: vtable 0x0125C48C slot 26; FableWin.pdb ?GetPhysicsMode@CFixedDolly@NCameraModes@@UAE?AV?$CCountedPointer@VCSubComponentBase@NCameraModes@@@@XZ
 //       (CCameraPointModeBase::GetPhysicsMode is the same slot).
 // Callees: operator new @ 0x00BFEA1A (0x14-byte leaf, 0xc-byte pointer info), CPhysicsLeaf<CPhysicsTargetModelGoTo,

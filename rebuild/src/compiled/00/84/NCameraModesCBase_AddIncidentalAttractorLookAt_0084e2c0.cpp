@@ -1,5 +1,5 @@
 // NCameraModes::CBase::AddIncidentalAttractorLookAt(const C3DVector&, float) -- adds an incidental look-at attractor (position, weight) to the mode's look-at physics, but only when the camera tools see a clear line from the camera's go-to position to it
-// Leaf: ?AddIncidentalAttractorLookAt@CBase@NCameraModes@@
+// Leaf: ?AddIncidentalAttractorLookAt@CBase@NCameraModes@@IAEXABVC3DVector@@M@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0084E2C0, 151 bytes, __fastcall, `ret 8`.
 // Identity: Ego_r.pdb / FableWin.pdb ?AddIncidentalAttractorLookAt@CBase@NCameraModes@@IAEXABVC3DVector@@M@Z, the fourth of the
 //   AddAttractorGoTo / AddIncidentalAttractorGoTo / AddAttractorLookAt / AddIncidentalAttractorLookAt run (TLC 0x0084E1A0 /

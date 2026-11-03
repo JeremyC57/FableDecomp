@@ -1,5 +1,5 @@
 // CTCOracleMinigame::Quit() -- end the oracle minigame: enter the quit stage, take the main player out of the minigame mode, drop pending inputs, wait the def's quit time, hide the minigame info and the subtitle override, show the win/lose text and report the level reached to the online scoreboard
-// Leaf: ?Quit@CTCOracleMinigame
+// Leaf: ?Quit@CTCOracleMinigame@@QAEXXZ
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>

@@ -1,5 +1,5 @@
 // NCameraModes::CGetAllThingsOfType::operator()(const CThing* thing) -- collect a thing into the functor's list when its def name equals the wanted one
-// Leaf: ??RCGetAllThingsOfType@NCameraModes@@
+// Leaf: ??RCGetAllThingsOfType@NCameraModes@@QAEXPBVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00877110, length 80 bytes (`__fastcall`, `ret 4`).
 // Identity: Ego_r.pdb `??RCGetAllThingsOfType@NCameraModes@@QAEXPBVCThing@@@Z` (non-const, void, const CThing*) and its
 //   PDB layout CGetAllThingsOfType { char* DefName +0; list<const CThing*>* ListToChange +4 } (8 bytes) fit the body

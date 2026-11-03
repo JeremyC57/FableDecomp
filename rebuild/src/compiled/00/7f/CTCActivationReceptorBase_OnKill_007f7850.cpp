@@ -1,6 +1,6 @@
 // CTCActivationReceptorBase::OnKill() -- tell every trigger in the Triggers vector that this receptor died: std::for_each(Triggers, CInformTriggerOfReceptorDeath(this))
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F7850, length 20 bytes.
-// Leaf: ?OnKill@CTCActivationReceptorBase
+// Leaf: ?OnKill@CTCActivationReceptorBase@@UAEXXZ
 // Callees: std::_For_each<CThing**, CInformTriggerOfReceptorDeath> @ 0x007F7B70 (`__fastcall`: the functor result by
 // hidden pointer in ecx, `first` in edx, `last` and the by-value functor on the stack; manifest-named). Ego_r.pdb has
 // `?OnKill@CTCActivationReceptorBase@@UAEXXZ`; the chunk's "CTCActivationReceptorCreatureGenerator::vfunc_14" is the

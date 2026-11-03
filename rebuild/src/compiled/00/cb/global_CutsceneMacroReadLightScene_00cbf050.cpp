@@ -1,7 +1,7 @@
 // CutsceneMacro_ReadLightScene(CCharString& line, CCharString& name, unsigned char* red, unsigned char* green, unsigned char* blue) -- split a "name:r,g,b" cutscene light line: the text before the colon becomes the name, each comma stores the parsed token through the current colour pointer
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-// Leaf: ?CutsceneMacro_ReadLightScene@@
+// Leaf: ?CutsceneMacro_ReadLightScene@@YIXAAVCCharString@@0PAE11@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CBF050, 236 bytes, `__fastcall` global (line in ecx, name in edx, the
 //   three colour pointers on the stack: `ret 0Ch`) (PDB ?CutsceneMacro_ReadLightScene@@YIXAAVCCharString@@0PAE11@Z).
 // Callees: CCharString::FindCharPos(char) @ 0x0099E5A0, GetSubString(start, count) @ 0x0099EC70 (hidden result),

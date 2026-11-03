@@ -1,5 +1,5 @@
 // CCreatureAction_CastWillEnflameSpell::FinishAction() -- base FinishAction; if the item removed for the cast is still alive, clear the primary carry slot (weapons dropped, other things removed, the showable hook run when no longer carried), put the item back in its carry slot (CCarryableDef::CarrySlot), refresh sheathed weapons, invalidate the melee flourish, update the front mode and put the main player in aggressive mode; finally reset the creature's enflame component if it is not active
-// Leaf: ?FinishAction@CCreatureAction_CastWillEnflameSpell
+// Leaf: ?FinishAction@CCreatureAction_CastWillEnflameSpell@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008BA3C0, 744 bytes (752 with padding), virtual FinishAction, plain `ret`.
 // Callees: CCombatActionBase::FinishAction 0x00859A20; CBaseIntelligentPointer ctor 0x00A01B10 / GetPItem 0x00A01B50 /
 //   SetPItem 0x00A01B90 / dtor 0x00A01C10 (CIntelligentPointer<CThing> vtable 0x01238C6C); CVectorMap::LowerBound 0x0040F020

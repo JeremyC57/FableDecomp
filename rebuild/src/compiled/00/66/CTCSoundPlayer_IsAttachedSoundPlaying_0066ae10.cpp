@@ -1,5 +1,5 @@
 // CTCSoundPlayer::IsAttachedSoundPlaying(unsigned long sampleID) const -- while the sound system exists and the attached emitter (PAttachedEmitter, +0xc) is set and not dead, ask the emitter whether the sample is playing; else false
-// Leaf: ?IsAttachedSoundPlaying@CTCSoundPlayer@@
+// Leaf: ?IsAttachedSoundPlaying@CTCSoundPlayer@@QBE_NK@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0066AE10, length 69 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem() const @ 0x00A01B50 three times (re-fetched for every access),
 // CThingSoundEmitter::IsSamplePlaying(unsigned long) const @ 0x00836870.

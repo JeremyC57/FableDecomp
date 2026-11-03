@@ -1,5 +1,5 @@
 // CTCEnemy::RemoveAllyThing(const CThing&) -- removes the thing from the ally list
-// Leaf: ?RemoveAllyThing@CTCEnemy@@QAEX
+// Leaf: ?RemoveAllyThing@CTCEnemy@@QAEXABVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076C850, 66 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity: CTCEnemy::RemoveAllyThing(const CThing&) -- proven; evidence: it sits in the CTCEnemy module (after CTCEnemy::SetFaction 0x0076C810, before the CTCEnemy constructor 0x0076C8A0);
 //   Ego_r.pdb CTCEnemy has EnemyThings / AllyThings, two list<CIntelligentPointer<const CThing> > (retail +0x10 / +0x14);

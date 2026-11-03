@@ -1,5 +1,5 @@
 // NParticleEngine::CPSCSplineBase::CSplinePosParamData::GetScaleFactor(const CParticleUpdateParameters<unsigned long,unsigned long>& params, float pos) -- with MaintainSplineShape set, the ratio of the current to the original length of the spline segment around `pos`; 1.0 otherwise or when no control points bracket it
-// Leaf: ?GetScaleFactor@
+// Leaf: ?GetScaleFactor@CSplinePosParamData@CPSCSplineBase@NParticleEngine@@QAEMABV?$CParticleUpdateParameters@KK@3@M@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B216F0, length 177 bytes, `ret 8`, the float in st(0).
 // Signature from Ego_r.pdb: ?GetScaleFactor@CSplinePosParamData@CPSCSplineBase@NParticleEngine@@QAEMABV?$CParticleUpdate
 //   Parameters@KK@3@M@Z. Caller: the landed CPSCSpline::StartUpdate @ 0x00B1B0C0 (call 0x00B1B111, there named

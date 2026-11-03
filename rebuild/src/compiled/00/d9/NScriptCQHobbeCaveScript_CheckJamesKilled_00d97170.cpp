@@ -1,7 +1,7 @@
 // Levers: for(;;) with the terminating return first; in-body `#pragma inline_depth(0)` around the hit-block terminate return gives the out-of-line ~CScriptThing, the __forceinline dtor expands at the other exits.
 // Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // CQ_HobbeCaveScript::CheckJamesKilled(CScriptThing james) -- watches James: once he is killed the mission fails; the first time he is hit and loses health, clears the quest data's +0x114 flag
-// Leaf: ?CheckJamesKilled@CQ_HobbeCaveScript@NScript@@
+// Leaf: ?CheckJamesKilled@CQ_HobbeCaveScript@NScript@@QAEXVCScriptThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D97170, 491 bytes, `ret 0Ch` (the by-value CScriptThing).
 // Callees: interface slot 264 GetHealth (+0x420) then _ftol 0x00BFEA70, CCharString("" 0x0122D70E) 0x0099EBF0 / ~ 0x0099EAE0,
 //   the thing's implementation slots 18 (+0x48, taken as MsgIsKilledBy: same const CCharString& shape, it fails the mission)

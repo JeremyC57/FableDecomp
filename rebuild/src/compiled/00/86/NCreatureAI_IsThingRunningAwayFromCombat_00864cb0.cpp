@@ -1,5 +1,5 @@
 // NCreatureAI::IsThingRunningAwayFromCombat(const CThing&) -- true when the thing has a stealth component whose running-away-from-combat timer is set (>= 0)
-// Leaf: ?IsThingRunningAwayFromCombat@
+// Leaf: ?IsThingRunningAwayFromCombat@NCreatureAI@@YI_NABVCThing@@@Z
 // Retail 0x00864CB0, 0x43 bytes (+ int3 padding), __fastcall (thing in ecx). PDB (Ego_r):
 // ?IsThingRunningAwayFromCombat@NCreatureAI@@YI_NABVCThing@@@Z. Callers 0x00663B7D, 0x009057AE.
 // Callee: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x004365B0 (the thing's interface map at +0x44).

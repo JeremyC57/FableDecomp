@@ -1,5 +1,5 @@
 // CVertexGroupBlock::AddGroupsFrom(const CVertexGroupBlock& other) -- merge another block's groups: every group of `other` not yet in this block's GroupToIndexMap is added
-// Leaf: ?AddGroupsFrom@CVertexGroupBlock@@
+// Leaf: ?AddGroupsFrom@CVertexGroupBlock@@QAEXABV1@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD9260, length 114 bytes (padded to 128), `ret 4`.
 // Callees: CVertexGroupBlock::AddGroup(unsigned long) @ 0x00AD91F0.
 // Layout (retail 0x18 bytes; PDB 32 with debug containers): Groups CArray<unsigned long> +0x00 (12-byte vector),

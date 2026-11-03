@@ -1,5 +1,5 @@
 // CBankFileAsync::OpenReadOnly(const CCharString& bankHandle, unsigned long flags) -- open the bank read-only through CBankFile, report progress, then take the asynchronous reader: the retail bank set's threaded file (and its DMA setting) when attached to one, else a new threaded file opened on the bank's own path; async reads enabled
-// Leaf: ?OpenReadOnly@CBankFileAsync@@
+// Leaf: ?OpenReadOnly@CBankFileAsync@@UAE_NABVCCharString@@K@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D56C0, length 352 bytes (+ int3 padding), virtual, ret 8.
 // Callees: CBankFile::OpenReadOnly @ 0x009D06F0 (qualified base call), CCharString ctor @ 0x0099EBF0 ("..." @ 0x0129B884) /
 //          dtor @ 0x0099EAE0, NProgressDisplay::DisplayProgress(const CCharString&, float, bool, bool) @ 0x009E9F40

@@ -1,5 +1,5 @@
 // CTCShapeManager::GetBestTrack(const NShape::CTrack** out) const -- find the first persistent shape that is a track; write it through out and return whether one exists
-// Leaf: ?GetBestTrack@
+// Leaf: ?GetBestTrack@CTCShapeManager@@QBE_NPAPBVCTrack@NShape@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00761B50, 56 bytes, `ret 4`.
 // Identity: Ego_r.pdb ?GetBestTrack@CTCShapeManager@@QBE_NPAPBVCTrack@NShape@@@Z (the manifest's "Map_FindByKey" is a
 //   forge autoname). Callers: CTCCameraPointTrack::Validate 0x0075DC48, CTCCameraPointTrack::GetActiveCameraPosition

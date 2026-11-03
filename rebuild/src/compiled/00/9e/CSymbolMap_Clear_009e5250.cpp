@@ -1,5 +1,5 @@
 // CSymbolMap::Clear() -- empty the symbol map: clear the vector-map of symbols and the set of used names
-// Leaf: ?Clear@CSymbolMap@@
+// Leaf: ?Clear@CSymbolMap@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E5250, 62 bytes (+2 int3), `__fastcall`, plain `ret`.
 // Identity: Ego_r.pdb `?Clear@CSymbolMap@@QAEXXZ`; it sits right after the CSymbolMap constructor 0x009E5200 (agent329)
 //   and its callers are 0x009ACB13 (tail jump), 0x009CC543 and 0x00AE85F7. The manifest's

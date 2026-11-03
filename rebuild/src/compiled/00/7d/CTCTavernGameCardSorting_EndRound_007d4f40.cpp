@@ -1,5 +1,5 @@
 // CTCTavernGameCardSorting::EndRound() -- card-base EndRound; in the timed game type, advance the card layout, then either start the next round (state 7) or finish: won when the counter is within the target time, the score is the counter, a new best time is flagged
-// Leaf: ?EndRound@CTCTavernGameCardSorting
+// Leaf: ?EndRound@CTCTavernGameCardSorting@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007D4F40, 295 bytes (plain `ret`); CTCTavernGameCardSorting vtable 0x0126F5B4
 // slot 33 (the CardPairs override 0x007D6150 has the same skeleton).
 // Callees: CTCTavernGameCardBase::EndRound() 0x008F1720 (non-virtual base call); CTCTavernGameCardBase::GetCardDef(

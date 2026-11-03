@@ -1,5 +1,5 @@
 // C3DMeshFileTrianglesChunk::AddTriangle(const C3DTriangle2& triangle) -- append one 6-byte triangle (three vertex indices) to the chunk's triangle list (+0x2C)
-// Leaf: ?AddTriangle@C3DMeshFileTrianglesChunk
+// Leaf: ?AddTriangle@C3DMeshFileTrianglesChunk@@QAEXABVC3DTriangle2@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ABCEC0, length 65 bytes (+15 int3), `ret 4`.
 // Callees: std::vector<C3DTriangle2>::_M_insert_overflow(pointer, const C3DTriangle2&, const __false_type&, size_type,
 //   bool) @ 0x00A71550 (the shared triangle-vector grow path).

@@ -1,5 +1,5 @@
 // CEngineThemeDef::Transfer(CPersistContext&) -- persist the engine theme definition: the texture indices and sizes, illumination floats, group/height/cover/material, minimap type, destruction defs, friction, water height/type/no-water def, then the "Passable" bit (default true)
-// Leaf: ?Transfer@CEngineThemeDef
+// Leaf: ?Transfer@CEngineThemeDef@@UAEXAAVCPersistContext@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0045979B, length 368 bytes (virtual, `ret 4`).
 // Pragma: #pragma optimize("s", on) (unaligned entry, def module; ebp frame).
 // Callees: CPersistContext::Transfer(long&) @ 0x00431102, Transfer(float&) @ 0x00431061 (the codex-verified typed

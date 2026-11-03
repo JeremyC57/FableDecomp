@@ -1,5 +1,5 @@
 // CNavNavigableLeafNode::SetUpNeighbours(ENavQuadTreeNeighbours side, CANavQuadTreeNode* node) -- hand this leaf to the neighbouring node on the given side: the neighbour is told to set up its neighbours with this leaf on the OPPOSITE side (0<->1, 2<->3)
-// Leaf: ?SetUpNeighbours@CNavNavigableLeafNode
+// Leaf: ?SetUpNeighbours@CNavNavigableLeafNode@@MAEXW4ENavQuadTreeNeighbours@@PAVCANavQuadTreeNode@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A75B70, 0x5E bytes of code + a 4-entry jump table (112 bytes in the oracle row),
 //   `ret 8`; vtable 0x0129DDA4 (.?AVCNavNavigableLeafNode@@) slot 17 and the CNavSwitchableLeafNode vtable 0x0129DE04 slot 17
 //   (inherited; the only two references to the address).

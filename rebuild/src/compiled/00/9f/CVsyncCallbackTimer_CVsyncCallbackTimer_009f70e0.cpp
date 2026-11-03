@@ -1,5 +1,5 @@
 // CVsyncCallbackTimer::CVsyncCallbackTimer() -- construct the vsync timer: build the empty FreeQueoryObjects and PendingQueories query lists, zero the shared CPU/GPU frame stamps, PendingFrame = 1, FinishedFrame = 0
-// Leaf: ??0CVsyncCallbackTimer@@
+// Leaf: ??0CVsyncCallbackTimer@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F70E0, 354 bytes, thiscall, returns this. Caller: 0x009C0EC8 (`new` 0x14 bytes,
 //   stored at +0x294 of the display device owner). The chunk label "Init_ListHeads" is descriptive.
 // Layout (Ego_r.pdb CVsyncCallbackTimer, retail 0x14 with STLport's 4-byte list): Device +0 (left alone), FreeQueoryObjects +4,

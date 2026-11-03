@@ -10,7 +10,7 @@
 // Info (loaded into edx, copied to ecx for the null test), then `++Info->owners`. Building the
 // result from the two words through a separate two-argument constructor hoists the Info load
 // above the Data store (26 v 28), so the global must be the counted-pointer object itself.
-// Leaf: ?GetProgressDisplay@NProgressDisplay@@YI
+// Leaf: ?GetProgressDisplay@NProgressDisplay@@YI?AV?$CCountedPointer@VCAProgressDisplay@@@@XZ
 
 class CAProgressDisplay;
 

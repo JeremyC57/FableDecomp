@@ -1,5 +1,5 @@
 // CDisplayManager::EnumerateDisplayModes(CArray<CDisplayModeDesc>& modes, C2DExtentsI minSize, C2DExtentsI maxSize) -- collect every adapter-0 display mode of every back-buffer format whose size lies within [minSize, maxSize] into a sorted unique set (dimensions, colour depth, refresh rate), then copy the set into modes
-// Leaf: ?EnumerateDisplayModes@
+// Leaf: ?EnumerateDisplayModes@CDisplayManager@@QAEXAAV?$CArray@VCDisplayModeDesc@@@@VC2DExtentsI@@1@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C02D0, 739 bytes, thiscall `ret 14h`. Callers: four game-side sites
 //   (0x0040A93A, 0x0040AB4B, 0x0040AD92, 0x0040D066). Name and signature: Ego_r.pdb
 //   ?EnumerateDisplayModes@CDisplayManager@@QAEXAAV?$CArray@VCDisplayModeDesc@@@@VC2DExtentsI@@1@Z. The chunk label

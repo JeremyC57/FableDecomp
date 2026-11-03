@@ -1,5 +1,5 @@
 // CAIStateGroup_SellToBuyer::RefuseCustom() -- the seller refuses the buyer's custom: post message 0x10 from the selling creature to the buyer (delay 1000, a zero position, zero values) through the world's message-event manager
-// Leaf: ?RefuseCustom@CAIStateGroup_SellToBuyer
+// Leaf: ?RefuseCustom@CAIStateGroup_SellToBuyer@@AAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0094BF60, 88 bytes (+ int3 padding to 96), plain `ret`.
 // Callees: CAIStateGroupBase::GetPWorld @ 0x008FCFC0 (PBrain +0x1c -> +0x24), CBaseIntelligentPointer::GetPItem
 //   @ 0x00A01B50 (PBuyer at +0x14), CMessageEventManager::AddMessage @ 0x00687540 (the world's manager at +0x60).

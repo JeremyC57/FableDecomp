@@ -1,5 +1,5 @@
 // CTCThingOwner::OnLevelUnload() -- collects the owned objects that are alive and level-persistent into a local list, then disowns each one (its owned-entity component's owner is cleared) from the back of the list
-// Leaf: ?OnLevelUnload@CTCThingOwner
+// Leaf: ?OnLevelUnload@CTCThingOwner@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0071B380, 309 bytes (plain `ret`); CTCThingOwner vtable 0x012412A4 slot 15
 // (the manifest says "vfunc_15"; Ego_r.pdb names CTCThingOwner::OnLevelUnload, the only remaining virtual of the class
 // with this shape: OnKill is slot 14 0x0071B200, OnSetInLimbo 0x0071B2D0).

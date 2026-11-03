@@ -1,5 +1,5 @@
 // NCameraModes::GetCameraHeightfieldHeightAtPos(const CWorldMap& map, const C3DVector& pos, bool includeWater) -- the height the camera must stay above at pos: the ground height, or the water surface when it is higher and water counts
-// Leaf: ?GetCameraHeightfieldHeightAtPos@NCameraModes@@
+// Leaf: ?GetCameraHeightfieldHeightAtPos@NCameraModes@@YIMABVCWorldMap@@ABVC3DVector@@_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00874F40, length 56 bytes (+ int3 padding), `__fastcall` (map in ecx, pos
 //   in edx, the flag on the stack), `ret 4`.
 // Identity: Ego_r.pdb `?GetCameraHeightfieldHeightAtPos@NCameraModes@@YIMABVCWorldMap@@ABVC3DVector@@_N@Z` (a namespace

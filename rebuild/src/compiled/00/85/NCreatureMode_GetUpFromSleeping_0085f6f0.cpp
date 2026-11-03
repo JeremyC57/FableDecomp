@@ -1,5 +1,5 @@
 // NCreatureMode::GetUpFromSleeping(CThingCreatureBase& creature, CThing& bed, const CCharString& animation, CAIBrain* brain) -- get a creature out of bed: while it is in the sleep-in-bed mode, leave that mode with a get-out-of-bed action (true); otherwise, when the creature is free to act, post the action through its brain (or set it directly without one) and return false
-// Leaf: ?GetUpFromSleeping@NCreatureMode@@
+// Leaf: ?GetUpFromSleeping@NCreatureMode@@YI_NAAVCThingCreatureBase@@AAVCThing@@ABVCCharString@@PAVCAIBrain@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0085F6F0, 320 bytes (+ int3 padding), /Gr __fastcall (creature in ecx, bed in edx;
 //   animation and brain on the stack), `ret 8`.
 // Identity: Ego_r.pdb ?GetUpFromSleeping@NCreatureMode@@YI_NAAVCThingCreatureBase@@AAVCThing@@ABVCCharString@@PAVCAIBrain@@@Z.

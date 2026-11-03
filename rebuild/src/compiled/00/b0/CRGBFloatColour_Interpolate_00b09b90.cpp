@@ -1,5 +1,5 @@
 // CRGBFloatColour::Interpolate(const CRGBFloatColour& colour, float t) const -- linear blend of two float RGBA colours, this * (1 - t) + colour * t
-// Leaf: ?Interpolate@CRGBFloatColour@@
+// Leaf: ?Interpolate@CRGBFloatColour@@QBE?AV1@ABV1@M@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B09B90, length 132 bytes, thiscall `ret 0Ch` (hidden result pointer,
 //   &colour, t), the result pointer returned in eax.
 // Signature from FableWin.pdb: ?Interpolate@CRGBFloatColour@@QBE?AV1@ABV1@M@Z (Ego_r.pdb has the CRightHandedSet twin

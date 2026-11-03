@@ -1,5 +1,5 @@
 // NThingManager::CEntityRuntimePersistence::SetLevelPersistentScript(long index, const CCharString& script) -- grow the level-persistent script table to cover index, store the entity's script there and mark the slot valid
-// Leaf: ?SetLevelPersistentScript@CEntityRuntimePersistence@NThingManager@@
+// Leaf: ?SetLevelPersistentScript@CEntityRuntimePersistence@NThingManager@@QAEXJABVCCharString@@@Z
 //
 // Retail 0x00523790, 81 bytes (then int3 padding), `ret 8` (thiscall).
 // Callees: 0x0052C6A0 vector<CEntityScriptInfo>::resize(size_type) (STLport resize(n) -> resize(n, T())),

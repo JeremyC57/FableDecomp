@@ -1,5 +1,5 @@
 // CTCShop::AddShopper(CThingCreatureBase* shopper) -- add the creature to the shop's shopper list unless it is already there
-// Leaf: ?AddShopper@
+// Leaf: ?AddShopper@CTCShop@@QAEXPAVCThingCreatureBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0074AC80, 96 bytes, __fastcall `ret 4`.
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10 / SetPItem @ 0x00A01B90 / ~CBaseIntelligentPointer
 //   @ 0x00A01C10 (the CIntelligentPointer<CThingCreatureBase> temporary, vtable 0x0123E7D8 whose RTTI is

@@ -1,5 +1,5 @@
 // CCombatSequenceBase::PushAction(CCombatAction& action) -- append the action (an 8-byte counted pointer) to CombatActions and count it in NoAvailableActions
-// Leaf: ?PushAction@CCombatSequenceBase@@
+// Leaf: ?PushAction@CCombatSequenceBase@@IAEXAAVCCombatAction@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008B0B10, 78 bytes, thiscall, `ret 4`.
 // Identity: the manifest's "std::vector::push_back" is the inlined body. Ego_r.pdb names
 //   ?PushAction@CCombatSequenceBase@@IAEXAAVCCombatAction@@@Z; the callers are the CCombatSequence_* OnCreate bodies

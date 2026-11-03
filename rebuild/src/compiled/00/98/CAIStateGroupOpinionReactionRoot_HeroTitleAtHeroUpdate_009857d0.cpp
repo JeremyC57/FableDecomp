@@ -1,5 +1,5 @@
 // CAIStateGroup_OpinionReactionRoot::HeroTitleAtHeroUpdate() -- say the hero title's "comment at hero" line to the thing being reacted to; true when the speech action completed
-// Leaf: ?HeroTitleAtHeroUpdate@CAIStateGroup_OpinionReactionRoot@@
+// Leaf: ?HeroTitleAtHeroUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009857D0, length 186 bytes, plain `ret`.
 // PDB (Ego_r, donor 0x009A5A80): ?HeroTitleAtHeroUpdate@CAIStateGroup_OpinionReactionRoot@@AAE_NXZ. Only reference is the
 // opinion-reaction table initializer @ 0x01222D8C (record 0x013BBDD8, "OPINION_REACTION_TYPE_HEROTITLE_AT_HERO",

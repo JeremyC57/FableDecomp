@@ -9,7 +9,7 @@
 // Shape: the landed const GetMap loop (`while (map && map->MapType != type) map = FindNextMap(map);`), here with the
 // argument converted to a CCountedPointer<const ...> temporary (add-ref copy) and the counted pointer's zeroing dtor.
 // Layout: C3DMeshFileMapChunk MapType +0x2c (retail compare).
-// Leaf: ?GetMap@C3DMeshFileMaterialChunk@@QAE
+// Leaf: ?GetMap@C3DMeshFileMaterialChunk@@QAE?AV?$CCountedPointer@VC3DMeshFileMapChunk@@@@W4EMaterialMapType@@@Z
 struct SCountBlock { long references; void (__fastcall* destroy)(void*); void* object; };
 template<class T> class CCountedPointer { public:
     T* Object; SCountBlock* Count;

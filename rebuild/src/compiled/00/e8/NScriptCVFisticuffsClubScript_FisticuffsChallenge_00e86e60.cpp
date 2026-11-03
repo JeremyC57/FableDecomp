@@ -1,5 +1,5 @@
 // CV_FisticuffsClubScript::FisticuffsChallenge() -- with both fighters under an is-alive predicate, set them on each other, wait until either drops below the minimum fighter health (or the fight is otherwise called), then call them off and make them allies again
-// Leaf: ?FisticuffsChallenge@CV_FisticuffsClubScript@NScript@@
+// Leaf: ?FisticuffsChallenge@CV_FisticuffsClubScript@NScript@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E86E60, 449 bytes (464 with padding), plain `ret`.
 // Callees: CScriptThing(const CScriptThing&) 0x004ABE90, CPredicate_And<CIsThingAlive, CIsThingAlive>(const A&, const B&)
 //   0x00E24760, CScriptBase::SetPredicate 0x00CB7920, ~CIsThingAlive 0x00E241B0, CScriptBase::IsActiveThreadTerminating

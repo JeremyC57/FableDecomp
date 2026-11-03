@@ -1,7 +1,7 @@
 // CEnginePrimitiveAttachmentManager::FrameStart(const CEngineComponentParams& params) -- updates the attached primitives for this frame against a one-element camera array holding the engine camera
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B3A110, length 99 bytes (112 with padding); CEngineComponent-side vtable
 // 0x012A1A78 slot 1 of CEnginePrimitiveAttachmentManager (rtti-vtables.tsv).
-// Leaf: ?FrameStart@CEnginePrimitiveAttachmentManager
+// Leaf: ?FrameStart@CEnginePrimitiveAttachmentManager@@UAEXABVCEngineComponentParams@@@Z
 // Callees: the camera array's reallocating insert @ 0x00B3ABC0 (manifest "Vector_InsertMultipleFill"),
 // CEnginePrimitiveAttachmentManager::UpdatePrimitives(const CArray<CEngineCamera*>&, float) @ 0x00B39FB0, free @ 0x00BFEA14.
 // Globals: the engine camera pointer @ 0x01436EA0 (its ADDRESS is pushed: push_back takes it by const reference).

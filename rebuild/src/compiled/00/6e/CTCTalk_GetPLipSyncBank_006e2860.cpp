@@ -1,5 +1,5 @@
 // CTCTalk::GetPLipSyncBank() const -- the lip-sync data bank paired with the talker's speech bank (its own, else the default one) in the global speech-bank map, falling back to the map's first lip-sync bank; null when there is no map
-// Leaf: ?GetPLipSyncBank@CTCTalk@@
+// Leaf: ?GetPLipSyncBank@CTCTalk@@ABEPBVCLipSyncDataBank@@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E2860, 52 bytes (+ int3 padding), thiscall, plain `ret`.
 // Identity: Ego_r.pdb name set `?GetPLipSyncBank@CTCTalk@@ABEPBVCLipSyncDataBank@@XZ` (private const); the body is the
 //   lip-sync lookup the landed CTCTalk::SetUpSpeechSample 0x006E2A50 inlines (same map, same calls, same fallback).

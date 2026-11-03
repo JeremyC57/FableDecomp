@@ -1,5 +1,5 @@
 // NParticleEngine::CParticle::GetRecordedPos(float time, float offset) const -- position along the particle's 4-entry recorded-position buffer at time - offset (+1), interpolated linearly between the two bracketing entries
-// Leaf: ?GetRecordedPos@CParticle@NParticleEngine@@
+// Leaf: ?GetRecordedPos@CParticle@NParticleEngine@@QBE?AVC3DVector@@MM@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AFE380, length 178 bytes, thiscall `ret 0Ch` (hidden result pointer,
 //   time, offset), ebp frame.
 // Signature from FableWin.pdb: ?GetRecordedPos@CParticle@NParticleEngine@@QBE?AVC3DVector@@MM@Z. No direct caller in

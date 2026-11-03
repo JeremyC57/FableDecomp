@@ -1,5 +1,5 @@
 // CCreatureAction_Ambush::Initialise() -- picks the left/right ambush animation from the side the target is on, says the ambush speech, turns the creature to face along the side vector, then runs the base Initialise
-// Leaf: ?Initialise@CCreatureAction_Ambush
+// Leaf: ?Initialise@CCreatureAction_Ambush@@UAEXXZ
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008BEEE0, 528 bytes, plain `ret`; virtual Initialise of CCreatureAction_Ambush.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8, PTarget +0xa8), CThing::GetPos 0x004C73D0,

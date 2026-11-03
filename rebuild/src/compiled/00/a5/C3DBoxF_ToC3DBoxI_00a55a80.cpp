@@ -1,5 +1,5 @@
 // C3DBoxF::ToC3DBoxI() const -- the six float extents of the box truncated to longs into a C3DBoxI returned through the hidden pointer
-// Leaf: ?ToC3DBoxI@C3DBoxF@@
+// Leaf: ?ToC3DBoxI@C3DBoxF@@QBE?AVC3DBoxI@@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A55A80, 111 bytes, `ret 4` (PDB ?ToC3DBoxI@C3DBoxF@@QBE?AVC3DBoxI@@XZ).
 // Callees: __ftol2 @ 0x00BFEA70 (six times). The 3D sibling of the landed C2DBoxF::ToIntBox 0x00A55A30 just before it.
 // Label: the manifest's `MakePath` is a propagation.

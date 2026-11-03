@@ -1,5 +1,5 @@
 // NHeroInformationScreens::CManager::PlayScreenUpdateSound(EScreenSoundTypes type) const -- play the hero-information screen's update sample (the GUI def's inventory no-movement sound for type 2, else sample 0) through the game state's sound player
-// Leaf: ?PlayScreenUpdateSound@CManager@NHeroInformationScreens
+// Leaf: ?PlayScreenUpdateSound@CManager@NHeroInformationScreens@@QBEXW4EScreenSoundTypes@2@@Z
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0066E742, 87 bytes, thiscall `ret 4` (`this` unused). Name: Ego_r.pdb

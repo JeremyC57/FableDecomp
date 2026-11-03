@@ -1,5 +1,5 @@
 // NTCScriptedControl::CActionMoveTo::Update() -- move the scripted creature towards its position or target thing: refresh both handles, stop ignoring anything for navigation, fail when a claimed action point's thing is dead or carried, then (when the creature is idle) step along the nav route, facing or looking where it goes; on a blocked route fall back to the backup proximity or cancel the script, and on arrival or failure make the hero stop looking and finish
-// Leaf: ?Update@CActionMoveTo@NTCScriptedControl@@
+// Leaf: ?Update@CActionMoveTo@NTCScriptedControl@@UAEXXZ
 // Naming wave 28 (family d5): CActionBase is the nested CTCScriptedControl::CActionBase (Ego_r.pdb / FableWin.pdb;
 //   DECISIONS_W27 D5) and PActionList the STLport list<CCountedPointer<CTCScriptedControl::CActionBase> >, whose clear 0x00719280
 //   is ?clear@?$_List_base@V?$CCountedPointer@VCActionBase@CTCScriptedControl@@@@V?$allocator@..@std@@@std@@QAEXXZ (c695). Was NTCScriptedControl::CActionBase (an invented namespace)

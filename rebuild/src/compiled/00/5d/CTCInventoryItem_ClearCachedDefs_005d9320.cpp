@@ -1,5 +1,5 @@
 // CTCInventoryItem::ClearCachedDefs() -- forget the static def cache: zero the cached def index and release both cached def pointers (the thing def and its inventory-item def)
-// Leaf: ?ClearCachedDefs@
+// Leaf: ?ClearCachedDefs@CTCInventoryItem@@SIXXZ
 // Retail: Fable.exe @ 0x005D9320, 96 bytes (+16 int3), `ret`. Ego_r.pdb `?ClearCachedDefs@CTCInventoryItem@@SIXXZ` (static
 // __fastcall, no arguments).
 // Globals: the CacheDef(long) @ 0x005D94B0 cache -- 0x013B8BC8 the cached def index, 0x013B8C14 the cached thing def

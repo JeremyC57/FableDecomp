@@ -1,5 +1,5 @@
 // CReplaceSerialise<CFileFormatBrush,COldFileFormatBrush>::ConvertPreviousUnknownVersionUp(void* data) -- build a fresh current-version brush record from an older one: convert the record up to the old format first when it is older still, then hand back the new record in a counted pointer
-// Leaf: ?ConvertPreviousUnknownVersionUp@?$CReplaceSerialise@VCFileFormatBrush@@VCOldFileFormatBrush@@
+// Leaf: ?ConvertPreviousUnknownVersionUp@?$CReplaceSerialise@VCFileFormatBrush@@VCOldFileFormatBrush@@@@SI?AV?$CCountedPointer@VCFileFormatBrush@@@@PAX@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00825590, 240 bytes, static __fastcall: the hidden CCountedPointer return slot in ecx,
 //   data in edx, plain `ret`; 0x10-byte frame (the new record word, the result slot copy and the 8-byte temporary).
 // Callees: operator new @ 0x00BFEA1A (the 0x49-byte record, the 0xC-byte count block), CBaseSerialise<COldFileFormatBrush,1>::

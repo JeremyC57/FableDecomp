@@ -1,5 +1,5 @@
 // CCombatManager::CCombatManager(CWorld& world) -- construct the combat manager: two empty STLport maps (registered sequence factories, combatants), the world and the tuning defaults, the dialogue manager, then register the combat sequence factories
-// Leaf: ??0CCombatManager@@
+// Leaf: ??0CCombatManager@@QAE@AAVCWorld@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006ED3F0, 144 bytes, thiscall, `ret 4`, returns this.
 // Identity: the vtable stored is 0x01261EB4 (RTTI `.?AVCCombatManager@@`, one slot); Ego_r.pdb name set
 //   `??0CCombatManager@@QAE@AAVCWorld@@@Z`. Single caller 0x004A71BF. The catalog's "CombatSequenceManager_Ctor" is

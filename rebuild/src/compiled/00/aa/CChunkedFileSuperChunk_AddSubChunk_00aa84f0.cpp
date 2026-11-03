@@ -1,5 +1,5 @@
 // CChunkedFileSuperChunk::AddSubChunk(const CCountedPointer<CChunkedFileChunk>& chunk) -- parent a chunk to this super chunk and append a counted reference to it to SubChunks
-// Leaf: ?AddSubChunk@
+// Leaf: ?AddSubChunk@CChunkedFileSuperChunk@@QAEXABV?$CCountedPointer@VCChunkedFileChunk@@@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AA84F0, 69 bytes, thiscall `ret 4`.
 // Identity: Ego_r.pdb `?AddSubChunk@CChunkedFileSuperChunk@@QAEXABV?$CCountedPointer@VCChunkedFileChunk@@@@@Z`; the landed
 //   COptimisedMesh::CopyTo 0x00ACD5A0 already declares 0x00AA84F0 as AddSubChunk, and the other callers

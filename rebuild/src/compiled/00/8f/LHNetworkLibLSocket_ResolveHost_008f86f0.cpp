@@ -1,5 +1,5 @@
 // LHNetworkLib::LSocket::ResolveHost(LAddress&, unsigned long&) -- known IP: hand it out; host "ANY": INADDR_ANY; else resolve the name and cache it in the address
-// Leaf: ?ResolveHost@LSocket@LHNetworkLib@@SI_N
+// Leaf: ?ResolveHost@LSocket@LHNetworkLib@@SI_NAAULAddress@2@AAK@Z
 // Retail 0x008F86F0, 0xA2 bytes, static __fastcall (address in ecx, ip in edx), plain `ret`, bool. Manifest label
 // "Socket_InitWithDefault" (_global) is descriptive. PDB name set: `?ResolveHost@LSocket@LHNetworkLib@@SI_NAAULAddress@2@AAK@Z`.
 // Callers: LSocket::ConvertLAddress2Sockaddr 0x008F8830 (ip = sockaddr_in::sin_addr).

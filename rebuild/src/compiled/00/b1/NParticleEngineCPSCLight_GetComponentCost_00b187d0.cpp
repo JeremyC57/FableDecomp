@@ -1,5 +1,5 @@
 // NParticleEngine::CPSCLight::GetComponentCost(CParticleSystemCost& cost, const CParticleSystem& system, float, float) -- vtable slot 20: an enabled light adds one light and its (system-scaled) larger render radius to the cost
-// Leaf: ?GetComponentCost@CPSCLight@
+// Leaf: ?GetComponentCost@CPSCLight@NParticleEngine@@UAEXAAVCParticleSystemCost@2@ABVCParticleSystem@2@MM@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B187D0, 80 bytes.
 // Name: FableWin.pdb ?GetComponentCost@CPSCLight@NParticleEngine@@UAEXAAVCParticleSystemCost@2@ABVCParticleSystem@2@MM@Z;
 // slot 20 of the vtable (rtti-vtables.tsv: slot 20 of CPSCSpline/CPSCOrbit/CPSCUpdateNormal is their landed

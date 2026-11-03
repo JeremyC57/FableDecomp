@@ -1,5 +1,5 @@
 // CThingManager::LoadLoadableGlobalThingsFromFile(CCountedPointer<CAFile> file, long version) -- when global things load from file (GlobalThingLoadingBehaviour 1), read the file's things for the world map's loadable sections and activate them
-// Leaf: ?LoadLoadableGlobalThingsFromFile@
+// Leaf: ?LoadLoadableGlobalThingsFromFile@CThingManager@@QAEXV?$CCountedPointer@VCAFile@@@@J@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005223F0, 306 bytes, thiscall `ret 0Ch` (the 8-byte CCountedPointer by value, then the version).
 // Identity: Ego_r.pdb ?LoadLoadableGlobalThingsFromFile@CThingManager@@QAEXV?$CCountedPointer@VCAFile@@@@J@Z; the
 //   GlobalThingLoadingBehaviour test (+0x80) and WorldMap (+0x28) match the CThingManager constructor 0x00523540.

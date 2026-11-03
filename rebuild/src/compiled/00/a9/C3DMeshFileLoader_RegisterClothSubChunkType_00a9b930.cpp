@@ -1,5 +1,5 @@
 // C3DMeshFileLoader::RegisterClothSubChunkType(const CChunkedFileChunk& chunkType) -- register a cloth chunk type under both the sub-mesh cloth and the primitive cloth super chunks, dropping the returned prototypes
-// Leaf: ?RegisterClothSubChunkType@
+// Leaf: ?RegisterClothSubChunkType@C3DMeshFileLoader@@QAEXABVCChunkedFileChunk@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A9B930, 117 bytes (+ int3 padding), thiscall `ret 4`.
 // Identity: Ego_r.pdb `?RegisterClothSubChunkType@C3DMeshFileLoader@@QAEXABVCChunkedFileChunk@@@Z` -- the one void
 //   Register*SubChunkType (its siblings return the counted pointer), and the only one that registers under two parents:

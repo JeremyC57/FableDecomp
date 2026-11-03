@@ -1,5 +1,5 @@
 // QuadricOptimiserInternals::COptimisedPrimitive::UpdateContractions(const CSubContraction& sub) -- after a sub-pair contraction, recompute every pair contraction that references the sub-pair's first vertex and re-key its cost
-// Leaf: ?UpdateContractions@COptimisedPrimitive@QuadricOptimiserInternals@@AAE
+// Leaf: ?UpdateContractions@COptimisedPrimitive@QuadricOptimiserInternals@@AAEXABVCSubContraction@2@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AC96E0, 236 bytes (+4 int3), thiscall `ret 4`.
 // Identity: Ego_r.pdb `?UpdateContractions@COptimisedPrimitive@QuadricOptimiserInternals@@AAEXABVCSubContraction@2@@Z`
 //   (private); its only caller is the landed COptimisedPrimitive::PerformContraction 0x00ACD840 (third loop, declared

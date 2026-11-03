@@ -1,5 +1,5 @@
 // CV_BookCollectingScript::BookReaction(long book) -- the boy and girl react to a returned book: teleport them to the book's marks, play its reaction conversation line by line (stopping if a book is being read), then hand them back
-// Leaf: ?BookReaction@CV_BookCollectingScript@NScript@@
+// Leaf: ?BookReaction@CV_BookCollectingScript@NScript@@QAEXJ@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E566F0, length 721 bytes, `ret 4`.
 // Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940; CCharString(const char*, long) 0x0099EBF0 / ~CCharString
 //   0x0099EAE0; ~CScriptThing 0x004AA840 (out of line); the scripted-thing handle's Release 0x00CD2770 and virtuals 10

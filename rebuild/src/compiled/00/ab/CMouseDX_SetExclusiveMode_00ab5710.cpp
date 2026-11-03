@@ -1,5 +1,5 @@
 // CMouseDX::SetExclusiveMode(bool exclusive) -- drop the current DirectInput mouse device and the maintained events, then recreate it: exclusive (foreground, buffered, acquired) or non-exclusive (background, buffered, acquired, Windows-mouse state reset); false on any DirectInput failure
-// Leaf: ?SetExclusiveMode@CMouseDX
+// Leaf: ?SetExclusiveMode@CMouseDX@@UAE_N_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AB5710, length 464 bytes (453 + int3 padding), virtual, `ret 4`.
 // Callees: list<CMaintainedEvent>::clear 0x009E4710 (manifest "CGuiControlTreePane::SortTreeRecursively" is propagated; the
 //   body walks and frees the list nodes), GFGetSystemManager 0x009A4EC0 (`__fastcall`; window handle at +0x94),

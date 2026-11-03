@@ -1,5 +1,5 @@
 // CTCInventoryTrade::RefreshDescriptions() -- replaces the description child of every buy and sell item entry with a freshly built trade description and hands each to the scrolling text-area viewport
-// Leaf: ?RefreshDescriptions@CTCInventoryTrade@@
+// Leaf: ?RefreshDescriptions@CTCInventoryTrade@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005AE6AF, 444 bytes (0x1BC, no padding: /Os TU), thiscall, plain `ret`.
 // Identity: Ego_r.pdb ?RefreshDescriptions@CTCInventoryTrade@@QAEXXZ -- the console form of the PC pair
 //   RefreshBuyDescriptionsPC 0x005AE9DE / RefreshSellDescriptionsPC 0x005AEAEE (no position parent, the viewport comes

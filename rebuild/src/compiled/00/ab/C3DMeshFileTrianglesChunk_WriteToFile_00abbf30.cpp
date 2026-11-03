@@ -1,6 +1,6 @@
 // C3DMeshFileTrianglesChunk::WriteToFile(CDataOutputStream&, CChunkedFileSaver&) const -- the triangle count, the three 16-bit indices of every triangle, then the super-chunk's children
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ABBF30, length 131 bytes.
-// Leaf: ?WriteToFile@C3DMeshFileTrianglesChunk
+// Leaf: ?WriteToFile@C3DMeshFileTrianglesChunk@@UBEXAAVCDataOutputStream@@AAVCChunkedFileSaver@@@Z
 // Callees: 0x00993EA0 CDataOutputStream::WriteULong, 0x00993E80 CDataOutputStream::WriteUShort (writes 2 bytes
 // through slot 4), 0x00AA78C0 CChunkedFileSuperChunk::WriteToFile.
 // Shape: Triangles is a retail CArray (three pointers) of 6-byte index triples at +0x2c, so the count is the

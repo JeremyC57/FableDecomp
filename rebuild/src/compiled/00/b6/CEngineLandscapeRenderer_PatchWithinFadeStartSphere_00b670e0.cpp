@@ -1,5 +1,5 @@
 // CEngineLandscapeRenderer::PatchWithinFadeStartSphere(long x, long y) -- is the landscape point (x, y, 0) closer to the engine camera than the foreground fade-start distance
-// Leaf: ?PatchWithinFadeStartSphere@
+// Leaf: ?PatchWithinFadeStartSphere@CEngineLandscapeRenderer@@QAE_NJJ@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B670E0, 85 bytes. __fastcall, `ret 8`, bool in al.
 // Identity: FableWin.pdb `?PatchWithinFadeStartSphere@CEngineLandscapeRenderer@@QAE_NJJ@Z` (bool (long, long)); it sits
 //   in the CEngineLandscapeRenderer run (CreateMap 0x00B67140, CalcForegroundFadeFactors 0x00B671E0 -- landed, which

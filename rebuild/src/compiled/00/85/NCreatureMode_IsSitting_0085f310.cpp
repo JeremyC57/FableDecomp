@@ -1,5 +1,5 @@
 // NCreatureMode::IsSitting(const CThing& thing) -- true when the current creature mode is SitChair (8), SitFloor (0x0A), SitBench (9) or SitTavernStool (0x0B)
-// Leaf: ?IsSitting@NCreatureMode@@
+// Leaf: ?IsSitting@NCreatureMode@@YI_NABVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085F310, length 92 bytes. `__fastcall` free function (ecx = the thing), bool in al.
 // Mangled (Ego_r.pdb): ?IsSitting@NCreatureMode@@YI_NABVCThing@@@Z.
 // Name: the catalog row says "IsKnockedDown" (a second copy of the 0x0085F010 label). The modes tested are exactly the sit

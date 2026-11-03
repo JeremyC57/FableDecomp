@@ -1,5 +1,5 @@
 // CTCVillage::GetTimes(const std::vector<long>& startTimes, long duration, float& timeUntilStart, float& endTime) const -- for HHMM start times and an HHMM duration, report whether a session is running now (timeUntilStart 0, endTime its end) or else the day fraction until the nearest next start (today or tomorrow) and that session's end
-// Leaf: ?GetTimes@
+// Leaf: ?GetTimes@CTCVillage@@ABE_NABV?$vector@JV?$allocator@J@std@@@std@@JAAM1@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00658716, 441 bytes, unaligned in the /Os frame-pointer CTCVillage TU, thiscall
 //   `ret 10h`, always returns true. Ego_r.pdb name set: ?GetTimes@CTCVillage@@ABE_NABV?$vector@JV?$allocator@J@std@@@std@@JAAM1@Z
 //   (private const); its caller is the landed CTCVillage::GetSchoolTimes 0x00658ACB, whose header already names it.

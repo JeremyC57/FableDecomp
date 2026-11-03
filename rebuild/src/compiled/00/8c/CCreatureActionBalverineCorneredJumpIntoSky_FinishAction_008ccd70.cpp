@@ -1,5 +1,5 @@
 // CCreatureAction_BalverineCorneredJumpIntoSky::FinishAction() -- base FinishAction; make the balverine willable again, flying flag on, full alpha; when the jump ran its full time: put it down at EndPos facing a living target, enter an intangible mode (the battle def's time, else 5s) that ends in a lunge at the target (or a drop-in from the sky), and detach its attached particles
-// Leaf: ?FinishAction@CCreatureAction_BalverineCorneredJumpIntoSky
+// Leaf: ?FinishAction@CCreatureAction_BalverineCorneredJumpIntoSky@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008CCD70, 685 bytes (+ int3 padding), virtual FinishAction, plain `ret`.
 // Callees: CCombatActionBase::FinishAction 0x00859A20 (direct), CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8,
 //   PTarget +0xa8), SetThingAsNotBloodyWillableAtAll 0x007E4040 (__fastcall, dl = false), the physics TC's slots 84 SetFlying

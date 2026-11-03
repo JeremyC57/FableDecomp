@@ -1,5 +1,5 @@
 // CCreatureAction_UseObject::FinishAction() -- when the action carries component params, add the named component to the creature placed at its current position/orientation, then delete the params; then the base FinishAction
-// Leaf: ?FinishAction@CCreatureAction_UseObject
+// Leaf: ?FinishAction@CCreatureAction_UseObject@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0069F2B0, 303 bytes (304 with padding), virtual FinishAction.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +0x08), the physics component's virtual slot 72 (+0x120,
 //   the current right-handed set; name unconfirmed), CBaseClassNonCopyable::CBaseClassNonCopyable 0x0099A2F0 / ~CBaseClassNonCopyable 0x0099A300 (CTCParamsPhysicsBase,

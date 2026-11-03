@@ -1,5 +1,5 @@
 // CEnvironmentSpellEffectInterface::InterpolateRadialBlurPositionParams(float t, const CRadialBlurPositionParams& from, const CRadialBlurPositionParams& to) -- blend the blur and area centres from `from` towards `to` by t where both ends track the same position kind (else take `to`'s centre); the track kinds come from `to`
-// Leaf: ?InterpolateRadialBlurPositionParams@CEnvironmentSpellEffectInterface@@
+// Leaf: ?InterpolateRadialBlurPositionParams@CEnvironmentSpellEffectInterface@@SI?AUCRadialBlurPositionParams@1@MABU21@0@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00885680, 352 bytes incl. int3 padding (349 of code), static `__fastcall`
 //   with a hidden result pointer (ecx = result, edx = from, stack: t, to; `ret 8`), returns the result pointer in eax.
 // Identity: Ego_r/FableWin PDB name set:

@@ -1,5 +1,5 @@
 // CReactionFrequencyTraits::CreateFromType(EReactionFrequencyType type) -- factory: a default-constructed linear-time, periodic or controlled-count frequency trait, or null
-// Leaf: ?CreateFromType@CReactionFrequencyTraits@@
+// Leaf: ?CreateFromType@CReactionFrequencyTraits@@SIPAV1@W4EReactionFrequencyType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006FF930, 102 bytes, plain `ret` (static __fastcall, type in ecx).
 // Callees: operator new 0x00BFEA1A. Vtables: LinearTime 0x01264B64, PeriodicFrequency 0x01264B7C, ControlledCount
 //   0x01264B94.

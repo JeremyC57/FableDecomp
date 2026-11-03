@@ -1,6 +1,6 @@
 // NShape::CIsPointFinalLinkInTriangleWithMatchingCirculation::operator()(const C3DVector& point) const -- true when the XY turn A->B->point circulates the same way as UpDirection
 // Grade: RELOCATION_MATCH (retry wave 2 sec2b): Dot as a stepwise X, Z, Y accumulation and named A/B references for the first link
-// Leaf: ??RCIsPointFinalLinkInTriangleWithMatchingCirculation@
+// Leaf: ??RCIsPointFinalLinkInTriangleWithMatchingCirculation@NShape@@QBE_NABVC3DVector@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075FE30, 189 bytes (+int3 pad), `ret 4`.
 // Identity: Ego_r.pdb ??RCIsPointFinalLinkInTriangleWithMatchingCirculation@NShape@@QBE_NABVC3DVector@@@Z; its seven
 //   callers are the STLport __find_if 0x00763F50 over the shape's points. The catalog's "Polygon_TestPointInside" is an

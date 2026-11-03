@@ -1,5 +1,5 @@
 // CTCHeroStats::AddRenown(long) -- adds renown, levels up while the current level is paid for, and shows the change overhead and in the player GUI
-// Leaf: ?AddRenown@CTCHeroStats
+// Leaf: ?AddRenown@CTCHeroStats@@QAEXJ@Z
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).

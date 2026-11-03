@@ -1,5 +1,5 @@
 // CCardinalSpline::AppendControlPoint(const C3DVector& point) -- push a control point onto the spline's point array and return its index
-// Leaf: ?AppendControlPoint@
+// Leaf: ?AppendControlPoint@CCardinalSpline@@QAEJABVC3DVector@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075F980, 92 bytes, `ret 4`. No direct caller or reference (an
 //   unreferenced out-of-line copy kept without /OPT:REF).
 // Callee: vector<C3DVector>::_M_insert_overflow(pos, x, tag, 1, true) 0x0066E370 (the shared C3DVector growth

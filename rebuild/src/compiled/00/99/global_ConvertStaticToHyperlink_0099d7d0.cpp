@@ -10,7 +10,7 @@
 // "Old_Font", build an underlined copy from the LOGFONTA (0x3C bytes, the /GS buffer) and select it with WM_SETFONT,
 // then tag the control "Static" = 1. The repeated imports are cached in callee-saved registers by VC7.1.
 // Flags: /GS
-// Leaf: ?ConvertStaticToHyperlink@@
+// Leaf: ?ConvertStaticToHyperlink@@YIHPAUHWND__@@@Z
 struct HWND__ { int unused; };
 typedef HWND__* HWND;
 typedef void* HANDLE;

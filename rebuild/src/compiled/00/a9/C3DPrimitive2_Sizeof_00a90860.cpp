@@ -10,7 +10,7 @@
 // `12 + count * 4` (`lea edx,[edx*4+0Ch]`) plus every element's own size (2 for an unsigned short, the
 // pointer walk against the end held in ecx); the partition tree's size is added in the return (a single
 // sum expression evaluates every term before adding and spills them).
-// Leaf: ?Sizeof@C3DPrimitive2
+// Leaf: ?Sizeof@C3DPrimitive2@@QBEKXZ
 class CVertexBufferWin32 { public: unsigned long Sizeof() const; };        // 0x00AC20D0
 class CIndexBuffer       { public: unsigned long Sizeof() const; };        // 0x00AC1F30
 class C3DMeshPartitionElement { public: unsigned long Sizeof() const; };   // 0x00AC2930

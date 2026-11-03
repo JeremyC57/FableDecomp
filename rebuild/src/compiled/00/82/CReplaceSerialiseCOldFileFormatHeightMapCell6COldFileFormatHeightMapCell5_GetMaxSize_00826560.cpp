@@ -1,5 +1,5 @@
 // CReplaceSerialise<COldFileFormatHeightMapCell6,COldFileFormatHeightMapCell5>::GetMaxSize(long version, long size) -- the largest buffer any height-map cell version up to 6 needs: walk down the version chain to the record's own version, then take the max with each level's sizeof
-// Leaf: ?GetMaxSize@?$CReplaceSerialise@VCOldFileFormatHeightMapCell6@@VCOldFileFormatHeightMapCell5@@
+// Leaf: ?GetMaxSize@?$CReplaceSerialise@VCOldFileFormatHeightMapCell6@@VCOldFileFormatHeightMapCell5@@@@SIJJJ@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00826560, 95 bytes (+int3 pad), static __fastcall (version in ecx, size in edx), plain
 //   `ret`. FableWin.pdb ?GetMaxSize@?$CReplaceSerialise@VCOldFileFormatHeightMapCell6@@VCOldFileFormatHeightMapCell5@@@@SIJJJ@Z.
 // Callee: CReplaceSerialise<COldFileFormatHeightMapCell4,COldFileFormatHeightMapCell3>::GetMaxSize @ 0x008256A0 (twice).

@@ -1,5 +1,5 @@
 // COpinionPersonalityTraits::TransferBinaryIn(CMemoryDataInputStream& stream) -- binary def load of the nine opinion personality scaling floats, each a 4-byte persist read
-// Leaf: ?TransferBinaryIn@COpinionPersonalityTraits
+// Leaf: ?TransferBinaryIn@COpinionPersonalityTraits@@QAEXAAVCMemoryDataInputStream@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0045E8ED, length 784 bytes (`ret 4`); size-optimised frame-pointer def TU.
 // Pragma: #pragma optimize("y", off) + #pragma optimize("s", on) (the landed CCombatAbilityData::TransferBinaryIn 0x0044FADC
 //          TU settings).

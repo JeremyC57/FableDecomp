@@ -1,6 +1,6 @@
 // CCountedPointer<NPlayerGui::CDrawMeleeActionButtonEffects>::Reset(NPlayerGui::CDrawMeleeActionButtonEffects* data) -- drop the shared count block (destroying the object on last
 // reference), then adopt data with a fresh count block {1, DeleteData, data}.
-// Leaf: ?Reset@?$CCountedPointer@VCDrawMeleeActionButtonEffects@NPlayerGui@@@@QAEXPA
+// Leaf: ?Reset@?$CCountedPointer@VCDrawMeleeActionButtonEffects@NPlayerGui@@@@QAEXPAVCDrawMeleeActionButtonEffects@NPlayerGui@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00444b40, oracle length 103 bytes, thiscall `ret 4`.
 // Renamed (rename1, 2026-10-24) from CCountedPointer_00443aa0::Reset @ 00/44/CCountedPointer00443aa0_Reset_00444b40.cpp: the deleter this body stores into the
 //   count block (0x00443AA0) calls the landed ~NPlayerGui::CDrawMeleeActionButtonEffects and is CCountedPointer<NPlayerGui::CDrawMeleeActionButtonEffects>::DeleteData

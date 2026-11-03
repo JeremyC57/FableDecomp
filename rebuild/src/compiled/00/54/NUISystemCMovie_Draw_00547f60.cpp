@@ -1,5 +1,5 @@
 // NUISystem::CMovie::Draw(CIEngine& engine, CEnginePrimitiveHandle* primitives, long layer, long* count, CComponent* drawer) -- while this is the playing movie in state 3: when visible, size the box from the video (or the component size) times the scale, centre it if asked, pick the front-end layer, wait up to 100 ms for a decoded frame, copy it into the movie texture under the video lock and add a 2D sprite (indexed when the caller passes a handle array and count); when invisible, clear the handle and notify the owner; otherwise just clear the handle
-// Leaf: ?Draw@CMovie
+// Leaf: ?Draw@CMovie@NUISystem@@UAEXAAVCIEngine@@PAVCEnginePrimitiveHandle@@JPAJPAVCComponent@2@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00547F60, 875 bytes (`ret 14h`). Vtable slot 2.
 // Callees: C2DBoxF::Move 0x0041A810, CManager::GetInstance 0x0041E5F2 (`__fastcall`) and its slot 36 GetLayer,
 //   WaitForSingleObjectEx / EnterCriticalSection / LeaveCriticalSection (IAT 0x0143FE08 / 0x0143FE0C / 0x0143FE10),

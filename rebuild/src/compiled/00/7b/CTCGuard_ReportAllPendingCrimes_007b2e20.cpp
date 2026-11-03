@@ -1,5 +1,5 @@
 // CTCGuard::ReportAllPendingCrimes(CTCVillage* village) -- hand every pending crime the guard is holding to its village (and to the village's opinion of the hero, unless it already knows of the deed), note whether any of them is a severity 2 or 3 crime by the hero's deed-log effects and, if so, have the village recalculate its security sweep; then forget the pending crimes
-// Leaf: ?ReportAllPendingCrimes@CTCGuard@
+// Leaf: ?ReportAllPendingCrimes@CTCGuard@@QAEXPAVCTCVillage@@@Z
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007B2E20, length 432 bytes (thiscall, `ret 4`; 0x1AB bytes + int3).

@@ -1,5 +1,5 @@
 // CTCTavernGameCardBlackjack::EnterGame() -- base EnterGame, then clear this sitting's winnings, the hand/pack indices and the current hand
-// Leaf: ?EnterGame@CTCTavernGameCardBlackjack
+// Leaf: ?EnterGame@CTCTavernGameCardBlackjack@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DA020, length 36 bytes. CTCTavernGameCardBlackjack vtable slot 29;
 // Ego_r.pdb `?EnterGame@CTCTavernGameCardBlackjack@@UAEXXZ`.
 // Callee: CTCTavernGameCardBase::EnterGame() @ 0x008F1E30 (called non-virtually).

@@ -1,5 +1,5 @@
 // CTCSmashableWindow::Smash() -- smash as the base does, then, when the smashable def names a smash particle emitter, create that effect at the thing's position
-// Leaf: ?Smash@CTCSmashableWindow@@
+// Leaf: ?Smash@CTCSmashableWindow@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007F4E10, 86 bytes. Vtable 0x01240BA4 (CTCSmashableWindow, rtti-vtables.tsv) slot 28.
 // CTCSmashableBarrier::Smash 0x007EEB20 and CTCSmashableWindow::Smash 0x007F4E10 are byte-identical bodies (two classes).
 // Callees: CTCSmashableBase::Smash @ 0x007EED20 (landed), CThing::GetPos() const @ 0x004C73D0,

@@ -1,5 +1,5 @@
 // CBankFile::FindIndexByPathname(const CCharString& pathname, long unused) const -- look an entry up by its full path: split off the file name + extension, get the candidate indices with that file name, and return the first whose stored pathname matches case-insensitively (0 when none)
-// Leaf: ?FindIndexByPathname@CBankFile
+// Leaf: ?FindIndexByPathname@CBankFile@@QBEKABVCCharString@@J@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009CD140, length 268 bytes (`ret 8`).
 // Callees: CCharString() @ 0x0099E4B0 (x2), SplitPath @ 0x009976D0 (__fastcall: path, drive 0, directory 0, &filename,
 //          &extension), CCharString::operator+=(const CCharString&) @ 0x0099F0A0, CBankFile::FindIndicesByFilename(const

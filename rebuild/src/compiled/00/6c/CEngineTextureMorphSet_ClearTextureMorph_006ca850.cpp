@@ -1,5 +1,5 @@
 // CEngineTextureMorphSet::ClearTextureMorph(long originalTextureIndex) -- erase every engine texture morph of the given original texture from Morphs
-// Leaf: ?ClearTextureMorph@CEngineTextureMorphSet@@
+// Leaf: ?ClearTextureMorph@CEngineTextureMorphSet@@QAEXJ@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CA850, 93 bytes, thiscall, `ret 4`.
 // Identity: the manifest's "std::vector<CEngineTextureMorph*>::erase" is the inlined body. Ego_r.pdb names
 //   ?ClearTextureMorph@CEngineTextureMorphSet@@QAEXJ@Z; CEngineTextureMorphSet is { CArray<CEngineTextureMorph> Morphs; }

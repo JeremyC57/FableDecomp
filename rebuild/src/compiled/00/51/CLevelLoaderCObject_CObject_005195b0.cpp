@@ -1,6 +1,6 @@
 // CLevelLoader::CObject::~CObject() -- destroy the region level-file vector (each CLevelFiles, then the block) and the loadable-section set (clear the tree, free the header)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005195B0, length 103 bytes (padded to 112).
-// Leaf: ??1CObject@CLevelLoader
+// Leaf: ??1CObject@CLevelLoader@@QAE@XZ
 // Label correction: the catalog "CParticleEmitter::DeleteAllParticles" is propagated and wrong. The element destructor is
 // ~CLevelFiles @ 0x0050F980 (28-byte records), the neighbouring push_back @ 0x0051AE60 is vector<CLevelLoader::CObject::CLevelFiles>,
 // and the callers are the deleting destructor 0x0051A3D0 and the delete helper 0x0051AF00 -- the implicit ~CObject().

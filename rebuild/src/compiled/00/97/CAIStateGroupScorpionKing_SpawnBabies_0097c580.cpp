@@ -1,5 +1,5 @@
 // CAIStateGroup_ScorpionKing::SpawnBabies() -- the scorpion king performs its summon action against the current enemy and waits for it; the state terminates if it is no longer runnable afterwards
-// Leaf: ?SpawnBabies@CAIStateGroup_ScorpionKing
+// Leaf: ?SpawnBabies@CAIStateGroup_ScorpionKing@@IAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0097C580, 81 bytes (+ int3 padding to 96), plain `ret`; a 0x114-byte frame
 //   holds the action temporary.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PEnemy at +0x30), CCreatureAction_ScorpionSummon::

@@ -1,5 +1,5 @@
 // NInventory::CTCInventoryBase::~CTCInventoryBase() -- unregister from the global TC list, then the members in reverse (confiscated items, the two display-list vectors, the two serialised counted pointers, the def pointer, the categories, the components vector), then the CTCBase base
-// Leaf: ??1CTCInventoryBase@NInventory
+// Leaf: ??1CTCInventoryBase@NInventory@@UAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005C00A0, length 129 bytes (size-optimised TU: `#pragma optimize("s", on)`).
 // Label correction: catalogued as CTCActionUseBuyOrSteal::~CTCActionUseBuyOrSteal (propagated); the vtable stored here,
 // 0x01253DBC, is NInventory::CTCInventoryBase (rtti-vtables.tsv), and the member layout is the PDB CTCInventoryBase.

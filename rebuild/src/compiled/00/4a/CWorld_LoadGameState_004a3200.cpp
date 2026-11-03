@@ -1,5 +1,5 @@
 // CWorld::LoadGameState(const CWideString& name, bool loadNow) -- resolve a save name to a file (profile path, else the profile-folder search, else the U:\ directory search) and either load it now (with the hero state) or queue it as the pending save-game load
-// Leaf: ?LoadGameState@CWorld@
+// Leaf: ?LoadGameState@CWorld@@QAE_NABVCWideString@@_N@Z
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004A3200, 740 bytes, `ret 8` (/GS cookie; FableWin.pdb ?LoadGameState@CWorld@@QAE_NABVCWideString@@_N@Z).
 // Callees: CUserProfileManager::Get 0x0040D2A0 + GetPathNameFromFileName 0x00408120, CWideString::operator!=(const wchar16*)

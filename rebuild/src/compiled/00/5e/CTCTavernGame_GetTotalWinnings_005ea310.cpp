@@ -1,5 +1,5 @@
 // CTCTavernGame::GetTotalWinnings() -- the "total winnings" text from the tavern-game def followed by the total winnings as a number
-// Leaf: ?GetTotalWinnings@CTCTavernGame
+// Leaf: ?GetTotalWinnings@CTCTavernGame@@UAE?AVCWideString@@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EA310, 166 bytes (`ret 4`, CWideString by hidden pointer); CTCTavernGame
 // vtable 0x012560BC slot 49. The catalog's "GetBet" is the neighbouring slot's name (GetBet is slot 47, 0x005EA1A0):
 // Ego_r.pdb's source order UpdateValues, GetWinPhrase, GetBet, GetPlayersMoney, GetTotalWinnings, GetBanter maps onto

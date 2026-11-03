@@ -1,5 +1,5 @@
 // CTCPerceiveThing::SetThingToPerceive(const CThing* thing) -- start perceiving the thing (Perceiving = true) or stop (Perceiving = false, no target)
-// Leaf: ?SetThingToPerceive@
+// Leaf: ?SetThingToPerceive@CTCPerceiveThing@@QAEXPBVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007447A0, 55 bytes (+9 int3), __fastcall `ret 4`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (its result unused), CTCPerceiveThing::SetPerceivedThing @
 //   0x007446B0 (landed).

@@ -1,5 +1,5 @@
 // NCreatureMode::RemoveMovementBlockingModes(CThing& thing) -- drop the sit, sleep, underground, block, dazed, stunned, conversation and caged modes from the thing's mode manager
-// Leaf: ?RemoveMovementBlockingModes@NCreatureMode@@
+// Leaf: ?RemoveMovementBlockingModes@NCreatureMode@@YIXAAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085F600, length 148 bytes. `__fastcall` free function (ecx = the thing).
 // Mangled (Ego_r.pdb): ?RemoveMovementBlockingModes@NCreatureMode@@YIXAAVCThing@@@Z.
 // Callees: the non-const CVectorMap LowerBound 0x0040F020, CTCCreatureModeManager::RemoveMode 0x0073ABA0 (ten times:

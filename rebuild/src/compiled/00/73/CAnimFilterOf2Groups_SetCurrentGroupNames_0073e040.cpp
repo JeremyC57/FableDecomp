@@ -1,5 +1,5 @@
 // CAnimFilterOf2Groups::SetCurrentGroupNames(const CCharString& group1, const CCharString& group2) -- take both group names and recompute their CRCs
-// Leaf: ?SetCurrentGroupNames@
+// Leaf: ?SetCurrentGroupNames@CAnimFilterOf2Groups@@QAEXABVCCharString@@0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0073E040, 129 bytes (+15 int3), __fastcall `ret 8`.
 // Callees: CCharString::operator=(const CCharString&) @ 0x0099EFB0 (x2), Calc @ 0x004014A0 (x2, the CRC-32 kernel; the
 //   shared empty literal 0x0129AAF4 stands in for a name with no data block).

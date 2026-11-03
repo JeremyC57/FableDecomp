@@ -1,5 +1,5 @@
 // NThingManager::CEntityRuntimePersistence::SetGamePersistentScript(long index, const CCharString& script) -- grow the game-persistent script table to cover index, store the entity's script there and mark the slot valid
-// Leaf: ?SetGamePersistentScript@CEntityRuntimePersistence@NThingManager@@
+// Leaf: ?SetGamePersistentScript@CEntityRuntimePersistence@NThingManager@@QAEXJABVCCharString@@@Z
 //
 // Retail 0x005237F0, 111 bytes (then int3 padding), `ret 8` (thiscall).
 // Callees: 0x0052C6A0 vector<CEntityScriptInfo>::resize(size_type), 0x0099EFB0 CCharString::operator=.

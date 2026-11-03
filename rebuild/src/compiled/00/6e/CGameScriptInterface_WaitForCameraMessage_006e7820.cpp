@@ -1,5 +1,5 @@
 // CGameScriptInterface::WaitForCameraMessage(const CCharString& message) const -- block the calling script, a frame at a time, until a camera message event (type 0x2B) targets a live thing whose scripted camera spline (TC 0x3F) carries this message; the matching event is consumed
-// Leaf: ?WaitForCameraMessage@CGameScriptInterface
+// Leaf: ?WaitForCameraMessage@CGameScriptInterface@@UBEXABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E7820, length 243 bytes (+ int3 padding), `ret 4`.
 // Signature from Ego_r.pdb: ?WaitForCameraMessage@CGameScriptInterface@@UBEXABVCCharString@@@Z.
 // Callees: CMessageEventFilter_IsOfType::operator() @ 0x006AF1C0 (the FindMostRecentMessage template inlined),

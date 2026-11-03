@@ -1,5 +1,5 @@
 // NAnimationEvents::CManager::`scalar deleting destructor'(unsigned int flags) -- destroy the extra-events map vector and the event symbol map, then free
-// Leaf: ??_GCManager@NAnimationEvents@@
+// Leaf: ??_GCManager@NAnimationEvents@@QAEPAXI@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006FD330, 65 bytes, `ret 4`.
 // Label correction: catalog "CPatchTesselationEdgeStrip_dtor" is propagated; this is the scalar deleting destructor of
 //   NAnimationEvents::CManager.

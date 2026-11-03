@@ -1,5 +1,5 @@
 // NParticleEngine::Uninitialise() -- release the particle engine's singletons (emitter manager, emitter database, particle-system-component manager): drop each global counted pointer's reference, destroying the object on the last one, and null the pointer
-// Leaf: ?Uninitialise@NParticleEngine@@
+// Leaf: ?Uninitialise@NParticleEngine@@YIXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AEBEA0, 163 bytes, __fastcall, no arguments. Caller 0x0041769F (engine shut-down).
 // Identity: FableWin.pdb `?Uninitialise@NParticleEngine@@YIXXZ` (the sibling Initialise 0x00AEBE20); globals PEmitterManager
 //   0x013D2E1C, PEmitterDatabase 0x013D2E14, PPSCManager 0x013D2E24 (FableWin.pdb dynamic initializers).

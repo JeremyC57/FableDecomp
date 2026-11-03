@@ -9,7 +9,7 @@
 // Shape: the inline wide ConvertPathToFullPath (landed 0x00999110) is expanded, its result narrowed into a named
 // local and destroyed at once; the split buffers sit in an inner block (the drive buffer reuses the dead wide
 // temporary's frame word); the drive string is assigned and nothing reads it in the retail build.
-// Leaf: ?ValidatePathnameIsOnWriteableDrive@CAFile
+// Leaf: ?ValidatePathnameIsOnWriteableDrive@CAFile@@SIXABVCWideString@@@Z
 // Flags: /GS
 typedef unsigned short wchar16;          // wchar_t is not a built-in type under the retail flags
 

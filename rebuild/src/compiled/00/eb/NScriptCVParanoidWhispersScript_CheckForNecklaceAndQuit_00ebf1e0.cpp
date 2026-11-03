@@ -1,5 +1,5 @@
 // CV_ParanoidWhispersScript::CheckForNecklaceAndQuit() -- each frame, once the hero holds Lady Grey's stolen necklace (and the timer has run out), point the Mayor's Invitation quest card at Bowerstone and deactivate the active quest
-// Leaf: ?CheckForNecklaceAndQuit@CV_ParanoidWhispersScript@NScript@@
+// Leaf: ?CheckForNecklaceAndQuit@CV_ParanoidWhispersScript@NScript@@QAEXXZ
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EBF1E0, 432 bytes, plain `ret`.

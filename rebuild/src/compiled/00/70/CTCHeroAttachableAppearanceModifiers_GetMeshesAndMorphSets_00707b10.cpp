@@ -1,5 +1,5 @@
 // CTCHeroAttachableAppearanceModifiers::GetMeshesAndMorphSets(vector<pair<CMeshInfo, CEngineTextureMorphSet> >& meshesAndMorphSets) const -- one (mesh info, texture morph set) pair per modifier graphic: the replacement def's texture swaps become base-type blends
-// Leaf: ?GetMeshesAndMorphSets@
+// Leaf: ?GetMeshesAndMorphSets@CTCHeroAttachableAppearanceModifiers@@QBEXAAV?$vector@U?$pair@VCMeshInfo@NGraphicAppearance@@VCEngineTextureMorphSet@@@std@@V?$allocator@U?$pair@VCMeshInfo@NGraphicAppearance@@VCEngineTextureMorphSet@@@std@@@2@@std@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00707B10, 526 bytes, __fastcall, `ret 4`.
 // PDB: ?GetMeshesAndMorphSets@CTCHeroAttachableAppearanceModifiers@@QBEXAAV?$vector@U?$pair@VCMeshInfo@NGraphicAppearance@@
 //   VCEngineTextureMorphSet@@@std@@...@std@@@Z (Ego_r 0x0055D1C0); catalog "RandomAppearance_ProcessMorphList" was

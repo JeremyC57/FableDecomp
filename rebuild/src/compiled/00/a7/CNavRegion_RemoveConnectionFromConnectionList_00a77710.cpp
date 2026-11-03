@@ -1,5 +1,5 @@
 // CNavRegion::RemoveConnectionFromConnectionList(const CNavRegionConnection* connection) -- find the region's counted connection entry for `connection` and erase it (releasing the counted reference); nothing happens when it is not listed
-// Leaf: ?RemoveConnectionFromConnectionList@CNavRegion@@
+// Leaf: ?RemoveConnectionFromConnectionList@CNavRegion@@AAEXPBVCNavRegionConnection@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A77710, 101 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity: FableWin.pdb `?RemoveConnectionFromConnectionList@CNavRegion@@AAEXPBVCNavRegionConnection@@@Z`; callers
 //   CNavRegionConnection's release 0x00A778B0 and CNavRegion::RemoveConnectionToRegion 0x00A78060, each calling it on both

@@ -1,5 +1,5 @@
 // CTCShopKeeper::AcquireNewCustomer() -- look for the nearest potential customer in the 30m square around the keeper (nearest to the shop); latch it as the current customer and remember it, else when nobody (not even an existing shopper) is around, empty the customer list
-// Leaf: ?AcquireNewCustomer@CTCShopKeeper
+// Leaf: ?AcquireNewCustomer@CTCShopKeeper@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00799900, 351 bytes (plain `ret`).
 // Callees: CTCShopKeeper::GetShopTC 0x00798F50; CThing::GetPos 0x004C73D0 (x2); __ftol2 0x00BFEA70 (x2);
 //          CThingFilter_IsPotentialCustomer(CTCShopKeeper*, bool) 0x00799D80 (x2); CTCBase::GetThingSearchTools 0x00686D90;

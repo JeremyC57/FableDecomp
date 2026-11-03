@@ -1,5 +1,5 @@
 // NCameraModes::IsLandscapeToBlockCameraBetween(const CWorldMap& map, const C3DVector& a, const C3DVector& b, bool includeWater) -- landscape camera-blocking test: either end off the map or in an unloaded map blocks; otherwise blocked when a is above its camera height while b is below its own
-// Leaf: ?IsLandscapeToBlockCameraBetween@NCameraModes@@
+// Leaf: ?IsLandscapeToBlockCameraBetween@NCameraModes@@YI_NABVCWorldMap@@ABVC3DVector@@1_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00874F80, length 150 bytes, `__fastcall` (map in ecx, a in edx, b and the
 //   flag on the stack), `ret 8`.
 // Identity: Ego_r.pdb `?IsLandscapeToBlockCameraBetween@NCameraModes@@YI_NABVCWorldMap@@ABVC3DVector@@1_N@Z` (the

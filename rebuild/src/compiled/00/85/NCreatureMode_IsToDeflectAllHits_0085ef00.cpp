@@ -1,5 +1,5 @@
 // NCreatureMode::IsToDeflectAllHits(const CThing& thing) -- true when a creature's current action deflects every hit (action slot 46) or the BriarRoseTeleportInvulnerable mode (0x40) is active
-// Leaf: ?IsToDeflectAllHits@NCreatureMode@@
+// Leaf: ?IsToDeflectAllHits@NCreatureMode@@YI_NABVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085EF00, length 104 bytes. `__fastcall` free function (ecx = the thing), bool in al.
 // Mangled (Ego_r.pdb): ?IsToDeflectAllHits@NCreatureMode@@YI_NABVCThing@@@Z.
 // Callees: the current action's slot 46 (+0xB8; manifest "IsToCauseRecoil"), CVectorMap LowerBound 0x004365B0 (const),

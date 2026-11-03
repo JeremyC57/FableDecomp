@@ -1,5 +1,5 @@
 // CScriptConversationManager::FrameUpdate() -- update every running conversation in index order, stepping the map iterator past each one before its update runs (an update may remove its own conversation)
-// Leaf: ?FrameUpdate@CScriptConversationManager@@
+// Leaf: ?FrameUpdate@CScriptConversationManager@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E60F0, 83 bytes (96 with int3 padding), thiscall, plain `ret`.
 // Identity: Ego_r.pdb name set `?FrameUpdate@CScriptConversationManager@@QAEXXZ` (next to CScriptConversation::FrameUpdate);
 //   the callee 0x006E5A00 is the per-conversation update on node+0x14 (the pair's value, as the landed manager members

@@ -1,5 +1,5 @@
 // GFGetValPositionInLimitsLooping(float value, float start, float end, float minLimit, float maxLimit, float& position) -- position of a value inside a [start, end] window on a looping [minLimit, maxLimit] scale (the window may wrap past maxLimit); false when the value lies outside the window
-// Leaf: ?GFGetValPositionInLimitsLooping@
+// Leaf: ?GFGetValPositionInLimitsLooping@@YI_NMMMMMAAM@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00778610, 221 bytes (+ int3 padding), `__fastcall` (the out reference in
 //   ecx, the five floats on the stack: `ret 14h`), bool in al. Ego_r.pdb / FableWin.pdb:
 //   `?GFGetValPositionInLimitsLooping@@YI_NMMMMMAAM@Z` = bool __fastcall (float, float, float, float, float, float&).

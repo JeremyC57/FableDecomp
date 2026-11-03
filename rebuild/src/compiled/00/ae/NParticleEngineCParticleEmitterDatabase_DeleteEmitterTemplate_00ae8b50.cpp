@@ -1,5 +1,5 @@
 // NParticleEngine::CParticleEmitterDatabase::DeleteEmitterTemplate(long handle) -- drop the emitter template(s) registered under a handle: erase the handle's [lower_bound, upper_bound) range from the Emitters vector map (releasing their counted emitter pointers)
-// Leaf: ?DeleteEmitterTemplate@CParticleEmitterDatabase@NParticleEngine@@
+// Leaf: ?DeleteEmitterTemplate@CParticleEmitterDatabase@NParticleEngine@@QAEXJ@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AE8B50, 82 bytes, __fastcall `ret 4`. No direct caller (an editor-side entry kept in the
 //   image).
 // Identity: Ego_r.pdb `?DeleteEmitterTemplate@CParticleEmitterDatabase@NParticleEngine@@QAEXJ@Z`; Emitters is

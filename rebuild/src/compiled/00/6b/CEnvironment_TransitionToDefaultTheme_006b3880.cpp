@@ -1,5 +1,5 @@
 // CEnvironment::TransitionToDefaultTheme(long channel, long priority, float duration) -- fade one channel's priority layer back to its default theme
-// Leaf: ?TransitionToDefaultTheme@CEnvironment@@
+// Leaf: ?TransitionToDefaultTheme@CEnvironment@@QAEXJJM@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B3880, length 80 bytes (66 code + int3 pad), thiscall `ret 0xc`.
 // Callees: NEnvironmentInternal::CEnvironmentThemePriorityStackEntry::TransitionToDefaultTheme(float) @ 0x00886400.
 // Identity: Ego_r.pdb `?TransitionToDefaultTheme@CEnvironment@@QAEXJJM@Z` (name set only; donor-keyed address);

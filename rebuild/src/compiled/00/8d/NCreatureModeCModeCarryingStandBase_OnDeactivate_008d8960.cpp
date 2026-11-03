@@ -1,5 +1,5 @@
 // NCreatureMode::CModeCarryingStandBase::OnDeactivate() -- drop the carrying combination animations (type 0x18) from the creature's animation, then the stand-mode deactivation
-// Leaf: ?OnDeactivate@CModeCarryingStandBase
+// Leaf: ?OnDeactivate@CModeCarryingStandBase@NCreatureMode@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D8960, 90 bytes (+ int3 padding), `ret`; vtable 0x01267400 slot 6.
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, type 0x5a = bit 26 of the dword at +0x28 =
 //   CTCAnimationComplex), CTCAnimationComplex::GetAnimation @ 0x0070B460 (manifest "CWorld::DrawGetEnvironment" is

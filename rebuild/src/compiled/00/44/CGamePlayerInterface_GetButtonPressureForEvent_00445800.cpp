@@ -1,6 +1,6 @@
 // CGamePlayerInterface::GetButtonPressureForEvent(const CInputEvent& event) const -- analogue pad buttons report their
 // pressure fraction, digital key/button/mouse events count as fully pressed (1), anything else 0
-// Leaf: ?GetButtonPressureForEvent@CGamePlayerInterface
+// Leaf: ?GetButtonPressureForEvent@CGamePlayerInterface@@QBEMABVCInputEvent@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00445800, length 240 bytes, `ret 4` (`this` unused).
 // Callees: CInputEvent::GetType @ 0x00A03B40 (returns +0x28; called afresh for every test, another TU),
 // CInputEvent::GetJoystickButtonPressureFraction @ 0x00A03BA0. Float pool: 0x0122DEDC = 0.0f, 0x0122DED8 = 1.0f.

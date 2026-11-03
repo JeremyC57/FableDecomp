@@ -1,5 +1,5 @@
 // CTCContainer::RemoveItem(long) -- remove the first container item whose definition index matches
-// Leaf: ?RemoveItem@CTCContainer@@
+// Leaf: ?RemoveItem@CTCContainer@@QAEXJ@Z
 // Retail 0x008ED040, 0x4D bytes, thiscall `ret 4`. Manifest label "std_vector_erase_single<CTCSkeletalMorph>" is
 //   propagated; the PDB name set has `?RemoveItem@CTCContainer@@QAEXJ@Z` and the landed caller
 //   CGameScriptInterface::RemoveItemFromContainer 0x0089E810 already names it.

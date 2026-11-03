@@ -1,5 +1,5 @@
 // NScreenEffect::CScreenEffectPriorityStack::CDisplacementProcess::Process(float weight, const CStackEntry* entry) -- blend the stack's current displacement colour towards the entry's colour by `weight`
-// Leaf: ?Process@CDisplacementProcess@CScreenEffectPriorityStack@NScreenEffect
+// Leaf: ?Process@CDisplacementProcess@CScreenEffectPriorityStack@NScreenEffect@@UAEXMPBUCStackEntry@23@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00880D50, length 174 bytes (+ int3 padding), `ret 8`. No callees;
 // the 1.0f constant @ 0x0122DED8.
 // Layout: CDisplacementProcess {vptr, Owner +4} (PDB; vtable 0x01278014, built in the landed

@@ -1,5 +1,5 @@
 // NGameText::CDataBank::CDataBank() -- construct the text bank: async bank-file base, resource-bank base, empty entry/text/group/narrator arrays; cap the bank's resident resource memory at 64KB with no unload delay
-// Leaf: ??0CDataBank@NGameText@@
+// Leaf: ??0CDataBank@NGameText@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C85A0, 141 bytes (+3 int3 padding), plain `ret`.
 // Name: FableWin.pdb ??0CDataBank@NGameText@@QAE@XZ.
 // Bases (RTTI; same as the landed CGraphicDataBank 0x009FEBC0): CBankFileAsync at +0 (ctor 0x009D5F80), CResourceBank at

@@ -1,5 +1,5 @@
 // CGPUScratchBufferTextureManager::CGPUScratchBufferTextureManager() -- the CBase base constructor, this class's vtable, then fifteen zero words at +4..+0x3c and a cleared flag byte at +0x40
-// Leaf: ??0CGPUScratchBufferTextureManager@
+// Leaf: ??0CGPUScratchBufferTextureManager@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F37520, length 80 bytes.
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0. Vtable 0x01301CE4 = CGPUScratchBufferTextureManager (rtti-vtables.tsv). Shape: every store after the vtable store (a member
 // object with an inline constructor), one zero register; `this` is returned.

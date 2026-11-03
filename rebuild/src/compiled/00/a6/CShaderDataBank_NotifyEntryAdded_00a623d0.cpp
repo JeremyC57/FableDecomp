@@ -1,7 +1,7 @@
 // CShaderDataBank::NotifyEntryAdded(unsigned long type, unsigned long index, const CArray<char>& data) -- grow the shader table to cover the new entry, create the entry for vertex/pixel shader types, then let the bank file record it
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A623D0, 174 bytes, `ret 0Ch` (protected virtual, PDB
 //   `?NotifyEntryAdded@CShaderDataBank@@MAEXKKABV?$CArray@D@@@Z`).
-// Leaf: ?NotifyEntryAdded@CShaderDataBank
+// Leaf: ?NotifyEntryAdded@CShaderDataBank@@MAEXKKABV?$CArray@D@@@Z
 // Callees: STLport vector<CShaderBankEntry*>::_M_insert_overflow @ 0x00A62740 (manifest "StdVector_InsertN_Shader"),
 //   operator new @ 0x00BFEA1A, CShaderBankEntry::CShaderBankEntry(unsigned long type, unsigned long index,
 //   CShaderDataBank* bank) @ 0x00A62120 (0x24 bytes in retail), CBankFile::NotifyEntryAdded @ 0x009CBC20

@@ -1,5 +1,5 @@
 // CGamePlayerInterface::GetInputProcessEvent(CProcessedInput& processedInput) const -- scan the queued input events, offer each unprocessed one to every registered input process and keep the highest-priority accepted result (flagging an event a process consumes outright as processed); copy the best result out, flag its event as processed and report whether any process produced one
-// Leaf: ?GetInputProcessEvent@CGamePlayerInterface
+// Leaf: ?GetInputProcessEvent@CGamePlayerInterface@@ABE_NAAVCProcessedInput@@@Z
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /GS

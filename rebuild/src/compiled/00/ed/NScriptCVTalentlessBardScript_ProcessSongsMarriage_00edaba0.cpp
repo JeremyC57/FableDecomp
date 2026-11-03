@@ -1,5 +1,5 @@
 // CV_TalentlessBardScript::ProcessSongsMarriage() -- adds the marriage verses: BACHELOR if the hero never married, else MARRIED / DIVORCE / MURDER for each marriage fact that holds
-// Leaf: ?ProcessSongsMarriage@CV_TalentlessBardScript@NScript@@
+// Leaf: ?ProcessSongsMarriage@CV_TalentlessBardScript@NScript@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EDABA0, 287 bytes, plain `ret`.
 // Callees: CGameScriptInterface slots 211 GetHeroHasMarried (+0x34c), 212 GetHeroHasCurrentMarriage (+0x350),
 //   213 GetHeroHasDivorcedMarriage (+0x354), 215 GetHeroHasMurderedWife (+0x35c); CCharString(const char*, long)

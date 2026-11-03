@@ -1,5 +1,5 @@
 // NCreatureAI::IsAwareOfPosition(const CThingCreatureBase*, const C3DVector&) -- the position is within the creature's extended sight radius (2D), in its field of view and in navigation line of sight
-// Leaf: ?IsAwareOfPosition@
+// Leaf: ?IsAwareOfPosition@NCreatureAI@@YI_NPBVCThingCreatureBase@@ABVC3DVector@@@Z
 // Retail 0x00864620, 0xE0 bytes, __fastcall (creature in ecx, position in edx). PDB (Ego_r):
 // ?IsAwareOfPosition@NCreatureAI@@YI_NPBVCThingCreatureBase@@ABVC3DVector@@@Z. Callers 0x006C0BBE, 0x006C0C1C.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x004365B0 (twice), CTCPerceiveThing::GetExtendedSightRadius()

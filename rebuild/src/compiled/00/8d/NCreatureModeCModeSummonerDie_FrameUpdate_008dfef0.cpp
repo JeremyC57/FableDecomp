@@ -1,5 +1,5 @@
 // NCreatureMode::CModeSummonerDie::FrameUpdate() -- vtable slot 3: count the dying frames down; when they run out, a player-state creature is given the summoner-dead action
-// Leaf: ?FrameUpdate@CModeSummonerDie@
+// Leaf: ?FrameUpdate@CModeSummonerDie@NCreatureMode@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008DFEF0, 94 bytes (+2 int3 padding).
 // Name: slot 3 of the vtable 0x012682EC (rtti-vtables.tsv); slot 3 is CModeBase::FrameUpdate (the landed
 // 0x0073AC50 is the base body CModeUnderground's slot 3 calls first), slot 5 the landed OnActivate 0x008D6920 that

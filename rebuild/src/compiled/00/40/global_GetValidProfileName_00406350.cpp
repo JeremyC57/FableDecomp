@@ -1,5 +1,5 @@
 // GetValidProfileName(const CWideString& name) -- copy a profile name with every character Windows forbids in a file name (\ / : * ? " < > |) replaced by '_'
-// Leaf: ?GetValidProfileName@@
+// Leaf: ?GetValidProfileName@@YI?AVCWideString@@ABV1@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00406350, 629 bytes (640 with padding), `__fastcall` with the hidden CWideString
 //   result in ecx and `name` in edx, `ret`. FableWin.pdb: `?GetValidProfileName@@YI?AVCWideString@@ABV1@@Z`.
 // Callers: 0x00406E3A, 0x00407069 (CUserProfileManager), 0x0055D341/0x0055DB59, 0x0058178E/0x00581B62, 0x0058FA93,

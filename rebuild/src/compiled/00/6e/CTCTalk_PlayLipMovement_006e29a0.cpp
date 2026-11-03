@@ -1,5 +1,5 @@
 // CTCTalk::PlayLipMovement(CASoundBank& bank, long sample) -- start a lip movement from a given speech bank and sample: record them, reset the mime start time, start loading the sample's lip-sync entry in the paired lip-sync bank, and set the sample duration in frames
-// Leaf: ?PlayLipMovement@CTCTalk@@
+// Leaf: ?PlayLipMovement@CTCTalk@@QAEXAAVCASoundBank@@J@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E29A0, 105 bytes, thiscall `ret 8`.
 // Identity: Ego_r.pdb name set `?PlayLipMovement@CTCTalk@@QAEXAAVCASoundBank@@J@Z` (public, void(CASoundBank&, long)); the
 //   body is the bank/sample twin of the landed CTCTalk::SetUpSpeechSample 0x006E2A50 (same lip-sync lookup, same

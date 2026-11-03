@@ -1,5 +1,5 @@
 // NCreatureMode::IsUnderground(const CThing& thing) -- true when the current creature mode is Underground (0x1E), ScorpionKingExhausted (0x38) or Underwater (0x54)
-// Leaf: ?IsUnderground@NCreatureMode@@
+// Leaf: ?IsUnderground@NCreatureMode@@YI_NABVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085F120, length 94 bytes. `__fastcall` free function (ecx = the thing), bool in al.
 // Mangled (Ego_r.pdb): ?IsUnderground@NCreatureMode@@YI_NABVCThing@@@Z.
 // Callees: CVectorMap LowerBound 0x004365B0 (const), CTCCreatureModeManager::GetCurrentMode 0x0073A6E0, the mode's slot 1.

@@ -1,5 +1,5 @@
 // CParentDefClassBase::InternalSaveBinary(CDataOutputStream&) -- write the CDefClassBase flag bits, re-sort the sub-def info map if it is dirty, then write its count and every (index, sub-def info) entry
-// Leaf: ?InternalSaveBinary@CParentDefClassBase
+// Leaf: ?InternalSaveBinary@CParentDefClassBase@@UAEXAAVCDataOutputStream@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009B0200, length 224 bytes. Virtual: slot 21 of
 // CParentDefClassBase's vtable 0x01230CBC.
 // Callees: CDataOutputStream::WriteCBYTE(char) @ 0x00993E50 (x3, the inlined CDefClassBase part -- its

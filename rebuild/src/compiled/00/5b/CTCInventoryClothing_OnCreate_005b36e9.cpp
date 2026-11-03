@@ -1,5 +1,5 @@
 // CTCInventoryClothing::OnCreate() -- registers the clothing screen, points the inventory at the clothing sub-def's inventory def, runs the base OnCreate, then creates every starting clothing item at the owner and adds it to this inventory
-// Leaf: ?OnCreate@CTCInventoryClothing
+// Leaf: ?OnCreate@CTCInventoryClothing@@UAEXXZ
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).

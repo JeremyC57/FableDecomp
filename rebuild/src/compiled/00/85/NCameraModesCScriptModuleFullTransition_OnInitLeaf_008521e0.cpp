@@ -1,6 +1,6 @@
 // NCameraModes::CScriptModuleFullTransition::OnInitLeaf() -- start the transition: put the owning camera at the start position and aim it at the start look-at point
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008521E0, 53 bytes, plain `ret`.
-// Leaf: ?OnInitLeaf@CScriptModuleFullTransition
+// Leaf: ?OnInitLeaf@CScriptModuleFullTransition@NCameraModes@@UAEXXZ
 // Name: vtable 0x01275A44 slot 8; FableWin.pdb ?OnInitLeaf@CScriptModuleFullTransition@NCameraModes@@UAEXXZ.
 // Layout: Ego_r.pdb CScriptModuleFullTransition (landed ctor 0x008525F0): LookAtPos +0x64, StartPos +0x70; the owner (POwner
 //         +0x38) is the NCameraModes::CBase with LookAt +0x10 and GoTo.Position +0x54.

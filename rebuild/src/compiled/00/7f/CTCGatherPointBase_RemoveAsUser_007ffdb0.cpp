@@ -1,5 +1,5 @@
 // CTCGatherPointBase::RemoveAsUser(const CThing& user) -- drop a user from the gather point's user list (STLport remove of its pointer, then a single-element erase at the new end)
-// Leaf: ?RemoveAsUser@CTCGatherPointBase@@
+// Leaf: ?RemoveAsUser@CTCGatherPointBase@@QAEXABVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FFDB0, 136 bytes (+ int3 padding to 144), __fastcall, `ret 4`.
 //   Callers: CAIStateGroup_MinionSitOnSeatBase::Cleanup 0x0090FA60 and CAIStateGroup_SitInPub::Update 0x0094B740 (on
 //   the interface-0x7B component); the landed twin CTCGatherPointBase::AddAsUser 0x007FFEB0 follows it.

@@ -1,5 +1,5 @@
 // CEngineLocalDetailObjectDef::Transfer(CPersistContext&) -- persist the local detail object definition: meshes, probability / scale / fade floats, z-sprite and slope fades, alpha and wind-skew parameters, then the eight named flag bits
-// Leaf: ?Transfer@CEngineLocalDetailObjectDef
+// Leaf: ?Transfer@CEngineLocalDetailObjectDef@@UAEXAAVCPersistContext@@@Z
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0047769E, length 677 bytes (virtual, `ret 4`; unaligned entry, def module).
 // Pragma: #pragma optimize("s", on) (ebp frame).

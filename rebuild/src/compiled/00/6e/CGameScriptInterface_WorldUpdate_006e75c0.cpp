@@ -1,5 +1,5 @@
 // CGameScriptInterface::WorldUpdate(bool active) -- once per game second (and never during a movie sequence or cutscene) count every running script timer down by one, stopping at zero
-// Leaf: ?WorldUpdate@CGameScriptInterface@@
+// Leaf: ?WorldUpdate@CGameScriptInterface@@QAEX_N@Z
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E75C0, 104 bytes (112 with int3 padding), thiscall, `ret 4`.

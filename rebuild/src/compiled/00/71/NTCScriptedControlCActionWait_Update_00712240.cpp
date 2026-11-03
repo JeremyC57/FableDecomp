@@ -1,5 +1,5 @@
 // NTCScriptedControl::CActionWait::Update() -- count one more update and terminate the wait once a positive frame budget has been exceeded
-// Leaf: ?Update@CActionWait@
+// Leaf: ?Update@CActionWait@NTCScriptedControl@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00712240, 25 bytes. Virtual slot 1 of CActionWait's vtable; FableWin.pdb lists
 // ?Update@CActionWait@NTCScriptedControl@@UAEXXZ.
 // Layout (Ego_r.pdb, retail-consistent): CActionBase {vptr, PTCScript +4, Activated +8, Terminated +9};

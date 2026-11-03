@@ -1,5 +1,5 @@
 // CEngineLandscapeMeshBuilder::CEngineLandscapeMeshBuilder() -- CBase ctor, vtable, memset of the 0x484-byte state block (rep stosd 0x121 dwords), then the out-of-line initialiser
-// Leaf: ??0CEngineLandscapeMeshBuilder@
+// Leaf: ??0CEngineLandscapeMeshBuilder@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BE32A0, length 39 bytes.
 // Callees: 0x0099A2F0 CBaseClassNonCopyable::CBaseClassNonCopyable, 0x00BE3110 Initialise (manifest: BuildSharedIndexBuffers, propagated)
 // The vtable (0x012A7FB8) is CEngineLandscapeMeshBuilder's per rtti-vtables.tsv; the manifest module label

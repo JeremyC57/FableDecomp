@@ -1,5 +1,5 @@
 // LHNetworkLib::LHHttp2::SendRequestAsync() -- push the next block (at most 1 KiB) of the prepared request down the socket: -104 with no request, 2 (and a reset for the response) once everything is sent, -100 when the send fails, -102 when nothing went out for longer than the time-out, else 1
-// Leaf: ?SendRequestAsync@LHHttp2@LHNetworkLib@@
+// Leaf: ?SendRequestAsync@LHHttp2@LHNetworkLib@@QAE?AW4LH_HTTP_STATUS@2@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008405F0, 322 bytes (+ int3 padding), thiscall `ret`.
 // Identity: Ego_r.pdb ?SendRequestAsync@LHHttp2@LHNetworkLib@@QAE?AW4LH_HTTP_STATUS@2@XZ; callers 0x0055FBA8 (the online
 //   scoreboard code) and LHHttp2::HandleResponse-side 0x00841202 (0x008411D0). The catalog's "LHHttp2_SendRequest" is

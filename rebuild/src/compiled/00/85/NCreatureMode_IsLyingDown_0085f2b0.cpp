@@ -1,5 +1,5 @@
 // NCreatureMode::IsLyingDown(const CThing& thing) -- true when the current creature mode is SleepBed (0x0D), KnockedDown (0x1F) or Stunned (0x1D)
-// Leaf: ?IsLyingDown@NCreatureMode@@
+// Leaf: ?IsLyingDown@NCreatureMode@@YI_NABVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085F2B0, length 87 bytes. `__fastcall` free function (ecx = the thing), bool in al.
 // Mangled (Ego_r.pdb): ?IsLyingDown@NCreatureMode@@YI_NABVCThing@@@Z.
 // Callees: CVectorMap LowerBound 0x004365B0 (const), CTCCreatureModeManager::GetCurrentMode 0x0073A6E0, the mode's slot 1.

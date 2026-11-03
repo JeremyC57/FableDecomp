@@ -1,5 +1,5 @@
 // NUISystem::CMovie::GetDataFromDef() -- fetch the movie component's def and copy its size, centring flag, movie name and angle into the component, then release the def
-// Leaf: ?GetDataFromDef@CMovie
+// Leaf: ?GetDataFromDef@CMovie@NUISystem@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00547C10, 121 bytes (+ int3 padding). Called by both CMovie constructors (0x005482D0, 0x00548350).
 // Callees: CComponent::LoadAndReturnDef() const (primary vtable slot 108, +0x1B0; CDefPointer returned through the hidden
 //   pointer = the `push ecx` frame slot), __ftol2 @ 0x00BFEA70 (float -> long), CWideString::operator= @ 0x0099B7D0,

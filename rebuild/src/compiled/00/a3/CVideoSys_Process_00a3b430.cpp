@@ -1,5 +1,5 @@
 // CVideoSys::Process() -- poll the graph's event queue once; on EC_COMPLETE restart the movie (PlayMode 0) or stop it
-// Leaf: ?Process@CVideoSys@@
+// Leaf: ?Process@CVideoSys@@QAE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A3B430, length 100 bytes (padded to 112).
 // Callees: IMediaEvent::GetEvent (slot 8, +0x20; code, param1, param2, timeout 0), CVideoSys::Play @ 0x00A3B130,
 // CVideoSys::Stop @ 0x00A3B1F0.

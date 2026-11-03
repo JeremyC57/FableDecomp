@@ -1,5 +1,5 @@
 // NCreatureMode::IsLookTurningOverridenByParent(const CThing& thing) -- true for a creature whose current action prevents look turning, or for the main player's creature while first-person/Z targeting or strafing (mode 0x19)
-// Leaf: ?IsLookTurningOverridenByParent@NCreatureMode@@
+// Leaf: ?IsLookTurningOverridenByParent@NCreatureMode@@YI_NABVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085F200, length 175 bytes. `__fastcall` free function (ecx = the thing), bool in al.
 // Mangled (Ego_r.pdb): ?IsLookTurningOverridenByParent@NCreatureMode@@YI_NABVCThing@@@Z.
 // Callees: CThingCreatureBase::IsPerformingAnyAction 0x006622A0, the current action's slot 50 (+0xC8, IsPreventingLookTurning),

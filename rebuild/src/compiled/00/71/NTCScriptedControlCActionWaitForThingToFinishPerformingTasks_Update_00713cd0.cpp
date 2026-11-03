@@ -1,5 +1,5 @@
 // NTCScriptedControl::CActionWaitForThingToFinishPerformingTasks::Update() -- finish once the target is dead or its own scripted control is neither locked nor holding queued actions
-// Leaf: ?Update@CActionWaitForThingToFinishPerformingTasks@
+// Leaf: ?Update@CActionWaitForThingToFinishPerformingTasks@NTCScriptedControl@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00713CD0, 123 bytes (+5 int3 padding); vtable 0x0128D7F0 slot 1.
 // FableWin.pdb: ?Update@CActionWaitForThingToFinishPerformingTasks@NTCScriptedControl@@UAEXXZ.
 // Callees: CScriptThing virtual slots 77 IsValid (+0x134), 71 Refresh (+0x11c), 75 IsAlive (+0x12c), 11 GetThing (+0x2c)

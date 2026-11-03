@@ -1,5 +1,5 @@
 // C3DBone2::SetName(const CCharString& name) -- store the CRC of the bone's name string (empty string when the name has no data)
-// Leaf: ?SetName@C3DBone2@@
+// Leaf: ?SetName@C3DBone2@@QAEXABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ADD650, 0x3F bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity: Ego_r.pdb ?SetName@C3DBone2@@QAEXABVCCharString@@@Z; C3DBone2 (60 bytes: NameCRC +0, Parent +4,
 // OriginalNoChildren +8, LocalizationMatrix +0xC). Only caller C3DMeshFileBoneChunk::GetBone() const 0x00AB9DD0

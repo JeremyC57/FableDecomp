@@ -1,5 +1,5 @@
 // CReplaceSerialise<CFileFormatMapHeader,COldFileFormatMapHeader8>::ConvertToThisVersion(void* data) -- upgrade a map header record in place: anything older than version 9 is converted up through the chain and the version-9 result copied over the buffer
-// Leaf: ?ConvertToThisVersion@?$CReplaceSerialise@VCFileFormatMapHeader@@VCOldFileFormatMapHeader8@@
+// Leaf: ?ConvertToThisVersion@?$CReplaceSerialise@VCFileFormatMapHeader@@VCOldFileFormatMapHeader8@@@@SIXPAX@Z
 //
 // Retail 0x0051C890, 79 bytes (+ int3 padding to 80), static __fastcall (data in ecx), plain `ret`.  FableWin.pdb
 //   ?ConvertToThisVersion@?$CReplaceSerialise@VCFileFormatMapHeader@@VCOldFileFormatMapHeader8@@@@SIXPAX@Z.

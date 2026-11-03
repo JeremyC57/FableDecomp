@@ -1,5 +1,5 @@
 // CWorld::Update(const CGameEventPackage& events, bool processType1Events) -- times the world update: publishes the thing manager, dispatches every event except type 1 through its action handler, then (when asked) the type-1 events, and records the update duration
-// Leaf: ?Update@CWorld@@
+// Leaf: ?Update@CWorld@@QAEXABVCGameEventPackage@@_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0049DFB0, 198 bytes (padded to 208), `ret 8`.
 //   PDB name ?Update@CWorld@@QAEXABVCGameEventPackage@@_N@Z.
 // Callees: GFGetTime 0x009E1BC0 (`__fastcall`, double), CWorld virtual slot 3 GetThingManager 0x0049E1B0 (returns a

@@ -1,5 +1,5 @@
 // PCLoad() -- the PC "load this save?" Yes callback: release the yes/no dialog, the mouse pointer and both buttons from the UI manager, give input back to the pointer and arm the hero's in-game menu to load the chosen save
-// Leaf: ?PCLoad@@
+// Leaf: ?PCLoad@@YIXXZ
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).

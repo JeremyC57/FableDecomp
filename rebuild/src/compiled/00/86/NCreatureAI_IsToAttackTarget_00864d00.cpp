@@ -1,5 +1,5 @@
 // NCreatureAI::IsToAttackTarget(CThingAICreature* creature, const CThingCreatureBase* target) -- true when both are alive, the target is the creature's best enemy for attack (re-picked once when the two are no longer enemies and no faction override holds), and the creature has a script target override or is aware of the target
-// Leaf: ?IsToAttackTarget@NCreatureAI@@
+// Leaf: ?IsToAttackTarget@NCreatureAI@@YI_NPAVCThingAICreature@@PBVCThingCreatureBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00864D00, 256 bytes incl. int3 padding, /Gr `__fastcall` (creature in
 //   ecx, target in edx), plain `ret`.
 // Identity: FableWin/Ego_r PDB `?IsToAttackTarget@NCreatureAI@@YI_NPAVCThingAICreature@@PBVCThingCreatureBase@@@Z` (the

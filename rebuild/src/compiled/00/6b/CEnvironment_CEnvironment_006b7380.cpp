@@ -1,5 +1,5 @@
 // CEnvironment::~CEnvironment() -- destroy the environment's members in reverse order (rain-splash particle pointer, spell-effect interpolator and interface, theme resource pallette, interpolated draw params, both game-tick states, priority-stack channels), then the CBase part
-// Leaf: ??1CEnvironment@@
+// Leaf: ??1CEnvironment@@UAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B7380, 263 bytes, thiscall, plain `ret`, no EH frame.
 // Identity: the catalog's "CGameWorld_Destructor" is a descriptive auto label. The only caller is CEnvironment's scalar
 //   deleting destructor 0x006B7360 (landed, referenced from the vtable at 0x0125D53C). Members are Ego_r.pdb CEnvironment

@@ -1,5 +1,5 @@
 // NCreatureMode::IsAbleToMove(const CThing& thing) -- false while sitting, lying down, underground or incapacitated, or in the Block (0x0C) or Conversation (0x1B) mode
-// Leaf: ?IsAbleToMove@NCreatureMode@@
+// Leaf: ?IsAbleToMove@NCreatureMode@@YI_NABVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085F3E0, length 136 bytes. `__fastcall` free function (ecx = the thing), bool in al.
 // Mangled (Ego_r.pdb): ?IsAbleToMove@NCreatureMode@@YI_NABVCThing@@@Z.
 // Callees: NCreatureMode::IsSitting 0x0085F310, IsLyingDown 0x0085F2B0, IsUnderground 0x0085F120, IsIncapacitated 0x0085F0C0

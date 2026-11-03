@@ -1,5 +1,5 @@
 // CReplaceSerialise<CFileFormatHeightMapCell,COldFileFormatHeightMapCell6>::ConvertToThisVersion(void* data) -- upgrade a height-map cell record in place: anything older than version 7 is converted up through the chain and the version-7 result copied over the buffer
-// Leaf: ?ConvertToThisVersion@?$CReplaceSerialise@VCFileFormatHeightMapCell@@VCOldFileFormatHeightMapCell6@@
+// Leaf: ?ConvertToThisVersion@?$CReplaceSerialise@VCFileFormatHeightMapCell@@VCOldFileFormatHeightMapCell6@@@@SIXPAX@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008273D0, 102 bytes, static __fastcall (data in ecx), plain `ret`. FableWin.pdb
 //   ?ConvertToThisVersion@?$CReplaceSerialise@VCFileFormatHeightMapCell@@VCOldFileFormatHeightMapCell6@@@@SIXPAX@Z.
 // Callees: CReplaceSerialise<CFileFormatHeightMapCell,COldFileFormatHeightMapCell6>::ConvertPreviousUnknownVersionUp

@@ -1,5 +1,5 @@
 // CTCDExplosion::SetSpecificThingToHit(CThing&) -- appends the thing to the explosion's specified-things-to-hit list
-// Leaf: ?SetSpecificThingToHit@CTCDExplosion@@QAEX
+// Leaf: ?SetSpecificThingToHit@CTCDExplosion@@QAEXAAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080CCF0, 66 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity: CTCDExplosion::SetSpecificThingToHit(CThing&) -- proven; evidence: it sits in the CTCDExplosion module (after SetSpecificThingsToHit 0x0080CC40, before UpdateHitThings
 //   0x0080CD40); Ego_r.pdb CTCDExplosion::SpecifiedThingsToHit is the last vector<CIntelligentPointer<CThing> > (retail +0x6C);

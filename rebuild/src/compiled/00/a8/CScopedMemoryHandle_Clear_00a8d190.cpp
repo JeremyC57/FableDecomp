@@ -1,5 +1,5 @@
 // CScopedMemoryHandle::Clear() -- give the handle back to its handle-based memory pool (when one is attached), detach the pool and mark the handle invalid (-1)
-// Leaf: ?Clear@CScopedMemoryHandle@@
+// Leaf: ?Clear@CScopedMemoryHandle@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A8D190, 33 bytes (+ int3 padding), thiscall `ret`.
 // Identity: Ego_r.pdb names `?Clear@CScopedMemoryHandle@@QAEXXZ`; CScopedMemoryHandle (8 bytes: Pool +0, Handle +4) is the
 //   object behind CCountedPointer<CScopedMemoryHandle> (its DeleteData 0x00A8D7C0 inlines this body as the destructor).

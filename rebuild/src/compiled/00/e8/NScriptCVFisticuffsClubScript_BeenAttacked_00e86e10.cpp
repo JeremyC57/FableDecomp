@@ -1,5 +1,5 @@
 // CV_FisticuffsClubScript::BeenAttacked() -- outside the club, count one more attack warning, or once the def's warning limit is reached make everybody attack
-// Leaf: ?BeenAttacked@CV_FisticuffsClubScript@NScript@@
+// Leaf: ?BeenAttacked@CV_FisticuffsClubScript@NScript@@QAEXXZ
 // Retail: Fable.exe @ 0x00E86E10, 78 bytes (+ int3 padding). Called from three places (0x00E852E1, 0x00E85F7C, 0x00E88354).
 // Callees: CScriptBase::IsActiveThreadTerminating @ 0x00CB7940 (the script's terminate check before each action).
 // Layout: Ego_r.pdb CV_FisticuffsClubScript - 0x14: HeroInFisticuffsClub +0x53, AttackWarnings +0x84, EverybodyAttack

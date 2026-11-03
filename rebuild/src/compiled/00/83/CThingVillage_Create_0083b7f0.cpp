@@ -1,5 +1,5 @@
 // CThingVillage::Create(long, const C3DVector&, long) -- allocate a village thing, construct it from the def index / position / player, place its physics component at the position with the identity axes, and activate it; null on any failure
-// Leaf: ?Create@CThingVillage
+// Leaf: ?Create@CThingVillage@@SIPAV1@JABVC3DVector@@J@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0083B7F0, 164 bytes, static __fastcall (ecx = def index, edx = position), `ret 4`.
 // Identity: ?Create@CThingVillage@@SIPAV1@JABVC3DVector@@J@Z (Ego_r.pdb). Allocates 0xE0 bytes and runs the out-of-line
 //   constructor 0x005299C0 (stores the CThingVillage vtable 0x012451BC; its manifest label "CThingObject" is propagated),

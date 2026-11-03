@@ -1,5 +1,5 @@
 // CCombatManager::IsCreatureOnRotatingCombatRing(const CThingCreatureBase& creature) const -- whether a combat-eligible attacker stands on a ring of its victim's combat wheel that is currently turning (|DeltaRotation| above the tolerance)
-// Leaf: ?IsCreatureOnRotatingCombatRing@CCombatManager@@
+// Leaf: ?IsCreatureOnRotatingCombatRing@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E93C0, 139 bytes (144 with int3 padding), thiscall, `ret 4`.
 // Identity: Ego_r.pdb name set `?IsCreatureOnRotatingCombatRing@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z`; same

@@ -1,5 +1,5 @@
 // CTCObjectAugmentations::AddNewSlot() -- append one empty augmentation slot while below the def's slot maximum
-// Leaf: ?AddNewSlot@
+// Leaf: ?AddNewSlot@CTCObjectAugmentations@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00766D70, 86 bytes (+int3 pad to 96), plain `ret`.
 // Caller: 0x005BEA1A (slot-count top-up loop between GetNumberOfSlots 0x00765D80 and
 //   GetMaximumNumberOfSlots 0x00765D90, both of which are inlined here).

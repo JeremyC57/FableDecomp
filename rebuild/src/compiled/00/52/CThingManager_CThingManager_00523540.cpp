@@ -1,5 +1,5 @@
 // CThingManager::CThingManager(const CMainGameComponent&, const CGameDefinitionManager&, CWorld&, CPlayerManager&, CNavigatorManager&, unsigned long*, unsigned long, unsigned long, unsigned long) -- construct the thing manager: class factory for 16 class types, the game-system back pointers, empty type/dead/update containers and UID maps, then register itself as the current manager and build the thing type table
-// Leaf: ??0CThingManager@@
+// Leaf: ??0CThingManager@@QAE@ABVCMainGameComponent@@ABVCGameDefinitionManager@@AAVCWorld@@AAVCPlayerManager@@AAVCNavigatorManager@@PAKKKK@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00523540, 432 bytes (0x1AA + int3 padding), thiscall `ret 24h`, returns this.
 // Identity: Ego_r.pdb / FableWin.pdb ??0CThingManager@@QAE@ABVCMainGameComponent@@ABVCGameDefinitionManager@@AAVCWorld@@
 //   AAVCPlayerManager@@AAVCNavigatorManager@@PAKKKK@Z; vtable 0x01245C44 = RTTI CThingManager. The three trailing

@@ -1,5 +1,5 @@
 // CTCHeroExperience::AddSuccessfulStrikeWithHitParams(const CHitParameters& params) -- credit one successful strike per damage attribute in the hit's damage map, flagged special when the hit was a block counter, a knock-down or a flourish
-// Leaf: ?AddSuccessfulStrikeWithHitParams@
+// Leaf: ?AddSuccessfulStrikeWithHitParams@CTCHeroExperience@@QAEXABVCHitParameters@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006D8D00, length 131 bytes, thiscall `ret 4`. Ego_r.pdb
 // `?AddSuccessfulStrikeWithHitParams@CTCHeroExperience@@QAEXABVCHitParameters@@@Z`. The manifest label
 // "Experience_ProcessHitCombo" is descriptive.

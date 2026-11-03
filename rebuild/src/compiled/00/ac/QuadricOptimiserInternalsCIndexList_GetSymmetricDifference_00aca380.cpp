@@ -1,5 +1,5 @@
 // QuadricOptimiserInternals::CIndexList::GetSymmetricDifference(const CIndexList& other) const -- the indices present in exactly one of the lists: STLport set_symmetric_difference of the two sets into an inserter over a fresh list, returned by value
-// Leaf: ?GetSymmetricDifference@CIndexList@QuadricOptimiserInternals@@QBE
+// Leaf: ?GetSymmetricDifference@CIndexList@QuadricOptimiserInternals@@QBE?AV12@ABV12@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ACA380, 196 bytes (+12 int3), thiscall `ret 8` (hidden CIndexList result + other).
 // Identity: Ego_r.pdb `?GetSymmetricDifference@CIndexList@QuadricOptimiserInternals@@QBE?AV12@ABV12@@Z`; byte-identical (bar the call
 //   target) to this chunk's CIndexList::GetIntersection 0x00AC8960. The algorithm called is the 7-dword /Gr

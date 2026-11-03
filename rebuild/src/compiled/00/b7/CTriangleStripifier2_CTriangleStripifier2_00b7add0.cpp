@@ -1,5 +1,5 @@
 // CTriangleStripifier2::CTriangleStripifier2() -- base CBase() then this class's vtable
-// Leaf: ??0CTriangleStripifier2@
+// Leaf: ??0CTriangleStripifier2@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B7ADD0, oracle length 18 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.

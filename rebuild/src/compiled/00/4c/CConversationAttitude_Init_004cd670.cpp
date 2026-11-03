@@ -1,5 +1,5 @@
 // CConversationAttitude::Init() -- one-shot fill of the three attitude-name tables: the talk animation for each EAttitude, the talk animation and the conversation anim group for each EConversationAttitude
-// Leaf: ?Init@CConversationAttitude@@
+// Leaf: ?Init@CConversationAttitude@@SIXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004CD670, 810 bytes, static __fastcall, plain `ret`. Ego_r.pdb
 //   `?Init@CConversationAttitude@@SIXXZ` (with GetAnimName(EAttitude), GetAnimName(EConversationAttitude) and
 //   GetAnimGroupName(EConversationAttitude) reading the three tables); catalog "Init" (name only).

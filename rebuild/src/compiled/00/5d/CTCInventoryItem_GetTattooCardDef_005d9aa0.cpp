@@ -1,5 +1,5 @@
 // CTCInventoryItem::GetTattooCardDef(long defIndex) -- static: fetch the thing def for defIndex from the game definition manager and return its CTattooDef sub-definition as a counted pointer (null when either lookup fails)
-// Leaf: ?GetTattooCardDef@CTCInventoryItem@@SI
+// Leaf: ?GetTattooCardDef@CTCInventoryItem@@SI?AV?$CDefPointer@$$CBVCTattooDef@@@@J@Z
 // Retail: Fable.exe @ 0x005D9AA0, 137 bytes (+7 int3). Ego_r.pdb `?GetTattooCardDef@CTCInventoryItem@@SI?AV?$CDefPointer@$$CBVCTattooDef@@@@J@Z`
 // (static __fastcall: the hidden CDefPointer result in ecx, defIndex in edx; `ret`). Twin: GetHairCardDef 0x005D9A10.
 // Instance twin: GetTattooCardDef() const 0x005D93B0 (the owner thing's def instead of a manager lookup).

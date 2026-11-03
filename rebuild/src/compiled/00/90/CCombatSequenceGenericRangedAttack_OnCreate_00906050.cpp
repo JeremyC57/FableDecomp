@@ -1,5 +1,5 @@
 // CCombatSequence_GenericRangedAttack::OnCreate() -- queue aim, fire and load projectile-weapon actions, then the base OnCreate
-// Leaf: ?OnCreate@CCombatSequence_GenericRangedAttack
+// Leaf: ?OnCreate@CCombatSequence_GenericRangedAttack@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00906050, 256 bytes (incl. int3 padding).
 // Callees: operator new 0x00BFEA1A, CCreatureAction_GenericAimProjectileWeapon ctor 0x008BFB20,
 //          CCreatureAction_GenericFireProjectileWeapon ctor 0x008BFA60,

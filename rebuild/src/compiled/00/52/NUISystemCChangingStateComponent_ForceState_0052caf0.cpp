@@ -1,5 +1,5 @@
 // NUISystem::CChangingStateComponent::ForceState(unsigned long state, bool immediate) -- jump a front-end component straight to `state`: record the request, drop the pending state queue, remember the previous state, notify the change, settle at once when the state allows it, then force the same state into every child
-// Leaf: ?ForceState@CChangingStateComponent
+// Leaf: ?ForceState@CChangingStateComponent@NUISystem@@UAEXK_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0052CAF0, length 243 bytes (`ret 8`).
 // Callees: free @ 0x00BFEA14 (STLport list node deallocation); virtual slots 135 (+0x21c, state-changed notification),
 //          44 (+0xb0, "reached immediately" predicate), 41 (+0xa4, settled notification) on this and 42 (+0xa8, this

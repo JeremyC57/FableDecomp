@@ -1,6 +1,6 @@
 // NCameraModes::CSnapToPoint::OnInitLeaf() -- take the fixed camera point's settings: track the observed thing, or else look along the point's fixed look vector
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00850700, 128 bytes, plain `ret`.
-// Leaf: ?OnInitLeaf@CSnapToPoint
+// Leaf: ?OnInitLeaf@CSnapToPoint@NCameraModes@@UAEXXZ
 // Name: vtable 0x0124DE5C slot 24; FableWin.pdb ?OnInitLeaf@CSnapToPoint@NCameraModes@@UAEXXZ (slot 25 0x0056E390 is the empty
 //       OnDieLeaf; slots 28/29 read back TrackThing +0xc0 and LookDirection +0xc1, so this is the leaf that fills them).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCameraPoint +0xa4), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound

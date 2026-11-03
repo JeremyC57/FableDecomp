@@ -1,5 +1,5 @@
 // CTCEntityEvents::RemoveEvent(NEntityEvents::CEventBase& event) -- find the entity-event list entry that points at `event` and erase it (releasing the list's counted reference); nothing happens when it is not queued
-// Leaf: ?RemoveEvent@CTCEntityEvents@@
+// Leaf: ?RemoveEvent@CTCEntityEvents@@QAEXAAVCEventBase@NEntityEvents@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008112D0, 103 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity: FableWin.pdb `?RemoveEvent@CTCEntityEvents@@QAEXAAVCEventBase@NEntityEvents@@@Z` (by reference); Events is the
 //   list at +0x0c (Ego_r.pdb CTCEntityEvents::Events after the 0xc-byte CTCBase). Seven callers in other TUs (CTCGuard /

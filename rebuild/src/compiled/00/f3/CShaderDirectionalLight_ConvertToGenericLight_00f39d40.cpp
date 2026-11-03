@@ -9,7 +9,7 @@
 // CRGBFloatColour Colour +0x1C, BackColour +0x2C}; CShaderGenericLight (52 bytes) {C4DVector Parameters[2]
 // +0, EParameterType Types[2] +0x20, float Attenuation2 +0x28, AttenuationBase +0x2C, unsigned long Size
 // +0x30}. The enum values 1 (direction) / 2 (position) / 0 (none) are named from their use.
-// Leaf: ?ConvertToGenericLight@CShaderDirectionalLight
+// Leaf: ?ConvertToGenericLight@CShaderDirectionalLight@@UBEXAAVCShaderGenericLight@@@Z
 
 class C3DVector { public:
     float X, Y, Z;

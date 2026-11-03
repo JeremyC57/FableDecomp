@@ -1,5 +1,5 @@
 // CTCHeroStats::GetStaminaPercentage() const -- the hero's stamina as a fraction of its maximum (0 when the maximum is not positive)
-// Leaf: ?GetStaminaPercentage@CTCHeroStats@@
+// Leaf: ?GetStaminaPercentage@CTCHeroStats@@QBEMXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0057A57A, 33 bytes, thiscall `ret`, float in st(0). Name from FableWin.pdb
 //   (`?GetStaminaPercentage@CTCHeroStats@@QBEMXZ`); sibling of the landed GetMoralityPercentage 0x0057A690. Label
 //   correction: the catalog "WillEnergy_ComputePercentage" is a guess.

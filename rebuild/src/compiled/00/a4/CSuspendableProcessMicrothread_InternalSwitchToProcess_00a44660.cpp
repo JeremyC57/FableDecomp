@@ -1,5 +1,5 @@
 // CSuspendableProcessMicrothread::InternalSwitchToProcess(CSuspendableProcessMicrothread& process) -- make the process the running one, switch to its microthread until it yields back, then clear the running process
-// Leaf: ?InternalSwitchToProcess@CSuspendableProcessMicrothread@@
+// Leaf: ?InternalSwitchToProcess@CSuspendableProcessMicrothread@@KIXAAV1@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A44660, length 40 bytes (+8 int3 pad), protected static `__fastcall`
 //   (process in ecx, plain `ret`).
 // Name: Ego_r.pdb / FableWin.pdb `?InternalSwitchToProcess@CSuspendableProcessMicrothread@@KIXAAV1@@Z` (name set); the landed

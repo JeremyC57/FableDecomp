@@ -1,5 +1,5 @@
 // CEngineWaterRenderer::SetRenderTargetToSurface(CRenderTarget& target, const CSurface& surface) -- attach the surface to the render target, make it the display manager's render target, and set a full-surface viewport in virtual coordinates
-// Leaf: ?SetRenderTargetToSurface@
+// Leaf: ?SetRenderTargetToSurface@CEngineWaterRenderer@@AAEXAAVCRenderTarget@@ABVCSurface@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B7AD20, 172 bytes. __fastcall (this unused), `ret 8`.
 // Identity: FableWin.pdb `?SetRenderTargetToSurface@CEngineWaterRenderer@@AAEXAAVCRenderTarget@@ABVCSurface@@@Z`; the
 //   body calls CRenderTarget::AttachTarget(const CSurface&) on arg 1 and CSurface::GetDimensions() const on arg 2. No

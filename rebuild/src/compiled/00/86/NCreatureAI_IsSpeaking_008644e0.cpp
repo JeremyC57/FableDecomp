@@ -1,5 +1,5 @@
 // NCreatureAI::IsSpeaking(const CThingCreatureBase&) -- true while the creature's talk component is talking, or an active non-replaceable speech emote icon is showing
-// Leaf: ?IsSpeaking@
+// Leaf: ?IsSpeaking@NCreatureAI@@YI_NABVCThingCreatureBase@@@Z
 // Retail 0x008644E0, 0x9B bytes (+ int3 padding), __fastcall (creature in ecx). PDB (Ego_r):
 // ?IsSpeaking@NCreatureAI@@YI_NABVCThingCreatureBase@@@Z. Ten callers (0x007B36BF, 0x0094BCFE, 0x00980CE5, ...).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x004365B0 (twice), CTCTalk::IsTalking() const @ 0x006E28A0.

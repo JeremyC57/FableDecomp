@@ -1,5 +1,5 @@
 // NScript::CQ_HeroSoulsGuildmasterScript::CQ_HeroSoulsGuildmasterScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- constructor of the Q_HeroSoulsGuildmaster quest script: level-script base, then the empty cs_flags map
-// Leaf: ??0CQ_HeroSoulsGuildmasterScript@
+// Leaf: ??0CQ_HeroSoulsGuildmasterScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D84B50, 86 bytes, `__fastcall`, two stack arguments (`ret 8`), returns this.
 //   Its only caller is the quest's Alloc @ 0x00D87A80 (`new` 0x64 bytes, then this ctor out of line), the pAllocFunc of
 //   the "Q_HeroSoulsGuildmaster" CScriptInfo record (section "S_QHSG", stored at 0x00CD6A2A).

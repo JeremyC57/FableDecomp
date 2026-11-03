@@ -8,7 +8,7 @@
 // current-path temporary dies at the end of the inlined return (before ToCharString); the expanded result dies at the
 // end of the return statement and the widened path (a NAMED local, so its address is re-taken with `lea` for the
 // ExpandPath argument instead of reusing ToWideString's eax in a callee-saved register) at scope exit.
-// Leaf: ?ConvertPathToFullPath@CAFile@@SI?AVCCharString
+// Leaf: ?ConvertPathToFullPath@CAFile@@SI?AVCCharString@@ABV2@@Z
 typedef unsigned short wchar16;          // wchar_t is not a built-in type under the retail flags
 
 class CWideStringData;

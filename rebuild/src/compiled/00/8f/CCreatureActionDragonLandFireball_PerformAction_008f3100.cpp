@@ -1,5 +1,5 @@
 // CCreatureAction_DragonLandFireball::PerformAction() -- fetch the dragon's weapon sub-def and its shot def, create the fireball shot thing at the dragon's DRAGON_MOUTH_DUMMY dummy, keep it in PShot, add its named shot TC and Init it (shooter = dragon, target = PTarget, the dragon's shot accuracy), then release both defs
-// Leaf: ?PerformAction@CCreatureAction_DragonLandFireball
+// Leaf: ?PerformAction@CCreatureAction_DragonLandFireball@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F3100, length 513 bytes (+ int3 padding), plain `ret`. No call site or vtable
 //   reference survives in retail (xref: none), so the class comes from the Ego_r.pdb symbol order: PerformAction of
 //   CCreatureAction_DragonFlight (retail 0x008F3020), CCreatureAction_DragonLandFireball, CCreatureAction_DragonFireBlastBase

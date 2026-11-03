@@ -11,7 +11,7 @@
 // ComboID; a second value that is not -1 makes the first the ComboStage.
 // Layout: rebuild/include/engine/CAnimComponentCombatComboChain.h is data-only (ComboStage +0x08, ComboID +0x0c), so the
 // polymorphic class is modelled locally.
-// Leaf: ?Initialise@CAnimComponentCombatComboChain
+// Leaf: ?Initialise@CAnimComponentCombatComboChain@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
 class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length); // 0x0099EBF0

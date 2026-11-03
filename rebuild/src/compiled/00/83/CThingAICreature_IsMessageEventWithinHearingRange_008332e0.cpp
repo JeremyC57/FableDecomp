@@ -1,5 +1,5 @@
 // CThingAICreature::IsMessageEventWithinHearingRange(const CMessageEvent& event) -- true when the creature perceives the event: it has a perception component and the event lies inside the smaller of the event's hearing radius and its own
-// Leaf: ?IsMessageEventWithinHearingRange@CThingAICreature
+// Leaf: ?IsMessageEventWithinHearingRange@CThingAICreature@@QBE_NABVCMessageEvent@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008332E0, 176 bytes (+1 int3), thiscall `ret 4`, bool in al.
 // Identity: Ego_r.pdb name set ?IsMessageEventWithinHearingRange@CThingAICreature@@QBE_NABVCMessageEvent@@@Z; the TU neighbours
 //   0x008330D0 / 0x00833390 are landed CThingAICreature rows; the sight and hearing twins (0x00833230 / 0x008332E0) are

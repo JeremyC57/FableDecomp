@@ -1,5 +1,5 @@
 // CThingBuildingDef::Transfer(CPersistContext&) -- persist the building definition: CThingBaseDef part, die-off timer, sim building def, graphic, wall/floor materials, camera set, reverb type/level, outside occlusion, then the four named flag bits
-// Leaf: ?Transfer@CThingBuildingDef
+// Leaf: ?Transfer@CThingBuildingDef@@UAEXAAVCPersistContext@@@Z
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00454B8E, length 364 bytes (virtual, `ret 4`; unaligned entry, def module).
 // Pragma: #pragma optimize("s", on).

@@ -1,5 +1,5 @@
 // _global::GFProcessBreath(CASuspendableProcess& process, double& lastBreathTime) -- give a suspendable process its breathing slot: read the game time and, when the stored breath time is at least 5 ms past it, call the process's slot-4 handler and store the new time
-// Leaf: ?GFProcessBreath@@
+// Leaf: ?GFProcessBreath@@YIXAAVCASuspendableProcess@@AAN@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A762A0, 56 bytes (+ int3 padding to 64), __fastcall `ret` (process in ecx, the
 //   time reference in edx). PDB: `?GFProcessBreath@@YIXAAVCASuspendableProcess@@AAN@Z` (void __fastcall(CASuspendableProcess&,
 //   double&)); no direct caller (reached through a function pointer).

@@ -1,6 +1,6 @@
 // CGameScriptInterface::PlaySoundAtPos(const C3DVector& position, const CCharString& sound) const -- play a sound
 // sample once from a new unattached sound emitter at the position; returns the sound handle or the invalid handle
-// Leaf: ?PlaySoundAtPos@CGameScriptInterface
+// Leaf: ?PlaySoundAtPos@CGameScriptInterface@@UBEKABVC3DVector@@ABVCCharString@@@Z
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00891170, length 176 bytes, `ret 8`.

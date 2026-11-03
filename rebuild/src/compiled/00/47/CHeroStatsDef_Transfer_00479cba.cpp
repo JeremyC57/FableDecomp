@@ -1,5 +1,5 @@
 // CHeroStatsDef::Transfer(CPersistContext& context) -- persist the hero stats definition: stamina / health refill, death penalties, money and experience caps, age, appearance scaling, fatness and drinking, renown tables, morality changes and the per-level stat tables
-// Leaf: ?Transfer@CHeroStatsDef
+// Leaf: ?Transfer@CHeroStatsDef@@UAEXAAVCPersistContext@@@Z
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00479CBA, length 570 bytes (virtual, `ret 4`; unaligned entry, def module).
 // Callees (typed CPersistContext transfers; the catalog labels on the shared ones are propagated): long 0x00431102,

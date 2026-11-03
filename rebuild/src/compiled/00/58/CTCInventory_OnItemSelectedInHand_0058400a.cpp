@@ -1,5 +1,5 @@
 // CTCInventory::OnItemSelectedInHand(CThing& item, bool& handled) -- an item with a carried-action-use component (interface 0x0E) is used in hand by the owner unless the owner is busy with an action the component cannot be used during; an item without one makes a creature owner sheathe its held item back into the inventory
-// Leaf: ?OnItemSelectedInHand@CTCInventory@@
+// Leaf: ?OnItemSelectedInHand@CTCInventory@@UAEXAAVCThing@@AA_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0058400A, 156 bytes; frame-pointer size TU (`#pragma optimize("y", off)` +
 //   `optimize("s", on)`), `ret 8` (`handled` unused), no EH frame. Identity: both PDB name sets hold
 //   ?OnItemSelectedInHand@CTCInventory@@UAEXAAVCThing@@AA_N@Z (virtual; references, not pointers).

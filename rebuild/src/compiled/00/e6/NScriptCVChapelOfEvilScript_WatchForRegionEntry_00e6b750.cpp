@@ -1,7 +1,7 @@
 // Levers: for(;;) with the terminating return first; in-body `#pragma inline_depth(0)` around the region-hit terminate return gives the out-of-line ~CScriptThing; the CCharString == is the nested CBasicString<char>::operator== (frame result byte) with `strcmp(text, "")`.
 // Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // CV_ChapelOfEvilScript::WatchForRegionEntry() -- each time a region loads, if it is DarkwoodChapel teleport the acolytes
-// Leaf: ?WatchForRegionEntry@CV_ChapelOfEvilScript@NScript@@
+// Leaf: ?WatchForRegionEntry@CV_ChapelOfEvilScript@NScript@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E6B750, 424 bytes, plain `ret`.
 // Label: the manifest's CQ_BountyHuntScript::WatchForEnableFisherCreekHutDoor is propagated and wrong -- the body calls
 //   CV_ChapelOfEvilScript::TeleportAcolytes 0x00E6B900 (next function) on "DarkwoodChapel" 0x012DF1D0, a no-argument

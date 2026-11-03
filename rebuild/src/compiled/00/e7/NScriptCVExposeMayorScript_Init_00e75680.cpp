@@ -1,5 +1,5 @@
 // CV_ExposeMayorScript::Init() -- reset the path/stage, copy the evidence text and the stables flash distance from the script def, clear the six progress flags
-// Leaf: ?Init@CV_ExposeMayorScript@NScript@@
+// Leaf: ?Init@CV_ExposeMayorScript@NScript@@UAEXXZ
 // Retail: Fable.exe @ 0x00E75680, 73 bytes (+ int3 padding). Reached only through a vtable word (0x012E96D8).
 // Callees: CCharString::operator=(const CCharString&) @ 0x0099EFB0.
 // Layout: Ego_r.pdb CV_ExposeMayorScript - 0x14: Path +0x48, StageNumber +0x4c, HeroFlashedLightsCorrectly ..

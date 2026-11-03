@@ -1,5 +1,5 @@
 // NParticleEngine::CPSCAttractor::Update(CParticleSystem& system, const CParticleUpdateParameters<unsigned long, unsigned long>& params, bool&) -- pull every active particle inside the attractor's influence radius towards the attractor position (a named vector parameter or the component's current position) with a force that falls off with distance; unless the system uses all attractors only the closest one so far applies
-// Leaf: ?Update@CPSCAttractor
+// Leaf: ?Update@CPSCAttractor@NParticleEngine@@UAEXAAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AA_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B179A0, 554 bytes, thiscall, `ret 0Ch`.
 // Identity: Ego_r.pdb `?Update@CPSCAttractor@NParticleEngine@@UAEXAAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AA_N@Z`;
 //   vtable 0x012A04AC slot 9 (Update on the landed CPSCLight / CPSCSingleSprite / CPSCDecalRenderer vtables); no direct

@@ -1,5 +1,5 @@
 // CV_ExposeMayorScript::CheckLampSlot() -- while the lights have not been flashed and the Haunted House level is loaded, make the hand lamp the preferred quick-access item whenever the hero is near the flash-light point (and drop the preference again when he moves away); on leaving, drop it
-// Leaf: ?CheckLampSlot@CV_ExposeMayorScript@NScript@@
+// Leaf: ?CheckLampSlot@CV_ExposeMayorScript@NScript@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E76CA0, 485 bytes (496 with padding), plain `ret`.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, ~CScriptThing 0x004AA840,
 //   IsDistanceBetweenThingsUnder 0x00CBE2FF / IsDistanceBetweenThingsOver 0x00CBE3EA (`__fastcall`, distance on the

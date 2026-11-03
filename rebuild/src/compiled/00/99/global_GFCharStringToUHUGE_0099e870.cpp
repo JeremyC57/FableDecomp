@@ -7,7 +7,7 @@
 // goes through __allmul with the sign-extended (`cdq`) digit added by add/adc; &text is spilled to the frame (all
 // four callee-saved registers hold c, i and the 64-bit value).
 // Layout (landed CCharString model): CCharStringData = CBasicString<char> {PData +0, StringLength +4, ...}.
-// Leaf: ?GFCharStringToUHUGE@@
+// Leaf: ?GFCharStringToUHUGE@@YI_KABVCCharString@@@Z
 extern "C" int __cdecl isdigit(int c);                  // 0x00BFEDA6
 
 struct CBasicStringChar {

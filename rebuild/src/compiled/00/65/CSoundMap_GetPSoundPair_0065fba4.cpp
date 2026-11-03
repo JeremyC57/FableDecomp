@@ -1,5 +1,5 @@
 // CSoundMap::GetPSoundPair(const CCharString& name) const -- look the sound name's CRC up in the sorted sound map; the entry's sound pair, or null when absent
-// Leaf: ?GetPSoundPair@CSoundMap
+// Leaf: ?GetPSoundPair@CSoundMap@@QBEPBVCSoundPair@@ABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0065FBA4, 61 bytes, thiscall `pop ebp ; ret 4`. Name: Ego_r.pdb
 // `?GetPSoundPair@CSoundMap@@QBEPBVCSoundPair@@ABVCCharString@@@Z` (name set); the landed callers CTCVillage::UpdateCrowds
 // 0x006594BB and CTCDoor::PlaySound 0x00730A00 already call it by this name (10 call sites in all).

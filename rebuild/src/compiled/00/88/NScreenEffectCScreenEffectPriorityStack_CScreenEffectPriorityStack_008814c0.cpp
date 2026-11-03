@@ -1,5 +1,5 @@
 // NScreenEffect::CScreenEffectPriorityStack::~CScreenEffectPriorityStack() -- reset the vtable, then destroy the members in reverse: per effect kind (screen filter, displacement, radial blur) the key set (erase the tree, free the header) and the three priority lists (destroy each entry through its virtual destructor, free the nodes and the sentinel)
-// Leaf: ??1CScreenEffectPriorityStack@NScreenEffect@@
+// Leaf: ??1CScreenEffectPriorityStack@NScreenEffect@@UAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008814C0, 464 bytes (as cut), thiscall, plain `ret`.
 // Identity: the catalog's "CEnvironment_Destructor" is descriptive. The vtable stored first, 0x01278058, is the one the
 //   landed constructor 0x00881370 installs; the landed scalar deleting destructor 0x00884BE0 calls this body. Layout

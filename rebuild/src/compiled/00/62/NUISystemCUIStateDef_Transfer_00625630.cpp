@@ -1,5 +1,5 @@
 // NUISystem::CUIStateDef::Transfer(CPersistContext& context) -- persist one UI state definition: graphic index, position, zoom, colour, update time, change type, linear flag, change flag and the list of children it leaves alone
-// Leaf: ?Transfer@CUIStateDef@NUISystem
+// Leaf: ?Transfer@CUIStateDef@NUISystem@@UAEXAAVCPersistContext@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00625630, 167 bytes (+ int3 padding), virtual, `ret 4`.
 // Identity: vtable slot 18 of NUISystem::CUIStateDef (vtable 0x0125871C, RTTI `.?AVCUIStateDef@NUISystem@@`), the
 // def-class Transfer slot; the catalog label "InitialiseDefaultCameraTags" is wrong.

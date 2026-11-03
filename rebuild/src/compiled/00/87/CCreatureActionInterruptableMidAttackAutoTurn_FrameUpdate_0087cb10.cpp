@@ -1,5 +1,5 @@
 // CCreatureAction_InterruptableMidAttackAutoTurn::FrameUpdate() -- once the strike has ended (first frame only): post the missed event when nothing was hit, and mark the melee flourish valid when the strike missed, the creature's 0x68 component's def allows it or the creature's stealth cannot flourish danger things; clear the combat component's +0x94 flag while a melee ability def is set; then the base combat frame update
-// Leaf: ?FrameUpdate@CCreatureAction_InterruptableMidAttackAutoTurn
+// Leaf: ?FrameUpdate@CCreatureAction_InterruptableMidAttackAutoTurn@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0087CB10, length 561 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: this's virtual slots 17 (+0x44) and 19 (+0x4c), CBaseIntelligentPointer::GetPItem @ 0x00A01B50,
 //          CVectorMap::LowerBound @ 0x0040F020, operator new @ 0x00BFEA1A (the 8-byte event, vtable 0x01277874),

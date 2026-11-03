@@ -1,5 +1,5 @@
 // CDataOutputStream::CDataOutputStream() -- CBase(), own vtable, then the NewLine string member built from the "\r\n" literal
-// Leaf: ??0CDataOutputStream@
+// Leaf: ??0CDataOutputStream@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00993E00, length 33 bytes.
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0, CCharString::CCharString(const char*, long) @ 0x0099EBF0 (literal 0x012397F8 "\r\n", length -1).
 // Vtable 0x0129A6E0 = CDataOutputStream (rtti-vtables.tsv). Shape: the vtable store sits between the two pushes and

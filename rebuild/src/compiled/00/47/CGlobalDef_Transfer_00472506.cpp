@@ -1,5 +1,5 @@
 // CGlobalDef::Transfer(CPersistContext& context) -- persist the global definition: control schemes, weapon trails, sleep times, sound criteria, switch/track graphics, conversation cameras, narrators, dialogue layers, indicator icons and teleport effects
-// Leaf: ?Transfer@CGlobalDef
+// Leaf: ?Transfer@CGlobalDef@@UAEXAAVCPersistContext@@@Z
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00472506, length 774 bytes (virtual, `ret 4`; unaligned entry, def module).
 // Callees (typed CPersistContext transfers of the def module; the catalog's "UpdateShadowScene"/"FrameUpdate" labels are

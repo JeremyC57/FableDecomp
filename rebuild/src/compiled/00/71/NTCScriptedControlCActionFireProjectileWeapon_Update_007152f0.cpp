@@ -1,5 +1,5 @@
 // NTCScriptedControl::CActionFireProjectileWeapon::Update() -- finish once the target is dead or the queue has run dry and the creature is no longer on the last action handed over; otherwise feed the next queued creature action (reload / aim / fire) to the creature whenever it is idle or its current action has finished
-// Leaf: ?Update@CActionFireProjectileWeapon@
+// Leaf: ?Update@CActionFireProjectileWeapon@NTCScriptedControl@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007152F0, 181 bytes (+11 int3 padding); vtable 0x01265960 slot 1.
 // FableWin.pdb: ?Update@CActionFireProjectileWeapon@NTCScriptedControl@@UAEXXZ.
 // Callees: CScriptThing virtual slots 77 IsValid (+0x134), 71 Refresh (+0x11c), 75 IsAlive (+0x12c);

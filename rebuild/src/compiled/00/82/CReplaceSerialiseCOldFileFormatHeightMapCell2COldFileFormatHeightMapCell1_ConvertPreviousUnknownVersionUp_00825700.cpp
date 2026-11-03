@@ -1,5 +1,5 @@
 // CReplaceSerialise<COldFileFormatHeightMapCell2,COldFileFormatHeightMapCell1>::ConvertPreviousUnknownVersionUp(void* data) -- build a fresh version-2 height-map cell from an older record: convert it up to version 1 first when it is older still, copy the height and default the texture blend alpha to 0x80, and hand the new cell back in a counted pointer
-// Leaf: ?ConvertPreviousUnknownVersionUp@?$CReplaceSerialise@VCOldFileFormatHeightMapCell2@@VCOldFileFormatHeightMapCell1@@
+// Leaf: ?ConvertPreviousUnknownVersionUp@?$CReplaceSerialise@VCOldFileFormatHeightMapCell2@@VCOldFileFormatHeightMapCell1@@@@SI?AV?$CCountedPointer@VCOldFileFormatHeightMapCell2@@@@PAX@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00825700, 236 bytes, static __fastcall: the hidden CCountedPointer return slot in ecx,
 //   data in edx, plain `ret`; 0x14-byte frame (the result slot copy, the 8-byte temporary and held's object word).
 // Callees: operator new @ 0x00BFEA1A (the 10-byte cell, the 0xC-byte count block), CBaseSerialise<COldFileFormatHeightMapCell1,1>::

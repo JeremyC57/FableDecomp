@@ -1,5 +1,5 @@
 // CTCTurncoat::ModifyTurncoatedness(float) -- while below its resistance, add to the creature's turncoatedness (clamped to [0, resistance], restarting the recovery delay); on reaching the resistance play the activate effect, attach the turncoated effect, kill the stage effects and play the turncoat chant
-// Leaf: ?ModifyTurncoatedness@CTCTurncoat
+// Leaf: ?ModifyTurncoatedness@CTCTurncoat@@QAEXM@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007C7A00, 572 bytes (+ int3 padding), `ret 4`.
 // Callees: CThing::GetPos() const 0x004C73D0; CreateParticleEffect(long, const C3DVector*) 0x0072AB70 (`__fastcall`);
 //   CIntelligentPointer<CThing>(CThing*) 0x004A96F0 / ~CBaseIntelligentPointer 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem

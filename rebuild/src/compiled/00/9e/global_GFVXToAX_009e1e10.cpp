@@ -1,5 +1,5 @@
 // GFVXToAX(float) -- convert a virtual (65536-unit) X to actual render-target pixels: x * renderTargetWidth / VirtualWidth
-// Leaf: ?GFVXToAX@
+// Leaf: ?GFVXToAX@@YIMM@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E1E10, length 41 bytes (+ int3 padding).
 // PDB (FableWin): ?GFVXToAX@@YIMM@Z -- __fastcall with the float on the stack (`ret 4`). The catalog label
 // "GFAXToVX" is propagated and wrong: GFAXToVX is the landed 0x009E1DA0 (VirtualWidth * x / width); this body

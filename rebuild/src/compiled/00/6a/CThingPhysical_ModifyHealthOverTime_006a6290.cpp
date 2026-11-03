@@ -1,5 +1,5 @@
 // CThingPhysical::ModifyHealthOverTime(float amount, long frames) -- queue a health-over-time effect: push a {frames, amount} helper onto the thing's HealthOverTimeEffects list
-// Leaf: ?ModifyHealthOverTime@
+// Leaf: ?ModifyHealthOverTime@CThingPhysical@@QAEXMJ@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A6290, length 70 bytes (+ int3 padding), `ret 8`.
 // Callees: malloc @ 0x00BFEA0E (the 0x10-byte list node: next, prev, the 8-byte helper).
 // Identity: Ego_r.pdb `?ModifyHealthOverTime@CThingPhysical@@QAEXMJ@Z`; the caller CTCHeroStats::ApplyBonusItemEffects

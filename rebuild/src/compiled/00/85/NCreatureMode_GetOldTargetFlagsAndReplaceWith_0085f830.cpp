@@ -1,5 +1,5 @@
 // NCreatureMode::GetOldTargetFlagsAndReplaceWith(CThing& thing, ETargetingType type) -- swap the thing's targeting flags (CTCTargeted, interface 9) for `type` and return the old flags (0 without the component)
-// Leaf: ?GetOldTargetFlagsAndReplaceWith@NCreatureMode@@
+// Leaf: ?GetOldTargetFlagsAndReplaceWith@NCreatureMode@@YIKAAVCThing@@W4ETargetingType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085F830, length 73 bytes. `__fastcall` free function (ecx = the thing), `type` in edx, old flags in eax.
 // Mangled (Ego_r.pdb): ?GetOldTargetFlagsAndReplaceWith@NCreatureMode@@YIKAAVCThing@@W4ETargetingType@@@Z.
 // Callees: the non-const CVectorMap LowerBound 0x0040F020, CTCTargeted::SetTargetingFlags 0x007EA270 (manifest

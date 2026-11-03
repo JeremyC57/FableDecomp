@@ -1,5 +1,5 @@
 // CWorldMap::DeregisterScriptedMapBrush(const CScriptedMapBrush& brush) -- forget a brush: find its name in the loaded-brush map and erase that node (rebalance, destroy the name, free the node, count down)
-// Leaf: ?DeregisterScriptedMapBrush@CWorldMap@@
+// Leaf: ?DeregisterScriptedMapBrush@CWorldMap@@QAEXABVCScriptedMapBrush@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004FE5B0, 82 bytes, `ret 4` (thiscall: brush). PDB name
 //   ?DeregisterScriptedMapBrush@CWorldMap@@QAEXABVCScriptedMapBrush@@@Z (Ego_r.pdb name set). Caller 0x00820E56, a CMap
 //   loop over its list<CScriptedMapBrush> (node data at +8) passing the world map. Catalog label

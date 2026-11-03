@@ -1,5 +1,5 @@
 // CCombatManager::IsCreaturePerformingNonInterruptableSequence(const CThingCreatureBase& creature) const -- whether the creature's current combat sequence is running and cannot be interrupted
-// Leaf: ?IsCreaturePerformingNonInterruptableSequence@CCombatManager@@
+// Leaf: ?IsCreaturePerformingNonInterruptableSequence@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E97A0, 80 bytes, thiscall, `ret 4`.
 // Identity: Ego_r.pdb name set `?IsCreaturePerformingNonInterruptableSequence@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z`;
 //   the virtual is CCombatSequenceBase slot 5 = IsInterruptable (PDB order IsInterruptable, IsInterruptableDueToZoneChange,

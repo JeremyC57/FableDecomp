@@ -1,5 +1,5 @@
 // CQ_HangingTreeEvilScript::Init() -- register the quest's four regions, reset the mission state, switch the regions' creature generators off and register the quest's four boasts
-// Leaf: ?Init@CQ_HangingTreeEvilScript@NScript@@
+// Leaf: ?Init@CQ_HangingTreeEvilScript@NScript@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D68FF0, length 920 bytes.
 // Callees: CCharString(const char*, long) 0x0099EBF0, ~CCharString 0x0099EAE0, CCharString::operator=(const char*)
 //   0x0099EFE0; through the interface at +0x40: AddQuestRegion (slot 271, +0x43c), SetCreatureGeneratorsEnabled (slot 558,

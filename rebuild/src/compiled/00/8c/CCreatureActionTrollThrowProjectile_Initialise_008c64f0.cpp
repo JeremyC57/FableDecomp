@@ -2,7 +2,7 @@
 //   combat base Initialise; create the projectile thing named by the creature's ability def at the creature's
 //   position, remember it, and (when the creature can carry) put it in the CARRY_SLOT_TROLL_THROW_ROCK(_LEFT) slot;
 //   then roll 0..99 against the creature's willpower-indicator def chance and copy its value into the TC 0x30
-// Leaf: ?Initialise@CCreatureAction_TrollThrowProjectile
+// Leaf: ?Initialise@CCreatureAction_TrollThrowProjectile@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C64F0, length 688 bytes, plain `ret` (virtual).
 // Callees: SetCombatAnimation 0x008574D0, CCombatActionBase::Initialise 0x00857520, GetPItem 0x00A01B50, CDefClassBase
 //   GetSubDef<CAbilityDef> 0x0042B1A6 / GetSubDef<CAICreatureWillPowerIndicatorDef> 0x008C78F0, GetPWorld 0x00692940,

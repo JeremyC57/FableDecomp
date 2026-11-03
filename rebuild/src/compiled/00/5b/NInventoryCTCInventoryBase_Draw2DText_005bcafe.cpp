@@ -1,5 +1,5 @@
 // NInventory::CTCInventoryBase::Draw2DText(const C2DVector& position, const CWideString& text, const CFontBank& font, const CRGBColour& colour, float scale, bool dropShadow) -- draws inventory text through the 2D render manager at the pixel-rounded position, after three black one-pixel drop-shadow copies (x+1/y+1, x+1/y-1, x-1/y+1) carrying the text colour's alpha when asked
-// Leaf: ?Draw2DText@CTCInventoryBase@NInventory@@
+// Leaf: ?Draw2DText@CTCInventoryBase@NInventory@@SIXABVC2DVector@@ABVCWideString@@ABVCFontBank@@ABVCRGBColour@@M_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005BCAFE, 499 bytes (0x1F3, no padding), static __fastcall `ret 10h` (position in
 //   ecx, text in edx). Six callers (0x005BCE9B, 0x0061AFEC, 0x0061B141, 0x0061B1B7, 0x0063A127, 0x0063A1D3).
 // Identity: Ego_r.pdb ?Draw2DText@CTCInventoryBase@NInventory@@SIXABVC2DVector@@ABVCWideString@@ABVCFontBank@@

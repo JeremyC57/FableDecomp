@@ -1,7 +1,7 @@
 // CSExtractParameterList(CCharString& text, vector<CCharString>& params) -- split a comma-separated cutscene parameter text into the vector (a trailing non-empty token too); returns the vector's size
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-// Leaf: ?CSExtractParameterList@@
+// Leaf: ?CSExtractParameterList@@YIHAAVCCharString@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CBFACA, 179 bytes, `__fastcall` global (text in ecx, vector in edx),
 //   plain `ret`, returns int (PDB ?CSExtractParameterList@@YIHAAVCCharString@@AAV?$vector@VCCharString@@...@@@Z).
 // Callees: CCharString(const char*, long = -1) @ 0x0099EBF0 ("" @ 0x0122D70E), operator const char*() @ 0x0099E4C0,

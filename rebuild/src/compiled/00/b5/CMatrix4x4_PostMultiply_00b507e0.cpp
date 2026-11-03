@@ -1,5 +1,5 @@
 // CMatrix4x4::PostMultiply(const CMatrix4x4& m) -- this = this * m: each row of this times m's columns into a frame temporary, then block-copied back
-// Leaf: ?PostMultiply@CMatrix4x4@@
+// Leaf: ?PostMultiply@CMatrix4x4@@QAEXABV1@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B507E0, 186 bytes. __fastcall, `ret 4`.
 // Identity: FableWin.pdb `?PostMultiply@CMatrix4x4@@QAEXABV1@@Z` (void (const CMatrix4x4&)); the body is the row-by-
 //   column product with the result staged in a 0x40-byte frame matrix and copied over this (`rep movsd` x16). No

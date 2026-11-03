@@ -1,5 +1,5 @@
 // CWeaponDef::Transfer(CPersistContext&) -- serialise every weapon-definition field in retail order
-// Leaf: ?Transfer@CWeaponDef@@
+// Leaf: ?Transfer@CWeaponDef@@UAEXAAVCPersistContext@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004E8CE9, 511 bytes, `ret 4`; odd address + `push ebp ; mov ebp,esp` frame
 //   = size-optimised TU (#pragma optimize("s", on)).
 // Callees (CPersistContext typed transfers; manifest labels are propagated "UpdateShadowScene" junk):

@@ -1,5 +1,5 @@
 // NParticleEngine::Initialise() -- create the particle engine's singletons: the emitter database, the emitter manager and the particle-system-component manager, each adopted by its global counted pointer
-// Leaf: ?Initialise@NParticleEngine@@
+// Leaf: ?Initialise@NParticleEngine@@YIXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AEBE20, 122 bytes, __fastcall, no arguments. Caller 0x004174FA (engine start-up).
 // Identity: FableWin.pdb `?Initialise@NParticleEngine@@YIXXZ` (the sibling Uninitialise 0x00AEBEA0); globals PEmitterDatabase
 //   0x013D2E14, PEmitterManager 0x013D2E1C, PPSCManager 0x013D2E24 (FableWin.pdb dynamic initializers, in address order).

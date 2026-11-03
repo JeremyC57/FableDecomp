@@ -1,5 +1,5 @@
 // CVideoSys::GetProgress() -- playback progress as current position / duration (0 when no movie or a zero length)
-// Leaf: ?GetProgress@CVideoSys@@
+// Leaf: ?GetProgress@CVideoSys@@QAEMXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A3B2A0, length 128 bytes.
 // Callees: IMediaPosition::get_CurrentPosition (slot 9, +0x24) and get_Duration (slot 7, +0x1c) through the inlined
 // CVideoSys::GetCurTime (0x00A3B260) and GetLength (0x00A3B220). Data: 0.0 @ 0x0122ED70 (qword), 0.0f @ 0x0122DEDC.

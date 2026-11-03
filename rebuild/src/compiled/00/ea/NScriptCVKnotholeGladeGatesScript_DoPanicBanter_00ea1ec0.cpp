@@ -1,5 +1,5 @@
 // CV_KnotholeGladeGatesScript::DoPanicBanter() -- once the hero comes within 30 units of the gate, until he is alerted to the problem have the gate guard now and then (1 frame in 300) complain to him in a one-line conversation
-// Leaf: ?DoPanicBanter@CV_KnotholeGladeGatesScript@NScript@@
+// Leaf: ?DoPanicBanter@CV_KnotholeGladeGatesScript@NScript@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EA1EC0, 448 bytes, plain `ret`.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, ~CScriptThing 0x004AA840 (out of line),
 //   ~CBaseClass 0x0099A2E0, operator delete 0x00BFE9BC, IsDistanceBetweenThingsUnder 0x00CBE2FF (`__fastcall`),

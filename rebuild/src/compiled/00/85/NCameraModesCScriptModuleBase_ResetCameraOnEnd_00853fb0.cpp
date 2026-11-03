@@ -1,6 +1,6 @@
 // NCameraModes::CScriptModuleBase::ResetCameraOnEnd() const -- cut back out of the module at its end: the script's cut-out override when set, else the live camera point's CutOutOf flag
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00853FB0, 123 bytes, plain `ret`.
-// Leaf: ?ResetCameraOnEnd@CScriptModuleBase
+// Leaf: ?ResetCameraOnEnd@CScriptModuleBase@NCameraModes@@UBE_NXZ
 // Name: vtable 0x01255F74 slot 7; FableWin.pdb ?ResetCameraOnEnd@CScriptModuleBase@NCameraModes@@UBE_NXZ (CScriptModuleCameraOnAStick
 //       and CScriptModuleFOVZoom override slot 7, both PDB ResetCameraOnEnd overriders; SetCutOutOverride sets the override).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the inline GetPCameraPoint() re-fetches the camera point for every

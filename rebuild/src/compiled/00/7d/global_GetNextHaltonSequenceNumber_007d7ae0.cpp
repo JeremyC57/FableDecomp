@@ -1,5 +1,5 @@
 // GetNextHaltonSequenceNumber(float& value, int base) -- advance a Halton (radical-inverse) sequence value to the next element in place without the index: find the first power 1/base^k below 1 - value and apply the digit carry (value += (base + 1) * h - 1)
-// Leaf: ?GetNextHaltonSequenceNumber@@
+// Leaf: ?GetNextHaltonSequenceNumber@@YIXAAMH@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007D7AE0, 94 bytes (+2 int3), __fastcall (value reference in ecx, base in edx),
 //   plain `ret`.
 // Identity: Ego_r.pdb name set ?GetNextHaltonSequenceNumber@@YIXAAMH@Z (void __fastcall (float&, int)); one caller

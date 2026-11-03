@@ -1,5 +1,5 @@
 // CTCDHeroSuit::OnCreate() -- fetch the hero-suit sub-def from the owner's def, then list every suit part the def names as (part, not yet worn)
-// Leaf: ?OnCreate@CTCDHeroSuit@@
+// Leaf: ?OnCreate@CTCDHeroSuit@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FF8A0, 178 bytes, __fastcall, plain `ret`; CTCDHeroSuit vtable
 //   0x01242004 slot 4 (abs ref 0x01242014; slot 4 of the CTCBase interface is OnCreate).
 // Name: Ego_r.pdb `?OnCreate@CTCDHeroSuit@@UAEXXZ`; the catalog's "TreeTraverse_AbilityDefPopulator" is descriptive.

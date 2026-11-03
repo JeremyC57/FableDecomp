@@ -1,5 +1,5 @@
 // CThingCreatureBase::AddQueuedAction(const CCreatureActionBase& action) -- append an empty counted pointer to the queued-action list, then point it at a clone of the action
-// Leaf: ?AddQueuedAction@CThingCreatureBase
+// Leaf: ?AddQueuedAction@CThingCreatureBase@@QAEXABVCCreatureActionBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00664490, 85 bytes + 11 int3, thiscall `ret 4`. Name: Ego_r.pdb
 // `?AddQueuedAction@CThingCreatureBase@@QAEXABVCCreatureActionBase@@@Z` (name set; it sits between the landed
 // CThingCreatureBase::UpdateAction 0x006643C0 and SetCurrentAction 0x006644F0). Callers: 0x00712A18 / 0x00712B11

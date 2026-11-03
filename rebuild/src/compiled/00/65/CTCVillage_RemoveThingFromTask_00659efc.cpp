@@ -1,5 +1,5 @@
 // CTCVillage::RemoveThingFromTask(CIntelligentPointer<CVillageTaskBase> task, const CThing& thing) -- dispatches on the task's type to the typed RemoveThingFromTask<T> over the matching task list (torch, patrol, crops, security sweep, horn, crate)
-// Leaf: ?RemoveThingFromTask@CTCVillage@@QAEXV
+// Leaf: ?RemoveThingFromTask@CTCVillage@@QAEXV?$CIntelligentPointer@VCVillageTaskBase@@@@ABVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00659EFC, 241 bytes (`ret 0Ch`, the task pointer by value and destroyed
 // here; Ego_r.pdb `?RemoveThingFromTask@CTCVillage@@QAEXV?$CIntelligentPointer@VCVillageTaskBase@@@@ABVCThing@@@Z`).
 // Callees: CBaseIntelligentPointer::GetPItem() 0x00A01B50; the task's GetTaskType (virtual slot 2, +0x08);

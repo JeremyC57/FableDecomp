@@ -1,5 +1,5 @@
 // LHNetworkLib::LSocket::Think() -- when output was queued, try to flush every open socket's send queue, then clear the flag; always true
-// Leaf: ?Think@LSocket@LHNetworkLib@@
+// Leaf: ?Think@LSocket@LHNetworkLib@@SI_NXZ
 // Retail 0x008F84A0, 0x39 bytes. PDB name set: `?Think@LSocket@LHNetworkLib@@SI_NXZ` (static __fastcall bool, no arguments);
 // the manifest "Think" (_global, __fastcall bool) agrees. It sits in the LSocket TU between TryToSendDataFromQueue
 // (0x008F8440, its callee) and CheckForActivity (0x008F8540).

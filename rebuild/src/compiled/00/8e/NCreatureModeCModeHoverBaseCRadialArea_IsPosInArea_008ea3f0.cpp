@@ -1,5 +1,5 @@
 // NCreatureMode::CModeHoverBase::CRadialArea::IsPosInArea(const C2DVector& pos, bool checkRadius) -- is the offset inside the angular sector [ThetaLow, ThetaHigh] (fractions of a turn) and, when asked, inside RadHigh
-// Leaf: ?IsPosInArea@
+// Leaf: ?IsPosInArea@CRadialArea@CModeHoverBase@NCreatureMode@@QBE_NABVC2DVector@@_N@Z
 // Retail 0x008EA3F0, 0xE6 bytes (+int3 padding), thiscall `ret 8`, bool in al. Manifest label
 //   "C3DVector_PointInConvexQuad_Plane" is descriptive; FableWin PDB name set:
 //   `?IsPosInArea@CRadialArea@CModeHoverBase@NCreatureMode@@QBE_NABVC2DVector@@_N@Z` (the only (const C2DVector&, bool)

@@ -1,5 +1,5 @@
 // CReplaceSerialise<COldFileFormatMapHeader4,COldFileFormatMapHeader3>::ConvertPreviousUnknownVersionUp(void* data) -- build a fresh version-4 map header from an older record: convert the record up to version 3 first when it is older still, then hand back the new header in a counted pointer
-// Leaf: ?ConvertPreviousUnknownVersionUp@?$CReplaceSerialise@VCOldFileFormatMapHeader4@@VCOldFileFormatMapHeader3@@
+// Leaf: ?ConvertPreviousUnknownVersionUp@?$CReplaceSerialise@VCOldFileFormatMapHeader4@@VCOldFileFormatMapHeader3@@@@SI?AV?$CCountedPointer@VCOldFileFormatMapHeader4@@@@PAX@Z
 //
 // Retail 0x00518040, 225 bytes (then int3 padding), static __fastcall: the hidden CCountedPointer return slot in ecx,
 //   data in edx, plain `ret`; 0xc-byte frame (the new object word and the version-3 temporary).

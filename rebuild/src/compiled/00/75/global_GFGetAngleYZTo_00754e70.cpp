@@ -1,5 +1,5 @@
 // GFGetAngleYZTo(const C3DVector& from, const C3DVector& to) -- elevation from one position to another (atan2 of the rise over the XY distance) as a fraction of a full turn wrapped into [0, 1)
-// Leaf: ?GFGetAngleYZTo@@
+// Leaf: ?GFGetAngleYZTo@@YIMABVC3DVector@@0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00754E70, 117 bytes (+11 int3), `__fastcall` (from in ecx, to in edx, `ret`),
 //   float in st(0).
 // Name: Ego_r.pdb / FableWin.pdb `?GFGetAngleYZTo@@YIMABVC3DVector@@0@Z` (name set); the XY twin GFGetAngleXYTo is landed

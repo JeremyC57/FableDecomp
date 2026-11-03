@@ -1,5 +1,5 @@
 // CTCInventoryStats::GetXString() -- static: the localised TEXT_GUI_MENU_XSTRING text, round-tripped through a narrow string and with its underscores replaced by spaces (two passes)
-// Leaf: ?GetXString@CTCInventoryStats@@SI
+// Leaf: ?GetXString@CTCInventoryStats@@SI?AVCWideString@@XZ
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x005CC772, 240 bytes, static __fastcall (hidden CWideString result in ecx), `ret`. Ego_r.pdb

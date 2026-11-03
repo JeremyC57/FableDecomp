@@ -1,5 +1,5 @@
 // NUISystem::CEditBox::AddActionOnEscape(CCountedPointer<CAction>& action) -- append an action to the list run when the edit box gets Escape
-// Leaf: ?AddActionOnEscape@CEditBox
+// Leaf: ?AddActionOnEscape@CEditBox@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00540DA0, 35 bytes (`ret 4`, +13 int3 padding); vtable 0x01246B8C slot 149.
 // Identity: FableWin.pdb ?AddActionOnEscape@CEditBox@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z.
 // Callees: STLport list<CCountedPointer<CAction>>::insert(iterator, const value_type&) @ 0x005355C0 (the inline

@@ -1,5 +1,5 @@
 // NInventory::CCategory::SetCategoryThingAssociation(CThing* thing) -- point the inventory category's associated-thing pointer at `thing` (build an intelligent pointer temporary, assign it, release the temporary)
-// Leaf: ?SetCategoryThingAssociation@
+// Leaf: ?SetCategoryThingAssociation@CCategory@NInventory@@QAEXPAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005BD183, 43 bytes (a /Os module: unaligned entry, ebp frame, `leave`),
 //   `__fastcall`, `ret 4`.
 // Identity: Ego_r.pdb ?SetCategoryThingAssociation@CCategory@NInventory@@QAEXPAVCThing@@@Z; the caller

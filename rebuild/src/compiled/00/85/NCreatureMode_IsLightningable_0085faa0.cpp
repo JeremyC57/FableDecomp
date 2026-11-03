@@ -1,5 +1,5 @@
 // NCreatureMode::IsLightningable(const CThing& thing) -- false for a creature evading all hits, an underground thing or one in a BriarRose teleport mode (0x40/0x41); otherwise CTCWillResponse::IsThingLightningable
-// Leaf: ?IsLightningable@NCreatureMode@@
+// Leaf: ?IsLightningable@NCreatureMode@@YI_NABVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085FAA0, length 131 bytes. `__fastcall` free function (ecx = the thing), bool in al.
 // Mangled (Ego_r.pdb): ?IsLightningable@NCreatureMode@@YI_NABVCThing@@@Z.
 // Callees: the current action's slot 45 (+0xB4, IsToEvadeAllHits), NCreatureMode::IsUnderground 0x0085F120 (same TU),

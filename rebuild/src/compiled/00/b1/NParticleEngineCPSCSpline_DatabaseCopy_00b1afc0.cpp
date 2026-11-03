@@ -1,5 +1,5 @@
 // NParticleEngine::CPSCSpline::DatabaseCopy(const CPSCBase& other) -- vtable slot 18: copy another spline component's database settings (the spline base, then speed scaling, anim speed and bounce)
-// Leaf: ?DatabaseCopy@CPSCSpline@
+// Leaf: ?DatabaseCopy@CPSCSpline@NParticleEngine@@UAEXABVCPSCBase@2@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B1AFC0, 37 bytes (+11 int3 padding).
 // Name: FableWin.pdb ?DatabaseCopy@CPSCSpline@NParticleEngine@@UAEXABVCPSCBase@2@@Z; slot 18 of the vtable 0x012A0934
 // (rtti-vtables.tsv; slot 18 of CPSCUpdateNormal is the landed DatabaseCopy 0x00B0B370).

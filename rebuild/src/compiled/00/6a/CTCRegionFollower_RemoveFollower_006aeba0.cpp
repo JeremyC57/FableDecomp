@@ -1,5 +1,5 @@
 // CTCRegionFollower::RemoveFollower(CThing&) -- removes the thing from the region-follower list
-// Leaf: ?RemoveFollower@CTCRegionFollower@@QAEX
+// Leaf: ?RemoveFollower@CTCRegionFollower@@QAEXAAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006AEBA0, 66 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity: CTCRegionFollower::RemoveFollower(CThing&) -- proven; evidence: it sits in the CTCRegionFollower module (between CTCRegionFollower::IsRegionFollower 0x006AEB60 and
 //   IsCreatureAllowedInRegionAt 0x006AEBF0); Ego_r.pdb CTCRegionFollower::Followers is the list<CIntelligentPointer<CThing> > at +0xC;

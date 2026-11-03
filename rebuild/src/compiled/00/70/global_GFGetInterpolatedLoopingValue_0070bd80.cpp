@@ -1,5 +1,5 @@
 // GFGetInterpolatedLoopingValue(float last, float current, float alpha, float range, bool forwards) -- interpolate an animation completion fraction from last to current by alpha, wrapping through range in the play direction
-// Leaf: ?GFGetInterpolatedLoopingValue@
+// Leaf: ?GFGetInterpolatedLoopingValue@@YIMMMMM_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0070BD80, length 149 bytes (+ int3 padding). Static `__fastcall`: the bool in cl,
 //         four floats on the stack, `ret 10h`, result on the FPU stack.
 // Callees: _CIfmod @ 0x00BFEB28 (the fmod intrinsic, `fld qword 1.0` as the divisor). Float pool: 0x0122DEDC = 0.0f,

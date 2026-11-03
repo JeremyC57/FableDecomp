@@ -1,6 +1,6 @@
 // NCameraModes::CSACCombat::CSACCombatInit::Alloc(CGameCameraManager&, const CDefPointer<const CCameraModeDef>&) const -- allocate a CSACCombat camera mode set up from the def's string length, cage radius, height offset and FOV
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008731B0, 74 bytes, `ret 8`.
-// Leaf: ?Alloc@CSACCombatInit
+// Leaf: ?Alloc@CSACCombatInit@CSACCombat@NCameraModes@@UBEPAVCBase@3@AAVCGameCameraManager@@ABV?$CDefPointer@$$CBVCCameraModeDef@@@@@Z
 // Name: vtable 0x0125C26C slot 0; FableWin.pdb ?Alloc@CSACCombatInit@CSACCombat@NCameraModes@@UBEPAVCBase@3@AAVCGameCameraManager@@ABV?$CDefPointer@$$CBVCCameraModeDef@@@@@Z.
 // Callees: operator new @ 0x00BFEA1A (0xd0 bytes), NCameraModes::CSACCombat::CSACCombat(CGameCameraManager&, const CDefPointer<const CCameraModeDef>&,
 //          float stringLength, float cageRadius, float heightOffset, bool autoGoBehind, float autoGoBehindTime, float defaultFOV)

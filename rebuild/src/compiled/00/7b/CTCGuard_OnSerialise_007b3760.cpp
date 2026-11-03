@@ -1,5 +1,5 @@
 // CTCGuard::OnSerialise(CPersistContext& context, bool) -- persist the guard's criminal bookkeeping: the pending-crime deque through a vector (copied out when saving, copied back in when loading), the frame stamps, the bribe pool and the last crime severity
-// Leaf: ?OnSerialise@CTCGuard@
+// Leaf: ?OnSerialise@CTCGuard@@UAEXAAVCPersistContext@@_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007B3760, length 367 bytes (thiscall, `ret 8`; 0x16F bytes + int3).
 // Identity: CTCGuard vtable 0x0126D80C slot 1 (+0x04 = 0x0126D810), the CTCBase OnSerialise slot (as the landed
 //   CTCObjectAugmentations::OnSerialise 0x00767200); Ego_r.pdb ?OnSerialise@CTCGuard@@UAEXAAVCPersistContext@@_N@Z.

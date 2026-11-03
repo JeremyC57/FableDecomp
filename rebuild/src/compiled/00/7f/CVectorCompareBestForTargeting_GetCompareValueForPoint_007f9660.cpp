@@ -1,6 +1,6 @@
 // CVectorCompare_BestForTargeting::GetCompareValueForPoint(const C3DVector& point) -- the targeting score of a point: offset from AnchorPos (flattened to XY when CompareInXYPlane), squared length, normalised direction dotted with PreferredLine, both handed to ComputeValue
 // Grade: RELOCATION_MATCH (130 bytes) -- GetLengthSquared written as the chain `s = Y*Y; s += X*X; s += Z*Z;` gives retail's x87 square order (applied by the landing session)
-// Leaf: ?GetCompareValueForPoint@CVectorCompare_BestForTargeting@@
+// Leaf: ?GetCompareValueForPoint@CVectorCompare_BestForTargeting@@QBEMABVC3DVector@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F9660, length 130 bytes, `ret 4`.
 // Callees: CVectorCompare_BestForTargeting::ComputeValue(float sqrDist, float angle) @ 0x007F9480 (`ret 8`).
 // Float pool: 0.0f @ 0x0122DEDC, 1e-4f @ 0x0129BA3C, 1.0f @ 0x0122DED8.

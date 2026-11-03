@@ -1,5 +1,5 @@
 // NInventory::CCategory::GetHighlightedItemText(const CGameDefinitionManager&) const -- the highlighted item's description; when that is empty, the TXT_OBJT_EMPTY game text (looked up by its tag) through the owning inventory, if the tag exists
-// Leaf: ?GetHighlightedItemText@CCategory@NInventory@@
+// Leaf: ?GetHighlightedItemText@CCategory@NInventory@@QBE?AVCWideString@@ABVCGameDefinitionManager@@@Z
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x005BDA1D, 168 bytes, __fastcall `ret 8` (hidden CWideString result + the unused definition

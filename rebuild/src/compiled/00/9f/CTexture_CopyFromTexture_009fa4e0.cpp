@@ -1,5 +1,5 @@
 // CTexture::CopyFromTexture(const CTexture& source, unsigned long filter) -- copy every mip level both textures share: wrap each level's surface in a CSurface and CopyFromSurface the whole source level into the whole destination level with the filter
-// Leaf: ?CopyFromTexture@CTexture
+// Leaf: ?CopyFromTexture@CTexture@@QAEXABV1@K@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009FA4E0, 289 bytes, `ret 8`. (The previously landed copy of this row was a
 //   inline-assembly oracle; this is the compiled reconstruction.)
 // Callees: IDirect3DTexture9::GetLevelCount (COM slot 13, +0x34) and GetSurfaceLevel (slot 18, +0x48), CSurface::

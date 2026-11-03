@@ -1,5 +1,5 @@
 // CThingSoundEmitter::RenderUpdate(const CInterpolationInfo* info) -- per render frame: nothing when dead; the CThing base update first; when the attached thing has died either stop the loops (keep-playing emitters) or kill the emitter; kill it when its sound has finished; otherwise follow the attached thing's interpolated position and update the sound
-// Leaf: ?RenderUpdate@CThingSoundEmitter
+// Leaf: ?RenderUpdate@CThingSoundEmitter@@UAE_NPBVCInterpolationInfo@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00836AD0, 245 bytes, thiscall `ret 4`; CThingSoundEmitter vtable 0x01272C24 slot 21.
 // Identity: Ego_r.pdb ?RenderUpdate@CThingSoundEmitter@@UAE_NPBVCInterpolationInfo@@@Z; CTCPhysicsBase::GetPosition(float) const and
 //   CThing::GetPhysicsTC() const are Ego_r.pdb/FableWin.pdb names; the catalog's

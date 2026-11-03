@@ -1,5 +1,5 @@
 // CTCPhotojournalCapture::GetDescription(const CWideString& filename) -- read a photojournal picture's caption: the trailing dword of the file is the caption length, the caption text sits just before it; an out-of-range length gives the empty string
-// Leaf: ?GetDescription@CTCPhotojournalCapture@@
+// Leaf: ?GetDescription@CTCPhotojournalCapture@@SI?AVCWideString@@ABV2@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0055D070, 272 bytes (0x10D + int3 padding), static __fastcall: ecx = the hidden
 //   CWideString result, edx = the file name; plain `ret`, returns the result pointer.
 // Identity: Ego_r.pdb ?GetDescription@CTCPhotojournalCapture@@SI?AVCWideString@@ABV2@@Z (static) -- the reader paired

@@ -1,5 +1,5 @@
 // FormatTextForVWindow(const C2DBoxF& box, const CFontBank& font, const CWideString& text, CWideString& outText, C2DBoxF& outBox) -- word-wrap a subtitle into the window box: the wrapped text and the unchanged box; always returns false
-// Leaf: ?FormatTextForVWindow@@YI_NABVC2DBoxF@@
+// Leaf: ?FormatTextForVWindow@@YI_NABVC2DBoxF@@ABVCFontBank@@ABVCWideString@@AAV3@AAV1@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009BC9D0, 71 bytes (+ int3 padding), __fastcall (box in ecx, font in
 // edx, text / outText / outBox on the stack, `ret 0Ch`).
 // Name: Ego_r.pdb `?FormatTextForVWindow@@YI_NABVC2DBoxF@@ABVCFontBank@@ABVCWideString@@AAV3@AAV1@@Z` (free twin of

@@ -1,5 +1,5 @@
 // CEnginePrimitiveRenderUtil::CalcDistanceFromCamera(const CMatrix3x4& transform) -- distance from the engine camera's world position to the transform's translation
-// Leaf: ?CalcDistanceFromCamera@CEnginePrimitiveRenderUtil@@SIMABVCMatrix3x4
+// Leaf: ?CalcDistanceFromCamera@CEnginePrimitiveRenderUtil@@SIMABVCMatrix3x4@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BB6450, 67 bytes, static __fastcall (transform ecx), float in st0, `ret`.
 // Identity: Ego_r.pdb ?CalcDistanceFromCamera@CEnginePrimitiveRenderUtil@@SIMABVCMatrix3x4@@@Z (static, float, one
 //   CMatrix3x4 reference): the body reads the matrix translation (+0x24) and the camera position, nothing else. No direct

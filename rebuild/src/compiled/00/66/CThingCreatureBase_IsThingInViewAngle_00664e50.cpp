@@ -1,5 +1,5 @@
 // CThingCreatureBase::IsThingInViewAngle(const CThing& thing, float viewAngle, bool useLookAngle) const -- true when a living thing lies within half of viewAngle (in turns) of this creature's XY facing, or of its head-look direction when useLookAngle and it has a CTCLook
-// Leaf: ?IsThingInViewAngle@
+// Leaf: ?IsThingInViewAngle@CThingCreatureBase@@QBE_NABVCThing@@M_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00664E50, 656 bytes (639 without padding), thiscall `ret 0Ch`, bool in al. Ego_r.pdb
 //   name set: ?IsThingInViewAngle@CThingCreatureBase@@QBE_NABVCThing@@M_N@Z; its caller is IsThingInFOV 0x00665190
 //   (`call` at 0x00665247). Catalog label "CVertexBufferWin32_CalculateViewingAngle" is propagated and wrong.

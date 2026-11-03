@@ -8,7 +8,7 @@
 // Shape: the drive letter is computed into a CWideString but the PC build never uses it: the result is the inline
 // CAFile::GetHDSectorSize() constant (Ego_r.pdb lists GetHDSectorSize / GetDVDSectorSize as separate statics).
 // The split buffers live in an inner block so the first drive buffer shares the current-path temporary's frame word.
-// Leaf: ?GetDiskSectorSize@CAFile
+// Leaf: ?GetDiskSectorSize@CAFile@@SIJABVCWideString@@@Z
 // Flags: /GS
 typedef unsigned short wchar16;          // wchar_t is not a built-in type under the retail flags
 

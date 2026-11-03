@@ -1,5 +1,5 @@
 // CTCCombat::OnKnockDown() -- the creature was knocked down: reset the repeat/active timers of every block-type combat ability, switch the creature's body reorienter on, and cancel any mutex special ability it is using
-// Leaf: ?OnKnockDown@CTCCombat
+// Leaf: ?OnKnockDown@CTCCombat@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007340B0, 221 bytes (224 with padding), `ret`.
 // Label correction: catalog "TCBase_InvalidateAllAbilityTimers" -- the only caller is NCreatureMode::CModeKnockedDown::
 //   OnActivate (0x008D9504, landed 0x008D9480) and Ego_r.pdb has ?OnKnockDown@CTCCombat@@QAEXXZ.

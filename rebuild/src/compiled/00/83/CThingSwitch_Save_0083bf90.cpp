@@ -1,5 +1,5 @@
 // CThingSwitch::Save(CCharString& out) -- append the switch's level-script text after CThingPhysical's: "TriggerRadius <r>;", "TriggeredByThing <name|NULL>;", "EnvironmentDef <def|NULL>;" and "TimeToChangeEnvironmentDef <t>;", each ending "\r\n"
-// Leaf: ?Save@CThingSwitch
+// Leaf: ?Save@CThingSwitch@@UAEXAAVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0083BF90, length 592 bytes (virtual, `ret 4`).
 // Callees: CThingPhysical::Save 0x006A4BA0 (non-virtual), CCharString::FormatDouble(long, double) 0x009A08B0 (__fastcall,
 //   hidden result in ecx), operator+(const char*, const CCharString&) 0x0099F690, operator+(const CCharString&, const char*)

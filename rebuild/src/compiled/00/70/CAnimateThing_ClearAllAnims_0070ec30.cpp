@@ -1,5 +1,5 @@
 // CAnimateThing::ClearAllAnims() -- clear the main anim set, the transition and combination anim lists and the delayed-animation queue, refill the queue with three empty delayed animations and clear the current delayed animation
-// Leaf: ?ClearAllAnims@
+// Leaf: ?ClearAllAnims@CAnimateThing@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0070EC30, length 224 bytes. __fastcall, plain `ret`. Ego_r.pdb:
 //         `?ClearAllAnims@CAnimateThing@@QAEXXZ` (Ego_r 0x00578160).
 // Callees: CAnimSet::Clear @ 0x00711520 (landed as "CNavigatorOwner_00711520::ResetBuffers"), list<CAnimSet>::clear @

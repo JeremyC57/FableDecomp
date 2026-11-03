@@ -1,5 +1,5 @@
 // CCreatureAction_BanditKingThrowWeapons::PerformAction() -- a living bandit king takes the things out of its right and left hand carry slots and throws each living one at the target as a shot (the right-hand weapon's def index is remembered by the boss component); the thrown thing gets physics state 2 and its navigator enabled
-// Leaf: ?PerformAction@CCreatureAction_BanditKingThrowWeapons
+// Leaf: ?PerformAction@CCreatureAction_BanditKingThrowWeapons@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C89D0, 595 bytes (+ int3 padding), virtual PerformAction, plain `ret`.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8, PTarget +0xa8), CVectorMap::LowerBound 0x0040F020
 //   (inlined GetInterface: 0x46 CTCCarrying bit 6 of +0x28, 0xAD boss weapons component bit 13 of +0x34, 0x77

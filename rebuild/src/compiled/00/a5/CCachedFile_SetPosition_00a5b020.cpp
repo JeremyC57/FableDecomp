@@ -1,5 +1,5 @@
 // CCachedFile::SetPosition(long position) -- move the cached file's read position; seeking past the end of the underlying disk file builds the error text and throws a CBBBFileException
-// Leaf: ?SetPosition@CCachedFile
+// Leaf: ?SetPosition@CCachedFile@@UAEXJ@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A5B020, length 128 bytes (ret 4; the virtual ?SetPosition@CCachedFile@@UAEXJ@Z).
 // Callees: the disk file's virtual slot 9 (+0x24, its length), CCharString::CCharString(const char*, long)
 // @ 0x0099EBF0, operator+(const CCharString&, const char*) @ 0x0099F600 (__fastcall, the result by hidden pointer),

@@ -1,6 +1,6 @@
 // CThingAICreature::DrawGetThingDisplayInformation(CThingDrawInformation* info) const -- the creature's display bar: the owning player's def colour (opaque) when the creature belongs to a valid player, else opaque black; the bar is the creature's health percentage clamped to 0..1; relative size 0.7; bar on; reports false
 // Grade: RELOCATION_MATCH -- the colour written byte by byte (R, G, B, then the opaque alpha) in both arms keeps it a frame record, so the epilogue pops interleave with the bar clamp as retail
-// Leaf: ?DrawGetThingDisplayInformation@CThingAICreature
+// Leaf: ?DrawGetThingDisplayInformation@CThingAICreature@@UBE_NPAVCThingDrawInformation@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00830CB0, 199 bytes (+9 int3). `ret 4`, bool in al. CThingAICreature vtable 0x0127293C
 //         slot 34 (+0x88); CThing's own slot 0x004CD220 is `xor al,al ; ret 4`.
 // Identity: Ego_r.pdb ?DrawGetThingDisplayInformation@CThingAICreature@@UBE_NPAVCThingDrawInformation@@@Z -- the only

@@ -1,5 +1,5 @@
 // NScript::CQ_MinionCampScript::ShouldSpawnPointSpawn(const CScriptThing& spawnPoint) -- true when spawning is on, the given spawn point is the chosen one and the thread is not terminating
-// Leaf: ?ShouldSpawnPointSpawn@
+// Leaf: ?ShouldSpawnPointSpawn@CQ_MinionCampScript@NScript@@QAE_NABVCScriptThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D9F070, 62 bytes, `__fastcall`, one stack argument (`ret 4`), bool in al.
 //   FableWin symbol ?ShouldSpawnPointSpawn@CQ_MinionCampScript@NScript@@QAE_NABVCScriptThing@@@Z. Caller: the
 //   CMC_SpawnPoint entity script's Main @ 0x00D9EE20 (call at 0x00D9EEDB, on its ParentClass).

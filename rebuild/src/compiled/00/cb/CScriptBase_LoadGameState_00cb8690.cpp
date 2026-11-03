@@ -1,5 +1,5 @@
 // CScriptBase::LoadGameState(const CCharString&) -- restore the script's own data and its persisted entity scripts from the START_/END_ marked game-state text
-// Leaf: ?LoadGameState@CScriptBase
+// Leaf: ?LoadGameState@CScriptBase@@QAEXABVCCharString@@@Z
 // Retail 0x00CB8690, 400 bytes, ret 4 (the reader of the landed SaveGameState 0x00CB8820). Callees: CCharString(const
 // char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CStringParser ctor 0x00404720 and its implicit inline dtor
 // (~list 0x004046B0, two ~CCharString, CBaseClass::~CBaseClass 0x0099A2E0), CStringParser::NextItemIs 0x009B9BA0,

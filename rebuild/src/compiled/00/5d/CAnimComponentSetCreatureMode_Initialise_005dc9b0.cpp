@@ -8,7 +8,7 @@
 // value is homed in the dead text-argument slot; the zero test picks one of two inlined parser-destructor tails.
 // Layout: rebuild/include/engine/CAnimComponentSetCreatureMode.h is data-only (Mode +0x08, EMode), so the polymorphic class
 // is modelled locally.
-// Leaf: ?Initialise@CAnimComponentSetCreatureMode
+// Leaf: ?Initialise@CAnimComponentSetCreatureMode@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
 class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length); // 0x0099EBF0

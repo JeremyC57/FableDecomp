@@ -1,5 +1,5 @@
 // CThing::DoActivationSequence() -- create and activate the thing, or kill it (not immediately) when OnCreate fails
-// Leaf: ?DoActivationSequence@CThing
+// Leaf: ?DoActivationSequence@CThing@@QAE_NXZ
 // Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
 //   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C9CA0, 121 bytes (+7 int3). __fastcall, returns bool.

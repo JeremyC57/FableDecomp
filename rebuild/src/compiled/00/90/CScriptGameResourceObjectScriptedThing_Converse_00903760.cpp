@@ -1,5 +1,5 @@
 // CScriptGameResourceObjectScriptedThing::Converse(const CScriptGameResourceObjectScriptedThingBase& other, const char* text) -- speak the text group at the other scripted thing
-// Leaf: ?Converse@CScriptGameResourceObjectScriptedThing@@
+// Leaf: ?Converse@CScriptGameResourceObjectScriptedThing@@UAEXABVCScriptGameResourceObjectScriptedThingBase@@PBD@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00903760, length 120 bytes (+8 int3 padding).
 // PDB: ?Converse@CScriptGameResourceObjectScriptedThing@@UAEXABVCScriptGameResourceObjectScriptedThingBase@@PBD@Z.
 // Callees: other's virtual GetScriptThing() const (slot 12, +0x30; CScriptThing by value through a hidden pointer),

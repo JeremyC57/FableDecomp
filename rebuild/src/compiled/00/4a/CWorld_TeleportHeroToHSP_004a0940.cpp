@@ -1,5 +1,5 @@
 // CWorld::TeleportHeroToHSP(const CCharString& name) -- teleport the hero to the holy site whose ScriptName is name (false when no such site exists)
-// Leaf: ?TeleportHeroToHSP@CWorld@@
+// Leaf: ?TeleportHeroToHSP@CWorld@@QAE_NABVCCharString@@@Z
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Flags: /Gr

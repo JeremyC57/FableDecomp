@@ -1,7 +1,7 @@
 // CEngineInternalPrimitiveBase::GetAlphaIncludingDistanceFade(float distance) -- the primitive's alpha faded out linearly across its fade range: 0 when the alpha is 0 or the distance is beyond the draw distance, the full alpha before the fade start, else alpha * (255 - 255 * t) >> 8
 // Grade: RELOCATION_MATCH (3 grades: the int result in its own {} block so VC homes it in the dead distance slot) -- rasm1 retail_asm: C++ body + a minimal 3-instruction __asm (no control flow) + the Retail-asm evidence line
 // Retail-asm: 0x00BA7BB2 `fstp [esp+0Ch]` / 0x00BA7BB6 `fld dword ptr [esp+0Ch]` + 0x00BA7BBA `mov edx,[esp+4]` + 0x00BA7BBE `fistp dword ptr [edx]` -- the engine's pointer-out inline-assembly float-to-int helper (as the landed retail_asm 0x00B1B5E0, 3 instr; the int homed in the dead `distance` slot). VC7.1 C++ `(long)x` calls __ftol2 and /QIfist (RTM 3077 and QFE 4035, with /Op, /Og or /G5-/G7) emits `fistp qword` into an 8-byte slot, /arch:SSE2 a cvttss2si: no C/C++ form gives the bare dword fistp, so it is the original's `__asm`.
-// Leaf: ?GetAlphaIncludingDistanceFade@CEngineInternalPrimitiveBase@@QAEEM
+// Leaf: ?GetAlphaIncludingDistanceFade@CEngineInternalPrimitiveBase@@QAEEM@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BA7B30, 172 bytes, thiscall, `ret 4`, unsigned char in al.
 // Identity: Ego_r.pdb ?GetAlphaIncludingDistanceFade@CEngineInternalPrimitiveBase@@QAEEM@Z (the only uchar(float) member
 //   of the class; non-virtual). The body reads Alpha (+0x27), FadeDistance (+0x14) and the flag byte +0x34 bit 2

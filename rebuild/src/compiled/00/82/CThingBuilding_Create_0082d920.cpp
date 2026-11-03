@@ -1,5 +1,5 @@
 // CThingBuilding::Create(long defIndex, const C3DVector& position, long a3, const CCharString& scriptName) -- static factory: allocate a building, construct it from the parameters, place its physics at the position with the default facing and run the activation sequence; null on any failure
-// Leaf: ?Create@CThingBuilding
+// Leaf: ?Create@CThingBuilding@@SIPAV1@JABVC3DVector@@JABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0082D920, 153 bytes (+7 int3), static __fastcall `ret 8` (defIndex in ecx, the
 //   position in edx, a3 and the script name on the stack), 0x40-byte frame (the CRightHandedSet and the physics params).
 // Identity: Ego_r.pdb name set ?Create@CThingBuilding@@SIPAV1@JABVC3DVector@@JABVCCharString@@@Z; the Alloc it calls

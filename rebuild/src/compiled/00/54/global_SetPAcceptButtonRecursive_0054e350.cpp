@@ -1,5 +1,5 @@
 // SetPAcceptButtonRecursive(NUISystem::CComponent* component, NUISystem::CComponent* acceptButton) -- give every descendant of a component (depth first, the accept button itself skipped) the front-end screen's accept button
-// Leaf: ?SetPAcceptButtonRecursive@
+// Leaf: ?SetPAcceptButtonRecursive@@YIXPAVCComponent@NUISystem@@0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0054E350, 119 bytes (128 with padding), plain `ret` (Ego_r.pdb
 //   `?SetPAcceptButtonRecursive@@YIXPAVCComponent@NUISystem@@0@Z`: a free __fastcall, component in ecx, button in edx).
 // Callees: CComponent virtual slots 53 GetChildren() (+0xd4, vector<CCountedPointer<CComponent> >&, re-called for every

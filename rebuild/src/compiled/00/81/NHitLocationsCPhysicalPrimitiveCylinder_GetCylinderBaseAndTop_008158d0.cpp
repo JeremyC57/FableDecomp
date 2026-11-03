@@ -1,5 +1,5 @@
 // NHitLocations::CPhysicalPrimitiveCylinder::GetCylinderBaseAndTop(const CThing& thing, C3DVector& base, C3DVector& top) const -- the hit cylinder's end points: with no base dummy object, base = physics position + up * the def's base offset and top = base + up * the def's cylinder height; otherwise base and the up axis come from the named dummy object on the graphic appearance and top = base + up * GetCylinderHeight
-// Leaf: ?GetCylinderBaseAndTop@CPhysicalPrimitiveCylinder@NHitLocations@@
+// Leaf: ?GetCylinderBaseAndTop@CPhysicalPrimitiveCylinder@NHitLocations@@QBEXABVCThing@@AAVC3DVector@@1@Z
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008158D0, 460 bytes + 4 int3, thiscall `ret 0Ch`.
 // Identity: Ego_r.pdb ?GetCylinderBaseAndTop@CPhysicalPrimitiveCylinder@NHitLocations@@QBEXABVCThing@@AAVC3DVector@@1@Z

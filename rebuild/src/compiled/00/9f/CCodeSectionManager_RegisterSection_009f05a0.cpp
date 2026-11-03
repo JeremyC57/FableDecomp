@@ -1,5 +1,5 @@
 // CCodeSectionManager::RegisterSection(CCharString shortName, CCharString longName, bool load, bool loaded) -- allocate the next section handle; an already-registered short name returns its existing handle, otherwise both names are mapped to the new handle, its CSectionDesc (names, Loaded, Size 0) is stored, and the section is loaded or unloaded when `load` and `loaded` disagree; returns the handle
-// Leaf: ?RegisterSection@CCodeSectionManager
+// Leaf: ?RegisterSection@CCodeSectionManager@@QAEKVCCharString@@0_N1@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F05A0, length 300 bytes (`ret 10h`; the callee destroys the by-value strings).
 // Callees: map<CCharString,unsigned long>::find @ 0x009D2DD0 / operator[] @ 0x0042D131, CCharString() 0x0099E4B0, operator=
 //          0x0099EFB0, ~CCharString 0x0099EAE0, map<unsigned long,CSectionDesc>::operator[] @ 0x009F1470 (manifest label

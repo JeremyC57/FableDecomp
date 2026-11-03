@@ -1,5 +1,5 @@
 // NCreatureMode::CModeGuildmasterPowerUpHeal::OnActivate() -- stand-mode activation; suspend a player's animation; for every live guild bodyguard within 20 units of the guildmaster play the HEAL effect (attached through its particle emitter) and make sure the guildmaster has a CTCHealLife component
-// Leaf: ?OnActivate@CModeGuildmasterPowerUpHeal
+// Leaf: ?OnActivate@CModeGuildmasterPowerUpHeal@NCreatureMode@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DDD70, 565 bytes (`ret`).
 // Callees: CModeStandBase::OnActivate @ 0x008621A0, CThingAICreature::SuspendAI @ 0x00833A10, CCharString(const char*, long)
 //   @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CGameDefinitionManager::Get @ 0x0044C6B0, CDefinitionManager::GetDefGlobalIndexFromName

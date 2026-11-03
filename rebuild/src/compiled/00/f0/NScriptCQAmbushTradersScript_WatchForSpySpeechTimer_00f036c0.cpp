@@ -1,5 +1,5 @@
 // NScript::CQ_AmbushTradersScript::WatchForSpySpeechTimer() -- speech thread: forever (until terminated) wait while spy speech is enabled, wait for the spy speech timer to run out, then re-enable spy speech and restart the timer with the script def's delay
-// Leaf: ?WatchForSpySpeechTimer@CQ_AmbushTradersScript@NScript@@
+// Leaf: ?WatchForSpySpeechTimer@CQ_AmbushTradersScript@NScript@@QAEXXZ
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F036C0, length 214 bytes, plain `ret`.

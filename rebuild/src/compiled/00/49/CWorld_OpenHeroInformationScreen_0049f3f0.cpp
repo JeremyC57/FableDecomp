@@ -1,5 +1,5 @@
 // CWorld::OpenHeroInformationScreen(EPlayerMode mode) -- takes the main player out of every registered hero-information-screen mode, puts it into `mode`, opens the hero information screens and pauses the world
-// Leaf: ?OpenHeroInformationScreen@CWorld@@
+// Leaf: ?OpenHeroInformationScreen@CWorld@@QAEXW4EPlayerMode@@@Z
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0049F3F0, 194 bytes (padded to 208), `ret 4`.

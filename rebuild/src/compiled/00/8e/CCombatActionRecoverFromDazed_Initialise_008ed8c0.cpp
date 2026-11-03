@@ -1,5 +1,5 @@
 // CCombatAction_RecoverFromDazed::Initialise() -- resumes a player creature's suspended animation, removes mode 67 from its mode manager, then runs the base Initialise
-// Leaf: ?Initialise@CCombatAction_RecoverFromDazed
+// Leaf: ?Initialise@CCombatAction_RecoverFromDazed@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008ED8C0, 144-byte slot (139 bytes of code). Initialise is vtable slot 12.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8, three times through one `lea esi,[edi+8]`),
 //          CThingAICreature::SuspendAI(bool, long) @ 0x00833A10, CVectorMap::LowerBound @ 0x0040F020 (inlined

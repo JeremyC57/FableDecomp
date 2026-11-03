@@ -1,5 +1,5 @@
 // CCombatAction_StrikeResponseScorpionKing::Initialise() -- the scorpion king's hit response: run the generic strike-response Initialise while keeping the body's facing angle, then spawn the definition's "EYE_GET_HIT" special effect at the creature and attach its particle emitter to the creature's EMITTER_EYE helper
-// Leaf: ?Initialise@CCombatAction_StrikeResponseScorpionKing
+// Leaf: ?Initialise@CCombatAction_StrikeResponseScorpionKing@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C4B80, length 302 bytes (plain `ret`, virtual).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8), the body's (+0x60) virtual slots 63 (+0xfc,
 //          GetFacingAngleXY) / 66 (+0x108, SetFacingAngleXY), CCombatAction_GenericStrikeResponseBase::Initialise 0x00865F40,

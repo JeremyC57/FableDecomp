@@ -1,5 +1,5 @@
 // CDefStringTable::CDefStringTable() -- empty string map, empty string stream, zero counts, empty table filename, unlocked and writable; RandomID is a CRC32 of the current system time
-// Leaf: ??0CDefStringTable@@
+// Leaf: ??0CDefStringTable@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D4DB0, length 224 bytes, no arguments, returns `this`.
 // Label correction: catalogued as CBankFile::GetRandomValidationValue (propagated from the sibling 0x009CC0B0, whose CRC loop
 // is inlined here without the retry); the layout is Ego_r.pdb CDefStringTable (StringMap, StringStream, StringCount,

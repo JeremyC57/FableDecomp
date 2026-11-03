@@ -1,5 +1,5 @@
 // CEngineClothSimulationMeshBase::ClearStaticParticleSims() -- drop every shared particle simulation from the static pool whose render data is gone or no longer busy
-// Leaf: ?ClearStaticParticleSims@CEngineClothSimulationMeshBase@@
+// Leaf: ?ClearStaticParticleSims@CEngineClothSimulationMeshBase@@SIXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B81450, 85 bytes. Static __fastcall (no arguments), plain `ret`.
 // Callees: vector<CCountedPointer<CParticleSimulation> >::erase(iterator) @ 0x00B835D0 (__fastcall on the static pool
 //   0x014378B8), CParticleSimulationRenderData::IsBusy() (virtual slot 1).

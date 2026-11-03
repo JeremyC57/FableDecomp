@@ -1,5 +1,5 @@
 // CHeroAbilityStatPackage::IsValid(const CTCHeroExperience&) const -- true when the hero's level in every trainable stat named by the package reaches that stat's threshold
-// Leaf: ?IsValid@CHeroAbilityStatPackage@@
+// Leaf: ?IsValid@CHeroAbilityStatPackage@@QBE_NABVCTCHeroExperience@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00851B50, 121 bytes, __fastcall, `ret 4`.
 // Identity: Ego_r.pdb / FableWin.pdb ?IsValid@CHeroAbilityStatPackage@@QBE_NABVCTCHeroExperience@@@Z, followed in both PDBs by
 //   CHeroAbilityStatWeight::GetParameter (TLC 0x00851BD0) -- the same order as retail. The manifest label

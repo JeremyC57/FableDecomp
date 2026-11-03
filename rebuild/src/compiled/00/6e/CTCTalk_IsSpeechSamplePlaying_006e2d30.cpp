@@ -1,5 +1,5 @@
 // CTCTalk::IsSpeechSamplePlaying() const -- whether the current speech sample is playing on the parent's attached sound emitter: false without a sample, an attached emitter or its low-level sound source, else the source's query for (speech bank, sample)
-// Leaf: ?IsSpeechSamplePlaying@CTCTalk@@
+// Leaf: ?IsSpeechSamplePlaying@CTCTalk@@QBE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E2D30, 137 bytes (+ int3 padding), thiscall, plain `ret`.
 // Identity: Ego_r.pdb name set `?IsSpeechSamplePlaying@CTCTalk@@QBE_NXZ` (it sits between the landed CTCTalk rows
 //   0x006E2CF0 SetAsUsingNarrator and 0x006E2DC0 IsSpeechSampleLoadedAndPlaying); callers 0x006E5AFB, 0x006E5DC1,

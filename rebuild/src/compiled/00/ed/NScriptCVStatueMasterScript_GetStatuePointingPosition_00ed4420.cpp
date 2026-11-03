@@ -1,5 +1,5 @@
 // CV_StatueMasterScript::GetStatuePointingPosition() -- which of the statue's facing angles matches the current time of day: the day fraction's fractional part is compared with AnglesToFaceList[1..3] within a tolerance; returns the index, or 0
-// Leaf: ?GetStatuePointingPosition@CV_StatueMasterScript@NScript@@
+// Leaf: ?GetStatuePointingPosition@CV_StatueMasterScript@NScript@@QAEJXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ED4420, length 157 bytes (padded to 160).
 // Callees: CGameScriptInterface::GetTimeOfDay (slot 647, +0xa1c) of the interface at +0x40 (HHMM long), __ftol2 @ 0x00BFEA70.
 // Float pool: 1/60 @ 0x0125BB08, 1/24 @ 0x0122DC88, the angle tolerance @ 0x0125B25C.

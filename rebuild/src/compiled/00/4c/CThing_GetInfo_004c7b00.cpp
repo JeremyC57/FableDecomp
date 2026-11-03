@@ -1,5 +1,5 @@
 // CThing::GetInfo(CThingInfo*) const -- fill the thing's info: "None" names for a def-less thing, else the def name as SubTypeName
-// Leaf: ?GetInfo@CThing
+// Leaf: ?GetInfo@CThing@@UBEXPAVCThingInfo@@@Z
 // Naming wave 18: the global stand-in g_pGlobalSystems (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
 //   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C7B00, 123 bytes (+5 int3). __fastcall virtual, `ret 4`.

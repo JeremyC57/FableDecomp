@@ -1,5 +1,5 @@
 // CBankFile::OpenReadWrite(const CCharString& bankHandle, unsigned long flags, unsigned long alignment) -- reset the open state and either attach to the retail bank set (retail mode, not forced to disk) or open the bank's disk file read/write
-// Leaf: ?OpenReadWrite@CBankFile@@
+// Leaf: ?OpenReadWrite@CBankFile@@UAEXABVCCharString@@KK@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009CB960, length 218 bytes (+6 int3), virtual, ret 0xc.
 // Callees: CCharString::operator= @ 0x0099EFB0, CWideString::operator= @ 0x0099B7D0, CWideString::~CWideString @ 0x0099B510;
 // on the bank-file manager singleton @ 0x013CA79C (retail-mode byte +0x14 = 0x013CA7B0): GetRetailBankPath(const CCharString&)

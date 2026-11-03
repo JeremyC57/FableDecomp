@@ -1,5 +1,5 @@
 // CV_FisticuffsClubScript::SetFightCount() -- sets the number of fights for the club of the current region from the script definition (Bowerstone also for an unknown region)
-// Leaf: ?SetFightCount@CV_FisticuffsClubScript@NScript@@
+// Leaf: ?SetFightCount@CV_FisticuffsClubScript@NScript@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E82800, length 104 bytes (jump table at 0x00E82858 inside the row), `ret`.
 // Data: the script definition @ 0x0143E90C (fight counts at +0x600 / +0x604 / +0x608 / +0x60c for regions 1..4).
 // Layout (retail = Ego_r.pdb CV_FisticuffsClubScript - 0x14): RelevantRegion +0x48, FightCount +0x88.

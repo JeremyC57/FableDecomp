@@ -1,5 +1,5 @@
 // CQ_BreakSiegeScript::WatchForTermination() -- put Knothole Glade in village limbo with the siege theme and no decals (again each time the region reloads) until the quest ends; then lift the limbo, remove the blockage, open the gate, play the end cutscene, fail (with the failure reason text) or complete the quest, restore theme and decals, fade in, and once Knothole Glade unloads deactivate the quest
-// Leaf: ?WatchForTermination@CQ_BreakSiegeScript@NScript@@
+// Leaf: ?WatchForTermination@CQ_BreakSiegeScript@NScript@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D1D7D0, length 1253 bytes.
 // Callees: CCharString() 0x0099E4B0 / CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, Compare 0x00411570
 //   (the inlined CCharString == const char*), CWideString() 0x0099AED0 / operator=(const wchar_t*) 0x0099B800 / ~CWideString

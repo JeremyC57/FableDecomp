@@ -1,5 +1,5 @@
 // NTCScriptedControl::CActionTalkBase::OnCleanup() -- end a talk: make a listening target stop looking at the talker, restore the talker's conversation attitude (unless the conversation mode was added), let a running conversation mode (27) linger three seconds or remove it, show the subtitle background again and clear the subtitles when the profile has them switched off
-// Leaf: ?OnCleanup@CActionTalkBase@NTCScriptedControl@@
+// Leaf: ?OnCleanup@CActionTalkBase@NTCScriptedControl@@UAEXXZ
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00714E00, 340 bytes (+ int3 padding), plain `ret`. Slot 5 of the CActionTalkBase

@@ -1,5 +1,5 @@
 // NParticleEngine::CPSCSingleSprite::Initialise(CIEngine* engine, CParticleSystem& system, const CParticleUpdateParameters<unsigned long, unsigned long>& params, CEnginePrimitiveHandle& parent) -- vtable slot 28: initialise the spline base, then (with an engine) create the sprite child primitive -- one per crossed sprite when CrossedSprites is set -- and the trail child primitive under the parent handle unless they already exist, recording their ids in PrimIDList, mark the component initialised and pass StayWithEmitter to the particle system; returns the initialised flag
-// Leaf: ?Initialise@CPSCSingleSprite@
+// Leaf: ?Initialise@CPSCSingleSprite@NParticleEngine@@UAE_NPAVCIEngine@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z
 // Grade: RELOCATION_MATCH -- the crossed-sprite loop as i = 0, a count guard, then the zero C3DVector built once in the
 //   guarded scope and a do/while (retail's preheader temporary; the parked 'lane gap: loop-invariant hoisting' was
 //   source shape)

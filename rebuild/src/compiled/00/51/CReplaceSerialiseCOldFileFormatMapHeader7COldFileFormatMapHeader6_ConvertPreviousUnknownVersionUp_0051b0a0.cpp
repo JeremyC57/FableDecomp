@@ -1,5 +1,5 @@
 // CReplaceSerialise<COldFileFormatMapHeader7,COldFileFormatMapHeader6>::ConvertPreviousUnknownVersionUp(void* data) -- build a fresh version-7 map header from an older record: convert the record up to version 6 first when it is older still, copy its fields forward (no sound theme entries yet) and hand back the new header in a counted pointer
-// Leaf: ?ConvertPreviousUnknownVersionUp@?$CReplaceSerialise@VCOldFileFormatMapHeader7@@VCOldFileFormatMapHeader6@@
+// Leaf: ?ConvertPreviousUnknownVersionUp@?$CReplaceSerialise@VCOldFileFormatMapHeader7@@VCOldFileFormatMapHeader6@@@@SI?AV?$CCountedPointer@VCOldFileFormatMapHeader7@@@@PAX@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0051B0A0, 320 bytes (0x133 + int3 padding), static __fastcall: the hidden
 //   CCountedPointer return slot in ecx, data in edx, plain `ret`; 0x14-byte frame (the return slot, the version-6
 //   temporary and held's count block).

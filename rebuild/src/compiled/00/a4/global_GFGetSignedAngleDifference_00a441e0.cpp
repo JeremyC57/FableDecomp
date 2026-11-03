@@ -1,6 +1,6 @@
 // GFGetSignedAngleDifference(float from, float to) -- signed difference to - from between two angles held as fractions of a full turn, wrapped into [-0.5, 0.5)
 // Grade: RELOCATION_MATCH (agent902, 2nd grade) -- `if ((diff = to - from) < 0.0f || diff >= 1.0f)` keeps the compared value on the x87 stack (fcom, fst after it) and the re-spelled `to - from` in the fmod reloads its frame home, as retail.
-// Leaf: ?GFGetSignedAngleDifference@@
+// Leaf: ?GFGetSignedAngleDifference@@YIMMM@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A441E0, length 98 bytes (+14 int3 pad), `__fastcall` with both floats on
 //   the stack (`ret 8`), float in st(0).
 // Name: Ego_r.pdb / FableWin.pdb `?GFGetSignedAngleDifference@@YIMMM@Z` (name set); the catalogue's "AngleDifference" is

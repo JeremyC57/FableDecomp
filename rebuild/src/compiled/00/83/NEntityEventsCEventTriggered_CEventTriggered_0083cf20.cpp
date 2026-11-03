@@ -1,5 +1,5 @@
 // NEntityEvents::CEventTriggered::CEventTriggered(CThing&) -- the event starts at world frame 0 and its TriggeredBy intelligent pointer is pointed at the argument
-// Leaf: ??0CEventTriggered@NEntityEvents@@QAE@
+// Leaf: ??0CEventTriggered@NEntityEvents@@QAE@AAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0083CF20, 52 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity: NEntityEvents::CEventTriggered::CEventTriggered(CThing&) -- proven; evidence: it stores vtable 0x01273014 whose RTTI is
 //   .?AVCEventTriggered@NEntityEvents@@ : CEventBase@NEntityEvents; FableWin.pdb name set holds ??0CEventTriggered@NEntityEvents@@QAE@AAVCThing@@@Z;

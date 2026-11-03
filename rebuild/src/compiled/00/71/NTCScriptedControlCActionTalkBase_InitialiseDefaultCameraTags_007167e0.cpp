@@ -1,5 +1,5 @@
 // NTCScriptedControl::CActionTalkBase::InitialiseDefaultCameraTags() -- fill the static default conversation camera-tag list
-// Leaf: ?InitialiseDefaultCameraTags@
+// Leaf: ?InitialiseDefaultCameraTags@CActionTalkBase@NTCScriptedControl@@CIXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007167E0, 842 bytes, `?InitialiseDefaultCameraTags@CActionTalkBase@NTCScriptedControl@@CIXXZ`
 //   (private static __fastcall, no arguments, plain `ret`).
 // Label correction: catalog "CActionTalkBase_InitMorphs_Hardcoded" -> NTCScriptedControl::CActionTalkBase::InitialiseDefaultCameraTags

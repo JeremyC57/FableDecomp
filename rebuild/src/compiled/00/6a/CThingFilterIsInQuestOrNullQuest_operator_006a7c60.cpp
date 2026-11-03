@@ -1,5 +1,5 @@
 // CThingFilter_IsInQuestOrNullQuest::operator()(const CThing& thing) const -- true when the thing's section is the filter's quest section, "NULL" or empty
-// Leaf: ??RCThingFilter_IsInQuestOrNullQuest@@
+// Leaf: ??RCThingFilter_IsInQuestOrNullQuest@@QBE_NABVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A7C60, length 157 bytes, thiscall `ret 4`.
 // Callees: Compare(const char*, const char*) @ 0x00411570 (__fastcall, the inlined CCharString equality),
 //   CBasicString<char>::operator==(const char*) const @ 0x004115A0. Strings: "NULL" 0x012393E4, "" 0x0122D70E.

@@ -1,5 +1,5 @@
 // NEntityEvents::CEventFiredShot::CEventFiredShot(CThing&) -- the event starts at world frame 0 and its PTarget intelligent pointer is pointed at the argument
-// Leaf: ??0CEventFiredShot@NEntityEvents@@QAE@
+// Leaf: ??0CEventFiredShot@NEntityEvents@@QAE@AAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BFE20, 52 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity: NEntityEvents::CEventFiredShot::CEventFiredShot(CThing&) -- proven; evidence: it stores vtable 0x0127F2C0 whose RTTI is
 //   .?AVCEventFiredShot@NEntityEvents@@ : CEventBase@NEntityEvents; FableWin.pdb name set holds ??0CEventFiredShot@NEntityEvents@@QAE@AAVCThing@@@Z;

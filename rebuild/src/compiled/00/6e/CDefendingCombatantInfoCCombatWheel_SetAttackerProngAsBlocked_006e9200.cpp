@@ -1,5 +1,5 @@
 // CDefendingCombatantInfo::CCombatWheel::SetAttackerProngAsBlocked(const CThingCreatureBase& attacker, CAttackingCombatantInfo& attackerInfo) -- block the prong the attacker holds on its wheel ring (when the ring index is valid and the attacker owns a prong there), then detach the attacker from the wheel (ring index -1)
-// Leaf: ?SetAttackerProngAsBlocked@CCombatWheel@CDefendingCombatantInfo@@
+// Leaf: ?SetAttackerProngAsBlocked@CCombatWheel@CDefendingCombatantInfo@@QAEXABVCThingCreatureBase@@AAVCAttackingCombatantInfo@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E9200, 101 bytes (112 with int3 padding), thiscall, `ret 8`.
 // Identity: Ego_r.pdb name set `?SetAttackerProngAsBlocked@CCombatWheel@CDefendingCombatantInfo@@QAEXABVCThingCreatureBase@@
 //   AAVCAttackingCombatantInfo@@@Z`; the landed CCombatManager::GetPreferredPos 0x006EA770 calls this address as

@@ -1,5 +1,5 @@
 // NUISystem::CComponent::MakeAvailableDynamically() -- brighten every UI state's colour (the inline MakeAvailable loop: R, G, B of each CUIState scaled by 4/3), then fade straight to the current state's colour keeping the component's alpha
-// Leaf: ?MakeAvailableDynamically@CComponent
+// Leaf: ?MakeAvailableDynamically@CComponent@NUISystem@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00530DA0, 288 bytes, `__fastcall`, plain `ret`; virtual, CComponent vtable 0x0124608C
 //   slot 95 (and the 40 derived NUISystem vtables, e.g. CSprite 0x0122F5D4, CYesNo 0x0122F884). Label correction: the
 //   manifest's "DynamicListEntry::MakeAvailableWithCallbacks" is propagated; Ego_r.pdb has

@@ -1,5 +1,5 @@
 // CReplaceSerialise<COldFileFormatLevel2,COldFileFormatLevel1>::ConvertPreviousUnknownVersionUp(void* data) -- build a fresh version-2 level-file header from an older record: convert the record up to version 1 first when it is not version 1, copy MapDataOffset/ThingDataOffset across, zero BrushDataOffset and hand the new header back in a counted pointer
-// Leaf: ?ConvertPreviousUnknownVersionUp@?$CReplaceSerialise@VCOldFileFormatLevel2@@VCOldFileFormatLevel1@@
+// Leaf: ?ConvertPreviousUnknownVersionUp@?$CReplaceSerialise@VCOldFileFormatLevel2@@VCOldFileFormatLevel1@@@@SI?AV?$CCountedPointer@VCOldFileFormatLevel2@@@@PAX@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00514790, 245 bytes, static __fastcall (the hidden CCountedPointer return slot in ecx,
 //   data in edx), plain `ret`; 0x14-byte frame. FableWin.pdb names the template
 //   `?ConvertPreviousUnknownVersionUp@?$CReplaceSerialise@VCOldFileFormatLevel2@@VCOldFileFormatLevel1@@@@SI?AV?$CCountedPointer@VCOldFileFormatLevel2@@@@PAX@Z`.

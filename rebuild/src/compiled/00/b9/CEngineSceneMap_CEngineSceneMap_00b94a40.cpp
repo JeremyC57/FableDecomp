@@ -1,5 +1,5 @@
 // CEngineSceneMap::CEngineSceneMap(CEngineScene*, unsigned long, const C2DBoxF&) -- base CBase(), own vtable, empty GridLevels array, then Initialise(scene, maxLevels, area)
-// Leaf: ??0CEngineSceneMap@
+// Leaf: ??0CEngineSceneMap@@QAE@PAVCEngineScene@@KABVC2DBoxF@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B94A40, length 51 bytes.
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0; CEngineSceneMap::Initialise(CEngineScene*, unsigned long,
 // const C2DBoxF&) @ 0x00B949A0 (the manifest labels that body as the constructor: it stores the

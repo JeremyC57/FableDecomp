@@ -1,5 +1,5 @@
 // CCreatureAction_Undress::PerformAction() -- take every type-2 appearance modifier the creature wears whose object def's appearance-modifier sub def is removable, then for each (last first) take it off and drop the item as a thing at the head position, offset by a random +-0.2 in X/Y, and give it that offset (with 0.15 up) as its velocity
-// Leaf: ?PerformAction@CCreatureAction_Undress
+// Leaf: ?PerformAction@CCreatureAction_Undress@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00846410, length 580 bytes, plain `ret` (virtual).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020, malloc (CRT
 //          import thunk) @ 0x00BFEA0E, CTCHeroAttachableAppearanceModifiers::GetModifiers(list<long>&, long) @ 0x00706800 /

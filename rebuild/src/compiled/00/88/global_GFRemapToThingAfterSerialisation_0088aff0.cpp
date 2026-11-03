@@ -1,5 +1,5 @@
 // GFRemapToThingAfterSerialisation(CIntelligentPointer<CThing>& pointer) -- after loading: when the pointed thing is a live placeholder carrying the interface-0xEB component, kill it and repoint at the thing with the UID that component recorded
-// Leaf: ?GFRemapToThingAfterSerialisation@@
+// Leaf: ?GFRemapToThingAfterSerialisation@@YIXAAV?$CIntelligentPointer@VCThing@@@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088AFF0, length 193 bytes (+ int3 padding), `__fastcall` (pointer in
 //   ecx), plain `ret`.
 // Identity: Ego_r.pdb `?GFRemapToThingAfterSerialisation@@YIXAAV?$CIntelligentPointer@VCThing@@@@@Z`; callers 0x006C1712,

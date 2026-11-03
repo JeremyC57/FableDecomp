@@ -1,6 +1,6 @@
 // CTCActivationReceptorChest::Activate() -- the base receptor Activate, then Open the thing's chest component (interface 0x3c)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FFC70, length 85 bytes.
-// Leaf: ?Activate@CTCActivationReceptorChest
+// Leaf: ?Activate@CTCActivationReceptorChest@@UAEXXZ
 // Callees: CTCActivationReceptorBase::Activate @ 0x007F76E0 (non-virtual base call; the manifest's labels for 0x007F7700
 // are propagated), CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020, CTCChest::Open @ 0x00750540.
 // Ego_r.pdb: `?Activate@CTCActivationReceptorChest@@UAEXXZ` (slot 28; the chunk's "vfunc_28").

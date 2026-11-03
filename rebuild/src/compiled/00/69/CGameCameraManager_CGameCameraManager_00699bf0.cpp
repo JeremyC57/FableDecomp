@@ -1,5 +1,5 @@
 // CGameCameraManager::~CGameCameraManager() -- the camera manager's destructor: clear the three camera-list iterators and the default camera-mode def, then destroy the debug-point list, the registered-mode map, the def pointers, both camera lists, the observed thing, the quake list, the script-module / mode counted pointers, the camera-point list and the tools' scan list
-// Leaf: ??1CGameCameraManager@
+// Leaf: ??1CGameCameraManager@@UAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00699BF0, 624 bytes (610 without padding), thiscall `ret`. Vtables: CGameCameraManager
 //   0x0125C754 (rtti-vtables.tsv), CAIGameCameraBase 0x0125C1F4 (the inline base dtor's store at the end).
 // Callees: _List_base<pair<C3DVector, CRGBColour> >::~_List_base 0x0069CDB0 (DebugPoints, out of line), _Rb_tree::_M_erase

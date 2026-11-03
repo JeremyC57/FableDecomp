@@ -1,5 +1,5 @@
 // CV_TourGuideScript::WatchForGuideKilled() -- look up the TourGuideGuide, wait until he is alive (spawned), then wait until he has been killed (by anyone) and (unless the thread is terminating) record TourGuideKilled
-// Leaf: ?WatchForGuideKilled@CV_TourGuideScript@NScript@@
+// Leaf: ?WatchForGuideKilled@CV_TourGuideScript@NScript@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EE4A70, 313 bytes (320 with padding), plain `ret`.
 // Callees: CCharString(const char*, long) 0x0099EBF0, ~CCharString 0x0099EAE0, ~CBaseClass 0x0099A2E0, operator delete
 //   0x00BFE9BC (MSVCR71), ~CScriptThing 0x004AA840 (the out-of-line copy), CScriptBase::IsActiveThreadTerminating

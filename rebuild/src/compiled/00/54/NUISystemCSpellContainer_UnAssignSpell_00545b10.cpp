@@ -1,5 +1,5 @@
 // NUISystem::CSpellContainer::UnAssignSpell(unsigned long slot) -- undoes a spell assignment in a slot: a pending new spell there is deleted and the slot's base spell restored; otherwise the slot's child is deleted and replaced (also as the base spell) by a fresh empty-slot component that copies the old child's per-state position and colour
-// Leaf: ?UnAssignSpell@CSpellContainer@NUISystem@@
+// Leaf: ?UnAssignSpell@CSpellContainer@NUISystem@@UAEXK@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00545B10, 730 bytes (0x2DA + int3 padding to 736), thiscall `ret 4`, /O2 esp frame
 //   (sub esp,18h). Slot 144 of the CSpellContainer vtable 0x0124786C (absolute ref 0x01247AAC). Identity: Ego_r.pdb
 //   ?UnAssignSpell@CSpellContainer@NUISystem@@UAEXK@Z (slot 145 is SetEmptySlotDef 0x00546060, 143 AssignSpell 0x005458A0,

@@ -1,5 +1,5 @@
 // CQ_EndGameScript::CheckRegionLeaving() -- end-game quest thread: while running, keep the Darkwood5 creature generators off; wait until Darkwood5 is loaded, kick off the quest start screen once, wait for ShowUndeadBar, show the undead bar (when UndeadBar is below the def maximum), wait until Darkwood5 is unloaded again and remove the bar
-// Leaf: ?CheckRegionLeaving@CQ_EndGameScript@NScript@@
+// Leaf: ?CheckRegionLeaving@CQ_EndGameScript@NScript@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D27950, 686 bytes (688 with padding).
 // Label correction: catalog "CBeggar::Main" is propagated. The quest Main stores 0x00D27950 as the functor of the thread
 //   named "CheckRegionLeaving" (0x00D277DC..0x00D27809), and the members match Ego_r.pdb CQ_EndGameScript (- 0x14).

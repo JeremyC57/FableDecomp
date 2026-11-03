@@ -1,5 +1,5 @@
 // NCreatureMode::IsAvailableForHeroRun(const CThing& thing) -- running is available to the idle main-player hero in a stand (1), weapon-stand (4) or berserk (0x24) mode, not casting lightning and not carrying a too-heavy weapon
-// Leaf: ?IsAvailableForHeroRun@NCreatureMode@@
+// Leaf: ?IsAvailableForHeroRun@NCreatureMode@@YI_NABVCThing@@@Z
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085F560, length 154 bytes. `__fastcall` free function (ecx = the thing), bool in al.

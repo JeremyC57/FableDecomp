@@ -1,5 +1,5 @@
 // CQ_BanditCampScript::CheckAnyBanditsKilled() -- wait for the camp path to load, then each frame count the hero's bandit kills; the first kill fails the "kill no bandits" boast and reaching the def's quota completes "kill many bandits"
-// Leaf: ?CheckAnyBanditsKilled@CQ_BanditCampScript@NScript@@
+// Leaf: ?CheckAnyBanditsKilled@CQ_BanditCampScript@NScript@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D032F0, length 645 bytes (padded to 656).
 // Callees: IsActiveThreadTerminating 0x00CB7940; CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0;
 // _ftol 0x00BFEA70; _STLP_alloc_proxy<unsigned long*> ctor 0x004502EB; vector<unsigned long>::erase(first, last) 0x0046496F;

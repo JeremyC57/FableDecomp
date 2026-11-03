@@ -1,5 +1,5 @@
 // CCRCSymbolMap::Clear() -- empty the CRC symbol map: clear the CRC-keyed vector-map and the set of used CRCs
-// Leaf: ?Clear@CCRCSymbolMap@@
+// Leaf: ?Clear@CCRCSymbolMap@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A38550, 62 bytes (+2 int3), `__fastcall`, plain `ret`. No callers
 //   (an unreferenced copy kept by the linker).
 // Identity: FableWin.pdb `?Clear@CCRCSymbolMap@@QAEXXZ` (031DA820, right after the constructor and scalar deleting

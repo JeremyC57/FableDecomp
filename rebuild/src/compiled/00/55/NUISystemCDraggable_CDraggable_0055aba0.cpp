@@ -1,5 +1,5 @@
 // NUISystem::CDraggable::~CDraggable() -- destroy a draggable control: delete its two owned action lists (on dropped, on dropped nowhere), then the CClickable base destructor (tail jump)
-// Leaf: ??1CDraggable@
+// Leaf: ??1CDraggable@NUISystem@@UAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0055ABA0, 115 bytes; ends in `jmp` to the base destructor.
 // Callees: _List_base<CCountedPointer<NUISystem::CAction> >::clear() 0x005356A0, free 0x00BFEA14 (each list's sentinel),
 //   operator delete 0x00BFE9BC (each list object), NUISystem::CClickable::~CClickable 0x0055B760 (as named by the landed

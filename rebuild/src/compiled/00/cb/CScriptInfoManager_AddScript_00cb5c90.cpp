@@ -1,5 +1,5 @@
 // CScriptInfoManager::AddScript(const CScriptInfo& info, CCharString section) -- register a script: when it names a code section, register that section (short name, the script's name) with the code-section manager and remember it; then add the script to the sorted Scripts map
-// Leaf: ?AddScript@CScriptInfoManager@@
+// Leaf: ?AddScript@CScriptInfoManager@@IAEXABVCScriptInfo@@VCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB5C90, 240 bytes. __fastcall, `ret 8`. FableWin.pdb
 // ?AddScript@CScriptInfoManager@@IAEXABVCScriptInfo@@VCCharString@@@Z (protected). Manifest label "AddScript" is right.
 // Callees: CCharString copy ctor 0x0099EC30, dtor 0x0099EAE0; CTBaseSingleton<CCodeSectionManager>::Get 0x00414CE0

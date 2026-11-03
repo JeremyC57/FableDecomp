@@ -1,5 +1,5 @@
 // CThingCreatureBase::GetHeadPos(bool recalculate) const -- the creature's head position: the cached offset from its position when valid (and no recalculation is asked for), otherwise the graphic's EYE_SET_L dummy, the focus_eye_01 or TARGET_CURSOR_POINT helper, or 1.5 above the position; the offset from the position is cached and marked valid
-// Leaf: ?GetHeadPos@CThingCreatureBase
+// Leaf: ?GetHeadPos@CThingCreatureBase@@QBE?AVC3DVector@@_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00661B40, length 335 bytes (`ret 8`: hidden result + bool).
 //   Signature from Ego_r.pdb `?GetHeadPos@CThingCreatureBase@@QBE?AVC3DVector@@_N@Z`.
 // Callees: CThing::GetPos() const @ 0x004C73D0, CTCGraphicAppearance::GetDummyObject(const CCharString&, long,

@@ -2,7 +2,7 @@
 //   cannot be aborted yet, release the lock, Sleep(10) and retake it); then leave the loading-memory failure handler,
 //   delete the critical section, and destroy the members (disposal list, the two pointer sets, the three counted
 //   pointers) before the CBankFile base
-// Leaf: ??1CBankFileAsync@@
+// Leaf: ??1CBankFileAsync@@UAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009D6490, 524 bytes (528 with padding).
 // Label correction: catalogued as "CBankFile::CBankFile::Destructor"; it stores the CBankFileAsync vtable 0x0129B8D4
 //   and destroys the async members (+0x110..+0x14c) of the landed CBankFileAsync ctor 0x009D5F80.

@@ -9,7 +9,7 @@
 //   No engine header exists for CTargetingDef.
 // Shape: `this` in esi, the context in edi, one `lea eax ; push eax ; mov ecx,edi ; call` per field; the last one
 //   folds the address into esi (`add esi,8Ch`).
-// Leaf: ?Transfer@CTargetingDef
+// Leaf: ?Transfer@CTargetingDef@@UAEXAAVCPersistContext@@@Z
 #pragma optimize("s", on)
 struct CTargetingRangeMap {                                               // retail map<ETargetingType,float> (12 bytes)
     void*         head;                                                   // +0x00

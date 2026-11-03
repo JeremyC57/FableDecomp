@@ -1,5 +1,5 @@
 // CBankFile::AddEntry(const CCharString& symbol, unsigned long type, const CCharString& filename, CCountedPointer<CBankStateBlock> state) -- add a single-file bank entry: wrap the filename in a one-element CArray<CCharString> and forward to the virtual AddEntryMultipleFiles
-// Leaf: ?AddEntry@CBankFile@@
+// Leaf: ?AddEntry@CBankFile@@QAEXABVCCharString@@K0V?$CCountedPointer@VCBankStateBlock@@@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009CD620, 239 bytes, thiscall `ret 14h` (two references, the type word and the
 // by-value 8-byte counted pointer). FableWin/Ego donor (0x00B1BF50):
 // ?AddEntry@CBankFile@@QAEXABVCCharString@@K0V?$CCountedPointer@VCBankStateBlock@@@@@Z; the virtual callee (vtable slot 6,

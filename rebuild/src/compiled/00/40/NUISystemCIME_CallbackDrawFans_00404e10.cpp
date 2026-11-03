@@ -1,5 +1,5 @@
 // NUISystem::CIME::Callback_DrawFans(const IMEUI_VERTEX* vertices, unsigned int count) -- ImeUi fan callback: draw the fan as screen triangles (centre, v[i], v[i+1], wrapping to v[1]) in each vertex's RGB with the composition alpha
-// Leaf: ?Callback_DrawFans@CIME@NUISystem@@
+// Leaf: ?Callback_DrawFans@CIME@NUISystem@@SIXPBUIMEUI_VERTEX@@I@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00404E10, 225 bytes (static __fastcall, `ret`).
 // Identity: FableWin.pdb ?Callback_DrawFans@CIME@NUISystem@@SIXPBUIMEUI_VERTEX@@I@Z (the ImeUi DrawFans hook; sibling of
 // Callback_DrawRect). Callees: GFACoordToVCoord 0x009E21D0 (__fastcall in, out; converted in place), GFGetSystemManager

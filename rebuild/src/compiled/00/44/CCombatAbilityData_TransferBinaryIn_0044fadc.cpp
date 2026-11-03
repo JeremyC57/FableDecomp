@@ -1,5 +1,5 @@
 // CCombatAbilityData::TransferBinaryIn(CMemoryDataInputStream& stream, CCombatAbilityData& defaults) -- binary def load: PercentageChance, SecondsDuration and SecondsToWaitBeforeRepeat as three 4-byte persist reads, then the Anim def string reads itself
-// Leaf: ?TransferBinaryIn@CCombatAbilityData
+// Leaf: ?TransferBinaryIn@CCombatAbilityData@@UAEXAAVCMemoryDataInputStream@@AAV1@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0044FADC, length 284 bytes (`ret 8`); size-optimised frame-pointer def TU.
 // Pragma: #pragma optimize("y", off) + #pragma optimize("s", on) (the landed CPersistTraits read rows' TU settings).
 // Callees: CDataInputStream::ReadWithSrcChunkOverflow @ 0x00993CA0 (x3, the chunk-overflow path), CDefString::

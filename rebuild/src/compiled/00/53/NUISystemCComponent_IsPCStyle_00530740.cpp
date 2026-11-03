@@ -1,5 +1,5 @@
 // NUISystem::CComponent::IsPCStyle() const -- read the PCStyle flag of the component's UI definition
-// Leaf: ?IsPCStyle@CComponent
+// Leaf: ?IsPCStyle@CComponent@NUISystem@@UBE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00530740, 56 bytes (64 with padding).
 // Vtable 0x0122F5D4 (NUISystem::CSprite, inherited from CComponent) slot 113; Ego_r.pdb declares
 // `virtual bool CComponent::IsPCStyle() const` (?IsPCStyle@CComponent@NUISystem@@UBE_NXZ).

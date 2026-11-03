@@ -1,5 +1,5 @@
 // CCreatureAction_PlayAnimationWithLookTurning::CCreatureAction_PlayAnimationWithLookTurning(CThingCreatureBase&, const CAnimationEntry&, bool, bool, long, const CSoundPair&, bool, bool, bool, long, long) -- forwards every play setting to the full play-animation base, then the look-turning vtable
-// Leaf: ??0CCreatureAction_PlayAnimationWithLookTurning@@QAE@AAVCThingCreatureBase@@ABVCAnimationEntry@@_N
+// Leaf: ??0CCreatureAction_PlayAnimationWithLookTurning@@QAE@AAVCThingCreatureBase@@ABVCAnimationEntry@@_N2JABVCSoundPair@@222JJ@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00842DF0, 77 bytes, `ret 2Ch`, returns this.
 // Identity: ??0CCreatureAction_PlayAnimationWithLookTurning@@QAE@AAVCThingCreatureBase@@ABVCAnimationEntry@@_N2JABVCSoundPair@@222JJ@Z (Ego_r.pdb); the own vtable stored after the base constructor is 0x012740F4 =
 //   CCreatureAction_PlayAnimationWithLookTurning (RTTI). The manifest label "CCreatureAction_PlayAnimationWithLookTurning_Construct" is descriptive.

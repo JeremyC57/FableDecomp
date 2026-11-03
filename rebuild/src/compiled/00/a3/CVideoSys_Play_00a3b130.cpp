@@ -1,5 +1,5 @@
 // CVideoSys::Play() -- restart a loaded movie: rewind (retrying put_CurrentPosition(0) until it succeeds), try IMediaControl::Run up to 50 times, then wait for State_Running and record state 1
-// Leaf: ?Play@CVideoSys@@
+// Leaf: ?Play@CVideoSys@@QAE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A3B130, length 112 bytes.
 // Callees: IMediaPosition::put_CurrentPosition (slot 8, +0x20, a double pushed as a qword), IMediaControl::Run (slot 7, +0x1c),
 // CVideoSys::WaitForState(_FilterState) @ 0x00A3B0F0. Data: 0.0 @ 0x0122ED70 (qword).

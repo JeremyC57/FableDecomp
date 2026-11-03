@@ -1,5 +1,5 @@
 // std::less<CCharString>::operator()(const CCharString&, const CCharString&) const -- string ordering for the CCharString maps
-// Leaf: ??R?$less@VCCharString
+// Leaf: ??R?$less@VCCharString@@@std@@QBE_NABVCCharString@@0@Z
 // Retail: Fable.exe @ 0x0042AAB3, 41 bytes, `ret 8`. The inlined CCharString::operator<: equal data pointers -> false,
 // null left -> true, null right -> false, else CBasicString<char>::operator< (0x00429950) on the two data objects. Callers
 // are the map<CCharString, ...> tree code around 0x0042AD4D..0x0042BD71.

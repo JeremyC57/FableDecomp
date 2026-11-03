@@ -1,5 +1,5 @@
 // CThingSoundEmitter::ConstructFromParams(const C3DVector&, const CThing*, bool) -- base thing construction (def 0, player 4, the map under the position), then the attached thing (intelligent pointer + flag), the keep-playing flag and the position
-// Leaf: ?ConstructFromParams@CThingSoundEmitter
+// Leaf: ?ConstructFromParams@CThingSoundEmitter@@IAE_NABVC3DVector@@PBVCThing@@_N@Z
 // Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
 //   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00836910, 219 bytes, `ret 0Ch`, bool in al.

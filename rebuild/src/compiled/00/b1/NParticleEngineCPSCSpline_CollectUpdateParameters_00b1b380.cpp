@@ -1,5 +1,5 @@
 // NParticleEngine::CPSCSpline::CollectUpdateParameters(CParticleUpdateParameters<unsigned long,unsigned long>& params, const unsigned long& prefix) -- vtable slot 10: registers the spline component as the update-parameter callback for key `prefix`
-// Leaf: ?CollectUpdateParameters@CPSCSpline@
+// Leaf: ?CollectUpdateParameters@CPSCSpline@NParticleEngine@@UAEXAAV?$CParticleUpdateParameters@KK@2@ABK@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B1B380, length 159 bytes, `ret 8`.
 // Signature from Ego_r.pdb: ?CollectUpdateParameters@CPSCSpline@NParticleEngine@@UAEXAAV?$CParticleUpdateParameters@KK@2@ABK@Z;
 //   slot 10 of the CPSCSpline vtable 0x012A0934 (absolute ref 0x012A095C).

@@ -1,5 +1,5 @@
 // CAIStateGroup_SitInPub::GetBenchWithOnePersonSittingThere(const CThingBuilding& building) const -- the first bench in the pub's owned-object list that has exactly one person sitting on it (find_if with CIsBenchWithOnePerson), or 0 when the building owns nothing (no thing-owner component) or no bench qualifies
-// Leaf: ?GetBenchWithOnePersonSittingThere@CAIStateGroup_SitInPub
+// Leaf: ?GetBenchWithOnePersonSittingThere@CAIStateGroup_SitInPub@@ABEPAVCThingObject@@ABVCThingBuilding@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0094B840, 100 bytes (+ int3 padding to 112), `ret 4`.
 // Callees: CVectorMap LowerBound const @ 0x004365B0 (the inlined const GetInterface of type 0x21 = CTCThingOwner:
 //   bitset word +0x24 bit 1), std::find_if<list const iterator, CIsBenchWithOnePerson> @ 0x0094BA90 (/Gr __fastcall:

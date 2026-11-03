@@ -1,5 +1,5 @@
 // CAIStateGroup_Thunder::Cleanup() -- when PTargetThing is alive and has a stealth component, mark it as in danger from this group's creature (DANGER_STATUS_0)
-// Leaf: ?Cleanup@CAIStateGroup_Thunder@@
+// Leaf: ?Cleanup@CAIStateGroup_Thunder@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0096C1E0, 112 bytes (body 0x6F + int3), thiscall, `ret`.
 // Identity: vtable 0x0128CE2C slot 9 (RTTI .?AVCAIStateGroup_Thunder@@; bases CAIStateGroup_Thunder <- CAIStateGroupBase <- CBaseClass); slot 2 is OnActivate and slot 9 Cleanup in the
 //   landed CAIStateGroup_* models (e.g. CAIStateGroup_MinionSitOnSeatBase::Cleanup 0x0090FA60). PTargetThing is the

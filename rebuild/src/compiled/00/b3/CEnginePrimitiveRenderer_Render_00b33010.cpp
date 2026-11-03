@@ -1,5 +1,5 @@
 // CEnginePrimitiveRenderer::Render(const CEngineComponentRenderParams& params) -- render one layer when the camera allows it: inside a render-state capture block, prepare the layer, then per layer either render every scene, flush the matching sub-primitive lists (with the water/shadow renderers around them where enabled) or draw the occlusion pass; finally flush list 0 (and list 1 on request) and finish the layer
-// Leaf: ?Render@CEnginePrimitiveRenderer@@
+// Leaf: ?Render@CEnginePrimitiveRenderer@@UAEXABVCEngineComponentRenderParams@@@Z
 // Layout: local model -- the method overrides the CEngineComponent base at +0x268 (this arrives adjusted, the body works on
 //   this-0x268); full-object fields: light-index mode +0x78, flags +0xbd/+0xbe, the scene vector at +0x338 (retail STLport 12 bytes).
 struct CTrackedRenderState;

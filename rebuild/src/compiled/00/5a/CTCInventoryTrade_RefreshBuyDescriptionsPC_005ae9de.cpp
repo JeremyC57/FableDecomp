@@ -1,5 +1,5 @@
 // CTCInventoryTrade::RefreshBuyDescriptionsPC(NUISystem::CComponent* parent) -- replaces the description child of every buyable item entry with a freshly built trade description and adds it to the PC description viewport
-// Leaf: ?RefreshBuyDescriptionsPC@CTCInventoryTrade@@
+// Leaf: ?RefreshBuyDescriptionsPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005AE9DE, 272 bytes (0x110, no padding: /Os TU), thiscall `ret 4`. One caller
 //   (0x005B0F63). Twin of RefreshSellDescriptionsPC 0x005AEAEE (ItemsToSell, the sell description name, buying=false).
 // Identity: Ego_r.pdb ?RefreshBuyDescriptionsPC@CTCInventoryTrade@@QAEXPAVCComponent@NUISystem@@@Z (one CComponent*

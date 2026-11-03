@@ -1,5 +1,5 @@
 // CRenderManager2D::Draw2DBox(const C2DBoxF&, const CRGBColour&, unsigned long) -- draw a filled 2D box at depth 0 by forwarding to Draw2DBoxWithZ
-// Leaf: ?Draw2DBox@CRenderManager2D@@
+// Leaf: ?Draw2DBox@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@K@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009DE3F0, length 25 bytes.
 // PDB (FableWin): ?Draw2DBox@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCRGBColour@@K@Z. The catalog label
 // "ConstructString" (fastcall, CWideString*) is propagated and wrong: the body keeps `this` in ecx, pushes

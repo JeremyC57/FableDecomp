@@ -1,5 +1,5 @@
 // CV_HeroDollsScript::RemoveHeroDolls() -- take each of the seven hero dolls (Briar Rose, Maze, Scarlet Robe, Thunder, Whisper, Twinblade, Scythe) out of the hero's inventory
-// Leaf: ?RemoveHeroDolls@CV_HeroDollsScript@NScript@@
+// Leaf: ?RemoveHeroDolls@CV_HeroDollsScript@NScript@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E97EA0, 294 bytes (304 with padding), plain `ret`.
 // Callees: CGameScriptInterface slot 125 TakeObjectFromHero(const CCharString&) const (+0x1f4); CCharString(const char*, long)
 //   0x0099EBF0, ~CCharString 0x0099EAE0.

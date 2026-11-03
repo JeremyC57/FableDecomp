@@ -1,5 +1,5 @@
 // NPlayerGui::GFToScreenScaled(const C2DBoxF& box) -- scale a 640x480 GUI box to the real render target
-// Leaf: ?GFToScreenScaled@NPlayerGui@
+// Leaf: ?GFToScreenScaled@NPlayerGui@@YI?AVC2DBoxF@@ABV2@@Z
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00643BFC, 152 bytes, plain `ret` (__fastcall: hidden C2DBoxF result in ecx,
 // box in edx). Size-optimised NPlayerGui TU (`leave` epilogue).

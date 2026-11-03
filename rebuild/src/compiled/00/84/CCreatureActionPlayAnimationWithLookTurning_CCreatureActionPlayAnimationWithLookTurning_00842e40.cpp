@@ -1,5 +1,5 @@
 // CCreatureAction_PlayAnimationWithLookTurning::CCreatureAction_PlayAnimationWithLookTurning(CThingCreatureBase&, const CAnimationEntry&, const CSoundPair&, bool, bool, long, long) -- the play-animation-entry base with the camera-update flag cleared, then the look-turning vtable
-// Leaf: ??0CCreatureAction_PlayAnimationWithLookTurning@@QAE@AAVCThingCreatureBase@@ABVCAnimationEntry@@ABVCSoundPair@@
+// Leaf: ??0CCreatureAction_PlayAnimationWithLookTurning@@QAE@AAVCThingCreatureBase@@ABVCAnimationEntry@@ABVCSoundPair@@_N3JJ@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00842E40, 58 bytes, `ret 1Ch`, returns this.
 // Identity: ??0CCreatureAction_PlayAnimationWithLookTurning@@QAE@AAVCThingCreatureBase@@ABVCAnimationEntry@@ABVCSoundPair@@_N3JJ@Z (Ego_r.pdb); the own vtable stored after the base constructor is 0x012740F4 =
 //   CCreatureAction_PlayAnimationWithLookTurning (RTTI). The manifest label "CCreatureAction_PlayAnimation_ConstructorWithEntry" is descriptive.

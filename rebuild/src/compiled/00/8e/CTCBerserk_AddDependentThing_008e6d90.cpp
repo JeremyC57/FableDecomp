@@ -1,5 +1,5 @@
 // CTCBerserk::AddDependentThing(CThing&) -- appends the thing to the berserk component's dependent-things list
-// Leaf: ?AddDependentThing@CTCBerserk@@QAEX
+// Leaf: ?AddDependentThing@CTCBerserk@@QAEXAAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008E6D90, 66 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity: CTCBerserk::AddDependentThing(CThing&) -- probable; evidence: Ego_r.pdb CTCBerserk::DependentThings is the vector<CIntelligentPointer<CThing> > at +0x4C (no STL member before
 //   it, so the retail offset is the same) and no other class with an Add*(CThing&) name holds such a vector there; the body

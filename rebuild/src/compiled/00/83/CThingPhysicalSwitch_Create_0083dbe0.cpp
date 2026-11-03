@@ -1,5 +1,5 @@
 // CThingPhysicalSwitch::Create(long, const C3DVector&, long, const CCharString&) -- allocate a physical-switch thing through its class allocator, construct it (untriggered, game-object base with the script name), place its physics component at the position with the identity axes, and activate it; null on any failure
-// Leaf: ?Create@CThingPhysicalSwitch
+// Leaf: ?Create@CThingPhysicalSwitch@@SIPAV1@JABVC3DVector@@JABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0083DBE0, 158 bytes, static __fastcall (ecx = def index, edx = position), `ret 8`.
 // Identity: ?Create@CThingPhysicalSwitch@@SIPAV1@JABVC3DVector@@JABVCCharString@@@Z (Ego_r.pdb). The object comes from
 //   CThingPhysicalSwitch::Alloc() 0x0052AD50; the protected ConstructFromParams(long, const C3DVector&, long, const

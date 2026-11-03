@@ -1,6 +1,6 @@
 // NCameraModes::CFirstPerson::CFirstPersonInit::Alloc(CGameCameraManager&, const CDefPointer<const CCameraModeDef>&) const -- allocate and construct a first-person camera mode
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008738F0, 53 bytes, `ret 8`.
-// Leaf: ?Alloc@CFirstPersonInit
+// Leaf: ?Alloc@CFirstPersonInit@CFirstPerson@NCameraModes@@UBEPAVCBase@3@AAVCGameCameraManager@@ABV?$CDefPointer@$$CBVCCameraModeDef@@@@@Z
 // Name: vtable 0x0125C274 slot 0; FableWin.pdb ?Alloc@CFirstPersonInit@CFirstPerson@NCameraModes@@UBEPAVCBase@3@AAVCGameCameraManager@@ABV?$CDefPointer@$$CBVCCameraModeDef@@@@@Z.
 // Callees: operator new @ 0x00BFEA1A (0xd4 bytes, the retail CFirstPerson size), NCameraModes::CBase::CBase(CGameCameraManager&,
 //          const CDefPointer<const CCameraModeDef>&) @ 0x0084E420 (as the landed CSACCombat ctor 0x008733D0 declares it).

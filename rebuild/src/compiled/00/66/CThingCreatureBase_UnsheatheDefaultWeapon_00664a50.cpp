@@ -1,5 +1,5 @@
 // CThingCreatureBase::UnsheatheDefaultWeapon() -- draw the creature's default weapon (the melee weapon when its def prefers melee, else -- unless already busy or already carrying a ranged weapon -- sheathe everything and draw the def's ranged weapon), then, when the def asks for it, reset the combat component's combat type to the def's one if it differs
-// Leaf: ?UnsheatheDefaultWeapon@CThingCreatureBase
+// Leaf: ?UnsheatheDefaultWeapon@CThingCreatureBase@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00664A50, length 336 bytes, plain `ret`.
 //   Name from Ego_r.pdb `?UnsheatheDefaultWeapon@CThingCreatureBase@@QAEXXZ`.
 // Callees: CThingCreatureBase::UnsheatheMeleeWeapon @ 0x006649C0, the creature's virtual slot 77 (+0x134, a busy test),

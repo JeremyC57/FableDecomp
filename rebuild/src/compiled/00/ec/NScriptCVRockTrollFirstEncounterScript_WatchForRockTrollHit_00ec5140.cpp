@@ -1,5 +1,5 @@
 // CV_RockTrollFirstEncounterScript::WatchForRockTrollHit(CScriptThing) -- wait until the hero hits the rock troll (melee or an aggressive special ability), then, if the troll still has health left, show its red quest-info health bar and turn the quest info on
-// Leaf: ?WatchForRockTrollHit@CV_RockTrollFirstEncounterScript@NScript@@
+// Leaf: ?WatchForRockTrollHit@CV_RockTrollFirstEncounterScript@NScript@@QAEXVCScriptThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EC5140, 421 bytes (432 with padding), `ret 0Ch` (the by-value CScriptThing).
 // Label: manifest "CQ_AmbushTradersScript::WatchForHeroAttackOnBandit" is propagated; the only reference is the
 //   CSpawnedFunc<CV_RockTrollFirstEncounterScript> store at 0x00EC4E51 next to the name "WatchForRockTrollHit"

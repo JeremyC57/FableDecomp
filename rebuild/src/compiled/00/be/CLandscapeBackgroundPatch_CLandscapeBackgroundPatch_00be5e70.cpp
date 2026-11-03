@@ -1,5 +1,5 @@
 // CLandscapeBackgroundPatch::CLandscapeBackgroundPatch(CLandscapeBackgroundTreeNode* parent, float minZ, float maxZ, long mapX, long mapY, long width, long height, long lodBand, long textureWidthNeeded, long textureHeightNeeded, const CSubPatchTreeLODLockElement* uvLockTreeU, const CSubPatchTreeLODLockElement* uvLockTreeV, long lockedGridSpacingX, long lockedGridSpacingY, long waterOnlyPatch) -- background landscape patch: store the vtable, construct the four edge strips, copy the placement / LOD / texture-size parameters, clear the buffers and the bridge arrays, no Z-sorter handle (-1)
-// Leaf: ??0CLandscapeBackgroundPatch@@QAE@PAVCLandscapeBackgroundTreeNode@@MM
+// Leaf: ??0CLandscapeBackgroundPatch@@QAE@PAVCLandscapeBackgroundTreeNode@@MMJJJJJJJPBVCSubPatchTreeLODLockElement@@1JJJ@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BE5E70, 302 bytes, thiscall `ret 3Ch` (15 argument words).
 // Identity: Ego_r.pdb ??0CLandscapeBackgroundPatch@@QAE@PAVCLandscapeBackgroundTreeNode@@MMJJJJJJJPBVCSubPatchTreeLODLockElement@@1JJJ@Z
 //   (the other ctor takes the parent only); stores the CLandscapeBackgroundPatch vtable 0x012A803C (rtti-vtables.tsv).

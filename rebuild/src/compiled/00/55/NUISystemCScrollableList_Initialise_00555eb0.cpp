@@ -2,7 +2,7 @@
 //   gap/height from the def, derive the visible item count (list height / item height) and, for each arrow definition in the
 //   def (up, then down), create the arrow component, attach it to the parent, initialise it and give it a scroll action
 //   (type 0x123, one long parameter 0x10 / 0x11) bound to this list; finally SetScroll(0, 0)
-// Leaf: ?Initialise@CScrollableList@NUISystem@@
+// Leaf: ?Initialise@CScrollableList@NUISystem@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00555EB0, 834 bytes, plain ret. Label: the catalogue's "CChangingStateComponent::Initialize"
 //   is NUISystem::CScrollableList::Initialise (the landed CRedefinerList::Initialise 0x005566A0 calls it as its base).
 // Callees: CChangingStateComponent::Initialise 0x0052C730, CManager::GetInstance 0x0041E5F2 (static __fastcall),

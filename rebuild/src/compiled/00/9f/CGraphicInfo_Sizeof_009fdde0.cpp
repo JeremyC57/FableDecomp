@@ -7,7 +7,7 @@
 // default-initialised local in a `__forceinline` helper (hoisted `mov ecx,10h`, `lea ecx,[edi+10h]` on the loaded arm); the running total and the counter live in the frame
 // (register pressure), the frame offset steps by 16 in ebp.
 // Layout: Ego_r.pdb CGraphicInfo (FrameCount +0x0a in the header, Frames +0x28) / CGraphicInfoFrame (Data +8).
-// Leaf: ?Sizeof@CGraphicInfo@@
+// Leaf: ?Sizeof@CGraphicInfo@@QBEKXZ
 class CGraphicFrameData { public:
     unsigned long Sizeof() const;                  // 0x009FCBF0
 };

@@ -1,5 +1,5 @@
 // CV_ArcheryCompetitionScript::DoTimesUp(const CScriptThing&, CScriptGameResourceObjectScriptedThingBase&) -- time is up: stop the judge, show the times-up title, pause, then (each time the judge is still healthy) have him speak the two game-over lines to the hero and wait for him to finish
-// Leaf: ?DoTimesUp@CV_ArcheryCompetitionScript@NScript@@
+// Leaf: ?DoTimesUp@CV_ArcheryCompetitionScript@NScript@@QAEXABVCScriptThing@@AAVCScriptGameResourceObjectScriptedThingBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E36590, 446 bytes (448 with padding), `ret 8`.
 // Callees: CScriptThing::IsNull (slot 77, +0x134), CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0,
 //   ~CScriptThing 0x004AA840, CScriptBase::IsActiveThreadTerminating 0x00CB7940; the scripted-thing handle's

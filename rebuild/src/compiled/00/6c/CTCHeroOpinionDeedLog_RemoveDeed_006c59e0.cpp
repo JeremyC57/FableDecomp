@@ -1,5 +1,5 @@
 // CTCHeroOpinionDeedLog::RemoveDeed(long handle) -- find the deed by handle; when present delete the COpinionDeed and erase its map node
-// Leaf: ?RemoveDeed@
+// Leaf: ?RemoveDeed@CTCHeroOpinionDeedLog@@QAEXJ@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006C59E0, length 102 bytes (+ int3 padding), thiscall `ret 4`.
 // Ego_r.pdb: `?RemoveDeed@CTCHeroOpinionDeedLog@@QAEXJ@Z`. Callers: CTCHeroOpinionDeedLog::PlayerTakenOutWeapon /
 // FrameUpdate, CTCVillage::RemoveCrime, CTCTrespasser::LeavingRegion (x2), CAIStateGroup_MinionReactToCrime::IsRunnable

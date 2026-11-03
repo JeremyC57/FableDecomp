@@ -1,7 +1,7 @@
 // IsPlayerThreateningEntity(const CScriptThing& thing) -- nonzero while the hero is wielding a weapon and has the given thing targeted
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-// Leaf: ?IsPlayerThreateningEntity@@
+// Leaf: ?IsPlayerThreateningEntity@@YIHABVCScriptThing@@@Z
 // Naming wave 30 (family cst): the local non-virtual CScriptThing stand-in (??1CScriptThing@@QAE@XZ) is replaced by engine/CScriptThing.h's retail
 //   class: ~CScriptThing 0x004AA840 is virtual (RTTI CScriptThing : CBaseClass; Ego_r.pdb / FableWin.pdb ??1CScriptThing@@UAE@XZ)
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the

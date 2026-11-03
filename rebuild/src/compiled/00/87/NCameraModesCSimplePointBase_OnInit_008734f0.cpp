@@ -1,6 +1,6 @@
 // NCameraModes::CSimplePointBase::OnInit() -- remember where the camera was (StartPos), and make the switch to this mode a single cut from the current camera
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008734F0, 53 bytes, plain `ret`.
-// Leaf: ?OnInit@CSimplePointBase
+// Leaf: ?OnInit@CSimplePointBase@NCameraModes@@UAEXXZ
 // Name: vtable 0x01277644 slot 21; FableWin.pdb lists OnInit, Update, OnDie and IsUseRightStickLookAround for CSimplePointBase.
 //       Slot 21 saves the position and slot 22 (0x00873570) restores it, so 21 is OnInit and 22 OnDie.
 // Layout: retail CSimplePointBase (landed ctor 0x00873A10): StartPos +0xa4, Position +0xb0, LookAtPos +0xbc; the root CBase has

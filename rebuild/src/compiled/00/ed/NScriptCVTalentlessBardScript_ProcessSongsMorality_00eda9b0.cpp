@@ -1,5 +1,5 @@
 // CV_TalentlessBardScript::ProcessSongsMorality() -- adds the morality verse to the bard's song list by the hero's morality category: EVIL 0, BAD 1..2, NEUT 3, GOOD 4..5, PERFECT 6, nothing otherwise
-// Leaf: ?ProcessSongsMorality@CV_TalentlessBardScript@NScript@@
+// Leaf: ?ProcessSongsMorality@CV_TalentlessBardScript@NScript@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EDA9B0, 248 bytes + a seven-entry jump table (row 288 with padding), plain `ret`.
 // Callees: CGameScriptInterface slot 158 GetHeroMoralityCategory() (+0x278); CCharString(const char*, long) 0x0099EBF0,
 //   ~CCharString 0x0099EAE0; std::vector<CCharString>::push_back(const CCharString&) 0x0044BFF0 (out of line).

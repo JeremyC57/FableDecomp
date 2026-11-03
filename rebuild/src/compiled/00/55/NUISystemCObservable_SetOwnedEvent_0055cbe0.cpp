@@ -1,5 +1,5 @@
 // NUISystem::CObservable::SetOwnedEvent(CObserver* owner, EEvent event) -- forward event to the observer that owns it: copy the Observers list, then for each entry that is the owner and is observing the event call its ProcessEvent(event)
-// Leaf: ?SetOwnedEvent@
+// Leaf: ?SetOwnedEvent@CObservable@NUISystem@@UAEXPAVCObserver@2@W4EEvent@2@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0055CBE0, 141 bytes, `ret 8` (thiscall: owner, event); vtable 0x01230044 slot 1.
 // Callees: malloc 0x00BFEA0E / free 0x00BFEA14 (the local list's sentinel and nodes), the list's out-of-line
 //   `_M_insert_dispatch(pos, first, last, const __false_type&)` 0x0055CE90 (`ret 10h`, catalogued

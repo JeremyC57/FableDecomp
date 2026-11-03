@@ -1,5 +1,5 @@
 // NCreatureAction::CActionEventRemoveObject::Dispatch(CCreatureActionBase&) -- when the creature carries things: take the object out of the named hand slot and kill it
-// Leaf: ?Dispatch@CActionEventRemoveObject
+// Leaf: ?Dispatch@CActionEventRemoveObject@NCreatureAction@@UAEXAAVCCreatureActionBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00871A10, length 112 bytes, `ret 4` (the action argument is unused),
 //   vtable 0x0125C1A0 slot 1.
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, type 70 = bit 6 of the bitset dword at +0x28 =

@@ -1,5 +1,5 @@
 // CTCInventoryStats::GetTimeSpentInGame(unsigned long frames, const NGameText::CDataBank* bank) -- formats the play time (frames at 15 per second) as "<Time spent>: <h> <hour(s)> <m> <mins>" from the game text bank
-// Leaf: ?GetTimeSpentInGame@CTCInventoryStats@@
+// Leaf: ?GetTimeSpentInGame@CTCInventoryStats@@SI?AVCWideString@@KPBVCDataBank@NGameText@@@Z
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005CCC91, 538 bytes (0x21A, no padding), static __fastcall `ret 4` (hidden return

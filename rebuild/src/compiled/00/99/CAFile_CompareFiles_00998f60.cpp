@@ -1,5 +1,5 @@
 // CAFile::CompareFiles(CAFile& file1, CAFile& file2) -- true when two open files have the same length and the same bytes, compared 4 KB at a time from the start
-// Leaf: ?CompareFiles@CAFile@@
+// Leaf: ?CompareFiles@CAFile@@SI_NAAV1@0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00998F60, 323 bytes (+ int3 padding). FableWin.pdb `?CompareFiles@CAFile@@SI_NAAV1@0@Z`:
 //   a static `__fastcall` (file1 in ecx, file2 in edx), plain `ret`. The catalog's "IsInvalidCustomTattoo" is the
 //   caller's name (CTattooDef::IsInvalidCustomTattoo 0x00581765 compares the custom tattoo file with its reference).

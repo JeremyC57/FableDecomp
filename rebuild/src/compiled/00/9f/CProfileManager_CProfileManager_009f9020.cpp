@@ -1,5 +1,5 @@
 // CProfileManager::~CProfileManager() -- tear down the profile manager: walk the ProfileTree, clear the tree and both name maps, then the member destructors free the ProfileTree, ProfileNameToID, IDToProfileName and ProfileList nodes and sentinels
-// Leaf: ??1CProfileManager@@
+// Leaf: ??1CProfileManager@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F9020, 308 bytes, thiscall. Callers: 0x009A6BB3, 0x009A73B7 (CSystemManager
 //   teardown). The chunk label "CNavigableTextUIManager_Destructor" is wrong: the layout is CProfileManager's (ctor 0x009F9160).
 // Layout: see 0x009F9160 (ProfileList +0x4C, IDToProfileName +0x50, ProfileNameToID +0x5C, ProfileTree +0x68).

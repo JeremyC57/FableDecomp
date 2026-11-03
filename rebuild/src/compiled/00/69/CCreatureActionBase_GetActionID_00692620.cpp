@@ -1,5 +1,5 @@
 // CCreatureActionBase::GetActionID() const -- returns the action's id (ActionID, +0x28)
-// Leaf: ?GetActionID@CCreatureActionBase@@
+// Leaf: ?GetActionID@CCreatureActionBase@@QBEJXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00692620, 4 bytes (`mov eax,[ecx+28h]; ret`).
 // Identity: the PDB name sets hold ?GetActionID@CCreatureActionBase@@QBEJXZ (no GetActionCode); Ego_r and
 // engine/CCreatureActionBase.h put long ActionID at +0x28 (no STL member before it, so the retail offset is the

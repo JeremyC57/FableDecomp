@@ -1,5 +1,5 @@
 // C3DMeshFileBoneChunk::GetBone() const -- build the run-time bone record from the chunk: name CRC, parent index, no children counted yet, the localization matrix; returned by value
-// Leaf: ?GetBone@C3DMeshFileBoneChunk
+// Leaf: ?GetBone@C3DMeshFileBoneChunk@@QBE?BVC3DBone2@@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AB9DD0, length 82 bytes (+14 int3), thiscall with the hidden result
 //   pointer, `ret 4`.
 // Callees: C3DBone2::SetName(const CCharString&) @ 0x00ADD650 (stores the name's CRC in NameCRC).

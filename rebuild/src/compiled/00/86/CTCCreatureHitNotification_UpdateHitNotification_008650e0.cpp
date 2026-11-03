@@ -1,5 +1,5 @@
 // CTCCreatureHitNotification::UpdateHitNotification() -- erase every hit flash created before the current world frame
-// Leaf: ?UpdateHitNotification@CTCCreatureHitNotification
+// Leaf: ?UpdateHitNotification@CTCCreatureHitNotification@@QAEXXZ
 // Retail 0x008650E0, 0xC4 bytes, __fastcall plain `ret`. PDB (Ego_r): ?UpdateHitNotification@CTCCreatureHitNotification@@QAEXXZ.
 // Caller: CThingCreatureBase::WorldUpdate @ 0x006666A0 (landed; "component 0xCD's update"), behind HasTC(0xCD).
 // Callees: CTCBase::GetWorld() @ 0x00686A70, the static CWorld::GetWorldFrame() @ 0x0049D870, STLport

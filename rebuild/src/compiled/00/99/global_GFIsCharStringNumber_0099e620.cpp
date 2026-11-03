@@ -8,7 +8,7 @@
 // index, so the test is `jge`) and GetChar(i) through the null-safe text pointer; the three rejecting cases share one
 // `return false`.
 // Layout (landed CCharString model): CCharStringData = CBasicString<char> {PData +0, StringLength +4, ...}.
-// Leaf: ?GFIsCharStringNumber@@
+// Leaf: ?GFIsCharStringNumber@@YI_NABVCCharString@@@Z
 extern "C" int __cdecl isdigit(int c);                  // 0x00BFEDA6
 
 struct CBasicStringChar {

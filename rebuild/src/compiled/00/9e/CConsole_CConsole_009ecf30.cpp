@@ -1,5 +1,5 @@
 // CConsole::~CConsole() -- tear down the console: clear both key/string binding maps, release every registered console input's counted pointer, clear the input map and the command-line history, then the member destructors free the history, the maps, the help bar string and both command lines, and the CTBaseSingleton vtable is restored
-// Leaf: ??1CConsole@@
+// Leaf: ??1CConsole@@UAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009ECF30, 606 bytes, thiscall. Caller: the scalar deleting destructor 0x009F0040
 //   (slot 0 of CConsole's vtable 0x0129C600, rtti-vtables.tsv). The chunk label "ParticleMorphs_Destructor" is wrong.
 // Layout (Ego_r.pdb CConsole, offsets re-derived for STLport's 12-byte map and 4-byte list): vptr +0, KeyBindingMap +4,

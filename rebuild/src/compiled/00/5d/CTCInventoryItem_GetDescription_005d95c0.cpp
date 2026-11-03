@@ -1,5 +1,5 @@
 // CTCInventoryItem::GetDescription(long defIndex) -- static: cache the item def for defIndex and return its description text (ItemDescription looked up in the main component's text bank), or the empty wide string when the def is missing or has no description
-// Leaf: ?GetDescription@CTCInventoryItem@@SI
+// Leaf: ?GetDescription@CTCInventoryItem@@SI?AVCWideString@@J@Z
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe @ 0x005D95C0, 112 bytes (+2 int3). Ego_r.pdb `?GetDescription@CTCInventoryItem@@SI?AVCWideString@@J@Z`

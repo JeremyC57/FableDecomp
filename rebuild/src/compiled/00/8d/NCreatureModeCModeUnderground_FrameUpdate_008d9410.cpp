@@ -1,5 +1,5 @@
 // NCreatureMode::CModeUnderground::FrameUpdate() -- vtable slot 3: the base frame update, then an underground creature whose linked thing (component 0x111) is gone or dead kills itself
-// Leaf: ?FrameUpdate@CModeUnderground@
+// Leaf: ?FrameUpdate@CModeUnderground@NCreatureMode@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D9410, 109 bytes (+3 int3 padding).
 // Name: slot 3 of the vtable 0x01267E38 (rtti-vtables.tsv); it opens with the landed CModeBase::FrameUpdate 0x0073AC50
 // (CTCCreatureModeManager::CModeBase), so the slot is FrameUpdate; slot 5 is the landed OnActivate 0x008D66E0.

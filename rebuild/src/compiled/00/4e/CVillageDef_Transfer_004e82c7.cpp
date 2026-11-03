@@ -1,5 +1,5 @@
 // CVillageDef::Transfer(CPersistContext& context) -- persist the village definition: task list, patrol track, stance, the sleep/lights/sociable/curfew clock times, the per-activity start-time vectors and durations, the village flags, the curfew/work sounds and the guard-snoop timings
-// Leaf: ?Transfer@CVillageDef
+// Leaf: ?Transfer@CVillageDef@@UAEXAAVCPersistContext@@@Z
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004E82C7, length 579 bytes (virtual, `ret 4`; unaligned entry, def module).
 // Callees (typed CPersistContext transfers; the catalog labels on these shared bodies are propagated and wrong):

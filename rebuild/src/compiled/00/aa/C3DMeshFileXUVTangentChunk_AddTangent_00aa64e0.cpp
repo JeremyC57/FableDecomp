@@ -1,5 +1,5 @@
 // C3DMeshFileXUVTangentChunk::AddTangent(const C3DVector& uTangent, const C3DVector& vTangent) -- append one U and one V tangent to the mesh file's UV-tangent chunk arrays
-// Leaf: ?AddTangent@
+// Leaf: ?AddTangent@C3DMeshFileXUVTangentChunk@@QAEXABVC3DVector@@0@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AA64E0, 137 bytes, thiscall `ret 8`.
 // Identity: Ego_r.pdb `?AddTangent@C3DMeshFileXUVTangentChunk@@QAEXABVC3DVector@@0@Z`; no direct caller in retail (an
 //   unreferenced out-of-line copy next to the chunk's other methods 0x00AA57F0/0x00AA6A60). The two pushes go to the

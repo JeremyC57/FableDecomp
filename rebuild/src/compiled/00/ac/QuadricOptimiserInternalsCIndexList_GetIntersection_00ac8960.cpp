@@ -1,5 +1,5 @@
 // QuadricOptimiserInternals::CIndexList::GetIntersection(const CIndexList& other) const -- the indices present in both lists: STLport set_intersection of the two sets into an inserter over a fresh list, returned by value
-// Leaf: ?GetIntersection@CIndexList@QuadricOptimiserInternals@@QBE
+// Leaf: ?GetIntersection@CIndexList@QuadricOptimiserInternals@@QBE?AV12@ABV12@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AC8960, 196 bytes, thiscall `ret 8` (hidden CIndexList result + other).
 // Identity: Ego_r.pdb `?GetIntersection@CIndexList@QuadricOptimiserInternals@@QBE?AV12@ABV12@@Z` (with GetUnion and
 //   GetSymmetricDifference, the class's only by-value set operations). The algorithm called is the 7-dword /Gr

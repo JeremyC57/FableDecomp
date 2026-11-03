@@ -14,7 +14,7 @@
 // statements emit `mov ecx,esi` first). The STLport `wstring == const wchar_t*` is forced inline (traits::length of the
 // literal folds to 0, so the size test is `(finish - start) & ~1`, then the out-of-line traits compare over 0 chars).
 // Grade: RELOCATION_MATCH (agent902, 5th grade) -- a single tail-duplicated return; the goto form with two returns scheduled `mov ecx,esi` before the push (132v132).
-// Leaf: ?GetCurrentPath@CAFile
+// Leaf: ?GetCurrentPath@CAFile@@SI?AVCWideString@@XZ
 #include <stddef.h>
 typedef unsigned short wchar16;          // wchar_t is not a built-in type under the retail flags
 

@@ -1,6 +1,6 @@
 // CGameScriptInterface::SetThingAsUsable(const CScriptThing& thing, bool usable) const -- set the usable flag on the
 // thing's usable component (TC 0x0D), else on its scripted-use hook (TC 0xC2), adding the hook when it has neither
-// Leaf: ?SetThingAsUsable@CGameScriptInterface
+// Leaf: ?SetThingAsUsable@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008967F0, length 208 bytes, `ret 8`.
 // Callees: the script thing's virtual slot 75 IsValid (+0x12C) and slot 11 GetThing (+0x2C), the TC map lower bound
 // CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020, CCharString::CCharString(const char*, long)

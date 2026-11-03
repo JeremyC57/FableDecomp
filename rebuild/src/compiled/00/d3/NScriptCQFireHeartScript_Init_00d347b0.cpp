@@ -1,5 +1,5 @@
 // CQ_FireHeartScript::Init() -- register the demon-door lookout region and reset the quest state: flags, the pad FX names, the starting sun count by the hero's morality, the puzzle patterns and counts from the script def, the OPENCAGE cut-scene flag, the per-pad / per-prophet / per-villager bookkeeping vectors and the morality changes
-// Leaf: ?Init@CQ_FireHeartScript@NScript@@
+// Leaf: ?Init@CQ_FireHeartScript@NScript@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D347B0, length 779 bytes.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0 / operator=(const CCharString&) 0x0099EFB0,
 //   CScriptBase::IsActiveThreadTerminating 0x00CB7940, vector<CFireHeartPatternDef>::operator= 0x00D34D40,

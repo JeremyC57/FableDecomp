@@ -1,5 +1,5 @@
 // CVolumeTexture::InitialiseFromPreallocatedVolumeTexture(IDirect3DVolumeTexture9* texture) -- adopt an existing volume texture: uninitialise, store it, compute its byte length and add its size to the volume-texture and graphics memory counters
-// Leaf: ?InitialiseFromPreallocatedVolumeTexture@CVolumeTexture@@
+// Leaf: ?InitialiseFromPreallocatedVolumeTexture@CVolumeTexture@@QAE_NPAUIDirect3DVolumeTexture9@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A682E0, length 129 bytes (padded to 144), `ret 4`.
 // Callees: CVolumeTexture::Uninitialise @ 0x00A68060, CVolumeTexture::CalcByteLength @ 0x00A67FF0.
 // Graphics layer (D3D9, to be replaced): CVolumeTexture vtable 0x0129DC18 = {vptr, IDirect3DVolumeTexture9* PD3DVolumeTexture +0x04,

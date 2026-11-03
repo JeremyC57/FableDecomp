@@ -1,5 +1,5 @@
 // NTCScriptedControl::CActionTalkToThing::OnActivate() -- a line queued during a cutscene that has since been skipped finishes at once; otherwise the base talk activation runs
-// Leaf: ?OnActivate@CActionTalkToThing@
+// Leaf: ?OnActivate@CActionTalkToThing@NTCScriptedControl@@UAEXXZ
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00717920, 35 bytes (+13 int3 padding); vtable 0x012659C8 slot 2.

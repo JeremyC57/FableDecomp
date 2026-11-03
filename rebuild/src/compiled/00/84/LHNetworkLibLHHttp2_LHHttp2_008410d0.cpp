@@ -1,5 +1,5 @@
 // LHNetworkLib::LHHttp2::~LHHttp2() -- close and delete the host socket, reset the connection state (twice: Close's own Reset, then the destructor's), then destroy the members: document-part vector, proxy host, both header sets, prepared request, host name
-// Leaf: ??1LHHttp2@LHNetworkLib
+// Leaf: ??1LHHttp2@LHNetworkLib@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008410D0, 250 bytes, thiscall, plain `ret`.
 // Identity: Ego_r.pdb ??1LHHttp2@LHNetworkLib@@QAE@XZ (the debug build's 0x0084EE40, right after the constructor; TLC's
 //   constructor is the landed 0x00840F50 just before this body). 15 call sites in the online-scoreboard code

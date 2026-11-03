@@ -1,5 +1,5 @@
 // QuadricOptimiserInternals::COptimisedMesh::CopyTo(C3DMeshFile& file) -- write the optimised sub-meshes back into the mesh file: for each SUBM chunk in turn (paired with SubMeshes[i]) drop its PRIM children, then add a new primitive chunk for every primitive that still has a live face
-// Leaf: ?CopyTo@COptimisedMesh@QuadricOptimiserInternals@@
+// Leaf: ?CopyTo@COptimisedMesh@QuadricOptimiserInternals@@UAEXAAVC3DMeshFile@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ACD5A0, 670 bytes (`ret 4`); the mesh-file counted-pointer temporaries release with
 //   Data and Info cleared, the face count is read once per primitive.
 // Callees (names from Ego_r.pdb): C3DMeshFile::GetRoot() 0x00AD1E80 (non-const; CCountedPointer<C3DMeshFileRootChunk> by

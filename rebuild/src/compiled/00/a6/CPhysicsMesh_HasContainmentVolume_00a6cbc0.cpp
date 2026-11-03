@@ -1,5 +1,5 @@
 // CPhysicsMesh::HasContainmentVolume(const CCharString& name) const -- true when the containment-volume map holds an entry keyed by the name
-// Leaf: ?HasContainmentVolume@CPhysicsMesh@@
+// Leaf: ?HasContainmentVolume@CPhysicsMesh@@QBE_NABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6CBC0, 75 bytes (+5 int3), thiscall `ret 4`. Ego_r.pdb
 //   `?HasContainmentVolume@CPhysicsMesh@@QBE_NABVCCharString@@@Z`.
 // Callees: CVectorMap<CCharString,C3DMeshVolume,CKeyPairCompareLess<..> >::LowerBound 0x00A6FC40 (landed, entry

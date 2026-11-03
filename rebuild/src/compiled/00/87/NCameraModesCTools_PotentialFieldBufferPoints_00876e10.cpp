@@ -1,5 +1,5 @@
 // NCameraModes::CTools::PotentialFieldBufferPoints(const C3DVector& pos, const list<C3DVector>& points, float strength, float radius) const -- the gradient of the summed potential field of the buffer points at pos, by forward differences over the four sample offsets (pos itself and one step along each axis)
-// Leaf: ?PotentialFieldBufferPoints@CTools@NCameraModes@@
+// Leaf: ?PotentialFieldBufferPoints@CTools@NCameraModes@@QBE?AVC3DVector@@ABV3@ABV?$list@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@MM@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00876E10, 303 bytes (as cut), thiscall (`this` unused) with a hidden
 //   result pointer, `ret 14h` (result, pos, points, strength, radius); returns the result pointer in eax.
 // Identity: the catalog's "Vector_ComputePotentialGradient" is descriptive. FableWin/Ego_r PDB:

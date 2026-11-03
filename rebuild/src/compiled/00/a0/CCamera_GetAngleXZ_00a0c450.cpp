@@ -1,5 +1,5 @@
 // CCamera::GetAngleXZ() const -- the camera's roll in turns: rebuild the up vector an unrolled camera would have from its heading (GetAngleXY + 1/2) and pitch (1/4 - GetAngleYZ), and return the angle between it and the actual up vector (acos of the dot product / 2pi)
-// Leaf: ?GetAngleXZ@CCamera@@
+// Leaf: ?GetAngleXZ@CCamera@@QBEMXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0C450, 288 bytes, thiscall, plain `ret`, float in st(0). No direct callers.
 // Identity: Ego_r.pdb `?GetAngleXZ@CCamera@@QBEMXZ` (after GetAngleXY 0x00A0C380 and GetAngleYZ 0x00A0C3E0 in both images; the
 //   chunk label "Math_ComputeSphericalCoordinate" is descriptive).

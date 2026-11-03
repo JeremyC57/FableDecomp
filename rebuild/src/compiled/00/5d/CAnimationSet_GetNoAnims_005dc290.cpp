@@ -1,5 +1,5 @@
 // CAnimationSet::GetNoAnims(const CCharString& name, const CAnimFilterBase& filter) const -- how many of the animations stored under the name's CRC the filter accepts
-// Leaf: ?GetNoAnims@CAnimationSet@@
+// Leaf: ?GetNoAnims@CAnimationSet@@QBEJABVCCharString@@ABVCAnimFilterBase@@@Z
 // Retail: Fable.exe @ 0x005DC290, 72 bytes (+8 int3), __fastcall `ret 8`. Ego_r.pdb
 // `?GetNoAnims@CAnimationSet@@QBEJABVCCharString@@ABVCAnimFilterBase@@@Z`. Callers: CThingCreatureBase::PreloadAnimation
 // 0x006631C0, CThingCreatureBase::PreloadBasicAnimations 0x00663610 (twice).

@@ -1,6 +1,6 @@
 // NCameraModes::CScriptedControl::GetDefaultFOV() const -- the script module's FOV when it supplies one, else the FOV of the camera captured when the mode started
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0087BA30, 45 bytes, plain `ret` (float in st0).
-// Leaf: ?GetDefaultFOV@CScriptedControl
+// Leaf: ?GetDefaultFOV@CScriptedControl@NCameraModes@@UBEMXZ
 // Name: vtable 0x0125C58C slot 18; FableWin.pdb ?GetDefaultFOV@CScriptedControl@NCameraModes@@UBEMXZ (its float neighbour slot 19
 //       0x0087BA60 is GetDefaultRollAngle, the pair GetModuleFOV/GetModuleRollAngle of the module, slots 5/6).
 // Callees: the module's virtual GetModuleFOV(float&) (slot 5, +0x14), CCamera::GetHorizontalFOV() const @ 0x00A0BEB0.

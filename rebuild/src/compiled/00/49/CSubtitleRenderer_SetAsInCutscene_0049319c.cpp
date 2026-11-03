@@ -2,7 +2,7 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0049319C, 227 bytes, `ret 4`. Ego_r.pdb `?SetAsInCutscene@CSubtitleRenderer@@QAEX_N@Z`.
-// Leaf: ?SetAsInCutscene@CSubtitleRenderer@@
+// Leaf: ?SetAsInCutscene@CSubtitleRenderer@@QAEX_N@Z
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the

@@ -1,5 +1,5 @@
 // CV_TourGuideScript::WatchForClosingTime() -- script thread: each frame compare the time of day with the script def's tour-guide opening/closing times against the TourFinished flag; on a change of state run the terminate test, then wait a frame
-// Leaf: ?WatchForClosingTime@CV_TourGuideScript@NScript@@
+// Leaf: ?WatchForClosingTime@CV_TourGuideScript@NScript@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EE4A00, length 108 bytes (padded to 112).
 // Callees: CScriptBase::IsActiveThreadTerminating @ 0x00CB7940 (x3), CGameScriptInterface::GetTimeOfDay (slot 647, +0xa1c)
 // and NewScriptFrame (slot 7, +0x1c) through Game at +0x40.

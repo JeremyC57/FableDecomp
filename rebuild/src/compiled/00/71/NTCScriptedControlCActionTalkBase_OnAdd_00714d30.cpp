@@ -1,5 +1,5 @@
 // NTCScriptedControl::CActionTalkBase::OnAdd() -- when the talk should make its target listen and the target is another thing under scripted control, open a new conversation and queue a matching talked-to action on the target
-// Leaf: ?OnAdd@CActionTalkBase@
+// Leaf: ?OnAdd@CActionTalkBase@NTCScriptedControl@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00714D30, 205 bytes (+3 int3 padding); vtable 0x012659A8 slot 3.
 // FableWin.pdb: ?OnAdd@CActionTalkBase@NTCScriptedControl@@UAEXXZ (slot 3 = OnAdd, as the landed
 //          CActionFireProjectileWeapon::OnAdd @ 0x00715110).

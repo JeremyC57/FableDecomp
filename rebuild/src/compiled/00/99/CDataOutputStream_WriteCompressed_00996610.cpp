@@ -1,5 +1,5 @@
 // CDataOutputStream::WriteCompressed(const void* data, long size) -- write a block LZO1X-999 compressed when that saves space: a 2-byte header (0 = stored raw, the compressed length, or 0xFFFF followed by a 4-byte length), the compressed bytes and the last 3 bytes raw; blocks of 1..3 bytes are always stored raw
-// Leaf: ?WriteCompressed@CDataOutputStream@@
+// Leaf: ?WriteCompressed@CDataOutputStream@@QAEXPBXJ@Z
 // Grade: RELOCATION_MATCH -- STLport _Vector_base shape: zeroed members, start = allocate, finish = start, end = start +
 //   n, then finish = uninitialized_fill_n(_M_start) where the fill memsets and returns first + n
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00996610, 464 bytes (incl. int3 padding), thiscall `ret 8`. FableWin.pdb

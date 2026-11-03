@@ -1,7 +1,7 @@
 // CConsoleVariable::ProcessCommandLine(const CCharString& line, CConsole& console) -- parse the command line after the
 // variable name: with no value print "<name> = <value>"; otherwise read the target from the parser and, on failure,
 // report the error and the variable's type (bool / float / slong / string)
-// Leaf: ?ProcessCommandLine@CConsoleVariable
+// Leaf: ?ProcessCommandLine@CConsoleVariable@@EAE_NABVCCharString@@AAVCConsole@@@Z
 // Callees: CCharString() 0x0099E4B0 / (const char*, long) 0x0099EBF0 / ~ 0x0099EAE0, CStringParser ctor 0x00404720 and
 //   its implicit inline dtor (~list 0x004046B0, two ~CCharString, CBaseClass::~CBaseClass 0x0099A2E0), ReadNextItem
 //   0x009BA080, NextItemExists 0x009BA4F0, CConsoleTarget::PrintToString 0x00A63C00 / ReadFromParser 0x00A63FC0,

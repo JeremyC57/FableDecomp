@@ -1,5 +1,5 @@
 // LHNetworkLib::LHHttpHeaderStatus::Reset() -- forgets a parsed response header: server code -1, no header lines, empty location / host / URI strings, port 0
-// Leaf: ?Reset@LHHttpHeaderStatus@LHNetworkLib@@
+// Leaf: ?Reset@LHHttpHeaderStatus@LHNetworkLib@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0083FB60, 88 bytes, __fastcall, plain `ret`.
 // Identity: Ego_r.pdb ?Reset@LHHttpHeaderStatus@LHNetworkLib@@QAEXXZ; TLC keeps it next to LHHttpHeaders::Reset (landed
 //   0x0083FBC0). The manifest label "CPatchTesselationEdgeStrip_Reset" is propagated and wrong.

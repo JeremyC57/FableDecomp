@@ -1,5 +1,5 @@
 // NCreatureMode::IsRolling(const CThing& thing) -- true when the current creature mode is RollAround (0x46)
-// Leaf: ?IsRolling@NCreatureMode@@
+// Leaf: ?IsRolling@NCreatureMode@@YI_NABVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085EEB0, length 77 bytes. `__fastcall` free function (ecx = the thing), bool in al.
 // Mangled (Ego_r.pdb): ?IsRolling@NCreatureMode@@YI_NABVCThing@@@Z.
 // Callees: CVectorMap LowerBound 0x004365B0 (const), CTCCreatureModeManager::GetCurrentMode 0x0073A6E0, the mode's slot 1.

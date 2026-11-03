@@ -1,5 +1,5 @@
 // BuildingHasVolume(const CThingBuilding* building) -- does the building's physics mesh carry a BUILDING_BOUNDRY containment volume? false for no building, no physics component or no mesh
-// Leaf: ?BuildingHasVolume@@
+// Leaf: ?BuildingHasVolume@@YI_NPBVCThingBuilding@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004FB370, 107 bytes (padded to 112), plain `ret` (`__fastcall`: building in ecx).
 // PDB name ?BuildingHasVolume@@YI_NPBVCThingBuilding@@@Z (Ego_r.pdb name set). No call or absolute reference in retail.
 // Callees: CTCPhysicsBase::GetPhysicsMesh (slot 93, +0x174), CTCPhysicsBase::GetPhysicsMeshObject @ 0x006B0850

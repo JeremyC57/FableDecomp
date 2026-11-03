@@ -1,5 +1,5 @@
 // CUserProfileManager::GetProfileDir(const CWideString& name, bool create) -- path of another profile's Profile.bin: temporarily swap ProfileName to `name`, resolve through GetPathNameFromFileName, restore the name
-// Leaf: ?GetProfileDir@CUserProfileManager@@
+// Leaf: ?GetProfileDir@CUserProfileManager@@QAE?AVCWideString@@ABV2@_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004082D0, 110 bytes (+2 int3 pad). Callees: CWideString
 // copy ctor 0x0099B720, CWideString::operator= 0x0099B7D0, CUserProfileManager::GetPathNameFromFileName
 // 0x00408120 (landed; const, hidden result, `ret 0xc`), ~CWideString 0x0099B510; the static

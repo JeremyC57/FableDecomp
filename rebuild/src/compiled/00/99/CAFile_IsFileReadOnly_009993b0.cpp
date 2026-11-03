@@ -7,7 +7,7 @@
 // Shape: the landed PathExists (0x00999230) prologue -- default-constructed local assigned from ExpandPath; the
 // read-only bit is kept in a callee-saved byte (`mov ebx,eax ; and bl,1`) across the local's destructor, so the
 // result is a named bool computed before the scope ends.
-// Leaf: ?IsFileReadOnly@CAFile
+// Leaf: ?IsFileReadOnly@CAFile@@SI_NABVCWideString@@@Z
 typedef unsigned short wchar16;          // wchar_t is not a built-in type under the retail flags
 
 extern "C" __declspec(dllimport) unsigned long __stdcall GetFileAttributesW(const wchar16* fileName);   // IAT 0x0143FDBC

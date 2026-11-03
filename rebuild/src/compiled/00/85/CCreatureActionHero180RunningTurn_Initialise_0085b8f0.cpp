@@ -1,7 +1,7 @@
 // CCreatureActionHero180RunningTurn::Initialise() -- animation ST_RUN_180_TURN; measure the turn from the creature's facing to
 // RequiredFacing (clamped dot, sign from the cross product), base Initialise, then rotate the facing about Z by the
 // animation's rotation less the turn (in revolutions) and set the creature's orientation to (up, rotated facing)
-// Leaf: ?Initialise@CCreatureActionHero180RunningTurn
+// Leaf: ?Initialise@CCreatureActionHero180RunningTurn@@UAEXXZ
 #include <math.h>
 class CCharString { public:
     void* PStringData;

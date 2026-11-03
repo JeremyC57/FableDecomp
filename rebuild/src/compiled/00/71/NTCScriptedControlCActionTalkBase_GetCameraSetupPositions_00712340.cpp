@@ -1,5 +1,5 @@
 // NTCScriptedControl::CActionTalkBase::GetCameraSetupPositions(const CSubtitledMessage::CCameraTag&, const CThing*&, C3DVector&, const CThing*&, C3DVector&) const -- work out the conversation camera's from/at things and positions for a camera tag (talking to self: in front of the head; speaker/listener head points; otherwise the midpoint of the pair, pushed sideways by 1.75, 1 or 0.75 of their separation for camera view 0/1/2, at mid head height; the demon-door special case pulls the camera in front of the speaker)
-// Leaf: ?GetCameraSetupPositions@CActionTalkBase@NTCScriptedControl@@
+// Leaf: ?GetCameraSetupPositions@CActionTalkBase@NTCScriptedControl@@ABEXABVCCameraTag@CSubtitledMessage@@AAPBVCThing@@AAVC3DVector@@12@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00712340, 1404 bytes; symbol ?GetCameraSetupPositions@CActionTalkBase@NTCScriptedControl@@ABEXABVCCameraTag@CSubtitledMessage@@AAPBVCThing@@AAVC3DVector@@12@Z (private const).
 // Callees: CScriptThing::GetPThing (slot 11, +0x2c), CTCPhysicsBase::GetFacingVector (slot 70, +0x118; 0x006B1410),
 // NGraphicAppearance::CTCGraphicAppearance::GetFocalPos 0x004C1060, CThing::GetPos 0x004C73D0,

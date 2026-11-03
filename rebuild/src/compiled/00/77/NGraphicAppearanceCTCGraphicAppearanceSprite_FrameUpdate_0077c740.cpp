@@ -1,5 +1,5 @@
 // NGraphicAppearance::CTCGraphicAppearanceSprite::FrameUpdate() -- vtable slot 9: advance the sprite's rotation and animation stage by one frame and flag the owner's appearance as changed when either moved
-// Leaf: ?FrameUpdate@CTCGraphicAppearanceSprite@
+// Leaf: ?FrameUpdate@CTCGraphicAppearanceSprite@NGraphicAppearance@@UAEXXZ
 // Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
 //   invented ?SetGraphicAppearanceChanged@CThing@@QAEXK@Z)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077C740, 79 bytes (+1 int3 padding).

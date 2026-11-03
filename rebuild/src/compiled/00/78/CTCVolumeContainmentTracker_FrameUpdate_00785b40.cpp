@@ -1,5 +1,5 @@
 // CTCVolumeContainmentTracker::FrameUpdate() -- while tracking is enabled and the tracked volume is active, re-runs the containment Update every 5 seconds' worth of frames (every 0.8 s when the camera is within 10 units of the thing), staggered by the thing's UID; immediately when the def says so or the tracker is not yet updated
-// Leaf: ?FrameUpdate@CTCVolumeContainmentTracker
+// Leaf: ?FrameUpdate@CTCVolumeContainmentTracker@@UAEXXZ
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00785B40, 318 bytes (plain `ret`, ebp frame).

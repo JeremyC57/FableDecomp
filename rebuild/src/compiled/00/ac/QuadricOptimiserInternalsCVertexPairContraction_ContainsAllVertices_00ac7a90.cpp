@@ -1,5 +1,5 @@
 // QuadricOptimiserInternals::CVertexPairContraction::ContainsAllVertices(const CIndexList& vertices) -- true when every index in the list is one of this contraction's sub-contraction vertices
-// Leaf: ?ContainsAllVertices@CVertexPairContraction
+// Leaf: ?ContainsAllVertices@CVertexPairContraction@QuadricOptimiserInternals@@QAE_NABVCIndexList@2@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AC7A90, 104 bytes (`ret 4`, +8 int3 padding).
 // Identity: FableWin.pdb ?ContainsAllVertices@CVertexPairContraction@QuadricOptimiserInternals@@QAE_NABVCIndexList@2@@Z;
 //          the callee 0x00AC7990 is ?HasVertex@CVertexPairContraction@...@@QAE_NK@Z (its body scans the 8-byte

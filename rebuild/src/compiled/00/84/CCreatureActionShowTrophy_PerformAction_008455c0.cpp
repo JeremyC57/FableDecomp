@@ -2,7 +2,7 @@
 // "SHOW_TROPHY_HELD_ALOFT" effect at the creature's WEAPON_FOCUS_01 dummy as PEmitter (attached to the right hand), then tell the
 // trophy's CTCTrophy (interface 0x39) that the creature showed it
 // (the effect lookup is the Initialise 0x00845350 shape)
-// Leaf: ?PerformAction@CCreatureAction_ShowTrophy
+// Leaf: ?PerformAction@CCreatureAction_ShowTrophy@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008455C0, length 641 bytes, plain `ret` (virtual).
 // Callees: CBaseIntelligentPointer ctor/GetPItem/SetPItem/dtor 0x00A01B10/0x00A01B50/0x00A01B90/0x00A01C10,
 //   CVectorMap::LowerBound 0x0040F020, CTCTrophy::OnShownByCreature 0x006DE8C0 (descriptive name), CThing::Kill(bool) 0x004C9B80,

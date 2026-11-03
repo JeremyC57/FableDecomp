@@ -1,5 +1,5 @@
 // CCreatureAction_BanditKingLunge::FinishAction() -- base FinishAction; when the lunge ran its full time at a living target the bandit king gets stuck: mode 0x53, the stuck hit location on and the normal one off, a 1.5-radius obstruction half a facing ahead (ignoring the king), and a CCreatureAction_BanditKingStuck (boss def's stuck loop count) -- the obstruction is killed if that action is refused; otherwise a CCreatureAction_BanditKingUnstuck with no target
-// Leaf: ?FinishAction@CCreatureAction_BanditKingLunge
+// Leaf: ?FinishAction@CCreatureAction_BanditKingLunge@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C8C30, length 830 bytes (+ int3 padding), virtual FinishAction, plain `ret`.
 // Callees: CCombatActionBase::FinishAction @ 0x00859A20, CBaseIntelligentPointer::GetPItem @ 0x00A01B50 / dtor @ 0x00A01C10,
 //   CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface: 0x31 CTCCreatureModeManager bit 17 of +0x24, 0x7F CTCHitLocations

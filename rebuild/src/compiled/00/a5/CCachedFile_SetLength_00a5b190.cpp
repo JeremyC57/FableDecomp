@@ -1,6 +1,6 @@
 // CCachedFile::SetLength(long length) -- a cached file cannot be resized: always throws a CBBBFileException (type 8) carrying "File is not open for writing"
 // Retail-span: int3-after-noreturn row -- the 0xCC after the final call _CxxThrowException belongs to the function (GOTCHAS 2026-10-22); graded against the 97-byte retail span
-// Leaf: ?SetLength@CCachedFile
+// Leaf: ?SetLength@CCachedFile@@UAEXJ@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A5B190, length 96 bytes (vtable 0x012724D4 slot 8,
 // ?SetLength@CCachedFile@@UAEXJ@Z; Ego_r.pdb donor order Close / Write / SetPosition / MovePosition /
 // SetLength / GetLength = retail 0x00A5AFA0 / 0x00A5AFB0 / 0x00A5B020 / 0x00A5B0A0 / 0x00A5B190 / 0x00A5B200).

@@ -1,5 +1,5 @@
 // NCreatureMode::IsStabbableByHero(const CThing& thing) -- true when the current creature mode is Stunned (0x1D)
-// Leaf: ?IsStabbableByHero@NCreatureMode@@
+// Leaf: ?IsStabbableByHero@NCreatureMode@@YI_NABVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085F070, length 78 bytes. `__fastcall` free function (ecx = the thing), bool in al.
 // Mangled (Ego_r.pdb): ?IsStabbableByHero@NCreatureMode@@YI_NABVCThing@@@Z.
 // Callees: CVectorMap LowerBound 0x004365B0 (const), CTCCreatureModeManager::GetCurrentMode 0x0073A6E0, the mode's slot 1.

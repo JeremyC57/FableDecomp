@@ -1,5 +1,5 @@
 // CThingFilter_BoundingRadiusIntersectsInfiniteLine::operator()(const CThing& thing) const -- true when the thing's physics bounding sphere reaches the filter's infinite line
-// Leaf: ??RCThingFilter_BoundingRadiusIntersectsInfiniteLine@@
+// Leaf: ??RCThingFilter_BoundingRadiusIntersectsInfiniteLine@@QBE_NABVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A7050, length 89 bytes (+ int3 padding), thiscall `ret 4`.
 // Callees: CTCPhysicsBase::GetBoundingInfo(C3DVector& centre, float& radius) const @ 0x006AF640, the squared
 //   point-to-infinite-line distance helper @ 0x00A442E0 (__fastcall: ecx = line start, edx = line end, then the

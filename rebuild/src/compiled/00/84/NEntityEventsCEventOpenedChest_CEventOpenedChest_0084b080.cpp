@@ -1,5 +1,5 @@
 // NEntityEvents::CEventOpenedChest::CEventOpenedChest(CThing&) -- the event starts at world frame 0 and its PChest intelligent pointer is pointed at the argument
-// Leaf: ??0CEventOpenedChest@NEntityEvents@@QAE@
+// Leaf: ??0CEventOpenedChest@NEntityEvents@@QAE@AAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0084B080, 52 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity: NEntityEvents::CEventOpenedChest::CEventOpenedChest(CThing&) -- proven; evidence: it stores vtable 0x01274258 whose RTTI is
 //   .?AVCEventOpenedChest@NEntityEvents@@ : CEventBase@NEntityEvents; FableWin.pdb name set holds ??0CEventOpenedChest@NEntityEvents@@QAE@AAVCThing@@@Z;

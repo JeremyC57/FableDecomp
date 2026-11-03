@@ -1,6 +1,6 @@
 // CCreatureAction_PlayIntoLoopOutOfAnimation::FinishAction() -- base FinishAction; unless the creature is busy (0x661E70),
 // advance the into/loop/out-of state machine by queueing the next stage as a new action
-// Leaf: ?FinishAction@CCreatureAction_PlayIntoLoopOutOfAnimation
+// Leaf: ?FinishAction@CCreatureAction_PlayIntoLoopOutOfAnimation@@UAEXXZ
 // Layout: retail CCreatureActionBase is 0xa8 (PDB 0xb4): Stage +0xa8, NumberOfTimesToLoop +0xac, AmountOfTimeToLoop
 //   +0xb0, FrameToFinish +0xb4, UseAnimationMovement +0xb8, LoopAnimName +0xbc, OutOfAnimName +0xc0 (landed 0x00842960);
 //   base InterruptionGroupID +0x20, InterruptionPriority +0x24.

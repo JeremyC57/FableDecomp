@@ -1,5 +1,5 @@
 // CThing::GetTC<CTCBase>(ETCInterfaceType type, CTCBase** out) -- fetch a thing's component of the given interface type when the thing has one
-// Leaf: ??$GetTC@VCTCBase@@@CThing
+// Leaf: ??$GetTC@VCTCBase@@@CThing@@QAE_NW4ETCInterfaceType@@PAPAVCTCBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005943A2, 73 bytes, `ret 8` (thiscall; returns bool in al).
 // Name: FableWin.pdb `??$GetTC@V<T>@@@CThing@@QAE_NW4ETCInterfaceType@@PAPAV<T>@@@Z` (a member template; one ICF-folded
 // body serves every T, so the instantiation is not recoverable from the bytes -- CTCBase stands for it). No direct

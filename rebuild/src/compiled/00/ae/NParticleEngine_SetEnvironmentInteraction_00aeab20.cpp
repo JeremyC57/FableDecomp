@@ -1,5 +1,5 @@
 // NParticleEngine::SetEnvironmentInteraction(CCountedPointer<CAEnvironmentInteraction> interaction) -- install the particle engine's environment-interaction object (gravity / wind queries): counted-pointer assign into the engine global, then release the by-value argument
-// Leaf: ?SetEnvironmentInteraction@NParticleEngine@@
+// Leaf: ?SetEnvironmentInteraction@NParticleEngine@@YIXV?$CCountedPointer@VCAEnvironmentInteraction@NParticleEngine@@@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AEAB20, 99 bytes, __fastcall with the 8-byte counted pointer on the stack (`ret 8`).
 // Identity: Ego_r.pdb `?SetEnvironmentInteraction@NParticleEngine@@YIXV?$CCountedPointer@VCAEnvironmentInteraction@NParticleEngine@@@@@Z`
 //   (manifest name right); the sibling GetEnvironmentInteraction 0x00AEAB10 returns *Data of the same global. Caller 0x00417531.

@@ -1,5 +1,5 @@
 // NParticleEngine::CPSCSplineBase::StartUpdate(const CParticleUpdateParameters<unsigned long,unsigned long>& params) -- vtable slot 8: marks the component's update started, advances the random spline offsets and re-fits the position parameters to the spline (and to the offset copy when there is one)
-// Leaf: ?StartUpdate@CPSCSplineBase@
+// Leaf: ?StartUpdate@CPSCSplineBase@NParticleEngine@@UAEXABV?$CParticleUpdateParameters@KK@2@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B215E0, length 66 bytes, `ret 4`.
 // Signature from Ego_r.pdb: ?StartUpdate@CPSCSplineBase@NParticleEngine@@UAEXABV?$CParticleUpdateParameters@KK@2@@Z;
 //   slot 8 of the vtables @ 0x0129FB84 and 0x012A0B14 (absolute refs 0x0129FBA4 / 0x012A0B34) and called directly by the

@@ -1,5 +1,5 @@
 // CPhysicsMesh::GetHelperPointPositionStatic(const CCharString& name, long index) const -- the static (mesh-space) position of the index-th helper point registered under the name
-// Leaf: ?GetHelperPointPositionStatic@CPhysicsMesh@@
+// Leaf: ?GetHelperPointPositionStatic@CPhysicsMesh@@QBE?AVC3DVector@@ABVCCharString@@J@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6C9C0, 49 bytes (+15 int3), thiscall `ret 0Ch` (hidden C3DVector
 //   result, name, index). Ego_r.pdb `?GetHelperPointPositionStatic@CPhysicsMesh@@QBE?AVC3DVector@@ABVCCharString@@J@Z`.
 // Callee: CVectorMap<CCharString,C3DHelperPoint,CCompareString<C3DHelperPoint> >::LowerBound 0x00A6F290 (landed under the

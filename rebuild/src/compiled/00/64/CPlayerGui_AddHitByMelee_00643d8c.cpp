@@ -1,5 +1,5 @@
 // CPlayerGui::AddHitByMelee(CThing& attacker, CThing& victim, const C3DVector& pos) -- spawn the GUI def's "smack" particle effect at the hit position
-// Leaf: ?AddHitByMelee@CPlayerGui@
+// Leaf: ?AddHitByMelee@CPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00643D8C, 89 bytes, `ret 0Ch`. Size-optimised NPlayerGui TU (frame pointer,
 // `leave`, fldz/fld1 + fstp constant stores, no function alignment).
 // Identity: Ego_r.pdb `?AddHitByMelee@CPlayerGui@@QAEXAAVCThing@@0ABVC3DVector@@@Z`; reached only through the forwarder at

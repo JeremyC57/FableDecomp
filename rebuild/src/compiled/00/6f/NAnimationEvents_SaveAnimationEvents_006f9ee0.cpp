@@ -1,5 +1,5 @@
 // NAnimationEvents::SaveAnimationEvents() -- save the game and sound animation-event managers to Data\Misc\game_animation_events.txt / sound_animation_events.txt
-// Leaf: ?SaveAnimationEvents@NAnimationEvents@@
+// Leaf: ?SaveAnimationEvents@NAnimationEvents@@YIXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006F9EE0, 161 bytes, plain `ret` (__fastcall, no arguments).
 // Callees: CWideString(const wchar_t*) 0x0099B6B0, NResourceDirectoryNames::GetMiscDir() 0x0041A0A0 (__fastcall,
 //   hidden result in ecx), operator+(const CWideString&, const CWideString&) 0x0099BE70 (__fastcall), CManager::Save

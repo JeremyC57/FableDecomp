@@ -1,5 +1,5 @@
 // CTCWallMountEffects::OnWallMountUseAction(CThingCreatureBase& creature) -- when the effect's cool-down has passed, ask the teleport/heal question as a Yes/No subtitle, remember the creature and wait for confirmation; false while cooling down or for a mount with no effect question
-// Leaf: ?OnWallMountUseAction@CTCWallMountEffects
+// Leaf: ?OnWallMountUseAction@CTCWallMountEffects@@QAE_NAAVCThingCreatureBase@@@Z
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>

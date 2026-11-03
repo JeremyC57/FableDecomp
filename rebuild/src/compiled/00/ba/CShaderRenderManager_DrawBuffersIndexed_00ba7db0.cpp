@@ -1,5 +1,5 @@
 // CShaderRenderManager::DrawBuffersIndexed(const CTexture* textures[], unsigned long textureCount, CVertexBufferWin32& vertexBuffer, unsigned long minVertexIndex, unsigned long numVertices, CIndexBuffer& indexBuffer, unsigned long startIndex, unsigned long primitiveCount, EPrimitiveType primitiveType) -- bind the vertex buffer and the first textureCount textures (through the render manager's cached SetTexture), then the index buffer, realise the render state and draw an indexed primitive
-// Leaf: ?DrawBuffersIndexed@CShaderRenderManager@@QAEXQAPBVCTexture
+// Leaf: ?DrawBuffersIndexed@CShaderRenderManager@@QAEXQAPBVCTexture@@KAAVCVertexBufferWin32@@KKAAVCIndexBuffer@@KKW4EPrimitiveType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BA7DB0, 236 bytes, thiscall, `ret 0x24`.
 // Identity: Ego_d.pdb / FableWin.pdb ?DrawBuffersIndexed@CShaderRenderManager@@QAEXQAPBVCTexture@@KAAVCVertexBufferWin32@@KKAAVCIndexBuffer@@KKW4EPrimitiveType@@@Z
 //   (inline in the Ego_r build). Same class and layout as the seven-argument overload 0x00B8EB00: CRenderManager* at

@@ -1,5 +1,5 @@
 // NParticleEngine::CParticleEmitterList::CParticleEmitterList(long maxActiveEmitters) -- empty active-emitter list (STLport list of counted emitter pointers: a self-linked sentinel) with its emitter cap
-// Leaf: ??0CParticleEmitterList@NParticleEngine@@
+// Leaf: ??0CParticleEmitterList@NParticleEngine@@QAE@J@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AEB940, 39 bytes, __fastcall `ret 4`, returns this. No direct caller (the manager
 //   constructor 0x00AEBA90 inlines it with 0x80; this is the out-of-line copy).
 // Identity: Ego_r.pdb `??0CParticleEmitterList@NParticleEngine@@QAE@J@Z`; members Active (list<CCountedPointer<CParticleEmitter> >)

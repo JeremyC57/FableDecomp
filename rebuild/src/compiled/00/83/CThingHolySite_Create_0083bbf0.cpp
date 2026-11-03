@@ -1,5 +1,5 @@
 // CThingHolySite::Create(long, const C3DVector&, long, bool) -- allocate a holy-site thing through its class allocator, construct it from the def index / position / player / player-start flag, place its physics component at the position with the identity axes, and activate it; null on any failure
-// Leaf: ?Create@CThingHolySite
+// Leaf: ?Create@CThingHolySite@@SIPAV1@JABVC3DVector@@J_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0083BBF0, 147 bytes, static __fastcall (ecx = def index, edx = position), `ret 8`.
 // Identity: ?Create@CThingHolySite@@SIPAV1@JABVC3DVector@@J_N@Z (Ego_r.pdb). The object comes from CThingHolySite::Alloc()
 //   0x0052AC90 (`new (false) CThingHolySite`, 0xD8 bytes, vtable 0x012452DC; ?Alloc@CThingHolySite@@SIPAVCClass@@XZ),

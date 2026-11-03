@@ -4,7 +4,7 @@
 // Shape: as the landed XVertexData WriteToFile 0x00AA58C0: GetData() hands back the array's own address when it
 // is empty; sizes are signed pointer differences divided by 12 (the 0x2AAAAAAB multiply), byte counts Size()*12.
 // Layout: UTangents +0x10, VTangents +0x1c (retail CArray is 12 bytes; PDB header has +0x10/+0x20).
-// Leaf: ?WriteToFile@C3DMeshFileXUVTangentChunk
+// Leaf: ?WriteToFile@C3DMeshFileXUVTangentChunk@@UBEXAAVCDataOutputStream@@AAVCChunkedFileSaver@@@Z
 // Model: the shared C3DMeshFile*Chunk retail model of the landed 0x00AA58C0 / 0x00AA4C00.
 class CCharString { public:
     CCharString();                                      // 0x0099E4B0 default

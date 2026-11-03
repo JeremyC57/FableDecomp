@@ -1,5 +1,5 @@
 // CNavQuadTree::OnNavMapUnload(long mapIndex) -- a neighbouring navigation map was unloaded: erase every connector node registered under its map index (the equal range of the ConnectorNodes map)
-// Leaf: ?OnNavMapUnload@
+// Leaf: ?OnNavMapUnload@CNavQuadTree@@QAEXJ@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A79290, 74 bytes (+ int3 padding to 80), thiscall `ret 4`.
 // Identity: Ego_r.pdb `?OnNavMapUnload@CNavQuadTree@@QAEXJ@Z`; the only caller is CNavigatorManager::RemoveNavigationMap
 //   (0x00A155F0: every other map's quad tree gets the unloaded index). ConnectorNodes (CVectorMap<long,

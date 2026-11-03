@@ -1,6 +1,6 @@
 // CTCActivationReceptorCreatureGenerator::Activate() -- the base receptor Activate, then the thing's creature generator (interface 0x3d) is either externally triggered (TriggerOnActivate) or switched active
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F7650, length 94 bytes.
-// Leaf: ?Activate@CTCActivationReceptorCreatureGenerator
+// Leaf: ?Activate@CTCActivationReceptorCreatureGenerator@@UAEXXZ
 // Callees: CTCActivationReceptorBase::Activate @ 0x007F76E0, CVectorMap::LowerBound @ 0x0040F020, CTCCreatureGenerator::
 // SetAsActive(bool) @ 0x00749DD0. Ego_r.pdb: `?Activate@CTCActivationReceptorCreatureGenerator@@UAEXXZ` (slot 28),
 // TriggerOnActivate +0x2c / ActivateOnActivate +0x2d in retail (PDB +0x30/+0x31, the 12-byte vector shift);

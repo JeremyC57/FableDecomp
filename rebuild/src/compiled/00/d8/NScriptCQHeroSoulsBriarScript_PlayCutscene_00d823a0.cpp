@@ -1,5 +1,5 @@
 // NScript::CQ_HeroSoulsBriarScript::PlayCutscene(CCharString name) -- play a Briar Rose cut-scene: take the hero under scripted control, cast him as HERO and the quest's Briar Rose handle as ROSE, then run the named cut-scene inside a paused movie sequence with the movie camera fixed, and clear the cut-scene arguments
-// Leaf: ?PlayCutscene@CQ_HeroSoulsBriarScript@
+// Leaf: ?PlayCutscene@CQ_HeroSoulsBriarScript@NScript@@QAEXVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D823A0, 667 bytes (`ret 4`; the by-value name is destroyed by the callee).
 //   Catalog label CWomanToAttract::DoLeavingCutscene is propagated and wrong: the callers are CQ_HeroSoulsBriarScript::Main
 //   0x00D80E40 and CBriarRose::Main 0x00D82640, `this` holds the CGameScriptInterface at +0x40 (a quest script, not an

@@ -1,5 +1,5 @@
 // LHNetworkLib::LHHttpHeaderStatus::ParseLocationData() -- split the redirect Location ("http://host:port/uri") into hsHost, hsPort (default 80) and hsURI
-// Leaf: ?ParseLocationData@LHHttpHeaderStatus
+// Leaf: ?ParseLocationData@LHHttpHeaderStatus@LHNetworkLib@@QAEXXZ
 // Grade: RELOCATION_MATCH -- retried 2026-10-30 (sec3): the 0x00840B60-TU model with same-TU stand-ins (auto_inline(off) _M_insert_overflow / _M_assign_dispatch / _M_append / toLowerCase / StartsWith / LHHttpHeaders::GetHeader; noinline find 0x00841790 and substr 0x00569330) keeps retail's esi-held "http://" temporary block
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0083F420, 403 bytes, thiscall, plain `ret`.
 // Identity: Ego_r.pdb ?ParseLocationData@LHHttpHeaderStatus@LHNetworkLib@@QAEXXZ (the debug build's 0x0084E5C0, ahead of

@@ -1,5 +1,5 @@
 // CTCSolidToThing::IsSolidToThing(const CThing* thing) const -- true when the not-solid-to list is empty or does not hold the thing (a linear find of an intelligent pointer to it)
-// Leaf: ?IsSolidToThing@CTCSolidToThing
+// Leaf: ?IsSolidToThing@CTCSolidToThing@@QBE_NPBVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00770DE0, 105 bytes (+7 int3), `ret 4`.
 // Name: FableWin.pdb `?IsSolidToThing@CTCSolidToThing@@QBE_NPBVCThing@@@Z`; the landed CTCSolidToThing::AddThingNotSolidTo
 //   0x00770FA0 calls it at this address; other callers are the collision filters 0x006A8300 / 0x00857250 and

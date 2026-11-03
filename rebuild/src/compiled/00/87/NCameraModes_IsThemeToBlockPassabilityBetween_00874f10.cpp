@@ -1,5 +1,5 @@
 // NCameraModes::IsThemeToBlockPassabilityBetween(const CWorldMap& map, const C3DVector& a, const C3DVector& b, bool flag) -- theme passability block test: blocked unless b's position is passable (a's passability is computed and tested, but both arms agree)
-// Leaf: ?IsThemeToBlockPassabilityBetween@NCameraModes@@
+// Leaf: ?IsThemeToBlockPassabilityBetween@NCameraModes@@YI_NABVCWorldMap@@ABVC3DVector@@1_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00874F10, length 42 bytes (+ int3 padding), `__fastcall` (map in ecx, a in
 //   edx, b and the unused flag on the stack), `ret 8`.
 // Identity: Ego_r.pdb names two theme block tests of this shape, `?IsThemeToBlockCameraBetween@NCameraModes@@` and

@@ -1,5 +1,5 @@
 // CV_BeardyBaldyScript::SetWanderPointAndDistance(const CScriptThing&, const C3DVector&) -- make a villager wander around a point: centre point, min/max wander distance from the script def, then scripting state group 4 (wander)
-// Leaf: ?SetWanderPointAndDistance@CV_BeardyBaldyScript@NScript@@
+// Leaf: ?SetWanderPointAndDistance@CV_BeardyBaldyScript@NScript@@QAEXABVCScriptThing@@ABVC3DVector@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E53F60, 249 bytes (256 with padding), `ret 8`.
 // Callees (all through the game script interface at this+0x40): slot 763 SetWanderCentrePoint(CScriptThing, C3DVector),
 //   slot 766 SetWanderMinDistance(CScriptThing, float), slot 769 SetWanderMaxDistance(CScriptThing, float),

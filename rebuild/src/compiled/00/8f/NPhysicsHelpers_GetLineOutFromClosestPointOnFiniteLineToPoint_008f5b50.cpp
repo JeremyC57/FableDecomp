@@ -1,5 +1,5 @@
 // NPhysicsHelpers::GetLineOutFromClosestPointOnFiniteLineToPoint(const C3DVector&, const C3DVector&, const C3DVector&) -- vector from the closest point on the segment to the point
-// Leaf: ?GetLineOutFromClosestPointOnFiniteLineToPoint@
+// Leaf: ?GetLineOutFromClosestPointOnFiniteLineToPoint@NPhysicsHelpers@@YI?AVC3DVector@@ABV2@00@Z
 // Retail 0x008F5B50, 0x4A bytes, __fastcall (hidden C3DVector result in ecx, lineStart in edx, lineEnd and point on the
 //   stack, `ret 8`). Manifest label matches the PDB name set
 //   (`?GetLineOutFromClosestPointOnFiniteLineToPoint@NPhysicsHelpers@@YI?AVC3DVector@@ABV2@00@Z`).

@@ -1,7 +1,7 @@
 // NScript::CGameflowAssistanceScript::Tutorial_LowMagic() -- tutorial thread: while fewer than the def's maximum low-will warnings were given, each script frame (while the hero is player controlled) warn the hero through the guild master when his will energy drops below the def's threshold, then wait the def's cooldown before warning again
 // Retry 10b (statement-permutation sweep): the warning count is incremented AFTER the cooldown is re-armed from the def;
 // that order gives retail's registers (cooldown in edi, the block-local def in ebx pushed at entry).
-// Leaf: ?Tutorial_LowMagic@CGameflowAssistanceScript@NScript@@
+// Leaf: ?Tutorial_LowMagic@CGameflowAssistanceScript@NScript@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CF0180, length 282 bytes (+ int3 padding), plain `ret`.
 // Label correction: the catalog says Tutorial_LowHealth; the spawned-thread registration at 0x00CEFBD0 stores this
 //   address under the name "Tutorial_LowMagic" (0x012C5E30), and the body tests the will energy (Ego_r.pdb

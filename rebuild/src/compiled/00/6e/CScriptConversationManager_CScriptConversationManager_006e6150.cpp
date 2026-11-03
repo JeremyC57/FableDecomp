@@ -1,5 +1,5 @@
 // CScriptConversationManager::CScriptConversationManager() -- an empty conversation map (STLport tree: allocate the 0x40-byte header node, colour it red, null root, leftmost/rightmost = header), the next index 1, AlwaysShowText off
-// Leaf: ??0CScriptConversationManager@@
+// Leaf: ??0CScriptConversationManager@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E6150, 65 bytes (80 with int3 padding), thiscall, returns this.
 // Identity: Ego_r.pdb name set `??0CScriptConversationManager@@QAE@XZ`; the header node size 0x40 = the map node
 //   {color, parent, left, right, key +0x10, CScriptConversation +0x14 (0x2C retail)}, the map/index/flag layout of the

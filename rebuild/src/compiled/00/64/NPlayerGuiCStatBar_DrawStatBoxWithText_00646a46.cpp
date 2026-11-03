@@ -1,5 +1,5 @@
 // NPlayerGui::CStatBar::DrawStatBoxWithText(const CEnginePrimitivePrepareInfo& info, std::vector<CEnginePrimitiveHandle>& handles, const C2DVector& pos, long graphic, const CWideString& text, long value, unsigned char alpha, bool rightAlign) -- draw a stat box, then its text at the money-text offset (right-aligned to the screen edge when asked)
-// Leaf: ?DrawStatBoxWithText@CStatBar@NPlayerGui@
+// Leaf: ?DrawStatBoxWithText@CStatBar@NPlayerGui@@SIXABVCEnginePrimitivePrepareInfo@@AAV?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@ABVC2DVector@@JABVCWideString@@JE_N@Z
 // Naming wave 18: PDisplayManager is GPDisplayManager (?GPDisplayManager@@3PAVCDisplayManager@@A); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00646A46, 204 bytes, `ret 18h` (static __fastcall: info in ecx, handles in
 // edx, six stack arguments). Size-optimised NPlayerGui TU (frame pointer, `leave`).

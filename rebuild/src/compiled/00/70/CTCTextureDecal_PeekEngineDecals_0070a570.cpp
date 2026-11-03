@@ -1,5 +1,5 @@
 // CTCTextureDecal::PeekEngineDecals() -- when dirty, rebuild the engine decal list: one engine decal per decalled texture (map keyed by texture), its overlaid blends in decal order
-// Leaf: ?PeekEngineDecals@
+// Leaf: ?PeekEngineDecals@CTCTextureDecal@@QAEABV?$vector@VCEngineTextureDecal@@V?$allocator@VCEngineTextureDecal@@@std@@@std@@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0070A570, 518 bytes, __fastcall, `ret`, returns const vector<CEngineTextureDecal>&.
 // PDB: ?PeekEngineDecals@CTCTextureDecal@@QAEABV?$vector@VCEngineTextureDecal@@V?$allocator@VCEngineTextureDecal@@@std@@@std@@XZ
 //   (Ego_r 0x006813E0); catalog "CEngineInternalPrimitive_RebuildDecals" was descriptive.

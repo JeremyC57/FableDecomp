@@ -1,7 +1,7 @@
 // CSFindThing(const CCharString& name, map<CCharString, CScriptGameResourceObjectScriptedThingBase>& actors) -- resolve a cutscene actor name to a script thing: "HERO" is the hero, a scripting actor in the map gives its thing, anything else is looked up by script name
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-// Leaf: ?CSFindThing@@
+// Leaf: ?CSFindThing@@YI?AVCScriptThing@@ABVCCharString@@AAV?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@@Z
 // Naming wave 30 (family cst): the local non-virtual CScriptThing stand-in (??1CScriptThing@@QAE@XZ) is replaced by engine/CScriptThing.h's retail
 //   class: ~CScriptThing 0x004AA840 is virtual (RTTI CScriptThing : CBaseClass; Ego_r.pdb / FableWin.pdb ??1CScriptThing@@UAE@XZ)
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the

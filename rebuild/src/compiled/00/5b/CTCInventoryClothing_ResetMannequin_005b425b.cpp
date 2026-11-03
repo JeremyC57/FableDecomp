@@ -1,5 +1,5 @@
 // CTCInventoryClothing::ResetMannequin() -- when there is a mannequin, dress it like the hero: copy the hero's worn clothing appearance modifiers (type 2) onto the mannequin's, replacing whatever it wore
-// Leaf: ?ResetMannequin@CTCInventoryClothing@@
+// Leaf: ?ResetMannequin@CTCInventoryClothing@@QAEXXZ
 // Naming wave 18: the interface-presence stand-in CPresenceBits is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Retail: Fable.exe @ 0x005B425B, 209 bytes, __fastcall `ret`. Ego_r.pdb `?ResetMannequin@CTCInventoryClothing@@QAEXXZ`
 // (name inferred: the only argument-less CTCInventoryClothing member that fits -- it reads PMannequin and rebuilds its

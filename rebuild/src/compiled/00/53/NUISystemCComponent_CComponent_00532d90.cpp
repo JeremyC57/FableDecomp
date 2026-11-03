@@ -1,5 +1,5 @@
 // NUISystem::CComponent::~CComponent() -- detach the component: drop it from every action that holds it as a parameter, unregister the observer, leave the parent viewport and position parent, orphan the position children, hand the destruction actions to the front-end manager and delete them, orphan the children, then destroy the members and the CActionParam / CObserver / CUIInterface bases
-// Leaf: ??1CComponent@NUISystem
+// Leaf: ??1CComponent@NUISystem@@UAE@XZ
 // Retail 0x00532D90, 1040 bytes, plain `ret`, one dword of frame (the destroy-range tag).
 // Callees: CManager::GetInstance 0x0041E5F2 (`__fastcall`) slots 5 (+0x14, RemoveObserver) and 14 (+0x38, take a
 //   destruction action); free 0x00BFEA14, operator delete 0x00BFE9BC; list<CCountedPointer<CAction> >::clear 0x005356A0;

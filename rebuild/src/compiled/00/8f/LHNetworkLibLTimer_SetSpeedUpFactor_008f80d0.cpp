@@ -1,5 +1,5 @@
 // LHNetworkLib::LTimer::SetSpeedUpFactor(float) -- running timer: re-base on the scaled clock and take the new factor; stopped timer: remember it for Start
-// Leaf: ?SetSpeedUpFactor@LTimer@LHNetworkLib@@
+// Leaf: ?SetSpeedUpFactor@LTimer@LHNetworkLib@@QAEXM@Z
 // Retail 0x008F80D0, 0x4B bytes, thiscall `ret 4`. Manifest label "CMusicManager_OnMusicEntryTimeout" (_global) is a
 // propagated descriptive name. PDB name set: `?SetSpeedUpFactor@LTimer@LHNetworkLib@@QAEXM@Z`; Ego_r layout (0x110 bytes):
 // buf[256], SystemClockAtLastAdjust +0x100, TimerTimeAtLastAdjust +0x104, SpeedUpFactor +0x108, SaveSpeedUpFactor +0x10C.

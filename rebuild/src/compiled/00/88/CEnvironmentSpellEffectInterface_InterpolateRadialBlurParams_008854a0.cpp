@@ -1,5 +1,5 @@
 // CEnvironmentSpellEffectInterface::InterpolateRadialBlurParams(float t, const CRadialBlurParams& from, const CRadialBlurParams& to) -- clamp t to [0, 1] and return the radial-blur parameters blended from `from` towards `to` (four scalars, then the threshold and intensity colours)
-// Leaf: ?InterpolateRadialBlurParams@CEnvironmentSpellEffectInterface@@
+// Leaf: ?InterpolateRadialBlurParams@CEnvironmentSpellEffectInterface@@SI?AUCRadialBlurParams@1@MABU21@0@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008854A0, 480 bytes incl. int3 padding, static `__fastcall` with a hidden
 //   result pointer (ecx = result, edx = from, stack: t, to; `ret 8`), returns the result pointer in eax.
 // Identity: Ego_r/FableWin PDB name set: `?InterpolateRadialBlurParams@CEnvironmentSpellEffectInterface@@SI?AUCRadialBlurParams@1@MABU21@0@Z`

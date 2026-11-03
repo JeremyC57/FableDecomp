@@ -6,7 +6,7 @@
 // but its CArray<char> is 0x10 wide; retail's is three pointers (the factory 0x00AA59C0 allocates 0x4c), so
 // this file models the retail layout with the PDB names. The raw bytes go out through the CArray GetData()
 // idiom (`count ? first : this`).
-// Leaf: ?WriteToFile@C3DMeshFileXVertexDataChunk
+// Leaf: ?WriteToFile@C3DMeshFileXVertexDataChunk@@UBEXAAVCDataOutputStream@@AAVCChunkedFileSaver@@@Z
 //
 class CCharString { public:
     CCharString();                                      // 0x0099E4B0 default

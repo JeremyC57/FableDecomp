@@ -1,5 +1,5 @@
 // NScreenEffect::CScreenEffectPriorityStack::CScreenFilterEntry::Reset() -- give every live thing in the entry's bypass map its saved colour-filter bypass state back
-// Leaf: ?Reset@CScreenFilterEntry@
+// Leaf: ?Reset@CScreenFilterEntry@CScreenEffectPriorityStack@NScreenEffect@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00883AE0, length 142 bytes (`ret`).
 // Identity: Ego_r.pdb `?Reset@CScreenFilterEntry@CScreenEffectPriorityStack@NScreenEffect@@QAEXXZ`; the entry's `reset`
 //   map<CThing*, CThingGraphicByPassFlagState> sits at +0x30 (PDB +0x30: nothing STL before it); called from

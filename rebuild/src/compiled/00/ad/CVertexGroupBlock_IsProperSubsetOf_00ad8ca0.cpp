@@ -1,6 +1,6 @@
 // CVertexGroupBlock::IsProperSubsetOf(const CVertexGroupBlock& other) -- every group of this block is in `other` and `other` has strictly more groups
 // Grade: RELOCATION_MATCH -- same levers as IsSubsetOf 0x00AD8C30: named iterator local + Groups[i] index form.
-// Leaf: ?IsProperSubsetOf@CVertexGroupBlock@@
+// Leaf: ?IsProperSubsetOf@CVertexGroupBlock@@QBE_NABV1@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD8CA0, length 105 bytes (padded to 112), `ret 4`.
 // Callees: map<unsigned long, long>::find(iterator* result, const unsigned long& key) @ 0x006699C0 (landed as
 // CRetailTree<ulong key>::find; header at the map's +0, end() re-read after the call).

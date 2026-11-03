@@ -1,5 +1,5 @@
 // N3DPrimitive::CDeviceIndependent::Sizeof() const -- memory footprint of a primitive's device-independent data: the vertex array (allocated capacity), the triangle-list pointer array with each list's own size, the bounding sphere and both tangent arrays
-// Leaf: ?Sizeof@CDeviceIndependent@N3DPrimitive
+// Leaf: ?Sizeof@CDeviceIndependent@N3DPrimitive@@QBEKXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A90450, length 189 bytes (+ int3 padding), `ret`. No callees.
 // Called by the landed C3DPrimitive2::Sizeof (0x00A90860) through its Data scoped pointer.
 // Layout: retail N3DPrimitive::CDeviceIndependent = Ego_r.pdb with 12-byte CArrays {first, last, end}: vptr +0, Vertices

@@ -1,5 +1,5 @@
 // CCreatureAction_BlockRespond::Initialise() -- pick the block-response animation from where the blow came from (hit position or the living target) relative to the creature's facing (front/back within 50 degrees, else left/right by the cross product), push the creature away from it, fall back to BLOCK_FRONT_RESPONSE facing the target, then run the block base Initialise and mark the final position preferred
-// Leaf: ?Initialise@CCreatureAction_BlockRespond
+// Leaf: ?Initialise@CCreatureAction_BlockRespond@@UAEXXZ
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Shape: the first normalise is `direction *= FastInvSqrt(direction.GetLengthSquared())` with a plain-inline length method
 //   (right-nested X*X + (Y*Y + Z*Z)): operator*=(const float&) then spills the reciprocal and consumes the cached x/y

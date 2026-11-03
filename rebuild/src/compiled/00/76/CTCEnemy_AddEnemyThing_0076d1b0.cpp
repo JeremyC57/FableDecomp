@@ -1,5 +1,5 @@
 // CTCEnemy::AddEnemyThing(const CThing* enemy) -- add a thing to the explicit enemy list unless it is already there; when it is the hero (deed log, interface 0x51) and the owner has a hero opinion (interface 0x4f), mark the owner's opinion of the hero as enemy
-// Leaf: ?AddEnemyThing@CTCEnemy
+// Leaf: ?AddEnemyThing@CTCEnemy@@QAEXPBVCThing@@@Z
 // Grade: RELOCATION_MATCH -- the opinion lookup is the landed out-parameter `__forceinline bool GetInterface(type, CTCBase** out)` (0x007504E0 shape) inside `if (enemy->HasTC(0x51))`: the presence bit test moves into it (`mov eax,[ebx+28h] ; test ah,ah`) and the component lands in eax then ecx, as retail. (A plain inline GetInterface is called out of line; HasTC && GetTC loads it straight into ecx.)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076D1B0, 179 bytes (+13 int3), `ret 4`.
 // Name: FableWin.pdb `?AddEnemyThing@CTCEnemy@@QAEXPBVCThing@@@Z`; the landed CTCVillage::SetEnemyToHeroStatus 0x0065A852

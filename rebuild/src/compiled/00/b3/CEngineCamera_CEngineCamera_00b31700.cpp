@@ -1,6 +1,6 @@
 // CEngineCamera::CEngineCamera(bool buildDebugScript) -- engine camera constructor: CEngineComponent base, vtable, member defaults; with the flag set it builds (and drops) a local eight-entry debug script array
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B31700, 151 bytes (+9 int3), __fastcall, ret 4, returns `this`.
-// Leaf: ??0CEngineCamera@@
+// Leaf: ??0CEngineCamera@@QAE@_N@Z
 // The catalog label (CAnimInit::Clear) is propagated: the vtable stored here, 0x012A12A4, is
 // CEngineCamera's (rtti-vtables.tsv), the body returns `this` and both callers (0x00B26614, 0x00B2781A)
 // construct the camera.

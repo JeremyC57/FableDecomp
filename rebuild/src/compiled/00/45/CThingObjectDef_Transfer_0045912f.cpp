@@ -1,5 +1,5 @@
 // CThingObjectDef::Transfer(CPersistContext& context) -- persist the object definition: CThingBaseDef part, a zero Health promoted to 1 outside the load/save modes, graphic, rotation time, materials, death object, property, die-off timer, then the five named flag bits
-// Leaf: ?Transfer@CThingObjectDef
+// Leaf: ?Transfer@CThingObjectDef@@UAEXAAVCPersistContext@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0045912F, length 445 bytes (virtual, `ret 4`; unaligned entry, size-optimised
 // def module with a frame pointer).
 // Identity: vtable 0x01234E94 (CThingObjectDef, RTTI) slot 18 is this body.

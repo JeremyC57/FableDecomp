@@ -1,5 +1,5 @@
 // CTCInventoryItem::IsClothing(long defIndex) -- static: whether the item def for defIndex is a clothing item (its inventory interface type is 0x12); false when the def cannot be cached
-// Leaf: ?IsClothing@CTCInventoryItem@@SI
+// Leaf: ?IsClothing@CTCInventoryItem@@SI_NJ@Z
 // Retail: Fable.exe @ 0x005D9C60, 41 bytes (+7 int3). Ego_r.pdb `?IsClothing@CTCInventoryItem@@SI_NJ@Z` (static __fastcall,
 // defIndex in ecx, passed straight on to CacheDef; `ret`).
 // Callee: CTCInventoryItem::CacheDef(long) @ 0x005D94B0 (static `__fastcall` bool). Global: 0x013B8C18 the cached

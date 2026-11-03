@@ -1,5 +1,5 @@
 // CThing::Kill(bool immediately) -- start the thing's death: mark it dying (and death-persistent when immediate), run the kill hooks, mark it dead and drop it from scans and the render list
-// Leaf: ?Kill@CThing
+// Leaf: ?Kill@CThing@@QAEX_N@Z
 // Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
 //   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C9B80, 144 bytes. __fastcall, `ret 4`. Inlined (with false) into

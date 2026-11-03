@@ -1,5 +1,5 @@
 // NUISystem::CDraggableInto::ProcessEvent(EEvent event) -- on event 0x1E while the pointer is over this drop target, run its drop actions and clear the front end's dragged-component word; then the hoverable handling
-// Leaf: ?ProcessEvent@CDraggableInto
+// Leaf: ?ProcessEvent@CDraggableInto@NUISystem@@UAEXW4EEvent@2@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00558D90, 70 bytes (`ret 4`, +10 int3 padding); slot 1 of the CDraggableInto
 //          CObserver vtable 0x0124B2B0, so `this` is the CObserver subobject at +4 (members at -4 from their object offsets).
 // Identity: FableWin.pdb ?ProcessEvent@CDraggableInto@NUISystem@@UAEXW4EEvent@2@@Z; RTTI 0x0133AE90 gives CDraggableInto :

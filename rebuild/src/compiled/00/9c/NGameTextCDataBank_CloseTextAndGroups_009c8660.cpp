@@ -1,5 +1,5 @@
 // NGameText::CDataBank::CloseTextAndGroups() -- empty the entry table and the text and group entry buffers (STLport erase(begin(), end()) on each: move the empty tail down, destroy the rest, rewrite the last pointer)
-// Leaf: ?CloseTextAndGroups@CDataBank@
+// Leaf: ?CloseTextAndGroups@CDataBank@NGameText@@IAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C8660, 154 bytes (+6 int3 padding), plain `ret`.
 // Name: FableWin.pdb ?CloseTextAndGroups@CDataBank@NGameText@@IAEXXZ (protected, non-virtual). The catalog label
 // "CommitChanges" is an autoname (labels_forge_autoname2); the only callers are CDataBank::Close 0x009C8BF0 (vtable slot 5:

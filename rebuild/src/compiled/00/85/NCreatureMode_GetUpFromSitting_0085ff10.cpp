@@ -1,5 +1,5 @@
 // NCreatureMode::GetUpFromSitting(CThingCreatureBase& creature, long sit_mode_type, const CCharString& anim, CAIBrain* brain) -- get the creature up: when its current mode is the sitting mode, end that mode with a CCreatureAction_GetUpFromSitting (true); otherwise, when the creature is free to perform a plain get-up action, hand a clone of it to the brain's output (or set it directly without a brain) and return false
-// Leaf: ?GetUpFromSitting@NCreatureMode@@
+// Leaf: ?GetUpFromSitting@NCreatureMode@@YI_NAAVCThingCreatureBase@@JABVCCharString@@PAVCAIBrain@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085FF10, 336 bytes incl. int3 padding, /Gr `__fastcall` (creature in ecx,
 //   the mode type in edx, anim and brain on the stack), `ret 8`.
 // Identity: PDB name set `?GetUpFromSitting@NCreatureMode@@YI_NAAVCThingCreatureBase@@JABVCCharString@@PAVCAIBrain@@@Z`;

@@ -1,5 +1,5 @@
 // CDisplayManager::EnumerateAntiAliasingModes(CArray<ESurfaceMultisampleType>& types) -- collect every multisample type that adapter 0 supports (D3D_OK from CheckDeviceMultiSampleType, full-screen) for any back-buffer format into a sorted unique set, then copy the set into types
-// Leaf: ?EnumerateAntiAliasingModes@
+// Leaf: ?EnumerateAntiAliasingModes@CDisplayManager@@QAEXAAV?$CArray@W4ESurfaceMultisampleType@@@@@Z
 // Grade: RELOCATION_MATCH -- the multisample type read into a named local ahead of the CheckDeviceMultiSampleType call
 //   fixes the argument-setup register plan (sec5 retry)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C05C0, 693 bytes, thiscall `ret 4`. Callers: seven game-side sites

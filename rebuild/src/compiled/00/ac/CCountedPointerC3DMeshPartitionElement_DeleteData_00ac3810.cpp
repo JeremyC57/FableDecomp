@@ -1,5 +1,5 @@
 // CCountedPointer<C3DMeshPartitionElement>::DeleteData(void* data) -- the counted pointer's per-type deleter: delete the partition element (its destructor deletes both sub-elements and clears the triangle range)
-// Leaf: ?DeleteData@?$CCountedPointer@VC3DMeshPartitionElement@@
+// Leaf: ?DeleteData@?$CCountedPointer@VC3DMeshPartitionElement@@@@SIXPAX@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AC3810, length 60 bytes (+4 int3), static __fastcall (data in ecx),
 //   plain `ret`.
 // Callees: C3DMeshPartitionElement::`scalar deleting destructor' @ 0x00AC37B0 (landed; the two child deletes),

@@ -1,5 +1,5 @@
 // CQ_HobbeCaveScript::Init() -- register the quest's eleven regions, reset the mission state (the timer from the script def), flag the master data and register the six boasts
-// Leaf: ?Init@CQ_HobbeCaveScript@NScript@@
+// Leaf: ?Init@CQ_HobbeCaveScript@NScript@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D8D640, 1472 bytes (int3 padded).
 // Callees: CCharString(const char*, long) 0x0099EBF0, ~CCharString 0x0099EAE0; CGameScriptInterface AddQuestRegion (slot 271,
 //   +0x43c), AddBoast (slot 303, +0x4bc); script def pGlobalScriptDef 0x0143E90C (boast cost/reward pairs +0xd8.. and +0xcf0..,

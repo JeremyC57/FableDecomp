@@ -1,5 +1,5 @@
 // CV_AssassinAttacksScript::Init() -- reset the assassin-attack state and the five region records (names and limits from the script def), then spawn the WatchForQuestComplete thread
-// Leaf: ?Init@CV_AssassinAttacksScript@NScript@@
+// Leaf: ?Init@CV_AssassinAttacksScript@NScript@@UAEXXZ
 // Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
 //   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E39540, length 268 bytes.

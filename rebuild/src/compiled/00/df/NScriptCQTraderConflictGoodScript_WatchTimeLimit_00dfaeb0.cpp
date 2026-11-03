@@ -1,5 +1,5 @@
 // CQ_TraderConflictGoodScript::WatchTimeLimit() -- start the escort time limit once the quest data says so, show it as a quest-info timer until the mission succeeds, and flag the data if time remained
-// Leaf: ?WatchTimeLimit@CQ_TraderConflictGoodScript@NScript@@
+// Leaf: ?WatchTimeLimit@CQ_TraderConflictGoodScript@NScript@@QAEXXZ
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DFAEB0, length 412 bytes (padded to 416).

@@ -1,5 +1,5 @@
 // CQ_TraderEscortScript::Init() -- register the Darkwood / Barrow Fields quest regions, switch off the creature generators along the route, reset the escort state, read the incubation times from the script def, clear the trader to talk, mark all traders alive in the master data and add the unclothed / no-damage / all-traders-alive boasts
-// Leaf: ?Init@CQ_TraderEscortScript@NScript@@
+// Leaf: ?Init@CQ_TraderEscortScript@NScript@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E006D0, 1352 bytes (int3 padded to 1360).
 // Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0 / operator=(const char*) 0x0099EFE0; Game slots 271 AddQuestRegion,
 //   303 AddBoast, 558 SetCreatureGeneratorsEnabled; script def pGlobalScriptDef 0x0143E90C.

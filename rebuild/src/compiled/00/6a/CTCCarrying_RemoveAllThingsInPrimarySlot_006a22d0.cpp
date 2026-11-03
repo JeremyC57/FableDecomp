@@ -1,5 +1,5 @@
 // CTCCarrying::RemoveAllThingsInPrimarySlot(vector<CThing*>& removed, bool flag) -- take the thing out of every primary carry slot, appending each to the caller's list
-// Leaf: ?RemoveAllThingsInPrimarySlot@CTCCarrying@@
+// Leaf: ?RemoveAllThingsInPrimarySlot@CTCCarrying@@QAEXAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A22D0, length 155 bytes (+ int3 padding), thiscall `ret 8`.
 // Callees: CGameDefinitionManager::Get @ 0x0044C6B0, CDefinitionManager::GetDef<T>(long, CDefPointer<T>*)
 //   @ 0x006A3060, CTCCarrying::RemoveThingInCarrySlot(long, bool) @ 0x006A16A0, the 4-byte vector's

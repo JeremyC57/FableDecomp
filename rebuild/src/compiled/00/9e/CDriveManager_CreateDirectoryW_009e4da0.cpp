@@ -1,5 +1,5 @@
 // CDriveManager::CreateDirectoryW(const CWideString& path) -- create every missing directory along the full path: check and select the path's drive (restored at the end), then change into each path item in turn, making it when the change fails; 0 when a directory cannot be made or entered, else the drive check's result
-// Leaf: ?CreateDirectoryW@CDriveManager@@
+// Leaf: ?CreateDirectoryW@CDriveManager@@QAE?AW4EDriveReturn@@ABVCWideString@@@Z
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E4DA0, length 294 bytes (`ret 4`; /GS cookie @ 0x0139C8A8).
 // Identity: Ego_r.pdb ?CreateDirectoryW@CDriveManager@@QAE?AW4EDriveReturn@@ABVCWideString@@@Z (0xB36830, after the private inlines

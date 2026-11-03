@@ -1,5 +1,5 @@
 // CTCTavernGameCardBase::FrameUpdate() -- per-frame card-game update: base update and pointer scale, the state's card phase (deal, move, finished moving, turn, turn back, main game), then while the game is being played every card in the pack follows the game position and the highlight is refreshed
-// Leaf: ?FrameUpdate@CTCTavernGameCardBase
+// Leaf: ?FrameUpdate@CTCTavernGameCardBase@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F1D40, 198 bytes of code plus its 10-entry jump table (row 240); vtable slot
 // 9 (CTCTavernGameCardSorting 0x0126F5B4 inherits it). Ego_r.pdb `?FrameUpdate@CTCTavernGameCardBase@@UAEXXZ`.
 // Callees: CTCTavernGame::FrameUpdate() 0x005EB9E0 (non-virtual base call); CTCTavernGameCardBase::UpdatePointerScale()

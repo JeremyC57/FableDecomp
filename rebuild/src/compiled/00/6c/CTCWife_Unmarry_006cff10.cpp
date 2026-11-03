@@ -1,5 +1,5 @@
 // CTCWife::Unmarry(bool keepHouseUnrented) -- for a wife married to the player: hand her home back (the house component's occupant cleared, re-rented and optionally un-rented), hide the attraction icon, forget the wedding frame, tell the living hero's stats she is no longer married, and ask for a new brain
-// Leaf: ?Unmarry@CTCWife
+// Leaf: ?Unmarry@CTCWife@@QAEX_N@Z
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006CFF10, 269 bytes (+3 int3), `ret 4`.

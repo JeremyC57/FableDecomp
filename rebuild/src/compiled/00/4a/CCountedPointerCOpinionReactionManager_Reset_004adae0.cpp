@@ -1,6 +1,6 @@
 // CCountedPointer<COpinionReactionManager>::Reset(COpinionReactionManager* data) -- drop the shared count block (destroying the object on last
 // reference), then adopt data with a fresh count block {1, DeleteData, data}.
-// Leaf: ?Reset@?$CCountedPointer@VCOpinionReactionManager@@@@QAEXPA
+// Leaf: ?Reset@?$CCountedPointer@VCOpinionReactionManager@@@@QAEXPAVCOpinionReactionManager@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004adae0, oracle length 103 bytes, thiscall `ret 4`.
 // Renamed (rename1, 2026-10-24) from CCountedPointer_004ad600::Reset @ 00/4a/CCountedPointer004ad600_Reset_004adae0.cpp: the deleter this body stores into the
 //   count block (0x004AD600) calls the landed ~COpinionReactionManager and is CCountedPointer<COpinionReactionManager>::DeleteData

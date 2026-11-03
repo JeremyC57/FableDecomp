@@ -10,7 +10,7 @@
 // Shape: the UNCHECKED out-parameter GetInterface (sibling 0x0097E270): the inline setter is duplicated into both arms; the
 //   hit arm copies the float as a dword, the absent arm reads the never-written out pointer from the argument slot and
 //   copies through the FPU.
-// Leaf: ?SetProximityForDirectApproach@CAIStateGroupBase@@
+// Leaf: ?SetProximityForDirectApproach@CAIStateGroupBase@@IAEXM@Z
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)

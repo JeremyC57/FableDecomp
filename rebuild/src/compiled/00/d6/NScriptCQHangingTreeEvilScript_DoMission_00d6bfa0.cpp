@@ -1,5 +1,5 @@
 // CQ_HangingTreeEvilScript::DoMission() -- start the mission-end and region watchers, wait for BowerstoneJail, then run the stage machine: stage 1 spawns the party at the spawn point and plays the introduction, then starts the mission timer and moves to stage 2, which waits for the HeroDualArea level (stage 6); finally play the conclusion and, unless failed, flag success
-// Leaf: ?DoMission@CQ_HangingTreeEvilScript@NScript@@
+// Leaf: ?DoMission@CQ_HangingTreeEvilScript@NScript@@QAEXXZ
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D6BFA0, length 1023 bytes.

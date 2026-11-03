@@ -1,5 +1,5 @@
 // NGraphicAppearance::CTCGraphicAppearance::HandleMessage(const NTCMessages::CMessageBase& message) -- vtable slot 27: dispatch the two caught messages: clear-primitives (type 1) marks the appearance changed with reason 8, set-thing-owner (type 4) goes to its CatchMessage
-// Leaf: ?HandleMessage@CTCGraphicAppearance@
+// Leaf: ?HandleMessage@CTCGraphicAppearance@NGraphicAppearance@@UAEXABVCMessageBase@NTCMessages@@@Z
 // Naming wave 31 (family c703): ClearAllPrimitives 0x004BF9A0 is protected (?ClearAllPrimitives@CTCGraphicAppearance@NGraphicAppearance@@IAEXXZ,
 //   Ego_r.pdb / FableWin.pdb); was bound as the public QAE spelling
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004C01E0, 86 bytes (+10 int3 padding).

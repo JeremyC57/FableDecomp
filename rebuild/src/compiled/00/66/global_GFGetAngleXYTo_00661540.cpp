@@ -1,5 +1,5 @@
 // GFGetAngleXYTo(const C3DVector& from, const C3DVector& to) -- heading from one position to another in the XY plane, as a fraction of a full turn wrapped into [0, 1)
-// Leaf: ?GFGetAngleXYTo@@
+// Leaf: ?GFGetAngleXYTo@@YIMABVC3DVector@@0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00661540, 91 bytes, `__fastcall` (from in ecx, to in edx, `ret`), float in st(0).
 // Name: Ego_r.pdb `?GFGetAngleXYTo@@YIMABVC3DVector@@0@Z` (name set): it reads X/Y only, and the landed caller
 // CTCLook::GetTurningAngles 0x00751E80 calls it as `(from, to)` (9 call sites in all).

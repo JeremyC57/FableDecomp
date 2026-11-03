@@ -1,5 +1,5 @@
 // CEngineManager::AddChangedArea(const C2DBoxI& area) -- queue a changed world area (push_back onto ChangedAreas)
-// Leaf: ?AddChangedArea@CEngineManager@
+// Leaf: ?AddChangedArea@CEngineManager@@QAEXABVC2DBoxI@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00640560, 69 bytes (+ int3 padding), `ret 4`.
 // Identity: Ego_r.pdb `?AddChangedArea@CEngineManager@@QAEXABVC2DBoxI@@@Z`; the one caller is CWorldMap::HeightAreaChanged
 // 0x004FEB70 (`CTBaseSingleton<CEngineManager>::Get()` 0x00436FB0 then this). Catalog label "std_vector_push_back" is

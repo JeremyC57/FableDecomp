@@ -1,5 +1,5 @@
 // CCreatureAction_UnsheatheWeapons::ShouldPlayUnsheatheWeaponAction(const CThingCreatureBase& creature, EUnsheatheWeaponType type, bool& play_animation, bool& sheathe_first) -- whether a weapon (un)sheathe action should play for the creature: types other than 0/1/3 need the creature def's UnsheatheWeaponsAutomatically; the wanted weapon def (default for 2/3, melee for 4, ranged for 5, none otherwise) is compared with the live thing in the primary carry slot; no wanted weapon plays STANDARD_SHEATHE when it exists (sheathe first) or reports STANDARD_UNSHEATHE; a wanted weapon not already in hand reports STANDARD_UNSHEATHE
-// Leaf: ?ShouldPlayUnsheatheWeaponAction@CCreatureAction_UnsheatheWeapons@@
+// Leaf: ?ShouldPlayUnsheatheWeaponAction@CCreatureAction_UnsheatheWeapons@@SI_NABVCThingCreatureBase@@W4EUnsheatheWeaponType@@AA_N2@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008B7CF0, 480 bytes incl. the 4-entry jump table and int3 padding, /Gr
 //   `__fastcall` static (creature in ecx, type in edx, the two bool& on the stack), `ret 8`.
 // Identity: PDB name set `?ShouldPlayUnsheatheWeaponAction@CCreatureAction_UnsheatheWeapons@@SI_NABVCThingCreatureBase@@W4EUnsheatheWeaponType@@AA_N2@Z`;

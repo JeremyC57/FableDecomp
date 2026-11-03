@@ -1,5 +1,5 @@
 // CAIStateGroup_LightHomeCandle::GetCandleInBuildingNeedingChanging(CThingBuilding& building) const -- the first candle in the building's owned-object list whose light needs changing (find_if with CIsCandleNeedingChanging), or 0 when the building owns nothing (no thing-owner component) or no candle qualifies
-// Leaf: ?GetCandleInBuildingNeedingChanging@CAIStateGroup_LightHomeCandle
+// Leaf: ?GetCandleInBuildingNeedingChanging@CAIStateGroup_LightHomeCandle@@ABEPAVCThing@@AAVCThingBuilding@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00946AE0, 101 bytes (+ int3 padding to 112), `ret 4`.
 // Callees: CVectorMap LowerBound @ 0x0040F020 (the inlined GetInterface of type 0x21 = CTCThingOwner: bitset word +0x24
 //   bit 1), std::find_if<list const iterator, CIsCandleNeedingChanging> @ 0x00946D80 (/Gr __fastcall: the iterator

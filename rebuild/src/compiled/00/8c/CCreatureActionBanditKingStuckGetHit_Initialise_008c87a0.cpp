@@ -1,5 +1,5 @@
 // CCreatureAction_BanditKingStuckGetHit::Initialise() -- animation STUCK_GET_HIT; create the creature's STUCKLOOP special effect at its position, keep it in PStuckEffect and attach it to the creature through its particle emitter; then the base Initialise (the sub-def is released last)
-// Leaf: ?Initialise@CCreatureAction_BanditKingStuckGetHit
+// Leaf: ?Initialise@CCreatureAction_BanditKingStuckGetHit@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C87A0, 427 bytes (448 with padding), virtual Initialise.
 // Callees: as CCreatureAction_BanditKingStuck::Initialise (0x008C8380): CCharString ctor/dtor 0x0099EBF0/0x0099EAE0,
 //   SetCombatAnimation 0x008574D0, GetPItem 0x00A01B50, CBaseIntelligentPointer() 0x00A01B10 / SetPItem 0x00A01B90 /

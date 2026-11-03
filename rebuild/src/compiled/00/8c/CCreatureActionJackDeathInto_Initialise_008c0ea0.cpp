@@ -1,5 +1,5 @@
 // CCreatureAction_JackDeathInto::Initialise() -- base Initialise; swap creature mode 0x34 for 0x35; spawn the creature's DEATH special effect at its position when its special-effects def maps one
-// Leaf: ?Initialise@CCreatureAction_JackDeathInto
+// Leaf: ?Initialise@CCreatureAction_JackDeathInto@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C0EA0, 268 bytes (272 with padding), virtual Initialise.
 // Callees: CCombatActionBase::Initialise 0x00857520 (direct, first), CBaseIntelligentPointer::GetPItem 0x00A01B50, CVectorMap::
 //   LowerBound 0x0040F020 (inlined lookup of 0x31 = CTCCreatureModeManager, bit 17 of +0x24), CTCCreatureModeManager::

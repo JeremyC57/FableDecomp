@@ -1,5 +1,5 @@
 // CEnvironment::ConsoleRestoreDefaultTheme(CEnvironment& env, const vector<CGenericVar>& args) -- console: transition (channel, priority) back to the default theme over a duration, even while a theme is forced
-// Leaf: ?ConsoleRestoreDefaultTheme@CEnvironment@@
+// Leaf: ?ConsoleRestoreDefaultTheme@CEnvironment@@CIXAAV1@ABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B3B30, length 80 bytes (68 code + int3 pad), private static
 //   __fastcall (`CI`): ecx = env, edx = args, plain `ret`.
 // Callees: NEnvironmentInternal::CEnvironmentThemePriorityStackEntry::TransitionToDefaultTheme(float) @ 0x00886400,

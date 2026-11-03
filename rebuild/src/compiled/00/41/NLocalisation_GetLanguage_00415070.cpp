@@ -1,5 +1,5 @@
 // NLocalisation::GetLanguage() -- detect (once) the installed text language by probing which TEXT_<LANGUAGE>_MAIN bank exists, and cache it
-// Leaf: ?GetLanguage@NLocalisation@@
+// Leaf: ?GetLanguage@NLocalisation@@YIKXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00415070, 495 bytes (496 with padding), `ret`; FableWin.pdb names it
 //   `?GetLanguage@NLocalisation@@YIKXZ` (unsigned long __fastcall NLocalisation::GetLanguage(void)).
 // Callers: the language-dependent bank-name builders 0x00415263/0x00415353/0x00415443/0x00415553/0x00415646, 0x0042F13D.

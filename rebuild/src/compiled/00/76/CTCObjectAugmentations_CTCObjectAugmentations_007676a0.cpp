@@ -1,5 +1,5 @@
 // CTCObjectAugmentations::~CTCObjectAugmentations() -- kill the running particle effects, then tear down the members: trail pointer, running-effect pointers, both particle tables, both sound maps, the slot defs and the def pointer, then the CTCBase part
-// Leaf: ??1CTCObjectAugmentations@
+// Leaf: ??1CTCObjectAugmentations@@UAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007676A0, length 320 bytes (thiscall, plain `ret`; 0x135 bytes + int3 pad).
 // Identity: Ego_r.pdb ??1CTCObjectAugmentations@@UAE@XZ (the vptr store of vtable 0x0126A3A4 first); its only caller is
 //   the landed scalar deleting destructor 0x0076C790. The catalog label "CTCObjectAugmentations_Destructor" is right.

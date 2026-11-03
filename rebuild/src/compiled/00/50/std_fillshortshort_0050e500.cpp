@@ -1,5 +1,5 @@
 // std::fill<short*,short>(short* first, short* last, const short& value) -- STLport fill: store value into every slot of [first, last)
-// Leaf: ??$fill@PAFF@std@@
+// Leaf: ??$fill@PAFF@std@@YIXPAF0ABF@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0050E500, 33 bytes, `ret 4` (__fastcall: first in ecx, last in edx, the value
 //   reference on the stack -- the free algorithm templates of this TU are /Gr).
 // Callers: 0x00514A7F, 0x00514AD3 (a vector<short> fill path in the CWorldMap module).

@@ -1,5 +1,5 @@
 // NCreatureMode::IsCarryingTooHeavyWeapon(const CThing& thing) -- true for a creature whose live primary-slot weapon (CTCWeapon, 0x48) is not usable by it
-// Leaf: ?IsCarryingTooHeavyWeapon@NCreatureMode@@
+// Leaf: ?IsCarryingTooHeavyWeapon@NCreatureMode@@YI_NABVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085EF70, length 151 bytes. `__fastcall` free function (ecx = the thing), bool in al.
 // Mangled (Ego_r.pdb): ?IsCarryingTooHeavyWeapon@NCreatureMode@@YI_NABVCThing@@@Z.
 // Callees: CVectorMap LowerBound 0x004365B0 (const, twice), CTCCarrying::GetThingInPrimarySlot 0x006A1440 (interface 0x46),

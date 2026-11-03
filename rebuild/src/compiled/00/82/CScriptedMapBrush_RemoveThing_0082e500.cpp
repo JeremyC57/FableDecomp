@@ -1,5 +1,5 @@
 // CScriptedMapBrush::RemoveThing(unsigned __int64 uid) -- forget a thing: drop its uid from the move map, the delete set and the add set
-// Leaf: ?RemoveThing@CScriptedMapBrush
+// Leaf: ?RemoveThing@CScriptedMapBrush@@QAEX_K@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0082E500, 183 bytes (+2 int3), thiscall `ret 8`.
 // Identity: Ego_r.pdb name set ?RemoveThing@CScriptedMapBrush@@QAEX_K@Z (QAEX_K: one unsigned __int64 by value); the
 //   three containers are the brush's ThingsToMove / ThingsToDelete / ThingsToAdd. The catalog label

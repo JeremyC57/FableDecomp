@@ -1,5 +1,5 @@
 // NParticleEngine::CPSCUpdateNormal::PreparePrimitives(float distance, const CEnginePrimitivePrepareInfo& info, CParticleSystem& system, const CParticleUpdateParameters& params, CEnginePrimitiveHandle& handle) -- vtable slot 13: drop dead decal emitters from the list, initialise any new ones against the render engine, then start the frame and prepare the primitives of each live one
-// Leaf: ?PreparePrimitives@CPSCUpdateNormal@
+// Leaf: ?PreparePrimitives@CPSCUpdateNormal@NParticleEngine@@UAEXMABVCEnginePrimitivePrepareInfo@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B0C910, 174 bytes (+2 int3 padding).
 // Name: FableWin.pdb ?PreparePrimitives@CPSCUpdateNormal@NParticleEngine@@UAEXMABVCEnginePrimitivePrepareInfo@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z;
 // slot 13 of the vtable 0x0129FC1C (rtti-vtables.tsv; five stack arguments, `ret 14h`).

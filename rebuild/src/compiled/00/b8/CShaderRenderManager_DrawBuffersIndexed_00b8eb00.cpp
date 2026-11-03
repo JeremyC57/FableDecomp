@@ -1,5 +1,5 @@
 // CShaderRenderManager::DrawBuffersIndexed(CVertexBufferWin32& vertexBuffer, unsigned long minVertexIndex, unsigned long numVertices, CIndexBuffer& indexBuffer, unsigned long startIndex, unsigned long primitiveCount, EPrimitiveType primitiveType) -- bind the vertex and index buffers, realise the render state and draw an indexed primitive (the index buffer's own primitive type when -1 is passed)
-// Leaf: ?DrawBuffersIndexed@CShaderRenderManager@@QAEXAAVCVertexBufferWin32
+// Leaf: ?DrawBuffersIndexed@CShaderRenderManager@@QAEXAAVCVertexBufferWin32@@KKAAVCIndexBuffer@@KKW4EPrimitiveType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B8EB00, 127 bytes, thiscall, `ret 0x1c`.
 // Identity: Ego_d.pdb / FableWin.pdb ?DrawBuffersIndexed@CShaderRenderManager@@QAEXAAVCVertexBufferWin32@@KKAAVCIndexBuffer@@KKW4EPrimitiveType@@@Z
 //   (inline in the Ego_r build, so absent from its name set); `this` holds the CRenderManager* at +0x1D0 and the

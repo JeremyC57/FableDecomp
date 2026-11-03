@@ -1,5 +1,5 @@
 // CThingFilter_IsInFOV::operator()(const C3DVector& pos) const -- true when the point is (almost) at the eye or within the cone: the normalised offset dotted with Direction beats CosFOV (Z ignored unless AngleTest3D)
-// Leaf: ??RCThingFilter_IsInFOV@@QBE_NABVC3DVector
+// Leaf: ??RCThingFilter_IsInFOV@@QBE_NABVC3DVector@@@Z
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006A7270, 260 bytes (+12 int3), `ret 4`, no calls (the landed thing overload
 //   0x006A7390 forwards here).

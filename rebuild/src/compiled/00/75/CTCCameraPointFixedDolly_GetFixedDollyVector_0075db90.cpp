@@ -1,5 +1,5 @@
 // CTCCameraPointFixedDolly::GetFixedDollyVector() const -- the dolly direction: the principal vector of the parent thing's shape-manager component
-// Leaf: ?GetFixedDollyVector@
+// Leaf: ?GetFixedDollyVector@CTCCameraPointFixedDolly@@QBE?AVC3DVector@@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075DB90, 104 bytes (+int3 pad to 112), `ret 4` (C3DVector returned
 //   through the hidden pointer).
 // Identity: Ego_r.pdb ?GetFixedDollyVector@CTCCameraPointFixedDolly@@QBE?AVC3DVector@@XZ (the manifest's

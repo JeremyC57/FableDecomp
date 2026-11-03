@@ -1,5 +1,5 @@
 // NScript::CQ_FireHeartScript::TriggerProphetComment(const CCharString& comment) -- build the next prophet's comment text key ("TEXT_QST_B01_PROPHET<n>_<comment>") and flag that prophet to speak
-// Leaf: ?TriggerProphetComment@
+// Leaf: ?TriggerProphetComment@CQ_FireHeartScript@NScript@@QAEXABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D38400, 145 bytes, `__fastcall`, one stack argument (`ret 4`).
 //   FableWin symbol ?TriggerProphetComment@CQ_FireHeartScript@NScript@@QAEXABVCCharString@@@Z. Callers: IncNumberOfSuns
 //   @ 0x00D38310 (x2), DecNumberOfSuns @ 0x00D38AA0 (x2), 0x00D39E98.

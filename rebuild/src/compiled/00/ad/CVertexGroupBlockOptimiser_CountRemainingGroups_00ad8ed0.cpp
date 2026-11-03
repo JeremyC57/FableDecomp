@@ -1,5 +1,5 @@
 // CVertexGroupBlockOptimiser::CountRemainingGroups() const -- number of groups used by the still-remaining input blocks that the current block does not already hold
-// Leaf: ?CountRemainingGroups@CVertexGroupBlockOptimiser@@
+// Leaf: ?CountRemainingGroups@CVertexGroupBlockOptimiser@@ABEKXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AD8ED0, 269 bytes, thiscall, plain `ret`, returns unsigned long.
 // Identity: Ego_r.pdb ?CountRemainingGroups@CVertexGroupBlockOptimiser@@ABEKXZ (private const, no argument, unsigned long).
 //   Callers: CalcCurrentBestTheoreticalResultNewBlock 0x00AD8FE0 (landed, "remaining = CountRemainingGroups()") and Process

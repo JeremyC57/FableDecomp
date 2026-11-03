@@ -1,5 +1,5 @@
 // CCreateItemNamesFromIndices::operator()(const pair<long, CCharString>&) -- append the def name of the item's definition index to ItemNames
-// Leaf: ??RCCreateItemNamesFromIndices@@
+// Leaf: ??RCCreateItemNamesFromIndices@@QAEXABU?$pair@JVCCharString@@@std@@@Z
 // Retail 0x008ED3B0, 0x81 bytes, thiscall `ret 4`. Manifest label "std_vector_push_back<CCharString>" is descriptive;
 //   PDB: `??RCCreateItemNamesFromIndices@@QAEXABU?$pair@JVCCharString@@@std@@@Z`. Only caller: for_each 0x008ED4D0
 //   (saving branch of CTCContainer::OnSerialise).

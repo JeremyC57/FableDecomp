@@ -1,5 +1,5 @@
 // NPlayerGui::CStatBar::CStatBar(const CPlayerGuiDef& def) -- stat bar constructor: the CStatBase part, zeroed frame/graphic/effect indices, the stat-bar font from the def, an empty change-text list, five primitive handles and one effect slot
-// Leaf: ??0CStatBar@NPlayerGui@
+// Leaf: ??0CStatBar@NPlayerGui@@QAE@ABVCPlayerGuiDef@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065431D, 117 bytes, `ret 4`. Size-optimised NPlayerGui TU (frame pointer,
 // `leave`). Vtable 0x0125A738 = NPlayerGui::CStatBar (rtti-vtables: slot 0 0x00646762, 1 ClearGraphics 0x00645F8D, 2
 // DrawStatBox 0x00645CE9).

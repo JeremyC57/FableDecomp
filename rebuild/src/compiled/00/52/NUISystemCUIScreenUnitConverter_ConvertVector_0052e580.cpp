@@ -1,5 +1,5 @@
 // NUISystem::CUIScreenUnitConverter::ConvertVector(C2DVector v) -- convert a UI-space (640x480 design) vector to back-buffer pixels when relative coordinates are on: x / 640 * back-buffer width, y / 480 * back-buffer height; otherwise unchanged
-// Leaf: ?ConvertVector@
+// Leaf: ?ConvertVector@CUIScreenUnitConverter@NUISystem@@SI?AVC2DVector@@V3@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0052E580, 80 bytes, `ret 8` (static __fastcall: the hidden
 //   C2DVector result in ecx, v by value on the stack).
 // Callers: 20 call sites from 0x0052ED48 to 0x00620F0A, among them the landed NUISystem::CComponent::

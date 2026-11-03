@@ -1,5 +1,5 @@
 // CTCHeroReceiveItems::SetItemAsPickedUp(long item) -- remember an item as picked up: append it to the picked-up list unless it is already there
-// Leaf: ?SetItemAsPickedUp@CTCHeroReceiveItems
+// Leaf: ?SetItemAsPickedUp@CTCHeroReceiveItems@@QAEXJ@Z
 // Naming wave 26 (family vlong): std::vector takes STLport's allocator<_Tp> parameter and its grow-insert 0x00440990 is the protected
 //   ?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@std@@IAEXPAJABJABU__true_type@2@I_N@Z (size_type unsigned int; the own
 //   row's spelling, c689 queue). Was the public vector<long> member without the allocator.

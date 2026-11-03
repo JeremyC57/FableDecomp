@@ -1,5 +1,5 @@
 // CThingPhysicalSwitch::Save(CCharString& out) -- append the switch's level-script text after CThingPhysical's: "TriggeredByThing <name|NULL>;\r\n"
-// Leaf: ?Save@CThingPhysicalSwitch
+// Leaf: ?Save@CThingPhysicalSwitch@@UAEXAAVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0083D800, 243 bytes, virtual thiscall `ret 4` (CThingPhysicalSwitch vtable
 //   0x01245644 slot 2).
 // Identity: Ego_r.pdb ?Save@CThingPhysicalSwitch@@UAEXAAVCCharString@@@Z (the debug build's 0x00812A60); the catalog's

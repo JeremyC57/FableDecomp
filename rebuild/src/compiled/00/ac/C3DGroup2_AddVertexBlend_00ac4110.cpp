@@ -1,5 +1,5 @@
 // C3DGroup2::AddVertexBlend(const C3DVertexBlend2& blend) -- append one {vertex index, blend value} pair to the group's blend list (+4)
-// Leaf: ?AddVertexBlend@C3DGroup2
+// Leaf: ?AddVertexBlend@C3DGroup2@@QAEXABVC3DVertexBlend2@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AC4110, length 63 bytes (+1 int3), `ret 4`.
 // Callees: std::vector<C3DVertexBlend2>::_M_insert_overflow(pointer, const C3DVertexBlend2&, const __false_type&,
 //   size_type, bool) @ 0x00ABEB40 (the landed C3DMeshFileGroupChunk::AddVertex calls the same grow path).

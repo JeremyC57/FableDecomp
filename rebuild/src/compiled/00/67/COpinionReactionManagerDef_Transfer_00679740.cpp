@@ -1,5 +1,5 @@
 // COpinionReactionManagerDef::Transfer(CPersistContext&) -- persist the opinion-reaction def: attitude blur vector, the reaction->attitude / targeting / delay maps, the tolerance map, the four per-reaction bool maps, the match list and the frequency traits array
-// Leaf: ?Transfer@COpinionReactionManagerDef
+// Leaf: ?Transfer@COpinionReactionManagerDef@@UAEXAAVCPersistContext@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00679740, length 447 bytes, virtual, `ret 4`.
 // Callees: CPersistContext::TransferVectorOfSubComponents<CBlurredAttitudesDef> 0x0067D6B0; CPersistContext::CheckCRC 0x00404500
 //   (x8, the empty key "" @ 0x0122D70E); `__fastcall` (stream, map*) map serialisers -- out/in pairs:

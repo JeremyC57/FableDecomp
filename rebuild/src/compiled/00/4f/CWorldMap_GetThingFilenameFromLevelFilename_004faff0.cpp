@@ -1,5 +1,5 @@
 // CWorldMap::GetThingFilenameFromLevelFilename(const CWideString& levelFilename) -- swap a level path's extension for L"tng": split the path, rebuild it from the drive, directory and name with the new extension
-// Leaf: ?GetThingFilenameFromLevelFilename@CWorldMap@@
+// Leaf: ?GetThingFilenameFromLevelFilename@CWorldMap@@SI?AVCWideString@@ABV2@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004FAFF0, 166 bytes (padded to 176), plain `ret` (static `__fastcall`: hidden result
 //   in ecx, the path in edx). PDB name ?GetThingFilenameFromLevelFilename@CWorldMap@@SI?AVCWideString@@ABV2@@Z (Ego_r.pdb name set,
 //   the first of the pair GetThingFilenameFromLevelFilename / GetThingFilenameFromWorldFilename, both in this order).

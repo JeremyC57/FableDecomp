@@ -1,5 +1,5 @@
 // NSpeechGainManager::Update(const CWorld& world) -- once per frame: mark the first active dialogue line as the layer head, advance every line's gain by the frames elapsed since the last update (the global def's dialogue layers), drop the finished lines (and their layer speaker count), then record the current world frame
-// Leaf: ?Update@NSpeechGainManager@@
+// Leaf: ?Update@NSpeechGainManager@@YIXABVCWorld@@@Z
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E37D0, 184 bytes (+ int3 padding), `__fastcall` (ecx = world), plain `ret`.

@@ -1,5 +1,5 @@
 // CUserProfileManager::GetConfigOptionsDefaultsDef()const -- obtain configuration-option defaults from the active runtime definition manager.
-// Leaf: ?GetConfigOptionsDefaultsDef@CUserProfileManager@@
+// Leaf: ?GetConfigOptionsDefaultsDef@CUserProfileManager@@QBE?AV?$CDefPointer@$$CBVCConfigOptionsDefaultsDef@@@@XZ
 // Identity (FINDINGS chunk 472; sweep2): Ego_r.pdb name set `?GetConfigOptionsDefaultsDef@CUserProfileManager@@QBE?AV?$CDefPointer@$$CBVCConfigOptionsDefaultsDef@@@@XZ`;
 //   the catalog/file name "GetIconsDef" (NUISystem::CManager::GetIconsDef) is propagated.
 // Retail004083E0 length194. Runtime singleton probes13B86A0/13B871C; getters44C6B0/43368D.

@@ -1,5 +1,5 @@
 // CV_TravellingHeroesScript::DoConversation(long line) -- play one line of the Thunder conversation from the script def: the speaker says the dialogue to the hero, the named actor (Thunder/Whisper -> rival, Boy, Girl) plays its animation after the def's delay unless the Thunder scene has started, then wait out the conversation and remove it
-// Leaf: ?DoConversation@CV_TravellingHeroesScript@NScript@@
+// Leaf: ?DoConversation@CV_TravellingHeroesScript@NScript@@QAEXJ@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EE2A80, 0x325 bytes, `ret 4`.
 // Callees: CCharString(const CCharString&) 0x0099EC30 / operator!=(const char*) 0x0099E960 / ~ 0x0099EAE0, Compare 0x00411570
 //   (defined here under auto_inline(off): with the body in the TU VC7.1 knows it writes no memory and keeps the actor's PData

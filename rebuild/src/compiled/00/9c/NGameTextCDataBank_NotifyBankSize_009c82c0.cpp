@@ -1,5 +1,5 @@
 // NGameText::CDataBank::NotifyBankSize(unsigned long noEntries, const CArray<CBankFileDataTypeCount>& counts) -- for a read-only bank, size the entry table to the bank and pre-reserve the text and group entry buffers from the per-type entry counts
-// Leaf: ?NotifyBankSize@CDataBank@
+// Leaf: ?NotifyBankSize@CDataBank@NGameText@@MAEXKABV?$CArray@VCBankFileDataTypeCount@@@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C82C0, 122 bytes (+6 int3 padding), `ret 8`.
 // Name: FableWin.pdb ?NotifyBankSize@CDataBank@NGameText@@MAEXKABV?$CArray@VCBankFileDataTypeCount@@@@@Z (protected virtual,
 // catalog vfunc_10); same shape as the landed CMeshDataBank::NotifyBankSize 0x00A26660.

@@ -1,5 +1,5 @@
 // CSystemManager::ExceptionHandler(int exceptionCode) -- when the system manager is valid and running in exclusive mode, write a description of the structured exception code into the critical-message buffer; always continue the search
-// Leaf: ?ExceptionHandler@CSystemManager@@
+// Leaf: ?ExceptionHandler@CSystemManager@@QAEHH@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009A5020, 466 bytes of code + its 7-entry jump table (0x009A51F4, cases
 //   0xC0000090..0xC0000096; row length 496), thiscall, `ret 4`. FableWin.pdb `?ExceptionHandler@CSystemManager@@QAEHH@Z`;
 //   the catalog's "CTCInventoryBase_ExceptionHandler" took its class from the propagated label of the callee 0x0099A330.

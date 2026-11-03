@@ -1,5 +1,5 @@
 // NTCScriptedControl::CActionStopScripting::Update() -- when this is the only queued action, end the running front action and drop the whole queue; otherwise just finish
-// Leaf: ?Update@CActionStopScripting@
+// Leaf: ?Update@CActionStopScripting@NTCScriptedControl@@UAEXXZ
 // Naming wave 28 (family d5): CActionBase is the nested CTCScriptedControl::CActionBase (Ego_r.pdb / FableWin.pdb;
 //   DECISIONS_W27 D5) and PActionList the STLport list<CCountedPointer<CTCScriptedControl::CActionBase> >, whose clear 0x00719280
 //   is ?clear@?$_List_base@V?$CCountedPointer@VCActionBase@CTCScriptedControl@@@@V?$allocator@..@std@@@std@@QAEXXZ (c695). Was NTCScriptedControl::CActionBase (an invented namespace)

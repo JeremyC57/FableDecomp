@@ -1,5 +1,5 @@
 // NCreatureMode::GetMovementSpeedFromAnimation(const CCharString& name, const CThingCreatureBase& creature, const CMeshDataBank& bank) -- the movement speed of the creature's animation `name`; 0 when it only resolves to the "DEFAULT" fallback
-// Leaf: ?GetMovementSpeedFromAnimation@NCreatureMode@@YIMABVCCharString@@
+// Leaf: ?GetMovementSpeedFromAnimation@NCreatureMode@@YIMABVCCharString@@ABVCThingCreatureBase@@ABVCMeshDataBank@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00861C90, length 101 bytes (+11 int3). `__fastcall` free function (name in ecx,
 //   creature in edx, the bank on the stack, `ret 4`); float in st(0).
 // Mangled (Ego_r.pdb): ?GetMovementSpeedFromAnimation@NCreatureMode@@YIMABVCCharString@@ABVCThingCreatureBase@@ABVCMeshDataBank@@@Z.

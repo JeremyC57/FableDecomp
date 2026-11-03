@@ -1,5 +1,5 @@
 // NUISystem::CUIIconsDef::Transfer(CPersistContext& context) -- persist the thirty-two icon graphic indices (+0x3c..+0xb8) of the UI icons def
-// Leaf: ?Transfer@CUIIconsDef@NUISystem
+// Leaf: ?Transfer@CUIIconsDef@NUISystem@@UAEXAAVCPersistContext@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00431C30, 410 bytes (416 with padding), virtual, `ret 4`.
 // Identity: vtable slot 18 of NUISystem::CUIIconsDef (vtable 0x01230F54, RTTI `.?AVCUIIconsDef@NUISystem@@`), the
 // def-class Transfer slot; the catalog label "InitialiseDefaultCameraTags" is a propagated name.

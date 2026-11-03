@@ -1,5 +1,5 @@
 // CPersistTraits<CFaction>::TransferBinaryIn(CMemoryDataInputStream& stream, CFaction& value) -- binary persist read of a faction saved as text: the text length, that many bytes into a zeroed NUL-terminated buffer, then the text TransferIn over a string parser and a text persist context
-// Leaf: ?TransferBinaryIn@?$CPersistTraits@VCFaction@@
+// Leaf: ?TransferBinaryIn@?$CPersistTraits@VCFaction@@@@QAEXAAVCMemoryDataInputStream@@AAVCFaction@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006BA8B0, 394 bytes (+ int3 padding), `ret 8` (traits `this` passed on).
 // Ego_r.pdb: ?TransferBinaryIn@?$CPersistTraits@VCFaction@@@@QAEXAAVCMemoryDataInputStream@@AAVCFaction@@@Z.
 // Callees: CDataInputStream::ReadWithSrcChunkOverflow @ 0x00993CA0 (the 4-byte length), malloc @ 0x00BFEA0E / free @ 0x00BFEA14

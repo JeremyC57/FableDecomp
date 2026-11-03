@@ -1,5 +1,5 @@
 // CCreatureAction_NymphGetHitDie::Initialise() -- FALL_DEAD animation, reconfigure the nymph's physics, stop its flying, record its height above the ground, then the base Initialise
-// Leaf: ?Initialise@CCreatureAction_NymphGetHitDie
+// Leaf: ?Initialise@CCreatureAction_NymphGetHitDie@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008CA4A0, 251 bytes (256 with padding), virtual Initialise.
 // Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("FALL_DEAD" 0x012821F8), CCombatActionBase::SetCombatAnimation
 //   0x008574D0, CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +0x08), the physics component's virtual slots 36

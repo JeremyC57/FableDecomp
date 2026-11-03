@@ -2,7 +2,7 @@
 // count is exactly 1, then drop the counted Data pointer (`Data = 0`: release a local copy, null store, store the new null)
 // Retry 10b: plain compiler-emitted C++ (the catalog copy of this function is an asm_bake); the same model as the inlined
 // Clear of the deleting destructor 0x0041C500.
-// Leaf: ?Clear@CEnginePrimitiveHandle
+// Leaf: ?Clear@CEnginePrimitiveHandle@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0041BE70, length 57 bytes.
 // Callees: the primitive's virtual slot 3 (+0xC) and, at zero count, its virtual destroy (slot 1, +4).
 // Layout as the landed constructor @ 0x005BB32E: {vptr, CIVCountedPointer<CEnginePersistentPrimitiveBase> Data +4}.

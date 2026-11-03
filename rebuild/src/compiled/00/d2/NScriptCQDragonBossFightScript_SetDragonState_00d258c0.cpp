@@ -1,5 +1,5 @@
 // NScript::CQ_DragonBossFightScript::SetDragonState(EDragonState state) -- record the dragon's health state and load the matching minion / summoner targets from the script def
-// Leaf: ?SetDragonState@
+// Leaf: ?SetDragonState@CQ_DragonBossFightScript@NScript@@QAEXW4EDragonState@12@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D258C0, 212 bytes, `__fastcall`, one stack argument (`ret 4`).
 //   FableWin symbol ?SetDragonState@CQ_DragonBossFightScript@NScript@@QAEXW4EDragonState@12@@Z. Caller: CDragon::Init
 //   @ 0x00D25880 (the "Dragon" entity script, slot 2 of vtable 0x012CB770; its ParentClass +0x14), with state 0.

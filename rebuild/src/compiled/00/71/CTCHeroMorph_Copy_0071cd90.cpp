@@ -1,5 +1,5 @@
 // CTCHeroMorph::Copy(const CTCBase& other) -- copy another hero-morph component: the shared mesh-morph set, the tattoo defs, the tattoo frame and the morph weights / teenager flag, then mark the morph changed
-// Leaf: ?Copy@CTCHeroMorph@@
+// Leaf: ?Copy@CTCHeroMorph@@UAEXABVCTCBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0071CD90, length 150 bytes, `ret 4`.
 // Ego_r.pdb: ?Copy@CTCHeroMorph@@UAEXABVCTCBase@@@Z (virtual)
 // Callees: operator delete @ 0x00BFE9BC (the counted pointer's info block), the block's __fastcall DeleteFunc, the out-of-line

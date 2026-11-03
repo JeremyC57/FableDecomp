@@ -1,5 +1,5 @@
 // CPersistTraits<CBrainBehaviour>::CPersistTraits() -- builds the traits default behaviour: an empty Name def string and zero Priority / ScriptAIPriority
-// Leaf: ??0?$CPersistTraits@VCBrainBehaviour
+// Leaf: ??0?$CPersistTraits@VCBrainBehaviour@@@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004670F5, 54 bytes, plain `ret` (returns `this`).
 // Ego_r.pdb: ??0?$CPersistTraits@VCBrainBehaviour@@@@QAE@XZ; CBrainBehaviour (12 bytes) = { CDefString Name +0,
 // long Priority +4, long ScriptAIPriority +8 }.

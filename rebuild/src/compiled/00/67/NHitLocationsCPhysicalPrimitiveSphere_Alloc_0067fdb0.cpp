@@ -1,5 +1,5 @@
 // NHitLocations::CPhysicalPrimitiveSphere::Alloc() const -- vtable slot 1: returns a freshly constructed sphere primitive (BaseName unset)
-// Leaf: ?Alloc@CPhysicalPrimitiveSphere@
+// Leaf: ?Alloc@CPhysicalPrimitiveSphere@NHitLocations@@UBEPAVCPhysicalPrimitiveBase@2@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0067FDB0, 31 bytes (+1 int3 padding).
 // Name: FableWin.pdb ?Alloc@CPhysicalPrimitiveSphere@NHitLocations@@UBEPAVCPhysicalPrimitiveBase@2@XZ; slot 1 of the
 // vtable 0x0125B9FC (rtti-vtables.tsv; slot 0 is the deleting dtor 0x0067F710).

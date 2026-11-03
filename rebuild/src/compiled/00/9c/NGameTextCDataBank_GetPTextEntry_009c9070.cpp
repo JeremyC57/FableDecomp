@@ -1,5 +1,5 @@
 // NGameText::CDataBank::GetPTextEntry(unsigned long,bool) const, retail 0x009C9070.
-// Leaf: ?GetPTextEntry@CDataBank@NGameText@@
+// Leaf: ?GetPTextEntry@CDataBank@NGameText@@QBE?AV?$CIVCountedPointer@$$CBVCTextEntry@NGameText@@@@K_N@Z
 // Recovered PDB identity egor31452/debug 0x00B17AB0. The old authored assembly
 // bootstrap remains untouched; this is the independent pure C++03 candidate.
 #define CResource CResourcePdb

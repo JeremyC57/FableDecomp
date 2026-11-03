@@ -1,5 +1,5 @@
 // NCreatureMode::IsAbleToUseTurningAnimations(const CThing& thing) -- false while sitting, lying down, underground or incapacitated, or in the HandsBound, Scared, HoldJug, CarryingGenericBox or CarryingPlate/GoodsStand modes
-// Leaf: ?IsAbleToUseTurningAnimations@NCreatureMode@@
+// Leaf: ?IsAbleToUseTurningAnimations@NCreatureMode@@YI_NABVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085FCD0, length 151 bytes. `__fastcall` free function (ecx = the thing), bool in al.
 // Mangled (Ego_r.pdb): ?IsAbleToUseTurningAnimations@NCreatureMode@@YI_NABVCThing@@@Z.
 // Callees: NCreatureMode::IsSitting 0x0085F310, IsLyingDown 0x0085F2B0, IsUnderground 0x0085F120, IsIncapacitated 0x0085F0C0

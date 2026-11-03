@@ -1,5 +1,5 @@
 // GFSmoothTowards<float>(const float& target, const float& max_step, float& current) -- move current towards target by at most max_step, never overshooting
-// Leaf: ??$GFSmoothTowards@M@@
+// Leaf: ??$GFSmoothTowards@M@@YIXABM0AAM@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006ADC20, length 106 bytes, __fastcall
 //   (`YI`): ecx = &target, edx = &max_step, &current on the stack, `ret 4`.
 // Callees: none. Literal: 0.0f @ 0x0122DEDC.

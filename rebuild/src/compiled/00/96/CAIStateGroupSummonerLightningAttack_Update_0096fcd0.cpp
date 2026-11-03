@@ -1,5 +1,5 @@
 // CAIStateGroup_SummonerLightningAttack::Update() -- with a live target and the summoner free to act: mark the target's stealth as in danger, sheathe any live weapon in the primary slot, turn to face the target, play the lightning-orb-into action, wait out any running action, play the ground-smash out-of action and schedule the next preemptive use from the def's delay; always terminates
-// Leaf: ?Update@CAIStateGroup_SummonerLightningAttack
+// Leaf: ?Update@CAIStateGroup_SummonerLightningAttack@@UAEXXZ
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0096FCD0, length 568 bytes (0x128 frame: three action temporaries share it).

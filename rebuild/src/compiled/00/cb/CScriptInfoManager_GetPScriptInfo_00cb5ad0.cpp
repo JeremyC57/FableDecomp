@@ -1,5 +1,5 @@
 // CScriptInfoManager::GetPScriptInfo(const CCharString& name) -- look a script up by name in the sorted Scripts map; its CScriptInfo, or NULL when no script has that name
-// Leaf: ?GetPScriptInfo@CScriptInfoManager@@
+// Leaf: ?GetPScriptInfo@CScriptInfoManager@@QAEPAVCScriptInfo@@ABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB5AD0, 80 bytes. __fastcall, `ret 4`. Ego_r.pdb
 // ?GetPScriptInfo@CScriptInfoManager@@QAEPAVCScriptInfo@@ABVCCharString@@@Z (PeekPScriptInfo is its const twin with
 // the same body). The manifest label "QuestPersist_FindInfoByName" is descriptive.

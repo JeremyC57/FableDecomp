@@ -1,5 +1,5 @@
 // NCreatureAI::IsWillingToAttackTarget(const CThingAICreature* creature, const CThing* target) -- whether the creature is willing to attack the target: always for creature group 4, non-village-members, creatures under scripted control, summoned creatures, those without an opinion of the hero or in state group 3; a village member of a village hostile through crime needs a hero-enemy opinion first; a target opinion source that says witnesses will not attack, or a hero deed log the opinion is unwilling to attack on, says no
-// Leaf: ?IsWillingToAttackTarget@NCreatureAI@@
+// Leaf: ?IsWillingToAttackTarget@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008648A0, 656 bytes incl. int3 padding, /Gr `__fastcall` (creature in
 //   ecx, target in edx), plain `ret`.
 // Identity: Ego_r/FableWin PDB name set `?IsWillingToAttackTarget@NCreatureAI@@YI_NPBVCThingAICreature@@PBVCThing@@@Z`

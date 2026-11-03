@@ -1,6 +1,6 @@
 // CCachedFile::Write(const void* data, long size, CASuspendableProcess* process) -- a cached file is read-only: always throws a CBBBFileException (type 8) carrying "File is not open for writing"
 // Retail-span: int3-after-noreturn row -- the 0xCC after the final call _CxxThrowException belongs to the function (GOTCHAS 2026-10-22); graded against the 97-byte retail span
-// Leaf: ?Write@CCachedFile
+// Leaf: ?Write@CCachedFile@@UAEXPBXJPAVCASuspendableProcess@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A5AFB0, length 96 bytes (vtable 0x012724D4 slot 4,
 // ?Write@CCachedFile@@UAEXPBXJPAVCASuspendableProcess@@@Z; Ego_r.pdb donor order Close / Write / SetPosition / MovePosition /
 // SetLength / GetLength = retail 0x00A5AFA0 / 0x00A5AFB0 / 0x00A5B020 / 0x00A5B0A0 / 0x00A5B190 / 0x00A5B200).

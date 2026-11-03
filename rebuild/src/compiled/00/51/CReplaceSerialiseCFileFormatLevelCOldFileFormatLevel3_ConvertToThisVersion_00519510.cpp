@@ -1,5 +1,5 @@
 // CReplaceSerialise<CFileFormatLevel,COldFileFormatLevel3>::ConvertToThisVersion(void* data) -- upgrade a level-file header record in place: anything older than version 4 is converted up through the chain and the version-4 result copied over the buffer
-// Leaf: ?ConvertToThisVersion@?$CReplaceSerialise@VCFileFormatLevel@@VCOldFileFormatLevel3@@
+// Leaf: ?ConvertToThisVersion@?$CReplaceSerialise@VCFileFormatLevel@@VCOldFileFormatLevel3@@@@SIXPAX@Z
 //
 // Retail 0x00519510, 80 bytes, static __fastcall (data in ecx), plain `ret`.  FableWin.pdb
 //   ?ConvertToThisVersion@?$CReplaceSerialise@VCFileFormatLevel@@VCOldFileFormatLevel3@@@@SIXPAX@Z.

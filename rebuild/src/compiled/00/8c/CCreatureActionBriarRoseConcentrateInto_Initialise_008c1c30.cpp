@@ -1,7 +1,7 @@
 // CCreatureAction_BriarRoseConcentrateInto::Initialise() -- unsheathe Briar Rose's melee weapon, animation POWER_UP_INTO,
 // base Initialise; with a creature-mode manager and a live enemy add a CModeBriarRoseConcentrate(creature, enemy,
 // Imposter); then spawn the def's TELEPORT_INTO special effect at her position
-// Leaf: ?Initialise@CCreatureAction_BriarRoseConcentrateInto
+// Leaf: ?Initialise@CCreatureAction_BriarRoseConcentrateInto@@UAEXXZ
 // Layout: retail CCombatActionBase is 0x114 (Ego_r.pdb +0x18): Imposter +0x114 and PEnemy +0x115 (the PDB has the same
 //   unaligned pair at +0x12c/+0x12d, so the class is packed to 1); CThing interface bitset +0x20, map +0x44, def +0x70.
 // Shape: same-TU stand-ins for LowerBound 0x0040F020, GetSubDef 0x00669580 and GetEffectFromString 0x00669D30 (the landed

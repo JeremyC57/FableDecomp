@@ -1,5 +1,5 @@
 // CCombatActionBase::GetLastTimeThroughCurrentAnimation() const -- seconds the action has spent in its current animation: the LastRunningTimeSeconds less the animation start delay (frames over the frames-per-second), never negative
-// Leaf: ?GetLastTimeThroughCurrentAnimation@CCombatActionBase@@
+// Leaf: ?GetLastTimeThroughCurrentAnimation@CCombatActionBase@@IBEMXZ
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00856250, 60 bytes, __fastcall, plain `ret`, float in st0. No callers in retail (unreferenced but linked).

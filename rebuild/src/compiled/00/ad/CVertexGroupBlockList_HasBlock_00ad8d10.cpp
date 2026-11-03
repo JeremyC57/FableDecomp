@@ -1,5 +1,5 @@
 // CVertexGroupBlockList::HasBlock(const CVertexGroupBlock& block) -- true when some block in the list (searched from the back) holds exactly the same group count and every group of `block`
-// Leaf: ?HasBlock@CVertexGroupBlockList@@
+// Leaf: ?HasBlock@CVertexGroupBlockList@@QBE_NABVCVertexGroupBlock@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AD8D10, 181 bytes (padded to 192), `ret 4`.
 //   PDB name ?HasBlock@CVertexGroupBlockList@@QBE_NABVCVertexGroupBlock@@@Z.
 // Callees: none (the STLport map find is inline).

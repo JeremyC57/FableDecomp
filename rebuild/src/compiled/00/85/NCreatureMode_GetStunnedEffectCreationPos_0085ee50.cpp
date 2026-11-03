@@ -1,5 +1,5 @@
 // NCreatureMode::GetStunnedEffectCreationPos(const CThingCreatureBase& creature) -- where the stunned effect is spawned: the creature's head position raised by 0.75
-// Leaf: ?GetStunnedEffectCreationPos@NCreatureMode@@
+// Leaf: ?GetStunnedEffectCreationPos@NCreatureMode@@YI?AVC3DVector@@ABVCThingCreatureBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085EE50, length 53 bytes (+11 int3). `__fastcall` free function: the hidden
 //   C3DVector result in ecx, the creature in edx, plain `ret`.
 // Mangled (Ego_r.pdb): ?GetStunnedEffectCreationPos@NCreatureMode@@YI?AVC3DVector@@ABVCThingCreatureBase@@@Z.

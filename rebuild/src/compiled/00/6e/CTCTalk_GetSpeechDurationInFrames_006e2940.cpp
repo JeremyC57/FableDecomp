@@ -1,5 +1,5 @@
 // CTCTalk::GetSpeechDurationInFrames(long sample) const -- a speech sample's length in frames: the lip-sync entry's duration (seconds) times the frame rate, or the default speech duration when there is no lip-sync bank or entry
-// Leaf: ?GetSpeechDurationInFrames@CTCTalk@@
+// Leaf: ?GetSpeechDurationInFrames@CTCTalk@@ABEJJ@Z
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E2940, 93 bytes (+ int3 padding), thiscall `ret 4`.

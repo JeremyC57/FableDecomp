@@ -1,5 +1,5 @@
 // NParticleEngine::CPSCSingleSprite::AddTrailPosition(const C3DVector& pos, float width) -- appends one (position, width) entry to the sprite's trail primitive and drops the oldest entries while the trail is longer than MaxTrailLength
-// Leaf: ?AddTrailPosition@CPSCSingleSprite@NParticleEngine@@
+// Leaf: ?AddTrailPosition@CPSCSingleSprite@NParticleEngine@@IAEXABVC3DVector@@M@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B081A0, length 164 bytes, thiscall `ret 8`.
 // Signature from Ego_r.pdb: ?AddTrailPosition@CPSCSingleSprite@NParticleEngine@@IAEXABVC3DVector@@M@Z (protected).
 //   Callers: CPSCSingleSprite::Update @ 0x00B08530 (calls 0x00B0866A / 0x00B08763, width = TrailWidth).

@@ -1,5 +1,5 @@
 // CScriptBase::OnScriptedEntityInterrupted(unsigned __int64 entityID) -- flag the active entity script bound to the entity UID as interrupted (it restarts on its next update)
-// Leaf: ?OnScriptedEntityInterrupted@
+// Leaf: ?OnScriptedEntityInterrupted@CScriptBase@@QAEX_K@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CB7BC0, 64 bytes (`ret 8`, thiscall).
 // Identity: Ego_r.pdb `?OnScriptedEntityInterrupted@CScriptBase@@...`; the only caller 0x004AFBE5 passes an entity UID.
 //   The manifest label "NavQuadTree_MarkNodeActive" is propagated and wrong.

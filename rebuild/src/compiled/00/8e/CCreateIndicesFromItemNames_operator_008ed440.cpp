@@ -1,5 +1,5 @@
 // CCreateIndicesFromItemNames::operator()(const CCharString&) -- append (definition index of the named def, "") to ItemIndices
-// Leaf: ??RCCreateIndicesFromItemNames@@
+// Leaf: ??RCCreateIndicesFromItemNames@@QAEXABVCCharString@@@Z
 // Retail 0x008ED440, 0x8F bytes, thiscall `ret 4`. Manifest label "std_vector_push_back<DefinitionIndex_CCharString>" is
 //   descriptive; PDB: `??RCCreateIndicesFromItemNames@@QAEXABVCCharString@@@Z`. Only caller: for_each 0x008ED510
 //   (loading branch of CTCContainer::OnSerialise).

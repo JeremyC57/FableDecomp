@@ -1,7 +1,7 @@
 // CreateAndFadeInObject(const CCharString& defName, const C3DVector& position, const CCharString& scriptName, float unused, float fadeTime) -- create the object through the game script interface, then fade it in from alpha 0 to 1 over fadeTime seconds (15 steps a second, one script frame each)
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-// Leaf: ?CreateAndFadeInObject@@
+// Leaf: ?CreateAndFadeInObject@@YI?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@0MM@Z
 // Naming wave 30 (family cst): the local non-virtual CScriptThing stand-in (??1CScriptThing@@QAE@XZ) is replaced by engine/CScriptThing.h's retail
 //   class: ~CScriptThing 0x004AA840 is virtual (RTTI CScriptThing : CBaseClass; Ego_r.pdb / FableWin.pdb ??1CScriptThing@@UAE@XZ)
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the

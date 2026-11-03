@@ -1,5 +1,5 @@
 // CBankFileEntryUpdateData::ReadInfo(unsigned long, void*, unsigned long) const -- copy `size` bytes of the entry's info buffer starting at `offset` into `dest`, when offset + size is a valid 31-bit position
-// Leaf: ?ReadInfo@CBankFileEntryUpdateData@@
+// Leaf: ?ReadInfo@CBankFileEntryUpdateData@@QBEXKPAXK@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009CBE90, length 67 bytes (+ int3 padding).
 // PDB (FableWin): ?ReadInfo@CBankFileEntryUpdateData@@QBEXKPAXK@Z (the only (ulong, void*, ulong) const member in the
 // name sets). Layout (PDB): StateBlockCRC +0, InfoSize +4, InfoBuffer +8 (the landed SetInfo 0x009CC6F0 and the

@@ -1,5 +1,5 @@
 // NAnimationEvents::LoadAnimationEvents(bool displayProgress) -- load the game and sound animation-event managers from Data\Misc\game_animation_events.txt / sound_animation_events.txt, with optional progress text
-// Leaf: ?LoadAnimationEvents@NAnimationEvents@@
+// Leaf: ?LoadAnimationEvents@NAnimationEvents@@YIX_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006FABF0, 259 bytes, plain `ret` (__fastcall, the flag in cl).
 // Label: catalog "LoadAnimationEvents" (global) -> NAnimationEvents::LoadAnimationEvents (Ego_r.pdb
 //   ?LoadAnimationEvents@NAnima...); the twin of the landed NAnimationEvents::SaveAnimationEvents 0x006F9EE0.

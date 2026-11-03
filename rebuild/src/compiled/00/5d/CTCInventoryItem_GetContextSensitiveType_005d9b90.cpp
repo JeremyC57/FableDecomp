@@ -1,5 +1,5 @@
 // CTCInventoryItem::GetContextSensitiveType(long defIndex) -- static: cache the defs for defIndex and return the Type of the thing def's CContextSensitiveItemDef sub-definition, or 0 when the def cannot be cached or has no such sub-def
-// Leaf: ?GetContextSensitiveType@CTCInventoryItem@@SI
+// Leaf: ?GetContextSensitiveType@CTCInventoryItem@@SI?AW4EContextSensitiveType@@J@Z
 // Retail: Fable.exe @ 0x005D9B90, 81 bytes (+15 int3). Ego_r.pdb `?GetContextSensitiveType@CTCInventoryItem@@SI?AW4EContextSensitiveType@@J@Z`
 // (static __fastcall, defIndex in ecx straight on to CacheDef; `ret`).
 // Callees: CTCInventoryItem::CacheDef(long) @ 0x005D94B0 (static `__fastcall` bool),

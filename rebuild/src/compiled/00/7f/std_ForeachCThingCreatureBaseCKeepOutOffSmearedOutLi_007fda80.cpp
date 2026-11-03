@@ -1,5 +1,5 @@
 // std::_For_each<CThingCreatureBase**,CKeepOutOffSmearedOutLine>(CThingCreatureBase** first, CThingCreatureBase** last, CKeepOutOffSmearedOutLine func) -- apply the obstruction's keep-out functor (push each creature off the smeared-out line) to every creature in the range and return the functor
-// Leaf: ??$_For_each@PAPAVCThingCreatureBase@@VCKeepOutOffSmearedOutLine@@
+// Leaf: ??$_For_each@PAPAVCThingCreatureBase@@VCKeepOutOffSmearedOutLine@@@std@@YI?AVCKeepOutOffSmearedOutLine@@PAPAVCThingCreatureBase@@0V1@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007FDA80, 65 bytes (`ret 10h` + int3 padding); /Gr TU: hidden result in ecx, first in
 //   edx, last and the 12-byte functor on the stack. Ego_r.pdb / FableWin.pdb
 //   `??$_For_each@PAPAVCThingCreatureBase@@VCKeepOutOffSmearedOutLine@@@std@@YI?AVCKeepOutOffSmearedOutLine@@PAPAVCThingCreatureBase@@0V1@@Z`;

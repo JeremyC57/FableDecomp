@@ -1,5 +1,5 @@
 // CTCHeroOnlineScoreboard::OnSerialise(CPersistContext& context, bool) -- persists the local scoreboard map as two parallel vectors ("ActivitiesVec", "ScoresVec"): saving copies the map out, loading copies the vectors back into the map
-// Leaf: ?OnSerialise@CTCHeroOnlineScoreboard@@
+// Leaf: ?OnSerialise@CTCHeroOnlineScoreboard@@UAEXAAVCPersistContext@@_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00560720, 506 bytes (0x1FA + int3 padding), virtual (vtable 0x0124DB34 slot 1),
 //   thiscall `ret 8`.
 // Identity: Ego_r.pdb ?OnSerialise@CTCHeroOnlineScoreboard@@UAEXAAVCPersistContext@@_N@Z; the RTTI vtable of

@@ -1,5 +1,5 @@
 // CReplaceSerialise<COldFileFormatMapHeader5,COldFileFormatMapHeader4>::GetMaxSize(long version, long size) -- map-header version chain: the scratch size needed to read a record of the given version and convert it up to version 5, the largest of the size and every header size from that version up
-// Leaf: ?GetMaxSize@?$CReplaceSerialise@VCOldFileFormatMapHeader5@@
+// Leaf: ?GetMaxSize@?$CReplaceSerialise@VCOldFileFormatMapHeader5@@VCOldFileFormatMapHeader4@@@@SIJJJ@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00515FA0, 100 bytes (padded to 112), plain `ret` (static `__fastcall`: version in
 //   ecx, size in edx). PDB name ?GetMaxSize@?$CReplaceSerialise@VCOldFileFormatMapHeader5@@VCOldFileFormatMapHeader4@@@@SIJJJ@Z
 //   (Ego_r.pdb name set). Callers 0x0051801F and 0x00519662 / 0x00519686 (the v6->v7 GetMaxSize 0x00519630, landed

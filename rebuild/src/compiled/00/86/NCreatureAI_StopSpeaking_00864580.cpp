@@ -1,5 +1,5 @@
 // NCreatureAI::StopSpeaking(CThingCreatureBase&) -- clears the creature's speech emote: SetEmoteText(priority 7, L"", 0, 0) on its emote icon component
-// Leaf: ?StopSpeaking@
+// Leaf: ?StopSpeaking@NCreatureAI@@YIXAAVCThingCreatureBase@@@Z
 // Retail 0x00864580, 0x5C bytes (+ int3 padding), __fastcall (creature in ecx). PDB (Ego_r):
 // ?StopSpeaking@NCreatureAI@@YIXAAVCThingCreatureBase@@@Z. Callers 0x00919A06 (tail jmp), 0x0094BB13, 0x0098013D, ...
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (the non-const twin of 0x004365B0: the

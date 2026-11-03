@@ -1,5 +1,5 @@
 // GFVYToAY(float) -- convert a virtual (65536-unit) Y to actual render-target pixels: y * renderTargetHeight / VirtualHeight
-// Leaf: ?GFVYToAY@
+// Leaf: ?GFVYToAY@@YIMM@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E1E40, length 41 bytes (+ int3 padding).
 // PDB (FableWin): ?GFVYToAY@@YIMM@Z -- __fastcall with the float on the stack (`ret 4`). The catalog label
 // "GFAYToVY" is propagated and wrong: GFAYToVY is 0x009E1DD0 (VirtualHeight * y / height); this body

@@ -15,7 +15,7 @@
 // Layout (retail, 12-byte STLport vectors; Ego_r.pdb names): the NHeroInformationScreens::CBase secondary base +0x130,
 // MapScreenPrimitiveHandles +0x1AC, MapScreenQuestPrimitiveHandles +0x1B8, MapScreenTeleportPrimitiveHandles +0x1C4,
 // MapScreenHousePrimitiveHandles +0x1D0, NumRegions +0x23C; the map def's inventory-def index at +0x8C.
-// Leaf: ?OnCreate@CTCInventoryMap
+// Leaf: ?OnCreate@CTCInventoryMap@@UAEXXZ
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 class CDefPointeeBase { public:

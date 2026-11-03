@@ -8,7 +8,7 @@
 // `A = 1.0f` immediate scheduled between the load and the store of `UpdateFlags |= 4`.
 // Retail layout: AmbientColour +0x1AC and UpdateFlags +0x3D8 (Ego_r.pdb +0x1BC / +0x3F8). No engine header
 // exists for CShaderRenderManager.
-// Leaf: ?SetAmbientColour@CShaderRenderManager
+// Leaf: ?SetAmbientColour@CShaderRenderManager@@QAEXABVCRGBFloatColour@@@Z
 
 class CRGBFloatColour { public:
     float R, G, B, A;

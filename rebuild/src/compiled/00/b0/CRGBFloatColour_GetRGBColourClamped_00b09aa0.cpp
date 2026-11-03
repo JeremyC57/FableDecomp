@@ -1,7 +1,7 @@
 // CRGBFloatColour::GetRGBColourClamped() const -- converts a float RGBA colour to the 8-bit CRGBColour, each channel scaled by 255, rounded and clamped to [0, 255]
 // Grade: RELOCATION_MATCH (2 grades: CRGBColour ctor assigns in its body, per GOTCHAS 0052f440) -- rasm1 retail_asm: C++ body + a minimal 2-instruction __asm (no control flow) + the Retail-asm evidence line
 // Retail-asm: 0x00B09AB6, 0x00B09AD1, 0x00B09AEE, 0x00B09B09 `fistp dword ptr [esp+..]` each after `fstp [slot] ; fld [slot]` -- four expansions of the engine's inline-assembly GFFloatToLong helper (by-value copy stored and reloaded, bare dword fistp). VC7.1 C++ `(long)x` calls __ftol2 and /QIfist (RTM 3077 and QFE 4035, with /Op, /Og or /G5-/G7) emits `fistp qword` into an 8-byte slot, /arch:SSE2 a cvttss2si: no C/C++ form gives the bare dword fistp, so it is the original's `__asm`.
-// Leaf: ?GetRGBColourClamped@CRGBFloatColour@@
+// Leaf: ?GetRGBColourClamped@CRGBFloatColour@@QBE?AVCRGBColour@@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B09AA0, length 233 bytes, thiscall `ret 4` (hidden result pointer).
 // Signature from FableWin.pdb: ?GetRGBColourClamped@CRGBFloatColour@@QBE?AVCRGBColour@@XZ. No direct caller in retail.
 // Constants: 255.0f @ 0x01230014.

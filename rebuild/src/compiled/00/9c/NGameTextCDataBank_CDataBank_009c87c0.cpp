@@ -1,5 +1,5 @@
 // NGameText::CDataBank::~CDataBank() -- close the text and group data, destroy the narrator, group, text and entry arrays, then the secondary base and the CBankFileAsync base
-// Leaf: ??1CDataBank@NGameText@@
+// Leaf: ??1CDataBank@NGameText@@UAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C87C0, 202 bytes (+ int3 padding), thiscall, plain `ret`.
 // Identity: catalogued as "CGameDataBank_DestructorHelper" (descriptive). It stores NGameText::CDataBank's vtables
 // (rtti-vtables.tsv: primary 0x0129B4D4 at +0, the secondary base's 0x0129B528 at +0x164); FableWin/Ego donor

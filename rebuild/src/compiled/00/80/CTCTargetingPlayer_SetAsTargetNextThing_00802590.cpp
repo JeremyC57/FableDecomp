@@ -1,6 +1,6 @@
 // CTCTargetingPlayer::SetAsTargetNextThing() -- queues a "target the next thing" request: method 1 while a live thing is lock-targeted, else method 0
 // Grade: RELOCATION_MATCH -- the method-0 arm is laid out right after the flag test when the condition is a negated inline IS_THING_ALIVE(locked) helper (`if (!IS_THING_ALIVE(locked)) method 0; else method 1;`); the open-coded `!locked || dead` and `locked && !dead` if/else forms always place the method-1 arm first
-// Leaf: ?SetAsTargetNextThing@CTCTargetingPlayer@@
+// Leaf: ?SetAsTargetNextThing@CTCTargetingPlayer@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00802590, length 64 bytes.
 // Callees: the virtual GetPTargetLockedThing() (vtable 0x0124280C slot 36 = 0x004E2328, `+0x90`), the global frame getter
 // @ 0x0049D870 (`__cdecl`, as in the landed SetAsTargetNextThingInDirection 0x008023C0; manifest "GFGetPreMainMemoryUsed"

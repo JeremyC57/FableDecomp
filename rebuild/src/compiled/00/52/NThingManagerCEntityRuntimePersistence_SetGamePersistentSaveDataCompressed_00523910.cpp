@@ -1,5 +1,5 @@
 // NThingManager::CEntityRuntimePersistence::SetGamePersistentSaveDataCompressed(long index, const void* data, unsigned long size, unsigned long uncompressed_size) -- grow the game-persistent table to cover index and copy an already-compressed save block into that slot
-// Leaf: ?SetGamePersistentSaveDataCompressed@CEntityRuntimePersistence@NThingManager@@
+// Leaf: ?SetGamePersistentSaveDataCompressed@CEntityRuntimePersistence@NThingManager@@QAEXJPBXKK@Z
 //
 // Retail 0x00523910, 163 bytes (then int3 padding), `ret 10h` (thiscall).
 // Callees: 0x0052C6A0 vector<CEntityScriptInfo>::resize(size_type), 0x00486189 vector<unsigned char>::resize(n, const

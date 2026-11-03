@@ -1,5 +1,5 @@
 // CTCSoundPlayer::PlayUnattachedSample(long sample, const CSoundInit& init, bool loop, bool attached) -- play a sample index from a new emitter at the owner's position (default fader bits 0x8010 when the init has none)
-// Leaf: ?PlayUnattachedSample@CTCSoundPlayer
+// Leaf: ?PlayUnattachedSample@CTCSoundPlayer@@QAEKJABVCSoundInit@@_N1@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0066ACE0, 174 bytes (+ int3 padding to 176), thiscall `ret 10h`.
 //   Name: Ego_r.pdb `?PlayUnattachedSample@CTCSoundPlayer@@QAEKJABVCSoundInit@@_N1@Z` (the only 4-argument
 //   (long, const CSoundInit&, bool, bool) player). Callers: 0x007C0645 (CTCShotDefinitionBase), 0x008C2209 (landed callers

@@ -1,5 +1,5 @@
 // NParticleEngine::CParticleEmitterList::Insert(CCountedPointer<NParticleEngine::CParticleEmitter>& emitter) -- add an emitter to the active list by priority: an empty list just takes it; otherwise dead emitters met on the way are erased and the new one goes in front of the first lower-priority emitter; at the end it is appended only while the list is under its maximum; returns whether it was added
-// Leaf: ?Insert@CParticleEmitterList@NParticleEngine@@QAE
+// Leaf: ?Insert@CParticleEmitterList@NParticleEngine@@QAE_NAAV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AEB060, 301 bytes, thiscall `ret 4`.
 // Identity: Ego_r.pdb / FableWin.pdb ?Insert@CParticleEmitterList@NParticleEngine@@QAE_NAAV?$CCountedPointer@VCParticleEmitter@
 //   NParticleEngine@@@@@Z (public, NON-const reference; the other Insert is the private (list&, const&, long) at 0x00AEB190, landed).

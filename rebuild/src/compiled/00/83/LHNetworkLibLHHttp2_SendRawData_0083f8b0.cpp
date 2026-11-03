@@ -1,5 +1,5 @@
 // LHNetworkLib::LHHttp2::SendRawData(char* data, unsigned long size, unsigned long* bytesSent, bool) -- sends a raw block over the connection socket: 3 when there is no socket, else copy the block into a byte vector, send it with default (unused) addresses, report the socket's last sent count, 0
-// Leaf: ?SendRawData@LHHttp2@LHNetworkLib@@
+// Leaf: ?SendRawData@LHHttp2@LHNetworkLib@@QAE?AW4LH_RETURN@2@PADKPAK_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0083F8B0, 199 bytes, __fastcall, `ret 10h`, LH_RETURN in eax; the bool is unused.
 // Identity: Ego_r.pdb ?SendRawData@LHHttp2@LHNetworkLib@@QAE?AW4LH_RETURN@2@PADKPAK_N@Z. Parameter names are descriptive.
 //   The manifest label "LHHttp2_SendDataPacket" is descriptive.

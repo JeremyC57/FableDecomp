@@ -1,6 +1,6 @@
 // CCRCSymbolMap::AddSymbolDirty(const CCharString& name, long value) -- append (CRC(name), value) to the CRC->value map unsorted and mark it dirty; with duplicate checking on, first record the CRC in the used-names set
 // Grade: RELOCATION_MATCH -- chunk-422 recipe: same-TU noinline stand-ins for set::insert 0x00514C10 and _M_insert_overflow 0x009B61F0 (both receive a frame temporary's address) fix both earlier residues at once (the "" preload into edx and the pair value kept in edx for the placement copy)
-// Leaf: ?AddSymbolDirty@CCRCSymbolMap@@
+// Leaf: ?AddSymbolDirty@CCRCSymbolMap@@QAEXABVCCharString@@J@Z
 // Retail: Fable.exe @ 0x00A385A0, 195 bytes (+ int3 padding), thiscall `ret 8`. FableWin.pdb
 //   ?AddSymbolDirty@CCRCSymbolMap@@QAEXABVCCharString@@J@Z.
 // Callers: CCRCSymbolMap::ParseEnum 0x00A38670 (the landed source calls it "AddEnumValue").

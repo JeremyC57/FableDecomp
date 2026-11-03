@@ -1,5 +1,5 @@
 // NEntityEvents::CEventItemUsed::CEventItemUsed(CThing&) -- the event starts at world frame 0 and its UsedBy intelligent pointer is pointed at the argument
-// Leaf: ??0CEventItemUsed@NEntityEvents@@QAE@
+// Leaf: ??0CEventItemUsed@NEntityEvents@@QAE@AAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A0750, 52 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity: NEntityEvents::CEventItemUsed::CEventItemUsed(CThing&) -- proven; evidence: it stores vtable 0x0125C820 whose RTTI is
 //   .?AVCEventItemUsed@NEntityEvents@@ : CEventBase@NEntityEvents; FableWin.pdb name set holds ??0CEventItemUsed@NEntityEvents@@QAE@AAVCThing@@@Z;

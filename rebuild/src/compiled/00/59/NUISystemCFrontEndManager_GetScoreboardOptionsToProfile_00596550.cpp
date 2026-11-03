@@ -1,5 +1,5 @@
 // NUISystem::CFrontEndManager::GetScoreboardOptionsToProfile() -- when the scoreboard options screen is on top of the screen stack, copy its login, password, proxy IP, proxy port and server port edit boxes back into the user profile manager
-// Leaf: ?GetScoreboardOptionsToProfile@
+// Leaf: ?GetScoreboardOptionsToProfile@CFrontEndManager@NUISystem@@QAEXXZ
 // Retail: Fable.exe @ 0x00596550, 418 bytes, plain `ret`. Reverse twin of SetScoreboardOptionsFromProfile 0x005963DB.
 // Body: m_stackScreens.top() (deque::back 0x0059B039) == m_mapScreens[25] (map::operator[] 0x0059B5D7; VC calls it first) ->
 // CUserProfileManager::Get() (0x0040D2A0) setters fed by GetScoreboardEditBox(CCharString(name)) (0x00596379, 0x0099EBF0):

@@ -1,7 +1,7 @@
 // Levers: ~CScriptThing __forceinline; after the predicate + yield prologue a for(;;) with the terminating return first; in-body `#pragma inline_depth(0)` around both in-loop terminate returns (out-of-line ~CScriptThing), so only the prologue return and the loop-top return expand the dtor.
 // Revisit: inline-depth -- byte-exact, but reached with #pragma inline_depth regions retail most likely never wrote; redo pragma-free once the retail mechanism is found (owner 2026-11-02; docs/pipeline/INLINE_DEPTH_REVISIT.md).
 // CV_TalentlessBardScript::WatchForAttack(CScriptThing bard) -- with an is-alive predicate on the bard, flag the hero for hitting him while he lives
-// Leaf: ?WatchForAttack@CV_TalentlessBardScript@NScript@@
+// Leaf: ?WatchForAttack@CV_TalentlessBardScript@NScript@@QAEXVCScriptThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00ED9790, 453 bytes, `ret 0Ch` (the by-value CScriptThing).
 // Callees: CScriptThing(const CScriptThing&) 0x004ABE90 (the predicate's copy), CScriptBase::SetPredicate 0x00CB7920,
 //   ~CIsThingAlive 0x00E241B0, CScriptBase::IsActiveThreadTerminating 0x00CB7940, CCharString(const char*, long)

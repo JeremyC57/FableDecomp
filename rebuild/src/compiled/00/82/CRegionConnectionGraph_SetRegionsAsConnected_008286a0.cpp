@@ -1,5 +1,5 @@
 // CRegionConnectionGraph::SetRegionsAsConnected(long region1, long region2, bool connected) -- mark two regions as (dis)connected in both directions: each one's graph node adds or drops the other
-// Leaf: ?SetRegionsAsConnected@CRegionConnectionGraph
+// Leaf: ?SetRegionsAsConnected@CRegionConnectionGraph@@QAEXJJ_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008286A0, 101 bytes (+11 int3), thiscall `ret 0Ch`.
 // Identity: Ego_r.pdb name set ?SetRegionsAsConnected@CRegionConnectionGraph@@QAEXJJ_N@Z; it calls
 //   CRegionConnectionNode::SetAsConnectedToRegion (QAEXJ_N) @ 0x008285D0 twice. The catalog label

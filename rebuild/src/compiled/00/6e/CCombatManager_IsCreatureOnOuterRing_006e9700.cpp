@@ -1,5 +1,5 @@
 // CCombatManager::IsCreatureOnOuterRing(const CThingCreatureBase& creature) const -- false for a creature that is not combat-eligible; true when it is not using its victim's combat wheel or holds no ring, else whether its ring is the wheel's outer ring for the victim's combat type
-// Leaf: ?IsCreatureOnOuterRing@CCombatManager@@
+// Leaf: ?IsCreatureOnOuterRing@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E9700, 145 bytes (160 with int3 padding), thiscall, `ret 4`.
 // Identity: Ego_r.pdb name set `?IsCreatureOnOuterRing@CCombatManager@@QBE_NABVCThingCreatureBase@@@Z` (the one
 //   CCombatManager bool query that ends in CCombatWheel::IsCombatRingOuterRing). Shape and layout as the landed

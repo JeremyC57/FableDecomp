@@ -2,7 +2,7 @@
 // then, when the creature's special-effects sub def maps "SHOW_TROPHY_BUILDUP" to an effect, spawn it at the creature's
 // WEAPON_FOCUS_01 dummy, keep it as PEmitter and attach its particle emitter (interface 0x4b) to the creature's right
 // hand; then the base Initialise
-// Leaf: ?Initialise@CCreatureAction_ShowTrophy
+// Leaf: ?Initialise@CCreatureAction_ShowTrophy@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00845350, length 617 bytes, plain `ret` (virtual).
 // Callees: CBaseIntelligentPointer ctor/GetPItem/SetPItem/dtor 0x00A01B10/0x00A01B50/0x00A01B90/0x00A01C10,
 //   CVectorMap::LowerBound 0x0040F020, the CTCTrophy member 0x006DE8B0 taking the showing creature (descriptive name),

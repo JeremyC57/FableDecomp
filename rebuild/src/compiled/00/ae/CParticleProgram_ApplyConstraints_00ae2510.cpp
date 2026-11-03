@@ -1,5 +1,5 @@
 // CParticleProgram::ApplyConstraints(CParticleSimulation& simulation, long iterations, float tolerance) const -- relax the cloth constraints: run the constraint program up to `iterations` times, stopping early once a pass moved no particle by more than `tolerance`
-// Leaf: ?ApplyConstraints@CParticleProgram@@
+// Leaf: ?ApplyConstraints@CParticleProgram@@ABEXAAVCParticleSimulation@@JM@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AE2510, 61 bytes, __fastcall `ret 0Ch`.
 // Identity: Ego_r.pdb `?ApplyConstraints@CParticleProgram@@ABEXAAVCParticleSimulation@@JM@Z` (private const: simulation&,
 //   long, float) -- the only 3-argument CParticleProgram member that calls ExecuteProgram. Callers: the two SimulationStep

@@ -1,5 +1,5 @@
 // NCreatureMode::IsPhysicsPushableByHero(const CThing& thing) -- false while sitting, lying down or underground, in a BriarRose (0x40/0x3F) or ThunderLightningStorm (0x36) mode, when the creature's action refuses, or when the AI scratchpad (0xAA) clears its pushable byte
-// Leaf: ?IsPhysicsPushableByHero@NCreatureMode@@
+// Leaf: ?IsPhysicsPushableByHero@NCreatureMode@@YI_NABVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085FD70, length 227 bytes. `__fastcall` free function (ecx = the thing), bool in al.
 // Mangled (Ego_r.pdb): ?IsPhysicsPushableByHero@NCreatureMode@@YI_NABVCThing@@@Z.
 // Callees: NCreatureMode::IsSitting 0x0085F310, IsLyingDown 0x0085F2B0, IsUnderground 0x0085F120 (same TU), CVectorMap

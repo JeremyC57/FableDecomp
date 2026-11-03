@@ -1,5 +1,5 @@
 // CEnvironment::SetDiffVector(CEnvironment& env, const vector<CGenericVar>& args) -- console: set the diffuse light direction (normalised x, y, z) in the current and previous game-tick states
-// Leaf: ?SetDiffVector@CEnvironment@@
+// Leaf: ?SetDiffVector@CEnvironment@@CIXAAV1@ABV?$vector@VCGenericVar@@V?$allocator@VCGenericVar@@@std@@@std@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B3460, length 87 bytes, private static __fastcall (`CI`):
 //   ecx = env, edx = args, plain `ret`.
 // Callees: C3DVector::AccurateNormalise @ 0x00A14440 (in place; the manifest's "GetScaled" is a propagated label,

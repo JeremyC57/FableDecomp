@@ -1,5 +1,5 @@
 // CChunkedFileSuperChunk::RegisterSubChunkType(const CCountedPointer<CChunkedFileChunk>& chunk) -- append a prototype chunk (a type the super chunk can instantiate while reading) to RegisteredSubChunkTypes
-// Leaf: ?RegisterSubChunkType@
+// Leaf: ?RegisterSubChunkType@CChunkedFileSuperChunk@@QAEXABV?$CCountedPointer@VCChunkedFileChunk@@@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AA87E0, 80 bytes, thiscall `ret 4`.
 // Identity: Ego_r.pdb `?RegisterSubChunkType@CChunkedFileSuperChunk@@QAEXABV?$CCountedPointer@VCChunkedFileChunk@@@@@Z`
 //   (the donor puts it right before CChunkedFileSuperChunk::ReadFromFile, as retail does: 0x00AA8830); same body as

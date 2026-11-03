@@ -1,5 +1,5 @@
 // CThingAICreature::Create(long defIndex, const C3DVector& position, long creationType, const CThingAICreatureInit& init) -- static factory: allocate and construct an AI creature, remember its initial position, construct it from the parameters, place its physics with the default facing and run the activation sequence; null on any failure
-// Leaf: ?Create@CThingAICreature
+// Leaf: ?Create@CThingAICreature@@SIPAV1@JABVC3DVector@@JABVCThingAICreatureInit@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00833800, 197 bytes (+11 int3), static __fastcall `ret 8` (defIndex in ecx, the
 //   position in edx, the creation type and the init block on the stack), 0x40-byte frame.
 // Identity: Ego_r.pdb name set ?Create@CThingAICreature@@SIPAV1@JABVC3DVector@@JABVCThingAICreatureInit@@@Z; the

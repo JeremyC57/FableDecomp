@@ -1,5 +1,5 @@
 // std::pair<NParticleEngine::EPSCType,NParticleEngine::CComponentInstance>::~pair() -- destroy a particle-system component slot: release the instance's counted component, then the CBaseClass root of the instance
-// Leaf: ??1?$pair@W4EPSCType
+// Leaf: ??1?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@std@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF65B0, length 61 bytes, `jmp` tail. Callers: 0x00AF768D / 0x00AF784A in
 // the vector insert helpers 0x00AF7570 / 0x00AF7730 of the CParticleSystem Components vector (the landed resize(n)
 // 0x00AF7A10 names the element: pair<EPSCType, CComponentInstance>, vtable 0x0129F478, base CBaseClass). The manifest label

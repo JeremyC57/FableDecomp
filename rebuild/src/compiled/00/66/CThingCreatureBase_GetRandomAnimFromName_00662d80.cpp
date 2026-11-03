@@ -1,5 +1,5 @@
 // CThingCreatureBase::GetRandomAnimFromName(const CCharString& name, long exclude) const -- a random appearance animation called `name` (not the excluded one) passing the current creature mode's filter, else a random one of any group, else the first "DEFAULT"
-// Leaf: ?GetRandomAnimFromName@CThingCreatureBase
+// Leaf: ?GetRandomAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00662D80, length 356 bytes (+12 int3), `ret 8`.
 //   Signature from Ego_r.pdb `?GetRandomAnimFromName@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@J@Z`.
 // Callees: as the landed sibling GetAnimFromName 0x00662A00: CDefClassBase::GetSubDef<CAppearanceDef> @ 0x0042B0A2,

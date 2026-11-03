@@ -1,5 +1,5 @@
 // NScript::CQ_AwakeningTheOracleScript::CQ_AwakeningTheOracleScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- constructor of the Q_AwakeningTheOracle quest script: level-script base, then the empty DiggingPoints vector and the cs_args / cs_chars maps
-// Leaf: ??0CQ_AwakeningTheOracleScript@
+// Leaf: ??0CQ_AwakeningTheOracleScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CFAD30, 158 bytes, `__fastcall`, two stack arguments (`ret 8`), returns this.
 //   Its only caller is the quest's Alloc @ 0x00D00590 (`new` 0x98 bytes, then this ctor out of line), the pAllocFunc of
 //   the "Q_AwakeningTheOracle" CScriptInfo record (section "S_QATO", stored at 0x00CD596E).

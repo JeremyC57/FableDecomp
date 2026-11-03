@@ -1,5 +1,5 @@
 // CAIStateGroup_WanderAroundShops::FindASimplyDelightfulShop() -- pick, with the world seed, a random shop building whose shop component has fewer than the maximum number of shoppers (null when none)
-// Leaf: ?FindASimplyDelightfulShop@CAIStateGroup_WanderAroundShops@@
+// Leaf: ?FindASimplyDelightfulShop@CAIStateGroup_WanderAroundShops@@AAEPAVCThing@@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00946F90, 373 bytes, thiscall, plain `ret`, returns CThing*.
 // Identity: Ego_r.pdb ?FindASimplyDelightfulShop@CAIStateGroup_WanderAroundShops@@AAEPAVCThing@@XZ (private, no argument):
 //   Ego_r's member order Cleanup, InitStateGroup, OnReplace, FindASimplyDelightfulShop, FindPrettyThingInShop, IsRunnable,

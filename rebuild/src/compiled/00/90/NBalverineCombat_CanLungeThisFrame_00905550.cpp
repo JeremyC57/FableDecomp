@@ -1,5 +1,5 @@
 // NBalverineCombat::CanLungeThisFrame(const CThingCreatureBase& creature) -- true when enough frames have passed since the last lunge: the creature's CBalverineBattleDef SecondsBetweenLunges (default 5 s) times the frame rate is below the frames elapsed since SetLungedThisFrame
-// Leaf: ?CanLungeThisFrame@NBalverineCombat@@
+// Leaf: ?CanLungeThisFrame@NBalverineCombat@@YI_NABVCThingCreatureBase@@@Z
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00905550, 140 bytes, __fastcall (creature in ecx), returns bool.

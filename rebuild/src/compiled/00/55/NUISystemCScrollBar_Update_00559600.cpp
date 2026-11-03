@@ -10,7 +10,7 @@
 // on): CComponent::Layer +0x12F (PDB +0x157), CClickable::WasLeftClicked +0x170 (PDB +0x1A0),
 // CDraggable::PositionBeforeDrag +0x194 / WasDragged +0x19C (PDB +0x1C4 / +0x1CC). No engine header exists
 // at retail offsets; the chain is modelled as in the landed CDraggable constructor (0x0055A9C0).
-// Leaf: ?Update@CScrollBar
+// Leaf: ?Update@CScrollBar@NUISystem@@UAEXM@Z
 // Naming wave 28 (family clk): the base call 0x0055ACB0 is ?Update@CClickable@NUISystem@@UAEXM@Z (chunk 696; RTTI COL of
 //   vtable 0x0124BD2C slot 1; Ego_r.pdb), qualified on CClickable. Was CDraggable_Retail::Update.
 

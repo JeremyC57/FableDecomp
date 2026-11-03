@@ -1,6 +1,6 @@
 // CThingComponentSet::Add(const CCharString& name, bool flag) -- look the component name up in the registered-TC table and, when found, append an entry {def-string name, registered type, flag} to the small vector
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00870750, length 68 bytes.
-// Leaf: ?Add@CThingComponentSet
+// Leaf: ?Add@CThingComponentSet@@QAEXABVCCharString@@_N@Z
 // Callees: the registered-TC lookup @ 0x00686F60 (a `__fastcall` static taking the name in ecx: lower bound in the global
 // vector map @ 0x013BA89C, string compare, `&entry.value` or null; the manifest's "CVectorMap_FindMeshVolume" is
 // propagated), CDefString::CDefString(const CCharString&) @ 0x009D5060 (table position from the global CDefStringTable

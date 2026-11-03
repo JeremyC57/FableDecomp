@@ -1,5 +1,5 @@
 // CTCDParticleEmitter::SendCreationCriteriaSound(CThing& thing) -- when the emitter thing has a sound component (interface 16), play the positional sound "CREATE_PARTICLE_" + the upper-cased name of its live particle emitter
-// Leaf: ?SendCreationCriteriaSound@CTCDParticleEmitter@@
+// Leaf: ?SendCreationCriteriaSound@CTCDParticleEmitter@@CIXAAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E0E80, 141 bytes (+ int3 padding), private static `__fastcall` (ecx = thing), plain `ret`.
 // Identity: Ego_r.pdb name set `?SendCreationCriteriaSound@CTCDParticleEmitter@@CIXAAVCThing@@@Z`; the catalog name is right.
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (the inlined GetInterface, interface 16 = sound),

@@ -1,5 +1,5 @@
 // NUISystem::CMovie::CMovie(CIEngine&, long) -- build the movie component: draggable base, primitive handle, movie name and playback info, remember the engine, then read the def
-// Leaf: ??0CMovie@NUISystem@@QAE@AAVCIEngine
+// Leaf: ??0CMovie@NUISystem@@QAE@AAVCIEngine@@J@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005482D0, 120 bytes (+ int3 padding; `ret 8`).
 // Callees: NUISystem::CDraggableInto::CDraggableInto(long) @ 0x0052CC50, CBaseClass::CBaseClass() @ 0x0099A2D0,
 //   CWideString::CWideString() @ 0x0099AED0 (manifest label "CCharString" is a byte twin), CXMVPlaybackInfo::CXMVPlaybackInfo() @ 0x009BC7D0,

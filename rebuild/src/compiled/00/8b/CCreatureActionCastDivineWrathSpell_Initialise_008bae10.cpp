@@ -1,5 +1,5 @@
 // CCreatureAction_CastDivineWrathSpell::Initialise() -- base Initialise, find or add the creature's CTCDivineWrath component, arm it and hand it the action's thing pointer when that thing is alive
-// Leaf: ?Initialise@CCreatureAction_CastDivineWrathSpell
+// Leaf: ?Initialise@CCreatureAction_CastDivineWrathSpell@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008BAE10, 271 bytes (272 with padding), virtual Initialise. Byte twin of
 //   CCreatureAction_CastUnholyPowerSpell::Initialise 0x008BAF20 (type 0x86 / "CTCUnholyPower").
 // Callees: CCombatActionBase::Initialise 0x00857520 (direct base call, first), CBaseIntelligentPointer::GetPItem 0x00A01B50,

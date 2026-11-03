@@ -1,5 +1,5 @@
 // NCreatureMode::RemoveAnimationBlockingModes(CThing& thing) -- drop the Stunned (0x1D) and Dazed (0x43) modes from the thing's mode manager
-// Leaf: ?RemoveAnimationBlockingModes@NCreatureMode@@
+// Leaf: ?RemoveAnimationBlockingModes@NCreatureMode@@YIXAAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085F6A0, length 72 bytes. `__fastcall` free function (ecx = the thing).
 // Mangled (Ego_r.pdb): ?RemoveAnimationBlockingModes@NCreatureMode@@YIXAAVCThing@@@Z.
 // Name: the catalog row says "RemoveInterfaceMode_impl"; its only callers are the scripted-control CActionPlayAnimation and

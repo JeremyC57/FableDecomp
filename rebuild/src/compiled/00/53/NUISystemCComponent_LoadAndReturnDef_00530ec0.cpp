@@ -1,5 +1,5 @@
 // NUISystem::CComponent::LoadAndReturnDef() const -- look up the component's UI definition (global def index DefIndex) through the front end's definition-manager override, or the game definition manager when there is none, and return it as a counted def pointer
-// Leaf: ?LoadAndReturnDef@CComponent@NUISystem@@
+// Leaf: ?LoadAndReturnDef@CComponent@NUISystem@@UBE?AV?$CDefPointer@$$CBVCUIDef@NUISystem@@@@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00530EC0, 98 bytes (+ int3 padding), `ret 4` (hidden result slot returned in eax).
 // Label: the manifest's "CEventKilledCreature::CEventKilledCreature" is a propagated BSim guess (similarity 0.55). Its four
 //   direct callers are NUISystem components (~CList 0x0053B7F0, CEditBox ctor 0x005407B0, ~CText 0x005424B0 and 0x0054F6E0:

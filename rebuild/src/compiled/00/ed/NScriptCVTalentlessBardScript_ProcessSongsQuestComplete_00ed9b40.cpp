@@ -1,5 +1,5 @@
 // CV_TalentlessBardScript::ProcessSongsQuestComplete() -- for each of the 12 quests whose song is available, copy its song tag into the bard's SongItems list; every step and the end are guarded by the script-thread terminate test
-// Leaf: ?ProcessSongsQuestComplete@CV_TalentlessBardScript@NScript@@
+// Leaf: ?ProcessSongsQuestComplete@CV_TalentlessBardScript@NScript@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ED9B40, length 103 bytes (padded to 112).
 // Callees: CScriptBase::IsActiveThreadTerminating @ 0x00CB7940 (x3), CCharString::CCharString(const CCharString&) @ 0x0099EC30,
 // std::vector<CCharString>::push_back(const CCharString&) @ 0x0044BFF0, CCharString::~CCharString @ 0x0099EAE0.

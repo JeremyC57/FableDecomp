@@ -1,5 +1,5 @@
 // CCreatureInteraction::AddParticipant(CThingCreatureBase& creature) -- append the creature to the interaction's participant list
-// Leaf: ?AddParticipant@CCreatureInteraction@@
+// Leaf: ?AddParticipant@CCreatureInteraction@@QAEXAAVCThingCreatureBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008631D0, length 43 bytes (+5 int3). `__fastcall`, `ret 4`.
 // Mangled (Ego_r.pdb): ?AddParticipant@CCreatureInteraction@@QAEXAAVCThingCreatureBase@@@Z.
 // Name: the catalog row says "CreatureInteraction_InsertAfter" (descriptive). Its only caller is

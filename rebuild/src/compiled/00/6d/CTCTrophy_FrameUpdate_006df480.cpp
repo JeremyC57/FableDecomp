@@ -1,5 +1,5 @@
 // CTCTrophy::FrameUpdate() -- trophy minigame tick: plays pending witness sounds; while the minigame runs (and the thing manager is not paused) counts the frames down, and either times out (out-of-time sound, "time up" dialog, wait for terminate) or updates the quest-info minigame display (time fraction, witnesses gained, witness total)
-// Leaf: ?FrameUpdate@CTCTrophy
+// Leaf: ?FrameUpdate@CTCTrophy@@UAEXXZ
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the

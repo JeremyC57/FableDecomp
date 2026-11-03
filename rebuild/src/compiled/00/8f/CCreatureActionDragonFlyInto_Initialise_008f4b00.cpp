@@ -1,7 +1,7 @@
 // CCreatureAction_DragonFlyInto::Initialise() -- animation FLY_INTO, base Initialise, restart the running time; when the
 // action has a single animation set, start it at the fraction of the delay-to-total window already run; when the dragon
 // has a creature-mode manager, add a CModeDragonFlying over MovementPoints from PreviousPoint (or the first point) at Speed
-// Leaf: ?Initialise@CCreatureAction_DragonFlyInto
+// Leaf: ?Initialise@CCreatureAction_DragonFlyInto@@UAEXXZ
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 class CTCBase;

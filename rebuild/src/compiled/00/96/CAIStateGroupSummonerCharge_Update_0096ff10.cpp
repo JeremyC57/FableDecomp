@@ -1,5 +1,5 @@
 // CAIStateGroup_SummonerCharge::Update() -- with a live target: mark its stealth as in danger, start the charge-into action, schedule the next charge frame from the def's delay, then idle while the charge action runs until the target is in reach (or the action ends), then stop any running action and play the charge-strike (live target) or charge-out-of action; always terminates
-// Leaf: ?Update@CAIStateGroup_SummonerCharge
+// Leaf: ?Update@CAIStateGroup_SummonerCharge@@UAEXXZ
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0096FF10, 628 bytes, virtual, plain `ret`, esp frame 0x124.

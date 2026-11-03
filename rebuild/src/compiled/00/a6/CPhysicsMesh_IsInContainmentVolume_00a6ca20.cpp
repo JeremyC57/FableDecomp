@@ -1,5 +1,5 @@
 // CPhysicsMesh::IsInContainmentVolume(const CCharString& name, const C3DVector& position, float radius) const -- true when any containment volume registered under the name holds part of the sphere
-// Leaf: ?IsInContainmentVolume@CPhysicsMesh@@
+// Leaf: ?IsInContainmentVolume@CPhysicsMesh@@QBE_NABVCCharString@@ABVC3DVector@@M@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6CA20, 87 bytes (+9 int3), thiscall `ret 0Ch`. Ego_r.pdb
 //   `?IsInContainmentVolume@CPhysicsMesh@@QBE_NABVCCharString@@ABVC3DVector@@M@Z`.
 // Callees: CVectorMap<CCharString,C3DMeshVolume,CKeyPairCompareLess<..> >::UpperBound 0x00A6FCB0 and ::LowerBound

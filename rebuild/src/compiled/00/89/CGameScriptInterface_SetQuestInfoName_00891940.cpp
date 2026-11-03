@@ -1,6 +1,6 @@
 // CGameScriptInterface::SetQuestInfoName(const char* symbol) const -- look the game-text symbol up in the text bank
 // and show its text as the name line of the player GUI's quest-info panel
-// Leaf: ?SetQuestInfoName@CGameScriptInterface
+// Leaf: ?SetQuestInfoName@CGameScriptInterface@@UBEXPBD@Z
 // Naming wave 18: the global stand-in g_pEngine (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00891940, length 192 bytes, `ret 4`.

@@ -1,5 +1,5 @@
 // CTCQuestCompletionUI::SaveInitialValues(const CCharString& questName) -- when the named quest's active card has a def index, remember the hero's renown, gold and experience at the quest start under that index
-// Leaf: ?SaveInitialValues@
+// Leaf: ?SaveInitialValues@CTCQuestCompletionUI@@QAEXABVCCharString@@@Z
 // Naming wave 18: the global stand-in g_pQuestManager (0x013B89FC) is the private static CCountedPointer<CQuestManager>
 //   CTBaseSingletonNoDefaultAlloc<CQuestManager>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005E4860, 384 bytes (375 without padding), thiscall `ret 4`. Ego_r.pdb

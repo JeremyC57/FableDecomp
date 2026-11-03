@@ -1,6 +1,6 @@
 // NCameraModes::CScriptModuleBase::GetModuleFOV(float& fov) const -- a script module's FOV override, when one was set (positive)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00851DD0, 35 bytes, `ret 4`.
-// Leaf: ?GetModuleFOV@CScriptModuleBase
+// Leaf: ?GetModuleFOV@CScriptModuleBase@NCameraModes@@UBE_NAAM@Z
 // Name: vtable 0x01255F74 slot 5; FableWin.pdb ?GetModuleFOV@CScriptModuleBase@NCameraModes@@UBE_NAAM@Z (SetFOVOverride stores
 //       FOVOverride). Slot map from the base vtable and its overrides: 2 IsFinished (0x005ED0E0 false), 3 IsShortenOnOcclusion
 //       (0x005ED0F0 = ShortenOnCollision; CScriptModuleOpenChest overrides it), 4 IsStretchAroundHero, 5 GetModuleFOV, 6

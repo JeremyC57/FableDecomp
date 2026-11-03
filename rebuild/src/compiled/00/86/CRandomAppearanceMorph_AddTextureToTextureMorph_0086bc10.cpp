@@ -1,5 +1,5 @@
 // CRandomAppearanceMorph::AddTextureToTextureMorph(CVectorMap<unsigned long, CTextureMorph>&, long, const CTextureMorph&) -- insert the texture morph under the texture key and re-sort the map
-// Leaf: ?AddTextureToTextureMorph@CRandomAppearanceMorph@@IAEXAAV?$CVectorMap@KVCTextureMorph@CRandomAppearanceMorph@@
+// Leaf: ?AddTextureToTextureMorph@CRandomAppearanceMorph@@IAEXAAV?$CVectorMap@KVCTextureMorph@CRandomAppearanceMorph@@V?$CKeyPairCompareLess@KVCTextureMorph@CRandomAppearanceMorph@@@@@@JABVCTextureMorph@1@@Z
 // Retail 0x0086BC10, 0x76 bytes (+ int3 padding to 0x80), thiscall `ret 0Ch` (`this` unused). FableWin/Ego_r name:
 // ?AddTextureToTextureMorph@CRandomAppearanceMorph@@IAEXAAV?$CVectorMap@KVCTextureMorph@CRandomAppearanceMorph@@V?$CKeyPairCompareLess@KVCTextureMorph@CRandomAppearanceMorph@@@@@@JABVCTextureMorph@1@@Z
 // (protected). Callers 0x0086BCB0 (AddTextureMorphToAll 0x0086BC90), 0x0086BCF0, 0x0086BD7F (the body-part / mesh adders).

@@ -1,7 +1,7 @@
 // NTCScriptedControl::CActionTalkBase::OnActivate() -- start a talk: mark the action activated, note whether the talker is a demon door and whether the talker or its living target is getting up (knocked down, or in an action that lets animation movement drive the speak-and-wait cameras), drop the talker's conversation mode, remember its conversation attitude, set up the text and speech, re-add a conversation mode for a non-hero talker that can use conversation animations, and reset the combat state of a living hero target
 // Grade: RELOCATION_MATCH (retry wave 2 sec2b: the CModeConversation argument read through the inline PDB accessor GetParentCreature() (FableWin ?GetParentCreature@CActionBase@CTCScriptedControl@@IAEAAVCThingCreatureBase@@XZ) instead of *PTCScript->ParentThing)
 // Was: DIFFER(522v522) -- register allocation only: the CModeConversation arguments (retail ecx = attitude, edx = parent; ours edx = attitude, then ecx = PTCScript) and the final target block (retail vtable loads edx/eax/edx and `lea eax` for the lookup key; ours eax/edx/eax and `lea ecx`); RTM and QFE alike
-// Leaf: ?OnActivate@CActionTalkBase@NTCScriptedControl@@
+// Leaf: ?OnActivate@CActionTalkBase@NTCScriptedControl@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00717710, 522 bytes (+ int3 padding), plain `ret`. Slot 2 of the CActionTalkBase
 //   vtable 0x012659A8 (and of the vtable at 0x012659FC); Ego_r.pdb ?OnActivate@CActionTalkBase@NTCScriptedControl@@UAEXXZ.
 // Callees: CScriptThing virtual slot 11 GetThing (+0x2C) on PTargetThing; NCreatureMode::IsSitting(const CThing&)

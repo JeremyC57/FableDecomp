@@ -1,5 +1,5 @@
 // CAIStateGroupBase::IsRunnableMain() -- true when the state group is enabled and its virtual IsRunnable() agrees
-// Leaf: ?IsRunnableMain@
+// Leaf: ?IsRunnableMain@CAIStateGroupBase@@QAE_NXZ
 // Retail 0x008FCF10, 0x16 bytes (+ int3 padding). Manifest label "Script_GetCurrentStateGroupPriority" (_global) is a
 // propagated descriptive name: the body reads CAIStateGroupBase::Enabled (+0x12, engine/CAIStateGroupBase.h) and calls
 // vtable slot 11 (+0x2C), which rtti-vtables.tsv gives as CAIStateGroupBase::IsRunnable (0x008FD282); the PDB name set

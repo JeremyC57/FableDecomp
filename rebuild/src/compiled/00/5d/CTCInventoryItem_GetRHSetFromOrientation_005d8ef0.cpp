@@ -1,5 +1,5 @@
 // CTCInventoryItem::GetRHSetFromOrientation(EInventoryObjectOrientation orientation) -- private static: the right-handed set for one of the twelve inventory object orientations
-// Leaf: ?GetRHSetFromOrientation@CTCInventoryItem@@CI
+// Leaf: ?GetRHSetFromOrientation@CTCInventoryItem@@CI?AVCRightHandedSet@@W4EInventoryObjectOrientation@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005D8EF0, 316 bytes (incl. the 12-entry jump table), static __fastcall: hidden
 //   CRightHandedSet result in ecx, orientation in edx, plain `ret`.
 // Identity: Ego_r.pdb ?GetRHSetFromOrientation@CTCInventoryItem@@CI?AVCRightHandedSet@@W4EInventoryObjectOrientation@@@Z

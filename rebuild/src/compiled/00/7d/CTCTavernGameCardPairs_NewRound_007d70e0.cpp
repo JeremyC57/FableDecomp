@@ -1,5 +1,5 @@
 // CTCTavernGameCardPairs::NewRound() -- card-base NewRound, then deals the round (as many pack cards as the card-order layout has positions onto the table list), sets the timed game type, the round count from the def's layouts, and clears the counter and the alternate selected card
-// Leaf: ?NewRound@CTCTavernGameCardPairs
+// Leaf: ?NewRound@CTCTavernGameCardPairs@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007D70E0, 244 bytes (plain `ret`); CTCTavernGameCardPairs vtable 0x0126F6FC
 // slot 32 (Ego_r.pdb `?NewRound@CTCTavernGameCardPairs@@UAEXXZ`). The CardSorting override 0x007D5A00 (landed) is the
 // same deal without the trailing stores and with a ShuffleCards call.

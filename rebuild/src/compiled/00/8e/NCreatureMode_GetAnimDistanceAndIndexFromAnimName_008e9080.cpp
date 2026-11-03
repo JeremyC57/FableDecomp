@@ -1,5 +1,5 @@
 // NCreatureMode::GetAnimDistanceAndIndexFromAnimName(const CThingCreatureBase&, const CCharString&, long&, float&) -- bank index of the named animation and its per-frame movement distance
-// Leaf: ?GetAnimDistanceAndIndexFromAnimName@
+// Leaf: ?GetAnimDistanceAndIndexFromAnimName@NCreatureMode@@YI_NABVCThingCreatureBase@@ABVCCharString@@AAJAAM@Z
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the

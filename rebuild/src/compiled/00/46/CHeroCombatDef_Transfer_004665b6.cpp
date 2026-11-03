@@ -1,5 +1,5 @@
 // CHeroCombatDef::Transfer(CPersistContext& context) -- persist the hero combat definition: ranged accuracy / damage ranges and stat weightings, melee and hit damage, flourish settings, targeting, auto-block thresholds, default abilities, heavy weapons package and bow FOV values
-// Leaf: ?Transfer@CHeroCombatDef
+// Leaf: ?Transfer@CHeroCombatDef@@UAEXAAVCPersistContext@@@Z
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004665B6, length 605 bytes (virtual, `ret 4`; unaligned entry, def module).
 // Callees (typed CPersistContext transfers; the catalog labels on the shared ones are propagated): CFloatRange 0x00458F2B,

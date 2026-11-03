@@ -1,6 +1,6 @@
 // CTCLook::ChangeHeadAngleXY(float targetAngle, float time) -- drive the head's XY angle (relative to the body) towards the target through the slow-in/fast-out integrator, the turn speed depending on whether a target is acquired
 // Grade: RELOCATION_MATCH (retry wave 2 sec2: the PDB getters GetHeadAngularVelocityMaxXY / GetHeadTurnRangeXY as inline bodies; the range getter is `0.5f * (range * 1/360)`, which keeps the two multiplies apart). Was DIFFER(91v112): a named speed local spilled to the frame and `def * k * 0.5` folded into one constant.
-// Leaf: ?ChangeHeadAngleXY@
+// Leaf: ?ChangeHeadAngleXY@CTCLook@@AAEXMM@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00752120, length 112 bytes (`ret 8`).
 // Name: FableWin.pdb + Ego_r.pdb `?ChangeHeadAngleXY@CTCLook@@AAEXMM@Z` (private); the landed binding spells it QAE (NAME_FIXES.tsv).
 // Label correction: catalog "CTCLook::ChangeHeadAngleYZ" is propagated; this body works on HeadAngleRelToBodyXY/HeadVelocityXY and CentreHead

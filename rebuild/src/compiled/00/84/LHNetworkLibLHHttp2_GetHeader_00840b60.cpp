@@ -1,5 +1,5 @@
 // LHNetworkLib::LHHttp2::GetHeader(LHHttpHeaderStatus& status) -- copy the received header lines into the status and parse it: ServerCode (the number after the first space), Location: (copied when present), Content-Length (or -1) and Transfer-Encoding (chunked switches the document encoding); returns 1000 whether or not any header was received
-// Leaf: ?GetHeader@LHHttp2@LHNetworkLib@@
+// Leaf: ?GetHeader@LHHttp2@LHNetworkLib@@QAE?AW4LH_HTTP_STATUS@2@AAULHHttpHeaderStatus@2@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00840B60, 1000 bytes (+ int3 padding), thiscall, `ret 4`, returns 1000.
 // Identity: Ego_r.pdb LHNetworkLib::LHHttp2::GetHeader(LHHttpHeaderStatus&) (the HelperGetDocument 0x008411D0 callee).
 // Callees: LHHttpHeaders::GetHeader(const string&) 0x0083F650 (this chunk, parked), LHNetworkLib::StartsWith 0x0083EE10

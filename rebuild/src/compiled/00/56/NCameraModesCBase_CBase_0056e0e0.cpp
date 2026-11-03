@@ -1,5 +1,5 @@
 // NCameraModes::CBase::~CBase() -- camera-mode root destructor: own vtable, then the members in reverse: GoTo's two attractor lists, the SubComponents vector of counted pointers, the camera-mode def pointer release, LookAt's two attractor lists
-// Leaf: ??1CBase@NCameraModes
+// Leaf: ??1CBase@NCameraModes@@UAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0056E0E0, length 101 bytes (+11 int3 padding).
 // Label correction: catalogued as CTCActionUseBed::~CTCActionUseBed (propagated); the only caller is the deleting destructor
 // 0x0056E1F0, slot 0 of vtable 0x0124DD74 = NCameraModes::CBase (rtti-vtables.tsv), and the vtable stored here is that one.

@@ -1,5 +1,5 @@
 // CGameScriptInterface::CreateObjectOnEntity(const CCharString& defName, const CScriptThing& entity, const CCharString& scriptName) const -- when the entity is alive, create a thing object from the named def at the entity's position, attach it to the entity's attachment when both have one, and return its script thing (the null script thing otherwise)
-// Leaf: ?CreateObjectOnEntity@CGameScriptInterface
+// Leaf: ?CreateObjectOnEntity@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABV2@0@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008946E0, length 315 bytes (+ int3 padding), `ret 10h`.
 // Signature from Ego_r.pdb: ?CreateObjectOnEntity@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABV2@0@Z.
 // Callees: the CreateObject 0x00894820 set (GetDefGlobalIndexFromName 0x009AD410, GetDef<CThingObjectDef> 0x0042B040,

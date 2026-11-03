@@ -1,5 +1,5 @@
 // CDefStringTable::~CDefStringTable() -- clear the CCharString -> id map, destroy the filename and the string stream, then the map itself (clear again, free the header node)
-// Leaf: ??1CDefStringTable@@
+// Leaf: ??1CDefStringTable@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D4E90, 114 bytes (+ int3 padding), thiscall, plain `ret`.
 // Identity: catalogued as "LTextTreeWalkThrough_Destructor" (propagated from the shared _M_erase label). The only caller is
 // the atexit destructor stub at 0x0122A780 (`mov ecx, 0x013CA828 ; jmp`), i.e. the global g_DefStringTable @ 0x013CA828

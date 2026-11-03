@@ -1,5 +1,5 @@
 // CQ_ArenaScript::Init() -- register the four Arena quest regions, offer the four Arena boasts and reset the arena
-// Leaf: ?Init@CQ_ArenaScript@NScript@@
+// Leaf: ?Init@CQ_ArenaScript@NScript@@UAEXXZ
 // state (rounds, gold, creature counts, crowd, the sixteen spawn-needed flags)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CFA700, length 845 bytes (padded to 848).
 // Callees: CCharString::CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0; through the script's

@@ -1,5 +1,5 @@
 // CUserProfileManager::GetDebugSaveDir() const -- the debug save directory: L"Data\\" prefixed to NResourceDirectoryNames::GetSaveDir()
-// Leaf: ?GetDebugSaveDir@CUserProfileManager@@
+// Leaf: ?GetDebugSaveDir@CUserProfileManager@@QBE?AVCWideString@@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00406780, 44 bytes (+4 int3 pad). Callees:
 // NResourceDirectoryNames::GetSaveDir 0x0041A540 (__fastcall, hidden result in ecx: My Documents +
 // L"My Games\\Fable\\" + L"Saves" + L"\\"), operator+(const wchar_t*, const CWideString&) 0x0099BFF0

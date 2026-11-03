@@ -1,5 +1,5 @@
 // CTCObjectAugmentations::CopyAugmentationDataFromThing(const CThing& thing) -- when the thing has an augmentations component, clear this one's particle lists and slots, copy the other component's slot defs, then re-attach the particles and refresh the particle morphs
-// Leaf: ?CopyAugmentationDataFromThing@
+// Leaf: ?CopyAugmentationDataFromThing@CTCObjectAugmentations@@QAEXABVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00768210, length 256 bytes (thiscall, `ret 4`; 0xFC bytes + int3 pad).
 // Identity: Ego_r.pdb ?CopyAugmentationDataFromThing@CTCObjectAugmentations@@QAEXABVCThing@@@Z; the catalog label
 //   "CTCObjectAugmentations_InitAbilitySlot" is descriptive. Callers: CTCWeapon::SetProjectileWeaponLoaded 0x005DAC50

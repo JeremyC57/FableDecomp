@@ -1,5 +1,5 @@
 // CThing::GetSubTypeFromScript(const char* script) -- parse a thing's script block up to "EndThing", load its serialise record and return the global index of its definition type (0 for "NULL")
-// Leaf: ?GetSubTypeFromScript@CThing@@
+// Leaf: ?GetSubTypeFromScript@CThing@@SIJPBD@Z
 // Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
 //   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C8A30, 368 bytes, static __fastcall (script in ecx), plain `ret`. Ego_r.pdb

@@ -1,5 +1,5 @@
 // CTCHeroPodium::GetPositionForMember(long member) const -- the crowd slot for a member index: an angle of (member / 8 / 2 - 1/4) turns around the podium on the ellipse spanned by its E_X / E_Y axes, scaled by 4 and offset from the podium thing's position
-// Leaf: ?GetPositionForMember@CTCHeroPodium
+// Leaf: ?GetPositionForMember@CTCHeroPodium@@ABE?AVC3DVector@@J@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00771C70, 187 bytes (+5 int3), `ret 8` (hidden C3DVector result + member).
 // Name: FableWin.pdb `?GetPositionForMember@CTCHeroPodium@@ABE?AVC3DVector@@J@Z` (private const); it sits between
 //   CTCHeroPodium::OnInitialActivate 0x00771BD0 and GetCrowdPos 0x00771D50 (both CTCHeroPodium) and has no direct call

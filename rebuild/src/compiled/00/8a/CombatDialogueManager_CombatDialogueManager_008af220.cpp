@@ -1,5 +1,5 @@
 // CombatDialogueManager::CombatDialogueManager() -- construct the combat dialogue manager: empty speech-group map, no dialogue def, no current talker, zeroed text-group index and speech frames
-// Leaf: ??0CombatDialogueManager@@
+// Leaf: ??0CombatDialogueManager@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008AF220, length 134 bytes (+ int3 padding), thiscall, `ret`, returns this.
 // Identity: one caller, 0x006ED46D in the landed CCombatManager::CCombatManager 0x006ED3F0, which declares this body as
 //   `CombatDialogueManager::CombatDialogueManager() @ 0x008AF220` for its DialogueManager member. The catalog label

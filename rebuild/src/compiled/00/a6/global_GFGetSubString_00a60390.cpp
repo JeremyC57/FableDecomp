@@ -1,5 +1,5 @@
 // GFGetSubString(const char* text, const char* sub) -- naive substring search: the address of the first occurrence of sub inside text, or 0
-// Leaf: ?GFGetSubString@@
+// Leaf: ?GFGetSubString@@YIPADPBD0@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A60390, 83 bytes, plain `ret` (PDB ?GFGetSubString@@YIPADPBD0@Z:
 //   `char* __fastcall`, text in ecx, sub in edx). No callees.
 // Shape: two index loops: for every start position i while text[i] != 0, advance j while sub[j], text[i + j] and their

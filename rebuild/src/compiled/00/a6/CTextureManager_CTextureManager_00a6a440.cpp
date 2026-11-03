@@ -1,5 +1,5 @@
 // CTextureManager::~CTextureManager() -- uninitialise, then destroy the 16 preallocated texture pools and the CBaseClass base
-// Leaf: ??1CTextureManager@@
+// Leaf: ??1CTextureManager@@UAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A6A440, 136 bytes. __fastcall; called by the deleting dtor 0x00A6C000 (vtable
 //         0x0129DC5C slot 0). RENDER LAYER (texture pools).
 // Callees: free 0x00BFEA14 (vector storage); CResourceList::~CResourceList() 0x009FC5C0 (vtable 0x0129C808, the pool base;

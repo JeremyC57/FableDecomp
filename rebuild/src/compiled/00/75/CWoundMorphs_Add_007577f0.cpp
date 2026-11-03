@@ -1,5 +1,5 @@
 // CWoundMorphs::Add(CWoundMorphs::CEntry& entry) -- append (entry.Location, entry) to the morph map's vector and mark the map dirty (re-sorted on the next lookup)
-// Leaf: ?Add@CWoundMorphs@@
+// Leaf: ?Add@CWoundMorphs@@QAEXAAVCEntry@1@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007577F0, 116 bytes (+12 int3), `ret 4`. Ego_r.pdb `?Add@CWoundMorphs@@QAEXAAVCEntry@1@@Z`.
 // Callees: vector<pair<EBodyLocation,CEntry>>::_M_insert_overflow(pos, const T&, const __false_type&, size_type, bool)
 //   @ 0x00759190 (__fastcall, `ret 14h`).

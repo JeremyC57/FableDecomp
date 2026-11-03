@@ -1,5 +1,5 @@
 // NUISystem::CText::ResetToDefaultValueWithPrefix(const CWideString& prefix) -- re-reads the text component's def (GetDataFromDef), then sets its text to prefix + the current text (SetText(text, false, true))
-// Leaf: ?ResetToDefaultValueWithPrefix@CText
+// Leaf: ?ResetToDefaultValueWithPrefix@CText@NUISystem@@QAEXABVCWideString@@@Z
 // Retail: Fable.exe @ 0x0054F580, 62 bytes (+ int3 padding).
 // Callees: NUISystem::CText::GetDataFromDef @ 0x0054ED90, CText::GetText (primary vtable slot 142, +0x238; 0x0054FF10
 // returns `&this->Text`), operator+(const CWideString&, const CWideString&) @ 0x0099BE70 (__fastcall: hidden result in

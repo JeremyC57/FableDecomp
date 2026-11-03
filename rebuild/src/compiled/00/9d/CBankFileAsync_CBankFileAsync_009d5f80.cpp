@@ -1,5 +1,5 @@
 // CBankFileAsync::CBankFileAsync() -- the asynchronous bank file: CBankFile base, null threaded file / memory pool / failure handler, empty async-data sets and disposal list, flags clear, critical section initialised
-// Leaf: ??0CBankFileAsync@@
+// Leaf: ??0CBankFileAsync@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D5F80, length 224 bytes, no arguments, returns `this`.
 // Label correction: catalogued as "CBankFile::CBankFile::ConstructorInitialize"; the vtable stored is 0x0129B8D4 and the members
 // are Ego_r.pdb CBankFileAsync's (Ego_r ??0CBankFileAsync@@QAE@XZ).

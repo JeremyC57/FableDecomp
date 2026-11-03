@@ -7,7 +7,7 @@
 // strings, walked with an unsigned index (`jb`) until entry id & 15 (hoisted into edi before the first call) is
 // found non-empty. The converted length is the result; the terminator goes at min(length, bufferSize - 1) compared
 // signed (`jge`). Every failure shares the one `xor eax,eax` exit.
-// Leaf: ?RetrieveStringByLanguage@@
+// Leaf: ?RetrieveStringByLanguage@@YIHPAUHINSTANCE__@@KPADKG@Z
 struct HINSTANCE__ { int unused; };
 typedef HINSTANCE__* HINSTANCE;
 typedef HINSTANCE HMODULE;

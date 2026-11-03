@@ -1,6 +1,6 @@
 // NParticleEngine::CParticleUpdateParameters<unsigned long, unsigned long>::Update() -- re-sort whichever of the two parameter maps was marked dirty and mark it clean
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076C750, length 61 bytes (64 with int3 padding).
-// Leaf: ?Update@?$CParticleUpdateParameters
+// Leaf: ?Update@?$CParticleUpdateParameters@KK@NParticleEngine@@QAEXXZ
 // Callees: STLport sort over pair<unsigned long, C3DVector> @ 0x0076C000 and over
 // pair<unsigned long, CParticleUpdateParamDesc<unsigned long,unsigned long> > @ 0x0076C1A0 (both __fastcall: first in
 // ecx, last in edx, the empty comparator by value on the stack -- manifest labels "std::vector_Relocate*" are

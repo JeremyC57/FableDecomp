@@ -1,6 +1,6 @@
 // CScratchBuffer::Initialise(long noBytes) -- clears Buffer, runs the base initialisation, allocates noBytes and records the size; false on failure
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F4910, length 61 bytes.
-// Leaf: ?Initialise@CScratchBuffer
+// Leaf: ?Initialise@CScratchBuffer@@QAE_NJ@Z
 // Retail bytes: push esi ; mov esi,ecx ; push edi ; mov dword ptr [esi+8],0 ; call CInitBaseClass::Init ; test al,al ; je F ; mov edi,[esp+0Ch] ; push edi ;
 //               call operator new[] ; add esp,4 ; test eax,eax ; mov [esi+8],eax ; je F ; mov [esi+10h],edi ; pop edi ; mov byte ptr [esi+0Ch],0 ;
 //               mov al,1 ; pop esi ; ret 4 ; F: pop edi ; xor al,al ; pop esi ; ret 4

@@ -10,7 +10,7 @@
 // Shape: the UNCHECKED out-parameter GetInterface (GOTCHAS chunk 129): the result is ignored, so the call is duplicated into
 //   both arms and the absent arm reads the never-written out pointer (VC homes it on the argument slot); the presence test
 //   on type 7 is the masked byte test `test cl,cl ; jns`.
-// Leaf: ?SetThingToNotAvoid@CAIStateGroupBase@@
+// Leaf: ?SetThingToNotAvoid@CAIStateGroupBase@@IAEXPBVCThing@@@Z
 class CTCBase;
 class CThing;
 

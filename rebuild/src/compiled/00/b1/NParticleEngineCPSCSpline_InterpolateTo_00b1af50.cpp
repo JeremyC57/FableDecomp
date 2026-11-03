@@ -1,5 +1,5 @@
 // NParticleEngine::CPSCSpline::InterpolateTo(const CPSCBase& other, float t) -- vtable slot 14: blend towards another spline component (the spline base, a lerp of the anim speed, the bounce and speed-scaling flags taken from the target past the halfway point)
-// Leaf: ?InterpolateTo@CPSCSpline@
+// Leaf: ?InterpolateTo@CPSCSpline@NParticleEngine@@UAEXABVCPSCBase@2@M@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B1AF50, 111 bytes (+1 int3 padding).
 // Name: FableWin.pdb ?InterpolateTo@CPSCSpline@NParticleEngine@@UAEXABVCPSCBase@2@M@Z; slot 14 of the vtable 0x012A0934
 // (rtti-vtables.tsv).

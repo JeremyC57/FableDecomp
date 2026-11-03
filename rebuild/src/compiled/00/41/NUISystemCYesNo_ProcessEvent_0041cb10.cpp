@@ -1,7 +1,7 @@
 // NUISystem::CYesNo::ProcessEvent(EEvent event) -- yes/no dialog input: events 4 (yes) and 5 (no) reset the dialog state to 0, then run the matching yes or no callback when one is set
 // Grade: RELOCATION_MATCH (70v70). Lever (sec1b flag pre-screen): the TU is size-optimised -- `#pragma optimize("s", on)`, as the
 //   neighbouring landed rows 0x0041C88F / 0x0041C8C5 / 0x0041CCE4 are; at plain /O2 VC7.1 cross-jumps the two callback calls.
-// Leaf: ?ProcessEvent@CYesNo
+// Leaf: ?ProcessEvent@CYesNo@NUISystem@@UAEXW4EEvent@2@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0041CB10, 70 bytes (+ int3 padding), virtual, `ret 4`.
 // Vtable 0x0122F85C (NUISystem::CYesNo, the event-receiver base at +4) slot 1; Ego_r.pdb
 // `virtual void CYesNo::ProcessEvent(EEvent)` (landed CMenuEntry::ProcessEvent 0x0053D200 uses the same base model).

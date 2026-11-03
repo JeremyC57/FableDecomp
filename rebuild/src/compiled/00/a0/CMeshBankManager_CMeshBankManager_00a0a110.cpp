@@ -1,5 +1,5 @@
 // CMeshBankManager::CMeshBankManager() -- default constructor.
-// Leaf: ??0CMeshBankManager@
+// Leaf: ??0CMeshBankManager@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0A110, length 57 bytes.
 // Manifest label "CAIStateGroup_FlyingThingBase" is propagated; the vtables stored are 0x0129C98C (+0) and
 // 0x0129C980 (+4), both CMeshBankManager (rtti-vtables.tsv): a class with two polymorphic bases.

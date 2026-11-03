@@ -1,5 +1,5 @@
 // CTCInventoryItem::GetStartingRightHandedSet(long defIndex) -- static: cache the item def for defIndex and return the right-handed set for its Orientation, or the default (orientation-0) set when the def cannot be cached
-// Leaf: ?GetStartingRightHandedSet@CTCInventoryItem@@SI
+// Leaf: ?GetStartingRightHandedSet@CTCInventoryItem@@SI?AVCRightHandedSet@@J@Z
 // Retail: Fable.exe @ 0x005D9730, 88 bytes (+8 int3). Ego_r.pdb `?GetStartingRightHandedSet@CTCInventoryItem@@SI?AVCRightHandedSet@@J@Z`
 // (static __fastcall: the hidden CRightHandedSet result in ecx, defIndex in edx; `ret`). Instance twin 0x005D92F0.
 // Callees: CTCInventoryItem::CacheDef(long) @ 0x005D94B0 (static `__fastcall` bool), the private static

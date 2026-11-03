@@ -1,5 +1,5 @@
 // GetDummyObjectRecursive(const CThing* thing, const CCharString& name, long index, unsigned long flags, C3DVector& pos, CRightHandedSet& set) -- find a named dummy object on the thing's graphic appearance, else recursively on every live thing it owns (CTCThingOwner); true when found (pos/set filled by GetDummyObject)
-// Leaf: ?GetDummyObjectRecursive@@
+// Leaf: ?GetDummyObjectRecursive@@YI_NPBVCThing@@ABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00942B30, 223 bytes (224 with padding), __fastcall (thing in ecx, name in edx; index,
 //   flags, pos, set on the stack, `ret 10h`), returns bool.
 // Identity: Ego_r.pdb ?GetDummyObjectRecursive@@YI_NPBVCThing@@ABVCCharString@@JKAAVC3DVector@@AAVCRightHandedSet@@@Z (a free

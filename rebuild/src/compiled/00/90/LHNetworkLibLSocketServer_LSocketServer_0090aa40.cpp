@@ -1,5 +1,5 @@
 // LHNetworkLib::LSocketServer::~LSocketServer() -- close and delete the listener, unregister from the server list, delete every accepted/connected socket and pending UDP packet, empty the three lists
-// Leaf: ??1LSocketServer@LHNetworkLib@@
+// Leaf: ??1LSocketServer@LHNetworkLib@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0090AA40, 454 bytes, thiscall, ends in a tail `jmp` to the first list's destructor.
 // Identity: Ego_r.pdb `??1LSocketServer@LHNetworkLib@@QAE@XZ` (non-virtual); the catalog's "CGuiControlTreePane_Destructor"
 //   is a propagated label. Callers: the scalar-deleting destructor and LSocketServer::KillListener / CloseAllListeners.

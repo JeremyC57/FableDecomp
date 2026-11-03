@@ -1,5 +1,5 @@
 // CPhysicsMesh::PeekRoughProportionOfSphereContained(const CCharString& name, const C3DVector& position, float radius) const -- sum the rough contained proportion of the sphere over every containment volume registered under the name, clamped to [0, 1]
-// Leaf: ?PeekRoughProportionOfSphereContained@CPhysicsMesh@@
+// Leaf: ?PeekRoughProportionOfSphereContained@CPhysicsMesh@@QBEMABVCCharString@@ABVC3DVector@@M@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A6CA80, 149 bytes (+11 int3), thiscall `ret 0Ch`. Ego_r.pdb
 //   `?PeekRoughProportionOfSphereContained@CPhysicsMesh@@QBEMABVCCharString@@ABVC3DVector@@M@Z`.
 // Callees: CVectorMap<CCharString,C3DMeshVolume,CKeyPairCompareLess<..> >::UpperBound 0x00A6FCB0 and ::LowerBound

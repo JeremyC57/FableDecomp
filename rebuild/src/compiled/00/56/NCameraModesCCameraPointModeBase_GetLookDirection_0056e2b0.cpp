@@ -1,6 +1,6 @@
 // NCameraModes::CCameraPointModeBase::GetLookDirection() const -- the default look direction of a camera-point mode: the unit X axis
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0056E2B0, 21 bytes, `ret 4` (C3DVector returned through the hidden pointer).
-// Leaf: ?GetLookDirection@CCameraPointModeBase
+// Leaf: ?GetLookDirection@CCameraPointModeBase@NCameraModes@@UBE?AVC3DVector@@XZ
 // Name: vtable 0x0124DDDC slot 29; FableWin.pdb ?GetLookDirection@CCameraPointModeBase@NCameraModes@@UBE?AVC3DVector@@XZ
 //       (CSnapToPoint overrides the same slot 29 with 0x0056E3B0, returning its LookDirection member).
 // Shape: a C3DVector with a user constructor is built straight into the caller's return slot (1.0f stored as an immediate,

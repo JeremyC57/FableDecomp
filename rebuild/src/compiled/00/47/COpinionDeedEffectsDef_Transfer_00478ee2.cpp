@@ -1,5 +1,5 @@
 // COpinionDeedEffectsDef::Transfer(CPersistContext& context) -- persist the deed-effects definition: knowledge life, posting and effect intervals, pre-reaction delay, effects list, reaction priority, reactions, dialogue layer, warning texts, crime severity and fine, tutorial category, then the eleven named flag bits
-// Leaf: ?Transfer@COpinionDeedEffectsDef
+// Leaf: ?Transfer@COpinionDeedEffectsDef@@UAEXAAVCPersistContext@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00478EE2, length 677 bytes (virtual, `ret 4`; unaligned entry, size-optimised
 // def module with a frame pointer).
 // Callees: CPersistContext typed transfers Transfer(long&) 0x00431102, Transfer(float&) 0x00431061,

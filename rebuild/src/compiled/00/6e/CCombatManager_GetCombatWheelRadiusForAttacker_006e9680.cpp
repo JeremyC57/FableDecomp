@@ -1,5 +1,5 @@
 // CCombatManager::GetCombatWheelRadiusForAttacker(const CThingCreatureBase& attacker) const -- the full radius (all rings) of the combat wheel around the creature this attacker is attacking
-// Leaf: ?GetCombatWheelRadiusForAttacker@CCombatManager@@
+// Leaf: ?GetCombatWheelRadiusForAttacker@CCombatManager@@QBEMABVCThingCreatureBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E9680, 113 bytes (128 with int3 padding), thiscall, `ret 4`, float in st0.
 // Identity: Ego_r.pdb name set `?GetCombatWheelRadiusForAttacker@CCombatManager@@QBEMABVCThingCreatureBase@@@Z`; the callee
 //   0x006E8850 is CCombatWheel::GetRingRadius(long) const (landed as "SumPrefixWeights": the sum of RingThickness +0xC over

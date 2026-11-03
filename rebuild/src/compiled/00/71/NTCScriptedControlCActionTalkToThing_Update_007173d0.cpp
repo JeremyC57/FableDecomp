@@ -1,5 +1,5 @@
 // NTCScriptedControl::CActionTalkToThing::Update() -- skip to the end of the current line once the player has clicked it away (subtitles on: the renderer stopped displaying it; subtitles off: a type-0x11 message event arrived), then run the base talk update
-// Leaf: ?Update@CActionTalkToThing@
+// Leaf: ?Update@CActionTalkToThing@NTCScriptedControl@@UAEXXZ
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007173D0, 126 bytes (+2 int3 padding); vtable 0x012659C8 slot 1.

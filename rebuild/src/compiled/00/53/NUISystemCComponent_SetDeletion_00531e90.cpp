@@ -1,5 +1,5 @@
 // NUISystem::CComponent::SetDeletion(CDeletion deletion) -- replace the component's deletion record (method and associated parents) with a copy of the argument
-// Leaf: ?SetDeletion@CComponent
+// Leaf: ?SetDeletion@CComponent@NUISystem@@UAEXVCDeletion@2@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00531E90, 38 bytes (48 with padding), virtual, `ret 8`.
 // Vtable 0x0122F5D4 (NUISystem::CSprite, inherited from CComponent) slot 62; Ego_r.pdb declares
 // `virtual void CComponent::SetDeletion(CDeletion)` -- the record is passed BY VALUE (8 bytes in retail: the

@@ -1,5 +1,5 @@
 // CQ_WhiteBalverineKnotholeGladeScript::Init() -- register the quest's three regions and its two boasts, then reset the quest state
-// Leaf: ?Init@CQ_WhiteBalverineKnotholeGladeScript@NScript@@
+// Leaf: ?Init@CQ_WhiteBalverineKnotholeGladeScript@NScript@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E13C60, length 439 bytes (padded to 448).
 // Callees: CCharString(const char*, long) @ 0x0099EBF0, ~CCharString @ 0x0099EAE0; through the script's interface
 //   (+0x40): AddQuestRegion (slot 271, +0x43c) and AddBoast (slot 303, +0x4bc).

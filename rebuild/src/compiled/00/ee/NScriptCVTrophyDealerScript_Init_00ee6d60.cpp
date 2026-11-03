@@ -1,5 +1,5 @@
 // CV_TrophyDealerScript::Init() -- set the active quest's card objective to "find the trophy dealer" in Witchwood
-// Leaf: ?Init@CV_TrophyDealerScript@NScript@@
+// Leaf: ?Init@CV_TrophyDealerScript@NScript@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EE6D60, length 142 bytes (padded to 144).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 (x3), CGameScriptInterface::GetActiveQuestName
 // (slot 655, +0xa3c, CCharString by value) and SetQuestCardObjective(const CCharString&, x4) (slot 296, +0x4a0) through

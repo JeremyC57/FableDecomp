@@ -1,5 +1,5 @@
 // CV_TourGuideScript::MoveToNextWaypoint(const CScriptThing&, CScriptGameResourceObjectScriptedThingBase&) -- send the guide to the given waypoint, or (if it is gone) step the waypoint counter round the 18-entry tour until a live waypoint marker is found and send him there
-// Leaf: ?MoveToNextWaypoint@CV_TourGuideScript@NScript@@
+// Leaf: ?MoveToNextWaypoint@CV_TourGuideScript@NScript@@QAEXABVCScriptThing@@AAVCScriptGameResourceObjectScriptedThingBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EE6850, 485 bytes (496 with padding), `ret 8`.
 // Callees: ~CScriptThing 0x004AA840 (out of line), ~CBaseClass 0x0099A2E0, operator delete 0x00BFE9BC,
 //   CScriptBase::IsActiveThreadTerminating 0x00CB7940; CScriptThing slots 6 GetPos and 75 IsAlive (inline bodies through

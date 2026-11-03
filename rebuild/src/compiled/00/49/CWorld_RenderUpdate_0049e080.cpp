@@ -1,5 +1,5 @@
 // CWorld::RenderUpdate(const CInterpolationInfo* info) -- per-render-frame world update: make the world's thing manager current, render-update its things and the environment, then point the sound listener along the current sound camera when both camera axes are non-degenerate
-// Leaf: ?RenderUpdate@CWorld@@
+// Leaf: ?RenderUpdate@CWorld@@QAEXPBVCInterpolationInfo@@@Z
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0049E080, 284 bytes, thiscall `ret 4`. Catalog "CWorld_RenderUpdate" (name only).
 // Callees: SetCurrentThingManager @ 0x004C74F0 (__fastcall), CThingManager::RenderUpdateThings @ 0x0051EBD0,

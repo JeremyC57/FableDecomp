@@ -1,5 +1,5 @@
 // CLocalDetailCacheMap::CObjectTypeCollection::CreatePrimitiveOfType(LOCAL_DETAIL_PRIMITIVE_TYPE) -- allocate (from this movable collection's pool) and construct the local-detail primitive class for the type: mesh, repeated mesh, or mesh/z-sprite batch
-// Leaf: ?CreatePrimitiveOfType@CObjectTypeCollection
+// Leaf: ?CreatePrimitiveOfType@CObjectTypeCollection@CLocalDetailCacheMap@@QAEPAVCLocalDetailPrimitiveBase@@W4LOCAL_DETAIL_PRIMITIVE_TYPE@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BDE600, 120 bytes (+ int3 padding; `ret 4`).
 // Callees: the class allocators `static void* __fastcall operator new(size_t, CMovableResource*)` of CLocalDetailPrimitiveMesh
 //   @ 0x00BF9900 (0x74 bytes), CLocalDetailPrimitiveRepeatedMesh @ 0x00BF9980 (0x60) and CLocalDetailPrimitiveMeshZSpriteBatch

@@ -1,5 +1,5 @@
 // NParticleEngine::CPSCUpdateNormal::GetParticleCount() -- vtable slot 26: the number of live particles in the decal emitters this component spawned (dead or uninitialised emitters skipped)
-// Leaf: ?GetParticleCount@CPSCUpdateNormal@
+// Leaf: ?GetParticleCount@CPSCUpdateNormal@NParticleEngine@@UAEJXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B0C830, 97 bytes (+15 int3 padding).
 // Name: FableWin.pdb ?GetParticleCount@CPSCUpdateNormal@NParticleEngine@@UAEJXZ; slot 26 of the vtable 0x0129FC1C (rtti-vtables.tsv;
 // CPSCBase declares GetParticleCount then GetDecalCount, slots 26/27; the twin rows 0x00B0C830/0x00B0C8A0 differ only

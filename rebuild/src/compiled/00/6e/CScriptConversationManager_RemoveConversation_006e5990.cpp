@@ -1,6 +1,6 @@
 // CScriptConversationManager::RemoveConversation(long conversation, bool flag) -- clean up the conversation stored under that index and erase it from the map (nothing when it is missing)
 // Grade: RELOCATION_MATCH (agent902, 2 grades this pass) -- the flat CConversationMap replaced by the real STLport 4.6 map<long, CScriptConversation> (_Rb_tree with the alloc-proxy header, _Rb_tree_iterator<V, _Nonconst_traits<V> > returned by the out-of-line _Rb_tree::find through the hidden result, inline erase(iterator) with _Rb_global<bool>::_Rebalance_for_erase, _Destroy and the null-tested deallocate); agent901's assigned form (`iterator it; it = find(...)`) still needed -- the initialised form gives 102v98.
-// Leaf: ?RemoveConversation@CScriptConversationManager@@
+// Leaf: ?RemoveConversation@CScriptConversationManager@@QAEXJ_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E5990, 98 bytes (112 with int3 padding), thiscall, `ret 8`.
 // Identity: Ego_r.pdb name set `?RemoveConversation@CScriptConversationManager@@QAEXJ_N@Z`; the map find @ 0x006E6990 and
 //   the conversation's OnCleanup(bool) @ 0x006E5690 are the ones the landed manager members (0x006E5800/0x006E5950)

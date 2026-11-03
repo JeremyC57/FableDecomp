@@ -1,5 +1,5 @@
 // CAIStateGroup_BriarRoseWillUse::Cleanup() -- when PEnemy is alive and has a stealth component, mark it as in danger from this group's creature (DANGER_STATUS_2)
-// Leaf: ?Cleanup@CAIStateGroup_BriarRoseWillUse@@
+// Leaf: ?Cleanup@CAIStateGroup_BriarRoseWillUse@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00956E00, 112 bytes (body 0x6F + int3), thiscall, `ret`.
 // Identity: vtable 0x0128C3C8 slot 9 (RTTI .?AVCAIStateGroup_BriarRoseWillUse@@; bases CAIStateGroup_BriarRoseWillUse <- CAIStateGroupBase <- CBaseClass); slot 2 is OnActivate and slot 9 Cleanup in the
 //   landed CAIStateGroup_* models (e.g. CAIStateGroup_MinionSitOnSeatBase::Cleanup 0x0090FA60). PEnemy is the

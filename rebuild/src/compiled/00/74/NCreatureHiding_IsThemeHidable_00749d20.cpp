@@ -1,5 +1,5 @@
 // NCreatureHiding::IsThemeHidable(const CWorldMap& map, const C3DVector& pos) -- a position is hidable when its world-map cell is not passable
-// Leaf: ?IsThemeHidable@
+// Leaf: ?IsThemeHidable@NCreatureHiding@@YI_NABVCWorldMap@@ABVC3DVector@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00749D20, 55 bytes (+9 int3), `ret` (__fastcall: map in ecx, pos in edx).
 // Callees: __ftol2 @ 0x00BFEA70 (x2), CWorldMap::IsPosPassable(const C2DCoordI&) const @ 0x004FCBD0 (landed).
 // Callers: none by direct call or absolute reference in the retail image (xref.py).

@@ -1,5 +1,5 @@
 // CReplaceSerialise<CFileFormatBrush,COldFileFormatBrush>::ConvertToThisVersion(void* data) -- upgrade a scripted-brush record in place: an older record is converted up through the chain and the current-version result copied over the buffer
-// Leaf: ?ConvertToThisVersion@?$CReplaceSerialise@VCFileFormatBrush@@VCOldFileFormatBrush@@
+// Leaf: ?ConvertToThisVersion@?$CReplaceSerialise@VCFileFormatBrush@@VCOldFileFormatBrush@@@@SIXPAX@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00825D40, 80 bytes, static __fastcall (data in ecx), plain `ret`. FableWin.pdb
 //   ?ConvertToThisVersion@?$CReplaceSerialise@VCFileFormatBrush@@VCOldFileFormatBrush@@@@SIXPAX@Z (name set).
 // Callees: CReplaceSerialise<CFileFormatBrush,COldFileFormatBrush>::ConvertPreviousUnknownVersionUp @ 0x00825590 (static

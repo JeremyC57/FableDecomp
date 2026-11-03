@@ -1,5 +1,5 @@
 // LHNetworkLib::LSocketServer::Think(bool checkForActivity) -- optionally select() over every listener, then accept pending TCP connections (up to each server's limit) and queue every waiting UDP datagram, and finally run LSocket::Think
-// Leaf: ?Think@LSocketServer@LHNetworkLib@@
+// Leaf: ?Think@LSocketServer@LHNetworkLib@@SIX_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0090B160, 742 bytes (+ int3 padding). Ego_r.pdb `?Think@LSocketServer@LHNetworkLib@@SIX_N@Z`:
 //   a static `__fastcall` (checkForActivity in cl), plain `ret`. The catalog's "LSocket_ProcessNetworkEvents" is descriptive.
 // Callees: malloc 0x00BFEA0E / free 0x00BFEA14 (STLport list nodes), LSocket::CheckForActivity 0x008F8540 (static fastcall,

@@ -12,7 +12,7 @@
 // key; GetEvent only writes its out pointer and never touches the filter, whose parameter is unnamed), as the
 // landed CAIStateGroup_ChickenPanic::IsRunnable 0x00911C20 does for the same pair; declared only, both
 // addresses escape and get frame words.
-// Leaf: ?EntityGetShotStrikePos@CGameScriptInterface
+// Leaf: ?EntityGetShotStrikePos@CGameScriptInterface@@UBE_NABVCScriptThing@@AAVC3DVector@@@Z
 
 class C3DVector { public: float X, Y, Z; };
 

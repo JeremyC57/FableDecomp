@@ -1,5 +1,5 @@
 // CThingObject::WorldUpdateWeaponTrails() -- update the object's weapon trails and refresh its graphic appearance, unless it is a melee weapon that nobody is carrying
-// Leaf: ?WorldUpdateWeaponTrails@CThingObject@@
+// Leaf: ?WorldUpdateWeaponTrails@CThingObject@@IAEXXZ
 // Naming wave 31 (family srtf): 0x004C7590 is ?SetAsRenderedThisFrame@CThing@@QAEXK@Z (Ego_r.pdb block order at 0x004C9150 + FableWin.pdb; was the
 //   invented ?UpdateGraphicAppearance@CThing@@QAEXJ@Z)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007034D0, 189 bytes, plain `ret`.

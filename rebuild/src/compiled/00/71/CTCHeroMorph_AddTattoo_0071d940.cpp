@@ -1,6 +1,6 @@
 // CTCHeroMorph::AddTattoo(CDefPointer<const CThingBaseDef>& def) -- add a tattoo item to the hero: a "removes all tattoos" def clears the list, otherwise every worn tattoo whose body area clashes with the new one is taken off and the new def appended; either way the morph is marked changed at the current world frame
 // Grade: RELOCATION_MATCH (header ctor landed 2026-10-31; was PENDING HEADER) (retry wave 2 sec2b): on engine/CDefPointer.h with the real GetSubDef<CTattooDef> body (landed 0x005B1EFC) as a noinline explicit specialization and the Tattoos vector taken through a named reference for the clash loop (this in ebx, iterator in ebp; was 299v300 ebx/ebp swap). Graded RELOCATION_MATCH with the header text inlined plus `CDefPointer(ENullDef) : Object(0) { }` (hdr/0071d940.verify.cpp); this file compiles once the header declares that ctor. Test: hdr/0071d940.test.cpp PASS
-// Leaf: ?AddTattoo@CTCHeroMorph@@QAEXAAV?$CDefPointer
+// Leaf: ?AddTattoo@CTCHeroMorph@@QAEXAAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z
 //
 // Retail 0x0071D940, 304 bytes incl. padding (`ret 4`). Ego_r.pdb
 // `?AddTattoo@CTCHeroMorph@@QAEXAAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z` (of the three overloads, the CDefPointer one).

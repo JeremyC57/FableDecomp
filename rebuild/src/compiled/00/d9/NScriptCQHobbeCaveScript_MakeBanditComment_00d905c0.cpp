@@ -1,5 +1,5 @@
 // CQ_HobbeCaveScript::MakeBanditComment(const CCharString&, const CScriptThing&) -- unless the comment timer is still running, restart it and play one conversation line from the bandit to the hero; returns whether a comment was made
-// Leaf: ?MakeBanditComment@CQ_HobbeCaveScript@NScript@@
+// Leaf: ?MakeBanditComment@CQ_HobbeCaveScript@NScript@@QAE_NABVCCharString@@ABVCScriptThing@@@Z
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D905C0, length 163 bytes, `ret 8` (PDB:

@@ -1,6 +1,6 @@
 // CTCActivationReceptorChest::Deactivate() -- the base receptor Deactivate, then Close the thing's chest component (interface 0x3c)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FFCD0, length 85 bytes.
-// Leaf: ?Deactivate@CTCActivationReceptorChest
+// Leaf: ?Deactivate@CTCActivationReceptorChest@@UAEXXZ
 // Callees: CTCActivationReceptorBase::Deactivate @ 0x007F7700 (non-virtual base call; the manifest's labels for 0x007F7700
 // are propagated), CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020, CTCChest::Close @ 0x007506C0.
 // Ego_r.pdb: `?Deactivate@CTCActivationReceptorChest@@UAEXXZ` (slot 29; the chunk's "vfunc_29").

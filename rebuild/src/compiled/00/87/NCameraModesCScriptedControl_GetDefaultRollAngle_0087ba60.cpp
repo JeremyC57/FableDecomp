@@ -1,6 +1,6 @@
 // NCameraModes::CScriptedControl::GetDefaultRollAngle() const -- the script module's roll angle when it supplies one, else no roll
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0087BA60, 33 bytes, plain `ret` (float in st0).
-// Leaf: ?GetDefaultRollAngle@CScriptedControl
+// Leaf: ?GetDefaultRollAngle@CScriptedControl@NCameraModes@@UBEMXZ
 // Name: vtable 0x0125C58C slot 19; FableWin.pdb ?GetDefaultRollAngle@CScriptedControl@NCameraModes@@UBEMXZ.
 // Callees: the module's virtual GetModuleRollAngle(float&) (slot 6, +0x18).
 // Layout: retail CScriptedControl as the landed ctor 0x0069DFE0: PScriptModule (CCountedPointer, Data first) +0xa4,

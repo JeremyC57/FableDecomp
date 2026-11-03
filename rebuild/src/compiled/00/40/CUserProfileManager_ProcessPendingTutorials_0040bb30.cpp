@@ -1,5 +1,5 @@
 // CUserProfileManager::ProcessPendingTutorials() -- when tutorials are on, pop the next pending tutorial category and give it unless the profile already had it
-// Leaf: ?ProcessPendingTutorials@CUserProfileManager@@
+// Leaf: ?ProcessPendingTutorials@CUserProfileManager@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0040BB30, 89 bytes (+7 int3 pad). Callees:
 // deque<ETutorialCategory>::pop_front 0x00410ED0 (manifest Std_Deque_PopFront_ChunkBased),
 // CUserProfileManager::IsTutorialCategoryGiven 0x00407330 (manifest label

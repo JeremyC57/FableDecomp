@@ -1,0 +1,3 @@
+landed sources: mangled Leaf 18144, bare leaf 12213, no Leaf line 23074
+demangle failed 6396, unparsed 26, already consistent 11722, to rename 0
+catalog rows missing from functions.tsv: 0

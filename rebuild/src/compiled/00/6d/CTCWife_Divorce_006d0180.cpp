@@ -1,5 +1,5 @@
 // CTCWife::Divorce() -- once married, divorce the hero: unmarry, mark divorced, set the wife's divorced opinion masks and personality, reset the hero's marriage state and morality, sour the opinion of whoever is at the marital home and refresh the player GUI
-// Leaf: ?Divorce@CTCWife
+// Leaf: ?Divorce@CTCWife@@QAEXXZ
 // Naming wave 18: the global stand-in g_FrameRate (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>

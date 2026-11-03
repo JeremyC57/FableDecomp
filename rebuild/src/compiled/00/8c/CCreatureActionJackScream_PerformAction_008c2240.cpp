@@ -1,5 +1,5 @@
 // CCreatureAction_JackScream::PerformAction() -- find the "SwordDropMarker" thing within 20 of the Jack; the sword's drop target is that marker's position (or, without a live marker, the ground below the point 2 units back along -X/-Y) raised by 1.4; then take the sword out of the primary slot, place it at the creature's WEAPON_FOCUS_01 dummy with that orientation and hand the orientation and target to the scream mode
-// Leaf: ?PerformAction@CCreatureAction_JackScream
+// Leaf: ?PerformAction@CCreatureAction_JackScream@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C2240, length 587 bytes, plain `ret` (virtual).
 // Callees: CCharString @ 0x0099EBF0 / copy @ 0x0099EC30 / ~ @ 0x0099EAE0, CBaseIntelligentPointer::GetPItem @ 0x00A01B50,
 //          CThing::GetPos @ 0x004C73D0, __ftol2 @ 0x00BFEA70, CCreatureActionBase::GetThingSearchTools @ 0x00692990,

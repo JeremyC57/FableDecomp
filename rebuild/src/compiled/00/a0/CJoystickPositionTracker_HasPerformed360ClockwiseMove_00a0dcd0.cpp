@@ -1,5 +1,5 @@
 // CJoystickPositionTracker::HasPerformed360ClockwiseMove() const -- walk the last 30 stick positions: fail on a position inside the 0.15 dead zone or a step that turns by more than 110 degrees, succeed once the summed turning (acos of each step's dot product, in turns) passes 290/360
-// Leaf: ?HasPerformed360ClockwiseMove@CJoystickPositionTracker@@
+// Leaf: ?HasPerformed360ClockwiseMove@CJoystickPositionTracker@@QBE_NXZ
 // Grade: RELOCATION_MATCH (wave 2 sec5) -- the dead-zone test spelled if (!(len > 0.15f)) return false (retail's test
 //   ah,41h ; jne) and the step dot product as a stepwise sum (cosine = prev.X*pos.X; cosine += prev.Y*pos.Y), which pins
 //   retail's X-first x87 order.

@@ -1,5 +1,5 @@
 // NEntityEvents::CEventChildHurtGoToMother::CEventChildHurtGoToMother(const CThing*) -- the event starts at world frame 0 and its PChild intelligent pointer is pointed at the argument
-// Leaf: ??0CEventChildHurtGoToMother@NEntityEvents@@QAE@
+// Leaf: ??0CEventChildHurtGoToMother@NEntityEvents@@QAE@PBVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009156C0, 52 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity: NEntityEvents::CEventChildHurtGoToMother::CEventChildHurtGoToMother(const CThing*) -- proven; evidence: it stores vtable 0x0128FA80 whose RTTI is
 //   .?AVCEventChildHurtGoToMother@NEntityEvents@@ : CEventBase@NEntityEvents; FableWin.pdb name set holds ??0CEventChildHurtGoToMother@NEntityEvents@@QAE@PBVCThing@@@Z;

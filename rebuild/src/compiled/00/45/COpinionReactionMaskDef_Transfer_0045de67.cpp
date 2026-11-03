@@ -10,7 +10,7 @@
 // second call; end() is a named iterator cached in ebx, `next` a copy of `it` advanced first in each pass (ebp), the
 // key test `< 18` signed (`jge`), and erase takes the iterator BY VALUE -- a 4-byte class with a user copy
 // constructor built in its argument slot (`push ecx ; mov eax,esp ; mov [eax],esi`).
-// Leaf: ?Transfer@COpinionReactionMaskDef
+// Leaf: ?Transfer@COpinionReactionMaskDef@@UAEXAAVCPersistContext@@@Z
 #pragma optimize("s", on)
 enum EOpinionReactionType { OPINION_REACTION_NONE = 0 };
 

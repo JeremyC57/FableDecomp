@@ -7,7 +7,7 @@
 // shot thing at the dragon's position dropped to ground height + 0.25, keep it in PShot, add its shot TC (named by the def's
 // TCName) and Init it toward position + flat facing * 10 with the dragon's accuracy, exclude the dragon from its hits, then
 // spawn the GROUND_SLAM_EXPLOSION effect at the dragon and release the defs.
-// Leaf: ?PerformAction@CCreatureAction_DragonRearUpFull
+// Leaf: ?PerformAction@CCreatureAction_DragonRearUpFull@@UAEXXZ
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008F3630, 880 bytes, plain `ret`.
 // Callees: CGameDefinitionManager::Get 0x0044C6B0, GetDefGlobalIndexFromName 0x009AD410, CCreatureActionBase::GetPWorld

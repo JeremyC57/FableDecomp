@@ -1,5 +1,5 @@
 // CTCTavernGameCardBase::TurnCardsBack() -- clears every card's highlight and flips each card that is face up and not already turning back over (with the flip sound), then goes to state 0x19
-// Leaf: ?TurnCardsBack@CTCTavernGameCardBase
+// Leaf: ?TurnCardsBack@CTCTavernGameCardBase@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F17D0, 225 bytes (plain `ret`); vtable slot 55 (CTCTavernGameCardSorting
 // 0x0126F5B4 inherits it). Ego_r.pdb `?TurnCardsBack@CTCTavernGameCardBase@@UAEXXZ`.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (the inline GetTC, interface 0x5B);

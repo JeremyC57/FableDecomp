@@ -1,0 +1,5 @@
+landed sources: mangled Leaf 18144, bare leaf 12213, no Leaf line 23079
+mangled Leaf rows undname rejects 6396: prefix leaf 5898 (4055 distinct; complete them with tools/complete_leaf_prefixes.py), C-decorated 497 (488 distinct), demangle failed 1 (1 distinct)
+  demangle failed: ?_M_lower_bound@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@EMirroredCriminalStatus@CTCHeroStats@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@UMirroredCriminalStatus@CTCHeroStats@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@UMirroredCriminalStatus@CTCHeroStats@@@std@@@3@@std@@QBEPAU_Rb_tree_node_base@2@ABVCCharString@@@Z
+unparsed 26, already consistent 11722, to rename 0
+catalog rows missing from functions.tsv: 0

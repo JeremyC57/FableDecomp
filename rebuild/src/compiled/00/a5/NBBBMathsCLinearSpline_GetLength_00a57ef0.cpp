@@ -1,5 +1,5 @@
 // NBBBMaths::CLinearSpline::GetLength() const -- total length of the processed polyline: the sum of the distances between consecutive processed points
-// Leaf: ?GetLength@CLinearSpline@NBBBMaths@@
+// Leaf: ?GetLength@CLinearSpline@NBBBMaths@@QBEMXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A57EF0, 128 bytes, plain `ret`, float in st(0)
 //   (PDB ?GetLength@CLinearSpline@NBBBMaths@@QBEMXZ). Callees: none (fsqrt inline). Float pool: 0.0f @ 0x0122DEDC.
 //   Caller: CLinearSpline::GetPointWithParam @ 0x00A57F70 (landed, which calls this "GetPathLength").

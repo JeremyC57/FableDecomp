@@ -1,5 +1,5 @@
 // NCombatActionHelpers::CreateEffect(const CThingCreatureBase&, long, const C3DVector&, const C3DVector&) -- spawn the effect thing at position and hand its particle emitter the DIRECTION vector
-// Leaf: ?CreateEffect@NCombatActionHelpers@@YIXABVCThingCreatureBase@@
+// Leaf: ?CreateEffect@NCombatActionHelpers@@YIXABVCThingCreatureBase@@JABVC3DVector@@1@Z
 // Retail 0x008F7F50, 0xB6 bytes, __fastcall (creature in ecx, unused; effect type in edx; direction and position by
 //   reference on the stack, `ret 8`). Manifest name matches the FableWin PDB name set
 //   (`?CreateEffect@NCombatActionHelpers@@YIXABVCThingCreatureBase@@JABVC3DVector@@1@Z`; the first vector is the

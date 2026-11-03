@@ -1,6 +1,6 @@
 // CBankFileManager::GetRetailBankFilePath(const CCharString& bank) -- resolve the bank alias, build BasePath + the bank's retail bank path, create that retail bank file the first time it is asked for, and return the path; an unknown bank throws CGenericException("<name> bank not found!")
 // Bounds: int3-after-noreturn row, landed against the N+1 span: only the int3 VC7.1 emits after the final noreturn _CxxThrowException call (q.py strips it from the retail row); RELOCATION_MATCH against the 223-byte N+1 span read from Fable.exe (probe/n1.py). Land against an N+1 row (GOTCHAS: int3-after-noreturn rows LANDED).
-// Leaf: ?GetRetailBankFilePath@CBankFileManager@@
+// Leaf: ?GetRetailBankFilePath@CBankFileManager@@QAE?AVCWideString@@ABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009A7D40, 223 bytes (the int3 VC7.1 emits after the final noreturn
 // _CxxThrowException call included; one more 0xCC pads the 224-byte row), thiscall `ret 8` (hidden CWideString result +
 // bank). PDB (Ego_r): `public: class CWideString __fastcall CBankFileManager::GetRetailBankFilePath(class CCharString

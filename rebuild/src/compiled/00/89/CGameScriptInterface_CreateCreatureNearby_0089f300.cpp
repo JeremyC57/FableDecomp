@@ -1,5 +1,5 @@
 // CGameScriptInterface::CreateCreatureNearby(const CCharString& defName, const C3DVector& position, float radius, const CCharString& scriptName, bool spawnEffect) const -- create the creature at the position, then, if it lives and has a navigation component, move it to a nearby wander position within a random radius (0.8 when the radius is no larger)
-// Leaf: ?CreateCreatureNearby@CGameScriptInterface
+// Leaf: ?CreateCreatureNearby@CGameScriptInterface@@UBE?AVCScriptThing@@ABVCCharString@@ABVC3DVector@@M0_N@Z
 void __cdecl operator delete(void* p);                  // 0x00BFE9BC
 class CCharString { public:
     void* PStringData;

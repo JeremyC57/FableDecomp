@@ -1,5 +1,5 @@
 // CAFile::IsRoomForFile(long size, const CWideString& pathname) -- true when the drive holding pathname (its directory created if missing) has at least size bytes free
-// Leaf: ?IsRoomForFile@CAFile@@
+// Leaf: ?IsRoomForFile@CAFile@@SI_NJABVCWideString@@@Z
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00999AB0, 415 bytes (+ int3 padding). FableWin.pdb `?IsRoomForFile@CAFile@@SI_NJABVCWideString@@@Z`:
 //   a static `__fastcall` (size in ecx, pathname in edx), plain `ret`, /GS frame (the four _wsplitpath buffers) with

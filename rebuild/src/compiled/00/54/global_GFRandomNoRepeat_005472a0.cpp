@@ -1,5 +1,5 @@
 // GFRandomNoRepeat(unsigned long range, unsigned long previous, unsigned long* seed) -- draw a random index below range from the seed, re-drawing while it equals the previous pick (only when range > 1), giving up with a debug message after 100 extra draws
-// Leaf: ?GFRandomNoRepeat@
+// Leaf: ?GFRandomNoRepeat@@YIKKKPAK@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005472A0, 134 bytes, `ret 4` (Ego_r.pdb `?GFRandomNoRepeat@@YIKKKPAK@Z`: a free
 //   __fastcall, range in ecx, previous in edx, seed on the stack).
 // Callees: GFROR13 0x00497890 (__fastcall rotate right by 13), OutputDebugStringW (KERNEL32 import, IAT 0x0143FE14)

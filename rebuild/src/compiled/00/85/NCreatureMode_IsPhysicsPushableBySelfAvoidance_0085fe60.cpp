@@ -1,5 +1,5 @@
 // NCreatureMode::IsPhysicsPushableBySelfAvoidance(const CThing& thing) -- false while sitting, lying down or underground; a creature's action decides first (refuse, or always pushable); else the AI scratchpad (0xAA) pushable byte, true without one
-// Leaf: ?IsPhysicsPushableBySelfAvoidance@NCreatureMode@@
+// Leaf: ?IsPhysicsPushableBySelfAvoidance@NCreatureMode@@YI_NABVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085FE60, length 167 bytes. `__fastcall` free function (ecx = the thing), bool in al.
 // Mangled (Ego_r.pdb): ?IsPhysicsPushableBySelfAvoidance@NCreatureMode@@YI_NABVCThing@@@Z.
 // Callees: NCreatureMode::IsSitting 0x0085F310, IsLyingDown 0x0085F2B0, IsUnderground 0x0085F120 (same TU), the current

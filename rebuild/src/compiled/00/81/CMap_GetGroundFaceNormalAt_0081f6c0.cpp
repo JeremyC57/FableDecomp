@@ -1,7 +1,7 @@
 // CMap::GetGroundFaceNormalAt(const C3DVector& localPos) const -- unit normal of the height-map triangle under a local
 //   position: sample the four corner heights of the cell, pick the triangle by the cell's diagonal parity and the
 //   fractional position, cross the two edge vectors (1,0,a) x (0,1,b) and normalise with the fast inverse square root
-// Leaf: ?GetGroundFaceNormalAt@CMap
+// Leaf: ?GetGroundFaceNormalAt@CMap@@QBE?AVC3DVector@@ABV2@@Z
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Retail: Fable.exe @ 0x0081F6C0, 550 bytes, `ret 8` (hidden result + localPos). Caller CWorldMap::GetGroundFaceNormalAt
 //   0x0063AB10 (landed) forwards the hidden result.

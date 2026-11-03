@@ -1,5 +1,5 @@
 // CTCTavernGameCardSorting::NewRound() -- card-base NewRound, reshuffles, then deals the round: as many cards as the current card-order layout has positions are moved from the pack onto the table list
-// Leaf: ?NewRound@CTCTavernGameCardSorting
+// Leaf: ?NewRound@CTCTavernGameCardSorting@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007D5A00, 199 bytes (plain `ret`); CTCTavernGameCardSorting vtable 0x0126F5B4
 // slot 32. Ego_r.pdb `?NewRound@CTCTavernGameCardSorting@@UAEXXZ`.
 // Callees: CTCTavernGameCardBase::NewRound() 0x008F0960 (non-virtual base call; the landed body says NewRound, the manifest

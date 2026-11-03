@@ -1,5 +1,5 @@
 // CBankFile::OpenFileReadOnly(const CWideString& filename, unsigned long flags) -- reset the open state, then (if the file exists) open it read-only on a new CDiskFileWin32, remember the name and read the bank header; failure closes the bank
-// Leaf: ?OpenFileReadOnly@CBankFile@@
+// Leaf: ?OpenFileReadOnly@CBankFile@@UAE_NABVCWideString@@K@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D1090, length 204 bytes (+4 int3), virtual, ret 8, returns bool.
 // Callees: PathExists(const CWideString&) @ 0x00999230 (__fastcall), operator new @ 0x00BFEA1A, CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0,
 // CWideString::CWideString() @ 0x0099AED0, CCountedPointer<CDiskFileWin32>::Reset(CDiskFileWin32*) @ 0x009D1EE0 (catalog

@@ -1,5 +1,5 @@
 // GFInitMaths() -- build the fast-maths lookup tables: the 128-entry reciprocal-square-root mantissa table (entry 64 forced to 0xFF), 1024 cosines over a full turn (entry 1024 repeats entry 0), and 1025 acos / asin samples over [-1, 1] (each with a zero guard entry)
-// Leaf: ?GFInitMaths@@
+// Leaf: ?GFInitMaths@@YIXXZ
 // Naming wave 18: g_InvSqrtMantissaTable is GFastOneOverSqrtTable (?GFastOneOverSqrtTable@@3PAKA); ChatGPT pass 10 audit, raw Ego_r public.
 // Grade: RELOCATION_MATCH -- union in/out for the bit-pattern float round trip gives retail's two slots (in [esp], out
 //   and the fild temporaries [esp+4])

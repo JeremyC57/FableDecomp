@@ -1,5 +1,5 @@
 // CTCDNone::Create(long, const C3DVector&, bool) -- create a bare thing (player 4, level persistent) on the map under the position (map 0 when the flag is set), check it carries the no-op driver, and activate it; null on any failure
-// Leaf: ?Create@CTCDNone
+// Leaf: ?Create@CTCDNone@@SIPAVCThing@@JABVC3DVector@@_N@Z
 // Naming wave 18: the global stand-in g_pThingManager (0x013B8A1C) is the private static CThing::PCurrentThingManager, read through the inline
 //   static accessor GetPCurrentThingManager() as retail code outside CThing does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00835A20, 77 bytes, static __fastcall (ecx = def index, edx = position), `ret 4`.

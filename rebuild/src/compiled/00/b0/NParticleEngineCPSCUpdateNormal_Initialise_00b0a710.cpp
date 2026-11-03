@@ -1,5 +1,5 @@
 // NParticleEngine::CPSCUpdateNormal::Initialise(CIEngine* engine, CParticleSystem& system, const CParticleUpdateParameters& params, CEnginePrimitiveHandle& handle) -- vtable slot 28: hand the attractor and stay-with-emitter settings to the owning particle system and mark the component initialised
-// Leaf: ?Initialise@CPSCUpdateNormal@
+// Leaf: ?Initialise@CPSCUpdateNormal@NParticleEngine@@UAE_NPAVCIEngine@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B0A710, 60 bytes (+4 int3 padding).
 // Name: FableWin.pdb ?Initialise@CPSCUpdateNormal@NParticleEngine@@UAE_NPAVCIEngine@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z;
 // slot 28 of the vtable 0x0129FC1C (rtti-vtables.tsv; slot 28 of CPSCSpline is the landed CPSCSplineBase::Initialise

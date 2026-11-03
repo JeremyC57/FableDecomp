@@ -1,5 +1,5 @@
 // NUISystem::CTextSlider::OnActivate() -- start observing event 0x19 through the slider's observer base and register that observer with the front-end manager
-// Leaf: ?OnActivate@CTextSlider
+// Leaf: ?OnActivate@CTextSlider@NUISystem@@MAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00548760, 29 bytes (32 with padding), virtual, plain `ret`.
 // Vtable 0x01248A8C (NUISystem::CTextSlider) slot 140; Ego_r.pdb declares the protected virtual
 // `CTextSlider::OnActivate()` next to OnDeactivate (slot 141, 0x00548780: the same observer base's slot 4 with 0x19).

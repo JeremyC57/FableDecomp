@@ -1,7 +1,7 @@
 // CGameScriptInterface::CheckForCameraMessage(const CCharString& message) const -- whether the most recent camera
 // message event (type 0x2B) targets a live thing whose scripted camera spline (TC 0x3F) carries this message; a
 // match consumes the event
-// Leaf: ?CheckForCameraMessage@CGameScriptInterface
+// Leaf: ?CheckForCameraMessage@CGameScriptInterface@@UBE_NABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E7920, length 192 bytes, `ret 4`.
 // Callees: CMessageEventManager::FindMostRecentMessage<CMessageEventFilter_IsOfType> @ 0x004AB8B0 (CWorld+0x60),
 // CBaseIntelligentPointer::GetPItem @ 0x00A01B50, the TC map lower bound @ 0x0040F020,

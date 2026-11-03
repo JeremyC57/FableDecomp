@@ -1,5 +1,5 @@
 // CActionInputControl::TransferBinaryOut(CDataOutputStream& stream) const -- serialise one control binding: the five enum fields as longs, then the 2D control direction
-// Leaf: ?TransferBinaryOut@CActionInputControl@@
+// Leaf: ?TransferBinaryOut@CActionInputControl@@QBEXAAVCDataOutputStream@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00405D60, 78 bytes (+2 int3 pad). Callees:
 // CDataOutputStream::WriteSLONG 0x00993EB0 (x5; manifest label WriteCBYTE is propagated),
 // CDataOutputStream::Write2DVector 0x00993F90.

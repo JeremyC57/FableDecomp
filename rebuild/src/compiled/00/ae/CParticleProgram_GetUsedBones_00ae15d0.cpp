@@ -1,6 +1,6 @@
 // CParticleProgram::GetUsedBones(CArray<bool>& used) const -- mark the bones used by the simulated groups, then by the non-simulated groups
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AE15D0, length 33 bytes (padded to 48).
-// Leaf: ?GetUsedBones@CParticleProgram@@QBE
+// Leaf: ?GetUsedBones@CParticleProgram@@QBEXAAV?$CArray@_N@@@Z
 // Label correction: the catalog "_Dest_val<..., std::pair<long, CMusicManager::CRegisteredMusicEntry>>" is propagated.
 // Ego_r.pdb lists the pair ?GetUsedBones@CParticleProgram@@QBEXAAV?$CArray@_N@@@Z (this row) and the private static
 // __fastcall ?GetUsedBones@CParticleProgram@@CIXAAV?$CArray@_N@@ABV?$CArray@VC3DGroup2@@@@@Z (0x00AE1210, manifest

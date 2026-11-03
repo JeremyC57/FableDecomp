@@ -1,5 +1,5 @@
 // CCombatAction_GenericBreakOffDrain::Initialise() -- picks the BREAK_OUT combat animation, removes mode 69 from the creature's mode manager, then runs the base Initialise
-// Leaf: ?Initialise@CCombatAction_GenericBreakOffDrain
+// Leaf: ?Initialise@CCombatAction_GenericBreakOffDrain@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00867820, 144-byte slot (142 bytes of code). Initialise is vtable slot 12.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetCombatAnimation(const CCharString&)
 //          @ 0x008574D0 (manifest label "CTCInGameMenu::SetPDef" is propagated), CCharString::~CCharString @ 0x0099EAE0,

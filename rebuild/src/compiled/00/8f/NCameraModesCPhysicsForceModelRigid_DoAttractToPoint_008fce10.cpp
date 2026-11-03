@@ -1,6 +1,6 @@
 // NCameraModes::CPhysicsForceModelRigid::DoAttractToPoint() -- a rigid camera does not accelerate towards its attractors: it returns the first go-to attractor's position itself
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008FCE10, 35 bytes, `ret 4` (C3DVector through the hidden pointer).
-// Leaf: ?DoAttractToPoint@CPhysicsForceModelRigid
+// Leaf: ?DoAttractToPoint@CPhysicsForceModelRigid@NCameraModes@@UAE?AVC3DVector@@XZ
 // Name: vtable 0x01276AC8 slot 6, the CPhysicsForceModelBase::DoAttractToPoint slot (0x008FA800; the landed
 //       CPhysicsForceModelGotoOutsideSimple override 0x008FCBD0 sits in the same slot). The rigid model's other C3DVector
 //       slots 2-5 and 7 (0x008FCD70..0x008FCDF0) all return zero vectors.

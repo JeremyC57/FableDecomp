@@ -1,5 +1,5 @@
 // CCreatureActionBase::FinishAction() -- base action finish: drop this action from the creature's haste component, fade out the action's single anim set, mark the action finished, re-equip the item removed for it (now, or after the cutscene for the player), and kill carried things and the creature itself when they carry the die-with-action interface 0xFD
-// Leaf: ?FinishAction@CCreatureActionBase
+// Leaf: ?FinishAction@CCreatureActionBase@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00694430, 656 bytes, plain `ret`; virtual slot 4 of CCreatureActionBase.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8, PItemRemoved +0x2c), CVectorMap::LowerBound 0x0040F020
 //   (inline lookups 0x8C CTCHaste, 0x46 CTCCarrying), the haste set erase-by-key 0x0058119B and recalculation 0x00800020

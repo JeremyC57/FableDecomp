@@ -1,5 +1,5 @@
 // NPhysicsHelpers::GetLineThingSearchArea(const C3DVector&, const C3DVector&, float) -- integer box around the segment's midpoint, half-size = segment length + 2 * radius
-// Leaf: ?GetLineThingSearchArea@
+// Leaf: ?GetLineThingSearchArea@NPhysicsHelpers@@YI?AVC2DBoxI@@ABVC3DVector@@0M@Z
 // Grade: RELOCATION_MATCH -- retry wave 2 (sec4): the PDB ctor C2DBoxI(const C2DCoordI&, long) written as two corner copies
 //   of the centre adjusted in place (tl -= r, br += r) and stored BR first gives retail's copy-then-add tail.
 // Retail 0x008F58C0, 0xA3 bytes, __fastcall (hidden C2DBoxI result in ecx, lineStart in edx, lineEnd and radius on the

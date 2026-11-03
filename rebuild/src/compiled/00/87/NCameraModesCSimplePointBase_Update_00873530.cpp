@@ -1,6 +1,6 @@
 // NCameraModes::CSimplePointBase::Update() -- hold the camera on its fixed point: aim it at LookAtPos and keep it at Position
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00873530, 53 bytes, plain `ret`.
-// Leaf: ?Update@CSimplePointBase
+// Leaf: ?Update@CSimplePointBase@NCameraModes@@UAEXXZ
 // Name: vtable 0x01277644 slot 1 (the NCameraModes::CBase Update slot); FableWin.pdb ?Update@CSimplePointBase@NCameraModes@@UAEXXZ.
 // Layout: retail CSimplePointBase (landed ctor 0x00873A10): StartPos +0xa4, Position +0xb0, LookAtPos +0xbc; the root CBase has
 //         LookAt +0x10, the camera manager +0x40 and GoTo (CPhysicsState, Position first) +0x54.

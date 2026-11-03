@@ -1,5 +1,5 @@
 // CTCSoundPlayer::PlayAttachedSample(const CSoundPair& sound, const CSoundInit& init, bool flag, bool loop, bool attached) -- play a random sample index from the pair's [first, last] range from the owner's sample bank through the attached emitter
-// Leaf: ?PlayAttachedSample@CTCSoundPlayer@@QAEKABVCSoundPair
+// Leaf: ?PlayAttachedSample@CTCSoundPlayer@@QAEKABVCSoundPair@@ABVCSoundInit@@_N22@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0066B280, 116 bytes (+ int3 padding to 128), thiscall `ret 14h`.
 //   Name: Ego_r.pdb `?PlayAttachedSample@CTCSoundPlayer@@QAEKABVCSoundPair@@ABVCSoundInit@@_N22@Z` (the bank-less overload;
 //   the landed 0x0066B300 is the CASoundBank& one). 23+ callers (CTCDoor::PlaySoundW 0x00730A00, CTCShop::SetAlarm, ...).

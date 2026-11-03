@@ -1,5 +1,5 @@
 // NLocalisation::GetUIGraphics(CDefPointer<const NUISystem::CUILocaleGraphicsDef>& graphics) -- fetch the UI_LOCALE_GRAPHICS_<LANGUAGE> def for the detected language (English by default)
-// Leaf: ?GetUIGraphics@NLocalisation@@
+// Leaf: ?GetUIGraphics@NLocalisation@@YIXAAV?$CDefPointer@$$CBVCUILocaleGraphicsDef@NUISystem@@@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00415640, 421 bytes of code + the 8-entry jump table at 0x004157E8 and the 15-entry
 //   byte index table at 0x00415808 (471 in all), `ret`; FableWin.pdb
 //   `?GetUIGraphics@NLocalisation@@YIXAAV?$CDefPointer@$$CBVCUILocaleGraphicsDef@NUISystem@@@@@Z` (__fastcall, the out

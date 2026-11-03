@@ -1,5 +1,5 @@
 // CTCInventoryItem::GetEngineGraphic(long defIndex) -- static: cache the item def for defIndex and return a copy of its CEngineGraphic (def +0x25), or a default (all-zero) graphic when the def cannot be cached
-// Leaf: ?GetEngineGraphic@CTCInventoryItem@@SI
+// Leaf: ?GetEngineGraphic@CTCInventoryItem@@SI?AVCEngineGraphic@@J@Z
 // Retail: Fable.exe @ 0x005D96A0, 72 bytes (+8 int3). Ego_r.pdb `?GetEngineGraphic@CTCInventoryItem@@SI?AVCEngineGraphic@@J@Z`
 // (static __fastcall: the hidden CEngineGraphic result in ecx, defIndex in edx; `ret`). Instance twin 0x005D92D0 returns
 // `const CEngineGraphic&` to the same +0x25 field.

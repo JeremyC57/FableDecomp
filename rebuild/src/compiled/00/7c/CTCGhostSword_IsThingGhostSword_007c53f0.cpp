@@ -1,5 +1,5 @@
 // CTCGhostSword::IsThingGhostSword(const CThing* thing) -- true when the thing's definition is the "GHOSTLY_SWORD" def (looked up by name in the game definition manager; a missing def never matches)
-// Leaf: ?IsThingGhostSword@CTCGhostSword
+// Leaf: ?IsThingGhostSword@CTCGhostSword@@SI_NPBVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007C53F0, 76 bytes (+4 int3), static __fastcall (thing in ecx), bool in al.
 // Identity: Ego_r.pdb name set ?IsThingGhostSword@CTCGhostSword@@SI_NPBVCThing@@@Z; callers 0x00811542, 0x00811672,
 //   0x0083A798. The catalog label "IsThingGhostSword" is right but lacks the class.

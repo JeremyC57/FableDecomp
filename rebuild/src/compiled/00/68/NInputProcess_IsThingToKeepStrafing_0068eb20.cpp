@@ -1,5 +1,5 @@
 // NInputProcess::IsThingToKeepStrafing(const CThingPlayerCreature& creature) -- the hero keeps strafing while it holds a live projectile weapon outside ranged-weapon mode and is firing, loading, has the strafe action (0xA, held) queued or is busy with an action, or while its weapon is analogue-loading but not yet loaded
-// Leaf: ?IsThingToKeepStrafing@
+// Leaf: ?IsThingToKeepStrafing@NInputProcess@@YI_NABVCThingPlayerCreature@@@Z
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0068EB20, 384 bytes (380 without padding), `__fastcall` (ecx = creature), plain `ret`,

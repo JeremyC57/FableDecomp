@@ -6,7 +6,7 @@
 // wchar_t*() const @ 0x0099AF00 (x2), GetFileAttributesW (IAT 0x0143FDBC), SetFileAttributesW (IAT 0x0143FDB4).
 // Shape: the landed PathExists (0x00999230) prologue; the attributes are or-ed / and-ed in place by the if/else and
 // passed straight to SetFileAttributesW (the second conversion call is evaluated after the attribute push).
-// Leaf: ?SetFileReadOnly@CAFile
+// Leaf: ?SetFileReadOnly@CAFile@@SIXABVCWideString@@_N@Z
 typedef unsigned short wchar16;          // wchar_t is not a built-in type under the retail flags
 
 extern "C" __declspec(dllimport) unsigned long __stdcall GetFileAttributesW(const wchar16* fileName);   // IAT 0x0143FDBC

@@ -1,5 +1,5 @@
 // CScriptGameResourceObjectScriptedThing::CreateNullHandle(CGameScriptInterface&) -- builds a scripted-thing handle that owns a new, unbound scripted-thing implementation
-// Leaf: ?CreateNullHandle@
+// Leaf: ?CreateNullHandle@CScriptGameResourceObjectScriptedThing@@SI?AVCScriptGameResourceObjectScriptedThingBase@@AAVCGameScriptInterface@@@Z
 // Retail 0x00903810, 0xB2 bytes, static __fastcall (ecx = hidden result, edx = scriptInterface), plain `ret`.
 //   Manifest label "CGameScriptInterface_CreateScriptedEntity" (_global); PDB (FableWin) name set has
 //   `?CreateNullHandle@CScriptGameResourceObjectScriptedThing@@SI?AVCScriptGameResourceObjectScriptedThingBase@@AAVCGameScriptInterface@@@Z`.

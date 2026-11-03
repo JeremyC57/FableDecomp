@@ -1,5 +1,5 @@
 // CTCVillage::RemoveCrime(long deedHandle) -- forgets one of the hero's crimes: the deed log drops the deed and every witness deed chained to it, the village drops the handle, and with no crimes left the village is no longer the hero's enemy because of crime
-// Leaf: ?RemoveCrime@CTCVillage
+// Leaf: ?RemoveCrime@CTCVillage@@QAEXJ@Z
 // Naming wave 18: the interface-presence stand-in CBitset is std::bitset<274> (STLport 4.6); its test is ?test@?$bitset@$0BBC@@std@@QBE_NI@Z (name-only).
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).

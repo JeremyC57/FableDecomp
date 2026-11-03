@@ -1,6 +1,6 @@
 // LHNetworkLib::LTimer::LTimer() -- construct the network timer: unit speed-up factor, no saved factor, the current
 // tick count as the system clock at the last adjustment, timer time 0, then Stop() twice; returns `this`.
-// Leaf: ??0LTimer@LHNetworkLib@@
+// Leaf: ??0LTimer@LHNetworkLib@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008FA000, length 62 bytes (+ int3 padding).
 // Renamed (rename1, 2026-10-24) from CMusicTimer_008fa000::Reset @ 00/8f/CMusicTimer008fa000_Reset_008fa000.cpp:
 //   the PDB (Ego_r) class LHNetworkLib::LTimer is 0x110 bytes {char buf[256]; ulong SystemClockAtLastAdjust +0x100;

@@ -1,5 +1,5 @@
 // NUISystem::CMovie::CMovie(const CMovie&) -- copy-construct the movie component: copies only the draggable base, rebuilds the handle, movie name and playback info fresh and re-reads the def
-// Leaf: ??0CMovie@NUISystem@@QAE@ABV01
+// Leaf: ??0CMovie@NUISystem@@QAE@ABV01@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00548350, 108 bytes (+ int3 padding; `ret 4`; manifest label CMovie::CopyConstructor).
 // Callees: NUISystem::CDraggableInto::CDraggableInto(const CDraggableInto&) @ 0x0052CCA0, CBaseClass::CBaseClass() @ 0x0099A2D0,
 //   CWideString::CWideString() @ 0x0099AED0 (manifest label "CCharString" is a byte twin), CXMVPlaybackInfo::CXMVPlaybackInfo() @ 0x009BC7D0,

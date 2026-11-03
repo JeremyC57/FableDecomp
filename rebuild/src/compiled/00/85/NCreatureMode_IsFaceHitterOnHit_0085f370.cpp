@@ -1,5 +1,5 @@
 // NCreatureMode::IsFaceHitterOnHit(const CThing& thing) -- a hit thing faces its hitter unless it is sitting, lying down or Stunned (0x1D)
-// Leaf: ?IsFaceHitterOnHit@NCreatureMode@@
+// Leaf: ?IsFaceHitterOnHit@NCreatureMode@@YI_NABVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085F370, length 100 bytes. `__fastcall` free function (ecx = the thing), bool in al.
 // Mangled (Ego_r.pdb): ?IsFaceHitterOnHit@NCreatureMode@@YI_NABVCThing@@@Z.
 // Callees: NCreatureMode::IsSitting 0x0085F310, IsLyingDown 0x0085F2B0 (same TU, called), CVectorMap LowerBound 0x004365B0

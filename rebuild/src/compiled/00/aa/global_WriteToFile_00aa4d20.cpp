@@ -1,5 +1,5 @@
 // WriteToFile(const CVertexCompressionParams& params, CDataOutputStream& stream) -- serialise the eight vertex-compression floats (position scale XYZW, position bias XYZW) to a data output stream
-// Leaf: ?WriteToFile@@
+// Leaf: ?WriteToFile@@YIXABVCVertexCompressionParams@@AAVCDataOutputStream@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AA4D20, 96 bytes, `ret` (free `__fastcall`: params in ecx -> edi,
 //   stream in edx -> esi).
 // Identity: Ego_r.pdb `?WriteToFile@@YIXABVCVertexCompressionParams@@AAVCDataOutputStream@@@Z` (BSim similarity 1.0);

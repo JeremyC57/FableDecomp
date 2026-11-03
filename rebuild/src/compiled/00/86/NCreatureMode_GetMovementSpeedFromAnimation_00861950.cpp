@@ -1,5 +1,5 @@
 // NCreatureMode::GetMovementSpeedFromAnimation(long bankIndex, const CThingCreatureBase& creature, const CMeshDataBank& bank) -- the ground speed an animation moves the creature at: movement-vector length * 0.01 * appearance scale * physical scale / (frames per second * duration); 0 for an (almost) zero duration
-// Leaf: ?GetMovementSpeedFromAnimation@NCreatureMode@@YIMJ
+// Leaf: ?GetMovementSpeedFromAnimation@NCreatureMode@@YIMJABVCThingCreatureBase@@ABVCMeshDataBank@@@Z
 // Naming wave 18: the global stand-in g_FramesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00861950, length 110 bytes (+2 int3). `__fastcall` free function (bank index

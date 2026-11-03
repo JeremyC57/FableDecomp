@@ -9,7 +9,7 @@
 // is why each intermediate CWideString is destroyed right after the next operator+ (the end of the inlined helper's own
 // return statement) instead of at the end of one long expression; the three temporaries take the three frame words.
 // The replaced bootstrap fixture copy of this function (rebuild/src/compiled/00/41/...GetSaveDir_0041a540.cpp) is an inline-assembly oracle, not reconstruction.
-// Leaf: ?GetSaveDir@
+// Leaf: ?GetSaveDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ
 #include "fable_string.h"
 
 namespace NResourceDirectoryNames {

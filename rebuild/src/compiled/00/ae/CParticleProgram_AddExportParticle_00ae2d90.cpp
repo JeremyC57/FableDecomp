@@ -1,5 +1,5 @@
 // CParticleProgram::AddExportParticle(const CCharString& name, unsigned long particle) -- register a named export particle: append the {name, particle index} pair to the ExportParticles vector map and mark it dirty (sorted on the next lookup)
-// Leaf: ?AddExportParticle@CParticleProgram@@
+// Leaf: ?AddExportParticle@CParticleProgram@@QAEXABVCCharString@@K@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AE2D90, 137 bytes, __fastcall `ret 8`. No direct caller (the particle-script parser
 //   0x00AE8xxx family inlines it; this is the out-of-line copy kept in the image).
 // Identity: Ego_r.pdb `?AddExportParticle@CParticleProgram@@QAEXABVCCharString@@K@Z`; ExportParticles is

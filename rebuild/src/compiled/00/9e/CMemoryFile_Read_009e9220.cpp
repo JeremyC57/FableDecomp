@@ -1,5 +1,5 @@
 // CMemoryFile::Read(void*, long, CASuspendableProcess*) -- copy `size` bytes from the memory file at the current position into `buffer`, advancing the position; throws CBBBFileException "Null dst parameter" (type 1) for a null buffer and "Cannot read past end of file" (type 3) when the read would pass Length
-// Leaf: ?Read@CMemoryFile
+// Leaf: ?Read@CMemoryFile@@UAEXPAXJPAVCASuspendableProcess@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009E9220, 258 bytes (`ret 0xc`, virtual).
 // Callees: CCharString(const char*, long) 0x0099EBF0, __fastcall operator+(const CCharString&, const char*) 0x0099F600
 //   (labelled CCharString::AppendCString), CCharString copy ctor 0x0099EC30, operator const char* 0x0099E4C0, ~CCharString

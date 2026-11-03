@@ -1,5 +1,5 @@
 // CQ_ArenaScript::InitialiseVariables() -- copy the script def's ArenaRounds vector into Rounds, then fill the 4x5 crowd-loop sound-tag table
-// Leaf: ?InitialiseVariables@CQ_ArenaScript@NScript@@
+// Leaf: ?InitialiseVariables@CQ_ArenaScript@NScript@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F25840, length 305 bytes, plain `ret`.
 // Callees: vector<CArenaRoundDef>::operator= @ 0x00F25980 (out-of-line STLport assignment, same TU as the
 // caller in retail), CCharString::operator=(const char*) @ 0x0099EFE0 (twenty times, one per table cell).

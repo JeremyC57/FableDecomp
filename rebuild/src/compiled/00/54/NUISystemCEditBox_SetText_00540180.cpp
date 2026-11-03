@@ -1,5 +1,5 @@
 // NUISystem::CEditBox::SetText(const CWideString& text) -- replace the edit text, scroll back to its first character and put the cursor after the last one
-// Leaf: ?SetText@CEditBox
+// Leaf: ?SetText@CEditBox@NUISystem@@UAEXABVCWideString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00540180, 48 bytes (`ret 4`, incl. int3 padding); vtable 0x01246B8C slot 143.
 // Identity: FableWin.pdb ?SetText@CEditBox@NUISystem@@UAEXABVCWideString@@@Z.
 // Callees: CWideString::operator= @ 0x0099B7D0, CWideString::GetLength @ 0x0099B220 (on the argument).

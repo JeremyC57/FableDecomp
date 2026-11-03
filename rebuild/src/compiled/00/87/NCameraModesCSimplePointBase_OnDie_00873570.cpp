@@ -1,6 +1,6 @@
 // NCameraModes::CSimplePointBase::OnDie() -- put the camera back where it was when the mode started, as a single cut from the current camera
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00873570, 53 bytes, plain `ret`.
-// Leaf: ?OnDie@CSimplePointBase
+// Leaf: ?OnDie@CSimplePointBase@NCameraModes@@UAEXXZ
 // Name: vtable 0x01277644 slot 22 (slot 21 OnInit 0x008734F0 saves StartPos); FableWin.pdb ?OnDie@CSimplePointBase@NCameraModes@@UAEXXZ.
 // Layout: retail CSimplePointBase (landed ctor 0x00873A10): StartPos +0xa4, Position +0xb0, LookAtPos +0xbc; the root CBase has
 //         LookAt +0x10, the camera manager +0x40 and GoTo (CPhysicsState, Position first) +0x54.

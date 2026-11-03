@@ -1,5 +1,5 @@
 // CCreatureAction_DropWeapon::DropWeapon(CThing& weapon, CTCCarrying& carrying, CThing& creature) -- take the weapon out of the creature's carrying component: an inventory item goes back to its passive (sheathed) carry slot (evicting a living occupant to limbo or killing it) unless the weapon def names a sheathe object or the weapon is dead, recording it as the previously wielded melee/ranged weapon; anything else is dropped upright facing its current XY angle and made not-solid to the creature; finally the creature's mode 4 is removed
-// Leaf: ?DropWeapon@CCreatureAction_DropWeapon@@
+// Leaf: ?DropWeapon@CCreatureAction_DropWeapon@@SIXAAVCThing@@AAVCTCCarrying@@0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00845CE0, 763 bytes (+ int3 padding), static __fastcall, `ret 4`.
 // Callees: CTCCarrying::RemoveThing 0x006A19B0, GetThingInCarrySlot 0x006A11F0 (manifest "CThing_Array_FindByID"),
 //   PutThingInCarrySlot 0x006A1F80; CDefClassBase::GetSubDef<CCarryableDef> 0x005CC10E / GetSubDef<CWeaponDef> 0x0042B1A6

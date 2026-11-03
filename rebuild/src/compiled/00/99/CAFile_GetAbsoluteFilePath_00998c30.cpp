@@ -8,7 +8,7 @@
 // ~CCharString @ 0x0099EAE0 (x3).
 // Shape: one return expression; VC evaluates the arguments right to left (basePath narrowed first), the narrowed
 // result lands in basePath's dead argument slot, and the three narrow temporaries die in reverse construction order.
-// Leaf: ?GetAbsoluteFilePath@CAFile@@SI?AVCWideString
+// Leaf: ?GetAbsoluteFilePath@CAFile@@SI?AVCWideString@@ABV2@0@Z
 typedef unsigned short wchar16;          // wchar_t is not a built-in type under the retail flags
 
 class CWideStringData;

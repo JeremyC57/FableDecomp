@@ -1,5 +1,5 @@
 // CNewFrontendGameComponent::CompileDefsPlatformSpecific(bool xbox) -- build the startup definition manager over (x)frontend.bin, register the front-end def classes and compile them
-// Leaf: ?CompileDefsPlatformSpecific@CNewFrontendGameComponent@@
+// Leaf: ?CompileDefsPlatformSpecific@CNewFrontendGameComponent@@SIX_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0042F5A9, 354 bytes, `ret`; FableWin.pdb
 //   `?CompileDefsPlatformSpecific@CNewFrontendGameComponent@@SIX_N@Z` (static __fastcall, the flag in cl). Caller:
 //   CNewFrontendGameComponent::CompileDefs 0x0042F70B (`(true)` when the create-compiled-defs flag 0x013B8648 is set,

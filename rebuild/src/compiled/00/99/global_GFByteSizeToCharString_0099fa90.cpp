@@ -1,5 +1,5 @@
 // GFByteSizeToCharString(unsigned long size, long decimals) -- formats a byte count as "<n> bytes" below 4096, else as "<x> KB" / "<x> MB" with `decimals` decimal places
-// Leaf: ?GFByteSizeToCharString@@
+// Leaf: ?GFByteSizeToCharString@@YI?AVCCharString@@KJ@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0099FA90, 203 bytes (+ int3 padding), `ret 4`. Catalog name "FormatFileSizeString";
 // the Ego_r PDB name is `?GFByteSizeToCharString@@YI?AVCCharString@@KJ@Z` (= `CCharString __fastcall (unsigned long, long)`).
 // Callees: GFIntToCharString(long) @ 0x0099F830 ("%d"), GFFloatToCharString(double, long) @ 0x009A08B0,

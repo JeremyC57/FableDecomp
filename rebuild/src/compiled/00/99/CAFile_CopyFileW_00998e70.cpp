@@ -11,7 +11,7 @@
 // temporary of "" (built after `remaining -= chunk`). The buffer is an STLport vector<unsigned char> (12 bytes of
 // frame: retail's 0x18-byte frame, with the dead finish/end-of-storage words) over the malloc allocator: allocated
 // in _Vector_base, zero-filled, re-read through begin() for each call and freed behind ~_Vector_base's null test.
-// Leaf: ?CopyFileW@CAFile
+// Leaf: ?CopyFileW@CAFile@@SIXAAV1@0@Z
 #include <string.h>
 
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E

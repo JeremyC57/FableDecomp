@@ -1,6 +1,6 @@
 // NParticleEngine::CParticleUpdateParameters<unsigned long, unsigned long>::GetUpdateParam(C3DVector& result, const unsigned long& type, float timeScale, bool flag, unsigned long depth) const -- look the parameter type up in the update-parameter map and let its registered callback produce the vector (at most 10 levels of nesting)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF3080, length 97 bytes (112 with int3 padding).
-// Leaf: ?GetUpdateParam@?$CParticleUpdateParameters
+// Leaf: ?GetUpdateParam@?$CParticleUpdateParameters@KK@NParticleEngine@@QBE_NAAVC3DVector@@ABKM_NK@Z
 // Callees: CVectorMap<unsigned long, CParticleUpdateParamDesc<unsigned long,unsigned long>, ...>::LowerBound(const unsigned
 // long&) @ 0x00AF2C50 (thiscall, returns the element pointer), the callback's virtual slot 1 (+4)
 // CParticleUpdateParamCallback::GetUpdateParam(C3DVector&, unsigned long, float, bool, const CParticleUpdateParameters&,

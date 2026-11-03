@@ -1,5 +1,5 @@
 // CCombatAction_GenericStrikeResponseKnockdownRecoverBase::FinishAction() -- end of a knock-down recovery: take the creature's mode manager out of mode 0x1f, level its facing (Z = 0, normalised; +X when degenerate) and hand the body an upright orientation along it, then the base FinishAction
-// Leaf: ?FinishAction@CCombatAction_GenericStrikeResponseKnockdownRecoverBase
+// Leaf: ?FinishAction@CCombatAction_GenericStrikeResponseKnockdownRecoverBase@@UAEXXZ
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00866E80, length 294 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8, three times), CVectorMap::LowerBound

@@ -1,5 +1,5 @@
 // NGameText::ConstructString(CWideString& output, const vector<CWideString>& replacements) -- replace %1..%N of a game-text string with the strings of a vector; false if any placeholder is missing
-// Leaf: ?ConstructString@NGameText@@YI_NAAVCWideString@@ABV?$vector@
+// Leaf: ?ConstructString@NGameText@@YI_NAAVCWideString@@ABV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C7C20, 211 bytes (+ int3 padding), __fastcall (output in ecx, the
 // vector in edx, plain `ret`).
 // Name: FableWin.pdb `?ConstructString@NGameText@@YI_NAAVCWideString@@ABV?$vector@VCWideString@@...@Z`.

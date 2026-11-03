@@ -1,5 +1,5 @@
 // CTCWallMount::UnattachObject(long* boughtForAmount) -- take the trophy off the mount: hand back (and zero) the price paid; for a live trophy run its wall-mount effects' taken-off hook, make it targetable again and drop the live hero's mounted-trophy count; un-persist and un-flag the mount's thing; clear the trophy pointer and return the trophy
-// Leaf: ?UnattachObject@CTCWallMount
+// Leaf: ?UnattachObject@CTCWallMount@@QAEPAVCThing@@PAJ@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DF130, length 370 bytes (`ret 4`, no frame pointer; Ego_r.pdb
 //   `?UnattachObject@CTCWallMount@@QAEPAVCThing@@PAJ@Z`).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, CBaseIntelligentPointer() 0x00A01B10 (then the

@@ -1,5 +1,5 @@
 // CV_RockTrollFirstEncounterScript::WatchForRockTrollKilled(CScriptThing) -- set an "is thing alive" predicate on the troll, yield a frame, wait until the troll has been killed (by anyone), then (unless the thread is terminating) remove the troll's health bar, hide the quest info and mark the mission over
-// Leaf: ?WatchForRockTrollKilled@CV_RockTrollFirstEncounterScript@NScript@@
+// Leaf: ?WatchForRockTrollKilled@CV_RockTrollFirstEncounterScript@NScript@@QAEXVCScriptThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EC5010, 293 bytes (304 with padding), `ret 0Ch` (the by-value CScriptThing).
 // Callees: CScriptThing(const CScriptThing&) 0x004ABE90 (the predicate's copy), CScriptBase::SetPredicate(const
 //   NScript::CPredicateBase&) 0x00CB7920, ~CIsThingAlive 0x00E241B0 (landed), CScriptBase::IsActiveThreadTerminating

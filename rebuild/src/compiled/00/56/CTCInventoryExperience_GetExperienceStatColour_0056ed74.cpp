@@ -1,5 +1,5 @@
 // CTCInventoryExperience::GetExperienceStatColour(EHeroTrainableStatType stat) -- the spend-screen colour of a trainable stat's band: red for 0..2, yellow for 3..5, blue otherwise
-// Leaf: ?GetExperienceStatColour@CTCInventoryExperience@@
+// Leaf: ?GetExperienceStatColour@CTCInventoryExperience@@QAE?AVCRGBFloatColour@@W4EHeroTrainableStatType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0056ED74, 94 bytes, thiscall `ret 8` (hidden CRGBFloatColour result + stat;
 //   `this` unused). Name from FableWin.pdb (`?GetExperienceStatColour@CTCInventoryExperience@@QAE?AVCRGBFloatColour
 //   @@W4EHeroTrainableStatType@@@Z`); its only callers are AddStatToList (0x005729D8) and AddStatToListPC

@@ -9,7 +9,9 @@ Leaf with llvm-undname, derives the qualified name (no return type, access, conv
 keywords dropped; a ctor/dtor leaf loses the repeated template arguments) and rewrites the catalog where the name is
 semantically different (whitespace / keyword / `_global::` differences are not churned) and sets the manifest's
 `module` / `name` of every Leaf-verified row to that spelling. Rows whose Leaf is a bare
-leaf (no `@`) or whose source has no Leaf line are reported, not changed. Catalog rows missing from functions.tsv are
+leaf (no `@`) or whose source has no Leaf line are reported, not changed; so are the mangled Leafs llvm-undname rejects,
+counted apart as prefix leaves (`??1CFoo@`: complete them with tools/complete_leaf_prefixes.py), C-decorated
+(`@ov_pcm_tell@4`) and true demangle failures. Catalog rows missing from functions.tsv are
 appended (agent_source `gapscan`, agent_verdict `accepted`).
 
     python3 tools/sync_catalog_names.py [--dry-run] [--report PATH.tsv]
@@ -44,14 +46,35 @@ def leaf_of(path):
 
 
 def demangle(symbols):
-    out = subprocess.run([UNDNAME, "--no-access-specifier", "--no-calling-convention", "--no-return-type",
-                          "--no-member-type"], input="\n".join(symbols) + "\n", capture_output=True, text=True).stdout
-    res = {}
-    for block in out.split("\n\n"):
+    """{symbol: demangled} for the symbols llvm-undname accepts. undname echoes every input line on stdout and follows
+    it with the demangling; for a symbol it rejects it prints only the echo (the `error: Invalid mangled name` goes to
+    stderr), so a block holding just the echo is a failure. The stderr error count is checked against that."""
+    pr = subprocess.run([UNDNAME, "--no-access-specifier", "--no-calling-convention", "--no-return-type",
+                         "--no-member-type"], input="\n".join(symbols) + "\n", capture_output=True, text=True)
+    res, failed = {}, 0
+    for block in pr.stdout.split("\n\n"):
         lines = [l for l in block.split("\n") if l.strip()]
+        if not lines:
+            continue
         if len(lines) >= 2 and not lines[1].startswith("error"):
             res[lines[0]] = lines[1]
+        else:
+            failed += 1
+    errors = pr.stderr.count("Invalid mangled name")
+    if errors != failed:
+        print(f"WARNING: llvm-undname reported {errors} invalid names on stderr but {failed} stdout blocks had no "
+              f"demangling; the stdout parser is out of step with this llvm-undname", file=sys.stderr)
     return res
+
+
+def leaf_kind(leaf):
+    """Why llvm-undname rejected a Leaf: `prefix` = the start of a `?`-mangled symbol (verify_and_land.py grades the
+    object function whose symbol CONTAINS the leaf, so a prefix grades but cannot be demangled; every complete
+    function symbol ends in `Z`), `c-decorated` = an extern "C" `_name@N` / `@name@N` / `_name` symbol, which is not
+    C++-mangled at all, `failed` = a complete-looking `?` symbol undname cannot read."""
+    if not leaf.startswith("?"):
+        return "c-decorated"
+    return "failed" if leaf.endswith("Z") else "prefix"
 
 
 def split_top(s, sep="::"):
@@ -122,11 +145,12 @@ def main():
     cat = {r["address"].lower(): r for r in cat_rows}
 
     changes, verified = {}, {}
-    undemangled = unparsed = same = 0
+    unparsed = same = 0
+    rejected = {"prefix": [], "c-decorated": [], "failed": []}
     for addr, leaf in leaves.items():
         if addr not in cat: continue
         d = dem.get(leaf)
-        if not d: undemangled += 1; continue
+        if not d: rejected[leaf_kind(leaf)].append(leaf); continue
         q = qualified(d)
         if not q: unparsed += 1; continue
         verified[addr] = q
@@ -134,7 +158,14 @@ def main():
         else: changes[addr] = (cat[addr]["name"], q, leaf)
 
     print(f"landed sources: mangled Leaf {len(leaves)}, bare leaf {plain}, no Leaf line {no_leaf}")
-    print(f"demangle failed {undemangled}, unparsed {unparsed}, already consistent {same}, to rename {len(changes)}")
+    n_rej = sum(len(v) for v in rejected.values())
+    print(f"mangled Leaf rows undname rejects {n_rej}: prefix leaf {len(rejected['prefix'])} "
+          f"({len(set(rejected['prefix']))} distinct; complete them with tools/complete_leaf_prefixes.py), "
+          f"C-decorated {len(rejected['c-decorated'])} ({len(set(rejected['c-decorated']))} distinct), "
+          f"demangle failed {len(rejected['failed'])} ({len(set(rejected['failed']))} distinct)")
+    for leaf in sorted(set(rejected["failed"]))[:10]:
+        print(f"  demangle failed: {leaf}")
+    print(f"unparsed {unparsed}, already consistent {same}, to rename {len(changes)}")
 
     with open(MANIFEST, encoding="utf-8-sig", newline="") as f:
         rd = csv.DictReader(f, delimiter="\t"); man_rows = list(rd); man_fields = rd.fieldnames

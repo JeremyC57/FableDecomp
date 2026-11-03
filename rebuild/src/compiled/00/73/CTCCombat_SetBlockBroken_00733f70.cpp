@@ -1,5 +1,5 @@
 // CTCCombat::SetBlockBroken(CThing& attacker) -- the creature's block was broken by the attacker: cancel the attacker's own block-counter timer, drop out of blocking, and reset the repeat/active timers of every block-type combat ability
-// Leaf: ?SetBlockBroken@CTCCombat
+// Leaf: ?SetBlockBroken@CTCCombat@@QAEXAAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00733F70, 219 bytes (224 with padding), `ret 4`.
 // Label correction: catalog "CAIStateGroup_MinionReactToNoise_Cleanup" (propagated) -- the only caller is
 //   CCreatureAction_BlockBroken::Initialise (0x00855AD8, `this` = the creature's interface-0x30 CTCCombat, argument

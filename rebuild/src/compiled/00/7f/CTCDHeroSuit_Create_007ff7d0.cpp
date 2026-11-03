@@ -1,5 +1,5 @@
 // CTCDHeroSuit::Create(long defIndex, const C3DVector& position) -- create a level-persistent hero-suit thing for player 4 on map 0 and activate it; a thing without the hero-suit driver is killed; null on any failure
-// Leaf: ?Create@CTCDHeroSuit@@
+// Leaf: ?Create@CTCDHeroSuit@@SIPAVCThing@@JABVC3DVector@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FF7D0, 61 bytes, static `__fastcall` (defIndex in ecx, position in
 //   edx -- unused, overwritten by the player constant), plain `ret`. Caller: CTCInventoryClothing 0x005B3781 (ecx = a
 //   def index from its list, edx = the owner's GetPosition()).

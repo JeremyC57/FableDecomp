@@ -1,5 +1,5 @@
 // NUISystem::CEditBox::AddActionOnEnter(CCountedPointer<CAction>& action) -- append an action to the list run when the edit box gets Enter
-// Leaf: ?AddActionOnEnter@CEditBox
+// Leaf: ?AddActionOnEnter@CEditBox@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00540D70, 35 bytes (`ret 4`, +13 int3 padding); vtable 0x01246B8C slot 148.
 // Identity: FableWin.pdb ?AddActionOnEnter@CEditBox@NUISystem@@UAEXAAV?$CCountedPointer@VCAction@NUISystem@@@@@Z.
 // Callees: STLport list<CCountedPointer<CAction>>::insert(iterator, const value_type&) @ 0x005355C0 (the inline

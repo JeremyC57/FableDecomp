@@ -1,5 +1,5 @@
 // NScript::CGameflowAssistanceScript::Tutorial_LowHealth() -- tutorial thread: while fewer than the def's maximum health warnings were given, each script frame (while the hero is player controlled) warn the hero through the guild master when his health drops below the critical or the low threshold, each warning with its own cooldown
-// Leaf: ?Tutorial_LowHealth@CGameflowAssistanceScript@NScript@@
+// Leaf: ?Tutorial_LowHealth@CGameflowAssistanceScript@NScript@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CEFFB0, length 464 bytes, plain `ret`.
 // Sibling of the landed Tutorial_LowMagic 0x00CF0180 (same TU, same model): CScriptBase::IsActiveThreadTerminating
 //   @ 0x00CB7940 (the last call's result unused); the game script interface (+0x40) slots 7 NewScriptFrame, 257 GetHeroHealth,

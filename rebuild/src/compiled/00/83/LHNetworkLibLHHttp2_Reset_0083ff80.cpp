@@ -1,5 +1,5 @@
 // LHNetworkLib::LHHttp2::Reset() -- returns the HTTP client to its initial state: destroys the socket, empties the request / header / host / proxy strings, drops the document parts and zeroes the transfer state
-// Leaf: ?Reset@LHHttp2@LHNetworkLib@@
+// Leaf: ?Reset@LHHttp2@LHNetworkLib@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0083FF80, 235 bytes, __fastcall, plain `ret`.
 // Identity: Ego_r.pdb ?Reset@LHHttp2@LHNetworkLib@@QAEXXZ, between Open(const string&, unsigned short) and Close() as in TLC
 //   (Close landed at 0x00840070). The manifest label "LHHttp2_Clear" is descriptive.

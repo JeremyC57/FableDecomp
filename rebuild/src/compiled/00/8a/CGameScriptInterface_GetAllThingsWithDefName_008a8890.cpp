@@ -1,5 +1,5 @@
 // CGameScriptInterface::GetAllThingsWithDefName(const CCharString& defName, std::vector<CScriptThing>& things) const -- script: collect the script thing of every thing built from the named def into the vector; returns the vector's size (0 without touching it when none was found)
-// Leaf: ?GetAllThingsWithDefName@CGameScriptInterface
+// Leaf: ?GetAllThingsWithDefName@CGameScriptInterface@@UBEJABVCCharString@@AAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008A8890, 317 bytes, `ret 8`.
 // Name: Ego_r.pdb ?GetAllThingsWithDefName@CGameScriptInterface@@UBEJABVCCharString@@AAV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z.
 // Body: index = CGameDefinitionManager::Get() (0x0044C6B0, ?Get@CGameDefinitionManager@@SIAAV1@XZ)->GetDefGlobalIndexFromName(defName)

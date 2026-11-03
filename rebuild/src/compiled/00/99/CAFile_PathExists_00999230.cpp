@@ -9,7 +9,7 @@
 // the local's out-of-line destructor is called once per return path, so each `return` carries its own
 // `call ~CWideString` before the `mov al,1` / `xor al,al` (the `!= INVALID` test returning true first
 // lays the true exit first; `== INVALID ... return false` swaps the two exits).
-// Leaf: ?PathExists@CAFile
+// Leaf: ?PathExists@CAFile@@SI_NABVCWideString@@@Z
 
 typedef unsigned short wchar16;          // wchar_t is not a built-in type under the retail flags
 

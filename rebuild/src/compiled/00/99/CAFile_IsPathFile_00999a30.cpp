@@ -7,7 +7,7 @@
 // wchar_t*() const @ 0x0099AF00, GetFileAttributesW (IAT 0x0143FDBC).
 // Shape: the landed PathExists prologue; the two tests share one false exit and each return carries its own
 // out-of-line destructor call (`mov al,1` / `xor al,al` after it).
-// Leaf: ?IsPathFile@CAFile
+// Leaf: ?IsPathFile@CAFile@@SI_NABVCWideString@@@Z
 typedef unsigned short wchar16;          // wchar_t is not a built-in type under the retail flags
 
 extern "C" __declspec(dllimport) unsigned long __stdcall GetFileAttributesW(const wchar16* fileName);   // IAT 0x0143FDBC

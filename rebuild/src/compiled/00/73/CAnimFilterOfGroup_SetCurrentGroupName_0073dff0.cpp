@@ -1,5 +1,5 @@
 // CAnimFilterOfGroup::SetCurrentGroupName(const CCharString& name) -- take the new group name and recompute its CRC
-// Leaf: ?SetCurrentGroupName@
+// Leaf: ?SetCurrentGroupName@CAnimFilterOfGroup@@QAEXABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0073DFF0, 77 bytes (+3 int3), __fastcall `ret 4`.
 // Callees: CCharString::operator=(const CCharString&) @ 0x0099EFB0, Calc @ 0x004014A0 (`__fastcall(seed, data, length)`, the
 //   engine's CRC-32 kernel; run over the shared empty literal 0x0129AAF4 when the name has no data block).

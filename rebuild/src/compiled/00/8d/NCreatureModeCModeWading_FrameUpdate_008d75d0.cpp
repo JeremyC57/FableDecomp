@@ -1,5 +1,5 @@
 // NCreatureMode::CModeWading::FrameUpdate() -- vtable slot 3: pick the wading animation group by whether the creature carries a melee weapon, then the base frame update
-// Leaf: ?FrameUpdate@CModeWading@
+// Leaf: ?FrameUpdate@CModeWading@NCreatureMode@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D75D0, 81 bytes (+15 int3 padding).
 // Name: slot 3 of the vtable 0x01267F48 (rtti-vtables.tsv); it ends with the landed CModeBase::FrameUpdate 0x0073AC50, so
 // the slot is FrameUpdate (as CModeUnderground's slot 3).

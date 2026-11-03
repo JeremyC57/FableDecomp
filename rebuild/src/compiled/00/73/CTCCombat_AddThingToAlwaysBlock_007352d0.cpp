@@ -1,5 +1,5 @@
 // CTCCombat::AddThingToAlwaysBlock(const CThing* thing) -- remember a thing the creature should always block: wrap it in an intelligent pointer and append it to AlwaysBlockThings unless it is already there
-// Leaf: ?AddThingToAlwaysBlock@CTCCombat
+// Leaf: ?AddThingToAlwaysBlock@CTCCombat@@QAEXPBVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007352D0, 97 bytes (112 with padding), `ret 4`.
 // Label correction: catalog "CombatBlockingData_AddIfNew" -- Ego_r.pdb ?AddThingToAlwaysBlock@CTCCombat@@QAEXPBVCThing@@@Z;
 //   caller 0x0089E05E.

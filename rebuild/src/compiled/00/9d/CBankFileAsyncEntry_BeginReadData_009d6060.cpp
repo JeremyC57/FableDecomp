@@ -1,5 +1,5 @@
 // CBankFileAsyncEntry::BeginReadData(unsigned long start, void* buffer, unsigned long size, unsigned long bufferSize, EThreadedFilePriority priority) -- start an async read of `size` entry bytes from `start` into a caller-supplied buffer; returns the counted data object
-// Leaf: ?BeginReadData@CBankFileAsyncEntry@@
+// Leaf: ?BeginReadData@CBankFileAsyncEntry@@QAE?AV?$CCountedPointer@VCBankFileAsyncData@@@@KPAXKKW4EThreadedFilePriority@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D6060, length 160 bytes, thiscall `ret 18h` (hidden
 // CCountedPointer result + five arguments). PDB name (FableWin/Ego donors at 0x00B2A1B0 / 0x02FF7EC0):
 // ?BeginReadData@CBankFileAsyncEntry@@QAE?AV?$CCountedPointer@VCBankFileAsyncData@@@@KPAXKKW4EThreadedFilePriority@@@Z.

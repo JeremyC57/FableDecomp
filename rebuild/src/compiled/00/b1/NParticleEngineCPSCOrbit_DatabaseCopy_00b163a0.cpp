@@ -1,5 +1,5 @@
 // NParticleEngine::CPSCOrbit::DatabaseCopy(const CPSCBase& other) -- vtable slot 18: copy another orbit component's database settings (the centre parameter and the three orbit settings records)
-// Leaf: ?DatabaseCopy@CPSCOrbit@
+// Leaf: ?DatabaseCopy@CPSCOrbit@NParticleEngine@@UAEXABVCPSCBase@2@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B163A0, 58 bytes (+6 int3 padding).
 // Name: FableWin.pdb ?DatabaseCopy@CPSCOrbit@NParticleEngine@@UAEXABVCPSCBase@2@@Z; slot 18 of the vtable 0x012A0374
 // (rtti-vtables.tsv; slot 18 of CPSCUpdateNormal is the landed DatabaseCopy 0x00B0B370).

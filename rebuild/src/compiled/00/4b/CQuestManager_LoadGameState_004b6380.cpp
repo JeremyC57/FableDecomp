@@ -1,5 +1,5 @@
 // CQuestManager::LoadGameState(CPersistContext&) -- read the quest game-state text (length-prefixed in binary contexts, else from the context's parser), load it, then transfer the boasts
-// Leaf: ?LoadGameState@CQuestManager@@QAEXAAVCPersistContext
+// Leaf: ?LoadGameState@CQuestManager@@QAEXAAVCPersistContext@@@Z
 // Retail 0x004B6380, 346 bytes, ret 4 (the reader of the landed SaveGameState 0x004B64E0). Callees: the stream's inline
 // ReadLong (slow path CDataInputStream::ReadWithSrcChunkOverflow 0x00993CA0), vector<unsigned char>(n) 0x00411910, the
 // stream's virtual ReadBuffer (slot 4, +0x10), CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0,

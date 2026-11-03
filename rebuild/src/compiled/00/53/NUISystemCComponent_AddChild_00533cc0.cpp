@@ -1,5 +1,5 @@
 // NUISystem::CComponent::AddChild(CCountedPointer<CComponent>& child) -- append the child's counted pointer to Children, make this component its parent, then initialise it
-// Leaf: ?AddChild@CComponent
+// Leaf: ?AddChild@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00533CC0, 98 bytes (112 with padding), `ret 4` (thiscall; Ego_r.pdb
 //   `?AddChild@CComponent@NUISystem@@UAEXAAV?$CCountedPointer@VCComponent@NUISystem@@@@@Z`, CComponent vtable 0x0124608C
 //   slot 60, rtti-vtables.tsv).

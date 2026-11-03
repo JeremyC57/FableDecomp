@@ -1,5 +1,5 @@
 // CClassFactory::CClassFactory(unsigned char maxClassTypeID) -- construct a class factory: empty class-type table and class list, no allocated classes, then size the type table to the maximum class type id
-// Leaf: ??0CClassFactory@@
+// Leaf: ??0CClassFactory@@IAE@E@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A373B0, 80 bytes, `ret 4`.
 // Name: FableWin.pdb ??0CClassFactory@@IAE@E@Z (protected). The catalog label NHeroInformationScreens::CBase::CBase is a
 // propagated base-ctor label: the body stores vtable 0x0129CF70 = RTTI CClassFactory (rtti-vtables.tsv), and the PDB

@@ -1,6 +1,6 @@
 // C3DMeshFilePrimitiveChunk::SetMaterialIndex(long materialIndex) -- make the chunk's material-index array exactly one entry long and store the index in it
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ABCF10, length 40 bytes (48 with int3 padding).
-// Leaf: ?SetMaterialIndex@C3DMeshFilePrimitiveChunk
+// Leaf: ?SetMaterialIndex@C3DMeshFilePrimitiveChunk@@QAEXJ@Z
 // Callees: the material-index array's Resize(unsigned long, const int&) @ 0x004428F0 (STLport vector<unsigned int>::
 // resize in the manifest; the same callee and model as the landed ReadFromFile 0x00ABCF40).
 // Label correction: the manifest's "CPersistContext_TransferableComponent<EHeroAbility>::TransferIn" is propagated.

@@ -1,5 +1,5 @@
 // CProgressDisplay::StopProgress(bool showStoppingText, bool clearScreen) -- end the loading/progress display: optionally clear the screen to black (or render a final "Stopping progress display" frame), then release every progress, guild-seal and loading-screen texture and the player GUI's graphics
-// Leaf: ?StopProgress@CProgressDisplay@
+// Leaf: ?StopProgress@CProgressDisplay@@UAEX_N0@Z
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00499D90, length 530 bytes (padded to 544), `ret 8` (vtable slot 2).

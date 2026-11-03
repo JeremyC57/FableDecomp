@@ -1,5 +1,5 @@
 // CWorld::GetGameLODCentre() const -- returns the level-of-detail centre, recomputed at most once per frame: the main player's free-camera position while the free camera is in use, else the current game camera's render position
-// Leaf: ?GetGameLODCentre@CWorld@@
+// Leaf: ?GetGameLODCentre@CWorld@@UBE?AVC3DVector@@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0049DBE0, 163 bytes, `ret 4` (hidden C3DVector result).
 //   PDB name ?GetGameLODCentre@CWorld@@UBE?AVC3DVector@@XZ.
 // Callees: CMainGameComponent frame getter 0x00416225 (Component +8, twice), CPlayerManager::GetMainPlayer 0x00449970

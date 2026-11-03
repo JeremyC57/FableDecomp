@@ -1,5 +1,5 @@
 // NThingManager::CEntityRuntimePersistence::Clear() -- empty both persistent entity-script arrays (releasing their storage) and the persisted-dead-entity map
-// Leaf: ?Clear@CEntityRuntimePersistence@
+// Leaf: ?Clear@CEntityRuntimePersistence@NThingManager@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005236F0, length 158 bytes. The catalog label "CDrawQuestInfo::OracleSymbolPopBack" is
 // propagated: the body clears two 24-byte-element arrays and a red-black tree, and its callers are CEntityRuntimePersistence
 // ::LoadFromGameStateScript (0x005248B0) and its neighbours (0x00524340, 0x00524ECE), all with the persistence object as `this`.

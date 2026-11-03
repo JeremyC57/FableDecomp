@@ -1,5 +1,5 @@
 // CVertexGroupBlock::AddGroup(unsigned long group) -- append a bone group to the block and record its index in the group -> index map
-// Leaf: ?AddGroup@CVertexGroupBlock@@
+// Leaf: ?AddGroup@CVertexGroupBlock@@QAEXK@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AD91F0, 0x62 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity: Ego_r.pdb ?AddGroup@CVertexGroupBlock@@QAEXK@Z; retail layout as the landed CVertexGroupBlock::IsSubsetOf
 // 0x00AD8C30 (Groups vector<unsigned long> +0x00, GroupToIndexMap map<unsigned long, long> +0x0C). Callers: the mesh

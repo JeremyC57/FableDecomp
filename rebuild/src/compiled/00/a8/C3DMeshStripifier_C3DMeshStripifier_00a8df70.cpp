@@ -1,5 +1,5 @@
 // C3DMeshStripifier::C3DMeshStripifier() -- default constructor.
-// Leaf: ??0C3DMeshStripifier@
+// Leaf: ??0C3DMeshStripifier@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A8DF70, length 46 bytes.
 // Manifest label "CAIStateGroup_HoverHornetQueen" is propagated; the vtable stored, 0x0129DF20, is
 // C3DMeshStripifier (rtti-vtables.tsv). Callee: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0.

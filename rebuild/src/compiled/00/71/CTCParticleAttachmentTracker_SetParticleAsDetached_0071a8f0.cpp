@@ -1,5 +1,5 @@
 // CTCParticleAttachmentTracker::SetParticleAsDetached(CThing&) -- removes the particle from the attached-particle list
-// Leaf: ?SetParticleAsDetached@CTCParticleAttachmentTracker@@QAEX
+// Leaf: ?SetParticleAsDetached@CTCParticleAttachmentTracker@@QAEXAAVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0071A8F0, 66 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity: CTCParticleAttachmentTracker::SetParticleAsDetached(CThing&) -- proven; evidence: it sits in the CTCParticleAttachmentTracker module (after SetAsDrawable 0x0071A8A0, before UpdateAttachedParticles
 //   0x0071A9C0); Ego_r.pdb CTCParticleAttachmentTracker::AttachedParticles is the list<CIntelligentPointer<CThing> > at +0xC;

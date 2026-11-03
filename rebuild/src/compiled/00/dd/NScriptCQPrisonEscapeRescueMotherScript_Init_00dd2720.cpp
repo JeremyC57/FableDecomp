@@ -1,5 +1,5 @@
 // CQ_PrisonEscapeRescueMotherScript::Init() -- register the prison regions of the quest, add the unclothed / no-damage / no-weapons boasts, reset the task, conversation and escape state, clear the master-data prison flags, make the guards ignore crimes and reset the hero's combat multiplier
-// Leaf: ?Init@CQ_PrisonEscapeRescueMotherScript@NScript@@
+// Leaf: ?Init@CQ_PrisonEscapeRescueMotherScript@NScript@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DD2720, 1184 bytes.
 // Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0; Game slots 134 SetGuardsIgnoreCrimes, 151 ResetPlayerCreatureCombatMultiplier,
 //   271 AddQuestRegion, 303 AddBoast; script def pGlobalScriptDef 0x0143E90C (prison boast cost/reward pairs +0x198..+0x1ac).

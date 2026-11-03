@@ -1,5 +1,5 @@
 // CTCBase::GetPTCInfo(const CCharString& name) -- look a TC class name up in the registered-TC map: the registration info, or null when the name is not registered
-// Leaf: ?GetPTCInfo@CTCBase@@
+// Leaf: ?GetPTCInfo@CTCBase@@SIPBVCRegisteredTCInfo@1@ABVCCharString@@@Z
 //
 // Retail 0x00686F60, 62 bytes (+ int3 padding to 64), plain `ret` (static __fastcall: the name in ecx).
 // Callees: CVectorMap<CCharString, CTCBase::CRegisteredTCInfo>::LowerBound @ 0x006870C0 on the global map @ 0x013BA89C

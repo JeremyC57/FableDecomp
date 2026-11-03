@@ -1,5 +1,5 @@
 // CAFile::GetCopyFilename(const CCharString& filename) -- the name for a copy of a file: split off the extension, then bump a trailing number ("save3.sav" -> "save4.sav") or append 2 when the name has none ("save.sav" -> "save2.sav")
-// Leaf: ?GetCopyFilename@CAFile@@
+// Leaf: ?GetCopyFilename@CAFile@@SI?AVCCharString@@ABV2@@Z
 // Flags: /Oa
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00997BB0, 496 bytes (incl. int3 padding). FableWin.pdb
 //   `?GetCopyFilename@CAFile@@SI?AVCCharString@@ABV2@@Z`: a public static `__fastcall` returning CCharString (hidden

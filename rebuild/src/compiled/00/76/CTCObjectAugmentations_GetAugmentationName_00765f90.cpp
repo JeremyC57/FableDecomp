@@ -1,5 +1,5 @@
 // CTCObjectAugmentations::GetAugmentationName(long defIndex) -- the display name of an augmentation def (its Name text from the game text bank), or "Missing augmentation name!" when the def has no text
-// Leaf: ?GetAugmentationName@
+// Leaf: ?GetAugmentationName@CTCObjectAugmentations@@SI?AVCWideString@@J@Z
 // Naming wave 18: the global stand-in g_pMainGameComponent (0x013B86A0) is the protected static CMainGameComponent::PMainGameComponent, read through the
 //   inline static accessor Get() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00765F90, 186 bytes (+int3 pad to 192), plain `ret` (static __fastcall:

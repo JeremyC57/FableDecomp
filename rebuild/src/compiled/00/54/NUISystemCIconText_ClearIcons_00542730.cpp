@@ -1,5 +1,5 @@
 // NUISystem::CIconText::ClearIcons() -- drop every embedded icon (Icons.clear()) and clear each icon's engine primitive handle
-// Leaf: ?ClearIcons@
+// Leaf: ?ClearIcons@CIconText@NUISystem@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00542730, 71 bytes (80 with padding), plain `ret` (thiscall; Ego_r.pdb
 //   `?ClearIcons@CIconText@NUISystem@@UAEXXZ`, CIconText vtable 0x012470CC slot 148, rtti-vtables.tsv).
 // Callees: STLport __copy<CEmbeddedIcon*, CEmbeddedIcon*, int>(first, last, result, const random_access_iterator_tag&,

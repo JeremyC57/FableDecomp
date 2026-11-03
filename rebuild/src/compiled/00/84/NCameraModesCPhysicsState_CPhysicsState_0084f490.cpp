@@ -1,5 +1,5 @@
 // NCameraModes::CPhysicsState::CPhysicsState() -- builds the two empty attractor lists (STLport sentinel nodes) and clears the cull flag; the position / velocity / acceleration vectors are left uninitialised
-// Leaf: ??0CPhysicsState@NCameraModes@@
+// Leaf: ??0CPhysicsState@NCameraModes@@QAE@XZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0084F490, 58 bytes, plain `ret` (returns this).
 // Identity: Ego_r.pdb NCameraModes::CPhysicsState (0x40 bytes there): Position +0, Velocity +0xc, Acceleration +0x18,
 //   Attractors +0x24 and IncidentalAttractors list<pair<C3DVector, float> > (16-byte element -> 0x18-byte node),

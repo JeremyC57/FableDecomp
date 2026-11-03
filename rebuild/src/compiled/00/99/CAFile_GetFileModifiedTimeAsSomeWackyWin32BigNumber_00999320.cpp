@@ -8,7 +8,7 @@
 // Shape: the high word is scaled by an explicit 64-bit multiply by 2^32 (VC7.1 keeps the __allmul call for a 64-bit
 // constant multiply instead of a shift) and the low word added with add/adc; the sum is held in edi:esi across the
 // local's destructor.
-// Leaf: ?GetFileModifiedTimeAsSomeWackyWin32BigNumber@CAFile
+// Leaf: ?GetFileModifiedTimeAsSomeWackyWin32BigNumber@CAFile@@SI_KABVCWideString@@@Z
 typedef unsigned short wchar16;          // wchar_t is not a built-in type under the retail flags
 
 struct _FILETIME {

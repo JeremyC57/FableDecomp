@@ -1,5 +1,5 @@
 // CQ_OrchardFarmRaidGoodScript::Init() -- register the good orchard-farm raid's five boasts (no armour, no damage, no weapons, no crates stolen, protect the guards) and activate Q_OrchardFarmRaid
-// Leaf: ?Init@CQ_OrchardFarmRaidGoodScript@NScript@@
+// Leaf: ?Init@CQ_OrchardFarmRaidGoodScript@NScript@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DD23A0, 534 bytes (544 with int3 padding; vtable reference 0x012DB81C).
 //   Catalog label "CQ_OrchardFarmRaidEvilScript::Init" is propagated from the byte-shaped twin 0x00DD2020: this copy
 //   reads the OFGood boast block and registers the NOCRATESSTOLEN / PROTECTGUARDS boasts.

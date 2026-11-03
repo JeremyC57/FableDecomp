@@ -1,5 +1,5 @@
 // CThingSoundEmitter::Create(const C3DVector&, const CThing*, bool) -- allocate a sound emitter thing, construct it from the position / attached thing / keep-playing flag and activate it; null on any failure
-// Leaf: ?Create@CThingSoundEmitter
+// Leaf: ?Create@CThingSoundEmitter@@SIPAV1@ABVC3DVector@@PBVCThing@@_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008369F0, 92 bytes, static __fastcall (ecx = position, edx = attached thing), `ret 4`.
 // Identity: ?Create@CThingSoundEmitter@@SIPAV1@ABVC3DVector@@PBVCThing@@_N@Z (Ego_r.pdb / FableWin.pdb). The manifest
 //   label "Sound_CreateAttachedEmitter" is descriptive (its callers are CTCSoundPlayer::CreateP[Un]AttachedEmitter).

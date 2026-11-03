@@ -1,5 +1,5 @@
 // NCreatureMode::RevertOldTargetFlags(CThing& thing, ETargetingType flags) -- restore saved targeting flags on a live thing that still has its CTCTargeted (interface 9)
-// Leaf: ?RevertOldTargetFlags@NCreatureMode@@
+// Leaf: ?RevertOldTargetFlags@NCreatureMode@@YIXAAVCThing@@W4ETargetingType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0085F880, length 78 bytes. `__fastcall` free function (ecx = the thing), saved flags in edx.
 // Mangled (Ego_r.pdb): ?RevertOldTargetFlags@NCreatureMode@@YIXAAVCThing@@W4ETargetingType@@@Z.
 // Callees: the non-const CVectorMap LowerBound 0x0040F020, CTCTargeted::SetTargetingFlags 0x007EA270. Caller:

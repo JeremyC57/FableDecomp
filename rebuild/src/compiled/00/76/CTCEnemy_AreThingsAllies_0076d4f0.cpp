@@ -1,5 +1,5 @@
 // CTCEnemy::AreThingsAllies(const CThing& thing1, const CThing& thing2) -- resolve each thing's governing enemy component (and the thing it speaks for) and report whether each side counts the other as an ally; false when either side has no enemy component or is friends with everything
-// Leaf: ?AreThingsAllies@CTCEnemy
+// Leaf: ?AreThingsAllies@CTCEnemy@@SI_NABVCThing@@0@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076D4F0, 176 bytes, static `__fastcall` (thing1 in ecx, thing2 in edx), `ret`.
 // Name: FableWin.pdb `?AreThingsAllies@CTCEnemy@@SI_NABVCThing@@0@Z`; landed callers declare `AreThingsAllies @ 0x0076D4F0
 //   (__fastcall)` (five call sites: 0x0064A2A5, 0x006A7A46, 0x00744D79, 0x0090F18F, 0x00936B5C). The catalog name is right;

@@ -1,5 +1,5 @@
 // CQ_RansomVictimScript::Init() -- reset the ransom-victim quest state, register its five quest regions and five boasts, arm the victim boast flags in the master data and name the active enemy "RandomAttacker"
-// Leaf: ?Init@CQ_RansomVictimScript@NScript@@
+// Leaf: ?Init@CQ_RansomVictimScript@NScript@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DE03E0, 940 bytes (944 with int3 padding; vtable reference 0x012DCE7C).
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0 / operator=(const char*) 0x0099EFE0;
 //   through the script's interface (+0x40): AddQuestRegion (slot 271, +0x43c) and AddBoast (slot 303, +0x4bc) -- slot

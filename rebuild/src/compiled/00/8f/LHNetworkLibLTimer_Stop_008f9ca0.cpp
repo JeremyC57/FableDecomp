@@ -1,5 +1,5 @@
 // LHNetworkLib::LTimer::Stop() -- a running timer saves its current speed-up factor and freezes itself with factor 0
-// Leaf: ?Stop@LTimer@LHNetworkLib@@
+// Leaf: ?Stop@LTimer@LHNetworkLib@@QAEXXZ
 // Retail 0x008F9CA0, 0x52 bytes, thiscall `ret`. Manifest label "MusicTimer_CheckAndTrigger" (_global) is a propagated
 // descriptive name. PDB name set: `?Stop@LTimer@LHNetworkLib@@QAEXXZ`, with the inline helpers Running()
 // (`?Running@LTimer@LHNetworkLib@@QAEHXZ`, int) and GetSpeedUpFactor(). Ego_r layout as in the landed MSeconds 0x008F8030.

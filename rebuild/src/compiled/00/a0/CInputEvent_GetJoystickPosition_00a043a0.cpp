@@ -8,7 +8,7 @@
 // Layout: CInputEvent (Ego_r.pdb, 0x34 bytes) -- Data (UInputEventData, 0x20 bytes) whose JoystickPos is at +0.
 // Shape: the helper's result lands in a NAMED local and is returned through C2DVector's memberwise user copy constructor
 // (X through `fld ; fstp`, Y through `mov`); returning the call straight passes the hidden pointer through (20 v 35).
-// Leaf: ?GetJoystickPosition@CInputEvent
+// Leaf: ?GetJoystickPosition@CInputEvent@@QBE?AVC2DVector@@XZ
 class C2DVector {
 public:
     float X, Y;

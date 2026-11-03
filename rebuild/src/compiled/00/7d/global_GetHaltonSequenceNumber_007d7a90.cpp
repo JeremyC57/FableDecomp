@@ -1,5 +1,5 @@
 // GetHaltonSequenceNumber(int index, int base) -- the index-th element of the radical-inverse (Halton/van der Corput) sequence in the given base: the base-b digits of index mirrored about the radix point
-// Leaf: ?GetHaltonSequenceNumber@@
+// Leaf: ?GetHaltonSequenceNumber@@YIMHH@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007D7A90, 66 bytes (+14 int3), __fastcall (index in ecx, base in edx), float in
 //   st(0), plain `ret`.
 // Identity: Ego_r.pdb name set ?GetHaltonSequenceNumber@@YIMHH@Z (float __fastcall (int, int)); no direct caller in

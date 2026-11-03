@@ -2,7 +2,7 @@
 // Grade: RELOCATION_MATCH with cl 13.10.3077 (RTM); the DDK 13.10.4035 build emits a different /GS prologue for this body.
 // compressed form: a package count byte, then per package an event count byte, a 32-bit time stamp and the
 // compressed events
-// Leaf: ?InitFromCompressedBuffer@CGameEventPackageSet
+// Leaf: ?InitFromCompressedBuffer@CGameEventPackageSet@@QAEXPBE@Z
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F1AC0, length 221 bytes, `ret 4`, /GS cookie frame (0x678 bytes).
 // Callees: CGameEvent::InitFromCompressedBuffer(const unsigned char*) @ 0x009F1870 (returns the bytes consumed),

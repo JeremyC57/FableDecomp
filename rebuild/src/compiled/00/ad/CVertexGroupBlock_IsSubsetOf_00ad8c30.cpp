@@ -1,7 +1,7 @@
 // CVertexGroupBlock::IsSubsetOf(const CVertexGroupBlock& other) -- every group of this block is in `other` (and this block is no larger)
 // Grade: RELOCATION_MATCH -- the find result is a NAMED iterator local (RVO into the hidden-result slot, which retail re-reads
 // after the call) and the loop indexes Groups[i] (a named local plus the pointer walk shrink-wraps ebx; the index form restores retail's allocation).
-// Leaf: ?IsSubsetOf@CVertexGroupBlock@@
+// Leaf: ?IsSubsetOf@CVertexGroupBlock@@QBE_NABV1@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AD8C30, length 105 bytes (padded to 112), `ret 4`.
 // Callees: map<unsigned long, long>::find(iterator* result, const unsigned long& key) @ 0x006699C0 (landed as
 // CRetailTree<ulong key>::find; header at the map's +0, end() re-read after the call).

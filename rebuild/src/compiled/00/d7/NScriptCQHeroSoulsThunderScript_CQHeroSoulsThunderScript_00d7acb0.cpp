@@ -1,5 +1,5 @@
 // NScript::CQ_HeroSoulsThunderScript::CQ_HeroSoulsThunderScript(CScriptDataBase* data, CGameScriptInterfaceBase& game) -- constructor of the Q_HeroSoulsThunder quest script: level-script base, then the empty csargs map
-// Leaf: ??0CQ_HeroSoulsThunderScript@
+// Leaf: ??0CQ_HeroSoulsThunderScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D7ACB0, 86 bytes, `__fastcall`, two stack arguments (`ret 8`), returns this.
 //   Its only caller is the quest's Alloc @ 0x00D7C6A0 (`new` 0x58 bytes, then this ctor out of line), the pAllocFunc of
 //   the "Q_HeroSoulsThunder" CScriptInfo record (section "S_QHST", stored at 0x00CD67C6).

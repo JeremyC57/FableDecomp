@@ -1,5 +1,5 @@
 // CTCHeroStats::Copy(const CTCBase& other) -- copy another hero-stats component: morality, age, suntan, fatness and money through their setters when the global apply flag is set (and the clothing stats marked stale), else directly; then the confiscated money, renown, health/stamina extras, appearance traits, experience and ability-use vectors, spent experience and chicken-throw record; then CTCBase::Copy
-// Leaf: ?Copy@CTCHeroStats
+// Leaf: ?Copy@CTCHeroStats@@UAEXABVCTCBase@@@Z
 //
 // Retail 0x0057C9C4, 293 bytes (`ret 4`; CTCHeroStats vtable slot 12, catalog "vfunc_12"). Ego_r.pdb
 // `?Copy@CTCHeroStats@@UAEXABVCTCBase@@@Z`. Size TU (`and dword ptr [m],0`, `push ecx ; fstp [esp]` float arguments):

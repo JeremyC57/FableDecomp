@@ -1,6 +1,6 @@
 // CGameScriptInterface::GetPreviouslyWieldedMeleeWeaponName(CCharString& name) const -- the definition name of the
 // melee weapon the hero wielded before (hero TC 0x13), true when there is one with a non-empty name
-// Leaf: ?GetPreviouslyWieldedMeleeWeaponName@CGameScriptInterface
+// Leaf: ?GetPreviouslyWieldedMeleeWeaponName@CGameScriptInterface@@UBE_NAAVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00897560, length 208 bytes, `ret 4`.
 // Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, the TC map lower bound
 // copy @ 0x004365B0, CDefinitionManager::GetDefNameFromGlobalIndex(long) @ 0x009ACCC0 (CDefString by hidden

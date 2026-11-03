@@ -1,5 +1,5 @@
 // CV_BodyGuardScript::OnPersist(CPersistContext&) -- save/load the four henchmen's global status and the four respawn timers (each timer's remaining time goes through the context as a float and is written back)
-// Leaf: ?OnPersist@CV_BodyGuardScript@NScript@@
+// Leaf: ?OnPersist@CV_BodyGuardScript@NScript@@UAEXAAVCPersistContext@@@Z
 // Naming wave 18: the global stand-in g_pGameScriptInterface (0x0143E8F8) is pDSTGame, a CGameScriptInterfaceBase* (ESTABLISHED_SPELLINGS; the
 //   virtual slots are the base interface's) -- name-only (the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E5D300, 483 bytes (496 with padding), `ret 4`.

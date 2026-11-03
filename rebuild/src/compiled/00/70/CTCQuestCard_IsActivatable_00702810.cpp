@@ -1,5 +1,5 @@
 // CTCQuestCard::IsActivatable() const -- a quest card can be activated unless one of its def's prerequisites is a renown level the living hero has not reached
-// Leaf: ?IsActivatable@CTCQuestCard@@
+// Leaf: ?IsActivatable@CTCQuestCard@@QBE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00702810, 213 bytes, plain `ret`.
 // Label correction: catalog "CViewBase_FindParticleMorph" is propagated; callers are CQuestManager::ActivateFeatCard
 //   0x004B1590 / ActivateQuestCard 0x004B4AA0 on the interface-0x6C component (CTCQuestCard::GetInterfaceType 0x007029F0

@@ -1,5 +1,5 @@
 // NParticleEngine::CPSCEmitterGeneric::CollectUpdateParameters(CParticleUpdateParameters<unsigned long,unsigned long>& params, const unsigned long& prefix) -- vtable slot 10: registers the generic emitter as the update-parameter callback for the key `prefix` + ".Centre"
-// Leaf: ?CollectUpdateParameters@CPSCEmitterGeneric@
+// Leaf: ?CollectUpdateParameters@CPSCEmitterGeneric@NParticleEngine@@UAEXAAV?$CParticleUpdateParameters@KK@2@ABK@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B158A0, length 169 bytes, `ret 8`.
 // Signature from Ego_r.pdb: ?CollectUpdateParameters@CPSCEmitterGeneric@NParticleEngine@@UAEXAAV?$CParticleUpdateParameters@KK@2@ABK@Z;
 //   slot 10 of the CPSCEmitterGeneric vtable 0x012A002C (absolute ref 0x012A0054).

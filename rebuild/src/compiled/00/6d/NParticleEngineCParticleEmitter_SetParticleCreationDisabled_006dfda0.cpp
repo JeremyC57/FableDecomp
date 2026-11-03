@@ -1,5 +1,5 @@
 // NParticleEngine::CParticleEmitter::SetParticleCreationDisabled(bool disabled) -- store the flag into bit 6 of the emitter's 16-bit flag word
-// Leaf: ?SetParticleCreationDisabled@CParticleEmitter@NParticleEngine@@
+// Leaf: ?SetParticleCreationDisabled@CParticleEmitter@NParticleEngine@@QAEX_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006DFDA0, 33 bytes, thiscall `ret 4`. Only caller:
 //   CTCDParticleEmitter::FrameUpdate 0x006E1620 (call site 0x006E1809: `PEmitter.GetPItem()->SetParticleCreationDisabled(
 //   attached->InLimbo)`, the bool pushed as `(flags91 >> 5) & 0xFFFFFF01`). The catalog's "FrameUpdate_SetAnimationFlag" is

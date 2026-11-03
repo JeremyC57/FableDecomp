@@ -1,5 +1,5 @@
 // CTCHeroExperience::SetAsHit() -- the hero was hit: the combo multiplier drops (flourish invalidated, the "lost" sound when it was above one), the attenuation timer rearms and the param falls back to the current fallback multiplier's start
-// Leaf: ?SetAsHit@
+// Leaf: ?SetAsHit@CTCHeroExperience@@QAEXXZ
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006D80E0, length 134 bytes (+ int3 padding), thiscall plain `ret`. Ego_r.pdb

@@ -1,5 +1,5 @@
 // CTCPhotojournalCapture::AddDescription(const CWideString& filename, const CWideString& description) -- append a caption to a saved photojournal screenshot: open the file read/write, seek to its end, write the caption's UTF-16 characters, then its character count as a trailing long, close
-// Leaf: ?AddDescription@
+// Leaf: ?AddDescription@CTCPhotojournalCapture@@SIXABVCWideString@@0@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0055CFB0, 178 bytes (192 with padding), plain `ret` (static /Gr __fastcall:
 //   filename in ecx, description in edx). No direct callers found (xref.py: 0); the reader is its twin
 //   GetDescription 0x0055D070 (seek to end - 4, read the count, accept 0..0x200).

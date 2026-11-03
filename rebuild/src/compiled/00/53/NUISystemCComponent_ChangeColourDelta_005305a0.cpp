@@ -1,5 +1,5 @@
 // NUISystem::CComponent::ChangeColourDelta(const CRGBColour& delta, float time, bool flags) -- fade to the current colour plus a per-channel delta
-// Leaf: ?ChangeColourDelta@CComponent@NUISystem@@
+// Leaf: ?ChangeColourDelta@CComponent@NUISystem@@UAEXABVCRGBColour@@M_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005305A0, 104 bytes. Vtable 0x0122F5D4 slot 39 (CSprite, inherited from CComponent);
 //   calls ChangeColour (vslot 38, +0x98, row 0x0052EC60) like the landed ChangeZoomDelta 0x0052EC20 calls ChangeZoom.
 // Identity: Ego_r.pdb `?ChangeColourDelta@CComponent@NUISystem@@UAEXABVCRGBColour@@M_N@Z` (the object symbol here).

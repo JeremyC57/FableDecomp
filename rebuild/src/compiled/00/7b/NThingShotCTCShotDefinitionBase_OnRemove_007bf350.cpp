@@ -1,5 +1,5 @@
 // NThingShot::CTCShotDefinitionBase::OnRemove() -- when the shot component is removed: stop the owning thing's augmentation trail effect and kill the shot's effect thing if it is still alive
-// Leaf: ?OnRemove@CTCShotDefinitionBase@
+// Leaf: ?OnRemove@CTCShotDefinitionBase@NThingShot@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007BF350, 113 bytes (+15 int3 padding).
 // Identity: CTCBase vtable slot 2 (+0x08) is OnRemove (CThing::RemoveTC @ 0x004C9840 calls it); this body sits in slot 2
 //          of EVERY shot vtable read from the exe -- CTCShotDefinitionBase 0x0126E1A4, Throw 0x0123CDC4, ThrowPredictive

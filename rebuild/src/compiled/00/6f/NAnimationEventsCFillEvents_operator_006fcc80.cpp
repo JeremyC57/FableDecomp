@@ -1,5 +1,5 @@
 // NAnimationEvents::CFillEvents::operator()(const CEvent& event) -- append (symbol name of the event index, event time) to the functor's vector
-// Leaf: ??RCFillEvents@NAnimationEvents@@
+// Leaf: ??RCFillEvents@NAnimationEvents@@QAEXABVCEvent@1@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006FCC80, 145 bytes, `ret 4`.
 // Label correction: catalog "ParticleMorphs_BuildEntry" is propagated; Ego_r.pdb `??RCFillEvents@NAnimationEvents@@`
 //   names this body (functor of CManager::GetExtraEvents).

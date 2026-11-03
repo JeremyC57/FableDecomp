@@ -1,5 +1,5 @@
 // CTCTavernGameCardBase::NewRound() -- base NewRound (game in session), then clear the round-finished flag and the table bounds and go to state 18
-// Leaf: ?NewRound@CTCTavernGameCardBase
+// Leaf: ?NewRound@CTCTavernGameCardBase@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F0960, length 51 bytes. CTCTavernGameCardBase vtable slot 32 (NewRound;
 // CTCTavernGame's slot 32 is 0x005E9A90, `mov byte ptr [ecx+29h],1`). Ego_r.pdb names `?NewRound@CTCTavernGameCardBase@@UAEXXZ`.
 // The catalog label "CTCTavernGameCardBase::NewGame" is the neighbouring slot's name and is corrected here.

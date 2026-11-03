@@ -1,5 +1,5 @@
 // NUISystem::CText::SetTextWindow(C2DBoxF& window) -- set the box the text is laid out in
-// Leaf: ?SetTextWindow@CText
+// Leaf: ?SetTextWindow@CText@NUISystem@@UAEXAAVC2DBoxF@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0054FFB0, 35 bytes (48 with padding), virtual, `ret 4`. No callees.
 // Vtable 0x01249CCC (NUISystem::CText) slot 147; Ego_r.pdb declares
 // `virtual void CText::SetTextWindow(C2DBoxF&)` (next to GetTextWindow, which returns the same member by reference).

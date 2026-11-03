@@ -1,5 +1,5 @@
 // CTCIdleScheduler::Clear() -- forget the preferred idle group and the last-checked frame and empty both idle maps (state groups and their weights)
-// Leaf: ?Clear@CTCIdleScheduler@@
+// Leaf: ?Clear@CTCIdleScheduler@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008018B0, 97 bytes (+ int3 padding), __fastcall, plain `ret`.
 //   Callers: the CTCIdleScheduler(CThing&) ctor 0x004E1537 (vtable 0x012426C4, after building both maps) and
 //   CThingAICreature::SetNewBrain 0x00833010 (on the interface-0xD3 component).

@@ -1,5 +1,5 @@
 // CCreatureAction_JackFlash::FinishAction() -- for a flagged target, push a new CModeJackOfBladesFlash (aimed at the target) on the creature's mode manager and suspend a player creature's animation; then the base FinishAction
-// Leaf: ?FinishAction@CCreatureAction_JackFlash
+// Leaf: ?FinishAction@CCreatureAction_JackFlash@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C0C00, 270 bytes (272 with padding), virtual FinishAction.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PTarget +0xa8, PCreature +0x08), CVectorMap::LowerBound 0x0040F020
 //   (inlined unchecked lookup of 0x31 = CTCCreatureModeManager, bit 17 of +0x24), operator new 0x00BFEA1A (0x98 bytes),

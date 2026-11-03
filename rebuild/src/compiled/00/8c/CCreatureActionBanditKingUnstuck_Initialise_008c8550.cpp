@@ -1,5 +1,5 @@
 // CCreatureAction_BanditKingUnstuck::Initialise() -- clear Knockdown, animation BK_UNSTUCK, drop creature mode 0x53, close the twin-blade "stuck" hit location and reopen the twin-blade one, create the UNSTUCK special effect at the creature and attach it through its particle emitter, then the base Initialise
-// Leaf: ?Initialise@CCreatureAction_BanditKingUnstuck
+// Leaf: ?Initialise@CCreatureAction_BanditKingUnstuck@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C8550, 586 bytes (592 with padding), virtual Initialise, plain `ret`.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CCombatActionBase::SetCombatAnimation
 //   0x008574D0, CBaseIntelligentPointer::GetPItem 0x00A01B50, CVectorMap::LowerBound 0x0040F020 (inline interface lookups

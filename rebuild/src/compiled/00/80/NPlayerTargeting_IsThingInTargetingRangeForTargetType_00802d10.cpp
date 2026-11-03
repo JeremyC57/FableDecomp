@@ -1,6 +1,6 @@
 // NPlayerTargeting::IsThingInTargetingRangeForTargetType(const CThing& thing, const CThing& target, unsigned long type) -- true when the target lies inside the thing's targeting range for that target type (2D distance, range from the thing's targeting sub-def and its primary-slot weapon)
 // Grade: RELOCATION_MATCH (via differ/00802d10.verify.cpp) -- CDefPointer(ENullDef) landed in engine/CDefPointer.h 2026-10-31. Levers: shared CDefPointer/CDefClassBase headers, CThing::GetPBaseDef() by value (FableWin), same-TU noinline GetSubDef<CTargetingDef> body (0x007EA960, the template body) so def's address does not escape and retail's register-cached def pointer follows
-// Leaf: ?IsThingInTargetingRangeForTargetType@
+// Leaf: ?IsThingInTargetingRangeForTargetType@NPlayerTargeting@@YI_NABVCThing@@0K@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00802D10, 231 bytes (+ int3 padding), __fastcall (thing in ecx, target in
 //   edx, type on the stack, `ret 4`), bool in al. Caller: 0x006AA996.
 // Name: Ego_r.pdb `?IsThingInTargetingRangeForTargetType@NPlayerTargeting@@YI_NABVCThing@@0K@Z` (the catalog label is the

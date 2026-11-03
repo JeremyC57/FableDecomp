@@ -1,5 +1,5 @@
 // CPersistTraits<CFaction>::TransferOut(CPersistContext& context, CCharString& out, const CFaction& faction) -- append the faction's text form: its quoted name, the ally count and each quoted ally, the enemy count and each quoted enemy, then the EndFaction marker
-// Leaf: ?TransferOut@?$CPersistTraits@VCFaction@@@@
+// Leaf: ?TransferOut@?$CPersistTraits@VCFaction@@@@QAEXAAVCPersistContext@@AAVCCharString@@ABVCFaction@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B91A0, 511 bytes (+ int3 padding to 512), thiscall, `ret 0Ch` (`this` and
 //   the context unused).
 // Identity: the catalog's "Faction_ExportToString" is a descriptive auto label. FableWin.pdb lists

@@ -1,5 +1,5 @@
 // QuadricOptimiserInternals::COptimisedPrimitive::GetRemainingVertices(const CIndexList& indices) const -- the subset of `indices` whose vertex still exists, returned by value
-// Leaf: ?GetRemainingVertices@COptimisedPrimitive@QuadricOptimiserInternals@@
+// Leaf: ?GetRemainingVertices@COptimisedPrimitive@QuadricOptimiserInternals@@ABE?AVCIndexList@2@ABV32@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AC8840, 277 bytes, thiscall `ret 8` (hidden CIndexList result + const CIndexList&).
 // Identity: Ego_r.pdb ?GetRemainingVertices@COptimisedPrimitive@QuadricOptimiserInternals@@ABE?AVCIndexList@2@ABV32@@Z
 //   (private const; the only PDB member of the class that takes and returns a CIndexList). `this` walks Vertices +0x10

@@ -1,5 +1,5 @@
 // NCreatureMode::CModeHoverBase::OnDeactivate() -- vtable slot 6 (inherited by CModeWalkInAllDirections): the base deactivation (mode no longer active), then the hover particle effect is killed if it is still alive
-// Leaf: ?OnDeactivate@CModeHoverBase@
+// Leaf: ?OnDeactivate@CModeHoverBase@NCreatureMode@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008EA9B0, 53 bytes (+11 int3 padding).
 // Name: FableWin.pdb ?OnDeactivate@CModeHoverBase@NCreatureMode@@UAEXXZ. The catalog label CModeWalkInAllDirections::vfunc_6
 // comes from slot 6 of the vtable 0x012687AC (rtti-vtables.tsv), whose slot 2 is the landed CModeHoverBase::AnimUpdate

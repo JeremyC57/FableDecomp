@@ -1,6 +1,6 @@
 // CScriptBase::OnRegionUnloaded(const CCharString& region) -- pauses every spawned thread associated with the region that has just unloaded
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CB7B60, length 87 bytes.
-// Leaf: ?OnRegionUnloaded@CScriptBase
+// Leaf: ?OnRegionUnloaded@CScriptBase@@QAEXABVCCharString@@@Z
 // Retail bytes: as 0x00CB7B00 with `push 1`
 // Callees: CCharString equality inlined around Compare(const char*, const char*) @ 0x00411570 (`__fastcall`), CSpawnedFuncBase::SetFuncAsPaused(bool) @ 0x00F359F0.
 // Identity: the PDB names ?KillSpawnedFunction@CScriptBase@@QAEXABVCCharString@@K@Z, ?OnRegionLoaded@ / ?OnRegionUnloaded@CScriptBase@@QAEXABVCCharString@@@Z;

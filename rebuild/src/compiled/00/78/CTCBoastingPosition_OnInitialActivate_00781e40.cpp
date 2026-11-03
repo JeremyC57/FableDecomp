@@ -1,5 +1,5 @@
 // CTCBoastingPosition::OnInitialActivate() -- make the thing undrawable, clear the graphic-appearance flag, and place the orb at the "PODIUM_ORB_CREATION_DUMMY" helper (or 1.7 above the thing when the helper is missing)
-// Leaf: ?OnInitialActivate@CTCBoastingPosition
+// Leaf: ?OnInitialActivate@CTCBoastingPosition@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00781E40, length 202 bytes (+ int3 padding). Vtable slot 6 ("vfunc_6" in the
 // catalog = CTCBase::OnInitialActivate).
 // Callees: CThing::SetAsDrawable(bool) (virtual slot 28, +0x70), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020

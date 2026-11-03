@@ -1,5 +1,5 @@
 // CParticleProgram::WriteGroups(CDataOutputStream& stream, const CArray<C3DGroup2>& groups) -- private static save helper: the group count, then per group its bone index, its vertex-blend count and the raw blend array
-// Leaf: ?WriteGroups@CParticleProgram@@CI
+// Leaf: ?WriteGroups@CParticleProgram@@CIXAAVCDataOutputStream@@ABV?$CArray@VC3DGroup2@@@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AE0680, 133 bytes, static __fastcall (stream in ecx, groups in edx), plain `ret`.
 // Identity: Ego_r.pdb `?WriteGroups@CParticleProgram@@CIXAAVCDataOutputStream@@ABV?$CArray@VC3DGroup2@@@@@Z`; its only
 //   callers are the two tail calls of CParticleProgram::WriteToFile 0x00AE2230 (landed; SimGroups +0xFC, NonSimGroups +0x108).

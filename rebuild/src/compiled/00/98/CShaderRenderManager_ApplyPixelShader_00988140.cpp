@@ -8,7 +8,7 @@
 // is a read-modify-write `or dword ptr [esi+3D8h],3`.
 // Retail layout: CurrentPixelShader +0x1E0 and UpdateFlags +0x3D8 (Ego_r.pdb +0x1F0 / +0x3F8: the PDB
 // CArrays before them are 16 bytes, the retail ones 12). No engine header exists for CShaderRenderManager.
-// Leaf: ?ApplyPixelShader@CShaderRenderManager
+// Leaf: ?ApplyPixelShader@CShaderRenderManager@@QAEXABVCPixelShader@@@Z
 
 struct IDirect3DPixelShader9;
 

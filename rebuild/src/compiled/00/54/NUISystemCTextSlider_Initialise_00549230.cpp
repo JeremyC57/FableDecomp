@@ -1,5 +1,5 @@
 // NUISystem::CTextSlider::Initialise() -- the draggable-base initialisation; hand the right and left arrows to the parent (add as child, re-parent, initialise); put the selected child into state 3; append a ULONG action parameter holding the selection to every action; reset the input timer
-// Leaf: ?Initialise@CTextSlider@NUISystem
+// Leaf: ?Initialise@CTextSlider@NUISystem@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00549230, length 528 bytes, `ret`.
 // Callees: CDraggableInto::Initialise @ 0x0052C730 (manifest "CChangingStateComponent::Initialise" is propagated),
 //          CCountedPointer<CComponent>::CCountedPointer(CComponent*) @ 0x00429C15, operator delete @ 0x00BFE9BC,

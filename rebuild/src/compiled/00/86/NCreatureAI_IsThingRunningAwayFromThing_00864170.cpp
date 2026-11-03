@@ -1,5 +1,5 @@
 // NCreatureAI::IsThingRunningAwayFromThing(const CThing&, const CThing&, const C3DVector&) -- the thing is more than 4 units (2D) from the position and is facing away from the other thing
-// Leaf: ?IsThingRunningAwayFromThing@
+// Leaf: ?IsThingRunningAwayFromThing@NCreatureAI@@YI_NABVCThing@@0ABVC3DVector@@@Z
 // Retail 0x00864170, 0xD7 bytes (+ int3 padding), __fastcall (thing in ecx, other in edx, position on the stack, `ret 4`).
 // PDB (Ego_r): ?IsThingRunningAwayFromThing@NCreatureAI@@YI_NABVCThing@@0ABVC3DVector@@@Z. Callers 0x0092F1CC, 0x00932EEA,
 // 0x00933796.

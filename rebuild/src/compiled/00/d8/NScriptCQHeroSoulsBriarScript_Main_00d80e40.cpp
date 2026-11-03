@@ -1,5 +1,5 @@
 // CQ_HeroSoulsBriarScript::Main() -- the Hero Souls (Briar Rose) quest's main: bind the BriarRose / BRIAR_ROSE_IMPOSTER / HSB_MagicBarrier entity scripts; on the first run wait for the intro cutscene, set the objective, activate Q_HeroSoulsMother, auto-save and fade in; wait while the Northern Wastes are loaded without the start screen; give Jack's second-soul line, set the objective, wait for the start screen, then fight Briar Rose (Jack taunts at boss phases 1 and 2), wait for her death, play the soul-3 intro, close the magic barrier quest, count the delivered soul, log, give the good-soul morality, set the next objective, complete the quest and fade in
-// Leaf: ?Main@CQ_HeroSoulsBriarScript@NScript@@
+// Leaf: ?Main@CQ_HeroSoulsBriarScript@NScript@@UAEXXZ
 // Naming wave 29 (family sfbh): engine/CSpawnedFuncBase.h now carries retail's implicit destructor and the real CCharString /
 //   CCountedPointer<const NScript::CPredicateBase> members; header contract met here: engine/CCountedPointer.h included before it.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D80E40, length 2016 bytes.

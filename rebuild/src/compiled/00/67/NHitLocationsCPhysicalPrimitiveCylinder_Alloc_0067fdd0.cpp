@@ -1,5 +1,5 @@
 // NHitLocations::CPhysicalPrimitiveCylinder::Alloc() const -- vtable slot 1: returns a freshly constructed cylinder primitive (BaseName unset)
-// Leaf: ?Alloc@CPhysicalPrimitiveCylinder@
+// Leaf: ?Alloc@CPhysicalPrimitiveCylinder@NHitLocations@@UBEPAVCPhysicalPrimitiveBase@2@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0067FDD0, 31 bytes.
 // Name: FableWin.pdb ?Alloc@CPhysicalPrimitiveCylinder@NHitLocations@@UBEPAVCPhysicalPrimitiveBase@2@XZ; slot 1 of the
 // vtable 0x0125BA4C (rtti-vtables.tsv; slot 0 is the deleting dtor 0x0067F770).

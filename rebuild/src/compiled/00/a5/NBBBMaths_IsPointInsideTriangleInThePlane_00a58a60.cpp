@@ -1,5 +1,5 @@
 // NBBBMaths::IsPointInsideTriangleInThePlane(const vector<C2DVector>& points, const C2DVector& pos) -- 2D point-in-triangle test: the cross product of every edge with the vector to the point must not change sign against the closing edge's
-// Leaf: ?IsPointInsideTriangleInThePlane@NBBBMaths@@
+// Leaf: ?IsPointInsideTriangleInThePlane@NBBBMaths@@YI_NABV?$vector@VC2DVector@@V?$allocator@VC2DVector@@@std@@@std@@ABVC2DVector@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A58A60, 228 bytes, plain `ret` (PDB
 //   ?IsPointInsideTriangleInThePlane@NBBBMaths@@YI_NABV?$vector@VC2DVector@@...@std@@ABVC2DVector@@@Z: `bool __fastcall`,
 //   the vector in ecx, the point in edx; retail's vector is STLport's). No callees; 0.0f @ 0x0122DEDC.

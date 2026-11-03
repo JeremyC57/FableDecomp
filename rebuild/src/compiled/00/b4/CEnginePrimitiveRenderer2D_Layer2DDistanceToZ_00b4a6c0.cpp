@@ -1,5 +1,5 @@
 // CEnginePrimitiveRenderer2D::Layer2DDistanceToZ(float distance) -- map a 2D layer's view distance to the z-buffer value: the view-space z of the layer point through the engine camera's view transform, reciprocal, scaled by the camera's ZBufferFactor plus ZBufferOffset
-// Leaf: ?Layer2DDistanceToZ@
+// Leaf: ?Layer2DDistanceToZ@CEnginePrimitiveRenderer2D@@QAEMM@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B4A6C0, 54 bytes. __fastcall (this unused), `ret 4`, float in st0.
 // Identity: FableWin.pdb `?Layer2DDistanceToZ@CEnginePrimitiveRenderer2D@@QAEMM@Z` (and Ego_r.pdb); it follows the two
 //   landed Layer2DToDistance bodies 0x00B4A6A0 / 0x00B4A6B0, and every caller (CEngineSubPrimitive2DClockSprite 0x00BACE80,

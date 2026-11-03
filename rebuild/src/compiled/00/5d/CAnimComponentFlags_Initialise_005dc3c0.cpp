@@ -15,7 +15,7 @@
 // frame word of its own (0x30 frame), an inlined by-value parameter adds a self-copy. The parser's implicit destructor is inlined (comment list, TempCharString,
 // Filename, then the out-of-line CBase destructor: no vtable store of its own). The engine header
 // CAnimComponentFlags.h is data-only, so the polymorphic class is modelled locally (Flags +0x08, PDB name).
-// Leaf: ?Initialise@CAnimComponentFlags
+// Leaf: ?Initialise@CAnimComponentFlags@@UAE_NAAVCPersistContext@@ABVCCharString@@@Z
 
 class CCharString { public:
     void* m_pData;

@@ -1,5 +1,5 @@
 // NUISystem::CSwappingStateComponent::Update(float deltaTime) -- the changing-state update, then cycle the swap states: after a state change remember when a swap state was entered; when settled in a swap state whose dwell time has run out, change to the next swap state (or a random different one) and restart the dwell clock
-// Leaf: ?Update@CSwappingStateComponent@NUISystem@@
+// Leaf: ?Update@CSwappingStateComponent@NUISystem@@UAEXM@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00547380, 311 bytes (+ int3 padding), `ret 4`. Slot 1 of the primary vtable
 //   0x012485AC (rtti-vtables.tsv); Ego_r.pdb ?Update@CSwappingStateComponent@NUISystem@@UAEXM@Z.
 // Callees: NUISystem::CChangingStateComponent::Update(float) @ 0x0052C7E0 (qualified), the virtual slots 137 (+0x224)

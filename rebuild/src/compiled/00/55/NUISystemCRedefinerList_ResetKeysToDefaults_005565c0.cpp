@@ -1,5 +1,5 @@
 // NUISystem::CRedefinerList::ResetKeysToDefaults(bool wasd) -- reset the profile's key bindings (the WASD or the default set), fade the active redefiner list in, light its accept button (observe the accept event, full alpha) and reset the volume of sound groups 0x10, 0x80 and 0x40
-// Leaf: ?ResetKeysToDefaults@
+// Leaf: ?ResetKeysToDefaults@CRedefinerList@NUISystem@@SIX_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005565C0, 217 bytes (224 with padding), plain `ret` (Ego_r.pdb
 //   `?ResetKeysToDefaults@CRedefinerList@NUISystem@@SIX_N@Z`: static __fastcall, the flag in cl).
 // Callees: CTBaseSingleton<CUserProfileManager>::Get 0x0040D2A0, CUserProfileManager::ResetAssignedInputsWASD 0x00408820 /

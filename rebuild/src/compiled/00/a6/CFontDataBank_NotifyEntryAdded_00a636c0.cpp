@@ -1,7 +1,7 @@
 // CFontDataBank::NotifyEntryAdded(unsigned long type, unsigned long index, const CArray<char>& info) -- grow the
 // entry table to cover the new index (null entries), store a new CFontDataBankEntry for a type-0 entry (else null),
 // then let CBankFile record the entry
-// Leaf: ?NotifyEntryAdded@CFontDataBank
+// Leaf: ?NotifyEntryAdded@CFontDataBank@@MAEXKKABV?$CArray@D@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A636C0, length 203 bytes, `ret 0Ch`.
 // Callees: the STLport vector<CFontDataBankEntry*>::_M_insert_overflow @ 0x00A639E0, operator new @ 0x00BFEA1A,
 // CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0, CBankFile::NotifyEntryAdded @ 0x009CBC20.

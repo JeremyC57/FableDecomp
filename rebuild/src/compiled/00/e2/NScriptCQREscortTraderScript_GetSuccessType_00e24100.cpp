@@ -1,5 +1,5 @@
 // NScript::CQR_EscortTraderScript::GetSuccessType(const CScriptThing& trader) -- grade a finished escort: untouched trader at full health = 3, then two tiers by hit count and remaining health fraction from the script def, else 0
-// Leaf: ?GetSuccessType@CQR_EscortTraderScript@NScript@@
+// Leaf: ?GetSuccessType@CQR_EscortTraderScript@NScript@@QAE?AW4EscortTraderSuccessType@12@ABVCScriptThing@@@Z
 // Grade: MATCH (retry 9) -- the hit-limit test reads the global directly and the fraction test reads it through a block-local
 //   `CScriptDef* def = pGlobalScriptDef;` declared inside the hit-limit `if`: the global load is CSE'd into the local, which is
 //   copied to ebx before the GetHealth call (`mov ebx,eax ; fcomp [ebx+990h]`); with both reads on the global (or one local

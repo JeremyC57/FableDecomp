@@ -12,7 +12,7 @@
 // Shape: the parent read once into a local (edi, reused as RemoveTC's `this`); the presence bit (0xA7 = word 5 bit 7)
 //   folds to `mov al,[edi+34h] ; test al,al ; jns`; the out-pointer GetInterface leaves the component in eax; the two
 //   clears share one zero register; a running ability other than 3 returns before RemoveTC.
-// Leaf: ?CancelMove@CTCWillEnflame
+// Leaf: ?CancelMove@CTCWillEnflame@@QAEXXZ
 class CTCBase;
 
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)

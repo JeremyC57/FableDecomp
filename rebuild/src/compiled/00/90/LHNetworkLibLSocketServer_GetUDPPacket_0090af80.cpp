@@ -1,5 +1,5 @@
 // LHNetworkLib::LSocketServer::GetUDPPacket(std::vector<char>& data, LAddress& source) -- hand out the oldest queued UDP datagram: grow the caller's buffer to fit, copy the bytes and the sender address, unlink the queue node; false when nothing is queued
-// Leaf: ?GetUDPPacket@LSocketServer@LHNetworkLib@@QAE_N
+// Leaf: ?GetUDPPacket@LSocketServer@LHNetworkLib@@QAE_NAAV?$vector@DV?$allocator@D@std@@@std@@AAULAddress@2@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0090AF80, 181 bytes, thiscall, `ret 8`.
 // Identity (proven): Ego_r.pdb `?GetUDPPacket@LSocketServer@LHNetworkLib@@QAE_NAAV...` (vector<char>&, LAddress&); the body
 //   reads LSocketServer::ListOfUDPDatagramms (list<DatagrammPacket*>, retail +0x14) and copies DatagrammPacket::Data and

@@ -1,5 +1,5 @@
 // CAFile::GetAbsoluteFilePath(const CCharString& basePath, const CCharString& relativePath) -- resolve a backslash path relative to the folder of basePath: drop basePath's last component, then walk relativePath's folders ("..": drop one more, otherwise append) and finally append its file name
-// Leaf: ?GetAbsoluteFilePath@CAFile@@SI?AVCCharString@@
+// Leaf: ?GetAbsoluteFilePath@CAFile@@SI?AVCCharString@@ABV2@0@Z
 // Flags: /Oa
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00998250, 800 bytes (incl. int3 padding). FableWin.pdb
 //   `?GetAbsoluteFilePath@CAFile@@SI?AVCCharString@@ABV2@0@Z`: a public static `__fastcall` returning CCharString (hidden

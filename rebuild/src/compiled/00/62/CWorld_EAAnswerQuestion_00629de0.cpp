@@ -1,5 +1,5 @@
 // CWorld::EAAnswerQuestion(const CGameEvent* event) -- game-event action: read the answer from the event, post message 0x10 carrying it after 50 frames, and while the subtitle box is displaying text play the A (answer 1) or B button sound and clear the subtitles
-// Leaf: ?EAAnswerQuestion@
+// Leaf: ?EAAnswerQuestion@CWorld@@QAEXPBVCGameEvent@@@Z
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>
 //   CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass, read through the inline static accessor Get() (name-only: the bytes are unchanged).
 // Flags: /GS

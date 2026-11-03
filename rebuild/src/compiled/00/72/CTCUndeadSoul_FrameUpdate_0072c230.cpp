@@ -1,5 +1,5 @@
 // CTCUndeadSoul::FrameUpdate() -- an undead soul is visible (drawable and targetable) only while the controlled hero is alive and able to use the soul-seeing ability (7); toggles drawable/targetable and, for a player-type thing, the animation suspension when that changes
-// Leaf: ?FrameUpdate@CTCUndeadSoul
+// Leaf: ?FrameUpdate@CTCUndeadSoul@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0072C230, 318 bytes (plain `ret`); CTCUndeadSoul vtable 0x0123A364 slot 9
 // (Ego_r.pdb `?FrameUpdate@CTCUndeadSoul@@UAEXXZ`; the manifest says "vfunc_9").
 // Callees: CTCBase::GetPlayerManager() 0x00686D40; CPlayerManager::GetMainPlayer() 0x00449970; CPlayer::

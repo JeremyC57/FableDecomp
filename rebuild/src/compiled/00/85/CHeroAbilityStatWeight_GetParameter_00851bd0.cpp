@@ -1,5 +1,5 @@
 // CHeroAbilityStatWeight::GetParameter(const CTCHeroExperience&) const -- the weighted mean, over the stats the ability weights, of the hero's level in each stat as a fraction of that stat's maximum level (0 when the weights sum below 1e-4)
-// Leaf: ?GetParameter@CHeroAbilityStatWeight@@
+// Leaf: ?GetParameter@CHeroAbilityStatWeight@@QBEMABVCTCHeroExperience@@@Z
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00851BD0, 234 bytes, __fastcall, `ret 4`, float in st0.
 // Identity: Ego_r.pdb / FableWin.pdb ?GetParameter@CHeroAbilityStatWeight@@QBEMABVCTCHeroExperience@@@Z, right after

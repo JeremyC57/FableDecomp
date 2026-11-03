@@ -1,6 +1,6 @@
 // NUISystem::CAction::CAction() -- ActionType = 0, the two empty STLport lists (UIActionParams, ThingActionParams), Valid = true
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0042BE50, length 43 bytes.
-// Leaf: ??0CAction@NUISystem
+// Leaf: ??0CAction@NUISystem@@QAE@XZ
 // Retail bytes: push ebp ; mov ebp,esp ; push ecx ; push esi ; mov esi,ecx ; and dword ptr [esi],0 ; lea eax,[ebp-1] ; push eax ; lea ecx,[esi+4] ; call list ;
 //               lea eax,[ebp-1] ; push eax ; lea ecx,[esi+8] ; call list ; mov byte ptr [esi+0Ch],1 ; mov eax,esi ; pop esi ; leave ; ret
 // Callees: the STLport list constructors (allocator by const reference; `[this]=0 ; malloc(0Ch) ; next=prev=node`)

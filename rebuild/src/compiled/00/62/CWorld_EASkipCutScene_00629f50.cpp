@@ -1,5 +1,5 @@
 // CWorld::EASkipCutScene(const CGameEvent*) -- game-event action: if a skippable cutscene is showing, play the text-box button sound, post the skip-cutscene message and clear the subtitles, marking the cutscene skipped
-// Leaf: ?EASkipCutScene@CWorld@@
+// Leaf: ?EASkipCutScene@CWorld@@QAEXPBVCGameEvent@@@Z
 // Naming wave 18: the global stand-in g_framesPerSecond (0x01375550) is the protected static long CMainGameComponent::ConstantFPS, read through the
 //   inline static accessor GetConstantFPS() as retail code outside the class does (name-only: the bytes are unchanged).
 // Naming wave 18: the global stand-in g_pPlayerGui (0x013B8790) is the private static CCountedPointer<CPlayerGui>

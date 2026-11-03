@@ -1,5 +1,5 @@
 // CBankFileManager::BankExists(const CCharString& bank) -- resolve the bank alias, then report whether the bank is known: in retail-bank mode whether any open retail bank's entry index holds it, otherwise whether it is a registered bank
-// Leaf: ?BankExists@CBankFileManager@@
+// Leaf: ?BankExists@CBankFileManager@@QBE_NABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009A80B0, 145 bytes, thiscall `ret 4`. PDB (Ego_r): `public: bool __fastcall
 // CBankFileManager::BankExists(class CCharString const &) const`. Catalog name "GetLanguageData" is wrong (the callee-canon
 // label file already says BankExists). Callers: eight sites 0x00415099..0x00415236 and 0x009D9B5A.

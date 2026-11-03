@@ -1,5 +1,5 @@
 // NParticleEngine::CPSCUpdateNormal::GetUpdateParam(C3DVector& value, unsigned long paramType, float time, bool initial, const CParticleUpdateParameters& params, unsigned long index) -- vtable slot 1: the only parameter this component supplies is type 0, the particle-system offset (zero for the initial query)
-// Leaf: ?GetUpdateParam@CPSCUpdateNormal@
+// Leaf: ?GetUpdateParam@CPSCUpdateNormal@NParticleEngine@@UAE_NAAVC3DVector@@KM_NABV?$CParticleUpdateParameters@KK@2@K@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B0A6D0, 62 bytes (+2 int3 padding).
 // Name: FableWin.pdb ?GetUpdateParam@CPSCUpdateNormal@NParticleEngine@@UAE_NAAVC3DVector@@KM_NABV?$CParticleUpdateParameters@KK@2@K@Z;
 // slot 1 of the vtable 0x0129FC1C (rtti-vtables.tsv; slot 1 of CPSCSpline is the landed GetUpdateParam 0x00B1B030).

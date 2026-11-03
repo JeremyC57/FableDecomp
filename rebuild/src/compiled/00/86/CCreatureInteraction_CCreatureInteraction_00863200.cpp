@@ -1,5 +1,5 @@
 // CCreatureInteraction::CCreatureInteraction(ECreatureInteractionType, CThingCreatureBase&) -- empty participant list, store the type, add the creature as the first participant
-// Leaf: ??0CCreatureInteraction@@QAE@W4ECreatureInteractionType
+// Leaf: ??0CCreatureInteraction@@QAE@W4ECreatureInteractionType@@AAVCThingCreatureBase@@@Z
 // Retail 0x00863200, 0x4C bytes (+ int3 padding), thiscall `ret 8`. Manifest label "CreatureInteraction_InitializeList" is a
 // descriptive auto label; the PDB (Ego_r) names ??0CCreatureInteraction@@QAE@W4ECreatureInteractionType@@AAVCThingCreatureBase@@@Z
 // and the only caller, CThingCreatureBase::NewCreatureInteraction 0x00662970, does `new(8)` then `push this ; push type ; call`.

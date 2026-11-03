@@ -1,5 +1,5 @@
 // CLocalDetailCacheMap::CObjectTypeCollection::RenderUpdate(const CEngineCamera&, float, float, unsigned long, float) -- if this object type is enabled and still visible at the near distance, let every active cached primitive of it update for rendering, telling them whether the far distance is still inside the fade
-// Leaf: ?RenderUpdate@CObjectTypeCollection
+// Leaf: ?RenderUpdate@CObjectTypeCollection@CLocalDetailCacheMap@@QAEXABVCEngineCamera@@MMKM@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BDD860, 127 bytes (+ int3 padding; `ret 14h`).
 // Label correction: the catalog says CObjectCacheGroupCollection::RenderUpdate; that function is the caller at 0x00BDD930, which walks
 //   its ObjectTypeCollections list (+0x20) and calls this per collection. The PDB signature

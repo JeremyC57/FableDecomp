@@ -1,5 +1,5 @@
 // CCombatAction_KickThingOnGround::Initialise() -- play the stealth kick on a living type-13 target (aim 1.0 forward / 0.15 aside) or the hard low kick (0.0 / 0.1); against a living target suspend its animation (type 1), make it and the kicker not solid to each other and aim at its closest hit-location point (else its position); MoveToPos keeps the kicker's height and is pushed along and beside the kicker's back-facing direction, then the base Initialise runs
-// Leaf: ?Initialise@CCombatAction_KickThingOnGround
+// Leaf: ?Initialise@CCombatAction_KickThingOnGround@@UAEXXZ
 // Naming wave 18: the shared const float 1e-4f at 0x0129BA3C is ?DELTA_NOTIONAL_ZERO@@3MB (raw Ego_r public + typed data record; was EPSILON).
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0087E860, 880 bytes, plain `ret` (virtual, vtable 0x01277D3C).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8, PTarget +0xa8), CCharString ctor/dtor 0x0099EBF0 /

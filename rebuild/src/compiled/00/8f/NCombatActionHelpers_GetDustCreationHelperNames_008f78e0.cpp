@@ -1,5 +1,5 @@
 // NCombatActionHelpers::GetDustCreationHelperNames(const CThing&, vector<CCharString>&) -- append the two foot helper names ("weapon_pos_left_foot", "weapon_pos_right_foot")
-// Leaf: ?GetDustCreationHelperNames@
+// Leaf: ?GetDustCreationHelperNames@NCombatActionHelpers@@YI_NABVCThing@@AAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z
 // Retail 0x008F78E0, 0x70 bytes, __fastcall bool (thing in ecx, unused; the name vector in edx; plain `ret`). Manifest
 //   label "CreateFootEffect_PushStrings" is descriptive; the FableWin PDB name set has
 //   `?GetDustCreationHelperNames@NCombatActionHelpers@@YI_NABVCThing@@AAV?$vector@VCCharString@@...@std@@@Z`.

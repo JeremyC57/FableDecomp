@@ -1,0 +1,116 @@
+address	verdict	grade	behaviour	completed_leaf_in_object	result	object_symbols_matching_old_prefix
+00407030	conflict	MATCH	PASS	no	FAIL	
+0041d1c8	conflict	RELOCATION_MATCH	PASS	yes	HOLD	?RemoveUIActionParam@CManager@NUISystem@@UAEXPAVCActionParam@2@@Z
+004432b0	conflict	RELOCATION_MATCH	PASS	yes	HOLD	??1?$deque@U?$pair@VCCharString@@J@std@@V?$allocator@U?$pair@VCCharString@@J@std@@@2@@std@@QAE@XZ
+00448f10	conflict	RELOCATION_MATCH	PASS	yes	HOLD	??$sort_heap@PAU?$pair@W4EGameAction@@V?$CCountedPointer@$$CBVCInputTypeBase@@@@@std@@V?$CKeyPairCompareLess@W4EGameAction@@V?$CCountedPointer@$$CBVCInputTypeBase@@@@@@@std@@YIXPAU?$pair@W4EGameAction@@V?$CCountedPointer@$$CBVCInputTypeBase@@@@@0@0V?$CKeyPairCompareLess@W4EGameAction@@V?$CCountedPointer@$$CBVCInputTypeBase@@@@@@@Z
+0044f81a	conflict	RELOCATION_MATCH	PASS	yes	HOLD	??1CHeroMarriageDef@@UAE@XZ
+00453b15	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+00453e51	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+00455d44	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+004560a9	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+0045645d	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+004567db	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+00457132	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+0045720a	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+004572a7	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+004573fd	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+004576db	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+00457936	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+004579c2	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+00457ae4	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+00457ca0	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+00457e03	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+00457ed6	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+00458476	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+004616d6	conflict	RELOCATION_MATCH	PASS	no	FAIL	??$GFSerialiseMapBinaryIn@MW4EObjectAugmentationType@@U?$less@W4EObjectAugmentationType@@@std@@@@YIXAAUCMemoryDataInputStreamReader@@AAV?$map@W4EObjectAugmentationType@@MU?$less@W4EObjectAugmentationType@@@std@@@std@@@Z
+0046190a	conflict	RELOCATION_MATCH	PASS	no	FAIL	??$GFSerialiseMapBinaryIn@MW4EDamageAttribute@@U?$less@W4EDamageAttribute@@@std@@@@YIXAAUCMemoryDataInputStreamReader@@AAV?$map@W4EDamageAttribute@@MU?$less@W4EDamageAttribute@@@std@@@std@@@Z
+00466889	conflict	RELOCATION_MATCH	PASS	no	FAIL	??$GFSerialiseMapBinaryIn@MW4EHeroTrainableStatType@@U?$less@W4EHeroTrainableStatType@@@std@@@@YIXAAUCMemoryDataInputStreamReader@@AAV?$map@W4EHeroTrainableStatType@@MU?$less@W4EHeroTrainableStatType@@@std@@@std@@@Z
+00466de5	conflict	MATCH	PASS	no	FAIL	?erase@?$vector@VCBrainUpdateZone@@V?$allocator@VCBrainUpdateZone@@@std@@@std@@QAEPAVCBrainUpdateZone@@PAV3@0@Z
+004672d6	conflict	MATCH	PASS	no	FAIL	?erase@?$vector@VCBrainBehaviour@@V?$allocator@VCBrainBehaviour@@@std@@@std@@QAEPAVCBrainBehaviour@@PAV3@0@Z
+00469e3e	conflict	MATCH	PASS	no	FAIL	?erase@?$vector@VCEntry@CTextureReplacementDef@@V?$allocator@VCEntry@CTextureReplacementDef@@@std@@@std@@QAEPAVCEntry@CTextureReplacementDef@@PAV34@0@Z
+0046b182	conflict	MATCH	PASS	no	FAIL	?erase@?$vector@VCAtmosBankEntry@@V?$allocator@VCAtmosBankEntry@@@std@@@std@@QAEPAVCAtmosBankEntry@@PAV3@0@Z
+0046bba2	conflict	MATCH	PASS	no	FAIL	?erase@?$vector@VCMusicSetEntry@@V?$allocator@VCMusicSetEntry@@@std@@@std@@QAEPAVCMusicSetEntry@@PAV3@0@Z
+0046c46e	conflict	MATCH	PASS	no	FAIL	?erase@?$vector@VCObjectFamilyEntry@@V?$allocator@VCObjectFamilyEntry@@@std@@@std@@QAEPAVCObjectFamilyEntry@@PAV3@0@Z
+0047073f	conflict	MATCH	PASS	no	FAIL	?erase@?$vector@U?$pair@KVCSoundPair@@@std@@V?$allocator@U?$pair@KVCSoundPair@@@std@@@2@@std@@QAEPAU?$pair@KVCSoundPair@@@2@PAU32@0@Z
+00470a66	conflict	MATCH	PASS	no	FAIL	?erase@?$vector@U?$pair@KVCDefString@@@std@@V?$allocator@U?$pair@KVCDefString@@@std@@@2@@std@@QAEPAU?$pair@KVCDefString@@@2@PAU32@0@Z
+0048d520	conflict	RELOCATION_MATCH	PASS	yes	HOLD	??1?$deque@VC2DVector@@V?$allocator@VC2DVector@@@std@@@std@@QAE@XZ
+004ad780	conflict	DIFFER(216v136)	PASS	no	FAIL	??$GetAllLeafThings@$$CBVCThingBuilding@@V?$vector@PBVCThingBuilding@@V?$allocator@PBVCThingBuilding@@@std@@@std@@VCThingFilter_HasTC@@@CThingSearchToolsMethods@@QAEXABVCThingFilter_HasTC@@AAV?$vector@PBVCThingBuilding@@V?$allocator@PBVCThingBuilding@@@std@@@std@@@Z
+004af280	conflict	MATCH	PASS	no	FAIL	
+004c3460	conflict	RELOCATION_MATCH	PASS	yes	HOLD	?remove@?$list@PAVCAGraphicAppearanceComponent@NGraphicAppearance@@V?$allocator@PAVCAGraphicAppearanceComponent@NGraphicAppearance@@@std@@@std@@QAEXABQAVCAGraphicAppearanceComponent@NGraphicAppearance@@@Z
+004c7460	conflict	MATCH	PASS	no	FAIL	
+004cc150	conflict	RELOCATION_MATCH	PASS	yes	HOLD	?remove@?$list@PAVCTCBase@@V?$allocator@PAVCTCBase@@@std@@@std@@QAEXABQAVCTCBase@@@Z
+004db47d	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+004dc600	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+004dc916	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+004dcda4	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+004e108c	conflict	RELOCATION_MATCH	PASS	no	FAIL	??1CAIStateGroup_HoverWanderAroundThing@@QAE@XZ
+004e37bf	conflict	RELOCATION_MATCH	PASS	no	FAIL	??1CGlobalDef@@QAE@XZ
+004e41dd	conflict	RELOCATION_MATCH	PASS	yes	HOLD	??$sort_heap@PAU?$pair@VCCharString@@VCRegisteredTCInfo@CTCBase@@@std@@V?$CKeyPairCompareLess@VCCharString@@VCRegisteredTCInfo@CTCBase@@@@@std@@YIXPAU?$pair@VCCharString@@VCRegisteredTCInfo@CTCBase@@@0@0V?$CKeyPairCompareLess@VCCharString@@VCRegisteredTCInfo@CTCBase@@@@@Z
+004e50c0	conflict	RELOCATION_MATCH	PASS	no	FAIL	??$GFSerialiseMapBinaryIn@MJU?$less@J@std@@@@YIXAAUCMemoryDataInputStreamReader@@AAV?$map@JMU?$less@J@std@@@std@@@Z
+0052d740	conflict	DIFFER(53v45)	PASS	no	FAIL	?push_back@?$list@W4EChangingStateComponentState@CChangingStateComponent@NUISystem@@V?$allocator@W4EChangingStateComponentState@CChangingStateComponent@NUISystem@@@std@@@std@@QAEXABW4EChangingStateComponentState@CChangingStateComponent@NUISystem@@@Z
+00533b30	conflict	RELOCATION_MATCH	PASS	no	FAIL	?GetCurrentState@CComponent@NUISystem@@UAEPAUCUIState@@XZ
+0054fff0	conflict	MATCH	PASS	yes	HOLD	?GetAlignment@CText@NUISystem@@UBE?AW4ETextAlignement@2@XZ
+00594b8d	conflict	RELOCATION_MATCH	PASS	yes	HOLD	??$sort_heap@PAU?$pair@JV?$CDefPointer@$$CBVCContextSensitiveItemDef@@@@@std@@VCContextSensitivePriorityCompare@@@std@@YIXPAU?$pair@JV?$CDefPointer@$$CBVCContextSensitiveItemDef@@@@@0@0VCContextSensitivePriorityCompare@@@Z
+00595a03	conflict	MATCH	PASS	no	FAIL	
+005f9b1e	conflict	RELOCATION_MATCH	PASS	yes	HOLD	??$sort_heap@PAU?$pair@JW4EHeroAbility@@@std@@V?$CKeyPairCompareLess@JW4EHeroAbility@@@@@std@@YIXPAU?$pair@JW4EHeroAbility@@@0@0V?$CKeyPairCompareLess@JW4EHeroAbility@@@@@Z
+005f9b5a	conflict	RELOCATION_MATCH	PASS	yes	HOLD	??$sort_heap@PAU?$pair@JJ@std@@V?$CKeyPairCompareLess@JJ@@@std@@YIXPAU?$pair@JJ@0@0V?$CKeyPairCompareLess@JJ@@@Z
+0062f690	conflict	RELOCATION_MATCH	PASS	no	FAIL	?insert@?$list@V?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@V?$allocator@V?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@@std@@@std@@QAE?AU?$_List_iterator@V?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@@std@@@2@U32@ABV?$CCountedPointer@VCStrikeEvent@CCombatActionBase@@@@@Z
+0063f2c0	conflict	RELOCATION_MATCH	PASS	yes	HOLD	??$?RVCThing@@@?$CFilter_Bind2@VCThingFilter_OverlappingCircle@@VCThingFilterBase@CWorldMap@@@@QBE_NABVCThing@@@Z
+0067c350	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+006a73e0	conflict	MATCH	PASS	no	FAIL	
+006e2200	conflict	DIFFER(34v34)	PASS	no	FAIL	??$_Destroy@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@@std@@YAXPAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@0@@Z ??$_Destroy@U?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@std@@@std@@YIXPAU?$pair@KV?$CParticleUpdateParamDesc@KK@NParticleEngine@@@0@0@Z
+006f2b00	conflict	DIFFER(34v34)	PASS	no	FAIL	??$_Destroy@VCProng@CDefendingCombatantInfo@@@std@@YAXPAVCProng@CDefendingCombatantInfo@@@Z ??$_Destroy@VCProng@CDefendingCombatantInfo@@@std@@YIXPAVCProng@CDefendingCombatantInfo@@0@Z
+00711860	conflict	RELOCATION_MATCH	PASS	yes	HOLD	??$remove_if@V?$CPointersEquivalent@$$CBVCAnimSet@@@@@?$list@VCAnimSet@@V?$allocator@VCAnimSet@@@std@@@std@@QAEXV?$CPointersEquivalent@$$CBVCAnimSet@@@@@Z
+00722e80	conflict	DIFFER(34v34)	PASS	no	FAIL	??$_Destroy@VCGenerationPos@CTCSmokeGenerator@@@std@@YAXPAVCGenerationPos@CTCSmokeGenerator@@@Z ??$_Destroy@VCGenerationPos@CTCSmokeGenerator@@@std@@YIXPAVCGenerationPos@CTCSmokeGenerator@@0@Z
+00733290	conflict	MATCH	PASS	no	FAIL	
+00749280	conflict	DIFFER(97v76)	PASS	no	FAIL	?erase@?$vector@U?$pair@V?$CIntelligentPointer@$$CBVCThing@@@@VCDangerStatus@NStealth@@@std@@V?$allocator@U?$pair@V?$CIntelligentPointer@$$CBVCThing@@@@VCDangerStatus@NStealth@@@std@@@2@@std@@QAEPAU?$pair@V?$CIntelligentPointer@$$CBVCThing@@@@VCDangerStatus@NStealth@@@2@PAU32@0@Z
+00749dc0	conflict	MATCH	PASS	no	FAIL	
+0076fc60	conflict	RELOCATION_MATCH	PASS	no	FAIL	?insert@?$list@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@std@@QAE?AU?$_List_iterator@VCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@2@U32@ABVCWeaponTrailEntry@CEnginePrimitiveWeaponTrail@@@Z
+00787c18	conflict	MATCH	PASS	no	FAIL	
+00814bc0	conflict	MATCH	PASS	no	FAIL	?GetClosestPointToPos2D@CPhysicalPrimitiveMesh@NHitLocations@@QBE?AVC3DVector@@ABVCThing@@ABV3@AAV3@@Z
+00826e50	conflict	RELOCATION_MATCH	PASS	yes	HOLD	??$sort_heap@PAU?$pair@JV?$CCountedPointer@VCContainmentVolume@@@@@std@@V?$CKeyPairCompareLess@JV?$CCountedPointer@VCContainmentVolume@@@@@@@std@@YIXPAU?$pair@JV?$CCountedPointer@VCContainmentVolume@@@@@0@0V?$CKeyPairCompareLess@JV?$CCountedPointer@VCContainmentVolume@@@@@@@Z
+00829430	conflict	RELOCATION_MATCH	PASS	yes	HOLD	??$sort_heap@PAU?$pair@JV?$CCountedPointer@VCRegionConnectionNode@@@@@std@@V?$CKeyPairCompareLess@JV?$CCountedPointer@VCRegionConnectionNode@@@@@@@std@@YIXPAU?$pair@JV?$CCountedPointer@VCRegionConnectionNode@@@@@0@0V?$CKeyPairCompareLess@JV?$CCountedPointer@VCRegionConnectionNode@@@@@@@Z
+0082cee0	conflict	RELOCATION_MATCH	PASS	no	FAIL	?erase@?$vector@VCMinimapData@@V?$allocator@VCMinimapData@@@std@@@std@@QAEPAVCMinimapData@@PAV3@0@Z
+0084ace0	conflict	RELOCATION_MATCH	PASS	yes	HOLD	?remove@?$list@JV?$allocator@J@std@@@std@@QAEXABJ@Z
+0085ee40	conflict	MATCH	PASS	no	FAIL	
+008fbdd0	conflict	RELOCATION_MATCH	PASS	yes	HOLD	??$remove_if@V?$unary_negate@VCGetThingsWithCollisionMesh@NCameraModes@@@std@@@?$list@PBVCThing@@V?$allocator@PBVCThing@@@std@@@std@@QAEXV?$unary_negate@VCGetThingsWithCollisionMesh@NCameraModes@@@1@@Z
+00994780	conflict	RELOCATION_MATCH	PASS	yes	HOLD	??1CFileDataInputStream@@UAE@XZ
+00995df0	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+0099b510	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+009a0b00	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+009a52c0	conflict	MATCH	PASS	no	FAIL	
+009ea530	conflict	MATCH	PASS	no	FAIL	
+009ea540	conflict	MATCH	PASS	no	FAIL	
+009f98d0	conflict	RELOCATION_MATCH	PASS	yes	HOLD	?remove@?$list@PAVCProfile@@V?$allocator@PAVCProfile@@@std@@@std@@QAEXABQAVCProfile@@@Z
+009f9d50	conflict	MATCH	PASS	no	FAIL	
+00a0e9e0	conflict	DIFFER(81v76)	PASS	no	FAIL	??A?$_Deque_iterator@VC2DVector@@U?$_Nonconst_traits@VC2DVector@@@std@@@std@@QBEAAVC2DVector@@H@Z
+00a0ee00	conflict	DIFFER(81v76)	PASS	no	FAIL	??A?$_Deque_iterator@VC2DVector@@U?$_Const_traits@VC2DVector@@@std@@@std@@QBEABVC2DVector@@H@Z
+00a23c60	conflict	MATCH	PASS	no	FAIL	
+00a36f70	conflict	MATCH	PASS	no	FAIL	
+00a4a320	conflict	DIFFER(78v76)	PASS	no	FAIL	?erase@?$vector@VCLipSyncPhoneme@@V?$allocator@VCLipSyncPhoneme@@@std@@@std@@QAEPAVCLipSyncPhoneme@@PAV3@0@Z
+00ad8170	conflict	RELOCATION_MATCH	PASS	no	FAIL	?erase@?$vector@VCOptimisedVertex@QuadricOptimiserInternals@@V?$allocator@VCOptimisedVertex@QuadricOptimiserInternals@@@std@@@std@@QAEPAVCOptimisedVertex@QuadricOptimiserInternals@@PAV34@0@Z
+00aea2f0	conflict	RELOCATION_MATCH	PASS	yes	HOLD	??$sort_heap@PAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@V?$CKeyPairCompareLess@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@@@std@@YIXPAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@0@0V?$CKeyPairCompareLess@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@@@Z
+00aeef40	conflict	RELOCATION_MATCH	PASS	yes	HOLD	?Add@CGuiVarTransferStruct@@QAEXPAVCGuiVarTransferBase@@@Z
+00af89a0	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+00af89f0	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+00af8c50	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+00b2ed60	conflict	RELOCATION_MATCH	PASS	yes	HOLD	??_GCGraphicFrame@@QAEPAXI@Z
+00b495a0	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+00b495f0	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+00b49640	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+00b564c0	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+00b90090	conflict	MATCH	PASS	no	FAIL	
+00bf9420	conflict	RELOCATION_MATCH	PASS	no	FAIL	?erase@?$vector@UCPaletteEntry@CEngineTexturePalette@@V?$allocator@UCPaletteEntry@CEngineTexturePalette@@@std@@@std@@QAEPAUCPaletteEntry@CEngineTexturePalette@@PAU34@0@Z
+00c26aa0	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+00c26f00	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+00c3d0d0	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+00c3d0e0	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+00c554e0	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+00c55510	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+00c55540	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+00c55570	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+00c555a0	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+00c555d0	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+00ca85e0	conflict	RELOCATION_MATCH	PASS	no	FAIL	
+00cbbda0	conflict	DIFFER(93v77)	PASS	no	FAIL	?erase@?$vector@U?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@V?$allocator@U?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@@2@@std@@QAEPAU?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@2@PAU32@0@Z
+00cd3ccb	conflict	RELOCATION_MATCH	PASS	no	FAIL	?resize@?$vector@VCScriptGameResourceObjectScriptedThingBase@@V?$allocator@VCScriptGameResourceObjectScriptedThingBase@@@std@@@std@@QAEXIABVCScriptGameResourceObjectScriptedThingBase@@@Z

@@ -1,5 +1,5 @@
 // CEngineSubPrimitiveRenderer::GetCount(ESubPrimitiveType type) const -- number of sort elements queued in the list of one sub-primitive type
-// Leaf: ?GetCount@CEngineSubPrimitiveRenderer@@
+// Leaf: ?GetCount@CEngineSubPrimitiveRenderer@@QBEKW4ESubPrimitiveType@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B842B0, 25 bytes (+ int3 padding), __fastcall, `ret 4`.
 // Identity: FableWin.pdb / Ego_r.pdb `?GetCount@CEngineSubPrimitiveRenderer@@QBEKW4ESubPrimitiveType@@@Z`; the manifest
 //   label "CEnginePrimitiveRenderer_GetIndexCount" is descriptive and names the wrong class. The retail

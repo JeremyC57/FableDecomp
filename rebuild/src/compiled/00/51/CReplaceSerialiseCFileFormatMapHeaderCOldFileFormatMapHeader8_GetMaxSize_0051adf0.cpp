@@ -1,5 +1,5 @@
 // CReplaceSerialise<CFileFormatMapHeader,COldFileFormatMapHeader8>::GetMaxSize(long version, long size) -- the largest buffer any map header version up to 9 needs: walk down the version chain to the record's own version, then take the max with each level's sizeof
-// Leaf: ?GetMaxSize@?$CReplaceSerialise@VCFileFormatMapHeader@@VCOldFileFormatMapHeader8@@
+// Leaf: ?GetMaxSize@?$CReplaceSerialise@VCFileFormatMapHeader@@VCOldFileFormatMapHeader8@@@@SIJJJ@Z
 //
 // Retail 0x0051ADF0, 110 bytes (+ int3 padding to 112), static __fastcall (version in ecx, size in edx), plain `ret`.  FableWin.pdb
 //   ?GetMaxSize@?$CReplaceSerialise@VCFileFormatMapHeader@@VCOldFileFormatMapHeader8@@@@SIJJJ@Z.

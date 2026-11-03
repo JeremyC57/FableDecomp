@@ -1,5 +1,5 @@
 // CCreatureAction_ScreamerDie::Initialise() -- clear the creature's interface-9 component flag, animation ST_DIE; create the creature's SCREAMER_DEATH special effect at its position, keep it in PDieEffect and attach it to the creature's DUMMY_CENTRE through its particle emitter; then the base Initialise (the sub-def is released last)
-// Leaf: ?Initialise@CCreatureAction_ScreamerDie
+// Leaf: ?Initialise@CCreatureAction_ScreamerDie@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008B8D30, 499 bytes (512 with padding), virtual Initialise.
 // Callees: as CCreatureAction_BanditKingStuckGetHit::Initialise (0x008C87A0): CCharString ctor/dtor 0x0099EBF0/0x0099EAE0,
 //   SetCombatAnimation 0x008574D0, GetPItem 0x00A01B50, CBaseIntelligentPointer() 0x00A01B10 / SetPItem 0x00A01B90 /

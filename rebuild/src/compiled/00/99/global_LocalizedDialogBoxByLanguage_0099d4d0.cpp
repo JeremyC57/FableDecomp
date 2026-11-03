@@ -7,7 +7,7 @@
 // Shape: the RT_DIALOG (5) resource of the requested language is found, loaded and locked; each failure is its own
 // early `return -1` (the merged block stays on the fall-through; nested ifs put it after the success arm)
 // (`or eax,-1`); the success arm runs the dialog from the locked template with a zero init parameter.
-// Leaf: ?LocalizedDialogBoxByLanguage@@
+// Leaf: ?LocalizedDialogBoxByLanguage@@YIHPAUHINSTANCE__@@PBDPAUHWND__@@P6GH2IIJ@ZG@Z
 struct HINSTANCE__ { int unused; };
 typedef HINSTANCE__* HINSTANCE;
 typedef HINSTANCE HMODULE;

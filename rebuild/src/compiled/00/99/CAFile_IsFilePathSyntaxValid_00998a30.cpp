@@ -1,5 +1,5 @@
 // CAFile::IsFilePathSyntaxValid(const CWideString& filePath, bool absolute) -- check a path's syntax: at most 260 characters, then a small state machine over drive labels, separators and components (an absolute path must open with a drive label, a relative one with a component) that must end where an end is allowed
-// Leaf: ?IsFilePathSyntaxValid@CAFile@@
+// Leaf: ?IsFilePathSyntaxValid@CAFile@@SI_NABVCWideString@@_N@Z
 // Flags: /Oa
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00998A30, 512 bytes (incl. int3 padding). FableWin.pdb
 //   `?IsFilePathSyntaxValid@CAFile@@SI_NABVCWideString@@_N@Z`: a public static `__fastcall` (path in ecx, the bool in dl),

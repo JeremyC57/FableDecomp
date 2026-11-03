@@ -1,5 +1,5 @@
 // CUserProfileManager::GetMaxAntialiasing() const -- highest selectable antialiasing index: the last supported level, or (under the config-detection cap) the index of the last level not above the cap, 0 when none qualifies
-// Leaf: ?GetMaxAntialiasing@CUserProfileManager@@
+// Leaf: ?GetMaxAntialiasing@CUserProfileManager@@QBEKXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00409090, 174 bytes (+2 int3 pad). Callees: GFGetSystemManager
 // 0x009A4EC0, the display manager's supported-levels query (vector<long>& out) 0x009C05C0, free
 // 0x00BFEA14 (the inline vector destructor, expanded on every return path); the cap global 0x01375080.

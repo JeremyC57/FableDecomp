@@ -1,6 +1,6 @@
 // NCameraModes::CPCMouseLook::CPCMouseLookInit::Alloc(CGameCameraManager&, const CDefPointer<const CCameraModeDef>&) const -- allocate and construct a PC mouse-look camera mode
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00874770, 28 bytes, `ret 8`.
-// Leaf: ?Alloc@CPCMouseLookInit
+// Leaf: ?Alloc@CPCMouseLookInit@CPCMouseLook@NCameraModes@@UBEPAVCBase@3@AAVCGameCameraManager@@ABV?$CDefPointer@$$CBVCCameraModeDef@@@@@Z
 // Name: vtable 0x0125C284 slot 0; FableWin.pdb ?Alloc@CPCMouseLookInit@CPCMouseLook@NCameraModes@@UBEPAVCBase@3@AAVCGameCameraManager@@ABV?$CDefPointer@$$CBVCCameraModeDef@@@@@Z.
 // Callees: operator new @ 0x00BFEA1A (0x10c bytes), NCameraModes::CPCMouseLook::CPCMouseLook(CGameCameraManager&,
 //          const CDefPointer<const CCameraModeDef>&) @ 0x00874E00 (out of line, `ret 8`).

@@ -1,5 +1,5 @@
 // CCRCSymbolMap::FindSymbol(const CCharString& name, long& value) const -- look the name's CRC up in the sorted CRC->value map; on a hit store the value and return true
-// Leaf: ?FindSymbol@CCRCSymbolMap@@
+// Leaf: ?FindSymbol@CCRCSymbolMap@@QBE_NABVCCharString@@AAJ@Z
 // Retail: Fable.exe @ 0x00A38420, 106 bytes (+ int3 padding), thiscall `ret 8`. FableWin.pdb
 //   ?FindSymbol@CCRCSymbolMap@@QBE_NABVCCharString@@AAJ@Z.
 // Callees: Calc 0x004014A0 (`__fastcall(seed 0, chars, length)` CRC-32), CVectorMap<unsigned long, long>::LowerBound

@@ -1,7 +1,7 @@
 // AreAllThingsInVectorDead(const vector<CScriptThing>& things) -- true when every script thing in the vector is dead or unconscious
 #pragma optimize("y", off)
 #pragma optimize("s", on)
-// Leaf: ?AreAllThingsInVectorDead@@
+// Leaf: ?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CBED00, 72 bytes, `__fastcall` global (vector in ecx), plain `ret`
 //   (PDB ?AreAllThingsInVectorDead@@YI_NABV?$vector@VCScriptThing@@...@Z). No frame: everything lives in registers.
 // Callees: CScriptThing (vtable 0x01238C8C) slot 75 IsAlive (+0x12c) and slot 61 IsUnconscious (+0xf4).

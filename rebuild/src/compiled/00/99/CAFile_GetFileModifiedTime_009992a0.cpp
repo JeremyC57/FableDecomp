@@ -8,7 +8,7 @@
 // Layout: WIN32_FILE_ATTRIBUTE_DATA (0x24 bytes) with ftLastWriteTime at +0x14; the frame is the local string +
 // two by-value temporaries + the attribute data (0x30).
 // Shape: the landed PathExists (0x00999230) prologue; the GetFileAttributesExW result is ignored.
-// Leaf: ?GetFileModifiedTime@CAFile
+// Leaf: ?GetFileModifiedTime@CAFile@@SI?AVCDateAndTime@@ABVCWideString@@@Z
 typedef unsigned short wchar16;          // wchar_t is not a built-in type under the retail flags
 
 struct _FILETIME {

@@ -1,5 +1,5 @@
 // CGameScriptInterface::StartFadeScreen(float fadeInTime, float fadeOutTime, CRGBColour colour) -- start a held screen fade on the display engine (its two times passed in the engine's order, hold time -1)
-// Leaf: ?StartFadeScreen@CGameScriptInterface@@
+// Leaf: ?StartFadeScreen@CGameScriptInterface@@IAEXMMVCRGBColour@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006E7370, 53 bytes (64 with int3 padding), thiscall, `ret 0Ch`.
 // Identity: Ego_r.pdb name set `?StartFadeScreen@CGameScriptInterface@@IAEXMMVCRGBColour@@@Z` (protected); its one caller
 //   is CGameScriptInterface::FadeScreenOut 0x00890820 (vtable slot 373), which passes its own `this`, its two floats

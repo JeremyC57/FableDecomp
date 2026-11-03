@@ -1,5 +1,5 @@
 // CWorldMap::GetSoundThemesUsedInCurrentRegion(set<unsigned long>& themes) const -- collect the sound-theme switch IDs used by the current region: every game-map cell's SoundTheme across the region's maps goes into a local set, then each theme's SOUND_THEME definition (by class index) adds its switch ID to themes
-// Leaf: ?GetSoundThemesUsedInCurrentRegion@CWorldMap@@
+// Leaf: ?GetSoundThemesUsedInCurrentRegion@CWorldMap@@QBEXAAV?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004FE7F0, 562 bytes (+ int3 padding), `ret 4`, an `and esp,-8` aligned frame
 //   (Ego_r.pdb ?GetSoundThemesUsedInCurrentRegion@CWorldMap@@QBEXAAV?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@@Z).
 // Callees: malloc 0x00BFEA0E / free 0x00BFEA14 (the local set's header and nodes), CWorldMap::PeekMap (virtual slot 19,

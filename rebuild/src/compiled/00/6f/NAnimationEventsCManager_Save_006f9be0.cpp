@@ -2,7 +2,7 @@
 //   BEGIN_ANIMATION_EVENTS, then per animation "BEGIN_EVENTS: <EAnimType name>" (names from meshdata.h), one
 //   "<event name> <time> START|STOP" line per event (STOP when the packed word's top bit is set) and END_EVENTS, then
 //   END_ANIMATION_EVENTS; save the text to the file and clear the dirty flag
-// Leaf: ?Save@CManager@NAnimationEvents
+// Leaf: ?Save@CManager@NAnimationEvents@@QAEXABVCWideString@@@Z
 // Retail: Fable.exe @ 0x006F9BE0, 768 bytes, `ret 4`, 8-byte aligned frame, no EH frame.
 // Callees: CDiskFileWin32(const CWideString&, FileAccessType, unsigned long) 0x0099AD80 and its inlined dtor (vtable
 //   0x0122D06C, Close 0x0099A920, ~CWideString 0x0099B510, ~CBaseClassNonCopyable 0x0099A300), CCharString() 0x0099E4B0 /

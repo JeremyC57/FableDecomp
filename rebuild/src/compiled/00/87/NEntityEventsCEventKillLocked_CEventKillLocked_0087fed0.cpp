@@ -1,5 +1,5 @@
 // NEntityEvents::CEventKillLocked::CEventKillLocked(const CThing*) -- the event starts at world frame 0 and its PKiller intelligent pointer is pointed at the argument
-// Leaf: ??0CEventKillLocked@NEntityEvents@@QAE@
+// Leaf: ??0CEventKillLocked@NEntityEvents@@QAE@PBVCThing@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0087FED0, 52 bytes (+ int3 padding), thiscall, `ret 4`.
 // Identity: NEntityEvents::CEventKillLocked::CEventKillLocked(const CThing*) -- proven; evidence: it stores vtable 0x01277CA8 whose RTTI is
 //   .?AVCEventKillLocked@NEntityEvents@@ : CEventBase@NEntityEvents; FableWin.pdb name set holds ??0CEventKillLocked@NEntityEvents@@QAE@PBVCThing@@@Z;

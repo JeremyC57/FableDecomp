@@ -7,7 +7,7 @@
 // Layouts = Ego_r.pdb: CShaderPointLight (64 bytes) {vptr, C3DVector Direction +4, Position +0x10,
 // CRGBFloatColour Colour +0x1C, float Intensity +0x2C, CShaderLightAttenuation Attenuation +0x30
 // (Attenuation0/1/2, AttenuationBase)}; CShaderGenericLight (52 bytes) as in the directional twin.
-// Leaf: ?ConvertToGenericLight@CShaderPointLight
+// Leaf: ?ConvertToGenericLight@CShaderPointLight@@UBEXAAVCShaderGenericLight@@@Z
 
 class C3DVector { public:
     float X, Y, Z;

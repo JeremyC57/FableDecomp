@@ -1,6 +1,6 @@
 // NCameraModes::CZTargetNew::CZTargetNewInit::Alloc(CGameCameraManager&, const CDefPointer<const CCameraModeDef>&) const -- allocate and construct a Z-targeting camera mode
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00873200, 74 bytes, `ret 8`.
-// Leaf: ?Alloc@CZTargetNewInit
+// Leaf: ?Alloc@CZTargetNewInit@CZTargetNew@NCameraModes@@UBEPAVCBase@3@AAVCGameCameraManager@@ABV?$CDefPointer@$$CBVCCameraModeDef@@@@@Z
 // Name: vtable 0x0125C264 slot 0; FableWin.pdb ?Alloc@CZTargetNewInit@CZTargetNew@NCameraModes@@UBEPAVCBase@3@AAVCGameCameraManager@@ABV?$CDefPointer@$$CBVCCameraModeDef@@@@@Z.
 // Callees: operator new @ 0x00BFEA1A (0xf0 bytes, the retail CZTargetNew size), NCameraModes::CBase::CBase @ 0x0084E420,
 //          CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10.

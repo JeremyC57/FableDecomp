@@ -1,5 +1,5 @@
 // CTCHeroReceiveItems::GiveItem(CThingObject& item, bool persist) -- put the item in limbo, queue it (with its flag) on the items-to-show list, then start the display at the item's position
-// Leaf: ?GiveItem@CTCHeroReceiveItems
+// Leaf: ?GiveItem@CTCHeroReceiveItems@@QAEXAAVCThingObject@@_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007CAB30, 158 bytes (+2 int3), thiscall `ret 8`.
 // Identity: Ego_r.pdb name set ?GiveItem@CTCHeroReceiveItems@@QAEXAAVCThingObject@@_N@Z (public, CThingObject&, bool):
 //   six callers in other classes (0x005EB6A9, 0x006AC380, 0x006ACD6C, 0x006ACFFE, 0x00844BAD, 0x00898C27). It is the

@@ -1,5 +1,5 @@
 // CThingPlayerCreature::LearnAbility(EHeroAbility ability, bool learn, long quickAccessSlot, bool silent) -- learning: unless already available, spawn the ability's inventory object at the hero, add it to the inventory, mark the ability available and give it a quick-access slot; unlearning: mark it unavailable and take the matching object out of the inventory
-// Leaf: ?LearnAbility@CThingPlayerCreature
+// Leaf: ?LearnAbility@CThingPlayerCreature@@QAE_NW4EHeroAbility@@_NJ1@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006AC690, length 628 bytes (`ret 0x10`).
 // Callees: LowerBound @ 0x0040F020, CTCInventoryAbilities::IsAbilityAvailable @ 0x005EDF08 / GetAbilityPDef @ 0x005EDFD9
 //   (CDefPointer by value) / SetAbilityAsAvailable @ 0x005F6BD6, CCharString(const char*, long) @ 0x0099EBF0 / dtor

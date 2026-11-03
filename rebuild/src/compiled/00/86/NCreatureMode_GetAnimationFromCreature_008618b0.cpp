@@ -1,5 +1,5 @@
 // NCreatureMode::GetAnimationFromCreature(const CCharString& name, const CThingCreatureBase& creature) -- the creature's animation entry for `name`, or null when the lookup only finds the "DEFAULT" fallback entry
-// Leaf: ?GetAnimationFromCreature@NCreatureMode@@
+// Leaf: ?GetAnimationFromCreature@NCreatureMode@@YIPBVCAnimationEntry@@ABVCCharString@@ABVCThingCreatureBase@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008618B0, length 74 bytes (+6 int3). `__fastcall` free function (name in ecx,
 //   creature in edx), plain `ret`; the pointer in eax.
 // Mangled (Ego_r.pdb): ?GetAnimationFromCreature@NCreatureMode@@YIPBVCAnimationEntry@@ABVCCharString@@ABVCThingCreatureBase@@@Z.

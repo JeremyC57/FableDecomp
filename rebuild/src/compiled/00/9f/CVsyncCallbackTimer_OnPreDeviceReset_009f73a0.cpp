@@ -1,5 +1,5 @@
 // CVsyncCallbackTimer::OnPreDeviceReset() -- before the D3D device is reset, release every outstanding vsync query (ClearAllQueries)
-// Leaf: ?OnPreDeviceReset@CVsyncCallbackTimer@@
+// Leaf: ?OnPreDeviceReset@CVsyncCallbackTimer@@QAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009F73A0, length 19 bytes, plain `ret`.
 // PDB: ?OnPreDeviceReset@CVsyncCallbackTimer@@QAEXXZ. Caller: CDisplayManager @ 0x009BF516 (`mov ecx,[edi+294h] ; call`, the
 //   scoped_ptr<CVsyncCallbackTimer> member), right after the device-lost handling.

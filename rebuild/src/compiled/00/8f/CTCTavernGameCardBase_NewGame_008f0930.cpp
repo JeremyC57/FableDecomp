@@ -1,5 +1,5 @@
 // CTCTavernGameCardBase::NewGame() -- base NewGame (pay the bet, clear the round flags), then reset the card selection state and the counter and go to state 7
-// Leaf: ?NewGame@CTCTavernGameCardBase
+// Leaf: ?NewGame@CTCTavernGameCardBase@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F0930, length 48 bytes. Virtual slot 31 (NewGame; 0x008F0930 sits in
 // CTCTavernGameCardPairs' vtable 0x0126F6FC slot 31, inherited from CTCTavernGameCardBase). Ego_r.pdb names
 // `?NewGame@CTCTavernGameCardBase@@UAEXXZ`.
