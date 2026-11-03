@@ -376502,6 +376502,13 @@ $catalog = @(
         TestSource = '00/52/CThingManager_RuntimeLoadEntities_00522720_test.cpp'
         PassPattern = '00522720_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005e9b20'
+        Module = 'CTCTavernGame'
+        Source = '00/5e/CTCTavernGame_SetState_005e9b20.cpp'
+        TestSource = '00/5e/CTCTavernGame_SetState_005e9b20_test.cpp'
+        PassPattern = '005e9b20_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
