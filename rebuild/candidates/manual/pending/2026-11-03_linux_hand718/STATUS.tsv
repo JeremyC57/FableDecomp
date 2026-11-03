@@ -1,0 +1,14 @@
+address	attempts	grade	residue	lever
+008914f0	1	RELOCATION_MATCH	-	CQuestManager rename-donor with the one forwarded method; FABLE_RETAIL_NSCRIPT
+00891500	1	RELOCATION_MATCH	-	CQuestManager rename-donor with the one forwarded method; FABLE_RETAIL_NSCRIPT
+00892f20	1	RELOCATION_MATCH	-	CQuestManager rename-donor with the one forwarded method; FABLE_RETAIL_NSCRIPT
+00892f30	1	RELOCATION_MATCH	-	CQuestManager rename-donor with the one forwarded method; FABLE_RETAIL_NSCRIPT
+0088e970	1	RELOCATION_MATCH	-	NProgressDisplay::StopProgress declared __fastcall (bound YI) in its namespace
+0088e0f0	1	MATCH	-	FABLE_RETAIL_CAIGAMECAMERABASE vtable (SetDebugCameraType slot 21) + CWorld::GetGameCamera inline (hdr/)
+00487dc0	1	RELOCATION_MATCH	-	CPlayer members as CIntelligentPointer<CThingPlayerCreature> under FABLE_RETAIL_PLAYER+FABLE_RETAIL_CINTELLIGENTPOINTER (hdr/)
+00487dd0	1	RELOCATION_MATCH	-	CPlayer members as CIntelligentPointer<CThingPlayerCreature> under FABLE_RETAIL_PLAYER+FABLE_RETAIL_CINTELLIGENTPOINTER (hdr/)
+00487b70	1	RELOCATION_MATCH	-	CPlayer members as CIntelligentPointer<CThingPlayerCreature> under FABLE_RETAIL_PLAYER+FABLE_RETAIL_CINTELLIGENTPOINTER (hdr/)
+0088edc0	0	NOT_ATTEMPTED	1564 bytes; CameraDoConversation	budget: chunk time went to the 16 matched rows + 0x005029A0; needs CScriptThing/CThingCameraPoint/CAIGameCameraConversation shapes
+0089e190	0	NOT_ATTEMPTED	803 bytes; CameraUseCameraPoint	budget; needs CRightHandedSet + game-camera ScriptCamera API (retail-branch slots past 23 unproven)
+008a93a0	0	NOT_ATTEMPTED	620 bytes; EntityWillTeleportToArea	budget
+00487570	0	NOT_ATTEMPTED	1305 bytes; DrawFreeCamDebug	budget; debug text formatting with CWideString/CFontBank
