@@ -1,0 +1,17 @@
+address	attempt	grade	size	note
+00409730	1	DIFFER(726v1078)	726v1078	a: first draft --flags /GS
+00409730	2	DIFFER(660v1078)	660v1078	probe: no /GS (inlining check) 
+00409730	3	DIFFER(308v1078)	308v1078	probe: truncated after dataSize (inlining check) --flags /GS
+00409730	4	DIFFER(1140v1078)	1140v1078	b: forceinline Read/ReadType/ReadULONG opt-in --flags /GS
+00409730	5	DIFFER(1158v1078)	1158v1078	c: nested crc/length ifs, one false exit --flags /GS
+00409730	6	DIFFER(1140v1078)	1140v1078	b2: regrade b to view built tail --flags /GS
+00409730	7	DIFFER(1140v1078)	1140v1078	d: probe CArray GetAsCArray via operator[] --flags /GS
+00409730	8	DIFFER(1140v1078)	1140v1078	e: unsigned dataSize --flags /GS
+00409730	9	DIFFER(1152v1078)	1152v1078	f: same-TU CCRC::Calc body --flags /GS
+00409730	10	DIFFER(1158v1078)	1158v1078	g: pad mismatch breaks, return after loop --flags /GS
+00409730	11	DIFFER(1109v1078)	1109v1078	h: pad flag, return after loop --flags /GS
+00409730	12	DIFFER(1192v1078)	1192v1078	i: break out of both loops, remaining>0 fails --flags /GS
+00409730	13	DIFFER(1154v1078)	1154v1078	j: c nesting + same-TU Calc --flags /GS
+00409730	14	DIFFER(1176v1078)	1176v1078	k: j + break out, success only when remaining<=0 --flags /GS
+0040cec0	1	SRC_FAIL	?v?	a: declaration-only explicit specialisation of _M_insert_overflow 
+0040cec0	2	DIFFER(814v977)	814v977	a2: declaration-only explicit specialisation of _M_insert_overflow (fixed insertion) 

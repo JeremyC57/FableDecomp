@@ -1,0 +1,28 @@
+address	attempt	grade	size	note
+0089e190	1	DIFFER(803v803)	803v803	a: first draft 
+0089e190	2	RELOCATION_MATCH	?v?	b: start+look operand order 
+0088edc0	1	SRC_FAIL	?v?	a: six explicit cases 
+0088edc0	2	DIFFER(1612v1564)	1612v1564	a: six explicit cases 
+0088edc0	3	DIFFER(1612v1564)	1612v1564	b: case order 2,3,0,1,4,5 + GetFacingVector slot 70 
+0088edc0	4	DIFFER(1884v1564)	1884v1564	c: cases 0,1,3 share function-scope pos/lookAt/dir/mid 
+0088edc0	5	DIFFER(1272v1564)	1272v1564	d: b with Normalise plain inline 
+0088edc0	6	DIFFER(1612v1564)	1612v1564	f: probe: normalise+adjust in Rotate's this-expression (all 4) 
+0088edc0	7	DIFFER(1612v1564)	1612v1564	g: b with Normalise over GetSquaredMagnitude (X*X+Z*Z+Y*Y) 
+0088edc0	8	DIFFER(1884v1564)	1884v1564	h: probe c (shared vars 0,1,3) with C3DVector implicit copy 
+0088edc0	9	DIFFER(772v1564)	772v1564	i: probe: inline helpers for 0,1,3 and 4,5 
+0088edc0	10	DIFFER(1728v1564)	1728v1564	j: probe: forceinline helpers 
+0088edc0	11	DIFFER(1972v1564)	1972v1564	k: probe: rvalue-bound refs in 0,1,3 
+0089e190	3	RELOCATION_MATCH	?v?	c: shared headers (fable_game.h WF, CThingManager PEEK, CGameCameraManager branches) 
+00487570	1	DIFFER(1199v1305)	1199v1305	a: first draft 
+00487570	2	DIFFER(1301v1305)	1301v1305	b: GFRoundFloat while(places--) 
+00487570	3	DIFFER(1301v1305)	1301v1305	c: explicit (float)(long) in GFRoundFloat 
+00487570	4	DIFFER(1302v1305)	1302v1305	d: GFRoundFloat value=(long)..; value/=m 
+00487570	5	DIFFER(1303v1305)	1303v1305	e: rounded local /= m 
+00487570	6	DIFFER(1305v1305)	1305v1305	f: rounded local, return rounded/m 
+00487570	7	RELOCATION_MATCH	?v?	g: implicit double->float reset 
+00487570	8	RELOCATION_MATCH	?v?	h: final source 
+0089e190	4	RELOCATION_MATCH	?v?	final regrade with final overlay 
+00487570	9	RELOCATION_MATCH	?v?	final regrade with final overlay 
+008a93a0	1	DIFFER(618v620)	618v620	a: thing pointer declared first 
+008a93a0	2	DIFFER(618v620)	618v620	b: named const reference to World member 
+008a93a0	3	DIFFER(619v620)	619v620	c: CWorld& world = *World 

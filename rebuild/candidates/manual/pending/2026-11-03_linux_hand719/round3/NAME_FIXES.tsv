@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00509A20	?GetMapNavigationAreaUpdateInfo@CWorldMap@@QBEXJABVC2DBoxI@@ABVCCharString@@AAVCNavigationAreaUpdate@@@Z	Ego_r.pdb order GetMapNavigationAreaUpdateInfo 0x004DEE00 then GetMapNavigationAreaInit 0x004DF950 (= retail 0x0050A650, the only caller); the body fills CNavigationAreaUpdate's NavigationLayers (+0x00, 24-byte layers), TransitionPoints (+0x0C), ActionPoints (+0x18) and TopologyWeights (+0x24) and ends `ret 0x10` (four arguments)	_global::InitializeMapNavigationHeightmap (oracle catalog)

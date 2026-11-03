@@ -1,0 +1,12 @@
+address	name	evidence
+00409730	CUserProfileManager::VerifySignature	DIFFER(1154v1078); Ego_r.pdb 0x00407790 + FableWin.pdb ?VerifySignature@CUserProfileManager@@SI_NABVCWideString@@@Z
+0040cec0	CUserProfileManager::CUserProfileManager	DIFFER(1015v977); Ego_r.pdb + FableWin.pdb ??0CUserProfileManager@@QAE@XZ
+00509a20	CWorldMap::GetMapNavigationAreaUpdateInfo	Ego_r.pdb order + only caller 0x0050A650 GetMapNavigationAreaInit (see NAME_FIXES.tsv)
+004014a0	CCRC::Calc	Ego_r.pdb ?Calc@CCRC@@SIKKPBXK@Z (header COMDAT, Ego_r 0x00401920); landed body CCRC_Calc_004014a0.cpp
+00401630	CDiskFileWin32::~CDiskFileWin32	out-of-line COMDAT of the inline virtual dtor (vtable 0x0122D06C store, Close, ~CWideString, ~CBaseClassNonCopyable); 0x00409730 calls it on every exit but the first
+0099ad80	CDiskFileWin32::CDiskFileWin32	Ego_r.pdb ??0CDiskFileWin32@@QAE@ABVCWideString@@W4FileAccessType@@K@Z (landed CDiskFileWin32_CDiskFileWin32_0099ad80.cpp)
+00999a30	CAFile::IsPathFile	Ego_r.pdb ?IsPathFile@CAFile@@SI_NABVCWideString@@@Z (static __fastcall)
+00993bc0	CDataInputStream::SetPosition	direct call on the local CFileDataInputStream in 0x00409730
+00412880	std::vector<char>::resize	one-argument resize(n) (calls resize(n, x) 0x004122D0); the catalog's _Umove<EWeaponClass*> is propagated
+0122e258	"FablePro"	profile file tag (memcmp 8)
+0122e24c	"FableSav"	save file tag (memcmp 8)

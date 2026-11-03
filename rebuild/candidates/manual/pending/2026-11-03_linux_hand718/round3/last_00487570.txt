@@ -1,0 +1,1 @@
+00487570 CPlayer::DrawFreeCamDebug RELOCATION_MATCH flags= []

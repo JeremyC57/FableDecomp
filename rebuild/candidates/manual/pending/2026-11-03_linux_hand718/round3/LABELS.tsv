@@ -1,0 +1,27 @@
+address	name	evidence
+0089e190	CGameScriptInterface::CameraUseCameraPoint	RELOCATION_MATCH; Ego_r.pdb + FSE manifest leaf ?CameraUseCameraPoint@CGameScriptInterface@@UBEXABVCScriptThing@@PBVC3DVector@@PBVCRightHandedSet@@MJJ@Z
+00487570	CPlayer::DrawFreeCamDebug	RELOCATION_MATCH; Ego_r.pdb ?DrawFreeCamDebug@CPlayer@@QBEXPBVC2DBoxF@@ABVCFontBank@@@Z
+0088edc0	CGameScriptInterface::CameraDoConversation	DIFFER(1612v1564); Ego_r.pdb + FSE manifest
+008a93a0	CGameScriptInterface::EntityWillTeleportToArea	DIFFER(618v620); Ego_r.pdb
+0075c160	CTCCameraPointDefinitionBase::IsRelativeCoordTranslation	Ego_r.pdb 0x0076AB80; UsingRelativeCoords +0x3A
+0075c170	CTCCameraPointDefinitionBase::IsRelativeCoordOrientation	Ego_r.pdb; +0x3B
+0075ccb0	CTCCameraPointScripted::GetLookDirection	Ego_r.pdb; call in 0x0089E190
+0075ccf0	CTCCameraPointScripted::GetLookDirectionEnd	Ego_r.pdb; call in 0x0089E190
+00852d90	NCameraModes::CScriptModuleTransitionBetweenPoints::CScriptModuleTransitionBetweenPoints	Ego_r.pdb (const CThing&, const C3DVector&, const C3DVector&, long, float)
+008524c0	NCameraModes::CScriptModuleTransitionBetweenPoints::CScriptModuleTransitionBetweenPoints	Ego_r.pdb (three C3DVector, long, float)
+00852510	NCameraModes::CScriptModuleTransitionBetweenPoints::CScriptModuleTransitionBetweenPoints	Ego_r.pdb (four C3DVector, long, float); uid == 0 branch of 0x0089E190
+0072a430	CTCBase::GetPointType<CTCCameraPointScriptedSpline>	type 7 test called from 0x0089E190
+0075edf0	CTCCameraPointScripted	camera point type 6 (Ego_r ECameraPointType)
+0075fbf0	CTCCameraPointScriptedSpline	camera point type 7
+00699e60	CGameCameraManager::SetScriptedCameraMode	Ego_r.pdb ?SetScriptedCameraMode@CGameCameraManager@@QAEXV?$CCountedPointer@VCScriptModuleBase@NCameraModes@@@@@Z; by-value argument in 0x0089E190
+0051ed60	CThingManager::PeekPThingWithUID	Ego_r.pdb const overload; 0x0089E190
+0069c3d0	CCountedPointer<NCameraModes::CScriptModuleBase>::Reset	out of line in 0x0089E190
+005ed2c0	CCountedPointer<NCameraModes::CScriptModuleBase>::~CCountedPointer	0x0089E190 epilogue
+004c1060	NGraphicAppearance::CTCGraphicAppearance::GetFocalPos	Ego_r.pdb; 0x0088EDC0
+00a14260	C3DVector::Rotate	Ego_r.pdb ?Rotate@C3DVector@@QAEXMM@Z; 0x0088EDC0
+009dd8f0	CRenderManager2D::Draw2DText	Ego_r.pdb ?Draw2DText@CRenderManager2D@@QAE_NABVC2DVector@@VCWideString@@ABVCFontBank@@ABVCRGBColour@@K@Z; 0x00487570
+00a0be90	CCamera::GetHorizontalFOV	Ego_r.pdb ?GetHorizontalFOV@CCamera@@QBEMXZ; 0x00487570
+00486c40	GFFloatToWideString	Ego_r.pdb global; 0x00487570 (by-value CWideString return)
+009e1da0	GFAXToVX	Ego_r.pdb __fastcall; inline CFontBank::GetVStringExtents in 0x00487570
+009e1dd0	GFAYToVY	Ego_r.pdb __fastcall; inline CFontBank::GetVFontMaxHeight / GetVStringExtents
+013b8384	PRenderManager	global (see NAME_FIXES.tsv)
