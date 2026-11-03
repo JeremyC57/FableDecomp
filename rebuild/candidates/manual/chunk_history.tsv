@@ -26370,3 +26370,9 @@ chunk	address	module	name	length
 732	006ab820	CThingPlayerCreature	ResolveFacingDirection	2328
 732	006aca30	CThingPlayerCreature	OnCollisionWithObject	2026
 732	004b05c0	CQuestManager	TransferBoasts	1126
+733	004075c0	CUserProfileManager	RenderUIBackground	1194
+733	00409b70	CUserProfileManager	SetDefaultValuesForNewProfile	1105
+733	00409fd0	CUserProfileManager	SaveGameState	1892
+733	0040a7f0	CUserProfileManager	ApplyVideoValues	1941
+733	0040bca0	CUserProfileManager	LoadGameState	2790
+733	0040c790	CUserProfileManager	SetDefaultValues	1284
