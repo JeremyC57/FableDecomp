@@ -1,0 +1,5 @@
+addr       parity           behav  name
+00c59860   MATCH            PASS   CVtable_012b5c10::vfunc_17
+
+WINS: 1
+  00c59860 MATCH CVtable_012b5c10::?Reset@CCodaVoice@@UAEXXZ

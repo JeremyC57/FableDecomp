@@ -1,0 +1,94 @@
+address	name	set	grade_before	before_source	grade_final	behaviour
+0x00401670	CDiskFileWin32::GetLength	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	MATCH	PASS
+0x00453E16	CCombatAbilityBlockingData::GetCombatAbilityDataType	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	MATCH	PASS
+0x0047F58B	CTCInGameMenu::AddRegionAndTimeInfo	nav-header includer / 736 SIBLINGS	RELOCATION_MATCH	736 SIBLINGS.tsv	RELOCATION_MATCH	PASS
+0x004AC2C0	CThingSearchTools::GetPBestThing	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x004B05C0	CQuestManager::TransferBoasts	pp-DIFF (FABLE_RETAIL_STLP_LIST user)	RELOCATION_MATCH	736 SIBLINGS.tsv	RELOCATION_MATCH	PASS
+0x00512F60	CThingSearchTools::GetPFirstThing<CFilter_Bind2<CThingFilter_InMap, CThingFilter_IsInQuest >, const CThingBuilding>	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x00522530	NThingManager::CEntityRuntimePersistence::GetGamePersistentSaveData	nav-header includer / 736 SIBLINGS	RELOCATION_MATCH	736 SIBLINGS.tsv	RELOCATION_MATCH	PASS
+0x00523860	CEntityRuntimePersistence::SetGamePersistentSaveData	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x005269B0	std::__uninitialized_copy<NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *>	nav-header includer / 736 SIBLINGS	MATCH	736 SIBLINGS.tsv	MATCH	PASS
+0x005269F0	std::__uninitialized_fill_n<NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *, unsigned int, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity>	nav-header includer / 736 SIBLINGS	MATCH	736 SIBLINGS.tsv	MATCH	PASS
+0x0052B030	std::vector<NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity>::_M_insert_overflow	nav-header includer / 736 SIBLINGS	RELOCATION_MATCH	736 SIBLINGS.tsv	RELOCATION_MATCH	PASS
+0x005385AE	NUISystem::CList::ScrollUp	pp-DIFF (FABLE_RETAIL_STLP_LIST user)	RELOCATION_MATCH	736 SIBLINGS.tsv	RELOCATION_MATCH	PASS
+0x005392FC	NUISystem::CList::ScrollDown	pp-DIFF (FABLE_RETAIL_STLP_LIST user)	RELOCATION_MATCH	736 SIBLINGS.tsv	RELOCATION_MATCH	PASS
+0x0053A0A1	NUISystem::CList::ChangeState	pp-DIFF (FABLE_RETAIL_STLP_LIST user)	RELOCATION_MATCH	736 SIBLINGS.tsv	RELOCATION_MATCH	PASS
+0x005B304E	CTCInventoryTrade::GetTypeAsString	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x0065F604	CDefClassBase::GetSubDef<CEntitySoundDef>	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x00698C30	CGameCameraManager::PushDownManualCameraList	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x006D0800	CTCWife::OnInitialActivate	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x00733690	CTCCombat::GetBlockingAnimationEntry	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x0077EB70	CTCHeroCentre::GetClassTypeName	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x007B44E0	CDefClassBase::GetSubDef<CGuardDef>	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x007E1BF0	CTCInfoDisplay::GetClassTypeName	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x0083C5D0	CThingSwitch::Create	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x0087AFF0	NMaths::GetRootsNumerically<class `anonymous namespace'::CCotMethod>	nav-header includer / 736 SIBLINGS	RELOCATION_MATCH	736 SIBLINGS.tsv	RELOCATION_MATCH	PASS
+0x0089F9E0	CGameScriptInterface::CreateEffect	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x008BB5B0	CCreatureAction_BuildUpWillEnflameSpell::CCreatureAction_BuildUpWillEnflameSpell	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x008C60B0	CCreatureAction_IceTrollIcicleAttack::Initialise	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x008DF9C0	NCreatureMode::CModeSummonerSummon::vfunc_3	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x008F4D60	CCreatureAction_DragonFlight::CCreatureAction_DragonFlight	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x009093F0	CCombatSequence_WillPhysicalShieldNonMelee::OnCreate	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x0093F930	CThingSearchTools::GetPBestThing<CThingFilter_In2DRange,CThingCompare_Nearest,CThing>	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x0097CEF0	CCreatureAction_VillagerBackOff::Initialise	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x009C0880	CDisplayManager::CDisplayManager	nav-header includer / 736 SIBLINGS	RELOCATION_MATCH	736 SIBLINGS.tsv	RELOCATION_MATCH	PASS
+0x009D52D0	SetupBuffer	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x00A14E50	CNavigatorManager::SaveNavigationMapToFile	nav-header includer / 736 SIBLINGS	RELOCATION_MATCH	736 SIBLINGS.tsv	RELOCATION_MATCH	PASS
+0x00A14F70	CNavigatorManager::GetNodeAt	respelled	RELOCATION_MATCH	nf_base.log	RELOCATION_MATCH	PASS
+0x00A19B90	CANavQuadTreeNode::GetPreferabilityCost	nav-header includer / 736 SIBLINGS	MATCH	736 SIBLINGS.tsv	MATCH	PASS
+0x00A19BB0	CANavQuadTreeNode::IsSwitchableOn	nav-header includer / 736 SIBLINGS	MATCH	736 SIBLINGS.tsv	MATCH	PASS
+0x00A1AF00	CNavigatorAStar::IsNavLineOfSightClear	nav-header includer / 736 SIBLINGS	RELOCATION_MATCH	736 SIBLINGS.tsv	RELOCATION_MATCH	PASS
+0x00A471D0	IsAnyPartOfNodeWithinDistOfPos	nav-header includer / 736 SIBLINGS	RELOCATION_MATCH	736 SIBLINGS.tsv	RELOCATION_MATCH	PASS
+0x00A472F0	CNavigatorBase::GetNextNeighbour	nav-header includer / 736 SIBLINGS	RELOCATION_MATCH	736 SIBLINGS.tsv	RELOCATION_MATCH	PASS
+0x00A75B30	CANavQuadTreeNode::GetSize	respelled	RELOCATION_MATCH	nf_base.log	RELOCATION_MATCH	PASS
+0x00A75C20	CNavQuadTreeNode::~CNavQuadTreeNode	nav-header includer / 736 SIBLINGS	RELOCATION_MATCH	736 SIBLINGS.tsv	RELOCATION_MATCH	PASS
+0x00A75CA0	CNavQuadTreeNode::SetTLNode	respelled	RELOCATION_MATCH	nf_base_head_sources.log	RELOCATION_MATCH	PASS
+0x00A75CE0	CNavQuadTreeNode::SetTRNode	respelled	RELOCATION_MATCH	nf_base_head_sources.log	RELOCATION_MATCH	PASS
+0x00A75D20	CNavQuadTreeNode::SetBLNode	respelled	RELOCATION_MATCH	nf_base_head_sources.log	RELOCATION_MATCH	PASS
+0x00A75D60	CNavQuadTreeNode::SetBRNode	respelled	RELOCATION_MATCH	nf_base_head_sources.log	RELOCATION_MATCH	PASS
+0x00A75E30	CNavQuadTreeNode::SetUpNeighbours	nav-header includer / 736 SIBLINGS	RELOCATION_MATCH	736 SIBLINGS.tsv	RELOCATION_MATCH	PASS
+0x00A76060	CNavQuadTreeNode::RemoveRegionZero	respelled	RELOCATION_MATCH	nf_base.log	RELOCATION_MATCH	PASS
+0x00A76240	CNavBlockedQuadTreeNode::operator=	nav-header includer / 736 SIBLINGS	MATCH	736 SIBLINGS.tsv	MATCH	PASS
+0x00A76280	CNavBlockedQuadTreeNode::AddToIndexTable	nav-header includer / 736 SIBLINGS	MATCH	736 SIBLINGS.tsv	MATCH	PASS
+0x00A76370	CANavQuadTreeNode::CANavQuadTreeNode	nav-header includer / 736 SIBLINGS	RELOCATION_MATCH	736 SIBLINGS.tsv	RELOCATION_MATCH	PASS
+0x00A763B0	CANavQuadTreeNode::GetAreaCovering	respelled	RELOCATION_MATCH	nf_base.log	RELOCATION_MATCH	PASS
+0x00A76C30	CNavNavigableLeafNode::IsNeighbourOf	nav-header includer / 736 SIBLINGS	RELOCATION_MATCH	736 SIBLINGS.tsv	RELOCATION_MATCH	PASS
+0x00A76C70	CNavSwitchableLeafNode::IsNeighbourOf	nav-header includer / 736 SIBLINGS	RELOCATION_MATCH	736 SIBLINGS.tsv	RELOCATION_MATCH	PASS
+0x00A76CC0	CNavQuadTree::IsAreaAllSamePreferability	nav-header includer / 736 SIBLINGS	RELOCATION_MATCH	736 SIBLINGS.tsv	RELOCATION_MATCH	PASS
+0x00A76F30	CNavQuadTree::IsAreaBlockedByLines	nav-header includer / 736 SIBLINGS	RELOCATION_MATCH	736 SIBLINGS.tsv	RELOCATION_MATCH	PASS
+0x00A77420	CNavSwitchableLeafNode::Unlock	nav-header includer / 736 SIBLINGS	RELOCATION_MATCH	736 SIBLINGS.tsv	RELOCATION_MATCH	PASS
+0x00A77570	CNavQuadTree::IsActionPointReachable	respelled	RELOCATION_MATCH	nf_base.log	RELOCATION_MATCH	PASS
+0x00A778D0	CANavQuadTreeNode::SaveToFile	nav-header includer / 736 SIBLINGS	RELOCATION_MATCH	736 SIBLINGS.tsv	RELOCATION_MATCH	PASS
+0x00A77E80	CNavQuadTree::GetMemoryUsage	nav-header includer / 736 SIBLINGS	MATCH	736 SIBLINGS.tsv	MATCH	PASS
+0x00A78DD0	CNavQuadTree::UnblockAllSwitchableNodes	nav-header includer / 736 SIBLINGS	RELOCATION_MATCH	736 SIBLINGS.tsv	RELOCATION_MATCH	PASS
+0x00A78E20	CNavQuadTree::IsAreaClear	new row	RELOCATION_MATCH	new4_regrade.log	RELOCATION_MATCH	PASS
+0x00A79240	CNavQuadTree::SetSwitchableNodesAsBlocked	nav-header includer / 736 SIBLINGS	RELOCATION_MATCH	736 SIBLINGS.tsv	RELOCATION_MATCH	PASS
+0x00A792E0	CNavQuadTree::ClearNodes	respelled	RELOCATION_MATCH	nf_base_head_sources.log	RELOCATION_MATCH	PASS
+0x00A7CB50	std::for_each	respelled	RELOCATION_MATCH	nf_base_head_sources.log	RELOCATION_MATCH	PASS
+0x00A7D950	CNavBlockedQuadTreeNode::MakeRegion	nav-header includer / 736 SIBLINGS	MATCH	736 SIBLINGS.tsv	MATCH	PASS
+0x00A7D960	CNavBlockedQuadTreeNode::AddNavigableNodeNeighbouringSwitchableNodeToRegion	nav-header includer / 736 SIBLINGS	MATCH	736 SIBLINGS.tsv	MATCH	PASS
+0x00A81590	std::vector<std::list<C2DLineF, std::allocator<C2DLineF>> const *, std::allocator<std::list<C2DLineF, std::allocator<C2DLineF>> const *>>::_M_insert_overflow	respelled	RELOCATION_MATCH	nf_base_head_sources.log	RELOCATION_MATCH	PASS
+0x00A85560	std::__uninitialized_fill_n<CNavQuadTree::CNavigationLayer *, unsigned int, CNavQuadTree::CNavigationLayer>	nav-header includer / 736 SIBLINGS	RELOCATION_MATCH	736 SIBLINGS.tsv	RELOCATION_MATCH	PASS
+0x00A85B90	std::vector<CNavQuadTree::CNavigationLayer, std::allocator<CNavQuadTree::CNavigationLayer>>::_M_insert_overflow	nav-header includer / 736 SIBLINGS	RELOCATION_MATCH	736 SIBLINGS.tsv	RELOCATION_MATCH	PASS
+0x00A85CC0	std::vector<CNavQuadTree::CNavigationLayer, std::allocator<CNavQuadTree::CNavigationLayer>>::_M_fill_insert	nav-header includer / 736 SIBLINGS	RELOCATION_MATCH	736 SIBLINGS.tsv	RELOCATION_MATCH	PASS
+0x00A9BA70	C3DMeshFileSaver::SaveMeshFileCompressed	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x00AE8D50	NParticleEngine::CParticleEmitterDatabase::Load	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x00B4F390	CEngineShadowRenderer::UpdateShadowScene	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x00B99BB0	CEngineInternalPrimitiveRepeatedStaticMesh::IsInsideFrustum	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x00C1EE30	CEventTriggerRef::GetDriverCount	new row	MATCH	new4_regrade.log	MATCH	PASS
+0x00C59710	CCodaVoice::Stop	respelled	MATCH	nf_base.log	MATCH	PASS
+0x00C59860	CCodaVoice::Reset	respelled	MATCH	nf_base.log	MATCH	PASS
+0x00C5A1F0	CSoftwareVoice::Stop	new row	RELOCATION_MATCH	new4_regrade.log	RELOCATION_MATCH	PASS
+0x00C5A2A0	CSoftwareVoice::Reset	new row	RELOCATION_MATCH	new4_regrade.log	RELOCATION_MATCH	PASS
+0x00C5CE40	CAudioRingBuffer::Clear	respelled	MATCH	nf_base.log	MATCH	PASS
+0x00C5CEA0	CAudioRingBuffer::Flush	respelled	MATCH	nf_base.log	MATCH	PASS
+0x00CE5E10	NScript::CHeroBoastsScript::BoastBountyHuntDecapitation	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x00D785C0	CSpawnedFunc<NScript::CQ_HeroSoulsScript>::`scalar deleting destructor'	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x00DF9B00	CActiveEntityScript<NScript::CQ_TraderConflictEvilScript>::SuspendableProcess	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x00E2B090	NScript::CV_AmbushScamScript::Main	nav-header includer / 736 SIBLINGS	RELOCATION_MATCH	736 SIBLINGS.tsv	RELOCATION_MATCH	PASS
+0x00E5D030	CActiveEntityScript<NScript::CV_BeggarAndChildScript>::SuspendableProcess	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x00EC16E0	CActiveEntityScript<NScript::CV_PicnicAreaAfterWaspBossScript>::SuspendableProcess	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x00EF5180	CActiveEntityScript<NScript::CPersonalScript_EmptyScript>::SuspendableProcess	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x0121A918	_static_init::g_CCharString_013b8b58	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x0121EA60	_static_init::g_CCharString_013bacbc	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS
+0x012218E0	_static_init::g_CCharString_013bb678	sample (every 80th pp-SAME includer)	MATCH or RELOCATION_MATCH	landed (HEAD)	RELOCATION_MATCH	PASS

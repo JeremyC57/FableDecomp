@@ -1,7 +1,9 @@
-// std::vector::_M_insert_overflow(pointer position, const value_type& x, const __true_type&, size_type fill_len, bool atend) -- (vector<CUnprovenElement_00a81590*>) STLport POD growth insert: allocate size + max(size, fill_len) elements, memmove the head, write fill_len copies of x, memmove the tail unless atend, free the old block, adopt the new one
-// Leaf: ?_M_insert_overflow@?$vector@PAVCUnprovenElement_00a81590@@V?$allocator@PAVCUnprovenElement_00a81590@@@std@@@std@@IAEX
+// std::vector::_M_insert_overflow(pointer position, const value_type& x, const __true_type&, size_type fill_len, bool atend) -- (vector<const list<C2DLineF>*>) STLport POD growth insert: allocate size + max(size, fill_len) elements, memmove the head, write fill_len copies of x, memmove the tail unless atend, free the old block, adopt the new one
+// Leaf: ?_M_insert_overflow@?$vector@PBV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@V?$allocator@PBV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@2@@std@@IAEXPAPBV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@2@ABQBV32@ABU__true_type@2@I_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A81590, 216 bytes (+ int3 padding), thiscall, `ret 14h` (five arguments).
-// Identity: element `CUnprovenElement_00a81590*` -- DESCRIPTIVE element type: `CUnprovenElement_00a81590*` is a placeholder for an unidentified 4-byte pointer element; evidence: callers are CNavQuadTree leaf setup and a list destructor neighbour (labels propagated); the element is not named.
+// Identity: element `const list<C2DLineF>*` (landing 2026-11-03g, chunk 736 LABELS; was an address-suffixed placeholder class):
+//   CNavQuadTree::IsAreaClear 0x00A78E20 (Ego_r.pdb; RELOCATION_MATCH) calls this body at both push_backs of its local
+//   vector<const list<C2DLineF>*> (0x00A79107 / 0x00A791A1), the type of IsAreaBlockedByLines' Ego_r parameter.
 //   Family F007 (32 byte-identical bodies; the same STLport source as family F005, split from it only by the int3 padding):
 //   the manifest label "Std_Vector_Insert_Range" is propagated and wrong (no range is inserted). STLport 4.6 `vector<_Tp>::_M_insert_overflow(pos, x,
 //   const __true_type&, fill_len, atend)` (the protected POD overload, defined in the class body) verbatim.
@@ -14,9 +16,10 @@ extern "C" void* __cdecl malloc(unsigned int size);                             
 extern "C" void __cdecl free(void* block);                                       // 0x00BFEA14
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int size); // 0x00BFEAE6
 
-class CUnprovenElement_00a81590;
+class C2DLineF;                                                                  // Ego_r.pdb, engine/C2DLineF.h
 
 namespace std {
+template <class _Tp, class _Alloc> class list;                                  // STLport 4.6 _list.h (only the pointer is used)
 
 struct __true_type { };
 
@@ -89,6 +92,6 @@ protected:
     }
 };
 
-template void vector<CUnprovenElement_00a81590* >::_M_insert_overflow(CUnprovenElement_00a81590**, CUnprovenElement_00a81590* const&, const __true_type&, unsigned int, bool);
+template void vector<const list<C2DLineF, allocator<C2DLineF> >* >::_M_insert_overflow(const list<C2DLineF, allocator<C2DLineF> >**, const list<C2DLineF, allocator<C2DLineF> >* const&, const __true_type&, unsigned int, bool);
 
 } // namespace std

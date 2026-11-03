@@ -32825,7 +32825,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c5cea0'
-        Module = 'CV_MurderTwistScript'
+        Module = 'CAudioRingBuffer'
         Source = '00/c5/CVMurderTwistScript_CVMurderTwistScriptInitb_00c5cea0.cpp'
         TestSource = '00/c5/CVMurderTwistScript_CVMurderTwistScriptInitb_00c5cea0_test.cpp'
         PassPattern = 'INIT_B_OK'
@@ -44137,7 +44137,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c5ce40'
-        Module = 'CGameflowAssistanceScript'
+        Module = 'CAudioRingBuffer'
         Source = '00/c5/CGameflowAssistanceScript_Init_00c5ce40.cpp'
         TestSource = '00/c5/CGameflowAssistanceScript_Init_00c5ce40_test.cpp'
         PassPattern = '00c5ce40_TEST PASS'
@@ -46868,7 +46868,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c59860'
-        Module = 'CVtable_012b5c10'
+        Module = 'CCodaVoice'
         Source = '00/c5/CDataInputStream_Close_00c59860.cpp'
         TestSource = '00/c5/CDataInputStream_Close_00c59860_test.cpp'
         PassPattern = 'CLOSE_OK'
@@ -66585,7 +66585,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '00c59710'
-        Module = 'CVtable_012b5c10'
+        Module = 'CCodaVoice'
         Source = '00/c5/Clear_Clear_00c59710.cpp'
         TestSource = '00/c5/Clear_Clear_00c59710_test.cpp'
         PassPattern = 'OK_00c59710'
@@ -381096,6 +381096,34 @@ $catalog = @(
         Source = '00/b3/CEngineMap_ReadMapInfoBlock_00b3efa0.cpp'
         TestSource = '00/b3/CEngineMap_ReadMapInfoBlock_00b3efa0_test.cpp'
         PassPattern = '00b3efa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1ee30'
+        Module = 'CEventTriggerRef'
+        Source = '00/c1/CEventTriggerRef_GetDriverCount_00c1ee30.cpp'
+        TestSource = '00/c1/CEventTriggerRef_GetDriverCount_00c1ee30_test.cpp'
+        PassPattern = '00c1ee30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5a1f0'
+        Module = 'CSoftwareVoice'
+        Source = '00/c5/CSoftwareVoice_Stop_00c5a1f0.cpp'
+        TestSource = '00/c5/CSoftwareVoice_Stop_00c5a1f0_test.cpp'
+        PassPattern = '00c5a1f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5a2a0'
+        Module = 'CSoftwareVoice'
+        Source = '00/c5/CSoftwareVoice_Reset_00c5a2a0.cpp'
+        TestSource = '00/c5/CSoftwareVoice_Reset_00c5a2a0_test.cpp'
+        PassPattern = '00c5a2a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a78e20'
+        Module = 'CNavQuadTree'
+        Source = '00/a7/CNavQuadTree_IsAreaClear_00a78e20.cpp'
+        TestSource = '00/a7/CNavQuadTree_IsAreaClear_00a78e20_test.cpp'
+        PassPattern = '00a78e20_TEST PASS'
     }
 )
 

@@ -1,16 +1,18 @@
 // CANavQuadTreeNode::GetAreaCovering() const -- the square this node covers: position +/- half the level's cell size
+// Leaf: ?GetAreaCovering@CANavQuadTreeNode@@QBE?AVC2DBoxF@@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A763B0, length 61 bytes (+ int3 padding).
-// Globals: the per-level cell size table (float[] @ 0x0129DCAC, indexed by QuadTreeLevel at +0xc,
-// a `movzx` byte), the 0.5f constant in the float pool @ 0x0122F59C.
+// Globals: the per-level cell size table g_QuadTreeLevelSizes (const float[] @ 0x0129DCAC: 32, 16, 8, 4, 2, 1, 0.5; descriptive,
+// no PDB data symbol; the spelling of the landed 0x00A76640 / 0x00A76CC0 / 0x00A78E20 rows, was g_quadTreeLevelCellSize, landing
+// 2026-11-03g), indexed by QuadTreeLevel at +0xc (a `movzx` byte), the 0.5f constant in the float pool @ 0x0122F59C.
 // Shape: `half = size[level] * 0.5f` lives in the `push ecx` slot (`fst` keeps it on the x87 stack
 // for the first use); the four box edges are computed right to left (Max.Y, Max.X, Min.Y, Min.X)
 // as constructor arguments and stored through the hidden result pointer (`ret 4`), so C2DBoxF
 // needs a user constructor. Position is C2DVector X +0x4, Y +0x8 (engine header).
-extern float g_quadTreeLevelCellSize[];          // 0x0129DCAC
+extern const float g_QuadTreeLevelSizes[];       // 0x0129DCAC
 
 class C2DBoxF { public:
-    float MinX, MinY, MaxX, MaxY;
-    C2DBoxF(float minX, float minY, float maxX, float maxY) : MinX(minX), MinY(minY), MaxX(maxX), MaxY(maxY) {}
+    float TLX, TLY, BRX, BRY;                   // Ego_r.pdb member names
+    C2DBoxF(float tlx, float tly, float brx, float bry) : TLX(tlx), TLY(tly), BRX(brx), BRY(bry) {}
 };
 
 class CANavQuadTreeNode { public:
@@ -26,6 +28,6 @@ class CANavQuadTreeNode { public:
 
 C2DBoxF CANavQuadTreeNode::GetAreaCovering() const
 {
-    float half = g_quadTreeLevelCellSize[QuadTreeLevel] * 0.5f;
+    float half = g_QuadTreeLevelSizes[QuadTreeLevel] * 0.5f;
     return C2DBoxF(Position_X - half, Position_Y - half, Position_X + half, Position_Y + half);
 }

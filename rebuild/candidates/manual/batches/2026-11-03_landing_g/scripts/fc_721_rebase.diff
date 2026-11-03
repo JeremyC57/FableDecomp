@@ -1,0 +1,14 @@
+--- a/rebuild/include/stlport/fable_containers.h	2026-11-03 22:24:29.054132823 +0000
++++ b/rebuild/include/stlport/fable_containers.h (scratch rebase for chunk 721 r4)
+@@ -416,6 +416,11 @@
+     _Tp& back() { iterator tmp=end(); return *(--tmp); }
+     const _Tp& back() const { const_iterator tmp=end(); return *(--tmp); }
+ #endif
++#ifdef FABLE_RETAIL_STLP_LIST_MEMBERS
++    // scratch rebase of chunk 721 r4's opt-in: only the members FABLE_RETAIL_STLP_LIST lacks (size / push_front / back come from it)
++    const _Tp& front() const { return *begin(); }
++    template<class _Predicate> void remove_if(_Predicate __pred);
++#endif
+ };
+ // _bitset.h / _range_errors.h (no-exceptions branch)
+ template<size_t _Nw> struct _Base_bitset {

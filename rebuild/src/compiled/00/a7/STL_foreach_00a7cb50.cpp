@@ -15,7 +15,9 @@ public:
 };
 class CNavBlockedQuadTreeNode : public CANavQuadTreeNode {
 };
-extern CNavBlockedQuadTreeNode g_BlockedNavNode;    // 0x013D2D2C
+class CNavQuadTree { public:
+    static CNavBlockedQuadTreeNode BlockedNode;     // 0x013D2D2C ?BlockedNode@CNavQuadTree@@2VCNavBlockedQuadTreeNode@@A (Ego_r dynamic initializer; was g_BlockedNavNode, landing 2026-11-03g)
+};
 
 class CDeleteNavNode {
 public:
@@ -23,7 +25,7 @@ public:
     CDeleteNavNode(const CDeleteNavNode&) { }
     void operator()(CANavQuadTreeNode* node) const
     {
-        if (node && node != &g_BlockedNavNode)
+        if (node && node != &CNavQuadTree::BlockedNode)
             delete node;
     }
 };

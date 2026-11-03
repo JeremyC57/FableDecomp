@@ -331,6 +331,10 @@ struct _List_iterator_base {
     _List_iterator_base(_List_node_base* p) : _M_node(p) { }
     _List_iterator_base() { }
     void _M_incr() { _M_node=_M_node->_M_next; }
+#ifdef FABLE_RETAIL_STLP_LIST
+    // Retail branch (chunk 736, row 0x00A7A0A0 CNavQuadTree::SetUpRegions): STLport 4.6 _list.h _M_decr, for list::back().
+    void _M_decr() { _M_node=_M_node->_M_prev; }
+#endif
     bool operator==(const _List_iterator_base& y) const { return _M_node==y._M_node; }
     bool operator!=(const _List_iterator_base& y) const { return _M_node!=y._M_node; }
 };
@@ -345,6 +349,9 @@ template<class _Tp,class _Traits> struct _List_iterator : public _List_iterator_
     pointer operator->() const { return &operator*(); }
     _List_iterator& operator++() { this->_M_incr(); return *this; }
     _List_iterator operator++(int) { _List_iterator tmp=*this; this->_M_incr(); return tmp; }
+#ifdef FABLE_RETAIL_STLP_LIST
+    _List_iterator& operator--() { this->_M_decr(); return *this; }
+#endif
 };
 template<class _Tp,class _Alloc> class _List_base {
 public:
@@ -404,6 +411,10 @@ public:
     size_t size() const { ptrdiff_t n=0; for(const_iterator first=begin(),last=end();first!=last;++first) ++n; return n; }
     _Tp& front() { return *begin(); }
     void push_front(const _Tp& x) { insert(begin(),x); }
+    // chunk 736 (row 0x00A7A0A0): STLport 4.6 _list.h back(): `iterator __tmp = end(); return *(--__tmp);` (SetUpRegions reads
+    // Regions.back() as the list head's _M_prev before each MakeRegion call: `mov eax,[edx+4] ; add eax,8`).
+    _Tp& back() { iterator tmp=end(); return *(--tmp); }
+    const _Tp& back() const { const_iterator tmp=end(); return *(--tmp); }
 #endif
 };
 // _bitset.h / _range_errors.h (no-exceptions branch)

@@ -1,0 +1,36 @@
+addr       parity           behav  name
+00a7cb50   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode
+00a7cb50   WARN RELOC_NAME: ?g_BlockedNavNode@@3VCNavBlockedQuadTreeNode@@A -> 013d2d2c labelled 'CNavQuadTree::BlockedNode'
+00a7cb50   RELOCATION_MATCH PASS   std::for_each
+00a75d20   WARN SHARED_HEADER_AVAILABLE C2DVector
+00a75d20   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode
+00a75d20   WARN RELOC_NAME: ?g_BlockedNavNode@@3VCNavBlockedQuadTreeNode@@A -> 013d2d2c labelled 'CNavQuadTree::BlockedNode'
+00a75d20   RELOCATION_MATCH PASS   CNavQuadTreeNode::SetBLNode
+00a75d60   WARN SHARED_HEADER_AVAILABLE C2DVector
+00a75d60   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode
+00a75d60   WARN RELOC_NAME: ?g_BlockedNavNode@@3VCNavBlockedQuadTreeNode@@A -> 013d2d2c labelled 'CNavQuadTree::BlockedNode'
+00a75d60   RELOCATION_MATCH PASS   CNavQuadTreeNode::SetBRNode
+00a75ca0   WARN SHARED_HEADER_AVAILABLE C2DVector
+00a75ca0   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode
+00a75ca0   WARN RELOC_NAME: ?g_BlockedNavNode@@3VCNavBlockedQuadTreeNode@@A -> 013d2d2c labelled 'CNavQuadTree::BlockedNode'
+00a75ca0   RELOCATION_MATCH PASS   CNavQuadTreeNode::SetTLNode
+00a75ce0   WARN SHARED_HEADER_AVAILABLE C2DVector
+00a75ce0   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode
+00a75ce0   WARN RELOC_NAME: ?g_BlockedNavNode@@3VCNavBlockedQuadTreeNode@@A -> 013d2d2c labelled 'CNavQuadTree::BlockedNode'
+00a75ce0   RELOCATION_MATCH PASS   CNavQuadTreeNode::SetTRNode
+00a792e0   WARN SHARED_HEADER_AVAILABLE CArray
+00a792e0   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode
+00a792e0   WARN SHARED_HEADER_AVAILABLE CNavQuadTree
+00a792e0   WARN RELOC_NAME: ?clear@CNavConnectorNodeMap@@QAEXXZ -> 00a83fd0 labelled 'CVectorMap::DeallocateMemory'
+00a792e0   WARN RELOC_NAME: ?g_BlockedNavNode@@3VCNavBlockedQuadTreeNode@@A -> 013d2d2c labelled 'CNavQuadTree::BlockedNode'
+00a792e0   RELOCATION_MATCH PASS   CNavQuadTree::ClearNodes
+00a81590   RELOCATION_MATCH PASS   std::vector<std::list<C2DLineF, std::allocator<C2DLineF>> const *, std::allocator<std::list<C2DLineF, std::allocator<C2DLineF>> const *>>::_M_insert_overflow
+
+WINS: 7
+  00a7cb50 RELOCATION_MATCH std::??$for_each@
+  00a75d20 RELOCATION_MATCH CNavQuadTreeNode::?SetBLNode@CNavQuadTreeNode@@IAEXPAVCANavQuadTreeNode@@@Z
+  00a75d60 RELOCATION_MATCH CNavQuadTreeNode::?SetBRNode@CNavQuadTreeNode@@IAEXPAVCANavQuadTreeNode@@@Z
+  00a75ca0 RELOCATION_MATCH CNavQuadTreeNode::?SetTLNode@CNavQuadTreeNode@@IAEXPAVCANavQuadTreeNode@@@Z
+  00a75ce0 RELOCATION_MATCH CNavQuadTreeNode::?SetTRNode@CNavQuadTreeNode@@IAEXPAVCANavQuadTreeNode@@@Z
+  00a792e0 RELOCATION_MATCH CNavQuadTree::ClearNodes
+  00a81590 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@PAVCUnprovenElement_00a81590@@V?$allocator@PAVCUnprovenElement_00a81590@@@std@@@std@@IAEX

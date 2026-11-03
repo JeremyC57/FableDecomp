@@ -1,38 +1,44 @@
-// CNavQuadTree::IsActionPointReachable(const CNavigationPoint& point) -- an action point is reachable when its leaf node is unblocked, or when any unblocked leaf lies on the ring just outside the node's square (both sides of each column, then both sides of each row, in half-unit steps)
-// Leaf: IsActionPointReachable
+// CNavQuadTree::IsActionPointReachable(const CNavigationPosition& point) const -- an action point is reachable when its leaf node is unblocked, or when any unblocked leaf lies on the ring just outside the node's square (both sides of each column, then both sides of each row, in half-unit steps)
+// Leaf: ?IsActionPointReachable@CNavQuadTree@@ABE_NABVCNavigationPosition@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A77570, 0x19C bytes (padded to 416), `ret 4`, `and esp,-8` frame.
-// Callees: CNavQuadTree::GetNodeAt(const C2DVector*, long layer) 0x00A770B0. Data: node sizes per level 0x0129DCAC,
+// Callees: CNavQuadTree::GetNodeAt(const C2DVector&, long layer) const 0x00A770B0. Data: g_QuadTreeLevelSizes 0x0129DCAC,
 //   0.5f 0x0122F59C, 0.25f 0x0123078C (ring margin, a literal).
-// Layout: local model: the point is a C2DVector plus the layer at +8; the leaf node keeps its centre at +4/+8, its level
-//   byte at +0xc and the blocked flag at +0xf.
+// Layout: local model: CNavigationPosition (Ego_r: Position C2DVector, Layer +8); the node is CANavQuadTreeNode (Ego_r: Position
+//   +4/+8, QuadTreeLevel +0xc, Blocked +0xf).
+// Names (landing 2026-11-03g, chunk 736 NAME_FIXES): Ego_r.pdb ?IsActionPointReachable@CNavQuadTree@@ABE_NABVCNavigationPosition@@@Z
+//   (private const) and ?GetNodeAt@CNavQuadTree@@QBEPBVCANavQuadTreeNode@@ABVC2DVector@@J@Z; the size table is the descriptive
+//   g_QuadTreeLevelSizes of the landed 0x00A76640 / 0x00A76CC0 rows (no PDB data symbol). Were CNavigationPoint / CNavLeaf /
+//   g_navNodeSizes and the non-const pointer GetNodeAt; the bytes are unchanged.
 // Shape: the 8-byte probe vector whose address is passed inside the loops gives the aligned frame (GOTCHAS chunk 252).
 class C2DVector { public: float X, Y; };
-struct CNavigationPoint {
+class CNavigationPosition { public:
     C2DVector Position;                             // +0x00
     long      Layer;                                // +0x08
 };
-struct CNavLeaf {
-    void*         _vptr;
-    C2DVector     Centre;                           // +0x04
-    unsigned char Level;                            // +0x0c
-    unsigned char _pad0d[2];
+class CANavQuadTreeNode { public:
+    void*         __vftable;                        // +0x00
+    C2DVector     Position;                         // +0x04
+    unsigned char QuadTreeLevel;                    // +0x0c
+    unsigned char NavLayer;                         // +0x0d
+    bool          LeafNode;                         // +0x0e
     bool          Blocked;                          // +0x0f
 };
-extern const float g_navNodeSizes[];                // 0x0129DCAC
+extern const float g_QuadTreeLevelSizes[];          // 0x0129DCAC
 class CNavQuadTree {
 public:
-    CNavLeaf* GetNodeAt(const C2DVector* position, long layer);   // 0x00A770B0
-    bool IsActionPointReachable(const CNavigationPoint& point);
+    const CANavQuadTreeNode* GetNodeAt(const C2DVector& position, long layer) const;   // 0x00A770B0
+private:
+    bool IsActionPointReachable(const CNavigationPosition& point) const;
 };
-bool CNavQuadTree::IsActionPointReachable(const CNavigationPoint& point)
+bool CNavQuadTree::IsActionPointReachable(const CNavigationPosition& point) const
 {
-    CNavLeaf* node = GetNodeAt(&point.Position, point.Layer);
+    const CANavQuadTreeNode* node = GetNodeAt(point.Position, point.Layer);
     if (!node)
         return false;
     if (!node->Blocked)
         return true;
-    C2DVector centre = node->Centre;
-    float halfSize = g_navNodeSizes[node->Level] * 0.5f;
+    C2DVector centre = node->Position;
+    float halfSize = g_QuadTreeLevelSizes[node->QuadTreeLevel] * 0.5f;
     float reach = halfSize + 0.25f;
     float x = centre.X - reach;
     float endX = centre.X + reach;
@@ -41,7 +47,7 @@ bool CNavQuadTree::IsActionPointReachable(const CNavigationPoint& point)
             C2DVector probe;
             probe.X = x;
             probe.Y = side * reach + centre.Y;
-            CNavLeaf* leaf = GetNodeAt(&probe, point.Layer);
+            const CANavQuadTreeNode* leaf = GetNodeAt(probe, point.Layer);
             if (leaf && !leaf->Blocked)
                 return true;
         }
@@ -53,7 +59,7 @@ bool CNavQuadTree::IsActionPointReachable(const CNavigationPoint& point)
             C2DVector probe;
             probe.Y = y;
             probe.X = side * reach + centre.X;
-            CNavLeaf* leaf = GetNodeAt(&probe, point.Layer);
+            const CANavQuadTreeNode* leaf = GetNodeAt(probe, point.Layer);
             if (leaf && !leaf->Blocked)
                 return true;
         }

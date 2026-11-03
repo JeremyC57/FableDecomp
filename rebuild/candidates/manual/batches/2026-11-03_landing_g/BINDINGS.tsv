@@ -1,0 +1,12 @@
+action	symbol	target	by_row	note
+RETIRE	?g_BlockedNode@@3VCANavQuadTreeNode@@A	013d2d2c		CNavQuadTree::BlockedNode respell
+RETIRE	?g_BlockedNavNode@@3VCNavBlockedQuadTreeNode@@A	013d2d2c		CNavQuadTree::BlockedNode respell
+RETIRE	?g_quadTreeLevelCellSize@@3PAMA	0129dcac		g_QuadTreeLevelSizes respell
+RETIRE	?g_ANavQuadTreeNodeSizeTable@@3PAMA	0129dcac		g_QuadTreeLevelSizes respell
+RETIRE	?g_navNodeSizes@@3QBMB	0129dcac		g_QuadTreeLevelSizes respell
+RETIRE	?GetNodeAt@CNavQuadTree@@QAEPAVCANavQuadTreeNode@@PBVC2DVector@@J@Z	00a770b0		GetNodeAt respell
+RETIRE	?GetNodeAt@CNavQuadTree@@QAEPAUCNavLeaf@@PBVC2DVector@@J@Z	00a770b0		GetNodeAt respell
+ADD	?GetNodeAt@CNavQuadTree@@QBEPBVCANavQuadTreeNode@@ABVC2DVector@@J@Z	00a770b0	00a14f70	Ego_r spelling
+RETIRE	?GetNodeAt@CNavigatorManager@@QAEPAVCANavQuadTreeNode@@ABVC2DVector@@_N@Z	00a14f70		stale: no landed source spells it after 0x00A14F70 respell
+RETIRE	?GetSmallestNodeSize@@YAMXZ	00a76320		0x00A472F0 respelled to the Ego_r static
+RETIRE	?SetBlockedNode@@YIXJJVC2DVector@@@Z	00a76340		0x00A472F0 respelled to the Ego_r static

@@ -1,0 +1,7 @@
+CHANGED engine/C2DLineF.h default=same[22]
+CHANGED engine/CANavQuadTreeNode.h default=same[30] FABLE_RETAIL_C2DBOXF=same[30] FABLE_RETAIL_CANAVQUADTREENODE=same[422]
+CHANGED engine/CNavBlockedQuadTreeNode.h default=same[19] FABLE_RETAIL_CANAVQUADTREENODE=same[19] FABLE_RETAIL_CNAVBLOCKEDQUADTREENODE=same[428]
+CHANGED engine/CNavQuadTree.h default=same[50] FABLE_RETAIL_C2DBOXF=same[50] FABLE_RETAIL_C2DVECTOR=same[50] FABLE_RETAIL_CANAVQUADTREENODE=same[50] FABLE_RETAIL_CNAVQUADTREE=same[681]
+CHANGED engine/CNavRegion.h default=same[464]
+CHANGED engine/CNavigationPosition.h default=same[14]
+CHANGED stlport/fable_containers.h default=same[350] FABLE_RETAIL_STLP_LIST=same[357] FABLE_RETAIL_STLP_VECTOR=same[372] FABLE_RETAIL_STLP_VECTOR_ASSIGN=same[351]

@@ -64,13 +64,13 @@ public:
 };
 class CNavBlockedQuadTreeNode : public CANavQuadTreeNode {
 };
-extern CNavBlockedQuadTreeNode g_BlockedNavNode;    // 0x013D2D2C
 struct CNavConnectorNodeMap {                       // CVectorMap<long, CCountedPointer<CNavConnectorNode> > (16 bytes)
     unsigned char _body[0x10];
     void clear();                                   // 0x00A83FD0
 };
 class CNavQuadTree {
 public:
+    static CNavBlockedQuadTreeNode BlockedNode;     // 0x013D2D2C ?BlockedNode@CNavQuadTree@@2VCNavBlockedQuadTreeNode@@A (Ego_r dynamic initializer; was g_BlockedNavNode, landing 2026-11-03g)
     class CNavigationLayer { public:                       // 40 bytes
         CArray<CANavQuadTreeNode*> Nodes;           // +0x00
         unsigned char LineLists[0xc];               // +0x0c vector<list<C2DLineF> >
@@ -95,7 +95,7 @@ void CNavQuadTree::ClearNodes()
         CANavQuadTreeNode** end = layer.Nodes.end();
         for (CANavQuadTreeNode** it = layer.Nodes.begin(); it != end; ++it) {
             CANavQuadTreeNode* node = *it;
-            if (node && node != &g_BlockedNavNode)
+            if (node && node != &CNavQuadTree::BlockedNode)
                 delete node;
         }
         layer.Nodes.ClearAndFree();

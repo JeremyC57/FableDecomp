@@ -4,7 +4,8 @@
 // Callees: SetTLNode @ 0x00A75CA0, SetTRNode @ 0x00A75CE0, SetBLNode @ 0x00A75D20, SetBRNode @ 0x00A75D60 (the PDB order of the
 //          four setters); virtual GetRegion (slot 5), GetNodeType (slot 6), RemoveRegionZero (slot 14) and the scalar deleting
 //          destructor (slot 0) on the children.
-// Globals: the shared CNavBlockedQuadTreeNode @ 0x013D2D2C (GetRegion returns 0, GetNodeType returns 2 -- 0x00A7D930/0x00A7D940).
+// Globals: the shared CNavBlockedQuadTreeNode @ 0x013D2D2C (the static CNavQuadTree::BlockedNode: Ego_r.pdb `dynamic initializer
+//          for 'CNavQuadTree::BlockedNode'` + its atexit destructor; was g_BlockedNavNode, landing 2026-11-03g) (GetRegion returns 0, GetNodeType returns 2 -- 0x00A7D930/0x00A7D940).
 // Layout: engine/CNavQuadTreeNode.h (0x20): TLNode +0x10, TRNode +0x14, BLNode +0x18, BRNode +0x1c over the PDB CANavQuadTreeNode
 // base (0x10: vptr, Position +4, QuadTreeLevel +0xc, NavLayer +0xd, LeafNode +0xe, Blocked +0xf). The header models the vptr as a
 // plain pointer, so the classes are restated with their virtual slots; data members keep the header's names and offsets.
@@ -47,7 +48,10 @@ public:
 class CNavBlockedQuadTreeNode : public CANavQuadTreeNode {
 };
 
-extern CNavBlockedQuadTreeNode g_BlockedNavNode;                   // 0x013D2D2C
+class CNavQuadTree {
+public:
+    static CNavBlockedQuadTreeNode BlockedNode;                    // 0x013D2D2C ?BlockedNode@CNavQuadTree@@2VCNavBlockedQuadTreeNode@@A
+};
 
 class CNavQuadTreeNode : public CANavQuadTreeNode {
 public:
@@ -70,35 +74,35 @@ bool CNavQuadTreeNode::RemoveRegionZero()
 {
     if (TLNode->LeafNode) {
         if (TLNode->GetRegion() == 0 && TLNode->GetNodeType() == 1)
-            SetTLNode(&g_BlockedNavNode);
+            SetTLNode(&CNavQuadTree::BlockedNode);
     } else if (TLNode->RemoveRegionZero()) {
-        if (TLNode != &g_BlockedNavNode)
+        if (TLNode != &CNavQuadTree::BlockedNode)
             delete TLNode;
-        TLNode = &g_BlockedNavNode;
+        TLNode = &CNavQuadTree::BlockedNode;
     }
     if (TRNode->LeafNode) {
         if (TRNode->GetRegion() == 0 && TRNode->GetNodeType() == 1)
-            SetTRNode(&g_BlockedNavNode);
+            SetTRNode(&CNavQuadTree::BlockedNode);
     } else if (TRNode->RemoveRegionZero()) {
-        if (TRNode != &g_BlockedNavNode)
+        if (TRNode != &CNavQuadTree::BlockedNode)
             delete TRNode;
-        TRNode = &g_BlockedNavNode;
+        TRNode = &CNavQuadTree::BlockedNode;
     }
     if (BLNode->LeafNode) {
         if (BLNode->GetRegion() == 0 && BLNode->GetNodeType() == 1)
-            SetBLNode(&g_BlockedNavNode);
+            SetBLNode(&CNavQuadTree::BlockedNode);
     } else if (BLNode->RemoveRegionZero()) {
-        if (BLNode != &g_BlockedNavNode)
+        if (BLNode != &CNavQuadTree::BlockedNode)
             delete BLNode;
-        BLNode = &g_BlockedNavNode;
+        BLNode = &CNavQuadTree::BlockedNode;
     }
     if (BRNode->LeafNode) {
         if (BRNode->GetRegion() == 0 && BRNode->GetNodeType() == 1)
-            SetBRNode(&g_BlockedNavNode);
+            SetBRNode(&CNavQuadTree::BlockedNode);
     } else if (BRNode->RemoveRegionZero()) {
-        if (BRNode != &g_BlockedNavNode)
+        if (BRNode != &CNavQuadTree::BlockedNode)
             delete BRNode;
-        BRNode = &g_BlockedNavNode;
+        BRNode = &CNavQuadTree::BlockedNode;
     }
     if (TLNode->GetNodeType() == 2 && TRNode->GetNodeType() == 2 && BRNode->GetNodeType() == 2 && BLNode->GetNodeType() == 2)
         return true;

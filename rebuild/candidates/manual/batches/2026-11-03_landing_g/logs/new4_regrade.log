@@ -1,0 +1,15 @@
+addr       parity           behav  name
+00c1ee30   MATCH            PASS   GetDriverCount
+00c5a1f0   WARN RELOC_NAME: ?Clear@CAudioRingBuffer@@QAEXXZ -> 00c5ce40 labelled 'NScript::CGameflowAssistanceScript::Init'
+00c5a1f0   WARN RELOC_NAME: ?Stop@CCodaVoice@@UAEXXZ -> 00c59710 labelled 'CVtable_012b5c10::vfunc_2'
+00c5a1f0   RELOCATION_MATCH PASS   Stop
+00c5a2a0   WARN RELOC_NAME: ?Reset@CCodaVoice@@UAEXXZ -> 00c59860 labelled 'CVtable_012b5c10::vfunc_17'
+00c5a2a0   WARN RELOC_NAME: ?Flush@CAudioRingBuffer@@QAEXXZ -> 00c5cea0 labelled 'NScript::CV_MurderTwistScript::Init'
+00c5a2a0   RELOCATION_MATCH PASS   Reset
+00a78e20   RELOCATION_MATCH PASS   IsAreaClear
+
+WINS: 4
+  00c1ee30 MATCH CEventTriggerRef::?GetDriverCount@CEventTriggerRef@@QAEKXZ
+  00c5a1f0 RELOCATION_MATCH CSoftwareVoice::?Stop@CSoftwareVoice@@UAEXXZ
+  00c5a2a0 RELOCATION_MATCH CSoftwareVoice::?Reset@CSoftwareVoice@@UAEXXZ
+  00a78e20 RELOCATION_MATCH CNavQuadTree::?IsAreaClear@CNavQuadTree@@QBE_NPBVCANavQuadTreeNode@@AA_NAAV?$vector@_KV?$allocator@_K@std@@@std@@@Z

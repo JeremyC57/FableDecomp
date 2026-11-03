@@ -1,0 +1,34 @@
+catalog  0122aad0 std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&> -> `dynamic atexit destructor for 'CNavQuadTree::BlockedNode''
+catalog  00c5cea0 NScript::CV_MurderTwistScript::Init -> CAudioRingBuffer::Flush
+catalog  00a76320 _global::GetConstFloat_0_5_00a76320 -> CNavQuadTree::GetSmallestNodeSize
+catalog  00c5ce40 NScript::CGameflowAssistanceScript::Init -> CAudioRingBuffer::Clear
+catalog  00c59860 CVtable_012b5c10::vfunc_17 -> CCodaVoice::Reset
+catalog  00c59710 CVtable_012b5c10::vfunc_2 -> CCodaVoice::Stop
+catalog  00a80a20 CRetailList_CountedPointer::clear -> std::_List_base<CCountedPointer<CNavRegionConnection>, std::allocator<CCountedPointer<CNavRegionConnection>>>::clear
+catalog  00c5c290 CAudioDevice_00c5c290::OpenScratchStream -> CSoftwareStreamVoice::Reset
+catalog  00c3f3d0 CVtable_012B5C10::~CVtable_012B5C10 -> CCodaVoice::~CCodaVoice
+catalog  00c3f490 CVtable_012b5c60::~CVtable_012b5c60 -> CSoftwareVoice::~CSoftwareVoice
+catalog  00a81590 std::vector::_M_insert_overflow -> std::vector<std::list<C2DLineF, std::allocator<C2DLineF>> const *, std::allocator<std::list<C2DLineF, std::allocator<C2DLineF>> const *>>::_M_insert_overflow
+catalog  012243d0 CNavQuadTree::$E_BlockedNode -> `dynamic initializer for 'CNavQuadTree::BlockedNode''
+catalog  00c1ee30 CMap::GetWorldMapNumber -> CEventTriggerRef::GetDriverCount
+catalog  00c5a1f0 CMap::Update -> CSoftwareVoice::Stop
+catalog  00c5a2a0 CMap::Update -> CSoftwareVoice::Reset
+catalog  00a78e20 _global::CNavQuadTree_InitializeLeafNode -> CNavQuadTree::IsAreaClear
+manifest 00a76320 _global::GetConstFloat_0_5_00a76320 -> CNavQuadTree::GetSmallestNodeSize
+manifest 00a78e20 _global::CNavQuadTree_InitializeLeafNode -> CNavQuadTree::IsAreaClear
+manifest 00a7a0a0 _global::CNavQuadTree_InitializeWithEvents -> CNavQuadTree::SetUpRegions
+manifest 00a80a20 CRetailList_CountedPointer::clear -> std::_List_base<CCountedPointer<CNavRegionConnection>, std::allocator<CCountedPointer<CNavRegionConnection>>>::clear
+manifest 00a81590 std::vector::_M_insert_overflow -> std::vector<std::list<C2DLineF, std::allocator<C2DLineF>> const *, std::allocator<std::list<C2DLineF, std::allocator<C2DLineF>> const *>>::_M_insert_overflow
+manifest 00c1ee30 CMap::GetWorldMapNumber -> CEventTriggerRef::GetDriverCount
+manifest 00c3f3d0 CVtable_012B5C10::~CVtable_012B5C10 -> CCodaVoice::~CCodaVoice
+manifest 00c3f490 CVtable_012b5c60::~CVtable_012b5c60 -> CSoftwareVoice::~CSoftwareVoice
+manifest 00c59710 CVtable_012b5c10::vfunc_2 -> CCodaVoice::Stop
+manifest 00c59860 CVtable_012b5c10::vfunc_17 -> CCodaVoice::Reset
+manifest 00c5a1f0 CMap::Update -> CSoftwareVoice::Stop
+manifest 00c5a2a0 CMap::Update -> CSoftwareVoice::Reset
+manifest 00c5c290 CAudioDevice_00c5c290::OpenScratchStream -> CSoftwareStreamVoice::Reset
+manifest 00c5ce40 NScript::CGameflowAssistanceScript::Init -> CAudioRingBuffer::Clear
+manifest 00c5cea0 NScript::CV_MurderTwistScript::Init -> CAudioRingBuffer::Flush
+manifest 012243d0 CNavQuadTree::$E_BlockedNode -> `dynamic initializer for 'CNavQuadTree::BlockedNode''
+manifest 0122aad0 std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&> -> `dynamic atexit destructor for 'CNavQuadTree::BlockedNode''
+labels 20  catalog renamed 16  manifest renamed 17

@@ -1,25 +1,31 @@
+// Behaviour test for CAudioRingBuffer::Clear (0x00C5CE40): links the source object; every field after the vptr drops to 0 and
+// the vptr is kept.
 #include <stdio.h>
 
-struct CGameflowAssistanceScript {
-    int f0;
-    int f4;
-    int f8;
-    int fc;
-    int f10;
-    int f14;
-    int f18;
-    int f1c;
+class CAudioRingBuffer {
+public:
+    virtual ~CAudioRingBuffer();
+    unsigned char* m_pData;
+    unsigned long  m_capacity;
+    unsigned long  m_frameBytes;
+    unsigned long  m_channels;
+    unsigned long  m_readPos;
+    unsigned long  m_writePos;
+    unsigned long  m_queued;
+    void Clear();
 };
-
-void __fastcall CGameflowAssistanceScript_Init(CGameflowAssistanceScript *self);
+CAudioRingBuffer::~CAudioRingBuffer() { }
 
 int main()
 {
-    CGameflowAssistanceScript o;
-    o.f0 = 0x11111111;
-    o.f4 = 1; o.f8 = 1; o.fc = 1; o.f10 = 1; o.f14 = 1; o.f18 = 1; o.f1c = 1;
-    CGameflowAssistanceScript_Init(&o);
-    if (o.f0 == 0x11111111 && o.f4==0 && o.f8==0 && o.fc==0 && o.f10==0 && o.f14==0 && o.f18==0 && o.f1c==0)
+    static unsigned char storage[16];
+    CAudioRingBuffer r;
+    void* vptr = *(void**)&r;
+    r.m_pData = storage; r.m_capacity = 1; r.m_frameBytes = 1; r.m_channels = 1;
+    r.m_readPos = 1; r.m_writePos = 1; r.m_queued = 1;
+    r.Clear();
+    if (*(void**)&r == vptr && r.m_pData == 0 && r.m_capacity == 0 && r.m_frameBytes == 0 && r.m_channels == 0 &&
+        r.m_readPos == 0 && r.m_writePos == 0 && r.m_queued == 0)
         printf("00c5ce40_TEST PASS\n");
     else
         printf("FAIL\n");

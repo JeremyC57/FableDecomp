@@ -1,0 +1,10 @@
+addr       parity           behav  name
+00a472f0   WARN SHARED_HEADER_AVAILABLE C2DVector
+00a472f0   WARN SHARED_HEADER_AVAILABLE CNavigatorManager
+00a472f0   WARN SHARED_HEADER_AVAILABLE CNavQuadTree
+00a472f0   WARN RELOC_NAME: ?GetSmallestNodeSize@CNavQuadTree@@SIMXZ -> 00a76320 labelled '_global::GetConstFloat_0_5_00a76320'
+00a472f0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00a472f0   RELOCATION_MATCH PASS   CNavigatorBase::GetNextNeighbour
+
+WINS: 1
+  00a472f0 RELOCATION_MATCH CNavigatorBase::GetNextNeighbour

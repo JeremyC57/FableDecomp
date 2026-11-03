@@ -32,7 +32,9 @@ public:
 class CNavBlockedQuadTreeNode : public CANavQuadTreeNode {
 };
 
-extern CNavBlockedQuadTreeNode g_BlockedNavNode;                   // 0x013D2D2C
+class CNavQuadTree { public:
+    static CNavBlockedQuadTreeNode BlockedNode;     // 0x013D2D2C ?BlockedNode@CNavQuadTree@@2VCNavBlockedQuadTreeNode@@A (Ego_r dynamic initializer; was g_BlockedNavNode, landing 2026-11-03g)
+};
 
 class CNavQuadTreeNode : public CANavQuadTreeNode {
 public:
@@ -48,7 +50,7 @@ public:
 
 void CNavQuadTreeNode::SetTRNode(CANavQuadTreeNode* node)
 {
-    if (TRNode != &g_BlockedNavNode)
+    if (TRNode != &CNavQuadTree::BlockedNode)
         delete TRNode;
     TRNode = node;
 }

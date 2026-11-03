@@ -1,0 +1,50 @@
+addr       parity           behav  name
+  WARN leaf 'Clear' matches no symbol in 00c59710.obj; graded the largest function
+  WARN leaf 'Clear' matches no symbol in 00c59710.obj; graded the largest function
+00c59710   MATCH            PASS   CVtable_012b5c10::vfunc_2
+00c59860   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00c59860   MATCH            PASS   CVtable_012b5c10::vfunc_17
+00c5cea0   WARN SHARED_HEADER_AVAILABLE CV_MurderTwistScript
+00c5cea0   MATCH            PASS   NScript::CV_MurderTwistScript::Init
+00c5ce40   MATCH            PASS   NScript::CGameflowAssistanceScript::Init
+00a76f30   WARN SHARED_HEADER_AVAILABLE C2DVector
+00a76f30   WARN SHARED_HEADER_AVAILABLE C2DBoxF
+00a76f30   WARN SHARED_HEADER_AVAILABLE C2DLineF
+  WARN leaf '?IsAreaBlockedByLines@ (Ego_r.pdb ?IsAreaBlockedByLines@CNavQuadTree@@ABE_NABVC2DBoxF@@ABV?$vector@PBV?$list@VC2DLineF@@...@std@@@Z; modelled through CNavQuadTree_Methods)' matches no symbol in 00a76f30.obj; graded the largest function
+  WARN leaf '?IsAreaBlockedByLines@ (Ego_r.pdb ?IsAreaBlockedByLines@CNavQuadTree@@ABE_NABVC2DBoxF@@ABV?$vector@PBV?$list@VC2DLineF@@...@std@@@Z; modelled through CNavQuadTree_Methods)' matches no symbol in 00a76f30.obj; graded the largest function
+00a76f30   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00a76f30   RELOCATION_MATCH PASS   CNavQuadTree::IsAreaBlockedByLines
+00a14f70   WARN SHARED_HEADER_AVAILABLE C2DVector
+00a14f70   WARN SHARED_HEADER_AVAILABLE CNavQuadTree
+00a14f70   WARN SHARED_HEADER_AVAILABLE CNavigatorManager
+00a14f70   RELOCATION_MATCH PASS   CNavigatorManager::GetNodeAt
+00a77570   WARN SHARED_HEADER_AVAILABLE C2DVector
+00a77570   WARN SHARED_HEADER_AVAILABLE CNavQuadTree
+00a77570   RELOCATION_MATCH PASS   CNavQuadTree::IsActionPointReachable
+00a76060   WARN SHARED_HEADER_AVAILABLE C2DVector
+00a76060   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode
+00a76060   WARN RELOC_NAME: ?g_BlockedNavNode@@3VCNavBlockedQuadTreeNode@@A -> 013d2d2c labelled 'CNavQuadTree::BlockedNode'
+00a76060   RELOCATION_MATCH PASS   CNavQuadTreeNode::RemoveRegionZero
+00a472f0   WARN SHARED_HEADER_AVAILABLE C2DVector
+00a472f0   WARN SHARED_HEADER_AVAILABLE CNavigatorManager
+00a472f0   WARN RELOC_NAME: ?GetSmallestNodeSize@@YAMXZ -> 00a76320 labelled '_global::GetConstFloat_0_5_00a76320'
+00a472f0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00a472f0   RELOCATION_MATCH PASS   CNavigatorBase::GetNextNeighbour
+00a763b0   WARN SHARED_HEADER_AVAILABLE C2DBoxF
+00a763b0   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode
+00a763b0   RELOCATION_MATCH PASS   CANavQuadTreeNode::GetAreaCovering
+00a75b30   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode
+00a75b30   RELOCATION_MATCH PASS   CANavQuadTreeNode::GetSize
+
+WINS: 11
+  00c59710 MATCH CVtable_012b5c10::Clear
+  00c59860 MATCH CVtable_012b5c10::Close
+  00c5cea0 MATCH CV_MurderTwistScript::Init
+  00c5ce40 MATCH CGameflowAssistanceScript::Init
+  00a76f30 RELOCATION_MATCH CNavQuadTree::?IsAreaBlockedByLines@ (Ego_r.pdb ?IsAreaBlockedByLines@CNavQuadTree@@ABE_NABVC2DBoxF@@ABV?$vector@PBV?$list@VC2DLineF@@...@std@@@Z; modelled through CNavQuadTree_Methods)
+  00a14f70 RELOCATION_MATCH CNavigatorManager::GetNodeAt
+  00a77570 RELOCATION_MATCH CNavQuadTree::IsActionPointReachable
+  00a76060 RELOCATION_MATCH CNavQuadTreeNode::RemoveRegionZero
+  00a472f0 RELOCATION_MATCH CNavigatorBase::GetNextNeighbour
+  00a763b0 RELOCATION_MATCH CANavQuadTreeNode::GetAreaCovering
+  00a75b30 RELOCATION_MATCH CANavQuadTreeNode::GetSize

@@ -7924,12 +7924,10 @@ _D3DXCreateVolumeTexture@36	00bfeff2	00a68250
 ??4CElement12_00515320@@QAEAAU0@ABU0@@Z	00515320	00a74e20
 ?AllocateResource@CMovableResourceMemoryPool@@QAE_NPAJPAXKK@Z	00a62e40	00a754e0
 ?GetPointerFromHandle@CHandleBasedMemoryPool@@QAEPAXJ@Z	00a026b0	00a754e0
-?g_ANavQuadTreeNodeSizeTable@@3PAMA	0129dcac	00a75b30
 ?g_flagA@@3EA	013d2d39	00a76340
 ?g_flagB@@3EA	013d2d38	00a76340
 ?g_node0@@3KA	013d2d30	00a76340
 ?g_node1@@3KA	013d2d34	00a76340
-?g_quadTreeLevelCellSize@@3PAMA	0129dcac	00a763b0
 ??_7CNavQuadTreeNode@@6B@	0129dcd4	00a76580
 ??_7CNavBlockedQuadTreeNode@@6B@	0129dd3c	00a768c0
 ?GetNodeAt@CNavQuadTree@@QBEPAVCANavQuadTreeNode@@PBUC2DVector@@J@Z	00a770b0	00a77480
@@ -13107,7 +13105,6 @@ __CIasin	00bfedc4	009de2a0
 ?OnActivate@CModeStandBase@@QAEXXZ	008621a0	008e7b90
 ?TransitionToTheme@CEnvironment@@QAEXJJJM@Z	006b3800	008e7b90
 ?resize@?$vector@E@@QAEXKABE@Z	00486189	009e94a0
-?g_BlockedNavNode@@3VCNavBlockedQuadTreeNode@@A	013d2d2c	00a76060
 ??0CEnginePrimitiveSpriteTrail@@QAE@XZ	00b09f90	00b09360
 ??_7CPSCSingleSprite@NParticleEngine@@6B@	0129fb84	00b09360
 ?GetParticleFrameTime@@YAMXZ	00aeaa00	00b16d50
@@ -13746,7 +13743,6 @@ __TI1?AVCBBBFileException@@	01369380	009e90c0
 ?TransferMatches@CPersistContext@@QAEXAAUCReactionMatchList@@@Z	0067bfb0	00679740
 ?TransferVectorOfSubComponents@CPersistContext@@QAEXAAUCBlurredAttitudesDefVector@@@Z	0067d6b0	00679740
 ?FrameUpdate@CModeBase@NCreatureMode@@QAEXXZ	0073ac50	008db460
-?g_navNodeSizes@@3QBMB	0129dcac	00a77570
 ?ResetNonExclusiveMouse@CMouseDX@@QAEXXZ	00ab5030	00ab5710
 _GUID_SysMouse	012acaa4	00ab5710
 _c_dfDIMouse	012adbf4	00ab5710
@@ -15168,7 +15164,6 @@ __imp__waveOutPrepareHeader@12	01440484	00c5d7f0
 ??0CBaseIntelligentPointerReal@@QAE@XZ	00a01b10	007004b0
 ?_M_erase@CStateMap@@QAEXPAUSStateTreeNode@@@Z	00a21640	00a1e370
 ?g_AStarSearchesInProgress@@3JA	013d27b0	00a1e370
-?GetSmallestNodeSize@@YAMXZ	00a76320	00a472f0
 ??0C3DMeshFilePrimitiveChunk@@QAE@XZ	00abd080	00acd5a0
 ?AddSubChunk@CChunkedFileChunk@@QAEXABV?$CCountedPointer@UCChunkedFileChunk@@@@@Z	00aa84f0	00acd5a0
 ?GetFirstSubMesh@C3DMeshFileMeshChunk@@QAE?AV?$CCountedPointer@UC3DMeshFileSubMeshChunk@@@@XZ	00a9aec0	00acd5a0
@@ -27216,7 +27211,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?ForEach_ScaleElements@@YI?AUCScaleElements@@PAVC3DVector@@0U1@@Z	00a13440	00a12840
 ?HasContainmentVolume@CPhysicsMesh@@QBE_NABVCCharString@@@Z	00a6cbc0	00a128a0
 ?SetPositionMatrix@CPhysicsMeshObject@@QAEXABVC3DVector@@ABVCRightHandedSet@@M@Z	00a114b0	00a12cc0
-?GetNodeAt@CNavQuadTree@@QAEPAVCANavQuadTreeNode@@PBVC2DVector@@J@Z	00a770b0	00a14f70
 ?IsActionPoint@CNavQuadTree@@QAE_NPBVC2DVector@@@Z	00a77540	00a150a0
 ?Initialise@CNavQuadTree@@QAEXAAVCNavigationAreaInit@@@Z	00a7a8d0	00a156d0
 ?SetUpMapStructure@CNavQuadTree@@QAEXABVC2DVector@@MMJ@Z	00a762f0	00a156d0
@@ -27237,7 +27231,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?ContainsPoint@C2DBoxF@@QBE_NABVC2DVector@@@Z	00535cd0	00a1bee0
 ?FindNearestNavigableNode@CNavigatorBase@@QBEPAVCANavQuadTreeNode@@PBV2@0ABVC3DVector@@MPAVCNavigatorManager@@@Z	00a475c0	00a1bee0
 ?GetAreaCovering@CANavQuadTreeNode@@QBE?AVC2DBoxF@@XZ	00a763b0	00a1bee0
-?GetNodeAt@CNavigatorManager@@QAEPAVCANavQuadTreeNode@@ABVC2DVector@@_N@Z	00a14f70	00a1bee0
 ?CalculateNavigableWidthOfLine@CNavigatorAStar@@QAEXABVCNavWayPoint@@0AAM1_N@Z	00a1d6e0	00a1df60
 ?CalcWayPointWidths@CNavigatorAStar@@QAEXABVC3DVector@@@Z	00a1de30	00a1e370
 ?SetGoal@CSteeringAgent@@QAEXABVCNavWayPoint@@0@Z	00a20970	00a1e370
@@ -27339,8 +27332,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ??0CClass@@QAE@AAVCClassFactory@@K_N@Z	00a372d0	00a47110
 ??0CSteeringAgent@@QAE@PBVCNavigatorExternalInterface@@_N@Z	00a1c700	00a47110
 ?AccurateNormalise@C2DVector@@QAEAAV1@XZ	00a14510	00a471d0
-?SetBlockedNode@@YIXJJVC2DVector@@@Z	00a76340	00a472f0
-?g_BlockedNode@@3VCANavQuadTreeNode@@A	013d2d2c	00a472f0
 ?_M_fill_insert@?$CArray@VCComplexNumber@@@@QAEXPAVCComplexNumber@@KABV2@@Z	00a4a3d0	00a49240
 ?erase@?$CArray@VCComplexNumber@@@@QAEPAVCComplexNumber@@PAV2@0@Z	00a49f20	00a49240
 ?ReadCompressedFromFile@C3DAnimationSequenceData@@QAEXAAVCDataInputStream@@PAVCSimpleMemoryPool@@@Z	00a4c5e0	00a4cdd0
@@ -27405,7 +27396,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?CopyPlanes@@YIPAVCPlane@@PBV1@0PAV1@@Z	00a759e0	00a755c0
 ?IntersectsWith@C2DLineF@@QBE_NABVC2DBoxF@@@Z	00a57bd0	00a76f30
 ?FindPosition@@YIPAVC3DVector@@PAV1@0ABV1@ABUSRandomAccessTag@@@Z	00a7eb00	00a77540
-?GetNodeAt@CNavQuadTree@@QAEPAUCNavLeaf@@PBVC2DVector@@J@Z	00a770b0	00a77570
 ?find@CNodeIndexMap@@QAE?AUCNodeIndexIterator@@ABQAVCANavQuadTreeNode@@@Z	00a7f830	00a778d0
 ?SaveToFile@CANavQuadTreeNode@@MBEXAAVCAFile@@ABU?$map@PBVCANavQuadTreeNode@@JU?$less@PBVCANavQuadTreeNode@@@std@@U?$allocator@U?$pair@QBVCANavQuadTreeNode@@J@std@@@3@@std@@_NABVC2DVector@@@Z	00a778d0	00a77a10
 ?SaveToFile@CNavNavigableLeafNode@@QBEXAAVCAFile@@ABU?$map@PBVCANavQuadTreeNode@@JU?$less@PBVCANavQuadTreeNode@@@std@@U?$allocator@U?$pair@QBVCANavQuadTreeNode@@J@std@@@3@@std@@_NABVC2DVector@@@Z	00a77a10	00a77c30
@@ -36163,3 +36153,9 @@ _GVertexShaderConstantLayoutEmpty	013ca8a8	009da9f0
 ?ShareData@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@PAVCCPPointerInfo@@@Z	0042920a	005729d8
 ?ShareData@?$CCountedPointer@VCList@NUISystem@@@@QAEXPAVCList@NUISystem@@PAVCCPPointerInfo@@@Z	00429486	005729d8
 ?insert_unique@?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@2@@std@@_N@2@ABU?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@2@@Z	00579958	005729d8
+?Stop@CCodaVoice@@UAEXXZ	00c59710	00c5a1f0
+?Flush@CAudioRingBuffer@@QAEXXZ	00c5cea0	00c5a2a0
+?Reset@CCodaVoice@@UAEXXZ	00c59860	00c5a2a0
+?IsAreaBlockedByLines@CNavQuadTree@@ABE_NABVC2DBoxF@@ABV?$vector@PBV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@V?$allocator@PBV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@2@@std@@@Z	00a76f30	00a78e20
+?_M_insert_overflow@?$vector@PBV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@V?$allocator@PBV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@std@@@2@@std@@IAEXPAPBV?$list@VC2DLineF@@V?$allocator@VC2DLineF@@@std@@@2@ABQBV32@ABU__true_type@2@I_N@Z	00a81590	00a78e20
+?GetNodeAt@CNavQuadTree@@QBEPBVCANavQuadTreeNode@@ABVC2DVector@@J@Z	00a770b0	00a14f70

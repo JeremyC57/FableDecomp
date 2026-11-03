@@ -1,0 +1,119 @@
+addr       parity           behav  name
+00401670   MATCH            PASS   CDiskFileWin32::GetLength
+  WARN leaf 'GetCombatAbilityDataType' matches no symbol in 00453e16.obj; graded the largest function
+  WARN leaf 'GetCombatAbilityDataType' matches no symbol in 00453e16.obj; graded the largest function
+00453e16   MATCH            PASS   CCombatAbilityBlockingData::GetCombatAbilityDataType
+0047f58b   RELOCATION_MATCH PASS   CTCInGameMenu::AddRegionAndTimeInfo
+004ac2c0   WARN SHARED_HEADER_AVAILABLE CThing
+004ac2c0   WARN SHARED_HEADER_AVAILABLE C3DVector
+004ac2c0   WARN SHARED_HEADER_AVAILABLE CThingFilter_HasTC
+004ac2c0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+004ac2c0   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+004ac2c0   WARN RELOC_NAME: ??$?RVCThing@@@CThingCompare_Nearest@@QBEPAVCThing@@PAV1@0@Z -> 004a8d80 labelled 'CThingCompare_Nearest::operator()<CThing>'
+004ac2c0   RELOCATION_MATCH PASS   CThingSearchTools::GetPBestThing
+004b05c0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+004b05c0   RELOCATION_MATCH PASS   CQuestManager::TransferBoasts
+00512f60   WARN SHARED_HEADER_AVAILABLE CThing
+00512f60   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+00512f60   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+00512f60   RELOCATION_MATCH PASS   CThingSearchTools::GetPFirstThing<CFilter_Bind2<CThingFilter_InMap, CThingFilter_IsInQuest >, const CThingBuilding>
+00522530   RELOCATION_MATCH PASS   NThingManager::CEntityRuntimePersistence::GetGamePersistentSaveData
+00523860   WARN SHARED_HEADER_AVAILABLE CArray
+00523860   WARN RELOC_NAME: ?GetZlibWorkspaceSize@@YAKXZ -> 00a3a7d0 labelled 'CCompressorZlib::GetRequiredWorkspaceSize'
+00523860   WARN RELOC_NAME: ??0CACompressorNative@@QAE@J@Z -> 00a3aea0 labelled 'CACompressor::CACompressor'
+00523860   WARN RELOC_NAME: ??1CCompressorZlibNative@@UAE@XZ -> 00a3acc0 labelled 'CCompressorZlib::~CCompressorZlib'
+00523860   RELOCATION_MATCH PASS   CEntityRuntimePersistence::SetGamePersistentSaveData
+005269b0   MATCH            PASS   std::__uninitialized_copy<NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *>
+005269f0   MATCH            PASS   std::__uninitialized_fill_n<NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *, unsigned int, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity>
+0052b030   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@PAV123@@std@@YIPAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@PAV123@00ABU__false_type@0@@Z -> 005269b0 labelled 'std::__uninitialized_copy<NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *>'
+0052b030   WARN RELOC_NAME: ??$__uninitialized_fill_n@PAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@IV123@@std@@YIPAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@PAV123@IABV123@ABU__false_type@0@@Z -> 005269f0 labelled 'std::__uninitialized_fill_n<NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *, unsigned int, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity>'
+0052b030   RELOCATION_MATCH PASS   std::vector<NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity>::_M_insert_overflow
+005385ae   RELOCATION_MATCH PASS   NUISystem::CList::ScrollUp
+005392fc   RELOCATION_MATCH PASS   NUISystem::CList::ScrollDown
+0053a0a1   RELOCATION_MATCH PASS   NUISystem::CList::ChangeState
+005b304e   RELOCATION_MATCH PASS   CTCInventoryTrade::GetTypeAsString
+0065f604   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0065f604   RELOCATION_MATCH PASS   CDefClassBase::GetSubDef<CEntitySoundDef>
+00698c30   WARN SHARED_HEADER_AVAILABLE CThing
+00698c30   RELOCATION_MATCH PASS   CGameCameraManager::PushDownManualCameraList
+006d0800   WARN SHARED_HEADER_AVAILABLE CWorld
+006d0800   RELOCATION_MATCH PASS   CTCWife::OnInitialActivate
+00733690   WARN SHARED_HEADER_AVAILABLE CTCBase
+00733690   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+00733690   RELOCATION_MATCH PASS   CTCCombat::GetBlockingAnimationEntry
+0077eb70   RELOCATION_MATCH PASS   CTCHeroCentre::GetClassTypeName
+007b44e0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007b44e0   RELOCATION_MATCH PASS   CDefClassBase::GetSubDef<CGuardDef>
+007e1bf0   RELOCATION_MATCH PASS   CTCInfoDisplay::GetClassTypeName
+0083c5d0   WARN SHARED_HEADER_AVAILABLE C3DVector
+0083c5d0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+0083c5d0   WARN SHARED_HEADER_AVAILABLE CThing
+0083c5d0   WARN RELOC_NAME: ??1CTCParamsPhysicsBase@@UAE@XZ -> 0099a300 labelled 'CBaseClassNonCopyable::~CBaseClassNonCopyable'
+0083c5d0   RELOCATION_MATCH PASS   CThingSwitch::Create
+0087aff0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0087aff0   RELOCATION_MATCH PASS   NMaths::GetRootsNumerically<class `anonymous namespace'::CCotMethod>
+0089f9e0   WARN SHARED_HEADER_AVAILABLE C3DVector
+0089f9e0   WARN SHARED_HEADER_AVAILABLE CThing
+0089f9e0   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+0089f9e0   WARN RELOC_NAME: ?Rotate@CRightHandedSet@@QAEXABVC3DVector@@M@Z -> 00a22f80 labelled 'CRightHandedSet::Method_00a22f80'
+0089f9e0   RELOCATION_MATCH PASS   CGameScriptInterface::CreateEffect
+008bb5b0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase
+008bb5b0   RELOCATION_MATCH PASS   CCreatureAction_BuildUpWillEnflameSpell::CCreatureAction_BuildUpWillEnflameSpell
+008c60b0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase
+008c60b0   RELOCATION_MATCH PASS   CCreatureAction_IceTrollIcicleAttack::Initialise
+008df9c0   WARN SHARED_HEADER_AVAILABLE C3DVector
+008df9c0   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+  WARN leaf 'vfunc_3' matches no symbol in 008df9c0.obj; graded the largest function
+  WARN leaf 'vfunc_3' matches no symbol in 008df9c0.obj; graded the largest function
+008df9c0   WARN RELOC_NAME: ?GetNumberMySummonLimit@CTCAISummon@@QBEJXZ -> 007fde60 labelled '_global::GetMember_dword0xc_deref0x38_007fde60'
+008df9c0   RELOCATION_MATCH PASS   NCreatureMode::CModeSummonerSummon::vfunc_3
+008f4d60   WARN SHARED_HEADER_AVAILABLE C3DVector
+008f4d60   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+008f4d60   WARN SHARED_HEADER_AVAILABLE CThing
+008f4d60   WARN SHARED_HEADER_AVAILABLE CCombatActionBase
+008f4d60   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+008f4d60   RELOCATION_MATCH PASS   CCreatureAction_DragonFlight::CCreatureAction_DragonFlight
+009093f0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+009093f0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+009093f0   WARN RELOC_NAME: ??0CRetailString@@QAE@PBDJ@Z -> 0099ebf0 labelled 'CCharString::CCharString'
+009093f0   WARN RELOC_CONFLICT: ?Reset@?$CCountedPointer@VCCreatureActionBase@@@@QAEXPAVCCreatureActionBase@@@Z -> 00905fd0 here, 00668d90 in landed 00664490
+009093f0   WARN RELOC_NAME: ?AddAction@CCombatSequence_WillPhysicalShieldNonMelee@@QAEXABV?$CCountedPointer@VCCreatureActionBase@@@@@Z -> 008b0b10 labelled 'CCombatSequenceBase::PushAction'
+009093f0   WARN RELOC_NAME: ?OnCreateBase@CCombatSequence_WillPhysicalShieldNonMelee@@QAEXXZ -> 008b0650 labelled '_global::SetMemberConst_008b0650'
+009093f0   RELOCATION_MATCH PASS   CCombatSequence_WillPhysicalShieldNonMelee::OnCreate
+0093f930   WARN SHARED_HEADER_AVAILABLE CThing
+0093f930   WARN RELOC_NAME: ?PeekAllThings@CThingSearchToolsMethods@@QAEPAUCThingList@@XZ -> 0049c770 labelled 'CThingSearchTools::PeekClassList'
+0093f930   WARN RELOC_NAME: ??$?RVCThing@@@CThingCompare_Nearest@@QBEPAVCThing@@PAV1@0@Z -> 004a8d80 labelled 'CThingCompare_Nearest::operator()<CThing>'
+0093f930   RELOCATION_MATCH PASS   CThingSearchTools::GetPBestThing<CThingFilter_In2DRange,CThingCompare_Nearest,CThing>
+
+WINS: 31
+  00401670 MATCH CDiskFileWin32::GetLength
+  00453e16 MATCH CCombatAbilityBlockingData::GetCombatAbilityDataType
+  0047f58b RELOCATION_MATCH CTCInGameMenu::?AddRegionAndTimeInfo@CTCInGameMenu@@AAEXABVCWideString@@@Z
+  004ac2c0 RELOCATION_MATCH CThingSearchTools::GetPBestThing
+  004b05c0 RELOCATION_MATCH CQuestManager::?TransferBoasts@CQuestManager@@QAEXAAVCPersistContext@@@Z
+  00512f60 RELOCATION_MATCH CThingSearchTools::GetPFirstThing
+  00522530 RELOCATION_MATCH NThingManager::CEntityRuntimePersistence::?GetGamePersistentSaveData@CEntityRuntimePersistence@NThingManager@@QBE_NJAAV?$CArray@E@@@Z
+  00523860 RELOCATION_MATCH CEntityRuntimePersistence::SetGamePersistentSaveData
+  005269b0 MATCH std::??$__uninitialized_copy@PAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@PAV123@@std@@YIPAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@PAV123@00ABU__false_type@0@@Z
+  005269f0 MATCH std::??$__uninitialized_fill_n@PAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@IV123@@std@@YIPAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@PAV123@IABV123@ABU__false_type@0@@Z
+  0052b030 RELOCATION_MATCH std::vector::?_M_insert_overflow@
+  005385ae RELOCATION_MATCH NUISystem::CList::?ScrollUp@CList@NUISystem@@MAEXKK_N00@Z
+  005392fc RELOCATION_MATCH NUISystem::CList::?ScrollDown@CList@NUISystem@@MAEXKK_N00@Z
+  0053a0a1 RELOCATION_MATCH NUISystem::CList::?ChangeState@CList@NUISystem@@UAEXK@Z
+  005b304e RELOCATION_MATCH CTCInventoryTrade::GetTypeAsString
+  0065f604 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCEntitySoundDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCEntitySoundDef@@@@@Z
+  00698c30 RELOCATION_MATCH CGameCameraManager::PushDownManualCameraList
+  006d0800 RELOCATION_MATCH CTCWife::OnInitialActivate
+  00733690 RELOCATION_MATCH CTCCombat::GetBlockingAnimationEntry
+  0077eb70 RELOCATION_MATCH CTCHeroCentre::GetClassTypeName
+  007b44e0 RELOCATION_MATCH CDefClassBase::??$GetSubDef@VCGuardDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCGuardDef@@@@@Z
+  007e1bf0 RELOCATION_MATCH CTCInfoDisplay::GetClassTypeName
+  0083c5d0 RELOCATION_MATCH CThingSwitch::?Create@CThingSwitch@@SIPAV1@JABVC3DVector@@MVCCharString@@@Z
+  0087aff0 RELOCATION_MATCH NMaths::??$GetRootsNumerically@VCCotMethod@?A0x
+  0089f9e0 RELOCATION_MATCH CGameScriptInterface::CreateEffect
+  008bb5b0 RELOCATION_MATCH CCreatureAction_BuildUpWillEnflameSpell::CCreatureAction_BuildUpWillEnflameSpell
+  008c60b0 RELOCATION_MATCH CCreatureAction_IceTrollIcicleAttack::Initialise
+  008df9c0 RELOCATION_MATCH NCreatureMode::CModeSummonerSummon::vfunc_3
+  008f4d60 RELOCATION_MATCH CCreatureAction_DragonFlight::??0CCreatureAction_DragonFlight
+  009093f0 RELOCATION_MATCH CCombatSequence_WillPhysicalShieldNonMelee::OnCreate
+  0093f930 RELOCATION_MATCH CThingSearchTools::GetPBestThing

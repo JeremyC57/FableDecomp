@@ -1,35 +1,25 @@
+// Behaviour test for CCodaVoice::Reset (0x00C59860): a self-contained copy of the body over the same layout (the voice class is
+// abstract in the source model): positions +0x18..+0x24 and the request word +0x2C to 0, the flags word +0x28 to 1.
 #include <cstdio>
+#include <cstring>
 
-class CDataInputStream { public:
-    char pad[0x18];
-    unsigned int f18;
-    unsigned int f1c;
-    unsigned int f20;
-    unsigned int f24;
-    unsigned int f28;
-    unsigned int f2c;
-    void Close();
+struct CCodaVoiceModel {
+    void*         vptr;                                 // +0x00
+    unsigned char _pad04[0x18 - 4];
+    unsigned long m_positionB[2];                       // +0x18
+    unsigned long m_positionC[2];                       // +0x20
+    unsigned long m_flags;                              // +0x28
+    unsigned long m_requests;                           // +0x2c
+    void Reset() { m_positionB[0] = 0; m_positionB[1] = 0; m_positionC[0] = 0; m_positionC[1] = 0; m_requests = 0; m_flags = 1; }
 };
-
-void CDataInputStream::Close()
-{
-    this->f18 = 0;
-    this->f1c = 0;
-    this->f20 = 0;
-    this->f24 = 0;
-    this->f2c = 0;
-    this->f28 = 1;
-}
 
 int main()
 {
-    CDataInputStream s;
-    // prime with junk
-    s.f18 = 0xdead; s.f1c = 0xbeef; s.f20 = 0x1234;
-    s.f24 = 0x5678; s.f28 = 0x9abc; s.f2c = 0xdef0;
-    s.Close();
-    if (s.f18 == 0 && s.f1c == 0 && s.f20 == 0 &&
-        s.f24 == 0 && s.f2c == 0 && s.f28 == 1) {
+    CCodaVoiceModel v;
+    memset(&v, 0x5A, sizeof(v));
+    v.Reset();
+    if (sizeof(v) == 0x30 && v.m_positionB[0] == 0 && v.m_positionB[1] == 0 && v.m_positionC[0] == 0 && v.m_positionC[1] == 0 && v.m_requests == 0 && v.m_flags == 1 &&
+        v._pad04[0] == 0x5A && v._pad04[0x13] == 0x5A) {
         printf("CLOSE_OK\n");
         return 0;
     }
