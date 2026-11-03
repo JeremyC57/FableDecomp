@@ -1,0 +1,20 @@
+address	name	evidence
+004fc6b0	CWorldMap::DrawIsPosInMap	RELOCATION_MATCH; CIDrawWorldMap override
+0051cdf0	CWorldMap::`vector deleting destructor'`adjustor{4}'	RELOCATION_MATCH ??_ECWorldMap@@W3AEPAXI@Z (oracle had vfunc_11)
+004084b0	CUserProfileManager::GetMaxEffectsDetail	RELOCATION_MATCH; cap 0x0137507C, def +0x70
+00408500	CUserProfileManager::GetMaxTextureDetail	RELOCATION_MATCH; cap 0x01375074, def +0x58
+00408550	CUserProfileManager::GetMaxShadowDetail	RELOCATION_MATCH; cap 0x01375078, def +0x60
+004085a0	CUserProfileManager::GetMaxMeshDetail	RELOCATION_MATCH; cap 0x01375070, def +0x68
+004083e0	CUserProfileManager::GetConfigOptionsDefaultsDef	RELOCATION_MATCH from agent719/src/004084b0.cpp (not a chunk row)
+00410890	CDefinitionManager::GetDef<CConfigOptionsDefaultsDef>	callee of 0x004083E0 (template member, const)
+004ff750	CreateRelevantPersonAndUpdateStats	RELOCATION_MATCH
+00512fe0	CDefClassBase::GetSubDef<CVillagePeopleDef>	RELOCATION_MATCH from agent719/src/004ff750.cpp (not a chunk row)
+00517a10	std::vector<CThingAICreature*>::push_back	callee x3 of 0x004FF750
+005029a0	GetRelevantBuilding	parked DIFFER 334v337 (oracle had CBuilding_FindMostSpaceForNPCs)
+00501150	CWorldMap::LoadLevelFromFiles	RELOCATION_MATCH
+00509a20	CWorldMap::GetMapNavigationAreaUpdateInfo	Ego_r order + caller 0x0050A650 GetMapNavigationAreaInit (oracle had InitializeMapNavigationHeightmap)
+006c27a0	CLevelLoader::CObject::SetAsLoading	callee of 0x00501150
+006c2120	CLevelLoader::Add	callee of 0x00501150
+009c02d0	CDisplayManager::EnumerateDisplayModes	callee of 0x0040CEC0
+009c0190	CDisplayManager::AddDeviceResetCallback	callee of 0x0040CEC0
+009a4ec0	GFGetSystemManager	callee of 0x0040CEC0 (+0x60 = PDisplayManager)

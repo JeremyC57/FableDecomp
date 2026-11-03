@@ -1,0 +1,13 @@
+address	attempts	grade	residue	lever
+004fc6b0	1	RELOCATION_MATCH	-	FABLE_RETAIL_CWORLDMAP; secondary-base (CIDrawWorldMap) override compiles as add ecx,-4; jmp IsPosInMap
+0051cdf0	1	RELOCATION_MATCH	-	landed ctor TU (CWorldMap_CWorldMap_005066e0.cpp) verbatim: the adjustor thunk ??_ECWorldMap@@W3AEPAXI@Z is emitted with the vtable by the ctor TU
+004084b0	18	RELOCATION_MATCH	-	same-TU body of 0x004083E0 GetConfigOptionsDefaultsDef + CDefinitionManager::GetDef<T> template (attempts 1-14 stuck at 84v67 with the callee declared only); attempt 18 swapped the local CStartupDefinitionManager for a new FABLE_RETAIL_CSTARTUPDEFINITIONMANAGER header branch
+00408500	1	RELOCATION_MATCH	-	same TU as 0x004084B0
+00408550	1	RELOCATION_MATCH	-	same TU as 0x004084B0
+004085a0	1	RELOCATION_MATCH	-	same TU as 0x004084B0
+004ff750	6	RELOCATION_MATCH	-	same-TU CDefClassBase::GetSubDef<T> template body; creature=0 init; left operand first in the x87 compare; attempts 5-6 swapped the local CThingBaseDef/CTCVillage for the shared headers (CThingBaseDef.h FABLE_RETAIL_CTHING, CTCVillage.h new FABLE_RETAIL_CTCVILLAGE branch), still RELOCATION_MATCH
+005029a0	16	DIFFER(334v337)	register colouring only (map ref edi/def esi in retail; frame/edx here)	parked differ/005029a0.cpp; the PeekPSimDefinition 0x0082D2D0 same-TU stand-in made it worse (315 bytes): that body is in CThingBuilding's TU
+00501150	4	RELOCATION_MATCH	-	CLevelLoader retail branch (hdr/) + FABLE_STLP_OUTOFLINE_UNINIT_FILL_N (vector(1) inline, the fill out of line as retail 0x00513570) + `while (loadType == 0 && IsBusy())` for the unrotated loop
+00409730	0	NOT_ATTEMPTED	1078 bytes; CUserProfileManager::VerifySignature (static __fastcall)	analysed only: /GS frame (cookie 0x0139C8A8), CMemoryDataInputStream reads with the 64-bit position guards inlined, XCalculateSignature-style chunked compare; needs CMemoryDataInputStream / CAFile retail models
+0040cec0	10	DIFFER(1015v977)	retail keeps __uninitialized_copy<CDisplayModeDesc*> 0x0040DDC0 out of line in the inlined first push_back growth and the second _M_insert_overflow out of line; VC7.1 inlines the copy here (out of line, it inlines both growths); small temporaries one slot off	parked differ/0040cec0.cpp; same-TU 0x004083E0 body fixed the def release; FABLE_RETAIL_CUSERPROFILEMANAGER_MEMBERS / FABLE_STLP_DEQUE / FABLE_RETAIL_C2DEXTENTSI header opt-ins
+00509a20	0	NOT_ATTEMPTED	3120 bytes	identified: Ego_r.pdb ?GetMapNavigationAreaUpdateInfo@CWorldMap@@QBEXJABVC2DBoxI@@ABVCCharString@@AAVCNavigationAreaUpdate@@@Z (0x004DEE00, the body before GetMapNavigationAreaInit 0x004DF950 = retail 0x0050A650, which calls it); not drafted (size)

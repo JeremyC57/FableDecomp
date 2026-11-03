@@ -1,0 +1,13 @@
+address	module	name	length	group	anchor	gap_to_next_start
+004fc6b0	CWorldMap	CWorldMap::DrawIsPosInMap	8	G004fc6b0	CWorldMap	16
+004ff750	_global	CreateRelevantPersonAndUpdateStats	336	G004fc6b0	CWorldMap	336
+00501150	CWorldMap	LoadLevelFromFiles	756	G004fc6b0	CWorldMap	768
+005029a0	_global	CBuilding_FindMostSpaceForNPCs	337	G004fc6b0	CWorldMap	352
+00509a20	_global	InitializeMapNavigationHeightmap	3120	G004fc6b0	CWorldMap	3120
+0051cdf0	CWorldMap	CWorldMap::vfunc_11	8	G004fc6b0	CWorldMap	16
+004084b0	CUserProfileManager	GetMaxMeshDetail	67	G00406ae0	CUserProfileManager	80
+00408500	CUserProfileManager	GetMaxMeshDetail	67	G00406ae0	CUserProfileManager	80
+00408550	CUserProfileManager	GetMaxMeshDetail	67	G00406ae0	CUserProfileManager	80
+004085a0	CUserProfileManager	GetMaxMeshDetail	67	G00406ae0	CUserProfileManager	80
+00409730	CUserProfileManager	VerifySignature	1078	G00406ae0	CUserProfileManager	1088
+0040cec0	CUserProfileManager	CUserProfileManager	977	G00406ae0	CUserProfileManager	992
