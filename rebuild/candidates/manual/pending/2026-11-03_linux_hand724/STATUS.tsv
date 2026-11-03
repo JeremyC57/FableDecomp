@@ -1,0 +1,12 @@
+address	name	status	attempts	note
+00b1bda0	NParticleEngine::CPSCDecalRenderer::InterpolateTo	RELOCATION_MATCH	7	src/00b1bda0.cpp; lever: CRGBColour Initialise-based copy ctor (FABLE_RETAIL_CRGBCOLOUR) + __forceinline colour GFInterpolate
+0087aa10	NMaths::GetRootsNumerically<CTanMethod>	RELOCATION_MATCH	7	src/0087aa10.cpp; Codex draft + explicit (float) cast of GetValue's double return; Leaf by ?A0x prefix
+0087aff0	NMaths::GetRootsNumerically<CCotMethod>	RELOCATION_MATCH	3	src/0087aff0.cpp; same lever as 0x0087AA10
+00b1c880	NParticleEngine::CPSCDecalRenderer::ReadBinary	PARKED DIFFER(3266v3266)	10	differ/00b1c880.cpp; 4 lines: SizeFadeMinimum top-bitfield or-operand order
+00875fb0	NCameraModes::DrawSquare (Codex identity; catalog _global::EditorDrawHighlightPoints_Impl)	GAP (compile timeout)	1	differ/00875fb0.cpp; Codex DIFFER(1315v1315); cl.exe does not finish in 600 s on the current tree
+00879070	NCameraModes::CProjectileWeapon::GetHeightParamForPostionWithPhi (Codex identity)	GAP (compile timeout)	2	differ/00879070.cpp; Codex DIFFER(1249v1251); cl.exe does not finish in 600 s
+008764e0	_global::RenderParticleEmitter_4particles	NOT_ATTEMPTED	0	1340 B; budget
+008771a0	CTools::GetThingPointIntersectionFromTo	NOT_ATTEMPTED	0	1264 B; budget
+00879900	NCameraModes::CProjectileWeapon::vfunc_1	NOT_ATTEMPTED	0	3415 B; budget
+00b1e380	NParticleEngine::CPSCDecalRenderer::DatabaseSerialise	NOT_ATTEMPTED	0	3698 B; analysed (work/1e380.ann): CPersistContext::Transfer<float/bool/long/CCharString/CRGBColour>, CSymbolMap lookups via CParticleEmitterManager::Get + "EEngineGraphic", legacy -1 path packing FaceMe2D/3D, CrossedSprites, RotateAroundCentre, SelfIlluminating into Flags
+00b1f200	NParticleEngine::CPSCDecalRenderer::PreparePrimitives	NOT_ATTEMPTED	0	3195 B; analysed (work/00b1f200.ann): DecalBankIndex==0 early-out through vtable +0x74, per-bitfield round-to-N-decimals conversions, GetParticleUpdateRate 0x00AEA9F0 / 0x00AEAA00 / 0x00AEAAA0

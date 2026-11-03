@@ -1,0 +1,3 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00B1C880	?ReadBinary@CPSCDecalRenderer@NParticleEngine@@UAEXAAVCDataInputStream@@@Z	slot 15 of vtable 0x012A09BC; mirror of WriteBinary 0x00B1BA10 (slot 16); FableWin.pdb symbol	NParticleEngine::CPSCDecalRenderer::vfunc_15 (catalog)
+0x00B1F200	?PreparePrimitives@CPSCDecalRenderer@NParticleEngine@@UAEXMABVCEnginePrimitivePrepareInfo@@AAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@AAVCEnginePrimitiveHandle@@@Z	slot 13 of 0x012A09BC; ret 0x14 = five args of the PDB signature	NParticleEngine::CPSCDecalRenderer::vfunc_13 (catalog)

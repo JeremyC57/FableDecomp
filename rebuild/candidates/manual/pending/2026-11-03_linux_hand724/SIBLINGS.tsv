@@ -1,0 +1,11 @@
+address	name	source
+0069bf30	CTools::GetRollingAverage<C2DVector>	00/69/CTools_GetRollingAverageC2DVector_0069bf30.cpp
+0084eaf0	CTools::GetRollingAverage<C3DVector>	00/84/CTools_GetRollingAverageC3DVector_0084eaf0.cpp
+00875040	CTools::IsVectorBetweenTwoOthersInThePlane	00/87/CTools_IsVectorBetweenTwoOthersInThePlane_00875040.cpp
+00875120	CTools::IsPosInViewingFrustrum	00/87/CTools_IsPosInViewingFrustrum_00875120.cpp
+008751d0	CTools::GetIntersectionWithWorldMap	00/87/CTools_GetIntersectionWithWorldMap_008751d0.cpp
+00875550	CTools::GetLandscapePointIntersectionFromTo	00/87/CTools_GetLandscapePointIntersectionFromTo_00875550.cpp
+00875e60	CTools::GetCollisionThing	00/87/CTools_GetCollisionThing_00875e60.cpp
+00877d20	CTools::FrameUpdate	00/87/CTools_FrameUpdate_00877d20.cpp
+00b1ffc0	CPSCDecalRenderer::~CPSCDecalRenderer	00/b1/CPSCDecalRenderer_CPSCDecalRenderer_00b1ffc0.cpp
+00c62150	CTools::GetWorld	00/c6/CTools_GetWorld_00c62150.cpp
