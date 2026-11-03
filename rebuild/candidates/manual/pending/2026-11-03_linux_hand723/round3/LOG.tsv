@@ -1,0 +1,55 @@
+address	attempt	change	grade	diff_lines(masked)
+00b6edf0	g0	round-1 parked source on the round-2 overlay (+FABLE_RETAIL_C3DTRIANGLE2)	DIFFER(3144v3144)	14
+00b6edf0	e1	v[5].SetDiffuseColour before SetPosition/SetU1V1: v4/v5 colour pair now in retail order	DIFFER(3144v3144)	14 (-1 block)
+00b6edf0	e2	no rowBase, `y * 17 + x` (LICM): loop-head stores right, add load order swapped	DIFFER(3144v3144)	14
+00b6edf0	e3-e6	e1 + LICM forms x + y*17 / x + 17*y / 17*y + x / index=y*17; index+=x: all give the swapped add loads	DIFFER(3144v3144)	14
+00b6edf0	e7-e11	rowBase before/after x decl, for-init comma forms, const rowBase: either store order or load order wrong, never both right	DIFFER(3144v3144)	14
+00b6edf0	e12-e15	rowBase + x / x + index / index = rowBase; index += x: operand order in source never moves the loads	DIFFER(3144v3144)	14
+00b6edf0	e16-e19	natural 4-deep loop `index = (y + j) * 17 + x + i` (4 spellings)	DIFFER(3114v3144)	209
+00b6edf0	vs1-vs70	automated greedy search over all 6 setter orders of each of the 14 vertices (2 rounds): no improvement past e1	DIFFER(3144v3144)	14
+00b6edf0	f1-f3	named C3DVector corner / water-line locals before or after Lock (identical code)	DIFFER(3144v3144)	14
+00b70a90	d1	first draft from the disassembly: GetFrame model of 0x00B77370, one CGraphicFrame + texture local, sky / environment passes, overlay: ALPHA_BLEND_MODE setters, CIDrawEnvironmentTextureSet, camera peeks, CTexture::GetDimensions, CDisplayManager::CopyBackBufferToTexture, C2DVector::AccurateNormalise	DIFFER(3520v3567)	143
+00b70a90	d2	no texture-set reference; premultiplied C4DVector copy; `/ 2pi` divisions	DIFFER(3547v3567)	111
+00b70a90	v1-v6	alpha split `x * 255` then `/ 255` (+fmul); look by const& + lookZ local (43); direction member stores; halfFOV split / (h*0.5)*k	DIFFER	109/43/111/110/110
+00b70a90	b3	v1+v3+v5 and PeekVFOV as `HFOV * (1.0f / AspectRatio)` (header): frame size right	DIFFER(3569v3567)	38
+00b70a90	c2-c5	bank read after the texture indices (33); direct-init colours; long indices	DIFFER(3569v3567)	33/38/38
+00b70a90	c6-c11	colour copies moved / reordered / dropped, channel reference, begin()->	DIFFER	116/117/43/81/36/33
+00b70a90	m1	SetRenderState with a mask local (alternate overlay)	DIFFER(3569v3567)	44
+00b70a90	c12	colour block before the blend	DIFFER(3577v3567)	96
+00b70a90	c13	#define FABLE_RETAIL_CARRAY (`*(begin()+i)` index): colour-copy registers and three SetRenderState load orders right; only the back-buffer pass's UV-V bookmark block keeps the register swap	DIFFER(3567v3567)	8 (1 real block)
+00b6edf0	ca1	#define FABLE_RETAIL_CARRAY	DIFFER(3144v3144)	14 (no change)
+00b6edf0	best2	final overlay regrade (round-3 header additions)	DIFFER(3144v3144)	14
+00b70a90	best1/best2	final overlay regrades (private-static state tables; round-3 header additions)	DIFFER(3567v3567)	8
+00b70a90	c14-c15	invented Clamp helper replaced by inline if/else (two spellings)	DIFFER(3567v3567)	10
+00b70a90	c16	GFClamp01 (the landed 0x0070D390 spelling) instead of the invented Clamp	DIFFER(3567v3567)	8
+00b70a90	c17	CCountedPointer<CTexture> (engine header) for the frame data's texture pointer instead of the local CTexturePointer	DIFFER(3567v3567)	8
+00b70a90	c18	PeekGraphicBank(static_cast<EGraphicBankNo>(0)) for the bank (as landed 0x00BADB40); final	DIFFER(3567v3567)	8 (1 real block: UV-V bookmark register swap, lane gap)
+00bc04f0	d1	first full draft from the disassembly (helpers, out-of-line style returns)	DIFFER(3549v3751)	518
+00bc04f0	d2	GetFrame as an if-block (one shared frame release), premultiply flag set first	DIFFER(3485v3751)	469
+00bc04f0	d3	blend op as three per-case SetBlendOp calls (retail cross-jumps them)	DIFFER(3547v3751)	663
+00bc04f0	d4	pass 6 / 7 merged with one shared displacement shader pick	DIFFER(3397v3751)	680
+00bc04f0	d4b/d4c	lighting-manager setters and CRGBFloatColour(CRGBColour) __forceinline (plain inline was called out of line)	DIFFER(3604v3751)	655
+00bc04f0	d3b	d3 with the forced inlines	DIFFER(3788v3751)	651
+00bc04f0	d5	colour declared at the GetFrame block (frame 0x30)	DIFFER(3830v3751)	306
+00bc04f0	d6	CGraphicFrame declared at the top	DIFFER(3773v3751)	303
+00bc04f0	d7	displacement shader picks written out (no helpers): identical	DIFFER(3830v3751)	306
+00bc04f0	e1-e4	no CARRAY / sprite pointer / decl orders: identical	DIFFER(3830v3751)	306
+00bc04f0	f3-f7	frame/info order, lights/manager at outer scope, inverted if: identical	DIFFER(3830v3751)	306/307
+00bc04f0	d8	shader clamp as `index = lights; if (lights > size()-1) index = size()-1;`	DIFFER(3820v3751)	187
+00bc04f0	g1-g4	colour + finalColour / colour + C3DVector premultiplied RGB / 3 floats / d3 colour	DIFFER(3778v3751)	158/155/598/550
+00bc04f0	h1	EXPERIMENT without SetAlphaRef(0x10): `this` lands in ebx (retail prologue)	DIFFER(3648v3751)	126
+00bc04f0	i1-i4	premultiply placement in pass 7, uchar alpha ref; i3 EXPERIMENT without SetAlphaTestEnable	DIFFER(3778v3751)	154-157
+00bc04f0	x1-x3	EXPERIMENT: drop draw / default / tail blocks (bisecting the ebx choice): only the default path moves it	DIFFER	423/535/211
+00bc04f0	j1-j4	theme-channel desc: copy-init / named / default+assign (j3: retail's build-then-copy) / copied temp	DIFFER(3778v3751)/(3786v3751)	155/155/140/155
+00bc04f0	m1-m4,k1	constant-block arg / arrow store / camera reads direct / texture pointer Info-first zeroing	DIFFER(3786v3751)	140/140/142/140/140
+00bc04f0	n1-n2	CCountedPointer<CTexture> (engine header) for the texture pointer: identical; + ReleaseData in the dtor: worse	DIFFER	140/215
+00bc04f0	o1	EXPERIMENT alpha ref 0x11: hoist gone, `this` in ebx, frame slots retail	DIFFER(3764v3751)	91
+00bc04f0	p1-p3	EXPERIMENT bisect the 0x10 sharer: only the frame release's IsInitialised test (bit 4) matters	DIFFER	355/140/141
+00bc04f0	q1-q5	IsInitialised test spellings (!= 0, == 1, == true, (bool), decimal 16): identical	DIFFER(3786v3751)	140
+00bc04f0	d12/d13	PDB inline helpers: SetupAlphaBlendingStatesFromBlendMode, SetupBlendOpState, FindLocalLights (by-value desc), SetupLocalLights, Apply*Shader (SI), GetCurrentCamera	DIFFER(3786v3751)	140
+00bc04f0	d14	shared displacement pick on top of d13	DIFFER(3602v3751)	280
+00bc04f0	s2-s4	frame release spellings (no zeroing, split decrement): identical	DIFFER(3786v3751)	140
+00bc04f0	t1-t3	/Oa, /GS, #pragma optimize("s")	DIFFER	909/140/1220
+00bc04f0	u1	PeekGraphicBank(static_cast<EGraphicBankNo>(0)) for EntryExists / GetGraphicInfo: bank / sprite load order right	DIFFER(3786v3751)	135
+00bc04f0	final	u1 with the full header comment (differ/00bc04f0.cpp)	DIFFER(3786v3751)	135
+00b751f0	r3hdr	round-2 row: local CEnginePrimitiveThemeChannelDesc / CEngineLocalLightArray stand-ins replaced by the new engine headers	DIFFER(2722v2722)	20 (same as round 2)

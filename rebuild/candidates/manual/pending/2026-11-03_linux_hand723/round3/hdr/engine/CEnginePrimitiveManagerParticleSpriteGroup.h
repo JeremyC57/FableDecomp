@@ -1,0 +1,117 @@
+#ifndef FABLE_ENGINE_CENGINEPRIMITIVEMANAGERPARTICLESPRITEGROUP_H
+#define FABLE_ENGINE_CENGINEPRIMITIVEMANAGERPARTICLESPRITEGROUP_H
+#ifdef FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLESPRITEGROUP
+// Retail opt-in (chunk 723): CEnginePrimitiveManagerParticleSpriteGroup : CEnginePrimitiveManager (Fable.exe RTTI), vtable 0x012A6140,
+// 0x328 bytes. Members typed at the retail offsets the constructor 0x00BC14E0 writes (Ego_r.pdb names and order; the three CArray
+// members are retail 0xC). Functions: Ego_r.pdb / FableWin.pdb publics; virtual overrides from the PDB (UAE/UBE).
+#include <stddef.h>
+#include "rebuild_abi.h"
+#ifndef FABLE_RETAIL_CVERTEXSHADER
+#define FABLE_RETAIL_CVERTEXSHADER
+#endif
+#ifndef FABLE_RETAIL_CVERTEXBUFFERWIN32
+#define FABLE_RETAIL_CVERTEXBUFFERWIN32
+#endif
+#ifndef FABLE_RETAIL_CINDEXBUFFER
+#define FABLE_RETAIL_CINDEXBUFFER
+#endif
+#include "engine/CArray.h"
+#include "engine/CVertexShader.h"
+#include "engine/CPixelShader.h"
+#include "engine/CVertexBufferWin32.h"
+#include "engine/CIndexBuffer.h"
+#include "engine/CEnginePrimitiveManager.h"
+class CEngineParticleConstantBlock {                                     // Ego_r.pdb, 0x10 bytes, no constructor
+public:
+    float X;                                                             // +0x00
+    float Y;                                                             // +0x04
+    float Z;                                                             // +0x08
+    float W;                                                             // +0x0C
+};
+class CEnginePrimitiveManagerParticleSpriteGroup : public CEnginePrimitiveManager {
+public:
+    CEnginePrimitiveManagerParticleSpriteGroup(CArray<CEngineScene*>& scenes);                               // 0x00BC14E0
+    virtual CEngineInternalPrimitiveBase* CreateInternalPrimitive(EEnginePrimitiveType type);                 // UAE
+    virtual void GetSupportedTypes(CEnginePrimitiveTypeList& types) const;                                    // UBE
+    virtual void RenderSubPrimitive(CEngineSubPrimitiveBase& sub, ERenderPassType pass);                      // UAE
+    virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase& prim, EEngineRenderLayer layer, CEngineSubPrimitiveChain& chain);   // UAE
+    void RenderSingleSprite(CEngineSubPrimitiveBase& sub, ERenderPassType pass);                              // 0x00BC04F0 QAE
+private:
+    void BuildBuffers();                                                 // 0x00BBF380 ?BuildBuffers@CEnginePrimitiveManagerParticleSpriteGroup@@AAEXXZ
+    // The six shader pickers of Ego_r.pdb / FableWin.pdb (AAE, no retail copy: RenderSingleSprite 0x00BC04F0 expands them).
+    void Apply3DFaceMeDisplacementVertexShader();                        // AAE
+    void Apply3DFaceMePointLightVertexShader(unsigned long lights);      // AAE
+    void ApplyBillboardDisplacementVertexShader();                       // AAE
+    void ApplyBillboardPointLightVertexShader(unsigned long lights);     // AAE
+    void ApplyCrossedSpriteDisplacementVertexShader();                   // AAE
+    void ApplyCrossedSpritePointLightVertexShader(unsigned long lights); // AAE
+public:
+    CArray<CVertexShader> VertexShadersBillboardSpritePointLights;       // +0x0c
+    CArray<CVertexShader> VertexShadersCrossedSpritePointLights;         // +0x18
+    CArray<CVertexShader> VertexShaders3DFaceMeSpritePointLights;        // +0x24
+    CVertexShader         VertexShadersBillboardSpriteDisplacement;      // +0x30
+    CVertexShader         VertexShadersCrossedSpriteDisplacement;        // +0x38
+    CVertexShader         VertexShaders3DFaceMeSpriteDisplacement;       // +0x40
+    CPixelShader          PixelShader;                                   // +0x48
+    CPixelShader          PixelShaderStipple;                            // +0x50
+    CPixelShader          PixelShaderDisplacement;                       // +0x58
+    CVertexBufferWin32    VertexBuffer;                                  // +0x60
+    CIndexBuffer          IndexBuffer;                                   // +0x94
+    CEngineParticleConstantBlock ConstantBlock[40];                      // +0xa8
+};
+FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManagerParticleSpriteGroup) == 0x328);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteGroup, VertexShadersBillboardSpritePointLights) == 0xc);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteGroup, VertexShadersBillboardSpriteDisplacement) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteGroup, PixelShader) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteGroup, VertexBuffer) == 0x60);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteGroup, IndexBuffer) == 0x94);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteGroup, ConstantBlock) == 0xa8);
+#else // flattened Ego_r layout (the landed default, unchanged)
+// GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
+// Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CEnginePrimitiveManagerParticleSpriteGroup = 0x334.
+// Container layout: retail STLport 4.6 (list 4, vector/map/set/string/CArray 0xc, deque 0x28, CVectorMap 0x10, bases from Fable.exe RTTI): sizeof CEnginePrimitiveManagerParticleSpriteGroup = 0x328.
+// Retail evidence: 0 trusted landed function(s); reconciliation clean.
+// Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
+// `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#include <stddef.h>
+#include "rebuild_abi.h"
+
+#pragma pack(push, 1)
+class CEnginePrimitiveManagerParticleSpriteGroup {
+public:
+    void*         __vftable;                                 // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char _pad_0x04[0x4];                            // +0x04
+    unsigned char _pad_0x08[0x4];                            // +0x08
+    unsigned char VertexShadersBillboardSpritePointLights[0xc];  // +0x0c CArray<CVertexShader>
+    unsigned char VertexShadersCrossedSpritePointLights[0xc];  // +0x18 CArray<CVertexShader>
+    unsigned char VertexShaders3DFaceMeSpritePointLights[0xc];  // +0x24 CArray<CVertexShader>
+    unsigned char VertexShadersBillboardSpriteDisplacement[0x8]; // +0x30 CVertexShader
+    unsigned char VertexShadersCrossedSpriteDisplacement[0x8]; // +0x38 CVertexShader
+    unsigned char VertexShaders3DFaceMeSpriteDisplacement[0x8]; // +0x40 CVertexShader
+    unsigned char PixelShader[0x8];                          // +0x48 CPixelShader
+    unsigned char PixelShaderStipple[0x8];                   // +0x50 CPixelShader
+    unsigned char PixelShaderDisplacement[0x8];              // +0x58 CPixelShader
+    unsigned char VertexBuffer[0x34];                        // +0x60 CVertexBufferWin32
+    unsigned char IndexBuffer[0x14];                         // +0x94 CIndexBuffer
+    unsigned char ConstantBlock[0x280];                      // +0xa8 CEngineParticleConstantBlock[40]
+};
+#pragma pack(pop)
+
+FABLE_STATIC_ASSERT(sizeof(CEnginePrimitiveManagerParticleSpriteGroup) == 0x328);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteGroup, __vftable) == 0x0);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteGroup, VertexShadersBillboardSpritePointLights) == 0xc);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteGroup, VertexShadersCrossedSpritePointLights) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteGroup, VertexShaders3DFaceMeSpritePointLights) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteGroup, VertexShadersBillboardSpriteDisplacement) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteGroup, VertexShadersCrossedSpriteDisplacement) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteGroup, VertexShaders3DFaceMeSpriteDisplacement) == 0x40);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteGroup, PixelShader) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteGroup, PixelShaderStipple) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteGroup, PixelShaderDisplacement) == 0x58);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteGroup, VertexBuffer) == 0x60);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteGroup, IndexBuffer) == 0x94);
+FABLE_STATIC_ASSERT(offsetof(CEnginePrimitiveManagerParticleSpriteGroup, ConstantBlock) == 0xa8);
+
+#endif // FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLESPRITEGROUP
+
+#endif // FABLE_ENGINE_CENGINEPRIMITIVEMANAGERPARTICLESPRITEGROUP_H

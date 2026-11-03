@@ -1836,3 +1836,9 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - 2026-11-03: a quoted `#include` inside a repo header resolves next to that header first, so it skips the overlay copy; overlay the includer too.
 - 2026-11-03: an accept-flag version and an if/else version of the same logic compile differently; 0x008771A0 matched with `if (cc || able) { if (retest) copy; } else copy;` and one shared `bool hit`.
 - 2026-11-03: `extern const float DELTA_NOTIONAL_ZERO` is not constant-folded; retail's folded uses need the defined const.
+- 2026-11-03 (chunk 723 round 3): VC7.1 folds `1/a*h` into `h/a`, and folds `x*255/255` and `h*0.5*k` unless the steps go through named locals.
+- 2026-11-03: when a constant is shared with a bit test (alpha-ref 0x10 and the IsInitialised 0x10 bit), VC7.1 can load it into ebx early and push `this` to the stack; no source spelling moves it (0x00BC04F0, lane gap).
+- 2026-11-03: CEngineLightingManager's small setters need `__forceinline`; plain `inline` is called out of line in the large render bodies.
+- 2026-11-03: `PeekGraphicBank(static_cast<EGraphicBankNo>(0))` gives retail's bank load order where indexing `GraphicBanks[0]` does not.
+- 2026-11-03: a point-light index clamp matches as `unsigned long index = lights; if (lights > n - 1) index = n - 1;`.
+- 2026-11-03: `verify_and_land.py` reads oracle columns from the first data row, so a header-only oracle (no matched rows) fails with "missing required columns" before grading.

@@ -1,0 +1,19 @@
+00b6edf0	e1	DIFFER(3144v3144)	dl=15	v5 colour first
+00b6edf0	e2	DIFFER(3144v3144)	dl=17	no rowBase, y*17 + x
+00b6edf0	e3	DIFFER(3144v3144)	dl=14	e1 + x + y*17 (LICM)
+00b6edf0	e4	DIFFER(3144v3144)	dl=14	e1 + x + 17*y
+00b6edf0	e5	DIFFER(3144v3144)	dl=14	e1 + 17*y + x
+00b6edf0	e6	DIFFER(3144v3144)	dl=14	e1 + index=y*17; index+=x
+00b6edf0	e7	DIFFER(3144v3144)	dl=14	rowBase then for(long x=0
+00b6edf0	e8	DIFFER(3144v3144)	dl=14	x=0; rowBase; for(;
+00b6edf0	e9	DIFFER(3144v3144)	dl=14	for (x=0, rowBase=y*17;
+00b6edf0	e10	DIFFER(3144v3144)	dl=14	const rowBase
+00b6edf0	e11	DIFFER(3144v3144)	dl=14	for (x=0, rowBase=...
+00b6edf0	e12	DIFFER(3144v3144)	dl=14	x=0; rowBase; rowBase + x
+00b6edf0	e13	DIFFER(3144v3144)	dl=14	for (x=0, rowBase=y*17; rowBase+x
+00b6edf0	e14	DIFFER(3144v3144)	dl=14	index = x + index
+00b6edf0	e15	DIFFER(3144v3144)	dl=14	index = rowBase; index += x
+00b6edf0	e16	DIFFER(3114v3144)	dl=209	natural 4-loop index=(y + j) * 17 + x + i
+00b6edf0	e17	DIFFER(3114v3144)	dl=209	natural 4-loop index=x + i + (y + j) * 17
+00b6edf0	e18	DIFFER(3114v3144)	dl=209	natural 4-loop index=(x + i) + (y + j) * 17
+00b6edf0	e19	DIFFER(3114v3144)	dl=209	natural 4-loop index=(y + j) * 17 + (x + i)

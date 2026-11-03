@@ -1,0 +1,53 @@
+CHANGED engine/C2DVector.h default=same[9] FABLE_RETAIL_C2DVECTOR=DIFF[17]
+CHANGED engine/C3DBoundingSphere.h default=same[394] FABLE_RETAIL_C3DBOUNDINGSPHERE=DIFF[394]
+CHANGED engine/C3DTriangle2.h default=same[6] FABLE_RETAIL_C3DTRIANGLE2=DIFF[6]
+CHANGED engine/C4DVector.h default=same[45] FABLE_RETAIL_C4DVECTOR=DIFF[45]
+CHANGED engine/CArray.h default=same[362] FABLE_RETAIL_CARRAY=same[362]
+CHANGED engine/CBankFile.h default=same[96] FABLE_RETAIL_BANK_FILE=same[96] FABLE_RETAIL_CBANKFILE=DIFF[96]
+CHANGED engine/CDisplayManager.h default=same[588] FABLE_RETAIL_CDISPLAYMANAGER=DIFF[595] FABLE_RETAIL_SCOPED_PTR=same[593]
+CHANGED engine/CEngineCamera.h default=same[85] FABLE_RETAIL_C4DVECTOR=same[85] FABLE_RETAIL_CENGINECAMERA=DIFF[85] FABLE_RETAIL_CENGINECOMPONENT=same[85] FABLE_RETAIL_CMATRIX3X4=same[85]
+NEW    engine/CEngineCameraDesc.h
+CHANGED engine/CEngineComponent.h default=same[25] FABLE_RETAIL_CENGINECOMPONENT=DIFF[119]
+NEW    engine/CEngineInternalPrimitiveSprite.h
+CHANGED engine/CEngineLandscapeMeshBuilder.h default=same[32]
+CHANGED engine/CEngineLandscapeRenderer.h default=same[106] FABLE_RETAIL_CENGINECOMPONENT=same[106] FABLE_RETAIL_CENGINELANDSCAPERENDERER=same[768] FABLE_RETAIL_CINDEXBUFFER=same[106] FABLE_RETAIL_CLANDSCAPEPATCHTESSELATOR=same[106] FABLE_RETAIL_CTEXTURE=same[106] FABLE_RETAIL_CVERTEXSHADER=same[106]
+CHANGED engine/CEngineLightingManager.h default=same[147] FABLE_RETAIL_C4DVECTOR=same[147] FABLE_RETAIL_CENGINECOMPONENT=same[147] FABLE_RETAIL_CENGINELIGHTINGMANAGER=DIFF[147] FABLE_RETAIL_CMATRIX3X4=same[147]
+NEW    engine/CEngineLocalLightArray.h
+CHANGED engine/CEngineMap.h default=same[850] FABLE_RETAIL_CENGINEMAP=same[852]
+CHANGED engine/CEnginePrimitiveManager.h default=same[514]
+CHANGED engine/CEnginePrimitiveManagerParticleSpriteGroup.h default=same[44] FABLE_RETAIL_CENGINEPRIMITIVEMANAGERPARTICLESPRITEGROUP=DIFF[651] FABLE_RETAIL_CINDEXBUFFER=same[44] FABLE_RETAIL_CVERTEXBUFFERWIN32=same[44] FABLE_RETAIL_CVERTEXSHADER=same[44]
+CHANGED engine/CEnginePrimitiveRenderUtil.h default=same[31] FABLE_RETAIL_CENGINEPRIMITIVERENDERUTIL=DIFF[31]
+NEW    engine/CEnginePrimitiveThemeChannelDesc.h
+CHANGED engine/CEngineResourceManager.h default=same[105] FABLE_RETAIL_CENGINECOMPONENT=same[105] FABLE_RETAIL_CENGINERESOURCEMANAGER=DIFF[627]
+CHANGED engine/CEngineScreenEffectDisplacementRenderer.h default=same[77] FABLE_RETAIL_CENGINECOMPONENT=same[77] FABLE_RETAIL_CENGINESCREENEFFECTDISPLACEMENTRENDERER=DIFF[77]
+CHANGED engine/CEngineShadowRenderer.h default=same[88] FABLE_RETAIL_CENGINESHADOWRENDERER=DIFF[88]
+NEW    engine/CEngineSubPrimitiveBase.h
+CHANGED engine/CEngineWaterRenderer.h default=same[182] FABLE_RETAIL_C4DVECTOR=same[182] FABLE_RETAIL_CENGINECOMPONENT=same[182] FABLE_RETAIL_CENGINEWATERRENDERER=DIFF[829] FABLE_RETAIL_CINDEXBUFFER=same[182] FABLE_RETAIL_CMATRIX3X4=same[182] FABLE_RETAIL_CVERTEXBUFFERWIN32=same[182] FABLE_RETAIL_CVERTEXSHADER=same[182]
+CHANGED engine/CEngineWaterSettings.h default=DIFF[199] FABLE_RETAIL_C4DVECTOR=DIFF[199] FABLE_RETAIL_CMATRIX3X4=DIFF[199]
+CHANGED engine/CEngineWorldMap.h default=same[80] FABLE_RETAIL_CENGINECOMPONENT=same[80] FABLE_RETAIL_CENGINEWORLDMAP=same[527]
+NEW    engine/CIDrawEnvironment.h
+NEW    engine/CIDrawEnvironmentParams.h
+NEW    engine/CIDrawWorld.h
+CHANGED engine/CLandscapeGPUUpdateQueue.h default=same[28]
+CHANGED engine/CLandscapePatchTesselator.h default=same[21] FABLE_RETAIL_CLANDSCAPEPATCHTESSELATOR=same[410]
+CHANGED engine/CLandscapeTesselatorBase.h default=same[398]
+CHANGED engine/CMatrix3x4.h default=same[66] FABLE_RETAIL_CMATRIX3X4=DIFF[66]
+CHANGED engine/CPixelShader.h default=same[55]
+NEW    engine/CPreTransposedBoneMatrix.h
+NEW    engine/CRGBFloatColour.h
+CHANGED engine/CRenderManagerCore.h default=same[3810] FABLE_RETAIL_CINDEXBUFFER=same[3810] FABLE_RETAIL_CRENDERMANAGERCORE=DIFF[50] FABLE_RETAIL_CRENDERSTATEMANAGER=same[3810] FABLE_RETAIL_CTEXTURE=same[3810] FABLE_RETAIL_CVERTEXBUFFERWIN32=same[3810]
+CHANGED engine/CRenderStateManager.h default=same[42] FABLE_RETAIL_CRENDERSTATEMANAGER=DIFF[42]
+CHANGED engine/CShaderBase.h default=same[20]
+NEW    engine/CShaderConstantRange.h
+NEW    engine/CShaderRenderManager.h
+CHANGED engine/CShaderResource.h default=same[130]
+CHANGED engine/CTexture.h default=same[23] FABLE_RETAIL_CTEXTURE=DIFF[37]
+CHANGED engine/CTriangleStripifier2.h default=same[376] FABLE_RETAIL_CTRIANGLESTRIPIFIER2=DIFF[376]
+CHANGED engine/CVertexBufferBase.h default=same[64]
+CHANGED engine/CVertexBufferWin32.h default=same[19] FABLE_RETAIL_CVERTEXBUFFERWIN32=same[28]
+CHANGED engine/CVertexCompressionParams.h default=same[25]
+CHANGED engine/CVertexShader.h default=same[21] FABLE_RETAIL_CVERTEXSHADER=same[55]
+NEW    engine/CVertexShaderConstant.h
+CHANGED engine/CVertexShaderConstantLayout.h default=same[68] FABLE_RETAIL_CVERTEXSHADERCONSTANTLAYOUT=DIFF[68]
+CHANGED engine/CWaterPatchTesselatorBase.h default=same[410]
+NEW    engine/IDirect3DDevice9.h

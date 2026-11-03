@@ -1,0 +1,6 @@
+address	name	kind	evidence
+0x00B70A90	?RenderEnvironmentMap@CEngineWaterRenderer@@AAEXXZ	function	Ego_r.pdb + FableWin.pdb donor CEngineWaterRenderer::RenderEnvironmentMap; catalog row; only caller is the water render path
+0x00BC04F0	?RenderSingleSprite@CEnginePrimitiveManagerParticleSpriteGroup@@QAEXAAVCEngineSubPrimitiveBase@@W4ERenderPassType@@@Z	function	Ego_r.pdb and FableWin.pdb both spell RenderSingleSprite in class CEnginePrimitiveManagerParticleSpriteGroup with (CEngineSubPrimitiveBase&, ERenderPassType); body reads CEngineInternalPrimitiveSprite members and the class's six Apply*Shader pickers
+0x00B6EDF0	?BuildConstantBuffers@CEngineWaterRenderer@@AAEXXZ	function	Ego_r.pdb + FableWin.pdb donor; catalog row
+0x01436E38	g_pDisplacementRenderer_01436e38	global	0x00B266A4: operator new(0x1ac) + ctor 0x00B86C00 (manifest CEngineScreenEffectDisplacementRenderer) registered into 0x01436E38; RTTI of vtable 0x012A3A94 = CEngineScreenEffectDisplacementRenderer (base CEngineComponent, mdisp 0); 16 .text references, all reads
+0x0139B6E4	g_spriteRenderEnabled_0139b6e4	global	descriptive: .data long initialised to 1, read only by 0x00BC04F0 as the early-out gate; no writer in .text
