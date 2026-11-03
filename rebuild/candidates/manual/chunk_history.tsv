@@ -26358,3 +26358,9 @@ chunk	address	module	name	length
 730	00e2b090	CV_AmbushScamScript	Main	2357
 730	00e2ec30	CV_AmbushScamScript	GetTrickster	1336
 730	00e2f170	CV_AmbushScamScript	SpringAmbush	2781
+731	00b573a0	CEngineStateBlockAlpha	Apply	1208
+731	00b57860	CEngineStateBlockAlpha2X	Apply	1208
+731	00b57d20	CEngineStateBlockAdditiveAlpha	Apply	1208
+731	00b581e0	CEngineStateBlockAddSmoothAlpha	Apply	1208
+731	00b24850	CEngine	SetDefaultRenderStates	4344
+731	00b26360	CEngine	Initialise	5174
