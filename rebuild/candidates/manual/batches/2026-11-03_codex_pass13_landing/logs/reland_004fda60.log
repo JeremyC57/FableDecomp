@@ -1,0 +1,11 @@
+addr       parity           behav  name
+004fda60   WARN SHARED_HEADER_AVAILABLE CWorldMap
+004fda60   WARN RELOC_NAME: ?SaveMapsToString@CWorldMap@@IAEXAAVCCharString@@@Z -> 004fb990 labelled '_global::004fb990'
+004fda60   WARN RELOC_NAME: ?SaveRegionsToString@CWorldMap@@IAEXAAVCCharString@@@Z -> 004fd040 labelled '_global::004fd040'
+004fda60   RELOCATION_MATCH PASS   SaveToFile
+
+WINS: 1
+  004fda60 RELOCATION_MATCH CWorldMap::?SaveToFile@CWorldMap@@UAEXAAVCAFile@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CWorldMap_SaveToFile_004fda60

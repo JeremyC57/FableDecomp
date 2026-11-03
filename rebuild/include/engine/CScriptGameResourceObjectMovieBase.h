@@ -28,6 +28,15 @@
 template <class T> class CCountedPointer;
 class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase {
 public:
+#ifdef FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR
+    // Per-TU inline opt-in (Codex pass 13; like FABLE_RETAIL_CBASICSTRING_EQ_OUTOFLINE): retail has one declaration, and VC7.1 expanded it in some
+    // TUs and called the COMDAT in others: the ctor COMDAT 0x006E7B60 (??0CScriptGameResourceObjectMovieBase@@QAE@XZ) is called, not expanded.
+    CScriptGameResourceObjectMovieBase();
+#endif
+#ifdef FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR
+    // (same kind) the dtor COMDAT 0x006E7B80 (??1CScriptGameResourceObjectMovieBase@@UAE@XZ) is called, not expanded.
+    virtual ~CScriptGameResourceObjectMovieBase();
+#endif
     void Release();                                                      // 0x00CF8850
     void SetImplementation(CScriptGameResourceObjectMovieBase*);         // unproven: candidate 0x008AB970
     CCountedPointer<CScriptGameResourceObjectMovieBase> PImp;            // +0x08

@@ -18,6 +18,12 @@ class CEntityScriptBase;
 template <class T> class CEntityScriptBinding : public CEntityScriptBindingBase {
 public:
     typedef CCountedPointer<CEntityScriptBase> (FABLE_FASTCALL *TAllocFunc)(T&, CScriptDataBase*, const CScriptThing&);
+#if defined(FABLE_RETAIL_CENTITYSCRIPTBINDING_FORCEINLINE_CTOR) && defined(_MSC_VER)
+    // Per-TU inline opt-in (Codex pass 13; like FABLE_RETAIL_CBASICSTRING_EQ_OUTOFLINE): retail has one declaration, and VC7.1 expanded it in some
+    // TUs and called the COMDAT in others (FableWin keeps an out-of-line ctor per instantiation, e.g. 0x03B26C20; the TU of 0x00E479B0
+    // expands it where a plain inline ctor stays a call).
+    __forceinline
+#endif
     CEntityScriptBinding(const CCharString& name, T* parent, TAllocFunc alloc, unsigned long flags)
         : EntityScriptName(name), PParentScript(parent), ClassAllocFunc(alloc), ClassAllocValid(true), Flags(flags) { }
     virtual const CCharString& GetEntityScriptName() const { return EntityScriptName; }                // slot 0

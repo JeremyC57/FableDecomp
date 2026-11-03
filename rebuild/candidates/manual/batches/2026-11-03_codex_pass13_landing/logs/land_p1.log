@@ -1,0 +1,41 @@
+addr       parity           behav  name
+00dc1770   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00dc1770   RELOCATION_MATCH PASS   Main
+00dc7490   RELOCATION_MATCH PASS   Main
+00dd35d0   RELOCATION_MATCH PASS   WatchHeroEscapeStatus
+00deb280   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00deb280   RELOCATION_MATCH PASS   Main
+00debef0   RELOCATION_MATCH PASS   Main
+00df1830   WARN RELOC_NAME: ?FollowHero@CSTS_BriarRose@CQ_SummoningTheShipScript@NScript@@AAEX_N@Z -> 00df2090 labelled 'CScript_00df2090::Init'
+00df1830   RELOCATION_MATCH PASS   Main
+00e055b0   RELOCATION_MATCH PASS   Main
+00e26e30   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00e26e30   RELOCATION_MATCH PASS   Main
+00e32540   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00e32540   WARN RELOC_NAME: ?UpdateGameScore@CV_ArcheryCompetitionScript@NScript@@QAEXXZ -> 00e32fe0 labelled 'NScript::CQ_AwakeningTheOracleScript::CChunkCollectionIndicator::OnPredicateFail'
+00e32540   RELOCATION_MATCH PASS   Main
+00e36d50   RELOCATION_MATCH PASS   Main
+
+WINS: 10
+  00dc1770 RELOCATION_MATCH NScript::CQ_OakValeBanditRaidScript::COakValeBanditRaidBandit::?Main@COakValeBanditRaidBandit@CQ_OakValeBanditRaidScript@NScript@@EAEXXZ
+  00dc7490 RELOCATION_MATCH NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageKeeperFriend::?Main@CSecretPassageKeeperFriend@CQ_OpeningGraveyardSecretPassageScript@NScript@@EAEXXZ
+  00dd35d0 RELOCATION_MATCH NScript::CQ_PrisonEscapeRescueMotherScript::?WatchHeroEscapeStatus@CQ_PrisonEscapeRescueMotherScript@NScript@@QAEXXZ
+  00deb280 RELOCATION_MATCH NScript::CQ_RansomVictimScript::CVictimsBrotherHelper::?Main@CVictimsBrotherHelper@CQ_RansomVictimScript@NScript@@EAEXXZ
+  00debef0 RELOCATION_MATCH NScript::CQ_RansomVictimChiefsHouseScript::?Main@CQ_RansomVictimChiefsHouseScript@NScript@@UAEXXZ
+  00df1830 RELOCATION_MATCH NScript::CQ_SummoningTheShipScript::CSTS_BriarRose::?Main@CSTS_BriarRose@CQ_SummoningTheShipScript@NScript@@EAEXXZ
+  00e055b0 RELOCATION_MATCH NScript::CQ_TraderEscortScript::CEndTrader::?Main@CEndTrader@CQ_TraderEscortScript@NScript@@EAEXXZ
+  00e26e30 RELOCATION_MATCH NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript::CMazeAtTavern::?Main@CMazeAtTavern@CQS_GuardianSisterInfo2_SisterInBanditCampScript@NScript@@EAEXXZ
+  00e32540 RELOCATION_MATCH NScript::CV_ArcheryCompetitionScript::?Main@CV_ArcheryCompetitionScript@NScript@@UAEXXZ
+  00e36d50 RELOCATION_MATCH NScript::CV_ArcheryCompetitionScript::CAC_DummyMoving::?Main@CAC_DummyMoving@CV_ArcheryCompetitionScript@NScript@@EAEXXZ
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  NScriptCQOakValeBanditRaidScriptCOakValeBanditRaidBandit_Main_00dc1770
+  NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageKeeperFriend_Main_00dc7490
+  NScriptCQPrisonEscapeRescueMotherScript_WatchHeroEscapeStatus_00dd35d0
+  NScriptCQRansomVictimScriptCVictimsBrotherHelper_Main_00deb280
+  NScriptCQRansomVictimChiefsHouseScript_Main_00debef0
+  NScriptCQSummoningTheShipScriptCSTSBriarRose_Main_00df1830
+  NScriptCQTraderEscortScriptCEndTrader_Main_00e055b0
+  NScriptCQSGuardianSisterInfo2SisterInBanditCampScriptCMazeAtTavern_Main_00e26e30
+  NScriptCVArcheryCompetitionScript_Main_00e32540
+  NScriptCVArcheryCompetitionScriptCACDummyMoving_Main_00e36d50

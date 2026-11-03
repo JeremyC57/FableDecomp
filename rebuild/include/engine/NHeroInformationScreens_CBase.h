@@ -2,7 +2,8 @@
 #define FABLE_ENGINE_NHEROINFORMATIONSCREENS_CBASE_H
 #include "fable_string.h"
 namespace NUISystem { class CComponent; }
-enum EPlayerMode {  };
+// Codex pass 13 landing: the full original EPlayerMode (both PDBs) lives in engine/EPlayerMode.h; this header used to declare it empty.
+#include "engine/EPlayerMode.h"
 namespace NHeroInformationScreens {
 enum EScreenType { NULL_SCREEN_TYPE=-1,STANDARD_INVENTORY_SCREEN=0,INVENTORY_QUESTS_SCREEN=1,INVENTORY_EXPERIENCE_SCREEN=2,HERO_ABILITIES_SCREEN=3,INVENTORY_WEAPONS_SCREEN=4,INVENTORY_CLOTHING_SCREEN=5,INVENTORY_TRADE_SCREEN=6,QUEST_CARD_SCREEN=7,INVENTORY_MAP_SCREEN=8,INVENTORY_STATS_SCREEN=9,INVENTORY_MAGIC_SCREEN=10,NUMBER_OF_SCREEN_TYPES=11 };
 class CBase {

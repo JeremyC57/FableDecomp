@@ -33,6 +33,19 @@ enum EScriptEntityMoveType { };
 #endif
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase {
 public:
+#ifdef FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTSCRIPTEDTHINGBASE_OUTOFLINE_ASSIGN
+    // Per-TU inline opt-in (Codex pass 13; like FABLE_RETAIL_CBASICSTRING_EQ_OUTOFLINE): retail has one declaration, and VC7.1 expanded it in some
+    // TUs and called the COMDAT in others. The TUs of 0x00DC1770 call operator= 0x008ABD10 (declared, not expanded).
+    CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase&);
+#endif
+#ifdef FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTSCRIPTEDTHINGBASE_OUTOFLINE_CTOR
+    // (same kind) The TU of 0x00DC1770 calls the ctor COMDAT 0x007E72A0 (??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ).
+    CScriptGameResourceObjectScriptedThingBase();
+#endif
+#ifdef FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTSCRIPTEDTHINGBASE_OUTOFLINE_DTOR
+    // (same kind) 15 Codex pass 13 NScript TUs call the dtor COMDAT 0x007E74D0 (??1..@@UAE@XZ) instead of expanding the implicit dtor.
+    virtual ~CScriptGameResourceObjectScriptedThingBase();
+#endif
     bool IsValid() const;                                                // 0x00CD23B9
     void Release();                                                      // 0x00CD2770
     void SetImplementation(CScriptGameResourceObjectScriptedThingBase*); // 0x008AB960

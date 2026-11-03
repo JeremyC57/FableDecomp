@@ -7,7 +7,14 @@
 #include "engine/CBaseClassNonCopyable.h"
 #include "engine/CIDrawWorldMap.h"
 #include "engine/CCountedPointer.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/CArray.h"
+#include "engine/C2DBoxI.h"
+#include "boost/scoped_ptr.h"
 #include "stlport/fable_containers.h"
+#include "stlport/fable_map.h"
+class CMapInfo; class CThing; class CWideString;
+class CNavigationAreaInit; class CNavigationAreaUpdate;
 class CWorld; class CMainGameComponent; class CRegionConnectionGraph; class CWADBank; class CLevelLoader; class CAFile; class CRegion;
 class CASuspendableProcess; class CMap; class C2DCoordI; class C2DBoxI; class C3DVector; class CDrawMapInfo; class CCharString;
 namespace NThingMap { class CThingMapManager; }
@@ -61,14 +68,19 @@ protected:
     virtual void LoadScriptBrushesFromFile(long, CCountedPointer<CAFile>);
     virtual long AllocateNewMap();
 public:
-    // Retail opt-in additions (2026-11-03, chunk 719 row 0x00501150): Ego_r.pdb CWorldMap::ELoadType (nested; the
-    // enumerator names are not in the PDB, 0 is the synchronous load: 0x00501150 runs the level loader to completion for it) and
-    // the protected ?LoadLevelFromFiles@CWorldMap@@IAEXJV?$CCountedPointer@VCAFile@@@@00W4ELoadType@1@@Z (Ego_r 0x004D55C0).
-    enum ELoadType { };
+    // Ego_r.pdb / FableWin.pdb CWorldMap::ELoadType (nested; LF_ENUMERATE WAIT_FOR_LOAD = 0, DONT_WAIT_FOR_LOAD = 1, Codex pass 13
+    // TPI evidence; 0x00501150 runs the level loader to completion for WAIT_FOR_LOAD), the protected
+    // ?LoadLevelFromFiles@CWorldMap@@IAEXJV?$CCountedPointer@VCAFile@@@@00W4ELoadType@1@@Z (Ego_r 0x004D55C0, chunk 719), and the public
+    // ?LoadRegion@CWorldMap@@QAEXJW4ELoadType@1@_N@Z, ?GetRegionNumberMapIsIn@CWorldMap@@QBEJJ@Z,
+    // ?GenerateRegionConnectivityGraph@CWorldMap@@QAEXXZ (both PDBs; Codex pass 13 rows 0x00501450 / 0x004FD040).
+    enum ELoadType { WAIT_FOR_LOAD=0,DONT_WAIT_FOR_LOAD=1 };
 protected:
     void LoadLevelFromFiles(long levelID, CCountedPointer<CAFile> topologyFile, CCountedPointer<CAFile> navigationFile,
                             CCountedPointer<CAFile> thingFile, ELoadType loadType);
 public:
+    void LoadRegion(long,ELoadType,bool);
+    long GetRegionNumberMapIsIn(long)const;
+    void GenerateRegionConnectivityGraph();
     unsigned long GetMapUID(long map) const;                 // 0x004FCE00 ?GetMapUID@CWorldMap@@QBEKJ@Z
     long GetRegionNumberFromName(const CCharString&) const;      // these five: callees of 0x00606300 / 0x0074A5D0
     CRegion& GetRegion(long);
@@ -76,31 +88,41 @@ public:
     bool IsPosPassable(const C2DCoordI&) const;
     float GetGroundSizeZAt(const C3DVector&) const;
 protected:
-    CWorld*                 World;                           // +0x08
-    CMainGameComponent*     Component;                       // +0x0c
-    NThingMap::CThingMapManager* PThingMapManager;           // +0x10 boost::scoped_ptr<NThingMap::CThingMapManager>
-    unsigned long           LoadedScriptedMapBrushes[3];     // +0x14 map<CCharString,long>
-    unsigned long           Maps[3];                         // +0x20 CArray<CMapInfo>
-    unsigned long           Regions[3];                      // +0x2c vector<CRegion>
-    unsigned long           RegionTime[3];                   // +0x38 vector<long>
+    class CPlayerPositionInfo;
+    void UnloadRegion(long,bool);
+    void SaveMapsToString(CCharString&);                      // 0x004FB990 ?SaveMapsToString@CWorldMap@@IAEXAAVCCharString@@@Z
+    void SaveRegionsToString(CCharString&);                   // 0x004FD040 ?SaveRegionsToString@CWorldMap@@IAEXAAVCCharString@@@Z
+    void GetMapNavigationAreaInit(long,const C2DBoxI*,const CCharString&,CNavigationAreaInit&) const;
+public:
+    void GetMapNavigationAreaUpdateInfo(long,const C2DBoxI&,const CCharString&,CNavigationAreaUpdate&) const;
+    long GetNavigationLayerAt(const C3DVector&,const CThing*) const;
+protected:
+    void GetLevelFilesFromWorldFile(const CWideString&,std::vector<CWideString>&);
+    CWorld&                 World;                           // +0x08
+    const CMainGameComponent& Component;                       // +0x0c
+    boost::scoped_ptr<NThingMap::CThingMapManager> PThingMapManager;           // +0x10 boost::scoped_ptr<NThingMap::CThingMapManager>
+    std::map<CCharString,long> LoadedScriptedMapBrushes;     // +0x14 map<CCharString,long>
+    CArray<CMapInfo> Maps;                         // +0x20 CArray<CMapInfo>
+    std::vector<CRegion> Regions;                      // +0x2c vector<CRegion>
+    std::vector<long> RegionTime;                   // +0x38 vector<long>
     CCountedPointer<CRegionConnectionGraph> PRegionGraph;    // +0x44
     bool                    SoundThemesDisabled;             // +0x4c
-    long                    Granularity;                     // +0x50
-    long                    GranularityShift;                // +0x54
+    const long Granularity;                     // +0x50
+    const long GranularityShift;                // +0x54
     long                    MapPlacementPitch;               // +0x58
-    long                    Area[4];                         // +0x5c C2DBoxI (TLX, TLY, BRX, BRY)
-    unsigned long           MapPlacement[3];                 // +0x6c vector<unsigned short>
-    unsigned long           PlayerPositionInfo[3];           // +0x78 vector<CWorldMap::CPlayerPositionInfo>
-    unsigned long           HeightChangedAreas[3];           // +0x84 vector<C2DBoxI>
-    unsigned long           LoadedMaps[3];                   // +0x90 CArray<long>
+    C2DBoxI Area;                         // +0x5c C2DBoxI (TLX, TLY, BRX, BRY)
+    std::vector<unsigned short> MapPlacement;                 // +0x6c vector<unsigned short>
+    std::vector<CPlayerPositionInfo> PlayerPositionInfo;           // +0x78 vector<CWorldMap::CPlayerPositionInfo>
+    std::vector<C2DBoxI> HeightChangedAreas;           // +0x84 vector<C2DBoxI>
+    CArray<long> LoadedMaps;                   // +0x90 CArray<long>
     long                    LoadedRegion;                    // +0x9c
     CCountedPointer<CWADBank> LevelWADBank;                  // +0xa0
     bool                    UseLevelWADBank;                 // +0xa8
     unsigned long           CurrentMapUIDCount;              // +0xac
-    unsigned long           DestroyedThemePositions[3];      // +0xb0 vector<C2DCoordI>
+    std::vector<C2DCoordI> DestroyedThemePositions;      // +0xb0 vector<C2DCoordI>
     CCountedPointer<CLevelLoader> PLevelLoader;              // +0xbc
-    unsigned long           PCameraRegionParticle[2];        // +0xc4 CIntelligentPointer<CThing>
-    unsigned long           PHeroBreathParticle[2];          // +0xcc CIntelligentPointer<CThing>
+    CIntelligentPointer<CThing> PCameraRegionParticle;        // +0xc4 CIntelligentPointer<CThing>
+    CIntelligentPointer<CThing> PHeroBreathParticle;          // +0xcc CIntelligentPointer<CThing>
     bool                    RegionUnloading;                 // +0xd4
     bool                    PassabilityBeingShown;           // +0xd5
 };

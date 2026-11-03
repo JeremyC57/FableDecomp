@@ -22,7 +22,9 @@
 class CScriptThing : public CBaseClass {
 public:
     CScriptThing();                                                      // 0x006E7B40
+#ifndef FABLE_RETAIL_CSCRIPTTHING_IMPLICIT_COPY
     CScriptThing(const CScriptThing&);                                   // 0x004ABE90
+#endif
     virtual ~CScriptThing();                                             // slot 0  0x004AB170 (scalar deleting); 0x004AA840
     virtual const CCharString& GetName() const;                                                              //  1 0x004AA8B0
     virtual CCharString GetDefName() const;                                                                  //  2 0x004AA8D0
@@ -102,7 +104,12 @@ public:
     virtual bool IsDead() const;                                                                             // 76 0x004AA890
     virtual bool IsNull() const;                                                                             // 77 0x004AB150
     protected: virtual bool IsEqualTo(const CScriptThing&) const; public:                                    // 78 0x004AA8A0 (FableWin.pdb only)
+    // Per-TU inline opt-ins (Codex pass 13): retail has one class, and VC7.1 expanded the copy / assignment COMDATs 0x004ABE90 /
+    // 0x008AB980 in some TUs and called them in others. FABLE_RETAIL_CSCRIPTTHING_IMPLICIT_COPY (5 NScript rows) and
+    // FABLE_RETAIL_CSCRIPTTHING_IMPLICIT_ASSIGNMENT (row 0x00DC1770) leave the member implicit, so the TU expands it.
+#ifndef FABLE_RETAIL_CSCRIPTTHING_IMPLICIT_ASSIGNMENT
     CScriptThing& operator=(const CScriptThing&);                        // 0x008AB980
+#endif
     bool operator==(const CScriptThing&) const;                          // 0x008AAE20
     bool operator!=(const CScriptThing&) const;                          // 0x008AAE40
     void SetImplementation(CCountedPointer<CScriptThing>);               // Ego_r.pdb / FableWin.pdb

@@ -1,0 +1,239 @@
+address	symbol	decision	evidence	action
+0x004FB990 0x004FD040	?SaveMapsToString@CWorldMap@@IAEXAAVCCharString@@@Z / ?SaveRegionsToString@CWorldMap@@IAEXAAVCCharString@@@Z	IAE (protected)	Ego_r 0x004CF290 / 0x004D0600 and FableWin 0x01C7D540 / 0x01C7DF60 spell both IAE; the CWorldMap header now declares them protected	single landed caller 0x004FDA60 respelled (protected: in its class model) and re-landed RELOCATION_MATCH
+0x00989CB0	?UpdateObjectSpaceLighting@CShaderRenderManager@@AAEXK@Z	AAE (private)	both PDB name sets	row HELD; binder 0x009E1280 (QAE) queued cx13 PRIORITY
+0x009DA9F0	?Render2DDrawList@CRenderManager2D@@QAEX_N@Z	CRenderManager2D member	both PDB name sets; RTTI CRenderManager : CRenderManager2D	row HELD; binders 0x00499880 (?Flush@CRenderManager) and 0x00499D90 (?Render2DDrawList@CRenderManager) already queued PRIORITY by cx11m (NAME_FIXES_QUEUE line 4294); no new line
+0x0121AF20	CPlayer::`dynamic initializer for 'PlayerModeInfo'' (object symbol _$E1 of its TU)	named through .CRT$XCU	retail .CRT$XCU slot 0x013743EC (0x0121AEC0 before, 0x0121B9B0 after); Ego_r 0x0100CFE0 + FableWin 0x03FE1960 `dynamic initializer for 'CPlayer::PlayerModeInfo''; body 0xA90 bytes = Ego_r 0x0100CFE0..0x0100DA70 (next Ego_r initializer)	landed with Leaf _$E1 (module CPlayer); label + catalog name
+0x007E72A0	??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ	constructor (not Construct)	Ego_r 0x007E2B00 + FableWin 0x027A7500; body `call 0x0099A380; mov [esi],0x0127094C` stores the STB vtable; agrees with queue mig5 line 1153	cx13 PRIORITY line for the Construct binders 0x00DDD030 / 0x00E0AD40
+0x00415D70	??BCDefString@@QBE?AVCCharString@@XZ	conversion operator (0x00415DD0 is GetString)	Ego_r 0x00418470 + FableWin 0x018C20E0; FableWin donor order ??B 0x018C20E0 before GetString 0x018C2120; retail has two byte-identical copies, no ICF; answers mig9 line 1450	cx13 PRIORITY line (respell 0x008E7040 QAE?AU and 0x00EC8230 QAE?AV); annotated in CDefString.h
+0x01375748	?GDefaultToUsingPhysicsInCutsceneAnimations@NGlobalConsole@@3_NA	accepted data name; VERIFY WITH CVDUMP on the owner's PDBs	Codex cites the PDB DATA / PUBLIC32 record; the committed name lists hold functions only	label; queue line PRIORITY where landed code spells it differently
+0x01396510	?LibraryStateBlockFunctions@CRenderManager2D@@0PAPAVCStateBlockFunctionBase@@A	accepted data name; VERIFY WITH CVDUMP on the owner's PDBs	Codex cites the PDB DATA / PUBLIC32 record; the committed name lists hold functions only	label; queue line PRIORITY where landed code spells it differently
+0x01396DC8	?D3DTextureUVModeTable@CRenderStateManager@@0PAKA	accepted data name; VERIFY WITH CVDUMP on the owner's PDBs	Codex cites the PDB DATA / PUBLIC32 record; the committed name lists hold functions only	label; queue line PRIORITY where landed code spells it differently
+0x01396DF8	?D3DZBufferFuncModeTable@CRenderStateManager@@0PAKA	accepted data name; VERIFY WITH CVDUMP on the owner's PDBs	Codex cites the PDB DATA / PUBLIC32 record; the committed name lists hold functions only	label; queue line PRIORITY where landed code spells it differently
+0x01396E58	?D3DTextureFilterModeTable@CRenderStateManager@@0PAKA	accepted data name; VERIFY WITH CVDUMP on the owner's PDBs	Codex cites the PDB DATA / PUBLIC32 record; the committed name lists hold functions only	label; queue line PRIORITY where landed code spells it differently
+0x01396E64	?D3DTextureMipMapModeTable@CRenderStateManager@@0PAKA	accepted data name; VERIFY WITH CVDUMP on the owner's PDBs	Codex cites the PDB DATA / PUBLIC32 record; the committed name lists hold functions only	label; queue line PRIORITY where landed code spells it differently
+0x01396F9C	?D3DPolyShadeModeTable@CRenderStateManager@@0PAKA	accepted data name; VERIFY WITH CVDUMP on the owner's PDBs	Codex cites the PDB DATA / PUBLIC32 record; the committed name lists hold functions only	label; queue line PRIORITY where landed code spells it differently
+0x01396FA4	?D3DPolyFillModeTable@CRenderStateManager@@0PAKA	accepted data name; VERIFY WITH CVDUMP on the owner's PDBs	Codex cites the PDB DATA / PUBLIC32 record; the committed name lists hold functions only	label; queue line PRIORITY where landed code spells it differently
+0x01396FB0	?D3DPolyCullModeTable@CRenderStateManager@@0PAKA	accepted data name; VERIFY WITH CVDUMP on the owner's PDBs	Codex cites the PDB DATA / PUBLIC32 record; the committed name lists hold functions only	label; queue line PRIORITY where landed code spells it differently
+0x013BC470	?SingletonInstance@CShaderRenderManager@@0V1@A	accepted data name; VERIFY WITH CVDUMP on the owner's PDBs	Codex cites the PDB DATA / PUBLIC32 record; the committed name lists hold functions only	label; queue line PRIORITY where landed code spells it differently
+0x0143E928	?NPCAttitudes@@3PAJA	accepted data name; VERIFY WITH CVDUMP on the owner's PDBs	Codex cites the PDB DATA / PUBLIC32 record; the committed name lists hold functions only	label; queue line PRIORITY where landed code spells it differently
+0x004045C0	??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x004046B0	??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x0040E160	??$GetDefaultVal@J@CPersistContext@@KIJXZ	review-queued	second spelling: landed Leaf AddChildPrimitive (CEngineInternalPrimitiveBase_AddChildPrimitive_0040e160.cpp)	NAME_FIXES_QUEUE cx13
+0x0040E250	??$GetDefaultVal@M@CPersistContext@@KIMXZ	review-queued	second spelling: landed Leaf GetCombatMinDistance (CAIStateGroupEnemyCreatureBase_GetCombatMinDistance_0040e250.cpp)	NAME_FIXES_QUEUE cx13
+0x00410620	??$Transfer@M@CPersistContext@@QAEXPBDAAMABM@Z	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x004106F0	??$Transfer@K@CPersistContext@@QAEXPBDAAKABK@Z	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x004109A0	??$Transfer@VCCharString@@@CPersistContext@@QAEXPBDAAVCCharString@@ABV1@@Z	priority-queued	second spelling: ?Transfer@CPersistContext@@QAEXPBDAAVCCharString@@ABV2@@Z (caller 006ca120); ?Write@CPersistContext@@QAEXPBDAAVCCharString@@1@Z (caller 00681ba0); landed Leaf Transfer (CPersistContext_TransferCCharSt	NAME_FIXES_QUEUE cx13
+0x00410BE0	??$Transfer@J@CPersistContext@@QAEXPBDAAJABJ@Z	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x00411570	?Compare@?$CBasicString@D@@KIJPBD0@Z	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x004115A0	??8?$CBasicString@D@@QBE_NPBD@Z	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x00415D70	??BCDefString@@QBE?AVCCharString@@XZ	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x0041A060	?GetLevelDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	priority-queued	second spelling: ?GetLevelsDirectory_0041a060@@YI?AVCWideString@@XZ (caller 0049d610); ?GetLevelsDirectory@@YI?AVCWideString@@XZ (caller 00416953)	NAME_FIXES_QUEUE cx13
+0x004AA840	??1CScriptThing@@UAE@XZ	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x004AB130	?IsAlive@CScriptThing@@UBE_NXZ	priority-queued	second spelling: ?IsAlive@CScriptThing@@QBE_NXZ (caller 00eea7c0)	NAME_FIXES_QUEUE cx13
+0x004ABE90	??0CScriptThing@@QAE@ABV0@@Z	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x0053CB4F	?push_back@?$vector@_NV?$allocator@_N@std@@@std@@QAEXAB_N@Z	review-queued	second spelling: ?push_back@CBoolList@@QAEXAB_N@Z (caller 0053beac); ?push_back@CBoolVector@NUISystem@@QAEXAB_N@Z (caller 0053ad07); ?push_back@BoolVector@NUISystem@@QAEXAB_N@Z (caller 0053822b)	NAME_FIXES_QUEUE cx13
+0x00633670	?UninitModeYesNoQuestion@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z	review-queued	second spelling: landed Leaf UninitModeClickPastText (CPlayer_UninitModeClickPastText_00633670.cpp)	NAME_FIXES_QUEUE cx13
+0x00633830	?UninitModeParalysed@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z	priority-queued	second spelling: landed Leaf UninitModeParalysed (CPlayer_UninitModeParalysed_00633830.cpp)	NAME_FIXES_QUEUE cx13
+0x00633880	?UninitModeBoastUI@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z	priority-queued	second spelling: landed Leaf UninitModeBoastUI (CPlayer_UninitModeBoastUI_00633880.cpp)	NAME_FIXES_QUEUE cx13
+0x00633A60	?UninitModeQuickAccessMenu@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z	priority-queued	second spelling: landed Leaf UninitModeQuickAccessMenu (CPlayer_UninitModeQuickAccessMenu_00633a60.cpp)	NAME_FIXES_QUEUE cx13
+0x00633BB0	?UninitModeOracleMinigame@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z	priority-queued	second spelling: landed Leaf UninitModeOracleMinigame (CPlayer_UninitModeOracleMinigame_00633bb0.cpp)	NAME_FIXES_QUEUE cx13
+0x006BBF70	?GetNameGraphicOffset@CRegion@@QBE?BVC2DVector@@XZ	priority-queued	second spelling: landed Leaf GetNameGraphicOffset (CRegion_GetNameGraphicOffset_006bbf70.cpp)	NAME_FIXES_QUEUE cx13
+0x006E7AB0	??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x006E7B60	??0CScriptGameResourceObjectMovieBase@@QAE@XZ	priority-queued	second spelling: ?Construct@CScriptGameResourceObjectMovieBase@@QAEXXZ (caller 00ddd030)	NAME_FIXES_QUEUE cx13
+0x006E7B80	??1CScriptGameResourceObjectMovieBase@@UAE@XZ	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x007E72A0	??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ	priority-queued	second spelling: ?Construct@CScriptedThingStorage@@QAEXXZ (caller 00ddd030); ?Construct@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ (caller 00e0ad40)	NAME_FIXES_QUEUE cx13
+0x007E7360	?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ	priority-queued	second spelling: ?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ (caller 00e11dc0)	NAME_FIXES_QUEUE cx13
+0x007E7390	?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z	priority-queued	second spelling: ?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDJ_N22@Z (caller 00d50c60)	NAME_FIXES_QUEUE cx13
+0x007E73D0	?PlayAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@_N111111@Z	priority-queued	second spelling: ?PlayAnimation@CScriptGameResourceObjectScriptedThingBase@@QAEXABVCCharString@@_N111111@Z (caller 00dd6440)	NAME_FIXES_QUEUE cx13
+0x007E7410	?ClearAllActionsIncludingLoopingAnimations@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ	priority-queued	second spelling: ?ClearAllActionsIncludingLoopingAnimations@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ (caller 00e02950)	NAME_FIXES_QUEUE cx13
+0x007E7450	?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x007E74D0	??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x008ABD10	??4CScriptGameResourceObjectScriptedThingBase@@QAEAAV0@ABV0@@Z	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x008AC970	??1?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x0099A2D0	??0CBaseClass@@QAE@XZ	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x0099A2E0	??1CBaseClass@@UAE@XZ	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x0099A380	??0CBaseObject@@IAE@XZ	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x0099A430	??1CBaseObject@@MAE@XZ	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x0099B2C0	?ToCharString@CWideString@@QBE?AVCCharString@@XZ	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x0099B510	??1CWideString@@QAE@XZ	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x0099B6B0	??0CWideString@@QAE@PBG@Z	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x0099E4B0	??0CCharString@@QAE@XZ	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x0099E5F0	?SaveToFile@CCharString@@QBEXAAVCAFile@@@Z	priority-queued	second spelling: ?SaveToFile@CCharString@@QAEXPAVCAFile@@@Z (caller 004fe030); ?SaveToFile@CCharString@@QAEXABV1@@Z (caller 00ae8810)	NAME_FIXES_QUEUE cx13
+0x0099E960	??9CCharString@@QBE_NPBD@Z	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x0099EAE0	??1CCharString@@QAE@XZ	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x0099EBF0	??0CCharString@@QAE@PBDJ@Z	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x0099EC30	??0CCharString@@QAE@ABV0@@Z	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x0099EFB0	??4CCharString@@QAEABV0@ABV0@@Z	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x0099EFE0	??4CCharString@@QAEABV0@PBD@Z	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x0099F100	??YCCharString@@QAEABV0@PBD@Z	priority-queued	second spelling: ?Append@NativeCharString@@QAEABVCCharString@@PBD@Z (caller 00404970); ?Append@CharStringMethods@@QAEAAVCCharString@@PBD@Z (caller 00d3ab00); ?Append@CPrisonerSpeechString@@QAEABVCCharString@@PBD@Z (ca	NAME_FIXES_QUEUE cx13
+0x0099F570	??H@YI?AVCCharString@@ABV0@0@Z	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x0099F930	?GFUHUGEToCharString@@YI?AVCCharString@@_K@Z	priority-queued	second spelling: ??0CCharString@@QAE@_K@Z (caller 0044b800)	NAME_FIXES_QUEUE cx13
+0x009A08B0	?GFFloatToCharString@@YI?AVCCharString@@NJ@Z	priority-queued	second spelling: ?FormatDouble@CCharString@@SI?AV1@JN@Z (caller 00614080); ?FormatRealText_009a08b0@@YI?AVCCharString@@HN@Z (caller 006859f0)	NAME_FIXES_QUEUE cx13
+0x009AC700	??A?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAEAAVCCharString@@ABV2@@Z	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x009BA790	?ReadAsSymbol@CStringParser@@QAE?AVCCharString@@XZ	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x009E2590	?TransferIn@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCStringParser@@AAJ@Z	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x00CB7940	?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x00CB7E50	?AddSpawnedFunction@CScriptBase@@QAEXPAVCSpawnedFuncBase@@ABVCCharString@@@Z	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x00CBE09A	??0CWideScreenMagicPauseEntities@@QAE@AAVCGameScriptInterfaceBase@@@Z	priority-queued	second spelling: ??0CWideScreenMagicPauseEntities@@QAE@PAVCGameScriptInterfaceBase@@@Z (caller 00cbf6dc); landed Leaf ??0CWideScreenMagicPauseEntities@@QAE@PAVCGameScriptInterfaceBase@@@Z (CWideScreenMagicPauseEntitie	NAME_FIXES_QUEUE cx13
+0x00CBE2FF	?IsDistanceBetweenThingsUnder@@YI_NABVCScriptThing@@0M@Z	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x00CBE716	?FadeOutAndKillEntity@@YIXABVCScriptThing@@M_N1@Z	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x00CBFB7D	?RunCutsceneMacro@@YIXABVCCharString@@AAV?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@PAV?$map@VCCharString@@_NU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@3@PAV?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@3@_N4@Z	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x00CD3D2E	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x00CD4470	??1CTimer@@QAE@XZ	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x00CDBF70	??0?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x00CDBFB0	??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x00CDCC20	??$Transfer@W4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@@CPersistContext@@QAEXPBDAAW4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@ABW4123@@Z	priority-queued	second spelling: landed Leaf Transfer (CPersistContext_TransferEArcheryState_00cdcc20.cpp)	NAME_FIXES_QUEUE cx13
+0x00CDCDD0	??$Transfer@W4EPlaceInHeroSouls@@@CPersistContext@@QAEXPBDAAW4EPlaceInHeroSouls@@ABW41@@Z	priority-queued	second spelling: landed Leaf Transfer (CPersistContext_TransferEHeroSoulsPosition_00cdcdd0.cpp)	NAME_FIXES_QUEUE cx13
+0x00CDEB40	?Alloc@CArcheryCompetitionSignpost@CPersonalScript_GlobalThingsScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	review-queued	second spelling: landed Leaf ?CreateArcheryCompetitionSignpost@ (global_CreateArcheryCompetitionSignpost_00cdeb40.cpp)	NAME_FIXES_QUEUE cx13
+0x00DF2090	?FollowHero@CSTS_BriarRose@CQ_SummoningTheShipScript@NScript@@AAEX_N@Z	review-queued	second spelling: landed Leaf Init (CScript00df2090_Init_00df2090.cpp)	NAME_FIXES_QUEUE cx13
+0x00DF20F0	?MakeBriarRoseComment@CQ_SummoningTheShipScript@NScript@@QAE_NABVCCharString@@@Z	priority-queued	second spelling: ?MakeBriarRoseComment@CQ_SummoningTheShipScript@@QAE_NABVCCharString@@@Z (caller 00df2f90)	NAME_FIXES_QUEUE cx13
+0x00E3E320	?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ	priority-queued	second spelling: landed Leaf IsHeroDressedAsLady (NScriptCVBordelloScript_IsHeroDressedAsLady_00e3e320.cpp)	NAME_FIXES_QUEUE cx13
+0x00E3E6B0	?GetHeroStatusTextTag@CV_BordelloScript@NScript@@QAE?AVCCharString@@XZ	priority-queued	second spelling: landed Leaf GetHeroStatusTextTag (NScriptCVBordelloScript_GetHeroStatusTextTag_00e3e6b0.cpp)	NAME_FIXES_QUEUE cx13
+0x00E6F040	?FadeOutFaceAndOpenDoor@CV_DemonDoorsScript@NScript@@QAEXABVCScriptThing@@ABVCCharString@@@Z	priority-queued	second spelling: ?FadeOutFaceAndOpenDoor@CV_DemonDoorsScript@@QAEXABVCScriptThing@@ABVCCharString@@@Z (caller 00e6ea30)	NAME_FIXES_QUEUE cx13
+0x00EF7AB0	??1CIsThingConscious@NScript@@UAE@XZ	priority-queued	second spelling: ??1CIsThingAliveEndGame@@QAE@XZ (caller 00efe700); ??1CScriptThingFunctor_00ef7ab0@@QAE@XZ (caller 00eff4d0); ??1CIsThing@@QAE@XZ (caller 00ef84d0); ??1CIsThingStored@NScript@@UAE@XZ (caller 00ef7800)	NAME_FIXES_QUEUE cx13
+0x01238C8C	??_7CScriptThing@@6B@	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x0126008C	??_7CScriptGameResourceObjectBase@@6B@	review-queued	second spelling: ?ResourceBaseVTable@@3QBEB (caller 00d2d060); ??_7CScriptGameResourceObjectBaseDtor@@6B@ (caller 00d246c0)	NAME_FIXES_QUEUE cx13
+0x0127094C	??_7CScriptGameResourceObjectScriptedThingBase@@6B@	review-queued	second spelling: ?ResourceVTable@@3QBEB (caller 00d2d060)	NAME_FIXES_QUEUE cx13
+0x012C2FE8	??_7CIsThingConscious@NScript@@6B@	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x01375748	?GDefaultToUsingPhysicsInCutsceneAnimations@NGlobalConsole@@3_NA	review-queued	second spelling: ?g_bScriptAnimationFlag@@3_NA (caller 00d7f460); ?g_PlayAnimationDefaultFlag@@3_NA (caller 00d08790)	NAME_FIXES_QUEUE cx13
+0x013B8C88	?PlayerModeInfo@CPlayer@@0QBVCPlayerModeInfo@@B	review-queued	second spelling: ?PlayerModeInfo@CPlayer@@2PAUCPlayerModeInfo@@A (caller 00633bf0)	NAME_FIXES_QUEUE cx13
+0x0143E8E0	?NullCoord@CScriptThing@@1VC3DVector@@A	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x0143E8F8	?pDSTGame@@3PAVCGameScriptInterfaceBase@@A	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x0143E90C	?pGlobalScriptDef@@3V?$CDefPointer@$$CBVCScriptDef@@@@A	already-queued	second spelling; queue already carries this address+symbol	existing queue line
+0x0143E928	?NPCAttitudes@@3PAJA	review-queued	second spelling: ?RelationCounters@CQ_SunnyvaleMasterData@NScript@@2PAJA (caller 00cdba10)	NAME_FIXES_QUEUE cx13
+0x004045C0	??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x004046B0	??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x00410620	??$Transfer@M@CPersistContext@@QAEXPBDAAMABM@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x004106F0	??$Transfer@K@CPersistContext@@QAEXPBDAAKABK@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x004109A0	??$Transfer@VCCharString@@@CPersistContext@@QAEXPBDAAVCCharString@@ABV1@@Z	covered	Codex NAME_FIXES row covered by the second-spelling line	-
+0x00410BE0	??$Transfer@J@CPersistContext@@QAEXPBDAAJABJ@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x00411570	?Compare@?$CBasicString@D@@KIJPBD0@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x004115A0	??8?$CBasicString@D@@QBE_NPBD@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x00414E30	??0CStringParser@@QAE@PBDP6IXABVCCharString@@@Z1J@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x00415D70	??BCDefString@@QBE?AVCCharString@@XZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x0041A060	?GetLevelDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	covered	Codex NAME_FIXES row covered by the second-spelling line	-
+0x004365B0	?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x00449970	?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x00485FF3	?push_back@?$vector@JV?$allocator@J@std@@@std@@QAEXABJ@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x00487DC0	?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x0048D400	??$GetAllThings@VCThing@@V?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@VCThingFilter_HasTC@@@CThingSearchTools@@QBEXABVCThingFilter_HasTC@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	priority-queued	Codex NAME_FIXES	NAME_FIXES_QUEUE cx13
+0x004AA840	??1CScriptThing@@UAE@XZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x004AB130	?IsAlive@CScriptThing@@UBE_NXZ	covered	Codex NAME_FIXES row covered by the second-spelling line	-
+0x004ABA70	?_M_erase@?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@AAEXPAU?$_Rb_tree_node@VCCharString@@@2@@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x004ABE90	??0CScriptThing@@QAE@ABV0@@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x004AC380	?insert_unique@?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@VCCharString@@U?$_Nonconst_traits@VCCharString@@@std@@@std@@_N@2@ABVCCharString@@@Z	review-queued	Codex NAME_FIXES	NAME_FIXES_QUEUE cx13
+0x004C73D0	?GetPos@CThing@@QBEABVC3DVector@@XZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x004C8CF0	?SetInLimbo@CThing@@QAEX_N@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x004FEEC0	?UnloadRegion@CWorldMap@@IAEXJ_N@Z	priority-queued	Codex NAME_FIXES	NAME_FIXES_QUEUE cx13
+0x00500540	?LoadRegion@CWorldMap@@QAEXJW4ELoadType@1@_N@Z	priority-queued	Codex NAME_FIXES	NAME_FIXES_QUEUE cx13
+0x0053CB4F	?push_back@?$vector@_NV?$allocator@_N@std@@@std@@QAEXAB_N@Z	covered	Codex NAME_FIXES row covered by the second-spelling line	-
+0x005815D6	??$TransferVector@J@CPersistContext@@QAEXPBDAAV?$vector@JV?$allocator@J@std@@@std@@@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x006E7AB0	??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x006E7B60	??0CScriptGameResourceObjectMovieBase@@QAE@XZ	covered	Codex NAME_FIXES row covered by the second-spelling line	-
+0x006E7B80	??1CScriptGameResourceObjectMovieBase@@UAE@XZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x00704580	??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x007E72A0	??0CScriptGameResourceObjectScriptedThingBase@@QAE@XZ	covered	Codex NAME_FIXES row covered by the second-spelling line	-
+0x007E7360	?ClearCommands@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ	covered	Codex NAME_FIXES row covered by the second-spelling line	-
+0x007E7390	?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z	covered	Codex NAME_FIXES row covered by the second-spelling line	-
+0x007E73D0	?PlayAnimation@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCCharString@@_N111111@Z	covered	Codex NAME_FIXES row covered by the second-spelling line	-
+0x007E7410	?ClearAllActionsIncludingLoopingAnimations@CScriptGameResourceObjectScriptedThingBase@@UAEXXZ	covered	Codex NAME_FIXES row covered by the second-spelling line	-
+0x007E7450	?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x007E7490	?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x007E74D0	??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x008ABD10	??4CScriptGameResourceObjectScriptedThingBase@@QAEAAV0@ABV0@@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x008AC970	??1?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x00987FE0	?EnableVertexShaders@CShaderRenderManager@@QAEXXZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x00988020	?ApplyVertexShader@CShaderRenderManager@@QAEXABVCVertexShader@@_N@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x009880E0	?DisableVertexShaders@CShaderRenderManager@@QAEXXZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x00988110	?EnablePixelShaders@CShaderRenderManager@@QAEXXZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x00988190	?DisablePixelShaders@CShaderRenderManager@@QAEXXZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x00989CB0	?UpdateObjectSpaceLighting@CShaderRenderManager@@AAEXK@Z	priority-queued	Codex NAME_FIXES	NAME_FIXES_QUEUE cx13
+0x0098B5E0	?SetVertexShaderConstantLayout@CShaderRenderManager@@QAEXJ@Z	priority-queued	Codex NAME_FIXES	NAME_FIXES_QUEUE cx13
+0x0098B930	?SetVSConstants@CShaderRenderManager@@AAEXJPBXK@Z	priority-queued	Codex NAME_FIXES	NAME_FIXES_QUEUE cx13
+0x0098CF70	?erase@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QAEPAVC4DVector@@PAV3@0@Z	review-queued	Codex NAME_FIXES	NAME_FIXES_QUEUE cx13
+0x0098D360	?_M_fill_insert@?$vector@VC4DVector@@V?$allocator@VC4DVector@@@std@@@std@@QAEXPAVC4DVector@@IABV3@@Z	review-queued	Codex NAME_FIXES	NAME_FIXES_QUEUE cx13
+0x0098D870	?resize@?$vector@PBVCVertexShaderConstantLayout@@V?$allocator@PBVCVertexShaderConstantLayout@@@std@@@std@@QAEXIABQBVCVertexShaderConstantLayout@@@Z	review-queued	Codex NAME_FIXES	NAME_FIXES_QUEUE cx13
+0x0098DB20	?push_back@?$CIndexedArray@VCCharString@@@@QAEXABVCCharString@@@Z	priority-queued	Codex NAME_FIXES	NAME_FIXES_QUEUE cx13
+0x0099A2D0	??0CBaseClass@@QAE@XZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x0099A2E0	??1CBaseClass@@UAE@XZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x0099A300	??1CBaseClassNonCopyable@@MAE@XZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x0099A380	??0CBaseObject@@IAE@XZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x0099A430	??1CBaseObject@@MAE@XZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x0099A920	?Close@CDiskFileWin32@@UAEXXZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x0099A960	?Read@CDiskFileWin32@@UAEXPAXJPAVCASuspendableProcess@@@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x0099B2C0	?ToCharString@CWideString@@QBE?AVCCharString@@XZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x0099B510	??1CWideString@@QAE@XZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x0099B6B0	??0CWideString@@QAE@PBG@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x0099B7D0	??4CWideString@@QAEABV0@ABV0@@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x0099E4B0	??0CCharString@@QAE@XZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x0099E4C0	??BCCharString@@QBEPBDXZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x0099E5F0	?SaveToFile@CCharString@@QBEXAAVCAFile@@@Z	covered	Codex NAME_FIXES row covered by the second-spelling line	-
+0x0099E960	??9CCharString@@QBE_NPBD@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x0099EAE0	??1CCharString@@QAE@XZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x0099EBF0	??0CCharString@@QAE@PBDJ@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x0099EC30	??0CCharString@@QAE@ABV0@@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x0099EFB0	??4CCharString@@QAEABV0@ABV0@@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x0099EFE0	??4CCharString@@QAEABV0@PBD@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x0099F100	??YCCharString@@QAEABV0@PBD@Z	covered	Codex NAME_FIXES row covered by the second-spelling line	-
+0x0099F570	??H@YI?AVCCharString@@ABV0@0@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x0099F930	?GFUHUGEToCharString@@YI?AVCCharString@@_K@Z	covered	Codex NAME_FIXES row covered by the second-spelling line	-
+0x009A08B0	?GFFloatToCharString@@YI?AVCCharString@@NJ@Z	covered	Codex NAME_FIXES row covered by the second-spelling line	-
+0x009A0CF0	?AttachTextureToStage@CRenderManagerCore@@QAEXJPBVCTexture@@@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x009AC700	??A?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAEAAVCCharString@@ABV2@@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x009B9530	?Init@CStringParser@@QAEXPBDP6IXABVCCharString@@@Z1J@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x009B9BA0	?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z	priority-queued	Codex NAME_FIXES	NAME_FIXES_QUEUE cx13
+0x009BA080	?ReadNextItem@CStringParser@@QAE_NAAVCParsedItem@@@Z	priority-queued	Codex NAME_FIXES	NAME_FIXES_QUEUE cx13
+0x009BA330	?ReadAsStringUntilString@CStringParser@@QAE?AVCCharString@@ABV2@@Z	priority-queued	Codex NAME_FIXES	NAME_FIXES_QUEUE cx13
+0x009BA3E0	?ReadAsStringUntilPastString@CStringParser@@QAE?AVCCharString@@ABV2@@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x009BA6F0	?ReadAsString@CStringParser@@QAE?AVCCharString@@XZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x009BA790	?ReadAsSymbol@CStringParser@@QAE?AVCCharString@@XZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x009BA900	?PeekNextItemType@CStringParser@@QAE?AW4EParsedItemType@@XZ	applied-label	Codex NAME_FIXES, both PDBs; no other landed spelling	label
+0x009BBBF0	?CheckUnknownSymbols@CPersistContext@@QAEXXZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x009E2590	?TransferIn@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCStringParser@@AAJ@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x009E9F40	?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x009F9F70	?Uninitialise@CTexture@@QAEXXZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x009FA1C0	??4CTexture@@QAEABV0@ABV0@@Z	priority-queued	Codex NAME_FIXES	NAME_FIXES_QUEUE cx13
+0x00A01B50	?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x00A05840	?RestoreCaptureBlock@CRenderStateManager@@QAEXXZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x00A058C0	?RealiseRenderState@CRenderStateManager@@QAEXXZ	priority-queued	Codex NAME_FIXES	NAME_FIXES_QUEUE cx13
+0x00A0AA80	?SetAWindow@CRenderManagerCore@@QAEXABVC2DBoxF@@@Z	priority-queued	Codex NAME_FIXES	NAME_FIXES_QUEUE cx13
+0x00A5D4D0	?Initialise@CShaderResource@@AAEXAAVCShaderRenderManager@@@Z	priority-queued	Codex NAME_FIXES	NAME_FIXES_QUEUE cx13
+0x00CB7940	?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x00CB7E50	?AddSpawnedFunction@CScriptBase@@QAEXPAVCSpawnedFuncBase@@ABVCCharString@@@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x00CB8D10	?DeleteData@?$CCountedPointer@VCSpawnedFuncBase@@@@SIXPAX@Z	review-queued	Codex NAME_FIXES	NAME_FIXES_QUEUE cx13
+0x00CBE09A	??0CWideScreenMagicPauseEntities@@QAE@AAVCGameScriptInterfaceBase@@@Z	covered	Codex NAME_FIXES row covered by the second-spelling line	-
+0x00CBE2FF	?IsDistanceBetweenThingsUnder@@YI_NABVCScriptThing@@0M@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x00CBE716	?FadeOutAndKillEntity@@YIXABVCScriptThing@@M_N1@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x00CBFB7D	?RunCutsceneMacro@@YIXABVCCharString@@AAV?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@PAV?$map@VCCharString@@_NU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@3@PAV?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@3@_N4@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x00CD3D2E	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x00CD4470	??1CTimer@@QAE@XZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x00CDBF70	??0?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x00CDBFB0	??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x00D1EB80	?Main@CGuardToHelpDefend@CQ_BreakSiegeScript@NScript@@EAEXXZ	applied-label	Codex NAME_FIXES, both PDBs; no other landed spelling	label
+0x00DF1830	?Main@CSTS_BriarRose@CQ_SummoningTheShipScript@NScript@@EAEXXZ	applied-label	Codex NAME_FIXES, both PDBs; no other landed spelling	label
+0x00DF2090	?FollowHero@CSTS_BriarRose@CQ_SummoningTheShipScript@NScript@@AAEX_N@Z	covered	Codex NAME_FIXES row covered by the second-spelling line	-
+0x00DF20F0	?MakeBriarRoseComment@CQ_SummoningTheShipScript@NScript@@QAE_NABVCCharString@@@Z	covered	Codex NAME_FIXES row covered by the second-spelling line	-
+0x00E6F040	?FadeOutFaceAndOpenDoor@CV_DemonDoorsScript@NScript@@QAEXABVCScriptThing@@ABVCCharString@@@Z	covered	Codex NAME_FIXES row covered by the second-spelling line	-
+0x00EA3490	?WatchForQuestFailure@CV_LostTraderScript@NScript@@QAEXXZ	applied-label	Codex NAME_FIXES, both PDBs; no other landed spelling	label
+0x00EABB30	?Main@CMurderTwistBrotherOlder@CV_MurderTwistScript@NScript@@EAEXXZ	applied-label	Codex NAME_FIXES, both PDBs; no other landed spelling	label
+0x00EF7AB0	??1CIsThingConscious@NScript@@UAE@XZ	covered	Codex NAME_FIXES row covered by the second-spelling line	-
+0x00F000E0	?Main@COracleGamesmaster@COracleMinigameTestScript@NScript@@EAEXXZ	applied-label	Codex NAME_FIXES, both PDBs; no other landed spelling	label
+0x0122DED8	__real@3f800000	review-queued	Codex NAME_FIXES	NAME_FIXES_QUEUE cx13
+0x0122DEDC	__real@00000000	review-queued	Codex NAME_FIXES	NAME_FIXES_QUEUE cx13
+0x01238C8C	??_7CScriptThing@@6B@	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x0126008C	??_7CScriptGameResourceObjectBase@@6B@	covered	Codex NAME_FIXES row covered by the second-spelling line	-
+0x0127094C	??_7CScriptGameResourceObjectScriptedThingBase@@6B@	covered	Codex NAME_FIXES row covered by the second-spelling line	-
+0x012C2FE8	??_7CIsThingConscious@NScript@@6B@	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x013692F8	__TI2?AVCGenericException@@	review-queued	Codex NAME_FIXES	NAME_FIXES_QUEUE cx13
+0x01375748	?GDefaultToUsingPhysicsInCutsceneAnimations@NGlobalConsole@@3_NA	covered	Codex NAME_FIXES row covered by the second-spelling line	-
+0x01396DC8	?D3DTextureUVModeTable@CRenderStateManager@@0PAKA	review-queued	Codex NAME_FIXES	NAME_FIXES_QUEUE cx13
+0x01396F9C	?D3DPolyShadeModeTable@CRenderStateManager@@0PAKA	review-queued	Codex NAME_FIXES	NAME_FIXES_QUEUE cx13
+0x013B86A0	?PMainGameComponent@CMainGameComponent@@1PAV1@A	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x013B8C88	?PlayerModeInfo@CPlayer@@0QBVCPlayerModeInfo@@B	covered	Codex NAME_FIXES row covered by the second-spelling line	-
+0x013BC470	?SingletonInstance@CShaderRenderManager@@0V1@A	review-queued	Codex NAME_FIXES	NAME_FIXES_QUEUE cx13
+0x013CA8A8	_GVertexShaderConstantLayoutEmpty	review-queued	Codex NAME_FIXES	NAME_FIXES_QUEUE cx13
+0x013CB508	?StateManager@CRenderStateCaptureBlock@@0PAVCRenderStateManager@@A	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x0143E8E0	?NullCoord@CScriptThing@@1VC3DVector@@A	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x0143E8F8	?pDSTGame@@3PAVCGameScriptInterfaceBase@@A	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x0143E90C	?pGlobalScriptDef@@3V?$CDefPointer@$$CBVCScriptDef@@@@A	already-queued	Codex NAME_FIXES row; queue already carries it	existing queue line
+0x0143E928	?NPCAttitudes@@3PAJA	covered	Codex NAME_FIXES row covered by the second-spelling line	-

@@ -1,0 +1,58 @@
+addr       parity           behav  name
+004084b0   RELOCATION_MATCH PASS   GetMaxEffectsDetail
+004085a0   RELOCATION_MATCH PASS   GetMaxMeshDetail
+00408550   RELOCATION_MATCH PASS   GetMaxShadowDetail
+00408500   RELOCATION_MATCH PASS   GetMaxTextureDetail
+004317d0   RELOCATION_MATCH PASS   ~CUIMiscThingsDef
+00430900   WARN RELOC_NAME: ??$TransferMap@KK@CPersistContext@@QAEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@@Z -> 00431242 labelled '_global::PersistTransfer_00431242'
+00430900   WARN RELOC_NAME: ??$Transfer@W4EMusicSetType@@@CPersistContext@@QAEXAAW4EMusicSetType@@@Z -> 0043119e labelled 'CEngineLightingManager::UpdateShadowScene'
+00430900   WARN RELOC_NAME: ??$TransferMap@JVCCharString@@@CPersistContext@@QAEXAAV?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@@Z -> 00431493 labelled '_global::PersistTransfer_00431493'
+00430900   RELOCATION_MATCH PASS   Transfer
+0047a9f0   SRC_FAIL         PASS   AddEntry
+00487570   WARN RELOC_NAME: ?Sprintf@CWideString@@QAAXPBGZZ -> 0099ba70 labelled 'CWideString::Format'
+00487570   RELOCATION_MATCH PASS   DrawFreeCamDebug
+00487dc0   RELOCATION_MATCH PASS   GetPControlledCreature
+00487b70   RELOCATION_MATCH PASS   GetPPlayerCharacterThing
+00487dd0   RELOCATION_MATCH PASS   PeekPControlledCreature
+0049e270   WARN SHARED_HEADER_AVAILABLE CThingManager
+0049e270   RELOCATION_MATCH PASS   Unload
+004fc6b0   RELOCATION_MATCH PASS   DrawIsPosInMap
+004ff750   RELOCATION_MATCH PASS   CreateRelevantPersonAndUpdateStats
+00501150   WARN RELOC_NAME: ??$__uninitialized_fill_n@PAVCLevelFiles@CObject@CLevelLoader@@IV123@@std@@YIPAVCLevelFiles@CObject@CLevelLoader@@PAV123@IABV123@ABU__false_type@0@@Z -> 00513570 labelled 'std::__uninitialized_fill_n<CLevelLoader::CObject::CLevelFiles*,unsigned int,CLevelLoader::CObject::CLevelFiles>'
+00501150   RELOCATION_MATCH PASS   LoadLevelFromFiles
+00522a20   RELOCATION_MATCH PASS   InitThingTypes
+00520670   RELOCATION_MATCH PASS   LoadHeroStateBinary
+00522720   RELOCATION_MATCH PASS   RuntimeLoadEntities
+00522530   RELOCATION_MATCH PASS   GetGamePersistentSaveData
+00521620   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@PAV123@@std@@YIPAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@PAV123@00ABU__false_type@0@@Z -> 005269b0 labelled 'std::__uninitialized_copy<NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *>'
+00521620   RELOCATION_MATCH PASS   SaveToGameStateBinary
+00531560   RELOCATION_MATCH PASS   GetDynamicSize
+0055b040   RELOCATION_MATCH PASS   GetDataFromDef
+005c36c2   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005c36c2   RELOCATION_MATCH PASS   PutSheatheObjectInCarrySlot
+005eb9e0   RELOCATION_MATCH PASS   FrameUpdate
+
+WINS: 23
+  004084b0 RELOCATION_MATCH CUserProfileManager::?GetMaxEffectsDetail@CUserProfileManager@@QBEMXZ
+  004085a0 RELOCATION_MATCH CUserProfileManager::?GetMaxMeshDetail@CUserProfileManager@@QBEMXZ
+  00408550 RELOCATION_MATCH CUserProfileManager::?GetMaxShadowDetail@CUserProfileManager@@QBEMXZ
+  00408500 RELOCATION_MATCH CUserProfileManager::?GetMaxTextureDetail@CUserProfileManager@@QBEMXZ
+  004317d0 RELOCATION_MATCH NUISystem::CUIMiscThingsDef::??1CUIMiscThingsDef@NUISystem@@UAE@XZ
+  00430900 RELOCATION_MATCH NUISystem::CUIMiscThingsDef::?Transfer@CUIMiscThingsDef@NUISystem@@UAEXAAVCPersistContext@@@Z
+  00487570 RELOCATION_MATCH CPlayer::?DrawFreeCamDebug@CPlayer@@QBEXPBVC2DBoxF@@ABVCFontBank@@@Z
+  00487dc0 RELOCATION_MATCH CPlayer::?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ
+  00487b70 RELOCATION_MATCH CPlayer::?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ
+  00487dd0 RELOCATION_MATCH CPlayer::?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ
+  0049e270 RELOCATION_MATCH CWorld::?Unload@CWorld@@QAEXXZ
+  004fc6b0 RELOCATION_MATCH CWorldMap::?DrawIsPosInMap@CWorldMap@@UBE_NABVC3DVector@@@Z
+  004ff750 RELOCATION_MATCH _global::?CreateRelevantPersonAndUpdateStats@@YIPAVCThingAICreature@@MMJJAAJ0ABVC3DVector@@ABVCThingAICreatureInit@@PAVCTCVillage@@AAV?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@4_N@Z
+  00501150 RELOCATION_MATCH CWorldMap::?LoadLevelFromFiles@CWorldMap@@IAEXJV?$CCountedPointer@VCAFile@@@@00W4ELoadType@1@@Z
+  00522a20 RELOCATION_MATCH CThingManager::?InitThingTypes@CThingManager@@QAEXXZ
+  00520670 RELOCATION_MATCH CThingManager::?LoadHeroStateBinary@CThingManager@@QAEXAAVCPersistContext@@@Z
+  00522720 RELOCATION_MATCH CThingManager::?RuntimeLoadEntities@CThingManager@@QAEXJABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@3@@Z
+  00522530 RELOCATION_MATCH NThingManager::CEntityRuntimePersistence::?GetGamePersistentSaveData@CEntityRuntimePersistence@NThingManager@@QBE_NJAAV?$CArray@E@@@Z
+  00521620 RELOCATION_MATCH NThingManager::CEntityRuntimePersistence::?SaveToGameStateBinary@CEntityRuntimePersistence@NThingManager@@QAEXAAVCPersistContext@@@Z
+  00531560 RELOCATION_MATCH NUISystem::CComponent::?GetDynamicSize@CComponent@NUISystem@@UBE?AVC2DVector@@XZ
+  0055b040 RELOCATION_MATCH NUISystem::CClickable::?GetDataFromDef@CClickable@NUISystem@@QAEXXZ
+  005c36c2 RELOCATION_MATCH _global::?PutSheatheObjectInCarrySlot@
+  005eb9e0 RELOCATION_MATCH CTCTavernGame::?FrameUpdate@CTCTavernGame@@UAEXXZ

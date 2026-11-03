@@ -1,0 +1,63 @@
+addr       parity           behav  name
+00d17470   WARN RELOC_NAME: ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z -> 00704580 labelled '_global::CCountedPointer_Set_00704580'
+00d17470   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00d17470   RELOCATION_MATCH PASS   SpawnBanditGangGrunts
+00d27460   WARN RELOC_NAME: ?CheckGuildEntering@CQ_EndGameScript@NScript@@QAEXXZ -> 00d27c00 labelled 'CV_ChapelOfEvilScript::EndMission'
+00d27460   RELOCATION_MATCH PASS   Main
+00d76030   RELOCATION_MATCH PASS   SpawnParty
+00defb10   WARN RELOC_NAME: ??$_Construct@VCScriptThing@@V1@@std@@YIXPAVCScriptThing@@ABV1@@Z -> 008ac120 labelled 'std::_Cons_val<std::allocator<CScriptThing>,CScriptThing,CScriptThing>'
+00defb10   RELOCATION_MATCH PASS   SwitchDoorsOnAndOff
+00e0a820   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00e0a820   RELOCATION_MATCH PASS   TurnToBalv
+00e13310   RELOCATION_MATCH PASS   EndMission
+00e247f0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z -> 00433530 labelled 'std::vector::std::vector::Reallocate'
+00e247f0   RELOCATION_MATCH PASS   Init
+00e377d0   RELOCATION_MATCH PASS   Main
+00e39b40   RELOCATION_MATCH PASS   Main
+00e5ebd0   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00e5ebd0   RELOCATION_MATCH PASS   MakeHenchmanComment
+00e63890   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00e63890   RELOCATION_MATCH PASS   Main
+00e8a2b0   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00e8a2b0   RELOCATION_MATCH PASS   FightWarmupRounds
+00e9b690   RELOCATION_MATCH PASS   DoMission
+00e92a50   RELOCATION_MATCH PASS   Main
+00ee42a0   RELOCATION_MATCH PASS   Init
+00ef71e0   RELOCATION_MATCH PASS   Main
+00ef7be0   RELOCATION_MATCH PASS   Main
+00ef80a0   RELOCATION_MATCH PASS   Main
+00f29530   RELOCATION_MATCH PASS   ~CScriptDef
+0121f280   WARN RELOC_CONFLICT: _$E2 -> 01229df0 here, 01228930 in landed 01219f00
+0121f280   WARN RELOC_NAME: _$E2 -> 01229df0 labelled 'CFontBankStateBlock::CreateCRC'
+0121f280   RELOCATION_MATCH PASS   SymbolStrings''
+0121e3a0   WARN RELOC_CONFLICT: _$E2 -> 012294d0 here, 01228930 in landed 01219f00
+0121e3a0   RELOCATION_MATCH PASS   $E_InstructionsText
+0121e210   WARN RELOC_CONFLICT: _$E2 -> 012294a0 here, 01228930 in landed 01219f00
+0121e210   WARN RELOC_NAME: _$E2 -> 012294a0 labelled 'CFontBankStateBlock::CreateCRC'
+0121e210   RELOCATION_MATCH PASS   CourtingAdviceGroupNames''
+0121ef70   RELOCATION_MATCH PASS   $E_OPINION_SOURCE_DEF_NAME
+
+WINS: 23
+  00d17470 RELOCATION_MATCH NScript::CQ_BountyHuntScript::?SpawnBanditGangGrunts@CQ_BountyHuntScript@NScript@@QAEXVCCharString@@@Z
+  00d27460 RELOCATION_MATCH NScript::CQ_EndGameScript::?Main@CQ_EndGameScript@NScript@@UAEXXZ
+  00d76030 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::?SpawnParty@CQ_HangingTreeGoodScript@NScript@@QAEXJAAVCScriptThing@@@Z
+  00defb10 RELOCATION_MATCH NScript::CQ_SecretPassageScript::?SwitchDoorsOnAndOff@CQ_SecretPassageScript@NScript@@QAEXXZ
+  00e0a820 RELOCATION_MATCH NScript::CQ_TraderEscortScript::?TurnToBalv@CQ_TraderEscortScript@NScript@@QAEXVCScriptThing@@@Z
+  00e13310 RELOCATION_MATCH NScript::CQ_WaspBossScript::?EndMission@CQ_WaspBossScript@NScript@@QAEXXZ
+  00e247f0 RELOCATION_MATCH NScript::CQR_EscortTraderScript::?Init@CQR_EscortTraderScript@NScript@@UAEXXZ
+  00e377d0 RELOCATION_MATCH NScript::CV_AssassinAttacksScript::?Main@CV_AssassinAttacksScript@NScript@@UAEXXZ
+  00e39b40 RELOCATION_MATCH NScript::CV_BordelloScript::?Main@CV_BordelloScript@NScript@@UAEXXZ
+  00e5ebd0 RELOCATION_MATCH NScript::CV_BodyGuardScript::?MakeHenchmanComment@CV_BodyGuardScript@NScript@@QAE_NABVCCharString@@JW4EHENCHMAN_COMMENT@12@ABVCScriptThing@@@Z
+  00e63890 RELOCATION_MATCH NScript::CV_ChickenKickingScript::CSpectator::?Main@CSpectator@CV_ChickenKickingScript@NScript@@EAEXXZ
+  00e8a2b0 RELOCATION_MATCH NScript::CV_FisticuffsClubScript::CTyler::?FightWarmupRounds@CTyler@CV_FisticuffsClubScript@NScript@@AAEXXZ
+  00e9b690 RELOCATION_MATCH NScript::CV_HeroDuelScript::?DoMission@CV_HeroDuelScript@NScript@@QAEXXZ
+  00e92a50 RELOCATION_MATCH NScript::CV_HiddenBootyScript::?Main@CV_HiddenBootyScript@NScript@@UAEXXZ
+  00ee42a0 RELOCATION_MATCH NScript::CV_TourGuideScript::?Init@CV_TourGuideScript@NScript@@UAEXXZ
+  00ef71e0 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CArcherMan::?Main@CArcherMan@CPersonalScript_EmptyScript@NScript@@EAEXXZ
+  00ef7be0 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CChatter1::?Main@CChatter1@CPersonalScript_EmptyScript@NScript@@EAEXXZ
+  00ef80a0 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CChatter2::?Main@CChatter2@CPersonalScript_EmptyScript@NScript@@EAEXXZ
+  00f29530 RELOCATION_MATCH CScriptDef::??1CScriptDef@@UAE@XZ
+  0121f280 RELOCATION_MATCH CTCOracleMinigame::_$E1
+  0121e3a0 RELOCATION_MATCH CTCTrophy::_$E1
+  0121e210 RELOCATION_MATCH CTCWife::_$E1
+  0121ef70 RELOCATION_MATCH NFire::_$E1

@@ -91,6 +91,7 @@ class CThingPlayerCreature;                                     // chunk 709: Ge
 enum EPlayerMode;                                               // MS forward enum (2026-11-03): GetCurrentMode / AddMode
 class CThing;                                                   // chunk 718: GetPPlayerCharacterThing's return type
 class C2DBoxF; class CFontBank;                               // chunk 718: DrawFreeCamDebug's parameter types
+#include "engine/CPlayerModeInfo.h"                             // Codex pass 13: PlayerModeInfo's element type (16-byte member pointers)
 #ifdef FABLE_RETAIL_CCAMERA
 #include "engine/CCamera.h"                                     // chunk 718: the three camera members' real type (below)
 #endif
@@ -128,6 +129,105 @@ public:
     const CThingPlayerCreature* PeekPControlledCreature() const; // 0x00487DD0
     // Retail opt-in (chunk 718): Ego_r.pdb / FableWin.pdb ?DrawFreeCamDebug@CPlayer@@QBEXPBVC2DBoxF@@ABVCFontBank@@@Z (retail 0x00487570).
     void DrawFreeCamDebug(const C2DBoxF* box, const CFontBank& font) const;   // 0x00487570
+    // Retail opt-in (Codex pass 13, row 0x0121AF20 = the PlayerModeInfo dynamic initialiser `_$E1`): the private static mode table
+    // and its 94 private ?Init/Uninit<Mode>@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z members (Ego_r + FableWin).
+private:
+    static const CPlayerModeInfo PlayerModeInfo[MAX_NO_PLAYER_MODES];
+    void InitModeControlCreature(EPlayerMode,CProcessedInput*);
+    void UninitModeControlCreature(EPlayerMode,CProcessedInput*);
+    void InitModeZTarget(EPlayerMode,CProcessedInput*);
+    void UninitModeZTarget(EPlayerMode,CProcessedInput*);
+    void InitModeDead(EPlayerMode,CProcessedInput*);
+    void UninitModeDead(EPlayerMode,CProcessedInput*);
+    void InitModeNavigateInventory(EPlayerMode,CProcessedInput*);
+    void UninitModeNavigateInventory(EPlayerMode,CProcessedInput*);
+    void InitModeNavigateInventoryClothing(EPlayerMode,CProcessedInput*);
+    void UninitModeNavigateInventoryClothing(EPlayerMode,CProcessedInput*);
+    void InitModeNavigateInventoryWeapons(EPlayerMode,CProcessedInput*);
+    void UninitModeNavigateInventoryWeapons(EPlayerMode,CProcessedInput*);
+    void InitModeNavigateInventoryAbilitiesScreen(EPlayerMode,CProcessedInput*);
+    void UninitModeNavigateInventoryAbilitiesScreen(EPlayerMode,CProcessedInput*);
+    void InitModeNavigateInventoryMapScreen(EPlayerMode,CProcessedInput*);
+    void UninitModeNavigateInventoryMapScreen(EPlayerMode,CProcessedInput*);
+    void InitModeNavigateInventoryMagicScreen(EPlayerMode,CProcessedInput*);
+    void UninitModeNavigateInventoryMagicScreen(EPlayerMode,CProcessedInput*);
+    void InitModeNavigateInventoryStatsScreen(EPlayerMode,CProcessedInput*);
+    void UninitModeNavigateInventoryStatsScreen(EPlayerMode,CProcessedInput*);
+    void InitModeNavigateInventoryExperienceScreen(EPlayerMode,CProcessedInput*);
+    void UninitModeNavigateInventoryExperienceScreen(EPlayerMode,CProcessedInput*);
+    void InitModeNavigateInventoryTradeScreen(EPlayerMode,CProcessedInput*);
+    void UninitModeNavigateInventoryTradeScreen(EPlayerMode,CProcessedInput*);
+    void InitModeNavigateInventoryQuestsScreen(EPlayerMode,CProcessedInput*);
+    void UninitModeNavigateInventoryQuestsScreen(EPlayerMode,CProcessedInput*);
+    void InitModeClickPastText(EPlayerMode,CProcessedInput*);
+    void UninitModeClickPastText(EPlayerMode,CProcessedInput*);
+    void InitModeYesNoQuestion(EPlayerMode,CProcessedInput*);
+    void UninitModeYesNoQuestion(EPlayerMode,CProcessedInput*);
+    void InitModeFirstPerson(EPlayerMode,CProcessedInput*);
+    void UninitModeFirstPerson(EPlayerMode,CProcessedInput*);
+    void InitModeFreezeControls(EPlayerMode,CProcessedInput*);
+    void UninitModeFreezeControls(EPlayerMode,CProcessedInput*);
+    void InitModeSpecialAbilityFreezeControls(EPlayerMode,CProcessedInput*);
+    void UninitModeSpecialAbilityFreezeControls(EPlayerMode,CProcessedInput*);
+    void InitModeControlFreeCamera(EPlayerMode,CProcessedInput*);
+    void UninitModeControlFreeCamera(EPlayerMode,CProcessedInput*);
+    void InitModeLookThroughWindow(EPlayerMode,CProcessedInput*);
+    void UninitModeLookThroughWindow(EPlayerMode,CProcessedInput*);
+    void InitModeRebootGame(EPlayerMode,CProcessedInput*);
+    void UninitModeRebootGame(EPlayerMode,CProcessedInput*);
+    void InitModeFirstPersonTargeting(EPlayerMode,CProcessedInput*);
+    void UninitModeFirstPersonTargeting(EPlayerMode,CProcessedInput*);
+    void InitModeNavigateInGameMenu(EPlayerMode,CProcessedInput*);
+    void UninitModeNavigateInGameMenu(EPlayerMode,CProcessedInput*);
+    void InitModeControlSpirit(EPlayerMode,CProcessedInput*);
+    void UninitModeControlSpirit(EPlayerMode,CProcessedInput*);
+    void InitModeUseProjectileWeapon(EPlayerMode,CProcessedInput*);
+    void UninitModeUseProjectileWeapon(EPlayerMode,CProcessedInput*);
+    void InitModeTavernGame(EPlayerMode,CProcessedInput*);
+    void UninitModeTavernGame(EPlayerMode,CProcessedInput*);
+    void InitModeCutScene(EPlayerMode,CProcessedInput*);
+    void UninitModeCutScene(EPlayerMode,CProcessedInput*);
+    void InitModeChargeQuickAccess(EPlayerMode,CProcessedInput*);
+    void UninitModeChargeQuickAccess(EPlayerMode,CProcessedInput*);
+    void InitModeFishing(EPlayerMode,CProcessedInput*);
+    void UninitModeFishing(EPlayerMode,CProcessedInput*);
+    void InitModeDigging(EPlayerMode,CProcessedInput*);
+    void UninitModeDigging(EPlayerMode,CProcessedInput*);
+    void InitModeParalysed(EPlayerMode,CProcessedInput*);
+    void UninitModeParalysed(EPlayerMode,CProcessedInput*);
+    void InitModeBoastUI(EPlayerMode,CProcessedInput*);
+    void UninitModeBoastUI(EPlayerMode,CProcessedInput*);
+    void InitModeBerserk(EPlayerMode,CProcessedInput*);
+    void UninitModeBerserk(EPlayerMode,CProcessedInput*);
+    void InitModeUseProjectileWeaponThirdPerson(EPlayerMode,CProcessedInput*);
+    void UninitModeUseProjectileWeaponThirdPerson(EPlayerMode,CProcessedInput*);
+    void InitModeChargeUpWillSpell(EPlayerMode,CProcessedInput*);
+    void UninitModeChargeUpWillSpell(EPlayerMode,CProcessedInput*);
+    void InitModeQuickAccessMenu(EPlayerMode,CProcessedInput*);
+    void UninitModeQuickAccessMenu(EPlayerMode,CProcessedInput*);
+    void InitModeQuestCompletionUI(EPlayerMode,CProcessedInput*);
+    void UninitModeQuestCompletionUI(EPlayerMode,CProcessedInput*);
+    void InitModeCreditsUI(EPlayerMode,CProcessedInput*);
+    void UninitModeCreditsUI(EPlayerMode,CProcessedInput*);
+    void InitModeBetting(EPlayerMode,CProcessedInput*);
+    void UninitModeBetting(EPlayerMode,CProcessedInput*);
+    void InitModeLightning(EPlayerMode,CProcessedInput*);
+    void UninitModeLightning(EPlayerMode,CProcessedInput*);
+    void InitModeOracleMinigame(EPlayerMode,CProcessedInput*);
+    void UninitModeOracleMinigame(EPlayerMode,CProcessedInput*);
+    void InitModeFireheartMinigame(EPlayerMode,CProcessedInput*);
+    void UninitModeFireheartMinigame(EPlayerMode,CProcessedInput*);
+    void InitModeLiveGUI(EPlayerMode,CProcessedInput*);
+    void UninitModeLiveGUI(EPlayerMode,CProcessedInput*);
+    void InitModeConsole(EPlayerMode,CProcessedInput*);
+    void UninitModeConsole(EPlayerMode,CProcessedInput*);
+    void InitModeTakePhotojournalScreenshot(EPlayerMode,CProcessedInput*);
+    void UninitModeTakePhotojournalScreenshot(EPlayerMode,CProcessedInput*);
+    void InitModePCProjectileWeaponThirdPersonAiming(EPlayerMode,CProcessedInput*);
+    void UninitModePCProjectileWeaponThirdPersonAiming(EPlayerMode,CProcessedInput*);
+    void InitModeViewHero(EPlayerMode,CProcessedInput*);
+    void UninitModeViewHero(EPlayerMode,CProcessedInput*);
+public:
 #endif // FABLE_RETAIL_PLAYER
     void*                                                        __vftable; // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                                                _pad_0x04[0x4]; // +0x04

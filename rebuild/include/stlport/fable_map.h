@@ -161,6 +161,28 @@ void _Rb_tree<K,V,KeyOfValue,Compare,A>::_M_erase(_Rb_tree_node<V>* x) {
         x=y;
     }
 }
+#ifdef FABLE_RETAIL_STLP_MAP
+// Retail branch (Codex pass 13, row 0x00501450): the STLport 4.6 _tree.c insert_unique(const V&) body, visible as in every
+// retail TU that includes <map> (STLport compiles _tree.c into the header unless _STLP_LINK_TIME_INSTANTIATION).
+template<class K,class V,class KeyOfValue,class Compare,class A>
+pair<_Rb_tree_iterator<V,_Nonconst_traits<V> >,bool> _Rb_tree<K,V,KeyOfValue,Compare,A>::insert_unique(const V& v) {
+    _Link_type y=this->_M_header._M_data;
+    _Link_type x=_M_root();
+    bool comp=true;
+    while(x!=0) {
+        y=x;
+        comp=_M_key_compare(KeyOfValue()(v),_S_key(x));
+        x=comp?_S_left(x):_S_right(x);
+    }
+    iterator j=iterator(y);
+    if(comp)
+        if(j==begin()) return pair<iterator,bool>(_M_insert(y,y,v),true);
+        else --j;
+    if(_M_key_compare(_S_key(j._M_node),KeyOfValue()(v)))
+        return pair<iterator,bool>(_M_insert(x,y,v),true);
+    return pair<iterator,bool>(j,false);
+}
+#endif
 template<class K,class V,class Compare=less<K>,class A=allocator<pair<const K,V> > >
 class map {
 public:typedef pair<const K,V> value_type;

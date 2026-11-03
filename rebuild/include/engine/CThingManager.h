@@ -28,6 +28,8 @@ public:
     // Retail (chunk 718, row 0x0089E190; the FABLE_RETAIL_CTHINGMANAGER_PEEK opt-in folded into the retail-only class at landing): Ego_r.pdb / FableWin.pdb ?PeekPThingWithUID@CThingManager@@QBEPBVCThing@@_K@Z,
     // the landed body 0x0051ED60 (the only spelling bound to it). A declaration only: no layout change.
     const CThing* PeekPThingWithUID(unsigned __int64 uid) const;        // 0x0051ED60
+    // Codex pass 13 (row 0x004FB990): FableWin ?GetCurrentThingUID@CThingManager@@QBE_KXZ, inline in retail (reads CurrentUniqueID).
+    unsigned __int64 GetCurrentThingUID() const { return CurrentUniqueID; }
 protected:
     virtual void OnCreateClass(CClass&);
     virtual void OnDeleteClass(CClass&);

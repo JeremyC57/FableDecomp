@@ -1,0 +1,50 @@
+addr       parity           behav  name
+004fb990   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+004fb990   WARN RELOC_ALIAS: _strstr -> 00bfeb3a is the import thunk 'MSVCR71.DLL::strstr'
+004fb990   RELOCATION_MATCH PASS   SaveMapsToString
+004fd040   WARN RELOC_NAME: ?GFFloatToCharString@@YI?AVCCharString@@NJ@Z -> 009a08b0 labelled 'CCharString::FormatDouble'
+004fd040   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+004fd040   WARN RELOC_ALIAS: _strstr -> 00bfeb3a is the import thunk 'MSVCR71.DLL::strstr'
+004fd040   RELOCATION_MATCH PASS   SaveRegionsToString
+009bb110   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+009bb110   RELOCATION_MATCH PASS   TransferVectorLoadText
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@W4EGameflowPosition@@@CPersistContext@@KI?AW4EGameflowPosition@@XZ -> 00cdca40 labelled 'sub_00cdca40'
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@_N@CPersistContext@@KI_NXZ -> 0040e240 labelled 'sub_0040e240'
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@J@CPersistContext@@KIJXZ -> 0040e160 labelled '_global::ReturnZero_ret0_0040e160'
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@W4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@@CPersistContext@@KI?AW4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@XZ -> 00cdca50 labelled 'sub_00cdca50'
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@W4EPlaceInHeroSouls@@@CPersistContext@@KI?AW4EPlaceInHeroSouls@@XZ -> 00cdca60 labelled 'sub_00cdca60'
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@K@CPersistContext@@KIKXZ -> 0040e260 labelled 'sub_0040e260'
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@M@CPersistContext@@KIMXZ -> 0040e250 labelled '_global::GetConstFloat_0_0040e250'
+00cdc070   RELOCATION_MATCH PASS   OnPersist
+00cde420   WARN RELOC_NAME: ?Alloc@CArcheryCompetitionSignpost@CPersonalScript_GlobalThingsScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z -> 00cdeb40 labelled '_global::CreateArcheryCompetitionSignpost'
+00cde420   RELOCATION_MATCH PASS   Main
+00d1d100   RELOCATION_MATCH PASS   Main
+00d1eb80   RELOCATION_MATCH PASS   Main
+00d43450   RELOCATION_MATCH PASS   Main
+00d51520   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00d51520   RELOCATION_MATCH PASS   Main
+00d7e0c0   RELOCATION_MATCH PASS   Main
+
+WINS: 10
+  004fb990 RELOCATION_MATCH CWorldMap::?SaveMapsToString@CWorldMap@@IAEXAAVCCharString@@@Z
+  004fd040 RELOCATION_MATCH CWorldMap::?SaveRegionsToString@CWorldMap@@IAEXAAVCCharString@@@Z
+  009bb110 RELOCATION_MATCH CPersistContext::?TransferVectorLoadText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableVectorGenericType@@@Z
+  00cdc070 RELOCATION_MATCH NScript::CQ_SunnyvaleMasterData::?OnPersist@CQ_SunnyvaleMasterData@NScript@@UAEXAAVCPersistContext@@@Z
+  00cde420 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::?Main@CPersonalScript_GlobalThingsScript@NScript@@UAEXXZ
+  00d1d100 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::?Main@CQ_BreakSiegeScript@NScript@@UAEXXZ
+  00d1eb80 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CGuardToHelpDefend::?Main@CGuardToHelpDefend@CQ_BreakSiegeScript@NScript@@EAEXXZ
+  00d43450 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CWillDummy::?Main@CWillDummy@CQ_GuildTrainingScript@NScript@@EAEXXZ
+  00d51520 RELOCATION_MATCH NScript::CQ_GuildTrainingPreMeleeScript::?Main@CQ_GuildTrainingPreMeleeScript@NScript@@UAEXXZ
+  00d7e0c0 RELOCATION_MATCH NScript::CQ_HeroSoulsArenaScript::CHOHGuard::?Main@CHOHGuard@CQ_HeroSoulsArenaScript@NScript@@EAEXXZ
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  CWorldMap_SaveMapsToString_004fb990
+  CWorldMap_SaveRegionsToString_004fd040
+  CPersistContext_TransferVectorLoadText_009bb110
+  NScriptCQSunnyvaleMasterData_OnPersist_00cdc070
+  NScriptCPersonalScriptGlobalThingsScript_Main_00cde420
+  NScriptCQBreakSiegeScript_Main_00d1d100
+  NScriptCQBreakSiegeScriptCGuardToHelpDefend_Main_00d1eb80
+  NScriptCQGuildTrainingScriptCWillDummy_Main_00d43450
+  NScriptCQGuildTrainingPreMeleeScript_Main_00d51520
+  NScriptCQHeroSoulsArenaScriptCHOHGuard_Main_00d7e0c0

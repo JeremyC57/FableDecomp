@@ -1,0 +1,56 @@
+CHANGED engine/C3DVector.h default=same[36] FABLE_RETAIL_C3DVECTOR=DIFF[38]
+CHANGED engine/CCounter.h default=same[12] FABLE_RETAIL_CCOUNTER=DIFF[12]
+CHANGED engine/CDefString.h default=same[126](cpp-err) FABLE_RETAIL_CBASICSTRING_EQ_OUTOFLINE=same[126](cpp-err) FABLE_RETAIL_CCHARSTRING=same[154](cpp-err) FABLE_RETAIL_CDEFSTRINGTABLE=same[131] FABLE_RETAIL_CDEFSTRING_OUTOFLINE_CONVERSION=DIFF[126](cpp-err)
+CHANGED engine/CEntityScriptBinding.h default=same[0](cpp-err) FABLE_RETAIL_CBASICSTRING_EQ_OUTOFLINE=same[0](cpp-err) FABLE_RETAIL_CENTITYSCRIPTBINDING_FORCEINLINE_CTOR=same[0](cpp-err) FABLE_RETAIL_NSCRIPT=same[96]
+NEW    engine/CMarkTestScriptsScript.h
+NEW    engine/COracleMinigameTestScript.h
+CHANGED engine/CParsedItem.h default=same[102] FABLE_RETAIL_CPARSEDITEM=DIFF[102]
+CHANGED engine/CPersistContext.h default=same[53] FABLE_RETAIL_CPERSISTCONTEXT=DIFF[61]
+NEW    engine/CPersistContext_TransferableVectorGenericType.h
+NEW    engine/CPersonalScript_GlobalThingsScript.h
+NEW    engine/CPersonalScript_alextestScript.h
+CHANGED engine/CPlayer.h default=same[311] FABLE_RETAIL_CCAMERA=same[311] FABLE_RETAIL_CINTELLIGENTPOINTER=same[311] FABLE_RETAIL_PLAYER=DIFF[324]
+NEW    engine/CPlayerModeInfo.h
+NEW    engine/CQS_GuardianSisterInfo2_SisterInBanditCampScript.h
+NEW    engine/CQ_ArenaScript.h
+NEW    engine/CQ_BreakSiegeScript.h
+CHANGED engine/CQ_GuildTrainingPreMeleeScript.h default=same[55] FABLE_RETAIL_CQ_GUILDTRAININGPREMELEESCRIPT=DIFF[55](cpp-err)
+NEW    engine/CQ_GuildTrainingScript.h
+NEW    engine/CQ_HeroSoulsArenaScript.h
+NEW    engine/CQ_OakValeBanditRaidScript.h
+NEW    engine/CQ_OpeningGraveyardSecretPassageScript.h
+NEW    engine/CQ_PrisonEscapeRescueMotherScript.h
+NEW    engine/CQ_RansomVictimChiefsHouseScript.h
+NEW    engine/CQ_RansomVictimScript.h
+NEW    engine/CQ_SummoningTheShipScript.h
+CHANGED engine/CQ_SunnyvaleMasterData.h default=DIFF[618]
+NEW    engine/CQ_TraderEscortScript.h
+CHANGED engine/CRGBColour.h default=same[25] FABLE_RETAIL_CRGBCOLOUR=DIFF[26]
+CHANGED engine/CRegion.h default=same[55] FABLE_RETAIL_CREGION=DIFF[117](cpp-err)
+CHANGED engine/CScriptGameResourceObjectMovieBase.h default=same[0](cpp-err) FABLE_RETAIL_BASE_OBJECT=same[45] FABLE_RETAIL_CBASICSTRING_EQ_OUTOFLINE=same[0](cpp-err) FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR=same[0](cpp-err) FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_DTOR=same[0](cpp-err)
+CHANGED engine/CScriptGameResourceObjectScriptedThingBase.h default=same[24] FABLE_RETAIL_BASE_OBJECT=same[140] FABLE_RETAIL_CBASICSTRING_EQ_OUTOFLINE=same[24] FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTSCRIPTEDTHINGBASE_OUTOFLINE_ASSIGN=same[24] FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTSCRIPTEDTHINGBASE_OUTOFLINE_CTOR=same[24] FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTSCRIPTEDTHINGBASE_OUTOFLINE_DTOR=same[24]
+CHANGED engine/CScriptThing.h default=same[23] FABLE_RETAIL_CSCRIPTTHING_IMPLICIT_ASSIGNMENT=same[23] FABLE_RETAIL_CSCRIPTTHING_IMPLICIT_COPY=same[23] FABLE_RETAIL_NSCRIPT=same[173]
+CHANGED engine/CStringParser.h default=same[34] FABLE_RETAIL_CSTRINGPARSER=DIFF[489]
+NEW    engine/CTestQuestCard1Script.h
+CHANGED engine/CThingManager.h default=DIFF[784] FABLE_RETAIL_CCLASSFACTORY=DIFF[798] FABLE_RETAIL_CTHINGMANAGER_PEEK=DIFF[784]
+NEW    engine/CV_ArcheryCompetitionScript.h
+NEW    engine/CV_BanditTollScript.h
+NEW    engine/CV_DemonDoorsScript.h
+NEW    engine/CV_GhostGrannyNecklaceScript.h
+NEW    engine/CV_LostTraderScript.h
+NEW    engine/CV_MurderTwistScript.h
+NEW    engine/CV_ParanoidWhispersScript.h
+NEW    engine/CV_SickChildScript.h
+NEW    engine/CV_TravellingHeroesScript.h
+CHANGED engine/CWideScreenMagicPauseEntities.h default=same[8](cpp-err) FABLE_RETAIL_CBASICSTRING_EQ_OUTOFLINE=same[8](cpp-err) FABLE_RETAIL_CWIDESCREENMAGICPAUSEENTITIES_FORCEINLINE_CTOR=DIFF[8](cpp-err)
+CHANGED engine/CWorldMap.h default=same[96] FABLE_RETAIL_CWORLDMAP=DIFF[578]
+NEW    engine/EPlayerMode.h
+CHANGED engine/NHeroInformationScreens_CBase.h default=DIFF[108]
+NEW    engine/fable_script_animation_defaults.h
+NEW    engine/fable_script_cutscene.h
+NEW    engine/fable_script_def_global.h
+NEW    engine/fable_script_distance.h
+NEW    engine/fable_script_fade.h
+NEW    engine/fable_script_text.h
+CHANGED fable_string.h default=same[96] FABLE_RETAIL_CBASICSTRING_EQ_OUTOFLINE=same[96] FABLE_RETAIL_CCHARSTRING=DIFF[124] FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ=same[96] FABLE_RETAIL_CWIDESTRING=same[580]
+CHANGED stlport/fable_map.h default=same[567] FABLE_RETAIL_STLP_MAP=DIFF[568]

@@ -6,7 +6,7 @@
 #include "engine/CBaseClass.h"
 #include "fable_string.h"
 #include "stlport/fable_containers.h"
-class CParsedItem;
+#include "engine/CParsedItem.h"
 // Layout: original pointer boundaries, size8, class keyV.
 class CStringParserCommentBoundaries {public:const char* PStart;const char* PEnd;};
 class CStringParser : public CBaseClass {
@@ -33,6 +33,18 @@ public:
     void Init(const char*,void (__fastcall*)(const CCharString&),const CCharString&,long);
     void SetStringPos(unsigned long);
     long SkipWhitespace();
+    // Codex pass 13 (row 0x009BB110 and its siblings): Ego_r / FableWin ??0CStringParser@@QAE@XZ, ??0CStringParser@@QAE@PBDP6IXABVCCharString@@@Z1J@Z,
+    // ?Init@CStringParser@@QAEXABVCCharString@@P6IX0@Z0J@Z, ?PeekNextItemType@..., ?ReadNextItem@..., ?ReadAsInteger@..., ?NextItemExists@...,
+    // ?ReadAsStringUntilWhitespace@... (out of line); ?GetLine@CStringParser@@QBEKXZ inline.
+    CStringParser();
+    CStringParser(const char*,void (__fastcall*)(const CCharString&)=0,const CCharString& filename=CCharString(""),long baseLineOffset=0);
+    void Init(const CCharString&,void (__fastcall*)(const CCharString&),const CCharString&,long);
+    unsigned long GetLine() const { return CursorPos.Line; }
+    EParsedItemType PeekNextItemType();
+    bool ReadNextItem(CParsedItem&);
+    long ReadAsInteger();
+    bool NextItemExists();
+    CCharString ReadAsStringUntilWhitespace();
     CCharString ReadAsSymbol();
     CCharString ReadAsString();
     class CCursorPos {

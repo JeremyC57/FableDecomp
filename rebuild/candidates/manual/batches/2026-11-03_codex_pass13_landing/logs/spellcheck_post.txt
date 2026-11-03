@@ -1,0 +1,72 @@
+NEW 0040e160 ??$GetDefaultVal@J@CPersistContext@@KIJXZ 
+    others: {} 
+    landed leaf: [('CEngineInternalPrimitiveBase_AddChildPrimitive_0040e160.cpp', 'AddChildPrimitive')]
+NEW 0040e250 ??$GetDefaultVal@M@CPersistContext@@KIMXZ 
+    others: {} 
+    landed leaf: [('CAIStateGroupEnemyCreatureBase_GetCombatMinDistance_0040e250.cpp', 'GetCombatMinDistance')]
+NEW 0041a060 ?GetLevelDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ 
+    others: {'?GetLevelsDirectory_0041a060@@YI?AVCWideString@@XZ': ['0049d610'], '?GetLevelsDirectory@@YI?AVCWideString@@XZ': ['00416953']} 
+    landed leaf: []
+NEW 00633670 ?UninitModeYesNoQuestion@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z 
+    others: {} 
+    landed leaf: [('CPlayer_UninitModeClickPastText_00633670.cpp', 'UninitModeClickPastText')]
+NEW 00633830 ?UninitModeParalysed@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z 
+    others: {} 
+    landed leaf: [('CPlayer_UninitModeParalysed_00633830.cpp', 'UninitModeParalysed')]
+NEW 00633880 ?UninitModeBoastUI@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z 
+    others: {} 
+    landed leaf: [('CPlayer_UninitModeBoastUI_00633880.cpp', 'UninitModeBoastUI')]
+NEW 00633a60 ?UninitModeQuickAccessMenu@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z 
+    others: {} 
+    landed leaf: [('CPlayer_UninitModeQuickAccessMenu_00633a60.cpp', 'UninitModeQuickAccessMenu')]
+NEW 00633bb0 ?UninitModeOracleMinigame@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z 
+    others: {} 
+    landed leaf: [('CPlayer_UninitModeOracleMinigame_00633bb0.cpp', 'UninitModeOracleMinigame')]
+NEW 006bbf70 ?GetNameGraphicOffset@CRegion@@QBE?BVC2DVector@@XZ 
+    others: {} 
+    landed leaf: [('CRegion_GetNameGraphicOffset_006bbf70.cpp', 'GetNameGraphicOffset')]
+NEW 0099e5f0 ?SaveToFile@CCharString@@QBEXAAVCAFile@@@Z 
+    others: {'?SaveToFile@CCharString@@QAEXPAVCAFile@@@Z': ['004fe030'], '?SaveToFile@CCharString@@QAEXABV1@@Z': ['00ae8810']} 
+    landed leaf: []
+NEW 0099f930 ?GFUHUGEToCharString@@YI?AVCCharString@@_K@Z 
+    others: {'??0CCharString@@QAE@_K@Z': ['0044b800']} 
+    landed leaf: []
+NEW 009e2590 ?TransferIn@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCStringParser@@AAJ@Z 
+    others: {'?ReadInteger@N006d41f0@@YIXPAUCPersistContext@1@PAUParser@1@PAI@Z': ['006d41f0'], '?TransferIn_009e2590@@YIXPAVCPersistContext@@JPAJ@Z': ['004059f0'], '?TransferInLong_009e2590@@YIXPAVCPersistContext@@PAVCStringParser@@PAJ@Z': ['00463334'], '?TransferInLong@@YIXPAVCPersistContext@@PAVCStringParser@@PAJ@Z': ['004aa3f0'], '?TransferEnumIn_009e2590@@YIXPAVCPersistContext@@PAVCStringParser@@PAJ@Z': ['0057f6e9'], '?PC_Transfer@@YIXPAVCPersistContext@@HPAH@Z': ['0057f93e'], '?Persist_ReadValue@@YIXPAVCPersistContext@@PAVCStringParser@@PAX@Z': ['005d8167'], '?TransferIn@@YIXPAVCPersistContext@@PAVCStringParser@@PAJ@Z': ['005dc3c0'], '?PersistTransferInLong@@YIXAAVCPersistContext@@AAVCStringParser@@PAJ@Z': ['006ba480'], '?TransferInLong@@YIXAAVCPersistContext@@AAVCStringParser@@PAJ@Z': ['007ad7b0'], '?PersistByteHelper@@YIEPAVCPersistContext@@PAVCStringParser@@PAE@Z': ['009e9080']} 
+    landed leaf: [('global_TransferIn_009e2590.cpp', '?TransferIn@@YIXPAVCPersistContext@@')]
+NEW 00cbe09a ??0CWideScreenMagicPauseEntities@@QAE@AAVCGameScriptInterfaceBase@@@Z 
+    others: {'??0CWideScreenMagicPauseEntities@@QAE@PAVCGameScriptInterfaceBase@@@Z': ['00cbf6dc']} 
+    landed leaf: [('CWideScreenMagicPauseEntities_CWideScreenMagicPauseEntities_00cbe09a.cpp', '??0CWideScreenMagicPauseEntities@@QAE@PAVCGameScriptInterfaceBase@@@Z')]
+NEW 00cdcc20 ??$Transfer@W4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@@CPersistContext@@QAEXPBDAA 
+    others: {} 
+    landed leaf: [('CPersistContext_TransferEArcheryState_00cdcc20.cpp', 'Transfer')]
+NEW 00cdcdd0 ??$Transfer@W4EPlaceInHeroSouls@@@CPersistContext@@QAEXPBDAAW4EPlaceInHeroSouls@@ABW41@@Z 
+    others: {} 
+    landed leaf: [('CPersistContext_TransferEHeroSoulsPosition_00cdcdd0.cpp', 'Transfer')]
+NEW 00cdeb40 ?Alloc@CArcheryCompetitionSignpost@CPersonalScript_GlobalThingsScript@NScript@@SI?AV?$CCou 
+    others: {} 
+    landed leaf: [('global_CreateArcheryCompetitionSignpost_00cdeb40.cpp', '?CreateArcheryCompetitionSignpost@')]
+NEW 00df2090 ?FollowHero@CSTS_BriarRose@CQ_SummoningTheShipScript@NScript@@AAEX_N@Z 
+    others: {} 
+    landed leaf: [('CScript00df2090_Init_00df2090.cpp', 'Init')]
+NEW 00df20f0 ?MakeBriarRoseComment@CQ_SummoningTheShipScript@NScript@@QAE_NABVCCharString@@@Z 
+    others: {'?MakeBriarRoseComment@CQ_SummoningTheShipScript@@QAE_NABVCCharString@@@Z': ['00df2f90']} 
+    landed leaf: []
+NEW 00e3e320 ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ 
+    others: {} 
+    landed leaf: [('NScriptCVBordelloScript_IsHeroDressedAsLady_00e3e320.cpp', 'IsHeroDressedAsLady')]
+NEW 00e3e6b0 ?GetHeroStatusTextTag@CV_BordelloScript@NScript@@QAE?AVCCharString@@XZ 
+    others: {} 
+    landed leaf: [('NScriptCVBordelloScript_GetHeroStatusTextTag_00e3e6b0.cpp', 'GetHeroStatusTextTag')]
+NEW 00e6f040 ?FadeOutFaceAndOpenDoor@CV_DemonDoorsScript@NScript@@QAEXABVCScriptThing@@ABVCCharString@@ 
+    others: {'?FadeOutFaceAndOpenDoor@CV_DemonDoorsScript@@QAEXABVCScriptThing@@ABVCCharString': ['00e6ea30']} 
+    landed leaf: []
+NEW 01375748 ?GDefaultToUsingPhysicsInCutsceneAnimations@NGlobalConsole@@3_NA 
+    others: {'?g_bScriptAnimationFlag@@3_NA': ['00d7f460'], '?g_PlayAnimationDefaultFlag@@3_NA': ['00d08790']} 
+    landed leaf: []
+NEW 013b8c88 ?PlayerModeInfo@CPlayer@@0QBVCPlayerModeInfo@@B 
+    others: {'?PlayerModeInfo@CPlayer@@2PAUCPlayerModeInfo@@A': ['00633bf0']} 
+    landed leaf: []
+NEW 0143e928 ?NPCAttitudes@@3PAJA 
+    others: {'?RelationCounters@CQ_SunnyvaleMasterData@NScript@@2PAJA': ['00cdba10']} 
+    landed leaf: []

@@ -1,0 +1,39 @@
+addr       parity           behav  name
+00e40420   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00e40420   RELOCATION_MATCH PASS   Main
+00e479b0   WARN RELOC_NAME: ?CheckForLeaderDead@CV_BanditTollScript@NScript@@QAEXXZ -> 00e482f0 labelled 'CScriptGameResourceObjectScriptedThingBase_HandleBanditQuestEncounter'
+00e479b0   RELOCATION_MATCH PASS   Main
+00e6e380   RELOCATION_MATCH PASS   Main
+00e70bc0   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00e70bc0   RELOCATION_MATCH PASS   Main
+00e740c0   RELOCATION_MATCH PASS   Main
+00e8bef0   RELOCATION_MATCH PASS   Main
+00ea2e80   WARN RELOC_NAME: ?WatchForQuestFailure@CV_LostTraderScript@NScript@@QAEXXZ -> 00ea3490 labelled 'CV_BeardyBaldyScript::WatchForQuestFinished'
+00ea2e80   RELOCATION_MATCH PASS   Main
+00eaafe0   RELOCATION_MATCH PASS   Main
+00eabb30   RELOCATION_MATCH PASS   Main
+00ebfd10   RELOCATION_MATCH PASS   Main
+
+WINS: 10
+  00e40420 RELOCATION_MATCH NScript::CV_BordelloScript::CBordelloGuard::?Main@CBordelloGuard@CV_BordelloScript@NScript@@EAEXXZ
+  00e479b0 RELOCATION_MATCH NScript::CV_BanditTollScript::?Main@CV_BanditTollScript@NScript@@UAEXXZ
+  00e6e380 RELOCATION_MATCH NScript::CV_DemonDoorsScript::?Main@CV_DemonDoorsScript@NScript@@UAEXXZ
+  00e70bc0 RELOCATION_MATCH NScript::CV_DemonDoorsScript::CDF_DoDamage::?Main@CDF_DoDamage@CV_DemonDoorsScript@NScript@@EAEXXZ
+  00e740c0 RELOCATION_MATCH NScript::CV_DemonDoorsScript::CDF_KeyHoarder::?Main@CDF_KeyHoarder@CV_DemonDoorsScript@NScript@@EAEXXZ
+  00e8bef0 RELOCATION_MATCH NScript::CV_GhostGrannyNecklaceScript::CGhostGrannyDaughterInLaw::?Main@CGhostGrannyDaughterInLaw@CV_GhostGrannyNecklaceScript@NScript@@EAEXXZ
+  00ea2e80 RELOCATION_MATCH NScript::CV_LostTraderScript::?Main@CV_LostTraderScript@NScript@@UAEXXZ
+  00eaafe0 RELOCATION_MATCH NScript::CV_MurderTwistScript::CMurderTwistBrother::?Main@CMurderTwistBrother@CV_MurderTwistScript@NScript@@EAEXXZ
+  00eabb30 RELOCATION_MATCH NScript::CV_MurderTwistScript::CMurderTwistBrotherOlder::?Main@CMurderTwistBrotherOlder@CV_MurderTwistScript@NScript@@EAEXXZ
+  00ebfd10 RELOCATION_MATCH NScript::CV_ParanoidWhispersScript::CSecretWhisperingMan::?Main@CSecretWhisperingMan@CV_ParanoidWhispersScript@NScript@@EAEXXZ
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  NScriptCVBordelloScriptCBordelloGuard_Main_00e40420
+  NScriptCVBanditTollScript_Main_00e479b0
+  NScriptCVDemonDoorsScript_Main_00e6e380
+  NScriptCVDemonDoorsScriptCDFDoDamage_Main_00e70bc0
+  NScriptCVDemonDoorsScriptCDFKeyHoarder_Main_00e740c0
+  NScriptCVGhostGrannyNecklaceScriptCGhostGrannyDaughterInLaw_Main_00e8bef0
+  NScriptCVLostTraderScript_Main_00ea2e80
+  NScriptCVMurderTwistScriptCMurderTwistBrother_Main_00eaafe0
+  NScriptCVMurderTwistScriptCMurderTwistBrotherOlder_Main_00eabb30
+  NScriptCVParanoidWhispersScriptCSecretWhisperingMan_Main_00ebfd10

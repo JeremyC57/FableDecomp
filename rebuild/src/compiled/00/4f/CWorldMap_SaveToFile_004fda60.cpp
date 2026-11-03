@@ -20,6 +20,9 @@ class CWorldMap {
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void SaveToFile(CAFile& file);      // slot 4
+protected:
+    // Protected in both PDBs (Ego_r / FableWin ?SaveMapsToString@CWorldMap@@IAEXAAVCCharString@@@Z, ?SaveRegionsToString@...@IAE...;
+    // codex pass 13 landing respell).
     void SaveMapsToString(CCharString& text);   // 0x004FB990
     void SaveRegionsToString(CCharString& text);    // 0x004FD040
 };

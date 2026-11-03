@@ -1,0 +1,41 @@
+addr       parity           behav  name
+00ec54e0   RELOCATION_MATCH PASS   Main
+00ec5de0   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00ec5de0   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 labelled 'CDefString::operator CCharString'
+00ec5de0   RELOCATION_MATCH PASS   Main
+00ecb0e0   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 labelled 'CDefString::operator CCharString'
+00ecb0e0   RELOCATION_MATCH PASS   Main
+00eccad0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00eccad0   RELOCATION_MATCH PASS   Main
+00eded10   RELOCATION_MATCH PASS   Main
+00ee0c50   RELOCATION_MATCH PASS   Main
+00eedc20   RELOCATION_MATCH PASS   Main
+00eeef70   RELOCATION_MATCH PASS   Main
+00efcc50   WARN RELOC_NAME: ??1CIsThingConscious@NScript@@UAE@XZ -> 00ef7ab0 labelled 'CScriptThingFunctor_00ef7ab0::~CScriptThingFunctor_00ef7ab0'
+00efcc50   RELOCATION_MATCH PASS   Main
+00efdc40   WARN RELOC_NAME: ??1CIsThingConscious@NScript@@UAE@XZ -> 00ef7ab0 labelled 'CScriptThingFunctor_00ef7ab0::~CScriptThingFunctor_00ef7ab0'
+00efdc40   RELOCATION_MATCH PASS   Main
+
+WINS: 10
+  00ec54e0 RELOCATION_MATCH NScript::CV_SickChildScript::?Main@CV_SickChildScript@NScript@@UAEXXZ
+  00ec5de0 RELOCATION_MATCH NScript::CV_SickChildScript::CSickChild::?Main@CSickChild@CV_SickChildScript@NScript@@EAEXXZ
+  00ecb0e0 RELOCATION_MATCH NScript::CV_SickChildScript::CIngredientOwner::?Main@CIngredientOwner@CV_SickChildScript@NScript@@EAEXXZ
+  00eccad0 RELOCATION_MATCH NScript::CV_SickChildScript::CTalkingTrader2::?Main@CTalkingTrader2@CV_SickChildScript@NScript@@EAEXXZ
+  00eded10 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::?Main@CV_TravellingHeroesScript@NScript@@UAEXXZ
+  00ee0c50 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::CTH_Trigger_Bowerstone::?Main@CTH_Trigger_Bowerstone@CV_TravellingHeroesScript@NScript@@EAEXXZ
+  00eedc20 RELOCATION_MATCH NScript::CPersonalScript_alextestScript::CBurningPerson::?Main@CBurningPerson@CPersonalScript_alextestScript@NScript@@EAEXXZ
+  00eeef70 RELOCATION_MATCH NScript::CTestQuestCard1Script::?Main@CTestQuestCard1Script@NScript@@UAEXXZ
+  00efcc50 RELOCATION_MATCH NScript::CMarkTestScriptsScript::CTestMan::?Main@CTestMan@CMarkTestScriptsScript@NScript@@EAEXXZ
+  00efdc40 RELOCATION_MATCH NScript::CMarkTestScriptsScript::CShopKeeper::?Main@CShopKeeper@CMarkTestScriptsScript@NScript@@EAEXXZ
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  NScriptCVSickChildScript_Main_00ec54e0
+  NScriptCVSickChildScriptCSickChild_Main_00ec5de0
+  NScriptCVSickChildScriptCIngredientOwner_Main_00ecb0e0
+  NScriptCVSickChildScriptCTalkingTrader2_Main_00eccad0
+  NScriptCVTravellingHeroesScript_Main_00eded10
+  NScriptCVTravellingHeroesScriptCTHTriggerBowerstone_Main_00ee0c50
+  NScriptCPersonalScriptalextestScriptCBurningPerson_Main_00eedc20
+  NScriptCTestQuestCard1Script_Main_00eeef70
+  NScriptCMarkTestScriptsScriptCTestMan_Main_00efcc50
+  NScriptCMarkTestScriptsScriptCShopKeeper_Main_00efdc40

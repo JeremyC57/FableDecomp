@@ -163,6 +163,11 @@ public:
     CCharString(const char* text, long length = -1);           // 0x0099EBF0
     // Retail opt-in (Codex pass 11 consolidation): further Ego_r CCharString members used inline by retail callers.
     unsigned long GetCRC() const;                              // 0x00404310 (Ego_r 0x00403C00)
+    // Codex pass 13: ?SaveToFile@CCharString@@QBEXAAVCAFile@@@Z (Ego_r + FableWin), ?EqualsCaseInsensitive@CCharString@@QBE_NABV1@@Z and
+    // ??MCCharString@@QBE_NABV0@@Z (FableWin; ??M bound by a landed row); all out of line in retail.
+    void SaveToFile(class CAFile&) const;
+    bool EqualsCaseInsensitive(const CCharString&) const;
+    bool operator<(const CCharString&) const;
 #ifdef FABLE_RETAIL_CBASICSTRING_EQ_OUTOFLINE
     // (same opt-in) retail expands CCharString::operator== in place around the CBasicString call even in the size-optimised
     // CTCVillage TU (0x0065B956..0x0065B97A), where plain inline is called out of line.
@@ -187,6 +192,11 @@ public:
     // ??8CCharString@@QBE_NPBD@Z, both inline in retail (0x00AE8D50 expands GetAsCharArray: `test; jne; mov eax,offset NullChar; jmp; mov eax,[eax]`;
     // the landed local models spell the same ternary). NullChar is 0x0129AAF4 (static data member per the Ego_r TPI as Codex pass 12 read it).
     const char* GetAsCharArray() const { return PStringData==0 ? &NullChar : PStringData->Data.PeekData(); }
+#ifdef FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ
+    // Per-TU inline opt-in (Codex pass 13, row 0x00E36D50; like FABLE_RETAIL_CBASICSTRING_EQ_OUTOFLINE): that TU expands both
+    // null / non-null arms in place where the plain inline operator is called out of line.
+    __forceinline
+#endif
     bool operator==(const char* text) const { if(!PStringData) { if(strcmp(text,"")==0) return true; return false; } return PStringData->Data==text; }
     void Truncate(unsigned long);                              // 0x0099F2A0 ?Truncate@CCharString@@QAEXK@Z (Ego_r 0x00AFAB00 / FableWin 0x02F61D70)
     void LoadFromFile(class CAFile&,class CASuspendableProcess*,long);   // ?LoadFromFile@CCharString@@QAEXAAVCAFile@@PAVCASuspendableProcess@@J@Z (Ego_r)
@@ -219,6 +229,10 @@ private:
 CCharString FABLE_FASTCALL operator+(
     const CCharString& left,
     const char* right);
+#ifdef FABLE_RETAIL_CCHARSTRING
+// Codex pass 13: the free ??H@YI?AVCCharString@@PBDABV0@@Z (Ego_r + FableWin; `const char*` + CCharString, __fastcall).
+CCharString FABLE_FASTCALL operator+(const char*,const CCharString&);
+#endif
 
 // Retail folds equivalent narrow/wide string lifetime helpers. These counters
 // remain separate because their addresses and object families are distinct.

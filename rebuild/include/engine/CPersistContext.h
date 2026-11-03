@@ -15,6 +15,7 @@ class CPersistContext_TransferableVectorGenericType;
 class CPersistContext_TransferableComponentGenericType;
 #ifdef FABLE_RETAIL_CPERSISTCONTEXT
 class CPersistContext_TransferableVectorOfSubComponentsGenericType;
+class CPersistContext_TransferableSubComponentGenericType;
 #endif
 class CPersistContextWriteSection;
 template<class T> class CPersistTraits;
@@ -31,6 +32,11 @@ public:
     CPersistContext(CMemoryDataInputStream&,bool);
     CMemoryDataInputStream* GetPLoadStream() { return PLoadStream; }
 #ifdef FABLE_RETAIL_CPERSISTCONTEXT
+    CPersistContext() {}
+    void Init(CStringParser&,void (__fastcall*)(const CCharString&),bool,const CDefinitionManager*,const CSymbolMap*,CCharString*);
+    // Codex pass 13 (row 0x00CDC070): the default ctor and dtor (??0CPersistContext@@QAE@XZ / ??1CPersistContext@@QAE@XZ, one PDB
+    // each; inline in retail) and the parser Init (?Init@CPersistContext@@QAEXAAVCStringParser@@...@Z, both PDBs).
+    ~CPersistContext() {}
     // retry11a (row 0x00521620): the save-side constructor 0x009BAE50 (Ego_r.pdb / FableWin.pdb
     // ??0CPersistContext@@QAE@AAVCDataOutputStream@@_N@Z) and the PSaveStream accessor (inline in retail).
     CPersistContext(CDataOutputStream&,bool);
@@ -50,9 +56,13 @@ public:
 protected:
     void CheckCRC(const char*);
 #ifdef FABLE_RETAIL_CPERSISTCONTEXT
+    // Codex pass 13 (row 0x00CDC070): original protected static fastcall template; both PDB PUBLIC32 records.
+    template<class T> static T FABLE_FASTCALL GetDefaultVal();
     // Protected in both PDBs: ?TransferVectorOfSubComponentsLoadText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableVectorOfSubComponentsGenericType@@@Z
     // (0x009BC120) and ?CleanOutLine@CPersistContext@@IAEXJJ@Z (0x009BB0D0, out of line).
     void TransferVectorOfSubComponentsLoadText(const char*,CPersistContext_TransferableVectorOfSubComponentsGenericType&);
+    void TransferVectorLoadText(const char*,CPersistContext_TransferableVectorGenericType&);
+    void TransferSubComponentLoadText(const char*,CPersistContext_TransferableSubComponentGenericType&);
     void CleanOutLine(long,long);
 #endif
     const CDefinitionManager* PDefinitionManager;

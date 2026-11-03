@@ -4,17 +4,41 @@
 // Retail opt-in (Codex pass 11 consolidation 2): the same members at the same offsets with their real types (CCharString, C2DVector) and the inline GetName (FableWin).
 #include "fable_string.h"
 #include "engine/C2DVector.h"
-// Original names and complete native58 extent; only Name is read by this TU.
+#include "engine/CDefPointer.h"
+#include "stlport/fable_map.h"
+class CRegionDef;
+// Original names and complete native 0x58 extent; Codex pass 13 typed the members (Ego_r TPI: vector<long> Maps / VisMaps,
+// CDefPointer<const CRegionDef> PDef, map<CCharString,C2DVector> MiniMapRegionExitTextOffsets), same offsets.
 class CRegion {
-protected:
- unsigned char Maps[12],VisMaps[12];
- CCharString Name,DisplayName,RegionDefName;
- unsigned char PDef[4];
- CCharString MiniMapGraphic;float MiniMapScale;C2DVector MiniMapOffset;
- unsigned char MiniMapRegionExitTextOffsets[12];
- C2DVector WorldMapOffset,NameGraphicOffset;
- bool AppearOnWorldMap,CreatureGenerationEnabled,SoundThemesEnabled;
+protected: std::vector<long,std::allocator<long> > Maps;
+protected: std::vector<long,std::allocator<long> > VisMaps;
+protected: CCharString Name;
+protected: CCharString DisplayName;
+protected: CCharString RegionDefName;
+protected: CDefPointer<CRegionDef const > PDef;
+protected: CCharString MiniMapGraphic;
+protected: float MiniMapScale;
+protected: C2DVector MiniMapOffset;
+protected: std::map<CCharString,C2DVector,std::less<CCharString>,std::allocator<std::pair<CCharString const ,C2DVector> > > MiniMapRegionExitTextOffsets;
+protected: C2DVector WorldMapOffset;
+protected: C2DVector NameGraphicOffset;
+protected: bool AppearOnWorldMap;
+protected: bool CreatureGenerationEnabled;
+protected: bool SoundThemesEnabled;
 public: const CCharString& GetName() const { return Name; }
+    // Codex pass 13 (rows 0x004FD040 / 0x00501450): Ego_r / FableWin accessors; GetDisplayName, GetWorldMapOffset and
+    // GetNameGraphicOffset out of line, the rest inline in retail.
+    const CCharString& GetDisplayName() const;
+    const CCharString& GetRegionDefName() const { return RegionDefName; }
+    bool IsOnWorldMap() const { return AppearOnWorldMap; }
+    const CCharString& GetMiniMapGraphic() const { return MiniMapGraphic; }
+    float GetMiniMapScale() const { return MiniMapScale; }
+    const C2DVector& GetMiniMapOffset() const { return MiniMapOffset; }
+    const C2DVector GetWorldMapOffset() const;
+    const C2DVector GetNameGraphicOffset() const;
+    const std::map<CCharString,C2DVector>& GetMiniMapRegionExitTextOffsets() const { return MiniMapRegionExitTextOffsets; }
+    const std::vector<long>& GetMaps() const { return Maps; }
+    std::vector<long>& GetVisMaps() { return VisMaps; }
 };
 FABLE_STATIC_ASSERT(sizeof(CRegion)==0x58);
 #else
