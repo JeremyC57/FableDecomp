@@ -1,4 +1,10 @@
-# Resume here (one page) — updated 2026-11-03 (Codex pass 11 landed to 61/100, follow-ups, priority name fixes)
+# Resume here (one page) — updated 2026-11-03 (catalog/manifest resync, overarching plan)
+
+**Overarching plan:** `docs/PLAN.md` (every known function by pool, the parked residue classes with their cheapest
+fixes, the naming debt, and the order of work). 2026-11-03 evening: `tools/sync_manifest_from_catalog.py` put the
+manifest back on the catalog names (33,656 landed rows, 275 unlanded rows from the newest labels, 331 stale
+PARKED_INDEX statuses); run it after every landing round. The open PRIORITY name-fix count is 188 (185 addresses),
+not 154.
 
 The previous page (the 2026-11-01 state: chunks to 717, naming waves 13-32, the never-attempted pool) is archived at the
 end of `docs/journal/HANDOFF_ARCHIVE.md`. This session's details: `docs/journal/2026-11/2026-11-03_SESSION.md`. Solved
@@ -14,7 +20,8 @@ problems: the 2026-11-02 / 2026-11-03 lines at the end of `docs/pipeline/GOTCHAS
 
 ## Lane (already set up in the scratch directory)
 ```
-export S=/tmp/claude-0/-home-user-FableDecomp/5221bbec-fb18-575f-8649-a32d96bb1c2d/scratchpad; source $S/wine/env.sh; export S
+export S=/tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad; source $S/wine/env.sh; export S
+# (2026-11-03: the 5221bbec-... scratch of the previous page is gone; this one holds the same lane. Check `ls $S/wine/env.sh` first.)
 cd /home/user/FableDecomp   # every tool runs from the repo root
 ```
 `$S` holds Wine + cl 13.10.3077 RTM (`$S/wine/vc71rtm`), QFE 4035 (`$S/wine/vc71`), VS 2003 libs, LZO, and the game
