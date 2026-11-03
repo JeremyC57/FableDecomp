@@ -111,6 +111,13 @@ member names, and script names (NScript quest scripts: check work/aeon_lua_ports
 - **Parked pairs land together.** 0x00626E40 ConstructItemCategoryList is reconstructed first (same retail TU, before
   0x006276F0 GetItemsListUI); 0x00935E40 PutOutFire with its identical sibling 0x009363D0. Cut as one "pairs" chunk.
 
+## Coordinator note, 2026-11-03: per-call-site inline splits without pragmas
+Retail mixes expanded and called copies of one plain-inline function inside one function; VC7.1 decides per call site from c2's
+static block frequency (docs/pipeline/INLINE_DEPTH_REVISIT.md, 2026-11-03 section). Reproduce a split with plain `inline` and
+retail-plausible control flow: a `do { ... } while (0)` statement macro used uniformly (e.g. at every terminate check), a loop
+guard, a real loop. Never `#pragma inline_depth`, never the hidden `/d2inl*` c2 knobs. Wrapping only some exits is accepted
+only with a line-2 note that retail's construct there is unproven.
+
 ## Owner decision, 2026-11-02: inline_depth rows kept and marked
 - The 129 landed rows with `#pragma inline_depth` regions and the 17 two-view CScriptThing rows stay. Line 2 of each carries `// Revisit: inline-depth` or
   `// Revisit: two-view-CScriptThing` (docs/pipeline/INLINE_DEPTH_REVISIT.md). No new row lands with either device. A chunk that finds a pragma-free

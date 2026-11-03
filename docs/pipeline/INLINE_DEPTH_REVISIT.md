@@ -182,3 +182,20 @@ when the markers were added (rechecked with the markers in place: all 146 RELOCA
 | 0x00F08A30 | `CAT_Phase1Archer::Init()` | `rebuild/src/compiled/00/f0/CATPhase1Archer_Init_00f08a30.cpp` |
 | 0x00F08C30 | `CAT_ConvoyMember::Init()` | `rebuild/src/compiled/00/f0/CATConvoyMember_Init_00f08c30.cpp` |
 | 0x00F09640 | `CAT_BanditContact::Init()` | `rebuild/src/compiled/00/f0/CATBanditContact_Init_00f09640.cpp` |
+
+## 2026-11-03: the pragma-free mechanism (inline split research)
+`rebuild/candidates/manual/batches/2026-11-03_inline_split_research/FINDINGS.md` (probes in `probes/`, per-row table in
+`family/summary.tsv`). VC7.1 RTM decides plain-`inline` expansion **per call site**: it inlines when
+`(c/f + 6c)/7 < 74` (site frequency f <= 1) or `(c/f + 2c)/3 < 74` (f > 1), with c = the callee's optimised size and f = c2's
+static block-frequency estimate (every `if` 50/50, `&&` 0.25, `||` 0.75, loop bodies x5-8, all exits of one loop share its entry
+frequency, `do { } while (0)` counts as a loop, code after a guarded `for` keeps the loop's frequency). No depth rule, no
+pragma. Levers, in order of preference:
+1. Delete the pragma and make the forced callee plain `inline` (27 of the 129 rows match this way).
+2. The statement-macro shape `do { if (IsActiveThreadTerminating()) return; } while (0);` at **every** terminate check (8 more).
+   It is the standard statement-macro wrapper (MFC's ASSERT is exactly this shape: 0x00C0C270 CString::ConcatInPlace matches
+   with a do-while(0) ASSERT and a plain-inline GetData).
+3. Wrapping only the exits retail inlines (3 rows: 0x00E2E520, 0x00E9CB20, 0x00ED9790). Retail's construct there is unproven;
+   such rows carry a line-2 note saying so.
+Loop guards (`if (!v.empty())` around a `for`) move the frequency of the code after the loop (0x0074BC20 DrawDebugInfo's split).
+`/d2inlT<N>` and the other `-inl*` c2 knobs are diagnostics only, never landing flags. The remaining 90 rows: 66 need per-row
+shape work on their returns, 18 have the pragma around temporaries / Reset / assignments, 6 use other depths.

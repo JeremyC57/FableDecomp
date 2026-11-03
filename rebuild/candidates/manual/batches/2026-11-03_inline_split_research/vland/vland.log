@@ -1,0 +1,23 @@
+addr       parity           behav  name
+00e2e520   RELOCATION_MATCH PASS   WatchForHeroAttack
+00c0c270   WARN SHARED_HEADER_AVAILABLE CString
+00c0c270   RELOCATION_MATCH PASS   ConcatInPlace
+00ef5cb0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00ef5cb0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00ef5cb0   WARN SHARED_HEADER_AVAILABLE CPersonalScript_EmptyScript
+00ef5cb0   RELOCATION_MATCH PASS   Main
+00e1fcf0   WARN RELOC_NAME: ?RestartRandomSpeechTimer@CQR_EscortTraderScript@@QAEXXZ -> 00e1feb0 labelled 'CV_AmbushScamScript::ResetRandomSpeechTime'
+00e1fcf0   RELOCATION_MATCH PASS   WatchForExpressionFollow
+00d16920   WARN SHARED_HEADER_AVAILABLE CVectorMap
+00d16920   WARN SHARED_HEADER_AVAILABLE CRuntimeScriptedEntityPersist
+00d16920   RELOCATION_MATCH PASS   WatchForHostage1Killed
+00f061e0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00f061e0   RELOCATION_MATCH PASS   WatchForHeroAttackOnBandit
+
+WINS: 6
+  00e2e520 RELOCATION_MATCH NScript::CV_AmbushScamScript::WatchForHeroAttack
+  00c0c270 RELOCATION_MATCH CString::?ConcatInPlace@CString@@QAEXHPBD@Z
+  00ef5cb0 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CLookAtMe1::?Main@CLookAtMe1@CPersonalScript_EmptyScript@NScript
+  00e1fcf0 RELOCATION_MATCH CQR_EscortTraderScript::?WatchForExpressionFollow@CQR_EscortTraderScript@@
+  00d16920 RELOCATION_MATCH NScript::CQ_BountyHuntScript::?WatchForHostage1Killed@CQ_BountyHuntScript@NScript@@QAEXVCScriptThing@@@Z
+  00f061e0 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::WatchForHeroAttackOnBandit
