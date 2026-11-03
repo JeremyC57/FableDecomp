@@ -31,6 +31,7 @@ public:
     ~CTexture() { Uninitialise(); }                                      // inline (Ego_r lists no ??1CTexture)
     CTexture& operator=(const CTexture& other);                          // 0x009FA1C0
     void Uninitialise();                                                 // 0x009F9F70 ?Uninitialise@CTexture@@QAEXXZ
+    void CopyFromTexture(const CTexture&,unsigned long);                 // 0x009FA4E0 ?CopyFromTexture@CTexture@@QAEXABV1@K@Z (Ego_r + FableWin)
     IDirect3DTexture9* PD3DTexture;                                      // +0x00
     unsigned long      ByteLength : 28;                                  // +0x04 bits 0..27
     unsigned long      AllocationSource : 4;                             // +0x04 bits 28..31

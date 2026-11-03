@@ -1,0 +1,35 @@
+# 0x006286F0 GFPlayFullScreenXBoxMovie -- probe log (grader: tools/g.py, lane cl 13.10.3077 /O2 /Oy /W3, overlay hdr/)
+v01 DIFFER(1851v1864) first compile with the overlay headers. Body structure matches (goto out of the scan loop = retail's
+    direct jump to Stop; `delete video` without null test on the success path comes out as retail). Residue: (a) the
+    hr<0 error block is inline (retail puts it at the function end), (b) the .xmv/.wmv temporaries are pushed from the
+    constructor's eax (retail re-takes their addresses) and file_path sits at +0x18 (retail +0x1C).
+v02 DIFFER(1864v1864) `if (hr >= 0) { ... return true; }` with the error block after it: retail's block order (error path
+    at the function end). Residue only the .xmv/.wmv temporaries (explicit CWideString(L"...") args).
+v03 RELOCATION_MATCH: `file_path.Replace(L".xmv", L".wmv")` through an implicit const wchar_t* constructor (overlay:
+    fable_string.h FABLE_RETAIL_CWIDESTRING drops `explicit` on CWideString(const wchar_t*)).
+v04 DIFFER(1886v1864) default CPixelFormat + format.Initialise(8,8,8,8,false): the FormatIndex(-1) store and a named
+    slot appear; retail has neither -> the inline CPixelFormat(long,long,long,long) constructor (FableWin ??0..JJJJ).
+v05 RELOCATION_MATCH alternative: a `bool skip` flag + two breaks instead of the goto (VC7.1 threads the flag away).
+    Not selected: Ego_r's GFPlayFullScreenXBoxMovie local set (event, scan_info, event_code, lparam1/2, clear_black, ...)
+    has no such flag.
+v06 DIFFER(1864v1864) named `unsigned long` locals for flags & 0x10 / flags & 2: different spill slots; retail's
+    [esp+28h]/[esp+20h] values are the compiler's CSE of the repeated `flags & 0x10` / `flags & 2` tests.
+v07 RELOCATION_MATCH alternative: `if (text_bank) SetTextBank(text_bank); else if ((flags & 8) && &GetTextBank()) ...`.
+    Not selected (v03's single SetTextBank call is the plainer source; identical bytes).
+v08 DIFFER(1849v1864) one input-manager local for Update/EventScanStart/EventScanNext: retail re-fetches
+    GFGetSystemManager()->GetInputManager() for EventScanStart.
+v09 DIFFER(1864v1864) plain truth tests on EventScanStart/Next: retail compares `cmp al,1` (== true).
+v10 DIFFER(1864v1864) CInputEvent declared before CInputEventScanInfo: retail stores scan_info.Started before ??0CInputEvent.
+v11 RELOCATION_MATCH: the white colour as a temporary CRGBColour(0xff,0xff,0xff,0xff) argument (Ego_r's local set has
+    clear_black but no second colour local) -- selected.
+v12 RELOCATION_MATCH alternative: clear_black as a temporary too. Not selected: Ego_r names the local clear_black.
+v13 RELOCATION_MATCH: v11 with the scaled height folded into border's expression (no invented local) -- SELECTED.
+vland (read-only, overlay, movie_oracle.tsv): 006286f0 RELOCATION_MATCH PASS (1864 bytes; test 006286f0_TEST PASS). 5 RELOC_NAME
+    warnings are Ghidra-label disagreements only (GetPControlledCreature, PSoundManager, the two descriptive setters, Sprintf).
+After the container restart: fable_game.h was rebased on repo acd36e09d (ConstantFPS) plus GetTextBank. The row was regraded:
+    RELOCATION_MATCH PASS with hdr/ and with hdr_full/.
+Recheck (--recheck-landed), 123 landed includers (direct includers of the changed headers plus every file defining a
+    touched FABLE_RETAIL_ macro):
+    hdr_full/ 123/123 WINS (21 MATCH, 102 RELOCATION_MATCH).
+    Minimal hdr/ (pre-rebase, 122 rows): 116 WINS + 6 SRC_FAIL. The 6 are C2011 redefinitions from two copies of
+    fable_string.h (`#pragma once`, no guard); all 6 pass without the overlay.

@@ -1,0 +1,23 @@
+CHANGED engine/C2DBoxF.h default=same[2] FABLE_RETAIL_C2DBOXF=DIFF[2]
+CHANGED engine/CAFile.h default=same[137] FABLE_RETAIL_CAFILE=DIFF[137] FABLE_RETAIL_HEADER_CAFILE=same[0]
+NEW    engine/CASoundManager.h
+CHANGED engine/CBaseVideoRenderer.h default=same[279] FABLE_RETAIL_CBASEVIDEORENDERER=DIFF[279]
+CHANGED engine/CDisplayManager.h default=same[588] FABLE_RETAIL_CDISPLAYMANAGER=DIFF[588] FABLE_RETAIL_SCOPED_PTR=same[593]
+NEW    engine/CInputEvent.h
+NEW    engine/CInputEventScanInfo.h
+NEW    engine/CInputManager.h
+NEW    engine/CMovieSubtitles.h
+CHANGED engine/CPixelFormat.h default=same[18] FABLE_RETAIL_CPIXELFORMAT=DIFF[242]
+NEW    engine/CRenderManager.h
+NEW    engine/CRenderManager2D.h
+CHANGED engine/CRenderManagerCore.h default=same[3810] FABLE_RETAIL_CRENDERMANAGERCORE=DIFF[3810]
+CHANGED engine/CSystemManager.h default=same[241] FABLE_RETAIL_CSYSTEMMANAGER=DIFF[241]
+CHANGED engine/CTCBulletTime.h default=same[58] FABLE_RETAIL_CTCBULLETTIME=DIFF[33]
+CHANGED engine/CTexture.h default=same[23] FABLE_RETAIL_CTEXTURE=DIFF[36]
+NEW    engine/CTextureRenderer.h
+NEW    engine/CUVBox.h
+CHANGED engine/CVideoSys.h default=same[79] FABLE_RETAIL_CVIDEOSYS=DIFF[79]
+NEW    engine/Win32Types.h
+CHANGED fable_game.h default=same[167] FABLE_RETAIL_CGAMECOMPONENT=same[173] FABLE_RETAIL_CMAINGAMECOMPONENT=DIFF[298] FABLE_RETAIL_SCOPED_PTR=same[167]
+CHANGED fable_string.h default=same[96] FABLE_RETAIL_CCHARSTRING=same[116] FABLE_RETAIL_CWIDESTRING=DIFF[579]
+CHANGED fable_user_profile.h default=same[129] FABLE_RETAIL_CUSERPROFILEMANAGER=DIFF[129]

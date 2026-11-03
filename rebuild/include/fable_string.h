@@ -69,7 +69,14 @@ class CWideString
 public:
     CWideString();
     CWideString(const CWideString& other);
+#ifdef FABLE_RETAIL_CWIDESTRING
+    // Retail converts bare wide literals implicitly (0x006286F0 Replace(L".xmv", L".wmv"): each temporary's address is
+    // re-taken with `lea` after the 0x0099B6B0 call, the implicit-conversion shape; an explicit CWideString(L"...")
+    // argument pushes the constructor's eax instead), so the retail declaration is not `explicit`.
+    CWideString(const wchar_t* text);                          // 0x0099B6B0 ??0CWideString@@QAE@PBG@Z
+#else
     explicit CWideString(const wchar_t* text);
+#endif
     ~CWideString();
     operator const wchar_t*() const;
     const wchar_t* GetAsCharArray() const;                     // 0x0099AF10 ?GetAsCharArray@CWideString@@QBEPBGXZ
@@ -94,6 +101,7 @@ public:
         return *PStringData==*other.PStringData;
     }
     bool Contains(const CWideString& other) const;             // ?Contains@CWideString@@QBE_NABV1@@Z
+    void Replace(const CWideString& search, const CWideString& replacement);   // 0x0099C1E0 ?Replace@CWideString@@QAEXABV1@0@Z (Ego_r + FableWin)
 #endif
 
 private:

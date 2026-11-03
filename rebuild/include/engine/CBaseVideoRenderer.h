@@ -1,7 +1,13 @@
 #ifndef FABLE_PASS11_CBASEVIDEORENDERER_H
 #define FABLE_PASS11_CBASEVIDEORENDERER_H
 // Layout: DirectShow BaseClasses renbase.h/amfilter.h/combase.h; native base 0xe0, renderer statistics through 0x158.
+#ifdef FABLE_RETAIL_CBASEVIDEORENDERER
+// Retail opt-in (movie row 0x006286F0): GUID and CRITICAL_SECTION (with Enter/LeaveCriticalSection) come from the one
+// shared SDK shim, so this model can share a TU with engine/CSystemManager.h and engine/CVideoSys.h.
+#include "engine/Win32Types.h"
+#else
 typedef struct _GUID { unsigned long Data1; unsigned short Data2; unsigned short Data3; unsigned char Data4[8]; } GUID;
+#endif
 extern "C" int __cdecl memcmp(const void* a, const void* b, unsigned int n);
 #pragma intrinsic(memcmp)
 inline int IsEqualGUID(const GUID& a, const GUID& b) { return !memcmp(&a, &b, sizeof(GUID)); }
@@ -23,9 +29,11 @@ struct INonDelegatingUnknown {
     virtual unsigned long __stdcall NonDelegatingAddRef() = 0;
     virtual unsigned long __stdcall NonDelegatingRelease() = 0;
 };
+#ifndef FABLE_RETAIL_CBASEVIDEORENDERER
 struct CRITICAL_SECTION { void* DebugInfo; long LockCount; long RecursionCount; void* OwningThread; void* LockSemaphore; unsigned long SpinCount; };
 extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(CRITICAL_SECTION* section);   // IAT 0x0143FE0C
 extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(CRITICAL_SECTION* section);   // IAT 0x0143FE10
+#endif
 extern "C" __declspec(dllimport) int __stdcall SetEvent(void* event);                              // IAT 0x0143FDE0
 extern "C" __declspec(dllimport) int __stdcall ResetEvent(void* event);                            // IAT 0x0143FED4
 class CCritSec {                                 // wxutil.h
@@ -49,6 +57,20 @@ public:
     void Reset() { ResetEvent(m_hEvent); }
 };
 #define CheckPointer(p, ret) { if ((p) == 0) return (ret); }
+#ifdef FABLE_RETAIL_CBASEVIDEORENDERER
+// Fable's strmbase renames combase.h's CBaseObject to CMyBaseObject (RTTI of vtable 0x0129D08C: CUnknown's bases are
+// INonDelegatingUnknown and CMyBaseObject; GOTCHAS chunk 715), which also keeps it apart from the engine's CBaseObject
+// (engine/CBaseObject.h) in a shared TU.
+class CMyBaseObject {
+private:
+    CMyBaseObject(const CMyBaseObject&);
+    void operator=(const CMyBaseObject&);
+    static long m_cObjects;
+public:
+    CMyBaseObject(const unsigned short*);
+    ~CMyBaseObject();
+};
+#else
 class CBaseObject {
 private:
     CBaseObject(const CBaseObject&);
@@ -58,7 +80,12 @@ public:
     CBaseObject(const unsigned short*);
     ~CBaseObject();
 };
+#endif
+#ifdef FABLE_RETAIL_CBASEVIDEORENDERER
+class CUnknown : public INonDelegatingUnknown, public CMyBaseObject {
+#else
 class CUnknown : public INonDelegatingUnknown, public CBaseObject {
+#endif
 private:
     IUnknown* const m_pUnknown;                        // +0x04 (const LPUNKNOWN)
 protected:

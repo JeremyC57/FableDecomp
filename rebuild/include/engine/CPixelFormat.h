@@ -8,6 +8,11 @@ protected: long FormatIndex;
 public:
  CPixelFormat() :FormatIndex(-1) {}
  CPixelFormat(_D3DFORMAT format) { Initialise(format); }
+ // Movie row 0x006286F0: FableWin.pdb ??0CPixelFormat@@QAE@JJJJ@Z (debug only: inline in release). 0x006286F0 calls
+ // Initialise(8,8,8,8,false) on a stack CPixelFormat with no -1 store first, so this constructor does not run the
+ // default's FormatIndex(-1): it is the Initialise call alone (the bool is pushed as 0).
+ CPixelFormat(long r,long g,long b,long a) { Initialise(r,g,b,a,false); }
+ void Initialise(long,long,long,long,bool);                     // 0x009E3790 ?Initialise@CPixelFormat@@QAEXJJJJ_N@Z (Ego_r + FableWin)
  void Initialise(_D3DFORMAT);
  unsigned long GetNoABits() const {return GD3DFormats[FormatIndex].AlphaBits;}
  unsigned long GetNoRBits() const {return GD3DFormats[FormatIndex].RBits;}

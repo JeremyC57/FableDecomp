@@ -9,6 +9,7 @@ class CTCBulletTime : public CTCBase {
 private: unsigned char _pad_0x0c[0x4c];
 public:
     static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_BULLET_TIME; } void PlayCreatureOnHitEffect(CThingCreatureBase*);
+    void ImmediateCancel();                                              // 0x0079D020 ?ImmediateCancel@CTCBulletTime@@QAEXXZ (Ego_r + FableWin)
 };
 FABLE_STATIC_ASSERT(sizeof(CTCBulletTime)==0x58);
 

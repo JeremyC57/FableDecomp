@@ -2,10 +2,21 @@
 #define FABLE_ENGINE_CSYSTEMMANAGER_H
 #include "engine/CInitBaseClass.h"
 #include "engine/CCountedPointer.h"
+#ifdef FABLE_RETAIL_CSYSTEMMANAGER
+// Retail opt-in (movie row 0x006286F0): the SDK types come from the one shared shim (engine/Win32Types.h) so this model
+// can share a TU with the DirectShow models (engine/CBaseVideoRenderer.h, engine/CVideoSys.h).
+#include "engine/Win32Types.h"
+#else
 struct _GUID {unsigned long Data1;unsigned short Data2,Data3;unsigned char Data4[8];};
 struct _RTL_CRITICAL_SECTION_DEBUG;
 struct _RTL_CRITICAL_SECTION {_RTL_CRITICAL_SECTION_DEBUG* DebugInfo;long LockCount,RecursionCount;void* OwningThread;void* LockSemaphore;unsigned long SpinCount;};
+#endif
 class CDebugManager;class CInputManager;class CDisplayManager;
+#ifdef FABLE_RETAIL_CSYSTEMMANAGER
+// ESystemReturn (Ego_r.pdb enum, the return type of Update): no enumerator name is recoverable from the repo's PDB extracts,
+// so the type is declared without enumerators (the landed CInputEvent model's convention for EInputKey / EInputEventType).
+enum ESystemReturn { };
+#endif
 class CGraphicBankManager;class CMeshBankManager;class CFontManager;class CProfileManager;
 struct HINSTANCE__;struct tagMSG;
 #include "fable_string.h"
@@ -42,6 +53,13 @@ private:
  bool (__fastcall* IMEMessageFunc)(HWND,unsigned int,unsigned int,long,long&);
  bool (__fastcall* MessageFilter)(tagMSG*);
 public:CDisplayManager* GetDisplayManager(){return PDisplayManager.Get();}
+#ifdef FABLE_RETAIL_CSYSTEMMANAGER
+// Ego_r.pdb + FableWin.pdb ?Update@CSystemManager@@QAE?AW4ESystemReturn@@XZ (0x009A6460; GFPlayFullScreenXBoxMovie loops
+// until it returns 2). FableWin.pdb ?GetInputManager@CSystemManager@@QAEPAVCInputManager@@XZ is inline in the release
+// build (0x006286F0 reads PInputManager +0x58 in place, as GetDisplayManager reads PDisplayManager +0x60).
+ ESystemReturn Update();
+ CInputManager* GetInputManager(){return PInputManager.Get();}
+#endif
 };
 FABLE_STATIC_ASSERT(sizeof(CSystemManager)==0x180);
 CSystemManager* __fastcall GFGetSystemManager();

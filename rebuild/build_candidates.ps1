@@ -376495,6 +376495,13 @@ $catalog = @(
         TestSource = '00/5e/CTCTavernGame_FrameUpdate_005eb9e0_test.cpp'
         PassPattern = '005eb9e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '006286f0'
+        Module = '_global'
+        Source = '00/62/global_GFPlayFullScreenXBoxMovie_006286f0.cpp'
+        TestSource = '00/62/global_GFPlayFullScreenXBoxMovie_006286f0_test.cpp'
+        PassPattern = '006286f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

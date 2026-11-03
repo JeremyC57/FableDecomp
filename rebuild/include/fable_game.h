@@ -101,6 +101,7 @@ public:
     virtual void OnPreDeviceReset();
     virtual bool OnPostDeviceReset();
     CPlayerManager& GetPlayerManager() { return *PPlayerManager; }
+    const NGameText::CDataBank& GetTextBank() const { return *PTextBank; }   // FableWin ?GetTextBank@CMainGameComponent@@QBEABVCDataBank@NGameText@@XZ (inline; 0x006286F0 reads PTextBank +0x14 in place)
     const CWorld& PeekWorld() const { return *PWorld; }
 };
 #else

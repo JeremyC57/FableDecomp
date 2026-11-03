@@ -13,6 +13,9 @@
 #include "engine/CArray.h"
 #include "engine/CBusyResourceManager.h"
 class CSystemManager;class CRenderManager;class CVsyncCallbackTimer;class CDeviceResetCallback;
+#ifdef FABLE_RETAIL_CDISPLAYMANAGER
+class CRGBColour;
+#endif
 struct IDirect3D9;struct IDirect3DDevice9;
 // Layout: original fields; native STLport list/vector shrink later offsets. Complete native size0x2cc.
 class CDisplayManager:public CBaseClassNonCopyable {
@@ -26,6 +29,17 @@ public:
  CDisplayManager(CSystemManager&);
  virtual ~CDisplayManager();
  bool GetBestAlphaTextureFormat(unsigned long,CPixelFormat&);
+#ifdef FABLE_RETAIL_CDISPLAYMANAGER
+ // Retail opt-in (movie row 0x006286F0; needs FABLE_RETAIL_SCOPED_PTR for GetRenderManager). Spellings: Ego_r.pdb + FableWin.pdb.
+ void ClearRenderTarget(const CRGBColour&,unsigned long);               // 0x009BE420 ?ClearRenderTarget@CDisplayManager@@QAEXABVCRGBColour@@K@Z
+ bool BeginRender();                                                    // 0x009BEF20 ?BeginRender@CDisplayManager@@QAE_NXZ
+ void EndRender();                                                      // 0x009BEF50 ?EndRender@CDisplayManager@@QAEXXZ
+ bool SwapScreens();                                                    // 0x009BEEB0 ?SwapScreens@CDisplayManager@@QAE_NXZ
+ const C2DExtentsI GetRenderTargetDimensions();                         // 0x009BEDC0 ?GetRenderTargetDimensions@CDisplayManager@@QAE?BVC2DExtentsI@@XZ
+ // FableWin.pdb ?GetRenderManager@CDisplayManager@@QAEAAVCRenderManager@@XZ (debug only: inline in release; 0x006286F0 reads
+ // PRenderManager +0x08 in place).
+ CRenderManager& GetRenderManager(){return *PRenderManager;}
+#endif
 private:
  CSystemManager& SystemManager;
  boost::scoped_ptr<CRenderManager> PRenderManager;

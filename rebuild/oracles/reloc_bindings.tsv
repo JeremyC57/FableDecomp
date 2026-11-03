@@ -35633,3 +35633,16 @@ _optionSafe	013d28d0	0099dcb0
 ?SetStateAfterOK@CTCTavernGame@@IAEXVCWideString@@0W4ETavernGameStates@1@@Z	005eb080	005eb9e0
 ?SetStateAfterYesNo@CTCTavernGame@@IAEXVCWideString@@0W4ETavernGameStates@1@01@Z	005eaf30	005eb9e0
 ?SetStateAfterYesNoAlt@CTCTavernGame@@IAEXVCWideString@@0W4ETavernGameStates@1@0101@Z	005eadc0	005eb9e0
+?BeginRender@CDisplayManager@@QAE_NXZ	009bef20	006286f0
+?CopyFromTexture@CTexture@@QAEXABV1@K@Z	009fa4e0	006286f0
+?Draw2DTexture@CRenderManager2D@@QAE_NABVC2DBoxF@@ABVCUVBox@@ABVCRGBColour@@AAVCTexture@@K@Z	009dc870	006286f0
+?DrawBufferedPolys@CRenderManager2D@@QAEXXZ	009d9c80	006286f0
+?ImmediateCancel@CTCBulletTime@@QAEXXZ	0079d020	006286f0
+?Init@CVideoSys@@QAEJABVCWideString@@PAVCTexture@@_N@Z	00a3b9d0	006286f0
+?Play@CMovieSubtitles@@QAEXM_N@Z	009bd910	006286f0
+?Render2DDrawList@CRenderManager2D@@QAEX_N@Z	009da9f0	006286f0
+?SetEnabled25_009915e0@CASoundManager@@QAEX_N@Z	009915e0	006286f0
+?SetEnabled26_00991620@CASoundManager@@QAEX_N@Z	00991620	006286f0
+?SetVolume@CVideoSys@@QAEXM@Z	00a3b920	006286f0
+?Stop@CVideoSys@@QAE_NXZ	00a3b1f0	006286f0
+?Update@CSystemManager@@QAE?AW4ESystemReturn@@XZ	009a6460	006286f0

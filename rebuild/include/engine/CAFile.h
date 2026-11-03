@@ -13,6 +13,12 @@ public:
     static void __fastcall SplitPath(const CCharString&,CCharString*,CCharString*,CCharString*,CCharString*);
     static bool __fastcall PathExists(const CWideString&);
     static bool __fastcall IsPathFile(const CWideString&);
+#ifdef FABLE_RETAIL_CAFILE
+    // Movie row 0x006286F0: Ego_r.pdb + FableWin.pdb ?ConvertPathToFullPath@CAFile@@SI?AVCWideString@@ABV2@@Z (0x00999110; the
+    // hidden return slot in ecx, the path in edx). The PDBs' CCharString overload (SI?AVCCharString@@ABV2@@Z) and the
+    // bool (SI_NABVCWideString@@AAV2@@Z) overload are not used by a retail row of this branch.
+    static CWideString __fastcall ConvertPathToFullPath(const CWideString&);
+#endif
     virtual void Open(const CWideString&,FileAccessType,unsigned long)=0;
     virtual void Close()=0;
     virtual void Read(void*,long,CASuspendableProcess*)=0;
