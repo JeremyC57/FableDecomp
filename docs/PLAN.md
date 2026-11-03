@@ -13,7 +13,7 @@ checklists stay in `docs/ROADMAP.md`; the resume point stays in `docs/HANDOFF.md
 | Known functions (`rebuild/manifest/functions.tsv`) | 57,609 | 10,234,993 function bytes (14,858,408 `.text`) | 49,564 original catalog + 7,608 gap-scan + 437 boundary rows. `rebuild/manifest/status.json` (57,097) is the 2026-09-07 Windows snapshot; the live count is the manifest. |
 | **Landed byte-exact** (`rebuild/oracles/auto-re-candidates.tsv`) | **53,498** (92.86%) | 5,474,516 (53.49%) | MATCH or RELOCATION_MATCH + behaviour PASS. 53,484 genuine C++ (incl. 181 `retail_asm`, 441 `toolchain_library`, 8 `library_source`); 13 `asm_bake` oracles excluded from the genuine figure. Original catalog: 46,014 / 49,564 = 92.84%. |
 | Parked, unlanded (`PARKED_INDEX.tsv` status `parked`) | 1,418 | 971,721 (est.) | Every row has at least one compiled attempt and a residue class (table in §3). 412 are same-length ties. |
-| Unworked (no landed source, no parked record) | 2,693 | 3,788,814 (est.) | Composition in §2. 300 of these are reserved for Codex passes 12–14 (NA077–NA106, until 2026-11-30). |
+| Unworked (no landed source, no parked record) | 2,693 | 3,788,814 (est.) | Composition in §2. Codex passes 12 and 13 have returned (NA077–NA096); pass 14 (NA097–NA106) was released to in-house cuts on 2026-11-03. |
 
 Byte estimates size an unlanded row as the gap to the next known start (capped at 64 KB), so they are upper bounds.
 The function-count coverage is 92.9%; the byte coverage is 53.5% because **221 unlanded rows over 4 KB hold
