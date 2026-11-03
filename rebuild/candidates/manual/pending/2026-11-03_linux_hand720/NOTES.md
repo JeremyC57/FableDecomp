@@ -13,3 +13,9 @@ default/copy ctors, one-expression erase(find_if(..)), erase/find_if bodies in t
 Not attempted (out of time): 00659800 CalculateSecuritySweepTasks, 0065b854 AddThingToVillage, 005c36c2 (fastcall ecx/edx
 file helper; no PDB name found), 005c552c (= CTCInventoryWeapons::RemoveWeaponsFromSheathes, see NAME_FIXES), 005c6b26
 ConstructWeaponDescription, 005c90fc ConstructWeaponDescriptionContainer, 005cacb9 RefreshWeaponDescriptions.
+
+## Continuation (coordinator round 2)
+RemoveThingFromTask<T>: five more probes (rt23 real fable_containers list: no erase(iterator); rt24 iterator default ctors;
+rt26/rt27 `iterator it; it = find_if(..)` with same-TU find_if and erase bodies; rt28 named-iterator form with both bodies) --
+none moves the erase-result temporary off [ebp+14h]; with the assign form both temporaries share [ebp+10h] as retail but the
+copy then reads through `mov eax,[eax]`. Still parked. The seven large rows were not reached in this session.

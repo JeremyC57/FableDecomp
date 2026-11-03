@@ -39,3 +39,19 @@ address	probe	change	grade	note
 00b46660	al1	floor helper x4 + CArray<CManagerLocalLight*> local reference + pool operator new (landed CDynamicObjectHeap::Alloc)	DIFFER(556v557)	_M_start carried across the loop
 00b46660	al2	name LocalLightList at each use (no local reference)	RELOCATION_MATCH	
 00b46660	al3	*(begin() + i)	DIFFER(556v557)	
+00b47bc0	us1	skeleton from the disassembly (3 loops, fade, heap new, push_back)	DIFFER(1162v1028)	_M_insert_overflow inlined; params not packed
+00b47bc0	us2	pack(1) spotlight params; X*X+Y*Y+Z*Z; auto_inline(off) around CArray.h	DIFFER(1163v1028)	pragma does not stop the template instantiation inlining
+00b47bc0	us3	explicit specialisation declaration of vector<CManagerLocalLight*>::_M_insert_overflow	DIFFER(1032v1028)	called out of line as retail
+00b47bc0	us4	scale = (i == nearest) ? fade : 1	DIFFER(1033v1028)	semantics fixed (retail compares the nearest index)
+00b47bc0	us5	if (nearest >= 0) {...} else Active = false	DIFFER(1037v1028)	ebx zero register now as retail
+00b47bc0	us6-us10	declaration orders / per-loop i / inline List[i] args / push_back(new ...)	DIFFER(1037v1028)	
+00b47bc0	us11	FABLE_RETAIL_STLP_TAG_CTORS (empty user ctor on __true_type: tag temp not zero-filled)	DIFFER(1028v1028)	size matched; nearest/second register colouring left
+00b47bc0	us12-us17	nested if, second = nearest, combined declarator, array, second first, inverted if	no better	parked
+00b484b0	fs1	skeleton: env copy, fast normalise, ThemeChannels resize + per-channel copy, grid recentre (floor helper x2), calls, shadow-mode switch	DIFFER(1183v1177)	extent checked: ret 4 at 0x00B48946, int3 from 0x00B48949 (1177 is right)
+00b484b0	fs2	FastNormalise(C3DVector&) helper; same-TU CalculateFogTransformMatrix body (first draft)	DIFFER(1183v1177)	draft body touched edx
+00b484b0	fs3	callee body closer to retail (CMatrix3x4 temp + copy)	DIFFER(1183v1177)	still clobbers edx (result local)
+00b484b0	fs4	callee returns C4DVector(x,y,z,w) directly (no edx) + camera layout fixed	DIFFER(1177v1177)	edx kept across the call as retail
+00b484b0	fs5	plain ThemeChannels[i] expression for the fog transform args	DIFFER(1177v1177)	arg registers fixed
+00b484b0	fs6	UpdateShadowScene(camera) as inline member (PDB name, landed 0x00B444F0)	DIFFER(1177v1177)	esi-based ShadowMode as retail
+00b484b0	fs7	normalise reads x/y/z into locals	DIFFER(1177v1177)	load order fixed; only the resize temp push position left
+00b484b0	fs8-fs12	resize(n) / named blank channel / named count / normalise after resize / v *= scale	no better	parked

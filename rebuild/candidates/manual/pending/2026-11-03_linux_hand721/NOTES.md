@@ -27,3 +27,17 @@ Levers that moved bytes:
 
 Callee spellings used are the PDB ones; see NAME_FIXES.tsv for landed spellings that disagree (ClipLightCountAndBuildLightArray,
 ResetAlreadyFoundFlags, CDynamicObjectHeap<12,16>::CreateMoreBlocks, the link heap global, SetGoal, GetNodeAt).
+
+## Continuation (coordinator round 2)
+- 00b47bc0 UpdateShadowedSpotLights: parked DIFFER(1028v1028) after 17 probes (differ/, needs hdr/stlport/fable_containers.h).
+  Levers: an explicit-specialisation *declaration* of vector<CManagerLocalLight*>::_M_insert_overflow keeps the growth path out
+  of line (fable_containers.h defines it in the TU, so /O2 inlines it; `#pragma auto_inline(off)` around the include does not
+  reach the template instantiation); new opt-in FABLE_RETAIL_STLP_TAG_CTORS branch in stlport/fable_containers.h gives
+  __true_type/__false_type an empty user ctor so push_back's tag temporary is not zero-filled (558 landed rows model the tags
+  that way locally). Residue is register colouring of the nearest/second indices only.
+- 00b484b0 FrameStart: parked DIFFER(1177v1177) after 13 probes (one push placed differently). Extent: 1177 is right (`ret 4`
+  at 0x00B48946, int3 from 0x00B48949; the 1840-byte gap holds the following functions). Key lever: VC7.1 uses a same-TU
+  callee's register usage -- with CalculateFogTransformMatrix's body in the source (written so it does not touch edx) VC keeps
+  &ThemeChannels[i] in edx across the call exactly as retail; with no body or an edx-using body it spills to the frame.
+  UpdateShadowScene(camera) (PDB member, landed 0x00B444F0) is inlined in retail and must be called as the member.
+- 00b46c80 UpdateGlobalLightingStates and 00a1ceb0 Initialise: not reached (name of 0x00A1CEB0 now confirmed, see LABELS).

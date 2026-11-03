@@ -21,3 +21,8 @@ address	probe	change	grade	note
 00660ae2	rt19	second iterator copy	= rt2	
 00660ae2	rt20	const iterator it	= rt2	
 00660ae2	rt21/22	cast to iterator& / const&	= rt1	
+00660ae2	rt23	real stlport/fable_containers.h list	SRC_FAIL	header list has no erase(iterator)
+00660ae2	rt24	local list + default ctors on _List_iterator_base/_List_iterator	DIFFER(123v123)	= rt2
+00660ae2	rt26	rt11 (iterator it; it = find_if) + same-TU find_if body	DIFFER(122v123)	copy still through mov eax,[eax]
+00660ae2	rt27	rt26 + same-TU erase body	DIFFER(122v123)	= rt26
+00660ae2	rt28	rt2 + same-TU find_if and erase bodies	DIFFER(123v123)	= rt2 (erase temp [ebp+14h])
