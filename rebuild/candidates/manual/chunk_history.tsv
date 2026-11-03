@@ -26376,3 +26376,10 @@ chunk	address	module	name	length
 733	0040a7f0	CUserProfileManager	ApplyVideoValues	1941
 733	0040bca0	CUserProfileManager	LoadGameState	2790
 733	0040c790	CUserProfileManager	SetDefaultValues	1284
+734	0049f4c0	CWorld	SaveGameStateInternal	2825
+734	004a0d90	CWorld	LoadQuestsFromFile	2733
+734	004a1cb0	CWorld	PreparePrimitivesForEngine	1330
+734	004a21f0	CWorld	LoadGameStateInternal	2931
+734	004a5a40	CWorld	UpdateFrame	1102
+734	004a5e90	CWorld	AutoLoadRegionLeaving	1722
+734	004a6e30	CWorld	Init	2259
