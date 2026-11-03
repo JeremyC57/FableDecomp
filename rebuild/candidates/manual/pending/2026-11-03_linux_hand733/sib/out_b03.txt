@@ -1,0 +1,23 @@
+addr       parity           behav  name
+0089e190   RELOCATION_MATCH PASS   CameraUseCameraPoint
+00989cb0   RELOCATION_MATCH PASS   UpdateObjectSpaceLighting
+0098acf0   WARN RELOC_NAME: ?Initialise@CShaderResource@@QAEXAAVCShaderRenderManager@@@Z -> 00a5d4d0 labelled '_global::SetMember_dword0x14_00a5d4d0'
+0098acf0   RELOCATION_MATCH PASS   Initialise
+  WARN leaf '?InitializeStreamingFontTextureCache@?A0xfe46a155@@YIXPAVCStreamingFontDataBank@@@Z' matches no symbol in 009a3640.obj; graded the largest function
+  WARN leaf '?InitializeStreamingFontTextureCache@?A0xfe46a155@@YIXPAVCStreamingFontDataBank@@@Z' matches no symbol in 009a3640.obj; graded the largest function
+009a3640   WARN RELOC_NAME: ?EnterSynchronisation@CMemoryAllocator@@KIXXZ -> 009f2000 labelled 'GFEnterAllocatorLock'
+009a3640   WARN RELOC_NAME: ?LeaveSynchronisation@CMemoryAllocator@@KIXXZ -> 009f2010 labelled 'GFLeaveAllocatorLock'
+009a3640   WARN RELOC_NAME: ?ReadData@CStreamingFontDataBank@@QAEXPAXKK@Z -> 00a5ef30 labelled 'std::vector<CCharString,std::allocator<CCharString>_>::_Ucopy<std::_Tree_const_iterator<std::_Tree_val<std::_Tset_traits<CCharString,std::less<CCharString>,std::allocator<CCharString>,0>_>_>_>'
+009a3640   RELOCATION_MATCH PASS   InitializeStreamingFontTextureCache
+009bb110   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+009bb110   RELOCATION_MATCH PASS   TransferVectorLoadText
+009c0880   WARN RELOC_NAME: ??0CBusyResourceManager@@QAE@XZ -> 00a61880 labelled 'CDirectInputDeviceLists_00a61b10::CDirectInputDeviceLists_00a61b10'
+009c0880   RELOCATION_MATCH PASS   CDisplayManager
+
+WINS: 6
+  0089e190 RELOCATION_MATCH CGameScriptInterface::?CameraUseCameraPoint@CGameScriptInterface@@UBEXABVCScriptThing@@PBVC3DVector@@PBVCRightHandedSet@@MJJ@Z
+  00989cb0 RELOCATION_MATCH CShaderRenderManager::?UpdateObjectSpaceLighting@CShaderRenderManager@@AAEXK@Z
+  0098acf0 RELOCATION_MATCH CShaderRenderManager::?Initialise@CShaderRenderManager@@QAEXPAVCRenderManager@@PAUIDirect3DDevice9@@@Z
+  009a3640 RELOCATION_MATCH _global (anon namespace)::?InitializeStreamingFontTextureCache@?A0xfe46a155@@YIXPAVCStreamingFontDataBank@@@Z
+  009bb110 RELOCATION_MATCH CPersistContext::?TransferVectorLoadText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableVectorGenericType@@@Z
+  009c0880 RELOCATION_MATCH CDisplayManager::??0CDisplayManager@@QAE@AAVCSystemManager@@@Z

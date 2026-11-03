@@ -1,0 +1,5 @@
+s6aa.cpp
+Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\chunk733\exp\s6aa.cpp(66) : error C2039: 'PeekDebugFont' : is not a member of 'CMainGameComponent'
+        Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\chunk733\mirror\fable_game.h(67) : see declaration of 'CMainGameComponent'
+Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\chunk733\exp\s6aa.cpp(73) : error C2039: 'PeekDebugFont' : is not a member of 'CMainGameComponent'
+        Z:\tmp\claude-0\-home-user-FableDecomp\40effb6c-294b-5111-9a88-ca0c32f095ec\scratchpad\w22\chunk733\mirror\fable_game.h(67) : see declaration of 'CMainGameComponent'

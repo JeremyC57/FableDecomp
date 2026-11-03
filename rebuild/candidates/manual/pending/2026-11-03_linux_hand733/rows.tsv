@@ -1,0 +1,7 @@
+address	module	name	length
+004075c0	CUserProfileManager	RenderUIBackground	1194
+00409b70	CUserProfileManager	SetDefaultValuesForNewProfile	1105
+00409fd0	CUserProfileManager	SaveGameState	1892
+0040a7f0	CUserProfileManager	ApplyVideoValues	1941
+0040bca0	CUserProfileManager	LoadGameState	2790
+0040c790	CUserProfileManager	SetDefaultValues	1284

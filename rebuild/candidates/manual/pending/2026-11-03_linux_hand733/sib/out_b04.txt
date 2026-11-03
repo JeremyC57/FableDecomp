@@ -1,0 +1,30 @@
+addr       parity           behav  name
+009da9f0   WARN RELOC_NAME: ?D3DTextureUVModeTable@CRenderStateManager@@0PAKA -> 01396dc8 labelled 'g_textureUVModeToD3D'
+009da9f0   WARN RELOC_NAME: ?SetAWindow@CRenderManagerCore@@QAEXABVC2DBoxF@@@Z -> 00a0aa80 labelled '_global::Forward_SetViewport_via0x3a3c_00a0aa80'
+009da9f0   WARN RELOC_NAME: ?erase@?$vector@VCQuickDrawTriInfo@@V?$allocator@VCQuickDrawTriInfo@@@std@@@std@@QAEPAVCQuickDrawTriInfo@@PAV3@0@Z -> 009e15e0 labelled 'TextureCache_MoveAndCleanup'
+009da9f0   RELOCATION_MATCH PASS   Render2DDrawList
+00a4fe60   WARN RELOC_NAME: ??1?$CCountedPointer@VC3DAnimFileXAllocationSizeChunk@@@@QAE@XZ -> 00a52f40 labelled '_global::CCountedPointer_Release_00a52f40'
+00a4fe60   WARN RELOC_NAME: ?HasMovementTrack@C3DAnimFileMovementVectorChunk@@QBE_NXZ -> 00aae920 labelled 'C3DAnimFileRootChunk::HasSequences'
+00a4fe60   WARN RELOC_NAME: ?InitialiseFromFileData@C3DAnimationSequenceData@@QAE_NABVC3DAnimFileSequenceChunk@@AAVCSimpleMemoryPool@@@Z -> 00a4efc0 labelled 'C3DKeyframe_InitialiseAsConstant'
+00a4fe60   RELOCATION_MATCH PASS   InitialiseSharedAnimation
+00ae0070   RELOCATION_MATCH PASS   ApplyTransform
+00ae04e0   WARN SHARED_HEADER_AVAILABLE CMatrix4x4
+00ae04e0   WARN SHARED_HEADER_AVAILABLE C4DVector
+00ae04e0   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00ae04e0   RELOCATION_MATCH PASS   GetMatrixBuffer
+00ae0540   WARN SHARED_HEADER_AVAILABLE CMatrix4x4
+00ae0540   WARN SHARED_HEADER_AVAILABLE C4DVector
+00ae0540   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00ae0540   RELOCATION_MATCH PASS   GetVectorBuffer
+00ae05a0   WARN SHARED_HEADER_AVAILABLE CMatrix4x4
+00ae05a0   WARN SHARED_HEADER_AVAILABLE C4DVector
+00ae05a0   WARN SHARED_HEADER_AVAILABLE CMovableResource
+00ae05a0   RELOCATION_MATCH PASS   GetGroupVectorBuffer
+
+WINS: 6
+  009da9f0 RELOCATION_MATCH CRenderManager2D::?Render2DDrawList@CRenderManager2D@@QAEX_N@Z
+  00a4fe60 RELOCATION_MATCH C3DAnimation2::?InitialiseSharedAnimation@C3DAnimation2@@QAE_NABVC3DAnimFile@@W4EAnimationType@@@Z
+  00ae0070 RELOCATION_MATCH CParticleProgram::?ApplyTransform@CParticleProgram@@QAEXABVCMatrix3x4@@@Z
+  00ae04e0 RELOCATION_MATCH CParticleProgram::?GetMatrixBuffer@CParticleProgram@@CIPAVCMatrix4x4@@K@Z
+  00ae0540 RELOCATION_MATCH CParticleProgram::?GetVectorBuffer@CParticleProgram@@CIPAVC4DVector@@K@Z
+  00ae05a0 RELOCATION_MATCH CParticleProgram::?GetGroupVectorBuffer@CParticleProgram@@CIPAVC4DVector@@K@Z

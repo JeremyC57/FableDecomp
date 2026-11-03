@@ -1,0 +1,18 @@
+addr       parity           behav  name
+004084b0   RELOCATION_MATCH PASS   GetMaxEffectsDetail
+00408500   RELOCATION_MATCH PASS   GetMaxTextureDetail
+00408550   RELOCATION_MATCH PASS   GetMaxShadowDetail
+004085a0   RELOCATION_MATCH PASS   GetMaxMeshDetail
+00430900   WARN RELOC_NAME: ??$TransferMap@KK@CPersistContext@@QAEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@@Z -> 00431242 labelled '_global::PersistTransfer_00431242'
+00430900   WARN RELOC_NAME: ??$Transfer@W4EMusicSetType@@@CPersistContext@@QAEXAAW4EMusicSetType@@@Z -> 0043119e labelled 'CEngineLightingManager::UpdateShadowScene'
+00430900   WARN RELOC_NAME: ??$TransferMap@JVCCharString@@@CPersistContext@@QAEXAAV?$map@VCCharString@@JU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@@Z -> 00431493 labelled '_global::PersistTransfer_00431493'
+00430900   RELOCATION_MATCH PASS   Transfer
+00434a10   MATCH            PASS   PreChangeResolution
+
+WINS: 6
+  004084b0 RELOCATION_MATCH CUserProfileManager::?GetMaxEffectsDetail@CUserProfileManager@@QBEMXZ
+  00408500 RELOCATION_MATCH CUserProfileManager::?GetMaxTextureDetail@CUserProfileManager@@QBEMXZ
+  00408550 RELOCATION_MATCH CUserProfileManager::?GetMaxShadowDetail@CUserProfileManager@@QBEMXZ
+  004085a0 RELOCATION_MATCH CUserProfileManager::?GetMaxMeshDetail@CUserProfileManager@@QBEMXZ
+  00430900 RELOCATION_MATCH NUISystem::CUIMiscThingsDef::?Transfer@CUIMiscThingsDef@NUISystem@@UAEXAAVCPersistContext@@@Z
+  00434a10 MATCH CDisplayEngine::?PreChangeResolution@CDisplayEngine@@QAEXXZ

@@ -1,0 +1,26 @@
+addr       parity           behav  name
+00ae0710   RELOCATION_MATCH PASS   CalculateAveragePatchSize
+00ae0e60   WARN SHARED_HEADER_AVAILABLE CMatrix4x4
+00ae0e60   WARN SHARED_HEADER_AVAILABLE CArray
+00ae0e60   WARN RELOC_NAME: ?PeekVertexBlends@C3DGroup2@@QBEPBVC3DVertexBlend2@@XZ -> 00ac40a0 labelled 'C3DMeshFileGroupChunk::GetList'
+00ae0e60   RELOCATION_MATCH PASS   TransformVertices
+00ae8d50   WARN RELOC_NAME: ??$__copy@PAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@PAU12@H@std@@YIPAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z -> 00ae9cb0 labelled 'std::__copy<std::pair<long, CCountedPointer<NParticleEngine::CParticleEmitter>> *, std::pair<long, CCountedPointer<NParticleEngine::CParticleEmitter>> *, int>'
+00ae8d50   WARN RELOC_NAME: ??$__destroy_aux@PAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@std@@YIXPAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@0@0ABU__false_type@0@@Z -> 00ae9d50 labelled 'std::__destroy_aux<std::pair<long, CCountedPointer<NParticleEngine::CParticleEmitter>> *>'
+00ae8d50   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00ae8d50   RELOCATION_MATCH PASS   Load
+00b26360   WARN RELOC_NAME: ?GetPDefFromClassIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@J@Z -> 009ade10 labelled 'CDefinitionManager::GetPDefFromGlobalIndex'
+00b26360   WARN RELOC_CONFLICT: ??0CEnginePrimitiveTypeInfo@@QAE@XZ -> 00b8faa0 here, 00a02d20 in landed 00a148d0
+00b26360   RELOCATION_MATCH PASS   Initialise
+00b32230   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+00b32230   WARN RELOC_NAME: ?g_pRenderStateManager_01436e18@@3PAVCRenderStateManager@@A -> 01436e18 labelled 'g_pRenderManagerCore'
+00b32230   WARN RELOC_NAME: ?g_pLightingManager@@3PAUCEngineLightingManager_Methods@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00b32230   RELOCATION_MATCH PASS   PostRenderLayer
+00b3efa0   RELOCATION_MATCH PASS   ReadMapInfoBlock
+
+WINS: 6
+  00ae0710 RELOCATION_MATCH CParticleProgram::?CalculateAveragePatchSize@CParticleProgram@@AAEXABVCParticleSimulation@@@Z
+  00ae0e60 RELOCATION_MATCH CParticleProgram::?TransformVertices@CParticleProgram@@ABEXPAVC4DVector@@PBV2@KPBVCMatrix4x4@@ABV?$CArray@VC3DGroup2@@@@@Z
+  00ae8d50 RELOCATION_MATCH NParticleEngine::CParticleEmitterDatabase::?Load@CParticleEmitterDatabase@NParticleEngine@@IAEXAAVCAFile@@ABVCEmitterDatabaseSerialiseInfo@2@@Z
+  00b26360 RELOCATION_MATCH CEngine::?Initialise@CEngine@@UAE_NABVCEngineInit@@@Z
+  00b32230 RELOCATION_MATCH CEnginePrimitiveRenderer::PostRenderLayer
+  00b3efa0 RELOCATION_MATCH CEngineMap::?ReadMapInfoBlock@CEngineMap@@CIXAAUCStaticMapInfoBlock@1@AAVCDataInputStream@@@Z

@@ -1,0 +1,5 @@
+addr       parity           behav  name
+004075c0   RELOCATION_MATCH PASS   RenderUIBackground
+
+WINS: 1
+  004075c0 RELOCATION_MATCH CUserProfileManager::?RenderUIBackground@CUserProfileManager@@QAEXM@Z

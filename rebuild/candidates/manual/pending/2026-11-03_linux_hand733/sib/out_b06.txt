@@ -1,0 +1,24 @@
+addr       parity           behav  name
+00b44820   MATCH            PASS   CalcSWLightingNoClipVector
+00b44a60   MATCH            PASS   CalcSWLightingNoClipSeparateMainLightVector
+00b45fb0   WARN SHARED_HEADER_AVAILABLE C3DBoundingSphere
+00b45fb0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveThemeChannelDesc
+00b45fb0   WARN SHARED_HEADER_AVAILABLE CRGBFloatColour
+00b45fb0   RELOCATION_MATCH PASS   GetLightsInSphere
+00b46280   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveThemeChannelDesc
+00b46280   WARN SHARED_HEADER_AVAILABLE CRGBFloatColour
+00b46280   RELOCATION_MATCH PASS   GetLightsInArea
+00b46660   WARN SHARED_HEADER_AVAILABLE CRGBFloatColour
+00b46660   RELOCATION_MATCH PASS   AddLightsToLookupGrid
+00b46a30   WARN SHARED_HEADER_AVAILABLE C3DVector
+00b46a30   WARN SHARED_HEADER_AVAILABLE C3DBoundingBox
+00b46a30   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveThemeChannelDesc
+00b46a30   RELOCATION_MATCH PASS   LookupSmallObjectLightCache
+
+WINS: 6
+  00b44820 MATCH CEngineLightingManager::?CalcSWLightingNoClipVector@CEngineLightingManager@@QAEXPAVCRGBFloatColour@@PBVC4DVector@@PBM22JABVCEngineLocalLightArray@@@Z
+  00b44a60 MATCH CEngineLightingManager::?CalcSWLightingNoClipSeparateMainLightVector@CEngineLightingManager@@QAEXPAVCRGBFloatColour@@0PBVC4DVector@@PBM22JABVCEngineLocalLightArray@@@Z
+  00b45fb0 RELOCATION_MATCH CEngineLightingManager::?GetLightsInSphere@CEngineLightingManager@@QAEPAVCEngineLocalLightArray@@ABVC3DBoundingSphere@@JABVCEnginePrimitiveThemeChannelDesc@@@Z
+  00b46280 RELOCATION_MATCH CEngineLightingManager::?GetLightsInArea@CEngineLightingManager@@QAEPAVCEngineLocalLightArray@@ABVC3DBoundingBox@@JABVCEnginePrimitiveThemeChannelDesc@@@Z
+  00b46660 RELOCATION_MATCH CEngineLightingManager::?AddLightsToLookupGrid@CEngineLightingManager@@AAEXXZ
+  00b46a30 RELOCATION_MATCH CEngineLightingManager::?LookupSmallObjectLightCache@CEngineLightingManager@@AAEPAVCEngineLocalLightArray@@MMJ@Z

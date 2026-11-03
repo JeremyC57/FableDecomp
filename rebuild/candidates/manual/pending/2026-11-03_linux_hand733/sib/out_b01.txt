@@ -1,0 +1,19 @@
+addr       parity           behav  name
+00434a20   MATCH            PASS   PostChangeResolution
+0047a9f0   WARN RELOC_NAME: ?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z -> 00403c60 labelled 'MemCmp_Unsigned16'
+0047a9f0   WARN RELOC_NAME: ??$__destroy_aux@PAVCHeroLogBookEntry@CHeroLogBook@@@std@@YIXPAVCHeroLogBookEntry@CHeroLogBook@@0ABU__false_type@0@@Z -> 0047baf0 labelled 'std::__destroy_aux<CHeroLogBook::CHeroLogBookEntry*>'
+0047a9f0   RELOCATION_MATCH PASS   AddEntry
+004b05c0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+004b05c0   RELOCATION_MATCH PASS   TransferBoasts
+00520670   RELOCATION_MATCH PASS   LoadHeroStateBinary
+00521620   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@PAV123@@std@@YIPAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@PAV123@00ABU__false_type@0@@Z -> 005269b0 labelled 'std::__uninitialized_copy<NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *>'
+00521620   RELOCATION_MATCH PASS   SaveToGameStateBinary
+00522720   RELOCATION_MATCH PASS   RuntimeLoadEntities
+
+WINS: 6
+  00434a20 MATCH CDisplayEngine::?PostChangeResolution@CDisplayEngine@@QAEXKKK@Z
+  0047a9f0 RELOCATION_MATCH CHeroLogBook::?AddEntry@CHeroLogBook@@QAEXABVCWideString@@00W4ECategory@CHeroLogBookEntry@1@_N@Z
+  004b05c0 RELOCATION_MATCH CQuestManager::?TransferBoasts@CQuestManager@@QAEXAAVCPersistContext@@@Z
+  00520670 RELOCATION_MATCH CThingManager::?LoadHeroStateBinary@CThingManager@@QAEXAAVCPersistContext@@@Z
+  00521620 RELOCATION_MATCH NThingManager::CEntityRuntimePersistence::?SaveToGameStateBinary@CEntityRuntimePersistence@NThingManager@@QAEXAAVCPersistContext@@@Z
+  00522720 RELOCATION_MATCH CThingManager::?RuntimeLoadEntities@CThingManager@@QAEXJABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@3@@Z

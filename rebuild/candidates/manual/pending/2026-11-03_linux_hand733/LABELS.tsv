@@ -1,0 +1,11 @@
+address	name	evidence
+0x004075C0	?RenderUIBackground@CUserProfileManager@@QAEXM@Z	landed row (RELOCATION_MATCH, vland PASS); Ego_r.pdb + FableWin.pdb
+0x0040BCA0	?LoadGameState@CUserProfileManager@@IAEXAAVCAFile@@@Z	landed row (RELOCATION_MATCH /GS, vland PASS); Ego_r.pdb + FableWin.pdb
+0x0040A7F0	?ApplyVideoValues@CUserProfileManager@@IAEXXZ	parked row (DIFFER 1925v1941); Ego_r.pdb + FableWin.pdb
+0x00409FD0	?SaveGameState@CUserProfileManager@@IAEXAAVCAFile@@@Z	parked row (DIFFER 1892v1892); Ego_r.pdb + FableWin.pdb
+0x0040C790	?SetDefaultValues@CUserProfileManager@@QAEXXZ	parked row (DIFFER 1284v1284); Ego_r.pdb + FableWin.pdb
+0x00409B70	?SetDefaultValuesForNewProfile@CUserProfileManager@@QAEXXZ	parked row (DIFFER 1089v1105); Ego_r.pdb + FableWin.pdb
+0x0047E651	?VideoOptionsChanged@CTCInGameMenu@@QAEXXZ	callee of ApplyVideoValues success path (builds the options-changed dialog); Ego_r.pdb + FableWin.pdb member; catalog agrees
+0x0047F30F	?VideoOptionsNotAccepted@CTCInGameMenu@@QAEXXZ	callee of ApplyVideoValues failure path when the in-game menu is open; Ego_r.pdb + FableWin.pdb member; catalog agrees
+0x00996BE0	?ReadString@CDataInputStream@@QAE?AVCCharString@@K@Z	callee of LoadGameState (text = stream.ReadString(length - position)); Ego_r.pdb + FableWin.pdb
+0x00406820	?ConvertFloatToVideoOptionQuality@CUserProfileManager@@AAE?AW4EEngineVideoOptionQuality@@M@Z	callee of ApplyVideoValues (same-TU body, still called); Ego_r.pdb + FableWin.pdb, private

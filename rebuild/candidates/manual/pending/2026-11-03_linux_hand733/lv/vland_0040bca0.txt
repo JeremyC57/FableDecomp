@@ -1,0 +1,9 @@
+addr       parity           behav  name
+0040bca0   WARN RELOC_NAME: ??1CFileDataInputStream@@UAE@XZ -> 00994780 labelled '_global::Dtor_CBaseBase_00994780'
+0040bca0   WARN RELOC_NAME: ??$TransferVector@VCActionInputControl@@@CPersistContext@@QAEXPBDAAV?$vector@VCActionInputControl@@V?$allocator@VCActionInputControl@@@std@@@std@@@Z -> 00412db0 labelled 'CPersistContext::Transfer<CActionInputControl>'
+0040bca0   WARN RELOC_NAME: ??$TransferVector@W4ETutorialCategory@@@CPersistContext@@QAEXPBDAAV?$vector@W4ETutorialCategory@@V?$allocator@W4ETutorialCategory@@@std@@@std@@@Z -> 00412e80 labelled 'CPersistContext::Transfer<ETutorialCategory>'
+0040bca0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+0040bca0   RELOCATION_MATCH PASS   LoadGameState
+
+WINS: 1
+  0040bca0 RELOCATION_MATCH CUserProfileManager::?LoadGameState@CUserProfileManager@@IAEXAAVCAFile@@@Z

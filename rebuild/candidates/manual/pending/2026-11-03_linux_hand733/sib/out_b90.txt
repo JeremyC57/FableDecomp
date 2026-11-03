@@ -1,0 +1,6 @@
+addr       parity           behav  name
+006aa2e0   RELOCATION_MATCH PASS   DrawPreparePrimitivesForRendering
+00b26360   SRC_FAIL         PASS   Initialise
+
+WINS: 1
+  006aa2e0 RELOCATION_MATCH CThingPlayerCreature::?DrawPreparePrimitivesForRendering@CThingPlayerCreature@@UAE_NABVCEnginePrimitivePrepareInfo@@@Z

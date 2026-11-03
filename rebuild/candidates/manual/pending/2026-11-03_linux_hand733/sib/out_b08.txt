@@ -1,0 +1,37 @@
+addr       parity           behav  name
+00b9e950   WARN SHARED_HEADER_AVAILABLE C3DMeshInfo
+00b9e950   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitive2DStaticMesh
+00b9e950   WARN SHARED_HEADER_AVAILABLE CDisplayManager
+00b9e950   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveTypeInfo
+00b9e950   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer2D
+00b9e950   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer
+00b9e950   WARN SHARED_HEADER_AVAILABLE CEngineSubPrimitiveRenderer
+00b9e950   WARN RELOC_NAME: ?SetLoadPriority@C3DMeshInfo@@QAEXJ@Z -> 00a23c50 labelled '_global::Nop_ret4_00a23c50'
+00b9e950   WARN RELOC_NAME: ?g_pLightingManager@@3PAVCEngineLightingManager@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00b9e950   WARN RELOC_NAME: ??1CCountedMeshPointer@@QAE@XZ -> 00a36ec0 labelled 'CCountedPointer<const C3DMesh2>::~CCountedPointer'
+00b9e950   RELOCATION_MATCH PASS   Render2DPrimitive
+00bd1f70   WARN SHARED_HEADER_AVAILABLE C3DMeshInfo
+00bd1f70   WARN SHARED_HEADER_AVAILABLE CMatrix3x4
+00bd1f70   WARN SHARED_HEADER_AVAILABLE C3DVector
+00bd1f70   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitive2DAnimatedMesh
+00bd1f70   WARN SHARED_HEADER_AVAILABLE CDisplayManager
+00bd1f70   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveTypeInfo
+00bd1f70   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer2D
+00bd1f70   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer
+00bd1f70   WARN SHARED_HEADER_AVAILABLE CEngineSubPrimitiveRenderer
+00bd1f70   WARN RELOC_NAME: ?SetLoadPriority@C3DMeshInfo@@QAEXJ@Z -> 00a23c50 labelled '_global::Nop_ret4_00a23c50'
+00bd1f70   WARN RELOC_NAME: ?g_pLightingManager@@3PAVCEngineLightingManager@@A -> 01436e9c labelled 'g_pEngineLightingManager'
+00bd1f70   RELOCATION_MATCH PASS   Render2DPrimitive
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@W4EGameflowPosition@@@CPersistContext@@KI?AW4EGameflowPosition@@XZ -> 00cdca40 labelled 'sub_00cdca40'
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@_N@CPersistContext@@KI_NXZ -> 0040e240 labelled 'sub_0040e240'
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@J@CPersistContext@@KIJXZ -> 0040e160 labelled '_global::ReturnZero_ret0_0040e160'
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@W4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@@CPersistContext@@KI?AW4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@XZ -> 00cdca50 labelled 'sub_00cdca50'
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@W4EPlaceInHeroSouls@@@CPersistContext@@KI?AW4EPlaceInHeroSouls@@XZ -> 00cdca60 labelled 'sub_00cdca60'
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@K@CPersistContext@@KIKXZ -> 0040e260 labelled 'sub_0040e260'
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@M@CPersistContext@@KIMXZ -> 0040e250 labelled '_global::GetConstFloat_0_0040e250'
+00cdc070   RELOCATION_MATCH PASS   OnPersist
+
+WINS: 3
+  00b9e950 RELOCATION_MATCH CEnginePrimitiveManager2DStaticMeshes::Render2DPrimitive
+  00bd1f70 RELOCATION_MATCH CEnginePrimitiveManager2DAnimatedMeshes::Render2DPrimitive
+  00cdc070 RELOCATION_MATCH NScript::CQ_SunnyvaleMasterData::?OnPersist@CQ_SunnyvaleMasterData@NScript@@UAEXAAVCPersistContext@@@Z
