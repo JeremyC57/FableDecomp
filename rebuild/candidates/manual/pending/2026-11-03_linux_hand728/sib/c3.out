@@ -1,0 +1,42 @@
+addr       parity           behav  name
+007c31c0   RELOCATION_MATCH PASS   ~CTCDrainLife
+007ce370   WARN SHARED_HEADER_AVAILABLE CThing
+007ce370   RELOCATION_MATCH PASS   OnInitialActivate
+007ca630   WARN SHARED_HEADER_AVAILABLE C2DBoxF
+007ca630   WARN SHARED_HEADER_AVAILABLE C3DVector
+007ca630   WARN SHARED_HEADER_AVAILABLE CRightHandedSet
+007ca630   RELOCATION_MATCH PASS   OnKill
+007dfca0   RELOCATION_MATCH PASS   ~CTCFish
+007e3420   RELOCATION_MATCH PASS   ~CTCFlashOnHit
+007e0b20   RELOCATION_MATCH PASS   ~CTCHeroSpecialMovement
+007e48e0   RELOCATION_MATCH PASS   ~CTCWillResponse
+007e1510   WARN SHARED_HEADER_AVAILABLE CThing
+007e1510   RELOCATION_MATCH PASS   ~CTCGraphicAppearanceMultipleStaticMeshes
+007f0890   RELOCATION_MATCH PASS   OnDie
+00802610   WARN SHARED_HEADER_AVAILABLE C3DVector
+00802610   WARN SHARED_HEADER_AVAILABLE C2DVector
+00802610   WARN SHARED_HEADER_AVAILABLE CThing
+00802610   RELOCATION_MATCH PASS   GetPTargetedThing
+0089e190   RELOCATION_MATCH PASS   CameraUseCameraPoint
+008ac4d0   RELOCATION_MATCH PASS   ~CModeScreamerSuperAttack
+008d6690   WARN SHARED_HEADER_AVAILABLE C3DVector
+008d6690   WARN SHARED_HEADER_AVAILABLE CTCCreatureModeManager
+008d6690   RELOCATION_MATCH PASS   OnActivate
+008edff0   RELOCATION_MATCH PASS   CWillButtonHelperTimer
+008e31a0   RELOCATION_MATCH PASS   ~CModeDragonHover
+008e3720   RELOCATION_MATCH PASS   ~CModeJackOfBladesFlash
+008e37c0   WARN SHARED_HEADER_AVAILABLE C3DVector
+008e37c0   RELOCATION_MATCH PASS   ~CModeScorpionKingTailPlunge
+00ac2be0   WARN RELOC_NAME: ??_GC3DMeshPartitionBuilderElement@@QAEPAXI@Z -> 00ac39c0 labelled 'C3DMeshPartitionBuilderElement::`scalar deleting destructor''
+00ac2be0   RELOCATION_MATCH PASS   PartitionSpace
+0121af20   WARN RELOC_NAME: ?UninitModeClickPastText@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z -> 006334f0 labelled 'std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>'
+0121af20   WARN RELOC_NAME: ?InitModeYesNoQuestion@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z -> 006359c0 labelled 'CPlayer::InitModeClickPastText'
+0121af20   WARN RELOC_NAME: ?UninitModeYesNoQuestion@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z -> 00633670 labelled 'CPlayer::UninitModeClickPastText'
+0121af20   WARN RELOC_NAME: ?InitModeLookThroughWindow@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z -> 00633400 labelled 'sub_00633400'
+0121af20   WARN RELOC_NAME: ?UninitModeControlSpirit@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z -> 006336e0 labelled '_unattributed::ForwardThroughMember_006336e0'
+0121af20   WARN RELOC_NAME: ?UninitModeTavernGame@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z -> 006336f0 labelled '_unattributed::ForwardThroughMember_006336f0'
+0121af20   WARN RELOC_NAME: ?UninitModeCutScene@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z -> 00633510 labelled 'std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>'
+0121af20   WARN RELOC_NAME: ?UninitModeFishing@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z -> 00633780 labelled '_unattributed::ForwardThroughMember_00633780'
+0121af20   WARN RELOC_NAME: ?UninitModeDigging@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z -> 006337b0 labelled '_unattributed::ForwardThroughMember_006337b0'
+0121af20   WARN RELOC_NAME: ?UninitModeFireheartMinigame@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z -> 00633bd0 labelled '_unattributed::ForwardThroughMember_00633bd0'
+0121af20   RELOCATION_MATCH PASS   `dynamic initializer for 'PlayerModeInfo'' (object symbol _$E1 of its TU)

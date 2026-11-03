@@ -1,0 +1,7 @@
+address	module	name	length	group	anchor	gap_to_next_start
+006d0830	CTCWife	GlobalUpdate	2584	G006cf530	CTCWife	2592
+006d1e30	CTCWife	FrameUpdate	3484	G006cf530	CTCWife	3488
+006d2bd0	CThingNPC::CThingNPC	TransferLoveState	1770	G006cf530	CTCWife	2000
+0074b770	CTCCreatureGenerator	InitialiseCreatureGenerator	395	G0074a4e0	CTCCreatureGenerator	12
+0074bc20	CTCCreatureGenerator	DrawDebugInfo	1290	G0074a4e0	CTCCreatureGenerator	16
+00c267e0	_global	UIManager_UpdateHeroEquipment	577	G00a02df0	CHandleBasedMemoryPool	592

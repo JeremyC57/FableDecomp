@@ -1,0 +1,11 @@
+addr       parity           behav  name
+004084b0   RELOCATION_MATCH PASS   GetMaxEffectsDetail
+004085a0   RELOCATION_MATCH PASS   GetMaxMeshDetail
+00408550   RELOCATION_MATCH PASS   GetMaxShadowDetail
+00408500   RELOCATION_MATCH PASS   GetMaxTextureDetail
+
+WINS: 4
+  004084b0 RELOCATION_MATCH CUserProfileManager::?GetMaxEffectsDetail@CUserProfileManager@@QBEMXZ
+  004085a0 RELOCATION_MATCH CUserProfileManager::?GetMaxMeshDetail@CUserProfileManager@@QBEMXZ
+  00408550 RELOCATION_MATCH CUserProfileManager::?GetMaxShadowDetail@CUserProfileManager@@QBEMXZ
+  00408500 RELOCATION_MATCH CUserProfileManager::?GetMaxTextureDetail@CUserProfileManager@@QBEMXZ

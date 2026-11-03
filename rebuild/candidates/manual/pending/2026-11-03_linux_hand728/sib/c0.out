@@ -1,0 +1,49 @@
+addr       parity           behav  name
+00434a20   MATCH            PASS   PostChangeResolution
+00434a10   MATCH            PASS   PreChangeResolution
+0047a9f0   WARN RELOC_NAME: ?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z -> 00403c60 labelled 'MemCmp_Unsigned16'
+0047a9f0   WARN RELOC_NAME: ??$__destroy_aux@PAVCHeroLogBookEntry@CHeroLogBook@@@std@@YIXPAVCHeroLogBookEntry@CHeroLogBook@@0ABU__false_type@0@@Z -> 0047baf0 labelled 'std::__destroy_aux<CHeroLogBook::CHeroLogBookEntry*>'
+0047a9f0   RELOCATION_MATCH PASS   AddEntry
+00487570   WARN RELOC_NAME: ?Sprintf@CWideString@@QAAXPBGZZ -> 0099ba70 labelled 'CWideString::Format'
+00487570   RELOCATION_MATCH PASS   DrawFreeCamDebug
+00487dc0   RELOCATION_MATCH PASS   GetPControlledCreature
+00487b70   RELOCATION_MATCH PASS   GetPPlayerCharacterThing
+00487dd0   RELOCATION_MATCH PASS   PeekPControlledCreature
+0049e270   WARN SHARED_HEADER_AVAILABLE CThingManager
+0049e270   RELOCATION_MATCH PASS   Unload
+004c8ba0   WARN SHARED_HEADER_AVAILABLE CThing
+004c8ba0   RELOCATION_MATCH PASS   WorldUpdateBulletTime
+004da967   RELOCATION_MATCH PASS   ~CTCActionUseBase
+004dcdfd   RELOCATION_MATCH PASS   ~CTCDRumble
+004dcbce   RELOCATION_MATCH PASS   ~CTCDecapitation
+004dc7c8   RELOCATION_MATCH PASS   ~CTCExpression
+004dcf4e   RELOCATION_MATCH PASS   ~CTCHasName
+004dccd2   RELOCATION_MATCH PASS   ~CTCResurrectionItem
+004db004   RELOCATION_MATCH PASS   ~CTCSmashableBase
+004ff750   RELOCATION_MATCH PASS   CreateRelevantPersonAndUpdateStats
+00520670   RELOCATION_MATCH PASS   LoadHeroStateBinary
+00522720   RELOCATION_MATCH PASS   RuntimeLoadEntities
+00521620   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@PAV123@@std@@YIPAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@PAV123@00ABU__false_type@0@@Z -> 005269b0 labelled 'std::__uninitialized_copy<NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *>'
+00521620   RELOCATION_MATCH PASS   SaveToGameStateBinary
+
+WINS: 20
+  00434a20 MATCH CDisplayEngine::?PostChangeResolution@CDisplayEngine@@QAEXKKK@Z
+  00434a10 MATCH CDisplayEngine::?PreChangeResolution@CDisplayEngine@@QAEXXZ
+  0047a9f0 RELOCATION_MATCH CHeroLogBook::?AddEntry@CHeroLogBook@@QAEXABVCWideString@@00W4ECategory@CHeroLogBookEntry@1@_N@Z
+  00487570 RELOCATION_MATCH CPlayer::?DrawFreeCamDebug@CPlayer@@QBEXPBVC2DBoxF@@ABVCFontBank@@@Z
+  00487dc0 RELOCATION_MATCH CPlayer::?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ
+  00487b70 RELOCATION_MATCH CPlayer::?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ
+  00487dd0 RELOCATION_MATCH CPlayer::?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ
+  0049e270 RELOCATION_MATCH CWorld::?Unload@CWorld@@QAEXXZ
+  004c8ba0 RELOCATION_MATCH CThing::?WorldUpdateBulletTime@CThing@@UAEXXZ
+  004da967 RELOCATION_MATCH CTCActionUseBase::??1CTCActionUseBase@@UAE@XZ
+  004dcdfd RELOCATION_MATCH CTCDRumble::??1CTCDRumble@@UAE@XZ
+  004dcbce RELOCATION_MATCH CTCDecapitation::??1CTCDecapitation@@UAE@XZ
+  004dc7c8 RELOCATION_MATCH CTCExpression::??1CTCExpression@@UAE@XZ
+  004dcf4e RELOCATION_MATCH CTCHasName::??1CTCHasName@@UAE@XZ
+  004dccd2 RELOCATION_MATCH CTCResurrectionItem::??1CTCResurrectionItem@@UAE@XZ
+  004db004 RELOCATION_MATCH CTCSmashableBase::??1CTCSmashableBase@@UAE@XZ
+  004ff750 RELOCATION_MATCH _global::?CreateRelevantPersonAndUpdateStats@@YIPAVCThingAICreature@@MMJJAAJ0ABVC3DVector@@ABVCThingAICreatureInit@@PAVCTCVillage@@AAV?$vector@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@4_N@Z
+  00520670 RELOCATION_MATCH CThingManager::?LoadHeroStateBinary@CThingManager@@QAEXAAVCPersistContext@@@Z
+  00522720 RELOCATION_MATCH CThingManager::?RuntimeLoadEntities@CThingManager@@QAEXJABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@AAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@3@@Z
+  00521620 RELOCATION_MATCH NThingManager::CEntityRuntimePersistence::?SaveToGameStateBinary@CEntityRuntimePersistence@NThingManager@@QAEXAAVCPersistContext@@@Z

@@ -1861,3 +1861,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - 2026-11-03: `find(k) != end()` loads `end()` before the call; a named iterator reads it after, as retail does.
 - 2026-11-03: an inlined `strcmp` against a literal compiles to `repe cmpsb` with count length + 1.
 - 2026-11-03: Wine's cl also spins on a C1189 `#error` (CDefString.h needs FABLE_RETAIL_CDEFSTRINGTABLE, CEnginePrimitiveHandle.h FABLE_RETAIL_CENGINEPERSISTENTPRIMITIVEBASE).
+- 2026-11-03 (chunk 728): VC7.1 can keep an inline constructor out of line at some call sites of one function and expand it at others (CEnginePrimitiveLine ctor 0x004C3090 in 0x0074BC20); a diagnostic with 8 sites still expanded all, so it is not a size budget. Same open lever as chunk 729's CCountedPointer::Reset.
+- 2026-11-03: calling the two-argument `CPersistContext::Transfer` (inlined into the three-argument form with `GetDefaultVal<T>()`) is what makes VC7.1 build the name before pushing the default and the value.
+- 2026-11-03: retail has two byte-identical copies of `CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound` (0x004365B0, 0x0040F020); which one a row calls is per-TU COMDAT placement, so a RELOC_CONFLICT between them is not a naming error.

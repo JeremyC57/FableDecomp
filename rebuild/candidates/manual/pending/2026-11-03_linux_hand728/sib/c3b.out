@@ -1,0 +1,7 @@
+addr       parity           behav  name
+0121e210   WARN RELOC_CONFLICT: _$E2 -> 012294a0 here, 01228930 in landed 01219f00
+0121e210   WARN RELOC_NAME: _$E2 -> 012294a0 labelled 'CFontBankStateBlock::CreateCRC'
+0121e210   RELOCATION_MATCH PASS   CourtingAdviceGroupNames''
+
+WINS: 1
+  0121e210 RELOCATION_MATCH CTCWife::_$E1

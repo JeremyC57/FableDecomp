@@ -1,0 +1,2 @@
+#!/bin/bash
+cd /home/user/FableDecomp; python3 /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/chunk728/incres.py $1 /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/w22/chunk728/hdr rebuild/include rebuild/include/stlport /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/vc71rtm/include 2>&1 | grep -v "MISSING \(windows\|new\|stddef\|string.h\|stdlib\|math\|memory\|float\)" 

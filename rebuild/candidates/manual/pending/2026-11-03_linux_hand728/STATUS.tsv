@@ -1,0 +1,7 @@
+address	name	status	attempts	note
+0074b770	CTCCreatureGenerator::InitialiseCreatureGenerator	RELOCATION_MATCH	14	src/0074b770.cpp; in payload; levers: GetParentThing().GetPos() accessor (register order), CThingSearchTools::GetAllThings<CThingMarker> + CThingFilter_HasDefGlobalIndex, inline CPlayer::GetPPlayerCharacter
+00c267e0	CStreamLoadHandler::Process (libpk, descriptive)	RELOCATION_MATCH	10	src/00c267e0.cpp, /EHsc; in payload; slot 0 of the one-slot vtable 0x012B4018 (not CHandleBasedMemoryPool: it only calls the pool); lever: named block pointer for the header copy
+006d2bd0	CTCWife::OnSerialise (catalog: CThingNPC::TransferLoveState)	PARKED DIFFER(1770v1770)	21	differ/006d2bd0.cpp; dl=8 (one store): retail stores the loop's default bool once before the BooleanHusbandAppearances loop, VC7.1 stores it in every iteration; layout-neutral jmp/nop padding follows
+0074bc20	CTCCreatureGenerator::DrawDebugInfo	PARKED DIFFER(1415v1290)	12	differ/0074bc20.cpp; dl=308: retail calls the CEnginePrimitiveLine ctor 0x004C3090 out of line for the two open-position lines and expands it for the hidden ones; ours expands all four (callees match up to there); 1-line Release double store in the handle-clear loop
+006d0830	CTCWife::GlobalUpdate	NOT ATTEMPTED	0	2584 B, ~45 callees; callee map in NOTES.md
+006d1e30	CTCWife::FrameUpdate	NOT ATTEMPTED	0	3484 B; not analysed beyond the Ego_r/FableWin name

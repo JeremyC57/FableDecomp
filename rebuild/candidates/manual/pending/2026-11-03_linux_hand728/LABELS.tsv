@@ -1,0 +1,14 @@
+address	name	evidence
+0x006D2BD0	?OnSerialise@CTCWife@@UAEXAAVCPersistContext@@_N@Z	see NAME_FIXES.tsv
+0x0074BC20	?DrawDebugInfo@CTCCreatureGenerator@@QAEXABVCEnginePrimitivePrepareInfo@@@Z	Ego_r 0x0075D3C0 + FableWin 0x0251B300; reads OpenPositions/HiddenPositions/DebugPrimitives at the retail offsets
+0x00686D60	?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ	see NAME_FIXES.tsv
+0x00B23BC0	?SetPersistentPrimitive@CEngine@@UAEXAAVCEnginePrimitiveHandle@@ABVCEnginePrimitive@@K@Z	CEngine vtable 0x012A0F3C slot 23 (CIEngine slot 23 is _purecall); already labelled, confirmed by DrawDebugInfo's `call [vtbl+0x5C]` with (handle, primitive, 0)
+0x013BAD58	g_CreatureGeneratorDrawDebug	descriptive data: .bss bool, never written, read only by DrawDebugInfo 0x0074BC21 and CTCCreatureGenerator::FrameUpdate 0x0074C226 (no data-symbol source on disk)
+0x013824AC	g_CreatureGeneratorNavCheckEnabled	descriptive data: .data bool initialised 1, read only by InitialiseCreatureGenerator 0x0074B770
+0x00C0E7E0	?CreateSample@CStreamSoundBank@@QAEPAVCSoundSample@@PAUSSampleFormat@@JJJ@Z	descriptive (libpk): called by 0x00C267E0 with the header's format; labelled _global::Alloc
+0x00C0E870	?CreateDriver@CStreamSoundBank@@QAEPAVCSoundDriver@@PAVCSoundSample@@PBVCSoundPlayParameters@@@Z	descriptive (libpk)
+0x00C262A0	??0CStreamBuffer@@QAE@XZ	descriptive (libpk): 0x2C object new'd and attached by 0x00C267E0; labelled CSoundFormat_00c262a0
+0x00C26400	??1CStreamBuffer@@QAE@XZ	descriptive (libpk); labelled _global::Nop_ret0_00c26400
+0x00C1BD10	??0CSoundPlayParameters@@QAE@XZ	descriptive (libpk); labelled _unattributed::CClass_00c1bd10
+0x00C12CD0	?StartSound@CPooledResourceManager@@QAEXPAVCSoundDriver@@JPAJ1@Z	descriptive (libpk); labelled _global::CombatBlockReward_ProcessWithExceptionHandler
+0x00C26550	??1CPooledResource@@QAE@XZ	descriptive (libpk); labelled _global::SetMemberConst_00c26550
