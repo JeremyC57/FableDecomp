@@ -11335,8 +11335,8 @@ _g_Cleanup_LTextTreeWalker_6_0122a7c0	013ca86c	0122a7c0
 ??_7CBufferedFileDataOutputStream@@6B@	0129a710	009944a0
 ??0CACompressor@@QAE@J@Z	00a3aea0	00996990
 ??_7CCompressorZlib@@6B@	01245974	00996990
-?GetWorkspaceSize@CCompressorZlib@@SAJXZ	00a3a7d0	00996990
-?Init@CCompressorZlib@@QAEXXZ	00a3aa10	00996990
+?GetRequiredWorkspaceSize@CCompressorZlib@@SIKXZ	00a3a7d0	00996990
+?Initialise@CCompressorZlib@@AAEXXZ	00a3aa10	00996990
 ?SetStreamInput@CCompressorZlib@@QAEXPBXJ@Z	00a3ab90	00996990
 _helper_9f9020	009f9020	009a73b0
 ?CInner_dtor@@YIXPAUCInner@@@Z	009d2110	009d3100
@@ -14930,7 +14930,7 @@ __imp__waveOutPrepareHeader@12	01440484	00c5d7f0
 ??1CAsyncEntryPointer@@QAE@XZ	009c9fc0	00b42530
 ??4CAsyncEntryPointer@@QAEAAU0@ABU0@@Z	00a5f6d0	00b42530
 ?CreateEntry@CStaticMapBankFile@@QAE?AUCAsyncEntryPointer@@K@Z	009d58d0	00b42530
-?OpenMemorySource@CMemoryDataInputStream@@QAEXPAXK@Z	00994570	00b42530
+?OpenMemorySource@CMemoryDataInputStream@@QAEXPBXK@Z	00994570	00b42530
 ?SetBankFileEntry@CEngineStaticMapFileBlockManager@@QAEXUCAsyncEntryPointer@@@Z	00be03a0	00b42530
 ?SetPosition@CDataInputStream@@QAEXK@Z	00993bc0	00b42530
 ?_M_fill_insert@CByteVector@@QAEXPAEKABE@Z	004110d0	00b42530

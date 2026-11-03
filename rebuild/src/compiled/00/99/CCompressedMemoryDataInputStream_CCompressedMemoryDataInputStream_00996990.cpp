@@ -2,7 +2,7 @@
 // Leaf: ??0CCompressedMemoryDataInputStream
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00996990, 156 bytes (176 with padding), `ret 0xc`.
 // Callees: CBaseClassNonCopyable::CBaseClassNonCopyable 0x0099A2F0, operator new 0x00BFEA1A (0x58-byte CCompressorZlib),
-//   CCompressorZlib::GetWorkspaceSize 0x00A3A7D0, CACompressor::CACompressor(long) 0x00A3AEA0, CCompressorZlib::Init 0x00A3AA10,
+//   CCompressorZlib::GetRequiredWorkspaceSize 0x00A3A7D0, CACompressor::CACompressor(long) 0x00A3AEA0, CCompressorZlib::Initialise 0x00A3AA10,
 //   CCompressorZlib::SetStreamInput 0x00A3AB90 (manifest label), operator new[] 0x00BFEB22; the old compressor is deleted
 //   through vtable slot 0 (flag 1). Vtables: 0x0129A758 CCompressedMemoryDataInputStream, 0x01245974 CCompressorZlib.
 // Layout: engine/CCompressedMemoryDataInputStream.h (Buffer +0x18, BufferSize +0x1c, Compressor scoped_ptr +0x20) with the
@@ -18,11 +18,12 @@ class CACompressor { public:                                           // landed
 
 class CCompressorZlib : public CACompressor { public:                         // vtable 0x01245974, retail 0x58 bytes
     unsigned char _zlib[0x58 - 0x1c];
-    static long GetWorkspaceSize();                             // 0x00A3A7D0
-    void Init();                                                // 0x00A3AA10
+    static unsigned long __fastcall GetRequiredWorkspaceSize(); // 0x00A3A7D0 (PDB: static, SIK under /Gr)
     void SetStreamInput(const void* source, long sourceSize);   // 0x00A3AB90
     virtual ~CCompressorZlib();
-    CCompressorZlib() : CACompressor(GetWorkspaceSize()) { Init(); }
+    CCompressorZlib() : CACompressor(GetRequiredWorkspaceSize()) { Initialise(); }
+private:
+    void Initialise();                                          // 0x00A3AA10 (PDB: private)
 };
 
 struct CBaseClassNonCopyable {

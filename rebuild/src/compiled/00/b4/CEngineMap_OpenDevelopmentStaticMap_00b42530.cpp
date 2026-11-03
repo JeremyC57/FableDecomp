@@ -50,7 +50,7 @@ class CMemoryDataInputStream : public CDataInputStream { public: // vtable 0x012
     virtual void v00();
     CMemoryDataInputStream() { }
     virtual ~CMemoryDataInputStream();                     // 0x00993B10
-    void OpenMemorySource(void* data, unsigned long size);   // 0x00994570
+    void OpenMemorySource(const void* data, unsigned long size);   // 0x00994570 (PDB: const void*)
 };
 
 struct CBankEntryRecord {
