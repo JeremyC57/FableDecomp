@@ -1,0 +1,6 @@
+action	symbol	target	by_row	note
+ADD	??1CCardPositionsDef@@UAE@XZ	00c10940	00c109b0	naming wave 33: emitted by the respelled row
+ADD	??1CQ_AmbushTradersScript@NScript@@UAE@XZ	00cfa340	00cfa320	naming wave 33: emitted by the respelled row
+ADD	??1CV_AssassinAttacksScript@NScript@@UAE@XZ	00e398a0	00e39880	naming wave 33: emitted by the respelled row
+ADD	??1CV_BeardyBaldyScript@NScript@@UAE@XZ	00e542b0	00e54290	naming wave 33: emitted by the respelled row
+ADD	??1CV_FishingCompetitionScript@NScript@@UAE@XZ	00e81f30	00e81f10	naming wave 33: emitted by the respelled row

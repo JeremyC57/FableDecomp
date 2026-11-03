@@ -1,0 +1,1712 @@
+addr       parity           behav  name
+00cdef90   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cdf060   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cdf240   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cdf410   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cdf550   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cdf730   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cdf910   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cdf9f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cdfae0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cdfe10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ce0260   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ce0370   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ce0440   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ce0510   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ce05e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cf0c20   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cf0d00   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cf18b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cf2b50   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cf3d00   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cf4ea0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cfbbe0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cfbcc0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cfbdd0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cfc7b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cfc880   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cfc970   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cfcb30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cfcc80   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cfce70   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cfd6a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cfdda0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d01570   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d02b60   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d04970   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d04a40   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d059c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d06090   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d06780   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d072a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d073f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d07e30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d08770   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d08b20   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d08ff0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d0a810   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d0c370   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d15a20   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d16090   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d16180   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d16270   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d16360   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d16440   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d1ddc0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d1df00   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d1dfd0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d1e190   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d1e2f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d1eac0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d1f5f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d1f9e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d24310   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d24490   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d259e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d25d60   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d25f30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d29080   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d29210   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d293d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d29550   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d29660   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d2c240   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d2c320   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d2c410   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d2c510   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d2c710   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d2c7f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d2d040   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d2fb00   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d2fcc0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d2fda0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d2fe80   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d36380   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d36450   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d36520   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d36600   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d36770   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d36840   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d37220   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d37310   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d37480   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d37ce0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d3d130   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d3e2c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d40b10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d40bf0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d40cd0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d41af0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d41bd0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d41ce0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d43020   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d43170   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d43340   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d43430   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d43d90   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d50a90   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d51ee0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d52210   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d522f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d56680   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d56770   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d58060   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d5aca0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d5dea0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d62340   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d62460   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d63da0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d66c80   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d687f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d69e10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d69f30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d6a0b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d6a200   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d6a340   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d6a540   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d6ae80   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d6fe30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d6ff10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d6fff0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d700c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d701a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d706c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d79c60   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d79d30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d7a340   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d7b4f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d7dc70   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d7dd60   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d7dfd0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d7e0a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d7ec90   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d7eeb0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d7f0f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d7f360   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d7f440   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d7f860   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d81730   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d81800   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d81c30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d83da0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d85b20   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d86060   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d86130   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d86490   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d86660   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d86b40   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d86c10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d88520   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d88690   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d88f70   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d891d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d89360   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d8a630   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d8a7d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d8a940   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d8f3d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d8f4d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d8f5c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d8f6b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d8fa10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d8fd70   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d8ff80   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d90270   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d90790   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d90b10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d91230   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d91300   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d91560   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d9b880   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d9bef0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d9c290   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d9c480   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d9c660   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d9cf40   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d9d010   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d9ee00   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d9f250   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d9f6a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00da45a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00da4780   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00da4a10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00da4af0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00da4c70   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00da4e10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00da5470   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00da5890   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00da5960   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00da5c70   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00da5d80   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00da5e50   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00da5f20   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00da6150   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00da6220   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00da63d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00da6650   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00da6720   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00da68c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dac370   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dac4d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dac630   RELOCATION_MATCH PASS   `scalar deleting destructor'
+
+WINS: 210
+  00cdef90 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::CClickableDoor::??_GCClickableDoor@CPersonalScript_GlobalThingsScript@NScript@@UAEPAXI@Z
+  00cdf060 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::COF_MainGates::??_GCOF_MainGates@CPersonalScript_GlobalThingsScript@NScript@@UAEPAXI@Z
+  00cdf240 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::CKG_Gate::??_GCKG_Gate@CPersonalScript_GlobalThingsScript@NScript@@UAEPAXI@Z
+  00cdf410 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::CDragonGate::??_GCDragonGate@CPersonalScript_GlobalThingsScript@NScript@@UAEPAXI@Z
+  00cdf550 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::CTeleportPoint::??_GCTeleportPoint@CPersonalScript_GlobalThingsScript@NScript@@UAEPAXI@Z
+  00cdf730 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::CHERO_GUILD_TELEPORT_MARKER::??_GCHERO_GUILD_TELEPORT_MARKER@CPersonalScript_GlobalThingsScript@NScript@@UAEPAXI@Z
+  00cdf910 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::CBowerstoneTeleportPointMarker::??_GCBowerstoneTeleportPointMarker@CPersonalScript_GlobalThingsScript@NScript@@UAEPAXI@Z
+  00cdf9f0 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::CTestGateSwitch::??_GCTestGateSwitch@CPersonalScript_GlobalThingsScript@NScript@@UAEPAXI@Z
+  00cdfae0 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::CBSGateGuard::??_GCBSGateGuard@CPersonalScript_GlobalThingsScript@NScript@@UAEPAXI@Z
+  00cdfe10 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::CTargetForKey::??_GCTargetForKey@CPersonalScript_GlobalThingsScript@NScript@@UAEPAXI@Z
+  00ce0260 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::CLadyGreysBed::??_GCLadyGreysBed@CPersonalScript_GlobalThingsScript@NScript@@UAEPAXI@Z
+  00ce0370 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::CInvisibleBarrier::??_GCInvisibleBarrier@CPersonalScript_GlobalThingsScript@NScript@@UAEPAXI@Z
+  00ce0440 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::CMK_HS2_SOUL::??_GCMK_HS2_SOUL@CPersonalScript_GlobalThingsScript@NScript@@UAEPAXI@Z
+  00ce0510 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::CMK_HS3_SOUL::??_GCMK_HS3_SOUL@CPersonalScript_GlobalThingsScript@NScript@@UAEPAXI@Z
+  00ce05e0 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::CMK_HSE_SOUL::??_GCMK_HSE_SOUL@CPersonalScript_GlobalThingsScript@NScript@@UAEPAXI@Z
+  00cf0c20 RELOCATION_MATCH NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard::??_GCEntranceGuard@CQ_ArenaHoldingScriptScript@NScript@@UAEPAXI@Z
+  00cf0d00 RELOCATION_MATCH NScript::CQ_ArenaHoldingScriptScript::CEntranceGuard2::??_GCEntranceGuard2@CQ_ArenaHoldingScriptScript@NScript@@UAEPAXI@Z
+  00cf18b0 RELOCATION_MATCH NScript::CQ_ArenaHoldingScriptScript::COakvaleFan::??_GCOakvaleFan@CQ_ArenaHoldingScriptScript@NScript@@UAEPAXI@Z
+  00cf2b50 RELOCATION_MATCH NScript::CQ_ArenaHoldingScriptScript::CBowerstoneFan::??_GCBowerstoneFan@CQ_ArenaHoldingScriptScript@NScript@@UAEPAXI@Z
+  00cf3d00 RELOCATION_MATCH NScript::CQ_ArenaHoldingScriptScript::CHookCoastFan::??_GCHookCoastFan@CQ_ArenaHoldingScriptScript@NScript@@UAEPAXI@Z
+  00cf4ea0 RELOCATION_MATCH NScript::CQ_ArenaHoldingScriptScript::CFanMarker::??_GCFanMarker@CQ_ArenaHoldingScriptScript@NScript@@UAEPAXI@Z
+  00cfbbe0 RELOCATION_MATCH NScript::CQ_AwakeningTheOracleScript::COracleTablet::??_GCOracleTablet@CQ_AwakeningTheOracleScript@NScript@@UAEPAXI@Z
+  00cfbcc0 RELOCATION_MATCH NScript::CQ_AwakeningTheOracleScript::CFinalTabletSarcophagus::??_GCFinalTabletSarcophagus@CQ_AwakeningTheOracleScript@NScript@@UAEPAXI@Z
+  00cfbdd0 RELOCATION_MATCH NScript::CQ_AwakeningTheOracleScript::CNecropolisGhost::??_GCNecropolisGhost@CQ_AwakeningTheOracleScript@NScript@@UAEPAXI@Z
+  00cfc7b0 RELOCATION_MATCH NScript::CQ_AwakeningTheOracleScript::CNecropolisGate::??_GCNecropolisGate@CQ_AwakeningTheOracleScript@NScript@@UAEPAXI@Z
+  00cfc880 RELOCATION_MATCH NScript::CQ_AwakeningTheOracleScript::CLostBayCutsceneTrigger::??_GCLostBayCutsceneTrigger@CQ_AwakeningTheOracleScript@NScript@@UAEPAXI@Z
+  00cfc970 RELOCATION_MATCH NScript::CQ_AwakeningTheOracleScript::CChunkCollectionIndicator::??_GCChunkCollectionIndicator@CQ_AwakeningTheOracleScript@NScript@@UAEPAXI@Z
+  00cfcb30 RELOCATION_MATCH NScript::CQ_AwakeningTheOracleScript::CNecropolisEnemy::??_GCNecropolisEnemy@CQ_AwakeningTheOracleScript@NScript@@UAEPAXI@Z
+  00cfcc80 RELOCATION_MATCH NScript::CQ_AwakeningTheOracleScript::CPretendGuard::??_GCPretendGuard@CQ_AwakeningTheOracleScript@NScript@@UAEPAXI@Z
+  00cfce70 RELOCATION_MATCH NScript::CQ_AwakeningTheOracleScript::CScytheBeforeGettingTablets::??_GCScytheBeforeGettingTablets@CQ_AwakeningTheOracleScript@NScript@@UAEPAXI@Z
+  00cfd6a0 RELOCATION_MATCH NScript::CQ_AwakeningTheOracleScript::CATO_MagicBarrier::??_GCATO_MagicBarrier@CQ_AwakeningTheOracleScript@NScript@@UAEPAXI@Z
+  00cfdda0 RELOCATION_MATCH NScript::CQ_AwakeningTheOracleScript::CFinalSummoner::??_GCFinalSummoner@CQ_AwakeningTheOracleScript@NScript@@UAEPAXI@Z
+  00d01570 RELOCATION_MATCH NScript::CQ_BanditCampScript::CGate1GuardOuter::??_GCGate1GuardOuter@CQ_BanditCampScript@NScript@@UAEPAXI@Z
+  00d02b60 RELOCATION_MATCH NScript::CQ_BanditCampScript::CGate1GuardInner::??_GCGate1GuardInner@CQ_BanditCampScript@NScript@@UAEPAXI@Z
+  00d04970 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CAssassinMarker::??_GCAssassinMarker@CQ_BanditCampBossBattleScript@NScript@@UAEPAXI@Z
+  00d04a40 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CAssassin1::??_GCAssassin1@CQ_BanditCampBossBattleScript@NScript@@UAEPAXI@Z
+  00d059c0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CAssassin2::??_GCAssassin2@CQ_BanditCampBossBattleScript@NScript@@UAEPAXI@Z
+  00d06090 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CAssassin3::??_GCAssassin3@CQ_BanditCampBossBattleScript@NScript@@UAEPAXI@Z
+  00d06780 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CBCGameMaster::??_GCBCGameMaster@CQ_BanditCampBossBattleScript@NScript@@UAEPAXI@Z
+  00d072a0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CGate2Guard1::??_GCGate2Guard1@CQ_BanditCampBossBattleScript@NScript@@UAEPAXI@Z
+  00d073f0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CGate3Guard::??_GCGate3Guard@CQ_BanditCampBossBattleScript@NScript@@UAEPAXI@Z
+  00d07e30 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CCampHostage::??_GCCampHostage@CQ_BanditCampBossBattleScript@NScript@@UAEPAXI@Z
+  00d08770 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CCampHostage2::??_GCCampHostage2@CQ_BanditCampBossBattleScript@NScript@@UAEPAXI@Z
+  00d08b20 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CCampHostageDoor::??_GCCampHostageDoor@CQ_BanditCampBossBattleScript@NScript@@UAEPAXI@Z
+  00d08ff0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard::??_GCCampHostageGuard@CQ_BanditCampBossBattleScript@NScript@@UAEPAXI@Z
+  00d0a810 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CBanditKing::??_GCBanditKing@CQ_BanditCampBossBattleScript@NScript@@UAEPAXI@Z
+  00d0c370 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CBanditForger::??_GCBanditForger@CQ_BanditCampBossBattleScript@NScript@@UAEPAXI@Z
+  00d15a20 RELOCATION_MATCH NScript::CQ_BountyHuntScript::CBH_GangGrunt::??_GCBH_GangGrunt@CQ_BountyHuntScript@NScript@@UAEPAXI@Z
+  00d16090 RELOCATION_MATCH NScript::CQ_BountyHuntScript::CBH_GangDeputy1::??_GCBH_GangDeputy1@CQ_BountyHuntScript@NScript@@UAEPAXI@Z
+  00d16180 RELOCATION_MATCH NScript::CQ_BountyHuntScript::CBH_Hostage1::??_GCBH_Hostage1@CQ_BountyHuntScript@NScript@@UAEPAXI@Z
+  00d16270 RELOCATION_MATCH NScript::CQ_BountyHuntScript::CBH_GangDeputy2::??_GCBH_GangDeputy2@CQ_BountyHuntScript@NScript@@UAEPAXI@Z
+  00d16360 RELOCATION_MATCH NScript::CQ_BountyHuntScript::CBH_Hostage2::??_GCBH_Hostage2@CQ_BountyHuntScript@NScript@@UAEPAXI@Z
+  00d16440 RELOCATION_MATCH NScript::CQ_BountyHuntScript::CBH_GangLeader::??_GCBH_GangLeader@CQ_BountyHuntScript@NScript@@UAEPAXI@Z
+  00d1ddc0 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CBanditSiegeLeader::??_GCBanditSiegeLeader@CQ_BreakSiegeScript@NScript@@UAEPAXI@Z
+  00d1df00 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CKG_ChiefBreakSiege::??_GCKG_ChiefBreakSiege@CQ_BreakSiegeScript@NScript@@UAEPAXI@Z
+  00d1dfd0 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CKG_Sheriff::??_GCKG_Sheriff@CQ_BreakSiegeScript@NScript@@UAEPAXI@Z
+  00d1e190 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CImprisonedBanditLeader::??_GCImprisonedBanditLeader@CQ_BreakSiegeScript@NScript@@UAEPAXI@Z
+  00d1e2f0 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CGuardHoldingBandit::??_GCGuardHoldingBandit@CQ_BreakSiegeScript@NScript@@UAEPAXI@Z
+  00d1eac0 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CGuardToHelpDefend::??_GCGuardToHelpDefend@CQ_BreakSiegeScript@NScript@@UAEPAXI@Z
+  00d1f5f0 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CBanditAttacker::??_GCBanditAttacker@CQ_BreakSiegeScript@NScript@@UAEPAXI@Z
+  00d1f9e0 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CBanditFirstWave::??_GCBanditFirstWave@CQ_BreakSiegeScript@NScript@@UAEPAXI@Z
+  00d24310 RELOCATION_MATCH NScript::CQ_BowerstoneTownLifeIntroScript::CBowerstoneIntroGuard::??_GCBowerstoneIntroGuard@CQ_BowerstoneTownLifeIntroScript@NScript@@UAEPAXI@Z
+  00d24490 RELOCATION_MATCH NScript::CQ_BowerstoneTownLifeIntroScript::CBowerstoneIntroGuardToPosh::??_GCBowerstoneIntroGuardToPosh@CQ_BowerstoneTownLifeIntroScript@NScript@@UAEPAXI@Z
+  00d259e0 RELOCATION_MATCH NScript::CQ_DragonBossFightScript::CDragon::??_GCDragon@CQ_DragonBossFightScript@NScript@@UAEPAXI@Z
+  00d25d60 RELOCATION_MATCH NScript::CQ_DragonBossFightScript::CDBMinion::??_GCDBMinion@CQ_DragonBossFightScript@NScript@@UAEPAXI@Z
+  00d25f30 RELOCATION_MATCH NScript::CQ_DragonBossFightScript::CDBSummoner::??_GCDBSummoner@CQ_DragonBossFightScript@NScript@@UAEPAXI@Z
+  00d29080 RELOCATION_MATCH NScript::CQ_EndGameScript::CHookCoastTeleporter::??_GCHookCoastTeleporter@CQ_EndGameScript@NScript@@UAEPAXI@Z
+  00d29210 RELOCATION_MATCH NScript::CQ_EndGameScript::CM_UndeadSpawn::??_GCM_UndeadSpawn@CQ_EndGameScript@NScript@@UAEPAXI@Z
+  00d293d0 RELOCATION_MATCH NScript::CQ_EndGameScript::CGatewayUndead::??_GCGatewayUndead@CQ_EndGameScript@NScript@@UAEPAXI@Z
+  00d29550 RELOCATION_MATCH NScript::CQ_EndGameScript::CMK_GHC_HERO3::??_GCMK_GHC_HERO3@CQ_EndGameScript@NScript@@UAEPAXI@Z
+  00d29660 RELOCATION_MATCH NScript::CQ_EndGameScript::CMazeJournal::??_GCMazeJournal@CQ_EndGameScript@NScript@@UAEPAXI@Z
+  00d2c240 RELOCATION_MATCH NScript::CQ_EndGameFocalSitesScript::CEndGameFocalSite::??_GCEndGameFocalSite@CQ_EndGameFocalSitesScript@NScript@@UAEPAXI@Z
+  00d2c320 RELOCATION_MATCH NScript::CQ_EndGameFocalSitesScript::CEndGameJackOfBlades::??_GCEndGameJackOfBlades@CQ_EndGameFocalSitesScript@NScript@@UAEPAXI@Z
+  00d2c410 RELOCATION_MATCH NScript::CQ_EndGameFocalSitesScript::CBattleMinion::??_GCBattleMinion@CQ_EndGameFocalSitesScript@NScript@@UAEPAXI@Z
+  00d2c510 RELOCATION_MATCH NScript::CQ_EndGameFocalSitesScript::CBattleGuard::??_GCBattleGuard@CQ_EndGameFocalSitesScript@NScript@@UAEPAXI@Z
+  00d2c710 RELOCATION_MATCH NScript::CQ_EndGameFocalSitesScript::CEndGameScythe::??_GCEndGameScythe@CQ_EndGameFocalSitesScript@NScript@@UAEPAXI@Z
+  00d2c7f0 RELOCATION_MATCH NScript::CQ_EndGameFocalSitesScript::CEndGameThunder::??_GCEndGameThunder@CQ_EndGameFocalSitesScript@NScript@@UAEPAXI@Z
+  00d2d040 RELOCATION_MATCH NScript::CQ_EndGameFocalSitesScript::CEndGameScarletRobe::??_GCEndGameScarletRobe@CQ_EndGameFocalSitesScript@NScript@@UAEPAXI@Z
+  00d2fb00 RELOCATION_MATCH NScript::CQ_EndGameBossBattleScript::CEndGameJackOfBladesBoss::??_GCEndGameJackOfBladesBoss@CQ_EndGameBossBattleScript@NScript@@UAEPAXI@Z
+  00d2fcc0 RELOCATION_MATCH NScript::CQ_EndGameBossBattleScript::CEndGameSister::??_GCEndGameSister@CQ_EndGameBossBattleScript@NScript@@UAEPAXI@Z
+  00d2fda0 RELOCATION_MATCH NScript::CQ_EndGameBossBattleScript::CSwordVoid::??_GCSwordVoid@CQ_EndGameBossBattleScript@NScript@@UAEPAXI@Z
+  00d2fe80 RELOCATION_MATCH NScript::CQ_EndGameBossBattleScript::CTheRealGuildmaster::??_GCTheRealGuildmaster@CQ_EndGameBossBattleScript@NScript@@UAEPAXI@Z
+  00d36380 RELOCATION_MATCH NScript::CQ_FireHeartScript::CDF_Fireheart::??_GCDF_Fireheart@CQ_FireHeartScript@NScript@@UAEPAXI@Z
+  00d36450 RELOCATION_MATCH NScript::CQ_FireHeartScript::CPuzzleBlockMoon::??_GCPuzzleBlockMoon@CQ_FireHeartScript@NScript@@UAEPAXI@Z
+  00d36520 RELOCATION_MATCH NScript::CQ_FireHeartScript::CPuzzleBlockSun::??_GCPuzzleBlockSun@CQ_FireHeartScript@NScript@@UAEPAXI@Z
+  00d36600 RELOCATION_MATCH NScript::CQ_FireHeartScript::CFH_Prisoner::??_GCFH_Prisoner@CQ_FireHeartScript@NScript@@UAEPAXI@Z
+  00d36770 RELOCATION_MATCH NScript::CQ_FireHeartScript::CProphetCage::??_GCProphetCage@CQ_FireHeartScript@NScript@@UAEPAXI@Z
+  00d36840 RELOCATION_MATCH NScript::CQ_FireHeartScript::CFH_GuildMaster::??_GCFH_GuildMaster@CQ_FireHeartScript@NScript@@UAEPAXI@Z
+  00d37220 RELOCATION_MATCH NScript::CQ_FireHeartScript::CFH_Scythe::??_GCFH_Scythe@CQ_FireHeartScript@NScript@@UAEPAXI@Z
+  00d37310 RELOCATION_MATCH NScript::CQ_FireHeartScript::CFH_BriarRose::??_GCFH_BriarRose@CQ_FireHeartScript@NScript@@UAEPAXI@Z
+  00d37480 RELOCATION_MATCH NScript::CQ_FireHeartScript::CFH_Villager::??_GCFH_Villager@CQ_FireHeartScript@NScript@@UAEPAXI@Z
+  00d37ce0 RELOCATION_MATCH NScript::CQ_FireHeartScript::CFH_MemorialCutsceneMarker::??_GCFH_MemorialCutsceneMarker@CQ_FireHeartScript@NScript@@UAEPAXI@Z
+  00d3d130 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CAppleGirl::??_GCAppleGirl@CQ_GuildTrainingScript@NScript@@UAEPAXI@Z
+  00d3e2c0 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CApprenticeSpeedTest::??_GCApprenticeSpeedTest@CQ_GuildTrainingScript@NScript@@UAEPAXI@Z
+  00d40b10 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CRaceMarker::??_GCRaceMarker@CQ_GuildTrainingScript@NScript@@UAEPAXI@Z
+  00d40bf0 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CHeroBed::??_GCHeroBed@CQ_GuildTrainingScript@NScript@@UAEPAXI@Z
+  00d40cd0 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CMeleeApprentice::??_GCMeleeApprentice@CQ_GuildTrainingScript@NScript@@UAEPAXI@Z
+  00d41af0 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CCombatApprentice::??_GCCombatApprentice@CQ_GuildTrainingScript@NScript@@UAEPAXI@Z
+  00d41bd0 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CSkillApprentice::??_GCSkillApprentice@CQ_GuildTrainingScript@NScript@@UAEPAXI@Z
+  00d41ce0 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CSkillTarget::??_GCSkillTarget@CQ_GuildTrainingScript@NScript@@UAEPAXI@Z
+  00d43020 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CBirdKiller::??_GCBirdKiller@CQ_GuildTrainingScript@NScript@@UAEPAXI@Z
+  00d43170 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CKillBird::??_GCKillBird@CQ_GuildTrainingScript@NScript@@UAEPAXI@Z
+  00d43340 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CWillApprentice::??_GCWillApprentice@CQ_GuildTrainingScript@NScript@@UAEPAXI@Z
+  00d43430 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CWillDummy::??_GCWillDummy@CQ_GuildTrainingScript@NScript@@UAEPAXI@Z
+  00d43d90 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CPreMeleeMaze::??_GCPreMeleeMaze@CQ_GuildTrainingScript@NScript@@UAEPAXI@Z
+  00d50a90 RELOCATION_MATCH NScript::CQ_GuildTrainingDepartureScript::CTheRealGuildmaster::??_GCTheRealGuildmaster@CQ_GuildTrainingDepartureScript@NScript@@UAEPAXI@Z
+  00d51ee0 RELOCATION_MATCH NScript::CQ_GuildTrainingPreMeleeScript::CTheRealGuildmaster::??_GCTheRealGuildmaster@CQ_GuildTrainingPreMeleeScript@NScript@@UAEPAXI@Z
+  00d52210 RELOCATION_MATCH NScript::CQ_GuildTrainingPreMeleeScript::CPreMeleeDummy::??_GCPreMeleeDummy@CQ_GuildTrainingPreMeleeScript@NScript@@UAEPAXI@Z
+  00d522f0 RELOCATION_MATCH NScript::CQ_GuildTrainingPreMeleeScript::CPreMeleeWhisper::??_GCPreMeleeWhisper@CQ_GuildTrainingPreMeleeScript@NScript@@UAEPAXI@Z
+  00d56680 RELOCATION_MATCH NScript::CQ_GuildTrainingMeleeScript::CTheRealGuildmaster::??_GCTheRealGuildmaster@CQ_GuildTrainingMeleeScript@NScript@@UAEPAXI@Z
+  00d56770 RELOCATION_MATCH NScript::CQ_GuildTrainingMeleeScript::CMeleeOpponent::??_GCMeleeOpponent@CQ_GuildTrainingMeleeScript@NScript@@UAEPAXI@Z
+  00d58060 RELOCATION_MATCH NScript::CQ_GuildTrainingMeleeScript::CMeleeThunder::??_GCMeleeThunder@CQ_GuildTrainingMeleeScript@NScript@@UAEPAXI@Z
+  00d5aca0 RELOCATION_MATCH NScript::CQ_GuildTrainingSkillScript::CTheRealGuildmaster::??_GCTheRealGuildmaster@CQ_GuildTrainingSkillScript@NScript@@UAEPAXI@Z
+  00d5dea0 RELOCATION_MATCH NScript::CQ_GuildTrainingWillScript::CTheRealGuildmaster::??_GCTheRealGuildmaster@CQ_GuildTrainingWillScript@NScript@@UAEPAXI@Z
+  00d62340 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsDepartureScript::CFinalMaze::??_GCFinalMaze@CQ_GuildTrainingWoodsDepartureScript@NScript@@UAEPAXI@Z
+  00d62460 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsDepartureScript::CArtifactThief::??_GCArtifactThief@CQ_GuildTrainingWoodsDepartureScript@NScript@@UAEPAXI@Z
+  00d63da0 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsDepartureScript::CScorpionHome::??_GCScorpionHome@CQ_GuildTrainingWoodsDepartureScript@NScript@@UAEPAXI@Z
+  00d66c80 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsMeleeScript::CScorpionHome::??_GCScorpionHome@CQ_GuildTrainingWoodsMeleeScript@NScript@@UAEPAXI@Z
+  00d687f0 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsWillScript::CWillWhisper::??_GCWillWhisper@CQ_GuildTrainingWoodsWillScript@NScript@@UAEPAXI@Z
+  00d69e10 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CHTE_AmbushPoint::??_GCHTE_AmbushPoint@CQ_HangingTreeEvilScript@NScript@@UAEPAXI@Z
+  00d69f30 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CHTE_Prisoner::??_GCHTE_Prisoner@CQ_HangingTreeEvilScript@NScript@@UAEPAXI@Z
+  00d6a0b0 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CHTE_Executioner::??_GCHTE_Executioner@CQ_HangingTreeEvilScript@NScript@@UAEPAXI@Z
+  00d6a200 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CGUARD1::??_GCGUARD1@CQ_HangingTreeEvilScript@NScript@@UAEPAXI@Z
+  00d6a340 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CGUARD2::??_GCGUARD2@CQ_HangingTreeEvilScript@NScript@@UAEPAXI@Z
+  00d6a540 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CHTE_FreedomFighter::??_GCHTE_FreedomFighter@CQ_HangingTreeEvilScript@NScript@@UAEPAXI@Z
+  00d6ae80 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CHTE_AssaultGuard::??_GCHTE_AssaultGuard@CQ_HangingTreeEvilScript@NScript@@UAEPAXI@Z
+  00d6fe30 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_AmbushPoint::??_GCHTG_AmbushPoint@CQ_HangingTreeGoodScript@NScript@@UAEPAXI@Z
+  00d6ff10 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_AmbushPointCond::??_GCHTG_AmbushPointCond@CQ_HangingTreeGoodScript@NScript@@UAEPAXI@Z
+  00d6fff0 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_AmbushPointRear::??_GCHTG_AmbushPointRear@CQ_HangingTreeGoodScript@NScript@@UAEPAXI@Z
+  00d700c0 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_AmbushPointBackup::??_GCHTG_AmbushPointBackup@CQ_HangingTreeGoodScript@NScript@@UAEPAXI@Z
+  00d701a0 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_FreedomFighter::??_GCHTG_FreedomFighter@CQ_HangingTreeGoodScript@NScript@@UAEPAXI@Z
+  00d706c0 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_Guard::??_GCHTG_Guard@CQ_HangingTreeGoodScript@NScript@@UAEPAXI@Z
+  00d79c60 RELOCATION_MATCH NScript::CQ_HeroSoulsScript::CNotForODG::??_GCNotForODG@CQ_HeroSoulsScript@NScript@@UAEPAXI@Z
+  00d79d30 RELOCATION_MATCH NScript::CQ_HeroSoulsScript::CEndScythe::??_GCEndScythe@CQ_HeroSoulsScript@NScript@@UAEPAXI@Z
+  00d7a340 RELOCATION_MATCH NScript::CQ_HeroSoulsScript::CEndBriarRose::??_GCEndBriarRose@CQ_HeroSoulsScript@NScript@@UAEPAXI@Z
+  00d7b4f0 RELOCATION_MATCH NScript::CQ_HeroSoulsThunderScript::CHeroThunder::??_GCHeroThunder@CQ_HeroSoulsThunderScript@NScript@@UAEPAXI@Z
+  00d7dc70 RELOCATION_MATCH NScript::CQ_HeroSoulsArenaScript::CNotForODG::??_GCNotForODG@CQ_HeroSoulsArenaScript@NScript@@UAEPAXI@Z
+  00d7dd60 RELOCATION_MATCH NScript::CQ_HeroSoulsArenaScript::CSummonerToKill::??_GCSummonerToKill@CQ_HeroSoulsArenaScript@NScript@@UAEPAXI@Z
+  00d7dfd0 RELOCATION_MATCH NScript::CQ_HeroSoulsArenaScript::CArenaHeroGate::??_GCArenaHeroGate@CQ_HeroSoulsArenaScript@NScript@@UAEPAXI@Z
+  00d7e0a0 RELOCATION_MATCH NScript::CQ_HeroSoulsArenaScript::CHOHGuard::??_GCHOHGuard@CQ_HeroSoulsArenaScript@NScript@@UAEPAXI@Z
+  00d7ec90 RELOCATION_MATCH NScript::CQ_HeroSoulsArenaScript::CSummoner1::??_GCSummoner1@CQ_HeroSoulsArenaScript@NScript@@UAEPAXI@Z
+  00d7eeb0 RELOCATION_MATCH NScript::CQ_HeroSoulsArenaScript::CSummoner2::??_GCSummoner2@CQ_HeroSoulsArenaScript@NScript@@UAEPAXI@Z
+  00d7f0f0 RELOCATION_MATCH NScript::CQ_HeroSoulsArenaScript::CHeroSoulsEnemy::??_GCHeroSoulsEnemy@CQ_HeroSoulsArenaScript@NScript@@UAEPAXI@Z
+  00d7f360 RELOCATION_MATCH NScript::CQ_HeroSoulsArenaScript::CBlockedEntrance::??_GCBlockedEntrance@CQ_HeroSoulsArenaScript@NScript@@UAEPAXI@Z
+  00d7f440 RELOCATION_MATCH NScript::CQ_HeroSoulsArenaScript::CDyingVillager::??_GCDyingVillager@CQ_HeroSoulsArenaScript@NScript@@UAEPAXI@Z
+  00d7f860 RELOCATION_MATCH NScript::CQ_HeroSoulsArenaScript::CHSA_ScreamingVillager::??_GCHSA_ScreamingVillager@CQ_HeroSoulsArenaScript@NScript@@UAEPAXI@Z
+  00d81730 RELOCATION_MATCH NScript::CQ_HeroSoulsBriarScript::CBriarRose::??_GCBriarRose@CQ_HeroSoulsBriarScript@NScript@@UAEPAXI@Z
+  00d81800 RELOCATION_MATCH NScript::CQ_HeroSoulsBriarScript::CBRIAR_ROSE_IMPOSTER::??_GCBRIAR_ROSE_IMPOSTER@CQ_HeroSoulsBriarScript@NScript@@UAEPAXI@Z
+  00d81c30 RELOCATION_MATCH NScript::CQ_HeroSoulsBriarScript::CHSB_MagicBarrier::??_GCHSB_MagicBarrier@CQ_HeroSoulsBriarScript@NScript@@UAEPAXI@Z
+  00d83da0 RELOCATION_MATCH NScript::CQ_HeroSoulsMotherScript::CSummonerToKill::??_GCSummonerToKill@CQ_HeroSoulsMotherScript@NScript@@UAEPAXI@Z
+  00d85b20 RELOCATION_MATCH NScript::CQ_HeroSoulsGuildmasterScript::CGuildmaster_HS::??_GCGuildmaster_HS@CQ_HeroSoulsGuildmasterScript@NScript@@UAEPAXI@Z
+  00d86060 RELOCATION_MATCH NScript::CQ_HeroSoulsGuildmasterScript::CGuardOutsideWoods::??_GCGuardOutsideWoods@CQ_HeroSoulsGuildmasterScript@NScript@@UAEPAXI@Z
+  00d86130 RELOCATION_MATCH NScript::CQ_HeroSoulsGuildmasterScript::CMuteGuardOutsideWoods::??_GCMuteGuardOutsideWoods@CQ_HeroSoulsGuildmasterScript@NScript@@UAEPAXI@Z
+  00d86490 RELOCATION_MATCH NScript::CQ_HeroSoulsGuildmasterScript::CGuardInWoods::??_GCGuardInWoods@CQ_HeroSoulsGuildmasterScript@NScript@@UAEPAXI@Z
+  00d86660 RELOCATION_MATCH NScript::CQ_HeroSoulsGuildmasterScript::CWaitingGuardInWoods::??_GCWaitingGuardInWoods@CQ_HeroSoulsGuildmasterScript@NScript@@UAEPAXI@Z
+  00d86b40 RELOCATION_MATCH NScript::CQ_HeroSoulsGuildmasterScript::CHSG_DistanceChecker::??_GCHSG_DistanceChecker@CQ_HeroSoulsGuildmasterScript@NScript@@UAEPAXI@Z
+  00d86c10 RELOCATION_MATCH NScript::CQ_HeroSoulsGuildmasterScript::CSoulInfoAcolyte::??_GCSoulInfoAcolyte@CQ_HeroSoulsGuildmasterScript@NScript@@UAEPAXI@Z
+  00d88520 RELOCATION_MATCH NScript::CQ_HeroSoulsNostroScript::CSummonerToKill::??_GCSummonerToKill@CQ_HeroSoulsNostroScript@NScript@@UAEPAXI@Z
+  00d88690 RELOCATION_MATCH NScript::CQ_HeroSoulsNostroScript::CGuardNearGraveyardPath::??_GCGuardNearGraveyardPath@CQ_HeroSoulsNostroScript@NScript@@UAEPAXI@Z
+  00d88f70 RELOCATION_MATCH NScript::CQ_HeroSoulsNostroScript::CUndeadSoldier::??_GCUndeadSoldier@CQ_HeroSoulsNostroScript@NScript@@UAEPAXI@Z
+  00d891d0 RELOCATION_MATCH NScript::CQ_HeroSoulsNostroScript::CSUMMONED_CREATURE::??_GCSUMMONED_CREATURE@CQ_HeroSoulsNostroScript@NScript@@UAEPAXI@Z
+  00d89360 RELOCATION_MATCH NScript::CQ_HeroSoulsNostroScript::CNostro::??_GCNostro@CQ_HeroSoulsNostroScript@NScript@@UAEPAXI@Z
+  00d8a630 RELOCATION_MATCH NScript::CQ_HerosOldHouseScript::CGhostFisherman::??_GCGhostFisherman@CQ_HerosOldHouseScript@NScript@@UAEPAXI@Z
+  00d8a7d0 RELOCATION_MATCH NScript::CQ_HerosOldHouseScript::CFishermansWife::??_GCFishermansWife@CQ_HerosOldHouseScript@NScript@@UAEPAXI@Z
+  00d8a940 RELOCATION_MATCH NScript::CQ_HerosOldHouseScript::CExtraBooty::??_GCExtraBooty@CQ_HerosOldHouseScript@NScript@@UAEPAXI@Z
+  00d8f3d0 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CHobbeSpawn::??_GCHobbeSpawn@CQ_HobbeCaveScript@NScript@@UAEPAXI@Z
+  00d8f4d0 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CHobbeTorrent::??_GCHobbeTorrent@CQ_HobbeCaveScript@NScript@@UAEPAXI@Z
+  00d8f5c0 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CHobbeRoaming::??_GCHobbeRoaming@CQ_HobbeCaveScript@NScript@@UAEPAXI@Z
+  00d8f6b0 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CHobbeLarder::??_GCHobbeLarder@CQ_HobbeCaveScript@NScript@@UAEPAXI@Z
+  00d8fa10 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CHobbeLeader::??_GCHobbeLeader@CQ_HobbeCaveScript@NScript@@UAEPAXI@Z
+  00d8fd70 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CGranny::??_GCGranny@CQ_HobbeCaveScript@NScript@@UAEPAXI@Z
+  00d8ff80 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CNymph::??_GCNymph@CQ_HobbeCaveScript@NScript@@UAEPAXI@Z
+  00d90270 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CBanditCommentMarker::??_GCBanditCommentMarker@CQ_HobbeCaveScript@NScript@@UAEPAXI@Z
+  00d90790 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CJamesCommentMarker::??_GCJamesCommentMarker@CQ_HobbeCaveScript@NScript@@UAEPAXI@Z
+  00d90b10 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CJamesCommentMarkerAdv::??_GCJamesCommentMarkerAdv@CQ_HobbeCaveScript@NScript@@UAEPAXI@Z
+  00d91230 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CBanditInRoomSample::??_GCBanditInRoomSample@CQ_HobbeCaveScript@NScript@@UAEPAXI@Z
+  00d91300 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CCheckTheSilverKeyChest::??_GCCheckTheSilverKeyChest@CQ_HobbeCaveScript@NScript@@UAEPAXI@Z
+  00d91560 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CInvisibleCage::??_GCInvisibleCage@CQ_HobbeCaveScript@NScript@@UAEPAXI@Z
+  00d9b880 RELOCATION_MATCH NScript::CQ_HobbeToothContestScript::CQ_HobbeToothHobbe::??_GCQ_HobbeToothHobbe@CQ_HobbeToothContestScript@NScript@@UAEPAXI@Z
+  00d9bef0 RELOCATION_MATCH NScript::CQ_HobbeToothContestScript::CDrinkingHobbe::??_GCDrinkingHobbe@CQ_HobbeToothContestScript@NScript@@UAEPAXI@Z
+  00d9c290 RELOCATION_MATCH NScript::CQ_HobbeToothContestScript::CDrinkersReactMarker::??_GCDrinkersReactMarker@CQ_HobbeToothContestScript@NScript@@UAEPAXI@Z
+  00d9c480 RELOCATION_MATCH NScript::CQ_HobbeToothContestScript::CHobbeBarrel::??_GCHobbeBarrel@CQ_HobbeToothContestScript@NScript@@UAEPAXI@Z
+  00d9c660 RELOCATION_MATCH NScript::CQ_HobbeToothContestScript::COrchardFarmFarmer::??_GCOrchardFarmFarmer@CQ_HobbeToothContestScript@NScript@@UAEPAXI@Z
+  00d9cf40 RELOCATION_MATCH NScript::CQ_HobbeToothContestScript::CSpawnNewHobbe::??_GCSpawnNewHobbe@CQ_HobbeToothContestScript@NScript@@UAEPAXI@Z
+  00d9d010 RELOCATION_MATCH NScript::CQ_HobbeToothContestScript::CQ_HobbeToothWhisper::??_GCQ_HobbeToothWhisper@CQ_HobbeToothContestScript@NScript@@UAEPAXI@Z
+  00d9ee00 RELOCATION_MATCH NScript::CQ_MinionCampScript::CMC_SpawnPoint::??_GCMC_SpawnPoint@CQ_MinionCampScript@NScript@@UAEPAXI@Z
+  00d9f250 RELOCATION_MATCH NScript::CQ_MinionCampScript::CMC_Minion::??_GCMC_Minion@CQ_MinionCampScript@NScript@@UAEPAXI@Z
+  00d9f6a0 RELOCATION_MATCH NScript::CQ_MinionCampScript::CFadeinSummoner::??_GCFadeinSummoner@CQ_MinionCampScript@NScript@@UAEPAXI@Z
+  00da45a0 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::CMinionEscort::??_GCMinionEscort@CQ_MinionClifftopChaseScript@NScript@@UAEPAXI@Z
+  00da4780 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::CMinionEscortEnd::??_GCMinionEscortEnd@CQ_MinionClifftopChaseScript@NScript@@UAEPAXI@Z
+  00da4a10 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::CMinionWarningGuard::??_GCMinionWarningGuard@CQ_MinionClifftopChaseScript@NScript@@UAEPAXI@Z
+  00da4af0 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::CMinionAttackingGuard::??_GCMinionAttackingGuard@CQ_MinionClifftopChaseScript@NScript@@UAEPAXI@Z
+  00da4c70 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::CBalverineFightingGuard::??_GCBalverineFightingGuard@CQ_MinionClifftopChaseScript@NScript@@UAEPAXI@Z
+  00da4e10 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::CMagicBarrier::??_GCMagicBarrier@CQ_MinionClifftopChaseScript@NScript@@UAEPAXI@Z
+  00da5470 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::CMagicBarrierGraveyard::??_GCMagicBarrierGraveyard@CQ_MinionClifftopChaseScript@NScript@@UAEPAXI@Z
+  00da5890 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::CInvisibleCage::??_GCInvisibleCage@CQ_MinionClifftopChaseScript@NScript@@UAEPAXI@Z
+  00da5960 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::CMinionSpawner::??_GCMinionSpawner@CQ_MinionClifftopChaseScript@NScript@@UAEPAXI@Z
+  00da5c70 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::CMinionFieldGenerator::??_GCMinionFieldGenerator@CQ_MinionClifftopChaseScript@NScript@@UAEPAXI@Z
+  00da5d80 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::CCorneredGuard::??_GCCorneredGuard@CQ_MinionClifftopChaseScript@NScript@@UAEPAXI@Z
+  00da5e50 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::CMinionTrollSummoner::??_GCMinionTrollSummoner@CQ_MinionClifftopChaseScript@NScript@@UAEPAXI@Z
+  00da5f20 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::CRockTroll::??_GCRockTroll@CQ_MinionClifftopChaseScript@NScript@@UAEPAXI@Z
+  00da6150 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::CMinionSpawnAdv::??_GCMinionSpawnAdv@CQ_MinionClifftopChaseScript@NScript@@UAEPAXI@Z
+  00da6220 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::CM_Minion::??_GCM_Minion@CQ_MinionClifftopChaseScript@NScript@@UAEPAXI@Z
+  00da63d0 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::CM_Guard::??_GCM_Guard@CQ_MinionClifftopChaseScript@NScript@@UAEPAXI@Z
+  00da6650 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::CGuardToLeadTheWay::??_GCGuardToLeadTheWay@CQ_MinionClifftopChaseScript@NScript@@UAEPAXI@Z
+  00da6720 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::CM_NotThisWay::??_GCM_NotThisWay@CQ_MinionClifftopChaseScript@NScript@@UAEPAXI@Z
+  00da68c0 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::CGuardNotThisWay::??_GCGuardNotThisWay@CQ_MinionClifftopChaseScript@NScript@@UAEPAXI@Z
+  00dac370 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::CNOVI_LiveFather::??_GCNOVI_LiveFather@CQ_NewOakValeIntroScript@NScript@@UAEPAXI@Z
+  00dac4d0 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::CNOVI_Theresa::??_GCNOVI_Theresa@CQ_NewOakValeIntroScript@NScript@@UAEPAXI@Z
+  00dac630 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::CNOVI_Guard::??_GCNOVI_Guard@CQ_NewOakValeIntroScript@NScript@@UAEPAXI@Z
+210 rows
+addr       parity           behav  name
+00dadf60   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00daed10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00daee90   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00daf060   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00db0930   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00db1e60   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00db2a50   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00db3ee0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00db5310   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00db6c40   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00db7df0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00db80a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00db8270   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dbfe80   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dc0150   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dc3fa0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dc4500   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dc45e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dc4c20   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dc4d50   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dc5f60   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dc70e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dc7280   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dc7470   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dc8010   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dc84c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dc85a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dc86e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dcdc30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dcf090   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dcf4a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dcf5f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dcf6c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dd4ab0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dd5a40   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dd6420   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dd6a40   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dd8490   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dd88b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dd8ac0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dd8d00   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dd8ef0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dd90a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dd92b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ddb550   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ddc050   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ddc3c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ddc4e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ddc5c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ddc6a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dde700   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dde7d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ddedd0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ddeec0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00de19d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00de1b40   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00de1ca0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00de1e00   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00de1f50   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00de20a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00de21b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00de25b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00de3810   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00de3cc0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dec590   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ded270   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ded360   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ded520   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ded7f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dedb60   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dedf10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dee2c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00def0d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00def200   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00df1810   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00df22f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00df2a20   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00df2d10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00df2f70   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00df3530   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00df45f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00df4800   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00df48d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00df7bd0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00df8090   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00df8950   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00df9160   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00df96f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dfb190   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dfb300   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dfba40   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dfbdc0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dfbeb0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dfbf80   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dfc0e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e02450   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e02930   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e02d50   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e02e30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e03460   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e035c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e037f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e03a30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e03d10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e03f50   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e047b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e04950   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e04b30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e0ca30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e0cfd0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e0d1f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e0d680   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e0da80   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e0f4c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e0f880   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e10b00   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e10bd0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e10e40   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e11430   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e11650   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e11b90   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e11da0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e15810   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e16a60   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e16c20   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e16de0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e17300   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e17820   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e191c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e192c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e193b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e1af10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e1b1d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e1b730   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e1ba40   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e1bb60   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e1bc50   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e1e860   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e1e940   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e1ee10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e25d70   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e26bb0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e27c90   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e29020   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e290f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e29f30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e2a0d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e2bc70   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e2bd60   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e2bf80   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e33700   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e338c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e33ae0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e33c70   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e33de0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e38380   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e386c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e389c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e3ab70   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e3af10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e3b040   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e3b250   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e3b3b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e3b480   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e475f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e48a10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e48dc0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e48e90   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e49960   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e4a040   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e4a260   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e4a720   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e4b180   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e508f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e58d20   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e5e0a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e63570   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e63640   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e63710   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e6a6c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e6a7d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e6ea10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e6f1a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e6f6f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e6fc20   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e70440   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e70ba0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e71430   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e71960   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e71ef0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e72610   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e733f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e73910   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e740a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e76450   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e76520   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e76680   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e767e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e76900   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e7b950   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e7bb10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e7bd40   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e7e620   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e7ed40   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e82920   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e83880   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e8bdf0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e8bed0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e8cb20   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e90980   RELOCATION_MATCH PASS   `scalar deleting destructor'
+
+WINS: 210
+  00dadf60 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::CNOVI_Villager::??_GCNOVI_Villager@CQ_NewOakValeIntroScript@NScript@@UAEPAXI@Z
+  00daed10 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::CNOVI_Bully::??_GCNOVI_Bully@CQ_NewOakValeIntroScript@NScript@@UAEPAXI@Z
+  00daee90 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::CNOVI_Victim::??_GCNOVI_Victim@CQ_NewOakValeIntroScript@NScript@@UAEPAXI@Z
+  00daf060 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::CNOVI_TeddyGirl::??_GCNOVI_TeddyGirl@CQ_NewOakValeIntroScript@NScript@@UAEPAXI@Z
+  00db0930 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::CNOVI_AffairMan::??_GCNOVI_AffairMan@CQ_NewOakValeIntroScript@NScript@@UAEPAXI@Z
+  00db1e60 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWoman::??_GCNOVI_AffairWoman@CQ_NewOakValeIntroScript@NScript@@UAEPAXI@Z
+  00db2a50 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::CNOVI_AffairWife::??_GCNOVI_AffairWife@CQ_NewOakValeIntroScript@NScript@@UAEPAXI@Z
+  00db3ee0 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::CNOVI_BookTrader::??_GCNOVI_BookTrader@CQ_NewOakValeIntroScript@NScript@@UAEPAXI@Z
+  00db5310 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelMan::??_GCNOVI_BarrelMan@CQ_NewOakValeIntroScript@NScript@@UAEPAXI@Z
+  00db6c40 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::CNOVI_BarrelThug::??_GCNOVI_BarrelThug@CQ_NewOakValeIntroScript@NScript@@UAEPAXI@Z
+  00db7df0 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::CNOVI_Barrel::??_GCNOVI_Barrel@CQ_NewOakValeIntroScript@NScript@@UAEPAXI@Z
+  00db80a0 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::CNOVI_CreatedBeetle::??_GCNOVI_CreatedBeetle@CQ_NewOakValeIntroScript@NScript@@UAEPAXI@Z
+  00db8270 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::COVI_DeadFather::??_GCOVI_DeadFather@CQ_NewOakValeIntroScript@NScript@@UAEPAXI@Z
+  00dbfe80 RELOCATION_MATCH NScript::CQ_OakValeBanditRaidScript::COakValeBanditRaidBandit::??_GCOakValeBanditRaidBandit@CQ_OakValeBanditRaidScript@NScript@@UAEPAXI@Z
+  00dc0150 RELOCATION_MATCH NScript::CQ_OakValeBanditRaidScript::CM_RestartMarker::??_GCM_RestartMarker@CQ_OakValeBanditRaidScript@NScript@@UAEPAXI@Z
+  00dc3fa0 RELOCATION_MATCH NScript::CQ_OpeningGraveyardSecretPassageScript::CGraveyardDemon::??_GCGraveyardDemon@CQ_OpeningGraveyardSecretPassageScript@NScript@@UAEPAXI@Z
+  00dc4500 RELOCATION_MATCH NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageSarcophagos::??_GCSecretPassageSarcophagos@CQ_OpeningGraveyardSecretPassageScript@NScript@@UAEPAXI@Z
+  00dc45e0 RELOCATION_MATCH NScript::CQ_OpeningGraveyardSecretPassageScript::CCeremonialEffect::??_GCCeremonialEffect@CQ_OpeningGraveyardSecretPassageScript@NScript@@UAEPAXI@Z
+  00dc4c20 RELOCATION_MATCH NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageGraveyardKeeper::??_GCSecretPassageGraveyardKeeper@CQ_OpeningGraveyardSecretPassageScript@NScript@@UAEPAXI@Z
+  00dc4d50 RELOCATION_MATCH NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageMan::??_GCSecretPassageMan@CQ_OpeningGraveyardSecretPassageScript@NScript@@UAEPAXI@Z
+  00dc5f60 RELOCATION_MATCH NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageWoman::??_GCSecretPassageWoman@CQ_OpeningGraveyardSecretPassageScript@NScript@@UAEPAXI@Z
+  00dc70e0 RELOCATION_MATCH NScript::CQ_OpeningGraveyardSecretPassageScript::CStartGravekeeperCutsceneMarker::??_GCStartGravekeeperCutsceneMarker@CQ_OpeningGraveyardSecretPassageScript@NScript@@UAEPAXI@Z
+  00dc7280 RELOCATION_MATCH NScript::CQ_OpeningGraveyardSecretPassageScript::CUndeadSpawnCutscene::??_GCUndeadSpawnCutscene@CQ_OpeningGraveyardSecretPassageScript@NScript@@UAEPAXI@Z
+  00dc7470 RELOCATION_MATCH NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageKeeperFriend::??_GCSecretPassageKeeperFriend@CQ_OpeningGraveyardSecretPassageScript@NScript@@UAEPAXI@Z
+  00dc8010 RELOCATION_MATCH NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageFirstGate::??_GCSecretPassageFirstGate@CQ_OpeningGraveyardSecretPassageScript@NScript@@UAEPAXI@Z
+  00dc84c0 RELOCATION_MATCH NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageGate::??_GCSecretPassageGate@CQ_OpeningGraveyardSecretPassageScript@NScript@@UAEPAXI@Z
+  00dc85a0 RELOCATION_MATCH NScript::CQ_OpeningGraveyardSecretPassageScript::CSpeakingMarker::??_GCSpeakingMarker@CQ_OpeningGraveyardSecretPassageScript@NScript@@UAEPAXI@Z
+  00dc86e0 RELOCATION_MATCH NScript::CQ_OpeningGraveyardSecretPassageScript::CUndeadLieutenant::??_GCUndeadLieutenant@CQ_OpeningGraveyardSecretPassageScript@NScript@@UAEPAXI@Z
+  00dcdc30 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidScript::CArtefact::??_GCArtefact@CQ_OrchardFarmRaidScript@NScript@@UAEPAXI@Z
+  00dcf090 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidScript::COrchardFarmWhisper::??_GCOrchardFarmWhisper@CQ_OrchardFarmRaidScript@NScript@@UAEPAXI@Z
+  00dcf4a0 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidScript::CFarmRearEntrance::??_GCFarmRearEntrance@CQ_OrchardFarmRaidScript@NScript@@UAEPAXI@Z
+  00dcf5f0 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidScript::CM_WhisperFarmRaidIntro::??_GCM_WhisperFarmRaidIntro@CQ_OrchardFarmRaidScript@NScript@@UAEPAXI@Z
+  00dcf6c0 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidScript::CMK_OFI_GWLL_WHIS2::??_GCMK_OFI_GWLL_WHIS2@CQ_OrchardFarmRaidScript@NScript@@UAEPAXI@Z
+  00dd4ab0 RELOCATION_MATCH NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonerAccomplice::??_GCPrisonerAccomplice@CQ_PrisonEscapeRescueMotherScript@NScript@@UAEPAXI@Z
+  00dd5a40 RELOCATION_MATCH NScript::CQ_PrisonEscapeRescueMotherScript::CPrisoner::??_GCPrisoner@CQ_PrisonEscapeRescueMotherScript@NScript@@UAEPAXI@Z
+  00dd6420 RELOCATION_MATCH NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonEscapeGuard::??_GCPrisonEscapeGuard@CQ_PrisonEscapeRescueMotherScript@NScript@@UAEPAXI@Z
+  00dd6a40 RELOCATION_MATCH NScript::CQ_PrisonEscapeRescueMotherScript::CMotherTorture::??_GCMotherTorture@CQ_PrisonEscapeRescueMotherScript@NScript@@UAEPAXI@Z
+  00dd8490 RELOCATION_MATCH NScript::CQ_PrisonEscapeRescueMotherScript::CGuardMotherEscape::??_GCGuardMotherEscape@CQ_PrisonEscapeRescueMotherScript@NScript@@UAEPAXI@Z
+  00dd88b0 RELOCATION_MATCH NScript::CQ_PrisonEscapeRescueMotherScript::CInventoryChest::??_GCInventoryChest@CQ_PrisonEscapeRescueMotherScript@NScript@@UAEPAXI@Z
+  00dd8ac0 RELOCATION_MATCH NScript::CQ_PrisonEscapeRescueMotherScript::CTortureDoorPassage::??_GCTortureDoorPassage@CQ_PrisonEscapeRescueMotherScript@NScript@@UAEPAXI@Z
+  00dd8d00 RELOCATION_MATCH NScript::CQ_PrisonEscapeRescueMotherScript::CTortureDoorCourtyard::??_GCTortureDoorCourtyard@CQ_PrisonEscapeRescueMotherScript@NScript@@UAEPAXI@Z
+  00dd8ef0 RELOCATION_MATCH NScript::CQ_PrisonEscapeRescueMotherScript::CCellDoorHero::??_GCCellDoorHero@CQ_PrisonEscapeRescueMotherScript@NScript@@UAEPAXI@Z
+  00dd90a0 RELOCATION_MATCH NScript::CQ_PrisonEscapeRescueMotherScript::CCellDoor::??_GCCellDoor@CQ_PrisonEscapeRescueMotherScript@NScript@@UAEPAXI@Z
+  00dd92b0 RELOCATION_MATCH NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonKeyDoor::??_GCPrisonKeyDoor@CQ_PrisonEscapeRescueMotherScript@NScript@@UAEPAXI@Z
+  00ddb550 RELOCATION_MATCH NScript::CQ_PrisonRaceScript::CPrisonRaceGuard::??_GCPrisonRaceGuard@CQ_PrisonRaceScript@NScript@@UAEPAXI@Z
+  00ddc050 RELOCATION_MATCH NScript::CQ_PrisonRaceScript::CPrisonRaceWinningPostGuard::??_GCPrisonRaceWinningPostGuard@CQ_PrisonRaceScript@NScript@@UAEPAXI@Z
+  00ddc3c0 RELOCATION_MATCH NScript::CQ_PrisonRaceScript::CPrisonRaceWarden::??_GCPrisonRaceWarden@CQ_PrisonRaceScript@NScript@@UAEPAXI@Z
+  00ddc4e0 RELOCATION_MATCH NScript::CQ_PrisonRaceScript::CPrisonRacer::??_GCPrisonRacer@CQ_PrisonRaceScript@NScript@@UAEPAXI@Z
+  00ddc5c0 RELOCATION_MATCH NScript::CQ_PrisonRaceScript::CPrisonRaceStartingGuard::??_GCPrisonRaceStartingGuard@CQ_PrisonRaceScript@NScript@@UAEPAXI@Z
+  00ddc6a0 RELOCATION_MATCH NScript::CQ_PrisonRaceScript::CWaypointSpeedCheck::??_GCWaypointSpeedCheck@CQ_PrisonRaceScript@NScript@@UAEPAXI@Z
+  00dde700 RELOCATION_MATCH NScript::CQ_PrisonWardenGameScript::CPrisonWarden::??_GCPrisonWarden@CQ_PrisonWardenGameScript@NScript@@UAEPAXI@Z
+  00dde7d0 RELOCATION_MATCH NScript::CQ_PrisonWardenGameScript::CSecretBook::??_GCSecretBook@CQ_PrisonWardenGameScript@NScript@@UAEPAXI@Z
+  00ddedd0 RELOCATION_MATCH NScript::CQ_PrisonWardenGameScript::CExitWardensOffice::??_GCExitWardensOffice@CQ_PrisonWardenGameScript@NScript@@UAEPAXI@Z
+  00ddeec0 RELOCATION_MATCH NScript::CQ_PrisonWardenGameScript::CDoNotTarget::??_GCDoNotTarget@CQ_PrisonWardenGameScript@NScript@@UAEPAXI@Z
+  00de19d0 RELOCATION_MATCH NScript::CQ_RansomVictimScript::CVictimsFather::??_GCVictimsFather@CQ_RansomVictimScript@NScript@@UAEPAXI@Z
+  00de1b40 RELOCATION_MATCH NScript::CQ_RansomVictimScript::CVictim::??_GCVictim@CQ_RansomVictimScript@NScript@@UAEPAXI@Z
+  00de1ca0 RELOCATION_MATCH NScript::CQ_RansomVictimScript::CRansommer::??_GCRansommer@CQ_RansomVictimScript@NScript@@UAEPAXI@Z
+  00de1e00 RELOCATION_MATCH NScript::CQ_RansomVictimScript::CRansomHelper::??_GCRansomHelper@CQ_RansomVictimScript@NScript@@UAEPAXI@Z
+  00de1f50 RELOCATION_MATCH NScript::CQ_RansomVictimScript::CVictimsBrother::??_GCVictimsBrother@CQ_RansomVictimScript@NScript@@UAEPAXI@Z
+  00de20a0 RELOCATION_MATCH NScript::CQ_RansomVictimScript::CVictimsBrotherHelper::??_GCVictimsBrotherHelper@CQ_RansomVictimScript@NScript@@UAEPAXI@Z
+  00de21b0 RELOCATION_MATCH NScript::CQ_RansomVictimScript::CRandomAttacker::??_GCRandomAttacker@CQ_RansomVictimScript@NScript@@UAEPAXI@Z
+  00de25b0 RELOCATION_MATCH NScript::CQ_RansomVictimScript::CVictimsFatherGuard::??_GCVictimsFatherGuard@CQ_RansomVictimScript@NScript@@UAEPAXI@Z
+  00de3810 RELOCATION_MATCH NScript::CQ_RansomVictimScript::CRansomRevenge::??_GCRansomRevenge@CQ_RansomVictimScript@NScript@@UAEPAXI@Z
+  00de3cc0 RELOCATION_MATCH NScript::CQ_RansomVictimScript::CNPCComment::??_GCNPCComment@CQ_RansomVictimScript@NScript@@UAEPAXI@Z
+  00dec590 RELOCATION_MATCH NScript::CQ_RansomVictimChiefsHouseScript::CTest::??_GCTest@CQ_RansomVictimChiefsHouseScript@NScript@@UAEPAXI@Z
+  00ded270 RELOCATION_MATCH NScript::CQ_SecretPassageScript::CSP_ScreamerTrigger::??_GCSP_ScreamerTrigger@CQ_SecretPassageScript@NScript@@UAEPAXI@Z
+  00ded360 RELOCATION_MATCH NScript::CQ_SecretPassageScript::CSP_NymphTrigger::??_GCSP_NymphTrigger@CQ_SecretPassageScript@NScript@@UAEPAXI@Z
+  00ded520 RELOCATION_MATCH NScript::CQ_SecretPassageScript::CSP_AmbushGuard::??_GCSP_AmbushGuard@CQ_SecretPassageScript@NScript@@UAEPAXI@Z
+  00ded7f0 RELOCATION_MATCH NScript::CQ_SecretPassageScript::CSP_SecretPassageGuard::??_GCSP_SecretPassageGuard@CQ_SecretPassageScript@NScript@@UAEPAXI@Z
+  00dedb60 RELOCATION_MATCH NScript::CQ_SecretPassageScript::CSP_InvestigatingGuard::??_GCSP_InvestigatingGuard@CQ_SecretPassageScript@NScript@@UAEPAXI@Z
+  00dedf10 RELOCATION_MATCH NScript::CQ_SecretPassageScript::CSP_DeskGuard::??_GCSP_DeskGuard@CQ_SecretPassageScript@NScript@@UAEPAXI@Z
+  00dee2c0 RELOCATION_MATCH NScript::CQ_SecretPassageScript::CMotherTorture::??_GCMotherTorture@CQ_SecretPassageScript@NScript@@UAEPAXI@Z
+  00def0d0 RELOCATION_MATCH NScript::CQ_SecretPassageScript::CTortureDoorCourtyard::??_GCTortureDoorCourtyard@CQ_SecretPassageScript@NScript@@UAEPAXI@Z
+  00def200 RELOCATION_MATCH NScript::CQ_SecretPassageScript::CDoorToMothersTortureChamber::??_GCDoorToMothersTortureChamber@CQ_SecretPassageScript@NScript@@UAEPAXI@Z
+  00df1810 RELOCATION_MATCH NScript::CQ_SummoningTheShipScript::CSTS_BriarRose::??_GCSTS_BriarRose@CQ_SummoningTheShipScript@NScript@@UAEPAXI@Z
+  00df22f0 RELOCATION_MATCH NScript::CQ_SummoningTheShipScript::CSummonerAttacker::??_GCSummonerAttacker@CQ_SummoningTheShipScript@NScript@@UAEPAXI@Z
+  00df2a20 RELOCATION_MATCH NScript::CQ_SummoningTheShipScript::CSummonerMinion::??_GCSummonerMinion@CQ_SummoningTheShipScript@NScript@@UAEPAXI@Z
+  00df2d10 RELOCATION_MATCH NScript::CQ_SummoningTheShipScript::CFireHeartHolder::??_GCFireHeartHolder@CQ_SummoningTheShipScript@NScript@@UAEPAXI@Z
+  00df2f70 RELOCATION_MATCH NScript::CQ_SummoningTheShipScript::CFireHeart::??_GCFireHeart@CQ_SummoningTheShipScript@NScript@@UAEPAXI@Z
+  00df3530 RELOCATION_MATCH NScript::CQ_SummoningTheShipScript::CM_ActivateLighthouse::??_GCM_ActivateLighthouse@CQ_SummoningTheShipScript@NScript@@UAEPAXI@Z
+  00df45f0 RELOCATION_MATCH NScript::CQ_TentacleKrakenBossFightScript::CKrakenMinion::??_GCKrakenMinion@CQ_TentacleKrakenBossFightScript@NScript@@UAEPAXI@Z
+  00df4800 RELOCATION_MATCH NScript::CQ_TentacleKrakenBossFightScript::CTheKraken::??_GCTheKraken@CQ_TentacleKrakenBossFightScript@NScript@@UAEPAXI@Z
+  00df48d0 RELOCATION_MATCH NScript::CQ_TentacleKrakenBossFightScript::CM_Experience::??_GCM_Experience@CQ_TentacleKrakenBossFightScript@NScript@@UAEPAXI@Z
+  00df7bd0 RELOCATION_MATCH NScript::CQ_TraderConflictEvilScript::CTC_GuardSpawnPoint::??_GCTC_GuardSpawnPoint@CQ_TraderConflictEvilScript@NScript@@UAEPAXI@Z
+  00df8090 RELOCATION_MATCH NScript::CQ_TraderConflictEvilScript::CTC_BanditFollower::??_GCTC_BanditFollower@CQ_TraderConflictEvilScript@NScript@@UAEPAXI@Z
+  00df8950 RELOCATION_MATCH NScript::CQ_TraderConflictEvilScript::CTC_BanditFighter::??_GCTC_BanditFighter@CQ_TraderConflictEvilScript@NScript@@UAEPAXI@Z
+  00df9160 RELOCATION_MATCH NScript::CQ_TraderConflictEvilScript::CTC_Villager::??_GCTC_Villager@CQ_TraderConflictEvilScript@NScript@@UAEPAXI@Z
+  00df96f0 RELOCATION_MATCH NScript::CQ_TraderConflictEvilScript::CIsAGuard::??_GCIsAGuard@CQ_TraderConflictEvilScript@NScript@@UAEPAXI@Z
+  00dfb190 RELOCATION_MATCH NScript::CQ_TraderConflictGoodScript::CTraderToRescue::??_GCTraderToRescue@CQ_TraderConflictGoodScript@NScript@@UAEPAXI@Z
+  00dfb300 RELOCATION_MATCH NScript::CQ_TraderConflictGoodScript::CTC_BanditGuard::??_GCTC_BanditGuard@CQ_TraderConflictGoodScript@NScript@@UAEPAXI@Z
+  00dfba40 RELOCATION_MATCH NScript::CQ_TraderConflictGoodScript::CTC_BanditHostageKeeper::??_GCTC_BanditHostageKeeper@CQ_TraderConflictGoodScript@NScript@@UAEPAXI@Z
+  00dfbdc0 RELOCATION_MATCH NScript::CQ_TraderConflictGoodScript::CBCMTrader::??_GCBCMTrader@CQ_TraderConflictGoodScript@NScript@@UAEPAXI@Z
+  00dfbeb0 RELOCATION_MATCH NScript::CQ_TraderConflictGoodScript::CBCGameMaster::??_GCBCGameMaster@CQ_TraderConflictGoodScript@NScript@@UAEPAXI@Z
+  00dfbf80 RELOCATION_MATCH NScript::CQ_TraderConflictGoodScript::CBanditExtra::??_GCBanditExtra@CQ_TraderConflictGoodScript@NScript@@UAEPAXI@Z
+  00dfc0e0 RELOCATION_MATCH NScript::CQ_TraderConflictGoodScript::CCampHostageDoor::??_GCCampHostageDoor@CQ_TraderConflictGoodScript@NScript@@UAEPAXI@Z
+  00e02450 RELOCATION_MATCH NScript::CQ_TraderEscortScript::CFleshEatingBalverine::??_GCFleshEatingBalverine@CQ_TraderEscortScript@NScript@@UAEPAXI@Z
+  00e02930 RELOCATION_MATCH NScript::CQ_TraderEscortScript::CInfectedBalverine::??_GCInfectedBalverine@CQ_TraderEscortScript@NScript@@UAEPAXI@Z
+  00e02d50 RELOCATION_MATCH NScript::CQ_TraderEscortScript::CTraderComment::??_GCTraderComment@CQ_TraderEscortScript@NScript@@UAEPAXI@Z
+  00e02e30 RELOCATION_MATCH NScript::CQ_TraderEscortScript::CDarkwoodAssassinSpawn::??_GCDarkwoodAssassinSpawn@CQ_TraderEscortScript@NScript@@UAEPAXI@Z
+  00e03460 RELOCATION_MATCH NScript::CQ_TraderEscortScript::CDarkwoodBalverineTrader::??_GCDarkwoodBalverineTrader@CQ_TraderEscortScript@NScript@@UAEPAXI@Z
+  00e035c0 RELOCATION_MATCH NScript::CQ_TraderEscortScript::CTE_BanditLeader::??_GCTE_BanditLeader@CQ_TraderEscortScript@NScript@@UAEPAXI@Z
+  00e037f0 RELOCATION_MATCH NScript::CQ_TraderEscortScript::CBanditCronies::??_GCBanditCronies@CQ_TraderEscortScript@NScript@@UAEPAXI@Z
+  00e03a30 RELOCATION_MATCH NScript::CQ_TraderEscortScript::CRockTrollTrigger::??_GCRockTrollTrigger@CQ_TraderEscortScript@NScript@@UAEPAXI@Z
+  00e03d10 RELOCATION_MATCH NScript::CQ_TraderEscortScript::CDarkwoodRockTroll::??_GCDarkwoodRockTroll@CQ_TraderEscortScript@NScript@@UAEPAXI@Z
+  00e03f50 RELOCATION_MATCH NScript::CQ_TraderEscortScript::CMagicBarrier::??_GCMagicBarrier@CQ_TraderEscortScript@NScript@@UAEPAXI@Z
+  00e047b0 RELOCATION_MATCH NScript::CQ_TraderEscortScript::CDW5_Bandit::??_GCDW5_Bandit@CQ_TraderEscortScript@NScript@@UAEPAXI@Z
+  00e04950 RELOCATION_MATCH NScript::CQ_TraderEscortScript::CDW5_Balv::??_GCDW5_Balv@CQ_TraderEscortScript@NScript@@UAEPAXI@Z
+  00e04b30 RELOCATION_MATCH NScript::CQ_TraderEscortScript::CEndTrader::??_GCEndTrader@CQ_TraderEscortScript@NScript@@UAEPAXI@Z
+  00e0ca30 RELOCATION_MATCH NScript::CQ_UndeadRisingScript::CUndeadRisingFirefly::??_GCUndeadRisingFirefly@CQ_UndeadRisingScript@NScript@@UAEPAXI@Z
+  00e0cfd0 RELOCATION_MATCH NScript::CQ_UndeadRisingScript::CUndeadRisingZombieAttacker::??_GCUndeadRisingZombieAttacker@CQ_UndeadRisingScript@NScript@@UAEPAXI@Z
+  00e0d1f0 RELOCATION_MATCH NScript::CQ_UndeadRisingScript::CUndeadRisingBoss::??_GCUndeadRisingBoss@CQ_UndeadRisingScript@NScript@@UAEPAXI@Z
+  00e0d680 RELOCATION_MATCH NScript::CQ_UndeadRisingScript::CUndeadRisingZombieAttackerBoss::??_GCUndeadRisingZombieAttackerBoss@CQ_UndeadRisingScript@NScript@@UAEPAXI@Z
+  00e0da80 RELOCATION_MATCH NScript::CQ_UndeadRisingScript::CUndeadRisingCentre::??_GCUndeadRisingCentre@CQ_UndeadRisingScript@NScript@@UAEPAXI@Z
+  00e0f4c0 RELOCATION_MATCH NScript::CQ_WaspBossScript::CFleeingWoman::??_GCFleeingWoman@CQ_WaspBossScript@NScript@@UAEPAXI@Z
+  00e0f880 RELOCATION_MATCH NScript::CQ_WaspBossScript::CWaspHelper::??_GCWaspHelper@CQ_WaspBossScript@NScript@@UAEPAXI@Z
+  00e10b00 RELOCATION_MATCH NScript::CQ_WaspBossScript::CGratefulVillagerSpawn::??_GCGratefulVillagerSpawn@CQ_WaspBossScript@NScript@@UAEPAXI@Z
+  00e10bd0 RELOCATION_MATCH NScript::CQ_WaspBossScript::CWaspChaser::??_GCWaspChaser@CQ_WaspBossScript@NScript@@UAEPAXI@Z
+  00e10e40 RELOCATION_MATCH NScript::CQ_WaspBossScript::CWaspChaseWoman::??_GCWaspChaseWoman@CQ_WaspBossScript@NScript@@UAEPAXI@Z
+  00e11430 RELOCATION_MATCH NScript::CQ_WaspBossScript::CWaspAttacker::??_GCWaspAttacker@CQ_WaspBossScript@NScript@@UAEPAXI@Z
+  00e11650 RELOCATION_MATCH NScript::CQ_WaspBossScript::CWaspVictim::??_GCWaspVictim@CQ_WaspBossScript@NScript@@UAEPAXI@Z
+  00e11b90 RELOCATION_MATCH NScript::CQ_WaspBossScript::CQueenHornet::??_GCQueenHornet@CQ_WaspBossScript@NScript@@UAEPAXI@Z
+  00e11da0 RELOCATION_MATCH NScript::CQ_WaspBossScript::CHornetDrone::??_GCHornetDrone@CQ_WaspBossScript@NScript@@UAEPAXI@Z
+  00e15810 RELOCATION_MATCH NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_WhiteBalverine::??_GCWB_WhiteBalverine@CQ_WhiteBalverineKnotholeGladeScript@NScript@@UAEPAXI@Z
+  00e16a60 RELOCATION_MATCH NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_ScaredVillager::??_GCWB_ScaredVillager@CQ_WhiteBalverineKnotholeGladeScript@NScript@@UAEPAXI@Z
+  00e16c20 RELOCATION_MATCH NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Villager::??_GCWB_Villager@CQ_WhiteBalverineKnotholeGladeScript@NScript@@UAEPAXI@Z
+  00e16de0 RELOCATION_MATCH NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Guard1::??_GCWB_Guard1@CQ_WhiteBalverineKnotholeGladeScript@NScript@@UAEPAXI@Z
+  00e17300 RELOCATION_MATCH NScript::CQ_WhiteBalverineKnotholeGladeScript::CWB_Guard2::??_GCWB_Guard2@CQ_WhiteBalverineKnotholeGladeScript@NScript@@UAEPAXI@Z
+  00e17820 RELOCATION_MATCH NScript::CQ_WhiteBalverineKnotholeGladeScript::CKG_Chief::??_GCKG_Chief@CQ_WhiteBalverineKnotholeGladeScript@NScript@@UAEPAXI@Z
+  00e191c0 RELOCATION_MATCH NScript::CQ_WhiteBalverineWWScript::CWBWW_WhiteBalverine::??_GCWBWW_WhiteBalverine@CQ_WhiteBalverineWWScript@NScript@@UAEPAXI@Z
+  00e192c0 RELOCATION_MATCH NScript::CQ_WhiteBalverineWWScript::CWBWW_SoldierBalverine::??_GCWBWW_SoldierBalverine@CQ_WhiteBalverineWWScript@NScript@@UAEPAXI@Z
+  00e193b0 RELOCATION_MATCH NScript::CQ_WhiteBalverineWWScript::CKG_Chief::??_GCKG_Chief@CQ_WhiteBalverineWWScript@NScript@@UAEPAXI@Z
+  00e1af10 RELOCATION_MATCH NScript::CQ_WizardBattleScript::CChasingScreamer::??_GCChasingScreamer@CQ_WizardBattleScript@NScript@@UAEPAXI@Z
+  00e1b1d0 RELOCATION_MATCH NScript::CQ_WizardBattleScript::CHKC_VillagerScreamer::??_GCHKC_VillagerScreamer@CQ_WizardBattleScript@NScript@@UAEPAXI@Z
+  00e1b730 RELOCATION_MATCH NScript::CQ_WizardBattleScript::CHKC_ScreamerPoint::??_GCHKC_ScreamerPoint@CQ_WizardBattleScript@NScript@@UAEPAXI@Z
+  00e1ba40 RELOCATION_MATCH NScript::CQ_WizardBattleScript::CHKC_Maze::??_GCHKC_Maze@CQ_WizardBattleScript@NScript@@UAEPAXI@Z
+  00e1bb60 RELOCATION_MATCH NScript::CQ_WizardBattleScript::CEndGameBarrier::??_GCEndGameBarrier@CQ_WizardBattleScript@NScript@@UAEPAXI@Z
+  00e1bc50 RELOCATION_MATCH NScript::CQ_WizardBattleScript::CInitialScreamerPoint::??_GCInitialScreamerPoint@CQ_WizardBattleScript@NScript@@UAEPAXI@Z
+  00e1e860 RELOCATION_MATCH NScript::CQR_EscortTraderScript::CTraderToEscort::??_GCTraderToEscort@CQR_EscortTraderScript@NScript@@UAEPAXI@Z
+  00e1e940 RELOCATION_MATCH NScript::CQR_EscortTraderScript::CM_BanditTrigger::??_GCM_BanditTrigger@CQR_EscortTraderScript@NScript@@UAEPAXI@Z
+  00e1ee10 RELOCATION_MATCH NScript::CQR_EscortTraderScript::CAttackingBandit::??_GCAttackingBandit@CQR_EscortTraderScript@NScript@@UAEPAXI@Z
+  00e25d70 RELOCATION_MATCH NScript::CQS_GuardianSisterInfoScript::CMazeAtTavern::??_GCMazeAtTavern@CQS_GuardianSisterInfoScript@NScript@@UAEPAXI@Z
+  00e26bb0 RELOCATION_MATCH NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript::CMazeAtTavern::??_GCMazeAtTavern@CQS_GuardianSisterInfo2_SisterInBanditCampScript@NScript@@UAEPAXI@Z
+  00e27c90 RELOCATION_MATCH NScript::CQS_GuardianTrophyDealerInfoScript::CGTDI_Maze::??_GCGTDI_Maze@CQS_GuardianTrophyDealerInfoScript@NScript@@UAEPAXI@Z
+  00e29020 RELOCATION_MATCH NScript::CQS_MeetSisterScript::CMeetSisterMessenger::??_GCMeetSisterMessenger@CQS_MeetSisterScript@NScript@@UAEPAXI@Z
+  00e290f0 RELOCATION_MATCH NScript::CQS_MeetSisterScript::CMeetSisterSister::??_GCMeetSisterSister@CQS_MeetSisterScript@NScript@@UAEPAXI@Z
+  00e29f30 RELOCATION_MATCH NScript::CQS_ScytheInfoScript::CScytheMarker::??_GCScytheMarker@CQS_ScytheInfoScript@NScript@@UAEPAXI@Z
+  00e2a0d0 RELOCATION_MATCH NScript::CQS_ScytheInfoScript::CScytheNearOracle::??_GCScytheNearOracle@CQS_ScytheInfoScript@NScript@@UAEPAXI@Z
+  00e2bc70 RELOCATION_MATCH NScript::CV_AmbushScamScript::CAS_Ambusher::??_GCAS_Ambusher@CV_AmbushScamScript@NScript@@UAEPAXI@Z
+  00e2bd60 RELOCATION_MATCH NScript::CV_AmbushScamScript::CAS_Trickster::??_GCAS_Trickster@CV_AmbushScamScript@NScript@@UAEPAXI@Z
+  00e2bf80 RELOCATION_MATCH NScript::CV_AmbushScamScript::CAS_Buddy::??_GCAS_Buddy@CV_AmbushScamScript@NScript@@UAEPAXI@Z
+  00e33700 RELOCATION_MATCH NScript::CV_ArcheryCompetitionScript::CAC_Owner::??_GCAC_Owner@CV_ArcheryCompetitionScript@NScript@@UAEPAXI@Z
+  00e338c0 RELOCATION_MATCH NScript::CV_ArcheryCompetitionScript::CM_AC_DummyStatic::??_GCM_AC_DummyStatic@CV_ArcheryCompetitionScript@NScript@@UAEPAXI@Z
+  00e33ae0 RELOCATION_MATCH NScript::CV_ArcheryCompetitionScript::CM_AC_DummyMoving::??_GCM_AC_DummyMoving@CV_ArcheryCompetitionScript@NScript@@UAEPAXI@Z
+  00e33c70 RELOCATION_MATCH NScript::CV_ArcheryCompetitionScript::CAC_DummyStatic::??_GCAC_DummyStatic@CV_ArcheryCompetitionScript@NScript@@UAEPAXI@Z
+  00e33de0 RELOCATION_MATCH NScript::CV_ArcheryCompetitionScript::CAC_DummyMoving::??_GCAC_DummyMoving@CV_ArcheryCompetitionScript@NScript@@UAEPAXI@Z
+  00e38380 RELOCATION_MATCH NScript::CV_AssassinAttacksScript::CAttackingAssassin::??_GCAttackingAssassin@CV_AssassinAttacksScript@NScript@@UAEPAXI@Z
+  00e386c0 RELOCATION_MATCH NScript::CV_AssassinAttacksScript::CChestHidingAssassin::??_GCChestHidingAssassin@CV_AssassinAttacksScript@NScript@@UAEPAXI@Z
+  00e389c0 RELOCATION_MATCH NScript::CV_AssassinAttacksScript::CAssassinChest::??_GCAssassinChest@CV_AssassinAttacksScript@NScript@@UAEPAXI@Z
+  00e3ab70 RELOCATION_MATCH NScript::CV_BordelloScript::CMadame::??_GCMadame@CV_BordelloScript@NScript@@UAEPAXI@Z
+  00e3af10 RELOCATION_MATCH NScript::CV_BordelloScript::CBordelloGuard::??_GCBordelloGuard@CV_BordelloScript@NScript@@UAEPAXI@Z
+  00e3b040 RELOCATION_MATCH NScript::CV_BordelloScript::CMagicman::??_GCMagicman@CV_BordelloScript@NScript@@UAEPAXI@Z
+  00e3b250 RELOCATION_MATCH NScript::CV_BordelloScript::CBordelloClient::??_GCBordelloClient@CV_BordelloScript@NScript@@UAEPAXI@Z
+  00e3b3b0 RELOCATION_MATCH NScript::CV_BordelloScript::CM_HeroDownstairs::??_GCM_HeroDownstairs@CV_BordelloScript@NScript@@UAEPAXI@Z
+  00e3b480 RELOCATION_MATCH NScript::CV_BordelloScript::CBordelloEntrance::??_GCBordelloEntrance@CV_BordelloScript@NScript@@UAEPAXI@Z
+  00e475f0 RELOCATION_MATCH NScript::CV_BanditCampPathScript::CBCP_Bandit::??_GCBCP_Bandit@CV_BanditCampPathScript@NScript@@UAEPAXI@Z
+  00e48a10 RELOCATION_MATCH NScript::CV_BanditTollScript::CM_TollBandit::??_GCM_TollBandit@CV_BanditTollScript@NScript@@UAEPAXI@Z
+  00e48dc0 RELOCATION_MATCH NScript::CV_BanditTollScript::CM_TauntingBandit::??_GCM_TauntingBandit@CV_BanditTollScript@NScript@@UAEPAXI@Z
+  00e48e90 RELOCATION_MATCH NScript::CV_BanditTollScript::CTauntingBandit::??_GCTauntingBandit@CV_BanditTollScript@NScript@@UAEPAXI@Z
+  00e49960 RELOCATION_MATCH NScript::CV_BanditTollScript::CBlockingBandit::??_GCBlockingBandit@CV_BanditTollScript@NScript@@UAEPAXI@Z
+  00e4a040 RELOCATION_MATCH NScript::CV_BanditTollScript::CReluctantTrader::??_GCReluctantTrader@CV_BanditTollScript@NScript@@UAEPAXI@Z
+  00e4a260 RELOCATION_MATCH NScript::CV_BanditTollScript::CSafeTrader::??_GCSafeTrader@CV_BanditTollScript@NScript@@UAEPAXI@Z
+  00e4a720 RELOCATION_MATCH NScript::CV_BanditTollScript::CM_BanditLeader::??_GCM_BanditLeader@CV_BanditTollScript@NScript@@UAEPAXI@Z
+  00e4b180 RELOCATION_MATCH NScript::CV_BanditTollScript::CGuildSealWarning::??_GCGuildSealWarning@CV_BanditTollScript@NScript@@UAEPAXI@Z
+  00e508f0 RELOCATION_MATCH NScript::CV_BeardyBaldyScript::CBB_BeardyBaldyMan::??_GCBB_BeardyBaldyMan@CV_BeardyBaldyScript@NScript@@UAEPAXI@Z
+  00e58d20 RELOCATION_MATCH NScript::CV_BeggarAndChildScript::CLookoutPointBeggar::??_GCLookoutPointBeggar@CV_BeggarAndChildScript@NScript@@UAEPAXI@Z
+  00e5e0a0 RELOCATION_MATCH NScript::CV_BodyGuardScript::CM_BodyGuardRespawn::??_GCM_BodyGuardRespawn@CV_BodyGuardScript@NScript@@UAEPAXI@Z
+  00e63570 RELOCATION_MATCH NScript::CV_ChickenKickingScript::CChickenMaster::??_GCChickenMaster@CV_ChickenKickingScript@NScript@@UAEPAXI@Z
+  00e63640 RELOCATION_MATCH NScript::CV_ChickenKickingScript::CKickedChicken::??_GCKickedChicken@CV_ChickenKickingScript@NScript@@UAEPAXI@Z
+  00e63710 RELOCATION_MATCH NScript::CV_ChickenKickingScript::CSpectator::??_GCSpectator@CV_ChickenKickingScript@NScript@@UAEPAXI@Z
+  00e6a6c0 RELOCATION_MATCH NScript::CV_ChapelOfEvilScript::CCOE_Victim::??_GCCOE_Victim@CV_ChapelOfEvilScript@NScript@@UAEPAXI@Z
+  00e6a7d0 RELOCATION_MATCH NScript::CV_ChapelOfEvilScript::CCOE_AltarEvil::??_GCCOE_AltarEvil@CV_ChapelOfEvilScript@NScript@@UAEPAXI@Z
+  00e6ea10 RELOCATION_MATCH NScript::CV_DemonDoorsScript::CDF_ShineLight::??_GCDF_ShineLight@CV_DemonDoorsScript@NScript@@UAEPAXI@Z
+  00e6f1a0 RELOCATION_MATCH NScript::CV_DemonDoorsScript::CDF_ThunderHelmet::??_GCDF_ThunderHelmet@CV_DemonDoorsScript@NScript@@UAEPAXI@Z
+  00e6f6f0 RELOCATION_MATCH NScript::CV_DemonDoorsScript::CDF_CombatMult::??_GCDF_CombatMult@CV_DemonDoorsScript@NScript@@UAEPAXI@Z
+  00e6fc20 RELOCATION_MATCH NScript::CV_DemonDoorsScript::CDF_Dragon::??_GCDF_Dragon@CV_DemonDoorsScript@NScript@@UAEPAXI@Z
+  00e70440 RELOCATION_MATCH NScript::CV_DemonDoorsScript::CDF_BeEvil::??_GCDF_BeEvil@CV_DemonDoorsScript@NScript@@UAEPAXI@Z
+  00e70ba0 RELOCATION_MATCH NScript::CV_DemonDoorsScript::CDF_DoDamage::??_GCDF_DoDamage@CV_DemonDoorsScript@NScript@@UAEPAXI@Z
+  00e71430 RELOCATION_MATCH NScript::CV_DemonDoorsScript::CDF_EatPies::??_GCDF_EatPies@CV_DemonDoorsScript@NScript@@UAEPAXI@Z
+  00e71960 RELOCATION_MATCH NScript::CV_DemonDoorsScript::CDF_GiveGift::??_GCDF_GiveGift@CV_DemonDoorsScript@NScript@@UAEPAXI@Z
+  00e71ef0 RELOCATION_MATCH NScript::CV_DemonDoorsScript::CDF_DressAsBandit::??_GCDF_DressAsBandit@CV_DemonDoorsScript@NScript@@UAEPAXI@Z
+  00e72610 RELOCATION_MATCH NScript::CV_DemonDoorsScript::CDF_ThreeSuits::??_GCDF_ThreeSuits@CV_DemonDoorsScript@NScript@@UAEPAXI@Z
+  00e733f0 RELOCATION_MATCH NScript::CV_DemonDoorsScript::CDF_MarryLadyGrey::??_GCDF_MarryLadyGrey@CV_DemonDoorsScript@NScript@@UAEPAXI@Z
+  00e73910 RELOCATION_MATCH NScript::CV_DemonDoorsScript::CDF_SexMad::??_GCDF_SexMad@CV_DemonDoorsScript@NScript@@UAEPAXI@Z
+  00e740a0 RELOCATION_MATCH NScript::CV_DemonDoorsScript::CDF_KeyHoarder::??_GCDF_KeyHoarder@CV_DemonDoorsScript@NScript@@UAEPAXI@Z
+  00e76450 RELOCATION_MATCH NScript::CV_ExposeMayorScript::CEM_SuspiciousVillager::??_GCEM_SuspiciousVillager@CV_ExposeMayorScript@NScript@@UAEPAXI@Z
+  00e76520 RELOCATION_MATCH NScript::CV_ExposeMayorScript::CEM_Sheriff::??_GCEM_Sheriff@CV_ExposeMayorScript@NScript@@UAEPAXI@Z
+  00e76680 RELOCATION_MATCH NScript::CV_ExposeMayorScript::CEM_Rhodri::??_GCEM_Rhodri@CV_ExposeMayorScript@NScript@@UAEPAXI@Z
+  00e767e0 RELOCATION_MATCH NScript::CV_ExposeMayorScript::CEM_FlashLightPoint::??_GCEM_FlashLightPoint@CV_ExposeMayorScript@NScript@@UAEPAXI@Z
+  00e76900 RELOCATION_MATCH NScript::CV_ExposeMayorScript::CHH_CellarDoor::??_GCHH_CellarDoor@CV_ExposeMayorScript@NScript@@UAEPAXI@Z
+  00e7b950 RELOCATION_MATCH NScript::CV_FishermanScript::CM_FishermanWaspSpawn::??_GCM_FishermanWaspSpawn@CV_FishermanScript@NScript@@UAEPAXI@Z
+  00e7bb10 RELOCATION_MATCH NScript::CV_FishermanScript::CFishermanWasp::??_GCFishermanWasp@CV_FishermanScript@NScript@@UAEPAXI@Z
+  00e7bd40 RELOCATION_MATCH NScript::CV_FishermanScript::CFishermanBulletinBoard::??_GCFishermanBulletinBoard@CV_FishermanScript@NScript@@UAEPAXI@Z
+  00e7e620 RELOCATION_MATCH NScript::CV_FishingCompetitionScript::CFishCompCompetitor::??_GCFishCompCompetitor@CV_FishingCompetitionScript@NScript@@UAEPAXI@Z
+  00e7ed40 RELOCATION_MATCH NScript::CV_FishingCompetitionScript::CBountyHuntActivationChecker::??_GCBountyHuntActivationChecker@CV_FishingCompetitionScript@NScript@@UAEPAXI@Z
+  00e82920 RELOCATION_MATCH NScript::CV_FisticuffsClubScript::CFisticuffsClubRing::??_GCFisticuffsClubRing@CV_FisticuffsClubScript@NScript@@UAEPAXI@Z
+  00e83880 RELOCATION_MATCH NScript::CV_FisticuffsClubScript::CRingFighter::??_GCRingFighter@CV_FisticuffsClubScript@NScript@@UAEPAXI@Z
+  00e8bdf0 RELOCATION_MATCH NScript::CV_GhostGrannyNecklaceScript::CGhostGrannyNecklace::??_GCGhostGrannyNecklace@CV_GhostGrannyNecklaceScript@NScript@@UAEPAXI@Z
+  00e8bed0 RELOCATION_MATCH NScript::CV_GhostGrannyNecklaceScript::CGhostGrannyDaughterInLaw::??_GCGhostGrannyDaughterInLaw@CV_GhostGrannyNecklaceScript@NScript@@UAEPAXI@Z
+  00e8cb20 RELOCATION_MATCH NScript::CV_GhostGrannyNecklaceScript::CGhostGrannySon::??_GCGhostGrannySon@CV_GhostGrannyNecklaceScript@NScript@@UAEPAXI@Z
+  00e90980 RELOCATION_MATCH NScript::CV_GuildMasterScript::CGuildMasterGameFlow::??_GCGuildMasterGameFlow@CV_GuildMasterScript@NScript@@UAEPAXI@Z
+210 rows
+addr       parity           behav  name
+00e95670   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e95750   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e95cb0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e95e60   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e997c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e998d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e9d7e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e9d9b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ea0070   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ea0af0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ea3690   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ea5210   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ea7a40   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ea7b20   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ea8f20   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eaaef0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eaafc0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eabb10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eac590   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eacee0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ead7e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eb79d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eb7ae0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eb88e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ebcf50   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ebe600   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ebfcf0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ec0a30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ec0b80   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ec14c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ec15b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ec42d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ec45a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ec4690   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ec5c70   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ec5d80   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ec6880   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ec80a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ec82e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ec9d10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ecb0c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ecbd30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ecd510   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ed41b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ed4580   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ed4870   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ed5240   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ed5320   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ed8100   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00edc430   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00edf380   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00edf9e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ee0040   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ee0130   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ee0220   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ee04b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ee05a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ee0690   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ee0a00   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ee0c30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ee14e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ee1bc0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ee4cd0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ee4db0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ee7410   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ee7520   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eed5b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eed690   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eed890   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef1110   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef11f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef12d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef1670   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef1c30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef1d10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef1df0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef2050   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef2130   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef2270   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef24e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef25c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef28e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef29c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef2b80   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef2fe0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef31e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef3480   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef3720   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef3820   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef3a80   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef3d20   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef3e00   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef3ee0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef41f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef4300   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef4590   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef4880   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef4b20   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efa1f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efab20   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efb340   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efb8a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efbe00   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efcc30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efd9a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efda70   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efe6e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efe8b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efeb40   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eff4b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f000c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f00ac0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f00c70   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f01c30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f03960   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f03fe0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f04340   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f044f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f045c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f04ca0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f051b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f057c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f058b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f14650   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f14750   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f14a70   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f15640   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f16290   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f170a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f17c50   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f19b90   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f1a8d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f1b200   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f1b670   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f1b8c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f1b9a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f1cb30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cdd530   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cdd690   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cddc90   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ce1230   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ce1ad0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ce7650   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cf0540   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cf6840   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cf91a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cf95f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cfaaf0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cfaf50   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d00a70   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d038c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d12c00   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d13110   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d1cfa0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d24610   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d255c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d297e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d2a9f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d2f7d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d34700   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d3bbf0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d50c10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d51500   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d55e70   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d5ae20   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d5e020   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d61d00   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d66600   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d67870   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d69430   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d6f460   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d785c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d7ae10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d7c7e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d80df0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d83580   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d84cc0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d87c40   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d8aac0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d8dca0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d9a140   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d9e5c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00da3440   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00daad80   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dbf2b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dc2750   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dcc700   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dd22e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dd2660   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dd2c60   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ddc930   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ddf040   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00de0830   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dec710   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00decab0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00df1380   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00df41f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00df5ff0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dfa430   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e00cc0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e0b140   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e0e980   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e13ec0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e18610   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e1a970   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e1dcd0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e25730   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e25ef0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e26db0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e27e10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+
+WINS: 210
+  00e95670 RELOCATION_MATCH NScript::CV_HauntedHouseScript::CM_QuestControl::??_GCM_QuestControl@CV_HauntedHouseScript@NScript@@UAEPAXI@Z
+  00e95750 RELOCATION_MATCH NScript::CV_HauntedHouseScript::CM_UndeadHere::??_GCM_UndeadHere@CV_HauntedHouseScript@NScript@@UAEPAXI@Z
+  00e95cb0 RELOCATION_MATCH NScript::CV_HauntedHouseScript::CM_HeroInsideHouse::??_GCM_HeroInsideHouse@CV_HauntedHouseScript@NScript@@UAEPAXI@Z
+  00e95e60 RELOCATION_MATCH NScript::CV_HauntedHouseScript::CHHUndead::??_GCHHUndead@CV_HauntedHouseScript@NScript@@UAEPAXI@Z
+  00e997c0 RELOCATION_MATCH NScript::CV_HeroDuelScript::CThunder::??_GCThunder@CV_HeroDuelScript@NScript@@UAEPAXI@Z
+  00e998d0 RELOCATION_MATCH NScript::CV_HeroDuelScript::CSpectator::??_GCSpectator@CV_HeroDuelScript@NScript@@UAEPAXI@Z
+  00e9d7e0 RELOCATION_MATCH NScript::CV_IntroductionToTrophiesScript::CTrophiesBriarTrophy::??_GCTrophiesBriarTrophy@CV_IntroductionToTrophiesScript@NScript@@UAEPAXI@Z
+  00e9d9b0 RELOCATION_MATCH NScript::CV_IntroductionToTrophiesScript::CTrophiesIntroTable::??_GCTrophiesIntroTable@CV_IntroductionToTrophiesScript@NScript@@UAEPAXI@Z
+  00ea0070 RELOCATION_MATCH NScript::CV_KnotholeGladeGatesScript::CKGG_VillagerOutside::??_GCKGG_VillagerOutside@CV_KnotholeGladeGatesScript@NScript@@UAEPAXI@Z
+  00ea0af0 RELOCATION_MATCH NScript::CV_KnotholeGladeGatesScript::CKGG_SurpriseBalverine::??_GCKGG_SurpriseBalverine@CV_KnotholeGladeGatesScript@NScript@@UAEPAXI@Z
+  00ea3690 RELOCATION_MATCH NScript::CV_LostTraderScript::CLostTraderTrader::??_GCLostTraderTrader@CV_LostTraderScript@NScript@@UAEPAXI@Z
+  00ea5210 RELOCATION_MATCH NScript::CV_LostTraderScript::CLostTraderBanditSpawn::??_GCLostTraderBanditSpawn@CV_LostTraderScript@NScript@@UAEPAXI@Z
+  00ea7a40 RELOCATION_MATCH NScript::CV_MazeResearchScript::CEmptyGrave::??_GCEmptyGrave@CV_MazeResearchScript@NScript@@UAEPAXI@Z
+  00ea7b20 RELOCATION_MATCH NScript::CV_MazeResearchScript::CHistoryBookcase::??_GCHistoryBookcase@CV_MazeResearchScript@NScript@@UAEPAXI@Z
+  00ea8f20 RELOCATION_MATCH NScript::CV_MurderTwistScript::CMurderTwistLeader::??_GCMurderTwistLeader@CV_MurderTwistScript@NScript@@UAEPAXI@Z
+  00eaaef0 RELOCATION_MATCH NScript::CV_MurderTwistScript::CMurderTwistBrotherYounger::??_GCMurderTwistBrotherYounger@CV_MurderTwistScript@NScript@@UAEPAXI@Z
+  00eaafc0 RELOCATION_MATCH NScript::CV_MurderTwistScript::CMurderTwistBrother::??_GCMurderTwistBrother@CV_MurderTwistScript@NScript@@UAEPAXI@Z
+  00eabb10 RELOCATION_MATCH NScript::CV_MurderTwistScript::CMurderTwistBrotherOlder::??_GCMurderTwistBrotherOlder@CV_MurderTwistScript@NScript@@UAEPAXI@Z
+  00eac590 RELOCATION_MATCH NScript::CV_MurderTwistScript::CMurderTwistBrotherFriend::??_GCMurderTwistBrotherFriend@CV_MurderTwistScript@NScript@@UAEPAXI@Z
+  00eacee0 RELOCATION_MATCH NScript::CV_MurderTwistScript::CMurderTwistBrotherOlderFriend::??_GCMurderTwistBrotherOlderFriend@CV_MurderTwistScript@NScript@@UAEPAXI@Z
+  00ead7e0 RELOCATION_MATCH NScript::CV_MurderTwistScript::CMurderTwistBuriedGem::??_GCMurderTwistBuriedGem@CV_MurderTwistScript@NScript@@UAEPAXI@Z
+  00eb79d0 RELOCATION_MATCH NScript::CV_MayorsInvitationScript::CLadyGrey::??_GCLadyGrey@CV_MayorsInvitationScript@NScript@@UAEPAXI@Z
+  00eb7ae0 RELOCATION_MATCH NScript::CV_MayorsInvitationScript::CWiseVillager::??_GCWiseVillager@CV_MayorsInvitationScript@NScript@@UAEPAXI@Z
+  00eb88e0 RELOCATION_MATCH NScript::CV_MayorsInvitationScript::CMI_InfoKeeper::??_GCMI_InfoKeeper@CV_MayorsInvitationScript@NScript@@UAEPAXI@Z
+  00ebcf50 RELOCATION_MATCH NScript::CV_OracleScript::CVO_OracleMarker::??_GCVO_OracleMarker@CV_OracleScript@NScript@@UAEPAXI@Z
+  00ebe600 RELOCATION_MATCH NScript::CV_OracleScript::CVO_Woman::??_GCVO_Woman@CV_OracleScript@NScript@@UAEPAXI@Z
+  00ebfcf0 RELOCATION_MATCH NScript::CV_ParanoidWhispersScript::CSecretWhisperingMan::??_GCSecretWhisperingMan@CV_ParanoidWhispersScript@NScript@@UAEPAXI@Z
+  00ec0a30 RELOCATION_MATCH NScript::CV_ParanoidWhispersScript::CPW_NecklaceDiggingSpot::??_GCPW_NecklaceDiggingSpot@CV_ParanoidWhispersScript@NScript@@UAEPAXI@Z
+  00ec0b80 RELOCATION_MATCH NScript::CV_ParanoidWhispersScript::CSecretWhisperingFriend::??_GCSecretWhisperingFriend@CV_ParanoidWhispersScript@NScript@@UAEPAXI@Z
+  00ec14c0 RELOCATION_MATCH NScript::CV_PicnicAreaAfterWaspBossScript::CPAAWB_Villager::??_GCPAAWB_Villager@CV_PicnicAreaAfterWaspBossScript@NScript@@UAEPAXI@Z
+  00ec15b0 RELOCATION_MATCH NScript::CV_PicnicAreaAfterWaspBossScript::CPAAWB_Guard::??_GCPAAWB_Guard@CV_PicnicAreaAfterWaspBossScript@NScript@@UAEPAXI@Z
+  00ec42d0 RELOCATION_MATCH NScript::CV_RockTrollFirstEncounterScript::CM_RTFERockTrollTrigger::??_GCM_RTFERockTrollTrigger@CV_RockTrollFirstEncounterScript@NScript@@UAEPAXI@Z
+  00ec45a0 RELOCATION_MATCH NScript::CV_RockTrollFirstEncounterScript::CRTFE_RockTroll::??_GCRTFE_RockTroll@CV_RockTrollFirstEncounterScript@NScript@@UAEPAXI@Z
+  00ec4690 RELOCATION_MATCH NScript::CV_RockTrollFirstEncounterScript::CRTFE_Sparrow::??_GCRTFE_Sparrow@CV_RockTrollFirstEncounterScript@NScript@@UAEPAXI@Z
+  00ec5c70 RELOCATION_MATCH NScript::CV_SickChildScript::CSickChildsMother::??_GCSickChildsMother@CV_SickChildScript@NScript@@UAEPAXI@Z
+  00ec5d80 RELOCATION_MATCH NScript::CV_SickChildScript::CSickChild::??_GCSickChild@CV_SickChildScript@NScript@@UAEPAXI@Z
+  00ec6880 RELOCATION_MATCH NScript::CV_SickChildScript::CSickChildsSister::??_GCSickChildsSister@CV_SickChildScript@NScript@@UAEPAXI@Z
+  00ec80a0 RELOCATION_MATCH NScript::CV_SickChildScript::CWitch::??_GCWitch@CV_SickChildScript@NScript@@UAEPAXI@Z
+  00ec82e0 RELOCATION_MATCH NScript::CV_SickChildScript::CManInLove::??_GCManInLove@CV_SickChildScript@NScript@@UAEPAXI@Z
+  00ec9d10 RELOCATION_MATCH NScript::CV_SickChildScript::CMansLover::??_GCMansLover@CV_SickChildScript@NScript@@UAEPAXI@Z
+  00ecb0c0 RELOCATION_MATCH NScript::CV_SickChildScript::CIngredientOwner::??_GCIngredientOwner@CV_SickChildScript@NScript@@UAEPAXI@Z
+  00ecbd30 RELOCATION_MATCH NScript::CV_SickChildScript::CTalkingTrader1::??_GCTalkingTrader1@CV_SickChildScript@NScript@@UAEPAXI@Z
+  00ecd510 RELOCATION_MATCH NScript::CV_SickChildScript::CSickChildFishingSpot::??_GCSickChildFishingSpot@CV_SickChildScript@NScript@@UAEPAXI@Z
+  00ed41b0 RELOCATION_MATCH NScript::CV_StatueMasterScript::CStatueMasterStatue::??_GCStatueMasterStatue@CV_StatueMasterScript@NScript@@UAEPAXI@Z
+  00ed4580 RELOCATION_MATCH NScript::CV_StatueMasterScript::CStatueMasterCellarDoors::??_GCStatueMasterCellarDoors@CV_StatueMasterScript@NScript@@UAEPAXI@Z
+  00ed4870 RELOCATION_MATCH NScript::CV_StatueMasterScript::CStatueMasterChest::??_GCStatueMasterChest@CV_StatueMasterScript@NScript@@UAEPAXI@Z
+  00ed5240 RELOCATION_MATCH NScript::CV_SwordInTheStoneScript::CSwordOfStrength::??_GCSwordOfStrength@CV_SwordInTheStoneScript@NScript@@UAEPAXI@Z
+  00ed5320 RELOCATION_MATCH NScript::CV_SwordInTheStoneScript::CSwordCrowd::??_GCSwordCrowd@CV_SwordInTheStoneScript@NScript@@UAEPAXI@Z
+  00ed8100 RELOCATION_MATCH NScript::CV_TalentlessBardScript::CTB_BardSpawnPoint::??_GCTB_BardSpawnPoint@CV_TalentlessBardScript@NScript@@UAEPAXI@Z
+  00edc430 RELOCATION_MATCH NScript::CV_TempleOfLightScript::CTOL_AltarGood::??_GCTOL_AltarGood@CV_TempleOfLightScript@NScript@@UAEPAXI@Z
+  00edf380 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::CTH_ThunderBoy::??_GCTH_ThunderBoy@CV_TravellingHeroesScript@NScript@@UAEPAXI@Z
+  00edf9e0 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::CTH_ThunderGirl::??_GCTH_ThunderGirl@CV_TravellingHeroesScript@NScript@@UAEPAXI@Z
+  00ee0040 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::CTH_Thunder::??_GCTH_Thunder@CV_TravellingHeroesScript@NScript@@UAEPAXI@Z
+  00ee0130 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::CTH_Maze::??_GCTH_Maze@CV_TravellingHeroesScript@NScript@@UAEPAXI@Z
+  00ee0220 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::CTH_Whisper::??_GCTH_Whisper@CV_TravellingHeroesScript@NScript@@UAEPAXI@Z
+  00ee04b0 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::CTH_Trigger_Guild_Maze::??_GCTH_Trigger_Guild_Maze@CV_TravellingHeroesScript@NScript@@UAEPAXI@Z
+  00ee05a0 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::CTH_Trigger_Guild_Rose::??_GCTH_Trigger_Guild_Rose@CV_TravellingHeroesScript@NScript@@UAEPAXI@Z
+  00ee0690 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::CTH_Trigger_Oakvale_Gossip::??_GCTH_Trigger_Oakvale_Gossip@CV_TravellingHeroesScript@NScript@@UAEPAXI@Z
+  00ee0a00 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::CTH_Trigger_Oakvale::??_GCTH_Trigger_Oakvale@CV_TravellingHeroesScript@NScript@@UAEPAXI@Z
+  00ee0c30 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::CTH_Trigger_Bowerstone::??_GCTH_Trigger_Bowerstone@CV_TravellingHeroesScript@NScript@@UAEPAXI@Z
+  00ee14e0 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::CTH_MagicBarrier::??_GCTH_MagicBarrier@CV_TravellingHeroesScript@NScript@@UAEPAXI@Z
+  00ee1bc0 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::CTH_Trigger_NorthernWastes::??_GCTH_Trigger_NorthernWastes@CV_TravellingHeroesScript@NScript@@UAEPAXI@Z
+  00ee4cd0 RELOCATION_MATCH NScript::CV_TourGuideScript::CTourGuideGuide::??_GCTourGuideGuide@CV_TourGuideScript@NScript@@UAEPAXI@Z
+  00ee4db0 RELOCATION_MATCH NScript::CV_TourGuideScript::CTourGuideFollower::??_GCTourGuideFollower@CV_TourGuideScript@NScript@@UAEPAXI@Z
+  00ee7410 RELOCATION_MATCH NScript::CV_TrophyDealerScript::CTrophyDealerInCave::??_GCTrophyDealerInCave@CV_TrophyDealerScript@NScript@@UAEPAXI@Z
+  00ee7520 RELOCATION_MATCH NScript::CV_TrophyDealerScript::CDemonDoorFace::??_GCDemonDoorFace@CV_TrophyDealerScript@NScript@@UAEPAXI@Z
+  00eed5b0 RELOCATION_MATCH NScript::CPersonalScript_alextestScript::CBurningPerson::??_GCBurningPerson@CPersonalScript_alextestScript@NScript@@UAEPAXI@Z
+  00eed690 RELOCATION_MATCH NScript::CPersonalScript_alextestScript::CSignpost::??_GCSignpost@CPersonalScript_alextestScript@NScript@@UAEPAXI@Z
+  00eed890 RELOCATION_MATCH NScript::CPersonalScript_alextestScript::CStopDrawing::??_GCStopDrawing@CPersonalScript_alextestScript@NScript@@UAEPAXI@Z
+  00ef1110 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CCrate1::??_GCCrate1@CPersonalScript_EmptyScript@NScript@@UAEPAXI@Z
+  00ef11f0 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CCrate2::??_GCCrate2@CPersonalScript_EmptyScript@NScript@@UAEPAXI@Z
+  00ef12d0 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CCrateDeathMarker::??_GCCrateDeathMarker@CPersonalScript_EmptyScript@NScript@@UAEPAXI@Z
+  00ef1670 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CWhispie::??_GCWhispie@CPersonalScript_EmptyScript@NScript@@UAEPAXI@Z
+  00ef1c30 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CBanditWalker::??_GCBanditWalker@CPersonalScript_EmptyScript@NScript@@UAEPAXI@Z
+  00ef1d10 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CLookAtMe1::??_GCLookAtMe1@CPersonalScript_EmptyScript@NScript@@UAEPAXI@Z
+  00ef1df0 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CTrappedMan::??_GCTrappedMan@CPersonalScript_EmptyScript@NScript@@UAEPAXI@Z
+  00ef2050 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CCinemaMan::??_GCCinemaMan@CPersonalScript_EmptyScript@NScript@@UAEPAXI@Z
+  00ef2130 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CKillMan::??_GCKillMan@CPersonalScript_EmptyScript@NScript@@UAEPAXI@Z
+  00ef2270 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CSwordChest::??_GCSwordChest@CPersonalScript_EmptyScript@NScript@@UAEPAXI@Z
+  00ef24e0 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CArcherMan::??_GCArcherMan@CPersonalScript_EmptyScript@NScript@@UAEPAXI@Z
+  00ef25c0 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CTriggerCrate::??_GCTriggerCrate@CPersonalScript_EmptyScript@NScript@@UAEPAXI@Z
+  00ef28e0 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CStealthGuard::??_GCStealthGuard@CPersonalScript_EmptyScript@NScript@@UAEPAXI@Z
+  00ef29c0 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CGoalChest::??_GCGoalChest@CPersonalScript_EmptyScript@NScript@@UAEPAXI@Z
+  00ef2b80 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CScrumpyCrate::??_GCScrumpyCrate@CPersonalScript_EmptyScript@NScript@@UAEPAXI@Z
+  00ef2fe0 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CDoor::??_GCDoor@CPersonalScript_EmptyScript@NScript@@UAEPAXI@Z
+  00ef31e0 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CBeggar::??_GCBeggar@CPersonalScript_EmptyScript@NScript@@UAEPAXI@Z
+  00ef3480 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CUndeadDude::??_GCUndeadDude@CPersonalScript_EmptyScript@NScript@@UAEPAXI@Z
+  00ef3720 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::COpinionMan::??_GCOpinionMan@CPersonalScript_EmptyScript@NScript@@UAEPAXI@Z
+  00ef3820 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CTestPos::??_GCTestPos@CPersonalScript_EmptyScript@NScript@@UAEPAXI@Z
+  00ef3a80 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CWalker::??_GCWalker@CPersonalScript_EmptyScript@NScript@@UAEPAXI@Z
+  00ef3d20 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CChatter1::??_GCChatter1@CPersonalScript_EmptyScript@NScript@@UAEPAXI@Z
+  00ef3e00 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CChatter2::??_GCChatter2@CPersonalScript_EmptyScript@NScript@@UAEPAXI@Z
+  00ef3ee0 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CLeader::??_GCLeader@CPersonalScript_EmptyScript@NScript@@UAEPAXI@Z
+  00ef41f0 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CFollower::??_GCFollower@CPersonalScript_EmptyScript@NScript@@UAEPAXI@Z
+  00ef4300 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CMeanBandit::??_GCMeanBandit@CPersonalScript_EmptyScript@NScript@@UAEPAXI@Z
+  00ef4590 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CGhostDude::??_GCGhostDude@CPersonalScript_EmptyScript@NScript@@UAEPAXI@Z
+  00ef4880 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CUndeadFellow::??_GCUndeadFellow@CPersonalScript_EmptyScript@NScript@@UAEPAXI@Z
+  00ef4b20 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CTestPerson::??_GCTestPerson@CPersonalScript_EmptyScript@NScript@@UAEPAXI@Z
+  00efa1f0 RELOCATION_MATCH NScript::Cguy_scriptScript::Chenchmen::??_GChenchmen@Cguy_scriptScript@NScript@@UAEPAXI@Z
+  00efab20 RELOCATION_MATCH NScript::Cbandit_level_cutsceneScript::Cwelcome_guy::??_GCwelcome_guy@Cbandit_level_cutsceneScript@NScript@@UAEPAXI@Z
+  00efb340 RELOCATION_MATCH NScript::CProximityPodiumTestScript::CProximityPodium::??_GCProximityPodium@CProximityPodiumTestScript@NScript@@UAEPAXI@Z
+  00efb8a0 RELOCATION_MATCH NScript::CHitSwitchTestScript::CHitSwitch::??_GCHitSwitch@CHitSwitchTestScript@NScript@@UAEPAXI@Z
+  00efbe00 RELOCATION_MATCH NScript::CGuildSealTriggerTestScript::CGuildSealTrigger::??_GCGuildSealTrigger@CGuildSealTriggerTestScript@NScript@@UAEPAXI@Z
+  00efcc30 RELOCATION_MATCH NScript::CMarkTestScriptsScript::CTestMan::??_GCTestMan@CMarkTestScriptsScript@NScript@@UAEPAXI@Z
+  00efd9a0 RELOCATION_MATCH NScript::CMarkTestScriptsScript::CGift::??_GCGift@CMarkTestScriptsScript@NScript@@UAEPAXI@Z
+  00efda70 RELOCATION_MATCH NScript::CMarkTestScriptsScript::CShopKeeper::??_GCShopKeeper@CMarkTestScriptsScript@NScript@@UAEPAXI@Z
+  00efe6e0 RELOCATION_MATCH NScript::CBenTestScriptsScript::CDummy::??_GCDummy@CBenTestScriptsScript@NScript@@UAEPAXI@Z
+  00efe8b0 RELOCATION_MATCH NScript::CBenTestScriptsScript::CFader::??_GCFader@CBenTestScriptsScript@NScript@@UAEPAXI@Z
+  00efeb40 RELOCATION_MATCH NScript::CBenTestScriptsScript::CBalvMarker::??_GCBalvMarker@CBenTestScriptsScript@NScript@@UAEPAXI@Z
+  00eff4b0 RELOCATION_MATCH NScript::CTonyTestScriptsScript::CDummy::??_GCDummy@CTonyTestScriptsScript@NScript@@UAEPAXI@Z
+  00f000c0 RELOCATION_MATCH NScript::COracleMinigameTestScript::COracleGamesmaster::??_GCOracleGamesmaster@COracleMinigameTestScript@NScript@@UAEPAXI@Z
+  00f00ac0 RELOCATION_MATCH NScript::COracleMinigameTestScript::CGamesmasterOracleMarker::??_GCGamesmasterOracleMarker@COracleMinigameTestScript@NScript@@UAEPAXI@Z
+  00f00c70 RELOCATION_MATCH NScript::COracleMinigameTestScript::COracleSpectator::??_GCOracleSpectator@COracleMinigameTestScript@NScript@@UAEPAXI@Z
+  00f01c30 RELOCATION_MATCH NScript::CQ_CinemaTestScript::CDummy::??_GCDummy@CQ_CinemaTestScript@NScript@@UAEPAXI@Z
+  00f03960 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::CAT_Phase1Guard::??_GCAT_Phase1Guard@CQ_AmbushTradersScript@NScript@@UAEPAXI@Z
+  00f03fe0 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::CAT_Phase1Archer::??_GCAT_Phase1Archer@CQ_AmbushTradersScript@NScript@@UAEPAXI@Z
+  00f04340 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::CAT_ConvoyMember::??_GCAT_ConvoyMember@CQ_AmbushTradersScript@NScript@@UAEPAXI@Z
+  00f044f0 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::CAT_ConvoySpy::??_GCAT_ConvoySpy@CQ_AmbushTradersScript@NScript@@UAEPAXI@Z
+  00f045c0 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::CAT_Sentry::??_GCAT_Sentry@CQ_AmbushTradersScript@NScript@@UAEPAXI@Z
+  00f04ca0 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::CAT_Phase3Archer::??_GCAT_Phase3Archer@CQ_AmbushTradersScript@NScript@@UAEPAXI@Z
+  00f051b0 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::CAT_Phase3Guard::??_GCAT_Phase3Guard@CQ_AmbushTradersScript@NScript@@UAEPAXI@Z
+  00f057c0 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::CAT_BanditContactEnd::??_GCAT_BanditContactEnd@CQ_AmbushTradersScript@NScript@@UAEPAXI@Z
+  00f058b0 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::CAT_BanditContact::??_GCAT_BanditContact@CQ_AmbushTradersScript@NScript@@UAEPAXI@Z
+  00f14650 RELOCATION_MATCH NScript::CQ_ArenaScript::CRoth::??_GCRoth@CQ_ArenaScript@NScript@@UAEPAXI@Z
+  00f14750 RELOCATION_MATCH NScript::CQ_ArenaScript::CCham::??_GCCham@CQ_ArenaScript@NScript@@UAEPAXI@Z
+  00f14a70 RELOCATION_MATCH NScript::CQ_ArenaScript::CFlick::??_GCFlick@CQ_ArenaScript@NScript@@UAEPAXI@Z
+  00f15640 RELOCATION_MATCH NScript::CQ_ArenaScript::CNeedle::??_GCNeedle@CQ_ArenaScript@NScript@@UAEPAXI@Z
+  00f16290 RELOCATION_MATCH NScript::CQ_ArenaScript::CShadow::??_GCShadow@CQ_ArenaScript@NScript@@UAEPAXI@Z
+  00f170a0 RELOCATION_MATCH NScript::CQ_ArenaScript::CCellWhisper::??_GCCellWhisper@CQ_ArenaScript@NScript@@UAEPAXI@Z
+  00f17c50 RELOCATION_MATCH NScript::CQ_ArenaScript::CArenaCellDoorGuard::??_GCArenaCellDoorGuard@CQ_ArenaScript@NScript@@UAEPAXI@Z
+  00f19b90 RELOCATION_MATCH NScript::CQ_ArenaScript::CArenaCellDoorGuard2::??_GCArenaCellDoorGuard2@CQ_ArenaScript@NScript@@UAEPAXI@Z
+  00f1a8d0 RELOCATION_MATCH NScript::CQ_ArenaScript::CArenaEnemy::??_GCArenaEnemy@CQ_ArenaScript@NScript@@UAEPAXI@Z
+  00f1b200 RELOCATION_MATCH NScript::CQ_ArenaScript::CSUMMONED_CREATURE::??_GCSUMMONED_CREATURE@CQ_ArenaScript@NScript@@UAEPAXI@Z
+  00f1b670 RELOCATION_MATCH NScript::CQ_ArenaScript::CArenaSpawn::??_GCArenaSpawn@CQ_ArenaScript@NScript@@UAEPAXI@Z
+  00f1b8c0 RELOCATION_MATCH NScript::CQ_ArenaScript::CWhisperAlly::??_GCWhisperAlly@CQ_ArenaScript@NScript@@UAEPAXI@Z
+  00f1b9a0 RELOCATION_MATCH NScript::CQ_ArenaScript::CArenaCellExitGuard::??_GCArenaCellExitGuard@CQ_ArenaScript@NScript@@UAEPAXI@Z
+  00f1cb30 RELOCATION_MATCH NScript::CQ_ArenaScript::CCagedBalverine::??_GCCagedBalverine@CQ_ArenaScript@NScript@@UAEPAXI@Z
+  00cdd530 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_SunnyvaleMasterScript>::??_G?$CSpawnedFunc@VCQ_SunnyvaleMasterScript@NScript@@@@UAEPAXI@Z
+  00cdd690 RELOCATION_MATCH CSpawnedFunc<NScript::CGlobal_TeleportToHeroGuildScript>::??_G?$CSpawnedFunc@VCGlobal_TeleportToHeroGuildScript@NScript@@@@UAEPAXI@Z
+  00cddc90 RELOCATION_MATCH CSpawnedFunc<NScript::CPersonalScriptMainScript>::??_G?$CSpawnedFunc@VCPersonalScriptMainScript@NScript@@@@UAEPAXI@Z
+  00ce1230 RELOCATION_MATCH CSpawnedFunc<NScript::CPersonalScript_GlobalThingsScript>::??_G?$CSpawnedFunc@VCPersonalScript_GlobalThingsScript@NScript@@@@UAEPAXI@Z
+  00ce1ad0 RELOCATION_MATCH CSpawnedFunc<NScript::CHeroBoastsScript>::??_G?$CSpawnedFunc@VCHeroBoastsScript@NScript@@@@UAEPAXI@Z
+  00ce7650 RELOCATION_MATCH CSpawnedFunc<NScript::CGameflowScript>::??_G?$CSpawnedFunc@VCGameflowScript@NScript@@@@UAEPAXI@Z
+  00cf0540 RELOCATION_MATCH CSpawnedFunc<NScript::CGameflowAssistanceScript>::??_G?$CSpawnedFunc@VCGameflowAssistanceScript@NScript@@@@UAEPAXI@Z
+  00cf6840 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_ArenaHoldingScriptScript>::??_G?$CSpawnedFunc@VCQ_ArenaHoldingScriptScript@NScript@@@@UAEPAXI@Z
+  00cf91a0 RELOCATION_MATCH CSpawnedFunc<NScript::CLadyGreyWifeManagerScript>::??_G?$CSpawnedFunc@VCLadyGreyWifeManagerScript@NScript@@@@UAEPAXI@Z
+  00cf95f0 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_AmbushTradersScript>::??_G?$CSpawnedFunc@VCQ_AmbushTradersScript@NScript@@@@UAEPAXI@Z
+  00cfaaf0 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_ArenaScript>::??_G?$CSpawnedFunc@VCQ_ArenaScript@NScript@@@@UAEPAXI@Z
+  00cfaf50 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_AwakeningTheOracleScript>::??_G?$CSpawnedFunc@VCQ_AwakeningTheOracleScript@NScript@@@@UAEPAXI@Z
+  00d00a70 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_BanditCampScript>::??_G?$CSpawnedFunc@VCQ_BanditCampScript@NScript@@@@UAEPAXI@Z
+  00d038c0 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_BanditCampBossBattleScript>::??_G?$CSpawnedFunc@VCQ_BanditCampBossBattleScript@NScript@@@@UAEPAXI@Z
+  00d12c00 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_BanditCampHoldingScriptScript>::??_G?$CSpawnedFunc@VCQ_BanditCampHoldingScriptScript@NScript@@@@UAEPAXI@Z
+  00d13110 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_BountyHuntScript>::??_G?$CSpawnedFunc@VCQ_BountyHuntScript@NScript@@@@UAEPAXI@Z
+  00d1cfa0 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_BreakSiegeScript>::??_G?$CSpawnedFunc@VCQ_BreakSiegeScript@NScript@@@@UAEPAXI@Z
+  00d24610 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_BowerstoneTownLifeIntroScript>::??_G?$CSpawnedFunc@VCQ_BowerstoneTownLifeIntroScript@NScript@@@@UAEPAXI@Z
+  00d255c0 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_DragonBossFightScript>::??_G?$CSpawnedFunc@VCQ_DragonBossFightScript@NScript@@@@UAEPAXI@Z
+  00d297e0 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_EndGameScript>::??_G?$CSpawnedFunc@VCQ_EndGameScript@NScript@@@@UAEPAXI@Z
+  00d2a9f0 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_EndGameFocalSitesScript>::??_G?$CSpawnedFunc@VCQ_EndGameFocalSitesScript@NScript@@@@UAEPAXI@Z
+  00d2f7d0 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_EndGameBossBattleScript>::??_G?$CSpawnedFunc@VCQ_EndGameBossBattleScript@NScript@@@@UAEPAXI@Z
+  00d34700 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_FireHeartScript>::??_G?$CSpawnedFunc@VCQ_FireHeartScript@NScript@@@@UAEPAXI@Z
+  00d3bbf0 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_GuildTrainingScript>::??_G?$CSpawnedFunc@VCQ_GuildTrainingScript@NScript@@@@UAEPAXI@Z
+  00d50c10 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_GuildTrainingDepartureScript>::??_G?$CSpawnedFunc@VCQ_GuildTrainingDepartureScript@NScript@@@@UAEPAXI@Z
+  00d51500 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_GuildTrainingPreMeleeScript>::??_G?$CSpawnedFunc@VCQ_GuildTrainingPreMeleeScript@NScript@@@@UAEPAXI@Z
+  00d55e70 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_GuildTrainingMeleeScript>::??_G?$CSpawnedFunc@VCQ_GuildTrainingMeleeScript@NScript@@@@UAEPAXI@Z
+  00d5ae20 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_GuildTrainingSkillScript>::??_G?$CSpawnedFunc@VCQ_GuildTrainingSkillScript@NScript@@@@UAEPAXI@Z
+  00d5e020 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_GuildTrainingWillScript>::??_G?$CSpawnedFunc@VCQ_GuildTrainingWillScript@NScript@@@@UAEPAXI@Z
+  00d61d00 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_GuildTrainingWoodsDepartureScript>::??_G?$CSpawnedFunc@VCQ_GuildTrainingWoodsDepartureScript@NScript@@@@UAEPAXI@Z
+  00d66600 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_GuildTrainingWoodsMeleeScript>::??_G?$CSpawnedFunc@VCQ_GuildTrainingWoodsMeleeScript@NScript@@@@UAEPAXI@Z
+  00d67870 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_GuildTrainingWoodsWillScript>::??_G?$CSpawnedFunc@VCQ_GuildTrainingWoodsWillScript@NScript@@@@UAEPAXI@Z
+  00d69430 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_HangingTreeEvilScript>::??_G?$CSpawnedFunc@VCQ_HangingTreeEvilScript@NScript@@@@UAEPAXI@Z
+  00d6f460 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_HangingTreeGoodScript>::??_G?$CSpawnedFunc@VCQ_HangingTreeGoodScript@NScript@@@@UAEPAXI@Z
+  00d785c0 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_HeroSoulsScript>::??_G?$CSpawnedFunc@VCQ_HeroSoulsScript@NScript@@@@UAEPAXI@Z
+  00d7ae10 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_HeroSoulsThunderScript>::??_G?$CSpawnedFunc@VCQ_HeroSoulsThunderScript@NScript@@@@UAEPAXI@Z
+  00d7c7e0 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_HeroSoulsArenaScript>::??_G?$CSpawnedFunc@VCQ_HeroSoulsArenaScript@NScript@@@@UAEPAXI@Z
+  00d80df0 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_HeroSoulsBriarScript>::??_G?$CSpawnedFunc@VCQ_HeroSoulsBriarScript@NScript@@@@UAEPAXI@Z
+  00d83580 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_HeroSoulsMotherScript>::??_G?$CSpawnedFunc@VCQ_HeroSoulsMotherScript@NScript@@@@UAEPAXI@Z
+  00d84cc0 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_HeroSoulsGuildmasterScript>::??_G?$CSpawnedFunc@VCQ_HeroSoulsGuildmasterScript@NScript@@@@UAEPAXI@Z
+  00d87c40 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_HeroSoulsNostroScript>::??_G?$CSpawnedFunc@VCQ_HeroSoulsNostroScript@NScript@@@@UAEPAXI@Z
+  00d8aac0 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_HerosOldHouseScript>::??_G?$CSpawnedFunc@VCQ_HerosOldHouseScript@NScript@@@@UAEPAXI@Z
+  00d8dca0 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_HobbeCaveScript>::??_G?$CSpawnedFunc@VCQ_HobbeCaveScript@NScript@@@@UAEPAXI@Z
+  00d9a140 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_HobbeToothContestScript>::??_G?$CSpawnedFunc@VCQ_HobbeToothContestScript@NScript@@@@UAEPAXI@Z
+  00d9e5c0 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_MinionCampScript>::??_G?$CSpawnedFunc@VCQ_MinionCampScript@NScript@@@@UAEPAXI@Z
+  00da3440 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_MinionClifftopChaseScript>::??_G?$CSpawnedFunc@VCQ_MinionClifftopChaseScript@NScript@@@@UAEPAXI@Z
+  00daad80 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_NewOakValeIntroScript>::??_G?$CSpawnedFunc@VCQ_NewOakValeIntroScript@NScript@@@@UAEPAXI@Z
+  00dbf2b0 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_OakValeBanditRaidScript>::??_G?$CSpawnedFunc@VCQ_OakValeBanditRaidScript@NScript@@@@UAEPAXI@Z
+  00dc2750 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_OpeningGraveyardSecretPassageScript>::??_G?$CSpawnedFunc@VCQ_OpeningGraveyardSecretPassageScript@NScript@@@@UAEPAXI@Z
+  00dcc700 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_OrchardFarmRaidScript>::??_G?$CSpawnedFunc@VCQ_OrchardFarmRaidScript@NScript@@@@UAEPAXI@Z
+  00dd22e0 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_OrchardFarmRaidEvilScript>::??_G?$CSpawnedFunc@VCQ_OrchardFarmRaidEvilScript@NScript@@@@UAEPAXI@Z
+  00dd2660 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_OrchardFarmRaidGoodScript>::??_G?$CSpawnedFunc@VCQ_OrchardFarmRaidGoodScript@NScript@@@@UAEPAXI@Z
+  00dd2c60 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_PrisonEscapeRescueMotherScript>::??_G?$CSpawnedFunc@VCQ_PrisonEscapeRescueMotherScript@NScript@@@@UAEPAXI@Z
+  00ddc930 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_PrisonRaceScript>::??_G?$CSpawnedFunc@VCQ_PrisonRaceScript@NScript@@@@UAEPAXI@Z
+  00ddf040 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_PrisonWardenGameScript>::??_G?$CSpawnedFunc@VCQ_PrisonWardenGameScript@NScript@@@@UAEPAXI@Z
+  00de0830 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_RansomVictimScript>::??_G?$CSpawnedFunc@VCQ_RansomVictimScript@NScript@@@@UAEPAXI@Z
+  00dec710 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_RansomVictimChiefsHouseScript>::??_G?$CSpawnedFunc@VCQ_RansomVictimChiefsHouseScript@NScript@@@@UAEPAXI@Z
+  00decab0 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_SecretPassageScript>::??_G?$CSpawnedFunc@VCQ_SecretPassageScript@NScript@@@@UAEPAXI@Z
+  00df1380 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_SummoningTheShipScript>::??_G?$CSpawnedFunc@VCQ_SummoningTheShipScript@NScript@@@@UAEPAXI@Z
+  00df41f0 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_TentacleKrakenBossFightScript>::??_G?$CSpawnedFunc@VCQ_TentacleKrakenBossFightScript@NScript@@@@UAEPAXI@Z
+  00df5ff0 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_TraderConflictEvilScript>::??_G?$CSpawnedFunc@VCQ_TraderConflictEvilScript@NScript@@@@UAEPAXI@Z
+  00dfa430 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_TraderConflictGoodScript>::??_G?$CSpawnedFunc@VCQ_TraderConflictGoodScript@NScript@@@@UAEPAXI@Z
+  00e00cc0 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_TraderEscortScript>::??_G?$CSpawnedFunc@VCQ_TraderEscortScript@NScript@@@@UAEPAXI@Z
+  00e0b140 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_UndeadRisingScript>::??_G?$CSpawnedFunc@VCQ_UndeadRisingScript@NScript@@@@UAEPAXI@Z
+  00e0e980 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_WaspBossScript>::??_G?$CSpawnedFunc@VCQ_WaspBossScript@NScript@@@@UAEPAXI@Z
+  00e13ec0 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_WhiteBalverineKnotholeGladeScript>::??_G?$CSpawnedFunc@VCQ_WhiteBalverineKnotholeGladeScript@NScript@@@@UAEPAXI@Z
+  00e18610 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_WhiteBalverineWWScript>::??_G?$CSpawnedFunc@VCQ_WhiteBalverineWWScript@NScript@@@@UAEPAXI@Z
+  00e1a970 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_WizardBattleScript>::??_G?$CSpawnedFunc@VCQ_WizardBattleScript@NScript@@@@UAEPAXI@Z
+  00e1dcd0 RELOCATION_MATCH CSpawnedFunc<NScript::CQR_EscortTraderScript>::??_G?$CSpawnedFunc@VCQR_EscortTraderScript@NScript@@@@UAEPAXI@Z
+  00e25730 RELOCATION_MATCH CSpawnedFunc<NScript::CQR_EscortTrader_ManagerScript>::??_G?$CSpawnedFunc@VCQR_EscortTrader_ManagerScript@NScript@@@@UAEPAXI@Z
+  00e25ef0 RELOCATION_MATCH CSpawnedFunc<NScript::CQS_GuardianSisterInfoScript>::??_G?$CSpawnedFunc@VCQS_GuardianSisterInfoScript@NScript@@@@UAEPAXI@Z
+  00e26db0 RELOCATION_MATCH CSpawnedFunc<NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript>::??_G?$CSpawnedFunc@VCQS_GuardianSisterInfo2_SisterInBanditCampScript@NScript@@@@UAEPAXI@Z
+  00e27e10 RELOCATION_MATCH CSpawnedFunc<NScript::CQS_GuardianTrophyDealerInfoScript>::??_G?$CSpawnedFunc@VCQS_GuardianTrophyDealerInfoScript@NScript@@@@UAEPAXI@Z
+210 rows
+addr       parity           behav  name
+00e29270   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e2a2d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e2ad30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e374a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e38d30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e3b8a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e46ce0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e4b330   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e4f7d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e54830   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e57d00   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e5d2e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e62980   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e690d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e74d20   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e75770   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e7c810   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e7e1f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e82170   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e8b940   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e90b90   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e93bc0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e93e40   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e985c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e987a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e9e090   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e9fcb0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ea58e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ea8050   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ea87e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eb64d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eb6d50   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ebed50   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ec1160   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ec1730   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ec18f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ec4920   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ecd760   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ed0ff0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ed49f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ed4c30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ed8370   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00edaf10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ee1d70   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ee56d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ee76a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ee82b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ee9080   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ee91c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ee9570   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eea3c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eea720   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eeae50   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eeb710   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eebd50   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eec370   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eec730   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eec870   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eed010   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eed200   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eedba0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eee920   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eeea70   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eef520   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eef6b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eef840   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eef9a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eefb00   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eefc60   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eefdc0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eeff20   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef0070   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef9260   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efa370   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efaee0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efb090   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efb5c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efbb20   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efc0e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efc440   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efc880   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efdbf0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efefb0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eff720   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00effcb0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f012b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f01460   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f01890   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00c109b0   RELOCATION_MATCH[/EHsc] PASS   `scalar deleting destructor'
+00cbd4f0   WARN SHARED_HEADER_AVAILABLE CBaseClassNonCopyable
+00cbd4f0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00cbd4f0   WARN SHARED_HEADER_AVAILABLE CVectorMap
+00cbd4f0   WARN SHARED_HEADER_AVAILABLE CRuntimeScriptedEntityPersist
+00cbd4f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cdd250   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cdd270   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cdd290   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cdd2b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cdd2d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cdd590   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cddba0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cde330   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ce19e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cf0680   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cf88a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00cfa320   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d035c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d12960   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d12c90   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d23cc0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d253f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d2a800   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d51400   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d55d50   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d5aa30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d5dc30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d66510   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d67780   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d68ee0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d7ac90   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d8d5e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00daabd0   WARN SHARED_HEADER_AVAILABLE CVectorMap
+00daabd0   WARN SHARED_HEADER_AVAILABLE CRuntimeScriptedEntityPersist
+00daabd0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dd2340   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dd26c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dddc70   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dec7d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e259b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e267c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e27820   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e28ce0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e299d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e39880   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e4f590   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e54290   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00e54290   RELOCATION_MATCH[/EHsc] PASS   `scalar deleting destructor'
+00e5d110   WARN SHARED_HEADER_AVAILABLE CVectorMap
+00e5d110   WARN SHARED_HEADER_AVAILABLE CRuntimeScriptedEntityPersist
+00e5d110   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e755d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e7e0f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e81f10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e90730   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e93d30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e96e10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e98680   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e9c340   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e9fba0   WARN SHARED_HEADER_AVAILABLE CVectorMap
+00e9fba0   WARN SHARED_HEADER_AVAILABLE CRuntimeScriptedEntityPersist
+00e9fba0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ea76c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ebee70   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ec11f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ec17c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ec3c00   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ec53a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ed4a80   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00edeb80   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ee80e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eed260   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eee710   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eee980   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eeee80   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eef580   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eef710   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eef8a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eefa00   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eefb60   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eefcc0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eefe20   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eeff80   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef9170   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef9f20   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efa400   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efaf70   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efb0f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efb650   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efbbb0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efc170   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efc4a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efc910   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00efe3c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eff040   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eff7b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00effd10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f01370   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f017a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f024a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d154e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d1fd00   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d6b560   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d728a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d729b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d84470   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d900b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d91580   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d9ffa0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00da82f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00dd92d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e37310   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e37e10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e3ac40   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e4a9d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e4b1a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e546a0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00e546a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e6a5d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e7b860   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e836c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e93050   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e98430   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e9cfa0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e9da90   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eb6310   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00eb6310   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00eb6340   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00eb6340   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ec2830   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ecd5d0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00ecd5d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ed2890   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00edc2a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00ef5040   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00f03870   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00f03870   RELOCATION_MATCH PASS   `scalar deleting destructor'
+
+WINS: 210
+  00e29270 RELOCATION_MATCH CSpawnedFunc<NScript::CQS_MeetSisterScript>::??_G?$CSpawnedFunc@VCQS_MeetSisterScript@NScript@@@@UAEPAXI@Z
+  00e2a2d0 RELOCATION_MATCH CSpawnedFunc<NScript::CQS_ScytheInfoScript>::??_G?$CSpawnedFunc@VCQS_ScytheInfoScript@NScript@@@@UAEPAXI@Z
+  00e2ad30 RELOCATION_MATCH CSpawnedFunc<NScript::CV_AmbushScamScript>::??_G?$CSpawnedFunc@VCV_AmbushScamScript@NScript@@@@UAEPAXI@Z
+  00e374a0 RELOCATION_MATCH CSpawnedFunc<NScript::CV_ArcheryCompetitionScript>::??_G?$CSpawnedFunc@VCV_ArcheryCompetitionScript@NScript@@@@UAEPAXI@Z
+  00e38d30 RELOCATION_MATCH CSpawnedFunc<NScript::CV_AssassinAttacksScript>::??_G?$CSpawnedFunc@VCV_AssassinAttacksScript@NScript@@@@UAEPAXI@Z
+  00e3b8a0 RELOCATION_MATCH CSpawnedFunc<NScript::CV_BordelloScript>::??_G?$CSpawnedFunc@VCV_BordelloScript@NScript@@@@UAEPAXI@Z
+  00e46ce0 RELOCATION_MATCH CSpawnedFunc<NScript::CV_BanditCampPathScript>::??_G?$CSpawnedFunc@VCV_BanditCampPathScript@NScript@@@@UAEPAXI@Z
+  00e4b330 RELOCATION_MATCH CSpawnedFunc<NScript::CV_BanditTollScript>::??_G?$CSpawnedFunc@VCV_BanditTollScript@NScript@@@@UAEPAXI@Z
+  00e4f7d0 RELOCATION_MATCH CSpawnedFunc<NScript::CV_BeardyBaldyScript>::??_G?$CSpawnedFunc@VCV_BeardyBaldyScript@NScript@@@@UAEPAXI@Z
+  00e54830 RELOCATION_MATCH CSpawnedFunc<NScript::CV_BookCollectingScript>::??_G?$CSpawnedFunc@VCV_BookCollectingScript@NScript@@@@UAEPAXI@Z
+  00e57d00 RELOCATION_MATCH CSpawnedFunc<NScript::CV_BeggarAndChildScript>::??_G?$CSpawnedFunc@VCV_BeggarAndChildScript@NScript@@@@UAEPAXI@Z
+  00e5d2e0 RELOCATION_MATCH CSpawnedFunc<NScript::CV_BodyGuardScript>::??_G?$CSpawnedFunc@VCV_BodyGuardScript@NScript@@@@UAEPAXI@Z
+  00e62980 RELOCATION_MATCH CSpawnedFunc<NScript::CV_ChickenKickingScript>::??_G?$CSpawnedFunc@VCV_ChickenKickingScript@NScript@@@@UAEPAXI@Z
+  00e690d0 RELOCATION_MATCH CSpawnedFunc<NScript::CV_ChapelOfEvilScript>::??_G?$CSpawnedFunc@VCV_ChapelOfEvilScript@NScript@@@@UAEPAXI@Z
+  00e74d20 RELOCATION_MATCH CSpawnedFunc<NScript::CV_DemonDoorsScript>::??_G?$CSpawnedFunc@VCV_DemonDoorsScript@NScript@@@@UAEPAXI@Z
+  00e75770 RELOCATION_MATCH CSpawnedFunc<NScript::CV_ExposeMayorScript>::??_G?$CSpawnedFunc@VCV_ExposeMayorScript@NScript@@@@UAEPAXI@Z
+  00e7c810 RELOCATION_MATCH CSpawnedFunc<NScript::CV_FishermanScript>::??_G?$CSpawnedFunc@VCV_FishermanScript@NScript@@@@UAEPAXI@Z
+  00e7e1f0 RELOCATION_MATCH CSpawnedFunc<NScript::CV_FishingCompetitionScript>::??_G?$CSpawnedFunc@VCV_FishingCompetitionScript@NScript@@@@UAEPAXI@Z
+  00e82170 RELOCATION_MATCH CSpawnedFunc<NScript::CV_FisticuffsClubScript>::??_G?$CSpawnedFunc@VCV_FisticuffsClubScript@NScript@@@@UAEPAXI@Z
+  00e8b940 RELOCATION_MATCH CSpawnedFunc<NScript::CV_GhostGrannyNecklaceScript>::??_G?$CSpawnedFunc@VCV_GhostGrannyNecklaceScript@NScript@@@@UAEPAXI@Z
+  00e90b90 RELOCATION_MATCH CSpawnedFunc<NScript::CV_GuildMasterScript>::??_G?$CSpawnedFunc@VCV_GuildMasterScript@NScript@@@@UAEPAXI@Z
+  00e93bc0 RELOCATION_MATCH CSpawnedFunc<NScript::CV_HiddenBootyScript>::??_G?$CSpawnedFunc@VCV_HiddenBootyScript@NScript@@@@UAEPAXI@Z
+  00e93e40 RELOCATION_MATCH CSpawnedFunc<NScript::CV_HauntedHouseScript>::??_G?$CSpawnedFunc@VCV_HauntedHouseScript@NScript@@@@UAEPAXI@Z
+  00e985c0 RELOCATION_MATCH CSpawnedFunc<NScript::CV_HeroDollsScript>::??_G?$CSpawnedFunc@VCV_HeroDollsScript@NScript@@@@UAEPAXI@Z
+  00e987a0 RELOCATION_MATCH CSpawnedFunc<NScript::CV_HeroDuelScript>::??_G?$CSpawnedFunc@VCV_HeroDuelScript@NScript@@@@UAEPAXI@Z
+  00e9e090 RELOCATION_MATCH CSpawnedFunc<NScript::CV_IntroductionToTrophiesScript>::??_G?$CSpawnedFunc@VCV_IntroductionToTrophiesScript@NScript@@@@UAEPAXI@Z
+  00e9fcb0 RELOCATION_MATCH CSpawnedFunc<NScript::CV_KnotholeGladeGatesScript>::??_G?$CSpawnedFunc@VCV_KnotholeGladeGatesScript@NScript@@@@UAEPAXI@Z
+  00ea58e0 RELOCATION_MATCH CSpawnedFunc<NScript::CV_LostTraderScript>::??_G?$CSpawnedFunc@VCV_LostTraderScript@NScript@@@@UAEPAXI@Z
+  00ea8050 RELOCATION_MATCH CSpawnedFunc<NScript::CV_MazeResearchScript>::??_G?$CSpawnedFunc@VCV_MazeResearchScript@NScript@@@@UAEPAXI@Z
+  00ea87e0 RELOCATION_MATCH CSpawnedFunc<NScript::CV_MurderTwistScript>::??_G?$CSpawnedFunc@VCV_MurderTwistScript@NScript@@@@UAEPAXI@Z
+  00eb64d0 RELOCATION_MATCH CSpawnedFunc<NScript::CV_MurderTwistFinalScript>::??_G?$CSpawnedFunc@VCV_MurderTwistFinalScript@NScript@@@@UAEPAXI@Z
+  00eb6d50 RELOCATION_MATCH CSpawnedFunc<NScript::CV_MayorsInvitationScript>::??_G?$CSpawnedFunc@VCV_MayorsInvitationScript@NScript@@@@UAEPAXI@Z
+  00ebed50 RELOCATION_MATCH CSpawnedFunc<NScript::CV_OracleScript>::??_G?$CSpawnedFunc@VCV_OracleScript@NScript@@@@UAEPAXI@Z
+  00ec1160 RELOCATION_MATCH CSpawnedFunc<NScript::CV_ParanoidWhispersScript>::??_G?$CSpawnedFunc@VCV_ParanoidWhispersScript@NScript@@@@UAEPAXI@Z
+  00ec1730 RELOCATION_MATCH CSpawnedFunc<NScript::CV_PicnicAreaAfterWaspBossScript>::??_G?$CSpawnedFunc@VCV_PicnicAreaAfterWaspBossScript@NScript@@@@UAEPAXI@Z
+  00ec18f0 RELOCATION_MATCH CSpawnedFunc<NScript::CV_RandomPopulationSimScript>::??_G?$CSpawnedFunc@VCV_RandomPopulationSimScript@NScript@@@@UAEPAXI@Z
+  00ec4920 RELOCATION_MATCH CSpawnedFunc<NScript::CV_RockTrollFirstEncounterScript>::??_G?$CSpawnedFunc@VCV_RockTrollFirstEncounterScript@NScript@@@@UAEPAXI@Z
+  00ecd760 RELOCATION_MATCH CSpawnedFunc<NScript::CV_SickChildScript>::??_G?$CSpawnedFunc@VCV_SickChildScript@NScript@@@@UAEPAXI@Z
+  00ed0ff0 RELOCATION_MATCH CSpawnedFunc<NScript::CV_SingingStonesScript>::??_G?$CSpawnedFunc@VCV_SingingStonesScript@NScript@@@@UAEPAXI@Z
+  00ed49f0 RELOCATION_MATCH CSpawnedFunc<NScript::CV_StatueMasterScript>::??_G?$CSpawnedFunc@VCV_StatueMasterScript@NScript@@@@UAEPAXI@Z
+  00ed4c30 RELOCATION_MATCH CSpawnedFunc<NScript::CV_SwordInTheStoneScript>::??_G?$CSpawnedFunc@VCV_SwordInTheStoneScript@NScript@@@@UAEPAXI@Z
+  00ed8370 RELOCATION_MATCH CSpawnedFunc<NScript::CV_TalentlessBardScript>::??_G?$CSpawnedFunc@VCV_TalentlessBardScript@NScript@@@@UAEPAXI@Z
+  00edaf10 RELOCATION_MATCH CSpawnedFunc<NScript::CV_TempleOfLightScript>::??_G?$CSpawnedFunc@VCV_TempleOfLightScript@NScript@@@@UAEPAXI@Z
+  00ee1d70 RELOCATION_MATCH CSpawnedFunc<NScript::CV_TravellingHeroesScript>::??_G?$CSpawnedFunc@VCV_TravellingHeroesScript@NScript@@@@UAEPAXI@Z
+  00ee56d0 RELOCATION_MATCH CSpawnedFunc<NScript::CV_TourGuideScript>::??_G?$CSpawnedFunc@VCV_TourGuideScript@NScript@@@@UAEPAXI@Z
+  00ee76a0 RELOCATION_MATCH CSpawnedFunc<NScript::CV_TrophyDealerScript>::??_G?$CSpawnedFunc@VCV_TrophyDealerScript@NScript@@@@UAEPAXI@Z
+  00ee82b0 RELOCATION_MATCH CSpawnedFunc<NScript::CCS_OakValeRevisitedScript>::??_G?$CSpawnedFunc@VCCS_OakValeRevisitedScript@NScript@@@@UAEPAXI@Z
+  00ee9080 RELOCATION_MATCH CSpawnedFunc<NScript::CGlobal_WatchForHeroDeathScript>::??_G?$CSpawnedFunc@VCGlobal_WatchForHeroDeathScript@NScript@@@@UAEPAXI@Z
+  00ee91c0 RELOCATION_MATCH CSpawnedFunc<NScript::CGlobal_DebugCycleThroughSpeechScript>::??_G?$CSpawnedFunc@VCGlobal_DebugCycleThroughSpeechScript@NScript@@@@UAEPAXI@Z
+  00ee9570 RELOCATION_MATCH CSpawnedFunc<NScript::CExpression_FishScript>::??_G?$CSpawnedFunc@VCExpression_FishScript@NScript@@@@UAEPAXI@Z
+  00eea3c0 RELOCATION_MATCH CSpawnedFunc<NScript::CExpression_FollowScript>::??_G?$CSpawnedFunc@VCExpression_FollowScript@NScript@@@@UAEPAXI@Z
+  00eea720 RELOCATION_MATCH CSpawnedFunc<NScript::CExpression_WaitScript>::??_G?$CSpawnedFunc@VCExpression_WaitScript@NScript@@@@UAEPAXI@Z
+  00eeae50 RELOCATION_MATCH CSpawnedFunc<NScript::CExpression_DigScript>::??_G?$CSpawnedFunc@VCExpression_DigScript@NScript@@@@UAEPAXI@Z
+  00eeb710 RELOCATION_MATCH CSpawnedFunc<NScript::CExpression_PickpocketScript>::??_G?$CSpawnedFunc@VCExpression_PickpocketScript@NScript@@@@UAEPAXI@Z
+  00eebd50 RELOCATION_MATCH CSpawnedFunc<NScript::CExpression_PicklockScript>::??_G?$CSpawnedFunc@VCExpression_PicklockScript@NScript@@@@UAEPAXI@Z
+  00eec370 RELOCATION_MATCH CSpawnedFunc<NScript::CExpression_StealScript>::??_G?$CSpawnedFunc@VCExpression_StealScript@NScript@@@@UAEPAXI@Z
+  00eec730 RELOCATION_MATCH CSpawnedFunc<NScript::CGlobal_GiveHeroItemsFromRewardChestScript>::??_G?$CSpawnedFunc@VCGlobal_GiveHeroItemsFromRewardChestScript@NScript@@@@UAEPAXI@Z
+  00eec870 RELOCATION_MATCH CSpawnedFunc<NScript::CGlobal_OpenChestScript>::??_G?$CSpawnedFunc@VCGlobal_OpenChestScript@NScript@@@@UAEPAXI@Z
+  00eed010 RELOCATION_MATCH CSpawnedFunc<NScript::CGlobal_ToggleTimeDisplayScript>::??_G?$CSpawnedFunc@VCGlobal_ToggleTimeDisplayScript@NScript@@@@UAEPAXI@Z
+  00eed200 RELOCATION_MATCH CSpawnedFunc<NScript::CalextestScript>::??_G?$CSpawnedFunc@VCalextestScript@NScript@@@@UAEPAXI@Z
+  00eedba0 RELOCATION_MATCH CSpawnedFunc<NScript::CPersonalScript_alextestScript>::??_G?$CSpawnedFunc@VCPersonalScript_alextestScript@NScript@@@@UAEPAXI@Z
+  00eee920 RELOCATION_MATCH CSpawnedFunc<NScript::CEmptyScript>::??_G?$CSpawnedFunc@VCEmptyScript@NScript@@@@UAEPAXI@Z
+  00eeea70 RELOCATION_MATCH CSpawnedFunc<NScript::CTestTheInventoryScript>::??_G?$CSpawnedFunc@VCTestTheInventoryScript@NScript@@@@UAEPAXI@Z
+  00eef520 RELOCATION_MATCH CSpawnedFunc<NScript::CTestQuestCard1Script>::??_G?$CSpawnedFunc@VCTestQuestCard1Script@NScript@@@@UAEPAXI@Z
+  00eef6b0 RELOCATION_MATCH CSpawnedFunc<NScript::CTestQuestCard2Script>::??_G?$CSpawnedFunc@VCTestQuestCard2Script@NScript@@@@UAEPAXI@Z
+  00eef840 RELOCATION_MATCH CSpawnedFunc<NScript::CTestQuestCard3Script>::??_G?$CSpawnedFunc@VCTestQuestCard3Script@NScript@@@@UAEPAXI@Z
+  00eef9a0 RELOCATION_MATCH CSpawnedFunc<NScript::CTestNewNav1Script>::??_G?$CSpawnedFunc@VCTestNewNav1Script@NScript@@@@UAEPAXI@Z
+  00eefb00 RELOCATION_MATCH CSpawnedFunc<NScript::CTestNewNav2Script>::??_G?$CSpawnedFunc@VCTestNewNav2Script@NScript@@@@UAEPAXI@Z
+  00eefc60 RELOCATION_MATCH CSpawnedFunc<NScript::CTestNewNav3Script>::??_G?$CSpawnedFunc@VCTestNewNav3Script@NScript@@@@UAEPAXI@Z
+  00eefdc0 RELOCATION_MATCH CSpawnedFunc<NScript::CTestNewNav4Script>::??_G?$CSpawnedFunc@VCTestNewNav4Script@NScript@@@@UAEPAXI@Z
+  00eeff20 RELOCATION_MATCH CSpawnedFunc<NScript::CTestNewNav5Script>::??_G?$CSpawnedFunc@VCTestNewNav5Script@NScript@@@@UAEPAXI@Z
+  00ef0070 RELOCATION_MATCH CSpawnedFunc<NScript::CPersonalScript_EmptyScript>::??_G?$CSpawnedFunc@VCPersonalScript_EmptyScript@NScript@@@@UAEPAXI@Z
+  00ef9260 RELOCATION_MATCH CSpawnedFunc<NScript::Cjoss_test_scriptsScript>::??_G?$CSpawnedFunc@VCjoss_test_scriptsScript@NScript@@@@UAEPAXI@Z
+  00efa370 RELOCATION_MATCH CSpawnedFunc<NScript::Cguy_scriptScript>::??_G?$CSpawnedFunc@VCguy_scriptScript@NScript@@@@UAEPAXI@Z
+  00efaee0 RELOCATION_MATCH CSpawnedFunc<NScript::Cbandit_level_cutsceneScript>::??_G?$CSpawnedFunc@VCbandit_level_cutsceneScript@NScript@@@@UAEPAXI@Z
+  00efb090 RELOCATION_MATCH CSpawnedFunc<NScript::CDanyalTestScriptsScript>::??_G?$CSpawnedFunc@VCDanyalTestScriptsScript@NScript@@@@UAEPAXI@Z
+  00efb5c0 RELOCATION_MATCH CSpawnedFunc<NScript::CProximityPodiumTestScript>::??_G?$CSpawnedFunc@VCProximityPodiumTestScript@NScript@@@@UAEPAXI@Z
+  00efbb20 RELOCATION_MATCH CSpawnedFunc<NScript::CHitSwitchTestScript>::??_G?$CSpawnedFunc@VCHitSwitchTestScript@NScript@@@@UAEPAXI@Z
+  00efc0e0 RELOCATION_MATCH CSpawnedFunc<NScript::CGuildSealTriggerTestScript>::??_G?$CSpawnedFunc@VCGuildSealTriggerTestScript@NScript@@@@UAEPAXI@Z
+  00efc440 RELOCATION_MATCH CSpawnedFunc<NScript::CHeroTurningDebuggerScript>::??_G?$CSpawnedFunc@VCHeroTurningDebuggerScript@NScript@@@@UAEPAXI@Z
+  00efc880 RELOCATION_MATCH CSpawnedFunc<NScript::CPersonalScript_AardvarkScript>::??_G?$CSpawnedFunc@VCPersonalScript_AardvarkScript@NScript@@@@UAEPAXI@Z
+  00efdbf0 RELOCATION_MATCH CSpawnedFunc<NScript::CMarkTestScriptsScript>::??_G?$CSpawnedFunc@VCMarkTestScriptsScript@NScript@@@@UAEPAXI@Z
+  00efefb0 RELOCATION_MATCH CSpawnedFunc<NScript::CBenTestScriptsScript>::??_G?$CSpawnedFunc@VCBenTestScriptsScript@NScript@@@@UAEPAXI@Z
+  00eff720 RELOCATION_MATCH CSpawnedFunc<NScript::CTonyTestScriptsScript>::??_G?$CSpawnedFunc@VCTonyTestScriptsScript@NScript@@@@UAEPAXI@Z
+  00effcb0 RELOCATION_MATCH CSpawnedFunc<NScript::CShowTargetedThingHealthScript>::??_G?$CSpawnedFunc@VCShowTargetedThingHealthScript@NScript@@@@UAEPAXI@Z
+  00f012b0 RELOCATION_MATCH CSpawnedFunc<NScript::COracleMinigameTestScript>::??_G?$CSpawnedFunc@VCOracleMinigameTestScript@NScript@@@@UAEPAXI@Z
+  00f01460 RELOCATION_MATCH CSpawnedFunc<NScript::CCS_PlayCutsceneScript>::??_G?$CSpawnedFunc@VCCS_PlayCutsceneScript@NScript@@@@UAEPAXI@Z
+  00f01890 RELOCATION_MATCH CSpawnedFunc<NScript::CQ_CinemaTestScript>::??_G?$CSpawnedFunc@VCQ_CinemaTestScript@NScript@@@@UAEPAXI@Z
+  00c109b0 RELOCATION_MATCH[/EHsc] CCardPositionsDef::??_GCCardPositionsDef@@UAEPAXI@Z
+  00cbd4f0 RELOCATION_MATCH CScriptBase::??_GCScriptBase@@UAEPAXI@Z
+  00cdd250 RELOCATION_MATCH CLevelScriptBase<NScript::CQ_SunnyvaleMasterData>::??_G?$CLevelScriptBase@VCQ_SunnyvaleMasterData@NScript@@@@UAEPAXI@Z
+  00cdd270 RELOCATION_MATCH CLevelScriptBase<NScript::CalextestData>::??_G?$CLevelScriptBase@VCalextestData@NScript@@@@UAEPAXI@Z
+  00cdd290 RELOCATION_MATCH CLevelScriptBase<NScript::CEmptyData>::??_G?$CLevelScriptBase@VCEmptyData@NScript@@@@UAEPAXI@Z
+  00cdd2b0 RELOCATION_MATCH CLevelScriptBase<NScript::Cjoss_test_scriptsData>::??_G?$CLevelScriptBase@VCjoss_test_scriptsData@NScript@@@@UAEPAXI@Z
+  00cdd2d0 RELOCATION_MATCH CLevelScriptBase<NScript::CDanyalTestScriptsData>::??_G?$CLevelScriptBase@VCDanyalTestScriptsData@NScript@@@@UAEPAXI@Z
+  00cdd590 RELOCATION_MATCH NScript::CQ_SunnyvaleMasterScript::??_GCQ_SunnyvaleMasterScript@NScript@@UAEPAXI@Z
+  00cddba0 RELOCATION_MATCH NScript::CGlobal_TeleportToHeroGuildScript::??_GCGlobal_TeleportToHeroGuildScript@NScript@@UAEPAXI@Z
+  00cde330 RELOCATION_MATCH NScript::CPersonalScriptMainScript::??_GCPersonalScriptMainScript@NScript@@UAEPAXI@Z
+  00ce19e0 RELOCATION_MATCH NScript::CPersonalScript_GlobalThingsScript::??_GCPersonalScript_GlobalThingsScript@NScript@@UAEPAXI@Z
+  00cf0680 RELOCATION_MATCH NScript::CGameflowAssistanceScript::??_GCGameflowAssistanceScript@NScript@@UAEPAXI@Z
+  00cf88a0 RELOCATION_MATCH NScript::CQ_ArenaHoldingScriptScript::??_GCQ_ArenaHoldingScriptScript@NScript@@UAEPAXI@Z
+  00cfa320 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::??_GCQ_AmbushTradersScript@NScript@@UAEPAXI@Z
+  00d035c0 RELOCATION_MATCH NScript::CQ_BanditCampScript::??_GCQ_BanditCampScript@NScript@@UAEPAXI@Z
+  00d12960 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::??_GCQ_BanditCampBossBattleScript@NScript@@UAEPAXI@Z
+  00d12c90 RELOCATION_MATCH NScript::CQ_BanditCampHoldingScriptScript::??_GCQ_BanditCampHoldingScriptScript@NScript@@UAEPAXI@Z
+  00d23cc0 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::??_GCQ_BreakSiegeScript@NScript@@UAEPAXI@Z
+  00d253f0 RELOCATION_MATCH NScript::CQ_BowerstoneTownLifeIntroScript::??_GCQ_BowerstoneTownLifeIntroScript@NScript@@UAEPAXI@Z
+  00d2a800 RELOCATION_MATCH NScript::CQ_EndGameScript::??_GCQ_EndGameScript@NScript@@UAEPAXI@Z
+  00d51400 RELOCATION_MATCH NScript::CQ_GuildTrainingDepartureScript::??_GCQ_GuildTrainingDepartureScript@NScript@@UAEPAXI@Z
+  00d55d50 RELOCATION_MATCH NScript::CQ_GuildTrainingPreMeleeScript::??_GCQ_GuildTrainingPreMeleeScript@NScript@@UAEPAXI@Z
+  00d5aa30 RELOCATION_MATCH NScript::CQ_GuildTrainingMeleeScript::??_GCQ_GuildTrainingMeleeScript@NScript@@UAEPAXI@Z
+  00d5dc30 RELOCATION_MATCH NScript::CQ_GuildTrainingSkillScript::??_GCQ_GuildTrainingSkillScript@NScript@@UAEPAXI@Z
+  00d66510 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsDepartureScript::??_GCQ_GuildTrainingWoodsDepartureScript@NScript@@UAEPAXI@Z
+  00d67780 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsMeleeScript::??_GCQ_GuildTrainingWoodsMeleeScript@NScript@@UAEPAXI@Z
+  00d68ee0 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsWillScript::??_GCQ_GuildTrainingWoodsWillScript@NScript@@UAEPAXI@Z
+  00d7ac90 RELOCATION_MATCH NScript::CQ_HeroSoulsScript::??_GCQ_HeroSoulsScript@NScript@@UAEPAXI@Z
+  00d8d5e0 RELOCATION_MATCH NScript::CQ_HerosOldHouseScript::??_GCQ_HerosOldHouseScript@NScript@@UAEPAXI@Z
+  00daabd0 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::??_GCQ_MinionClifftopChaseScript@NScript@@UAEPAXI@Z
+  00dd2340 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidEvilScript::??_GCQ_OrchardFarmRaidEvilScript@NScript@@UAEPAXI@Z
+  00dd26c0 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidGoodScript::??_GCQ_OrchardFarmRaidGoodScript@NScript@@UAEPAXI@Z
+  00dddc70 RELOCATION_MATCH NScript::CQ_PrisonRaceScript::??_GCQ_PrisonRaceScript@NScript@@UAEPAXI@Z
+  00dec7d0 RELOCATION_MATCH NScript::CQ_RansomVictimChiefsHouseScript::??_GCQ_RansomVictimChiefsHouseScript@NScript@@UAEPAXI@Z
+  00e259b0 RELOCATION_MATCH NScript::CQR_EscortTrader_ManagerScript::??_GCQR_EscortTrader_ManagerScript@NScript@@UAEPAXI@Z
+  00e267c0 RELOCATION_MATCH NScript::CQS_GuardianSisterInfoScript::??_GCQS_GuardianSisterInfoScript@NScript@@UAEPAXI@Z
+  00e27820 RELOCATION_MATCH NScript::CQS_GuardianSisterInfo2_SisterInBanditCampScript::??_GCQS_GuardianSisterInfo2_SisterInBanditCampScript@NScript@@UAEPAXI@Z
+  00e28ce0 RELOCATION_MATCH NScript::CQS_GuardianTrophyDealerInfoScript::??_GCQS_GuardianTrophyDealerInfoScript@NScript@@UAEPAXI@Z
+  00e299d0 RELOCATION_MATCH NScript::CQS_MeetSisterScript::??_GCQS_MeetSisterScript@NScript@@UAEPAXI@Z
+  00e39880 RELOCATION_MATCH NScript::CV_AssassinAttacksScript::??_GCV_AssassinAttacksScript@NScript@@UAEPAXI@Z
+  00e4f590 RELOCATION_MATCH NScript::CV_BanditTollScript::??_GCV_BanditTollScript@NScript@@UAEPAXI@Z
+  00e54290 RELOCATION_MATCH[/EHsc] NScript::CV_BeardyBaldyScript::??_GCV_BeardyBaldyScript@NScript@@UAEPAXI@Z
+  00e5d110 RELOCATION_MATCH NScript::CV_BeggarAndChildScript::??_GCV_BeggarAndChildScript@NScript@@UAEPAXI@Z
+  00e755d0 RELOCATION_MATCH NScript::CV_DemonDoorsScript::??_GCV_DemonDoorsScript@NScript@@UAEPAXI@Z
+  00e7e0f0 RELOCATION_MATCH NScript::CV_FishermanScript::??_GCV_FishermanScript@NScript@@UAEPAXI@Z
+  00e81f10 RELOCATION_MATCH NScript::CV_FishingCompetitionScript::??_GCV_FishingCompetitionScript@NScript@@UAEPAXI@Z
+  00e90730 RELOCATION_MATCH NScript::CV_GhostGrannyNecklaceScript::??_GCV_GhostGrannyNecklaceScript@NScript@@UAEPAXI@Z
+  00e93d30 RELOCATION_MATCH NScript::CV_HiddenBootyScript::??_GCV_HiddenBootyScript@NScript@@UAEPAXI@Z
+  00e96e10 RELOCATION_MATCH NScript::CV_HauntedHouseScript::??_GCV_HauntedHouseScript@NScript@@UAEPAXI@Z
+  00e98680 RELOCATION_MATCH NScript::CV_HeroDollsScript::??_GCV_HeroDollsScript@NScript@@UAEPAXI@Z
+  00e9c340 RELOCATION_MATCH NScript::CV_HeroDuelScript::??_GCV_HeroDuelScript@NScript@@UAEPAXI@Z
+  00e9fba0 RELOCATION_MATCH NScript::CV_IntroductionToTrophiesScript::??_GCV_IntroductionToTrophiesScript@NScript@@UAEPAXI@Z
+  00ea76c0 RELOCATION_MATCH NScript::CV_LostTraderScript::??_GCV_LostTraderScript@NScript@@UAEPAXI@Z
+  00ebee70 RELOCATION_MATCH NScript::CV_OracleScript::??_GCV_OracleScript@NScript@@UAEPAXI@Z
+  00ec11f0 RELOCATION_MATCH NScript::CV_ParanoidWhispersScript::??_GCV_ParanoidWhispersScript@NScript@@UAEPAXI@Z
+  00ec17c0 RELOCATION_MATCH NScript::CV_PicnicAreaAfterWaspBossScript::??_GCV_PicnicAreaAfterWaspBossScript@NScript@@UAEPAXI@Z
+  00ec3c00 RELOCATION_MATCH NScript::CV_RandomPopulationSimScript::??_GCV_RandomPopulationSimScript@NScript@@UAEPAXI@Z
+  00ec53a0 RELOCATION_MATCH NScript::CV_RockTrollFirstEncounterScript::??_GCV_RockTrollFirstEncounterScript@NScript@@UAEPAXI@Z
+  00ed4a80 RELOCATION_MATCH NScript::CV_StatueMasterScript::??_GCV_StatueMasterScript@NScript@@UAEPAXI@Z
+  00edeb80 RELOCATION_MATCH NScript::CV_TempleOfLightScript::??_GCV_TempleOfLightScript@NScript@@UAEPAXI@Z
+  00ee80e0 RELOCATION_MATCH NScript::CV_TrophyDealerScript::??_GCV_TrophyDealerScript@NScript@@UAEPAXI@Z
+  00eed260 RELOCATION_MATCH NScript::CalextestScript::??_GCalextestScript@NScript@@UAEPAXI@Z
+  00eee710 RELOCATION_MATCH NScript::CPersonalScript_alextestScript::??_GCPersonalScript_alextestScript@NScript@@UAEPAXI@Z
+  00eee980 RELOCATION_MATCH NScript::CEmptyScript::??_GCEmptyScript@NScript@@UAEPAXI@Z
+  00eeee80 RELOCATION_MATCH NScript::CTestTheInventoryScript::??_GCTestTheInventoryScript@NScript@@UAEPAXI@Z
+  00eef580 RELOCATION_MATCH NScript::CTestQuestCard1Script::??_GCTestQuestCard1Script@NScript@@UAEPAXI@Z
+  00eef710 RELOCATION_MATCH NScript::CTestQuestCard2Script::??_GCTestQuestCard2Script@NScript@@UAEPAXI@Z
+  00eef8a0 RELOCATION_MATCH NScript::CTestQuestCard3Script::??_GCTestQuestCard3Script@NScript@@UAEPAXI@Z
+  00eefa00 RELOCATION_MATCH NScript::CTestNewNav1Script::??_GCTestNewNav1Script@NScript@@UAEPAXI@Z
+  00eefb60 RELOCATION_MATCH NScript::CTestNewNav2Script::??_GCTestNewNav2Script@NScript@@UAEPAXI@Z
+  00eefcc0 RELOCATION_MATCH NScript::CTestNewNav3Script::??_GCTestNewNav3Script@NScript@@UAEPAXI@Z
+  00eefe20 RELOCATION_MATCH NScript::CTestNewNav4Script::??_GCTestNewNav4Script@NScript@@UAEPAXI@Z
+  00eeff80 RELOCATION_MATCH NScript::CTestNewNav5Script::??_GCTestNewNav5Script@NScript@@UAEPAXI@Z
+  00ef9170 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::??_GCPersonalScript_EmptyScript@NScript@@UAEPAXI@Z
+  00ef9f20 RELOCATION_MATCH NScript::Cjoss_test_scriptsScript::??_GCjoss_test_scriptsScript@NScript@@UAEPAXI@Z
+  00efa400 RELOCATION_MATCH NScript::Cguy_scriptScript::??_GCguy_scriptScript@NScript@@UAEPAXI@Z
+  00efaf70 RELOCATION_MATCH NScript::Cbandit_level_cutsceneScript::??_GCbandit_level_cutsceneScript@NScript@@UAEPAXI@Z
+  00efb0f0 RELOCATION_MATCH NScript::CDanyalTestScriptsScript::??_GCDanyalTestScriptsScript@NScript@@UAEPAXI@Z
+  00efb650 RELOCATION_MATCH NScript::CProximityPodiumTestScript::??_GCProximityPodiumTestScript@NScript@@UAEPAXI@Z
+  00efbbb0 RELOCATION_MATCH NScript::CHitSwitchTestScript::??_GCHitSwitchTestScript@NScript@@UAEPAXI@Z
+  00efc170 RELOCATION_MATCH NScript::CGuildSealTriggerTestScript::??_GCGuildSealTriggerTestScript@NScript@@UAEPAXI@Z
+  00efc4a0 RELOCATION_MATCH NScript::CHeroTurningDebuggerScript::??_GCHeroTurningDebuggerScript@NScript@@UAEPAXI@Z
+  00efc910 RELOCATION_MATCH NScript::CPersonalScript_AardvarkScript::??_GCPersonalScript_AardvarkScript@NScript@@UAEPAXI@Z
+  00efe3c0 RELOCATION_MATCH NScript::CMarkTestScriptsScript::??_GCMarkTestScriptsScript@NScript@@UAEPAXI@Z
+  00eff040 RELOCATION_MATCH NScript::CBenTestScriptsScript::??_GCBenTestScriptsScript@NScript@@UAEPAXI@Z
+  00eff7b0 RELOCATION_MATCH NScript::CTonyTestScriptsScript::??_GCTonyTestScriptsScript@NScript@@UAEPAXI@Z
+  00effd10 RELOCATION_MATCH NScript::CShowTargetedThingHealthScript::??_GCShowTargetedThingHealthScript@NScript@@UAEPAXI@Z
+  00f01370 RELOCATION_MATCH NScript::COracleMinigameTestScript::??_GCOracleMinigameTestScript@NScript@@UAEPAXI@Z
+  00f017a0 RELOCATION_MATCH NScript::CCS_PlayCutsceneScript::??_GCCS_PlayCutsceneScript@NScript@@UAEPAXI@Z
+  00f024a0 RELOCATION_MATCH NScript::CQ_CinemaTestScript::??_GCQ_CinemaTestScript@NScript@@UAEPAXI@Z
+  00d154e0 RELOCATION_MATCH NScript::CQ_BountyHuntScript::CBH_GangGruntSpawn::??_GCBH_GangGruntSpawn@CQ_BountyHuntScript@NScript@@UAEPAXI@Z
+  00d1fd00 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CDisplacedTrader::??_GCDisplacedTrader@CQ_BreakSiegeScript@NScript@@UAEPAXI@Z
+  00d6b560 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CHTE_Audience::??_GCHTE_Audience@CQ_HangingTreeEvilScript@NScript@@UAEPAXI@Z
+  00d728a0 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_Prisoner::??_GCHTG_Prisoner@CQ_HangingTreeGoodScript@NScript@@UAEPAXI@Z
+  00d729b0 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_Boss::??_GCHTG_Boss@CQ_HangingTreeGoodScript@NScript@@UAEPAXI@Z
+  00d84470 RELOCATION_MATCH NScript::CQ_HeroSoulsMotherScript::CHS_Screamer::??_GCHS_Screamer@CQ_HeroSoulsMotherScript@NScript@@UAEPAXI@Z
+  00d900b0 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CJames::??_GCJames@CQ_HobbeCaveScript@NScript@@UAEPAXI@Z
+  00d91580 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CBanditSacrifice::??_GCBanditSacrifice@CQ_HobbeCaveScript@NScript@@UAEPAXI@Z
+  00d9ffa0 RELOCATION_MATCH NScript::CQ_MinionCampScript::CMC_MinionGuard::??_GCMC_MinionGuard@CQ_MinionCampScript@NScript@@UAEPAXI@Z
+  00da82f0 RELOCATION_MATCH NScript::CQ_MinionClifftopChaseScript::CMapKeeper::??_GCMapKeeper@CQ_MinionClifftopChaseScript@NScript@@UAEPAXI@Z
+  00dd92d0 RELOCATION_MATCH NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonGuard::??_GCPrisonGuard@CQ_PrisonEscapeRescueMotherScript@NScript@@UAEPAXI@Z
+  00e37310 RELOCATION_MATCH NScript::CV_ArcheryCompetitionScript::CAC_HighScorePost::??_GCAC_HighScorePost@CV_ArcheryCompetitionScript@NScript@@UAEPAXI@Z
+  00e37e10 RELOCATION_MATCH NScript::CV_AssassinAttacksScript::CM_AssassinTrigger::??_GCM_AssassinTrigger@CV_AssassinAttacksScript@NScript@@UAEPAXI@Z
+  00e3ac40 RELOCATION_MATCH NScript::CV_BordelloScript::CBordelloLady::??_GCBordelloLady@CV_BordelloScript@NScript@@UAEPAXI@Z
+  00e4a9d0 RELOCATION_MATCH NScript::CV_BanditTollScript::CBanditLeader::??_GCBanditLeader@CV_BanditTollScript@NScript@@UAEPAXI@Z
+  00e4b1a0 RELOCATION_MATCH NScript::CV_BanditTollScript::CTollBandit::??_GCTollBandit@CV_BanditTollScript@NScript@@UAEPAXI@Z
+  00e546a0 RELOCATION_MATCH NScript::CV_BookCollectingScript::CBS_Teacher::??_GCBS_Teacher@CV_BookCollectingScript@NScript@@UAEPAXI@Z
+  00e6a5d0 RELOCATION_MATCH NScript::CV_ChapelOfEvilScript::CCOE_AcolyteEvil::??_GCCOE_AcolyteEvil@CV_ChapelOfEvilScript@NScript@@UAEPAXI@Z
+  00e7b860 RELOCATION_MATCH NScript::CV_FishermanScript::CFisherman::??_GCFisherman@CV_FishermanScript@NScript@@UAEPAXI@Z
+  00e836c0 RELOCATION_MATCH NScript::CV_FisticuffsClubScript::CTyler::??_GCTyler@CV_FisticuffsClubScript@NScript@@UAEPAXI@Z
+  00e93050 RELOCATION_MATCH NScript::CV_HiddenBootyScript::CM_HiddenBooty::??_GCM_HiddenBooty@CV_HiddenBootyScript@NScript@@UAEPAXI@Z
+  00e98430 RELOCATION_MATCH NScript::CV_HeroDollsScript::CBS_Teacher::??_GCBS_Teacher@CV_HeroDollsScript@NScript@@UAEPAXI@Z
+  00e9cfa0 RELOCATION_MATCH NScript::CV_IntroductionToTrophiesScript::CTrophiesIntroWatcher::??_GCTrophiesIntroWatcher@CV_IntroductionToTrophiesScript@NScript@@UAEPAXI@Z
+  00e9da90 RELOCATION_MATCH NScript::CV_IntroductionToTrophiesScript::CBriarRose::??_GCBriarRose@CV_IntroductionToTrophiesScript@NScript@@UAEPAXI@Z
+  00eb6310 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::CMurderTwistAssassin::??_GCMurderTwistAssassin@CV_MurderTwistFinalScript@NScript@@UAEPAXI@Z
+  00eb6340 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::CMurderTwistAssassinGuard::??_GCMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@UAEPAXI@Z
+  00ec2830 RELOCATION_MATCH NScript::CV_RandomPopulationSimScript::CRandomPopulationCreature::??_GCRandomPopulationCreature@CV_RandomPopulationSimScript@NScript@@UAEPAXI@Z
+  00ecd5d0 RELOCATION_MATCH NScript::CV_SickChildScript::CWomanToAttract::??_GCWomanToAttract@CV_SickChildScript@NScript@@UAEPAXI@Z
+  00ed2890 RELOCATION_MATCH NScript::CV_SingingStonesScript::CSingingStone::??_GCSingingStone@CV_SingingStonesScript@NScript@@UAEPAXI@Z
+  00edc2a0 RELOCATION_MATCH NScript::CV_TempleOfLightScript::CTOL_AcolyteGood::??_GCTOL_AcolyteGood@CV_TempleOfLightScript@NScript@@UAEPAXI@Z
+  00ef5040 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CVillager::??_GCVillager@CPersonalScript_EmptyScript@NScript@@UAEPAXI@Z
+  00f03870 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::CAT_BanditAlly::??_GCAT_BanditAlly@CQ_AmbushTradersScript@NScript@@UAEPAXI@Z
+210 rows

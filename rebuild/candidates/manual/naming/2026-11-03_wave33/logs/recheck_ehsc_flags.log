@@ -1,0 +1,3 @@
+00c109b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00e54290   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00e54290   RELOCATION_MATCH PASS   `scalar deleting destructor'

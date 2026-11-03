@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+00c10940	??1CCardPositionsDef@@UAE@XZ	naming wave 33: the respelled CCardPositionsDef::`scalar deleting destructor' 0x00C109B0 (vtable 0x012B263C, stored last by the landed PDB copy ctor 0x00C108E0 ??0CCardPositionsDef@@QAE@ABV0@@Z) calls 0x00C10940 as its out-of-line destructor and grades RELOCATION_MATCH + PASS; FableWin.pdb ??1CCardPositionsDef@@UAE@XZ (and ??_GCCardPositionsDef@@UAEPAXI@Z)	@FableBaseDtor_c10a10@4 (reloc_bindings, bound by 00c10a10); catalog _unattributed::~CCardPositionsDef_00c10940
