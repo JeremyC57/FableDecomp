@@ -26390,3 +26390,10 @@ chunk	address	module	name	length
 735	005729d8	CTCInventoryExperience	AddStatToList	3514
 735	00573792	CTCInventoryExperience	AddStatToListPC	3556
 735	00577ac0	CTCInventoryExperience	vfunc_87	2157
+736	00821a80	CMap	LoadFromFile	2648
+736	00a78e20	_global	CNavQuadTree_InitializeLeafNode	1042
+736	00a7a0a0	_global	CNavQuadTree_InitializeWithEvents	1222
+736	00a7af60	CNavQuadTree	LoadFromFile	2503
+736	00c1ee30	CMap	GetWorldMapNumber	15
+736	00c5a1f0	CMap	Update	29
+736	00c5a2a0	CMap	Update	49
