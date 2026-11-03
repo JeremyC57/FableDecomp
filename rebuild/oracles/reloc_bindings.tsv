@@ -35639,3 +35639,8 @@ _optionSafe	013d28d0	0099dcb0
 ?GetGamePersistentSaveData@CEntityRuntimePersistence@NThingManager@@QBE_NJAAV?$CArray@E@@@Z	00522530	00522720
 ?LoadEntitiesBinary@CThingManager@@QAEXAAVCMemoryDataInputStream@@JJABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@PAVCASuspendableProcess@@JAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@4@@Z	00521240	00522720
 ?LoadEntitiesFromScript@CThingManager@@QAEXABVCCharString@@JJABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@PAVCASuspendableProcess@@JAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@4@@Z	00520d00	00522720
+??1CCardPositionsDef@@UAE@XZ	00c10940	00c109b0
+??1CQ_AmbushTradersScript@NScript@@UAE@XZ	00cfa340	00cfa320
+??1CV_AssassinAttacksScript@NScript@@UAE@XZ	00e398a0	00e39880
+??1CV_BeardyBaldyScript@NScript@@UAE@XZ	00e542b0	00e54290
+??1CV_FishingCompetitionScript@NScript@@UAE@XZ	00e81f30	00e81f10

@@ -4,7 +4,12 @@
 fixes, the naming debt, and the order of work). 2026-11-03 evening: `tools/sync_manifest_from_catalog.py` put the
 manifest back on the catalog names (33,656 landed rows, 275 unlanded rows from the newest labels, 331 stale
 PARKED_INDEX statuses); run it after every landing round. The open PRIORITY name-fix count is 188 (185 addresses),
-not 154.
+not 154 (189 after wave 33's one row).
+**Same evening, three Opus agents (records in FINDINGS_LOG 2026-11-03):** 999 Leaf prefixes completed; 391 EH funclets landed
+(218 parked with evidence); naming wave 33 landed 840 scalar deleting destructors (DECISIONS_W33 D1/D3/D5/D6 need the owner).
+Codex pass 12 return verified and being regraded (`batches/2026-11-03_codex_pass12/` when it lands). Next: land the pass 12
+verified rows (pass 11 procedure), decide DECISIONS_W33, add the 6 EH parents + the 90 proposed starts to the manifest after
+review, fix the 2 parent Leafs, re-cut the 183 parent-unlanded funclets once their parents land.
 
 The previous page (the 2026-11-01 state: chunks to 717, naming waves 13-32, the never-attempted pool) is archived at the
 end of `docs/journal/HANDOFF_ARCHIVE.md`. This session's details: `docs/journal/2026-11/2026-11-03_SESSION.md`. Solved
