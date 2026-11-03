@@ -26383,3 +26383,5 @@ chunk	address	module	name	length
 734	004a5a40	CWorld	UpdateFrame	1102
 734	004a5e90	CWorld	AutoLoadRegionLeaving	1722
 734	004a6e30	CWorld	Init	2259
+735	0047f58b	CFrontEndManager	AddRegionAndTimeInfo	2296
+735	00597228	CFrontEndManager	AddRegionAndTimeInfo	2296
