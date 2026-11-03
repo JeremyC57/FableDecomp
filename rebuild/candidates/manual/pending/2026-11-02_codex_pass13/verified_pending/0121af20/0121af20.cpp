@@ -1,0 +1,60 @@
+// CPlayer::PlayerModeInfo dynamic initializer() -- install each player mode's initialization and cleanup callbacks.
+// Leaf: _$E1
+#define FABLE_RETAIL_PLAYER_MODE_TABLE
+#define FABLE_RETAIL_CPLAYER_TYPED
+#define FABLE_RETAIL_REGION_CONNECTIVITY_TYPES
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_CINTELLIGENTPOINTER
+#define FABLE_RETAIL_SCOPED_PTR
+#define FABLE_RETAIL_CCHARSTRING
+#include "engine/CPlayer.h"
+const CPlayerModeInfo CPlayer::PlayerModeInfo[MAX_NO_PLAYER_MODES] = {
+    {0, 0},
+    {&CPlayer::InitModeControlCreature, &CPlayer::UninitModeControlCreature},
+    {&CPlayer::InitModeZTarget, &CPlayer::UninitModeZTarget},
+    {&CPlayer::InitModeDead, &CPlayer::UninitModeDead},
+    {&CPlayer::InitModeNavigateInventory, &CPlayer::UninitModeNavigateInventory},
+    {&CPlayer::InitModeNavigateInventoryClothing, &CPlayer::UninitModeNavigateInventoryClothing},
+    {&CPlayer::InitModeNavigateInventoryWeapons, &CPlayer::UninitModeNavigateInventoryWeapons},
+    {&CPlayer::InitModeNavigateInventoryAbilitiesScreen, &CPlayer::UninitModeNavigateInventoryAbilitiesScreen},
+    {&CPlayer::InitModeNavigateInventoryMapScreen, &CPlayer::UninitModeNavigateInventoryMapScreen},
+    {&CPlayer::InitModeNavigateInventoryMagicScreen, &CPlayer::UninitModeNavigateInventoryMagicScreen},
+    {&CPlayer::InitModeNavigateInventoryStatsScreen, &CPlayer::UninitModeNavigateInventoryStatsScreen},
+    {&CPlayer::InitModeNavigateInventoryExperienceScreen, &CPlayer::UninitModeNavigateInventoryExperienceScreen},
+    {&CPlayer::InitModeNavigateInventoryTradeScreen, &CPlayer::UninitModeNavigateInventoryTradeScreen},
+    {&CPlayer::InitModeNavigateInventoryQuestsScreen, &CPlayer::UninitModeNavigateInventoryQuestsScreen},
+    {&CPlayer::InitModeClickPastText, &CPlayer::UninitModeClickPastText},
+    {&CPlayer::InitModeYesNoQuestion, &CPlayer::UninitModeYesNoQuestion},
+    {&CPlayer::InitModeFirstPerson, &CPlayer::UninitModeFirstPerson},
+    {&CPlayer::InitModeFreezeControls, &CPlayer::UninitModeFreezeControls},
+    {&CPlayer::InitModeSpecialAbilityFreezeControls, &CPlayer::UninitModeSpecialAbilityFreezeControls},
+    {&CPlayer::InitModeControlFreeCamera, &CPlayer::UninitModeControlFreeCamera},
+    {&CPlayer::InitModeLookThroughWindow, &CPlayer::UninitModeLookThroughWindow},
+    {&CPlayer::InitModeRebootGame, &CPlayer::UninitModeRebootGame},
+    {&CPlayer::InitModeFirstPersonTargeting, &CPlayer::UninitModeFirstPersonTargeting},
+    {&CPlayer::InitModeNavigateInGameMenu, &CPlayer::UninitModeNavigateInGameMenu},
+    {&CPlayer::InitModeControlSpirit, &CPlayer::UninitModeControlSpirit},
+    {&CPlayer::InitModeUseProjectileWeapon, &CPlayer::UninitModeUseProjectileWeapon},
+    {&CPlayer::InitModeTavernGame, &CPlayer::UninitModeTavernGame},
+    {&CPlayer::InitModeCutScene, &CPlayer::UninitModeCutScene},
+    {&CPlayer::InitModeChargeQuickAccess, &CPlayer::UninitModeChargeQuickAccess},
+    {&CPlayer::InitModeFishing, &CPlayer::UninitModeFishing},
+    {&CPlayer::InitModeDigging, &CPlayer::UninitModeDigging},
+    {&CPlayer::InitModeParalysed, &CPlayer::UninitModeParalysed},
+    {&CPlayer::InitModeBoastUI, &CPlayer::UninitModeBoastUI},
+    {&CPlayer::InitModeBerserk, &CPlayer::UninitModeBerserk},
+    {&CPlayer::InitModeUseProjectileWeaponThirdPerson, &CPlayer::UninitModeUseProjectileWeaponThirdPerson},
+    {&CPlayer::InitModeChargeUpWillSpell, &CPlayer::UninitModeChargeUpWillSpell},
+    {&CPlayer::InitModeQuickAccessMenu, &CPlayer::UninitModeQuickAccessMenu},
+    {&CPlayer::InitModeQuestCompletionUI, &CPlayer::UninitModeQuestCompletionUI},
+    {&CPlayer::InitModeCreditsUI, &CPlayer::UninitModeCreditsUI},
+    {&CPlayer::InitModeBetting, &CPlayer::UninitModeBetting},
+    {&CPlayer::InitModeLightning, &CPlayer::UninitModeLightning},
+    {&CPlayer::InitModeOracleMinigame, &CPlayer::UninitModeOracleMinigame},
+    {&CPlayer::InitModeFireheartMinigame, &CPlayer::UninitModeFireheartMinigame},
+    {&CPlayer::InitModeLiveGUI, &CPlayer::UninitModeLiveGUI},
+    {&CPlayer::InitModeConsole, &CPlayer::UninitModeConsole},
+    {&CPlayer::InitModeTakePhotojournalScreenshot, &CPlayer::UninitModeTakePhotojournalScreenshot},
+    {&CPlayer::InitModePCProjectileWeaponThirdPersonAiming, &CPlayer::UninitModePCProjectileWeaponThirdPersonAiming},
+    {&CPlayer::InitModeViewHero, &CPlayer::UninitModeViewHero},
+};

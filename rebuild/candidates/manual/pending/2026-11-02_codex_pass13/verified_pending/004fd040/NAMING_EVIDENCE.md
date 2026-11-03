@@ -1,0 +1,23 @@
+# 004fd040 final handoff
+
+Final status: **VERIFIED_MATCH**. Selected grade: 2. 
+
+ROW.json and root STATUS.tsv are authoritative. Earlier status claims below are historical; they may have been superseded.
+
+## rows/004fd040/NAMING_EVIDENCE.md
+
+# Complete original identity and operand review
+
+Both original PDBs name `CWorldMap::SaveRegionsToString` as a protected nonconst thiscall member taking `CCharString&`, with exact spelling `?SaveRegionsToString@CWorldMap@@IAEXAAVCCharString@@@Z`. `004fd040_{Ego_r,FableWin}_types.json` contains the original CWorldMap, CRegion and C2DVector records. `004fd040_locals.json` contains both original procedure records and local types, including the region reference, const map of text offsets, vector iterators, path strings, and const char pointer. Original debug local `number_valid_regions` is unused; the native source numbers regions by region_index.
+
+CRegion is the original class with protected typed fields: Maps, VisMaps, Name, DisplayName, RegionDefName, CDefPointer<const CRegionDef>, MiniMapGraphic, MiniMapScale, MiniMapOffset, the map<CCharString,C2DVector>, WorldMapOffset, NameGraphicOffset, and three bools. Retail containers give the complete 0x58-byte extent, independently confirmed by the native region stride and every field access. Both PDBs prove all field names, original access, exact class keys and template arguments; the donor containers have different sizes. The shared CMapInfo class retains its complete original typed 72-byte retail layout from 004fb990. Its original both-PDB proofs and native map stride apply to the same type here.
+
+Public inline CRegion accessors return the proven original fields. `004fd040_getter_bodies.json` records the original debug bodies, while the native caller confirms the retail offsets. GetDisplayName is a distinct out-of-line const reference accessor at 006bbf20: nonempty DisplayName, else Name. GetWorldMapOffset at 006bbf40 and GetNameGraphicOffset at 006bbf70 return **const C2DVector by value**, using the definition's offsets or zero if no definition exists; they do not return references to CRegion's same-named stored fields. Both original class/procedure records and the full native and original debug bodies prove these exact identities. The source preserves the two getter calls for X and Y separately.
+
+GFFloatToCharString is the global fastcall `(double,long)` function, with a CCharString result, not the stale invented CCharString::FormatDouble spelling. Both original procedure records are in `004fd040_callee_procedures.json`; both exact name streams agree. The entire 491-byte native body at 009a08b0 and the original 629-byte debug body show fixed precision formatting, trailing-zero removal and retention of one digit after the decimal point. The callsite passes precision 6 and promotes each float to double. Full body disassemblies are `004fd040_float_{native,donor}.disasm`.
+
+The contained-map loop explicitly uses `dir_name.GetAsCharArray()`. Its real original inline body checks PStringData, returns the empty literal when unassigned, and otherwise returns Data.PeekData(). The original debug method is 0186c770 (Ego_r 004037b0). Its complete body is recorded in the getter receipt; both original CCharString type records from 004fb990 prove its public const signature. The visible-map loop instead uses the separate conversion operator `??BCCharString@@QBEPBDXZ` at retail0099e4c0, original Ego_r00af9d90/FableWin02f61070. Both ToCharString temporaries also use that conversion operator. These two members are preserved distinctly; no invented forwarding is used.
+
+Every other native callee is independently rechecked against both exact original name streams, the original class/function declarations and the already-reviewed complete native family from 004fb990: the three concatenation overloads, string constructors/destructors/assignment/appends, SplitPath, GetLevelDir, ToCharString, GetLength, and strcmp-style string inequality. The actual strstr target is the FF25 thunk to the PE's named MSVCR71 strstr import. STLport4.6.2 _tree.h/_map.h prove map/less/allocator/pair and const iterator trait keys; the full native increment matches the original tree successor algorithm. No virtual calls occur in this row.
+
+`workers/engine/004fd040_review.py` audits all 201 COFF operands individually, including all terminated literals, all 21 unique callees, zero relocation addends and complete non-relocated byte equality. The assigned 2589-byte extent ends at004fda5c with RET4; three alignment CC bytes precede SaveToFile at004fda60. Exact symbols and native/raw object disassemblies are retained in attempt01 and evidence. NAME_FIXES.json records conflicting earlier identities without changing shared bindings.
