@@ -1,0 +1,20 @@
+{
+  "address": "00e39b40",
+  "assigned_retail_size": 1250,
+  "attempt": 8,
+  "baseline": false,
+  "differing_instruction_lines": 0,
+  "flags": [],
+  "header_manifest": "history/00e39b40/attempt_08/HEADER_MANIFEST.json",
+  "header_map_sha256": "2b0076ca6abf2de59d6feacb9598631a44a9a23479c54bad8df6abed776540f0",
+  "leaf": "?Main@CV_BordelloScript@NScript@@UAEXXZ",
+  "leaf_hits": [
+    "?Main@CV_BordelloScript@NScript@@UAEXXZ"
+  ],
+  "object_size": 1250,
+  "retail_size": 1250,
+  "source_sha256": "c2cacaed4f8bd3c07dd2ac779a62755edb15b729fb104eccbb51942dc129194b",
+  "status": "RELOCATION_MATCH",
+  "strategy": "main independent final handoff rebuild: selected immutable headers, required source headings and complete byte/operand regression check",
+  "time": 1793676604.3307354
+}

@@ -1,0 +1,22 @@
+{
+  "address": "00ae2e20",
+  "assigned_retail_size": 1293,
+  "attempt": 14,
+  "baseline": false,
+  "differing_instruction_lines": 0,
+  "flags": [
+    "/Gr"
+  ],
+  "header_manifest": "history/00ae2e20/attempt_14/HEADER_MANIFEST.json",
+  "header_map_sha256": "3c74a85213b0b39eb2fd45cf47b498e57c950febc80177f7f95fd5f444650efd",
+  "leaf": "?OptimiseSpringOrder@CParticleProgram@@QBEXAAV?$CArray@VCParticleDistanceConstraint@@@@@Z",
+  "leaf_hits": [
+    "?OptimiseSpringOrder@CParticleProgram@@QBEXAAV?$CArray@VCParticleDistanceConstraint@@@@@Z"
+  ],
+  "object_size": 1293,
+  "retail_size": 1293,
+  "source_sha256": "90fc772d3a2120fc854646d676ee048ef313eda41ba43cba60ad4c664ce59e75",
+  "status": "RELOCATION_MATCH",
+  "strategy": "main independent final handoff rebuild: selected immutable headers, required source headings and complete byte/operand regression check",
+  "time": 1793675929.0336633
+}

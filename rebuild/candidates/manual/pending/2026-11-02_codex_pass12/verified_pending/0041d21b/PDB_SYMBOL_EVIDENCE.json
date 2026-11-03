@@ -1,0 +1,394 @@
+[
+  {
+    "address": "0x0044c6b0",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "?Get@CGameDefinitionManager@@SIAAV1@XZ"
+  },
+  {
+    "address": "0x0042aeda",
+    "name_sets": [
+      "fablewin"
+    ],
+    "symbol": "??$GetDef@VCUIDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIDef@NUISystem@@@@@Z"
+  },
+  {
+    "address": "0x00bfea1a",
+    "name_sets": [],
+    "symbol": "??2@YAPAXI@Z"
+  },
+  {
+    "address": "0x0041b800",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CSprite@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x0055c650",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CMouseCursor@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x0055ba20",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CHoverable@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x0055b460",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CClickable@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x0055a9c0",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CDraggable@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x00559830",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CScrollBar@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x00559360",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CScrollBarOutside@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x00558ec0",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CDraggableInto@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x00558b90",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CNavButton@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x00558540",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CKeyRedefiner@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x00556350",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CRedefinerList@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x00555180",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CScrollableList@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x005545d0",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CMorphingSprite@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x005334a0",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CComponent@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x005517e0",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CTable@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x00550190",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CMesh@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x0054f5c0",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CText@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x0053dfe0",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CMenuEntry@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x0053b63e",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CList@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x0052cc50",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CChangingStateComponent@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x0054ea00",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CViewport@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x0054e3d0",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CFrontEndScreen@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x0054e0b0",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CFrontEndButton@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x0054c3a0",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CFrontEndList@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x0053f120",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CScrollingViewport@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x0054c1d0",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CListArrow@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x0054c050",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CSlider@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x00549f60",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CTextSlider@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x013b86a0",
+    "name_sets": [],
+    "symbol": "?PMainGameComponent@CMainGameComponent@@1PAV1@A"
+  },
+  {
+    "address": "0x005482d0",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CMovie@NUISystem@@QAE@AAVCIEngine@@J@Z"
+  },
+  {
+    "address": "0x00547600",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CSwappingStateComponent@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x00546f40",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CScrollingComponent@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x00546d30",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CTextContainer@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x00546b00",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CZoomingComponent@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x005460c0",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CComponentContainer@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x00545720",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CSpellContainer@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x00544b70",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CSpellContainerList@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x0041cadc",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CYesNo@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x00544010",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CParticleEffect@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x0041cb70",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0COk@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x0041cbe4",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CControllerDisconnect@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x00542330",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CIconText@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x005415f0",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CDynamicList@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x005407b0",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??0CEditBox@NUISystem@@QAE@J@Z"
+  },
+  {
+    "address": "0x009accc0",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "?GetDefNameFromGlobalIndex@CDefinitionManager@@QBE?AVCDefString@@J@Z"
+  },
+  {
+    "address": "0x00415dd0",
+    "name_sets": [
+      "fablewin"
+    ],
+    "symbol": "?GetString@CDefString@@QBE?AVCCharString@@XZ"
+  },
+  {
+    "address": "0x0099eae0",
+    "name_sets": [
+      "egor",
+      "fablewin"
+    ],
+    "symbol": "??1CCharString@@QAE@XZ"
+  }
+]

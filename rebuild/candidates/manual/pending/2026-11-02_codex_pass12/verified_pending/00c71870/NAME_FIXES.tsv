@@ -1,0 +1,4 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00c4d740	?ALGetProcAddress@CSalOpenAL@@QAEPAXPAE@Z	Exact original GameCODA SDK Update object relocation plus native resolved address/data; all member references use one global base and native addends.	?GetProcAddress@CAudioContext@@QAEPAXPBD@Z | ?Resolve@CProcResolver_00c71cf0@@QAEP6AJPBXKKPAXK@ZPBD@Z
+0x012bee90	?SAL_EAX30_ListenerProperties@@3U_GUID@@B	Exact original GameCODA SDK Update object relocation plus native resolved address/data; all member references use one global base and native addends.	?DSPROPSETID_EAX30_ListenerProperties@@3UGUID@@B | ?g_eaxListenerGuid@@3QBEB | ?g_eaxListenerPropertySetGuid_012bee90@@3QBEB
+0x0143bdb0	?g_OpenAL@@3VCSalOpenAL@@A	Exact original GameCODA SDK Update object relocation plus native resolved address/data; all member references use one global base and native addends.	?g_AudioContext@@3UCAudioContext@@A

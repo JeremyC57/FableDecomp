@@ -1,0 +1,170 @@
+{
+  "address": "00c60ff0",
+  "all_internal_relocations_proven": true,
+  "all_named_relocations_proven": true,
+  "attempt": 8,
+  "final_regression_note": "Final header/format rebuild preserves selected target bytes and every COFF relocation identity; accepted/held actual operands separately checked in final main review. Parked original review limitations remain unchanged.",
+  "grade": "RELOCATION_MATCH",
+  "leaf": "?Set3DBuffer@CEAXBuffer@@AAEHKPAXK@Z",
+  "object_size": 1417,
+  "original_sdk_identity": true,
+  "relocations": [
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 49,
+      "symbol": "$L1125",
+      "target": "00c61464"
+    },
+    {
+      "evidence": "Original SDK COFF symbol/type and corresponding native resolved call or original EAX GUID bytes.",
+      "kind": "DISP32",
+      "offset": 62,
+      "symbol": "?IsNaN@@YA_NABU_D3DVECTOR@@@Z",
+      "target": "00c60b30"
+    },
+    {
+      "evidence": "Original SDK COFF symbol/type and corresponding native resolved call or original EAX GUID bytes.",
+      "kind": "DISP32",
+      "offset": 82,
+      "symbol": "?IsNaN@@YA_NABU_D3DVECTOR@@@Z",
+      "target": "00c60b30"
+    },
+    {
+      "evidence": "Original SDK COFF symbol/type and corresponding native resolved call or original EAX GUID bytes.",
+      "kind": "DISP32",
+      "offset": 418,
+      "symbol": "?AddToChangesList@CEAXListener@@QAEXW4IDENTIFIER@@KPAXJ@Z",
+      "target": "00c5ffb0"
+    },
+    {
+      "evidence": "Original SDK COFF symbol/type and corresponding native resolved call or original EAX GUID bytes.",
+      "kind": "DISP32",
+      "offset": 433,
+      "symbol": "?IsNaN@@YA_NABU_D3DVECTOR@@@Z",
+      "target": "00c60b30"
+    },
+    {
+      "evidence": "Original SDK COFF symbol/type and corresponding native resolved call or original EAX GUID bytes.",
+      "kind": "DISP32",
+      "offset": 536,
+      "symbol": "?IsNaN@@YA_NABU_D3DVECTOR@@@Z",
+      "target": "00c60b30"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 798,
+      "symbol": "$L1120",
+      "target": "00c61498"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 805,
+      "symbol": "$L1126",
+      "target": "00c61484"
+    },
+    {
+      "evidence": "Original SDK COFF symbol/type and corresponding native resolved call or original EAX GUID bytes.",
+      "kind": "DISP32",
+      "offset": 1115,
+      "symbol": "?CommitEAX3@CEAXBuffer@@QAEHXZ",
+      "target": "00c65a00"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1140,
+      "symbol": "$L1047",
+      "target": "00c61025"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1144,
+      "symbol": "$L1057",
+      "target": "00c6119b"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1148,
+      "symbol": "$L1104",
+      "target": "00c61413"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1152,
+      "symbol": "$L1064",
+      "target": "00c61202"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1156,
+      "symbol": "$L1104",
+      "target": "00c61413"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1160,
+      "symbol": "$L1104",
+      "target": "00c61413"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1164,
+      "symbol": "$L1104",
+      "target": "00c61413"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1168,
+      "symbol": "$L1071",
+      "target": "00c6125f"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1172,
+      "symbol": "$L1083",
+      "target": "00c61319"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1176,
+      "symbol": "$L1089",
+      "target": "00c61365"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1180,
+      "symbol": "$L1094",
+      "target": "00c613a3"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1184,
+      "symbol": "$L1099",
+      "target": "00c613d8"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1188,
+      "symbol": "$L1104",
+      "target": "00c61413"
+    }
+  ],
+  "retail_size": 1417,
+  "selected_attempt": 11,
+  "source_sha256": "272f4a711791113e00fd02b54a921a61cbcc1e855e092fb6b066bfcd07fe6938"
+}

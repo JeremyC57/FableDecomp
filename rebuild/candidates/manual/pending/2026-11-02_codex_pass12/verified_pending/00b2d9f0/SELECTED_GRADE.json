@@ -1,0 +1,20 @@
+{
+  "address": "00b2d9f0",
+  "assigned_retail_size": 807,
+  "attempt": 41,
+  "baseline": false,
+  "differing_instruction_lines": 0,
+  "flags": [],
+  "header_manifest": "history/00b2d9f0/attempt_41/HEADER_MANIFEST.json",
+  "header_map_sha256": "e8f60fabd548f1336b510073fa5c53d9d4f83c7b62d206442141d7cd89b7df5d",
+  "leaf": "?UpdateDiskCache@CEngineSurfaceCompositionManager@@QAEXABV?$CArray@VCEngineTextureMorph@@@@_NMPBV?$set@JU?$less@J@std@@V?$allocator@J@2@@std@@@Z",
+  "leaf_hits": [
+    "?UpdateDiskCache@CEngineSurfaceCompositionManager@@QAEXABV?$CArray@VCEngineTextureMorph@@@@_NMPBV?$set@JU?$less@J@std@@V?$allocator@J@2@@std@@@Z"
+  ],
+  "object_size": 807,
+  "retail_size": 807,
+  "source_sha256": "e7f501c482efcaf5845144b5f1f8039343e7c50fb67da6daba55f3d67ccc6846",
+  "status": "RELOCATION_MATCH",
+  "strategy": "main independent final handoff rebuild: selected immutable headers, required source headings and complete byte/operand regression check",
+  "time": 1793676133.982863
+}

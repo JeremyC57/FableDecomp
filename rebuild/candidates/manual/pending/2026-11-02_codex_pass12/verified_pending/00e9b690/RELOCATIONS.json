@@ -1,0 +1,548 @@
+{
+  "address": "00e9b690",
+  "final_regression_note": "Final header/format rebuild preserves selected target bytes and every COFF relocation identity; accepted/held actual operands separately checked in final main review. Parked original review limitations remain unchanged.",
+  "leaf": "?DoMission@CV_HeroDuelScript@NScript@@QAEXXZ",
+  "operands": [
+    {
+      "literal": "BowerstoneJail",
+      "native_site": "0xe9b69c",
+      "offset": "0xc",
+      "retail_target": "012c7788",
+      "status": "VERIFIED",
+      "symbol": "??_C@_0P@GEPNDEFD@BowerstoneJail?$AA@"
+    },
+    {
+      "native_site": "0xe9b6a9",
+      "offset": "0x19",
+      "retail_target": "0099ebf0",
+      "status": "VERIFIED",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "native_site": "0xe9b6c9",
+      "offset": "0x39",
+      "retail_target": "0099eae0",
+      "status": "VERIFIED",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "native_site": "0xe9b6e0",
+      "offset": "0x50",
+      "retail_target": "00cb7940",
+      "status": "VERIFIED",
+      "symbol": "?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ"
+    },
+    {
+      "literal": "BowerstoneJail",
+      "native_site": "0xe9b6ef",
+      "offset": "0x5f",
+      "retail_target": "012c7788",
+      "status": "VERIFIED",
+      "symbol": "??_C@_0P@GEPNDEFD@BowerstoneJail?$AA@"
+    },
+    {
+      "native_site": "0xe9b6f8",
+      "offset": "0x68",
+      "retail_target": "0099ebf0",
+      "status": "VERIFIED",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "native_site": "0xe9b718",
+      "offset": "0x88",
+      "retail_target": "0099eae0",
+      "status": "VERIFIED",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "native_site": "0xe9b727",
+      "offset": "0x97",
+      "retail_target": "00cb7940",
+      "status": "VERIFIED",
+      "symbol": "?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ"
+    },
+    {
+      "native_site": "0xe9b736",
+      "offset": "0xa6",
+      "retail_target": "00e9bbc0",
+      "status": "VERIFIED",
+      "symbol": "?DuelChallenge@CV_HeroDuelScript@NScript@@QAEXXZ"
+    },
+    {
+      "literal": "",
+      "native_site": "0xe9b73d",
+      "offset": "0xad",
+      "retail_target": "0122d70e",
+      "status": "VERIFIED",
+      "symbol": "??_C@_00CNPNBAHC@?$AA@"
+    },
+    {
+      "native_site": "0xe9b746",
+      "offset": "0xb6",
+      "retail_target": "0099ebf0",
+      "status": "VERIFIED",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "literal": "ExecutionTree",
+      "native_site": "0xe9b74d",
+      "offset": "0xbd",
+      "retail_target": "012d1fd8",
+      "status": "VERIFIED",
+      "symbol": "??_C@_0O@BFNGPJOK@ExecutionTree?$AA@"
+    },
+    {
+      "native_site": "0xe9b756",
+      "offset": "0xc6",
+      "retail_target": "0099ebf0",
+      "status": "VERIFIED",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "literal": "TEXT_QUEST_MAYORS_INVITATION_OBJECTIVE_08",
+      "native_site": "0xe9b75d",
+      "offset": "0xcd",
+      "retail_target": "012ed48c",
+      "status": "VERIFIED",
+      "symbol": "??_C@_0CK@PFEDGCCB@TEXT_QUEST_MAYORS_INVITATION_OBJ@"
+    },
+    {
+      "native_site": "0xe9b766",
+      "offset": "0xd6",
+      "retail_target": "0099ebf0",
+      "status": "VERIFIED",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "literal": "V_MayorsInvitation",
+      "native_site": "0xe9b76d",
+      "offset": "0xdd",
+      "retail_target": "012c5008",
+      "status": "VERIFIED",
+      "symbol": "??_C@_0BD@HIMKNKIF@V_MayorsInvitation?$AA@"
+    },
+    {
+      "native_site": "0xe9b776",
+      "offset": "0xe6",
+      "retail_target": "0099ebf0",
+      "status": "VERIFIED",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "native_site": "0xe9b79e",
+      "offset": "0x10e",
+      "retail_target": "0099eae0",
+      "status": "VERIFIED",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "native_site": "0xe9b7a7",
+      "offset": "0x117",
+      "retail_target": "0099eae0",
+      "status": "VERIFIED",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "native_site": "0xe9b7b0",
+      "offset": "0x120",
+      "retail_target": "0099eae0",
+      "status": "VERIFIED",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "native_site": "0xe9b7b9",
+      "offset": "0x129",
+      "retail_target": "0099eae0",
+      "status": "VERIFIED",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "literal": "HeroDualArea",
+      "native_site": "0xe9b7c0",
+      "offset": "0x130",
+      "retail_target": "012d2300",
+      "status": "VERIFIED",
+      "symbol": "??_C@_0N@ICDAFLCA@HeroDualArea?$AA@"
+    },
+    {
+      "native_site": "0xe9b7c9",
+      "offset": "0x139",
+      "retail_target": "0099ebf0",
+      "status": "VERIFIED",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "native_site": "0xe9b7e9",
+      "offset": "0x159",
+      "retail_target": "0099eae0",
+      "status": "VERIFIED",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "native_site": "0xe9b80b",
+      "offset": "0x17b",
+      "retail_target": "00cb7940",
+      "status": "VERIFIED",
+      "symbol": "?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ"
+    },
+    {
+      "literal": "Q_AmbushTraders",
+      "native_site": "0xe9b81a",
+      "offset": "0x18a",
+      "retail_target": "012c4cd8",
+      "status": "VERIFIED",
+      "symbol": "??_C@_0BA@NBMKNHCA@Q_AmbushTraders?$AA@"
+    },
+    {
+      "native_site": "0xe9b823",
+      "offset": "0x193",
+      "retail_target": "0099ebf0",
+      "status": "VERIFIED",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "literal": "Q_HangingTreeEvil",
+      "native_site": "0xe9b845",
+      "offset": "0x1b5",
+      "retail_target": "012c4e4c",
+      "status": "VERIFIED",
+      "symbol": "??_C@_0BC@GJHEOHIJ@Q_HangingTreeEvil?$AA@"
+    },
+    {
+      "native_site": "0xe9b84e",
+      "offset": "0x1be",
+      "retail_target": "0099ebf0",
+      "status": "VERIFIED",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "literal": "Q_HangingTreeGood",
+      "native_site": "0xe9b86c",
+      "offset": "0x1dc",
+      "retail_target": "012c4e14",
+      "status": "VERIFIED",
+      "symbol": "??_C@_0BC@PCPBFKEG@Q_HangingTreeGood?$AA@"
+    },
+    {
+      "native_site": "0xe9b875",
+      "offset": "0x1e5",
+      "retail_target": "0099ebf0",
+      "status": "VERIFIED",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "literal": "Q_EndGameFocalSites",
+      "native_site": "0xe9b893",
+      "offset": "0x203",
+      "retail_target": "012c4ae0",
+      "status": "VERIFIED",
+      "symbol": "??_C@_0BE@POKFBNCA@Q_EndGameFocalSites?$AA@"
+    },
+    {
+      "native_site": "0xe9b89c",
+      "offset": "0x20c",
+      "retail_target": "0099ebf0",
+      "status": "VERIFIED",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "literal": "Q_MinionClifftopChase",
+      "native_site": "0xe9b8ba",
+      "offset": "0x22a",
+      "retail_target": "012c4f10",
+      "status": "VERIFIED",
+      "symbol": "??_C@_0BG@MPFFCOGN@Q_MinionClifftopChase?$AA@"
+    },
+    {
+      "native_site": "0xe9b8c3",
+      "offset": "0x233",
+      "retail_target": "0099ebf0",
+      "status": "VERIFIED",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "native_site": "0xe9b8f5",
+      "offset": "0x265",
+      "retail_target": "0099eae0",
+      "status": "VERIFIED",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "native_site": "0xe9b906",
+      "offset": "0x276",
+      "retail_target": "0099eae0",
+      "status": "VERIFIED",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "native_site": "0xe9b917",
+      "offset": "0x287",
+      "retail_target": "0099eae0",
+      "status": "VERIFIED",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "native_site": "0xe9b928",
+      "offset": "0x298",
+      "retail_target": "0099eae0",
+      "status": "VERIFIED",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "native_site": "0xe9b939",
+      "offset": "0x2a9",
+      "retail_target": "0099eae0",
+      "status": "VERIFIED",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "native_site": "0xe9b94c",
+      "offset": "0x2bc",
+      "retail_target": "00cb7940",
+      "status": "VERIFIED",
+      "symbol": "?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ"
+    },
+    {
+      "literal": "Q_AmbushTraders",
+      "native_site": "0xe9b963",
+      "offset": "0x2d3",
+      "retail_target": "012c4cd8",
+      "status": "VERIFIED",
+      "symbol": "??_C@_0BA@NBMKNHCA@Q_AmbushTraders?$AA@"
+    },
+    {
+      "native_site": "0xe9b96c",
+      "offset": "0x2dc",
+      "retail_target": "0099ebf0",
+      "status": "VERIFIED",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "literal": "Q_HangingTreeEvil",
+      "native_site": "0xe9b98e",
+      "offset": "0x2fe",
+      "retail_target": "012c4e4c",
+      "status": "VERIFIED",
+      "symbol": "??_C@_0BC@GJHEOHIJ@Q_HangingTreeEvil?$AA@"
+    },
+    {
+      "native_site": "0xe9b997",
+      "offset": "0x307",
+      "retail_target": "0099ebf0",
+      "status": "VERIFIED",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "literal": "Q_HangingTreeGood",
+      "native_site": "0xe9b9b9",
+      "offset": "0x329",
+      "retail_target": "012c4e14",
+      "status": "VERIFIED",
+      "symbol": "??_C@_0BC@PCPBFKEG@Q_HangingTreeGood?$AA@"
+    },
+    {
+      "native_site": "0xe9b9c2",
+      "offset": "0x332",
+      "retail_target": "0099ebf0",
+      "status": "VERIFIED",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "literal": "Q_EndGameFocalSites",
+      "native_site": "0xe9b9e3",
+      "offset": "0x353",
+      "retail_target": "012c4ae0",
+      "status": "VERIFIED",
+      "symbol": "??_C@_0BE@POKFBNCA@Q_EndGameFocalSites?$AA@"
+    },
+    {
+      "native_site": "0xe9b9ec",
+      "offset": "0x35c",
+      "retail_target": "0099ebf0",
+      "status": "VERIFIED",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "literal": "Q_MinionClifftopChase",
+      "native_site": "0xe9ba0d",
+      "offset": "0x37d",
+      "retail_target": "012c4f10",
+      "status": "VERIFIED",
+      "symbol": "??_C@_0BG@MPFFCOGN@Q_MinionClifftopChase?$AA@"
+    },
+    {
+      "native_site": "0xe9ba16",
+      "offset": "0x386",
+      "retail_target": "0099ebf0",
+      "status": "VERIFIED",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "native_site": "0xe9ba4e",
+      "offset": "0x3be",
+      "retail_target": "0099eae0",
+      "status": "VERIFIED",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "native_site": "0xe9ba62",
+      "offset": "0x3d2",
+      "retail_target": "0099eae0",
+      "status": "VERIFIED",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "native_site": "0xe9ba75",
+      "offset": "0x3e5",
+      "retail_target": "0099eae0",
+      "status": "VERIFIED",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "native_site": "0xe9ba86",
+      "offset": "0x3f6",
+      "retail_target": "0099eae0",
+      "status": "VERIFIED",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "native_site": "0xe9ba97",
+      "offset": "0x407",
+      "retail_target": "0099eae0",
+      "status": "VERIFIED",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "native_site": "0xe9baae",
+      "offset": "0x41e",
+      "retail_target": "00cb7940",
+      "status": "VERIFIED",
+      "symbol": "?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ"
+    },
+    {
+      "native_site": "0xe9bac3",
+      "offset": "0x433",
+      "retail_target": "00cb7940",
+      "status": "VERIFIED",
+      "symbol": "?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ"
+    },
+    {
+      "literal": "HeroDualArea",
+      "native_site": "0xe9bad2",
+      "offset": "0x442",
+      "retail_target": "012d2300",
+      "status": "VERIFIED",
+      "symbol": "??_C@_0N@ICDAFLCA@HeroDualArea?$AA@"
+    },
+    {
+      "native_site": "0xe9badb",
+      "offset": "0x44b",
+      "retail_target": "0099ebf0",
+      "status": "VERIFIED",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "native_site": "0xe9baf8",
+      "offset": "0x468",
+      "retail_target": "0099eae0",
+      "status": "VERIFIED",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "native_site": "0xe9bb0f",
+      "offset": "0x47f",
+      "retail_target": "00cb7940",
+      "status": "VERIFIED",
+      "symbol": "?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ"
+    },
+    {
+      "literal": "HeroDualArea",
+      "native_site": "0xe9bb1e",
+      "offset": "0x48e",
+      "retail_target": "012d2300",
+      "status": "VERIFIED",
+      "symbol": "??_C@_0N@ICDAFLCA@HeroDualArea?$AA@"
+    },
+    {
+      "native_site": "0xe9bb27",
+      "offset": "0x497",
+      "retail_target": "0099ebf0",
+      "status": "VERIFIED",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "native_site": "0xe9bb44",
+      "offset": "0x4b4",
+      "retail_target": "0099eae0",
+      "status": "VERIFIED",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "native_site": "0xe9bb53",
+      "offset": "0x4c3",
+      "retail_target": "00cb7940",
+      "status": "VERIFIED",
+      "symbol": "?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ"
+    },
+    {
+      "literal": "HeroDualArea",
+      "native_site": "0xe9bb5e",
+      "offset": "0x4ce",
+      "retail_target": "012d2300",
+      "status": "VERIFIED",
+      "symbol": "??_C@_0N@ICDAFLCA@HeroDualArea?$AA@"
+    },
+    {
+      "native_site": "0xe9bb67",
+      "offset": "0x4d7",
+      "retail_target": "0099ebf0",
+      "status": "VERIFIED",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "native_site": "0xe9bb87",
+      "offset": "0x4f7",
+      "retail_target": "0099eae0",
+      "status": "VERIFIED",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "native_site": "0xe9bb9a",
+      "offset": "0x50a",
+      "retail_target": "00cb7940",
+      "status": "VERIFIED",
+      "symbol": "?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ"
+    },
+    {
+      "native_site": "0xe9bba9",
+      "offset": "0x519",
+      "retail_target": "00e9be60",
+      "status": "VERIFIED",
+      "symbol": "?Duel@CV_HeroDuelScript@NScript@@QAEXXZ"
+    }
+  ],
+  "relocation_count": 71,
+  "selected_attempt": 5,
+  "source_sha256": "8824f0b9688a63d9a1480664bd8f6a9df00c5a6e2ff8eca13a4621a1fe138137",
+  "status": "ALL_NAMED_TARGETS_VERIFIED",
+  "virtual_call_contracts": {
+    "CGameScriptInterfaceBase": [
+      {
+        "name": "NewScriptFrame",
+        "slot": 7
+      },
+      {
+        "name": "IsLevelLoaded",
+        "slot": 11
+      },
+      {
+        "name": "IsQuestActive",
+        "slot": 284
+      },
+      {
+        "name": "SetQuestCardObjective",
+        "slot": 296
+      }
+    ]
+  }
+}

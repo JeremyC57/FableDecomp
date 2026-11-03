@@ -1,0 +1,1478 @@
+{
+  "address": "009cf3a0",
+  "byte_match": true,
+  "extent_end": "009cfb67",
+  "final_regression_note": "Final header/format rebuild preserves selected target bytes and every COFF relocation identity; accepted/held actual operands separately checked in final main review. Parked original review limitations remain unchanged.",
+  "leaf": "?WriteSymbolHeaderFile@CBankFile@@QAEXXZ",
+  "object_size": 1991,
+  "relocations": [
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf3ac",
+      "object_offset": "0xc",
+      "offset": 12,
+      "status": "PASS",
+      "symbol": "??0CWideString@@QAE@XZ",
+      "target": "0099aed0"
+    },
+    {
+      "evidence": "Original NBankFileManager global TPI record and native typed manager receiver.",
+      "kind": "DIR32",
+      "native_operand": "0x9cf3c7",
+      "object_offset": "0x27",
+      "offset": 39,
+      "status": "PASS",
+      "symbol": "?GBankFileManager@NBankFileManager@@3VCBankFileManager@@A",
+      "target": "013ca79c"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf3cc",
+      "object_offset": "0x2c",
+      "offset": 44,
+      "status": "PASS",
+      "symbol": "?GetRetailHeaderFilePath@CBankFileManager@@QBE?AVCWideString@@ABVCCharString@@@Z",
+      "target": "009a7ed0"
+    },
+    {
+      "evidence": "Original NBankFileManager global TPI record and native typed manager receiver.",
+      "kind": "DIR32",
+      "native_operand": "0x9cf3d8",
+      "object_offset": "0x38",
+      "offset": 56,
+      "status": "PASS",
+      "symbol": "?GBankFileManager@NBankFileManager@@3VCBankFileManager@@A",
+      "target": "013ca79c"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf3dd",
+      "object_offset": "0x3d",
+      "offset": 61,
+      "status": "PASS",
+      "symbol": "?GetDevHeaderFilePath@CBankFileManager@@QBE?AVCWideString@@ABVCCharString@@@Z",
+      "target": "009a7e20"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf3e7",
+      "object_offset": "0x47",
+      "offset": 71,
+      "status": "PASS",
+      "symbol": "??4CWideString@@QAEABV0@ABV0@@Z",
+      "target": "0099b7d0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf3f0",
+      "object_offset": "0x50",
+      "offset": 80,
+      "status": "PASS",
+      "symbol": "??1CWideString@@QAE@XZ",
+      "target": "0099b510"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf3f9",
+      "object_offset": "0x59",
+      "offset": 89,
+      "status": "PASS",
+      "symbol": "?GetLength@CWideString@@QBEJXZ",
+      "target": "0099b220"
+    },
+    {
+      "evidence": "Compiled string bytes including terminator agree with the native literal at this operand.",
+      "kind": "DIR32",
+      "native_operand": "0x9cf409",
+      "object_offset": "0x69",
+      "offset": 105,
+      "status": "PASS",
+      "symbol": "??_C@_0BH@GGLIKMBF@Writing?5symbol?5file?4?4?4?$AA@",
+      "target": "0129b700"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf412",
+      "object_offset": "0x72",
+      "offset": 114,
+      "status": "PASS",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf434",
+      "object_offset": "0x94",
+      "offset": 148,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf43d",
+      "object_offset": "0x9d",
+      "offset": 157,
+      "status": "PASS",
+      "symbol": "??0CBaseClassNonCopyable@@IAE@XZ",
+      "target": "0099a2f0"
+    },
+    {
+      "evidence": "CMemoryFile RTTI class name and original virtual destructor/order; native constructor/destructor vtable store.",
+      "kind": "DIR32",
+      "native_operand": "0x9cf44c",
+      "object_offset": "0xac",
+      "offset": 172,
+      "status": "PASS",
+      "symbol": "??_7CMemoryFile@@6B@",
+      "target": "0122e0fc"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf468",
+      "object_offset": "0xc8",
+      "offset": 200,
+      "status": "PASS",
+      "symbol": "??0CWideString@@QAE@XZ",
+      "target": "0099aed0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf47a",
+      "object_offset": "0xda",
+      "offset": 218,
+      "status": "PASS",
+      "symbol": "?Open@CMemoryFile@@UAEXABVCWideString@@W4FileAccessType@@K@Z",
+      "target": "009e94a0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf488",
+      "object_offset": "0xe8",
+      "offset": 232,
+      "status": "PASS",
+      "symbol": "??0CFileDataOutputStream@@QAE@AAVCAFile@@@Z",
+      "target": "00994400"
+    },
+    {
+      "evidence": "Compiled string bytes including terminator agree with the native literal at this operand.",
+      "kind": "DIR32",
+      "native_operand": "0x9cf48d",
+      "object_offset": "0xed",
+      "offset": 237,
+      "status": "PASS",
+      "symbol": "??_C@_0BB@DKIFHDKM@_HEADER_INCLUDED?$AA@",
+      "target": "0129b6ec"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf498",
+      "object_offset": "0xf8",
+      "offset": 248,
+      "status": "PASS",
+      "symbol": "??H@YI?AVCCharString@@ABV0@PBD@Z",
+      "target": "0099f600"
+    },
+    {
+      "evidence": "Compiled string bytes including terminator agree with the native literal at this operand.",
+      "kind": "DIR32",
+      "native_operand": "0x9cf49f",
+      "object_offset": "0xff",
+      "offset": 255,
+      "status": "PASS",
+      "symbol": "??_C@_0DC@LIBEEBJK@?1?$CK?5This?5file?5was?5auto?9generated?5@",
+      "target": "0129b6b8"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf4a8",
+      "object_offset": "0x108",
+      "offset": 264,
+      "status": "PASS",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf4b2",
+      "object_offset": "0x112",
+      "offset": 274,
+      "status": "PASS",
+      "symbol": "?WriteStringNewLine@CDataOutputStream@@QAEXABVCCharString@@@Z",
+      "target": "00995a20"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf4bb",
+      "object_offset": "0x11b",
+      "offset": 283,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Compiled string bytes including terminator agree with the native literal at this operand.",
+      "kind": "DIR32",
+      "native_operand": "0x9cf4c2",
+      "object_offset": "0x122",
+      "offset": 290,
+      "status": "PASS",
+      "symbol": "??_C@_00CNPNBAHC@?$AA@",
+      "target": "0122d70e"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf4cb",
+      "object_offset": "0x12b",
+      "offset": 299,
+      "status": "PASS",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf4d9",
+      "object_offset": "0x139",
+      "offset": 313,
+      "status": "PASS",
+      "symbol": "?WriteStringNewLine@CDataOutputStream@@QAEXABVCCharString@@@Z",
+      "target": "00995a20"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf4e2",
+      "object_offset": "0x142",
+      "offset": 322,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf4ed",
+      "object_offset": "0x14d",
+      "offset": 333,
+      "status": "PASS",
+      "symbol": "_malloc",
+      "target": "00bfea0e"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf54f",
+      "object_offset": "0x1af",
+      "offset": 431,
+      "status": "PASS",
+      "symbol": "??ACPackedUIntArray@@QBEKK@Z",
+      "target": "00a629f0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf574",
+      "object_offset": "0x1d4",
+      "offset": 468,
+      "status": "PASS",
+      "symbol": "??A?$map@VCCharString@@V?$CArray@K@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V?$CArray@K@@@std@@@4@@std@@QAEAAV?$CArray@K@@ABVCCharString@@@Z",
+      "target": "009d4810"
+    },
+    {
+      "evidence": "Actual STLport4.6.2 _vector.h protected POD overflow or _tree.h PRIVATE _M_erase declaration; original PDB mapped types and native container layout.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf59e",
+      "object_offset": "0x1fe",
+      "offset": 510,
+      "status": "PASS",
+      "symbol": "?_M_insert_overflow@?$vector@KV?$allocator@K@std@@@std@@IAEXPAKABKABU__true_type@2@I_N@Z",
+      "target": "00464ace"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf5a7",
+      "object_offset": "0x207",
+      "offset": 519,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Compiled string bytes including terminator agree with the native literal at this operand.",
+      "kind": "DIR32",
+      "native_operand": "0x9cf5d7",
+      "object_offset": "0x237",
+      "offset": 567,
+      "status": "PASS",
+      "symbol": "??_C@_05LJGMCFOG@enum?5?$AA@",
+      "target": "0129b6b0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf5e0",
+      "object_offset": "0x240",
+      "offset": 576,
+      "status": "PASS",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf5eb",
+      "object_offset": "0x24b",
+      "offset": 587,
+      "status": "PASS",
+      "symbol": "??H@YI?AVCCharString@@ABV0@0@Z",
+      "target": "0099f570"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf5f5",
+      "object_offset": "0x255",
+      "offset": 597,
+      "status": "PASS",
+      "symbol": "?WriteStringNewLine@CDataOutputStream@@QAEXABVCCharString@@@Z",
+      "target": "00995a20"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf5fe",
+      "object_offset": "0x25e",
+      "offset": 606,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf607",
+      "object_offset": "0x267",
+      "offset": 615,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Compiled string bytes including terminator agree with the native literal at this operand.",
+      "kind": "DIR32",
+      "native_operand": "0x9cf60e",
+      "object_offset": "0x26e",
+      "offset": 622,
+      "status": "PASS",
+      "symbol": "??_C@_01HCONENDN@?$HL?$AA@",
+      "target": "0129b6ac"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf617",
+      "object_offset": "0x277",
+      "offset": 631,
+      "status": "PASS",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf625",
+      "object_offset": "0x285",
+      "offset": 645,
+      "status": "PASS",
+      "symbol": "?WriteStringNewLine@CDataOutputStream@@QAEXABVCCharString@@@Z",
+      "target": "00995a20"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf62e",
+      "object_offset": "0x28e",
+      "offset": 654,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Compiled string bytes including terminator agree with the native literal at this operand.",
+      "kind": "DIR32",
+      "native_operand": "0x9cf653",
+      "object_offset": "0x2b3",
+      "offset": 691,
+      "status": "PASS",
+      "symbol": "??_C@_09ONJBBFFA@?$CIUnknown?$CJ?$AA@",
+      "target": "0129a03c"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf65c",
+      "object_offset": "0x2bc",
+      "offset": 700,
+      "status": "PASS",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf66e",
+      "object_offset": "0x2ce",
+      "offset": 718,
+      "status": "PASS",
+      "symbol": "??0CCharString@@QAE@ABV0@@Z",
+      "target": "0099ec30"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf679",
+      "object_offset": "0x2d9",
+      "offset": 729,
+      "status": "PASS",
+      "symbol": "?FindCharPos@CCharString@@QBEJD@Z",
+      "target": "0099e5a0"
+    },
+    {
+      "evidence": "Compiled string bytes including terminator agree with the native literal at this operand.",
+      "kind": "DIR32",
+      "native_operand": "0x9cf687",
+      "object_offset": "0x2e7",
+      "offset": 743,
+      "status": "PASS",
+      "symbol": "??_C@_01IHBHIGKO@?0?$AA@",
+      "target": "0122e024"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf692",
+      "object_offset": "0x2f2",
+      "offset": 754,
+      "status": "PASS",
+      "symbol": "?GFIntToCharString@@YI?AVCCharString@@J@Z",
+      "target": "0099f830"
+    },
+    {
+      "evidence": "Compiled string bytes including terminator agree with the native literal at this operand.",
+      "kind": "DIR32",
+      "native_operand": "0x9cf698",
+      "object_offset": "0x2f8",
+      "offset": 760,
+      "status": "PASS",
+      "symbol": "??_C@_03MHLONNLM@?5?$DN?5?$AA@",
+      "target": "0129b6a8"
+    },
+    {
+      "evidence": "Compiled string bytes including terminator agree with the native literal at this operand.",
+      "kind": "DIR32",
+      "native_operand": "0x9cf6a4",
+      "object_offset": "0x304",
+      "offset": 772,
+      "status": "PASS",
+      "symbol": "??_C@_01GPOEFGEJ@?7?$AA@",
+      "target": "0129b6a4"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf6ad",
+      "object_offset": "0x30d",
+      "offset": 781,
+      "status": "PASS",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf6b8",
+      "object_offset": "0x318",
+      "offset": 792,
+      "status": "PASS",
+      "symbol": "??H@YI?AVCCharString@@ABV0@0@Z",
+      "target": "0099f570"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf6c3",
+      "object_offset": "0x323",
+      "offset": 803,
+      "status": "PASS",
+      "symbol": "??H@YI?AVCCharString@@ABV0@PBD@Z",
+      "target": "0099f600"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf6ce",
+      "object_offset": "0x32e",
+      "offset": 814,
+      "status": "PASS",
+      "symbol": "??H@YI?AVCCharString@@ABV0@0@Z",
+      "target": "0099f570"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf6d9",
+      "object_offset": "0x339",
+      "offset": 825,
+      "status": "PASS",
+      "symbol": "??H@YI?AVCCharString@@ABV0@PBD@Z",
+      "target": "0099f600"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf6e3",
+      "object_offset": "0x343",
+      "offset": 835,
+      "status": "PASS",
+      "symbol": "?WriteStringNewLine@CDataOutputStream@@QAEXABVCCharString@@@Z",
+      "target": "00995a20"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf6ec",
+      "object_offset": "0x34c",
+      "offset": 844,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf6f5",
+      "object_offset": "0x355",
+      "offset": 853,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf6fe",
+      "object_offset": "0x35e",
+      "offset": 862,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf707",
+      "object_offset": "0x367",
+      "offset": 871,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf710",
+      "object_offset": "0x370",
+      "offset": 880,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf719",
+      "object_offset": "0x379",
+      "offset": 889,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf722",
+      "object_offset": "0x382",
+      "offset": 898,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Compiled string bytes including terminator agree with the native literal at this operand.",
+      "kind": "DIR32",
+      "native_operand": "0x9cf73f",
+      "object_offset": "0x39f",
+      "offset": 927,
+      "status": "PASS",
+      "symbol": "??_C@_02GACFDCNG@?$HN?$DL?$AA@",
+      "target": "0129b6a0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf748",
+      "object_offset": "0x3a8",
+      "offset": 936,
+      "status": "PASS",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf756",
+      "object_offset": "0x3b6",
+      "offset": 950,
+      "status": "PASS",
+      "symbol": "?WriteStringNewLine@CDataOutputStream@@QAEXABVCCharString@@@Z",
+      "target": "00995a20"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf75f",
+      "object_offset": "0x3bf",
+      "offset": 959,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Compiled string bytes including terminator agree with the native literal at this operand.",
+      "kind": "DIR32",
+      "native_operand": "0x9cf766",
+      "object_offset": "0x3c6",
+      "offset": 966,
+      "status": "PASS",
+      "symbol": "??_C@_00CNPNBAHC@?$AA@",
+      "target": "0122d70e"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf76f",
+      "object_offset": "0x3cf",
+      "offset": 975,
+      "status": "PASS",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf77d",
+      "object_offset": "0x3dd",
+      "offset": 989,
+      "status": "PASS",
+      "symbol": "?WriteStringNewLine@CDataOutputStream@@QAEXABVCCharString@@@Z",
+      "target": "00995a20"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf786",
+      "object_offset": "0x3e6",
+      "offset": 998,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf7d3",
+      "object_offset": "0x433",
+      "offset": 1075,
+      "status": "PASS",
+      "symbol": "?DumpToFile@CMemoryFile@@QAEXXZ",
+      "target": "009e9330"
+    },
+    {
+      "evidence": "Compiled string bytes including terminator agree with the native literal at this operand.",
+      "kind": "DIR32",
+      "native_operand": "0x9cf7da",
+      "object_offset": "0x43a",
+      "offset": 1082,
+      "status": "PASS",
+      "symbol": "??_C@_00CNPNBAHC@?$AA@",
+      "target": "0122d70e"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf7e3",
+      "object_offset": "0x443",
+      "offset": 1091,
+      "status": "PASS",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf7f1",
+      "object_offset": "0x451",
+      "offset": 1105,
+      "status": "PASS",
+      "symbol": "?WriteStringNewLine@CDataOutputStream@@QAEXABVCCharString@@@Z",
+      "target": "00995a20"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf7fa",
+      "object_offset": "0x45a",
+      "offset": 1114,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Compiled string bytes including terminator agree with the native literal at this operand.",
+      "kind": "DIR32",
+      "native_operand": "0x9cf801",
+      "object_offset": "0x461",
+      "offset": 1121,
+      "status": "PASS",
+      "symbol": "??_C@_02FMMEOLBI@?1?$CK?$AA@",
+      "target": "0129b1f8"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf80a",
+      "object_offset": "0x46a",
+      "offset": 1130,
+      "status": "PASS",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf818",
+      "object_offset": "0x478",
+      "offset": 1144,
+      "status": "PASS",
+      "symbol": "?WriteStringNewLine@CDataOutputStream@@QAEXABVCCharString@@@Z",
+      "target": "00995a20"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf821",
+      "object_offset": "0x481",
+      "offset": 1153,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Compiled string bytes including terminator agree with the native literal at this operand.",
+      "kind": "DIR32",
+      "native_operand": "0x9cf828",
+      "object_offset": "0x488",
+      "offset": 1160,
+      "status": "PASS",
+      "symbol": "??_C@_0FN@NCELABMJ@So?5we?5can?5see?5all?5the?5graphic?5in@",
+      "target": "0129b640"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf831",
+      "object_offset": "0x491",
+      "offset": 1169,
+      "status": "PASS",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf83f",
+      "object_offset": "0x49f",
+      "offset": 1183,
+      "status": "PASS",
+      "symbol": "?WriteStringNewLine@CDataOutputStream@@QAEXABVCCharString@@@Z",
+      "target": "00995a20"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf848",
+      "object_offset": "0x4a8",
+      "offset": 1192,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Compiled string bytes including terminator agree with the native literal at this operand.",
+      "kind": "DIR32",
+      "native_operand": "0x9cf84f",
+      "object_offset": "0x4af",
+      "offset": 1199,
+      "status": "PASS",
+      "symbol": "??_C@_0BL@KJACNMLH@Warning?3?5Do?5not?5uncomment?$CB?$AA@",
+      "target": "0129b620"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf858",
+      "object_offset": "0x4b8",
+      "offset": 1208,
+      "status": "PASS",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf866",
+      "object_offset": "0x4c6",
+      "offset": 1222,
+      "status": "PASS",
+      "symbol": "?WriteStringNewLine@CDataOutputStream@@QAEXABVCCharString@@@Z",
+      "target": "00995a20"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf86f",
+      "object_offset": "0x4cf",
+      "offset": 1231,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Compiled string bytes including terminator agree with the native literal at this operand.",
+      "kind": "DIR32",
+      "native_operand": "0x9cf883",
+      "object_offset": "0x4e3",
+      "offset": 1251,
+      "status": "PASS",
+      "symbol": "??_C@_02KBADEINC@_1?$AA@",
+      "target": "0129b61c"
+    },
+    {
+      "evidence": "Compiled string bytes including terminator agree with the native literal at this operand.",
+      "kind": "DIR32",
+      "native_operand": "0x9cf88e",
+      "object_offset": "0x4ee",
+      "offset": 1262,
+      "status": "PASS",
+      "symbol": "??_C@_05LJGMCFOG@enum?5?$AA@",
+      "target": "0129b6b0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf897",
+      "object_offset": "0x4f7",
+      "offset": 1271,
+      "status": "PASS",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf8a2",
+      "object_offset": "0x502",
+      "offset": 1282,
+      "status": "PASS",
+      "symbol": "??H@YI?AVCCharString@@ABV0@0@Z",
+      "target": "0099f570"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf8ad",
+      "object_offset": "0x50d",
+      "offset": 1293,
+      "status": "PASS",
+      "symbol": "??H@YI?AVCCharString@@ABV0@PBD@Z",
+      "target": "0099f600"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf8b7",
+      "object_offset": "0x517",
+      "offset": 1303,
+      "status": "PASS",
+      "symbol": "?WriteStringNewLine@CDataOutputStream@@QAEXABVCCharString@@@Z",
+      "target": "00995a20"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf8c0",
+      "object_offset": "0x520",
+      "offset": 1312,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf8c9",
+      "object_offset": "0x529",
+      "offset": 1321,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf8d2",
+      "object_offset": "0x532",
+      "offset": 1330,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Compiled string bytes including terminator agree with the native literal at this operand.",
+      "kind": "DIR32",
+      "native_operand": "0x9cf8d9",
+      "object_offset": "0x539",
+      "offset": 1337,
+      "status": "PASS",
+      "symbol": "??_C@_01HCONENDN@?$HL?$AA@",
+      "target": "0129b6ac"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf8e2",
+      "object_offset": "0x542",
+      "offset": 1346,
+      "status": "PASS",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf8f0",
+      "object_offset": "0x550",
+      "offset": 1360,
+      "status": "PASS",
+      "symbol": "?WriteStringNewLine@CDataOutputStream@@QAEXABVCCharString@@@Z",
+      "target": "00995a20"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf8f9",
+      "object_offset": "0x559",
+      "offset": 1369,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Compiled string bytes including terminator agree with the native literal at this operand.",
+      "kind": "DIR32",
+      "native_operand": "0x9cf91e",
+      "object_offset": "0x57e",
+      "offset": 1406,
+      "status": "PASS",
+      "symbol": "??_C@_09ONJBBFFA@?$CIUnknown?$CJ?$AA@",
+      "target": "0129a03c"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf927",
+      "object_offset": "0x587",
+      "offset": 1415,
+      "status": "PASS",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf939",
+      "object_offset": "0x599",
+      "offset": 1433,
+      "status": "PASS",
+      "symbol": "??0CCharString@@QAE@ABV0@@Z",
+      "target": "0099ec30"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf944",
+      "object_offset": "0x5a4",
+      "offset": 1444,
+      "status": "PASS",
+      "symbol": "?FindCharPos@CCharString@@QBEJD@Z",
+      "target": "0099e5a0"
+    },
+    {
+      "evidence": "Compiled string bytes including terminator agree with the native literal at this operand.",
+      "kind": "DIR32",
+      "native_operand": "0x9cf952",
+      "object_offset": "0x5b2",
+      "offset": 1458,
+      "status": "PASS",
+      "symbol": "??_C@_01IHBHIGKO@?0?$AA@",
+      "target": "0122e024"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf95d",
+      "object_offset": "0x5bd",
+      "offset": 1469,
+      "status": "PASS",
+      "symbol": "?GFIntToCharString@@YI?AVCCharString@@J@Z",
+      "target": "0099f830"
+    },
+    {
+      "evidence": "Compiled string bytes including terminator agree with the native literal at this operand.",
+      "kind": "DIR32",
+      "native_operand": "0x9cf963",
+      "object_offset": "0x5c3",
+      "offset": 1475,
+      "status": "PASS",
+      "symbol": "??_C@_03MHLONNLM@?5?$DN?5?$AA@",
+      "target": "0129b6a8"
+    },
+    {
+      "evidence": "Compiled string bytes including terminator agree with the native literal at this operand.",
+      "kind": "DIR32",
+      "native_operand": "0x9cf96f",
+      "object_offset": "0x5cf",
+      "offset": 1487,
+      "status": "PASS",
+      "symbol": "??_C@_01GPOEFGEJ@?7?$AA@",
+      "target": "0129b6a4"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf978",
+      "object_offset": "0x5d8",
+      "offset": 1496,
+      "status": "PASS",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf983",
+      "object_offset": "0x5e3",
+      "offset": 1507,
+      "status": "PASS",
+      "symbol": "??H@YI?AVCCharString@@ABV0@0@Z",
+      "target": "0099f570"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf98e",
+      "object_offset": "0x5ee",
+      "offset": 1518,
+      "status": "PASS",
+      "symbol": "??H@YI?AVCCharString@@ABV0@PBD@Z",
+      "target": "0099f600"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf999",
+      "object_offset": "0x5f9",
+      "offset": 1529,
+      "status": "PASS",
+      "symbol": "??H@YI?AVCCharString@@ABV0@0@Z",
+      "target": "0099f570"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf9a4",
+      "object_offset": "0x604",
+      "offset": 1540,
+      "status": "PASS",
+      "symbol": "??H@YI?AVCCharString@@ABV0@PBD@Z",
+      "target": "0099f600"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf9ae",
+      "object_offset": "0x60e",
+      "offset": 1550,
+      "status": "PASS",
+      "symbol": "?WriteStringNewLine@CDataOutputStream@@QAEXABVCCharString@@@Z",
+      "target": "00995a20"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf9b7",
+      "object_offset": "0x617",
+      "offset": 1559,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf9c0",
+      "object_offset": "0x620",
+      "offset": 1568,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf9c9",
+      "object_offset": "0x629",
+      "offset": 1577,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf9d2",
+      "object_offset": "0x632",
+      "offset": 1586,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf9db",
+      "object_offset": "0x63b",
+      "offset": 1595,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf9e4",
+      "object_offset": "0x644",
+      "offset": 1604,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cf9ed",
+      "object_offset": "0x64d",
+      "offset": 1613,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Compiled string bytes including terminator agree with the native literal at this operand.",
+      "kind": "DIR32",
+      "native_operand": "0x9cfa0a",
+      "object_offset": "0x66a",
+      "offset": 1642,
+      "status": "PASS",
+      "symbol": "??_C@_02GACFDCNG@?$HN?$DL?$AA@",
+      "target": "0129b6a0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cfa13",
+      "object_offset": "0x673",
+      "offset": 1651,
+      "status": "PASS",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cfa21",
+      "object_offset": "0x681",
+      "offset": 1665,
+      "status": "PASS",
+      "symbol": "?WriteStringNewLine@CDataOutputStream@@QAEXABVCCharString@@@Z",
+      "target": "00995a20"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cfa2a",
+      "object_offset": "0x68a",
+      "offset": 1674,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Compiled string bytes including terminator agree with the native literal at this operand.",
+      "kind": "DIR32",
+      "native_operand": "0x9cfa31",
+      "object_offset": "0x691",
+      "offset": 1681,
+      "status": "PASS",
+      "symbol": "??_C@_00CNPNBAHC@?$AA@",
+      "target": "0122d70e"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cfa3a",
+      "object_offset": "0x69a",
+      "offset": 1690,
+      "status": "PASS",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cfa48",
+      "object_offset": "0x6a8",
+      "offset": 1704,
+      "status": "PASS",
+      "symbol": "?WriteStringNewLine@CDataOutputStream@@QAEXABVCCharString@@@Z",
+      "target": "00995a20"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cfa51",
+      "object_offset": "0x6b1",
+      "offset": 1713,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Compiled string bytes including terminator agree with the native literal at this operand.",
+      "kind": "DIR32",
+      "native_operand": "0x9cfa96",
+      "object_offset": "0x6f6",
+      "offset": 1782,
+      "status": "PASS",
+      "symbol": "??_C@_02CHHINNLG@?$CK?1?$AA@",
+      "target": "0129b1fc"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cfa9f",
+      "object_offset": "0x6ff",
+      "offset": 1791,
+      "status": "PASS",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cfaad",
+      "object_offset": "0x70d",
+      "offset": 1805,
+      "status": "PASS",
+      "symbol": "?WriteStringNewLine@CDataOutputStream@@QAEXABVCCharString@@@Z",
+      "target": "00995a20"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cfab6",
+      "object_offset": "0x716",
+      "offset": 1814,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cfabf",
+      "object_offset": "0x71f",
+      "offset": 1823,
+      "status": "PASS",
+      "symbol": "?DumpToFile@CMemoryFile@@QAEXXZ",
+      "target": "009e9330"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cfac8",
+      "object_offset": "0x728",
+      "offset": 1832,
+      "status": "PASS",
+      "symbol": "?Close@CMemoryFile@@UAEXXZ",
+      "target": "009e9390"
+    },
+    {
+      "evidence": "Actual STLport4.6.2 _vector.h protected POD overflow or _tree.h PRIVATE _M_erase declaration; original PDB mapped types and native container layout.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cfae0",
+      "object_offset": "0x740",
+      "offset": 1856,
+      "status": "PASS",
+      "symbol": "?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CArray@K@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CArray@K@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CArray@K@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CArray@K@@@std@@@2@@Z",
+      "target": "009d3e80"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cfb07",
+      "object_offset": "0x767",
+      "offset": 1895,
+      "status": "PASS",
+      "symbol": "_free",
+      "target": "00bfea14"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cfb13",
+      "object_offset": "0x773",
+      "offset": 1907,
+      "status": "PASS",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cfb1c",
+      "object_offset": "0x77c",
+      "offset": 1916,
+      "status": "PASS",
+      "symbol": "??1CFileDataOutputStream@@UAE@XZ",
+      "target": "00994430"
+    },
+    {
+      "evidence": "CMemoryFile RTTI class name and original virtual destructor/order; native constructor/destructor vtable store.",
+      "kind": "DIR32",
+      "native_operand": "0x9cfb28",
+      "object_offset": "0x788",
+      "offset": 1928,
+      "status": "PASS",
+      "symbol": "??_7CMemoryFile@@6B@",
+      "target": "0122e0fc"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cfb2d",
+      "object_offset": "0x78d",
+      "offset": 1933,
+      "status": "PASS",
+      "symbol": "?Close@CMemoryFile@@UAEXXZ",
+      "target": "009e9390"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cfb39",
+      "object_offset": "0x799",
+      "offset": 1945,
+      "status": "PASS",
+      "symbol": "??1CWideString@@QAE@XZ",
+      "target": "0099b510"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cfb48",
+      "object_offset": "0x7a8",
+      "offset": 1960,
+      "status": "PASS",
+      "symbol": "_free",
+      "target": "00bfea14"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cfb54",
+      "object_offset": "0x7b4",
+      "offset": 1972,
+      "status": "PASS",
+      "symbol": "??1CBaseClassNonCopyable@@MAE@XZ",
+      "target": "0099a300"
+    },
+    {
+      "evidence": "Exact original PDB symbol and lib_bank_file donor order; native receiver, argument flow and original local types.",
+      "kind": "REL32_CALL",
+      "native_operand": "0x9cfb5d",
+      "object_offset": "0x7bd",
+      "offset": 1981,
+      "status": "PASS",
+      "symbol": "??1CWideString@@QAE@XZ",
+      "target": "0099b510"
+    }
+  ],
+  "retail_size": 1991,
+  "selected_attempt": 9,
+  "source_sha256": "3582b5ab862895f026518bb060b2cb8fda01a00f8aef55ef84a44e5c4bfe453d",
+  "status": "ALL145_RELOCATIONS_AND2_VIRTUAL_CALLS_VERIFIED",
+  "virtual_calls": [
+    {
+      "evidence": "Complete original PDB virtual method order, native typed object receiver and arguments.",
+      "instruction": "0x9cf42b",
+      "name": "CBankFile::CProgressCallback::NotifyBankUpdateStatus(const CCharString&)",
+      "status": "PASS"
+    },
+    {
+      "evidence": "Complete original PDB virtual method order, native typed object receiver and arguments.",
+      "instruction": "0x9cf563",
+      "name": "CBankFile::GetEnumerationType(unsigned long) const",
+      "status": "PASS"
+    }
+  ]
+}

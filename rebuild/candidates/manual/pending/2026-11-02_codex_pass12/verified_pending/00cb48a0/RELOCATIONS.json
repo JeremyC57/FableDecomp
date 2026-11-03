@@ -1,0 +1,1011 @@
+{
+  "address": "00cb48a0",
+  "all_internal_relocations_proven": true,
+  "all_named_relocations_proven": true,
+  "attempt": 12,
+  "final_regression_note": "Final header/format rebuild preserves selected target bytes and every COFF relocation identity; accepted/held actual operands separately checked in final main review. Parked original review limitations remain unchanged.",
+  "grade": "RELOCATION_MATCH",
+  "leaf": "?ImeUi_ProcessMessage@@YIJPAUHWND__@@IIJPA_N@Z",
+  "object_size": 2160,
+  "relocations": [
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 7,
+      "symbol": "___security_cookie",
+      "target": "0139c8a8"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 19,
+      "symbol": "?g_bInitialized@@3_NA",
+      "target": "0143e8ae"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 47,
+      "symbol": "?g_bDisableImeCompletely@@3KA",
+      "target": "0143e89c"
+    },
+    {
+      "evidence": "Internal original switch case/table base checked against the exact function section and native destination.",
+      "kind": "dir32",
+      "offset": 97,
+      "symbol": "$L1297",
+      "target": "00cb5034"
+    },
+    {
+      "evidence": "Internal original switch case/table base checked against the exact function section and native destination.",
+      "kind": "dir32",
+      "offset": 111,
+      "symbol": "$L1318",
+      "target": "00cb5024"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 117,
+      "symbol": "?g_hklCurrent@@3PAUHKL__@@A",
+      "target": "0143e8b8"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "DISP32",
+      "offset": 128,
+      "symbol": "?CheckToggleState@@YIXXZ",
+      "target": "00cb47c0"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "DISP32",
+      "offset": 133,
+      "symbol": "?SetImeApi@@YIXXZ",
+      "target": "00cb36e0"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 138,
+      "symbol": "?g_hklCurrent@@3PAUHKL__@@A",
+      "target": "0143e8b8"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 170,
+      "symbol": "?g_dwIMELevelSaved@@3KA",
+      "target": "0143cd20"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "DISP32",
+      "offset": 175,
+      "symbol": "?SetSupportLevel@@YIXK@Z",
+      "target": "00cb2d90"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 181,
+      "symbol": "?g_hwndCurr@@3PAUHWND__@@A",
+      "target": "0143cf0c"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "DISP32",
+      "offset": 187,
+      "symbol": "_ImmGetDefaultIMEWnd@4",
+      "target": "00cb5546"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 203,
+      "symbol": "__imp__SendMessageA@16",
+      "target": "014402f0"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 237,
+      "symbol": "?lAlt@?1??ImeUi_ProcessMessage@@YIJPAUHWND__@@IIJPA_N@Z@4JA",
+      "target": "013ac820"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 243,
+      "symbol": "__imp__GetAsyncKeyState@4",
+      "target": "014402cc"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 270,
+      "symbol": "?lAlt@?1??ImeUi_ProcessMessage@@YIJPAUHWND__@@IIJPA_N@Z@4JA",
+      "target": "013ac820"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 291,
+      "symbol": "?lCtrl@?1??ImeUi_ProcessMessage@@YIJPAUHWND__@@IIJPA_N@Z@4JA",
+      "target": "013ac81c"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 312,
+      "symbol": "?lCtrl@?1??ImeUi_ProcessMessage@@YIJPAUHWND__@@IIJPA_N@Z@4JA",
+      "target": "013ac81c"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 335,
+      "symbol": "?lShift@?1??ImeUi_ProcessMessage@@YIJPAUHWND__@@IIJPA_N@Z@4JA",
+      "target": "013ac818"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 356,
+      "symbol": "?lShift@?1??ImeUi_ProcessMessage@@YIJPAUHWND__@@IIJPA_N@Z@4JA",
+      "target": "013ac818"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 382,
+      "symbol": "__imp__GetFocus@0",
+      "target": "014402bc"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 389,
+      "symbol": "__imp__PostMessageA@16",
+      "target": "014402c0"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 418,
+      "symbol": "?lAlt@?1??ImeUi_ProcessMessage@@YIJPAUHWND__@@IIJPA_N@Z@4JA",
+      "target": "013ac820"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 436,
+      "symbol": "?lCtrl@?1??ImeUi_ProcessMessage@@YIJPAUHWND__@@IIJPA_N@Z@4JA",
+      "target": "013ac81c"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 454,
+      "symbol": "?lShift@?1??ImeUi_ProcessMessage@@YIJPAUHWND__@@IIJPA_N@Z@4JA",
+      "target": "013ac818"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "DISP32",
+      "offset": 464,
+      "symbol": "?InitCompStringData@@YIXXZ",
+      "target": "00cb27f0"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "DISP32",
+      "offset": 519,
+      "symbol": "_ImmGetContext@4",
+      "target": "00cb5540"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 545,
+      "symbol": "__imp__lstrlenW@4",
+      "target": "0143fe48"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 551,
+      "symbol": "__imp__lstrcpyW@8",
+      "target": "0143fedc"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 575,
+      "symbol": "?_ImmGetCompositionString@@3P6GJPAUHIMC__@@KPAXK@ZA",
+      "target": "0143ce04"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 597,
+      "symbol": "?g_hwndCurr@@3PAUHWND__@@A",
+      "target": "0143cf0c"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "DISP32",
+      "offset": 606,
+      "symbol": "?CancelCompString@@YIXPAUHWND__@@_NH@Z",
+      "target": "00cb2710"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 616,
+      "symbol": "?g_szCompositionString@@3PAGA",
+      "target": "0143cf10"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 624,
+      "symbol": "?_SendCompString@@3P6IXXZA",
+      "target": "0143e61c"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "DISP32",
+      "offset": 629,
+      "symbol": "?InitCompStringData@@YIXXZ",
+      "target": "00cb27f0"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 657,
+      "symbol": "?_ImmGetCompositionString@@3P6GJPAUHIMC__@@KPAXK@ZA",
+      "target": "0143ce04"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 679,
+      "symbol": "?g_hwndCurr@@3PAUHWND__@@A",
+      "target": "0143cf0c"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "DISP32",
+      "offset": 687,
+      "symbol": "?CancelCompString@@YIXPAUHWND__@@_NH@Z",
+      "target": "00cb2710"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 697,
+      "symbol": "?g_szCompositionString@@3PAGA",
+      "target": "0143cf10"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 709,
+      "symbol": "?g_szCompAttrString@@3PAEA",
+      "target": "0143e518"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 718,
+      "symbol": "?_ImmGetCompositionString@@3P6GJPAUHIMC__@@KPAXK@ZA",
+      "target": "0143ce04"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 725,
+      "symbol": "?g_hklCurrent@@3PAUHKL__@@A",
+      "target": "0143e8b8"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 733,
+      "symbol": "?g_szCompAttrString@@3PAEA",
+      "target": "0143e518"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "DISP32",
+      "offset": 747,
+      "symbol": "?GetImeId@@YGKI@Z",
+      "target": "00cb28f0"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 760,
+      "symbol": "?g_szCompositionString@@3PAGA",
+      "target": "0143cf10"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 766,
+      "symbol": "__imp__lstrlenW@4",
+      "target": "0143fe48"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 788,
+      "symbol": "_g_dwCount",
+      "target": "0143e688"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 798,
+      "symbol": "_g_dwSelection",
+      "target": "0143e618"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 808,
+      "symbol": "?g_szCandidate@@3PAY0BAA@GA",
+      "target": "0143d110"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 829,
+      "symbol": "?g_szCompositionString@@3PAGA",
+      "target": "0143cf10"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 852,
+      "symbol": "__imp__lstrcatW@8",
+      "target": "0143fee8"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 860,
+      "symbol": "?g_szCompositionString@@3PAGA",
+      "target": "0143cf10"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 866,
+      "symbol": "?g_iReadingError@@3HA",
+      "target": "0143cd58"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 872,
+      "symbol": "_g_uCandPageSize",
+      "target": "0143cd50"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 882,
+      "symbol": "?g_szCompositionString@@3PAGA",
+      "target": "0143cf10"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 888,
+      "symbol": "?g_bReadingWindow@@3_NA",
+      "target": "0143e8a0"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 895,
+      "symbol": "?g_bHorizontalReading@@3_NA",
+      "target": "0143e8a1"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 903,
+      "symbol": "?g_szReadingString@@3PAGA",
+      "target": "0143e640"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 908,
+      "symbol": "?g_szCandidate@@3PAY0BAA@GA",
+      "target": "0143d110"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 914,
+      "symbol": "_g_dwSelection",
+      "target": "0143e618"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 921,
+      "symbol": "?g_szReadingString@@3PAGA",
+      "target": "0143e640"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 927,
+      "symbol": "__imp__lstrlenW@4",
+      "target": "0143fe48"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 932,
+      "symbol": "?g_iReadingError@@3HA",
+      "target": "0143cd58"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 938,
+      "symbol": "?g_szReadingString@@3PAGA",
+      "target": "0143e640"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 945,
+      "symbol": "_g_dwCount",
+      "target": "0143e688"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 964,
+      "symbol": "_g_dwCount",
+      "target": "0143e688"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 980,
+      "symbol": "?_ImmGetCompositionString@@3P6GJPAUHIMC__@@KPAXK@ZA",
+      "target": "0143ce04"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 985,
+      "symbol": "?g_IMECursorBytes@@3KA",
+      "target": "0143e894"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 990,
+      "symbol": "?g_IMECursorChars@@3KA",
+      "target": "0143e898"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 996,
+      "symbol": "?g_dwIMELevel@@3KA",
+      "target": "0143cd1c"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1005,
+      "symbol": "?_SendCompString@@3P6IXXZA",
+      "target": "0143e61c"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1010,
+      "symbol": "?g_IMECursorBytes@@3KA",
+      "target": "0143e894"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1017,
+      "symbol": "?g_szCompositionString@@3PAGA",
+      "target": "0143cf10"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1024,
+      "symbol": "__imp__lstrlenW@4",
+      "target": "0143fe48"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "DISP32",
+      "offset": 1034,
+      "symbol": "?SendControlKeys@@YIXII@Z",
+      "target": "00cb26b0"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "DISP32",
+      "offset": 1045,
+      "symbol": "_ImmReleaseContext@8",
+      "target": "00cb5534"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1055,
+      "symbol": "?g_hwndCurr@@3PAUHWND__@@A",
+      "target": "0143cf0c"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "DISP32",
+      "offset": 1065,
+      "symbol": "?CancelCompString@@YIXPAUHWND__@@_NH@Z",
+      "target": "00cb2710"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "DISP32",
+      "offset": 1070,
+      "symbol": "?InitCompStringData@@YIXXZ",
+      "target": "00cb27f0"
+    },
+    {
+      "evidence": "Internal original switch case/table base checked against the exact function section and native destination.",
+      "kind": "dir32",
+      "offset": 1113,
+      "symbol": "$L1298",
+      "target": "00cb5104"
+    },
+    {
+      "evidence": "Internal original switch case/table base checked against the exact function section and native destination.",
+      "kind": "dir32",
+      "offset": 1120,
+      "symbol": "$L1319",
+      "target": "00cb50ec"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1127,
+      "symbol": "?g_hklCurrent@@3PAUHKL__@@A",
+      "target": "0143e8b8"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1136,
+      "symbol": "?bNoReentrance@?DB@??ImeUi_ProcessMessage@@YIJPAUHWND__@@IIJPA_N@Z@4_NA",
+      "target": "0143e8dc"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1146,
+      "symbol": "?g_himcOrg@@3PAUHIMC__@@A",
+      "target": "0143e634"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1163,
+      "symbol": "?bNoReentrance@?DB@??ImeUi_ProcessMessage@@YIJPAUHWND__@@IIJPA_N@Z@4_NA",
+      "target": "0143e8dc"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "DISP32",
+      "offset": 1169,
+      "symbol": "_ImmGetConversionStatus@12",
+      "target": "00cb5552"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1190,
+      "symbol": "?g_himcOrg@@3PAUHIMC__@@A",
+      "target": "0143e634"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "DISP32",
+      "offset": 1203,
+      "symbol": "_ImmSetConversionStatus@12",
+      "target": "00cb555e"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1209,
+      "symbol": "?bNoReentrance@?DB@??ImeUi_ProcessMessage@@YIJPAUHWND__@@IIJPA_N@Z@4_NA",
+      "target": "0143e8dc"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "DISP32",
+      "offset": 1215,
+      "symbol": "?CheckToggleState@@YIXXZ",
+      "target": "00cb47c0"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1227,
+      "symbol": "_g_bCandList",
+      "target": "0143e8af"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "DISP32",
+      "offset": 1236,
+      "symbol": "_ImmGetContext@4",
+      "target": "00cb5540"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1263,
+      "symbol": "?g_bReadingWindow@@3_NA",
+      "target": "0143e8a0"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1270,
+      "symbol": "?_GetCandidateList@@3P6IKPAUHIMC__@@KPAPAUtagCANDIDATELIST@@@ZA",
+      "target": "0143cd00"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1297,
+      "symbol": "?g_hklCurrent@@3PAUHKL__@@A",
+      "target": "0143e8b8"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1305,
+      "symbol": "_g_dwSelection",
+      "target": "0143e618"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1310,
+      "symbol": "_g_dwCount",
+      "target": "0143e688"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "DISP32",
+      "offset": 1322,
+      "symbol": "?GetImeId@@YGKI@Z",
+      "target": "00cb28f0"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1331,
+      "symbol": "_g_dwCount",
+      "target": "0143e688"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1360,
+      "symbol": "__imp__lstrlenW@4",
+      "target": "0143fe48"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1375,
+      "symbol": "_g_dwSelection",
+      "target": "0143e618"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1390,
+      "symbol": "_g_dwCount",
+      "target": "0143e688"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1410,
+      "symbol": "_g_uCandPageSize",
+      "target": "0143cd50"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1438,
+      "symbol": "_g_dwSelection",
+      "target": "0143e618"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1448,
+      "symbol": "_g_uCandPageSize",
+      "target": "0143cd50"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1464,
+      "symbol": "?g_hklCurrent@@3PAUHKL__@@A",
+      "target": "0143e8b8"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "DISP32",
+      "offset": 1475,
+      "symbol": "?GetImeId@@YGKI@Z",
+      "target": "00cb28f0"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1489,
+      "symbol": "_g_dwSelection",
+      "target": "0143e618"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1501,
+      "symbol": "_g_dwSelection",
+      "target": "0143e618"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1513,
+      "symbol": "?g_szCandidate@@3PAY0BAA@GA",
+      "target": "0143d110"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1540,
+      "symbol": "?g_szCandidate@@3PAY0BAA@GA",
+      "target": "0143d110"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1557,
+      "symbol": "_g_uCandPageSize",
+      "target": "0143cd50"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "DISP32",
+      "offset": 1581,
+      "symbol": "?ComposeCandidateLine@@YIXPAGHPBG@Z",
+      "target": "00cb2590"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1619,
+      "symbol": "?ImeUiCallback_Free@@3P6IXPAX@ZA",
+      "target": "0143cf08"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "DISP32",
+      "offset": 1634,
+      "symbol": "_ImmReleaseContext@8",
+      "target": "00cb5534"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1639,
+      "symbol": "?g_hklCurrent@@3PAUHKL__@@A",
+      "target": "0143e8b8"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "DISP32",
+      "offset": 1669,
+      "symbol": "?GetImeId@@YGKI@Z",
+      "target": "00cb28f0"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1683,
+      "symbol": "_g_dwSelection",
+      "target": "0143e618"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1697,
+      "symbol": "?g_bReadingWindow@@3_NA",
+      "target": "0143e8a0"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1705,
+      "symbol": "_g_bCandList",
+      "target": "0143e8af"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1724,
+      "symbol": "?g_szCandidate@@3PAY0BAA@GA",
+      "target": "0143d110"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1730,
+      "symbol": "_g_dwCount",
+      "target": "0143e688"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "dir32",
+      "offset": 1746,
+      "symbol": "_g_bCandList",
+      "target": "0143e8af"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "DISP32",
+      "offset": 1756,
+      "symbol": "?GetReadingString@@YGXPAUHWND__@@@Z",
+      "target": "00cb4340"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "DISP32",
+      "offset": 1763,
+      "symbol": "?GetImeId@@YGKI@Z",
+      "target": "00cb28f0"
+    },
+    {
+      "evidence": "Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.",
+      "kind": "DISP32",
+      "offset": 1909,
+      "symbol": "@__security_check_cookie@4",
+      "target": "00bfe9f9"
+    },
+    {
+      "evidence": "Internal original switch case/table base checked against the exact function section and native destination.",
+      "kind": "dir32",
+      "offset": 1924,
+      "symbol": "$L824",
+      "target": "00cb4913"
+    },
+    {
+      "evidence": "Internal original switch case/table base checked against the exact function section and native destination.",
+      "kind": "dir32",
+      "offset": 1928,
+      "symbol": "$L960",
+      "target": "00cb4a29"
+    },
+    {
+      "evidence": "Internal original switch case/table base checked against the exact function section and native destination.",
+      "kind": "dir32",
+      "offset": 1932,
+      "symbol": "$L953",
+      "target": "00cb498c"
+    },
+    {
+      "evidence": "Internal original switch case/table base checked against the exact function section and native destination.",
+      "kind": "dir32",
+      "offset": 1936,
+      "symbol": "$L877",
+      "target": "00cb5008"
+    },
+    {
+      "evidence": "Internal original switch case/table base checked against the exact function section and native destination.",
+      "kind": "dir32",
+      "offset": 2124,
+      "symbol": "$L891",
+      "target": "00cb4d68"
+    },
+    {
+      "evidence": "Internal original switch case/table base checked against the exact function section and native destination.",
+      "kind": "dir32",
+      "offset": 2128,
+      "symbol": "$L937",
+      "target": "00cb4f40"
+    },
+    {
+      "evidence": "Internal original switch case/table base checked against the exact function section and native destination.",
+      "kind": "dir32",
+      "offset": 2132,
+      "symbol": "$L880",
+      "target": "00cb4d04"
+    },
+    {
+      "evidence": "Internal original switch case/table base checked against the exact function section and native destination.",
+      "kind": "dir32",
+      "offset": 2136,
+      "symbol": "$L890",
+      "target": "00cb4d5e"
+    },
+    {
+      "evidence": "Internal original switch case/table base checked against the exact function section and native destination.",
+      "kind": "dir32",
+      "offset": 2140,
+      "symbol": "$L939",
+      "target": "00cb4f71"
+    },
+    {
+      "evidence": "Internal original switch case/table base checked against the exact function section and native destination.",
+      "kind": "dir32",
+      "offset": 2144,
+      "symbol": "$L952",
+      "target": "00cb5004"
+    }
+  ],
+  "retail_size": 2160,
+  "selected_attempt": 14,
+  "source_sha256": "bd3bfd06d7bce8e3d584308dbc294289705fe8130e4b39da8ce156e0b3cb834a",
+  "supporting_helpers": [
+    {
+      "address": "00cb2710",
+      "length": 215,
+      "match": true,
+      "operands_checked": 15,
+      "symbol": "?CancelCompString@@YIXPAUHWND__@@_NH@Z"
+    },
+    {
+      "address": "00cb27f0",
+      "length": 39,
+      "match": true,
+      "operands_checked": 4,
+      "symbol": "?InitCompStringData@@YIXXZ"
+    },
+    {
+      "address": "00cb26b0",
+      "length": 83,
+      "match": true,
+      "operands_checked": 7,
+      "symbol": "?SendControlKeys@@YIXII@Z"
+    },
+    {
+      "address": "00cb2d90",
+      "length": 50,
+      "match": true,
+      "operands_checked": 4,
+      "symbol": "?SetSupportLevel@@YIXK@Z"
+    },
+    {
+      "address": "00cb2820",
+      "length": 50,
+      "match": true,
+      "operands_checked": 4,
+      "symbol": "?DrawCaret@@YIXKKK@Z"
+    }
+  ]
+}

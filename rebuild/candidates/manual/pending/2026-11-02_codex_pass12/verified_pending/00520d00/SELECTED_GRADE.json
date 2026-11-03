@@ -1,0 +1,20 @@
+{
+  "address": "00520d00",
+  "assigned_retail_size": 1338,
+  "attempt": 16,
+  "baseline": false,
+  "differing_instruction_lines": 0,
+  "flags": [],
+  "header_manifest": "history/00520d00/attempt_16/HEADER_MANIFEST.json",
+  "header_map_sha256": "bc0388c1545522efccd341e81e11b4b9129ced4bb95d644b3e59e316d2ff368f",
+  "leaf": "?LoadEntitiesFromScript@CThingManager@@QAEXABVCCharString@@JJABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@PAVCASuspendableProcess@@JAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@4@@Z",
+  "leaf_hits": [
+    "?LoadEntitiesFromScript@CThingManager@@QAEXABVCCharString@@JJABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@PAVCASuspendableProcess@@JAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@4@@Z"
+  ],
+  "object_size": 1338,
+  "retail_size": 1338,
+  "source_sha256": "150b9deda2c5cd3e7e282c59122ec27cd72107bc1e0b33816a4d14b0cabd1312",
+  "status": "RELOCATION_MATCH",
+  "strategy": "main independent final handoff rebuild: selected immutable headers, required source headings and complete byte/operand regression check",
+  "time": 1793675958.5245411
+}

@@ -1,0 +1,1019 @@
+{
+  "address": "00cf9610",
+  "count": 84,
+  "final_regression_note": "Final header/format rebuild preserves selected target bytes and every COFF relocation identity; accepted/held actual operands separately checked in final main review. Parked original review limitations remain unchanged.",
+  "grade_attempt": 3,
+  "operands": [
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "QuestFailed",
+      "offset": "0x16",
+      "retail_address": "0x012C6FCC",
+      "symbol": "??_C@_0M@DEFHBIFP@QuestFailed?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x21",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "QuestFinished",
+      "offset": "0x2f",
+      "retail_address": "0x012C6FBC",
+      "symbol": "??_C@_0O@ICDLCDOA@QuestFinished?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x3a",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "QuestSucceeded",
+      "offset": "0x48",
+      "retail_address": "0x012C6FAC",
+      "symbol": "??_C@_0P@IBHOOOML@QuestSucceeded?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x53",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "QuestOver",
+      "offset": "0x61",
+      "retail_address": "0x012C6FA0",
+      "symbol": "??_C@_09OCENPFLM@QuestOver?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x6c",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "AllBanditsDead",
+      "offset": "0x7a",
+      "retail_address": "0x012C6F90",
+      "symbol": "??_C@_0P@FJNEGDBL@AllBanditsDead?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x85",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "AllTradersDead",
+      "offset": "0x93",
+      "retail_address": "0x012C6F80",
+      "symbol": "??_C@_0P@EIJBPCDF@AllTradersDead?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x9e",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "AllGuardsDead",
+      "offset": "0xac",
+      "retail_address": "0x012C6F70",
+      "symbol": "??_C@_0O@BKNNHCLM@AllGuardsDead?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0xb7",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "HeroDead",
+      "offset": "0xc5",
+      "retail_address": "0x012C6F64",
+      "symbol": "??_C@_08IPONGOBA@HeroDead?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0xd0",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "SpyDead",
+      "offset": "0xde",
+      "retail_address": "0x012C6F5C",
+      "symbol": "??_C@_07GIDOKOJN@SpyDead?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0xe9",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "ContactDead",
+      "offset": "0xfb",
+      "retail_address": "0x012C6F50",
+      "symbol": "??_C@_0M@LNDJNHPC@ContactDead?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x102",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "ContactAttackedByHero",
+      "offset": "0x110",
+      "retail_address": "0x012C6F38",
+      "symbol": "??_C@_0BG@MKPIJFII@ContactAttackedByHero?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x11b",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "RegionInvalid",
+      "offset": "0x129",
+      "retail_address": "0x012C6F28",
+      "symbol": "??_C@_0O@JLPGIAFM@RegionInvalid?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x134",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "BanditIntroDone",
+      "offset": "0x142",
+      "retail_address": "0x012C6F18",
+      "symbol": "??_C@_0BA@PLOHBBBO@BanditIntroDone?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x14d",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "ConvoyTrigger2",
+      "offset": "0x15b",
+      "retail_address": "0x012C6F08",
+      "symbol": "??_C@_0P@IIAKBMPF@ConvoyTrigger2?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x166",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TraderEscaped",
+      "offset": "0x174",
+      "retail_address": "0x012C6EF8",
+      "symbol": "??_C@_0O@MCFHMIAJ@TraderEscaped?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x17f",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "NoEnemiesLeft",
+      "offset": "0x18d",
+      "retail_address": "0x012C6EE8",
+      "symbol": "??_C@_0O@LAALOBJP@NoEnemiesLeft?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x198",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "PhaseComplete",
+      "offset": "0x1a6",
+      "retail_address": "0x012C6ED8",
+      "symbol": "??_C@_0O@KKJJPABF@PhaseComplete?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x1b1",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "SentryAttackedByHero",
+      "offset": "0x1bf",
+      "retail_address": "0x012C6EC0",
+      "symbol": "??_C@_0BF@DEAFMDAD@SentryAttackedByHero?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x1ca",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "SpyFollowing",
+      "offset": "0x1d8",
+      "retail_address": "0x012C6EB0",
+      "symbol": "??_C@_0N@KCEJIHCE@SpyFollowing?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x1e3",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "SpyEscaped",
+      "offset": "0x1f5",
+      "retail_address": "0x012C6EA4",
+      "symbol": "??_C@_0L@GNBACHOC@SpyEscaped?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x1fc",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "SpyExited",
+      "offset": "0x20a",
+      "retail_address": "0x012C6E98",
+      "symbol": "??_C@_09MDFKLDEB@SpyExited?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x215",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "SpyHeroProximity",
+      "offset": "0x223",
+      "retail_address": "0x012C6E84",
+      "symbol": "??_C@_0BB@POMLDMBO@SpyHeroProximity?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x22e",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "SpyWanderReset",
+      "offset": "0x23c",
+      "retail_address": "0x012C6E74",
+      "symbol": "??_C@_0P@PIHDCNDN@SpyWanderReset?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x247",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "SpyContactMade",
+      "offset": "0x255",
+      "retail_address": "0x012C6E64",
+      "symbol": "??_C@_0P@MEHHFPJE@SpyContactMade?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x260",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "AnyTraderEscaped",
+      "offset": "0x26e",
+      "retail_address": "0x012C6E50",
+      "symbol": "??_C@_0BB@GJAOFICL@AnyTraderEscaped?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x279",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "RegionClear",
+      "offset": "0x287",
+      "retail_address": "0x012C6E44",
+      "symbol": "??_C@_0M@OJLKDFPM@RegionClear?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x292",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "QuestSuccessSpeechComplete",
+      "offset": "0x2a0",
+      "retail_address": "0x012C6E28",
+      "symbol": "??_C@_0BL@ELNHNCJI@QuestSuccessSpeechComplete?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x2ab",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "SpyFollowingHero",
+      "offset": "0x2b9",
+      "retail_address": "0x012C6E14",
+      "symbol": "??_C@_0BB@DCCNMAL@SpyFollowingHero?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x2c4",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "SpySeenBySentry",
+      "offset": "0x2d2",
+      "retail_address": "0x012C6E04",
+      "symbol": "??_C@_0BA@DIAEFMBE@SpySeenBySentry?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x2dd",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "SpyReachedNoEntryMarker",
+      "offset": "0x2ef",
+      "retail_address": "0x012C6DEC",
+      "symbol": "??_C@_0BI@KPDLKHDB@SpyReachedNoEntryMarker?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x2f6",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TraderAliveCount",
+      "offset": "0x304",
+      "retail_address": "0x012C6DD8",
+      "symbol": "??_C@_0BB@LKOJNHDC@TraderAliveCount?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x30f",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01895220",
+        "egor_pdb_names.tsv:0040d020"
+      ],
+      "retail_address": "0x00410BE0",
+      "symbol": "??$Transfer@J@CPersistContext@@QAEXPBDAAJABJ@Z",
+      "wrong_spellings_seen": [
+        "?Inner@CPersistContext@@QAEXPADPAJ1@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAAJABJ@Z",
+        "?Transfer_00410be0@CPersistContext@@QAEXPBDAAJABJ@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "GuardAliveCount",
+      "offset": "0x31d",
+      "retail_address": "0x012C6DC8",
+      "symbol": "??_C@_0BA@ENAPFCLG@GuardAliveCount?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x328",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01895220",
+        "egor_pdb_names.tsv:0040d020"
+      ],
+      "retail_address": "0x00410BE0",
+      "symbol": "??$Transfer@J@CPersistContext@@QAEXPBDAAJABJ@Z",
+      "wrong_spellings_seen": [
+        "?Inner@CPersistContext@@QAEXPADPAJ1@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAAJABJ@Z",
+        "?Transfer_00410be0@CPersistContext@@QAEXPBDAAJABJ@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "ActivatedPhase3",
+      "offset": "0x336",
+      "retail_address": "0x012C6DB8",
+      "symbol": "??_C@_0BA@PNLDGLOD@ActivatedPhase3?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x341",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "BanditContactKilledBeforeQuestEnd",
+      "offset": "0x34f",
+      "retail_address": "0x012C6D94",
+      "symbol": "??_C@_0CC@JNDCDMKD@BanditContactKilledBeforeQuestEn@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x35a",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "SpeechBanditCount",
+      "offset": "0x368",
+      "retail_address": "0x012C6D80",
+      "symbol": "??_C@_0BC@IHGAFOJP@SpeechBanditCount?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x373",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01895220",
+        "egor_pdb_names.tsv:0040d020"
+      ],
+      "retail_address": "0x00410BE0",
+      "symbol": "??$Transfer@J@CPersistContext@@QAEXPBDAAJABJ@Z",
+      "wrong_spellings_seen": [
+        "?Inner@CPersistContext@@QAEXPADPAJ1@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAAJABJ@Z",
+        "?Transfer_00410be0@CPersistContext@@QAEXPBDAAJABJ@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "SpeechSpyCount",
+      "offset": "0x381",
+      "retail_address": "0x012C6D70",
+      "symbol": "??_C@_0P@KMKGOMAN@SpeechSpyCount?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x38c",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01895220",
+        "egor_pdb_names.tsv:0040d020"
+      ],
+      "retail_address": "0x00410BE0",
+      "symbol": "??$Transfer@J@CPersistContext@@QAEXPBDAAJABJ@Z",
+      "wrong_spellings_seen": [
+        "?Inner@CPersistContext@@QAEXPADPAJ1@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAAJABJ@Z",
+        "?Transfer_00410be0@CPersistContext@@QAEXPBDAAJABJ@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "SpeechSpyProximityCount",
+      "offset": "0x39a",
+      "retail_address": "0x012C6D58",
+      "symbol": "??_C@_0BI@KBLLHIBA@SpeechSpyProximityCount?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x3a5",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01895220",
+        "egor_pdb_names.tsv:0040d020"
+      ],
+      "retail_address": "0x00410BE0",
+      "symbol": "??$Transfer@J@CPersistContext@@QAEXPBDAAJABJ@Z",
+      "wrong_spellings_seen": [
+        "?Inner@CPersistContext@@QAEXPADPAJ1@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAAJABJ@Z",
+        "?Transfer_00410be0@CPersistContext@@QAEXPBDAAJABJ@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "SpeechSpySentryCount",
+      "offset": "0x3b6",
+      "retail_address": "0x012C6D40",
+      "symbol": "??_C@_0BF@JJAFNCAC@SpeechSpySentryCount?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x3c1",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01895220",
+        "egor_pdb_names.tsv:0040d020"
+      ],
+      "retail_address": "0x00410BE0",
+      "symbol": "??$Transfer@J@CPersistContext@@QAEXPBDAAJABJ@Z",
+      "wrong_spellings_seen": [
+        "?Inner@CPersistContext@@QAEXPADPAJ1@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAAJABJ@Z",
+        "?Transfer_00410be0@CPersistContext@@QAEXPBDAAJABJ@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "HiredBanditCount",
+      "offset": "0x3d2",
+      "retail_address": "0x012C6D2C",
+      "symbol": "??_C@_0BB@JCOHMELM@HiredBanditCount?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x3dd",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01895220",
+        "egor_pdb_names.tsv:0040d020"
+      ],
+      "retail_address": "0x00410BE0",
+      "symbol": "??$Transfer@J@CPersistContext@@QAEXPBDAAJABJ@Z",
+      "wrong_spellings_seen": [
+        "?Inner@CPersistContext@@QAEXPADPAJ1@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAAJABJ@Z",
+        "?Transfer_00410be0@CPersistContext@@QAEXPBDAAJABJ@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "BanditAttackedByHero",
+      "offset": "0x3f2",
+      "retail_address": "0x012C6D14",
+      "symbol": "??_C@_0BF@CLOECKAO@BanditAttackedByHero?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x3f9",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "BanditAttackByHeroCount",
+      "offset": "0x40a",
+      "retail_address": "0x012C6CFC",
+      "symbol": "??_C@_0BI@LMCPJDPK@BanditAttackByHeroCount?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x415",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01895220",
+        "egor_pdb_names.tsv:0040d020"
+      ],
+      "retail_address": "0x00410BE0",
+      "symbol": "??$Transfer@J@CPersistContext@@QAEXPBDAAJABJ@Z",
+      "wrong_spellings_seen": [
+        "?Inner@CPersistContext@@QAEXPADPAJ1@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAAJABJ@Z",
+        "?Transfer_00410be0@CPersistContext@@QAEXPBDAAJABJ@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "BanditSwitchAllegienceComplete",
+      "offset": "0x426",
+      "retail_address": "0x012C6CDC",
+      "symbol": "??_C@_0BP@DMBLIKCC@BanditSwitchAllegienceComplete?$AA@"
+    },
+    {
+      "evidence": "Original PDB public Transfer<T>(const char*,T&,const T&) plus exact native receiver/reference arguments and width.",
+      "kind": 20,
+      "offset": "0x431",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:01874340",
+        "egor_pdb_names.tsv:00403d70"
+      ],
+      "retail_address": "0x004045C0",
+      "symbol": "??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+      "wrong_spellings_seen": [
+        "?Transfer@CPersistContext@@QAEXPBDAACABC@Z",
+        "?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z",
+        "?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z"
+      ]
+    }
+  ],
+  "selected_attempt": 6,
+  "source_sha256": "3fa09f46af49f76fb9397fd242bf1ad4a4279e676b26236c80239689c2bf0a46",
+  "status": "ALL_LEAF_RELOCATIONS_PROVEN"
+}

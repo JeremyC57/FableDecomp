@@ -1,0 +1,162 @@
+{
+  "address": "00ae2e20",
+  "all_internal_relocations_proven": true,
+  "all_named_relocations_proven": true,
+  "attempt": 10,
+  "final_regression_note": "Final header/format rebuild preserves selected target bytes and every COFF relocation identity; accepted/held actual operands separately checked in final main review. Parked original review limitations remain unchanged.",
+  "grade": "RELOCATION_MATCH",
+  "header_sha256": {
+    "engine/CArray.h": "bf954f2fe4a8b87bf24e40929a243bb7339a6a86aa03b6b940fda353b7f3a587",
+    "engine/CParticleDistanceConstraint.h": "e443b865c4ca4d8475778e88a65f6baed570f7ab222b737d64f14fb60ce13230",
+    "engine/CParticleProgram.h": "ee1ac6ed8882d279524bf39bf14a350ed2ed9822e293b6afc2d6df73ec8c9c0c",
+    "engine/CParticleSimulation.h": "1a6c59be3f2ec75fed347ddfc4edd99694b1403bb935263c8d58c9a8a7818de4",
+    "stlport46/particle_springs.h": "f336b760826b047d9bd8ce6766883e71b6983afd576dcd4e074a259a9401a40d"
+  },
+  "leaf": "?OptimiseSpringOrder@CParticleProgram@@QBEXAAV?$CArray@VCParticleDistanceConstraint@@@@@Z",
+  "object_size": 1293,
+  "relocations": [
+    {
+      "evidence": "Original class/argument types from both PDBs; native exact object offsets and calling arguments; original STLport4.6.2 template signatures and algorithm. CRT calls independently checked through the native PE import table.",
+      "kind": "DISP32",
+      "offset": 24,
+      "symbol": "??0?$CArray@V?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@@@QAE@I@Z",
+      "target": "00ae7880"
+    },
+    {
+      "evidence": "Original class/argument types from both PDBs; native exact object offsets and calling arguments; original STLport4.6.2 template signatures and algorithm. CRT calls independently checked through the native PE import table.",
+      "kind": "DISP32",
+      "offset": 75,
+      "symbol": "?insert_unique@?$_Rb_tree@KKU?$_Identity@K@std@@U?$less@K@2@V?$allocator@K@2@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@KU?$_Nonconst_traits@K@std@@@std@@_N@2@ABK@Z",
+      "target": "00514c10"
+    },
+    {
+      "evidence": "Original class/argument types from both PDBs; native exact object offsets and calling arguments; original STLport4.6.2 template signatures and algorithm. CRT calls independently checked through the native PE import table.",
+      "kind": "DISP32",
+      "offset": 98,
+      "symbol": "?insert_unique@?$_Rb_tree@KKU?$_Identity@K@std@@U?$less@K@2@V?$allocator@K@2@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@KU?$_Nonconst_traits@K@std@@@std@@_N@2@ABK@Z",
+      "target": "00514c10"
+    },
+    {
+      "evidence": "Original class/argument types from both PDBs; native exact object offsets and calling arguments; original STLport4.6.2 template signatures and algorithm. CRT calls independently checked through the native PE import table.",
+      "kind": "DISP32",
+      "offset": 143,
+      "symbol": "_malloc",
+      "target": "00bfea0e"
+    },
+    {
+      "evidence": "Original class/argument types from both PDBs; native exact object offsets and calling arguments; original STLport4.6.2 template signatures and algorithm. CRT calls independently checked through the native PE import table.",
+      "kind": "dir32",
+      "offset": 216,
+      "symbol": "?DELTA_NOTIONAL_ZERO@@3MB",
+      "target": "0129ba3c"
+    },
+    {
+      "evidence": "Original class/argument types from both PDBs; native exact object offsets and calling arguments; original STLport4.6.2 template signatures and algorithm. CRT calls independently checked through the native PE import table.",
+      "kind": "DISP32",
+      "offset": 279,
+      "symbol": "?_M_insert_overflow@?$vector@KV?$allocator@K@std@@@std@@IAEXPAKABKABU__true_type@2@I_N@Z",
+      "target": "00464ace"
+    },
+    {
+      "evidence": "Original class/argument types from both PDBs; native exact object offsets and calling arguments; original STLport4.6.2 template signatures and algorithm. CRT calls independently checked through the native PE import table.",
+      "kind": "DISP32",
+      "offset": 497,
+      "symbol": "_malloc",
+      "target": "00bfea0e"
+    },
+    {
+      "evidence": "Original class/argument types from both PDBs; native exact object offsets and calling arguments; original STLport4.6.2 template signatures and algorithm. CRT calls independently checked through the native PE import table.",
+      "kind": "DISP32",
+      "offset": 532,
+      "symbol": "_memmove",
+      "target": "00bfeae6"
+    },
+    {
+      "evidence": "Original class/argument types from both PDBs; native exact object offsets and calling arguments; original STLport4.6.2 template signatures and algorithm. CRT calls independently checked through the native PE import table.",
+      "kind": "DISP32",
+      "offset": 561,
+      "symbol": "_free",
+      "target": "00bfea14"
+    },
+    {
+      "evidence": "Original class/argument types from both PDBs; native exact object offsets and calling arguments; original STLport4.6.2 template signatures and algorithm. CRT calls independently checked through the native PE import table.",
+      "kind": "DISP32",
+      "offset": 708,
+      "symbol": "_free",
+      "target": "00bfea14"
+    },
+    {
+      "evidence": "Original class/argument types from both PDBs; native exact object offsets and calling arguments; original STLport4.6.2 template signatures and algorithm. CRT calls independently checked through the native PE import table.",
+      "kind": "DISP32",
+      "offset": 861,
+      "symbol": "_malloc",
+      "target": "00bfea0e"
+    },
+    {
+      "evidence": "Original class/argument types from both PDBs; native exact object offsets and calling arguments; original STLport4.6.2 template signatures and algorithm. CRT calls independently checked through the native PE import table.",
+      "kind": "DISP32",
+      "offset": 944,
+      "symbol": "_free",
+      "target": "00bfea14"
+    },
+    {
+      "evidence": "Original class/argument types from both PDBs; native exact object offsets and calling arguments; original STLport4.6.2 template signatures and algorithm. CRT calls independently checked through the native PE import table.",
+      "kind": "DISP32",
+      "offset": 1010,
+      "symbol": "??$sort@PAU?$pair@JK@std@@@std@@YIXPAU?$pair@JK@0@0@Z",
+      "target": "00ae7dc0"
+    },
+    {
+      "evidence": "Original class/argument types from both PDBs; native exact object offsets and calling arguments; original STLport4.6.2 template signatures and algorithm. CRT calls independently checked through the native PE import table.",
+      "kind": "DISP32",
+      "offset": 1032,
+      "symbol": "_malloc",
+      "target": "00bfea0e"
+    },
+    {
+      "evidence": "Original class/argument types from both PDBs; native exact object offsets and calling arguments; original STLport4.6.2 template signatures and algorithm. CRT calls independently checked through the native PE import table.",
+      "kind": "DISP32",
+      "offset": 1192,
+      "symbol": "_free",
+      "target": "00bfea14"
+    },
+    {
+      "evidence": "Original class/argument types from both PDBs; native exact object offsets and calling arguments; original STLport4.6.2 template signatures and algorithm. CRT calls independently checked through the native PE import table.",
+      "kind": "DISP32",
+      "offset": 1209,
+      "symbol": "_free",
+      "target": "00bfea14"
+    },
+    {
+      "evidence": "Original class/argument types from both PDBs; native exact object offsets and calling arguments; original STLport4.6.2 template signatures and algorithm. CRT calls independently checked through the native PE import table.",
+      "kind": "DISP32",
+      "offset": 1226,
+      "symbol": "_free",
+      "target": "00bfea14"
+    },
+    {
+      "evidence": "Original class/argument types from both PDBs; native exact object offsets and calling arguments; original STLport4.6.2 template signatures and algorithm. CRT calls independently checked through the native PE import table.",
+      "kind": "DISP32",
+      "offset": 1243,
+      "symbol": "_free",
+      "target": "00bfea14"
+    },
+    {
+      "evidence": "Original class/argument types from both PDBs; native exact object offsets and calling arguments; original STLport4.6.2 template signatures and algorithm. CRT calls independently checked through the native PE import table.",
+      "kind": "DISP32",
+      "offset": 1266,
+      "symbol": "??$__destroy_aux@PAV?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@@std@@YIXPAV?$set@KU?$less@K@std@@V?$allocator@K@2@@0@0ABU__false_type@0@@Z",
+      "target": "00ae76e0"
+    },
+    {
+      "evidence": "Original class/argument types from both PDBs; native exact object offsets and calling arguments; original STLport4.6.2 template signatures and algorithm. CRT calls independently checked through the native PE import table.",
+      "kind": "DISP32",
+      "offset": 1276,
+      "symbol": "_free",
+      "target": "00bfea14"
+    }
+  ],
+  "retail_size": 1293,
+  "selected_attempt": 14,
+  "source_sha256": "90fc772d3a2120fc854646d676ee048ef313eda41ba43cba60ad4c664ce59e75"
+}

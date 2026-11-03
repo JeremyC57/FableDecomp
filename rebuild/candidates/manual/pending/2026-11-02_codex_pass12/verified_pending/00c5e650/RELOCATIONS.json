@@ -1,0 +1,379 @@
+{
+  "address": "00c5e650",
+  "all_internal_relocations_proven": true,
+  "all_named_relocations_proven": true,
+  "attempt": 2,
+  "final_regression_note": "Final header/format rebuild preserves selected target bytes and every COFF relocation identity; accepted/held actual operands separately checked in final main review. Parked original review limitations remain unchanged.",
+  "grade": "RELOCATION_MATCH",
+  "leaf": "?CreateBuffer@CSalOutputKS@@UAE_NII@Z",
+  "object_size": 1144,
+  "relocations": [
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 7,
+      "symbol": "___security_cookie",
+      "target": "0139c8a8"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 15,
+      "symbol": "??_C@_0L@LPEMFJEL@ksuser?4dll?$AA@",
+      "target": "012b913c"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 30,
+      "symbol": "__imp__LoadLibraryA@4",
+      "target": "0143fe40"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 47,
+      "symbol": "??_C@_0M@KBNKOCM@KsCreatePin?$AA@",
+      "target": "012b9130"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 54,
+      "symbol": "__imp__GetProcAddress@8",
+      "target": "0143fe44"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 69,
+      "symbol": "__imp__FreeLibrary@4",
+      "target": "0143fe3c"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "DISP32",
+      "offset": 86,
+      "symbol": "@__security_check_cookie@4",
+      "target": "00bfe9f9"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 113,
+      "symbol": "__GUID_1a8766a0_62ce_11cf_a5d6_28db04c10000",
+      "target": "012b9120"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 122,
+      "symbol": "__GUID_1a8766a0_62ce_11cf_a5d6_28db04c10000",
+      "target": "012b9120"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 138,
+      "symbol": "__GUID_4747b320_62ce_11cf_a5d6_28db04c10000",
+      "target": "012b9110"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 147,
+      "symbol": "__GUID_73647561_0000_0010_8000_00aa00389b71",
+      "target": "012b9100"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 153,
+      "symbol": "__GUID_1a8766a0_62ce_11cf_a5d6_28db04c10000",
+      "target": "012b9120"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 159,
+      "symbol": "__GUID_1a8766a0_62ce_11cf_a5d6_28db04c10000",
+      "target": "012b9120"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 168,
+      "symbol": "__GUID_00000001_0000_0010_8000_00aa00389b71",
+      "target": "012b8dc0"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 180,
+      "symbol": "__GUID_05589f81_c356_11ce_bf01_00aa0055595a",
+      "target": "012b90f0"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 192,
+      "symbol": "__GUID_05589f81_c356_11ce_bf01_00aa0055595a",
+      "target": "012b90f0"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 204,
+      "symbol": "__GUID_05589f81_c356_11ce_bf01_00aa0055595a",
+      "target": "012b90f0"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 216,
+      "symbol": "__GUID_05589f81_c356_11ce_bf01_00aa0055595a",
+      "target": "012b90f0"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 253,
+      "symbol": "__GUID_4747b320_62ce_11cf_a5d6_28db04c10000",
+      "target": "012b9110"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 263,
+      "symbol": "__GUID_4747b320_62ce_11cf_a5d6_28db04c10000",
+      "target": "012b9110"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 273,
+      "symbol": "__GUID_4747b320_62ce_11cf_a5d6_28db04c10000",
+      "target": "012b9110"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 283,
+      "symbol": "__GUID_73647561_0000_0010_8000_00aa00389b71",
+      "target": "012b9100"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 293,
+      "symbol": "__GUID_73647561_0000_0010_8000_00aa00389b71",
+      "target": "012b9100"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 303,
+      "symbol": "__GUID_73647561_0000_0010_8000_00aa00389b71",
+      "target": "012b9100"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 317,
+      "symbol": "__GUID_00000001_0000_0010_8000_00aa00389b71",
+      "target": "012b8dc0"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 327,
+      "symbol": "__GUID_00000001_0000_0010_8000_00aa00389b71",
+      "target": "012b8dc0"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 337,
+      "symbol": "__GUID_00000001_0000_0010_8000_00aa00389b71",
+      "target": "012b8dc0"
+    },
+    {
+      "evidence": "Exact native jump-table base and all five case targets.",
+      "kind": "dir32",
+      "offset": 485,
+      "symbol": "$L1608",
+      "target": "00c5eab4"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 564,
+      "symbol": "__GUID_00000001_0000_0010_8000_00aa00389b71",
+      "target": "012b8dc0"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 665,
+      "symbol": "__imp__FreeLibrary@4",
+      "target": "0143fe3c"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "DISP32",
+      "offset": 690,
+      "symbol": "?Attach@CSalFile@@QAEXPAX@Z",
+      "target": "00c5e3f0"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 707,
+      "symbol": "__imp__CreateEventA@16",
+      "target": "0143fec4"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "DISP32",
+      "offset": 747,
+      "symbol": "_CodaMalloc",
+      "target": "00c3c360"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "DISP32",
+      "offset": 772,
+      "symbol": "_CodaMalloc",
+      "target": "00c3c360"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "DISP32",
+      "offset": 793,
+      "symbol": "_CodaFree",
+      "target": "00c3c370"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "DISP32",
+      "offset": 805,
+      "symbol": "?Close@CSalEvent@@QAEXXZ",
+      "target": "00c5e130"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "DISP32",
+      "offset": 814,
+      "symbol": "?Close@CSalFile@@QAEXXZ",
+      "target": "00c5e3d0"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "DISP32",
+      "offset": 862,
+      "symbol": "_CodaMalloc",
+      "target": "00c3c360"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "DISP32",
+      "offset": 881,
+      "symbol": "_CodaFree",
+      "target": "00c3c370"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "DISP32",
+      "offset": 890,
+      "symbol": "_CodaFree",
+      "target": "00c3c370"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 978,
+      "symbol": "__imp__CreateEventA@16",
+      "target": "0143fec4"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 1030,
+      "symbol": "?NotifyProc@CSalOutputKS@@CGKPAX@Z",
+      "target": "00c5e330"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "DISP32",
+      "offset": 1038,
+      "symbol": "?Create@CSalThread@@QAE_NP6GKPAX@Z0PAU_SECURITY_ATTRIBUTES@@II@Z",
+      "target": "00c5e180"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "dir32",
+      "offset": 1058,
+      "symbol": "__imp__SetThreadPriority@8",
+      "target": "0143fdd0"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "DISP32",
+      "offset": 1071,
+      "symbol": "?SetConnectionState@CSalKsPin@@QAE_NW4KSSTATE@@@Z",
+      "target": "00c5e0c0"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "DISP32",
+      "offset": 1088,
+      "symbol": "?SetConnectionState@CSalKsPin@@QAE_NW4KSSTATE@@@Z",
+      "target": "00c5e0c0"
+    },
+    {
+      "evidence": "Original GameCODA release COFF symbol/debug type plus native receiver/call ABI; IAT names from native PE import table; GUIDs verified by exact UUID contents.",
+      "kind": "DISP32",
+      "offset": 1109,
+      "symbol": "@__security_check_cookie@4",
+      "target": "00bfe9f9"
+    },
+    {
+      "evidence": "Exact native jump-table base and all five case targets.",
+      "kind": "dir32",
+      "offset": 1124,
+      "symbol": "$L1517",
+      "target": "00c5e839"
+    },
+    {
+      "evidence": "Exact native jump-table base and all five case targets.",
+      "kind": "dir32",
+      "offset": 1128,
+      "symbol": "$L1521",
+      "target": "00c5e86d"
+    },
+    {
+      "evidence": "Exact native jump-table base and all five case targets.",
+      "kind": "dir32",
+      "offset": 1132,
+      "symbol": "$L1518",
+      "target": "00c5e846"
+    },
+    {
+      "evidence": "Exact native jump-table base and all five case targets.",
+      "kind": "dir32",
+      "offset": 1136,
+      "symbol": "$L1519",
+      "target": "00c5e853"
+    },
+    {
+      "evidence": "Exact native jump-table base and all five case targets.",
+      "kind": "dir32",
+      "offset": 1140,
+      "symbol": "$L1520",
+      "target": "00c5e860"
+    }
+  ],
+  "retail_size": 1144,
+  "selected_attempt": 5,
+  "source_sha256": "185941e7227ae58917c7b8b28736d1866e9b8f3bcbd3ddcd7b7c4889059cea9a"
+}

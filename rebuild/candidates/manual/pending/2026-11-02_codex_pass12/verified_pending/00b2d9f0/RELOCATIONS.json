@@ -1,0 +1,200 @@
+{
+  "address": "00b2d9f0",
+  "attempt": 40,
+  "final_regression_note": "Final header/format rebuild preserves selected target bytes and every COFF relocation identity; accepted/held actual operands separately checked in final main review. Parked original review limitations remain unchanged.",
+  "leaf": "?UpdateDiskCache@CEngineSurfaceCompositionManager@@QAEXABV?$CArray@VCEngineTextureMorph@@@@_NMPBV?$set@JU?$less@J@std@@V?$allocator@J@2@@std@@@Z",
+  "object_size": 807,
+  "previous_ordered_evidence": "reviews/texture_cache_before_exact/row/RELOCATIONS.json",
+  "reconstruction_temporaries": [
+    "open_flags",
+    "filter_key"
+  ],
+  "relocations": [
+    {
+      "evidence": "Original PDB exact declaration/global cluster or real STLport4.6 signature plus native role, class offsets and independently decoded current operand.",
+      "kind": "DISP32",
+      "offset": 12,
+      "symbol": "?GFGetTime@@YINXZ",
+      "target": "009e1bc0"
+    },
+    {
+      "evidence": "Original PDB exact declaration/global cluster or real STLport4.6 signature plus native role, class offsets and independently decoded current operand.",
+      "kind": "dir32",
+      "offset": 24,
+      "symbol": "?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A",
+      "target": "01436e98"
+    },
+    {
+      "evidence": "Original PDB exact declaration/global cluster or real STLport4.6 signature plus native role, class offsets and independently decoded current operand.",
+      "kind": "DISP32",
+      "offset": 73,
+      "symbol": "?SetReduceSizeFrameDelay@CGraphicDataBank@@QAEXK@Z",
+      "target": "009fd100"
+    },
+    {
+      "evidence": "Original PDB exact declaration/global cluster or real STLport4.6 signature plus native role, class offsets and independently decoded current operand.",
+      "kind": "DISP32",
+      "offset": 82,
+      "symbol": "?SetUnloadFrameDelay@CGraphicDataBank@@QAEXK@Z",
+      "target": "009fd0f0"
+    },
+    {
+      "evidence": "Original PDB exact declaration/global cluster or real STLport4.6 signature plus native role, class offsets and independently decoded current operand.",
+      "kind": "dir32",
+      "offset": 88,
+      "symbol": "?GPEngine@NEngineInternal@@3PAVCEngine@@A",
+      "target": "01436ea4"
+    },
+    {
+      "evidence": "Original PDB exact declaration/global cluster or real STLport4.6 signature plus native role, class offsets and independently decoded current operand.",
+      "kind": "DISP32",
+      "offset": 151,
+      "symbol": "?BeginUpdateEntries@CBankFile@@QAEXXZ",
+      "target": "009ce8d0"
+    },
+    {
+      "evidence": "Original PDB exact declaration/global cluster or real STLport4.6 signature plus native role, class offsets and independently decoded current operand.",
+      "kind": "DISP32",
+      "offset": 213,
+      "symbol": "??0CResource@@QAE@XZ",
+      "target": "009fbec0"
+    },
+    {
+      "evidence": "Original PDB exact declaration/global cluster or real STLport4.6 signature plus native role, class offsets and independently decoded current operand.",
+      "kind": "dir32",
+      "offset": 228,
+      "symbol": "??_7CCompositeSurfaceCache@@6B@",
+      "target": "012a116c"
+    },
+    {
+      "evidence": "Original PDB exact declaration/global cluster or real STLport4.6 signature plus native role, class offsets and independently decoded current operand.",
+      "kind": "DISP32",
+      "offset": 284,
+      "symbol": "??0CBaseClass@@QAE@XZ",
+      "target": "0099a2d0"
+    },
+    {
+      "evidence": "Original PDB exact declaration/global cluster or real STLport4.6 signature plus native role, class offsets and independently decoded current operand.",
+      "kind": "dir32",
+      "offset": 302,
+      "symbol": "??_7CManagedTexture@@6B@",
+      "target": "0129c880"
+    },
+    {
+      "evidence": "Original PDB exact declaration/global cluster or real STLport4.6 signature plus native role, class offsets and independently decoded current operand.",
+      "kind": "DISP32",
+      "offset": 349,
+      "symbol": "??4?$vector@VCCompositeBlendDesc@@V?$allocator@VCCompositeBlendDesc@@@std@@@std@@QAEAAV01@ABV01@@Z",
+      "target": "006cade0"
+    },
+    {
+      "evidence": "Original PDB exact declaration/global cluster or real STLport4.6 signature plus native role, class offsets and independently decoded current operand.",
+      "kind": "DISP32",
+      "offset": 383,
+      "symbol": "?find@?$_Rb_tree@JJU?$_Identity@J@std@@U?$less@J@2@V?$allocator@J@2@@std@@QBE?AU?$_Rb_tree_iterator@JU?$_Const_traits@J@std@@@2@ABJ@Z",
+      "target": "00b2eb20"
+    },
+    {
+      "evidence": "Original PDB exact declaration/global cluster or real STLport4.6 signature plus native role, class offsets and independently decoded current operand.",
+      "kind": "dir32",
+      "offset": 436,
+      "symbol": "?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A",
+      "target": "01436e98"
+    },
+    {
+      "evidence": "Original PDB exact declaration/global cluster or real STLport4.6 signature plus native role, class offsets and independently decoded current operand.",
+      "kind": "DISP32",
+      "offset": 510,
+      "symbol": "?GetEntryDataType@CBankFile@@QBEKK@Z",
+      "target": "009cc210"
+    },
+    {
+      "evidence": "Original PDB exact declaration/global cluster or real STLport4.6 signature plus native role, class offsets and independently decoded current operand.",
+      "kind": "DISP32",
+      "offset": 530,
+      "symbol": "?UpdateDiskCacheTexture@CEngineSurfaceCompositionManager@@AAE_NAAVCCompositeSurfaceCache@@K_N@Z",
+      "target": "00b2d330"
+    },
+    {
+      "evidence": "Original PDB exact declaration/global cluster or real STLport4.6 signature plus native role, class offsets and independently decoded current operand.",
+      "kind": "DISP32",
+      "offset": 555,
+      "symbol": "?GFGetTime@@YINXZ",
+      "target": "009e1bc0"
+    },
+    {
+      "evidence": "Original PDB exact declaration/global cluster or real STLport4.6 signature plus native role, class offsets and independently decoded current operand.",
+      "kind": "DISP32",
+      "offset": 611,
+      "symbol": "??1CCompositeSurfaceCache@@UAE@XZ",
+      "target": "00b2b910"
+    },
+    {
+      "evidence": "Original PDB exact declaration/global cluster or real STLport4.6 signature plus native role, class offsets and independently decoded current operand.",
+      "kind": "DISP32",
+      "offset": 628,
+      "symbol": "?EndUpdateEntries@CBankFile@@QAEXXZ",
+      "target": "009cea70"
+    },
+    {
+      "evidence": "Original PDB exact declaration/global cluster or real STLport4.6 signature plus native role, class offsets and independently decoded current operand.",
+      "kind": "dir32",
+      "offset": 642,
+      "symbol": "?GPEngine@NEngineInternal@@3PAVCEngine@@A",
+      "target": "01436ea4"
+    },
+    {
+      "evidence": "Original PDB exact declaration/global cluster or real STLport4.6 signature plus native role, class offsets and independently decoded current operand.",
+      "kind": "DISP32",
+      "offset": 662,
+      "symbol": "?SetReduceSizeFrameDelay@CGraphicDataBank@@QAEXK@Z",
+      "target": "009fd100"
+    },
+    {
+      "evidence": "Original PDB exact declaration/global cluster or real STLport4.6 signature plus native role, class offsets and independently decoded current operand.",
+      "kind": "DISP32",
+      "offset": 674,
+      "symbol": "?SetUnloadFrameDelay@CGraphicDataBank@@QAEXK@Z",
+      "target": "009fd0f0"
+    },
+    {
+      "evidence": "Original PDB exact declaration/global cluster or real STLport4.6 signature plus native role, class offsets and independently decoded current operand.",
+      "kind": "DISP32",
+      "offset": 686,
+      "symbol": "?GFGetTime@@YINXZ",
+      "target": "009e1bc0"
+    },
+    {
+      "evidence": "Original PDB exact declaration/global cluster or real STLport4.6 signature plus native role, class offsets and independently decoded current operand.",
+      "kind": "DISP32",
+      "offset": 709,
+      "symbol": "?CopyIntermediateBank@CEngineSurfaceCompositionManager@@AAEXXZ",
+      "target": "00b2c8e0"
+    },
+    {
+      "evidence": "Original PDB exact declaration/global cluster or real STLport4.6 signature plus native role, class offsets and independently decoded current operand.",
+      "kind": "DISP32",
+      "offset": 722,
+      "symbol": "?PreloadCompletedBank@CEngineSurfaceCompositionManager@@AAEXXZ",
+      "target": "00b2c010"
+    },
+    {
+      "evidence": "Original PDB exact declaration/global cluster or real STLport4.6 signature plus native role, class offsets and independently decoded current operand.",
+      "kind": "DISP32",
+      "offset": 745,
+      "symbol": "??1CCompositeSurfaceCache@@UAE@XZ",
+      "target": "00b2b910"
+    }
+  ],
+  "retail_size": 807,
+  "selected_attempt": 41,
+  "source_sha256": "e7f501c482efcaf5845144b5f1f8039343e7c50fb67da6daba55f3d67ccc6846",
+  "status": "MAIN_OPERANDS_REVIEWED_IDENTITY_CROSSCHECK_PENDING",
+  "supporting_find_helper": {
+    "bytes": 71,
+    "exact": true,
+    "native_address": "00b2eb20",
+    "relocations": 0,
+    "symbol": "?find@?$_Rb_tree@JJU?$_Identity@J@std@@U?$less@J@2@V?$allocator@J@2@@std@@QBE?AU?$_Rb_tree_iterator@JU?$_Const_traits@J@std@@@2@ABJ@Z"
+  }
+}

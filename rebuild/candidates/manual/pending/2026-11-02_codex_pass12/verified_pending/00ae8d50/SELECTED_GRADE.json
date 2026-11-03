@@ -1,0 +1,22 @@
+{
+  "address": "00ae8d50",
+  "assigned_retail_size": 828,
+  "attempt": 7,
+  "baseline": false,
+  "differing_instruction_lines": 0,
+  "flags": [
+    "/Gr"
+  ],
+  "header_manifest": "history/00ae8d50/attempt_07/HEADER_MANIFEST.json",
+  "header_map_sha256": "f41fa225036b1aac081ccb77bcd6024febb5e9c651f4ccdcd61be6f3ad929163",
+  "leaf": "?Load@CParticleEmitterDatabase@NParticleEngine@@IAEXAAVCAFile@@ABVCEmitterDatabaseSerialiseInfo@2@@Z",
+  "leaf_hits": [
+    "?Load@CParticleEmitterDatabase@NParticleEngine@@IAEXAAVCAFile@@ABVCEmitterDatabaseSerialiseInfo@2@@Z"
+  ],
+  "object_size": 828,
+  "retail_size": 828,
+  "source_sha256": "996fd3cc65262ca09d0a0b078de0786b2f1c3608ffb14142af117d07dbc1f825",
+  "status": "RELOCATION_MATCH",
+  "strategy": "main independent final handoff rebuild: selected immutable headers, required source headings and complete byte/operand regression check",
+  "time": 1793675931.1641104
+}

@@ -1,0 +1,11 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00cb26b0	?SendControlKeys@@YIXII@Z	Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.	?SendControlKeys@@YAXII@Z
+0x0143cd50	_g_uCandPageSize	Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.	?g_uCandPageSize@@3IA
+0x0143cf08	?ImeUiCallback_Free@@3P6IXPAX@ZA	Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.	?g_ImeFree@@3P6IXPAX@ZA
+0x0143cf0c	?g_hwndCurr@@3PAUHWND__@@A	Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.	_g_hwndCurr
+0x0143cf10	?g_szCompositionString@@3PAGA	Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.	?g_flagWord@@3GA
+0x0143e618	_g_dwSelection	Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.	?g_dwSelection@@3KA
+0x0143e688	_g_dwCount	Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.	?g_dwCount@@3KA
+0x0143e8ae	?g_bInitialized@@3_NA	Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.	?g_cursorEnabled@@3EA | ?g_flagByte@@3EA | ?g_pairEnabled_0143e8ae@@3_NA
+0x0143e8af	_g_bCandList	Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.	?g_bCandList@@3_NA
+0x0143e8b8	?g_hklCurrent@@3PAUHKL__@@A	Original SDK declaration plus native argument/field/data evidence and matched SDK neighbours; PDB function/local names; imports independently verified in native PE IAT.	_g_hklCurrent

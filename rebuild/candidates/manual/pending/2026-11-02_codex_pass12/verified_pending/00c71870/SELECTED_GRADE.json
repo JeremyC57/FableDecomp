@@ -1,0 +1,20 @@
+{
+  "address": "00c71870",
+  "assigned_retail_size": 1115,
+  "attempt": 3,
+  "baseline": false,
+  "differing_instruction_lines": 0,
+  "flags": [],
+  "header_manifest": "history/00c71870/attempt_03/HEADER_MANIFEST.json",
+  "header_map_sha256": "5e19c50e8ea96531a5a5f7e7bf4ab05566cc918064454b73d61700cc039b9384",
+  "leaf": "?Update@CSalOpenALReverb@@UAEXPBVCCodaEnvironment@@@Z",
+  "leaf_hits": [
+    "?Update@CSalOpenALReverb@@UAEXPBVCCodaEnvironment@@@Z"
+  ],
+  "object_size": 1115,
+  "retail_size": 1115,
+  "source_sha256": "ba9d26fa4a01ff43082637bc8498e04e269c47a5b026d2671a93ad4f266decfa",
+  "status": "RELOCATION_MATCH",
+  "strategy": "main independent final handoff rebuild: selected immutable headers, required source headings and complete byte/operand regression check",
+  "time": 1793676595.753223
+}

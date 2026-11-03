@@ -1,0 +1,795 @@
+#ifdef FABLE_RETAIL_GFMAIN
+#ifdef FABLE_RETAIL_CWORLD
+#ifndef FABLE_ENGINE_CWORLD_H
+#define FABLE_ENGINE_CWORLD_H
+#include "engine/CBaseClassNonCopyable.h"
+class CThingSearchTools; class CProceduralTexture; class CIDrawEnvironment; class CIDrawWorldMap;
+#if defined(FABLE_RETAIL_CTHINGMANAGER_BINARY) || defined(FABLE_RETAIL_HIT_EFFECT)
+class CThingManager; class CAFile; class CCamera; class CInterpolationInfo; class CWorldInit;
+class CDisplayEngine; class C3DVector; class CEnginePrimitivePrepareInfo;
+#endif
+// Ego_r CIDrawWorld TPI: three pure const queries and virtual destructor.
+class CIDrawWorld {
+public:
+    virtual const CProceduralTexture* DrawGetProceduralTexture() const=0;
+    virtual const CIDrawEnvironment* DrawGetEnvironment() const=0;
+    virtual const CIDrawWorldMap* DrawGetWorldMap() const=0;
+    virtual ~CIDrawWorld();
+};
+#ifdef FABLE_RETAIL_GFMAIN
+#include "boost/scoped_ptr.h"
+#else
+namespace boost {
+template<class T> class scoped_ptr {
+private:
+    T* ptr;
+public:
+    T* get() const { return ptr; }
+    T& operator*() const { return *ptr; }
+};
+}
+#endif
+class CWorldInit;class CAIGameCameraBase;class CMainGameComponent; class CPlayerManager; class CGameDefinitionManager;
+class CWorldMap; class CEnvironment; class CGameTimeManager;
+// Retail CWorld base chain from RTTI; original PDB first members. Remainder
+// is kept opaque at its complete retail size, not shortened for this caller.
+class CWorld : public CBaseClassNonCopyable, public CIDrawWorld {
+protected:
+    CMainGameComponent& Component;
+    CPlayerManager& PlayerManager;
+    const CGameDefinitionManager& DefinitionManager;
+    boost::scoped_ptr<CWorldMap> PWorldMap;
+    boost::scoped_ptr<CEnvironment> PEnvironment;
+    boost::scoped_ptr<CGameTimeManager> PGameTimeManager;
+    boost::scoped_ptr<CThingSearchTools> PThingSearchTools;
+#ifdef FABLE_RETAIL_CTHINGMANAGER_BINARY
+    unsigned char _pad_0x24[0x6c]; // PAtmosProcessor through FrameStarted3DRendering.
+    double LastUpdateTimeLength;
+    double LastUpdateTime;
+#ifdef FABLE_RETAIL_CTHINGMANAGER_SAVE
+    unsigned char _pad_0xa0[0x62];
+    bool SerialisingHeroState; // native+102, donor+10e
+    unsigned char _pad_0x103[0x95];
+#else
+    unsigned char _pad_0xa0[0xf8]; // CountdownTimer through the original tail.
+#endif
+#else
+#ifdef FABLE_RETAIL_INVENTORY_MAP_SERIALISE
+    unsigned char _pad_0x24[0xde];
+    bool SerialisingHeroState;
+    unsigned char _pad_0x103[0x95];
+#else
+#ifdef FABLE_RETAIL_TARGET_RANDOM_WALK
+    unsigned char PAtmosProcessor[8];
+    boost::scoped_ptr<CAIGameCameraBase> PGameCamera,PGameCameraManager;CAIGameCameraBase* PCurrentGameCamera;
+    unsigned char _pad_0x38[0x160];
+#else
+    unsigned char _pad_0x24[0x174];
+#endif
+#endif
+#endif
+public:
+#if defined(FABLE_RETAIL_CTHING_CONSTRUCTORS) && defined(FABLE_RETAIL_FACTIONS)
+    CWorld(const CWorldInit&);
+    virtual ~CWorld();
+    virtual const CProceduralTexture* DrawGetProceduralTexture()const;
+    virtual const CIDrawEnvironment* DrawGetEnvironment()const;
+    virtual const CIDrawWorldMap* DrawGetWorldMap()const;
+#endif
+#if defined(FABLE_RETAIL_CTHING_CONSTRUCTORS) && defined(FABLE_RETAIL_TARGET_RANDOM_WALK) && !defined(FABLE_RETAIL_CTHINGMANAGER_BINARY)
+    CWorld(const CWorldInit&);
+    virtual ~CWorld();
+    virtual const CProceduralTexture* DrawGetProceduralTexture() const;
+    virtual const CIDrawEnvironment* DrawGetEnvironment() const;
+    virtual const CIDrawWorldMap* DrawGetWorldMap() const;
+#endif
+#if defined(FABLE_RETAIL_CTHINGMANAGER_BINARY) || defined(FABLE_RETAIL_HIT_EFFECT)
+    CWorld(const CWorldInit&);
+    virtual ~CWorld();
+    virtual const CProceduralTexture* DrawGetProceduralTexture() const;
+    virtual const CIDrawEnvironment* DrawGetEnvironment() const;
+    virtual const CIDrawWorldMap* DrawGetWorldMap() const;
+protected:
+    virtual void PostLoadInit();
+public:
+    virtual void LoadWorldFromFile(CAFile&,long);
+    virtual CThingManager& GetThingManager();
+    virtual const CThingManager& PeekThingManager() const;
+    virtual CCamera GetCurrentRenderCamera() const;
+    virtual CCamera GetCurrentRenderCamera(const CInterpolationInfo&) const;
+    virtual void PostInit(CDisplayEngine&);
+    virtual C3DVector GetGameLODCentre() const;
+    virtual void Init();
+    virtual void Uninitialise();
+    virtual void PreparePrimitivesForEngine(const CEnginePrimitivePrepareInfo&);
+    virtual CWorldMap& GetWorldMap();
+    virtual const CWorldMap& PeekWorldMap() const;
+#endif
+#if defined(FABLE_RETAIL_CAMERA_DRAW) || defined(FABLE_RETAIL_HERO_SERIALISE)
+    static long __fastcall GetFrame();
+#endif
+#if defined(FABLE_RETAIL_CTHINGMANAGER_SAVE) || defined(FABLE_RETAIL_INVENTORY_MAP_SERIALISE)
+    bool IsSerialisingHeroState() const { return SerialisingHeroState; }
+#endif
+#ifdef FABLE_RETAIL_TARGET_RANDOM_WALK
+    const CAIGameCameraBase* PeekGameCamera() const { return PCurrentGameCamera; }
+    unsigned long* GetWorldSeed() const;
+#endif
+#ifdef FABLE_RETAIL_FACTIONS
+    const CGameDefinitionManager& PeekDefinitionManager()const{return DefinitionManager;}
+#endif
+#if defined(FABLE_RETAIL_INVENTORY_MAP_SERIALISE) || defined(FABLE_RETAIL_NAVIGATION_UPDATE) || defined(FABLE_RETAIL_SHOP_PLACES)
+    const CThingSearchTools& PeekThingSearchTools() const { return *PThingSearchTools; }
+#endif
+    CThingSearchTools& GetThingSearchTools() { return *PThingSearchTools; }
+};
+FABLE_STATIC_ASSERT(sizeof(CWorld)==0x198);
+#endif
+#else
+#ifndef FABLE_ENGINE_CWORLD_H
+#define FABLE_ENGINE_CWORLD_H
+// GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
+// Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CWorld = 0x1b8.
+// Container layout: retail STLport 4.6 (list 4, vector/map/set/string/CArray 0xc, deque 0x28, CVectorMap 0x10, bases from Fable.exe RTTI): sizeof CWorld = 0x198.
+// Retail evidence: 3 trusted landed function(s); reconciliation clean.
+// Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
+// `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#include <stddef.h>
+#include "rebuild_abi.h"
+
+class C3DAnimationManager;
+class CAIGameCameraBase;
+class CAtmosProcess;
+class CBulletTimeManager;
+class CCPPointerInfo;
+class CCharStringData;
+class CCombatManager;
+class CEnvironment;
+class CFactionManager;
+class CGameDefinitionManager;
+class CGameScriptInterface;
+class CGameTimeManager;
+class CMainGameComponent;
+class CMeshDataBank;
+class CMessageEventManager;
+class CMusicManager;
+class CNavigatorManager;
+class COpinionReactionManager;
+class CPlayerManager;
+class CScriptConversationManager;
+class CScriptInfoManager;
+class CThingManager;
+class CThingSearchTools;
+class CWideStringData;
+class CWorldMap;
+
+#pragma pack(push, 1)
+class CWorld {
+public:
+    void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char               _base_0x04[0x4];             // +0x04 flattened base-class subobject(s)
+    CMainGameComponent*         Component;                   // +0x08
+    CPlayerManager*             PlayerManager;               // +0x0c
+    CGameDefinitionManager*     DefinitionManager;           // +0x10
+    CWorldMap*                  PWorldMap_ptr;               // +0x14 scoped_ptr<CWorldMap>::ptr
+    CEnvironment*               PEnvironment_ptr;            // +0x18 scoped_ptr<CEnvironment>::ptr
+    CGameTimeManager*           PGameTimeManager_ptr;        // +0x1c scoped_ptr<CGameTimeManager>::ptr
+    CThingSearchTools*          PThingSearchTools_ptr;       // +0x20 scoped_ptr<CThingSearchTools>::ptr
+    CAtmosProcess*              PAtmosProcessor_Data;        // +0x24 CCountedPointer<CAtmosProcess>::Data
+    CCPPointerInfo*             PAtmosProcessor_Info;        // +0x28 CCountedPointer<CAtmosProcess>::Info
+    CAIGameCameraBase*          PGameCamera_ptr;             // +0x2c scoped_ptr<CAIGameCameraBase>::ptr
+    CAIGameCameraBase*          PGameCameraManager_ptr;      // +0x30 scoped_ptr<CAIGameCameraBase>::ptr
+    CAIGameCameraBase*          PCurrentGameCamera;          // +0x34
+    CGameScriptInterface*       PGameScriptInterface_ptr;    // +0x38 scoped_ptr<CGameScriptInterface>::ptr
+    CMeshDataBank*              PMainMeshBank_Data;          // +0x3c CCountedPointer<CMeshDataBank>::Data
+    CCPPointerInfo*             PMainMeshBank_Info;          // +0x40 CCountedPointer<CMeshDataBank>::Info
+    C3DAnimationManager*        PAnimationManager;           // +0x44
+    CNavigatorManager*          PNavigationManager_ptr;      // +0x48 scoped_ptr<CNavigatorManager>::ptr
+    CCombatManager*             PThingCombatManager_ptr;     // +0x4c scoped_ptr<CCombatManager>::ptr
+    CThingManager*              PThingManager_ptr;           // +0x50 scoped_ptr<CThingManager>::ptr
+    CFactionManager*            PFactionManager_ptr;         // +0x54 scoped_ptr<CFactionManager>::ptr
+    CScriptInfoManager*         PScriptInfoManager_Data;     // +0x58 CCountedPointer<CScriptInfoManager>::Data
+    CCPPointerInfo*             PScriptInfoManager_Info;     // +0x5c CCountedPointer<CScriptInfoManager>::Info
+    CMessageEventManager*       PMessageEventManager_Data;   // +0x60 CCountedPointer<CMessageEventManager>::Data
+    CCPPointerInfo*             PMessageEventManager_Info;   // +0x64 CCountedPointer<CMessageEventManager>::Info
+    CBulletTimeManager*         PBulletTimeManager_ptr;      // +0x68 scoped_ptr<CBulletTimeManager>::ptr
+    CMusicManager*              PMusicManager_Data;          // +0x6c CCountedPointer<CMusicManager>::Data
+    CCPPointerInfo*             PMusicManager_Info;          // +0x70 CCountedPointer<CMusicManager>::Info
+    COpinionReactionManager*    POpinionReactionManager_Data; // +0x74 CCountedPointer<COpinionReactionManager>::Data
+    CCPPointerInfo*             POpinionReactionManager_Info; // +0x78 CCountedPointer<COpinionReactionManager>::Info
+    CScriptConversationManager* PScriptConversationManager_ptr; // +0x7c scoped_ptr<CScriptConversationManager>::ptr
+    bool                        JustLoaded;                  // +0x80
+    unsigned char               _pad_0x81[0x3];              // +0x81
+    CCharStringData*            CurrentWorldName_PStringData; // +0x84 CCharString::PStringData
+    long                        ConsolePauseAtFrameNumber;   // +0x88
+    long                        FrameStarted3DRendering;     // +0x8c
+    double                      LastUpdateTimeLength;        // +0x90
+    double                      LastUpdateTime;              // +0x98
+    long                        CountdownTimer;              // +0xa0
+    bool                        Paused;                      // +0xa4
+    bool                        SlowMotion;                  // +0xa5
+    bool                        ShowDebugText;               // +0xa6
+    bool                        ShowFPSText;                 // +0xa7
+    bool                        ShowProfileText;             // +0xa8
+    unsigned char               _pad_0xa9[0x3];              // +0xa9
+    unsigned char               InitialActiveQuests[0xc];    // +0xac CArray<CCharString>
+    unsigned char               RegisteredQuests[0xc];       // +0xb8 vector<CCharString,std::allocator<CCharString>_>
+    unsigned char               ActiveTestQuests[0xc];       // +0xc4 vector<CTestQuest,std::allocator<CTestQuest>_>
+    unsigned long               CreatureGenerationDisabledGroups; // +0xd0
+    bool                        CreatureGenerationEnabled;   // +0xd4
+    bool                        TeleportingEnabled;          // +0xd5
+    bool                        ExperienceSpendingEnabled;   // +0xd6
+    bool                        SavingEnabled;               // +0xd7
+    bool                        DontPopulateNextLoadedRegion; // +0xd8
+    bool                        HeroSleepingEnabled;         // +0xd9
+    bool                        MapTableShowQuestCardsOnUsed; // +0xda
+    bool                        ScreenToFadeInOnNextRegionChange; // +0xdb
+    bool                        DoneExtraFrameUpdateBeforeRegionLoadScreenFadeIn; // +0xdc
+    bool                        MiniMapEnabled;              // +0xdd
+    bool                        MiniMapActiveBeforeDisabled; // +0xde
+    bool                        RegionLoadDisplayRegionName; // +0xdf
+    bool                        GuildMasterMessagesEnabled;  // +0xe0
+    bool                        SummonerDeathExplosionAffectsHero; // +0xe1
+    bool                        WaitingForInventoryTutorialToFinish; // +0xe2
+    unsigned char               _pad_0xe3[0x1];              // +0xe3
+    unsigned char               HeroInformationScreenModeAfterTutorial[0x4]; // +0xe4 EPlayerMode
+    long                        FrameCachedLODCentre;        // +0xe8
+    float                       CachedLODCentre_X;           // +0xec C3DVector::X
+    float                       CachedLODCentre_Y;           // +0xf0 C3DVector::Y
+    float                       CachedLODCentre_Z;           // +0xf4 C3DVector::Z
+    unsigned char               SaveGameLoadStatus[0x4];     // +0xf8 ESaveGameLoadStatus
+    CWideStringData*            SaveGamePathName_PStringData; // +0xfc CWideString::PStringData
+    bool                        AutoSaveLocked;              // +0x100
+    bool                        SerialisingAboutToLoadHeroState; // +0x101
+    bool                        SerialisingHeroState;        // +0x102
+    bool                        SerialisingNonPersistentQuestItems; // +0x103
+    unsigned char               RegionLoadStatus[0x4];       // +0x104 ERegionLoadStatus
+    float                       RegionLoadStartPos_X;        // +0x108 C3DVector::X
+    float                       RegionLoadStartPos_Y;        // +0x10c C3DVector::Y
+    float                       RegionLoadStartPos_Z;        // +0x110 C3DVector::Z
+    float                       RegionLoadStartAngleXY;      // +0x114
+    unsigned char               RegionLoadFollowers[0xc];    // +0x118 vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+    long                        PreviousRegion;              // +0x124
+    long                        NumberOfTimesFreezeControlsModeAddedDuringRegionLoad; // +0x128
+    bool                        RegionLoadViaTeleporter;     // +0x12c
+    bool                        RegionLoadViaDoor;           // +0x12d
+    bool                        PutIntoPauseModeOnRegionChange; // +0x12e
+    bool                        DisplayMiniMapOnRegionLoad;  // +0x12f
+    bool                        RegionLoadWaitingForConfirmation; // +0x130
+    bool                        RegionLoadScreenFullyFaded;  // +0x131
+    bool                        RegionLoadScreenWasFadedOut; // +0x132
+    bool                        WaitingForResetToFrontEndConfirmation; // +0x133
+    unsigned char               MostRecentSaveType[0x4];     // +0x134 ESaveType
+    unsigned char               MostRecentSaveTypeBeforeManualSave[0x4]; // +0x138 ESaveType
+    CWideStringData*            MostRecentManualSaveName_PStringData; // +0x13c CWideString::PStringData
+    bool                        AutoSaveCheckPointExists;    // +0x140
+    unsigned char               SaveGameMarkerPos[0xf];      // +0x141 C3DVector
+    float                       SaveGameMarkerAngleXY;       // +0x150
+    float                       GuildSealRecallPos_X;        // +0x154 C3DVector::X
+    float                       GuildSealRecallPos_Y;        // +0x158 C3DVector::Y
+    float                       GuildSealRecallPos_Z;        // +0x15c C3DVector::Z
+    float                       GuildSealRecallAngleXY;      // +0x160
+    bool                        WeatherMaskingPrimitivesSent; // +0x164
+    unsigned char               _pad_0x165[0x3];             // +0x165
+    unsigned char               WeatherMaskingPrimitiveHandles[0xc];  // +0x168 vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
+    unsigned char               AtmosBanksWaitingToCopy[0x4]; // +0x174 list<CAtmosCopyInfo,std::allocator<CAtmosCopyInfo>_>
+    unsigned char               PlayerSpawnStatus[0x4];      // +0x178 EPlayerSpawnStatus
+    long                        VillagerReactionDebug;       // +0x17c
+    double                      StartTime;                   // +0x180
+    double                      TimePlayed;                  // +0x188
+    bool                        HasInitialisedStartTime;     // +0x190
+    unsigned char               _pad_0x191[0x7];             // +0x191
+    static long __fastcall GetFrame();                       // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
+    unsigned long* GetWorldSeed() const;                     // 0x0049D810 ?GetWorldSeed@CWorld@@QBEPAKXZ
+};
+#pragma pack(pop)
+
+FABLE_STATIC_ASSERT(sizeof(CWorld) == 0x198);
+FABLE_STATIC_ASSERT(offsetof(CWorld, __vftable) == 0x0);
+FABLE_STATIC_ASSERT(offsetof(CWorld, Component) == 0x8);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PlayerManager) == 0xc);
+FABLE_STATIC_ASSERT(offsetof(CWorld, DefinitionManager) == 0x10);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PWorldMap_ptr) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PEnvironment_ptr) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PGameTimeManager_ptr) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PThingSearchTools_ptr) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PAtmosProcessor_Data) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PAtmosProcessor_Info) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PGameCamera_ptr) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PGameCameraManager_ptr) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PCurrentGameCamera) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PGameScriptInterface_ptr) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PMainMeshBank_Data) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PMainMeshBank_Info) == 0x40);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PAnimationManager) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PNavigationManager_ptr) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PThingCombatManager_ptr) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PThingManager_ptr) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PFactionManager_ptr) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PScriptInfoManager_Data) == 0x58);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PScriptInfoManager_Info) == 0x5c);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PMessageEventManager_Data) == 0x60);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PMessageEventManager_Info) == 0x64);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PBulletTimeManager_ptr) == 0x68);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PMusicManager_Data) == 0x6c);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PMusicManager_Info) == 0x70);
+FABLE_STATIC_ASSERT(offsetof(CWorld, POpinionReactionManager_Data) == 0x74);
+FABLE_STATIC_ASSERT(offsetof(CWorld, POpinionReactionManager_Info) == 0x78);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PScriptConversationManager_ptr) == 0x7c);
+FABLE_STATIC_ASSERT(offsetof(CWorld, JustLoaded) == 0x80);
+FABLE_STATIC_ASSERT(offsetof(CWorld, CurrentWorldName_PStringData) == 0x84);
+FABLE_STATIC_ASSERT(offsetof(CWorld, ConsolePauseAtFrameNumber) == 0x88);
+FABLE_STATIC_ASSERT(offsetof(CWorld, FrameStarted3DRendering) == 0x8c);
+FABLE_STATIC_ASSERT(offsetof(CWorld, LastUpdateTimeLength) == 0x90);
+FABLE_STATIC_ASSERT(offsetof(CWorld, LastUpdateTime) == 0x98);
+FABLE_STATIC_ASSERT(offsetof(CWorld, CountdownTimer) == 0xa0);
+FABLE_STATIC_ASSERT(offsetof(CWorld, Paused) == 0xa4);
+FABLE_STATIC_ASSERT(offsetof(CWorld, SlowMotion) == 0xa5);
+FABLE_STATIC_ASSERT(offsetof(CWorld, ShowDebugText) == 0xa6);
+FABLE_STATIC_ASSERT(offsetof(CWorld, ShowFPSText) == 0xa7);
+FABLE_STATIC_ASSERT(offsetof(CWorld, ShowProfileText) == 0xa8);
+FABLE_STATIC_ASSERT(offsetof(CWorld, InitialActiveQuests) == 0xac);
+FABLE_STATIC_ASSERT(offsetof(CWorld, RegisteredQuests) == 0xb8);
+FABLE_STATIC_ASSERT(offsetof(CWorld, ActiveTestQuests) == 0xc4);
+FABLE_STATIC_ASSERT(offsetof(CWorld, CreatureGenerationDisabledGroups) == 0xd0);
+FABLE_STATIC_ASSERT(offsetof(CWorld, CreatureGenerationEnabled) == 0xd4);
+FABLE_STATIC_ASSERT(offsetof(CWorld, TeleportingEnabled) == 0xd5);
+FABLE_STATIC_ASSERT(offsetof(CWorld, ExperienceSpendingEnabled) == 0xd6);
+FABLE_STATIC_ASSERT(offsetof(CWorld, SavingEnabled) == 0xd7);
+FABLE_STATIC_ASSERT(offsetof(CWorld, DontPopulateNextLoadedRegion) == 0xd8);
+FABLE_STATIC_ASSERT(offsetof(CWorld, HeroSleepingEnabled) == 0xd9);
+FABLE_STATIC_ASSERT(offsetof(CWorld, MapTableShowQuestCardsOnUsed) == 0xda);
+FABLE_STATIC_ASSERT(offsetof(CWorld, ScreenToFadeInOnNextRegionChange) == 0xdb);
+FABLE_STATIC_ASSERT(offsetof(CWorld, DoneExtraFrameUpdateBeforeRegionLoadScreenFadeIn) == 0xdc);
+FABLE_STATIC_ASSERT(offsetof(CWorld, MiniMapEnabled) == 0xdd);
+FABLE_STATIC_ASSERT(offsetof(CWorld, MiniMapActiveBeforeDisabled) == 0xde);
+FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadDisplayRegionName) == 0xdf);
+FABLE_STATIC_ASSERT(offsetof(CWorld, GuildMasterMessagesEnabled) == 0xe0);
+FABLE_STATIC_ASSERT(offsetof(CWorld, SummonerDeathExplosionAffectsHero) == 0xe1);
+FABLE_STATIC_ASSERT(offsetof(CWorld, WaitingForInventoryTutorialToFinish) == 0xe2);
+FABLE_STATIC_ASSERT(offsetof(CWorld, HeroInformationScreenModeAfterTutorial) == 0xe4);
+FABLE_STATIC_ASSERT(offsetof(CWorld, FrameCachedLODCentre) == 0xe8);
+FABLE_STATIC_ASSERT(offsetof(CWorld, CachedLODCentre_X) == 0xec);
+FABLE_STATIC_ASSERT(offsetof(CWorld, CachedLODCentre_Y) == 0xf0);
+FABLE_STATIC_ASSERT(offsetof(CWorld, CachedLODCentre_Z) == 0xf4);
+FABLE_STATIC_ASSERT(offsetof(CWorld, SaveGameLoadStatus) == 0xf8);
+FABLE_STATIC_ASSERT(offsetof(CWorld, SaveGamePathName_PStringData) == 0xfc);
+FABLE_STATIC_ASSERT(offsetof(CWorld, AutoSaveLocked) == 0x100);
+FABLE_STATIC_ASSERT(offsetof(CWorld, SerialisingAboutToLoadHeroState) == 0x101);
+FABLE_STATIC_ASSERT(offsetof(CWorld, SerialisingHeroState) == 0x102);
+FABLE_STATIC_ASSERT(offsetof(CWorld, SerialisingNonPersistentQuestItems) == 0x103);
+FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadStatus) == 0x104);
+FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadStartPos_X) == 0x108);
+FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadStartPos_Y) == 0x10c);
+FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadStartPos_Z) == 0x110);
+FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadStartAngleXY) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadFollowers) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PreviousRegion) == 0x124);
+FABLE_STATIC_ASSERT(offsetof(CWorld, NumberOfTimesFreezeControlsModeAddedDuringRegionLoad) == 0x128);
+FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadViaTeleporter) == 0x12c);
+FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadViaDoor) == 0x12d);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PutIntoPauseModeOnRegionChange) == 0x12e);
+FABLE_STATIC_ASSERT(offsetof(CWorld, DisplayMiniMapOnRegionLoad) == 0x12f);
+FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadWaitingForConfirmation) == 0x130);
+FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadScreenFullyFaded) == 0x131);
+FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadScreenWasFadedOut) == 0x132);
+FABLE_STATIC_ASSERT(offsetof(CWorld, WaitingForResetToFrontEndConfirmation) == 0x133);
+FABLE_STATIC_ASSERT(offsetof(CWorld, MostRecentSaveType) == 0x134);
+FABLE_STATIC_ASSERT(offsetof(CWorld, MostRecentSaveTypeBeforeManualSave) == 0x138);
+FABLE_STATIC_ASSERT(offsetof(CWorld, MostRecentManualSaveName_PStringData) == 0x13c);
+FABLE_STATIC_ASSERT(offsetof(CWorld, AutoSaveCheckPointExists) == 0x140);
+FABLE_STATIC_ASSERT(offsetof(CWorld, SaveGameMarkerPos) == 0x141);
+FABLE_STATIC_ASSERT(offsetof(CWorld, SaveGameMarkerAngleXY) == 0x150);
+FABLE_STATIC_ASSERT(offsetof(CWorld, GuildSealRecallPos_X) == 0x154);
+FABLE_STATIC_ASSERT(offsetof(CWorld, GuildSealRecallPos_Y) == 0x158);
+FABLE_STATIC_ASSERT(offsetof(CWorld, GuildSealRecallPos_Z) == 0x15c);
+FABLE_STATIC_ASSERT(offsetof(CWorld, GuildSealRecallAngleXY) == 0x160);
+FABLE_STATIC_ASSERT(offsetof(CWorld, WeatherMaskingPrimitivesSent) == 0x164);
+FABLE_STATIC_ASSERT(offsetof(CWorld, WeatherMaskingPrimitiveHandles) == 0x168);
+FABLE_STATIC_ASSERT(offsetof(CWorld, AtmosBanksWaitingToCopy) == 0x174);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PlayerSpawnStatus) == 0x178);
+FABLE_STATIC_ASSERT(offsetof(CWorld, VillagerReactionDebug) == 0x17c);
+FABLE_STATIC_ASSERT(offsetof(CWorld, StartTime) == 0x180);
+FABLE_STATIC_ASSERT(offsetof(CWorld, TimePlayed) == 0x188);
+FABLE_STATIC_ASSERT(offsetof(CWorld, HasInitialisedStartTime) == 0x190);
+
+#endif // FABLE_ENGINE_CWORLD_H
+
+#endif
+
+#else
+#ifdef FABLE_RETAIL_CWORLD
+#ifndef FABLE_ENGINE_CWORLD_H
+#define FABLE_ENGINE_CWORLD_H
+#include "engine/CBaseClassNonCopyable.h"
+class CThingSearchTools; class CProceduralTexture; class CIDrawEnvironment; class CIDrawWorldMap;
+#if defined(FABLE_RETAIL_CTHINGMANAGER_BINARY) || defined(FABLE_RETAIL_HIT_EFFECT) || defined(FABLE_RETAIL_MAP_BRUSHES)
+class CThingManager; class CAFile; class CCamera; class CInterpolationInfo; class CWorldInit;
+class CDisplayEngine; class C3DVector; class CEnginePrimitivePrepareInfo;
+#endif
+// Ego_r CIDrawWorld TPI: three pure const queries and virtual destructor.
+class CIDrawWorld {
+public:
+    virtual const CProceduralTexture* DrawGetProceduralTexture() const=0;
+    virtual const CIDrawEnvironment* DrawGetEnvironment() const=0;
+    virtual const CIDrawWorldMap* DrawGetWorldMap() const=0;
+    virtual ~CIDrawWorld();
+};
+namespace boost {
+template<class T> class scoped_ptr {
+private:
+    T* ptr;
+public:
+    T* get() const { return ptr; }
+    T& operator*() const { return *ptr; }
+};
+}
+class CWorldInit;class CAIGameCameraBase;class CMainGameComponent; class CPlayerManager; class CGameDefinitionManager;
+class CWorldMap; class CEnvironment; class CGameTimeManager;
+// Retail CWorld base chain from RTTI; original PDB first members. Remainder
+// is kept opaque at its complete retail size, not shortened for this caller.
+class CWorld : public CBaseClassNonCopyable, public CIDrawWorld {
+protected:
+    CMainGameComponent& Component;
+    CPlayerManager& PlayerManager;
+    const CGameDefinitionManager& DefinitionManager;
+    boost::scoped_ptr<CWorldMap> PWorldMap;
+    boost::scoped_ptr<CEnvironment> PEnvironment;
+    boost::scoped_ptr<CGameTimeManager> PGameTimeManager;
+    boost::scoped_ptr<CThingSearchTools> PThingSearchTools;
+#ifdef FABLE_RETAIL_CTHINGMANAGER_BINARY
+    unsigned char _pad_0x24[0x6c]; // PAtmosProcessor through FrameStarted3DRendering.
+    double LastUpdateTimeLength;
+    double LastUpdateTime;
+#ifdef FABLE_RETAIL_CTHINGMANAGER_SAVE
+    unsigned char _pad_0xa0[0x62];
+    bool SerialisingHeroState; // native+102, donor+10e
+    unsigned char _pad_0x103[0x95];
+#else
+    unsigned char _pad_0xa0[0xf8]; // CountdownTimer through the original tail.
+#endif
+#else
+#ifdef FABLE_RETAIL_INVENTORY_MAP_SERIALISE
+    unsigned char _pad_0x24[0xde];
+    bool SerialisingHeroState;
+    unsigned char _pad_0x103[0x95];
+#else
+#ifdef FABLE_RETAIL_TARGET_RANDOM_WALK
+    unsigned char PAtmosProcessor[8];
+    boost::scoped_ptr<CAIGameCameraBase> PGameCamera,PGameCameraManager;CAIGameCameraBase* PCurrentGameCamera;
+    unsigned char _pad_0x38[0x160];
+#else
+    unsigned char _pad_0x24[0x174];
+#endif
+#endif
+#endif
+public:
+#if defined(FABLE_RETAIL_CTHING_CONSTRUCTORS) && defined(FABLE_RETAIL_FACTIONS)
+    CWorld(const CWorldInit&);
+    virtual ~CWorld();
+    virtual const CProceduralTexture* DrawGetProceduralTexture()const;
+    virtual const CIDrawEnvironment* DrawGetEnvironment()const;
+    virtual const CIDrawWorldMap* DrawGetWorldMap()const;
+#endif
+#if defined(FABLE_RETAIL_CTHING_CONSTRUCTORS) && defined(FABLE_RETAIL_TARGET_RANDOM_WALK) && !defined(FABLE_RETAIL_CTHINGMANAGER_BINARY)
+    CWorld(const CWorldInit&);
+    virtual ~CWorld();
+    virtual const CProceduralTexture* DrawGetProceduralTexture() const;
+    virtual const CIDrawEnvironment* DrawGetEnvironment() const;
+    virtual const CIDrawWorldMap* DrawGetWorldMap() const;
+#endif
+#if defined(FABLE_RETAIL_CTHINGMANAGER_BINARY) || defined(FABLE_RETAIL_HIT_EFFECT) || defined(FABLE_RETAIL_MAP_BRUSHES)
+    CWorld(const CWorldInit&);
+    virtual ~CWorld();
+    virtual const CProceduralTexture* DrawGetProceduralTexture() const;
+    virtual const CIDrawEnvironment* DrawGetEnvironment() const;
+    virtual const CIDrawWorldMap* DrawGetWorldMap() const;
+protected:
+    virtual void PostLoadInit();
+public:
+    virtual void LoadWorldFromFile(CAFile&,long);
+    virtual CThingManager& GetThingManager();
+    virtual const CThingManager& PeekThingManager() const;
+    virtual CCamera GetCurrentRenderCamera() const;
+    virtual CCamera GetCurrentRenderCamera(const CInterpolationInfo&) const;
+    virtual void PostInit(CDisplayEngine&);
+    virtual C3DVector GetGameLODCentre() const;
+    virtual void Init();
+    virtual void Uninitialise();
+    virtual void PreparePrimitivesForEngine(const CEnginePrimitivePrepareInfo&);
+    virtual CWorldMap& GetWorldMap();
+    virtual const CWorldMap& PeekWorldMap() const;
+#endif
+#if defined(FABLE_RETAIL_CAMERA_DRAW) || defined(FABLE_RETAIL_HERO_SERIALISE)
+    static long __fastcall GetFrame();
+#endif
+#if defined(FABLE_RETAIL_CTHINGMANAGER_SAVE) || defined(FABLE_RETAIL_INVENTORY_MAP_SERIALISE)
+    bool IsSerialisingHeroState() const { return SerialisingHeroState; }
+#endif
+#ifdef FABLE_RETAIL_TARGET_RANDOM_WALK
+    const CAIGameCameraBase* PeekGameCamera() const { return PCurrentGameCamera; }
+    unsigned long* GetWorldSeed() const;
+#endif
+#ifdef FABLE_RETAIL_FACTIONS
+    const CGameDefinitionManager& PeekDefinitionManager()const{return DefinitionManager;}
+#endif
+#if defined(FABLE_RETAIL_INVENTORY_MAP_SERIALISE) || defined(FABLE_RETAIL_NAVIGATION_UPDATE) || defined(FABLE_RETAIL_SHOP_PLACES)
+    const CThingSearchTools& PeekThingSearchTools() const { return *PThingSearchTools; }
+#endif
+    CThingSearchTools& GetThingSearchTools() { return *PThingSearchTools; }
+};
+FABLE_STATIC_ASSERT(sizeof(CWorld)==0x198);
+#endif
+#else
+#ifndef FABLE_ENGINE_CWORLD_H
+#define FABLE_ENGINE_CWORLD_H
+// GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
+// Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CWorld = 0x1b8.
+// Container layout: retail STLport 4.6 (list 4, vector/map/set/string/CArray 0xc, deque 0x28, CVectorMap 0x10, bases from Fable.exe RTTI): sizeof CWorld = 0x198.
+// Retail evidence: 3 trusted landed function(s); reconciliation clean.
+// Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
+// `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#include <stddef.h>
+#include "rebuild_abi.h"
+
+class C3DAnimationManager;
+class CAIGameCameraBase;
+class CAtmosProcess;
+class CBulletTimeManager;
+class CCPPointerInfo;
+class CCharStringData;
+class CCombatManager;
+class CEnvironment;
+class CFactionManager;
+class CGameDefinitionManager;
+class CGameScriptInterface;
+class CGameTimeManager;
+class CMainGameComponent;
+class CMeshDataBank;
+class CMessageEventManager;
+class CMusicManager;
+class CNavigatorManager;
+class COpinionReactionManager;
+class CPlayerManager;
+class CScriptConversationManager;
+class CScriptInfoManager;
+class CThingManager;
+class CThingSearchTools;
+class CWideStringData;
+class CWorldMap;
+
+#pragma pack(push, 1)
+class CWorld {
+public:
+    void*                       __vftable;                   // +0x00 vptr, or first dword of a flattened base subobject
+    unsigned char               _base_0x04[0x4];             // +0x04 flattened base-class subobject(s)
+    CMainGameComponent*         Component;                   // +0x08
+    CPlayerManager*             PlayerManager;               // +0x0c
+    CGameDefinitionManager*     DefinitionManager;           // +0x10
+    CWorldMap*                  PWorldMap_ptr;               // +0x14 scoped_ptr<CWorldMap>::ptr
+    CEnvironment*               PEnvironment_ptr;            // +0x18 scoped_ptr<CEnvironment>::ptr
+    CGameTimeManager*           PGameTimeManager_ptr;        // +0x1c scoped_ptr<CGameTimeManager>::ptr
+    CThingSearchTools*          PThingSearchTools_ptr;       // +0x20 scoped_ptr<CThingSearchTools>::ptr
+    CAtmosProcess*              PAtmosProcessor_Data;        // +0x24 CCountedPointer<CAtmosProcess>::Data
+    CCPPointerInfo*             PAtmosProcessor_Info;        // +0x28 CCountedPointer<CAtmosProcess>::Info
+    CAIGameCameraBase*          PGameCamera_ptr;             // +0x2c scoped_ptr<CAIGameCameraBase>::ptr
+    CAIGameCameraBase*          PGameCameraManager_ptr;      // +0x30 scoped_ptr<CAIGameCameraBase>::ptr
+    CAIGameCameraBase*          PCurrentGameCamera;          // +0x34
+    CGameScriptInterface*       PGameScriptInterface_ptr;    // +0x38 scoped_ptr<CGameScriptInterface>::ptr
+    CMeshDataBank*              PMainMeshBank_Data;          // +0x3c CCountedPointer<CMeshDataBank>::Data
+    CCPPointerInfo*             PMainMeshBank_Info;          // +0x40 CCountedPointer<CMeshDataBank>::Info
+    C3DAnimationManager*        PAnimationManager;           // +0x44
+    CNavigatorManager*          PNavigationManager_ptr;      // +0x48 scoped_ptr<CNavigatorManager>::ptr
+    CCombatManager*             PThingCombatManager_ptr;     // +0x4c scoped_ptr<CCombatManager>::ptr
+    CThingManager*              PThingManager_ptr;           // +0x50 scoped_ptr<CThingManager>::ptr
+    CFactionManager*            PFactionManager_ptr;         // +0x54 scoped_ptr<CFactionManager>::ptr
+    CScriptInfoManager*         PScriptInfoManager_Data;     // +0x58 CCountedPointer<CScriptInfoManager>::Data
+    CCPPointerInfo*             PScriptInfoManager_Info;     // +0x5c CCountedPointer<CScriptInfoManager>::Info
+    CMessageEventManager*       PMessageEventManager_Data;   // +0x60 CCountedPointer<CMessageEventManager>::Data
+    CCPPointerInfo*             PMessageEventManager_Info;   // +0x64 CCountedPointer<CMessageEventManager>::Info
+    CBulletTimeManager*         PBulletTimeManager_ptr;      // +0x68 scoped_ptr<CBulletTimeManager>::ptr
+    CMusicManager*              PMusicManager_Data;          // +0x6c CCountedPointer<CMusicManager>::Data
+    CCPPointerInfo*             PMusicManager_Info;          // +0x70 CCountedPointer<CMusicManager>::Info
+    COpinionReactionManager*    POpinionReactionManager_Data; // +0x74 CCountedPointer<COpinionReactionManager>::Data
+    CCPPointerInfo*             POpinionReactionManager_Info; // +0x78 CCountedPointer<COpinionReactionManager>::Info
+    CScriptConversationManager* PScriptConversationManager_ptr; // +0x7c scoped_ptr<CScriptConversationManager>::ptr
+    bool                        JustLoaded;                  // +0x80
+    unsigned char               _pad_0x81[0x3];              // +0x81
+    CCharStringData*            CurrentWorldName_PStringData; // +0x84 CCharString::PStringData
+    long                        ConsolePauseAtFrameNumber;   // +0x88
+    long                        FrameStarted3DRendering;     // +0x8c
+    double                      LastUpdateTimeLength;        // +0x90
+    double                      LastUpdateTime;              // +0x98
+    long                        CountdownTimer;              // +0xa0
+    bool                        Paused;                      // +0xa4
+    bool                        SlowMotion;                  // +0xa5
+    bool                        ShowDebugText;               // +0xa6
+    bool                        ShowFPSText;                 // +0xa7
+    bool                        ShowProfileText;             // +0xa8
+    unsigned char               _pad_0xa9[0x3];              // +0xa9
+    unsigned char               InitialActiveQuests[0xc];    // +0xac CArray<CCharString>
+    unsigned char               RegisteredQuests[0xc];       // +0xb8 vector<CCharString,std::allocator<CCharString>_>
+    unsigned char               ActiveTestQuests[0xc];       // +0xc4 vector<CTestQuest,std::allocator<CTestQuest>_>
+    unsigned long               CreatureGenerationDisabledGroups; // +0xd0
+    bool                        CreatureGenerationEnabled;   // +0xd4
+    bool                        TeleportingEnabled;          // +0xd5
+    bool                        ExperienceSpendingEnabled;   // +0xd6
+    bool                        SavingEnabled;               // +0xd7
+    bool                        DontPopulateNextLoadedRegion; // +0xd8
+    bool                        HeroSleepingEnabled;         // +0xd9
+    bool                        MapTableShowQuestCardsOnUsed; // +0xda
+    bool                        ScreenToFadeInOnNextRegionChange; // +0xdb
+    bool                        DoneExtraFrameUpdateBeforeRegionLoadScreenFadeIn; // +0xdc
+    bool                        MiniMapEnabled;              // +0xdd
+    bool                        MiniMapActiveBeforeDisabled; // +0xde
+    bool                        RegionLoadDisplayRegionName; // +0xdf
+    bool                        GuildMasterMessagesEnabled;  // +0xe0
+    bool                        SummonerDeathExplosionAffectsHero; // +0xe1
+    bool                        WaitingForInventoryTutorialToFinish; // +0xe2
+    unsigned char               _pad_0xe3[0x1];              // +0xe3
+    unsigned char               HeroInformationScreenModeAfterTutorial[0x4]; // +0xe4 EPlayerMode
+    long                        FrameCachedLODCentre;        // +0xe8
+    float                       CachedLODCentre_X;           // +0xec C3DVector::X
+    float                       CachedLODCentre_Y;           // +0xf0 C3DVector::Y
+    float                       CachedLODCentre_Z;           // +0xf4 C3DVector::Z
+    unsigned char               SaveGameLoadStatus[0x4];     // +0xf8 ESaveGameLoadStatus
+    CWideStringData*            SaveGamePathName_PStringData; // +0xfc CWideString::PStringData
+    bool                        AutoSaveLocked;              // +0x100
+    bool                        SerialisingAboutToLoadHeroState; // +0x101
+    bool                        SerialisingHeroState;        // +0x102
+    bool                        SerialisingNonPersistentQuestItems; // +0x103
+    unsigned char               RegionLoadStatus[0x4];       // +0x104 ERegionLoadStatus
+    float                       RegionLoadStartPos_X;        // +0x108 C3DVector::X
+    float                       RegionLoadStartPos_Y;        // +0x10c C3DVector::Y
+    float                       RegionLoadStartPos_Z;        // +0x110 C3DVector::Z
+    float                       RegionLoadStartAngleXY;      // +0x114
+    unsigned char               RegionLoadFollowers[0xc];    // +0x118 vector<CIntelligentPointer<CThing>,std::allocator<CIntelligentPointer<CThing>_>_>
+    long                        PreviousRegion;              // +0x124
+    long                        NumberOfTimesFreezeControlsModeAddedDuringRegionLoad; // +0x128
+    bool                        RegionLoadViaTeleporter;     // +0x12c
+    bool                        RegionLoadViaDoor;           // +0x12d
+    bool                        PutIntoPauseModeOnRegionChange; // +0x12e
+    bool                        DisplayMiniMapOnRegionLoad;  // +0x12f
+    bool                        RegionLoadWaitingForConfirmation; // +0x130
+    bool                        RegionLoadScreenFullyFaded;  // +0x131
+    bool                        RegionLoadScreenWasFadedOut; // +0x132
+    bool                        WaitingForResetToFrontEndConfirmation; // +0x133
+    unsigned char               MostRecentSaveType[0x4];     // +0x134 ESaveType
+    unsigned char               MostRecentSaveTypeBeforeManualSave[0x4]; // +0x138 ESaveType
+    CWideStringData*            MostRecentManualSaveName_PStringData; // +0x13c CWideString::PStringData
+    bool                        AutoSaveCheckPointExists;    // +0x140
+    unsigned char               SaveGameMarkerPos[0xf];      // +0x141 C3DVector
+    float                       SaveGameMarkerAngleXY;       // +0x150
+    float                       GuildSealRecallPos_X;        // +0x154 C3DVector::X
+    float                       GuildSealRecallPos_Y;        // +0x158 C3DVector::Y
+    float                       GuildSealRecallPos_Z;        // +0x15c C3DVector::Z
+    float                       GuildSealRecallAngleXY;      // +0x160
+    bool                        WeatherMaskingPrimitivesSent; // +0x164
+    unsigned char               _pad_0x165[0x3];             // +0x165
+    unsigned char               WeatherMaskingPrimitiveHandles[0xc];  // +0x168 vector<CEnginePrimitiveHandle,std::allocator<CEnginePrimitiveHandle>_>
+    unsigned char               AtmosBanksWaitingToCopy[0x4]; // +0x174 list<CAtmosCopyInfo,std::allocator<CAtmosCopyInfo>_>
+    unsigned char               PlayerSpawnStatus[0x4];      // +0x178 EPlayerSpawnStatus
+    long                        VillagerReactionDebug;       // +0x17c
+    double                      StartTime;                   // +0x180
+    double                      TimePlayed;                  // +0x188
+    bool                        HasInitialisedStartTime;     // +0x190
+    unsigned char               _pad_0x191[0x7];             // +0x191
+    static long __fastcall GetFrame();                       // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
+    unsigned long* GetWorldSeed() const;                     // 0x0049D810 ?GetWorldSeed@CWorld@@QBEPAKXZ
+};
+#pragma pack(pop)
+
+FABLE_STATIC_ASSERT(sizeof(CWorld) == 0x198);
+FABLE_STATIC_ASSERT(offsetof(CWorld, __vftable) == 0x0);
+FABLE_STATIC_ASSERT(offsetof(CWorld, Component) == 0x8);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PlayerManager) == 0xc);
+FABLE_STATIC_ASSERT(offsetof(CWorld, DefinitionManager) == 0x10);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PWorldMap_ptr) == 0x14);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PEnvironment_ptr) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PGameTimeManager_ptr) == 0x1c);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PThingSearchTools_ptr) == 0x20);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PAtmosProcessor_Data) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PAtmosProcessor_Info) == 0x28);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PGameCamera_ptr) == 0x2c);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PGameCameraManager_ptr) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PCurrentGameCamera) == 0x34);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PGameScriptInterface_ptr) == 0x38);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PMainMeshBank_Data) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PMainMeshBank_Info) == 0x40);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PAnimationManager) == 0x44);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PNavigationManager_ptr) == 0x48);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PThingCombatManager_ptr) == 0x4c);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PThingManager_ptr) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PFactionManager_ptr) == 0x54);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PScriptInfoManager_Data) == 0x58);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PScriptInfoManager_Info) == 0x5c);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PMessageEventManager_Data) == 0x60);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PMessageEventManager_Info) == 0x64);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PBulletTimeManager_ptr) == 0x68);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PMusicManager_Data) == 0x6c);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PMusicManager_Info) == 0x70);
+FABLE_STATIC_ASSERT(offsetof(CWorld, POpinionReactionManager_Data) == 0x74);
+FABLE_STATIC_ASSERT(offsetof(CWorld, POpinionReactionManager_Info) == 0x78);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PScriptConversationManager_ptr) == 0x7c);
+FABLE_STATIC_ASSERT(offsetof(CWorld, JustLoaded) == 0x80);
+FABLE_STATIC_ASSERT(offsetof(CWorld, CurrentWorldName_PStringData) == 0x84);
+FABLE_STATIC_ASSERT(offsetof(CWorld, ConsolePauseAtFrameNumber) == 0x88);
+FABLE_STATIC_ASSERT(offsetof(CWorld, FrameStarted3DRendering) == 0x8c);
+FABLE_STATIC_ASSERT(offsetof(CWorld, LastUpdateTimeLength) == 0x90);
+FABLE_STATIC_ASSERT(offsetof(CWorld, LastUpdateTime) == 0x98);
+FABLE_STATIC_ASSERT(offsetof(CWorld, CountdownTimer) == 0xa0);
+FABLE_STATIC_ASSERT(offsetof(CWorld, Paused) == 0xa4);
+FABLE_STATIC_ASSERT(offsetof(CWorld, SlowMotion) == 0xa5);
+FABLE_STATIC_ASSERT(offsetof(CWorld, ShowDebugText) == 0xa6);
+FABLE_STATIC_ASSERT(offsetof(CWorld, ShowFPSText) == 0xa7);
+FABLE_STATIC_ASSERT(offsetof(CWorld, ShowProfileText) == 0xa8);
+FABLE_STATIC_ASSERT(offsetof(CWorld, InitialActiveQuests) == 0xac);
+FABLE_STATIC_ASSERT(offsetof(CWorld, RegisteredQuests) == 0xb8);
+FABLE_STATIC_ASSERT(offsetof(CWorld, ActiveTestQuests) == 0xc4);
+FABLE_STATIC_ASSERT(offsetof(CWorld, CreatureGenerationDisabledGroups) == 0xd0);
+FABLE_STATIC_ASSERT(offsetof(CWorld, CreatureGenerationEnabled) == 0xd4);
+FABLE_STATIC_ASSERT(offsetof(CWorld, TeleportingEnabled) == 0xd5);
+FABLE_STATIC_ASSERT(offsetof(CWorld, ExperienceSpendingEnabled) == 0xd6);
+FABLE_STATIC_ASSERT(offsetof(CWorld, SavingEnabled) == 0xd7);
+FABLE_STATIC_ASSERT(offsetof(CWorld, DontPopulateNextLoadedRegion) == 0xd8);
+FABLE_STATIC_ASSERT(offsetof(CWorld, HeroSleepingEnabled) == 0xd9);
+FABLE_STATIC_ASSERT(offsetof(CWorld, MapTableShowQuestCardsOnUsed) == 0xda);
+FABLE_STATIC_ASSERT(offsetof(CWorld, ScreenToFadeInOnNextRegionChange) == 0xdb);
+FABLE_STATIC_ASSERT(offsetof(CWorld, DoneExtraFrameUpdateBeforeRegionLoadScreenFadeIn) == 0xdc);
+FABLE_STATIC_ASSERT(offsetof(CWorld, MiniMapEnabled) == 0xdd);
+FABLE_STATIC_ASSERT(offsetof(CWorld, MiniMapActiveBeforeDisabled) == 0xde);
+FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadDisplayRegionName) == 0xdf);
+FABLE_STATIC_ASSERT(offsetof(CWorld, GuildMasterMessagesEnabled) == 0xe0);
+FABLE_STATIC_ASSERT(offsetof(CWorld, SummonerDeathExplosionAffectsHero) == 0xe1);
+FABLE_STATIC_ASSERT(offsetof(CWorld, WaitingForInventoryTutorialToFinish) == 0xe2);
+FABLE_STATIC_ASSERT(offsetof(CWorld, HeroInformationScreenModeAfterTutorial) == 0xe4);
+FABLE_STATIC_ASSERT(offsetof(CWorld, FrameCachedLODCentre) == 0xe8);
+FABLE_STATIC_ASSERT(offsetof(CWorld, CachedLODCentre_X) == 0xec);
+FABLE_STATIC_ASSERT(offsetof(CWorld, CachedLODCentre_Y) == 0xf0);
+FABLE_STATIC_ASSERT(offsetof(CWorld, CachedLODCentre_Z) == 0xf4);
+FABLE_STATIC_ASSERT(offsetof(CWorld, SaveGameLoadStatus) == 0xf8);
+FABLE_STATIC_ASSERT(offsetof(CWorld, SaveGamePathName_PStringData) == 0xfc);
+FABLE_STATIC_ASSERT(offsetof(CWorld, AutoSaveLocked) == 0x100);
+FABLE_STATIC_ASSERT(offsetof(CWorld, SerialisingAboutToLoadHeroState) == 0x101);
+FABLE_STATIC_ASSERT(offsetof(CWorld, SerialisingHeroState) == 0x102);
+FABLE_STATIC_ASSERT(offsetof(CWorld, SerialisingNonPersistentQuestItems) == 0x103);
+FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadStatus) == 0x104);
+FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadStartPos_X) == 0x108);
+FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadStartPos_Y) == 0x10c);
+FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadStartPos_Z) == 0x110);
+FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadStartAngleXY) == 0x114);
+FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadFollowers) == 0x118);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PreviousRegion) == 0x124);
+FABLE_STATIC_ASSERT(offsetof(CWorld, NumberOfTimesFreezeControlsModeAddedDuringRegionLoad) == 0x128);
+FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadViaTeleporter) == 0x12c);
+FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadViaDoor) == 0x12d);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PutIntoPauseModeOnRegionChange) == 0x12e);
+FABLE_STATIC_ASSERT(offsetof(CWorld, DisplayMiniMapOnRegionLoad) == 0x12f);
+FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadWaitingForConfirmation) == 0x130);
+FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadScreenFullyFaded) == 0x131);
+FABLE_STATIC_ASSERT(offsetof(CWorld, RegionLoadScreenWasFadedOut) == 0x132);
+FABLE_STATIC_ASSERT(offsetof(CWorld, WaitingForResetToFrontEndConfirmation) == 0x133);
+FABLE_STATIC_ASSERT(offsetof(CWorld, MostRecentSaveType) == 0x134);
+FABLE_STATIC_ASSERT(offsetof(CWorld, MostRecentSaveTypeBeforeManualSave) == 0x138);
+FABLE_STATIC_ASSERT(offsetof(CWorld, MostRecentManualSaveName_PStringData) == 0x13c);
+FABLE_STATIC_ASSERT(offsetof(CWorld, AutoSaveCheckPointExists) == 0x140);
+FABLE_STATIC_ASSERT(offsetof(CWorld, SaveGameMarkerPos) == 0x141);
+FABLE_STATIC_ASSERT(offsetof(CWorld, SaveGameMarkerAngleXY) == 0x150);
+FABLE_STATIC_ASSERT(offsetof(CWorld, GuildSealRecallPos_X) == 0x154);
+FABLE_STATIC_ASSERT(offsetof(CWorld, GuildSealRecallPos_Y) == 0x158);
+FABLE_STATIC_ASSERT(offsetof(CWorld, GuildSealRecallPos_Z) == 0x15c);
+FABLE_STATIC_ASSERT(offsetof(CWorld, GuildSealRecallAngleXY) == 0x160);
+FABLE_STATIC_ASSERT(offsetof(CWorld, WeatherMaskingPrimitivesSent) == 0x164);
+FABLE_STATIC_ASSERT(offsetof(CWorld, WeatherMaskingPrimitiveHandles) == 0x168);
+FABLE_STATIC_ASSERT(offsetof(CWorld, AtmosBanksWaitingToCopy) == 0x174);
+FABLE_STATIC_ASSERT(offsetof(CWorld, PlayerSpawnStatus) == 0x178);
+FABLE_STATIC_ASSERT(offsetof(CWorld, VillagerReactionDebug) == 0x17c);
+FABLE_STATIC_ASSERT(offsetof(CWorld, StartTime) == 0x180);
+FABLE_STATIC_ASSERT(offsetof(CWorld, TimePlayed) == 0x188);
+FABLE_STATIC_ASSERT(offsetof(CWorld, HasInitialisedStartTime) == 0x190);
+
+#endif // FABLE_ENGINE_CWORLD_H
+
+#endif
+
+#endif

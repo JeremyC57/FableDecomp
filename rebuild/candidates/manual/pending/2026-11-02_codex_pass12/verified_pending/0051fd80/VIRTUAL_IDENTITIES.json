@@ -1,0 +1,32 @@
+[
+  {
+    "byte_slot": 16,
+    "evidence": "Original PDB public introducing virtual slot16 and native RTTI vtable01239abc.",
+    "name": "CThing::ConstructFromLevelScript",
+    "retail_target": "004caa00"
+  },
+  {
+    "byte_slot": 32,
+    "evidence": "Original PDB public introducing virtual slot32 and native RTTI vtable01239abc.",
+    "name": "CThing::OnCreate",
+    "retail_target": "004c9560"
+  },
+  {
+    "byte_slot": 36,
+    "evidence": "Original PDB public introducing virtual slot36 and native RTTI vtable01239abc.",
+    "name": "CThing::InitialActivate",
+    "retail_target": "004c9690"
+  },
+  {
+    "byte_slot": 40,
+    "evidence": "Original PDB public introducing virtual slot40 and native RTTI vtable01239abc.",
+    "name": "CThing::OnInitialActivate",
+    "retail_target": "004c97b0"
+  },
+  {
+    "byte_slot": 64,
+    "evidence": "Native RTTI vtable01239abc slot64, exact CThing: Construct From Binary Save 1 literal, input stream/reference arguments; donor slot72 differs and is not copied blindly.",
+    "name": "CThing::ConstructFromBinarySave",
+    "retail_target": "004ca390"
+  }
+]

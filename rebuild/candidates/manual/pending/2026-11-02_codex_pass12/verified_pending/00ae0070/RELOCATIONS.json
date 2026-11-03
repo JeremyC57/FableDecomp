@@ -1,0 +1,50 @@
+{
+  "address": "00ae0070",
+  "extent_end": "00ae04b2",
+  "final_regression_note": "Final header/format rebuild preserves selected target bytes and every COFF relocation identity; accepted/held actual operands separately checked in final main review. Parked original review limitations remain unchanged.",
+  "leaf": "?ApplyTransform@CParticleProgram@@QAEXABVCMatrix3x4@@@Z",
+  "object_size": 1090,
+  "relocations": [
+    {
+      "evidence": "Both original PDB exact const CMemoryDataOutputStream member symbols, native stream-object receiver at+0x114, original neighbouring stream implementations and existing correct binding.",
+      "object_offset": "0x12",
+      "offset": "0x12",
+      "retail_instruction": "0xae0081",
+      "status": "PASS",
+      "symbol": "?PeekData@CMemoryDataOutputStream@@QBEPBXXZ",
+      "target": "00995e70"
+    },
+    {
+      "evidence": "Both original PDB exact const CMemoryDataOutputStream member symbols, native stream-object receiver at+0x114, original neighbouring stream implementations and existing correct binding.",
+      "object_offset": "0x1b",
+      "offset": "0x1b",
+      "retail_instruction": "0xae008a",
+      "status": "PASS",
+      "symbol": "?GetLength@CMemoryDataOutputStream@@QBEKXZ",
+      "target": "00994b40"
+    },
+    {
+      "evidence": "Compiler zero literal content independently matches native fcomp operand; no invented global.",
+      "object_offset": "0x1a0",
+      "offset": "0x1a0",
+      "retail_instruction": "0xae020e",
+      "status": "PASS",
+      "symbol": "__real@00000000",
+      "target": "0122dedc"
+    },
+    {
+      "evidence": "Compiler zero literal content independently matches native fcomp operand; no invented global.",
+      "object_offset": "0x341",
+      "offset": "0x341",
+      "retail_instruction": "0xae03af",
+      "status": "PASS",
+      "symbol": "__real@00000000",
+      "target": "0122dedc"
+    }
+  ],
+  "retail_size": 1090,
+  "selected_attempt": 137,
+  "source_sha256": "701e44bb9f1f28e46480a5316c9e26def26d33d26461889a8545f9614d5ce3a0",
+  "status": "ALL_OPERANDS_VERIFIED_AND_RELOCATION_MASKED_BYTES_IDENTICAL",
+  "unmasked_differing_bytes": 0
+}

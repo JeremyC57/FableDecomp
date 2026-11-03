@@ -1,0 +1,1185 @@
+{
+  "address": "00ef71e0",
+  "count": 61,
+  "final_regression_note": "Final header/format rebuild preserves selected target bytes and every COFF relocation identity; accepted/held actual operands separately checked in final main review. Parked original review limitations remain unchanged.",
+  "grade_attempt": 1,
+  "operands": [
+    {
+      "evidence": "Exact NUL-terminated native literal at relocated operand and object string bytes.",
+      "kind": 6,
+      "literal_text": "Walk1",
+      "offset": "0xe",
+      "retail_address": "0x012F67F0",
+      "symbol": "??_C@_05IMLFDCG@Walk1?$AA@"
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x17",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f60fa0",
+        "egor_pdb_names.tsv:00afa5b0"
+      ],
+      "retail_address": "0x0099EBF0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "wrong_spellings_seen": [
+        "??0CCharString2@@QAE@HH@Z",
+        "??0CCharString@@QAE@PBDH@Z",
+        "??0CCharString@ExternalRetry_00835c80@@QAE@PBDH@Z",
+        "??0CCharString@NFactory007f1b70@@QAE@PBDH@Z",
+        "??0CCharString@NScreen005fc2d0@@QAE@PBDH@Z",
+        "??0CCharString@NScreen005fc8a0@@QAE@PBDH@Z",
+        "??0CCharString@X_006c8780@@QAE@PBDH@Z",
+        "??0CCharString@X_006e11f0@@QAE@PBDH@Z",
+        "??0CDeedReactionName@@QAE@HH@Z",
+        "??0CRetailString@@QAE@PBDJ@Z",
+        "??0CSectionName@@QAE@PBDH@Z",
+        "??0InitGuard@@QAE@PAHH@Z",
+        "??0ScopedGuard@@QAE@PBDH@Z",
+        "?Ctor@CCharString@@QAEXPBDH@Z",
+        "?Do@Helper@@QAEXPBDH@Z",
+        "?Init@CCharString@@QAEXPBDH@Z",
+        "?LookupActionName@CActionDoCreatureAction@@QAEXPBDH@Z",
+        "?ctor@CCharString@@QAEPAV1@PBDH@Z",
+        "?ctor@CCharString@@QAEXPBDH@Z",
+        "?ctor@Str@@QAEXPBDH@Z",
+        "?ctorB@CCharString@@QAEPAV1@PBDH@Z",
+        "?ctor_99ebf0@CCharString@@QAEPAV1@PBDH@Z",
+        "?m@GAN004d2a91@@QAEPAXPAXH@Z",
+        "?m@GAN004d2b04@@QAEPAXPAXH@Z",
+        "?m@GAN004d2b17@@QAEPAXPAXH@Z",
+        "?m@GAN004d2b7a@@QAEPAXPAXH@Z",
+        "?m@GAN004d2b8d@@QAEPAXPAXH@Z",
+        "?m@GAN004d2ba0@@QAEPAXPAXH@Z",
+        "?m@GAN004d2bb3@@QAEPAXPAXH@Z",
+        "?m@GAN004d2bc6@@QAEPAXPAXH@Z",
+        "?m@GAN004d2bd9@@QAEPAXPAXH@Z",
+        "?m@GAN004d2bec@@QAEPAXPAXH@Z",
+        "?m@GAN004d2bff@@QAEPAXPAXH@Z",
+        "?m@GAN004d2c2f@@QAEPAXPAXH@Z",
+        "?m@GAN004d2c42@@QAEPAXPAXH@Z",
+        "?m@GAN004d2c55@@QAEPAXPAXH@Z",
+        "?m@GAN004d2c68@@QAEPAXPAXH@Z",
+        "?m@GAN004d2c7b@@QAEPAXPAXH@Z",
+        "?m@GAN004d2c8e@@QAEPAXPAXH@Z",
+        "?m@GAN004d2ca1@@QAEPAXPAXH@Z",
+        "?m@GAN004d2cb4@@QAEPAXPAXH@Z",
+        "?m@GAN004d2cc7@@QAEPAXPAXH@Z",
+        "?m@GAN004d2cda@@QAEPAXPAXH@Z",
+        "?m@GAN004d2ced@@QAEPAXPAXH@Z",
+        "?m@GAN004d2d00@@QAEPAXPAXH@Z",
+        "?m@GAN004d2d13@@QAEPAXPAXH@Z"
+      ]
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x35",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f60f80",
+        "egor_pdb_names.tsv:00afa3f0"
+      ],
+      "retail_address": "0x0099EAE0",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "wrong_spellings_seen": [
+        "??1CCharString2@@QAE@XZ",
+        "??1CCharString@ExternalRetry_00835c80@@QAE@XZ",
+        "??1CCharString@ExternalRetry_008af850@@QAE@XZ",
+        "??1CCharString@N006d41f0@@QAE@XZ",
+        "??1CCharString@N009ac5d0@@QAE@XZ",
+        "??1CCharString@NErase005dcf70@@QAE@XZ",
+        "??1CCharString@NFactory007f1b70@@QAE@XZ",
+        "??1CCharString@NManager00820e20@@QAE@XZ",
+        "??1CCharString@NScreen005fc2d0@@QAE@XZ",
+        "??1CCharString@NScreen005fc8a0@@QAE@XZ",
+        "??1CCharString@NUISystem@@QAE@XZ",
+        "??1CCharString@X_006c8780@@QAE@XZ",
+        "??1CCharString@X_006e11f0@@QAE@XZ",
+        "??1CCharString@X_009eb590@@QAE@XZ",
+        "??1CCharString@std@@QAE@XZ",
+        "??1CDeedReactionName@@QAE@XZ",
+        "??1CInstanceCountedBase@@UAE@XZ",
+        "??1CListMember_0099eae0@@QAE@XZ",
+        "??1CSectionName@@QAE@XZ",
+        "??1CSubObj@@QAE@XZ",
+        "??1GStr@@QAE@XZ",
+        "??1GString@@QAE@XZ",
+        "??1InitGuard@@QAE@XZ",
+        "??1Key@@QAE@XZ",
+        "??1MemberC@@QAE@XZ",
+        "??1ScopedGuard@@QAE@XZ",
+        "??1Str@@QAE@XZ",
+        "??1StrA@@QAE@XZ",
+        "??1StrKey@@QAE@XZ",
+        "??1StrRefB@@QAE@XZ",
+        "?CCharStringDtor@@YIXPAVCCharString@@@Z",
+        "?Cleanup@SubObject@@QAEXXZ",
+        "?Dtor_10dba0@Local10@@QAEXXZ",
+        "?Invoke@AutoTinyReverseLoopTarget@@QAEXXZ",
+        "?OnDie@CTCInventoryItemBase@@QAEXXZ",
+        "?OnDieBase@CTCInventoryItemBase@@QAEXXZ",
+        "?PrimSlotAssign@@YIXPAD@Z",
+        "?Release@PairSlot@@QAEXXZ",
+        "?Ring_dtor@@YIXPAURing@@@Z",
+        "?Sub_dtor@@YIXPAUSub@@@Z",
+        "?destroy@MemberAt8@@QAEXXZ",
+        "?dtor@CMember@@QAIXXZ",
+        "?dtor@Cat@@QAEXXZ",
+        "?dtor@Str@@QAEXXZ",
+        "?memb0c_dtor@@YIXPAX@Z",
+        "@CGlobalDef_dtor_shared@4",
+        "@ElemA_dtor@4",
+        "@FableBaseDtor_0098cec0@4",
+        "@FableBaseDtor_009e63f0@4",
+        "@FableBaseDtor_00a3fd40@4",
+        "@FableBaseDtor_00cb6400@4",
+        "@FableBaseDtor_00cd27b4@4",
+        "@FableBaseDtor_00cd44e0@4",
+        "@FableBaseDtor_00cd45c0@4",
+        "@FableBaseDtor_00cd4fd0@4",
+        "@FableConsume_b59760@4",
+        "@FableMemberDtor_008fe880@4",
+        "@FableMemberDtor_0098cec0@4",
+        "@FableMemberDtor_009e63f0@4",
+        "@FableMemberDtor_00a379c0@4",
+        "@FableMemberDtor_00a3fd40@4",
+        "@FableMemberDtor_00a9c910@4",
+        "@FableMemberDtor_00a9c980@4",
+        "@FableMemberDtor_00a9c9a0@4",
+        "@FableMemberDtor_00cb6400@4",
+        "@FableMemberDtor_00cd44e0@4",
+        "@FableMemberDtor_00cd45c0@4",
+        "@FableMemberDtor_00cd4fd0@4",
+        "@MemberA48_dtor@4",
+        "@Ring_reset@4",
+        "@dtorB@4"
+      ]
+    },
+    {
+      "evidence": "Exact NUL-terminated native literal at relocated operand and object string bytes.",
+      "kind": 6,
+      "literal_text": "Walk2",
+      "offset": "0x3c",
+      "retail_address": "0x012F67E8",
+      "symbol": "??_C@_05CDOGAAOF@Walk2?$AA@"
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x45",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f60fa0",
+        "egor_pdb_names.tsv:00afa5b0"
+      ],
+      "retail_address": "0x0099EBF0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "wrong_spellings_seen": [
+        "??0CCharString2@@QAE@HH@Z",
+        "??0CCharString@@QAE@PBDH@Z",
+        "??0CCharString@ExternalRetry_00835c80@@QAE@PBDH@Z",
+        "??0CCharString@NFactory007f1b70@@QAE@PBDH@Z",
+        "??0CCharString@NScreen005fc2d0@@QAE@PBDH@Z",
+        "??0CCharString@NScreen005fc8a0@@QAE@PBDH@Z",
+        "??0CCharString@X_006c8780@@QAE@PBDH@Z",
+        "??0CCharString@X_006e11f0@@QAE@PBDH@Z",
+        "??0CDeedReactionName@@QAE@HH@Z",
+        "??0CRetailString@@QAE@PBDJ@Z",
+        "??0CSectionName@@QAE@PBDH@Z",
+        "??0InitGuard@@QAE@PAHH@Z",
+        "??0ScopedGuard@@QAE@PBDH@Z",
+        "?Ctor@CCharString@@QAEXPBDH@Z",
+        "?Do@Helper@@QAEXPBDH@Z",
+        "?Init@CCharString@@QAEXPBDH@Z",
+        "?LookupActionName@CActionDoCreatureAction@@QAEXPBDH@Z",
+        "?ctor@CCharString@@QAEPAV1@PBDH@Z",
+        "?ctor@CCharString@@QAEXPBDH@Z",
+        "?ctor@Str@@QAEXPBDH@Z",
+        "?ctorB@CCharString@@QAEPAV1@PBDH@Z",
+        "?ctor_99ebf0@CCharString@@QAEPAV1@PBDH@Z",
+        "?m@GAN004d2a91@@QAEPAXPAXH@Z",
+        "?m@GAN004d2b04@@QAEPAXPAXH@Z",
+        "?m@GAN004d2b17@@QAEPAXPAXH@Z",
+        "?m@GAN004d2b7a@@QAEPAXPAXH@Z",
+        "?m@GAN004d2b8d@@QAEPAXPAXH@Z",
+        "?m@GAN004d2ba0@@QAEPAXPAXH@Z",
+        "?m@GAN004d2bb3@@QAEPAXPAXH@Z",
+        "?m@GAN004d2bc6@@QAEPAXPAXH@Z",
+        "?m@GAN004d2bd9@@QAEPAXPAXH@Z",
+        "?m@GAN004d2bec@@QAEPAXPAXH@Z",
+        "?m@GAN004d2bff@@QAEPAXPAXH@Z",
+        "?m@GAN004d2c2f@@QAEPAXPAXH@Z",
+        "?m@GAN004d2c42@@QAEPAXPAXH@Z",
+        "?m@GAN004d2c55@@QAEPAXPAXH@Z",
+        "?m@GAN004d2c68@@QAEPAXPAXH@Z",
+        "?m@GAN004d2c7b@@QAEPAXPAXH@Z",
+        "?m@GAN004d2c8e@@QAEPAXPAXH@Z",
+        "?m@GAN004d2ca1@@QAEPAXPAXH@Z",
+        "?m@GAN004d2cb4@@QAEPAXPAXH@Z",
+        "?m@GAN004d2cc7@@QAEPAXPAXH@Z",
+        "?m@GAN004d2cda@@QAEPAXPAXH@Z",
+        "?m@GAN004d2ced@@QAEPAXPAXH@Z",
+        "?m@GAN004d2d00@@QAEPAXPAXH@Z",
+        "?m@GAN004d2d13@@QAEPAXPAXH@Z"
+      ]
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x63",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f60f80",
+        "egor_pdb_names.tsv:00afa3f0"
+      ],
+      "retail_address": "0x0099EAE0",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "wrong_spellings_seen": [
+        "??1CCharString2@@QAE@XZ",
+        "??1CCharString@ExternalRetry_00835c80@@QAE@XZ",
+        "??1CCharString@ExternalRetry_008af850@@QAE@XZ",
+        "??1CCharString@N006d41f0@@QAE@XZ",
+        "??1CCharString@N009ac5d0@@QAE@XZ",
+        "??1CCharString@NErase005dcf70@@QAE@XZ",
+        "??1CCharString@NFactory007f1b70@@QAE@XZ",
+        "??1CCharString@NManager00820e20@@QAE@XZ",
+        "??1CCharString@NScreen005fc2d0@@QAE@XZ",
+        "??1CCharString@NScreen005fc8a0@@QAE@XZ",
+        "??1CCharString@NUISystem@@QAE@XZ",
+        "??1CCharString@X_006c8780@@QAE@XZ",
+        "??1CCharString@X_006e11f0@@QAE@XZ",
+        "??1CCharString@X_009eb590@@QAE@XZ",
+        "??1CCharString@std@@QAE@XZ",
+        "??1CDeedReactionName@@QAE@XZ",
+        "??1CInstanceCountedBase@@UAE@XZ",
+        "??1CListMember_0099eae0@@QAE@XZ",
+        "??1CSectionName@@QAE@XZ",
+        "??1CSubObj@@QAE@XZ",
+        "??1GStr@@QAE@XZ",
+        "??1GString@@QAE@XZ",
+        "??1InitGuard@@QAE@XZ",
+        "??1Key@@QAE@XZ",
+        "??1MemberC@@QAE@XZ",
+        "??1ScopedGuard@@QAE@XZ",
+        "??1Str@@QAE@XZ",
+        "??1StrA@@QAE@XZ",
+        "??1StrKey@@QAE@XZ",
+        "??1StrRefB@@QAE@XZ",
+        "?CCharStringDtor@@YIXPAVCCharString@@@Z",
+        "?Cleanup@SubObject@@QAEXXZ",
+        "?Dtor_10dba0@Local10@@QAEXXZ",
+        "?Invoke@AutoTinyReverseLoopTarget@@QAEXXZ",
+        "?OnDie@CTCInventoryItemBase@@QAEXXZ",
+        "?OnDieBase@CTCInventoryItemBase@@QAEXXZ",
+        "?PrimSlotAssign@@YIXPAD@Z",
+        "?Release@PairSlot@@QAEXXZ",
+        "?Ring_dtor@@YIXPAURing@@@Z",
+        "?Sub_dtor@@YIXPAUSub@@@Z",
+        "?destroy@MemberAt8@@QAEXXZ",
+        "?dtor@CMember@@QAIXXZ",
+        "?dtor@Cat@@QAEXXZ",
+        "?dtor@Str@@QAEXXZ",
+        "?memb0c_dtor@@YIXPAX@Z",
+        "@CGlobalDef_dtor_shared@4",
+        "@ElemA_dtor@4",
+        "@FableBaseDtor_0098cec0@4",
+        "@FableBaseDtor_009e63f0@4",
+        "@FableBaseDtor_00a3fd40@4",
+        "@FableBaseDtor_00cb6400@4",
+        "@FableBaseDtor_00cd27b4@4",
+        "@FableBaseDtor_00cd44e0@4",
+        "@FableBaseDtor_00cd45c0@4",
+        "@FableBaseDtor_00cd4fd0@4",
+        "@FableConsume_b59760@4",
+        "@FableMemberDtor_008fe880@4",
+        "@FableMemberDtor_0098cec0@4",
+        "@FableMemberDtor_009e63f0@4",
+        "@FableMemberDtor_00a379c0@4",
+        "@FableMemberDtor_00a3fd40@4",
+        "@FableMemberDtor_00a9c910@4",
+        "@FableMemberDtor_00a9c980@4",
+        "@FableMemberDtor_00a9c9a0@4",
+        "@FableMemberDtor_00cb6400@4",
+        "@FableMemberDtor_00cd44e0@4",
+        "@FableMemberDtor_00cd45c0@4",
+        "@FableMemberDtor_00cd4fd0@4",
+        "@MemberA48_dtor@4",
+        "@Ring_reset@4",
+        "@dtorB@4"
+      ]
+    },
+    {
+      "evidence": "Exact NUL-terminated native literal at relocated operand and object string bytes.",
+      "kind": 6,
+      "literal_text": "Walk3",
+      "offset": "0x6a",
+      "retail_address": "0x012F67E0",
+      "symbol": "??_C@_05DKPNDBKE@Walk3?$AA@"
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x73",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f60fa0",
+        "egor_pdb_names.tsv:00afa5b0"
+      ],
+      "retail_address": "0x0099EBF0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "wrong_spellings_seen": [
+        "??0CCharString2@@QAE@HH@Z",
+        "??0CCharString@@QAE@PBDH@Z",
+        "??0CCharString@ExternalRetry_00835c80@@QAE@PBDH@Z",
+        "??0CCharString@NFactory007f1b70@@QAE@PBDH@Z",
+        "??0CCharString@NScreen005fc2d0@@QAE@PBDH@Z",
+        "??0CCharString@NScreen005fc8a0@@QAE@PBDH@Z",
+        "??0CCharString@X_006c8780@@QAE@PBDH@Z",
+        "??0CCharString@X_006e11f0@@QAE@PBDH@Z",
+        "??0CDeedReactionName@@QAE@HH@Z",
+        "??0CRetailString@@QAE@PBDJ@Z",
+        "??0CSectionName@@QAE@PBDH@Z",
+        "??0InitGuard@@QAE@PAHH@Z",
+        "??0ScopedGuard@@QAE@PBDH@Z",
+        "?Ctor@CCharString@@QAEXPBDH@Z",
+        "?Do@Helper@@QAEXPBDH@Z",
+        "?Init@CCharString@@QAEXPBDH@Z",
+        "?LookupActionName@CActionDoCreatureAction@@QAEXPBDH@Z",
+        "?ctor@CCharString@@QAEPAV1@PBDH@Z",
+        "?ctor@CCharString@@QAEXPBDH@Z",
+        "?ctor@Str@@QAEXPBDH@Z",
+        "?ctorB@CCharString@@QAEPAV1@PBDH@Z",
+        "?ctor_99ebf0@CCharString@@QAEPAV1@PBDH@Z",
+        "?m@GAN004d2a91@@QAEPAXPAXH@Z",
+        "?m@GAN004d2b04@@QAEPAXPAXH@Z",
+        "?m@GAN004d2b17@@QAEPAXPAXH@Z",
+        "?m@GAN004d2b7a@@QAEPAXPAXH@Z",
+        "?m@GAN004d2b8d@@QAEPAXPAXH@Z",
+        "?m@GAN004d2ba0@@QAEPAXPAXH@Z",
+        "?m@GAN004d2bb3@@QAEPAXPAXH@Z",
+        "?m@GAN004d2bc6@@QAEPAXPAXH@Z",
+        "?m@GAN004d2bd9@@QAEPAXPAXH@Z",
+        "?m@GAN004d2bec@@QAEPAXPAXH@Z",
+        "?m@GAN004d2bff@@QAEPAXPAXH@Z",
+        "?m@GAN004d2c2f@@QAEPAXPAXH@Z",
+        "?m@GAN004d2c42@@QAEPAXPAXH@Z",
+        "?m@GAN004d2c55@@QAEPAXPAXH@Z",
+        "?m@GAN004d2c68@@QAEPAXPAXH@Z",
+        "?m@GAN004d2c7b@@QAEPAXPAXH@Z",
+        "?m@GAN004d2c8e@@QAEPAXPAXH@Z",
+        "?m@GAN004d2ca1@@QAEPAXPAXH@Z",
+        "?m@GAN004d2cb4@@QAEPAXPAXH@Z",
+        "?m@GAN004d2cc7@@QAEPAXPAXH@Z",
+        "?m@GAN004d2cda@@QAEPAXPAXH@Z",
+        "?m@GAN004d2ced@@QAEPAXPAXH@Z",
+        "?m@GAN004d2d00@@QAEPAXPAXH@Z",
+        "?m@GAN004d2d13@@QAEPAXPAXH@Z"
+      ]
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x91",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f60f80",
+        "egor_pdb_names.tsv:00afa3f0"
+      ],
+      "retail_address": "0x0099EAE0",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "wrong_spellings_seen": [
+        "??1CCharString2@@QAE@XZ",
+        "??1CCharString@ExternalRetry_00835c80@@QAE@XZ",
+        "??1CCharString@ExternalRetry_008af850@@QAE@XZ",
+        "??1CCharString@N006d41f0@@QAE@XZ",
+        "??1CCharString@N009ac5d0@@QAE@XZ",
+        "??1CCharString@NErase005dcf70@@QAE@XZ",
+        "??1CCharString@NFactory007f1b70@@QAE@XZ",
+        "??1CCharString@NManager00820e20@@QAE@XZ",
+        "??1CCharString@NScreen005fc2d0@@QAE@XZ",
+        "??1CCharString@NScreen005fc8a0@@QAE@XZ",
+        "??1CCharString@NUISystem@@QAE@XZ",
+        "??1CCharString@X_006c8780@@QAE@XZ",
+        "??1CCharString@X_006e11f0@@QAE@XZ",
+        "??1CCharString@X_009eb590@@QAE@XZ",
+        "??1CCharString@std@@QAE@XZ",
+        "??1CDeedReactionName@@QAE@XZ",
+        "??1CInstanceCountedBase@@UAE@XZ",
+        "??1CListMember_0099eae0@@QAE@XZ",
+        "??1CSectionName@@QAE@XZ",
+        "??1CSubObj@@QAE@XZ",
+        "??1GStr@@QAE@XZ",
+        "??1GString@@QAE@XZ",
+        "??1InitGuard@@QAE@XZ",
+        "??1Key@@QAE@XZ",
+        "??1MemberC@@QAE@XZ",
+        "??1ScopedGuard@@QAE@XZ",
+        "??1Str@@QAE@XZ",
+        "??1StrA@@QAE@XZ",
+        "??1StrKey@@QAE@XZ",
+        "??1StrRefB@@QAE@XZ",
+        "?CCharStringDtor@@YIXPAVCCharString@@@Z",
+        "?Cleanup@SubObject@@QAEXXZ",
+        "?Dtor_10dba0@Local10@@QAEXXZ",
+        "?Invoke@AutoTinyReverseLoopTarget@@QAEXXZ",
+        "?OnDie@CTCInventoryItemBase@@QAEXXZ",
+        "?OnDieBase@CTCInventoryItemBase@@QAEXXZ",
+        "?PrimSlotAssign@@YIXPAD@Z",
+        "?Release@PairSlot@@QAEXXZ",
+        "?Ring_dtor@@YIXPAURing@@@Z",
+        "?Sub_dtor@@YIXPAUSub@@@Z",
+        "?destroy@MemberAt8@@QAEXXZ",
+        "?dtor@CMember@@QAIXXZ",
+        "?dtor@Cat@@QAEXXZ",
+        "?dtor@Str@@QAEXXZ",
+        "?memb0c_dtor@@YIXPAX@Z",
+        "@CGlobalDef_dtor_shared@4",
+        "@ElemA_dtor@4",
+        "@FableBaseDtor_0098cec0@4",
+        "@FableBaseDtor_009e63f0@4",
+        "@FableBaseDtor_00a3fd40@4",
+        "@FableBaseDtor_00cb6400@4",
+        "@FableBaseDtor_00cd27b4@4",
+        "@FableBaseDtor_00cd44e0@4",
+        "@FableBaseDtor_00cd45c0@4",
+        "@FableBaseDtor_00cd4fd0@4",
+        "@FableConsume_b59760@4",
+        "@FableMemberDtor_008fe880@4",
+        "@FableMemberDtor_0098cec0@4",
+        "@FableMemberDtor_009e63f0@4",
+        "@FableMemberDtor_00a379c0@4",
+        "@FableMemberDtor_00a3fd40@4",
+        "@FableMemberDtor_00a9c910@4",
+        "@FableMemberDtor_00a9c980@4",
+        "@FableMemberDtor_00a9c9a0@4",
+        "@FableMemberDtor_00cb6400@4",
+        "@FableMemberDtor_00cd44e0@4",
+        "@FableMemberDtor_00cd45c0@4",
+        "@FableMemberDtor_00cd4fd0@4",
+        "@MemberA48_dtor@4",
+        "@Ring_reset@4",
+        "@dtorB@4"
+      ]
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 6,
+      "offset": "0x9a",
+      "pdb_sources": [],
+      "retail_address": "0x012C32F0",
+      "symbol": "??_7CIsThingAlive@NScript@@6B@",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0xa8",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:018cd760",
+        "egor_pdb_names.tsv:00429c30"
+      ],
+      "retail_address": "0x004ABE90",
+      "symbol": "??0CScriptThing@@QAE@ABV0@@Z",
+      "wrong_spellings_seen": [
+        "??0CAliveScriptThing@@QAE@ABVCScriptThing@@@Z",
+        "??0CElement12_004abe90@@QAE@ABU0@@Z",
+        "??0CScriptThing@@QAE@PAX@Z",
+        "??0CScriptThingCopy@@QAE@ABVCScriptThing@@@Z",
+        "??0CScriptThingRetail@@QAE@ABU0@@Z",
+        "??0CScriptThingStored@@QAE@ABUCScriptThingParam@@@Z",
+        "??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z",
+        "??0CScriptThing_Calls@@QAE@ABU0@@Z",
+        "??0ScriptThingCopy@@QAE@ABVCScriptThing@@@Z",
+        "?HandleNull@CScriptThing@@QAEXPAV1@@Z"
+      ]
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0xba",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:018cd760",
+        "egor_pdb_names.tsv:00429c30"
+      ],
+      "retail_address": "0x004ABE90",
+      "symbol": "??0CScriptThing@@QAE@ABV0@@Z",
+      "wrong_spellings_seen": [
+        "??0CAliveScriptThing@@QAE@ABVCScriptThing@@@Z",
+        "??0CElement12_004abe90@@QAE@ABU0@@Z",
+        "??0CScriptThing@@QAE@PAX@Z",
+        "??0CScriptThingCopy@@QAE@ABVCScriptThing@@@Z",
+        "??0CScriptThingRetail@@QAE@ABU0@@Z",
+        "??0CScriptThingStored@@QAE@ABUCScriptThingParam@@@Z",
+        "??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z",
+        "??0CScriptThing_Calls@@QAE@ABU0@@Z",
+        "??0ScriptThingCopy@@QAE@ABVCScriptThing@@@Z",
+        "?HandleNull@CScriptThing@@QAEXPAV1@@Z"
+      ]
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0xcc",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:018cd760",
+        "egor_pdb_names.tsv:00429c30"
+      ],
+      "retail_address": "0x004ABE90",
+      "symbol": "??0CScriptThing@@QAE@ABV0@@Z",
+      "wrong_spellings_seen": [
+        "??0CAliveScriptThing@@QAE@ABVCScriptThing@@@Z",
+        "??0CElement12_004abe90@@QAE@ABU0@@Z",
+        "??0CScriptThing@@QAE@PAX@Z",
+        "??0CScriptThingCopy@@QAE@ABVCScriptThing@@@Z",
+        "??0CScriptThingRetail@@QAE@ABU0@@Z",
+        "??0CScriptThingStored@@QAE@ABUCScriptThingParam@@@Z",
+        "??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z",
+        "??0CScriptThing_Calls@@QAE@ABU0@@Z",
+        "??0ScriptThingCopy@@QAE@ABVCScriptThing@@@Z",
+        "?HandleNull@CScriptThing@@QAEXPAV1@@Z"
+      ]
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0xdd",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:018cd760",
+        "egor_pdb_names.tsv:00429c30"
+      ],
+      "retail_address": "0x004ABE90",
+      "symbol": "??0CScriptThing@@QAE@ABV0@@Z",
+      "wrong_spellings_seen": [
+        "??0CAliveScriptThing@@QAE@ABVCScriptThing@@@Z",
+        "??0CElement12_004abe90@@QAE@ABU0@@Z",
+        "??0CScriptThing@@QAE@PAX@Z",
+        "??0CScriptThingCopy@@QAE@ABVCScriptThing@@@Z",
+        "??0CScriptThingRetail@@QAE@ABU0@@Z",
+        "??0CScriptThingStored@@QAE@ABUCScriptThingParam@@@Z",
+        "??0CScriptThingStored@@QAE@ABUCScriptThingRuntime@@@Z",
+        "??0CScriptThing_Calls@@QAE@ABU0@@Z",
+        "??0ScriptThingCopy@@QAE@ABVCScriptThing@@@Z",
+        "?HandleNull@CScriptThing@@QAEXPAV1@@Z"
+      ]
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0xf3",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:03b39bd0",
+        "egor_pdb_names.tsv:00e6a540"
+      ],
+      "retail_address": "0x00E24760",
+      "symbol": "??0?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@QAE@ABVCIsThingAlive@1@0@Z",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x10c",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:03b39cf0",
+        "egor_pdb_names.tsv:00f70870"
+      ],
+      "retail_address": "0x00EF5BC0",
+      "symbol": "??0?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@QAE@ABV?$CPredicate_And@VCIsThingAlive@NScript@@V12@@1@ABVCIsThingAlive@1@@Z",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x125",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:03b39d80"
+      ],
+      "retail_address": "0x00EF6F00",
+      "symbol": "??0?$CPredicate_And@V?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@VCIsThingAlive@2@@NScript@@QAE@ABV?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@1@ABVCIsThingAlive@1@@Z",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x134",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:03b7b430",
+        "egor_pdb_names.tsv:00fa9e50"
+      ],
+      "retail_address": "0x00F35B10",
+      "symbol": "?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 6,
+      "offset": "0x146",
+      "pdb_sources": [],
+      "retail_address": "0x012F6780",
+      "symbol": "??_7?$CPredicate_And@V?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@VCIsThingAlive@2@@NScript@@6B@",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x14b",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:035e7680",
+        "egor_pdb_names.tsv:00cc4a80"
+      ],
+      "retail_address": "0x00E241B0",
+      "symbol": "??1CIsThingAlive@NScript@@UAE@XZ",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 6,
+      "offset": "0x15d",
+      "pdb_sources": [],
+      "retail_address": "0x012F6628",
+      "symbol": "??_7?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@6B@",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x162",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:035e7680",
+        "egor_pdb_names.tsv:00cc4a80"
+      ],
+      "retail_address": "0x00E241B0",
+      "symbol": "??1CIsThingAlive@NScript@@UAE@XZ",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 6,
+      "offset": "0x174",
+      "pdb_sources": [],
+      "retail_address": "0x012E1B70",
+      "symbol": "??_7?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@6B@",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x179",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:035e7680",
+        "egor_pdb_names.tsv:00cc4a80"
+      ],
+      "retail_address": "0x00E241B0",
+      "symbol": "??1CIsThingAlive@NScript@@UAE@XZ",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x185",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:035e7680",
+        "egor_pdb_names.tsv:00cc4a80"
+      ],
+      "retail_address": "0x00E241B0",
+      "symbol": "??1CIsThingAlive@NScript@@UAE@XZ",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 6,
+      "offset": "0x18a",
+      "pdb_sources": [],
+      "retail_address": "0x012C2FF4",
+      "symbol": "??_7CPredicateBase@NScript@@6B@",
+      "wrong_spellings_seen": [
+        "??_7?$CPredicate@UCScriptThing@NScript@@@NScript@@6B@",
+        "??_7CFilterBase@@6B@",
+        "??_7CThingFunctorBase_012c2ff4@@6B@",
+        "??_7CVtable_012c2ff4@@6B@"
+      ]
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 6,
+      "offset": "0x1b1",
+      "pdb_sources": [],
+      "retail_address": "0x012F6628",
+      "symbol": "??_7?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@6B@",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x1b6",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:035e7680",
+        "egor_pdb_names.tsv:00cc4a80"
+      ],
+      "retail_address": "0x00E241B0",
+      "symbol": "??1CIsThingAlive@NScript@@UAE@XZ",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 6,
+      "offset": "0x1c8",
+      "pdb_sources": [],
+      "retail_address": "0x012E1B70",
+      "symbol": "??_7?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@6B@",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x1cd",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:035e7680",
+        "egor_pdb_names.tsv:00cc4a80"
+      ],
+      "retail_address": "0x00E241B0",
+      "symbol": "??1CIsThingAlive@NScript@@UAE@XZ",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x1d9",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:035e7680",
+        "egor_pdb_names.tsv:00cc4a80"
+      ],
+      "retail_address": "0x00E241B0",
+      "symbol": "??1CIsThingAlive@NScript@@UAE@XZ",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 6,
+      "offset": "0x1f9",
+      "pdb_sources": [],
+      "retail_address": "0x012E1B70",
+      "symbol": "??_7?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@6B@",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x1fe",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:035e7680",
+        "egor_pdb_names.tsv:00cc4a80"
+      ],
+      "retail_address": "0x00E241B0",
+      "symbol": "??1CIsThingAlive@NScript@@UAE@XZ",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x20a",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:035e7680",
+        "egor_pdb_names.tsv:00cc4a80"
+      ],
+      "retail_address": "0x00E241B0",
+      "symbol": "??1CIsThingAlive@NScript@@UAE@XZ",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x21a",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:035e7680",
+        "egor_pdb_names.tsv:00cc4a80"
+      ],
+      "retail_address": "0x00E241B0",
+      "symbol": "??1CIsThingAlive@NScript@@UAE@XZ",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x223",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:035e7680",
+        "egor_pdb_names.tsv:00cc4a80"
+      ],
+      "retail_address": "0x00E241B0",
+      "symbol": "??1CIsThingAlive@NScript@@UAE@XZ",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x22c",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:035e7680",
+        "egor_pdb_names.tsv:00cc4a80"
+      ],
+      "retail_address": "0x00E241B0",
+      "symbol": "??1CIsThingAlive@NScript@@UAE@XZ",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x235",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:035e7680",
+        "egor_pdb_names.tsv:00cc4a80"
+      ],
+      "retail_address": "0x00E241B0",
+      "symbol": "??1CIsThingAlive@NScript@@UAE@XZ",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x244",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:03b7b460",
+        "egor_pdb_names.tsv:00fa9e70"
+      ],
+      "retail_address": "0x00F35B30",
+      "symbol": "?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 6,
+      "offset": "0x259",
+      "pdb_sources": [
+        "Ego_r raw symbol stream8:0x1c528"
+      ],
+      "retail_address": "0x01238C8C",
+      "symbol": "??_7CScriptThing@@6B@",
+      "wrong_spellings_seen": [
+        "??_7CEvent_00d16780@@6B@",
+        "??_7CEvent_00d2d530@@6B@",
+        "??_7CEvent_00d97360@@6B@",
+        "??_7CEvent_00d9d8f0@@6B@",
+        "??_7CEvent_00da29b0@@6B@",
+        "??_7CEvent_00da77f0@@6B@",
+        "??_7CEvent_00dca660@@6B@",
+        "??_7CEvent_00de8300@@6B@",
+        "??_7CEvent_00e05130@@6B@",
+        "??_7CEvent_00e0de50@@6B@",
+        "??_7CEvent_00e1f5e0@@6B@",
+        "??_7CEvent_00e2e8c0@@6B@",
+        "??_7CEvent_00e36970@@6B@",
+        "??_7CEvent_00e39100@@6B@",
+        "??_7CEvent_00e54060@@6B@",
+        "??_7CEvent_00e6b200@@6B@",
+        "??_7CEvent_00e7c670@@6B@",
+        "??_7CEvent_00e8d0a0@@6B@",
+        "??_7CEvent_00e9def0@@6B@",
+        "??_7CEvent_00ea7610@@6B@",
+        "??_7CEvent_00ec52f0@@6B@",
+        "??_7CEvent_00ed7580@@6B@",
+        "??_7CEvent_00ed9960@@6B@",
+        "??_7CEvent_00edce60@@6B@",
+        "??_7CEvent_00ef8cc0@@6B@",
+        "??_7CEvent_00f06370@@6B@",
+        "??_7CScriptThingArg@@6B@",
+        "??_7CScriptThingConstructorView@@6B@",
+        "??_7CScriptThingInline@@6B@",
+        "??_7CScriptThingParam@@6B@",
+        "??_7CScriptThingRuntime@@6B@",
+        "??_7CScriptThing_Retail@@6B@",
+        "??_7ScriptMethods@@6B@"
+      ]
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x279",
+      "pdb_sources": [],
+      "retail_address": "0x00BFE9BC",
+      "symbol": "??3@YAXPAX@Z",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x28d",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:03044720",
+        "egor_pdb_names.tsv:00b01f30"
+      ],
+      "retail_address": "0x0099A2E0",
+      "symbol": "??1CBaseClass@@UAE@XZ",
+      "wrong_spellings_seen": [
+        "??1CBase@@UAE@XZ",
+        "??1CBase@NParticleEngine@@QAE@XZ",
+        "??1CBaseClass@ExternalRetry_00a90fc0@@UAE@XZ",
+        "??1CBaseClass@ExternalRetry_00a91390@@UAE@XZ",
+        "??1CBase_0099a2e0@@QAE@XZ",
+        "?BaseOnDie@CTCInventoryItem@@QAEXXZ",
+        "?OnDie@CInventoryItemBase@@QAEXXZ"
+      ]
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x2b3",
+      "pdb_sources": [],
+      "retail_address": "0x00BFE9BC",
+      "symbol": "??3@YAXPAX@Z",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x2c7",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:03044720",
+        "egor_pdb_names.tsv:00b01f30"
+      ],
+      "retail_address": "0x0099A2E0",
+      "symbol": "??1CBaseClass@@UAE@XZ",
+      "wrong_spellings_seen": [
+        "??1CBase@@UAE@XZ",
+        "??1CBase@NParticleEngine@@QAE@XZ",
+        "??1CBaseClass@ExternalRetry_00a90fc0@@UAE@XZ",
+        "??1CBaseClass@ExternalRetry_00a91390@@UAE@XZ",
+        "??1CBase_0099a2e0@@QAE@XZ",
+        "?BaseOnDie@CTCInventoryItem@@QAEXXZ",
+        "?OnDie@CInventoryItemBase@@QAEXXZ"
+      ]
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x2ed",
+      "pdb_sources": [],
+      "retail_address": "0x00BFE9BC",
+      "symbol": "??3@YAXPAX@Z",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x301",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:03044720",
+        "egor_pdb_names.tsv:00b01f30"
+      ],
+      "retail_address": "0x0099A2E0",
+      "symbol": "??1CBaseClass@@UAE@XZ",
+      "wrong_spellings_seen": [
+        "??1CBase@@UAE@XZ",
+        "??1CBase@NParticleEngine@@QAE@XZ",
+        "??1CBaseClass@ExternalRetry_00a90fc0@@UAE@XZ",
+        "??1CBaseClass@ExternalRetry_00a91390@@UAE@XZ",
+        "??1CBase_0099a2e0@@QAE@XZ",
+        "?BaseOnDie@CTCInventoryItem@@QAEXXZ",
+        "?OnDie@CInventoryItemBase@@QAEXXZ"
+      ]
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x314",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:03044af0",
+        "egor_pdb_names.tsv:00b01fd0"
+      ],
+      "retail_address": "0x0099A380",
+      "symbol": "??0CBaseObject@@IAE@XZ",
+      "wrong_spellings_seen": [
+        "??0CBaseObject@@QAE@XZ",
+        "??0CVillageTask@@QAE@XZ",
+        "?InitializeCBaseObject@ScriptResource@@QAEXXZ"
+      ]
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 6,
+      "offset": "0x322",
+      "pdb_sources": [],
+      "retail_address": "0x0127094C",
+      "symbol": "??_7CScriptGameResourceObjectScriptedThingBase@@6B@",
+      "wrong_spellings_seen": [
+        "?ResourceVTable@@3QBEB"
+      ]
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x32f",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:035a07ca"
+      ],
+      "retail_address": "0x00CD23B9",
+      "symbol": "?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x33c",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:035c5b25",
+        "egor_pdb_names.tsv:00cb4574"
+      ],
+      "retail_address": "0x00CD2770",
+      "symbol": "?Release@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x35f",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:03b7b460",
+        "egor_pdb_names.tsv:00fa9e70"
+      ],
+      "retail_address": "0x00F35B30",
+      "symbol": "?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x382",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:03b7b460",
+        "egor_pdb_names.tsv:00fa9e70"
+      ],
+      "retail_address": "0x00F35B30",
+      "symbol": "?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x38d",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:03b7b460",
+        "egor_pdb_names.tsv:00fa9e70"
+      ],
+      "retail_address": "0x00F35B30",
+      "symbol": "?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x3a8",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:027a7b20",
+        "egor_pdb_names.tsv:007e2b90"
+      ],
+      "retail_address": "0x007E7300",
+      "symbol": "?MoveToThing@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@MW4EScriptEntityMoveType@@_N222@Z",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x3bf",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:027a7b20",
+        "egor_pdb_names.tsv:007e2b90"
+      ],
+      "retail_address": "0x007E7300",
+      "symbol": "?MoveToThing@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@MW4EScriptEntityMoveType@@_N222@Z",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x3d6",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:027a7b20",
+        "egor_pdb_names.tsv:007e2b90"
+      ],
+      "retail_address": "0x007E7300",
+      "symbol": "?MoveToThing@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@MW4EScriptEntityMoveType@@_N222@Z",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x3e5",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:03b7b460",
+        "egor_pdb_names.tsv:00fa9e70"
+      ],
+      "retail_address": "0x00F35B30",
+      "symbol": "?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ",
+      "wrong_spellings_seen": []
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x3f2",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:027aac30"
+      ],
+      "retail_address": "0x007E74D0",
+      "symbol": "??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ",
+      "wrong_spellings_seen": [
+        "??1ScriptResource@@QAE@XZ",
+        "?Destroy@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ"
+      ]
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x3fb",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:018c4c50",
+        "egor_pdb_names.tsv:00429200"
+      ],
+      "retail_address": "0x004AA840",
+      "symbol": "??1CScriptThing@@UAE@XZ",
+      "wrong_spellings_seen": [
+        "??1CScriptThing@@QAE@XZ",
+        "??1CScriptThingCopy@@UAE@XZ",
+        "??1CScriptThingParam@@UAE@XZ",
+        "??1CScriptThingRuntime@@UAE@XZ",
+        "??1ScriptMethods@@UAE@XZ",
+        "??1ScriptThingCopy@@QAE@XZ"
+      ]
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x404",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:018c4c50",
+        "egor_pdb_names.tsv:00429200"
+      ],
+      "retail_address": "0x004AA840",
+      "symbol": "??1CScriptThing@@UAE@XZ",
+      "wrong_spellings_seen": [
+        "??1CScriptThing@@QAE@XZ",
+        "??1CScriptThingCopy@@UAE@XZ",
+        "??1CScriptThingParam@@UAE@XZ",
+        "??1CScriptThingRuntime@@UAE@XZ",
+        "??1ScriptMethods@@UAE@XZ",
+        "??1ScriptThingCopy@@QAE@XZ"
+      ]
+    },
+    {
+      "evidence": "Exact PDB symbol plus native ordered receiver/call ABI; native vtables, constructor element layout and original predicate templates additionally confirm nested identities.",
+      "kind": 20,
+      "offset": "0x40d",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:018c4c50",
+        "egor_pdb_names.tsv:00429200"
+      ],
+      "retail_address": "0x004AA840",
+      "symbol": "??1CScriptThing@@UAE@XZ",
+      "wrong_spellings_seen": [
+        "??1CScriptThing@@QAE@XZ",
+        "??1CScriptThingCopy@@UAE@XZ",
+        "??1CScriptThingParam@@UAE@XZ",
+        "??1CScriptThingRuntime@@UAE@XZ",
+        "??1ScriptMethods@@UAE@XZ",
+        "??1ScriptThingCopy@@QAE@XZ"
+      ]
+    }
+  ],
+  "selected_attempt": 5,
+  "source_sha256": "e313b8fab659362755bf2e4e7ca98e8dc4936f62af4da875bf7417a2f7c49373",
+  "status": "ALL_LEAF_RELOCATIONS_PROVEN"
+}

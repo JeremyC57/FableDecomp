@@ -1,0 +1,975 @@
+row	kind	symbol	target	verdict	note
+00402510	leaf	?GFMain@@YIJPAUHINSTANCE__@@PADH@Z	00402510	PDB_OTHERS_BOUND	1 other bound spellings: @GFMain@12
+00402510	reloc	___security_cookie	0139c8a8	NOT_IN_PDB_SETS	
+00402510	reloc	??0CCharString@@QAE@PBDJ@Z	0099ebf0	PDB_OTHERS_BOUND	46 other bound spellings: ??0CCharString2@@QAE@HH@Z; ??0CCharString@@QAE@PBDH@Z; ??0CCharString@ExternalRetry_00835c80@@QAE@PBDH@Z
+00402510	reloc	?StartProfile@NProfileTimer@@YIXABVCCharString@@J@Z	009d8240	PDB_OTHERS_BOUND	1 other bound spellings: ?LoadingStage@@YIXABVCCharString@@J@Z
+00402510	reloc	??1CCharString@@QAE@XZ	0099eae0	PDB_OTHERS_BOUND	71 other bound spellings: ??1CCharString2@@QAE@XZ; ??1CCharString@ExternalRetry_00835c80@@QAE@XZ; ??1CCharString@ExternalRetry_008af850@@QAE@XZ
+00402510	reloc	??0CSystemManagerInit@@QAE@XZ	00403b10	OK	
+00402510	reloc	??0CWideString@@QAE@XZ	0099aed0	PDB_OTHERS_BOUND	11 other bound spellings: ??0CBase_005b15c2@@QAE@XZ; ??0CBase_005b1fbc@@QAE@XZ; ??0CNameString_0099aed0@@QAE@XZ
+00402510	reloc	?DoDirtyDisc@@YIXXZ	0041a710	OK	
+00402510	reloc	?m_errorCallback@CAFile@@0P6IXXZA	013bc9fc	NOT_IN_PDB_SETS	1 other bound spellings: ?g_pfnAssertionFailed@@3P6AXXZA
+00402510	reloc	?m_errorCallback@CThreadedFileManager@@0P6IXXZA	013bc860	NOT_IN_PDB_SETS	
+00402510	reloc	?GFHardDiskError@@YIXPBD@Z	00401b60	OK	
+00402510	reloc	?m_harddiskErrorCallback@CAFile@@0P6IXPBD@ZA	013bca00	NOT_IN_PDB_SETS	1 other bound spellings: ?DebugMessage@@3P6IXPBD@ZA
+00402510	reloc	?m_harddiskErrorCallback@CThreadedFileManager@@0P6IXPBD@ZA	013bc864	NOT_IN_PDB_SETS	1 other bound spellings: ?HardDiskErrorCallback@CThreadedFileManager@@0P6IXPBD@ZA
+00402510	reloc	?GetProjectPath@CAFile@@SI?AVCWideString@@XZ	00997510	OK	
+00402510	reloc	?SetCurrentPath@CAFile@@SIXABVCWideString@@@Z	009974f0	OK	
+00402510	reloc	??1CWideString@@QAE@XZ	0099b510	PDB_OTHERS_BOUND	17 other bound spellings: ??1CWideString@AFileSupport@@QAE@XZ; ??1CWideString@ExternalRetry_00999620@@QAE@XZ; ??1CWideString@N006bebf0@@QAE@XZ
+00402510	reloc	?StartupConsoleEnabled_0137548f@@3_NA	0137548f	NOT_IN_PDB_SETS	1 other bound spellings: ?g_bFrontEndFlag_137548F@@3_NA
+00402510	reloc	?Initialise@NGlobalConsole@@YIXXZ	00413c50	OK	
+00402510	reloc	?EndProfile@NProfileTimer@@YIXJ@Z	009d8250	PDB_OTHERS_BOUND	1 other bound spellings: ?LoadingStageDone@@YIXJ@Z
+00402510	reloc	?GAllowWADGeneration@@3_NA	01375459	NOT_IN_PDB_SETS	1 other bound spellings: ?g_WADBuildEnabled@@3_NA
+00402510	reloc	?CreateCompiledDefs@CDefinitionManager@@1_NA	0138e188	NOT_IN_PDB_SETS	1 other bound spellings: ?g_bSaveBinaryDefinitions@@3_NA
+00402510	reloc	?CreateChecksums@CDefinitionManager@@1_NA	0138e189	NOT_IN_PDB_SETS	2 other bound spellings: ?g_bCheckDefDependencies@@3_NA; ?g_bDefsCompiling@@3_NA
+00402510	reloc	?SaveSoundSymbols_0138dd3b@@3_NA	0138dd3b	NOT_IN_PDB_SETS	1 other bound spellings: ?g_bSaveBinarySoundSymbols@@3_NA
+00402510	reloc	?GUseCompiledSoundSymbols@@3_NA	013b8619	NOT_IN_PDB_SETS	1 other bound spellings: ?g_bUseCompiledSoundSymbols@@3_NA
+00402510	reloc	?LoadSoundSymbols_013bc9f0@@3_NA	013bc9f0	NOT_IN_PDB_SETS	1 other bound spellings: ?g_bLoadBinarySoundSymbols@@3_NA
+00402510	reloc	?GRunFromDVD@@3_NA	013b8615	NOT_IN_PDB_SETS	1 other bound spellings: ?g_bRunFromDVD@@3_NA
+00402510	reloc	?GPreventInstallation@@3_NA	01375447	NOT_IN_PDB_SETS	
+00402510	reloc	?GIgnoreTimestampOnInstall@@3_NA	013b860b	NOT_IN_PDB_SETS	
+00402510	reloc	?Get@?$CTBaseSingleton@VCFileInstaller@@@@SIAAVCFileInstaller@@XZ	00404440	PDB_OTHERS_BOUND	2 other bound spellings: ?Get@CFileInstaller@@SIPAV1@XZ; ?Get@CFileInstallerSingleton@@SIAAVCFileInstaller@@XZ
+00402510	reloc	?GStartVTuneDisabled@@3_NA	013b8634	NOT_IN_PDB_SETS	
+00402510	reloc	?ClearStartupLatch_009d81e0@@YIXXZ	009d81e0	NOT_IN_PDB_SETS	
+00402510	reloc	?GUseAsyncLoadingMemoryHandler@@3_NA	01375457	NOT_IN_PDB_SETS	
+00402510	reloc	?SetEnableFailureHandling@CBankFileAsync@@SIX_N@Z	009d5240	OK	
+00402510	reloc	?PClass@?$CTBaseSingleton@VCFileInstaller@@@@0V?$CCountedPointer@VCFileInstaller@@@@A	013ca818	NOT_IN_PDB_SETS	6 other bound spellings: ?Instance@?$CTBaseSingleton@VCFileInstaller@@@@2V?$CCountedPointer@VCFileInstaller@@@@A; ?Instance@CFileInstallerSingleton@@2V?$CCountedPointer@VCFileInstaller@@@@A; ?PInstance@?$CTBaseSingleton@VCFileInstaller@@@@2PAVCFileInstaller@@A
+00402510	reloc	??3@YAXPAX@Z	00bfe9bc	NOT_IN_PDB_SETS	
+00402510	reloc	?GetLanguageFolder@NLocalisation@@YI?AVCCharString@@XZ	00415530	OK	
+00402510	reloc	?ToWideString@CCharString@@QBE?AVCWideString@@XZ	0099e480	OK	
+00402510	reloc	??H@YI?AVCWideString@@PBGABV0@@Z	0099bff0	NOT_IN_PDB_SETS	2 other bound spellings: ??H@YI?AVCWideString@@PB_WABV0@@Z; ??HNGameText@@YI?AUCWideString@0@PBGABU10@@Z
+00402510	reloc	??H@YI?AVCWideString@@ABV0@PBG@Z	0099bf30	NOT_IN_PDB_SETS	1 other bound spellings: ??H@YI?AVCWideString@@ABV0@PB_W@Z
+00402510	reloc	?PathExists@CAFile@@SI_NABVCWideString@@@Z	00999230	PDB_OTHERS_BOUND	3 other bound spellings: ?Check@CWideString@@QAE_NXZ; ?PathExists@CAFile@ExternalRetry_00999620@@SI_NABUCWideString@2@@Z; ?PathExists@CWideString@@QBE_NXZ
+00402510	reloc	??0CDiskFileWin32@@QAE@ABVCWideString@@W4FileAccessType@@K@Z	0099ad80	OK	
+00402510	reloc	??0CCharString@@QAE@XZ	0099e4b0	PDB_OTHERS_BOUND	9 other bound spellings: ??0CCharString@N006d41f0@@QAE@XZ; ??0CCharStringFmt@@QAE@XZ; ??0CCharStringMember@@QAE@XZ
+00402510	reloc	?LoadFromFile@CCharString@@QAEXAAVCAFile@@PAVCASuspendableProcess@@J@Z	0099f2e0	PDB_OTHERS_BOUND	1 other bound spellings: ?LoadFromFile@CCharString@@QAEXPAVCAFile@@PAVCASuspendableProcess@@J@Z
+00402510	reloc	??0CStringParser@@QAE@ABVCCharString@@P6IX0@Z0J@Z	00404720	OK	
+00402510	reloc	??0CPersistContext@@QAE@AAVCStringParser@@P6IXABVCCharString@@@Z_NPBVCDefinitionManager@@PBVCSymbolMap@@PAV2@@Z	009badd0	PDB_OTHERS_BOUND	1 other bound spellings: ??0CPersistContext@@QAE@PAVCStringParser@@P6AXPAVCCharString@@@Z_NPAVCDefinitionManager@@PAVCSymbolMap@@1@Z
+00402510	reloc	?GLeftAlignText@@3_NA	013b861b	NOT_IN_PDB_SETS	
+00402510	reloc	??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z	004045c0	PDB_OTHERS_BOUND	3 other bound spellings: ?Transfer@CPersistContext@@QAEXPBDAACABC@Z; ?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z; ?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z
+00402510	reloc	?GNoHangulWordWrap@@3_NA	013b861c	NOT_IN_PDB_SETS	
+00402510	reloc	?GDisableCapsLock@@3_NA	013b864f	NOT_IN_PDB_SETS	
+00402510	reloc	?LoadIMESettings@CIME@NUISystem@@SIXAAVCPersistContext@@@Z	00405350	OK	QUEUE_CORRECT_IS: (two landed sources) (c716)
+00402510	reloc	??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ	004046b0	NOT_IN_PDB_SETS	1 other bound spellings: ??1?$list@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ
+00402510	reloc	??1CBaseClass@@UAE@XZ	0099a2e0	PDB_OTHERS_BOUND	7 other bound spellings: ??1CBase@@UAE@XZ; ??1CBase@NParticleEngine@@QAE@XZ; ??1CBaseClass@ExternalRetry_00a90fc0@@UAE@XZ
+00402510	reloc	??_7CDiskFileWin32@@6B@	0122d06c	NOT_IN_PDB_SETS	
+00402510	reloc	?Close@CDiskFileWin32@@UAEXXZ	0099a920	PDB_OTHERS_BOUND	1 other bound spellings: ?Member599270@@YIXPAX@Z
+00402510	reloc	??1CBaseClassNonCopyable@@MAE@XZ	0099a300	PDB_OTHERS_BOUND	29 other bound spellings: ??1CBaseClass@NFactory006ac910@@UAE@XZ; ??1CBaseClassNonCopyable@@QAE@XZ; ??1CBaseClassNonCopyable@@UAE@XZ
+00402510	reloc	?SetLeftAlignText@CXMVPlayer@@SIX_N@Z	009bc890	OK	
+00402510	reloc	?SetNoHangulWordWrap@CXMVPlayer@@SIX_N@Z	009bc8a0	OK	
+00402510	reloc	?GUseRetailBanks@@3_NA	013b8616	NOT_IN_PDB_SETS	2 other bound spellings: ?g_b13B8616@@3_NA; ?g_bRuntimeLevelFiles@@3_NA
+00402510	reloc	?GBankFileManager@NBankFileManager@@3VCBankFileManager@@A	013ca79c	NOT_IN_PDB_SETS	4 other bound spellings: ?g_BankFileManager@@3UCBankFileManager@@A; ?g_BankFileManager@@3VCBankFileManager@@A; ?g_CStatic_009a7ac0_013ca79c@@3UCStatic_009a7ac0@@A
+00402510	reloc	?SetUsingRetailBanks@CBankFileManager@@QAEX_N@Z	009a76d0	OK	
+00402510	reloc	?SetBankAlias@CBankFileManager@@QAEXABVCCharString@@0@Z	009a8150	OK	
+00402510	reloc	?GSkipFrontend@@3_NA	013b8605	NOT_IN_PDB_SETS	1 other bound spellings: ?g_bStartMainGame@@3_NA
+00402510	reloc	??0CWideString@@QAE@PBG@Z	0099b6b0	NOT_IN_PDB_SETS	5 other bound spellings: ??0CWideString@@QAE@PB_W@Z; ??0CWideString@ExternalRetry_00999620@@QAE@PBG@Z; ??0CWideString@NGameText@@QAE@PBG@Z
+00402510	reloc	?GetGraphicBankDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	0041a100	OK	
+00402510	reloc	?OpenRetailBank@CBankFileManager@@QAEXABVCWideString@@_N@Z	009a8840	OK	
+00402510	reloc	??H@YI?AVCWideString@@ABV0@0@Z	0099be70	PDB_OTHERS_BOUND	1 other bound spellings: ?AddWide_0099be70@@YI?AUCWS@@PAUCWSraw@@0@Z
+00402510	reloc	?GetHDDialogueDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	0041a330	OK	
+00402510	reloc	?GetHDMiscDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	0041a0c0	OK	
+00402510	reloc	?GetMiscDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	0041a0a0	OK	
+00402510	reloc	?GetShaderBankDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	0041a1e0	OK	
+00402510	reloc	?GetFontBankDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	0041a120	OK	
+00402510	reloc	?SetHeaderDir@NBankFileManager@@YIXABVCWideString@@@Z	009a76c0	OK	
+00402510	reloc	?OpenIniFile@CBankFileManager@@QAEXABVCWideString@@@Z	009a8170	OK	
+00402510	reloc	??4CWideString@@QAEABV0@PBG@Z	0099b800	NOT_IN_PDB_SETS	2 other bound spellings: ??4CWideString@AFileSupport@@QAEAAU01@PBG@Z; ??4CWideString@ExternalRetry_00999620@@QAEAAU01@PBG@Z
+00402510	reloc	?CompiledDefDirectory@CDefinitionManager@@1VCWideString@@A	013ca7dc	NOT_IN_PDB_SETS	2 other bound spellings: ?g_CCharString_013ca7dc@@3VCCharString@@A; ?g_CompiledDefsDirectory@@3VCWideString@@A
+00402510	reloc	??4CWideString@@QAEABV0@ABV0@@Z	0099b7d0	PDB_OTHERS_BOUND	4 other bound spellings: ??4CWideString@@QAEAAV0@ABV0@@Z; ??4CWideString@N006bebf0@@QAEAAU01@ABU01@@Z; ??4FrontEndWideString_00594f36@@QAEAAU0@ABU0@@Z
+00402510	reloc	?GDefStringTable@@3VCDefStringTable@@A	013ca828	NOT_IN_PDB_SETS	3 other bound spellings: ?Strings@ExternalRetry_008af850@@3UCDefStringTable@1@A; ?g_DefStringTable@NErase005dcf70@@3UCDefStringTable@1@A; ?g_obj13ca828@@3UGObj@@A
+00402510	reloc	?SetTableFilename@CDefStringTable@@QAEXABVCWideString@@@Z	009d4a40	OK	
+00402510	reloc	?GUseCompiledDefs@@3_NA	013b8617	NOT_IN_PDB_SETS	1 other bound spellings: ?g_bUseCompiledDefs@@3_NA
+00402510	reloc	?UsingCompiledDefs@CDefinitionManager@@1_NA	013ca7d8	NOT_IN_PDB_SETS	2 other bound spellings: ?g_bDefsLoaded@@3_NA; ?g_bLoadBinaryDefinitions@@3_NA
+00402510	reloc	?LoadTable@CDefStringTable@@QAEX_N@Z	009d4c30	OK	
+00402510	reloc	?GetUserDataDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	0041a4c0	PDB_OTHERS_BOUND	1 other bound spellings: @CTemp_ctor@4
+00402510	reloc	?GetAsCharArray@CWideString@@QBEPBGXZ	0099af10	NOT_IN_PDB_SETS	3 other bound spellings: ??BCWideString@AFileSupport@@QBEPBGXZ; ?GetCharacters@CCharString@@QBEPBDJ@Z; N_0099af10
+00402510	reloc	__imp__CreateFileW@28	0143fe2c	NOT_IN_PDB_SETS	
+00402510	reloc	__imp__CloseHandle@4	0143fe30	NOT_IN_PDB_SETS	
+00402510	reloc	?TestDirForValidFilePermissions@@YIKABVCWideString@@@Z	00402130	OK	
+00402510	reloc	?GetSaveDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	0041a540	OK	
+00402510	reloc	??2@YAPAXI@Z	00bfea1a	NOT_IN_PDB_SETS	
+00402510	reloc	??0CDataBank@NGameText@@QAE@XZ	009c85a0	OK	
+00402510	reloc	?GetMyDocumentsDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	0041a430	PDB_OTHERS_BOUND	1 other bound spellings: ?GetDocumentsFolder@CUserProfileManager@@SI?AVCWideString@@XZ
+00402510	reloc	?Reset@?$CCountedPointer@VCDataBank@NGameText@@@@QAEXPAVCDataBank@NGameText@@@Z	00403e40	OK	
+00402510	reloc	?GetTextBankName@NLocalisation@@YI?AVCCharString@@XZ	00415260	PDB_OTHERS_BOUND	1 other bound spellings: ?GetFontBankName@NLocalisation@@YI?AVCCharString@@XZ
+00402510	reloc	?FindIndexBySymbolCRC@CBankFile@@QBEKK@Z	009cc410	PDB_OTHERS_BOUND	7 other bound spellings: ?GetTagFromCRC@CTagTable@@QBEKK@Z; ?LookupText@CDataBank_Retail@@QAEPAXK@Z; ?LookupValue@CBankFileAsync@@QAEKK@Z
+00402510	reloc	?GetPTextEntry@CDataBank@NGameText@@QBE?AV?$CIVCountedPointer@$$CBVCTextEntry@NGameText@@@@K_N@Z	009c9070	PDB_OTHERS_BOUND	1 other bound spellings: ?GetPGroupEntry@CTextBank@@QAE?AUCGroupEntryRef@@J_N@Z
+00402510	reloc	?GetText@CTextEntry@NGameText@@QBE?AVCWideString@@XZ	009c7a40	OK	
+00402510	reloc	?NullChar@CCharString@@1DB	0129aaf4	NOT_IN_PDB_SETS	23 other bound spellings: ?CUnprovenGlobal_0129aaf4@@3QBDB; ?Empty@NErase005dcf70@@3QBDB; ?EmptyNarrowString@@3PADA
+00402510	reloc	?Calc@CCRC@@SIKKPBXK@Z	004014a0	PDB_OTHERS_BOUND	4 other bound spellings: ?Calc@CCRC@NDust008f7950@@SIIIPBDH@Z; ?Calc@CCRC@NFoot008f7bd0@@SIIIPBDH@Z; ?Calc_004014a0@@YIKKPBDK@Z
+00402510	reloc	?GFGetSystemManager@@YIPAVCSystemManager@@XZ	009a4ec0	PDB_OTHERS_BOUND	4 other bound spellings: ?AddChildPrimitive@@YIPAUFableEngineRoot@@XZ; ?GFGetSystemManager@@YIPAUCSystemManagerNative@@XZ; ?GFGetSystemManager@NUISystem@@YIPAUCSystemManager@1@XZ
+00402510	reloc	__imp__MessageBoxW@16	014402c8	NOT_IN_PDB_SETS	
+00402510	reloc	?GSoundOn@@3_NA	01375449	NOT_IN_PDB_SETS	
+00402510	reloc	?GForcePrimary@@3_NA	013b8604	NOT_IN_PDB_SETS	
+00402510	reloc	?GResolutionDepth@@3JA	01375464	NOT_IN_PDB_SETS	
+00402510	reloc	?GResolutionWidth@@3JA	0137545c	NOT_IN_PDB_SETS	
+00402510	reloc	?GResolutionHeight@@3JA	01375460	NOT_IN_PDB_SETS	
+00402510	reloc	?GZBufferDepth@@3JA	01375468	NOT_IN_PDB_SETS	
+00402510	reloc	?GResolutionRefreshRate@@3JA	013b8624	NOT_IN_PDB_SETS	
+00402510	reloc	?GPresentImmidiate@@3_NA	013b8628	NOT_IN_PDB_SETS	1 other bound spellings: ?g_PresentationInterval@@3_NA
+00402510	reloc	?GPushBufferSize@@3JA	01375474	NOT_IN_PDB_SETS	
+00402510	reloc	?GKickoffSize@@3JA	01375478	NOT_IN_PDB_SETS	
+00402510	reloc	?GAntialiasingOn@@3_NA	013b8607	NOT_IN_PDB_SETS	
+00402510	reloc	?GAntialiasing9x@@3_NA	013b8608	NOT_IN_PDB_SETS	
+00402510	reloc	?GFIsSystemErrorFailure@@YI_NW4ESystemCode@@@Z	00401bc0	OK	
+00402510	reloc	?GetWindowTitle@@YI?AVCWideString@@XZ	004023f0	OK	
+00402510	reloc	?GFullScreen@@3_NA	0137544a	NOT_IN_PDB_SETS	1 other bound spellings: ?g_bFrontEndFlag_137544A@@3_NA
+00402510	reloc	?GetCacheDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ	0041a180	OK	
+00402510	reloc	?GetStreamingFontBankName@NLocalisation@@YI?AVCCharString@@XZ	00415440	OK	
+00402510	reloc	??4CCharString@@QAEABV0@ABV0@@Z	0099efb0	PDB_OTHERS_BOUND	3 other bound spellings: ??4CCharString@@QAEAAV0@ABV0@@Z; ??4CCharString@std@@QAEAAU01@ABU01@@Z; ??4SymbolString@@QAEAAU0@ABU0@@Z
+00402510	reloc	?GAllowBackgroundProcessing@@3_NA	013b861e	NOT_IN_PDB_SETS	
+00402510	reloc	?GSkipConfigDetection@@3_NA	013b861d	NOT_IN_PDB_SETS	
+00402510	reloc	?GOnlyBuildStaticMaps@@3_NA	013b8648	NOT_IN_PDB_SETS	2 other bound spellings: ?g_bCompileFrontendDefinitions@@3_NA; ?g_bExportStaticMaps@@3_NA
+00402510	reloc	?PrepareParticles_01375754@@3_NA	01375754	NOT_IN_PDB_SETS	1 other bound spellings: ?g_bParticlesEnabled@@3_NA
+00402510	reloc	?DoEULAThings@EULA@@YIHXZ	00401fe0	OK	
+00402510	reloc	_exit	00401284	NOT_IN_PDB_SETS	
+00402510	reloc	?GFConfigDetection@@YI_NXZ	004017b0	OK	
+00402510	reloc	?GFFreeConfigDetection@@YI_NXZ	00401b20	OK	
+00402510	reloc	?RenderConfigurationFlag1_013750a4@@3_NA	013750a4	NOT_IN_PDB_SETS	1 other bound spellings: ?g_FeatureA@@3_NA
+00402510	reloc	?RenderConfigurationFlag2_013750aa@@3_NA	013750aa	NOT_IN_PDB_SETS	1 other bound spellings: ?g_FeatureF@@3_NA
+00402510	reloc	?UseFixedFontFunction_013750ab@@3_NA	013750ab	NOT_IN_PDB_SETS	1 other bound spellings: ?g_FeatureG@@3_NA
+00402510	reloc	?SetUseFixedFunction@CStreamingFontBank@@SIX_N@Z	009a0ef0	OK	
+00402510	reloc	?ProcessWinMessage@CIME@NUISystem@@SI_NPAUHWND__@@IIJAAJ@Z	00404c70	OK	
+00402510	reloc	?FilterMessage@CIME@NUISystem@@SI_NPAUtagMSG@@@Z	00404ce0	OK	
+00402510	reloc	?Initialise@CSystemManager@@QAE?AW4ESystemCode@@PBVCSystemManagerInit@@@Z	009a6610	OK	
+00402510	reloc	?Get@CIME@NUISystem@@SIAAV12@XZ	00404a80	PDB_OTHERS_BOUND	1 other bound spellings: ?GFGetIME@@YAPAUCIMECalls@@XZ
+00402510	reloc	?Initialise@CIME@NUISystem@@QAEXPAUHWND__@@@Z	00405650	OK	
+00402510	reloc	?GenerateMetFilesFromLugFiles@CMainGameComponent@@SIXXZ	00418c3b	OK	
+00402510	reloc	?GFInitialise@@YI_NXZ	004022b0	NOT_IN_PDB_SETS	
+00402510	reloc	??9CWideString@@QBE_NPBG@Z	0099b150	NOT_IN_PDB_SETS	1 other bound spellings: ??9CWideString@@QBE_NPB_W@Z
+00402510	reloc	?Get@CUserProfileManager@@SIAAV1@XZ	0040d2a0	PDB_OTHERS_BOUND	6 other bound spellings: ?GFGetSaveGameDirectoryName@@YG?AVCWideString@@XZ; ?Get@?$CTBaseSingleton@VCUserProfileManager@@@@SIAAVCUserProfileManager@@XZ; ?Get@CUserProfileManager@@SAPAV1@XZ
+00402510	reloc	?SetProfileName@CUserProfileManager@@QAEXABVCWideString@@_N@Z	0040d400	PDB_OTHERS_BOUND	1 other bound spellings: ?Dispatch@CResolvedFrontendInputAction_00494410@@QAEXXZ
+00402510	reloc	?GGame@@3VCGame@@A	013b83d0	NOT_IN_PDB_SETS	
+00402510	reloc	?Play@CGame@@QAEXXZ	00412f90	OK	
+00402510	reloc	?GFUninitialise@@YIXXZ	00401b80	NOT_IN_PDB_SETS	
+00402510	reloc	?GFHandleSystemInitError@@YIXW4ESystemCode@@@Z	00401c00	NOT_IN_PDB_SETS	
+00402510	reloc	?GAME_REG_KEY@CSystemRegistry@@2VCWideString@@B	013bca28	NOT_IN_PDB_SETS	3 other bound spellings: ?g_ConfigRegistryKey@@3VCWideString@@A; ?g_RegistryKeyLocation@@3VCWideString@@A; ?g_nameA@@3QBDB
+00402510	reloc	??0CSystemRegistry@@QAE@ABVCWideString@@J@Z	0099cf10	PDB_OTHERS_BOUND	1 other bound spellings: ?Add@Obj@@QAEXPBDH@Z
+00402510	reloc	?GFX_RESET_KEY_NAME@CSystemRegistry@@2VCWideString@@B	013bca2c	NOT_IN_PDB_SETS	2 other bound spellings: ?g_ConfigRegistryValue@@3VCWideString@@A; ?g_nameB@@3QBDB
+00402510	reloc	?WriteBOOL@CSystemRegistry@@QBEXABVCWideString@@H@Z	0099d100	PDB_OTHERS_BOUND	1 other bound spellings: ?Set@Obj@@QAEXPBDH@Z
+00402510	reloc	??1CSystemRegistry@@QAE@XZ	0099cf70	PDB_OTHERS_BOUND	1 other bound spellings: ?Apply@Obj@@QAEXXZ
+00402510	reloc	@__security_check_cookie@4	00bfe9f9	OK	
+0041d21b	leaf	?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@J@Z	0041d21b	PDB_OTHERS_BOUND	2 other bound spellings: ?CreateComponent@CManager@NUISystem@@QAEPAUCArrowComponent@2@J@Z; ?CreateComponent@Manager@RetailUI@@QAEPAUComponent@2@K@Z
+0041d21b	reloc	?Get@CGameDefinitionManager@@SIAAV1@XZ	0044c6b0	PDB_OTHERS_BOUND	7 other bound spellings: ?AcquireBuilder@@YGPAUBuilder@@PAUInitGuard@@PAPAVCPlayerGuiDef@@@Z; ?GetDefinitionManager@NFactory007f1b70@@YIPAUCGameDefinitionManager@1@XZ; ?GetDefinitionManager@NScreen005fc2d0@@YIPAUCDefinitionManager@1@XZ
+0041d21b	reloc	??$GetDef@VCUIDef@NUISystem@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCUIDef@NUISystem@@@@@Z	0042aeda	PDB_OTHERS_BOUND	1 other bound spellings: ??$GetDef@$$CBVCUIDef@NUISystem@@@CDefinitionManager@@QAE_NJPAV?$CDefPointer@$$CBVCUIDef@NUISystem@@@@@Z
+0041d21b	reloc	??2@YAPAXI@Z	00bfea1a	NOT_IN_PDB_SETS	
+0041d21b	reloc	??0CSprite@NUISystem@@QAE@J@Z	0041b800	PDB_OTHERS_BOUND	1 other bound spellings: ??0CSprite@@QAE@PAX@Z
+0041d21b	reloc	??0CMouseCursor@NUISystem@@QAE@J@Z	0055c650	OK	
+0041d21b	reloc	??0CHoverable@NUISystem@@QAE@J@Z	0055ba20	PDB_OTHERS_BOUND	1 other bound spellings: ??0CHoverable_Retail@@QAE@J@Z
+0041d21b	reloc	??0CClickable@NUISystem@@QAE@J@Z	0055b460	PDB_OTHERS_BOUND	3 other bound spellings: ??0CClickable@NUISystem@@QAE@PAUCComponentManager@1@@Z; ??0CClickable_Retail@@QAE@J@Z; ??0CClickable_Retail@NUISystem@@QAE@J@Z
+0041d21b	reloc	??0CDraggable@NUISystem@@QAE@J@Z	0055a9c0	PDB_OTHERS_BOUND	1 other bound spellings: ??0CDraggable_Retail@NUISystem@@QAE@J@Z
+0041d21b	reloc	??0CScrollBar@NUISystem@@QAE@J@Z	00559830	OK	
+0041d21b	reloc	??0CScrollBarOutside@NUISystem@@QAE@J@Z	00559360	OK	
+0041d21b	reloc	??0CDraggableInto@NUISystem@@QAE@J@Z	00558ec0	OK	SYMBOL_BOUND_ELSEWHERE: 0052cc50
+0041d21b	reloc	??0CNavButton@NUISystem@@QAE@J@Z	00558b90	OK	
+0041d21b	reloc	??0CKeyRedefiner@NUISystem@@QAE@J@Z	00558540	OK	
+0041d21b	reloc	??0CRedefinerList@NUISystem@@QAE@J@Z	00556350	OK	
+0041d21b	reloc	??0CScrollableList@NUISystem@@QAE@J@Z	00555180	PDB_OTHERS_BOUND	1 other bound spellings: ??0CScrollableList@NUISystem@@QAE@PAVCComponent@1@@Z
+0041d21b	reloc	??0CMorphingSprite@NUISystem@@QAE@J@Z	005545d0	OK	
+0041d21b	reloc	??0CComponent@NUISystem@@QAE@J@Z	005334a0	OK	
+0041d21b	reloc	??0CTable@NUISystem@@QAE@J@Z	005517e0	OK	
+0041d21b	reloc	??0CMesh@NUISystem@@QAE@J@Z	00550190	OK	
+0041d21b	reloc	??0CText@NUISystem@@QAE@J@Z	0054f5c0	OK	
+0041d21b	reloc	??0CMenuEntry@NUISystem@@QAE@J@Z	0053dfe0	OK	
+0041d21b	reloc	??0CList@NUISystem@@QAE@J@Z	0053b63e	OK	
+0041d21b	reloc	??0CChangingStateComponent@NUISystem@@QAE@J@Z	0052cc50	PDB_OTHERS_BOUND	3 other bound spellings: ??0CDraggableInto@@QAE@PAX@Z; ??0CDraggableInto@NUISystem@@QAE@J@Z; ?InitializeChangingStateComponent@EditBoxBaseNative@@QAEXJ@Z
+0041d21b	reloc	??0CViewport@NUISystem@@QAE@J@Z	0054ea00	PDB_OTHERS_BOUND	1 other bound spellings: ??0CViewport@@QAE@PAX@Z
+0041d21b	reloc	??0CFrontEndScreen@NUISystem@@QAE@J@Z	0054e3d0	OK	
+0041d21b	reloc	??0CFrontEndButton@NUISystem@@QAE@J@Z	0054e0b0	OK	
+0041d21b	reloc	??0CFrontEndList@NUISystem@@QAE@J@Z	0054c3a0	OK	
+0041d21b	reloc	??0CScrollingViewport@NUISystem@@QAE@J@Z	0053f120	OK	
+0041d21b	reloc	??0CListArrow@NUISystem@@QAE@J@Z	0054c1d0	OK	
+0041d21b	reloc	??0CSlider@NUISystem@@QAE@J@Z	0054c050	OK	
+0041d21b	reloc	??0CTextSlider@NUISystem@@QAE@J@Z	00549f60	OK	
+0041d21b	reloc	?PMainGameComponent@CMainGameComponent@@1PAV1@A	013b86a0	NOT_IN_PDB_SETS	34 other bound spellings: ?Game_013b86a0@@3PAUGame@@A; ?Sounds@ExternalRetry_008af850@@3PAUCMainGameComponent@1@A; ?gCameraGlobal@@3PAUGlobalOverlay@@A
+0041d21b	reloc	??0CMovie@NUISystem@@QAE@AAVCIEngine@@J@Z	005482d0	OK	
+0041d21b	reloc	??0CSwappingStateComponent@NUISystem@@QAE@J@Z	00547600	OK	
+0041d21b	reloc	??0CScrollingComponent@NUISystem@@QAE@J@Z	00546f40	OK	
+0041d21b	reloc	??0CTextContainer@NUISystem@@QAE@J@Z	00546d30	OK	
+0041d21b	reloc	??0CZoomingComponent@NUISystem@@QAE@J@Z	00546b00	OK	
+0041d21b	reloc	??0CComponentContainer@NUISystem@@QAE@J@Z	005460c0	OK	
+0041d21b	reloc	??0CSpellContainer@NUISystem@@QAE@J@Z	00545720	OK	
+0041d21b	reloc	??0CSpellContainerList@NUISystem@@QAE@J@Z	00544b70	OK	
+0041d21b	reloc	??0CYesNo@NUISystem@@QAE@J@Z	0041cadc	OK	
+0041d21b	reloc	??0CParticleEffect@NUISystem@@QAE@J@Z	00544010	OK	
+0041d21b	reloc	??0COk@NUISystem@@QAE@J@Z	0041cb70	OK	
+0041d21b	reloc	??0CControllerDisconnect@NUISystem@@QAE@J@Z	0041cbe4	OK	
+0041d21b	reloc	??0CIconText@NUISystem@@QAE@J@Z	00542330	OK	
+0041d21b	reloc	??0CDynamicList@NUISystem@@QAE@J@Z	005415f0	OK	
+0041d21b	reloc	??0CEditBox@NUISystem@@QAE@J@Z	005407b0	OK	
+0041d21b	reloc	?GetDefNameFromGlobalIndex@CDefinitionManager@@QBE?AVCDefString@@J@Z	009accc0	PDB_OTHERS_BOUND	3 other bound spellings: ?GetDefNameFromGlobalIndex@CDefinitionManagerMethods@@QAE?AVCDefString@@J@Z; ?GetDefNameFromGlobalIndex@CGameDefinitionManager@@QAE?AUCDefString@@J@Z; ?Helper_11bd80@DefObj@@QAEPAPAXXZ
+0041d21b	reloc	?GetString@CDefString@@QBE?AVCCharString@@XZ	00415dd0	PDB_OTHERS_BOUND	1 other bound spellings: ??BCDefString@N_00415dd0@@QBE?AVCCharString@@XZ | QUEUE_CORRECT_IS: ??BCDefString@@QBE?AVCCharString@@XZ (540)
+0041d21b	reloc	??1CCharString@@QAE@XZ	0099eae0	PDB_OTHERS_BOUND	71 other bound spellings: ??1CCharString2@@QAE@XZ; ??1CCharString@ExternalRetry_00835c80@@QAE@XZ; ??1CCharString@ExternalRetry_008af850@@QAE@XZ
+0051fd80	leaf	?LoadSingleThing@CThingManager@@AAEPAVCThing@@AAVCPersistContext@@J@Z	0051fd80	PDB_OTHERS_BOUND	1 other bound spellings: ?LoadSingleThing@CThingManager@@QAEPAVCThing@@AAVCPersistContext@@J@Z
+0051fd80	reloc	??0CCharString@@QAE@XZ	0099e4b0	PDB_OTHERS_BOUND	9 other bound spellings: ??0CCharString@N006d41f0@@QAE@XZ; ??0CCharStringFmt@@QAE@XZ; ??0CCharStringMember@@QAE@XZ
+0051fd80	reloc	??0CCharString@@QAE@PBDJ@Z	0099ebf0	PDB_OTHERS_BOUND	46 other bound spellings: ??0CCharString2@@QAE@HH@Z; ??0CCharString@@QAE@PBDH@Z; ??0CCharString@ExternalRetry_00835c80@@QAE@PBDH@Z
+0051fd80	reloc	?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z	009e9f40	PDB_OTHERS_BOUND	4 other bound spellings: ?DisplayProgress@@YIXABVCCharString@@_NM1@Z; ?DisplayProgress@NFactory006ac910@@YIXABVCCharString@@_NMH@Z; ?ReportStaticMapProgress@@YIXABVCCharString@@_NMI@Z
+0051fd80	reloc	??1CCharString@@QAE@XZ	0099eae0	PDB_OTHERS_BOUND	71 other bound spellings: ??1CCharString2@@QAE@XZ; ??1CCharString@ExternalRetry_00835c80@@QAE@XZ; ??1CCharString@ExternalRetry_008af850@@QAE@XZ
+0051fd80	reloc	??4CCharString@@QAEABV0@ABV0@@Z	0099efb0	PDB_OTHERS_BOUND	3 other bound spellings: ??4CCharString@@QAEAAV0@ABV0@@Z; ??4CCharString@std@@QAEAAU01@ABU01@@Z; ??4SymbolString@@QAEAAU0@ABU0@@Z
+0051fd80	reloc	?SerialiseThingInfo@CThing@@SIXAAVCPersistContext@@AAVCSerialiseInfo@1@@Z	004c81f0	OK	
+0051fd80	reloc	?SkipWhitespace@CStringParser@@QAEJXZ	009b9c60	OK	
+0051fd80	reloc	?ReadAsStringUntilString@CStringParser@@QAE?AVCCharString@@ABV2@@Z	009ba330	PDB_OTHERS_BOUND	2 other bound spellings: ?ReadAsStringUntilString@CStringParserReader@@QAE?AVCCharString@@ABV2@@Z; ?ReadAsStringUntilStringInclusive@CStringParser@@QAE?AVCCharString@@ABV2@@Z | QUEUE_CORRECT_IS: CStringParser member (PDB spelling to prove) (n621)
+0051fd80	reloc	?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z	009b9ba0	PDB_OTHERS_BOUND	2 other bound spellings: ?FindKeyword@CStringParser@@QAE_NABVCCharString@@@Z; ?NextItemIs@CStringParser@@QAE_NABVCCharString@@@Z
+0051fd80	reloc	?SerialiseThingInfo@CThing@@SIX_NAAVCCharString@@AAVCSerialiseInfo@1@@Z	004c88e0	OK	
+0051fd80	reloc	??9CCharString@@QBE_NPBD@Z	0099e960	PDB_OTHERS_BOUND	4 other bound spellings: ??9CCharStringCmp@@QBE_NPBD@Z; ??9CCharStringMethods@@QBE_NPBD@Z; ?Compare@CCharString@@QBE_NPBD@Z
+0051fd80	reloc	??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z	00528760	PDB_OTHERS_BOUND	2 other bound spellings: ?GetDef@CGameDefinitionManager@@QAE_NABVCCharString@@AAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z; ?GetDef@CGameDefinitionManager@NFactory007f1b70@@QAEXABUCCharString@2@AAPAUCThingBaseDef@2@@Z
+0051fd80	reloc	?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z	0051e210	PDB_OTHERS_BOUND	1 other bound spellings: ?RemapUIDForSerialisation@CThingManager@@QAE_K_N0J_K@Z
+0051fd80	reloc	??$_M_find@_K@?$_Rb_tree@_KU?$pair@$$CB_KPAVCThing@@@std@@U?$_Select1st@U?$pair@$$CB_KPAVCThing@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KPAVCThing@@@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CB_KPAVCThing@@@std@@@1@AB_K@Z	00527d80	NOT_IN_PDB_SETS	3 other bound spellings: ?Find@Map@@QBEPAUNode@@PAX@Z; ?Find@Sub@@QAEPAUNode@@PAX@Z; ?find@CUIDToThingMap@@QAEPAUCUIDToThingNode@@AB_K@Z
+0051fd80	reloc	?SetInLimbo@CThing@@QAEX_N@Z	004c8cf0	PDB_OTHERS_BOUND	1 other bound spellings: ?SetInLimbo@CTeleportThing@@QAEX_N@Z
+0051fd80	reloc	?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A	013b89fc	NOT_IN_PDB_SETS	35 other bound spellings: ?CGSIAddFeatCard_Manager@@3PAVCQuestManager@@A; ?CGSIAddQuestCard_Manager@@3PAVCGameScriptInterface@@A; ?CGSIAddQuestRegion_QuestManager@@3PAVCQuestManager@@A
+0051fd80	reloc	?OnActivateEntity@CQuestManager@@QAEXAAVCThing@@@Z	004afa60	PDB_OTHERS_BOUND	1 other bound spellings: ?OnActivateEntity@CQuestManager@@QAEXPAVCThing@@@Z
+0051fd80	reloc	??8?$CBasicString@D@@QBE_NPBD@Z	004115a0	PDB_OTHERS_BOUND	3 other bound spellings: ??8?$CBasicString@D@X_004fe630@@QBE_NPBD@Z; ?Equal@CBasicString@N006d41f0@@QBE_NPBD@Z; ?Equals@StringDataMethods@@QBE_NPBD@Z
+0051fd80	reloc	?PMainGameComponent@CMainGameComponent@@1PAV1@A	013b86a0	NOT_IN_PDB_SETS	34 other bound spellings: ?Game_013b86a0@@3PAUGame@@A; ?Sounds@ExternalRetry_008af850@@3PAUCMainGameComponent@1@A; ?gCameraGlobal@@3PAUGlobalOverlay@@A
+0051fd80	reloc	?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ	00449970	PDB_OTHERS_BOUND	5 other bound spellings: ?GetMainPlayer@CPlayerManager@@QAEPAVCPlayer@@XZ; ?GetPlayer@CPlayerManager@NCreatureMode@@QAEPAVCPlayer@@XZ; @FableHeroResolve_88df80@4
+0051fd80	reloc	?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	00487dc0	PDB_OTHERS_BOUND	1 other bound spellings: ?GetHeroThing@CPlayerView@@QAEPAVCThing@@XZ
+0051fd80	reloc	?IsLevelPersistent@CThing@@QBE_NXZ	004c82a0	OK	
+0051fd80	reloc	?CheckAndFixUID@CThingManager@@QAEXAA_K@Z	0051f340	OK	
+0051fd80	reloc	??$_M_find@_K@?$_Rb_tree@_KU?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@U?$_Select1st@U?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@@1@AB_K@Z	00527d20	NOT_IN_PDB_SETS	
+0051fd80	reloc	?AllocateClass@CClassFactory@@QAEPAVCClass@@ABVCCharString@@@Z	00a371c0	OK	
+0051fd80	reloc	??BCCharString@@QBEPBDXZ	0099e4c0	PDB_OTHERS_BOUND	1 other bound spellings: ?ToConstChar@CCharString@@QBEPBDXZ
+0051fd80	reloc	?Kill@CThing@@QAEX_N@Z	004c9b80	PDB_OTHERS_BOUND	4 other bound spellings: ?Kill@CThing@NCreatureMode@@QAEX_N@Z; ?Kill@CThing@X_006e11f0@@QAEX_N@Z; ?Kill@CThingCreatureBase@@QAEX_N@Z
+00520d00	leaf	?LoadEntitiesFromScript@CThingManager@@QAEXABVCCharString@@JJABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@PAVCASuspendableProcess@@JAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@4@@Z	00520d00	PDB_OTHERS_BOUND	1 other bound spellings: ?LoadEntitiesFromScript@CThingManager@@QAEXABVCCharString@@JJABUCCharStringSet@@PAVCASuspendableProcess@@JAAUCThingVector@@@Z
+00520d00	reloc	?NoThingsToLoadPerSuspend@NGlobalConsole@@3JA	01375714	NOT_IN_PDB_SETS	1 other bound spellings: ?g_LoadTickInterval@@3KA
+00520d00	reloc	??0CCharString@@QAE@PBDJ@Z	0099ebf0	PDB_OTHERS_BOUND	46 other bound spellings: ??0CCharString2@@QAE@HH@Z; ??0CCharString@@QAE@PBDH@Z; ??0CCharString@ExternalRetry_00835c80@@QAE@PBDH@Z
+00520d00	reloc	??0CStringParser@@QAE@ABVCCharString@@P6IX0@Z0J@Z	00404720	OK	
+00520d00	reloc	??1CCharString@@QAE@XZ	0099eae0	PDB_OTHERS_BOUND	71 other bound spellings: ??1CCharString2@@QAE@XZ; ??1CCharString@ExternalRetry_00835c80@@QAE@XZ; ??1CCharString@ExternalRetry_008af850@@QAE@XZ
+00520d00	reloc	??4CCharString@@QAEABV0@PBD@Z	0099efe0	PDB_OTHERS_BOUND	3 other bound spellings: ?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z; ?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z; ?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z
+00520d00	reloc	?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z	009b9ba0	PDB_OTHERS_BOUND	2 other bound spellings: ?FindKeyword@CStringParser@@QAE_NABVCCharString@@@Z; ?NextItemIs@CStringParser@@QAE_NABVCCharString@@@Z
+00520d00	reloc	?SkipWhitespace@CStringParser@@QAEJXZ	009b9c60	OK	
+00520d00	reloc	?ReadAsStringUntilString@CStringParser@@QAE?AVCCharString@@ABV2@@Z	009ba330	PDB_OTHERS_BOUND	2 other bound spellings: ?ReadAsStringUntilString@CStringParserReader@@QAE?AVCCharString@@ABV2@@Z; ?ReadAsStringUntilStringInclusive@CStringParser@@QAE?AVCCharString@@ABV2@@Z | QUEUE_CORRECT_IS: CStringParser member (PDB spelling to prove) (n621)
+00520d00	reloc	??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@ABEPAU?$_Rb_tree_node@VCCharString@@@1@ABVCCharString@@@Z	004b9370	NOT_IN_PDB_SETS	3 other bound spellings: ?_M_find@?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@ABEPAU?$_Rb_tree_node@VCCharString@@@2@ABVCCharString@@@Z; ?_M_find@?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@QBEPAU_Rb_tree_node_base@2@ABVCCharString@@@Z; ?_M_find@?$set@VCCharString@@U?$less@VCCharString@@@std@@@std@@QBEPAU_Rb_tree_node_base@2@ABVCCharString@@@Z | QUEUE_CORRECT_IS: ?_M_find@?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@ABEPAU?$_Rb_tree_node@VCCharString@@@2@ABVCCharString@@@Z (538)
+00520d00	reloc	?LoadAllSectionName@CLevelLoader@@2VCCharString@@A	013bab08	NOT_IN_PDB_SETS	1 other bound spellings: ?g_CCharString_013bab08@@3VCCharString@@A | QUEUE_CORRECT_IS: CLevelLoader::LoadAllSectionName (static CCharString member; access specifier and so the exact mangling unproven) (c637)
+00520d00	reloc	??0CCharString@@QAE@ABV0@@Z	0099ec30	PDB_OTHERS_BOUND	74 other bound spellings: ??0CCharString@@QAE@PBD@Z; ??0CCharString@FableCons_007696a0@@QAE@ABV01@@Z; ??0CCharString@FableCons_00786d60@@QAE@ABV01@@Z
+00520d00	reloc	??4CCharString@@QAEABV0@ABV0@@Z	0099efb0	PDB_OTHERS_BOUND	3 other bound spellings: ??4CCharString@@QAEAAV0@ABV0@@Z; ??4CCharString@std@@QAEAAU01@ABU01@@Z; ??4SymbolString@@QAEAAU0@ABU0@@Z
+00520d00	reloc	?SkipPastNextItemIfIs@CStringParser@@QAE_NABVCCharString@@@Z	009b9e00	PDB_OTHERS_BOUND	1 other bound spellings: ?SkipPastNextItemIfIs@CStringParserMethods@@QAE_NABVCCharString@@@Z
+00520d00	reloc	?ReadAsStringUntilPastString@CStringParser@@QAE?AVCCharString@@ABV2@@Z	009ba3e0	PDB_OTHERS_BOUND	1 other bound spellings: ?ReadAsStringUntilString_009ba3e0@CStringParser@@QAE?AVCCharString@@ABV2@@Z
+00520d00	reloc	?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z	009e9f40	PDB_OTHERS_BOUND	4 other bound spellings: ?DisplayProgress@@YIXABVCCharString@@_NM1@Z; ?DisplayProgress@NFactory006ac910@@YIXABVCCharString@@_NMH@Z; ?ReportStaticMapProgress@@YIXABVCCharString@@_NMI@Z
+00520d00	reloc	??0CPersistContext@@QAE@AAVCStringParser@@P6IXABVCCharString@@@Z_NPBVCDefinitionManager@@PBVCSymbolMap@@PAV2@@Z	009badd0	PDB_OTHERS_BOUND	1 other bound spellings: ??0CPersistContext@@QAE@PAVCStringParser@@P6AXPAVCCharString@@@Z_NPAVCDefinitionManager@@PAVCSymbolMap@@1@Z
+00520d00	reloc	?LoadSingleThing@CThingManager@@AAEPAVCThing@@AAVCPersistContext@@J@Z	0051fd80	PDB_OTHERS_BOUND	1 other bound spellings: ?LoadSingleThing@CThingManager@@QAEPAVCThing@@AAVCPersistContext@@J@Z
+00520d00	reloc	?_M_insert_overflow@?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@IAEXPAPAVCThing@@ABQAV3@ABU__true_type@2@I_N@Z	00436ac0	NOT_IN_PDB_SETS	9 other bound spellings: ??$_M_insert_overflow@UTag@NFoot008f7bd0@@@CThingVector@NFoot008f7bd0@@QAEXPAPAUCThing@1@ABQAU21@ABUTag@1@HH@Z; ??$_M_insert_overflow@U__true_type@NScreen005fc2d0@@@vector@NScreen005fc2d0@@QAEXPAPAXABQAXABU__true_type@1@HH@Z; ??$_M_insert_overflow@U__true_type@NScreen005fc8a0@@@vector@NScreen005fc8a0@@QAEXPAPAXABQAXABU__true_type@1@HH@Z
+00520d00	reloc	?ActivateAfterLoading@CThingManager@@AAEXJ@Z	0051e5a0	OK	
+00520d00	reloc	??1?$list@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ	004046b0	PDB_OTHERS_BOUND	1 other bound spellings: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ
+00520d00	reloc	??1CBaseClass@@UAE@XZ	0099a2e0	PDB_OTHERS_BOUND	7 other bound spellings: ??1CBase@@UAE@XZ; ??1CBase@NParticleEngine@@QAE@XZ; ??1CBaseClass@ExternalRetry_00a90fc0@@UAE@XZ
+00522a20	leaf	?InitThingTypes@CThingManager@@QAEXXZ	00522a20	OK	
+00522a20	reloc	??0CCharString@@QAE@XZ	0099e4b0	PDB_OTHERS_BOUND	9 other bound spellings: ??0CCharString@N006d41f0@@QAE@XZ; ??0CCharStringFmt@@QAE@XZ; ??0CCharStringMember@@QAE@XZ
+00522a20	reloc	?resize@?$vector@VCThingTypeInfo@@V?$allocator@VCThingTypeInfo@@@std@@@std@@QAEXIABVCThingTypeInfo@@@Z	0052bea0	NOT_IN_PDB_SETS	
+00522a20	reloc	??1CCharString@@QAE@XZ	0099eae0	PDB_OTHERS_BOUND	71 other bound spellings: ??1CCharString2@@QAE@XZ; ??1CCharString@ExternalRetry_00835c80@@QAE@XZ; ??1CCharString@ExternalRetry_008af850@@QAE@XZ
+00522a20	reloc	??0CCharString@@QAE@PBDJ@Z	0099ebf0	PDB_OTHERS_BOUND	46 other bound spellings: ??0CCharString2@@QAE@HH@Z; ??0CCharString@@QAE@PBDH@Z; ??0CCharString@ExternalRetry_00835c80@@QAE@PBDH@Z
+00522a20	reloc	?Alloc@CThingPlayerCreature@@SIPAVCClass@@XZ	0052b880	OK	
+00522a20	reloc	??0CCharString@@QAE@ABV0@@Z	0099ec30	PDB_OTHERS_BOUND	74 other bound spellings: ??0CCharString@@QAE@PBD@Z; ??0CCharString@FableCons_007696a0@@QAE@ABV01@@Z; ??0CCharString@FableCons_00786d60@@QAE@ABV01@@Z
+00522a20	reloc	?AddNewClassType@CClassFactory@@MAEXABVCClassTypeInit@@@Z	00a36f90	OK	
+00522a20	reloc	??4CCharString@@QAEABV0@ABV0@@Z	0099efb0	PDB_OTHERS_BOUND	3 other bound spellings: ??4CCharString@@QAEAAV0@ABV0@@Z; ??4CCharString@std@@QAEAAU01@ABU01@@Z; ??4SymbolString@@QAEAAU0@ABU0@@Z
+00522a20	reloc	?Alloc@CThingAICreature@@SIPAVCClass@@XZ	005272e0	OK	
+00522a20	reloc	?Alloc@CThingVillage@@SIPAVCClass@@XZ	0052ac70	OK	
+00522a20	reloc	?Alloc@CThingBuilding@@SIPAVCClass@@XZ	0052ac10	OK	
+00522a20	reloc	?Alloc@CThingObject@@SIPAVCClass@@XZ	00527320	OK	
+00522a20	reloc	?Alloc@CThingSoundEmitter@@SIPAVCClass@@XZ	00527340	OK	
+00522a20	reloc	?Alloc@CThingHolySite@@SIPAVCClass@@XZ	0052ac90	OK	
+00522a20	reloc	?Alloc@CThingSwitch@@SIPAVCClass@@XZ	0052ace0	OK	
+00522a20	reloc	?Alloc@CThingTrackNode@@SIPAVCClass@@XZ	00527360	OK	
+00522a20	reloc	?Alloc@CThingMarker@@SIPAVCClass@@XZ	0052ad00	OK	
+00522a20	reloc	?Alloc@CThingPhysicalSwitch@@SIPAVCClass@@XZ	0052ad50	OK	
+00522a20	reloc	?Alloc@CThingDeadCreature@@SIPAVCClass@@XZ	00527300	OK	
+00522a20	reloc	?Alloc@CThingNoise@@SIPAVCClass@@XZ	00527380	OK	
+00522a20	reloc	?Alloc@CThing@@SIPAVCClass@@XZ	004cd4d0	OK	
+00522a20	reloc	?erase@?$vector@UThingLList@@V?$allocator@UThingLList@@@std@@@std@@QAEPAUThingLList@@PAU3@0@Z	00529f50	NOT_IN_PDB_SETS	
+00522a20	reloc	?dummyList@?1??InitThingTypes@CThingManager@@QAEXXZ@4UThingLList@@A	01245bb0	NOT_IN_PDB_SETS	
+00522a20	reloc	?_M_fill_insert@?$vector@UThingLList@@V?$allocator@UThingLList@@@std@@@std@@IAEXPAUThingLList@@IABU3@@Z	0052b150	NOT_IN_PDB_SETS	
+0057e2f1	leaf	?OnSerialise@CTCHeroStats@@MAEXAAVCPersistContext@@_N@Z	0057e2f1	OK	
+0057e2f1	reloc	??$Transfer@J@CPersistContext@@QAEXPBDAAJ@Z	004110b0	OK	
+0057e2f1	reloc	??$Transfer@_N@CPersistContext@@QAEXPBDAA_N@Z	004107c0	PDB_OTHERS_BOUND	2 other bound spellings: ?Transfer@CPersistContext@@QAEXPBDPA_N@Z; ?TransferBool@CPersistContext@@QAEXPBDPA_N@Z
+0057e2f1	reloc	??$Transfer@M@CPersistContext@@QAEXPBDAAM@Z	004107e0	OK	
+0057e2f1	reloc	??$Transfer@W4EHeroTrainingStatus@@@CPersistContext@@QAEXPBDAAW4EHeroTrainingStatus@@@Z	005806c4	OK	
+0057e2f1	reloc	?GetDefinitionManager@CTCBase@@IBEABVCGameDefinitionManager@@XZ	006869d0	PDB_OTHERS_BOUND	33 other bound spellings: ?CTCHeroStats_GetHelper@@YIPAXPAVCTCHeroStats@@@Z; ?CTCHeroStats_GetOwner@@YIPAVCTCHeroStats@@PAV1@@Z; ?GetBigObj@@YAPAUBigObj@@XZ
+0057e2f1	reloc	??$Transfer@J@CPersistContext@@QAEXPBDAAJABJ@Z	00410be0	PDB_OTHERS_BOUND	3 other bound spellings: ?Inner@CPersistContext@@QAEXPADPAJ1@Z; ?Transfer@CPersistContext@@QAEXPBDAAJABJ@Z; ?Transfer_00410be0@CPersistContext@@QAEXPBDAAJABJ@Z
+0057e2f1	reloc	??$Transfer@VCCharString@@@CPersistContext@@QAEXPBDAAVCCharString@@@Z	00411010	PDB_OTHERS_BOUND	2 other bound spellings: ?Read@CPersistContext@@QAEXPBDAAVCCharString@@@Z; ?Transfer@CPersistContext@@QAEXPBDPAVCCharString@@@Z
+0057e2f1	reloc	??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z	004045c0	PDB_OTHERS_BOUND	3 other bound spellings: ?Transfer@CPersistContext@@QAEXPBDAACABC@Z; ?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z; ?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z
+0057e2f1	reloc	??$TransferVector@J@CPersistContext@@QAEXPBDAAV?$vector@JV?$allocator@J@std@@@std@@@Z	005815d6	PDB_OTHERS_BOUND	2 other bound spellings: ?TransferVector@CPersistContext@@QAEXPBDPAUCLongVector@@@Z; ?TransferVector@CPersistContext@@QAEXPBDPAV?$vector@JV?$allocator@J@std@@@std@@@Z
+0057e2f1	reloc	?IsSaving@CPersistContext@@QBE_NXZ	004aef50	OK	
+0057e2f1	reloc	?push_back@?$vector@JV?$allocator@J@std@@@std@@QAEXABJ@Z	00485ff3	PDB_OTHERS_BOUND	4 other bound spellings: ?helper@FableAddLearned_005eedcf_sub@@QAEXPAJ@Z; ?push_back@?$vector@J@std@@QAEXABJ@Z; ?push_back@CLongVector@@QAEXABJ@Z
+0057e2f1	reloc	?GetWorld@CTCBase@@IBEAAVCWorld@@XZ	00686a70	PDB_OTHERS_BOUND	12 other bound spellings: ?CTCPhysicsStandard_helper@@YIXPAUCTCPhysicsStandard@@@Z; ?CTCVillage_GetIsHeroEnemyOfGuards_Prep@@YAHXZ; ?First_Helper@@YAXXZ
+0057e2f1	reloc	?GetFrame@CWorld@@SIJXZ	0049d870	OK	
+0057e2f1	reloc	?push_back@?$vector@MV?$allocator@M@std@@@std@@QAEXABM@Z	00568850	PDB_OTHERS_BOUND	1 other bound spellings: ?push_back@?$CRetailVector@M@@QAEXABM@Z
+0057e2f1	reloc	?push_back@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAEXABVCCharString@@@Z	0044bff0	PDB_OTHERS_BOUND	2 other bound spellings: ?push_back@CCharStringVector@@QAEXABVCCharString@@@Z; ?push_back@SCharStringVector@@QAEXABVCCharString@@@Z
+0057e2f1	reloc	?_M_increment@?$_Rb_global@_N@std@@SAPAU_Rb_tree_node_base@2@PAU32@@Z	004292c0	NOT_IN_PDB_SETS	24 other bound spellings: ?GetNoAllocatedAreas@@YAPAXPAX@Z; ?Helper@@YAHPAX@Z; ?Increment@SRbGlobal@@SAPAUSReactionNode@@PAU2@@Z
+0057e2f1	reloc	??$TransferVector@M@CPersistContext@@QAEXPBDAAV?$vector@MV?$allocator@M@std@@@std@@@Z	00569fe0	PDB_OTHERS_BOUND	1 other bound spellings: ??$Transfer@M@CPersistContext@@QAEXPBDAAV?$vector@MV?$allocator@M@std@@@std@@@Z
+0057e2f1	reloc	??$TransferVector@VCCharString@@@CPersistContext@@QAEXPBDAAV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z	0049b8d0	PDB_OTHERS_BOUND	3 other bound spellings: ?Transfer@CPersistContext@@QAEXPBDAAUCCharStringVector@@@Z; ?Transfer@CPersistContext@@QAEXPBDPAUCCharStringVector@@@Z; ?TransferSignedChar@CPersistContext@@QAEXPBDPAC@Z
+0057e2f1	reloc	??1?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@QAE@XZ	00414ea0	PDB_OTHERS_BOUND	14 other bound spellings: ??1?$vector@UCCharString@NFoot008f7bd0@@@NFoot008f7bd0@@QAE@XZ; ??1?$vector@UCCharString@StrikeEvents@@@std@StrikeEvents@@QAE@XZ; ??1?$vector@VCCharString@@@std@@QAE@XZ
+0057e2f1	reloc	_free	00bfea14	NOT_IN_PDB_SETS	
+0057e2f1	reloc	??0MirroredCriminalStatus@CTCHeroStats@@QAE@XZ	0057a5dd	PDB_OTHERS_BOUND	2 other bound spellings: ??0CMember_0057a5ddMember@@QAE@XZ; ?Initialise@CClass_0057f17a@@QAEXXZ
+0057e2f1	reloc	??A?$map@VCCharString@@UMirroredCriminalStatus@CTCHeroStats@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@UMirroredCriminalStatus@CTCHeroStats@@@std@@@5@@std@@QAEAAUMirroredCriminalStatus@CTCHeroStats@@ABVCCharString@@@Z	005812df	PDB_OTHERS_BOUND	1 other bound spellings: ??ACCrimeStatusMap@@QAEAAUMirroredCriminalStatus@@ABVCCharString@@@Z
+0057e2f1	reloc	?reserve@?$vector@VCHeroMarriageInfo@@V?$allocator@VCHeroMarriageInfo@@@std@@@std@@QAEXI@Z	005806df	OK	
+0057e2f1	reloc	??$copy@U?$_List_iterator@VCHeroMarriageInfo@@U?$_Nonconst_traits@VCHeroMarriageInfo@@@std@@@std@@V?$back_insert_iterator@V?$vector@VCHeroMarriageInfo@@V?$allocator@VCHeroMarriageInfo@@@std@@@std@@@2@@std@@YI?AV?$back_insert_iterator@V?$vector@VCHeroMarriageInfo@@V?$allocator@VCHeroMarriageInfo@@@std@@@std@@@0@U?$_List_iterator@VCHeroMarriageInfo@@U?$_Nonconst_traits@VCHeroMarriageInfo@@@std@@@0@0V10@@Z	00581376	NOT_IN_PDB_SETS	
+0057e2f1	reloc	??$TransferVector@VCHeroMarriageInfo@@@CPersistContext@@QAEXPBDAAV?$vector@VCHeroMarriageInfo@@V?$allocator@VCHeroMarriageInfo@@@std@@@std@@@Z	0058165d	OK	
+0057e2f1	reloc	?clear@?$_List_base@VCHeroMarriageInfo@@V?$allocator@VCHeroMarriageInfo@@@std@@@std@@QAEXXZ	0057f58e	NOT_IN_PDB_SETS	1 other bound spellings: ?Reset@CMarriageList@@QAEXXZ
+0057e2f1	reloc	??$copy@PAVCHeroMarriageInfo@@V?$back_insert_iterator@V?$list@VCHeroMarriageInfo@@V?$allocator@VCHeroMarriageInfo@@@std@@@std@@@std@@@std@@YI?AV?$back_insert_iterator@V?$list@VCHeroMarriageInfo@@V?$allocator@VCHeroMarriageInfo@@@std@@@std@@@0@PAVCHeroMarriageInfo@@0V10@@Z	005813a0	NOT_IN_PDB_SETS	
+0058e99f	leaf	?OpenInventoryShortcut@CTCInventory@@QAEXJ@Z	0058e99f	OK	
+0058e99f	reloc	?DeleteMenuComponents@CTCInventory@@QAEXXZ	00587a41	OK	
+0058e99f	reloc	?test@?$bitset@$0BBC@@std@@QBE_NI@Z	00410de0	PDB_OTHERS_BOUND	5 other bound spellings: ?Do@D@@QAEXH@Z; ?test@CBitset@@QBE_NK@Z; ?test@CPresenceBits@@QBE_NK@Z
+0058e99f	reloc	?OpenPCInventoryMenu@CTCInventory@@QAEXXZ	0058807d	OK	
+0058e99f	reloc	?OpenPCMapMenu@CTCInventory@@QAEXXZ	00589a30	OK	
+0058e99f	reloc	?OpenPCSkillsMenu@CTCInventory@@QAEXXZ	00587bff	OK	
+0058e99f	reloc	?OpenPCStatusMenu@CTCInventory@@QAEXXZ	0058a763	OK	
+0058e99f	reloc	??0CCharString@@QAE@PBDJ@Z	0099ebf0	PDB_OTHERS_BOUND	46 other bound spellings: ??0CCharString2@@QAE@HH@Z; ??0CCharString@@QAE@PBDH@Z; ??0CCharString@ExternalRetry_00835c80@@QAE@PBDH@Z
+006932b0	leaf	?RegisterActionEventTypes@CCreatureActionBase@@SIXXZ	006932b0	OK	
+006932b0	reloc	??2@YAPAXI@Z	00bfea1a	NOT_IN_PDB_SETS	
+006932b0	reloc	?DeleteData@?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@SIXPAX@Z	00694ef0	PDB_OTHERS_BOUND	1 other bound spellings: ?Destroy_00694ef0@@YIXPAX@Z
+006932b0	reloc	??0CBaseClass@@QAE@XZ	0099a2d0	PDB_OTHERS_BOUND	4 other bound spellings: ??0CBase@N_0099a2d0@@QAE@XZ; ??0CBaseClass@NFoot008f7bd0@@QAE@XZ; ??0CBaseNative@@QAE@XZ
+006932b0	reloc	??_7CActionEventTriggerParticle@NCreatureAction@@6B@	0125c0d8	NOT_IN_PDB_SETS	
+006932b0	reloc	??0CCharString@@QAE@XZ	0099e4b0	PDB_OTHERS_BOUND	9 other bound spellings: ??0CCharString@N006d41f0@@QAE@XZ; ??0CCharStringFmt@@QAE@XZ; ??0CCharStringMember@@QAE@XZ
+006932b0	reloc	??0CCharString@@QAE@ABV0@@Z	0099ec30	PDB_OTHERS_BOUND	74 other bound spellings: ??0CCharString@@QAE@PBD@Z; ??0CCharString@FableCons_007696a0@@QAE@ABV01@@Z; ??0CCharString@FableCons_00786d60@@QAE@ABV01@@Z
+006932b0	reloc	?RegisteredActionEvents@CCreatureActionBase@@0V?$map@VCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@4@@std@@A	013ba8bc	NOT_IN_PDB_SETS	3 other bound spellings: ?RegisteredActionEvents@CCreatureActionBase@@2UCRegisteredActionEventMap@@A; ?g_tree_013ba8bc@@3UCRetailTree_node0x1c@@A; _g_CParticleMorphs_Tree_Deleter_01229280
+006932b0	reloc	?insert_unique@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@3@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@std@@@2@@std@@_N@2@ABU?$pair@$$CBVCCharString@@V?$CCountedPointer@VCActionEventBase@NCreatureAction@@@@@2@@Z	00696b70	NOT_IN_PDB_SETS	
+006932b0	reloc	??3@YAXPAX@Z	00bfe9bc	NOT_IN_PDB_SETS	
+006932b0	reloc	??1CCharString@@QAE@XZ	0099eae0	PDB_OTHERS_BOUND	71 other bound spellings: ??1CCharString2@@QAE@XZ; ??1CCharString@ExternalRetry_00835c80@@QAE@XZ; ??1CCharString@ExternalRetry_008af850@@QAE@XZ
+006932b0	reloc	??_7CActionEventCameraShake@NCreatureAction@@6B@	0125c0fc	NOT_IN_PDB_SETS	
+006932b0	reloc	??_7CActionEventSound@NCreatureAction@@6B@	0125c11c	NOT_IN_PDB_SETS	
+006932b0	reloc	??_7CActionEventShot@NCreatureAction@@6B@	0125c13c	NOT_IN_PDB_SETS	
+006932b0	reloc	??_7CActionEventExplosion@NCreatureAction@@6B@	0125c154	NOT_IN_PDB_SETS	
+006932b0	reloc	??_7CActionEventAddObject@NCreatureAction@@6B@	0125c178	NOT_IN_PDB_SETS	
+006932b0	reloc	??_7CActionEventRemoveObject@NCreatureAction@@6B@	0125c1a0	NOT_IN_PDB_SETS	
+006932b0	reloc	?DebugEventTrace@CCreatureActionBase@@0_NA	013ba8b8	NOT_IN_PDB_SETS	
+00821010	leaf	?LoadBrushesFromFile@CMap@@QAEXAAVCAFile@@@Z	00821010	OK	
+00821010	reloc	__chkstk	00bfea30	PDB_OTHERS_BOUND	1 other bound spellings: __alloca_probe | QUEUE_CORRECT_IS: __chkstk and __alloca_probe are both correct (libsig2)
+00821010	reloc	___security_cookie	0139c8a8	NOT_IN_PDB_SETS	
+00821010	reloc	?ReadFromFile@?$CReplaceSerialise@VCFileFormatLevel@@VCOldFileFormatLevel3@@@@QAEXAAVCAFile@@PAVCASuspendableProcess@@@Z	0051a240	PDB_OTHERS_BOUND	1 other bound spellings: ?ReadFromFile@CFileFormatLevel@@QAEXPAVCAFile@@PAVCASuspendableProcess@@@Z
+00821010	reloc	??0CCharString@@QAE@XZ	0099e4b0	PDB_OTHERS_BOUND	9 other bound spellings: ??0CCharString@N006d41f0@@QAE@XZ; ??0CCharStringFmt@@QAE@XZ; ??0CCharStringMember@@QAE@XZ
+00821010	reloc	??0CFileLargeThemePalette@@QAE@XZ	0050ee40	PDB_OTHERS_BOUND	3 other bound spellings: ??0CInputState_0050ee40@@QAE@XZ; ??0CLayer@@QAE@XZ; ??0CMember_0050ee40Member@@QAE@XZ
+00821010	reloc	??1CCharString@@QAE@XZ	0099eae0	PDB_OTHERS_BOUND	71 other bound spellings: ??1CCharString2@@QAE@XZ; ??1CCharString@ExternalRetry_00835c80@@QAE@XZ; ??1CCharString@ExternalRetry_008af850@@QAE@XZ
+00821010	reloc	@__security_check_cookie@4	00bfe9f9	OK	
+00821010	reloc	?ReadFromFile@?$CBaseSerialise@VCFileFormatBrushHeader@@$00@@QAE_NAAVCAFile@@PAVCASuspendableProcess@@@Z	008269a0	OK	
+00821010	reloc	??0CCharString@@QAE@PBDJ@Z	0099ebf0	PDB_OTHERS_BOUND	46 other bound spellings: ??0CCharString2@@QAE@HH@Z; ??0CCharString@@QAE@PBDH@Z; ??0CCharString@ExternalRetry_00835c80@@QAE@PBDH@Z
+00821010	reloc	?GetDefGlobalIndexFromName@CDefinitionManager@@QBEJABVCCharString@@@Z	009ad410	PDB_OTHERS_BOUND	15 other bound spellings: ?CountObjects@ObjContainer@@QAEHH@Z; ?CountOf@@YIHPAX@Z; ?GetDefGlobalIndex@CDefinitionManager@@QAEJABVCCharString@@@Z
+00821010	reloc	?ReadFromFile@?$CReplaceSerialise@VCFileFormatBrush@@VCOldFileFormatBrush@@@@QAEXAAVCAFile@@PAVCASuspendableProcess@@@Z	00826a00	OK	
+00821010	reloc	??4CCharString@@QAEABV0@PBD@Z	0099efe0	PDB_OTHERS_BOUND	3 other bound spellings: ?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z; ?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z; ?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z
+00821010	reloc	?CreateScriptedMapBrush@CMap@@QAEAAVCScriptedMapBrush@@ABVCScriptedMapBrushInit@@@Z	00820f80	OK	
+00821010	reloc	_malloc	00bfea0e	NOT_IN_PDB_SETS	
+00821010	reloc	_free	00bfea14	NOT_IN_PDB_SETS	
+00821010	reloc	?SetGameHeight@CScriptedMapBrush@@QAEXJJM@Z	0082e2e0	OK	
+00821010	reloc	?SetThemeBlend@CScriptedMapBrush@@QAEXJJEK@Z	0082e420	OK	
+00821010	reloc	?SetTheme@CScriptedMapBrush@@QAEXJJKK@Z	0082e380	OK	
+00821010	reloc	?SetThingToMove@CScriptedMapBrush@@QAEX_KABVC3DVector@@ABVC3DAngles@@@Z	0082ea50	OK	
+00821010	reloc	?SetThingToDelete@CScriptedMapBrush@@QAEX_K@Z	0082e8f0	OK	
+00821010	reloc	?SetThingToAdd@CScriptedMapBrush@@QAEX_K@Z	0082e9a0	OK	
+00821010	reloc	?GetPThingWithUID@CThingManager@@QAEPAVCThing@@_K@Z	0051ed80	PDB_OTHERS_BOUND	8 other bound spellings: ?FindThingByUID@CThingManager@@QAEPAVCThing@@_K@Z; ?GetThingByUID@CThingManager@@QAEPAVCThing@@_K@Z; ?GetThingFromUID@CGame_007e8820@@QAEPAVCThing@@_K@Z
+00821010	reloc	?SetAsActivated@CThing@@QAEX_N@Z	004c7770	OK	
+008edff0	leaf	??0CWillButtonHelperTimer@@QAE@W4EHeroAbility@@AAVCThing@@@Z	008edff0	OK	
+008edff0	reloc	??0CBaseIntelligentPointer@@QAE@XZ	00a01b10	PDB_OTHERS_BOUND	20 other bound spellings: ??0BaseIntelligentPointer@@QAE@XZ; ??0BaseIntelligentPointer@LightningNative@@QAE@XZ; ??0CBaseIntelligentPointer@FableCons_004aa030@@QAE@XZ
+008edff0	reloc	??_7?$CIntelligentPointer@VCThing@@@@6B@	01238c6c	NOT_IN_PDB_SETS	27 other bound spellings: ??_7?$CIntelligentPointer@$$CBVCThing@FableCons_004aa030@@@FableCons_004aa030@@6B@; ??_7?$CIntelligentPointer@UCThing@N006e4bd0@@@N006e4bd0@@6B@; ??_7?$CIntelligentPointer@UCThing@NCreatureMode@@@NCreatureMode@@6B@
+008edff0	reloc	?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z	00a01b90	PDB_OTHERS_BOUND	27 other bound spellings: ?SetPItem@CBaseIntelligentPointer@@QAEXPAUCThingRetail@@@Z; ?SetPItem@CBaseIntelligentPointer@@QAEXPAVCThing@@@Z; ?SetPItem@CBaseIntelligentPointer@@QAEXPAX@Z
+008edff0	reloc	?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ	00a01b50	PDB_OTHERS_BOUND	56 other bound spellings: ??BCThingIntelligentPointerView@@QAEPAVCThing@@XZ; ?Get@CBaseIntelligentPointer@NScreen005fc2d0@@QAEPAXXZ; ?Get@CBaseIntelligentPointer@NScreen005fc8a0@@QAEPAXXZ
+008edff0	reloc	?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QBEPBU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z	004365b0	NOT_IN_PDB_SETS	23 other bound spellings: ?Find@Sub@@QAEPAUSubNode@@PAH@Z; ?FindConst@MazeTable@@QAEPAUMazeEntry@@ABJ@Z; ?LowerBound2@CInterfaceMap@@QAEPAUSEntry@1@PBJ@Z
+008edff0	reloc	?GetAbilityMaximumLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z	005edea3	PDB_OTHERS_BOUND	2 other bound spellings: ?GetAbilityMaximumLevel@CTCInventoryAbilities@@QAEJJ@Z; ?GetAbilityMaximumLevel@CTCInventoryAbilities_Retail@@QAEJJ@Z
+008edff0	reloc	?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z	005ede93	PDB_OTHERS_BOUND	3 other bound spellings: ?GetAbilityLevel@CTCHeroAbilities@@QAEJW4EHeroAbility@@@Z; ?GetAbilityLevel@CTCInventoryAbilities@@QAEJJ@Z; ?GetAbilityLevel@CTCInventoryAbilities@@QBEJJ@Z
+008edff0	reloc	??0CCharString@@QAE@PBDJ@Z	0099ebf0	PDB_OTHERS_BOUND	46 other bound spellings: ??0CCharString2@@QAE@HH@Z; ??0CCharString@@QAE@PBDH@Z; ??0CCharString@ExternalRetry_00835c80@@QAE@PBDH@Z
+008edff0	reloc	?Get@CGameDefinitionManager@@SIAAV1@XZ	0044c6b0	PDB_OTHERS_BOUND	7 other bound spellings: ?AcquireBuilder@@YGPAUBuilder@@PAUInitGuard@@PAPAVCPlayerGuiDef@@@Z; ?GetDefinitionManager@NFactory007f1b70@@YIPAUCGameDefinitionManager@1@XZ; ?GetDefinitionManager@NScreen005fc2d0@@YIPAUCDefinitionManager@1@XZ
+008edff0	reloc	?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z	009ad390	PDB_OTHERS_BOUND	4 other bound spellings: ?GetDefGlobalIndex@CDefinitionManager@@QAEJABVCCharString@@_N@Z; ?GetDefIndex@CDefinitionManager@@QAEJABVCCharString@@_N@Z; ?Index@CDefinitionManager@NScreen005fc2d0@@QAEHABUCCharString@2@_N@Z
+008edff0	reloc	??1CCharString@@QAE@XZ	0099eae0	PDB_OTHERS_BOUND	71 other bound spellings: ??1CCharString2@@QAE@XZ; ??1CCharString@ExternalRetry_00835c80@@QAE@XZ; ??1CCharString@ExternalRetry_008af850@@QAE@XZ
+008edff0	reloc	??$GetDef@VCSpecialAbilitiesForcePushDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCSpecialAbilitiesForcePushDef@@@@@Z	00798c10	OK	
+008edff0	reloc	__ftol2	00bfea70	OK	
+008edff0	reloc	?ConstantFPS@CMainGameComponent@@1JA	01375550	NOT_IN_PDB_SETS	15 other bound spellings: ?Frame@X_006e11f0@@3HA; ?FrameRate@CGameSubsystem@@2JA; ?FramesPerSecond@@3JA
+008edff0	reloc	?_M_insert_overflow@?$vector@MV?$allocator@M@std@@@std@@IAEXPAMABMABU__true_type@2@I_N@Z	004408a0	NOT_IN_PDB_SETS	
+008edff0	reloc	??$GetDef@VCSpecialAbilitiesBulletTimeDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCSpecialAbilitiesBulletTimeDef@@@@@Z	0079dbb0	OK	
+008edff0	reloc	??$GetDef@VCSpecialAbilitiesBerserkDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCSpecialAbilitiesBerserkDef@@@@@Z	0078da50	OK	
+008edff0	reloc	??$GetDef@VCSpecialAbilitiesEnflameDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCSpecialAbilitiesEnflameDef@@@@@Z	007a5080	OK	
+009bc120	leaf	?TransferVectorOfSubComponentsLoadText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableVectorOfSubComponentsGenericType@@@Z	009bc120	OK	
+009bc120	reloc	??0CStringParser@@QAE@ABV0@@Z	0046381b	OK	
+009bc120	reloc	??0CCharString@@QAE@PBDJ@Z	0099ebf0	PDB_OTHERS_BOUND	46 other bound spellings: ??0CCharString2@@QAE@HH@Z; ??0CCharString@@QAE@PBDH@Z; ??0CCharString@ExternalRetry_00835c80@@QAE@PBDH@Z
+009bc120	reloc	?SkipPastWholeString@CStringParser@@QAE_NABVCCharString@@@Z	009b9c00	OK	
+009bc120	reloc	??1CCharString@@QAE@XZ	0099eae0	PDB_OTHERS_BOUND	71 other bound spellings: ??1CCharString2@@QAE@XZ; ??1CCharString@ExternalRetry_00835c80@@QAE@XZ; ??1CCharString@ExternalRetry_008af850@@QAE@XZ
+009bc120	reloc	?ReadAsSymbol@CStringParser@@QAE?AVCCharString@@XZ	009ba790	PDB_OTHERS_BOUND	1 other bound spellings: ?ReadAsString@Parser@N006d41f0@@QAE?AUCCharString@2@XZ
+009bc120	reloc	??8?$CBasicString@D@@QBE_NPBD@Z	004115a0	PDB_OTHERS_BOUND	3 other bound spellings: ??8?$CBasicString@D@X_004fe630@@QBE_NPBD@Z; ?Equal@CBasicString@N006d41f0@@QBE_NPBD@Z; ?Equals@StringDataMethods@@QBE_NPBD@Z
+009bc120	reloc	?ReadAsString@CStringParser@@QAE?AVCCharString@@XZ	009ba6f0	PDB_OTHERS_BOUND	1 other bound spellings: ?ReadAsString@CStringParserMethods@@QAE?AVCCharString@@XZ
+009bc120	reloc	??4CCharString@@QAEABV0@ABV0@@Z	0099efb0	PDB_OTHERS_BOUND	3 other bound spellings: ??4CCharString@@QAEAAV0@ABV0@@Z; ??4CCharString@std@@QAEAAU01@ABU01@@Z; ??4SymbolString@@QAEAAU0@ABU0@@Z
+009bc120	reloc	??H@YI?AVCCharString@@PBDABV0@@Z	0099f690	OK	
+009bc120	reloc	?PersistError@CPersistContext@@QBEXABVCStringParser@@ABVCCharString@@@Z	009baa90	OK	
+009bc120	reloc	?TransferIn@CPersistTraitsSLONG@@SIXAAVCPersistContext@@AAVCStringParser@@AAJ@Z	009e2590	PDB_OTHERS_BOUND	11 other bound spellings: ?PC_Transfer@@YIXPAVCPersistContext@@HPAH@Z; ?PersistByteHelper@@YIEPAVCPersistContext@@PAVCStringParser@@PAE@Z; ?PersistTransferInLong@@YIXAAVCPersistContext@@AAVCStringParser@@PAJ@Z
+009bc120	reloc	?CleanOutLine@CPersistContext@@IAEXJJ@Z	009bb0d0	OK	
+009bc120	reloc	?ReadAsStringUntilPastString@CStringParser@@QAE?AVCCharString@@ABV2@@Z	009ba3e0	PDB_OTHERS_BOUND	1 other bound spellings: ?ReadAsStringUntilString_009ba3e0@CStringParser@@QAE?AVCCharString@@ABV2@@Z
+009bc120	reloc	??0CStringParser@@QAE@ABVCCharString@@P6IX0@Z0J@Z	00404720	OK	
+009bc120	reloc	?CheckUnknownSymbols@CPersistContext@@QAEXXZ	009bbbf0	PDB_OTHERS_BOUND	1 other bound spellings: ??1CPersistContext@@QAE@XZ
+009bc120	reloc	?NullChar@CCharString@@1DB	0129aaf4	NOT_IN_PDB_SETS	23 other bound spellings: ?CUnprovenGlobal_0129aaf4@@3QBDB; ?Empty@NErase005dcf70@@3QBDB; ?EmptyNarrowString@@3PADA
+009bc120	reloc	??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ	004046b0	NOT_IN_PDB_SETS	1 other bound spellings: ??1?$list@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ
+009bc120	reloc	??1CBaseClass@@UAE@XZ	0099a2e0	PDB_OTHERS_BOUND	7 other bound spellings: ??1CBase@@UAE@XZ; ??1CBase@NParticleEngine@@QAE@XZ; ??1CBaseClass@ExternalRetry_00a90fc0@@UAE@XZ
+009cf3a0	leaf	?WriteSymbolHeaderFile@CBankFile@@QAEXXZ	009cf3a0	OK	
+009cf3a0	reloc	??0CWideString@@QAE@XZ	0099aed0	PDB_OTHERS_BOUND	11 other bound spellings: ??0CBase_005b15c2@@QAE@XZ; ??0CBase_005b1fbc@@QAE@XZ; ??0CNameString_0099aed0@@QAE@XZ
+009cf3a0	reloc	?GBankFileManager@NBankFileManager@@3VCBankFileManager@@A	013ca79c	NOT_IN_PDB_SETS	4 other bound spellings: ?g_BankFileManager@@3UCBankFileManager@@A; ?g_BankFileManager@@3VCBankFileManager@@A; ?g_CStatic_009a7ac0_013ca79c@@3UCStatic_009a7ac0@@A
+009cf3a0	reloc	?GetRetailHeaderFilePath@CBankFileManager@@QBE?AVCWideString@@ABVCCharString@@@Z	009a7ed0	OK	
+009cf3a0	reloc	?GetDevHeaderFilePath@CBankFileManager@@QBE?AVCWideString@@ABVCCharString@@@Z	009a7e20	OK	
+009cf3a0	reloc	??4CWideString@@QAEABV0@ABV0@@Z	0099b7d0	PDB_OTHERS_BOUND	4 other bound spellings: ??4CWideString@@QAEAAV0@ABV0@@Z; ??4CWideString@N006bebf0@@QAEAAU01@ABU01@@Z; ??4FrontEndWideString_00594f36@@QAEAAU0@ABU0@@Z
+009cf3a0	reloc	??1CWideString@@QAE@XZ	0099b510	PDB_OTHERS_BOUND	17 other bound spellings: ??1CWideString@AFileSupport@@QAE@XZ; ??1CWideString@ExternalRetry_00999620@@QAE@XZ; ??1CWideString@N006bebf0@@QAE@XZ
+009cf3a0	reloc	?GetLength@CWideString@@QBEJXZ	0099b220	OK	
+009cf3a0	reloc	??0CCharString@@QAE@PBDJ@Z	0099ebf0	PDB_OTHERS_BOUND	46 other bound spellings: ??0CCharString2@@QAE@HH@Z; ??0CCharString@@QAE@PBDH@Z; ??0CCharString@ExternalRetry_00835c80@@QAE@PBDH@Z
+009cf3a0	reloc	??1CCharString@@QAE@XZ	0099eae0	PDB_OTHERS_BOUND	71 other bound spellings: ??1CCharString2@@QAE@XZ; ??1CCharString@ExternalRetry_00835c80@@QAE@XZ; ??1CCharString@ExternalRetry_008af850@@QAE@XZ
+009cf3a0	reloc	??0CBaseClassNonCopyable@@IAE@XZ	0099a2f0	PDB_OTHERS_BOUND	1 other bound spellings: ?Base_ctor@@YIXPAX@Z
+009cf3a0	reloc	??_7CMemoryFile@@6B@	0122e0fc	NOT_IN_PDB_SETS	2 other bound spellings: ?CMemoryFile_vtbl@@3PAPBXA; ?g_vtbl_CTCInventoryItem@@3PAXA
+009cf3a0	reloc	?Open@CMemoryFile@@UAEXABVCWideString@@W4FileAccessType@@K@Z	009e94a0	OK	
+009cf3a0	reloc	??0CFileDataOutputStream@@QAE@AAVCAFile@@@Z	00994400	PDB_OTHERS_BOUND	1 other bound spellings: ??0CFileDataOutputStream@@QAE@PAUCDiskFileCalls@@@Z
+009cf3a0	reloc	??H@YI?AVCCharString@@ABV0@PBD@Z	0099f600	OK	
+009cf3a0	reloc	?WriteStringNewLine@CDataOutputStream@@QAEXABVCCharString@@@Z	00995a20	OK	
+009cf3a0	reloc	_malloc	00bfea0e	NOT_IN_PDB_SETS	
+009cf3a0	reloc	??ACPackedUIntArray@@QBEKK@Z	00a629f0	PDB_OTHERS_BOUND	3 other bound spellings: ??ACPackedUIntArray@@QAEKK@Z; ??ACPackedUIntArray@FableHeap_009d3750@@QBEKK@Z; ??ACPackedUIntArray@N009d3040@@QAEKK@Z
+009cf3a0	reloc	??A?$map@VCCharString@@V?$CArray@K@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V?$CArray@K@@@std@@@4@@std@@QAEAAV?$CArray@K@@ABVCCharString@@@Z	009d4810	OK	
+009cf3a0	reloc	?_M_insert_overflow@?$vector@KV?$allocator@K@std@@@std@@IAEXPAKABKABU__true_type@2@I_N@Z	00464ace	NOT_IN_PDB_SETS	6 other bound spellings: ??$_M_insert_overflow@USScalarTag@@@CHandleVector@@QAEXPAKABKABUSScalarTag@@K_N@Z; ?_M_insert_overflow@?$CArray@K@@QAEXPAKABKABU__true_type@@I_N@Z; ?_M_insert_overflow@?$vector@K@std@@QAEXPAKABKABU__true_type@2@I_N@Z
+009cf3a0	reloc	??H@YI?AVCCharString@@ABV0@0@Z	0099f570	PDB_OTHERS_BOUND	1 other bound spellings: ?sub_99f570@@YI?AVCCharString@@PAXPBD@Z
+009cf3a0	reloc	??0CCharString@@QAE@ABV0@@Z	0099ec30	PDB_OTHERS_BOUND	74 other bound spellings: ??0CCharString@@QAE@PBD@Z; ??0CCharString@FableCons_007696a0@@QAE@ABV01@@Z; ??0CCharString@FableCons_00786d60@@QAE@ABV01@@Z
+009cf3a0	reloc	?FindCharPos@CCharString@@QBEJD@Z	0099e5a0	OK	
+009cf3a0	reloc	?GFIntToCharString@@YI?AVCCharString@@J@Z	0099f830	OK	
+009cf3a0	reloc	?DumpToFile@CMemoryFile@@QAEXXZ	009e9330	OK	
+009cf3a0	reloc	?Close@CMemoryFile@@UAEXXZ	009e9390	PDB_OTHERS_BOUND	2 other bound spellings: ?Cleanup_5d72d0@@YIXPAX@Z; @SomeCleanup@4
+009cf3a0	reloc	?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CArray@K@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CArray@K@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CArray@K@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CArray@K@@@std@@@2@@Z	009d3e80	NOT_IN_PDB_SETS	1 other bound spellings: ?Erase@CRetailTree_erase009d3e80@@QAEXPAUnode@1@@Z
+009cf3a0	reloc	_free	00bfea14	NOT_IN_PDB_SETS	
+009cf3a0	reloc	??1CFileDataOutputStream@@UAE@XZ	00994430	PDB_OTHERS_BOUND	1 other bound spellings: ??1CFileDataOutputStream@@QAE@XZ
+009cf3a0	reloc	??1CBaseClassNonCopyable@@MAE@XZ	0099a300	PDB_OTHERS_BOUND	29 other bound spellings: ??1CBaseClass@NFactory006ac910@@UAE@XZ; ??1CBaseClassNonCopyable@@QAE@XZ; ??1CBaseClassNonCopyable@@UAE@XZ
+00a9bbe0	leaf	??0C3DMeshFileLoader@@QAE@XZ	00a9bbe0	OK	
+00a9bbe0	reloc	??0CChunkedFileLoader@@QAE@PBD@Z	00aa7510	OK	
+00a9bbe0	reloc	??_7C3DMeshFileLoader@@6B@	0129e0d0	NOT_IN_PDB_SETS	
+00a9bbe0	reloc	??2@YAPAXI@Z	00bfea1a	NOT_IN_PDB_SETS	
+00a9bbe0	reloc	??0CChunkedFileSuperChunk@@IAE@PBD@Z	00aa8360	PDB_OTHERS_BOUND	4 other bound spellings: ??0C3DMeshFileChunk@@QAE@PBD@Z; ??0CBase_00aa8360@@QAE@J@Z; ??0CChunkedFileSuperChunk@@QAE@PBD@Z
+00a9bbe0	reloc	??_7C3DMeshFileRootChunk@@6B@	0129e090	NOT_IN_PDB_SETS	
+00a9bbe0	reloc	?Reset@?$CCountedPointer@VC3DMeshFileRootChunk@@@@QAEXPAVC3DMeshFileRootChunk@@@Z	00a9ced0	OK	
+00a9bbe0	reloc	??0C3DMeshFileSubMeshChunk@@QAE@XZ	00ab9a70	OK	
+00a9bbe0	reloc	?AddChunkType@C3DMeshFileLoader@@AAE?AV?$CCountedPointer@VCChunkedFileChunk@@@@ABVCChunkedFileChunk@@PAVCChunkedFileSuperChunk@@@Z	00a9ad00	PDB_OTHERS_BOUND	1 other bound spellings: ?MakeSegment@C3DMeshFileLoader@@QAE?AU?$CCountedPointer@$$CBUCIPhysicsFacesSegmentBase@@@@PAUCIPhysicsFacesSegmentSource@@PAUC3DMeshFileRootChunk@@@Z
+00a9bbe0	reloc	??3@YAXPAX@Z	00bfe9bc	NOT_IN_PDB_SETS	
+00a9bbe0	reloc	??1CCharString@@QAE@XZ	0099eae0	PDB_OTHERS_BOUND	71 other bound spellings: ??1CCharString2@@QAE@XZ; ??1CCharString@ExternalRetry_00835c80@@QAE@XZ; ??1CCharString@ExternalRetry_008af850@@QAE@XZ
+00a9bbe0	reloc	??1CChunkedFileSuperChunk@@UAE@XZ	00aa8490	OK	
+00a9bbe0	reloc	??0C3DMeshFileMaterialListChunk@@QAE@XZ	00abfb90	OK	
+00a9bbe0	reloc	??0C3DMeshFileHelpersChunk@@QAE@XZ	00aa9650	OK	
+00a9bbe0	reloc	??0C3DMeshFileTransformationChunk@@QAE@XZ	00ab9be0	OK	
+00a9bbe0	reloc	??0C3DMeshFileBoneChunk@@QAE@XZ	00ab9da0	OK	
+00a9bbe0	reloc	??0C3DMeshFilePrimitiveChunk@@QAE@XZ	00abd080	OK	
+00a9bbe0	reloc	_free	00bfea14	NOT_IN_PDB_SETS	
+00a9bbe0	reloc	??0C3DMeshFileClothChunk@@QAE@XZ	00ac66a0	OK	
+00a9bbe0	reloc	??0C3DMeshFileTrianglesChunk@@QAE@XZ	00abc860	OK	
+00a9bbe0	reloc	??1C3DMeshFileTrianglesChunk@@UAE@XZ	00abc890	OK	
+00a9bbe0	reloc	??0C3DMeshFileSmoothingGroupsChunk@@QAE@XZ	00abc470	OK	
+00a9bbe0	reloc	??1C3DMeshFileSmoothingGroupsChunk@@UAE@XZ	00abc4a0	OK	
+00a9bbe0	reloc	??0C3DMeshFileVerticesChunk@@QAE@XZ	00abc780	OK	
+00a9bbe0	reloc	??1C3DMeshFileVerticesChunk@@UAE@XZ	00abc7b0	OK	
+00a9bbe0	reloc	??0C3DMeshFileUniqueVerticesChunk@@QAE@XZ	00abc560	OK	
+00a9bbe0	reloc	??1C3DMeshFileUniqueVerticesChunk@@UAE@XZ	00abc590	OK	
+00a9bbe0	reloc	??0C3DMeshFileGroupChunk@@QAE@XZ	00abc650	OK	
+00a9bbe0	reloc	??1C3DMeshFileGroupChunk@@UAE@XZ	00abc680	OK	
+00a9bbe0	reloc	?RegisterClothSubChunkType@C3DMeshFileLoader@@QAEXABVCChunkedFileChunk@@@Z	00a9b930	OK	
+00a9bbe0	reloc	??0C3DMeshFileMaterialChunk@@QAE@XZ	00ac0ab0	OK	
+00a9bbe0	reloc	??0C3DMeshFileEngineMaterialChunk@@QAE@XZ	00ac56f0	OK	
+00a9bbe0	reloc	??0C3DMeshFileMaterialExtChunk@@QAE@XZ	00ac02b0	OK	
+00a9bbe0	reloc	??1CChunkedFileChunk@@UAE@XZ	00aa75c0	PDB_OTHERS_BOUND	3 other bound spellings: ??1CChunkedFileChunk@@QAE@XZ; ?BaseOnDie@CTCInventoryItemBase@@QAEXXZ; ?BaseOnDie_00aa75c0@CTCInventoryItem@@QAEXXZ
+00a9bbe0	reloc	??0C3DMeshFileMapChunk@@QAE@XZ	00abfe50	OK	
+00a9bbe0	reloc	??0C3DMeshFileHelperPointChunk@@QAE@XZ	00aa9b20	OK	
+00a9bbe0	reloc	??0C3DMeshFileDummyObjectChunk@@QAE@XZ	00aa9e10	OK	
+00a9bbe0	reloc	??0C3DMeshFileConvexVolumeChunk@@QAE@XZ	00aaaa10	OK	
+00a9bbe0	reloc	??0CChunkedFileChunk@@IAE@PBD@Z	00aa7590	PDB_OTHERS_BOUND	2 other bound spellings: ??0CChunkedFileChunk@@QAE@J@Z; ??0CChunkedFileChunk@@QAE@PBD@Z
+00a9bbe0	reloc	??_7CMirroredTextureHighlightsChunk@@6B@	0129e0e0	NOT_IN_PDB_SETS	
+00ac2be0	leaf	?PartitionSpace@C3DMeshPartitionBuilderElement@@AAEJPBVC3DVertex2@@JM@Z	00ac2be0	OK	
+00ac2be0	reloc	??_GC3DMeshPartitionBuilderElement@@QAEPAXI@Z	00ac39c0	PDB_OTHERS_BOUND	1 other bound spellings: ??_GSBinaryTreeNode_00ac39c0@@QAEPAXI@Z
+00ac2be0	reloc	_free	00bfea14	NOT_IN_PDB_SETS	
+00ac2be0	reloc	??3@YAXPAX@Z	00bfe9bc	NOT_IN_PDB_SETS	
+00ac2be0	reloc	?_M_fill_insert@?$vector@_NV?$allocator@_N@std@@@std@@QAEXPA_NIAB_N@Z	004676ef	NOT_IN_PDB_SETS	2 other bound spellings: ?_M_fill_insert@CBoolVector@@QAEXPA_NIAB_N@Z; ?_M_fill_insert@CByteArray@@QAEXPA_NKAB_N@Z
+00ac2be0	reloc	?_M_insert_overflow@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@IAEXPAVC3DVector@@ABV3@ABU__false_type@2@I_N@Z	0066e370	NOT_IN_PDB_SETS	1 other bound spellings: ?_M_insert_overflow@?$CArray@VC3DVector@@@@QAEXPAVC3DVector@@ABV2@ABU__true_type@@I_N@Z
+00ac2be0	reloc	?BuildFromPoints@C3DBoundingBox@@QAEXABV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@@Z	00adeea0	OK	
+00ac2be0	reloc	?AccurateBuildFromPoints@C3DBoundingSphere@@QAEXABV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@M@Z	00addf70	OK	
+00ac2be0	reloc	?_M_insert_overflow@?$vector@VC3DTriangle2@@V?$allocator@VC3DTriangle2@@@std@@@std@@IAEXPAVC3DTriangle2@@ABV3@ABU__false_type@2@I_N@Z	00a71550	NOT_IN_PDB_SETS	1 other bound spellings: ?_M_insert_overflow@?$vector@VC3DTriangle2@@@@QAEXPAVC3DTriangle2@@ABV2@ABU__true_type@@K_N@Z
+00ac2be0	reloc	??2@YAPAXI@Z	00bfea1a	NOT_IN_PDB_SETS	
+00ac2be0	reloc	?PartitionSpace@C3DMeshPartitionBuilderElement@@AAEJPBVC3DVertex2@@JM@Z	00ac2be0	OK	
+00ae0070	leaf	?ApplyTransform@CParticleProgram@@QAEXABVCMatrix3x4@@@Z	00ae0070	OK	
+00ae0070	reloc	?PeekData@CMemoryDataOutputStream@@QBEPBXXZ	00995e70	PDB_OTHERS_BOUND	2 other bound spellings: ?PeekData@CMemoryDataOutputStreamMethods@X_00a99840@@QBEPBXXZ; ?PeekData@CMemoryDataOutputStreamMethods@X_00a9ba70@@QBEPBXXZ
+00ae0070	reloc	?GetLength@CMemoryDataOutputStream@@QBEKXZ	00994b40	PDB_OTHERS_BOUND	2 other bound spellings: ?GetLength@CMemoryDataOutputStreamMethods@X_00a99840@@QBEKXZ; ?GetLength@CMemoryDataOutputStreamMethods@X_00a9ba70@@QBEKXZ
+00ae0710	leaf	?CalculateAveragePatchSize@CParticleProgram@@AAEXABVCParticleSimulation@@@Z	00ae0710	PDB_OTHERS_BOUND	1 other bound spellings: ?Process@CSortedMapOwner_00ae34d0@@QAEXPAUSProcessedBlock@@@Z
+00ae2e20	leaf	?OptimiseSpringOrder@CParticleProgram@@QBEXAAV?$CArray@VCParticleDistanceConstraint@@@@@Z	00ae2e20	OK	
+00ae2e20	reloc	??0?$CArray@V?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@@@QAE@I@Z	00ae7880	OK	
+00ae2e20	reloc	?insert_unique@?$_Rb_tree@KKU?$_Identity@K@std@@U?$less@K@2@V?$allocator@K@2@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@KU?$_Nonconst_traits@K@std@@@std@@_N@2@ABK@Z	00514c10	NOT_IN_PDB_SETS	2 other bound spellings: ?helper2@CTCLook@@QAE_NPAULoc@@PAUArg@@@Z; ?insert@?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@QAE?AU?$pair@U_Rb_tree_iterator@std@@_N@2@ABK@Z
+00ae2e20	reloc	_malloc	00bfea0e	NOT_IN_PDB_SETS	
+00ae2e20	reloc	?DELTA_NOTIONAL_ZERO@@3MB	0129ba3c	NOT_IN_PDB_SETS	
+00ae2e20	reloc	?_M_insert_overflow@?$vector@KV?$allocator@K@std@@@std@@IAEXPAKABKABU__true_type@2@I_N@Z	00464ace	NOT_IN_PDB_SETS	6 other bound spellings: ??$_M_insert_overflow@USScalarTag@@@CHandleVector@@QAEXPAKABKABUSScalarTag@@K_N@Z; ?_M_insert_overflow@?$CArray@K@@QAEXPAKABKABU__true_type@@I_N@Z; ?_M_insert_overflow@?$vector@K@std@@QAEXPAKABKABU__true_type@2@I_N@Z
+00ae2e20	reloc	_memmove	00bfeae6	NOT_IN_PDB_SETS	
+00ae2e20	reloc	_free	00bfea14	NOT_IN_PDB_SETS	
+00ae2e20	reloc	??$sort@PAU?$pair@JK@std@@@std@@YIXPAU?$pair@JK@0@0@Z	00ae7dc0	NOT_IN_PDB_SETS	
+00ae2e20	reloc	??$__destroy_aux@PAV?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@@std@@YIXPAV?$set@KU?$less@K@std@@V?$allocator@K@2@@0@0ABU__false_type@0@@Z	00ae76e0	NOT_IN_PDB_SETS	SYMBOL_BOUND_ELSEWHERE: 0051ac70
+00ae8d50	leaf	?Load@CParticleEmitterDatabase@NParticleEngine@@IAEXAAVCAFile@@ABVCEmitterDatabaseSerialiseInfo@2@@Z	00ae8d50	OK	
+00ae8d50	reloc	??0CCharString@@QAE@XZ	0099e4b0	PDB_OTHERS_BOUND	9 other bound spellings: ??0CCharString@N006d41f0@@QAE@XZ; ??0CCharStringFmt@@QAE@XZ; ??0CCharStringMember@@QAE@XZ
+00ae8d50	reloc	??$__copy@PAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@PAU12@H@std@@YIPAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z	00ae9cb0	NOT_IN_PDB_SETS	1 other bound spellings: ??$__copy@PBU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@PAU12@H@std@@YIPAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@0@PBU10@0PAU10@ABUrandom_access_iterator_tag@0@PAH@Z
+00ae8d50	reloc	??$__destroy_aux@PAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@std@@YIXPAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@0@0ABU__false_type@0@@Z	00ae9d50	NOT_IN_PDB_SETS	1 other bound spellings: ?DestroyRange@@YIXPAUSNodeEntry@@0ABUSNonscalarPtrIteratorTag@@@Z
+00ae8d50	reloc	?LoadFromFile@CCharString@@QAEXAAVCAFile@@PAVCASuspendableProcess@@J@Z	0099f2e0	PDB_OTHERS_BOUND	1 other bound spellings: ?LoadFromFile@CCharString@@QAEXPAVCAFile@@PAVCASuspendableProcess@@J@Z
+00ae8d50	reloc	??0CCharString@@QAE@PBDJ@Z	0099ebf0	PDB_OTHERS_BOUND	46 other bound spellings: ??0CCharString2@@QAE@HH@Z; ??0CCharString@@QAE@PBDH@Z; ??0CCharString@ExternalRetry_00835c80@@QAE@PBDH@Z
+00ae8d50	reloc	??0CStringParser@@QAE@ABVCCharString@@P6IX0@Z0J@Z	00404720	OK	
+00ae8d50	reloc	??1CCharString@@QAE@XZ	0099eae0	PDB_OTHERS_BOUND	71 other bound spellings: ??1CCharString2@@QAE@XZ; ??1CCharString@ExternalRetry_00835c80@@QAE@XZ; ??1CCharString@ExternalRetry_008af850@@QAE@XZ
+00ae8d50	reloc	?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z	009b9ba0	PDB_OTHERS_BOUND	2 other bound spellings: ?FindKeyword@CStringParser@@QAE_NABVCCharString@@@Z; ?NextItemIs@CStringParser@@QAE_NABVCCharString@@@Z
+00ae8d50	reloc	?CreateEmitterTemplate@CParticleEmitterDatabase@NParticleEngine@@QAEPAVCParticleEmitter@2@AAJ@Z	00ae8c30	OK	
+00ae8d50	reloc	?ReadAsStringUntilString@CStringParser@@QAE?AVCCharString@@ABV2@@Z	009ba330	PDB_OTHERS_BOUND	2 other bound spellings: ?ReadAsStringUntilString@CStringParserReader@@QAE?AVCCharString@@ABV2@@Z; ?ReadAsStringUntilStringInclusive@CStringParser@@QAE?AVCCharString@@ABV2@@Z | QUEUE_CORRECT_IS: CStringParser member (PDB spelling to prove) (n621)
+00ae8d50	reloc	??0CBaseClass@@QAE@XZ	0099a2d0	PDB_OTHERS_BOUND	4 other bound spellings: ??0CBase@N_0099a2d0@@QAE@XZ; ??0CBaseClass@NFoot008f7bd0@@QAE@XZ; ??0CBaseNative@@QAE@XZ
+00ae8d50	reloc	??_7CStringParser@@6B@	0122d874	NOT_IN_PDB_SETS	
+00ae8d50	reloc	_malloc	00bfea0e	NOT_IN_PDB_SETS	
+00ae8d50	reloc	??4CCharString@@QAEABV0@ABV0@@Z	0099efb0	PDB_OTHERS_BOUND	3 other bound spellings: ??4CCharString@@QAEAAV0@ABV0@@Z; ??4CCharString@std@@QAEAAU01@ABU01@@Z; ??4SymbolString@@QAEAAU0@ABU0@@Z
+00ae8d50	reloc	?NullChar@CCharString@@1DB	0129aaf4	NOT_IN_PDB_SETS	23 other bound spellings: ?CUnprovenGlobal_0129aaf4@@3QBDB; ?Empty@NErase005dcf70@@3QBDB; ?EmptyNarrowString@@3PADA
+00ae8d50	reloc	?Init@CStringParser@@QAEXPBDP6IXABVCCharString@@@Z1J@Z	009b9530	PDB_OTHERS_BOUND	3 other bound spellings: ?Init@CStringParser@@QAEXPADP6AXPAVCCharString@@@ZABV2@J@Z; ?Init@CStringParser@@QAEXPBDP6AX0@ZABVCCharString@@J@Z; ?Init@CStringParser@@QAEXPBDP6AXPAVCCharString@@@ZABV2@J@Z
+00ae8d50	reloc	??0CPersistContext@@QAE@AAVCStringParser@@P6IXABVCCharString@@@Z_NPBVCDefinitionManager@@PBVCSymbolMap@@PAV2@@Z	009badd0	PDB_OTHERS_BOUND	1 other bound spellings: ??0CPersistContext@@QAE@PAVCStringParser@@P6AXPAVCCharString@@@Z_NPAVCDefinitionManager@@PAVCSymbolMap@@1@Z
+00ae8d50	reloc	?DatabaseSerialise@CParticleEmitter@NParticleEngine@@QAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@2@@Z	00aef1f0	PDB_OTHERS_BOUND	1 other bound spellings: ?GenerateHeader@CParticleEmitter@NParticleEngine@@QAEXAAVCPersistContext@@J@Z
+00ae8d50	reloc	_free	00bfea14	NOT_IN_PDB_SETS	
+00ae8d50	reloc	??1CBaseClass@@UAE@XZ	0099a2e0	PDB_OTHERS_BOUND	7 other bound spellings: ??1CBase@@UAE@XZ; ??1CBase@NParticleEngine@@QAE@XZ; ??1CBaseClass@ExternalRetry_00a90fc0@@UAE@XZ
+00ae8d50	reloc	?SetStringPos@CStringParser@@QAEXK@Z	009b9940	OK	
+00ae8d50	reloc	?SkipPastWholeString@CStringParser@@QAE_NABVCCharString@@@Z	009b9c00	OK	
+00ae8d50	reloc	?SkipWhitespace@CStringParser@@QAEJXZ	009b9c60	OK	
+00ae8d50	reloc	?SkipPastNextItemIfIs@CStringParser@@QAE_NABVCCharString@@@Z	009b9e00	PDB_OTHERS_BOUND	1 other bound spellings: ?SkipPastNextItemIfIs@CStringParserMethods@@QAE_NABVCCharString@@@Z
+00ae8d50	reloc	?GetAbsoluteFilePath@CAFile@@SI?AVCCharString@@ABV2@0@Z	00998250	OK	
+00ae8d50	reloc	??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ	004046b0	NOT_IN_PDB_SETS	1 other bound spellings: ??1?$list@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ
+00b2d9f0	leaf	?UpdateDiskCache@CEngineSurfaceCompositionManager@@QAEXABV?$CArray@VCEngineTextureMorph@@@@_NMPBV?$set@JU?$less@J@std@@V?$allocator@J@2@@std@@@Z	00b2d9f0	PDB_OTHERS_BOUND	1 other bound spellings: ?UpdateTextureMorphCache@CEngineSurfaceCompositionManager@@QAEXXZ
+00b2d9f0	reloc	?GFGetTime@@YINXZ	009e1bc0	PDB_OTHERS_BOUND	5 other bound spellings: ?Frontend_GetInterpTime_0042dbfa@@YAMXZ; ?GFGetTime@NUISystem@@YINXZ; ?GetFrontendInputTime_00494380@@YANXZ
+00b2d9f0	reloc	?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A	01436e98	NOT_IN_PDB_SETS	21 other bound spellings: ?gEngine@@3PAUEngineTextureGlobal@@A; ?gGlowResources@@3PAUCGlowResourceManager@@A; ?gResourceManager@@3PAUCEngineResourceManagerNative@@A
+00b2d9f0	reloc	?SetReduceSizeFrameDelay@CGraphicDataBank@@QAEXK@Z	009fd100	PDB_OTHERS_BOUND	2 other bound spellings: ?Reload@CGraphicDataBank@@QAEXJ@Z; ?SetLevel@CGraphicDataBank@@QAEXJ@Z
+00b2d9f0	reloc	?SetUnloadFrameDelay@CGraphicDataBank@@QAEXK@Z	009fd0f0	OK	
+00b2d9f0	reloc	?GPEngine@NEngineInternal@@3PAVCEngine@@A	01436ea4	NOT_IN_PDB_SETS	2 other bound spellings: ?g_pEngine_01436ea4@@3PAVCEngine@@A; ?g_pTextureManager_01436ea4@@3PAVCTextureManager@@A
+00b2d9f0	reloc	?BeginUpdateEntries@CBankFile@@QAEXXZ	009ce8d0	PDB_OTHERS_BOUND	2 other bound spellings: ?BeginUpdateEntries@CBankFileAsync@@QAEXXZ; ?BeginUpdateEntries@CGraphicDataBank@@QAEXXZ
+00b2d9f0	reloc	??0CResource@@QAE@XZ	009fbec0	PDB_OTHERS_BOUND	4 other bound spellings: ??0CResourceBase@@QAE@XZ; ??0CResourceNative@@QAE@XZ; ??0CResourceRoot@@QAE@XZ
+00b2d9f0	reloc	??_7CCompositeSurfaceCache@@6B@	012a116c	NOT_IN_PDB_SETS	
+00b2d9f0	reloc	??0CBaseClass@@QAE@XZ	0099a2d0	PDB_OTHERS_BOUND	4 other bound spellings: ??0CBase@N_0099a2d0@@QAE@XZ; ??0CBaseClass@NFoot008f7bd0@@QAE@XZ; ??0CBaseNative@@QAE@XZ
+00b2d9f0	reloc	??_7CManagedTexture@@6B@	0129c880	NOT_IN_PDB_SETS	1 other bound spellings: ?g_ManagedTextureVtable@@3PAPAXA
+00b2d9f0	reloc	??4?$vector@VCCompositeBlendDesc@@V?$allocator@VCCompositeBlendDesc@@@std@@@std@@QAEAAV01@ABV01@@Z	006cade0	PDB_OTHERS_BOUND	3 other bound spellings: ??4?$CRetailVector@UCCompositeBlendDesc@N00bee420@@@N00bee420@@QAEAAU01@ABU01@@Z; ??4?$CRetailVector@VCCompositeBlendDesc@@@@QAEAAU0@ABU0@@Z; ??4CSurfaceList@@QAEAAU0@ABU0@@Z
+00b2d9f0	reloc	?find@?$_Rb_tree@JJU?$_Identity@J@std@@U?$less@J@2@V?$allocator@J@2@@std@@QBE?AU?$_Rb_tree_iterator@JU?$_Const_traits@J@std@@@2@ABJ@Z	00b2eb20	NOT_IN_PDB_SETS	
+00b2d9f0	reloc	?GetEntryDataType@CBankFile@@QBEKK@Z	009cc210	OK	
+00b2d9f0	reloc	?UpdateDiskCacheTexture@CEngineSurfaceCompositionManager@@AAE_NAAVCCompositeSurfaceCache@@K_N@Z	00b2d330	OK	
+00b2d9f0	reloc	??1CCompositeSurfaceCache@@UAE@XZ	00b2b910	OK	
+00b2d9f0	reloc	?EndUpdateEntries@CBankFile@@QAEXXZ	009cea70	PDB_OTHERS_BOUND	2 other bound spellings: ?EndUpdateEntries@CBankFileAsync@@QAEXXZ; ?EndUpdateEntries@CGraphicDataBank@@QAEXXZ
+00b2d9f0	reloc	?CopyIntermediateBank@CEngineSurfaceCompositionManager@@AAEXXZ	00b2c8e0	OK	
+00b2d9f0	reloc	?PreloadCompletedBank@CEngineSurfaceCompositionManager@@AAEXXZ	00b2c010	OK	
+00b3be10	leaf	?BuildAlphaStippleTexture@CEngineResourceManager@@AAEXJAAV?$CArray@E@@@Z	00b3be10	OK	
+00b3be10	reloc	?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@std@@IAEXPAJABJABU__true_type@2@I_N@Z	00440990	NOT_IN_PDB_SETS	1 other bound spellings: ?InsertGrow@CRetailVector_006bc4a0@@QAEXPAJABJABUSScalarTag@@K_N@Z
+00b3be10	reloc	?GFROR13@@YIJK@Z	00497890	PDB_OTHERS_BOUND	1 other bound spellings: ?GFROR13@@YIKK@Z
+00b3be10	reloc	_malloc	00bfea0e	NOT_IN_PDB_SETS	
+00b3be10	reloc	_memmove	00bfeae6	NOT_IN_PDB_SETS	
+00b3be10	reloc	_free	00bfea14	NOT_IN_PDB_SETS	
+00b3be10	reloc	?_M_fill_insert@?$vector@EV?$allocator@E@std@@@std@@QAEXPAEIABE@Z	00485f3a	NOT_IN_PDB_SETS	1 other bound spellings: ?insert@CByteVector@@QAEXPAEKABE@Z
+00c01750	leaf	_deflate_slow	00c01750	NOT_IN_PDB_SETS	
+00c01750	reloc	_fill_window	00c01090	NOT_IN_PDB_SETS	
+00c01750	reloc	_longest_match	00c00e60	NOT_IN_PDB_SETS	
+00c01750	reloc	_longest_match_fast	00c00fd0	NOT_IN_PDB_SETS	
+00c01750	reloc	__length_code	012af590	NOT_IN_PDB_SETS	
+00c01750	reloc	__dist_code	012af390	NOT_IN_PDB_SETS	
+00c01750	reloc	__tr_flush_block	00c057d0	OK	QUEUE_CORRECT_IS: _tr_flush_block (c674)
+00c01750	reloc	_flush_pending	00c00630	NOT_IN_PDB_SETS	
+00c5e650	leaf	?CreateBuffer@CSalOutputKS@@UAE_NII@Z	00c5e650	NOT_IN_PDB_SETS	
+00c5e650	reloc	___security_cookie	0139c8a8	NOT_IN_PDB_SETS	
+00c5e650	reloc	__imp__LoadLibraryA@4	0143fe40	NOT_IN_PDB_SETS	
+00c5e650	reloc	__imp__GetProcAddress@8	0143fe44	NOT_IN_PDB_SETS	
+00c5e650	reloc	__imp__FreeLibrary@4	0143fe3c	NOT_IN_PDB_SETS	
+00c5e650	reloc	@__security_check_cookie@4	00bfe9f9	OK	
+00c5e650	reloc	__GUID_1a8766a0_62ce_11cf_a5d6_28db04c10000	012b9120	NOT_IN_PDB_SETS	
+00c5e650	reloc	__GUID_4747b320_62ce_11cf_a5d6_28db04c10000	012b9110	NOT_IN_PDB_SETS	
+00c5e650	reloc	__GUID_73647561_0000_0010_8000_00aa00389b71	012b9100	NOT_IN_PDB_SETS	
+00c5e650	reloc	__GUID_00000001_0000_0010_8000_00aa00389b71	012b8dc0	NOT_IN_PDB_SETS	1 other bound spellings: ?KSDATAFORMAT_SUBTYPE_PCM@@3UGUID@@B
+00c5e650	reloc	__GUID_05589f81_c356_11ce_bf01_00aa0055595a	012b90f0	NOT_IN_PDB_SETS	
+00c5e650	reloc	?Attach@CSalFile@@QAEXPAX@Z	00c5e3f0	NOT_IN_PDB_SETS	
+00c5e650	reloc	__imp__CreateEventA@16	0143fec4	NOT_IN_PDB_SETS	
+00c5e650	reloc	_CodaMalloc	00c3c360	NOT_IN_PDB_SETS	21 other bound spellings: ??2C3DAnimationUtil_00c55f00@@SAPAXI@Z; ??2CAIStateGroupBase_00c3f970@@SAPAXI@Z; ??2CDerived_00c56860@@SAPAXI@Z
+00c5e650	reloc	_CodaFree	00c3c370	NOT_IN_PDB_SETS	11 other bound spellings: ??3CPKObject@@SAXPAX@Z; ??3CVtable_012b4f74@@SAXPAX@Z; ?AudioFree@@YAXPAX@Z
+00c5e650	reloc	?Close@CSalEvent@@QAEXXZ	00c5e130	NOT_IN_PDB_SETS	
+00c5e650	reloc	?Close@CSalFile@@QAEXXZ	00c5e3d0	NOT_IN_PDB_SETS	
+00c5e650	reloc	?NotifyProc@CSalOutputKS@@CGKPAX@Z	00c5e330	NOT_IN_PDB_SETS	
+00c5e650	reloc	?Create@CSalThread@@QAE_NP6GKPAX@Z0PAU_SECURITY_ATTRIBUTES@@II@Z	00c5e180	NOT_IN_PDB_SETS	
+00c5e650	reloc	__imp__SetThreadPriority@8	0143fdd0	NOT_IN_PDB_SETS	
+00c5e650	reloc	?SetConnectionState@CSalKsPin@@QAE_NW4KSSTATE@@@Z	00c5e0c0	NOT_IN_PDB_SETS	
+00c5ffb0	leaf	?AddToChangesList@CEAXListener@@QAEXW4IDENTIFIER@@KPAXJ@Z	00c5ffb0	NOT_IN_PDB_SETS	1 other bound spellings: ?QueueEvent_00c5ffb0@CEaxContext@@QAEPAUSEaxEvent@@KKPBXK@Z
+00c5ffb0	reloc	_CodaMalloc	00c3c360	NOT_IN_PDB_SETS	21 other bound spellings: ??2C3DAnimationUtil_00c55f00@@SAPAXI@Z; ??2CAIStateGroupBase_00c3f970@@SAPAXI@Z; ??2CDerived_00c56860@@SAPAXI@Z
+00c60ff0	leaf	?Set3DBuffer@CEAXBuffer@@AAEHKPAXK@Z	00c60ff0	NOT_IN_PDB_SETS	1 other bound spellings: ?SetProperty@CEaxSource@@QAEJKPBXJ@Z
+00c60ff0	reloc	?IsNaN@@YA_NABU_D3DVECTOR@@@Z	00c60b30	NOT_IN_PDB_SETS	
+00c60ff0	reloc	?AddToChangesList@CEAXListener@@QAEXW4IDENTIFIER@@KPAXJ@Z	00c5ffb0	NOT_IN_PDB_SETS	1 other bound spellings: ?QueueEvent_00c5ffb0@CEaxContext@@QAEPAUSEaxEvent@@KKPBXK@Z
+00c60ff0	reloc	?CommitEAX3@CEAXBuffer@@QAEHXZ	00c65a00	NOT_IN_PDB_SETS	1 other bound spellings: ?CommitDeferredSettings@CEaxSource@@QAEJXZ
+00c66330	leaf	?GetEAX4FXSlot@CEAXListener@@QAEHKKPAXKPAK@Z	00c66330	NOT_IN_PDB_SETS	1 other bound spellings: ?GetProperty@CEAXEffect_00c66330@@QAEJKPAXKKPAK@Z
+00c66330	reloc	_EAX_REVERB_EFFECT	012b94b8	NOT_IN_PDB_SETS	3 other bound spellings: ?EAX_REVERB_EFFECT@@3USGuid@@B; ?g_EAXReverbEffectGuid@@3USGuid@@B; ?g_ReverbEffectGuid@@3USGuid@@B
+00c66c90	leaf	?GetEAX4Source@CEAXBuffer@@QAEHKPAXKPAK@Z	00c66c90	NOT_IN_PDB_SETS	1 other bound spellings: ?GetProperty@CEAXEffect@@QAEJKPAXKPAK@Z
+00c66c90	reloc	_EAXPROPERTYID_EAX40_FXSlot0	012b9468	NOT_IN_PDB_SETS	2 other bound spellings: ?EAXPROPERTYID_EAX40_FXSlot0@@3USGuid@@B; ?g_EffectGuid_012b9468@@3USGuid@@B
+00c66c90	reloc	_EAXPROPERTYID_EAX40_FXSlot1	012b9478	NOT_IN_PDB_SETS	2 other bound spellings: ?EAXPROPERTYID_EAX40_FXSlot1@@3USGuid@@B; ?g_EffectGuid_012b9478@@3USGuid@@B
+00c66c90	reloc	_EAXPROPERTYID_EAX40_FXSlot2	012b9488	NOT_IN_PDB_SETS	2 other bound spellings: ?EAXPROPERTYID_EAX40_FXSlot2@@3USGuid@@B; ?g_EffectGuid_012b9488@@3USGuid@@B
+00c66c90	reloc	_EAXPROPERTYID_EAX40_FXSlot3	012b9498	NOT_IN_PDB_SETS	2 other bound spellings: ?EAXPROPERTYID_EAX40_FXSlot3@@3USGuid@@B; ?g_EffectGuid_012b9498@@3USGuid@@B
+00c71870	leaf	?Update@CSalOpenALReverb@@UAEXPBVCCodaEnvironment@@@Z	00c71870	NOT_IN_PDB_SETS	
+00c71870	reloc	?g_OpenAL@@3VCSalOpenAL@@A	0143bdb0	NOT_IN_PDB_SETS	1 other bound spellings: ?g_AudioContext@@3UCAudioContext@@A | QUEUE_CORRECT_IS: ?g_AudioContext@@3UCAudioContext@@A (590); g_AudioContext (descriptive, unified) (c675)
+00c71870	reloc	?ALGetProcAddress@CSalOpenAL@@QAEPAXPAE@Z	00c4d740	NOT_IN_PDB_SETS	2 other bound spellings: ?GetProcAddress@CAudioContext@@QAEPAXPBD@Z; ?Resolve@CProcResolver_00c71cf0@@QAEP6AJPBXKKPAXK@ZPBD@Z
+00c71870	reloc	?SAL_EAX30_ListenerProperties@@3U_GUID@@B	012bee90	NOT_IN_PDB_SETS	3 other bound spellings: ?DSPROPSETID_EAX30_ListenerProperties@@3UGUID@@B; ?g_eaxListenerGuid@@3QBEB; ?g_eaxListenerPropertySetGuid_012bee90@@3QBEB | QUEUE_CORRECT_IS: ?DSPROPSETID_EAX30_ListenerProperties@@3UGUID@@B (595); DSPROPSETID_EAX30_ListenerProperties (decide C++ `?DSPROPSETID_EAX30_ListenerProperties@@3UGUID@@B` vs extern "C" `_DSPROPSETID_EAX30_ListenerProperties`) (595)
+00c9f8c0	leaf	@mapping0_inverse@8	00c9f8c0	NOT_IN_PDB_SETS	
+00c9f8c0	reloc	__alloca_probe	00bfea30	PDB_OTHERS_BOUND	1 other bound spellings: __chkstk | QUEUE_CORRECT_IS: __chkstk and __alloca_probe are both correct (libsig2)
+00c9f8c0	reloc	__floor_P	013a3dc8	NOT_IN_PDB_SETS	
+00c9f8c0	reloc	__residue_P	013a3dd0	NOT_IN_PDB_SETS	
+00c9f8c0	reloc	@mdct_backward@12	00c9c620	NOT_IN_PDB_SETS	
+00ca2bb0	leaf	@floor1_encode@16	00ca2bb0	NOT_IN_PDB_SETS	
+00ca2bb0	reloc	@render_point@20	00ca1e00	NOT_IN_PDB_SETS	1 other bound spellings: _render_point@20 | QUEUE_CORRECT_IS: _render_point@20 (libvorbis floor1.c static render_point) (retry1)
+00ca2bb0	reloc	@oggpack_write@12	00c90fc0	NOT_IN_PDB_SETS	2 other bound spellings: ?WriteBits_00c90fc0@@YIXPAUCBitstream_00c911b0@@JJ@Z; ?WriteBits_00c90fc0@@YIXPAUCBitstream_00c96140@@JJ@Z
+00ca2bb0	reloc	@ilog@4	00ca1790	NOT_IN_PDB_SETS	SYMBOL_BOUND_ELSEWHERE: 00c9fe70
+00ca2bb0	reloc	@vorbis_book_encode@12	00c96140	NOT_IN_PDB_SETS	
+00ca2bb0	reloc	@render_line0@20	00ca2010	NOT_IN_PDB_SETS	
+00ca2bb0	reloc	?seq@?1??floor1_encode@@9@9	0143ccec	NOT_IN_PDB_SETS	
+00ca4160	leaf	@vorbis_lpc_to_lsp@12	00ca4160	NOT_IN_PDB_SETS	
+00ca4160	reloc	__alloca_probe	00bfea30	PDB_OTHERS_BOUND	1 other bound spellings: __chkstk | QUEUE_CORRECT_IS: __chkstk and __alloca_probe are both correct (libsig2)
+00ca4160	reloc	_cheby@8	00ca3a40	NOT_IN_PDB_SETS	
+00ca4160	reloc	_Laguerre_With_Deflation@12	00ca3b80	NOT_IN_PDB_SETS	
+00ca4160	reloc	_Newton_Raphson@12	00ca3f60	NOT_IN_PDB_SETS	
+00ca4160	reloc	__imp__qsort	01440060	NOT_IN_PDB_SETS	
+00ca4160	reloc	_comp	00ca3b30	NOT_IN_PDB_SETS	
+00ca4160	reloc	__CIacos	00bfeba2	NOT_IN_PDB_SETS	
+00cb38e0	leaf	?ImeUi_RenderUI@@YIX_N0@Z	00cb38e0	OK	
+00cb38e0	reloc	___security_cookie	0139c8a8	NOT_IN_PDB_SETS	
+00cb38e0	reloc	?g_bInitialized@@3_NA	0143e8ae	NOT_IN_PDB_SETS	3 other bound spellings: ?g_cursorEnabled@@3EA; ?g_flagByte@@3EA; ?g_pairEnabled_0143e8ae@@3_NA
+00cb38e0	reloc	?g_bImeEnabled@@3_NA	0143e890	NOT_IN_PDB_SETS	1 other bound spellings: ?g_flag_0143e890@@3EA
+00cb38e0	reloc	?g_CaretInfo@@3UCompStringAttribute@@A	0143cd2c	NOT_IN_PDB_SETS	1 other bound spellings: ?g_cursorThis@@3PAXA
+00cb38e0	reloc	?g_dwIMELevel@@3KA	0143cd1c	NOT_IN_PDB_SETS	
+00cb38e0	reloc	?DrawImeIndicator@@YIXXZ	00cb2f80	NOT_IN_PDB_SETS	
+00cb38e0	reloc	__imp__GetTickCount@0	0143fdfc	NOT_IN_PDB_SETS	
+00cb38e0	reloc	?g_uCaretBlinkLast@@3IA	0143e8a8	NOT_IN_PDB_SETS	
+00cb38e0	reloc	?g_uCaretBlinkTime@@3IA	0143e8a4	NOT_IN_PDB_SETS	
+00cb38e0	reloc	?g_bCaretDraw@@3_NA	0143e8ac	NOT_IN_PDB_SETS	
+00cb38e0	reloc	?g_szCompositionString@@3PAGA	0143cf10	NOT_IN_PDB_SETS	1 other bound spellings: ?g_flagWord@@3GA
+00cb38e0	reloc	__imp__lstrlenW@4	0143fe48	NOT_IN_PDB_SETS	
+00cb38e0	reloc	?g_szMultiLineCompString@@3PAGA	0143e690	NOT_IN_PDB_SETS	
+00cb38e0	reloc	?g_IMECursorBytes@@3KA	0143e894	NOT_IN_PDB_SETS	
+00cb38e0	reloc	?g_hklCurrent@@3PAUHKL__@@A	0143e8b8	NOT_IN_PDB_SETS	1 other bound spellings: _g_hklCurrent
+00cb38e0	reloc	?g_szCompAttrString@@3PAEA	0143e518	NOT_IN_PDB_SETS	
+00cb38e0	reloc	?gSkinCompStr@@3U_SkinCompStr@@A	0143cd08	NOT_IN_PDB_SETS	
+00cb38e0	reloc	?GetImeId@@YGKI@Z	00cb28f0	NOT_IN_PDB_SETS	
+00cb38e0	reloc	?ImeUiCallback_DrawRect@@3P6IXHHHHK@ZA	0143cd64	NOT_IN_PDB_SETS	1 other bound spellings: ?g_ImeDrawRect@@3P6IXHHHHK@ZA
+00cb38e0	reloc	?DrawCaret@@YIXKKK@Z	00cb2820	NOT_IN_PDB_SETS	
+00cb38e0	reloc	?g_IMECursorChars@@3KA	0143e898	NOT_IN_PDB_SETS	
+00cb38e0	reloc	_g_dwCount	0143e688	NOT_IN_PDB_SETS	1 other bound spellings: ?g_dwCount@@3KA
+00cb38e0	reloc	?g_szCandidate@@3PAY0BAA@GA	0143d110	NOT_IN_PDB_SETS	
+00cb38e0	reloc	?g_bReadingWindow@@3_NA	0143e8a0	NOT_IN_PDB_SETS	
+00cb38e0	reloc	?g_bHorizontalReading@@3_NA	0143e8a1	NOT_IN_PDB_SETS	
+00cb38e0	reloc	?g_szReadingString@@3PAGA	0143e640	NOT_IN_PDB_SETS	
+00cb38e0	reloc	_g_uCandPageSize	0143cd50	NOT_IN_PDB_SETS	1 other bound spellings: ?g_uCandPageSize@@3IA
+00cb38e0	reloc	?g_bVerticalCand@@3_NA	013ac748	NOT_IN_PDB_SETS	
+00cb38e0	reloc	?g_screenHeight@@3IA	0143cd60	NOT_IN_PDB_SETS	1 other bound spellings: ?g_currentSecond_0143cd60@@3PAXA
+00cb38e0	reloc	?g_screenWidth@@3IA	0143cd54	NOT_IN_PDB_SETS	1 other bound spellings: ?g_currentFirst_0143cd54@@3PAXA
+00cb38e0	reloc	?gSkinIME@@3UIMEUI_APPEARANCE@@A	013ac708	NOT_IN_PDB_SETS	
+00cb38e0	reloc	?g_iReadingError@@3HA	0143cd58	NOT_IN_PDB_SETS	
+00cb38e0	reloc	__imp__lstrcpyW@8	0143fedc	NOT_IN_PDB_SETS	
+00cb38e0	reloc	@__security_check_cookie@4	00bfe9f9	OK	
+00cb38e0	reloc	_g_dwSelection	0143e618	NOT_IN_PDB_SETS	
+00cb48a0	leaf	?ImeUi_ProcessMessage@@YIJPAUHWND__@@IIJPA_N@Z	00cb48a0	OK	
+00cb48a0	reloc	___security_cookie	0139c8a8	NOT_IN_PDB_SETS	
+00cb48a0	reloc	?g_bInitialized@@3_NA	0143e8ae	NOT_IN_PDB_SETS	3 other bound spellings: ?g_cursorEnabled@@3EA; ?g_flagByte@@3EA; ?g_pairEnabled_0143e8ae@@3_NA
+00cb48a0	reloc	?g_bDisableImeCompletely@@3KA	0143e89c	NOT_IN_PDB_SETS	
+00cb48a0	reloc	?g_hklCurrent@@3PAUHKL__@@A	0143e8b8	NOT_IN_PDB_SETS	1 other bound spellings: _g_hklCurrent
+00cb48a0	reloc	?CheckToggleState@@YIXXZ	00cb47c0	NOT_IN_PDB_SETS	
+00cb48a0	reloc	?SetImeApi@@YIXXZ	00cb36e0	NOT_IN_PDB_SETS	
+00cb48a0	reloc	?g_dwIMELevelSaved@@3KA	0143cd20	NOT_IN_PDB_SETS	
+00cb48a0	reloc	?SetSupportLevel@@YIXK@Z	00cb2d90	NOT_IN_PDB_SETS	
+00cb48a0	reloc	?g_hwndCurr@@3PAUHWND__@@A	0143cf0c	NOT_IN_PDB_SETS	1 other bound spellings: _g_hwndCurr
+00cb48a0	reloc	_ImmGetDefaultIMEWnd@4	00cb5546	NOT_IN_PDB_SETS	
+00cb48a0	reloc	__imp__SendMessageA@16	014402f0	NOT_IN_PDB_SETS	
+00cb48a0	reloc	?lAlt@?1??ImeUi_ProcessMessage@@YIJPAUHWND__@@IIJPA_N@Z@4JA	013ac820	NOT_IN_PDB_SETS	
+00cb48a0	reloc	__imp__GetAsyncKeyState@4	014402cc	NOT_IN_PDB_SETS	
+00cb48a0	reloc	?lCtrl@?1??ImeUi_ProcessMessage@@YIJPAUHWND__@@IIJPA_N@Z@4JA	013ac81c	NOT_IN_PDB_SETS	
+00cb48a0	reloc	?lShift@?1??ImeUi_ProcessMessage@@YIJPAUHWND__@@IIJPA_N@Z@4JA	013ac818	NOT_IN_PDB_SETS	
+00cb48a0	reloc	__imp__GetFocus@0	014402bc	NOT_IN_PDB_SETS	
+00cb48a0	reloc	__imp__PostMessageA@16	014402c0	NOT_IN_PDB_SETS	
+00cb48a0	reloc	?InitCompStringData@@YIXXZ	00cb27f0	NOT_IN_PDB_SETS	
+00cb48a0	reloc	_ImmGetContext@4	00cb5540	NOT_IN_PDB_SETS	
+00cb48a0	reloc	__imp__lstrlenW@4	0143fe48	NOT_IN_PDB_SETS	
+00cb48a0	reloc	__imp__lstrcpyW@8	0143fedc	NOT_IN_PDB_SETS	
+00cb48a0	reloc	?_ImmGetCompositionString@@3P6GJPAUHIMC__@@KPAXK@ZA	0143ce04	NOT_IN_PDB_SETS	
+00cb48a0	reloc	?CancelCompString@@YIXPAUHWND__@@_NH@Z	00cb2710	NOT_IN_PDB_SETS	
+00cb48a0	reloc	?g_szCompositionString@@3PAGA	0143cf10	NOT_IN_PDB_SETS	1 other bound spellings: ?g_flagWord@@3GA
+00cb48a0	reloc	?_SendCompString@@3P6IXXZA	0143e61c	NOT_IN_PDB_SETS	
+00cb48a0	reloc	?g_szCompAttrString@@3PAEA	0143e518	NOT_IN_PDB_SETS	
+00cb48a0	reloc	?GetImeId@@YGKI@Z	00cb28f0	NOT_IN_PDB_SETS	
+00cb48a0	reloc	_g_dwCount	0143e688	NOT_IN_PDB_SETS	1 other bound spellings: ?g_dwCount@@3KA
+00cb48a0	reloc	_g_dwSelection	0143e618	NOT_IN_PDB_SETS	
+00cb48a0	reloc	?g_szCandidate@@3PAY0BAA@GA	0143d110	NOT_IN_PDB_SETS	
+00cb48a0	reloc	__imp__lstrcatW@8	0143fee8	NOT_IN_PDB_SETS	
+00cb48a0	reloc	?g_iReadingError@@3HA	0143cd58	NOT_IN_PDB_SETS	
+00cb48a0	reloc	_g_uCandPageSize	0143cd50	NOT_IN_PDB_SETS	1 other bound spellings: ?g_uCandPageSize@@3IA
+00cb48a0	reloc	?g_bReadingWindow@@3_NA	0143e8a0	NOT_IN_PDB_SETS	
+00cb48a0	reloc	?g_bHorizontalReading@@3_NA	0143e8a1	NOT_IN_PDB_SETS	
+00cb48a0	reloc	?g_szReadingString@@3PAGA	0143e640	NOT_IN_PDB_SETS	
+00cb48a0	reloc	?g_IMECursorBytes@@3KA	0143e894	NOT_IN_PDB_SETS	
+00cb48a0	reloc	?g_IMECursorChars@@3KA	0143e898	NOT_IN_PDB_SETS	
+00cb48a0	reloc	?g_dwIMELevel@@3KA	0143cd1c	NOT_IN_PDB_SETS	
+00cb48a0	reloc	?SendControlKeys@@YIXII@Z	00cb26b0	NOT_IN_PDB_SETS	1 other bound spellings: ?SendControlKeys@@YAXII@Z
+00cb48a0	reloc	_ImmReleaseContext@8	00cb5534	NOT_IN_PDB_SETS	
+00cb48a0	reloc	?bNoReentrance@?DB@??ImeUi_ProcessMessage@@YIJPAUHWND__@@IIJPA_N@Z@4_NA	0143e8dc	NOT_IN_PDB_SETS	
+00cb48a0	reloc	?g_himcOrg@@3PAUHIMC__@@A	0143e634	NOT_IN_PDB_SETS	
+00cb48a0	reloc	_ImmGetConversionStatus@12	00cb5552	NOT_IN_PDB_SETS	
+00cb48a0	reloc	_ImmSetConversionStatus@12	00cb555e	NOT_IN_PDB_SETS	
+00cb48a0	reloc	_g_bCandList	0143e8af	NOT_IN_PDB_SETS	1 other bound spellings: ?g_bCandList@@3_NA
+00cb48a0	reloc	?_GetCandidateList@@3P6IKPAUHIMC__@@KPAPAUtagCANDIDATELIST@@@ZA	0143cd00	NOT_IN_PDB_SETS	
+00cb48a0	reloc	?ComposeCandidateLine@@YIXPAGHPBG@Z	00cb2590	NOT_IN_PDB_SETS	
+00cb48a0	reloc	?ImeUiCallback_Free@@3P6IXPAX@ZA	0143cf08	NOT_IN_PDB_SETS	1 other bound spellings: ?g_ImeFree@@3P6IXPAX@ZA | QUEUE_CORRECT_IS: ? (591)
+00cb48a0	reloc	?GetReadingString@@YGXPAUHWND__@@@Z	00cb4340	NOT_IN_PDB_SETS	
+00cb48a0	reloc	@__security_check_cookie@4	00bfe9f9	OK	
+00cf9610	leaf	?OnPersist@CQ_AmbushTradersScript@NScript@@UAEXAAVCPersistContext@@@Z	00cf9610	OK	
+00cf9610	reloc	??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z	004045c0	PDB_OTHERS_BOUND	3 other bound spellings: ?Transfer@CPersistContext@@QAEXPBDAACABC@Z; ?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z; ?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z
+00cf9610	reloc	??$Transfer@J@CPersistContext@@QAEXPBDAAJABJ@Z	00410be0	PDB_OTHERS_BOUND	3 other bound spellings: ?Inner@CPersistContext@@QAEXPADPAJ1@Z; ?Transfer@CPersistContext@@QAEXPBDAAJABJ@Z; ?Transfer_00410be0@CPersistContext@@QAEXPBDAAJABJ@Z
+00d13130	leaf	?OnPersist@CQ_BountyHuntScript@NScript@@UAEXAAVCPersistContext@@@Z	00d13130	OK	
+00d13130	reloc	??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z	004045c0	PDB_OTHERS_BOUND	3 other bound spellings: ?Transfer@CPersistContext@@QAEXPBDAACABC@Z; ?Transfer@CPersistContext@@QAEXPBDAA_NAB_N@Z; ?Transfer_004045c0@CPersistContext@@QAEXPBDAACABC@Z
+00d13130	reloc	??$Transfer@J@CPersistContext@@QAEXPBDAAJABJ@Z	00410be0	PDB_OTHERS_BOUND	3 other bound spellings: ?Inner@CPersistContext@@QAEXPADPAJ1@Z; ?Transfer@CPersistContext@@QAEXPBDAAJABJ@Z; ?Transfer_00410be0@CPersistContext@@QAEXPBDAAJABJ@Z
+00d27460	leaf	?Main@CQ_EndGameScript@NScript@@UAEXXZ	00d27460	OK	
+00d27460	reloc	??0CCharString@@QAE@PBDJ@Z	0099ebf0	PDB_OTHERS_BOUND	46 other bound spellings: ??0CCharString2@@QAE@HH@Z; ??0CCharString@@QAE@PBDH@Z; ??0CCharString@ExternalRetry_00835c80@@QAE@PBDH@Z
+00d27460	reloc	??1CCharString@@QAE@XZ	0099eae0	PDB_OTHERS_BOUND	71 other bound spellings: ??1CCharString2@@QAE@XZ; ??1CCharString@ExternalRetry_00835c80@@QAE@XZ; ??1CCharString@ExternalRetry_008af850@@QAE@XZ
+00d27460	reloc	??2@YAPAXI@Z	00bfea1a	NOT_IN_PDB_SETS	
+00d27460	reloc	??_7?$CEntityScriptBinding@VCQ_EndGameScript@NScript@@@@6B@	012cbb34	NOT_IN_PDB_SETS	
+00d27460	reloc	??0CCharString@@QAE@ABV0@@Z	0099ec30	PDB_OTHERS_BOUND	74 other bound spellings: ??0CCharString@@QAE@PBD@Z; ??0CCharString@FableCons_007696a0@@QAE@ABV01@@Z; ??0CCharString@FableCons_00786d60@@QAE@ABV01@@Z
+00d27460	reloc	?Alloc@CM_UndeadSpawn@CQ_EndGameScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d290a0	OK	
+00d27460	reloc	?AddEntityScriptBinding@CScriptBase@@QAEXPAVCEntityScriptBindingBase@@@Z	00cb8230	OK	
+00d27460	reloc	?Alloc@CGatewayUndead@CQ_EndGameScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d29230	OK	
+00d27460	reloc	?Alloc@CHookCoastTeleporter@CQ_EndGameScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d28f70	OK	
+00d27460	reloc	?Alloc@CMK_GHC_HERO3@CQ_EndGameScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d29460	OK	
+00d27460	reloc	?Alloc@CMazeJournal@CQ_EndGameScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00d29570	OK	
+00d27460	reloc	?PostAddScriptedEntities@CScriptBase@@QAEXXZ	00cb8930	OK	
+00d27460	reloc	??0CSpawnedFuncBase@@QAE@ABVCCharString@@K@Z	00cdd450	OK	
+00d27460	reloc	??_7?$CSpawnedFunc@VCQ_EndGameScript@NScript@@@@6B@	012cba6c	NOT_IN_PDB_SETS	
+00d27460	reloc	?CheckRegionLeaving@CQ_EndGameScript@NScript@@QAEXXZ	00d27950	OK	
+00d27460	reloc	?AddSpawnedFunction@CScriptBase@@QAEXPAVCSpawnedFuncBase@@ABVCCharString@@@Z	00cb7e50	PDB_OTHERS_BOUND	13 other bound spellings: ?Add@CQR_EscortTraderScript@@QAEXPAUCSpawnedFuncPhase3@@ABVCCharString@@@Z; ?Add@CQ_AcolyteParentScript@@QAEXPAUCSpawnedFuncAmbush@@ABVCCharString@@@Z; ?Add@CQ_AmbushTradersScript@@QAEXPAUCSpawnedFuncAmbush@@ABVCCharString@@@Z
+00d27460	reloc	?CheckGuildEntering@CQ_EndGameScript@NScript@@QAEXXZ	00d27c00	OK	
+00d27460	reloc	?DoTheCoolEffects@CQ_EndGameScript@NScript@@QAEXXZ	00d27d20	OK	
+00defb10	leaf	?SwitchDoorsOnAndOff@CQ_SecretPassageScript@NScript@@QAEXXZ	00defb10	PDB_OTHERS_BOUND	1 other bound spellings: ?SwitchDoorsOnAndOff@CQ_SecretPassageScript@@QAEXXZ
+00defb10	reloc	?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ	00cb7940	PDB_OTHERS_BOUND	8 other bound spellings: ?IsActiveThreadTerminating@CQR_EscortTraderScript@Row00e1e530@@QAE_NXZ; ?IsActiveThreadTerminating@CQ_HobbeCaveScript@NScript@@QAE_NXZ; ?IsActiveThreadTerminating@CQ_WhiteBalverineKnotholeGladeScript@Row00e15500@@QAE_NXZ
+00defb10	reloc	??0CBaseClass@@QAE@XZ	0099a2d0	PDB_OTHERS_BOUND	4 other bound spellings: ??0CBase@N_0099a2d0@@QAE@XZ; ??0CBaseClass@NFoot008f7bd0@@QAE@XZ; ??0CBaseNative@@QAE@XZ
+00defb10	reloc	??_7CScriptThing@@6B@	01238c8c	NOT_IN_PDB_SETS	33 other bound spellings: ??_7CEvent_00d16780@@6B@; ??_7CEvent_00d2d530@@6B@; ??_7CEvent_00d97360@@6B@
+00defb10	reloc	??0CCharString@@QAE@PBDJ@Z	0099ebf0	PDB_OTHERS_BOUND	46 other bound spellings: ??0CCharString2@@QAE@HH@Z; ??0CCharString@@QAE@PBDH@Z; ??0CCharString@ExternalRetry_00835c80@@QAE@PBDH@Z
+00defb10	reloc	??1CCharString@@QAE@XZ	0099eae0	PDB_OTHERS_BOUND	71 other bound spellings: ??1CCharString2@@QAE@XZ; ??1CCharString@ExternalRetry_00835c80@@QAE@XZ; ??1CCharString@ExternalRetry_008af850@@QAE@XZ
+00defb10	reloc	??3@YAXPAX@Z	00bfe9bc	NOT_IN_PDB_SETS	
+00defb10	reloc	??1CScriptThing@@UAE@XZ	004aa840	PDB_OTHERS_BOUND	6 other bound spellings: ??1CScriptThing@@QAE@XZ; ??1CScriptThingCopy@@UAE@XZ; ??1CScriptThingParam@@UAE@XZ
+00defb10	reloc	??$_Construct@VCScriptThing@@V1@@std@@YIXPAVCScriptThing@@ABV1@@Z	008ac120	NOT_IN_PDB_SETS	1 other bound spellings: ?ConstructCopy_CScriptThing_Retail@@YIXPAUCScriptThing_Retail@@ABU1@@Z
+00defb10	reloc	?_M_insert_overflow@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@IAEXPAVCScriptThing@@ABV3@ABU__false_type@2@I_N@Z	008ad5f0	NOT_IN_PDB_SETS	1 other bound spellings: ?_M_insert_overflow@?$vector@VCScriptThing@@@std@@QAEXPAVCScriptThing@@ABV3@ABU__false_type@2@I_N@Z
+00defb10	reloc	??1?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAE@XZ	008ac970	PDB_OTHERS_BOUND	8 other bound spellings: ??1?$CScriptThingVector@VCScriptThing@@@@QAE@XZ; ??1?$vector@VCScriptThing@@@@QAE@XZ; ??1CScriptThingVector@@QAE@XZ
+00e0a820	leaf	?TurnToBalv@CQ_TraderEscortScript@NScript@@QAEXVCScriptThing@@@Z	00e0a820	OK	
+00e0a820	reloc	??0CBaseObject@@IAE@XZ	0099a380	PDB_OTHERS_BOUND	3 other bound spellings: ??0CBaseObject@@QAE@XZ; ??0CVillageTask@@QAE@XZ; ?InitializeCBaseObject@ScriptResource@@QAEXXZ
+00e0a820	reloc	??_7CScriptGameResourceObjectScriptedThingBase@@6B@	0127094c	NOT_IN_PDB_SETS	1 other bound spellings: ?ResourceVTable@@3QBEB
+00e0a820	reloc	??0CCharString@@QAE@PBDJ@Z	0099ebf0	PDB_OTHERS_BOUND	46 other bound spellings: ??0CCharString2@@QAE@HH@Z; ??0CCharString@@QAE@PBDH@Z; ??0CCharString@ExternalRetry_00835c80@@QAE@PBDH@Z
+00e0a820	reloc	?NullCoord@CScriptThing@@1VC3DVector@@A	0143e8e0	NOT_IN_PDB_SETS	4 other bound spellings: ?g_ZeroPos@@3VC3DVector@@B; ?g_ZeroVector@@3VC3DVector@@A; ?g_ZeroVector@@3VC3DVector@@B
+00e0a820	reloc	??1CCharString@@QAE@XZ	0099eae0	PDB_OTHERS_BOUND	71 other bound spellings: ??1CCharString2@@QAE@XZ; ??1CCharString@ExternalRetry_00835c80@@QAE@XZ; ??1CCharString@ExternalRetry_008af850@@QAE@XZ
+00e0a820	reloc	?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ	00cd23b9	OK	
+00e0a820	reloc	?Release@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ	00cd2770	OK	
+00e0a820	reloc	?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ	00cb7940	PDB_OTHERS_BOUND	8 other bound spellings: ?IsActiveThreadTerminating@CQR_EscortTraderScript@Row00e1e530@@QAE_NXZ; ?IsActiveThreadTerminating@CQ_HobbeCaveScript@NScript@@QAE_NXZ; ?IsActiveThreadTerminating@CQ_WhiteBalverineKnotholeGladeScript@Row00e15500@@QAE_NXZ
+00e0a820	reloc	??0?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ	00cdbf70	PDB_OTHERS_BOUND	2 other bound spellings: ??0CCutsceneCastMap@@QAE@XZ; ?Construct@CCutsceneCastMap@@QAEXXZ
+00e0a820	reloc	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z	00cd3d2e	PDB_OTHERS_BOUND	2 other bound spellings: ??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z; ??ACCutsceneCastMap@Row00e80d60@@QAEAAUCScriptGameResourceObjectScriptedThingBase@1@ABVCCharString@@@Z
+00e0a820	reloc	??4CScriptGameResourceObjectScriptedThingBase@@QAEAAV0@ABV0@@Z	008abd10	PDB_OTHERS_BOUND	1 other bound spellings: ?destroy@Pair@@QAEXPAUAlloc@@@Z
+00e0a820	reloc	??_7CScriptGameResourceObjectMovieBase@@6B@	01260ef4	NOT_IN_PDB_SETS	
+00e0a820	reloc	?RunCutsceneMacro@@YIXABVCCharString@@AAV?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@PAV?$map@VCCharString@@_NU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@3@PAV?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@3@_N4@Z	00cbfb7d	PDB_OTHERS_BOUND	3 other bound spellings: ?RunCutsceneMacro@@YIXABVCCharString@@AAUCCutsceneCastMap@@PAUCCutsceneFlagMap@@PAUCCutsceneArgMap@@_N4@Z; ?RunCutsceneMacro@Row00e80d60@@YIXABVCCharString@@PAUCCutsceneCastMap@1@HPAUCCutsceneArgMap@1@HH@Z; ?RunScriptedCutscene@@YI_NABVCCharString@@AAUCCutsceneCastMap@@PAXAAUCCutsceneArgMap@@2_N@Z
+00e0a820	reloc	??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ	006e7ab0	PDB_OTHERS_BOUND	2 other bound spellings: ??1CMovieImpPointer@@QAE@XZ; ??1CResourcePImp@@QAE@XZ
+00e0a820	reloc	??_7CScriptGameResourceObjectBase@@6B@	0126008c	NOT_IN_PDB_SETS	2 other bound spellings: ??_7CScriptGameResourceObjectBaseDtor@@6B@; ?ResourceBaseVTable@@3QBEB
+00e0a820	reloc	??1CBaseObject@@MAE@XZ	0099a430	PDB_OTHERS_BOUND	4 other bound spellings: ??1CBaseObject@@QAE@XZ; ??1CBaseObjectDtor@@UAE@XZ; ??1CMember_0099a430@@QAE@XZ
+00e0a820	reloc	??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ	00cdbfb0	PDB_OTHERS_BOUND	3 other bound spellings: ??1CCutsceneCastMap@@QAE@XZ; ?AutoTinyFirstMemberDestructor_00cdbfb0@@YIXPAX@Z; ?Destroy@CCutsceneCastMap@@QAEXXZ
+00e0a820	reloc	??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ	007e74d0	PDB_OTHERS_BOUND	2 other bound spellings: ??1ScriptResource@@QAE@XZ; ?Destroy@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ
+00e0a820	reloc	??_7CScriptThing@@6B@	01238c8c	NOT_IN_PDB_SETS	33 other bound spellings: ??_7CEvent_00d16780@@6B@; ??_7CEvent_00d2d530@@6B@; ??_7CEvent_00d97360@@6B@
+00e0a820	reloc	??0CBaseClass@@QAE@XZ	0099a2d0	PDB_OTHERS_BOUND	4 other bound spellings: ??0CBase@N_0099a2d0@@QAE@XZ; ??0CBaseClass@NFoot008f7bd0@@QAE@XZ; ??0CBaseNative@@QAE@XZ
+00e0a820	reloc	?MakeTraderComment@CQ_TraderEscortScript@NScript@@QAE_NABVCCharString@@ABVCScriptThing@@W4ETraderComment@12@@Z	00e01900	PDB_OTHERS_BOUND	1 other bound spellings: ?MakeTraderComment@CQ_TraderEscortScript@NScript@@QAE_NABVCCharString@@ABVCScriptThing@@W4ETraderComment@@@Z
+00e0a820	reloc	??3@YAXPAX@Z	00bfe9bc	NOT_IN_PDB_SETS	
+00e0a820	reloc	??1CBaseClass@@UAE@XZ	0099a2e0	PDB_OTHERS_BOUND	7 other bound spellings: ??1CBase@@UAE@XZ; ??1CBase@NParticleEngine@@QAE@XZ; ??1CBaseClass@ExternalRetry_00a90fc0@@UAE@XZ
+00e0a820	reloc	??1CScriptThing@@UAE@XZ	004aa840	PDB_OTHERS_BOUND	6 other bound spellings: ??1CScriptThing@@QAE@XZ; ??1CScriptThingCopy@@UAE@XZ; ??1CScriptThingParam@@UAE@XZ
+00e247f0	leaf	?Init@CQR_EscortTraderScript@NScript@@UAEXXZ	00e247f0	OK	
+00e247f0	reloc	?pDSTGame@@3PAVCGameScriptInterfaceBase@@A	0143e8f8	NOT_IN_PDB_SETS	4 other bound spellings: ?g_pGameScriptInterface@@3PAUGameCalls@@A; ?g_pGameScriptInterface@@3PAVCGameScriptInterface@@A; ?g_pScriptTimerManager@@3PAUCTimerManager@@A
+00e247f0	reloc	??0CCharString@@QAE@PBDJ@Z	0099ebf0	PDB_OTHERS_BOUND	46 other bound spellings: ??0CCharString2@@QAE@HH@Z; ??0CCharString@@QAE@PBDH@Z; ??0CCharString@ExternalRetry_00835c80@@QAE@PBDH@Z
+00e247f0	reloc	??0CCharString@@QAE@ABV0@@Z	0099ec30	PDB_OTHERS_BOUND	74 other bound spellings: ??0CCharString@@QAE@PBD@Z; ??0CCharString@FableCons_007696a0@@QAE@ABV01@@Z; ??0CCharString@FableCons_00786d60@@QAE@ABV01@@Z
+00e247f0	reloc	?_M_insert_overflow@?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@IAEXPAVCCharString@@ABV3@ABU__false_type@2@I_N@Z	00433530	NOT_IN_PDB_SETS	7 other bound spellings: ??$_M_insert_overflow@U__false_type@@@?$CArray@VCCharString@@@@QAEXPAVCCharString@@ABV1@ABU__false_type@@K_N@Z; ??$_M_insert_overflow@U__false_type@@@CCharStringVector@@QAEXPAVCCharString@@ABV1@ABU__false_type@@I_N@Z; ?_M_insert_overflow@?$vector@VCCharString@@@@QAEXPAVCCharString@@ABV2@ABU__false_type@@K_N@Z
+00e247f0	reloc	??1CCharString@@QAE@XZ	0099eae0	PDB_OTHERS_BOUND	71 other bound spellings: ??1CCharString2@@QAE@XZ; ??1CCharString@ExternalRetry_00835c80@@QAE@XZ; ??1CCharString@ExternalRetry_008af850@@QAE@XZ
+00e247f0	reloc	??4CCharString@@QAEABV0@ABV0@@Z	0099efb0	PDB_OTHERS_BOUND	3 other bound spellings: ??4CCharString@@QAEAAV0@ABV0@@Z; ??4CCharString@std@@QAEAAU01@ABU01@@Z; ??4SymbolString@@QAEAAU0@ABU0@@Z
+00e247f0	reloc	??4CCharString@@QAEABV0@PBD@Z	0099efe0	PDB_OTHERS_BOUND	3 other bound spellings: ?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z; ?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z; ?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z
+00e377d0	leaf	?Main@CV_AssassinAttacksScript@NScript@@UAEXXZ	00e377d0	OK	
+00e377d0	reloc	??2@YAPAXI@Z	00bfea1a	NOT_IN_PDB_SETS	
+00e377d0	reloc	??0CCharString@@QAE@PBDJ@Z	0099ebf0	PDB_OTHERS_BOUND	46 other bound spellings: ??0CCharString2@@QAE@HH@Z; ??0CCharString@@QAE@PBDH@Z; ??0CCharString@ExternalRetry_00835c80@@QAE@PBDH@Z
+00e377d0	reloc	??_7?$CEntityScriptBinding@VCV_AssassinAttacksScript@NScript@@@@6B@	012e369c	NOT_IN_PDB_SETS	
+00e377d0	reloc	??0CCharString@@QAE@ABV0@@Z	0099ec30	PDB_OTHERS_BOUND	74 other bound spellings: ??0CCharString@@QAE@PBD@Z; ??0CCharString@FableCons_007696a0@@QAE@ABV01@@Z; ??0CCharString@FableCons_00786d60@@QAE@ABV01@@Z
+00e377d0	reloc	?Alloc@CM_AssassinTrigger@CV_AssassinAttacksScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e37d50	OK	
+00e377d0	reloc	?AddEntityScriptBinding@CScriptBase@@QAEXPAVCEntityScriptBindingBase@@@Z	00cb8230	OK	
+00e377d0	reloc	??1CCharString@@QAE@XZ	0099eae0	PDB_OTHERS_BOUND	71 other bound spellings: ??1CCharString2@@QAE@XZ; ??1CCharString@ExternalRetry_00835c80@@QAE@XZ; ??1CCharString@ExternalRetry_008af850@@QAE@XZ
+00e377d0	reloc	?Alloc@CAttackingAssassin@CV_AssassinAttacksScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e382c0	OK	
+00e377d0	reloc	?Alloc@CChestHidingAssassin@CV_AssassinAttacksScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e385d0	OK	
+00e377d0	reloc	?Alloc@CAssassinChest@CV_AssassinAttacksScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e388f0	OK	
+00e377d0	reloc	?PostAddScriptedEntities@CScriptBase@@QAEXXZ	00cb8930	OK	
+00e377d0	reloc	??0CCharString@@QAE@XZ	0099e4b0	PDB_OTHERS_BOUND	9 other bound spellings: ??0CCharString@N006d41f0@@QAE@XZ; ??0CCharStringFmt@@QAE@XZ; ??0CCharStringMember@@QAE@XZ
+00e377d0	reloc	?pGlobalScriptDef@@3V?$CDefPointer@$$CBVCScriptDef@@@@A	0143e90c	NOT_IN_PDB_SETS	5 other bound spellings: ?ScriptDef@X_00e54990@@3PAUCScriptDef@1@A; ?g_ScriptDef@@3PAVCScriptDef@@A; ?g_pScriptDef@@3PAVCScriptDef@@A
+00e377d0	reloc	?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ	00cb7940	PDB_OTHERS_BOUND	8 other bound spellings: ?IsActiveThreadTerminating@CQR_EscortTraderScript@Row00e1e530@@QAE_NXZ; ?IsActiveThreadTerminating@CQ_HobbeCaveScript@NScript@@QAE_NXZ; ?IsActiveThreadTerminating@CQ_WhiteBalverineKnotholeGladeScript@Row00e15500@@QAE_NXZ
+00e377d0	reloc	?InitialiseRegionSpecificInfo@CV_AssassinAttacksScript@NScript@@QAEXXZ	00e37cf0	OK	
+00e39b40	leaf	?Main@CV_BordelloScript@NScript@@UAEXXZ	00e39b40	OK	
+00e39b40	reloc	??2@YAPAXI@Z	00bfea1a	NOT_IN_PDB_SETS	
+00e39b40	reloc	??0CCharString@@QAE@PBDJ@Z	0099ebf0	PDB_OTHERS_BOUND	46 other bound spellings: ??0CCharString2@@QAE@HH@Z; ??0CCharString@@QAE@PBDH@Z; ??0CCharString@ExternalRetry_00835c80@@QAE@PBDH@Z
+00e39b40	reloc	??_7?$CEntityScriptBinding@VCV_BordelloScript@NScript@@@@6B@	012e3994	NOT_IN_PDB_SETS	
+00e39b40	reloc	??0CCharString@@QAE@ABV0@@Z	0099ec30	PDB_OTHERS_BOUND	74 other bound spellings: ??0CCharString@@QAE@PBD@Z; ??0CCharString@FableCons_007696a0@@QAE@ABV01@@Z; ??0CCharString@FableCons_00786d60@@QAE@ABV01@@Z
+00e39b40	reloc	?Alloc@CMadame@CV_BordelloScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e3aab0	OK	
+00e39b40	reloc	?AddEntityScriptBinding@CScriptBase@@QAEXPAVCEntityScriptBindingBase@@@Z	00cb8230	OK	
+00e39b40	reloc	??1CCharString@@QAE@XZ	0099eae0	PDB_OTHERS_BOUND	71 other bound spellings: ??1CCharString2@@QAE@XZ; ??1CCharString@ExternalRetry_00835c80@@QAE@XZ; ??1CCharString@ExternalRetry_008af850@@QAE@XZ
+00e39b40	reloc	?Alloc@CBordelloLady@CV_BordelloScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e3ab90	OK	
+00e39b40	reloc	?Alloc@CBordelloGuard@CV_BordelloScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e3ae60	OK	
+00e39b40	reloc	?Alloc@CMagicman@CV_BordelloScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e3af90	OK	
+00e39b40	reloc	?Alloc@CBordelloClient@CV_BordelloScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e3b0f0	OK	
+00e39b40	reloc	?Alloc@CM_HeroDownstairs@CV_BordelloScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e3b270	OK	
+00e39b40	reloc	?Alloc@CBordelloEntrance@CV_BordelloScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e3b3d0	OK	
+00e39b40	reloc	?PostAddScriptedEntities@CScriptBase@@QAEXXZ	00cb8930	OK	
+00e39b40	reloc	??0CSpawnedFuncBase@@QAE@ABVCCharString@@K@Z	00cdd450	OK	
+00e39b40	reloc	??_7?$CSpawnedFunc@VCV_BordelloScript@NScript@@@@6B@	012e38c4	NOT_IN_PDB_SETS	
+00e39b40	reloc	?WatchForBordelloStatus@CV_BordelloScript@NScript@@QAEXXZ	00e3a030	OK	
+00e39b40	reloc	?AddSpawnedFunction@CScriptBase@@QAEXPAVCSpawnedFuncBase@@ABVCCharString@@@Z	00cb7e50	PDB_OTHERS_BOUND	13 other bound spellings: ?Add@CQR_EscortTraderScript@@QAEXPAUCSpawnedFuncPhase3@@ABVCCharString@@@Z; ?Add@CQ_AcolyteParentScript@@QAEXPAUCSpawnedFuncAmbush@@ABVCCharString@@@Z; ?Add@CQ_AmbushTradersScript@@QAEXPAUCSpawnedFuncAmbush@@ABVCCharString@@@Z
+00e39b40	reloc	?WatchForDeedStatus@CV_BordelloScript@NScript@@QAEXXZ	00e3a150	OK	
+00e39b40	reloc	?CreateCustomers@CV_BordelloScript@NScript@@QAEXXZ	00e3a350	OK	
+00e39b40	reloc	?AdjustTavernPrices@CV_BordelloScript@NScript@@QAEXXZ	00e3a6b0	OK	
+00e5ebd0	leaf	?MakeHenchmanComment@CV_BodyGuardScript@NScript@@QAE_NABVCCharString@@JW4EHENCHMAN_COMMENT@12@ABVCScriptThing@@@Z	00e5ebd0	PDB_OTHERS_BOUND	2 other bound spellings: ?MakeHenchmanComment@CV_BodyGuardScript@@QAE_NABVCCharString@@JJABVCScriptThing@@@Z; ?MakeHenchmanComment@CV_BodyGuardScript@@QAE_NABVCCharString@@JW4EHENCHMAN_COMMENT@@ABVCScriptThing@@@Z
+00e5ebd0	reloc	?pDSTGame@@3PAVCGameScriptInterfaceBase@@A	0143e8f8	NOT_IN_PDB_SETS	4 other bound spellings: ?g_pGameScriptInterface@@3PAUGameCalls@@A; ?g_pGameScriptInterface@@3PAVCGameScriptInterface@@A; ?g_pScriptTimerManager@@3PAUCTimerManager@@A
+00e5ebd0	reloc	_rand	00bfeb16	NOT_IN_PDB_SETS	
+00e5ebd0	reloc	??_7CScriptThing@@6B@	01238c8c	NOT_IN_PDB_SETS	33 other bound spellings: ??_7CEvent_00d16780@@6B@; ??_7CEvent_00d2d530@@6B@; ??_7CEvent_00d97360@@6B@
+00e5ebd0	reloc	??4CScriptThing@@QAEAAV0@ABV0@@Z	008ab980	OK	
+00e5ebd0	reloc	??0CCharString@@QAE@XZ	0099e4b0	PDB_OTHERS_BOUND	9 other bound spellings: ??0CCharString@N006d41f0@@QAE@XZ; ??0CCharStringFmt@@QAE@XZ; ??0CCharStringMember@@QAE@XZ
+00e5ebd0	reloc	?GetDataString@CScriptThing@@UBE?AVCCharString@@XZ	004aa900	OK	
+00e5ebd0	reloc	??4CCharString@@QAEABV0@ABV0@@Z	0099efb0	PDB_OTHERS_BOUND	3 other bound spellings: ??4CCharString@@QAEAAV0@ABV0@@Z; ??4CCharString@std@@QAEAAU01@ABU01@@Z; ??4SymbolString@@QAEAAU0@ABU0@@Z
+00e5ebd0	reloc	??1CCharString@@QAE@XZ	0099eae0	PDB_OTHERS_BOUND	71 other bound spellings: ??1CCharString2@@QAE@XZ; ??1CCharString@ExternalRetry_00835c80@@QAE@XZ; ??1CCharString@ExternalRetry_008af850@@QAE@XZ
+00e5ebd0	reloc	?Truncate@CCharString@@QAEXK@Z	0099f2a0	OK	
+00e5ebd0	reloc	??H@YI?AVCCharString@@PBDABV0@@Z	0099f690	OK	
+00e5ebd0	reloc	??H@YI?AVCCharString@@ABV0@PBD@Z	0099f600	OK	
+00e5ebd0	reloc	??H@YI?AVCCharString@@ABV0@0@Z	0099f570	PDB_OTHERS_BOUND	1 other bound spellings: ?sub_99f570@@YI?AVCCharString@@PAXPBD@Z
+00e5ebd0	reloc	?NullString@CScriptThing@@1VCCharString@@A	0143e8ec	NOT_IN_PDB_SETS	8 other bound spellings: ?NullString@CScriptThing@@2VCCharString@@A; ?g_CCharString_0143e8ec@@3VCCharString@@A; ?g_EmptyCharString@@3VCCharString@@B | QUEUE_CORRECT_IS: ?NullString@CScriptThing@@2VCCharString@@A (569)
+00e5ebd0	reloc	??0CCharString@@QAE@ABV0@@Z	0099ec30	PDB_OTHERS_BOUND	74 other bound spellings: ??0CCharString@@QAE@PBD@Z; ??0CCharString@FableCons_007696a0@@QAE@ABV01@@Z; ??0CCharString@FableCons_00786d60@@QAE@ABV01@@Z
+00e5ebd0	reloc	??1CScriptThing@@UAE@XZ	004aa840	PDB_OTHERS_BOUND	6 other bound spellings: ??1CScriptThing@@QAE@XZ; ??1CScriptThingCopy@@UAE@XZ; ??1CScriptThingParam@@UAE@XZ
+00e63890	leaf	?Main@CSpectator@CV_ChickenKickingScript@NScript@@EAEXXZ	00e63890	OK	
+00e63890	reloc	??0CBaseObject@@IAE@XZ	0099a380	PDB_OTHERS_BOUND	3 other bound spellings: ??0CBaseObject@@QAE@XZ; ??0CVillageTask@@QAE@XZ; ?InitializeCBaseObject@ScriptResource@@QAEXXZ
+00e63890	reloc	??_7CScriptGameResourceObjectScriptedThingBase@@6B@	0127094c	NOT_IN_PDB_SETS	1 other bound spellings: ?ResourceVTable@@3QBEB
+00e63890	reloc	??_7CBaseClass@@6B@	01231710	NOT_IN_PDB_SETS	
+00e63890	reloc	??_7CScriptThing@@6B@	01238c8c	NOT_IN_PDB_SETS	33 other bound spellings: ??_7CEvent_00d16780@@6B@; ??_7CEvent_00d2d530@@6B@; ??_7CEvent_00d97360@@6B@
+00e63890	reloc	??0CCharString@@QAE@PBDJ@Z	0099ebf0	PDB_OTHERS_BOUND	46 other bound spellings: ??0CCharString2@@QAE@HH@Z; ??0CCharString@@QAE@PBDH@Z; ??0CCharString@ExternalRetry_00835c80@@QAE@PBDH@Z
+00e63890	reloc	??1CCharString@@QAE@XZ	0099eae0	PDB_OTHERS_BOUND	71 other bound spellings: ??1CCharString2@@QAE@XZ; ??1CCharString@ExternalRetry_00835c80@@QAE@XZ; ??1CCharString@ExternalRetry_008af850@@QAE@XZ
+00e63890	reloc	?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ	00f35b30	OK	
+00e63890	reloc	?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ	00cd23b9	OK	
+00e63890	reloc	?Release@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ	00cd2770	OK	
+00e63890	reloc	??_7CScriptGameResourceObjectMovieBase@@6B@	01260ef4	NOT_IN_PDB_SETS	
+00e63890	reloc	?GFIntToCharString@@YI?AVCCharString@@J@Z	0099f830	OK	
+00e63890	reloc	??H@YI?AVCCharString@@PBDABV0@@Z	0099f690	OK	
+00e63890	reloc	??H@YI?AVCCharString@@ABV0@PBD@Z	0099f600	OK	
+00e63890	reloc	??4CCharString@@QAEABV0@ABV0@@Z	0099efb0	PDB_OTHERS_BOUND	3 other bound spellings: ??4CCharString@@QAEAAV0@ABV0@@Z; ??4CCharString@std@@QAEAAU01@ABU01@@Z; ??4SymbolString@@QAEAAU0@ABU0@@Z
+00e63890	reloc	?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@UBE?AVCScriptThing@@XZ	007e7490	PDB_OTHERS_BOUND	1 other bound spellings: ?GetScriptThing@CScriptGameResourceObjectScriptedThingBase@@QBE?AVCScriptThing@@XZ
+00e63890	reloc	??3@YAXPAX@Z	00bfe9bc	NOT_IN_PDB_SETS	
+00e63890	reloc	??1CBaseClass@@UAE@XZ	0099a2e0	PDB_OTHERS_BOUND	7 other bound spellings: ??1CBase@@UAE@XZ; ??1CBase@NParticleEngine@@QAE@XZ; ??1CBaseClass@ExternalRetry_00a90fc0@@UAE@XZ
+00e63890	reloc	??BCCharString@@QBEPBDXZ	0099e4c0	PDB_OTHERS_BOUND	1 other bound spellings: ?ToConstChar@CCharString@@QBEPBDXZ
+00e63890	reloc	?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z	007e7390	PDB_OTHERS_BOUND	2 other bound spellings: ?Speak@CScriptGameResourceObjectScriptedThingBase@@QAEXABVCScriptThing@@PBDW4ETextGroupSelectionMethod@@_N33@Z; ?Speak@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@PBDJ_N22@Z
+00e63890	reloc	?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ	007e7450	PDB_OTHERS_BOUND	1 other bound spellings: ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ
+00e63890	reloc	??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ	006e7ab0	PDB_OTHERS_BOUND	2 other bound spellings: ??1CMovieImpPointer@@QAE@XZ; ??1CResourcePImp@@QAE@XZ
+00e63890	reloc	??_7CScriptGameResourceObjectBase@@6B@	0126008c	NOT_IN_PDB_SETS	2 other bound spellings: ??_7CScriptGameResourceObjectBaseDtor@@6B@; ?ResourceBaseVTable@@3QBEB
+00e63890	reloc	??1CBaseObject@@MAE@XZ	0099a430	PDB_OTHERS_BOUND	4 other bound spellings: ??1CBaseObject@@QAE@XZ; ??1CBaseObjectDtor@@UAE@XZ; ??1CMember_0099a430@@QAE@XZ
+00e63890	reloc	??0CScriptThing@@QAE@ABV0@@Z	004abe90	PDB_OTHERS_BOUND	10 other bound spellings: ??0CAliveScriptThing@@QAE@ABVCScriptThing@@@Z; ??0CElement12_004abe90@@QAE@ABU0@@Z; ??0CScriptThing@@QAE@PAX@Z
+00e63890	reloc	??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ	007e74d0	PDB_OTHERS_BOUND	2 other bound spellings: ??1ScriptResource@@QAE@XZ; ?Destroy@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ
+00e8a2b0	leaf	?FightWarmupRounds@CTyler@CV_FisticuffsClubScript@NScript@@AAEXXZ	00e8a2b0	OK	
+00e8a2b0	reloc	??0CCharString@@QAE@PBDJ@Z	0099ebf0	PDB_OTHERS_BOUND	46 other bound spellings: ??0CCharString2@@QAE@HH@Z; ??0CCharString@@QAE@PBDH@Z; ??0CCharString@ExternalRetry_00835c80@@QAE@PBDH@Z
+00e8a2b0	reloc	?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ	00f35b30	OK	
+00e8a2b0	reloc	??4CCharString@@QAEABV0@PBD@Z	0099efe0	PDB_OTHERS_BOUND	3 other bound spellings: ?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z; ?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z; ?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z
+00e8a2b0	reloc	??0CBaseObject@@IAE@XZ	0099a380	PDB_OTHERS_BOUND	3 other bound spellings: ??0CBaseObject@@QAE@XZ; ??0CVillageTask@@QAE@XZ; ?InitializeCBaseObject@ScriptResource@@QAEXXZ
+00e8a2b0	reloc	??_7CScriptGameResourceObjectScriptedThingBase@@6B@	0127094c	NOT_IN_PDB_SETS	1 other bound spellings: ?ResourceVTable@@3QBEB
+00e8a2b0	reloc	?SetAllowedHits@CV_FisticuffsClubScript@NScript@@QAEXH@Z	00e8a140	OK	
+00e8a2b0	reloc	?AddQuestInfo@CV_FisticuffsClubScript@NScript@@QAEXXZ	00e8af70	OK	
+00e8a2b0	reloc	??0CBaseClass@@QAE@XZ	0099a2d0	PDB_OTHERS_BOUND	4 other bound spellings: ??0CBase@N_0099a2d0@@QAE@XZ; ??0CBaseClass@NFoot008f7bd0@@QAE@XZ; ??0CBaseNative@@QAE@XZ
+00e8a2b0	reloc	??_7CScriptThing@@6B@	01238c8c	NOT_IN_PDB_SETS	33 other bound spellings: ??_7CEvent_00d16780@@6B@; ??_7CEvent_00d2d530@@6B@; ??_7CEvent_00d97360@@6B@
+00e8a2b0	reloc	??3@YAXPAX@Z	00bfe9bc	NOT_IN_PDB_SETS	
+00e8a2b0	reloc	??1CBaseClass@@UAE@XZ	0099a2e0	PDB_OTHERS_BOUND	7 other bound spellings: ??1CBase@@UAE@XZ; ??1CBase@NParticleEngine@@QAE@XZ; ??1CBaseClass@ExternalRetry_00a90fc0@@UAE@XZ
+00e8a2b0	reloc	??1CCharString@@QAE@XZ	0099eae0	PDB_OTHERS_BOUND	71 other bound spellings: ??1CCharString2@@QAE@XZ; ??1CCharString@ExternalRetry_00835c80@@QAE@XZ; ??1CCharString@ExternalRetry_008af850@@QAE@XZ
+00e8a2b0	reloc	_malloc	00bfea0e	NOT_IN_PDB_SETS	
+00e8a2b0	reloc	??A?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z	00cd3d2e	PDB_OTHERS_BOUND	2 other bound spellings: ??ACCutsceneCastMap@@QAEAAVCScriptGameResourceObjectScriptedThingBase@@ABVCCharString@@@Z; ??ACCutsceneCastMap@Row00e80d60@@QAEAAUCScriptGameResourceObjectScriptedThingBase@1@ABVCCharString@@@Z
+00e8a2b0	reloc	??4CBaseObject@@IAEAAV0@ABV0@@Z	0099a3b0	PDB_OTHERS_BOUND	1 other bound spellings: ?CopyBase@CScriptGameResourceObjectScriptedThingBase@Row00e80d60@@QAEXABU12@@Z
+00e8a2b0	reloc	??_7CScriptGameResourceObjectMovieBase@@6B@	01260ef4	NOT_IN_PDB_SETS	
+00e8a2b0	reloc	?GetCutsceneName@CV_FisticuffsClubScript@NScript@@QAE?AVCCharString@@V3@@Z	00e8a1d0	OK	
+00e8a2b0	reloc	?RunCutsceneMacro@@YIXABVCCharString@@AAV?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@PAV?$map@VCCharString@@_NU?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@_N@std@@@3@@3@PAV?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@3@_N4@Z	00cbfb7d	PDB_OTHERS_BOUND	3 other bound spellings: ?RunCutsceneMacro@@YIXABVCCharString@@AAUCCutsceneCastMap@@PAUCCutsceneFlagMap@@PAUCCutsceneArgMap@@_N4@Z; ?RunCutsceneMacro@Row00e80d60@@YIXABVCCharString@@PAUCCutsceneCastMap@1@HPAUCCutsceneArgMap@1@HH@Z; ?RunScriptedCutscene@@YI_NABVCCharString@@AAUCCutsceneCastMap@@PAXAAUCCutsceneArgMap@@2_N@Z
+00e8a2b0	reloc	??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ	006e7ab0	PDB_OTHERS_BOUND	2 other bound spellings: ??1CMovieImpPointer@@QAE@XZ; ??1CResourcePImp@@QAE@XZ
+00e8a2b0	reloc	??_7CScriptGameResourceObjectBase@@6B@	0126008c	NOT_IN_PDB_SETS	2 other bound spellings: ??_7CScriptGameResourceObjectBaseDtor@@6B@; ?ResourceBaseVTable@@3QBEB
+00e8a2b0	reloc	??1CBaseObject@@MAE@XZ	0099a430	PDB_OTHERS_BOUND	4 other bound spellings: ??1CBaseObject@@QAE@XZ; ??1CBaseObjectDtor@@UAE@XZ; ??1CMember_0099a430@@QAE@XZ
+00e8a2b0	reloc	?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@UBE_NXZ	007e7450	PDB_OTHERS_BOUND	1 other bound spellings: ?IsPerformingScriptTask@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ
+00e8a2b0	reloc	?Release@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ	00cd2770	OK	
+00e8a2b0	reloc	?_M_erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@2@@Z	00cd344a	NOT_IN_PDB_SETS	4 other bound spellings: ?Erase@CCutsceneCastMap@@QAEXPAUnode@1@@Z; ?Erase@CRetailTree_erase00cd344a@@QAEXPAUnode@1@@Z; ?_M_erase@CCutsceneCastMap@@QAEXPAU_Rb_tree_node_base@@@Z
+00e8a2b0	reloc	_free	00bfea14	NOT_IN_PDB_SETS	
+00e8a2b0	reloc	?pGlobalScriptDef@@3V?$CDefPointer@$$CBVCScriptDef@@@@A	0143e90c	NOT_IN_PDB_SETS	5 other bound spellings: ?ScriptDef@X_00e54990@@3PAUCScriptDef@1@A; ?g_ScriptDef@@3PAVCScriptDef@@A; ?g_pScriptDef@@3PAVCScriptDef@@A
+00e8a2b0	reloc	?GetQuestText@CV_FisticuffsClubScript@NScript@@QAE?AVCCharString@@V3@@Z	00e82f80	PDB_OTHERS_BOUND	1 other bound spellings: ?GetQuestText@CV_FisticuffsClubScript@@QAE?AVCCharString@@V2@@Z
+00e8a2b0	reloc	??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ	007e74d0	PDB_OTHERS_BOUND	2 other bound spellings: ??1ScriptResource@@QAE@XZ; ?Destroy@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ
+00e8a2b0	reloc	??_I@YGXPAXIHP6EX0@Z@Z	00401400	OK	
+00e8a2b0	reloc	??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ	00cdbfb0	PDB_OTHERS_BOUND	3 other bound spellings: ??1CCutsceneCastMap@@QAE@XZ; ?AutoTinyFirstMemberDestructor_00cdbfb0@@YIXPAX@Z; ?Destroy@CCutsceneCastMap@@QAEXXZ
+00e8a2b0	reloc	??1CScriptThing@@UAE@XZ	004aa840	PDB_OTHERS_BOUND	6 other bound spellings: ??1CScriptThing@@QAE@XZ; ??1CScriptThingCopy@@UAE@XZ; ??1CScriptThingParam@@UAE@XZ
+00e92a50	leaf	?Main@CV_HiddenBootyScript@NScript@@UAEXXZ	00e92a50	OK	
+00e92a50	reloc	??2@YAPAXI@Z	00bfea1a	NOT_IN_PDB_SETS	
+00e92a50	reloc	??0CCharString@@QAE@PBDJ@Z	0099ebf0	PDB_OTHERS_BOUND	46 other bound spellings: ??0CCharString2@@QAE@HH@Z; ??0CCharString@@QAE@PBDH@Z; ??0CCharString@ExternalRetry_00835c80@@QAE@PBDH@Z
+00e92a50	reloc	??_7?$CEntityScriptBinding@VCV_HiddenBootyScript@NScript@@@@6B@	012ecad0	NOT_IN_PDB_SETS	
+00e92a50	reloc	??0CCharString@@QAE@ABV0@@Z	0099ec30	PDB_OTHERS_BOUND	74 other bound spellings: ??0CCharString@@QAE@PBD@Z; ??0CCharString@FableCons_007696a0@@QAE@ABV01@@Z; ??0CCharString@FableCons_00786d60@@QAE@ABV01@@Z
+00e92a50	reloc	?Alloc@CM_HiddenBooty@CV_HiddenBootyScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e92f70	OK	
+00e92a50	reloc	?AddEntityScriptBinding@CScriptBase@@QAEXPAVCEntityScriptBindingBase@@@Z	00cb8230	OK	
+00e92a50	reloc	??1CCharString@@QAE@XZ	0099eae0	PDB_OTHERS_BOUND	71 other bound spellings: ??1CCharString2@@QAE@XZ; ??1CCharString@ExternalRetry_00835c80@@QAE@XZ; ??1CCharString@ExternalRetry_008af850@@QAE@XZ
+00e92a50	reloc	?PostAddScriptedEntities@CScriptBase@@QAEXXZ	00cb8930	OK	
+00e92a50	reloc	??0CCharString@@QAE@XZ	0099e4b0	PDB_OTHERS_BOUND	9 other bound spellings: ??0CCharString@N006d41f0@@QAE@XZ; ??0CCharStringFmt@@QAE@XZ; ??0CCharStringMember@@QAE@XZ
+00e92a50	reloc	?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ	00cb7940	PDB_OTHERS_BOUND	8 other bound spellings: ?IsActiveThreadTerminating@CQR_EscortTraderScript@Row00e1e530@@QAE_NXZ; ?IsActiveThreadTerminating@CQ_HobbeCaveScript@NScript@@QAE_NXZ; ?IsActiveThreadTerminating@CQ_WhiteBalverineKnotholeGladeScript@Row00e15500@@QAE_NXZ
+00e92a50	reloc	?pGlobalScriptDef@@3V?$CDefPointer@$$CBVCScriptDef@@@@A	0143e90c	NOT_IN_PDB_SETS	5 other bound spellings: ?ScriptDef@X_00e54990@@3PAUCScriptDef@1@A; ?g_ScriptDef@@3PAVCScriptDef@@A; ?g_pScriptDef@@3PAVCScriptDef@@A
+00e9b690	leaf	?DoMission@CV_HeroDuelScript@NScript@@QAEXXZ	00e9b690	OK	
+00e9b690	reloc	??0CCharString@@QAE@PBDJ@Z	0099ebf0	PDB_OTHERS_BOUND	46 other bound spellings: ??0CCharString2@@QAE@HH@Z; ??0CCharString@@QAE@PBDH@Z; ??0CCharString@ExternalRetry_00835c80@@QAE@PBDH@Z
+00e9b690	reloc	??1CCharString@@QAE@XZ	0099eae0	PDB_OTHERS_BOUND	71 other bound spellings: ??1CCharString2@@QAE@XZ; ??1CCharString@ExternalRetry_00835c80@@QAE@XZ; ??1CCharString@ExternalRetry_008af850@@QAE@XZ
+00e9b690	reloc	?IsActiveThreadTerminating@CScriptBase@@QAE_NXZ	00cb7940	PDB_OTHERS_BOUND	8 other bound spellings: ?IsActiveThreadTerminating@CQR_EscortTraderScript@Row00e1e530@@QAE_NXZ; ?IsActiveThreadTerminating@CQ_HobbeCaveScript@NScript@@QAE_NXZ; ?IsActiveThreadTerminating@CQ_WhiteBalverineKnotholeGladeScript@Row00e15500@@QAE_NXZ
+00e9b690	reloc	?DuelChallenge@CV_HeroDuelScript@NScript@@QAEXXZ	00e9bbc0	OK	
+00e9b690	reloc	?Duel@CV_HeroDuelScript@NScript@@QAEXXZ	00e9be60	OK	
+00ee42a0	leaf	?Init@CV_TourGuideScript@NScript@@UAEXXZ	00ee42a0	OK	
+00ee42a0	reloc	??4CCharString@@QAEABV0@PBD@Z	0099efe0	PDB_OTHERS_BOUND	3 other bound spellings: ?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z; ?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z; ?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z
+00ef71e0	leaf	?Main@CArcherMan@CPersonalScript_EmptyScript@NScript@@EAEXXZ	00ef71e0	OK	
+00ef71e0	reloc	??0CCharString@@QAE@PBDJ@Z	0099ebf0	PDB_OTHERS_BOUND	46 other bound spellings: ??0CCharString2@@QAE@HH@Z; ??0CCharString@@QAE@PBDH@Z; ??0CCharString@ExternalRetry_00835c80@@QAE@PBDH@Z
+00ef71e0	reloc	??1CCharString@@QAE@XZ	0099eae0	PDB_OTHERS_BOUND	71 other bound spellings: ??1CCharString2@@QAE@XZ; ??1CCharString@ExternalRetry_00835c80@@QAE@XZ; ??1CCharString@ExternalRetry_008af850@@QAE@XZ
+00ef71e0	reloc	??_7CIsThingAlive@NScript@@6B@	012c32f0	NOT_IN_PDB_SETS	
+00ef71e0	reloc	??0CScriptThing@@QAE@ABV0@@Z	004abe90	PDB_OTHERS_BOUND	10 other bound spellings: ??0CAliveScriptThing@@QAE@ABVCScriptThing@@@Z; ??0CElement12_004abe90@@QAE@ABU0@@Z; ??0CScriptThing@@QAE@PAX@Z
+00ef71e0	reloc	??0?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@QAE@ABVCIsThingAlive@1@0@Z	00e24760	OK	
+00ef71e0	reloc	??0?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@QAE@ABV?$CPredicate_And@VCIsThingAlive@NScript@@V12@@1@ABVCIsThingAlive@1@@Z	00ef5bc0	OK	
+00ef71e0	reloc	??0?$CPredicate_And@V?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@VCIsThingAlive@2@@NScript@@QAE@ABV?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@1@ABVCIsThingAlive@1@@Z	00ef6f00	OK	
+00ef71e0	reloc	?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z	00f35b10	OK	
+00ef71e0	reloc	??_7?$CPredicate_And@V?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@VCIsThingAlive@2@@NScript@@6B@	012f6780	NOT_IN_PDB_SETS	
+00ef71e0	reloc	??1CIsThingAlive@NScript@@UAE@XZ	00e241b0	OK	
+00ef71e0	reloc	??_7?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@6B@	012f6628	NOT_IN_PDB_SETS	
+00ef71e0	reloc	??_7?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@6B@	012e1b70	NOT_IN_PDB_SETS	
+00ef71e0	reloc	??_7CPredicateBase@NScript@@6B@	012c2ff4	NOT_IN_PDB_SETS	4 other bound spellings: ??_7?$CPredicate@UCScriptThing@NScript@@@NScript@@6B@; ??_7CFilterBase@@6B@; ??_7CThingFunctorBase_012c2ff4@@6B@
+00ef71e0	reloc	?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ	00f35b30	OK	
+00ef71e0	reloc	??_7CScriptThing@@6B@	01238c8c	NOT_IN_PDB_SETS	33 other bound spellings: ??_7CEvent_00d16780@@6B@; ??_7CEvent_00d2d530@@6B@; ??_7CEvent_00d97360@@6B@
+00ef71e0	reloc	??3@YAXPAX@Z	00bfe9bc	NOT_IN_PDB_SETS	
+00ef71e0	reloc	??1CBaseClass@@UAE@XZ	0099a2e0	PDB_OTHERS_BOUND	7 other bound spellings: ??1CBase@@UAE@XZ; ??1CBase@NParticleEngine@@QAE@XZ; ??1CBaseClass@ExternalRetry_00a90fc0@@UAE@XZ
+00ef71e0	reloc	??0CBaseObject@@IAE@XZ	0099a380	PDB_OTHERS_BOUND	3 other bound spellings: ??0CBaseObject@@QAE@XZ; ??0CVillageTask@@QAE@XZ; ?InitializeCBaseObject@ScriptResource@@QAEXXZ
+00ef71e0	reloc	??_7CScriptGameResourceObjectScriptedThingBase@@6B@	0127094c	NOT_IN_PDB_SETS	1 other bound spellings: ?ResourceVTable@@3QBEB
+00ef71e0	reloc	?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ	00cd23b9	OK	
+00ef71e0	reloc	?Release@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ	00cd2770	OK	
+00ef71e0	reloc	?MoveToThing@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@MW4EScriptEntityMoveType@@_N222@Z	007e7300	OK	
+00ef71e0	reloc	??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ	007e74d0	PDB_OTHERS_BOUND	2 other bound spellings: ??1ScriptResource@@QAE@XZ; ?Destroy@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ
+00ef71e0	reloc	??1CScriptThing@@UAE@XZ	004aa840	PDB_OTHERS_BOUND	6 other bound spellings: ??1CScriptThing@@QAE@XZ; ??1CScriptThingCopy@@UAE@XZ; ??1CScriptThingParam@@UAE@XZ
+00ef7be0	leaf	?Main@CChatter1@CPersonalScript_EmptyScript@NScript@@EAEXXZ	00ef7be0	OK	
+00ef7be0	reloc	??0CCharString@@QAE@PBDJ@Z	0099ebf0	PDB_OTHERS_BOUND	46 other bound spellings: ??0CCharString2@@QAE@HH@Z; ??0CCharString@@QAE@PBDH@Z; ??0CCharString@ExternalRetry_00835c80@@QAE@PBDH@Z
+00ef7be0	reloc	??1CCharString@@QAE@XZ	0099eae0	PDB_OTHERS_BOUND	71 other bound spellings: ??1CCharString2@@QAE@XZ; ??1CCharString@ExternalRetry_00835c80@@QAE@XZ; ??1CCharString@ExternalRetry_008af850@@QAE@XZ
+00ef7be0	reloc	??_7CIsThingAlive@NScript@@6B@	012c32f0	NOT_IN_PDB_SETS	
+00ef7be0	reloc	??0CScriptThing@@QAE@ABV0@@Z	004abe90	PDB_OTHERS_BOUND	10 other bound spellings: ??0CAliveScriptThing@@QAE@ABVCScriptThing@@@Z; ??0CElement12_004abe90@@QAE@ABU0@@Z; ??0CScriptThing@@QAE@PAX@Z
+00ef7be0	reloc	??0?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@QAE@ABVCIsThingAlive@1@0@Z	00e24760	OK	
+00ef7be0	reloc	??0?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@QAE@ABV?$CPredicate_And@VCIsThingAlive@NScript@@V12@@1@ABVCIsThingAlive@1@@Z	00ef5bc0	OK	
+00ef7be0	reloc	??0?$CPredicate_And@V?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@VCIsThingAlive@2@@NScript@@QAE@ABV?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@1@ABVCIsThingAlive@1@@Z	00ef6f00	OK	
+00ef7be0	reloc	?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z	00f35b10	OK	
+00ef7be0	reloc	??_7?$CPredicate_And@V?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@VCIsThingAlive@2@@NScript@@6B@	012f6780	NOT_IN_PDB_SETS	
+00ef7be0	reloc	??1CIsThingAlive@NScript@@UAE@XZ	00e241b0	OK	
+00ef7be0	reloc	??_7?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@6B@	012f6628	NOT_IN_PDB_SETS	
+00ef7be0	reloc	??_7?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@6B@	012e1b70	NOT_IN_PDB_SETS	
+00ef7be0	reloc	??_7CPredicateBase@NScript@@6B@	012c2ff4	NOT_IN_PDB_SETS	4 other bound spellings: ??_7?$CPredicate@UCScriptThing@NScript@@@NScript@@6B@; ??_7CFilterBase@@6B@; ??_7CThingFunctorBase_012c2ff4@@6B@
+00ef7be0	reloc	?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ	00f35b30	OK	
+00ef7be0	reloc	??_7CScriptThing@@6B@	01238c8c	NOT_IN_PDB_SETS	33 other bound spellings: ??_7CEvent_00d16780@@6B@; ??_7CEvent_00d2d530@@6B@; ??_7CEvent_00d97360@@6B@
+00ef7be0	reloc	??3@YAXPAX@Z	00bfe9bc	NOT_IN_PDB_SETS	
+00ef7be0	reloc	??1CBaseClass@@UAE@XZ	0099a2e0	PDB_OTHERS_BOUND	7 other bound spellings: ??1CBase@@UAE@XZ; ??1CBase@NParticleEngine@@QAE@XZ; ??1CBaseClass@ExternalRetry_00a90fc0@@UAE@XZ
+00ef7be0	reloc	??0CBaseObject@@IAE@XZ	0099a380	PDB_OTHERS_BOUND	3 other bound spellings: ??0CBaseObject@@QAE@XZ; ??0CVillageTask@@QAE@XZ; ?InitializeCBaseObject@ScriptResource@@QAEXXZ
+00ef7be0	reloc	??_7CScriptGameResourceObjectScriptedThingBase@@6B@	0127094c	NOT_IN_PDB_SETS	1 other bound spellings: ?ResourceVTable@@3QBEB
+00ef7be0	reloc	?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ	00cd23b9	OK	
+00ef7be0	reloc	?Release@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ	00cd2770	OK	
+00ef7be0	reloc	?MoveToThing@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@MW4EScriptEntityMoveType@@_N222@Z	007e7300	OK	
+00ef7be0	reloc	??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ	007e74d0	PDB_OTHERS_BOUND	2 other bound spellings: ??1ScriptResource@@QAE@XZ; ?Destroy@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ
+00ef7be0	reloc	??1CScriptThing@@UAE@XZ	004aa840	PDB_OTHERS_BOUND	6 other bound spellings: ??1CScriptThing@@QAE@XZ; ??1CScriptThingCopy@@UAE@XZ; ??1CScriptThingParam@@UAE@XZ
+00ef80a0	leaf	?Main@CChatter2@CPersonalScript_EmptyScript@NScript@@EAEXXZ	00ef80a0	OK	
+00ef80a0	reloc	??0CCharString@@QAE@PBDJ@Z	0099ebf0	PDB_OTHERS_BOUND	46 other bound spellings: ??0CCharString2@@QAE@HH@Z; ??0CCharString@@QAE@PBDH@Z; ??0CCharString@ExternalRetry_00835c80@@QAE@PBDH@Z
+00ef80a0	reloc	??1CCharString@@QAE@XZ	0099eae0	PDB_OTHERS_BOUND	71 other bound spellings: ??1CCharString2@@QAE@XZ; ??1CCharString@ExternalRetry_00835c80@@QAE@XZ; ??1CCharString@ExternalRetry_008af850@@QAE@XZ
+00ef80a0	reloc	??_7CIsThingAlive@NScript@@6B@	012c32f0	NOT_IN_PDB_SETS	
+00ef80a0	reloc	??0CScriptThing@@QAE@ABV0@@Z	004abe90	PDB_OTHERS_BOUND	10 other bound spellings: ??0CAliveScriptThing@@QAE@ABVCScriptThing@@@Z; ??0CElement12_004abe90@@QAE@ABU0@@Z; ??0CScriptThing@@QAE@PAX@Z
+00ef80a0	reloc	??0?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@QAE@ABVCIsThingAlive@1@0@Z	00e24760	OK	
+00ef80a0	reloc	??0?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@QAE@ABV?$CPredicate_And@VCIsThingAlive@NScript@@V12@@1@ABVCIsThingAlive@1@@Z	00ef5bc0	OK	
+00ef80a0	reloc	??0?$CPredicate_And@V?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@VCIsThingAlive@2@@NScript@@QAE@ABV?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@1@ABVCIsThingAlive@1@@Z	00ef6f00	OK	
+00ef80a0	reloc	?SetPredicate@CEntityScriptBase@@QAEXABVCPredicateBase@NScript@@@Z	00f35b10	OK	
+00ef80a0	reloc	??_7?$CPredicate_And@V?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@VCIsThingAlive@2@@NScript@@6B@	012f6780	NOT_IN_PDB_SETS	
+00ef80a0	reloc	??1CIsThingAlive@NScript@@UAE@XZ	00e241b0	OK	
+00ef80a0	reloc	??_7?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@6B@	012f6628	NOT_IN_PDB_SETS	
+00ef80a0	reloc	??_7?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@6B@	012e1b70	NOT_IN_PDB_SETS	
+00ef80a0	reloc	??_7CPredicateBase@NScript@@6B@	012c2ff4	NOT_IN_PDB_SETS	4 other bound spellings: ??_7?$CPredicate@UCScriptThing@NScript@@@NScript@@6B@; ??_7CFilterBase@@6B@; ??_7CThingFunctorBase_012c2ff4@@6B@
+00ef80a0	reloc	?IsActiveThreadTerminating@CEntityScriptBase@@QBE_NXZ	00f35b30	OK	
+00ef80a0	reloc	??_7CScriptThing@@6B@	01238c8c	NOT_IN_PDB_SETS	33 other bound spellings: ??_7CEvent_00d16780@@6B@; ??_7CEvent_00d2d530@@6B@; ??_7CEvent_00d97360@@6B@
+00ef80a0	reloc	??3@YAXPAX@Z	00bfe9bc	NOT_IN_PDB_SETS	
+00ef80a0	reloc	??1CBaseClass@@UAE@XZ	0099a2e0	PDB_OTHERS_BOUND	7 other bound spellings: ??1CBase@@UAE@XZ; ??1CBase@NParticleEngine@@QAE@XZ; ??1CBaseClass@ExternalRetry_00a90fc0@@UAE@XZ
+00ef80a0	reloc	??0CBaseObject@@IAE@XZ	0099a380	PDB_OTHERS_BOUND	3 other bound spellings: ??0CBaseObject@@QAE@XZ; ??0CVillageTask@@QAE@XZ; ?InitializeCBaseObject@ScriptResource@@QAEXXZ
+00ef80a0	reloc	??_7CScriptGameResourceObjectScriptedThingBase@@6B@	0127094c	NOT_IN_PDB_SETS	1 other bound spellings: ?ResourceVTable@@3QBEB
+00ef80a0	reloc	?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ	00cd23b9	OK	
+00ef80a0	reloc	?Release@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ	00cd2770	OK	
+00ef80a0	reloc	?MoveToThing@CScriptGameResourceObjectScriptedThingBase@@UAEXABVCScriptThing@@MW4EScriptEntityMoveType@@_N222@Z	007e7300	OK	
+00ef80a0	reloc	??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ	007e74d0	PDB_OTHERS_BOUND	2 other bound spellings: ??1ScriptResource@@QAE@XZ; ?Destroy@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ
+00ef80a0	reloc	??1CScriptThing@@UAE@XZ	004aa840	PDB_OTHERS_BOUND	6 other bound spellings: ??1CScriptThing@@QAE@XZ; ??1CScriptThingCopy@@UAE@XZ; ??1CScriptThingParam@@UAE@XZ
+00f29530	leaf	??1CScriptDef@@UAE@XZ	00f29530	OK	
+00f29530	reloc	??1CCharString@@QAE@XZ	0099eae0	PDB_OTHERS_BOUND	71 other bound spellings: ??1CCharString2@@QAE@XZ; ??1CCharString@ExternalRetry_00835c80@@QAE@XZ; ??1CCharString@ExternalRetry_008af850@@QAE@XZ
+00f29530	reloc	_free	00bfea14	NOT_IN_PDB_SETS	
+00f29530	reloc	??_7CDefPointeeBase@@6B@	01230ba0	NOT_IN_PDB_SETS	78 other bound spellings: ?CHairCardDef_vftable@@3QAXA; ?CPhysicsDef_vftable@@3QAXA; ?CTCInventoryItem_vftable@@3QBXB
+00f29530	reloc	??1CResource@@UAE@XZ	009fc550	PDB_OTHERS_BOUND	3 other bound spellings: ??1CMemoryBlock@@QAE@XZ; ?BaseDestructor@CMemoryBlockOverlay@@QAEXXZ; ?Destroy@WaypointTemp@@QAEXXZ

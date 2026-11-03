@@ -1,0 +1,99 @@
+{
+  "address": "00c01750",
+  "all_internal_relocations_proven": true,
+  "all_named_relocations_proven": true,
+  "attempt": 1,
+  "final_regression_note": "Final header/format rebuild preserves selected target bytes and every COFF relocation identity; accepted/held actual operands separately checked in final main review. Parked original review limitations remain unchanged.",
+  "grade": "RELOCATION_MATCH",
+  "leaf": "_deflate_slow",
+  "object_size": 1033,
+  "relocations": [
+    {
+      "evidence": "Original zlib1.2.1 source plus matched sibling TU and native body",
+      "kind": "DISP32",
+      "offset": 28,
+      "symbol": "_fill_window",
+      "target": "00c01090"
+    },
+    {
+      "evidence": "Original zlib1.2.1 source plus matched sibling TU and native body",
+      "kind": "DISP32",
+      "offset": 209,
+      "symbol": "_longest_match",
+      "target": "00c00e60"
+    },
+    {
+      "evidence": "Original zlib1.2.1 source plus matched sibling TU and native body",
+      "kind": "DISP32",
+      "offset": 227,
+      "symbol": "_longest_match_fast",
+      "target": "00c00fd0"
+    },
+    {
+      "evidence": "Original zlib1.2.1 source plus matched sibling TU and native body",
+      "kind": "dir32",
+      "offset": 374,
+      "symbol": "__length_code",
+      "target": "012af590"
+    },
+    {
+      "evidence": "Original zlib1.2.1 source plus matched sibling TU and native body",
+      "kind": "dir32",
+      "offset": 410,
+      "symbol": "__dist_code",
+      "target": "012af390"
+    },
+    {
+      "evidence": "Original zlib1.2.1 source plus matched sibling TU and native body",
+      "kind": "dir32",
+      "offset": 425,
+      "symbol": "__dist_code",
+      "target": "012af390"
+    },
+    {
+      "evidence": "Original zlib1.2.1 source plus matched sibling TU and native body",
+      "kind": "DISP32",
+      "offset": 624,
+      "symbol": "__tr_flush_block",
+      "target": "00c057d0"
+    },
+    {
+      "evidence": "Original zlib1.2.1 source plus matched sibling TU and native body",
+      "kind": "DISP32",
+      "offset": 640,
+      "symbol": "_flush_pending",
+      "target": "00c00630"
+    },
+    {
+      "evidence": "Original zlib1.2.1 source plus matched sibling TU and native body",
+      "kind": "DISP32",
+      "offset": 788,
+      "symbol": "__tr_flush_block",
+      "target": "00c057d0"
+    },
+    {
+      "evidence": "Original zlib1.2.1 source plus matched sibling TU and native body",
+      "kind": "DISP32",
+      "offset": 804,
+      "symbol": "_flush_pending",
+      "target": "00c00630"
+    },
+    {
+      "evidence": "Original zlib1.2.1 source plus matched sibling TU and native body",
+      "kind": "DISP32",
+      "offset": 970,
+      "symbol": "__tr_flush_block",
+      "target": "00c057d0"
+    },
+    {
+      "evidence": "Original zlib1.2.1 source plus matched sibling TU and native body",
+      "kind": "DISP32",
+      "offset": 986,
+      "symbol": "_flush_pending",
+      "target": "00c00630"
+    }
+  ],
+  "retail_size": 1033,
+  "selected_attempt": 3,
+  "source_sha256": "70c49fec38c742097c2ae476b1a2773a274c48e0bf254b82f50bafa1702199da"
+}

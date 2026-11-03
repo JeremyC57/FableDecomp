@@ -1,0 +1,1300 @@
+{
+  "address": "0051fd80",
+  "all_coff_operand_count": 77,
+  "calls": [
+    {
+      "built_operand_offset": 14,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 0,
+      "pdb": [
+        {
+          "donor_address": "00af9d80",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f60f40",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051fd8d",
+      "retail_target": "0099e4b0",
+      "symbol": "??0CCharString@@QAE@XZ"
+    },
+    {
+      "built_operand_offset": 23,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 1,
+      "pdb": [
+        {
+          "donor_address": "00af9d80",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f60f40",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051fd96",
+      "retail_target": "0099e4b0",
+      "symbol": "??0CCharString@@QAE@XZ"
+    },
+    {
+      "built_operand_offset": 32,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 2,
+      "pdb": [
+        {
+          "donor_address": "00af9d80",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f60f40",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051fd9f",
+      "retail_target": "0099e4b0",
+      "symbol": "??0CCharString@@QAE@XZ"
+    },
+    {
+      "built_operand_offset": 48,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 3,
+      "pdb": [
+        {
+          "donor_address": "00afa5b0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f60fa0",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051fdaf",
+      "retail_target": "0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "built_operand_offset": 67,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 4,
+      "pdb": [
+        {
+          "donor_address": "00b3bfe0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02fb35a0",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051fdc2",
+      "retail_target": "009e9f40",
+      "symbol": "?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z"
+    },
+    {
+      "built_operand_offset": 76,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 5,
+      "pdb": [
+        {
+          "donor_address": "00afa3f0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f60f80",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051fdcb",
+      "retail_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "built_operand_offset": 116,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 6,
+      "pdb": [
+        {
+          "donor_address": "00afa810",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f61830",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051fdf3",
+      "retail_target": "0099efb0",
+      "symbol": "??4CCharString@@QAEABV0@ABV0@@Z"
+    },
+    {
+      "built_operand_offset": 125,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 7,
+      "pdb": [
+        {
+          "donor_address": "00afa3f0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f60f80",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051fdfc",
+      "retail_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "built_operand_offset": 136,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 8,
+      "pdb": [
+        {
+          "donor_address": "004ca320",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "01cf2e30",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051fe07",
+      "retail_target": "004c81f0",
+      "symbol": "?SerialiseThingInfo@CThing@@SIXAAVCPersistContext@@AAVCSerialiseInfo@1@@Z"
+    },
+    {
+      "built_operand_offset": 151,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 9,
+      "pdb": [
+        {
+          "donor_address": "00b0e790",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "03058070",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051fe16",
+      "retail_target": "009b9c60",
+      "symbol": "?SkipWhitespace@CStringParser@@QAEJXZ"
+    },
+    {
+      "built_operand_offset": 167,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 10,
+      "pdb": [
+        {
+          "donor_address": "00afa5b0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f60fa0",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051fe26",
+      "retail_target": "0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "built_operand_offset": 184,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 11,
+      "pdb": [
+        {
+          "donor_address": "00b0ede0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "030574d0",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051fe37",
+      "retail_target": "009ba330",
+      "symbol": "?ReadAsStringUntilString@CStringParser@@QAE?AVCCharString@@ABV2@@Z"
+    },
+    {
+      "built_operand_offset": 194,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 12,
+      "pdb": [
+        {
+          "donor_address": "00afa810",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f61830",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051fe41",
+      "retail_target": "0099efb0",
+      "symbol": "??4CCharString@@QAEABV0@ABV0@@Z"
+    },
+    {
+      "built_operand_offset": 203,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 13,
+      "pdb": [
+        {
+          "donor_address": "00afa3f0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f60f80",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051fe4a",
+      "retail_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "built_operand_offset": 212,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 14,
+      "pdb": [
+        {
+          "donor_address": "00afa3f0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f60f80",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051fe53",
+      "retail_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "built_operand_offset": 228,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 15,
+      "pdb": [
+        {
+          "donor_address": "00afa5b0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f60fa0",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051fe63",
+      "retail_target": "0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "built_operand_offset": 240,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 16,
+      "pdb": [
+        {
+          "donor_address": "00b0e710",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "03057fd0",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051fe6f",
+      "retail_target": "009b9ba0",
+      "symbol": "?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z"
+    },
+    {
+      "built_operand_offset": 249,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 17,
+      "pdb": [
+        {
+          "donor_address": "00afa3f0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f60f80",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051fe78",
+      "retail_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "built_operand_offset": 265,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 18,
+      "pdb": [
+        {
+          "donor_address": "00afa5b0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f60fa0",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051fe88",
+      "retail_target": "0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "built_operand_offset": 282,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 19,
+      "pdb": [
+        {
+          "donor_address": "00b0ede0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "030574d0",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051fe99",
+      "retail_target": "009ba330",
+      "symbol": "?ReadAsStringUntilString@CStringParser@@QAE?AVCCharString@@ABV2@@Z"
+    },
+    {
+      "built_operand_offset": 292,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 20,
+      "pdb": [
+        {
+          "donor_address": "00afa810",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f61830",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051fea3",
+      "retail_target": "0099efb0",
+      "symbol": "??4CCharString@@QAEABV0@ABV0@@Z"
+    },
+    {
+      "built_operand_offset": 301,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 21,
+      "pdb": [
+        {
+          "donor_address": "00afa3f0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f60f80",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051feac",
+      "retail_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "built_operand_offset": 310,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 22,
+      "pdb": [
+        {
+          "donor_address": "00afa3f0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f60f80",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051feb5",
+      "retail_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "built_operand_offset": 326,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 23,
+      "pdb": [
+        {
+          "donor_address": "004ca4c0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "01cf2c30",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051fec5",
+      "retail_target": "004c88e0",
+      "symbol": "?SerialiseThingInfo@CThing@@SIX_NAAVCCharString@@AAVCSerialiseInfo@1@@Z"
+    },
+    {
+      "built_operand_offset": 342,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 24,
+      "pdb": [
+        {
+          "donor_address": "00afa5b0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f60fa0",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051fed5",
+      "retail_target": "0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "built_operand_offset": 354,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 25,
+      "pdb": [
+        {
+          "donor_address": "00b0e710",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "03057fd0",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051fee1",
+      "retail_target": "009b9ba0",
+      "symbol": "?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z"
+    },
+    {
+      "built_operand_offset": 363,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 26,
+      "pdb": [
+        {
+          "donor_address": "00afa3f0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f60f80",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051feea",
+      "retail_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "built_operand_offset": 379,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 27,
+      "pdb": [
+        {
+          "donor_address": "00afa5b0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f60fa0",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051fefa",
+      "retail_target": "0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "built_operand_offset": 396,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 28,
+      "pdb": [
+        {
+          "donor_address": "00b3bfe0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02fb35a0",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051ff0b",
+      "retail_target": "009e9f40",
+      "symbol": "?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z"
+    },
+    {
+      "built_operand_offset": 405,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 29,
+      "pdb": [
+        {
+          "donor_address": "00afa3f0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f60f80",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051ff14",
+      "retail_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "built_operand_offset": 430,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 30,
+      "pdb": [
+        {
+          "donor_address": "00afa270",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f61900",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051ff2d",
+      "retail_target": "0099e960",
+      "symbol": "??9CCharString@@QBE_NPBD@Z"
+    },
+    {
+      "built_operand_offset": 456,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 31,
+      "pdb": [
+        {
+          "donor_address": "01d55b80",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051ff47",
+      "retail_target": "00528760",
+      "symbol": "??$GetDef@VCThingBaseDef@@@CDefinitionManager@@QBE_NABVCCharString@@PAV?$CDefPointer@$$CBVCThingBaseDef@@@@@Z"
+    },
+    {
+      "built_operand_offset": 578,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 32,
+      "pdb": [
+        {
+          "donor_address": "00528140",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "01d41c30",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0051ffc1",
+      "retail_target": "0051e210",
+      "symbol": "?RemapUIDForSerialisation@CThingManager@@QBE_K_N0K_K@Z"
+    },
+    {
+      "built_operand_offset": 609,
+      "evidence_status": "STL_CONFIGURATION_IDENTITY_HELD",
+      "identity_evidence": "Real STLport4.6 private const _M_find member-template and native unsigned64 lookup; exact target-specific extension configuration unproven.",
+      "ordinal": 33,
+      "pdb": [],
+      "retail_call": "0051ffe0",
+      "retail_target": "00527d80",
+      "symbol": "??$_M_find@_K@?$_Rb_tree@_KU?$pair@$$CB_KPAVCThing@@@std@@U?$_Select1st@U?$pair@$$CB_KPAVCThing@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KPAVCThing@@@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CB_KPAVCThing@@@std@@@1@AB_K@Z"
+    },
+    {
+      "built_operand_offset": 724,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 34,
+      "pdb": [
+        {
+          "donor_address": "004cabb0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "01cf8e20",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "00520053",
+      "retail_target": "004c8cf0",
+      "symbol": "?SetInLimbo@CThing@@QAEX_N@Z"
+    },
+    {
+      "built_operand_offset": 736,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 35,
+      "pdb": [
+        {
+          "donor_address": "004b5060",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "01c5da00",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0052005f",
+      "retail_target": "004afa60",
+      "symbol": "?OnActivateEntity@CQuestManager@@QAEXAAVCThing@@@Z"
+    },
+    {
+      "built_operand_offset": 791,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 36,
+      "pdb": [
+        {
+          "donor_address": "0040c910",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "01899d90",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "00520096",
+      "retail_target": "004115a0",
+      "symbol": "??8?$CBasicString@D@@QBE_NPBD@Z"
+    },
+    {
+      "built_operand_offset": 814,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 37,
+      "pdb": [
+        {
+          "donor_address": "004450f0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "01a596c0",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "005200ad",
+      "retail_target": "00449970",
+      "symbol": "?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ"
+    },
+    {
+      "built_operand_offset": 821,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 38,
+      "pdb": [
+        {
+          "donor_address": "00493650",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "01acde00",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "005200b4",
+      "retail_target": "00487dc0",
+      "symbol": "?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ"
+    },
+    {
+      "built_operand_offset": 833,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 39,
+      "pdb": [
+        {
+          "donor_address": "004c9b10",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "01cfa140",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "005200c0",
+      "retail_target": "004c82a0",
+      "symbol": "?IsLevelPersistent@CThing@@QBE_NXZ"
+    },
+    {
+      "built_operand_offset": 856,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 40,
+      "pdb": [
+        {
+          "donor_address": "005295f0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "01d3be90",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "005200d7",
+      "retail_target": "0051f340",
+      "symbol": "?CheckAndFixUID@CThingManager@@QAEXAA_K@Z"
+    },
+    {
+      "built_operand_offset": 890,
+      "evidence_status": "STL_CONFIGURATION_IDENTITY_HELD",
+      "identity_evidence": "Real STLport4.6 private const _M_find member-template and native unsigned64 lookup; exact target-specific extension configuration unproven.",
+      "ordinal": 41,
+      "pdb": [],
+      "retail_call": "005200f9",
+      "retail_target": "00527d20",
+      "symbol": "??$_M_find@_K@?$_Rb_tree@_KU?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@U?$_Select1st@U?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@@1@AB_K@Z"
+    },
+    {
+      "built_operand_offset": 926,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 42,
+      "pdb": [
+        {
+          "donor_address": "00afa5b0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f60fa0",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0052011d",
+      "retail_target": "0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "built_operand_offset": 944,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 43,
+      "pdb": [
+        {
+          "donor_address": "00b3bfe0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02fb35a0",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0052012f",
+      "retail_target": "009e9f40",
+      "symbol": "?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z"
+    },
+    {
+      "built_operand_offset": 953,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 44,
+      "pdb": [
+        {
+          "donor_address": "00afa3f0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f60f80",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "00520138",
+      "retail_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "built_operand_offset": 965,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 45,
+      "pdb": [
+        {
+          "donor_address": "00b768e0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "03194f70",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "00520144",
+      "retail_target": "00a371c0",
+      "symbol": "?AllocateClass@CClassFactory@@QAEPAVCClass@@ABVCCharString@@@Z"
+    },
+    {
+      "built_operand_offset": 995,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 46,
+      "pdb": [
+        {
+          "donor_address": "00afa5b0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f60fa0",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "00520162",
+      "retail_target": "0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "built_operand_offset": 1013,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 47,
+      "pdb": [
+        {
+          "donor_address": "00b3bfe0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02fb35a0",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "00520174",
+      "retail_target": "009e9f40",
+      "symbol": "?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z"
+    },
+    {
+      "built_operand_offset": 1022,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 48,
+      "pdb": [
+        {
+          "donor_address": "00afa3f0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f60f80",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0052017d",
+      "retail_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "built_operand_offset": 1070,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 49,
+      "pdb": [
+        {
+          "donor_address": "00af9d90",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f61070",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "005201ad",
+      "retail_target": "0099e4c0",
+      "symbol": "??BCCharString@@QBEPBDXZ"
+    },
+    {
+      "built_operand_offset": 1092,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 50,
+      "pdb": [
+        {
+          "donor_address": "00afa5b0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f60fa0",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "005201c3",
+      "retail_target": "0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "built_operand_offset": 1110,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 51,
+      "pdb": [
+        {
+          "donor_address": "00b3bfe0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02fb35a0",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "005201d5",
+      "retail_target": "009e9f40",
+      "symbol": "?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z"
+    },
+    {
+      "built_operand_offset": 1119,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 52,
+      "pdb": [
+        {
+          "donor_address": "00afa3f0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f60f80",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "005201de",
+      "retail_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "built_operand_offset": 1171,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 53,
+      "pdb": [
+        {
+          "donor_address": "00afa810",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f61830",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "00520212",
+      "retail_target": "0099efb0",
+      "symbol": "??4CCharString@@QAEABV0@ABV0@@Z"
+    },
+    {
+      "built_operand_offset": 1186,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 54,
+      "pdb": [
+        {
+          "donor_address": "004cb630",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "01cf7b10",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "00520221",
+      "retail_target": "004c9b80",
+      "symbol": "?Kill@CThing@@QAEX_N@Z"
+    },
+    {
+      "built_operand_offset": 1232,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 55,
+      "pdb": [
+        {
+          "donor_address": "00afa5b0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f60fa0",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0052024f",
+      "retail_target": "0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "built_operand_offset": 1250,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 56,
+      "pdb": [
+        {
+          "donor_address": "00b3bfe0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02fb35a0",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "00520261",
+      "retail_target": "009e9f40",
+      "symbol": "?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z"
+    },
+    {
+      "built_operand_offset": 1259,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 57,
+      "pdb": [
+        {
+          "donor_address": "00afa3f0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f60f80",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0052026a",
+      "retail_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "built_operand_offset": 1284,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 58,
+      "pdb": [
+        {
+          "donor_address": "00afa3f0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f60f80",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "00520283",
+      "retail_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "built_operand_offset": 1293,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 59,
+      "pdb": [
+        {
+          "donor_address": "00afa3f0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f60f80",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "0052028c",
+      "retail_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "built_operand_offset": 1302,
+      "evidence_status": "PDB_AND_NATIVE_ARGUMENTS_VERIFIED",
+      "identity_evidence": "Exact original PDB spelling plus matching native receiver, argument types, operation and donor order; see NAMING_EVIDENCE.md.",
+      "ordinal": 60,
+      "pdb": [
+        {
+          "donor_address": "00afa3f0",
+          "pdb": "egor_pdb_names.tsv"
+        },
+        {
+          "donor_address": "02f60f80",
+          "pdb": "fablewin_pdb_names.tsv"
+        }
+      ],
+      "retail_call": "00520295",
+      "retail_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    }
+  ],
+  "data_operand_count": 16,
+  "data_operands": [
+    {
+      "kind": 6,
+      "offset": 39,
+      "retail_address": "01245a64",
+      "retail_instruction": "0051fda6",
+      "status": "EXACT_NATIVE_LITERAL",
+      "symbol": "??_C@_0BE@ODNAICLL@Load?5Single?5Thing?51?$AA@",
+      "value": "Load Single Thing 1"
+    },
+    {
+      "kind": 6,
+      "offset": 158,
+      "retail_address": "0123542c",
+      "retail_instruction": "0051fe1d",
+      "status": "EXACT_NATIVE_LITERAL",
+      "symbol": "??_C@_01ICJEACDI@?$DL?$AA@",
+      "value": ";"
+    },
+    {
+      "kind": 6,
+      "offset": 219,
+      "retail_address": "0123542c",
+      "retail_instruction": "0051fe5a",
+      "status": "EXACT_NATIVE_LITERAL",
+      "symbol": "??_C@_01ICJEACDI@?$DL?$AA@",
+      "value": ";"
+    },
+    {
+      "kind": 6,
+      "offset": 256,
+      "retail_address": "01239b8c",
+      "retail_instruction": "0051fe7f",
+      "status": "EXACT_NATIVE_LITERAL",
+      "symbol": "??_C@_08CHONKCMI@EndThing?$AA@",
+      "value": "EndThing"
+    },
+    {
+      "kind": 6,
+      "offset": 333,
+      "retail_address": "01245a58",
+      "retail_instruction": "0051fecc",
+      "status": "EXACT_NATIVE_LITERAL",
+      "symbol": "??_C@_09KJCKEIBI@EndThing?$DL?$AA@",
+      "value": "EndThing;"
+    },
+    {
+      "kind": 6,
+      "offset": 370,
+      "retail_address": "01245a44",
+      "retail_instruction": "0051fef1",
+      "status": "EXACT_NATIVE_LITERAL",
+      "symbol": "??_C@_0BE@MIPNNBHI@Load?5Single?5Thing?52?$AA@",
+      "value": "Load Single Thing 2"
+    },
+    {
+      "kind": 6,
+      "offset": 412,
+      "retail_address": "012393e4",
+      "retail_instruction": "0051ff1b",
+      "status": "EXACT_NATIVE_LITERAL",
+      "symbol": "??_C@_04HIBGFPH@NULL?$AA@",
+      "value": "NULL"
+    },
+    {
+      "kind": 6,
+      "offset": 656,
+      "retail_address": "0122d70e",
+      "retail_instruction": "0052000f",
+      "status": "EXACT_NATIVE_LITERAL",
+      "symbol": "??_C@_00CNPNBAHC@?$AA@",
+      "value": ""
+    },
+    {
+      "kind": 6,
+      "offset": 661,
+      "retail_address": "01245a34",
+      "retail_instruction": "00520014",
+      "status": "EXACT_NATIVE_LITERAL",
+      "symbol": "??_C@_0P@LFCEPCKA@PlayerCreature?$AA@",
+      "value": "PlayerCreature"
+    },
+    {
+      "evidence": "PDB_CALLEE_PUBLICS exact private static CCountedPointer<CQuestManager> symbol; native load supplies OnActivateEntity receiver, matching original CQuestManager method.",
+      "kind": 6,
+      "offset": 730,
+      "retail_address": "013b89fc",
+      "retail_instruction": "00520058",
+      "status": "ORIGINAL_PRIVATE_SINGLETON_GLOBAL_VERIFIED",
+      "symbol": "?PClass@?$CTBaseSingletonNoDefaultAlloc@VCQuestManager@@@@0V?$CCountedPointer@VCQuestManager@@@@A"
+    },
+    {
+      "kind": 6,
+      "offset": 786,
+      "retail_address": "01245a34",
+      "retail_instruction": "00520091",
+      "status": "EXACT_NATIVE_LITERAL",
+      "symbol": "??_C@_0P@LFCEPCKA@PlayerCreature?$AA@",
+      "value": "PlayerCreature"
+    },
+    {
+      "evidence": "PDB_CALLEE_PUBLICS exact protected static CMainGameComponent* symbol; native+1c load is the original PlayerManager field and settled GetMainPlayer call.",
+      "kind": 6,
+      "offset": 801,
+      "retail_address": "013b86a0",
+      "retail_instruction": "0052009f",
+      "status": "ORIGINAL_PROTECTED_STATIC_GLOBAL_VERIFIED",
+      "symbol": "?PMainGameComponent@CMainGameComponent@@1PAV1@A"
+    },
+    {
+      "kind": 6,
+      "offset": 917,
+      "retail_address": "01245a10",
+      "retail_instruction": "00520114",
+      "status": "EXACT_NATIVE_LITERAL",
+      "symbol": "??_C@_0CC@DKIOCDPC@Load?5Single?5Thing?3?5Allocate?5Clas@",
+      "value": "Load Single Thing: Allocate Class"
+    },
+    {
+      "kind": 6,
+      "offset": 986,
+      "retail_address": "012459ec",
+      "retail_instruction": "00520159",
+      "status": "EXACT_NATIVE_LITERAL",
+      "symbol": "??_C@_0CD@FGCGALMF@Load?5Single?5Thing?3?5Construct?5Thi@",
+      "value": "Load Single Thing: Construct Thing"
+    },
+    {
+      "kind": 6,
+      "offset": 1083,
+      "retail_address": "012459c8",
+      "retail_instruction": "005201ba",
+      "status": "EXACT_NATIVE_LITERAL",
+      "symbol": "??_C@_0CE@NKCHHMAH@Load?5Single?5Thing?3?5Initial?5Activ@",
+      "value": "Load Single Thing: Initial Activate"
+    },
+    {
+      "kind": 6,
+      "offset": 1223,
+      "retail_address": "012459b4",
+      "retail_instruction": "00520246",
+      "status": "EXACT_NATIVE_LITERAL",
+      "symbol": "??_C@_0BE@NBOGOADJ@Load?5Single?5Thing?53?$AA@",
+      "value": "Load Single Thing 3"
+    }
+  ],
+  "data_status": "ALL16_DATA_OPERANDS_VERIFIED",
+  "direct_call_count": 61,
+  "name_holds": [
+    "00527d20",
+    "00527d80"
+  ],
+  "note": "Exact1320-byte leaf after masking only all77 real COFF operand positions.61 direct calls align at exact native instruction positions;14 literals equal native values;2 original globals verified. Two private const STL lookup template identities await target configuration proof.",
+  "selected_attempt": 31,
+  "source_sha256": "4ee250746c7d59632fef25afb77c50edc44d39672a333260c8d49304265c0354",
+  "status": "EXACT_BYTES_AND_OPERANDS_TWO_STL_NAMES_HELD"
+}

@@ -1,0 +1,159 @@
+{
+  "additional_checks": {
+    "callback_slots": {
+      "vorbis_func_floor.inverse1": 20,
+      "vorbis_func_floor.inverse2": 24,
+      "vorbis_func_residue.inverse": 28
+    },
+    "native_backend_arrays": {
+      "floor": [
+        "013ac244",
+        "013ac228"
+      ],
+      "residue": [
+        "013abdc4",
+        "013abde4",
+        "013abe04"
+      ]
+    }
+  },
+  "address": "00c9f8c0",
+  "all_internal_relocations_proven": true,
+  "all_named_relocations_proven": true,
+  "attempt": 1,
+  "final_regression_note": "Final header/format rebuild preserves selected target bytes and every COFF relocation identity; accepted/held actual operands separately checked in final main review. Parked original review limitations remain unchanged.",
+  "grade": "RELOCATION_MATCH",
+  "leaf": "@mapping0_inverse@8",
+  "object_size": 1282,
+  "relocations": [
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "DISP32",
+      "offset": 69,
+      "symbol": "__alloca_probe",
+      "target": "00bfea30"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "DISP32",
+      "offset": 85,
+      "symbol": "__alloca_probe",
+      "target": "00bfea30"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "DISP32",
+      "offset": 101,
+      "symbol": "__alloca_probe",
+      "target": "00bfea30"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "DISP32",
+      "offset": 117,
+      "symbol": "__alloca_probe",
+      "target": "00bfea30"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "dir32",
+      "offset": 192,
+      "symbol": "__floor_P",
+      "target": "013a3dc8"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "dir32",
+      "offset": 498,
+      "symbol": "__residue_P",
+      "target": "013a3dd0"
+    },
+    {
+      "evidence": "Compiler-generated literal value matches its native constant bytes.",
+      "kind": "dir32",
+      "offset": 682,
+      "symbol": "__real@00000000",
+      "target": "0122dedc"
+    },
+    {
+      "evidence": "Compiler-generated literal value matches its native constant bytes.",
+      "kind": "dir32",
+      "offset": 690,
+      "symbol": "__real@00000000",
+      "target": "0122dedc"
+    },
+    {
+      "evidence": "Compiler-generated literal value matches its native constant bytes.",
+      "kind": "dir32",
+      "offset": 759,
+      "symbol": "__real@00000000",
+      "target": "0122dedc"
+    },
+    {
+      "evidence": "Compiler-generated literal value matches its native constant bytes.",
+      "kind": "dir32",
+      "offset": 767,
+      "symbol": "__real@00000000",
+      "target": "0122dedc"
+    },
+    {
+      "evidence": "Compiler-generated literal value matches its native constant bytes.",
+      "kind": "dir32",
+      "offset": 836,
+      "symbol": "__real@00000000",
+      "target": "0122dedc"
+    },
+    {
+      "evidence": "Compiler-generated literal value matches its native constant bytes.",
+      "kind": "dir32",
+      "offset": 844,
+      "symbol": "__real@00000000",
+      "target": "0122dedc"
+    },
+    {
+      "evidence": "Compiler-generated literal value matches its native constant bytes.",
+      "kind": "dir32",
+      "offset": 913,
+      "symbol": "__real@00000000",
+      "target": "0122dedc"
+    },
+    {
+      "evidence": "Compiler-generated literal value matches its native constant bytes.",
+      "kind": "dir32",
+      "offset": 921,
+      "symbol": "__real@00000000",
+      "target": "0122dedc"
+    },
+    {
+      "evidence": "Compiler-generated literal value matches its native constant bytes.",
+      "kind": "dir32",
+      "offset": 1033,
+      "symbol": "__real@00000000",
+      "target": "0122dedc"
+    },
+    {
+      "evidence": "Compiler-generated literal value matches its native constant bytes.",
+      "kind": "dir32",
+      "offset": 1041,
+      "symbol": "__real@00000000",
+      "target": "0122dedc"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "dir32",
+      "offset": 1177,
+      "symbol": "__floor_P",
+      "target": "013a3dc8"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "DISP32",
+      "offset": 1255,
+      "symbol": "@mdct_backward@12",
+      "target": "00c9c620"
+    }
+  ],
+  "retail_size": 1282,
+  "selected_attempt": 3,
+  "source_sha256": "74fdbd6e48501c2ebeb2b636a36c1152feda13fd8f2e85441ccea3211d3e338a"
+}

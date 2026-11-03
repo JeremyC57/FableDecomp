@@ -1,0 +1,636 @@
+{
+  "address": "00520d00",
+  "direct_call_operands": 66,
+  "equivalence_basis": "Fresh COFF comparison: all leaf bytes, operand offsets, exact external names, local label destinations and addends equal the previously audited object.",
+  "final_regression_note": "Final header/format rebuild preserves selected target bytes and every COFF relocation identity; accepted/held actual operands separately checked in final main review. Parked original review limitations remain unchanged.",
+  "global_operands": 2,
+  "header_compliance": "Unsupported forced-inline annotations removed; native operand identities unchanged from grade08.",
+  "literal_operands": 18,
+  "operand_count": 86,
+  "operands": [
+    {
+      "evidence": "Both original public/typed PDB records, original local type and native unsigned suspension interval comparison; PDB_LOAD_CANONICAL_GLOBALS.json",
+      "kind": 6,
+      "offset": "0x7",
+      "retail_address": "0x01375714",
+      "symbol": "?NoThingsToLoadPerSuspend@NGlobalConsole@@3JA"
+    },
+    {
+      "evidence": "Exact null-terminated literal equality",
+      "kind": 6,
+      "literal": "",
+      "offset": "0x34",
+      "retail_address": "0x0122d70e",
+      "symbol": "??_C@_00CNPNBAHC@?$AA@"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x50",
+      "retail_address": "0x0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x63",
+      "retail_address": "0x00404720",
+      "symbol": "??0CStringParser@@QAE@ABVCCharString@@P6IX0@Z0J@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x6c",
+      "retail_address": "0x0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "evidence": "Exact null-terminated literal equality",
+      "kind": 6,
+      "literal": "",
+      "offset": "0x7b",
+      "retail_address": "0x0122d70e",
+      "symbol": "??_C@_00CNPNBAHC@?$AA@"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x82",
+      "retail_address": "0x0099efe0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z"
+    },
+    {
+      "evidence": "Exact null-terminated literal equality",
+      "kind": 6,
+      "literal": "XXXSectionStart",
+      "offset": "0x92",
+      "retail_address": "0x012459a4",
+      "symbol": "??_C@_0BA@PEBPJFEP@XXXSectionStart?$AA@"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x9b",
+      "retail_address": "0x0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0xa9",
+      "retail_address": "0x009b9ba0",
+      "symbol": "?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0xb4",
+      "retail_address": "0x0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0xcc",
+      "retail_address": "0x009b9c60",
+      "symbol": "?SkipWhitespace@CStringParser@@QAEJXZ"
+    },
+    {
+      "evidence": "Exact null-terminated literal equality",
+      "kind": 6,
+      "literal": ";",
+      "offset": "0xd3",
+      "retail_address": "0x0123542c",
+      "symbol": "??_C@_01ICJEACDI@?$DL?$AA@"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0xdc",
+      "retail_address": "0x0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0xef",
+      "retail_address": "0x009ba330",
+      "symbol": "?ReadAsStringUntilString@CStringParser@@QAE?AVCCharString@@ABV2@@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0xf8",
+      "retail_address": "0x0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "evidence": "Exact null-terminated literal equality",
+      "kind": 6,
+      "literal": ";",
+      "offset": "0xff",
+      "retail_address": "0x0123542c",
+      "symbol": "??_C@_01ICJEACDI@?$DL?$AA@"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x108",
+      "retail_address": "0x0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x116",
+      "retail_address": "0x009b9ba0",
+      "symbol": "?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x11f",
+      "retail_address": "0x0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x134",
+      "retail_address": "0x004b9370",
+      "symbol": "??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@ABEPAU?$_Rb_tree_node@VCCharString@@@1@ABVCCharString@@@Z"
+    },
+    {
+      "evidence": "Original public static CLevelLoader::LoadAllSectionName TPI and PDB global record; native inline getter copy and load-all selector use",
+      "kind": 6,
+      "offset": "0x144",
+      "retail_address": "0x013bab08",
+      "symbol": "?LoadAllSectionName@CLevelLoader@@2VCCharString@@A"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x151",
+      "retail_address": "0x0099ec30",
+      "symbol": "??0CCharString@@QAE@ABV0@@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x15d",
+      "retail_address": "0x004b9370",
+      "symbol": "??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@ABEPAU?$_Rb_tree_node@VCCharString@@@1@ABVCCharString@@@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x182",
+      "retail_address": "0x0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x19c",
+      "retail_address": "0x0099efb0",
+      "symbol": "??4CCharString@@QAEABV0@ABV0@@Z"
+    },
+    {
+      "evidence": "Exact null-terminated literal equality",
+      "kind": 6,
+      "literal": "XXXSectionEnd;",
+      "offset": "0x1a3",
+      "retail_address": "0x01245994",
+      "symbol": "??_C@_0P@GLDMEIEN@XXXSectionEnd?$DL?$AA@"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x1ac",
+      "retail_address": "0x0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x1ba",
+      "retail_address": "0x009b9e00",
+      "symbol": "?SkipPastNextItemIfIs@CStringParser@@QAE_NABVCCharString@@@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x1c5",
+      "retail_address": "0x0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "evidence": "Exact null-terminated literal equality",
+      "kind": 6,
+      "literal": ";",
+      "offset": "0x1d0",
+      "retail_address": "0x0123542c",
+      "symbol": "??_C@_01ICJEACDI@?$DL?$AA@"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x1d9",
+      "retail_address": "0x0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x1ec",
+      "retail_address": "0x009ba3e0",
+      "symbol": "?ReadAsStringUntilPastString@CStringParser@@QAE?AVCCharString@@ABV2@@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x1f5",
+      "retail_address": "0x0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x1fe",
+      "retail_address": "0x0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "evidence": "Exact null-terminated literal equality",
+      "kind": 6,
+      "literal": "",
+      "offset": "0x203",
+      "retail_address": "0x0122d70e",
+      "symbol": "??_C@_00CNPNBAHC@?$AA@"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x20a",
+      "retail_address": "0x0099efe0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z"
+    },
+    {
+      "evidence": "Exact null-terminated literal equality",
+      "kind": 6,
+      "literal": "NewThing",
+      "offset": "0x214",
+      "retail_address": "0x01245a88",
+      "symbol": "??_C@_08KOOEKGBA@NewThing?$AA@"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x21d",
+      "retail_address": "0x0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x22b",
+      "retail_address": "0x009b9e00",
+      "symbol": "?SkipPastNextItemIfIs@CStringParser@@QAE_NABVCCharString@@@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x236",
+      "retail_address": "0x0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "evidence": "Exact null-terminated literal equality",
+      "kind": 6,
+      "literal": "Loading entities from script",
+      "offset": "0x245",
+      "retail_address": "0x01245af4",
+      "symbol": "??_C@_0BN@JEBNCNFB@Loading?5entities?5from?5script?$AA@"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x24e",
+      "retail_address": "0x0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x260",
+      "retail_address": "0x009e9f40",
+      "symbol": "?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x269",
+      "retail_address": "0x0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x284",
+      "retail_address": "0x009badd0",
+      "symbol": "??0CPersistContext@@QAE@AAVCStringParser@@P6IXABVCCharString@@@Z_NPBVCDefinitionManager@@PBVCSymbolMap@@PAV2@@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x29b",
+      "retail_address": "0x0051fd80",
+      "symbol": "?LoadSingleThing@CThingManager@@AAEPAVCThing@@AAVCPersistContext@@J@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x2cd",
+      "retail_address": "0x00436ac0",
+      "symbol": "?_M_insert_overflow@?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@IAEXPAPAVCThing@@ABQAV3@ABU__true_type@2@I_N@Z"
+    },
+    {
+      "evidence": "Exact null-terminated literal equality",
+      "kind": 6,
+      "literal": "NewThing",
+      "offset": "0x301",
+      "retail_address": "0x01245a88",
+      "symbol": "??_C@_08KOOEKGBA@NewThing?$AA@"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x30a",
+      "retail_address": "0x0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x318",
+      "retail_address": "0x009b9e00",
+      "symbol": "?SkipPastNextItemIfIs@CStringParser@@QAE_NABVCCharString@@@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x323",
+      "retail_address": "0x0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "evidence": "Exact null-terminated literal equality",
+      "kind": 6,
+      "literal": "XXXSectionEnd;",
+      "offset": "0x332",
+      "retail_address": "0x01245994",
+      "symbol": "??_C@_0P@GLDMEIEN@XXXSectionEnd?$DL?$AA@"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x33b",
+      "retail_address": "0x0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x349",
+      "retail_address": "0x009b9ba0",
+      "symbol": "?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z"
+    },
+    {
+      "evidence": "Exact null-terminated literal equality",
+      "kind": 6,
+      "literal": "XXXSectionEnd;",
+      "offset": "0x356",
+      "retail_address": "0x01245994",
+      "symbol": "??_C@_0P@GLDMEIEN@XXXSectionEnd?$DL?$AA@"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x35f",
+      "retail_address": "0x0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x36d",
+      "retail_address": "0x009b9ba0",
+      "symbol": "?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x376",
+      "retail_address": "0x0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x37f",
+      "retail_address": "0x0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "evidence": "Exact null-terminated literal equality",
+      "kind": 6,
+      "literal": "XXXSectionStart",
+      "offset": "0x386",
+      "retail_address": "0x012459a4",
+      "symbol": "??_C@_0BA@PEBPJFEP@XXXSectionStart?$AA@"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x38f",
+      "retail_address": "0x0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x39d",
+      "retail_address": "0x009b9ba0",
+      "symbol": "?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x3a8",
+      "retail_address": "0x0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "evidence": "Exact null-terminated literal equality",
+      "kind": 6,
+      "literal": "NULL",
+      "offset": "0x3ba",
+      "retail_address": "0x012393e4",
+      "symbol": "??_C@_04HIBGFPH@NULL?$AA@"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x3c1",
+      "retail_address": "0x0099efe0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z"
+    },
+    {
+      "evidence": "Exact null-terminated literal equality",
+      "kind": 6,
+      "literal": "NewThing",
+      "offset": "0x3c8",
+      "retail_address": "0x01245a88",
+      "symbol": "??_C@_08KOOEKGBA@NewThing?$AA@"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x3d1",
+      "retail_address": "0x0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x3df",
+      "retail_address": "0x009b9ba0",
+      "symbol": "?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x3ea",
+      "retail_address": "0x0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "evidence": "Exact null-terminated literal equality",
+      "kind": 6,
+      "literal": "Loading entities from script",
+      "offset": "0x407",
+      "retail_address": "0x01245af4",
+      "symbol": "??_C@_0BN@JEBNCNFB@Loading?5entities?5from?5script?$AA@"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x410",
+      "retail_address": "0x0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x422",
+      "retail_address": "0x009e9f40",
+      "symbol": "?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x42b",
+      "retail_address": "0x0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x446",
+      "retail_address": "0x009badd0",
+      "symbol": "??0CPersistContext@@QAE@AAVCStringParser@@P6IXABVCCharString@@@Z_NPBVCDefinitionManager@@PBVCSymbolMap@@PAV2@@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x456",
+      "retail_address": "0x0051fd80",
+      "symbol": "?LoadSingleThing@CThingManager@@AAEPAVCThing@@AAVCPersistContext@@J@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x488",
+      "retail_address": "0x00436ac0",
+      "symbol": "?_M_insert_overflow@?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@IAEXPAPAVCThing@@ABQAV3@ABU__true_type@2@I_N@Z"
+    },
+    {
+      "evidence": "Exact null-terminated literal equality",
+      "kind": 6,
+      "literal": "NewThing",
+      "offset": "0x4ba",
+      "retail_address": "0x01245a88",
+      "symbol": "??_C@_08KOOEKGBA@NewThing?$AA@"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x4c3",
+      "retail_address": "0x0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x4d1",
+      "retail_address": "0x009b9ba0",
+      "symbol": "?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x4dc",
+      "retail_address": "0x0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x505",
+      "retail_address": "0x0051e5a0",
+      "symbol": "?ActivateAfterLoading@CThingManager@@AAEXJ@Z"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x50e",
+      "retail_address": "0x004046b0",
+      "symbol": "??1?$list@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x517",
+      "retail_address": "0x0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x520",
+      "retail_address": "0x0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ"
+    },
+    {
+      "evidence": "Original PDB symbol or real STLport4.6 interface plus native argument/member operations; see NAMING_EVIDENCE.md",
+      "kind": 20,
+      "offset": "0x529",
+      "retail_address": "0x0099a2e0",
+      "symbol": "??1CBaseClass@@UAE@XZ"
+    }
+  ],
+  "previous_audited_attempt": 10,
+  "selected_attempt": 16,
+  "source_sha256": "150b9deda2c5cd3e7e282c59122ec27cd72107bc1e0b33816a4d14b0cabd1312",
+  "status": "OPERANDS_VERIFIED_STL_CONFIGURATION_NAME_REVIEW_PENDING"
+}

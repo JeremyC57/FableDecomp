@@ -1,0 +1,15 @@
+# Original identity and names
+
+`NScript::CQ_SecretPassageScript::SwitchDoorsOnAndOff` is the exact public thiscall void procedure in both raw Ego_r and FableWin. The native CSP_UndeadTrigger::Main neighbour names this member in its spawned function with literal SwitchDoorsOnAndOff and stores target00defb10; BossBlockingPrisonPassage repeats the same binding. Native target accesses DoorsBeingDone+0x4d and DoorsBlocked+0x4c, matching original PDB offsets after the20-byte base-size adjustment. The hint Script_Door_Blocker is discarded.
+
+The full original owner is size0x12c: original eight bools, GhostSightings, GlobalMymap, FlagMap, minions[11] and seh_Mother. Genuine CLevelScriptBase<CQ_SunnyvaleMasterData> supplies Game/MasterScriptData references; two original std::map fields are12bytes each. All class/method/field names are raw PDB names, with supplied native neighbours proving the flags, owner and STLport layout.
+
+Raw original local records name TempParticle, EffectVec, InvisoDoorVec, TempDoor and both long i counters. Native construction/destruction and loops agree with these types. All seven literal strings were read independently at the actual native operands and compared with COFF data, not just symbol labels.
+
+Exact emitted Leaf is ?SwitchDoorsOnAndOff@CQ_SecretPassageScript@NScript@@QAEXXZ. Exact nonvirtual callees are CScriptBase::IsActiveThreadTerminating, CBaseClass ctor, CCharString ctor/dtor, CScriptThing dtor, scalar operator delete and original STLport _Construct<CScriptThing,CScriptThing>, std::vector<CScriptThing>::_M_insert_overflow and vector destructor. The `_M_insert_overflow` protected access is intentional: real STLport4.6 _vector.h120–127 puts the member under protected, so its correct mangling is IAE; old QAE spellings are reported in NAME_FIXES. _Construct is a genuine STLport template compiled /Gr and consumes two pointer/reference arguments in ecx/edx, matching the native callee contract. The vector element type is original class-key V CScriptThing, proved by PDB plus native12-byte stride and vtable01238c8c.
+
+The genuine game interface supplies seven consumed slots; CScriptThing supplies GetPos and GetAngleXY. RELOCATIONS.json lists exact slot contracts alongside every direct/literal relocation. Calls not expected by the fixture fail, and tested object/coordinate/angle/literal contracts are asserted explicitly.
+
+Private evidence: SECRET_PASSAGE_ORIGINAL_TYPES.json, function_locals_NScript_CQ_SecretPassageScript_SwitchDoorsOnAndOff.json, native cut and supplied neighbours. Source/header snapshots and both toolchain test receipts are immutable under history and behavior_tests. Native dumps/game bytes are not export material.
+
+Main ordinary-header review uses the original C3DVector model without unsupported stronger attributes and, where included, the original CDefPointer class with private Object and direct original operator bodies. Both original type sets corroborate the corrected declarations; no invented Assign member remains in that opt-in. Defaults are preserved. Target bytes/operand identities and current-pair tests remain independently verified.

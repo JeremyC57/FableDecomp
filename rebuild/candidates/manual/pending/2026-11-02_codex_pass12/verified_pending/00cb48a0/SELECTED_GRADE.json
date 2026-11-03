@@ -1,0 +1,23 @@
+{
+  "address": "00cb48a0",
+  "assigned_retail_size": 2160,
+  "attempt": 14,
+  "baseline": false,
+  "differing_instruction_lines": 0,
+  "flags": [
+    "/Gr",
+    "/GS"
+  ],
+  "header_manifest": "history/00cb48a0/attempt_14/HEADER_MANIFEST.json",
+  "header_map_sha256": "85dbd3636d2087fe6b69d2ef7fdc856bcb59293bffd5771374de61fe2e44f37f",
+  "leaf": "?ImeUi_ProcessMessage@@YIJPAUHWND__@@IIJPA_N@Z",
+  "leaf_hits": [
+    "?ImeUi_ProcessMessage@@YIJPAUHWND__@@IIJPA_N@Z"
+  ],
+  "object_size": 2160,
+  "retail_size": 2160,
+  "source_sha256": "bd3bfd06d7bce8e3d584308dbc294289705fe8130e4b39da8ce156e0b3cb834a",
+  "status": "RELOCATION_MATCH",
+  "strategy": "main independent final handoff rebuild: selected immutable headers, required source headings and complete byte/operand regression check",
+  "time": 1793676117.2909126
+}

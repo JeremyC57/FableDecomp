@@ -1,0 +1,149 @@
+{
+  "address": "00b3be10",
+  "extent_end": "00b3c4a4",
+  "final_regression_note": "Final header/format rebuild preserves selected target bytes and every COFF relocation identity; accepted/held actual operands separately checked in final main review. Parked original review limitations remain unchanged.",
+  "grade_attempt": 16,
+  "padding_end": "00b3c4b0",
+  "relocations": [
+    {
+      "evidence": "Original PDB or real STLport4.6 declaration plus native call target and verified existing correct bindings; see NAMING_EVIDENCE.md.",
+      "offset": 92,
+      "retail_target": "00440990",
+      "status": "PASS",
+      "symbol": "?_M_insert_overflow@?$vector@JV?$allocator@J@std@@@std@@IAEXPAJABJABU__true_type@2@I_N@Z"
+    },
+    {
+      "evidence": "Original PDB or real STLport4.6 declaration plus native call target and verified existing correct bindings; see NAMING_EVIDENCE.md.",
+      "offset": 143,
+      "retail_target": "00497890",
+      "status": "PASS",
+      "symbol": "?GFROR13@@YIJK@Z"
+    },
+    {
+      "bytes_sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+      "evidence": "Full private compiler literal content equals retail data; no invented external global.",
+      "offset": 183,
+      "retail_target": "0122dedc",
+      "status": "PASS",
+      "symbol": "__real@00000000",
+      "value": 0.0
+    },
+    {
+      "bytes_sha256": "6c3c396ed6b5c36dcae172271f462051b1266b851e92df3deea8ac65478fd712",
+      "evidence": "Full private compiler literal content equals retail data; no invented external global.",
+      "offset": 405,
+      "retail_target": "01237f00",
+      "status": "PASS",
+      "symbol": "__real@3ff0000000000000",
+      "value": 1.0
+    },
+    {
+      "evidence": "Original PDB or real STLport4.6 declaration plus native call target and verified existing correct bindings; see NAMING_EVIDENCE.md.",
+      "offset": 483,
+      "retail_target": "00bfea0e",
+      "status": "PASS",
+      "symbol": "_malloc"
+    },
+    {
+      "bytes_sha256": "31b67dba7cfd6e2d7540f9c96d90a45b8f2d44956620723024d4e1beeacd4602",
+      "evidence": "Full private compiler literal content equals retail data; no invented external global.",
+      "offset": 542,
+      "retail_target": "0123095c",
+      "status": "PASS",
+      "symbol": "__real@3e000000",
+      "value": 0.125
+    },
+    {
+      "evidence": "Original PDB or real STLport4.6 declaration plus native call target and verified existing correct bindings; see NAMING_EVIDENCE.md.",
+      "offset": 625,
+      "retail_target": "00bfea0e",
+      "status": "PASS",
+      "symbol": "_malloc"
+    },
+    {
+      "bytes_sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+      "evidence": "Full private compiler literal content equals retail data; no invented external global.",
+      "offset": 736,
+      "retail_target": "0122dedc",
+      "status": "PASS",
+      "symbol": "__real@00000000",
+      "value": 0.0
+    },
+    {
+      "bytes_sha256": "6c3c396ed6b5c36dcae172271f462051b1266b851e92df3deea8ac65478fd712",
+      "evidence": "Full private compiler literal content equals retail data; no invented external global.",
+      "offset": 1022,
+      "retail_target": "01237f00",
+      "status": "PASS",
+      "symbol": "__real@3ff0000000000000",
+      "value": 1.0
+    },
+    {
+      "evidence": "Original PDB or real STLport4.6 declaration plus native call target and verified existing correct bindings; see NAMING_EVIDENCE.md.",
+      "offset": 1274,
+      "retail_target": "00bfea0e",
+      "status": "PASS",
+      "symbol": "_malloc"
+    },
+    {
+      "evidence": "Original PDB or real STLport4.6 declaration plus native call target and verified existing correct bindings; see NAMING_EVIDENCE.md.",
+      "offset": 1311,
+      "retail_target": "00bfeae6",
+      "status": "PASS",
+      "symbol": "_memmove"
+    },
+    {
+      "evidence": "Original PDB or real STLport4.6 declaration plus native call target and verified existing correct bindings; see NAMING_EVIDENCE.md.",
+      "offset": 1343,
+      "retail_target": "00bfea14",
+      "status": "PASS",
+      "symbol": "_free"
+    },
+    {
+      "evidence": "Original PDB or real STLport4.6 declaration plus native call target and verified existing correct bindings; see NAMING_EVIDENCE.md.",
+      "offset": 1407,
+      "retail_target": "00bfea14",
+      "status": "PASS",
+      "symbol": "_free"
+    },
+    {
+      "evidence": "Original PDB or real STLport4.6 declaration plus native call target and verified existing correct bindings; see NAMING_EVIDENCE.md.",
+      "offset": 1494,
+      "retail_target": "00bfeae6",
+      "status": "PASS",
+      "symbol": "_memmove"
+    },
+    {
+      "evidence": "Original PDB or real STLport4.6 declaration plus native call target and verified existing correct bindings; see NAMING_EVIDENCE.md.",
+      "offset": 1525,
+      "retail_target": "00485f3a",
+      "status": "PASS",
+      "symbol": "?_M_fill_insert@?$vector@EV?$allocator@E@std@@@std@@QAEXPAEIABE@Z"
+    },
+    {
+      "evidence": "Original PDB or real STLport4.6 declaration plus native call target and verified existing correct bindings; see NAMING_EVIDENCE.md.",
+      "offset": 1637,
+      "retail_target": "00bfea14",
+      "status": "PASS",
+      "symbol": "_free"
+    },
+    {
+      "evidence": "Original PDB or real STLport4.6 declaration plus native call target and verified existing correct bindings; see NAMING_EVIDENCE.md.",
+      "offset": 1654,
+      "retail_target": "00bfea14",
+      "status": "PASS",
+      "symbol": "_free"
+    },
+    {
+      "evidence": "Original PDB or real STLport4.6 declaration plus native call target and verified existing correct bindings; see NAMING_EVIDENCE.md.",
+      "offset": 1671,
+      "retail_target": "00bfea14",
+      "status": "PASS",
+      "symbol": "_free"
+    }
+  ],
+  "selected_attempt": 19,
+  "source_sha256": "4b54fcfa235059781ecb391f4018b67d16d533b414dbb1b33f059fc5afc7bba6",
+  "status": "PASS",
+  "tables": "None"
+}

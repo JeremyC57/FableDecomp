@@ -1,0 +1,329 @@
+{
+  "address": "00ae8d50",
+  "entries": [
+    {
+      "offset": 16,
+      "symbol": "??0CCharString@@QAE@XZ",
+      "target": "0099e4b0"
+    },
+    {
+      "offset": 37,
+      "symbol": "??$__copy@PAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@PAU12@H@std@@YIPAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z",
+      "target": "00ae9cb0"
+    },
+    {
+      "offset": 54,
+      "symbol": "??$__destroy_aux@PAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@std@@YIXPAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@0@0ABU__false_type@0@@Z",
+      "target": "00ae9d50"
+    },
+    {
+      "offset": 85,
+      "symbol": "?LoadFromFile@CCharString@@QAEXAAVCAFile@@PAVCASuspendableProcess@@J@Z",
+      "target": "0099f2e0"
+    },
+    {
+      "offset": 94,
+      "symbol": "??_C@_00CNPNBAHC@?$AA@",
+      "target": "0122d70e"
+    },
+    {
+      "offset": 103,
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "offset": 120,
+      "symbol": "??0CStringParser@@QAE@ABVCCharString@@P6IX0@Z0J@Z",
+      "target": "00404720"
+    },
+    {
+      "offset": 129,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "offset": 136,
+      "symbol": "??_C@_0O@PBIBFFOK@BEGIN_EMITTER?$AA@",
+      "target": "0129f184"
+    },
+    {
+      "offset": 145,
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "offset": 159,
+      "symbol": "?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z",
+      "target": "009b9ba0"
+    },
+    {
+      "offset": 170,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "offset": 191,
+      "symbol": "?CreateEmitterTemplate@CParticleEmitterDatabase@NParticleEngine@@QAEPAVCParticleEmitter@2@AAJ@Z",
+      "target": "00ae8c30"
+    },
+    {
+      "offset": 198,
+      "symbol": "??_C@_0M@IJLIOAHD@END_EMITTER?$AA@",
+      "target": "0129f178"
+    },
+    {
+      "offset": 209,
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "offset": 228,
+      "symbol": "?ReadAsStringUntilString@CStringParser@@QAE?AVCCharString@@ABV2@@Z",
+      "target": "009ba330"
+    },
+    {
+      "offset": 237,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "offset": 244,
+      "symbol": "??_C@_00CNPNBAHC@?$AA@",
+      "target": "0122d70e"
+    },
+    {
+      "offset": 253,
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "offset": 264,
+      "symbol": "??0CBaseClass@@QAE@XZ",
+      "target": "0099a2d0"
+    },
+    {
+      "offset": 276,
+      "symbol": "??_7CStringParser@@6B@",
+      "target": "0122d874"
+    },
+    {
+      "offset": 281,
+      "symbol": "??0CCharString@@QAE@XZ",
+      "target": "0099e4b0"
+    },
+    {
+      "offset": 290,
+      "symbol": "??0CCharString@@QAE@XZ",
+      "target": "0099e4b0"
+    },
+    {
+      "offset": 305,
+      "symbol": "_malloc",
+      "target": "00bfea0e"
+    },
+    {
+      "offset": 331,
+      "symbol": "??4CCharString@@QAEABV0@ABV0@@Z",
+      "target": "0099efb0"
+    },
+    {
+      "offset": 344,
+      "symbol": "?NullChar@CCharString@@1DB",
+      "target": "0129aaf4"
+    },
+    {
+      "offset": 363,
+      "symbol": "?Init@CStringParser@@QAEXPBDP6IXABVCCharString@@@Z1J@Z",
+      "target": "009b9530"
+    },
+    {
+      "offset": 372,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "offset": 399,
+      "symbol": "??0CPersistContext@@QAE@AAVCStringParser@@P6IXABVCCharString@@@Z_NPBVCDefinitionManager@@PBVCSymbolMap@@PAV2@@Z",
+      "target": "009badd0"
+    },
+    {
+      "offset": 422,
+      "symbol": "?DatabaseSerialise@CParticleEmitter@NParticleEngine@@QAEXAAVCPersistContext@@ABVCEmitterDatabaseSerialiseInfo@2@@Z",
+      "target": "00aef1f0"
+    },
+    {
+      "offset": 442,
+      "symbol": "_free",
+      "target": "00bfea14"
+    },
+    {
+      "offset": 476,
+      "symbol": "_free",
+      "target": "00bfea14"
+    },
+    {
+      "offset": 488,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "offset": 497,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "offset": 506,
+      "symbol": "??1CBaseClass@@UAE@XZ",
+      "target": "0099a2e0"
+    },
+    {
+      "offset": 515,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "offset": 522,
+      "symbol": "??_C@_0O@PBIBFFOK@BEGIN_EMITTER?$AA@",
+      "target": "0129f184"
+    },
+    {
+      "offset": 531,
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "offset": 545,
+      "symbol": "?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z",
+      "target": "009b9ba0"
+    },
+    {
+      "offset": 556,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "offset": 576,
+      "symbol": "?SetStringPos@CStringParser@@QAEXK@Z",
+      "target": "009b9940"
+    },
+    {
+      "offset": 583,
+      "symbol": "??_C@_0P@IFDAHGGL@HeaderFilename?$AA@",
+      "target": "0129f168"
+    },
+    {
+      "offset": 592,
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "offset": 606,
+      "symbol": "?SkipPastWholeString@CStringParser@@QAE_NABVCCharString@@@Z",
+      "target": "009b9c00"
+    },
+    {
+      "offset": 617,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "offset": 634,
+      "symbol": "?SkipWhitespace@CStringParser@@QAEJXZ",
+      "target": "009b9c60"
+    },
+    {
+      "offset": 641,
+      "symbol": "??_C@_01BJJEKLCA@?$CC?$AA@",
+      "target": "0122df24"
+    },
+    {
+      "offset": 650,
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "offset": 664,
+      "symbol": "?SkipPastNextItemIfIs@CStringParser@@QAE_NABVCCharString@@@Z",
+      "target": "009b9e00"
+    },
+    {
+      "offset": 673,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "offset": 680,
+      "symbol": "??_C@_01BJJEKLCA@?$CC?$AA@",
+      "target": "0122df24"
+    },
+    {
+      "offset": 689,
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "offset": 711,
+      "symbol": "?ReadAsStringUntilString@CStringParser@@QAE?AVCCharString@@ABV2@@Z",
+      "target": "009ba330"
+    },
+    {
+      "offset": 719,
+      "symbol": "??4CCharString@@QAEABV0@ABV0@@Z",
+      "target": "0099efb0"
+    },
+    {
+      "offset": 728,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "offset": 737,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "offset": 750,
+      "symbol": "?GetAbsoluteFilePath@CAFile@@SI?AVCCharString@@ABV2@0@Z",
+      "target": "00998250"
+    },
+    {
+      "offset": 758,
+      "symbol": "??4CCharString@@QAEABV0@ABV0@@Z",
+      "target": "0099efb0"
+    },
+    {
+      "offset": 767,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "offset": 776,
+      "symbol": "??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ",
+      "target": "004046b0"
+    },
+    {
+      "offset": 785,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "offset": 794,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "offset": 803,
+      "symbol": "??1CBaseClass@@UAE@XZ",
+      "target": "0099a2e0"
+    },
+    {
+      "offset": 812,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    }
+  ],
+  "final_regression_note": "Final header/format rebuild preserves selected target bytes and every COFF relocation identity; accepted/held actual operands separately checked in final main review. Parked original review limitations remain unchanged.",
+  "selected_attempt": 7,
+  "source_sha256": "996fd3cc65262ca09d0a0b078de0786b2f1c3608ffb14142af117d07dbc1f825",
+  "status": "ALL_OPERANDS_MAIN_VERIFIED"
+}

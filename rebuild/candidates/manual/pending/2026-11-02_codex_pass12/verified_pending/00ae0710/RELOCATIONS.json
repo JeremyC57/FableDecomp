@@ -1,0 +1,31 @@
+{
+  "address": "00ae0710",
+  "extent_end": "00ae0e57",
+  "final_regression_note": "Final header/format rebuild preserves selected target bytes and every COFF relocation identity; accepted/held actual operands separately checked in final main review. Parked original review limitations remain unchanged.",
+  "grade_attempt": 14,
+  "padding_end": "00ae0e60",
+  "relocations": [
+    {
+      "bytes_sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+      "evidence": "Private compiler literal bytes equal addressed retail literal; no invented global",
+      "offset": 11,
+      "retail_target": "0x122dedc",
+      "status": "PASS",
+      "symbol": "__real@00000000",
+      "value": 0.0
+    },
+    {
+      "bytes_sha256": "9d459b445179d46efc315fd7ef9a5c8185bd7f3e2860dc6d325ab1b85acf6a96",
+      "evidence": "Private compiler literal bytes equal addressed retail literal; no invented global",
+      "offset": 1827,
+      "retail_target": "0x122dcb4",
+      "status": "PASS",
+      "symbol": "__real@4f800000",
+      "value": 4294967296.0
+    }
+  ],
+  "selected_attempt": 18,
+  "source_sha256": "55c5d8653bc0dfccab0bd4af8ab5e084e97e6bc65f4268f79154ed6d43e6d8fd",
+  "status": "PASS",
+  "symbol": "?CalculateAveragePatchSize@CParticleProgram@@AAEXABVCParticleSimulation@@@Z"
+}

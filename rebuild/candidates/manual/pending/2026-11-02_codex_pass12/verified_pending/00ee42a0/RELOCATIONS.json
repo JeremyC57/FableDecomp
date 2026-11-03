@@ -1,0 +1,1667 @@
+{
+  "address": "00ee42a0",
+  "count": 138,
+  "final_regression_note": "Final header/format rebuild preserves selected target bytes and every COFF relocation identity; accepted/held actual operands separately checked in final main review. Parked original review limitations remain unchanged.",
+  "grade_attempt": 1,
+  "operands": [
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "M_TG_LocationBalcony",
+      "offset": "0x6",
+      "retail_address": "0x012F5094",
+      "symbol": "??_C@_0BF@BHPJHDHJ@M_TG_LocationBalcony?$AA@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x4e",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_OVERHEARD_BALCONY",
+      "offset": "0x53",
+      "retail_address": "0x012F506C",
+      "symbol": "??_C@_0CI@DPHJJCGL@TEXT_QST_066_LOCATION_OVERHEARD_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x5e",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_REQUESTED_BALCONY",
+      "offset": "0x63",
+      "retail_address": "0x012F5044",
+      "symbol": "??_C@_0CI@LPMDPMJK@TEXT_QST_066_LOCATION_REQUESTED_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x6e",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "M_TG_LocationBanquet",
+      "offset": "0x73",
+      "retail_address": "0x012F502C",
+      "symbol": "??_C@_0BF@MGEODAMH@M_TG_LocationBanquet?$AA@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x7b",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_OVERHEARD_BANQUET",
+      "offset": "0x80",
+      "retail_address": "0x012F5004",
+      "symbol": "??_C@_0CI@OOMONBNF@TEXT_QST_066_LOCATION_OVERHEARD_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x88",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_REQUESTED_BANQUET",
+      "offset": "0x8d",
+      "retail_address": "0x012F4FDC",
+      "symbol": "??_C@_0CI@GOHELPCE@TEXT_QST_066_LOCATION_REQUESTED_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x98",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "M_TG_LocationBar",
+      "offset": "0x9d",
+      "retail_address": "0x012F4FC8",
+      "symbol": "??_C@_0BB@DKCICDOP@M_TG_LocationBar?$AA@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0xa8",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_OVERHEARD_BAR",
+      "offset": "0xad",
+      "retail_address": "0x012F4FA4",
+      "symbol": "??_C@_0CE@EEFNHFKC@TEXT_QST_066_LOCATION_OVERHEARD_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0xb8",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_REQUESTED_BAR",
+      "offset": "0xbd",
+      "retail_address": "0x012F4F80",
+      "symbol": "??_C@_0CE@GPLBNMF@TEXT_QST_066_LOCATION_REQUESTED_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0xc8",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "M_TG_LocationBridge",
+      "offset": "0xcd",
+      "retail_address": "0x012F4F6C",
+      "symbol": "??_C@_0BE@FKIGLMIJ@M_TG_LocationBridge?$AA@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0xd8",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_OVERHEARD_BRIDGE",
+      "offset": "0xdd",
+      "retail_address": "0x012F4F44",
+      "symbol": "??_C@_0CH@ODLBBAHJ@TEXT_QST_066_LOCATION_OVERHEARD_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0xe8",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_REQUESTED_BRIDGE",
+      "offset": "0xed",
+      "retail_address": "0x012F4F1C",
+      "symbol": "??_C@_0CH@DMLICKOM@TEXT_QST_066_LOCATION_REQUESTED_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0xf8",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "M_TG_LocationCloisters",
+      "offset": "0xfd",
+      "retail_address": "0x012F4F04",
+      "symbol": "??_C@_0BH@BEGPBCOL@M_TG_LocationCloisters?$AA@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x108",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_OVERHEARD_CLOISTERS",
+      "offset": "0x10d",
+      "retail_address": "0x012F4ED8",
+      "symbol": "??_C@_0CK@BGFPPKBE@TEXT_QST_066_LOCATION_OVERHEARD_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x118",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_REQUESTED_CLOISTERS",
+      "offset": "0x11d",
+      "retail_address": "0x012F4EAC",
+      "symbol": "??_C@_0CK@LBPCOGAN@TEXT_QST_066_LOCATION_REQUESTED_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x128",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "M_TG_LocationDorm1",
+      "offset": "0x12d",
+      "retail_address": "0x012F4E98",
+      "symbol": "??_C@_0BD@JELKKGME@M_TG_LocationDorm1?$AA@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x138",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_OVERHEARD_DORM1",
+      "offset": "0x13d",
+      "retail_address": "0x012F4E70",
+      "symbol": "??_C@_0CG@GLCIFLNI@TEXT_QST_066_LOCATION_OVERHEARD_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x148",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_REQUESTED_DORM1",
+      "offset": "0x14d",
+      "retail_address": "0x012F4E48",
+      "symbol": "??_C@_0CG@CPNANHE@TEXT_QST_066_LOCATION_REQUESTED_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x158",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "M_TG_LocationDorm2",
+      "offset": "0x15d",
+      "retail_address": "0x012F4E34",
+      "symbol": "??_C@_0BD@LPJHPFAH@M_TG_LocationDorm2?$AA@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x168",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_OVERHEARD_DORM2",
+      "offset": "0x16d",
+      "retail_address": "0x012F4E0C",
+      "symbol": "??_C@_0CG@EAAFAIBL@TEXT_QST_066_LOCATION_OVERHEARD_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x178",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_REQUESTED_DORM2",
+      "offset": "0x17d",
+      "retail_address": "0x012F4DE4",
+      "symbol": "??_C@_0CG@CJNAFOLH@TEXT_QST_066_LOCATION_REQUESTED_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x188",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "M_TG_LocationLibrary",
+      "offset": "0x18d",
+      "retail_address": "0x012F4DCC",
+      "symbol": "??_C@_0BF@KDPFNNEJ@M_TG_LocationLibrary?$AA@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x198",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_OVERHEARD_LIBRARY",
+      "offset": "0x19d",
+      "retail_address": "0x012F4DA4",
+      "symbol": "??_C@_0CI@ILHFDMFL@TEXT_QST_066_LOCATION_OVERHEARD_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x1a8",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_REQUESTED_LIBRARY",
+      "offset": "0x1ad",
+      "retail_address": "0x012F4D7C",
+      "symbol": "??_C@_0CI@LMPFCKK@TEXT_QST_066_LOCATION_REQUESTED_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x1b8",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "M_TG_LocationMap",
+      "offset": "0x1bd",
+      "retail_address": "0x012F4D68",
+      "symbol": "??_C@_0BB@FAHNFBDL@M_TG_LocationMap?$AA@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x1c8",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_OVERHEARD_MAP",
+      "offset": "0x1cd",
+      "retail_address": "0x012F4D44",
+      "symbol": "??_C@_0CE@COAIAHHG@TEXT_QST_066_LOCATION_OVERHEARD_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x1d8",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_REQUESTED_MAP",
+      "offset": "0x1dd",
+      "retail_address": "0x012F4D20",
+      "symbol": "??_C@_0CE@GMKOGPBB@TEXT_QST_066_LOCATION_REQUESTED_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x1e8",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "M_TG_LocationMaze",
+      "offset": "0x1ed",
+      "retail_address": "0x012F4D0C",
+      "symbol": "??_C@_0BC@KEEGIOEB@M_TG_LocationMaze?$AA@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x1f8",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_OVERHEARD_MAZE",
+      "offset": "0x1fd",
+      "retail_address": "0x012F4CE4",
+      "symbol": "??_C@_0CF@DJNBOCJI@TEXT_QST_066_LOCATION_OVERHEARD_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x208",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_REQUESTED_MAZE",
+      "offset": "0x20d",
+      "retail_address": "0x012F4CBC",
+      "symbol": "??_C@_0CF@OKEFLAAL@TEXT_QST_066_LOCATION_REQUESTED_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x218",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "M_TG_LocationShop",
+      "offset": "0x21d",
+      "retail_address": "0x012F4CA8",
+      "symbol": "??_C@_0BC@CLMGGPKH@M_TG_LocationShop?$AA@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x228",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_OVERHEARD_SHOP",
+      "offset": "0x22d",
+      "retail_address": "0x012F4C80",
+      "symbol": "??_C@_0CF@LGFBADHO@TEXT_QST_066_LOCATION_OVERHEARD_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x238",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_REQUESTED_SHOP",
+      "offset": "0x23d",
+      "retail_address": "0x012F4C58",
+      "symbol": "??_C@_0CF@GFMFFBON@TEXT_QST_066_LOCATION_REQUESTED_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x248",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "M_TG_LocationStart",
+      "offset": "0x24d",
+      "retail_address": "0x012F4C44",
+      "symbol": "??_C@_0BD@EFIBJFAI@M_TG_LocationStart?$AA@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x255",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_OVERHEARD_START",
+      "offset": "0x25a",
+      "retail_address": "0x012F4C1C",
+      "symbol": "??_C@_0CG@CPJHEMLG@TEXT_QST_066_LOCATION_OVERHEARD_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x262",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_REQUESTED_START",
+      "offset": "0x267",
+      "retail_address": "0x012F4BF4",
+      "symbol": "??_C@_0CG@EGECBKBK@TEXT_QST_066_LOCATION_REQUESTED_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x26f",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "M_TG_LocationTomb",
+      "offset": "0x274",
+      "retail_address": "0x012F4BE0",
+      "symbol": "??_C@_0BC@HPEBCPLD@M_TG_LocationTomb?$AA@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x27f",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_OVERHEARD_TOMB",
+      "offset": "0x284",
+      "retail_address": "0x012F4BB8",
+      "symbol": "??_C@_0CF@OCNGEDGK@TEXT_QST_066_LOCATION_OVERHEARD_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x28f",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_REQUESTED_TOMB",
+      "offset": "0x294",
+      "retail_address": "0x012F4B90",
+      "symbol": "??_C@_0CF@DBECBBPJ@TEXT_QST_066_LOCATION_REQUESTED_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x29f",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "M_TG_LocationTraining",
+      "offset": "0x2a4",
+      "retail_address": "0x012F4B78",
+      "symbol": "??_C@_0BG@FHAOCGOC@M_TG_LocationTraining?$AA@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x2ac",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_OVERHEARD_TRAINING",
+      "offset": "0x2b1",
+      "retail_address": "0x012F4B4C",
+      "symbol": "??_C@_0CJ@DBBLPDOJ@TEXT_QST_066_LOCATION_OVERHEARD_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x2b9",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_REQUESTED_TRAINING",
+      "offset": "0x2be",
+      "retail_address": "0x012F4B20",
+      "symbol": "??_C@_0CJ@PLCBILAN@TEXT_QST_066_LOCATION_REQUESTED_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x2c6",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "M_TG_LocationServant",
+      "offset": "0x2cb",
+      "retail_address": "0x012F4B08",
+      "symbol": "??_C@_0BF@JHAKBELI@M_TG_LocationServant?$AA@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x2d3",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_OVERHEARD_SERVANT",
+      "offset": "0x2d8",
+      "retail_address": "0x012F4AE0",
+      "symbol": "??_C@_0CI@LPIKPFKK@TEXT_QST_066_LOCATION_OVERHEARD_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x2e0",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_REQUESTED_SERVANT",
+      "offset": "0x2e5",
+      "retail_address": "0x012F4AB8",
+      "symbol": "??_C@_0CI@DPDAJLFL@TEXT_QST_066_LOCATION_REQUESTED_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x2ed",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "M_TG_LocationStairsInside",
+      "offset": "0x2f2",
+      "retail_address": "0x012F4A9C",
+      "symbol": "??_C@_0BK@JMOGONFE@M_TG_LocationStairsInside?$AA@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x2fd",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_OVERHEARD_STAIR",
+      "offset": "0x302",
+      "retail_address": "0x012F4A74",
+      "symbol": "??_C@_0CG@GJLOKHKB@TEXT_QST_066_LOCATION_OVERHEARD_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x30d",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_REQUESTED_STAIR",
+      "offset": "0x312",
+      "retail_address": "0x012F4A4C",
+      "symbol": "??_C@_0CG@GLPBAN@TEXT_QST_066_LOCATION_REQUESTED_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x31d",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "M_TG_LocationStairsOutside",
+      "offset": "0x322",
+      "retail_address": "0x012F4A30",
+      "symbol": "??_C@_0BL@BDFLCACA@M_TG_LocationStairsOutside?$AA@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x32d",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_OVERHEARD_STAIRCASE",
+      "offset": "0x332",
+      "retail_address": "0x012F4A04",
+      "symbol": "??_C@_0CK@LIMHFJCH@TEXT_QST_066_LOCATION_OVERHEARD_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x33d",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_REQUESTED_STAIRCASE",
+      "offset": "0x342",
+      "retail_address": "0x012F49D8",
+      "symbol": "??_C@_0CK@BPGKEFDO@TEXT_QST_066_LOCATION_REQUESTED_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x34d",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "M_TG_LocationStatue",
+      "offset": "0x352",
+      "retail_address": "0x012F49C4",
+      "symbol": "??_C@_0BE@DCLNKDKO@M_TG_LocationStatue?$AA@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x35a",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_OVERHEARD_STATUE",
+      "offset": "0x35f",
+      "retail_address": "0x012F499C",
+      "symbol": "??_C@_0CH@ILIKAPFO@TEXT_QST_066_LOCATION_OVERHEARD_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x367",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_LOCATION_REQUESTED_STATUE",
+      "offset": "0x36c",
+      "retail_address": "0x012F4974",
+      "symbol": "??_C@_0CH@FEIDDFML@TEXT_QST_066_LOCATION_REQUESTED_@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x374",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_RANDOM_GUIDE_RESPONSE_0",
+      "offset": "0x379",
+      "retail_address": "0x012F494C",
+      "symbol": "??_C@_0CF@EPBFGDJE@TEXT_QST_066_RANDOM_GUIDE_RESPON@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x384",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_RANDOM_GUIDE_RESPONSE_1",
+      "offset": "0x389",
+      "retail_address": "0x012F4924",
+      "symbol": "??_C@_0CF@FGAOFCNF@TEXT_QST_066_RANDOM_GUIDE_RESPON@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x394",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_RANDOM_GUIDE_RESPONSE_2",
+      "offset": "0x399",
+      "retail_address": "0x012F48FC",
+      "symbol": "??_C@_0CF@HNCDABBG@TEXT_QST_066_RANDOM_GUIDE_RESPON@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x3a4",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_RANDOM_GUIDE_RESPONSE_3",
+      "offset": "0x3a9",
+      "retail_address": "0x012F48D4",
+      "symbol": "??_C@_0CF@GEDIDAFH@TEXT_QST_066_RANDOM_GUIDE_RESPON@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x3b4",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_RANDOM_GUIDE_RESPONSE_4",
+      "offset": "0x3b9",
+      "retail_address": "0x012F48AC",
+      "symbol": "??_C@_0CF@CLHJKGJA@TEXT_QST_066_RANDOM_GUIDE_RESPON@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x3c4",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_MALE_10",
+      "offset": "0x3c9",
+      "retail_address": "0x012F487C",
+      "symbol": "??_C@_0CO@JLCMJEDP@TEXT_QST_066_RANDOM_FOLLOWER_RES@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x3d4",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_MALE_20",
+      "offset": "0x3d9",
+      "retail_address": "0x012F484C",
+      "symbol": "??_C@_0CO@JJGKCKGG@TEXT_QST_066_RANDOM_FOLLOWER_RES@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x3e4",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_MALE_30",
+      "offset": "0x3e9",
+      "retail_address": "0x012F481C",
+      "symbol": "??_C@_0CO@JIKIEAFB@TEXT_QST_066_RANDOM_FOLLOWER_RES@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x3f4",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_MALE_40",
+      "offset": "0x3f9",
+      "retail_address": "0x012F47EC",
+      "symbol": "??_C@_0CO@JNOHFGNE@TEXT_QST_066_RANDOM_FOLLOWER_RES@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x404",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_MALE_50",
+      "offset": "0x409",
+      "retail_address": "0x012F47BC",
+      "symbol": "??_C@_0CO@JMCFDMOD@TEXT_QST_066_RANDOM_FOLLOWER_RES@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x414",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_FEMALE_10",
+      "offset": "0x419",
+      "retail_address": "0x012F478C",
+      "symbol": "??_C@_0DA@CCOPAAAA@TEXT_QST_066_RANDOM_FOLLOWER_RES@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x424",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_FEMALE_20",
+      "offset": "0x429",
+      "retail_address": "0x012F475C",
+      "symbol": "??_C@_0DA@CAKJLOFJ@TEXT_QST_066_RANDOM_FOLLOWER_RES@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x434",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_FEMALE_30",
+      "offset": "0x439",
+      "retail_address": "0x012F472C",
+      "symbol": "??_C@_0DA@CBGLNEGO@TEXT_QST_066_RANDOM_FOLLOWER_RES@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x444",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_FEMALE_40",
+      "offset": "0x449",
+      "retail_address": "0x012F46FC",
+      "symbol": "??_C@_0DA@CECEMCOL@TEXT_QST_066_RANDOM_FOLLOWER_RES@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x454",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    },
+    {
+      "evidence": "Exact native string and object literal; member offset maps to original PDB field/enum index.",
+      "kind": 6,
+      "literal_text": "TEXT_QST_066_RANDOM_FOLLOWER_RESPONSE_FEMALE_50",
+      "offset": "0x459",
+      "retail_address": "0x012F46CC",
+      "symbol": "??_C@_0DA@CFOGKINM@TEXT_QST_066_RANDOM_FOLLOWER_RES@"
+    },
+    {
+      "evidence": "Exact original PDB public assignment(const char*) returns const CCharString&, native caller passes char string pointer and member receiver.",
+      "kind": 20,
+      "offset": "0x464",
+      "pdb_sources": [
+        "fablewin_pdb_names.tsv:02f61860",
+        "egor_pdb_names.tsv:00afa840"
+      ],
+      "retail_address": "0x0099EFE0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "wrong_spellings_seen": [
+        "?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z",
+        "?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z"
+      ]
+    }
+  ],
+  "selected_attempt": 4,
+  "source_sha256": "5396a94b70b3ea38de9dda9a7169095de2b10812c50f562c22878844376aa50b",
+  "status": "ALL_LEAF_RELOCATIONS_PROVEN"
+}

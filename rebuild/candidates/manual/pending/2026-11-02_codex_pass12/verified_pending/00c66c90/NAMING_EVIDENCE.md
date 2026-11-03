@@ -1,0 +1,7 @@
+# Original SDK identity correction
+
+Original release EAX4Translation.obj defines public int CEAXBuffer::GetEAX4Source(unsigned long,void*,unsigned long,unsigned long*), and its debug types prove all SOURCEBP members. SDK 1952-byte and native1944-byte bodies share all28 selectors, send structures, GUID fanout and 50 relocations. Native listener is +0x14 rather than SDK+0x18; source block is +0x18 rather than +0x1c. Error handling now uses the actual public inline SetEAX4ErrorCode(long), preserving private error-field access. The complete native class dimensions and all touched offsets are asserted in the 32-bit behavior fixture.
+
+The source uses complete shared CEAXListener/CEAXBuffer headers; no local receiver model. Original debug type records and release COFF symbols are independent of manifest/catalog labels. Every compiled leaf is confirmed in the immutable objdump symbol table. Production private/public access is exact; fixture-only public visibility exposes state for assertions, and fixture int substitutes native32-bit long on GNU64. The native EAX3-only layouts differ from the later SDK, so no unobserved EAX1/2 fields are inserted. Untouched native tail storage whose later SDK field order differs remains explicitly opaque. Private SDK comparison reports record differing versions honestly; only authored source is returned.
+
+All four older accepted source/header/receipt copies are preserved in workers/vendor/accepted_before_sdk_names. Those descriptive-name files are superseded, not an alternative final selection.

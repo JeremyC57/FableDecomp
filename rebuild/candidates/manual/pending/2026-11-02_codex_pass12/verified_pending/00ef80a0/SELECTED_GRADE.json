@@ -1,0 +1,20 @@
+{
+  "address": "00ef80a0",
+  "assigned_retail_size": 1070,
+  "attempt": 5,
+  "baseline": false,
+  "differing_instruction_lines": 0,
+  "flags": [],
+  "header_manifest": "history/00ef80a0/attempt_05/HEADER_MANIFEST.json",
+  "header_map_sha256": "be18370a56ffd91ec16743237eb4988e509c32e9db37a0e8670507997e7ce972",
+  "leaf": "?Main@CChatter2@CPersonalScript_EmptyScript@NScript@@EAEXXZ",
+  "leaf_hits": [
+    "?Main@CChatter2@CPersonalScript_EmptyScript@NScript@@EAEXXZ"
+  ],
+  "object_size": 1070,
+  "retail_size": 1070,
+  "source_sha256": "3007d9731c2ca3656af90670e897beafb9772ac91cfe1b61ee629541d321ac3a",
+  "status": "RELOCATION_MATCH",
+  "strategy": "main independent final handoff rebuild: selected immutable headers, required source headings and complete byte/operand regression check",
+  "time": 1793676589.5655944
+}

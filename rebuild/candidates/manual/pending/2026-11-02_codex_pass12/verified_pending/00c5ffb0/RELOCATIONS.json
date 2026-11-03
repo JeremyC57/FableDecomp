@@ -1,0 +1,415 @@
+{
+  "address": "00c5ffb0",
+  "all_internal_relocations_proven": true,
+  "all_named_relocations_proven": true,
+  "attempt": 5,
+  "final_regression_note": "Final header/format rebuild preserves selected target bytes and every COFF relocation identity; accepted/held actual operands separately checked in final main review. Parked original review limitations remain unchanged.",
+  "grade": "RELOCATION_MATCH",
+  "leaf": "?AddToChangesList@CEAXListener@@QAEXW4IDENTIFIER@@KPAXJ@Z",
+  "object_size": 1120,
+  "original_sdk_identity": true,
+  "relocations": [
+    {
+      "evidence": "Original SDK COFF symbol/type and corresponding native resolved call or original EAX GUID bytes.",
+      "kind": "DISP32",
+      "offset": 11,
+      "symbol": "_CodaMalloc",
+      "target": "00c3c360"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 43,
+      "symbol": "$L1159",
+      "target": "00c6033c"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 138,
+      "symbol": "$L1160",
+      "target": "00c60354"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 508,
+      "symbol": "$L1161",
+      "target": "00c603b8"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 908,
+      "symbol": "$L1034",
+      "target": "00c6002d"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 912,
+      "symbol": "$L1089",
+      "target": "00c60198"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 916,
+      "symbol": "$L1091",
+      "target": "00c602f5"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 920,
+      "symbol": "$L1091",
+      "target": "00c602f5"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 924,
+      "symbol": "$L1016",
+      "target": "00c5ffdf"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 928,
+      "symbol": "$L1025",
+      "target": "00c60007"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 932,
+      "symbol": "$L1039",
+      "target": "00c6003e"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 936,
+      "symbol": "$L1041",
+      "target": "00c60051"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 940,
+      "symbol": "$L1043",
+      "target": "00c6001f"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 944,
+      "symbol": "$L1045",
+      "target": "00c6005f"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 948,
+      "symbol": "$L1047",
+      "target": "00c6006d"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 952,
+      "symbol": "$L1049",
+      "target": "00c6007b"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 956,
+      "symbol": "$L1051",
+      "target": "00c60089"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 960,
+      "symbol": "$L1053",
+      "target": "00c60097"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 964,
+      "symbol": "$L1055",
+      "target": "00c600a5"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 968,
+      "symbol": "$L1057",
+      "target": "00c600b3"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 972,
+      "symbol": "$L1059",
+      "target": "00c600c1"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 976,
+      "symbol": "$L1061",
+      "target": "00c600cf"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 980,
+      "symbol": "$L1063",
+      "target": "00c600dd"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 984,
+      "symbol": "$L1065",
+      "target": "00c600f9"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 988,
+      "symbol": "$L1067",
+      "target": "00c60107"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 992,
+      "symbol": "$L1069",
+      "target": "00c60115"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 996,
+      "symbol": "$L1071",
+      "target": "00c6011a"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1000,
+      "symbol": "$L1073",
+      "target": "00c60128"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1004,
+      "symbol": "$L1075",
+      "target": "00c60136"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1008,
+      "symbol": "$L1077",
+      "target": "00c60144"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1012,
+      "symbol": "$L1079",
+      "target": "00c60152"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1016,
+      "symbol": "$L1081",
+      "target": "00c60160"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1020,
+      "symbol": "$L1083",
+      "target": "00c6016e"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1024,
+      "symbol": "$L1085",
+      "target": "00c6017c"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1028,
+      "symbol": "$L1087",
+      "target": "00c6018a"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1032,
+      "symbol": "$L1094",
+      "target": "00c601b0"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1036,
+      "symbol": "$L1096",
+      "target": "00c601c3"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1040,
+      "symbol": "$L1099",
+      "target": "00c601d7"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1044,
+      "symbol": "$L1102",
+      "target": "00c601f9"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1048,
+      "symbol": "$L1105",
+      "target": "00c6020d"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1052,
+      "symbol": "$L1107",
+      "target": "00c6021b"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1056,
+      "symbol": "$L1109",
+      "target": "00c60229"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1060,
+      "symbol": "$L1111",
+      "target": "00c60237"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1064,
+      "symbol": "$L1113",
+      "target": "00c60245"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1068,
+      "symbol": "$L1115",
+      "target": "00c60253"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1072,
+      "symbol": "$L1117",
+      "target": "00c60261"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1076,
+      "symbol": "$L1119",
+      "target": "00c6026f"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1080,
+      "symbol": "$L1121",
+      "target": "00c6027a"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1084,
+      "symbol": "$L1123",
+      "target": "00c60285"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1088,
+      "symbol": "$L1125",
+      "target": "00c60290"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1092,
+      "symbol": "$L1127",
+      "target": "00c6029b"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1096,
+      "symbol": "$L1129",
+      "target": "00c602a6"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1100,
+      "symbol": "$L1131",
+      "target": "00c602b1"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1104,
+      "symbol": "$L1133",
+      "target": "00c602bf"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1108,
+      "symbol": "$L1135",
+      "target": "00c602cd"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1112,
+      "symbol": "$L1137",
+      "target": "00c602db"
+    },
+    {
+      "evidence": "Exact original native case/table function-relative destination, checked through COFF section index.",
+      "kind": "dir32",
+      "offset": 1116,
+      "symbol": "$L1139",
+      "target": "00c602e9"
+    }
+  ],
+  "retail_size": 1120,
+  "selected_attempt": 8,
+  "source_sha256": "d0754b13564de6990e9f5d140c427f05ecf12e8e7c90a9a3c5103b2c1c11a5d8"
+}

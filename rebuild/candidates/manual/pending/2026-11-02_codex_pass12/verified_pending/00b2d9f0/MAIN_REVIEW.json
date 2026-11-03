@@ -1,0 +1,230 @@
+{
+  "address": "00b2d9f0",
+  "behavior_cases": 504,
+  "byte_grade": "RELOCATION_MATCH",
+  "final_handoff_review": "Fresh final RTM rebuild, selected target/operand regression, independent current native byte/literal/operand recheck, both compiler fixture reruns; original identity qualifications retained.",
+  "host64_test": "PASS",
+  "leaf": "?UpdateDiskCache@CEngineSurfaceCompositionManager@@QAEXABV?$CArray@VCEngineTextureMorph@@@@_NMPBV?$set@JU?$less@J@std@@V?$allocator@J@2@@std@@@Z",
+  "main_compile_attempt": 41,
+  "object_size": 807,
+  "previous_identity_review": "reviews/FINAL_VERIFY/00b2d9f0/before/main_review.json",
+  "reconstruction_temporaries": [
+    "open_flags",
+    "filter_key"
+  ],
+  "relocations": [
+    {
+      "evidence": "proven original external or file-local callee/global",
+      "offset": 12,
+      "operand_target": "009e1bc0",
+      "storage": 2,
+      "symbol": "?GFGetTime@@YINXZ",
+      "target": "009e1bc0"
+    },
+    {
+      "evidence": "proven original external or file-local callee/global",
+      "offset": 24,
+      "operand_target": "01436e98",
+      "storage": 2,
+      "symbol": "?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A",
+      "target": "01436e98"
+    },
+    {
+      "evidence": "proven original external or file-local callee/global",
+      "offset": 73,
+      "operand_target": "009fd100",
+      "storage": 2,
+      "symbol": "?SetReduceSizeFrameDelay@CGraphicDataBank@@QAEXK@Z",
+      "target": "009fd100"
+    },
+    {
+      "evidence": "proven original external or file-local callee/global",
+      "offset": 82,
+      "operand_target": "009fd0f0",
+      "storage": 2,
+      "symbol": "?SetUnloadFrameDelay@CGraphicDataBank@@QAEXK@Z",
+      "target": "009fd0f0"
+    },
+    {
+      "evidence": "proven original external or file-local callee/global",
+      "offset": 88,
+      "operand_target": "01436ea4",
+      "storage": 2,
+      "symbol": "?GPEngine@NEngineInternal@@3PAVCEngine@@A",
+      "target": "01436ea4"
+    },
+    {
+      "evidence": "proven original external or file-local callee/global",
+      "offset": 151,
+      "operand_target": "009ce8d0",
+      "storage": 2,
+      "symbol": "?BeginUpdateEntries@CBankFile@@QAEXXZ",
+      "target": "009ce8d0"
+    },
+    {
+      "evidence": "proven original external or file-local callee/global",
+      "offset": 213,
+      "operand_target": "009fbec0",
+      "storage": 2,
+      "symbol": "??0CResource@@QAE@XZ",
+      "target": "009fbec0"
+    },
+    {
+      "evidence": "proven original external or file-local callee/global",
+      "offset": 228,
+      "operand_target": "012a116c",
+      "storage": 2,
+      "symbol": "??_7CCompositeSurfaceCache@@6B@",
+      "target": "012a116c"
+    },
+    {
+      "evidence": "proven original external or file-local callee/global",
+      "offset": 284,
+      "operand_target": "0099a2d0",
+      "storage": 2,
+      "symbol": "??0CBaseClass@@QAE@XZ",
+      "target": "0099a2d0"
+    },
+    {
+      "evidence": "proven original external or file-local callee/global",
+      "offset": 302,
+      "operand_target": "0129c880",
+      "storage": 2,
+      "symbol": "??_7CManagedTexture@@6B@",
+      "target": "0129c880"
+    },
+    {
+      "evidence": "proven original external or file-local callee/global",
+      "offset": 349,
+      "operand_target": "006cade0",
+      "storage": 2,
+      "symbol": "??4?$vector@VCCompositeBlendDesc@@V?$allocator@VCCompositeBlendDesc@@@std@@@std@@QAEAAV01@ABV01@@Z",
+      "target": "006cade0"
+    },
+    {
+      "evidence": "proven original external or file-local callee/global",
+      "offset": 383,
+      "operand_target": "00b2eb20",
+      "storage": 2,
+      "symbol": "?find@?$_Rb_tree@JJU?$_Identity@J@std@@U?$less@J@2@V?$allocator@J@2@@std@@QBE?AU?$_Rb_tree_iterator@JU?$_Const_traits@J@std@@@2@ABJ@Z",
+      "target": "00b2eb20"
+    },
+    {
+      "evidence": "proven original external or file-local callee/global",
+      "offset": 436,
+      "operand_target": "01436e98",
+      "storage": 2,
+      "symbol": "?GPResourceManager@NEngineInternal@@3PAVCEngineResourceManager@@A",
+      "target": "01436e98"
+    },
+    {
+      "evidence": "proven original external or file-local callee/global",
+      "offset": 510,
+      "operand_target": "009cc210",
+      "storage": 2,
+      "symbol": "?GetEntryDataType@CBankFile@@QBEKK@Z",
+      "target": "009cc210"
+    },
+    {
+      "evidence": "proven original external or file-local callee/global",
+      "offset": 530,
+      "operand_target": "00b2d330",
+      "storage": 2,
+      "symbol": "?UpdateDiskCacheTexture@CEngineSurfaceCompositionManager@@AAE_NAAVCCompositeSurfaceCache@@K_N@Z",
+      "target": "00b2d330"
+    },
+    {
+      "evidence": "proven original external or file-local callee/global",
+      "offset": 555,
+      "operand_target": "009e1bc0",
+      "storage": 2,
+      "symbol": "?GFGetTime@@YINXZ",
+      "target": "009e1bc0"
+    },
+    {
+      "evidence": "proven original external or file-local callee/global",
+      "offset": 611,
+      "operand_target": "00b2b910",
+      "storage": 2,
+      "symbol": "??1CCompositeSurfaceCache@@UAE@XZ",
+      "target": "00b2b910"
+    },
+    {
+      "evidence": "proven original external or file-local callee/global",
+      "offset": 628,
+      "operand_target": "009cea70",
+      "storage": 2,
+      "symbol": "?EndUpdateEntries@CBankFile@@QAEXXZ",
+      "target": "009cea70"
+    },
+    {
+      "evidence": "proven original external or file-local callee/global",
+      "offset": 642,
+      "operand_target": "01436ea4",
+      "storage": 2,
+      "symbol": "?GPEngine@NEngineInternal@@3PAVCEngine@@A",
+      "target": "01436ea4"
+    },
+    {
+      "evidence": "proven original external or file-local callee/global",
+      "offset": 662,
+      "operand_target": "009fd100",
+      "storage": 2,
+      "symbol": "?SetReduceSizeFrameDelay@CGraphicDataBank@@QAEXK@Z",
+      "target": "009fd100"
+    },
+    {
+      "evidence": "proven original external or file-local callee/global",
+      "offset": 674,
+      "operand_target": "009fd0f0",
+      "storage": 2,
+      "symbol": "?SetUnloadFrameDelay@CGraphicDataBank@@QAEXK@Z",
+      "target": "009fd0f0"
+    },
+    {
+      "evidence": "proven original external or file-local callee/global",
+      "offset": 686,
+      "operand_target": "009e1bc0",
+      "storage": 2,
+      "symbol": "?GFGetTime@@YINXZ",
+      "target": "009e1bc0"
+    },
+    {
+      "evidence": "proven original external or file-local callee/global",
+      "offset": 709,
+      "operand_target": "00b2c8e0",
+      "storage": 2,
+      "symbol": "?CopyIntermediateBank@CEngineSurfaceCompositionManager@@AAEXXZ",
+      "target": "00b2c8e0"
+    },
+    {
+      "evidence": "proven original external or file-local callee/global",
+      "offset": 722,
+      "operand_target": "00b2c010",
+      "storage": 2,
+      "symbol": "?PreloadCompletedBank@CEngineSurfaceCompositionManager@@AAEXXZ",
+      "target": "00b2c010"
+    },
+    {
+      "evidence": "proven original external or file-local callee/global",
+      "offset": 745,
+      "operand_target": "00b2b910",
+      "storage": 2,
+      "symbol": "??1CCompositeSurfaceCache@@UAE@XZ",
+      "target": "00b2b910"
+    }
+  ],
+  "retail_size": 807,
+  "review": "Fresh main RTM compile, all807 bytes and actual operands independently checked, full71-byte real STLport find helper checked, native end/tail and original field access checked, both504-case tests PASS. Independent original-name/type cross-review completed; target-specific template/non-template find configuration remains unproved. Excluded from accepted count.",
+  "source_sha256": "e7f501c482efcaf5845144b5f1f8039343e7c50fb67da6daba55f3d67ccc6846",
+  "status": "BYTE_MATCH_NAME_REVIEW",
+  "supporting_find_helper": {
+    "bytes": 71,
+    "exact": true,
+    "native_address": "00b2eb20",
+    "relocations": 0,
+    "symbol": "?find@?$_Rb_tree@JJU?$_Identity@J@std@@U?$less@J@2@V?$allocator@J@2@@std@@QBE?AU?$_Rb_tree_iterator@JU?$_Const_traits@J@std@@@2@ABJ@Z"
+  },
+  "test_sha256": "a2957a075155b67318cbd702bc689941ac7f1ac632bd358b45e798efcee8703f",
+  "vc71_test": "PASS"
+}

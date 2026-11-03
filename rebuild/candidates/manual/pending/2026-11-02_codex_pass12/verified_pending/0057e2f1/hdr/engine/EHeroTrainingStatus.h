@@ -1,0 +1,9 @@
+#ifndef FABLE_ENGINE_EHEROTRAININGSTATUS_H
+#define FABLE_ENGINE_EHEROTRAININGSTATUS_H
+// Original PDB enum; serialized member at CTCHeroStats+114h.
+enum EHeroTrainingStatus {
+    TRAINING_STATUS_GRADUATED = 0,
+    TRAINING_STATUS_APPRENTICE = 1,
+    TRAINING_STATUS_BOY = 2
+};
+#endif

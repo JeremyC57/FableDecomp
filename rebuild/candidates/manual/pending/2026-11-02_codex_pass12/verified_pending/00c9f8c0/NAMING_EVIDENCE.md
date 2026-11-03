@@ -1,0 +1,5 @@
+# Identity
+
+Original Xiph Vorbis1.0.1 mapping0.c mapping0_inverse is independently identified by the matching mapping0 export-table inverse slot and this exact floor/residue/coupling/MDCT algorithm. Adjacent pack/unpack functions identify the same complete setup and mapping layouts. Real original headers give the function-pointer offsets (floor inverse1 +20, inverse2 +24, residue inverse +28), matching every native indirect call. The global dispatch arrays have existing canonical C bindings __floor_P=013a3dc8 and __residue_P=013a3dd0; the final MDCT body at00c9c620 is the original mdct_backward implementation.
+
+Final CRT name review: __alloca_probe and __chkstk are genuine compiler aliases at00bfea30. Original RTM chkstk.obj defines both at the same section/offset, and all61 helper bytes match native. Ego_r names __chkstk; FableWin names __alloca_probe. Neither spelling is a wrong-name correction; reciprocal NAME_FIXES lines were removed. Preserve the compiler-emitted symbol. See evidence/name_conflicts/CRT_ALIAS.json.

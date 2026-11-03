@@ -1,0 +1,170 @@
+{
+  "??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@ABEPAU?$_Rb_tree_node@VCCharString@@@1@ABVCCharString@@@Z": [],
+  "??0CCharString@@QAE@ABV0@@Z": [
+    {
+      "donor_address": "00afa5f0",
+      "source": "egor_pdb_names.tsv"
+    },
+    {
+      "donor_address": "02f60fe0",
+      "source": "fablewin_pdb_names.tsv"
+    }
+  ],
+  "??0CCharString@@QAE@PBDJ@Z": [
+    {
+      "donor_address": "00afa5b0",
+      "source": "egor_pdb_names.tsv"
+    },
+    {
+      "donor_address": "02f60fa0",
+      "source": "fablewin_pdb_names.tsv"
+    }
+  ],
+  "??0CPersistContext@@QAE@AAVCStringParser@@P6IXABVCCharString@@@Z_NPBVCDefinitionManager@@PBVCSymbolMap@@PAV2@@Z": [
+    {
+      "donor_address": "00b0f7e0",
+      "source": "egor_pdb_names.tsv"
+    },
+    {
+      "donor_address": "02fe9cf0",
+      "source": "fablewin_pdb_names.tsv"
+    }
+  ],
+  "??0CStringParser@@QAE@ABVCCharString@@P6IX0@Z0J@Z": [
+    {
+      "donor_address": "00403e70",
+      "source": "egor_pdb_names.tsv"
+    },
+    {
+      "donor_address": "01871f40",
+      "source": "fablewin_pdb_names.tsv"
+    }
+  ],
+  "??1?$list@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ": [
+    {
+      "donor_address": "01873ed0",
+      "source": "fablewin_pdb_names.tsv"
+    }
+  ],
+  "??1CBaseClass@@UAE@XZ": [
+    {
+      "donor_address": "00b01f30",
+      "source": "egor_pdb_names.tsv"
+    },
+    {
+      "donor_address": "03044720",
+      "source": "fablewin_pdb_names.tsv"
+    }
+  ],
+  "??1CCharString@@QAE@XZ": [
+    {
+      "donor_address": "00afa3f0",
+      "source": "egor_pdb_names.tsv"
+    },
+    {
+      "donor_address": "02f60f80",
+      "source": "fablewin_pdb_names.tsv"
+    }
+  ],
+  "??4CCharString@@QAEABV0@ABV0@@Z": [
+    {
+      "donor_address": "00afa810",
+      "source": "egor_pdb_names.tsv"
+    },
+    {
+      "donor_address": "02f61830",
+      "source": "fablewin_pdb_names.tsv"
+    }
+  ],
+  "??4CCharString@@QAEABV0@PBD@Z": [
+    {
+      "donor_address": "00afa840",
+      "source": "egor_pdb_names.tsv"
+    },
+    {
+      "donor_address": "02f61860",
+      "source": "fablewin_pdb_names.tsv"
+    }
+  ],
+  "?ActivateAfterLoading@CThingManager@@AAEXJ@Z": [
+    {
+      "donor_address": "00528860",
+      "source": "egor_pdb_names.tsv"
+    },
+    {
+      "donor_address": "01d3b690",
+      "source": "fablewin_pdb_names.tsv"
+    }
+  ],
+  "?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z": [
+    {
+      "donor_address": "00b3bfe0",
+      "source": "egor_pdb_names.tsv"
+    },
+    {
+      "donor_address": "02fb35a0",
+      "source": "fablewin_pdb_names.tsv"
+    }
+  ],
+  "?LoadSingleThing@CThingManager@@AAEPAVCThing@@AAVCPersistContext@@J@Z": [
+    {
+      "donor_address": "00529ac0",
+      "source": "egor_pdb_names.tsv"
+    },
+    {
+      "donor_address": "01d3a8b0",
+      "source": "fablewin_pdb_names.tsv"
+    }
+  ],
+  "?ReadAsStringUntilPastString@CStringParser@@QAE?AVCCharString@@ABV2@@Z": [
+    {
+      "donor_address": "00b0ee80",
+      "source": "egor_pdb_names.tsv"
+    },
+    {
+      "donor_address": "03057620",
+      "source": "fablewin_pdb_names.tsv"
+    }
+  ],
+  "?ReadAsStringUntilString@CStringParser@@QAE?AVCCharString@@ABV2@@Z": [
+    {
+      "donor_address": "00b0ede0",
+      "source": "egor_pdb_names.tsv"
+    },
+    {
+      "donor_address": "030574d0",
+      "source": "fablewin_pdb_names.tsv"
+    }
+  ],
+  "?SkipPastNextItemIfIs@CStringParser@@QAE_NABVCCharString@@@Z": [
+    {
+      "donor_address": "00b0e910",
+      "source": "egor_pdb_names.tsv"
+    },
+    {
+      "donor_address": "030582d0",
+      "source": "fablewin_pdb_names.tsv"
+    }
+  ],
+  "?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z": [
+    {
+      "donor_address": "00b0e710",
+      "source": "egor_pdb_names.tsv"
+    },
+    {
+      "donor_address": "03057fd0",
+      "source": "fablewin_pdb_names.tsv"
+    }
+  ],
+  "?SkipWhitespace@CStringParser@@QAEJXZ": [
+    {
+      "donor_address": "00b0e790",
+      "source": "egor_pdb_names.tsv"
+    },
+    {
+      "donor_address": "03058070",
+      "source": "fablewin_pdb_names.tsv"
+    }
+  ],
+  "?_M_insert_overflow@?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@IAEXPAPAVCThing@@ABQAV3@ABU__true_type@2@I_N@Z": []
+}

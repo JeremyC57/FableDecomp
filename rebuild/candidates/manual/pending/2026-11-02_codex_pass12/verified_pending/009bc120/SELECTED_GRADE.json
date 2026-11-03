@@ -1,0 +1,20 @@
+{
+  "address": "009bc120",
+  "assigned_retail_size": 1639,
+  "attempt": 13,
+  "baseline": false,
+  "differing_instruction_lines": 0,
+  "flags": [],
+  "header_manifest": "history/009bc120/attempt_13/HEADER_MANIFEST.json",
+  "header_map_sha256": "b43cd2112e875693564396b6111c5ef334208b6f814fbcf4f31fc1f631cd256f",
+  "leaf": "?TransferVectorOfSubComponentsLoadText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableVectorOfSubComponentsGenericType@@@Z",
+  "leaf_hits": [
+    "?TransferVectorOfSubComponentsLoadText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableVectorOfSubComponentsGenericType@@@Z"
+  ],
+  "object_size": 1639,
+  "retail_size": 1639,
+  "source_sha256": "e4428a651cc658ac486c03ab162031d5c7434a42da18c6a2b26fef1b94c3f2a5",
+  "status": "RELOCATION_MATCH",
+  "strategy": "main independent final handoff rebuild: selected immutable headers, required source headings and complete byte/operand regression check",
+  "time": 1793676389.128242
+}

@@ -1,0 +1,11 @@
+#ifndef FABLE_ENGINE_ETEXTGROUPSELECTIONMETHOD_H
+#define FABLE_ENGINE_ETEXTGROUPSELECTIONMETHOD_H
+// Original complete enum from both donor PDBs; native immediate uses corroborate values.
+enum ETextGroupSelectionMethod {
+ GROUP_SELECT_NONE=0,
+ GROUP_SELECT_RANDOM=1,
+ GROUP_SELECT_RANDOM_NO_REPEAT=2,
+ GROUP_SELECT_SEQUENTIAL=3,
+ GROUP_SELECT_FIRST_ONLY=4
+};
+#endif

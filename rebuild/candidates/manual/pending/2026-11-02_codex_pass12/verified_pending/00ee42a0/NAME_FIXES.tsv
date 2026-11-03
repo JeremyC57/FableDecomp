@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x0099EFE0	??4CCharString@@QAEABV0@PBD@Z	Original PDB operator assignment plus native char pointer/member receiver ABI	?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z; ?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z; ?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z

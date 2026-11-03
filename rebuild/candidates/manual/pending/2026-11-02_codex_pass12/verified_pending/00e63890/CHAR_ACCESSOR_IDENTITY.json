@@ -1,0 +1,701 @@
+{
+  "accessor": {
+    "donor_module": "release\\main.obj",
+    "exact_symbol": "?GetAsCharArray@CCharString@@QBEPBDXZ",
+    "native": "00403a10",
+    "previous_native": {
+      "address": "00403a00",
+      "name": "CCharString::GetLength",
+      "size": 11
+    },
+    "size": 15
+  },
+  "conclusion": "Separate original methods and separate native addresses, not aliases folded to one address. Both are const public thiscall returning const char*. ABI alone cannot distinguish them; donor module/order plus native duplicate placement does. No retail bytes included.",
+  "conversion": {
+    "donor_module": ".\\Release\\lib_char_string.obj",
+    "exact_symbol": "??BCCharString@@QBEPBDXZ",
+    "native": "0099e4c0",
+    "native_neighbors": [
+      {
+        "address": "0099e480",
+        "evidence": "Returns CWideString through genuine constructor/copy/destructor",
+        "identity": "CCharString::ToWideString"
+      },
+      {
+        "address": "0099e4b0",
+        "evidence": "Null PStringData and increment original NoStrings",
+        "identity": "CCharString::CCharString()",
+        "size": 15
+      },
+      {
+        "address": "0099e4d0",
+        "evidence": "CAFile reference, process pointer and signed length; virtual Read at+0x0c",
+        "identity": "CCharStringData::ReadFromFile",
+        "size": 35
+      },
+      {
+        "address": "0099e500",
+        "evidence": "Four-byte owner plus allocated data extent",
+        "identity": "CCharString::Sizeof"
+      }
+    ],
+    "size": 15
+  },
+  "native_copies_byte_identical": true,
+  "neighbor_records": [
+    {
+      "donor_size": 11,
+      "locals": [
+        {
+          "kind": "0x1106",
+          "name": "this",
+          "record": "0xb80c",
+          "register": 18,
+          "type": {
+            "attributes": "0x840a",
+            "mode": "pointer",
+            "pointer_to": {
+              "const": true,
+              "cv_flags": "0x1",
+              "modifier_type": "CCharString"
+            }
+          },
+          "type_index": "0x27b0"
+        }
+      ],
+      "module": "release\\main.obj",
+      "pdb": "Ego_r.pdb",
+      "procedure": "CCharString::GetLength",
+      "record_offset": "0xb7ac",
+      "stream": 551,
+      "type": {
+        "calling_convention": "thiscall",
+        "options": "0x0",
+        "owner": "CCharString",
+        "parameter_count": 0,
+        "parameters": [],
+        "return": "long",
+        "this_adjust": 0,
+        "this_type": {
+          "attributes": "0x840a",
+          "mode": "pointer",
+          "pointer_to": {
+            "const": true,
+            "cv_flags": "0x1",
+            "modifier_type": "CCharString"
+          }
+        }
+      }
+    },
+    {
+      "donor_size": 272,
+      "locals": [
+        {
+          "kind": "0x1106",
+          "name": "this",
+          "record": "0xba5c",
+          "register": 18,
+          "type": {
+            "attributes": "0x840a",
+            "mode": "pointer",
+            "pointer_to": "CSystemManagerInit"
+          },
+          "type_index": "0xd6e8"
+        }
+      ],
+      "module": "release\\main.obj",
+      "pdb": "Ego_r.pdb",
+      "procedure": "CSystemManagerInit::CSystemManagerInit",
+      "record_offset": "0xb9ec",
+      "stream": 551,
+      "type": {
+        "calling_convention": "thiscall",
+        "options": "0x2",
+        "owner": "CSystemManagerInit",
+        "parameter_count": 0,
+        "parameters": [],
+        "return": "void",
+        "this_adjust": 0,
+        "this_type": {
+          "attributes": "0x840a",
+          "mode": "pointer",
+          "pointer_to": "CSystemManagerInit"
+        }
+      }
+    },
+    {
+      "donor_size": 37,
+      "locals": [
+        {
+          "kind": "0x1106",
+          "name": "this",
+          "record": "0xb04",
+          "register": 18,
+          "type": {
+            "attributes": "0x840a",
+            "mode": "pointer",
+            "pointer_to": "CCharStringData"
+          },
+          "type_index": "0x5e04"
+        },
+        {
+          "frame_offset": 4,
+          "kind": "0x110b",
+          "name": "file",
+          "record": "0xb14",
+          "type": {
+            "attributes": "0x802a",
+            "mode": "lvalue_reference",
+            "pointer_to": "CAFile"
+          },
+          "type_index": "0x27a9"
+        },
+        {
+          "frame_offset": 8,
+          "kind": "0x110b",
+          "name": "psuspend",
+          "record": "0xb28",
+          "type": {
+            "attributes": "0x800a",
+            "mode": "pointer",
+            "pointer_to": "CASuspendableProcess"
+          },
+          "type_index": "0x27c4"
+        },
+        {
+          "frame_offset": 12,
+          "kind": "0x110b",
+          "name": "char_length",
+          "record": "0xb40",
+          "type": "long",
+          "type_index": "0x12"
+        }
+      ],
+      "module": ".\\Release\\lib_char_string.obj",
+      "pdb": "Ego_r.pdb",
+      "procedure": "CCharStringData::ReadFromFile",
+      "record_offset": "0xa9c",
+      "stream": 1255,
+      "type": {
+        "calling_convention": "thiscall",
+        "options": "0x0",
+        "owner": "CCharStringData",
+        "parameter_count": 3,
+        "parameters": [
+          {
+            "attributes": "0x802a",
+            "mode": "lvalue_reference",
+            "pointer_to": "CAFile"
+          },
+          {
+            "attributes": "0x800a",
+            "mode": "pointer",
+            "pointer_to": "CASuspendableProcess"
+          },
+          "long"
+        ],
+        "return": "void",
+        "this_adjust": 0,
+        "this_type": {
+          "attributes": "0x840a",
+          "mode": "pointer",
+          "pointer_to": "CCharStringData"
+        }
+      }
+    },
+    {
+      "donor_size": 35,
+      "locals": [
+        {
+          "frame_offset": -4,
+          "kind": "0x110b",
+          "name": "this",
+          "record": "0xb5c4",
+          "type": {
+            "attributes": "0x840a",
+            "mode": "pointer",
+            "pointer_to": {
+              "const": true,
+              "cv_flags": "0x1",
+              "modifier_type": "CCharString"
+            }
+          },
+          "type_index": "0x23a6"
+        }
+      ],
+      "module": "debug\\main.obj",
+      "pdb": "FableWin.pdb",
+      "procedure": "CCharString::GetLength",
+      "record_offset": "0xb564",
+      "stream": 548,
+      "type": {
+        "calling_convention": "thiscall",
+        "options": "0x0",
+        "owner": "CCharString",
+        "parameter_count": 0,
+        "parameters": [],
+        "return": "long",
+        "this_adjust": 0,
+        "this_type": {
+          "attributes": "0x840a",
+          "mode": "pointer",
+          "pointer_to": {
+            "const": true,
+            "cv_flags": "0x1",
+            "modifier_type": "CCharString"
+          }
+        }
+      }
+    },
+    {
+      "donor_size": 410,
+      "locals": [
+        {
+          "frame_offset": -16,
+          "kind": "0x110b",
+          "name": "this",
+          "record": "0x11a04",
+          "type": {
+            "attributes": "0x840a",
+            "mode": "pointer",
+            "pointer_to": "CSystemManagerInit"
+          },
+          "type_index": "0xd4e9"
+        }
+      ],
+      "module": "debug\\main.obj",
+      "pdb": "FableWin.pdb",
+      "procedure": "CSystemManagerInit::CSystemManagerInit",
+      "record_offset": "0x11994",
+      "stream": 548,
+      "type": {
+        "calling_convention": "thiscall",
+        "options": "0x2",
+        "owner": "CSystemManagerInit",
+        "parameter_count": 0,
+        "parameters": [],
+        "return": "void",
+        "this_adjust": 0,
+        "this_type": {
+          "attributes": "0x840a",
+          "mode": "pointer",
+          "pointer_to": "CSystemManagerInit"
+        }
+      }
+    },
+    {
+      "donor_size": 376,
+      "locals": [
+        {
+          "frame_offset": -48,
+          "kind": "0x110b",
+          "name": "this",
+          "record": "0x4f00",
+          "type": {
+            "attributes": "0x840a",
+            "mode": "pointer",
+            "pointer_to": "CCharStringData"
+          },
+          "type_index": "0x54bf"
+        },
+        {
+          "frame_offset": 8,
+          "kind": "0x110b",
+          "name": "file",
+          "record": "0x4f14",
+          "type": {
+            "attributes": "0x802a",
+            "mode": "lvalue_reference",
+            "pointer_to": "CAFile"
+          },
+          "type_index": "0x232d"
+        },
+        {
+          "frame_offset": 12,
+          "kind": "0x110b",
+          "name": "psuspend",
+          "record": "0x4f28",
+          "type": {
+            "attributes": "0x800a",
+            "mode": "pointer",
+            "pointer_to": "CASuspendableProcess"
+          },
+          "type_index": "0x23b9"
+        },
+        {
+          "frame_offset": 16,
+          "kind": "0x110b",
+          "name": "char_length",
+          "record": "0x4f40",
+          "type": "long",
+          "type_index": "0x12"
+        }
+      ],
+      "module": ".\\Debug\\lib_char_string.obj",
+      "pdb": "FableWin.pdb",
+      "procedure": "CCharStringData::ReadFromFile",
+      "record_offset": "0x4e98",
+      "stream": 1255,
+      "type": {
+        "calling_convention": "thiscall",
+        "options": "0x0",
+        "owner": "CCharStringData",
+        "parameter_count": 3,
+        "parameters": [
+          {
+            "attributes": "0x802a",
+            "mode": "lvalue_reference",
+            "pointer_to": "CAFile"
+          },
+          {
+            "attributes": "0x800a",
+            "mode": "pointer",
+            "pointer_to": "CASuspendableProcess"
+          },
+          "long"
+        ],
+        "return": "void",
+        "this_adjust": 0,
+        "this_type": {
+          "attributes": "0x840a",
+          "mode": "pointer",
+          "pointer_to": "CCharStringData"
+        }
+      }
+    }
+  ],
+  "procedure_order": [
+    {
+      "donor_offset": "0x6f8d60",
+      "donor_section": 1,
+      "name": "CCharString::ToWideString",
+      "pdb": "Ego_r.pdb",
+      "record_kind": "0x1110",
+      "record_offset": "0x930",
+      "size": 20,
+      "stream": 1255
+    },
+    {
+      "donor_offset": "0x6f8d80",
+      "donor_section": 1,
+      "name": "CCharString::CCharString",
+      "pdb": "Ego_r.pdb",
+      "record_kind": "0x1110",
+      "record_offset": "0x9a8",
+      "size": 15,
+      "stream": 1255
+    },
+    {
+      "donor_offset": "0x6f8d90",
+      "donor_section": 1,
+      "name": "CCharString::operator char const *",
+      "pdb": "Ego_r.pdb",
+      "record_kind": "0x1110",
+      "record_offset": "0xa1c",
+      "size": 15,
+      "stream": 1255
+    },
+    {
+      "donor_offset": "0x6f8da0",
+      "donor_section": 1,
+      "name": "CCharStringData::ReadFromFile",
+      "pdb": "Ego_r.pdb",
+      "record_kind": "0x1110",
+      "record_offset": "0xa9c",
+      "size": 37,
+      "stream": 1255
+    },
+    {
+      "donor_offset": "0x6f8dd0",
+      "donor_section": 1,
+      "name": "CCharString::Sizeof",
+      "pdb": "Ego_r.pdb",
+      "record_kind": "0x1110",
+      "record_offset": "0xb6c",
+      "size": 23,
+      "stream": 1255
+    },
+    {
+      "donor_offset": "0x6f95b0",
+      "donor_section": 1,
+      "name": "CCharString::CCharString",
+      "pdb": "Ego_r.pdb",
+      "record_kind": "0x1110",
+      "record_offset": "0x1504",
+      "size": 59,
+      "stream": 1255
+    },
+    {
+      "donor_offset": "0x6f95f0",
+      "donor_section": 1,
+      "name": "CCharString::CCharString",
+      "pdb": "Ego_r.pdb",
+      "record_kind": "0x1110",
+      "record_offset": "0x15a4",
+      "size": 52,
+      "stream": 1255
+    },
+    {
+      "donor_offset": "0x6fa140",
+      "donor_section": 1,
+      "name": "CCharString::CCharString",
+      "pdb": "Ego_r.pdb",
+      "record_kind": "0x1110",
+      "record_offset": "0x2554",
+      "size": 57,
+      "stream": 1255
+    },
+    {
+      "donor_offset": "0x27a0",
+      "donor_section": 1,
+      "name": "CCharString::GetLength",
+      "pdb": "Ego_r.pdb",
+      "record_kind": "0x1110",
+      "record_offset": "0xb7ac",
+      "size": 11,
+      "stream": 551
+    },
+    {
+      "donor_offset": "0x27b0",
+      "donor_section": 1,
+      "name": "CCharString::GetAsCharArray",
+      "pdb": "Ego_r.pdb",
+      "record_kind": "0x1110",
+      "record_offset": "0xb820",
+      "size": 15,
+      "stream": 551
+    }
+  ],
+  "procedure_records": [
+    {
+      "donor_size": 15,
+      "locals": [
+        {
+          "kind": "0x1106",
+          "name": "this",
+          "record": "0xb884",
+          "register": 18,
+          "type": {
+            "attributes": "0x840a",
+            "mode": "pointer",
+            "pointer_to": {
+              "const": true,
+              "cv_flags": "0x1",
+              "modifier_type": "CCharString"
+            }
+          },
+          "type_index": "0x27b0"
+        }
+      ],
+      "module": "release\\main.obj",
+      "pdb": "Ego_r.pdb",
+      "procedure": "CCharString::GetAsCharArray",
+      "record_offset": "0xb820",
+      "stream": 551,
+      "type": {
+        "calling_convention": "thiscall",
+        "options": "0x0",
+        "owner": "CCharString",
+        "parameter_count": 0,
+        "parameters": [],
+        "return": {
+          "attributes": "0x800a",
+          "mode": "pointer",
+          "pointer_to": {
+            "const": true,
+            "cv_flags": "0x1",
+            "modifier_type": "char"
+          }
+        },
+        "this_adjust": 0,
+        "this_type": {
+          "attributes": "0x840a",
+          "mode": "pointer",
+          "pointer_to": {
+            "const": true,
+            "cv_flags": "0x1",
+            "modifier_type": "CCharString"
+          }
+        }
+      }
+    },
+    {
+      "donor_size": 15,
+      "locals": [
+        {
+          "kind": "0x1106",
+          "name": "this",
+          "record": "0xa88",
+          "register": 18,
+          "type": {
+            "attributes": "0x840a",
+            "mode": "pointer",
+            "pointer_to": {
+              "const": true,
+              "cv_flags": "0x1",
+              "modifier_type": "CCharString"
+            }
+          },
+          "type_index": "0x27b0"
+        }
+      ],
+      "module": ".\\Release\\lib_char_string.obj",
+      "pdb": "Ego_r.pdb",
+      "procedure": "CCharString::operator char const *",
+      "record_offset": "0xa1c",
+      "stream": 1255,
+      "type": {
+        "calling_convention": "thiscall",
+        "options": "0x0",
+        "owner": "CCharString",
+        "parameter_count": 0,
+        "parameters": [],
+        "return": {
+          "attributes": "0x800a",
+          "mode": "pointer",
+          "pointer_to": {
+            "const": true,
+            "cv_flags": "0x1",
+            "modifier_type": "char"
+          }
+        },
+        "this_adjust": 0,
+        "this_type": {
+          "attributes": "0x840a",
+          "mode": "pointer",
+          "pointer_to": {
+            "const": true,
+            "cv_flags": "0x1",
+            "modifier_type": "CCharString"
+          }
+        }
+      }
+    },
+    {
+      "donor_size": 38,
+      "locals": [
+        {
+          "frame_offset": -4,
+          "kind": "0x110b",
+          "name": "this",
+          "record": "0xa8e8",
+          "type": {
+            "attributes": "0x840a",
+            "mode": "pointer",
+            "pointer_to": {
+              "const": true,
+              "cv_flags": "0x1",
+              "modifier_type": "CCharString"
+            }
+          },
+          "type_index": "0x23a6"
+        }
+      ],
+      "module": "debug\\main.obj",
+      "pdb": "FableWin.pdb",
+      "procedure": "CCharString::GetAsCharArray",
+      "record_offset": "0xa884",
+      "stream": 548,
+      "type": {
+        "calling_convention": "thiscall",
+        "options": "0x0",
+        "owner": "CCharString",
+        "parameter_count": 0,
+        "parameters": [],
+        "return": {
+          "attributes": "0x800a",
+          "mode": "pointer",
+          "pointer_to": {
+            "const": true,
+            "cv_flags": "0x1",
+            "modifier_type": "char"
+          }
+        },
+        "this_adjust": 0,
+        "this_type": {
+          "attributes": "0x840a",
+          "mode": "pointer",
+          "pointer_to": {
+            "const": true,
+            "cv_flags": "0x1",
+            "modifier_type": "CCharString"
+          }
+        }
+      }
+    },
+    {
+      "donor_size": 351,
+      "locals": [
+        {
+          "frame_offset": -48,
+          "kind": "0x110b",
+          "name": "this",
+          "record": "0x1f78",
+          "type": {
+            "attributes": "0x840a",
+            "mode": "pointer",
+            "pointer_to": {
+              "const": true,
+              "cv_flags": "0x1",
+              "modifier_type": "CCharString"
+            }
+          },
+          "type_index": "0x23a6"
+        }
+      ],
+      "module": ".\\Debug\\lib_char_string.obj",
+      "pdb": "FableWin.pdb",
+      "procedure": "CCharString::operator char const *",
+      "record_offset": "0x1f0c",
+      "stream": 1255,
+      "type": {
+        "calling_convention": "thiscall",
+        "options": "0x0",
+        "owner": "CCharString",
+        "parameter_count": 0,
+        "parameters": [],
+        "return": {
+          "attributes": "0x800a",
+          "mode": "pointer",
+          "pointer_to": {
+            "const": true,
+            "cv_flags": "0x1",
+            "modifier_type": "char"
+          }
+        },
+        "this_adjust": 0,
+        "this_type": {
+          "attributes": "0x840a",
+          "mode": "pointer",
+          "pointer_to": {
+            "const": true,
+            "cv_flags": "0x1",
+            "modifier_type": "CCharString"
+          }
+        }
+      }
+    }
+  ],
+  "public_names": {
+    "??BCCharString@@QBEPBDXZ": [
+      {
+        "address": "02f61070",
+        "file": "fablewin_pdb_names.tsv"
+      },
+      {
+        "address": "00af9d90",
+        "file": "egor_pdb_names.tsv"
+      }
+    ],
+    "?GetAsCharArray@CCharString@@QBEPBDXZ": [
+      {
+        "address": "0186c770",
+        "file": "fablewin_pdb_names.tsv"
+      },
+      {
+        "address": "004037b0",
+        "file": "egor_pdb_names.tsv"
+      }
+    ]
+  }
+}

@@ -1,0 +1,1327 @@
+{
+  "address": "00520d00",
+  "behavior_cases": 864,
+  "byte_grade": "RELOCATION_MATCH",
+  "final_handoff_review": "Fresh final RTM rebuild, selected target/operand regression, independent current native byte/literal/operand recheck, both compiler fixture reruns; original identity qualifications retained.",
+  "host64_test": "PASS",
+  "leaf": "?LoadEntitiesFromScript@CThingManager@@QAEXABVCCharString@@JJABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@PAVCASuspendableProcess@@JAAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@4@@Z",
+  "main_compile_attempt": 16,
+  "object_size": 1338,
+  "operands": [
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 7,
+      "symbol": "?NoThingsToLoadPerSuspend@NGlobalConsole@@3JA",
+      "target": "01375714"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 52,
+      "symbol": "??_C@_00CNPNBAHC@?$AA@",
+      "target": "0122d70e"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 80,
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 99,
+      "symbol": "??0CStringParser@@QAE@ABVCCharString@@P6IX0@Z0J@Z",
+      "target": "00404720"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 108,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 123,
+      "symbol": "??_C@_00CNPNBAHC@?$AA@",
+      "target": "0122d70e"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 130,
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "target": "0099efe0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 146,
+      "symbol": "??_C@_0BA@PEBPJFEP@XXXSectionStart?$AA@",
+      "target": "012459a4"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 155,
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 169,
+      "symbol": "?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z",
+      "target": "009b9ba0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 180,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 204,
+      "symbol": "?SkipWhitespace@CStringParser@@QAEJXZ",
+      "target": "009b9c60"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 211,
+      "symbol": "??_C@_01ICJEACDI@?$DL?$AA@",
+      "target": "0123542c"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 220,
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 239,
+      "symbol": "?ReadAsStringUntilString@CStringParser@@QAE?AVCCharString@@ABV2@@Z",
+      "target": "009ba330"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 248,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 255,
+      "symbol": "??_C@_01ICJEACDI@?$DL?$AA@",
+      "target": "0123542c"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 264,
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 278,
+      "symbol": "?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z",
+      "target": "009b9ba0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 287,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": true,
+      "kind": 20,
+      "offset": 308,
+      "symbol": "??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@ABEPAU?$_Rb_tree_node@VCCharString@@@1@ABVCCharString@@@Z",
+      "target": "004b9370"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 324,
+      "symbol": "?LoadAllSectionName@CLevelLoader@@2VCCharString@@A",
+      "target": "013bab08"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 337,
+      "symbol": "??0CCharString@@QAE@ABV0@@Z",
+      "target": "0099ec30"
+    },
+    {
+      "exact_original_name_unresolved": true,
+      "kind": 20,
+      "offset": 349,
+      "symbol": "??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@ABEPAU?$_Rb_tree_node@VCCharString@@@1@ABVCCharString@@@Z",
+      "target": "004b9370"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 386,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 412,
+      "symbol": "??4CCharString@@QAEABV0@ABV0@@Z",
+      "target": "0099efb0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 419,
+      "symbol": "??_C@_0P@GLDMEIEN@XXXSectionEnd?$DL?$AA@",
+      "target": "01245994"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 428,
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 442,
+      "symbol": "?SkipPastNextItemIfIs@CStringParser@@QAE_NABVCCharString@@@Z",
+      "target": "009b9e00"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 453,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 464,
+      "symbol": "??_C@_01ICJEACDI@?$DL?$AA@",
+      "target": "0123542c"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 473,
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 492,
+      "symbol": "?ReadAsStringUntilPastString@CStringParser@@QAE?AVCCharString@@ABV2@@Z",
+      "target": "009ba3e0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 501,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 510,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 515,
+      "symbol": "??_C@_00CNPNBAHC@?$AA@",
+      "target": "0122d70e"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 522,
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "target": "0099efe0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 532,
+      "symbol": "??_C@_08KOOEKGBA@NewThing?$AA@",
+      "target": "01245a88"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 541,
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 555,
+      "symbol": "?SkipPastNextItemIfIs@CStringParser@@QAE_NABVCCharString@@@Z",
+      "target": "009b9e00"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 566,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 581,
+      "symbol": "??_C@_0BN@JEBNCNFB@Loading?5entities?5from?5script?$AA@",
+      "target": "01245af4"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 590,
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 608,
+      "symbol": "?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z",
+      "target": "009e9f40"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 617,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 644,
+      "symbol": "??0CPersistContext@@QAE@AAVCStringParser@@P6IXABVCCharString@@@Z_NPBVCDefinitionManager@@PBVCSymbolMap@@PAV2@@Z",
+      "target": "009badd0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 667,
+      "symbol": "?LoadSingleThing@CThingManager@@AAEPAVCThing@@AAVCPersistContext@@J@Z",
+      "target": "0051fd80"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 717,
+      "symbol": "?_M_insert_overflow@?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@IAEXPAPAVCThing@@ABQAV3@ABU__true_type@2@I_N@Z",
+      "target": "00436ac0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 769,
+      "symbol": "??_C@_08KOOEKGBA@NewThing?$AA@",
+      "target": "01245a88"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 778,
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 792,
+      "symbol": "?SkipPastNextItemIfIs@CStringParser@@QAE_NABVCCharString@@@Z",
+      "target": "009b9e00"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 803,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 818,
+      "symbol": "??_C@_0P@GLDMEIEN@XXXSectionEnd?$DL?$AA@",
+      "target": "01245994"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 827,
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 841,
+      "symbol": "?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z",
+      "target": "009b9ba0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 854,
+      "symbol": "??_C@_0P@GLDMEIEN@XXXSectionEnd?$DL?$AA@",
+      "target": "01245994"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 863,
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 877,
+      "symbol": "?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z",
+      "target": "009b9ba0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 886,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 895,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 902,
+      "symbol": "??_C@_0BA@PEBPJFEP@XXXSectionStart?$AA@",
+      "target": "012459a4"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 911,
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 925,
+      "symbol": "?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z",
+      "target": "009b9ba0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 936,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 954,
+      "symbol": "??_C@_04HIBGFPH@NULL?$AA@",
+      "target": "012393e4"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 961,
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "target": "0099efe0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 968,
+      "symbol": "??_C@_08KOOEKGBA@NewThing?$AA@",
+      "target": "01245a88"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 977,
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 991,
+      "symbol": "?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z",
+      "target": "009b9ba0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 1002,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 1031,
+      "symbol": "??_C@_0BN@JEBNCNFB@Loading?5entities?5from?5script?$AA@",
+      "target": "01245af4"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 1040,
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 1058,
+      "symbol": "?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z",
+      "target": "009e9f40"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 1067,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 1094,
+      "symbol": "??0CPersistContext@@QAE@AAVCStringParser@@P6IXABVCCharString@@@Z_NPBVCDefinitionManager@@PBVCSymbolMap@@PAV2@@Z",
+      "target": "009badd0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 1110,
+      "symbol": "?LoadSingleThing@CThingManager@@AAEPAVCThing@@AAVCPersistContext@@J@Z",
+      "target": "0051fd80"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 1160,
+      "symbol": "?_M_insert_overflow@?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@IAEXPAPAVCThing@@ABQAV3@ABU__true_type@2@I_N@Z",
+      "target": "00436ac0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 1210,
+      "symbol": "??_C@_08KOOEKGBA@NewThing?$AA@",
+      "target": "01245a88"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 1219,
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 1233,
+      "symbol": "?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z",
+      "target": "009b9ba0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 1244,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 1285,
+      "symbol": "?ActivateAfterLoading@CThingManager@@AAEXJ@Z",
+      "target": "0051e5a0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 1294,
+      "symbol": "??1?$list@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ",
+      "target": "004046b0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 1303,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 1312,
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 1321,
+      "symbol": "??1CBaseClass@@UAE@XZ",
+      "target": "0099a2e0"
+    }
+  ],
+  "previous_identity_review": "reviews/FINAL_VERIFY/00520d00/before/main_review.json",
+  "relocations": [
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 7,
+      "operand_target": "01375714",
+      "symbol": "?NoThingsToLoadPerSuspend@NGlobalConsole@@3JA",
+      "target": "01375714"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 52,
+      "operand_target": "0122d70e",
+      "symbol": "??_C@_00CNPNBAHC@?$AA@",
+      "target": "0122d70e"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 80,
+      "operand_target": "0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 99,
+      "operand_target": "00404720",
+      "symbol": "??0CStringParser@@QAE@ABVCCharString@@P6IX0@Z0J@Z",
+      "target": "00404720"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 108,
+      "operand_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 123,
+      "operand_target": "0122d70e",
+      "symbol": "??_C@_00CNPNBAHC@?$AA@",
+      "target": "0122d70e"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 130,
+      "operand_target": "0099efe0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "target": "0099efe0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 146,
+      "operand_target": "012459a4",
+      "symbol": "??_C@_0BA@PEBPJFEP@XXXSectionStart?$AA@",
+      "target": "012459a4"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 155,
+      "operand_target": "0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 169,
+      "operand_target": "009b9ba0",
+      "symbol": "?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z",
+      "target": "009b9ba0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 180,
+      "operand_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 204,
+      "operand_target": "009b9c60",
+      "symbol": "?SkipWhitespace@CStringParser@@QAEJXZ",
+      "target": "009b9c60"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 211,
+      "operand_target": "0123542c",
+      "symbol": "??_C@_01ICJEACDI@?$DL?$AA@",
+      "target": "0123542c"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 220,
+      "operand_target": "0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 239,
+      "operand_target": "009ba330",
+      "symbol": "?ReadAsStringUntilString@CStringParser@@QAE?AVCCharString@@ABV2@@Z",
+      "target": "009ba330"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 248,
+      "operand_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 255,
+      "operand_target": "0123542c",
+      "symbol": "??_C@_01ICJEACDI@?$DL?$AA@",
+      "target": "0123542c"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 264,
+      "operand_target": "0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 278,
+      "operand_target": "009b9ba0",
+      "symbol": "?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z",
+      "target": "009b9ba0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 287,
+      "operand_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": true,
+      "kind": 20,
+      "offset": 308,
+      "operand_target": "004b9370",
+      "symbol": "??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@ABEPAU?$_Rb_tree_node@VCCharString@@@1@ABVCCharString@@@Z",
+      "target": "004b9370"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 324,
+      "operand_target": "013bab08",
+      "symbol": "?LoadAllSectionName@CLevelLoader@@2VCCharString@@A",
+      "target": "013bab08"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 337,
+      "operand_target": "0099ec30",
+      "symbol": "??0CCharString@@QAE@ABV0@@Z",
+      "target": "0099ec30"
+    },
+    {
+      "exact_original_name_unresolved": true,
+      "kind": 20,
+      "offset": 349,
+      "operand_target": "004b9370",
+      "symbol": "??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@ABEPAU?$_Rb_tree_node@VCCharString@@@1@ABVCCharString@@@Z",
+      "target": "004b9370"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 386,
+      "operand_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 412,
+      "operand_target": "0099efb0",
+      "symbol": "??4CCharString@@QAEABV0@ABV0@@Z",
+      "target": "0099efb0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 419,
+      "operand_target": "01245994",
+      "symbol": "??_C@_0P@GLDMEIEN@XXXSectionEnd?$DL?$AA@",
+      "target": "01245994"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 428,
+      "operand_target": "0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 442,
+      "operand_target": "009b9e00",
+      "symbol": "?SkipPastNextItemIfIs@CStringParser@@QAE_NABVCCharString@@@Z",
+      "target": "009b9e00"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 453,
+      "operand_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 464,
+      "operand_target": "0123542c",
+      "symbol": "??_C@_01ICJEACDI@?$DL?$AA@",
+      "target": "0123542c"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 473,
+      "operand_target": "0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 492,
+      "operand_target": "009ba3e0",
+      "symbol": "?ReadAsStringUntilPastString@CStringParser@@QAE?AVCCharString@@ABV2@@Z",
+      "target": "009ba3e0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 501,
+      "operand_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 510,
+      "operand_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 515,
+      "operand_target": "0122d70e",
+      "symbol": "??_C@_00CNPNBAHC@?$AA@",
+      "target": "0122d70e"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 522,
+      "operand_target": "0099efe0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "target": "0099efe0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 532,
+      "operand_target": "01245a88",
+      "symbol": "??_C@_08KOOEKGBA@NewThing?$AA@",
+      "target": "01245a88"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 541,
+      "operand_target": "0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 555,
+      "operand_target": "009b9e00",
+      "symbol": "?SkipPastNextItemIfIs@CStringParser@@QAE_NABVCCharString@@@Z",
+      "target": "009b9e00"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 566,
+      "operand_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 581,
+      "operand_target": "01245af4",
+      "symbol": "??_C@_0BN@JEBNCNFB@Loading?5entities?5from?5script?$AA@",
+      "target": "01245af4"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 590,
+      "operand_target": "0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 608,
+      "operand_target": "009e9f40",
+      "symbol": "?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z",
+      "target": "009e9f40"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 617,
+      "operand_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 644,
+      "operand_target": "009badd0",
+      "symbol": "??0CPersistContext@@QAE@AAVCStringParser@@P6IXABVCCharString@@@Z_NPBVCDefinitionManager@@PBVCSymbolMap@@PAV2@@Z",
+      "target": "009badd0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 667,
+      "operand_target": "0051fd80",
+      "symbol": "?LoadSingleThing@CThingManager@@AAEPAVCThing@@AAVCPersistContext@@J@Z",
+      "target": "0051fd80"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 717,
+      "operand_target": "00436ac0",
+      "symbol": "?_M_insert_overflow@?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@IAEXPAPAVCThing@@ABQAV3@ABU__true_type@2@I_N@Z",
+      "target": "00436ac0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 769,
+      "operand_target": "01245a88",
+      "symbol": "??_C@_08KOOEKGBA@NewThing?$AA@",
+      "target": "01245a88"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 778,
+      "operand_target": "0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 792,
+      "operand_target": "009b9e00",
+      "symbol": "?SkipPastNextItemIfIs@CStringParser@@QAE_NABVCCharString@@@Z",
+      "target": "009b9e00"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 803,
+      "operand_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 818,
+      "operand_target": "01245994",
+      "symbol": "??_C@_0P@GLDMEIEN@XXXSectionEnd?$DL?$AA@",
+      "target": "01245994"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 827,
+      "operand_target": "0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 841,
+      "operand_target": "009b9ba0",
+      "symbol": "?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z",
+      "target": "009b9ba0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 854,
+      "operand_target": "01245994",
+      "symbol": "??_C@_0P@GLDMEIEN@XXXSectionEnd?$DL?$AA@",
+      "target": "01245994"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 863,
+      "operand_target": "0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 877,
+      "operand_target": "009b9ba0",
+      "symbol": "?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z",
+      "target": "009b9ba0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 886,
+      "operand_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 895,
+      "operand_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 902,
+      "operand_target": "012459a4",
+      "symbol": "??_C@_0BA@PEBPJFEP@XXXSectionStart?$AA@",
+      "target": "012459a4"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 911,
+      "operand_target": "0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 925,
+      "operand_target": "009b9ba0",
+      "symbol": "?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z",
+      "target": "009b9ba0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 936,
+      "operand_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 954,
+      "operand_target": "012393e4",
+      "symbol": "??_C@_04HIBGFPH@NULL?$AA@",
+      "target": "012393e4"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 961,
+      "operand_target": "0099efe0",
+      "symbol": "??4CCharString@@QAEABV0@PBD@Z",
+      "target": "0099efe0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 968,
+      "operand_target": "01245a88",
+      "symbol": "??_C@_08KOOEKGBA@NewThing?$AA@",
+      "target": "01245a88"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 977,
+      "operand_target": "0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 991,
+      "operand_target": "009b9ba0",
+      "symbol": "?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z",
+      "target": "009b9ba0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 1002,
+      "operand_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 1031,
+      "operand_target": "01245af4",
+      "symbol": "??_C@_0BN@JEBNCNFB@Loading?5entities?5from?5script?$AA@",
+      "target": "01245af4"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 1040,
+      "operand_target": "0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 1058,
+      "operand_target": "009e9f40",
+      "symbol": "?DisplayProgress@NProgressDisplay@@YIXABVCCharString@@M_N1@Z",
+      "target": "009e9f40"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 1067,
+      "operand_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 1094,
+      "operand_target": "009badd0",
+      "symbol": "??0CPersistContext@@QAE@AAVCStringParser@@P6IXABVCCharString@@@Z_NPBVCDefinitionManager@@PBVCSymbolMap@@PAV2@@Z",
+      "target": "009badd0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 1110,
+      "operand_target": "0051fd80",
+      "symbol": "?LoadSingleThing@CThingManager@@AAEPAVCThing@@AAVCPersistContext@@J@Z",
+      "target": "0051fd80"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 1160,
+      "operand_target": "00436ac0",
+      "symbol": "?_M_insert_overflow@?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@IAEXPAPAVCThing@@ABQAV3@ABU__true_type@2@I_N@Z",
+      "target": "00436ac0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 6,
+      "offset": 1210,
+      "operand_target": "01245a88",
+      "symbol": "??_C@_08KOOEKGBA@NewThing?$AA@",
+      "target": "01245a88"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 1219,
+      "operand_target": "0099ebf0",
+      "symbol": "??0CCharString@@QAE@PBDJ@Z",
+      "target": "0099ebf0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 1233,
+      "operand_target": "009b9ba0",
+      "symbol": "?SkipPastString@CStringParser@@QAE_NABVCCharString@@@Z",
+      "target": "009b9ba0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 1244,
+      "operand_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 1285,
+      "operand_target": "0051e5a0",
+      "symbol": "?ActivateAfterLoading@CThingManager@@AAEXJ@Z",
+      "target": "0051e5a0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 1294,
+      "operand_target": "004046b0",
+      "symbol": "??1?$list@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ",
+      "target": "004046b0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 1303,
+      "operand_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 1312,
+      "operand_target": "0099eae0",
+      "symbol": "??1CCharString@@QAE@XZ",
+      "target": "0099eae0"
+    },
+    {
+      "exact_original_name_unresolved": false,
+      "kind": 20,
+      "offset": 1321,
+      "operand_target": "0099a2e0",
+      "symbol": "??1CBaseClass@@UAE@XZ",
+      "target": "0099a2e0"
+    }
+  ],
+  "retail_size": 1338,
+  "review": "Fresh main RTM rebuild, entire assigned span, unique exact Leaf, independent complete COFF operand/literal audit, original non-STL names and native end padding checked; both standalone compiler tests PASS. Original target-specific STL member-template configuration remains unproven; excluded from accepted count.",
+  "source_sha256": "150b9deda2c5cd3e7e282c59122ec27cd72107bc1e0b33816a4d14b0cabd1312",
+  "status": "BYTE_MATCH_NAME_REVIEW",
+  "test_sha256": "baa3a4cdf7bf45349eff0512a9f2848c573d5570f8ce1f8b45d5f6535dbb698f",
+  "unresolved_names": [
+    {
+      "exact_original_name_unresolved": true,
+      "kind": 20,
+      "offset": 308,
+      "symbol": "??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@ABEPAU?$_Rb_tree_node@VCCharString@@@1@ABVCCharString@@@Z",
+      "target": "004b9370"
+    },
+    {
+      "exact_original_name_unresolved": true,
+      "kind": 20,
+      "offset": 349,
+      "symbol": "??$_M_find@VCCharString@@@?$_Rb_tree@VCCharString@@V1@U?$_Identity@VCCharString@@@std@@U?$less@VCCharString@@@3@V?$allocator@VCCharString@@@3@@std@@ABEPAU?$_Rb_tree_node@VCCharString@@@1@ABVCCharString@@@Z",
+      "target": "004b9370"
+    }
+  ],
+  "vc71_test": "PASS"
+}

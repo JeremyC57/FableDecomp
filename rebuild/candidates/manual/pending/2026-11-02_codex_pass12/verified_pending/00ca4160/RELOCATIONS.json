@@ -1,0 +1,121 @@
+{
+  "additional_checks": {},
+  "address": "00ca4160",
+  "all_internal_relocations_proven": true,
+  "all_named_relocations_proven": true,
+  "attempt": 1,
+  "final_regression_note": "Final header/format rebuild preserves selected target bytes and every COFF relocation identity; accepted/held actual operands separately checked in final main review. Parked original review limitations remain unchanged.",
+  "grade": "RELOCATION_MATCH",
+  "leaf": "@vorbis_lpc_to_lsp@12",
+  "object_size": 1028,
+  "relocations": [
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "DISP32",
+      "offset": 36,
+      "symbol": "__alloca_probe",
+      "target": "00bfea30"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "DISP32",
+      "offset": 52,
+      "symbol": "__alloca_probe",
+      "target": "00bfea30"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "DISP32",
+      "offset": 68,
+      "symbol": "__alloca_probe",
+      "target": "00bfea30"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "DISP32",
+      "offset": 84,
+      "symbol": "__alloca_probe",
+      "target": "00bfea30"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "DISP32",
+      "offset": 805,
+      "symbol": "_cheby@8",
+      "target": "00ca3a40"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "DISP32",
+      "offset": 816,
+      "symbol": "_cheby@8",
+      "target": "00ca3a40"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "DISP32",
+      "offset": 831,
+      "symbol": "_Laguerre_With_Deflation@12",
+      "target": "00ca3b80"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "DISP32",
+      "offset": 854,
+      "symbol": "_Laguerre_With_Deflation@12",
+      "target": "00ca3b80"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "DISP32",
+      "offset": 874,
+      "symbol": "_Newton_Raphson@12",
+      "target": "00ca3f60"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "DISP32",
+      "offset": 889,
+      "symbol": "_Newton_Raphson@12",
+      "target": "00ca3f60"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "dir32",
+      "offset": 898,
+      "symbol": "__imp__qsort",
+      "target": "01440060"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "dir32",
+      "offset": 903,
+      "symbol": "_comp",
+      "target": "00ca3b30"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "dir32",
+      "offset": 917,
+      "symbol": "_comp",
+      "target": "00ca3b30"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "DISP32",
+      "offset": 951,
+      "symbol": "__CIacos",
+      "target": "00bfeba2"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "DISP32",
+      "offset": 985,
+      "symbol": "__CIacos",
+      "target": "00bfeba2"
+    }
+  ],
+  "retail_size": 1028,
+  "selected_attempt": 3,
+  "source_sha256": "8b2c3cdcfb9b72cbf86ac2138c670105c9da98750442cdec7b29d09f7278b018"
+}

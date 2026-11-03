@@ -1,0 +1,2 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00c90fc0	@oggpack_write@12	Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.	?WriteBits_00c90fc0@@YIXPAUCBitstream_00c911b0@@JJ@Z | ?WriteBits_00c90fc0@@YIXPAUCBitstream_00c96140@@JJ@Z

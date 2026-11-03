@@ -1,0 +1,13 @@
+# Original identity and names
+
+Function: `NScript::CV_HeroDuelScript::DoMission`, exact public nonvirtual thiscall leaf `?DoMission@CV_HeroDuelScript@NScript@@QAEXXZ`.
+
+Two independent identity sources: original Ego_r and FableWin raw class/procedure records name the owner and method; native main's spawned-function constructor at00e98f31..00e98f62 constructs the literal `DoMission` (012cb73c), stores this address00e9b690 as the member function at+34, and stores the original owner at+38. Native owner factory00e9c300 allocates0x5c, sets genuine base references at40/44 and owner vtable012ed0d4. The PDB owner is a class keyedV, derives CLevelScriptBase<CQ_SunnyvaleMasterData>, and its field order agrees with all native flag offsets. Both PDB local records contain only `this` (plus debug script macro failure bookkeeping), so reconstruction introduces no guessed locals.
+
+Full exact original state names are retained: MissionSucceeded, MissionFailed, MissionOver, GotToExecutionTree, DuelStarted, ThunderDefeated, OkToShowHealthBar, ThunderEnteredCaveFirst, OkToCheer, SupportThunder, StopSupportersCheering, SaidSurprisedLine, TimesHitSpectators, MyHealth. The first two changed fields in the row are GotToExecutionTree+4b and DuelStarted+4c. Every remaining original method and nested class declaration is preserved in NScript_CV_HeroDuelScript.h.
+
+Direct members: native00e9bbc0 is DuelChallenge, proven by original class public symbols and supplied neighbour's CS_GIBBETHILL_HERODUEL_CHALLENGE / _W bodies; native00e9be60 is Duel, the next owner method in the original donor body pair after DuelChallenge (Ego_r offsets affbc0,affed0), and native creates Thunder at the duel marker with the original owner Game+40. Native00cb7940 is original CScriptBase::IsActiveThreadTerminating. String construction/destruction match original CCharString public symbols and the native four-byte string representation. One retail address has one exact symbol; incorrect legacy aliases are recorded in NAME_FIXES.tsv.
+
+Full GSI declarations (917 slots) are reused. Row uses const virtual NewScriptFrame slot7, IsLevelLoaded slot11, IsQuestActive slot284, SetQuestCardObjective slot296. All four call contracts and argument order are reflected in the behavior test. Exact literal contents are checked against retail operands; no guessed quest or level spellings.
+
+Raw records: workers/scripts_a/HERODUEL_ORIGINAL_TYPES.json; evidence/function_locals_NScript_CV_HeroDuelScript_DoMission.json. Native xref confirms00e98f5e immediate binding. RELOCATIONS.json has all71 operand-level checks. Original source/header spelling audited case-sensitively for banned tokens; no hand layouts, added packing or artificial inlining.

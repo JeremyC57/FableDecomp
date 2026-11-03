@@ -1,0 +1,1 @@
+[577](sec 226)(fl 0x00)(ty   20)(scl   2) (nx 0) 0x00000000 ?PartitionSpace@C3DMeshPartitionBuilderElement@@AAEJPBVC3DVertex2@@JM@Z

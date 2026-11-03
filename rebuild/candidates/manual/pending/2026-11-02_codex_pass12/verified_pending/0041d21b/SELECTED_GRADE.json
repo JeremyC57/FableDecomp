@@ -1,0 +1,23 @@
+{
+  "address": "0041d21b",
+  "assigned_retail_size": 1677,
+  "attempt": 27,
+  "baseline": false,
+  "differing_instruction_lines": 0,
+  "flags": [
+    "/Os",
+    "/Oy-"
+  ],
+  "header_manifest": "history/0041d21b/attempt_27/HEADER_MANIFEST.json",
+  "header_map_sha256": "0878e48bdefd213032fe70e721e61724592ee94c63f78c9e373c1510812d2ee4",
+  "leaf": "?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@J@Z",
+  "leaf_hits": [
+    "?CreateComponent@CManager@NUISystem@@QAEPAVCComponent@2@J@Z"
+  ],
+  "object_size": 1677,
+  "retail_size": 1677,
+  "source_sha256": "6b9eb5298504c3ed5138e46ad5892ebe7c511a86cd27f730f4cf863756bc9e92",
+  "status": "RELOCATION_MATCH",
+  "strategy": "main independent final handoff rebuild: selected immutable headers, required source headings and complete byte/operand regression check",
+  "time": 1793676384.100032
+}

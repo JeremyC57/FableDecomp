@@ -1,0 +1,152 @@
+{
+  "additional_checks": {
+    "extent": "Single function and 4-entry multiplier switch table through00ca3150.",
+    "file_local_identity": "ilog is the genuine static floor1.c helper, address00ca1790; the different res0.c static function also has this C identifier. Retain object-local binding, never resolve it to another TU by spelling alone."
+  },
+  "address": "00ca2bb0",
+  "all_internal_relocations_proven": true,
+  "all_named_relocations_proven": true,
+  "attempt": 4,
+  "final_regression_note": "Final header/format rebuild preserves selected target bytes and every COFF relocation identity; accepted/held actual operands separately checked in final main review. Parked original review limitations remain unchanged.",
+  "grade": "RELOCATION_MATCH",
+  "leaf": "@floor1_encode@16",
+  "object_size": 1440,
+  "relocations": [
+    {
+      "evidence": "Exact function-relative switch-table and case targets match independently.",
+      "kind": "dir32",
+      "offset": 122,
+      "symbol": "$L1755",
+      "target": "00ca3140"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "DISP32",
+      "offset": 322,
+      "symbol": "@render_point@20",
+      "target": "00ca1e00"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "DISP32",
+      "offset": 520,
+      "symbol": "@oggpack_write@12",
+      "target": "00c90fc0"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "DISP32",
+      "offset": 549,
+      "symbol": "@ilog@4",
+      "target": "00ca1790"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "DISP32",
+      "offset": 581,
+      "symbol": "@oggpack_write@12",
+      "target": "00c90fc0"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "DISP32",
+      "offset": 593,
+      "symbol": "@ilog@4",
+      "target": "00ca1790"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "DISP32",
+      "offset": 608,
+      "symbol": "@oggpack_write@12",
+      "target": "00c90fc0"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "DISP32",
+      "offset": 939,
+      "symbol": "@vorbis_book_encode@12",
+      "target": "00c96140"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "DISP32",
+      "offset": 1040,
+      "symbol": "@vorbis_book_encode@12",
+      "target": "00c96140"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "DISP32",
+      "offset": 1229,
+      "symbol": "@render_line0@20",
+      "target": "00ca2010"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "dir32",
+      "offset": 1320,
+      "symbol": "?seq@?1??floor1_encode@@9@9",
+      "target": "0143ccec"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "dir32",
+      "offset": 1329,
+      "symbol": "?seq@?1??floor1_encode@@9@9",
+      "target": "0143ccec"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "DISP32",
+      "offset": 1356,
+      "symbol": "@oggpack_write@12",
+      "target": "00c90fc0"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "dir32",
+      "offset": 1397,
+      "symbol": "?seq@?1??floor1_encode@@9@9",
+      "target": "0143ccec"
+    },
+    {
+      "evidence": "Original Xiph C source identity, native helper body and TU order; CRT/import identities independently corroborated by existing bindings.",
+      "kind": "dir32",
+      "offset": 1405,
+      "symbol": "?seq@?1??floor1_encode@@9@9",
+      "target": "0143ccec"
+    },
+    {
+      "evidence": "Exact function-relative switch-table and case targets match independently.",
+      "kind": "dir32",
+      "offset": 1424,
+      "symbol": "$L1626",
+      "target": "00ca2c2e"
+    },
+    {
+      "evidence": "Exact function-relative switch-table and case targets match independently.",
+      "kind": "dir32",
+      "offset": 1428,
+      "symbol": "$L1627",
+      "target": "00ca2c33"
+    },
+    {
+      "evidence": "Exact function-relative switch-table and case targets match independently.",
+      "kind": "dir32",
+      "offset": 1432,
+      "symbol": "$L1628",
+      "target": "00ca2c38"
+    },
+    {
+      "evidence": "Exact function-relative switch-table and case targets match independently.",
+      "kind": "dir32",
+      "offset": 1436,
+      "symbol": "$L1629",
+      "target": "00ca2c50"
+    }
+  ],
+  "retail_size": 1440,
+  "selected_attempt": 6,
+  "source_sha256": "cb07dbed6bc98517fef5387cc59cbd9469cffdf2a78a5089a9bf412e269a0860"
+}
