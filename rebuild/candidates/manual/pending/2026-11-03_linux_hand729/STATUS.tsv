@@ -1,0 +1,3 @@
+address	name	status	attempts	best	grade	difflines	file
+005ff190	CTCInventoryMap::CreateMapMarkers	parked	10 (a1-a7,a9-a11) + 3 regrades	a10	DIFFER(4604v4176)	808	differ/005ff190.cpp
+00603000	CTCInventoryMap::CreateMiniMapMarkers	parked (skeleton)	10 (b1-b10) + 2 regrades	b10	DIFFER(9852v9571)	2215	differ/00603000.cpp

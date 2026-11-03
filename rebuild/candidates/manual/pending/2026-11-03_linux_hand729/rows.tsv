@@ -1,0 +1,3 @@
+address	module	name	length	group	anchor	gap_to_next_start
+005ff190	CTCInventoryMap	CreateMapMarkers	4176	G005eaf46	CTCInventoryMap	4176
+00603000	CTCInventoryMap	CreateMiniMapMarkers	9571	G005eaf46	CTCInventoryMap	9584

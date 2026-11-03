@@ -1,0 +1,15 @@
+address	label
+0x005FF190	CTCInventoryMap::CreateMapMarkers
+0x00603000	CTCInventoryMap::CreateMiniMapMarkers
+0x007021F0	CTCQuestCard::GetTeleporterRegionName
+0x007022E0	CTCQuestCard::IsVignette
+0x0041C680	NUISystem::CSprite::SetAngle
+0x0041B550	NUISystem::CSprite::SetGraphicIndex
+0x005FBEA0	CTCInventoryMap::GetRegionTeleporter
+0x00613CE0	std::_Rb_tree<long,std::pair<const long,std::pair<long,long> >,...>::_M_erase
+0x005FABA0	CTCInventoryMap::IsThingAsPosBeingDrawn
+0x005FBAA0	CTCInventoryMap::GetRelativePosOnMiniMap
+0x00437CE0	CPlayerGui::GetMiniMap
+0x005FA7F0	CThingCreatureBase::IsDemonDoor
+0x00612DB0	std::__find<CThing**,CThingAICreature*>
+0x00612F70	std::__copy<CTCInventoryMap::CUIMiniMapMarker*,CTCInventoryMap::CUIMiniMapMarker*,int>

@@ -1,0 +1,2 @@
+a1.cpp
+Z:\home\user\FableDecomp\rebuild\include\engine\CDefString.h(7) : fatal error C1189: #error :  engine/CDefString.h needs the retail CDefStringTable: define FABLE_RETAIL_CDEFSTRINGTABLE (and FABLE_RETAIL_CCHARSTRING) before including it

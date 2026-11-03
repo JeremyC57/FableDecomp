@@ -1,0 +1,13 @@
+address	source	grade_with_final_overlay	note
+0x004FD040	CWorldMap_SaveRegionsToString_004fd040.cpp	RELOCATION_MATCH	CRegion / CWorldMap user
+0x00606300	CTCInventoryMap_OnSerialise_00606300.cpp	RELOCATION_MATCH	CTCInventoryMap / CRegion user
+0x0121E210	CTCWife_E1_0121e210.cpp	RELOCATION_MATCH	only FABLE_RETAIL_CTCWIFE user (SRC_FAIL until the CTCWife branch included ETCInterfaceType.h; fixed)
+0x00702A50	CTCQuestCard_CTCQuestCard_00702a50.cpp	RELOCATION_MATCH	leaf ??1CTCQuestCard@@UAE@XZ
+0x0074A5D0	NCreatureHiding_GetValidPositions_0074a5d0.cpp	RELOCATION_MATCH	CThingSearchTools / CThingCreatureBase retail user
+0x00501150	CWorldMap_LoadLevelFromFiles_00501150.cpp	RELOCATION_MATCH	CWorldMap user
+0x004FC6B0	CWorldMap_DrawIsPosInMap_004fc6b0.cpp	RELOCATION_MATCH	CWorldMap user
+0x00666EF0	CThingCreatureBase_AutoPlaceNearBuilding_00666ef0.cpp	RELOCATION_MATCH	CThingCreatureBase / CThingSearchTools user
+0x005EB9E0	CTCTavernGame_FrameUpdate_005eb9e0.cpp	RELOCATION_MATCH	CPlayerGui / CThingAICreature user
+0x00521620	NThingManagerCEntityRuntimePersistence_SaveToGameStateBinary_00521620.cpp	DIFFER(1129v1129)	SAME without the overlay (empty FABLE_HDR_OVERLAY): repo baseline at 2026-11-03 12:04, not this overlay (was RELOCATION_MATCH earlier in the run)
+0x00821010	CMap_LoadBrushesFromFile_00821010.cpp	DIFFER(2053v2101)	SAME without the overlay: repo baseline at 2026-11-03 12:04, not this overlay (was RELOCATION_MATCH earlier in the run)
+0x0047A9F0	CHeroLogBook_AddEntry_0047a9f0.cpp	DIFFER(1109v1105)	baseline, with or without the overlay (checked earlier in the run)

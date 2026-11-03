@@ -1,0 +1,26 @@
+address	tag	grade	difflines	calls
+005ff190	a1	DIFFER(4548v4176)	dl=1591	retail calls 171 ours 187
+005ff190	a2	DIFFER(4604v4176)	dl=826	retail calls 171 ours 183
+005ff190	a3	DIFFER(4620v4176)	dl=861	retail calls 171 ours 183
+005ff190	a4	DIFFER(4620v4176)	dl=861	retail calls 171 ours 183
+005ff190	a5	DIFFER(4620v4176)	dl=861	retail calls 171 ours 183
+005ff190	a6	DIFFER(4620v4176)	dl=876	retail calls 171 ours 183
+005ff190	a7	DIFFER(4604v4176)	dl=816	retail calls 171 ours 183
+005ff190	a9	DIFFER(4604v4176)	dl=816	retail calls 171 ours 183
+005ff190	a10	DIFFER(4604v4176)	dl=808	retail calls 171 ours 183
+005ff190	a11	DIFFER(4604v4176)	dl=809	retail calls 171 ours 183
+005ff190	final1	DIFFER(4604v4176)	dl=808	retail calls 171 ours 183
+00603000	b1	DIFFER(9599v9571)	dl=4231	retail calls 363 ours 353
+00603000	b2	DIFFER(9782v9571)	dl=2656	retail calls 363 ours 366
+00603000	b3	DIFFER(9782v9571)	dl=2645	retail calls 363 ours 366
+00603000	b4	DIFFER(9782v9571)	dl=2645	retail calls 363 ours 366
+00603000	b5	DIFFER(9852v9571)	dl=2262	retail calls 363 ours 366
+00603000	b6	DIFFER(9852v9571)	dl=2262	retail calls 363 ours 366
+00603000	b7	DIFFER(9852v9571)	dl=2262	retail calls 363 ours 366
+00603000	b8	DIFFER(9766v9571)	dl=2245	retail calls 363 ours 367
+00603000	b9	DIFFER(9852v9571)	dl=2262	retail calls 363 ours 366
+00603000	b10	DIFFER(9852v9571)	dl=2215	retail calls 363 ours 366
+005ff190	final2	DIFFER(4604v4176)	dl=808	retail calls 171 ours 183
+00603000	b11	DIFFER(9852v9571)	dl=2215	retail calls 363 ours 366
+005ff190	final3	DIFFER(4604v4176)	dl=808	retail calls 171 ours 183
+00603000	parked	DIFFER(9852v9571)	dl=2215	retail calls 363 ours 366
