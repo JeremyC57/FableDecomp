@@ -12,4 +12,8 @@ public: CThingPlayerCreature();
 #endif
 };
 FABLE_STATIC_ASSERT(sizeof(CThingPlayerCreature)==0x208);
+#if defined(FABLE_RETAIL_PLAYER) && defined(FABLE_RETAIL_CINTELLIGENTPOINTER) && defined(FABLE_ENGINE_CPLAYER_H)
+// Retail opt-in (chunk 728): the inline FableWin-only CPlayer::GetPPlayerCharacter declared in engine/CPlayer.h (PlayerCharacter +0x34).
+inline CThingPlayerCreature* CPlayer::GetPPlayerCharacter() const { return PlayerCharacter.Get(); }
+#endif
 #endif

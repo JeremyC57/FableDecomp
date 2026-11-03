@@ -99,6 +99,7 @@ public:
     };
     CEngineLandscapeRenderer(const CEngineMemoryInit& init);             // ??0CEngineLandscapeRenderer@@QAE@ABVCEngineMemoryInit@@@Z
     virtual ~CEngineLandscapeRenderer();                                 // ??1CEngineLandscapeRenderer@@UAE@XZ 0x00B67920
+    virtual unsigned long PeekSceneFilterFlags() const;                  // ?PeekSceneFilterFlags@CEngineLandscapeRenderer@@UBEKXZ (chunk 731)
     CLandscapeGPUUpdateQueue       GPUUpdateQueue;                       // +0x00c
     CEngineLandscapeMeshBuilder    MeshBuilder;                          // +0x010
     float                          LODZBandsZ[8];                        // +0x498

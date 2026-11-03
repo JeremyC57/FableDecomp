@@ -6,11 +6,128 @@
 // Retail evidence: 0 trusted landed function(s); reconciliation clean.
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#ifdef FABLE_RETAIL_CTCWIFE
+// Retail opt-in (chunk 728): the polymorphic retail class over FABLE_RETAIL_CTCBASE (vtable 0x0125ED5C, RTTI .?AVCTCWife@@),
+// sizeof 0xEC (retail STLport map / set 0xC). Members at the offsets of the flattened layout below, typed as Ego_r.pdb types them.
+// Virtuals: the vtable slots retail fills (0 ~CTCWife 0x006D4730 scalar deleting / 0x006CF1D0, 1 OnSerialise 0x006D2BD0,
+// 4 OnCreate 0x006CEFE0, 6 OnInitialActivate 0x006D0800, 8 HasFrameUpdate 0x006CEC70, 9 FrameUpdate 0x006D1E30, 19
+// IsSerialiseCreatable 0x006D4570, 21 GetInterfaceType 0x006D4540, 22 GetClassTypeName 0x006D4550, 23 IsComponentSerialisable
+// 0x006CED40, 26 GlobalUpdate 0x006D0830); Ego_r.pdb / FableWin.pdb spellings (UAE public, protected OnSerialise as CTCBase).
+// The Codex pass 11 static CourtingAdviceGroupNames (0x0121E210) is kept private static.
+// Merged (chunk 728 round 2) with chunk 729's branch (CTCInventoryMap rows 0x005FF190 / 0x00603000): the out-of-line const queries
+// IsMarriedToThePlayer 0x006CEC80 and IsAttractedToHero 0x006CFE80 (Ego_r.pdb 0x00703B10 / 0x007041F0, FableWin.pdb 0x02488F40 /
+// 0x0248A780, both ?..@CTCWife@@QBE_NXZ). One layout: retail allocates 0xEC (Alloc 0x004D32A7 `push 0ECh ; call 0x00BFEA1A` then the
+// ctor 0x006CF040), the ctor stores every member below at these offsets (map header +0x78 with a 0x18 node, set header +0x98 with a
+// 0x14 node, FrameNoticedChangeInAppearance +0xA4..+0xE0, LastFatnessChangePoint +0xE4) = Ego_r.pdb's 0xF4 minus 4 after each
+// Dinkumware tree (map +0x78, set +0x9C in Ego_r).
+// The branch needs the retail CTCBase and def model (PHeroMarriageDef is a CDefPointer): it turns both on for its includers
+// (the landed _$E1 0x0121E210 defines only FABLE_RETAIL_CTCWIFE + FABLE_RETAIL_CCHARSTRING).
+#ifndef FABLE_RETAIL_CTCBASE
+#define FABLE_RETAIL_CTCBASE
+#endif
+#ifndef FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#endif
 #include <stddef.h>
 #include "rebuild_abi.h"
-#ifdef FABLE_RETAIL_CTCWIFE
 #include "fable_string.h"
-#endif
+#include "engine/CTCBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/ETCInterfaceType.h"
+#include "stlport/fable_map.h"
+class CHeroMarriageDef;
+class CThingPlayerCreature;
+enum EOpinionAttitudeType;                                   // MS forward enum (the row defines the enumerators it uses)
+
+class CTCWife : public CTCBase {
+public:
+    virtual ~CTCWife();                                      // slot 0
+    virtual void OnSerialise(CPersistContext&, bool);        // slot 1 0x006D2BD0 ?OnSerialise@CTCWife@@UAEXAAVCPersistContext@@_N@Z (public, as the PDB mangles it)
+    virtual void OnCreate();                                 // slot 4 0x006CEFE0
+    virtual void OnInitialActivate();                        // slot 6 0x006D0800
+    virtual bool HasFrameUpdate() const;                     // slot 8 0x006CEC70
+    virtual void FrameUpdate();                              // slot 9 0x006D1E30
+    virtual bool IsSerialiseCreatable() const;               // slot 19 0x006D4570
+    virtual ETCInterfaceType GetInterfaceType() const;       // slot 21 0x006D4540
+    virtual CCharString GetClassTypeName() const;            // slot 22 0x006D4550
+    virtual bool IsComponentSerialisable() const;            // slot 23 0x006CED40
+    virtual void GlobalUpdate(bool);                         // slot 26 0x006D0830
+    static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_WIFE; }
+    bool IsMarriedToThePlayer() const;                       // 0x006CEC80 ?IsMarriedToThePlayer@CTCWife@@QBE_NXZ
+    bool IsAttractedToHero() const;                          // 0x006CFE80 ?IsAttractedToHero@CTCWife@@QBE_NXZ
+    // Chunk 728 round 2: the non-virtual members GlobalUpdate / FrameUpdate call, Ego_r.pdb spellings (FableWin.pdb agrees where
+    // it lists them), retail addresses from the manifest's CTCWife run (same source order as Ego_r 0x00703AA0..0x00707290).
+    void SendPauseEvent(bool pause);                         // 0x006CEBF0 ?SendPauseEvent@CTCWife@@QAEX_N@Z
+    void InitWifeAtEndOfMarriageFrescoStartFadeIn();         // 0x006CF3B0 ?InitWifeAtEndOfMarriageFrescoStartFadeIn@CTCWife@@QAEXXZ
+    void InitWifeAtEndOfMarriageFrescoEndFadeIn();           // 0x006CF480 ?InitWifeAtEndOfMarriageFrescoEndFadeIn@CTCWife@@QAEXXZ
+    bool IsCourtableAndNotBlockingIt() const;                // 0x006CF810 ?IsCourtableAndNotBlockingIt@CTCWife@@QBE_NXZ
+    bool IsCourtingHero() const;                             // 0x006CF890 ?IsCourtingHero@CTCWife@@QBE_NXZ
+    bool IsInLoveWithHero() const;                           // 0x006CF900 ?IsInLoveWithHero@CTCWife@@QBE_NXZ
+    void HaveSex();                                          // 0x006CF920 ?HaveSex@CTCWife@@QAEXXZ
+    void OnHeroViolence();                                   // 0x006CFDA0 ?OnHeroViolence@CTCWife@@QAEXXZ
+    void Divorce();                                          // 0x006D0180 ?Divorce@CTCWife@@QAEXXZ
+    void InitWifeNonpersistentState();                       // 0x006D03E0 ?InitWifeNonpersistentState@CTCWife@@QAEXXZ
+    CDefPointer<const CHeroMarriageDef> PHeroMarriageDef;    // +0x0c
+    EOpinionAttitudeType OpinionAttitude;                    // +0x10
+    unsigned char    AttitudeUpdateCounter;                  // +0x14
+    bool             CourtingBlocked;                        // +0x15
+    long             CurrentRegionNumber;                    // +0x18
+    bool             PermittedToRegionFollow;                // +0x1c
+    long             FrameGotMarriedToThePlayer;             // +0x20
+    bool             DivorcedHero;                           // +0x24
+    bool             JustMarried;                            // +0x25
+    bool             NeedsToChangeBrain;                     // +0x26
+    bool             WaitingForFadeOut;                      // +0x27
+    bool             WaitingForFadeIn;                       // +0x28
+    bool             WaitingForDivorce;                      // +0x29
+    bool             WaitingForDivorceRenting;               // +0x2a
+    bool             WaitingForDowry;                        // +0x2b
+    bool             WaitingForSex;                          // +0x2c
+    bool             WaitingForSexCutscene;                  // +0x2d
+    unsigned long    CurrentSexCutsceneSampleID;             // +0x30
+    long             FrameStartedSexCutscene;                // +0x34
+    long             FrameEndedSoundInSexCutscene;           // +0x38
+    float            CurrentProportionOfSoundGap;            // +0x3c
+    long             FrameLastAwareOfHusband;                // +0x40
+    long             FrameToCheckAppearanceChanges;          // +0x44
+    long             FrameLastReducedOpinion;                // +0x48
+    long             FrameLastEvaluatedGiftOpinion;          // +0x4c
+    long             FrameLastConsideredGivingGift;          // +0x50
+    long             FrameLastEvaluatedLoveAttitude;         // +0x54
+    long             FrameEnteredAttitudeHate;               // +0x58
+    long             FrameLastGaveDivorceWarning;            // +0x5c
+    long             FrameEnteredLoveWithHusbandPresentAtHome; // +0x60
+    long             FrameLastGaveSexOffer;                  // +0x64
+    bool             DivorceDeedPending;                     // +0x68
+    bool             DivorceWarningPending;                  // +0x69
+    float            GiftGivingOpinionDistanceFromMax;       // +0x6c
+    long             GiftGivingPriceValue;                   // +0x70
+    long             GiftToGiveDef;                          // +0x74
+    std::map<long,long> GiftsReceived;                       // +0x78
+    long             FrameLastReceivedNiceGift;              // +0x84
+    long             FrameLastCulledGiftsReceived;           // +0x88
+    float            LoveAttitudeValue;                      // +0x8c
+    bool             HasBeenInLoveWithPlayer;                // +0x90
+    bool             ReceivedWeddingRing;                    // +0x91
+    long             HouseDressingLevelLastCommentedOn;      // +0x94
+    std::set<long>   ThingsSeenThePlayerWear;                // +0x98
+    long             FrameNoticedChangeInAppearance[16];     // +0xa4
+    float            LastFatnessChangePoint;                 // +0xe4
+    bool             BooleanHusbandAppearances[4];           // +0xe8
+    // Codex pass 11: private static const CCharString CourtingAdviceGroupNames[4] (Ego_r TPI 0x1a9a9; FableWin.pdb "dynamic
+    // initializer/atexit destructor for 'CTCWife::CourtingAdviceGroupNames'"; 0x0121E210 builds four 4-byte elements at
+    // 0x013BAB30..3C). Static members leave the instance layout unchanged.
+private:
+    float GetNumHoursMarriedFor() const;                     // 0x006CEC90 ?GetNumHoursMarriedFor@CTCWife@@ABEMXZ
+    void FindAppropriateGift();                              // 0x006CF530 ?FindAppropriateGift@CTCWife@@AAEXXZ
+    void SetAttractionIcon(bool show, float value, unsigned char type);   // 0x006CFC90 ?SetAttractionIcon@CTCWife@@AAEX_NME@Z
+    void CheckAppearanceChanges(CThingPlayerCreature& hero); // 0x006D1250 ?CheckAppearanceChanges@CTCWife@@AAEXAAVCThingPlayerCreature@@@Z
+    static const CCharString CourtingAdviceGroupNames[4];
+};
+FABLE_STATIC_ASSERT(sizeof(CTCWife) == 0xec);
+#else // flattened Ego_r layout (the landed default)
+#include <stddef.h>
+#include "rebuild_abi.h"
 
 class CDefPointeeBase;
 
@@ -72,13 +189,6 @@ public:
     long             FrameNoticedChangeInAppearance[16];     // +0xa4
     float            LastFatnessChangePoint;                 // +0xe4
     bool             BooleanHusbandAppearances[4];           // +0xe8
-#ifdef FABLE_RETAIL_CTCWIFE
-    // Retail opt-in (Codex pass 11): private static const CCharString CourtingAdviceGroupNames[4] (Ego_r TPI 0x1a9a9;
-    // FableWin.pdb "dynamic initializer/atexit destructor for 'CTCWife::CourtingAdviceGroupNames'"; 0x0121E210 builds four
-    // 4-byte elements at 0x013BAB30..3C). Static members leave the instance layout unchanged.
-private:
-    static const CCharString CourtingAdviceGroupNames[4];
-#endif
 };
 #pragma pack(pop)
 
@@ -131,5 +241,7 @@ FABLE_STATIC_ASSERT(offsetof(CTCWife, ThingsSeenThePlayerWear) == 0x98);
 FABLE_STATIC_ASSERT(offsetof(CTCWife, FrameNoticedChangeInAppearance) == 0xa4);
 FABLE_STATIC_ASSERT(offsetof(CTCWife, LastFatnessChangePoint) == 0xe4);
 FABLE_STATIC_ASSERT(offsetof(CTCWife, BooleanHusbandAppearances) == 0xe8);
+
+#endif // FABLE_RETAIL_CTCWIFE
 
 #endif // FABLE_ENGINE_CTCWIFE_H

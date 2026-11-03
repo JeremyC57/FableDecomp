@@ -6,6 +6,86 @@
 // Retail evidence: 1 trusted landed function(s); reconciliation clean.
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#ifdef FABLE_RETAIL_CTCCREATUREGENERATOR
+// Retail opt-in (chunk 728): the polymorphic retail class over FABLE_RETAIL_CTCBASE (vtable 0x01268C24, RTTI .?AVCTCCreatureGenerator@@),
+// members at the retail offsets of the flattened layout below (STLport list 4 / vector 0xC; Ego_r.pdb names and types; opaque
+// members keep their real type in a comment). Virtuals: the vtable slots retail fills (0 ~, 1 OnSerialise 0x0074B900,
+// 4 OnCreate 0x00749EA0, 8 HasFrameUpdate 0x0074DA30, 9 FrameUpdate 0x0074C130, 17 Validate 0x00749F00, 21 GetInterfaceType
+// 0x0074D9F0, 22 GetClassTypeName 0x0074DA00, 23 IsComponentSerialisable 0x0074DA20). Non-virtual members: Ego_r.pdb /
+// FableWin.pdb spellings (access as the PDB mangles it: QAE public, IAE protected).
+#include <stddef.h>
+#include "rebuild_abi.h"
+#include "engine/CTCBase.h"
+#include "engine/CDefPointer.h"
+#include "engine/CIntelligentPointer.h"
+#include "engine/C3DVector.h"
+#include "engine/CEnginePrimitiveHandle.h"
+#include "engine/ETCInterfaceType.h"
+#include "stlport/fable_containers.h"
+#include "fable_string.h"
+class CCreatureGeneratorDef;
+class CEnginePrimitivePrepareInfo;
+class CTCShapeManager;
+class CThing;
+class CThingCreatureBase;
+
+class CTCCreatureGenerator : public CTCBase {
+public:
+    struct TGenerationParameters {                           // Ego_r.pdb CTCCreatureGenerator::TGenerationParameters, 0x24
+        float       GenerationRadius;                        // +0x00 (+0x28)
+        float       SelfTriggerRadius;                       // +0x04
+        bool        SelfTrigger;                             // +0x08
+        long        SelfTriggerResetInterval;                // +0x0c
+        bool        TriggerOnActivate;                       // +0x10 (+0x38)
+        long        ActiveCreatureLimit;                     // +0x14
+        long        TotalGenerationLimit;                    // +0x18
+        long        NumTriggers;                             // +0x1c
+        CCharString ScriptNameOfAllGeneratedCreatures;       // +0x20 (+0x48)
+    };
+    virtual ~CTCCreatureGenerator();                         // slot 0 (0x0074DD90 scalar deleting)
+    virtual void OnSerialise(CPersistContext&, bool);        // slot 1 0x0074B900 ?OnSerialise@CTCCreatureGenerator@@UAEXAAVCPersistContext@@_N@Z (public, as the PDB mangles it)
+    virtual void OnCreate();                                 // slot 4 0x00749EA0
+    virtual bool HasFrameUpdate() const;                     // slot 8 0x0074DA30
+    virtual void FrameUpdate();                              // slot 9 0x0074C130
+    virtual bool Validate(CCharString&) const;               // slot 17 0x00749F00
+    virtual ETCInterfaceType GetInterfaceType() const;       // slot 21 0x0074D9F0
+    virtual CCharString GetClassTypeName() const;            // slot 22 0x0074DA00
+    virtual bool IsComponentSerialisable() const;            // slot 23 0x0074DA20
+    static ETCInterfaceType __fastcall StatGetInterfaceType() { return TCI_CREATURE_GENERATOR; }
+    void InitialiseCreatureGenerator(bool);                  // 0x0074B770 ?InitialiseCreatureGenerator@CTCCreatureGenerator@@QAEX_N@Z
+    void DrawDebugInfo(const CEnginePrimitivePrepareInfo&);  // 0x0074BC20 ?DrawDebugInfo@CTCCreatureGenerator@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
+protected:
+    void CreateCreatures(CThingCreatureBase*);               // 0x0074B2B0 ?CreateCreatures@CTCCreatureGenerator@@IAEXPAVCThingCreatureBase@@@Z
+    void DoNavCheck(const CThingCreatureBase&);              // 0x0074A4E0 ?DoNavCheck@CTCCreatureGenerator@@IAEXABVCThingCreatureBase@@@Z
+public:
+    unsigned char    CreatureFamilies[0xc];                  // +0x0c CArray<CDefIndex>
+    unsigned char    CreatedCreatures[0x4];                  // +0x18 list<CIntelligentPointer<CThing> >
+    unsigned char    CreatureTriggerers[0xc];                // +0x1c vector<CIntelligentPointer<CThingCreatureBase> >
+    TGenerationParameters GenParams;                         // +0x28
+    bool             Active;                                 // +0x4c
+    bool             Initialised;                            // +0x4d
+    bool             ReadyToInitialise;                      // +0x4e
+    bool             ExternalTrigger;                        // +0x4f
+    bool             WaitForAllCreaturesDead;                // +0x50
+    long             NumTriggersLeft;                        // +0x54
+    long             ActivationFrame;                        // +0x58
+    bool             LastSpaceTest;                          // +0x5c
+    std::vector<C3DVector> OpenPositions;                    // +0x60
+    std::vector<C3DVector> HiddenPositions;                  // +0x6c
+    std::vector<CEnginePrimitiveHandle> DebugPrimitives;     // +0x78
+    long             CreationCount;                          // +0x84
+    bool             UndeadTriggered;                        // +0x88
+    bool             Destroyed;                              // +0x89
+    CDefPointer<const CCreatureGeneratorDef> PDef;           // +0x8c
+    CIntelligentPointer<CThing> PRandomParticle;             // +0x90
+    long             FramesUntilRandomEffect;                // +0x98
+    long             FramesUntilRandomSoundEffect;           // +0x9c
+    bool             NeedToDoNavCheck;                       // +0xa0
+    bool             DoNavCheckOnGeneration;                 // +0xa1
+    CTCShapeManager* PExclusionArea;                         // +0xa4
+};
+FABLE_STATIC_ASSERT(sizeof(CTCCreatureGenerator) == 0xa8);
+#else // flattened Ego_r layout (the landed default)
 #include <stddef.h>
 #include "rebuild_abi.h"
 
@@ -78,5 +158,7 @@ FABLE_STATIC_ASSERT(offsetof(CTCCreatureGenerator, FramesUntilRandomSoundEffect)
 FABLE_STATIC_ASSERT(offsetof(CTCCreatureGenerator, NeedToDoNavCheck) == 0xa0);
 FABLE_STATIC_ASSERT(offsetof(CTCCreatureGenerator, DoNavCheckOnGeneration) == 0xa1);
 FABLE_STATIC_ASSERT(offsetof(CTCCreatureGenerator, PExclusionArea) == 0xa4);
+
+#endif // FABLE_RETAIL_CTCCREATUREGENERATOR
 
 #endif // FABLE_ENGINE_CTCCREATUREGENERATOR_H

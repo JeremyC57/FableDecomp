@@ -1,0 +1,89 @@
+addr       parity           behav  name
+00408550   RELOCATION_MATCH PASS   GetMaxShadowDetail
+00434a10   MATCH            PASS   PreChangeResolution
+00487b70   RELOCATION_MATCH PASS   GetPPlayerCharacterThing
+00487570   WARN RELOC_NAME: ?Sprintf@CWideString@@QAAXPBGZZ -> 0099ba70 labelled 'CWideString::Format'
+00487570   RELOCATION_MATCH PASS   DrawFreeCamDebug
+004dcbce   RELOCATION_MATCH PASS   ~CTCDecapitation
+004da967   RELOCATION_MATCH PASS   ~CTCActionUseBase
+004dcf4e   RELOCATION_MATCH PASS   ~CTCHasName
+00521620   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@PAV123@@std@@YIPAVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@PAV123@00ABU__false_type@0@@Z -> 005269b0 labelled 'std::__uninitialized_copy<NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *>'
+00521620   RELOCATION_MATCH PASS   SaveToGameStateBinary
+0057ae53   WARN SHARED_HEADER_AVAILABLE CThing
+0057ae53   WARN SHARED_HEADER_AVAILABLE CThingManager
+0057ae53   WARN RELOC_NAME: ?push_back@CThingList@@QAEXABQAVCThingCreatureBase@@@Z -> 005805c9 labelled 'LinkedList_InsertNode_Wrapper'
+0057ae53   RELOCATION_MATCH PASS   GetWivesInMarriageState
+005dae40   RELOCATION_MATCH PASS   ~CTCWeapon
+005eb9e0   RELOCATION_MATCH PASS   FrameUpdate
+00631c60   WARN RELOC_NAME: ??$TransferVector@J@CPersistContext@@QAEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z -> 00466a47 labelled 'CPersistContext::TransferBinary_00466a47'
+00631c60   WARN RELOC_NAME: ??$TransferVector@K@CPersistContext@@QAEXAAV?$vector@KV?$allocator@K@std@@@std@@@Z -> 00464841 labelled 'CPersistContext::TransferBinary_00464841'
+00631c60   WARN RELOC_NAME: ??$TransferMap@KK@CPersistContext@@QAEXAAV?$map@KKU?$less@K@std@@V?$allocator@U?$pair@$$CBKK@std@@@2@@std@@@Z -> 00431242 labelled '_global::PersistTransfer_00431242'
+00631c60   WARN RELOC_NAME: ??$TransferVector@M@CPersistContext@@QAEXAAV?$vector@MV?$allocator@M@std@@@std@@@Z -> 00464cbf labelled 'CPersistContext::TransferBinary_00464cbf'
+00631c60   RELOCATION_MATCH PASS   Transfer
+00666ef0   RELOCATION_MATCH PASS   AutoPlaceNearBuilding
+006868e0   MATCH            PASS   OnDie
+0071cd30   RELOCATION_MATCH PASS   FrameUpdate
+00719c70   RELOCATION_MATCH PASS   ~CTCScriptedControl
+007305a0   MATCH            PASS   Copy
+0073b0d0   RELOCATION_MATCH PASS   ResetModes
+00749a70   RELOCATION_MATCH PASS   ~CTCNoise
+00740420   RELOCATION_MATCH PASS   ~CModeJackOfBladesFloat
+00778d20   RELOCATION_MATCH PASS   ~CTCFamilyMember
+007adaa0   WARN SHARED_HEADER_AVAILABLE C3DVector
+007adaa0   RELOCATION_MATCH PASS   ~CTCAIScratchpad
+007cf0b0   RELOCATION_MATCH PASS   ~CTCCreatureTintEffect
+007ce370   WARN SHARED_HEADER_AVAILABLE CThing
+007ce370   RELOCATION_MATCH PASS   OnInitialActivate
+007e0b20   RELOCATION_MATCH PASS   ~CTCHeroSpecialMovement
+007f0890   RELOCATION_MATCH PASS   OnDie
+0089e190   RELOCATION_MATCH PASS   CameraUseCameraPoint
+008edff0   RELOCATION_MATCH PASS   CWillButtonHelperTimer
+008e31a0   RELOCATION_MATCH PASS   ~CModeDragonHover
+00ae8d50   WARN RELOC_NAME: ??$__copy@PAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@PAU12@H@std@@YIPAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z -> 00ae9cb0 labelled 'std::__copy<std::pair<long, CCountedPointer<NParticleEngine::CParticleEmitter>> *, std::pair<long, CCountedPointer<NParticleEngine::CParticleEmitter>> *, int>'
+00ae8d50   WARN RELOC_NAME: ??$__destroy_aux@PAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@std@@YIXPAU?$pair@JV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@0@0ABU__false_type@0@@Z -> 00ae9d50 labelled 'std::__destroy_aux<std::pair<long, CCountedPointer<NParticleEngine::CParticleEmitter>> *>'
+00ae8d50   WARN RELOC_NAME: ??1?$_List_base@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+00ae8d50   RELOCATION_MATCH PASS   Load
+00b67920   WARN SHARED_HEADER_AVAILABLE CEngineLandscapeMemoryManager
+00b67920   RELOCATION_MATCH PASS   ~CEngineLandscapeRenderer
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@W4EGameflowPosition@@@CPersistContext@@KI?AW4EGameflowPosition@@XZ -> 00cdca40 labelled 'sub_00cdca40'
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@_N@CPersistContext@@KI_NXZ -> 0040e240 labelled 'sub_0040e240'
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@J@CPersistContext@@KIJXZ -> 0040e160 labelled '_global::ReturnZero_ret0_0040e160'
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@W4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@@CPersistContext@@KI?AW4ArcheryOpenState@CQ_SunnyvaleMasterData@NScript@@XZ -> 00cdca50 labelled 'sub_00cdca50'
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@W4EPlaceInHeroSouls@@@CPersistContext@@KI?AW4EPlaceInHeroSouls@@XZ -> 00cdca60 labelled 'sub_00cdca60'
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@K@CPersistContext@@KIKXZ -> 0040e260 labelled 'sub_0040e260'
+00cdc070   WARN RELOC_NAME: ??$GetDefaultVal@M@CPersistContext@@KIMXZ -> 0040e250 labelled '_global::GetConstFloat_0_0040e250'
+00cdc070   RELOCATION_MATCH PASS   OnPersist
+
+WINS: 32
+  00408550 RELOCATION_MATCH CUserProfileManager::?GetMaxShadowDetail@CUserProfileManager@@QBEMXZ
+  00434a10 MATCH CDisplayEngine::?PreChangeResolution@CDisplayEngine@@QAEXXZ
+  00487b70 RELOCATION_MATCH CPlayer::?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ
+  00487570 RELOCATION_MATCH CPlayer::?DrawFreeCamDebug@CPlayer@@QBEXPBVC2DBoxF@@ABVCFontBank@@@Z
+  004dcbce RELOCATION_MATCH CTCDecapitation::??1CTCDecapitation@@UAE@XZ
+  004da967 RELOCATION_MATCH CTCActionUseBase::??1CTCActionUseBase@@UAE@XZ
+  004dcf4e RELOCATION_MATCH CTCHasName::??1CTCHasName@@UAE@XZ
+  00521620 RELOCATION_MATCH NThingManager::CEntityRuntimePersistence::?SaveToGameStateBinary@CEntityRuntimePersistence@NThingManager@@QAEXAAVCPersistContext@@@Z
+  0057ae53 RELOCATION_MATCH CTCHeroStats::GetWivesInMarriageState
+  005dae40 RELOCATION_MATCH CTCWeapon::??1CTCWeapon@@UAE@XZ
+  005eb9e0 RELOCATION_MATCH CTCTavernGame::?FrameUpdate@CTCTavernGame@@UAEXXZ
+  00631c60 RELOCATION_MATCH NUISystem::CUIDef::?Transfer@CUIDef@NUISystem@@UAEXAAVCPersistContext@@@Z
+  00666ef0 RELOCATION_MATCH CThingCreatureBase::?AutoPlaceNearBuilding@CThingCreatureBase@@QAE_NPBVCThingBuilding@@M@Z
+  006868e0 MATCH CTCBase::?OnDie@CTCBase@@UAEXXZ
+  0071cd30 RELOCATION_MATCH CTCHeroMorph::?FrameUpdate@CTCHeroMorph@@UAEXXZ
+  00719c70 RELOCATION_MATCH CTCScriptedControl::??1CTCScriptedControl@@UAE@XZ
+  007305a0 MATCH CTCDoor::?Copy@CTCDoor@@UAEXABVCTCBase@@@Z
+  0073b0d0 RELOCATION_MATCH CTCCreatureModeManager::?ResetModes@CTCCreatureModeManager@@QAEXXZ
+  00749a70 RELOCATION_MATCH CTCNoise::??1CTCNoise@@UAE@XZ
+  00740420 RELOCATION_MATCH NCreatureMode::CModeJackOfBladesFloat::??1CModeJackOfBladesFloat@NCreatureMode@@UAE@XZ
+  00778d20 RELOCATION_MATCH CTCFamilyMember::??1CTCFamilyMember@@UAE@XZ
+  007adaa0 RELOCATION_MATCH CTCAIScratchpad::??1CTCAIScratchpad@@UAE@XZ
+  007cf0b0 RELOCATION_MATCH CTCCreatureTintEffect::??1CTCCreatureTintEffect@@UAE@XZ
+  007ce370 RELOCATION_MATCH CTCElectrocutedEffect::?OnInitialActivate@CTCElectrocutedEffect@@UAEXXZ
+  007e0b20 RELOCATION_MATCH CTCHeroSpecialMovement::??1CTCHeroSpecialMovement@@UAE@XZ
+  007f0890 RELOCATION_MATCH CTCKrakenTentacle::?OnDie@CTCKrakenTentacle@@UAEXXZ
+  0089e190 RELOCATION_MATCH CGameScriptInterface::?CameraUseCameraPoint@CGameScriptInterface@@UBEXABVCScriptThing@@PBVC3DVector@@PBVCRightHandedSet@@MJJ@Z
+  008edff0 RELOCATION_MATCH CWillButtonHelperTimer::??0CWillButtonHelperTimer@@QAE@W4EHeroAbility@@AAVCThing@@@Z
+  008e31a0 RELOCATION_MATCH NCreatureMode::CModeDragonHover::??1CModeDragonHover@NCreatureMode@@UAE@XZ
+  00ae8d50 RELOCATION_MATCH NParticleEngine::CParticleEmitterDatabase::?Load@CParticleEmitterDatabase@NParticleEngine@@IAEXAAVCAFile@@ABVCEmitterDatabaseSerialiseInfo@2@@Z
+  00b67920 RELOCATION_MATCH CEngineLandscapeRenderer::??1CEngineLandscapeRenderer@@UAE@XZ
+  00cdc070 RELOCATION_MATCH NScript::CQ_SunnyvaleMasterData::?OnPersist@CQ_SunnyvaleMasterData@NScript@@UAEXAAVCPersistContext@@@Z

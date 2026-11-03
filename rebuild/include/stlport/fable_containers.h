@@ -240,6 +240,11 @@ public:
     void resize(size_type n,const _Tp& x) {if(n<size())erase(begin()+n,end());else _M_fill_insert(end(),n-size(),x);}
     void resize(size_type n) { resize(n,_Tp()); }
     void _M_fill_insert(iterator position,size_type n,const _Tp& x);
+#ifdef FABLE_RETAIL_STLP_VECTOR
+    // Retail branch (chunk 728, row 0x006D2BD0 CTCWife::OnSerialise): STLport 4.6 vector::reserve (stl/_vector.c), out of line in
+    // retail (reserve<CCharString> 0x004BA7A0, reserve<pair<CCharString,long> > 0x006D4680). A declaration only.
+    void reserve(size_type n);
+#endif
 protected:
     void _M_insert_overflow(iterator position,const _Tp& x,const __false_type&,size_type fillLength,bool atEnd);
     void _M_insert_overflow(iterator position,const _Tp& x,const __true_type&,size_type fillLength,bool atEnd);

@@ -1,0 +1,66 @@
+NEW 006d4c00 ??$TransferVector@U?$pair@VCCharString@@J@std@@@CPersistContext@@QAEXPBDAAV?$vector@U?$pai 
+    others: {} 
+    landed leaf: [('CPersistContext_TransferVectorCNamedLong_006d4c00.cpp', 'TransferVector')]
+NEW 0074b2b0 ?CreateCreatures@CTCCreatureGenerator@@IAEXPAVCThingCreatureBase@@@Z 
+    others: {'?CreateCreatures@CTCCreatureGenerator@@QAEXPAVCThingCreatureBase@@@Z': ['0074baa0']} 
+    landed leaf: []
+NEW 00b262c0 ?AddRenderLayer@CEngine@@AAEAAVCEngineLayerRenderer@@PAV2@@Z 
+    others: {} 
+    landed leaf: [('CEngine_AddRenderLayer_00b262c0.cpp', 'AddRenderLayer')]
+NEW 00b2a010 ??$AddEngineComponent@VCEnginePrimitiveRenderer@@@CEngine@@AAEXPAVCEnginePrimitiveRenderer 
+    others: {} 
+    landed leaf: [('CEngine_AddEngineComponentCEnginePrimitiveRenderer_00b2a010.cpp', 'AddEngineComponent')]
+NEW 00b2ac80 ?AddComponent@CEngineLayerRenderer@@QAEXPAVCEngineComponent@@@Z 
+    others: {} 
+    landed leaf: [('CEngineLayerRenderer_AddComponent_00b2ac80.cpp', 'AddComponent')]
+NEW 00b8fc40 ?ApplyCustomSettings@CDefaultEngineMemoryInit@@QAEXABVCEngineMemoryInit@@@Z 
+    others: {} 
+    landed leaf: [('CDefaultEngineMemoryInit_ApplyCustomSettings_00b8fc40.cpp', 'ApplyCustomSettings')]
+NEW 00c0e870 ?CreateDriver@CStreamSoundBank@@QAEPAVCSoundDriver@@PAVCSoundSample@@PBVCSoundPlayParamete 
+    others: {'?Apply@CEngine_00c16310@@QAEJPAXPBUCRecordBuilder_00c16310@@@Z': ['00c16310'], '?Create@Manager@@QAEPAXPAXABUParams@@@Z': ['00c2e2b0']} 
+    landed leaf: [('CScriptHost_CreateDriver_00c0e870.cpp', '?CreateDriver@CScriptHost@@QAEPAUCDriver@@PAUCSample@@ABUCSoundPlayParameters@@@Z')]
+NEW 00c12cd0 ?StartSound@CPooledResourceManager@@QAEXPAVCSoundDriver@@JPAJ1@Z 
+    others: {'?Resolve@CCombatGeometry_00c12d50@@QAEPAUCHit_00c12d50@@PAX0PAUCQuery_00c12d50@@': ['00c12d50'], '?StartSound@CSoundSystem_00c131c0@@QAEPAUCSoundInstance_00c131c0@@PAX0PAUCSoundR': ['00c131c0'], '?FindEntry_00c12cd0@CSoundEventManager@@QAEPAUCSoundEventEntry_00c13140@@JJPBUCP': ['00c13140']} 
+    landed leaf: []
+NEW 00c1bd10 ??0CSoundPlayParameters@@QAE@XZ 
+    others: {'??0CRecordBuilder_00c16310@@QAE@XZ': ['00c16310'], '??0CMessageEventList@@QAE@XZ': ['00c203a0'], '??0Params@@QAE@XZ': ['00c2e2b0']} 
+    landed leaf: []
+NEW 00c26090 ?FinishLoading@CStreamBuffer@@QAEJPAVCPooledResourceManager@@J@Z 
+    others: {'?Equip@CItem_00c26de0@@QAEJPAUCOwner_00c26de0@@J@Z': ['00c26de0']} 
+    landed leaf: [('CStreamBuffer_FinishLoading_00c26090.cpp', '?FinishLoading@CStreamBuffer@@QAEJPAUCSoundEventManager@@J@Z')]
+NEW 00c262e0 ?Attach@CStreamBuffer@@QAEXPAVCPooledResourceManager@@PAVCSoundSample@@JJ@Z 
+    others: {} 
+    landed leaf: [('CStreamBuffer_Attach_00c262e0.cpp', 'Attach')]
+NEW 00c26390 ?Release@CStreamBuffer@@QAEXPAVCPooledResourceManager@@@Z 
+    others: {'?Detach@CEntry_00c12140@@QAEXPAUCTCHero_00c12140@@@Z': ['00c12140'], '?Detach@CItem_00c26de0@@QAEXPAUCOwner_00c26de0@@@Z': ['00c26de0'], '?Release@CStreamBuffer@@QAEXPAUCPanel@@@Z': ['00c22080']} 
+    landed leaf: []
+NEW 00c26550 ??1CPooledResource@@QAE@XZ 
+    others: {} 
+    landed leaf: [('CBase_CBase_00c26550.cpp', '??0CBase@')]
+NEW 00c356f0 ?GetFormat@CSampleHeader@@QAEJPAUSSampleFormat@@K@Z 
+    others: {} 
+    landed leaf: [('CSampleHeader_GetFormat_00c356f0.cpp', 'GetFormat')]
+NEW 00c35770 ?FillPlayParameters@CSampleHeader@@QAEJPAVCSoundPlayParameters@@@Z 
+    others: {} 
+    landed leaf: [('CSoundTemplateRecord_FillPlayParameters_00c35770.cpp', 'FillPlayParameters@CSoundTemplateRecord')]
+NEW 01396e70 ?D3DTextureOperationModeTable@CRenderStateManager@@0PAKA 
+    others: {'?g_renderStateDefault_01396e70@@3KA': ['00b58de0']} 
+    landed leaf: []
+NEW 01396ee8 ?D3DTextureArgumentModeTable@CRenderStateManager@@0PAKA 
+    others: {'?g_renderStateDefault_01396ee8@@3KA': ['00b586a0']} 
+    landed leaf: []
+NEW 01396f68 ?D3DAlphaBlendModeTable@CRenderStateManager@@0PAKA 
+    others: {'?g_renderStateDefault_01396f68@@3KA': ['00b58de0']} 
+    landed leaf: []
+NEW 01436e20 ?g_pEngineDef_01436e20@@3PBVCEngineDef@@B 
+    others: {'?g_pRenderSettings_01436e20@@3PAUSRenderSettings_01436e20@@A': ['00b23d00'], '?g_pRenderSettings@@3PAUSRenderSettings@@A': ['00b8ff00']} 
+    landed leaf: []
+NEW 01436e3c ?g_pEngineScreenEffectOutlineGlow@@3PAVCEngineScreenEffectOutlineGlow@@A 
+    others: {'?g_pWaterRenderer@@3PAVCEngineWaterRenderer@@A': ['00b33010']} 
+    landed leaf: []
+NEW 01436e48 ?g_pEngineEnvironment_01436e48@@3PAVCEngineEnvironment@@A 
+    others: {'?g_envHost_b23b90@@3PAUCEnvHost@@A': ['00b23b90'], '?g_pEngineGlobals_01436e48@@3PAUSEngineGlobals_01436e48@@A': ['00b52b30'], '?g_pEngineSystem_01436e48@@3PAUSEngineSystem_01436e48@@A': ['00b990b0']} 
+    landed leaf: []
+NEW 01436e90 ?g_pEngineStateBlocks@@3PAVCEngineStateBlocks@@A 
+    others: {'?g_pEngineComponent_01436e90@@3PAUCEngineComponent_01436e90@@A': ['00bcd490'], '?g_pEngineStateBlock_01436e90@@3PAUCEngineStateBlockManager@@A': ['00bcb800']} 
+    landed leaf: []

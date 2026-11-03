@@ -1,0 +1,22 @@
+address	name	evidence
+0074b770	CTCCreatureGenerator::InitialiseCreatureGenerator	landing 2026-11-03c (chunk 728): RELOCATION_MATCH; Ego_r+FableWin ?InitialiseCreatureGenerator@CTCCreatureGenerator@@QAEX_N@Z
+00c267e0	CStreamLoadHandler::Process	landing 2026-11-03c (chunk 728): RELOCATION_MATCH; descriptive (libpk, no PDB/RTTI/trace string): slot 0 of the one-slot vtable 0x012B4018 installed by ctor 0x00C26A30; PKCWorkerThread::ProcessNextRequest 0x00C26B20 calls it per popped request
+006d2bd0	CTCWife::OnSerialise	landing 2026-11-03c (chunk 728 round 2): RELOCATION_MATCH; Ego_r+FableWin ?OnSerialise@CTCWife@@UAEXAAVCPersistContext@@_N@Z; CTCWife vtable 0x0125ED5C slot 1 (was CThingNPC::TransferLoveState)
+00b573a0	CEngineStateBlockAlpha::Apply	landing 2026-11-03c (chunk 731): RELOCATION_MATCH; Ego_r+FableWin ?Apply@CEngineStateBlockAlpha@@UAEXXZ
+00b57860	CEngineStateBlockAlpha2X::Apply	landing 2026-11-03c (chunk 731): RELOCATION_MATCH; Ego_r+FableWin ?Apply@CEngineStateBlockAlpha2X@@UAEXXZ
+00b57d20	CEngineStateBlockAdditiveAlpha::Apply	landing 2026-11-03c (chunk 731): RELOCATION_MATCH; Ego_r+FableWin ?Apply@CEngineStateBlockAdditiveAlpha@@UAEXXZ
+00b581e0	CEngineStateBlockAddSmoothAlpha::Apply	landing 2026-11-03c (chunk 731): RELOCATION_MATCH; Ego_r+FableWin ?Apply@CEngineStateBlockAddSmoothAlpha@@UAEXXZ
+00b26360	CEngine::Initialise	landing 2026-11-03c (chunk 731): RELOCATION_MATCH; Ego_r+FableWin ?Initialise@CEngine@@UAE_NABVCEngineInit@@@Z (CEngine vtable slot 2)
+0074b2b0	CTCCreatureGenerator::CreateCreatures	landing 2026-11-03c (chunk 728 NAME_FIXES): Ego_r+FableWin ?CreateCreatures@CTCCreatureGenerator@@IAEXPAVCThingCreatureBase@@@Z (protected); called by 0x0074B770 and 0x0074BAA0
+0074a4e0	CTCCreatureGenerator::DoNavCheck	landing 2026-11-03c (chunk 728 NAME_FIXES): Ego_r+FableWin ?DoNavCheck@CTCCreatureGenerator@@IAEXABVCThingCreatureBase@@@Z; InitialiseCreatureGenerator calls it with the live hero (was _global::VertexBuffer_FilterNavigableVertices)
+00686d90	CTCBase::PeekThingSearchTools	landing 2026-11-03c (chunk 728 NAME_FIXES): Ego_r+FableWin ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ; follows GetThingSearchTools 0x00686D80 as in Ego_r donor order
+0074bc20	CTCCreatureGenerator::DrawDebugInfo	landing 2026-11-03c (chunk 728 LABELS; row parked): Ego_r+FableWin ?DrawDebugInfo@CTCCreatureGenerator@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
+00701590	COpinionReactionManager::GetReactionMatchStrength	landing 2026-11-03c (chunk 728 round 2 NAME_FIXES): Ego_r+FableWin ?GetReactionMatchStrength@COpinionReactionManager@@QBEMW4EOpinionReactionType@@ABVCThingAICreature@@@Z
+007446a0	CTCPerceiveThing::GetPerceivedThing	landing 2026-11-03c (chunk 728 round 2 NAME_FIXES): Ego_r+FableWin ?GetPerceivedThing@CTCPerceiveThing@@QBEPBVCThing@@XZ
+00681e60	CTCCreatureOpinionOfHero::SetPersonalityOverride	landing 2026-11-03c (chunk 728 round 2 LABELS): Ego_r+FableWin ?SetPersonalityOverride@CTCCreatureOpinionOfHero@@QAEXJ_N@Z (was _global::SetPersonalityOverride_BuildOpinionTable)
+00b24850	CEngine::SetDefaultRenderStates	landing 2026-11-03c (chunk 731; row parked): Ego_r+FableWin ?SetDefaultRenderStates@CEngine@@AAEXXZ (private)
+00b8faa0	CEnginePrimitiveTypeInfo::CEnginePrimitiveTypeInfo	landing 2026-11-03c (chunk 731 NAME_FIXES): Ego_r+FableWin ??0CEnginePrimitiveTypeInfo@@QAE@XZ; stores ??_7CEnginePrimitiveTypeInfo@@6BCEngineComponent@@@ 0x012A3D14; CEngine::Initialise news 0xCC and calls it
+00b482a0	CEngineLightingManager::CEngineLightingManager	landing 2026-11-03c (chunk 731 LABELS): Ego_r+FableWin ??0CEngineLightingManager@@QAE@XZ; CEngine::Initialise news 0x46D0 bytes and calls it
+00b3cb30	CEngineResourceManager::CEngineResourceManager	landing 2026-11-03c (chunk 731 LABELS): Ego_r+FableWin ??0CEngineResourceManager@@QAE@ABVCEngineInit@@ABVCEngineMemoryInit@@@Z; CEngine::Initialise news 0x31E0 bytes
+00b8fc40	CDefaultEngineMemoryInit::ApplyCustomSettings	landing 2026-11-03c (chunk 731 LABELS): Ego_r+FableWin ?ApplyCustomSettings@CDefaultEngineMemoryInit@@QAEXABVCEngineMemoryInit@@@Z
+00b47630	CEngineLightingManager::SetupDefaultFogStates	landing 2026-11-03c (chunk 731 LABELS): Ego_r+FableWin ?SetupDefaultFogStates@CEngineLightingManager@@QAEXXZ

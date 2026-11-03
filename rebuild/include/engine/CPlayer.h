@@ -129,6 +129,10 @@ public:
     const CThingPlayerCreature* PeekPControlledCreature() const; // 0x00487DD0
     // Retail opt-in (chunk 718): Ego_r.pdb / FableWin.pdb ?DrawFreeCamDebug@CPlayer@@QBEXPBVC2DBoxF@@ABVCFontBank@@@Z (retail 0x00487570).
     void DrawFreeCamDebug(const C2DBoxF* box, const CFontBank& font) const;   // 0x00487570
+    // Retail opt-in (chunk 728, row 0x0074B770): FableWin.pdb ?GetPPlayerCharacter@CPlayer@@QBEPAVCThingPlayerCreature@@XZ (0x01A5B1A0),
+    // absent from Ego_r.pdb and inline in retail (`lea ecx,[eax+34h] ; call GetPItem 0x00A01B50` after PeekMyPlayer 0x0049D9D0).
+    // The body needs CThingPlayerCreature complete: engine/CThingPlayerCreature.h defines it (the CThing::PeekBaseDef pattern).
+    inline CThingPlayerCreature* GetPPlayerCharacter() const;
     // Retail opt-in (Codex pass 13, row 0x0121AF20 = the PlayerModeInfo dynamic initialiser `_$E1`): the private static mode table
     // and its 94 private ?Init/Uninit<Mode>@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z members (Ego_r + FableWin).
 private:

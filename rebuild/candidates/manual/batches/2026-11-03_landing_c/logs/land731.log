@@ -1,0 +1,22 @@
+addr       parity           behav  name
+00b573a0   RELOCATION_MATCH PASS   CEngineStateBlockAlpha::Apply
+00b57860   RELOCATION_MATCH PASS   CEngineStateBlockAlpha2X::Apply
+00b57d20   RELOCATION_MATCH PASS   CEngineStateBlockAdditiveAlpha::Apply
+00b581e0   RELOCATION_MATCH PASS   CEngineStateBlockAddSmoothAlpha::Apply
+00b26360   WARN RELOC_NAME: ?GetPDefFromClassIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@J@Z -> 009ade10 labelled 'CDefinitionManager::GetPDefFromGlobalIndex'
+00b26360   WARN RELOC_CONFLICT: ??0CEnginePrimitiveTypeInfo@@QAE@XZ -> 00b8faa0 here, 00a02d20 in landed 00a148d0
+00b26360   RELOCATION_MATCH PASS   CEngine::Initialise
+
+WINS: 5
+  00b573a0 RELOCATION_MATCH CEngineStateBlockAlpha::?Apply@CEngineStateBlockAlpha@@UAEXXZ
+  00b57860 RELOCATION_MATCH CEngineStateBlockAlpha2X::?Apply@CEngineStateBlockAlpha2X@@UAEXXZ
+  00b57d20 RELOCATION_MATCH CEngineStateBlockAdditiveAlpha::?Apply@CEngineStateBlockAdditiveAlpha@@UAEXXZ
+  00b581e0 RELOCATION_MATCH CEngineStateBlockAddSmoothAlpha::?Apply@CEngineStateBlockAddSmoothAlpha@@UAEXXZ
+  00b26360 RELOCATION_MATCH CEngine::?Initialise@CEngine@@UAE_NABVCEngineInit@@@Z
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  CEngineStateBlockAlpha_Apply_00b573a0
+  CEngineStateBlockAlpha2X_Apply_00b57860
+  CEngineStateBlockAdditiveAlpha_Apply_00b57d20
+  CEngineStateBlockAddSmoothAlpha_Apply_00b581e0
+  CEngine_Initialise_00b26360

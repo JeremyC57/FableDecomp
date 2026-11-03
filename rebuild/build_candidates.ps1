@@ -224557,13 +224557,6 @@ $catalog = @(
         PassPattern = '00b240c0_TEST PASS'
     }
     [pscustomobject]@{
-        Address = '00b25c00'
-        Module = 'CEngine'
-        Source = '00/b2/CEngine_RenderColorFilteredQuad_00b25c00.cpp'
-        TestSource = '00/b2/CEngine_RenderColorFilteredQuad_00b25c00_test.cpp'
-        PassPattern = '00b25c00_TEST PASS'
-    }
-    [pscustomobject]@{
         Address = '00b26010'
         Module = 'CEngine'
         Source = '00/b2/CEngine_OnPreDeviceReset_00b26010.cpp'
@@ -255160,13 +255153,6 @@ $catalog = @(
         Source = '00/72/CTCDummyVillager_CanBeRecreated_0072f9e0.cpp'
         TestSource = '00/72/CTCDummyVillager_CanBeRecreated_0072f9e0_test.cpp'
         PassPattern = '0072f9e0_TEST PASS'
-    }
-    [pscustomobject]@{
-        Address = '0074baa0'
-        Module = 'CTCCreatureGenerator'
-        Source = '00/74/CTCCreatureGenerator_UpdateCreatureTrigger_0074baa0.cpp'
-        TestSource = '00/74/CTCCreatureGenerator_UpdateCreatureTrigger_0074baa0_test.cpp'
-        PassPattern = '0074baa0_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0074e6e0'
@@ -380973,6 +380959,77 @@ $catalog = @(
         Source = '00/9d/CRenderManager2D_Render2DDrawList_009da9f0.cpp'
         TestSource = '00/9d/CRenderManager2D_Render2DDrawList_009da9f0_test.cpp'
         PassPattern = '009da9f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0074b770'
+        Module = 'CTCCreatureGenerator'
+        Source = '00/74/CTCCreatureGenerator_InitialiseCreatureGenerator_0074b770.cpp'
+        TestSource = '00/74/CTCCreatureGenerator_InitialiseCreatureGenerator_0074b770_test.cpp'
+        PassPattern = '0074b770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c267e0'
+        Module = 'CStreamLoadHandler'
+        Source = '00/c2/CStreamLoadHandler_Process_00c267e0.cpp'
+        TestSource = '00/c2/CStreamLoadHandler_Process_00c267e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c267e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d2bd0'
+        Module = 'CTCWife'
+        Source = '00/6d/CTCWife_OnSerialise_006d2bd0.cpp'
+        TestSource = '00/6d/CTCWife_OnSerialise_006d2bd0_test.cpp'
+        PassPattern = '006d2bd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b573a0'
+        Module = 'CEngineStateBlockAlpha'
+        Source = '00/b5/CEngineStateBlockAlpha_Apply_00b573a0.cpp'
+        TestSource = '00/b5/CEngineStateBlockAlpha_Apply_00b573a0_test.cpp'
+        PassPattern = '00b573a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b57860'
+        Module = 'CEngineStateBlockAlpha2X'
+        Source = '00/b5/CEngineStateBlockAlpha2X_Apply_00b57860.cpp'
+        TestSource = '00/b5/CEngineStateBlockAlpha2X_Apply_00b57860_test.cpp'
+        PassPattern = '00b57860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b57d20'
+        Module = 'CEngineStateBlockAdditiveAlpha'
+        Source = '00/b5/CEngineStateBlockAdditiveAlpha_Apply_00b57d20.cpp'
+        TestSource = '00/b5/CEngineStateBlockAdditiveAlpha_Apply_00b57d20_test.cpp'
+        PassPattern = '00b57d20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b581e0'
+        Module = 'CEngineStateBlockAddSmoothAlpha'
+        Source = '00/b5/CEngineStateBlockAddSmoothAlpha_Apply_00b581e0.cpp'
+        TestSource = '00/b5/CEngineStateBlockAddSmoothAlpha_Apply_00b581e0_test.cpp'
+        PassPattern = '00b581e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b26360'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_Initialise_00b26360.cpp'
+        TestSource = '00/b2/CEngine_Initialise_00b26360_test.cpp'
+        PassPattern = '00b26360_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0074baa0'
+        Module = 'CTCCreatureGenerator'
+        Source = '00/74/CTCCreatureGenerator_UpdateCreatureTrigger_0074baa0.cpp'
+        TestSource = '00/74/CTCCreatureGenerator_UpdateCreatureTrigger_0074baa0_test.cpp'
+        PassPattern = '0074baa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b25c00'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_RenderColorFilteredQuad_00b25c00.cpp'
+        TestSource = '00/b2/CEngine_RenderColorFilteredQuad_00b25c00_test.cpp'
+        PassPattern = '00b25c00_TEST PASS'
     }
 )
 

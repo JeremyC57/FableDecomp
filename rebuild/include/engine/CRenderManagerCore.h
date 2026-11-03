@@ -54,7 +54,11 @@ public:
     const C2DBoxF& GetCurrentAWindow() const;
     void SetTextureAsSelected(long, const CTexture*);
     void ResetTextures();
-    void SetTextureEnable(bool);
+    // ?SetTextureEnable@CRenderManagerCore@@QAEX_N@Z: FableWin.pdb only (inline in release; 0x00B25733 stores TexturesEnabled in place).
+    void SetTextureEnable(bool enable) { TexturesEnabled = enable; }
+    // ?EnableXBoxShaderConstants@CRenderManagerCore@@QAEX_N@Z 0x00A0AA20: an empty PC stub (`ret 4`), Ego_r.pdb 0x00B73FD0 between the
+    // SetMaterial and SetVertexFormat stubs as in retail (0x00A0AA10 `ret 8` SetMaterial).
+    void EnableXBoxShaderConstants(bool enable);
     void SetVertexFormat(unsigned long);
     void FlushRender();
     bool IsRendering();

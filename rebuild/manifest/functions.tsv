@@ -15267,7 +15267,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00681ba0	CParticleMorphs_TransferEntry	_global	unknown	undefined	0		0	yes	accepted									
 00681cd0	CTCCreatureOpinionOfHero	CTCCreatureOpinionOfHero	unknown	undefined	0		0	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\68\0x00681CD0_CGameScriptInterface_SetOpinionReactionMask.cpp				
 00681e30	SetOpinionReactionMask	CTCCreatureOpinionOfHero	__thiscall	void	2	CTCCreatureOpinionOfHero *,CCharString *	1	yes	accepted									
-00681e60	SetPersonalityOverride_BuildOpinionTable	_global	unknown	undefined	0		0	yes	accepted									
+00681e60	SetPersonalityOverride	CTCCreatureOpinionOfHero	unknown	undefined	0		0	yes	accepted									
 006820e0	SetPersonalityOverride	CTCCreatureOpinionOfHero	__thiscall	void	3	CTCCreatureOpinionOfHero *,CCharString *,bool	1	yes	accepted									
 00682140	ApplyOpinionTransientOffset	CTCCreatureOpinionOfHero	unknown	undefined	0		0	yes	accepted									
 006821e0	SetOpinionDeedMask	CTCCreatureOpinionOfHero	unknown	undefined	0		0	yes	accepted									
@@ -17091,7 +17091,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 006d18a0	Marry	CTCWife	__thiscall	void	2	CTCWife *,bool	1	yes	accepted									
 006d1de0	ReceivedConfirmation	CTCWife	__thiscall	void	2	CTCWife *,bool	1	yes	accepted									
 006d1e30	FrameUpdate	CTCWife	__thiscall	void	1	CTCWife *	1	yes	accepted									
-006d2bd0	CThingNPC::TransferLoveState	CThingNPC	unknown	undefined	0		0	yes	accepted									
+006d2bd0	OnSerialise	CTCWife	unknown	undefined	0		0	yes	accepted									
 006d33a0	CIVCountedPointer_Release_006d33a0	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6d\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006d33a0.cpp
 006d33d0	CIVCountedPointer_Release_006d33d0	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6d\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006d33d0.cpp
 006d33f0	CIVCountedPointer_Release_006d33f0	_global	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\6d\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_006d33f0.cpp
@@ -19989,7 +19989,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0074a190	HasHitCreationLimit	CTCCreatureGenerator	__thiscall	bool	1	CTCCreatureGenerator *	1	yes	accepted									
 0074a1e0	RemoveCreatureTriggerer	CTCCreatureGenerator	unknown	undefined	0		0	yes	accepted									
 0074a260	GetUndeadGenerationPoint	CTCCreatureGenerator	__thiscall	bool	3	CTCCreatureGenerator *,CThingCreatureBase *,C3DVector *	1	yes	accepted									
-0074a4e0	VertexBuffer_FilterNavigableVertices	_global	unknown	undefined	0		0	yes	accepted									
+0074a4e0	DoNavCheck	CTCCreatureGenerator	unknown	undefined	0		0	yes	accepted									
 0074a5d0	GetValidPositions	NCreatureHiding	__fastcall	void	7	vector<C3DVector,std::allocator<C3DVector>_> *,CWorldMap *,CThingSearchTools *,C3DVector *,float,bool,CTCShapeManager *	1	yes	accepted									
 0074aa00	CTCCreatureGenerator	CTCCreatureGenerator	__thiscall	undefined	1	CPSCOrbit *	0	yes	accepted									
 0074ab00	Destroy	CTCCreatureGenerator	unknown	undefined	0		0	yes	accepted									
@@ -40898,7 +40898,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b261d0	~CEngine	CEngine	__thiscall	void	1	CEngine *	1	yes	accepted									
 00b262c0	AddRenderLayer	CEngine	unknown	undefined	0		0	yes	accepted									
 00b26340	GFAllocEngine	_global	__thiscall	CEngineInternalPrimitiveBase *	2	CEnginePrimitive2DViewportManager *,EEnginePrimitiveType	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b2\CEnginePrimitive2DViewportManager_CreateInternalPrimitive_00b26340.cpp
-00b26360	?Initialise@CEngine@@UAE_NABVCEngineInit@@@Z	CEngine	__thiscall	bool	2	CEngine *,CEngineInit *	1	yes	accepted									
+00b26360	Initialise	CEngine	__thiscall	bool	2	CEngine *,CEngineInit *	1	yes	accepted									
 00b277a0	LoadNewScene	CEngine	__thiscall	void	2	CEngine *,CEngineInterpolationInfo *	1	yes	accepted									
 00b27d50	CutsceneAddCameraAngle	CEngine	__thiscall	void	2	CEngine *,CCamera const &	1	yes	accepted									
 00b27d90	CEngine::Render	CEngine	__thiscall	void	3	CEngine *,CEngineInterpolationInfo const &,ulong	1	yes	accepted									
@@ -41589,10 +41589,10 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00b56690	`scalar_deleting_destructor'	CEngineWeatherRenderer	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\b5\CLandscapeBackgroundPatch_vectordeletingdestructor_00b56690.cpp
 00b56b00	Apply	CEngineStateBlockSolid	__thiscall	void	1	CEngineStateBlockSolid *	1	yes	accepted									
 00b56f50	Apply	CEngineStateBlockSolid2X	__thiscall	void	1	CEngineStateBlockSolid2X *	1	yes	accepted									
-00b573a0	CEngineStateBlockAlpha::Apply	CEngineStateBlockAlpha	__thiscall	void	1	CEngineStateBlockAlpha *	1	yes	accepted									
-00b57860	CEngineStateBlockAlpha2X::Apply	CEngineStateBlockAlpha2X	__thiscall	void	1	CEngineStateBlockAlpha2X *	1	yes	accepted									
-00b57d20	CEngineStateBlockAdditiveAlpha::Apply	CEngineStateBlockAdditiveAlpha	__thiscall	void	1	CEngineStateBlockAdditiveAlpha *	1	yes	accepted									
-00b581e0	CEngineStateBlockAddSmoothAlpha::Apply	CEngineStateBlockAddSmoothAlpha	__thiscall	void	1	CEngineStateBlockAddSmoothAlpha *	1	yes	accepted									
+00b573a0	Apply	CEngineStateBlockAlpha	__thiscall	void	1	CEngineStateBlockAlpha *	1	yes	accepted									
+00b57860	Apply	CEngineStateBlockAlpha2X	__thiscall	void	1	CEngineStateBlockAlpha2X *	1	yes	accepted									
+00b57d20	Apply	CEngineStateBlockAdditiveAlpha	__thiscall	void	1	CEngineStateBlockAdditiveAlpha *	1	yes	accepted									
+00b581e0	Apply	CEngineStateBlockAddSmoothAlpha	__thiscall	void	1	CEngineStateBlockAddSmoothAlpha *	1	yes	accepted									
 00b586a0	Apply	CEngineStateBlockAlpha2XTFactor	__thiscall	void	1	CEngineStateBlockAlpha2XTFactor *	1	yes	accepted									
 00b58de0	Apply	CEngineStateBlockDiffuseOnly	__thiscall	void	1	CEngineStateBlockDiffuseOnly *	1	yes	accepted									
 00b58fb0	Apply	CEngineStateBlockDiffuse2X	__thiscall	void	1	CEngineStateBlockDiffuse2X *	1	yes	accepted									
@@ -44942,7 +44942,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00c266d0	sub_00c266d0	_global	unknown	undefined	0		0			discovered	gapscan							
 00c266e0	CNavigationTask_012b3fdc	CNavigationTask_012b3fdc	__thiscall	undefined	1	CScriptModuleBase *	0	yes	accepted									
 00c26740	sub_00c26740	_global	unknown	undefined	0		0			discovered	gapscan							
-00c267e0	UIManager_UpdateHeroEquipment	_global	unknown	undefined	0		0	yes	accepted									
+00c267e0	Process	CStreamLoadHandler	unknown	undefined	0		0	yes	accepted									
 00c26a30	CVtable_012b401c	CVtable_012b401c	__thiscall	undefined	3	CConsoleVariable *,CCharString *,long *	0	yes	accepted									
 00c26a60	PostRequest	CVtable_012b401c	unknown	undefined	0		0			discovered	gapscan							
 00c26a80	`scalar deleting destructor'	CVtable_012b4010	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\c2\CLandscapeBackgroundPatch_vectordeletingdestructor_00c26a80.cpp

@@ -59,8 +59,9 @@ class CEngineScreenEffectColourFilter { public:
 };
 extern CEngineScreenEffectColourFilter* g_pScreenEffectColourFilter;   // 0x01436E40
 
-class CEngine { public:
-    void SetDefaultRenderStates();           // 0x00B24850
+class CEngine {
+    void SetDefaultRenderStates();           // 0x00B24850 ?SetDefaultRenderStates@CEngine@@AAEXXZ (private in Ego_r.pdb / FableWin.pdb; landing 2026-11-03c)
+public:
     void RenderColorFilteredQuad(float x, float y, const C4DVector& colour, float width, float height, CTexture* texture);
 };
 

@@ -31,6 +31,11 @@ public:
     }
     template<class T,class Container,class Filter>
     void GetAllLeafThings(const Filter&,Container&)const;
+    // Chunk 728 (row 0x0074B770): GetAllThings<T,Container,Filter>, out of line in retail (Ego_r.pdb
+    // ??$GetAllThings@VCThingMarker@@V?$vector@PAVCThingMarker@@...@std@@VCThingFilter_HasDefGlobalIndex@@@CThingSearchTools@@QBEXAB...@AAV...@Z;
+    // retail instance 0x0074D940). A declaration only: no layout change.
+    template<class T,class Container,class Filter>
+    void GetAllThings(const Filter&,Container&)const;
     CThingSearchTools(CThingManager&,CWorldMap&);
     ~CThingSearchTools();
     template<class T,class Container,class Filter>

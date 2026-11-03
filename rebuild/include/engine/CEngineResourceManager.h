@@ -18,8 +18,13 @@ class CMeshDataBank; class CGraphicDataBank; class CFontBank;
 class CShaderResource; class CGPUScratchBufferTextureManager;
 enum EShaderBankNo;                                          // MS forward enums (chunk 723; no enumerator name recovered)
 enum EIndexBufferPool;
+class CEngineInit;
+class CEngineMemoryInit;
 class CEngineResourceManager : public CEngineComponent, public CAsyncLoadingProcessCallback {
 public:
+    // Chunk 731: ??0CEngineResourceManager@@QAE@ABVCEngineInit@@ABVCEngineMemoryInit@@@Z 0x00B3CB30 (Ego_r.pdb / FableWin.pdb;
+    // CEngine::Initialise 0x00B26360 news 0x31E0 bytes and passes the init and its CDefaultEngineMemoryInit local).
+    CEngineResourceManager(const CEngineInit& init, const CEngineMemoryInit& memory_init);
     virtual ~CEngineResourceManager();
     virtual void ProcessLoading();
     virtual unsigned long PeekSceneFilterFlags() const;

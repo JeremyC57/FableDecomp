@@ -170,6 +170,27 @@ public:
     __forceinline void SetTextureUVModeV(long stage, TEXTURE_UV_MODE mode) { SetRenderState(D3DTextureUVModeTable[mode], DeviceState.TextureUVModeV[stage]); }
     __forceinline void SetTextureUVModeW(long stage, TEXTURE_UV_MODE mode) { SetRenderState(D3DTextureUVModeTable[mode], DeviceState.TextureUVModeW[stage]); }
     __forceinline void SetTextureCoordIndex(long stage, long index) { SetRenderState(index, DeviceState.TextureCoordIndex[stage]); }
+    // Texture stage colour / alpha operation and argument setters (?SetTextureOperation@CRenderStateManager@@QAEXJW4TEXTURE_OP_MODE@@@Z,
+    // ?SetTextureArgument1@CRenderStateManager@@QAEXJW4TEXTURE_ARG_MODE@@@Z, ...): FableWin.pdb has the out-of-line debug copies, Ego_r.pdb
+    // none (inline in release); the CEngineStateBlock* Apply bodies 0x00B573A0.. expand them through D3DTextureOperationModeTable
+    // 0x01396E70 / D3DTextureArgumentModeTable 0x01396EE8.
+    __forceinline void SetTextureOperation(long stage, TEXTURE_OP_MODE mode) { SetRenderState(D3DTextureOperationModeTable[mode], DeviceState.TextureOperation[stage]); }
+    __forceinline void SetTextureAlphaOperation(long stage, TEXTURE_OP_MODE mode) { SetRenderState(D3DTextureOperationModeTable[mode], DeviceState.TextureAlphaOperation[stage]); }
+    __forceinline void SetTextureArgument1(long stage, TEXTURE_ARG_MODE mode) { SetRenderState(D3DTextureArgumentModeTable[mode], DeviceState.TextureArgument1[stage]); }
+    __forceinline void SetTextureArgument2(long stage, TEXTURE_ARG_MODE mode) { SetRenderState(D3DTextureArgumentModeTable[mode], DeviceState.TextureArgument2[stage]); }
+    __forceinline void SetTextureAlphaArgument1(long stage, TEXTURE_ARG_MODE mode) { SetRenderState(D3DTextureArgumentModeTable[mode], DeviceState.TextureAlphaArgument1[stage]); }
+    __forceinline void SetTextureAlphaArgument2(long stage, TEXTURE_ARG_MODE mode) { SetRenderState(D3DTextureArgumentModeTable[mode], DeviceState.TextureAlphaArgument2[stage]); }
+    // More public setters with no out-of-line copy in Ego_r.pdb (FableWin.pdb has the debug bodies), expanded by
+    // CEngine::SetDefaultRenderStates 0x00B24850: fog colour / range (a float's bits are the D3D value: retail spills the constant
+    // to a stack slot and reloads it as a dword, 0x00B24E7E), dither, lighting, anisotropy and the texture transform flags
+    // (D3DTextureTransformModeTable 0x01396FCC).
+    __forceinline void SetFogColour(unsigned long colour) { SetRenderState(colour, DeviceState.FogColour); }
+    __forceinline void SetFogStart(float start) { SetRenderState(*(unsigned long*)&start, DeviceState.FogStart); }
+    __forceinline void SetFogEnd(float end) { SetRenderState(*(unsigned long*)&end, DeviceState.FogEnd); }
+    __forceinline void SetDitherEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.DitherEnable); }
+    __forceinline void SetLightingEnable(bool enable) { SetRenderState(enable ? 1 : 0, DeviceState.LightingEnable); }
+    __forceinline void SetTextureMaxAnisotropy(long stage, long anisotropy) { SetRenderState(anisotropy, DeviceState.TextureMaxAnisotropy[stage]); }
+    __forceinline void SetTextureTransformMode(long stage, TEXTURE_TRANSFORM_MODE mode) { SetRenderState(D3DTextureTransformModeTable[mode], DeviceState.TextureTransformMode[stage]); }
     // ?SetTextureMipmapLODBias@CRenderStateManager@@QAEXJM@Z: the float's bits are the D3D value (0x00B705DE: the bias is copied
     // to a stack slot and reloaded as a dword).
     __forceinline void SetTextureMipmapLODBias(long stage, float bias) { SetRenderState(*(unsigned long*)&bias, DeviceState.TextureMipmapLODBias[stage]); }
@@ -178,15 +199,10 @@ public:
     void SetColourWriteEnable(bool,bool,bool,bool);
     void SetColourWriteEnable(bool);
     void SetVertexBlending(VERTEX_BLEND_MODE);
-    void SetDitherEnable(bool);
-    void SetFogStart(float);
-    void SetFogEnd(float);
     void SetFogDensity(float);
-    void SetFogColour(unsigned long);
     void SetFogMode(FOG_MODE);
     void SetFogVertexMode(FOG_MODE);
     void SetTextureFactor(unsigned long);
-    void SetLightingEnable(bool);
     void SetNormalizeNormals(bool);
     void SetAmbientMaterialColourSource(MATERIAL_COLOUR_SOURCE);
     void SetDiffuseMaterialColourSource(MATERIAL_COLOUR_SOURCE);
@@ -200,14 +216,6 @@ public:
     void SetPointScaleDistanceFactor(float);
     void SetPointScaleDistanceSqrFactor(float);
     void SetTextureCoordWrapUVW(long,bool,bool,bool);
-    void SetTextureOperation(long,TEXTURE_OP_MODE);
-    void SetTextureAlphaOperation(long,TEXTURE_OP_MODE);
-    void SetTextureArgument1(long,TEXTURE_ARG_MODE);
-    void SetTextureArgument2(long,TEXTURE_ARG_MODE);
-    void SetTextureAlphaArgument1(long,TEXTURE_ARG_MODE);
-    void SetTextureAlphaArgument2(long,TEXTURE_ARG_MODE);
-    void SetTextureMaxAnisotropy(long,long);
-    void SetTextureTransformMode(long,TEXTURE_TRANSFORM_MODE);
     void SetTextureBorderColour(long,unsigned long);
     void SetTextureBumpEnvMatrix(long,float,float,float,float);
     void SetStencilEnable(bool);
@@ -236,8 +244,8 @@ private:
     static unsigned long D3DTextureUVModeTable[4];                       // 0x01396DC8 {1..4} = D3DTADDRESS_WRAP, MIRROR, CLAMP, BORDER
     static unsigned long D3DTextureFilterModeTable[3];                   // 0x01396E58
     static unsigned long D3DTextureMipMapModeTable[3];                   // 0x01396E64
-    static unsigned long D3DTextureOperationModeTable[24];
-    static unsigned long D3DTextureArgumentModeTable[20];
+    static unsigned long D3DTextureOperationModeTable[24];                // 0x01396E70 {1..24} = D3DTOP_DISABLE .. DOTPRODUCT3
+    static unsigned long D3DTextureArgumentModeTable[20];                 // 0x01396EE8 {1, 0, 2, 3, 4, 0x11..} = D3DTA_CURRENT, DIFFUSE, TEXTURE ..
     static unsigned long D3DStencilOperationModeTable[8];
     static unsigned long D3DPolyShadeModeTable[2];                       // 0x01396F9C
     static unsigned long D3DPolyFillModeTable[3];                        // 0x01396FA4
@@ -248,7 +256,7 @@ private:
     static unsigned long D3DStencilFuncModeTable[8];
     static unsigned long D3DVertexBlendModeTable[4];
     static unsigned long D3DShadowFuncModeTable[8];
-    static unsigned long D3DTextureTransformModeTable[10];
+    static unsigned long D3DTextureTransformModeTable[10];               // 0x01396FCC {0..4, 0x100..0x104} = D3DTTFF_DISABLE .. COUNT4|PROJECTED
     static unsigned long D3DMaterialColourSourceTable[3];
     static unsigned long D3DFogTableMode[4];
     static unsigned long D3DBlendOpModeTable[5];                         // 0x01396ED0 {1..5} = D3DBLENDOP_ADD .. MAX (723: D3DBlendOpTable)

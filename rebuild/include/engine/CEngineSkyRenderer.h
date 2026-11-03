@@ -5,6 +5,92 @@
 // Retail evidence: 0 trusted landed function(s); reconciliation clean.
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+#ifdef FABLE_RETAIL_CENGINESKYRENDERER
+// Retail opt-in (chunk 727, the constructor 0x00B625E0): CEngineSkyRenderer : CEngineComponent (vtable 0x012A293C, RTTI
+// .?AVCEngineSkyRenderer@@), 0x194 bytes, member names and offsets from Ego_r.pdb (no container member, retail = Ego_r; the
+// constructor builds every member at the offsets below). The shader / buffer / string / def-pointer members are the retail
+// classes of their own headers. Ctor ??0CEngineSkyRenderer@@QAE@ABVCEngineInit@@@Z (Ego_r.pdb); BuildBuffers
+// ?BuildBuffers@CEngineSkyRenderer@@AAEXXZ 0x00B620A0 (private, called last by the ctor).
+// Chunk 731 (landing 2026-11-03c): CEngine::Initialise 0x00B26360 news 0x194 bytes before the ctor call and adds the component to
+// the render layers, so the class also declares its PeekSceneFilterFlags override (CEngineComponent slot 10 is pure in the tree branch).
+#ifndef FABLE_RETAIL_CENGINECOMPONENT
+#define FABLE_RETAIL_CENGINECOMPONENT
+#endif
+#ifndef FABLE_RETAIL_CVERTEXBUFFERWIN32
+#define FABLE_RETAIL_CVERTEXBUFFERWIN32
+#endif
+#ifndef FABLE_RETAIL_CINDEXBUFFER
+#define FABLE_RETAIL_CINDEXBUFFER
+#endif
+#ifndef FABLE_RETAIL_CVERTEXSHADER
+#define FABLE_RETAIL_CVERTEXSHADER
+#endif
+#ifndef FABLE_RETAIL_CWIDESTRING
+#define FABLE_RETAIL_CWIDESTRING
+#endif
+#ifndef FABLE_RETAIL_C2DVECTOR
+#define FABLE_RETAIL_C2DVECTOR
+#endif
+#ifndef FABLE_RETAIL_DEF_CLASS_BASE
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#endif
+#include <stddef.h>
+#include "rebuild_abi.h"
+#include "fable_string.h"
+#include "engine/CEngineComponent.h"
+#include "engine/CVertexBufferWin32.h"
+#include "engine/CIndexBuffer.h"
+#include "engine/CVertexShader.h"
+#include "engine/CPixelShader.h"
+#include "engine/C2DVector.h"
+#include "engine/CDefPointer.h"
+class CEngineInit;
+class CSkyDef;
+class CEngineSkyRenderer : public CEngineComponent {
+public:
+    CEngineSkyRenderer(const CEngineInit& init);                         // 0x00B625E0
+    virtual ~CEngineSkyRenderer();                                       // slot 0  0x00B621A0
+    virtual unsigned long PeekSceneFilterFlags() const;                  // slot 10 ?PeekSceneFilterFlags@CEngineSkyRenderer@@UBEKXZ (Ego_r / FableWin; chunk 731)
+    float              CloudHeightOffset;                                // +0x0c
+    float              CloudTextureOffset;                               // +0x10
+    float              CloudTextureMulitplier;                           // +0x14
+    float              CloudSpeedMultiplier;                             // +0x18
+    float              CloudMaxSpeed;                                    // +0x1c
+    float              CloudMinSpeed;                                    // +0x20
+    CVertexBufferWin32 StarFieldVertexBuffer;                            // +0x24
+    CVertexBufferWin32 VertexBuffer;                                     // +0x58
+    CIndexBuffer       IndexBuffer;                                      // +0x8c
+    CVertexBufferWin32 SolidBaseBandVertexBuffer;                        // +0xa0
+    CIndexBuffer       SolidBaseBandIndexBuffer;                         // +0xd4
+    CVertexShader      CloudVertexShader;                                // +0xe8
+    CVertexShader      SkyVertexShader;                                  // +0xf0
+    CVertexShader      StarFieldVertexShader;                            // +0xf8
+    CPixelShader       StarFieldPixelShader;                             // +0x100
+    CVertexShader      StarFieldReflectionVertexShader;                  // +0x108
+    CVertexShader      SkySpriteVertexShader;                            // +0x110
+    CVertexShader      BaseBandVertexShader;                             // +0x118
+    CPixelShader       CloudPixelShader;                                 // +0x120
+    CPixelShader       SkyPixelShader;                                   // +0x128
+    CPixelShader       SkySpritePixelShader;                             // +0x130
+    CPixelShader       BaseBandPixelShader;                              // +0x138
+    CVertexShader      ScreenSpaceSpriteVertexShader;                    // +0x140
+    CPixelShader       ScreenSpaceSpritePixelShader;                     // +0x148
+    long               StarCount;                                        // +0x150
+    CWideString        StarBitmapFilePath;                               // +0x154
+    CWideString        StarVBFilePath;                                   // +0x158
+    C2DVector          CloudVector[2];                                   // +0x15c
+    C2DVector          CloudVectorHistory[2][2];                         // +0x16c
+    bool               EnableClouds;                                     // +0x18c
+    CDefPointer<const CSkyDef> PSkyDef;                                  // +0x190
+private:
+    void BuildBuffers();                                                 // 0x00B620A0
+};
+FABLE_STATIC_ASSERT(sizeof(CEngineSkyRenderer) == 0x194);
+FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, StarFieldVertexBuffer) == 0x24);
+FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, CloudVertexShader) == 0xe8);
+FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, StarCount) == 0x150);
+FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, PSkyDef) == 0x190);
+#else // flattened Ego_r layout (the landed default, unchanged)
 #include <stddef.h>
 #include "rebuild_abi.h"
 
@@ -86,4 +172,5 @@ FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, CloudVectorHistory) == 0x16c);
 FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, EnableClouds) == 0x18c);
 FABLE_STATIC_ASSERT(offsetof(CEngineSkyRenderer, PSkyDef_Object) == 0x190);
 
+#endif // FABLE_RETAIL_CENGINESKYRENDERER
 #endif // FABLE_ENGINE_CENGINESKYRENDERER_H

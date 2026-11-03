@@ -66,7 +66,9 @@ class CTCCreatureGenerator { public:
     bool                           LastSpaceTest;          // +0x5c
     unsigned char                  _pad5d[0x2b];           // +0x5d
     bool                           UndeadTriggered;        // +0x88
-    void CreateCreatures(CThingCreatureBase* creature);    // 0x0074B2B0
+protected:
+    void CreateCreatures(CThingCreatureBase* creature);    // 0x0074B2B0 ?CreateCreatures@CTCCreatureGenerator@@IAEXPAVCThingCreatureBase@@@Z (protected in Ego_r.pdb / FableWin.pdb; landing 2026-11-03c)
+public:
     void UpdateCreatureTrigger(long frame);
 };
 

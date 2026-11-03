@@ -36,6 +36,8 @@ public:
  void EndRender();                                                      // 0x009BEF50 ?EndRender@CDisplayManager@@QAEXXZ
  bool SwapScreens();                                                    // 0x009BEEB0 ?SwapScreens@CDisplayManager@@QAE_NXZ
  const C2DExtentsI GetRenderTargetDimensions();                         // 0x009BEDC0 ?GetRenderTargetDimensions@CDisplayManager@@QAE?BVC2DExtentsI@@XZ
+ void AddDeviceResetCallback(CDeviceResetCallback* callback);          // 0x009C0190 ?AddDeviceResetCallback@CDisplayManager@@QAEXPAVCDeviceResetCallback@@@Z (CEngine::Initialise)
+ unsigned long GetVertexShaderVersion() const;                         // 0x009BEDE0 ?GetVertexShaderVersion@CDisplayManager@@QBEKXZ (Ego_r 0x00B23A60, FableWin)
  // FableWin.pdb ?GetRenderManager@CDisplayManager@@QAEAAVCRenderManager@@XZ (debug only: inline in release; 0x006286F0 reads
  // PRenderManager +0x08 in place).
  CRenderManager& GetRenderManager(){return *PRenderManager;}

@@ -8,6 +8,9 @@
 // Members whose classes have no shared header are opaque `unsigned char X[N]` carrying their real type in a comment.
 #include "engine/CGameComponent.h"
 class CGame;
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT
+class CGameDefinitionManager;
+#endif
 class CASoundBank;
 class CMainGameComponentInit;
 class CMainGameComponent : public CGameComponent {
@@ -62,6 +65,12 @@ protected:
 public:
     static CMainGameComponent* __fastcall Get() { return PMainGameComponent; }
     static long __fastcall GetConstantFPS() { return ConstantFPS; }
+#ifdef FABLE_RETAIL_CMAINGAMECOMPONENT
+    // Retail opt-in (chunk 728, row 0x0074B770): Ego_r.pdb (0x00415162) / FableWin.pdb
+    // ?PeekDefinitionManager@CMainGameComponent@@QBEABVCGameDefinitionManager@@XZ, out of line in retail (the jmp thunk 0x00415FBC
+    // every caller calls, the only spelling bound there). A declaration only: no layout or vtable change.
+    const CGameDefinitionManager& PeekDefinitionManager() const;   // 0x00415FBC
+#endif
     CMainGameComponent(CGame&,const CMainGameComponentInit&);
     virtual ~CMainGameComponent();
     virtual bool Run(CGameComponent**);

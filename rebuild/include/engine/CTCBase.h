@@ -46,6 +46,7 @@ class CPlayerManager;
 class CTCParamsBase;
 class CThing;
 class CThingManager;
+class CThingSearchTools;
 class CWorld;
 class CWorldMap;
 namespace NTCMessages { class CMessageBase; }
@@ -85,6 +86,10 @@ public:
     virtual void GlobalUpdate(bool);                                     // 26 0x006869A0
     virtual void HandleMessage(const NTCMessages::CMessageBase&);        // 27 0x006869B0
     void RemoveFromGlobalTCs();                                          // 0x00686DF0 ?RemoveFromGlobalTCs@CTCBase@@QAEXXZ (chunk 712)
+    // Retail opt-in addition (chunk 728): the public inline parent accessors, FableWin.pdb only (?GetParentThing@CTCBase@@QAEAAVCThing@@XZ
+    // 0x01AA5F60 / ?GetParentThing@CTCBase@@QBEABVCThing@@XZ 0x01C91790; inline in Ego_r and retail, which read ParentThing +0x04 in place).
+    CThing& GetParentThing() { return *ParentThing; }
+    const CThing& GetParentThing() const { return *ParentThing; }
 protected:
     const CThingManager& GetThingManager() const;                        // 0x00686AF0 ?GetThingManager@CTCBase@@IBEABVCThingManager@@XZ
     CThingManager& GetThingManager();                                    // 0x00686AE0 ?GetThingManager@CTCBase@@IAEAAVCThingManager@@XZ (Ego_r 0x006B1ED0)
@@ -93,6 +98,16 @@ protected:
     const CWorld& PeekWorld() const;                                     // 0x00686A80 ?PeekWorld@CTCBase@@IBEABVCWorld@@XZ (Ego_r 0x006B1E70 + FableWin 0x02190D60; chunk 713)
     const CWorldMap& PeekWorldMap() const;                               // 0x00686D20 ?PeekWorldMap@CTCBase@@IBEABVCWorldMap@@XZ (chunk 714)
     CPlayerManager& GetPlayerManager();                                  // 0x00686D40 ?GetPlayerManager@CTCBase@@IAEAAVCPlayerManager@@XZ
+    // Retail opt-in addition (chunk 728, row 0x0074B770 CTCCreatureGenerator::InitialiseCreatureGenerator): the protected non-virtual
+    // accessors GetWorld 0x00686A70 (Ego_r.pdb 0x006B1E60 / FableWin.pdb 0x02190D40 ?GetWorld@CTCBase@@IBEAAVCWorld@@XZ, const returning
+    // CWorld&; the bound spelling at 0x00686A70), GetThingSearchTools 0x00686D80 (Ego_r 0x006B2170 / FableWin 0x021915B0
+    // ?GetThingSearchTools@CTCBase@@IAEAAVCThingSearchTools@@XZ) and PeekThingSearchTools 0x00686D90 (Ego_r 0x006B2180 / FableWin
+    // 0x021915D0 ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ); the Ego_r donor order GetWorld .. PeekWorldMap 0x006B2110
+    // .. GetThingSearchTools 0x006B2170 / PeekThingSearchTools 0x006B2180 matches retail 0x00686A70 .. 0x00686D20 .. 0x00686D80 / 0x00686D90.
+    // Declarations only: no layout or vtable change.
+    CWorld& GetWorld() const;                                            // 0x00686A70
+    CThingSearchTools& GetThingSearchTools();                            // 0x00686D80
+    const CThingSearchTools& PeekThingSearchTools() const;               // 0x00686D90
 public:
     CThing* ParentThing;                                                 // +0x04
     bool    ToBeRemoved;                                                 // +0x08

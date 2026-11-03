@@ -1,5 +1,77 @@
 #ifndef FABLE_ENGINE_CENGINELIGHTINGMANAGER_H
 #define FABLE_ENGINE_CENGINELIGHTINGMANAGER_H
+#ifdef FABLE_RETAIL_CENGINELIGHTINGMANAGER
+// Retail opt-in (chunk 723b): CEngineLightingManager : CEnginePrimitiveManager (+0) , CEngineComponent (+0xC) (RTTI
+// .?AVCEngineLightingManager@@); the engine's instance is 0x01436E9C (settled spelling g_pEngineLightingManager, NAME_FIXES_QUEUE c722). Own members from +0x18 with their
+// Ego_r.pdb names and offsets up to the primitive fog colour (the first container, ThemeChannels +0x3C, is a 12-byte STLport
+// CArray in both: Ego_r's 0x10 vector would put PrimitiveDiffuseColour at +0x4C, retail reads the theme channels' first element
+// through +0x3C and the default header's +0x48 follows the retail size); the rest is opaque to sizeof 0x46D0. Nested
+// CThemeChannel (Ego_r.pdb struct, 0x70 bytes): the five colours, fog range, shadow factors and fog transform.
+#ifndef FABLE_RETAIL_C4DVECTOR
+#define FABLE_RETAIL_C4DVECTOR
+#endif
+#ifndef FABLE_RETAIL_CMATRIX3X4
+#define FABLE_RETAIL_CMATRIX3X4
+#endif
+#ifndef FABLE_RETAIL_CENGINECOMPONENT
+#define FABLE_RETAIL_CENGINECOMPONENT
+#endif
+#include <stddef.h>
+#include "rebuild_abi.h"
+#include "engine/CArray.h"
+#include "engine/C3DVector.h"
+#include "engine/C4DVector.h"
+#include "engine/CRGBFloatColour.h"
+#include "engine/CEnginePrimitiveManager.h"
+#include "engine/CEngineComponent.h"
+class C3DBoundingBox;
+class CEngineLocalLightArray;
+struct CEnginePrimitiveThemeChannelDesc;
+class CEngineLightingManager : public CEnginePrimitiveManager, public CEngineComponent {
+public:
+    // Chunk 731: the constructor (CEngine::Initialise 0x00B26360 news 0x46D0 bytes) and the overrides of the pure CEnginePrimitiveManager
+    // slots and CEngineComponent::PeekSceneFilterFlags (Ego_r.pdb / FableWin.pdb spellings).
+    CEngineLightingManager();                                            // 0x00B482A0 ??0CEngineLightingManager@@QAE@XZ
+    virtual CEngineInternalPrimitiveBase* CreateInternalPrimitive(EEnginePrimitiveType type);   // ?CreateInternalPrimitive@CEngineLightingManager@@UAEPAVCEngineInternalPrimitiveBase@@W4EEnginePrimitiveType@@@Z
+    virtual void GetSupportedTypes(CEnginePrimitiveTypeList& types) const;                      // ?GetSupportedTypes@CEngineLightingManager@@UBEXAAVCEnginePrimitiveTypeList@@@Z
+    virtual ERendered RenderPrimitive(CEngineInternalPrimitiveBase& prim, EEngineRenderLayer layer, CEngineSubPrimitiveChain& chain);   // ?RenderPrimitive@CEngineLightingManager@@UAE?AW4ERendered@@...@Z
+    virtual unsigned long PeekSceneFilterFlags() const;                  // ?PeekSceneFilterFlags@CEngineLightingManager@@UBEKXZ
+    // Ego_r.pdb / FableWin.pdb publics, out of line in retail (the ice pass 0x00B751F0 calls them):
+    CEngineLocalLightArray* GetLightsInArea(const C3DBoundingBox& area, long maxLights,
+                                            const CEnginePrimitiveThemeChannelDesc& channel);   // 0x00B46280
+    void SetupShaderPointLights(const CEngineLocalLightArray& lights);   // 0x00B44F20
+    void DisablePointLights();                                           // 0x00B44D50
+    void UpdateGlobalLightingStates();                                   // 0x00B46C80
+    void SetupDefaultFogStates();                                        // 0x00B47630 ?SetupDefaultFogStates@CEngineLightingManager@@QAEXXZ (CEngine::SetDefaultRenderStates 0x00B25877)
+    struct CThemeChannel {                                               // 0x70 bytes (Ego_r.pdb; U-keyed in the allocator names)
+        CRGBFloatColour DiffuseColour;                                   // +0x00
+        CRGBFloatColour AmbientColour;                                   // +0x10
+        CRGBFloatColour BacklightColour;                                 // +0x20
+        CRGBFloatColour ReflectionColour;                                // +0x30
+        CRGBFloatColour FogColour;                                       // +0x40
+        float           FogStartZ;                                       // +0x50
+        float           FogEndZ;                                         // +0x54
+        float           ShadowFactor;                                    // +0x58
+        float           FadedShadowFactor;                               // +0x5c
+        C4DVector       FogTransform;                                    // +0x60
+    };
+    C3DVector              SunVector;                                    // +0x18
+    C3DVector              MoonVector;                                   // +0x24
+    C3DVector              DiffuseVector;                                // +0x30
+    CArray<CThemeChannel>  ThemeChannels;                                // +0x3c
+    CRGBFloatColour        PrimitiveDiffuseColour;                       // +0x48
+    CRGBFloatColour        PrimitiveAmbientColour;                       // +0x58
+    CRGBFloatColour        PrimitiveBacklightColour;                     // +0x68
+    CRGBFloatColour        PrimitiveFogColour;                           // +0x78
+private:
+    unsigned char          _pad_0x88[0x46d0 - 0x88];                     // +0x88 PrimitiveFogStartZ .. (opaque)
+};
+FABLE_STATIC_ASSERT(sizeof(CEngineLightingManager::CThemeChannel) == 0x70);
+FABLE_STATIC_ASSERT(sizeof(CEngineLightingManager) == 0x46d0);
+FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, SunVector) == 0x18);
+FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, ThemeChannels) == 0x3c);
+FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, PrimitiveFogColour) == 0x78);
+#else // flattened Ego_r layout (the landed default, unchanged)
 // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
 // Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CEngineLightingManager = 0x46dc.
 // Container layout: retail STLport 4.6 (list 4, vector/map/set/string/CArray 0xc, deque 0x28, CVectorMap 0x10, bases from Fable.exe RTTI): sizeof CEngineLightingManager = 0x46d0.
@@ -148,5 +220,7 @@ FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, EmptyLightArray) == 0x44ec)
 FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, SIMDVarBlock) == 0x4690);
 FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, ShadowMode) == 0x4694);
 FABLE_STATIC_ASSERT(offsetof(CEngineLightingManager, CurrentShadowedSpotLightParams) == 0x4698);
+
+#endif // FABLE_RETAIL_CENGINELIGHTINGMANAGER
 
 #endif // FABLE_ENGINE_CENGINELIGHTINGMANAGER_H

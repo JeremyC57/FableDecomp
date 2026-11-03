@@ -1,0 +1,20 @@
+addr       parity           behav  name
+0074baa0   WARN SHARED_HEADER_AVAILABLE C3DVector
+0074baa0   WARN SHARED_HEADER_AVAILABLE C2DVector
+0074baa0   WARN SHARED_HEADER_AVAILABLE CThing
+0074baa0   RELOCATION_MATCH PASS   UpdateCreatureTrigger
+00b25c00   WARN SHARED_HEADER_AVAILABLE C4DVector
+00b25c00   WARN SHARED_HEADER_AVAILABLE CRenderStateManager
+00b25c00   WARN SHARED_HEADER_AVAILABLE CShaderRenderManager
+00b25c00   WARN SHARED_HEADER_AVAILABLE CEngineScreenEffectColourFilter
+00b25c00   WARN SHARED_HEADER_AVAILABLE CEngine
+00b25c00   WARN RELOC_NAME: ?g_ShaderRenderManager@@3VCShaderRenderManager@@A -> 013bc470 labelled 'CShaderRenderManager::SingletonInstance'
+00b25c00   RELOCATION_MATCH PASS   RenderColorFilteredQuad
+
+WINS: 2
+  0074baa0 RELOCATION_MATCH CTCCreatureGenerator::UpdateCreatureTrigger
+  00b25c00 RELOCATION_MATCH CEngine::RenderColorFilteredQuad
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  CTCCreatureGenerator_UpdateCreatureTrigger_0074baa0
+  CEngine_RenderColorFilteredQuad_00b25c00

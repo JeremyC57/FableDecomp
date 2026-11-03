@@ -1,0 +1,15 @@
+address	leaf	status	grade	landed_source	source_of_row	landing_edits
+0074b770	?InitialiseCreatureGenerator@CTCCreatureGenerator@@QAEX_N@Z	LANDED	RELOCATION_MATCH	rebuild/src/compiled/00/74/CTCCreatureGenerator_InitialiseCreatureGenerator_0074b770.cpp	chunk 728	-
+00c267e0	?Process@CStreamLoadHandler@@UAEXPAVCPooledResource@@@Z	LANDED	RELOCATION_MATCH	rebuild/src/compiled/00/c2/CStreamLoadHandler_Process_00c267e0.cpp	chunk 728 (/EHsc)	-
+006d2bd0	?OnSerialise@CTCWife@@UAEXAAVCPersistContext@@_N@Z	LANDED	RELOCATION_MATCH	rebuild/src/compiled/00/6d/CTCWife_OnSerialise_006d2bd0.cpp	chunk 728 round 2	-
+00b573a0	?Apply@CEngineStateBlockAlpha@@UAEXXZ	LANDED	RELOCATION_MATCH	rebuild/src/compiled/00/b5/CEngineStateBlockAlpha_Apply_00b573a0.cpp	chunk 731	-
+00b57860	?Apply@CEngineStateBlockAlpha2X@@UAEXXZ	LANDED	RELOCATION_MATCH	rebuild/src/compiled/00/b5/CEngineStateBlockAlpha2X_Apply_00b57860.cpp	chunk 731	-
+00b57d20	?Apply@CEngineStateBlockAdditiveAlpha@@UAEXXZ	LANDED	RELOCATION_MATCH	rebuild/src/compiled/00/b5/CEngineStateBlockAdditiveAlpha_Apply_00b57d20.cpp	chunk 731	-
+00b581e0	?Apply@CEngineStateBlockAddSmoothAlpha@@UAEXXZ	LANDED	RELOCATION_MATCH	rebuild/src/compiled/00/b5/CEngineStateBlockAddSmoothAlpha_Apply_00b581e0.cpp	chunk 731	-
+00b26360	?Initialise@CEngine@@UAE_NABVCEngineInit@@@Z	LANDED	RELOCATION_MATCH	rebuild/src/compiled/00/b2/CEngine_Initialise_00b26360.cpp	chunk 731	graded with chunk 727 typed CEngineSkyRenderer (+PeekSceneFilterFlags) in place of 731 generated one
+0074baa0	UpdateCreatureTrigger	RE-LANDED	RELOCATION_MATCH	rebuild/src/compiled/00/74/CTCCreatureGenerator_UpdateCreatureTrigger_0074baa0.cpp	re-land (name fix)	CreateCreatures declared protected (IAE, Ego_r+FableWin); was QAE
+00b25c00	(no Leaf line; pre-existing)	RE-LANDED	RELOCATION_MATCH	rebuild/src/compiled/00/b2/CEngine_RenderColorFilteredQuad_00b25c00.cpp	re-land (name fix)	SetDefaultRenderStates declared private (AAE, Ego_r+FableWin); was QAE
+006d0830	?GlobalUpdate@CTCWife@@UAEX_N@Z	PARKED (not in this landing)	DIFFER 2581v2584 (chunk 728 round 2)	-	-	headers it needs: HEADER_NEEDS.md
+006d1e30	?FrameUpdate@CTCWife@@UAEXXZ	PARKED (not in this landing)	DIFFER 3464v3484 (chunk 728 round 2)	-	-	headers it needs: HEADER_NEEDS.md
+0074bc20	?DrawDebugInfo@CTCCreatureGenerator@@QAEXABVCEnginePrimitivePrepareInfo@@@Z	PARKED (not in this landing)	DIFFER 1415v1290 (chunk 728)	-	-	headers it needs: HEADER_NEEDS.md
+00b24850	?SetDefaultRenderStates@CEngine@@AAEXXZ	PARKED (not in this landing)	DIFFER 4344v4344 (chunk 731, bookmark operand-order lane gap)	-	-	headers it needs: HEADER_NEEDS.md

@@ -64,6 +64,11 @@ protected:
     void TransferVectorLoadText(const char*,CPersistContext_TransferableVectorGenericType&);
     void TransferSubComponentLoadText(const char*,CPersistContext_TransferableSubComponentGenericType&);
     void CleanOutLine(long,long);
+    // Chunk 728 round 2 (row 0x006D2BD0 CTCWife::OnSerialise): the protected text-arm workers of the three-argument Transfer<T> body
+    // (Ego_r.pdb 0x00B0F770 / 0x00B10710, FableWin.pdb 0x02FEBD50 / 0x02FEBDC0; retail 0x009BAD60 / 0x009BBA40, the only spellings
+    // bound there). Declarations only: no layout change.
+    void TransferObjectSaveText(const char*,CPersistContext_TransferableComponentGenericType&);
+    void TransferObjectLoadText(const char*,CPersistContext_TransferableComponentGenericType&);
 #endif
     const CDefinitionManager* PDefinitionManager;
     const CSymbolMap* PSymbolMap;

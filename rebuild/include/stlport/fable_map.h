@@ -242,6 +242,13 @@ public:
     set():_M_t(Compare(),A()){}
     pair<iterator,bool> insert(const K& value){typedef typename _Rep_type::iterator RepIterator;pair<RepIterator,bool> p=_M_t.insert_unique(value);return pair<iterator,bool>((const iterator&)p.first,p.second);}
     size_t erase(const K& value){return _M_t.erase(value);}
+#ifdef FABLE_RETAIL_STLP_SET
+    // Retail branch (chunk 728, row 0x006D2BD0 CTCWife::OnSerialise): STLport 4.6 _set.h begin() / end() / size() (inline: retail
+    // walks CTCWife::ThingsSeenThePlayerWear with the expanded _Rb_global::_M_increment and reads _M_node_count +4 in place).
+    iterator begin() const { return _M_t.begin(); }
+    iterator end() const { return _M_t.end(); }
+    size_t size() const { return _M_t.size(); }
+#endif
 };
 template<class K,class T,class Compare=less<K>,class A=allocator<pair<const K,T> > >
 class multimap {

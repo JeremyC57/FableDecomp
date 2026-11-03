@@ -14,6 +14,10 @@ public:
     virtual ~CDefinitionManager();
     long GetGlobalIndexFromClassIndex(const CCharString&,long) const;
     template<class T> bool GetDef(long,CDefPointer<const T>*) const;
+    template<class T> bool GetDef(const CCharString&,long,CDefPointer<const T>*) const;   // ??$GetDef@VCSkyDef@@@..QBE_NABVCCharString@@JPAV..@Z (FableWin/Ego_r; chunk 727)
+    template<class T> bool GetDef(const CCharString&,CDefPointer<const T>*) const;   // ??$GetDef@VCEngineVideoOptionsDef@@@..QBE_NABVCCharString@@PAV..@Z 0x00B28E40 (out of line in retail; chunk 731)
+    CDefPointer<const CDefClassBase> GetPDefFromInstantiationName(const CCharString&) const;   // 0x009ADA40 ?GetPDefFromInstantiationName@..QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@@Z
+    CDefPointer<const CDefClassBase> GetPDefFromClassIndex(const CCharString&,long) const;  // 0x009ADE10 ?GetPDefFromClassIndex@..QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@J@Z
     CDefString GetDefNameFromGlobalIndex(long) const;
     long GetDefGlobalIndexFromName(const CCharString&) const;
     CDefPointer<const CDefClassBase> GetPDefFromGlobalIndex(long) const;
