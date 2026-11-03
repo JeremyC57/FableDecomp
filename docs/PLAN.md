@@ -77,7 +77,8 @@ What is still not right, cheapest first:
      STLport instantiation names from the element type (one instantiation calls its own helpers: chunk consolidation 2).
    - 1,822 `sub_<addr>` are gap-scan fragments of ≤ 64 bytes (1,682 of ≤ 16); most are thunks and have no retail symbol.
      Leave them, but tag them so they stop counting as naming debt.
-3. **188 open PRIORITY rows in `naming/NAME_FIXES_QUEUE.tsv`** (185 addresses; the handoff's 154 was stale). Cheapest
+3. **518 open PRIORITY rows in `naming/NAME_FIXES_QUEUE.tsv`** (507 addresses, 2026-11-03 night: rows whose note starts with
+   PRIORITY and has no ` done]`; 187 by the same rule that morning, the growth is the day's chunk and landing re-model lines). Cheapest
    first: a single landed caller whose fix is a declaration spelling. Callers built on invented local classes
    (0x0041649C, 0x0065935E, 0x00521AE0) need the shared-header rebase first.
 4. **94 labels in `.text` name addresses the manifest does not list** (e.g. 0x00CB63F0 `std::iter_swap<…>`, 0x0042BEEA

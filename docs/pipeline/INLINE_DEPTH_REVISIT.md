@@ -229,3 +229,14 @@ pragma. Levers, in order of preference:
 Loop guards (`if (!v.empty())` around a `for`) move the frequency of the code after the loop (0x0074BC20 DrawDebugInfo's split).
 `/d2inlT<N>` and the other `-inl*` c2 knobs are diagnostics only, never landing flags. The remaining 90 rows (before landing 2026-11-03e; 70 after it, 65 after landing 2026-11-03h): 66 need per-row
 shape work on their returns, 18 have the pragma around temporaries / Reset / assignments, 6 use other depths.
+4. (inline revisit 3, `batches/2026-11-03_inline_revisit3/FINDINGS.md`) The loop-head macro: a function-final
+   `while (!IsActiveThreadTerminating()) {...}` written `for (;;) { do { if (IsActiveThreadTerminating()) return; } while (0); ... }`
+   makes the loop exit hot (dtor expanded) and leaves the other in-loop returns cold (out-of-line call); 4 rows. Exits of one loop do
+   not in general share one frequency; measure per-site with marker calls.
+5. Undo pragma-era control-flow devices first (`goto terminating` / `if (false) { terminating: return; }`): a plain `return;` matched
+   0x00EF5200 where the goto form did not. Wrapping masks only make sites hotter, never colder.
+Still unexplained (the 65): retail calls the CScriptThing copy 0x004ABE90 / dtor 0x004AA840 out of line inside inline-expanded special
+members of CScriptThing-holding classes (CIsThingAlive / CIsThingConscious filters, the CSpawnedFunc1 ctor) but expands them elsewhere
+(16+ rows; `/d2inlT55-65` reproduces 9 but is a diagnostic); the UI Pointer ctors 0x005518E0 / 0x00551BC0 split against the frequency
+model; 0x00CEF3B0's single out-of-line ~CTimer is not a frequency effect; four dead-branch rows stay 3 bytes short; 0x00CE1280 best
+872v808. c2 knob defaults found: inlS 9, inlT 74, userinl 7, crmax 10. 22 tests of still-marked rows copy their row's pragma lines.

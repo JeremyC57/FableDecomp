@@ -7,6 +7,10 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 
 ## Current focus (2026-09)
 
+- [x] 2026-11-03 Chunks 733-737 + landing rounds e-h + inline revisits 2-3: 46,554 / 49,564 (93.927%), 56.019% of function bytes; `// Revisit: inline-depth` rows 129 -> 65 (records `batches/2026-11-03_landing_e` .. `_landing_h`, `_inline_revisit2/3`; resume from `docs/HANDOFF.md`).
+- [ ] 2026-11-03 The 65 remaining inline-depth rows: retail's out-of-line CScriptThing copy/dtor inside inline-expanded special members (16+ rows), UI Pointer ctors, ~CTimer, dead-branch rows (`docs/pipeline/INLINE_DEPTH_REVISIT.md`).
+- [ ] 2026-11-03 Owner input needed: `cvdump` of Ego_r.pdb / FableWin.pdb for NUISystem::CUIScreenUnitConverter::BackBufferWidth / BackBufferHeight access (chunk 733's two rows and the landed `@@2` binders wait on it).
+- [ ] 2026-11-03 Parked chunk rows with drafts: 734 (PreparePrimitivesForEngine, AutoLoadRespawn, LoadQuestsFromFile, Init), 735 (AddAbilityToList(PC), OpenInventoryInternalPC), 736 (SetUpRegions; the two LoadFromFile rows never attempted), 737 (both PreparePrimitives; 0x00B087C0's test needs a compile fix).
 - [x] 2026-11-01 Never-attempted pool (2,881 rows) analysed and cut: 1,456 authorable + 69 landed-twins + 169 re-attemptable skipped rows in 170 proposed chunks (`pending/never_attempted/`, `chunk_pool/analyze_never.py`); 615 funclets wait for parents, 157 vendor rows, 84 retail_asm candidates, 273 tiny stubs, 47 fragments.
 - [x] 2026-11-01 Naming wave 13 (314 rows, 11 family commits, 4 owner decisions scoped in `naming/2026-11-01_wave13/DECISIONS_W13.tsv`); lane rebuilt in the surviving scratch with the VS 2003 libs + LZO. Next: land chunk 651, decide the four wave 13 items, wave 14.
 - [x] 2026-10-29 Chunks 561-573 + naming waves 5-8 + ChatGPT pass 9 (157 rows) landed; coverage 51,636 / 57,267 known (90.2%); resume from `docs/journal/2026-10/2026-10-29_HANDOFF.md`. Next: large-row chunks from the released pass 9 pool (quest-script rows 14/15), naming wave 9 (135 queued fixes), near misses 0x00919AE0 / 0x00E29B20.
