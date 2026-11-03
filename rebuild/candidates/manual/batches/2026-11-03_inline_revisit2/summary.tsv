@@ -1,0 +1,98 @@
+row	old_grade	new_grade	lever	attempts	best_source
+0x005518E0	RELOCATION_MATCH (inline_depth pragma)	plain DIFFER(772v726) dl=379	-	21	-
+0x00551BC0	RELOCATION_MATCH (inline_depth pragma)	plain DIFFER(776v727) dl=371	-	21	-
+0x0066BD00	RELOCATION_MATCH (inline_depth pragma)	RELOCATION_MATCH+PASS (vland recheck)	loop guard if (it != names.end()) with the cursor taken first; plain inline vector dtors	37	out/0066bd00.cpp
+0x0066BDF0	RELOCATION_MATCH (inline_depth pragma)	RELOCATION_MATCH+PASS (vland recheck)	loop guard if (it != names.end()) with the cursor taken first; plain inline vector dtors	37	out/0066bdf0.cpp
+0x00715110	RELOCATION_MATCH (inline_depth pragma)	RELOCATION_MATCH+PASS (vland recheck)	callee body = retail COMDAT (~CCountedPointer zeroes Data/Info like 0x0048C5C0)	7	out/00715110.cpp
+0x009F7890	RELOCATION_MATCH (inline_depth pragma)	RELOCATION_MATCH+PASS (vland recheck)	TU flag /Od (unoptimised TU; STLport inline placement new stays a call), no pragma	16	out/009f7890.cpp
+0x00BC9B80	RELOCATION_MATCH (inline_depth pragma)	RELOCATION_MATCH+PASS (vland recheck)	no pragmas: __forceinline recursive FindNode expands one level by itself	16	out/00bc9b80.cpp
+0x00CE0600	RELOCATION_MATCH (inline_depth pragma)	DIFFER(931v795) dl=216 mask 11; exhaustive best DIFFER(931v795) dl=216	-	13	-
+0x00CE0920	RELOCATION_MATCH (inline_depth pragma)	RELOCATION_MATCH+PASS (vland recheck)	per-exit do-while(0)	17	out/00ce0920.cpp
+0x00CE0B00	RELOCATION_MATCH (inline_depth pragma)	RELOCATION_MATCH+PASS (vland recheck)	per-exit do-while(0)	17	out/00ce0b00.cpp
+0x00CE0CE0	RELOCATION_MATCH (inline_depth pragma)	RELOCATION_MATCH+PASS (vland recheck)	per-exit do-while(0)	17	out/00ce0ce0.cpp
+0x00CE1280	RELOCATION_MATCH (inline_depth pragma)	DIFFER(872v808) dl=125 mask 1011111; exhaustive best DIFFER(872v808) dl=125	-	151	-
+0x00CEF3B0	RELOCATION_MATCH (inline_depth pragma)	plain DIFFER(399v405) dl=39	-	49	-
+0x00CF02A0	RELOCATION_MATCH (inline_depth pragma)	RELOCATION_MATCH+PASS (vland recheck)	per-exit do-while(0)	32	out/00cf02a0.cpp
+0x00D043A0	RELOCATION_MATCH (inline_depth pragma)	DIFFER(912v948) dl=154 mask 1111110; exhaustive best DIFFER(904v948) dl=122	-	151	-
+0x00D08B40	RELOCATION_MATCH (inline_depth pragma)	DIFFER(769v778) dl=80 mask 0100000100	-	57	-
+0x00D151D0	RELOCATION_MATCH (inline_depth pragma)	RELOCATION_MATCH+PASS (vland recheck)	per-exit do-while(0)	23	out/00d151d0.cpp
+0x00D16460	RELOCATION_MATCH (inline_depth pragma)	plain DIFFER(276v258) dl=25	-	17	-
+0x00D16570	RELOCATION_MATCH (inline_depth pragma)	DIFFER(487v517) dl=91 mask 11111; exhaustive best DIFFER(487v517) dl=91	-	51	-
+0x00D1F610	RELOCATION_MATCH (inline_depth pragma)	DIFFER(856v757) dl=443 mask 0111111111	-	26	-
+0x00D20790	RELOCATION_MATCH (inline_depth pragma)	DIFFER(630v678) dl=195 mask 1010000000	-	31	-
+0x00D38F70	RELOCATION_MATCH (inline_depth pragma)	DIFFER(941v955) dl=166 mask 10111111; exhaustive best DIFFER(994v955) dl=108	-	278	-
+0x00D701C0	RELOCATION_MATCH (inline_depth pragma)	DIFFER(848v850) dl=218 mask 111111110000	-	43	-
+0x00D73F40	RELOCATION_MATCH (inline_depth pragma)	DIFFER(1256v1256) dl=28 mask 11111100100000	-	108	-
+0x00D79D50	RELOCATION_MATCH (inline_depth pragma)	RELOCATION_MATCH+PASS (vland recheck)	movie ctor called out of line in this TU (0x006E7B60), plain inline	25	out/00d79d50.cpp
+0x00D7A360	RELOCATION_MATCH (inline_depth pragma)	RELOCATION_MATCH+PASS (vland recheck)	movie ctor called out of line in this TU (0x006E7B60), plain inline	25	out/00d7a360.cpp
+0x00D7D8D0	RELOCATION_MATCH (inline_depth pragma)	DIFFER(696v705) dl=88 mask 11100; exhaustive best DIFFER(711v705) dl=54	-	51	-
+0x00D81C50	RELOCATION_MATCH (inline_depth pragma)	DIFFER(1428v1464) dl=674 mask 11111; exhaustive best DIFFER(1481v1464) dl=240	-	44	-
+0x00D83FA0	RELOCATION_MATCH (inline_depth pragma)	DIFFER(1236v1230) dl=103 mask 111111111111111	-	25	-
+0x00D86C30	RELOCATION_MATCH (inline_depth pragma)	RELOCATION_MATCH+PASS (vland recheck)	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR, plain inline	28	out/00d86c30.cpp
+0x00D8F040	RELOCATION_MATCH (inline_depth pragma)	plain DIFFER(658v705) dl=93	-	70	-
+0x00D91740	RELOCATION_MATCH (inline_depth pragma)	DIFFER(436v481) dl=36 mask 011; exhaustive best DIFFER(436v481) dl=36	-	23	-
+0x00D97170	RELOCATION_MATCH (inline_depth pragma)	DIFFER(488v491) dl=36 mask 1111; exhaustive best DIFFER(488v491) dl=36	-	34	-
+0x00D99A30	RELOCATION_MATCH (inline_depth pragma)	DIFFER(1236v911) dl=220 mask 010000; exhaustive best DIFFER(1236v911) dl=220	-	89	-
+0x00D9F270	RELOCATION_MATCH (inline_depth pragma)	DIFFER(808v823) dl=25 mask 10010; exhaustive best DIFFER(808v823) dl=25	-	59	-
+0x00D9F6C0	RELOCATION_MATCH (inline_depth pragma)	DIFFER(1752v1720) dl=150 mask 10101111111111	-	50	-
+0x00DA4E30	RELOCATION_MATCH (inline_depth pragma)	DIFFER(1417v1389) dl=213 mask 10000; exhaustive best DIFFER(1417v1389) dl=213	-	55	-
+0x00DA5490	RELOCATION_MATCH (inline_depth pragma)	DIFFER(827v779) dl=61 mask 111; exhaustive best DIFFER(827v779) dl=61	-	23	-
+0x00DA68E0	RELOCATION_MATCH (inline_depth pragma)	DIFFER(1125v1125) dl=36 mask 101010001; exhaustive best DIFFER(1125v1125) dl=36	-	579	-
+0x00DA7D30	RELOCATION_MATCH (inline_depth pragma)	DIFFER(1582v1472) dl=99 mask 101111111111	-	30	-
+0x00DAA260	RELOCATION_MATCH (inline_depth pragma)	DIFFER(1229v1172) dl=80 mask 10000100000	-	58	-
+0x00DAA700	RELOCATION_MATCH (inline_depth pragma)	DIFFER(1181v1133) dl=47 mask 10000100000	-	58	-
+0x00DBF9E0	RELOCATION_MATCH (inline_depth pragma)	DIFFER(1051v998) dl=304 mask 0000000000	-	28	-
+0x00DC21F0	RELOCATION_MATCH (inline_depth pragma)	DIFFER(757v750) dl=65 mask 111001; exhaustive best DIFFER(757v750) dl=65	-	83	-
+0x00DC8C80	RELOCATION_MATCH (inline_depth pragma)	DIFFER(2313v1901) dl=608 mask 0010000000	-	69	-
+0x00DCDC50	RELOCATION_MATCH (inline_depth pragma)	DIFFER(467v454) dl=129 mask 100001; exhaustive best DIFFER(416v454) dl=81	-	101	-
+0x00DD6440	RELOCATION_MATCH (inline_depth pragma)	RELOCATION_MATCH+PASS (vland recheck)	per-exit do-while(0) (7 of 9 terminate checks; exhaustive mask search)	538	out/00dd6440.cpp
+0x00DDC980	RELOCATION_MATCH (inline_depth pragma)	DIFFER(1489v1477) dl=184 mask 111111001000	-	35	-
+0x00DDE230	RELOCATION_MATCH (inline_depth pragma)	RELOCATION_MATCH+PASS (vland recheck)	per-exit do-while(0)	32	out/00dde230.cpp
+0x00DEF760	RELOCATION_MATCH (inline_depth pragma)	DIFFER(996v932) dl=208 mask 11111111; exhaustive best DIFFER(996v932) dl=208	-	297	-
+0x00E02E50	RELOCATION_MATCH (inline_depth pragma)	RELOCATION_MATCH+PASS (vland recheck)	per-exit do-while(0)	67	out/00e02e50.cpp
+0x00E04F10	RELOCATION_MATCH (inline_depth pragma)	DIFFER(522v531) dl=81 mask 110001; exhaustive best DIFFER(522v531) dl=81	-	88	-
+0x00E05360	RELOCATION_MATCH (inline_depth pragma)	DIFFER(632v585) dl=43 mask 111001; exhaustive best DIFFER(632v585) dl=43	-	85	-
+0x00E0C4C0	RELOCATION_MATCH (inline_depth pragma)	DIFFER(1199v1197) dl=69 mask 1111111111111111111	-	27	-
+0x00E0DAA0	RELOCATION_MATCH (inline_depth pragma)	plain DIFFER(276v258) dl=25	-	17	-
+0x00E12580	RELOCATION_MATCH (inline_depth pragma)	DIFFER(1626v1446) dl=268 mask 11001; exhaustive best DIFFER(1733v1446) dl=248	-	54	-
+0x00E2A320	RELOCATION_MATCH (inline_depth pragma)	DIFFER(1515v1503) dl=137 mask 1011111; exhaustive best DIFFER(1529v1503) dl=123	-	154	-
+0x00E32080	RELOCATION_MATCH (inline_depth pragma)	DIFFER(442v371) dl=102 mask 10; exhaustive best DIFFER(275v371) dl=68	-	14	-
+0x00E331F0	RELOCATION_MATCH (inline_depth pragma)	DIFFER(715v714) dl=115 mask 111011000; exhaustive best DIFFER(760v714) dl=64	-	549	-
+0x00E36390	RELOCATION_MATCH (inline_depth pragma)	DIFFER(499v502) dl=38 mask 11111; exhaustive best DIFFER(499v502) dl=38	-	57	-
+0x00E386E0	RELOCATION_MATCH (inline_depth pragma)	DIFFER(583v523) dl=31 mask 11011101; exhaustive best DIFFER(583v523) dl=31	-	284	-
+0x00E39140	RELOCATION_MATCH (inline_depth pragma)	DIFFER(988v967) dl=262 mask 111000; exhaustive best DIFFER(988v967) dl=262	-	87	-
+0x00E504C0	RELOCATION_MATCH (inline_depth pragma)	DIFFER(370v394) dl=63 mask 10; exhaustive best DIFFER(354v394) dl=36	-	15	-
+0x00E53D90	RELOCATION_MATCH (inline_depth pragma)	DIFFER(461v464) dl=38 mask 1111; exhaustive best DIFFER(461v464) dl=38	-	81	-
+0x00E6AF20	RELOCATION_MATCH (inline_depth pragma)	DIFFER(725v725) dl=82 mask 110; exhaustive best DIFFER(826v725) dl=56	-	22	-
+0x00E6B750	RELOCATION_MATCH (inline_depth pragma)	RELOCATION_MATCH+PASS (vland recheck)	per-exit do-while(0)	17	out/00e6b750.cpp
+0x00E7BD60	RELOCATION_MATCH (inline_depth pragma)	plain DIFFER(750v680) dl=95	-	17	-
+0x00E82950	RELOCATION_MATCH (inline_depth pragma)	DIFFER(1574v1574) dl=62 mask 000101100000100	-	121	-
+0x00E9DC80	RELOCATION_MATCH (inline_depth pragma)	DIFFER(607v610) dl=92 mask 111111; exhaustive best DIFFER(633v610) dl=70	-	95	-
+0x00EC0BA0	RELOCATION_MATCH (inline_depth pragma)	RELOCATION_MATCH+PASS (vland recheck)	per-exit do-while(0)	115	out/00ec0ba0.cpp
+0x00EDCB80	RELOCATION_MATCH (inline_depth pragma)	DIFFER(725v725) dl=82 mask 110; exhaustive best DIFFER(826v725) dl=56	-	22	-
+0x00EE6A40	RELOCATION_MATCH (inline_depth pragma)	DIFFER(309v441) dl=108 mask 1101; exhaustive best DIFFER(309v441) dl=108	-	33	-
+0x00EE7A20	RELOCATION_MATCH (inline_depth pragma)	RELOCATION_MATCH+PASS (vland recheck)	movie ctor called out of line in this TU (0x006E7B60), plain inline	37	out/00ee7a20.cpp
+0x00EF12F0	RELOCATION_MATCH (inline_depth pragma)	DIFFER(745v693) dl=304 mask 11110100; exhaustive best DIFFER(745v693) dl=304	-	280	-
+0x00EF5200	RELOCATION_MATCH (inline_depth pragma)	DIFFER(610v592) dl=45 mask 11; exhaustive best DIFFER(610v592) dl=45	-	13	-
+0x00EF6FE0	RELOCATION_MATCH (inline_depth pragma)	RELOCATION_MATCH+PASS (vland recheck)	explicit instantiation of the class-template copy ctor replaces the specialisation + depth-0 factory	16	out/00ef6fe0.cpp
+0x00EF7800	RELOCATION_MATCH (inline_depth pragma)	DIFFER(628v627) dl=101 mask 11100; exhaustive best DIFFER(620v627) dl=91	-	51	-
+0x00EF87D0	RELOCATION_MATCH (inline_depth pragma)	DIFFER(1047v1003) dl=324 mask 1000; exhaustive best DIFFER(1244v1003) dl=383	-	35	-
+0x00EFAB40	RELOCATION_MATCH (inline_depth pragma)	DIFFER(571v571) dl=26 mask 0101; exhaustive best DIFFER(571v571) dl=26	-	33	-
+0x00EFF930	RELOCATION_MATCH (inline_depth pragma)	DIFFER(967v893) dl=115 mask 1100; exhaustive best DIFFER(1005v893) dl=51	-	36	-
+0x00F045E0	RELOCATION_MATCH (inline_depth pragma)	DIFFER(1527v1520) dl=161 mask 1100000000000	-	72	-
+0x00F07B80	RELOCATION_MATCH (inline_depth pragma)	DIFFER(852v842) dl=98 mask 1100000000	-	29	-
+0x00F08590	RELOCATION_MATCH (inline_depth pragma)	DIFFER(817v839) dl=433 mask 1110; exhaustive best DIFFER(817v839) dl=433	-	33	-
+0x00F09260	RELOCATION_MATCH (inline_depth pragma)	DIFFER(372v445) dl=110 mask 1101; exhaustive best DIFFER(372v445) dl=110	-	33	-
+0x00F09420	RELOCATION_MATCH (inline_depth pragma)	plain DIFFER(276v258) dl=25	-	17	-
+0x00F09530	RELOCATION_MATCH (inline_depth pragma)	plain DIFFER(276v258) dl=25	-	17	-
+0x00F09950	RELOCATION_MATCH (inline_depth pragma)	DIFFER(434v437) dl=36 mask 1111; exhaustive best DIFFER(434v437) dl=36	-	34	-
+0x00F0A470	RELOCATION_MATCH (inline_depth pragma)	DIFFER(1081v1127) dl=121 mask 00000000000000	-	74	-
+0x00F0B130	RELOCATION_MATCH (inline_depth pragma)	DIFFER(1654v1606) dl=230 mask 110000000000	-	67	-
+0x00F0EF60	RELOCATION_MATCH (inline_depth pragma)	DIFFER(1812v1823) dl=120 mask 1011111111111111111111111111	-	147	-
+0x00F3EA50	DIFFER(2603v2379) (parked)	DIFFER(2443v2379) dl=1011 (call sequence = retail)	loop guard if (section_strip.size() != 0) before the strip append loop	12	parked/00f3ea50/best.cpp
+0x005FF190	DIFFER(4604v4176) (parked)	DIFFER(4128v4176) dl=1144 (all 9 Reset sites = retail)	loop guards on loop 1 (outer + inner) + loop 2 as while(it != end)	12	parked/005ff190/best.cpp
+0x0074BC20	DIFFER(1415v1290) (parked)	DIFFER(1323v1290) (call sequence = retail)	if (OpenPositions.size() > 0) loop guard + FABLE_RETAIL_CRGBCOLOUR; residue frame 0xC8 v 0xB0	10	parked/0074bc20/best.cpp
+0x00F3D980	DIFFER(2301v1947) (parked)	DIFFER(1789v1947) dl=435	continue; at the end of the fan-walk for(;;) (section.push_back now called); rings.push_back nested-call residue	13	parked/00f3d980/best.cpp
+0x00E2F170	DIFFER(2163v2781) (parked)	DIFFER(2344v2781) dl=443	do-while(0) checks + GetPos through PImp.IsNull()/operator->	18	parked/00e2f170/best.cpp
+0x00E2EC30	DIFFER(1053v1336) (parked)	DIFFER(1093v1336) dl=459	FABLE_RETAIL_CCHARSTRING_FORCEINLINE_TEXT_EQ; masks do not help	13	parked/00e2ec30/best.cpp
+0x00603000	DIFFER(9852v9571) (parked)	DIFFER(9847v9571) dl=3649	loop guard on the cached-marker erase loop; UI_INTERESTING Reset still expanded	10	parked/00603000/best.cpp

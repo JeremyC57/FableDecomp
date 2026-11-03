@@ -1,0 +1,14 @@
+00715110	z1.cpp	callee body = retail COMDAT (~CCountedPointer zeroes Data/Info like 0x0048C5C0)
+00d79d50	mv_plain2.cpp	movie ctor called out of line in this TU (0x006E7B60), plain inline
+00d7a360	mv_plain2.cpp	movie ctor called out of line in this TU (0x006E7B60), plain inline
+00ee7a20	mv_plain2.cpp	movie ctor called out of line in this TU (0x006E7B60), plain inline
+00d86c30	mv_plain2.cpp	FABLE_RETAIL_CSCRIPTGAMERESOURCEOBJECTMOVIEBASE_OUTOFLINE_CTOR, plain inline
+00ce0920	g/0110.cpp	per-exit do-while(0)
+00ce0b00	g/0110.cpp	per-exit do-while(0)
+00ce0ce0	g/0110.cpp	per-exit do-while(0)
+00cf02a0	g/00101.cpp	per-exit do-while(0)
+00d151d0	g/011000.cpp	per-exit do-while(0)
+00dde230	g/0111111111.cpp	per-exit do-while(0)
+00e02e50	g/1111111000000000.cpp	per-exit do-while(0)
+00e6b750	g/1011.cpp	per-exit do-while(0)
+00ec0ba0	g/1000000000100000000.cpp	per-exit do-while(0)

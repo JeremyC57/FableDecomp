@@ -1,0 +1,75 @@
+addr       parity           behav  name
+00715110   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00715110   WARN SHARED_HEADER_AVAILABLE CTCInventoryAbilities
+00715110   WARN SHARED_HEADER_AVAILABLE CTCWeapon
+00715110   WARN SHARED_HEADER_AVAILABLE CThing
+00715110   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00715110   WARN RELOC_NAME: ?GetWeaponInHand@CTCInventoryAbilities@@QAEPAVCThing@@XZ -> 006a1440 labelled 'CTCCarrying::GetThingInPrimarySlot'
+00715110   WARN RELOC_NAME: ?IsMissileWeapon@CTCWeapon@@QAE_NXZ -> 005daa40 labelled 'CTCWeapon::IsProjectileWeapon'
+00715110   WARN RELOC_NAME: ?IsLoaded@CTCWeapon@@QAE_NXZ -> 005da980 labelled 'CTCWeapon::IsProjectileWeaponLoaded'
+00715110   WARN RELOC_NAME: ?Add@CCreatureActionQueue@@QAEXABUCCountedPointer@@@Z -> 00719360 labelled 'std::list<CCountedPointer<CCreatureActionBase>, std::allocator<CCountedPointer<CCreatureActionBase>>>::push_back'
+00715110   WARN RELOC_NAME: ??1CCountedPointer@@QAE@XZ -> 0048c5c0 labelled '_global::CCountedPointer_Release_0048c5c0'
+00715110   RELOCATION_MATCH PASS   OnAdd
+00d79d50   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00d79d50   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d79d50   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d79d50   RELOCATION_MATCH PASS   Main
+00d7a360   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00d7a360   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d7a360   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d7a360   RELOCATION_MATCH PASS   Main
+00ee7a20   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00ee7a20   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00ee7a20   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData
+00ee7a20   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ee7a20   WARN RELOC_NAME: ?Construct@CCutsceneCastMap@@QAEXXZ -> 00cdbf70 labelled 'std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::map'
+00ee7a20   WARN RELOC_NAME: ?Destroy@CCutsceneCastMap@@QAEXXZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00ee7a20   RELOCATION_MATCH PASS   Main
+00d86c30   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d86c30   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d86c30   RELOCATION_MATCH PASS   Main
+00ce0920   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00ce0920   WARN SHARED_HEADER_AVAILABLE C3DVector
+00ce0920   WARN RELOC_NAME: ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z -> 00704580 labelled '_global::CCountedPointer_Set_00704580'
+00ce0920   RELOCATION_MATCH PASS   Main
+00ce0b00   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00ce0b00   WARN SHARED_HEADER_AVAILABLE C3DVector
+00ce0b00   WARN RELOC_NAME: ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z -> 00704580 labelled '_global::CCountedPointer_Set_00704580'
+00ce0b00   RELOCATION_MATCH PASS   Main
+00ce0ce0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00ce0ce0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00ce0ce0   WARN RELOC_NAME: ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z -> 00704580 labelled '_global::CCountedPointer_Set_00704580'
+00ce0ce0   RELOCATION_MATCH PASS   Main
+00cf02a0   RELOCATION_MATCH PASS   Tutorial_RenownLevelIncrease
+00d151d0   WARN RELOC_NAME: ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z -> 00704580 labelled '_global::CCountedPointer_Set_00704580'
+00d151d0   RELOCATION_MATCH PASS   WatchForEnableFisherCreekHutDoor
+00dde230   WARN SHARED_HEADER_AVAILABLE C3DVector
+00dde230   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData
+00dde230   RELOCATION_MATCH PASS   WardenKeyMiniGame
+00e02e50   WARN SHARED_HEADER_AVAILABLE C3DVector
+00e02e50   WARN SHARED_HEADER_AVAILABLE CDefString
+00e02e50   WARN SHARED_HEADER_AVAILABLE CScriptDef
+00e02e50   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e02e50   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00e02e50   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 labelled 'CDefString::operator CCharString'
+00e02e50   RELOCATION_MATCH PASS   Main
+00e6b750   RELOCATION_MATCH PASS   WatchForRegionEntry
+00ec0ba0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00ec0ba0   WARN SHARED_HEADER_AVAILABLE CV_ParanoidWhispersScript
+00ec0ba0   RELOCATION_MATCH PASS   Main
+
+WINS: 14
+  00715110 RELOCATION_MATCH NTCScriptedControl::CActionFireProjectileWeapon::OnAdd
+  00d79d50 RELOCATION_MATCH CEndScythe::Main
+  00d7a360 RELOCATION_MATCH CEndBriarRose::Main
+  00ee7a20 RELOCATION_MATCH CDemonDoorFace::Main
+  00d86c30 RELOCATION_MATCH CSoulInfoAcolyte::Main
+  00ce0920 RELOCATION_MATCH CMK_HS2_SOUL::Main
+  00ce0b00 RELOCATION_MATCH CMK_HS2_SOUL::Main
+  00ce0ce0 RELOCATION_MATCH CMK_HS2_SOUL::Main
+  00cf02a0 RELOCATION_MATCH CGameflowAssistanceScript::Tutorial_RenownLevelIncrease
+  00d151d0 RELOCATION_MATCH CQ_BountyHuntScript::WatchForEnableFisherCreekHutDoor
+  00dde230 RELOCATION_MATCH NScript::CQ_PrisonWardenGameScript::WardenKeyMiniGame
+  00e02e50 RELOCATION_MATCH CDarkwoodAssassinSpawn::?Main@CDarkwoodAssassinSpawn@@
+  00e6b750 RELOCATION_MATCH NScript::CV_ChapelOfEvilScript::?WatchForRegionEntry@CV_ChapelOfEvilScript@NScript@@QAEXXZ
+  00ec0ba0 RELOCATION_MATCH CSecretWhisperingFriend::Main

@@ -1,0 +1,6 @@
+009f7890	x/v2_od.cpp	TU flag /Od (unoptimised TU; STLport inline placement new stays a call), no pragma
+00ef6fe0	x/v10_explicit_inst_ctor.cpp	explicit instantiation of the class-template copy ctor replaces the specialisation + depth-0 factory
+0066bd00	x/g2_itfirst.cpp	loop guard if (it != names.end()) with the cursor taken first; plain inline vector dtors
+0066bdf0	x/g2_itfirst.cpp	loop guard if (it != names.end()) with the cursor taken first; plain inline vector dtors
+00bc9b80	x/v1_noprag_force.cpp	no pragmas: __forceinline recursive FindNode expands one level by itself
+00dd6440	ex/110011111.cpp	per-exit do-while(0) (7 of 9 terminate checks; exhaustive mask search)
