@@ -26364,3 +26364,9 @@ chunk	address	module	name	length
 731	00b581e0	CEngineStateBlockAddSmoothAlpha	Apply	1208
 731	00b24850	CEngine	SetDefaultRenderStates	4344
 731	00b26360	CEngine	Initialise	5174
+732	006aa2e0	CThingPlayerCreature	DrawPreparePrimitivesForRendering	1080
+732	006aa720	CThingPlayerCreature	SetPlayerCreatureActionForMelee	1212
+732	006aabe0	CThingPlayerCreature	SetActionForMelee	1278
+732	006ab820	CThingPlayerCreature	ResolveFacingDirection	2328
+732	006aca30	CThingPlayerCreature	OnCollisionWithObject	2026
+732	004b05c0	CQuestManager	TransferBoasts	1126
