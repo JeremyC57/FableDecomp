@@ -7,7 +7,13 @@
 template<class T> class CArray : public std::vector<T> {
 public:
     CArray() : std::vector<T>() { }
+#ifdef FABLE_RETAIL_CARRAY
+    // retry11a (row 0x00520670 CArray<unsigned char>(size)): the one-argument ctor forwards to STLport's vector(n) -- the
+    // vector(n, T()) form changes LoadHeroStateBinary's register allocation (1 instruction).
+    explicit CArray(unsigned int n) : std::vector<T>(n) { }
+#else
     explicit CArray(unsigned int n) : std::vector<T>(n,T()) { }
+#endif
     CArray(unsigned int n,const T& x) : std::vector<T>(n,x) { }
     T& operator[](unsigned int i) { return this->_M_start[i]; }
     const T& operator[](unsigned int i) const { return this->_M_start[i]; }

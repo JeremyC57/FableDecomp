@@ -1,5 +1,160 @@
 #ifndef FABLE_ENGINE_CCREATUREACTIONBASE_H
 #define FABLE_ENGINE_CCREATUREACTIONBASE_H
+#ifdef FABLE_RETAIL_CCREATUREACTIONBASE
+// Retail opt-in (Codex pass 11 consolidation 2): the retail CCreatureActionBase model (row 0x00667450 CThingCreatureBase::ReactToGenericStrike); see below.
+#include "engine/CBaseObject.h"
+#include "engine/C3DVector.h"
+#include "engine/CCountedPointer.h"
+#include "fable_string.h"
+#include "engine/EActionRegisteredType.h"
+class CThing;class CThingCreatureBase;class CTCWeaponTrail;
+// Original Ego_r TPI0x221c9; native factories and calls prove vtable slots40-42.
+// Complete native sizea8 after the three retail container reductions.
+class CCreatureActionBase : public CBaseObject {
+public:
+    static CCountedPointer<CCreatureActionBase> __fastcall GetPActionFromEnum(EActionRegisteredType,CThingCreatureBase&);
+public:
+    virtual ~CCreatureActionBase();
+public:
+    virtual void EditUpdate(float);
+public:
+    virtual void PerformAction() =0;
+public:
+    virtual void FinishAction();
+public:
+    virtual bool IsPlayingAnimation() const;
+public:
+    virtual long GetAnimDelayTime() const;
+public:
+    virtual long GetAnimationIndex() const;
+public:
+    virtual long GetAnimationTransitionInTime() const;
+public:
+    virtual long GetAnimationTransitionOutTime() const;
+public:
+    virtual unsigned long GetAnimExtraFlags() const;
+public:
+    virtual CCreatureActionBase * Clone() const =0;
+public:
+    virtual void Initialise();
+public:
+    virtual bool IsStrikeEvent(long) const;
+public:
+    virtual bool IsStrikeEventActive() const;
+public:
+    virtual bool IsStrikeAction() const;
+public:
+    virtual bool IsPartOfComboChain() const;
+public:
+    virtual bool IsStrikeEventFinishedBeingActive() const;
+public:
+    virtual bool IsVitalStrike() const;
+public:
+    virtual bool IsKnockdownStrike() const;
+public:
+    virtual bool IsBlockCounter() const;
+public:
+    virtual bool IsMeleeFlourish() const;
+public:
+    virtual bool IsActionWithStrikeEventHelperName() const;
+public:
+    virtual CCharString GetStrikeEventHelperName() const;
+public:
+    virtual bool IsOverrideableByActionOfSamePriority() const;
+public:
+    virtual void OnFrameUpdate(float);
+public:
+    virtual bool IsQueuable() const;
+public:
+    virtual bool IsActionReadyForInterruption() const;
+public:
+    virtual bool IsActionReadyForInterruptionByMovement(const C3DVector &) const;
+public:
+    virtual bool IsBlockable() const;
+public:
+    virtual bool IsAffectedByHaste() const;
+public:
+    virtual bool IsAffectedByHeroStats() const;
+public:
+    virtual bool IsPhysicsPushableByHero() const;
+public:
+    virtual bool IsAlwaysPhysicsPushableBySelfAvoidance() const;
+public:
+    virtual bool IsAlwaysUseAnimationMovement() const;
+public:
+    virtual bool IsClearingMovementVector() const;
+public:
+    virtual bool IsToHaveEmptyHands() const;
+public:
+    virtual bool IsToReplaceItemIfRemoved() const;
+public:
+    virtual bool IsAllowingAnimationMovementToMoveSpeakAndWaitCameras() const;
+public:
+    virtual bool IsPreventingQuickAccessItemUsage() const;
+public:
+    virtual void SetHitter(const CThing &);
+public:
+    virtual void SetHitDirection(C3DVector);
+public:
+    virtual void SetHitPosition(C3DVector);
+public:
+    virtual CTCWeaponTrail * GetWeaponTrailUsedInStrikeAction(long &) const;
+public:
+    virtual float GetTotalTimeSeconds() const;
+public:
+    virtual bool IsToEvadeAllHits() const;
+public:
+    virtual bool IsToCauseRecoil() const;
+public:
+    virtual bool IsAbleToBeAttacked() const;
+public:
+    virtual bool IsPlayHitResponse() const;
+public:
+    virtual bool IsPreventingNormalMovement() const;
+public:
+    virtual bool IsPreventingLookTurning() const;
+public:
+    virtual void OnBlowBlocked(bool);
+public:
+    virtual void OnFollowUpActionFailedToAdd();
+public:
+    virtual void UpdateActionRunningTime();
+public:
+    virtual bool IsDecapitatingAttack() const;
+public:
+    virtual bool PreventSneaking() const;
+protected:
+    virtual void FrameUpdate();
+protected:
+    virtual bool IsUsingAnimationMovement() const;
+protected:
+    virtual bool IsUsingForcedMovement() const;
+protected:
+    virtual bool IsMovementUsingPhysics() const;
+protected:
+    virtual void UpdateActionMoveToPos();
+protected:
+    virtual void InitialiseActionMovement();
+protected:
+    virtual float GetFrameUpdateTime() const;
+protected:
+    virtual float GetActionSpeedParameter() const;
+protected:
+    virtual float GetActionStartRunningTimeSeconds() const;
+protected:
+    virtual bool OverrideFaceWithDefault() const;
+protected:
+    virtual bool AllowsCombinationAnims() const;
+protected:
+    virtual bool CanAnimationTransitionOut() const;
+protected:
+    virtual void OnAnimationLoaded();
+protected:
+    virtual bool WaitForMeshToLoad() const;
+protected: unsigned char _pad_0x08[0xa0];
+};
+FABLE_STATIC_ASSERT(sizeof(CCreatureActionBase)==0xa8);
+#else
 // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
 // Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CCreatureActionBase = 0xb4.
 // Container layout: retail STLport 4.6 (list 4, vector/map/set/string/CArray 0xc, deque 0x28, CVectorMap 0x10, bases from Fable.exe RTTI): sizeof CCreatureActionBase = 0xa8.
@@ -93,4 +248,5 @@ FABLE_STATIC_ASSERT(offsetof(CCreatureActionBase, ActionEvents) == 0x84);
 FABLE_STATIC_ASSERT(offsetof(CCreatureActionBase, CutSceneEvents) == 0x90);
 FABLE_STATIC_ASSERT(offsetof(CCreatureActionBase, DependentThings) == 0x9c);
 
+#endif // FABLE_RETAIL_CCREATUREACTIONBASE
 #endif // FABLE_ENGINE_CCREATUREACTIONBASE_H

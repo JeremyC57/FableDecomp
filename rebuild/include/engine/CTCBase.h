@@ -26,12 +26,18 @@
 // Retail opt-in addition (chunk 713): the protected non-virtual PeekWorld 0x00686A80 (Ego_r.pdb 0x006B1E70 / FableWin.pdb 0x02190D60
 // ?PeekWorld@CTCBase@@IBEABVCWorld@@XZ; called by CTCCreatureOpinionOfHero::IsFactionEnemyToHeroOverriddenOnOpinion 0x00681850).
 // A declaration only: no layout or vtable change.
+// Retail opt-in addition (Codex pass 11 consolidation 2): the protected non-virtual accessors GetDefinitionManager (Ego_r.pdb
+// 0x006B1DC0 / FableWin.pdb 0x02190D80 ?GetDefinitionManager@CTCBase@@IBEABVCGameDefinitionManager@@XZ; CTCShop::OnSerialise
+// 0x00775C60), the non-const GetThingManager (Ego_r 0x006B1ED0 / FableWin 0x02191640 ?GetThingManager@CTCBase@@IAEAAVCThingManager@@XZ)
+// and GetWorldMap (Ego_r 0x006B2120 / FableWin 0x02191500 ?GetWorldMap@CTCBase@@IAEAAVCWorldMap@@XZ; both called by
+// CTCInventoryMap::OnSerialise 0x00606300). Declarations only: no layout or vtable change.
 #ifdef FABLE_RETAIL_CTCBASE
 #include <stddef.h>
 #include "rebuild_abi.h"
 #include "engine/CBaseClassNonCopyable.h"
 class CCharString;
 class CEnginePrimitivePrepareInfo;
+class CGameDefinitionManager;
 class CPersistContext;
 class CTCParamsBase;
 class CThing;
@@ -77,6 +83,9 @@ public:
     void RemoveFromGlobalTCs();                                          // 0x00686DF0 ?RemoveFromGlobalTCs@CTCBase@@QAEXXZ (chunk 712)
 protected:
     const CThingManager& GetThingManager() const;                        // 0x00686AF0 ?GetThingManager@CTCBase@@IBEABVCThingManager@@XZ
+    CThingManager& GetThingManager();                                    // 0x00686AE0 ?GetThingManager@CTCBase@@IAEAAVCThingManager@@XZ (Ego_r 0x006B1ED0)
+    const CGameDefinitionManager& GetDefinitionManager() const;          // 0x006869D0 ?GetDefinitionManager@CTCBase@@IBEABVCGameDefinitionManager@@XZ (Ego_r 0x006B1DC0)
+    CWorldMap& GetWorldMap();                                            // 0x00686D30 ?GetWorldMap@CTCBase@@IAEAAVCWorldMap@@XZ (Ego_r 0x006B2120)
     const CWorld& PeekWorld() const;                                     // 0x00686A80 ?PeekWorld@CTCBase@@IBEABVCWorld@@XZ (Ego_r 0x006B1E70 + FableWin 0x02190D60; chunk 713)
     const CWorldMap& PeekWorldMap() const;                               // 0x00686D20 ?PeekWorldMap@CTCBase@@IBEABVCWorldMap@@XZ (chunk 714)
 public:

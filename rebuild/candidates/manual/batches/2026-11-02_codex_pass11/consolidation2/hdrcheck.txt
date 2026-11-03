@@ -1,0 +1,116 @@
+CHANGED boost/scoped_ptr.h default=same
+CHANGED engine/CACompressor.h default=same
+CHANGED engine/CArray.h default=same
+NEW    engine/CAttackingCombatantInfo.h
+NEW    engine/CCRC.h
+CHANGED engine/CClassFactory.h default=same
+CHANGED engine/CCombatAbility.h default=same
+CHANGED engine/CCombatAbilityAttackBase.h default=same
+CHANGED engine/CCombatAbilityBlockCounterAttackDef.h default=same
+NEW    engine/CCombatAbilityBlockDefBase.h
+NEW    engine/CCombatAbilityBlockHeavyWeaponAttackDef.h
+NEW    engine/CCombatAbilityBlockLightWeaponAttackDef.h
+NEW    engine/CCombatAbilityBlockProjectileWeaponAttackDef.h
+NEW    engine/CCombatAbilityBlockUnarmedAttackDef.h
+CHANGED engine/CCombatAbilityBlockingData.h default=same
+CHANGED engine/CCombatAbilityData.h default=same
+CHANGED engine/CCombatAbilityFlourishCounterAttackDef.h default=same
+NEW    engine/CCombatAbilityGetHitCounterAttackDef.h
+CHANGED engine/CCombatAbilityMeleeAttackData.h default=same
+CHANGED engine/CCombatAbilityProjectileAttackData.h default=same
+CHANGED engine/CCombatAbilityStrafeDef.h default=same
+CHANGED engine/CCombatAbilityStrafingData.h default=same
+NEW    engine/CCombatAbilityUseProjectileWeaponDef.h
+NEW    engine/CCombatActionBase.h
+CHANGED engine/CCombatAction_GenericResponseToDecapitation.h default=same
+NEW    engine/CCombatAction_GenericResponseToDrain.h
+CHANGED engine/CCombatAction_GenericResponseToExplosion.h default=same
+NEW    engine/CCombatAction_GenericStrikeResponse.h
+NEW    engine/CCombatAction_GenericStrikeResponseBase.h
+CHANGED engine/CCombatAction_GenericStrikeResponseKnockdown.h default=same
+NEW    engine/CCombatManager.h
+CHANGED engine/CCombatTypeDef.h default=same
+NEW    engine/CCombatantInfo.h
+CHANGED engine/CCompressorZlib.h default=same
+CHANGED engine/CCreatureActionBase.h default=same
+NEW    engine/CCreatureDef.h
+CHANGED engine/CDataInputStream.h default=same FABLE_RETAIL_CDATAINPUTSTREAM=DIFF
+CHANGED engine/CDataOutputStream.h default=same
+CHANGED engine/CDefPointer.h default=same FABLE_RETAIL_DEF_CLASS_BASE=DIFF
+NEW    engine/CDefendingCombatantInfo.h
+CHANGED engine/CDefinitionManager.h default=same
+NEW    engine/CDeviceResetCallback.h
+NEW    engine/CExplosionDef.h
+NEW    engine/CFailedAllocationHandler.h
+NEW    engine/CFilter_Bind2.h
+NEW    engine/CGameDefinitionManager.h
+NEW    engine/CHeroCombatDef.h
+NEW    engine/CHeroLogBook.h
+NEW    engine/CHitParameters.h
+NEW    engine/CIDrawWorldMap.h
+NEW    engine/CIntelligentPointer.h
+CHANGED engine/CMemoryDataOutputStream.h default=same FABLE_RETAIL_MEMORY_OUTPUT_STREAM=same
+NEW    engine/CMeshIntersectionData.h
+CHANGED engine/CPersistContext.h default=same FABLE_RETAIL_CPERSISTCONTEXT=DIFF
+NEW    engine/CPersistTraits.h
+NEW    engine/CPhysicsMeshObject.h
+CHANGED engine/CPlayer.h default=same FABLE_RETAIL_PLAYER=DIFF
+CHANGED engine/CPlayerGui.h default=same
+CHANGED engine/CPlayerManager.h default=same
+CHANGED engine/CRegion.h default=same
+CHANGED engine/CResourceList.h default=same
+NEW    engine/CRightHandedSet.h
+NEW    engine/CShopItem.h
+NEW    engine/CSpecialEffectsDef.h
+NEW    engine/CTBaseSingletonNoDefaultAlloc.h
+CHANGED engine/CTCBase.h default=same FABLE_RETAIL_CTCBASE=DIFF
+CHANGED engine/CTCBulletTime.h default=same
+CHANGED engine/CTCCombat.h default=same
+NEW    engine/CTCCreatureModeManager.h
+NEW    engine/CTCCreatureNavigation.h
+NEW    engine/CTCDExplosion.h
+NEW    engine/CTCDriverBase.h
+NEW    engine/CTCFlashOnHit.h
+NEW    engine/CTCHaste.h
+CHANGED engine/CTCHeroExperience.h default=same
+NEW    engine/CTCInventoryMap.h
+CHANGED engine/CTCPhysicsBase.h default=same
+NEW    engine/CTCScriptedControl.h
+NEW    engine/CTCShapeManager.h
+NEW    engine/CTCShop.h
+NEW    engine/CTCSoundPlayer.h
+NEW    engine/CTCTalk.h
+NEW    engine/CTCTeleporter.h
+NEW    engine/CTCThingOwner.h
+CHANGED engine/CThing.h default=same FABLE_RETAIL_CCLASS=same FABLE_RETAIL_DEF_CLASS_BASE=same
+NEW    engine/CThingBaseDef.h
+NEW    engine/CThingBuilding.h
+CHANGED engine/CThingCreatureBase.h default=same
+NEW    engine/CThingCreatureDef.h
+NEW    engine/CThingFilter_HasTC.h
+NEW    engine/CThingFilter_None.h
+NEW    engine/CThingFilter_OverlappingSphere.h
+NEW    engine/CThingFilter_PosInContainmentVolume.h
+CHANGED engine/CThingGameObject.h default=same
+NEW    engine/CThingManager.h
+NEW    engine/CThingMarker.h
+CHANGED engine/CThingPhysical.h default=same
+NEW    engine/CThingPlayerCreature.h
+CHANGED engine/CThingSearchTools.h default=same
+CHANGED engine/CWorld.h default=same FABLE_RETAIL_CIDRAWWORLD_DEFINED=same FABLE_RETAIL_CWORLD=DIFF
+CHANGED engine/CWorldMap.h default=same
+NEW    engine/CombatDialogueManager.h
+NEW    engine/EActionRegisteredType.h
+NEW    engine/ECombatAbilityDataType.h
+NEW    engine/ECombatAbilityInterfaceType.h
+NEW    engine/ECombatCreatureType.h
+NEW    engine/ECombatStrikeRecoilStyle.h
+NEW    engine/EHeroExperienceStatCategory.h
+NEW    engine/EUnsheatheWeaponType.h
+NEW    engine/EWeaponClass.h
+NEW    engine/GFMaths.h
+NEW    engine/NCreatureMode.h
+NEW    engine/NHitLocations_CHitLocation.h
+NEW    engine/NThingManager_CEntityRuntimePersistence.h
+CHANGED fable_game.h default=same
+CHANGED stlport/fable_map.h default=same

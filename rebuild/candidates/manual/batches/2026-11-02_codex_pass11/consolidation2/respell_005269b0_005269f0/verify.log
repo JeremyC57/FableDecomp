@@ -1,0 +1,3 @@
+005269b0   MATCH            PASS   __uninitialized_copy
+005269f0   MATCH            PASS   __uninitialized_fill_n
+WINS: 2

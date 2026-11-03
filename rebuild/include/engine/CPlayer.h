@@ -102,6 +102,9 @@ public:
     // FableWin 0x01ACDE00; retail 0x00487DC0, 65 landed binders), both called by CWorld::Unload 0x0049E270.
     void ResetModes();                                           // 0x00634870
     CThingPlayerCreature* GetPControlledCreature() const;        // 0x00487DC0
+    // Retail opt-in (Codex pass 11 consolidation 2): FableWin-only ?GetPlayerHeroLogBook@CPlayer@@QBEAAVCHeroLogBook@@XZ
+    // (0x0187F0C0; inline in Ego_r and retail: CTCInventoryMap::OnSerialise 0x00606300 reads PHeroLogBook_Data +0xF8).
+    CHeroLogBook& GetPlayerHeroLogBook() const { return *PHeroLogBook_Data; }
 #endif // FABLE_RETAIL_PLAYER
     void*                                                        __vftable; // +0x00 vptr, or first dword of a flattened base subobject
     unsigned char                                                _pad_0x04[0x4]; // +0x04

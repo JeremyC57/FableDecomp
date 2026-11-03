@@ -1,0 +1,5 @@
+00667d30 SRC_FAIL (Wine cl hang): engine/CDefString.h #error -> add FABLE_RETAIL_CDEFSTRINGTABLE
+00667d30 DIFFER(1232v1210) hdr (first compile)
+00667d30 DIFFER(1232v1210): GetTC<T> 'const bool& present' form materialises the HasTC bit (shr/and/mov [esp+13h]); retail tests ah directly
+00667d30 RELOCATION_MATCH 1210v1210 with direct-form GetTC<T> (also matches 00667450)
+00667d30 RELOCATION_MATCH 1210 v 1210 flags= [] [merged overlay, retry11a folded in]

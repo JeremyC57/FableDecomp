@@ -27,6 +27,12 @@ public:
     template<class T> void TransferVector(const char*,std::vector<T,std::allocator<T> >&);
     CPersistContext(CMemoryDataInputStream&,bool);
     CMemoryDataInputStream* GetPLoadStream() { return PLoadStream; }
+#ifdef FABLE_RETAIL_CPERSISTCONTEXT
+    // retry11a (row 0x00521620): the save-side constructor 0x009BAE50 (Ego_r.pdb / FableWin.pdb
+    // ??0CPersistContext@@QAE@AAVCDataOutputStream@@_N@Z) and the PSaveStream accessor (inline in retail).
+    CPersistContext(CDataOutputStream&,bool);
+    CDataOutputStream* GetPSaveStream() { return PSaveStream; }
+#endif
     template<class T> void Transfer(T&);
     template<class T> void Transfer(const char*,T&);
     template<class T> void TransferVector(std::vector<T,std::allocator<T> >&);

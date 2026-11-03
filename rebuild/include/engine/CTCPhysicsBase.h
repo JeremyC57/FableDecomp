@@ -1,5 +1,202 @@
 #ifndef FABLE_ENGINE_CTCPHYSICSBASE_H
 #define FABLE_ENGINE_CTCPHYSICSBASE_H
+#ifdef FABLE_RETAIL_CTCPHYSICSBASE
+// Retail opt-in (Codex pass 11 consolidation 2): the polymorphic retail CTCPhysicsBase : CTCBase (needs FABLE_RETAIL_CTCBASE); see below.
+class CPhysicsMeshObject;
+// PDB original virtual declarations; retail Physics slots are PDB offsets minus8.
+#include "engine/CTCBase.h"
+#include "engine/ETCInterfaceType.h"
+#include "fable_string.h"
+#include "engine/C3DVector.h"
+class C2DVector;
+class CInterfaceType;
+class CPersistContext;
+class CPhysicsCollideResponse;
+class CPhysicsDebugInfo;
+class CRightHandedSet;
+class CTCParamsBase;
+class CThingPhysicalDebugInfo;
+class CThingPhysicsMeshInfo;
+class CTCPhysicsBase : public CTCBase {
+#ifdef FABLE_AUTOPLACE_TEST_ACCESS
+    friend class CAutoPlaceFixture;
+#endif
+public:
+    virtual ETCInterfaceType GetInterfaceType() const;
+protected:
+    virtual C2DVector GetOffsetVector() const;
+protected:
+    virtual C3DVector GetOffsetVector3D() const;
+public:
+    virtual void SetPosition(const C3DVector &);
+public:
+    virtual void ResetPosition(const C3DVector &);
+public:
+    virtual void ResetRHSet(const CRightHandedSet &);
+public:
+    virtual void SetPositionToNavigateTo(const C3DVector &);
+public:
+    virtual void SetForcedToMovePos(const C3DVector &,bool);
+public:
+    virtual void ResetMovementState();
+public:
+    virtual void EnablePhysics(bool);
+public:
+    virtual bool IsPhysicsEnabled() const;
+public:
+    virtual void EnableGravity(bool);
+public:
+    virtual bool IsGravityEnabled() const;
+public:
+    virtual void EnableNavigator(bool);
+public:
+    virtual bool IsNavigationEnabled() const;
+public:
+    virtual bool HasNavigationLayers() const;
+public:
+    virtual void SetInteractionFlags(long);
+public:
+    virtual void ReturnToDefaultInteractionFlags();
+public:
+    virtual void OnDroppedFromUpdateList();
+public:
+    virtual void OnAddedToUpdateList();
+public:
+    virtual bool IsAlwaysFacingMovementDirection() const;
+public:
+    virtual bool IsAffectedByGravity() const;
+public:
+    virtual bool IsAffectedByAir() const;
+public:
+    virtual bool IsAffectedByWind() const;
+public:
+    virtual bool IsAngledWithGround() const;
+public:
+    virtual bool IsImmoveable() const;
+public:
+    virtual bool IsOnAnySurface() const;
+public:
+    virtual bool IsOnAnyStationarySurface() const;
+public:
+    virtual bool IsOnMeshSurface() const;
+public:
+    virtual bool IsOnGroundSurface() const;
+public:
+    virtual bool CanCollideWithThings() const;
+public:
+    virtual bool CanCollideWithThingsOneWay() const;
+public:
+    virtual bool CanCollideWithLandscape() const;
+public:
+    virtual bool CanInteractWithThings() const;
+public:
+    virtual bool IsExcludingCreatures() const;
+public:
+    virtual bool IsPhysicsMeshImpassable() const;
+public:
+    virtual float GetFacingAngleXY() const;
+public:
+    virtual float GetFacingAngleYZ() const;
+public:
+    virtual float GetFacingAngleXZ() const;
+public:
+    virtual void SetFacingAngleXY(float);
+public:
+    virtual void SetFacingAngleYZ(float);
+public:
+    virtual void SetFacingAngleXZ(float);
+public:
+    virtual C3DVector GetFacingVector(float) const;
+public:
+    virtual C3DVector GetFacingVector() const;
+public:
+    virtual const CRightHandedSet & GetRHSet() const;
+public:
+    virtual CRightHandedSet GetRHSet(float) const;
+public:
+    virtual const CRightHandedSet & GetLastRHSet() const;
+public:
+    virtual void SetFacingAnglesFromRHSet(const CRightHandedSet &);
+public:
+    virtual void SetRHSet(const CRightHandedSet &);
+public:
+    virtual C3DVector GetImpulse() const;
+public:
+    virtual void SetRHSetAsFlushOnNormal(const C3DVector &);
+public:
+    virtual void SetRHSetAsFlushOnGround();
+public:
+    virtual float GetRenderZOffset(float) const;
+public:
+    virtual void ResetInterpolation();
+public:
+    virtual void ApplyControlledImpulse(const C3DVector &);
+public:
+    virtual void ApplyControlledAcceleration(const C3DVector &,float);
+public:
+    virtual bool IsPushableByHero() const;
+public:
+    virtual void SetAsPushableByHero(bool);
+public:
+    virtual void FrameUpdate();
+public:
+    virtual bool HasFrameUpdate() const;
+public:
+    virtual void SetPhysicsMeshBankIndex(long);
+public:
+    virtual void SetScaleFromOwner();
+public:
+    virtual void ConstructFromParams(const CTCParamsBase &);
+public:
+    virtual void OnCreate();
+public:
+    virtual void InitialActivate();
+public:
+    virtual void Move();
+public:
+    virtual bool DrawGetPhysicsDebugInfo(CThingPhysicalDebugInfo &) const;
+public:
+    virtual void OnSerialise(CPersistContext &,bool);
+public:
+    virtual bool IsComponentSerialisable() const;
+public:
+    virtual bool IsSerialisableForHeroState() const;
+public:
+    virtual bool IsCopyable() const;
+public:
+    virtual void FillPhysicsDebugInfoForSelf(CPhysicsDebugInfo &) const;
+public:
+    virtual bool HasCollidedWithThingFromTo(const CTCPhysicsBase &,const C3DVector &,const C3DVector &,CPhysicsCollideResponse &) const;
+public:
+    virtual bool HasCollidedWithThingAt(const CTCPhysicsBase &,const C3DVector &,CPhysicsCollideResponse &) const;
+public:
+    virtual bool HasCollidedWithLandscapeAt(const C3DVector &,CPhysicsCollideResponse &) const;
+public:
+    virtual const CThingPhysicsMeshInfo * GetPhysicsMeshInfo() const;
+protected:
+    virtual void UpdateInterpolation();
+protected:
+    virtual void UpdateOldRHSet();
+protected:
+    virtual void UpdateOldPos();
+public:
+    virtual ~CTCPhysicsBase();
+protected:
+    C3DVector Position;
+    C3DVector OldPosition;
+    long OldPositionLastFrameSet;
+    C3DVector Velocity;
+    float Radius;
+    unsigned char PhysicsDef[4];
+    bool Moving:1,OldMoving:1;
+public:
+    void GetBoundingInfo(C3DVector&,float&) const;
+    const C3DVector& GetPosition() const { return Position; }
+    float GetRadius() const { return Radius; }
+    CPhysicsMeshObject GetPhysicsMeshObject() const;
+};
+FABLE_STATIC_ASSERT(sizeof(CTCPhysicsBase)==0x40);
+#else
 // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
 // Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CTCPhysicsBase = 0x40.
 // Retail evidence: 0 trusted landed function(s); reconciliation clean.
@@ -49,4 +246,5 @@ FABLE_STATIC_ASSERT(offsetof(CTCPhysicsBase, Radius) == 0x34);
 FABLE_STATIC_ASSERT(offsetof(CTCPhysicsBase, PhysicsDef_Object) == 0x38);
 FABLE_STATIC_ASSERT(offsetof(CTCPhysicsBase, OldMoving) == 0x3c);
 
+#endif // FABLE_RETAIL_CTCPHYSICSBASE
 #endif // FABLE_ENGINE_CTCPHYSICSBASE_H

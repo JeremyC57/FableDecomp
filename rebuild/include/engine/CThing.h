@@ -91,22 +91,27 @@ public:
     bool IsIncludedInThingScans() const { return IncludeInThingScans && Activated && !Dead && !InLimbo; }
     bool IsAlive() const { return !Dead; }
     bool HasTC(ETCInterfaceType type) const { return UsingComponents.test(type); }
-    template<class T> bool GetTC(T** ptc) {
-        const bool& present=HasTC(T::StatGetInterfaceType());
-        if(present) {
-            CTCBase& base=GetTC(T::StatGetInterfaceType());
-            *ptc=GFDebugPDynamicCast(&base,(T*)0);
+    // GetTC<T> / PeekTC<T>: __forceinline (owner decision 2026-11-01, EXTRA_RULES): Ego_r.pdb (the release build) has no
+    // ??$GetTC@ / ??$PeekTC@ instantiation (FableWin.pdb, debug: 267 / 159), Fable.exe has no out-of-line copy, and plain
+    // `inline` leaves calls under VC7.1's budget (0x00667450 ReactToGenericStrike: GetTC<CTCDExplosion> and
+    // PeekTC<const CTCCreatureModeManager> called out of line, 1625 v 1755 bytes).
+    // GetTC<T> body (Codex pass 11 consolidation 2): HasTC then Components.Find, like PeekTC. 0x00667D30 OnHit tests the
+    // UsingComponents bit in place (`mov eax,[edi+20h]; test ah,ah; jns`); a `const bool&` local stores it first.
+    template<class T> __forceinline bool GetTC(T** result) {
+        if(HasTC(T::StatGetInterfaceType())) {
+            *result=GFDebugPDynamicCast(Components.Find(T::StatGetInterfaceType())->second,(T*)0);
+            return true;
         }
-        return present;
+        return false;
     }
-    template<class T> bool PeekTC(T** result) const {
+    template<class T> __forceinline bool PeekTC(T** result) const {
         if(HasTC(T::StatGetInterfaceType())) {
             *result=GFDebugPDynamicCast(static_cast<const CTCBase*>(Components.Find(T::StatGetInterfaceType())->second),(T*)0);
             return true;
         }
         return false;
     }
-    template<class T> bool PeekTC(ETCInterfaceType id,T** ptc) const {
+    template<class T> __forceinline bool PeekTC(ETCInterfaceType id,T** ptc) const {
         if(HasTC(id)) {
             const CTCBase& base=GetTC(id);
             *ptc=GFDebugPDynamicCast(&base,(T*)0);

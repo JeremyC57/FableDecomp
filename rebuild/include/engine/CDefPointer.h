@@ -12,6 +12,11 @@
 // rows show (0x008C79B0 and family): the manager's CDefPointer<CDefClassBase> temporary releases as `mov edi,[eax+4]; ...
 // dec edi; ... mov [eax],edi; jne`, the CDefPointer<const T> assignment and destructor as `dec dword ptr [ecx+4]; jne`;
 // Release() must hold the pointee in a local (the temporary's Delete call reuses ecx; reloading Object differs).
+// Release() decrements the pointee's count in place (Codex pass 11 consolidation 2): 0x00667450
+// CThingCreatureBase::ReactToGenericStrike releases its CDefPointer<const CSpecialEffectsDef> locals as `dec dword ptr
+// [ecx+4]; jne; mov eax,[ecx]; call [eax+4]`; `object->Release() == 0` (CIVCountedPointeeBase::Release returns the new
+// count) emits `mov edx,[ecx+4]; dec edx; mov eax,edx; test eax,eax; mov [ecx+4],edx` there (0x007355F0 matches either way);
+// the GetSubDef<T> load/dec/store shape above still comes out of this form (every landed DEF_CLASS_BASE row rechecked).
 // The assignment shape (`cmp; test; dec [ecx+4]; jne; call [eax+4]; and [esi],0; inc [eax+4]`) is the out-of-line
 // operator= rows (e.g. 0x00592844). SetDynamicCast<U>: FableWin.pdb pairs it with GFDebugPDynamicCast<CDefPointeeBase*,
 // const T*> (a debug-only type check); release code is the plain assignment.
@@ -45,7 +50,20 @@ public:
         if (Object) Object->AddRef();
     }
     FABLE_DEFPTR_INLINE ~CDefPointer() { Release(); }
-    FABLE_DEFPTR_INLINE CDefPointer& operator=(const CDefPointer& other) { Assign(other.Object); return *this; }
+    // Copy assignment (Codex pass 11 consolidation 2): retail reads other.Object again after the Release call --
+    // 0x007355F0 SetCombatType `PCombatTypeDef=pcombat_type` (a const reference that may alias) emits `cmp ecx,[ebp]`,
+    // the release, `mov [esi+28h],0`, then `mov eax,[ebp]` / `mov [esi+28h],eax` / `inc [eax+4]`. Assign(other.Object)
+    // caches the pointer in a register across the Release call instead. Where `other` cannot alias (a local) the two
+    // compile identically (every landed DEF_CLASS_BASE row rechecked).
+    FABLE_DEFPTR_INLINE CDefPointer& operator=(const CDefPointer& other)
+    {
+        if (Object != other.Object) {
+            Release();
+            Object = other.Object;
+            if (Object) Object->AddRef();
+        }
+        return *this;
+    }
     template <class U> FABLE_DEFPTR_INLINE CDefPointer& operator=(const CDefPointer<U>& other) { Assign(other.InternalGetObject()); return *this; }
     template <class U> FABLE_DEFPTR_INLINE void SetDynamicCast(const CDefPointer<U>& other) { Assign(other.InternalGetObject()); }
     CDefPointeeBase* InternalGetObject() const { return Object; }
@@ -59,7 +77,7 @@ public:
     {
         if (Object) {
             CDefPointeeBase* object = Object;
-            if (object->Release() == 0)
+            if (--object->IVRefCount == 0)                              // Codex pass 11 consolidation 2: see Release note above
                 object->Delete();
             Object = 0;
         }

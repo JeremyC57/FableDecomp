@@ -11,7 +11,10 @@ class CWideString;
 class CDataInputStream : public CDataStream {
 public:
     CDataInputStream();
-    virtual ~CDataInputStream();
+    // retry11a: no user-declared destructor in retail -- every CMemoryDataInputStream / CDataInputStream local is
+    // destroyed by a direct call to ~CDataStream 0x00993B10 (stores the CDataStream vtable 0x0129A69C, then jumps to
+    // ~CBaseClassNonCopyable 0x0099A300) with no derived vtable store first (0x00520BFB, 0x00520C3F): both derived
+    // destructors are compiler-generated.
     virtual void Close();
     unsigned long GetLength() const { return StreamSize; }
     virtual unsigned long GetPosition() const { return StreamPos; }

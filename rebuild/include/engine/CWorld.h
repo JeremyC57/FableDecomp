@@ -99,6 +99,13 @@ public:
     unsigned long* GetWorldSeed() const;                     // 0x0049D810 ?GetWorldSeed@CWorld@@QBEPAKXZ
     bool EventIsWorldEvent(const CGameEvent* event) const;   // 0x0049D8C0 ?EventIsWorldEvent@CWorld@@QBE_NPBVCGameEvent@@@Z
     void Unload();                                           // 0x0049E270 ?Unload@CWorld@@QAEXXZ
+    // Retail opt-in addition (Codex pass 11 consolidation 2): inline accessors (FableWin.pdb only, expanded by Ego_r and retail):
+    // ?GetThingSearchTools@CWorld@@QAEAAVCThingSearchTools@@XZ (FableWin 0x018C3A00; 0x00666EF0 reads [world+0x20]),
+    // ?PeekThingSearchTools@CWorld@@QBEABVCThingSearchTools@@XZ (FableWin 0x018CE450) and ?IsSerialisingHeroState@CWorld@@QBE_NXZ
+    // (FableWin 0x01B3AB20; 0x0047A9F0 reads [world+0x102]). No layout or vtable change.
+    CThingSearchTools& GetThingSearchTools() { return *PThingSearchTools_ptr; }
+    const CThingSearchTools& PeekThingSearchTools() const { return *PThingSearchTools_ptr; }
+    bool IsSerialisingHeroState() const { return SerialisingHeroState; }
 protected:
     const CGameEventDispatch* GetEventDispatchTableEntry(long type) const;   // 0x0049D8E0 ?GetEventDispatchTableEntry@CWorld@@IBEPBVCGameEventDispatch@@J@Z
 public:

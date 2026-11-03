@@ -1,0 +1,14 @@
+00606300 SRC_FAIL 0 v 2585 flags= []
+00606300.cpp
+Z:\tmp\claude-0\-home-user-FableDecomp\5221bbec-fb18-575f-8649-a32d96bb1c2d\scratchpad\w22\cons11b\q\00606300\00606300.cpp(60) : error C2027: use of undefined type 'CWorld'
+        Z:\tmp\claude-0\-home-user-FableDecomp\5221bbec-fb18-575f-8649-a32d96bb1c2d\scratchpad\w22\cons11b\hdr\engine\CTCBase.h(45) : see declaration of 'CWorld'
+Z:\tmp\claude-0\-home-user-FableDecomp\5221bbec-fb18-575f-8649-a32d96bb1c2d\scratchpad\w22\cons11b\q\00606300\00606300.cpp(60) : error C2228: left of '.IsSerialisingHeroState' must have class/struct/union type
+Z:\tmp\claude-0\-home-user-FableDecomp\5221bbec-fb18-575f-8649-a32d96bb1c2d\scratchpad\w22\cons11b\q\00606300\00606300.cpp(67) : error C2027: use of undefined type 'CWorld'
+        Z:\tmp\claude-0\-home-user-FableDecomp\5221bbec-fb18-575f-8649-a32d96bb1c2d\scratchpad\w22\cons11b\hdr\engine\CTCBase.h(45) : see declaration of 'CWorld'
+Z:\tmp\claude-0\-home-user-FableDecomp\5221bbec-fb18-575f-8649-a32d96bb1c2d\scratchpad\w22\cons11b\q\00606300\00606300.cpp(67) : error C2228: left of '.IsSerialisingHeroState' must have class/struct/union type
+Z:\tmp\claude-0\-home-user-FableDecomp\5221bbec-fb18-575f-8649-a32d96bb1c2d\scratchpad\w22\cons11b\q\00606300\00606300.cpp(70) : error C2027: use of undefined type 'CWorld'
+        Z:\tmp\claude-0\-home-user-FableDecomp\5221bbec-fb18-575f-8649-a32d96bb1c2d\scratchpad\w22\cons11b\hdr\engine\CTCBase.h(45) : see declaration of 'CWorld'
+Z:\tmp\claude-0\-home-user-FableDecomp\5221bbec-fb18-575f-8649-a32d96bb1c2d\scratchpad\w22\cons11b\q\00606300\00606300.cpp(70) : error C2228: left of '.PeekThingSearchTools' must have class/struct/union type
+Z:\tmp\claude-0\-home-user-FableDecomp\5221bbec-fb18-575f-8649-a32d96bb1c2d\scratchpad\w22\cons11b\q\00606300\00606300.cpp(70) : error C2228: left of '.GetAllLeafThings' must have class/struct/union type
+00606300 RELOCATION_MATCH 2585 v 2585 flags= []
+00606300 RELOCATION_MATCH 2585 v 2585 flags= [] [merged overlay, retry11a folded in]

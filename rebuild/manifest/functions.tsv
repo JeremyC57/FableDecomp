@@ -3724,7 +3724,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0047a750	list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_>	list<CMessageEvent_const*,std	__thiscall	undefined	1	list<CMessageEvent_const*,std::allocator<CMessageEvent_const*>_> *	0	yes	accepted									
 0047a770	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap::CSymbolInfo>_>	_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<CCharString,CSymbolMap	__fastcall	void	2	allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_> *,pair<CCharString,CSymbolMap::CSymbolInfo> *	1	yes	accepted									
 0047a8e0	AddObjectiveToQuest	CHeroLogBook	__thiscall	bool	4	CHeroLogBook *,ulong,ulong,CCharString *	1	yes	accepted									
-0047a9f0	CHeroLogBook_AddLogEntry	_global	unknown	undefined	0		0	yes	accepted									
+0047a9f0	AddEntry	CHeroLogBook	unknown	undefined	0		0	yes	accepted									
 0047ae50	Clear	CHeroLogBook	unknown	undefined	0		0	yes	accepted									
 0047b300	`vector_deleting_destructor'	CLandscapeBackgroundPatch	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\47\CLandscapeBackgroundPatch_vectordeletingdestructor_0047b300.cpp
 0047b330	`vector_deleting_destructor'	CThingSwitch	__thiscall	void *	2	CThingSwitch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\47\CThingSwitch_vectordeletingdestructor_0047b330.cpp
@@ -8846,13 +8846,13 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00520330	AddPersistedDeadEntity	NThingManager::CEntityRuntimePersistence	__thiscall	void	4	CEntityRuntimePersistence *,__uint64,bool,ulong	1	yes	accepted									
 00520390	ClearPersistenceDataForSection	NThingManager::CEntityRuntimePersistence	__thiscall	void	2	CEntityRuntimePersistence *,CCharString *	1	yes	accepted									
 00520570	LoadHeroStateScript	CThingManager	__thiscall	void	2	CThingManager *,CStringParser *	1	yes	accepted									
-00520670	CThingManager_LoadGameState_Scripts	_global	unknown	undefined	0		0	yes	accepted									
+00520670	LoadHeroStateBinary	CThingManager	unknown	undefined	0		0	yes	accepted									
 00520c70	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>	_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs	__fastcall	void	3	allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_> *,pair<EHeroMorphType,CParticleMorphs::CEntry> *,pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry> *	1	yes	accepted									
 00520c80	OnThingKill	CThingManager	__thiscall	void	2	CThingManager *,CThing *	1	yes	accepted									
 00520d00	LoadEntitiesFromScript	CThingManager	__thiscall	void	8	CThingManager *,CCharString *,long,long,set<CCharString,std::less<CCharString>,std::allocator<CCharString>_> *,CASuspendableProcess *,long,vector<CThing*,std::allocator<CThing*>_> *	1	yes	accepted									
 00521240	LoadEntitiesBinary	CThingManager	__thiscall	void	8	CThingManager *,CMemoryDataInputStream *,long,long,set<CCharString,std::less<CCharString>,std::allocator<CCharString>_> *,CASuspendableProcess *,long,vector<CThing*,std::allocator<CThing*>_> *	1	yes	accepted									
 005215f0	?OnDeleteClass@CThingManager@@MAEXAAVCClass@@@Z	CThingManager	__thiscall	bool	2	CContainmentVolume *,C3DVector *	1	yes	accepted									
-00521620	CEditWorldMap_LoadRivers	_global	unknown	undefined	0		0	yes	accepted									
+00521620	SaveToGameStateBinary	NThingManager::CEntityRuntimePersistence	unknown	undefined	0		0	yes	accepted									
 00521a90	SetNameForThing	CThingManager	__thiscall	void	3	CThingManager *,__uint64,CWideString *	1	yes	accepted									
 00521ae0	LoadFromFile	CThingManager	__thiscall	void	7	CThingManager *,CCountedPointer<CAFile>,long,set<CCharString,std::less<CCharString>,std::allocator<CCharString>_>,vector<CThing*,std::allocator<CThing*>_> *,CASuspendableProcess *,int	1	yes	accepted									
 00521cf0	CThingManager_LoadMorphFromScript	_global	unknown	undefined	0		0	yes	accepted									
@@ -8890,8 +8890,8 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00526120	operator()	less<unsigned___int64>	__thiscall	bool	3	less<unsigned___int64> *,__uint64 *,__uint64 *	1	yes	accepted									
 00526210	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00526210.cpp
 00526230	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive::CTriangleList>_>	_Dest_val<std::allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_>,CIVCountedPointer<N3DPrimitive	__fastcall	void	2	allocator<CIVCountedPointer<N3DPrimitive::CTriangleList>_> *,CIVCountedPointer<N3DPrimitive::CTriangleList> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\52\DestvalstdallocatorCIVCountedPointerN3DPrimitiveCTriangleListCIVCountedPointerN3_CTriangleList_00526230.cpp
-005269b0	__uninitialized_copy<CUnprovenElement_005269b0 *, CUnprovenElement_005269b0 *>	std	__fastcall	C2DLineF *	3	C2DLineF *,C2DLineF *,C2DLineF *	1	yes	accepted									
-005269f0	__uninitialized_fill_n<CUnprovenElement16_005269f0 *, unsigned int, CUnprovenElement16_005269f0>	std	unknown	undefined	0		0			discovered	gapscan							
+005269b0	__uninitialized_copy<NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *>	std	__fastcall	C2DLineF *	3	C2DLineF *,C2DLineF *,C2DLineF *	1	yes	accepted									
+005269f0	__uninitialized_fill_n<NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *, unsigned int, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity>	std	unknown	undefined	0		0			discovered	gapscan							
 00526d70	_Fill<CObjectFamilyEntry*,CObjectFamilyEntry>	_global	__fastcall	void	3	CObjectFamilyEntry *,CObjectFamilyEntry *,CObjectFamilyEntry *	1	yes	accepted									
 00526e40	_Ufill	vector<unsigned___int64	__thiscall	__uint64 *	4	vector<unsigned___int64,std::allocator<unsigned___int64>_> *,__uint64 *,uint,__uint64 *	1	yes	accepted									
 00526ef0	`scalar deleting destructor'	std::pair<unsigned __int64 const, std::pair<CCharString, CWideString>>	__thiscall	void *	2	CEngineSubPrimitiveText *,uint	1	yes	accepted									
@@ -9066,7 +9066,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0052af00	CUnprovenContainer_0052af00	CUnprovenContainer_0052af00	unknown	undefined	0		0	yes	accepted									
 0052af40	LTextTreeWalkThrough_Destructor	_global	unknown	undefined	0		0	yes	accepted									
 0052afb0	erase	std::_Rb_tree<unsigned __int64, std::pair<unsigned __int64 const, CThing *>, std::_Select1st<std::pair<unsigned __int64 const, CThing *>>, std::less<unsigned __int64>, std::allocator<std::pair<unsigned __int64 const, CThing *>>>	unknown	undefined	0		0	yes	accepted									
-0052b030	sub_0052b030	_gapscan	unknown	undefined	0		0			discovered	gapscan							
+0052b030	_M_insert_overflow	std::vector<NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity>	unknown	undefined	0		0			discovered	gapscan							
 0052b100	erase	std::vector<CThingTypeInfo, std::allocator<CThingTypeInfo>>	unknown	undefined	0		0	yes	accepted									
 0052b150	std::vector_InsertN_Pairs_8Bytes	std	unknown	undefined	0		0	yes	accepted									
 0052b270	GetAllThings<CThingAICreature,std::vector<CThingAICreature*,std::allocator<CThingAICreature*>_>,CFilter_Bind2<CThingFilter_None,CThingFilter_HasTC>_>	GetAllThings<CThingAICreature,std::vector<CThingAICreature*,std	__thiscall	void	3	CThingSearchTools *,CFilter_Bind2<CThingFilter_None,CThingFilter_HasTC> *,vector<CThingAICreature*,std::allocator<CThingAICreature*>_> *	1	yes	accepted									
@@ -12893,7 +12893,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00605570	ConstructRegionDescription	CTCInventoryMap	__thiscall	void	4	CTCInventoryMap *,CComponent *,CRegion *,bool	1	yes	accepted									
 00605ce0	UpdateVisitedRegions	CTCInventoryMap	__thiscall	void	3	CTCInventoryMap *,long,long	1	yes	accepted									
 006061b0	CTCInventoryMap::vfunc_9	CTCInventoryMap	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00606300	CTCInventoryMap_Serialise	_global	unknown	undefined	0		0	yes	accepted									
+00606300	OnSerialise	CTCInventoryMap	unknown	undefined	0		0	yes	accepted									
 00606d20	CPSCOrbit	CPSCOrbit	__thiscall	undefined	1	CPSCOrbit *	0	yes	accepted									
 00606f80	~CTCInventoryMap	CTCInventoryMap	unknown	undefined	0		0	yes	accepted									
 00607330	ConstructLogbookList	CTCInventoryMap	__thiscall	CComponent *	2	CTCInventoryMap *,CComponent *	1	yes	accepted									
@@ -19253,7 +19253,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 007352d0	CombatBlockingData_AddIfNew	_global	unknown	undefined	0		0	yes	accepted									
 00735340	~CTCCombat	CTCCombat	unknown	undefined	0		0	yes	accepted									
 00735540	CTCCombat	CTCCombat	__thiscall	undefined	2	CTCCombat *,CThing *	0	yes	accepted									
-007355f0	CCreatureAction_InitializeForCombat	_global	unknown	undefined	0		0	yes	accepted									
+007355f0	SetCombatType	CTCCombat	unknown	undefined	0		0	yes	accepted									
 00735fd0	AttemptToStartParticle	CTCCombat	__thiscall	void	2	CTCCombat *,CThing *	1	yes	accepted									
 007363a0	OnCreate	CTCCombat	__thiscall	void	1	CTCCombat *	1	yes	accepted									
 00736590	UpdateUsableMeleeCombatAbilities	CTCCombat	__thiscall	void	1	CTCCombat *	1	yes	accepted									
@@ -19990,7 +19990,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 0074a1e0	RemoveCreatureTriggerer	CTCCreatureGenerator	unknown	undefined	0		0	yes	accepted									
 0074a260	GetUndeadGenerationPoint	CTCCreatureGenerator	__thiscall	bool	3	CTCCreatureGenerator *,CThingCreatureBase *,C3DVector *	1	yes	accepted									
 0074a4e0	VertexBuffer_FilterNavigableVertices	_global	unknown	undefined	0		0	yes	accepted									
-0074a5d0	GetValidPositions	_global	__fastcall	void	7	vector<C3DVector,std::allocator<C3DVector>_> *,CWorldMap *,CThingSearchTools *,C3DVector *,float,bool,CTCShapeManager *	1	yes	accepted									
+0074a5d0	GetValidPositions	NCreatureHiding	__fastcall	void	7	vector<C3DVector,std::allocator<C3DVector>_> *,CWorldMap *,CThingSearchTools *,C3DVector *,float,bool,CTCShapeManager *	1	yes	accepted									
 0074aa00	CPSCOrbit	CPSCOrbit	__thiscall	undefined	1	CPSCOrbit *	0	yes	accepted									
 0074ab00	CChunkedFileChunk_Destructor	_global	unknown	undefined	0		0	yes	accepted									
 0074ac80	CTCShop_AddShopper	_global	unknown	undefined	0		0	yes	accepted									
@@ -20894,7 +20894,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00775350	CTCShop_OnInitialActivate	_global	unknown	undefined	0		0	yes	accepted									
 00775b20	OnInitialActivate	CTCShop	__thiscall	void	1	CTCShop *	1	yes	accepted									
 00775b40	CTCShop::vfunc_9	CTCShop	unknown	undefined	0		0			discovered	gapscan			rtti-vtables.tsv				
-00775c60	CPersistentShop_TransferStockItems	_global	unknown	undefined	0		0	yes	accepted									
+00775c60	OnSerialise	CTCShop	unknown	undefined	0		0	yes	accepted									
 00776410	operator!=<CThingCreatureBase>	_global	__fastcall	void	0		1	yes	accepted									
 007765c0	_Copy_impl<CActionInputControl*,CActionInputControl*>	_global	__fastcall	CActionInputControl *	3	CActionInputControl *,CActionInputControl *,CActionInputControl *	1	yes	accepted									
 00776750	_Push_heap<float*,int,float,std::less<float>_>	_Push_heap<float*,int,float,std	__fastcall	void	5	float *,int,int,float *,less<float>	1	yes	accepted									

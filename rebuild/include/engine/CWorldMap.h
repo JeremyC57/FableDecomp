@@ -1,5 +1,100 @@
 #ifndef FABLE_ENGINE_CWORLDMAP_H
 #define FABLE_ENGINE_CWORLDMAP_H
+#ifdef FABLE_RETAIL_CWORLDMAP
+// Retail opt-in (Codex pass 11 consolidation 2, merged with retry11a row 0x00521620): the polymorphic retail class -- RTTI
+// CWorldMap : CBaseClassNonCopyable (vptr +0x00), CIDrawWorldMap (vptr +0x04); the members of the default branch below from
+// +0x08 (STLport containers as opaque 4-aligned storage), sizeof 0xD8. Virtual order: Ego_r.pdb CWorldMap (TPI 0x27B6E).
+#include "engine/CBaseClassNonCopyable.h"
+#include "engine/CIDrawWorldMap.h"
+#include "engine/CCountedPointer.h"
+#include "stlport/fable_containers.h"
+class CWorld; class CMainGameComponent; class CRegionConnectionGraph; class CWADBank; class CLevelLoader; class CAFile; class CRegion;
+class CASuspendableProcess; class CMap; class C2DCoordI; class C2DBoxI; class C3DVector; class CDrawMapInfo; class CCharString;
+namespace NThingMap { class CThingMapManager; }
+namespace std { template<class T> struct less; template<class K,class C,class A> class set; }
+class CWorldMap : public CBaseClassNonCopyable, public CIDrawWorldMap {
+public:
+    virtual ~CWorldMap();
+    virtual void DeleteAllLevels();
+    virtual void DeleteAllRegions();
+    virtual void LoadFromFile(CAFile&, long);
+    virtual void SaveToFile(CAFile&);
+    virtual void RemoveLevel(long);
+    virtual void LoadTopologyFromFile(long, CCountedPointer<CAFile>, CASuspendableProcess&);
+    virtual void PostLoadTopology(long);
+    virtual void ForceLoad(long);
+    virtual void ForceUnload(long);
+    virtual bool IsMapLoaded(long) const;
+    virtual bool IsMapUsed(long) const;
+    virtual long GetGranularity() const;
+    virtual const C2DBoxI& GetDimensions() const;
+    virtual CMap& GetMapAt(const C2DCoordI&);
+    virtual const CMap& PeekMapAt(const C2DCoordI&) const;
+    virtual long GetMapNumberAt(const C3DVector&) const;
+    virtual long GetMapNumberAt(const C2DCoordI&) const;
+    virtual CMap& GetMap(long);
+    virtual const CMap& PeekMap(long) const;
+    virtual void GetAllMapsInArea(const C2DBoxI&, std::vector<unsigned long, std::allocator<unsigned long> >&) const;
+    virtual void GetAllLoadedMapsInArea(const C2DBoxI&, std::vector<unsigned long, std::allocator<unsigned long> >&) const;
+    virtual void PostRegionLoad(long);
+    virtual C2DCoordI GetMapPos(long) const;
+    virtual bool IsMapChangeable(long) const;
+    virtual bool IsPosChangeable(const C2DCoordI&) const;
+    virtual std::set<CCharString, std::less<CCharString>, std::allocator<CCharString> > GetLoadableSections() const;
+    virtual void Update();
+    virtual void HeightAreaChanged(const C2DBoxI*);
+    virtual long DrawGetFrame() const;
+    virtual long DrawGetNoMaps() const;
+    virtual CDrawMapInfo DrawGetMapInfo(long) const;
+    virtual C2DBoxI DrawGetDimensions() const;
+    virtual long DrawGetGranularity() const;
+    virtual bool DrawIsPosInMap(const C3DVector&) const;
+    virtual float DrawGetSizeZAt(const C3DVector&, float) const;
+    virtual C3DVector DrawConvertWorldMapCoordsToLocalCoords(long, const C3DVector&) const;
+    virtual long DrawGetMyPlayerMapNumber() const;
+    virtual bool DrawFindLastUnblockedGroundPositionAndReportCollision(const C3DVector&, const C3DVector&, C3DVector&) const;
+    virtual bool DrawFindLastUnblockedThemePositionAndReportCollision(const C3DVector&, const C3DVector&, C3DVector&) const;
+protected:
+    virtual void LoadScriptBrushesFromFile(long, CCountedPointer<CAFile>);
+    virtual long AllocateNewMap();
+public:
+    unsigned long GetMapUID(long map) const;                 // 0x004FCE00 ?GetMapUID@CWorldMap@@QBEKJ@Z
+    long GetRegionNumberFromName(const CCharString&) const;      // these five: callees of 0x00606300 / 0x0074A5D0
+    CRegion& GetRegion(long);
+    bool IsPosInMap(const C3DVector&) const;
+    bool IsPosPassable(const C2DCoordI&) const;
+    float GetGroundSizeZAt(const C3DVector&) const;
+protected:
+    CWorld*                 World;                           // +0x08
+    CMainGameComponent*     Component;                       // +0x0c
+    NThingMap::CThingMapManager* PThingMapManager;           // +0x10 boost::scoped_ptr<NThingMap::CThingMapManager>
+    unsigned long           LoadedScriptedMapBrushes[3];     // +0x14 map<CCharString,long>
+    unsigned long           Maps[3];                         // +0x20 CArray<CMapInfo>
+    unsigned long           Regions[3];                      // +0x2c vector<CRegion>
+    unsigned long           RegionTime[3];                   // +0x38 vector<long>
+    CCountedPointer<CRegionConnectionGraph> PRegionGraph;    // +0x44
+    bool                    SoundThemesDisabled;             // +0x4c
+    long                    Granularity;                     // +0x50
+    long                    GranularityShift;                // +0x54
+    long                    MapPlacementPitch;               // +0x58
+    long                    Area[4];                         // +0x5c C2DBoxI (TLX, TLY, BRX, BRY)
+    unsigned long           MapPlacement[3];                 // +0x6c vector<unsigned short>
+    unsigned long           PlayerPositionInfo[3];           // +0x78 vector<CWorldMap::CPlayerPositionInfo>
+    unsigned long           HeightChangedAreas[3];           // +0x84 vector<C2DBoxI>
+    unsigned long           LoadedMaps[3];                   // +0x90 CArray<long>
+    long                    LoadedRegion;                    // +0x9c
+    CCountedPointer<CWADBank> LevelWADBank;                  // +0xa0
+    bool                    UseLevelWADBank;                 // +0xa8
+    unsigned long           CurrentMapUIDCount;              // +0xac
+    unsigned long           DestroyedThemePositions[3];      // +0xb0 vector<C2DCoordI>
+    CCountedPointer<CLevelLoader> PLevelLoader;              // +0xbc
+    unsigned long           PCameraRegionParticle[2];        // +0xc4 CIntelligentPointer<CThing>
+    unsigned long           PHeroBreathParticle[2];          // +0xcc CIntelligentPointer<CThing>
+    bool                    RegionUnloading;                 // +0xd4
+    bool                    PassabilityBeingShown;           // +0xd5
+};
+FABLE_STATIC_ASSERT(sizeof(CWorldMap) == 0xd8);
+#else
 // GENERATED by tools/decomp_pipeline/gen_class_headers.py -- do not edit by hand.
 // Donor: Ego_r.pdb (ghidra_out/struct_layouts_egor.tsv) sizeof CWorldMap = 0xfc.
 // Container layout: retail STLport 4.6 (list 4, vector/map/set/string/CArray 0xc, deque 0x28, CVectorMap 0x10, bases from Fable.exe RTTI): sizeof CWorldMap = 0xd8.
@@ -98,4 +193,5 @@ FABLE_STATIC_ASSERT(offsetof(CWorldMap, PHeroBreathParticle) == 0xcc);
 FABLE_STATIC_ASSERT(offsetof(CWorldMap, RegionUnloading) == 0xd4);
 FABLE_STATIC_ASSERT(offsetof(CWorldMap, PassabilityBeingShown) == 0xd5);
 
+#endif // FABLE_RETAIL_CWORLDMAP
 #endif // FABLE_ENGINE_CWORLDMAP_H

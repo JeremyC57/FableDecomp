@@ -326454,13 +326454,6 @@ $catalog = @(
         PassPattern = '0051cc80_TEST PASS'
     }
     [pscustomobject]@{
-        Address = '005269b0'
-        Module = 'std'
-        Source = '00/52/std_uninitializedcopy_005269b0.cpp'
-        TestSource = '00/52/std_uninitializedcopy_005269b0_test.cpp'
-        PassPattern = '005269b0_TEST PASS'
-    }
-    [pscustomobject]@{
         Address = '00534df0'
         Module = 'std::_Rb_tree'
         Source = '00/53/stdRbtree_Minsert_00534df0.cpp'
@@ -346826,13 +346819,6 @@ $catalog = @(
         PassPattern = '0051ea90_TEST PASS'
     }
     [pscustomobject]@{
-        Address = '005269f0'
-        Module = 'std'
-        Source = '00/52/std_uninitializedfilln_005269f0.cpp'
-        TestSource = '00/52/std_uninitializedfilln_005269f0_test.cpp'
-        PassPattern = '005269f0_TEST PASS'
-    }
-    [pscustomobject]@{
         Address = '00527300'
         Module = 'CThingDeadCreature'
         Source = '00/52/CThingDeadCreature_Alloc_00527300.cpp'
@@ -351118,13 +351104,6 @@ $catalog = @(
         Source = '00/4b/NGraphicAppearanceCTCGraphicAppearance_GetRenderMeshObject_004bc670.cpp'
         TestSource = '00/4b/NGraphicAppearanceCTCGraphicAppearance_GetRenderMeshObject_004bc670_test.cpp'
         PassPattern = '004bc670_TEST PASS'
-    }
-    [pscustomobject]@{
-        Address = '0052b030'
-        Module = 'std::vector'
-        Source = '00/52/stdvector_Minsertoverflow_0052b030.cpp'
-        TestSource = '00/52/stdvector_Minsertoverflow_0052b030_test.cpp'
-        PassPattern = '0052b030_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0053b717'
@@ -376411,6 +376390,103 @@ $catalog = @(
         Source = '00/63/NUISystemCUIDef_Transfer_00631c60.cpp'
         TestSource = '00/63/NUISystemCUIDef_Transfer_00631c60_test.cpp'
         PassPattern = '00631c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0047a9f0'
+        Module = 'CHeroLogBook'
+        Source = '00/47/CHeroLogBook_AddEntry_0047a9f0.cpp'
+        TestSource = '00/47/CHeroLogBook_AddEntry_0047a9f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '0047a9f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00520670'
+        Module = 'CThingManager'
+        Source = '00/52/CThingManager_LoadHeroStateBinary_00520670.cpp'
+        TestSource = '00/52/CThingManager_LoadHeroStateBinary_00520670_test.cpp'
+        PassPattern = '00520670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00521620'
+        Module = 'NThingManager::CEntityRuntimePersistence'
+        Source = '00/52/NThingManagerCEntityRuntimePersistence_SaveToGameStateBinary_00521620.cpp'
+        TestSource = '00/52/NThingManagerCEntityRuntimePersistence_SaveToGameStateBinary_00521620_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00521620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052b030'
+        Module = 'std::vector'
+        Source = '00/52/stdvector_Minsertoverflow_0052b030.cpp'
+        TestSource = '00/52/stdvector_Minsertoverflow_0052b030_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '0052b030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00606300'
+        Module = 'CTCInventoryMap'
+        Source = '00/60/CTCInventoryMap_OnSerialise_00606300.cpp'
+        TestSource = '00/60/CTCInventoryMap_OnSerialise_00606300_test.cpp'
+        PassPattern = '00606300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00666ef0'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_AutoPlaceNearBuilding_00666ef0.cpp'
+        TestSource = '00/66/CThingCreatureBase_AutoPlaceNearBuilding_00666ef0_test.cpp'
+        PassPattern = '00666ef0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00667450'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_ReactToGenericStrike_00667450.cpp'
+        TestSource = '00/66/CThingCreatureBase_ReactToGenericStrike_00667450_test.cpp'
+        PassPattern = '00667450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00667d30'
+        Module = 'CThingCreatureBase'
+        Source = '00/66/CThingCreatureBase_OnHit_00667d30.cpp'
+        TestSource = '00/66/CThingCreatureBase_OnHit_00667d30_test.cpp'
+        PassPattern = '00667d30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007355f0'
+        Module = 'CTCCombat'
+        Source = '00/73/CTCCombat_SetCombatType_007355f0.cpp'
+        TestSource = '00/73/CTCCombat_SetCombatType_007355f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '007355f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0074a5d0'
+        Module = 'NCreatureHiding'
+        Source = '00/74/NCreatureHiding_GetValidPositions_0074a5d0.cpp'
+        TestSource = '00/74/NCreatureHiding_GetValidPositions_0074a5d0_test.cpp'
+        PassPattern = '0074a5d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00775c60'
+        Module = 'CTCShop'
+        Source = '00/77/CTCShop_OnSerialise_00775c60.cpp'
+        TestSource = '00/77/CTCShop_OnSerialise_00775c60_test.cpp'
+        PassPattern = '00775c60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005269b0'
+        Module = 'std'
+        Source = '00/52/std_uninitializedcopy_005269b0.cpp'
+        TestSource = '00/52/std_uninitializedcopy_005269b0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '005269b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005269f0'
+        Module = 'std'
+        Source = '00/52/std_uninitializedfilln_005269f0.cpp'
+        TestSource = '00/52/std_uninitializedfilln_005269f0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '005269f0_TEST PASS'
     }
 )
 

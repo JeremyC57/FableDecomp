@@ -1,0 +1,14 @@
+address	name	evidence
+0047a9f0	CHeroLogBook::AddEntry	Codex pass 11 consolidation 2: Ego_r + FableWin public ?AddEntry@CHeroLogBook@@QAEXABVCWideString@@00W4ECategory@CHeroLogBookEntry@1@_N@Z
+00520670	CThingManager::LoadHeroStateBinary	Codex pass 11 retry a: Ego_r 0x0052A690 + FableWin public names
+00521620	NThingManager::CEntityRuntimePersistence::SaveToGameStateBinary	Codex pass 11 retry a: Ego_r 0x0052C6C0 + FableWin 0x01D42CC0; the CEditWorldMap_LoadRivers manifest label was wrong
+0052b030	std::vector<NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity>::_M_insert_overflow	Codex pass 11 consolidation 2: its copy helper 0x005269B0 is __uninitialized_copy<CPersistedDeadEntity*> (row 0x00521620)
+005269b0	std::__uninitialized_copy<NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *>	Codex pass 11 consolidation 2: called by 0x00521620 for its dead_entities push_back growth (16-byte CPersistedDeadEntity)
+005269f0	std::__uninitialized_fill_n<NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity *, unsigned int, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity>	Codex pass 11 consolidation 2: fill helper of the same vector<CPersistedDeadEntity> instantiation (0x0052B030)
+00606300	CTCInventoryMap::OnSerialise	Codex pass 11 consolidation 2: Ego_r + FableWin public names
+00666ef0	CThingCreatureBase::AutoPlaceNearBuilding	Codex pass 11 consolidation 2: Ego_r + FableWin public names
+00667450	CThingCreatureBase::ReactToGenericStrike	Codex pass 11 consolidation 2: Ego_r + FableWin public names
+00667d30	CThingCreatureBase::OnHit	Codex pass 11 consolidation 2: Ego_r + FableWin public names
+007355f0	CTCCombat::SetCombatType	Codex pass 11 consolidation 2: Ego_r + FableWin public names
+0074a5d0	NCreatureHiding::GetValidPositions	Codex pass 11 consolidation 2: Ego_r + FableWin public names (__fastcall YI)
+00775c60	CTCShop::OnSerialise	Codex pass 11 consolidation 2: Ego_r + FableWin public names

@@ -1,4 +1,4 @@
-// Behaviour test for 0x0052B030 std::vector<CUnprovenElement_005269b0>::_M_insert_overflow: the source body verbatim (comments and CRT declarations dropped), mocks for its callees.
+// Behaviour test for 0x0052B030 std::vector<CPersistedDeadEntity>::_M_insert_overflow: the same steps over a stand-alone 16-byte element model (the host lane does not build the engine headers).
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

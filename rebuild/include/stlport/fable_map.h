@@ -185,6 +185,34 @@ public:
     const_iterator find(const K& key)const{return _M_t.find(key);}
     const_iterator end()const{return _M_t.end();}
 };
+// STLport 4.6.2 _function.h _Identity, _set.h set and _multimap.h multimap (Codex pass 11 consolidation 2, row 0x007355F0:
+// CTCCombat::CombatAbilities is a multimap<ECombatAbilityDataType,...>, CCombatAbilityBlockingData::ValidBlockWeaponTypes a
+// set<EWeaponClass>). The members the rows use; the tree is the same three-word _Rb_tree.
+template<class T> struct _Identity:public unary_function<T,T>{const T& operator()(const T& value)const{return value;}};
+template<class K,class Compare=less<K>,class A=allocator<K> >
+class set {
+private:
+    typedef _Rb_tree<K,K,_Identity<K>,Compare,A> _Rep_type;
+    _Rep_type _M_t;
+public:
+    typedef typename _Rep_type::const_iterator iterator;
+    set():_M_t(Compare(),A()){}
+    pair<iterator,bool> insert(const K& value){typedef typename _Rep_type::iterator RepIterator;pair<RepIterator,bool> p=_M_t.insert_unique(value);return pair<iterator,bool>((const iterator&)p.first,p.second);}
+    size_t erase(const K& value){return _M_t.erase(value);}
+};
+template<class K,class T,class Compare=less<K>,class A=allocator<pair<const K,T> > >
+class multimap {
+public:
+    typedef pair<const K,T> value_type;
+private:
+    typedef _Rb_tree<K,value_type,_Select1st<value_type>,Compare,A> _Rep_type;
+    _Rep_type _M_t;
+public:
+    typedef typename _Rep_type::iterator iterator;
+    multimap():_M_t(Compare(),A()){}
+    iterator insert(const value_type& x){return _M_t.insert_equal(x);}
+    void clear(){_M_t.clear();}
+};
 }
 FABLE_STATIC_ASSERT(sizeof(std::map<unsigned long,long>)==12);
 #endif
