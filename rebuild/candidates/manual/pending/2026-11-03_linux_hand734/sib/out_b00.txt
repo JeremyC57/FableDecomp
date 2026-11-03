@@ -1,0 +1,17 @@
+addr       parity           behav  name
+00e6f1c0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00e6f1c0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00e6f1c0   WARN SHARED_HEADER_AVAILABLE CV_DemonDoorsScript
+00e6f1c0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e6f1c0   RELOCATION_MATCH PASS   Main
+00d823a0   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00d823a0   RELOCATION_MATCH PASS   PlayCutscene
+00d76490   RELOCATION_MATCH PASS   WatchForHeroNearExit
+00d9fe40   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d9fe40   RELOCATION_MATCH PASS   GetAlphaChange
+
+WINS: 4
+  00e6f1c0 RELOCATION_MATCH CDFThunderHelmet::Main
+  00d823a0 RELOCATION_MATCH NScriptCQHeroSoulsBriarScript::?PlayCutscene@CQ_HeroSoulsBriarScript@NScript@@QAEXVCCharString@@@Z
+  00d76490 RELOCATION_MATCH NScriptCQHangingTreeGoodScript::WatchForHeroNearExit
+  00d9fe40 RELOCATION_MATCH CFadeinSummoner::GetAlphaChange

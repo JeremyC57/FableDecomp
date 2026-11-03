@@ -1,0 +1,20 @@
+addr       parity           behav  name
+006286f0   WARN RELOC_NAME: ?PSoundManager@@3PAVCASoundManager@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+006286f0   WARN RELOC_NAME: ?SetEnabled25_009915e0@CASoundManager@@QAEX_N@Z -> 009915e0 labelled 'CWorld::SetMiniMapEnabled'
+006286f0   WARN RELOC_NAME: ?SetEnabled26_00991620@CASoundManager@@QAEX_N@Z -> 00991620 labelled 'CTCDParticleEmitter::func_00991620'
+006286f0   WARN RELOC_NAME: ?Sprintf@CWideString@@QAAXPBGZZ -> 0099ba70 labelled 'CWideString::Format'
+006286f0   RELOCATION_MATCH PASS   GFPlayFullScreenXBoxMovie
+00cbe7aa   WARN SHARED_HEADER_AVAILABLE C3DVector
+00cbe7aa   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00cbe7aa   RELOCATION_MATCH PASS   FadeInThing
+00e1feb0   WARN SHARED_HEADER_AVAILABLE CScriptDef
+00e1feb0   WARN SHARED_HEADER_AVAILABLE CV_AmbushScamScript
+00e1feb0   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00e1feb0   RELOCATION_MATCH PASS   ResetRandomSpeechTime
+004fc6b0   RELOCATION_MATCH PASS   DrawIsPosInMap
+
+WINS: 4
+  006286f0 RELOCATION_MATCH global::?GFPlayFullScreenXBoxMovie@@YI_NABVCCharString@@KKKKPBVCDataBank@NGameText@@PAVCIEngine@@_NMP6I_NXZPAVCXMVPlayerBuffers@@PAVCWideString@@@Z
+  00cbe7aa RELOCATION_MATCH global::?FadeInThing@@YIXAAVCScriptThing@@M@Z
+  00e1feb0 RELOCATION_MATCH CVAmbushScamScript::?ResetRandomSpeechTime@CV_AmbushScamScript@@
+  004fc6b0 RELOCATION_MATCH CWorldMap::?DrawIsPosInMap@CWorldMap@@UBE_NABVC3DVector@@@Z

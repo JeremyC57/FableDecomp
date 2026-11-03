@@ -1,0 +1,14 @@
+addr       parity           behav  name
+008a9810   RELOCATION_MATCH PASS   GetIsGossipForPlayer
+008a5f00   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+008a5f00   WARN SHARED_HEADER_AVAILABLE CThing
+008a5f00   RELOCATION_MATCH PASS   ResetTakeStealableItemToRandomDestination
+008aa090   RELOCATION_MATCH PASS   AddGossip
+004b05c0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+004b05c0   RELOCATION_MATCH PASS   TransferBoasts
+
+WINS: 4
+  008a9810 RELOCATION_MATCH CGameScriptInterface::?GetIsGossipForPlayer@CGameScriptInterface@@UAEPA_NVCCharString@@@Z
+  008a5f00 RELOCATION_MATCH CGameScriptInterface::ResetTakeStealableItemToRandomDestination
+  008aa090 RELOCATION_MATCH CGameScriptInterface::?AddGossip@CGameScriptInterface@@UAEXVCCharString@@0@Z
+  004b05c0 RELOCATION_MATCH CQuestManager::?TransferBoasts@CQuestManager@@QAEXAAVCPersistContext@@@Z

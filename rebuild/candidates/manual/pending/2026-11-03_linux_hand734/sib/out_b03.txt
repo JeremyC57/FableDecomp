@@ -1,0 +1,20 @@
+addr       parity           behav  name
+004fb990   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+004fb990   WARN RELOC_ALIAS: _strstr -> 00bfeb3a is the import thunk 'MSVCR71.DLL::strstr'
+004fb990   RELOCATION_MATCH PASS   SaveMapsToString
+004fd040   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+004fd040   WARN RELOC_ALIAS: _strstr -> 00bfeb3a is the import thunk 'MSVCR71.DLL::strstr'
+004fd040   RELOCATION_MATCH PASS   SaveRegionsToString
+0074b770   WARN RELOC_NAME: ??$GetAllThings@VCThingMarker@@V?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@VCThingFilter_HasDefGlobalIndex@@@CThingSearchTools@@QBEXABVCThingFilter_HasDefGlobalIndex@@AAV?$vector@PAVCThingMarker@@V?$allocator@PAVCThingMarker@@@std@@@std@@@Z -> 0074d940 labelled 'CThingSearchTools::GetAllThings<CThingMarker, std::vector<CThingMarker *, std::allocator<CThingMarker *>>, CThingFilter_HasDefGlobalIndex>'
+0074b770   WARN RELOC_CONFLICT: ?LowerBound@?$CVectorMap@W4ETCInterfaceType@@PAVCTCBase@@V?$CKeyPairCompareLess@W4ETCInterfaceType@@PAVCTCBase@@@@@@QAEPAU?$pair@W4ETCInterfaceType@@PAVCTCBase@@@std@@ABW4ETCInterfaceType@@@Z -> 004365b0 here, 0040f020 in landed 00635080
+0074b770   WARN RELOC_NAME: ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 labelled 'CTCBase::GetThingSearchTools'
+0074b770   WARN RELOC_NAME: ?DoNavCheck@CTCCreatureGenerator@@IAEXABVCThingCreatureBase@@@Z -> 0074a4e0 labelled 'VertexBuffer_FilterNavigableVertices'
+0074b770   RELOCATION_MATCH PASS   InitialiseCreatureGenerator
+0074a5d0   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+0074a5d0   RELOCATION_MATCH PASS   GetValidPositions
+
+WINS: 4
+  004fb990 RELOCATION_MATCH CWorldMap::?SaveMapsToString@CWorldMap@@IAEXAAVCCharString@@@Z
+  004fd040 RELOCATION_MATCH CWorldMap::?SaveRegionsToString@CWorldMap@@IAEXAAVCCharString@@@Z
+  0074b770 RELOCATION_MATCH CTCCreatureGenerator::?InitialiseCreatureGenerator@CTCCreatureGenerator@@QAEX_N@Z
+  0074a5d0 RELOCATION_MATCH NCreatureHiding::?GetValidPositions@NCreatureHiding@@YIXAAV?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@ABVCWorldMap@@ABVCThingSearchTools@@ABVC3DVector@@M_NPBVCTCShapeManager@@@Z

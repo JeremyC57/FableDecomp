@@ -1,0 +1,13 @@
+addr       parity           behav  name
+0088e0f0   MATCH            PASS   SetDebugCameraType
+0088ea20   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0088ea20   RELOCATION_MATCH PASS   EntitySetCutsceneBehaviour
+00501150   WARN RELOC_NAME: ??$__uninitialized_fill_n@PAVCLevelFiles@CObject@CLevelLoader@@IV123@@std@@YIPAVCLevelFiles@CObject@CLevelLoader@@PAV123@IABV123@ABU__false_type@0@@Z -> 00513570 labelled 'std::__uninitialized_fill_n<CLevelLoader::CObject::CLevelFiles*,unsigned int,CLevelLoader::CObject::CLevelFiles>'
+00501150   RELOCATION_MATCH PASS   LoadLevelFromFiles
+004084b0   RELOCATION_MATCH PASS   GetMaxEffectsDetail
+
+WINS: 4
+  0088e0f0 MATCH CGameScriptInterface::?SetDebugCameraType@CGameScriptInterface@@UBEXJ@Z
+  0088ea20 RELOCATION_MATCH CGameScriptInterface::?EntitySetCutsceneBehaviour@CGameScriptInterface@@UBEXABVCScriptThing@@W4ECutsceneBehaviour@@@Z
+  00501150 RELOCATION_MATCH CWorldMap::?LoadLevelFromFiles@CWorldMap@@IAEXJV?$CCountedPointer@VCAFile@@@@00W4ELoadType@1@@Z
+  004084b0 RELOCATION_MATCH CUserProfileManager::?GetMaxEffectsDetail@CUserProfileManager@@QBEMXZ

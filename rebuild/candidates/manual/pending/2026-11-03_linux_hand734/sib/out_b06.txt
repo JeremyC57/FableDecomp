@@ -1,0 +1,22 @@
+addr       parity           behav  name
+00893ff0   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+00893ff0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00893ff0   WARN SHARED_HEADER_AVAILABLE CThing
+00893ff0   RELOCATION_MATCH PASS   MsgOnHeroPickedPocket
+00892f20   RELOCATION_MATCH PASS   PrepareQuestsWhenFinalQuestIsActivated
+0089c080   WARN SHARED_HEADER_AVAILABLE CVectorMap
+0089c080   WARN SHARED_HEADER_AVAILABLE CThing
+0089c080   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0089c080   RELOCATION_MATCH PASS   EntityUnsetThingAsEnemyOfThing
+00891940   WARN SHARED_HEADER_AVAILABLE CIVCountedPointer
+00891940   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+00891940   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00891940   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00891940   WARN RELOC_NAME: ?g_pPlayerGui@@3PAVCPlayerGui@@A -> 013b8790 labelled 'CTBaseSingletonNoDefaultAlloc<CPlayerGui>::PClass'
+00891940   RELOCATION_MATCH PASS   SetQuestInfoName
+
+WINS: 4
+  00893ff0 RELOCATION_MATCH CGameScriptInterface::MsgOnHeroPickedPocket
+  00892f20 RELOCATION_MATCH CGameScriptInterface::?PrepareQuestsWhenFinalQuestIsActivated@CGameScriptInterface@@UBEXABVCCharString@@@Z
+  0089c080 RELOCATION_MATCH CGameScriptInterface::?EntityUnsetThingAsEnemyOfThing@CGameScriptInterface@@UBEXABVCScriptThing@@0@Z
+  00891940 RELOCATION_MATCH CGameScriptInterface::?SetQuestInfoName@CGameScriptInterface@@UBEXPBD@Z

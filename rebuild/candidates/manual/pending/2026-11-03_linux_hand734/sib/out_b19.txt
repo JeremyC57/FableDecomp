@@ -1,0 +1,20 @@
+addr       parity           behav  name
+00ef34a0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00ef34a0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00ef34a0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ef34a0   RELOCATION_MATCH PASS   Main
+0121af20   WARN RELOC_NAME: ?UninitModeClickPastText@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z -> 006334f0 labelled 'std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>'
+0121af20   WARN RELOC_NAME: ?InitModeYesNoQuestion@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z -> 006359c0 labelled 'CPlayer::InitModeClickPastText'
+0121af20   WARN RELOC_NAME: ?UninitModeYesNoQuestion@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z -> 00633670 labelled 'CPlayer::UninitModeClickPastText'
+0121af20   WARN RELOC_NAME: ?InitModeLookThroughWindow@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z -> 00633400 labelled 'sub_00633400'
+0121af20   WARN RELOC_NAME: ?UninitModeControlSpirit@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z -> 006336e0 labelled '_unattributed::ForwardThroughMember_006336e0'
+0121af20   WARN RELOC_NAME: ?UninitModeTavernGame@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z -> 006336f0 labelled '_unattributed::ForwardThroughMember_006336f0'
+0121af20   WARN RELOC_NAME: ?UninitModeCutScene@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z -> 00633510 labelled 'std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>'
+0121af20   WARN RELOC_NAME: ?UninitModeFishing@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z -> 00633780 labelled '_unattributed::ForwardThroughMember_00633780'
+0121af20   WARN RELOC_NAME: ?UninitModeDigging@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z -> 006337b0 labelled '_unattributed::ForwardThroughMember_006337b0'
+0121af20   WARN RELOC_NAME: ?UninitModeFireheartMinigame@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z -> 00633bd0 labelled '_unattributed::ForwardThroughMember_00633bd0'
+0121af20   RELOCATION_MATCH PASS   dynamicinitializerforPlayerModeInfo
+
+WINS: 2
+  00ef34a0 RELOCATION_MATCH CMRestartMarker::Main
+  0121af20 RELOCATION_MATCH CPlayer::_$E1

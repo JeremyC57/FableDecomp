@@ -1,0 +1,17 @@
+addr       parity           behav  name
+00899220   WARN SHARED_HEADER_AVAILABLE CThing
+00899220   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899220   RELOCATION_MATCH PASS   IncreaseHeroRenownLevel
+0089e190   RELOCATION_MATCH PASS   CameraUseCameraPoint
+00896ee0   WARN SHARED_HEADER_AVAILABLE CThing
+00896ee0   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+00896ee0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00896ee0   RELOCATION_MATCH PASS   GetDeathRecoveryMarkerName
+00893870   WARN SHARED_HEADER_AVAILABLE CFilter_Bind2
+00893870   RELOCATION_MATCH PASS   MsgOnQuestAccepted
+
+WINS: 4
+  00899220 RELOCATION_MATCH CGameScriptInterface::IncreaseHeroRenownLevel@CGameScriptInterface
+  0089e190 RELOCATION_MATCH CGameScriptInterface::?CameraUseCameraPoint@CGameScriptInterface@@UBEXABVCScriptThing@@PBVC3DVector@@PBVCRightHandedSet@@MJJ@Z
+  00896ee0 RELOCATION_MATCH CGameScriptInterface::?GetDeathRecoveryMarkerName@CGameScriptInterface@@UBE?AVCCharString@@XZ
+  00893870 RELOCATION_MATCH CGameScriptInterface::MsgOnQuestAccepted

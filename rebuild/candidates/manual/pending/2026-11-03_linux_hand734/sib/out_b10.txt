@@ -1,0 +1,16 @@
+addr       parity           behav  name
+00d17e70   MATCH            PASS   RemoveBoastQuestInfo
+00802610   WARN SHARED_HEADER_AVAILABLE C3DVector
+00802610   WARN SHARED_HEADER_AVAILABLE C2DVector
+00802610   WARN SHARED_HEADER_AVAILABLE CThing
+00802610   RELOCATION_MATCH PASS   GetPTargetedThing
+0065b854   WARN RELOC_NAME: ?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z -> 006bb390 labelled '`anonymousnamespace'::Game_IsTimeOfDayInRange'
+0065b854   RELOCATION_MATCH PASS   AddThingToVillage
+00dc2170   WARN SHARED_HEADER_AVAILABLE CQ_OakValeBanditRaidScript
+00dc2170   MATCH            PASS   CanThingSeeAnythingInVector
+
+WINS: 4
+  00d17e70 MATCH NScriptCQBountyHuntScript::?RemoveBoastQuestInfo@CQ_BountyHuntScript@NScript@@QAEXXZ
+  00802610 RELOCATION_MATCH CTCTargetingPlayer::?GetPTargetedThing@CTCTargetingPlayer@@UBEPAVCThing@@XZ
+  0065b854 RELOCATION_MATCH CTCVillage::?AddThingToVillage@CTCVillage@@QAEXAAVCThing@@@Z
+  00dc2170 MATCH NScriptCQOakValeBanditRaidScript::CanThingSeeAnythingInVector

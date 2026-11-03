@@ -1,0 +1,15 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x004A5E90	?AutoLoadRespawn@CWorld@@QAE_NXZ	Ego_r.pdb AutoLoadRespawn 1643 B / 464 insns v retail 1722 / 484, AutoLoadRegionLeaving 539 / 148 v retail 0x004A34F0 564 / 154 (naming_stragglers signatures); FableWin sizes in the same order (948 v 236); body: checkpoint save between quest screens, then manual / quest-start / plain autosave	CWorld::AutoLoadRegionLeaving (catalog, chunk row name; duplicated with 0x004A34F0)
+0x009E4BC0	?DeleteFileW@CDriveManager@@QAE?AW4EDriveReturn@@ABVCWideString@@@Z	Ego_r.pdb + FableWin.pdb spell it DeleteFileW (windows.h maps DeleteFile); UpdateFrame 0x004A5A40 calls it on the crash-marker path	?DeleteFile@CDriveManager@@...
+0x006B1D30	?SetAtmosSoundsAsMuted@CAtmosProcess@@QAEX_NM@Z	Ego_r.pdb + FableWin.pdb; UpdateFrame pushes 1000.0f and !IsSoundThemesEnabled() on PAtmosProcessor (+0x24)	Sound_SetThemeByName (catalog)
+0x006B32A0	?UpdateInterpolation@CEnvironment@@QAEXXZ	Ego_r.pdb + FableWin.pdb; UpdateFrame calls it on PEnvironment (+0x18) after UpdateEnvironmentCameraPos	_global::Forward_FrameUpdate_via0x1960_006b32a0 (catalog)
+0x00A14E20	?FrameUpdate@CNavigatorManager@@QAEXXZ	Ego_r.pdb + FableWin.pdb; UpdateFrame calls it on PNavigationManager (+0x48)	_global::SetMemberConst_00a14e20; CGameEventPackage::Clear (catalog)
+0x004C5E90	?FrameUpdate@CBulletTimeManager@@QAEXXZ	Ego_r.pdb + FableWin.pdb; UpdateFrame calls it on PBulletTimeManager (+0x68)	_global::Nop_ret0_004c5e90; $E2 (landed spelling)
+0x004C6060	?IsTimeForFullUpdate@CBulletTimeManager@@QBE_NXZ	Ego_r.pdb + FableWin.pdb QBE (const)	QAE spelling in reloc bindings
+0x00487510	?GetJoystickDeviceNumber@CPlayer@@QBEJXZ	Ego_r.pdb + FableWin.pdb QBE (const)	QAE spelling
+0x0099A330	?IsValid@CInitBaseClass@@QBE_NXZ	Ego_r.pdb + FableWin.pdb; UpdateFrame tests each of the four players before Update	-
+0x00AEAAF0	?GetParticleEmitterManager@NParticleEngine@@YIAAVCParticleEmitterManager@1@XZ	Ego_r.pdb + FableWin.pdb; UpdateFrame / PreparePrimitivesForEngine call it and use the result as this	-
+0x004378C0	?UpdateMiniMapMarkers@CPlayerGui@@QAEX_N@Z	Ego_r.pdb + FableWin.pdb; UpdateFrame calls it with true on CPlayerGui::Get()	Refresh (landed file name)
+0x00443F90	?resize@?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXI@Z	PreparePrimitivesForEngine resizes WeatherMaskingPrimitiveHandles (Ego_r.pdb vector<CEnginePrimitiveHandle>) to the building count	-
+0x004AB840	??$GetDef@VCThingBuildingDef@@@CDefinitionManager@@QBE_NJPAV?$CDefPointer@$$CBVCThingBuildingDef@@@@@Z	Ego_r.pdb template instance; PreparePrimitivesForEngine passes GetDefGlobalIndex() and &pdef, then tests HasWeatherMask (+0xA0 bit 3)	-
+0x00415A60	??0CInterpolationInfo@@QAE@XZ	Ego_r.pdb + FableWin.pdb; UpdateFrame builds one on the stack in the unpaused arm	-

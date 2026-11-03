@@ -1,0 +1,22 @@
+addr       parity           behav  name
+00e292c0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00e292c0   WARN SHARED_HEADER_AVAILABLE CRGBColour
+00e292c0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e292c0   WARN RELOC_NAME: ??1CCutsceneCastMap@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00e292c0   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled 'CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer'
+00e292c0   WARN RELOC_NAME: ??1CBaseObjectDtor@@UAE@XZ -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+00e292c0   RELOCATION_MATCH PASS   Main
+00dfa0e0   WARN SHARED_HEADER_AVAILABLE CScriptDef
+00dfa0e0   WARN SHARED_HEADER_AVAILABLE CQ_SunnyvaleMasterData
+00dfa0e0   RELOCATION_MATCH PASS   Init
+00e369b0   WARN SHARED_HEADER_AVAILABLE CScriptDef
+00e369b0   WARN SHARED_HEADER_AVAILABLE CV_ArcheryCompetitionScript
+00e369b0   RELOCATION_MATCH PASS   Main
+00ac2be0   WARN RELOC_NAME: ??_GC3DMeshPartitionBuilderElement@@QAEPAXI@Z -> 00ac39c0 labelled 'C3DMeshPartitionBuilderElement::`scalar deleting destructor''
+00ac2be0   RELOCATION_MATCH PASS   PartitionSpace
+
+WINS: 4
+  00e292c0 RELOCATION_MATCH CMeetSisterMessenger::?Main@CMeetSisterMessenger@
+  00dfa0e0 RELOCATION_MATCH NScriptCQTraderConflictGoodScript::?Init@CQ_TraderConflictGoodScript@NScript@@UAEXXZ
+  00e369b0 RELOCATION_MATCH CACDummyStatic::Main
+  00ac2be0 RELOCATION_MATCH C3DMeshPartitionBuilderElement::?PartitionSpace@C3DMeshPartitionBuilderElement@@AAEJPBVC3DVertex2@@JM@Z

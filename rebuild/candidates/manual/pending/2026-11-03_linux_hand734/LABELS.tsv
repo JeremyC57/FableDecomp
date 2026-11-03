@@ -1,0 +1,5 @@
+address	name	evidence
+0x004A5A40	?UpdateFrame@CWorld@@IAEXXZ	matched row (RELOCATION_MATCH, vland PASS); Ego_r.pdb + FableWin.pdb
+0x004A5E90	?AutoLoadRespawn@CWorld@@QAE_NXZ	Ego_r.pdb / FableWin.pdb size order (see NAME_FIXES); parked DIFFER(1722v1722)
+0x004A3730	?AutoLoadInternal@CWorld@@IAE_NABVCWideString@@_N@Z	`jmp 0x004A3200` (LoadGameState) tail call; Ego_r.pdb + FableWin.pdb signature (IAE, name + bool)
+0x004A34F0	?AutoLoadRegionLeaving@CWorld@@QAE_NXZ	Ego_r.pdb size (539 B) and body (AutoSaveRegionLeaving, then the region-leaving autosave); only this address keeps the name

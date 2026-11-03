@@ -1,0 +1,8 @@
+address	name	status	attempts	note
+004a5a40	CWorld::UpdateFrame	RELOCATION_MATCH	6 (uf1..uf4 + final regrade)	src + test; payload; vland RELOCATION_MATCH + TEST PASS on the final mirror. Lever: the bullet-time reference scoped to the else arm of the full-update choice
+004a1cb0	CWorld::PreparePrimitivesForEngine	DIFFER(1331v1330)	18 (pp1..pp19)	differ/004a1cb0.cpp + test. 72 diff lines: cross-product x87 operand order, SetInverse translation term order, mesh-box copy interleave
+004a5e90	CWorld::AutoLoadRespawn (catalog: AutoLoadRegionLeaving)	DIFFER(1722v1722)	10 (al1..al10)	differ/004a5e90.cpp (flags /GS) + test. One hoisted `lea ecx,[esp+10h]` in the manual-save copy; name fix to AutoLoadRespawn
+0049f4c0	CWorld::SaveGameStateInternal	NOT_ATTEMPTED	0	read + callee map only (2825 B, aligned /GS-less frame, ~40 Transfer calls, stream/zlib/CRC tail); budget; see NOTES
+004a0d90	CWorld::LoadQuestsFromFile	DIFFER(2738v2733)	10 (lq1..lq9 + SRC_FAIL)	differ/004a0d90.cpp + test. 30 diff lines: token PStringData reloaded before the AddTestQuest test (retail keeps it in esi and threads both literal tests)
+004a21f0	CWorld::LoadGameStateInternal	NOT_ATTEMPTED	0	callee map only; shares the persist/stream API with SaveGameStateInternal; budget; see NOTES
+004a6e30	CWorld::Init	BLOCKED	0	header debt: needs CWorld's scoped_ptr<T> / CCountedPointer<T> members typed (reset / Reset) and polymorphic retail branches for CEnvironment, CNavigatorManager, CGameCameraBase; see NOTES

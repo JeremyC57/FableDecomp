@@ -1,0 +1,16 @@
+addr       parity           behav  name
+00eda0c0   RELOCATION_MATCH PASS   IsHeroDressedInWillRobe
+00e0c350   RELOCATION_MATCH PASS   WatchForQuestFailureState
+00da0c40   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00da0c40   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00da0c40   RELOCATION_MATCH PASS   RunSpawnPointControl
+00ce0ce0   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00ce0ce0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00ce0ce0   WARN RELOC_NAME: ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z -> 00704580 labelled '_global::CCountedPointer_Set_00704580'
+00ce0ce0   RELOCATION_MATCH PASS   Main
+
+WINS: 4
+  00eda0c0 RELOCATION_MATCH NScriptCVTalentlessBardScript::IsHeroDressedInWillRobe
+  00e0c350 RELOCATION_MATCH CVLostTraderScript::WatchForQuestFailureState
+  00da0c40 RELOCATION_MATCH NScriptCQMinionCampScript::RunSpawnPointControl
+  00ce0ce0 RELOCATION_MATCH CMKHS2SOUL::Main

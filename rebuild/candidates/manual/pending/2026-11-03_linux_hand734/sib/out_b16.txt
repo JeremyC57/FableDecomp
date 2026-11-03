@@ -1,0 +1,16 @@
+addr       parity           behav  name
+005eb9e0   RELOCATION_MATCH PASS   FrameUpdate
+00e5e0c0   WARN SHARED_HEADER_AVAILABLE C3DVector
+00e5e0c0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00e5e0c0   WARN SHARED_HEADER_AVAILABLE CV_BodyGuardScript
+00e5e0c0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e5e0c0   WARN RELOC_NAME: ?GetHenchmanIndex@CV_BodyGuardScript@@QAEJABVCCharString@@@Z -> 00e5e240 labelled 'NScript::CV_BodyGuardScript::GetHenchmanTypeFromString'
+00e5e0c0   RELOCATION_MATCH PASS   Main
+00ea12e0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00ea12e0   RELOCATION_MATCH PASS   WatchForGates
+0047a9f0   DIFFER(1109v1105) PASS   AddEntry
+
+WINS: 3
+  005eb9e0 RELOCATION_MATCH CTCTavernGame::?FrameUpdate@CTCTavernGame@@UAEXXZ
+  00e5e0c0 RELOCATION_MATCH CMBodyGuardRespawn::Main
+  00ea12e0 RELOCATION_MATCH NScriptCVKnotholeGladeGatesScript::WatchForGates

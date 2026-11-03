@@ -1,0 +1,12 @@
+addr       parity           behav  name
+00487dd0   RELOCATION_MATCH PASS   PeekPControlledCreature
+00487b70   RELOCATION_MATCH PASS   GetPPlayerCharacterThing
+00487dc0   RELOCATION_MATCH PASS   GetPControlledCreature
+00487570   WARN RELOC_NAME: ?Sprintf@CWideString@@QAAXPBGZZ -> 0099ba70 labelled 'CWideString::Format'
+00487570   RELOCATION_MATCH PASS   DrawFreeCamDebug
+
+WINS: 4
+  00487dd0 RELOCATION_MATCH CPlayer::?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ
+  00487b70 RELOCATION_MATCH CPlayer::?GetPPlayerCharacterThing@CPlayer@@QBEPAVCThing@@XZ
+  00487dc0 RELOCATION_MATCH CPlayer::?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ
+  00487570 RELOCATION_MATCH CPlayer::?DrawFreeCamDebug@CPlayer@@QBEXPBVC2DBoxF@@ABVCFontBank@@@Z

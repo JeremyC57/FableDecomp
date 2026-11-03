@@ -1,0 +1,18 @@
+addr       parity           behav  name
+00681850   WARN RELOC_UNCHECKED: no object block of the retail length (multi-block TU)
+00681850   RELOCATION_MATCH PASS   IsFactionEnemyToHeroOverriddenOnOpinion
+00d35ed0   RELOCATION_MATCH PASS   RunThemeOverriding
+00ec8230   WARN SHARED_HEADER_AVAILABLE CDefString
+00ec8230   WARN SHARED_HEADER_AVAILABLE CScriptDef
+00ec8230   WARN SHARED_HEADER_AVAILABLE CV_SickChildScript
+00ec8230   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 labelled 'CDefString::operator CCharString'
+00ec8230   RELOCATION_MATCH PASS   OnPredicateFail
+00ec5de0   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00ec5de0   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 labelled 'CDefString::operator CCharString'
+00ec5de0   RELOCATION_MATCH PASS   Main
+
+WINS: 4
+  00681850 RELOCATION_MATCH CTCCreatureOpinionOfHero::?IsFactionEnemyToHeroOverriddenOnOpinion@CTCCreatureOpinionOfHero@@QBE_NXZ
+  00d35ed0 RELOCATION_MATCH NScriptCQFireHeartScript::RunThemeOverriding
+  00ec8230 RELOCATION_MATCH NScriptCVSickChildScriptCManInLove::?OnPredicateFail@CManInLove@CV_SickChildScript@NScript@@EAEXXZ
+  00ec5de0 RELOCATION_MATCH NScriptCVSickChildScriptCSickChild::?Main@CSickChild@CV_SickChildScript@NScript@@EAEXXZ

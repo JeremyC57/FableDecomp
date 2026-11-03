@@ -1,0 +1,13 @@
+addr       parity           behav  name
+0049d8c0   RELOCATION_MATCH PASS   EventIsWorldEvent
+0049e270   WARN SHARED_HEADER_AVAILABLE CThingManager
+0049e270   RELOCATION_MATCH PASS   Unload
+00f0a470   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+00f0a470   RELOCATION_MATCH PASS   WatchForQuestSuccess
+00e7bb30   RELOCATION_MATCH PASS   Main
+
+WINS: 4
+  0049d8c0 RELOCATION_MATCH CWorld::?EventIsWorldEvent@CWorld@@QBE_NPBVCGameEvent@@@Z
+  0049e270 RELOCATION_MATCH CWorld::?Unload@CWorld@@QAEXXZ
+  00f0a470 RELOCATION_MATCH NScriptCQAmbushTradersScript::WatchForQuestSuccess
+  00e7bb30 RELOCATION_MATCH CFishermanWasp::Main
