@@ -1846,3 +1846,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - 2026-11-03: `if (v.size())` folds to `test eax,0FFFFFFFCh`; `if (v.size() > 0)` keeps `sar eax,2 ; je`.
 - 2026-11-03: testing a member flag (`if (RecomputeOffsets)`) keeps retail's spilled flag and re-test; testing a copied local lets VC7.1 thread the jump.
 - 2026-11-03: `??_E` is an alias of the `??_G` body in VC7.1, so a vland RELOC_NAME warning for both names at one thunk address is not a second spelling.
+- 2026-11-03 (chunk 727): a file-local static with VC7.1's register convention and callee-pop reproduces as `static void __stdcall` with its caller in the same file.
+- 2026-11-03: writing an inlined transform as a loop keeps one x87 sum order; explicit per-component calls rotate it. Parenthesising the sum fixes the order but shifts the scheduling window.
+- 2026-11-03: retail's two-pass zeroing of stack vectors is a nested loop whose inner loop is unrolled.
+- 2026-11-03: `CDefPointer::SetDynamicCast` in our header keeps the def pointer in a register where retail re-reads it after the release; a header re-read matches 0x00B625E0 but breaks landed 0x0047A9F0 (open, `pending/2026-11-03_linux_hand727/DECISION_00b625e0.md`).

@@ -1,0 +1,9 @@
+address	name	evidence
+0x00B625E0	??0CEngineSkyRenderer@@QAE@ABVCEngineInit@@@Z	PDB exact symbol; stores vtable 0x012A293C; members exactly engine/CEngineSkyRenderer.h; RELOCATION_MATCH
+0x00B620A0	?BuildBuffers@CEngineSkyRenderer@@AAEXXZ	PDB symbol (FableWin + Ego_r); last call of the sky ctor with this in ecx (as the weather ctor calls its BuildBuffers 0x00B51570)
+0x00A9DC20	ApplyPartialAnimationAlpha	Ego_r.pdb undecorated static; Ego_r order of the TU statics = retail address order; body = GetKeyframeInterpolate + slerp + position lerp
+0x00B4BCC0	?CalcClipVolume@CEngineShadowRenderer@@AAEXABVCEngineCamera@@@Z	PDB symbol; ret 4; reads the camera frustum planes and position; called from UpdateShadowSpace 0x00B4D370
+0x00B4C550	?CalcSpotLightClipVolume@CEngineShadowRenderer@@AAEXABUCEngineLightingManagerSpotlightParams@@@Z	PDB symbol; ret 4; eight unit-cube corners, six faces
+0x01436E28	g_pEngineDefinitionManager	descriptive (no PDB data name): CEngine::Initialise 0x00B26360 stores init.DefinitionManager there at 0x00B2637B; the sky ctor reads it for GetDef<CSkyDef>
+0x012A29A4	L"Data\\Misc\\star_chart.tga"	string literal (sky ctor StarBitmapFilePath)
+0x012A297C	L"Data\\Misc\\stars.dat"	string literal (sky ctor StarVBFilePath)

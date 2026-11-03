@@ -1,0 +1,15 @@
+address	name	grade	attempts	residue
+00b625e0	CEngineSkyRenderer::CEngineSkyRenderer	RELOCATION_MATCH	12	none (src/00b625e0.cpp; levers: out-of-line CEngineComponent() in the retail branch, nested cloud-vector loop, GetDef body in TU, copy-assignment form of SetDynamicCast -- see NOTES)
+00b4bcc0	CEngineShadowRenderer::CalcClipVolume	DIFFER(2179v2179)	336	dl=27: clip-volume reset stores / first plane lea+pushes scheduled ~3 slots early; frustum-copy edx/eax interleave (scheduling window)
+00b4c550	CEngineShadowRenderer::CalcSpotLightClipVolume	DIFFER(2242v2242)	39	dl=20: first plane pushes+lea 6 slots early in the last inlined transform; one inc edx placement (scheduling window)
+00a9dc20	ApplyPartialAnimationAlpha (static)	DIFFER(709v706)	43	dl=23: slerp dot sums Z,Y,X,W (retail Y,X,Z,W) + interpolation tail operand order (x87 reassociation)
+00a9e1e0	C3DAnimationManager::ApplyParentTransformations	NOT_ATTEMPTED	0	budget: SSE movaps matrix path behind g_SSEAvailable 0x013D2880 needs a shared asm helper header (retail_asm) first
+00a9f540	C3DAnimationManager::CalcMeshTransformations	NOT_ATTEMPTED	0	same SSE path; also inlines ApplyPartialAnimationAlpha / ApplyRelativeAnimationAlpha (blocked on 0x00A9DC20's reassociation)
+00aa0090	C3DAnimationManager::CalcBlendedMeshTransformations	NOT_ATTEMPTED	0	same SSE path (CMatrix4x4 overload)
+00aa0fa0	C3DAnimationManager::CalcBoneTransformation	NOT_ATTEMPTED	0	same SSE path; 4460 bytes
+00aa2110	C3DAnimationManager::CalcBlendedBoneTransformation	NOT_ATTEMPTED	0	same SSE path; 4556 bytes
+00b4d370	CEngineShadowRenderer::UpdateShadowSpace	NOT_ATTEMPTED	0	budget; 7176 bytes, calls CalcClipVolume 0x00B4BCC0 / BuildDerived... 0x00B4BA60 / CalcLocalWorldToBaseShadowSpace 0x00B4B8B0 / AccurateNormalise; overlay SceneData layout is ready
+00b52dd0	CEngineWeatherRenderer::ClipBoxToLandscape	NOT_ATTEMPTED	0	budget; 4489 bytes of x87 around CEngineMap::PeekLandscapeHeight 0x00B439C0
+00b555a0	CEngineWeatherRenderer::Render	NOT_ATTEMPTED	0	budget; 3832 bytes of inline CRenderStateManager setters (723b overlay has them) + RenderMist/Rain/Snow calls
+00b64550	CEngineSkyRenderer::RenderSunFlare	NOT_ATTEMPTED	0	budget; occlusion flare test 0x00B8D3C0, ~40 inline render-state setters, 10 __ftol2; the sky header branch is ready
+00b64fa0	CEngineSkyRenderer::RenderClouds	NOT_ATTEMPTED	0	budget; CShaderRenderManager constant updates + DrawCurrentBuffersIndexed; the sky header branch is ready

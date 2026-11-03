@@ -1,0 +1,5 @@
+- A same-TU `static` that retail calls with register args and callee-pop: `static void __stdcall` + a same-TU caller (so it is emitted) reproduces VC7.1's custom convention without LTCG (0x00A9DC20).
+- x87 sum order: a loop of an inlined transform keeps one reassociation order for every clone; four explicit calls rotate it (0x00B4BCC0).
+- Parenthesising an x87 sum pins its order but changes the IR count, which moves VC7.1's scheduling window: unparenthesised + loop was the better trade (dl 128 -> 27).
+- CDefPointer SetDynamicCast: retail re-reads the source after Release in an inlined GetDef(name, index) (0x00B625E0) while the header caches it; re-reading in the header makes landed 0x0047A9F0 inline GetDef<T>(long).
+- Zeroing a C2DVector[2][2] + C2DVector[2] pair: retail's 2-trip loop over stack zero temporaries is a nested loop (inner unrolled); a flat body unrolls into register stores.
