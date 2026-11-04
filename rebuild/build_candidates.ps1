@@ -382809,6 +382809,62 @@ $catalog = @(
         TestSource = '00/d6/NScriptCQHangingTreeEvilScript_SpawnEnemies_00d6bb80_test.cpp'
         PassPattern = '00d6bb80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00441ee0'
+        Module = 'CPrimitiveHandleSet_00441ee0'
+        Source = '00/44/CPrimitiveHandleSet00441ee0_CPrimitiveHandleSet00441ee0_00441ee0.cpp'
+        TestSource = '00/44/CPrimitiveHandleSet00441ee0_CPrimitiveHandleSet00441ee0_00441ee0_test.cpp'
+        PassPattern = '00441ee0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00863280'
+        Module = 'CThingBodyReorienter'
+        Source = '00/86/CThingBodyReorienter_GradualReorientBody_00863280.cpp'
+        TestSource = '00/86/CThingBodyReorienter_GradualReorientBody_00863280_test.cpp'
+        PassPattern = '00863280_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008956b0'
+        Module = 'CGameScriptInterface'
+        Source = '00/89/CGameScriptInterface_EntityTeleportToHeroPosition_008956b0.cpp'
+        TestSource = '00/89/CGameScriptInterface_EntityTeleportToHeroPosition_008956b0_test.cpp'
+        PassPattern = '008956b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008cf7d0'
+        Module = 'CCreatureAction_TentacleStrikeLoop'
+        Source = '00/8c/CCreatureActionTentacleStrikeLoop_FinishAction_008cf7d0.cpp'
+        TestSource = '00/8c/CCreatureActionTentacleStrikeLoop_FinishAction_008cf7d0_test.cpp'
+        PassPattern = '008cf7d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0092bf50'
+        Module = 'CAIStateGroup_MinionWander'
+        Source = '00/92/CAIStateGroupMinionWander_FaceAwayFromBuildings_0092bf50.cpp'
+        TestSource = '00/92/CAIStateGroupMinionWander_FaceAwayFromBuildings_0092bf50_test.cpp'
+        PassPattern = '0092bf50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be24d0'
+        Module = 'C2DAlphaMaskInfo'
+        Source = '00/be/C2DAlphaMaskInfo_Reset_00be24d0.cpp'
+        TestSource = '00/be/C2DAlphaMaskInfo_Reset_00be24d0_test.cpp'
+        PassPattern = '00be24d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00be2540'
+        Module = 'C2DAlphaMaskInfo'
+        Source = '00/be/C2DAlphaMaskInfo_C2DAlphaMaskInfo_00be2540.cpp'
+        TestSource = '00/be/C2DAlphaMaskInfo_C2DAlphaMaskInfo_00be2540_test.cpp'
+        PassPattern = '00be2540_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbc130'
+        Module = 'std::vector<std::pair<unsigned __int64,NScript::CRuntimeScriptedEntityPersist::CPersistInfo> >'
+        Source = '00/cb/stdvectorstdpairunsignedint64NScriptCRuntimeScriptedEntityPersistCPersistInfo_Minsertoverflow_00cbc130.cpp'
+        TestSource = '00/cb/stdvectorstdpairunsignedint64NScriptCRuntimeScriptedEntityPersistCPersistInfo_Minsertoverflow_00cbc130_test.cpp'
+        PassPattern = '00cbc130_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

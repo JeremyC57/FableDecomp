@@ -1,0 +1,32 @@
+addr       parity           behav  name
+00441ee0   RELOCATION_MATCH PASS   ~CPrimitiveHandleSet_00441ee0
+00863280   WARN RELOC_ALIAS: __CIfmod -> 00bfeb28 is the import thunk 'MSVCR71.DLL::_CIfmod'
+00863280   WARN RELOC_NAME: ?DELTA_NOTIONAL_ZERO@@3MB -> 0129ba3c labelled 'EPSILON'
+00863280   RELOCATION_MATCH PASS   GradualReorientBody
+008956b0   RELOCATION_MATCH PASS   EntityTeleportToHeroPosition
+008cf7d0   WARN SHARED_HEADER_AVAILABLE CThing
+008cf7d0   WARN SHARED_HEADER_AVAILABLE CKrakenTentacleDef
+008cf7d0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+008cf7d0   WARN SHARED_HEADER_AVAILABLE CMainGameComponent
+008cf7d0   WARN SHARED_HEADER_AVAILABLE CWorld
+008cf7d0   WARN SHARED_HEADER_AVAILABLE CCombatActionBase
+008cf7d0   WARN RELOC_NAME: ??1CCombatActionBase@@UAE@XZ -> 0062e900 labelled 'CCreatureAction_CastWillFireballSpell::~CCreatureAction_CastWillFireballSpell'
+008cf7d0   RELOCATION_MATCH PASS   FinishAction
+0092bf50   WARN SHARED_HEADER_AVAILABLE CThing
+0092bf50   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0092bf50   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+0092bf50   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0092bf50   RELOCATION_MATCH PASS   FaceAwayFromBuildings
+00be24d0   MATCH            PASS   Reset
+00be2540   MATCH            PASS   C2DAlphaMaskInfo
+00cbc130   RELOCATION_MATCH PASS   _M_insert_overflow
+
+WINS: 8
+  00441ee0 RELOCATION_MATCH CPrimitiveHandleSet_00441ee0::??1CPrimitiveHandleSet_00441ee0
+  00863280 RELOCATION_MATCH CThingBodyReorienter::?GradualReorientBody@CThingBodyReorienter@@AAEXXZ
+  008956b0 RELOCATION_MATCH CGameScriptInterface::?EntityTeleportToHeroPosition@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+  008cf7d0 RELOCATION_MATCH CCreatureAction_TentacleStrikeLoop::?FinishAction@CCreatureAction_TentacleStrikeLoop@@UAEXXZ
+  0092bf50 RELOCATION_MATCH CAIStateGroup_MinionWander::?FaceAwayFromBuildings@CAIStateGroup_MinionWander@@AAE?AW4EAIActionReturn@@XZ
+  00be24d0 MATCH C2DAlphaMaskInfo::?Reset@C2DAlphaMaskInfo@@QAEXXZ
+  00be2540 MATCH C2DAlphaMaskInfo::??0C2DAlphaMaskInfo@@QAE@XZ
+  00cbc130 RELOCATION_MATCH std::vector<std::pair<unsigned __int64,NScript::CRuntimeScriptedEntityPersist::CPersistInfo> >::?_M_insert_overflow@?$vector@U?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@

@@ -36520,3 +36520,8 @@ __imp__FindClose@4	0143feb4	00c565f0
 __imp__FindFirstFileA@8	0143feb8	00c565f0
 __imp__GetSystemDirectoryA@8	0143febc	00c565f0
 ?s_tapTimes@CReverbProcessor@@2QAY03$$CBMA	012bf138	00c78150
+??0CCreatureAction_TentacleStrikeLoop@@QAE@PAVCThingCreatureBase@@J@Z	008cf990	008cf7d0
+??$GetPBestLeafThing@VCThingFilter_In2DRange@@VCThingCompare_Nearest@@VCThingBuilding@@@CThingSearchTools@@QBE_NABVCThingFilter_In2DRange@@ABVCThingCompare_Nearest@@PAPAVCThingBuilding@@@Z	0092c260	0092bf50
+?IsThingInFOV@CThingAICreature@@QBE_NABVCThing@@_N@Z	00665190	0092bf50
+??$__uninitialized_copy@PAU?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@PAU12@@std@@YIPAU?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@0@PAU10@00ABU__false_type@0@@Z	00cb9b00	00cbc130
+??$__uninitialized_fill_n@PAU?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@std@@IU12@@std@@YIPAU?$pair@_KVCPersistInfo@CRuntimeScriptedEntityPersist@NScript@@@0@PAU10@IABU10@ABU__false_type@0@@Z	00cb9b50	00cbc130

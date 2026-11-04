@@ -1303,7 +1303,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 004364c0	_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>	std	__fastcall	void	2	allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_> *,pair<long,CMusicManager::CRegisteredMusicEntry> *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\DestvalstdallocatorstdpairlongCMusicManagerCRegisteredMusicEntrystdpairlongCMusicManager_CRegisteredMusicEntry_004364c0.cpp
 00436500	GetMapwhoArea	CThingSearchTools	__thiscall	C2DBoxI	4	CThingSearchTools *,CThingMap *,long,C2DBoxI *	1	yes	accepted									
 00436560	CFadeInFadeOutBase	CFadeInFadeOutBase	__thiscall	void	1	CTCHeroStats *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\CTCHeroStats_SoberUp_00436560.cpp
-004365b0	LowerBound	CVectorMap<ETCInterfaceType, CTCBase *, CKeyPairCompareLess<ETCInterfaceType, CTCBase *>>	__thiscall	_Vector_iterator<std::_Vector_val<std::pair<ETCInterfaceType,CTCBase*>,std::allocator<std::pair<ETCInterfaceType,CTCBase*>_>_>_>	2	CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_> *,ETCInterfaceType *	1	yes	accepted									
+004365b0	LowerBound	CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> >	__thiscall	_Vector_iterator<std::_Vector_val<std::pair<ETCInterfaceType,CTCBase*>,std::allocator<std::pair<ETCInterfaceType,CTCBase*>_>_>_>	2	CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*>_> *,ETCInterfaceType *	1	yes	accepted									
 00436620	CCountedPointer_Release_00436620	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00436620.cpp
 004366b0	Reset	CCountedPointer_004361e0	__thiscall	void	2	CCountedPointer<CIPhysicsFacesSegmentBase_const_> *,CIPhysicsFacesSegmentBase *	1	yes	accepted									
 00436740	CCountedPointer_Release_00436740	_global	__fastcall	void	2	allocator<CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive>_> *,CCountedPointer<QuadricOptimiserInternals::COptimisedPrimitive> *	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\43\DestvalstdallocatorCCountedPointerQuadricOptimiserInternalsCOptimisedPrimitiveCC_COptimisedPrimitive_00436740.cpp
@@ -13421,7 +13421,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00632340	Transfer	CPersistContext	unknown	undefined	0		0	yes	accepted									
 00632390	TransferBinaryIn_00632390	_unattributed	__thiscall	void	3	CPersistTraits<float> *,CMemoryDataInputStream *,float *	1	yes	accepted									
 00632420	Transfer	CPersistContext	unknown	undefined	0		0	yes	accepted									
-00632470	TransferBinaryIn_00632470	_unattributed	__thiscall	void	3	CPersistTraits<float> *,CMemoryDataInputStream *,float *	1	yes	accepted									
+00632470	TransferBinaryIn	CPersistTraits<EEngineGraphicType>	__thiscall	void	3	CPersistTraits<float> *,CMemoryDataInputStream *,float *	1	yes	accepted									
 00632500	Transfer	CPersistContext	unknown	undefined	0		0	yes	accepted									
 00632550	TransferBinaryIn_00632550	_unattributed	__thiscall	void	3	CPersistTraits<float> *,CMemoryDataInputStream *,float *	1	yes	accepted									
 006325e0	Transfer	CPersistContext	unknown	undefined	0		0	yes	accepted									
@@ -26923,7 +26923,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008954a0	EntityFollowThing	CGameScriptInterface	__thiscall	void	5	CGameScriptInterface *,CScriptThing const &,CScriptThing const &,float,bool	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\89\0x008954A0_global_EntityFollowThing_CGameScriptInterface_UBEXABVCScriptThing_0M_N_Z.cpp				
 008955c0	IsEntityFollowingHero	CGameScriptInterface	__thiscall	bool	2	CGameScriptInterface *,CScriptThing const &	1	yes	accepted	PASS	wave3			D:\Documents\FableTLC\lift\reports\wave3\code\00\89\0x008955C0_global_IsEntityFollowingHero_CGameScriptInterface_UBE_NABVCScriptThing_Z.cpp				
 00895650	EntitySetAsMirroringHeroEnemyRelationsWhileFollowing	CGameScriptInterface	__thiscall	void	3	CGameScriptInterface *,CScriptThing *,bool	1	yes	accepted									
-008956b0	?EntityTeleportToHeroPosition@CGameScriptInterface@@UBEXABVCScriptThing@@@Z	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,CScriptThing *	1	yes	accepted									
+008956b0	EntityTeleportToHeroPosition	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,CScriptThing *	1	yes	accepted									
 008957c0	SendEntityEvent	CGameScriptInterface	__thiscall	void	5	CGameScriptInterface *,EEventType,CScriptThing *,CScriptThing *,CThing *	1	yes	accepted									
 008958f0	IsFishingSpotEnabled	CGameScriptInterface	__thiscall	bool	2	CGameScriptInterface *,CScriptThing *	1	yes	accepted									
 00895950	DisableFishingSpot	CGameScriptInterface	__thiscall	void	2	CGameScriptInterface *,CScriptThing *	1	yes	accepted									
@@ -28959,7 +28959,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 008cf540	Initialise	CCreatureAction_TentacleStrikeOutOf	__thiscall	void	1	CCreatureAction_TentacleStrikeOutOf *	1	yes	accepted									
 008cf610	FinishAction	CCreatureAction_TentacleRise	__thiscall	void	1	CCreatureAction_TentacleRise *	1	yes	accepted									
 008cf700	FinishAction	CCreatureAction_TentacleStrikeInto	__thiscall	void	1	CCreatureAction_TentacleStrikeInto *	1	yes	accepted									
-008cf7d0	CCreatureAction_TentacleStrikeLoop::FinishAction	CCreatureAction_TentacleStrikeLoop	__thiscall	void	1	CCreatureAction_TentacleStrikeLoop *	1	yes	accepted									
+008cf7d0	FinishAction	CCreatureAction_TentacleStrikeLoop	__thiscall	void	1	CCreatureAction_TentacleStrikeLoop *	1	yes	accepted									
 008cf8f0	CCreatureAction_TentacleStrikeGetHit	CCreatureAction_TentacleStrikeGetHit	__thiscall	undefined	1	C3DAnimFileHelpersChunk *	0	yes	accepted									
 008cf920	CCreatureAction_TentacleIdle	CCreatureAction_TentacleIdle	__thiscall	undefined	2	CCombatAction_GenericResponseToDecapitation *,CThingCreatureBase *	0	yes	accepted									
 008cf960	IsUsingAnimationMovement	CCreatureAction_TentacleIdle	__thiscall	bool	1	CCreatureAction_TentacleIdle *	1	yes	accepted						PASS	PASS	MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\8c\CCreatureActionTentacleIdle_IsUsingAnimationMovement_008cf960.cpp
@@ -43034,9 +43034,9 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00be22c0	ClearAllChildPrimitives	CEngineInternalPrimitive2DViewport	__thiscall	void	1	CEngineInternalPrimitive2DViewport *	1	yes	accepted									
 00be2310	AddChildPrimitive	CEngineInternalPrimitive2DViewport	__thiscall	ulong	3	CEngineInternalPrimitive2DViewport *,CEnginePrimitive const &,ulong	1	yes	accepted									
 00be23f0	SetChildPrimitive	CEngineInternalPrimitive2DViewport	__thiscall	void	4	CEngineInternalPrimitive2DViewport *,ulong,CEnginePrimitive const &,ulong	1	yes	accepted									
-00be24d0	Init	CVO_OracleMarker	__thiscall	void	1	CVO_OracleMarker *	1	yes	accepted									
+00be24d0	Reset	C2DAlphaMaskInfo	__thiscall	void	1	CVO_OracleMarker *	1	yes	accepted									
 00be2520	`scalar_deleting_destructor'	CEngineSubPrimitive2DViewport	__thiscall	void *	2	CEngineSubPrimitiveGameMesh *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\be\CEngineSubPrimitiveGameMesh_vectordeletingdestructor_00be2520.cpp
-00be2540	Init	CVO_OracleMarker	__thiscall	void	1	CVO_OracleMarker *	1	yes	accepted									
+00be2540	C2DAlphaMaskInfo	C2DAlphaMaskInfo	__thiscall	void	1	CVO_OracleMarker *	1	yes	accepted									
 00be25d0	`scalar_deleting_destructor'	CEnginePrimitive2DViewportManager	__thiscall	void *	2	CLandscapeBackgroundPatch *,uint	1	yes	accepted						PASS	PASS	RELOCATION_MATCH	D:\Documents\FableTLC\rebuild\src\compiled\00\be\CLandscapeBackgroundPatch_vectordeletingdestructor_00be25d0.cpp
 00be25f0	`scalar deleting destructor'	CEngineInternalPrimitive2DViewport	__thiscall	void *	2	CLandscapeBackgroundSubNodeSplitBranch *,uint	1	yes	accepted									
 00be2680	IsEquivalent	CLocalDetailObjectCollectionType	__thiscall	bool	2	CLocalDetailObjectCollectionType *,CLocalDetailObjectCollectionType *	1	yes	accepted									
@@ -48755,7 +48755,7 @@ address	name	module	calling_convention	return_type	parameter_count	parameter_typ
 00cbbda0	Container_MoveAndConstruct	_global	unknown	undefined	0		0	yes	accepted									
 00cbbe50	__insertion_sort	std	__fastcall	void	4	CMeshInfo *,CMeshInfo *,CSortPrimaryMeshesFirst,CMeshInfo *	1	yes	accepted									
 00cbbeb0	__partial_sort	_global	unknown	undefined	0		0	yes	accepted									
-00cbc130	_M_insert_overflow	vector	unknown	undefined	0		0	yes	accepted									
+00cbc130	_M_insert_overflow	std::vector<std::pair<unsigned __int64,NScript::CRuntimeScriptedEntityPersist::CPersistInfo> >	unknown	undefined	0		0	yes	accepted									
 00cbc2b0	FinalInsertionSort_SElement24_00cbc2b0	_global	__fastcall	void	3	pair<unsigned_long,CSoundPair> *,pair<unsigned_long,CSoundPair> *,CKeyPairCompareLess<unsigned_long,CSoundPair>	1	yes	accepted									
 00cbc330	__linear_insert	std	unknown	undefined	0		0	yes	accepted									
 00cbc3c0	__linear_insert	std	unknown	undefined	0		0	yes	accepted									

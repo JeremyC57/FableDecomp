@@ -1,0 +1,7 @@
+address	name	note
+00be24d0	C2DAlphaMaskInfo::Reset	Ego_r.pdb ?Reset@C2DAlphaMaskInfo@@QAEXXZ; MATCH in this chunk; was the propagated CVO_OracleMarker::Init
+00be2540	C2DAlphaMaskInfo::C2DAlphaMaskInfo	Ego_r.pdb ??0C2DAlphaMaskInfo@@QAE@XZ; MATCH in this chunk
+00cbc130	std::vector<std::pair<unsigned __int64,NScript::CRuntimeScriptedEntityPersist::CPersistInfo> >::_M_insert_overflow	RELOCATION_MATCH in this chunk; was labelled CMusicEntry::LoadFromScript (propagated)
+004365b0	CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> >::LowerBound (const)	the const overload (QBE): landed const binding + row 0x008956B0 through the const PeekTC/GetTC path; 0x0040F020 is the non-const one (byte-identical body)
+00632470	CPersistTraits<EEngineGraphicType>::TransferBinaryIn	landed binding ?TransferBinaryIn@?$CPersistTraits@W4EEngineGraphicType@@@@QAEXAAVCMemoryDataInputStream@@AAW4EEngineGraphicType@@@Z; catalog _unattributed::TransferBinaryIn_00632470
+0062e900	CCombatActionBase::~CCombatActionBase	proposal (one source): row 0x008CF7D0's inline TentacleStrikeOutOf / TentacleStrikeLoop temporaries (no members of their own) destroy through it; Ego_r has ??1CCombatActionBase@@UAE@XZ; catalog CCreatureAction_CastWillFireballSpell::~... is a propagated guess -- verify the vtable slot 0 before applying

@@ -31,6 +31,10 @@ public:
     virtual void OnPreDeviceReset();                                     // 0x00B26010 ?OnPreDeviceReset@CEngine@@UAEXXZ
     virtual bool OnPostDeviceReset();                                    // 0x00B25D00 ?OnPostDeviceReset@CEngine@@UAE_NXZ
     virtual void Uninitialise();                                         // slot 85 0x00B25D80 ?Uninitialise@CEngine@@UAEXXZ (CEngine's first own virtual)
+#ifdef FABLE_RETAIL_CIENGINE_CONVERTWORLDPOS
+    // Nested opt-in (chunk 763): the slot-13 override, FableWin.pdb ?ConvertWorldPosToScreenPos@CEngine@@UBE_NABVC3DVector@@AAVC2DVector@@@Z 0x00B242D0.
+    virtual bool ConvertWorldPosToScreenPos(const C3DVector& worldPos, C2DVector& screenPos) const;
+#endif
 #ifdef FABLE_RETAIL_CIENGINE_CONVERTSCREENPOS
     // Nested opt-in (chunk 758): the slot-12 override, FableWin.pdb ?ConvertScreenPosToWorldPosAtViewDistance@CEngine@@UBE_NMABVC2DVector@@AAVC3DVector@@@Z 0x00B24400.
     virtual bool ConvertScreenPosToWorldPosAtViewDistance(float distance, const C2DVector& screenPos, C3DVector& worldPos) const;

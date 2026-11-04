@@ -60,7 +60,13 @@ public:
 #else
     virtual void Virtual12_00b24400() = 0;                                // 12 (CEngine 0x00B24400, ret 0xC)
 #endif
+#ifdef FABLE_RETAIL_CIENGINE_CONVERTWORLDPOS
+    // Nested opt-in (chunk 763, row 0x00B242D0): slot 13 is FableWin.pdb ?ConvertWorldPosToScreenPos@CEngine@@UBE_NABVC3DVector@@AAVC2DVector@@@Z
+    // (CEngine vtable 0x012A0F3C slot 13 = 0x00B242D0, `ret 8`); pure here like the other unnamed slots.
+    virtual bool ConvertWorldPosToScreenPos(const C3DVector&, C2DVector&) const = 0;   // 13 (CEngine 0x00B242D0)
+#else
     virtual void Virtual13_00b242d0() = 0;                                // 13 (CEngine 0x00B242D0, ret 8)
+#endif
     virtual bool SetVideoOptions(const CEngineVideoOptions&);             // 14 0x00B23330
     virtual bool PreChangeResolution() = 0;                               // 15 (CEngine 0x00B2AA20)
     virtual bool PostChangeResolution(unsigned long, unsigned long, unsigned long) = 0;   // 16 (CEngine 0x00B2AA30)

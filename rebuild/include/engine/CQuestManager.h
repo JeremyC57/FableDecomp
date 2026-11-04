@@ -16,6 +16,20 @@
 #include "stlport/fable_containers.h"
 class CThing;
 class CPersistContext;
+#ifdef FABLE_RETAIL_CQUESTMANAGER_REGIONLOCK
+class CRegion;
+namespace std {
+// STLport 4.6 _algobase.c: the random-access __find (out of line in retail: 0x004B74E0 for const CRegion* const*, __fastcall);
+// declared only (a row that needs VC7.1 to see it writes no memory defines the body in its TU) and _algobase.h find.
+template <class _RandomAccessIter, class _Tp>
+_RandomAccessIter __fastcall __find(_RandomAccessIter __first, _RandomAccessIter __last, const _Tp& __val,
+                                    const random_access_iterator_tag&);
+template <class _InputIter, class _Tp>
+inline _InputIter find(_InputIter __first, _InputIter __last, const _Tp& __val) {
+    return __find(__first, __last, __val, random_access_iterator_tag());
+}
+}
+#endif
 #include "fable_string.h"
 class CQuestManager : public CTBaseSingletonNoDefaultAlloc<CQuestManager> {
 public:
@@ -66,8 +80,35 @@ public:
     bool IsBetweenQuestStartAndFinishScreens() const;        // 0x004AF290
     // Chunk 734 (row 0x004A0D90 CWorld::LoadQuestsFromFile): Ego_r.pdb / FableWin.pdb ?RegisterQuest@CQuestManager@@QAEXABVCCharString@@@Z.
     void RegisterQuest(const CCharString& name);             // 0x004B2850
+#ifdef FABLE_RETAIL_CQUESTMANAGER_REGIONLOCK
+    // Nested opt-in (chunk 763, row 0x004B01B0 IsRegionValidInRegionLockingMode): the nested active-quest record
+    // (Ego_r.pdb / FableWin.pdb ?ContainsRegion@CActiveQuest@CQuestManager@@QBE_NABVCRegion@@@Z: `V` key, nested) with its
+    // region list at +0x10 (vector<const CRegion*>; the row reads _M_start +0x10 / _M_finish +0x14). ContainsRegion,
+    // ContainsAnyRegions and GetRegions (by value: ?GetRegions@CActiveQuest@CQuestManager@@QBE?BV?$vector@PBVCRegion@@...)
+    // are expanded in the row (the find is a direct call of std::__find 0x004B74E0, the copy a malloc / memmove / free).
+    class CActiveQuest {
+    public:
+        bool ContainsRegion(const CRegion& region) const {
+            return std::find(Regions.begin(), Regions.end(), &region) != Regions.end();
+        }
+        bool ContainsAnyRegions() const { return !Regions.empty(); }
+        const std::vector<const CRegion*> GetRegions() const { return Regions; }
+    private:
+        unsigned char _pad_0x00[0x10];                       // +0x00 ID, PScriptInfo, PScript (CCountedPointer<CScriptBase>)
+        std::vector<const CRegion*> Regions;                 // +0x10
+    };
+    // FableWin.pdb ?GetActiveQuestFromScriptName@CQuestManager@@QBEPAVCActiveQuest@1@ABVCCharString@@@Z (retail 0x004AF5B0).
+    CActiveQuest* GetActiveQuestFromScriptName(const CCharString& name) const;    // 0x004AF5B0
+    // Ego_r.pdb / FableWin.pdb ?IsRegionValidInRegionLockingMode@CQuestManager@@QBE_NABVCRegion@@@Z (retail 0x004B01B0).
+    bool IsRegionValidInRegionLockingMode(const CRegion& region) const;
+private:
+    unsigned char _pad_0x04[0x4c - 0x04];                    // +0x04 PGameScriptThingManager .. ActiveQuestsStack
+    std::vector<CCharString> BetweenStartAndEndScreenQuests; // +0x4c (Ego_r vector<CCharString>)
+    unsigned char _pad_0x58[0x5c - 0x58];                    // +0x58 AvailableQuestCardTypes
+#else
 private:
     unsigned char _pad_0x04[0x5c - 0x04];                    // +0x04 PGameScriptThingManager .. AvailableQuestCardTypes
+#endif
     std::list<CIntelligentPointer<CThing> > ActiveQuestCards;    // +0x5c
     std::list<CIntelligentPointer<CThing> > CompletedQuestCards; // +0x60
     unsigned long FrameBoastsLastUpdated;                    // +0x64
@@ -78,6 +119,9 @@ private:
 public:
     static void CheckRetailLayout() {
         FABLE_STATIC_ASSERT(offsetof(CQuestManager, ActiveQuestCards) == 0x5c);
+#ifdef FABLE_RETAIL_CQUESTMANAGER_REGIONLOCK
+        FABLE_STATIC_ASSERT(offsetof(CQuestManager, BetweenStartAndEndScreenQuests) == 0x4c);
+#endif
         FABLE_STATIC_ASSERT(offsetof(CQuestManager, AcceptedBoasts) == 0x6c);
         FABLE_STATIC_ASSERT(offsetof(CQuestManager, TempBoasts) == 0x70);
         FABLE_STATIC_ASSERT(sizeof(CBoast) == 0x20);

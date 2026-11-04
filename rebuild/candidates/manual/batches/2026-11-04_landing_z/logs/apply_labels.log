@@ -1,0 +1,18 @@
+catalog  00632470 _unattributed::TransferBinaryIn_00632470 -> CPersistTraits<EEngineGraphicType>::TransferBinaryIn
+catalog  0062e900 CCreatureAction_CastWillFireballSpell::~CCreatureAction_CastWillFireballSpell -> CCombatActionBase::~CCombatActionBase
+catalog  004365b0 CVectorMap<ETCInterfaceType, CTCBase *, CKeyPairCompareLess<ETCInterfaceType, CTCBase *>>::LowerBound -> CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> >::LowerBound
+catalog  00441ee0 ~CPSCDecalRenderer -> CPSCDecalRenderer::~CPSCDecalRenderer
+catalog  00863280 GradualReorientBody -> CThingBodyReorienter::GradualReorientBody
+catalog  008956b0 ?EntityTeleportToHeroPosition@CGameScriptInterface@@UBEXABVCScriptThing@@@Z -> CGameScriptInterface::EntityTeleportToHeroPosition
+catalog  0092bf50 FaceAwayFromBuildings -> CAIStateGroup_MinionWander::FaceAwayFromBuildings
+catalog  00be24d0 Init -> C2DAlphaMaskInfo::Reset
+catalog  00be2540 Init -> C2DAlphaMaskInfo::C2DAlphaMaskInfo
+catalog  00cbc130 _M_insert_overflow -> std::vector<std::pair<unsigned __int64,NScript::CRuntimeScriptedEntityPersist::CPersistInfo> >::_M_insert_overflow
+manifest 004365b0 CVectorMap<ETCInterfaceType, CTCBase *, CKeyPairCompareLess<ETCInterfaceType, CTCBase *>>::LowerBound -> CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> >::LowerBound
+manifest 0062e900 CCreatureAction_CastWillFireballSpell::~CCreatureAction_CastWillFireballSpell -> CCombatActionBase::~CCombatActionBase
+manifest 00632470 _unattributed::TransferBinaryIn_00632470 -> CPersistTraits<EEngineGraphicType>::TransferBinaryIn
+manifest 008956b0 CGameScriptInterface::?EntityTeleportToHeroPosition@CGameScriptInterface@@UBEXABVCScriptThing@@@Z -> CGameScriptInterface::EntityTeleportToHeroPosition
+manifest 00be24d0 CVO_OracleMarker::Init -> C2DAlphaMaskInfo::Reset
+manifest 00be2540 CVO_OracleMarker::Init -> C2DAlphaMaskInfo::C2DAlphaMaskInfo
+manifest 00cbc130 vector::_M_insert_overflow -> std::vector<std::pair<unsigned __int64,NScript::CRuntimeScriptedEntityPersist::CPersistInfo> >::_M_insert_overflow
+labels 10  catalog renamed 10  manifest renamed 7

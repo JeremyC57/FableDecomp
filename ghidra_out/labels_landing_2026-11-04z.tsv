@@ -1,0 +1,10 @@
+address	name	evidence
+00be24d0	C2DAlphaMaskInfo::Reset	landing 2026-11-04z (chunk 763): 
+00be2540	C2DAlphaMaskInfo::C2DAlphaMaskInfo	landing 2026-11-04z (chunk 763): 
+00cbc130	std::vector<std::pair<unsigned __int64,NScript::CRuntimeScriptedEntityPersist::CPersistInfo> >::_M_insert_overflow	landing 2026-11-04z (chunk 763): 
+004365b0	CVectorMap<ETCInterfaceType,CTCBase*,CKeyPairCompareLess<ETCInterfaceType,CTCBase*> >::LowerBound 	landing 2026-11-04z (chunk 763): 
+00632470	CPersistTraits<EEngineGraphicType>::TransferBinaryIn	landing 2026-11-04z (chunk 763): 
+00441ee0	CPSCDecalRenderer::~CPSCDecalRenderer	landing 2026-11-04z (chunk 763): catalog module (bare vland name)
+00863280	CThingBodyReorienter::GradualReorientBody	landing 2026-11-04z (chunk 763): catalog module (bare vland name)
+008956b0	CGameScriptInterface::EntityTeleportToHeroPosition	landing 2026-11-04z (chunk 763): catalog module (bare vland name)
+0092bf50	CAIStateGroup_MinionWander::FaceAwayFromBuildings	landing 2026-11-04z (chunk 763): catalog module (bare vland name)

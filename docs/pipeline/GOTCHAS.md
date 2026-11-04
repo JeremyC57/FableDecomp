@@ -2010,3 +2010,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - VC7.1 (no `/Op`) reorders the leaves of an unparenthesised float multiply chain; parentheses pin the order but change the scheduling (chunk 761, 0x00C54C10).
 - A named float divisor in a loop lets VC7.1 hoist a reciprocal; write `/ (float)count` at each use when retail divides each time (chunk 761).
 - Two classes are named CBaseObject: strmbase's (`??1CBaseObject@@QAE@XZ` 0x00CACAF0) and the engine's (`MAE`, 0x0099A430) (chunk 761).
+- A RELOC_CONFLICT on CVectorMap LowerBound means the wrong const-ness: PeekTC calls the const one 0x004365B0; the non-const one is 0x0040F020 (chunk 763).
+- Agents' LABELS.tsv may carry one-source proposals: never apply them. finish_landing.sh skips evidence marked proposal / one source / unproven (chunk 763).
+- libpk (Lionhead audio, 0x00C0xxxx-0x00C9xxxx) is in scope; only libvorbis / Ogg / Miles / Bink are third-party skips (chunk 763).
