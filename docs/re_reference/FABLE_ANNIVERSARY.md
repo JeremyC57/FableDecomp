@@ -92,6 +92,10 @@ placeholder classes (1,259 rows). Anniversary has RTTI with base-class lists for
     - Function order inside a file agrees with TLC retail address order for 67.8% of 8,399 adjacent pairs (chance is 50%).
     - The files descend from TLC but were edited, so this is a TU hint, not an order oracle.
   - *Not useful for:* bytes, calling conventions, or VC7.1 codegen (PowerPC, cl 16).
-- **Open question, being tested:** do the original locals (names, types, scopes) help parked rows match? A pilot on 12-15 of the 252
-  drafts measures it before any wider use (`$S/anniv_pilot/`).
+- **Pilot result (`batches/2026-11-04_anniv360_pilot/`): it does not get parked rows to a byte match.**
+  - Of 20 parked rows rewritten along the 360 locals, 0 matched and 2 improved. Both improvements came mostly from scope placement,
+    which the file does not record.
+  - Register records are parameters only (checked on all 44,972 Fable procedures), only stack locals appear, and the file has
+    13 scope records.
+  - Use it as a lookup for local types and original source files, not as a matching aid.
 - Usage rule unchanged. Parameter and local names are drafting hints. A function or class name still needs TLC confirmation.
