@@ -1,0 +1,8 @@
+004e74f8	RELOCATION_MATCH	PASS	GENERIC_STRUCT module=CTCCarrying (use engine/CTCCarrying.h) | RELOC_NAME: ??1TailObj@@QAE@XZ -> 004b8940 labelled '_global::StdList_Dtor_004b8940' | RELOC_NAME: ??1MidObj@@QAE@XZ -> 004e34ec labelled '_global::StdList_Dtor_004e34ec' | RELOC_NAME: ??1HeadStr@@QAE@XZ -> 00686830 labelled 'CTCBase::~CTCBase'
+00564870	RELOCATION_MATCH	PASS	RELOC_NAME: ??1B@@QAE@XZ -> 0099b510 labelled 'CWideString::~CWideString'
+00566530	RELOCATION_MATCH	PASS	RELOC_NAME: ??1CSymOther@@QAE@XZ -> 0099eae0 labelled 'CCharString::~CCharString'
+007699c0	RELOCATION_MATCH	PASS	
+008fecec	RELOCATION_MATCH	PASS	RELOC_CONFLICT: ??1CCharString@@QAE@XZ -> 00a01c10 here, 0099eae0 in landed 004083e0 | RELOC_NAME: ??1CCharString@@QAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer' | RELOC_NAME: ?PairFirstDtor@CSymbolInfo___@@QAEXXZ -> 008fd288 labelled 'CAIStateGroupBase::~CAIStateGroupBase'
+00900533	RELOCATION_MATCH	PASS	RELOC_CONFLICT: ??1CCharString@@QAE@XZ -> 00a01c10 here, 0099eae0 in landed 004083e0 | RELOC_NAME: ??1CCharString@@QAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer' | RELOC_NAME: ??1CSymbolInfoTail@@QAE@XZ -> 008fd288 labelled 'CAIStateGroupBase::~CAIStateGroupBase'
+00918150	RELOCATION_MATCH	PASS	RELOC_NAME: ??1SubA@@QAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer' | RELOC_NAME: ??1SubB@@QAE@XZ -> 0099eae0 labelled 'CCharString::~CCharString' | RELOC_CONFLICT: ??1CCharString@@QAE@XZ -> 0099a2e0 here, 0099eae0 in landed 004083e0 | RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099a2e0 labelled 'CBaseClass::~CBaseClass'
+00a9c960	RELOCATION_MATCH	PASS	RELOC_NAME: ??1FirstPart@@QAE@XZ -> 00aa8490 labelled 'CChunkedFileSuperChunk::~CChunkedFileSuperChunk'

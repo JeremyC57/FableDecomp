@@ -1,5 +1,6 @@
 // _Dest_val for std::allocator<std::pair<CCharString, CSymbolMap::CSymbolInfo>>
-// Leaf: CSymbolInfo>_>
+// Leaf: ?_Dest_val_CSymbolInfo___@@YIXPAUPair@@H@Z
+// Plan phase 3 (2026-11-04): the Leaf was `CSymbolInfo>_>`, the tail of this row's old display name std::_Dest_val<..CSymbolMap::CSymbolInfo>_> (renamed 2026-10-24); it named no symbol, so recheck graded the largest function (a 30/48-byte ??_G) and reported DIFFER. It now names the 27-byte stand-in helper the bytes were landed on.
 // Retail 0x00918150. The pair pointer arrives in ecx (this-in-ecx); allocator arg unused.
 //   push esi; mov esi,ecx
 //   lea ecx,[esi+0x14]; call 0xa01c10   (dtor of sub-object at +0x14)

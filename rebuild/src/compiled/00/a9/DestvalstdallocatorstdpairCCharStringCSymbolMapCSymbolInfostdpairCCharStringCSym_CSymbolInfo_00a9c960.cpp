@@ -1,5 +1,6 @@
 // Retail 0x00a9c960:
-// Leaf: CSymbolInfo>_>
+// Leaf: ?_Dest_val_CSymbolInfo___@@YIXPAUPairVal@@@Z
+// Plan phase 3 (2026-11-04): the Leaf was `CSymbolInfo>_>`, the tail of this row's old display name std::_Dest_val<..CSymbolMap::CSymbolInfo>_> (renamed 2026-10-24); it named no symbol, so recheck graded the largest function (a 30/48-byte ??_G) and reported DIFFER. It now names the 27-byte stand-in helper the bytes were landed on.
 //   _Dest_val<allocator<pair<CCharString,CSymbolMap::CSymbolInfo>>,
 //             pair<CCharString,CSymbolMap::CSymbolInfo> >
 // This is the std allocator destroy-in-place helper; the pair destructor is

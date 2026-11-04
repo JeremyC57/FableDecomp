@@ -1,5 +1,6 @@
 // _Dest_val< allocator< pair<CCharString,CSymbolMap::CSymbolInfo> >, pair<...> >
-// Leaf: CSymbolInfo>_>
+// Leaf: ?Dest_val@CSymbolInfo___@@QAEXXZ
+// Plan phase 3 (2026-11-04): the Leaf was `CSymbolInfo>_>`, the tail of this row's old display name std::_Dest_val<..CSymbolMap::CSymbolInfo>_> (renamed 2026-10-24); it named no symbol, so recheck graded the largest function (a 30/48-byte ??_G) and reported DIFFER. It now names the 27-byte stand-in helper the bytes were landed on.
 // Retail 0x008fecec. The empty stateless allocator collapses _Dest_val to
 // _Ptr->~pair(); the pair pointer arrives in ecx. The pair destructor:
 //   - destroys the two CCharStrings inside 'second' (CSymbolInfo) at +0x14/+0x1c

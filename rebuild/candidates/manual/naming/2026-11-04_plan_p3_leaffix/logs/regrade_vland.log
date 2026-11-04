@@ -1,0 +1,25 @@
+004e74f8   WARN GENERIC_STRUCT module=CTCCarrying (use engine/CTCCarrying.h)
+004e74f8   WARN RELOC_NAME: ??1TailObj@@QAE@XZ -> 004b8940 labelled '_global::StdList_Dtor_004b8940'
+004e74f8   WARN RELOC_NAME: ??1MidObj@@QAE@XZ -> 004e34ec labelled '_global::StdList_Dtor_004e34ec'
+004e74f8   WARN RELOC_NAME: ??1HeadStr@@QAE@XZ -> 00686830 labelled 'CTCBase::~CTCBase'
+004e74f8   RELOCATION_MATCH PASS   ~CTCCarrying
+00564870   WARN RELOC_NAME: ??1B@@QAE@XZ -> 0099b510 labelled 'CWideString::~CWideString'
+00564870   RELOCATION_MATCH PASS   Dtor_CCharStringBase_00564870
+00566530   WARN RELOC_NAME: ??1CSymOther@@QAE@XZ -> 0099eae0 labelled 'CCharString::~CCharString'
+00566530   RELOCATION_MATCH PASS   Dtor_CCharStringBase_00566530
+007699c0   RELOCATION_MATCH PASS   _Destroy<AttackParticleAndEndPoints>
+008fecec   WARN RELOC_CONFLICT: ??1CCharString@@QAE@XZ -> 00a01c10 here, 0099eae0 in landed 004083e0
+008fecec   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+008fecec   WARN RELOC_NAME: ?PairFirstDtor@CSymbolInfo___@@QAEXXZ -> 008fd288 labelled 'CAIStateGroupBase::~CAIStateGroupBase'
+008fecec   RELOCATION_MATCH PASS   ~CAIStateGroup_MinionReactToCriminal
+00900533   WARN RELOC_CONFLICT: ??1CCharString@@QAE@XZ -> 00a01c10 here, 0099eae0 in landed 004083e0
+00900533   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+00900533   WARN RELOC_NAME: ??1CSymbolInfoTail@@QAE@XZ -> 008fd288 labelled 'CAIStateGroupBase::~CAIStateGroupBase'
+00900533   RELOCATION_MATCH PASS   ~CAIStateGroup_BalverineCornered
+00918150   WARN RELOC_NAME: ??1SubA@@QAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+00918150   WARN RELOC_NAME: ??1SubB@@QAE@XZ -> 0099eae0 labelled 'CCharString::~CCharString'
+00918150   WARN RELOC_CONFLICT: ??1CCharString@@QAE@XZ -> 0099a2e0 here, 0099eae0 in landed 004083e0
+00918150   WARN RELOC_NAME: ??1CCharString@@QAE@XZ -> 0099a2e0 labelled 'CBaseClass::~CBaseClass'
+00918150   RELOCATION_MATCH PASS   Dtor_SharedBaseOf3_00918150
+00a9c960   WARN RELOC_NAME: ??1FirstPart@@QAE@XZ -> 00aa8490 labelled 'CChunkedFileSuperChunk::~CChunkedFileSuperChunk'
+00a9c960   RELOCATION_MATCH PASS   Dtor_CChunkedFileSuperChunkBase_00a9c960

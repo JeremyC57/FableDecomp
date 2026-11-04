@@ -1,0 +1,27 @@
+Plan phase 3, wave "w4" (2026-11-04): the 0x00A9C960 DIFFER(48v27) and the 7 rows that share its cause.
+
+FINDING (0x00A9C960)
+- Not a header or include drift: the TU includes no header, and its graded helper compiles to retail's 27 bytes exactly.
+- The cause is the Leaf. The row's `// Leaf: CSymbolInfo>_>` is the tail of the row's OLD display name
+  std::_Dest_val<std::allocator<std::pair<CCharString,CSymbolMap::CSymbolInfo>_>,std::pair<..CSymbolInfo>_> (the part after
+  the last `::`, which falls inside the template arguments).
+- ghidra_out/labels_landed_names_2026-10-24.tsv renamed the row to _global::Dtor_CChunkedFileSuperChunkBase_00a9c960
+  ("was std::_Dest_val<...>").
+- The leaf names no object symbol, so verify_and_land grades the largest function: ??_GPairVal@@QAEPAXI@Z, 48 bytes (the
+  explicit `self->~PairVal()` makes VC7.1 emit a ??_G COMDAT). That is DIFFER(48v27); rebuild/oracles/reloc_audit.tsv
+  records the same.
+- The commit cannot be named here: the plan agent runs no git. The label file dates the rename to 2026-10-24.
+- The same cause, found by comparing every LEAFGUESS row's graded length with retail in the index: exactly 8 rows. All of
+  them have the leaf `CSymbolInfo>_>`, were all renamed from _Dest_val<..> in the same label file, and all grade a 30-byte
+  ??_G (reloc_audit DIFFER(30v27)): 004e74f8 00564870 00566530 007699c0 008fecec 00900533 00918150 00a9c960.
+FIX (8 rows, comment-level)
+- Each row's Leaf now names the 27-byte helper its bytes were landed on (the object's only 27-byte function whose bytes equal
+  retail's), plus a note line.
+- vland --recheck-landed: before, DIFFER(30v27) / DIFFER(48v27) PASS; after, RELOCATION_MATCH PASS on all 8 (logs/).
+- The parity changes by design: the grader now grades the right function. So gate.py against the pre-wave index reports
+  BYTES_DIFFER for these rows (the index graded the ??_G). The regrade is vland's verdict; refresh the index after applying.
+- Introduced warnings: RELOC_NAME / RELOC_CONFLICT / GENERIC_STRUCT on the helpers' callees, now visible because the rows
+  reach the relocation check. They are naming debt (NAME_FIXES.tsv), not caused by the leaf.
+FOLLOW-UP (step 6): each row is really a class destructor (catalog CTCCarrying::~CTCCarrying,
+  CAIStateGroup_MinionReactToCriminal::~.., CAIStateGroup_BalverineCornered::~.., _global::Dtor_* placeholders). Model each one as
+  its class's dtor with the members and base the label file lists, and retire the _Dest_val stand-in helper.

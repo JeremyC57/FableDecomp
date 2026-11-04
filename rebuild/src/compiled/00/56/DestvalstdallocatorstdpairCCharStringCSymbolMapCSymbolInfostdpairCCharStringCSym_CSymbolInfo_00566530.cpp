@@ -1,5 +1,6 @@
 // _Dest_val for std::allocator<std::pair<CCharString, CSymbolMap::CSymbolInfo> >
-// Leaf: CSymbolInfo>_>
+// Leaf: ?_Dest_val_CSymbolInfo___SymPair@@YIXPAUSymPair@@@Z
+// Plan phase 3 (2026-11-04): the Leaf was `CSymbolInfo>_>`, the tail of this row's old display name std::_Dest_val<..CSymbolMap::CSymbolInfo>_> (renamed 2026-10-24); it named no symbol, so recheck graded the largest function (a 30/48-byte ??_G) and reported DIFFER. It now names the 27-byte stand-in helper the bytes were landed on.
 // Retail 0x00566530. Destroys a pair<CWideString, CSymbolInfo> in place.
 //   [esi+0xc] dtor 0x99eae0 ; [esi+8] dtor 0x99b510 (CWideString) ; [esi+0] dtor 0x99b510 (tail)
 
