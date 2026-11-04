@@ -68,3 +68,22 @@ placeholder classes (1,259 rows). Anniversary has RTTI with base-class lists for
   CRT / D3D / XAudio2 libraries: zero Fable objects. The `.xex` (33 MB, sha256 f73918b9…) is `WellingtonGame-Xbox360-Shipping.pe`,
   image timestamp 0x52CE7650 (40 s after the PDB), base 0x82000000: the same shipping build. With no debug info for Fable code, it would
   only show PowerPC code with public names; not set up, kept private in the lane scratch.
+
+## The Xbox 360 "Test" build PDB + .xdb + .xex (owner-supplied, 2026-11-04)
+- `WellingtonGame-Xbox360-Test.{pdb,xdb,xex}`, PDB signature 0x525E2981 (2013-10-16, three months before the shipping PDB), GUID
+  {AF1609B8-3BA8-498A-9CA5-78A8965281A0}, age 1, PowerPC; the `.xdb` and the `.xex` (`WellingtonGame-Xbox360-Test.pe`) carry the same
+  GUID. Kept private in the lane scratch (`$S/anniv_dbg/`), never committed.
+- **Not a debug build.** It is UE3's "Test" configuration: fully optimised (Xbox 360 SDK cl 16.00.11886, `-Ox -Os -Ob2 -Oi -Gy
+  -fp:fast -Zp4`, unity files `Unity_*EtAl.cpp`), but compiled with full debug info (`-Z7`). This differs from the shipping PDB:
+  - The Fable objects carry 45,188 procedures, their parameters and locals, scopes and line tables (5.2 MB).
+  - It has 1.02 M type records, with class layouts, member names, method lists and enums.
+  - The objects cover 95 unity modules in FableLib, FableEngine3D, FableScripting, BBBLibrary and similar directories.
+- What it can add (third source only, the usage rule above applies unchanged):
+  - parameter and local names for Fable functions, which no TLC-era file in the container gives;
+  - per-function source files from the line tables (a TU hint);
+  - layouts of classes Ego_r lacks.
+
+  Of the non-UE3 classes it defines, 3,537 also exist in Ego_r.
+- Limits: it is the Anniversary code (refactored and ported to PowerPC, e.g. `CThing` is 172 bytes there). Layouts and code can
+  differ from TLC, and its codegen says nothing about VC7.1 x86 bytes. Ego_r.pdb / FableWin.pdb stay authoritative. A TLC-era debug PDB
+  (`Ego_d.pdb`, owner disk) would beat it for locals if it carries them.
